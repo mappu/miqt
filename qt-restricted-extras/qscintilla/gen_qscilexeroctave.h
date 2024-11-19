@@ -17,15 +17,19 @@ extern "C" {
 #ifdef __cplusplus
 class QMetaObject;
 class QObject;
+class QsciLexer;
+class QsciLexerMatlab;
 class QsciLexerOctave;
 #else
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
+typedef struct QsciLexer QsciLexer;
+typedef struct QsciLexerMatlab QsciLexerMatlab;
 typedef struct QsciLexerOctave QsciLexerOctave;
 #endif
 
-QsciLexerOctave* QsciLexerOctave_new();
-QsciLexerOctave* QsciLexerOctave_new2(QObject* parent);
+void QsciLexerOctave_new(QsciLexerOctave** outptr_QsciLexerOctave, QsciLexerMatlab** outptr_QsciLexerMatlab, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+void QsciLexerOctave_new2(QObject* parent, QsciLexerOctave** outptr_QsciLexerOctave, QsciLexerMatlab** outptr_QsciLexerMatlab, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
 QMetaObject* QsciLexerOctave_MetaObject(const QsciLexerOctave* self);
 void* QsciLexerOctave_Metacast(QsciLexerOctave* self, const char* param1);
 struct miqt_string QsciLexerOctave_Tr(const char* s);
@@ -37,7 +41,7 @@ struct miqt_string QsciLexerOctave_Tr2(const char* s, const char* c);
 struct miqt_string QsciLexerOctave_Tr3(const char* s, const char* c, int n);
 struct miqt_string QsciLexerOctave_TrUtf82(const char* s, const char* c);
 struct miqt_string QsciLexerOctave_TrUtf83(const char* s, const char* c, int n);
-void QsciLexerOctave_Delete(QsciLexerOctave* self);
+void QsciLexerOctave_Delete(QsciLexerOctave* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

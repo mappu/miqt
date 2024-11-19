@@ -22,7 +22,8 @@ const (
 )
 
 type QVideoFilterRunnable struct {
-	h *C.QVideoFilterRunnable
+	h          *C.QVideoFilterRunnable
+	isSubclass bool
 }
 
 func (this *QVideoFilterRunnable) cPointer() *C.QVideoFilterRunnable {
@@ -39,6 +40,7 @@ func (this *QVideoFilterRunnable) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQVideoFilterRunnable constructs the type using only CGO pointers.
 func newQVideoFilterRunnable(h *C.QVideoFilterRunnable) *QVideoFilterRunnable {
 	if h == nil {
 		return nil
@@ -46,8 +48,13 @@ func newQVideoFilterRunnable(h *C.QVideoFilterRunnable) *QVideoFilterRunnable {
 	return &QVideoFilterRunnable{h: h}
 }
 
+// UnsafeNewQVideoFilterRunnable constructs the type using only unsafe pointers.
 func UnsafeNewQVideoFilterRunnable(h unsafe.Pointer) *QVideoFilterRunnable {
-	return newQVideoFilterRunnable((*C.QVideoFilterRunnable)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QVideoFilterRunnable{h: (*C.QVideoFilterRunnable)(h)}
 }
 
 func (this *QVideoFilterRunnable) Run(input *QVideoFrame, surfaceFormat *QVideoSurfaceFormat, flags QVideoFilterRunnable__RunFlag) *QVideoFrame {
@@ -63,7 +70,7 @@ func (this *QVideoFilterRunnable) OperatorAssign(param1 *QVideoFilterRunnable) {
 
 // Delete this object from C++ memory.
 func (this *QVideoFilterRunnable) Delete() {
-	C.QVideoFilterRunnable_Delete(this.h)
+	C.QVideoFilterRunnable_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -76,7 +83,8 @@ func (this *QVideoFilterRunnable) GoGC() {
 }
 
 type QAbstractVideoFilter struct {
-	h *C.QAbstractVideoFilter
+	h          *C.QAbstractVideoFilter
+	isSubclass bool
 	*qt.QObject
 }
 
@@ -94,15 +102,23 @@ func (this *QAbstractVideoFilter) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAbstractVideoFilter(h *C.QAbstractVideoFilter) *QAbstractVideoFilter {
+// newQAbstractVideoFilter constructs the type using only CGO pointers.
+func newQAbstractVideoFilter(h *C.QAbstractVideoFilter, h_QObject *C.QObject) *QAbstractVideoFilter {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractVideoFilter{h: h, QObject: qt.UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QAbstractVideoFilter{h: h,
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
 }
 
-func UnsafeNewQAbstractVideoFilter(h unsafe.Pointer) *QAbstractVideoFilter {
-	return newQAbstractVideoFilter((*C.QAbstractVideoFilter)(h))
+// UnsafeNewQAbstractVideoFilter constructs the type using only unsafe pointers.
+func UnsafeNewQAbstractVideoFilter(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractVideoFilter {
+	if h == nil {
+		return nil
+	}
+
+	return &QAbstractVideoFilter{h: (*C.QAbstractVideoFilter)(h),
+		QObject: qt.UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QAbstractVideoFilter) MetaObject() *qt.QMetaObject {
@@ -208,7 +224,7 @@ func QAbstractVideoFilter_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAbstractVideoFilter) Delete() {
-	C.QAbstractVideoFilter_Delete(this.h)
+	C.QAbstractVideoFilter_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

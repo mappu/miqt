@@ -14,7 +14,8 @@ import (
 )
 
 type QJsonObject struct {
-	h *C.QJsonObject
+	h          *C.QJsonObject
+	isSubclass bool
 }
 
 func (this *QJsonObject) cPointer() *C.QJsonObject {
@@ -31,6 +32,7 @@ func (this *QJsonObject) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQJsonObject constructs the type using only CGO pointers.
 func newQJsonObject(h *C.QJsonObject) *QJsonObject {
 	if h == nil {
 		return nil
@@ -38,20 +40,33 @@ func newQJsonObject(h *C.QJsonObject) *QJsonObject {
 	return &QJsonObject{h: h}
 }
 
+// UnsafeNewQJsonObject constructs the type using only unsafe pointers.
 func UnsafeNewQJsonObject(h unsafe.Pointer) *QJsonObject {
-	return newQJsonObject((*C.QJsonObject)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QJsonObject{h: (*C.QJsonObject)(h)}
 }
 
 // NewQJsonObject constructs a new QJsonObject object.
 func NewQJsonObject() *QJsonObject {
-	ret := C.QJsonObject_new()
-	return newQJsonObject(ret)
+	var outptr_QJsonObject *C.QJsonObject = nil
+
+	C.QJsonObject_new(&outptr_QJsonObject)
+	ret := newQJsonObject(outptr_QJsonObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQJsonObject2 constructs a new QJsonObject object.
 func NewQJsonObject2(other *QJsonObject) *QJsonObject {
-	ret := C.QJsonObject_new2(other.cPointer())
-	return newQJsonObject(ret)
+	var outptr_QJsonObject *C.QJsonObject = nil
+
+	C.QJsonObject_new2(other.cPointer(), &outptr_QJsonObject)
+	ret := newQJsonObject(outptr_QJsonObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QJsonObject) OperatorAssign(other *QJsonObject) {
@@ -350,7 +365,7 @@ func (this *QJsonObject) Empty() bool {
 
 // Delete this object from C++ memory.
 func (this *QJsonObject) Delete() {
-	C.QJsonObject_Delete(this.h)
+	C.QJsonObject_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -363,7 +378,8 @@ func (this *QJsonObject) GoGC() {
 }
 
 type QJsonObject__iterator struct {
-	h *C.QJsonObject__iterator
+	h          *C.QJsonObject__iterator
+	isSubclass bool
 }
 
 func (this *QJsonObject__iterator) cPointer() *C.QJsonObject__iterator {
@@ -380,6 +396,7 @@ func (this *QJsonObject__iterator) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQJsonObject__iterator constructs the type using only CGO pointers.
 func newQJsonObject__iterator(h *C.QJsonObject__iterator) *QJsonObject__iterator {
 	if h == nil {
 		return nil
@@ -387,26 +404,43 @@ func newQJsonObject__iterator(h *C.QJsonObject__iterator) *QJsonObject__iterator
 	return &QJsonObject__iterator{h: h}
 }
 
+// UnsafeNewQJsonObject__iterator constructs the type using only unsafe pointers.
 func UnsafeNewQJsonObject__iterator(h unsafe.Pointer) *QJsonObject__iterator {
-	return newQJsonObject__iterator((*C.QJsonObject__iterator)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QJsonObject__iterator{h: (*C.QJsonObject__iterator)(h)}
 }
 
 // NewQJsonObject__iterator constructs a new QJsonObject::iterator object.
 func NewQJsonObject__iterator() *QJsonObject__iterator {
-	ret := C.QJsonObject__iterator_new()
-	return newQJsonObject__iterator(ret)
+	var outptr_QJsonObject__iterator *C.QJsonObject__iterator = nil
+
+	C.QJsonObject__iterator_new(&outptr_QJsonObject__iterator)
+	ret := newQJsonObject__iterator(outptr_QJsonObject__iterator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQJsonObject__iterator2 constructs a new QJsonObject::iterator object.
 func NewQJsonObject__iterator2(obj *QJsonObject, index int) *QJsonObject__iterator {
-	ret := C.QJsonObject__iterator_new2(obj.cPointer(), (C.int)(index))
-	return newQJsonObject__iterator(ret)
+	var outptr_QJsonObject__iterator *C.QJsonObject__iterator = nil
+
+	C.QJsonObject__iterator_new2(obj.cPointer(), (C.int)(index), &outptr_QJsonObject__iterator)
+	ret := newQJsonObject__iterator(outptr_QJsonObject__iterator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQJsonObject__iterator3 constructs a new QJsonObject::iterator object.
 func NewQJsonObject__iterator3(param1 *QJsonObject__iterator) *QJsonObject__iterator {
-	ret := C.QJsonObject__iterator_new3(param1.cPointer())
-	return newQJsonObject__iterator(ret)
+	var outptr_QJsonObject__iterator *C.QJsonObject__iterator = nil
+
+	C.QJsonObject__iterator_new3(param1.cPointer(), &outptr_QJsonObject__iterator)
+	ret := newQJsonObject__iterator(outptr_QJsonObject__iterator)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QJsonObject__iterator) Key() string {
@@ -542,7 +576,7 @@ func (this *QJsonObject__iterator) OperatorGreaterOrEqualWithOther(other *QJsonO
 
 // Delete this object from C++ memory.
 func (this *QJsonObject__iterator) Delete() {
-	C.QJsonObject__iterator_Delete(this.h)
+	C.QJsonObject__iterator_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -555,7 +589,8 @@ func (this *QJsonObject__iterator) GoGC() {
 }
 
 type QJsonObject__const_iterator struct {
-	h *C.QJsonObject__const_iterator
+	h          *C.QJsonObject__const_iterator
+	isSubclass bool
 }
 
 func (this *QJsonObject__const_iterator) cPointer() *C.QJsonObject__const_iterator {
@@ -572,6 +607,7 @@ func (this *QJsonObject__const_iterator) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQJsonObject__const_iterator constructs the type using only CGO pointers.
 func newQJsonObject__const_iterator(h *C.QJsonObject__const_iterator) *QJsonObject__const_iterator {
 	if h == nil {
 		return nil
@@ -579,32 +615,53 @@ func newQJsonObject__const_iterator(h *C.QJsonObject__const_iterator) *QJsonObje
 	return &QJsonObject__const_iterator{h: h}
 }
 
+// UnsafeNewQJsonObject__const_iterator constructs the type using only unsafe pointers.
 func UnsafeNewQJsonObject__const_iterator(h unsafe.Pointer) *QJsonObject__const_iterator {
-	return newQJsonObject__const_iterator((*C.QJsonObject__const_iterator)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QJsonObject__const_iterator{h: (*C.QJsonObject__const_iterator)(h)}
 }
 
 // NewQJsonObject__const_iterator constructs a new QJsonObject::const_iterator object.
 func NewQJsonObject__const_iterator() *QJsonObject__const_iterator {
-	ret := C.QJsonObject__const_iterator_new()
-	return newQJsonObject__const_iterator(ret)
+	var outptr_QJsonObject__const_iterator *C.QJsonObject__const_iterator = nil
+
+	C.QJsonObject__const_iterator_new(&outptr_QJsonObject__const_iterator)
+	ret := newQJsonObject__const_iterator(outptr_QJsonObject__const_iterator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQJsonObject__const_iterator2 constructs a new QJsonObject::const_iterator object.
 func NewQJsonObject__const_iterator2(obj *QJsonObject, index int) *QJsonObject__const_iterator {
-	ret := C.QJsonObject__const_iterator_new2(obj.cPointer(), (C.int)(index))
-	return newQJsonObject__const_iterator(ret)
+	var outptr_QJsonObject__const_iterator *C.QJsonObject__const_iterator = nil
+
+	C.QJsonObject__const_iterator_new2(obj.cPointer(), (C.int)(index), &outptr_QJsonObject__const_iterator)
+	ret := newQJsonObject__const_iterator(outptr_QJsonObject__const_iterator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQJsonObject__const_iterator3 constructs a new QJsonObject::const_iterator object.
 func NewQJsonObject__const_iterator3(other *QJsonObject__iterator) *QJsonObject__const_iterator {
-	ret := C.QJsonObject__const_iterator_new3(other.cPointer())
-	return newQJsonObject__const_iterator(ret)
+	var outptr_QJsonObject__const_iterator *C.QJsonObject__const_iterator = nil
+
+	C.QJsonObject__const_iterator_new3(other.cPointer(), &outptr_QJsonObject__const_iterator)
+	ret := newQJsonObject__const_iterator(outptr_QJsonObject__const_iterator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQJsonObject__const_iterator4 constructs a new QJsonObject::const_iterator object.
 func NewQJsonObject__const_iterator4(param1 *QJsonObject__const_iterator) *QJsonObject__const_iterator {
-	ret := C.QJsonObject__const_iterator_new4(param1.cPointer())
-	return newQJsonObject__const_iterator(ret)
+	var outptr_QJsonObject__const_iterator *C.QJsonObject__const_iterator = nil
+
+	C.QJsonObject__const_iterator_new4(param1.cPointer(), &outptr_QJsonObject__const_iterator)
+	ret := newQJsonObject__const_iterator(outptr_QJsonObject__const_iterator)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QJsonObject__const_iterator) Key() string {
@@ -740,7 +797,7 @@ func (this *QJsonObject__const_iterator) OperatorGreaterOrEqualWithOther(other *
 
 // Delete this object from C++ memory.
 func (this *QJsonObject__const_iterator) Delete() {
-	C.QJsonObject__const_iterator_Delete(this.h)
+	C.QJsonObject__const_iterator_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

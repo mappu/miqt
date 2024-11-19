@@ -17,12 +17,14 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractVideoFilter;
 class QMetaObject;
+class QObject;
 class QVideoFilterRunnable;
 class QVideoFrame;
 class QVideoSurfaceFormat;
 #else
 typedef struct QAbstractVideoFilter QAbstractVideoFilter;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 typedef struct QVideoFilterRunnable QVideoFilterRunnable;
 typedef struct QVideoFrame QVideoFrame;
 typedef struct QVideoSurfaceFormat QVideoSurfaceFormat;
@@ -30,7 +32,7 @@ typedef struct QVideoSurfaceFormat QVideoSurfaceFormat;
 
 QVideoFrame* QVideoFilterRunnable_Run(QVideoFilterRunnable* self, QVideoFrame* input, QVideoSurfaceFormat* surfaceFormat, int flags);
 void QVideoFilterRunnable_OperatorAssign(QVideoFilterRunnable* self, QVideoFilterRunnable* param1);
-void QVideoFilterRunnable_Delete(QVideoFilterRunnable* self);
+void QVideoFilterRunnable_Delete(QVideoFilterRunnable* self, bool isSubclass);
 
 QMetaObject* QAbstractVideoFilter_MetaObject(const QAbstractVideoFilter* self);
 void* QAbstractVideoFilter_Metacast(QAbstractVideoFilter* self, const char* param1);
@@ -45,7 +47,7 @@ struct miqt_string QAbstractVideoFilter_Tr2(const char* s, const char* c);
 struct miqt_string QAbstractVideoFilter_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAbstractVideoFilter_TrUtf82(const char* s, const char* c);
 struct miqt_string QAbstractVideoFilter_TrUtf83(const char* s, const char* c, int n);
-void QAbstractVideoFilter_Delete(QAbstractVideoFilter* self);
+void QAbstractVideoFilter_Delete(QAbstractVideoFilter* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

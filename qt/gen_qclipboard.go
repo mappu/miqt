@@ -23,7 +23,8 @@ const (
 )
 
 type QClipboard struct {
-	h *C.QClipboard
+	h          *C.QClipboard
+	isSubclass bool
 	*QObject
 }
 
@@ -41,15 +42,23 @@ func (this *QClipboard) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQClipboard(h *C.QClipboard) *QClipboard {
+// newQClipboard constructs the type using only CGO pointers.
+func newQClipboard(h *C.QClipboard, h_QObject *C.QObject) *QClipboard {
 	if h == nil {
 		return nil
 	}
-	return &QClipboard{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QClipboard{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQClipboard(h unsafe.Pointer) *QClipboard {
-	return newQClipboard((*C.QClipboard)(h))
+// UnsafeNewQClipboard constructs the type using only unsafe pointers.
+func UnsafeNewQClipboard(h unsafe.Pointer, h_QObject unsafe.Pointer) *QClipboard {
+	if h == nil {
+		return nil
+	}
+
+	return &QClipboard{h: (*C.QClipboard)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QClipboard) MetaObject() *QMetaObject {
@@ -131,7 +140,7 @@ func (this *QClipboard) SetText(param1 string) {
 }
 
 func (this *QClipboard) MimeData() *QMimeData {
-	return UnsafeNewQMimeData(unsafe.Pointer(C.QClipboard_MimeData(this.h)))
+	return UnsafeNewQMimeData(unsafe.Pointer(C.QClipboard_MimeData(this.h)), nil)
 }
 
 func (this *QClipboard) SetMimeData(data *QMimeData) {
@@ -140,14 +149,14 @@ func (this *QClipboard) SetMimeData(data *QMimeData) {
 
 func (this *QClipboard) Image() *QImage {
 	_ret := C.QClipboard_Image(this.h)
-	_goptr := newQImage(_ret)
+	_goptr := newQImage(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QClipboard) Pixmap() *QPixmap {
 	_ret := C.QClipboard_Pixmap(this.h)
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -306,7 +315,7 @@ func (this *QClipboard) SetText2(param1 string, mode QClipboard__Mode) {
 }
 
 func (this *QClipboard) MimeData1(mode QClipboard__Mode) *QMimeData {
-	return UnsafeNewQMimeData(unsafe.Pointer(C.QClipboard_MimeData1(this.h, (C.int)(mode))))
+	return UnsafeNewQMimeData(unsafe.Pointer(C.QClipboard_MimeData1(this.h, (C.int)(mode))), nil)
 }
 
 func (this *QClipboard) SetMimeData2(data *QMimeData, mode QClipboard__Mode) {
@@ -315,14 +324,14 @@ func (this *QClipboard) SetMimeData2(data *QMimeData, mode QClipboard__Mode) {
 
 func (this *QClipboard) Image1(mode QClipboard__Mode) *QImage {
 	_ret := C.QClipboard_Image1(this.h, (C.int)(mode))
-	_goptr := newQImage(_ret)
+	_goptr := newQImage(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QClipboard) Pixmap1(mode QClipboard__Mode) *QPixmap {
 	_ret := C.QClipboard_Pixmap1(this.h, (C.int)(mode))
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

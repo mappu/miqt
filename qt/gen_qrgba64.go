@@ -14,7 +14,8 @@ import (
 )
 
 type QRgba64 struct {
-	h *C.QRgba64
+	h          *C.QRgba64
+	isSubclass bool
 }
 
 func (this *QRgba64) cPointer() *C.QRgba64 {
@@ -31,6 +32,7 @@ func (this *QRgba64) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQRgba64 constructs the type using only CGO pointers.
 func newQRgba64(h *C.QRgba64) *QRgba64 {
 	if h == nil {
 		return nil
@@ -38,20 +40,33 @@ func newQRgba64(h *C.QRgba64) *QRgba64 {
 	return &QRgba64{h: h}
 }
 
+// UnsafeNewQRgba64 constructs the type using only unsafe pointers.
 func UnsafeNewQRgba64(h unsafe.Pointer) *QRgba64 {
-	return newQRgba64((*C.QRgba64)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QRgba64{h: (*C.QRgba64)(h)}
 }
 
 // NewQRgba64 constructs a new QRgba64 object.
 func NewQRgba64() *QRgba64 {
-	ret := C.QRgba64_new()
-	return newQRgba64(ret)
+	var outptr_QRgba64 *C.QRgba64 = nil
+
+	C.QRgba64_new(&outptr_QRgba64)
+	ret := newQRgba64(outptr_QRgba64)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRgba642 constructs a new QRgba64 object.
 func NewQRgba642(param1 *QRgba64) *QRgba64 {
-	ret := C.QRgba64_new2(param1.cPointer())
-	return newQRgba64(ret)
+	var outptr_QRgba64 *C.QRgba64 = nil
+
+	C.QRgba64_new2(param1.cPointer(), &outptr_QRgba64)
+	ret := newQRgba64(outptr_QRgba64)
+	ret.isSubclass = true
+	return ret
 }
 
 func QRgba64_FromRgba64(c uint64) *QRgba64 {
@@ -166,7 +181,7 @@ func (this *QRgba64) OperatorAssign(_rgba uint64) {
 
 // Delete this object from C++ memory.
 func (this *QRgba64) Delete() {
-	C.QRgba64_Delete(this.h)
+	C.QRgba64_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

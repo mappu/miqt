@@ -34,7 +34,8 @@ const (
 )
 
 type QVideoSurfaceFormat struct {
-	h *C.QVideoSurfaceFormat
+	h          *C.QVideoSurfaceFormat
+	isSubclass bool
 }
 
 func (this *QVideoSurfaceFormat) cPointer() *C.QVideoSurfaceFormat {
@@ -51,6 +52,7 @@ func (this *QVideoSurfaceFormat) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQVideoSurfaceFormat constructs the type using only CGO pointers.
 func newQVideoSurfaceFormat(h *C.QVideoSurfaceFormat) *QVideoSurfaceFormat {
 	if h == nil {
 		return nil
@@ -58,32 +60,53 @@ func newQVideoSurfaceFormat(h *C.QVideoSurfaceFormat) *QVideoSurfaceFormat {
 	return &QVideoSurfaceFormat{h: h}
 }
 
+// UnsafeNewQVideoSurfaceFormat constructs the type using only unsafe pointers.
 func UnsafeNewQVideoSurfaceFormat(h unsafe.Pointer) *QVideoSurfaceFormat {
-	return newQVideoSurfaceFormat((*C.QVideoSurfaceFormat)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QVideoSurfaceFormat{h: (*C.QVideoSurfaceFormat)(h)}
 }
 
 // NewQVideoSurfaceFormat constructs a new QVideoSurfaceFormat object.
 func NewQVideoSurfaceFormat() *QVideoSurfaceFormat {
-	ret := C.QVideoSurfaceFormat_new()
-	return newQVideoSurfaceFormat(ret)
+	var outptr_QVideoSurfaceFormat *C.QVideoSurfaceFormat = nil
+
+	C.QVideoSurfaceFormat_new(&outptr_QVideoSurfaceFormat)
+	ret := newQVideoSurfaceFormat(outptr_QVideoSurfaceFormat)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVideoSurfaceFormat2 constructs a new QVideoSurfaceFormat object.
 func NewQVideoSurfaceFormat2(size *qt.QSize, pixelFormat QVideoFrame__PixelFormat) *QVideoSurfaceFormat {
-	ret := C.QVideoSurfaceFormat_new2((*C.QSize)(size.UnsafePointer()), (C.int)(pixelFormat))
-	return newQVideoSurfaceFormat(ret)
+	var outptr_QVideoSurfaceFormat *C.QVideoSurfaceFormat = nil
+
+	C.QVideoSurfaceFormat_new2((*C.QSize)(size.UnsafePointer()), (C.int)(pixelFormat), &outptr_QVideoSurfaceFormat)
+	ret := newQVideoSurfaceFormat(outptr_QVideoSurfaceFormat)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVideoSurfaceFormat3 constructs a new QVideoSurfaceFormat object.
 func NewQVideoSurfaceFormat3(format *QVideoSurfaceFormat) *QVideoSurfaceFormat {
-	ret := C.QVideoSurfaceFormat_new3(format.cPointer())
-	return newQVideoSurfaceFormat(ret)
+	var outptr_QVideoSurfaceFormat *C.QVideoSurfaceFormat = nil
+
+	C.QVideoSurfaceFormat_new3(format.cPointer(), &outptr_QVideoSurfaceFormat)
+	ret := newQVideoSurfaceFormat(outptr_QVideoSurfaceFormat)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVideoSurfaceFormat4 constructs a new QVideoSurfaceFormat object.
 func NewQVideoSurfaceFormat4(size *qt.QSize, pixelFormat QVideoFrame__PixelFormat, handleType QAbstractVideoBuffer__HandleType) *QVideoSurfaceFormat {
-	ret := C.QVideoSurfaceFormat_new4((*C.QSize)(size.UnsafePointer()), (C.int)(pixelFormat), (C.int)(handleType))
-	return newQVideoSurfaceFormat(ret)
+	var outptr_QVideoSurfaceFormat *C.QVideoSurfaceFormat = nil
+
+	C.QVideoSurfaceFormat_new4((*C.QSize)(size.UnsafePointer()), (C.int)(pixelFormat), (C.int)(handleType), &outptr_QVideoSurfaceFormat)
+	ret := newQVideoSurfaceFormat(outptr_QVideoSurfaceFormat)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QVideoSurfaceFormat) OperatorAssign(format *QVideoSurfaceFormat) {
@@ -228,7 +251,7 @@ func (this *QVideoSurfaceFormat) SetProperty(name string, value *qt.QVariant) {
 
 // Delete this object from C++ memory.
 func (this *QVideoSurfaceFormat) Delete() {
-	C.QVideoSurfaceFormat_Delete(this.h)
+	C.QVideoSurfaceFormat_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -6,36 +6,44 @@
 #include "gen_qcolorspace.h"
 #include "_cgo_export.h"
 
-QColorSpace* QColorSpace_new() {
-	return new QColorSpace();
+void QColorSpace_new(QColorSpace** outptr_QColorSpace) {
+	QColorSpace* ret = new QColorSpace();
+	*outptr_QColorSpace = ret;
 }
 
-QColorSpace* QColorSpace_new2(int namedColorSpace) {
-	return new QColorSpace(static_cast<QColorSpace::NamedColorSpace>(namedColorSpace));
+void QColorSpace_new2(int namedColorSpace, QColorSpace** outptr_QColorSpace) {
+	QColorSpace* ret = new QColorSpace(static_cast<QColorSpace::NamedColorSpace>(namedColorSpace));
+	*outptr_QColorSpace = ret;
 }
 
-QColorSpace* QColorSpace_new3(int primaries, int transferFunction) {
-	return new QColorSpace(static_cast<QColorSpace::Primaries>(primaries), static_cast<QColorSpace::TransferFunction>(transferFunction));
+void QColorSpace_new3(int primaries, int transferFunction, QColorSpace** outptr_QColorSpace) {
+	QColorSpace* ret = new QColorSpace(static_cast<QColorSpace::Primaries>(primaries), static_cast<QColorSpace::TransferFunction>(transferFunction));
+	*outptr_QColorSpace = ret;
 }
 
-QColorSpace* QColorSpace_new4(int primaries, float gamma) {
-	return new QColorSpace(static_cast<QColorSpace::Primaries>(primaries), static_cast<float>(gamma));
+void QColorSpace_new4(int primaries, float gamma, QColorSpace** outptr_QColorSpace) {
+	QColorSpace* ret = new QColorSpace(static_cast<QColorSpace::Primaries>(primaries), static_cast<float>(gamma));
+	*outptr_QColorSpace = ret;
 }
 
-QColorSpace* QColorSpace_new5(QPointF* whitePoint, QPointF* redPoint, QPointF* greenPoint, QPointF* bluePoint, int transferFunction) {
-	return new QColorSpace(*whitePoint, *redPoint, *greenPoint, *bluePoint, static_cast<QColorSpace::TransferFunction>(transferFunction));
+void QColorSpace_new5(QPointF* whitePoint, QPointF* redPoint, QPointF* greenPoint, QPointF* bluePoint, int transferFunction, QColorSpace** outptr_QColorSpace) {
+	QColorSpace* ret = new QColorSpace(*whitePoint, *redPoint, *greenPoint, *bluePoint, static_cast<QColorSpace::TransferFunction>(transferFunction));
+	*outptr_QColorSpace = ret;
 }
 
-QColorSpace* QColorSpace_new6(QColorSpace* colorSpace) {
-	return new QColorSpace(*colorSpace);
+void QColorSpace_new6(QColorSpace* colorSpace, QColorSpace** outptr_QColorSpace) {
+	QColorSpace* ret = new QColorSpace(*colorSpace);
+	*outptr_QColorSpace = ret;
 }
 
-QColorSpace* QColorSpace_new7(int primaries, int transferFunction, float gamma) {
-	return new QColorSpace(static_cast<QColorSpace::Primaries>(primaries), static_cast<QColorSpace::TransferFunction>(transferFunction), static_cast<float>(gamma));
+void QColorSpace_new7(int primaries, int transferFunction, float gamma, QColorSpace** outptr_QColorSpace) {
+	QColorSpace* ret = new QColorSpace(static_cast<QColorSpace::Primaries>(primaries), static_cast<QColorSpace::TransferFunction>(transferFunction), static_cast<float>(gamma));
+	*outptr_QColorSpace = ret;
 }
 
-QColorSpace* QColorSpace_new8(QPointF* whitePoint, QPointF* redPoint, QPointF* greenPoint, QPointF* bluePoint, int transferFunction, float gamma) {
-	return new QColorSpace(*whitePoint, *redPoint, *greenPoint, *bluePoint, static_cast<QColorSpace::TransferFunction>(transferFunction), static_cast<float>(gamma));
+void QColorSpace_new8(QPointF* whitePoint, QPointF* redPoint, QPointF* greenPoint, QPointF* bluePoint, int transferFunction, float gamma, QColorSpace** outptr_QColorSpace) {
+	QColorSpace* ret = new QColorSpace(*whitePoint, *redPoint, *greenPoint, *bluePoint, static_cast<QColorSpace::TransferFunction>(transferFunction), static_cast<float>(gamma));
+	*outptr_QColorSpace = ret;
 }
 
 void QColorSpace_OperatorAssign(QColorSpace* self, QColorSpace* colorSpace) {
@@ -106,7 +114,11 @@ QColorSpace* QColorSpace_WithTransferFunction2(const QColorSpace* self, int tran
 	return new QColorSpace(self->withTransferFunction(static_cast<QColorSpace::TransferFunction>(transferFunction), static_cast<float>(gamma)));
 }
 
-void QColorSpace_Delete(QColorSpace* self) {
-	delete self;
+void QColorSpace_Delete(QColorSpace* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QColorSpace*>( self );
+	} else {
+		delete self;
+	}
 }
 

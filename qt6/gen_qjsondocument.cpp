@@ -23,24 +23,32 @@ struct miqt_string QJsonParseError_ErrorString(const QJsonParseError* self) {
 	return _ms;
 }
 
-void QJsonParseError_Delete(QJsonParseError* self) {
-	delete self;
+void QJsonParseError_Delete(QJsonParseError* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QJsonParseError*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QJsonDocument* QJsonDocument_new() {
-	return new QJsonDocument();
+void QJsonDocument_new(QJsonDocument** outptr_QJsonDocument) {
+	QJsonDocument* ret = new QJsonDocument();
+	*outptr_QJsonDocument = ret;
 }
 
-QJsonDocument* QJsonDocument_new2(QJsonObject* object) {
-	return new QJsonDocument(*object);
+void QJsonDocument_new2(QJsonObject* object, QJsonDocument** outptr_QJsonDocument) {
+	QJsonDocument* ret = new QJsonDocument(*object);
+	*outptr_QJsonDocument = ret;
 }
 
-QJsonDocument* QJsonDocument_new3(QJsonArray* array) {
-	return new QJsonDocument(*array);
+void QJsonDocument_new3(QJsonArray* array, QJsonDocument** outptr_QJsonDocument) {
+	QJsonDocument* ret = new QJsonDocument(*array);
+	*outptr_QJsonDocument = ret;
 }
 
-QJsonDocument* QJsonDocument_new4(QJsonDocument* other) {
-	return new QJsonDocument(*other);
+void QJsonDocument_new4(QJsonDocument* other, QJsonDocument** outptr_QJsonDocument) {
+	QJsonDocument* ret = new QJsonDocument(*other);
+	*outptr_QJsonDocument = ret;
 }
 
 void QJsonDocument_OperatorAssign(QJsonDocument* self, QJsonDocument* other) {
@@ -136,7 +144,11 @@ struct miqt_string QJsonDocument_ToJson1(const QJsonDocument* self, int format) 
 	return _ms;
 }
 
-void QJsonDocument_Delete(QJsonDocument* self) {
-	delete self;
+void QJsonDocument_Delete(QJsonDocument* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QJsonDocument*>( self );
+	} else {
+		delete self;
+	}
 }
 

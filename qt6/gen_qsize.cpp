@@ -6,16 +6,19 @@
 #include "gen_qsize.h"
 #include "_cgo_export.h"
 
-QSize* QSize_new() {
-	return new QSize();
+void QSize_new(QSize** outptr_QSize) {
+	QSize* ret = new QSize();
+	*outptr_QSize = ret;
 }
 
-QSize* QSize_new2(int w, int h) {
-	return new QSize(static_cast<int>(w), static_cast<int>(h));
+void QSize_new2(int w, int h, QSize** outptr_QSize) {
+	QSize* ret = new QSize(static_cast<int>(w), static_cast<int>(h));
+	*outptr_QSize = ret;
 }
 
-QSize* QSize_new3(QSize* param1) {
-	return new QSize(*param1);
+void QSize_new3(QSize* param1, QSize** outptr_QSize) {
+	QSize* ret = new QSize(*param1);
+	*outptr_QSize = ret;
 }
 
 bool QSize_IsNull(const QSize* self) {
@@ -114,24 +117,32 @@ QSizeF* QSize_ToSizeF(const QSize* self) {
 	return new QSizeF(self->toSizeF());
 }
 
-void QSize_Delete(QSize* self) {
-	delete self;
+void QSize_Delete(QSize* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QSize*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QSizeF* QSizeF_new() {
-	return new QSizeF();
+void QSizeF_new(QSizeF** outptr_QSizeF) {
+	QSizeF* ret = new QSizeF();
+	*outptr_QSizeF = ret;
 }
 
-QSizeF* QSizeF_new2(QSize* sz) {
-	return new QSizeF(*sz);
+void QSizeF_new2(QSize* sz, QSizeF** outptr_QSizeF) {
+	QSizeF* ret = new QSizeF(*sz);
+	*outptr_QSizeF = ret;
 }
 
-QSizeF* QSizeF_new3(double w, double h) {
-	return new QSizeF(static_cast<qreal>(w), static_cast<qreal>(h));
+void QSizeF_new3(double w, double h, QSizeF** outptr_QSizeF) {
+	QSizeF* ret = new QSizeF(static_cast<qreal>(w), static_cast<qreal>(h));
+	*outptr_QSizeF = ret;
 }
 
-QSizeF* QSizeF_new4(QSizeF* param1) {
-	return new QSizeF(*param1);
+void QSizeF_new4(QSizeF* param1, QSizeF** outptr_QSizeF) {
+	QSizeF* ret = new QSizeF(*param1);
+	*outptr_QSizeF = ret;
 }
 
 bool QSizeF_IsNull(const QSizeF* self) {
@@ -232,7 +243,11 @@ QSize* QSizeF_ToSize(const QSizeF* self) {
 	return new QSize(self->toSize());
 }
 
-void QSizeF_Delete(QSizeF* self) {
-	delete self;
+void QSizeF_Delete(QSizeF* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QSizeF*>( self );
+	} else {
+		delete self;
+	}
 }
 

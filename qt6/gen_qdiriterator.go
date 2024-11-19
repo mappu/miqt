@@ -22,7 +22,8 @@ const (
 )
 
 type QDirIterator struct {
-	h *C.QDirIterator
+	h          *C.QDirIterator
+	isSubclass bool
 }
 
 func (this *QDirIterator) cPointer() *C.QDirIterator {
@@ -39,6 +40,7 @@ func (this *QDirIterator) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQDirIterator constructs the type using only CGO pointers.
 func newQDirIterator(h *C.QDirIterator) *QDirIterator {
 	if h == nil {
 		return nil
@@ -46,14 +48,23 @@ func newQDirIterator(h *C.QDirIterator) *QDirIterator {
 	return &QDirIterator{h: h}
 }
 
+// UnsafeNewQDirIterator constructs the type using only unsafe pointers.
 func UnsafeNewQDirIterator(h unsafe.Pointer) *QDirIterator {
-	return newQDirIterator((*C.QDirIterator)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QDirIterator{h: (*C.QDirIterator)(h)}
 }
 
 // NewQDirIterator constructs a new QDirIterator object.
 func NewQDirIterator(dir *QDir) *QDirIterator {
-	ret := C.QDirIterator_new(dir.cPointer())
-	return newQDirIterator(ret)
+	var outptr_QDirIterator *C.QDirIterator = nil
+
+	C.QDirIterator_new(dir.cPointer(), &outptr_QDirIterator)
+	ret := newQDirIterator(outptr_QDirIterator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDirIterator2 constructs a new QDirIterator object.
@@ -62,8 +73,12 @@ func NewQDirIterator2(path string) *QDirIterator {
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	ret := C.QDirIterator_new2(path_ms)
-	return newQDirIterator(ret)
+	var outptr_QDirIterator *C.QDirIterator = nil
+
+	C.QDirIterator_new2(path_ms, &outptr_QDirIterator)
+	ret := newQDirIterator(outptr_QDirIterator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDirIterator3 constructs a new QDirIterator object.
@@ -72,8 +87,12 @@ func NewQDirIterator3(path string, filter QDir__Filter) *QDirIterator {
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	ret := C.QDirIterator_new3(path_ms, (C.int)(filter))
-	return newQDirIterator(ret)
+	var outptr_QDirIterator *C.QDirIterator = nil
+
+	C.QDirIterator_new3(path_ms, (C.int)(filter), &outptr_QDirIterator)
+	ret := newQDirIterator(outptr_QDirIterator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDirIterator4 constructs a new QDirIterator object.
@@ -92,14 +111,22 @@ func NewQDirIterator4(path string, nameFilters []string) *QDirIterator {
 		nameFilters_CArray[i] = nameFilters_i_ms
 	}
 	nameFilters_ma := C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
-	ret := C.QDirIterator_new4(path_ms, nameFilters_ma)
-	return newQDirIterator(ret)
+	var outptr_QDirIterator *C.QDirIterator = nil
+
+	C.QDirIterator_new4(path_ms, nameFilters_ma, &outptr_QDirIterator)
+	ret := newQDirIterator(outptr_QDirIterator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDirIterator5 constructs a new QDirIterator object.
 func NewQDirIterator5(dir *QDir, flags QDirIterator__IteratorFlag) *QDirIterator {
-	ret := C.QDirIterator_new5(dir.cPointer(), (C.int)(flags))
-	return newQDirIterator(ret)
+	var outptr_QDirIterator *C.QDirIterator = nil
+
+	C.QDirIterator_new5(dir.cPointer(), (C.int)(flags), &outptr_QDirIterator)
+	ret := newQDirIterator(outptr_QDirIterator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDirIterator6 constructs a new QDirIterator object.
@@ -108,8 +135,12 @@ func NewQDirIterator6(path string, flags QDirIterator__IteratorFlag) *QDirIterat
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	ret := C.QDirIterator_new6(path_ms, (C.int)(flags))
-	return newQDirIterator(ret)
+	var outptr_QDirIterator *C.QDirIterator = nil
+
+	C.QDirIterator_new6(path_ms, (C.int)(flags), &outptr_QDirIterator)
+	ret := newQDirIterator(outptr_QDirIterator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDirIterator7 constructs a new QDirIterator object.
@@ -118,8 +149,12 @@ func NewQDirIterator7(path string, filter QDir__Filter, flags QDirIterator__Iter
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	ret := C.QDirIterator_new7(path_ms, (C.int)(filter), (C.int)(flags))
-	return newQDirIterator(ret)
+	var outptr_QDirIterator *C.QDirIterator = nil
+
+	C.QDirIterator_new7(path_ms, (C.int)(filter), (C.int)(flags), &outptr_QDirIterator)
+	ret := newQDirIterator(outptr_QDirIterator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDirIterator8 constructs a new QDirIterator object.
@@ -138,8 +173,12 @@ func NewQDirIterator8(path string, nameFilters []string, filters QDir__Filter) *
 		nameFilters_CArray[i] = nameFilters_i_ms
 	}
 	nameFilters_ma := C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
-	ret := C.QDirIterator_new8(path_ms, nameFilters_ma, (C.int)(filters))
-	return newQDirIterator(ret)
+	var outptr_QDirIterator *C.QDirIterator = nil
+
+	C.QDirIterator_new8(path_ms, nameFilters_ma, (C.int)(filters), &outptr_QDirIterator)
+	ret := newQDirIterator(outptr_QDirIterator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDirIterator9 constructs a new QDirIterator object.
@@ -158,8 +197,12 @@ func NewQDirIterator9(path string, nameFilters []string, filters QDir__Filter, f
 		nameFilters_CArray[i] = nameFilters_i_ms
 	}
 	nameFilters_ma := C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
-	ret := C.QDirIterator_new9(path_ms, nameFilters_ma, (C.int)(filters), (C.int)(flags))
-	return newQDirIterator(ret)
+	var outptr_QDirIterator *C.QDirIterator = nil
+
+	C.QDirIterator_new9(path_ms, nameFilters_ma, (C.int)(filters), (C.int)(flags), &outptr_QDirIterator)
+	ret := newQDirIterator(outptr_QDirIterator)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QDirIterator) Next() string {
@@ -210,7 +253,7 @@ func (this *QDirIterator) Path() string {
 
 // Delete this object from C++ memory.
 func (this *QDirIterator) Delete() {
-	C.QDirIterator_Delete(this.h)
+	C.QDirIterator_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

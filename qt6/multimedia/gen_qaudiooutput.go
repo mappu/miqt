@@ -16,7 +16,8 @@ import (
 )
 
 type QAudioOutput struct {
-	h *C.QAudioOutput
+	h          *C.QAudioOutput
+	isSubclass bool
 	*qt6.QObject
 }
 
@@ -34,39 +35,67 @@ func (this *QAudioOutput) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAudioOutput(h *C.QAudioOutput) *QAudioOutput {
+// newQAudioOutput constructs the type using only CGO pointers.
+func newQAudioOutput(h *C.QAudioOutput, h_QObject *C.QObject) *QAudioOutput {
 	if h == nil {
 		return nil
 	}
-	return &QAudioOutput{h: h, QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QAudioOutput{h: h,
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
 }
 
-func UnsafeNewQAudioOutput(h unsafe.Pointer) *QAudioOutput {
-	return newQAudioOutput((*C.QAudioOutput)(h))
+// UnsafeNewQAudioOutput constructs the type using only unsafe pointers.
+func UnsafeNewQAudioOutput(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAudioOutput {
+	if h == nil {
+		return nil
+	}
+
+	return &QAudioOutput{h: (*C.QAudioOutput)(h),
+		QObject: qt6.UnsafeNewQObject(h_QObject)}
 }
 
 // NewQAudioOutput constructs a new QAudioOutput object.
 func NewQAudioOutput() *QAudioOutput {
-	ret := C.QAudioOutput_new()
-	return newQAudioOutput(ret)
+	var outptr_QAudioOutput *C.QAudioOutput = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QAudioOutput_new(&outptr_QAudioOutput, &outptr_QObject)
+	ret := newQAudioOutput(outptr_QAudioOutput, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAudioOutput2 constructs a new QAudioOutput object.
 func NewQAudioOutput2(device *QAudioDevice) *QAudioOutput {
-	ret := C.QAudioOutput_new2(device.cPointer())
-	return newQAudioOutput(ret)
+	var outptr_QAudioOutput *C.QAudioOutput = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QAudioOutput_new2(device.cPointer(), &outptr_QAudioOutput, &outptr_QObject)
+	ret := newQAudioOutput(outptr_QAudioOutput, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAudioOutput3 constructs a new QAudioOutput object.
 func NewQAudioOutput3(parent *qt6.QObject) *QAudioOutput {
-	ret := C.QAudioOutput_new3((*C.QObject)(parent.UnsafePointer()))
-	return newQAudioOutput(ret)
+	var outptr_QAudioOutput *C.QAudioOutput = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QAudioOutput_new3((*C.QObject)(parent.UnsafePointer()), &outptr_QAudioOutput, &outptr_QObject)
+	ret := newQAudioOutput(outptr_QAudioOutput, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAudioOutput4 constructs a new QAudioOutput object.
 func NewQAudioOutput4(device *QAudioDevice, parent *qt6.QObject) *QAudioOutput {
-	ret := C.QAudioOutput_new4(device.cPointer(), (*C.QObject)(parent.UnsafePointer()))
-	return newQAudioOutput(ret)
+	var outptr_QAudioOutput *C.QAudioOutput = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QAudioOutput_new4(device.cPointer(), (*C.QObject)(parent.UnsafePointer()), &outptr_QAudioOutput, &outptr_QObject)
+	ret := newQAudioOutput(outptr_QAudioOutput, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QAudioOutput) MetaObject() *qt6.QMetaObject {
@@ -194,9 +223,175 @@ func QAudioOutput_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QAudioOutput) callVirtualBase_Event(event *qt6.QEvent) bool {
+
+	return (bool)(C.QAudioOutput_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QAudioOutput) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+	C.QAudioOutput_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAudioOutput_Event
+func miqt_exec_callback_QAudioOutput_Event(self *C.QAudioOutput, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QAudioOutput{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QAudioOutput) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+
+	return (bool)(C.QAudioOutput_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QAudioOutput) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	C.QAudioOutput_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAudioOutput_EventFilter
+func miqt_exec_callback_QAudioOutput_EventFilter(self *C.QAudioOutput, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QAudioOutput{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QAudioOutput) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+
+	C.QAudioOutput_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+
+}
+func (this *QAudioOutput) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	C.QAudioOutput_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAudioOutput_TimerEvent
+func miqt_exec_callback_QAudioOutput_TimerEvent(self *C.QAudioOutput, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QAudioOutput{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QAudioOutput) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+
+	C.QAudioOutput_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+
+}
+func (this *QAudioOutput) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	C.QAudioOutput_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAudioOutput_ChildEvent
+func miqt_exec_callback_QAudioOutput_ChildEvent(self *C.QAudioOutput, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QAudioOutput{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QAudioOutput) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+
+	C.QAudioOutput_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+
+}
+func (this *QAudioOutput) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	C.QAudioOutput_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAudioOutput_CustomEvent
+func miqt_exec_callback_QAudioOutput_CustomEvent(self *C.QAudioOutput, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent), event *qt6.QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QAudioOutput{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QAudioOutput) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+
+	C.QAudioOutput_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QAudioOutput) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	C.QAudioOutput_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAudioOutput_ConnectNotify
+func miqt_exec_callback_QAudioOutput_ConnectNotify(self *C.QAudioOutput, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QAudioOutput{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QAudioOutput) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+
+	C.QAudioOutput_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QAudioOutput) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	C.QAudioOutput_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAudioOutput_DisconnectNotify
+func miqt_exec_callback_QAudioOutput_DisconnectNotify(self *C.QAudioOutput, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QAudioOutput{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QAudioOutput) Delete() {
-	C.QAudioOutput_Delete(this.h)
+	C.QAudioOutput_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

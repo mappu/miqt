@@ -14,7 +14,8 @@ import (
 )
 
 type QAccessibleBridge struct {
-	h *C.QAccessibleBridge
+	h          *C.QAccessibleBridge
+	isSubclass bool
 }
 
 func (this *QAccessibleBridge) cPointer() *C.QAccessibleBridge {
@@ -31,6 +32,7 @@ func (this *QAccessibleBridge) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAccessibleBridge constructs the type using only CGO pointers.
 func newQAccessibleBridge(h *C.QAccessibleBridge) *QAccessibleBridge {
 	if h == nil {
 		return nil
@@ -38,8 +40,13 @@ func newQAccessibleBridge(h *C.QAccessibleBridge) *QAccessibleBridge {
 	return &QAccessibleBridge{h: h}
 }
 
+// UnsafeNewQAccessibleBridge constructs the type using only unsafe pointers.
 func UnsafeNewQAccessibleBridge(h unsafe.Pointer) *QAccessibleBridge {
-	return newQAccessibleBridge((*C.QAccessibleBridge)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessibleBridge{h: (*C.QAccessibleBridge)(h)}
 }
 
 func (this *QAccessibleBridge) SetRootObject(rootObject *QAccessibleInterface) {
@@ -56,7 +63,7 @@ func (this *QAccessibleBridge) OperatorAssign(param1 *QAccessibleBridge) {
 
 // Delete this object from C++ memory.
 func (this *QAccessibleBridge) Delete() {
-	C.QAccessibleBridge_Delete(this.h)
+	C.QAccessibleBridge_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -69,7 +76,8 @@ func (this *QAccessibleBridge) GoGC() {
 }
 
 type QAccessibleBridgePlugin struct {
-	h *C.QAccessibleBridgePlugin
+	h          *C.QAccessibleBridgePlugin
+	isSubclass bool
 	*QObject
 }
 
@@ -87,15 +95,23 @@ func (this *QAccessibleBridgePlugin) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAccessibleBridgePlugin(h *C.QAccessibleBridgePlugin) *QAccessibleBridgePlugin {
+// newQAccessibleBridgePlugin constructs the type using only CGO pointers.
+func newQAccessibleBridgePlugin(h *C.QAccessibleBridgePlugin, h_QObject *C.QObject) *QAccessibleBridgePlugin {
 	if h == nil {
 		return nil
 	}
-	return &QAccessibleBridgePlugin{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QAccessibleBridgePlugin{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQAccessibleBridgePlugin(h unsafe.Pointer) *QAccessibleBridgePlugin {
-	return newQAccessibleBridgePlugin((*C.QAccessibleBridgePlugin)(h))
+// UnsafeNewQAccessibleBridgePlugin constructs the type using only unsafe pointers.
+func UnsafeNewQAccessibleBridgePlugin(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAccessibleBridgePlugin {
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessibleBridgePlugin{h: (*C.QAccessibleBridgePlugin)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QAccessibleBridgePlugin) MetaObject() *QMetaObject {
@@ -180,7 +196,7 @@ func QAccessibleBridgePlugin_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAccessibleBridgePlugin) Delete() {
-	C.QAccessibleBridgePlugin_Delete(this.h)
+	C.QAccessibleBridgePlugin_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

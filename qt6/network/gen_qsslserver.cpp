@@ -9,16 +9,103 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QTcpServer>
+#include <QTcpSocket>
 #include <qsslserver.h>
 #include "gen_qsslserver.h"
 #include "_cgo_export.h"
 
-QSslServer* QSslServer_new() {
-	return new QSslServer();
+class MiqtVirtualQSslServer : public virtual QSslServer {
+public:
+
+	MiqtVirtualQSslServer(): QSslServer() {};
+	MiqtVirtualQSslServer(QObject* parent): QSslServer(parent) {};
+
+	virtual ~MiqtVirtualQSslServer() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__IncomingConnection = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void incomingConnection(qintptr socket) override {
+		if (handle__IncomingConnection == 0) {
+			QSslServer::incomingConnection(socket);
+			return;
+		}
+		
+		qintptr socket_ret = socket;
+		intptr_t sigval1 = static_cast<intptr_t>(socket_ret);
+
+		miqt_exec_callback_QSslServer_IncomingConnection(this, handle__IncomingConnection, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_IncomingConnection(intptr_t socket) {
+
+		QSslServer::incomingConnection((qintptr)(socket));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HasPendingConnections = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool hasPendingConnections() const override {
+		if (handle__HasPendingConnections == 0) {
+			return QSslServer::hasPendingConnections();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QSslServer_HasPendingConnections(const_cast<MiqtVirtualQSslServer*>(this), handle__HasPendingConnections);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_HasPendingConnections() const {
+
+		return QSslServer::hasPendingConnections();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__NextPendingConnection = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QTcpSocket* nextPendingConnection() override {
+		if (handle__NextPendingConnection == 0) {
+			return QSslServer::nextPendingConnection();
+		}
+		
+
+		QTcpSocket* callback_return_value = miqt_exec_callback_QSslServer_NextPendingConnection(this, handle__NextPendingConnection);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QTcpSocket* virtualbase_NextPendingConnection() {
+
+		return QSslServer::nextPendingConnection();
+
+	}
+
+};
+
+void QSslServer_new(QSslServer** outptr_QSslServer, QTcpServer** outptr_QTcpServer, QObject** outptr_QObject) {
+	MiqtVirtualQSslServer* ret = new MiqtVirtualQSslServer();
+	*outptr_QSslServer = ret;
+	*outptr_QTcpServer = static_cast<QTcpServer*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QSslServer* QSslServer_new2(QObject* parent) {
-	return new QSslServer(parent);
+void QSslServer_new2(QObject* parent, QSslServer** outptr_QSslServer, QTcpServer** outptr_QTcpServer, QObject** outptr_QObject) {
+	MiqtVirtualQSslServer* ret = new MiqtVirtualQSslServer(parent);
+	*outptr_QSslServer = ret;
+	*outptr_QTcpServer = static_cast<QTcpServer*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QSslServer_MetaObject(const QSslServer* self) {
@@ -67,7 +154,7 @@ void QSslServer_SslErrors(QSslServer* self, QSslSocket* socket, struct miqt_arra
 }
 
 void QSslServer_connect_SslErrors(QSslServer* self, intptr_t slot) {
-	QSslServer::connect(self, static_cast<void (QSslServer::*)(QSslSocket*, const QList<QSslError>&)>(&QSslServer::sslErrors), self, [=](QSslSocket* socket, const QList<QSslError>& errors) {
+	MiqtVirtualQSslServer::connect(self, static_cast<void (QSslServer::*)(QSslSocket*, const QList<QSslError>&)>(&QSslServer::sslErrors), self, [=](QSslSocket* socket, const QList<QSslError>& errors) {
 		QSslSocket* sigval1 = socket;
 		const QList<QSslError>& errors_ret = errors;
 		// Convert QList<> from C++ memory to manually-managed C memory
@@ -88,7 +175,7 @@ void QSslServer_PeerVerifyError(QSslServer* self, QSslSocket* socket, QSslError*
 }
 
 void QSslServer_connect_PeerVerifyError(QSslServer* self, intptr_t slot) {
-	QSslServer::connect(self, static_cast<void (QSslServer::*)(QSslSocket*, const QSslError&)>(&QSslServer::peerVerifyError), self, [=](QSslSocket* socket, const QSslError& error) {
+	MiqtVirtualQSslServer::connect(self, static_cast<void (QSslServer::*)(QSslSocket*, const QSslError&)>(&QSslServer::peerVerifyError), self, [=](QSslSocket* socket, const QSslError& error) {
 		QSslSocket* sigval1 = socket;
 		const QSslError& error_ret = error;
 		// Cast returned reference into pointer
@@ -102,7 +189,7 @@ void QSslServer_ErrorOccurred(QSslServer* self, QSslSocket* socket, int error) {
 }
 
 void QSslServer_connect_ErrorOccurred(QSslServer* self, intptr_t slot) {
-	QSslServer::connect(self, static_cast<void (QSslServer::*)(QSslSocket*, QAbstractSocket::SocketError)>(&QSslServer::errorOccurred), self, [=](QSslSocket* socket, QAbstractSocket::SocketError error) {
+	MiqtVirtualQSslServer::connect(self, static_cast<void (QSslServer::*)(QSslSocket*, QAbstractSocket::SocketError)>(&QSslServer::errorOccurred), self, [=](QSslSocket* socket, QAbstractSocket::SocketError error) {
 		QSslSocket* sigval1 = socket;
 		QAbstractSocket::SocketError error_ret = error;
 		int sigval2 = static_cast<int>(error_ret);
@@ -115,7 +202,7 @@ void QSslServer_PreSharedKeyAuthenticationRequired(QSslServer* self, QSslSocket*
 }
 
 void QSslServer_connect_PreSharedKeyAuthenticationRequired(QSslServer* self, intptr_t slot) {
-	QSslServer::connect(self, static_cast<void (QSslServer::*)(QSslSocket*, QSslPreSharedKeyAuthenticator*)>(&QSslServer::preSharedKeyAuthenticationRequired), self, [=](QSslSocket* socket, QSslPreSharedKeyAuthenticator* authenticator) {
+	MiqtVirtualQSslServer::connect(self, static_cast<void (QSslServer::*)(QSslSocket*, QSslPreSharedKeyAuthenticator*)>(&QSslServer::preSharedKeyAuthenticationRequired), self, [=](QSslSocket* socket, QSslPreSharedKeyAuthenticator* authenticator) {
 		QSslSocket* sigval1 = socket;
 		QSslPreSharedKeyAuthenticator* sigval2 = authenticator;
 		miqt_exec_callback_QSslServer_PreSharedKeyAuthenticationRequired(slot, sigval1, sigval2);
@@ -128,7 +215,7 @@ void QSslServer_AlertSent(QSslServer* self, QSslSocket* socket, int level, int t
 }
 
 void QSslServer_connect_AlertSent(QSslServer* self, intptr_t slot) {
-	QSslServer::connect(self, static_cast<void (QSslServer::*)(QSslSocket*, QSsl::AlertLevel, QSsl::AlertType, const QString&)>(&QSslServer::alertSent), self, [=](QSslSocket* socket, QSsl::AlertLevel level, QSsl::AlertType typeVal, const QString& description) {
+	MiqtVirtualQSslServer::connect(self, static_cast<void (QSslServer::*)(QSslSocket*, QSsl::AlertLevel, QSsl::AlertType, const QString&)>(&QSslServer::alertSent), self, [=](QSslSocket* socket, QSsl::AlertLevel level, QSsl::AlertType typeVal, const QString& description) {
 		QSslSocket* sigval1 = socket;
 		QSsl::AlertLevel level_ret = level;
 		int sigval2 = static_cast<int>(level_ret);
@@ -152,7 +239,7 @@ void QSslServer_AlertReceived(QSslServer* self, QSslSocket* socket, int level, i
 }
 
 void QSslServer_connect_AlertReceived(QSslServer* self, intptr_t slot) {
-	QSslServer::connect(self, static_cast<void (QSslServer::*)(QSslSocket*, QSsl::AlertLevel, QSsl::AlertType, const QString&)>(&QSslServer::alertReceived), self, [=](QSslSocket* socket, QSsl::AlertLevel level, QSsl::AlertType typeVal, const QString& description) {
+	MiqtVirtualQSslServer::connect(self, static_cast<void (QSslServer::*)(QSslSocket*, QSsl::AlertLevel, QSsl::AlertType, const QString&)>(&QSslServer::alertReceived), self, [=](QSslSocket* socket, QSsl::AlertLevel level, QSsl::AlertType typeVal, const QString& description) {
 		QSslSocket* sigval1 = socket;
 		QSsl::AlertLevel level_ret = level;
 		int sigval2 = static_cast<int>(level_ret);
@@ -175,7 +262,7 @@ void QSslServer_HandshakeInterruptedOnError(QSslServer* self, QSslSocket* socket
 }
 
 void QSslServer_connect_HandshakeInterruptedOnError(QSslServer* self, intptr_t slot) {
-	QSslServer::connect(self, static_cast<void (QSslServer::*)(QSslSocket*, const QSslError&)>(&QSslServer::handshakeInterruptedOnError), self, [=](QSslSocket* socket, const QSslError& error) {
+	MiqtVirtualQSslServer::connect(self, static_cast<void (QSslServer::*)(QSslSocket*, const QSslError&)>(&QSslServer::handshakeInterruptedOnError), self, [=](QSslSocket* socket, const QSslError& error) {
 		QSslSocket* sigval1 = socket;
 		const QSslError& error_ret = error;
 		// Cast returned reference into pointer
@@ -189,7 +276,7 @@ void QSslServer_StartedEncryptionHandshake(QSslServer* self, QSslSocket* socket)
 }
 
 void QSslServer_connect_StartedEncryptionHandshake(QSslServer* self, intptr_t slot) {
-	QSslServer::connect(self, static_cast<void (QSslServer::*)(QSslSocket*)>(&QSslServer::startedEncryptionHandshake), self, [=](QSslSocket* socket) {
+	MiqtVirtualQSslServer::connect(self, static_cast<void (QSslServer::*)(QSslSocket*)>(&QSslServer::startedEncryptionHandshake), self, [=](QSslSocket* socket) {
 		QSslSocket* sigval1 = socket;
 		miqt_exec_callback_QSslServer_StartedEncryptionHandshake(slot, sigval1);
 	});
@@ -217,7 +304,35 @@ struct miqt_string QSslServer_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QSslServer_Delete(QSslServer* self) {
-	delete self;
+void QSslServer_override_virtual_IncomingConnection(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQSslServer*>( (QSslServer*)(self) )->handle__IncomingConnection = slot;
+}
+
+void QSslServer_virtualbase_IncomingConnection(void* self, intptr_t socket) {
+	( (MiqtVirtualQSslServer*)(self) )->virtualbase_IncomingConnection(socket);
+}
+
+void QSslServer_override_virtual_HasPendingConnections(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQSslServer*>( (QSslServer*)(self) )->handle__HasPendingConnections = slot;
+}
+
+bool QSslServer_virtualbase_HasPendingConnections(const void* self) {
+	return ( (const MiqtVirtualQSslServer*)(self) )->virtualbase_HasPendingConnections();
+}
+
+void QSslServer_override_virtual_NextPendingConnection(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQSslServer*>( (QSslServer*)(self) )->handle__NextPendingConnection = slot;
+}
+
+QTcpSocket* QSslServer_virtualbase_NextPendingConnection(void* self) {
+	return ( (MiqtVirtualQSslServer*)(self) )->virtualbase_NextPendingConnection();
+}
+
+void QSslServer_Delete(QSslServer* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQSslServer*>( self );
+	} else {
+		delete self;
+	}
 }
 

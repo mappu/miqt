@@ -16,7 +16,8 @@ import (
 )
 
 type QMediaContent struct {
-	h *C.QMediaContent
+	h          *C.QMediaContent
+	isSubclass bool
 }
 
 func (this *QMediaContent) cPointer() *C.QMediaContent {
@@ -33,6 +34,7 @@ func (this *QMediaContent) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQMediaContent constructs the type using only CGO pointers.
 func newQMediaContent(h *C.QMediaContent) *QMediaContent {
 	if h == nil {
 		return nil
@@ -40,32 +42,53 @@ func newQMediaContent(h *C.QMediaContent) *QMediaContent {
 	return &QMediaContent{h: h}
 }
 
+// UnsafeNewQMediaContent constructs the type using only unsafe pointers.
 func UnsafeNewQMediaContent(h unsafe.Pointer) *QMediaContent {
-	return newQMediaContent((*C.QMediaContent)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMediaContent{h: (*C.QMediaContent)(h)}
 }
 
 // NewQMediaContent constructs a new QMediaContent object.
 func NewQMediaContent() *QMediaContent {
-	ret := C.QMediaContent_new()
-	return newQMediaContent(ret)
+	var outptr_QMediaContent *C.QMediaContent = nil
+
+	C.QMediaContent_new(&outptr_QMediaContent)
+	ret := newQMediaContent(outptr_QMediaContent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMediaContent2 constructs a new QMediaContent object.
 func NewQMediaContent2(contentUrl *qt.QUrl) *QMediaContent {
-	ret := C.QMediaContent_new2((*C.QUrl)(contentUrl.UnsafePointer()))
-	return newQMediaContent(ret)
+	var outptr_QMediaContent *C.QMediaContent = nil
+
+	C.QMediaContent_new2((*C.QUrl)(contentUrl.UnsafePointer()), &outptr_QMediaContent)
+	ret := newQMediaContent(outptr_QMediaContent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMediaContent3 constructs a new QMediaContent object.
 func NewQMediaContent3(contentRequest *network.QNetworkRequest) *QMediaContent {
-	ret := C.QMediaContent_new3((*C.QNetworkRequest)(contentRequest.UnsafePointer()))
-	return newQMediaContent(ret)
+	var outptr_QMediaContent *C.QMediaContent = nil
+
+	C.QMediaContent_new3((*C.QNetworkRequest)(contentRequest.UnsafePointer()), &outptr_QMediaContent)
+	ret := newQMediaContent(outptr_QMediaContent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMediaContent4 constructs a new QMediaContent object.
 func NewQMediaContent4(contentResource *QMediaResource) *QMediaContent {
-	ret := C.QMediaContent_new4(contentResource.cPointer())
-	return newQMediaContent(ret)
+	var outptr_QMediaContent *C.QMediaContent = nil
+
+	C.QMediaContent_new4(contentResource.cPointer(), &outptr_QMediaContent)
+	ret := newQMediaContent(outptr_QMediaContent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMediaContent5 constructs a new QMediaContent object.
@@ -76,32 +99,52 @@ func NewQMediaContent5(resources []QMediaResource) *QMediaContent {
 		resources_CArray[i] = resources[i].cPointer()
 	}
 	resources_ma := C.struct_miqt_array{len: C.size_t(len(resources)), data: unsafe.Pointer(resources_CArray)}
-	ret := C.QMediaContent_new5(resources_ma)
-	return newQMediaContent(ret)
+	var outptr_QMediaContent *C.QMediaContent = nil
+
+	C.QMediaContent_new5(resources_ma, &outptr_QMediaContent)
+	ret := newQMediaContent(outptr_QMediaContent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMediaContent6 constructs a new QMediaContent object.
 func NewQMediaContent6(other *QMediaContent) *QMediaContent {
-	ret := C.QMediaContent_new6(other.cPointer())
-	return newQMediaContent(ret)
+	var outptr_QMediaContent *C.QMediaContent = nil
+
+	C.QMediaContent_new6(other.cPointer(), &outptr_QMediaContent)
+	ret := newQMediaContent(outptr_QMediaContent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMediaContent7 constructs a new QMediaContent object.
 func NewQMediaContent7(playlist *QMediaPlaylist) *QMediaContent {
-	ret := C.QMediaContent_new7(playlist.cPointer())
-	return newQMediaContent(ret)
+	var outptr_QMediaContent *C.QMediaContent = nil
+
+	C.QMediaContent_new7(playlist.cPointer(), &outptr_QMediaContent)
+	ret := newQMediaContent(outptr_QMediaContent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMediaContent8 constructs a new QMediaContent object.
 func NewQMediaContent8(playlist *QMediaPlaylist, contentUrl *qt.QUrl) *QMediaContent {
-	ret := C.QMediaContent_new8(playlist.cPointer(), (*C.QUrl)(contentUrl.UnsafePointer()))
-	return newQMediaContent(ret)
+	var outptr_QMediaContent *C.QMediaContent = nil
+
+	C.QMediaContent_new8(playlist.cPointer(), (*C.QUrl)(contentUrl.UnsafePointer()), &outptr_QMediaContent)
+	ret := newQMediaContent(outptr_QMediaContent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMediaContent9 constructs a new QMediaContent object.
 func NewQMediaContent9(playlist *QMediaPlaylist, contentUrl *qt.QUrl, takeOwnership bool) *QMediaContent {
-	ret := C.QMediaContent_new9(playlist.cPointer(), (*C.QUrl)(contentUrl.UnsafePointer()), (C.bool)(takeOwnership))
-	return newQMediaContent(ret)
+	var outptr_QMediaContent *C.QMediaContent = nil
+
+	C.QMediaContent_new9(playlist.cPointer(), (*C.QUrl)(contentUrl.UnsafePointer()), (C.bool)(takeOwnership), &outptr_QMediaContent)
+	ret := newQMediaContent(outptr_QMediaContent)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QMediaContent) OperatorAssign(other *QMediaContent) {
@@ -162,12 +205,12 @@ func (this *QMediaContent) Resources() []QMediaResource {
 }
 
 func (this *QMediaContent) Playlist() *QMediaPlaylist {
-	return UnsafeNewQMediaPlaylist(unsafe.Pointer(C.QMediaContent_Playlist(this.h)))
+	return UnsafeNewQMediaPlaylist(unsafe.Pointer(C.QMediaContent_Playlist(this.h)), nil, nil)
 }
 
 // Delete this object from C++ memory.
 func (this *QMediaContent) Delete() {
-	C.QMediaContent_Delete(this.h)
+	C.QMediaContent_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

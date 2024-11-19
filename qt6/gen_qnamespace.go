@@ -1674,7 +1674,8 @@ const (
 )
 
 type Disambiguated_t struct {
-	h *C.Disambiguated_t
+	h          *C.Disambiguated_t
+	isSubclass bool
 }
 
 func (this *Disambiguated_t) cPointer() *C.Disambiguated_t {
@@ -1691,6 +1692,7 @@ func (this *Disambiguated_t) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newDisambiguated_t constructs the type using only CGO pointers.
 func newDisambiguated_t(h *C.Disambiguated_t) *Disambiguated_t {
 	if h == nil {
 		return nil
@@ -1698,25 +1700,38 @@ func newDisambiguated_t(h *C.Disambiguated_t) *Disambiguated_t {
 	return &Disambiguated_t{h: h}
 }
 
+// UnsafeNewDisambiguated_t constructs the type using only unsafe pointers.
 func UnsafeNewDisambiguated_t(h unsafe.Pointer) *Disambiguated_t {
-	return newDisambiguated_t((*C.Disambiguated_t)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Disambiguated_t{h: (*C.Disambiguated_t)(h)}
 }
 
 // NewDisambiguated_t constructs a new Qt::Disambiguated_t object.
 func NewDisambiguated_t() *Disambiguated_t {
-	ret := C.Disambiguated_t_new()
-	return newDisambiguated_t(ret)
+	var outptr_Disambiguated_t *C.Disambiguated_t = nil
+
+	C.Disambiguated_t_new(&outptr_Disambiguated_t)
+	ret := newDisambiguated_t(outptr_Disambiguated_t)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewDisambiguated_t2 constructs a new Qt::Disambiguated_t object.
 func NewDisambiguated_t2(param1 *Disambiguated_t) *Disambiguated_t {
-	ret := C.Disambiguated_t_new2(param1.cPointer())
-	return newDisambiguated_t(ret)
+	var outptr_Disambiguated_t *C.Disambiguated_t = nil
+
+	C.Disambiguated_t_new2(param1.cPointer(), &outptr_Disambiguated_t)
+	ret := newDisambiguated_t(outptr_Disambiguated_t)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *Disambiguated_t) Delete() {
-	C.Disambiguated_t_Delete(this.h)
+	C.Disambiguated_t_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1729,7 +1744,8 @@ func (this *Disambiguated_t) GoGC() {
 }
 
 type QInternal struct {
-	h *C.QInternal
+	h          *C.QInternal
+	isSubclass bool
 }
 
 func (this *QInternal) cPointer() *C.QInternal {
@@ -1746,6 +1762,7 @@ func (this *QInternal) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQInternal constructs the type using only CGO pointers.
 func newQInternal(h *C.QInternal) *QInternal {
 	if h == nil {
 		return nil
@@ -1753,13 +1770,18 @@ func newQInternal(h *C.QInternal) *QInternal {
 	return &QInternal{h: h}
 }
 
+// UnsafeNewQInternal constructs the type using only unsafe pointers.
 func UnsafeNewQInternal(h unsafe.Pointer) *QInternal {
-	return newQInternal((*C.QInternal)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QInternal{h: (*C.QInternal)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *QInternal) Delete() {
-	C.QInternal_Delete(this.h)
+	C.QInternal_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1772,7 +1794,8 @@ func (this *QInternal) GoGC() {
 }
 
 type QKeyCombination struct {
-	h *C.QKeyCombination
+	h          *C.QKeyCombination
+	isSubclass bool
 }
 
 func (this *QKeyCombination) cPointer() *C.QKeyCombination {
@@ -1789,6 +1812,7 @@ func (this *QKeyCombination) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQKeyCombination constructs the type using only CGO pointers.
 func newQKeyCombination(h *C.QKeyCombination) *QKeyCombination {
 	if h == nil {
 		return nil
@@ -1796,50 +1820,83 @@ func newQKeyCombination(h *C.QKeyCombination) *QKeyCombination {
 	return &QKeyCombination{h: h}
 }
 
+// UnsafeNewQKeyCombination constructs the type using only unsafe pointers.
 func UnsafeNewQKeyCombination(h unsafe.Pointer) *QKeyCombination {
-	return newQKeyCombination((*C.QKeyCombination)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QKeyCombination{h: (*C.QKeyCombination)(h)}
 }
 
 // NewQKeyCombination constructs a new QKeyCombination object.
 func NewQKeyCombination() *QKeyCombination {
-	ret := C.QKeyCombination_new()
-	return newQKeyCombination(ret)
+	var outptr_QKeyCombination *C.QKeyCombination = nil
+
+	C.QKeyCombination_new(&outptr_QKeyCombination)
+	ret := newQKeyCombination(outptr_QKeyCombination)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQKeyCombination2 constructs a new QKeyCombination object.
 func NewQKeyCombination2(modifiers Modifier) *QKeyCombination {
-	ret := C.QKeyCombination_new2((C.int)(modifiers))
-	return newQKeyCombination(ret)
+	var outptr_QKeyCombination *C.QKeyCombination = nil
+
+	C.QKeyCombination_new2((C.int)(modifiers), &outptr_QKeyCombination)
+	ret := newQKeyCombination(outptr_QKeyCombination)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQKeyCombination3 constructs a new QKeyCombination object.
 func NewQKeyCombination3(modifiers KeyboardModifier) *QKeyCombination {
-	ret := C.QKeyCombination_new3((C.int)(modifiers))
-	return newQKeyCombination(ret)
+	var outptr_QKeyCombination *C.QKeyCombination = nil
+
+	C.QKeyCombination_new3((C.int)(modifiers), &outptr_QKeyCombination)
+	ret := newQKeyCombination(outptr_QKeyCombination)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQKeyCombination4 constructs a new QKeyCombination object.
 func NewQKeyCombination4(param1 *QKeyCombination) *QKeyCombination {
-	ret := C.QKeyCombination_new4(param1.cPointer())
-	return newQKeyCombination(ret)
+	var outptr_QKeyCombination *C.QKeyCombination = nil
+
+	C.QKeyCombination_new4(param1.cPointer(), &outptr_QKeyCombination)
+	ret := newQKeyCombination(outptr_QKeyCombination)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQKeyCombination5 constructs a new QKeyCombination object.
 func NewQKeyCombination5(key Key) *QKeyCombination {
-	ret := C.QKeyCombination_new5((C.int)(key))
-	return newQKeyCombination(ret)
+	var outptr_QKeyCombination *C.QKeyCombination = nil
+
+	C.QKeyCombination_new5((C.int)(key), &outptr_QKeyCombination)
+	ret := newQKeyCombination(outptr_QKeyCombination)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQKeyCombination6 constructs a new QKeyCombination object.
 func NewQKeyCombination6(modifiers Modifier, key Key) *QKeyCombination {
-	ret := C.QKeyCombination_new6((C.int)(modifiers), (C.int)(key))
-	return newQKeyCombination(ret)
+	var outptr_QKeyCombination *C.QKeyCombination = nil
+
+	C.QKeyCombination_new6((C.int)(modifiers), (C.int)(key), &outptr_QKeyCombination)
+	ret := newQKeyCombination(outptr_QKeyCombination)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQKeyCombination7 constructs a new QKeyCombination object.
 func NewQKeyCombination7(modifiers KeyboardModifier, key Key) *QKeyCombination {
-	ret := C.QKeyCombination_new7((C.int)(modifiers), (C.int)(key))
-	return newQKeyCombination(ret)
+	var outptr_QKeyCombination *C.QKeyCombination = nil
+
+	C.QKeyCombination_new7((C.int)(modifiers), (C.int)(key), &outptr_QKeyCombination)
+	ret := newQKeyCombination(outptr_QKeyCombination)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QKeyCombination) KeyboardModifiers() KeyboardModifier {
@@ -1863,7 +1920,7 @@ func (this *QKeyCombination) ToCombined() int {
 
 // Delete this object from C++ memory.
 func (this *QKeyCombination) Delete() {
-	C.QKeyCombination_Delete(this.h)
+	C.QKeyCombination_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

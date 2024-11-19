@@ -44,7 +44,8 @@ const (
 )
 
 type QNetworkInformation struct {
-	h *C.QNetworkInformation
+	h          *C.QNetworkInformation
+	isSubclass bool
 	*qt6.QObject
 }
 
@@ -62,15 +63,23 @@ func (this *QNetworkInformation) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQNetworkInformation(h *C.QNetworkInformation) *QNetworkInformation {
+// newQNetworkInformation constructs the type using only CGO pointers.
+func newQNetworkInformation(h *C.QNetworkInformation, h_QObject *C.QObject) *QNetworkInformation {
 	if h == nil {
 		return nil
 	}
-	return &QNetworkInformation{h: h, QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QNetworkInformation{h: h,
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
 }
 
-func UnsafeNewQNetworkInformation(h unsafe.Pointer) *QNetworkInformation {
-	return newQNetworkInformation((*C.QNetworkInformation)(h))
+// UnsafeNewQNetworkInformation constructs the type using only unsafe pointers.
+func UnsafeNewQNetworkInformation(h unsafe.Pointer, h_QObject unsafe.Pointer) *QNetworkInformation {
+	if h == nil {
+		return nil
+	}
+
+	return &QNetworkInformation{h: (*C.QNetworkInformation)(h),
+		QObject: qt6.UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QNetworkInformation) MetaObject() *qt6.QMetaObject {
@@ -149,7 +158,7 @@ func QNetworkInformation_AvailableBackends() []string {
 }
 
 func QNetworkInformation_Instance() *QNetworkInformation {
-	return UnsafeNewQNetworkInformation(unsafe.Pointer(C.QNetworkInformation_Instance()))
+	return UnsafeNewQNetworkInformation(unsafe.Pointer(C.QNetworkInformation_Instance()), nil)
 }
 
 func (this *QNetworkInformation) ReachabilityChanged(newReachability QNetworkInformation__Reachability) {

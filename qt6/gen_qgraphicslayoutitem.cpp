@@ -165,7 +165,11 @@ QSizeF* QGraphicsLayoutItem_EffectiveSizeHint2(const QGraphicsLayoutItem* self, 
 	return new QSizeF(self->effectiveSizeHint(static_cast<Qt::SizeHint>(which), *constraint));
 }
 
-void QGraphicsLayoutItem_Delete(QGraphicsLayoutItem* self) {
-	delete self;
+void QGraphicsLayoutItem_Delete(QGraphicsLayoutItem* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QGraphicsLayoutItem*>( self );
+	} else {
+		delete self;
+	}
 }
 

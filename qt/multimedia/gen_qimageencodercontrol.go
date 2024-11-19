@@ -15,7 +15,8 @@ import (
 )
 
 type QImageEncoderControl struct {
-	h *C.QImageEncoderControl
+	h          *C.QImageEncoderControl
+	isSubclass bool
 	*QMediaControl
 }
 
@@ -33,15 +34,23 @@ func (this *QImageEncoderControl) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQImageEncoderControl(h *C.QImageEncoderControl) *QImageEncoderControl {
+// newQImageEncoderControl constructs the type using only CGO pointers.
+func newQImageEncoderControl(h *C.QImageEncoderControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QImageEncoderControl {
 	if h == nil {
 		return nil
 	}
-	return &QImageEncoderControl{h: h, QMediaControl: UnsafeNewQMediaControl(unsafe.Pointer(h))}
+	return &QImageEncoderControl{h: h,
+		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
 }
 
-func UnsafeNewQImageEncoderControl(h unsafe.Pointer) *QImageEncoderControl {
-	return newQImageEncoderControl((*C.QImageEncoderControl)(h))
+// UnsafeNewQImageEncoderControl constructs the type using only unsafe pointers.
+func UnsafeNewQImageEncoderControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QImageEncoderControl {
+	if h == nil {
+		return nil
+	}
+
+	return &QImageEncoderControl{h: (*C.QImageEncoderControl)(h),
+		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
 }
 
 func (this *QImageEncoderControl) MetaObject() *qt.QMetaObject {
@@ -96,8 +105,8 @@ func (this *QImageEncoderControl) ImageCodecDescription(codec string) string {
 	return _ret
 }
 
-func (this *QImageEncoderControl) SupportedResolutions(settings *QImageEncoderSettings) []qt.QSize {
-	var _ma C.struct_miqt_array = C.QImageEncoderControl_SupportedResolutions(this.h, settings.cPointer())
+func (this *QImageEncoderControl) SupportedResolutions(settings *QImageEncoderSettings, continuous *bool) []qt.QSize {
+	var _ma C.struct_miqt_array = C.QImageEncoderControl_SupportedResolutions(this.h, settings.cPointer(), (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]qt.QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -164,22 +173,9 @@ func QImageEncoderControl_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QImageEncoderControl) SupportedResolutions2(settings *QImageEncoderSettings, continuous *bool) []qt.QSize {
-	var _ma C.struct_miqt_array = C.QImageEncoderControl_SupportedResolutions2(this.h, settings.cPointer(), (*C.bool)(unsafe.Pointer(continuous)))
-	_ret := make([]qt.QSize, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
-	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_lv_ret))
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
-	}
-	return _ret
-}
-
 // Delete this object from C++ memory.
 func (this *QImageEncoderControl) Delete() {
-	C.QImageEncoderControl_Delete(this.h)
+	C.QImageEncoderControl_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

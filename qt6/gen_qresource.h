@@ -26,9 +26,9 @@ typedef struct QLocale QLocale;
 typedef struct QResource QResource;
 #endif
 
-QResource* QResource_new();
-QResource* QResource_new2(struct miqt_string file);
-QResource* QResource_new3(struct miqt_string file, QLocale* locale);
+void QResource_new(QResource** outptr_QResource);
+void QResource_new2(struct miqt_string file, QResource** outptr_QResource);
+void QResource_new3(struct miqt_string file, QLocale* locale, QResource** outptr_QResource);
 void QResource_SetFileName(QResource* self, struct miqt_string file);
 struct miqt_string QResource_FileName(const QResource* self);
 struct miqt_string QResource_AbsoluteFilePath(const QResource* self);
@@ -49,7 +49,7 @@ bool QResource_RegisterResource2(struct miqt_string rccFilename, struct miqt_str
 bool QResource_UnregisterResource2(struct miqt_string rccFilename, struct miqt_string resourceRoot);
 bool QResource_RegisterResource22(const unsigned char* rccData, struct miqt_string resourceRoot);
 bool QResource_UnregisterResource22(const unsigned char* rccData, struct miqt_string resourceRoot);
-void QResource_Delete(QResource* self);
+void QResource_Delete(QResource* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

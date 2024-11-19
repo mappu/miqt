@@ -26,10 +26,10 @@ typedef struct QImage QImage;
 typedef struct QImageWriter QImageWriter;
 #endif
 
-QImageWriter* QImageWriter_new();
-QImageWriter* QImageWriter_new2(QIODevice* device, struct miqt_string format);
-QImageWriter* QImageWriter_new3(struct miqt_string fileName);
-QImageWriter* QImageWriter_new4(struct miqt_string fileName, struct miqt_string format);
+void QImageWriter_new(QImageWriter** outptr_QImageWriter);
+void QImageWriter_new2(QIODevice* device, struct miqt_string format, QImageWriter** outptr_QImageWriter);
+void QImageWriter_new3(struct miqt_string fileName, QImageWriter** outptr_QImageWriter);
+void QImageWriter_new4(struct miqt_string fileName, struct miqt_string format, QImageWriter** outptr_QImageWriter);
 struct miqt_string QImageWriter_Tr(const char* sourceText);
 void QImageWriter_SetFormat(QImageWriter* self, struct miqt_string format);
 struct miqt_string QImageWriter_Format(const QImageWriter* self);
@@ -61,7 +61,7 @@ struct miqt_array /* of struct miqt_string */  QImageWriter_SupportedMimeTypes()
 struct miqt_array /* of struct miqt_string */  QImageWriter_ImageFormatsForMimeType(struct miqt_string mimeType);
 struct miqt_string QImageWriter_Tr2(const char* sourceText, const char* disambiguation);
 struct miqt_string QImageWriter_Tr3(const char* sourceText, const char* disambiguation, int n);
-void QImageWriter_Delete(QImageWriter* self);
+void QImageWriter_Delete(QImageWriter* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -1,5 +1,7 @@
 #include <QCameraExposureControl>
+#include <QMediaControl>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -131,7 +133,11 @@ struct miqt_string QCameraExposureControl_TrUtf83(const char* s, const char* c, 
 	return _ms;
 }
 
-void QCameraExposureControl_Delete(QCameraExposureControl* self) {
-	delete self;
+void QCameraExposureControl_Delete(QCameraExposureControl* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QCameraExposureControl*>( self );
+	} else {
+		delete self;
+	}
 }
 

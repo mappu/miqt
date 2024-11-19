@@ -25,7 +25,8 @@ const (
 )
 
 type QLayout struct {
-	h *C.QLayout
+	h          *C.QLayout
+	isSubclass bool
 	*QObject
 	*QLayoutItem
 }
@@ -44,15 +45,25 @@ func (this *QLayout) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQLayout(h *C.QLayout) *QLayout {
+// newQLayout constructs the type using only CGO pointers.
+func newQLayout(h *C.QLayout, h_QObject *C.QObject, h_QLayoutItem *C.QLayoutItem) *QLayout {
 	if h == nil {
 		return nil
 	}
-	return &QLayout{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h)), QLayoutItem: UnsafeNewQLayoutItem(unsafe.Pointer(h))}
+	return &QLayout{h: h,
+		QObject:     newQObject(h_QObject),
+		QLayoutItem: newQLayoutItem(h_QLayoutItem)}
 }
 
-func UnsafeNewQLayout(h unsafe.Pointer) *QLayout {
-	return newQLayout((*C.QLayout)(h))
+// UnsafeNewQLayout constructs the type using only unsafe pointers.
+func UnsafeNewQLayout(h unsafe.Pointer, h_QObject unsafe.Pointer, h_QLayoutItem unsafe.Pointer) *QLayout {
+	if h == nil {
+		return nil
+	}
+
+	return &QLayout{h: (*C.QLayout)(h),
+		QObject:     UnsafeNewQObject(h_QObject),
+		QLayoutItem: UnsafeNewQLayoutItem(h_QLayoutItem)}
 }
 
 func (this *QLayout) MetaObject() *QMetaObject {
@@ -133,11 +144,11 @@ func (this *QLayout) SetMenuBar(w *QWidget) {
 }
 
 func (this *QLayout) MenuBar() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QLayout_MenuBar(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QLayout_MenuBar(this.h)), nil, nil)
 }
 
 func (this *QLayout) ParentWidget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QLayout_ParentWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QLayout_ParentWidget(this.h)), nil, nil)
 }
 
 func (this *QLayout) Invalidate() {
@@ -225,8 +236,8 @@ func (this *QLayout) ControlTypes() QSizePolicy__ControlType {
 	return (QSizePolicy__ControlType)(C.QLayout_ControlTypes(this.h))
 }
 
-func (this *QLayout) ReplaceWidget(from *QWidget, to *QWidget) *QLayoutItem {
-	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QLayout_ReplaceWidget(this.h, from.cPointer(), to.cPointer())))
+func (this *QLayout) ReplaceWidget(from *QWidget, to *QWidget, options FindChildOption) *QLayoutItem {
+	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QLayout_ReplaceWidget(this.h, from.cPointer(), to.cPointer(), (C.int)(options))))
 }
 
 func (this *QLayout) TotalMinimumHeightForWidth(w int) int {
@@ -259,7 +270,7 @@ func (this *QLayout) TotalSizeHint() *QSize {
 }
 
 func (this *QLayout) Layout() *QLayout {
-	return UnsafeNewQLayout(unsafe.Pointer(C.QLayout_Layout(this.h)))
+	return UnsafeNewQLayout(unsafe.Pointer(C.QLayout_Layout(this.h)), nil, nil)
 }
 
 func (this *QLayout) SetEnabled(enabled bool) {
@@ -299,13 +310,9 @@ func QLayout_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QLayout) ReplaceWidget3(from *QWidget, to *QWidget, options FindChildOption) *QLayoutItem {
-	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QLayout_ReplaceWidget3(this.h, from.cPointer(), to.cPointer(), (C.int)(options))))
-}
-
 // Delete this object from C++ memory.
 func (this *QLayout) Delete() {
-	C.QLayout_Delete(this.h)
+	C.QLayout_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

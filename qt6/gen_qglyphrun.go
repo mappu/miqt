@@ -24,7 +24,8 @@ const (
 )
 
 type QGlyphRun struct {
-	h *C.QGlyphRun
+	h          *C.QGlyphRun
+	isSubclass bool
 }
 
 func (this *QGlyphRun) cPointer() *C.QGlyphRun {
@@ -41,6 +42,7 @@ func (this *QGlyphRun) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQGlyphRun constructs the type using only CGO pointers.
 func newQGlyphRun(h *C.QGlyphRun) *QGlyphRun {
 	if h == nil {
 		return nil
@@ -48,20 +50,33 @@ func newQGlyphRun(h *C.QGlyphRun) *QGlyphRun {
 	return &QGlyphRun{h: h}
 }
 
+// UnsafeNewQGlyphRun constructs the type using only unsafe pointers.
 func UnsafeNewQGlyphRun(h unsafe.Pointer) *QGlyphRun {
-	return newQGlyphRun((*C.QGlyphRun)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QGlyphRun{h: (*C.QGlyphRun)(h)}
 }
 
 // NewQGlyphRun constructs a new QGlyphRun object.
 func NewQGlyphRun() *QGlyphRun {
-	ret := C.QGlyphRun_new()
-	return newQGlyphRun(ret)
+	var outptr_QGlyphRun *C.QGlyphRun = nil
+
+	C.QGlyphRun_new(&outptr_QGlyphRun)
+	ret := newQGlyphRun(outptr_QGlyphRun)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQGlyphRun2 constructs a new QGlyphRun object.
 func NewQGlyphRun2(other *QGlyphRun) *QGlyphRun {
-	ret := C.QGlyphRun_new2(other.cPointer())
-	return newQGlyphRun(ret)
+	var outptr_QGlyphRun *C.QGlyphRun = nil
+
+	C.QGlyphRun_new2(other.cPointer(), &outptr_QGlyphRun)
+	ret := newQGlyphRun(outptr_QGlyphRun)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QGlyphRun) OperatorAssign(other *QGlyphRun) {
@@ -207,7 +222,7 @@ func (this *QGlyphRun) SetFlag2(flag QGlyphRun__GlyphRunFlag, enabled bool) {
 
 // Delete this object from C++ memory.
 func (this *QGlyphRun) Delete() {
-	C.QGlyphRun_Delete(this.h)
+	C.QGlyphRun_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

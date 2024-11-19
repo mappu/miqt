@@ -16,20 +16,22 @@ extern "C" {
 
 #ifdef __cplusplus
 class QByteArray;
+class QIODevice;
 class QMetaObject;
 class QObject;
 class QProcess;
 class QProcessEnvironment;
 #else
 typedef struct QByteArray QByteArray;
+typedef struct QIODevice QIODevice;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QProcess QProcess;
 typedef struct QProcessEnvironment QProcessEnvironment;
 #endif
 
-QProcessEnvironment* QProcessEnvironment_new();
-QProcessEnvironment* QProcessEnvironment_new2(QProcessEnvironment* other);
+void QProcessEnvironment_new(QProcessEnvironment** outptr_QProcessEnvironment);
+void QProcessEnvironment_new2(QProcessEnvironment* other, QProcessEnvironment** outptr_QProcessEnvironment);
 void QProcessEnvironment_OperatorAssign(QProcessEnvironment* self, QProcessEnvironment* other);
 void QProcessEnvironment_Swap(QProcessEnvironment* self, QProcessEnvironment* other);
 bool QProcessEnvironment_OperatorEqual(const QProcessEnvironment* self, QProcessEnvironment* other);
@@ -45,10 +47,10 @@ struct miqt_array /* of struct miqt_string */  QProcessEnvironment_Keys(const QP
 void QProcessEnvironment_InsertWithQProcessEnvironment(QProcessEnvironment* self, QProcessEnvironment* e);
 QProcessEnvironment* QProcessEnvironment_SystemEnvironment();
 struct miqt_string QProcessEnvironment_Value2(const QProcessEnvironment* self, struct miqt_string name, struct miqt_string defaultValue);
-void QProcessEnvironment_Delete(QProcessEnvironment* self);
+void QProcessEnvironment_Delete(QProcessEnvironment* self, bool isSubclass);
 
-QProcess* QProcess_new();
-QProcess* QProcess_new2(QObject* parent);
+void QProcess_new(QProcess** outptr_QProcess, QIODevice** outptr_QIODevice, QObject** outptr_QObject);
+void QProcess_new2(QObject* parent, QProcess** outptr_QProcess, QIODevice** outptr_QIODevice, QObject** outptr_QObject);
 QMetaObject* QProcess_MetaObject(const QProcess* self);
 void* QProcess_Metacast(QProcess* self, const char* param1);
 struct miqt_string QProcess_Tr(const char* s);
@@ -57,7 +59,7 @@ void QProcess_Start(QProcess* self, struct miqt_string program, struct miqt_arra
 void QProcess_StartWithCommand(QProcess* self, struct miqt_string command);
 void QProcess_Start2(QProcess* self);
 bool QProcess_StartDetached(QProcess* self);
-bool QProcess_Open(QProcess* self);
+bool QProcess_Open(QProcess* self, int mode);
 struct miqt_string QProcess_Program(const QProcess* self);
 void QProcess_SetProgram(QProcess* self, struct miqt_string program);
 struct miqt_array /* of struct miqt_string */  QProcess_Arguments(const QProcess* self);
@@ -87,8 +89,8 @@ int QProcess_State(const QProcess* self);
 long long QProcess_Pid(const QProcess* self);
 long long QProcess_ProcessId(const QProcess* self);
 bool QProcess_WaitForStarted(QProcess* self);
-bool QProcess_WaitForReadyRead(QProcess* self);
-bool QProcess_WaitForBytesWritten(QProcess* self);
+bool QProcess_WaitForReadyRead(QProcess* self, int msecs);
+bool QProcess_WaitForBytesWritten(QProcess* self, int msecs);
 bool QProcess_WaitForFinished(QProcess* self);
 struct miqt_string QProcess_ReadAllStandardOutput(QProcess* self);
 struct miqt_string QProcess_ReadAllStandardError(QProcess* self);
@@ -117,6 +119,9 @@ void QProcess_ErrorWithError(QProcess* self, int error);
 void QProcess_connect_ErrorWithError(QProcess* self, intptr_t slot);
 void QProcess_ErrorOccurred(QProcess* self, int error);
 void QProcess_connect_ErrorOccurred(QProcess* self, intptr_t slot);
+void QProcess_SetupChildProcess(QProcess* self);
+long long QProcess_ReadData(QProcess* self, char* data, long long maxlen);
+long long QProcess_WriteData(QProcess* self, const char* data, long long lenVal);
 struct miqt_string QProcess_Tr2(const char* s, const char* c);
 struct miqt_string QProcess_Tr3(const char* s, const char* c, int n);
 struct miqt_string QProcess_TrUtf82(const char* s, const char* c);
@@ -125,15 +130,46 @@ void QProcess_Start3(QProcess* self, struct miqt_string program, struct miqt_arr
 void QProcess_Start22(QProcess* self, struct miqt_string command, int mode);
 void QProcess_Start1(QProcess* self, int mode);
 bool QProcess_StartDetached1(QProcess* self, long long* pid);
-bool QProcess_Open1(QProcess* self, int mode);
 void QProcess_SetStandardOutputFile2(QProcess* self, struct miqt_string fileName, int mode);
 void QProcess_SetStandardErrorFile2(QProcess* self, struct miqt_string fileName, int mode);
 bool QProcess_WaitForStarted1(QProcess* self, int msecs);
-bool QProcess_WaitForReadyRead1(QProcess* self, int msecs);
-bool QProcess_WaitForBytesWritten1(QProcess* self, int msecs);
 bool QProcess_WaitForFinished1(QProcess* self, int msecs);
 bool QProcess_StartDetached4(struct miqt_string program, struct miqt_array /* of struct miqt_string */  arguments, struct miqt_string workingDirectory, long long* pid);
-void QProcess_Delete(QProcess* self);
+void QProcess_override_virtual_Open(void* self, intptr_t slot);
+bool QProcess_virtualbase_Open(void* self, int mode);
+void QProcess_override_virtual_WaitForReadyRead(void* self, intptr_t slot);
+bool QProcess_virtualbase_WaitForReadyRead(void* self, int msecs);
+void QProcess_override_virtual_WaitForBytesWritten(void* self, intptr_t slot);
+bool QProcess_virtualbase_WaitForBytesWritten(void* self, int msecs);
+void QProcess_override_virtual_BytesAvailable(void* self, intptr_t slot);
+long long QProcess_virtualbase_BytesAvailable(const void* self);
+void QProcess_override_virtual_BytesToWrite(void* self, intptr_t slot);
+long long QProcess_virtualbase_BytesToWrite(const void* self);
+void QProcess_override_virtual_IsSequential(void* self, intptr_t slot);
+bool QProcess_virtualbase_IsSequential(const void* self);
+void QProcess_override_virtual_CanReadLine(void* self, intptr_t slot);
+bool QProcess_virtualbase_CanReadLine(const void* self);
+void QProcess_override_virtual_Close(void* self, intptr_t slot);
+void QProcess_virtualbase_Close(void* self);
+void QProcess_override_virtual_AtEnd(void* self, intptr_t slot);
+bool QProcess_virtualbase_AtEnd(const void* self);
+void QProcess_override_virtual_SetupChildProcess(void* self, intptr_t slot);
+void QProcess_virtualbase_SetupChildProcess(void* self);
+void QProcess_override_virtual_ReadData(void* self, intptr_t slot);
+long long QProcess_virtualbase_ReadData(void* self, char* data, long long maxlen);
+void QProcess_override_virtual_WriteData(void* self, intptr_t slot);
+long long QProcess_virtualbase_WriteData(void* self, const char* data, long long lenVal);
+void QProcess_override_virtual_Pos(void* self, intptr_t slot);
+long long QProcess_virtualbase_Pos(const void* self);
+void QProcess_override_virtual_Size(void* self, intptr_t slot);
+long long QProcess_virtualbase_Size(const void* self);
+void QProcess_override_virtual_Seek(void* self, intptr_t slot);
+bool QProcess_virtualbase_Seek(void* self, long long pos);
+void QProcess_override_virtual_Reset(void* self, intptr_t slot);
+bool QProcess_virtualbase_Reset(void* self);
+void QProcess_override_virtual_ReadLineData(void* self, intptr_t slot);
+long long QProcess_virtualbase_ReadLineData(void* self, char* data, long long maxlen);
+void QProcess_Delete(QProcess* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -34,7 +34,8 @@ const (
 )
 
 type QMediaServiceProviderHint struct {
-	h *C.QMediaServiceProviderHint
+	h          *C.QMediaServiceProviderHint
+	isSubclass bool
 }
 
 func (this *QMediaServiceProviderHint) cPointer() *C.QMediaServiceProviderHint {
@@ -51,6 +52,7 @@ func (this *QMediaServiceProviderHint) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQMediaServiceProviderHint constructs the type using only CGO pointers.
 func newQMediaServiceProviderHint(h *C.QMediaServiceProviderHint) *QMediaServiceProviderHint {
 	if h == nil {
 		return nil
@@ -58,14 +60,23 @@ func newQMediaServiceProviderHint(h *C.QMediaServiceProviderHint) *QMediaService
 	return &QMediaServiceProviderHint{h: h}
 }
 
+// UnsafeNewQMediaServiceProviderHint constructs the type using only unsafe pointers.
 func UnsafeNewQMediaServiceProviderHint(h unsafe.Pointer) *QMediaServiceProviderHint {
-	return newQMediaServiceProviderHint((*C.QMediaServiceProviderHint)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMediaServiceProviderHint{h: (*C.QMediaServiceProviderHint)(h)}
 }
 
 // NewQMediaServiceProviderHint constructs a new QMediaServiceProviderHint object.
 func NewQMediaServiceProviderHint() *QMediaServiceProviderHint {
-	ret := C.QMediaServiceProviderHint_new()
-	return newQMediaServiceProviderHint(ret)
+	var outptr_QMediaServiceProviderHint *C.QMediaServiceProviderHint = nil
+
+	C.QMediaServiceProviderHint_new(&outptr_QMediaServiceProviderHint)
+	ret := newQMediaServiceProviderHint(outptr_QMediaServiceProviderHint)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMediaServiceProviderHint2 constructs a new QMediaServiceProviderHint object.
@@ -84,8 +95,12 @@ func NewQMediaServiceProviderHint2(mimeType string, codecs []string) *QMediaServ
 		codecs_CArray[i] = codecs_i_ms
 	}
 	codecs_ma := C.struct_miqt_array{len: C.size_t(len(codecs)), data: unsafe.Pointer(codecs_CArray)}
-	ret := C.QMediaServiceProviderHint_new2(mimeType_ms, codecs_ma)
-	return newQMediaServiceProviderHint(ret)
+	var outptr_QMediaServiceProviderHint *C.QMediaServiceProviderHint = nil
+
+	C.QMediaServiceProviderHint_new2(mimeType_ms, codecs_ma, &outptr_QMediaServiceProviderHint)
+	ret := newQMediaServiceProviderHint(outptr_QMediaServiceProviderHint)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMediaServiceProviderHint3 constructs a new QMediaServiceProviderHint object.
@@ -93,26 +108,42 @@ func NewQMediaServiceProviderHint3(device []byte) *QMediaServiceProviderHint {
 	device_alias := C.struct_miqt_string{}
 	device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
 	device_alias.len = C.size_t(len(device))
-	ret := C.QMediaServiceProviderHint_new3(device_alias)
-	return newQMediaServiceProviderHint(ret)
+	var outptr_QMediaServiceProviderHint *C.QMediaServiceProviderHint = nil
+
+	C.QMediaServiceProviderHint_new3(device_alias, &outptr_QMediaServiceProviderHint)
+	ret := newQMediaServiceProviderHint(outptr_QMediaServiceProviderHint)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMediaServiceProviderHint4 constructs a new QMediaServiceProviderHint object.
 func NewQMediaServiceProviderHint4(position QCamera__Position) *QMediaServiceProviderHint {
-	ret := C.QMediaServiceProviderHint_new4((C.int)(position))
-	return newQMediaServiceProviderHint(ret)
+	var outptr_QMediaServiceProviderHint *C.QMediaServiceProviderHint = nil
+
+	C.QMediaServiceProviderHint_new4((C.int)(position), &outptr_QMediaServiceProviderHint)
+	ret := newQMediaServiceProviderHint(outptr_QMediaServiceProviderHint)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMediaServiceProviderHint5 constructs a new QMediaServiceProviderHint object.
 func NewQMediaServiceProviderHint5(features QMediaServiceProviderHint__Feature) *QMediaServiceProviderHint {
-	ret := C.QMediaServiceProviderHint_new5((C.int)(features))
-	return newQMediaServiceProviderHint(ret)
+	var outptr_QMediaServiceProviderHint *C.QMediaServiceProviderHint = nil
+
+	C.QMediaServiceProviderHint_new5((C.int)(features), &outptr_QMediaServiceProviderHint)
+	ret := newQMediaServiceProviderHint(outptr_QMediaServiceProviderHint)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMediaServiceProviderHint6 constructs a new QMediaServiceProviderHint object.
 func NewQMediaServiceProviderHint6(other *QMediaServiceProviderHint) *QMediaServiceProviderHint {
-	ret := C.QMediaServiceProviderHint_new6(other.cPointer())
-	return newQMediaServiceProviderHint(ret)
+	var outptr_QMediaServiceProviderHint *C.QMediaServiceProviderHint = nil
+
+	C.QMediaServiceProviderHint_new6(other.cPointer(), &outptr_QMediaServiceProviderHint)
+	ret := newQMediaServiceProviderHint(outptr_QMediaServiceProviderHint)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QMediaServiceProviderHint) OperatorAssign(other *QMediaServiceProviderHint) {
@@ -172,7 +203,7 @@ func (this *QMediaServiceProviderHint) Features() QMediaServiceProviderHint__Fea
 
 // Delete this object from C++ memory.
 func (this *QMediaServiceProviderHint) Delete() {
-	C.QMediaServiceProviderHint_Delete(this.h)
+	C.QMediaServiceProviderHint_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -185,7 +216,8 @@ func (this *QMediaServiceProviderHint) GoGC() {
 }
 
 type QMediaServiceProviderFactoryInterface struct {
-	h *C.QMediaServiceProviderFactoryInterface
+	h          *C.QMediaServiceProviderFactoryInterface
+	isSubclass bool
 }
 
 func (this *QMediaServiceProviderFactoryInterface) cPointer() *C.QMediaServiceProviderFactoryInterface {
@@ -202,6 +234,7 @@ func (this *QMediaServiceProviderFactoryInterface) UnsafePointer() unsafe.Pointe
 	return unsafe.Pointer(this.h)
 }
 
+// newQMediaServiceProviderFactoryInterface constructs the type using only CGO pointers.
 func newQMediaServiceProviderFactoryInterface(h *C.QMediaServiceProviderFactoryInterface) *QMediaServiceProviderFactoryInterface {
 	if h == nil {
 		return nil
@@ -209,8 +242,13 @@ func newQMediaServiceProviderFactoryInterface(h *C.QMediaServiceProviderFactoryI
 	return &QMediaServiceProviderFactoryInterface{h: h}
 }
 
+// UnsafeNewQMediaServiceProviderFactoryInterface constructs the type using only unsafe pointers.
 func UnsafeNewQMediaServiceProviderFactoryInterface(h unsafe.Pointer) *QMediaServiceProviderFactoryInterface {
-	return newQMediaServiceProviderFactoryInterface((*C.QMediaServiceProviderFactoryInterface)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMediaServiceProviderFactoryInterface{h: (*C.QMediaServiceProviderFactoryInterface)(h)}
 }
 
 func (this *QMediaServiceProviderFactoryInterface) Create(key string) *QMediaService {
@@ -218,7 +256,7 @@ func (this *QMediaServiceProviderFactoryInterface) Create(key string) *QMediaSer
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	return UnsafeNewQMediaService(unsafe.Pointer(C.QMediaServiceProviderFactoryInterface_Create(this.h, key_ms)))
+	return UnsafeNewQMediaService(unsafe.Pointer(C.QMediaServiceProviderFactoryInterface_Create(this.h, key_ms)), nil)
 }
 
 func (this *QMediaServiceProviderFactoryInterface) Release(service *QMediaService) {
@@ -231,7 +269,7 @@ func (this *QMediaServiceProviderFactoryInterface) OperatorAssign(param1 *QMedia
 
 // Delete this object from C++ memory.
 func (this *QMediaServiceProviderFactoryInterface) Delete() {
-	C.QMediaServiceProviderFactoryInterface_Delete(this.h)
+	C.QMediaServiceProviderFactoryInterface_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -244,7 +282,8 @@ func (this *QMediaServiceProviderFactoryInterface) GoGC() {
 }
 
 type QMediaServiceSupportedFormatsInterface struct {
-	h *C.QMediaServiceSupportedFormatsInterface
+	h          *C.QMediaServiceSupportedFormatsInterface
+	isSubclass bool
 }
 
 func (this *QMediaServiceSupportedFormatsInterface) cPointer() *C.QMediaServiceSupportedFormatsInterface {
@@ -261,6 +300,7 @@ func (this *QMediaServiceSupportedFormatsInterface) UnsafePointer() unsafe.Point
 	return unsafe.Pointer(this.h)
 }
 
+// newQMediaServiceSupportedFormatsInterface constructs the type using only CGO pointers.
 func newQMediaServiceSupportedFormatsInterface(h *C.QMediaServiceSupportedFormatsInterface) *QMediaServiceSupportedFormatsInterface {
 	if h == nil {
 		return nil
@@ -268,8 +308,13 @@ func newQMediaServiceSupportedFormatsInterface(h *C.QMediaServiceSupportedFormat
 	return &QMediaServiceSupportedFormatsInterface{h: h}
 }
 
+// UnsafeNewQMediaServiceSupportedFormatsInterface constructs the type using only unsafe pointers.
 func UnsafeNewQMediaServiceSupportedFormatsInterface(h unsafe.Pointer) *QMediaServiceSupportedFormatsInterface {
-	return newQMediaServiceSupportedFormatsInterface((*C.QMediaServiceSupportedFormatsInterface)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMediaServiceSupportedFormatsInterface{h: (*C.QMediaServiceSupportedFormatsInterface)(h)}
 }
 
 func (this *QMediaServiceSupportedFormatsInterface) HasSupport(mimeType string, codecs []string) QMultimedia__SupportEstimate {
@@ -309,7 +354,7 @@ func (this *QMediaServiceSupportedFormatsInterface) OperatorAssign(param1 *QMedi
 
 // Delete this object from C++ memory.
 func (this *QMediaServiceSupportedFormatsInterface) Delete() {
-	C.QMediaServiceSupportedFormatsInterface_Delete(this.h)
+	C.QMediaServiceSupportedFormatsInterface_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -322,7 +367,8 @@ func (this *QMediaServiceSupportedFormatsInterface) GoGC() {
 }
 
 type QMediaServiceSupportedDevicesInterface struct {
-	h *C.QMediaServiceSupportedDevicesInterface
+	h          *C.QMediaServiceSupportedDevicesInterface
+	isSubclass bool
 }
 
 func (this *QMediaServiceSupportedDevicesInterface) cPointer() *C.QMediaServiceSupportedDevicesInterface {
@@ -339,6 +385,7 @@ func (this *QMediaServiceSupportedDevicesInterface) UnsafePointer() unsafe.Point
 	return unsafe.Pointer(this.h)
 }
 
+// newQMediaServiceSupportedDevicesInterface constructs the type using only CGO pointers.
 func newQMediaServiceSupportedDevicesInterface(h *C.QMediaServiceSupportedDevicesInterface) *QMediaServiceSupportedDevicesInterface {
 	if h == nil {
 		return nil
@@ -346,8 +393,13 @@ func newQMediaServiceSupportedDevicesInterface(h *C.QMediaServiceSupportedDevice
 	return &QMediaServiceSupportedDevicesInterface{h: h}
 }
 
+// UnsafeNewQMediaServiceSupportedDevicesInterface constructs the type using only unsafe pointers.
 func UnsafeNewQMediaServiceSupportedDevicesInterface(h unsafe.Pointer) *QMediaServiceSupportedDevicesInterface {
-	return newQMediaServiceSupportedDevicesInterface((*C.QMediaServiceSupportedDevicesInterface)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMediaServiceSupportedDevicesInterface{h: (*C.QMediaServiceSupportedDevicesInterface)(h)}
 }
 
 func (this *QMediaServiceSupportedDevicesInterface) Devices(service []byte) [][]byte {
@@ -385,7 +437,7 @@ func (this *QMediaServiceSupportedDevicesInterface) OperatorAssign(param1 *QMedi
 
 // Delete this object from C++ memory.
 func (this *QMediaServiceSupportedDevicesInterface) Delete() {
-	C.QMediaServiceSupportedDevicesInterface_Delete(this.h)
+	C.QMediaServiceSupportedDevicesInterface_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -398,7 +450,8 @@ func (this *QMediaServiceSupportedDevicesInterface) GoGC() {
 }
 
 type QMediaServiceDefaultDeviceInterface struct {
-	h *C.QMediaServiceDefaultDeviceInterface
+	h          *C.QMediaServiceDefaultDeviceInterface
+	isSubclass bool
 }
 
 func (this *QMediaServiceDefaultDeviceInterface) cPointer() *C.QMediaServiceDefaultDeviceInterface {
@@ -415,6 +468,7 @@ func (this *QMediaServiceDefaultDeviceInterface) UnsafePointer() unsafe.Pointer 
 	return unsafe.Pointer(this.h)
 }
 
+// newQMediaServiceDefaultDeviceInterface constructs the type using only CGO pointers.
 func newQMediaServiceDefaultDeviceInterface(h *C.QMediaServiceDefaultDeviceInterface) *QMediaServiceDefaultDeviceInterface {
 	if h == nil {
 		return nil
@@ -422,8 +476,13 @@ func newQMediaServiceDefaultDeviceInterface(h *C.QMediaServiceDefaultDeviceInter
 	return &QMediaServiceDefaultDeviceInterface{h: h}
 }
 
+// UnsafeNewQMediaServiceDefaultDeviceInterface constructs the type using only unsafe pointers.
 func UnsafeNewQMediaServiceDefaultDeviceInterface(h unsafe.Pointer) *QMediaServiceDefaultDeviceInterface {
-	return newQMediaServiceDefaultDeviceInterface((*C.QMediaServiceDefaultDeviceInterface)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMediaServiceDefaultDeviceInterface{h: (*C.QMediaServiceDefaultDeviceInterface)(h)}
 }
 
 func (this *QMediaServiceDefaultDeviceInterface) DefaultDevice(service []byte) []byte {
@@ -442,7 +501,7 @@ func (this *QMediaServiceDefaultDeviceInterface) OperatorAssign(param1 *QMediaSe
 
 // Delete this object from C++ memory.
 func (this *QMediaServiceDefaultDeviceInterface) Delete() {
-	C.QMediaServiceDefaultDeviceInterface_Delete(this.h)
+	C.QMediaServiceDefaultDeviceInterface_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -455,7 +514,8 @@ func (this *QMediaServiceDefaultDeviceInterface) GoGC() {
 }
 
 type QMediaServiceCameraInfoInterface struct {
-	h *C.QMediaServiceCameraInfoInterface
+	h          *C.QMediaServiceCameraInfoInterface
+	isSubclass bool
 }
 
 func (this *QMediaServiceCameraInfoInterface) cPointer() *C.QMediaServiceCameraInfoInterface {
@@ -472,6 +532,7 @@ func (this *QMediaServiceCameraInfoInterface) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQMediaServiceCameraInfoInterface constructs the type using only CGO pointers.
 func newQMediaServiceCameraInfoInterface(h *C.QMediaServiceCameraInfoInterface) *QMediaServiceCameraInfoInterface {
 	if h == nil {
 		return nil
@@ -479,8 +540,13 @@ func newQMediaServiceCameraInfoInterface(h *C.QMediaServiceCameraInfoInterface) 
 	return &QMediaServiceCameraInfoInterface{h: h}
 }
 
+// UnsafeNewQMediaServiceCameraInfoInterface constructs the type using only unsafe pointers.
 func UnsafeNewQMediaServiceCameraInfoInterface(h unsafe.Pointer) *QMediaServiceCameraInfoInterface {
-	return newQMediaServiceCameraInfoInterface((*C.QMediaServiceCameraInfoInterface)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMediaServiceCameraInfoInterface{h: (*C.QMediaServiceCameraInfoInterface)(h)}
 }
 
 func (this *QMediaServiceCameraInfoInterface) CameraPosition(device []byte) QCamera__Position {
@@ -503,7 +569,7 @@ func (this *QMediaServiceCameraInfoInterface) OperatorAssign(param1 *QMediaServi
 
 // Delete this object from C++ memory.
 func (this *QMediaServiceCameraInfoInterface) Delete() {
-	C.QMediaServiceCameraInfoInterface_Delete(this.h)
+	C.QMediaServiceCameraInfoInterface_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -516,7 +582,8 @@ func (this *QMediaServiceCameraInfoInterface) GoGC() {
 }
 
 type QMediaServiceFeaturesInterface struct {
-	h *C.QMediaServiceFeaturesInterface
+	h          *C.QMediaServiceFeaturesInterface
+	isSubclass bool
 }
 
 func (this *QMediaServiceFeaturesInterface) cPointer() *C.QMediaServiceFeaturesInterface {
@@ -533,6 +600,7 @@ func (this *QMediaServiceFeaturesInterface) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQMediaServiceFeaturesInterface constructs the type using only CGO pointers.
 func newQMediaServiceFeaturesInterface(h *C.QMediaServiceFeaturesInterface) *QMediaServiceFeaturesInterface {
 	if h == nil {
 		return nil
@@ -540,8 +608,13 @@ func newQMediaServiceFeaturesInterface(h *C.QMediaServiceFeaturesInterface) *QMe
 	return &QMediaServiceFeaturesInterface{h: h}
 }
 
+// UnsafeNewQMediaServiceFeaturesInterface constructs the type using only unsafe pointers.
 func UnsafeNewQMediaServiceFeaturesInterface(h unsafe.Pointer) *QMediaServiceFeaturesInterface {
-	return newQMediaServiceFeaturesInterface((*C.QMediaServiceFeaturesInterface)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMediaServiceFeaturesInterface{h: (*C.QMediaServiceFeaturesInterface)(h)}
 }
 
 func (this *QMediaServiceFeaturesInterface) SupportedFeatures(service []byte) QMediaServiceProviderHint__Feature {
@@ -557,7 +630,7 @@ func (this *QMediaServiceFeaturesInterface) OperatorAssign(param1 *QMediaService
 
 // Delete this object from C++ memory.
 func (this *QMediaServiceFeaturesInterface) Delete() {
-	C.QMediaServiceFeaturesInterface_Delete(this.h)
+	C.QMediaServiceFeaturesInterface_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -570,7 +643,8 @@ func (this *QMediaServiceFeaturesInterface) GoGC() {
 }
 
 type QMediaServiceProviderPlugin struct {
-	h *C.QMediaServiceProviderPlugin
+	h          *C.QMediaServiceProviderPlugin
+	isSubclass bool
 	*qt.QObject
 	*QMediaServiceProviderFactoryInterface
 }
@@ -589,15 +663,25 @@ func (this *QMediaServiceProviderPlugin) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQMediaServiceProviderPlugin(h *C.QMediaServiceProviderPlugin) *QMediaServiceProviderPlugin {
+// newQMediaServiceProviderPlugin constructs the type using only CGO pointers.
+func newQMediaServiceProviderPlugin(h *C.QMediaServiceProviderPlugin, h_QObject *C.QObject, h_QMediaServiceProviderFactoryInterface *C.QMediaServiceProviderFactoryInterface) *QMediaServiceProviderPlugin {
 	if h == nil {
 		return nil
 	}
-	return &QMediaServiceProviderPlugin{h: h, QObject: qt.UnsafeNewQObject(unsafe.Pointer(h)), QMediaServiceProviderFactoryInterface: UnsafeNewQMediaServiceProviderFactoryInterface(unsafe.Pointer(h))}
+	return &QMediaServiceProviderPlugin{h: h,
+		QObject:                               qt.UnsafeNewQObject(unsafe.Pointer(h_QObject)),
+		QMediaServiceProviderFactoryInterface: newQMediaServiceProviderFactoryInterface(h_QMediaServiceProviderFactoryInterface)}
 }
 
-func UnsafeNewQMediaServiceProviderPlugin(h unsafe.Pointer) *QMediaServiceProviderPlugin {
-	return newQMediaServiceProviderPlugin((*C.QMediaServiceProviderPlugin)(h))
+// UnsafeNewQMediaServiceProviderPlugin constructs the type using only unsafe pointers.
+func UnsafeNewQMediaServiceProviderPlugin(h unsafe.Pointer, h_QObject unsafe.Pointer, h_QMediaServiceProviderFactoryInterface unsafe.Pointer) *QMediaServiceProviderPlugin {
+	if h == nil {
+		return nil
+	}
+
+	return &QMediaServiceProviderPlugin{h: (*C.QMediaServiceProviderPlugin)(h),
+		QObject:                               qt.UnsafeNewQObject(h_QObject),
+		QMediaServiceProviderFactoryInterface: UnsafeNewQMediaServiceProviderFactoryInterface(h_QMediaServiceProviderFactoryInterface)}
 }
 
 func (this *QMediaServiceProviderPlugin) MetaObject() *qt.QMetaObject {
@@ -633,7 +717,7 @@ func (this *QMediaServiceProviderPlugin) Create(key string) *QMediaService {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	return UnsafeNewQMediaService(unsafe.Pointer(C.QMediaServiceProviderPlugin_Create(this.h, key_ms)))
+	return UnsafeNewQMediaService(unsafe.Pointer(C.QMediaServiceProviderPlugin_Create(this.h, key_ms)), nil)
 }
 
 func (this *QMediaServiceProviderPlugin) Release(service *QMediaService) {
@@ -686,7 +770,7 @@ func QMediaServiceProviderPlugin_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QMediaServiceProviderPlugin) Delete() {
-	C.QMediaServiceProviderPlugin_Delete(this.h)
+	C.QMediaServiceProviderPlugin_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

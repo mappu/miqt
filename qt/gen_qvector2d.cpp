@@ -7,36 +7,44 @@
 #include "gen_qvector2d.h"
 #include "_cgo_export.h"
 
-QVector2D* QVector2D_new() {
-	return new QVector2D();
+void QVector2D_new(QVector2D** outptr_QVector2D) {
+	QVector2D* ret = new QVector2D();
+	*outptr_QVector2D = ret;
 }
 
-QVector2D* QVector2D_new2(int param1) {
-	return new QVector2D(static_cast<Qt::Initialization>(param1));
+void QVector2D_new2(int param1, QVector2D** outptr_QVector2D) {
+	QVector2D* ret = new QVector2D(static_cast<Qt::Initialization>(param1));
+	*outptr_QVector2D = ret;
 }
 
-QVector2D* QVector2D_new3(float xpos, float ypos) {
-	return new QVector2D(static_cast<float>(xpos), static_cast<float>(ypos));
+void QVector2D_new3(float xpos, float ypos, QVector2D** outptr_QVector2D) {
+	QVector2D* ret = new QVector2D(static_cast<float>(xpos), static_cast<float>(ypos));
+	*outptr_QVector2D = ret;
 }
 
-QVector2D* QVector2D_new4(QPoint* point) {
-	return new QVector2D(*point);
+void QVector2D_new4(QPoint* point, QVector2D** outptr_QVector2D) {
+	QVector2D* ret = new QVector2D(*point);
+	*outptr_QVector2D = ret;
 }
 
-QVector2D* QVector2D_new5(QPointF* point) {
-	return new QVector2D(*point);
+void QVector2D_new5(QPointF* point, QVector2D** outptr_QVector2D) {
+	QVector2D* ret = new QVector2D(*point);
+	*outptr_QVector2D = ret;
 }
 
-QVector2D* QVector2D_new6(QVector3D* vector) {
-	return new QVector2D(*vector);
+void QVector2D_new6(QVector3D* vector, QVector2D** outptr_QVector2D) {
+	QVector2D* ret = new QVector2D(*vector);
+	*outptr_QVector2D = ret;
 }
 
-QVector2D* QVector2D_new7(QVector4D* vector) {
-	return new QVector2D(*vector);
+void QVector2D_new7(QVector4D* vector, QVector2D** outptr_QVector2D) {
+	QVector2D* ret = new QVector2D(*vector);
+	*outptr_QVector2D = ret;
 }
 
-QVector2D* QVector2D_new8(QVector2D* param1) {
-	return new QVector2D(*param1);
+void QVector2D_new8(QVector2D* param1, QVector2D** outptr_QVector2D) {
+	QVector2D* ret = new QVector2D(*param1);
+	*outptr_QVector2D = ret;
 }
 
 bool QVector2D_IsNull(const QVector2D* self) {
@@ -143,7 +151,11 @@ QPointF* QVector2D_ToPointF(const QVector2D* self) {
 	return new QPointF(self->toPointF());
 }
 
-void QVector2D_Delete(QVector2D* self) {
-	delete self;
+void QVector2D_Delete(QVector2D* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QVector2D*>( self );
+	} else {
+		delete self;
+	}
 }
 

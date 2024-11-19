@@ -1,4 +1,6 @@
+#include <QMediaControl>
 #include <QMetaObject>
+#include <QObject>
 #include <QRadioTunerControl>
 #include <QString>
 #include <QByteArray>
@@ -130,8 +132,8 @@ void QRadioTunerControl_SearchBackward(QRadioTunerControl* self) {
 	self->searchBackward();
 }
 
-void QRadioTunerControl_SearchAllStations(QRadioTunerControl* self) {
-	self->searchAllStations();
+void QRadioTunerControl_SearchAllStations(QRadioTunerControl* self, int searchMode) {
+	self->searchAllStations(static_cast<QRadioTuner::SearchMode>(searchMode));
 }
 
 void QRadioTunerControl_CancelSearch(QRadioTunerControl* self) {
@@ -339,11 +341,11 @@ struct miqt_string QRadioTunerControl_TrUtf83(const char* s, const char* c, int 
 	return _ms;
 }
 
-void QRadioTunerControl_SearchAllStations1(QRadioTunerControl* self, int searchMode) {
-	self->searchAllStations(static_cast<QRadioTuner::SearchMode>(searchMode));
-}
-
-void QRadioTunerControl_Delete(QRadioTunerControl* self) {
-	delete self;
+void QRadioTunerControl_Delete(QRadioTunerControl* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QRadioTunerControl*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -14,7 +14,8 @@ import (
 )
 
 type QAudioDeviceInfo struct {
-	h *C.QAudioDeviceInfo
+	h          *C.QAudioDeviceInfo
+	isSubclass bool
 }
 
 func (this *QAudioDeviceInfo) cPointer() *C.QAudioDeviceInfo {
@@ -31,6 +32,7 @@ func (this *QAudioDeviceInfo) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAudioDeviceInfo constructs the type using only CGO pointers.
 func newQAudioDeviceInfo(h *C.QAudioDeviceInfo) *QAudioDeviceInfo {
 	if h == nil {
 		return nil
@@ -38,20 +40,33 @@ func newQAudioDeviceInfo(h *C.QAudioDeviceInfo) *QAudioDeviceInfo {
 	return &QAudioDeviceInfo{h: h}
 }
 
+// UnsafeNewQAudioDeviceInfo constructs the type using only unsafe pointers.
 func UnsafeNewQAudioDeviceInfo(h unsafe.Pointer) *QAudioDeviceInfo {
-	return newQAudioDeviceInfo((*C.QAudioDeviceInfo)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAudioDeviceInfo{h: (*C.QAudioDeviceInfo)(h)}
 }
 
 // NewQAudioDeviceInfo constructs a new QAudioDeviceInfo object.
 func NewQAudioDeviceInfo() *QAudioDeviceInfo {
-	ret := C.QAudioDeviceInfo_new()
-	return newQAudioDeviceInfo(ret)
+	var outptr_QAudioDeviceInfo *C.QAudioDeviceInfo = nil
+
+	C.QAudioDeviceInfo_new(&outptr_QAudioDeviceInfo)
+	ret := newQAudioDeviceInfo(outptr_QAudioDeviceInfo)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAudioDeviceInfo2 constructs a new QAudioDeviceInfo object.
 func NewQAudioDeviceInfo2(other *QAudioDeviceInfo) *QAudioDeviceInfo {
-	ret := C.QAudioDeviceInfo_new2(other.cPointer())
-	return newQAudioDeviceInfo(ret)
+	var outptr_QAudioDeviceInfo *C.QAudioDeviceInfo = nil
+
+	C.QAudioDeviceInfo_new2(other.cPointer(), &outptr_QAudioDeviceInfo)
+	ret := newQAudioDeviceInfo(outptr_QAudioDeviceInfo)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QAudioDeviceInfo) OperatorAssign(other *QAudioDeviceInfo) {
@@ -194,7 +209,7 @@ func QAudioDeviceInfo_AvailableDevices(mode QAudio__Mode) []QAudioDeviceInfo {
 
 // Delete this object from C++ memory.
 func (this *QAudioDeviceInfo) Delete() {
-	C.QAudioDeviceInfo_Delete(this.h)
+	C.QAudioDeviceInfo_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

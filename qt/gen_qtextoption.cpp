@@ -6,16 +6,19 @@
 #include "gen_qtextoption.h"
 #include "_cgo_export.h"
 
-QTextOption* QTextOption_new() {
-	return new QTextOption();
+void QTextOption_new(QTextOption** outptr_QTextOption) {
+	QTextOption* ret = new QTextOption();
+	*outptr_QTextOption = ret;
 }
 
-QTextOption* QTextOption_new2(int alignment) {
-	return new QTextOption(static_cast<Qt::Alignment>(alignment));
+void QTextOption_new2(int alignment, QTextOption** outptr_QTextOption) {
+	QTextOption* ret = new QTextOption(static_cast<Qt::Alignment>(alignment));
+	*outptr_QTextOption = ret;
 }
 
-QTextOption* QTextOption_new3(QTextOption* o) {
-	return new QTextOption(*o);
+void QTextOption_new3(QTextOption* o, QTextOption** outptr_QTextOption) {
+	QTextOption* ret = new QTextOption(*o);
+	*outptr_QTextOption = ret;
 }
 
 void QTextOption_OperatorAssign(QTextOption* self, QTextOption* o) {
@@ -130,24 +133,32 @@ bool QTextOption_UseDesignMetrics(const QTextOption* self) {
 	return self->useDesignMetrics();
 }
 
-void QTextOption_Delete(QTextOption* self) {
-	delete self;
+void QTextOption_Delete(QTextOption* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QTextOption*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QTextOption__Tab* QTextOption__Tab_new() {
-	return new QTextOption::Tab();
+void QTextOption__Tab_new(QTextOption__Tab** outptr_QTextOption__Tab) {
+	QTextOption::Tab* ret = new QTextOption::Tab();
+	*outptr_QTextOption__Tab = ret;
 }
 
-QTextOption__Tab* QTextOption__Tab_new2(double pos, int tabType) {
-	return new QTextOption::Tab(static_cast<qreal>(pos), static_cast<QTextOption::TabType>(tabType));
+void QTextOption__Tab_new2(double pos, int tabType, QTextOption__Tab** outptr_QTextOption__Tab) {
+	QTextOption::Tab* ret = new QTextOption::Tab(static_cast<qreal>(pos), static_cast<QTextOption::TabType>(tabType));
+	*outptr_QTextOption__Tab = ret;
 }
 
-QTextOption__Tab* QTextOption__Tab_new3(QTextOption__Tab* param1) {
-	return new QTextOption::Tab(*param1);
+void QTextOption__Tab_new3(QTextOption__Tab* param1, QTextOption__Tab** outptr_QTextOption__Tab) {
+	QTextOption::Tab* ret = new QTextOption::Tab(*param1);
+	*outptr_QTextOption__Tab = ret;
 }
 
-QTextOption__Tab* QTextOption__Tab_new4(double pos, int tabType, QChar* delim) {
-	return new QTextOption::Tab(static_cast<qreal>(pos), static_cast<QTextOption::TabType>(tabType), *delim);
+void QTextOption__Tab_new4(double pos, int tabType, QChar* delim, QTextOption__Tab** outptr_QTextOption__Tab) {
+	QTextOption::Tab* ret = new QTextOption::Tab(static_cast<qreal>(pos), static_cast<QTextOption::TabType>(tabType), *delim);
+	*outptr_QTextOption__Tab = ret;
 }
 
 bool QTextOption__Tab_OperatorEqual(const QTextOption__Tab* self, QTextOption__Tab* other) {
@@ -158,7 +169,11 @@ bool QTextOption__Tab_OperatorNotEqual(const QTextOption__Tab* self, QTextOption
 	return self->operator!=(*other);
 }
 
-void QTextOption__Tab_Delete(QTextOption__Tab* self) {
-	delete self;
+void QTextOption__Tab_Delete(QTextOption__Tab* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QTextOption::Tab*>( self );
+	} else {
+		delete self;
+	}
 }
 

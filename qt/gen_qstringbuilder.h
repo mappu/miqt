@@ -20,7 +20,7 @@ class QAbstractConcatenable;
 typedef struct QAbstractConcatenable QAbstractConcatenable;
 #endif
 
-void QAbstractConcatenable_Delete(QAbstractConcatenable* self);
+void QAbstractConcatenable_Delete(QAbstractConcatenable* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

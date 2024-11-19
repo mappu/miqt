@@ -36,11 +36,11 @@ typedef struct QRegion QRegion;
 typedef struct QTransform QTransform;
 #endif
 
-QTransform* QTransform_new(int param1);
-QTransform* QTransform_new2();
-QTransform* QTransform_new3(double h11, double h12, double h13, double h21, double h22, double h23, double h31, double h32, double h33);
-QTransform* QTransform_new4(double h11, double h12, double h21, double h22, double dx, double dy);
-QTransform* QTransform_new5(QTransform* other);
+void QTransform_new(int param1, QTransform** outptr_QTransform);
+void QTransform_new2(QTransform** outptr_QTransform);
+void QTransform_new3(double h11, double h12, double h13, double h21, double h22, double h23, double h31, double h32, double h33, QTransform** outptr_QTransform);
+void QTransform_new4(double h11, double h12, double h21, double h22, double dx, double dy, QTransform** outptr_QTransform);
+void QTransform_new5(QTransform* other, QTransform** outptr_QTransform);
 void QTransform_OperatorAssign(QTransform* self, QTransform* param1);
 bool QTransform_IsAffine(const QTransform* self);
 bool QTransform_IsIdentity(const QTransform* self);
@@ -94,7 +94,7 @@ QTransform* QTransform_FromScale(double dx, double dy);
 QTransform* QTransform_Inverted1(const QTransform* self, bool* invertible);
 QTransform* QTransform_Rotate2(QTransform* self, double a, int axis);
 QTransform* QTransform_RotateRadians2(QTransform* self, double a, int axis);
-void QTransform_Delete(QTransform* self);
+void QTransform_Delete(QTransform* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

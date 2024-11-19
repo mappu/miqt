@@ -8,40 +8,48 @@
 #include "gen_qfont.h"
 #include "_cgo_export.h"
 
-QFont* QFont_new() {
-	return new QFont();
+void QFont_new(QFont** outptr_QFont) {
+	QFont* ret = new QFont();
+	*outptr_QFont = ret;
 }
 
-QFont* QFont_new2(struct miqt_string family) {
+void QFont_new2(struct miqt_string family, QFont** outptr_QFont) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
-	return new QFont(family_QString);
+	QFont* ret = new QFont(family_QString);
+	*outptr_QFont = ret;
 }
 
-QFont* QFont_new3(QFont* font, QPaintDevice* pd) {
-	return new QFont(*font, pd);
+void QFont_new3(QFont* font, QPaintDevice* pd, QFont** outptr_QFont) {
+	QFont* ret = new QFont(*font, pd);
+	*outptr_QFont = ret;
 }
 
-QFont* QFont_new4(QFont* font, QPaintDevice* pd) {
-	return new QFont(*font, pd);
+void QFont_new4(QFont* font, QPaintDevice* pd, QFont** outptr_QFont) {
+	QFont* ret = new QFont(*font, pd);
+	*outptr_QFont = ret;
 }
 
-QFont* QFont_new5(QFont* font) {
-	return new QFont(*font);
+void QFont_new5(QFont* font, QFont** outptr_QFont) {
+	QFont* ret = new QFont(*font);
+	*outptr_QFont = ret;
 }
 
-QFont* QFont_new6(struct miqt_string family, int pointSize) {
+void QFont_new6(struct miqt_string family, int pointSize, QFont** outptr_QFont) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
-	return new QFont(family_QString, static_cast<int>(pointSize));
+	QFont* ret = new QFont(family_QString, static_cast<int>(pointSize));
+	*outptr_QFont = ret;
 }
 
-QFont* QFont_new7(struct miqt_string family, int pointSize, int weight) {
+void QFont_new7(struct miqt_string family, int pointSize, int weight, QFont** outptr_QFont) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
-	return new QFont(family_QString, static_cast<int>(pointSize), static_cast<int>(weight));
+	QFont* ret = new QFont(family_QString, static_cast<int>(pointSize), static_cast<int>(weight));
+	*outptr_QFont = ret;
 }
 
-QFont* QFont_new8(struct miqt_string family, int pointSize, int weight, bool italic) {
+void QFont_new8(struct miqt_string family, int pointSize, int weight, bool italic, QFont** outptr_QFont) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
-	return new QFont(family_QString, static_cast<int>(pointSize), static_cast<int>(weight), italic);
+	QFont* ret = new QFont(family_QString, static_cast<int>(pointSize), static_cast<int>(weight), italic);
+	*outptr_QFont = ret;
 }
 
 void QFont_Swap(QFont* self, QFont* other) {
@@ -489,7 +497,11 @@ void QFont_SetStyleHint2(QFont* self, int param1, int param2) {
 	self->setStyleHint(static_cast<QFont::StyleHint>(param1), static_cast<QFont::StyleStrategy>(param2));
 }
 
-void QFont_Delete(QFont* self) {
-	delete self;
+void QFont_Delete(QFont* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QFont*>( self );
+	} else {
+		delete self;
+	}
 }
 

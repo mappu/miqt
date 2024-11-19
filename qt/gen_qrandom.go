@@ -14,7 +14,8 @@ import (
 )
 
 type QRandomGenerator struct {
-	h *C.QRandomGenerator
+	h          *C.QRandomGenerator
+	isSubclass bool
 }
 
 func (this *QRandomGenerator) cPointer() *C.QRandomGenerator {
@@ -31,6 +32,7 @@ func (this *QRandomGenerator) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQRandomGenerator constructs the type using only CGO pointers.
 func newQRandomGenerator(h *C.QRandomGenerator) *QRandomGenerator {
 	if h == nil {
 		return nil
@@ -38,38 +40,63 @@ func newQRandomGenerator(h *C.QRandomGenerator) *QRandomGenerator {
 	return &QRandomGenerator{h: h}
 }
 
+// UnsafeNewQRandomGenerator constructs the type using only unsafe pointers.
 func UnsafeNewQRandomGenerator(h unsafe.Pointer) *QRandomGenerator {
-	return newQRandomGenerator((*C.QRandomGenerator)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QRandomGenerator{h: (*C.QRandomGenerator)(h)}
 }
 
 // NewQRandomGenerator constructs a new QRandomGenerator object.
 func NewQRandomGenerator() *QRandomGenerator {
-	ret := C.QRandomGenerator_new()
-	return newQRandomGenerator(ret)
+	var outptr_QRandomGenerator *C.QRandomGenerator = nil
+
+	C.QRandomGenerator_new(&outptr_QRandomGenerator)
+	ret := newQRandomGenerator(outptr_QRandomGenerator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRandomGenerator2 constructs a new QRandomGenerator object.
 func NewQRandomGenerator2(seedBuffer *uint, lenVal int64) *QRandomGenerator {
-	ret := C.QRandomGenerator_new2((*C.uint)(unsafe.Pointer(seedBuffer)), (C.ptrdiff_t)(lenVal))
-	return newQRandomGenerator(ret)
+	var outptr_QRandomGenerator *C.QRandomGenerator = nil
+
+	C.QRandomGenerator_new2((*C.uint)(unsafe.Pointer(seedBuffer)), (C.ptrdiff_t)(lenVal), &outptr_QRandomGenerator)
+	ret := newQRandomGenerator(outptr_QRandomGenerator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRandomGenerator3 constructs a new QRandomGenerator object.
 func NewQRandomGenerator3(begin *uint, end *uint) *QRandomGenerator {
-	ret := C.QRandomGenerator_new3((*C.uint)(unsafe.Pointer(begin)), (*C.uint)(unsafe.Pointer(end)))
-	return newQRandomGenerator(ret)
+	var outptr_QRandomGenerator *C.QRandomGenerator = nil
+
+	C.QRandomGenerator_new3((*C.uint)(unsafe.Pointer(begin)), (*C.uint)(unsafe.Pointer(end)), &outptr_QRandomGenerator)
+	ret := newQRandomGenerator(outptr_QRandomGenerator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRandomGenerator4 constructs a new QRandomGenerator object.
 func NewQRandomGenerator4(other *QRandomGenerator) *QRandomGenerator {
-	ret := C.QRandomGenerator_new4(other.cPointer())
-	return newQRandomGenerator(ret)
+	var outptr_QRandomGenerator *C.QRandomGenerator = nil
+
+	C.QRandomGenerator_new4(other.cPointer(), &outptr_QRandomGenerator)
+	ret := newQRandomGenerator(outptr_QRandomGenerator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRandomGenerator5 constructs a new QRandomGenerator object.
 func NewQRandomGenerator5(seedValue uint) *QRandomGenerator {
-	ret := C.QRandomGenerator_new5((C.uint)(seedValue))
-	return newQRandomGenerator(ret)
+	var outptr_QRandomGenerator *C.QRandomGenerator = nil
+
+	C.QRandomGenerator_new5((C.uint)(seedValue), &outptr_QRandomGenerator)
+	ret := newQRandomGenerator(outptr_QRandomGenerator)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QRandomGenerator) OperatorAssign(other *QRandomGenerator) {
@@ -153,7 +180,7 @@ func (this *QRandomGenerator) Seed1(s uint) {
 
 // Delete this object from C++ memory.
 func (this *QRandomGenerator) Delete() {
-	C.QRandomGenerator_Delete(this.h)
+	C.QRandomGenerator_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -166,7 +193,8 @@ func (this *QRandomGenerator) GoGC() {
 }
 
 type QRandomGenerator64 struct {
-	h *C.QRandomGenerator64
+	h          *C.QRandomGenerator64
+	isSubclass bool
 	*QRandomGenerator
 }
 
@@ -184,51 +212,89 @@ func (this *QRandomGenerator64) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQRandomGenerator64(h *C.QRandomGenerator64) *QRandomGenerator64 {
+// newQRandomGenerator64 constructs the type using only CGO pointers.
+func newQRandomGenerator64(h *C.QRandomGenerator64, h_QRandomGenerator *C.QRandomGenerator) *QRandomGenerator64 {
 	if h == nil {
 		return nil
 	}
-	return &QRandomGenerator64{h: h, QRandomGenerator: UnsafeNewQRandomGenerator(unsafe.Pointer(h))}
+	return &QRandomGenerator64{h: h,
+		QRandomGenerator: newQRandomGenerator(h_QRandomGenerator)}
 }
 
-func UnsafeNewQRandomGenerator64(h unsafe.Pointer) *QRandomGenerator64 {
-	return newQRandomGenerator64((*C.QRandomGenerator64)(h))
+// UnsafeNewQRandomGenerator64 constructs the type using only unsafe pointers.
+func UnsafeNewQRandomGenerator64(h unsafe.Pointer, h_QRandomGenerator unsafe.Pointer) *QRandomGenerator64 {
+	if h == nil {
+		return nil
+	}
+
+	return &QRandomGenerator64{h: (*C.QRandomGenerator64)(h),
+		QRandomGenerator: UnsafeNewQRandomGenerator(h_QRandomGenerator)}
 }
 
 // NewQRandomGenerator64 constructs a new QRandomGenerator64 object.
 func NewQRandomGenerator64() *QRandomGenerator64 {
-	ret := C.QRandomGenerator64_new()
-	return newQRandomGenerator64(ret)
+	var outptr_QRandomGenerator64 *C.QRandomGenerator64 = nil
+	var outptr_QRandomGenerator *C.QRandomGenerator = nil
+
+	C.QRandomGenerator64_new(&outptr_QRandomGenerator64, &outptr_QRandomGenerator)
+	ret := newQRandomGenerator64(outptr_QRandomGenerator64, outptr_QRandomGenerator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRandomGenerator642 constructs a new QRandomGenerator64 object.
 func NewQRandomGenerator642(seedBuffer *uint, lenVal int64) *QRandomGenerator64 {
-	ret := C.QRandomGenerator64_new2((*C.uint)(unsafe.Pointer(seedBuffer)), (C.ptrdiff_t)(lenVal))
-	return newQRandomGenerator64(ret)
+	var outptr_QRandomGenerator64 *C.QRandomGenerator64 = nil
+	var outptr_QRandomGenerator *C.QRandomGenerator = nil
+
+	C.QRandomGenerator64_new2((*C.uint)(unsafe.Pointer(seedBuffer)), (C.ptrdiff_t)(lenVal), &outptr_QRandomGenerator64, &outptr_QRandomGenerator)
+	ret := newQRandomGenerator64(outptr_QRandomGenerator64, outptr_QRandomGenerator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRandomGenerator643 constructs a new QRandomGenerator64 object.
 func NewQRandomGenerator643(begin *uint, end *uint) *QRandomGenerator64 {
-	ret := C.QRandomGenerator64_new3((*C.uint)(unsafe.Pointer(begin)), (*C.uint)(unsafe.Pointer(end)))
-	return newQRandomGenerator64(ret)
+	var outptr_QRandomGenerator64 *C.QRandomGenerator64 = nil
+	var outptr_QRandomGenerator *C.QRandomGenerator = nil
+
+	C.QRandomGenerator64_new3((*C.uint)(unsafe.Pointer(begin)), (*C.uint)(unsafe.Pointer(end)), &outptr_QRandomGenerator64, &outptr_QRandomGenerator)
+	ret := newQRandomGenerator64(outptr_QRandomGenerator64, outptr_QRandomGenerator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRandomGenerator644 constructs a new QRandomGenerator64 object.
 func NewQRandomGenerator644(other *QRandomGenerator) *QRandomGenerator64 {
-	ret := C.QRandomGenerator64_new4(other.cPointer())
-	return newQRandomGenerator64(ret)
+	var outptr_QRandomGenerator64 *C.QRandomGenerator64 = nil
+	var outptr_QRandomGenerator *C.QRandomGenerator = nil
+
+	C.QRandomGenerator64_new4(other.cPointer(), &outptr_QRandomGenerator64, &outptr_QRandomGenerator)
+	ret := newQRandomGenerator64(outptr_QRandomGenerator64, outptr_QRandomGenerator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRandomGenerator645 constructs a new QRandomGenerator64 object.
 func NewQRandomGenerator645(param1 *QRandomGenerator64) *QRandomGenerator64 {
-	ret := C.QRandomGenerator64_new5(param1.cPointer())
-	return newQRandomGenerator64(ret)
+	var outptr_QRandomGenerator64 *C.QRandomGenerator64 = nil
+	var outptr_QRandomGenerator *C.QRandomGenerator = nil
+
+	C.QRandomGenerator64_new5(param1.cPointer(), &outptr_QRandomGenerator64, &outptr_QRandomGenerator)
+	ret := newQRandomGenerator64(outptr_QRandomGenerator64, outptr_QRandomGenerator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRandomGenerator646 constructs a new QRandomGenerator64 object.
 func NewQRandomGenerator646(seedValue uint) *QRandomGenerator64 {
-	ret := C.QRandomGenerator64_new6((C.uint)(seedValue))
-	return newQRandomGenerator64(ret)
+	var outptr_QRandomGenerator64 *C.QRandomGenerator64 = nil
+	var outptr_QRandomGenerator *C.QRandomGenerator = nil
+
+	C.QRandomGenerator64_new6((C.uint)(seedValue), &outptr_QRandomGenerator64, &outptr_QRandomGenerator)
+	ret := newQRandomGenerator64(outptr_QRandomGenerator64, outptr_QRandomGenerator)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QRandomGenerator64) Generate() uint64 {
@@ -252,16 +318,16 @@ func QRandomGenerator64_Max() uint64 {
 }
 
 func QRandomGenerator64_System() *QRandomGenerator64 {
-	return UnsafeNewQRandomGenerator64(unsafe.Pointer(C.QRandomGenerator64_System()))
+	return UnsafeNewQRandomGenerator64(unsafe.Pointer(C.QRandomGenerator64_System()), nil)
 }
 
 func QRandomGenerator64_Global() *QRandomGenerator64 {
-	return UnsafeNewQRandomGenerator64(unsafe.Pointer(C.QRandomGenerator64_Global()))
+	return UnsafeNewQRandomGenerator64(unsafe.Pointer(C.QRandomGenerator64_Global()), nil)
 }
 
 func QRandomGenerator64_SecurelySeeded() *QRandomGenerator64 {
 	_ret := C.QRandomGenerator64_SecurelySeeded()
-	_goptr := newQRandomGenerator64(_ret)
+	_goptr := newQRandomGenerator64(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -272,7 +338,7 @@ func (this *QRandomGenerator64) OperatorAssign(param1 *QRandomGenerator64) {
 
 // Delete this object from C++ memory.
 func (this *QRandomGenerator64) Delete() {
-	C.QRandomGenerator64_Delete(this.h)
+	C.QRandomGenerator64_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

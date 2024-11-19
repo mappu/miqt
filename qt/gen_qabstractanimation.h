@@ -18,14 +18,22 @@ extern "C" {
 class QAbstractAnimation;
 class QAnimationDriver;
 class QAnimationGroup;
+class QChildEvent;
+class QEvent;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
+class QTimerEvent;
 #else
 typedef struct QAbstractAnimation QAbstractAnimation;
 typedef struct QAnimationDriver QAnimationDriver;
 typedef struct QAnimationGroup QAnimationGroup;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
 QMetaObject* QAbstractAnimation_MetaObject(const QAbstractAnimation* self);
@@ -57,15 +65,19 @@ void QAbstractAnimation_Resume(QAbstractAnimation* self);
 void QAbstractAnimation_SetPaused(QAbstractAnimation* self, bool paused);
 void QAbstractAnimation_Stop(QAbstractAnimation* self);
 void QAbstractAnimation_SetCurrentTime(QAbstractAnimation* self, int msecs);
+bool QAbstractAnimation_Event(QAbstractAnimation* self, QEvent* event);
+void QAbstractAnimation_UpdateCurrentTime(QAbstractAnimation* self, int currentTime);
+void QAbstractAnimation_UpdateState(QAbstractAnimation* self, int newState, int oldState);
+void QAbstractAnimation_UpdateDirection(QAbstractAnimation* self, int direction);
 struct miqt_string QAbstractAnimation_Tr2(const char* s, const char* c);
 struct miqt_string QAbstractAnimation_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAbstractAnimation_TrUtf82(const char* s, const char* c);
 struct miqt_string QAbstractAnimation_TrUtf83(const char* s, const char* c, int n);
 void QAbstractAnimation_Start1(QAbstractAnimation* self, int policy);
-void QAbstractAnimation_Delete(QAbstractAnimation* self);
+void QAbstractAnimation_Delete(QAbstractAnimation* self, bool isSubclass);
 
-QAnimationDriver* QAnimationDriver_new();
-QAnimationDriver* QAnimationDriver_new2(QObject* parent);
+void QAnimationDriver_new(QAnimationDriver** outptr_QAnimationDriver, QObject** outptr_QObject);
+void QAnimationDriver_new2(QObject* parent, QAnimationDriver** outptr_QAnimationDriver, QObject** outptr_QObject);
 QMetaObject* QAnimationDriver_MetaObject(const QAnimationDriver* self);
 void* QAnimationDriver_Metacast(QAnimationDriver* self, const char* param1);
 struct miqt_string QAnimationDriver_Tr(const char* s);
@@ -81,11 +93,35 @@ void QAnimationDriver_Started(QAnimationDriver* self);
 void QAnimationDriver_connect_Started(QAnimationDriver* self, intptr_t slot);
 void QAnimationDriver_Stopped(QAnimationDriver* self);
 void QAnimationDriver_connect_Stopped(QAnimationDriver* self, intptr_t slot);
+void QAnimationDriver_Start(QAnimationDriver* self);
+void QAnimationDriver_Stop(QAnimationDriver* self);
 struct miqt_string QAnimationDriver_Tr2(const char* s, const char* c);
 struct miqt_string QAnimationDriver_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAnimationDriver_TrUtf82(const char* s, const char* c);
 struct miqt_string QAnimationDriver_TrUtf83(const char* s, const char* c, int n);
-void QAnimationDriver_Delete(QAnimationDriver* self);
+void QAnimationDriver_override_virtual_Advance(void* self, intptr_t slot);
+void QAnimationDriver_virtualbase_Advance(void* self);
+void QAnimationDriver_override_virtual_Elapsed(void* self, intptr_t slot);
+long long QAnimationDriver_virtualbase_Elapsed(const void* self);
+void QAnimationDriver_override_virtual_Start(void* self, intptr_t slot);
+void QAnimationDriver_virtualbase_Start(void* self);
+void QAnimationDriver_override_virtual_Stop(void* self, intptr_t slot);
+void QAnimationDriver_virtualbase_Stop(void* self);
+void QAnimationDriver_override_virtual_Event(void* self, intptr_t slot);
+bool QAnimationDriver_virtualbase_Event(void* self, QEvent* event);
+void QAnimationDriver_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QAnimationDriver_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QAnimationDriver_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QAnimationDriver_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QAnimationDriver_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QAnimationDriver_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QAnimationDriver_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QAnimationDriver_virtualbase_CustomEvent(void* self, QEvent* event);
+void QAnimationDriver_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QAnimationDriver_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QAnimationDriver_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QAnimationDriver_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QAnimationDriver_Delete(QAnimationDriver* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

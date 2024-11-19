@@ -15,7 +15,8 @@ import (
 )
 
 type QButtonGroup struct {
-	h *C.QButtonGroup
+	h          *C.QButtonGroup
+	isSubclass bool
 	*QObject
 }
 
@@ -33,27 +34,45 @@ func (this *QButtonGroup) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQButtonGroup(h *C.QButtonGroup) *QButtonGroup {
+// newQButtonGroup constructs the type using only CGO pointers.
+func newQButtonGroup(h *C.QButtonGroup, h_QObject *C.QObject) *QButtonGroup {
 	if h == nil {
 		return nil
 	}
-	return &QButtonGroup{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QButtonGroup{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQButtonGroup(h unsafe.Pointer) *QButtonGroup {
-	return newQButtonGroup((*C.QButtonGroup)(h))
+// UnsafeNewQButtonGroup constructs the type using only unsafe pointers.
+func UnsafeNewQButtonGroup(h unsafe.Pointer, h_QObject unsafe.Pointer) *QButtonGroup {
+	if h == nil {
+		return nil
+	}
+
+	return &QButtonGroup{h: (*C.QButtonGroup)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 // NewQButtonGroup constructs a new QButtonGroup object.
 func NewQButtonGroup() *QButtonGroup {
-	ret := C.QButtonGroup_new()
-	return newQButtonGroup(ret)
+	var outptr_QButtonGroup *C.QButtonGroup = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QButtonGroup_new(&outptr_QButtonGroup, &outptr_QObject)
+	ret := newQButtonGroup(outptr_QButtonGroup, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQButtonGroup2 constructs a new QButtonGroup object.
 func NewQButtonGroup2(parent *QObject) *QButtonGroup {
-	ret := C.QButtonGroup_new2(parent.cPointer())
-	return newQButtonGroup(ret)
+	var outptr_QButtonGroup *C.QButtonGroup = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QButtonGroup_new2(parent.cPointer(), &outptr_QButtonGroup, &outptr_QObject)
+	ret := newQButtonGroup(outptr_QButtonGroup, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QButtonGroup) MetaObject() *QMetaObject {
@@ -96,17 +115,17 @@ func (this *QButtonGroup) Buttons() []*QAbstractButton {
 	_ret := make([]*QAbstractButton, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractButton)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQAbstractButton(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQAbstractButton(unsafe.Pointer(_outCast[i]), nil, nil, nil)
 	}
 	return _ret
 }
 
 func (this *QButtonGroup) CheckedButton() *QAbstractButton {
-	return UnsafeNewQAbstractButton(unsafe.Pointer(C.QButtonGroup_CheckedButton(this.h)))
+	return UnsafeNewQAbstractButton(unsafe.Pointer(C.QButtonGroup_CheckedButton(this.h)), nil, nil, nil)
 }
 
 func (this *QButtonGroup) Button(id int) *QAbstractButton {
-	return UnsafeNewQAbstractButton(unsafe.Pointer(C.QButtonGroup_Button(this.h, (C.int)(id))))
+	return UnsafeNewQAbstractButton(unsafe.Pointer(C.QButtonGroup_Button(this.h, (C.int)(id))), nil, nil, nil)
 }
 
 func (this *QButtonGroup) SetId(button *QAbstractButton, id int) {
@@ -136,7 +155,7 @@ func miqt_exec_callback_QButtonGroup_ButtonClicked(cb C.intptr_t, param1 *C.QAbs
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAbstractButton(unsafe.Pointer(param1))
+	slotval1 := UnsafeNewQAbstractButton(unsafe.Pointer(param1), nil, nil, nil)
 
 	gofunc(slotval1)
 }
@@ -156,7 +175,7 @@ func miqt_exec_callback_QButtonGroup_ButtonPressed(cb C.intptr_t, param1 *C.QAbs
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAbstractButton(unsafe.Pointer(param1))
+	slotval1 := UnsafeNewQAbstractButton(unsafe.Pointer(param1), nil, nil, nil)
 
 	gofunc(slotval1)
 }
@@ -176,7 +195,7 @@ func miqt_exec_callback_QButtonGroup_ButtonReleased(cb C.intptr_t, param1 *C.QAb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAbstractButton(unsafe.Pointer(param1))
+	slotval1 := UnsafeNewQAbstractButton(unsafe.Pointer(param1), nil, nil, nil)
 
 	gofunc(slotval1)
 }
@@ -196,7 +215,7 @@ func miqt_exec_callback_QButtonGroup_ButtonToggled(cb C.intptr_t, param1 *C.QAbs
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAbstractButton(unsafe.Pointer(param1))
+	slotval1 := UnsafeNewQAbstractButton(unsafe.Pointer(param1), nil, nil, nil)
 	slotval2 := (bool)(param2)
 
 	gofunc(slotval1, slotval2)
@@ -310,9 +329,175 @@ func (this *QButtonGroup) AddButton2(param1 *QAbstractButton, id int) {
 	C.QButtonGroup_AddButton2(this.h, param1.cPointer(), (C.int)(id))
 }
 
+func (this *QButtonGroup) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QButtonGroup_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QButtonGroup) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	C.QButtonGroup_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QButtonGroup_Event
+func miqt_exec_callback_QButtonGroup_Event(self *C.QButtonGroup, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QButtonGroup{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QButtonGroup) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QButtonGroup_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QButtonGroup) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	C.QButtonGroup_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QButtonGroup_EventFilter
+func miqt_exec_callback_QButtonGroup_EventFilter(self *C.QButtonGroup, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QButtonGroup{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QButtonGroup) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QButtonGroup_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QButtonGroup) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	C.QButtonGroup_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QButtonGroup_TimerEvent
+func miqt_exec_callback_QButtonGroup_TimerEvent(self *C.QButtonGroup, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QButtonGroup{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QButtonGroup) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QButtonGroup_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QButtonGroup) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	C.QButtonGroup_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QButtonGroup_ChildEvent
+func miqt_exec_callback_QButtonGroup_ChildEvent(self *C.QButtonGroup, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QButtonGroup{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QButtonGroup) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QButtonGroup_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QButtonGroup) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	C.QButtonGroup_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QButtonGroup_CustomEvent
+func miqt_exec_callback_QButtonGroup_CustomEvent(self *C.QButtonGroup, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QButtonGroup{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QButtonGroup) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QButtonGroup_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QButtonGroup) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QButtonGroup_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QButtonGroup_ConnectNotify
+func miqt_exec_callback_QButtonGroup_ConnectNotify(self *C.QButtonGroup, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QButtonGroup{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QButtonGroup) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QButtonGroup_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QButtonGroup) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QButtonGroup_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QButtonGroup_DisconnectNotify
+func miqt_exec_callback_QButtonGroup_DisconnectNotify(self *C.QButtonGroup, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QButtonGroup{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QButtonGroup) Delete() {
-	C.QButtonGroup_Delete(this.h)
+	C.QButtonGroup_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

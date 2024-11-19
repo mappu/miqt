@@ -23,7 +23,8 @@ const (
 )
 
 type QSslConfiguration struct {
-	h *C.QSslConfiguration
+	h          *C.QSslConfiguration
+	isSubclass bool
 }
 
 func (this *QSslConfiguration) cPointer() *C.QSslConfiguration {
@@ -40,6 +41,7 @@ func (this *QSslConfiguration) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQSslConfiguration constructs the type using only CGO pointers.
 func newQSslConfiguration(h *C.QSslConfiguration) *QSslConfiguration {
 	if h == nil {
 		return nil
@@ -47,20 +49,33 @@ func newQSslConfiguration(h *C.QSslConfiguration) *QSslConfiguration {
 	return &QSslConfiguration{h: h}
 }
 
+// UnsafeNewQSslConfiguration constructs the type using only unsafe pointers.
 func UnsafeNewQSslConfiguration(h unsafe.Pointer) *QSslConfiguration {
-	return newQSslConfiguration((*C.QSslConfiguration)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QSslConfiguration{h: (*C.QSslConfiguration)(h)}
 }
 
 // NewQSslConfiguration constructs a new QSslConfiguration object.
 func NewQSslConfiguration() *QSslConfiguration {
-	ret := C.QSslConfiguration_new()
-	return newQSslConfiguration(ret)
+	var outptr_QSslConfiguration *C.QSslConfiguration = nil
+
+	C.QSslConfiguration_new(&outptr_QSslConfiguration)
+	ret := newQSslConfiguration(outptr_QSslConfiguration)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSslConfiguration2 constructs a new QSslConfiguration object.
 func NewQSslConfiguration2(other *QSslConfiguration) *QSslConfiguration {
-	ret := C.QSslConfiguration_new2(other.cPointer())
-	return newQSslConfiguration(ret)
+	var outptr_QSslConfiguration *C.QSslConfiguration = nil
+
+	C.QSslConfiguration_new2(other.cPointer(), &outptr_QSslConfiguration)
+	ret := newQSslConfiguration(outptr_QSslConfiguration)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QSslConfiguration) OperatorAssign(other *QSslConfiguration) {
@@ -499,7 +514,7 @@ func (this *QSslConfiguration) AddCaCertificates3(path string, format QSsl__Enco
 
 // Delete this object from C++ memory.
 func (this *QSslConfiguration) Delete() {
-	C.QSslConfiguration_Delete(this.h)
+	C.QSslConfiguration_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

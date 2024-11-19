@@ -27,7 +27,11 @@ QSize* QSurface_Size(const QSurface* self) {
 	return new QSize(self->size());
 }
 
-void QSurface_Delete(QSurface* self) {
-	delete self;
+void QSurface_Delete(QSurface* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QSurface*>( self );
+	} else {
+		delete self;
+	}
 }
 

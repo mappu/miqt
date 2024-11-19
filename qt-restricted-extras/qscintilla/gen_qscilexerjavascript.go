@@ -11,11 +11,13 @@ import "C"
 import (
 	"github.com/mappu/miqt/qt"
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
 type QsciLexerJavaScript struct {
-	h *C.QsciLexerJavaScript
+	h          *C.QsciLexerJavaScript
+	isSubclass bool
 	*QsciLexerCPP
 }
 
@@ -33,27 +35,49 @@ func (this *QsciLexerJavaScript) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQsciLexerJavaScript(h *C.QsciLexerJavaScript) *QsciLexerJavaScript {
+// newQsciLexerJavaScript constructs the type using only CGO pointers.
+func newQsciLexerJavaScript(h *C.QsciLexerJavaScript, h_QsciLexerCPP *C.QsciLexerCPP, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerJavaScript {
 	if h == nil {
 		return nil
 	}
-	return &QsciLexerJavaScript{h: h, QsciLexerCPP: UnsafeNewQsciLexerCPP(unsafe.Pointer(h))}
+	return &QsciLexerJavaScript{h: h,
+		QsciLexerCPP: newQsciLexerCPP(h_QsciLexerCPP, h_QsciLexer, h_QObject)}
 }
 
-func UnsafeNewQsciLexerJavaScript(h unsafe.Pointer) *QsciLexerJavaScript {
-	return newQsciLexerJavaScript((*C.QsciLexerJavaScript)(h))
+// UnsafeNewQsciLexerJavaScript constructs the type using only unsafe pointers.
+func UnsafeNewQsciLexerJavaScript(h unsafe.Pointer, h_QsciLexerCPP unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerJavaScript {
+	if h == nil {
+		return nil
+	}
+
+	return &QsciLexerJavaScript{h: (*C.QsciLexerJavaScript)(h),
+		QsciLexerCPP: UnsafeNewQsciLexerCPP(h_QsciLexerCPP, h_QsciLexer, h_QObject)}
 }
 
 // NewQsciLexerJavaScript constructs a new QsciLexerJavaScript object.
 func NewQsciLexerJavaScript() *QsciLexerJavaScript {
-	ret := C.QsciLexerJavaScript_new()
-	return newQsciLexerJavaScript(ret)
+	var outptr_QsciLexerJavaScript *C.QsciLexerJavaScript = nil
+	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
+	var outptr_QsciLexer *C.QsciLexer = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QsciLexerJavaScript_new(&outptr_QsciLexerJavaScript, &outptr_QsciLexerCPP, &outptr_QsciLexer, &outptr_QObject)
+	ret := newQsciLexerJavaScript(outptr_QsciLexerJavaScript, outptr_QsciLexerCPP, outptr_QsciLexer, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQsciLexerJavaScript2 constructs a new QsciLexerJavaScript object.
 func NewQsciLexerJavaScript2(parent *qt.QObject) *QsciLexerJavaScript {
-	ret := C.QsciLexerJavaScript_new2((*C.QObject)(parent.UnsafePointer()))
-	return newQsciLexerJavaScript(ret)
+	var outptr_QsciLexerJavaScript *C.QsciLexerJavaScript = nil
+	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
+	var outptr_QsciLexer *C.QsciLexer = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QsciLexerJavaScript_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QsciLexerJavaScript, &outptr_QsciLexerCPP, &outptr_QsciLexer, &outptr_QObject)
+	ret := newQsciLexerJavaScript(outptr_QsciLexerJavaScript, outptr_QsciLexerCPP, outptr_QsciLexer, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QsciLexerJavaScript) MetaObject() *qt.QMetaObject {
@@ -170,9 +194,124 @@ func QsciLexerJavaScript_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QsciLexerJavaScript) callVirtualBase_SetFoldAtElse(fold bool) {
+
+	C.QsciLexerJavaScript_virtualbase_SetFoldAtElse(unsafe.Pointer(this.h), (C.bool)(fold))
+
+}
+func (this *QsciLexerJavaScript) OnSetFoldAtElse(slot func(super func(fold bool), fold bool)) {
+	C.QsciLexerJavaScript_override_virtual_SetFoldAtElse(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerJavaScript_SetFoldAtElse
+func miqt_exec_callback_QsciLexerJavaScript_SetFoldAtElse(self *C.QsciLexerJavaScript, cb C.intptr_t, fold C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(fold bool), fold bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(fold)
+
+	gofunc((&QsciLexerJavaScript{h: self}).callVirtualBase_SetFoldAtElse, slotval1)
+
+}
+
+func (this *QsciLexerJavaScript) callVirtualBase_SetFoldComments(fold bool) {
+
+	C.QsciLexerJavaScript_virtualbase_SetFoldComments(unsafe.Pointer(this.h), (C.bool)(fold))
+
+}
+func (this *QsciLexerJavaScript) OnSetFoldComments(slot func(super func(fold bool), fold bool)) {
+	C.QsciLexerJavaScript_override_virtual_SetFoldComments(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerJavaScript_SetFoldComments
+func miqt_exec_callback_QsciLexerJavaScript_SetFoldComments(self *C.QsciLexerJavaScript, cb C.intptr_t, fold C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(fold bool), fold bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(fold)
+
+	gofunc((&QsciLexerJavaScript{h: self}).callVirtualBase_SetFoldComments, slotval1)
+
+}
+
+func (this *QsciLexerJavaScript) callVirtualBase_SetFoldCompact(fold bool) {
+
+	C.QsciLexerJavaScript_virtualbase_SetFoldCompact(unsafe.Pointer(this.h), (C.bool)(fold))
+
+}
+func (this *QsciLexerJavaScript) OnSetFoldCompact(slot func(super func(fold bool), fold bool)) {
+	C.QsciLexerJavaScript_override_virtual_SetFoldCompact(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerJavaScript_SetFoldCompact
+func miqt_exec_callback_QsciLexerJavaScript_SetFoldCompact(self *C.QsciLexerJavaScript, cb C.intptr_t, fold C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(fold bool), fold bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(fold)
+
+	gofunc((&QsciLexerJavaScript{h: self}).callVirtualBase_SetFoldCompact, slotval1)
+
+}
+
+func (this *QsciLexerJavaScript) callVirtualBase_SetFoldPreprocessor(fold bool) {
+
+	C.QsciLexerJavaScript_virtualbase_SetFoldPreprocessor(unsafe.Pointer(this.h), (C.bool)(fold))
+
+}
+func (this *QsciLexerJavaScript) OnSetFoldPreprocessor(slot func(super func(fold bool), fold bool)) {
+	C.QsciLexerJavaScript_override_virtual_SetFoldPreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerJavaScript_SetFoldPreprocessor
+func miqt_exec_callback_QsciLexerJavaScript_SetFoldPreprocessor(self *C.QsciLexerJavaScript, cb C.intptr_t, fold C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(fold bool), fold bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(fold)
+
+	gofunc((&QsciLexerJavaScript{h: self}).callVirtualBase_SetFoldPreprocessor, slotval1)
+
+}
+
+func (this *QsciLexerJavaScript) callVirtualBase_SetStylePreprocessor(style bool) {
+
+	C.QsciLexerJavaScript_virtualbase_SetStylePreprocessor(unsafe.Pointer(this.h), (C.bool)(style))
+
+}
+func (this *QsciLexerJavaScript) OnSetStylePreprocessor(slot func(super func(style bool), style bool)) {
+	C.QsciLexerJavaScript_override_virtual_SetStylePreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerJavaScript_SetStylePreprocessor
+func miqt_exec_callback_QsciLexerJavaScript_SetStylePreprocessor(self *C.QsciLexerJavaScript, cb C.intptr_t, style C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style bool), style bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(style)
+
+	gofunc((&QsciLexerJavaScript{h: self}).callVirtualBase_SetStylePreprocessor, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QsciLexerJavaScript) Delete() {
-	C.QsciLexerJavaScript_Delete(this.h)
+	C.QsciLexerJavaScript_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

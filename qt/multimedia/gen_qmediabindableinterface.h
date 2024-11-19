@@ -23,7 +23,8 @@ typedef struct QMediaObject QMediaObject;
 #endif
 
 QMediaObject* QMediaBindableInterface_MediaObject(const QMediaBindableInterface* self);
-void QMediaBindableInterface_Delete(QMediaBindableInterface* self);
+bool QMediaBindableInterface_SetMediaObject(QMediaBindableInterface* self, QMediaObject* object);
+void QMediaBindableInterface_Delete(QMediaBindableInterface* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

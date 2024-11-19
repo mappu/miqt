@@ -16,11 +16,15 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAbstractVideoSurface;
+class QMediaControl;
 class QMetaObject;
+class QObject;
 class QVideoRendererControl;
 #else
 typedef struct QAbstractVideoSurface QAbstractVideoSurface;
+typedef struct QMediaControl QMediaControl;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 typedef struct QVideoRendererControl QVideoRendererControl;
 #endif
 
@@ -34,7 +38,7 @@ struct miqt_string QVideoRendererControl_Tr2(const char* s, const char* c);
 struct miqt_string QVideoRendererControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QVideoRendererControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QVideoRendererControl_TrUtf83(const char* s, const char* c, int n);
-void QVideoRendererControl_Delete(QVideoRendererControl* self);
+void QVideoRendererControl_Delete(QVideoRendererControl* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

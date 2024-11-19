@@ -10,11 +10,13 @@ import "C"
 
 import (
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
 type QTextList struct {
-	h *C.QTextList
+	h          *C.QTextList
+	isSubclass bool
 	*QTextBlockGroup
 }
 
@@ -32,21 +34,36 @@ func (this *QTextList) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQTextList(h *C.QTextList) *QTextList {
+// newQTextList constructs the type using only CGO pointers.
+func newQTextList(h *C.QTextList, h_QTextBlockGroup *C.QTextBlockGroup, h_QTextObject *C.QTextObject, h_QObject *C.QObject) *QTextList {
 	if h == nil {
 		return nil
 	}
-	return &QTextList{h: h, QTextBlockGroup: UnsafeNewQTextBlockGroup(unsafe.Pointer(h))}
+	return &QTextList{h: h,
+		QTextBlockGroup: newQTextBlockGroup(h_QTextBlockGroup, h_QTextObject, h_QObject)}
 }
 
-func UnsafeNewQTextList(h unsafe.Pointer) *QTextList {
-	return newQTextList((*C.QTextList)(h))
+// UnsafeNewQTextList constructs the type using only unsafe pointers.
+func UnsafeNewQTextList(h unsafe.Pointer, h_QTextBlockGroup unsafe.Pointer, h_QTextObject unsafe.Pointer, h_QObject unsafe.Pointer) *QTextList {
+	if h == nil {
+		return nil
+	}
+
+	return &QTextList{h: (*C.QTextList)(h),
+		QTextBlockGroup: UnsafeNewQTextBlockGroup(h_QTextBlockGroup, h_QTextObject, h_QObject)}
 }
 
 // NewQTextList constructs a new QTextList object.
 func NewQTextList(doc *QTextDocument) *QTextList {
-	ret := C.QTextList_new(doc.cPointer())
-	return newQTextList(ret)
+	var outptr_QTextList *C.QTextList = nil
+	var outptr_QTextBlockGroup *C.QTextBlockGroup = nil
+	var outptr_QTextObject *C.QTextObject = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QTextList_new(doc.cPointer(), &outptr_QTextList, &outptr_QTextBlockGroup, &outptr_QTextObject, &outptr_QObject)
+	ret := newQTextList(outptr_QTextList, outptr_QTextBlockGroup, outptr_QTextObject, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QTextList) MetaObject() *QMetaObject {
@@ -108,7 +125,7 @@ func (this *QTextList) SetFormat(format *QTextListFormat) {
 
 func (this *QTextList) Format() *QTextListFormat {
 	_ret := C.QTextList_Format(this.h)
-	_goptr := newQTextListFormat(_ret)
+	_goptr := newQTextListFormat(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -135,9 +152,78 @@ func QTextList_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QTextList) callVirtualBase_BlockInserted(block *QTextBlock) {
+
+	C.QTextList_virtualbase_BlockInserted(unsafe.Pointer(this.h), block.cPointer())
+
+}
+func (this *QTextList) OnBlockInserted(slot func(super func(block *QTextBlock), block *QTextBlock)) {
+	C.QTextList_override_virtual_BlockInserted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTextList_BlockInserted
+func miqt_exec_callback_QTextList_BlockInserted(self *C.QTextList, cb C.intptr_t, block *C.QTextBlock) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(block *QTextBlock), block *QTextBlock))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTextBlock(unsafe.Pointer(block))
+
+	gofunc((&QTextList{h: self}).callVirtualBase_BlockInserted, slotval1)
+
+}
+
+func (this *QTextList) callVirtualBase_BlockRemoved(block *QTextBlock) {
+
+	C.QTextList_virtualbase_BlockRemoved(unsafe.Pointer(this.h), block.cPointer())
+
+}
+func (this *QTextList) OnBlockRemoved(slot func(super func(block *QTextBlock), block *QTextBlock)) {
+	C.QTextList_override_virtual_BlockRemoved(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTextList_BlockRemoved
+func miqt_exec_callback_QTextList_BlockRemoved(self *C.QTextList, cb C.intptr_t, block *C.QTextBlock) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(block *QTextBlock), block *QTextBlock))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTextBlock(unsafe.Pointer(block))
+
+	gofunc((&QTextList{h: self}).callVirtualBase_BlockRemoved, slotval1)
+
+}
+
+func (this *QTextList) callVirtualBase_BlockFormatChanged(block *QTextBlock) {
+
+	C.QTextList_virtualbase_BlockFormatChanged(unsafe.Pointer(this.h), block.cPointer())
+
+}
+func (this *QTextList) OnBlockFormatChanged(slot func(super func(block *QTextBlock), block *QTextBlock)) {
+	C.QTextList_override_virtual_BlockFormatChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTextList_BlockFormatChanged
+func miqt_exec_callback_QTextList_BlockFormatChanged(self *C.QTextList, cb C.intptr_t, block *C.QTextBlock) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(block *QTextBlock), block *QTextBlock))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTextBlock(unsafe.Pointer(block))
+
+	gofunc((&QTextList{h: self}).callVirtualBase_BlockFormatChanged, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QTextList) Delete() {
-	C.QTextList_Delete(this.h)
+	C.QTextList_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

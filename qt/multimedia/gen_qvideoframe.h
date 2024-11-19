@@ -26,10 +26,10 @@ typedef struct QVariant QVariant;
 typedef struct QVideoFrame QVideoFrame;
 #endif
 
-QVideoFrame* QVideoFrame_new();
-QVideoFrame* QVideoFrame_new2(int bytes, QSize* size, int bytesPerLine, int format);
-QVideoFrame* QVideoFrame_new3(QImage* image);
-QVideoFrame* QVideoFrame_new4(QVideoFrame* other);
+void QVideoFrame_new(QVideoFrame** outptr_QVideoFrame);
+void QVideoFrame_new2(int bytes, QSize* size, int bytesPerLine, int format, QVideoFrame** outptr_QVideoFrame);
+void QVideoFrame_new3(QImage* image, QVideoFrame** outptr_QVideoFrame);
+void QVideoFrame_new4(QVideoFrame* other, QVideoFrame** outptr_QVideoFrame);
 void QVideoFrame_OperatorAssign(QVideoFrame* self, QVideoFrame* other);
 bool QVideoFrame_OperatorEqual(const QVideoFrame* self, QVideoFrame* other);
 bool QVideoFrame_OperatorNotEqual(const QVideoFrame* self, QVideoFrame* other);
@@ -66,7 +66,7 @@ void QVideoFrame_SetMetaData(QVideoFrame* self, struct miqt_string key, QVariant
 QImage* QVideoFrame_Image(const QVideoFrame* self);
 int QVideoFrame_PixelFormatFromImageFormat(int format);
 int QVideoFrame_ImageFormatFromPixelFormat(int format);
-void QVideoFrame_Delete(QVideoFrame* self);
+void QVideoFrame_Delete(QVideoFrame* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -6,7 +6,9 @@
 #include <QImage>
 #include <QList>
 #include <QMatrix>
+#include <QPaintDevice>
 #include <QPaintEngine>
+#include <QPainter>
 #include <QPixelFormat>
 #include <QPoint>
 #include <QRect>
@@ -19,46 +21,221 @@
 #include "gen_qimage.h"
 #include "_cgo_export.h"
 
-QImage* QImage_new() {
-	return new QImage();
+class MiqtVirtualQImage : public virtual QImage {
+public:
+
+	MiqtVirtualQImage(): QImage() {};
+	MiqtVirtualQImage(const QSize& size, QImage::Format format): QImage(size, format) {};
+	MiqtVirtualQImage(int width, int height, QImage::Format format): QImage(width, height, format) {};
+	MiqtVirtualQImage(uchar* data, int width, int height, QImage::Format format): QImage(data, width, height, format) {};
+	MiqtVirtualQImage(const uchar* data, int width, int height, QImage::Format format): QImage(data, width, height, format) {};
+	MiqtVirtualQImage(uchar* data, int width, int height, int bytesPerLine, QImage::Format format): QImage(data, width, height, bytesPerLine, format) {};
+	MiqtVirtualQImage(const uchar* data, int width, int height, int bytesPerLine, QImage::Format format): QImage(data, width, height, bytesPerLine, format) {};
+	MiqtVirtualQImage(const QString& fileName): QImage(fileName) {};
+	MiqtVirtualQImage(const QImage& param1): QImage(param1) {};
+	MiqtVirtualQImage(const QString& fileName, const char* format): QImage(fileName, format) {};
+
+	virtual ~MiqtVirtualQImage() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DevType = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int devType() const override {
+		if (handle__DevType == 0) {
+			return QImage::devType();
+		}
+		
+
+		int callback_return_value = miqt_exec_callback_QImage_DevType(const_cast<MiqtVirtualQImage*>(this), handle__DevType);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_DevType() const {
+
+		return QImage::devType();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__PaintEngine = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPaintEngine* paintEngine() const override {
+		if (handle__PaintEngine == 0) {
+			return QImage::paintEngine();
+		}
+		
+
+		QPaintEngine* callback_return_value = miqt_exec_callback_QImage_PaintEngine(const_cast<MiqtVirtualQImage*>(this), handle__PaintEngine);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPaintEngine* virtualbase_PaintEngine() const {
+
+		return QImage::paintEngine();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Metric = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int metric(QPaintDevice::PaintDeviceMetric metric) const override {
+		if (handle__Metric == 0) {
+			return QImage::metric(metric);
+		}
+		
+		QPaintDevice::PaintDeviceMetric metric_ret = metric;
+		int sigval1 = static_cast<int>(metric_ret);
+
+		int callback_return_value = miqt_exec_callback_QImage_Metric(const_cast<MiqtVirtualQImage*>(this), handle__Metric, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_Metric(int metric) const {
+
+		return QImage::metric(static_cast<QPaintDevice::PaintDeviceMetric>(metric));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__InitPainter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void initPainter(QPainter* painter) const override {
+		if (handle__InitPainter == 0) {
+			QImage::initPainter(painter);
+			return;
+		}
+		
+		QPainter* sigval1 = painter;
+
+		miqt_exec_callback_QImage_InitPainter(const_cast<MiqtVirtualQImage*>(this), handle__InitPainter, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_InitPainter(QPainter* painter) const {
+
+		QImage::initPainter(painter);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Redirected = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPaintDevice* redirected(QPoint* offset) const override {
+		if (handle__Redirected == 0) {
+			return QImage::redirected(offset);
+		}
+		
+		QPoint* sigval1 = offset;
+
+		QPaintDevice* callback_return_value = miqt_exec_callback_QImage_Redirected(const_cast<MiqtVirtualQImage*>(this), handle__Redirected, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPaintDevice* virtualbase_Redirected(QPoint* offset) const {
+
+		return QImage::redirected(offset);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SharedPainter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPainter* sharedPainter() const override {
+		if (handle__SharedPainter == 0) {
+			return QImage::sharedPainter();
+		}
+		
+
+		QPainter* callback_return_value = miqt_exec_callback_QImage_SharedPainter(const_cast<MiqtVirtualQImage*>(this), handle__SharedPainter);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPainter* virtualbase_SharedPainter() const {
+
+		return QImage::sharedPainter();
+
+	}
+
+};
+
+void QImage_new(QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice) {
+	MiqtVirtualQImage* ret = new MiqtVirtualQImage();
+	*outptr_QImage = ret;
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
-QImage* QImage_new2(QSize* size, int format) {
-	return new QImage(*size, static_cast<QImage::Format>(format));
+void QImage_new2(QSize* size, int format, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice) {
+	MiqtVirtualQImage* ret = new MiqtVirtualQImage(*size, static_cast<QImage::Format>(format));
+	*outptr_QImage = ret;
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
-QImage* QImage_new3(int width, int height, int format) {
-	return new QImage(static_cast<int>(width), static_cast<int>(height), static_cast<QImage::Format>(format));
+void QImage_new3(int width, int height, int format, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice) {
+	MiqtVirtualQImage* ret = new MiqtVirtualQImage(static_cast<int>(width), static_cast<int>(height), static_cast<QImage::Format>(format));
+	*outptr_QImage = ret;
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
-QImage* QImage_new4(unsigned char* data, int width, int height, int format) {
-	return new QImage(static_cast<uchar*>(data), static_cast<int>(width), static_cast<int>(height), static_cast<QImage::Format>(format));
+void QImage_new4(unsigned char* data, int width, int height, int format, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice) {
+	MiqtVirtualQImage* ret = new MiqtVirtualQImage(static_cast<uchar*>(data), static_cast<int>(width), static_cast<int>(height), static_cast<QImage::Format>(format));
+	*outptr_QImage = ret;
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
-QImage* QImage_new5(const unsigned char* data, int width, int height, int format) {
-	return new QImage(static_cast<const uchar*>(data), static_cast<int>(width), static_cast<int>(height), static_cast<QImage::Format>(format));
+void QImage_new5(const unsigned char* data, int width, int height, int format, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice) {
+	MiqtVirtualQImage* ret = new MiqtVirtualQImage(static_cast<const uchar*>(data), static_cast<int>(width), static_cast<int>(height), static_cast<QImage::Format>(format));
+	*outptr_QImage = ret;
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
-QImage* QImage_new6(unsigned char* data, int width, int height, int bytesPerLine, int format) {
-	return new QImage(static_cast<uchar*>(data), static_cast<int>(width), static_cast<int>(height), static_cast<int>(bytesPerLine), static_cast<QImage::Format>(format));
+void QImage_new6(unsigned char* data, int width, int height, int bytesPerLine, int format, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice) {
+	MiqtVirtualQImage* ret = new MiqtVirtualQImage(static_cast<uchar*>(data), static_cast<int>(width), static_cast<int>(height), static_cast<int>(bytesPerLine), static_cast<QImage::Format>(format));
+	*outptr_QImage = ret;
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
-QImage* QImage_new7(const unsigned char* data, int width, int height, int bytesPerLine, int format) {
-	return new QImage(static_cast<const uchar*>(data), static_cast<int>(width), static_cast<int>(height), static_cast<int>(bytesPerLine), static_cast<QImage::Format>(format));
+void QImage_new7(const unsigned char* data, int width, int height, int bytesPerLine, int format, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice) {
+	MiqtVirtualQImage* ret = new MiqtVirtualQImage(static_cast<const uchar*>(data), static_cast<int>(width), static_cast<int>(height), static_cast<int>(bytesPerLine), static_cast<QImage::Format>(format));
+	*outptr_QImage = ret;
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
-QImage* QImage_new8(struct miqt_string fileName) {
+void QImage_new8(struct miqt_string fileName, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new QImage(fileName_QString);
+	MiqtVirtualQImage* ret = new MiqtVirtualQImage(fileName_QString);
+	*outptr_QImage = ret;
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
-QImage* QImage_new9(QImage* param1) {
-	return new QImage(*param1);
+void QImage_new9(QImage* param1, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice) {
+	MiqtVirtualQImage* ret = new MiqtVirtualQImage(*param1);
+	*outptr_QImage = ret;
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
-QImage* QImage_new10(struct miqt_string fileName, const char* format) {
+void QImage_new10(struct miqt_string fileName, const char* format, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new QImage(fileName_QString, format);
+	MiqtVirtualQImage* ret = new MiqtVirtualQImage(fileName_QString, format);
+	*outptr_QImage = ret;
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
 void QImage_OperatorAssign(QImage* self, QImage* param1) {
@@ -652,7 +829,59 @@ struct miqt_string QImage_Text1(const QImage* self, struct miqt_string key) {
 	return _ms;
 }
 
-void QImage_Delete(QImage* self) {
-	delete self;
+void QImage_override_virtual_DevType(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQImage*>( (QImage*)(self) )->handle__DevType = slot;
+}
+
+int QImage_virtualbase_DevType(const void* self) {
+	return ( (const MiqtVirtualQImage*)(self) )->virtualbase_DevType();
+}
+
+void QImage_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQImage*>( (QImage*)(self) )->handle__PaintEngine = slot;
+}
+
+QPaintEngine* QImage_virtualbase_PaintEngine(const void* self) {
+	return ( (const MiqtVirtualQImage*)(self) )->virtualbase_PaintEngine();
+}
+
+void QImage_override_virtual_Metric(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQImage*>( (QImage*)(self) )->handle__Metric = slot;
+}
+
+int QImage_virtualbase_Metric(const void* self, int metric) {
+	return ( (const MiqtVirtualQImage*)(self) )->virtualbase_Metric(metric);
+}
+
+void QImage_override_virtual_InitPainter(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQImage*>( (QImage*)(self) )->handle__InitPainter = slot;
+}
+
+void QImage_virtualbase_InitPainter(const void* self, QPainter* painter) {
+	( (const MiqtVirtualQImage*)(self) )->virtualbase_InitPainter(painter);
+}
+
+void QImage_override_virtual_Redirected(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQImage*>( (QImage*)(self) )->handle__Redirected = slot;
+}
+
+QPaintDevice* QImage_virtualbase_Redirected(const void* self, QPoint* offset) {
+	return ( (const MiqtVirtualQImage*)(self) )->virtualbase_Redirected(offset);
+}
+
+void QImage_override_virtual_SharedPainter(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQImage*>( (QImage*)(self) )->handle__SharedPainter = slot;
+}
+
+QPainter* QImage_virtualbase_SharedPainter(const void* self) {
+	return ( (const MiqtVirtualQImage*)(self) )->virtualbase_SharedPainter();
+}
+
+void QImage_Delete(QImage* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQImage*>( self );
+	} else {
+		delete self;
+	}
 }
 

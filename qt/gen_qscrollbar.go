@@ -10,11 +10,13 @@ import "C"
 
 import (
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
 type QScrollBar struct {
-	h *C.QScrollBar
+	h          *C.QScrollBar
+	isSubclass bool
 	*QAbstractSlider
 }
 
@@ -32,39 +34,79 @@ func (this *QScrollBar) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQScrollBar(h *C.QScrollBar) *QScrollBar {
+// newQScrollBar constructs the type using only CGO pointers.
+func newQScrollBar(h *C.QScrollBar, h_QAbstractSlider *C.QAbstractSlider, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QScrollBar {
 	if h == nil {
 		return nil
 	}
-	return &QScrollBar{h: h, QAbstractSlider: UnsafeNewQAbstractSlider(unsafe.Pointer(h))}
+	return &QScrollBar{h: h,
+		QAbstractSlider: newQAbstractSlider(h_QAbstractSlider, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
-func UnsafeNewQScrollBar(h unsafe.Pointer) *QScrollBar {
-	return newQScrollBar((*C.QScrollBar)(h))
+// UnsafeNewQScrollBar constructs the type using only unsafe pointers.
+func UnsafeNewQScrollBar(h unsafe.Pointer, h_QAbstractSlider unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QScrollBar {
+	if h == nil {
+		return nil
+	}
+
+	return &QScrollBar{h: (*C.QScrollBar)(h),
+		QAbstractSlider: UnsafeNewQAbstractSlider(h_QAbstractSlider, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
 // NewQScrollBar constructs a new QScrollBar object.
 func NewQScrollBar(parent *QWidget) *QScrollBar {
-	ret := C.QScrollBar_new(parent.cPointer())
-	return newQScrollBar(ret)
+	var outptr_QScrollBar *C.QScrollBar = nil
+	var outptr_QAbstractSlider *C.QAbstractSlider = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QScrollBar_new(parent.cPointer(), &outptr_QScrollBar, &outptr_QAbstractSlider, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQScrollBar(outptr_QScrollBar, outptr_QAbstractSlider, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQScrollBar2 constructs a new QScrollBar object.
 func NewQScrollBar2() *QScrollBar {
-	ret := C.QScrollBar_new2()
-	return newQScrollBar(ret)
+	var outptr_QScrollBar *C.QScrollBar = nil
+	var outptr_QAbstractSlider *C.QAbstractSlider = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QScrollBar_new2(&outptr_QScrollBar, &outptr_QAbstractSlider, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQScrollBar(outptr_QScrollBar, outptr_QAbstractSlider, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQScrollBar3 constructs a new QScrollBar object.
 func NewQScrollBar3(param1 Orientation) *QScrollBar {
-	ret := C.QScrollBar_new3((C.int)(param1))
-	return newQScrollBar(ret)
+	var outptr_QScrollBar *C.QScrollBar = nil
+	var outptr_QAbstractSlider *C.QAbstractSlider = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QScrollBar_new3((C.int)(param1), &outptr_QScrollBar, &outptr_QAbstractSlider, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQScrollBar(outptr_QScrollBar, outptr_QAbstractSlider, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQScrollBar4 constructs a new QScrollBar object.
 func NewQScrollBar4(param1 Orientation, parent *QWidget) *QScrollBar {
-	ret := C.QScrollBar_new4((C.int)(param1), parent.cPointer())
-	return newQScrollBar(ret)
+	var outptr_QScrollBar *C.QScrollBar = nil
+	var outptr_QAbstractSlider *C.QAbstractSlider = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QScrollBar_new4((C.int)(param1), parent.cPointer(), &outptr_QScrollBar, &outptr_QAbstractSlider, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQScrollBar(outptr_QScrollBar, outptr_QAbstractSlider, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QScrollBar) MetaObject() *QMetaObject {
@@ -150,9 +192,312 @@ func QScrollBar_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QScrollBar) callVirtualBase_SizeHint() *QSize {
+
+	_ret := C.QScrollBar_virtualbase_SizeHint(unsafe.Pointer(this.h))
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QScrollBar) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	C.QScrollBar_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QScrollBar_SizeHint
+func miqt_exec_callback_QScrollBar_SizeHint(self *C.QScrollBar, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QScrollBar{h: self}).callVirtualBase_SizeHint)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QScrollBar) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QScrollBar_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QScrollBar) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	C.QScrollBar_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QScrollBar_Event
+func miqt_exec_callback_QScrollBar_Event(self *C.QScrollBar, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QScrollBar{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QScrollBar) callVirtualBase_WheelEvent(param1 *QWheelEvent) {
+
+	C.QScrollBar_virtualbase_WheelEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QScrollBar) OnWheelEvent(slot func(super func(param1 *QWheelEvent), param1 *QWheelEvent)) {
+	C.QScrollBar_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QScrollBar_WheelEvent
+func miqt_exec_callback_QScrollBar_WheelEvent(self *C.QScrollBar, cb C.intptr_t, param1 *C.QWheelEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QWheelEvent), param1 *QWheelEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(param1), nil, nil)
+
+	gofunc((&QScrollBar{h: self}).callVirtualBase_WheelEvent, slotval1)
+
+}
+
+func (this *QScrollBar) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
+
+	C.QScrollBar_virtualbase_PaintEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QScrollBar) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
+	C.QScrollBar_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QScrollBar_PaintEvent
+func miqt_exec_callback_QScrollBar_PaintEvent(self *C.QScrollBar, cb C.intptr_t, param1 *C.QPaintEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QPaintEvent), param1 *QPaintEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(param1), nil)
+
+	gofunc((&QScrollBar{h: self}).callVirtualBase_PaintEvent, slotval1)
+
+}
+
+func (this *QScrollBar) callVirtualBase_MousePressEvent(param1 *QMouseEvent) {
+
+	C.QScrollBar_virtualbase_MousePressEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QScrollBar) OnMousePressEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	C.QScrollBar_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QScrollBar_MousePressEvent
+func miqt_exec_callback_QScrollBar_MousePressEvent(self *C.QScrollBar, cb C.intptr_t, param1 *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QMouseEvent), param1 *QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil)
+
+	gofunc((&QScrollBar{h: self}).callVirtualBase_MousePressEvent, slotval1)
+
+}
+
+func (this *QScrollBar) callVirtualBase_MouseReleaseEvent(param1 *QMouseEvent) {
+
+	C.QScrollBar_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QScrollBar) OnMouseReleaseEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	C.QScrollBar_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QScrollBar_MouseReleaseEvent
+func miqt_exec_callback_QScrollBar_MouseReleaseEvent(self *C.QScrollBar, cb C.intptr_t, param1 *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QMouseEvent), param1 *QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil)
+
+	gofunc((&QScrollBar{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
+
+}
+
+func (this *QScrollBar) callVirtualBase_MouseMoveEvent(param1 *QMouseEvent) {
+
+	C.QScrollBar_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QScrollBar) OnMouseMoveEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	C.QScrollBar_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QScrollBar_MouseMoveEvent
+func miqt_exec_callback_QScrollBar_MouseMoveEvent(self *C.QScrollBar, cb C.intptr_t, param1 *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QMouseEvent), param1 *QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil)
+
+	gofunc((&QScrollBar{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
+
+}
+
+func (this *QScrollBar) callVirtualBase_HideEvent(param1 *QHideEvent) {
+
+	C.QScrollBar_virtualbase_HideEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QScrollBar) OnHideEvent(slot func(super func(param1 *QHideEvent), param1 *QHideEvent)) {
+	C.QScrollBar_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QScrollBar_HideEvent
+func miqt_exec_callback_QScrollBar_HideEvent(self *C.QScrollBar, cb C.intptr_t, param1 *C.QHideEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QHideEvent), param1 *QHideEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQHideEvent(unsafe.Pointer(param1), nil)
+
+	gofunc((&QScrollBar{h: self}).callVirtualBase_HideEvent, slotval1)
+
+}
+
+func (this *QScrollBar) callVirtualBase_SliderChange(change QAbstractSlider__SliderChange) {
+
+	C.QScrollBar_virtualbase_SliderChange(unsafe.Pointer(this.h), (C.int)(change))
+
+}
+func (this *QScrollBar) OnSliderChange(slot func(super func(change QAbstractSlider__SliderChange), change QAbstractSlider__SliderChange)) {
+	C.QScrollBar_override_virtual_SliderChange(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QScrollBar_SliderChange
+func miqt_exec_callback_QScrollBar_SliderChange(self *C.QScrollBar, cb C.intptr_t, change C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(change QAbstractSlider__SliderChange), change QAbstractSlider__SliderChange))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QAbstractSlider__SliderChange)(change)
+
+	gofunc((&QScrollBar{h: self}).callVirtualBase_SliderChange, slotval1)
+
+}
+
+func (this *QScrollBar) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEvent) {
+
+	C.QScrollBar_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QScrollBar) OnContextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
+	C.QScrollBar_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QScrollBar_ContextMenuEvent
+func miqt_exec_callback_QScrollBar_ContextMenuEvent(self *C.QScrollBar, cb C.intptr_t, param1 *C.QContextMenuEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(param1), nil, nil)
+
+	gofunc((&QScrollBar{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
+
+}
+
+func (this *QScrollBar) callVirtualBase_KeyPressEvent(ev *QKeyEvent) {
+
+	C.QScrollBar_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), ev.cPointer())
+
+}
+func (this *QScrollBar) OnKeyPressEvent(slot func(super func(ev *QKeyEvent), ev *QKeyEvent)) {
+	C.QScrollBar_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QScrollBar_KeyPressEvent
+func miqt_exec_callback_QScrollBar_KeyPressEvent(self *C.QScrollBar, cb C.intptr_t, ev *C.QKeyEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(ev *QKeyEvent), ev *QKeyEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(ev), nil, nil)
+
+	gofunc((&QScrollBar{h: self}).callVirtualBase_KeyPressEvent, slotval1)
+
+}
+
+func (this *QScrollBar) callVirtualBase_TimerEvent(param1 *QTimerEvent) {
+
+	C.QScrollBar_virtualbase_TimerEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QScrollBar) OnTimerEvent(slot func(super func(param1 *QTimerEvent), param1 *QTimerEvent)) {
+	C.QScrollBar_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QScrollBar_TimerEvent
+func miqt_exec_callback_QScrollBar_TimerEvent(self *C.QScrollBar, cb C.intptr_t, param1 *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QTimerEvent), param1 *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(param1), nil)
+
+	gofunc((&QScrollBar{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QScrollBar) callVirtualBase_ChangeEvent(e *QEvent) {
+
+	C.QScrollBar_virtualbase_ChangeEvent(unsafe.Pointer(this.h), e.cPointer())
+
+}
+func (this *QScrollBar) OnChangeEvent(slot func(super func(e *QEvent), e *QEvent)) {
+	C.QScrollBar_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QScrollBar_ChangeEvent
+func miqt_exec_callback_QScrollBar_ChangeEvent(self *C.QScrollBar, cb C.intptr_t, e *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QEvent), e *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+
+	gofunc((&QScrollBar{h: self}).callVirtualBase_ChangeEvent, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QScrollBar) Delete() {
-	C.QScrollBar_Delete(this.h)
+	C.QScrollBar_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

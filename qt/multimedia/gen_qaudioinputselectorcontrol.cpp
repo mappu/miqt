@@ -1,6 +1,8 @@
 #include <QAudioInputSelectorControl>
 #include <QList>
+#include <QMediaControl>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -170,7 +172,11 @@ struct miqt_string QAudioInputSelectorControl_TrUtf83(const char* s, const char*
 	return _ms;
 }
 
-void QAudioInputSelectorControl_Delete(QAudioInputSelectorControl* self) {
-	delete self;
+void QAudioInputSelectorControl_Delete(QAudioInputSelectorControl* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAudioInputSelectorControl*>( self );
+	} else {
+		delete self;
+	}
 }
 

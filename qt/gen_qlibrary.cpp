@@ -1,51 +1,258 @@
+#include <QChildEvent>
+#include <QEvent>
 #include <QLibrary>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QTimerEvent>
 #include <qlibrary.h>
 #include "gen_qlibrary.h"
 #include "_cgo_export.h"
 
-QLibrary* QLibrary_new() {
-	return new QLibrary();
+class MiqtVirtualQLibrary : public virtual QLibrary {
+public:
+
+	MiqtVirtualQLibrary(): QLibrary() {};
+	MiqtVirtualQLibrary(const QString& fileName): QLibrary(fileName) {};
+	MiqtVirtualQLibrary(const QString& fileName, int verNum): QLibrary(fileName, verNum) {};
+	MiqtVirtualQLibrary(const QString& fileName, const QString& version): QLibrary(fileName, version) {};
+	MiqtVirtualQLibrary(QObject* parent): QLibrary(parent) {};
+	MiqtVirtualQLibrary(const QString& fileName, QObject* parent): QLibrary(fileName, parent) {};
+	MiqtVirtualQLibrary(const QString& fileName, int verNum, QObject* parent): QLibrary(fileName, verNum, parent) {};
+	MiqtVirtualQLibrary(const QString& fileName, const QString& version, QObject* parent): QLibrary(fileName, version, parent) {};
+
+	virtual ~MiqtVirtualQLibrary() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QLibrary::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QLibrary_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QLibrary::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QLibrary::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QLibrary_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QLibrary::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QLibrary::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QLibrary_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QLibrary::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QLibrary::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QLibrary_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QLibrary::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QLibrary::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QLibrary_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QLibrary::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QLibrary::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QLibrary_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QLibrary::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QLibrary::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QLibrary_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QLibrary::disconnectNotify(*signal);
+
+	}
+
+};
+
+void QLibrary_new(QLibrary** outptr_QLibrary, QObject** outptr_QObject) {
+	MiqtVirtualQLibrary* ret = new MiqtVirtualQLibrary();
+	*outptr_QLibrary = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QLibrary* QLibrary_new2(struct miqt_string fileName) {
+void QLibrary_new2(struct miqt_string fileName, QLibrary** outptr_QLibrary, QObject** outptr_QObject) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new QLibrary(fileName_QString);
+	MiqtVirtualQLibrary* ret = new MiqtVirtualQLibrary(fileName_QString);
+	*outptr_QLibrary = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QLibrary* QLibrary_new3(struct miqt_string fileName, int verNum) {
+void QLibrary_new3(struct miqt_string fileName, int verNum, QLibrary** outptr_QLibrary, QObject** outptr_QObject) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new QLibrary(fileName_QString, static_cast<int>(verNum));
+	MiqtVirtualQLibrary* ret = new MiqtVirtualQLibrary(fileName_QString, static_cast<int>(verNum));
+	*outptr_QLibrary = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QLibrary* QLibrary_new4(struct miqt_string fileName, struct miqt_string version) {
+void QLibrary_new4(struct miqt_string fileName, struct miqt_string version, QLibrary** outptr_QLibrary, QObject** outptr_QObject) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QString version_QString = QString::fromUtf8(version.data, version.len);
-	return new QLibrary(fileName_QString, version_QString);
+	MiqtVirtualQLibrary* ret = new MiqtVirtualQLibrary(fileName_QString, version_QString);
+	*outptr_QLibrary = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QLibrary* QLibrary_new5(QObject* parent) {
-	return new QLibrary(parent);
+void QLibrary_new5(QObject* parent, QLibrary** outptr_QLibrary, QObject** outptr_QObject) {
+	MiqtVirtualQLibrary* ret = new MiqtVirtualQLibrary(parent);
+	*outptr_QLibrary = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QLibrary* QLibrary_new6(struct miqt_string fileName, QObject* parent) {
+void QLibrary_new6(struct miqt_string fileName, QObject* parent, QLibrary** outptr_QLibrary, QObject** outptr_QObject) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new QLibrary(fileName_QString, parent);
+	MiqtVirtualQLibrary* ret = new MiqtVirtualQLibrary(fileName_QString, parent);
+	*outptr_QLibrary = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QLibrary* QLibrary_new7(struct miqt_string fileName, int verNum, QObject* parent) {
+void QLibrary_new7(struct miqt_string fileName, int verNum, QObject* parent, QLibrary** outptr_QLibrary, QObject** outptr_QObject) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new QLibrary(fileName_QString, static_cast<int>(verNum), parent);
+	MiqtVirtualQLibrary* ret = new MiqtVirtualQLibrary(fileName_QString, static_cast<int>(verNum), parent);
+	*outptr_QLibrary = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QLibrary* QLibrary_new8(struct miqt_string fileName, struct miqt_string version, QObject* parent) {
+void QLibrary_new8(struct miqt_string fileName, struct miqt_string version, QObject* parent, QLibrary** outptr_QLibrary, QObject** outptr_QObject) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QString version_QString = QString::fromUtf8(version.data, version.len);
-	return new QLibrary(fileName_QString, version_QString, parent);
+	MiqtVirtualQLibrary* ret = new MiqtVirtualQLibrary(fileName_QString, version_QString, parent);
+	*outptr_QLibrary = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QLibrary_MetaObject(const QLibrary* self) {
@@ -186,7 +393,67 @@ struct miqt_string QLibrary_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QLibrary_Delete(QLibrary* self) {
-	delete self;
+void QLibrary_override_virtual_Event(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) )->handle__Event = slot;
+}
+
+bool QLibrary_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQLibrary*)(self) )->virtualbase_Event(event);
+}
+
+void QLibrary_override_virtual_EventFilter(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) )->handle__EventFilter = slot;
+}
+
+bool QLibrary_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQLibrary*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+void QLibrary_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) )->handle__TimerEvent = slot;
+}
+
+void QLibrary_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQLibrary*)(self) )->virtualbase_TimerEvent(event);
+}
+
+void QLibrary_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) )->handle__ChildEvent = slot;
+}
+
+void QLibrary_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQLibrary*)(self) )->virtualbase_ChildEvent(event);
+}
+
+void QLibrary_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) )->handle__CustomEvent = slot;
+}
+
+void QLibrary_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQLibrary*)(self) )->virtualbase_CustomEvent(event);
+}
+
+void QLibrary_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) )->handle__ConnectNotify = slot;
+}
+
+void QLibrary_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQLibrary*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+void QLibrary_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) )->handle__DisconnectNotify = slot;
+}
+
+void QLibrary_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQLibrary*)(self) )->virtualbase_DisconnectNotify(signal);
+}
+
+void QLibrary_Delete(QLibrary* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQLibrary*>( self );
+	} else {
+		delete self;
+	}
 }
 

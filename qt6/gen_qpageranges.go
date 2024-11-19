@@ -14,7 +14,8 @@ import (
 )
 
 type QPageRanges struct {
-	h *C.QPageRanges
+	h          *C.QPageRanges
+	isSubclass bool
 }
 
 func (this *QPageRanges) cPointer() *C.QPageRanges {
@@ -31,6 +32,7 @@ func (this *QPageRanges) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPageRanges constructs the type using only CGO pointers.
 func newQPageRanges(h *C.QPageRanges) *QPageRanges {
 	if h == nil {
 		return nil
@@ -38,20 +40,33 @@ func newQPageRanges(h *C.QPageRanges) *QPageRanges {
 	return &QPageRanges{h: h}
 }
 
+// UnsafeNewQPageRanges constructs the type using only unsafe pointers.
 func UnsafeNewQPageRanges(h unsafe.Pointer) *QPageRanges {
-	return newQPageRanges((*C.QPageRanges)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPageRanges{h: (*C.QPageRanges)(h)}
 }
 
 // NewQPageRanges constructs a new QPageRanges object.
 func NewQPageRanges() *QPageRanges {
-	ret := C.QPageRanges_new()
-	return newQPageRanges(ret)
+	var outptr_QPageRanges *C.QPageRanges = nil
+
+	C.QPageRanges_new(&outptr_QPageRanges)
+	ret := newQPageRanges(outptr_QPageRanges)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPageRanges2 constructs a new QPageRanges object.
 func NewQPageRanges2(other *QPageRanges) *QPageRanges {
-	ret := C.QPageRanges_new2(other.cPointer())
-	return newQPageRanges(ret)
+	var outptr_QPageRanges *C.QPageRanges = nil
+
+	C.QPageRanges_new2(other.cPointer(), &outptr_QPageRanges)
+	ret := newQPageRanges(outptr_QPageRanges)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QPageRanges) OperatorAssign(other *QPageRanges) {
@@ -127,7 +142,7 @@ func (this *QPageRanges) Detach() {
 
 // Delete this object from C++ memory.
 func (this *QPageRanges) Delete() {
-	C.QPageRanges_Delete(this.h)
+	C.QPageRanges_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -140,7 +155,8 @@ func (this *QPageRanges) GoGC() {
 }
 
 type QPageRanges__Range struct {
-	h *C.QPageRanges__Range
+	h          *C.QPageRanges__Range
+	isSubclass bool
 }
 
 func (this *QPageRanges__Range) cPointer() *C.QPageRanges__Range {
@@ -157,6 +173,7 @@ func (this *QPageRanges__Range) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPageRanges__Range constructs the type using only CGO pointers.
 func newQPageRanges__Range(h *C.QPageRanges__Range) *QPageRanges__Range {
 	if h == nil {
 		return nil
@@ -164,20 +181,33 @@ func newQPageRanges__Range(h *C.QPageRanges__Range) *QPageRanges__Range {
 	return &QPageRanges__Range{h: h}
 }
 
+// UnsafeNewQPageRanges__Range constructs the type using only unsafe pointers.
 func UnsafeNewQPageRanges__Range(h unsafe.Pointer) *QPageRanges__Range {
-	return newQPageRanges__Range((*C.QPageRanges__Range)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPageRanges__Range{h: (*C.QPageRanges__Range)(h)}
 }
 
 // NewQPageRanges__Range constructs a new QPageRanges::Range object.
 func NewQPageRanges__Range() *QPageRanges__Range {
-	ret := C.QPageRanges__Range_new()
-	return newQPageRanges__Range(ret)
+	var outptr_QPageRanges__Range *C.QPageRanges__Range = nil
+
+	C.QPageRanges__Range_new(&outptr_QPageRanges__Range)
+	ret := newQPageRanges__Range(outptr_QPageRanges__Range)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPageRanges__Range2 constructs a new QPageRanges::Range object.
 func NewQPageRanges__Range2(param1 *QPageRanges__Range) *QPageRanges__Range {
-	ret := C.QPageRanges__Range_new2(param1.cPointer())
-	return newQPageRanges__Range(ret)
+	var outptr_QPageRanges__Range *C.QPageRanges__Range = nil
+
+	C.QPageRanges__Range_new2(param1.cPointer(), &outptr_QPageRanges__Range)
+	ret := newQPageRanges__Range(outptr_QPageRanges__Range)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QPageRanges__Range) Contains(pageNumber int) bool {
@@ -186,7 +216,7 @@ func (this *QPageRanges__Range) Contains(pageNumber int) bool {
 
 // Delete this object from C++ memory.
 func (this *QPageRanges__Range) Delete() {
-	C.QPageRanges__Range_Delete(this.h)
+	C.QPageRanges__Range_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

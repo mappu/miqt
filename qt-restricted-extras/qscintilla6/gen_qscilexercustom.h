@@ -16,11 +16,15 @@ extern "C" {
 
 #ifdef __cplusplus
 class QMetaObject;
+class QObject;
+class QsciLexer;
 class QsciLexerCustom;
 class QsciScintilla;
 class QsciStyle;
 #else
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
+typedef struct QsciLexer QsciLexer;
 typedef struct QsciLexerCustom QsciLexerCustom;
 typedef struct QsciScintilla QsciScintilla;
 typedef struct QsciStyle QsciStyle;
@@ -38,7 +42,7 @@ int QsciLexerCustom_StyleBitsNeeded(const QsciLexerCustom* self);
 struct miqt_string QsciLexerCustom_Tr2(const char* s, const char* c);
 struct miqt_string QsciLexerCustom_Tr3(const char* s, const char* c, int n);
 void QsciLexerCustom_StartStyling2(QsciLexerCustom* self, int pos, int styleBits);
-void QsciLexerCustom_Delete(QsciLexerCustom* self);
+void QsciLexerCustom_Delete(QsciLexerCustom* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

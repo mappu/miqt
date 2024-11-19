@@ -1,15 +1,201 @@
+#include <QChildEvent>
+#include <QEvent>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QObjectCleanupHandler>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QTimerEvent>
 #include <qobjectcleanuphandler.h>
 #include "gen_qobjectcleanuphandler.h"
 #include "_cgo_export.h"
 
-QObjectCleanupHandler* QObjectCleanupHandler_new() {
-	return new QObjectCleanupHandler();
+class MiqtVirtualQObjectCleanupHandler : public virtual QObjectCleanupHandler {
+public:
+
+	MiqtVirtualQObjectCleanupHandler(): QObjectCleanupHandler() {};
+
+	virtual ~MiqtVirtualQObjectCleanupHandler() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QObjectCleanupHandler::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QObjectCleanupHandler_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QObjectCleanupHandler::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QObjectCleanupHandler::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QObjectCleanupHandler_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QObjectCleanupHandler::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QObjectCleanupHandler::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QObjectCleanupHandler_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QObjectCleanupHandler::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QObjectCleanupHandler::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QObjectCleanupHandler_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QObjectCleanupHandler::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QObjectCleanupHandler::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QObjectCleanupHandler_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QObjectCleanupHandler::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QObjectCleanupHandler::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QObjectCleanupHandler_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QObjectCleanupHandler::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QObjectCleanupHandler::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QObjectCleanupHandler_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QObjectCleanupHandler::disconnectNotify(*signal);
+
+	}
+
+};
+
+void QObjectCleanupHandler_new(QObjectCleanupHandler** outptr_QObjectCleanupHandler, QObject** outptr_QObject) {
+	MiqtVirtualQObjectCleanupHandler* ret = new MiqtVirtualQObjectCleanupHandler();
+	*outptr_QObjectCleanupHandler = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QObjectCleanupHandler_MetaObject(const QObjectCleanupHandler* self) {
@@ -69,7 +255,67 @@ struct miqt_string QObjectCleanupHandler_Tr3(const char* s, const char* c, int n
 	return _ms;
 }
 
-void QObjectCleanupHandler_Delete(QObjectCleanupHandler* self) {
-	delete self;
+void QObjectCleanupHandler_override_virtual_Event(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) )->handle__Event = slot;
+}
+
+bool QObjectCleanupHandler_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQObjectCleanupHandler*)(self) )->virtualbase_Event(event);
+}
+
+void QObjectCleanupHandler_override_virtual_EventFilter(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) )->handle__EventFilter = slot;
+}
+
+bool QObjectCleanupHandler_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQObjectCleanupHandler*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+void QObjectCleanupHandler_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) )->handle__TimerEvent = slot;
+}
+
+void QObjectCleanupHandler_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQObjectCleanupHandler*)(self) )->virtualbase_TimerEvent(event);
+}
+
+void QObjectCleanupHandler_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) )->handle__ChildEvent = slot;
+}
+
+void QObjectCleanupHandler_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQObjectCleanupHandler*)(self) )->virtualbase_ChildEvent(event);
+}
+
+void QObjectCleanupHandler_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) )->handle__CustomEvent = slot;
+}
+
+void QObjectCleanupHandler_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQObjectCleanupHandler*)(self) )->virtualbase_CustomEvent(event);
+}
+
+void QObjectCleanupHandler_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) )->handle__ConnectNotify = slot;
+}
+
+void QObjectCleanupHandler_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQObjectCleanupHandler*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+void QObjectCleanupHandler_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) )->handle__DisconnectNotify = slot;
+}
+
+void QObjectCleanupHandler_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQObjectCleanupHandler*)(self) )->virtualbase_DisconnectNotify(signal);
+}
+
+void QObjectCleanupHandler_Delete(QObjectCleanupHandler* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( self );
+	} else {
+		delete self;
+	}
 }
 

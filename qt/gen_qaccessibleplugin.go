@@ -14,7 +14,8 @@ import (
 )
 
 type QAccessiblePlugin struct {
-	h *C.QAccessiblePlugin
+	h          *C.QAccessiblePlugin
+	isSubclass bool
 	*QObject
 }
 
@@ -32,15 +33,23 @@ func (this *QAccessiblePlugin) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAccessiblePlugin(h *C.QAccessiblePlugin) *QAccessiblePlugin {
+// newQAccessiblePlugin constructs the type using only CGO pointers.
+func newQAccessiblePlugin(h *C.QAccessiblePlugin, h_QObject *C.QObject) *QAccessiblePlugin {
 	if h == nil {
 		return nil
 	}
-	return &QAccessiblePlugin{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QAccessiblePlugin{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQAccessiblePlugin(h unsafe.Pointer) *QAccessiblePlugin {
-	return newQAccessiblePlugin((*C.QAccessiblePlugin)(h))
+// UnsafeNewQAccessiblePlugin constructs the type using only unsafe pointers.
+func UnsafeNewQAccessiblePlugin(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAccessiblePlugin {
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessiblePlugin{h: (*C.QAccessiblePlugin)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QAccessiblePlugin) MetaObject() *QMetaObject {
@@ -125,7 +134,7 @@ func QAccessiblePlugin_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAccessiblePlugin) Delete() {
-	C.QAccessiblePlugin_Delete(this.h)
+	C.QAccessiblePlugin_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

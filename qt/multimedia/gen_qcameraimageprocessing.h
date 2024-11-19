@@ -17,9 +17,11 @@ extern "C" {
 #ifdef __cplusplus
 class QCameraImageProcessing;
 class QMetaObject;
+class QObject;
 #else
 typedef struct QCameraImageProcessing QCameraImageProcessing;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 #endif
 
 QMetaObject* QCameraImageProcessing_MetaObject(const QCameraImageProcessing* self);

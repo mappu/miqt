@@ -15,7 +15,8 @@ import (
 )
 
 type QMediaContainerControl struct {
-	h *C.QMediaContainerControl
+	h          *C.QMediaContainerControl
+	isSubclass bool
 	*QMediaControl
 }
 
@@ -33,15 +34,23 @@ func (this *QMediaContainerControl) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQMediaContainerControl(h *C.QMediaContainerControl) *QMediaContainerControl {
+// newQMediaContainerControl constructs the type using only CGO pointers.
+func newQMediaContainerControl(h *C.QMediaContainerControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QMediaContainerControl {
 	if h == nil {
 		return nil
 	}
-	return &QMediaContainerControl{h: h, QMediaControl: UnsafeNewQMediaControl(unsafe.Pointer(h))}
+	return &QMediaContainerControl{h: h,
+		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
 }
 
-func UnsafeNewQMediaContainerControl(h unsafe.Pointer) *QMediaContainerControl {
-	return newQMediaContainerControl((*C.QMediaContainerControl)(h))
+// UnsafeNewQMediaContainerControl constructs the type using only unsafe pointers.
+func UnsafeNewQMediaContainerControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QMediaContainerControl {
+	if h == nil {
+		return nil
+	}
+
+	return &QMediaContainerControl{h: (*C.QMediaContainerControl)(h),
+		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
 }
 
 func (this *QMediaContainerControl) MetaObject() *qt.QMetaObject {
@@ -157,7 +166,7 @@ func QMediaContainerControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QMediaContainerControl) Delete() {
-	C.QMediaContainerControl_Delete(this.h)
+	C.QMediaContainerControl_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

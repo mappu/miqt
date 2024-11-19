@@ -33,7 +33,8 @@ const (
 )
 
 type QArrayData struct {
-	h *C.QArrayData
+	h          *C.QArrayData
+	isSubclass bool
 }
 
 func (this *QArrayData) cPointer() *C.QArrayData {
@@ -50,6 +51,7 @@ func (this *QArrayData) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQArrayData constructs the type using only CGO pointers.
 func newQArrayData(h *C.QArrayData) *QArrayData {
 	if h == nil {
 		return nil
@@ -57,8 +59,13 @@ func newQArrayData(h *C.QArrayData) *QArrayData {
 	return &QArrayData{h: h}
 }
 
+// UnsafeNewQArrayData constructs the type using only unsafe pointers.
 func UnsafeNewQArrayData(h unsafe.Pointer) *QArrayData {
-	return newQArrayData((*C.QArrayData)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QArrayData{h: (*C.QArrayData)(h)}
 }
 
 func (this *QArrayData) Data() unsafe.Pointer {
@@ -111,7 +118,7 @@ func QArrayData_ReallocateUnaligned4(data *QArrayData, objectSize uint64, newCap
 
 // Delete this object from C++ memory.
 func (this *QArrayData) Delete() {
-	C.QArrayData_Delete(this.h)
+	C.QArrayData_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -124,7 +131,8 @@ func (this *QArrayData) GoGC() {
 }
 
 type QtPrivate__QContainerImplHelper struct {
-	h *C.QtPrivate__QContainerImplHelper
+	h          *C.QtPrivate__QContainerImplHelper
+	isSubclass bool
 }
 
 func (this *QtPrivate__QContainerImplHelper) cPointer() *C.QtPrivate__QContainerImplHelper {
@@ -141,6 +149,7 @@ func (this *QtPrivate__QContainerImplHelper) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQtPrivate__QContainerImplHelper constructs the type using only CGO pointers.
 func newQtPrivate__QContainerImplHelper(h *C.QtPrivate__QContainerImplHelper) *QtPrivate__QContainerImplHelper {
 	if h == nil {
 		return nil
@@ -148,13 +157,18 @@ func newQtPrivate__QContainerImplHelper(h *C.QtPrivate__QContainerImplHelper) *Q
 	return &QtPrivate__QContainerImplHelper{h: h}
 }
 
+// UnsafeNewQtPrivate__QContainerImplHelper constructs the type using only unsafe pointers.
 func UnsafeNewQtPrivate__QContainerImplHelper(h unsafe.Pointer) *QtPrivate__QContainerImplHelper {
-	return newQtPrivate__QContainerImplHelper((*C.QtPrivate__QContainerImplHelper)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QtPrivate__QContainerImplHelper{h: (*C.QtPrivate__QContainerImplHelper)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *QtPrivate__QContainerImplHelper) Delete() {
-	C.QtPrivate__QContainerImplHelper_Delete(this.h)
+	C.QtPrivate__QContainerImplHelper_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

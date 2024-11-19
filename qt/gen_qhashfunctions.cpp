@@ -4,19 +4,29 @@
 #include "gen_qhashfunctions.h"
 #include "_cgo_export.h"
 
-QtPrivate__QHashCombine* QtPrivate__QHashCombine_new() {
-	return new QtPrivate::QHashCombine();
+void QtPrivate__QHashCombine_new(QtPrivate__QHashCombine** outptr_QtPrivate__QHashCombine) {
+	QtPrivate::QHashCombine* ret = new QtPrivate::QHashCombine();
+	*outptr_QtPrivate__QHashCombine = ret;
 }
 
-void QtPrivate__QHashCombine_Delete(QtPrivate__QHashCombine* self) {
-	delete self;
+void QtPrivate__QHashCombine_Delete(QtPrivate__QHashCombine* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtPrivate::QHashCombine*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QtPrivate__QHashCombineCommutative* QtPrivate__QHashCombineCommutative_new() {
-	return new QtPrivate::QHashCombineCommutative();
+void QtPrivate__QHashCombineCommutative_new(QtPrivate__QHashCombineCommutative** outptr_QtPrivate__QHashCombineCommutative) {
+	QtPrivate::QHashCombineCommutative* ret = new QtPrivate::QHashCombineCommutative();
+	*outptr_QtPrivate__QHashCombineCommutative = ret;
 }
 
-void QtPrivate__QHashCombineCommutative_Delete(QtPrivate__QHashCombineCommutative* self) {
-	delete self;
+void QtPrivate__QHashCombineCommutative_Delete(QtPrivate__QHashCombineCommutative* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtPrivate::QHashCombineCommutative*>( self );
+	} else {
+		delete self;
+	}
 }
 

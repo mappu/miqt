@@ -26,10 +26,10 @@ typedef struct QTextDocument QTextDocument;
 typedef struct QTextDocumentFragment QTextDocumentFragment;
 #endif
 
-QTextDocumentFragment* QTextDocumentFragment_new();
-QTextDocumentFragment* QTextDocumentFragment_new2(QTextDocument* document);
-QTextDocumentFragment* QTextDocumentFragment_new3(QTextCursor* rangeVal);
-QTextDocumentFragment* QTextDocumentFragment_new4(QTextDocumentFragment* rhs);
+void QTextDocumentFragment_new(QTextDocumentFragment** outptr_QTextDocumentFragment);
+void QTextDocumentFragment_new2(QTextDocument* document, QTextDocumentFragment** outptr_QTextDocumentFragment);
+void QTextDocumentFragment_new3(QTextCursor* rangeVal, QTextDocumentFragment** outptr_QTextDocumentFragment);
+void QTextDocumentFragment_new4(QTextDocumentFragment* rhs, QTextDocumentFragment** outptr_QTextDocumentFragment);
 void QTextDocumentFragment_OperatorAssign(QTextDocumentFragment* self, QTextDocumentFragment* rhs);
 bool QTextDocumentFragment_IsEmpty(const QTextDocumentFragment* self);
 struct miqt_string QTextDocumentFragment_ToPlainText(const QTextDocumentFragment* self);
@@ -38,7 +38,7 @@ QTextDocumentFragment* QTextDocumentFragment_FromPlainText(struct miqt_string pl
 QTextDocumentFragment* QTextDocumentFragment_FromHtml(struct miqt_string html);
 QTextDocumentFragment* QTextDocumentFragment_FromHtml2(struct miqt_string html, QTextDocument* resourceProvider);
 struct miqt_string QTextDocumentFragment_ToHtml1(const QTextDocumentFragment* self, struct miqt_string encoding);
-void QTextDocumentFragment_Delete(QTextDocumentFragment* self);
+void QTextDocumentFragment_Delete(QTextDocumentFragment* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

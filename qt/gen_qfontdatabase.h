@@ -26,7 +26,7 @@ typedef struct QFontDatabase QFontDatabase;
 typedef struct QFontInfo QFontInfo;
 #endif
 
-QFontDatabase* QFontDatabase_new();
+void QFontDatabase_new(QFontDatabase** outptr_QFontDatabase);
 struct miqt_array /* of int */  QFontDatabase_StandardSizes();
 struct miqt_array /* of int */  QFontDatabase_WritingSystems(const QFontDatabase* self);
 struct miqt_array /* of int */  QFontDatabase_WritingSystemsWithFamily(const QFontDatabase* self, struct miqt_string family);
@@ -61,7 +61,7 @@ bool QFontDatabase_IsBitmapScalable2(const QFontDatabase* self, struct miqt_stri
 bool QFontDatabase_IsSmoothlyScalable2(const QFontDatabase* self, struct miqt_string family, struct miqt_string style);
 bool QFontDatabase_IsScalable2(const QFontDatabase* self, struct miqt_string family, struct miqt_string style);
 bool QFontDatabase_IsFixedPitch2(const QFontDatabase* self, struct miqt_string family, struct miqt_string style);
-void QFontDatabase_Delete(QFontDatabase* self);
+void QFontDatabase_Delete(QFontDatabase* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

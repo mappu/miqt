@@ -1,5 +1,6 @@
 #include <QAbstractState>
 #include <QAbstractTransition>
+#include <QEvent>
 #include <QList>
 #include <QMetaObject>
 #include <QObject>
@@ -13,20 +14,115 @@
 #include "gen_qstate.h"
 #include "_cgo_export.h"
 
-QState* QState_new() {
-	return new QState();
+class MiqtVirtualQState : public virtual QState {
+public:
+
+	MiqtVirtualQState(): QState() {};
+	MiqtVirtualQState(QState::ChildMode childMode): QState(childMode) {};
+	MiqtVirtualQState(QState* parent): QState(parent) {};
+	MiqtVirtualQState(QState::ChildMode childMode, QState* parent): QState(childMode, parent) {};
+
+	virtual ~MiqtVirtualQState() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__OnEntry = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void onEntry(QEvent* event) override {
+		if (handle__OnEntry == 0) {
+			QState::onEntry(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QState_OnEntry(this, handle__OnEntry, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_OnEntry(QEvent* event) {
+
+		QState::onEntry(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__OnExit = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void onExit(QEvent* event) override {
+		if (handle__OnExit == 0) {
+			QState::onExit(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QState_OnExit(this, handle__OnExit, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_OnExit(QEvent* event) {
+
+		QState::onExit(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* e) override {
+		if (handle__Event == 0) {
+			return QState::event(e);
+		}
+		
+		QEvent* sigval1 = e;
+
+		bool callback_return_value = miqt_exec_callback_QState_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* e) {
+
+		return QState::event(e);
+
+	}
+
+};
+
+void QState_new(QState** outptr_QState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject) {
+	MiqtVirtualQState* ret = new MiqtVirtualQState();
+	*outptr_QState = ret;
+	*outptr_QAbstractState = static_cast<QAbstractState*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QState* QState_new2(int childMode) {
-	return new QState(static_cast<QState::ChildMode>(childMode));
+void QState_new2(int childMode, QState** outptr_QState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject) {
+	MiqtVirtualQState* ret = new MiqtVirtualQState(static_cast<QState::ChildMode>(childMode));
+	*outptr_QState = ret;
+	*outptr_QAbstractState = static_cast<QAbstractState*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QState* QState_new3(QState* parent) {
-	return new QState(parent);
+void QState_new3(QState* parent, QState** outptr_QState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject) {
+	MiqtVirtualQState* ret = new MiqtVirtualQState(parent);
+	*outptr_QState = ret;
+	*outptr_QAbstractState = static_cast<QAbstractState*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QState* QState_new4(int childMode, QState* parent) {
-	return new QState(static_cast<QState::ChildMode>(childMode), parent);
+void QState_new4(int childMode, QState* parent, QState** outptr_QState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject) {
+	MiqtVirtualQState* ret = new MiqtVirtualQState(static_cast<QState::ChildMode>(childMode), parent);
+	*outptr_QState = ret;
+	*outptr_QAbstractState = static_cast<QAbstractState*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QState_MetaObject(const QState* self) {
@@ -161,7 +257,35 @@ struct miqt_string QState_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QState_Delete(QState* self) {
-	delete self;
+void QState_override_virtual_OnEntry(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQState*>( (QState*)(self) )->handle__OnEntry = slot;
+}
+
+void QState_virtualbase_OnEntry(void* self, QEvent* event) {
+	( (MiqtVirtualQState*)(self) )->virtualbase_OnEntry(event);
+}
+
+void QState_override_virtual_OnExit(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQState*>( (QState*)(self) )->handle__OnExit = slot;
+}
+
+void QState_virtualbase_OnExit(void* self, QEvent* event) {
+	( (MiqtVirtualQState*)(self) )->virtualbase_OnExit(event);
+}
+
+void QState_override_virtual_Event(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQState*>( (QState*)(self) )->handle__Event = slot;
+}
+
+bool QState_virtualbase_Event(void* self, QEvent* e) {
+	return ( (MiqtVirtualQState*)(self) )->virtualbase_Event(e);
+}
+
+void QState_Delete(QState* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQState*>( self );
+	} else {
+		delete self;
+	}
 }
 

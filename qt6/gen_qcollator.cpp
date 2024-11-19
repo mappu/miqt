@@ -9,8 +9,9 @@
 #include "gen_qcollator.h"
 #include "_cgo_export.h"
 
-QCollatorSortKey* QCollatorSortKey_new(QCollatorSortKey* other) {
-	return new QCollatorSortKey(*other);
+void QCollatorSortKey_new(QCollatorSortKey* other, QCollatorSortKey** outptr_QCollatorSortKey) {
+	QCollatorSortKey* ret = new QCollatorSortKey(*other);
+	*outptr_QCollatorSortKey = ret;
 }
 
 void QCollatorSortKey_OperatorAssign(QCollatorSortKey* self, QCollatorSortKey* other) {
@@ -25,20 +26,27 @@ int QCollatorSortKey_Compare(const QCollatorSortKey* self, QCollatorSortKey* key
 	return self->compare(*key);
 }
 
-void QCollatorSortKey_Delete(QCollatorSortKey* self) {
-	delete self;
+void QCollatorSortKey_Delete(QCollatorSortKey* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QCollatorSortKey*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QCollator* QCollator_new() {
-	return new QCollator();
+void QCollator_new(QCollator** outptr_QCollator) {
+	QCollator* ret = new QCollator();
+	*outptr_QCollator = ret;
 }
 
-QCollator* QCollator_new2(QLocale* locale) {
-	return new QCollator(*locale);
+void QCollator_new2(QLocale* locale, QCollator** outptr_QCollator) {
+	QCollator* ret = new QCollator(*locale);
+	*outptr_QCollator = ret;
 }
 
-QCollator* QCollator_new3(QCollator* param1) {
-	return new QCollator(*param1);
+void QCollator_new3(QCollator* param1, QCollator** outptr_QCollator) {
+	QCollator* ret = new QCollator(*param1);
+	*outptr_QCollator = ret;
 }
 
 void QCollator_OperatorAssign(QCollator* self, QCollator* param1) {
@@ -103,7 +111,11 @@ QCollatorSortKey* QCollator_SortKey(const QCollator* self, struct miqt_string st
 	return new QCollatorSortKey(self->sortKey(stringVal_QString));
 }
 
-void QCollator_Delete(QCollator* self) {
-	delete self;
+void QCollator_Delete(QCollator* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QCollator*>( self );
+	} else {
+		delete self;
+	}
 }
 

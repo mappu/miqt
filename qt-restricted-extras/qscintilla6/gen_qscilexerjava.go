@@ -11,11 +11,13 @@ import "C"
 import (
 	"github.com/mappu/miqt/qt6"
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
 type QsciLexerJava struct {
-	h *C.QsciLexerJava
+	h          *C.QsciLexerJava
+	isSubclass bool
 	*QsciLexerCPP
 }
 
@@ -33,27 +35,49 @@ func (this *QsciLexerJava) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQsciLexerJava(h *C.QsciLexerJava) *QsciLexerJava {
+// newQsciLexerJava constructs the type using only CGO pointers.
+func newQsciLexerJava(h *C.QsciLexerJava, h_QsciLexerCPP *C.QsciLexerCPP, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerJava {
 	if h == nil {
 		return nil
 	}
-	return &QsciLexerJava{h: h, QsciLexerCPP: UnsafeNewQsciLexerCPP(unsafe.Pointer(h))}
+	return &QsciLexerJava{h: h,
+		QsciLexerCPP: newQsciLexerCPP(h_QsciLexerCPP, h_QsciLexer, h_QObject)}
 }
 
-func UnsafeNewQsciLexerJava(h unsafe.Pointer) *QsciLexerJava {
-	return newQsciLexerJava((*C.QsciLexerJava)(h))
+// UnsafeNewQsciLexerJava constructs the type using only unsafe pointers.
+func UnsafeNewQsciLexerJava(h unsafe.Pointer, h_QsciLexerCPP unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerJava {
+	if h == nil {
+		return nil
+	}
+
+	return &QsciLexerJava{h: (*C.QsciLexerJava)(h),
+		QsciLexerCPP: UnsafeNewQsciLexerCPP(h_QsciLexerCPP, h_QsciLexer, h_QObject)}
 }
 
 // NewQsciLexerJava constructs a new QsciLexerJava object.
 func NewQsciLexerJava() *QsciLexerJava {
-	ret := C.QsciLexerJava_new()
-	return newQsciLexerJava(ret)
+	var outptr_QsciLexerJava *C.QsciLexerJava = nil
+	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
+	var outptr_QsciLexer *C.QsciLexer = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QsciLexerJava_new(&outptr_QsciLexerJava, &outptr_QsciLexerCPP, &outptr_QsciLexer, &outptr_QObject)
+	ret := newQsciLexerJava(outptr_QsciLexerJava, outptr_QsciLexerCPP, outptr_QsciLexer, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQsciLexerJava2 constructs a new QsciLexerJava object.
 func NewQsciLexerJava2(parent *qt6.QObject) *QsciLexerJava {
-	ret := C.QsciLexerJava_new2((*C.QObject)(parent.UnsafePointer()))
-	return newQsciLexerJava(ret)
+	var outptr_QsciLexerJava *C.QsciLexerJava = nil
+	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
+	var outptr_QsciLexer *C.QsciLexer = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QsciLexerJava_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QsciLexerJava, &outptr_QsciLexerCPP, &outptr_QsciLexer, &outptr_QObject)
+	ret := newQsciLexerJava(outptr_QsciLexerJava, outptr_QsciLexerCPP, outptr_QsciLexer, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QsciLexerJava) MetaObject() *qt6.QMetaObject {
@@ -107,9 +131,124 @@ func QsciLexerJava_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QsciLexerJava) callVirtualBase_SetFoldAtElse(fold bool) {
+
+	C.QsciLexerJava_virtualbase_SetFoldAtElse(unsafe.Pointer(this.h), (C.bool)(fold))
+
+}
+func (this *QsciLexerJava) OnSetFoldAtElse(slot func(super func(fold bool), fold bool)) {
+	C.QsciLexerJava_override_virtual_SetFoldAtElse(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerJava_SetFoldAtElse
+func miqt_exec_callback_QsciLexerJava_SetFoldAtElse(self *C.QsciLexerJava, cb C.intptr_t, fold C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(fold bool), fold bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(fold)
+
+	gofunc((&QsciLexerJava{h: self}).callVirtualBase_SetFoldAtElse, slotval1)
+
+}
+
+func (this *QsciLexerJava) callVirtualBase_SetFoldComments(fold bool) {
+
+	C.QsciLexerJava_virtualbase_SetFoldComments(unsafe.Pointer(this.h), (C.bool)(fold))
+
+}
+func (this *QsciLexerJava) OnSetFoldComments(slot func(super func(fold bool), fold bool)) {
+	C.QsciLexerJava_override_virtual_SetFoldComments(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerJava_SetFoldComments
+func miqt_exec_callback_QsciLexerJava_SetFoldComments(self *C.QsciLexerJava, cb C.intptr_t, fold C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(fold bool), fold bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(fold)
+
+	gofunc((&QsciLexerJava{h: self}).callVirtualBase_SetFoldComments, slotval1)
+
+}
+
+func (this *QsciLexerJava) callVirtualBase_SetFoldCompact(fold bool) {
+
+	C.QsciLexerJava_virtualbase_SetFoldCompact(unsafe.Pointer(this.h), (C.bool)(fold))
+
+}
+func (this *QsciLexerJava) OnSetFoldCompact(slot func(super func(fold bool), fold bool)) {
+	C.QsciLexerJava_override_virtual_SetFoldCompact(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerJava_SetFoldCompact
+func miqt_exec_callback_QsciLexerJava_SetFoldCompact(self *C.QsciLexerJava, cb C.intptr_t, fold C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(fold bool), fold bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(fold)
+
+	gofunc((&QsciLexerJava{h: self}).callVirtualBase_SetFoldCompact, slotval1)
+
+}
+
+func (this *QsciLexerJava) callVirtualBase_SetFoldPreprocessor(fold bool) {
+
+	C.QsciLexerJava_virtualbase_SetFoldPreprocessor(unsafe.Pointer(this.h), (C.bool)(fold))
+
+}
+func (this *QsciLexerJava) OnSetFoldPreprocessor(slot func(super func(fold bool), fold bool)) {
+	C.QsciLexerJava_override_virtual_SetFoldPreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerJava_SetFoldPreprocessor
+func miqt_exec_callback_QsciLexerJava_SetFoldPreprocessor(self *C.QsciLexerJava, cb C.intptr_t, fold C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(fold bool), fold bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(fold)
+
+	gofunc((&QsciLexerJava{h: self}).callVirtualBase_SetFoldPreprocessor, slotval1)
+
+}
+
+func (this *QsciLexerJava) callVirtualBase_SetStylePreprocessor(style bool) {
+
+	C.QsciLexerJava_virtualbase_SetStylePreprocessor(unsafe.Pointer(this.h), (C.bool)(style))
+
+}
+func (this *QsciLexerJava) OnSetStylePreprocessor(slot func(super func(style bool), style bool)) {
+	C.QsciLexerJava_override_virtual_SetStylePreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerJava_SetStylePreprocessor
+func miqt_exec_callback_QsciLexerJava_SetStylePreprocessor(self *C.QsciLexerJava, cb C.intptr_t, style C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style bool), style bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(style)
+
+	gofunc((&QsciLexerJava{h: self}).callVirtualBase_SetStylePreprocessor, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QsciLexerJava) Delete() {
-	C.QsciLexerJava_Delete(this.h)
+	C.QsciLexerJava_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

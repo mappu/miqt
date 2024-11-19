@@ -36,7 +36,7 @@ QGraphicsLayoutItem* QGraphicsLayout_ItemAt(const QGraphicsLayout* self, int i);
 void QGraphicsLayout_RemoveAt(QGraphicsLayout* self, int index);
 void QGraphicsLayout_SetInstantInvalidatePropagation(bool enable);
 bool QGraphicsLayout_InstantInvalidatePropagation();
-void QGraphicsLayout_Delete(QGraphicsLayout* self);
+void QGraphicsLayout_Delete(QGraphicsLayout* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

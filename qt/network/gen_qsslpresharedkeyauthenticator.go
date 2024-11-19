@@ -14,7 +14,8 @@ import (
 )
 
 type QSslPreSharedKeyAuthenticator struct {
-	h *C.QSslPreSharedKeyAuthenticator
+	h          *C.QSslPreSharedKeyAuthenticator
+	isSubclass bool
 }
 
 func (this *QSslPreSharedKeyAuthenticator) cPointer() *C.QSslPreSharedKeyAuthenticator {
@@ -31,6 +32,7 @@ func (this *QSslPreSharedKeyAuthenticator) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQSslPreSharedKeyAuthenticator constructs the type using only CGO pointers.
 func newQSslPreSharedKeyAuthenticator(h *C.QSslPreSharedKeyAuthenticator) *QSslPreSharedKeyAuthenticator {
 	if h == nil {
 		return nil
@@ -38,20 +40,33 @@ func newQSslPreSharedKeyAuthenticator(h *C.QSslPreSharedKeyAuthenticator) *QSslP
 	return &QSslPreSharedKeyAuthenticator{h: h}
 }
 
+// UnsafeNewQSslPreSharedKeyAuthenticator constructs the type using only unsafe pointers.
 func UnsafeNewQSslPreSharedKeyAuthenticator(h unsafe.Pointer) *QSslPreSharedKeyAuthenticator {
-	return newQSslPreSharedKeyAuthenticator((*C.QSslPreSharedKeyAuthenticator)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QSslPreSharedKeyAuthenticator{h: (*C.QSslPreSharedKeyAuthenticator)(h)}
 }
 
 // NewQSslPreSharedKeyAuthenticator constructs a new QSslPreSharedKeyAuthenticator object.
 func NewQSslPreSharedKeyAuthenticator() *QSslPreSharedKeyAuthenticator {
-	ret := C.QSslPreSharedKeyAuthenticator_new()
-	return newQSslPreSharedKeyAuthenticator(ret)
+	var outptr_QSslPreSharedKeyAuthenticator *C.QSslPreSharedKeyAuthenticator = nil
+
+	C.QSslPreSharedKeyAuthenticator_new(&outptr_QSslPreSharedKeyAuthenticator)
+	ret := newQSslPreSharedKeyAuthenticator(outptr_QSslPreSharedKeyAuthenticator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSslPreSharedKeyAuthenticator2 constructs a new QSslPreSharedKeyAuthenticator object.
 func NewQSslPreSharedKeyAuthenticator2(authenticator *QSslPreSharedKeyAuthenticator) *QSslPreSharedKeyAuthenticator {
-	ret := C.QSslPreSharedKeyAuthenticator_new2(authenticator.cPointer())
-	return newQSslPreSharedKeyAuthenticator(ret)
+	var outptr_QSslPreSharedKeyAuthenticator *C.QSslPreSharedKeyAuthenticator = nil
+
+	C.QSslPreSharedKeyAuthenticator_new2(authenticator.cPointer(), &outptr_QSslPreSharedKeyAuthenticator)
+	ret := newQSslPreSharedKeyAuthenticator(outptr_QSslPreSharedKeyAuthenticator)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QSslPreSharedKeyAuthenticator) OperatorAssign(authenticator *QSslPreSharedKeyAuthenticator) {
@@ -107,7 +122,7 @@ func (this *QSslPreSharedKeyAuthenticator) MaximumPreSharedKeyLength() int {
 
 // Delete this object from C++ memory.
 func (this *QSslPreSharedKeyAuthenticator) Delete() {
-	C.QSslPreSharedKeyAuthenticator_Delete(this.h)
+	C.QSslPreSharedKeyAuthenticator_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

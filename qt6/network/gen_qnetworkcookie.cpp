@@ -10,23 +10,27 @@
 #include "gen_qnetworkcookie.h"
 #include "_cgo_export.h"
 
-QNetworkCookie* QNetworkCookie_new() {
-	return new QNetworkCookie();
+void QNetworkCookie_new(QNetworkCookie** outptr_QNetworkCookie) {
+	QNetworkCookie* ret = new QNetworkCookie();
+	*outptr_QNetworkCookie = ret;
 }
 
-QNetworkCookie* QNetworkCookie_new2(QNetworkCookie* other) {
-	return new QNetworkCookie(*other);
+void QNetworkCookie_new2(QNetworkCookie* other, QNetworkCookie** outptr_QNetworkCookie) {
+	QNetworkCookie* ret = new QNetworkCookie(*other);
+	*outptr_QNetworkCookie = ret;
 }
 
-QNetworkCookie* QNetworkCookie_new3(struct miqt_string name) {
+void QNetworkCookie_new3(struct miqt_string name, QNetworkCookie** outptr_QNetworkCookie) {
 	QByteArray name_QByteArray(name.data, name.len);
-	return new QNetworkCookie(name_QByteArray);
+	QNetworkCookie* ret = new QNetworkCookie(name_QByteArray);
+	*outptr_QNetworkCookie = ret;
 }
 
-QNetworkCookie* QNetworkCookie_new4(struct miqt_string name, struct miqt_string value) {
+void QNetworkCookie_new4(struct miqt_string name, struct miqt_string value, QNetworkCookie** outptr_QNetworkCookie) {
 	QByteArray name_QByteArray(name.data, name.len);
 	QByteArray value_QByteArray(value.data, value.len);
-	return new QNetworkCookie(name_QByteArray, value_QByteArray);
+	QNetworkCookie* ret = new QNetworkCookie(name_QByteArray, value_QByteArray);
+	*outptr_QNetworkCookie = ret;
 }
 
 void QNetworkCookie_OperatorAssign(QNetworkCookie* self, QNetworkCookie* other) {
@@ -182,7 +186,11 @@ struct miqt_string QNetworkCookie_ToRawForm1(const QNetworkCookie* self, int for
 	return _ms;
 }
 
-void QNetworkCookie_Delete(QNetworkCookie* self) {
-	delete self;
+void QNetworkCookie_Delete(QNetworkCookie* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QNetworkCookie*>( self );
+	} else {
+		delete self;
+	}
 }
 

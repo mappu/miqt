@@ -17,18 +17,26 @@ extern "C" {
 #ifdef __cplusplus
 class QAction;
 class QActionGroup;
+class QChildEvent;
+class QEvent;
 class QIcon;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
+class QTimerEvent;
 #else
 typedef struct QAction QAction;
 typedef struct QActionGroup QActionGroup;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QIcon QIcon;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
-QActionGroup* QActionGroup_new(QObject* parent);
+void QActionGroup_new(QObject* parent, QActionGroup** outptr_QActionGroup, QObject** outptr_QObject);
 QMetaObject* QActionGroup_MetaObject(const QActionGroup* self);
 void* QActionGroup_Metacast(QActionGroup* self, const char* param1);
 struct miqt_string QActionGroup_Tr(const char* s);
@@ -53,7 +61,21 @@ void QActionGroup_Hovered(QActionGroup* self, QAction* param1);
 void QActionGroup_connect_Hovered(QActionGroup* self, intptr_t slot);
 struct miqt_string QActionGroup_Tr2(const char* s, const char* c);
 struct miqt_string QActionGroup_Tr3(const char* s, const char* c, int n);
-void QActionGroup_Delete(QActionGroup* self);
+void QActionGroup_override_virtual_Event(void* self, intptr_t slot);
+bool QActionGroup_virtualbase_Event(void* self, QEvent* event);
+void QActionGroup_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QActionGroup_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QActionGroup_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QActionGroup_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QActionGroup_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QActionGroup_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QActionGroup_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QActionGroup_virtualbase_CustomEvent(void* self, QEvent* event);
+void QActionGroup_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QActionGroup_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QActionGroup_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QActionGroup_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QActionGroup_Delete(QActionGroup* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

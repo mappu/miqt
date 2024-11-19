@@ -14,7 +14,8 @@ import (
 )
 
 type QFontMetrics struct {
-	h *C.QFontMetrics
+	h          *C.QFontMetrics
+	isSubclass bool
 }
 
 func (this *QFontMetrics) cPointer() *C.QFontMetrics {
@@ -31,6 +32,7 @@ func (this *QFontMetrics) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQFontMetrics constructs the type using only CGO pointers.
 func newQFontMetrics(h *C.QFontMetrics) *QFontMetrics {
 	if h == nil {
 		return nil
@@ -38,26 +40,43 @@ func newQFontMetrics(h *C.QFontMetrics) *QFontMetrics {
 	return &QFontMetrics{h: h}
 }
 
+// UnsafeNewQFontMetrics constructs the type using only unsafe pointers.
 func UnsafeNewQFontMetrics(h unsafe.Pointer) *QFontMetrics {
-	return newQFontMetrics((*C.QFontMetrics)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QFontMetrics{h: (*C.QFontMetrics)(h)}
 }
 
 // NewQFontMetrics constructs a new QFontMetrics object.
 func NewQFontMetrics(param1 *QFont) *QFontMetrics {
-	ret := C.QFontMetrics_new(param1.cPointer())
-	return newQFontMetrics(ret)
+	var outptr_QFontMetrics *C.QFontMetrics = nil
+
+	C.QFontMetrics_new(param1.cPointer(), &outptr_QFontMetrics)
+	ret := newQFontMetrics(outptr_QFontMetrics)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFontMetrics2 constructs a new QFontMetrics object.
 func NewQFontMetrics2(font *QFont, pd *QPaintDevice) *QFontMetrics {
-	ret := C.QFontMetrics_new2(font.cPointer(), pd.cPointer())
-	return newQFontMetrics(ret)
+	var outptr_QFontMetrics *C.QFontMetrics = nil
+
+	C.QFontMetrics_new2(font.cPointer(), pd.cPointer(), &outptr_QFontMetrics)
+	ret := newQFontMetrics(outptr_QFontMetrics)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFontMetrics3 constructs a new QFontMetrics object.
 func NewQFontMetrics3(param1 *QFontMetrics) *QFontMetrics {
-	ret := C.QFontMetrics_new3(param1.cPointer())
-	return newQFontMetrics(ret)
+	var outptr_QFontMetrics *C.QFontMetrics = nil
+
+	C.QFontMetrics_new3(param1.cPointer(), &outptr_QFontMetrics)
+	ret := newQFontMetrics(outptr_QFontMetrics)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QFontMetrics) OperatorAssign(param1 *QFontMetrics) {
@@ -364,7 +383,7 @@ func (this *QFontMetrics) ElidedText4(text string, mode TextElideMode, width int
 
 // Delete this object from C++ memory.
 func (this *QFontMetrics) Delete() {
-	C.QFontMetrics_Delete(this.h)
+	C.QFontMetrics_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -377,7 +396,8 @@ func (this *QFontMetrics) GoGC() {
 }
 
 type QFontMetricsF struct {
-	h *C.QFontMetricsF
+	h          *C.QFontMetricsF
+	isSubclass bool
 }
 
 func (this *QFontMetricsF) cPointer() *C.QFontMetricsF {
@@ -394,6 +414,7 @@ func (this *QFontMetricsF) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQFontMetricsF constructs the type using only CGO pointers.
 func newQFontMetricsF(h *C.QFontMetricsF) *QFontMetricsF {
 	if h == nil {
 		return nil
@@ -401,32 +422,53 @@ func newQFontMetricsF(h *C.QFontMetricsF) *QFontMetricsF {
 	return &QFontMetricsF{h: h}
 }
 
+// UnsafeNewQFontMetricsF constructs the type using only unsafe pointers.
 func UnsafeNewQFontMetricsF(h unsafe.Pointer) *QFontMetricsF {
-	return newQFontMetricsF((*C.QFontMetricsF)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QFontMetricsF{h: (*C.QFontMetricsF)(h)}
 }
 
 // NewQFontMetricsF constructs a new QFontMetricsF object.
 func NewQFontMetricsF(font *QFont) *QFontMetricsF {
-	ret := C.QFontMetricsF_new(font.cPointer())
-	return newQFontMetricsF(ret)
+	var outptr_QFontMetricsF *C.QFontMetricsF = nil
+
+	C.QFontMetricsF_new(font.cPointer(), &outptr_QFontMetricsF)
+	ret := newQFontMetricsF(outptr_QFontMetricsF)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFontMetricsF2 constructs a new QFontMetricsF object.
 func NewQFontMetricsF2(font *QFont, pd *QPaintDevice) *QFontMetricsF {
-	ret := C.QFontMetricsF_new2(font.cPointer(), pd.cPointer())
-	return newQFontMetricsF(ret)
+	var outptr_QFontMetricsF *C.QFontMetricsF = nil
+
+	C.QFontMetricsF_new2(font.cPointer(), pd.cPointer(), &outptr_QFontMetricsF)
+	ret := newQFontMetricsF(outptr_QFontMetricsF)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFontMetricsF3 constructs a new QFontMetricsF object.
 func NewQFontMetricsF3(param1 *QFontMetrics) *QFontMetricsF {
-	ret := C.QFontMetricsF_new3(param1.cPointer())
-	return newQFontMetricsF(ret)
+	var outptr_QFontMetricsF *C.QFontMetricsF = nil
+
+	C.QFontMetricsF_new3(param1.cPointer(), &outptr_QFontMetricsF)
+	ret := newQFontMetricsF(outptr_QFontMetricsF)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFontMetricsF4 constructs a new QFontMetricsF object.
 func NewQFontMetricsF4(param1 *QFontMetricsF) *QFontMetricsF {
-	ret := C.QFontMetricsF_new4(param1.cPointer())
-	return newQFontMetricsF(ret)
+	var outptr_QFontMetricsF *C.QFontMetricsF = nil
+
+	C.QFontMetricsF_new4(param1.cPointer(), &outptr_QFontMetricsF)
+	ret := newQFontMetricsF(outptr_QFontMetricsF)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QFontMetricsF) OperatorAssign(param1 *QFontMetricsF) {
@@ -680,7 +722,7 @@ func (this *QFontMetricsF) ElidedText4(text string, mode TextElideMode, width fl
 
 // Delete this object from C++ memory.
 func (this *QFontMetricsF) Delete() {
-	C.QFontMetricsF_Delete(this.h)
+	C.QFontMetricsF_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

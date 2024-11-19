@@ -4,11 +4,19 @@
 #include "gen_qutf8stringview.h"
 #include "_cgo_export.h"
 
-void QtPrivate__hide_char8_t_Delete(QtPrivate__hide_char8_t* self) {
-	delete self;
+void QtPrivate__hide_char8_t_Delete(QtPrivate__hide_char8_t* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtPrivate::hide_char8_t*>( self );
+	} else {
+		delete self;
+	}
 }
 
-void QtPrivate__wrap_char_Delete(QtPrivate__wrap_char* self) {
-	delete self;
+void QtPrivate__wrap_char_Delete(QtPrivate__wrap_char* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtPrivate::wrap_char*>( self );
+	} else {
+		delete self;
+	}
 }
 

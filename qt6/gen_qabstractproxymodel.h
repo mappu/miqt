@@ -21,6 +21,7 @@ class QByteArray;
 class QMetaObject;
 class QMimeData;
 class QModelIndex;
+class QObject;
 class QSize;
 class QVariant;
 #else
@@ -30,6 +31,7 @@ typedef struct QByteArray QByteArray;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMimeData QMimeData;
 typedef struct QModelIndex QModelIndex;
+typedef struct QObject QObject;
 typedef struct QSize QSize;
 typedef struct QVariant QVariant;
 #endif
@@ -43,20 +45,20 @@ QModelIndex* QAbstractProxyModel_MapToSource(const QAbstractProxyModel* self, QM
 QModelIndex* QAbstractProxyModel_MapFromSource(const QAbstractProxyModel* self, QModelIndex* sourceIndex);
 bool QAbstractProxyModel_Submit(QAbstractProxyModel* self);
 void QAbstractProxyModel_Revert(QAbstractProxyModel* self);
-QVariant* QAbstractProxyModel_Data(const QAbstractProxyModel* self, QModelIndex* proxyIndex);
-QVariant* QAbstractProxyModel_HeaderData(const QAbstractProxyModel* self, int section, int orientation);
+QVariant* QAbstractProxyModel_Data(const QAbstractProxyModel* self, QModelIndex* proxyIndex, int role);
+QVariant* QAbstractProxyModel_HeaderData(const QAbstractProxyModel* self, int section, int orientation, int role);
 struct miqt_map /* of int to QVariant* */  QAbstractProxyModel_ItemData(const QAbstractProxyModel* self, QModelIndex* index);
 int QAbstractProxyModel_Flags(const QAbstractProxyModel* self, QModelIndex* index);
-bool QAbstractProxyModel_SetData(QAbstractProxyModel* self, QModelIndex* index, QVariant* value);
+bool QAbstractProxyModel_SetData(QAbstractProxyModel* self, QModelIndex* index, QVariant* value, int role);
 bool QAbstractProxyModel_SetItemData(QAbstractProxyModel* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles);
-bool QAbstractProxyModel_SetHeaderData(QAbstractProxyModel* self, int section, int orientation, QVariant* value);
+bool QAbstractProxyModel_SetHeaderData(QAbstractProxyModel* self, int section, int orientation, QVariant* value, int role);
 bool QAbstractProxyModel_ClearItemData(QAbstractProxyModel* self, QModelIndex* index);
 QModelIndex* QAbstractProxyModel_Buddy(const QAbstractProxyModel* self, QModelIndex* index);
 bool QAbstractProxyModel_CanFetchMore(const QAbstractProxyModel* self, QModelIndex* parent);
 void QAbstractProxyModel_FetchMore(QAbstractProxyModel* self, QModelIndex* parent);
-void QAbstractProxyModel_Sort(QAbstractProxyModel* self, int column);
+void QAbstractProxyModel_Sort(QAbstractProxyModel* self, int column, int order);
 QSize* QAbstractProxyModel_Span(const QAbstractProxyModel* self, QModelIndex* index);
-bool QAbstractProxyModel_HasChildren(const QAbstractProxyModel* self);
+bool QAbstractProxyModel_HasChildren(const QAbstractProxyModel* self, QModelIndex* parent);
 QModelIndex* QAbstractProxyModel_Sibling(const QAbstractProxyModel* self, int row, int column, QModelIndex* idx);
 QMimeData* QAbstractProxyModel_MimeData(const QAbstractProxyModel* self, struct miqt_array /* of QModelIndex* */  indexes);
 bool QAbstractProxyModel_CanDropMimeData(const QAbstractProxyModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
@@ -67,13 +69,7 @@ int QAbstractProxyModel_SupportedDropActions(const QAbstractProxyModel* self);
 struct miqt_map /* of int to struct miqt_string */  QAbstractProxyModel_RoleNames(const QAbstractProxyModel* self);
 struct miqt_string QAbstractProxyModel_Tr2(const char* s, const char* c);
 struct miqt_string QAbstractProxyModel_Tr3(const char* s, const char* c, int n);
-QVariant* QAbstractProxyModel_Data2(const QAbstractProxyModel* self, QModelIndex* proxyIndex, int role);
-QVariant* QAbstractProxyModel_HeaderData3(const QAbstractProxyModel* self, int section, int orientation, int role);
-bool QAbstractProxyModel_SetData3(QAbstractProxyModel* self, QModelIndex* index, QVariant* value, int role);
-bool QAbstractProxyModel_SetHeaderData4(QAbstractProxyModel* self, int section, int orientation, QVariant* value, int role);
-void QAbstractProxyModel_Sort2(QAbstractProxyModel* self, int column, int order);
-bool QAbstractProxyModel_HasChildren1(const QAbstractProxyModel* self, QModelIndex* parent);
-void QAbstractProxyModel_Delete(QAbstractProxyModel* self);
+void QAbstractProxyModel_Delete(QAbstractProxyModel* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

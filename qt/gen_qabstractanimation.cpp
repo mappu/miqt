@@ -1,11 +1,15 @@
 #include <QAbstractAnimation>
 #include <QAnimationDriver>
 #include <QAnimationGroup>
+#include <QChildEvent>
+#include <QEvent>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QTimerEvent>
 #include <qabstractanimation.h>
 #include "gen_qabstractanimation.h"
 #include "_cgo_export.h"
@@ -205,16 +209,297 @@ void QAbstractAnimation_Start1(QAbstractAnimation* self, int policy) {
 	self->start(static_cast<QAbstractAnimation::DeletionPolicy>(policy));
 }
 
-void QAbstractAnimation_Delete(QAbstractAnimation* self) {
-	delete self;
+void QAbstractAnimation_Delete(QAbstractAnimation* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAbstractAnimation*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QAnimationDriver* QAnimationDriver_new() {
-	return new QAnimationDriver();
+class MiqtVirtualQAnimationDriver : public virtual QAnimationDriver {
+public:
+
+	MiqtVirtualQAnimationDriver(): QAnimationDriver() {};
+	MiqtVirtualQAnimationDriver(QObject* parent): QAnimationDriver(parent) {};
+
+	virtual ~MiqtVirtualQAnimationDriver() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Advance = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void advance() override {
+		if (handle__Advance == 0) {
+			QAnimationDriver::advance();
+			return;
+		}
+		
+
+		miqt_exec_callback_QAnimationDriver_Advance(this, handle__Advance);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_Advance() {
+
+		QAnimationDriver::advance();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Elapsed = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual qint64 elapsed() const override {
+		if (handle__Elapsed == 0) {
+			return QAnimationDriver::elapsed();
+		}
+		
+
+		long long callback_return_value = miqt_exec_callback_QAnimationDriver_Elapsed(const_cast<MiqtVirtualQAnimationDriver*>(this), handle__Elapsed);
+
+		return static_cast<qint64>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	long long virtualbase_Elapsed() const {
+
+		qint64 _ret = QAnimationDriver::elapsed();
+		return static_cast<long long>(_ret);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Start = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void start() override {
+		if (handle__Start == 0) {
+			QAnimationDriver::start();
+			return;
+		}
+		
+
+		miqt_exec_callback_QAnimationDriver_Start(this, handle__Start);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_Start() {
+
+		QAnimationDriver::start();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Stop = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void stop() override {
+		if (handle__Stop == 0) {
+			QAnimationDriver::stop();
+			return;
+		}
+		
+
+		miqt_exec_callback_QAnimationDriver_Stop(this, handle__Stop);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_Stop() {
+
+		QAnimationDriver::stop();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QAnimationDriver::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QAnimationDriver_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QAnimationDriver::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QAnimationDriver::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QAnimationDriver_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QAnimationDriver::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QAnimationDriver::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QAnimationDriver_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QAnimationDriver::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QAnimationDriver::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QAnimationDriver_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QAnimationDriver::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QAnimationDriver::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QAnimationDriver_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QAnimationDriver::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QAnimationDriver::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QAnimationDriver_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QAnimationDriver::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QAnimationDriver::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QAnimationDriver_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QAnimationDriver::disconnectNotify(*signal);
+
+	}
+
+};
+
+void QAnimationDriver_new(QAnimationDriver** outptr_QAnimationDriver, QObject** outptr_QObject) {
+	MiqtVirtualQAnimationDriver* ret = new MiqtVirtualQAnimationDriver();
+	*outptr_QAnimationDriver = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QAnimationDriver* QAnimationDriver_new2(QObject* parent) {
-	return new QAnimationDriver(parent);
+void QAnimationDriver_new2(QObject* parent, QAnimationDriver** outptr_QAnimationDriver, QObject** outptr_QObject) {
+	MiqtVirtualQAnimationDriver* ret = new MiqtVirtualQAnimationDriver(parent);
+	*outptr_QAnimationDriver = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QAnimationDriver_MetaObject(const QAnimationDriver* self) {
@@ -282,7 +567,7 @@ void QAnimationDriver_Started(QAnimationDriver* self) {
 }
 
 void QAnimationDriver_connect_Started(QAnimationDriver* self, intptr_t slot) {
-	QAnimationDriver::connect(self, static_cast<void (QAnimationDriver::*)()>(&QAnimationDriver::started), self, [=]() {
+	MiqtVirtualQAnimationDriver::connect(self, static_cast<void (QAnimationDriver::*)()>(&QAnimationDriver::started), self, [=]() {
 		miqt_exec_callback_QAnimationDriver_Started(slot);
 	});
 }
@@ -292,7 +577,7 @@ void QAnimationDriver_Stopped(QAnimationDriver* self) {
 }
 
 void QAnimationDriver_connect_Stopped(QAnimationDriver* self, intptr_t slot) {
-	QAnimationDriver::connect(self, static_cast<void (QAnimationDriver::*)()>(&QAnimationDriver::stopped), self, [=]() {
+	MiqtVirtualQAnimationDriver::connect(self, static_cast<void (QAnimationDriver::*)()>(&QAnimationDriver::stopped), self, [=]() {
 		miqt_exec_callback_QAnimationDriver_Stopped(slot);
 	});
 }
@@ -341,7 +626,99 @@ struct miqt_string QAnimationDriver_TrUtf83(const char* s, const char* c, int n)
 	return _ms;
 }
 
-void QAnimationDriver_Delete(QAnimationDriver* self) {
-	delete self;
+void QAnimationDriver_override_virtual_Advance(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) )->handle__Advance = slot;
+}
+
+void QAnimationDriver_virtualbase_Advance(void* self) {
+	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_Advance();
+}
+
+void QAnimationDriver_override_virtual_Elapsed(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) )->handle__Elapsed = slot;
+}
+
+long long QAnimationDriver_virtualbase_Elapsed(const void* self) {
+	return ( (const MiqtVirtualQAnimationDriver*)(self) )->virtualbase_Elapsed();
+}
+
+void QAnimationDriver_override_virtual_Start(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) )->handle__Start = slot;
+}
+
+void QAnimationDriver_virtualbase_Start(void* self) {
+	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_Start();
+}
+
+void QAnimationDriver_override_virtual_Stop(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) )->handle__Stop = slot;
+}
+
+void QAnimationDriver_virtualbase_Stop(void* self) {
+	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_Stop();
+}
+
+void QAnimationDriver_override_virtual_Event(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) )->handle__Event = slot;
+}
+
+bool QAnimationDriver_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_Event(event);
+}
+
+void QAnimationDriver_override_virtual_EventFilter(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) )->handle__EventFilter = slot;
+}
+
+bool QAnimationDriver_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+void QAnimationDriver_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) )->handle__TimerEvent = slot;
+}
+
+void QAnimationDriver_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_TimerEvent(event);
+}
+
+void QAnimationDriver_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) )->handle__ChildEvent = slot;
+}
+
+void QAnimationDriver_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_ChildEvent(event);
+}
+
+void QAnimationDriver_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) )->handle__CustomEvent = slot;
+}
+
+void QAnimationDriver_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_CustomEvent(event);
+}
+
+void QAnimationDriver_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) )->handle__ConnectNotify = slot;
+}
+
+void QAnimationDriver_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+void QAnimationDriver_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) )->handle__DisconnectNotify = slot;
+}
+
+void QAnimationDriver_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_DisconnectNotify(signal);
+}
+
+void QAnimationDriver_Delete(QAnimationDriver* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQAnimationDriver*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -18,24 +18,32 @@ extern "C" {
 class QAudioDevice;
 class QAudioFormat;
 class QAudioSource;
+class QChildEvent;
+class QEvent;
 class QIODevice;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
+class QTimerEvent;
 #else
 typedef struct QAudioDevice QAudioDevice;
 typedef struct QAudioFormat QAudioFormat;
 typedef struct QAudioSource QAudioSource;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QIODevice QIODevice;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
-QAudioSource* QAudioSource_new();
-QAudioSource* QAudioSource_new2(QAudioDevice* audioDeviceInfo);
-QAudioSource* QAudioSource_new3(QAudioFormat* format);
-QAudioSource* QAudioSource_new4(QAudioFormat* format, QObject* parent);
-QAudioSource* QAudioSource_new5(QAudioDevice* audioDeviceInfo, QAudioFormat* format);
-QAudioSource* QAudioSource_new6(QAudioDevice* audioDeviceInfo, QAudioFormat* format, QObject* parent);
+void QAudioSource_new(QAudioSource** outptr_QAudioSource, QObject** outptr_QObject);
+void QAudioSource_new2(QAudioDevice* audioDeviceInfo, QAudioSource** outptr_QAudioSource, QObject** outptr_QObject);
+void QAudioSource_new3(QAudioFormat* format, QAudioSource** outptr_QAudioSource, QObject** outptr_QObject);
+void QAudioSource_new4(QAudioFormat* format, QObject* parent, QAudioSource** outptr_QAudioSource, QObject** outptr_QObject);
+void QAudioSource_new5(QAudioDevice* audioDeviceInfo, QAudioFormat* format, QAudioSource** outptr_QAudioSource, QObject** outptr_QObject);
+void QAudioSource_new6(QAudioDevice* audioDeviceInfo, QAudioFormat* format, QObject* parent, QAudioSource** outptr_QAudioSource, QObject** outptr_QObject);
 QMetaObject* QAudioSource_MetaObject(const QAudioSource* self);
 void* QAudioSource_Metacast(QAudioSource* self, const char* param1);
 struct miqt_string QAudioSource_Tr(const char* s);
@@ -60,7 +68,21 @@ void QAudioSource_StateChanged(QAudioSource* self, int state);
 void QAudioSource_connect_StateChanged(QAudioSource* self, intptr_t slot);
 struct miqt_string QAudioSource_Tr2(const char* s, const char* c);
 struct miqt_string QAudioSource_Tr3(const char* s, const char* c, int n);
-void QAudioSource_Delete(QAudioSource* self);
+void QAudioSource_override_virtual_Event(void* self, intptr_t slot);
+bool QAudioSource_virtualbase_Event(void* self, QEvent* event);
+void QAudioSource_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QAudioSource_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QAudioSource_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QAudioSource_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QAudioSource_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QAudioSource_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QAudioSource_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QAudioSource_virtualbase_CustomEvent(void* self, QEvent* event);
+void QAudioSource_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QAudioSource_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QAudioSource_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QAudioSource_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QAudioSource_Delete(QAudioSource* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

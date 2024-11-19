@@ -10,6 +10,7 @@ import "C"
 
 import (
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
@@ -22,7 +23,8 @@ const (
 )
 
 type QGraphicsSceneEvent struct {
-	h *C.QGraphicsSceneEvent
+	h          *C.QGraphicsSceneEvent
+	isSubclass bool
 	*QEvent
 }
 
@@ -40,25 +42,38 @@ func (this *QGraphicsSceneEvent) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQGraphicsSceneEvent(h *C.QGraphicsSceneEvent) *QGraphicsSceneEvent {
+// newQGraphicsSceneEvent constructs the type using only CGO pointers.
+func newQGraphicsSceneEvent(h *C.QGraphicsSceneEvent, h_QEvent *C.QEvent) *QGraphicsSceneEvent {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsSceneEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
+	return &QGraphicsSceneEvent{h: h,
+		QEvent: newQEvent(h_QEvent)}
 }
 
-func UnsafeNewQGraphicsSceneEvent(h unsafe.Pointer) *QGraphicsSceneEvent {
-	return newQGraphicsSceneEvent((*C.QGraphicsSceneEvent)(h))
+// UnsafeNewQGraphicsSceneEvent constructs the type using only unsafe pointers.
+func UnsafeNewQGraphicsSceneEvent(h unsafe.Pointer, h_QEvent unsafe.Pointer) *QGraphicsSceneEvent {
+	if h == nil {
+		return nil
+	}
+
+	return &QGraphicsSceneEvent{h: (*C.QGraphicsSceneEvent)(h),
+		QEvent: UnsafeNewQEvent(h_QEvent)}
 }
 
 // NewQGraphicsSceneEvent constructs a new QGraphicsSceneEvent object.
 func NewQGraphicsSceneEvent(typeVal QEvent__Type) *QGraphicsSceneEvent {
-	ret := C.QGraphicsSceneEvent_new((C.int)(typeVal))
-	return newQGraphicsSceneEvent(ret)
+	var outptr_QGraphicsSceneEvent *C.QGraphicsSceneEvent = nil
+	var outptr_QEvent *C.QEvent = nil
+
+	C.QGraphicsSceneEvent_new((C.int)(typeVal), &outptr_QGraphicsSceneEvent, &outptr_QEvent)
+	ret := newQGraphicsSceneEvent(outptr_QGraphicsSceneEvent, outptr_QEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QGraphicsSceneEvent) Widget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QGraphicsSceneEvent_Widget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QGraphicsSceneEvent_Widget(this.h)), nil, nil)
 }
 
 func (this *QGraphicsSceneEvent) SetWidget(widget *QWidget) {
@@ -73,9 +88,53 @@ func (this *QGraphicsSceneEvent) SetTimestamp(ts uint64) {
 	C.QGraphicsSceneEvent_SetTimestamp(this.h, (C.ulonglong)(ts))
 }
 
+func (this *QGraphicsSceneEvent) callVirtualBase_SetAccepted(accepted bool) {
+
+	C.QGraphicsSceneEvent_virtualbase_SetAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
+
+}
+func (this *QGraphicsSceneEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	C.QGraphicsSceneEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsSceneEvent_SetAccepted
+func miqt_exec_callback_QGraphicsSceneEvent_SetAccepted(self *C.QGraphicsSceneEvent, cb C.intptr_t, accepted C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(accepted bool), accepted bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(accepted)
+
+	gofunc((&QGraphicsSceneEvent{h: self}).callVirtualBase_SetAccepted, slotval1)
+
+}
+
+func (this *QGraphicsSceneEvent) callVirtualBase_Clone() *QEvent {
+
+	return UnsafeNewQEvent(unsafe.Pointer(C.QGraphicsSceneEvent_virtualbase_Clone(unsafe.Pointer(this.h))))
+}
+func (this *QGraphicsSceneEvent) OnClone(slot func(super func() *QEvent) *QEvent) {
+	C.QGraphicsSceneEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsSceneEvent_Clone
+func miqt_exec_callback_QGraphicsSceneEvent_Clone(self *C.QGraphicsSceneEvent, cb C.intptr_t) *C.QEvent {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QEvent) *QEvent)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QGraphicsSceneEvent{h: self}).callVirtualBase_Clone)
+
+	return virtualReturn.cPointer()
+
+}
+
 // Delete this object from C++ memory.
 func (this *QGraphicsSceneEvent) Delete() {
-	C.QGraphicsSceneEvent_Delete(this.h)
+	C.QGraphicsSceneEvent_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -88,7 +147,8 @@ func (this *QGraphicsSceneEvent) GoGC() {
 }
 
 type QGraphicsSceneMouseEvent struct {
-	h *C.QGraphicsSceneMouseEvent
+	h          *C.QGraphicsSceneMouseEvent
+	isSubclass bool
 	*QGraphicsSceneEvent
 }
 
@@ -106,27 +166,47 @@ func (this *QGraphicsSceneMouseEvent) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQGraphicsSceneMouseEvent(h *C.QGraphicsSceneMouseEvent) *QGraphicsSceneMouseEvent {
+// newQGraphicsSceneMouseEvent constructs the type using only CGO pointers.
+func newQGraphicsSceneMouseEvent(h *C.QGraphicsSceneMouseEvent, h_QGraphicsSceneEvent *C.QGraphicsSceneEvent, h_QEvent *C.QEvent) *QGraphicsSceneMouseEvent {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsSceneMouseEvent{h: h, QGraphicsSceneEvent: UnsafeNewQGraphicsSceneEvent(unsafe.Pointer(h))}
+	return &QGraphicsSceneMouseEvent{h: h,
+		QGraphicsSceneEvent: newQGraphicsSceneEvent(h_QGraphicsSceneEvent, h_QEvent)}
 }
 
-func UnsafeNewQGraphicsSceneMouseEvent(h unsafe.Pointer) *QGraphicsSceneMouseEvent {
-	return newQGraphicsSceneMouseEvent((*C.QGraphicsSceneMouseEvent)(h))
+// UnsafeNewQGraphicsSceneMouseEvent constructs the type using only unsafe pointers.
+func UnsafeNewQGraphicsSceneMouseEvent(h unsafe.Pointer, h_QGraphicsSceneEvent unsafe.Pointer, h_QEvent unsafe.Pointer) *QGraphicsSceneMouseEvent {
+	if h == nil {
+		return nil
+	}
+
+	return &QGraphicsSceneMouseEvent{h: (*C.QGraphicsSceneMouseEvent)(h),
+		QGraphicsSceneEvent: UnsafeNewQGraphicsSceneEvent(h_QGraphicsSceneEvent, h_QEvent)}
 }
 
 // NewQGraphicsSceneMouseEvent constructs a new QGraphicsSceneMouseEvent object.
 func NewQGraphicsSceneMouseEvent() *QGraphicsSceneMouseEvent {
-	ret := C.QGraphicsSceneMouseEvent_new()
-	return newQGraphicsSceneMouseEvent(ret)
+	var outptr_QGraphicsSceneMouseEvent *C.QGraphicsSceneMouseEvent = nil
+	var outptr_QGraphicsSceneEvent *C.QGraphicsSceneEvent = nil
+	var outptr_QEvent *C.QEvent = nil
+
+	C.QGraphicsSceneMouseEvent_new(&outptr_QGraphicsSceneMouseEvent, &outptr_QGraphicsSceneEvent, &outptr_QEvent)
+	ret := newQGraphicsSceneMouseEvent(outptr_QGraphicsSceneMouseEvent, outptr_QGraphicsSceneEvent, outptr_QEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQGraphicsSceneMouseEvent2 constructs a new QGraphicsSceneMouseEvent object.
 func NewQGraphicsSceneMouseEvent2(typeVal QEvent__Type) *QGraphicsSceneMouseEvent {
-	ret := C.QGraphicsSceneMouseEvent_new2((C.int)(typeVal))
-	return newQGraphicsSceneMouseEvent(ret)
+	var outptr_QGraphicsSceneMouseEvent *C.QGraphicsSceneMouseEvent = nil
+	var outptr_QGraphicsSceneEvent *C.QGraphicsSceneEvent = nil
+	var outptr_QEvent *C.QEvent = nil
+
+	C.QGraphicsSceneMouseEvent_new2((C.int)(typeVal), &outptr_QGraphicsSceneMouseEvent, &outptr_QGraphicsSceneEvent, &outptr_QEvent)
+	ret := newQGraphicsSceneMouseEvent(outptr_QGraphicsSceneMouseEvent, outptr_QGraphicsSceneEvent, outptr_QEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QGraphicsSceneMouseEvent) Pos() *QPointF {
@@ -270,7 +350,7 @@ func (this *QGraphicsSceneMouseEvent) SetFlags(flags MouseEventFlag) {
 
 // Delete this object from C++ memory.
 func (this *QGraphicsSceneMouseEvent) Delete() {
-	C.QGraphicsSceneMouseEvent_Delete(this.h)
+	C.QGraphicsSceneMouseEvent_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -283,7 +363,8 @@ func (this *QGraphicsSceneMouseEvent) GoGC() {
 }
 
 type QGraphicsSceneWheelEvent struct {
-	h *C.QGraphicsSceneWheelEvent
+	h          *C.QGraphicsSceneWheelEvent
+	isSubclass bool
 	*QGraphicsSceneEvent
 }
 
@@ -301,27 +382,47 @@ func (this *QGraphicsSceneWheelEvent) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQGraphicsSceneWheelEvent(h *C.QGraphicsSceneWheelEvent) *QGraphicsSceneWheelEvent {
+// newQGraphicsSceneWheelEvent constructs the type using only CGO pointers.
+func newQGraphicsSceneWheelEvent(h *C.QGraphicsSceneWheelEvent, h_QGraphicsSceneEvent *C.QGraphicsSceneEvent, h_QEvent *C.QEvent) *QGraphicsSceneWheelEvent {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsSceneWheelEvent{h: h, QGraphicsSceneEvent: UnsafeNewQGraphicsSceneEvent(unsafe.Pointer(h))}
+	return &QGraphicsSceneWheelEvent{h: h,
+		QGraphicsSceneEvent: newQGraphicsSceneEvent(h_QGraphicsSceneEvent, h_QEvent)}
 }
 
-func UnsafeNewQGraphicsSceneWheelEvent(h unsafe.Pointer) *QGraphicsSceneWheelEvent {
-	return newQGraphicsSceneWheelEvent((*C.QGraphicsSceneWheelEvent)(h))
+// UnsafeNewQGraphicsSceneWheelEvent constructs the type using only unsafe pointers.
+func UnsafeNewQGraphicsSceneWheelEvent(h unsafe.Pointer, h_QGraphicsSceneEvent unsafe.Pointer, h_QEvent unsafe.Pointer) *QGraphicsSceneWheelEvent {
+	if h == nil {
+		return nil
+	}
+
+	return &QGraphicsSceneWheelEvent{h: (*C.QGraphicsSceneWheelEvent)(h),
+		QGraphicsSceneEvent: UnsafeNewQGraphicsSceneEvent(h_QGraphicsSceneEvent, h_QEvent)}
 }
 
 // NewQGraphicsSceneWheelEvent constructs a new QGraphicsSceneWheelEvent object.
 func NewQGraphicsSceneWheelEvent() *QGraphicsSceneWheelEvent {
-	ret := C.QGraphicsSceneWheelEvent_new()
-	return newQGraphicsSceneWheelEvent(ret)
+	var outptr_QGraphicsSceneWheelEvent *C.QGraphicsSceneWheelEvent = nil
+	var outptr_QGraphicsSceneEvent *C.QGraphicsSceneEvent = nil
+	var outptr_QEvent *C.QEvent = nil
+
+	C.QGraphicsSceneWheelEvent_new(&outptr_QGraphicsSceneWheelEvent, &outptr_QGraphicsSceneEvent, &outptr_QEvent)
+	ret := newQGraphicsSceneWheelEvent(outptr_QGraphicsSceneWheelEvent, outptr_QGraphicsSceneEvent, outptr_QEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQGraphicsSceneWheelEvent2 constructs a new QGraphicsSceneWheelEvent object.
 func NewQGraphicsSceneWheelEvent2(typeVal QEvent__Type) *QGraphicsSceneWheelEvent {
-	ret := C.QGraphicsSceneWheelEvent_new2((C.int)(typeVal))
-	return newQGraphicsSceneWheelEvent(ret)
+	var outptr_QGraphicsSceneWheelEvent *C.QGraphicsSceneWheelEvent = nil
+	var outptr_QGraphicsSceneEvent *C.QGraphicsSceneEvent = nil
+	var outptr_QEvent *C.QEvent = nil
+
+	C.QGraphicsSceneWheelEvent_new2((C.int)(typeVal), &outptr_QGraphicsSceneWheelEvent, &outptr_QGraphicsSceneEvent, &outptr_QEvent)
+	ret := newQGraphicsSceneWheelEvent(outptr_QGraphicsSceneWheelEvent, outptr_QGraphicsSceneEvent, outptr_QEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QGraphicsSceneWheelEvent) Pos() *QPointF {
@@ -418,7 +519,7 @@ func (this *QGraphicsSceneWheelEvent) SetInverted(inverted bool) {
 
 // Delete this object from C++ memory.
 func (this *QGraphicsSceneWheelEvent) Delete() {
-	C.QGraphicsSceneWheelEvent_Delete(this.h)
+	C.QGraphicsSceneWheelEvent_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -431,7 +532,8 @@ func (this *QGraphicsSceneWheelEvent) GoGC() {
 }
 
 type QGraphicsSceneContextMenuEvent struct {
-	h *C.QGraphicsSceneContextMenuEvent
+	h          *C.QGraphicsSceneContextMenuEvent
+	isSubclass bool
 	*QGraphicsSceneEvent
 }
 
@@ -449,27 +551,47 @@ func (this *QGraphicsSceneContextMenuEvent) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQGraphicsSceneContextMenuEvent(h *C.QGraphicsSceneContextMenuEvent) *QGraphicsSceneContextMenuEvent {
+// newQGraphicsSceneContextMenuEvent constructs the type using only CGO pointers.
+func newQGraphicsSceneContextMenuEvent(h *C.QGraphicsSceneContextMenuEvent, h_QGraphicsSceneEvent *C.QGraphicsSceneEvent, h_QEvent *C.QEvent) *QGraphicsSceneContextMenuEvent {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsSceneContextMenuEvent{h: h, QGraphicsSceneEvent: UnsafeNewQGraphicsSceneEvent(unsafe.Pointer(h))}
+	return &QGraphicsSceneContextMenuEvent{h: h,
+		QGraphicsSceneEvent: newQGraphicsSceneEvent(h_QGraphicsSceneEvent, h_QEvent)}
 }
 
-func UnsafeNewQGraphicsSceneContextMenuEvent(h unsafe.Pointer) *QGraphicsSceneContextMenuEvent {
-	return newQGraphicsSceneContextMenuEvent((*C.QGraphicsSceneContextMenuEvent)(h))
+// UnsafeNewQGraphicsSceneContextMenuEvent constructs the type using only unsafe pointers.
+func UnsafeNewQGraphicsSceneContextMenuEvent(h unsafe.Pointer, h_QGraphicsSceneEvent unsafe.Pointer, h_QEvent unsafe.Pointer) *QGraphicsSceneContextMenuEvent {
+	if h == nil {
+		return nil
+	}
+
+	return &QGraphicsSceneContextMenuEvent{h: (*C.QGraphicsSceneContextMenuEvent)(h),
+		QGraphicsSceneEvent: UnsafeNewQGraphicsSceneEvent(h_QGraphicsSceneEvent, h_QEvent)}
 }
 
 // NewQGraphicsSceneContextMenuEvent constructs a new QGraphicsSceneContextMenuEvent object.
 func NewQGraphicsSceneContextMenuEvent() *QGraphicsSceneContextMenuEvent {
-	ret := C.QGraphicsSceneContextMenuEvent_new()
-	return newQGraphicsSceneContextMenuEvent(ret)
+	var outptr_QGraphicsSceneContextMenuEvent *C.QGraphicsSceneContextMenuEvent = nil
+	var outptr_QGraphicsSceneEvent *C.QGraphicsSceneEvent = nil
+	var outptr_QEvent *C.QEvent = nil
+
+	C.QGraphicsSceneContextMenuEvent_new(&outptr_QGraphicsSceneContextMenuEvent, &outptr_QGraphicsSceneEvent, &outptr_QEvent)
+	ret := newQGraphicsSceneContextMenuEvent(outptr_QGraphicsSceneContextMenuEvent, outptr_QGraphicsSceneEvent, outptr_QEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQGraphicsSceneContextMenuEvent2 constructs a new QGraphicsSceneContextMenuEvent object.
 func NewQGraphicsSceneContextMenuEvent2(typeVal QEvent__Type) *QGraphicsSceneContextMenuEvent {
-	ret := C.QGraphicsSceneContextMenuEvent_new2((C.int)(typeVal))
-	return newQGraphicsSceneContextMenuEvent(ret)
+	var outptr_QGraphicsSceneContextMenuEvent *C.QGraphicsSceneContextMenuEvent = nil
+	var outptr_QGraphicsSceneEvent *C.QGraphicsSceneEvent = nil
+	var outptr_QEvent *C.QEvent = nil
+
+	C.QGraphicsSceneContextMenuEvent_new2((C.int)(typeVal), &outptr_QGraphicsSceneContextMenuEvent, &outptr_QGraphicsSceneEvent, &outptr_QEvent)
+	ret := newQGraphicsSceneContextMenuEvent(outptr_QGraphicsSceneContextMenuEvent, outptr_QGraphicsSceneEvent, outptr_QEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QGraphicsSceneContextMenuEvent) Pos() *QPointF {
@@ -523,7 +645,7 @@ func (this *QGraphicsSceneContextMenuEvent) SetReason(reason QGraphicsSceneConte
 
 // Delete this object from C++ memory.
 func (this *QGraphicsSceneContextMenuEvent) Delete() {
-	C.QGraphicsSceneContextMenuEvent_Delete(this.h)
+	C.QGraphicsSceneContextMenuEvent_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -536,7 +658,8 @@ func (this *QGraphicsSceneContextMenuEvent) GoGC() {
 }
 
 type QGraphicsSceneHoverEvent struct {
-	h *C.QGraphicsSceneHoverEvent
+	h          *C.QGraphicsSceneHoverEvent
+	isSubclass bool
 	*QGraphicsSceneEvent
 }
 
@@ -554,27 +677,47 @@ func (this *QGraphicsSceneHoverEvent) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQGraphicsSceneHoverEvent(h *C.QGraphicsSceneHoverEvent) *QGraphicsSceneHoverEvent {
+// newQGraphicsSceneHoverEvent constructs the type using only CGO pointers.
+func newQGraphicsSceneHoverEvent(h *C.QGraphicsSceneHoverEvent, h_QGraphicsSceneEvent *C.QGraphicsSceneEvent, h_QEvent *C.QEvent) *QGraphicsSceneHoverEvent {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsSceneHoverEvent{h: h, QGraphicsSceneEvent: UnsafeNewQGraphicsSceneEvent(unsafe.Pointer(h))}
+	return &QGraphicsSceneHoverEvent{h: h,
+		QGraphicsSceneEvent: newQGraphicsSceneEvent(h_QGraphicsSceneEvent, h_QEvent)}
 }
 
-func UnsafeNewQGraphicsSceneHoverEvent(h unsafe.Pointer) *QGraphicsSceneHoverEvent {
-	return newQGraphicsSceneHoverEvent((*C.QGraphicsSceneHoverEvent)(h))
+// UnsafeNewQGraphicsSceneHoverEvent constructs the type using only unsafe pointers.
+func UnsafeNewQGraphicsSceneHoverEvent(h unsafe.Pointer, h_QGraphicsSceneEvent unsafe.Pointer, h_QEvent unsafe.Pointer) *QGraphicsSceneHoverEvent {
+	if h == nil {
+		return nil
+	}
+
+	return &QGraphicsSceneHoverEvent{h: (*C.QGraphicsSceneHoverEvent)(h),
+		QGraphicsSceneEvent: UnsafeNewQGraphicsSceneEvent(h_QGraphicsSceneEvent, h_QEvent)}
 }
 
 // NewQGraphicsSceneHoverEvent constructs a new QGraphicsSceneHoverEvent object.
 func NewQGraphicsSceneHoverEvent() *QGraphicsSceneHoverEvent {
-	ret := C.QGraphicsSceneHoverEvent_new()
-	return newQGraphicsSceneHoverEvent(ret)
+	var outptr_QGraphicsSceneHoverEvent *C.QGraphicsSceneHoverEvent = nil
+	var outptr_QGraphicsSceneEvent *C.QGraphicsSceneEvent = nil
+	var outptr_QEvent *C.QEvent = nil
+
+	C.QGraphicsSceneHoverEvent_new(&outptr_QGraphicsSceneHoverEvent, &outptr_QGraphicsSceneEvent, &outptr_QEvent)
+	ret := newQGraphicsSceneHoverEvent(outptr_QGraphicsSceneHoverEvent, outptr_QGraphicsSceneEvent, outptr_QEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQGraphicsSceneHoverEvent2 constructs a new QGraphicsSceneHoverEvent object.
 func NewQGraphicsSceneHoverEvent2(typeVal QEvent__Type) *QGraphicsSceneHoverEvent {
-	ret := C.QGraphicsSceneHoverEvent_new2((C.int)(typeVal))
-	return newQGraphicsSceneHoverEvent(ret)
+	var outptr_QGraphicsSceneHoverEvent *C.QGraphicsSceneHoverEvent = nil
+	var outptr_QGraphicsSceneEvent *C.QGraphicsSceneEvent = nil
+	var outptr_QEvent *C.QEvent = nil
+
+	C.QGraphicsSceneHoverEvent_new2((C.int)(typeVal), &outptr_QGraphicsSceneHoverEvent, &outptr_QGraphicsSceneEvent, &outptr_QEvent)
+	ret := newQGraphicsSceneHoverEvent(outptr_QGraphicsSceneHoverEvent, outptr_QGraphicsSceneEvent, outptr_QEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QGraphicsSceneHoverEvent) Pos() *QPointF {
@@ -653,7 +796,7 @@ func (this *QGraphicsSceneHoverEvent) SetModifiers(modifiers KeyboardModifier) {
 
 // Delete this object from C++ memory.
 func (this *QGraphicsSceneHoverEvent) Delete() {
-	C.QGraphicsSceneHoverEvent_Delete(this.h)
+	C.QGraphicsSceneHoverEvent_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -666,7 +809,8 @@ func (this *QGraphicsSceneHoverEvent) GoGC() {
 }
 
 type QGraphicsSceneHelpEvent struct {
-	h *C.QGraphicsSceneHelpEvent
+	h          *C.QGraphicsSceneHelpEvent
+	isSubclass bool
 	*QGraphicsSceneEvent
 }
 
@@ -684,27 +828,47 @@ func (this *QGraphicsSceneHelpEvent) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQGraphicsSceneHelpEvent(h *C.QGraphicsSceneHelpEvent) *QGraphicsSceneHelpEvent {
+// newQGraphicsSceneHelpEvent constructs the type using only CGO pointers.
+func newQGraphicsSceneHelpEvent(h *C.QGraphicsSceneHelpEvent, h_QGraphicsSceneEvent *C.QGraphicsSceneEvent, h_QEvent *C.QEvent) *QGraphicsSceneHelpEvent {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsSceneHelpEvent{h: h, QGraphicsSceneEvent: UnsafeNewQGraphicsSceneEvent(unsafe.Pointer(h))}
+	return &QGraphicsSceneHelpEvent{h: h,
+		QGraphicsSceneEvent: newQGraphicsSceneEvent(h_QGraphicsSceneEvent, h_QEvent)}
 }
 
-func UnsafeNewQGraphicsSceneHelpEvent(h unsafe.Pointer) *QGraphicsSceneHelpEvent {
-	return newQGraphicsSceneHelpEvent((*C.QGraphicsSceneHelpEvent)(h))
+// UnsafeNewQGraphicsSceneHelpEvent constructs the type using only unsafe pointers.
+func UnsafeNewQGraphicsSceneHelpEvent(h unsafe.Pointer, h_QGraphicsSceneEvent unsafe.Pointer, h_QEvent unsafe.Pointer) *QGraphicsSceneHelpEvent {
+	if h == nil {
+		return nil
+	}
+
+	return &QGraphicsSceneHelpEvent{h: (*C.QGraphicsSceneHelpEvent)(h),
+		QGraphicsSceneEvent: UnsafeNewQGraphicsSceneEvent(h_QGraphicsSceneEvent, h_QEvent)}
 }
 
 // NewQGraphicsSceneHelpEvent constructs a new QGraphicsSceneHelpEvent object.
 func NewQGraphicsSceneHelpEvent() *QGraphicsSceneHelpEvent {
-	ret := C.QGraphicsSceneHelpEvent_new()
-	return newQGraphicsSceneHelpEvent(ret)
+	var outptr_QGraphicsSceneHelpEvent *C.QGraphicsSceneHelpEvent = nil
+	var outptr_QGraphicsSceneEvent *C.QGraphicsSceneEvent = nil
+	var outptr_QEvent *C.QEvent = nil
+
+	C.QGraphicsSceneHelpEvent_new(&outptr_QGraphicsSceneHelpEvent, &outptr_QGraphicsSceneEvent, &outptr_QEvent)
+	ret := newQGraphicsSceneHelpEvent(outptr_QGraphicsSceneHelpEvent, outptr_QGraphicsSceneEvent, outptr_QEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQGraphicsSceneHelpEvent2 constructs a new QGraphicsSceneHelpEvent object.
 func NewQGraphicsSceneHelpEvent2(typeVal QEvent__Type) *QGraphicsSceneHelpEvent {
-	ret := C.QGraphicsSceneHelpEvent_new2((C.int)(typeVal))
-	return newQGraphicsSceneHelpEvent(ret)
+	var outptr_QGraphicsSceneHelpEvent *C.QGraphicsSceneHelpEvent = nil
+	var outptr_QGraphicsSceneEvent *C.QGraphicsSceneEvent = nil
+	var outptr_QEvent *C.QEvent = nil
+
+	C.QGraphicsSceneHelpEvent_new2((C.int)(typeVal), &outptr_QGraphicsSceneHelpEvent, &outptr_QGraphicsSceneEvent, &outptr_QEvent)
+	ret := newQGraphicsSceneHelpEvent(outptr_QGraphicsSceneHelpEvent, outptr_QGraphicsSceneEvent, outptr_QEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QGraphicsSceneHelpEvent) ScenePos() *QPointF {
@@ -731,7 +895,7 @@ func (this *QGraphicsSceneHelpEvent) SetScreenPos(pos *QPoint) {
 
 // Delete this object from C++ memory.
 func (this *QGraphicsSceneHelpEvent) Delete() {
-	C.QGraphicsSceneHelpEvent_Delete(this.h)
+	C.QGraphicsSceneHelpEvent_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -744,7 +908,8 @@ func (this *QGraphicsSceneHelpEvent) GoGC() {
 }
 
 type QGraphicsSceneDragDropEvent struct {
-	h *C.QGraphicsSceneDragDropEvent
+	h          *C.QGraphicsSceneDragDropEvent
+	isSubclass bool
 	*QGraphicsSceneEvent
 }
 
@@ -762,27 +927,47 @@ func (this *QGraphicsSceneDragDropEvent) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQGraphicsSceneDragDropEvent(h *C.QGraphicsSceneDragDropEvent) *QGraphicsSceneDragDropEvent {
+// newQGraphicsSceneDragDropEvent constructs the type using only CGO pointers.
+func newQGraphicsSceneDragDropEvent(h *C.QGraphicsSceneDragDropEvent, h_QGraphicsSceneEvent *C.QGraphicsSceneEvent, h_QEvent *C.QEvent) *QGraphicsSceneDragDropEvent {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsSceneDragDropEvent{h: h, QGraphicsSceneEvent: UnsafeNewQGraphicsSceneEvent(unsafe.Pointer(h))}
+	return &QGraphicsSceneDragDropEvent{h: h,
+		QGraphicsSceneEvent: newQGraphicsSceneEvent(h_QGraphicsSceneEvent, h_QEvent)}
 }
 
-func UnsafeNewQGraphicsSceneDragDropEvent(h unsafe.Pointer) *QGraphicsSceneDragDropEvent {
-	return newQGraphicsSceneDragDropEvent((*C.QGraphicsSceneDragDropEvent)(h))
+// UnsafeNewQGraphicsSceneDragDropEvent constructs the type using only unsafe pointers.
+func UnsafeNewQGraphicsSceneDragDropEvent(h unsafe.Pointer, h_QGraphicsSceneEvent unsafe.Pointer, h_QEvent unsafe.Pointer) *QGraphicsSceneDragDropEvent {
+	if h == nil {
+		return nil
+	}
+
+	return &QGraphicsSceneDragDropEvent{h: (*C.QGraphicsSceneDragDropEvent)(h),
+		QGraphicsSceneEvent: UnsafeNewQGraphicsSceneEvent(h_QGraphicsSceneEvent, h_QEvent)}
 }
 
 // NewQGraphicsSceneDragDropEvent constructs a new QGraphicsSceneDragDropEvent object.
 func NewQGraphicsSceneDragDropEvent() *QGraphicsSceneDragDropEvent {
-	ret := C.QGraphicsSceneDragDropEvent_new()
-	return newQGraphicsSceneDragDropEvent(ret)
+	var outptr_QGraphicsSceneDragDropEvent *C.QGraphicsSceneDragDropEvent = nil
+	var outptr_QGraphicsSceneEvent *C.QGraphicsSceneEvent = nil
+	var outptr_QEvent *C.QEvent = nil
+
+	C.QGraphicsSceneDragDropEvent_new(&outptr_QGraphicsSceneDragDropEvent, &outptr_QGraphicsSceneEvent, &outptr_QEvent)
+	ret := newQGraphicsSceneDragDropEvent(outptr_QGraphicsSceneDragDropEvent, outptr_QGraphicsSceneEvent, outptr_QEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQGraphicsSceneDragDropEvent2 constructs a new QGraphicsSceneDragDropEvent object.
 func NewQGraphicsSceneDragDropEvent2(typeVal QEvent__Type) *QGraphicsSceneDragDropEvent {
-	ret := C.QGraphicsSceneDragDropEvent_new2((C.int)(typeVal))
-	return newQGraphicsSceneDragDropEvent(ret)
+	var outptr_QGraphicsSceneDragDropEvent *C.QGraphicsSceneDragDropEvent = nil
+	var outptr_QGraphicsSceneEvent *C.QGraphicsSceneEvent = nil
+	var outptr_QEvent *C.QEvent = nil
+
+	C.QGraphicsSceneDragDropEvent_new2((C.int)(typeVal), &outptr_QGraphicsSceneDragDropEvent, &outptr_QGraphicsSceneEvent, &outptr_QEvent)
+	ret := newQGraphicsSceneDragDropEvent(outptr_QGraphicsSceneDragDropEvent, outptr_QGraphicsSceneEvent, outptr_QEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QGraphicsSceneDragDropEvent) Pos() *QPointF {
@@ -863,7 +1048,7 @@ func (this *QGraphicsSceneDragDropEvent) SetDropAction(action DropAction) {
 }
 
 func (this *QGraphicsSceneDragDropEvent) Source() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QGraphicsSceneDragDropEvent_Source(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QGraphicsSceneDragDropEvent_Source(this.h)), nil, nil)
 }
 
 func (this *QGraphicsSceneDragDropEvent) SetSource(source *QWidget) {
@@ -871,7 +1056,7 @@ func (this *QGraphicsSceneDragDropEvent) SetSource(source *QWidget) {
 }
 
 func (this *QGraphicsSceneDragDropEvent) MimeData() *QMimeData {
-	return UnsafeNewQMimeData(unsafe.Pointer(C.QGraphicsSceneDragDropEvent_MimeData(this.h)))
+	return UnsafeNewQMimeData(unsafe.Pointer(C.QGraphicsSceneDragDropEvent_MimeData(this.h)), nil)
 }
 
 func (this *QGraphicsSceneDragDropEvent) SetMimeData(data *QMimeData) {
@@ -880,7 +1065,7 @@ func (this *QGraphicsSceneDragDropEvent) SetMimeData(data *QMimeData) {
 
 // Delete this object from C++ memory.
 func (this *QGraphicsSceneDragDropEvent) Delete() {
-	C.QGraphicsSceneDragDropEvent_Delete(this.h)
+	C.QGraphicsSceneDragDropEvent_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -893,7 +1078,8 @@ func (this *QGraphicsSceneDragDropEvent) GoGC() {
 }
 
 type QGraphicsSceneResizeEvent struct {
-	h *C.QGraphicsSceneResizeEvent
+	h          *C.QGraphicsSceneResizeEvent
+	isSubclass bool
 	*QGraphicsSceneEvent
 }
 
@@ -911,21 +1097,35 @@ func (this *QGraphicsSceneResizeEvent) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQGraphicsSceneResizeEvent(h *C.QGraphicsSceneResizeEvent) *QGraphicsSceneResizeEvent {
+// newQGraphicsSceneResizeEvent constructs the type using only CGO pointers.
+func newQGraphicsSceneResizeEvent(h *C.QGraphicsSceneResizeEvent, h_QGraphicsSceneEvent *C.QGraphicsSceneEvent, h_QEvent *C.QEvent) *QGraphicsSceneResizeEvent {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsSceneResizeEvent{h: h, QGraphicsSceneEvent: UnsafeNewQGraphicsSceneEvent(unsafe.Pointer(h))}
+	return &QGraphicsSceneResizeEvent{h: h,
+		QGraphicsSceneEvent: newQGraphicsSceneEvent(h_QGraphicsSceneEvent, h_QEvent)}
 }
 
-func UnsafeNewQGraphicsSceneResizeEvent(h unsafe.Pointer) *QGraphicsSceneResizeEvent {
-	return newQGraphicsSceneResizeEvent((*C.QGraphicsSceneResizeEvent)(h))
+// UnsafeNewQGraphicsSceneResizeEvent constructs the type using only unsafe pointers.
+func UnsafeNewQGraphicsSceneResizeEvent(h unsafe.Pointer, h_QGraphicsSceneEvent unsafe.Pointer, h_QEvent unsafe.Pointer) *QGraphicsSceneResizeEvent {
+	if h == nil {
+		return nil
+	}
+
+	return &QGraphicsSceneResizeEvent{h: (*C.QGraphicsSceneResizeEvent)(h),
+		QGraphicsSceneEvent: UnsafeNewQGraphicsSceneEvent(h_QGraphicsSceneEvent, h_QEvent)}
 }
 
 // NewQGraphicsSceneResizeEvent constructs a new QGraphicsSceneResizeEvent object.
 func NewQGraphicsSceneResizeEvent() *QGraphicsSceneResizeEvent {
-	ret := C.QGraphicsSceneResizeEvent_new()
-	return newQGraphicsSceneResizeEvent(ret)
+	var outptr_QGraphicsSceneResizeEvent *C.QGraphicsSceneResizeEvent = nil
+	var outptr_QGraphicsSceneEvent *C.QGraphicsSceneEvent = nil
+	var outptr_QEvent *C.QEvent = nil
+
+	C.QGraphicsSceneResizeEvent_new(&outptr_QGraphicsSceneResizeEvent, &outptr_QGraphicsSceneEvent, &outptr_QEvent)
+	ret := newQGraphicsSceneResizeEvent(outptr_QGraphicsSceneResizeEvent, outptr_QGraphicsSceneEvent, outptr_QEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QGraphicsSceneResizeEvent) OldSize() *QSizeF {
@@ -952,7 +1152,7 @@ func (this *QGraphicsSceneResizeEvent) SetNewSize(size *QSizeF) {
 
 // Delete this object from C++ memory.
 func (this *QGraphicsSceneResizeEvent) Delete() {
-	C.QGraphicsSceneResizeEvent_Delete(this.h)
+	C.QGraphicsSceneResizeEvent_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -965,7 +1165,8 @@ func (this *QGraphicsSceneResizeEvent) GoGC() {
 }
 
 type QGraphicsSceneMoveEvent struct {
-	h *C.QGraphicsSceneMoveEvent
+	h          *C.QGraphicsSceneMoveEvent
+	isSubclass bool
 	*QGraphicsSceneEvent
 }
 
@@ -983,21 +1184,35 @@ func (this *QGraphicsSceneMoveEvent) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQGraphicsSceneMoveEvent(h *C.QGraphicsSceneMoveEvent) *QGraphicsSceneMoveEvent {
+// newQGraphicsSceneMoveEvent constructs the type using only CGO pointers.
+func newQGraphicsSceneMoveEvent(h *C.QGraphicsSceneMoveEvent, h_QGraphicsSceneEvent *C.QGraphicsSceneEvent, h_QEvent *C.QEvent) *QGraphicsSceneMoveEvent {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsSceneMoveEvent{h: h, QGraphicsSceneEvent: UnsafeNewQGraphicsSceneEvent(unsafe.Pointer(h))}
+	return &QGraphicsSceneMoveEvent{h: h,
+		QGraphicsSceneEvent: newQGraphicsSceneEvent(h_QGraphicsSceneEvent, h_QEvent)}
 }
 
-func UnsafeNewQGraphicsSceneMoveEvent(h unsafe.Pointer) *QGraphicsSceneMoveEvent {
-	return newQGraphicsSceneMoveEvent((*C.QGraphicsSceneMoveEvent)(h))
+// UnsafeNewQGraphicsSceneMoveEvent constructs the type using only unsafe pointers.
+func UnsafeNewQGraphicsSceneMoveEvent(h unsafe.Pointer, h_QGraphicsSceneEvent unsafe.Pointer, h_QEvent unsafe.Pointer) *QGraphicsSceneMoveEvent {
+	if h == nil {
+		return nil
+	}
+
+	return &QGraphicsSceneMoveEvent{h: (*C.QGraphicsSceneMoveEvent)(h),
+		QGraphicsSceneEvent: UnsafeNewQGraphicsSceneEvent(h_QGraphicsSceneEvent, h_QEvent)}
 }
 
 // NewQGraphicsSceneMoveEvent constructs a new QGraphicsSceneMoveEvent object.
 func NewQGraphicsSceneMoveEvent() *QGraphicsSceneMoveEvent {
-	ret := C.QGraphicsSceneMoveEvent_new()
-	return newQGraphicsSceneMoveEvent(ret)
+	var outptr_QGraphicsSceneMoveEvent *C.QGraphicsSceneMoveEvent = nil
+	var outptr_QGraphicsSceneEvent *C.QGraphicsSceneEvent = nil
+	var outptr_QEvent *C.QEvent = nil
+
+	C.QGraphicsSceneMoveEvent_new(&outptr_QGraphicsSceneMoveEvent, &outptr_QGraphicsSceneEvent, &outptr_QEvent)
+	ret := newQGraphicsSceneMoveEvent(outptr_QGraphicsSceneMoveEvent, outptr_QGraphicsSceneEvent, outptr_QEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QGraphicsSceneMoveEvent) OldPos() *QPointF {
@@ -1024,7 +1239,7 @@ func (this *QGraphicsSceneMoveEvent) SetNewPos(pos *QPointF) {
 
 // Delete this object from C++ memory.
 func (this *QGraphicsSceneMoveEvent) Delete() {
-	C.QGraphicsSceneMoveEvent_Delete(this.h)
+	C.QGraphicsSceneMoveEvent_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

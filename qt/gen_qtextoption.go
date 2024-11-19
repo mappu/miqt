@@ -44,7 +44,8 @@ const (
 )
 
 type QTextOption struct {
-	h *C.QTextOption
+	h          *C.QTextOption
+	isSubclass bool
 }
 
 func (this *QTextOption) cPointer() *C.QTextOption {
@@ -61,6 +62,7 @@ func (this *QTextOption) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQTextOption constructs the type using only CGO pointers.
 func newQTextOption(h *C.QTextOption) *QTextOption {
 	if h == nil {
 		return nil
@@ -68,26 +70,43 @@ func newQTextOption(h *C.QTextOption) *QTextOption {
 	return &QTextOption{h: h}
 }
 
+// UnsafeNewQTextOption constructs the type using only unsafe pointers.
 func UnsafeNewQTextOption(h unsafe.Pointer) *QTextOption {
-	return newQTextOption((*C.QTextOption)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QTextOption{h: (*C.QTextOption)(h)}
 }
 
 // NewQTextOption constructs a new QTextOption object.
 func NewQTextOption() *QTextOption {
-	ret := C.QTextOption_new()
-	return newQTextOption(ret)
+	var outptr_QTextOption *C.QTextOption = nil
+
+	C.QTextOption_new(&outptr_QTextOption)
+	ret := newQTextOption(outptr_QTextOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextOption2 constructs a new QTextOption object.
 func NewQTextOption2(alignment AlignmentFlag) *QTextOption {
-	ret := C.QTextOption_new2((C.int)(alignment))
-	return newQTextOption(ret)
+	var outptr_QTextOption *C.QTextOption = nil
+
+	C.QTextOption_new2((C.int)(alignment), &outptr_QTextOption)
+	ret := newQTextOption(outptr_QTextOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextOption3 constructs a new QTextOption object.
 func NewQTextOption3(o *QTextOption) *QTextOption {
-	ret := C.QTextOption_new3(o.cPointer())
-	return newQTextOption(ret)
+	var outptr_QTextOption *C.QTextOption = nil
+
+	C.QTextOption_new3(o.cPointer(), &outptr_QTextOption)
+	ret := newQTextOption(outptr_QTextOption)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QTextOption) OperatorAssign(o *QTextOption) {
@@ -195,7 +214,7 @@ func (this *QTextOption) UseDesignMetrics() bool {
 
 // Delete this object from C++ memory.
 func (this *QTextOption) Delete() {
-	C.QTextOption_Delete(this.h)
+	C.QTextOption_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -208,7 +227,8 @@ func (this *QTextOption) GoGC() {
 }
 
 type QTextOption__Tab struct {
-	h *C.QTextOption__Tab
+	h          *C.QTextOption__Tab
+	isSubclass bool
 }
 
 func (this *QTextOption__Tab) cPointer() *C.QTextOption__Tab {
@@ -225,6 +245,7 @@ func (this *QTextOption__Tab) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQTextOption__Tab constructs the type using only CGO pointers.
 func newQTextOption__Tab(h *C.QTextOption__Tab) *QTextOption__Tab {
 	if h == nil {
 		return nil
@@ -232,32 +253,53 @@ func newQTextOption__Tab(h *C.QTextOption__Tab) *QTextOption__Tab {
 	return &QTextOption__Tab{h: h}
 }
 
+// UnsafeNewQTextOption__Tab constructs the type using only unsafe pointers.
 func UnsafeNewQTextOption__Tab(h unsafe.Pointer) *QTextOption__Tab {
-	return newQTextOption__Tab((*C.QTextOption__Tab)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QTextOption__Tab{h: (*C.QTextOption__Tab)(h)}
 }
 
 // NewQTextOption__Tab constructs a new QTextOption::Tab object.
 func NewQTextOption__Tab() *QTextOption__Tab {
-	ret := C.QTextOption__Tab_new()
-	return newQTextOption__Tab(ret)
+	var outptr_QTextOption__Tab *C.QTextOption__Tab = nil
+
+	C.QTextOption__Tab_new(&outptr_QTextOption__Tab)
+	ret := newQTextOption__Tab(outptr_QTextOption__Tab)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextOption__Tab2 constructs a new QTextOption::Tab object.
 func NewQTextOption__Tab2(pos float64, tabType QTextOption__TabType) *QTextOption__Tab {
-	ret := C.QTextOption__Tab_new2((C.double)(pos), (C.int)(tabType))
-	return newQTextOption__Tab(ret)
+	var outptr_QTextOption__Tab *C.QTextOption__Tab = nil
+
+	C.QTextOption__Tab_new2((C.double)(pos), (C.int)(tabType), &outptr_QTextOption__Tab)
+	ret := newQTextOption__Tab(outptr_QTextOption__Tab)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextOption__Tab3 constructs a new QTextOption::Tab object.
 func NewQTextOption__Tab3(param1 *QTextOption__Tab) *QTextOption__Tab {
-	ret := C.QTextOption__Tab_new3(param1.cPointer())
-	return newQTextOption__Tab(ret)
+	var outptr_QTextOption__Tab *C.QTextOption__Tab = nil
+
+	C.QTextOption__Tab_new3(param1.cPointer(), &outptr_QTextOption__Tab)
+	ret := newQTextOption__Tab(outptr_QTextOption__Tab)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextOption__Tab4 constructs a new QTextOption::Tab object.
 func NewQTextOption__Tab4(pos float64, tabType QTextOption__TabType, delim QChar) *QTextOption__Tab {
-	ret := C.QTextOption__Tab_new4((C.double)(pos), (C.int)(tabType), delim.cPointer())
-	return newQTextOption__Tab(ret)
+	var outptr_QTextOption__Tab *C.QTextOption__Tab = nil
+
+	C.QTextOption__Tab_new4((C.double)(pos), (C.int)(tabType), delim.cPointer(), &outptr_QTextOption__Tab)
+	ret := newQTextOption__Tab(outptr_QTextOption__Tab)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QTextOption__Tab) OperatorEqual(other *QTextOption__Tab) bool {
@@ -270,7 +312,7 @@ func (this *QTextOption__Tab) OperatorNotEqual(other *QTextOption__Tab) bool {
 
 // Delete this object from C++ memory.
 func (this *QTextOption__Tab) Delete() {
-	C.QTextOption__Tab_Delete(this.h)
+	C.QTextOption__Tab_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

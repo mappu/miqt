@@ -32,12 +32,12 @@ typedef struct QSslError QSslError;
 typedef struct QSslKey QSslKey;
 #endif
 
-QSslCertificate* QSslCertificate_new(QIODevice* device);
-QSslCertificate* QSslCertificate_new2();
-QSslCertificate* QSslCertificate_new3(QSslCertificate* other);
-QSslCertificate* QSslCertificate_new4(QIODevice* device, int format);
-QSslCertificate* QSslCertificate_new5(struct miqt_string data);
-QSslCertificate* QSslCertificate_new6(struct miqt_string data, int format);
+void QSslCertificate_new(QIODevice* device, QSslCertificate** outptr_QSslCertificate);
+void QSslCertificate_new2(QSslCertificate** outptr_QSslCertificate);
+void QSslCertificate_new3(QSslCertificate* other, QSslCertificate** outptr_QSslCertificate);
+void QSslCertificate_new4(QIODevice* device, int format, QSslCertificate** outptr_QSslCertificate);
+void QSslCertificate_new5(struct miqt_string data, QSslCertificate** outptr_QSslCertificate);
+void QSslCertificate_new6(struct miqt_string data, int format, QSslCertificate** outptr_QSslCertificate);
 void QSslCertificate_OperatorAssign(QSslCertificate* self, QSslCertificate* other);
 void QSslCertificate_Swap(QSslCertificate* self, QSslCertificate* other);
 bool QSslCertificate_OperatorEqual(const QSslCertificate* self, QSslCertificate* other);
@@ -78,7 +78,7 @@ struct miqt_array /* of QSslCertificate* */  QSslCertificate_FromData2(struct mi
 struct miqt_array /* of QSslError* */  QSslCertificate_Verify2(struct miqt_array /* of QSslCertificate* */  certificateChain, struct miqt_string hostName);
 bool QSslCertificate_ImportPkcs124(QIODevice* device, QSslKey* key, QSslCertificate* cert, struct miqt_array /* of QSslCertificate* */  caCertificates);
 bool QSslCertificate_ImportPkcs125(QIODevice* device, QSslKey* key, QSslCertificate* cert, struct miqt_array /* of QSslCertificate* */  caCertificates, struct miqt_string passPhrase);
-void QSslCertificate_Delete(QSslCertificate* self);
+void QSslCertificate_Delete(QSslCertificate* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -16,19 +16,31 @@ extern "C" {
 
 #ifdef __cplusplus
 class QByteArray;
+class QChildEvent;
+class QEvent;
+class QMetaMethod;
 class QMetaObject;
+class QMetaType;
 class QMimeData;
+class QObject;
+class QTimerEvent;
 class QUrl;
 class QVariant;
 #else
 typedef struct QByteArray QByteArray;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
+typedef struct QMetaType QMetaType;
 typedef struct QMimeData QMimeData;
+typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QUrl QUrl;
 typedef struct QVariant QVariant;
 #endif
 
-QMimeData* QMimeData_new();
+void QMimeData_new(QMimeData** outptr_QMimeData, QObject** outptr_QObject);
 QMetaObject* QMimeData_MetaObject(const QMimeData* self);
 void* QMimeData_Metacast(QMimeData* self, const char* param1);
 struct miqt_string QMimeData_Tr(const char* s);
@@ -53,9 +65,30 @@ void QMimeData_RemoveFormat(QMimeData* self, struct miqt_string mimetype);
 bool QMimeData_HasFormat(const QMimeData* self, struct miqt_string mimetype);
 struct miqt_array /* of struct miqt_string */  QMimeData_Formats(const QMimeData* self);
 void QMimeData_Clear(QMimeData* self);
+QVariant* QMimeData_RetrieveData(const QMimeData* self, struct miqt_string mimetype, QMetaType* preferredType);
 struct miqt_string QMimeData_Tr2(const char* s, const char* c);
 struct miqt_string QMimeData_Tr3(const char* s, const char* c, int n);
-void QMimeData_Delete(QMimeData* self);
+void QMimeData_override_virtual_HasFormat(void* self, intptr_t slot);
+bool QMimeData_virtualbase_HasFormat(const void* self, struct miqt_string mimetype);
+void QMimeData_override_virtual_Formats(void* self, intptr_t slot);
+struct miqt_array /* of struct miqt_string */  QMimeData_virtualbase_Formats(const void* self);
+void QMimeData_override_virtual_RetrieveData(void* self, intptr_t slot);
+QVariant* QMimeData_virtualbase_RetrieveData(const void* self, struct miqt_string mimetype, QMetaType* preferredType);
+void QMimeData_override_virtual_Event(void* self, intptr_t slot);
+bool QMimeData_virtualbase_Event(void* self, QEvent* event);
+void QMimeData_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QMimeData_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QMimeData_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QMimeData_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QMimeData_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QMimeData_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QMimeData_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QMimeData_virtualbase_CustomEvent(void* self, QEvent* event);
+void QMimeData_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QMimeData_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QMimeData_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QMimeData_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QMimeData_Delete(QMimeData* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

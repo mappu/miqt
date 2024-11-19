@@ -3,7 +3,8 @@
 #include "gen_qstringtokenizer.h"
 #include "_cgo_export.h"
 
-QStringTokenizerBaseBase* QStringTokenizerBaseBase_new(QStringTokenizerBaseBase* param1) {
-	return new QStringTokenizerBaseBase(*param1);
+void QStringTokenizerBaseBase_new(QStringTokenizerBaseBase* param1, QStringTokenizerBaseBase** outptr_QStringTokenizerBaseBase) {
+	QStringTokenizerBaseBase* ret = new QStringTokenizerBaseBase(*param1);
+	*outptr_QStringTokenizerBaseBase = ret;
 }
 

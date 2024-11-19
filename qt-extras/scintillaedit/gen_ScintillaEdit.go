@@ -1707,7 +1707,8 @@ const (
 )
 
 type Scintilla__Internal__Point struct {
-	h *C.Scintilla__Internal__Point
+	h          *C.Scintilla__Internal__Point
+	isSubclass bool
 }
 
 func (this *Scintilla__Internal__Point) cPointer() *C.Scintilla__Internal__Point {
@@ -1724,6 +1725,7 @@ func (this *Scintilla__Internal__Point) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__Internal__Point constructs the type using only CGO pointers.
 func newScintilla__Internal__Point(h *C.Scintilla__Internal__Point) *Scintilla__Internal__Point {
 	if h == nil {
 		return nil
@@ -1731,32 +1733,53 @@ func newScintilla__Internal__Point(h *C.Scintilla__Internal__Point) *Scintilla__
 	return &Scintilla__Internal__Point{h: h}
 }
 
+// UnsafeNewScintilla__Internal__Point constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__Point(h unsafe.Pointer) *Scintilla__Internal__Point {
-	return newScintilla__Internal__Point((*C.Scintilla__Internal__Point)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__Internal__Point{h: (*C.Scintilla__Internal__Point)(h)}
 }
 
 // NewScintilla__Internal__Point constructs a new Scintilla::Internal::Point object.
 func NewScintilla__Internal__Point() *Scintilla__Internal__Point {
-	ret := C.Scintilla__Internal__Point_new()
-	return newScintilla__Internal__Point(ret)
+	var outptr_Scintilla__Internal__Point *C.Scintilla__Internal__Point = nil
+
+	C.Scintilla__Internal__Point_new(&outptr_Scintilla__Internal__Point)
+	ret := newScintilla__Internal__Point(outptr_Scintilla__Internal__Point)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__Point2 constructs a new Scintilla::Internal::Point object.
 func NewScintilla__Internal__Point2(param1 *Scintilla__Internal__Point) *Scintilla__Internal__Point {
-	ret := C.Scintilla__Internal__Point_new2(param1.cPointer())
-	return newScintilla__Internal__Point(ret)
+	var outptr_Scintilla__Internal__Point *C.Scintilla__Internal__Point = nil
+
+	C.Scintilla__Internal__Point_new2(param1.cPointer(), &outptr_Scintilla__Internal__Point)
+	ret := newScintilla__Internal__Point(outptr_Scintilla__Internal__Point)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__Point3 constructs a new Scintilla::Internal::Point object.
 func NewScintilla__Internal__Point3(x_ float64) *Scintilla__Internal__Point {
-	ret := C.Scintilla__Internal__Point_new3((C.double)(x_))
-	return newScintilla__Internal__Point(ret)
+	var outptr_Scintilla__Internal__Point *C.Scintilla__Internal__Point = nil
+
+	C.Scintilla__Internal__Point_new3((C.double)(x_), &outptr_Scintilla__Internal__Point)
+	ret := newScintilla__Internal__Point(outptr_Scintilla__Internal__Point)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__Point4 constructs a new Scintilla::Internal::Point object.
 func NewScintilla__Internal__Point4(x_ float64, y_ float64) *Scintilla__Internal__Point {
-	ret := C.Scintilla__Internal__Point_new4((C.double)(x_), (C.double)(y_))
-	return newScintilla__Internal__Point(ret)
+	var outptr_Scintilla__Internal__Point *C.Scintilla__Internal__Point = nil
+
+	C.Scintilla__Internal__Point_new4((C.double)(x_), (C.double)(y_), &outptr_Scintilla__Internal__Point)
+	ret := newScintilla__Internal__Point(outptr_Scintilla__Internal__Point)
+	ret.isSubclass = true
+	return ret
 }
 
 func Scintilla__Internal__Point_FromInts(x_ int, y_ int) *Scintilla__Internal__Point {
@@ -1790,7 +1813,7 @@ func (this *Scintilla__Internal__Point) OperatorMinus(other Scintilla__Internal_
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__Point) Delete() {
-	C.Scintilla__Internal__Point_Delete(this.h)
+	C.Scintilla__Internal__Point_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1803,7 +1826,8 @@ func (this *Scintilla__Internal__Point) GoGC() {
 }
 
 type Scintilla__Internal__Interval struct {
-	h *C.Scintilla__Internal__Interval
+	h          *C.Scintilla__Internal__Interval
+	isSubclass bool
 }
 
 func (this *Scintilla__Internal__Interval) cPointer() *C.Scintilla__Internal__Interval {
@@ -1820,6 +1844,7 @@ func (this *Scintilla__Internal__Interval) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__Internal__Interval constructs the type using only CGO pointers.
 func newScintilla__Internal__Interval(h *C.Scintilla__Internal__Interval) *Scintilla__Internal__Interval {
 	if h == nil {
 		return nil
@@ -1827,8 +1852,13 @@ func newScintilla__Internal__Interval(h *C.Scintilla__Internal__Interval) *Scint
 	return &Scintilla__Internal__Interval{h: h}
 }
 
+// UnsafeNewScintilla__Internal__Interval constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__Interval(h unsafe.Pointer) *Scintilla__Internal__Interval {
-	return newScintilla__Internal__Interval((*C.Scintilla__Internal__Interval)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__Internal__Interval{h: (*C.Scintilla__Internal__Interval)(h)}
 }
 
 func (this *Scintilla__Internal__Interval) OperatorEqual(other *Scintilla__Internal__Interval) bool {
@@ -1856,7 +1886,7 @@ func (this *Scintilla__Internal__Interval) Offset(offset float64) *Scintilla__In
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__Interval) Delete() {
-	C.Scintilla__Internal__Interval_Delete(this.h)
+	C.Scintilla__Internal__Interval_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1869,7 +1899,8 @@ func (this *Scintilla__Internal__Interval) GoGC() {
 }
 
 type Scintilla__Internal__PRectangle struct {
-	h *C.Scintilla__Internal__PRectangle
+	h          *C.Scintilla__Internal__PRectangle
+	isSubclass bool
 }
 
 func (this *Scintilla__Internal__PRectangle) cPointer() *C.Scintilla__Internal__PRectangle {
@@ -1886,6 +1917,7 @@ func (this *Scintilla__Internal__PRectangle) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__Internal__PRectangle constructs the type using only CGO pointers.
 func newScintilla__Internal__PRectangle(h *C.Scintilla__Internal__PRectangle) *Scintilla__Internal__PRectangle {
 	if h == nil {
 		return nil
@@ -1893,44 +1925,73 @@ func newScintilla__Internal__PRectangle(h *C.Scintilla__Internal__PRectangle) *S
 	return &Scintilla__Internal__PRectangle{h: h}
 }
 
+// UnsafeNewScintilla__Internal__PRectangle constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__PRectangle(h unsafe.Pointer) *Scintilla__Internal__PRectangle {
-	return newScintilla__Internal__PRectangle((*C.Scintilla__Internal__PRectangle)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__Internal__PRectangle{h: (*C.Scintilla__Internal__PRectangle)(h)}
 }
 
 // NewScintilla__Internal__PRectangle constructs a new Scintilla::Internal::PRectangle object.
 func NewScintilla__Internal__PRectangle() *Scintilla__Internal__PRectangle {
-	ret := C.Scintilla__Internal__PRectangle_new()
-	return newScintilla__Internal__PRectangle(ret)
+	var outptr_Scintilla__Internal__PRectangle *C.Scintilla__Internal__PRectangle = nil
+
+	C.Scintilla__Internal__PRectangle_new(&outptr_Scintilla__Internal__PRectangle)
+	ret := newScintilla__Internal__PRectangle(outptr_Scintilla__Internal__PRectangle)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__PRectangle2 constructs a new Scintilla::Internal::PRectangle object.
 func NewScintilla__Internal__PRectangle2(param1 *Scintilla__Internal__PRectangle) *Scintilla__Internal__PRectangle {
-	ret := C.Scintilla__Internal__PRectangle_new2(param1.cPointer())
-	return newScintilla__Internal__PRectangle(ret)
+	var outptr_Scintilla__Internal__PRectangle *C.Scintilla__Internal__PRectangle = nil
+
+	C.Scintilla__Internal__PRectangle_new2(param1.cPointer(), &outptr_Scintilla__Internal__PRectangle)
+	ret := newScintilla__Internal__PRectangle(outptr_Scintilla__Internal__PRectangle)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__PRectangle3 constructs a new Scintilla::Internal::PRectangle object.
 func NewScintilla__Internal__PRectangle3(left_ float64) *Scintilla__Internal__PRectangle {
-	ret := C.Scintilla__Internal__PRectangle_new3((C.double)(left_))
-	return newScintilla__Internal__PRectangle(ret)
+	var outptr_Scintilla__Internal__PRectangle *C.Scintilla__Internal__PRectangle = nil
+
+	C.Scintilla__Internal__PRectangle_new3((C.double)(left_), &outptr_Scintilla__Internal__PRectangle)
+	ret := newScintilla__Internal__PRectangle(outptr_Scintilla__Internal__PRectangle)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__PRectangle4 constructs a new Scintilla::Internal::PRectangle object.
 func NewScintilla__Internal__PRectangle4(left_ float64, top_ float64) *Scintilla__Internal__PRectangle {
-	ret := C.Scintilla__Internal__PRectangle_new4((C.double)(left_), (C.double)(top_))
-	return newScintilla__Internal__PRectangle(ret)
+	var outptr_Scintilla__Internal__PRectangle *C.Scintilla__Internal__PRectangle = nil
+
+	C.Scintilla__Internal__PRectangle_new4((C.double)(left_), (C.double)(top_), &outptr_Scintilla__Internal__PRectangle)
+	ret := newScintilla__Internal__PRectangle(outptr_Scintilla__Internal__PRectangle)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__PRectangle5 constructs a new Scintilla::Internal::PRectangle object.
 func NewScintilla__Internal__PRectangle5(left_ float64, top_ float64, right_ float64) *Scintilla__Internal__PRectangle {
-	ret := C.Scintilla__Internal__PRectangle_new5((C.double)(left_), (C.double)(top_), (C.double)(right_))
-	return newScintilla__Internal__PRectangle(ret)
+	var outptr_Scintilla__Internal__PRectangle *C.Scintilla__Internal__PRectangle = nil
+
+	C.Scintilla__Internal__PRectangle_new5((C.double)(left_), (C.double)(top_), (C.double)(right_), &outptr_Scintilla__Internal__PRectangle)
+	ret := newScintilla__Internal__PRectangle(outptr_Scintilla__Internal__PRectangle)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__PRectangle6 constructs a new Scintilla::Internal::PRectangle object.
 func NewScintilla__Internal__PRectangle6(left_ float64, top_ float64, right_ float64, bottom_ float64) *Scintilla__Internal__PRectangle {
-	ret := C.Scintilla__Internal__PRectangle_new6((C.double)(left_), (C.double)(top_), (C.double)(right_), (C.double)(bottom_))
-	return newScintilla__Internal__PRectangle(ret)
+	var outptr_Scintilla__Internal__PRectangle *C.Scintilla__Internal__PRectangle = nil
+
+	C.Scintilla__Internal__PRectangle_new6((C.double)(left_), (C.double)(top_), (C.double)(right_), (C.double)(bottom_), &outptr_Scintilla__Internal__PRectangle)
+	ret := newScintilla__Internal__PRectangle(outptr_Scintilla__Internal__PRectangle)
+	ret.isSubclass = true
+	return ret
 }
 
 func Scintilla__Internal__PRectangle_FromInts(left_ int, top_ int, right_ int, bottom_ int) *Scintilla__Internal__PRectangle {
@@ -2010,7 +2071,7 @@ func (this *Scintilla__Internal__PRectangle) Empty() bool {
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__PRectangle) Delete() {
-	C.Scintilla__Internal__PRectangle_Delete(this.h)
+	C.Scintilla__Internal__PRectangle_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2023,7 +2084,8 @@ func (this *Scintilla__Internal__PRectangle) GoGC() {
 }
 
 type Scintilla__Internal__ColourRGBA struct {
-	h *C.Scintilla__Internal__ColourRGBA
+	h          *C.Scintilla__Internal__ColourRGBA
+	isSubclass bool
 }
 
 func (this *Scintilla__Internal__ColourRGBA) cPointer() *C.Scintilla__Internal__ColourRGBA {
@@ -2040,6 +2102,7 @@ func (this *Scintilla__Internal__ColourRGBA) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__Internal__ColourRGBA constructs the type using only CGO pointers.
 func newScintilla__Internal__ColourRGBA(h *C.Scintilla__Internal__ColourRGBA) *Scintilla__Internal__ColourRGBA {
 	if h == nil {
 		return nil
@@ -2047,44 +2110,73 @@ func newScintilla__Internal__ColourRGBA(h *C.Scintilla__Internal__ColourRGBA) *S
 	return &Scintilla__Internal__ColourRGBA{h: h}
 }
 
+// UnsafeNewScintilla__Internal__ColourRGBA constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__ColourRGBA(h unsafe.Pointer) *Scintilla__Internal__ColourRGBA {
-	return newScintilla__Internal__ColourRGBA((*C.Scintilla__Internal__ColourRGBA)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__Internal__ColourRGBA{h: (*C.Scintilla__Internal__ColourRGBA)(h)}
 }
 
 // NewScintilla__Internal__ColourRGBA constructs a new Scintilla::Internal::ColourRGBA object.
 func NewScintilla__Internal__ColourRGBA() *Scintilla__Internal__ColourRGBA {
-	ret := C.Scintilla__Internal__ColourRGBA_new()
-	return newScintilla__Internal__ColourRGBA(ret)
+	var outptr_Scintilla__Internal__ColourRGBA *C.Scintilla__Internal__ColourRGBA = nil
+
+	C.Scintilla__Internal__ColourRGBA_new(&outptr_Scintilla__Internal__ColourRGBA)
+	ret := newScintilla__Internal__ColourRGBA(outptr_Scintilla__Internal__ColourRGBA)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__ColourRGBA2 constructs a new Scintilla::Internal::ColourRGBA object.
 func NewScintilla__Internal__ColourRGBA2(red uint, green uint, blue uint) *Scintilla__Internal__ColourRGBA {
-	ret := C.Scintilla__Internal__ColourRGBA_new2((C.uint)(red), (C.uint)(green), (C.uint)(blue))
-	return newScintilla__Internal__ColourRGBA(ret)
+	var outptr_Scintilla__Internal__ColourRGBA *C.Scintilla__Internal__ColourRGBA = nil
+
+	C.Scintilla__Internal__ColourRGBA_new2((C.uint)(red), (C.uint)(green), (C.uint)(blue), &outptr_Scintilla__Internal__ColourRGBA)
+	ret := newScintilla__Internal__ColourRGBA(outptr_Scintilla__Internal__ColourRGBA)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__ColourRGBA3 constructs a new Scintilla::Internal::ColourRGBA object.
 func NewScintilla__Internal__ColourRGBA3(cd Scintilla__Internal__ColourRGBA, alpha uint) *Scintilla__Internal__ColourRGBA {
-	ret := C.Scintilla__Internal__ColourRGBA_new3(cd.cPointer(), (C.uint)(alpha))
-	return newScintilla__Internal__ColourRGBA(ret)
+	var outptr_Scintilla__Internal__ColourRGBA *C.Scintilla__Internal__ColourRGBA = nil
+
+	C.Scintilla__Internal__ColourRGBA_new3(cd.cPointer(), (C.uint)(alpha), &outptr_Scintilla__Internal__ColourRGBA)
+	ret := newScintilla__Internal__ColourRGBA(outptr_Scintilla__Internal__ColourRGBA)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__ColourRGBA4 constructs a new Scintilla::Internal::ColourRGBA object.
 func NewScintilla__Internal__ColourRGBA4(param1 *Scintilla__Internal__ColourRGBA) *Scintilla__Internal__ColourRGBA {
-	ret := C.Scintilla__Internal__ColourRGBA_new4(param1.cPointer())
-	return newScintilla__Internal__ColourRGBA(ret)
+	var outptr_Scintilla__Internal__ColourRGBA *C.Scintilla__Internal__ColourRGBA = nil
+
+	C.Scintilla__Internal__ColourRGBA_new4(param1.cPointer(), &outptr_Scintilla__Internal__ColourRGBA)
+	ret := newScintilla__Internal__ColourRGBA(outptr_Scintilla__Internal__ColourRGBA)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__ColourRGBA5 constructs a new Scintilla::Internal::ColourRGBA object.
 func NewScintilla__Internal__ColourRGBA5(co_ int) *Scintilla__Internal__ColourRGBA {
-	ret := C.Scintilla__Internal__ColourRGBA_new5((C.int)(co_))
-	return newScintilla__Internal__ColourRGBA(ret)
+	var outptr_Scintilla__Internal__ColourRGBA *C.Scintilla__Internal__ColourRGBA = nil
+
+	C.Scintilla__Internal__ColourRGBA_new5((C.int)(co_), &outptr_Scintilla__Internal__ColourRGBA)
+	ret := newScintilla__Internal__ColourRGBA(outptr_Scintilla__Internal__ColourRGBA)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__ColourRGBA6 constructs a new Scintilla::Internal::ColourRGBA object.
 func NewScintilla__Internal__ColourRGBA6(red uint, green uint, blue uint, alpha uint) *Scintilla__Internal__ColourRGBA {
-	ret := C.Scintilla__Internal__ColourRGBA_new6((C.uint)(red), (C.uint)(green), (C.uint)(blue), (C.uint)(alpha))
-	return newScintilla__Internal__ColourRGBA(ret)
+	var outptr_Scintilla__Internal__ColourRGBA *C.Scintilla__Internal__ColourRGBA = nil
+
+	C.Scintilla__Internal__ColourRGBA_new6((C.uint)(red), (C.uint)(green), (C.uint)(blue), (C.uint)(alpha), &outptr_Scintilla__Internal__ColourRGBA)
+	ret := newScintilla__Internal__ColourRGBA(outptr_Scintilla__Internal__ColourRGBA)
+	ret.isSubclass = true
+	return ret
 }
 
 func Scintilla__Internal__ColourRGBA_FromRGB(co_ int) *Scintilla__Internal__ColourRGBA {
@@ -2197,7 +2289,7 @@ func Scintilla__Internal__ColourRGBA_Grey2(grey uint, alpha uint) *Scintilla__In
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__ColourRGBA) Delete() {
-	C.Scintilla__Internal__ColourRGBA_Delete(this.h)
+	C.Scintilla__Internal__ColourRGBA_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2210,7 +2302,8 @@ func (this *Scintilla__Internal__ColourRGBA) GoGC() {
 }
 
 type Scintilla__Internal__Stroke struct {
-	h *C.Scintilla__Internal__Stroke
+	h          *C.Scintilla__Internal__Stroke
+	isSubclass bool
 }
 
 func (this *Scintilla__Internal__Stroke) cPointer() *C.Scintilla__Internal__Stroke {
@@ -2227,6 +2320,7 @@ func (this *Scintilla__Internal__Stroke) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__Internal__Stroke constructs the type using only CGO pointers.
 func newScintilla__Internal__Stroke(h *C.Scintilla__Internal__Stroke) *Scintilla__Internal__Stroke {
 	if h == nil {
 		return nil
@@ -2234,26 +2328,43 @@ func newScintilla__Internal__Stroke(h *C.Scintilla__Internal__Stroke) *Scintilla
 	return &Scintilla__Internal__Stroke{h: h}
 }
 
+// UnsafeNewScintilla__Internal__Stroke constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__Stroke(h unsafe.Pointer) *Scintilla__Internal__Stroke {
-	return newScintilla__Internal__Stroke((*C.Scintilla__Internal__Stroke)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__Internal__Stroke{h: (*C.Scintilla__Internal__Stroke)(h)}
 }
 
 // NewScintilla__Internal__Stroke constructs a new Scintilla::Internal::Stroke object.
 func NewScintilla__Internal__Stroke(colour_ Scintilla__Internal__ColourRGBA) *Scintilla__Internal__Stroke {
-	ret := C.Scintilla__Internal__Stroke_new(colour_.cPointer())
-	return newScintilla__Internal__Stroke(ret)
+	var outptr_Scintilla__Internal__Stroke *C.Scintilla__Internal__Stroke = nil
+
+	C.Scintilla__Internal__Stroke_new(colour_.cPointer(), &outptr_Scintilla__Internal__Stroke)
+	ret := newScintilla__Internal__Stroke(outptr_Scintilla__Internal__Stroke)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__Stroke2 constructs a new Scintilla::Internal::Stroke object.
 func NewScintilla__Internal__Stroke2(param1 *Scintilla__Internal__Stroke) *Scintilla__Internal__Stroke {
-	ret := C.Scintilla__Internal__Stroke_new2(param1.cPointer())
-	return newScintilla__Internal__Stroke(ret)
+	var outptr_Scintilla__Internal__Stroke *C.Scintilla__Internal__Stroke = nil
+
+	C.Scintilla__Internal__Stroke_new2(param1.cPointer(), &outptr_Scintilla__Internal__Stroke)
+	ret := newScintilla__Internal__Stroke(outptr_Scintilla__Internal__Stroke)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__Stroke3 constructs a new Scintilla::Internal::Stroke object.
 func NewScintilla__Internal__Stroke3(colour_ Scintilla__Internal__ColourRGBA, width_ float64) *Scintilla__Internal__Stroke {
-	ret := C.Scintilla__Internal__Stroke_new3(colour_.cPointer(), (C.double)(width_))
-	return newScintilla__Internal__Stroke(ret)
+	var outptr_Scintilla__Internal__Stroke *C.Scintilla__Internal__Stroke = nil
+
+	C.Scintilla__Internal__Stroke_new3(colour_.cPointer(), (C.double)(width_), &outptr_Scintilla__Internal__Stroke)
+	ret := newScintilla__Internal__Stroke(outptr_Scintilla__Internal__Stroke)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *Scintilla__Internal__Stroke) WidthF() float32 {
@@ -2262,7 +2373,7 @@ func (this *Scintilla__Internal__Stroke) WidthF() float32 {
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__Stroke) Delete() {
-	C.Scintilla__Internal__Stroke_Delete(this.h)
+	C.Scintilla__Internal__Stroke_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2275,7 +2386,8 @@ func (this *Scintilla__Internal__Stroke) GoGC() {
 }
 
 type Scintilla__Internal__Fill struct {
-	h *C.Scintilla__Internal__Fill
+	h          *C.Scintilla__Internal__Fill
+	isSubclass bool
 }
 
 func (this *Scintilla__Internal__Fill) cPointer() *C.Scintilla__Internal__Fill {
@@ -2292,6 +2404,7 @@ func (this *Scintilla__Internal__Fill) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__Internal__Fill constructs the type using only CGO pointers.
 func newScintilla__Internal__Fill(h *C.Scintilla__Internal__Fill) *Scintilla__Internal__Fill {
 	if h == nil {
 		return nil
@@ -2299,25 +2412,38 @@ func newScintilla__Internal__Fill(h *C.Scintilla__Internal__Fill) *Scintilla__In
 	return &Scintilla__Internal__Fill{h: h}
 }
 
+// UnsafeNewScintilla__Internal__Fill constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__Fill(h unsafe.Pointer) *Scintilla__Internal__Fill {
-	return newScintilla__Internal__Fill((*C.Scintilla__Internal__Fill)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__Internal__Fill{h: (*C.Scintilla__Internal__Fill)(h)}
 }
 
 // NewScintilla__Internal__Fill constructs a new Scintilla::Internal::Fill object.
 func NewScintilla__Internal__Fill(colour_ Scintilla__Internal__ColourRGBA) *Scintilla__Internal__Fill {
-	ret := C.Scintilla__Internal__Fill_new(colour_.cPointer())
-	return newScintilla__Internal__Fill(ret)
+	var outptr_Scintilla__Internal__Fill *C.Scintilla__Internal__Fill = nil
+
+	C.Scintilla__Internal__Fill_new(colour_.cPointer(), &outptr_Scintilla__Internal__Fill)
+	ret := newScintilla__Internal__Fill(outptr_Scintilla__Internal__Fill)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__Fill2 constructs a new Scintilla::Internal::Fill object.
 func NewScintilla__Internal__Fill2(param1 *Scintilla__Internal__Fill) *Scintilla__Internal__Fill {
-	ret := C.Scintilla__Internal__Fill_new2(param1.cPointer())
-	return newScintilla__Internal__Fill(ret)
+	var outptr_Scintilla__Internal__Fill *C.Scintilla__Internal__Fill = nil
+
+	C.Scintilla__Internal__Fill_new2(param1.cPointer(), &outptr_Scintilla__Internal__Fill)
+	ret := newScintilla__Internal__Fill(outptr_Scintilla__Internal__Fill)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__Fill) Delete() {
-	C.Scintilla__Internal__Fill_Delete(this.h)
+	C.Scintilla__Internal__Fill_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2330,7 +2456,8 @@ func (this *Scintilla__Internal__Fill) GoGC() {
 }
 
 type Scintilla__Internal__FillStroke struct {
-	h *C.Scintilla__Internal__FillStroke
+	h          *C.Scintilla__Internal__FillStroke
+	isSubclass bool
 }
 
 func (this *Scintilla__Internal__FillStroke) cPointer() *C.Scintilla__Internal__FillStroke {
@@ -2347,6 +2474,7 @@ func (this *Scintilla__Internal__FillStroke) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__Internal__FillStroke constructs the type using only CGO pointers.
 func newScintilla__Internal__FillStroke(h *C.Scintilla__Internal__FillStroke) *Scintilla__Internal__FillStroke {
 	if h == nil {
 		return nil
@@ -2354,37 +2482,58 @@ func newScintilla__Internal__FillStroke(h *C.Scintilla__Internal__FillStroke) *S
 	return &Scintilla__Internal__FillStroke{h: h}
 }
 
+// UnsafeNewScintilla__Internal__FillStroke constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__FillStroke(h unsafe.Pointer) *Scintilla__Internal__FillStroke {
-	return newScintilla__Internal__FillStroke((*C.Scintilla__Internal__FillStroke)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__Internal__FillStroke{h: (*C.Scintilla__Internal__FillStroke)(h)}
 }
 
 // NewScintilla__Internal__FillStroke constructs a new Scintilla::Internal::FillStroke object.
 func NewScintilla__Internal__FillStroke(colourFill_ Scintilla__Internal__ColourRGBA, colourStroke_ Scintilla__Internal__ColourRGBA) *Scintilla__Internal__FillStroke {
-	ret := C.Scintilla__Internal__FillStroke_new(colourFill_.cPointer(), colourStroke_.cPointer())
-	return newScintilla__Internal__FillStroke(ret)
+	var outptr_Scintilla__Internal__FillStroke *C.Scintilla__Internal__FillStroke = nil
+
+	C.Scintilla__Internal__FillStroke_new(colourFill_.cPointer(), colourStroke_.cPointer(), &outptr_Scintilla__Internal__FillStroke)
+	ret := newScintilla__Internal__FillStroke(outptr_Scintilla__Internal__FillStroke)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__FillStroke2 constructs a new Scintilla::Internal::FillStroke object.
 func NewScintilla__Internal__FillStroke2(colourBoth Scintilla__Internal__ColourRGBA) *Scintilla__Internal__FillStroke {
-	ret := C.Scintilla__Internal__FillStroke_new2(colourBoth.cPointer())
-	return newScintilla__Internal__FillStroke(ret)
+	var outptr_Scintilla__Internal__FillStroke *C.Scintilla__Internal__FillStroke = nil
+
+	C.Scintilla__Internal__FillStroke_new2(colourBoth.cPointer(), &outptr_Scintilla__Internal__FillStroke)
+	ret := newScintilla__Internal__FillStroke(outptr_Scintilla__Internal__FillStroke)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__FillStroke3 constructs a new Scintilla::Internal::FillStroke object.
 func NewScintilla__Internal__FillStroke3(colourFill_ Scintilla__Internal__ColourRGBA, colourStroke_ Scintilla__Internal__ColourRGBA, widthStroke_ float64) *Scintilla__Internal__FillStroke {
-	ret := C.Scintilla__Internal__FillStroke_new3(colourFill_.cPointer(), colourStroke_.cPointer(), (C.double)(widthStroke_))
-	return newScintilla__Internal__FillStroke(ret)
+	var outptr_Scintilla__Internal__FillStroke *C.Scintilla__Internal__FillStroke = nil
+
+	C.Scintilla__Internal__FillStroke_new3(colourFill_.cPointer(), colourStroke_.cPointer(), (C.double)(widthStroke_), &outptr_Scintilla__Internal__FillStroke)
+	ret := newScintilla__Internal__FillStroke(outptr_Scintilla__Internal__FillStroke)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__FillStroke4 constructs a new Scintilla::Internal::FillStroke object.
 func NewScintilla__Internal__FillStroke4(colourBoth Scintilla__Internal__ColourRGBA, widthStroke_ float64) *Scintilla__Internal__FillStroke {
-	ret := C.Scintilla__Internal__FillStroke_new4(colourBoth.cPointer(), (C.double)(widthStroke_))
-	return newScintilla__Internal__FillStroke(ret)
+	var outptr_Scintilla__Internal__FillStroke *C.Scintilla__Internal__FillStroke = nil
+
+	C.Scintilla__Internal__FillStroke_new4(colourBoth.cPointer(), (C.double)(widthStroke_), &outptr_Scintilla__Internal__FillStroke)
+	ret := newScintilla__Internal__FillStroke(outptr_Scintilla__Internal__FillStroke)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__FillStroke) Delete() {
-	C.Scintilla__Internal__FillStroke_Delete(this.h)
+	C.Scintilla__Internal__FillStroke_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2397,7 +2546,8 @@ func (this *Scintilla__Internal__FillStroke) GoGC() {
 }
 
 type Scintilla__Internal__ColourStop struct {
-	h *C.Scintilla__Internal__ColourStop
+	h          *C.Scintilla__Internal__ColourStop
+	isSubclass bool
 }
 
 func (this *Scintilla__Internal__ColourStop) cPointer() *C.Scintilla__Internal__ColourStop {
@@ -2414,6 +2564,7 @@ func (this *Scintilla__Internal__ColourStop) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__Internal__ColourStop constructs the type using only CGO pointers.
 func newScintilla__Internal__ColourStop(h *C.Scintilla__Internal__ColourStop) *Scintilla__Internal__ColourStop {
 	if h == nil {
 		return nil
@@ -2421,19 +2572,28 @@ func newScintilla__Internal__ColourStop(h *C.Scintilla__Internal__ColourStop) *S
 	return &Scintilla__Internal__ColourStop{h: h}
 }
 
+// UnsafeNewScintilla__Internal__ColourStop constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__ColourStop(h unsafe.Pointer) *Scintilla__Internal__ColourStop {
-	return newScintilla__Internal__ColourStop((*C.Scintilla__Internal__ColourStop)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__Internal__ColourStop{h: (*C.Scintilla__Internal__ColourStop)(h)}
 }
 
 // NewScintilla__Internal__ColourStop constructs a new Scintilla::Internal::ColourStop object.
 func NewScintilla__Internal__ColourStop(position_ float64, colour_ Scintilla__Internal__ColourRGBA) *Scintilla__Internal__ColourStop {
-	ret := C.Scintilla__Internal__ColourStop_new((C.double)(position_), colour_.cPointer())
-	return newScintilla__Internal__ColourStop(ret)
+	var outptr_Scintilla__Internal__ColourStop *C.Scintilla__Internal__ColourStop = nil
+
+	C.Scintilla__Internal__ColourStop_new((C.double)(position_), colour_.cPointer(), &outptr_Scintilla__Internal__ColourStop)
+	ret := newScintilla__Internal__ColourStop(outptr_Scintilla__Internal__ColourStop)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__ColourStop) Delete() {
-	C.Scintilla__Internal__ColourStop_Delete(this.h)
+	C.Scintilla__Internal__ColourStop_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2446,7 +2606,8 @@ func (this *Scintilla__Internal__ColourStop) GoGC() {
 }
 
 type Scintilla__CharacterRange struct {
-	h *C.Scintilla__CharacterRange
+	h          *C.Scintilla__CharacterRange
+	isSubclass bool
 }
 
 func (this *Scintilla__CharacterRange) cPointer() *C.Scintilla__CharacterRange {
@@ -2463,6 +2624,7 @@ func (this *Scintilla__CharacterRange) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__CharacterRange constructs the type using only CGO pointers.
 func newScintilla__CharacterRange(h *C.Scintilla__CharacterRange) *Scintilla__CharacterRange {
 	if h == nil {
 		return nil
@@ -2470,13 +2632,18 @@ func newScintilla__CharacterRange(h *C.Scintilla__CharacterRange) *Scintilla__Ch
 	return &Scintilla__CharacterRange{h: h}
 }
 
+// UnsafeNewScintilla__CharacterRange constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__CharacterRange(h unsafe.Pointer) *Scintilla__CharacterRange {
-	return newScintilla__CharacterRange((*C.Scintilla__CharacterRange)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__CharacterRange{h: (*C.Scintilla__CharacterRange)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *Scintilla__CharacterRange) Delete() {
-	C.Scintilla__CharacterRange_Delete(this.h)
+	C.Scintilla__CharacterRange_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2489,7 +2656,8 @@ func (this *Scintilla__CharacterRange) GoGC() {
 }
 
 type Scintilla__CharacterRangeFull struct {
-	h *C.Scintilla__CharacterRangeFull
+	h          *C.Scintilla__CharacterRangeFull
+	isSubclass bool
 }
 
 func (this *Scintilla__CharacterRangeFull) cPointer() *C.Scintilla__CharacterRangeFull {
@@ -2506,6 +2674,7 @@ func (this *Scintilla__CharacterRangeFull) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__CharacterRangeFull constructs the type using only CGO pointers.
 func newScintilla__CharacterRangeFull(h *C.Scintilla__CharacterRangeFull) *Scintilla__CharacterRangeFull {
 	if h == nil {
 		return nil
@@ -2513,13 +2682,18 @@ func newScintilla__CharacterRangeFull(h *C.Scintilla__CharacterRangeFull) *Scint
 	return &Scintilla__CharacterRangeFull{h: h}
 }
 
+// UnsafeNewScintilla__CharacterRangeFull constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__CharacterRangeFull(h unsafe.Pointer) *Scintilla__CharacterRangeFull {
-	return newScintilla__CharacterRangeFull((*C.Scintilla__CharacterRangeFull)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__CharacterRangeFull{h: (*C.Scintilla__CharacterRangeFull)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *Scintilla__CharacterRangeFull) Delete() {
-	C.Scintilla__CharacterRangeFull_Delete(this.h)
+	C.Scintilla__CharacterRangeFull_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2532,7 +2706,8 @@ func (this *Scintilla__CharacterRangeFull) GoGC() {
 }
 
 type Scintilla__TextRange struct {
-	h *C.Scintilla__TextRange
+	h          *C.Scintilla__TextRange
+	isSubclass bool
 }
 
 func (this *Scintilla__TextRange) cPointer() *C.Scintilla__TextRange {
@@ -2549,6 +2724,7 @@ func (this *Scintilla__TextRange) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__TextRange constructs the type using only CGO pointers.
 func newScintilla__TextRange(h *C.Scintilla__TextRange) *Scintilla__TextRange {
 	if h == nil {
 		return nil
@@ -2556,13 +2732,18 @@ func newScintilla__TextRange(h *C.Scintilla__TextRange) *Scintilla__TextRange {
 	return &Scintilla__TextRange{h: h}
 }
 
+// UnsafeNewScintilla__TextRange constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__TextRange(h unsafe.Pointer) *Scintilla__TextRange {
-	return newScintilla__TextRange((*C.Scintilla__TextRange)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__TextRange{h: (*C.Scintilla__TextRange)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *Scintilla__TextRange) Delete() {
-	C.Scintilla__TextRange_Delete(this.h)
+	C.Scintilla__TextRange_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2575,7 +2756,8 @@ func (this *Scintilla__TextRange) GoGC() {
 }
 
 type Scintilla__TextRangeFull struct {
-	h *C.Scintilla__TextRangeFull
+	h          *C.Scintilla__TextRangeFull
+	isSubclass bool
 }
 
 func (this *Scintilla__TextRangeFull) cPointer() *C.Scintilla__TextRangeFull {
@@ -2592,6 +2774,7 @@ func (this *Scintilla__TextRangeFull) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__TextRangeFull constructs the type using only CGO pointers.
 func newScintilla__TextRangeFull(h *C.Scintilla__TextRangeFull) *Scintilla__TextRangeFull {
 	if h == nil {
 		return nil
@@ -2599,13 +2782,18 @@ func newScintilla__TextRangeFull(h *C.Scintilla__TextRangeFull) *Scintilla__Text
 	return &Scintilla__TextRangeFull{h: h}
 }
 
+// UnsafeNewScintilla__TextRangeFull constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__TextRangeFull(h unsafe.Pointer) *Scintilla__TextRangeFull {
-	return newScintilla__TextRangeFull((*C.Scintilla__TextRangeFull)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__TextRangeFull{h: (*C.Scintilla__TextRangeFull)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *Scintilla__TextRangeFull) Delete() {
-	C.Scintilla__TextRangeFull_Delete(this.h)
+	C.Scintilla__TextRangeFull_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2618,7 +2806,8 @@ func (this *Scintilla__TextRangeFull) GoGC() {
 }
 
 type Scintilla__TextToFind struct {
-	h *C.Scintilla__TextToFind
+	h          *C.Scintilla__TextToFind
+	isSubclass bool
 }
 
 func (this *Scintilla__TextToFind) cPointer() *C.Scintilla__TextToFind {
@@ -2635,6 +2824,7 @@ func (this *Scintilla__TextToFind) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__TextToFind constructs the type using only CGO pointers.
 func newScintilla__TextToFind(h *C.Scintilla__TextToFind) *Scintilla__TextToFind {
 	if h == nil {
 		return nil
@@ -2642,13 +2832,18 @@ func newScintilla__TextToFind(h *C.Scintilla__TextToFind) *Scintilla__TextToFind
 	return &Scintilla__TextToFind{h: h}
 }
 
+// UnsafeNewScintilla__TextToFind constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__TextToFind(h unsafe.Pointer) *Scintilla__TextToFind {
-	return newScintilla__TextToFind((*C.Scintilla__TextToFind)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__TextToFind{h: (*C.Scintilla__TextToFind)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *Scintilla__TextToFind) Delete() {
-	C.Scintilla__TextToFind_Delete(this.h)
+	C.Scintilla__TextToFind_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2661,7 +2856,8 @@ func (this *Scintilla__TextToFind) GoGC() {
 }
 
 type Scintilla__TextToFindFull struct {
-	h *C.Scintilla__TextToFindFull
+	h          *C.Scintilla__TextToFindFull
+	isSubclass bool
 }
 
 func (this *Scintilla__TextToFindFull) cPointer() *C.Scintilla__TextToFindFull {
@@ -2678,6 +2874,7 @@ func (this *Scintilla__TextToFindFull) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__TextToFindFull constructs the type using only CGO pointers.
 func newScintilla__TextToFindFull(h *C.Scintilla__TextToFindFull) *Scintilla__TextToFindFull {
 	if h == nil {
 		return nil
@@ -2685,13 +2882,18 @@ func newScintilla__TextToFindFull(h *C.Scintilla__TextToFindFull) *Scintilla__Te
 	return &Scintilla__TextToFindFull{h: h}
 }
 
+// UnsafeNewScintilla__TextToFindFull constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__TextToFindFull(h unsafe.Pointer) *Scintilla__TextToFindFull {
-	return newScintilla__TextToFindFull((*C.Scintilla__TextToFindFull)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__TextToFindFull{h: (*C.Scintilla__TextToFindFull)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *Scintilla__TextToFindFull) Delete() {
-	C.Scintilla__TextToFindFull_Delete(this.h)
+	C.Scintilla__TextToFindFull_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2704,7 +2906,8 @@ func (this *Scintilla__TextToFindFull) GoGC() {
 }
 
 type Scintilla__Rectangle struct {
-	h *C.Scintilla__Rectangle
+	h          *C.Scintilla__Rectangle
+	isSubclass bool
 }
 
 func (this *Scintilla__Rectangle) cPointer() *C.Scintilla__Rectangle {
@@ -2721,6 +2924,7 @@ func (this *Scintilla__Rectangle) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__Rectangle constructs the type using only CGO pointers.
 func newScintilla__Rectangle(h *C.Scintilla__Rectangle) *Scintilla__Rectangle {
 	if h == nil {
 		return nil
@@ -2728,13 +2932,18 @@ func newScintilla__Rectangle(h *C.Scintilla__Rectangle) *Scintilla__Rectangle {
 	return &Scintilla__Rectangle{h: h}
 }
 
+// UnsafeNewScintilla__Rectangle constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Rectangle(h unsafe.Pointer) *Scintilla__Rectangle {
-	return newScintilla__Rectangle((*C.Scintilla__Rectangle)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__Rectangle{h: (*C.Scintilla__Rectangle)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Rectangle) Delete() {
-	C.Scintilla__Rectangle_Delete(this.h)
+	C.Scintilla__Rectangle_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2747,7 +2956,8 @@ func (this *Scintilla__Rectangle) GoGC() {
 }
 
 type Scintilla__RangeToFormat struct {
-	h *C.Scintilla__RangeToFormat
+	h          *C.Scintilla__RangeToFormat
+	isSubclass bool
 }
 
 func (this *Scintilla__RangeToFormat) cPointer() *C.Scintilla__RangeToFormat {
@@ -2764,6 +2974,7 @@ func (this *Scintilla__RangeToFormat) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__RangeToFormat constructs the type using only CGO pointers.
 func newScintilla__RangeToFormat(h *C.Scintilla__RangeToFormat) *Scintilla__RangeToFormat {
 	if h == nil {
 		return nil
@@ -2771,13 +2982,18 @@ func newScintilla__RangeToFormat(h *C.Scintilla__RangeToFormat) *Scintilla__Rang
 	return &Scintilla__RangeToFormat{h: h}
 }
 
+// UnsafeNewScintilla__RangeToFormat constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__RangeToFormat(h unsafe.Pointer) *Scintilla__RangeToFormat {
-	return newScintilla__RangeToFormat((*C.Scintilla__RangeToFormat)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__RangeToFormat{h: (*C.Scintilla__RangeToFormat)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *Scintilla__RangeToFormat) Delete() {
-	C.Scintilla__RangeToFormat_Delete(this.h)
+	C.Scintilla__RangeToFormat_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2790,7 +3006,8 @@ func (this *Scintilla__RangeToFormat) GoGC() {
 }
 
 type Scintilla__RangeToFormatFull struct {
-	h *C.Scintilla__RangeToFormatFull
+	h          *C.Scintilla__RangeToFormatFull
+	isSubclass bool
 }
 
 func (this *Scintilla__RangeToFormatFull) cPointer() *C.Scintilla__RangeToFormatFull {
@@ -2807,6 +3024,7 @@ func (this *Scintilla__RangeToFormatFull) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__RangeToFormatFull constructs the type using only CGO pointers.
 func newScintilla__RangeToFormatFull(h *C.Scintilla__RangeToFormatFull) *Scintilla__RangeToFormatFull {
 	if h == nil {
 		return nil
@@ -2814,13 +3032,18 @@ func newScintilla__RangeToFormatFull(h *C.Scintilla__RangeToFormatFull) *Scintil
 	return &Scintilla__RangeToFormatFull{h: h}
 }
 
+// UnsafeNewScintilla__RangeToFormatFull constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__RangeToFormatFull(h unsafe.Pointer) *Scintilla__RangeToFormatFull {
-	return newScintilla__RangeToFormatFull((*C.Scintilla__RangeToFormatFull)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__RangeToFormatFull{h: (*C.Scintilla__RangeToFormatFull)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *Scintilla__RangeToFormatFull) Delete() {
-	C.Scintilla__RangeToFormatFull_Delete(this.h)
+	C.Scintilla__RangeToFormatFull_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2833,7 +3056,8 @@ func (this *Scintilla__RangeToFormatFull) GoGC() {
 }
 
 type Scintilla__NotifyHeader struct {
-	h *C.Scintilla__NotifyHeader
+	h          *C.Scintilla__NotifyHeader
+	isSubclass bool
 }
 
 func (this *Scintilla__NotifyHeader) cPointer() *C.Scintilla__NotifyHeader {
@@ -2850,6 +3074,7 @@ func (this *Scintilla__NotifyHeader) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__NotifyHeader constructs the type using only CGO pointers.
 func newScintilla__NotifyHeader(h *C.Scintilla__NotifyHeader) *Scintilla__NotifyHeader {
 	if h == nil {
 		return nil
@@ -2857,13 +3082,18 @@ func newScintilla__NotifyHeader(h *C.Scintilla__NotifyHeader) *Scintilla__Notify
 	return &Scintilla__NotifyHeader{h: h}
 }
 
+// UnsafeNewScintilla__NotifyHeader constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__NotifyHeader(h unsafe.Pointer) *Scintilla__NotifyHeader {
-	return newScintilla__NotifyHeader((*C.Scintilla__NotifyHeader)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__NotifyHeader{h: (*C.Scintilla__NotifyHeader)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *Scintilla__NotifyHeader) Delete() {
-	C.Scintilla__NotifyHeader_Delete(this.h)
+	C.Scintilla__NotifyHeader_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2876,7 +3106,8 @@ func (this *Scintilla__NotifyHeader) GoGC() {
 }
 
 type Scintilla__NotificationData struct {
-	h *C.Scintilla__NotificationData
+	h          *C.Scintilla__NotificationData
+	isSubclass bool
 }
 
 func (this *Scintilla__NotificationData) cPointer() *C.Scintilla__NotificationData {
@@ -2893,6 +3124,7 @@ func (this *Scintilla__NotificationData) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__NotificationData constructs the type using only CGO pointers.
 func newScintilla__NotificationData(h *C.Scintilla__NotificationData) *Scintilla__NotificationData {
 	if h == nil {
 		return nil
@@ -2900,13 +3132,18 @@ func newScintilla__NotificationData(h *C.Scintilla__NotificationData) *Scintilla
 	return &Scintilla__NotificationData{h: h}
 }
 
+// UnsafeNewScintilla__NotificationData constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__NotificationData(h unsafe.Pointer) *Scintilla__NotificationData {
-	return newScintilla__NotificationData((*C.Scintilla__NotificationData)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__NotificationData{h: (*C.Scintilla__NotificationData)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *Scintilla__NotificationData) Delete() {
-	C.Scintilla__NotificationData_Delete(this.h)
+	C.Scintilla__NotificationData_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2919,7 +3156,8 @@ func (this *Scintilla__NotificationData) GoGC() {
 }
 
 type Scintilla__Internal__FontParameters struct {
-	h *C.Scintilla__Internal__FontParameters
+	h          *C.Scintilla__Internal__FontParameters
+	isSubclass bool
 }
 
 func (this *Scintilla__Internal__FontParameters) cPointer() *C.Scintilla__Internal__FontParameters {
@@ -2936,6 +3174,7 @@ func (this *Scintilla__Internal__FontParameters) UnsafePointer() unsafe.Pointer 
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__Internal__FontParameters constructs the type using only CGO pointers.
 func newScintilla__Internal__FontParameters(h *C.Scintilla__Internal__FontParameters) *Scintilla__Internal__FontParameters {
 	if h == nil {
 		return nil
@@ -2943,64 +3182,97 @@ func newScintilla__Internal__FontParameters(h *C.Scintilla__Internal__FontParame
 	return &Scintilla__Internal__FontParameters{h: h}
 }
 
+// UnsafeNewScintilla__Internal__FontParameters constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__FontParameters(h unsafe.Pointer) *Scintilla__Internal__FontParameters {
-	return newScintilla__Internal__FontParameters((*C.Scintilla__Internal__FontParameters)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__Internal__FontParameters{h: (*C.Scintilla__Internal__FontParameters)(h)}
 }
 
 // NewScintilla__Internal__FontParameters constructs a new Scintilla::Internal::FontParameters object.
 func NewScintilla__Internal__FontParameters(faceName_ string) *Scintilla__Internal__FontParameters {
 	faceName__Cstring := C.CString(faceName_)
 	defer C.free(unsafe.Pointer(faceName__Cstring))
-	ret := C.Scintilla__Internal__FontParameters_new(faceName__Cstring)
-	return newScintilla__Internal__FontParameters(ret)
+	var outptr_Scintilla__Internal__FontParameters *C.Scintilla__Internal__FontParameters = nil
+
+	C.Scintilla__Internal__FontParameters_new(faceName__Cstring, &outptr_Scintilla__Internal__FontParameters)
+	ret := newScintilla__Internal__FontParameters(outptr_Scintilla__Internal__FontParameters)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__FontParameters2 constructs a new Scintilla::Internal::FontParameters object.
 func NewScintilla__Internal__FontParameters2(faceName_ string, size_ float64) *Scintilla__Internal__FontParameters {
 	faceName__Cstring := C.CString(faceName_)
 	defer C.free(unsafe.Pointer(faceName__Cstring))
-	ret := C.Scintilla__Internal__FontParameters_new2(faceName__Cstring, (C.double)(size_))
-	return newScintilla__Internal__FontParameters(ret)
+	var outptr_Scintilla__Internal__FontParameters *C.Scintilla__Internal__FontParameters = nil
+
+	C.Scintilla__Internal__FontParameters_new2(faceName__Cstring, (C.double)(size_), &outptr_Scintilla__Internal__FontParameters)
+	ret := newScintilla__Internal__FontParameters(outptr_Scintilla__Internal__FontParameters)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__FontParameters3 constructs a new Scintilla::Internal::FontParameters object.
 func NewScintilla__Internal__FontParameters3(faceName_ string, size_ float64, weight_ Scintilla__FontWeight) *Scintilla__Internal__FontParameters {
 	faceName__Cstring := C.CString(faceName_)
 	defer C.free(unsafe.Pointer(faceName__Cstring))
-	ret := C.Scintilla__Internal__FontParameters_new3(faceName__Cstring, (C.double)(size_), (C.int)(weight_))
-	return newScintilla__Internal__FontParameters(ret)
+	var outptr_Scintilla__Internal__FontParameters *C.Scintilla__Internal__FontParameters = nil
+
+	C.Scintilla__Internal__FontParameters_new3(faceName__Cstring, (C.double)(size_), (C.int)(weight_), &outptr_Scintilla__Internal__FontParameters)
+	ret := newScintilla__Internal__FontParameters(outptr_Scintilla__Internal__FontParameters)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__FontParameters4 constructs a new Scintilla::Internal::FontParameters object.
 func NewScintilla__Internal__FontParameters4(faceName_ string, size_ float64, weight_ Scintilla__FontWeight, italic_ bool) *Scintilla__Internal__FontParameters {
 	faceName__Cstring := C.CString(faceName_)
 	defer C.free(unsafe.Pointer(faceName__Cstring))
-	ret := C.Scintilla__Internal__FontParameters_new4(faceName__Cstring, (C.double)(size_), (C.int)(weight_), (C.bool)(italic_))
-	return newScintilla__Internal__FontParameters(ret)
+	var outptr_Scintilla__Internal__FontParameters *C.Scintilla__Internal__FontParameters = nil
+
+	C.Scintilla__Internal__FontParameters_new4(faceName__Cstring, (C.double)(size_), (C.int)(weight_), (C.bool)(italic_), &outptr_Scintilla__Internal__FontParameters)
+	ret := newScintilla__Internal__FontParameters(outptr_Scintilla__Internal__FontParameters)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__FontParameters5 constructs a new Scintilla::Internal::FontParameters object.
 func NewScintilla__Internal__FontParameters5(faceName_ string, size_ float64, weight_ Scintilla__FontWeight, italic_ bool, extraFontFlag_ Scintilla__FontQuality) *Scintilla__Internal__FontParameters {
 	faceName__Cstring := C.CString(faceName_)
 	defer C.free(unsafe.Pointer(faceName__Cstring))
-	ret := C.Scintilla__Internal__FontParameters_new5(faceName__Cstring, (C.double)(size_), (C.int)(weight_), (C.bool)(italic_), (C.int)(extraFontFlag_))
-	return newScintilla__Internal__FontParameters(ret)
+	var outptr_Scintilla__Internal__FontParameters *C.Scintilla__Internal__FontParameters = nil
+
+	C.Scintilla__Internal__FontParameters_new5(faceName__Cstring, (C.double)(size_), (C.int)(weight_), (C.bool)(italic_), (C.int)(extraFontFlag_), &outptr_Scintilla__Internal__FontParameters)
+	ret := newScintilla__Internal__FontParameters(outptr_Scintilla__Internal__FontParameters)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__FontParameters6 constructs a new Scintilla::Internal::FontParameters object.
 func NewScintilla__Internal__FontParameters6(faceName_ string, size_ float64, weight_ Scintilla__FontWeight, italic_ bool, extraFontFlag_ Scintilla__FontQuality, technology_ Scintilla__Technology) *Scintilla__Internal__FontParameters {
 	faceName__Cstring := C.CString(faceName_)
 	defer C.free(unsafe.Pointer(faceName__Cstring))
-	ret := C.Scintilla__Internal__FontParameters_new6(faceName__Cstring, (C.double)(size_), (C.int)(weight_), (C.bool)(italic_), (C.int)(extraFontFlag_), (C.int)(technology_))
-	return newScintilla__Internal__FontParameters(ret)
+	var outptr_Scintilla__Internal__FontParameters *C.Scintilla__Internal__FontParameters = nil
+
+	C.Scintilla__Internal__FontParameters_new6(faceName__Cstring, (C.double)(size_), (C.int)(weight_), (C.bool)(italic_), (C.int)(extraFontFlag_), (C.int)(technology_), &outptr_Scintilla__Internal__FontParameters)
+	ret := newScintilla__Internal__FontParameters(outptr_Scintilla__Internal__FontParameters)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__FontParameters7 constructs a new Scintilla::Internal::FontParameters object.
 func NewScintilla__Internal__FontParameters7(faceName_ string, size_ float64, weight_ Scintilla__FontWeight, italic_ bool, extraFontFlag_ Scintilla__FontQuality, technology_ Scintilla__Technology, characterSet_ Scintilla__CharacterSet) *Scintilla__Internal__FontParameters {
 	faceName__Cstring := C.CString(faceName_)
 	defer C.free(unsafe.Pointer(faceName__Cstring))
-	ret := C.Scintilla__Internal__FontParameters_new7(faceName__Cstring, (C.double)(size_), (C.int)(weight_), (C.bool)(italic_), (C.int)(extraFontFlag_), (C.int)(technology_), (C.int)(characterSet_))
-	return newScintilla__Internal__FontParameters(ret)
+	var outptr_Scintilla__Internal__FontParameters *C.Scintilla__Internal__FontParameters = nil
+
+	C.Scintilla__Internal__FontParameters_new7(faceName__Cstring, (C.double)(size_), (C.int)(weight_), (C.bool)(italic_), (C.int)(extraFontFlag_), (C.int)(technology_), (C.int)(characterSet_), &outptr_Scintilla__Internal__FontParameters)
+	ret := newScintilla__Internal__FontParameters(outptr_Scintilla__Internal__FontParameters)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__FontParameters8 constructs a new Scintilla::Internal::FontParameters object.
@@ -3009,8 +3281,12 @@ func NewScintilla__Internal__FontParameters8(faceName_ string, size_ float64, we
 	defer C.free(unsafe.Pointer(faceName__Cstring))
 	localeName__Cstring := C.CString(localeName_)
 	defer C.free(unsafe.Pointer(localeName__Cstring))
-	ret := C.Scintilla__Internal__FontParameters_new8(faceName__Cstring, (C.double)(size_), (C.int)(weight_), (C.bool)(italic_), (C.int)(extraFontFlag_), (C.int)(technology_), (C.int)(characterSet_), localeName__Cstring)
-	return newScintilla__Internal__FontParameters(ret)
+	var outptr_Scintilla__Internal__FontParameters *C.Scintilla__Internal__FontParameters = nil
+
+	C.Scintilla__Internal__FontParameters_new8(faceName__Cstring, (C.double)(size_), (C.int)(weight_), (C.bool)(italic_), (C.int)(extraFontFlag_), (C.int)(technology_), (C.int)(characterSet_), localeName__Cstring, &outptr_Scintilla__Internal__FontParameters)
+	ret := newScintilla__Internal__FontParameters(outptr_Scintilla__Internal__FontParameters)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__FontParameters9 constructs a new Scintilla::Internal::FontParameters object.
@@ -3019,13 +3295,17 @@ func NewScintilla__Internal__FontParameters9(faceName_ string, size_ float64, we
 	defer C.free(unsafe.Pointer(faceName__Cstring))
 	localeName__Cstring := C.CString(localeName_)
 	defer C.free(unsafe.Pointer(localeName__Cstring))
-	ret := C.Scintilla__Internal__FontParameters_new9(faceName__Cstring, (C.double)(size_), (C.int)(weight_), (C.bool)(italic_), (C.int)(extraFontFlag_), (C.int)(technology_), (C.int)(characterSet_), localeName__Cstring, (C.int)(stretch_))
-	return newScintilla__Internal__FontParameters(ret)
+	var outptr_Scintilla__Internal__FontParameters *C.Scintilla__Internal__FontParameters = nil
+
+	C.Scintilla__Internal__FontParameters_new9(faceName__Cstring, (C.double)(size_), (C.int)(weight_), (C.bool)(italic_), (C.int)(extraFontFlag_), (C.int)(technology_), (C.int)(characterSet_), localeName__Cstring, (C.int)(stretch_), &outptr_Scintilla__Internal__FontParameters)
+	ret := newScintilla__Internal__FontParameters(outptr_Scintilla__Internal__FontParameters)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__FontParameters) Delete() {
-	C.Scintilla__Internal__FontParameters_Delete(this.h)
+	C.Scintilla__Internal__FontParameters_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3038,7 +3318,8 @@ func (this *Scintilla__Internal__FontParameters) GoGC() {
 }
 
 type Scintilla__Internal__Font struct {
-	h *C.Scintilla__Internal__Font
+	h          *C.Scintilla__Internal__Font
+	isSubclass bool
 }
 
 func (this *Scintilla__Internal__Font) cPointer() *C.Scintilla__Internal__Font {
@@ -3055,6 +3336,7 @@ func (this *Scintilla__Internal__Font) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__Internal__Font constructs the type using only CGO pointers.
 func newScintilla__Internal__Font(h *C.Scintilla__Internal__Font) *Scintilla__Internal__Font {
 	if h == nil {
 		return nil
@@ -3062,19 +3344,28 @@ func newScintilla__Internal__Font(h *C.Scintilla__Internal__Font) *Scintilla__In
 	return &Scintilla__Internal__Font{h: h}
 }
 
+// UnsafeNewScintilla__Internal__Font constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__Font(h unsafe.Pointer) *Scintilla__Internal__Font {
-	return newScintilla__Internal__Font((*C.Scintilla__Internal__Font)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__Internal__Font{h: (*C.Scintilla__Internal__Font)(h)}
 }
 
 // NewScintilla__Internal__Font constructs a new Scintilla::Internal::Font object.
 func NewScintilla__Internal__Font() *Scintilla__Internal__Font {
-	ret := C.Scintilla__Internal__Font_new()
-	return newScintilla__Internal__Font(ret)
+	var outptr_Scintilla__Internal__Font *C.Scintilla__Internal__Font = nil
+
+	C.Scintilla__Internal__Font_new(&outptr_Scintilla__Internal__Font)
+	ret := newScintilla__Internal__Font(outptr_Scintilla__Internal__Font)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__Font) Delete() {
-	C.Scintilla__Internal__Font_Delete(this.h)
+	C.Scintilla__Internal__Font_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3087,7 +3378,8 @@ func (this *Scintilla__Internal__Font) GoGC() {
 }
 
 type Scintilla__Internal__IScreenLine struct {
-	h *C.Scintilla__Internal__IScreenLine
+	h          *C.Scintilla__Internal__IScreenLine
+	isSubclass bool
 }
 
 func (this *Scintilla__Internal__IScreenLine) cPointer() *C.Scintilla__Internal__IScreenLine {
@@ -3104,6 +3396,7 @@ func (this *Scintilla__Internal__IScreenLine) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__Internal__IScreenLine constructs the type using only CGO pointers.
 func newScintilla__Internal__IScreenLine(h *C.Scintilla__Internal__IScreenLine) *Scintilla__Internal__IScreenLine {
 	if h == nil {
 		return nil
@@ -3111,8 +3404,13 @@ func newScintilla__Internal__IScreenLine(h *C.Scintilla__Internal__IScreenLine) 
 	return &Scintilla__Internal__IScreenLine{h: h}
 }
 
+// UnsafeNewScintilla__Internal__IScreenLine constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__IScreenLine(h unsafe.Pointer) *Scintilla__Internal__IScreenLine {
-	return newScintilla__Internal__IScreenLine((*C.Scintilla__Internal__IScreenLine)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__Internal__IScreenLine{h: (*C.Scintilla__Internal__IScreenLine)(h)}
 }
 
 func (this *Scintilla__Internal__IScreenLine) Length() uint64 {
@@ -3157,7 +3455,7 @@ func (this *Scintilla__Internal__IScreenLine) OperatorAssign(param1 *Scintilla__
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__IScreenLine) Delete() {
-	C.Scintilla__Internal__IScreenLine_Delete(this.h)
+	C.Scintilla__Internal__IScreenLine_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3170,7 +3468,8 @@ func (this *Scintilla__Internal__IScreenLine) GoGC() {
 }
 
 type Scintilla__Internal__IScreenLineLayout struct {
-	h *C.Scintilla__Internal__IScreenLineLayout
+	h          *C.Scintilla__Internal__IScreenLineLayout
+	isSubclass bool
 }
 
 func (this *Scintilla__Internal__IScreenLineLayout) cPointer() *C.Scintilla__Internal__IScreenLineLayout {
@@ -3187,6 +3486,7 @@ func (this *Scintilla__Internal__IScreenLineLayout) UnsafePointer() unsafe.Point
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__Internal__IScreenLineLayout constructs the type using only CGO pointers.
 func newScintilla__Internal__IScreenLineLayout(h *C.Scintilla__Internal__IScreenLineLayout) *Scintilla__Internal__IScreenLineLayout {
 	if h == nil {
 		return nil
@@ -3194,8 +3494,13 @@ func newScintilla__Internal__IScreenLineLayout(h *C.Scintilla__Internal__IScreen
 	return &Scintilla__Internal__IScreenLineLayout{h: h}
 }
 
+// UnsafeNewScintilla__Internal__IScreenLineLayout constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__IScreenLineLayout(h unsafe.Pointer) *Scintilla__Internal__IScreenLineLayout {
-	return newScintilla__Internal__IScreenLineLayout((*C.Scintilla__Internal__IScreenLineLayout)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__Internal__IScreenLineLayout{h: (*C.Scintilla__Internal__IScreenLineLayout)(h)}
 }
 
 func (this *Scintilla__Internal__IScreenLineLayout) PositionFromX(xDistance float64, charPosition bool) uint64 {
@@ -3212,7 +3517,7 @@ func (this *Scintilla__Internal__IScreenLineLayout) OperatorAssign(param1 *Scint
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__IScreenLineLayout) Delete() {
-	C.Scintilla__Internal__IScreenLineLayout_Delete(this.h)
+	C.Scintilla__Internal__IScreenLineLayout_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3225,7 +3530,8 @@ func (this *Scintilla__Internal__IScreenLineLayout) GoGC() {
 }
 
 type Scintilla__Internal__SurfaceMode struct {
-	h *C.Scintilla__Internal__SurfaceMode
+	h          *C.Scintilla__Internal__SurfaceMode
+	isSubclass bool
 }
 
 func (this *Scintilla__Internal__SurfaceMode) cPointer() *C.Scintilla__Internal__SurfaceMode {
@@ -3242,6 +3548,7 @@ func (this *Scintilla__Internal__SurfaceMode) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__Internal__SurfaceMode constructs the type using only CGO pointers.
 func newScintilla__Internal__SurfaceMode(h *C.Scintilla__Internal__SurfaceMode) *Scintilla__Internal__SurfaceMode {
 	if h == nil {
 		return nil
@@ -3249,25 +3556,38 @@ func newScintilla__Internal__SurfaceMode(h *C.Scintilla__Internal__SurfaceMode) 
 	return &Scintilla__Internal__SurfaceMode{h: h}
 }
 
+// UnsafeNewScintilla__Internal__SurfaceMode constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__SurfaceMode(h unsafe.Pointer) *Scintilla__Internal__SurfaceMode {
-	return newScintilla__Internal__SurfaceMode((*C.Scintilla__Internal__SurfaceMode)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__Internal__SurfaceMode{h: (*C.Scintilla__Internal__SurfaceMode)(h)}
 }
 
 // NewScintilla__Internal__SurfaceMode constructs a new Scintilla::Internal::SurfaceMode object.
 func NewScintilla__Internal__SurfaceMode() *Scintilla__Internal__SurfaceMode {
-	ret := C.Scintilla__Internal__SurfaceMode_new()
-	return newScintilla__Internal__SurfaceMode(ret)
+	var outptr_Scintilla__Internal__SurfaceMode *C.Scintilla__Internal__SurfaceMode = nil
+
+	C.Scintilla__Internal__SurfaceMode_new(&outptr_Scintilla__Internal__SurfaceMode)
+	ret := newScintilla__Internal__SurfaceMode(outptr_Scintilla__Internal__SurfaceMode)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintilla__Internal__SurfaceMode2 constructs a new Scintilla::Internal::SurfaceMode object.
 func NewScintilla__Internal__SurfaceMode2(codePage_ int, bidiR2L_ bool) *Scintilla__Internal__SurfaceMode {
-	ret := C.Scintilla__Internal__SurfaceMode_new2((C.int)(codePage_), (C.bool)(bidiR2L_))
-	return newScintilla__Internal__SurfaceMode(ret)
+	var outptr_Scintilla__Internal__SurfaceMode *C.Scintilla__Internal__SurfaceMode = nil
+
+	C.Scintilla__Internal__SurfaceMode_new2((C.int)(codePage_), (C.bool)(bidiR2L_), &outptr_Scintilla__Internal__SurfaceMode)
+	ret := newScintilla__Internal__SurfaceMode(outptr_Scintilla__Internal__SurfaceMode)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__SurfaceMode) Delete() {
-	C.Scintilla__Internal__SurfaceMode_Delete(this.h)
+	C.Scintilla__Internal__SurfaceMode_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3280,7 +3600,8 @@ func (this *Scintilla__Internal__SurfaceMode) GoGC() {
 }
 
 type Scintilla__Internal__Surface struct {
-	h *C.Scintilla__Internal__Surface
+	h          *C.Scintilla__Internal__Surface
+	isSubclass bool
 }
 
 func (this *Scintilla__Internal__Surface) cPointer() *C.Scintilla__Internal__Surface {
@@ -3297,6 +3618,7 @@ func (this *Scintilla__Internal__Surface) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__Internal__Surface constructs the type using only CGO pointers.
 func newScintilla__Internal__Surface(h *C.Scintilla__Internal__Surface) *Scintilla__Internal__Surface {
 	if h == nil {
 		return nil
@@ -3304,8 +3626,13 @@ func newScintilla__Internal__Surface(h *C.Scintilla__Internal__Surface) *Scintil
 	return &Scintilla__Internal__Surface{h: h}
 }
 
+// UnsafeNewScintilla__Internal__Surface constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__Surface(h unsafe.Pointer) *Scintilla__Internal__Surface {
-	return newScintilla__Internal__Surface((*C.Scintilla__Internal__Surface)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__Internal__Surface{h: (*C.Scintilla__Internal__Surface)(h)}
 }
 
 func (this *Scintilla__Internal__Surface) Init(wid unsafe.Pointer) {
@@ -3438,7 +3765,7 @@ func (this *Scintilla__Internal__Surface) FlushDrawing() {
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__Surface) Delete() {
-	C.Scintilla__Internal__Surface_Delete(this.h)
+	C.Scintilla__Internal__Surface_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3451,7 +3778,8 @@ func (this *Scintilla__Internal__Surface) GoGC() {
 }
 
 type Scintilla__Internal__Window struct {
-	h *C.Scintilla__Internal__Window
+	h          *C.Scintilla__Internal__Window
+	isSubclass bool
 }
 
 func (this *Scintilla__Internal__Window) cPointer() *C.Scintilla__Internal__Window {
@@ -3468,6 +3796,7 @@ func (this *Scintilla__Internal__Window) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__Internal__Window constructs the type using only CGO pointers.
 func newScintilla__Internal__Window(h *C.Scintilla__Internal__Window) *Scintilla__Internal__Window {
 	if h == nil {
 		return nil
@@ -3475,14 +3804,23 @@ func newScintilla__Internal__Window(h *C.Scintilla__Internal__Window) *Scintilla
 	return &Scintilla__Internal__Window{h: h}
 }
 
+// UnsafeNewScintilla__Internal__Window constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__Window(h unsafe.Pointer) *Scintilla__Internal__Window {
-	return newScintilla__Internal__Window((*C.Scintilla__Internal__Window)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__Internal__Window{h: (*C.Scintilla__Internal__Window)(h)}
 }
 
 // NewScintilla__Internal__Window constructs a new Scintilla::Internal::Window object.
 func NewScintilla__Internal__Window() *Scintilla__Internal__Window {
-	ret := C.Scintilla__Internal__Window_new()
-	return newScintilla__Internal__Window(ret)
+	var outptr_Scintilla__Internal__Window *C.Scintilla__Internal__Window = nil
+
+	C.Scintilla__Internal__Window_new(&outptr_Scintilla__Internal__Window)
+	ret := newScintilla__Internal__Window(outptr_Scintilla__Internal__Window)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *Scintilla__Internal__Window) OperatorAssign(wid_ unsafe.Pointer) {
@@ -3552,7 +3890,7 @@ func (this *Scintilla__Internal__Window) Show1(show bool) {
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__Window) Delete() {
-	C.Scintilla__Internal__Window_Delete(this.h)
+	C.Scintilla__Internal__Window_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3565,7 +3903,8 @@ func (this *Scintilla__Internal__Window) GoGC() {
 }
 
 type Scintilla__Internal__ListBoxEvent struct {
-	h *C.Scintilla__Internal__ListBoxEvent
+	h          *C.Scintilla__Internal__ListBoxEvent
+	isSubclass bool
 }
 
 func (this *Scintilla__Internal__ListBoxEvent) cPointer() *C.Scintilla__Internal__ListBoxEvent {
@@ -3582,6 +3921,7 @@ func (this *Scintilla__Internal__ListBoxEvent) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__Internal__ListBoxEvent constructs the type using only CGO pointers.
 func newScintilla__Internal__ListBoxEvent(h *C.Scintilla__Internal__ListBoxEvent) *Scintilla__Internal__ListBoxEvent {
 	if h == nil {
 		return nil
@@ -3589,19 +3929,28 @@ func newScintilla__Internal__ListBoxEvent(h *C.Scintilla__Internal__ListBoxEvent
 	return &Scintilla__Internal__ListBoxEvent{h: h}
 }
 
+// UnsafeNewScintilla__Internal__ListBoxEvent constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__ListBoxEvent(h unsafe.Pointer) *Scintilla__Internal__ListBoxEvent {
-	return newScintilla__Internal__ListBoxEvent((*C.Scintilla__Internal__ListBoxEvent)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__Internal__ListBoxEvent{h: (*C.Scintilla__Internal__ListBoxEvent)(h)}
 }
 
 // NewScintilla__Internal__ListBoxEvent constructs a new Scintilla::Internal::ListBoxEvent object.
 func NewScintilla__Internal__ListBoxEvent(event_ Scintilla__Internal__ListBoxEvent__EventType) *Scintilla__Internal__ListBoxEvent {
-	ret := C.Scintilla__Internal__ListBoxEvent_new((C.int)(event_))
-	return newScintilla__Internal__ListBoxEvent(ret)
+	var outptr_Scintilla__Internal__ListBoxEvent *C.Scintilla__Internal__ListBoxEvent = nil
+
+	C.Scintilla__Internal__ListBoxEvent_new((C.int)(event_), &outptr_Scintilla__Internal__ListBoxEvent)
+	ret := newScintilla__Internal__ListBoxEvent(outptr_Scintilla__Internal__ListBoxEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__ListBoxEvent) Delete() {
-	C.Scintilla__Internal__ListBoxEvent_Delete(this.h)
+	C.Scintilla__Internal__ListBoxEvent_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3614,7 +3963,8 @@ func (this *Scintilla__Internal__ListBoxEvent) GoGC() {
 }
 
 type Scintilla__Internal__IListBoxDelegate struct {
-	h *C.Scintilla__Internal__IListBoxDelegate
+	h          *C.Scintilla__Internal__IListBoxDelegate
+	isSubclass bool
 }
 
 func (this *Scintilla__Internal__IListBoxDelegate) cPointer() *C.Scintilla__Internal__IListBoxDelegate {
@@ -3631,6 +3981,7 @@ func (this *Scintilla__Internal__IListBoxDelegate) UnsafePointer() unsafe.Pointe
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__Internal__IListBoxDelegate constructs the type using only CGO pointers.
 func newScintilla__Internal__IListBoxDelegate(h *C.Scintilla__Internal__IListBoxDelegate) *Scintilla__Internal__IListBoxDelegate {
 	if h == nil {
 		return nil
@@ -3638,8 +3989,13 @@ func newScintilla__Internal__IListBoxDelegate(h *C.Scintilla__Internal__IListBox
 	return &Scintilla__Internal__IListBoxDelegate{h: h}
 }
 
+// UnsafeNewScintilla__Internal__IListBoxDelegate constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__IListBoxDelegate(h unsafe.Pointer) *Scintilla__Internal__IListBoxDelegate {
-	return newScintilla__Internal__IListBoxDelegate((*C.Scintilla__Internal__IListBoxDelegate)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__Internal__IListBoxDelegate{h: (*C.Scintilla__Internal__IListBoxDelegate)(h)}
 }
 
 func (this *Scintilla__Internal__IListBoxDelegate) ListNotify(plbe *Scintilla__Internal__ListBoxEvent) {
@@ -3652,7 +4008,7 @@ func (this *Scintilla__Internal__IListBoxDelegate) OperatorAssign(param1 *Scinti
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__IListBoxDelegate) Delete() {
-	C.Scintilla__Internal__IListBoxDelegate_Delete(this.h)
+	C.Scintilla__Internal__IListBoxDelegate_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3665,7 +4021,8 @@ func (this *Scintilla__Internal__IListBoxDelegate) GoGC() {
 }
 
 type Scintilla__Internal__ListOptions struct {
-	h *C.Scintilla__Internal__ListOptions
+	h          *C.Scintilla__Internal__ListOptions
+	isSubclass bool
 }
 
 func (this *Scintilla__Internal__ListOptions) cPointer() *C.Scintilla__Internal__ListOptions {
@@ -3682,6 +4039,7 @@ func (this *Scintilla__Internal__ListOptions) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__Internal__ListOptions constructs the type using only CGO pointers.
 func newScintilla__Internal__ListOptions(h *C.Scintilla__Internal__ListOptions) *Scintilla__Internal__ListOptions {
 	if h == nil {
 		return nil
@@ -3689,13 +4047,18 @@ func newScintilla__Internal__ListOptions(h *C.Scintilla__Internal__ListOptions) 
 	return &Scintilla__Internal__ListOptions{h: h}
 }
 
+// UnsafeNewScintilla__Internal__ListOptions constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__ListOptions(h unsafe.Pointer) *Scintilla__Internal__ListOptions {
-	return newScintilla__Internal__ListOptions((*C.Scintilla__Internal__ListOptions)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__Internal__ListOptions{h: (*C.Scintilla__Internal__ListOptions)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__ListOptions) Delete() {
-	C.Scintilla__Internal__ListOptions_Delete(this.h)
+	C.Scintilla__Internal__ListOptions_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3708,7 +4071,8 @@ func (this *Scintilla__Internal__ListOptions) GoGC() {
 }
 
 type Scintilla__Internal__ListBox struct {
-	h *C.Scintilla__Internal__ListBox
+	h          *C.Scintilla__Internal__ListBox
+	isSubclass bool
 	*Scintilla__Internal__Window
 }
 
@@ -3726,15 +4090,23 @@ func (this *Scintilla__Internal__ListBox) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newScintilla__Internal__ListBox(h *C.Scintilla__Internal__ListBox) *Scintilla__Internal__ListBox {
+// newScintilla__Internal__ListBox constructs the type using only CGO pointers.
+func newScintilla__Internal__ListBox(h *C.Scintilla__Internal__ListBox, h_Scintilla__Internal__Window *C.Scintilla__Internal__Window) *Scintilla__Internal__ListBox {
 	if h == nil {
 		return nil
 	}
-	return &Scintilla__Internal__ListBox{h: h, Scintilla__Internal__Window: UnsafeNewScintilla__Internal__Window(unsafe.Pointer(h))}
+	return &Scintilla__Internal__ListBox{h: h,
+		Scintilla__Internal__Window: newScintilla__Internal__Window(h_Scintilla__Internal__Window)}
 }
 
-func UnsafeNewScintilla__Internal__ListBox(h unsafe.Pointer) *Scintilla__Internal__ListBox {
-	return newScintilla__Internal__ListBox((*C.Scintilla__Internal__ListBox)(h))
+// UnsafeNewScintilla__Internal__ListBox constructs the type using only unsafe pointers.
+func UnsafeNewScintilla__Internal__ListBox(h unsafe.Pointer, h_Scintilla__Internal__Window unsafe.Pointer) *Scintilla__Internal__ListBox {
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__Internal__ListBox{h: (*C.Scintilla__Internal__ListBox)(h),
+		Scintilla__Internal__Window: UnsafeNewScintilla__Internal__Window(h_Scintilla__Internal__Window)}
 }
 
 func (this *Scintilla__Internal__ListBox) SetFont(font *Scintilla__Internal__Font) {
@@ -3772,10 +4144,10 @@ func (this *Scintilla__Internal__ListBox) Clear() {
 	C.Scintilla__Internal__ListBox_Clear(this.h)
 }
 
-func (this *Scintilla__Internal__ListBox) Append(s string) {
+func (this *Scintilla__Internal__ListBox) Append(s string, typeVal int) {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	C.Scintilla__Internal__ListBox_Append(this.h, s_Cstring)
+	C.Scintilla__Internal__ListBox_Append(this.h, s_Cstring, (C.int)(typeVal))
 }
 
 func (this *Scintilla__Internal__ListBox) Length() int {
@@ -3824,15 +4196,9 @@ func (this *Scintilla__Internal__ListBox) SetOptions(options_ Scintilla__Interna
 	C.Scintilla__Internal__ListBox_SetOptions(this.h, options_.cPointer())
 }
 
-func (this *Scintilla__Internal__ListBox) Append2(s string, typeVal int) {
-	s_Cstring := C.CString(s)
-	defer C.free(unsafe.Pointer(s_Cstring))
-	C.Scintilla__Internal__ListBox_Append2(this.h, s_Cstring, (C.int)(typeVal))
-}
-
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__ListBox) Delete() {
-	C.Scintilla__Internal__ListBox_Delete(this.h)
+	C.Scintilla__Internal__ListBox_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3845,7 +4211,8 @@ func (this *Scintilla__Internal__ListBox) GoGC() {
 }
 
 type Scintilla__Internal__Menu struct {
-	h *C.Scintilla__Internal__Menu
+	h          *C.Scintilla__Internal__Menu
+	isSubclass bool
 }
 
 func (this *Scintilla__Internal__Menu) cPointer() *C.Scintilla__Internal__Menu {
@@ -3862,6 +4229,7 @@ func (this *Scintilla__Internal__Menu) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newScintilla__Internal__Menu constructs the type using only CGO pointers.
 func newScintilla__Internal__Menu(h *C.Scintilla__Internal__Menu) *Scintilla__Internal__Menu {
 	if h == nil {
 		return nil
@@ -3869,14 +4237,23 @@ func newScintilla__Internal__Menu(h *C.Scintilla__Internal__Menu) *Scintilla__In
 	return &Scintilla__Internal__Menu{h: h}
 }
 
+// UnsafeNewScintilla__Internal__Menu constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__Menu(h unsafe.Pointer) *Scintilla__Internal__Menu {
-	return newScintilla__Internal__Menu((*C.Scintilla__Internal__Menu)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Scintilla__Internal__Menu{h: (*C.Scintilla__Internal__Menu)(h)}
 }
 
 // NewScintilla__Internal__Menu constructs a new Scintilla::Internal::Menu object.
 func NewScintilla__Internal__Menu() *Scintilla__Internal__Menu {
-	ret := C.Scintilla__Internal__Menu_new()
-	return newScintilla__Internal__Menu(ret)
+	var outptr_Scintilla__Internal__Menu *C.Scintilla__Internal__Menu = nil
+
+	C.Scintilla__Internal__Menu_new(&outptr_Scintilla__Internal__Menu)
+	ret := newScintilla__Internal__Menu(outptr_Scintilla__Internal__Menu)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *Scintilla__Internal__Menu) GetID() unsafe.Pointer {
@@ -3897,7 +4274,7 @@ func (this *Scintilla__Internal__Menu) Show(pt Scintilla__Internal__Point, w *Sc
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__Menu) Delete() {
-	C.Scintilla__Internal__Menu_Delete(this.h)
+	C.Scintilla__Internal__Menu_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3910,7 +4287,8 @@ func (this *Scintilla__Internal__Menu) GoGC() {
 }
 
 type Sci_CharacterRange struct {
-	h *C.Sci_CharacterRange
+	h          *C.Sci_CharacterRange
+	isSubclass bool
 }
 
 func (this *Sci_CharacterRange) cPointer() *C.Sci_CharacterRange {
@@ -3927,6 +4305,7 @@ func (this *Sci_CharacterRange) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newSci_CharacterRange constructs the type using only CGO pointers.
 func newSci_CharacterRange(h *C.Sci_CharacterRange) *Sci_CharacterRange {
 	if h == nil {
 		return nil
@@ -3934,13 +4313,18 @@ func newSci_CharacterRange(h *C.Sci_CharacterRange) *Sci_CharacterRange {
 	return &Sci_CharacterRange{h: h}
 }
 
+// UnsafeNewSci_CharacterRange constructs the type using only unsafe pointers.
 func UnsafeNewSci_CharacterRange(h unsafe.Pointer) *Sci_CharacterRange {
-	return newSci_CharacterRange((*C.Sci_CharacterRange)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Sci_CharacterRange{h: (*C.Sci_CharacterRange)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *Sci_CharacterRange) Delete() {
-	C.Sci_CharacterRange_Delete(this.h)
+	C.Sci_CharacterRange_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3953,7 +4337,8 @@ func (this *Sci_CharacterRange) GoGC() {
 }
 
 type Sci_CharacterRangeFull struct {
-	h *C.Sci_CharacterRangeFull
+	h          *C.Sci_CharacterRangeFull
+	isSubclass bool
 }
 
 func (this *Sci_CharacterRangeFull) cPointer() *C.Sci_CharacterRangeFull {
@@ -3970,6 +4355,7 @@ func (this *Sci_CharacterRangeFull) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newSci_CharacterRangeFull constructs the type using only CGO pointers.
 func newSci_CharacterRangeFull(h *C.Sci_CharacterRangeFull) *Sci_CharacterRangeFull {
 	if h == nil {
 		return nil
@@ -3977,13 +4363,18 @@ func newSci_CharacterRangeFull(h *C.Sci_CharacterRangeFull) *Sci_CharacterRangeF
 	return &Sci_CharacterRangeFull{h: h}
 }
 
+// UnsafeNewSci_CharacterRangeFull constructs the type using only unsafe pointers.
 func UnsafeNewSci_CharacterRangeFull(h unsafe.Pointer) *Sci_CharacterRangeFull {
-	return newSci_CharacterRangeFull((*C.Sci_CharacterRangeFull)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Sci_CharacterRangeFull{h: (*C.Sci_CharacterRangeFull)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *Sci_CharacterRangeFull) Delete() {
-	C.Sci_CharacterRangeFull_Delete(this.h)
+	C.Sci_CharacterRangeFull_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3996,7 +4387,8 @@ func (this *Sci_CharacterRangeFull) GoGC() {
 }
 
 type Sci_TextRange struct {
-	h *C.Sci_TextRange
+	h          *C.Sci_TextRange
+	isSubclass bool
 }
 
 func (this *Sci_TextRange) cPointer() *C.Sci_TextRange {
@@ -4013,6 +4405,7 @@ func (this *Sci_TextRange) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newSci_TextRange constructs the type using only CGO pointers.
 func newSci_TextRange(h *C.Sci_TextRange) *Sci_TextRange {
 	if h == nil {
 		return nil
@@ -4020,13 +4413,18 @@ func newSci_TextRange(h *C.Sci_TextRange) *Sci_TextRange {
 	return &Sci_TextRange{h: h}
 }
 
+// UnsafeNewSci_TextRange constructs the type using only unsafe pointers.
 func UnsafeNewSci_TextRange(h unsafe.Pointer) *Sci_TextRange {
-	return newSci_TextRange((*C.Sci_TextRange)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Sci_TextRange{h: (*C.Sci_TextRange)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *Sci_TextRange) Delete() {
-	C.Sci_TextRange_Delete(this.h)
+	C.Sci_TextRange_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -4039,7 +4437,8 @@ func (this *Sci_TextRange) GoGC() {
 }
 
 type Sci_TextRangeFull struct {
-	h *C.Sci_TextRangeFull
+	h          *C.Sci_TextRangeFull
+	isSubclass bool
 }
 
 func (this *Sci_TextRangeFull) cPointer() *C.Sci_TextRangeFull {
@@ -4056,6 +4455,7 @@ func (this *Sci_TextRangeFull) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newSci_TextRangeFull constructs the type using only CGO pointers.
 func newSci_TextRangeFull(h *C.Sci_TextRangeFull) *Sci_TextRangeFull {
 	if h == nil {
 		return nil
@@ -4063,13 +4463,18 @@ func newSci_TextRangeFull(h *C.Sci_TextRangeFull) *Sci_TextRangeFull {
 	return &Sci_TextRangeFull{h: h}
 }
 
+// UnsafeNewSci_TextRangeFull constructs the type using only unsafe pointers.
 func UnsafeNewSci_TextRangeFull(h unsafe.Pointer) *Sci_TextRangeFull {
-	return newSci_TextRangeFull((*C.Sci_TextRangeFull)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Sci_TextRangeFull{h: (*C.Sci_TextRangeFull)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *Sci_TextRangeFull) Delete() {
-	C.Sci_TextRangeFull_Delete(this.h)
+	C.Sci_TextRangeFull_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -4082,7 +4487,8 @@ func (this *Sci_TextRangeFull) GoGC() {
 }
 
 type Sci_TextToFind struct {
-	h *C.Sci_TextToFind
+	h          *C.Sci_TextToFind
+	isSubclass bool
 }
 
 func (this *Sci_TextToFind) cPointer() *C.Sci_TextToFind {
@@ -4099,6 +4505,7 @@ func (this *Sci_TextToFind) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newSci_TextToFind constructs the type using only CGO pointers.
 func newSci_TextToFind(h *C.Sci_TextToFind) *Sci_TextToFind {
 	if h == nil {
 		return nil
@@ -4106,13 +4513,18 @@ func newSci_TextToFind(h *C.Sci_TextToFind) *Sci_TextToFind {
 	return &Sci_TextToFind{h: h}
 }
 
+// UnsafeNewSci_TextToFind constructs the type using only unsafe pointers.
 func UnsafeNewSci_TextToFind(h unsafe.Pointer) *Sci_TextToFind {
-	return newSci_TextToFind((*C.Sci_TextToFind)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Sci_TextToFind{h: (*C.Sci_TextToFind)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *Sci_TextToFind) Delete() {
-	C.Sci_TextToFind_Delete(this.h)
+	C.Sci_TextToFind_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -4125,7 +4537,8 @@ func (this *Sci_TextToFind) GoGC() {
 }
 
 type Sci_TextToFindFull struct {
-	h *C.Sci_TextToFindFull
+	h          *C.Sci_TextToFindFull
+	isSubclass bool
 }
 
 func (this *Sci_TextToFindFull) cPointer() *C.Sci_TextToFindFull {
@@ -4142,6 +4555,7 @@ func (this *Sci_TextToFindFull) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newSci_TextToFindFull constructs the type using only CGO pointers.
 func newSci_TextToFindFull(h *C.Sci_TextToFindFull) *Sci_TextToFindFull {
 	if h == nil {
 		return nil
@@ -4149,13 +4563,18 @@ func newSci_TextToFindFull(h *C.Sci_TextToFindFull) *Sci_TextToFindFull {
 	return &Sci_TextToFindFull{h: h}
 }
 
+// UnsafeNewSci_TextToFindFull constructs the type using only unsafe pointers.
 func UnsafeNewSci_TextToFindFull(h unsafe.Pointer) *Sci_TextToFindFull {
-	return newSci_TextToFindFull((*C.Sci_TextToFindFull)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Sci_TextToFindFull{h: (*C.Sci_TextToFindFull)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *Sci_TextToFindFull) Delete() {
-	C.Sci_TextToFindFull_Delete(this.h)
+	C.Sci_TextToFindFull_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -4168,7 +4587,8 @@ func (this *Sci_TextToFindFull) GoGC() {
 }
 
 type Sci_Rectangle struct {
-	h *C.Sci_Rectangle
+	h          *C.Sci_Rectangle
+	isSubclass bool
 }
 
 func (this *Sci_Rectangle) cPointer() *C.Sci_Rectangle {
@@ -4185,6 +4605,7 @@ func (this *Sci_Rectangle) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newSci_Rectangle constructs the type using only CGO pointers.
 func newSci_Rectangle(h *C.Sci_Rectangle) *Sci_Rectangle {
 	if h == nil {
 		return nil
@@ -4192,13 +4613,18 @@ func newSci_Rectangle(h *C.Sci_Rectangle) *Sci_Rectangle {
 	return &Sci_Rectangle{h: h}
 }
 
+// UnsafeNewSci_Rectangle constructs the type using only unsafe pointers.
 func UnsafeNewSci_Rectangle(h unsafe.Pointer) *Sci_Rectangle {
-	return newSci_Rectangle((*C.Sci_Rectangle)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Sci_Rectangle{h: (*C.Sci_Rectangle)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *Sci_Rectangle) Delete() {
-	C.Sci_Rectangle_Delete(this.h)
+	C.Sci_Rectangle_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -4211,7 +4637,8 @@ func (this *Sci_Rectangle) GoGC() {
 }
 
 type Sci_RangeToFormat struct {
-	h *C.Sci_RangeToFormat
+	h          *C.Sci_RangeToFormat
+	isSubclass bool
 }
 
 func (this *Sci_RangeToFormat) cPointer() *C.Sci_RangeToFormat {
@@ -4228,6 +4655,7 @@ func (this *Sci_RangeToFormat) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newSci_RangeToFormat constructs the type using only CGO pointers.
 func newSci_RangeToFormat(h *C.Sci_RangeToFormat) *Sci_RangeToFormat {
 	if h == nil {
 		return nil
@@ -4235,13 +4663,18 @@ func newSci_RangeToFormat(h *C.Sci_RangeToFormat) *Sci_RangeToFormat {
 	return &Sci_RangeToFormat{h: h}
 }
 
+// UnsafeNewSci_RangeToFormat constructs the type using only unsafe pointers.
 func UnsafeNewSci_RangeToFormat(h unsafe.Pointer) *Sci_RangeToFormat {
-	return newSci_RangeToFormat((*C.Sci_RangeToFormat)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Sci_RangeToFormat{h: (*C.Sci_RangeToFormat)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *Sci_RangeToFormat) Delete() {
-	C.Sci_RangeToFormat_Delete(this.h)
+	C.Sci_RangeToFormat_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -4254,7 +4687,8 @@ func (this *Sci_RangeToFormat) GoGC() {
 }
 
 type Sci_RangeToFormatFull struct {
-	h *C.Sci_RangeToFormatFull
+	h          *C.Sci_RangeToFormatFull
+	isSubclass bool
 }
 
 func (this *Sci_RangeToFormatFull) cPointer() *C.Sci_RangeToFormatFull {
@@ -4271,6 +4705,7 @@ func (this *Sci_RangeToFormatFull) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newSci_RangeToFormatFull constructs the type using only CGO pointers.
 func newSci_RangeToFormatFull(h *C.Sci_RangeToFormatFull) *Sci_RangeToFormatFull {
 	if h == nil {
 		return nil
@@ -4278,13 +4713,18 @@ func newSci_RangeToFormatFull(h *C.Sci_RangeToFormatFull) *Sci_RangeToFormatFull
 	return &Sci_RangeToFormatFull{h: h}
 }
 
+// UnsafeNewSci_RangeToFormatFull constructs the type using only unsafe pointers.
 func UnsafeNewSci_RangeToFormatFull(h unsafe.Pointer) *Sci_RangeToFormatFull {
-	return newSci_RangeToFormatFull((*C.Sci_RangeToFormatFull)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Sci_RangeToFormatFull{h: (*C.Sci_RangeToFormatFull)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *Sci_RangeToFormatFull) Delete() {
-	C.Sci_RangeToFormatFull_Delete(this.h)
+	C.Sci_RangeToFormatFull_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -4297,7 +4737,8 @@ func (this *Sci_RangeToFormatFull) GoGC() {
 }
 
 type Sci_NotifyHeader struct {
-	h *C.Sci_NotifyHeader
+	h          *C.Sci_NotifyHeader
+	isSubclass bool
 }
 
 func (this *Sci_NotifyHeader) cPointer() *C.Sci_NotifyHeader {
@@ -4314,6 +4755,7 @@ func (this *Sci_NotifyHeader) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newSci_NotifyHeader constructs the type using only CGO pointers.
 func newSci_NotifyHeader(h *C.Sci_NotifyHeader) *Sci_NotifyHeader {
 	if h == nil {
 		return nil
@@ -4321,13 +4763,18 @@ func newSci_NotifyHeader(h *C.Sci_NotifyHeader) *Sci_NotifyHeader {
 	return &Sci_NotifyHeader{h: h}
 }
 
+// UnsafeNewSci_NotifyHeader constructs the type using only unsafe pointers.
 func UnsafeNewSci_NotifyHeader(h unsafe.Pointer) *Sci_NotifyHeader {
-	return newSci_NotifyHeader((*C.Sci_NotifyHeader)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &Sci_NotifyHeader{h: (*C.Sci_NotifyHeader)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *Sci_NotifyHeader) Delete() {
-	C.Sci_NotifyHeader_Delete(this.h)
+	C.Sci_NotifyHeader_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -4340,7 +4787,8 @@ func (this *Sci_NotifyHeader) GoGC() {
 }
 
 type SCNotification struct {
-	h *C.SCNotification
+	h          *C.SCNotification
+	isSubclass bool
 }
 
 func (this *SCNotification) cPointer() *C.SCNotification {
@@ -4357,6 +4805,7 @@ func (this *SCNotification) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newSCNotification constructs the type using only CGO pointers.
 func newSCNotification(h *C.SCNotification) *SCNotification {
 	if h == nil {
 		return nil
@@ -4364,13 +4813,18 @@ func newSCNotification(h *C.SCNotification) *SCNotification {
 	return &SCNotification{h: h}
 }
 
+// UnsafeNewSCNotification constructs the type using only unsafe pointers.
 func UnsafeNewSCNotification(h unsafe.Pointer) *SCNotification {
-	return newSCNotification((*C.SCNotification)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &SCNotification{h: (*C.SCNotification)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *SCNotification) Delete() {
-	C.SCNotification_Delete(this.h)
+	C.SCNotification_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -4383,7 +4837,8 @@ func (this *SCNotification) GoGC() {
 }
 
 type ScintillaEditBase struct {
-	h *C.ScintillaEditBase
+	h          *C.ScintillaEditBase
+	isSubclass bool
 	*qt.QAbstractScrollArea
 }
 
@@ -4401,27 +4856,53 @@ func (this *ScintillaEditBase) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newScintillaEditBase(h *C.ScintillaEditBase) *ScintillaEditBase {
+// newScintillaEditBase constructs the type using only CGO pointers.
+func newScintillaEditBase(h *C.ScintillaEditBase, h_QAbstractScrollArea *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *ScintillaEditBase {
 	if h == nil {
 		return nil
 	}
-	return &ScintillaEditBase{h: h, QAbstractScrollArea: qt.UnsafeNewQAbstractScrollArea(unsafe.Pointer(h))}
+	return &ScintillaEditBase{h: h,
+		QAbstractScrollArea: qt.UnsafeNewQAbstractScrollArea(unsafe.Pointer(h_QAbstractScrollArea), unsafe.Pointer(h_QFrame), unsafe.Pointer(h_QWidget), unsafe.Pointer(h_QObject), unsafe.Pointer(h_QPaintDevice))}
 }
 
-func UnsafeNewScintillaEditBase(h unsafe.Pointer) *ScintillaEditBase {
-	return newScintillaEditBase((*C.ScintillaEditBase)(h))
+// UnsafeNewScintillaEditBase constructs the type using only unsafe pointers.
+func UnsafeNewScintillaEditBase(h unsafe.Pointer, h_QAbstractScrollArea unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *ScintillaEditBase {
+	if h == nil {
+		return nil
+	}
+
+	return &ScintillaEditBase{h: (*C.ScintillaEditBase)(h),
+		QAbstractScrollArea: qt.UnsafeNewQAbstractScrollArea(h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
 // NewScintillaEditBase constructs a new ScintillaEditBase object.
 func NewScintillaEditBase(parent *qt.QWidget) *ScintillaEditBase {
-	ret := C.ScintillaEditBase_new((*C.QWidget)(parent.UnsafePointer()))
-	return newScintillaEditBase(ret)
+	var outptr_ScintillaEditBase *C.ScintillaEditBase = nil
+	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.ScintillaEditBase_new((*C.QWidget)(parent.UnsafePointer()), &outptr_ScintillaEditBase, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newScintillaEditBase(outptr_ScintillaEditBase, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintillaEditBase2 constructs a new ScintillaEditBase object.
 func NewScintillaEditBase2() *ScintillaEditBase {
-	ret := C.ScintillaEditBase_new2()
-	return newScintillaEditBase(ret)
+	var outptr_ScintillaEditBase *C.ScintillaEditBase = nil
+	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.ScintillaEditBase_new2(&outptr_ScintillaEditBase, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newScintillaEditBase(outptr_ScintillaEditBase, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *ScintillaEditBase) MetaObject() *qt.QMetaObject {
@@ -4452,12 +4933,14 @@ func ScintillaEditBase_TrUtf8(s string) string {
 	return _ret
 }
 
-func (this *ScintillaEditBase) Send(iMessage uint) uintptr {
-	return (uintptr)(C.ScintillaEditBase_Send(this.h, (C.uint)(iMessage)))
+func (this *ScintillaEditBase) Send(iMessage uint, wParam uintptr, lParam uintptr) uintptr {
+	return (uintptr)(C.ScintillaEditBase_Send(this.h, (C.uint)(iMessage), (C.uintptr_t)(wParam), (C.intptr_t)(lParam)))
 }
 
-func (this *ScintillaEditBase) Sends(iMessage uint) uintptr {
-	return (uintptr)(C.ScintillaEditBase_Sends(this.h, (C.uint)(iMessage)))
+func (this *ScintillaEditBase) Sends(iMessage uint, wParam uintptr, s string) uintptr {
+	s_Cstring := C.CString(s)
+	defer C.free(unsafe.Pointer(s_Cstring))
+	return (uintptr)(C.ScintillaEditBase_Sends(this.h, (C.uint)(iMessage), (C.uintptr_t)(wParam), s_Cstring))
 }
 
 func (this *ScintillaEditBase) ScrollHorizontal(value int) {
@@ -4612,7 +5095,7 @@ func miqt_exec_callback_ScintillaEditBase_AboutToCopy(cb C.intptr_t, data *C.QMi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMimeData(unsafe.Pointer(data))
+	slotval1 := qt.UnsafeNewQMimeData(unsafe.Pointer(data), nil)
 
 	gofunc(slotval1)
 }
@@ -5196,7 +5679,7 @@ func miqt_exec_callback_ScintillaEditBase_ButtonPressed(cb C.intptr_t, event *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event))
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
 
 	gofunc(slotval1)
 }
@@ -5216,7 +5699,7 @@ func miqt_exec_callback_ScintillaEditBase_ButtonReleased(cb C.intptr_t, event *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event))
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
 
 	gofunc(slotval1)
 }
@@ -5236,7 +5719,7 @@ func miqt_exec_callback_ScintillaEditBase_KeyPressed(cb C.intptr_t, event *C.QKe
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(event))
+	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
 
 	gofunc(slotval1)
 }
@@ -5302,27 +5785,665 @@ func ScintillaEditBase_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *ScintillaEditBase) Send2(iMessage uint, wParam uintptr) uintptr {
-	return (uintptr)(C.ScintillaEditBase_Send2(this.h, (C.uint)(iMessage), (C.uintptr_t)(wParam)))
+func (this *ScintillaEditBase) callVirtualBase_Send(iMessage uint, wParam uintptr, lParam uintptr) uintptr {
+
+	return (uintptr)(C.ScintillaEditBase_virtualbase_Send(unsafe.Pointer(this.h), (C.uint)(iMessage), (C.uintptr_t)(wParam), (C.intptr_t)(lParam)))
+
+}
+func (this *ScintillaEditBase) OnSend(slot func(super func(iMessage uint, wParam uintptr, lParam uintptr) uintptr, iMessage uint, wParam uintptr, lParam uintptr) uintptr) {
+	C.ScintillaEditBase_override_virtual_Send(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
-func (this *ScintillaEditBase) Send3(iMessage uint, wParam uintptr, lParam uintptr) uintptr {
-	return (uintptr)(C.ScintillaEditBase_Send3(this.h, (C.uint)(iMessage), (C.uintptr_t)(wParam), (C.intptr_t)(lParam)))
+//export miqt_exec_callback_ScintillaEditBase_Send
+func miqt_exec_callback_ScintillaEditBase_Send(self *C.ScintillaEditBase, cb C.intptr_t, iMessage C.uint, wParam C.uintptr_t, lParam C.intptr_t) C.intptr_t {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(iMessage uint, wParam uintptr, lParam uintptr) uintptr, iMessage uint, wParam uintptr, lParam uintptr) uintptr)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (uint)(iMessage)
+
+	slotval2 := (uintptr)(wParam)
+
+	slotval3 := (uintptr)(lParam)
+
+	virtualReturn := gofunc((&ScintillaEditBase{h: self}).callVirtualBase_Send, slotval1, slotval2, slotval3)
+
+	return (C.intptr_t)(virtualReturn)
+
 }
 
-func (this *ScintillaEditBase) Sends2(iMessage uint, wParam uintptr) uintptr {
-	return (uintptr)(C.ScintillaEditBase_Sends2(this.h, (C.uint)(iMessage), (C.uintptr_t)(wParam)))
-}
-
-func (this *ScintillaEditBase) Sends3(iMessage uint, wParam uintptr, s string) uintptr {
+func (this *ScintillaEditBase) callVirtualBase_Sends(iMessage uint, wParam uintptr, s string) uintptr {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	return (uintptr)(C.ScintillaEditBase_Sends3(this.h, (C.uint)(iMessage), (C.uintptr_t)(wParam), s_Cstring))
+
+	return (uintptr)(C.ScintillaEditBase_virtualbase_Sends(unsafe.Pointer(this.h), (C.uint)(iMessage), (C.uintptr_t)(wParam), s_Cstring))
+
+}
+func (this *ScintillaEditBase) OnSends(slot func(super func(iMessage uint, wParam uintptr, s string) uintptr, iMessage uint, wParam uintptr, s string) uintptr) {
+	C.ScintillaEditBase_override_virtual_Sends(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEditBase_Sends
+func miqt_exec_callback_ScintillaEditBase_Sends(self *C.ScintillaEditBase, cb C.intptr_t, iMessage C.uint, wParam C.uintptr_t, s *C.const_char) C.intptr_t {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(iMessage uint, wParam uintptr, s string) uintptr, iMessage uint, wParam uintptr, s string) uintptr)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (uint)(iMessage)
+
+	slotval2 := (uintptr)(wParam)
+
+	s_ret := s
+	slotval3 := C.GoString(s_ret)
+
+	virtualReturn := gofunc((&ScintillaEditBase{h: self}).callVirtualBase_Sends, slotval1, slotval2, slotval3)
+
+	return (C.intptr_t)(virtualReturn)
+
+}
+
+func (this *ScintillaEditBase) callVirtualBase_Event(event *qt.QEvent) bool {
+
+	return (bool)(C.ScintillaEditBase_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *ScintillaEditBase) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	C.ScintillaEditBase_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEditBase_Event
+func miqt_exec_callback_ScintillaEditBase_Event(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&ScintillaEditBase{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *ScintillaEditBase) callVirtualBase_PaintEvent(event *qt.QPaintEvent) {
+
+	C.ScintillaEditBase_virtualbase_PaintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEditBase) OnPaintEvent(slot func(super func(event *qt.QPaintEvent), event *qt.QPaintEvent)) {
+	C.ScintillaEditBase_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEditBase_PaintEvent
+func miqt_exec_callback_ScintillaEditBase_PaintEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QPaintEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QPaintEvent), event *qt.QPaintEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQPaintEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_PaintEvent, slotval1)
+
+}
+
+func (this *ScintillaEditBase) callVirtualBase_WheelEvent(event *qt.QWheelEvent) {
+
+	C.ScintillaEditBase_virtualbase_WheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEditBase) OnWheelEvent(slot func(super func(event *qt.QWheelEvent), event *qt.QWheelEvent)) {
+	C.ScintillaEditBase_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEditBase_WheelEvent
+func miqt_exec_callback_ScintillaEditBase_WheelEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QWheelEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QWheelEvent), event *qt.QWheelEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil)
+
+	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_WheelEvent, slotval1)
+
+}
+
+func (this *ScintillaEditBase) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
+
+	C.ScintillaEditBase_virtualbase_FocusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEditBase) OnFocusInEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
+	C.ScintillaEditBase_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEditBase_FocusInEvent
+func miqt_exec_callback_ScintillaEditBase_FocusInEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QFocusEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_FocusInEvent, slotval1)
+
+}
+
+func (this *ScintillaEditBase) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
+
+	C.ScintillaEditBase_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEditBase) OnFocusOutEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
+	C.ScintillaEditBase_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEditBase_FocusOutEvent
+func miqt_exec_callback_ScintillaEditBase_FocusOutEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QFocusEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_FocusOutEvent, slotval1)
+
+}
+
+func (this *ScintillaEditBase) callVirtualBase_ResizeEvent(event *qt.QResizeEvent) {
+
+	C.ScintillaEditBase_virtualbase_ResizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEditBase) OnResizeEvent(slot func(super func(event *qt.QResizeEvent), event *qt.QResizeEvent)) {
+	C.ScintillaEditBase_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEditBase_ResizeEvent
+func miqt_exec_callback_ScintillaEditBase_ResizeEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QResizeEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QResizeEvent), event *qt.QResizeEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_ResizeEvent, slotval1)
+
+}
+
+func (this *ScintillaEditBase) callVirtualBase_KeyPressEvent(event *qt.QKeyEvent) {
+
+	C.ScintillaEditBase_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEditBase) OnKeyPressEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
+	C.ScintillaEditBase_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEditBase_KeyPressEvent
+func miqt_exec_callback_ScintillaEditBase_KeyPressEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QKeyEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+
+	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_KeyPressEvent, slotval1)
+
+}
+
+func (this *ScintillaEditBase) callVirtualBase_MousePressEvent(event *qt.QMouseEvent) {
+
+	C.ScintillaEditBase_virtualbase_MousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEditBase) OnMousePressEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	C.ScintillaEditBase_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEditBase_MousePressEvent
+func miqt_exec_callback_ScintillaEditBase_MousePressEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+
+	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_MousePressEvent, slotval1)
+
+}
+
+func (this *ScintillaEditBase) callVirtualBase_MouseReleaseEvent(event *qt.QMouseEvent) {
+
+	C.ScintillaEditBase_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEditBase) OnMouseReleaseEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	C.ScintillaEditBase_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEditBase_MouseReleaseEvent
+func miqt_exec_callback_ScintillaEditBase_MouseReleaseEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+
+	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
+
+}
+
+func (this *ScintillaEditBase) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
+
+	C.ScintillaEditBase_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEditBase) OnMouseDoubleClickEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	C.ScintillaEditBase_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEditBase_MouseDoubleClickEvent
+func miqt_exec_callback_ScintillaEditBase_MouseDoubleClickEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+
+	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
+
+}
+
+func (this *ScintillaEditBase) callVirtualBase_MouseMoveEvent(event *qt.QMouseEvent) {
+
+	C.ScintillaEditBase_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEditBase) OnMouseMoveEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	C.ScintillaEditBase_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEditBase_MouseMoveEvent
+func miqt_exec_callback_ScintillaEditBase_MouseMoveEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+
+	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
+
+}
+
+func (this *ScintillaEditBase) callVirtualBase_ContextMenuEvent(event *qt.QContextMenuEvent) {
+
+	C.ScintillaEditBase_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEditBase) OnContextMenuEvent(slot func(super func(event *qt.QContextMenuEvent), event *qt.QContextMenuEvent)) {
+	C.ScintillaEditBase_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEditBase_ContextMenuEvent
+func miqt_exec_callback_ScintillaEditBase_ContextMenuEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QContextMenuEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QContextMenuEvent), event *qt.QContextMenuEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQContextMenuEvent(unsafe.Pointer(event), nil, nil)
+
+	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
+
+}
+
+func (this *ScintillaEditBase) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
+
+	C.ScintillaEditBase_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEditBase) OnDragEnterEvent(slot func(super func(event *qt.QDragEnterEvent), event *qt.QDragEnterEvent)) {
+	C.ScintillaEditBase_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEditBase_DragEnterEvent
+func miqt_exec_callback_ScintillaEditBase_DragEnterEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QDragEnterEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QDragEnterEvent), event *qt.QDragEnterEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQDragEnterEvent(unsafe.Pointer(event), nil, nil, nil)
+
+	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_DragEnterEvent, slotval1)
+
+}
+
+func (this *ScintillaEditBase) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
+
+	C.ScintillaEditBase_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEditBase) OnDragLeaveEvent(slot func(super func(event *qt.QDragLeaveEvent), event *qt.QDragLeaveEvent)) {
+	C.ScintillaEditBase_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEditBase_DragLeaveEvent
+func miqt_exec_callback_ScintillaEditBase_DragLeaveEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QDragLeaveEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QDragLeaveEvent), event *qt.QDragLeaveEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQDragLeaveEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
+
+}
+
+func (this *ScintillaEditBase) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
+
+	C.ScintillaEditBase_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEditBase) OnDragMoveEvent(slot func(super func(event *qt.QDragMoveEvent), event *qt.QDragMoveEvent)) {
+	C.ScintillaEditBase_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEditBase_DragMoveEvent
+func miqt_exec_callback_ScintillaEditBase_DragMoveEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QDragMoveEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QDragMoveEvent), event *qt.QDragMoveEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+
+	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_DragMoveEvent, slotval1)
+
+}
+
+func (this *ScintillaEditBase) callVirtualBase_DropEvent(event *qt.QDropEvent) {
+
+	C.ScintillaEditBase_virtualbase_DropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEditBase) OnDropEvent(slot func(super func(event *qt.QDropEvent), event *qt.QDropEvent)) {
+	C.ScintillaEditBase_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEditBase_DropEvent
+func miqt_exec_callback_ScintillaEditBase_DropEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QDropEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QDropEvent), event *qt.QDropEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_DropEvent, slotval1)
+
+}
+
+func (this *ScintillaEditBase) callVirtualBase_InputMethodEvent(event *qt.QInputMethodEvent) {
+
+	C.ScintillaEditBase_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEditBase) OnInputMethodEvent(slot func(super func(event *qt.QInputMethodEvent), event *qt.QInputMethodEvent)) {
+	C.ScintillaEditBase_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEditBase_InputMethodEvent
+func miqt_exec_callback_ScintillaEditBase_InputMethodEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QInputMethodEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QInputMethodEvent), event *qt.QInputMethodEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQInputMethodEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_InputMethodEvent, slotval1)
+
+}
+
+func (this *ScintillaEditBase) callVirtualBase_InputMethodQuery(query qt.InputMethodQuery) *qt.QVariant {
+
+	_ret := C.ScintillaEditBase_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *ScintillaEditBase) OnInputMethodQuery(slot func(super func(query qt.InputMethodQuery) *qt.QVariant, query qt.InputMethodQuery) *qt.QVariant) {
+	C.ScintillaEditBase_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEditBase_InputMethodQuery
+func miqt_exec_callback_ScintillaEditBase_InputMethodQuery(self *C.ScintillaEditBase, cb C.intptr_t, query C.int) *C.QVariant {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(query qt.InputMethodQuery) *qt.QVariant, query qt.InputMethodQuery) *qt.QVariant)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (qt.InputMethodQuery)(query)
+
+	virtualReturn := gofunc((&ScintillaEditBase{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+
+	return (*C.QVariant)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *ScintillaEditBase) callVirtualBase_ScrollContentsBy(param1 int, param2 int) {
+
+	C.ScintillaEditBase_virtualbase_ScrollContentsBy(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2))
+
+}
+func (this *ScintillaEditBase) OnScrollContentsBy(slot func(super func(param1 int, param2 int), param1 int, param2 int)) {
+	C.ScintillaEditBase_override_virtual_ScrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEditBase_ScrollContentsBy
+func miqt_exec_callback_ScintillaEditBase_ScrollContentsBy(self *C.ScintillaEditBase, cb C.intptr_t, param1 C.int, param2 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int, param2 int), param1 int, param2 int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(param1)
+
+	slotval2 := (int)(param2)
+
+	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_ScrollContentsBy, slotval1, slotval2)
+
+}
+
+func (this *ScintillaEditBase) callVirtualBase_MinimumSizeHint() *qt.QSize {
+
+	_ret := C.ScintillaEditBase_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *ScintillaEditBase) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+	C.ScintillaEditBase_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEditBase_MinimumSizeHint
+func miqt_exec_callback_ScintillaEditBase_MinimumSizeHint(self *C.ScintillaEditBase, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&ScintillaEditBase{h: self}).callVirtualBase_MinimumSizeHint)
+
+	return (*C.QSize)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *ScintillaEditBase) callVirtualBase_SizeHint() *qt.QSize {
+
+	_ret := C.ScintillaEditBase_virtualbase_SizeHint(unsafe.Pointer(this.h))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *ScintillaEditBase) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+	C.ScintillaEditBase_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEditBase_SizeHint
+func miqt_exec_callback_ScintillaEditBase_SizeHint(self *C.ScintillaEditBase, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&ScintillaEditBase{h: self}).callVirtualBase_SizeHint)
+
+	return (*C.QSize)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *ScintillaEditBase) callVirtualBase_SetupViewport(viewport *qt.QWidget) {
+
+	C.ScintillaEditBase_virtualbase_SetupViewport(unsafe.Pointer(this.h), (*C.QWidget)(viewport.UnsafePointer()))
+
+}
+func (this *ScintillaEditBase) OnSetupViewport(slot func(super func(viewport *qt.QWidget), viewport *qt.QWidget)) {
+	C.ScintillaEditBase_override_virtual_SetupViewport(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEditBase_SetupViewport
+func miqt_exec_callback_ScintillaEditBase_SetupViewport(self *C.ScintillaEditBase, cb C.intptr_t, viewport *C.QWidget) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(viewport *qt.QWidget), viewport *qt.QWidget))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQWidget(unsafe.Pointer(viewport), nil, nil)
+
+	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_SetupViewport, slotval1)
+
+}
+
+func (this *ScintillaEditBase) callVirtualBase_EventFilter(param1 *qt.QObject, param2 *qt.QEvent) bool {
+
+	return (bool)(C.ScintillaEditBase_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
+
+}
+func (this *ScintillaEditBase) OnEventFilter(slot func(super func(param1 *qt.QObject, param2 *qt.QEvent) bool, param1 *qt.QObject, param2 *qt.QEvent) bool) {
+	C.ScintillaEditBase_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEditBase_EventFilter
+func miqt_exec_callback_ScintillaEditBase_EventFilter(self *C.ScintillaEditBase, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QObject, param2 *qt.QEvent) bool, param1 *qt.QObject, param2 *qt.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(param1))
+	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(param2))
+
+	virtualReturn := gofunc((&ScintillaEditBase{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *ScintillaEditBase) callVirtualBase_ViewportEvent(param1 *qt.QEvent) bool {
+
+	return (bool)(C.ScintillaEditBase_virtualbase_ViewportEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer())))
+
+}
+func (this *ScintillaEditBase) OnViewportEvent(slot func(super func(param1 *qt.QEvent) bool, param1 *qt.QEvent) bool) {
+	C.ScintillaEditBase_override_virtual_ViewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEditBase_ViewportEvent
+func miqt_exec_callback_ScintillaEditBase_ViewportEvent(self *C.ScintillaEditBase, cb C.intptr_t, param1 *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QEvent) bool, param1 *qt.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQEvent(unsafe.Pointer(param1))
+
+	virtualReturn := gofunc((&ScintillaEditBase{h: self}).callVirtualBase_ViewportEvent, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *ScintillaEditBase) callVirtualBase_ViewportSizeHint() *qt.QSize {
+
+	_ret := C.ScintillaEditBase_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *ScintillaEditBase) OnViewportSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+	C.ScintillaEditBase_override_virtual_ViewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEditBase_ViewportSizeHint
+func miqt_exec_callback_ScintillaEditBase_ViewportSizeHint(self *C.ScintillaEditBase, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&ScintillaEditBase{h: self}).callVirtualBase_ViewportSizeHint)
+
+	return (*C.QSize)(virtualReturn.UnsafePointer())
+
 }
 
 // Delete this object from C++ memory.
 func (this *ScintillaEditBase) Delete() {
-	C.ScintillaEditBase_Delete(this.h)
+	C.ScintillaEditBase_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5335,7 +6456,8 @@ func (this *ScintillaEditBase) GoGC() {
 }
 
 type ScintillaDocument struct {
-	h *C.ScintillaDocument
+	h          *C.ScintillaDocument
+	isSubclass bool
 	*qt.QObject
 }
 
@@ -5353,33 +6475,56 @@ func (this *ScintillaDocument) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newScintillaDocument(h *C.ScintillaDocument) *ScintillaDocument {
+// newScintillaDocument constructs the type using only CGO pointers.
+func newScintillaDocument(h *C.ScintillaDocument, h_QObject *C.QObject) *ScintillaDocument {
 	if h == nil {
 		return nil
 	}
-	return &ScintillaDocument{h: h, QObject: qt.UnsafeNewQObject(unsafe.Pointer(h))}
+	return &ScintillaDocument{h: h,
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
 }
 
-func UnsafeNewScintillaDocument(h unsafe.Pointer) *ScintillaDocument {
-	return newScintillaDocument((*C.ScintillaDocument)(h))
+// UnsafeNewScintillaDocument constructs the type using only unsafe pointers.
+func UnsafeNewScintillaDocument(h unsafe.Pointer, h_QObject unsafe.Pointer) *ScintillaDocument {
+	if h == nil {
+		return nil
+	}
+
+	return &ScintillaDocument{h: (*C.ScintillaDocument)(h),
+		QObject: qt.UnsafeNewQObject(h_QObject)}
 }
 
 // NewScintillaDocument constructs a new ScintillaDocument object.
 func NewScintillaDocument() *ScintillaDocument {
-	ret := C.ScintillaDocument_new()
-	return newScintillaDocument(ret)
+	var outptr_ScintillaDocument *C.ScintillaDocument = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.ScintillaDocument_new(&outptr_ScintillaDocument, &outptr_QObject)
+	ret := newScintillaDocument(outptr_ScintillaDocument, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintillaDocument2 constructs a new ScintillaDocument object.
 func NewScintillaDocument2(parent *qt.QObject) *ScintillaDocument {
-	ret := C.ScintillaDocument_new2((*C.QObject)(parent.UnsafePointer()))
-	return newScintillaDocument(ret)
+	var outptr_ScintillaDocument *C.ScintillaDocument = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.ScintillaDocument_new2((*C.QObject)(parent.UnsafePointer()), &outptr_ScintillaDocument, &outptr_QObject)
+	ret := newScintillaDocument(outptr_ScintillaDocument, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintillaDocument3 constructs a new ScintillaDocument object.
 func NewScintillaDocument3(parent *qt.QObject, pdoc_ unsafe.Pointer) *ScintillaDocument {
-	ret := C.ScintillaDocument_new3((*C.QObject)(parent.UnsafePointer()), pdoc_)
-	return newScintillaDocument(ret)
+	var outptr_ScintillaDocument *C.ScintillaDocument = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.ScintillaDocument_new3((*C.QObject)(parent.UnsafePointer()), pdoc_, &outptr_ScintillaDocument, &outptr_QObject)
+	ret := newScintillaDocument(outptr_ScintillaDocument, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *ScintillaDocument) MetaObject() *qt.QMetaObject {
@@ -5740,9 +6885,175 @@ func (this *ScintillaDocument) BeginUndoAction1(coalesceWithPrior bool) {
 	C.ScintillaDocument_BeginUndoAction1(this.h, (C.bool)(coalesceWithPrior))
 }
 
+func (this *ScintillaDocument) callVirtualBase_Event(event *qt.QEvent) bool {
+
+	return (bool)(C.ScintillaDocument_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *ScintillaDocument) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	C.ScintillaDocument_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaDocument_Event
+func miqt_exec_callback_ScintillaDocument_Event(self *C.ScintillaDocument, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&ScintillaDocument{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *ScintillaDocument) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+
+	return (bool)(C.ScintillaDocument_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *ScintillaDocument) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	C.ScintillaDocument_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaDocument_EventFilter
+func miqt_exec_callback_ScintillaDocument_EventFilter(self *C.ScintillaDocument, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&ScintillaDocument{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *ScintillaDocument) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+
+	C.ScintillaDocument_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaDocument) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	C.ScintillaDocument_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaDocument_TimerEvent
+func miqt_exec_callback_ScintillaDocument_TimerEvent(self *C.ScintillaDocument, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&ScintillaDocument{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *ScintillaDocument) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+
+	C.ScintillaDocument_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaDocument) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	C.ScintillaDocument_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaDocument_ChildEvent
+func miqt_exec_callback_ScintillaDocument_ChildEvent(self *C.ScintillaDocument, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&ScintillaDocument{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *ScintillaDocument) callVirtualBase_CustomEvent(event *qt.QEvent) {
+
+	C.ScintillaDocument_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaDocument) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	C.ScintillaDocument_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaDocument_CustomEvent
+func miqt_exec_callback_ScintillaDocument_CustomEvent(self *C.ScintillaDocument, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&ScintillaDocument{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *ScintillaDocument) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+
+	C.ScintillaDocument_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *ScintillaDocument) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	C.ScintillaDocument_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaDocument_ConnectNotify
+func miqt_exec_callback_ScintillaDocument_ConnectNotify(self *C.ScintillaDocument, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&ScintillaDocument{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *ScintillaDocument) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+
+	C.ScintillaDocument_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *ScintillaDocument) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	C.ScintillaDocument_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaDocument_DisconnectNotify
+func miqt_exec_callback_ScintillaDocument_DisconnectNotify(self *C.ScintillaDocument, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&ScintillaDocument{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *ScintillaDocument) Delete() {
-	C.ScintillaDocument_Delete(this.h)
+	C.ScintillaDocument_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5755,7 +7066,8 @@ func (this *ScintillaDocument) GoGC() {
 }
 
 type ScintillaEdit struct {
-	h *C.ScintillaEdit
+	h          *C.ScintillaEdit
+	isSubclass bool
 	*ScintillaEditBase
 }
 
@@ -5773,27 +7085,55 @@ func (this *ScintillaEdit) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newScintillaEdit(h *C.ScintillaEdit) *ScintillaEdit {
+// newScintillaEdit constructs the type using only CGO pointers.
+func newScintillaEdit(h *C.ScintillaEdit, h_ScintillaEditBase *C.ScintillaEditBase, h_QAbstractScrollArea *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *ScintillaEdit {
 	if h == nil {
 		return nil
 	}
-	return &ScintillaEdit{h: h, ScintillaEditBase: UnsafeNewScintillaEditBase(unsafe.Pointer(h))}
+	return &ScintillaEdit{h: h,
+		ScintillaEditBase: newScintillaEditBase(h_ScintillaEditBase, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
-func UnsafeNewScintillaEdit(h unsafe.Pointer) *ScintillaEdit {
-	return newScintillaEdit((*C.ScintillaEdit)(h))
+// UnsafeNewScintillaEdit constructs the type using only unsafe pointers.
+func UnsafeNewScintillaEdit(h unsafe.Pointer, h_ScintillaEditBase unsafe.Pointer, h_QAbstractScrollArea unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *ScintillaEdit {
+	if h == nil {
+		return nil
+	}
+
+	return &ScintillaEdit{h: (*C.ScintillaEdit)(h),
+		ScintillaEditBase: UnsafeNewScintillaEditBase(h_ScintillaEditBase, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
 // NewScintillaEdit constructs a new ScintillaEdit object.
 func NewScintillaEdit(parent *qt.QWidget) *ScintillaEdit {
-	ret := C.ScintillaEdit_new((*C.QWidget)(parent.UnsafePointer()))
-	return newScintillaEdit(ret)
+	var outptr_ScintillaEdit *C.ScintillaEdit = nil
+	var outptr_ScintillaEditBase *C.ScintillaEditBase = nil
+	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.ScintillaEdit_new((*C.QWidget)(parent.UnsafePointer()), &outptr_ScintillaEdit, &outptr_ScintillaEditBase, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newScintillaEdit(outptr_ScintillaEdit, outptr_ScintillaEditBase, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewScintillaEdit2 constructs a new ScintillaEdit object.
 func NewScintillaEdit2() *ScintillaEdit {
-	ret := C.ScintillaEdit_new2()
-	return newScintillaEdit(ret)
+	var outptr_ScintillaEdit *C.ScintillaEdit = nil
+	var outptr_ScintillaEditBase *C.ScintillaEditBase = nil
+	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.ScintillaEdit_new2(&outptr_ScintillaEdit, &outptr_ScintillaEditBase, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newScintillaEdit(outptr_ScintillaEdit, outptr_ScintillaEditBase, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *ScintillaEdit) MetaObject() *qt.QMetaObject {
@@ -5858,7 +7198,7 @@ func (this *ScintillaEdit) GetTextRange(start int, end int) []byte {
 }
 
 func (this *ScintillaEdit) GetDoc() *ScintillaDocument {
-	return UnsafeNewScintillaDocument(unsafe.Pointer(C.ScintillaEdit_GetDoc(this.h)))
+	return UnsafeNewScintillaDocument(unsafe.Pointer(C.ScintillaEdit_GetDoc(this.h)), nil)
 }
 
 func (this *ScintillaEdit) SetDoc(pdoc_ *ScintillaDocument) {
@@ -9365,9 +10705,516 @@ func ScintillaEdit_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *ScintillaEdit) callVirtualBase_Send(iMessage uint, wParam uintptr, lParam uintptr) uintptr {
+
+	return (uintptr)(C.ScintillaEdit_virtualbase_Send(unsafe.Pointer(this.h), (C.uint)(iMessage), (C.uintptr_t)(wParam), (C.intptr_t)(lParam)))
+
+}
+func (this *ScintillaEdit) OnSend(slot func(super func(iMessage uint, wParam uintptr, lParam uintptr) uintptr, iMessage uint, wParam uintptr, lParam uintptr) uintptr) {
+	C.ScintillaEdit_override_virtual_Send(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEdit_Send
+func miqt_exec_callback_ScintillaEdit_Send(self *C.ScintillaEdit, cb C.intptr_t, iMessage C.uint, wParam C.uintptr_t, lParam C.intptr_t) C.intptr_t {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(iMessage uint, wParam uintptr, lParam uintptr) uintptr, iMessage uint, wParam uintptr, lParam uintptr) uintptr)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (uint)(iMessage)
+
+	slotval2 := (uintptr)(wParam)
+
+	slotval3 := (uintptr)(lParam)
+
+	virtualReturn := gofunc((&ScintillaEdit{h: self}).callVirtualBase_Send, slotval1, slotval2, slotval3)
+
+	return (C.intptr_t)(virtualReturn)
+
+}
+
+func (this *ScintillaEdit) callVirtualBase_Sends(iMessage uint, wParam uintptr, s string) uintptr {
+	s_Cstring := C.CString(s)
+	defer C.free(unsafe.Pointer(s_Cstring))
+
+	return (uintptr)(C.ScintillaEdit_virtualbase_Sends(unsafe.Pointer(this.h), (C.uint)(iMessage), (C.uintptr_t)(wParam), s_Cstring))
+
+}
+func (this *ScintillaEdit) OnSends(slot func(super func(iMessage uint, wParam uintptr, s string) uintptr, iMessage uint, wParam uintptr, s string) uintptr) {
+	C.ScintillaEdit_override_virtual_Sends(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEdit_Sends
+func miqt_exec_callback_ScintillaEdit_Sends(self *C.ScintillaEdit, cb C.intptr_t, iMessage C.uint, wParam C.uintptr_t, s *C.const_char) C.intptr_t {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(iMessage uint, wParam uintptr, s string) uintptr, iMessage uint, wParam uintptr, s string) uintptr)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (uint)(iMessage)
+
+	slotval2 := (uintptr)(wParam)
+
+	s_ret := s
+	slotval3 := C.GoString(s_ret)
+
+	virtualReturn := gofunc((&ScintillaEdit{h: self}).callVirtualBase_Sends, slotval1, slotval2, slotval3)
+
+	return (C.intptr_t)(virtualReturn)
+
+}
+
+func (this *ScintillaEdit) callVirtualBase_Event(event *qt.QEvent) bool {
+
+	return (bool)(C.ScintillaEdit_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *ScintillaEdit) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	C.ScintillaEdit_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEdit_Event
+func miqt_exec_callback_ScintillaEdit_Event(self *C.ScintillaEdit, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&ScintillaEdit{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *ScintillaEdit) callVirtualBase_PaintEvent(event *qt.QPaintEvent) {
+
+	C.ScintillaEdit_virtualbase_PaintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEdit) OnPaintEvent(slot func(super func(event *qt.QPaintEvent), event *qt.QPaintEvent)) {
+	C.ScintillaEdit_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEdit_PaintEvent
+func miqt_exec_callback_ScintillaEdit_PaintEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QPaintEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QPaintEvent), event *qt.QPaintEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQPaintEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&ScintillaEdit{h: self}).callVirtualBase_PaintEvent, slotval1)
+
+}
+
+func (this *ScintillaEdit) callVirtualBase_WheelEvent(event *qt.QWheelEvent) {
+
+	C.ScintillaEdit_virtualbase_WheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEdit) OnWheelEvent(slot func(super func(event *qt.QWheelEvent), event *qt.QWheelEvent)) {
+	C.ScintillaEdit_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEdit_WheelEvent
+func miqt_exec_callback_ScintillaEdit_WheelEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QWheelEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QWheelEvent), event *qt.QWheelEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil)
+
+	gofunc((&ScintillaEdit{h: self}).callVirtualBase_WheelEvent, slotval1)
+
+}
+
+func (this *ScintillaEdit) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
+
+	C.ScintillaEdit_virtualbase_FocusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEdit) OnFocusInEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
+	C.ScintillaEdit_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEdit_FocusInEvent
+func miqt_exec_callback_ScintillaEdit_FocusInEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QFocusEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&ScintillaEdit{h: self}).callVirtualBase_FocusInEvent, slotval1)
+
+}
+
+func (this *ScintillaEdit) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
+
+	C.ScintillaEdit_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEdit) OnFocusOutEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
+	C.ScintillaEdit_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEdit_FocusOutEvent
+func miqt_exec_callback_ScintillaEdit_FocusOutEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QFocusEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&ScintillaEdit{h: self}).callVirtualBase_FocusOutEvent, slotval1)
+
+}
+
+func (this *ScintillaEdit) callVirtualBase_ResizeEvent(event *qt.QResizeEvent) {
+
+	C.ScintillaEdit_virtualbase_ResizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEdit) OnResizeEvent(slot func(super func(event *qt.QResizeEvent), event *qt.QResizeEvent)) {
+	C.ScintillaEdit_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEdit_ResizeEvent
+func miqt_exec_callback_ScintillaEdit_ResizeEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QResizeEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QResizeEvent), event *qt.QResizeEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&ScintillaEdit{h: self}).callVirtualBase_ResizeEvent, slotval1)
+
+}
+
+func (this *ScintillaEdit) callVirtualBase_KeyPressEvent(event *qt.QKeyEvent) {
+
+	C.ScintillaEdit_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEdit) OnKeyPressEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
+	C.ScintillaEdit_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEdit_KeyPressEvent
+func miqt_exec_callback_ScintillaEdit_KeyPressEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QKeyEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+
+	gofunc((&ScintillaEdit{h: self}).callVirtualBase_KeyPressEvent, slotval1)
+
+}
+
+func (this *ScintillaEdit) callVirtualBase_MousePressEvent(event *qt.QMouseEvent) {
+
+	C.ScintillaEdit_virtualbase_MousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEdit) OnMousePressEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	C.ScintillaEdit_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEdit_MousePressEvent
+func miqt_exec_callback_ScintillaEdit_MousePressEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+
+	gofunc((&ScintillaEdit{h: self}).callVirtualBase_MousePressEvent, slotval1)
+
+}
+
+func (this *ScintillaEdit) callVirtualBase_MouseReleaseEvent(event *qt.QMouseEvent) {
+
+	C.ScintillaEdit_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEdit) OnMouseReleaseEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	C.ScintillaEdit_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEdit_MouseReleaseEvent
+func miqt_exec_callback_ScintillaEdit_MouseReleaseEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+
+	gofunc((&ScintillaEdit{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
+
+}
+
+func (this *ScintillaEdit) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
+
+	C.ScintillaEdit_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEdit) OnMouseDoubleClickEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	C.ScintillaEdit_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEdit_MouseDoubleClickEvent
+func miqt_exec_callback_ScintillaEdit_MouseDoubleClickEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+
+	gofunc((&ScintillaEdit{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
+
+}
+
+func (this *ScintillaEdit) callVirtualBase_MouseMoveEvent(event *qt.QMouseEvent) {
+
+	C.ScintillaEdit_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEdit) OnMouseMoveEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	C.ScintillaEdit_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEdit_MouseMoveEvent
+func miqt_exec_callback_ScintillaEdit_MouseMoveEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+
+	gofunc((&ScintillaEdit{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
+
+}
+
+func (this *ScintillaEdit) callVirtualBase_ContextMenuEvent(event *qt.QContextMenuEvent) {
+
+	C.ScintillaEdit_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEdit) OnContextMenuEvent(slot func(super func(event *qt.QContextMenuEvent), event *qt.QContextMenuEvent)) {
+	C.ScintillaEdit_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEdit_ContextMenuEvent
+func miqt_exec_callback_ScintillaEdit_ContextMenuEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QContextMenuEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QContextMenuEvent), event *qt.QContextMenuEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQContextMenuEvent(unsafe.Pointer(event), nil, nil)
+
+	gofunc((&ScintillaEdit{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
+
+}
+
+func (this *ScintillaEdit) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
+
+	C.ScintillaEdit_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEdit) OnDragEnterEvent(slot func(super func(event *qt.QDragEnterEvent), event *qt.QDragEnterEvent)) {
+	C.ScintillaEdit_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEdit_DragEnterEvent
+func miqt_exec_callback_ScintillaEdit_DragEnterEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QDragEnterEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QDragEnterEvent), event *qt.QDragEnterEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQDragEnterEvent(unsafe.Pointer(event), nil, nil, nil)
+
+	gofunc((&ScintillaEdit{h: self}).callVirtualBase_DragEnterEvent, slotval1)
+
+}
+
+func (this *ScintillaEdit) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
+
+	C.ScintillaEdit_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEdit) OnDragLeaveEvent(slot func(super func(event *qt.QDragLeaveEvent), event *qt.QDragLeaveEvent)) {
+	C.ScintillaEdit_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEdit_DragLeaveEvent
+func miqt_exec_callback_ScintillaEdit_DragLeaveEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QDragLeaveEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QDragLeaveEvent), event *qt.QDragLeaveEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQDragLeaveEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&ScintillaEdit{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
+
+}
+
+func (this *ScintillaEdit) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
+
+	C.ScintillaEdit_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEdit) OnDragMoveEvent(slot func(super func(event *qt.QDragMoveEvent), event *qt.QDragMoveEvent)) {
+	C.ScintillaEdit_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEdit_DragMoveEvent
+func miqt_exec_callback_ScintillaEdit_DragMoveEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QDragMoveEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QDragMoveEvent), event *qt.QDragMoveEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+
+	gofunc((&ScintillaEdit{h: self}).callVirtualBase_DragMoveEvent, slotval1)
+
+}
+
+func (this *ScintillaEdit) callVirtualBase_DropEvent(event *qt.QDropEvent) {
+
+	C.ScintillaEdit_virtualbase_DropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEdit) OnDropEvent(slot func(super func(event *qt.QDropEvent), event *qt.QDropEvent)) {
+	C.ScintillaEdit_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEdit_DropEvent
+func miqt_exec_callback_ScintillaEdit_DropEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QDropEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QDropEvent), event *qt.QDropEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&ScintillaEdit{h: self}).callVirtualBase_DropEvent, slotval1)
+
+}
+
+func (this *ScintillaEdit) callVirtualBase_InputMethodEvent(event *qt.QInputMethodEvent) {
+
+	C.ScintillaEdit_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(event.UnsafePointer()))
+
+}
+func (this *ScintillaEdit) OnInputMethodEvent(slot func(super func(event *qt.QInputMethodEvent), event *qt.QInputMethodEvent)) {
+	C.ScintillaEdit_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEdit_InputMethodEvent
+func miqt_exec_callback_ScintillaEdit_InputMethodEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QInputMethodEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QInputMethodEvent), event *qt.QInputMethodEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQInputMethodEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&ScintillaEdit{h: self}).callVirtualBase_InputMethodEvent, slotval1)
+
+}
+
+func (this *ScintillaEdit) callVirtualBase_InputMethodQuery(query qt.InputMethodQuery) *qt.QVariant {
+
+	_ret := C.ScintillaEdit_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *ScintillaEdit) OnInputMethodQuery(slot func(super func(query qt.InputMethodQuery) *qt.QVariant, query qt.InputMethodQuery) *qt.QVariant) {
+	C.ScintillaEdit_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEdit_InputMethodQuery
+func miqt_exec_callback_ScintillaEdit_InputMethodQuery(self *C.ScintillaEdit, cb C.intptr_t, query C.int) *C.QVariant {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(query qt.InputMethodQuery) *qt.QVariant, query qt.InputMethodQuery) *qt.QVariant)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (qt.InputMethodQuery)(query)
+
+	virtualReturn := gofunc((&ScintillaEdit{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+
+	return (*C.QVariant)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *ScintillaEdit) callVirtualBase_ScrollContentsBy(param1 int, param2 int) {
+
+	C.ScintillaEdit_virtualbase_ScrollContentsBy(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2))
+
+}
+func (this *ScintillaEdit) OnScrollContentsBy(slot func(super func(param1 int, param2 int), param1 int, param2 int)) {
+	C.ScintillaEdit_override_virtual_ScrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_ScintillaEdit_ScrollContentsBy
+func miqt_exec_callback_ScintillaEdit_ScrollContentsBy(self *C.ScintillaEdit, cb C.intptr_t, param1 C.int, param2 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int, param2 int), param1 int, param2 int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(param1)
+
+	slotval2 := (int)(param2)
+
+	gofunc((&ScintillaEdit{h: self}).callVirtualBase_ScrollContentsBy, slotval1, slotval2)
+
+}
+
 // Delete this object from C++ memory.
 func (this *ScintillaEdit) Delete() {
-	C.ScintillaEdit_Delete(this.h)
+	C.ScintillaEdit_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

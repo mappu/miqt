@@ -22,9 +22,9 @@ typedef struct QMargins QMargins;
 typedef struct QMarginsF QMarginsF;
 #endif
 
-QMargins* QMargins_new();
-QMargins* QMargins_new2(int left, int top, int right, int bottom);
-QMargins* QMargins_new3(QMargins* param1);
+void QMargins_new(QMargins** outptr_QMargins);
+void QMargins_new2(int left, int top, int right, int bottom, QMargins** outptr_QMargins);
+void QMargins_new3(QMargins* param1, QMargins** outptr_QMargins);
 bool QMargins_IsNull(const QMargins* self);
 int QMargins_Left(const QMargins* self);
 int QMargins_Top(const QMargins* self);
@@ -42,12 +42,12 @@ QMargins* QMargins_OperatorMultiplyAssign(QMargins* self, int param1);
 QMargins* QMargins_OperatorDivideAssign(QMargins* self, int param1);
 QMargins* QMargins_OperatorMultiplyAssignWithQreal(QMargins* self, double param1);
 QMargins* QMargins_OperatorDivideAssignWithQreal(QMargins* self, double param1);
-void QMargins_Delete(QMargins* self);
+void QMargins_Delete(QMargins* self, bool isSubclass);
 
-QMarginsF* QMarginsF_new();
-QMarginsF* QMarginsF_new2(double left, double top, double right, double bottom);
-QMarginsF* QMarginsF_new3(QMargins* margins);
-QMarginsF* QMarginsF_new4(QMarginsF* param1);
+void QMarginsF_new(QMarginsF** outptr_QMarginsF);
+void QMarginsF_new2(double left, double top, double right, double bottom, QMarginsF** outptr_QMarginsF);
+void QMarginsF_new3(QMargins* margins, QMarginsF** outptr_QMarginsF);
+void QMarginsF_new4(QMarginsF* param1, QMarginsF** outptr_QMarginsF);
 bool QMarginsF_IsNull(const QMarginsF* self);
 double QMarginsF_Left(const QMarginsF* self);
 double QMarginsF_Top(const QMarginsF* self);
@@ -64,7 +64,7 @@ QMarginsF* QMarginsF_OperatorMinusAssignWithSubtrahend(QMarginsF* self, double s
 QMarginsF* QMarginsF_OperatorMultiplyAssign(QMarginsF* self, double factor);
 QMarginsF* QMarginsF_OperatorDivideAssign(QMarginsF* self, double divisor);
 QMargins* QMarginsF_ToMargins(const QMarginsF* self);
-void QMarginsF_Delete(QMarginsF* self);
+void QMarginsF_Delete(QMarginsF* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

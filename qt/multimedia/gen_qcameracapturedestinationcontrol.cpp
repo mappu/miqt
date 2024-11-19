@@ -1,5 +1,7 @@
 #include <QCameraCaptureDestinationControl>
+#include <QMediaControl>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -106,7 +108,11 @@ struct miqt_string QCameraCaptureDestinationControl_TrUtf83(const char* s, const
 	return _ms;
 }
 
-void QCameraCaptureDestinationControl_Delete(QCameraCaptureDestinationControl* self) {
-	delete self;
+void QCameraCaptureDestinationControl_Delete(QCameraCaptureDestinationControl* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QCameraCaptureDestinationControl*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -14,7 +14,8 @@ import (
 )
 
 type QBasicTimer struct {
-	h *C.QBasicTimer
+	h          *C.QBasicTimer
+	isSubclass bool
 }
 
 func (this *QBasicTimer) cPointer() *C.QBasicTimer {
@@ -31,6 +32,7 @@ func (this *QBasicTimer) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQBasicTimer constructs the type using only CGO pointers.
 func newQBasicTimer(h *C.QBasicTimer) *QBasicTimer {
 	if h == nil {
 		return nil
@@ -38,20 +40,33 @@ func newQBasicTimer(h *C.QBasicTimer) *QBasicTimer {
 	return &QBasicTimer{h: h}
 }
 
+// UnsafeNewQBasicTimer constructs the type using only unsafe pointers.
 func UnsafeNewQBasicTimer(h unsafe.Pointer) *QBasicTimer {
-	return newQBasicTimer((*C.QBasicTimer)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QBasicTimer{h: (*C.QBasicTimer)(h)}
 }
 
 // NewQBasicTimer constructs a new QBasicTimer object.
 func NewQBasicTimer(param1 *QBasicTimer) *QBasicTimer {
-	ret := C.QBasicTimer_new(param1.cPointer())
-	return newQBasicTimer(ret)
+	var outptr_QBasicTimer *C.QBasicTimer = nil
+
+	C.QBasicTimer_new(param1.cPointer(), &outptr_QBasicTimer)
+	ret := newQBasicTimer(outptr_QBasicTimer)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQBasicTimer2 constructs a new QBasicTimer object.
 func NewQBasicTimer2() *QBasicTimer {
-	ret := C.QBasicTimer_new2()
-	return newQBasicTimer(ret)
+	var outptr_QBasicTimer *C.QBasicTimer = nil
+
+	C.QBasicTimer_new2(&outptr_QBasicTimer)
+	ret := newQBasicTimer(outptr_QBasicTimer)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QBasicTimer) OperatorAssign(param1 *QBasicTimer) {
@@ -84,7 +99,7 @@ func (this *QBasicTimer) Stop() {
 
 // Delete this object from C++ memory.
 func (this *QBasicTimer) Delete() {
-	C.QBasicTimer_Delete(this.h)
+	C.QBasicTimer_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

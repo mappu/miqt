@@ -26,7 +26,8 @@ const (
 )
 
 type QAbstractVideoSurface struct {
-	h *C.QAbstractVideoSurface
+	h          *C.QAbstractVideoSurface
+	isSubclass bool
 	*qt.QObject
 }
 
@@ -44,15 +45,23 @@ func (this *QAbstractVideoSurface) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAbstractVideoSurface(h *C.QAbstractVideoSurface) *QAbstractVideoSurface {
+// newQAbstractVideoSurface constructs the type using only CGO pointers.
+func newQAbstractVideoSurface(h *C.QAbstractVideoSurface, h_QObject *C.QObject) *QAbstractVideoSurface {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractVideoSurface{h: h, QObject: qt.UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QAbstractVideoSurface{h: h,
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
 }
 
-func UnsafeNewQAbstractVideoSurface(h unsafe.Pointer) *QAbstractVideoSurface {
-	return newQAbstractVideoSurface((*C.QAbstractVideoSurface)(h))
+// UnsafeNewQAbstractVideoSurface constructs the type using only unsafe pointers.
+func UnsafeNewQAbstractVideoSurface(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractVideoSurface {
+	if h == nil {
+		return nil
+	}
+
+	return &QAbstractVideoSurface{h: (*C.QAbstractVideoSurface)(h),
+		QObject: qt.UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QAbstractVideoSurface) MetaObject() *qt.QMetaObject {
@@ -83,8 +92,8 @@ func QAbstractVideoSurface_TrUtf8(s string) string {
 	return _ret
 }
 
-func (this *QAbstractVideoSurface) SupportedPixelFormats() []QVideoFrame__PixelFormat {
-	var _ma C.struct_miqt_array = C.QAbstractVideoSurface_SupportedPixelFormats(this.h)
+func (this *QAbstractVideoSurface) SupportedPixelFormats(typeVal QAbstractVideoBuffer__HandleType) []QVideoFrame__PixelFormat {
+	var _ma C.struct_miqt_array = C.QAbstractVideoSurface_SupportedPixelFormats(this.h, (C.int)(typeVal))
 	_ret := make([]QVideoFrame__PixelFormat, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -259,19 +268,9 @@ func QAbstractVideoSurface_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QAbstractVideoSurface) SupportedPixelFormats1(typeVal QAbstractVideoBuffer__HandleType) []QVideoFrame__PixelFormat {
-	var _ma C.struct_miqt_array = C.QAbstractVideoSurface_SupportedPixelFormats1(this.h, (C.int)(typeVal))
-	_ret := make([]QVideoFrame__PixelFormat, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
-	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = (QVideoFrame__PixelFormat)(_outCast[i])
-	}
-	return _ret
-}
-
 // Delete this object from C++ memory.
 func (this *QAbstractVideoSurface) Delete() {
-	C.QAbstractVideoSurface_Delete(this.h)
+	C.QAbstractVideoSurface_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

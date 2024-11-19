@@ -16,9 +16,11 @@ extern "C" {
 
 #ifdef __cplusplus
 class QMetaObject;
+class QObject;
 class QSessionManager;
 #else
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 typedef struct QSessionManager QSessionManager;
 #endif
 

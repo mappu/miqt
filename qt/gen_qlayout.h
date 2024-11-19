@@ -15,18 +15,22 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QChildEvent;
 class QLayout;
 class QLayoutItem;
 class QMargins;
 class QMetaObject;
+class QObject;
 class QRect;
 class QSize;
 class QWidget;
 #else
+typedef struct QChildEvent QChildEvent;
 typedef struct QLayout QLayout;
 typedef struct QLayoutItem QLayoutItem;
 typedef struct QMargins QMargins;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 typedef struct QRect QRect;
 typedef struct QSize QSize;
 typedef struct QWidget QWidget;
@@ -80,12 +84,13 @@ QLayout* QLayout_Layout(QLayout* self);
 void QLayout_SetEnabled(QLayout* self, bool enabled);
 bool QLayout_IsEnabled(const QLayout* self);
 QSize* QLayout_ClosestAcceptableSize(QWidget* w, QSize* s);
+void QLayout_ChildEvent(QLayout* self, QChildEvent* e);
 struct miqt_string QLayout_Tr2(const char* s, const char* c);
 struct miqt_string QLayout_Tr3(const char* s, const char* c, int n);
 struct miqt_string QLayout_TrUtf82(const char* s, const char* c);
 struct miqt_string QLayout_TrUtf83(const char* s, const char* c, int n);
 QLayoutItem* QLayout_ReplaceWidget3(QLayout* self, QWidget* from, QWidget* to, int options);
-void QLayout_Delete(QLayout* self);
+void QLayout_Delete(QLayout* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

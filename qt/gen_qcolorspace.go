@@ -44,7 +44,8 @@ const (
 )
 
 type QColorSpace struct {
-	h *C.QColorSpace
+	h          *C.QColorSpace
+	isSubclass bool
 }
 
 func (this *QColorSpace) cPointer() *C.QColorSpace {
@@ -61,6 +62,7 @@ func (this *QColorSpace) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQColorSpace constructs the type using only CGO pointers.
 func newQColorSpace(h *C.QColorSpace) *QColorSpace {
 	if h == nil {
 		return nil
@@ -68,56 +70,93 @@ func newQColorSpace(h *C.QColorSpace) *QColorSpace {
 	return &QColorSpace{h: h}
 }
 
+// UnsafeNewQColorSpace constructs the type using only unsafe pointers.
 func UnsafeNewQColorSpace(h unsafe.Pointer) *QColorSpace {
-	return newQColorSpace((*C.QColorSpace)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QColorSpace{h: (*C.QColorSpace)(h)}
 }
 
 // NewQColorSpace constructs a new QColorSpace object.
 func NewQColorSpace() *QColorSpace {
-	ret := C.QColorSpace_new()
-	return newQColorSpace(ret)
+	var outptr_QColorSpace *C.QColorSpace = nil
+
+	C.QColorSpace_new(&outptr_QColorSpace)
+	ret := newQColorSpace(outptr_QColorSpace)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQColorSpace2 constructs a new QColorSpace object.
 func NewQColorSpace2(namedColorSpace QColorSpace__NamedColorSpace) *QColorSpace {
-	ret := C.QColorSpace_new2((C.int)(namedColorSpace))
-	return newQColorSpace(ret)
+	var outptr_QColorSpace *C.QColorSpace = nil
+
+	C.QColorSpace_new2((C.int)(namedColorSpace), &outptr_QColorSpace)
+	ret := newQColorSpace(outptr_QColorSpace)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQColorSpace3 constructs a new QColorSpace object.
 func NewQColorSpace3(primaries QColorSpace__Primaries, transferFunction QColorSpace__TransferFunction) *QColorSpace {
-	ret := C.QColorSpace_new3((C.int)(primaries), (C.int)(transferFunction))
-	return newQColorSpace(ret)
+	var outptr_QColorSpace *C.QColorSpace = nil
+
+	C.QColorSpace_new3((C.int)(primaries), (C.int)(transferFunction), &outptr_QColorSpace)
+	ret := newQColorSpace(outptr_QColorSpace)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQColorSpace4 constructs a new QColorSpace object.
 func NewQColorSpace4(primaries QColorSpace__Primaries, gamma float32) *QColorSpace {
-	ret := C.QColorSpace_new4((C.int)(primaries), (C.float)(gamma))
-	return newQColorSpace(ret)
+	var outptr_QColorSpace *C.QColorSpace = nil
+
+	C.QColorSpace_new4((C.int)(primaries), (C.float)(gamma), &outptr_QColorSpace)
+	ret := newQColorSpace(outptr_QColorSpace)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQColorSpace5 constructs a new QColorSpace object.
 func NewQColorSpace5(whitePoint *QPointF, redPoint *QPointF, greenPoint *QPointF, bluePoint *QPointF, transferFunction QColorSpace__TransferFunction) *QColorSpace {
-	ret := C.QColorSpace_new5(whitePoint.cPointer(), redPoint.cPointer(), greenPoint.cPointer(), bluePoint.cPointer(), (C.int)(transferFunction))
-	return newQColorSpace(ret)
+	var outptr_QColorSpace *C.QColorSpace = nil
+
+	C.QColorSpace_new5(whitePoint.cPointer(), redPoint.cPointer(), greenPoint.cPointer(), bluePoint.cPointer(), (C.int)(transferFunction), &outptr_QColorSpace)
+	ret := newQColorSpace(outptr_QColorSpace)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQColorSpace6 constructs a new QColorSpace object.
 func NewQColorSpace6(colorSpace *QColorSpace) *QColorSpace {
-	ret := C.QColorSpace_new6(colorSpace.cPointer())
-	return newQColorSpace(ret)
+	var outptr_QColorSpace *C.QColorSpace = nil
+
+	C.QColorSpace_new6(colorSpace.cPointer(), &outptr_QColorSpace)
+	ret := newQColorSpace(outptr_QColorSpace)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQColorSpace7 constructs a new QColorSpace object.
 func NewQColorSpace7(primaries QColorSpace__Primaries, transferFunction QColorSpace__TransferFunction, gamma float32) *QColorSpace {
-	ret := C.QColorSpace_new7((C.int)(primaries), (C.int)(transferFunction), (C.float)(gamma))
-	return newQColorSpace(ret)
+	var outptr_QColorSpace *C.QColorSpace = nil
+
+	C.QColorSpace_new7((C.int)(primaries), (C.int)(transferFunction), (C.float)(gamma), &outptr_QColorSpace)
+	ret := newQColorSpace(outptr_QColorSpace)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQColorSpace8 constructs a new QColorSpace object.
 func NewQColorSpace8(whitePoint *QPointF, redPoint *QPointF, greenPoint *QPointF, bluePoint *QPointF, transferFunction QColorSpace__TransferFunction, gamma float32) *QColorSpace {
-	ret := C.QColorSpace_new8(whitePoint.cPointer(), redPoint.cPointer(), greenPoint.cPointer(), bluePoint.cPointer(), (C.int)(transferFunction), (C.float)(gamma))
-	return newQColorSpace(ret)
+	var outptr_QColorSpace *C.QColorSpace = nil
+
+	C.QColorSpace_new8(whitePoint.cPointer(), redPoint.cPointer(), greenPoint.cPointer(), bluePoint.cPointer(), (C.int)(transferFunction), (C.float)(gamma), &outptr_QColorSpace)
+	ret := newQColorSpace(outptr_QColorSpace)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QColorSpace) OperatorAssign(colorSpace *QColorSpace) {
@@ -200,7 +239,7 @@ func (this *QColorSpace) WithTransferFunction2(transferFunction QColorSpace__Tra
 
 // Delete this object from C++ memory.
 func (this *QColorSpace) Delete() {
-	C.QColorSpace_Delete(this.h)
+	C.QColorSpace_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

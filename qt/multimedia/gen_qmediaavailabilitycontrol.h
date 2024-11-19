@@ -16,10 +16,14 @@ extern "C" {
 
 #ifdef __cplusplus
 class QMediaAvailabilityControl;
+class QMediaControl;
 class QMetaObject;
+class QObject;
 #else
 typedef struct QMediaAvailabilityControl QMediaAvailabilityControl;
+typedef struct QMediaControl QMediaControl;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 #endif
 
 QMetaObject* QMediaAvailabilityControl_MetaObject(const QMediaAvailabilityControl* self);
@@ -33,7 +37,7 @@ struct miqt_string QMediaAvailabilityControl_Tr2(const char* s, const char* c);
 struct miqt_string QMediaAvailabilityControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QMediaAvailabilityControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QMediaAvailabilityControl_TrUtf83(const char* s, const char* c, int n);
-void QMediaAvailabilityControl_Delete(QMediaAvailabilityControl* self);
+void QMediaAvailabilityControl_Delete(QMediaAvailabilityControl* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

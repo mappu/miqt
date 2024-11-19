@@ -16,7 +16,8 @@ import (
 )
 
 type QCameraCaptureDestinationControl struct {
-	h *C.QCameraCaptureDestinationControl
+	h          *C.QCameraCaptureDestinationControl
+	isSubclass bool
 	*QMediaControl
 }
 
@@ -34,15 +35,23 @@ func (this *QCameraCaptureDestinationControl) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQCameraCaptureDestinationControl(h *C.QCameraCaptureDestinationControl) *QCameraCaptureDestinationControl {
+// newQCameraCaptureDestinationControl constructs the type using only CGO pointers.
+func newQCameraCaptureDestinationControl(h *C.QCameraCaptureDestinationControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QCameraCaptureDestinationControl {
 	if h == nil {
 		return nil
 	}
-	return &QCameraCaptureDestinationControl{h: h, QMediaControl: UnsafeNewQMediaControl(unsafe.Pointer(h))}
+	return &QCameraCaptureDestinationControl{h: h,
+		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
 }
 
-func UnsafeNewQCameraCaptureDestinationControl(h unsafe.Pointer) *QCameraCaptureDestinationControl {
-	return newQCameraCaptureDestinationControl((*C.QCameraCaptureDestinationControl)(h))
+// UnsafeNewQCameraCaptureDestinationControl constructs the type using only unsafe pointers.
+func UnsafeNewQCameraCaptureDestinationControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QCameraCaptureDestinationControl {
+	if h == nil {
+		return nil
+	}
+
+	return &QCameraCaptureDestinationControl{h: (*C.QCameraCaptureDestinationControl)(h),
+		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
 }
 
 func (this *QCameraCaptureDestinationControl) MetaObject() *qt.QMetaObject {
@@ -151,7 +160,7 @@ func QCameraCaptureDestinationControl_TrUtf83(s string, c string, n int) string 
 
 // Delete this object from C++ memory.
 func (this *QCameraCaptureDestinationControl) Delete() {
-	C.QCameraCaptureDestinationControl_Delete(this.h)
+	C.QCameraCaptureDestinationControl_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

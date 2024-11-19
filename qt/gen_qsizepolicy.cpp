@@ -3,20 +3,24 @@
 #include "gen_qsizepolicy.h"
 #include "_cgo_export.h"
 
-QSizePolicy* QSizePolicy_new() {
-	return new QSizePolicy();
+void QSizePolicy_new(QSizePolicy** outptr_QSizePolicy) {
+	QSizePolicy* ret = new QSizePolicy();
+	*outptr_QSizePolicy = ret;
 }
 
-QSizePolicy* QSizePolicy_new2(int horizontal, int vertical) {
-	return new QSizePolicy(static_cast<QSizePolicy::Policy>(horizontal), static_cast<QSizePolicy::Policy>(vertical));
+void QSizePolicy_new2(int horizontal, int vertical, QSizePolicy** outptr_QSizePolicy) {
+	QSizePolicy* ret = new QSizePolicy(static_cast<QSizePolicy::Policy>(horizontal), static_cast<QSizePolicy::Policy>(vertical));
+	*outptr_QSizePolicy = ret;
 }
 
-QSizePolicy* QSizePolicy_new3(QSizePolicy* param1) {
-	return new QSizePolicy(*param1);
+void QSizePolicy_new3(QSizePolicy* param1, QSizePolicy** outptr_QSizePolicy) {
+	QSizePolicy* ret = new QSizePolicy(*param1);
+	*outptr_QSizePolicy = ret;
 }
 
-QSizePolicy* QSizePolicy_new4(int horizontal, int vertical, int typeVal) {
-	return new QSizePolicy(static_cast<QSizePolicy::Policy>(horizontal), static_cast<QSizePolicy::Policy>(vertical), static_cast<QSizePolicy::ControlType>(typeVal));
+void QSizePolicy_new4(int horizontal, int vertical, int typeVal, QSizePolicy** outptr_QSizePolicy) {
+	QSizePolicy* ret = new QSizePolicy(static_cast<QSizePolicy::Policy>(horizontal), static_cast<QSizePolicy::Policy>(vertical), static_cast<QSizePolicy::ControlType>(typeVal));
+	*outptr_QSizePolicy = ret;
 }
 
 int QSizePolicy_HorizontalPolicy(const QSizePolicy* self) {
@@ -107,7 +111,11 @@ QSizePolicy* QSizePolicy_Transposed(const QSizePolicy* self) {
 	return new QSizePolicy(self->transposed());
 }
 
-void QSizePolicy_Delete(QSizePolicy* self) {
-	delete self;
+void QSizePolicy_Delete(QSizePolicy* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QSizePolicy*>( self );
+	} else {
+		delete self;
+	}
 }
 

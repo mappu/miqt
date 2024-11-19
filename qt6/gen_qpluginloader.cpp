@@ -1,5 +1,8 @@
+#include <QChildEvent>
+#include <QEvent>
 #include <QJsonObject>
 #include <QList>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QPluginLoader>
@@ -7,26 +10,218 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QTimerEvent>
 #include <qpluginloader.h>
 #include "gen_qpluginloader.h"
 #include "_cgo_export.h"
 
-QPluginLoader* QPluginLoader_new() {
-	return new QPluginLoader();
+class MiqtVirtualQPluginLoader : public virtual QPluginLoader {
+public:
+
+	MiqtVirtualQPluginLoader(): QPluginLoader() {};
+	MiqtVirtualQPluginLoader(const QString& fileName): QPluginLoader(fileName) {};
+	MiqtVirtualQPluginLoader(QObject* parent): QPluginLoader(parent) {};
+	MiqtVirtualQPluginLoader(const QString& fileName, QObject* parent): QPluginLoader(fileName, parent) {};
+
+	virtual ~MiqtVirtualQPluginLoader() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QPluginLoader::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QPluginLoader_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QPluginLoader::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QPluginLoader::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QPluginLoader_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QPluginLoader::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QPluginLoader::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QPluginLoader_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QPluginLoader::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QPluginLoader::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QPluginLoader_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QPluginLoader::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QPluginLoader::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QPluginLoader_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QPluginLoader::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QPluginLoader::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QPluginLoader_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QPluginLoader::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QPluginLoader::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QPluginLoader_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QPluginLoader::disconnectNotify(*signal);
+
+	}
+
+};
+
+void QPluginLoader_new(QPluginLoader** outptr_QPluginLoader, QObject** outptr_QObject) {
+	MiqtVirtualQPluginLoader* ret = new MiqtVirtualQPluginLoader();
+	*outptr_QPluginLoader = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QPluginLoader* QPluginLoader_new2(struct miqt_string fileName) {
+void QPluginLoader_new2(struct miqt_string fileName, QPluginLoader** outptr_QPluginLoader, QObject** outptr_QObject) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new QPluginLoader(fileName_QString);
+	MiqtVirtualQPluginLoader* ret = new MiqtVirtualQPluginLoader(fileName_QString);
+	*outptr_QPluginLoader = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QPluginLoader* QPluginLoader_new3(QObject* parent) {
-	return new QPluginLoader(parent);
+void QPluginLoader_new3(QObject* parent, QPluginLoader** outptr_QPluginLoader, QObject** outptr_QObject) {
+	MiqtVirtualQPluginLoader* ret = new MiqtVirtualQPluginLoader(parent);
+	*outptr_QPluginLoader = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QPluginLoader* QPluginLoader_new4(struct miqt_string fileName, QObject* parent) {
+void QPluginLoader_new4(struct miqt_string fileName, QObject* parent, QPluginLoader** outptr_QPluginLoader, QObject** outptr_QObject) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new QPluginLoader(fileName_QString, parent);
+	MiqtVirtualQPluginLoader* ret = new MiqtVirtualQPluginLoader(fileName_QString, parent);
+	*outptr_QPluginLoader = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QPluginLoader_MetaObject(const QPluginLoader* self) {
@@ -152,7 +347,67 @@ struct miqt_string QPluginLoader_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QPluginLoader_Delete(QPluginLoader* self) {
-	delete self;
+void QPluginLoader_override_virtual_Event(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) )->handle__Event = slot;
+}
+
+bool QPluginLoader_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQPluginLoader*)(self) )->virtualbase_Event(event);
+}
+
+void QPluginLoader_override_virtual_EventFilter(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) )->handle__EventFilter = slot;
+}
+
+bool QPluginLoader_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQPluginLoader*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+void QPluginLoader_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) )->handle__TimerEvent = slot;
+}
+
+void QPluginLoader_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQPluginLoader*)(self) )->virtualbase_TimerEvent(event);
+}
+
+void QPluginLoader_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) )->handle__ChildEvent = slot;
+}
+
+void QPluginLoader_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQPluginLoader*)(self) )->virtualbase_ChildEvent(event);
+}
+
+void QPluginLoader_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) )->handle__CustomEvent = slot;
+}
+
+void QPluginLoader_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQPluginLoader*)(self) )->virtualbase_CustomEvent(event);
+}
+
+void QPluginLoader_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) )->handle__ConnectNotify = slot;
+}
+
+void QPluginLoader_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQPluginLoader*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+void QPluginLoader_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) )->handle__DisconnectNotify = slot;
+}
+
+void QPluginLoader_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQPluginLoader*)(self) )->virtualbase_DisconnectNotify(signal);
+}
+
+void QPluginLoader_Delete(QPluginLoader* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQPluginLoader*>( self );
+	} else {
+		delete self;
+	}
 }
 

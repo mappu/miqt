@@ -1,5 +1,7 @@
 #include <QMediaAvailabilityControl>
+#include <QMediaControl>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -98,7 +100,11 @@ struct miqt_string QMediaAvailabilityControl_TrUtf83(const char* s, const char* 
 	return _ms;
 }
 
-void QMediaAvailabilityControl_Delete(QMediaAvailabilityControl* self) {
-	delete self;
+void QMediaAvailabilityControl_Delete(QMediaAvailabilityControl* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMediaAvailabilityControl*>( self );
+	} else {
+		delete self;
+	}
 }
 

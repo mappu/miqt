@@ -3,6 +3,7 @@
 #include <QPageSize>
 #include <QPagedPaintDevice>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QPagedPaintDevice__Margins
+#include <QPaintDevice>
 #include <QSizeF>
 #include <qpagedpaintdevice.h>
 #include "gen_qpagedpaintdevice.h"
@@ -61,11 +62,19 @@ QPagedPaintDevice__Margins* QPagedPaintDevice_Margins(const QPagedPaintDevice* s
 	return new QPagedPaintDevice::Margins(self->margins());
 }
 
-void QPagedPaintDevice_Delete(QPagedPaintDevice* self) {
-	delete self;
+void QPagedPaintDevice_Delete(QPagedPaintDevice* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QPagedPaintDevice*>( self );
+	} else {
+		delete self;
+	}
 }
 
-void QPagedPaintDevice__Margins_Delete(QPagedPaintDevice__Margins* self) {
-	delete self;
+void QPagedPaintDevice__Margins_Delete(QPagedPaintDevice__Margins* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QPagedPaintDevice::Margins*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -51,22 +51,20 @@ struct miqt_string QIconEngine_Key(const QIconEngine* self);
 QIconEngine* QIconEngine_Clone(const QIconEngine* self);
 bool QIconEngine_Read(QIconEngine* self, QDataStream* in);
 bool QIconEngine_Write(const QIconEngine* self, QDataStream* out);
-struct miqt_array /* of QSize* */  QIconEngine_AvailableSizes(const QIconEngine* self);
+struct miqt_array /* of QSize* */  QIconEngine_AvailableSizes(const QIconEngine* self, int mode, int state);
 struct miqt_string QIconEngine_IconName(const QIconEngine* self);
 bool QIconEngine_IsNull(const QIconEngine* self);
 QPixmap* QIconEngine_ScaledPixmap(QIconEngine* self, QSize* size, int mode, int state, double scale);
 void QIconEngine_VirtualHook(QIconEngine* self, int id, void* data);
-struct miqt_array /* of QSize* */  QIconEngine_AvailableSizes1(const QIconEngine* self, int mode);
-struct miqt_array /* of QSize* */  QIconEngine_AvailableSizes2(const QIconEngine* self, int mode, int state);
-void QIconEngine_Delete(QIconEngine* self);
+void QIconEngine_Delete(QIconEngine* self, bool isSubclass);
 
-QIconEngine__AvailableSizesArgument* QIconEngine__AvailableSizesArgument_new(QIconEngine__AvailableSizesArgument* param1);
+void QIconEngine__AvailableSizesArgument_new(QIconEngine__AvailableSizesArgument* param1, QIconEngine__AvailableSizesArgument** outptr_QIconEngine__AvailableSizesArgument);
 void QIconEngine__AvailableSizesArgument_OperatorAssign(QIconEngine__AvailableSizesArgument* self, QIconEngine__AvailableSizesArgument* param1);
-void QIconEngine__AvailableSizesArgument_Delete(QIconEngine__AvailableSizesArgument* self);
+void QIconEngine__AvailableSizesArgument_Delete(QIconEngine__AvailableSizesArgument* self, bool isSubclass);
 
-QIconEngine__ScaledPixmapArgument* QIconEngine__ScaledPixmapArgument_new(QIconEngine__ScaledPixmapArgument* param1);
+void QIconEngine__ScaledPixmapArgument_new(QIconEngine__ScaledPixmapArgument* param1, QIconEngine__ScaledPixmapArgument** outptr_QIconEngine__ScaledPixmapArgument);
 void QIconEngine__ScaledPixmapArgument_OperatorAssign(QIconEngine__ScaledPixmapArgument* self, QIconEngine__ScaledPixmapArgument* param1);
-void QIconEngine__ScaledPixmapArgument_Delete(QIconEngine__ScaledPixmapArgument* self);
+void QIconEngine__ScaledPixmapArgument_Delete(QIconEngine__ScaledPixmapArgument* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

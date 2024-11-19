@@ -14,7 +14,8 @@ import (
 )
 
 type QSslEllipticCurve struct {
-	h *C.QSslEllipticCurve
+	h          *C.QSslEllipticCurve
+	isSubclass bool
 }
 
 func (this *QSslEllipticCurve) cPointer() *C.QSslEllipticCurve {
@@ -31,6 +32,7 @@ func (this *QSslEllipticCurve) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQSslEllipticCurve constructs the type using only CGO pointers.
 func newQSslEllipticCurve(h *C.QSslEllipticCurve) *QSslEllipticCurve {
 	if h == nil {
 		return nil
@@ -38,20 +40,33 @@ func newQSslEllipticCurve(h *C.QSslEllipticCurve) *QSslEllipticCurve {
 	return &QSslEllipticCurve{h: h}
 }
 
+// UnsafeNewQSslEllipticCurve constructs the type using only unsafe pointers.
 func UnsafeNewQSslEllipticCurve(h unsafe.Pointer) *QSslEllipticCurve {
-	return newQSslEllipticCurve((*C.QSslEllipticCurve)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QSslEllipticCurve{h: (*C.QSslEllipticCurve)(h)}
 }
 
 // NewQSslEllipticCurve constructs a new QSslEllipticCurve object.
 func NewQSslEllipticCurve() *QSslEllipticCurve {
-	ret := C.QSslEllipticCurve_new()
-	return newQSslEllipticCurve(ret)
+	var outptr_QSslEllipticCurve *C.QSslEllipticCurve = nil
+
+	C.QSslEllipticCurve_new(&outptr_QSslEllipticCurve)
+	ret := newQSslEllipticCurve(outptr_QSslEllipticCurve)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSslEllipticCurve2 constructs a new QSslEllipticCurve object.
 func NewQSslEllipticCurve2(param1 *QSslEllipticCurve) *QSslEllipticCurve {
-	ret := C.QSslEllipticCurve_new2(param1.cPointer())
-	return newQSslEllipticCurve(ret)
+	var outptr_QSslEllipticCurve *C.QSslEllipticCurve = nil
+
+	C.QSslEllipticCurve_new2(param1.cPointer(), &outptr_QSslEllipticCurve)
+	ret := newQSslEllipticCurve(outptr_QSslEllipticCurve)
+	ret.isSubclass = true
+	return ret
 }
 
 func QSslEllipticCurve_FromShortName(name string) *QSslEllipticCurve {
@@ -100,7 +115,7 @@ func (this *QSslEllipticCurve) IsTlsNamedCurve() bool {
 
 // Delete this object from C++ memory.
 func (this *QSslEllipticCurve) Delete() {
-	C.QSslEllipticCurve_Delete(this.h)
+	C.QSslEllipticCurve_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

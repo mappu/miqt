@@ -30,16 +30,16 @@ typedef struct QUrl QUrl;
 typedef struct QVariant QVariant;
 #endif
 
-QNetworkProxyQuery* QNetworkProxyQuery_new();
-QNetworkProxyQuery* QNetworkProxyQuery_new2(QUrl* requestUrl);
-QNetworkProxyQuery* QNetworkProxyQuery_new3(struct miqt_string hostname, int port);
-QNetworkProxyQuery* QNetworkProxyQuery_new4(uint16_t bindPort);
-QNetworkProxyQuery* QNetworkProxyQuery_new5(QNetworkProxyQuery* other);
-QNetworkProxyQuery* QNetworkProxyQuery_new6(QUrl* requestUrl, int queryType);
-QNetworkProxyQuery* QNetworkProxyQuery_new7(struct miqt_string hostname, int port, struct miqt_string protocolTag);
-QNetworkProxyQuery* QNetworkProxyQuery_new8(struct miqt_string hostname, int port, struct miqt_string protocolTag, int queryType);
-QNetworkProxyQuery* QNetworkProxyQuery_new9(uint16_t bindPort, struct miqt_string protocolTag);
-QNetworkProxyQuery* QNetworkProxyQuery_new10(uint16_t bindPort, struct miqt_string protocolTag, int queryType);
+void QNetworkProxyQuery_new(QNetworkProxyQuery** outptr_QNetworkProxyQuery);
+void QNetworkProxyQuery_new2(QUrl* requestUrl, QNetworkProxyQuery** outptr_QNetworkProxyQuery);
+void QNetworkProxyQuery_new3(struct miqt_string hostname, int port, QNetworkProxyQuery** outptr_QNetworkProxyQuery);
+void QNetworkProxyQuery_new4(uint16_t bindPort, QNetworkProxyQuery** outptr_QNetworkProxyQuery);
+void QNetworkProxyQuery_new5(QNetworkProxyQuery* other, QNetworkProxyQuery** outptr_QNetworkProxyQuery);
+void QNetworkProxyQuery_new6(QUrl* requestUrl, int queryType, QNetworkProxyQuery** outptr_QNetworkProxyQuery);
+void QNetworkProxyQuery_new7(struct miqt_string hostname, int port, struct miqt_string protocolTag, QNetworkProxyQuery** outptr_QNetworkProxyQuery);
+void QNetworkProxyQuery_new8(struct miqt_string hostname, int port, struct miqt_string protocolTag, int queryType, QNetworkProxyQuery** outptr_QNetworkProxyQuery);
+void QNetworkProxyQuery_new9(uint16_t bindPort, struct miqt_string protocolTag, QNetworkProxyQuery** outptr_QNetworkProxyQuery);
+void QNetworkProxyQuery_new10(uint16_t bindPort, struct miqt_string protocolTag, int queryType, QNetworkProxyQuery** outptr_QNetworkProxyQuery);
 void QNetworkProxyQuery_OperatorAssign(QNetworkProxyQuery* self, QNetworkProxyQuery* other);
 void QNetworkProxyQuery_Swap(QNetworkProxyQuery* self, QNetworkProxyQuery* other);
 bool QNetworkProxyQuery_OperatorEqual(const QNetworkProxyQuery* self, QNetworkProxyQuery* other);
@@ -56,15 +56,15 @@ struct miqt_string QNetworkProxyQuery_ProtocolTag(const QNetworkProxyQuery* self
 void QNetworkProxyQuery_SetProtocolTag(QNetworkProxyQuery* self, struct miqt_string protocolTag);
 QUrl* QNetworkProxyQuery_Url(const QNetworkProxyQuery* self);
 void QNetworkProxyQuery_SetUrl(QNetworkProxyQuery* self, QUrl* url);
-void QNetworkProxyQuery_Delete(QNetworkProxyQuery* self);
+void QNetworkProxyQuery_Delete(QNetworkProxyQuery* self, bool isSubclass);
 
-QNetworkProxy* QNetworkProxy_new();
-QNetworkProxy* QNetworkProxy_new2(int typeVal);
-QNetworkProxy* QNetworkProxy_new3(QNetworkProxy* other);
-QNetworkProxy* QNetworkProxy_new4(int typeVal, struct miqt_string hostName);
-QNetworkProxy* QNetworkProxy_new5(int typeVal, struct miqt_string hostName, uint16_t port);
-QNetworkProxy* QNetworkProxy_new6(int typeVal, struct miqt_string hostName, uint16_t port, struct miqt_string user);
-QNetworkProxy* QNetworkProxy_new7(int typeVal, struct miqt_string hostName, uint16_t port, struct miqt_string user, struct miqt_string password);
+void QNetworkProxy_new(QNetworkProxy** outptr_QNetworkProxy);
+void QNetworkProxy_new2(int typeVal, QNetworkProxy** outptr_QNetworkProxy);
+void QNetworkProxy_new3(QNetworkProxy* other, QNetworkProxy** outptr_QNetworkProxy);
+void QNetworkProxy_new4(int typeVal, struct miqt_string hostName, QNetworkProxy** outptr_QNetworkProxy);
+void QNetworkProxy_new5(int typeVal, struct miqt_string hostName, uint16_t port, QNetworkProxy** outptr_QNetworkProxy);
+void QNetworkProxy_new6(int typeVal, struct miqt_string hostName, uint16_t port, struct miqt_string user, QNetworkProxy** outptr_QNetworkProxy);
+void QNetworkProxy_new7(int typeVal, struct miqt_string hostName, uint16_t port, struct miqt_string user, struct miqt_string password, QNetworkProxy** outptr_QNetworkProxy);
 void QNetworkProxy_OperatorAssign(QNetworkProxy* self, QNetworkProxy* other);
 void QNetworkProxy_Swap(QNetworkProxy* self, QNetworkProxy* other);
 bool QNetworkProxy_OperatorEqual(const QNetworkProxy* self, QNetworkProxy* other);
@@ -91,18 +91,17 @@ bool QNetworkProxy_HasRawHeader(const QNetworkProxy* self, struct miqt_string he
 struct miqt_array /* of struct miqt_string */  QNetworkProxy_RawHeaderList(const QNetworkProxy* self);
 struct miqt_string QNetworkProxy_RawHeader(const QNetworkProxy* self, struct miqt_string headerName);
 void QNetworkProxy_SetRawHeader(QNetworkProxy* self, struct miqt_string headerName, struct miqt_string value);
-void QNetworkProxy_Delete(QNetworkProxy* self);
+void QNetworkProxy_Delete(QNetworkProxy* self, bool isSubclass);
 
-struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_QueryProxy(QNetworkProxyFactory* self);
+struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_QueryProxy(QNetworkProxyFactory* self, QNetworkProxyQuery* query);
 bool QNetworkProxyFactory_UsesSystemConfiguration();
 void QNetworkProxyFactory_SetUseSystemConfiguration(bool enable);
 void QNetworkProxyFactory_SetApplicationProxyFactory(QNetworkProxyFactory* factory);
 struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_ProxyForQuery(QNetworkProxyQuery* query);
 struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_SystemProxyForQuery();
 void QNetworkProxyFactory_OperatorAssign(QNetworkProxyFactory* self, QNetworkProxyFactory* param1);
-struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_QueryProxy1(QNetworkProxyFactory* self, QNetworkProxyQuery* query);
 struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_SystemProxyForQuery1(QNetworkProxyQuery* query);
-void QNetworkProxyFactory_Delete(QNetworkProxyFactory* self);
+void QNetworkProxyFactory_Delete(QNetworkProxyFactory* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

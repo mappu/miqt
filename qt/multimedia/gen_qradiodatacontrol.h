@@ -15,10 +15,14 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QMediaControl;
 class QMetaObject;
+class QObject;
 class QRadioDataControl;
 #else
+typedef struct QMediaControl QMediaControl;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 typedef struct QRadioDataControl QRadioDataControl;
 #endif
 
@@ -53,7 +57,7 @@ struct miqt_string QRadioDataControl_Tr2(const char* s, const char* c);
 struct miqt_string QRadioDataControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QRadioDataControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QRadioDataControl_TrUtf83(const char* s, const char* c, int n);
-void QRadioDataControl_Delete(QRadioDataControl* self);
+void QRadioDataControl_Delete(QRadioDataControl* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

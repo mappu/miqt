@@ -15,7 +15,8 @@ import (
 )
 
 type QStyleHints struct {
-	h *C.QStyleHints
+	h          *C.QStyleHints
+	isSubclass bool
 	*QObject
 }
 
@@ -33,15 +34,23 @@ func (this *QStyleHints) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleHints(h *C.QStyleHints) *QStyleHints {
+// newQStyleHints constructs the type using only CGO pointers.
+func newQStyleHints(h *C.QStyleHints, h_QObject *C.QObject) *QStyleHints {
 	if h == nil {
 		return nil
 	}
-	return &QStyleHints{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QStyleHints{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQStyleHints(h unsafe.Pointer) *QStyleHints {
-	return newQStyleHints((*C.QStyleHints)(h))
+// UnsafeNewQStyleHints constructs the type using only unsafe pointers.
+func UnsafeNewQStyleHints(h unsafe.Pointer, h_QObject unsafe.Pointer) *QStyleHints {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleHints{h: (*C.QStyleHints)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QStyleHints) MetaObject() *QMetaObject {
@@ -477,7 +486,7 @@ func QStyleHints_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QStyleHints) Delete() {
-	C.QStyleHints_Delete(this.h)
+	C.QStyleHints_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

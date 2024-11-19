@@ -22,14 +22,14 @@ typedef struct QFont QFont;
 typedef struct QPaintDevice QPaintDevice;
 #endif
 
-QFont* QFont_new();
-QFont* QFont_new2(struct miqt_string family);
-QFont* QFont_new3(QFont* font, QPaintDevice* pd);
-QFont* QFont_new4(QFont* font, QPaintDevice* pd);
-QFont* QFont_new5(QFont* font);
-QFont* QFont_new6(struct miqt_string family, int pointSize);
-QFont* QFont_new7(struct miqt_string family, int pointSize, int weight);
-QFont* QFont_new8(struct miqt_string family, int pointSize, int weight, bool italic);
+void QFont_new(QFont** outptr_QFont);
+void QFont_new2(struct miqt_string family, QFont** outptr_QFont);
+void QFont_new3(QFont* font, QPaintDevice* pd, QFont** outptr_QFont);
+void QFont_new4(QFont* font, QPaintDevice* pd, QFont** outptr_QFont);
+void QFont_new5(QFont* font, QFont** outptr_QFont);
+void QFont_new6(struct miqt_string family, int pointSize, QFont** outptr_QFont);
+void QFont_new7(struct miqt_string family, int pointSize, int weight, QFont** outptr_QFont);
+void QFont_new8(struct miqt_string family, int pointSize, int weight, bool italic, QFont** outptr_QFont);
 void QFont_Swap(QFont* self, QFont* other);
 struct miqt_string QFont_Family(const QFont* self);
 void QFont_SetFamily(QFont* self, struct miqt_string family);
@@ -105,7 +105,7 @@ QFont* QFont_Resolve(const QFont* self, QFont* param1);
 unsigned int QFont_Resolve2(const QFont* self);
 void QFont_ResolveWithMask(QFont* self, unsigned int mask);
 void QFont_SetStyleHint2(QFont* self, int param1, int param2);
-void QFont_Delete(QFont* self);
+void QFont_Delete(QFont* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -14,7 +14,8 @@ import (
 )
 
 type QTemporaryDir struct {
-	h *C.QTemporaryDir
+	h          *C.QTemporaryDir
+	isSubclass bool
 }
 
 func (this *QTemporaryDir) cPointer() *C.QTemporaryDir {
@@ -31,6 +32,7 @@ func (this *QTemporaryDir) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQTemporaryDir constructs the type using only CGO pointers.
 func newQTemporaryDir(h *C.QTemporaryDir) *QTemporaryDir {
 	if h == nil {
 		return nil
@@ -38,14 +40,23 @@ func newQTemporaryDir(h *C.QTemporaryDir) *QTemporaryDir {
 	return &QTemporaryDir{h: h}
 }
 
+// UnsafeNewQTemporaryDir constructs the type using only unsafe pointers.
 func UnsafeNewQTemporaryDir(h unsafe.Pointer) *QTemporaryDir {
-	return newQTemporaryDir((*C.QTemporaryDir)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QTemporaryDir{h: (*C.QTemporaryDir)(h)}
 }
 
 // NewQTemporaryDir constructs a new QTemporaryDir object.
 func NewQTemporaryDir() *QTemporaryDir {
-	ret := C.QTemporaryDir_new()
-	return newQTemporaryDir(ret)
+	var outptr_QTemporaryDir *C.QTemporaryDir = nil
+
+	C.QTemporaryDir_new(&outptr_QTemporaryDir)
+	ret := newQTemporaryDir(outptr_QTemporaryDir)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTemporaryDir2 constructs a new QTemporaryDir object.
@@ -54,8 +65,12 @@ func NewQTemporaryDir2(templateName string) *QTemporaryDir {
 	templateName_ms.data = C.CString(templateName)
 	templateName_ms.len = C.size_t(len(templateName))
 	defer C.free(unsafe.Pointer(templateName_ms.data))
-	ret := C.QTemporaryDir_new2(templateName_ms)
-	return newQTemporaryDir(ret)
+	var outptr_QTemporaryDir *C.QTemporaryDir = nil
+
+	C.QTemporaryDir_new2(templateName_ms, &outptr_QTemporaryDir)
+	ret := newQTemporaryDir(outptr_QTemporaryDir)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QTemporaryDir) Swap(other *QTemporaryDir) {
@@ -105,7 +120,7 @@ func (this *QTemporaryDir) FilePath(fileName string) string {
 
 // Delete this object from C++ memory.
 func (this *QTemporaryDir) Delete() {
-	C.QTemporaryDir_Delete(this.h)
+	C.QTemporaryDir_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

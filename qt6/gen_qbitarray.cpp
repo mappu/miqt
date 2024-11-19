@@ -4,20 +4,24 @@
 #include "gen_qbitarray.h"
 #include "_cgo_export.h"
 
-QBitArray* QBitArray_new() {
-	return new QBitArray();
+void QBitArray_new(QBitArray** outptr_QBitArray) {
+	QBitArray* ret = new QBitArray();
+	*outptr_QBitArray = ret;
 }
 
-QBitArray* QBitArray_new2(ptrdiff_t size) {
-	return new QBitArray((qsizetype)(size));
+void QBitArray_new2(ptrdiff_t size, QBitArray** outptr_QBitArray) {
+	QBitArray* ret = new QBitArray((qsizetype)(size));
+	*outptr_QBitArray = ret;
 }
 
-QBitArray* QBitArray_new3(QBitArray* other) {
-	return new QBitArray(*other);
+void QBitArray_new3(QBitArray* other, QBitArray** outptr_QBitArray) {
+	QBitArray* ret = new QBitArray(*other);
+	*outptr_QBitArray = ret;
 }
 
-QBitArray* QBitArray_new4(ptrdiff_t size, bool val) {
-	return new QBitArray((qsizetype)(size), val);
+void QBitArray_new4(ptrdiff_t size, bool val, QBitArray** outptr_QBitArray) {
+	QBitArray* ret = new QBitArray((qsizetype)(size), val);
+	*outptr_QBitArray = ret;
 }
 
 void QBitArray_OperatorAssign(QBitArray* self, QBitArray* other) {
@@ -153,12 +157,17 @@ unsigned int QBitArray_ToUInt322(const QBitArray* self, int endianness, bool* ok
 	return static_cast<unsigned int>(_ret);
 }
 
-void QBitArray_Delete(QBitArray* self) {
-	delete self;
+void QBitArray_Delete(QBitArray* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QBitArray*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QBitRef* QBitRef_new(QBitRef* param1) {
-	return new QBitRef(*param1);
+void QBitRef_new(QBitRef* param1, QBitRef** outptr_QBitRef) {
+	QBitRef* ret = new QBitRef(*param1);
+	*outptr_QBitRef = ret;
 }
 
 bool QBitRef_OperatorNot(const QBitRef* self) {
@@ -173,7 +182,11 @@ void QBitRef_OperatorAssignWithVal(QBitRef* self, bool val) {
 	self->operator=(val);
 }
 
-void QBitRef_Delete(QBitRef* self) {
-	delete self;
+void QBitRef_Delete(QBitRef* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QBitRef*>( self );
+	} else {
+		delete self;
+	}
 }
 

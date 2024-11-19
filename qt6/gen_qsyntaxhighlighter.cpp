@@ -1,4 +1,5 @@
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -66,7 +67,11 @@ struct miqt_string QSyntaxHighlighter_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QSyntaxHighlighter_Delete(QSyntaxHighlighter* self) {
-	delete self;
+void QSyntaxHighlighter_Delete(QSyntaxHighlighter* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QSyntaxHighlighter*>( self );
+	} else {
+		delete self;
+	}
 }
 

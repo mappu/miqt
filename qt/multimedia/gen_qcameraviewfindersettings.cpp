@@ -4,12 +4,14 @@
 #include "gen_qcameraviewfindersettings.h"
 #include "_cgo_export.h"
 
-QCameraViewfinderSettings* QCameraViewfinderSettings_new() {
-	return new QCameraViewfinderSettings();
+void QCameraViewfinderSettings_new(QCameraViewfinderSettings** outptr_QCameraViewfinderSettings) {
+	QCameraViewfinderSettings* ret = new QCameraViewfinderSettings();
+	*outptr_QCameraViewfinderSettings = ret;
 }
 
-QCameraViewfinderSettings* QCameraViewfinderSettings_new2(QCameraViewfinderSettings* other) {
-	return new QCameraViewfinderSettings(*other);
+void QCameraViewfinderSettings_new2(QCameraViewfinderSettings* other, QCameraViewfinderSettings** outptr_QCameraViewfinderSettings) {
+	QCameraViewfinderSettings* ret = new QCameraViewfinderSettings(*other);
+	*outptr_QCameraViewfinderSettings = ret;
 }
 
 void QCameraViewfinderSettings_OperatorAssign(QCameraViewfinderSettings* self, QCameraViewfinderSettings* other) {
@@ -75,7 +77,11 @@ void QCameraViewfinderSettings_SetPixelAspectRatio2(QCameraViewfinderSettings* s
 	self->setPixelAspectRatio(static_cast<int>(horizontal), static_cast<int>(vertical));
 }
 
-void QCameraViewfinderSettings_Delete(QCameraViewfinderSettings* self) {
-	delete self;
+void QCameraViewfinderSettings_Delete(QCameraViewfinderSettings* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QCameraViewfinderSettings*>( self );
+	} else {
+		delete self;
+	}
 }
 

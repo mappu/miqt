@@ -24,6 +24,7 @@ typedef QPagedPaintDevice::Margins QPagedPaintDevice__Margins;
 #else
 class QPagedPaintDevice__Margins;
 #endif
+class QPaintDevice;
 class QSizeF;
 #else
 typedef struct QMarginsF QMarginsF;
@@ -31,6 +32,7 @@ typedef struct QPageLayout QPageLayout;
 typedef struct QPageSize QPageSize;
 typedef struct QPagedPaintDevice QPagedPaintDevice;
 typedef struct QPagedPaintDevice__Margins QPagedPaintDevice__Margins;
+typedef struct QPaintDevice QPaintDevice;
 typedef struct QSizeF QSizeF;
 #endif
 
@@ -47,9 +49,9 @@ void QPagedPaintDevice_SetPageSizeMM(QPagedPaintDevice* self, QSizeF* size);
 QSizeF* QPagedPaintDevice_PageSizeMM(const QPagedPaintDevice* self);
 void QPagedPaintDevice_SetMargins(QPagedPaintDevice* self, QPagedPaintDevice__Margins* margins);
 QPagedPaintDevice__Margins* QPagedPaintDevice_Margins(const QPagedPaintDevice* self);
-void QPagedPaintDevice_Delete(QPagedPaintDevice* self);
+void QPagedPaintDevice_Delete(QPagedPaintDevice* self, bool isSubclass);
 
-void QPagedPaintDevice__Margins_Delete(QPagedPaintDevice__Margins* self);
+void QPagedPaintDevice__Margins_Delete(QPagedPaintDevice__Margins* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

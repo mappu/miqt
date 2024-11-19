@@ -14,7 +14,8 @@ import (
 )
 
 type QSize struct {
-	h *C.QSize
+	h          *C.QSize
+	isSubclass bool
 }
 
 func (this *QSize) cPointer() *C.QSize {
@@ -31,6 +32,7 @@ func (this *QSize) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQSize constructs the type using only CGO pointers.
 func newQSize(h *C.QSize) *QSize {
 	if h == nil {
 		return nil
@@ -38,26 +40,43 @@ func newQSize(h *C.QSize) *QSize {
 	return &QSize{h: h}
 }
 
+// UnsafeNewQSize constructs the type using only unsafe pointers.
 func UnsafeNewQSize(h unsafe.Pointer) *QSize {
-	return newQSize((*C.QSize)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QSize{h: (*C.QSize)(h)}
 }
 
 // NewQSize constructs a new QSize object.
 func NewQSize() *QSize {
-	ret := C.QSize_new()
-	return newQSize(ret)
+	var outptr_QSize *C.QSize = nil
+
+	C.QSize_new(&outptr_QSize)
+	ret := newQSize(outptr_QSize)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSize2 constructs a new QSize object.
 func NewQSize2(w int, h int) *QSize {
-	ret := C.QSize_new2((C.int)(w), (C.int)(h))
-	return newQSize(ret)
+	var outptr_QSize *C.QSize = nil
+
+	C.QSize_new2((C.int)(w), (C.int)(h), &outptr_QSize)
+	ret := newQSize(outptr_QSize)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSize3 constructs a new QSize object.
 func NewQSize3(param1 *QSize) *QSize {
-	ret := C.QSize_new3(param1.cPointer())
-	return newQSize(ret)
+	var outptr_QSize *C.QSize = nil
+
+	C.QSize_new3(param1.cPointer(), &outptr_QSize)
+	ret := newQSize(outptr_QSize)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QSize) IsNull() bool {
@@ -167,7 +186,7 @@ func (this *QSize) OperatorDivideAssign(c float64) *QSize {
 
 // Delete this object from C++ memory.
 func (this *QSize) Delete() {
-	C.QSize_Delete(this.h)
+	C.QSize_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -180,7 +199,8 @@ func (this *QSize) GoGC() {
 }
 
 type QSizeF struct {
-	h *C.QSizeF
+	h          *C.QSizeF
+	isSubclass bool
 }
 
 func (this *QSizeF) cPointer() *C.QSizeF {
@@ -197,6 +217,7 @@ func (this *QSizeF) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQSizeF constructs the type using only CGO pointers.
 func newQSizeF(h *C.QSizeF) *QSizeF {
 	if h == nil {
 		return nil
@@ -204,32 +225,53 @@ func newQSizeF(h *C.QSizeF) *QSizeF {
 	return &QSizeF{h: h}
 }
 
+// UnsafeNewQSizeF constructs the type using only unsafe pointers.
 func UnsafeNewQSizeF(h unsafe.Pointer) *QSizeF {
-	return newQSizeF((*C.QSizeF)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QSizeF{h: (*C.QSizeF)(h)}
 }
 
 // NewQSizeF constructs a new QSizeF object.
 func NewQSizeF() *QSizeF {
-	ret := C.QSizeF_new()
-	return newQSizeF(ret)
+	var outptr_QSizeF *C.QSizeF = nil
+
+	C.QSizeF_new(&outptr_QSizeF)
+	ret := newQSizeF(outptr_QSizeF)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSizeF2 constructs a new QSizeF object.
 func NewQSizeF2(sz *QSize) *QSizeF {
-	ret := C.QSizeF_new2(sz.cPointer())
-	return newQSizeF(ret)
+	var outptr_QSizeF *C.QSizeF = nil
+
+	C.QSizeF_new2(sz.cPointer(), &outptr_QSizeF)
+	ret := newQSizeF(outptr_QSizeF)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSizeF3 constructs a new QSizeF object.
 func NewQSizeF3(w float64, h float64) *QSizeF {
-	ret := C.QSizeF_new3((C.double)(w), (C.double)(h))
-	return newQSizeF(ret)
+	var outptr_QSizeF *C.QSizeF = nil
+
+	C.QSizeF_new3((C.double)(w), (C.double)(h), &outptr_QSizeF)
+	ret := newQSizeF(outptr_QSizeF)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSizeF4 constructs a new QSizeF object.
 func NewQSizeF4(param1 *QSizeF) *QSizeF {
-	ret := C.QSizeF_new4(param1.cPointer())
-	return newQSizeF(ret)
+	var outptr_QSizeF *C.QSizeF = nil
+
+	C.QSizeF_new4(param1.cPointer(), &outptr_QSizeF)
+	ret := newQSizeF(outptr_QSizeF)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QSizeF) IsNull() bool {
@@ -346,7 +388,7 @@ func (this *QSizeF) ToSize() *QSize {
 
 // Delete this object from C++ memory.
 func (this *QSizeF) Delete() {
-	C.QSizeF_Delete(this.h)
+	C.QSizeF_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

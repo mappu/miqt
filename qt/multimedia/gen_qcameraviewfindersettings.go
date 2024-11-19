@@ -15,7 +15,8 @@ import (
 )
 
 type QCameraViewfinderSettings struct {
-	h *C.QCameraViewfinderSettings
+	h          *C.QCameraViewfinderSettings
+	isSubclass bool
 }
 
 func (this *QCameraViewfinderSettings) cPointer() *C.QCameraViewfinderSettings {
@@ -32,6 +33,7 @@ func (this *QCameraViewfinderSettings) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCameraViewfinderSettings constructs the type using only CGO pointers.
 func newQCameraViewfinderSettings(h *C.QCameraViewfinderSettings) *QCameraViewfinderSettings {
 	if h == nil {
 		return nil
@@ -39,20 +41,33 @@ func newQCameraViewfinderSettings(h *C.QCameraViewfinderSettings) *QCameraViewfi
 	return &QCameraViewfinderSettings{h: h}
 }
 
+// UnsafeNewQCameraViewfinderSettings constructs the type using only unsafe pointers.
 func UnsafeNewQCameraViewfinderSettings(h unsafe.Pointer) *QCameraViewfinderSettings {
-	return newQCameraViewfinderSettings((*C.QCameraViewfinderSettings)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCameraViewfinderSettings{h: (*C.QCameraViewfinderSettings)(h)}
 }
 
 // NewQCameraViewfinderSettings constructs a new QCameraViewfinderSettings object.
 func NewQCameraViewfinderSettings() *QCameraViewfinderSettings {
-	ret := C.QCameraViewfinderSettings_new()
-	return newQCameraViewfinderSettings(ret)
+	var outptr_QCameraViewfinderSettings *C.QCameraViewfinderSettings = nil
+
+	C.QCameraViewfinderSettings_new(&outptr_QCameraViewfinderSettings)
+	ret := newQCameraViewfinderSettings(outptr_QCameraViewfinderSettings)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCameraViewfinderSettings2 constructs a new QCameraViewfinderSettings object.
 func NewQCameraViewfinderSettings2(other *QCameraViewfinderSettings) *QCameraViewfinderSettings {
-	ret := C.QCameraViewfinderSettings_new2(other.cPointer())
-	return newQCameraViewfinderSettings(ret)
+	var outptr_QCameraViewfinderSettings *C.QCameraViewfinderSettings = nil
+
+	C.QCameraViewfinderSettings_new2(other.cPointer(), &outptr_QCameraViewfinderSettings)
+	ret := newQCameraViewfinderSettings(outptr_QCameraViewfinderSettings)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QCameraViewfinderSettings) OperatorAssign(other *QCameraViewfinderSettings) {
@@ -123,7 +138,7 @@ func (this *QCameraViewfinderSettings) SetPixelAspectRatio2(horizontal int, vert
 
 // Delete this object from C++ memory.
 func (this *QCameraViewfinderSettings) Delete() {
-	C.QCameraViewfinderSettings_Delete(this.h)
+	C.QCameraViewfinderSettings_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -16,6 +16,7 @@ extern "C" {
 
 #ifdef __cplusplus
 class QPaintDevice;
+class QPainter;
 class QPalette;
 class QPixmap;
 class QRect;
@@ -26,6 +27,7 @@ class QStylePainter;
 class QWidget;
 #else
 typedef struct QPaintDevice QPaintDevice;
+typedef struct QPainter QPainter;
 typedef struct QPalette QPalette;
 typedef struct QPixmap QPixmap;
 typedef struct QRect QRect;
@@ -36,9 +38,9 @@ typedef struct QStylePainter QStylePainter;
 typedef struct QWidget QWidget;
 #endif
 
-QStylePainter* QStylePainter_new(QWidget* w);
-QStylePainter* QStylePainter_new2();
-QStylePainter* QStylePainter_new3(QPaintDevice* pd, QWidget* w);
+void QStylePainter_new(QWidget* w, QStylePainter** outptr_QStylePainter, QPainter** outptr_QPainter);
+void QStylePainter_new2(QStylePainter** outptr_QStylePainter, QPainter** outptr_QPainter);
+void QStylePainter_new3(QPaintDevice* pd, QWidget* w, QStylePainter** outptr_QStylePainter, QPainter** outptr_QPainter);
 bool QStylePainter_Begin(QStylePainter* self, QWidget* w);
 bool QStylePainter_Begin2(QStylePainter* self, QPaintDevice* pd, QWidget* w);
 void QStylePainter_DrawPrimitive(QStylePainter* self, int pe, QStyleOption* opt);
@@ -48,7 +50,7 @@ void QStylePainter_DrawItemText(QStylePainter* self, QRect* r, int flags, QPalet
 void QStylePainter_DrawItemPixmap(QStylePainter* self, QRect* r, int flags, QPixmap* pixmap);
 QStyle* QStylePainter_Style(const QStylePainter* self);
 void QStylePainter_DrawItemText6(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, struct miqt_string text, int textRole);
-void QStylePainter_Delete(QStylePainter* self);
+void QStylePainter_Delete(QStylePainter* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -32,7 +32,7 @@ bool QtPrivate__RefCount_IsStatic(const QtPrivate__RefCount* self);
 bool QtPrivate__RefCount_IsShared(const QtPrivate__RefCount* self);
 void QtPrivate__RefCount_InitializeOwned(QtPrivate__RefCount* self);
 void QtPrivate__RefCount_InitializeUnsharable(QtPrivate__RefCount* self);
-void QtPrivate__RefCount_Delete(QtPrivate__RefCount* self);
+void QtPrivate__RefCount_Delete(QtPrivate__RefCount* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

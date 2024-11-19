@@ -18,9 +18,12 @@ extern "C" {
 class QAbstractNetworkCache;
 class QAuthenticator;
 class QByteArray;
+class QChildEvent;
+class QEvent;
 class QHstsPolicy;
 class QHttpMultiPart;
 class QIODevice;
+class QMetaMethod;
 class QMetaObject;
 class QNetworkAccessManager;
 class QNetworkCookieJar;
@@ -32,13 +35,17 @@ class QObject;
 class QSslConfiguration;
 class QSslError;
 class QSslPreSharedKeyAuthenticator;
+class QTimerEvent;
 #else
 typedef struct QAbstractNetworkCache QAbstractNetworkCache;
 typedef struct QAuthenticator QAuthenticator;
 typedef struct QByteArray QByteArray;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QHstsPolicy QHstsPolicy;
 typedef struct QHttpMultiPart QHttpMultiPart;
 typedef struct QIODevice QIODevice;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QNetworkAccessManager QNetworkAccessManager;
 typedef struct QNetworkCookieJar QNetworkCookieJar;
@@ -50,10 +57,11 @@ typedef struct QObject QObject;
 typedef struct QSslConfiguration QSslConfiguration;
 typedef struct QSslError QSslError;
 typedef struct QSslPreSharedKeyAuthenticator QSslPreSharedKeyAuthenticator;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
-QNetworkAccessManager* QNetworkAccessManager_new();
-QNetworkAccessManager* QNetworkAccessManager_new2(QObject* parent);
+void QNetworkAccessManager_new(QNetworkAccessManager** outptr_QNetworkAccessManager, QObject** outptr_QObject);
+void QNetworkAccessManager_new2(QObject* parent, QNetworkAccessManager** outptr_QNetworkAccessManager, QObject** outptr_QObject);
 QMetaObject* QNetworkAccessManager_MetaObject(const QNetworkAccessManager* self);
 void* QNetworkAccessManager_Metacast(QNetworkAccessManager* self, const char* param1);
 struct miqt_string QNetworkAccessManager_Tr(const char* s);
@@ -107,6 +115,7 @@ void QNetworkAccessManager_SslErrors(QNetworkAccessManager* self, QNetworkReply*
 void QNetworkAccessManager_connect_SslErrors(QNetworkAccessManager* self, intptr_t slot);
 void QNetworkAccessManager_PreSharedKeyAuthenticationRequired(QNetworkAccessManager* self, QNetworkReply* reply, QSslPreSharedKeyAuthenticator* authenticator);
 void QNetworkAccessManager_connect_PreSharedKeyAuthenticationRequired(QNetworkAccessManager* self, intptr_t slot);
+QNetworkReply* QNetworkAccessManager_CreateRequest(QNetworkAccessManager* self, int op, QNetworkRequest* request, QIODevice* outgoingData);
 struct miqt_string QNetworkAccessManager_Tr2(const char* s, const char* c);
 struct miqt_string QNetworkAccessManager_Tr3(const char* s, const char* c, int n);
 void QNetworkAccessManager_EnableStrictTransportSecurityStore2(QNetworkAccessManager* self, bool enabled, struct miqt_string storeDir);
@@ -115,7 +124,25 @@ void QNetworkAccessManager_ConnectToHostEncrypted22(QNetworkAccessManager* self,
 void QNetworkAccessManager_ConnectToHostEncrypted3(QNetworkAccessManager* self, struct miqt_string hostName, uint16_t port, QSslConfiguration* sslConfiguration);
 void QNetworkAccessManager_ConnectToHost2(QNetworkAccessManager* self, struct miqt_string hostName, uint16_t port);
 void QNetworkAccessManager_SetTransferTimeout1(QNetworkAccessManager* self, int timeout);
-void QNetworkAccessManager_Delete(QNetworkAccessManager* self);
+void QNetworkAccessManager_override_virtual_SupportedSchemes(void* self, intptr_t slot);
+struct miqt_array /* of struct miqt_string */  QNetworkAccessManager_virtualbase_SupportedSchemes(const void* self);
+void QNetworkAccessManager_override_virtual_CreateRequest(void* self, intptr_t slot);
+QNetworkReply* QNetworkAccessManager_virtualbase_CreateRequest(void* self, int op, QNetworkRequest* request, QIODevice* outgoingData);
+void QNetworkAccessManager_override_virtual_Event(void* self, intptr_t slot);
+bool QNetworkAccessManager_virtualbase_Event(void* self, QEvent* event);
+void QNetworkAccessManager_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QNetworkAccessManager_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QNetworkAccessManager_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QNetworkAccessManager_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QNetworkAccessManager_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QNetworkAccessManager_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QNetworkAccessManager_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QNetworkAccessManager_virtualbase_CustomEvent(void* self, QEvent* event);
+void QNetworkAccessManager_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QNetworkAccessManager_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QNetworkAccessManager_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QNetworkAccessManager_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QNetworkAccessManager_Delete(QNetworkAccessManager* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

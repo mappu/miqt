@@ -10,6 +10,7 @@ import "C"
 
 import (
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
@@ -27,7 +28,8 @@ const (
 )
 
 type QThread struct {
-	h *C.QThread
+	h          *C.QThread
+	isSubclass bool
 	*QObject
 }
 
@@ -45,27 +47,45 @@ func (this *QThread) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQThread(h *C.QThread) *QThread {
+// newQThread constructs the type using only CGO pointers.
+func newQThread(h *C.QThread, h_QObject *C.QObject) *QThread {
 	if h == nil {
 		return nil
 	}
-	return &QThread{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QThread{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQThread(h unsafe.Pointer) *QThread {
-	return newQThread((*C.QThread)(h))
+// UnsafeNewQThread constructs the type using only unsafe pointers.
+func UnsafeNewQThread(h unsafe.Pointer, h_QObject unsafe.Pointer) *QThread {
+	if h == nil {
+		return nil
+	}
+
+	return &QThread{h: (*C.QThread)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 // NewQThread constructs a new QThread object.
 func NewQThread() *QThread {
-	ret := C.QThread_new()
-	return newQThread(ret)
+	var outptr_QThread *C.QThread = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QThread_new(&outptr_QThread, &outptr_QObject)
+	ret := newQThread(outptr_QThread, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQThread2 constructs a new QThread object.
 func NewQThread2(parent *QObject) *QThread {
-	ret := C.QThread_new2(parent.cPointer())
-	return newQThread(ret)
+	var outptr_QThread *C.QThread = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QThread_new2(parent.cPointer(), &outptr_QThread, &outptr_QObject)
+	ret := newQThread(outptr_QThread, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QThread) MetaObject() *QMetaObject {
@@ -101,7 +121,7 @@ func QThread_CurrentThreadId() unsafe.Pointer {
 }
 
 func QThread_CurrentThread() *QThread {
-	return UnsafeNewQThread(unsafe.Pointer(C.QThread_CurrentThread()))
+	return UnsafeNewQThread(unsafe.Pointer(C.QThread_CurrentThread()), nil)
 }
 
 func QThread_IdealThreadCount() int {
@@ -149,7 +169,7 @@ func (this *QThread) Exit() {
 }
 
 func (this *QThread) EventDispatcher() *QAbstractEventDispatcher {
-	return UnsafeNewQAbstractEventDispatcher(unsafe.Pointer(C.QThread_EventDispatcher(this.h)))
+	return UnsafeNewQAbstractEventDispatcher(unsafe.Pointer(C.QThread_EventDispatcher(this.h)), nil)
 }
 
 func (this *QThread) SetEventDispatcher(eventDispatcher *QAbstractEventDispatcher) {
@@ -252,9 +272,195 @@ func (this *QThread) Wait1(deadline QDeadlineTimer) bool {
 	return (bool)(C.QThread_Wait1(this.h, deadline.cPointer()))
 }
 
+func (this *QThread) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QThread_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QThread) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	C.QThread_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QThread_Event
+func miqt_exec_callback_QThread_Event(self *C.QThread, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QThread{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QThread) callVirtualBase_Run() {
+
+	C.QThread_virtualbase_Run(unsafe.Pointer(this.h))
+
+}
+func (this *QThread) OnRun(slot func(super func())) {
+	C.QThread_override_virtual_Run(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QThread_Run
+func miqt_exec_callback_QThread_Run(self *C.QThread, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QThread{h: self}).callVirtualBase_Run)
+
+}
+
+func (this *QThread) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QThread_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QThread) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	C.QThread_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QThread_EventFilter
+func miqt_exec_callback_QThread_EventFilter(self *C.QThread, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QThread{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QThread) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QThread_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QThread) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	C.QThread_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QThread_TimerEvent
+func miqt_exec_callback_QThread_TimerEvent(self *C.QThread, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QThread{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QThread) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QThread_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QThread) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	C.QThread_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QThread_ChildEvent
+func miqt_exec_callback_QThread_ChildEvent(self *C.QThread, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QThread{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QThread) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QThread_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QThread) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	C.QThread_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QThread_CustomEvent
+func miqt_exec_callback_QThread_CustomEvent(self *C.QThread, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QThread{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QThread) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QThread_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QThread) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QThread_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QThread_ConnectNotify
+func miqt_exec_callback_QThread_ConnectNotify(self *C.QThread, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QThread{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QThread) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QThread_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QThread) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QThread_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QThread_DisconnectNotify
+func miqt_exec_callback_QThread_DisconnectNotify(self *C.QThread, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QThread{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QThread) Delete() {
-	C.QThread_Delete(this.h)
+	C.QThread_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

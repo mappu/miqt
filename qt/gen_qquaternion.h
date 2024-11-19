@@ -24,12 +24,12 @@ typedef struct QVector3D QVector3D;
 typedef struct QVector4D QVector4D;
 #endif
 
-QQuaternion* QQuaternion_new();
-QQuaternion* QQuaternion_new2(int param1);
-QQuaternion* QQuaternion_new3(float scalar, float xpos, float ypos, float zpos);
-QQuaternion* QQuaternion_new4(float scalar, QVector3D* vector);
-QQuaternion* QQuaternion_new5(QVector4D* vector);
-QQuaternion* QQuaternion_new6(QQuaternion* param1);
+void QQuaternion_new(QQuaternion** outptr_QQuaternion);
+void QQuaternion_new2(int param1, QQuaternion** outptr_QQuaternion);
+void QQuaternion_new3(float scalar, float xpos, float ypos, float zpos, QQuaternion** outptr_QQuaternion);
+void QQuaternion_new4(float scalar, QVector3D* vector, QQuaternion** outptr_QQuaternion);
+void QQuaternion_new5(QVector4D* vector, QQuaternion** outptr_QQuaternion);
+void QQuaternion_new6(QQuaternion* param1, QQuaternion** outptr_QQuaternion);
 bool QQuaternion_IsNull(const QQuaternion* self);
 bool QQuaternion_IsIdentity(const QQuaternion* self);
 QVector3D* QQuaternion_Vector(const QQuaternion* self);
@@ -72,7 +72,7 @@ QQuaternion* QQuaternion_FromDirection(QVector3D* direction, QVector3D* up);
 QQuaternion* QQuaternion_RotationTo(QVector3D* from, QVector3D* to);
 QQuaternion* QQuaternion_Slerp(QQuaternion* q1, QQuaternion* q2, float t);
 QQuaternion* QQuaternion_Nlerp(QQuaternion* q1, QQuaternion* q2, float t);
-void QQuaternion_Delete(QQuaternion* self);
+void QQuaternion_Delete(QQuaternion* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -11,11 +11,13 @@ import "C"
 import (
 	"github.com/mappu/miqt/qt"
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
 type QsciLexerCSharp struct {
-	h *C.QsciLexerCSharp
+	h          *C.QsciLexerCSharp
+	isSubclass bool
 	*QsciLexerCPP
 }
 
@@ -33,27 +35,49 @@ func (this *QsciLexerCSharp) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQsciLexerCSharp(h *C.QsciLexerCSharp) *QsciLexerCSharp {
+// newQsciLexerCSharp constructs the type using only CGO pointers.
+func newQsciLexerCSharp(h *C.QsciLexerCSharp, h_QsciLexerCPP *C.QsciLexerCPP, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerCSharp {
 	if h == nil {
 		return nil
 	}
-	return &QsciLexerCSharp{h: h, QsciLexerCPP: UnsafeNewQsciLexerCPP(unsafe.Pointer(h))}
+	return &QsciLexerCSharp{h: h,
+		QsciLexerCPP: newQsciLexerCPP(h_QsciLexerCPP, h_QsciLexer, h_QObject)}
 }
 
-func UnsafeNewQsciLexerCSharp(h unsafe.Pointer) *QsciLexerCSharp {
-	return newQsciLexerCSharp((*C.QsciLexerCSharp)(h))
+// UnsafeNewQsciLexerCSharp constructs the type using only unsafe pointers.
+func UnsafeNewQsciLexerCSharp(h unsafe.Pointer, h_QsciLexerCPP unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerCSharp {
+	if h == nil {
+		return nil
+	}
+
+	return &QsciLexerCSharp{h: (*C.QsciLexerCSharp)(h),
+		QsciLexerCPP: UnsafeNewQsciLexerCPP(h_QsciLexerCPP, h_QsciLexer, h_QObject)}
 }
 
 // NewQsciLexerCSharp constructs a new QsciLexerCSharp object.
 func NewQsciLexerCSharp() *QsciLexerCSharp {
-	ret := C.QsciLexerCSharp_new()
-	return newQsciLexerCSharp(ret)
+	var outptr_QsciLexerCSharp *C.QsciLexerCSharp = nil
+	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
+	var outptr_QsciLexer *C.QsciLexer = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QsciLexerCSharp_new(&outptr_QsciLexerCSharp, &outptr_QsciLexerCPP, &outptr_QsciLexer, &outptr_QObject)
+	ret := newQsciLexerCSharp(outptr_QsciLexerCSharp, outptr_QsciLexerCPP, outptr_QsciLexer, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQsciLexerCSharp2 constructs a new QsciLexerCSharp object.
 func NewQsciLexerCSharp2(parent *qt.QObject) *QsciLexerCSharp {
-	ret := C.QsciLexerCSharp_new2((*C.QObject)(parent.UnsafePointer()))
-	return newQsciLexerCSharp(ret)
+	var outptr_QsciLexerCSharp *C.QsciLexerCSharp = nil
+	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
+	var outptr_QsciLexer *C.QsciLexer = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QsciLexerCSharp_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QsciLexerCSharp, &outptr_QsciLexerCPP, &outptr_QsciLexer, &outptr_QObject)
+	ret := newQsciLexerCSharp(outptr_QsciLexerCSharp, outptr_QsciLexerCPP, outptr_QsciLexer, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QsciLexerCSharp) MetaObject() *qt.QMetaObject {
@@ -170,9 +194,124 @@ func QsciLexerCSharp_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QsciLexerCSharp) callVirtualBase_SetFoldAtElse(fold bool) {
+
+	C.QsciLexerCSharp_virtualbase_SetFoldAtElse(unsafe.Pointer(this.h), (C.bool)(fold))
+
+}
+func (this *QsciLexerCSharp) OnSetFoldAtElse(slot func(super func(fold bool), fold bool)) {
+	C.QsciLexerCSharp_override_virtual_SetFoldAtElse(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCSharp_SetFoldAtElse
+func miqt_exec_callback_QsciLexerCSharp_SetFoldAtElse(self *C.QsciLexerCSharp, cb C.intptr_t, fold C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(fold bool), fold bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(fold)
+
+	gofunc((&QsciLexerCSharp{h: self}).callVirtualBase_SetFoldAtElse, slotval1)
+
+}
+
+func (this *QsciLexerCSharp) callVirtualBase_SetFoldComments(fold bool) {
+
+	C.QsciLexerCSharp_virtualbase_SetFoldComments(unsafe.Pointer(this.h), (C.bool)(fold))
+
+}
+func (this *QsciLexerCSharp) OnSetFoldComments(slot func(super func(fold bool), fold bool)) {
+	C.QsciLexerCSharp_override_virtual_SetFoldComments(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCSharp_SetFoldComments
+func miqt_exec_callback_QsciLexerCSharp_SetFoldComments(self *C.QsciLexerCSharp, cb C.intptr_t, fold C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(fold bool), fold bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(fold)
+
+	gofunc((&QsciLexerCSharp{h: self}).callVirtualBase_SetFoldComments, slotval1)
+
+}
+
+func (this *QsciLexerCSharp) callVirtualBase_SetFoldCompact(fold bool) {
+
+	C.QsciLexerCSharp_virtualbase_SetFoldCompact(unsafe.Pointer(this.h), (C.bool)(fold))
+
+}
+func (this *QsciLexerCSharp) OnSetFoldCompact(slot func(super func(fold bool), fold bool)) {
+	C.QsciLexerCSharp_override_virtual_SetFoldCompact(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCSharp_SetFoldCompact
+func miqt_exec_callback_QsciLexerCSharp_SetFoldCompact(self *C.QsciLexerCSharp, cb C.intptr_t, fold C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(fold bool), fold bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(fold)
+
+	gofunc((&QsciLexerCSharp{h: self}).callVirtualBase_SetFoldCompact, slotval1)
+
+}
+
+func (this *QsciLexerCSharp) callVirtualBase_SetFoldPreprocessor(fold bool) {
+
+	C.QsciLexerCSharp_virtualbase_SetFoldPreprocessor(unsafe.Pointer(this.h), (C.bool)(fold))
+
+}
+func (this *QsciLexerCSharp) OnSetFoldPreprocessor(slot func(super func(fold bool), fold bool)) {
+	C.QsciLexerCSharp_override_virtual_SetFoldPreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCSharp_SetFoldPreprocessor
+func miqt_exec_callback_QsciLexerCSharp_SetFoldPreprocessor(self *C.QsciLexerCSharp, cb C.intptr_t, fold C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(fold bool), fold bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(fold)
+
+	gofunc((&QsciLexerCSharp{h: self}).callVirtualBase_SetFoldPreprocessor, slotval1)
+
+}
+
+func (this *QsciLexerCSharp) callVirtualBase_SetStylePreprocessor(style bool) {
+
+	C.QsciLexerCSharp_virtualbase_SetStylePreprocessor(unsafe.Pointer(this.h), (C.bool)(style))
+
+}
+func (this *QsciLexerCSharp) OnSetStylePreprocessor(slot func(super func(style bool), style bool)) {
+	C.QsciLexerCSharp_override_virtual_SetStylePreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCSharp_SetStylePreprocessor
+func miqt_exec_callback_QsciLexerCSharp_SetStylePreprocessor(self *C.QsciLexerCSharp, cb C.intptr_t, style C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style bool), style bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(style)
+
+	gofunc((&QsciLexerCSharp{h: self}).callVirtualBase_SetStylePreprocessor, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QsciLexerCSharp) Delete() {
-	C.QsciLexerCSharp_Delete(this.h)
+	C.QsciLexerCSharp_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

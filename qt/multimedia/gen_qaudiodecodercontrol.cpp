@@ -2,7 +2,9 @@
 #include <QAudioDecoderControl>
 #include <QAudioFormat>
 #include <QIODevice>
+#include <QMediaControl>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -257,7 +259,11 @@ struct miqt_string QAudioDecoderControl_TrUtf83(const char* s, const char* c, in
 	return _ms;
 }
 
-void QAudioDecoderControl_Delete(QAudioDecoderControl* self) {
-	delete self;
+void QAudioDecoderControl_Delete(QAudioDecoderControl* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAudioDecoderControl*>( self );
+	} else {
+		delete self;
+	}
 }
 

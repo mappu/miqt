@@ -22,10 +22,10 @@ typedef struct QBitArray QBitArray;
 typedef struct QBitRef QBitRef;
 #endif
 
-QBitArray* QBitArray_new();
-QBitArray* QBitArray_new2(ptrdiff_t size);
-QBitArray* QBitArray_new3(QBitArray* other);
-QBitArray* QBitArray_new4(ptrdiff_t size, bool val);
+void QBitArray_new(QBitArray** outptr_QBitArray);
+void QBitArray_new2(ptrdiff_t size, QBitArray** outptr_QBitArray);
+void QBitArray_new3(QBitArray* other, QBitArray** outptr_QBitArray);
+void QBitArray_new4(ptrdiff_t size, bool val, QBitArray** outptr_QBitArray);
 void QBitArray_OperatorAssign(QBitArray* self, QBitArray* other);
 void QBitArray_Swap(QBitArray* self, QBitArray* other);
 ptrdiff_t QBitArray_Size(const QBitArray* self);
@@ -58,13 +58,13 @@ QBitArray* QBitArray_FromBits(const char* data, ptrdiff_t lenVal);
 unsigned int QBitArray_ToUInt32(const QBitArray* self, int endianness);
 bool QBitArray_Fill22(QBitArray* self, bool val, ptrdiff_t size);
 unsigned int QBitArray_ToUInt322(const QBitArray* self, int endianness, bool* ok);
-void QBitArray_Delete(QBitArray* self);
+void QBitArray_Delete(QBitArray* self, bool isSubclass);
 
-QBitRef* QBitRef_new(QBitRef* param1);
+void QBitRef_new(QBitRef* param1, QBitRef** outptr_QBitRef);
 bool QBitRef_OperatorNot(const QBitRef* self);
 void QBitRef_OperatorAssign(QBitRef* self, QBitRef* val);
 void QBitRef_OperatorAssignWithVal(QBitRef* self, bool val);
-void QBitRef_Delete(QBitRef* self);
+void QBitRef_Delete(QBitRef* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

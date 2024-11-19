@@ -24,7 +24,8 @@ const (
 )
 
 type QEventPoint struct {
-	h *C.QEventPoint
+	h          *C.QEventPoint
+	isSubclass bool
 }
 
 func (this *QEventPoint) cPointer() *C.QEventPoint {
@@ -41,6 +42,7 @@ func (this *QEventPoint) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQEventPoint constructs the type using only CGO pointers.
 func newQEventPoint(h *C.QEventPoint) *QEventPoint {
 	if h == nil {
 		return nil
@@ -48,38 +50,63 @@ func newQEventPoint(h *C.QEventPoint) *QEventPoint {
 	return &QEventPoint{h: h}
 }
 
+// UnsafeNewQEventPoint constructs the type using only unsafe pointers.
 func UnsafeNewQEventPoint(h unsafe.Pointer) *QEventPoint {
-	return newQEventPoint((*C.QEventPoint)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QEventPoint{h: (*C.QEventPoint)(h)}
 }
 
 // NewQEventPoint constructs a new QEventPoint object.
 func NewQEventPoint() *QEventPoint {
-	ret := C.QEventPoint_new()
-	return newQEventPoint(ret)
+	var outptr_QEventPoint *C.QEventPoint = nil
+
+	C.QEventPoint_new(&outptr_QEventPoint)
+	ret := newQEventPoint(outptr_QEventPoint)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQEventPoint2 constructs a new QEventPoint object.
 func NewQEventPoint2(pointId int, state QEventPoint__State, scenePosition *QPointF, globalPosition *QPointF) *QEventPoint {
-	ret := C.QEventPoint_new2((C.int)(pointId), (C.uint8_t)(state), scenePosition.cPointer(), globalPosition.cPointer())
-	return newQEventPoint(ret)
+	var outptr_QEventPoint *C.QEventPoint = nil
+
+	C.QEventPoint_new2((C.int)(pointId), (C.uint8_t)(state), scenePosition.cPointer(), globalPosition.cPointer(), &outptr_QEventPoint)
+	ret := newQEventPoint(outptr_QEventPoint)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQEventPoint3 constructs a new QEventPoint object.
 func NewQEventPoint3(other *QEventPoint) *QEventPoint {
-	ret := C.QEventPoint_new3(other.cPointer())
-	return newQEventPoint(ret)
+	var outptr_QEventPoint *C.QEventPoint = nil
+
+	C.QEventPoint_new3(other.cPointer(), &outptr_QEventPoint)
+	ret := newQEventPoint(outptr_QEventPoint)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQEventPoint4 constructs a new QEventPoint object.
 func NewQEventPoint4(id int) *QEventPoint {
-	ret := C.QEventPoint_new4((C.int)(id))
-	return newQEventPoint(ret)
+	var outptr_QEventPoint *C.QEventPoint = nil
+
+	C.QEventPoint_new4((C.int)(id), &outptr_QEventPoint)
+	ret := newQEventPoint(outptr_QEventPoint)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQEventPoint5 constructs a new QEventPoint object.
 func NewQEventPoint5(id int, device *QPointingDevice) *QEventPoint {
-	ret := C.QEventPoint_new5((C.int)(id), device.cPointer())
-	return newQEventPoint(ret)
+	var outptr_QEventPoint *C.QEventPoint = nil
+
+	C.QEventPoint_new5((C.int)(id), device.cPointer(), &outptr_QEventPoint)
+	ret := newQEventPoint(outptr_QEventPoint)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QEventPoint) OperatorAssign(other *QEventPoint) {
@@ -285,7 +312,7 @@ func (this *QEventPoint) State() QEventPoint__State {
 }
 
 func (this *QEventPoint) Device() *QPointingDevice {
-	return UnsafeNewQPointingDevice(unsafe.Pointer(C.QEventPoint_Device(this.h)))
+	return UnsafeNewQPointingDevice(unsafe.Pointer(C.QEventPoint_Device(this.h)), nil, nil)
 }
 
 func (this *QEventPoint) Id() int {
@@ -344,7 +371,7 @@ func (this *QEventPoint) SetAccepted1(accepted bool) {
 
 // Delete this object from C++ memory.
 func (this *QEventPoint) Delete() {
-	C.QEventPoint_Delete(this.h)
+	C.QEventPoint_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

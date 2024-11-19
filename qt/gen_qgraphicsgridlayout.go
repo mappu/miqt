@@ -10,11 +10,13 @@ import "C"
 
 import (
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
 type QGraphicsGridLayout struct {
-	h *C.QGraphicsGridLayout
+	h          *C.QGraphicsGridLayout
+	isSubclass bool
 	*QGraphicsLayout
 }
 
@@ -32,27 +34,47 @@ func (this *QGraphicsGridLayout) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQGraphicsGridLayout(h *C.QGraphicsGridLayout) *QGraphicsGridLayout {
+// newQGraphicsGridLayout constructs the type using only CGO pointers.
+func newQGraphicsGridLayout(h *C.QGraphicsGridLayout, h_QGraphicsLayout *C.QGraphicsLayout, h_QGraphicsLayoutItem *C.QGraphicsLayoutItem) *QGraphicsGridLayout {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsGridLayout{h: h, QGraphicsLayout: UnsafeNewQGraphicsLayout(unsafe.Pointer(h))}
+	return &QGraphicsGridLayout{h: h,
+		QGraphicsLayout: newQGraphicsLayout(h_QGraphicsLayout, h_QGraphicsLayoutItem)}
 }
 
-func UnsafeNewQGraphicsGridLayout(h unsafe.Pointer) *QGraphicsGridLayout {
-	return newQGraphicsGridLayout((*C.QGraphicsGridLayout)(h))
+// UnsafeNewQGraphicsGridLayout constructs the type using only unsafe pointers.
+func UnsafeNewQGraphicsGridLayout(h unsafe.Pointer, h_QGraphicsLayout unsafe.Pointer, h_QGraphicsLayoutItem unsafe.Pointer) *QGraphicsGridLayout {
+	if h == nil {
+		return nil
+	}
+
+	return &QGraphicsGridLayout{h: (*C.QGraphicsGridLayout)(h),
+		QGraphicsLayout: UnsafeNewQGraphicsLayout(h_QGraphicsLayout, h_QGraphicsLayoutItem)}
 }
 
 // NewQGraphicsGridLayout constructs a new QGraphicsGridLayout object.
 func NewQGraphicsGridLayout() *QGraphicsGridLayout {
-	ret := C.QGraphicsGridLayout_new()
-	return newQGraphicsGridLayout(ret)
+	var outptr_QGraphicsGridLayout *C.QGraphicsGridLayout = nil
+	var outptr_QGraphicsLayout *C.QGraphicsLayout = nil
+	var outptr_QGraphicsLayoutItem *C.QGraphicsLayoutItem = nil
+
+	C.QGraphicsGridLayout_new(&outptr_QGraphicsGridLayout, &outptr_QGraphicsLayout, &outptr_QGraphicsLayoutItem)
+	ret := newQGraphicsGridLayout(outptr_QGraphicsGridLayout, outptr_QGraphicsLayout, outptr_QGraphicsLayoutItem)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQGraphicsGridLayout2 constructs a new QGraphicsGridLayout object.
 func NewQGraphicsGridLayout2(parent *QGraphicsLayoutItem) *QGraphicsGridLayout {
-	ret := C.QGraphicsGridLayout_new2(parent.cPointer())
-	return newQGraphicsGridLayout(ret)
+	var outptr_QGraphicsGridLayout *C.QGraphicsGridLayout = nil
+	var outptr_QGraphicsLayout *C.QGraphicsLayout = nil
+	var outptr_QGraphicsLayoutItem *C.QGraphicsLayoutItem = nil
+
+	C.QGraphicsGridLayout_new2(parent.cPointer(), &outptr_QGraphicsGridLayout, &outptr_QGraphicsLayout, &outptr_QGraphicsLayoutItem)
+	ret := newQGraphicsGridLayout(outptr_QGraphicsGridLayout, outptr_QGraphicsLayout, outptr_QGraphicsLayoutItem)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QGraphicsGridLayout) AddItem(item *QGraphicsLayoutItem, row int, column int, rowSpan int, columnSpan int) {
@@ -231,8 +253,8 @@ func (this *QGraphicsGridLayout) SetGeometry(rect *QRectF) {
 	C.QGraphicsGridLayout_SetGeometry(this.h, rect.cPointer())
 }
 
-func (this *QGraphicsGridLayout) SizeHint(which SizeHint) *QSizeF {
-	_ret := C.QGraphicsGridLayout_SizeHint(this.h, (C.int)(which))
+func (this *QGraphicsGridLayout) SizeHint(which SizeHint, constraint *QSizeF) *QSizeF {
+	_ret := C.QGraphicsGridLayout_SizeHint(this.h, (C.int)(which), constraint.cPointer())
 	_goptr := newQSizeF(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -246,16 +268,223 @@ func (this *QGraphicsGridLayout) AddItem4(item *QGraphicsLayoutItem, row int, co
 	C.QGraphicsGridLayout_AddItem4(this.h, item.cPointer(), (C.int)(row), (C.int)(column), (C.int)(alignment))
 }
 
-func (this *QGraphicsGridLayout) SizeHint2(which SizeHint, constraint *QSizeF) *QSizeF {
-	_ret := C.QGraphicsGridLayout_SizeHint2(this.h, (C.int)(which), constraint.cPointer())
+func (this *QGraphicsGridLayout) callVirtualBase_Count() int {
+
+	return (int)(C.QGraphicsGridLayout_virtualbase_Count(unsafe.Pointer(this.h)))
+
+}
+func (this *QGraphicsGridLayout) OnCount(slot func(super func() int) int) {
+	C.QGraphicsGridLayout_override_virtual_Count(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsGridLayout_Count
+func miqt_exec_callback_QGraphicsGridLayout_Count(self *C.QGraphicsGridLayout, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QGraphicsGridLayout{h: self}).callVirtualBase_Count)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QGraphicsGridLayout) callVirtualBase_ItemAtWithIndex(index int) *QGraphicsLayoutItem {
+
+	return UnsafeNewQGraphicsLayoutItem(unsafe.Pointer(C.QGraphicsGridLayout_virtualbase_ItemAtWithIndex(unsafe.Pointer(this.h), (C.int)(index))))
+}
+func (this *QGraphicsGridLayout) OnItemAtWithIndex(slot func(super func(index int) *QGraphicsLayoutItem, index int) *QGraphicsLayoutItem) {
+	C.QGraphicsGridLayout_override_virtual_ItemAtWithIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsGridLayout_ItemAtWithIndex
+func miqt_exec_callback_QGraphicsGridLayout_ItemAtWithIndex(self *C.QGraphicsGridLayout, cb C.intptr_t, index C.int) *C.QGraphicsLayoutItem {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index int) *QGraphicsLayoutItem, index int) *QGraphicsLayoutItem)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(index)
+
+	virtualReturn := gofunc((&QGraphicsGridLayout{h: self}).callVirtualBase_ItemAtWithIndex, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QGraphicsGridLayout) callVirtualBase_RemoveAt(index int) {
+
+	C.QGraphicsGridLayout_virtualbase_RemoveAt(unsafe.Pointer(this.h), (C.int)(index))
+
+}
+func (this *QGraphicsGridLayout) OnRemoveAt(slot func(super func(index int), index int)) {
+	C.QGraphicsGridLayout_override_virtual_RemoveAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsGridLayout_RemoveAt
+func miqt_exec_callback_QGraphicsGridLayout_RemoveAt(self *C.QGraphicsGridLayout, cb C.intptr_t, index C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index int), index int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(index)
+
+	gofunc((&QGraphicsGridLayout{h: self}).callVirtualBase_RemoveAt, slotval1)
+
+}
+
+func (this *QGraphicsGridLayout) callVirtualBase_Invalidate() {
+
+	C.QGraphicsGridLayout_virtualbase_Invalidate(unsafe.Pointer(this.h))
+
+}
+func (this *QGraphicsGridLayout) OnInvalidate(slot func(super func())) {
+	C.QGraphicsGridLayout_override_virtual_Invalidate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsGridLayout_Invalidate
+func miqt_exec_callback_QGraphicsGridLayout_Invalidate(self *C.QGraphicsGridLayout, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QGraphicsGridLayout{h: self}).callVirtualBase_Invalidate)
+
+}
+
+func (this *QGraphicsGridLayout) callVirtualBase_SetGeometry(rect *QRectF) {
+
+	C.QGraphicsGridLayout_virtualbase_SetGeometry(unsafe.Pointer(this.h), rect.cPointer())
+
+}
+func (this *QGraphicsGridLayout) OnSetGeometry(slot func(super func(rect *QRectF), rect *QRectF)) {
+	C.QGraphicsGridLayout_override_virtual_SetGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsGridLayout_SetGeometry
+func miqt_exec_callback_QGraphicsGridLayout_SetGeometry(self *C.QGraphicsGridLayout, cb C.intptr_t, rect *C.QRectF) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect *QRectF), rect *QRectF))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQRectF(unsafe.Pointer(rect))
+
+	gofunc((&QGraphicsGridLayout{h: self}).callVirtualBase_SetGeometry, slotval1)
+
+}
+
+func (this *QGraphicsGridLayout) callVirtualBase_SizeHint(which SizeHint, constraint *QSizeF) *QSizeF {
+
+	_ret := C.QGraphicsGridLayout_virtualbase_SizeHint(unsafe.Pointer(this.h), (C.int)(which), constraint.cPointer())
 	_goptr := newQSizeF(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
+
+}
+func (this *QGraphicsGridLayout) OnSizeHint(slot func(super func(which SizeHint, constraint *QSizeF) *QSizeF, which SizeHint, constraint *QSizeF) *QSizeF) {
+	C.QGraphicsGridLayout_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsGridLayout_SizeHint
+func miqt_exec_callback_QGraphicsGridLayout_SizeHint(self *C.QGraphicsGridLayout, cb C.intptr_t, which C.int, constraint *C.QSizeF) *C.QSizeF {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(which SizeHint, constraint *QSizeF) *QSizeF, which SizeHint, constraint *QSizeF) *QSizeF)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (SizeHint)(which)
+
+	slotval2 := UnsafeNewQSizeF(unsafe.Pointer(constraint))
+
+	virtualReturn := gofunc((&QGraphicsGridLayout{h: self}).callVirtualBase_SizeHint, slotval1, slotval2)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QGraphicsGridLayout) callVirtualBase_GetContentsMargins(left *float64, top *float64, right *float64, bottom *float64) {
+
+	C.QGraphicsGridLayout_virtualbase_GetContentsMargins(unsafe.Pointer(this.h), (*C.double)(unsafe.Pointer(left)), (*C.double)(unsafe.Pointer(top)), (*C.double)(unsafe.Pointer(right)), (*C.double)(unsafe.Pointer(bottom)))
+
+}
+func (this *QGraphicsGridLayout) OnGetContentsMargins(slot func(super func(left *float64, top *float64, right *float64, bottom *float64), left *float64, top *float64, right *float64, bottom *float64)) {
+	C.QGraphicsGridLayout_override_virtual_GetContentsMargins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsGridLayout_GetContentsMargins
+func miqt_exec_callback_QGraphicsGridLayout_GetContentsMargins(self *C.QGraphicsGridLayout, cb C.intptr_t, left *C.double, top *C.double, right *C.double, bottom *C.double) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(left *float64, top *float64, right *float64, bottom *float64), left *float64, top *float64, right *float64, bottom *float64))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (*float64)(unsafe.Pointer(left))
+
+	slotval2 := (*float64)(unsafe.Pointer(top))
+
+	slotval3 := (*float64)(unsafe.Pointer(right))
+
+	slotval4 := (*float64)(unsafe.Pointer(bottom))
+
+	gofunc((&QGraphicsGridLayout{h: self}).callVirtualBase_GetContentsMargins, slotval1, slotval2, slotval3, slotval4)
+
+}
+
+func (this *QGraphicsGridLayout) callVirtualBase_UpdateGeometry() {
+
+	C.QGraphicsGridLayout_virtualbase_UpdateGeometry(unsafe.Pointer(this.h))
+
+}
+func (this *QGraphicsGridLayout) OnUpdateGeometry(slot func(super func())) {
+	C.QGraphicsGridLayout_override_virtual_UpdateGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsGridLayout_UpdateGeometry
+func miqt_exec_callback_QGraphicsGridLayout_UpdateGeometry(self *C.QGraphicsGridLayout, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QGraphicsGridLayout{h: self}).callVirtualBase_UpdateGeometry)
+
+}
+
+func (this *QGraphicsGridLayout) callVirtualBase_WidgetEvent(e *QEvent) {
+
+	C.QGraphicsGridLayout_virtualbase_WidgetEvent(unsafe.Pointer(this.h), e.cPointer())
+
+}
+func (this *QGraphicsGridLayout) OnWidgetEvent(slot func(super func(e *QEvent), e *QEvent)) {
+	C.QGraphicsGridLayout_override_virtual_WidgetEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsGridLayout_WidgetEvent
+func miqt_exec_callback_QGraphicsGridLayout_WidgetEvent(self *C.QGraphicsGridLayout, cb C.intptr_t, e *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QEvent), e *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+
+	gofunc((&QGraphicsGridLayout{h: self}).callVirtualBase_WidgetEvent, slotval1)
+
 }
 
 // Delete this object from C++ memory.
 func (this *QGraphicsGridLayout) Delete() {
-	C.QGraphicsGridLayout_Delete(this.h)
+	C.QGraphicsGridLayout_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -31,7 +31,8 @@ const (
 )
 
 type QNetworkCookie struct {
-	h *C.QNetworkCookie
+	h          *C.QNetworkCookie
+	isSubclass bool
 }
 
 func (this *QNetworkCookie) cPointer() *C.QNetworkCookie {
@@ -48,6 +49,7 @@ func (this *QNetworkCookie) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQNetworkCookie constructs the type using only CGO pointers.
 func newQNetworkCookie(h *C.QNetworkCookie) *QNetworkCookie {
 	if h == nil {
 		return nil
@@ -55,20 +57,33 @@ func newQNetworkCookie(h *C.QNetworkCookie) *QNetworkCookie {
 	return &QNetworkCookie{h: h}
 }
 
+// UnsafeNewQNetworkCookie constructs the type using only unsafe pointers.
 func UnsafeNewQNetworkCookie(h unsafe.Pointer) *QNetworkCookie {
-	return newQNetworkCookie((*C.QNetworkCookie)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QNetworkCookie{h: (*C.QNetworkCookie)(h)}
 }
 
 // NewQNetworkCookie constructs a new QNetworkCookie object.
 func NewQNetworkCookie() *QNetworkCookie {
-	ret := C.QNetworkCookie_new()
-	return newQNetworkCookie(ret)
+	var outptr_QNetworkCookie *C.QNetworkCookie = nil
+
+	C.QNetworkCookie_new(&outptr_QNetworkCookie)
+	ret := newQNetworkCookie(outptr_QNetworkCookie)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQNetworkCookie2 constructs a new QNetworkCookie object.
 func NewQNetworkCookie2(other *QNetworkCookie) *QNetworkCookie {
-	ret := C.QNetworkCookie_new2(other.cPointer())
-	return newQNetworkCookie(ret)
+	var outptr_QNetworkCookie *C.QNetworkCookie = nil
+
+	C.QNetworkCookie_new2(other.cPointer(), &outptr_QNetworkCookie)
+	ret := newQNetworkCookie(outptr_QNetworkCookie)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQNetworkCookie3 constructs a new QNetworkCookie object.
@@ -76,8 +91,12 @@ func NewQNetworkCookie3(name []byte) *QNetworkCookie {
 	name_alias := C.struct_miqt_string{}
 	name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
 	name_alias.len = C.size_t(len(name))
-	ret := C.QNetworkCookie_new3(name_alias)
-	return newQNetworkCookie(ret)
+	var outptr_QNetworkCookie *C.QNetworkCookie = nil
+
+	C.QNetworkCookie_new3(name_alias, &outptr_QNetworkCookie)
+	ret := newQNetworkCookie(outptr_QNetworkCookie)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQNetworkCookie4 constructs a new QNetworkCookie object.
@@ -88,8 +107,12 @@ func NewQNetworkCookie4(name []byte, value []byte) *QNetworkCookie {
 	value_alias := C.struct_miqt_string{}
 	value_alias.data = (*C.char)(unsafe.Pointer(&value[0]))
 	value_alias.len = C.size_t(len(value))
-	ret := C.QNetworkCookie_new4(name_alias, value_alias)
-	return newQNetworkCookie(ret)
+	var outptr_QNetworkCookie *C.QNetworkCookie = nil
+
+	C.QNetworkCookie_new4(name_alias, value_alias, &outptr_QNetworkCookie)
+	ret := newQNetworkCookie(outptr_QNetworkCookie)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QNetworkCookie) OperatorAssign(other *QNetworkCookie) {
@@ -245,7 +268,7 @@ func (this *QNetworkCookie) ToRawForm1(form QNetworkCookie__RawForm) []byte {
 
 // Delete this object from C++ memory.
 func (this *QNetworkCookie) Delete() {
-	C.QNetworkCookie_Delete(this.h)
+	C.QNetworkCookie_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

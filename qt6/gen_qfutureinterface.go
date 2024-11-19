@@ -27,8 +27,16 @@ const (
 	QFutureInterfaceBase__Pending    QFutureInterfaceBase__State = 128
 )
 
+type QFutureInterfaceBase__CancelMode int
+
+const (
+	QFutureInterfaceBase__CancelOnly      QFutureInterfaceBase__CancelMode = 0
+	QFutureInterfaceBase__CancelAndFinish QFutureInterfaceBase__CancelMode = 1
+)
+
 type QFutureInterfaceBase struct {
-	h *C.QFutureInterfaceBase
+	h          *C.QFutureInterfaceBase
+	isSubclass bool
 }
 
 func (this *QFutureInterfaceBase) cPointer() *C.QFutureInterfaceBase {
@@ -45,6 +53,7 @@ func (this *QFutureInterfaceBase) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQFutureInterfaceBase constructs the type using only CGO pointers.
 func newQFutureInterfaceBase(h *C.QFutureInterfaceBase) *QFutureInterfaceBase {
 	if h == nil {
 		return nil
@@ -52,26 +61,43 @@ func newQFutureInterfaceBase(h *C.QFutureInterfaceBase) *QFutureInterfaceBase {
 	return &QFutureInterfaceBase{h: h}
 }
 
+// UnsafeNewQFutureInterfaceBase constructs the type using only unsafe pointers.
 func UnsafeNewQFutureInterfaceBase(h unsafe.Pointer) *QFutureInterfaceBase {
-	return newQFutureInterfaceBase((*C.QFutureInterfaceBase)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QFutureInterfaceBase{h: (*C.QFutureInterfaceBase)(h)}
 }
 
 // NewQFutureInterfaceBase constructs a new QFutureInterfaceBase object.
 func NewQFutureInterfaceBase() *QFutureInterfaceBase {
-	ret := C.QFutureInterfaceBase_new()
-	return newQFutureInterfaceBase(ret)
+	var outptr_QFutureInterfaceBase *C.QFutureInterfaceBase = nil
+
+	C.QFutureInterfaceBase_new(&outptr_QFutureInterfaceBase)
+	ret := newQFutureInterfaceBase(outptr_QFutureInterfaceBase)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFutureInterfaceBase2 constructs a new QFutureInterfaceBase object.
 func NewQFutureInterfaceBase2(other *QFutureInterfaceBase) *QFutureInterfaceBase {
-	ret := C.QFutureInterfaceBase_new2(other.cPointer())
-	return newQFutureInterfaceBase(ret)
+	var outptr_QFutureInterfaceBase *C.QFutureInterfaceBase = nil
+
+	C.QFutureInterfaceBase_new2(other.cPointer(), &outptr_QFutureInterfaceBase)
+	ret := newQFutureInterfaceBase(outptr_QFutureInterfaceBase)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFutureInterfaceBase3 constructs a new QFutureInterfaceBase object.
 func NewQFutureInterfaceBase3(initialState QFutureInterfaceBase__State) *QFutureInterfaceBase {
-	ret := C.QFutureInterfaceBase_new3((C.int)(initialState))
-	return newQFutureInterfaceBase(ret)
+	var outptr_QFutureInterfaceBase *C.QFutureInterfaceBase = nil
+
+	C.QFutureInterfaceBase_new3((C.int)(initialState), &outptr_QFutureInterfaceBase)
+	ret := newQFutureInterfaceBase(outptr_QFutureInterfaceBase)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QFutureInterfaceBase) OperatorAssign(other *QFutureInterfaceBase) {
@@ -103,7 +129,7 @@ func (this *QFutureInterfaceBase) SetThreadPool(pool *QThreadPool) {
 }
 
 func (this *QFutureInterfaceBase) ThreadPool() *QThreadPool {
-	return UnsafeNewQThreadPool(unsafe.Pointer(C.QFutureInterfaceBase_ThreadPool(this.h)))
+	return UnsafeNewQThreadPool(unsafe.Pointer(C.QFutureInterfaceBase_ThreadPool(this.h)), nil)
 }
 
 func (this *QFutureInterfaceBase) SetFilterMode(enable bool) {
@@ -262,7 +288,7 @@ func (this *QFutureInterfaceBase) SuspendIfRequested() {
 }
 
 func (this *QFutureInterfaceBase) Mutex() *QMutex {
-	return UnsafeNewQMutex(unsafe.Pointer(C.QFutureInterfaceBase_Mutex(this.h)))
+	return UnsafeNewQMutex(unsafe.Pointer(C.QFutureInterfaceBase_Mutex(this.h)), nil)
 }
 
 func (this *QFutureInterfaceBase) HasException() bool {
@@ -287,7 +313,7 @@ func (this *QFutureInterfaceBase) IsChainCanceled() bool {
 
 // Delete this object from C++ memory.
 func (this *QFutureInterfaceBase) Delete() {
-	C.QFutureInterfaceBase_Delete(this.h)
+	C.QFutureInterfaceBase_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

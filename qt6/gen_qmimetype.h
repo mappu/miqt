@@ -20,8 +20,8 @@ class QMimeType;
 typedef struct QMimeType QMimeType;
 #endif
 
-QMimeType* QMimeType_new();
-QMimeType* QMimeType_new2(QMimeType* other);
+void QMimeType_new(QMimeType** outptr_QMimeType);
+void QMimeType_new2(QMimeType* other, QMimeType** outptr_QMimeType);
 void QMimeType_OperatorAssign(QMimeType* self, QMimeType* other);
 void QMimeType_Swap(QMimeType* self, QMimeType* other);
 bool QMimeType_OperatorEqual(const QMimeType* self, QMimeType* other);
@@ -40,7 +40,7 @@ struct miqt_array /* of struct miqt_string */  QMimeType_Suffixes(const QMimeTyp
 struct miqt_string QMimeType_PreferredSuffix(const QMimeType* self);
 bool QMimeType_Inherits(const QMimeType* self, struct miqt_string mimeTypeName);
 struct miqt_string QMimeType_FilterString(const QMimeType* self);
-void QMimeType_Delete(QMimeType* self);
+void QMimeType_Delete(QMimeType* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

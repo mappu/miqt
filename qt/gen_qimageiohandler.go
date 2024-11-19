@@ -60,7 +60,8 @@ const (
 )
 
 type QImageIOHandler struct {
-	h *C.QImageIOHandler
+	h          *C.QImageIOHandler
+	isSubclass bool
 }
 
 func (this *QImageIOHandler) cPointer() *C.QImageIOHandler {
@@ -77,6 +78,7 @@ func (this *QImageIOHandler) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQImageIOHandler constructs the type using only CGO pointers.
 func newQImageIOHandler(h *C.QImageIOHandler) *QImageIOHandler {
 	if h == nil {
 		return nil
@@ -84,8 +86,13 @@ func newQImageIOHandler(h *C.QImageIOHandler) *QImageIOHandler {
 	return &QImageIOHandler{h: h}
 }
 
+// UnsafeNewQImageIOHandler constructs the type using only unsafe pointers.
 func UnsafeNewQImageIOHandler(h unsafe.Pointer) *QImageIOHandler {
-	return newQImageIOHandler((*C.QImageIOHandler)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QImageIOHandler{h: (*C.QImageIOHandler)(h)}
 }
 
 func (this *QImageIOHandler) SetDevice(device *QIODevice) {
@@ -93,7 +100,7 @@ func (this *QImageIOHandler) SetDevice(device *QIODevice) {
 }
 
 func (this *QImageIOHandler) Device() *QIODevice {
-	return UnsafeNewQIODevice(unsafe.Pointer(C.QImageIOHandler_Device(this.h)))
+	return UnsafeNewQIODevice(unsafe.Pointer(C.QImageIOHandler_Device(this.h)), nil)
 }
 
 func (this *QImageIOHandler) SetFormat(format []byte) {
@@ -184,7 +191,7 @@ func (this *QImageIOHandler) CurrentImageRect() *QRect {
 
 // Delete this object from C++ memory.
 func (this *QImageIOHandler) Delete() {
-	C.QImageIOHandler_Delete(this.h)
+	C.QImageIOHandler_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -197,7 +204,8 @@ func (this *QImageIOHandler) GoGC() {
 }
 
 type QImageIOPlugin struct {
-	h *C.QImageIOPlugin
+	h          *C.QImageIOPlugin
+	isSubclass bool
 	*QObject
 }
 
@@ -215,15 +223,23 @@ func (this *QImageIOPlugin) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQImageIOPlugin(h *C.QImageIOPlugin) *QImageIOPlugin {
+// newQImageIOPlugin constructs the type using only CGO pointers.
+func newQImageIOPlugin(h *C.QImageIOPlugin, h_QObject *C.QObject) *QImageIOPlugin {
 	if h == nil {
 		return nil
 	}
-	return &QImageIOPlugin{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QImageIOPlugin{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQImageIOPlugin(h unsafe.Pointer) *QImageIOPlugin {
-	return newQImageIOPlugin((*C.QImageIOPlugin)(h))
+// UnsafeNewQImageIOPlugin constructs the type using only unsafe pointers.
+func UnsafeNewQImageIOPlugin(h unsafe.Pointer, h_QObject unsafe.Pointer) *QImageIOPlugin {
+	if h == nil {
+		return nil
+	}
+
+	return &QImageIOPlugin{h: (*C.QImageIOPlugin)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QImageIOPlugin) MetaObject() *QMetaObject {
@@ -261,8 +277,11 @@ func (this *QImageIOPlugin) Capabilities(device *QIODevice, format []byte) QImag
 	return (QImageIOPlugin__Capability)(C.QImageIOPlugin_Capabilities(this.h, device.cPointer(), format_alias))
 }
 
-func (this *QImageIOPlugin) Create(device *QIODevice) *QImageIOHandler {
-	return UnsafeNewQImageIOHandler(unsafe.Pointer(C.QImageIOPlugin_Create(this.h, device.cPointer())))
+func (this *QImageIOPlugin) Create(device *QIODevice, format []byte) *QImageIOHandler {
+	format_alias := C.struct_miqt_string{}
+	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	format_alias.len = C.size_t(len(format))
+	return UnsafeNewQImageIOHandler(unsafe.Pointer(C.QImageIOPlugin_Create(this.h, device.cPointer(), format_alias)))
 }
 
 func QImageIOPlugin_Tr2(s string, c string) string {
@@ -309,16 +328,9 @@ func QImageIOPlugin_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QImageIOPlugin) Create2(device *QIODevice, format []byte) *QImageIOHandler {
-	format_alias := C.struct_miqt_string{}
-	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
-	format_alias.len = C.size_t(len(format))
-	return UnsafeNewQImageIOHandler(unsafe.Pointer(C.QImageIOPlugin_Create2(this.h, device.cPointer(), format_alias)))
-}
-
 // Delete this object from C++ memory.
 func (this *QImageIOPlugin) Delete() {
-	C.QImageIOPlugin_Delete(this.h)
+	C.QImageIOPlugin_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

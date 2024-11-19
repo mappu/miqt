@@ -6,16 +6,19 @@
 #include "gen_qoperatingsystemversion.h"
 #include "_cgo_export.h"
 
-QOperatingSystemVersion* QOperatingSystemVersion_new(int osType, int vmajor) {
-	return new QOperatingSystemVersion(static_cast<QOperatingSystemVersion::OSType>(osType), static_cast<int>(vmajor));
+void QOperatingSystemVersion_new(int osType, int vmajor, QOperatingSystemVersion** outptr_QOperatingSystemVersion) {
+	QOperatingSystemVersion* ret = new QOperatingSystemVersion(static_cast<QOperatingSystemVersion::OSType>(osType), static_cast<int>(vmajor));
+	*outptr_QOperatingSystemVersion = ret;
 }
 
-QOperatingSystemVersion* QOperatingSystemVersion_new2(int osType, int vmajor, int vminor) {
-	return new QOperatingSystemVersion(static_cast<QOperatingSystemVersion::OSType>(osType), static_cast<int>(vmajor), static_cast<int>(vminor));
+void QOperatingSystemVersion_new2(int osType, int vmajor, int vminor, QOperatingSystemVersion** outptr_QOperatingSystemVersion) {
+	QOperatingSystemVersion* ret = new QOperatingSystemVersion(static_cast<QOperatingSystemVersion::OSType>(osType), static_cast<int>(vmajor), static_cast<int>(vminor));
+	*outptr_QOperatingSystemVersion = ret;
 }
 
-QOperatingSystemVersion* QOperatingSystemVersion_new3(int osType, int vmajor, int vminor, int vmicro) {
-	return new QOperatingSystemVersion(static_cast<QOperatingSystemVersion::OSType>(osType), static_cast<int>(vmajor), static_cast<int>(vminor), static_cast<int>(vmicro));
+void QOperatingSystemVersion_new3(int osType, int vmajor, int vminor, int vmicro, QOperatingSystemVersion** outptr_QOperatingSystemVersion) {
+	QOperatingSystemVersion* ret = new QOperatingSystemVersion(static_cast<QOperatingSystemVersion::OSType>(osType), static_cast<int>(vmajor), static_cast<int>(vminor), static_cast<int>(vmicro));
+	*outptr_QOperatingSystemVersion = ret;
 }
 
 QOperatingSystemVersion* QOperatingSystemVersion_Current() {
@@ -59,7 +62,11 @@ struct miqt_string QOperatingSystemVersion_Name(const QOperatingSystemVersion* s
 	return _ms;
 }
 
-void QOperatingSystemVersion_Delete(QOperatingSystemVersion* self) {
-	delete self;
+void QOperatingSystemVersion_Delete(QOperatingSystemVersion* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QOperatingSystemVersion*>( self );
+	} else {
+		delete self;
+	}
 }
 

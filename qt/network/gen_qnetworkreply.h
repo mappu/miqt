@@ -16,10 +16,12 @@ extern "C" {
 
 #ifdef __cplusplus
 class QByteArray;
+class QIODevice;
 class QMetaObject;
 class QNetworkAccessManager;
 class QNetworkReply;
 class QNetworkRequest;
+class QObject;
 class QSslConfiguration;
 class QSslError;
 class QSslPreSharedKeyAuthenticator;
@@ -27,10 +29,12 @@ class QUrl;
 class QVariant;
 #else
 typedef struct QByteArray QByteArray;
+typedef struct QIODevice QIODevice;
 typedef struct QMetaObject QMetaObject;
 typedef struct QNetworkAccessManager QNetworkAccessManager;
 typedef struct QNetworkReply QNetworkReply;
 typedef struct QNetworkRequest QNetworkRequest;
+typedef struct QObject QObject;
 typedef struct QSslConfiguration QSslConfiguration;
 typedef struct QSslError QSslError;
 typedef struct QSslPreSharedKeyAuthenticator QSslPreSharedKeyAuthenticator;
@@ -86,11 +90,15 @@ void QNetworkReply_UploadProgress(QNetworkReply* self, long long bytesSent, long
 void QNetworkReply_connect_UploadProgress(QNetworkReply* self, intptr_t slot);
 void QNetworkReply_DownloadProgress(QNetworkReply* self, long long bytesReceived, long long bytesTotal);
 void QNetworkReply_connect_DownloadProgress(QNetworkReply* self, intptr_t slot);
+long long QNetworkReply_WriteData(QNetworkReply* self, const char* data, long long lenVal);
+void QNetworkReply_SslConfigurationImplementation(const QNetworkReply* self, QSslConfiguration* param1);
+void QNetworkReply_SetSslConfigurationImplementation(QNetworkReply* self, QSslConfiguration* sslConfigurationImplementation);
+void QNetworkReply_IgnoreSslErrorsImplementation(QNetworkReply* self, struct miqt_array /* of QSslError* */  param1);
 struct miqt_string QNetworkReply_Tr2(const char* s, const char* c);
 struct miqt_string QNetworkReply_Tr3(const char* s, const char* c, int n);
 struct miqt_string QNetworkReply_TrUtf82(const char* s, const char* c);
 struct miqt_string QNetworkReply_TrUtf83(const char* s, const char* c, int n);
-void QNetworkReply_Delete(QNetworkReply* self);
+void QNetworkReply_Delete(QNetworkReply* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

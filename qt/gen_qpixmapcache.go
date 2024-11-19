@@ -14,7 +14,8 @@ import (
 )
 
 type QPixmapCache struct {
-	h *C.QPixmapCache
+	h          *C.QPixmapCache
+	isSubclass bool
 }
 
 func (this *QPixmapCache) cPointer() *C.QPixmapCache {
@@ -31,6 +32,7 @@ func (this *QPixmapCache) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPixmapCache constructs the type using only CGO pointers.
 func newQPixmapCache(h *C.QPixmapCache) *QPixmapCache {
 	if h == nil {
 		return nil
@@ -38,8 +40,13 @@ func newQPixmapCache(h *C.QPixmapCache) *QPixmapCache {
 	return &QPixmapCache{h: h}
 }
 
+// UnsafeNewQPixmapCache constructs the type using only unsafe pointers.
 func UnsafeNewQPixmapCache(h unsafe.Pointer) *QPixmapCache {
-	return newQPixmapCache((*C.QPixmapCache)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPixmapCache{h: (*C.QPixmapCache)(h)}
 }
 
 func QPixmapCache_CacheLimit() int {
@@ -55,7 +62,7 @@ func QPixmapCache_Find(key string) *QPixmap {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	return UnsafeNewQPixmap(unsafe.Pointer(C.QPixmapCache_Find(key_ms)))
+	return UnsafeNewQPixmap(unsafe.Pointer(C.QPixmapCache_Find(key_ms)), nil)
 }
 
 func QPixmapCache_Find2(key string, pixmap *QPixmap) bool {
@@ -115,7 +122,7 @@ func QPixmapCache_Clear() {
 
 // Delete this object from C++ memory.
 func (this *QPixmapCache) Delete() {
-	C.QPixmapCache_Delete(this.h)
+	C.QPixmapCache_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -128,7 +135,8 @@ func (this *QPixmapCache) GoGC() {
 }
 
 type QPixmapCache__Key struct {
-	h *C.QPixmapCache__Key
+	h          *C.QPixmapCache__Key
+	isSubclass bool
 }
 
 func (this *QPixmapCache__Key) cPointer() *C.QPixmapCache__Key {
@@ -145,6 +153,7 @@ func (this *QPixmapCache__Key) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPixmapCache__Key constructs the type using only CGO pointers.
 func newQPixmapCache__Key(h *C.QPixmapCache__Key) *QPixmapCache__Key {
 	if h == nil {
 		return nil
@@ -152,20 +161,33 @@ func newQPixmapCache__Key(h *C.QPixmapCache__Key) *QPixmapCache__Key {
 	return &QPixmapCache__Key{h: h}
 }
 
+// UnsafeNewQPixmapCache__Key constructs the type using only unsafe pointers.
 func UnsafeNewQPixmapCache__Key(h unsafe.Pointer) *QPixmapCache__Key {
-	return newQPixmapCache__Key((*C.QPixmapCache__Key)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPixmapCache__Key{h: (*C.QPixmapCache__Key)(h)}
 }
 
 // NewQPixmapCache__Key constructs a new QPixmapCache::Key object.
 func NewQPixmapCache__Key() *QPixmapCache__Key {
-	ret := C.QPixmapCache__Key_new()
-	return newQPixmapCache__Key(ret)
+	var outptr_QPixmapCache__Key *C.QPixmapCache__Key = nil
+
+	C.QPixmapCache__Key_new(&outptr_QPixmapCache__Key)
+	ret := newQPixmapCache__Key(outptr_QPixmapCache__Key)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPixmapCache__Key2 constructs a new QPixmapCache::Key object.
 func NewQPixmapCache__Key2(other *QPixmapCache__Key) *QPixmapCache__Key {
-	ret := C.QPixmapCache__Key_new2(other.cPointer())
-	return newQPixmapCache__Key(ret)
+	var outptr_QPixmapCache__Key *C.QPixmapCache__Key = nil
+
+	C.QPixmapCache__Key_new2(other.cPointer(), &outptr_QPixmapCache__Key)
+	ret := newQPixmapCache__Key(outptr_QPixmapCache__Key)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QPixmapCache__Key) OperatorEqual(key *QPixmapCache__Key) bool {
@@ -190,7 +212,7 @@ func (this *QPixmapCache__Key) IsValid() bool {
 
 // Delete this object from C++ memory.
 func (this *QPixmapCache__Key) Delete() {
-	C.QPixmapCache__Key_Delete(this.h)
+	C.QPixmapCache__Key_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

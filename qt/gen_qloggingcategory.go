@@ -14,7 +14,8 @@ import (
 )
 
 type QLoggingCategory struct {
-	h *C.QLoggingCategory
+	h          *C.QLoggingCategory
+	isSubclass bool
 }
 
 func (this *QLoggingCategory) cPointer() *C.QLoggingCategory {
@@ -31,6 +32,7 @@ func (this *QLoggingCategory) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQLoggingCategory constructs the type using only CGO pointers.
 func newQLoggingCategory(h *C.QLoggingCategory) *QLoggingCategory {
 	if h == nil {
 		return nil
@@ -38,16 +40,25 @@ func newQLoggingCategory(h *C.QLoggingCategory) *QLoggingCategory {
 	return &QLoggingCategory{h: h}
 }
 
+// UnsafeNewQLoggingCategory constructs the type using only unsafe pointers.
 func UnsafeNewQLoggingCategory(h unsafe.Pointer) *QLoggingCategory {
-	return newQLoggingCategory((*C.QLoggingCategory)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QLoggingCategory{h: (*C.QLoggingCategory)(h)}
 }
 
 // NewQLoggingCategory constructs a new QLoggingCategory object.
 func NewQLoggingCategory(category string) *QLoggingCategory {
 	category_Cstring := C.CString(category)
 	defer C.free(unsafe.Pointer(category_Cstring))
-	ret := C.QLoggingCategory_new(category_Cstring)
-	return newQLoggingCategory(ret)
+	var outptr_QLoggingCategory *C.QLoggingCategory = nil
+
+	C.QLoggingCategory_new(category_Cstring, &outptr_QLoggingCategory)
+	ret := newQLoggingCategory(outptr_QLoggingCategory)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QLoggingCategory) IsDebugEnabled() bool {
@@ -93,7 +104,7 @@ func QLoggingCategory_SetFilterRules(rules string) {
 
 // Delete this object from C++ memory.
 func (this *QLoggingCategory) Delete() {
-	C.QLoggingCategory_Delete(this.h)
+	C.QLoggingCategory_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

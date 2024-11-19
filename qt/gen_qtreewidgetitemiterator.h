@@ -24,11 +24,11 @@ typedef struct QTreeWidgetItem QTreeWidgetItem;
 typedef struct QTreeWidgetItemIterator QTreeWidgetItemIterator;
 #endif
 
-QTreeWidgetItemIterator* QTreeWidgetItemIterator_new(QTreeWidgetItemIterator* it);
-QTreeWidgetItemIterator* QTreeWidgetItemIterator_new2(QTreeWidget* widget);
-QTreeWidgetItemIterator* QTreeWidgetItemIterator_new3(QTreeWidgetItem* item);
-QTreeWidgetItemIterator* QTreeWidgetItemIterator_new4(QTreeWidget* widget, int flags);
-QTreeWidgetItemIterator* QTreeWidgetItemIterator_new5(QTreeWidgetItem* item, int flags);
+void QTreeWidgetItemIterator_new(QTreeWidgetItemIterator* it, QTreeWidgetItemIterator** outptr_QTreeWidgetItemIterator);
+void QTreeWidgetItemIterator_new2(QTreeWidget* widget, QTreeWidgetItemIterator** outptr_QTreeWidgetItemIterator);
+void QTreeWidgetItemIterator_new3(QTreeWidgetItem* item, QTreeWidgetItemIterator** outptr_QTreeWidgetItemIterator);
+void QTreeWidgetItemIterator_new4(QTreeWidget* widget, int flags, QTreeWidgetItemIterator** outptr_QTreeWidgetItemIterator);
+void QTreeWidgetItemIterator_new5(QTreeWidgetItem* item, int flags, QTreeWidgetItemIterator** outptr_QTreeWidgetItemIterator);
 void QTreeWidgetItemIterator_OperatorAssign(QTreeWidgetItemIterator* self, QTreeWidgetItemIterator* it);
 QTreeWidgetItemIterator* QTreeWidgetItemIterator_OperatorPlusPlus(QTreeWidgetItemIterator* self);
 QTreeWidgetItemIterator* QTreeWidgetItemIterator_OperatorPlusPlusWithInt(QTreeWidgetItemIterator* self, int param1);
@@ -37,7 +37,7 @@ QTreeWidgetItemIterator* QTreeWidgetItemIterator_OperatorMinusMinus(QTreeWidgetI
 QTreeWidgetItemIterator* QTreeWidgetItemIterator_OperatorMinusMinusWithInt(QTreeWidgetItemIterator* self, int param1);
 QTreeWidgetItemIterator* QTreeWidgetItemIterator_OperatorMinusAssign(QTreeWidgetItemIterator* self, int n);
 QTreeWidgetItem* QTreeWidgetItemIterator_OperatorMultiply(const QTreeWidgetItemIterator* self);
-void QTreeWidgetItemIterator_Delete(QTreeWidgetItemIterator* self);
+void QTreeWidgetItemIterator_Delete(QTreeWidgetItemIterator* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

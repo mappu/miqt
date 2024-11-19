@@ -8,12 +8,14 @@
 #include "gen_qmediametadata.h"
 #include "_cgo_export.h"
 
-QMediaMetaData* QMediaMetaData_new(QMediaMetaData* param1) {
-	return new QMediaMetaData(*param1);
+void QMediaMetaData_new(QMediaMetaData* param1, QMediaMetaData** outptr_QMediaMetaData) {
+	QMediaMetaData* ret = new QMediaMetaData(*param1);
+	*outptr_QMediaMetaData = ret;
 }
 
-QMediaMetaData* QMediaMetaData_new2() {
-	return new QMediaMetaData();
+void QMediaMetaData_new2(QMediaMetaData** outptr_QMediaMetaData) {
+	QMediaMetaData* ret = new QMediaMetaData();
+	*outptr_QMediaMetaData = ret;
 }
 
 QVariant* QMediaMetaData_Value(const QMediaMetaData* self, int k) {
@@ -78,7 +80,11 @@ struct miqt_string QMediaMetaData_MetaDataKeyToString(int k) {
 	return _ms;
 }
 
-void QMediaMetaData_Delete(QMediaMetaData* self) {
-	delete self;
+void QMediaMetaData_Delete(QMediaMetaData* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMediaMetaData*>( self );
+	} else {
+		delete self;
+	}
 }
 

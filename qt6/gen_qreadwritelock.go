@@ -21,7 +21,8 @@ const (
 )
 
 type QReadWriteLock struct {
-	h *C.QReadWriteLock
+	h          *C.QReadWriteLock
+	isSubclass bool
 }
 
 func (this *QReadWriteLock) cPointer() *C.QReadWriteLock {
@@ -38,6 +39,7 @@ func (this *QReadWriteLock) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQReadWriteLock constructs the type using only CGO pointers.
 func newQReadWriteLock(h *C.QReadWriteLock) *QReadWriteLock {
 	if h == nil {
 		return nil
@@ -45,20 +47,33 @@ func newQReadWriteLock(h *C.QReadWriteLock) *QReadWriteLock {
 	return &QReadWriteLock{h: h}
 }
 
+// UnsafeNewQReadWriteLock constructs the type using only unsafe pointers.
 func UnsafeNewQReadWriteLock(h unsafe.Pointer) *QReadWriteLock {
-	return newQReadWriteLock((*C.QReadWriteLock)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QReadWriteLock{h: (*C.QReadWriteLock)(h)}
 }
 
 // NewQReadWriteLock constructs a new QReadWriteLock object.
 func NewQReadWriteLock() *QReadWriteLock {
-	ret := C.QReadWriteLock_new()
-	return newQReadWriteLock(ret)
+	var outptr_QReadWriteLock *C.QReadWriteLock = nil
+
+	C.QReadWriteLock_new(&outptr_QReadWriteLock)
+	ret := newQReadWriteLock(outptr_QReadWriteLock)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQReadWriteLock2 constructs a new QReadWriteLock object.
 func NewQReadWriteLock2(recursionMode QReadWriteLock__RecursionMode) *QReadWriteLock {
-	ret := C.QReadWriteLock_new2((C.int)(recursionMode))
-	return newQReadWriteLock(ret)
+	var outptr_QReadWriteLock *C.QReadWriteLock = nil
+
+	C.QReadWriteLock_new2((C.int)(recursionMode), &outptr_QReadWriteLock)
+	ret := newQReadWriteLock(outptr_QReadWriteLock)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QReadWriteLock) LockForRead() {
@@ -91,7 +106,7 @@ func (this *QReadWriteLock) Unlock() {
 
 // Delete this object from C++ memory.
 func (this *QReadWriteLock) Delete() {
-	C.QReadWriteLock_Delete(this.h)
+	C.QReadWriteLock_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -104,7 +119,8 @@ func (this *QReadWriteLock) GoGC() {
 }
 
 type QReadLocker struct {
-	h *C.QReadLocker
+	h          *C.QReadLocker
+	isSubclass bool
 }
 
 func (this *QReadLocker) cPointer() *C.QReadLocker {
@@ -121,6 +137,7 @@ func (this *QReadLocker) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQReadLocker constructs the type using only CGO pointers.
 func newQReadLocker(h *C.QReadLocker) *QReadLocker {
 	if h == nil {
 		return nil
@@ -128,14 +145,23 @@ func newQReadLocker(h *C.QReadLocker) *QReadLocker {
 	return &QReadLocker{h: h}
 }
 
+// UnsafeNewQReadLocker constructs the type using only unsafe pointers.
 func UnsafeNewQReadLocker(h unsafe.Pointer) *QReadLocker {
-	return newQReadLocker((*C.QReadLocker)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QReadLocker{h: (*C.QReadLocker)(h)}
 }
 
 // NewQReadLocker constructs a new QReadLocker object.
 func NewQReadLocker(readWriteLock *QReadWriteLock) *QReadLocker {
-	ret := C.QReadLocker_new(readWriteLock.cPointer())
-	return newQReadLocker(ret)
+	var outptr_QReadLocker *C.QReadLocker = nil
+
+	C.QReadLocker_new(readWriteLock.cPointer(), &outptr_QReadLocker)
+	ret := newQReadLocker(outptr_QReadLocker)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QReadLocker) Unlock() {
@@ -152,7 +178,7 @@ func (this *QReadLocker) ReadWriteLock() *QReadWriteLock {
 
 // Delete this object from C++ memory.
 func (this *QReadLocker) Delete() {
-	C.QReadLocker_Delete(this.h)
+	C.QReadLocker_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -165,7 +191,8 @@ func (this *QReadLocker) GoGC() {
 }
 
 type QWriteLocker struct {
-	h *C.QWriteLocker
+	h          *C.QWriteLocker
+	isSubclass bool
 }
 
 func (this *QWriteLocker) cPointer() *C.QWriteLocker {
@@ -182,6 +209,7 @@ func (this *QWriteLocker) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQWriteLocker constructs the type using only CGO pointers.
 func newQWriteLocker(h *C.QWriteLocker) *QWriteLocker {
 	if h == nil {
 		return nil
@@ -189,14 +217,23 @@ func newQWriteLocker(h *C.QWriteLocker) *QWriteLocker {
 	return &QWriteLocker{h: h}
 }
 
+// UnsafeNewQWriteLocker constructs the type using only unsafe pointers.
 func UnsafeNewQWriteLocker(h unsafe.Pointer) *QWriteLocker {
-	return newQWriteLocker((*C.QWriteLocker)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QWriteLocker{h: (*C.QWriteLocker)(h)}
 }
 
 // NewQWriteLocker constructs a new QWriteLocker object.
 func NewQWriteLocker(readWriteLock *QReadWriteLock) *QWriteLocker {
-	ret := C.QWriteLocker_new(readWriteLock.cPointer())
-	return newQWriteLocker(ret)
+	var outptr_QWriteLocker *C.QWriteLocker = nil
+
+	C.QWriteLocker_new(readWriteLock.cPointer(), &outptr_QWriteLocker)
+	ret := newQWriteLocker(outptr_QWriteLocker)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QWriteLocker) Unlock() {
@@ -213,7 +250,7 @@ func (this *QWriteLocker) ReadWriteLock() *QReadWriteLock {
 
 // Delete this object from C++ memory.
 func (this *QWriteLocker) Delete() {
-	C.QWriteLocker_Delete(this.h)
+	C.QWriteLocker_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -22,7 +22,8 @@ const (
 )
 
 type QDataWidgetMapper struct {
-	h *C.QDataWidgetMapper
+	h          *C.QDataWidgetMapper
+	isSubclass bool
 	*QObject
 }
 
@@ -40,27 +41,45 @@ func (this *QDataWidgetMapper) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQDataWidgetMapper(h *C.QDataWidgetMapper) *QDataWidgetMapper {
+// newQDataWidgetMapper constructs the type using only CGO pointers.
+func newQDataWidgetMapper(h *C.QDataWidgetMapper, h_QObject *C.QObject) *QDataWidgetMapper {
 	if h == nil {
 		return nil
 	}
-	return &QDataWidgetMapper{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QDataWidgetMapper{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQDataWidgetMapper(h unsafe.Pointer) *QDataWidgetMapper {
-	return newQDataWidgetMapper((*C.QDataWidgetMapper)(h))
+// UnsafeNewQDataWidgetMapper constructs the type using only unsafe pointers.
+func UnsafeNewQDataWidgetMapper(h unsafe.Pointer, h_QObject unsafe.Pointer) *QDataWidgetMapper {
+	if h == nil {
+		return nil
+	}
+
+	return &QDataWidgetMapper{h: (*C.QDataWidgetMapper)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 // NewQDataWidgetMapper constructs a new QDataWidgetMapper object.
 func NewQDataWidgetMapper() *QDataWidgetMapper {
-	ret := C.QDataWidgetMapper_new()
-	return newQDataWidgetMapper(ret)
+	var outptr_QDataWidgetMapper *C.QDataWidgetMapper = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QDataWidgetMapper_new(&outptr_QDataWidgetMapper, &outptr_QObject)
+	ret := newQDataWidgetMapper(outptr_QDataWidgetMapper, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDataWidgetMapper2 constructs a new QDataWidgetMapper object.
 func NewQDataWidgetMapper2(parent *QObject) *QDataWidgetMapper {
-	ret := C.QDataWidgetMapper_new2(parent.cPointer())
-	return newQDataWidgetMapper(ret)
+	var outptr_QDataWidgetMapper *C.QDataWidgetMapper = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QDataWidgetMapper_new2(parent.cPointer(), &outptr_QDataWidgetMapper, &outptr_QObject)
+	ret := newQDataWidgetMapper(outptr_QDataWidgetMapper, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QDataWidgetMapper) MetaObject() *QMetaObject {
@@ -96,7 +115,7 @@ func (this *QDataWidgetMapper) SetModel(model *QAbstractItemModel) {
 }
 
 func (this *QDataWidgetMapper) Model() *QAbstractItemModel {
-	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QDataWidgetMapper_Model(this.h)))
+	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QDataWidgetMapper_Model(this.h)), nil)
 }
 
 func (this *QDataWidgetMapper) SetItemDelegate(delegate *QAbstractItemDelegate) {
@@ -104,7 +123,7 @@ func (this *QDataWidgetMapper) SetItemDelegate(delegate *QAbstractItemDelegate) 
 }
 
 func (this *QDataWidgetMapper) ItemDelegate() *QAbstractItemDelegate {
-	return UnsafeNewQAbstractItemDelegate(unsafe.Pointer(C.QDataWidgetMapper_ItemDelegate(this.h)))
+	return UnsafeNewQAbstractItemDelegate(unsafe.Pointer(C.QDataWidgetMapper_ItemDelegate(this.h)), nil)
 }
 
 func (this *QDataWidgetMapper) SetRootIndex(index *QModelIndex) {
@@ -161,7 +180,7 @@ func (this *QDataWidgetMapper) MappedPropertyName(widget *QWidget) []byte {
 }
 
 func (this *QDataWidgetMapper) MappedWidgetAt(section int) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QDataWidgetMapper_MappedWidgetAt(this.h, (C.int)(section))))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QDataWidgetMapper_MappedWidgetAt(this.h, (C.int)(section))), nil, nil)
 }
 
 func (this *QDataWidgetMapper) ClearMapping() {
@@ -268,9 +287,198 @@ func QDataWidgetMapper_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QDataWidgetMapper) callVirtualBase_SetCurrentIndex(index int) {
+
+	C.QDataWidgetMapper_virtualbase_SetCurrentIndex(unsafe.Pointer(this.h), (C.int)(index))
+
+}
+func (this *QDataWidgetMapper) OnSetCurrentIndex(slot func(super func(index int), index int)) {
+	C.QDataWidgetMapper_override_virtual_SetCurrentIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDataWidgetMapper_SetCurrentIndex
+func miqt_exec_callback_QDataWidgetMapper_SetCurrentIndex(self *C.QDataWidgetMapper, cb C.intptr_t, index C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index int), index int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(index)
+
+	gofunc((&QDataWidgetMapper{h: self}).callVirtualBase_SetCurrentIndex, slotval1)
+
+}
+
+func (this *QDataWidgetMapper) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QDataWidgetMapper_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QDataWidgetMapper) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	C.QDataWidgetMapper_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDataWidgetMapper_Event
+func miqt_exec_callback_QDataWidgetMapper_Event(self *C.QDataWidgetMapper, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QDataWidgetMapper{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QDataWidgetMapper) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QDataWidgetMapper_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QDataWidgetMapper) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	C.QDataWidgetMapper_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDataWidgetMapper_EventFilter
+func miqt_exec_callback_QDataWidgetMapper_EventFilter(self *C.QDataWidgetMapper, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QDataWidgetMapper{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QDataWidgetMapper) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QDataWidgetMapper_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDataWidgetMapper) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	C.QDataWidgetMapper_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDataWidgetMapper_TimerEvent
+func miqt_exec_callback_QDataWidgetMapper_TimerEvent(self *C.QDataWidgetMapper, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QDataWidgetMapper{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QDataWidgetMapper) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QDataWidgetMapper_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDataWidgetMapper) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	C.QDataWidgetMapper_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDataWidgetMapper_ChildEvent
+func miqt_exec_callback_QDataWidgetMapper_ChildEvent(self *C.QDataWidgetMapper, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QDataWidgetMapper{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QDataWidgetMapper) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QDataWidgetMapper_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDataWidgetMapper) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	C.QDataWidgetMapper_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDataWidgetMapper_CustomEvent
+func miqt_exec_callback_QDataWidgetMapper_CustomEvent(self *C.QDataWidgetMapper, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QDataWidgetMapper{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QDataWidgetMapper) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QDataWidgetMapper_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QDataWidgetMapper) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QDataWidgetMapper_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDataWidgetMapper_ConnectNotify
+func miqt_exec_callback_QDataWidgetMapper_ConnectNotify(self *C.QDataWidgetMapper, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QDataWidgetMapper{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QDataWidgetMapper) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QDataWidgetMapper_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QDataWidgetMapper) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QDataWidgetMapper_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDataWidgetMapper_DisconnectNotify
+func miqt_exec_callback_QDataWidgetMapper_DisconnectNotify(self *C.QDataWidgetMapper, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QDataWidgetMapper{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QDataWidgetMapper) Delete() {
-	C.QDataWidgetMapper_Delete(this.h)
+	C.QDataWidgetMapper_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

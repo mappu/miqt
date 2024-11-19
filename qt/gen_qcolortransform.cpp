@@ -5,12 +5,14 @@
 #include "gen_qcolortransform.h"
 #include "_cgo_export.h"
 
-QColorTransform* QColorTransform_new() {
-	return new QColorTransform();
+void QColorTransform_new(QColorTransform** outptr_QColorTransform) {
+	QColorTransform* ret = new QColorTransform();
+	*outptr_QColorTransform = ret;
 }
 
-QColorTransform* QColorTransform_new2(QColorTransform* colorTransform) {
-	return new QColorTransform(*colorTransform);
+void QColorTransform_new2(QColorTransform* colorTransform, QColorTransform** outptr_QColorTransform) {
+	QColorTransform* ret = new QColorTransform(*colorTransform);
+	*outptr_QColorTransform = ret;
 }
 
 void QColorTransform_OperatorAssign(QColorTransform* self, QColorTransform* other) {
@@ -34,7 +36,11 @@ QColor* QColorTransform_MapWithColor(const QColorTransform* self, QColor* color)
 	return new QColor(self->map(*color));
 }
 
-void QColorTransform_Delete(QColorTransform* self) {
-	delete self;
+void QColorTransform_Delete(QColorTransform* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QColorTransform*>( self );
+	} else {
+		delete self;
+	}
 }
 

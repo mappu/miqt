@@ -30,7 +30,8 @@ const (
 )
 
 type QTreeWidgetItem struct {
-	h *C.QTreeWidgetItem
+	h          *C.QTreeWidgetItem
+	isSubclass bool
 }
 
 func (this *QTreeWidgetItem) cPointer() *C.QTreeWidgetItem {
@@ -47,6 +48,7 @@ func (this *QTreeWidgetItem) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQTreeWidgetItem constructs the type using only CGO pointers.
 func newQTreeWidgetItem(h *C.QTreeWidgetItem) *QTreeWidgetItem {
 	if h == nil {
 		return nil
@@ -54,14 +56,23 @@ func newQTreeWidgetItem(h *C.QTreeWidgetItem) *QTreeWidgetItem {
 	return &QTreeWidgetItem{h: h}
 }
 
+// UnsafeNewQTreeWidgetItem constructs the type using only unsafe pointers.
 func UnsafeNewQTreeWidgetItem(h unsafe.Pointer) *QTreeWidgetItem {
-	return newQTreeWidgetItem((*C.QTreeWidgetItem)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QTreeWidgetItem{h: (*C.QTreeWidgetItem)(h)}
 }
 
 // NewQTreeWidgetItem constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem() *QTreeWidgetItem {
-	ret := C.QTreeWidgetItem_new()
-	return newQTreeWidgetItem(ret)
+	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
+
+	C.QTreeWidgetItem_new(&outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTreeWidgetItem2 constructs a new QTreeWidgetItem object.
@@ -76,14 +87,22 @@ func NewQTreeWidgetItem2(strings []string) *QTreeWidgetItem {
 		strings_CArray[i] = strings_i_ms
 	}
 	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
-	ret := C.QTreeWidgetItem_new2(strings_ma)
-	return newQTreeWidgetItem(ret)
+	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
+
+	C.QTreeWidgetItem_new2(strings_ma, &outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTreeWidgetItem3 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem3(treeview *QTreeWidget) *QTreeWidgetItem {
-	ret := C.QTreeWidgetItem_new3(treeview.cPointer())
-	return newQTreeWidgetItem(ret)
+	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
+
+	C.QTreeWidgetItem_new3(treeview.cPointer(), &outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTreeWidgetItem4 constructs a new QTreeWidgetItem object.
@@ -98,20 +117,32 @@ func NewQTreeWidgetItem4(treeview *QTreeWidget, strings []string) *QTreeWidgetIt
 		strings_CArray[i] = strings_i_ms
 	}
 	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
-	ret := C.QTreeWidgetItem_new4(treeview.cPointer(), strings_ma)
-	return newQTreeWidgetItem(ret)
+	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
+
+	C.QTreeWidgetItem_new4(treeview.cPointer(), strings_ma, &outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTreeWidgetItem5 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem5(treeview *QTreeWidget, after *QTreeWidgetItem) *QTreeWidgetItem {
-	ret := C.QTreeWidgetItem_new5(treeview.cPointer(), after.cPointer())
-	return newQTreeWidgetItem(ret)
+	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
+
+	C.QTreeWidgetItem_new5(treeview.cPointer(), after.cPointer(), &outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTreeWidgetItem6 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem6(parent *QTreeWidgetItem) *QTreeWidgetItem {
-	ret := C.QTreeWidgetItem_new6(parent.cPointer())
-	return newQTreeWidgetItem(ret)
+	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
+
+	C.QTreeWidgetItem_new6(parent.cPointer(), &outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTreeWidgetItem7 constructs a new QTreeWidgetItem object.
@@ -126,26 +157,42 @@ func NewQTreeWidgetItem7(parent *QTreeWidgetItem, strings []string) *QTreeWidget
 		strings_CArray[i] = strings_i_ms
 	}
 	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
-	ret := C.QTreeWidgetItem_new7(parent.cPointer(), strings_ma)
-	return newQTreeWidgetItem(ret)
+	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
+
+	C.QTreeWidgetItem_new7(parent.cPointer(), strings_ma, &outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTreeWidgetItem8 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem8(parent *QTreeWidgetItem, after *QTreeWidgetItem) *QTreeWidgetItem {
-	ret := C.QTreeWidgetItem_new8(parent.cPointer(), after.cPointer())
-	return newQTreeWidgetItem(ret)
+	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
+
+	C.QTreeWidgetItem_new8(parent.cPointer(), after.cPointer(), &outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTreeWidgetItem9 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem9(other *QTreeWidgetItem) *QTreeWidgetItem {
-	ret := C.QTreeWidgetItem_new9(other.cPointer())
-	return newQTreeWidgetItem(ret)
+	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
+
+	C.QTreeWidgetItem_new9(other.cPointer(), &outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTreeWidgetItem10 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem10(typeVal int) *QTreeWidgetItem {
-	ret := C.QTreeWidgetItem_new10((C.int)(typeVal))
-	return newQTreeWidgetItem(ret)
+	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
+
+	C.QTreeWidgetItem_new10((C.int)(typeVal), &outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTreeWidgetItem11 constructs a new QTreeWidgetItem object.
@@ -160,14 +207,22 @@ func NewQTreeWidgetItem11(strings []string, typeVal int) *QTreeWidgetItem {
 		strings_CArray[i] = strings_i_ms
 	}
 	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
-	ret := C.QTreeWidgetItem_new11(strings_ma, (C.int)(typeVal))
-	return newQTreeWidgetItem(ret)
+	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
+
+	C.QTreeWidgetItem_new11(strings_ma, (C.int)(typeVal), &outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTreeWidgetItem12 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem12(treeview *QTreeWidget, typeVal int) *QTreeWidgetItem {
-	ret := C.QTreeWidgetItem_new12(treeview.cPointer(), (C.int)(typeVal))
-	return newQTreeWidgetItem(ret)
+	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
+
+	C.QTreeWidgetItem_new12(treeview.cPointer(), (C.int)(typeVal), &outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTreeWidgetItem13 constructs a new QTreeWidgetItem object.
@@ -182,20 +237,32 @@ func NewQTreeWidgetItem13(treeview *QTreeWidget, strings []string, typeVal int) 
 		strings_CArray[i] = strings_i_ms
 	}
 	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
-	ret := C.QTreeWidgetItem_new13(treeview.cPointer(), strings_ma, (C.int)(typeVal))
-	return newQTreeWidgetItem(ret)
+	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
+
+	C.QTreeWidgetItem_new13(treeview.cPointer(), strings_ma, (C.int)(typeVal), &outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTreeWidgetItem14 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem14(treeview *QTreeWidget, after *QTreeWidgetItem, typeVal int) *QTreeWidgetItem {
-	ret := C.QTreeWidgetItem_new14(treeview.cPointer(), after.cPointer(), (C.int)(typeVal))
-	return newQTreeWidgetItem(ret)
+	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
+
+	C.QTreeWidgetItem_new14(treeview.cPointer(), after.cPointer(), (C.int)(typeVal), &outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTreeWidgetItem15 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem15(parent *QTreeWidgetItem, typeVal int) *QTreeWidgetItem {
-	ret := C.QTreeWidgetItem_new15(parent.cPointer(), (C.int)(typeVal))
-	return newQTreeWidgetItem(ret)
+	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
+
+	C.QTreeWidgetItem_new15(parent.cPointer(), (C.int)(typeVal), &outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTreeWidgetItem16 constructs a new QTreeWidgetItem object.
@@ -210,14 +277,22 @@ func NewQTreeWidgetItem16(parent *QTreeWidgetItem, strings []string, typeVal int
 		strings_CArray[i] = strings_i_ms
 	}
 	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
-	ret := C.QTreeWidgetItem_new16(parent.cPointer(), strings_ma, (C.int)(typeVal))
-	return newQTreeWidgetItem(ret)
+	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
+
+	C.QTreeWidgetItem_new16(parent.cPointer(), strings_ma, (C.int)(typeVal), &outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTreeWidgetItem17 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem17(parent *QTreeWidgetItem, after *QTreeWidgetItem, typeVal int) *QTreeWidgetItem {
-	ret := C.QTreeWidgetItem_new17(parent.cPointer(), after.cPointer(), (C.int)(typeVal))
-	return newQTreeWidgetItem(ret)
+	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
+
+	C.QTreeWidgetItem_new17(parent.cPointer(), after.cPointer(), (C.int)(typeVal), &outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QTreeWidgetItem) Clone() *QTreeWidgetItem {
@@ -225,7 +300,7 @@ func (this *QTreeWidgetItem) Clone() *QTreeWidgetItem {
 }
 
 func (this *QTreeWidgetItem) TreeWidget() *QTreeWidget {
-	return UnsafeNewQTreeWidget(unsafe.Pointer(C.QTreeWidgetItem_TreeWidget(this.h)))
+	return UnsafeNewQTreeWidget(unsafe.Pointer(C.QTreeWidgetItem_TreeWidget(this.h)), nil, nil, nil, nil, nil, nil, nil)
 }
 
 func (this *QTreeWidgetItem) SetSelected(selectVal bool) {
@@ -524,9 +599,158 @@ func (this *QTreeWidgetItem) SortChildren(column int, order SortOrder) {
 	C.QTreeWidgetItem_SortChildren(this.h, (C.int)(column), (C.int)(order))
 }
 
+func (this *QTreeWidgetItem) callVirtualBase_Clone() *QTreeWidgetItem {
+
+	return UnsafeNewQTreeWidgetItem(unsafe.Pointer(C.QTreeWidgetItem_virtualbase_Clone(unsafe.Pointer(this.h))))
+}
+func (this *QTreeWidgetItem) OnClone(slot func(super func() *QTreeWidgetItem) *QTreeWidgetItem) {
+	C.QTreeWidgetItem_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidgetItem_Clone
+func miqt_exec_callback_QTreeWidgetItem_Clone(self *C.QTreeWidgetItem, cb C.intptr_t) *C.QTreeWidgetItem {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QTreeWidgetItem) *QTreeWidgetItem)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTreeWidgetItem{h: self}).callVirtualBase_Clone)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTreeWidgetItem) callVirtualBase_Data(column int, role int) *QVariant {
+
+	_ret := C.QTreeWidgetItem_virtualbase_Data(unsafe.Pointer(this.h), (C.int)(column), (C.int)(role))
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QTreeWidgetItem) OnData(slot func(super func(column int, role int) *QVariant, column int, role int) *QVariant) {
+	C.QTreeWidgetItem_override_virtual_Data(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidgetItem_Data
+func miqt_exec_callback_QTreeWidgetItem_Data(self *C.QTreeWidgetItem, cb C.intptr_t, column C.int, role C.int) *C.QVariant {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(column int, role int) *QVariant, column int, role int) *QVariant)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(column)
+
+	slotval2 := (int)(role)
+
+	virtualReturn := gofunc((&QTreeWidgetItem{h: self}).callVirtualBase_Data, slotval1, slotval2)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTreeWidgetItem) callVirtualBase_SetData(column int, role int, value *QVariant) {
+
+	C.QTreeWidgetItem_virtualbase_SetData(unsafe.Pointer(this.h), (C.int)(column), (C.int)(role), value.cPointer())
+
+}
+func (this *QTreeWidgetItem) OnSetData(slot func(super func(column int, role int, value *QVariant), column int, role int, value *QVariant)) {
+	C.QTreeWidgetItem_override_virtual_SetData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidgetItem_SetData
+func miqt_exec_callback_QTreeWidgetItem_SetData(self *C.QTreeWidgetItem, cb C.intptr_t, column C.int, role C.int, value *C.QVariant) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(column int, role int, value *QVariant), column int, role int, value *QVariant))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(column)
+
+	slotval2 := (int)(role)
+
+	slotval3 := UnsafeNewQVariant(unsafe.Pointer(value))
+
+	gofunc((&QTreeWidgetItem{h: self}).callVirtualBase_SetData, slotval1, slotval2, slotval3)
+
+}
+
+func (this *QTreeWidgetItem) callVirtualBase_OperatorLesser(other *QTreeWidgetItem) bool {
+
+	return (bool)(C.QTreeWidgetItem_virtualbase_OperatorLesser(unsafe.Pointer(this.h), other.cPointer()))
+
+}
+func (this *QTreeWidgetItem) OnOperatorLesser(slot func(super func(other *QTreeWidgetItem) bool, other *QTreeWidgetItem) bool) {
+	C.QTreeWidgetItem_override_virtual_OperatorLesser(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidgetItem_OperatorLesser
+func miqt_exec_callback_QTreeWidgetItem_OperatorLesser(self *C.QTreeWidgetItem, cb C.intptr_t, other *C.QTreeWidgetItem) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(other *QTreeWidgetItem) bool, other *QTreeWidgetItem) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTreeWidgetItem(unsafe.Pointer(other))
+
+	virtualReturn := gofunc((&QTreeWidgetItem{h: self}).callVirtualBase_OperatorLesser, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QTreeWidgetItem) callVirtualBase_Read(in *QDataStream) {
+
+	C.QTreeWidgetItem_virtualbase_Read(unsafe.Pointer(this.h), in.cPointer())
+
+}
+func (this *QTreeWidgetItem) OnRead(slot func(super func(in *QDataStream), in *QDataStream)) {
+	C.QTreeWidgetItem_override_virtual_Read(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidgetItem_Read
+func miqt_exec_callback_QTreeWidgetItem_Read(self *C.QTreeWidgetItem, cb C.intptr_t, in *C.QDataStream) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(in *QDataStream), in *QDataStream))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQDataStream(unsafe.Pointer(in), nil)
+
+	gofunc((&QTreeWidgetItem{h: self}).callVirtualBase_Read, slotval1)
+
+}
+
+func (this *QTreeWidgetItem) callVirtualBase_Write(out *QDataStream) {
+
+	C.QTreeWidgetItem_virtualbase_Write(unsafe.Pointer(this.h), out.cPointer())
+
+}
+func (this *QTreeWidgetItem) OnWrite(slot func(super func(out *QDataStream), out *QDataStream)) {
+	C.QTreeWidgetItem_override_virtual_Write(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidgetItem_Write
+func miqt_exec_callback_QTreeWidgetItem_Write(self *C.QTreeWidgetItem, cb C.intptr_t, out *C.QDataStream) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(out *QDataStream), out *QDataStream))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQDataStream(unsafe.Pointer(out), nil)
+
+	gofunc((&QTreeWidgetItem{h: self}).callVirtualBase_Write, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QTreeWidgetItem) Delete() {
-	C.QTreeWidgetItem_Delete(this.h)
+	C.QTreeWidgetItem_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -539,7 +763,8 @@ func (this *QTreeWidgetItem) GoGC() {
 }
 
 type QTreeWidget struct {
-	h *C.QTreeWidget
+	h          *C.QTreeWidget
+	isSubclass bool
 	*QTreeView
 }
 
@@ -557,27 +782,57 @@ func (this *QTreeWidget) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQTreeWidget(h *C.QTreeWidget) *QTreeWidget {
+// newQTreeWidget constructs the type using only CGO pointers.
+func newQTreeWidget(h *C.QTreeWidget, h_QTreeView *C.QTreeView, h_QAbstractItemView *C.QAbstractItemView, h_QAbstractScrollArea *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QTreeWidget {
 	if h == nil {
 		return nil
 	}
-	return &QTreeWidget{h: h, QTreeView: UnsafeNewQTreeView(unsafe.Pointer(h))}
+	return &QTreeWidget{h: h,
+		QTreeView: newQTreeView(h_QTreeView, h_QAbstractItemView, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
-func UnsafeNewQTreeWidget(h unsafe.Pointer) *QTreeWidget {
-	return newQTreeWidget((*C.QTreeWidget)(h))
+// UnsafeNewQTreeWidget constructs the type using only unsafe pointers.
+func UnsafeNewQTreeWidget(h unsafe.Pointer, h_QTreeView unsafe.Pointer, h_QAbstractItemView unsafe.Pointer, h_QAbstractScrollArea unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QTreeWidget {
+	if h == nil {
+		return nil
+	}
+
+	return &QTreeWidget{h: (*C.QTreeWidget)(h),
+		QTreeView: UnsafeNewQTreeView(h_QTreeView, h_QAbstractItemView, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
 // NewQTreeWidget constructs a new QTreeWidget object.
 func NewQTreeWidget(parent *QWidget) *QTreeWidget {
-	ret := C.QTreeWidget_new(parent.cPointer())
-	return newQTreeWidget(ret)
+	var outptr_QTreeWidget *C.QTreeWidget = nil
+	var outptr_QTreeView *C.QTreeView = nil
+	var outptr_QAbstractItemView *C.QAbstractItemView = nil
+	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QTreeWidget_new(parent.cPointer(), &outptr_QTreeWidget, &outptr_QTreeView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQTreeWidget(outptr_QTreeWidget, outptr_QTreeView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTreeWidget2 constructs a new QTreeWidget object.
 func NewQTreeWidget2() *QTreeWidget {
-	ret := C.QTreeWidget_new2()
-	return newQTreeWidget(ret)
+	var outptr_QTreeWidget *C.QTreeWidget = nil
+	var outptr_QTreeView *C.QTreeView = nil
+	var outptr_QAbstractItemView *C.QAbstractItemView = nil
+	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QTreeWidget_new2(&outptr_QTreeWidget, &outptr_QTreeView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQTreeWidget(outptr_QTreeWidget, outptr_QTreeView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QTreeWidget) MetaObject() *QMetaObject {
@@ -745,7 +1000,7 @@ func (this *QTreeWidget) IsPersistentEditorOpen(item *QTreeWidgetItem) bool {
 }
 
 func (this *QTreeWidget) ItemWidget(item *QTreeWidgetItem, column int) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QTreeWidget_ItemWidget(this.h, item.cPointer(), (C.int)(column))))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QTreeWidget_ItemWidget(this.h, item.cPointer(), (C.int)(column))), nil, nil)
 }
 
 func (this *QTreeWidget) SetItemWidget(item *QTreeWidgetItem, column int, widget *QWidget) {
@@ -1086,9 +1341,1097 @@ func (this *QTreeWidget) ScrollToItem2(item *QTreeWidgetItem, hint QAbstractItem
 	C.QTreeWidget_ScrollToItem2(this.h, item.cPointer(), (C.int)(hint))
 }
 
+func (this *QTreeWidget) callVirtualBase_SetSelectionModel(selectionModel *QItemSelectionModel) {
+
+	C.QTreeWidget_virtualbase_SetSelectionModel(unsafe.Pointer(this.h), selectionModel.cPointer())
+
+}
+func (this *QTreeWidget) OnSetSelectionModel(slot func(super func(selectionModel *QItemSelectionModel), selectionModel *QItemSelectionModel)) {
+	C.QTreeWidget_override_virtual_SetSelectionModel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_SetSelectionModel
+func miqt_exec_callback_QTreeWidget_SetSelectionModel(self *C.QTreeWidget, cb C.intptr_t, selectionModel *C.QItemSelectionModel) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(selectionModel *QItemSelectionModel), selectionModel *QItemSelectionModel))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQItemSelectionModel(unsafe.Pointer(selectionModel), nil)
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_SetSelectionModel, slotval1)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_Event(e *QEvent) bool {
+
+	return (bool)(C.QTreeWidget_virtualbase_Event(unsafe.Pointer(this.h), e.cPointer()))
+
+}
+func (this *QTreeWidget) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	C.QTreeWidget_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_Event
+func miqt_exec_callback_QTreeWidget_Event(self *C.QTreeWidget, cb C.intptr_t, e *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QEvent) bool, e *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+
+	virtualReturn := gofunc((&QTreeWidget{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_MimeTypes() []string {
+
+	var _ma C.struct_miqt_array = C.QTreeWidget_virtualbase_MimeTypes(unsafe.Pointer(this.h))
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
+		_ret[i] = _lv_ret
+	}
+	return _ret
+
+}
+func (this *QTreeWidget) OnMimeTypes(slot func(super func() []string) []string) {
+	C.QTreeWidget_override_virtual_MimeTypes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_MimeTypes
+func miqt_exec_callback_QTreeWidget_MimeTypes(self *C.QTreeWidget, cb C.intptr_t) C.struct_miqt_array {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() []string) []string)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTreeWidget{h: self}).callVirtualBase_MimeTypes)
+	virtualReturn_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	defer C.free(unsafe.Pointer(virtualReturn_CArray))
+	for i := range virtualReturn {
+		virtualReturn_i_ms := C.struct_miqt_string{}
+		virtualReturn_i_ms.data = C.CString(virtualReturn[i])
+		virtualReturn_i_ms.len = C.size_t(len(virtualReturn[i]))
+		defer C.free(unsafe.Pointer(virtualReturn_i_ms.data))
+		virtualReturn_CArray[i] = virtualReturn_i_ms
+	}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+
+	return virtualReturn_ma
+
+}
+
+func (this *QTreeWidget) callVirtualBase_MimeData(items []*QTreeWidgetItem) *QMimeData {
+	items_CArray := (*[0xffff]*C.QTreeWidgetItem)(C.malloc(C.size_t(8 * len(items))))
+	defer C.free(unsafe.Pointer(items_CArray))
+	for i := range items {
+		items_CArray[i] = items[i].cPointer()
+	}
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
+
+	return UnsafeNewQMimeData(unsafe.Pointer(C.QTreeWidget_virtualbase_MimeData(unsafe.Pointer(this.h), items_ma)), nil)
+}
+func (this *QTreeWidget) OnMimeData(slot func(super func(items []*QTreeWidgetItem) *QMimeData, items []*QTreeWidgetItem) *QMimeData) {
+	C.QTreeWidget_override_virtual_MimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_MimeData
+func miqt_exec_callback_QTreeWidget_MimeData(self *C.QTreeWidget, cb C.intptr_t, items C.struct_miqt_array) *C.QMimeData {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(items []*QTreeWidgetItem) *QMimeData, items []*QTreeWidgetItem) *QMimeData)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	var items_ma C.struct_miqt_array = items
+	items_ret := make([]*QTreeWidgetItem, int(items_ma.len))
+	items_outCast := (*[0xffff]*C.QTreeWidgetItem)(unsafe.Pointer(items_ma.data)) // hey ya
+	for i := 0; i < int(items_ma.len); i++ {
+		items_ret[i] = UnsafeNewQTreeWidgetItem(unsafe.Pointer(items_outCast[i]))
+	}
+	slotval1 := items_ret
+
+	virtualReturn := gofunc((&QTreeWidget{h: self}).callVirtualBase_MimeData, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTreeWidget) callVirtualBase_DropMimeData(parent *QTreeWidgetItem, index int, data *QMimeData, action DropAction) bool {
+
+	return (bool)(C.QTreeWidget_virtualbase_DropMimeData(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(index), data.cPointer(), (C.int)(action)))
+
+}
+func (this *QTreeWidget) OnDropMimeData(slot func(super func(parent *QTreeWidgetItem, index int, data *QMimeData, action DropAction) bool, parent *QTreeWidgetItem, index int, data *QMimeData, action DropAction) bool) {
+	C.QTreeWidget_override_virtual_DropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_DropMimeData
+func miqt_exec_callback_QTreeWidget_DropMimeData(self *C.QTreeWidget, cb C.intptr_t, parent *C.QTreeWidgetItem, index C.int, data *C.QMimeData, action C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QTreeWidgetItem, index int, data *QMimeData, action DropAction) bool, parent *QTreeWidgetItem, index int, data *QMimeData, action DropAction) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTreeWidgetItem(unsafe.Pointer(parent))
+	slotval2 := (int)(index)
+
+	slotval3 := UnsafeNewQMimeData(unsafe.Pointer(data), nil)
+	slotval4 := (DropAction)(action)
+
+	virtualReturn := gofunc((&QTreeWidget{h: self}).callVirtualBase_DropMimeData, slotval1, slotval2, slotval3, slotval4)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_SupportedDropActions() DropAction {
+
+	return (DropAction)(C.QTreeWidget_virtualbase_SupportedDropActions(unsafe.Pointer(this.h)))
+
+}
+func (this *QTreeWidget) OnSupportedDropActions(slot func(super func() DropAction) DropAction) {
+	C.QTreeWidget_override_virtual_SupportedDropActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_SupportedDropActions
+func miqt_exec_callback_QTreeWidget_SupportedDropActions(self *C.QTreeWidget, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() DropAction) DropAction)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTreeWidget{h: self}).callVirtualBase_SupportedDropActions)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_DropEvent(event *QDropEvent) {
+
+	C.QTreeWidget_virtualbase_DropEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTreeWidget) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+	C.QTreeWidget_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_DropEvent
+func miqt_exec_callback_QTreeWidget_DropEvent(self *C.QTreeWidget, cb C.intptr_t, event *C.QDropEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDropEvent), event *QDropEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_DropEvent, slotval1)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_SetRootIndex(index *QModelIndex) {
+
+	C.QTreeWidget_virtualbase_SetRootIndex(unsafe.Pointer(this.h), index.cPointer())
+
+}
+func (this *QTreeWidget) OnSetRootIndex(slot func(super func(index *QModelIndex), index *QModelIndex)) {
+	C.QTreeWidget_override_virtual_SetRootIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_SetRootIndex
+func miqt_exec_callback_QTreeWidget_SetRootIndex(self *C.QTreeWidget, cb C.intptr_t, index *C.QModelIndex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex), index *QModelIndex))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_SetRootIndex, slotval1)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_KeyboardSearch(search string) {
+	search_ms := C.struct_miqt_string{}
+	search_ms.data = C.CString(search)
+	search_ms.len = C.size_t(len(search))
+	defer C.free(unsafe.Pointer(search_ms.data))
+
+	C.QTreeWidget_virtualbase_KeyboardSearch(unsafe.Pointer(this.h), search_ms)
+
+}
+func (this *QTreeWidget) OnKeyboardSearch(slot func(super func(search string), search string)) {
+	C.QTreeWidget_override_virtual_KeyboardSearch(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_KeyboardSearch
+func miqt_exec_callback_QTreeWidget_KeyboardSearch(self *C.QTreeWidget, cb C.intptr_t, search C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(search string), search string))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	var search_ms C.struct_miqt_string = search
+	search_ret := C.GoStringN(search_ms.data, C.int(int64(search_ms.len)))
+	C.free(unsafe.Pointer(search_ms.data))
+	slotval1 := search_ret
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_KeyboardSearch, slotval1)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_VisualRect(index *QModelIndex) *QRect {
+
+	_ret := C.QTreeWidget_virtualbase_VisualRect(unsafe.Pointer(this.h), index.cPointer())
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QTreeWidget) OnVisualRect(slot func(super func(index *QModelIndex) *QRect, index *QModelIndex) *QRect) {
+	C.QTreeWidget_override_virtual_VisualRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_VisualRect
+func miqt_exec_callback_QTreeWidget_VisualRect(self *C.QTreeWidget, cb C.intptr_t, index *C.QModelIndex) *C.QRect {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) *QRect, index *QModelIndex) *QRect)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+
+	virtualReturn := gofunc((&QTreeWidget{h: self}).callVirtualBase_VisualRect, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTreeWidget) callVirtualBase_ScrollTo(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
+
+	C.QTreeWidget_virtualbase_ScrollTo(unsafe.Pointer(this.h), index.cPointer(), (C.int)(hint))
+
+}
+func (this *QTreeWidget) OnScrollTo(slot func(super func(index *QModelIndex, hint QAbstractItemView__ScrollHint), index *QModelIndex, hint QAbstractItemView__ScrollHint)) {
+	C.QTreeWidget_override_virtual_ScrollTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_ScrollTo
+func miqt_exec_callback_QTreeWidget_ScrollTo(self *C.QTreeWidget, cb C.intptr_t, index *C.QModelIndex, hint C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex, hint QAbstractItemView__ScrollHint), index *QModelIndex, hint QAbstractItemView__ScrollHint))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval2 := (QAbstractItemView__ScrollHint)(hint)
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_ScrollTo, slotval1, slotval2)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_IndexAt(p *QPoint) *QModelIndex {
+
+	_ret := C.QTreeWidget_virtualbase_IndexAt(unsafe.Pointer(this.h), p.cPointer())
+	_goptr := newQModelIndex(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QTreeWidget) OnIndexAt(slot func(super func(p *QPoint) *QModelIndex, p *QPoint) *QModelIndex) {
+	C.QTreeWidget_override_virtual_IndexAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_IndexAt
+func miqt_exec_callback_QTreeWidget_IndexAt(self *C.QTreeWidget, cb C.intptr_t, p *C.QPoint) *C.QModelIndex {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(p *QPoint) *QModelIndex, p *QPoint) *QModelIndex)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPoint(unsafe.Pointer(p))
+
+	virtualReturn := gofunc((&QTreeWidget{h: self}).callVirtualBase_IndexAt, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTreeWidget) callVirtualBase_DoItemsLayout() {
+
+	C.QTreeWidget_virtualbase_DoItemsLayout(unsafe.Pointer(this.h))
+
+}
+func (this *QTreeWidget) OnDoItemsLayout(slot func(super func())) {
+	C.QTreeWidget_override_virtual_DoItemsLayout(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_DoItemsLayout
+func miqt_exec_callback_QTreeWidget_DoItemsLayout(self *C.QTreeWidget, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_DoItemsLayout)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_Reset() {
+
+	C.QTreeWidget_virtualbase_Reset(unsafe.Pointer(this.h))
+
+}
+func (this *QTreeWidget) OnReset(slot func(super func())) {
+	C.QTreeWidget_override_virtual_Reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_Reset
+func miqt_exec_callback_QTreeWidget_Reset(self *C.QTreeWidget, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_Reset)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_DataChanged(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int) {
+	roles_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_CArray))
+	for i := range roles {
+		roles_CArray[i] = (C.int)(roles[i])
+	}
+	roles_ma := C.struct_miqt_array{len: C.size_t(len(roles)), data: unsafe.Pointer(roles_CArray)}
+
+	C.QTreeWidget_virtualbase_DataChanged(unsafe.Pointer(this.h), topLeft.cPointer(), bottomRight.cPointer(), roles_ma)
+
+}
+func (this *QTreeWidget) OnDataChanged(slot func(super func(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int), topLeft *QModelIndex, bottomRight *QModelIndex, roles []int)) {
+	C.QTreeWidget_override_virtual_DataChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_DataChanged
+func miqt_exec_callback_QTreeWidget_DataChanged(self *C.QTreeWidget, cb C.intptr_t, topLeft *C.QModelIndex, bottomRight *C.QModelIndex, roles C.struct_miqt_array) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int), topLeft *QModelIndex, bottomRight *QModelIndex, roles []int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(topLeft))
+	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(bottomRight))
+	var roles_ma C.struct_miqt_array = roles
+	roles_ret := make([]int, int(roles_ma.len))
+	roles_outCast := (*[0xffff]C.int)(unsafe.Pointer(roles_ma.data)) // hey ya
+	for i := 0; i < int(roles_ma.len); i++ {
+		roles_ret[i] = (int)(roles_outCast[i])
+	}
+	slotval3 := roles_ret
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_DataChanged, slotval1, slotval2, slotval3)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_SelectAll() {
+
+	C.QTreeWidget_virtualbase_SelectAll(unsafe.Pointer(this.h))
+
+}
+func (this *QTreeWidget) OnSelectAll(slot func(super func())) {
+	C.QTreeWidget_override_virtual_SelectAll(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_SelectAll
+func miqt_exec_callback_QTreeWidget_SelectAll(self *C.QTreeWidget, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_SelectAll)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_VerticalScrollbarValueChanged(value int) {
+
+	C.QTreeWidget_virtualbase_VerticalScrollbarValueChanged(unsafe.Pointer(this.h), (C.int)(value))
+
+}
+func (this *QTreeWidget) OnVerticalScrollbarValueChanged(slot func(super func(value int), value int)) {
+	C.QTreeWidget_override_virtual_VerticalScrollbarValueChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_VerticalScrollbarValueChanged
+func miqt_exec_callback_QTreeWidget_VerticalScrollbarValueChanged(self *C.QTreeWidget, cb C.intptr_t, value C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(value int), value int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(value)
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_VerticalScrollbarValueChanged, slotval1)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_ScrollContentsBy(dx int, dy int) {
+
+	C.QTreeWidget_virtualbase_ScrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
+
+}
+func (this *QTreeWidget) OnScrollContentsBy(slot func(super func(dx int, dy int), dx int, dy int)) {
+	C.QTreeWidget_override_virtual_ScrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_ScrollContentsBy
+func miqt_exec_callback_QTreeWidget_ScrollContentsBy(self *C.QTreeWidget, cb C.intptr_t, dx C.int, dy C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(dx int, dy int), dx int, dy int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(dx)
+
+	slotval2 := (int)(dy)
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_ScrollContentsBy, slotval1, slotval2)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_RowsInserted(parent *QModelIndex, start int, end int) {
+
+	C.QTreeWidget_virtualbase_RowsInserted(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
+
+}
+func (this *QTreeWidget) OnRowsInserted(slot func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int)) {
+	C.QTreeWidget_override_virtual_RowsInserted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_RowsInserted
+func miqt_exec_callback_QTreeWidget_RowsInserted(self *C.QTreeWidget, cb C.intptr_t, parent *C.QModelIndex, start C.int, end C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval2 := (int)(start)
+
+	slotval3 := (int)(end)
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_RowsInserted, slotval1, slotval2, slotval3)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_RowsAboutToBeRemoved(parent *QModelIndex, start int, end int) {
+
+	C.QTreeWidget_virtualbase_RowsAboutToBeRemoved(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
+
+}
+func (this *QTreeWidget) OnRowsAboutToBeRemoved(slot func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int)) {
+	C.QTreeWidget_override_virtual_RowsAboutToBeRemoved(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_RowsAboutToBeRemoved
+func miqt_exec_callback_QTreeWidget_RowsAboutToBeRemoved(self *C.QTreeWidget, cb C.intptr_t, parent *C.QModelIndex, start C.int, end C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval2 := (int)(start)
+
+	slotval3 := (int)(end)
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_RowsAboutToBeRemoved, slotval1, slotval2, slotval3)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_MoveCursor(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex {
+
+	_ret := C.QTreeWidget_virtualbase_MoveCursor(unsafe.Pointer(this.h), (C.int)(cursorAction), (C.int)(modifiers))
+	_goptr := newQModelIndex(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QTreeWidget) OnMoveCursor(slot func(super func(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex, cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex) {
+	C.QTreeWidget_override_virtual_MoveCursor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_MoveCursor
+func miqt_exec_callback_QTreeWidget_MoveCursor(self *C.QTreeWidget, cb C.intptr_t, cursorAction C.int, modifiers C.int) *C.QModelIndex {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex, cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QAbstractItemView__CursorAction)(cursorAction)
+
+	slotval2 := (KeyboardModifier)(modifiers)
+
+	virtualReturn := gofunc((&QTreeWidget{h: self}).callVirtualBase_MoveCursor, slotval1, slotval2)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTreeWidget) callVirtualBase_HorizontalOffset() int {
+
+	return (int)(C.QTreeWidget_virtualbase_HorizontalOffset(unsafe.Pointer(this.h)))
+
+}
+func (this *QTreeWidget) OnHorizontalOffset(slot func(super func() int) int) {
+	C.QTreeWidget_override_virtual_HorizontalOffset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_HorizontalOffset
+func miqt_exec_callback_QTreeWidget_HorizontalOffset(self *C.QTreeWidget, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTreeWidget{h: self}).callVirtualBase_HorizontalOffset)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_VerticalOffset() int {
+
+	return (int)(C.QTreeWidget_virtualbase_VerticalOffset(unsafe.Pointer(this.h)))
+
+}
+func (this *QTreeWidget) OnVerticalOffset(slot func(super func() int) int) {
+	C.QTreeWidget_override_virtual_VerticalOffset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_VerticalOffset
+func miqt_exec_callback_QTreeWidget_VerticalOffset(self *C.QTreeWidget, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTreeWidget{h: self}).callVirtualBase_VerticalOffset)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_SetSelection(rect *QRect, command QItemSelectionModel__SelectionFlag) {
+
+	C.QTreeWidget_virtualbase_SetSelection(unsafe.Pointer(this.h), rect.cPointer(), (C.int)(command))
+
+}
+func (this *QTreeWidget) OnSetSelection(slot func(super func(rect *QRect, command QItemSelectionModel__SelectionFlag), rect *QRect, command QItemSelectionModel__SelectionFlag)) {
+	C.QTreeWidget_override_virtual_SetSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_SetSelection
+func miqt_exec_callback_QTreeWidget_SetSelection(self *C.QTreeWidget, cb C.intptr_t, rect *C.QRect, command C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect *QRect, command QItemSelectionModel__SelectionFlag), rect *QRect, command QItemSelectionModel__SelectionFlag))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQRect(unsafe.Pointer(rect))
+	slotval2 := (QItemSelectionModel__SelectionFlag)(command)
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_SetSelection, slotval1, slotval2)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_SelectedIndexes() []QModelIndex {
+
+	var _ma C.struct_miqt_array = C.QTreeWidget_virtualbase_SelectedIndexes(unsafe.Pointer(this.h))
+	_ret := make([]QModelIndex, int(_ma.len))
+	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
+	}
+	return _ret
+
+}
+func (this *QTreeWidget) OnSelectedIndexes(slot func(super func() []QModelIndex) []QModelIndex) {
+	C.QTreeWidget_override_virtual_SelectedIndexes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_SelectedIndexes
+func miqt_exec_callback_QTreeWidget_SelectedIndexes(self *C.QTreeWidget, cb C.intptr_t) C.struct_miqt_array {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() []QModelIndex) []QModelIndex)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTreeWidget{h: self}).callVirtualBase_SelectedIndexes)
+	virtualReturn_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	defer C.free(unsafe.Pointer(virtualReturn_CArray))
+	for i := range virtualReturn {
+		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
+	}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+
+	return virtualReturn_ma
+
+}
+
+func (this *QTreeWidget) callVirtualBase_ChangeEvent(event *QEvent) {
+
+	C.QTreeWidget_virtualbase_ChangeEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTreeWidget) OnChangeEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	C.QTreeWidget_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_ChangeEvent
+func miqt_exec_callback_QTreeWidget_ChangeEvent(self *C.QTreeWidget, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_ChangeEvent, slotval1)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QTreeWidget_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTreeWidget) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	C.QTreeWidget_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_TimerEvent
+func miqt_exec_callback_QTreeWidget_TimerEvent(self *C.QTreeWidget, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_PaintEvent(event *QPaintEvent) {
+
+	C.QTreeWidget_virtualbase_PaintEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTreeWidget) OnPaintEvent(slot func(super func(event *QPaintEvent), event *QPaintEvent)) {
+	C.QTreeWidget_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_PaintEvent
+func miqt_exec_callback_QTreeWidget_PaintEvent(self *C.QTreeWidget, cb C.intptr_t, event *C.QPaintEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QPaintEvent), event *QPaintEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_PaintEvent, slotval1)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_DrawRow(painter *QPainter, options *QStyleOptionViewItem, index *QModelIndex) {
+
+	C.QTreeWidget_virtualbase_DrawRow(unsafe.Pointer(this.h), painter.cPointer(), options.cPointer(), index.cPointer())
+
+}
+func (this *QTreeWidget) OnDrawRow(slot func(super func(painter *QPainter, options *QStyleOptionViewItem, index *QModelIndex), painter *QPainter, options *QStyleOptionViewItem, index *QModelIndex)) {
+	C.QTreeWidget_override_virtual_DrawRow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_DrawRow
+func miqt_exec_callback_QTreeWidget_DrawRow(self *C.QTreeWidget, cb C.intptr_t, painter *C.QPainter, options *C.QStyleOptionViewItem, index *C.QModelIndex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter, options *QStyleOptionViewItem, index *QModelIndex), painter *QPainter, options *QStyleOptionViewItem, index *QModelIndex))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval2 := UnsafeNewQStyleOptionViewItem(unsafe.Pointer(options), nil)
+	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_DrawRow, slotval1, slotval2, slotval3)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_DrawBranches(painter *QPainter, rect *QRect, index *QModelIndex) {
+
+	C.QTreeWidget_virtualbase_DrawBranches(unsafe.Pointer(this.h), painter.cPointer(), rect.cPointer(), index.cPointer())
+
+}
+func (this *QTreeWidget) OnDrawBranches(slot func(super func(painter *QPainter, rect *QRect, index *QModelIndex), painter *QPainter, rect *QRect, index *QModelIndex)) {
+	C.QTreeWidget_override_virtual_DrawBranches(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_DrawBranches
+func miqt_exec_callback_QTreeWidget_DrawBranches(self *C.QTreeWidget, cb C.intptr_t, painter *C.QPainter, rect *C.QRect, index *C.QModelIndex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter, rect *QRect, index *QModelIndex), painter *QPainter, rect *QRect, index *QModelIndex))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval2 := UnsafeNewQRect(unsafe.Pointer(rect))
+	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_DrawBranches, slotval1, slotval2, slotval3)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_MousePressEvent(event *QMouseEvent) {
+
+	C.QTreeWidget_virtualbase_MousePressEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTreeWidget) OnMousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	C.QTreeWidget_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_MousePressEvent
+func miqt_exec_callback_QTreeWidget_MousePressEvent(self *C.QTreeWidget, cb C.intptr_t, event *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_MousePressEvent, slotval1)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
+
+	C.QTreeWidget_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTreeWidget) OnMouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	C.QTreeWidget_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_MouseReleaseEvent
+func miqt_exec_callback_QTreeWidget_MouseReleaseEvent(self *C.QTreeWidget, cb C.intptr_t, event *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+
+	C.QTreeWidget_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTreeWidget) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	C.QTreeWidget_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_MouseDoubleClickEvent
+func miqt_exec_callback_QTreeWidget_MouseDoubleClickEvent(self *C.QTreeWidget, cb C.intptr_t, event *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
+
+	C.QTreeWidget_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTreeWidget) OnMouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	C.QTreeWidget_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_MouseMoveEvent
+func miqt_exec_callback_QTreeWidget_MouseMoveEvent(self *C.QTreeWidget, cb C.intptr_t, event *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
+
+	C.QTreeWidget_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTreeWidget) OnKeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	C.QTreeWidget_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_KeyPressEvent
+func miqt_exec_callback_QTreeWidget_KeyPressEvent(self *C.QTreeWidget, cb C.intptr_t, event *C.QKeyEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QKeyEvent), event *QKeyEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_KeyPressEvent, slotval1)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+
+	C.QTreeWidget_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTreeWidget) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+	C.QTreeWidget_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_DragMoveEvent
+func miqt_exec_callback_QTreeWidget_DragMoveEvent(self *C.QTreeWidget, cb C.intptr_t, event *C.QDragMoveEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragMoveEvent), event *QDragMoveEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_DragMoveEvent, slotval1)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_ViewportEvent(event *QEvent) bool {
+
+	return (bool)(C.QTreeWidget_virtualbase_ViewportEvent(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QTreeWidget) OnViewportEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	C.QTreeWidget_override_virtual_ViewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_ViewportEvent
+func miqt_exec_callback_QTreeWidget_ViewportEvent(self *C.QTreeWidget, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QTreeWidget{h: self}).callVirtualBase_ViewportEvent, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_UpdateGeometries() {
+
+	C.QTreeWidget_virtualbase_UpdateGeometries(unsafe.Pointer(this.h))
+
+}
+func (this *QTreeWidget) OnUpdateGeometries(slot func(super func())) {
+	C.QTreeWidget_override_virtual_UpdateGeometries(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_UpdateGeometries
+func miqt_exec_callback_QTreeWidget_UpdateGeometries(self *C.QTreeWidget, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_UpdateGeometries)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_ViewportSizeHint() *QSize {
+
+	_ret := C.QTreeWidget_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h))
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QTreeWidget) OnViewportSizeHint(slot func(super func() *QSize) *QSize) {
+	C.QTreeWidget_override_virtual_ViewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_ViewportSizeHint
+func miqt_exec_callback_QTreeWidget_ViewportSizeHint(self *C.QTreeWidget, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTreeWidget{h: self}).callVirtualBase_ViewportSizeHint)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTreeWidget) callVirtualBase_SizeHintForColumn(column int) int {
+
+	return (int)(C.QTreeWidget_virtualbase_SizeHintForColumn(unsafe.Pointer(this.h), (C.int)(column)))
+
+}
+func (this *QTreeWidget) OnSizeHintForColumn(slot func(super func(column int) int, column int) int) {
+	C.QTreeWidget_override_virtual_SizeHintForColumn(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_SizeHintForColumn
+func miqt_exec_callback_QTreeWidget_SizeHintForColumn(self *C.QTreeWidget, cb C.intptr_t, column C.int) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(column int) int, column int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(column)
+
+	virtualReturn := gofunc((&QTreeWidget{h: self}).callVirtualBase_SizeHintForColumn, slotval1)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_HorizontalScrollbarAction(action int) {
+
+	C.QTreeWidget_virtualbase_HorizontalScrollbarAction(unsafe.Pointer(this.h), (C.int)(action))
+
+}
+func (this *QTreeWidget) OnHorizontalScrollbarAction(slot func(super func(action int), action int)) {
+	C.QTreeWidget_override_virtual_HorizontalScrollbarAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_HorizontalScrollbarAction
+func miqt_exec_callback_QTreeWidget_HorizontalScrollbarAction(self *C.QTreeWidget, cb C.intptr_t, action C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(action int), action int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(action)
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_HorizontalScrollbarAction, slotval1)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_IsIndexHidden(index *QModelIndex) bool {
+
+	return (bool)(C.QTreeWidget_virtualbase_IsIndexHidden(unsafe.Pointer(this.h), index.cPointer()))
+
+}
+func (this *QTreeWidget) OnIsIndexHidden(slot func(super func(index *QModelIndex) bool, index *QModelIndex) bool) {
+	C.QTreeWidget_override_virtual_IsIndexHidden(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_IsIndexHidden
+func miqt_exec_callback_QTreeWidget_IsIndexHidden(self *C.QTreeWidget, cb C.intptr_t, index *C.QModelIndex) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) bool, index *QModelIndex) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+
+	virtualReturn := gofunc((&QTreeWidget{h: self}).callVirtualBase_IsIndexHidden, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QTreeWidget) callVirtualBase_CurrentChanged(current *QModelIndex, previous *QModelIndex) {
+
+	C.QTreeWidget_virtualbase_CurrentChanged(unsafe.Pointer(this.h), current.cPointer(), previous.cPointer())
+
+}
+func (this *QTreeWidget) OnCurrentChanged(slot func(super func(current *QModelIndex, previous *QModelIndex), current *QModelIndex, previous *QModelIndex)) {
+	C.QTreeWidget_override_virtual_CurrentChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeWidget_CurrentChanged
+func miqt_exec_callback_QTreeWidget_CurrentChanged(self *C.QTreeWidget, cb C.intptr_t, current *C.QModelIndex, previous *C.QModelIndex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(current *QModelIndex, previous *QModelIndex), current *QModelIndex, previous *QModelIndex))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(current))
+	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(previous))
+
+	gofunc((&QTreeWidget{h: self}).callVirtualBase_CurrentChanged, slotval1, slotval2)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QTreeWidget) Delete() {
-	C.QTreeWidget_Delete(this.h)
+	C.QTreeWidget_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

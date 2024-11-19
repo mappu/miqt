@@ -4,6 +4,7 @@
 #include <QDebug>
 #include <QDebugStateSaver>
 #include <QIODevice>
+#include <QIODeviceBase>
 #include <QNoDebug>
 #include <QString>
 #include <QByteArray>
@@ -12,12 +13,16 @@
 #include "gen_qdebug.h"
 #include "_cgo_export.h"
 
-QDebug* QDebug_new(QIODevice* device) {
-	return new QDebug(device);
+void QDebug_new(QIODevice* device, QDebug** outptr_QDebug, QIODeviceBase** outptr_QIODeviceBase) {
+	QDebug* ret = new QDebug(device);
+	*outptr_QDebug = ret;
+	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(ret);
 }
 
-QDebug* QDebug_new2(QDebug* o) {
-	return new QDebug(*o);
+void QDebug_new2(QDebug* o, QDebug** outptr_QDebug, QIODeviceBase** outptr_QIODeviceBase) {
+	QDebug* ret = new QDebug(*o);
+	*outptr_QDebug = ret;
+	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(ret);
 }
 
 void QDebug_OperatorAssign(QDebug* self, QDebug* other) {
@@ -208,16 +213,25 @@ QDebug* QDebug_MaybeQuote1(QDebug* self, char c) {
 	return &_ret;
 }
 
-void QDebug_Delete(QDebug* self) {
-	delete self;
+void QDebug_Delete(QDebug* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QDebug*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QDebugStateSaver* QDebugStateSaver_new(QDebug* dbg) {
-	return new QDebugStateSaver(*dbg);
+void QDebugStateSaver_new(QDebug* dbg, QDebugStateSaver** outptr_QDebugStateSaver) {
+	QDebugStateSaver* ret = new QDebugStateSaver(*dbg);
+	*outptr_QDebugStateSaver = ret;
 }
 
-void QDebugStateSaver_Delete(QDebugStateSaver* self) {
-	delete self;
+void QDebugStateSaver_Delete(QDebugStateSaver* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QDebugStateSaver*>( self );
+	} else {
+		delete self;
+	}
 }
 
 QNoDebug* QNoDebug_Space(QNoDebug* self) {
@@ -268,7 +282,11 @@ QNoDebug* QNoDebug_MaybeQuote1(QNoDebug* self, const char param1) {
 	return &_ret;
 }
 
-void QNoDebug_Delete(QNoDebug* self) {
-	delete self;
+void QNoDebug_Delete(QNoDebug* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QNoDebug*>( self );
+	} else {
+		delete self;
+	}
 }
 

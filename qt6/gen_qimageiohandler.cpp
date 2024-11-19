@@ -4,6 +4,7 @@
 #include <QImageIOHandler>
 #include <QImageIOPlugin>
 #include <QMetaObject>
+#include <QObject>
 #include <QRect>
 #include <QSize>
 #include <QString>
@@ -97,8 +98,12 @@ bool QImageIOHandler_AllocateImage(QSize* size, int format, QImage* image) {
 	return QImageIOHandler::allocateImage(*size, static_cast<QImage::Format>(format), image);
 }
 
-void QImageIOHandler_Delete(QImageIOHandler* self) {
-	delete self;
+void QImageIOHandler_Delete(QImageIOHandler* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QImageIOHandler*>( self );
+	} else {
+		delete self;
+	}
 }
 
 QMetaObject* QImageIOPlugin_MetaObject(const QImageIOPlugin* self) {
@@ -126,8 +131,9 @@ int QImageIOPlugin_Capabilities(const QImageIOPlugin* self, QIODevice* device, s
 	return static_cast<int>(_ret);
 }
 
-QImageIOHandler* QImageIOPlugin_Create(const QImageIOPlugin* self, QIODevice* device) {
-	return self->create(device);
+QImageIOHandler* QImageIOPlugin_Create(const QImageIOPlugin* self, QIODevice* device, struct miqt_string format) {
+	QByteArray format_QByteArray(format.data, format.len);
+	return self->create(device, format_QByteArray);
 }
 
 struct miqt_string QImageIOPlugin_Tr2(const char* s, const char* c) {
@@ -152,12 +158,11 @@ struct miqt_string QImageIOPlugin_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-QImageIOHandler* QImageIOPlugin_Create2(const QImageIOPlugin* self, QIODevice* device, struct miqt_string format) {
-	QByteArray format_QByteArray(format.data, format.len);
-	return self->create(device, format_QByteArray);
-}
-
-void QImageIOPlugin_Delete(QImageIOPlugin* self) {
-	delete self;
+void QImageIOPlugin_Delete(QImageIOPlugin* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QImageIOPlugin*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -14,7 +14,8 @@ import (
 )
 
 type QAnimationGroup struct {
-	h *C.QAnimationGroup
+	h          *C.QAnimationGroup
+	isSubclass bool
 	*QAbstractAnimation
 }
 
@@ -32,15 +33,23 @@ func (this *QAnimationGroup) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAnimationGroup(h *C.QAnimationGroup) *QAnimationGroup {
+// newQAnimationGroup constructs the type using only CGO pointers.
+func newQAnimationGroup(h *C.QAnimationGroup, h_QAbstractAnimation *C.QAbstractAnimation, h_QObject *C.QObject) *QAnimationGroup {
 	if h == nil {
 		return nil
 	}
-	return &QAnimationGroup{h: h, QAbstractAnimation: UnsafeNewQAbstractAnimation(unsafe.Pointer(h))}
+	return &QAnimationGroup{h: h,
+		QAbstractAnimation: newQAbstractAnimation(h_QAbstractAnimation, h_QObject)}
 }
 
-func UnsafeNewQAnimationGroup(h unsafe.Pointer) *QAnimationGroup {
-	return newQAnimationGroup((*C.QAnimationGroup)(h))
+// UnsafeNewQAnimationGroup constructs the type using only unsafe pointers.
+func UnsafeNewQAnimationGroup(h unsafe.Pointer, h_QAbstractAnimation unsafe.Pointer, h_QObject unsafe.Pointer) *QAnimationGroup {
+	if h == nil {
+		return nil
+	}
+
+	return &QAnimationGroup{h: (*C.QAnimationGroup)(h),
+		QAbstractAnimation: UnsafeNewQAbstractAnimation(h_QAbstractAnimation, h_QObject)}
 }
 
 func (this *QAnimationGroup) MetaObject() *QMetaObject {
@@ -63,7 +72,7 @@ func QAnimationGroup_Tr(s string) string {
 }
 
 func (this *QAnimationGroup) AnimationAt(index int) *QAbstractAnimation {
-	return UnsafeNewQAbstractAnimation(unsafe.Pointer(C.QAnimationGroup_AnimationAt(this.h, (C.int)(index))))
+	return UnsafeNewQAbstractAnimation(unsafe.Pointer(C.QAnimationGroup_AnimationAt(this.h, (C.int)(index))), nil)
 }
 
 func (this *QAnimationGroup) AnimationCount() int {
@@ -87,7 +96,7 @@ func (this *QAnimationGroup) RemoveAnimation(animation *QAbstractAnimation) {
 }
 
 func (this *QAnimationGroup) TakeAnimation(index int) *QAbstractAnimation {
-	return UnsafeNewQAbstractAnimation(unsafe.Pointer(C.QAnimationGroup_TakeAnimation(this.h, (C.int)(index))))
+	return UnsafeNewQAbstractAnimation(unsafe.Pointer(C.QAnimationGroup_TakeAnimation(this.h, (C.int)(index))), nil)
 }
 
 func (this *QAnimationGroup) Clear() {
@@ -118,7 +127,7 @@ func QAnimationGroup_Tr3(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAnimationGroup) Delete() {
-	C.QAnimationGroup_Delete(this.h)
+	C.QAnimationGroup_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

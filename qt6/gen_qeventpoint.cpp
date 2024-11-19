@@ -8,24 +8,29 @@
 #include "gen_qeventpoint.h"
 #include "_cgo_export.h"
 
-QEventPoint* QEventPoint_new() {
-	return new QEventPoint();
+void QEventPoint_new(QEventPoint** outptr_QEventPoint) {
+	QEventPoint* ret = new QEventPoint();
+	*outptr_QEventPoint = ret;
 }
 
-QEventPoint* QEventPoint_new2(int pointId, uint8_t state, QPointF* scenePosition, QPointF* globalPosition) {
-	return new QEventPoint(static_cast<int>(pointId), static_cast<QEventPoint::State>(state), *scenePosition, *globalPosition);
+void QEventPoint_new2(int pointId, uint8_t state, QPointF* scenePosition, QPointF* globalPosition, QEventPoint** outptr_QEventPoint) {
+	QEventPoint* ret = new QEventPoint(static_cast<int>(pointId), static_cast<QEventPoint::State>(state), *scenePosition, *globalPosition);
+	*outptr_QEventPoint = ret;
 }
 
-QEventPoint* QEventPoint_new3(QEventPoint* other) {
-	return new QEventPoint(*other);
+void QEventPoint_new3(QEventPoint* other, QEventPoint** outptr_QEventPoint) {
+	QEventPoint* ret = new QEventPoint(*other);
+	*outptr_QEventPoint = ret;
 }
 
-QEventPoint* QEventPoint_new4(int id) {
-	return new QEventPoint(static_cast<int>(id));
+void QEventPoint_new4(int id, QEventPoint** outptr_QEventPoint) {
+	QEventPoint* ret = new QEventPoint(static_cast<int>(id));
+	*outptr_QEventPoint = ret;
 }
 
-QEventPoint* QEventPoint_new5(int id, QPointingDevice* device) {
-	return new QEventPoint(static_cast<int>(id), device);
+void QEventPoint_new5(int id, QPointingDevice* device, QEventPoint** outptr_QEventPoint) {
+	QEventPoint* ret = new QEventPoint(static_cast<int>(id), device);
+	*outptr_QEventPoint = ret;
 }
 
 void QEventPoint_OperatorAssign(QEventPoint* self, QEventPoint* other) {
@@ -211,7 +216,11 @@ void QEventPoint_SetAccepted1(QEventPoint* self, bool accepted) {
 	self->setAccepted(accepted);
 }
 
-void QEventPoint_Delete(QEventPoint* self) {
-	delete self;
+void QEventPoint_Delete(QEventPoint* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QEventPoint*>( self );
+	} else {
+		delete self;
+	}
 }
 

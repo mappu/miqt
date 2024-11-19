@@ -4,16 +4,19 @@
 #include "gen_qpoint.h"
 #include "_cgo_export.h"
 
-QPoint* QPoint_new() {
-	return new QPoint();
+void QPoint_new(QPoint** outptr_QPoint) {
+	QPoint* ret = new QPoint();
+	*outptr_QPoint = ret;
 }
 
-QPoint* QPoint_new2(int xpos, int ypos) {
-	return new QPoint(static_cast<int>(xpos), static_cast<int>(ypos));
+void QPoint_new2(int xpos, int ypos, QPoint** outptr_QPoint) {
+	QPoint* ret = new QPoint(static_cast<int>(xpos), static_cast<int>(ypos));
+	*outptr_QPoint = ret;
 }
 
-QPoint* QPoint_new3(QPoint* param1) {
-	return new QPoint(*param1);
+void QPoint_new3(QPoint* param1, QPoint** outptr_QPoint) {
+	QPoint* ret = new QPoint(*param1);
+	*outptr_QPoint = ret;
 }
 
 bool QPoint_IsNull(const QPoint* self) {
@@ -84,24 +87,32 @@ int QPoint_DotProduct(QPoint* p1, QPoint* p2) {
 	return QPoint::dotProduct(*p1, *p2);
 }
 
-void QPoint_Delete(QPoint* self) {
-	delete self;
+void QPoint_Delete(QPoint* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QPoint*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QPointF* QPointF_new() {
-	return new QPointF();
+void QPointF_new(QPointF** outptr_QPointF) {
+	QPointF* ret = new QPointF();
+	*outptr_QPointF = ret;
 }
 
-QPointF* QPointF_new2(QPoint* p) {
-	return new QPointF(*p);
+void QPointF_new2(QPoint* p, QPointF** outptr_QPointF) {
+	QPointF* ret = new QPointF(*p);
+	*outptr_QPointF = ret;
 }
 
-QPointF* QPointF_new3(double xpos, double ypos) {
-	return new QPointF(static_cast<qreal>(xpos), static_cast<qreal>(ypos));
+void QPointF_new3(double xpos, double ypos, QPointF** outptr_QPointF) {
+	QPointF* ret = new QPointF(static_cast<qreal>(xpos), static_cast<qreal>(ypos));
+	*outptr_QPointF = ret;
 }
 
-QPointF* QPointF_new4(QPointF* param1) {
-	return new QPointF(*param1);
+void QPointF_new4(QPointF* param1, QPointF** outptr_QPointF) {
+	QPointF* ret = new QPointF(*param1);
+	*outptr_QPointF = ret;
 }
 
 double QPointF_ManhattanLength(const QPointF* self) {
@@ -168,7 +179,11 @@ QPoint* QPointF_ToPoint(const QPointF* self) {
 	return new QPoint(self->toPoint());
 }
 
-void QPointF_Delete(QPointF* self) {
-	delete self;
+void QPointF_Delete(QPointF* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QPointF*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -7,32 +7,39 @@
 #include "gen_qregion.h"
 #include "_cgo_export.h"
 
-QRegion* QRegion_new() {
-	return new QRegion();
+void QRegion_new(QRegion** outptr_QRegion) {
+	QRegion* ret = new QRegion();
+	*outptr_QRegion = ret;
 }
 
-QRegion* QRegion_new2(int x, int y, int w, int h) {
-	return new QRegion(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h));
+void QRegion_new2(int x, int y, int w, int h, QRegion** outptr_QRegion) {
+	QRegion* ret = new QRegion(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h));
+	*outptr_QRegion = ret;
 }
 
-QRegion* QRegion_new3(QRect* r) {
-	return new QRegion(*r);
+void QRegion_new3(QRect* r, QRegion** outptr_QRegion) {
+	QRegion* ret = new QRegion(*r);
+	*outptr_QRegion = ret;
 }
 
-QRegion* QRegion_new4(QRegion* region) {
-	return new QRegion(*region);
+void QRegion_new4(QRegion* region, QRegion** outptr_QRegion) {
+	QRegion* ret = new QRegion(*region);
+	*outptr_QRegion = ret;
 }
 
-QRegion* QRegion_new5(QBitmap* bitmap) {
-	return new QRegion(*bitmap);
+void QRegion_new5(QBitmap* bitmap, QRegion** outptr_QRegion) {
+	QRegion* ret = new QRegion(*bitmap);
+	*outptr_QRegion = ret;
 }
 
-QRegion* QRegion_new6(int x, int y, int w, int h, int t) {
-	return new QRegion(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h), static_cast<QRegion::RegionType>(t));
+void QRegion_new6(int x, int y, int w, int h, int t, QRegion** outptr_QRegion) {
+	QRegion* ret = new QRegion(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h), static_cast<QRegion::RegionType>(t));
+	*outptr_QRegion = ret;
 }
 
-QRegion* QRegion_new7(QRect* r, int t) {
-	return new QRegion(*r, static_cast<QRegion::RegionType>(t));
+void QRegion_new7(QRect* r, int t, QRegion** outptr_QRegion) {
+	QRegion* ret = new QRegion(*r, static_cast<QRegion::RegionType>(t));
+	*outptr_QRegion = ret;
 }
 
 void QRegion_OperatorAssign(QRegion* self, QRegion* param1) {
@@ -222,7 +229,11 @@ bool QRegion_OperatorNotEqual(const QRegion* self, QRegion* r) {
 	return self->operator!=(*r);
 }
 
-void QRegion_Delete(QRegion* self) {
-	delete self;
+void QRegion_Delete(QRegion* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QRegion*>( self );
+	} else {
+		delete self;
+	}
 }
 

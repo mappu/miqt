@@ -34,7 +34,8 @@ const (
 )
 
 type QLibraryInfo struct {
-	h *C.QLibraryInfo
+	h          *C.QLibraryInfo
+	isSubclass bool
 }
 
 func (this *QLibraryInfo) cPointer() *C.QLibraryInfo {
@@ -51,6 +52,7 @@ func (this *QLibraryInfo) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQLibraryInfo constructs the type using only CGO pointers.
 func newQLibraryInfo(h *C.QLibraryInfo) *QLibraryInfo {
 	if h == nil {
 		return nil
@@ -58,8 +60,13 @@ func newQLibraryInfo(h *C.QLibraryInfo) *QLibraryInfo {
 	return &QLibraryInfo{h: h}
 }
 
+// UnsafeNewQLibraryInfo constructs the type using only unsafe pointers.
 func UnsafeNewQLibraryInfo(h unsafe.Pointer) *QLibraryInfo {
-	return newQLibraryInfo((*C.QLibraryInfo)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QLibraryInfo{h: (*C.QLibraryInfo)(h)}
 }
 
 func QLibraryInfo_Build() string {
@@ -111,7 +118,7 @@ func QLibraryInfo_PlatformPluginArguments(platformName string) []string {
 
 // Delete this object from C++ memory.
 func (this *QLibraryInfo) Delete() {
-	C.QLibraryInfo_Delete(this.h)
+	C.QLibraryInfo_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -16,21 +16,31 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAudioEngine;
+class QChildEvent;
+class QEvent;
+class QMetaMethod;
 class QMetaObject;
+class QObject;
 class QQuaternion;
 class QSpatialSound;
+class QTimerEvent;
 class QUrl;
 class QVector3D;
 #else
 typedef struct QAudioEngine QAudioEngine;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 typedef struct QQuaternion QQuaternion;
 typedef struct QSpatialSound QSpatialSound;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QUrl QUrl;
 typedef struct QVector3D QVector3D;
 #endif
 
-QSpatialSound* QSpatialSound_new(QAudioEngine* engine);
+void QSpatialSound_new(QAudioEngine* engine, QSpatialSound** outptr_QSpatialSound, QObject** outptr_QObject);
 QMetaObject* QSpatialSound_MetaObject(const QSpatialSound* self);
 void* QSpatialSound_Metacast(QSpatialSound* self, const char* param1);
 struct miqt_string QSpatialSound_Tr(const char* s);
@@ -96,7 +106,21 @@ void QSpatialSound_Pause(QSpatialSound* self);
 void QSpatialSound_Stop(QSpatialSound* self);
 struct miqt_string QSpatialSound_Tr2(const char* s, const char* c);
 struct miqt_string QSpatialSound_Tr3(const char* s, const char* c, int n);
-void QSpatialSound_Delete(QSpatialSound* self);
+void QSpatialSound_override_virtual_Event(void* self, intptr_t slot);
+bool QSpatialSound_virtualbase_Event(void* self, QEvent* event);
+void QSpatialSound_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QSpatialSound_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QSpatialSound_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QSpatialSound_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QSpatialSound_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QSpatialSound_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QSpatialSound_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QSpatialSound_virtualbase_CustomEvent(void* self, QEvent* event);
+void QSpatialSound_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QSpatialSound_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QSpatialSound_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QSpatialSound_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QSpatialSound_Delete(QSpatialSound* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -14,7 +14,8 @@ import (
 )
 
 type QFileInfo struct {
-	h *C.QFileInfo
+	h          *C.QFileInfo
+	isSubclass bool
 }
 
 func (this *QFileInfo) cPointer() *C.QFileInfo {
@@ -31,6 +32,7 @@ func (this *QFileInfo) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQFileInfo constructs the type using only CGO pointers.
 func newQFileInfo(h *C.QFileInfo) *QFileInfo {
 	if h == nil {
 		return nil
@@ -38,14 +40,23 @@ func newQFileInfo(h *C.QFileInfo) *QFileInfo {
 	return &QFileInfo{h: h}
 }
 
+// UnsafeNewQFileInfo constructs the type using only unsafe pointers.
 func UnsafeNewQFileInfo(h unsafe.Pointer) *QFileInfo {
-	return newQFileInfo((*C.QFileInfo)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QFileInfo{h: (*C.QFileInfo)(h)}
 }
 
 // NewQFileInfo constructs a new QFileInfo object.
 func NewQFileInfo() *QFileInfo {
-	ret := C.QFileInfo_new()
-	return newQFileInfo(ret)
+	var outptr_QFileInfo *C.QFileInfo = nil
+
+	C.QFileInfo_new(&outptr_QFileInfo)
+	ret := newQFileInfo(outptr_QFileInfo)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFileInfo2 constructs a new QFileInfo object.
@@ -54,14 +65,22 @@ func NewQFileInfo2(file string) *QFileInfo {
 	file_ms.data = C.CString(file)
 	file_ms.len = C.size_t(len(file))
 	defer C.free(unsafe.Pointer(file_ms.data))
-	ret := C.QFileInfo_new2(file_ms)
-	return newQFileInfo(ret)
+	var outptr_QFileInfo *C.QFileInfo = nil
+
+	C.QFileInfo_new2(file_ms, &outptr_QFileInfo)
+	ret := newQFileInfo(outptr_QFileInfo)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFileInfo3 constructs a new QFileInfo object.
 func NewQFileInfo3(file *QFile) *QFileInfo {
-	ret := C.QFileInfo_new3(file.cPointer())
-	return newQFileInfo(ret)
+	var outptr_QFileInfo *C.QFileInfo = nil
+
+	C.QFileInfo_new3(file.cPointer(), &outptr_QFileInfo)
+	ret := newQFileInfo(outptr_QFileInfo)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFileInfo4 constructs a new QFileInfo object.
@@ -70,14 +89,22 @@ func NewQFileInfo4(dir *QDir, file string) *QFileInfo {
 	file_ms.data = C.CString(file)
 	file_ms.len = C.size_t(len(file))
 	defer C.free(unsafe.Pointer(file_ms.data))
-	ret := C.QFileInfo_new4(dir.cPointer(), file_ms)
-	return newQFileInfo(ret)
+	var outptr_QFileInfo *C.QFileInfo = nil
+
+	C.QFileInfo_new4(dir.cPointer(), file_ms, &outptr_QFileInfo)
+	ret := newQFileInfo(outptr_QFileInfo)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFileInfo5 constructs a new QFileInfo object.
 func NewQFileInfo5(fileinfo *QFileInfo) *QFileInfo {
-	ret := C.QFileInfo_new5(fileinfo.cPointer())
-	return newQFileInfo(ret)
+	var outptr_QFileInfo *C.QFileInfo = nil
+
+	C.QFileInfo_new5(fileinfo.cPointer(), &outptr_QFileInfo)
+	ret := newQFileInfo(outptr_QFileInfo)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QFileInfo) OperatorAssign(fileinfo *QFileInfo) {
@@ -394,7 +421,7 @@ func (this *QFileInfo) SetCaching(on bool) {
 
 // Delete this object from C++ memory.
 func (this *QFileInfo) Delete() {
-	C.QFileInfo_Delete(this.h)
+	C.QFileInfo_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -14,7 +14,8 @@ import (
 )
 
 type QRect struct {
-	h *C.QRect
+	h          *C.QRect
+	isSubclass bool
 }
 
 func (this *QRect) cPointer() *C.QRect {
@@ -31,6 +32,7 @@ func (this *QRect) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQRect constructs the type using only CGO pointers.
 func newQRect(h *C.QRect) *QRect {
 	if h == nil {
 		return nil
@@ -38,38 +40,63 @@ func newQRect(h *C.QRect) *QRect {
 	return &QRect{h: h}
 }
 
+// UnsafeNewQRect constructs the type using only unsafe pointers.
 func UnsafeNewQRect(h unsafe.Pointer) *QRect {
-	return newQRect((*C.QRect)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QRect{h: (*C.QRect)(h)}
 }
 
 // NewQRect constructs a new QRect object.
 func NewQRect() *QRect {
-	ret := C.QRect_new()
-	return newQRect(ret)
+	var outptr_QRect *C.QRect = nil
+
+	C.QRect_new(&outptr_QRect)
+	ret := newQRect(outptr_QRect)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRect2 constructs a new QRect object.
 func NewQRect2(topleft *QPoint, bottomright *QPoint) *QRect {
-	ret := C.QRect_new2(topleft.cPointer(), bottomright.cPointer())
-	return newQRect(ret)
+	var outptr_QRect *C.QRect = nil
+
+	C.QRect_new2(topleft.cPointer(), bottomright.cPointer(), &outptr_QRect)
+	ret := newQRect(outptr_QRect)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRect3 constructs a new QRect object.
 func NewQRect3(topleft *QPoint, size *QSize) *QRect {
-	ret := C.QRect_new3(topleft.cPointer(), size.cPointer())
-	return newQRect(ret)
+	var outptr_QRect *C.QRect = nil
+
+	C.QRect_new3(topleft.cPointer(), size.cPointer(), &outptr_QRect)
+	ret := newQRect(outptr_QRect)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRect4 constructs a new QRect object.
 func NewQRect4(left int, top int, width int, height int) *QRect {
-	ret := C.QRect_new4((C.int)(left), (C.int)(top), (C.int)(width), (C.int)(height))
-	return newQRect(ret)
+	var outptr_QRect *C.QRect = nil
+
+	C.QRect_new4((C.int)(left), (C.int)(top), (C.int)(width), (C.int)(height), &outptr_QRect)
+	ret := newQRect(outptr_QRect)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRect5 constructs a new QRect object.
 func NewQRect5(param1 *QRect) *QRect {
-	ret := C.QRect_new5(param1.cPointer())
-	return newQRect(ret)
+	var outptr_QRect *C.QRect = nil
+
+	C.QRect_new5(param1.cPointer(), &outptr_QRect)
+	ret := newQRect(outptr_QRect)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QRect) IsNull() bool {
@@ -419,7 +446,7 @@ func (this *QRect) Contains23(p *QPoint, proper bool) bool {
 
 // Delete this object from C++ memory.
 func (this *QRect) Delete() {
-	C.QRect_Delete(this.h)
+	C.QRect_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -432,7 +459,8 @@ func (this *QRect) GoGC() {
 }
 
 type QRectF struct {
-	h *C.QRectF
+	h          *C.QRectF
+	isSubclass bool
 }
 
 func (this *QRectF) cPointer() *C.QRectF {
@@ -449,6 +477,7 @@ func (this *QRectF) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQRectF constructs the type using only CGO pointers.
 func newQRectF(h *C.QRectF) *QRectF {
 	if h == nil {
 		return nil
@@ -456,44 +485,73 @@ func newQRectF(h *C.QRectF) *QRectF {
 	return &QRectF{h: h}
 }
 
+// UnsafeNewQRectF constructs the type using only unsafe pointers.
 func UnsafeNewQRectF(h unsafe.Pointer) *QRectF {
-	return newQRectF((*C.QRectF)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QRectF{h: (*C.QRectF)(h)}
 }
 
 // NewQRectF constructs a new QRectF object.
 func NewQRectF() *QRectF {
-	ret := C.QRectF_new()
-	return newQRectF(ret)
+	var outptr_QRectF *C.QRectF = nil
+
+	C.QRectF_new(&outptr_QRectF)
+	ret := newQRectF(outptr_QRectF)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRectF2 constructs a new QRectF object.
 func NewQRectF2(topleft *QPointF, size *QSizeF) *QRectF {
-	ret := C.QRectF_new2(topleft.cPointer(), size.cPointer())
-	return newQRectF(ret)
+	var outptr_QRectF *C.QRectF = nil
+
+	C.QRectF_new2(topleft.cPointer(), size.cPointer(), &outptr_QRectF)
+	ret := newQRectF(outptr_QRectF)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRectF3 constructs a new QRectF object.
 func NewQRectF3(topleft *QPointF, bottomRight *QPointF) *QRectF {
-	ret := C.QRectF_new3(topleft.cPointer(), bottomRight.cPointer())
-	return newQRectF(ret)
+	var outptr_QRectF *C.QRectF = nil
+
+	C.QRectF_new3(topleft.cPointer(), bottomRight.cPointer(), &outptr_QRectF)
+	ret := newQRectF(outptr_QRectF)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRectF4 constructs a new QRectF object.
 func NewQRectF4(left float64, top float64, width float64, height float64) *QRectF {
-	ret := C.QRectF_new4((C.double)(left), (C.double)(top), (C.double)(width), (C.double)(height))
-	return newQRectF(ret)
+	var outptr_QRectF *C.QRectF = nil
+
+	C.QRectF_new4((C.double)(left), (C.double)(top), (C.double)(width), (C.double)(height), &outptr_QRectF)
+	ret := newQRectF(outptr_QRectF)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRectF5 constructs a new QRectF object.
 func NewQRectF5(rect *QRect) *QRectF {
-	ret := C.QRectF_new5(rect.cPointer())
-	return newQRectF(ret)
+	var outptr_QRectF *C.QRectF = nil
+
+	C.QRectF_new5(rect.cPointer(), &outptr_QRectF)
+	ret := newQRectF(outptr_QRectF)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRectF6 constructs a new QRectF object.
 func NewQRectF6(param1 *QRectF) *QRectF {
-	ret := C.QRectF_new6(param1.cPointer())
-	return newQRectF(ret)
+	var outptr_QRectF *C.QRectF = nil
+
+	C.QRectF_new6(param1.cPointer(), &outptr_QRectF)
+	ret := newQRectF(outptr_QRectF)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QRectF) IsNull() bool {
@@ -831,7 +889,7 @@ func (this *QRectF) ToAlignedRect() *QRect {
 
 // Delete this object from C++ memory.
 func (this *QRectF) Delete() {
-	C.QRectF_Delete(this.h)
+	C.QRectF_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

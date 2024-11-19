@@ -17,21 +17,23 @@ extern "C" {
 #ifdef __cplusplus
 class QAudioFormat;
 class QIODevice;
+class QIODeviceBase;
 class QMetaObject;
 class QObject;
 class QWaveDecoder;
 #else
 typedef struct QAudioFormat QAudioFormat;
 typedef struct QIODevice QIODevice;
+typedef struct QIODeviceBase QIODeviceBase;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QWaveDecoder QWaveDecoder;
 #endif
 
-QWaveDecoder* QWaveDecoder_new(QIODevice* device);
-QWaveDecoder* QWaveDecoder_new2(QIODevice* device, QAudioFormat* format);
-QWaveDecoder* QWaveDecoder_new3(QIODevice* device, QObject* parent);
-QWaveDecoder* QWaveDecoder_new4(QIODevice* device, QAudioFormat* format, QObject* parent);
+void QWaveDecoder_new(QIODevice* device, QWaveDecoder** outptr_QWaveDecoder, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
+void QWaveDecoder_new2(QIODevice* device, QAudioFormat* format, QWaveDecoder** outptr_QWaveDecoder, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
+void QWaveDecoder_new3(QIODevice* device, QObject* parent, QWaveDecoder** outptr_QWaveDecoder, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
+void QWaveDecoder_new4(QIODevice* device, QAudioFormat* format, QObject* parent, QWaveDecoder** outptr_QWaveDecoder, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
 QMetaObject* QWaveDecoder_MetaObject(const QWaveDecoder* self);
 void* QWaveDecoder_Metacast(QWaveDecoder* self, const char* param1);
 struct miqt_string QWaveDecoder_Tr(const char* s);
@@ -52,7 +54,37 @@ void QWaveDecoder_ParsingError(QWaveDecoder* self);
 void QWaveDecoder_connect_ParsingError(QWaveDecoder* self, intptr_t slot);
 struct miqt_string QWaveDecoder_Tr2(const char* s, const char* c);
 struct miqt_string QWaveDecoder_Tr3(const char* s, const char* c, int n);
-void QWaveDecoder_Delete(QWaveDecoder* self);
+void QWaveDecoder_override_virtual_Open(void* self, intptr_t slot);
+bool QWaveDecoder_virtualbase_Open(void* self, int mode);
+void QWaveDecoder_override_virtual_Close(void* self, intptr_t slot);
+void QWaveDecoder_virtualbase_Close(void* self);
+void QWaveDecoder_override_virtual_Seek(void* self, intptr_t slot);
+bool QWaveDecoder_virtualbase_Seek(void* self, long long pos);
+void QWaveDecoder_override_virtual_Pos(void* self, intptr_t slot);
+long long QWaveDecoder_virtualbase_Pos(const void* self);
+void QWaveDecoder_override_virtual_Size(void* self, intptr_t slot);
+long long QWaveDecoder_virtualbase_Size(const void* self);
+void QWaveDecoder_override_virtual_IsSequential(void* self, intptr_t slot);
+bool QWaveDecoder_virtualbase_IsSequential(const void* self);
+void QWaveDecoder_override_virtual_BytesAvailable(void* self, intptr_t slot);
+long long QWaveDecoder_virtualbase_BytesAvailable(const void* self);
+void QWaveDecoder_override_virtual_AtEnd(void* self, intptr_t slot);
+bool QWaveDecoder_virtualbase_AtEnd(const void* self);
+void QWaveDecoder_override_virtual_Reset(void* self, intptr_t slot);
+bool QWaveDecoder_virtualbase_Reset(void* self);
+void QWaveDecoder_override_virtual_BytesToWrite(void* self, intptr_t slot);
+long long QWaveDecoder_virtualbase_BytesToWrite(const void* self);
+void QWaveDecoder_override_virtual_CanReadLine(void* self, intptr_t slot);
+bool QWaveDecoder_virtualbase_CanReadLine(const void* self);
+void QWaveDecoder_override_virtual_WaitForReadyRead(void* self, intptr_t slot);
+bool QWaveDecoder_virtualbase_WaitForReadyRead(void* self, int msecs);
+void QWaveDecoder_override_virtual_WaitForBytesWritten(void* self, intptr_t slot);
+bool QWaveDecoder_virtualbase_WaitForBytesWritten(void* self, int msecs);
+void QWaveDecoder_override_virtual_ReadLineData(void* self, intptr_t slot);
+long long QWaveDecoder_virtualbase_ReadLineData(void* self, char* data, long long maxlen);
+void QWaveDecoder_override_virtual_SkipData(void* self, intptr_t slot);
+long long QWaveDecoder_virtualbase_SkipData(void* self, long long maxSize);
+void QWaveDecoder_Delete(QWaveDecoder* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

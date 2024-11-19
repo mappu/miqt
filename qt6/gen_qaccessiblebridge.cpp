@@ -3,6 +3,7 @@
 #include <QAccessibleEvent>
 #include <QAccessibleInterface>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -22,8 +23,12 @@ void QAccessibleBridge_OperatorAssign(QAccessibleBridge* self, QAccessibleBridge
 	self->operator=(*param1);
 }
 
-void QAccessibleBridge_Delete(QAccessibleBridge* self) {
-	delete self;
+void QAccessibleBridge_Delete(QAccessibleBridge* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAccessibleBridge*>( self );
+	} else {
+		delete self;
+	}
 }
 
 QMetaObject* QAccessibleBridgePlugin_MetaObject(const QAccessibleBridgePlugin* self) {
@@ -72,7 +77,11 @@ struct miqt_string QAccessibleBridgePlugin_Tr3(const char* s, const char* c, int
 	return _ms;
 }
 
-void QAccessibleBridgePlugin_Delete(QAccessibleBridgePlugin* self) {
-	delete self;
+void QAccessibleBridgePlugin_Delete(QAccessibleBridgePlugin* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAccessibleBridgePlugin*>( self );
+	} else {
+		delete self;
+	}
 }
 

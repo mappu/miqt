@@ -22,17 +22,17 @@ typedef struct QFont QFont;
 typedef struct QPaintDevice QPaintDevice;
 #endif
 
-QFont* QFont_new();
-QFont* QFont_new2(struct miqt_string family);
-QFont* QFont_new3(struct miqt_array /* of struct miqt_string */  families);
-QFont* QFont_new4(QFont* font, QPaintDevice* pd);
-QFont* QFont_new5(QFont* font);
-QFont* QFont_new6(struct miqt_string family, int pointSize);
-QFont* QFont_new7(struct miqt_string family, int pointSize, int weight);
-QFont* QFont_new8(struct miqt_string family, int pointSize, int weight, bool italic);
-QFont* QFont_new9(struct miqt_array /* of struct miqt_string */  families, int pointSize);
-QFont* QFont_new10(struct miqt_array /* of struct miqt_string */  families, int pointSize, int weight);
-QFont* QFont_new11(struct miqt_array /* of struct miqt_string */  families, int pointSize, int weight, bool italic);
+void QFont_new(QFont** outptr_QFont);
+void QFont_new2(struct miqt_string family, QFont** outptr_QFont);
+void QFont_new3(struct miqt_array /* of struct miqt_string */  families, QFont** outptr_QFont);
+void QFont_new4(QFont* font, QPaintDevice* pd, QFont** outptr_QFont);
+void QFont_new5(QFont* font, QFont** outptr_QFont);
+void QFont_new6(struct miqt_string family, int pointSize, QFont** outptr_QFont);
+void QFont_new7(struct miqt_string family, int pointSize, int weight, QFont** outptr_QFont);
+void QFont_new8(struct miqt_string family, int pointSize, int weight, bool italic, QFont** outptr_QFont);
+void QFont_new9(struct miqt_array /* of struct miqt_string */  families, int pointSize, QFont** outptr_QFont);
+void QFont_new10(struct miqt_array /* of struct miqt_string */  families, int pointSize, int weight, QFont** outptr_QFont);
+void QFont_new11(struct miqt_array /* of struct miqt_string */  families, int pointSize, int weight, bool italic, QFont** outptr_QFont);
 void QFont_Swap(QFont* self, QFont* other);
 struct miqt_string QFont_Family(const QFont* self);
 void QFont_SetFamily(QFont* self, struct miqt_string family);
@@ -104,7 +104,7 @@ void QFont_SetResolveMask(QFont* self, unsigned int mask);
 void QFont_SetLegacyWeight(QFont* self, int legacyWeight);
 int QFont_LegacyWeight(const QFont* self);
 void QFont_SetStyleHint2(QFont* self, int param1, int param2);
-void QFont_Delete(QFont* self);
+void QFont_Delete(QFont* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

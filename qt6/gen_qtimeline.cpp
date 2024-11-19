@@ -1,24 +1,240 @@
+#include <QChildEvent>
 #include <QEasingCurve>
+#include <QEvent>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
 #include <QTimeLine>
+#include <QTimerEvent>
 #include <qtimeline.h>
 #include "gen_qtimeline.h"
 #include "_cgo_export.h"
 
-QTimeLine* QTimeLine_new() {
-	return new QTimeLine();
+class MiqtVirtualQTimeLine : public virtual QTimeLine {
+public:
+
+	MiqtVirtualQTimeLine(): QTimeLine() {};
+	MiqtVirtualQTimeLine(int duration): QTimeLine(duration) {};
+	MiqtVirtualQTimeLine(int duration, QObject* parent): QTimeLine(duration, parent) {};
+
+	virtual ~MiqtVirtualQTimeLine() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ValueForTime = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual qreal valueForTime(int msec) const override {
+		if (handle__ValueForTime == 0) {
+			return QTimeLine::valueForTime(msec);
+		}
+		
+		int sigval1 = msec;
+
+		double callback_return_value = miqt_exec_callback_QTimeLine_ValueForTime(const_cast<MiqtVirtualQTimeLine*>(this), handle__ValueForTime, sigval1);
+
+		return static_cast<qreal>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	double virtualbase_ValueForTime(int msec) const {
+
+		qreal _ret = QTimeLine::valueForTime(static_cast<int>(msec));
+		return static_cast<double>(_ret);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QTimeLine::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QTimeLine_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QTimeLine::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QTimeLine::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QTimeLine_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QTimeLine::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QTimeLine::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QTimeLine_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QTimeLine::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QTimeLine::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QTimeLine_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QTimeLine::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QTimeLine::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QTimeLine_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QTimeLine::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QTimeLine::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QTimeLine_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QTimeLine::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QTimeLine::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QTimeLine_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QTimeLine::disconnectNotify(*signal);
+
+	}
+
+};
+
+void QTimeLine_new(QTimeLine** outptr_QTimeLine, QObject** outptr_QObject) {
+	MiqtVirtualQTimeLine* ret = new MiqtVirtualQTimeLine();
+	*outptr_QTimeLine = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QTimeLine* QTimeLine_new2(int duration) {
-	return new QTimeLine(static_cast<int>(duration));
+void QTimeLine_new2(int duration, QTimeLine** outptr_QTimeLine, QObject** outptr_QObject) {
+	MiqtVirtualQTimeLine* ret = new MiqtVirtualQTimeLine(static_cast<int>(duration));
+	*outptr_QTimeLine = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QTimeLine* QTimeLine_new3(int duration, QObject* parent) {
-	return new QTimeLine(static_cast<int>(duration), parent);
+void QTimeLine_new3(int duration, QObject* parent, QTimeLine** outptr_QTimeLine, QObject** outptr_QObject) {
+	MiqtVirtualQTimeLine* ret = new MiqtVirtualQTimeLine(static_cast<int>(duration), parent);
+	*outptr_QTimeLine = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QTimeLine_MetaObject(const QTimeLine* self) {
@@ -174,7 +390,75 @@ struct miqt_string QTimeLine_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QTimeLine_Delete(QTimeLine* self) {
-	delete self;
+void QTimeLine_override_virtual_ValueForTime(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) )->handle__ValueForTime = slot;
+}
+
+double QTimeLine_virtualbase_ValueForTime(const void* self, int msec) {
+	return ( (const MiqtVirtualQTimeLine*)(self) )->virtualbase_ValueForTime(msec);
+}
+
+void QTimeLine_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) )->handle__TimerEvent = slot;
+}
+
+void QTimeLine_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQTimeLine*)(self) )->virtualbase_TimerEvent(event);
+}
+
+void QTimeLine_override_virtual_Event(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) )->handle__Event = slot;
+}
+
+bool QTimeLine_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQTimeLine*)(self) )->virtualbase_Event(event);
+}
+
+void QTimeLine_override_virtual_EventFilter(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) )->handle__EventFilter = slot;
+}
+
+bool QTimeLine_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQTimeLine*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+void QTimeLine_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) )->handle__ChildEvent = slot;
+}
+
+void QTimeLine_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQTimeLine*)(self) )->virtualbase_ChildEvent(event);
+}
+
+void QTimeLine_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) )->handle__CustomEvent = slot;
+}
+
+void QTimeLine_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQTimeLine*)(self) )->virtualbase_CustomEvent(event);
+}
+
+void QTimeLine_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) )->handle__ConnectNotify = slot;
+}
+
+void QTimeLine_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQTimeLine*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+void QTimeLine_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) )->handle__DisconnectNotify = slot;
+}
+
+void QTimeLine_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQTimeLine*)(self) )->virtualbase_DisconnectNotify(signal);
+}
+
+void QTimeLine_Delete(QTimeLine* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQTimeLine*>( self );
+	} else {
+		delete self;
+	}
 }
 

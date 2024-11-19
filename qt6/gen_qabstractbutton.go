@@ -15,7 +15,8 @@ import (
 )
 
 type QAbstractButton struct {
-	h *C.QAbstractButton
+	h          *C.QAbstractButton
+	isSubclass bool
 	*QWidget
 }
 
@@ -33,15 +34,23 @@ func (this *QAbstractButton) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAbstractButton(h *C.QAbstractButton) *QAbstractButton {
+// newQAbstractButton constructs the type using only CGO pointers.
+func newQAbstractButton(h *C.QAbstractButton, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QAbstractButton {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractButton{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
+	return &QAbstractButton{h: h,
+		QWidget: newQWidget(h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
-func UnsafeNewQAbstractButton(h unsafe.Pointer) *QAbstractButton {
-	return newQAbstractButton((*C.QAbstractButton)(h))
+// UnsafeNewQAbstractButton constructs the type using only unsafe pointers.
+func UnsafeNewQAbstractButton(h unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QAbstractButton {
+	if h == nil {
+		return nil
+	}
+
+	return &QAbstractButton{h: (*C.QAbstractButton)(h),
+		QWidget: UnsafeNewQWidget(h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
 func (this *QAbstractButton) MetaObject() *QMetaObject {
@@ -160,7 +169,7 @@ func (this *QAbstractButton) AutoExclusive() bool {
 }
 
 func (this *QAbstractButton) Group() *QButtonGroup {
-	return UnsafeNewQButtonGroup(unsafe.Pointer(C.QAbstractButton_Group(this.h)))
+	return UnsafeNewQButtonGroup(unsafe.Pointer(C.QAbstractButton_Group(this.h)), nil)
 }
 
 func (this *QAbstractButton) SetIconSize(size *QSize) {
@@ -298,7 +307,7 @@ func miqt_exec_callback_QAbstractButton_Clicked1(cb C.intptr_t, checked C.bool) 
 
 // Delete this object from C++ memory.
 func (this *QAbstractButton) Delete() {
-	C.QAbstractButton_Delete(this.h)
+	C.QAbstractButton_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

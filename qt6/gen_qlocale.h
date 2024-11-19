@@ -28,13 +28,13 @@ typedef struct QLocale QLocale;
 typedef struct QTime QTime;
 #endif
 
-QLocale* QLocale_new();
-QLocale* QLocale_new2(struct miqt_string name);
-QLocale* QLocale_new3(uint16_t language, uint16_t territory);
-QLocale* QLocale_new4(uint16_t language);
-QLocale* QLocale_new5(QLocale* other);
-QLocale* QLocale_new6(uint16_t language, uint16_t script);
-QLocale* QLocale_new7(uint16_t language, uint16_t script, uint16_t territory);
+void QLocale_new(QLocale** outptr_QLocale);
+void QLocale_new2(struct miqt_string name, QLocale** outptr_QLocale);
+void QLocale_new3(uint16_t language, uint16_t territory, QLocale** outptr_QLocale);
+void QLocale_new4(uint16_t language, QLocale** outptr_QLocale);
+void QLocale_new5(QLocale* other, QLocale** outptr_QLocale);
+void QLocale_new6(uint16_t language, uint16_t script, QLocale** outptr_QLocale);
+void QLocale_new7(uint16_t language, uint16_t script, uint16_t territory, QLocale** outptr_QLocale);
 void QLocale_OperatorAssign(QLocale* self, QLocale* other);
 void QLocale_Swap(QLocale* self, QLocale* other);
 uint16_t QLocale_Language(const QLocale* self);
@@ -177,7 +177,7 @@ struct miqt_string QLocale_FormattedDataSize2(const QLocale* self, long long byt
 struct miqt_string QLocale_FormattedDataSize3(const QLocale* self, long long bytes, int precision, int format);
 struct miqt_string QLocale_LanguageToCode2(uint16_t language, int codeTypes);
 struct miqt_string QLocale_QuoteString2(const QLocale* self, struct miqt_string str, int style);
-void QLocale_Delete(QLocale* self);
+void QLocale_Delete(QLocale* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

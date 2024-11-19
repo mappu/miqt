@@ -1,7 +1,9 @@
+#include <QChildEvent>
 #include <QGridLayout>
 #include <QLayout>
 #include <QLayoutItem>
 #include <QMetaObject>
+#include <QObject>
 #include <QRect>
 #include <QSize>
 #include <QString>
@@ -12,12 +14,464 @@
 #include "gen_qgridlayout.h"
 #include "_cgo_export.h"
 
-QGridLayout* QGridLayout_new(QWidget* parent) {
-	return new QGridLayout(parent);
+class MiqtVirtualQGridLayout : public virtual QGridLayout {
+public:
+
+	MiqtVirtualQGridLayout(QWidget* parent): QGridLayout(parent) {};
+	MiqtVirtualQGridLayout(): QGridLayout() {};
+
+	virtual ~MiqtVirtualQGridLayout() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SizeHint = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QSize sizeHint() const override {
+		if (handle__SizeHint == 0) {
+			return QGridLayout::sizeHint();
+		}
+		
+
+		QSize* callback_return_value = miqt_exec_callback_QGridLayout_SizeHint(const_cast<MiqtVirtualQGridLayout*>(this), handle__SizeHint);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QSize* virtualbase_SizeHint() const {
+
+		return new QSize(QGridLayout::sizeHint());
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MinimumSize = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QSize minimumSize() const override {
+		if (handle__MinimumSize == 0) {
+			return QGridLayout::minimumSize();
+		}
+		
+
+		QSize* callback_return_value = miqt_exec_callback_QGridLayout_MinimumSize(const_cast<MiqtVirtualQGridLayout*>(this), handle__MinimumSize);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QSize* virtualbase_MinimumSize() const {
+
+		return new QSize(QGridLayout::minimumSize());
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MaximumSize = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QSize maximumSize() const override {
+		if (handle__MaximumSize == 0) {
+			return QGridLayout::maximumSize();
+		}
+		
+
+		QSize* callback_return_value = miqt_exec_callback_QGridLayout_MaximumSize(const_cast<MiqtVirtualQGridLayout*>(this), handle__MaximumSize);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QSize* virtualbase_MaximumSize() const {
+
+		return new QSize(QGridLayout::maximumSize());
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HasHeightForWidth = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool hasHeightForWidth() const override {
+		if (handle__HasHeightForWidth == 0) {
+			return QGridLayout::hasHeightForWidth();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QGridLayout_HasHeightForWidth(const_cast<MiqtVirtualQGridLayout*>(this), handle__HasHeightForWidth);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_HasHeightForWidth() const {
+
+		return QGridLayout::hasHeightForWidth();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HeightForWidth = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int heightForWidth(int param1) const override {
+		if (handle__HeightForWidth == 0) {
+			return QGridLayout::heightForWidth(param1);
+		}
+		
+		int sigval1 = param1;
+
+		int callback_return_value = miqt_exec_callback_QGridLayout_HeightForWidth(const_cast<MiqtVirtualQGridLayout*>(this), handle__HeightForWidth, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_HeightForWidth(int param1) const {
+
+		return QGridLayout::heightForWidth(static_cast<int>(param1));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MinimumHeightForWidth = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int minimumHeightForWidth(int param1) const override {
+		if (handle__MinimumHeightForWidth == 0) {
+			return QGridLayout::minimumHeightForWidth(param1);
+		}
+		
+		int sigval1 = param1;
+
+		int callback_return_value = miqt_exec_callback_QGridLayout_MinimumHeightForWidth(const_cast<MiqtVirtualQGridLayout*>(this), handle__MinimumHeightForWidth, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_MinimumHeightForWidth(int param1) const {
+
+		return QGridLayout::minimumHeightForWidth(static_cast<int>(param1));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ExpandingDirections = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual Qt::Orientations expandingDirections() const override {
+		if (handle__ExpandingDirections == 0) {
+			return QGridLayout::expandingDirections();
+		}
+		
+
+		int callback_return_value = miqt_exec_callback_QGridLayout_ExpandingDirections(const_cast<MiqtVirtualQGridLayout*>(this), handle__ExpandingDirections);
+
+		return static_cast<Qt::Orientations>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_ExpandingDirections() const {
+
+		Qt::Orientations _ret = QGridLayout::expandingDirections();
+		return static_cast<int>(_ret);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Invalidate = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void invalidate() override {
+		if (handle__Invalidate == 0) {
+			QGridLayout::invalidate();
+			return;
+		}
+		
+
+		miqt_exec_callback_QGridLayout_Invalidate(this, handle__Invalidate);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_Invalidate() {
+
+		QGridLayout::invalidate();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ItemAt = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QLayoutItem* itemAt(int index) const override {
+		if (handle__ItemAt == 0) {
+			return QGridLayout::itemAt(index);
+		}
+		
+		int sigval1 = index;
+
+		QLayoutItem* callback_return_value = miqt_exec_callback_QGridLayout_ItemAt(const_cast<MiqtVirtualQGridLayout*>(this), handle__ItemAt, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QLayoutItem* virtualbase_ItemAt(int index) const {
+
+		return QGridLayout::itemAt(static_cast<int>(index));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TakeAt = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QLayoutItem* takeAt(int index) override {
+		if (handle__TakeAt == 0) {
+			return QGridLayout::takeAt(index);
+		}
+		
+		int sigval1 = index;
+
+		QLayoutItem* callback_return_value = miqt_exec_callback_QGridLayout_TakeAt(this, handle__TakeAt, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QLayoutItem* virtualbase_TakeAt(int index) {
+
+		return QGridLayout::takeAt(static_cast<int>(index));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Count = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int count() const override {
+		if (handle__Count == 0) {
+			return QGridLayout::count();
+		}
+		
+
+		int callback_return_value = miqt_exec_callback_QGridLayout_Count(const_cast<MiqtVirtualQGridLayout*>(this), handle__Count);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_Count() const {
+
+		return QGridLayout::count();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetGeometry = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setGeometry(const QRect& geometry) override {
+		if (handle__SetGeometry == 0) {
+			QGridLayout::setGeometry(geometry);
+			return;
+		}
+		
+		const QRect& geometry_ret = geometry;
+		// Cast returned reference into pointer
+		QRect* sigval1 = const_cast<QRect*>(&geometry_ret);
+
+		miqt_exec_callback_QGridLayout_SetGeometry(this, handle__SetGeometry, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetGeometry(QRect* geometry) {
+
+		QGridLayout::setGeometry(*geometry);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__AddItemWithQLayoutItem = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void addItem(QLayoutItem* param1) override {
+		if (handle__AddItemWithQLayoutItem == 0) {
+			QGridLayout::addItem(param1);
+			return;
+		}
+		
+		QLayoutItem* sigval1 = param1;
+
+		miqt_exec_callback_QGridLayout_AddItemWithQLayoutItem(this, handle__AddItemWithQLayoutItem, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_AddItemWithQLayoutItem(QLayoutItem* param1) {
+
+		QGridLayout::addItem(param1);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Geometry = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QRect geometry() const override {
+		if (handle__Geometry == 0) {
+			return QGridLayout::geometry();
+		}
+		
+
+		QRect* callback_return_value = miqt_exec_callback_QGridLayout_Geometry(const_cast<MiqtVirtualQGridLayout*>(this), handle__Geometry);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QRect* virtualbase_Geometry() const {
+
+		return new QRect(QGridLayout::geometry());
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__IndexOf = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int indexOf(QWidget* param1) const override {
+		if (handle__IndexOf == 0) {
+			return QGridLayout::indexOf(param1);
+		}
+		
+		QWidget* sigval1 = param1;
+
+		int callback_return_value = miqt_exec_callback_QGridLayout_IndexOf(const_cast<MiqtVirtualQGridLayout*>(this), handle__IndexOf, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_IndexOf(QWidget* param1) const {
+
+		return QGridLayout::indexOf(param1);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__IsEmpty = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool isEmpty() const override {
+		if (handle__IsEmpty == 0) {
+			return QGridLayout::isEmpty();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QGridLayout_IsEmpty(const_cast<MiqtVirtualQGridLayout*>(this), handle__IsEmpty);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_IsEmpty() const {
+
+		return QGridLayout::isEmpty();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ControlTypes = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QSizePolicy::ControlTypes controlTypes() const override {
+		if (handle__ControlTypes == 0) {
+			return QGridLayout::controlTypes();
+		}
+		
+
+		int callback_return_value = miqt_exec_callback_QGridLayout_ControlTypes(const_cast<MiqtVirtualQGridLayout*>(this), handle__ControlTypes);
+
+		return static_cast<QSizePolicy::ControlTypes>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_ControlTypes() const {
+
+		QSizePolicy::ControlTypes _ret = QGridLayout::controlTypes();
+		return static_cast<int>(_ret);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Layout = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QLayout* layout() override {
+		if (handle__Layout == 0) {
+			return QGridLayout::layout();
+		}
+		
+
+		QLayout* callback_return_value = miqt_exec_callback_QGridLayout_Layout(this, handle__Layout);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QLayout* virtualbase_Layout() {
+
+		return QGridLayout::layout();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* e) override {
+		if (handle__ChildEvent == 0) {
+			QGridLayout::childEvent(e);
+			return;
+		}
+		
+		QChildEvent* sigval1 = e;
+
+		miqt_exec_callback_QGridLayout_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* e) {
+
+		QGridLayout::childEvent(e);
+
+	}
+
+};
+
+void QGridLayout_new(QWidget* parent, QGridLayout** outptr_QGridLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem) {
+	MiqtVirtualQGridLayout* ret = new MiqtVirtualQGridLayout(parent);
+	*outptr_QGridLayout = ret;
+	*outptr_QLayout = static_cast<QLayout*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
+	*outptr_QLayoutItem = static_cast<QLayoutItem*>(ret);
 }
 
-QGridLayout* QGridLayout_new2() {
-	return new QGridLayout();
+void QGridLayout_new2(QGridLayout** outptr_QGridLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem) {
+	MiqtVirtualQGridLayout* ret = new MiqtVirtualQGridLayout();
+	*outptr_QGridLayout = ret;
+	*outptr_QLayout = static_cast<QLayout*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
+	*outptr_QLayoutItem = static_cast<QLayoutItem*>(ret);
 }
 
 QMetaObject* QGridLayout_MetaObject(const QGridLayout* self) {
@@ -284,7 +738,163 @@ void QGridLayout_AddItem6(QGridLayout* self, QLayoutItem* item, int row, int col
 	self->addItem(item, static_cast<int>(row), static_cast<int>(column), static_cast<int>(rowSpan), static_cast<int>(columnSpan), static_cast<Qt::Alignment>(param6));
 }
 
-void QGridLayout_Delete(QGridLayout* self) {
-	delete self;
+void QGridLayout_override_virtual_SizeHint(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__SizeHint = slot;
+}
+
+QSize* QGridLayout_virtualbase_SizeHint(const void* self) {
+	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_SizeHint();
+}
+
+void QGridLayout_override_virtual_MinimumSize(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__MinimumSize = slot;
+}
+
+QSize* QGridLayout_virtualbase_MinimumSize(const void* self) {
+	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_MinimumSize();
+}
+
+void QGridLayout_override_virtual_MaximumSize(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__MaximumSize = slot;
+}
+
+QSize* QGridLayout_virtualbase_MaximumSize(const void* self) {
+	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_MaximumSize();
+}
+
+void QGridLayout_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__HasHeightForWidth = slot;
+}
+
+bool QGridLayout_virtualbase_HasHeightForWidth(const void* self) {
+	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_HasHeightForWidth();
+}
+
+void QGridLayout_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__HeightForWidth = slot;
+}
+
+int QGridLayout_virtualbase_HeightForWidth(const void* self, int param1) {
+	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_HeightForWidth(param1);
+}
+
+void QGridLayout_override_virtual_MinimumHeightForWidth(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__MinimumHeightForWidth = slot;
+}
+
+int QGridLayout_virtualbase_MinimumHeightForWidth(const void* self, int param1) {
+	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_MinimumHeightForWidth(param1);
+}
+
+void QGridLayout_override_virtual_ExpandingDirections(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__ExpandingDirections = slot;
+}
+
+int QGridLayout_virtualbase_ExpandingDirections(const void* self) {
+	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_ExpandingDirections();
+}
+
+void QGridLayout_override_virtual_Invalidate(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__Invalidate = slot;
+}
+
+void QGridLayout_virtualbase_Invalidate(void* self) {
+	( (MiqtVirtualQGridLayout*)(self) )->virtualbase_Invalidate();
+}
+
+void QGridLayout_override_virtual_ItemAt(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__ItemAt = slot;
+}
+
+QLayoutItem* QGridLayout_virtualbase_ItemAt(const void* self, int index) {
+	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_ItemAt(index);
+}
+
+void QGridLayout_override_virtual_TakeAt(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__TakeAt = slot;
+}
+
+QLayoutItem* QGridLayout_virtualbase_TakeAt(void* self, int index) {
+	return ( (MiqtVirtualQGridLayout*)(self) )->virtualbase_TakeAt(index);
+}
+
+void QGridLayout_override_virtual_Count(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__Count = slot;
+}
+
+int QGridLayout_virtualbase_Count(const void* self) {
+	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_Count();
+}
+
+void QGridLayout_override_virtual_SetGeometry(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__SetGeometry = slot;
+}
+
+void QGridLayout_virtualbase_SetGeometry(void* self, QRect* geometry) {
+	( (MiqtVirtualQGridLayout*)(self) )->virtualbase_SetGeometry(geometry);
+}
+
+void QGridLayout_override_virtual_AddItemWithQLayoutItem(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__AddItemWithQLayoutItem = slot;
+}
+
+void QGridLayout_virtualbase_AddItemWithQLayoutItem(void* self, QLayoutItem* param1) {
+	( (MiqtVirtualQGridLayout*)(self) )->virtualbase_AddItemWithQLayoutItem(param1);
+}
+
+void QGridLayout_override_virtual_Geometry(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__Geometry = slot;
+}
+
+QRect* QGridLayout_virtualbase_Geometry(const void* self) {
+	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_Geometry();
+}
+
+void QGridLayout_override_virtual_IndexOf(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__IndexOf = slot;
+}
+
+int QGridLayout_virtualbase_IndexOf(const void* self, QWidget* param1) {
+	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_IndexOf(param1);
+}
+
+void QGridLayout_override_virtual_IsEmpty(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__IsEmpty = slot;
+}
+
+bool QGridLayout_virtualbase_IsEmpty(const void* self) {
+	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_IsEmpty();
+}
+
+void QGridLayout_override_virtual_ControlTypes(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__ControlTypes = slot;
+}
+
+int QGridLayout_virtualbase_ControlTypes(const void* self) {
+	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_ControlTypes();
+}
+
+void QGridLayout_override_virtual_Layout(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__Layout = slot;
+}
+
+QLayout* QGridLayout_virtualbase_Layout(void* self) {
+	return ( (MiqtVirtualQGridLayout*)(self) )->virtualbase_Layout();
+}
+
+void QGridLayout_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__ChildEvent = slot;
+}
+
+void QGridLayout_virtualbase_ChildEvent(void* self, QChildEvent* e) {
+	( (MiqtVirtualQGridLayout*)(self) )->virtualbase_ChildEvent(e);
+}
+
+void QGridLayout_Delete(QGridLayout* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQGridLayout*>( self );
+	} else {
+		delete self;
+	}
 }
 

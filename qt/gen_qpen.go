@@ -14,7 +14,8 @@ import (
 )
 
 type QPen struct {
-	h *C.QPen
+	h          *C.QPen
+	isSubclass bool
 }
 
 func (this *QPen) cPointer() *C.QPen {
@@ -31,6 +32,7 @@ func (this *QPen) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPen constructs the type using only CGO pointers.
 func newQPen(h *C.QPen) *QPen {
 	if h == nil {
 		return nil
@@ -38,56 +40,93 @@ func newQPen(h *C.QPen) *QPen {
 	return &QPen{h: h}
 }
 
+// UnsafeNewQPen constructs the type using only unsafe pointers.
 func UnsafeNewQPen(h unsafe.Pointer) *QPen {
-	return newQPen((*C.QPen)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPen{h: (*C.QPen)(h)}
 }
 
 // NewQPen constructs a new QPen object.
 func NewQPen() *QPen {
-	ret := C.QPen_new()
-	return newQPen(ret)
+	var outptr_QPen *C.QPen = nil
+
+	C.QPen_new(&outptr_QPen)
+	ret := newQPen(outptr_QPen)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPen2 constructs a new QPen object.
 func NewQPen2(param1 PenStyle) *QPen {
-	ret := C.QPen_new2((C.int)(param1))
-	return newQPen(ret)
+	var outptr_QPen *C.QPen = nil
+
+	C.QPen_new2((C.int)(param1), &outptr_QPen)
+	ret := newQPen(outptr_QPen)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPen3 constructs a new QPen object.
 func NewQPen3(color *QColor) *QPen {
-	ret := C.QPen_new3(color.cPointer())
-	return newQPen(ret)
+	var outptr_QPen *C.QPen = nil
+
+	C.QPen_new3(color.cPointer(), &outptr_QPen)
+	ret := newQPen(outptr_QPen)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPen4 constructs a new QPen object.
 func NewQPen4(brush *QBrush, width float64) *QPen {
-	ret := C.QPen_new4(brush.cPointer(), (C.double)(width))
-	return newQPen(ret)
+	var outptr_QPen *C.QPen = nil
+
+	C.QPen_new4(brush.cPointer(), (C.double)(width), &outptr_QPen)
+	ret := newQPen(outptr_QPen)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPen5 constructs a new QPen object.
 func NewQPen5(pen *QPen) *QPen {
-	ret := C.QPen_new5(pen.cPointer())
-	return newQPen(ret)
+	var outptr_QPen *C.QPen = nil
+
+	C.QPen_new5(pen.cPointer(), &outptr_QPen)
+	ret := newQPen(outptr_QPen)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPen6 constructs a new QPen object.
 func NewQPen6(brush *QBrush, width float64, s PenStyle) *QPen {
-	ret := C.QPen_new6(brush.cPointer(), (C.double)(width), (C.int)(s))
-	return newQPen(ret)
+	var outptr_QPen *C.QPen = nil
+
+	C.QPen_new6(brush.cPointer(), (C.double)(width), (C.int)(s), &outptr_QPen)
+	ret := newQPen(outptr_QPen)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPen7 constructs a new QPen object.
 func NewQPen7(brush *QBrush, width float64, s PenStyle, c PenCapStyle) *QPen {
-	ret := C.QPen_new7(brush.cPointer(), (C.double)(width), (C.int)(s), (C.int)(c))
-	return newQPen(ret)
+	var outptr_QPen *C.QPen = nil
+
+	C.QPen_new7(brush.cPointer(), (C.double)(width), (C.int)(s), (C.int)(c), &outptr_QPen)
+	ret := newQPen(outptr_QPen)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPen8 constructs a new QPen object.
 func NewQPen8(brush *QBrush, width float64, s PenStyle, c PenCapStyle, j PenJoinStyle) *QPen {
-	ret := C.QPen_new8(brush.cPointer(), (C.double)(width), (C.int)(s), (C.int)(c), (C.int)(j))
-	return newQPen(ret)
+	var outptr_QPen *C.QPen = nil
+
+	C.QPen_new8(brush.cPointer(), (C.double)(width), (C.int)(s), (C.int)(c), (C.int)(j), &outptr_QPen)
+	ret := newQPen(outptr_QPen)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QPen) OperatorAssign(pen *QPen) {
@@ -222,7 +261,7 @@ func (this *QPen) IsDetached() bool {
 
 // Delete this object from C++ memory.
 func (this *QPen) Delete() {
-	C.QPen_Delete(this.h)
+	C.QPen_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

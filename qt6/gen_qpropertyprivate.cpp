@@ -19,32 +19,57 @@ bool QtPrivate__RefCounted_Deref(QtPrivate__RefCounted* self) {
 	return self->deref();
 }
 
-void QtPrivate__RefCounted_Delete(QtPrivate__RefCounted* self) {
-	delete self;
+void QtPrivate__RefCounted_Delete(QtPrivate__RefCounted* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtPrivate::RefCounted*>( self );
+	} else {
+		delete self;
+	}
 }
 
-void QUntypedPropertyData_Delete(QUntypedPropertyData* self) {
-	delete self;
+void QUntypedPropertyData_Delete(QUntypedPropertyData* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QUntypedPropertyData*>( self );
+	} else {
+		delete self;
+	}
 }
 
-void QPropertyProxyBindingData_Delete(QPropertyProxyBindingData* self) {
-	delete self;
+void QPropertyProxyBindingData_Delete(QPropertyProxyBindingData* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QPropertyProxyBindingData*>( self );
+	} else {
+		delete self;
+	}
 }
 
-void QtPrivate__MSVCWorkAround_Delete(QtPrivate__MSVCWorkAround* self) {
-	delete self;
+void QtPrivate__MSVCWorkAround_Delete(QtPrivate__MSVCWorkAround* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtPrivate::MSVCWorkAround*>( self );
+	} else {
+		delete self;
+	}
 }
 
-void QtPrivate__BindingFunctionVTable_Delete(QtPrivate__BindingFunctionVTable* self) {
-	delete self;
+void QtPrivate__BindingFunctionVTable_Delete(QtPrivate__BindingFunctionVTable* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtPrivate::BindingFunctionVTable*>( self );
+	} else {
+		delete self;
+	}
 }
 
-void QtPrivate__QPropertyBindingFunction_Delete(QtPrivate__QPropertyBindingFunction* self) {
-	delete self;
+void QtPrivate__QPropertyBindingFunction_Delete(QtPrivate__QPropertyBindingFunction* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtPrivate::QPropertyBindingFunction*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QtPrivate__QPropertyBindingData* QtPrivate__QPropertyBindingData_new() {
-	return new QtPrivate::QPropertyBindingData();
+void QtPrivate__QPropertyBindingData_new(QtPrivate__QPropertyBindingData** outptr_QtPrivate__QPropertyBindingData) {
+	QtPrivate::QPropertyBindingData* ret = new QtPrivate::QPropertyBindingData();
+	*outptr_QtPrivate__QPropertyBindingData = ret;
 }
 
 bool QtPrivate__QPropertyBindingData_HasBinding(const QtPrivate__QPropertyBindingData* self) {
@@ -79,7 +104,11 @@ void QtPrivate__QPropertyBindingData_NotifyObservers2(const QtPrivate__QProperty
 	self->notifyObservers(propertyDataPtr, storage);
 }
 
-void QtPrivate__QPropertyBindingData_Delete(QtPrivate__QPropertyBindingData* self) {
-	delete self;
+void QtPrivate__QPropertyBindingData_Delete(QtPrivate__QPropertyBindingData* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtPrivate::QPropertyBindingData*>( self );
+	} else {
+		delete self;
+	}
 }
 

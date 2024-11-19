@@ -46,7 +46,8 @@ const (
 )
 
 type QVideoFrame struct {
-	h *C.QVideoFrame
+	h          *C.QVideoFrame
+	isSubclass bool
 }
 
 func (this *QVideoFrame) cPointer() *C.QVideoFrame {
@@ -63,6 +64,7 @@ func (this *QVideoFrame) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQVideoFrame constructs the type using only CGO pointers.
 func newQVideoFrame(h *C.QVideoFrame) *QVideoFrame {
 	if h == nil {
 		return nil
@@ -70,26 +72,43 @@ func newQVideoFrame(h *C.QVideoFrame) *QVideoFrame {
 	return &QVideoFrame{h: h}
 }
 
+// UnsafeNewQVideoFrame constructs the type using only unsafe pointers.
 func UnsafeNewQVideoFrame(h unsafe.Pointer) *QVideoFrame {
-	return newQVideoFrame((*C.QVideoFrame)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QVideoFrame{h: (*C.QVideoFrame)(h)}
 }
 
 // NewQVideoFrame constructs a new QVideoFrame object.
 func NewQVideoFrame() *QVideoFrame {
-	ret := C.QVideoFrame_new()
-	return newQVideoFrame(ret)
+	var outptr_QVideoFrame *C.QVideoFrame = nil
+
+	C.QVideoFrame_new(&outptr_QVideoFrame)
+	ret := newQVideoFrame(outptr_QVideoFrame)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVideoFrame2 constructs a new QVideoFrame object.
 func NewQVideoFrame2(format *QVideoFrameFormat) *QVideoFrame {
-	ret := C.QVideoFrame_new2(format.cPointer())
-	return newQVideoFrame(ret)
+	var outptr_QVideoFrame *C.QVideoFrame = nil
+
+	C.QVideoFrame_new2(format.cPointer(), &outptr_QVideoFrame)
+	ret := newQVideoFrame(outptr_QVideoFrame)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVideoFrame3 constructs a new QVideoFrame object.
 func NewQVideoFrame3(other *QVideoFrame) *QVideoFrame {
-	ret := C.QVideoFrame_new3(other.cPointer())
-	return newQVideoFrame(ret)
+	var outptr_QVideoFrame *C.QVideoFrame = nil
+
+	C.QVideoFrame_new3(other.cPointer(), &outptr_QVideoFrame)
+	ret := newQVideoFrame(outptr_QVideoFrame)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QVideoFrame) Swap(other *QVideoFrame) {
@@ -220,7 +239,7 @@ func (this *QVideoFrame) Mirrored() bool {
 
 func (this *QVideoFrame) ToImage() *qt6.QImage {
 	_ret := C.QVideoFrame_ToImage(this.h)
-	_goptr := qt6.UnsafeNewQImage(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQImage(unsafe.Pointer(_ret), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -246,7 +265,7 @@ func (this *QVideoFrame) Paint(painter *qt6.QPainter, rect *qt6.QRectF, options 
 
 // Delete this object from C++ memory.
 func (this *QVideoFrame) Delete() {
-	C.QVideoFrame_Delete(this.h)
+	C.QVideoFrame_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -259,7 +278,8 @@ func (this *QVideoFrame) GoGC() {
 }
 
 type QVideoFrame__PaintOptions struct {
-	h *C.QVideoFrame__PaintOptions
+	h          *C.QVideoFrame__PaintOptions
+	isSubclass bool
 }
 
 func (this *QVideoFrame__PaintOptions) cPointer() *C.QVideoFrame__PaintOptions {
@@ -276,6 +296,7 @@ func (this *QVideoFrame__PaintOptions) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQVideoFrame__PaintOptions constructs the type using only CGO pointers.
 func newQVideoFrame__PaintOptions(h *C.QVideoFrame__PaintOptions) *QVideoFrame__PaintOptions {
 	if h == nil {
 		return nil
@@ -283,13 +304,18 @@ func newQVideoFrame__PaintOptions(h *C.QVideoFrame__PaintOptions) *QVideoFrame__
 	return &QVideoFrame__PaintOptions{h: h}
 }
 
+// UnsafeNewQVideoFrame__PaintOptions constructs the type using only unsafe pointers.
 func UnsafeNewQVideoFrame__PaintOptions(h unsafe.Pointer) *QVideoFrame__PaintOptions {
-	return newQVideoFrame__PaintOptions((*C.QVideoFrame__PaintOptions)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QVideoFrame__PaintOptions{h: (*C.QVideoFrame__PaintOptions)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *QVideoFrame__PaintOptions) Delete() {
-	C.QVideoFrame__PaintOptions_Delete(this.h)
+	C.QVideoFrame__PaintOptions_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

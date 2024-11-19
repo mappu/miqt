@@ -15,6 +15,7 @@
 #include <QTextDocument>
 #include <QTextFormat>
 #include <QTextFrame>
+#include <QTextInlineObject>
 #include <QTextObjectInterface>
 #include <qabstracttextdocumentlayout.h>
 #include "gen_qabstracttextdocumentlayout.h"
@@ -203,8 +204,12 @@ void QAbstractTextDocumentLayout_connect_Update1(QAbstractTextDocumentLayout* se
 	});
 }
 
-void QAbstractTextDocumentLayout_Delete(QAbstractTextDocumentLayout* self) {
-	delete self;
+void QAbstractTextDocumentLayout_Delete(QAbstractTextDocumentLayout* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAbstractTextDocumentLayout*>( self );
+	} else {
+		delete self;
+	}
 }
 
 QSizeF* QTextObjectInterface_IntrinsicSize(QTextObjectInterface* self, QTextDocument* doc, int posInDocument, QTextFormat* format) {
@@ -219,35 +224,50 @@ void QTextObjectInterface_OperatorAssign(QTextObjectInterface* self, QTextObject
 	self->operator=(*param1);
 }
 
-void QTextObjectInterface_Delete(QTextObjectInterface* self) {
-	delete self;
+void QTextObjectInterface_Delete(QTextObjectInterface* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QTextObjectInterface*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QAbstractTextDocumentLayout__Selection* QAbstractTextDocumentLayout__Selection_new(QAbstractTextDocumentLayout__Selection* param1) {
-	return new QAbstractTextDocumentLayout::Selection(*param1);
+void QAbstractTextDocumentLayout__Selection_new(QAbstractTextDocumentLayout__Selection* param1, QAbstractTextDocumentLayout__Selection** outptr_QAbstractTextDocumentLayout__Selection) {
+	QAbstractTextDocumentLayout::Selection* ret = new QAbstractTextDocumentLayout::Selection(*param1);
+	*outptr_QAbstractTextDocumentLayout__Selection = ret;
 }
 
 void QAbstractTextDocumentLayout__Selection_OperatorAssign(QAbstractTextDocumentLayout__Selection* self, QAbstractTextDocumentLayout__Selection* param1) {
 	self->operator=(*param1);
 }
 
-void QAbstractTextDocumentLayout__Selection_Delete(QAbstractTextDocumentLayout__Selection* self) {
-	delete self;
+void QAbstractTextDocumentLayout__Selection_Delete(QAbstractTextDocumentLayout__Selection* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAbstractTextDocumentLayout::Selection*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QAbstractTextDocumentLayout__PaintContext* QAbstractTextDocumentLayout__PaintContext_new() {
-	return new QAbstractTextDocumentLayout::PaintContext();
+void QAbstractTextDocumentLayout__PaintContext_new(QAbstractTextDocumentLayout__PaintContext** outptr_QAbstractTextDocumentLayout__PaintContext) {
+	QAbstractTextDocumentLayout::PaintContext* ret = new QAbstractTextDocumentLayout::PaintContext();
+	*outptr_QAbstractTextDocumentLayout__PaintContext = ret;
 }
 
-QAbstractTextDocumentLayout__PaintContext* QAbstractTextDocumentLayout__PaintContext_new2(QAbstractTextDocumentLayout__PaintContext* param1) {
-	return new QAbstractTextDocumentLayout::PaintContext(*param1);
+void QAbstractTextDocumentLayout__PaintContext_new2(QAbstractTextDocumentLayout__PaintContext* param1, QAbstractTextDocumentLayout__PaintContext** outptr_QAbstractTextDocumentLayout__PaintContext) {
+	QAbstractTextDocumentLayout::PaintContext* ret = new QAbstractTextDocumentLayout::PaintContext(*param1);
+	*outptr_QAbstractTextDocumentLayout__PaintContext = ret;
 }
 
 void QAbstractTextDocumentLayout__PaintContext_OperatorAssign(QAbstractTextDocumentLayout__PaintContext* self, QAbstractTextDocumentLayout__PaintContext* param1) {
 	self->operator=(*param1);
 }
 
-void QAbstractTextDocumentLayout__PaintContext_Delete(QAbstractTextDocumentLayout__PaintContext* self) {
-	delete self;
+void QAbstractTextDocumentLayout__PaintContext_Delete(QAbstractTextDocumentLayout__PaintContext* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAbstractTextDocumentLayout::PaintContext*>( self );
+	} else {
+		delete self;
+	}
 }
 

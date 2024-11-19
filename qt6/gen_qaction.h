@@ -17,29 +17,37 @@ extern "C" {
 #ifdef __cplusplus
 class QAction;
 class QActionGroup;
+class QChildEvent;
+class QEvent;
 class QFont;
 class QIcon;
 class QKeySequence;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
+class QTimerEvent;
 class QVariant;
 #else
 typedef struct QAction QAction;
 typedef struct QActionGroup QActionGroup;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QFont QFont;
 typedef struct QIcon QIcon;
 typedef struct QKeySequence QKeySequence;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 #endif
 
-QAction* QAction_new();
-QAction* QAction_new2(struct miqt_string text);
-QAction* QAction_new3(QIcon* icon, struct miqt_string text);
-QAction* QAction_new4(QObject* parent);
-QAction* QAction_new5(struct miqt_string text, QObject* parent);
-QAction* QAction_new6(QIcon* icon, struct miqt_string text, QObject* parent);
+void QAction_new(QAction** outptr_QAction, QObject** outptr_QObject);
+void QAction_new2(struct miqt_string text, QAction** outptr_QAction, QObject** outptr_QObject);
+void QAction_new3(QIcon* icon, struct miqt_string text, QAction** outptr_QAction, QObject** outptr_QObject);
+void QAction_new4(QObject* parent, QAction** outptr_QAction, QObject** outptr_QObject);
+void QAction_new5(struct miqt_string text, QObject* parent, QAction** outptr_QAction, QObject** outptr_QObject);
+void QAction_new6(QIcon* icon, struct miqt_string text, QObject* parent, QAction** outptr_QAction, QObject** outptr_QObject);
 QMetaObject* QAction_MetaObject(const QAction* self);
 void* QAction_Metacast(QAction* self, const char* param1);
 struct miqt_string QAction_Tr(const char* s);
@@ -88,6 +96,7 @@ bool QAction_IsIconVisibleInMenu(const QAction* self);
 void QAction_SetShortcutVisibleInContextMenu(QAction* self, bool show);
 bool QAction_IsShortcutVisibleInContextMenu(const QAction* self);
 bool QAction_ShowStatusText(QAction* self);
+bool QAction_Event(QAction* self, QEvent* param1);
 void QAction_Trigger(QAction* self);
 void QAction_Hover(QAction* self);
 void QAction_SetChecked(QAction* self, bool checked);
@@ -115,7 +124,21 @@ struct miqt_string QAction_Tr3(const char* s, const char* c, int n);
 bool QAction_ShowStatusText1(QAction* self, QObject* object);
 void QAction_Triggered1(QAction* self, bool checked);
 void QAction_connect_Triggered1(QAction* self, intptr_t slot);
-void QAction_Delete(QAction* self);
+void QAction_override_virtual_Event(void* self, intptr_t slot);
+bool QAction_virtualbase_Event(void* self, QEvent* param1);
+void QAction_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QAction_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QAction_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QAction_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QAction_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QAction_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QAction_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QAction_virtualbase_CustomEvent(void* self, QEvent* event);
+void QAction_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QAction_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QAction_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QAction_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QAction_Delete(QAction* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

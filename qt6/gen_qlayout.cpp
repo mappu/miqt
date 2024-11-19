@@ -1,7 +1,9 @@
+#include <QChildEvent>
 #include <QLayout>
 #include <QLayoutItem>
 #include <QMargins>
 #include <QMetaObject>
+#include <QObject>
 #include <QRect>
 #include <QSize>
 #include <QString>
@@ -170,8 +172,8 @@ int QLayout_ControlTypes(const QLayout* self) {
 	return static_cast<int>(_ret);
 }
 
-QLayoutItem* QLayout_ReplaceWidget(QLayout* self, QWidget* from, QWidget* to) {
-	return self->replaceWidget(from, to);
+QLayoutItem* QLayout_ReplaceWidget(QLayout* self, QWidget* from, QWidget* to, int options) {
+	return self->replaceWidget(from, to, static_cast<Qt::FindChildOptions>(options));
 }
 
 int QLayout_TotalMinimumHeightForWidth(const QLayout* self, int w) {
@@ -232,11 +234,11 @@ struct miqt_string QLayout_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-QLayoutItem* QLayout_ReplaceWidget3(QLayout* self, QWidget* from, QWidget* to, int options) {
-	return self->replaceWidget(from, to, static_cast<Qt::FindChildOptions>(options));
-}
-
-void QLayout_Delete(QLayout* self) {
-	delete self;
+void QLayout_Delete(QLayout* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QLayout*>( self );
+	} else {
+		delete self;
+	}
 }
 

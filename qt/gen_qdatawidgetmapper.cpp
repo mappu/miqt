@@ -1,24 +1,237 @@
 #include <QAbstractItemDelegate>
 #include <QAbstractItemModel>
 #include <QByteArray>
+#include <QChildEvent>
 #include <QDataWidgetMapper>
+#include <QEvent>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QModelIndex>
 #include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QTimerEvent>
 #include <QWidget>
 #include <qdatawidgetmapper.h>
 #include "gen_qdatawidgetmapper.h"
 #include "_cgo_export.h"
 
-QDataWidgetMapper* QDataWidgetMapper_new() {
-	return new QDataWidgetMapper();
+class MiqtVirtualQDataWidgetMapper : public virtual QDataWidgetMapper {
+public:
+
+	MiqtVirtualQDataWidgetMapper(): QDataWidgetMapper() {};
+	MiqtVirtualQDataWidgetMapper(QObject* parent): QDataWidgetMapper(parent) {};
+
+	virtual ~MiqtVirtualQDataWidgetMapper() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetCurrentIndex = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setCurrentIndex(int index) override {
+		if (handle__SetCurrentIndex == 0) {
+			QDataWidgetMapper::setCurrentIndex(index);
+			return;
+		}
+		
+		int sigval1 = index;
+
+		miqt_exec_callback_QDataWidgetMapper_SetCurrentIndex(this, handle__SetCurrentIndex, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetCurrentIndex(int index) {
+
+		QDataWidgetMapper::setCurrentIndex(static_cast<int>(index));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QDataWidgetMapper::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QDataWidgetMapper_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QDataWidgetMapper::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QDataWidgetMapper::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QDataWidgetMapper_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QDataWidgetMapper::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QDataWidgetMapper::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QDataWidgetMapper_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QDataWidgetMapper::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QDataWidgetMapper::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QDataWidgetMapper_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QDataWidgetMapper::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QDataWidgetMapper::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QDataWidgetMapper_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QDataWidgetMapper::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QDataWidgetMapper::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QDataWidgetMapper_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QDataWidgetMapper::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QDataWidgetMapper::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QDataWidgetMapper_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QDataWidgetMapper::disconnectNotify(*signal);
+
+	}
+
+};
+
+void QDataWidgetMapper_new(QDataWidgetMapper** outptr_QDataWidgetMapper, QObject** outptr_QObject) {
+	MiqtVirtualQDataWidgetMapper* ret = new MiqtVirtualQDataWidgetMapper();
+	*outptr_QDataWidgetMapper = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QDataWidgetMapper* QDataWidgetMapper_new2(QObject* parent) {
-	return new QDataWidgetMapper(parent);
+void QDataWidgetMapper_new2(QObject* parent, QDataWidgetMapper** outptr_QDataWidgetMapper, QObject** outptr_QObject) {
+	MiqtVirtualQDataWidgetMapper* ret = new MiqtVirtualQDataWidgetMapper(parent);
+	*outptr_QDataWidgetMapper = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QDataWidgetMapper_MetaObject(const QDataWidgetMapper* self) {
@@ -168,7 +381,7 @@ void QDataWidgetMapper_CurrentIndexChanged(QDataWidgetMapper* self, int index) {
 }
 
 void QDataWidgetMapper_connect_CurrentIndexChanged(QDataWidgetMapper* self, intptr_t slot) {
-	QDataWidgetMapper::connect(self, static_cast<void (QDataWidgetMapper::*)(int)>(&QDataWidgetMapper::currentIndexChanged), self, [=](int index) {
+	MiqtVirtualQDataWidgetMapper::connect(self, static_cast<void (QDataWidgetMapper::*)(int)>(&QDataWidgetMapper::currentIndexChanged), self, [=](int index) {
 		int sigval1 = index;
 		miqt_exec_callback_QDataWidgetMapper_CurrentIndexChanged(slot, sigval1);
 	});
@@ -218,7 +431,75 @@ struct miqt_string QDataWidgetMapper_TrUtf83(const char* s, const char* c, int n
 	return _ms;
 }
 
-void QDataWidgetMapper_Delete(QDataWidgetMapper* self) {
-	delete self;
+void QDataWidgetMapper_override_virtual_SetCurrentIndex(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQDataWidgetMapper*>( (QDataWidgetMapper*)(self) )->handle__SetCurrentIndex = slot;
+}
+
+void QDataWidgetMapper_virtualbase_SetCurrentIndex(void* self, int index) {
+	( (MiqtVirtualQDataWidgetMapper*)(self) )->virtualbase_SetCurrentIndex(index);
+}
+
+void QDataWidgetMapper_override_virtual_Event(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQDataWidgetMapper*>( (QDataWidgetMapper*)(self) )->handle__Event = slot;
+}
+
+bool QDataWidgetMapper_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQDataWidgetMapper*)(self) )->virtualbase_Event(event);
+}
+
+void QDataWidgetMapper_override_virtual_EventFilter(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQDataWidgetMapper*>( (QDataWidgetMapper*)(self) )->handle__EventFilter = slot;
+}
+
+bool QDataWidgetMapper_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQDataWidgetMapper*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+void QDataWidgetMapper_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQDataWidgetMapper*>( (QDataWidgetMapper*)(self) )->handle__TimerEvent = slot;
+}
+
+void QDataWidgetMapper_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQDataWidgetMapper*)(self) )->virtualbase_TimerEvent(event);
+}
+
+void QDataWidgetMapper_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQDataWidgetMapper*>( (QDataWidgetMapper*)(self) )->handle__ChildEvent = slot;
+}
+
+void QDataWidgetMapper_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQDataWidgetMapper*)(self) )->virtualbase_ChildEvent(event);
+}
+
+void QDataWidgetMapper_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQDataWidgetMapper*>( (QDataWidgetMapper*)(self) )->handle__CustomEvent = slot;
+}
+
+void QDataWidgetMapper_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQDataWidgetMapper*)(self) )->virtualbase_CustomEvent(event);
+}
+
+void QDataWidgetMapper_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQDataWidgetMapper*>( (QDataWidgetMapper*)(self) )->handle__ConnectNotify = slot;
+}
+
+void QDataWidgetMapper_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQDataWidgetMapper*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+void QDataWidgetMapper_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQDataWidgetMapper*>( (QDataWidgetMapper*)(self) )->handle__DisconnectNotify = slot;
+}
+
+void QDataWidgetMapper_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQDataWidgetMapper*)(self) )->virtualbase_DisconnectNotify(signal);
+}
+
+void QDataWidgetMapper_Delete(QDataWidgetMapper* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQDataWidgetMapper*>( self );
+	} else {
+		delete self;
+	}
 }
 

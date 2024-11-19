@@ -102,7 +102,8 @@ const (
 )
 
 type QTextItem struct {
-	h *C.QTextItem
+	h          *C.QTextItem
+	isSubclass bool
 }
 
 func (this *QTextItem) cPointer() *C.QTextItem {
@@ -119,6 +120,7 @@ func (this *QTextItem) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQTextItem constructs the type using only CGO pointers.
 func newQTextItem(h *C.QTextItem) *QTextItem {
 	if h == nil {
 		return nil
@@ -126,8 +128,13 @@ func newQTextItem(h *C.QTextItem) *QTextItem {
 	return &QTextItem{h: h}
 }
 
+// UnsafeNewQTextItem constructs the type using only unsafe pointers.
 func UnsafeNewQTextItem(h unsafe.Pointer) *QTextItem {
-	return newQTextItem((*C.QTextItem)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QTextItem{h: (*C.QTextItem)(h)}
 }
 
 func (this *QTextItem) Descent() float64 {
@@ -162,7 +169,7 @@ func (this *QTextItem) Font() *QFont {
 
 // Delete this object from C++ memory.
 func (this *QTextItem) Delete() {
-	C.QTextItem_Delete(this.h)
+	C.QTextItem_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -175,7 +182,8 @@ func (this *QTextItem) GoGC() {
 }
 
 type QPaintEngine struct {
-	h *C.QPaintEngine
+	h          *C.QPaintEngine
+	isSubclass bool
 }
 
 func (this *QPaintEngine) cPointer() *C.QPaintEngine {
@@ -192,6 +200,7 @@ func (this *QPaintEngine) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPaintEngine constructs the type using only CGO pointers.
 func newQPaintEngine(h *C.QPaintEngine) *QPaintEngine {
 	if h == nil {
 		return nil
@@ -199,8 +208,13 @@ func newQPaintEngine(h *C.QPaintEngine) *QPaintEngine {
 	return &QPaintEngine{h: h}
 }
 
+// UnsafeNewQPaintEngine constructs the type using only unsafe pointers.
 func UnsafeNewQPaintEngine(h unsafe.Pointer) *QPaintEngine {
-	return newQPaintEngine((*C.QPaintEngine)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPaintEngine{h: (*C.QPaintEngine)(h)}
 }
 
 func (this *QPaintEngine) IsActive() bool {
@@ -279,8 +293,8 @@ func (this *QPaintEngine) DrawTiledPixmap(r *QRectF, pixmap *QPixmap, s *QPointF
 	C.QPaintEngine_DrawTiledPixmap(this.h, r.cPointer(), pixmap.cPointer(), s.cPointer())
 }
 
-func (this *QPaintEngine) DrawImage(r *QRectF, pm *QImage, sr *QRectF) {
-	C.QPaintEngine_DrawImage(this.h, r.cPointer(), pm.cPointer(), sr.cPointer())
+func (this *QPaintEngine) DrawImage(r *QRectF, pm *QImage, sr *QRectF, flags ImageConversionFlag) {
+	C.QPaintEngine_DrawImage(this.h, r.cPointer(), pm.cPointer(), sr.cPointer(), (C.int)(flags))
 }
 
 func (this *QPaintEngine) SetPaintDevice(device *QPaintDevice) {
@@ -356,13 +370,9 @@ func (this *QPaintEngine) IsExtended() bool {
 	return (bool)(C.QPaintEngine_IsExtended(this.h))
 }
 
-func (this *QPaintEngine) DrawImage4(r *QRectF, pm *QImage, sr *QRectF, flags ImageConversionFlag) {
-	C.QPaintEngine_DrawImage4(this.h, r.cPointer(), pm.cPointer(), sr.cPointer(), (C.int)(flags))
-}
-
 // Delete this object from C++ memory.
 func (this *QPaintEngine) Delete() {
-	C.QPaintEngine_Delete(this.h)
+	C.QPaintEngine_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -375,7 +385,8 @@ func (this *QPaintEngine) GoGC() {
 }
 
 type QPaintEngineState struct {
-	h *C.QPaintEngineState
+	h          *C.QPaintEngineState
+	isSubclass bool
 }
 
 func (this *QPaintEngineState) cPointer() *C.QPaintEngineState {
@@ -392,6 +403,7 @@ func (this *QPaintEngineState) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPaintEngineState constructs the type using only CGO pointers.
 func newQPaintEngineState(h *C.QPaintEngineState) *QPaintEngineState {
 	if h == nil {
 		return nil
@@ -399,8 +411,13 @@ func newQPaintEngineState(h *C.QPaintEngineState) *QPaintEngineState {
 	return &QPaintEngineState{h: h}
 }
 
+// UnsafeNewQPaintEngineState constructs the type using only unsafe pointers.
 func UnsafeNewQPaintEngineState(h unsafe.Pointer) *QPaintEngineState {
-	return newQPaintEngineState((*C.QPaintEngineState)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPaintEngineState{h: (*C.QPaintEngineState)(h)}
 }
 
 func (this *QPaintEngineState) State() QPaintEngine__DirtyFlag {
@@ -508,7 +525,7 @@ func (this *QPaintEngineState) PenNeedsResolving() bool {
 
 // Delete this object from C++ memory.
 func (this *QPaintEngineState) Delete() {
-	C.QPaintEngineState_Delete(this.h)
+	C.QPaintEngineState_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

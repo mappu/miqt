@@ -7,8 +7,9 @@
 #include "gen_qtouchdevice.h"
 #include "_cgo_export.h"
 
-QTouchDevice* QTouchDevice_new() {
-	return new QTouchDevice();
+void QTouchDevice_new(QTouchDevice** outptr_QTouchDevice) {
+	QTouchDevice* ret = new QTouchDevice();
+	*outptr_QTouchDevice = ret;
 }
 
 struct miqt_array /* of QTouchDevice* */  QTouchDevice_Devices() {
@@ -66,7 +67,11 @@ void QTouchDevice_SetMaximumTouchPoints(QTouchDevice* self, int max) {
 	self->setMaximumTouchPoints(static_cast<int>(max));
 }
 
-void QTouchDevice_Delete(QTouchDevice* self) {
-	delete self;
+void QTouchDevice_Delete(QTouchDevice* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QTouchDevice*>( self );
+	} else {
+		delete self;
+	}
 }
 

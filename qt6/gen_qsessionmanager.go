@@ -22,7 +22,8 @@ const (
 )
 
 type QSessionManager struct {
-	h *C.QSessionManager
+	h          *C.QSessionManager
+	isSubclass bool
 	*QObject
 }
 
@@ -40,15 +41,23 @@ func (this *QSessionManager) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQSessionManager(h *C.QSessionManager) *QSessionManager {
+// newQSessionManager constructs the type using only CGO pointers.
+func newQSessionManager(h *C.QSessionManager, h_QObject *C.QObject) *QSessionManager {
 	if h == nil {
 		return nil
 	}
-	return &QSessionManager{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QSessionManager{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQSessionManager(h unsafe.Pointer) *QSessionManager {
-	return newQSessionManager((*C.QSessionManager)(h))
+// UnsafeNewQSessionManager constructs the type using only unsafe pointers.
+func UnsafeNewQSessionManager(h unsafe.Pointer, h_QObject unsafe.Pointer) *QSessionManager {
+	if h == nil {
+		return nil
+	}
+
+	return &QSessionManager{h: (*C.QSessionManager)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QSessionManager) MetaObject() *QMetaObject {

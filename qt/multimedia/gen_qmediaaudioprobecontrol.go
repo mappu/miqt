@@ -16,7 +16,8 @@ import (
 )
 
 type QMediaAudioProbeControl struct {
-	h *C.QMediaAudioProbeControl
+	h          *C.QMediaAudioProbeControl
+	isSubclass bool
 	*QMediaControl
 }
 
@@ -34,15 +35,23 @@ func (this *QMediaAudioProbeControl) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQMediaAudioProbeControl(h *C.QMediaAudioProbeControl) *QMediaAudioProbeControl {
+// newQMediaAudioProbeControl constructs the type using only CGO pointers.
+func newQMediaAudioProbeControl(h *C.QMediaAudioProbeControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QMediaAudioProbeControl {
 	if h == nil {
 		return nil
 	}
-	return &QMediaAudioProbeControl{h: h, QMediaControl: UnsafeNewQMediaControl(unsafe.Pointer(h))}
+	return &QMediaAudioProbeControl{h: h,
+		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
 }
 
-func UnsafeNewQMediaAudioProbeControl(h unsafe.Pointer) *QMediaAudioProbeControl {
-	return newQMediaAudioProbeControl((*C.QMediaAudioProbeControl)(h))
+// UnsafeNewQMediaAudioProbeControl constructs the type using only unsafe pointers.
+func UnsafeNewQMediaAudioProbeControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QMediaAudioProbeControl {
+	if h == nil {
+		return nil
+	}
+
+	return &QMediaAudioProbeControl{h: (*C.QMediaAudioProbeControl)(h),
+		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
 }
 
 func (this *QMediaAudioProbeControl) MetaObject() *qt.QMetaObject {
@@ -156,7 +165,7 @@ func QMediaAudioProbeControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QMediaAudioProbeControl) Delete() {
-	C.QMediaAudioProbeControl_Delete(this.h)
+	C.QMediaAudioProbeControl_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

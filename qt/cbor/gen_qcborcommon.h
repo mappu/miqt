@@ -21,7 +21,7 @@ typedef struct QCborError QCborError;
 #endif
 
 struct miqt_string QCborError_ToString(const QCborError* self);
-void QCborError_Delete(QCborError* self);
+void QCborError_Delete(QCborError* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

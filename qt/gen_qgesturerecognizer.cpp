@@ -32,7 +32,11 @@ void QGestureRecognizer_OperatorAssign(QGestureRecognizer* self, QGestureRecogni
 	self->operator=(*param1);
 }
 
-void QGestureRecognizer_Delete(QGestureRecognizer* self) {
-	delete self;
+void QGestureRecognizer_Delete(QGestureRecognizer* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QGestureRecognizer*>( self );
+	} else {
+		delete self;
+	}
 }
 

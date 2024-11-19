@@ -14,7 +14,8 @@ import (
 )
 
 type QStyleFactory struct {
-	h *C.QStyleFactory
+	h          *C.QStyleFactory
+	isSubclass bool
 }
 
 func (this *QStyleFactory) cPointer() *C.QStyleFactory {
@@ -31,6 +32,7 @@ func (this *QStyleFactory) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQStyleFactory constructs the type using only CGO pointers.
 func newQStyleFactory(h *C.QStyleFactory) *QStyleFactory {
 	if h == nil {
 		return nil
@@ -38,8 +40,13 @@ func newQStyleFactory(h *C.QStyleFactory) *QStyleFactory {
 	return &QStyleFactory{h: h}
 }
 
+// UnsafeNewQStyleFactory constructs the type using only unsafe pointers.
 func UnsafeNewQStyleFactory(h unsafe.Pointer) *QStyleFactory {
-	return newQStyleFactory((*C.QStyleFactory)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleFactory{h: (*C.QStyleFactory)(h)}
 }
 
 func QStyleFactory_Keys() []string {
@@ -60,12 +67,12 @@ func QStyleFactory_Create(param1 string) *QStyle {
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
 	defer C.free(unsafe.Pointer(param1_ms.data))
-	return UnsafeNewQStyle(unsafe.Pointer(C.QStyleFactory_Create(param1_ms)))
+	return UnsafeNewQStyle(unsafe.Pointer(C.QStyleFactory_Create(param1_ms)), nil)
 }
 
 // Delete this object from C++ memory.
 func (this *QStyleFactory) Delete() {
-	C.QStyleFactory_Delete(this.h)
+	C.QStyleFactory_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

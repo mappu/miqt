@@ -46,11 +46,11 @@ typedef struct QTextTable QTextTable;
 typedef struct QTextTableFormat QTextTableFormat;
 #endif
 
-QTextCursor* QTextCursor_new();
-QTextCursor* QTextCursor_new2(QTextDocument* document);
-QTextCursor* QTextCursor_new3(QTextFrame* frame);
-QTextCursor* QTextCursor_new4(QTextBlock* block);
-QTextCursor* QTextCursor_new5(QTextCursor* cursor);
+void QTextCursor_new(QTextCursor** outptr_QTextCursor);
+void QTextCursor_new2(QTextDocument* document, QTextCursor** outptr_QTextCursor);
+void QTextCursor_new3(QTextFrame* frame, QTextCursor** outptr_QTextCursor);
+void QTextCursor_new4(QTextBlock* block, QTextCursor** outptr_QTextCursor);
+void QTextCursor_new5(QTextCursor* cursor, QTextCursor** outptr_QTextCursor);
 void QTextCursor_OperatorAssign(QTextCursor* self, QTextCursor* other);
 void QTextCursor_Swap(QTextCursor* self, QTextCursor* other);
 bool QTextCursor_IsNull(const QTextCursor* self);
@@ -129,7 +129,7 @@ void QTextCursor_SetPosition2(QTextCursor* self, int pos, int mode);
 bool QTextCursor_MovePosition2(QTextCursor* self, int op, int param2);
 bool QTextCursor_MovePosition3(QTextCursor* self, int op, int param2, int n);
 void QTextCursor_InsertImage2(QTextCursor* self, QImage* image, struct miqt_string name);
-void QTextCursor_Delete(QTextCursor* self);
+void QTextCursor_Delete(QTextCursor* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

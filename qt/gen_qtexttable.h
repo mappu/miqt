@@ -16,30 +16,36 @@ extern "C" {
 
 #ifdef __cplusplus
 class QMetaObject;
+class QObject;
 class QTextCharFormat;
 class QTextCursor;
 class QTextDocument;
+class QTextFrame;
 #if defined(WORKAROUND_INNER_CLASS_DEFINITION_QTextFrame__iterator)
 typedef QTextFrame::iterator QTextFrame__iterator;
 #else
 class QTextFrame__iterator;
 #endif
+class QTextObject;
 class QTextTable;
 class QTextTableCell;
 class QTextTableFormat;
 #else
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 typedef struct QTextCharFormat QTextCharFormat;
 typedef struct QTextCursor QTextCursor;
 typedef struct QTextDocument QTextDocument;
+typedef struct QTextFrame QTextFrame;
 typedef struct QTextFrame__iterator QTextFrame__iterator;
+typedef struct QTextObject QTextObject;
 typedef struct QTextTable QTextTable;
 typedef struct QTextTableCell QTextTableCell;
 typedef struct QTextTableFormat QTextTableFormat;
 #endif
 
-QTextTableCell* QTextTableCell_new();
-QTextTableCell* QTextTableCell_new2(QTextTableCell* o);
+void QTextTableCell_new(QTextTableCell** outptr_QTextTableCell);
+void QTextTableCell_new2(QTextTableCell* o, QTextTableCell** outptr_QTextTableCell);
 void QTextTableCell_OperatorAssign(QTextTableCell* self, QTextTableCell* o);
 void QTextTableCell_SetFormat(QTextTableCell* self, QTextCharFormat* format);
 QTextCharFormat* QTextTableCell_Format(const QTextTableCell* self);
@@ -57,9 +63,9 @@ bool QTextTableCell_OperatorNotEqual(const QTextTableCell* self, QTextTableCell*
 QTextFrame__iterator* QTextTableCell_Begin(const QTextTableCell* self);
 QTextFrame__iterator* QTextTableCell_End(const QTextTableCell* self);
 int QTextTableCell_TableCellFormatIndex(const QTextTableCell* self);
-void QTextTableCell_Delete(QTextTableCell* self);
+void QTextTableCell_Delete(QTextTableCell* self, bool isSubclass);
 
-QTextTable* QTextTable_new(QTextDocument* doc);
+void QTextTable_new(QTextDocument* doc, QTextTable** outptr_QTextTable, QTextFrame** outptr_QTextFrame, QTextObject** outptr_QTextObject, QObject** outptr_QObject);
 QMetaObject* QTextTable_MetaObject(const QTextTable* self);
 void* QTextTable_Metacast(QTextTable* self, const char* param1);
 struct miqt_string QTextTable_Tr(const char* s);
@@ -87,7 +93,7 @@ struct miqt_string QTextTable_Tr2(const char* s, const char* c);
 struct miqt_string QTextTable_Tr3(const char* s, const char* c, int n);
 struct miqt_string QTextTable_TrUtf82(const char* s, const char* c);
 struct miqt_string QTextTable_TrUtf83(const char* s, const char* c, int n);
-void QTextTable_Delete(QTextTable* self);
+void QTextTable_Delete(QTextTable* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

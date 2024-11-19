@@ -66,7 +66,8 @@ const (
 )
 
 type QVideoFrame struct {
-	h *C.QVideoFrame
+	h          *C.QVideoFrame
+	isSubclass bool
 }
 
 func (this *QVideoFrame) cPointer() *C.QVideoFrame {
@@ -83,6 +84,7 @@ func (this *QVideoFrame) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQVideoFrame constructs the type using only CGO pointers.
 func newQVideoFrame(h *C.QVideoFrame) *QVideoFrame {
 	if h == nil {
 		return nil
@@ -90,32 +92,53 @@ func newQVideoFrame(h *C.QVideoFrame) *QVideoFrame {
 	return &QVideoFrame{h: h}
 }
 
+// UnsafeNewQVideoFrame constructs the type using only unsafe pointers.
 func UnsafeNewQVideoFrame(h unsafe.Pointer) *QVideoFrame {
-	return newQVideoFrame((*C.QVideoFrame)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QVideoFrame{h: (*C.QVideoFrame)(h)}
 }
 
 // NewQVideoFrame constructs a new QVideoFrame object.
 func NewQVideoFrame() *QVideoFrame {
-	ret := C.QVideoFrame_new()
-	return newQVideoFrame(ret)
+	var outptr_QVideoFrame *C.QVideoFrame = nil
+
+	C.QVideoFrame_new(&outptr_QVideoFrame)
+	ret := newQVideoFrame(outptr_QVideoFrame)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVideoFrame2 constructs a new QVideoFrame object.
 func NewQVideoFrame2(bytes int, size *qt.QSize, bytesPerLine int, format QVideoFrame__PixelFormat) *QVideoFrame {
-	ret := C.QVideoFrame_new2((C.int)(bytes), (*C.QSize)(size.UnsafePointer()), (C.int)(bytesPerLine), (C.int)(format))
-	return newQVideoFrame(ret)
+	var outptr_QVideoFrame *C.QVideoFrame = nil
+
+	C.QVideoFrame_new2((C.int)(bytes), (*C.QSize)(size.UnsafePointer()), (C.int)(bytesPerLine), (C.int)(format), &outptr_QVideoFrame)
+	ret := newQVideoFrame(outptr_QVideoFrame)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVideoFrame3 constructs a new QVideoFrame object.
 func NewQVideoFrame3(image *qt.QImage) *QVideoFrame {
-	ret := C.QVideoFrame_new3((*C.QImage)(image.UnsafePointer()))
-	return newQVideoFrame(ret)
+	var outptr_QVideoFrame *C.QVideoFrame = nil
+
+	C.QVideoFrame_new3((*C.QImage)(image.UnsafePointer()), &outptr_QVideoFrame)
+	ret := newQVideoFrame(outptr_QVideoFrame)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVideoFrame4 constructs a new QVideoFrame object.
 func NewQVideoFrame4(other *QVideoFrame) *QVideoFrame {
-	ret := C.QVideoFrame_new4(other.cPointer())
-	return newQVideoFrame(ret)
+	var outptr_QVideoFrame *C.QVideoFrame = nil
+
+	C.QVideoFrame_new4(other.cPointer(), &outptr_QVideoFrame)
+	ret := newQVideoFrame(outptr_QVideoFrame)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QVideoFrame) OperatorAssign(other *QVideoFrame) {
@@ -285,7 +308,7 @@ func (this *QVideoFrame) SetMetaData(key string, value *qt.QVariant) {
 
 func (this *QVideoFrame) Image() *qt.QImage {
 	_ret := C.QVideoFrame_Image(this.h)
-	_goptr := qt.UnsafeNewQImage(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQImage(unsafe.Pointer(_ret), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -300,7 +323,7 @@ func QVideoFrame_ImageFormatFromPixelFormat(format QVideoFrame__PixelFormat) qt.
 
 // Delete this object from C++ memory.
 func (this *QVideoFrame) Delete() {
-	C.QVideoFrame_Delete(this.h)
+	C.QVideoFrame_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

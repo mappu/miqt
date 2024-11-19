@@ -51,16 +51,22 @@ void QPixmapCache_Clear() {
 	QPixmapCache::clear();
 }
 
-void QPixmapCache_Delete(QPixmapCache* self) {
-	delete self;
+void QPixmapCache_Delete(QPixmapCache* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QPixmapCache*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QPixmapCache__Key* QPixmapCache__Key_new() {
-	return new QPixmapCache::Key();
+void QPixmapCache__Key_new(QPixmapCache__Key** outptr_QPixmapCache__Key) {
+	QPixmapCache::Key* ret = new QPixmapCache::Key();
+	*outptr_QPixmapCache__Key = ret;
 }
 
-QPixmapCache__Key* QPixmapCache__Key_new2(QPixmapCache__Key* other) {
-	return new QPixmapCache::Key(*other);
+void QPixmapCache__Key_new2(QPixmapCache__Key* other, QPixmapCache__Key** outptr_QPixmapCache__Key) {
+	QPixmapCache::Key* ret = new QPixmapCache::Key(*other);
+	*outptr_QPixmapCache__Key = ret;
 }
 
 bool QPixmapCache__Key_OperatorEqual(const QPixmapCache__Key* self, QPixmapCache__Key* key) {
@@ -83,7 +89,11 @@ bool QPixmapCache__Key_IsValid(const QPixmapCache__Key* self) {
 	return self->isValid();
 }
 
-void QPixmapCache__Key_Delete(QPixmapCache__Key* self) {
-	delete self;
+void QPixmapCache__Key_Delete(QPixmapCache__Key* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QPixmapCache::Key*>( self );
+	} else {
+		delete self;
+	}
 }
 

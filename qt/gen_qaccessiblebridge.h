@@ -20,18 +20,20 @@ class QAccessibleBridgePlugin;
 class QAccessibleEvent;
 class QAccessibleInterface;
 class QMetaObject;
+class QObject;
 #else
 typedef struct QAccessibleBridge QAccessibleBridge;
 typedef struct QAccessibleBridgePlugin QAccessibleBridgePlugin;
 typedef struct QAccessibleEvent QAccessibleEvent;
 typedef struct QAccessibleInterface QAccessibleInterface;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 #endif
 
 void QAccessibleBridge_SetRootObject(QAccessibleBridge* self, QAccessibleInterface* rootObject);
 void QAccessibleBridge_NotifyAccessibilityUpdate(QAccessibleBridge* self, QAccessibleEvent* event);
 void QAccessibleBridge_OperatorAssign(QAccessibleBridge* self, QAccessibleBridge* param1);
-void QAccessibleBridge_Delete(QAccessibleBridge* self);
+void QAccessibleBridge_Delete(QAccessibleBridge* self, bool isSubclass);
 
 QMetaObject* QAccessibleBridgePlugin_MetaObject(const QAccessibleBridgePlugin* self);
 void* QAccessibleBridgePlugin_Metacast(QAccessibleBridgePlugin* self, const char* param1);
@@ -42,7 +44,7 @@ struct miqt_string QAccessibleBridgePlugin_Tr2(const char* s, const char* c);
 struct miqt_string QAccessibleBridgePlugin_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAccessibleBridgePlugin_TrUtf82(const char* s, const char* c);
 struct miqt_string QAccessibleBridgePlugin_TrUtf83(const char* s, const char* c, int n);
-void QAccessibleBridgePlugin_Delete(QAccessibleBridgePlugin* self);
+void QAccessibleBridgePlugin_Delete(QAccessibleBridgePlugin* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

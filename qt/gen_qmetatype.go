@@ -148,7 +148,8 @@ const (
 )
 
 type QtPrivate__AbstractDebugStreamFunction struct {
-	h *C.QtPrivate__AbstractDebugStreamFunction
+	h          *C.QtPrivate__AbstractDebugStreamFunction
+	isSubclass bool
 }
 
 func (this *QtPrivate__AbstractDebugStreamFunction) cPointer() *C.QtPrivate__AbstractDebugStreamFunction {
@@ -165,6 +166,7 @@ func (this *QtPrivate__AbstractDebugStreamFunction) UnsafePointer() unsafe.Point
 	return unsafe.Pointer(this.h)
 }
 
+// newQtPrivate__AbstractDebugStreamFunction constructs the type using only CGO pointers.
 func newQtPrivate__AbstractDebugStreamFunction(h *C.QtPrivate__AbstractDebugStreamFunction) *QtPrivate__AbstractDebugStreamFunction {
 	if h == nil {
 		return nil
@@ -172,19 +174,28 @@ func newQtPrivate__AbstractDebugStreamFunction(h *C.QtPrivate__AbstractDebugStre
 	return &QtPrivate__AbstractDebugStreamFunction{h: h}
 }
 
+// UnsafeNewQtPrivate__AbstractDebugStreamFunction constructs the type using only unsafe pointers.
 func UnsafeNewQtPrivate__AbstractDebugStreamFunction(h unsafe.Pointer) *QtPrivate__AbstractDebugStreamFunction {
-	return newQtPrivate__AbstractDebugStreamFunction((*C.QtPrivate__AbstractDebugStreamFunction)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QtPrivate__AbstractDebugStreamFunction{h: (*C.QtPrivate__AbstractDebugStreamFunction)(h)}
 }
 
 // NewQtPrivate__AbstractDebugStreamFunction constructs a new QtPrivate::AbstractDebugStreamFunction object.
 func NewQtPrivate__AbstractDebugStreamFunction() *QtPrivate__AbstractDebugStreamFunction {
-	ret := C.QtPrivate__AbstractDebugStreamFunction_new()
-	return newQtPrivate__AbstractDebugStreamFunction(ret)
+	var outptr_QtPrivate__AbstractDebugStreamFunction *C.QtPrivate__AbstractDebugStreamFunction = nil
+
+	C.QtPrivate__AbstractDebugStreamFunction_new(&outptr_QtPrivate__AbstractDebugStreamFunction)
+	ret := newQtPrivate__AbstractDebugStreamFunction(outptr_QtPrivate__AbstractDebugStreamFunction)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QtPrivate__AbstractDebugStreamFunction) Delete() {
-	C.QtPrivate__AbstractDebugStreamFunction_Delete(this.h)
+	C.QtPrivate__AbstractDebugStreamFunction_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -197,7 +208,8 @@ func (this *QtPrivate__AbstractDebugStreamFunction) GoGC() {
 }
 
 type QtPrivate__AbstractComparatorFunction struct {
-	h *C.QtPrivate__AbstractComparatorFunction
+	h          *C.QtPrivate__AbstractComparatorFunction
+	isSubclass bool
 }
 
 func (this *QtPrivate__AbstractComparatorFunction) cPointer() *C.QtPrivate__AbstractComparatorFunction {
@@ -214,6 +226,7 @@ func (this *QtPrivate__AbstractComparatorFunction) UnsafePointer() unsafe.Pointe
 	return unsafe.Pointer(this.h)
 }
 
+// newQtPrivate__AbstractComparatorFunction constructs the type using only CGO pointers.
 func newQtPrivate__AbstractComparatorFunction(h *C.QtPrivate__AbstractComparatorFunction) *QtPrivate__AbstractComparatorFunction {
 	if h == nil {
 		return nil
@@ -221,19 +234,28 @@ func newQtPrivate__AbstractComparatorFunction(h *C.QtPrivate__AbstractComparator
 	return &QtPrivate__AbstractComparatorFunction{h: h}
 }
 
+// UnsafeNewQtPrivate__AbstractComparatorFunction constructs the type using only unsafe pointers.
 func UnsafeNewQtPrivate__AbstractComparatorFunction(h unsafe.Pointer) *QtPrivate__AbstractComparatorFunction {
-	return newQtPrivate__AbstractComparatorFunction((*C.QtPrivate__AbstractComparatorFunction)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QtPrivate__AbstractComparatorFunction{h: (*C.QtPrivate__AbstractComparatorFunction)(h)}
 }
 
 // NewQtPrivate__AbstractComparatorFunction constructs a new QtPrivate::AbstractComparatorFunction object.
 func NewQtPrivate__AbstractComparatorFunction() *QtPrivate__AbstractComparatorFunction {
-	ret := C.QtPrivate__AbstractComparatorFunction_new()
-	return newQtPrivate__AbstractComparatorFunction(ret)
+	var outptr_QtPrivate__AbstractComparatorFunction *C.QtPrivate__AbstractComparatorFunction = nil
+
+	C.QtPrivate__AbstractComparatorFunction_new(&outptr_QtPrivate__AbstractComparatorFunction)
+	ret := newQtPrivate__AbstractComparatorFunction(outptr_QtPrivate__AbstractComparatorFunction)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QtPrivate__AbstractComparatorFunction) Delete() {
-	C.QtPrivate__AbstractComparatorFunction_Delete(this.h)
+	C.QtPrivate__AbstractComparatorFunction_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -246,7 +268,8 @@ func (this *QtPrivate__AbstractComparatorFunction) GoGC() {
 }
 
 type QtPrivate__AbstractConverterFunction struct {
-	h *C.QtPrivate__AbstractConverterFunction
+	h          *C.QtPrivate__AbstractConverterFunction
+	isSubclass bool
 }
 
 func (this *QtPrivate__AbstractConverterFunction) cPointer() *C.QtPrivate__AbstractConverterFunction {
@@ -263,6 +286,7 @@ func (this *QtPrivate__AbstractConverterFunction) UnsafePointer() unsafe.Pointer
 	return unsafe.Pointer(this.h)
 }
 
+// newQtPrivate__AbstractConverterFunction constructs the type using only CGO pointers.
 func newQtPrivate__AbstractConverterFunction(h *C.QtPrivate__AbstractConverterFunction) *QtPrivate__AbstractConverterFunction {
 	if h == nil {
 		return nil
@@ -270,19 +294,28 @@ func newQtPrivate__AbstractConverterFunction(h *C.QtPrivate__AbstractConverterFu
 	return &QtPrivate__AbstractConverterFunction{h: h}
 }
 
+// UnsafeNewQtPrivate__AbstractConverterFunction constructs the type using only unsafe pointers.
 func UnsafeNewQtPrivate__AbstractConverterFunction(h unsafe.Pointer) *QtPrivate__AbstractConverterFunction {
-	return newQtPrivate__AbstractConverterFunction((*C.QtPrivate__AbstractConverterFunction)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QtPrivate__AbstractConverterFunction{h: (*C.QtPrivate__AbstractConverterFunction)(h)}
 }
 
 // NewQtPrivate__AbstractConverterFunction constructs a new QtPrivate::AbstractConverterFunction object.
 func NewQtPrivate__AbstractConverterFunction() *QtPrivate__AbstractConverterFunction {
-	ret := C.QtPrivate__AbstractConverterFunction_new()
-	return newQtPrivate__AbstractConverterFunction(ret)
+	var outptr_QtPrivate__AbstractConverterFunction *C.QtPrivate__AbstractConverterFunction = nil
+
+	C.QtPrivate__AbstractConverterFunction_new(&outptr_QtPrivate__AbstractConverterFunction)
+	ret := newQtPrivate__AbstractConverterFunction(outptr_QtPrivate__AbstractConverterFunction)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QtPrivate__AbstractConverterFunction) Delete() {
-	C.QtPrivate__AbstractConverterFunction_Delete(this.h)
+	C.QtPrivate__AbstractConverterFunction_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -295,7 +328,8 @@ func (this *QtPrivate__AbstractConverterFunction) GoGC() {
 }
 
 type QMetaType struct {
-	h *C.QMetaType
+	h          *C.QMetaType
+	isSubclass bool
 }
 
 func (this *QMetaType) cPointer() *C.QMetaType {
@@ -312,6 +346,7 @@ func (this *QMetaType) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQMetaType constructs the type using only CGO pointers.
 func newQMetaType(h *C.QMetaType) *QMetaType {
 	if h == nil {
 		return nil
@@ -319,20 +354,33 @@ func newQMetaType(h *C.QMetaType) *QMetaType {
 	return &QMetaType{h: h}
 }
 
+// UnsafeNewQMetaType constructs the type using only unsafe pointers.
 func UnsafeNewQMetaType(h unsafe.Pointer) *QMetaType {
-	return newQMetaType((*C.QMetaType)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMetaType{h: (*C.QMetaType)(h)}
 }
 
 // NewQMetaType constructs a new QMetaType object.
 func NewQMetaType() *QMetaType {
-	ret := C.QMetaType_new()
-	return newQMetaType(ret)
+	var outptr_QMetaType *C.QMetaType = nil
+
+	C.QMetaType_new(&outptr_QMetaType)
+	ret := newQMetaType(outptr_QMetaType)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMetaType2 constructs a new QMetaType object.
 func NewQMetaType2(typeVal int) *QMetaType {
-	ret := C.QMetaType_new2((C.int)(typeVal))
-	return newQMetaType(ret)
+	var outptr_QMetaType *C.QMetaType = nil
+
+	C.QMetaType_new2((C.int)(typeVal), &outptr_QMetaType)
+	ret := newQMetaType(outptr_QMetaType)
+	ret.isSubclass = true
+	return ret
 }
 
 func QMetaType_UnregisterType(typeVal int) bool {
@@ -499,7 +547,7 @@ func (this *QMetaType) Construct2(where unsafe.Pointer, copyVal unsafe.Pointer) 
 
 // Delete this object from C++ memory.
 func (this *QMetaType) Delete() {
-	C.QMetaType_Delete(this.h)
+	C.QMetaType_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -512,7 +560,8 @@ func (this *QMetaType) GoGC() {
 }
 
 type QtMetaTypePrivate__VariantData struct {
-	h *C.QtMetaTypePrivate__VariantData
+	h          *C.QtMetaTypePrivate__VariantData
+	isSubclass bool
 }
 
 func (this *QtMetaTypePrivate__VariantData) cPointer() *C.QtMetaTypePrivate__VariantData {
@@ -529,6 +578,7 @@ func (this *QtMetaTypePrivate__VariantData) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQtMetaTypePrivate__VariantData constructs the type using only CGO pointers.
 func newQtMetaTypePrivate__VariantData(h *C.QtMetaTypePrivate__VariantData) *QtMetaTypePrivate__VariantData {
 	if h == nil {
 		return nil
@@ -536,25 +586,38 @@ func newQtMetaTypePrivate__VariantData(h *C.QtMetaTypePrivate__VariantData) *QtM
 	return &QtMetaTypePrivate__VariantData{h: h}
 }
 
+// UnsafeNewQtMetaTypePrivate__VariantData constructs the type using only unsafe pointers.
 func UnsafeNewQtMetaTypePrivate__VariantData(h unsafe.Pointer) *QtMetaTypePrivate__VariantData {
-	return newQtMetaTypePrivate__VariantData((*C.QtMetaTypePrivate__VariantData)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QtMetaTypePrivate__VariantData{h: (*C.QtMetaTypePrivate__VariantData)(h)}
 }
 
 // NewQtMetaTypePrivate__VariantData constructs a new QtMetaTypePrivate::VariantData object.
 func NewQtMetaTypePrivate__VariantData(metaTypeId_ int, data_ unsafe.Pointer, flags_ uint) *QtMetaTypePrivate__VariantData {
-	ret := C.QtMetaTypePrivate__VariantData_new((C.int)(metaTypeId_), data_, (C.uint)(flags_))
-	return newQtMetaTypePrivate__VariantData(ret)
+	var outptr_QtMetaTypePrivate__VariantData *C.QtMetaTypePrivate__VariantData = nil
+
+	C.QtMetaTypePrivate__VariantData_new((C.int)(metaTypeId_), data_, (C.uint)(flags_), &outptr_QtMetaTypePrivate__VariantData)
+	ret := newQtMetaTypePrivate__VariantData(outptr_QtMetaTypePrivate__VariantData)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQtMetaTypePrivate__VariantData2 constructs a new QtMetaTypePrivate::VariantData object.
 func NewQtMetaTypePrivate__VariantData2(other *QtMetaTypePrivate__VariantData) *QtMetaTypePrivate__VariantData {
-	ret := C.QtMetaTypePrivate__VariantData_new2(other.cPointer())
-	return newQtMetaTypePrivate__VariantData(ret)
+	var outptr_QtMetaTypePrivate__VariantData *C.QtMetaTypePrivate__VariantData = nil
+
+	C.QtMetaTypePrivate__VariantData_new2(other.cPointer(), &outptr_QtMetaTypePrivate__VariantData)
+	ret := newQtMetaTypePrivate__VariantData(outptr_QtMetaTypePrivate__VariantData)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QtMetaTypePrivate__VariantData) Delete() {
-	C.QtMetaTypePrivate__VariantData_Delete(this.h)
+	C.QtMetaTypePrivate__VariantData_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -567,7 +630,8 @@ func (this *QtMetaTypePrivate__VariantData) GoGC() {
 }
 
 type QtMetaTypePrivate__VectorBoolElements struct {
-	h *C.QtMetaTypePrivate__VectorBoolElements
+	h          *C.QtMetaTypePrivate__VectorBoolElements
+	isSubclass bool
 }
 
 func (this *QtMetaTypePrivate__VectorBoolElements) cPointer() *C.QtMetaTypePrivate__VectorBoolElements {
@@ -584,6 +648,7 @@ func (this *QtMetaTypePrivate__VectorBoolElements) UnsafePointer() unsafe.Pointe
 	return unsafe.Pointer(this.h)
 }
 
+// newQtMetaTypePrivate__VectorBoolElements constructs the type using only CGO pointers.
 func newQtMetaTypePrivate__VectorBoolElements(h *C.QtMetaTypePrivate__VectorBoolElements) *QtMetaTypePrivate__VectorBoolElements {
 	if h == nil {
 		return nil
@@ -591,13 +656,18 @@ func newQtMetaTypePrivate__VectorBoolElements(h *C.QtMetaTypePrivate__VectorBool
 	return &QtMetaTypePrivate__VectorBoolElements{h: h}
 }
 
+// UnsafeNewQtMetaTypePrivate__VectorBoolElements constructs the type using only unsafe pointers.
 func UnsafeNewQtMetaTypePrivate__VectorBoolElements(h unsafe.Pointer) *QtMetaTypePrivate__VectorBoolElements {
-	return newQtMetaTypePrivate__VectorBoolElements((*C.QtMetaTypePrivate__VectorBoolElements)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QtMetaTypePrivate__VectorBoolElements{h: (*C.QtMetaTypePrivate__VectorBoolElements)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *QtMetaTypePrivate__VectorBoolElements) Delete() {
-	C.QtMetaTypePrivate__VectorBoolElements_Delete(this.h)
+	C.QtMetaTypePrivate__VectorBoolElements_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -610,7 +680,8 @@ func (this *QtMetaTypePrivate__VectorBoolElements) GoGC() {
 }
 
 type QtMetaTypePrivate__QSequentialIterableImpl struct {
-	h *C.QtMetaTypePrivate__QSequentialIterableImpl
+	h          *C.QtMetaTypePrivate__QSequentialIterableImpl
+	isSubclass bool
 }
 
 func (this *QtMetaTypePrivate__QSequentialIterableImpl) cPointer() *C.QtMetaTypePrivate__QSequentialIterableImpl {
@@ -627,6 +698,7 @@ func (this *QtMetaTypePrivate__QSequentialIterableImpl) UnsafePointer() unsafe.P
 	return unsafe.Pointer(this.h)
 }
 
+// newQtMetaTypePrivate__QSequentialIterableImpl constructs the type using only CGO pointers.
 func newQtMetaTypePrivate__QSequentialIterableImpl(h *C.QtMetaTypePrivate__QSequentialIterableImpl) *QtMetaTypePrivate__QSequentialIterableImpl {
 	if h == nil {
 		return nil
@@ -634,20 +706,33 @@ func newQtMetaTypePrivate__QSequentialIterableImpl(h *C.QtMetaTypePrivate__QSequ
 	return &QtMetaTypePrivate__QSequentialIterableImpl{h: h}
 }
 
+// UnsafeNewQtMetaTypePrivate__QSequentialIterableImpl constructs the type using only unsafe pointers.
 func UnsafeNewQtMetaTypePrivate__QSequentialIterableImpl(h unsafe.Pointer) *QtMetaTypePrivate__QSequentialIterableImpl {
-	return newQtMetaTypePrivate__QSequentialIterableImpl((*C.QtMetaTypePrivate__QSequentialIterableImpl)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QtMetaTypePrivate__QSequentialIterableImpl{h: (*C.QtMetaTypePrivate__QSequentialIterableImpl)(h)}
 }
 
 // NewQtMetaTypePrivate__QSequentialIterableImpl constructs a new QtMetaTypePrivate::QSequentialIterableImpl object.
 func NewQtMetaTypePrivate__QSequentialIterableImpl() *QtMetaTypePrivate__QSequentialIterableImpl {
-	ret := C.QtMetaTypePrivate__QSequentialIterableImpl_new()
-	return newQtMetaTypePrivate__QSequentialIterableImpl(ret)
+	var outptr_QtMetaTypePrivate__QSequentialIterableImpl *C.QtMetaTypePrivate__QSequentialIterableImpl = nil
+
+	C.QtMetaTypePrivate__QSequentialIterableImpl_new(&outptr_QtMetaTypePrivate__QSequentialIterableImpl)
+	ret := newQtMetaTypePrivate__QSequentialIterableImpl(outptr_QtMetaTypePrivate__QSequentialIterableImpl)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQtMetaTypePrivate__QSequentialIterableImpl2 constructs a new QtMetaTypePrivate::QSequentialIterableImpl object.
 func NewQtMetaTypePrivate__QSequentialIterableImpl2(param1 *QtMetaTypePrivate__QSequentialIterableImpl) *QtMetaTypePrivate__QSequentialIterableImpl {
-	ret := C.QtMetaTypePrivate__QSequentialIterableImpl_new2(param1.cPointer())
-	return newQtMetaTypePrivate__QSequentialIterableImpl(ret)
+	var outptr_QtMetaTypePrivate__QSequentialIterableImpl *C.QtMetaTypePrivate__QSequentialIterableImpl = nil
+
+	C.QtMetaTypePrivate__QSequentialIterableImpl_new2(param1.cPointer(), &outptr_QtMetaTypePrivate__QSequentialIterableImpl)
+	ret := newQtMetaTypePrivate__QSequentialIterableImpl(outptr_QtMetaTypePrivate__QSequentialIterableImpl)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QtMetaTypePrivate__QSequentialIterableImpl) IteratorCapabilities() QtMetaTypePrivate__IteratorCapability {
@@ -714,7 +799,7 @@ func (this *QtMetaTypePrivate__QSequentialIterableImpl) OperatorAssign(param1 *Q
 
 // Delete this object from C++ memory.
 func (this *QtMetaTypePrivate__QSequentialIterableImpl) Delete() {
-	C.QtMetaTypePrivate__QSequentialIterableImpl_Delete(this.h)
+	C.QtMetaTypePrivate__QSequentialIterableImpl_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -727,7 +812,8 @@ func (this *QtMetaTypePrivate__QSequentialIterableImpl) GoGC() {
 }
 
 type QtMetaTypePrivate__QAssociativeIterableImpl struct {
-	h *C.QtMetaTypePrivate__QAssociativeIterableImpl
+	h          *C.QtMetaTypePrivate__QAssociativeIterableImpl
+	isSubclass bool
 }
 
 func (this *QtMetaTypePrivate__QAssociativeIterableImpl) cPointer() *C.QtMetaTypePrivate__QAssociativeIterableImpl {
@@ -744,6 +830,7 @@ func (this *QtMetaTypePrivate__QAssociativeIterableImpl) UnsafePointer() unsafe.
 	return unsafe.Pointer(this.h)
 }
 
+// newQtMetaTypePrivate__QAssociativeIterableImpl constructs the type using only CGO pointers.
 func newQtMetaTypePrivate__QAssociativeIterableImpl(h *C.QtMetaTypePrivate__QAssociativeIterableImpl) *QtMetaTypePrivate__QAssociativeIterableImpl {
 	if h == nil {
 		return nil
@@ -751,20 +838,33 @@ func newQtMetaTypePrivate__QAssociativeIterableImpl(h *C.QtMetaTypePrivate__QAss
 	return &QtMetaTypePrivate__QAssociativeIterableImpl{h: h}
 }
 
+// UnsafeNewQtMetaTypePrivate__QAssociativeIterableImpl constructs the type using only unsafe pointers.
 func UnsafeNewQtMetaTypePrivate__QAssociativeIterableImpl(h unsafe.Pointer) *QtMetaTypePrivate__QAssociativeIterableImpl {
-	return newQtMetaTypePrivate__QAssociativeIterableImpl((*C.QtMetaTypePrivate__QAssociativeIterableImpl)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QtMetaTypePrivate__QAssociativeIterableImpl{h: (*C.QtMetaTypePrivate__QAssociativeIterableImpl)(h)}
 }
 
 // NewQtMetaTypePrivate__QAssociativeIterableImpl constructs a new QtMetaTypePrivate::QAssociativeIterableImpl object.
 func NewQtMetaTypePrivate__QAssociativeIterableImpl() *QtMetaTypePrivate__QAssociativeIterableImpl {
-	ret := C.QtMetaTypePrivate__QAssociativeIterableImpl_new()
-	return newQtMetaTypePrivate__QAssociativeIterableImpl(ret)
+	var outptr_QtMetaTypePrivate__QAssociativeIterableImpl *C.QtMetaTypePrivate__QAssociativeIterableImpl = nil
+
+	C.QtMetaTypePrivate__QAssociativeIterableImpl_new(&outptr_QtMetaTypePrivate__QAssociativeIterableImpl)
+	ret := newQtMetaTypePrivate__QAssociativeIterableImpl(outptr_QtMetaTypePrivate__QAssociativeIterableImpl)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQtMetaTypePrivate__QAssociativeIterableImpl2 constructs a new QtMetaTypePrivate::QAssociativeIterableImpl object.
 func NewQtMetaTypePrivate__QAssociativeIterableImpl2(param1 *QtMetaTypePrivate__QAssociativeIterableImpl) *QtMetaTypePrivate__QAssociativeIterableImpl {
-	ret := C.QtMetaTypePrivate__QAssociativeIterableImpl_new2(param1.cPointer())
-	return newQtMetaTypePrivate__QAssociativeIterableImpl(ret)
+	var outptr_QtMetaTypePrivate__QAssociativeIterableImpl *C.QtMetaTypePrivate__QAssociativeIterableImpl = nil
+
+	C.QtMetaTypePrivate__QAssociativeIterableImpl_new2(param1.cPointer(), &outptr_QtMetaTypePrivate__QAssociativeIterableImpl)
+	ret := newQtMetaTypePrivate__QAssociativeIterableImpl(outptr_QtMetaTypePrivate__QAssociativeIterableImpl)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QtMetaTypePrivate__QAssociativeIterableImpl) Begin() {
@@ -819,7 +919,7 @@ func (this *QtMetaTypePrivate__QAssociativeIterableImpl) OperatorAssign(param1 *
 
 // Delete this object from C++ memory.
 func (this *QtMetaTypePrivate__QAssociativeIterableImpl) Delete() {
-	C.QtMetaTypePrivate__QAssociativeIterableImpl_Delete(this.h)
+	C.QtMetaTypePrivate__QAssociativeIterableImpl_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -832,7 +932,8 @@ func (this *QtMetaTypePrivate__QAssociativeIterableImpl) GoGC() {
 }
 
 type QtMetaTypePrivate__QPairVariantInterfaceImpl struct {
-	h *C.QtMetaTypePrivate__QPairVariantInterfaceImpl
+	h          *C.QtMetaTypePrivate__QPairVariantInterfaceImpl
+	isSubclass bool
 }
 
 func (this *QtMetaTypePrivate__QPairVariantInterfaceImpl) cPointer() *C.QtMetaTypePrivate__QPairVariantInterfaceImpl {
@@ -849,6 +950,7 @@ func (this *QtMetaTypePrivate__QPairVariantInterfaceImpl) UnsafePointer() unsafe
 	return unsafe.Pointer(this.h)
 }
 
+// newQtMetaTypePrivate__QPairVariantInterfaceImpl constructs the type using only CGO pointers.
 func newQtMetaTypePrivate__QPairVariantInterfaceImpl(h *C.QtMetaTypePrivate__QPairVariantInterfaceImpl) *QtMetaTypePrivate__QPairVariantInterfaceImpl {
 	if h == nil {
 		return nil
@@ -856,20 +958,33 @@ func newQtMetaTypePrivate__QPairVariantInterfaceImpl(h *C.QtMetaTypePrivate__QPa
 	return &QtMetaTypePrivate__QPairVariantInterfaceImpl{h: h}
 }
 
+// UnsafeNewQtMetaTypePrivate__QPairVariantInterfaceImpl constructs the type using only unsafe pointers.
 func UnsafeNewQtMetaTypePrivate__QPairVariantInterfaceImpl(h unsafe.Pointer) *QtMetaTypePrivate__QPairVariantInterfaceImpl {
-	return newQtMetaTypePrivate__QPairVariantInterfaceImpl((*C.QtMetaTypePrivate__QPairVariantInterfaceImpl)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QtMetaTypePrivate__QPairVariantInterfaceImpl{h: (*C.QtMetaTypePrivate__QPairVariantInterfaceImpl)(h)}
 }
 
 // NewQtMetaTypePrivate__QPairVariantInterfaceImpl constructs a new QtMetaTypePrivate::QPairVariantInterfaceImpl object.
 func NewQtMetaTypePrivate__QPairVariantInterfaceImpl() *QtMetaTypePrivate__QPairVariantInterfaceImpl {
-	ret := C.QtMetaTypePrivate__QPairVariantInterfaceImpl_new()
-	return newQtMetaTypePrivate__QPairVariantInterfaceImpl(ret)
+	var outptr_QtMetaTypePrivate__QPairVariantInterfaceImpl *C.QtMetaTypePrivate__QPairVariantInterfaceImpl = nil
+
+	C.QtMetaTypePrivate__QPairVariantInterfaceImpl_new(&outptr_QtMetaTypePrivate__QPairVariantInterfaceImpl)
+	ret := newQtMetaTypePrivate__QPairVariantInterfaceImpl(outptr_QtMetaTypePrivate__QPairVariantInterfaceImpl)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQtMetaTypePrivate__QPairVariantInterfaceImpl2 constructs a new QtMetaTypePrivate::QPairVariantInterfaceImpl object.
 func NewQtMetaTypePrivate__QPairVariantInterfaceImpl2(param1 *QtMetaTypePrivate__QPairVariantInterfaceImpl) *QtMetaTypePrivate__QPairVariantInterfaceImpl {
-	ret := C.QtMetaTypePrivate__QPairVariantInterfaceImpl_new2(param1.cPointer())
-	return newQtMetaTypePrivate__QPairVariantInterfaceImpl(ret)
+	var outptr_QtMetaTypePrivate__QPairVariantInterfaceImpl *C.QtMetaTypePrivate__QPairVariantInterfaceImpl = nil
+
+	C.QtMetaTypePrivate__QPairVariantInterfaceImpl_new2(param1.cPointer(), &outptr_QtMetaTypePrivate__QPairVariantInterfaceImpl)
+	ret := newQtMetaTypePrivate__QPairVariantInterfaceImpl(outptr_QtMetaTypePrivate__QPairVariantInterfaceImpl)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QtMetaTypePrivate__QPairVariantInterfaceImpl) First() *QtMetaTypePrivate__VariantData {
@@ -888,7 +1003,7 @@ func (this *QtMetaTypePrivate__QPairVariantInterfaceImpl) Second() *QtMetaTypePr
 
 // Delete this object from C++ memory.
 func (this *QtMetaTypePrivate__QPairVariantInterfaceImpl) Delete() {
-	C.QtMetaTypePrivate__QPairVariantInterfaceImpl_Delete(this.h)
+	C.QtMetaTypePrivate__QPairVariantInterfaceImpl_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

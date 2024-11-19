@@ -18,22 +18,30 @@ extern "C" {
 class QAudioBuffer;
 class QAudioDecoder;
 class QAudioFormat;
+class QChildEvent;
+class QEvent;
 class QIODevice;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
+class QTimerEvent;
 class QUrl;
 #else
 typedef struct QAudioBuffer QAudioBuffer;
 typedef struct QAudioDecoder QAudioDecoder;
 typedef struct QAudioFormat QAudioFormat;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QIODevice QIODevice;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QUrl QUrl;
 #endif
 
-QAudioDecoder* QAudioDecoder_new();
-QAudioDecoder* QAudioDecoder_new2(QObject* parent);
+void QAudioDecoder_new(QAudioDecoder** outptr_QAudioDecoder, QObject** outptr_QObject);
+void QAudioDecoder_new2(QObject* parent, QAudioDecoder** outptr_QAudioDecoder, QObject** outptr_QObject);
 QMetaObject* QAudioDecoder_MetaObject(const QAudioDecoder* self);
 void* QAudioDecoder_Metacast(QAudioDecoder* self, const char* param1);
 struct miqt_string QAudioDecoder_Tr(const char* s);
@@ -73,7 +81,21 @@ void QAudioDecoder_DurationChanged(QAudioDecoder* self, long long duration);
 void QAudioDecoder_connect_DurationChanged(QAudioDecoder* self, intptr_t slot);
 struct miqt_string QAudioDecoder_Tr2(const char* s, const char* c);
 struct miqt_string QAudioDecoder_Tr3(const char* s, const char* c, int n);
-void QAudioDecoder_Delete(QAudioDecoder* self);
+void QAudioDecoder_override_virtual_Event(void* self, intptr_t slot);
+bool QAudioDecoder_virtualbase_Event(void* self, QEvent* event);
+void QAudioDecoder_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QAudioDecoder_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QAudioDecoder_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QAudioDecoder_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QAudioDecoder_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QAudioDecoder_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QAudioDecoder_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QAudioDecoder_virtualbase_CustomEvent(void* self, QEvent* event);
+void QAudioDecoder_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QAudioDecoder_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QAudioDecoder_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QAudioDecoder_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QAudioDecoder_Delete(QAudioDecoder* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

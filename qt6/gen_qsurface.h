@@ -29,7 +29,7 @@ QSurfaceFormat* QSurface_Format(const QSurface* self);
 int QSurface_SurfaceType(const QSurface* self);
 bool QSurface_SupportsOpenGL(const QSurface* self);
 QSize* QSurface_Size(const QSurface* self);
-void QSurface_Delete(QSurface* self);
+void QSurface_Delete(QSurface* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

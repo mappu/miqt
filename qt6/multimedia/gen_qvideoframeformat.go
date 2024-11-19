@@ -102,7 +102,8 @@ const (
 )
 
 type QVideoFrameFormat struct {
-	h *C.QVideoFrameFormat
+	h          *C.QVideoFrameFormat
+	isSubclass bool
 }
 
 func (this *QVideoFrameFormat) cPointer() *C.QVideoFrameFormat {
@@ -119,6 +120,7 @@ func (this *QVideoFrameFormat) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQVideoFrameFormat constructs the type using only CGO pointers.
 func newQVideoFrameFormat(h *C.QVideoFrameFormat) *QVideoFrameFormat {
 	if h == nil {
 		return nil
@@ -126,26 +128,43 @@ func newQVideoFrameFormat(h *C.QVideoFrameFormat) *QVideoFrameFormat {
 	return &QVideoFrameFormat{h: h}
 }
 
+// UnsafeNewQVideoFrameFormat constructs the type using only unsafe pointers.
 func UnsafeNewQVideoFrameFormat(h unsafe.Pointer) *QVideoFrameFormat {
-	return newQVideoFrameFormat((*C.QVideoFrameFormat)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QVideoFrameFormat{h: (*C.QVideoFrameFormat)(h)}
 }
 
 // NewQVideoFrameFormat constructs a new QVideoFrameFormat object.
 func NewQVideoFrameFormat() *QVideoFrameFormat {
-	ret := C.QVideoFrameFormat_new()
-	return newQVideoFrameFormat(ret)
+	var outptr_QVideoFrameFormat *C.QVideoFrameFormat = nil
+
+	C.QVideoFrameFormat_new(&outptr_QVideoFrameFormat)
+	ret := newQVideoFrameFormat(outptr_QVideoFrameFormat)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVideoFrameFormat2 constructs a new QVideoFrameFormat object.
 func NewQVideoFrameFormat2(size *qt6.QSize, pixelFormat QVideoFrameFormat__PixelFormat) *QVideoFrameFormat {
-	ret := C.QVideoFrameFormat_new2((*C.QSize)(size.UnsafePointer()), (C.int)(pixelFormat))
-	return newQVideoFrameFormat(ret)
+	var outptr_QVideoFrameFormat *C.QVideoFrameFormat = nil
+
+	C.QVideoFrameFormat_new2((*C.QSize)(size.UnsafePointer()), (C.int)(pixelFormat), &outptr_QVideoFrameFormat)
+	ret := newQVideoFrameFormat(outptr_QVideoFrameFormat)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVideoFrameFormat3 constructs a new QVideoFrameFormat object.
 func NewQVideoFrameFormat3(format *QVideoFrameFormat) *QVideoFrameFormat {
-	ret := C.QVideoFrameFormat_new3(format.cPointer())
-	return newQVideoFrameFormat(ret)
+	var outptr_QVideoFrameFormat *C.QVideoFrameFormat = nil
+
+	C.QVideoFrameFormat_new3(format.cPointer(), &outptr_QVideoFrameFormat)
+	ret := newQVideoFrameFormat(outptr_QVideoFrameFormat)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QVideoFrameFormat) Swap(other *QVideoFrameFormat) {
@@ -309,7 +328,7 @@ func QVideoFrameFormat_PixelFormatToString(pixelFormat QVideoFrameFormat__PixelF
 
 // Delete this object from C++ memory.
 func (this *QVideoFrameFormat) Delete() {
-	C.QVideoFrameFormat_Delete(this.h)
+	C.QVideoFrameFormat_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

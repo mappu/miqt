@@ -75,7 +75,8 @@ const (
 )
 
 type QPainter struct {
-	h *C.QPainter
+	h          *C.QPainter
+	isSubclass bool
 }
 
 func (this *QPainter) cPointer() *C.QPainter {
@@ -92,6 +93,7 @@ func (this *QPainter) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPainter constructs the type using only CGO pointers.
 func newQPainter(h *C.QPainter) *QPainter {
 	if h == nil {
 		return nil
@@ -99,20 +101,33 @@ func newQPainter(h *C.QPainter) *QPainter {
 	return &QPainter{h: h}
 }
 
+// UnsafeNewQPainter constructs the type using only unsafe pointers.
 func UnsafeNewQPainter(h unsafe.Pointer) *QPainter {
-	return newQPainter((*C.QPainter)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPainter{h: (*C.QPainter)(h)}
 }
 
 // NewQPainter constructs a new QPainter object.
 func NewQPainter() *QPainter {
-	ret := C.QPainter_new()
-	return newQPainter(ret)
+	var outptr_QPainter *C.QPainter = nil
+
+	C.QPainter_new(&outptr_QPainter)
+	ret := newQPainter(outptr_QPainter)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPainter2 constructs a new QPainter object.
 func NewQPainter2(param1 *QPaintDevice) *QPainter {
-	ret := C.QPainter_new2(param1.cPointer())
-	return newQPainter(ret)
+	var outptr_QPainter *C.QPainter = nil
+
+	C.QPainter_new2(param1.cPointer(), &outptr_QPainter)
+	ret := newQPainter(outptr_QPainter)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QPainter) Device() *QPaintDevice {
@@ -1246,7 +1261,7 @@ func QPainter_Redirected2(device *QPaintDevice, offset *QPoint) *QPaintDevice {
 
 // Delete this object from C++ memory.
 func (this *QPainter) Delete() {
-	C.QPainter_Delete(this.h)
+	C.QPainter_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1259,7 +1274,8 @@ func (this *QPainter) GoGC() {
 }
 
 type QPainter__PixmapFragment struct {
-	h *C.QPainter__PixmapFragment
+	h          *C.QPainter__PixmapFragment
+	isSubclass bool
 }
 
 func (this *QPainter__PixmapFragment) cPointer() *C.QPainter__PixmapFragment {
@@ -1276,6 +1292,7 @@ func (this *QPainter__PixmapFragment) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPainter__PixmapFragment constructs the type using only CGO pointers.
 func newQPainter__PixmapFragment(h *C.QPainter__PixmapFragment) *QPainter__PixmapFragment {
 	if h == nil {
 		return nil
@@ -1283,8 +1300,13 @@ func newQPainter__PixmapFragment(h *C.QPainter__PixmapFragment) *QPainter__Pixma
 	return &QPainter__PixmapFragment{h: h}
 }
 
+// UnsafeNewQPainter__PixmapFragment constructs the type using only unsafe pointers.
 func UnsafeNewQPainter__PixmapFragment(h unsafe.Pointer) *QPainter__PixmapFragment {
-	return newQPainter__PixmapFragment((*C.QPainter__PixmapFragment)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPainter__PixmapFragment{h: (*C.QPainter__PixmapFragment)(h)}
 }
 
 func QPainter__PixmapFragment_Create(pos *QPointF, sourceRect *QRectF) *QPainter__PixmapFragment {
@@ -1324,7 +1346,7 @@ func QPainter__PixmapFragment_Create6(pos *QPointF, sourceRect *QRectF, scaleX f
 
 // Delete this object from C++ memory.
 func (this *QPainter__PixmapFragment) Delete() {
-	C.QPainter__PixmapFragment_Delete(this.h)
+	C.QPainter__PixmapFragment_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

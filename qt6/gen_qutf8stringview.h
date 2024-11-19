@@ -30,9 +30,9 @@ typedef struct QtPrivate__hide_char8_t QtPrivate__hide_char8_t;
 typedef struct QtPrivate__wrap_char QtPrivate__wrap_char;
 #endif
 
-void QtPrivate__hide_char8_t_Delete(QtPrivate__hide_char8_t* self);
+void QtPrivate__hide_char8_t_Delete(QtPrivate__hide_char8_t* self, bool isSubclass);
 
-void QtPrivate__wrap_char_Delete(QtPrivate__wrap_char* self);
+void QtPrivate__wrap_char_Delete(QtPrivate__wrap_char* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

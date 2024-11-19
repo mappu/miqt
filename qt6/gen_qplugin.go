@@ -14,7 +14,8 @@ import (
 )
 
 type QPluginMetaData struct {
-	h *C.QPluginMetaData
+	h          *C.QPluginMetaData
+	isSubclass bool
 }
 
 func (this *QPluginMetaData) cPointer() *C.QPluginMetaData {
@@ -31,6 +32,7 @@ func (this *QPluginMetaData) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPluginMetaData constructs the type using only CGO pointers.
 func newQPluginMetaData(h *C.QPluginMetaData) *QPluginMetaData {
 	if h == nil {
 		return nil
@@ -38,8 +40,13 @@ func newQPluginMetaData(h *C.QPluginMetaData) *QPluginMetaData {
 	return &QPluginMetaData{h: h}
 }
 
+// UnsafeNewQPluginMetaData constructs the type using only unsafe pointers.
 func UnsafeNewQPluginMetaData(h unsafe.Pointer) *QPluginMetaData {
-	return newQPluginMetaData((*C.QPluginMetaData)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPluginMetaData{h: (*C.QPluginMetaData)(h)}
 }
 
 func QPluginMetaData_ArchRequirements() byte {
@@ -48,7 +55,7 @@ func QPluginMetaData_ArchRequirements() byte {
 
 // Delete this object from C++ memory.
 func (this *QPluginMetaData) Delete() {
-	C.QPluginMetaData_Delete(this.h)
+	C.QPluginMetaData_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -61,7 +68,8 @@ func (this *QPluginMetaData) GoGC() {
 }
 
 type QStaticPlugin struct {
-	h *C.QStaticPlugin
+	h          *C.QStaticPlugin
+	isSubclass bool
 }
 
 func (this *QStaticPlugin) cPointer() *C.QStaticPlugin {
@@ -78,6 +86,7 @@ func (this *QStaticPlugin) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQStaticPlugin constructs the type using only CGO pointers.
 func newQStaticPlugin(h *C.QStaticPlugin) *QStaticPlugin {
 	if h == nil {
 		return nil
@@ -85,8 +94,13 @@ func newQStaticPlugin(h *C.QStaticPlugin) *QStaticPlugin {
 	return &QStaticPlugin{h: h}
 }
 
+// UnsafeNewQStaticPlugin constructs the type using only unsafe pointers.
 func UnsafeNewQStaticPlugin(h unsafe.Pointer) *QStaticPlugin {
-	return newQStaticPlugin((*C.QStaticPlugin)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QStaticPlugin{h: (*C.QStaticPlugin)(h)}
 }
 
 func (this *QStaticPlugin) MetaData() *QJsonObject {
@@ -98,7 +112,7 @@ func (this *QStaticPlugin) MetaData() *QJsonObject {
 
 // Delete this object from C++ memory.
 func (this *QStaticPlugin) Delete() {
-	C.QStaticPlugin_Delete(this.h)
+	C.QStaticPlugin_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -111,7 +125,8 @@ func (this *QStaticPlugin) GoGC() {
 }
 
 type QPluginMetaData__Header struct {
-	h *C.QPluginMetaData__Header
+	h          *C.QPluginMetaData__Header
+	isSubclass bool
 }
 
 func (this *QPluginMetaData__Header) cPointer() *C.QPluginMetaData__Header {
@@ -128,6 +143,7 @@ func (this *QPluginMetaData__Header) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPluginMetaData__Header constructs the type using only CGO pointers.
 func newQPluginMetaData__Header(h *C.QPluginMetaData__Header) *QPluginMetaData__Header {
 	if h == nil {
 		return nil
@@ -135,19 +151,28 @@ func newQPluginMetaData__Header(h *C.QPluginMetaData__Header) *QPluginMetaData__
 	return &QPluginMetaData__Header{h: h}
 }
 
+// UnsafeNewQPluginMetaData__Header constructs the type using only unsafe pointers.
 func UnsafeNewQPluginMetaData__Header(h unsafe.Pointer) *QPluginMetaData__Header {
-	return newQPluginMetaData__Header((*C.QPluginMetaData__Header)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPluginMetaData__Header{h: (*C.QPluginMetaData__Header)(h)}
 }
 
 // NewQPluginMetaData__Header constructs a new QPluginMetaData::Header object.
 func NewQPluginMetaData__Header(param1 *QPluginMetaData__Header) *QPluginMetaData__Header {
-	ret := C.QPluginMetaData__Header_new(param1.cPointer())
-	return newQPluginMetaData__Header(ret)
+	var outptr_QPluginMetaData__Header *C.QPluginMetaData__Header = nil
+
+	C.QPluginMetaData__Header_new(param1.cPointer(), &outptr_QPluginMetaData__Header)
+	ret := newQPluginMetaData__Header(outptr_QPluginMetaData__Header)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QPluginMetaData__Header) Delete() {
-	C.QPluginMetaData__Header_Delete(this.h)
+	C.QPluginMetaData__Header_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -160,7 +185,8 @@ func (this *QPluginMetaData__Header) GoGC() {
 }
 
 type QPluginMetaData__MagicHeader struct {
-	h *C.QPluginMetaData__MagicHeader
+	h          *C.QPluginMetaData__MagicHeader
+	isSubclass bool
 }
 
 func (this *QPluginMetaData__MagicHeader) cPointer() *C.QPluginMetaData__MagicHeader {
@@ -177,6 +203,7 @@ func (this *QPluginMetaData__MagicHeader) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPluginMetaData__MagicHeader constructs the type using only CGO pointers.
 func newQPluginMetaData__MagicHeader(h *C.QPluginMetaData__MagicHeader) *QPluginMetaData__MagicHeader {
 	if h == nil {
 		return nil
@@ -184,19 +211,28 @@ func newQPluginMetaData__MagicHeader(h *C.QPluginMetaData__MagicHeader) *QPlugin
 	return &QPluginMetaData__MagicHeader{h: h}
 }
 
+// UnsafeNewQPluginMetaData__MagicHeader constructs the type using only unsafe pointers.
 func UnsafeNewQPluginMetaData__MagicHeader(h unsafe.Pointer) *QPluginMetaData__MagicHeader {
-	return newQPluginMetaData__MagicHeader((*C.QPluginMetaData__MagicHeader)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPluginMetaData__MagicHeader{h: (*C.QPluginMetaData__MagicHeader)(h)}
 }
 
 // NewQPluginMetaData__MagicHeader constructs a new QPluginMetaData::MagicHeader object.
 func NewQPluginMetaData__MagicHeader() *QPluginMetaData__MagicHeader {
-	ret := C.QPluginMetaData__MagicHeader_new()
-	return newQPluginMetaData__MagicHeader(ret)
+	var outptr_QPluginMetaData__MagicHeader *C.QPluginMetaData__MagicHeader = nil
+
+	C.QPluginMetaData__MagicHeader_new(&outptr_QPluginMetaData__MagicHeader)
+	ret := newQPluginMetaData__MagicHeader(outptr_QPluginMetaData__MagicHeader)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QPluginMetaData__MagicHeader) Delete() {
-	C.QPluginMetaData__MagicHeader_Delete(this.h)
+	C.QPluginMetaData__MagicHeader_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -209,7 +245,8 @@ func (this *QPluginMetaData__MagicHeader) GoGC() {
 }
 
 type QPluginMetaData__ElfNoteHeader struct {
-	h *C.QPluginMetaData__ElfNoteHeader
+	h          *C.QPluginMetaData__ElfNoteHeader
+	isSubclass bool
 }
 
 func (this *QPluginMetaData__ElfNoteHeader) cPointer() *C.QPluginMetaData__ElfNoteHeader {
@@ -226,6 +263,7 @@ func (this *QPluginMetaData__ElfNoteHeader) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPluginMetaData__ElfNoteHeader constructs the type using only CGO pointers.
 func newQPluginMetaData__ElfNoteHeader(h *C.QPluginMetaData__ElfNoteHeader) *QPluginMetaData__ElfNoteHeader {
 	if h == nil {
 		return nil
@@ -233,25 +271,38 @@ func newQPluginMetaData__ElfNoteHeader(h *C.QPluginMetaData__ElfNoteHeader) *QPl
 	return &QPluginMetaData__ElfNoteHeader{h: h}
 }
 
+// UnsafeNewQPluginMetaData__ElfNoteHeader constructs the type using only unsafe pointers.
 func UnsafeNewQPluginMetaData__ElfNoteHeader(h unsafe.Pointer) *QPluginMetaData__ElfNoteHeader {
-	return newQPluginMetaData__ElfNoteHeader((*C.QPluginMetaData__ElfNoteHeader)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPluginMetaData__ElfNoteHeader{h: (*C.QPluginMetaData__ElfNoteHeader)(h)}
 }
 
 // NewQPluginMetaData__ElfNoteHeader constructs a new QPluginMetaData::ElfNoteHeader object.
 func NewQPluginMetaData__ElfNoteHeader(payloadSize uint) *QPluginMetaData__ElfNoteHeader {
-	ret := C.QPluginMetaData__ElfNoteHeader_new((C.uint)(payloadSize))
-	return newQPluginMetaData__ElfNoteHeader(ret)
+	var outptr_QPluginMetaData__ElfNoteHeader *C.QPluginMetaData__ElfNoteHeader = nil
+
+	C.QPluginMetaData__ElfNoteHeader_new((C.uint)(payloadSize), &outptr_QPluginMetaData__ElfNoteHeader)
+	ret := newQPluginMetaData__ElfNoteHeader(outptr_QPluginMetaData__ElfNoteHeader)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPluginMetaData__ElfNoteHeader2 constructs a new QPluginMetaData::ElfNoteHeader object.
 func NewQPluginMetaData__ElfNoteHeader2(param1 *QPluginMetaData__ElfNoteHeader) *QPluginMetaData__ElfNoteHeader {
-	ret := C.QPluginMetaData__ElfNoteHeader_new2(param1.cPointer())
-	return newQPluginMetaData__ElfNoteHeader(ret)
+	var outptr_QPluginMetaData__ElfNoteHeader *C.QPluginMetaData__ElfNoteHeader = nil
+
+	C.QPluginMetaData__ElfNoteHeader_new2(param1.cPointer(), &outptr_QPluginMetaData__ElfNoteHeader)
+	ret := newQPluginMetaData__ElfNoteHeader(outptr_QPluginMetaData__ElfNoteHeader)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QPluginMetaData__ElfNoteHeader) Delete() {
-	C.QPluginMetaData__ElfNoteHeader_Delete(this.h)
+	C.QPluginMetaData__ElfNoteHeader_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

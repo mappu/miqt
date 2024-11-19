@@ -45,7 +45,8 @@ const (
 )
 
 type QNetworkSession struct {
-	h *C.QNetworkSession
+	h          *C.QNetworkSession
+	isSubclass bool
 	*qt.QObject
 }
 
@@ -63,27 +64,45 @@ func (this *QNetworkSession) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQNetworkSession(h *C.QNetworkSession) *QNetworkSession {
+// newQNetworkSession constructs the type using only CGO pointers.
+func newQNetworkSession(h *C.QNetworkSession, h_QObject *C.QObject) *QNetworkSession {
 	if h == nil {
 		return nil
 	}
-	return &QNetworkSession{h: h, QObject: qt.UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QNetworkSession{h: h,
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
 }
 
-func UnsafeNewQNetworkSession(h unsafe.Pointer) *QNetworkSession {
-	return newQNetworkSession((*C.QNetworkSession)(h))
+// UnsafeNewQNetworkSession constructs the type using only unsafe pointers.
+func UnsafeNewQNetworkSession(h unsafe.Pointer, h_QObject unsafe.Pointer) *QNetworkSession {
+	if h == nil {
+		return nil
+	}
+
+	return &QNetworkSession{h: (*C.QNetworkSession)(h),
+		QObject: qt.UnsafeNewQObject(h_QObject)}
 }
 
 // NewQNetworkSession constructs a new QNetworkSession object.
 func NewQNetworkSession(connConfig *QNetworkConfiguration) *QNetworkSession {
-	ret := C.QNetworkSession_new(connConfig.cPointer())
-	return newQNetworkSession(ret)
+	var outptr_QNetworkSession *C.QNetworkSession = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QNetworkSession_new(connConfig.cPointer(), &outptr_QNetworkSession, &outptr_QObject)
+	ret := newQNetworkSession(outptr_QNetworkSession, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQNetworkSession2 constructs a new QNetworkSession object.
 func NewQNetworkSession2(connConfig *QNetworkConfiguration, parent *qt.QObject) *QNetworkSession {
-	ret := C.QNetworkSession_new2(connConfig.cPointer(), (*C.QObject)(parent.UnsafePointer()))
-	return newQNetworkSession(ret)
+	var outptr_QNetworkSession *C.QNetworkSession = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QNetworkSession_new2(connConfig.cPointer(), (*C.QObject)(parent.UnsafePointer()), &outptr_QNetworkSession, &outptr_QObject)
+	ret := newQNetworkSession(outptr_QNetworkSession, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QNetworkSession) MetaObject() *qt.QMetaObject {
@@ -394,9 +413,175 @@ func (this *QNetworkSession) WaitForOpened1(msecs int) bool {
 	return (bool)(C.QNetworkSession_WaitForOpened1(this.h, (C.int)(msecs)))
 }
 
+func (this *QNetworkSession) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+
+	C.QNetworkSession_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QNetworkSession) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	C.QNetworkSession_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkSession_ConnectNotify
+func miqt_exec_callback_QNetworkSession_ConnectNotify(self *C.QNetworkSession, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QNetworkSession{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QNetworkSession) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+
+	C.QNetworkSession_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QNetworkSession) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	C.QNetworkSession_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkSession_DisconnectNotify
+func miqt_exec_callback_QNetworkSession_DisconnectNotify(self *C.QNetworkSession, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QNetworkSession{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
+func (this *QNetworkSession) callVirtualBase_Event(event *qt.QEvent) bool {
+
+	return (bool)(C.QNetworkSession_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QNetworkSession) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	C.QNetworkSession_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkSession_Event
+func miqt_exec_callback_QNetworkSession_Event(self *C.QNetworkSession, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QNetworkSession{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QNetworkSession) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+
+	return (bool)(C.QNetworkSession_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QNetworkSession) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	C.QNetworkSession_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkSession_EventFilter
+func miqt_exec_callback_QNetworkSession_EventFilter(self *C.QNetworkSession, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QNetworkSession{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QNetworkSession) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+
+	C.QNetworkSession_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+
+}
+func (this *QNetworkSession) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	C.QNetworkSession_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkSession_TimerEvent
+func miqt_exec_callback_QNetworkSession_TimerEvent(self *C.QNetworkSession, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QNetworkSession{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QNetworkSession) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+
+	C.QNetworkSession_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+
+}
+func (this *QNetworkSession) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	C.QNetworkSession_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkSession_ChildEvent
+func miqt_exec_callback_QNetworkSession_ChildEvent(self *C.QNetworkSession, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QNetworkSession{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QNetworkSession) callVirtualBase_CustomEvent(event *qt.QEvent) {
+
+	C.QNetworkSession_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+
+}
+func (this *QNetworkSession) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	C.QNetworkSession_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkSession_CustomEvent
+func miqt_exec_callback_QNetworkSession_CustomEvent(self *C.QNetworkSession, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QNetworkSession{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QNetworkSession) Delete() {
-	C.QNetworkSession_Delete(this.h)
+	C.QNetworkSession_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -6,22 +6,26 @@
 #include "gen_qsslcipher.h"
 #include "_cgo_export.h"
 
-QSslCipher* QSslCipher_new() {
-	return new QSslCipher();
+void QSslCipher_new(QSslCipher** outptr_QSslCipher) {
+	QSslCipher* ret = new QSslCipher();
+	*outptr_QSslCipher = ret;
 }
 
-QSslCipher* QSslCipher_new2(struct miqt_string name) {
+void QSslCipher_new2(struct miqt_string name, QSslCipher** outptr_QSslCipher) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	return new QSslCipher(name_QString);
+	QSslCipher* ret = new QSslCipher(name_QString);
+	*outptr_QSslCipher = ret;
 }
 
-QSslCipher* QSslCipher_new3(struct miqt_string name, int protocol) {
+void QSslCipher_new3(struct miqt_string name, int protocol, QSslCipher** outptr_QSslCipher) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	return new QSslCipher(name_QString, static_cast<QSsl::SslProtocol>(protocol));
+	QSslCipher* ret = new QSslCipher(name_QString, static_cast<QSsl::SslProtocol>(protocol));
+	*outptr_QSslCipher = ret;
 }
 
-QSslCipher* QSslCipher_new4(QSslCipher* other) {
-	return new QSslCipher(*other);
+void QSslCipher_new4(QSslCipher* other, QSslCipher** outptr_QSslCipher) {
+	QSslCipher* ret = new QSslCipher(*other);
+	*outptr_QSslCipher = ret;
 }
 
 void QSslCipher_OperatorAssign(QSslCipher* self, QSslCipher* other) {
@@ -112,7 +116,11 @@ int QSslCipher_Protocol(const QSslCipher* self) {
 	return static_cast<int>(_ret);
 }
 
-void QSslCipher_Delete(QSslCipher* self) {
-	delete self;
+void QSslCipher_Delete(QSslCipher* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QSslCipher*>( self );
+	} else {
+		delete self;
+	}
 }
 

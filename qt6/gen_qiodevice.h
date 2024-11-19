@@ -17,11 +17,15 @@ extern "C" {
 #ifdef __cplusplus
 class QByteArray;
 class QIODevice;
+class QIODeviceBase;
 class QMetaObject;
+class QObject;
 #else
 typedef struct QByteArray QByteArray;
 typedef struct QIODevice QIODevice;
+typedef struct QIODeviceBase QIODeviceBase;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 #endif
 
 QMetaObject* QIODevice_MetaObject(const QIODevice* self);
@@ -83,10 +87,14 @@ void QIODevice_AboutToClose(QIODevice* self);
 void QIODevice_connect_AboutToClose(QIODevice* self, intptr_t slot);
 void QIODevice_ReadChannelFinished(QIODevice* self);
 void QIODevice_connect_ReadChannelFinished(QIODevice* self, intptr_t slot);
+long long QIODevice_ReadData(QIODevice* self, char* data, long long maxlen);
+long long QIODevice_ReadLineData(QIODevice* self, char* data, long long maxlen);
+long long QIODevice_SkipData(QIODevice* self, long long maxSize);
+long long QIODevice_WriteData(QIODevice* self, const char* data, long long lenVal);
 struct miqt_string QIODevice_Tr2(const char* s, const char* c);
 struct miqt_string QIODevice_Tr3(const char* s, const char* c, int n);
 struct miqt_string QIODevice_ReadLine1(QIODevice* self, long long maxlen);
-void QIODevice_Delete(QIODevice* self);
+void QIODevice_Delete(QIODevice* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

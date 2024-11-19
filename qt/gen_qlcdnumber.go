@@ -32,7 +32,8 @@ const (
 )
 
 type QLCDNumber struct {
-	h *C.QLCDNumber
+	h          *C.QLCDNumber
+	isSubclass bool
 	*QFrame
 }
 
@@ -50,39 +51,79 @@ func (this *QLCDNumber) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQLCDNumber(h *C.QLCDNumber) *QLCDNumber {
+// newQLCDNumber constructs the type using only CGO pointers.
+func newQLCDNumber(h *C.QLCDNumber, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QLCDNumber {
 	if h == nil {
 		return nil
 	}
-	return &QLCDNumber{h: h, QFrame: UnsafeNewQFrame(unsafe.Pointer(h))}
+	return &QLCDNumber{h: h,
+		QFrame: newQFrame(h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
-func UnsafeNewQLCDNumber(h unsafe.Pointer) *QLCDNumber {
-	return newQLCDNumber((*C.QLCDNumber)(h))
+// UnsafeNewQLCDNumber constructs the type using only unsafe pointers.
+func UnsafeNewQLCDNumber(h unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QLCDNumber {
+	if h == nil {
+		return nil
+	}
+
+	return &QLCDNumber{h: (*C.QLCDNumber)(h),
+		QFrame: UnsafeNewQFrame(h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
 // NewQLCDNumber constructs a new QLCDNumber object.
 func NewQLCDNumber(parent *QWidget) *QLCDNumber {
-	ret := C.QLCDNumber_new(parent.cPointer())
-	return newQLCDNumber(ret)
+	var outptr_QLCDNumber *C.QLCDNumber = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QLCDNumber_new(parent.cPointer(), &outptr_QLCDNumber, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQLCDNumber(outptr_QLCDNumber, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLCDNumber2 constructs a new QLCDNumber object.
 func NewQLCDNumber2() *QLCDNumber {
-	ret := C.QLCDNumber_new2()
-	return newQLCDNumber(ret)
+	var outptr_QLCDNumber *C.QLCDNumber = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QLCDNumber_new2(&outptr_QLCDNumber, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQLCDNumber(outptr_QLCDNumber, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLCDNumber3 constructs a new QLCDNumber object.
 func NewQLCDNumber3(numDigits uint) *QLCDNumber {
-	ret := C.QLCDNumber_new3((C.uint)(numDigits))
-	return newQLCDNumber(ret)
+	var outptr_QLCDNumber *C.QLCDNumber = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QLCDNumber_new3((C.uint)(numDigits), &outptr_QLCDNumber, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQLCDNumber(outptr_QLCDNumber, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLCDNumber4 constructs a new QLCDNumber object.
 func NewQLCDNumber4(numDigits uint, parent *QWidget) *QLCDNumber {
-	ret := C.QLCDNumber_new4((C.uint)(numDigits), parent.cPointer())
-	return newQLCDNumber(ret)
+	var outptr_QLCDNumber *C.QLCDNumber = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QLCDNumber_new4((C.uint)(numDigits), parent.cPointer(), &outptr_QLCDNumber, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQLCDNumber(outptr_QLCDNumber, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QLCDNumber) MetaObject() *QMetaObject {
@@ -261,9 +302,105 @@ func QLCDNumber_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QLCDNumber) callVirtualBase_SizeHint() *QSize {
+
+	_ret := C.QLCDNumber_virtualbase_SizeHint(unsafe.Pointer(this.h))
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QLCDNumber) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	C.QLCDNumber_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLCDNumber_SizeHint
+func miqt_exec_callback_QLCDNumber_SizeHint(self *C.QLCDNumber, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QLCDNumber{h: self}).callVirtualBase_SizeHint)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QLCDNumber) callVirtualBase_Event(e *QEvent) bool {
+
+	return (bool)(C.QLCDNumber_virtualbase_Event(unsafe.Pointer(this.h), e.cPointer()))
+
+}
+func (this *QLCDNumber) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	C.QLCDNumber_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLCDNumber_Event
+func miqt_exec_callback_QLCDNumber_Event(self *C.QLCDNumber, cb C.intptr_t, e *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QEvent) bool, e *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+
+	virtualReturn := gofunc((&QLCDNumber{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QLCDNumber) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
+
+	C.QLCDNumber_virtualbase_PaintEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QLCDNumber) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
+	C.QLCDNumber_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLCDNumber_PaintEvent
+func miqt_exec_callback_QLCDNumber_PaintEvent(self *C.QLCDNumber, cb C.intptr_t, param1 *C.QPaintEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QPaintEvent), param1 *QPaintEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(param1), nil)
+
+	gofunc((&QLCDNumber{h: self}).callVirtualBase_PaintEvent, slotval1)
+
+}
+
+func (this *QLCDNumber) callVirtualBase_ChangeEvent(param1 *QEvent) {
+
+	C.QLCDNumber_virtualbase_ChangeEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QLCDNumber) OnChangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
+	C.QLCDNumber_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLCDNumber_ChangeEvent
+func miqt_exec_callback_QLCDNumber_ChangeEvent(self *C.QLCDNumber, cb C.intptr_t, param1 *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent), param1 *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+
+	gofunc((&QLCDNumber{h: self}).callVirtualBase_ChangeEvent, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QLCDNumber) Delete() {
-	C.QLCDNumber_Delete(this.h)
+	C.QLCDNumber_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

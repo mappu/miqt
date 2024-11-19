@@ -37,7 +37,8 @@ const (
 )
 
 type QMediaPlaylist struct {
-	h *C.QMediaPlaylist
+	h          *C.QMediaPlaylist
+	isSubclass bool
 	*qt.QObject
 	*QMediaBindableInterface
 }
@@ -56,27 +57,49 @@ func (this *QMediaPlaylist) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQMediaPlaylist(h *C.QMediaPlaylist) *QMediaPlaylist {
+// newQMediaPlaylist constructs the type using only CGO pointers.
+func newQMediaPlaylist(h *C.QMediaPlaylist, h_QObject *C.QObject, h_QMediaBindableInterface *C.QMediaBindableInterface) *QMediaPlaylist {
 	if h == nil {
 		return nil
 	}
-	return &QMediaPlaylist{h: h, QObject: qt.UnsafeNewQObject(unsafe.Pointer(h)), QMediaBindableInterface: UnsafeNewQMediaBindableInterface(unsafe.Pointer(h))}
+	return &QMediaPlaylist{h: h,
+		QObject:                 qt.UnsafeNewQObject(unsafe.Pointer(h_QObject)),
+		QMediaBindableInterface: newQMediaBindableInterface(h_QMediaBindableInterface)}
 }
 
-func UnsafeNewQMediaPlaylist(h unsafe.Pointer) *QMediaPlaylist {
-	return newQMediaPlaylist((*C.QMediaPlaylist)(h))
+// UnsafeNewQMediaPlaylist constructs the type using only unsafe pointers.
+func UnsafeNewQMediaPlaylist(h unsafe.Pointer, h_QObject unsafe.Pointer, h_QMediaBindableInterface unsafe.Pointer) *QMediaPlaylist {
+	if h == nil {
+		return nil
+	}
+
+	return &QMediaPlaylist{h: (*C.QMediaPlaylist)(h),
+		QObject:                 qt.UnsafeNewQObject(h_QObject),
+		QMediaBindableInterface: UnsafeNewQMediaBindableInterface(h_QMediaBindableInterface)}
 }
 
 // NewQMediaPlaylist constructs a new QMediaPlaylist object.
 func NewQMediaPlaylist() *QMediaPlaylist {
-	ret := C.QMediaPlaylist_new()
-	return newQMediaPlaylist(ret)
+	var outptr_QMediaPlaylist *C.QMediaPlaylist = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QMediaBindableInterface *C.QMediaBindableInterface = nil
+
+	C.QMediaPlaylist_new(&outptr_QMediaPlaylist, &outptr_QObject, &outptr_QMediaBindableInterface)
+	ret := newQMediaPlaylist(outptr_QMediaPlaylist, outptr_QObject, outptr_QMediaBindableInterface)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMediaPlaylist2 constructs a new QMediaPlaylist object.
 func NewQMediaPlaylist2(parent *qt.QObject) *QMediaPlaylist {
-	ret := C.QMediaPlaylist_new2((*C.QObject)(parent.UnsafePointer()))
-	return newQMediaPlaylist(ret)
+	var outptr_QMediaPlaylist *C.QMediaPlaylist = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QMediaBindableInterface *C.QMediaBindableInterface = nil
+
+	C.QMediaPlaylist_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QMediaPlaylist, &outptr_QObject, &outptr_QMediaBindableInterface)
+	ret := newQMediaPlaylist(outptr_QMediaPlaylist, outptr_QObject, outptr_QMediaBindableInterface)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QMediaPlaylist) MetaObject() *qt.QMetaObject {
@@ -108,7 +131,7 @@ func QMediaPlaylist_TrUtf8(s string) string {
 }
 
 func (this *QMediaPlaylist) MediaObject() *QMediaObject {
-	return UnsafeNewQMediaObject(unsafe.Pointer(C.QMediaPlaylist_MediaObject(this.h)))
+	return UnsafeNewQMediaObject(unsafe.Pointer(C.QMediaPlaylist_MediaObject(this.h)), nil)
 }
 
 func (this *QMediaPlaylist) PlaybackMode() QMediaPlaylist__PlaybackMode {
@@ -530,9 +553,221 @@ func (this *QMediaPlaylist) Save22(location *qt.QUrl, format string) bool {
 	return (bool)(C.QMediaPlaylist_Save22(this.h, (*C.QUrl)(location.UnsafePointer()), format_Cstring))
 }
 
+func (this *QMediaPlaylist) callVirtualBase_MediaObject() *QMediaObject {
+
+	return UnsafeNewQMediaObject(unsafe.Pointer(C.QMediaPlaylist_virtualbase_MediaObject(unsafe.Pointer(this.h))), nil)
+}
+func (this *QMediaPlaylist) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
+	C.QMediaPlaylist_override_virtual_MediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QMediaPlaylist_MediaObject
+func miqt_exec_callback_QMediaPlaylist_MediaObject(self *C.QMediaPlaylist, cb C.intptr_t) *C.QMediaObject {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QMediaObject) *QMediaObject)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QMediaPlaylist{h: self}).callVirtualBase_MediaObject)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QMediaPlaylist) callVirtualBase_SetMediaObject(object *QMediaObject) bool {
+
+	return (bool)(C.QMediaPlaylist_virtualbase_SetMediaObject(unsafe.Pointer(this.h), object.cPointer()))
+
+}
+func (this *QMediaPlaylist) OnSetMediaObject(slot func(super func(object *QMediaObject) bool, object *QMediaObject) bool) {
+	C.QMediaPlaylist_override_virtual_SetMediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QMediaPlaylist_SetMediaObject
+func miqt_exec_callback_QMediaPlaylist_SetMediaObject(self *C.QMediaPlaylist, cb C.intptr_t, object *C.QMediaObject) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(object *QMediaObject) bool, object *QMediaObject) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMediaObject(unsafe.Pointer(object), nil)
+
+	virtualReturn := gofunc((&QMediaPlaylist{h: self}).callVirtualBase_SetMediaObject, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QMediaPlaylist) callVirtualBase_Event(event *qt.QEvent) bool {
+
+	return (bool)(C.QMediaPlaylist_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QMediaPlaylist) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	C.QMediaPlaylist_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QMediaPlaylist_Event
+func miqt_exec_callback_QMediaPlaylist_Event(self *C.QMediaPlaylist, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QMediaPlaylist{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QMediaPlaylist) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+
+	return (bool)(C.QMediaPlaylist_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QMediaPlaylist) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	C.QMediaPlaylist_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QMediaPlaylist_EventFilter
+func miqt_exec_callback_QMediaPlaylist_EventFilter(self *C.QMediaPlaylist, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QMediaPlaylist{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QMediaPlaylist) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+
+	C.QMediaPlaylist_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+
+}
+func (this *QMediaPlaylist) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	C.QMediaPlaylist_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QMediaPlaylist_TimerEvent
+func miqt_exec_callback_QMediaPlaylist_TimerEvent(self *C.QMediaPlaylist, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QMediaPlaylist{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QMediaPlaylist) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+
+	C.QMediaPlaylist_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+
+}
+func (this *QMediaPlaylist) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	C.QMediaPlaylist_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QMediaPlaylist_ChildEvent
+func miqt_exec_callback_QMediaPlaylist_ChildEvent(self *C.QMediaPlaylist, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QMediaPlaylist{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QMediaPlaylist) callVirtualBase_CustomEvent(event *qt.QEvent) {
+
+	C.QMediaPlaylist_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+
+}
+func (this *QMediaPlaylist) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	C.QMediaPlaylist_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QMediaPlaylist_CustomEvent
+func miqt_exec_callback_QMediaPlaylist_CustomEvent(self *C.QMediaPlaylist, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QMediaPlaylist{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QMediaPlaylist) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+
+	C.QMediaPlaylist_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QMediaPlaylist) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	C.QMediaPlaylist_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QMediaPlaylist_ConnectNotify
+func miqt_exec_callback_QMediaPlaylist_ConnectNotify(self *C.QMediaPlaylist, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QMediaPlaylist{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QMediaPlaylist) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+
+	C.QMediaPlaylist_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QMediaPlaylist) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	C.QMediaPlaylist_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QMediaPlaylist_DisconnectNotify
+func miqt_exec_callback_QMediaPlaylist_DisconnectNotify(self *C.QMediaPlaylist, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QMediaPlaylist{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QMediaPlaylist) Delete() {
-	C.QMediaPlaylist_Delete(this.h)
+	C.QMediaPlaylist_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

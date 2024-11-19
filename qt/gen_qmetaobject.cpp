@@ -13,12 +13,14 @@
 #include "gen_qmetaobject.h"
 #include "_cgo_export.h"
 
-QMetaMethod* QMetaMethod_new() {
-	return new QMetaMethod();
+void QMetaMethod_new(QMetaMethod** outptr_QMetaMethod) {
+	QMetaMethod* ret = new QMetaMethod();
+	*outptr_QMetaMethod = ret;
 }
 
-QMetaMethod* QMetaMethod_new2(QMetaMethod* param1) {
-	return new QMetaMethod(*param1);
+void QMetaMethod_new2(QMetaMethod* param1, QMetaMethod** outptr_QMetaMethod) {
+	QMetaMethod* ret = new QMetaMethod(*param1);
+	*outptr_QMetaMethod = ret;
 }
 
 struct miqt_string QMetaMethod_MethodSignature(const QMetaMethod* self) {
@@ -393,16 +395,22 @@ bool QMetaMethod_InvokeOnGadget112(const QMetaMethod* self, void* gadget, QGener
 	return self->invokeOnGadget(gadget, *val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7, *val8, *val9);
 }
 
-void QMetaMethod_Delete(QMetaMethod* self) {
-	delete self;
+void QMetaMethod_Delete(QMetaMethod* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMetaMethod*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QMetaEnum* QMetaEnum_new() {
-	return new QMetaEnum();
+void QMetaEnum_new(QMetaEnum** outptr_QMetaEnum) {
+	QMetaEnum* ret = new QMetaEnum();
+	*outptr_QMetaEnum = ret;
 }
 
-QMetaEnum* QMetaEnum_new2(QMetaEnum* param1) {
-	return new QMetaEnum(*param1);
+void QMetaEnum_new2(QMetaEnum* param1, QMetaEnum** outptr_QMetaEnum) {
+	QMetaEnum* ret = new QMetaEnum(*param1);
+	*outptr_QMetaEnum = ret;
 }
 
 const char* QMetaEnum_Name(const QMetaEnum* self) {
@@ -474,12 +482,17 @@ int QMetaEnum_KeysToValue2(const QMetaEnum* self, const char* keys, bool* ok) {
 	return self->keysToValue(keys, ok);
 }
 
-void QMetaEnum_Delete(QMetaEnum* self) {
-	delete self;
+void QMetaEnum_Delete(QMetaEnum* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMetaEnum*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QMetaProperty* QMetaProperty_new() {
-	return new QMetaProperty();
+void QMetaProperty_new(QMetaProperty** outptr_QMetaProperty) {
+	QMetaProperty* ret = new QMetaProperty();
+	*outptr_QMetaProperty = ret;
 }
 
 const char* QMetaProperty_Name(const QMetaProperty* self) {
@@ -635,12 +648,17 @@ bool QMetaProperty_IsUser1(const QMetaProperty* self, QObject* obj) {
 	return self->isUser(obj);
 }
 
-void QMetaProperty_Delete(QMetaProperty* self) {
-	delete self;
+void QMetaProperty_Delete(QMetaProperty* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMetaProperty*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QMetaClassInfo* QMetaClassInfo_new() {
-	return new QMetaClassInfo();
+void QMetaClassInfo_new(QMetaClassInfo** outptr_QMetaClassInfo) {
+	QMetaClassInfo* ret = new QMetaClassInfo();
+	*outptr_QMetaClassInfo = ret;
 }
 
 const char* QMetaClassInfo_Name(const QMetaClassInfo* self) {
@@ -655,7 +673,11 @@ QMetaObject* QMetaClassInfo_EnclosingMetaObject(const QMetaClassInfo* self) {
 	return (QMetaObject*) self->enclosingMetaObject();
 }
 
-void QMetaClassInfo_Delete(QMetaClassInfo* self) {
-	delete self;
+void QMetaClassInfo_Delete(QMetaClassInfo* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMetaClassInfo*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -10,8 +10,9 @@
 #include "gen_qfontdatabase.h"
 #include "_cgo_export.h"
 
-QFontDatabase* QFontDatabase_new() {
-	return new QFontDatabase();
+void QFontDatabase_new(QFontDatabase** outptr_QFontDatabase) {
+	QFontDatabase* ret = new QFontDatabase();
+	*outptr_QFontDatabase = ret;
 }
 
 struct miqt_array /* of int */  QFontDatabase_StandardSizes() {
@@ -325,7 +326,11 @@ bool QFontDatabase_IsFixedPitch2(struct miqt_string family, struct miqt_string s
 	return QFontDatabase::isFixedPitch(family_QString, style_QString);
 }
 
-void QFontDatabase_Delete(QFontDatabase* self) {
-	delete self;
+void QFontDatabase_Delete(QFontDatabase* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QFontDatabase*>( self );
+	} else {
+		delete self;
+	}
 }
 

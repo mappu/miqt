@@ -6,17 +6,20 @@
 #include "gen_qdatastream.h"
 #include "_cgo_export.h"
 
-QDataStream* QDataStream_new() {
-	return new QDataStream();
+void QDataStream_new(QDataStream** outptr_QDataStream) {
+	QDataStream* ret = new QDataStream();
+	*outptr_QDataStream = ret;
 }
 
-QDataStream* QDataStream_new2(QIODevice* param1) {
-	return new QDataStream(param1);
+void QDataStream_new2(QIODevice* param1, QDataStream** outptr_QDataStream) {
+	QDataStream* ret = new QDataStream(param1);
+	*outptr_QDataStream = ret;
 }
 
-QDataStream* QDataStream_new3(struct miqt_string param1) {
+void QDataStream_new3(struct miqt_string param1, QDataStream** outptr_QDataStream) {
 	QByteArray param1_QByteArray(param1.data, param1.len);
-	return new QDataStream(param1_QByteArray);
+	QDataStream* ret = new QDataStream(param1_QByteArray);
+	*outptr_QDataStream = ret;
 }
 
 QIODevice* QDataStream_Device(const QDataStream* self) {
@@ -208,15 +211,24 @@ void QDataStream_AbortTransaction(QDataStream* self) {
 	self->abortTransaction();
 }
 
-void QDataStream_Delete(QDataStream* self) {
-	delete self;
+void QDataStream_Delete(QDataStream* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QDataStream*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QtPrivate__StreamStateSaver* QtPrivate__StreamStateSaver_new(QDataStream* s) {
-	return new QtPrivate::StreamStateSaver(s);
+void QtPrivate__StreamStateSaver_new(QDataStream* s, QtPrivate__StreamStateSaver** outptr_QtPrivate__StreamStateSaver) {
+	QtPrivate::StreamStateSaver* ret = new QtPrivate::StreamStateSaver(s);
+	*outptr_QtPrivate__StreamStateSaver = ret;
 }
 
-void QtPrivate__StreamStateSaver_Delete(QtPrivate__StreamStateSaver* self) {
-	delete self;
+void QtPrivate__StreamStateSaver_Delete(QtPrivate__StreamStateSaver* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtPrivate::StreamStateSaver*>( self );
+	} else {
+		delete self;
+	}
 }
 

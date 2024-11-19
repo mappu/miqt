@@ -14,7 +14,8 @@ import (
 )
 
 type QStylePlugin struct {
-	h *C.QStylePlugin
+	h          *C.QStylePlugin
+	isSubclass bool
 	*QObject
 }
 
@@ -32,15 +33,23 @@ func (this *QStylePlugin) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStylePlugin(h *C.QStylePlugin) *QStylePlugin {
+// newQStylePlugin constructs the type using only CGO pointers.
+func newQStylePlugin(h *C.QStylePlugin, h_QObject *C.QObject) *QStylePlugin {
 	if h == nil {
 		return nil
 	}
-	return &QStylePlugin{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QStylePlugin{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQStylePlugin(h unsafe.Pointer) *QStylePlugin {
-	return newQStylePlugin((*C.QStylePlugin)(h))
+// UnsafeNewQStylePlugin constructs the type using only unsafe pointers.
+func UnsafeNewQStylePlugin(h unsafe.Pointer, h_QObject unsafe.Pointer) *QStylePlugin {
+	if h == nil {
+		return nil
+	}
+
+	return &QStylePlugin{h: (*C.QStylePlugin)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QStylePlugin) MetaObject() *QMetaObject {
@@ -76,7 +85,7 @@ func (this *QStylePlugin) Create(key string) *QStyle {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	return UnsafeNewQStyle(unsafe.Pointer(C.QStylePlugin_Create(this.h, key_ms)))
+	return UnsafeNewQStyle(unsafe.Pointer(C.QStylePlugin_Create(this.h, key_ms)), nil)
 }
 
 func QStylePlugin_Tr2(s string, c string) string {
@@ -125,7 +134,7 @@ func QStylePlugin_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QStylePlugin) Delete() {
-	C.QStylePlugin_Delete(this.h)
+	C.QStylePlugin_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

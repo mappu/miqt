@@ -15,7 +15,8 @@ import (
 )
 
 type QVideoRendererControl struct {
-	h *C.QVideoRendererControl
+	h          *C.QVideoRendererControl
+	isSubclass bool
 	*QMediaControl
 }
 
@@ -33,15 +34,23 @@ func (this *QVideoRendererControl) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQVideoRendererControl(h *C.QVideoRendererControl) *QVideoRendererControl {
+// newQVideoRendererControl constructs the type using only CGO pointers.
+func newQVideoRendererControl(h *C.QVideoRendererControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QVideoRendererControl {
 	if h == nil {
 		return nil
 	}
-	return &QVideoRendererControl{h: h, QMediaControl: UnsafeNewQMediaControl(unsafe.Pointer(h))}
+	return &QVideoRendererControl{h: h,
+		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
 }
 
-func UnsafeNewQVideoRendererControl(h unsafe.Pointer) *QVideoRendererControl {
-	return newQVideoRendererControl((*C.QVideoRendererControl)(h))
+// UnsafeNewQVideoRendererControl constructs the type using only unsafe pointers.
+func UnsafeNewQVideoRendererControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QVideoRendererControl {
+	if h == nil {
+		return nil
+	}
+
+	return &QVideoRendererControl{h: (*C.QVideoRendererControl)(h),
+		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
 }
 
 func (this *QVideoRendererControl) MetaObject() *qt.QMetaObject {
@@ -73,7 +82,7 @@ func QVideoRendererControl_TrUtf8(s string) string {
 }
 
 func (this *QVideoRendererControl) Surface() *QAbstractVideoSurface {
-	return UnsafeNewQAbstractVideoSurface(unsafe.Pointer(C.QVideoRendererControl_Surface(this.h)))
+	return UnsafeNewQAbstractVideoSurface(unsafe.Pointer(C.QVideoRendererControl_Surface(this.h)), nil)
 }
 
 func (this *QVideoRendererControl) SetSurface(surface *QAbstractVideoSurface) {
@@ -126,7 +135,7 @@ func QVideoRendererControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QVideoRendererControl) Delete() {
-	C.QVideoRendererControl_Delete(this.h)
+	C.QVideoRendererControl_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

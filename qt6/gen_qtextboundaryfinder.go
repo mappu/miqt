@@ -34,7 +34,8 @@ const (
 )
 
 type QTextBoundaryFinder struct {
-	h *C.QTextBoundaryFinder
+	h          *C.QTextBoundaryFinder
+	isSubclass bool
 }
 
 func (this *QTextBoundaryFinder) cPointer() *C.QTextBoundaryFinder {
@@ -51,6 +52,7 @@ func (this *QTextBoundaryFinder) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQTextBoundaryFinder constructs the type using only CGO pointers.
 func newQTextBoundaryFinder(h *C.QTextBoundaryFinder) *QTextBoundaryFinder {
 	if h == nil {
 		return nil
@@ -58,20 +60,33 @@ func newQTextBoundaryFinder(h *C.QTextBoundaryFinder) *QTextBoundaryFinder {
 	return &QTextBoundaryFinder{h: h}
 }
 
+// UnsafeNewQTextBoundaryFinder constructs the type using only unsafe pointers.
 func UnsafeNewQTextBoundaryFinder(h unsafe.Pointer) *QTextBoundaryFinder {
-	return newQTextBoundaryFinder((*C.QTextBoundaryFinder)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QTextBoundaryFinder{h: (*C.QTextBoundaryFinder)(h)}
 }
 
 // NewQTextBoundaryFinder constructs a new QTextBoundaryFinder object.
 func NewQTextBoundaryFinder() *QTextBoundaryFinder {
-	ret := C.QTextBoundaryFinder_new()
-	return newQTextBoundaryFinder(ret)
+	var outptr_QTextBoundaryFinder *C.QTextBoundaryFinder = nil
+
+	C.QTextBoundaryFinder_new(&outptr_QTextBoundaryFinder)
+	ret := newQTextBoundaryFinder(outptr_QTextBoundaryFinder)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextBoundaryFinder2 constructs a new QTextBoundaryFinder object.
 func NewQTextBoundaryFinder2(other *QTextBoundaryFinder) *QTextBoundaryFinder {
-	ret := C.QTextBoundaryFinder_new2(other.cPointer())
-	return newQTextBoundaryFinder(ret)
+	var outptr_QTextBoundaryFinder *C.QTextBoundaryFinder = nil
+
+	C.QTextBoundaryFinder_new2(other.cPointer(), &outptr_QTextBoundaryFinder)
+	ret := newQTextBoundaryFinder(outptr_QTextBoundaryFinder)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextBoundaryFinder3 constructs a new QTextBoundaryFinder object.
@@ -80,26 +95,42 @@ func NewQTextBoundaryFinder3(typeVal QTextBoundaryFinder__BoundaryType, stringVa
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
 	defer C.free(unsafe.Pointer(stringVal_ms.data))
-	ret := C.QTextBoundaryFinder_new3((C.int)(typeVal), stringVal_ms)
-	return newQTextBoundaryFinder(ret)
+	var outptr_QTextBoundaryFinder *C.QTextBoundaryFinder = nil
+
+	C.QTextBoundaryFinder_new3((C.int)(typeVal), stringVal_ms, &outptr_QTextBoundaryFinder)
+	ret := newQTextBoundaryFinder(outptr_QTextBoundaryFinder)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextBoundaryFinder4 constructs a new QTextBoundaryFinder object.
 func NewQTextBoundaryFinder4(typeVal QTextBoundaryFinder__BoundaryType, chars *QChar, length int64) *QTextBoundaryFinder {
-	ret := C.QTextBoundaryFinder_new4((C.int)(typeVal), chars.cPointer(), (C.ptrdiff_t)(length))
-	return newQTextBoundaryFinder(ret)
+	var outptr_QTextBoundaryFinder *C.QTextBoundaryFinder = nil
+
+	C.QTextBoundaryFinder_new4((C.int)(typeVal), chars.cPointer(), (C.ptrdiff_t)(length), &outptr_QTextBoundaryFinder)
+	ret := newQTextBoundaryFinder(outptr_QTextBoundaryFinder)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextBoundaryFinder5 constructs a new QTextBoundaryFinder object.
 func NewQTextBoundaryFinder5(typeVal QTextBoundaryFinder__BoundaryType, chars *QChar, length int64, buffer *byte) *QTextBoundaryFinder {
-	ret := C.QTextBoundaryFinder_new5((C.int)(typeVal), chars.cPointer(), (C.ptrdiff_t)(length), (*C.uchar)(unsafe.Pointer(buffer)))
-	return newQTextBoundaryFinder(ret)
+	var outptr_QTextBoundaryFinder *C.QTextBoundaryFinder = nil
+
+	C.QTextBoundaryFinder_new5((C.int)(typeVal), chars.cPointer(), (C.ptrdiff_t)(length), (*C.uchar)(unsafe.Pointer(buffer)), &outptr_QTextBoundaryFinder)
+	ret := newQTextBoundaryFinder(outptr_QTextBoundaryFinder)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextBoundaryFinder6 constructs a new QTextBoundaryFinder object.
 func NewQTextBoundaryFinder6(typeVal QTextBoundaryFinder__BoundaryType, chars *QChar, length int64, buffer *byte, bufferSize int64) *QTextBoundaryFinder {
-	ret := C.QTextBoundaryFinder_new6((C.int)(typeVal), chars.cPointer(), (C.ptrdiff_t)(length), (*C.uchar)(unsafe.Pointer(buffer)), (C.ptrdiff_t)(bufferSize))
-	return newQTextBoundaryFinder(ret)
+	var outptr_QTextBoundaryFinder *C.QTextBoundaryFinder = nil
+
+	C.QTextBoundaryFinder_new6((C.int)(typeVal), chars.cPointer(), (C.ptrdiff_t)(length), (*C.uchar)(unsafe.Pointer(buffer)), (C.ptrdiff_t)(bufferSize), &outptr_QTextBoundaryFinder)
+	ret := newQTextBoundaryFinder(outptr_QTextBoundaryFinder)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QTextBoundaryFinder) OperatorAssign(other *QTextBoundaryFinder) {
@@ -155,7 +186,7 @@ func (this *QTextBoundaryFinder) BoundaryReasons() QTextBoundaryFinder__Boundary
 
 // Delete this object from C++ memory.
 func (this *QTextBoundaryFinder) Delete() {
-	C.QTextBoundaryFinder_Delete(this.h)
+	C.QTextBoundaryFinder_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

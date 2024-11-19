@@ -28,15 +28,15 @@ typedef struct QSize QSize;
 typedef struct QSizeF QSizeF;
 #endif
 
-QPageSize* QPageSize_new();
-QPageSize* QPageSize_new2(int pageSizeId);
-QPageSize* QPageSize_new3(QSize* pointSize);
-QPageSize* QPageSize_new4(QSizeF* size, int units);
-QPageSize* QPageSize_new5(QPageSize* other);
-QPageSize* QPageSize_new6(QSize* pointSize, struct miqt_string name);
-QPageSize* QPageSize_new7(QSize* pointSize, struct miqt_string name, int matchPolicy);
-QPageSize* QPageSize_new8(QSizeF* size, int units, struct miqt_string name);
-QPageSize* QPageSize_new9(QSizeF* size, int units, struct miqt_string name, int matchPolicy);
+void QPageSize_new(QPageSize** outptr_QPageSize);
+void QPageSize_new2(int pageSizeId, QPageSize** outptr_QPageSize);
+void QPageSize_new3(QSize* pointSize, QPageSize** outptr_QPageSize);
+void QPageSize_new4(QSizeF* size, int units, QPageSize** outptr_QPageSize);
+void QPageSize_new5(QPageSize* other, QPageSize** outptr_QPageSize);
+void QPageSize_new6(QSize* pointSize, struct miqt_string name, QPageSize** outptr_QPageSize);
+void QPageSize_new7(QSize* pointSize, struct miqt_string name, int matchPolicy, QPageSize** outptr_QPageSize);
+void QPageSize_new8(QSizeF* size, int units, struct miqt_string name, QPageSize** outptr_QPageSize);
+void QPageSize_new9(QSizeF* size, int units, struct miqt_string name, int matchPolicy, QPageSize** outptr_QPageSize);
 void QPageSize_OperatorAssign(QPageSize* self, QPageSize* other);
 void QPageSize_Swap(QPageSize* self, QPageSize* other);
 bool QPageSize_IsEquivalentTo(const QPageSize* self, QPageSize* other);
@@ -66,7 +66,7 @@ QSize* QPageSize_SizePointsWithPageSizeId(int pageSizeId);
 QSize* QPageSize_SizePixels2(int pageSizeId, int resolution);
 int QPageSize_Id22(QSize* pointSize, int matchPolicy);
 int QPageSize_Id3(QSizeF* size, int units, int matchPolicy);
-void QPageSize_Delete(QPageSize* self);
+void QPageSize_Delete(QPageSize* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

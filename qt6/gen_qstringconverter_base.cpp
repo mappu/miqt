@@ -5,12 +5,14 @@
 #include "gen_qstringconverter_base.h"
 #include "_cgo_export.h"
 
-QStringConverterBase* QStringConverterBase_new(QStringConverterBase* param1) {
-	return new QStringConverterBase(*param1);
+void QStringConverterBase_new(QStringConverterBase* param1, QStringConverterBase** outptr_QStringConverterBase) {
+	QStringConverterBase* ret = new QStringConverterBase(*param1);
+	*outptr_QStringConverterBase = ret;
 }
 
-QStringConverterBase* QStringConverterBase_new2() {
-	return new QStringConverterBase();
+void QStringConverterBase_new2(QStringConverterBase** outptr_QStringConverterBase) {
+	QStringConverterBase* ret = new QStringConverterBase();
+	*outptr_QStringConverterBase = ret;
 }
 
 bool QStringConverter_IsValid(const QStringConverter* self) {
@@ -33,12 +35,14 @@ const char* QStringConverter_NameForEncoding(int e) {
 	return (const char*) QStringConverter::nameForEncoding(static_cast<QStringConverter::Encoding>(e));
 }
 
-QStringConverterBase__State* QStringConverterBase__State_new() {
-	return new QStringConverterBase::State();
+void QStringConverterBase__State_new(QStringConverterBase__State** outptr_QStringConverterBase__State) {
+	QStringConverterBase::State* ret = new QStringConverterBase::State();
+	*outptr_QStringConverterBase__State = ret;
 }
 
-QStringConverterBase__State* QStringConverterBase__State_new2(int f) {
-	return new QStringConverterBase::State(static_cast<QStringConverterBase::Flags>(f));
+void QStringConverterBase__State_new2(int f, QStringConverterBase__State** outptr_QStringConverterBase__State) {
+	QStringConverterBase::State* ret = new QStringConverterBase::State(static_cast<QStringConverterBase::Flags>(f));
+	*outptr_QStringConverterBase__State = ret;
 }
 
 void QStringConverterBase__State_Clear(QStringConverterBase__State* self) {
@@ -49,7 +53,11 @@ void QStringConverterBase__State_Reset(QStringConverterBase__State* self) {
 	self->reset();
 }
 
-void QStringConverterBase__State_Delete(QStringConverterBase__State* self) {
-	delete self;
+void QStringConverterBase__State_Delete(QStringConverterBase__State* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QStringConverterBase::State*>( self );
+	} else {
+		delete self;
+	}
 }
 

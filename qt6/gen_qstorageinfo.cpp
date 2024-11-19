@@ -9,21 +9,25 @@
 #include "gen_qstorageinfo.h"
 #include "_cgo_export.h"
 
-QStorageInfo* QStorageInfo_new() {
-	return new QStorageInfo();
+void QStorageInfo_new(QStorageInfo** outptr_QStorageInfo) {
+	QStorageInfo* ret = new QStorageInfo();
+	*outptr_QStorageInfo = ret;
 }
 
-QStorageInfo* QStorageInfo_new2(struct miqt_string path) {
+void QStorageInfo_new2(struct miqt_string path, QStorageInfo** outptr_QStorageInfo) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
-	return new QStorageInfo(path_QString);
+	QStorageInfo* ret = new QStorageInfo(path_QString);
+	*outptr_QStorageInfo = ret;
 }
 
-QStorageInfo* QStorageInfo_new3(QDir* dir) {
-	return new QStorageInfo(*dir);
+void QStorageInfo_new3(QDir* dir, QStorageInfo** outptr_QStorageInfo) {
+	QStorageInfo* ret = new QStorageInfo(*dir);
+	*outptr_QStorageInfo = ret;
 }
 
-QStorageInfo* QStorageInfo_new4(QStorageInfo* other) {
-	return new QStorageInfo(*other);
+void QStorageInfo_new4(QStorageInfo* other, QStorageInfo** outptr_QStorageInfo) {
+	QStorageInfo* ret = new QStorageInfo(*other);
+	*outptr_QStorageInfo = ret;
 }
 
 void QStorageInfo_OperatorAssign(QStorageInfo* self, QStorageInfo* other) {
@@ -155,7 +159,11 @@ QStorageInfo* QStorageInfo_Root() {
 	return new QStorageInfo(QStorageInfo::root());
 }
 
-void QStorageInfo_Delete(QStorageInfo* self) {
-	delete self;
+void QStorageInfo_Delete(QStorageInfo* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QStorageInfo*>( self );
+	} else {
+		delete self;
+	}
 }
 

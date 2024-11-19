@@ -13,7 +13,8 @@ import (
 )
 
 type QAccessibleWidget struct {
-	h *C.QAccessibleWidget
+	h          *C.QAccessibleWidget
+	isSubclass bool
 	*QAccessibleObject
 	*QAccessibleActionInterface
 }
@@ -32,27 +33,51 @@ func (this *QAccessibleWidget) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAccessibleWidget(h *C.QAccessibleWidget) *QAccessibleWidget {
+// newQAccessibleWidget constructs the type using only CGO pointers.
+func newQAccessibleWidget(h *C.QAccessibleWidget, h_QAccessibleObject *C.QAccessibleObject, h_QAccessibleInterface *C.QAccessibleInterface, h_QAccessibleActionInterface *C.QAccessibleActionInterface) *QAccessibleWidget {
 	if h == nil {
 		return nil
 	}
-	return &QAccessibleWidget{h: h, QAccessibleObject: UnsafeNewQAccessibleObject(unsafe.Pointer(h)), QAccessibleActionInterface: UnsafeNewQAccessibleActionInterface(unsafe.Pointer(h))}
+	return &QAccessibleWidget{h: h,
+		QAccessibleObject:          newQAccessibleObject(h_QAccessibleObject, h_QAccessibleInterface),
+		QAccessibleActionInterface: newQAccessibleActionInterface(h_QAccessibleActionInterface)}
 }
 
-func UnsafeNewQAccessibleWidget(h unsafe.Pointer) *QAccessibleWidget {
-	return newQAccessibleWidget((*C.QAccessibleWidget)(h))
+// UnsafeNewQAccessibleWidget constructs the type using only unsafe pointers.
+func UnsafeNewQAccessibleWidget(h unsafe.Pointer, h_QAccessibleObject unsafe.Pointer, h_QAccessibleInterface unsafe.Pointer, h_QAccessibleActionInterface unsafe.Pointer) *QAccessibleWidget {
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessibleWidget{h: (*C.QAccessibleWidget)(h),
+		QAccessibleObject:          UnsafeNewQAccessibleObject(h_QAccessibleObject, h_QAccessibleInterface),
+		QAccessibleActionInterface: UnsafeNewQAccessibleActionInterface(h_QAccessibleActionInterface)}
 }
 
 // NewQAccessibleWidget constructs a new QAccessibleWidget object.
 func NewQAccessibleWidget(o *QWidget) *QAccessibleWidget {
-	ret := C.QAccessibleWidget_new(o.cPointer())
-	return newQAccessibleWidget(ret)
+	var outptr_QAccessibleWidget *C.QAccessibleWidget = nil
+	var outptr_QAccessibleObject *C.QAccessibleObject = nil
+	var outptr_QAccessibleInterface *C.QAccessibleInterface = nil
+	var outptr_QAccessibleActionInterface *C.QAccessibleActionInterface = nil
+
+	C.QAccessibleWidget_new(o.cPointer(), &outptr_QAccessibleWidget, &outptr_QAccessibleObject, &outptr_QAccessibleInterface, &outptr_QAccessibleActionInterface)
+	ret := newQAccessibleWidget(outptr_QAccessibleWidget, outptr_QAccessibleObject, outptr_QAccessibleInterface, outptr_QAccessibleActionInterface)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAccessibleWidget2 constructs a new QAccessibleWidget object.
 func NewQAccessibleWidget2(o *QWidget, r QAccessible__Role) *QAccessibleWidget {
-	ret := C.QAccessibleWidget_new2(o.cPointer(), (C.int)(r))
-	return newQAccessibleWidget(ret)
+	var outptr_QAccessibleWidget *C.QAccessibleWidget = nil
+	var outptr_QAccessibleObject *C.QAccessibleObject = nil
+	var outptr_QAccessibleInterface *C.QAccessibleInterface = nil
+	var outptr_QAccessibleActionInterface *C.QAccessibleActionInterface = nil
+
+	C.QAccessibleWidget_new2(o.cPointer(), (C.int)(r), &outptr_QAccessibleWidget, &outptr_QAccessibleObject, &outptr_QAccessibleInterface, &outptr_QAccessibleActionInterface)
+	ret := newQAccessibleWidget(outptr_QAccessibleWidget, outptr_QAccessibleObject, outptr_QAccessibleInterface, outptr_QAccessibleActionInterface)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAccessibleWidget3 constructs a new QAccessibleWidget object.
@@ -61,8 +86,15 @@ func NewQAccessibleWidget3(o *QWidget, r QAccessible__Role, name string) *QAcces
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	ret := C.QAccessibleWidget_new3(o.cPointer(), (C.int)(r), name_ms)
-	return newQAccessibleWidget(ret)
+	var outptr_QAccessibleWidget *C.QAccessibleWidget = nil
+	var outptr_QAccessibleObject *C.QAccessibleObject = nil
+	var outptr_QAccessibleInterface *C.QAccessibleInterface = nil
+	var outptr_QAccessibleActionInterface *C.QAccessibleActionInterface = nil
+
+	C.QAccessibleWidget_new3(o.cPointer(), (C.int)(r), name_ms, &outptr_QAccessibleWidget, &outptr_QAccessibleObject, &outptr_QAccessibleInterface, &outptr_QAccessibleActionInterface)
+	ret := newQAccessibleWidget(outptr_QAccessibleWidget, outptr_QAccessibleObject, outptr_QAccessibleInterface, outptr_QAccessibleActionInterface)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QAccessibleWidget) IsValid() bool {
@@ -70,7 +102,7 @@ func (this *QAccessibleWidget) IsValid() bool {
 }
 
 func (this *QAccessibleWidget) Window() *QWindow {
-	return UnsafeNewQWindow(unsafe.Pointer(C.QAccessibleWidget_Window(this.h)))
+	return UnsafeNewQWindow(unsafe.Pointer(C.QAccessibleWidget_Window(this.h)), nil, nil)
 }
 
 func (this *QAccessibleWidget) ChildCount() int {
@@ -81,11 +113,11 @@ func (this *QAccessibleWidget) IndexOfChild(child *QAccessibleInterface) int {
 	return (int)(C.QAccessibleWidget_IndexOfChild(this.h, child.cPointer()))
 }
 
-func (this *QAccessibleWidget) Relations() []struct {
+func (this *QAccessibleWidget) Relations(match QAccessible__RelationFlag) []struct {
 	First  *QAccessibleInterface
 	Second QAccessible__RelationFlag
 } {
-	var _ma C.struct_miqt_array = C.QAccessibleWidget_Relations(this.h)
+	var _ma C.struct_miqt_array = C.QAccessibleWidget_Relations(this.h, (C.int)(match))
 	_ret := make([]struct {
 		First  *QAccessibleInterface
 		Second QAccessible__RelationFlag
@@ -195,31 +227,6 @@ func (this *QAccessibleWidget) KeyBindingsForAction(actionName string) []string 
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
-	}
-	return _ret
-}
-
-func (this *QAccessibleWidget) Relations1(match QAccessible__RelationFlag) []struct {
-	First  *QAccessibleInterface
-	Second QAccessible__RelationFlag
-} {
-	var _ma C.struct_miqt_array = C.QAccessibleWidget_Relations1(this.h, (C.int)(match))
-	_ret := make([]struct {
-		First  *QAccessibleInterface
-		Second QAccessible__RelationFlag
-	}, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_map)(unsafe.Pointer(_ma.data)) // hey ya
-	for i := 0; i < int(_ma.len); i++ {
-		var _lv_mm C.struct_miqt_map = _outCast[i]
-		_lv_First_CArray := (*[0xffff]*C.QAccessibleInterface)(unsafe.Pointer(_lv_mm.keys))
-		_lv_Second_CArray := (*[0xffff]C.int)(unsafe.Pointer(_lv_mm.values))
-		_lv_entry_First := UnsafeNewQAccessibleInterface(unsafe.Pointer(_lv_First_CArray[0]))
-		_lv_entry_Second := (QAccessible__RelationFlag)(_lv_Second_CArray[0])
-
-		_ret[i] = struct {
-			First  *QAccessibleInterface
-			Second QAccessible__RelationFlag
-		}{First: _lv_entry_First, Second: _lv_entry_Second}
 	}
 	return _ret
 }

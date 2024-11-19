@@ -33,7 +33,11 @@ void QPrintEngine_OperatorAssign(QPrintEngine* self, QPrintEngine* param1) {
 	self->operator=(*param1);
 }
 
-void QPrintEngine_Delete(QPrintEngine* self) {
-	delete self;
+void QPrintEngine_Delete(QPrintEngine* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QPrintEngine*>( self );
+	} else {
+		delete self;
+	}
 }
 

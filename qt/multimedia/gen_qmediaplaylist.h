@@ -15,27 +15,37 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QChildEvent;
+class QEvent;
 class QIODevice;
+class QMediaBindableInterface;
 class QMediaContent;
 class QMediaObject;
 class QMediaPlaylist;
+class QMetaMethod;
 class QMetaObject;
 class QNetworkRequest;
 class QObject;
+class QTimerEvent;
 class QUrl;
 #else
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QIODevice QIODevice;
+typedef struct QMediaBindableInterface QMediaBindableInterface;
 typedef struct QMediaContent QMediaContent;
 typedef struct QMediaObject QMediaObject;
 typedef struct QMediaPlaylist QMediaPlaylist;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QNetworkRequest QNetworkRequest;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QUrl QUrl;
 #endif
 
-QMediaPlaylist* QMediaPlaylist_new();
-QMediaPlaylist* QMediaPlaylist_new2(QObject* parent);
+void QMediaPlaylist_new(QMediaPlaylist** outptr_QMediaPlaylist, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface);
+void QMediaPlaylist_new2(QObject* parent, QMediaPlaylist** outptr_QMediaPlaylist, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface);
 QMetaObject* QMediaPlaylist_MetaObject(const QMediaPlaylist* self);
 void* QMediaPlaylist_Metacast(QMediaPlaylist* self, const char* param1);
 struct miqt_string QMediaPlaylist_Tr(const char* s);
@@ -90,6 +100,7 @@ void QMediaPlaylist_Loaded(QMediaPlaylist* self);
 void QMediaPlaylist_connect_Loaded(QMediaPlaylist* self, intptr_t slot);
 void QMediaPlaylist_LoadFailed(QMediaPlaylist* self);
 void QMediaPlaylist_connect_LoadFailed(QMediaPlaylist* self, intptr_t slot);
+bool QMediaPlaylist_SetMediaObject(QMediaPlaylist* self, QMediaObject* object);
 struct miqt_string QMediaPlaylist_Tr2(const char* s, const char* c);
 struct miqt_string QMediaPlaylist_Tr3(const char* s, const char* c, int n);
 struct miqt_string QMediaPlaylist_TrUtf82(const char* s, const char* c);
@@ -100,7 +111,25 @@ void QMediaPlaylist_Load2(QMediaPlaylist* self, QNetworkRequest* request, const 
 void QMediaPlaylist_Load22(QMediaPlaylist* self, QUrl* location, const char* format);
 void QMediaPlaylist_Load23(QMediaPlaylist* self, QIODevice* device, const char* format);
 bool QMediaPlaylist_Save22(QMediaPlaylist* self, QUrl* location, const char* format);
-void QMediaPlaylist_Delete(QMediaPlaylist* self);
+void QMediaPlaylist_override_virtual_MediaObject(void* self, intptr_t slot);
+QMediaObject* QMediaPlaylist_virtualbase_MediaObject(const void* self);
+void QMediaPlaylist_override_virtual_SetMediaObject(void* self, intptr_t slot);
+bool QMediaPlaylist_virtualbase_SetMediaObject(void* self, QMediaObject* object);
+void QMediaPlaylist_override_virtual_Event(void* self, intptr_t slot);
+bool QMediaPlaylist_virtualbase_Event(void* self, QEvent* event);
+void QMediaPlaylist_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QMediaPlaylist_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QMediaPlaylist_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QMediaPlaylist_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QMediaPlaylist_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QMediaPlaylist_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QMediaPlaylist_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QMediaPlaylist_virtualbase_CustomEvent(void* self, QEvent* event);
+void QMediaPlaylist_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QMediaPlaylist_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QMediaPlaylist_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QMediaPlaylist_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QMediaPlaylist_Delete(QMediaPlaylist* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

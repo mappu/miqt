@@ -14,7 +14,8 @@ import (
 )
 
 type QtPrivate__RefCount struct {
-	h *C.QtPrivate__RefCount
+	h          *C.QtPrivate__RefCount
+	isSubclass bool
 }
 
 func (this *QtPrivate__RefCount) cPointer() *C.QtPrivate__RefCount {
@@ -31,6 +32,7 @@ func (this *QtPrivate__RefCount) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQtPrivate__RefCount constructs the type using only CGO pointers.
 func newQtPrivate__RefCount(h *C.QtPrivate__RefCount) *QtPrivate__RefCount {
 	if h == nil {
 		return nil
@@ -38,8 +40,13 @@ func newQtPrivate__RefCount(h *C.QtPrivate__RefCount) *QtPrivate__RefCount {
 	return &QtPrivate__RefCount{h: h}
 }
 
+// UnsafeNewQtPrivate__RefCount constructs the type using only unsafe pointers.
 func UnsafeNewQtPrivate__RefCount(h unsafe.Pointer) *QtPrivate__RefCount {
-	return newQtPrivate__RefCount((*C.QtPrivate__RefCount)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QtPrivate__RefCount{h: (*C.QtPrivate__RefCount)(h)}
 }
 
 func (this *QtPrivate__RefCount) Ref() bool {
@@ -68,7 +75,7 @@ func (this *QtPrivate__RefCount) InitializeUnsharable() {
 
 // Delete this object from C++ memory.
 func (this *QtPrivate__RefCount) Delete() {
-	C.QtPrivate__RefCount_Delete(this.h)
+	C.QtPrivate__RefCount_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

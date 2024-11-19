@@ -40,7 +40,8 @@ const (
 )
 
 type QStringConverterBase struct {
-	h *C.QStringConverterBase
+	h          *C.QStringConverterBase
+	isSubclass bool
 }
 
 func (this *QStringConverterBase) cPointer() *C.QStringConverterBase {
@@ -57,6 +58,7 @@ func (this *QStringConverterBase) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQStringConverterBase constructs the type using only CGO pointers.
 func newQStringConverterBase(h *C.QStringConverterBase) *QStringConverterBase {
 	if h == nil {
 		return nil
@@ -64,24 +66,38 @@ func newQStringConverterBase(h *C.QStringConverterBase) *QStringConverterBase {
 	return &QStringConverterBase{h: h}
 }
 
+// UnsafeNewQStringConverterBase constructs the type using only unsafe pointers.
 func UnsafeNewQStringConverterBase(h unsafe.Pointer) *QStringConverterBase {
-	return newQStringConverterBase((*C.QStringConverterBase)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QStringConverterBase{h: (*C.QStringConverterBase)(h)}
 }
 
 // NewQStringConverterBase constructs a new QStringConverterBase object.
 func NewQStringConverterBase(param1 *QStringConverterBase) *QStringConverterBase {
-	ret := C.QStringConverterBase_new(param1.cPointer())
-	return newQStringConverterBase(ret)
+	var outptr_QStringConverterBase *C.QStringConverterBase = nil
+
+	C.QStringConverterBase_new(param1.cPointer(), &outptr_QStringConverterBase)
+	ret := newQStringConverterBase(outptr_QStringConverterBase)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStringConverterBase2 constructs a new QStringConverterBase object.
 func NewQStringConverterBase2() *QStringConverterBase {
-	ret := C.QStringConverterBase_new2()
-	return newQStringConverterBase(ret)
+	var outptr_QStringConverterBase *C.QStringConverterBase = nil
+
+	C.QStringConverterBase_new2(&outptr_QStringConverterBase)
+	ret := newQStringConverterBase(outptr_QStringConverterBase)
+	ret.isSubclass = true
+	return ret
 }
 
 type QStringConverter struct {
-	h *C.QStringConverter
+	h          *C.QStringConverter
+	isSubclass bool
 	*QStringConverterBase
 }
 
@@ -99,15 +115,23 @@ func (this *QStringConverter) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStringConverter(h *C.QStringConverter) *QStringConverter {
+// newQStringConverter constructs the type using only CGO pointers.
+func newQStringConverter(h *C.QStringConverter, h_QStringConverterBase *C.QStringConverterBase) *QStringConverter {
 	if h == nil {
 		return nil
 	}
-	return &QStringConverter{h: h, QStringConverterBase: UnsafeNewQStringConverterBase(unsafe.Pointer(h))}
+	return &QStringConverter{h: h,
+		QStringConverterBase: newQStringConverterBase(h_QStringConverterBase)}
 }
 
-func UnsafeNewQStringConverter(h unsafe.Pointer) *QStringConverter {
-	return newQStringConverter((*C.QStringConverter)(h))
+// UnsafeNewQStringConverter constructs the type using only unsafe pointers.
+func UnsafeNewQStringConverter(h unsafe.Pointer, h_QStringConverterBase unsafe.Pointer) *QStringConverter {
+	if h == nil {
+		return nil
+	}
+
+	return &QStringConverter{h: (*C.QStringConverter)(h),
+		QStringConverterBase: UnsafeNewQStringConverterBase(h_QStringConverterBase)}
 }
 
 func (this *QStringConverter) IsValid() bool {
@@ -133,7 +157,8 @@ func QStringConverter_NameForEncoding(e QStringConverter__Encoding) string {
 }
 
 type QStringConverterBase__State struct {
-	h *C.QStringConverterBase__State
+	h          *C.QStringConverterBase__State
+	isSubclass bool
 }
 
 func (this *QStringConverterBase__State) cPointer() *C.QStringConverterBase__State {
@@ -150,6 +175,7 @@ func (this *QStringConverterBase__State) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQStringConverterBase__State constructs the type using only CGO pointers.
 func newQStringConverterBase__State(h *C.QStringConverterBase__State) *QStringConverterBase__State {
 	if h == nil {
 		return nil
@@ -157,20 +183,33 @@ func newQStringConverterBase__State(h *C.QStringConverterBase__State) *QStringCo
 	return &QStringConverterBase__State{h: h}
 }
 
+// UnsafeNewQStringConverterBase__State constructs the type using only unsafe pointers.
 func UnsafeNewQStringConverterBase__State(h unsafe.Pointer) *QStringConverterBase__State {
-	return newQStringConverterBase__State((*C.QStringConverterBase__State)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QStringConverterBase__State{h: (*C.QStringConverterBase__State)(h)}
 }
 
 // NewQStringConverterBase__State constructs a new QStringConverterBase::State object.
 func NewQStringConverterBase__State() *QStringConverterBase__State {
-	ret := C.QStringConverterBase__State_new()
-	return newQStringConverterBase__State(ret)
+	var outptr_QStringConverterBase__State *C.QStringConverterBase__State = nil
+
+	C.QStringConverterBase__State_new(&outptr_QStringConverterBase__State)
+	ret := newQStringConverterBase__State(outptr_QStringConverterBase__State)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStringConverterBase__State2 constructs a new QStringConverterBase::State object.
 func NewQStringConverterBase__State2(f QStringConverterBase__Flag) *QStringConverterBase__State {
-	ret := C.QStringConverterBase__State_new2((C.int)(f))
-	return newQStringConverterBase__State(ret)
+	var outptr_QStringConverterBase__State *C.QStringConverterBase__State = nil
+
+	C.QStringConverterBase__State_new2((C.int)(f), &outptr_QStringConverterBase__State)
+	ret := newQStringConverterBase__State(outptr_QStringConverterBase__State)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QStringConverterBase__State) Clear() {
@@ -183,7 +222,7 @@ func (this *QStringConverterBase__State) Reset() {
 
 // Delete this object from C++ memory.
 func (this *QStringConverterBase__State) Delete() {
-	C.QStringConverterBase__State_Delete(this.h)
+	C.QStringConverterBase__State_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

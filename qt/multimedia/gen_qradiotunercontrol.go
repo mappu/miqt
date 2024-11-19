@@ -16,7 +16,8 @@ import (
 )
 
 type QRadioTunerControl struct {
-	h *C.QRadioTunerControl
+	h          *C.QRadioTunerControl
+	isSubclass bool
 	*QMediaControl
 }
 
@@ -34,15 +35,23 @@ func (this *QRadioTunerControl) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQRadioTunerControl(h *C.QRadioTunerControl) *QRadioTunerControl {
+// newQRadioTunerControl constructs the type using only CGO pointers.
+func newQRadioTunerControl(h *C.QRadioTunerControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QRadioTunerControl {
 	if h == nil {
 		return nil
 	}
-	return &QRadioTunerControl{h: h, QMediaControl: UnsafeNewQMediaControl(unsafe.Pointer(h))}
+	return &QRadioTunerControl{h: h,
+		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
 }
 
-func UnsafeNewQRadioTunerControl(h unsafe.Pointer) *QRadioTunerControl {
-	return newQRadioTunerControl((*C.QRadioTunerControl)(h))
+// UnsafeNewQRadioTunerControl constructs the type using only unsafe pointers.
+func UnsafeNewQRadioTunerControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QRadioTunerControl {
+	if h == nil {
+		return nil
+	}
+
+	return &QRadioTunerControl{h: (*C.QRadioTunerControl)(h),
+		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
 }
 
 func (this *QRadioTunerControl) MetaObject() *qt.QMetaObject {
@@ -166,8 +175,8 @@ func (this *QRadioTunerControl) SearchBackward() {
 	C.QRadioTunerControl_SearchBackward(this.h)
 }
 
-func (this *QRadioTunerControl) SearchAllStations() {
-	C.QRadioTunerControl_SearchAllStations(this.h)
+func (this *QRadioTunerControl) SearchAllStations(searchMode QRadioTuner__SearchMode) {
+	C.QRadioTunerControl_SearchAllStations(this.h, (C.int)(searchMode))
 }
 
 func (this *QRadioTunerControl) CancelSearch() {
@@ -466,13 +475,9 @@ func QRadioTunerControl_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QRadioTunerControl) SearchAllStations1(searchMode QRadioTuner__SearchMode) {
-	C.QRadioTunerControl_SearchAllStations1(this.h, (C.int)(searchMode))
-}
-
 // Delete this object from C++ memory.
 func (this *QRadioTunerControl) Delete() {
-	C.QRadioTunerControl_Delete(this.h)
+	C.QRadioTunerControl_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

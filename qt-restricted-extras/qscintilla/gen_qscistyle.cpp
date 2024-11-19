@@ -7,26 +7,31 @@
 #include "gen_qscistyle.h"
 #include "_cgo_export.h"
 
-QsciStyle* QsciStyle_new() {
-	return new QsciStyle();
+void QsciStyle_new(QsciStyle** outptr_QsciStyle) {
+	QsciStyle* ret = new QsciStyle();
+	*outptr_QsciStyle = ret;
 }
 
-QsciStyle* QsciStyle_new2(int style, struct miqt_string description, QColor* color, QColor* paper, QFont* font) {
+void QsciStyle_new2(int style, struct miqt_string description, QColor* color, QColor* paper, QFont* font, QsciStyle** outptr_QsciStyle) {
 	QString description_QString = QString::fromUtf8(description.data, description.len);
-	return new QsciStyle(static_cast<int>(style), description_QString, *color, *paper, *font);
+	QsciStyle* ret = new QsciStyle(static_cast<int>(style), description_QString, *color, *paper, *font);
+	*outptr_QsciStyle = ret;
 }
 
-QsciStyle* QsciStyle_new3(QsciStyle* param1) {
-	return new QsciStyle(*param1);
+void QsciStyle_new3(QsciStyle* param1, QsciStyle** outptr_QsciStyle) {
+	QsciStyle* ret = new QsciStyle(*param1);
+	*outptr_QsciStyle = ret;
 }
 
-QsciStyle* QsciStyle_new4(int style) {
-	return new QsciStyle(static_cast<int>(style));
+void QsciStyle_new4(int style, QsciStyle** outptr_QsciStyle) {
+	QsciStyle* ret = new QsciStyle(static_cast<int>(style));
+	*outptr_QsciStyle = ret;
 }
 
-QsciStyle* QsciStyle_new5(int style, struct miqt_string description, QColor* color, QColor* paper, QFont* font, bool eolFill) {
+void QsciStyle_new5(int style, struct miqt_string description, QColor* color, QColor* paper, QFont* font, bool eolFill, QsciStyle** outptr_QsciStyle) {
 	QString description_QString = QString::fromUtf8(description.data, description.len);
-	return new QsciStyle(static_cast<int>(style), description_QString, *color, *paper, *font, eolFill);
+	QsciStyle* ret = new QsciStyle(static_cast<int>(style), description_QString, *color, *paper, *font, eolFill);
+	*outptr_QsciStyle = ret;
 }
 
 void QsciStyle_Apply(const QsciStyle* self, QsciScintillaBase* sci) {
@@ -126,7 +131,11 @@ void QsciStyle_Refresh(QsciStyle* self) {
 	self->refresh();
 }
 
-void QsciStyle_Delete(QsciStyle* self) {
-	delete self;
+void QsciStyle_Delete(QsciStyle* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QsciStyle*>( self );
+	} else {
+		delete self;
+	}
 }
 

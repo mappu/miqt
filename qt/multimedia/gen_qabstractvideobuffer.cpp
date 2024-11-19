@@ -32,8 +32,12 @@ QVariant* QAbstractVideoBuffer_Handle(const QAbstractVideoBuffer* self) {
 	return new QVariant(self->handle());
 }
 
-void QAbstractVideoBuffer_Delete(QAbstractVideoBuffer* self) {
-	delete self;
+void QAbstractVideoBuffer_Delete(QAbstractVideoBuffer* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAbstractVideoBuffer*>( self );
+	} else {
+		delete self;
+	}
 }
 
 unsigned char* QAbstractPlanarVideoBuffer_Map(QAbstractPlanarVideoBuffer* self, int mode, int* numBytes, int* bytesPerLine) {
@@ -41,7 +45,11 @@ unsigned char* QAbstractPlanarVideoBuffer_Map(QAbstractPlanarVideoBuffer* self, 
 	return static_cast<unsigned char*>(_ret);
 }
 
-void QAbstractPlanarVideoBuffer_Delete(QAbstractPlanarVideoBuffer* self) {
-	delete self;
+void QAbstractPlanarVideoBuffer_Delete(QAbstractPlanarVideoBuffer* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAbstractPlanarVideoBuffer*>( self );
+	} else {
+		delete self;
+	}
 }
 

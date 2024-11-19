@@ -27,7 +27,7 @@ typedef struct QtPrivate__ExceptionStore QtPrivate__ExceptionStore;
 bool QtPrivate__ExceptionStore_HasException(const QtPrivate__ExceptionStore* self);
 void QtPrivate__ExceptionStore_ThrowPossibleException(QtPrivate__ExceptionStore* self);
 void QtPrivate__ExceptionStore_RethrowException(const QtPrivate__ExceptionStore* self);
-void QtPrivate__ExceptionStore_Delete(QtPrivate__ExceptionStore* self);
+void QtPrivate__ExceptionStore_Delete(QtPrivate__ExceptionStore* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

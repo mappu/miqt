@@ -53,7 +53,11 @@ bool QGraphicsLayout_InstantInvalidatePropagation() {
 	return QGraphicsLayout::instantInvalidatePropagation();
 }
 
-void QGraphicsLayout_Delete(QGraphicsLayout* self) {
-	delete self;
+void QGraphicsLayout_Delete(QGraphicsLayout* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QGraphicsLayout*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -5,8 +5,9 @@
 #include "gen_qcolormap.h"
 #include "_cgo_export.h"
 
-QColormap* QColormap_new(QColormap* colormap) {
-	return new QColormap(*colormap);
+void QColormap_new(QColormap* colormap, QColormap** outptr_QColormap) {
+	QColormap* ret = new QColormap(*colormap);
+	*outptr_QColormap = ret;
 }
 
 void QColormap_Initialize() {
@@ -64,7 +65,11 @@ QColormap* QColormap_Instance1(int screen) {
 	return new QColormap(QColormap::instance(static_cast<int>(screen)));
 }
 
-void QColormap_Delete(QColormap* self) {
-	delete self;
+void QColormap_Delete(QColormap* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QColormap*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -24,13 +24,13 @@ typedef struct QsciStyle QsciStyle;
 typedef struct QsciStyledText QsciStyledText;
 #endif
 
-QsciStyledText* QsciStyledText_new(struct miqt_string text, int style);
-QsciStyledText* QsciStyledText_new2(struct miqt_string text, QsciStyle* style);
-QsciStyledText* QsciStyledText_new3(QsciStyledText* param1);
+void QsciStyledText_new(struct miqt_string text, int style, QsciStyledText** outptr_QsciStyledText);
+void QsciStyledText_new2(struct miqt_string text, QsciStyle* style, QsciStyledText** outptr_QsciStyledText);
+void QsciStyledText_new3(QsciStyledText* param1, QsciStyledText** outptr_QsciStyledText);
 void QsciStyledText_Apply(const QsciStyledText* self, QsciScintillaBase* sci);
 struct miqt_string QsciStyledText_Text(const QsciStyledText* self);
 int QsciStyledText_Style(const QsciStyledText* self);
-void QsciStyledText_Delete(QsciStyledText* self);
+void QsciStyledText_Delete(QsciStyledText* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -16,20 +16,28 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAction;
+class QChildEvent;
+class QEvent;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
+class QTimerEvent;
 class QUndoGroup;
 class QUndoStack;
 #else
 typedef struct QAction QAction;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QUndoGroup QUndoGroup;
 typedef struct QUndoStack QUndoStack;
 #endif
 
-QUndoGroup* QUndoGroup_new();
-QUndoGroup* QUndoGroup_new2(QObject* parent);
+void QUndoGroup_new(QUndoGroup** outptr_QUndoGroup, QObject** outptr_QObject);
+void QUndoGroup_new2(QObject* parent, QUndoGroup** outptr_QUndoGroup, QObject** outptr_QObject);
 QMetaObject* QUndoGroup_MetaObject(const QUndoGroup* self);
 void* QUndoGroup_Metacast(QUndoGroup* self, const char* param1);
 struct miqt_string QUndoGroup_Tr(const char* s);
@@ -65,7 +73,21 @@ struct miqt_string QUndoGroup_Tr2(const char* s, const char* c);
 struct miqt_string QUndoGroup_Tr3(const char* s, const char* c, int n);
 QAction* QUndoGroup_CreateUndoAction2(const QUndoGroup* self, QObject* parent, struct miqt_string prefix);
 QAction* QUndoGroup_CreateRedoAction2(const QUndoGroup* self, QObject* parent, struct miqt_string prefix);
-void QUndoGroup_Delete(QUndoGroup* self);
+void QUndoGroup_override_virtual_Event(void* self, intptr_t slot);
+bool QUndoGroup_virtualbase_Event(void* self, QEvent* event);
+void QUndoGroup_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QUndoGroup_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QUndoGroup_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QUndoGroup_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QUndoGroup_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QUndoGroup_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QUndoGroup_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QUndoGroup_virtualbase_CustomEvent(void* self, QEvent* event);
+void QUndoGroup_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QUndoGroup_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QUndoGroup_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QUndoGroup_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QUndoGroup_Delete(QUndoGroup* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

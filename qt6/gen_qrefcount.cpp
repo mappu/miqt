@@ -27,7 +27,11 @@ void QtPrivate__RefCount_InitializeUnsharable(QtPrivate__RefCount* self) {
 	self->initializeUnsharable();
 }
 
-void QtPrivate__RefCount_Delete(QtPrivate__RefCount* self) {
-	delete self;
+void QtPrivate__RefCount_Delete(QtPrivate__RefCount* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtPrivate::RefCount*>( self );
+	} else {
+		delete self;
+	}
 }
 

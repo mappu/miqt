@@ -54,7 +54,8 @@ const (
 )
 
 type QNetworkAddressEntry struct {
-	h *C.QNetworkAddressEntry
+	h          *C.QNetworkAddressEntry
+	isSubclass bool
 }
 
 func (this *QNetworkAddressEntry) cPointer() *C.QNetworkAddressEntry {
@@ -71,6 +72,7 @@ func (this *QNetworkAddressEntry) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQNetworkAddressEntry constructs the type using only CGO pointers.
 func newQNetworkAddressEntry(h *C.QNetworkAddressEntry) *QNetworkAddressEntry {
 	if h == nil {
 		return nil
@@ -78,20 +80,33 @@ func newQNetworkAddressEntry(h *C.QNetworkAddressEntry) *QNetworkAddressEntry {
 	return &QNetworkAddressEntry{h: h}
 }
 
+// UnsafeNewQNetworkAddressEntry constructs the type using only unsafe pointers.
 func UnsafeNewQNetworkAddressEntry(h unsafe.Pointer) *QNetworkAddressEntry {
-	return newQNetworkAddressEntry((*C.QNetworkAddressEntry)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QNetworkAddressEntry{h: (*C.QNetworkAddressEntry)(h)}
 }
 
 // NewQNetworkAddressEntry constructs a new QNetworkAddressEntry object.
 func NewQNetworkAddressEntry() *QNetworkAddressEntry {
-	ret := C.QNetworkAddressEntry_new()
-	return newQNetworkAddressEntry(ret)
+	var outptr_QNetworkAddressEntry *C.QNetworkAddressEntry = nil
+
+	C.QNetworkAddressEntry_new(&outptr_QNetworkAddressEntry)
+	ret := newQNetworkAddressEntry(outptr_QNetworkAddressEntry)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQNetworkAddressEntry2 constructs a new QNetworkAddressEntry object.
 func NewQNetworkAddressEntry2(other *QNetworkAddressEntry) *QNetworkAddressEntry {
-	ret := C.QNetworkAddressEntry_new2(other.cPointer())
-	return newQNetworkAddressEntry(ret)
+	var outptr_QNetworkAddressEntry *C.QNetworkAddressEntry = nil
+
+	C.QNetworkAddressEntry_new2(other.cPointer(), &outptr_QNetworkAddressEntry)
+	ret := newQNetworkAddressEntry(outptr_QNetworkAddressEntry)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QNetworkAddressEntry) OperatorAssign(other *QNetworkAddressEntry) {
@@ -195,7 +210,7 @@ func (this *QNetworkAddressEntry) IsTemporary() bool {
 
 // Delete this object from C++ memory.
 func (this *QNetworkAddressEntry) Delete() {
-	C.QNetworkAddressEntry_Delete(this.h)
+	C.QNetworkAddressEntry_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -208,7 +223,8 @@ func (this *QNetworkAddressEntry) GoGC() {
 }
 
 type QNetworkInterface struct {
-	h *C.QNetworkInterface
+	h          *C.QNetworkInterface
+	isSubclass bool
 }
 
 func (this *QNetworkInterface) cPointer() *C.QNetworkInterface {
@@ -225,6 +241,7 @@ func (this *QNetworkInterface) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQNetworkInterface constructs the type using only CGO pointers.
 func newQNetworkInterface(h *C.QNetworkInterface) *QNetworkInterface {
 	if h == nil {
 		return nil
@@ -232,20 +249,33 @@ func newQNetworkInterface(h *C.QNetworkInterface) *QNetworkInterface {
 	return &QNetworkInterface{h: h}
 }
 
+// UnsafeNewQNetworkInterface constructs the type using only unsafe pointers.
 func UnsafeNewQNetworkInterface(h unsafe.Pointer) *QNetworkInterface {
-	return newQNetworkInterface((*C.QNetworkInterface)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QNetworkInterface{h: (*C.QNetworkInterface)(h)}
 }
 
 // NewQNetworkInterface constructs a new QNetworkInterface object.
 func NewQNetworkInterface() *QNetworkInterface {
-	ret := C.QNetworkInterface_new()
-	return newQNetworkInterface(ret)
+	var outptr_QNetworkInterface *C.QNetworkInterface = nil
+
+	C.QNetworkInterface_new(&outptr_QNetworkInterface)
+	ret := newQNetworkInterface(outptr_QNetworkInterface)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQNetworkInterface2 constructs a new QNetworkInterface object.
 func NewQNetworkInterface2(other *QNetworkInterface) *QNetworkInterface {
-	ret := C.QNetworkInterface_new2(other.cPointer())
-	return newQNetworkInterface(ret)
+	var outptr_QNetworkInterface *C.QNetworkInterface = nil
+
+	C.QNetworkInterface_new2(other.cPointer(), &outptr_QNetworkInterface)
+	ret := newQNetworkInterface(outptr_QNetworkInterface)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QNetworkInterface) OperatorAssign(other *QNetworkInterface) {
@@ -371,7 +401,7 @@ func QNetworkInterface_AllAddresses() []QHostAddress {
 
 // Delete this object from C++ memory.
 func (this *QNetworkInterface) Delete() {
-	C.QNetworkInterface_Delete(this.h)
+	C.QNetworkInterface_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

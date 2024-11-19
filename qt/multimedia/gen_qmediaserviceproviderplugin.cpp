@@ -10,6 +10,7 @@
 #include <QMediaServiceSupportedDevicesInterface>
 #include <QMediaServiceSupportedFormatsInterface>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -17,11 +18,12 @@
 #include "gen_qmediaserviceproviderplugin.h"
 #include "_cgo_export.h"
 
-QMediaServiceProviderHint* QMediaServiceProviderHint_new() {
-	return new QMediaServiceProviderHint();
+void QMediaServiceProviderHint_new(QMediaServiceProviderHint** outptr_QMediaServiceProviderHint) {
+	QMediaServiceProviderHint* ret = new QMediaServiceProviderHint();
+	*outptr_QMediaServiceProviderHint = ret;
 }
 
-QMediaServiceProviderHint* QMediaServiceProviderHint_new2(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs) {
+void QMediaServiceProviderHint_new2(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs, QMediaServiceProviderHint** outptr_QMediaServiceProviderHint) {
 	QString mimeType_QString = QString::fromUtf8(mimeType.data, mimeType.len);
 	QStringList codecs_QList;
 	codecs_QList.reserve(codecs.len);
@@ -30,24 +32,29 @@ QMediaServiceProviderHint* QMediaServiceProviderHint_new2(struct miqt_string mim
 		QString codecs_arr_i_QString = QString::fromUtf8(codecs_arr[i].data, codecs_arr[i].len);
 		codecs_QList.push_back(codecs_arr_i_QString);
 	}
-	return new QMediaServiceProviderHint(mimeType_QString, codecs_QList);
+	QMediaServiceProviderHint* ret = new QMediaServiceProviderHint(mimeType_QString, codecs_QList);
+	*outptr_QMediaServiceProviderHint = ret;
 }
 
-QMediaServiceProviderHint* QMediaServiceProviderHint_new3(struct miqt_string device) {
+void QMediaServiceProviderHint_new3(struct miqt_string device, QMediaServiceProviderHint** outptr_QMediaServiceProviderHint) {
 	QByteArray device_QByteArray(device.data, device.len);
-	return new QMediaServiceProviderHint(device_QByteArray);
+	QMediaServiceProviderHint* ret = new QMediaServiceProviderHint(device_QByteArray);
+	*outptr_QMediaServiceProviderHint = ret;
 }
 
-QMediaServiceProviderHint* QMediaServiceProviderHint_new4(int position) {
-	return new QMediaServiceProviderHint(static_cast<QCamera::Position>(position));
+void QMediaServiceProviderHint_new4(int position, QMediaServiceProviderHint** outptr_QMediaServiceProviderHint) {
+	QMediaServiceProviderHint* ret = new QMediaServiceProviderHint(static_cast<QCamera::Position>(position));
+	*outptr_QMediaServiceProviderHint = ret;
 }
 
-QMediaServiceProviderHint* QMediaServiceProviderHint_new5(int features) {
-	return new QMediaServiceProviderHint(static_cast<QMediaServiceProviderHint::Features>(features));
+void QMediaServiceProviderHint_new5(int features, QMediaServiceProviderHint** outptr_QMediaServiceProviderHint) {
+	QMediaServiceProviderHint* ret = new QMediaServiceProviderHint(static_cast<QMediaServiceProviderHint::Features>(features));
+	*outptr_QMediaServiceProviderHint = ret;
 }
 
-QMediaServiceProviderHint* QMediaServiceProviderHint_new6(QMediaServiceProviderHint* other) {
-	return new QMediaServiceProviderHint(*other);
+void QMediaServiceProviderHint_new6(QMediaServiceProviderHint* other, QMediaServiceProviderHint** outptr_QMediaServiceProviderHint) {
+	QMediaServiceProviderHint* ret = new QMediaServiceProviderHint(*other);
+	*outptr_QMediaServiceProviderHint = ret;
 }
 
 void QMediaServiceProviderHint_OperatorAssign(QMediaServiceProviderHint* self, QMediaServiceProviderHint* other) {
@@ -121,8 +128,12 @@ int QMediaServiceProviderHint_Features(const QMediaServiceProviderHint* self) {
 	return static_cast<int>(_ret);
 }
 
-void QMediaServiceProviderHint_Delete(QMediaServiceProviderHint* self) {
-	delete self;
+void QMediaServiceProviderHint_Delete(QMediaServiceProviderHint* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMediaServiceProviderHint*>( self );
+	} else {
+		delete self;
+	}
 }
 
 QMediaService* QMediaServiceProviderFactoryInterface_Create(QMediaServiceProviderFactoryInterface* self, struct miqt_string key) {
@@ -138,8 +149,12 @@ void QMediaServiceProviderFactoryInterface_OperatorAssign(QMediaServiceProviderF
 	self->operator=(*param1);
 }
 
-void QMediaServiceProviderFactoryInterface_Delete(QMediaServiceProviderFactoryInterface* self) {
-	delete self;
+void QMediaServiceProviderFactoryInterface_Delete(QMediaServiceProviderFactoryInterface* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMediaServiceProviderFactoryInterface*>( self );
+	} else {
+		delete self;
+	}
 }
 
 int QMediaServiceSupportedFormatsInterface_HasSupport(const QMediaServiceSupportedFormatsInterface* self, struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs) {
@@ -179,8 +194,12 @@ void QMediaServiceSupportedFormatsInterface_OperatorAssign(QMediaServiceSupporte
 	self->operator=(*param1);
 }
 
-void QMediaServiceSupportedFormatsInterface_Delete(QMediaServiceSupportedFormatsInterface* self) {
-	delete self;
+void QMediaServiceSupportedFormatsInterface_Delete(QMediaServiceSupportedFormatsInterface* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMediaServiceSupportedFormatsInterface*>( self );
+	} else {
+		delete self;
+	}
 }
 
 struct miqt_array /* of struct miqt_string */  QMediaServiceSupportedDevicesInterface_Devices(const QMediaServiceSupportedDevicesInterface* self, struct miqt_string service) {
@@ -219,8 +238,12 @@ void QMediaServiceSupportedDevicesInterface_OperatorAssign(QMediaServiceSupporte
 	self->operator=(*param1);
 }
 
-void QMediaServiceSupportedDevicesInterface_Delete(QMediaServiceSupportedDevicesInterface* self) {
-	delete self;
+void QMediaServiceSupportedDevicesInterface_Delete(QMediaServiceSupportedDevicesInterface* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMediaServiceSupportedDevicesInterface*>( self );
+	} else {
+		delete self;
+	}
 }
 
 struct miqt_string QMediaServiceDefaultDeviceInterface_DefaultDevice(const QMediaServiceDefaultDeviceInterface* self, struct miqt_string service) {
@@ -237,8 +260,12 @@ void QMediaServiceDefaultDeviceInterface_OperatorAssign(QMediaServiceDefaultDevi
 	self->operator=(*param1);
 }
 
-void QMediaServiceDefaultDeviceInterface_Delete(QMediaServiceDefaultDeviceInterface* self) {
-	delete self;
+void QMediaServiceDefaultDeviceInterface_Delete(QMediaServiceDefaultDeviceInterface* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMediaServiceDefaultDeviceInterface*>( self );
+	} else {
+		delete self;
+	}
 }
 
 int QMediaServiceCameraInfoInterface_CameraPosition(const QMediaServiceCameraInfoInterface* self, struct miqt_string device) {
@@ -256,8 +283,12 @@ void QMediaServiceCameraInfoInterface_OperatorAssign(QMediaServiceCameraInfoInte
 	self->operator=(*param1);
 }
 
-void QMediaServiceCameraInfoInterface_Delete(QMediaServiceCameraInfoInterface* self) {
-	delete self;
+void QMediaServiceCameraInfoInterface_Delete(QMediaServiceCameraInfoInterface* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMediaServiceCameraInfoInterface*>( self );
+	} else {
+		delete self;
+	}
 }
 
 int QMediaServiceFeaturesInterface_SupportedFeatures(const QMediaServiceFeaturesInterface* self, struct miqt_string service) {
@@ -270,8 +301,12 @@ void QMediaServiceFeaturesInterface_OperatorAssign(QMediaServiceFeaturesInterfac
 	self->operator=(*param1);
 }
 
-void QMediaServiceFeaturesInterface_Delete(QMediaServiceFeaturesInterface* self) {
-	delete self;
+void QMediaServiceFeaturesInterface_Delete(QMediaServiceFeaturesInterface* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMediaServiceFeaturesInterface*>( self );
+	} else {
+		delete self;
+	}
 }
 
 QMetaObject* QMediaServiceProviderPlugin_MetaObject(const QMediaServiceProviderPlugin* self) {
@@ -357,7 +392,11 @@ struct miqt_string QMediaServiceProviderPlugin_TrUtf83(const char* s, const char
 	return _ms;
 }
 
-void QMediaServiceProviderPlugin_Delete(QMediaServiceProviderPlugin* self) {
-	delete self;
+void QMediaServiceProviderPlugin_Delete(QMediaServiceProviderPlugin* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMediaServiceProviderPlugin*>( self );
+	} else {
+		delete self;
+	}
 }
 

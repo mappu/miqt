@@ -35,7 +35,7 @@ struct miqt_string QAccessiblePlugin_Tr2(const char* s, const char* c);
 struct miqt_string QAccessiblePlugin_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAccessiblePlugin_TrUtf82(const char* s, const char* c);
 struct miqt_string QAccessiblePlugin_TrUtf83(const char* s, const char* c, int n);
-void QAccessiblePlugin_Delete(QAccessiblePlugin* self);
+void QAccessiblePlugin_Delete(QAccessiblePlugin* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

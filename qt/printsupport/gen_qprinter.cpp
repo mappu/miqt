@@ -1,5 +1,7 @@
 #include <QList>
+#include <QPagedPaintDevice>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QPagedPaintDevice__Margins
+#include <QPaintDevice>
 #include <QPaintEngine>
 #include <QPrintEngine>
 #include <QPrinter>
@@ -14,20 +16,211 @@
 #include "gen_qprinter.h"
 #include "_cgo_export.h"
 
-QPrinter* QPrinter_new() {
-	return new QPrinter();
+class MiqtVirtualQPrinter : public virtual QPrinter {
+public:
+
+	MiqtVirtualQPrinter(): QPrinter() {};
+	MiqtVirtualQPrinter(const QPrinterInfo& printer): QPrinter(printer) {};
+	MiqtVirtualQPrinter(QPrinter::PrinterMode mode): QPrinter(mode) {};
+	MiqtVirtualQPrinter(const QPrinterInfo& printer, QPrinter::PrinterMode mode): QPrinter(printer, mode) {};
+
+	virtual ~MiqtVirtualQPrinter() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DevType = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int devType() const override {
+		if (handle__DevType == 0) {
+			return QPrinter::devType();
+		}
+		
+
+		int callback_return_value = miqt_exec_callback_QPrinter_DevType(const_cast<MiqtVirtualQPrinter*>(this), handle__DevType);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_DevType() const {
+
+		return QPrinter::devType();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetPageSize = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setPageSize(QPagedPaintDevice::PageSize pageSize) override {
+		if (handle__SetPageSize == 0) {
+			QPrinter::setPageSize(pageSize);
+			return;
+		}
+		
+		QPagedPaintDevice::PageSize pageSize_ret = pageSize;
+		int sigval1 = static_cast<int>(pageSize_ret);
+
+		miqt_exec_callback_QPrinter_SetPageSize(this, handle__SetPageSize, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetPageSize(int pageSize) {
+
+		QPrinter::setPageSize(static_cast<QPagedPaintDevice::PageSize>(pageSize));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetPageSizeMM = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setPageSizeMM(const QSizeF& size) override {
+		if (handle__SetPageSizeMM == 0) {
+			QPrinter::setPageSizeMM(size);
+			return;
+		}
+		
+		const QSizeF& size_ret = size;
+		// Cast returned reference into pointer
+		QSizeF* sigval1 = const_cast<QSizeF*>(&size_ret);
+
+		miqt_exec_callback_QPrinter_SetPageSizeMM(this, handle__SetPageSizeMM, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetPageSizeMM(QSizeF* size) {
+
+		QPrinter::setPageSizeMM(*size);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__NewPage = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool newPage() override {
+		if (handle__NewPage == 0) {
+			return QPrinter::newPage();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QPrinter_NewPage(this, handle__NewPage);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_NewPage() {
+
+		return QPrinter::newPage();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__PaintEngine = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPaintEngine* paintEngine() const override {
+		if (handle__PaintEngine == 0) {
+			return QPrinter::paintEngine();
+		}
+		
+
+		QPaintEngine* callback_return_value = miqt_exec_callback_QPrinter_PaintEngine(const_cast<MiqtVirtualQPrinter*>(this), handle__PaintEngine);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPaintEngine* virtualbase_PaintEngine() const {
+
+		return QPrinter::paintEngine();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetMargins = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setMargins(const QPagedPaintDevice::Margins& m) override {
+		if (handle__SetMargins == 0) {
+			QPrinter::setMargins(m);
+			return;
+		}
+		
+		const QPagedPaintDevice::Margins& m_ret = m;
+		// Cast returned reference into pointer
+		QPagedPaintDevice__Margins* sigval1 = const_cast<QPagedPaintDevice::Margins*>(&m_ret);
+
+		miqt_exec_callback_QPrinter_SetMargins(this, handle__SetMargins, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetMargins(QPagedPaintDevice__Margins* m) {
+
+		QPrinter::setMargins(*m);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Metric = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int metric(QPaintDevice::PaintDeviceMetric param1) const override {
+		if (handle__Metric == 0) {
+			return QPrinter::metric(param1);
+		}
+		
+		QPaintDevice::PaintDeviceMetric param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+
+		int callback_return_value = miqt_exec_callback_QPrinter_Metric(const_cast<MiqtVirtualQPrinter*>(this), handle__Metric, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_Metric(int param1) const {
+
+		return QPrinter::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
+
+	}
+
+};
+
+void QPrinter_new(QPrinter** outptr_QPrinter, QPagedPaintDevice** outptr_QPagedPaintDevice, QPaintDevice** outptr_QPaintDevice) {
+	MiqtVirtualQPrinter* ret = new MiqtVirtualQPrinter();
+	*outptr_QPrinter = ret;
+	*outptr_QPagedPaintDevice = static_cast<QPagedPaintDevice*>(ret);
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
-QPrinter* QPrinter_new2(QPrinterInfo* printer) {
-	return new QPrinter(*printer);
+void QPrinter_new2(QPrinterInfo* printer, QPrinter** outptr_QPrinter, QPagedPaintDevice** outptr_QPagedPaintDevice, QPaintDevice** outptr_QPaintDevice) {
+	MiqtVirtualQPrinter* ret = new MiqtVirtualQPrinter(*printer);
+	*outptr_QPrinter = ret;
+	*outptr_QPagedPaintDevice = static_cast<QPagedPaintDevice*>(ret);
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
-QPrinter* QPrinter_new3(int mode) {
-	return new QPrinter(static_cast<QPrinter::PrinterMode>(mode));
+void QPrinter_new3(int mode, QPrinter** outptr_QPrinter, QPagedPaintDevice** outptr_QPagedPaintDevice, QPaintDevice** outptr_QPaintDevice) {
+	MiqtVirtualQPrinter* ret = new MiqtVirtualQPrinter(static_cast<QPrinter::PrinterMode>(mode));
+	*outptr_QPrinter = ret;
+	*outptr_QPagedPaintDevice = static_cast<QPagedPaintDevice*>(ret);
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
-QPrinter* QPrinter_new4(QPrinterInfo* printer, int mode) {
-	return new QPrinter(*printer, static_cast<QPrinter::PrinterMode>(mode));
+void QPrinter_new4(QPrinterInfo* printer, int mode, QPrinter** outptr_QPrinter, QPagedPaintDevice** outptr_QPagedPaintDevice, QPaintDevice** outptr_QPaintDevice) {
+	MiqtVirtualQPrinter* ret = new MiqtVirtualQPrinter(*printer, static_cast<QPrinter::PrinterMode>(mode));
+	*outptr_QPrinter = ret;
+	*outptr_QPagedPaintDevice = static_cast<QPagedPaintDevice*>(ret);
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
 int QPrinter_DevType(const QPrinter* self) {
@@ -398,7 +591,67 @@ void QPrinter_GetPageMargins(const QPrinter* self, double* left, double* top, do
 	self->getPageMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom), static_cast<QPrinter::Unit>(unit));
 }
 
-void QPrinter_Delete(QPrinter* self) {
-	delete self;
+void QPrinter_override_virtual_DevType(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQPrinter*>( (QPrinter*)(self) )->handle__DevType = slot;
+}
+
+int QPrinter_virtualbase_DevType(const void* self) {
+	return ( (const MiqtVirtualQPrinter*)(self) )->virtualbase_DevType();
+}
+
+void QPrinter_override_virtual_SetPageSize(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQPrinter*>( (QPrinter*)(self) )->handle__SetPageSize = slot;
+}
+
+void QPrinter_virtualbase_SetPageSize(void* self, int pageSize) {
+	( (MiqtVirtualQPrinter*)(self) )->virtualbase_SetPageSize(pageSize);
+}
+
+void QPrinter_override_virtual_SetPageSizeMM(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQPrinter*>( (QPrinter*)(self) )->handle__SetPageSizeMM = slot;
+}
+
+void QPrinter_virtualbase_SetPageSizeMM(void* self, QSizeF* size) {
+	( (MiqtVirtualQPrinter*)(self) )->virtualbase_SetPageSizeMM(size);
+}
+
+void QPrinter_override_virtual_NewPage(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQPrinter*>( (QPrinter*)(self) )->handle__NewPage = slot;
+}
+
+bool QPrinter_virtualbase_NewPage(void* self) {
+	return ( (MiqtVirtualQPrinter*)(self) )->virtualbase_NewPage();
+}
+
+void QPrinter_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQPrinter*>( (QPrinter*)(self) )->handle__PaintEngine = slot;
+}
+
+QPaintEngine* QPrinter_virtualbase_PaintEngine(const void* self) {
+	return ( (const MiqtVirtualQPrinter*)(self) )->virtualbase_PaintEngine();
+}
+
+void QPrinter_override_virtual_SetMargins(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQPrinter*>( (QPrinter*)(self) )->handle__SetMargins = slot;
+}
+
+void QPrinter_virtualbase_SetMargins(void* self, QPagedPaintDevice__Margins* m) {
+	( (MiqtVirtualQPrinter*)(self) )->virtualbase_SetMargins(m);
+}
+
+void QPrinter_override_virtual_Metric(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQPrinter*>( (QPrinter*)(self) )->handle__Metric = slot;
+}
+
+int QPrinter_virtualbase_Metric(const void* self, int param1) {
+	return ( (const MiqtVirtualQPrinter*)(self) )->virtualbase_Metric(param1);
+}
+
+void QPrinter_Delete(QPrinter* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQPrinter*>( self );
+	} else {
+		delete self;
+	}
 }
 

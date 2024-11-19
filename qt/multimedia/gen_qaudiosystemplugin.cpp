@@ -6,6 +6,7 @@
 #include <QByteArray>
 #include <QList>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -50,8 +51,12 @@ void QAudioSystemFactoryInterface_OperatorAssign(QAudioSystemFactoryInterface* s
 	self->operator=(*param1);
 }
 
-void QAudioSystemFactoryInterface_Delete(QAudioSystemFactoryInterface* self) {
-	delete self;
+void QAudioSystemFactoryInterface_Delete(QAudioSystemFactoryInterface* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAudioSystemFactoryInterface*>( self );
+	} else {
+		delete self;
+	}
 }
 
 QMetaObject* QAudioSystemPlugin_MetaObject(const QAudioSystemPlugin* self) {
@@ -161,7 +166,11 @@ struct miqt_string QAudioSystemPlugin_TrUtf83(const char* s, const char* c, int 
 	return _ms;
 }
 
-void QAudioSystemPlugin_Delete(QAudioSystemPlugin* self) {
-	delete self;
+void QAudioSystemPlugin_Delete(QAudioSystemPlugin* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAudioSystemPlugin*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -1187,7 +1187,8 @@ const (
 )
 
 type QsciScintillaBase struct {
-	h *C.QsciScintillaBase
+	h          *C.QsciScintillaBase
+	isSubclass bool
 	*qt6.QAbstractScrollArea
 }
 
@@ -1205,27 +1206,53 @@ func (this *QsciScintillaBase) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQsciScintillaBase(h *C.QsciScintillaBase) *QsciScintillaBase {
+// newQsciScintillaBase constructs the type using only CGO pointers.
+func newQsciScintillaBase(h *C.QsciScintillaBase, h_QAbstractScrollArea *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QsciScintillaBase {
 	if h == nil {
 		return nil
 	}
-	return &QsciScintillaBase{h: h, QAbstractScrollArea: qt6.UnsafeNewQAbstractScrollArea(unsafe.Pointer(h))}
+	return &QsciScintillaBase{h: h,
+		QAbstractScrollArea: qt6.UnsafeNewQAbstractScrollArea(unsafe.Pointer(h_QAbstractScrollArea), unsafe.Pointer(h_QFrame), unsafe.Pointer(h_QWidget), unsafe.Pointer(h_QObject), unsafe.Pointer(h_QPaintDevice))}
 }
 
-func UnsafeNewQsciScintillaBase(h unsafe.Pointer) *QsciScintillaBase {
-	return newQsciScintillaBase((*C.QsciScintillaBase)(h))
+// UnsafeNewQsciScintillaBase constructs the type using only unsafe pointers.
+func UnsafeNewQsciScintillaBase(h unsafe.Pointer, h_QAbstractScrollArea unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QsciScintillaBase {
+	if h == nil {
+		return nil
+	}
+
+	return &QsciScintillaBase{h: (*C.QsciScintillaBase)(h),
+		QAbstractScrollArea: qt6.UnsafeNewQAbstractScrollArea(h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
 // NewQsciScintillaBase constructs a new QsciScintillaBase object.
 func NewQsciScintillaBase(parent *qt6.QWidget) *QsciScintillaBase {
-	ret := C.QsciScintillaBase_new((*C.QWidget)(parent.UnsafePointer()))
-	return newQsciScintillaBase(ret)
+	var outptr_QsciScintillaBase *C.QsciScintillaBase = nil
+	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QsciScintillaBase_new((*C.QWidget)(parent.UnsafePointer()), &outptr_QsciScintillaBase, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQsciScintillaBase(outptr_QsciScintillaBase, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQsciScintillaBase2 constructs a new QsciScintillaBase object.
 func NewQsciScintillaBase2() *QsciScintillaBase {
-	ret := C.QsciScintillaBase_new2()
-	return newQsciScintillaBase(ret)
+	var outptr_QsciScintillaBase *C.QsciScintillaBase = nil
+	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QsciScintillaBase_new2(&outptr_QsciScintillaBase, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQsciScintillaBase(outptr_QsciScintillaBase, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QsciScintillaBase) MetaObject() *qt6.QMetaObject {
@@ -1248,7 +1275,7 @@ func QsciScintillaBase_Tr(s string) string {
 }
 
 func QsciScintillaBase_Pool() *QsciScintillaBase {
-	return UnsafeNewQsciScintillaBase(unsafe.Pointer(C.QsciScintillaBase_Pool()))
+	return UnsafeNewQsciScintillaBase(unsafe.Pointer(C.QsciScintillaBase_Pool()), nil, nil, nil, nil, nil)
 }
 
 func (this *QsciScintillaBase) ReplaceHorizontalScrollBar(scrollBar *qt6.QScrollBar) {
@@ -2161,9 +2188,739 @@ func (this *QsciScintillaBase) SendScintilla32(msg uint, wParam uint64, lParam i
 	return (int64)(C.QsciScintillaBase_SendScintilla32(this.h, (C.uint)(msg), (C.ulong)(wParam), (C.long)(lParam)))
 }
 
+func (this *QsciScintillaBase) callVirtualBase_CanInsertFromMimeData(source *qt6.QMimeData) bool {
+
+	return (bool)(C.QsciScintillaBase_virtualbase_CanInsertFromMimeData(unsafe.Pointer(this.h), (*C.QMimeData)(source.UnsafePointer())))
+
+}
+func (this *QsciScintillaBase) OnCanInsertFromMimeData(slot func(super func(source *qt6.QMimeData) bool, source *qt6.QMimeData) bool) {
+	C.QsciScintillaBase_override_virtual_CanInsertFromMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_CanInsertFromMimeData
+func miqt_exec_callback_QsciScintillaBase_CanInsertFromMimeData(self *C.QsciScintillaBase, cb C.intptr_t, source *C.QMimeData) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(source *qt6.QMimeData) bool, source *qt6.QMimeData) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQMimeData(unsafe.Pointer(source), nil)
+
+	virtualReturn := gofunc((&QsciScintillaBase{h: self}).callVirtualBase_CanInsertFromMimeData, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_FromMimeData(source *qt6.QMimeData, rectangular *bool) []byte {
+
+	var _bytearray C.struct_miqt_string = C.QsciScintillaBase_virtualbase_FromMimeData(unsafe.Pointer(this.h), (*C.QMimeData)(source.UnsafePointer()), (*C.bool)(unsafe.Pointer(rectangular)))
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
+}
+func (this *QsciScintillaBase) OnFromMimeData(slot func(super func(source *qt6.QMimeData, rectangular *bool) []byte, source *qt6.QMimeData, rectangular *bool) []byte) {
+	C.QsciScintillaBase_override_virtual_FromMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_FromMimeData
+func miqt_exec_callback_QsciScintillaBase_FromMimeData(self *C.QsciScintillaBase, cb C.intptr_t, source *C.QMimeData, rectangular *C.bool) C.struct_miqt_string {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(source *qt6.QMimeData, rectangular *bool) []byte, source *qt6.QMimeData, rectangular *bool) []byte)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQMimeData(unsafe.Pointer(source), nil)
+	slotval2 := (*bool)(unsafe.Pointer(rectangular))
+
+	virtualReturn := gofunc((&QsciScintillaBase{h: self}).callVirtualBase_FromMimeData, slotval1, slotval2)
+	virtualReturn_alias := C.struct_miqt_string{}
+	virtualReturn_alias.data = (*C.char)(unsafe.Pointer(&virtualReturn[0]))
+	virtualReturn_alias.len = C.size_t(len(virtualReturn))
+
+	return virtualReturn_alias
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_ToMimeData(text []byte, rectangular bool) *qt6.QMimeData {
+	text_alias := C.struct_miqt_string{}
+	text_alias.data = (*C.char)(unsafe.Pointer(&text[0]))
+	text_alias.len = C.size_t(len(text))
+
+	return qt6.UnsafeNewQMimeData(unsafe.Pointer(C.QsciScintillaBase_virtualbase_ToMimeData(unsafe.Pointer(this.h), text_alias, (C.bool)(rectangular))), nil)
+}
+func (this *QsciScintillaBase) OnToMimeData(slot func(super func(text []byte, rectangular bool) *qt6.QMimeData, text []byte, rectangular bool) *qt6.QMimeData) {
+	C.QsciScintillaBase_override_virtual_ToMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_ToMimeData
+func miqt_exec_callback_QsciScintillaBase_ToMimeData(self *C.QsciScintillaBase, cb C.intptr_t, text C.struct_miqt_string, rectangular C.bool) *C.QMimeData {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(text []byte, rectangular bool) *qt6.QMimeData, text []byte, rectangular bool) *qt6.QMimeData)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	var text_bytearray C.struct_miqt_string = text
+	text_ret := C.GoBytes(unsafe.Pointer(text_bytearray.data), C.int(int64(text_bytearray.len)))
+	C.free(unsafe.Pointer(text_bytearray.data))
+	slotval1 := text_ret
+	slotval2 := (bool)(rectangular)
+
+	virtualReturn := gofunc((&QsciScintillaBase{h: self}).callVirtualBase_ToMimeData, slotval1, slotval2)
+
+	return (*C.QMimeData)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_ChangeEvent(e *qt6.QEvent) {
+
+	C.QsciScintillaBase_virtualbase_ChangeEvent(unsafe.Pointer(this.h), (*C.QEvent)(e.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnChangeEvent(slot func(super func(e *qt6.QEvent), e *qt6.QEvent)) {
+	C.QsciScintillaBase_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_ChangeEvent
+func miqt_exec_callback_QsciScintillaBase_ChangeEvent(self *C.QsciScintillaBase, cb C.intptr_t, e *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt6.QEvent), e *qt6.QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQEvent(unsafe.Pointer(e))
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_ChangeEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_ContextMenuEvent(e *qt6.QContextMenuEvent) {
+
+	C.QsciScintillaBase_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(e.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnContextMenuEvent(slot func(super func(e *qt6.QContextMenuEvent), e *qt6.QContextMenuEvent)) {
+	C.QsciScintillaBase_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_ContextMenuEvent
+func miqt_exec_callback_QsciScintillaBase_ContextMenuEvent(self *C.QsciScintillaBase, cb C.intptr_t, e *C.QContextMenuEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt6.QContextMenuEvent), e *qt6.QContextMenuEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQContextMenuEvent(unsafe.Pointer(e), nil, nil)
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_DragEnterEvent(e *qt6.QDragEnterEvent) {
+
+	C.QsciScintillaBase_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(e.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnDragEnterEvent(slot func(super func(e *qt6.QDragEnterEvent), e *qt6.QDragEnterEvent)) {
+	C.QsciScintillaBase_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_DragEnterEvent
+func miqt_exec_callback_QsciScintillaBase_DragEnterEvent(self *C.QsciScintillaBase, cb C.intptr_t, e *C.QDragEnterEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt6.QDragEnterEvent), e *qt6.QDragEnterEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQDragEnterEvent(unsafe.Pointer(e), nil, nil, nil)
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_DragEnterEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_DragLeaveEvent(e *qt6.QDragLeaveEvent) {
+
+	C.QsciScintillaBase_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(e.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnDragLeaveEvent(slot func(super func(e *qt6.QDragLeaveEvent), e *qt6.QDragLeaveEvent)) {
+	C.QsciScintillaBase_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_DragLeaveEvent
+func miqt_exec_callback_QsciScintillaBase_DragLeaveEvent(self *C.QsciScintillaBase, cb C.intptr_t, e *C.QDragLeaveEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt6.QDragLeaveEvent), e *qt6.QDragLeaveEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQDragLeaveEvent(unsafe.Pointer(e), nil)
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_DragMoveEvent(e *qt6.QDragMoveEvent) {
+
+	C.QsciScintillaBase_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(e.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnDragMoveEvent(slot func(super func(e *qt6.QDragMoveEvent), e *qt6.QDragMoveEvent)) {
+	C.QsciScintillaBase_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_DragMoveEvent
+func miqt_exec_callback_QsciScintillaBase_DragMoveEvent(self *C.QsciScintillaBase, cb C.intptr_t, e *C.QDragMoveEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt6.QDragMoveEvent), e *qt6.QDragMoveEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQDragMoveEvent(unsafe.Pointer(e), nil, nil)
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_DragMoveEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_DropEvent(e *qt6.QDropEvent) {
+
+	C.QsciScintillaBase_virtualbase_DropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(e.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnDropEvent(slot func(super func(e *qt6.QDropEvent), e *qt6.QDropEvent)) {
+	C.QsciScintillaBase_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_DropEvent
+func miqt_exec_callback_QsciScintillaBase_DropEvent(self *C.QsciScintillaBase, cb C.intptr_t, e *C.QDropEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt6.QDropEvent), e *qt6.QDropEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQDropEvent(unsafe.Pointer(e), nil)
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_DropEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_FocusInEvent(e *qt6.QFocusEvent) {
+
+	C.QsciScintillaBase_virtualbase_FocusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(e.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnFocusInEvent(slot func(super func(e *qt6.QFocusEvent), e *qt6.QFocusEvent)) {
+	C.QsciScintillaBase_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_FocusInEvent
+func miqt_exec_callback_QsciScintillaBase_FocusInEvent(self *C.QsciScintillaBase, cb C.intptr_t, e *C.QFocusEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt6.QFocusEvent), e *qt6.QFocusEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQFocusEvent(unsafe.Pointer(e), nil)
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_FocusInEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_FocusOutEvent(e *qt6.QFocusEvent) {
+
+	C.QsciScintillaBase_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(e.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnFocusOutEvent(slot func(super func(e *qt6.QFocusEvent), e *qt6.QFocusEvent)) {
+	C.QsciScintillaBase_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_FocusOutEvent
+func miqt_exec_callback_QsciScintillaBase_FocusOutEvent(self *C.QsciScintillaBase, cb C.intptr_t, e *C.QFocusEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt6.QFocusEvent), e *qt6.QFocusEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQFocusEvent(unsafe.Pointer(e), nil)
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_FocusOutEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_FocusNextPrevChild(next bool) bool {
+
+	return (bool)(C.QsciScintillaBase_virtualbase_FocusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
+
+}
+func (this *QsciScintillaBase) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	C.QsciScintillaBase_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_FocusNextPrevChild
+func miqt_exec_callback_QsciScintillaBase_FocusNextPrevChild(self *C.QsciScintillaBase, cb C.intptr_t, next C.bool) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(next bool) bool, next bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(next)
+
+	virtualReturn := gofunc((&QsciScintillaBase{h: self}).callVirtualBase_FocusNextPrevChild, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_KeyPressEvent(e *qt6.QKeyEvent) {
+
+	C.QsciScintillaBase_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(e.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnKeyPressEvent(slot func(super func(e *qt6.QKeyEvent), e *qt6.QKeyEvent)) {
+	C.QsciScintillaBase_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_KeyPressEvent
+func miqt_exec_callback_QsciScintillaBase_KeyPressEvent(self *C.QsciScintillaBase, cb C.intptr_t, e *C.QKeyEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt6.QKeyEvent), e *qt6.QKeyEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQKeyEvent(unsafe.Pointer(e), nil, nil)
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_KeyPressEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_InputMethodEvent(event *qt6.QInputMethodEvent) {
+
+	C.QsciScintillaBase_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(event.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnInputMethodEvent(slot func(super func(event *qt6.QInputMethodEvent), event *qt6.QInputMethodEvent)) {
+	C.QsciScintillaBase_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_InputMethodEvent
+func miqt_exec_callback_QsciScintillaBase_InputMethodEvent(self *C.QsciScintillaBase, cb C.intptr_t, event *C.QInputMethodEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QInputMethodEvent), event *qt6.QInputMethodEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQInputMethodEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_InputMethodEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_InputMethodQuery(query qt6.InputMethodQuery) *qt6.QVariant {
+
+	_ret := C.QsciScintillaBase_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QsciScintillaBase) OnInputMethodQuery(slot func(super func(query qt6.InputMethodQuery) *qt6.QVariant, query qt6.InputMethodQuery) *qt6.QVariant) {
+	C.QsciScintillaBase_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_InputMethodQuery
+func miqt_exec_callback_QsciScintillaBase_InputMethodQuery(self *C.QsciScintillaBase, cb C.intptr_t, query C.int) *C.QVariant {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(query qt6.InputMethodQuery) *qt6.QVariant, query qt6.InputMethodQuery) *qt6.QVariant)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (qt6.InputMethodQuery)(query)
+
+	virtualReturn := gofunc((&QsciScintillaBase{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+
+	return (*C.QVariant)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_MouseDoubleClickEvent(e *qt6.QMouseEvent) {
+
+	C.QsciScintillaBase_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(e.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnMouseDoubleClickEvent(slot func(super func(e *qt6.QMouseEvent), e *qt6.QMouseEvent)) {
+	C.QsciScintillaBase_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_MouseDoubleClickEvent
+func miqt_exec_callback_QsciScintillaBase_MouseDoubleClickEvent(self *C.QsciScintillaBase, cb C.intptr_t, e *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt6.QMouseEvent), e *qt6.QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil, nil, nil)
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_MouseMoveEvent(e *qt6.QMouseEvent) {
+
+	C.QsciScintillaBase_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(e.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnMouseMoveEvent(slot func(super func(e *qt6.QMouseEvent), e *qt6.QMouseEvent)) {
+	C.QsciScintillaBase_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_MouseMoveEvent
+func miqt_exec_callback_QsciScintillaBase_MouseMoveEvent(self *C.QsciScintillaBase, cb C.intptr_t, e *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt6.QMouseEvent), e *qt6.QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil, nil, nil)
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_MousePressEvent(e *qt6.QMouseEvent) {
+
+	C.QsciScintillaBase_virtualbase_MousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(e.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnMousePressEvent(slot func(super func(e *qt6.QMouseEvent), e *qt6.QMouseEvent)) {
+	C.QsciScintillaBase_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_MousePressEvent
+func miqt_exec_callback_QsciScintillaBase_MousePressEvent(self *C.QsciScintillaBase, cb C.intptr_t, e *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt6.QMouseEvent), e *qt6.QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil, nil, nil)
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_MousePressEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_MouseReleaseEvent(e *qt6.QMouseEvent) {
+
+	C.QsciScintillaBase_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(e.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnMouseReleaseEvent(slot func(super func(e *qt6.QMouseEvent), e *qt6.QMouseEvent)) {
+	C.QsciScintillaBase_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_MouseReleaseEvent
+func miqt_exec_callback_QsciScintillaBase_MouseReleaseEvent(self *C.QsciScintillaBase, cb C.intptr_t, e *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt6.QMouseEvent), e *qt6.QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil, nil, nil)
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_PaintEvent(e *qt6.QPaintEvent) {
+
+	C.QsciScintillaBase_virtualbase_PaintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(e.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnPaintEvent(slot func(super func(e *qt6.QPaintEvent), e *qt6.QPaintEvent)) {
+	C.QsciScintillaBase_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_PaintEvent
+func miqt_exec_callback_QsciScintillaBase_PaintEvent(self *C.QsciScintillaBase, cb C.intptr_t, e *C.QPaintEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt6.QPaintEvent), e *qt6.QPaintEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQPaintEvent(unsafe.Pointer(e), nil)
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_PaintEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_ResizeEvent(e *qt6.QResizeEvent) {
+
+	C.QsciScintillaBase_virtualbase_ResizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(e.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnResizeEvent(slot func(super func(e *qt6.QResizeEvent), e *qt6.QResizeEvent)) {
+	C.QsciScintillaBase_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_ResizeEvent
+func miqt_exec_callback_QsciScintillaBase_ResizeEvent(self *C.QsciScintillaBase, cb C.intptr_t, e *C.QResizeEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt6.QResizeEvent), e *qt6.QResizeEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQResizeEvent(unsafe.Pointer(e), nil)
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_ResizeEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_ScrollContentsBy(dx int, dy int) {
+
+	C.QsciScintillaBase_virtualbase_ScrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
+
+}
+func (this *QsciScintillaBase) OnScrollContentsBy(slot func(super func(dx int, dy int), dx int, dy int)) {
+	C.QsciScintillaBase_override_virtual_ScrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_ScrollContentsBy
+func miqt_exec_callback_QsciScintillaBase_ScrollContentsBy(self *C.QsciScintillaBase, cb C.intptr_t, dx C.int, dy C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(dx int, dy int), dx int, dy int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(dx)
+
+	slotval2 := (int)(dy)
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_ScrollContentsBy, slotval1, slotval2)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_MinimumSizeHint() *qt6.QSize {
+
+	_ret := C.QsciScintillaBase_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
+	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QsciScintillaBase) OnMinimumSizeHint(slot func(super func() *qt6.QSize) *qt6.QSize) {
+	C.QsciScintillaBase_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_MinimumSizeHint
+func miqt_exec_callback_QsciScintillaBase_MinimumSizeHint(self *C.QsciScintillaBase, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt6.QSize) *qt6.QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QsciScintillaBase{h: self}).callVirtualBase_MinimumSizeHint)
+
+	return (*C.QSize)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_SizeHint() *qt6.QSize {
+
+	_ret := C.QsciScintillaBase_virtualbase_SizeHint(unsafe.Pointer(this.h))
+	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QsciScintillaBase) OnSizeHint(slot func(super func() *qt6.QSize) *qt6.QSize) {
+	C.QsciScintillaBase_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_SizeHint
+func miqt_exec_callback_QsciScintillaBase_SizeHint(self *C.QsciScintillaBase, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt6.QSize) *qt6.QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QsciScintillaBase{h: self}).callVirtualBase_SizeHint)
+
+	return (*C.QSize)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_SetupViewport(viewport *qt6.QWidget) {
+
+	C.QsciScintillaBase_virtualbase_SetupViewport(unsafe.Pointer(this.h), (*C.QWidget)(viewport.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnSetupViewport(slot func(super func(viewport *qt6.QWidget), viewport *qt6.QWidget)) {
+	C.QsciScintillaBase_override_virtual_SetupViewport(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_SetupViewport
+func miqt_exec_callback_QsciScintillaBase_SetupViewport(self *C.QsciScintillaBase, cb C.intptr_t, viewport *C.QWidget) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(viewport *qt6.QWidget), viewport *qt6.QWidget))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQWidget(unsafe.Pointer(viewport), nil, nil)
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_SetupViewport, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_EventFilter(param1 *qt6.QObject, param2 *qt6.QEvent) bool {
+
+	return (bool)(C.QsciScintillaBase_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
+
+}
+func (this *QsciScintillaBase) OnEventFilter(slot func(super func(param1 *qt6.QObject, param2 *qt6.QEvent) bool, param1 *qt6.QObject, param2 *qt6.QEvent) bool) {
+	C.QsciScintillaBase_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_EventFilter
+func miqt_exec_callback_QsciScintillaBase_EventFilter(self *C.QsciScintillaBase, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt6.QObject, param2 *qt6.QEvent) bool, param1 *qt6.QObject, param2 *qt6.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(param1))
+	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(param2))
+
+	virtualReturn := gofunc((&QsciScintillaBase{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_Event(param1 *qt6.QEvent) bool {
+
+	return (bool)(C.QsciScintillaBase_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer())))
+
+}
+func (this *QsciScintillaBase) OnEvent(slot func(super func(param1 *qt6.QEvent) bool, param1 *qt6.QEvent) bool) {
+	C.QsciScintillaBase_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_Event
+func miqt_exec_callback_QsciScintillaBase_Event(self *C.QsciScintillaBase, cb C.intptr_t, param1 *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt6.QEvent) bool, param1 *qt6.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQEvent(unsafe.Pointer(param1))
+
+	virtualReturn := gofunc((&QsciScintillaBase{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_ViewportEvent(param1 *qt6.QEvent) bool {
+
+	return (bool)(C.QsciScintillaBase_virtualbase_ViewportEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer())))
+
+}
+func (this *QsciScintillaBase) OnViewportEvent(slot func(super func(param1 *qt6.QEvent) bool, param1 *qt6.QEvent) bool) {
+	C.QsciScintillaBase_override_virtual_ViewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_ViewportEvent
+func miqt_exec_callback_QsciScintillaBase_ViewportEvent(self *C.QsciScintillaBase, cb C.intptr_t, param1 *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt6.QEvent) bool, param1 *qt6.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQEvent(unsafe.Pointer(param1))
+
+	virtualReturn := gofunc((&QsciScintillaBase{h: self}).callVirtualBase_ViewportEvent, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_WheelEvent(param1 *qt6.QWheelEvent) {
+
+	C.QsciScintillaBase_virtualbase_WheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(param1.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnWheelEvent(slot func(super func(param1 *qt6.QWheelEvent), param1 *qt6.QWheelEvent)) {
+	C.QsciScintillaBase_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_WheelEvent
+func miqt_exec_callback_QsciScintillaBase_WheelEvent(self *C.QsciScintillaBase, cb C.intptr_t, param1 *C.QWheelEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt6.QWheelEvent), param1 *qt6.QWheelEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQWheelEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_WheelEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_ViewportSizeHint() *qt6.QSize {
+
+	_ret := C.QsciScintillaBase_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h))
+	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QsciScintillaBase) OnViewportSizeHint(slot func(super func() *qt6.QSize) *qt6.QSize) {
+	C.QsciScintillaBase_override_virtual_ViewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciScintillaBase_ViewportSizeHint
+func miqt_exec_callback_QsciScintillaBase_ViewportSizeHint(self *C.QsciScintillaBase, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt6.QSize) *qt6.QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QsciScintillaBase{h: self}).callVirtualBase_ViewportSizeHint)
+
+	return (*C.QSize)(virtualReturn.UnsafePointer())
+
+}
+
 // Delete this object from C++ memory.
 func (this *QsciScintillaBase) Delete() {
-	C.QsciScintillaBase_Delete(this.h)
+	C.QsciScintillaBase_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

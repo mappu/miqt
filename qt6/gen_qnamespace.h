@@ -28,24 +28,24 @@ typedef struct QKeyCombination QKeyCombination;
 typedef struct Disambiguated_t Disambiguated_t;
 #endif
 
-Disambiguated_t* Disambiguated_t_new();
-Disambiguated_t* Disambiguated_t_new2(Disambiguated_t* param1);
-void Disambiguated_t_Delete(Disambiguated_t* self);
+void Disambiguated_t_new(Disambiguated_t** outptr_Qt__Disambiguated_t);
+void Disambiguated_t_new2(Disambiguated_t* param1, Disambiguated_t** outptr_Qt__Disambiguated_t);
+void Disambiguated_t_Delete(Disambiguated_t* self, bool isSubclass);
 
-void QInternal_Delete(QInternal* self);
+void QInternal_Delete(QInternal* self, bool isSubclass);
 
-QKeyCombination* QKeyCombination_new();
-QKeyCombination* QKeyCombination_new2(int modifiers);
-QKeyCombination* QKeyCombination_new3(int modifiers);
-QKeyCombination* QKeyCombination_new4(QKeyCombination* param1);
-QKeyCombination* QKeyCombination_new5(int key);
-QKeyCombination* QKeyCombination_new6(int modifiers, int key);
-QKeyCombination* QKeyCombination_new7(int modifiers, int key);
+void QKeyCombination_new(QKeyCombination** outptr_QKeyCombination);
+void QKeyCombination_new2(int modifiers, QKeyCombination** outptr_QKeyCombination);
+void QKeyCombination_new3(int modifiers, QKeyCombination** outptr_QKeyCombination);
+void QKeyCombination_new4(QKeyCombination* param1, QKeyCombination** outptr_QKeyCombination);
+void QKeyCombination_new5(int key, QKeyCombination** outptr_QKeyCombination);
+void QKeyCombination_new6(int modifiers, int key, QKeyCombination** outptr_QKeyCombination);
+void QKeyCombination_new7(int modifiers, int key, QKeyCombination** outptr_QKeyCombination);
 int QKeyCombination_KeyboardModifiers(const QKeyCombination* self);
 int QKeyCombination_Key(const QKeyCombination* self);
 QKeyCombination* QKeyCombination_FromCombined(int combined);
 int QKeyCombination_ToCombined(const QKeyCombination* self);
-void QKeyCombination_Delete(QKeyCombination* self);
+void QKeyCombination_Delete(QKeyCombination* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -5,16 +5,19 @@
 #include "gen_qresultstore.h"
 #include "_cgo_export.h"
 
-QtPrivate__ResultItem* QtPrivate__ResultItem_new(const void* _result, int _count) {
-	return new QtPrivate::ResultItem(_result, static_cast<int>(_count));
+void QtPrivate__ResultItem_new(const void* _result, int _count, QtPrivate__ResultItem** outptr_QtPrivate__ResultItem) {
+	QtPrivate::ResultItem* ret = new QtPrivate::ResultItem(_result, static_cast<int>(_count));
+	*outptr_QtPrivate__ResultItem = ret;
 }
 
-QtPrivate__ResultItem* QtPrivate__ResultItem_new2(const void* _result) {
-	return new QtPrivate::ResultItem(_result);
+void QtPrivate__ResultItem_new2(const void* _result, QtPrivate__ResultItem** outptr_QtPrivate__ResultItem) {
+	QtPrivate::ResultItem* ret = new QtPrivate::ResultItem(_result);
+	*outptr_QtPrivate__ResultItem = ret;
 }
 
-QtPrivate__ResultItem* QtPrivate__ResultItem_new3() {
-	return new QtPrivate::ResultItem();
+void QtPrivate__ResultItem_new3(QtPrivate__ResultItem** outptr_QtPrivate__ResultItem) {
+	QtPrivate::ResultItem* ret = new QtPrivate::ResultItem();
+	*outptr_QtPrivate__ResultItem = ret;
 }
 
 bool QtPrivate__ResultItem_IsValid(const QtPrivate__ResultItem* self) {
@@ -29,12 +32,17 @@ int QtPrivate__ResultItem_Count(const QtPrivate__ResultItem* self) {
 	return self->count();
 }
 
-void QtPrivate__ResultItem_Delete(QtPrivate__ResultItem* self) {
-	delete self;
+void QtPrivate__ResultItem_Delete(QtPrivate__ResultItem* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtPrivate::ResultItem*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QtPrivate__ResultIteratorBase* QtPrivate__ResultIteratorBase_new() {
-	return new QtPrivate::ResultIteratorBase();
+void QtPrivate__ResultIteratorBase_new(QtPrivate__ResultIteratorBase** outptr_QtPrivate__ResultIteratorBase) {
+	QtPrivate::ResultIteratorBase* ret = new QtPrivate::ResultIteratorBase();
+	*outptr_QtPrivate__ResultIteratorBase = ret;
 }
 
 int QtPrivate__ResultIteratorBase_VectorIndex(const QtPrivate__ResultIteratorBase* self) {
@@ -65,12 +73,17 @@ bool QtPrivate__ResultIteratorBase_IsValid(const QtPrivate__ResultIteratorBase* 
 	return self->isValid();
 }
 
-void QtPrivate__ResultIteratorBase_Delete(QtPrivate__ResultIteratorBase* self) {
-	delete self;
+void QtPrivate__ResultIteratorBase_Delete(QtPrivate__ResultIteratorBase* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtPrivate::ResultIteratorBase*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QtPrivate__ResultStoreBase* QtPrivate__ResultStoreBase_new() {
-	return new QtPrivate::ResultStoreBase();
+void QtPrivate__ResultStoreBase_new(QtPrivate__ResultStoreBase** outptr_QtPrivate__ResultStoreBase) {
+	QtPrivate::ResultStoreBase* ret = new QtPrivate::ResultStoreBase();
+	*outptr_QtPrivate__ResultStoreBase = ret;
 }
 
 void QtPrivate__ResultStoreBase_SetFilterMode(QtPrivate__ResultStoreBase* self, bool enable) {
@@ -105,7 +118,11 @@ int QtPrivate__ResultStoreBase_AddCanceledResult(QtPrivate__ResultStoreBase* sel
 	return self->addCanceledResult(static_cast<int>(index));
 }
 
-void QtPrivate__ResultStoreBase_Delete(QtPrivate__ResultStoreBase* self) {
-	delete self;
+void QtPrivate__ResultStoreBase_Delete(QtPrivate__ResultStoreBase* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtPrivate::ResultStoreBase*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -20,11 +20,11 @@ class QVersionNumber;
 typedef struct QVersionNumber QVersionNumber;
 #endif
 
-QVersionNumber* QVersionNumber_new();
-QVersionNumber* QVersionNumber_new2(struct miqt_array /* of int */  seg);
-QVersionNumber* QVersionNumber_new3(int maj);
-QVersionNumber* QVersionNumber_new4(int maj, int min);
-QVersionNumber* QVersionNumber_new5(int maj, int min, int mic);
+void QVersionNumber_new(QVersionNumber** outptr_QVersionNumber);
+void QVersionNumber_new2(struct miqt_array /* of int */  seg, QVersionNumber** outptr_QVersionNumber);
+void QVersionNumber_new3(int maj, QVersionNumber** outptr_QVersionNumber);
+void QVersionNumber_new4(int maj, int min, QVersionNumber** outptr_QVersionNumber);
+void QVersionNumber_new5(int maj, int min, int mic, QVersionNumber** outptr_QVersionNumber);
 bool QVersionNumber_IsNull(const QVersionNumber* self);
 bool QVersionNumber_IsNormalized(const QVersionNumber* self);
 int QVersionNumber_MajorVersion(const QVersionNumber* self);
@@ -40,7 +40,7 @@ QVersionNumber* QVersionNumber_CommonPrefix(QVersionNumber* v1, QVersionNumber* 
 struct miqt_string QVersionNumber_ToString(const QVersionNumber* self);
 QVersionNumber* QVersionNumber_FromString(struct miqt_string stringVal);
 QVersionNumber* QVersionNumber_FromString22(struct miqt_string stringVal, int* suffixIndex);
-void QVersionNumber_Delete(QVersionNumber* self);
+void QVersionNumber_Delete(QVersionNumber* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

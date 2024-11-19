@@ -14,7 +14,8 @@ import (
 )
 
 type QAbstractNativeEventFilter struct {
-	h *C.QAbstractNativeEventFilter
+	h          *C.QAbstractNativeEventFilter
+	isSubclass bool
 }
 
 func (this *QAbstractNativeEventFilter) cPointer() *C.QAbstractNativeEventFilter {
@@ -31,6 +32,7 @@ func (this *QAbstractNativeEventFilter) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAbstractNativeEventFilter constructs the type using only CGO pointers.
 func newQAbstractNativeEventFilter(h *C.QAbstractNativeEventFilter) *QAbstractNativeEventFilter {
 	if h == nil {
 		return nil
@@ -38,8 +40,13 @@ func newQAbstractNativeEventFilter(h *C.QAbstractNativeEventFilter) *QAbstractNa
 	return &QAbstractNativeEventFilter{h: h}
 }
 
+// UnsafeNewQAbstractNativeEventFilter constructs the type using only unsafe pointers.
 func UnsafeNewQAbstractNativeEventFilter(h unsafe.Pointer) *QAbstractNativeEventFilter {
-	return newQAbstractNativeEventFilter((*C.QAbstractNativeEventFilter)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAbstractNativeEventFilter{h: (*C.QAbstractNativeEventFilter)(h)}
 }
 
 func (this *QAbstractNativeEventFilter) NativeEventFilter(eventType []byte, message unsafe.Pointer, result *int64) bool {
@@ -51,7 +58,7 @@ func (this *QAbstractNativeEventFilter) NativeEventFilter(eventType []byte, mess
 
 // Delete this object from C++ memory.
 func (this *QAbstractNativeEventFilter) Delete() {
-	C.QAbstractNativeEventFilter_Delete(this.h)
+	C.QAbstractNativeEventFilter_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

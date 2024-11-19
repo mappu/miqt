@@ -21,7 +21,8 @@ const (
 )
 
 type QStaticText struct {
-	h *C.QStaticText
+	h          *C.QStaticText
+	isSubclass bool
 }
 
 func (this *QStaticText) cPointer() *C.QStaticText {
@@ -38,6 +39,7 @@ func (this *QStaticText) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQStaticText constructs the type using only CGO pointers.
 func newQStaticText(h *C.QStaticText) *QStaticText {
 	if h == nil {
 		return nil
@@ -45,14 +47,23 @@ func newQStaticText(h *C.QStaticText) *QStaticText {
 	return &QStaticText{h: h}
 }
 
+// UnsafeNewQStaticText constructs the type using only unsafe pointers.
 func UnsafeNewQStaticText(h unsafe.Pointer) *QStaticText {
-	return newQStaticText((*C.QStaticText)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QStaticText{h: (*C.QStaticText)(h)}
 }
 
 // NewQStaticText constructs a new QStaticText object.
 func NewQStaticText() *QStaticText {
-	ret := C.QStaticText_new()
-	return newQStaticText(ret)
+	var outptr_QStaticText *C.QStaticText = nil
+
+	C.QStaticText_new(&outptr_QStaticText)
+	ret := newQStaticText(outptr_QStaticText)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStaticText2 constructs a new QStaticText object.
@@ -61,14 +72,22 @@ func NewQStaticText2(text string) *QStaticText {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QStaticText_new2(text_ms)
-	return newQStaticText(ret)
+	var outptr_QStaticText *C.QStaticText = nil
+
+	C.QStaticText_new2(text_ms, &outptr_QStaticText)
+	ret := newQStaticText(outptr_QStaticText)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStaticText3 constructs a new QStaticText object.
 func NewQStaticText3(other *QStaticText) *QStaticText {
-	ret := C.QStaticText_new3(other.cPointer())
-	return newQStaticText(ret)
+	var outptr_QStaticText *C.QStaticText = nil
+
+	C.QStaticText_new3(other.cPointer(), &outptr_QStaticText)
+	ret := newQStaticText(outptr_QStaticText)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QStaticText) OperatorAssign(param1 *QStaticText) {
@@ -158,7 +177,7 @@ func (this *QStaticText) Prepare2(matrix *QTransform, font *QFont) {
 
 // Delete this object from C++ memory.
 func (this *QStaticText) Delete() {
-	C.QStaticText_Delete(this.h)
+	C.QStaticText_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

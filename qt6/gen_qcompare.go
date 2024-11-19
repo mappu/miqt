@@ -29,7 +29,8 @@ const (
 )
 
 type QPartialOrdering struct {
-	h *C.QPartialOrdering
+	h          *C.QPartialOrdering
+	isSubclass bool
 }
 
 func (this *QPartialOrdering) cPointer() *C.QPartialOrdering {
@@ -46,6 +47,7 @@ func (this *QPartialOrdering) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPartialOrdering constructs the type using only CGO pointers.
 func newQPartialOrdering(h *C.QPartialOrdering) *QPartialOrdering {
 	if h == nil {
 		return nil
@@ -53,19 +55,28 @@ func newQPartialOrdering(h *C.QPartialOrdering) *QPartialOrdering {
 	return &QPartialOrdering{h: h}
 }
 
+// UnsafeNewQPartialOrdering constructs the type using only unsafe pointers.
 func UnsafeNewQPartialOrdering(h unsafe.Pointer) *QPartialOrdering {
-	return newQPartialOrdering((*C.QPartialOrdering)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPartialOrdering{h: (*C.QPartialOrdering)(h)}
 }
 
 // NewQPartialOrdering constructs a new QPartialOrdering object.
 func NewQPartialOrdering(param1 *QPartialOrdering) *QPartialOrdering {
-	ret := C.QPartialOrdering_new(param1.cPointer())
-	return newQPartialOrdering(ret)
+	var outptr_QPartialOrdering *C.QPartialOrdering = nil
+
+	C.QPartialOrdering_new(param1.cPointer(), &outptr_QPartialOrdering)
+	ret := newQPartialOrdering(outptr_QPartialOrdering)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QPartialOrdering) Delete() {
-	C.QPartialOrdering_Delete(this.h)
+	C.QPartialOrdering_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

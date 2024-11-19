@@ -24,12 +24,12 @@ typedef struct QDir QDir;
 typedef struct QFileInfo QFileInfo;
 #endif
 
-QDir* QDir_new(QDir* param1);
-QDir* QDir_new2();
-QDir* QDir_new3(struct miqt_string path, struct miqt_string nameFilter);
-QDir* QDir_new4(struct miqt_string path);
-QDir* QDir_new5(struct miqt_string path, struct miqt_string nameFilter, int sort);
-QDir* QDir_new6(struct miqt_string path, struct miqt_string nameFilter, int sort, int filter);
+void QDir_new(QDir* param1, QDir** outptr_QDir);
+void QDir_new2(QDir** outptr_QDir);
+void QDir_new3(struct miqt_string path, struct miqt_string nameFilter, QDir** outptr_QDir);
+void QDir_new4(struct miqt_string path, QDir** outptr_QDir);
+void QDir_new5(struct miqt_string path, struct miqt_string nameFilter, int sort, QDir** outptr_QDir);
+void QDir_new6(struct miqt_string path, struct miqt_string nameFilter, int sort, int filter, QDir** outptr_QDir);
 void QDir_OperatorAssign(QDir* self, QDir* param1);
 void QDir_Swap(QDir* self, QDir* other);
 void QDir_SetPath(QDir* self, struct miqt_string path);
@@ -105,7 +105,7 @@ struct miqt_array /* of QFileInfo* */  QDir_EntryInfoList1(const QDir* self, int
 struct miqt_array /* of QFileInfo* */  QDir_EntryInfoList2(const QDir* self, int filters, int sort);
 struct miqt_array /* of QFileInfo* */  QDir_EntryInfoList22(const QDir* self, struct miqt_array /* of struct miqt_string */  nameFilters, int filters);
 struct miqt_array /* of QFileInfo* */  QDir_EntryInfoList3(const QDir* self, struct miqt_array /* of struct miqt_string */  nameFilters, int filters, int sort);
-void QDir_Delete(QDir* self);
+void QDir_Delete(QDir* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

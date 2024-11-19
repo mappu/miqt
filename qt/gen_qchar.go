@@ -356,7 +356,8 @@ const (
 )
 
 type QLatin1Char struct {
-	h *C.QLatin1Char
+	h          *C.QLatin1Char
+	isSubclass bool
 }
 
 func (this *QLatin1Char) cPointer() *C.QLatin1Char {
@@ -373,6 +374,7 @@ func (this *QLatin1Char) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQLatin1Char constructs the type using only CGO pointers.
 func newQLatin1Char(h *C.QLatin1Char) *QLatin1Char {
 	if h == nil {
 		return nil
@@ -380,20 +382,33 @@ func newQLatin1Char(h *C.QLatin1Char) *QLatin1Char {
 	return &QLatin1Char{h: h}
 }
 
+// UnsafeNewQLatin1Char constructs the type using only unsafe pointers.
 func UnsafeNewQLatin1Char(h unsafe.Pointer) *QLatin1Char {
-	return newQLatin1Char((*C.QLatin1Char)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QLatin1Char{h: (*C.QLatin1Char)(h)}
 }
 
 // NewQLatin1Char constructs a new QLatin1Char object.
 func NewQLatin1Char(c int8) *QLatin1Char {
-	ret := C.QLatin1Char_new((C.char)(c))
-	return newQLatin1Char(ret)
+	var outptr_QLatin1Char *C.QLatin1Char = nil
+
+	C.QLatin1Char_new((C.char)(c), &outptr_QLatin1Char)
+	ret := newQLatin1Char(outptr_QLatin1Char)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLatin1Char2 constructs a new QLatin1Char object.
 func NewQLatin1Char2(param1 *QLatin1Char) *QLatin1Char {
-	ret := C.QLatin1Char_new2(param1.cPointer())
-	return newQLatin1Char(ret)
+	var outptr_QLatin1Char *C.QLatin1Char = nil
+
+	C.QLatin1Char_new2(param1.cPointer(), &outptr_QLatin1Char)
+	ret := newQLatin1Char(outptr_QLatin1Char)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QLatin1Char) ToLatin1() int8 {
@@ -406,7 +421,7 @@ func (this *QLatin1Char) Unicode() uint16 {
 
 // Delete this object from C++ memory.
 func (this *QLatin1Char) Delete() {
-	C.QLatin1Char_Delete(this.h)
+	C.QLatin1Char_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -419,7 +434,8 @@ func (this *QLatin1Char) GoGC() {
 }
 
 type QChar struct {
-	h *C.QChar
+	h          *C.QChar
+	isSubclass bool
 }
 
 func (this *QChar) cPointer() *C.QChar {
@@ -436,6 +452,7 @@ func (this *QChar) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQChar constructs the type using only CGO pointers.
 func newQChar(h *C.QChar) *QChar {
 	if h == nil {
 		return nil
@@ -443,74 +460,123 @@ func newQChar(h *C.QChar) *QChar {
 	return &QChar{h: h}
 }
 
+// UnsafeNewQChar constructs the type using only unsafe pointers.
 func UnsafeNewQChar(h unsafe.Pointer) *QChar {
-	return newQChar((*C.QChar)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QChar{h: (*C.QChar)(h)}
 }
 
 // NewQChar constructs a new QChar object.
 func NewQChar() *QChar {
-	ret := C.QChar_new()
-	return newQChar(ret)
+	var outptr_QChar *C.QChar = nil
+
+	C.QChar_new(&outptr_QChar)
+	ret := newQChar(outptr_QChar)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQChar2 constructs a new QChar object.
 func NewQChar2(rc uint16) *QChar {
-	ret := C.QChar_new2((C.uint16_t)(rc))
-	return newQChar(ret)
+	var outptr_QChar *C.QChar = nil
+
+	C.QChar_new2((C.uint16_t)(rc), &outptr_QChar)
+	ret := newQChar(outptr_QChar)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQChar3 constructs a new QChar object.
 func NewQChar3(c byte, r byte) *QChar {
-	ret := C.QChar_new3((C.uchar)(c), (C.uchar)(r))
-	return newQChar(ret)
+	var outptr_QChar *C.QChar = nil
+
+	C.QChar_new3((C.uchar)(c), (C.uchar)(r), &outptr_QChar)
+	ret := newQChar(outptr_QChar)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQChar4 constructs a new QChar object.
 func NewQChar4(rc int16) *QChar {
-	ret := C.QChar_new4((C.int16_t)(rc))
-	return newQChar(ret)
+	var outptr_QChar *C.QChar = nil
+
+	C.QChar_new4((C.int16_t)(rc), &outptr_QChar)
+	ret := newQChar(outptr_QChar)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQChar5 constructs a new QChar object.
 func NewQChar5(rc uint) *QChar {
-	ret := C.QChar_new5((C.uint)(rc))
-	return newQChar(ret)
+	var outptr_QChar *C.QChar = nil
+
+	C.QChar_new5((C.uint)(rc), &outptr_QChar)
+	ret := newQChar(outptr_QChar)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQChar6 constructs a new QChar object.
 func NewQChar6(rc int) *QChar {
-	ret := C.QChar_new6((C.int)(rc))
-	return newQChar(ret)
+	var outptr_QChar *C.QChar = nil
+
+	C.QChar_new6((C.int)(rc), &outptr_QChar)
+	ret := newQChar(outptr_QChar)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQChar7 constructs a new QChar object.
 func NewQChar7(s QChar__SpecialCharacter) *QChar {
-	ret := C.QChar_new7((C.int)(s))
-	return newQChar(ret)
+	var outptr_QChar *C.QChar = nil
+
+	C.QChar_new7((C.int)(s), &outptr_QChar)
+	ret := newQChar(outptr_QChar)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQChar8 constructs a new QChar object.
 func NewQChar8(ch QLatin1Char) *QChar {
-	ret := C.QChar_new8(ch.cPointer())
-	return newQChar(ret)
+	var outptr_QChar *C.QChar = nil
+
+	C.QChar_new8(ch.cPointer(), &outptr_QChar)
+	ret := newQChar(outptr_QChar)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQChar9 constructs a new QChar object.
 func NewQChar9(c int8) *QChar {
-	ret := C.QChar_new9((C.char)(c))
-	return newQChar(ret)
+	var outptr_QChar *C.QChar = nil
+
+	C.QChar_new9((C.char)(c), &outptr_QChar)
+	ret := newQChar(outptr_QChar)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQChar10 constructs a new QChar object.
 func NewQChar10(c byte) *QChar {
-	ret := C.QChar_new10((C.uchar)(c))
-	return newQChar(ret)
+	var outptr_QChar *C.QChar = nil
+
+	C.QChar_new10((C.uchar)(c), &outptr_QChar)
+	ret := newQChar(outptr_QChar)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQChar11 constructs a new QChar object.
 func NewQChar11(param1 *QChar) *QChar {
-	ret := C.QChar_new11(param1.cPointer())
-	return newQChar(ret)
+	var outptr_QChar *C.QChar = nil
+
+	C.QChar_new11(param1.cPointer(), &outptr_QChar)
+	ret := newQChar(outptr_QChar)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QChar) Category() QChar__Category {
@@ -851,7 +917,7 @@ func QChar_IsTitleCaseWithUcs4(ucs4 uint) bool {
 
 // Delete this object from C++ memory.
 func (this *QChar) Delete() {
-	C.QChar_Delete(this.h)
+	C.QChar_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

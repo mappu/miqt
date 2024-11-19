@@ -1,22 +1,233 @@
 #include <QAbstractEventDispatcher>
+#include <QChildEvent>
 #include <QDeadlineTimer>
 #include <QEvent>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
 #include <QThread>
+#include <QTimerEvent>
 #include <qthread.h>
 #include "gen_qthread.h"
 #include "_cgo_export.h"
 
-QThread* QThread_new() {
-	return new QThread();
+class MiqtVirtualQThread : public virtual QThread {
+public:
+
+	MiqtVirtualQThread(): QThread() {};
+	MiqtVirtualQThread(QObject* parent): QThread(parent) {};
+
+	virtual ~MiqtVirtualQThread() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QThread::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QThread_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QThread::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Run = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void run() override {
+		if (handle__Run == 0) {
+			QThread::run();
+			return;
+		}
+		
+
+		miqt_exec_callback_QThread_Run(this, handle__Run);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_Run() {
+
+		QThread::run();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QThread::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QThread_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QThread::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QThread::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QThread_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QThread::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QThread::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QThread_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QThread::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QThread::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QThread_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QThread::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QThread::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QThread_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QThread::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QThread::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QThread_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QThread::disconnectNotify(*signal);
+
+	}
+
+};
+
+void QThread_new(QThread** outptr_QThread, QObject** outptr_QObject) {
+	MiqtVirtualQThread* ret = new MiqtVirtualQThread();
+	*outptr_QThread = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QThread* QThread_new2(QObject* parent) {
-	return new QThread(parent);
+void QThread_new2(QObject* parent, QThread** outptr_QThread, QObject** outptr_QObject) {
+	MiqtVirtualQThread* ret = new MiqtVirtualQThread(parent);
+	*outptr_QThread = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QThread_MetaObject(const QThread* self) {
@@ -175,7 +386,75 @@ bool QThread_Wait1(QThread* self, QDeadlineTimer* deadline) {
 	return self->wait(*deadline);
 }
 
-void QThread_Delete(QThread* self) {
-	delete self;
+void QThread_override_virtual_Event(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQThread*>( (QThread*)(self) )->handle__Event = slot;
+}
+
+bool QThread_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQThread*)(self) )->virtualbase_Event(event);
+}
+
+void QThread_override_virtual_Run(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQThread*>( (QThread*)(self) )->handle__Run = slot;
+}
+
+void QThread_virtualbase_Run(void* self) {
+	( (MiqtVirtualQThread*)(self) )->virtualbase_Run();
+}
+
+void QThread_override_virtual_EventFilter(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQThread*>( (QThread*)(self) )->handle__EventFilter = slot;
+}
+
+bool QThread_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQThread*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+void QThread_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQThread*>( (QThread*)(self) )->handle__TimerEvent = slot;
+}
+
+void QThread_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQThread*)(self) )->virtualbase_TimerEvent(event);
+}
+
+void QThread_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQThread*>( (QThread*)(self) )->handle__ChildEvent = slot;
+}
+
+void QThread_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQThread*)(self) )->virtualbase_ChildEvent(event);
+}
+
+void QThread_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQThread*>( (QThread*)(self) )->handle__CustomEvent = slot;
+}
+
+void QThread_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQThread*)(self) )->virtualbase_CustomEvent(event);
+}
+
+void QThread_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQThread*>( (QThread*)(self) )->handle__ConnectNotify = slot;
+}
+
+void QThread_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQThread*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+void QThread_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQThread*>( (QThread*)(self) )->handle__DisconnectNotify = slot;
+}
+
+void QThread_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQThread*)(self) )->virtualbase_DisconnectNotify(signal);
+}
+
+void QThread_Delete(QThread* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQThread*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -15,7 +15,8 @@ import (
 )
 
 type QAudioEncoderSettings struct {
-	h *C.QAudioEncoderSettings
+	h          *C.QAudioEncoderSettings
+	isSubclass bool
 }
 
 func (this *QAudioEncoderSettings) cPointer() *C.QAudioEncoderSettings {
@@ -32,6 +33,7 @@ func (this *QAudioEncoderSettings) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAudioEncoderSettings constructs the type using only CGO pointers.
 func newQAudioEncoderSettings(h *C.QAudioEncoderSettings) *QAudioEncoderSettings {
 	if h == nil {
 		return nil
@@ -39,20 +41,33 @@ func newQAudioEncoderSettings(h *C.QAudioEncoderSettings) *QAudioEncoderSettings
 	return &QAudioEncoderSettings{h: h}
 }
 
+// UnsafeNewQAudioEncoderSettings constructs the type using only unsafe pointers.
 func UnsafeNewQAudioEncoderSettings(h unsafe.Pointer) *QAudioEncoderSettings {
-	return newQAudioEncoderSettings((*C.QAudioEncoderSettings)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAudioEncoderSettings{h: (*C.QAudioEncoderSettings)(h)}
 }
 
 // NewQAudioEncoderSettings constructs a new QAudioEncoderSettings object.
 func NewQAudioEncoderSettings() *QAudioEncoderSettings {
-	ret := C.QAudioEncoderSettings_new()
-	return newQAudioEncoderSettings(ret)
+	var outptr_QAudioEncoderSettings *C.QAudioEncoderSettings = nil
+
+	C.QAudioEncoderSettings_new(&outptr_QAudioEncoderSettings)
+	ret := newQAudioEncoderSettings(outptr_QAudioEncoderSettings)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAudioEncoderSettings2 constructs a new QAudioEncoderSettings object.
 func NewQAudioEncoderSettings2(other *QAudioEncoderSettings) *QAudioEncoderSettings {
-	ret := C.QAudioEncoderSettings_new2(other.cPointer())
-	return newQAudioEncoderSettings(ret)
+	var outptr_QAudioEncoderSettings *C.QAudioEncoderSettings = nil
+
+	C.QAudioEncoderSettings_new2(other.cPointer(), &outptr_QAudioEncoderSettings)
+	ret := newQAudioEncoderSettings(outptr_QAudioEncoderSettings)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QAudioEncoderSettings) OperatorAssign(other *QAudioEncoderSettings) {
@@ -190,7 +205,7 @@ func (this *QAudioEncoderSettings) SetEncodingOptions(options map[string]qt.QVar
 
 // Delete this object from C++ memory.
 func (this *QAudioEncoderSettings) Delete() {
-	C.QAudioEncoderSettings_Delete(this.h)
+	C.QAudioEncoderSettings_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -203,7 +218,8 @@ func (this *QAudioEncoderSettings) GoGC() {
 }
 
 type QVideoEncoderSettings struct {
-	h *C.QVideoEncoderSettings
+	h          *C.QVideoEncoderSettings
+	isSubclass bool
 }
 
 func (this *QVideoEncoderSettings) cPointer() *C.QVideoEncoderSettings {
@@ -220,6 +236,7 @@ func (this *QVideoEncoderSettings) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQVideoEncoderSettings constructs the type using only CGO pointers.
 func newQVideoEncoderSettings(h *C.QVideoEncoderSettings) *QVideoEncoderSettings {
 	if h == nil {
 		return nil
@@ -227,20 +244,33 @@ func newQVideoEncoderSettings(h *C.QVideoEncoderSettings) *QVideoEncoderSettings
 	return &QVideoEncoderSettings{h: h}
 }
 
+// UnsafeNewQVideoEncoderSettings constructs the type using only unsafe pointers.
 func UnsafeNewQVideoEncoderSettings(h unsafe.Pointer) *QVideoEncoderSettings {
-	return newQVideoEncoderSettings((*C.QVideoEncoderSettings)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QVideoEncoderSettings{h: (*C.QVideoEncoderSettings)(h)}
 }
 
 // NewQVideoEncoderSettings constructs a new QVideoEncoderSettings object.
 func NewQVideoEncoderSettings() *QVideoEncoderSettings {
-	ret := C.QVideoEncoderSettings_new()
-	return newQVideoEncoderSettings(ret)
+	var outptr_QVideoEncoderSettings *C.QVideoEncoderSettings = nil
+
+	C.QVideoEncoderSettings_new(&outptr_QVideoEncoderSettings)
+	ret := newQVideoEncoderSettings(outptr_QVideoEncoderSettings)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVideoEncoderSettings2 constructs a new QVideoEncoderSettings object.
 func NewQVideoEncoderSettings2(other *QVideoEncoderSettings) *QVideoEncoderSettings {
-	ret := C.QVideoEncoderSettings_new2(other.cPointer())
-	return newQVideoEncoderSettings(ret)
+	var outptr_QVideoEncoderSettings *C.QVideoEncoderSettings = nil
+
+	C.QVideoEncoderSettings_new2(other.cPointer(), &outptr_QVideoEncoderSettings)
+	ret := newQVideoEncoderSettings(outptr_QVideoEncoderSettings)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QVideoEncoderSettings) OperatorAssign(other *QVideoEncoderSettings) {
@@ -385,7 +415,7 @@ func (this *QVideoEncoderSettings) SetEncodingOptions(options map[string]qt.QVar
 
 // Delete this object from C++ memory.
 func (this *QVideoEncoderSettings) Delete() {
-	C.QVideoEncoderSettings_Delete(this.h)
+	C.QVideoEncoderSettings_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -398,7 +428,8 @@ func (this *QVideoEncoderSettings) GoGC() {
 }
 
 type QImageEncoderSettings struct {
-	h *C.QImageEncoderSettings
+	h          *C.QImageEncoderSettings
+	isSubclass bool
 }
 
 func (this *QImageEncoderSettings) cPointer() *C.QImageEncoderSettings {
@@ -415,6 +446,7 @@ func (this *QImageEncoderSettings) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQImageEncoderSettings constructs the type using only CGO pointers.
 func newQImageEncoderSettings(h *C.QImageEncoderSettings) *QImageEncoderSettings {
 	if h == nil {
 		return nil
@@ -422,20 +454,33 @@ func newQImageEncoderSettings(h *C.QImageEncoderSettings) *QImageEncoderSettings
 	return &QImageEncoderSettings{h: h}
 }
 
+// UnsafeNewQImageEncoderSettings constructs the type using only unsafe pointers.
 func UnsafeNewQImageEncoderSettings(h unsafe.Pointer) *QImageEncoderSettings {
-	return newQImageEncoderSettings((*C.QImageEncoderSettings)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QImageEncoderSettings{h: (*C.QImageEncoderSettings)(h)}
 }
 
 // NewQImageEncoderSettings constructs a new QImageEncoderSettings object.
 func NewQImageEncoderSettings() *QImageEncoderSettings {
-	ret := C.QImageEncoderSettings_new()
-	return newQImageEncoderSettings(ret)
+	var outptr_QImageEncoderSettings *C.QImageEncoderSettings = nil
+
+	C.QImageEncoderSettings_new(&outptr_QImageEncoderSettings)
+	ret := newQImageEncoderSettings(outptr_QImageEncoderSettings)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQImageEncoderSettings2 constructs a new QImageEncoderSettings object.
 func NewQImageEncoderSettings2(other *QImageEncoderSettings) *QImageEncoderSettings {
-	ret := C.QImageEncoderSettings_new2(other.cPointer())
-	return newQImageEncoderSettings(ret)
+	var outptr_QImageEncoderSettings *C.QImageEncoderSettings = nil
+
+	C.QImageEncoderSettings_new2(other.cPointer(), &outptr_QImageEncoderSettings)
+	ret := newQImageEncoderSettings(outptr_QImageEncoderSettings)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QImageEncoderSettings) OperatorAssign(other *QImageEncoderSettings) {
@@ -556,7 +601,7 @@ func (this *QImageEncoderSettings) SetEncodingOptions(options map[string]qt.QVar
 
 // Delete this object from C++ memory.
 func (this *QImageEncoderSettings) Delete() {
-	C.QImageEncoderSettings_Delete(this.h)
+	C.QImageEncoderSettings_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

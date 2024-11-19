@@ -9,6 +9,8 @@
 #include <QCameraViewfinderSettings>
 #include <QGraphicsVideoItem>
 #include <QList>
+#include <QMediaObject>
+#include <QMediaService>
 #include <QMetaObject>
 #include <QObject>
 #include <QSize>
@@ -20,38 +22,192 @@
 #include "gen_qcamera.h"
 #include "_cgo_export.h"
 
-QCamera* QCamera_new() {
-	return new QCamera();
+class MiqtVirtualQCamera : public virtual QCamera {
+public:
+
+	MiqtVirtualQCamera(): QCamera() {};
+	MiqtVirtualQCamera(const QByteArray& deviceName): QCamera(deviceName) {};
+	MiqtVirtualQCamera(const QCameraInfo& cameraInfo): QCamera(cameraInfo) {};
+	MiqtVirtualQCamera(QCamera::Position position): QCamera(position) {};
+	MiqtVirtualQCamera(QObject* parent): QCamera(parent) {};
+	MiqtVirtualQCamera(const QByteArray& deviceName, QObject* parent): QCamera(deviceName, parent) {};
+	MiqtVirtualQCamera(const QCameraInfo& cameraInfo, QObject* parent): QCamera(cameraInfo, parent) {};
+	MiqtVirtualQCamera(QCamera::Position position, QObject* parent): QCamera(position, parent) {};
+
+	virtual ~MiqtVirtualQCamera() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Availability = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QMultimedia::AvailabilityStatus availability() const override {
+		if (handle__Availability == 0) {
+			return QCamera::availability();
+		}
+		
+
+		int callback_return_value = miqt_exec_callback_QCamera_Availability(const_cast<MiqtVirtualQCamera*>(this), handle__Availability);
+
+		return static_cast<QMultimedia::AvailabilityStatus>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_Availability() const {
+
+		QMultimedia::AvailabilityStatus _ret = QCamera::availability();
+		return static_cast<int>(_ret);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__IsAvailable = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool isAvailable() const override {
+		if (handle__IsAvailable == 0) {
+			return QCamera::isAvailable();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QCamera_IsAvailable(const_cast<MiqtVirtualQCamera*>(this), handle__IsAvailable);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_IsAvailable() const {
+
+		return QCamera::isAvailable();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Service = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QMediaService* service() const override {
+		if (handle__Service == 0) {
+			return QCamera::service();
+		}
+		
+
+		QMediaService* callback_return_value = miqt_exec_callback_QCamera_Service(const_cast<MiqtVirtualQCamera*>(this), handle__Service);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMediaService* virtualbase_Service() const {
+
+		return QCamera::service();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Bind = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool bind(QObject* param1) override {
+		if (handle__Bind == 0) {
+			return QCamera::bind(param1);
+		}
+		
+		QObject* sigval1 = param1;
+
+		bool callback_return_value = miqt_exec_callback_QCamera_Bind(this, handle__Bind, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Bind(QObject* param1) {
+
+		return QCamera::bind(param1);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Unbind = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void unbind(QObject* param1) override {
+		if (handle__Unbind == 0) {
+			QCamera::unbind(param1);
+			return;
+		}
+		
+		QObject* sigval1 = param1;
+
+		miqt_exec_callback_QCamera_Unbind(this, handle__Unbind, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_Unbind(QObject* param1) {
+
+		QCamera::unbind(param1);
+
+	}
+
+};
+
+void QCamera_new(QCamera** outptr_QCamera, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject) {
+	MiqtVirtualQCamera* ret = new MiqtVirtualQCamera();
+	*outptr_QCamera = ret;
+	*outptr_QMediaObject = static_cast<QMediaObject*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QCamera* QCamera_new2(struct miqt_string deviceName) {
+void QCamera_new2(struct miqt_string deviceName, QCamera** outptr_QCamera, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject) {
 	QByteArray deviceName_QByteArray(deviceName.data, deviceName.len);
-	return new QCamera(deviceName_QByteArray);
+	MiqtVirtualQCamera* ret = new MiqtVirtualQCamera(deviceName_QByteArray);
+	*outptr_QCamera = ret;
+	*outptr_QMediaObject = static_cast<QMediaObject*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QCamera* QCamera_new3(QCameraInfo* cameraInfo) {
-	return new QCamera(*cameraInfo);
+void QCamera_new3(QCameraInfo* cameraInfo, QCamera** outptr_QCamera, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject) {
+	MiqtVirtualQCamera* ret = new MiqtVirtualQCamera(*cameraInfo);
+	*outptr_QCamera = ret;
+	*outptr_QMediaObject = static_cast<QMediaObject*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QCamera* QCamera_new4(int position) {
-	return new QCamera(static_cast<QCamera::Position>(position));
+void QCamera_new4(int position, QCamera** outptr_QCamera, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject) {
+	MiqtVirtualQCamera* ret = new MiqtVirtualQCamera(static_cast<QCamera::Position>(position));
+	*outptr_QCamera = ret;
+	*outptr_QMediaObject = static_cast<QMediaObject*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QCamera* QCamera_new5(QObject* parent) {
-	return new QCamera(parent);
+void QCamera_new5(QObject* parent, QCamera** outptr_QCamera, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject) {
+	MiqtVirtualQCamera* ret = new MiqtVirtualQCamera(parent);
+	*outptr_QCamera = ret;
+	*outptr_QMediaObject = static_cast<QMediaObject*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QCamera* QCamera_new6(struct miqt_string deviceName, QObject* parent) {
+void QCamera_new6(struct miqt_string deviceName, QObject* parent, QCamera** outptr_QCamera, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject) {
 	QByteArray deviceName_QByteArray(deviceName.data, deviceName.len);
-	return new QCamera(deviceName_QByteArray, parent);
+	MiqtVirtualQCamera* ret = new MiqtVirtualQCamera(deviceName_QByteArray, parent);
+	*outptr_QCamera = ret;
+	*outptr_QMediaObject = static_cast<QMediaObject*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QCamera* QCamera_new7(QCameraInfo* cameraInfo, QObject* parent) {
-	return new QCamera(*cameraInfo, parent);
+void QCamera_new7(QCameraInfo* cameraInfo, QObject* parent, QCamera** outptr_QCamera, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject) {
+	MiqtVirtualQCamera* ret = new MiqtVirtualQCamera(*cameraInfo, parent);
+	*outptr_QCamera = ret;
+	*outptr_QMediaObject = static_cast<QMediaObject*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QCamera* QCamera_new8(int position, QObject* parent) {
-	return new QCamera(static_cast<QCamera::Position>(position), parent);
+void QCamera_new8(int position, QObject* parent, QCamera** outptr_QCamera, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject) {
+	MiqtVirtualQCamera* ret = new MiqtVirtualQCamera(static_cast<QCamera::Position>(position), parent);
+	*outptr_QCamera = ret;
+	*outptr_QMediaObject = static_cast<QMediaObject*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QCamera_MetaObject(const QCamera* self) {
@@ -300,7 +456,7 @@ void QCamera_StateChanged(QCamera* self, int state) {
 }
 
 void QCamera_connect_StateChanged(QCamera* self, intptr_t slot) {
-	QCamera::connect(self, static_cast<void (QCamera::*)(QCamera::State)>(&QCamera::stateChanged), self, [=](QCamera::State state) {
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(QCamera::State)>(&QCamera::stateChanged), self, [=](QCamera::State state) {
 		QCamera::State state_ret = state;
 		int sigval1 = static_cast<int>(state_ret);
 		miqt_exec_callback_QCamera_StateChanged(slot, sigval1);
@@ -312,7 +468,7 @@ void QCamera_CaptureModeChanged(QCamera* self, int param1) {
 }
 
 void QCamera_connect_CaptureModeChanged(QCamera* self, intptr_t slot) {
-	QCamera::connect(self, static_cast<void (QCamera::*)(QCamera::CaptureModes)>(&QCamera::captureModeChanged), self, [=](QCamera::CaptureModes param1) {
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(QCamera::CaptureModes)>(&QCamera::captureModeChanged), self, [=](QCamera::CaptureModes param1) {
 		QCamera::CaptureModes param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		miqt_exec_callback_QCamera_CaptureModeChanged(slot, sigval1);
@@ -324,7 +480,7 @@ void QCamera_StatusChanged(QCamera* self, int status) {
 }
 
 void QCamera_connect_StatusChanged(QCamera* self, intptr_t slot) {
-	QCamera::connect(self, static_cast<void (QCamera::*)(QCamera::Status)>(&QCamera::statusChanged), self, [=](QCamera::Status status) {
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(QCamera::Status)>(&QCamera::statusChanged), self, [=](QCamera::Status status) {
 		QCamera::Status status_ret = status;
 		int sigval1 = static_cast<int>(status_ret);
 		miqt_exec_callback_QCamera_StatusChanged(slot, sigval1);
@@ -336,7 +492,7 @@ void QCamera_Locked(QCamera* self) {
 }
 
 void QCamera_connect_Locked(QCamera* self, intptr_t slot) {
-	QCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::locked), self, [=]() {
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::locked), self, [=]() {
 		miqt_exec_callback_QCamera_Locked(slot);
 	});
 }
@@ -346,7 +502,7 @@ void QCamera_LockFailed(QCamera* self) {
 }
 
 void QCamera_connect_LockFailed(QCamera* self, intptr_t slot) {
-	QCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::lockFailed), self, [=]() {
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)()>(&QCamera::lockFailed), self, [=]() {
 		miqt_exec_callback_QCamera_LockFailed(slot);
 	});
 }
@@ -356,7 +512,7 @@ void QCamera_LockStatusChanged(QCamera* self, int status, int reason) {
 }
 
 void QCamera_connect_LockStatusChanged(QCamera* self, intptr_t slot) {
-	QCamera::connect(self, static_cast<void (QCamera::*)(QCamera::LockStatus, QCamera::LockChangeReason)>(&QCamera::lockStatusChanged), self, [=](QCamera::LockStatus status, QCamera::LockChangeReason reason) {
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(QCamera::LockStatus, QCamera::LockChangeReason)>(&QCamera::lockStatusChanged), self, [=](QCamera::LockStatus status, QCamera::LockChangeReason reason) {
 		QCamera::LockStatus status_ret = status;
 		int sigval1 = static_cast<int>(status_ret);
 		QCamera::LockChangeReason reason_ret = reason;
@@ -370,7 +526,7 @@ void QCamera_LockStatusChanged2(QCamera* self, int lock, int status, int reason)
 }
 
 void QCamera_connect_LockStatusChanged2(QCamera* self, intptr_t slot) {
-	QCamera::connect(self, static_cast<void (QCamera::*)(QCamera::LockType, QCamera::LockStatus, QCamera::LockChangeReason)>(&QCamera::lockStatusChanged), self, [=](QCamera::LockType lock, QCamera::LockStatus status, QCamera::LockChangeReason reason) {
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(QCamera::LockType, QCamera::LockStatus, QCamera::LockChangeReason)>(&QCamera::lockStatusChanged), self, [=](QCamera::LockType lock, QCamera::LockStatus status, QCamera::LockChangeReason reason) {
 		QCamera::LockType lock_ret = lock;
 		int sigval1 = static_cast<int>(lock_ret);
 		QCamera::LockStatus status_ret = status;
@@ -386,7 +542,7 @@ void QCamera_ErrorWithQCameraError(QCamera* self, int param1) {
 }
 
 void QCamera_connect_ErrorWithQCameraError(QCamera* self, intptr_t slot) {
-	QCamera::connect(self, static_cast<void (QCamera::*)(QCamera::Error)>(&QCamera::error), self, [=](QCamera::Error param1) {
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(QCamera::Error)>(&QCamera::error), self, [=](QCamera::Error param1) {
 		QCamera::Error param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		miqt_exec_callback_QCamera_ErrorWithQCameraError(slot, sigval1);
@@ -398,7 +554,7 @@ void QCamera_ErrorOccurred(QCamera* self, int param1) {
 }
 
 void QCamera_connect_ErrorOccurred(QCamera* self, intptr_t slot) {
-	QCamera::connect(self, static_cast<void (QCamera::*)(QCamera::Error)>(&QCamera::errorOccurred), self, [=](QCamera::Error param1) {
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(QCamera::Error)>(&QCamera::errorOccurred), self, [=](QCamera::Error param1) {
 		QCamera::Error param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		miqt_exec_callback_QCamera_ErrorOccurred(slot, sigval1);
@@ -502,23 +658,74 @@ struct miqt_array /* of int */  QCamera_SupportedViewfinderPixelFormats1(const Q
 	return _out;
 }
 
-void QCamera_Delete(QCamera* self) {
-	delete self;
+void QCamera_override_virtual_Availability(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) )->handle__Availability = slot;
 }
 
-QCamera__FrameRateRange* QCamera__FrameRateRange_new() {
-	return new QCamera::FrameRateRange();
+int QCamera_virtualbase_Availability(const void* self) {
+	return ( (const MiqtVirtualQCamera*)(self) )->virtualbase_Availability();
 }
 
-QCamera__FrameRateRange* QCamera__FrameRateRange_new2(double minimum, double maximum) {
-	return new QCamera::FrameRateRange(static_cast<qreal>(minimum), static_cast<qreal>(maximum));
+void QCamera_override_virtual_IsAvailable(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) )->handle__IsAvailable = slot;
 }
 
-QCamera__FrameRateRange* QCamera__FrameRateRange_new3(QCamera__FrameRateRange* param1) {
-	return new QCamera::FrameRateRange(*param1);
+bool QCamera_virtualbase_IsAvailable(const void* self) {
+	return ( (const MiqtVirtualQCamera*)(self) )->virtualbase_IsAvailable();
 }
 
-void QCamera__FrameRateRange_Delete(QCamera__FrameRateRange* self) {
-	delete self;
+void QCamera_override_virtual_Service(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) )->handle__Service = slot;
+}
+
+QMediaService* QCamera_virtualbase_Service(const void* self) {
+	return ( (const MiqtVirtualQCamera*)(self) )->virtualbase_Service();
+}
+
+void QCamera_override_virtual_Bind(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) )->handle__Bind = slot;
+}
+
+bool QCamera_virtualbase_Bind(void* self, QObject* param1) {
+	return ( (MiqtVirtualQCamera*)(self) )->virtualbase_Bind(param1);
+}
+
+void QCamera_override_virtual_Unbind(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) )->handle__Unbind = slot;
+}
+
+void QCamera_virtualbase_Unbind(void* self, QObject* param1) {
+	( (MiqtVirtualQCamera*)(self) )->virtualbase_Unbind(param1);
+}
+
+void QCamera_Delete(QCamera* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQCamera*>( self );
+	} else {
+		delete self;
+	}
+}
+
+void QCamera__FrameRateRange_new(QCamera__FrameRateRange** outptr_QCamera__FrameRateRange) {
+	QCamera::FrameRateRange* ret = new QCamera::FrameRateRange();
+	*outptr_QCamera__FrameRateRange = ret;
+}
+
+void QCamera__FrameRateRange_new2(double minimum, double maximum, QCamera__FrameRateRange** outptr_QCamera__FrameRateRange) {
+	QCamera::FrameRateRange* ret = new QCamera::FrameRateRange(static_cast<qreal>(minimum), static_cast<qreal>(maximum));
+	*outptr_QCamera__FrameRateRange = ret;
+}
+
+void QCamera__FrameRateRange_new3(QCamera__FrameRateRange* param1, QCamera__FrameRateRange** outptr_QCamera__FrameRateRange) {
+	QCamera::FrameRateRange* ret = new QCamera::FrameRateRange(*param1);
+	*outptr_QCamera__FrameRateRange = ret;
+}
+
+void QCamera__FrameRateRange_Delete(QCamera__FrameRateRange* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QCamera::FrameRateRange*>( self );
+	} else {
+		delete self;
+	}
 }
 

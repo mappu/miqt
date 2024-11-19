@@ -15,7 +15,8 @@ import (
 )
 
 type QStackedWidget struct {
-	h *C.QStackedWidget
+	h          *C.QStackedWidget
+	isSubclass bool
 	*QFrame
 }
 
@@ -33,27 +34,51 @@ func (this *QStackedWidget) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStackedWidget(h *C.QStackedWidget) *QStackedWidget {
+// newQStackedWidget constructs the type using only CGO pointers.
+func newQStackedWidget(h *C.QStackedWidget, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QStackedWidget {
 	if h == nil {
 		return nil
 	}
-	return &QStackedWidget{h: h, QFrame: UnsafeNewQFrame(unsafe.Pointer(h))}
+	return &QStackedWidget{h: h,
+		QFrame: newQFrame(h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
-func UnsafeNewQStackedWidget(h unsafe.Pointer) *QStackedWidget {
-	return newQStackedWidget((*C.QStackedWidget)(h))
+// UnsafeNewQStackedWidget constructs the type using only unsafe pointers.
+func UnsafeNewQStackedWidget(h unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QStackedWidget {
+	if h == nil {
+		return nil
+	}
+
+	return &QStackedWidget{h: (*C.QStackedWidget)(h),
+		QFrame: UnsafeNewQFrame(h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
 // NewQStackedWidget constructs a new QStackedWidget object.
 func NewQStackedWidget(parent *QWidget) *QStackedWidget {
-	ret := C.QStackedWidget_new(parent.cPointer())
-	return newQStackedWidget(ret)
+	var outptr_QStackedWidget *C.QStackedWidget = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QStackedWidget_new(parent.cPointer(), &outptr_QStackedWidget, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQStackedWidget(outptr_QStackedWidget, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStackedWidget2 constructs a new QStackedWidget object.
 func NewQStackedWidget2() *QStackedWidget {
-	ret := C.QStackedWidget_new2()
-	return newQStackedWidget(ret)
+	var outptr_QStackedWidget *C.QStackedWidget = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QStackedWidget_new2(&outptr_QStackedWidget, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQStackedWidget(outptr_QStackedWidget, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QStackedWidget) MetaObject() *QMetaObject {
@@ -97,7 +122,7 @@ func (this *QStackedWidget) RemoveWidget(w *QWidget) {
 }
 
 func (this *QStackedWidget) CurrentWidget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QStackedWidget_CurrentWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QStackedWidget_CurrentWidget(this.h)), nil, nil)
 }
 
 func (this *QStackedWidget) CurrentIndex() int {
@@ -109,7 +134,7 @@ func (this *QStackedWidget) IndexOf(param1 *QWidget) int {
 }
 
 func (this *QStackedWidget) Widget(param1 int) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QStackedWidget_Widget(this.h, (C.int)(param1))))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QStackedWidget_Widget(this.h, (C.int)(param1))), nil, nil)
 }
 
 func (this *QStackedWidget) Count() int {
@@ -208,9 +233,105 @@ func QStackedWidget_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QStackedWidget) callVirtualBase_Event(e *QEvent) bool {
+
+	return (bool)(C.QStackedWidget_virtualbase_Event(unsafe.Pointer(this.h), e.cPointer()))
+
+}
+func (this *QStackedWidget) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	C.QStackedWidget_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStackedWidget_Event
+func miqt_exec_callback_QStackedWidget_Event(self *C.QStackedWidget, cb C.intptr_t, e *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QEvent) bool, e *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+
+	virtualReturn := gofunc((&QStackedWidget{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QStackedWidget) callVirtualBase_SizeHint() *QSize {
+
+	_ret := C.QStackedWidget_virtualbase_SizeHint(unsafe.Pointer(this.h))
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QStackedWidget) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	C.QStackedWidget_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStackedWidget_SizeHint
+func miqt_exec_callback_QStackedWidget_SizeHint(self *C.QStackedWidget, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QStackedWidget{h: self}).callVirtualBase_SizeHint)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QStackedWidget) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
+
+	C.QStackedWidget_virtualbase_PaintEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QStackedWidget) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
+	C.QStackedWidget_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStackedWidget_PaintEvent
+func miqt_exec_callback_QStackedWidget_PaintEvent(self *C.QStackedWidget, cb C.intptr_t, param1 *C.QPaintEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QPaintEvent), param1 *QPaintEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(param1), nil)
+
+	gofunc((&QStackedWidget{h: self}).callVirtualBase_PaintEvent, slotval1)
+
+}
+
+func (this *QStackedWidget) callVirtualBase_ChangeEvent(param1 *QEvent) {
+
+	C.QStackedWidget_virtualbase_ChangeEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QStackedWidget) OnChangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
+	C.QStackedWidget_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStackedWidget_ChangeEvent
+func miqt_exec_callback_QStackedWidget_ChangeEvent(self *C.QStackedWidget, cb C.intptr_t, param1 *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent), param1 *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+
+	gofunc((&QStackedWidget{h: self}).callVirtualBase_ChangeEvent, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QStackedWidget) Delete() {
-	C.QStackedWidget_Delete(this.h)
+	C.QStackedWidget_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -16,10 +16,12 @@ extern "C" {
 
 #ifdef __cplusplus
 class QApplication;
+class QCoreApplication;
 class QDesktopWidget;
 class QEvent;
 class QFont;
 class QFontMetrics;
+class QGuiApplication;
 class QIcon;
 class QMetaObject;
 class QObject;
@@ -30,10 +32,12 @@ class QStyle;
 class QWidget;
 #else
 typedef struct QApplication QApplication;
+typedef struct QCoreApplication QCoreApplication;
 typedef struct QDesktopWidget QDesktopWidget;
 typedef struct QEvent QEvent;
 typedef struct QFont QFont;
 typedef struct QFontMetrics QFontMetrics;
+typedef struct QGuiApplication QGuiApplication;
 typedef struct QIcon QIcon;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
@@ -44,8 +48,8 @@ typedef struct QStyle QStyle;
 typedef struct QWidget QWidget;
 #endif
 
-QApplication* QApplication_new(int* argc, char** argv);
-QApplication* QApplication_new2(int* argc, char** argv, int param3);
+void QApplication_new(int* argc, char** argv, QApplication** outptr_QApplication, QGuiApplication** outptr_QGuiApplication, QCoreApplication** outptr_QCoreApplication, QObject** outptr_QObject);
+void QApplication_new2(int* argc, char** argv, int param3, QApplication** outptr_QApplication, QGuiApplication** outptr_QGuiApplication, QCoreApplication** outptr_QCoreApplication, QObject** outptr_QObject);
 QMetaObject* QApplication_MetaObject(const QApplication* self);
 void* QApplication_Metacast(QApplication* self, const char* param1);
 struct miqt_string QApplication_Tr(const char* s);
@@ -105,6 +109,7 @@ void QApplication_SetAutoSipEnabled(QApplication* self, const bool enabled);
 bool QApplication_AutoSipEnabled(const QApplication* self);
 void QApplication_CloseAllWindows();
 void QApplication_AboutQt();
+bool QApplication_Event(QApplication* self, QEvent* param1);
 struct miqt_string QApplication_Tr2(const char* s, const char* c);
 struct miqt_string QApplication_Tr3(const char* s, const char* c, int n);
 struct miqt_string QApplication_TrUtf82(const char* s, const char* c);
@@ -113,7 +118,11 @@ void QApplication_SetPalette2(QPalette* param1, const char* className);
 void QApplication_SetFont2(QFont* param1, const char* className);
 void QApplication_Alert2(QWidget* widget, int duration);
 void QApplication_SetEffectEnabled2(int param1, bool enable);
-void QApplication_Delete(QApplication* self);
+void QApplication_override_virtual_Notify(void* self, intptr_t slot);
+bool QApplication_virtualbase_Notify(void* self, QObject* param1, QEvent* param2);
+void QApplication_override_virtual_Event(void* self, intptr_t slot);
+bool QApplication_virtualbase_Event(void* self, QEvent* param1);
+void QApplication_Delete(QApplication* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -14,7 +14,8 @@ import (
 )
 
 type QMediaBindableInterface struct {
-	h *C.QMediaBindableInterface
+	h          *C.QMediaBindableInterface
+	isSubclass bool
 }
 
 func (this *QMediaBindableInterface) cPointer() *C.QMediaBindableInterface {
@@ -31,6 +32,7 @@ func (this *QMediaBindableInterface) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQMediaBindableInterface constructs the type using only CGO pointers.
 func newQMediaBindableInterface(h *C.QMediaBindableInterface) *QMediaBindableInterface {
 	if h == nil {
 		return nil
@@ -38,17 +40,22 @@ func newQMediaBindableInterface(h *C.QMediaBindableInterface) *QMediaBindableInt
 	return &QMediaBindableInterface{h: h}
 }
 
+// UnsafeNewQMediaBindableInterface constructs the type using only unsafe pointers.
 func UnsafeNewQMediaBindableInterface(h unsafe.Pointer) *QMediaBindableInterface {
-	return newQMediaBindableInterface((*C.QMediaBindableInterface)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMediaBindableInterface{h: (*C.QMediaBindableInterface)(h)}
 }
 
 func (this *QMediaBindableInterface) MediaObject() *QMediaObject {
-	return UnsafeNewQMediaObject(unsafe.Pointer(C.QMediaBindableInterface_MediaObject(this.h)))
+	return UnsafeNewQMediaObject(unsafe.Pointer(C.QMediaBindableInterface_MediaObject(this.h)), nil)
 }
 
 // Delete this object from C++ memory.
 func (this *QMediaBindableInterface) Delete() {
-	C.QMediaBindableInterface_Delete(this.h)
+	C.QMediaBindableInterface_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

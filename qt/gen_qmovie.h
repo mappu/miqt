@@ -16,36 +16,44 @@ extern "C" {
 
 #ifdef __cplusplus
 class QByteArray;
+class QChildEvent;
 class QColor;
+class QEvent;
 class QIODevice;
 class QImage;
+class QMetaMethod;
 class QMetaObject;
 class QMovie;
 class QObject;
 class QPixmap;
 class QRect;
 class QSize;
+class QTimerEvent;
 #else
 typedef struct QByteArray QByteArray;
+typedef struct QChildEvent QChildEvent;
 typedef struct QColor QColor;
+typedef struct QEvent QEvent;
 typedef struct QIODevice QIODevice;
 typedef struct QImage QImage;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMovie QMovie;
 typedef struct QObject QObject;
 typedef struct QPixmap QPixmap;
 typedef struct QRect QRect;
 typedef struct QSize QSize;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
-QMovie* QMovie_new();
-QMovie* QMovie_new2(QIODevice* device);
-QMovie* QMovie_new3(struct miqt_string fileName);
-QMovie* QMovie_new4(QObject* parent);
-QMovie* QMovie_new5(QIODevice* device, struct miqt_string format);
-QMovie* QMovie_new6(QIODevice* device, struct miqt_string format, QObject* parent);
-QMovie* QMovie_new7(struct miqt_string fileName, struct miqt_string format);
-QMovie* QMovie_new8(struct miqt_string fileName, struct miqt_string format, QObject* parent);
+void QMovie_new(QMovie** outptr_QMovie, QObject** outptr_QObject);
+void QMovie_new2(QIODevice* device, QMovie** outptr_QMovie, QObject** outptr_QObject);
+void QMovie_new3(struct miqt_string fileName, QMovie** outptr_QMovie, QObject** outptr_QObject);
+void QMovie_new4(QObject* parent, QMovie** outptr_QMovie, QObject** outptr_QObject);
+void QMovie_new5(QIODevice* device, struct miqt_string format, QMovie** outptr_QMovie, QObject** outptr_QObject);
+void QMovie_new6(QIODevice* device, struct miqt_string format, QObject* parent, QMovie** outptr_QMovie, QObject** outptr_QObject);
+void QMovie_new7(struct miqt_string fileName, struct miqt_string format, QMovie** outptr_QMovie, QObject** outptr_QObject);
+void QMovie_new8(struct miqt_string fileName, struct miqt_string format, QObject* parent, QMovie** outptr_QMovie, QObject** outptr_QObject);
 QMetaObject* QMovie_MetaObject(const QMovie* self);
 void* QMovie_Metacast(QMovie* self, const char* param1);
 struct miqt_string QMovie_Tr(const char* s);
@@ -99,7 +107,21 @@ struct miqt_string QMovie_Tr2(const char* s, const char* c);
 struct miqt_string QMovie_Tr3(const char* s, const char* c, int n);
 struct miqt_string QMovie_TrUtf82(const char* s, const char* c);
 struct miqt_string QMovie_TrUtf83(const char* s, const char* c, int n);
-void QMovie_Delete(QMovie* self);
+void QMovie_override_virtual_Event(void* self, intptr_t slot);
+bool QMovie_virtualbase_Event(void* self, QEvent* event);
+void QMovie_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QMovie_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QMovie_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QMovie_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QMovie_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QMovie_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QMovie_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QMovie_virtualbase_CustomEvent(void* self, QEvent* event);
+void QMovie_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QMovie_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QMovie_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QMovie_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QMovie_Delete(QMovie* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -14,33 +14,43 @@
 #include "gen_qproperty.h"
 #include "_cgo_export.h"
 
-QPropertyBindingSourceLocation* QPropertyBindingSourceLocation_new() {
-	return new QPropertyBindingSourceLocation();
+void QPropertyBindingSourceLocation_new(QPropertyBindingSourceLocation** outptr_QPropertyBindingSourceLocation) {
+	QPropertyBindingSourceLocation* ret = new QPropertyBindingSourceLocation();
+	*outptr_QPropertyBindingSourceLocation = ret;
 }
 
-QPropertyBindingSourceLocation* QPropertyBindingSourceLocation_new2(QPropertyBindingSourceLocation* param1) {
-	return new QPropertyBindingSourceLocation(*param1);
+void QPropertyBindingSourceLocation_new2(QPropertyBindingSourceLocation* param1, QPropertyBindingSourceLocation** outptr_QPropertyBindingSourceLocation) {
+	QPropertyBindingSourceLocation* ret = new QPropertyBindingSourceLocation(*param1);
+	*outptr_QPropertyBindingSourceLocation = ret;
 }
 
-void QPropertyBindingSourceLocation_Delete(QPropertyBindingSourceLocation* self) {
-	delete self;
+void QPropertyBindingSourceLocation_Delete(QPropertyBindingSourceLocation* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QPropertyBindingSourceLocation*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QPropertyBindingError* QPropertyBindingError_new() {
-	return new QPropertyBindingError();
+void QPropertyBindingError_new(QPropertyBindingError** outptr_QPropertyBindingError) {
+	QPropertyBindingError* ret = new QPropertyBindingError();
+	*outptr_QPropertyBindingError = ret;
 }
 
-QPropertyBindingError* QPropertyBindingError_new2(int typeVal) {
-	return new QPropertyBindingError(static_cast<QPropertyBindingError::Type>(typeVal));
+void QPropertyBindingError_new2(int typeVal, QPropertyBindingError** outptr_QPropertyBindingError) {
+	QPropertyBindingError* ret = new QPropertyBindingError(static_cast<QPropertyBindingError::Type>(typeVal));
+	*outptr_QPropertyBindingError = ret;
 }
 
-QPropertyBindingError* QPropertyBindingError_new3(QPropertyBindingError* other) {
-	return new QPropertyBindingError(*other);
+void QPropertyBindingError_new3(QPropertyBindingError* other, QPropertyBindingError** outptr_QPropertyBindingError) {
+	QPropertyBindingError* ret = new QPropertyBindingError(*other);
+	*outptr_QPropertyBindingError = ret;
 }
 
-QPropertyBindingError* QPropertyBindingError_new4(int typeVal, struct miqt_string description) {
+void QPropertyBindingError_new4(int typeVal, struct miqt_string description, QPropertyBindingError** outptr_QPropertyBindingError) {
 	QString description_QString = QString::fromUtf8(description.data, description.len);
-	return new QPropertyBindingError(static_cast<QPropertyBindingError::Type>(typeVal), description_QString);
+	QPropertyBindingError* ret = new QPropertyBindingError(static_cast<QPropertyBindingError::Type>(typeVal), description_QString);
+	*outptr_QPropertyBindingError = ret;
 }
 
 void QPropertyBindingError_OperatorAssign(QPropertyBindingError* self, QPropertyBindingError* other) {
@@ -67,16 +77,22 @@ struct miqt_string QPropertyBindingError_Description(const QPropertyBindingError
 	return _ms;
 }
 
-void QPropertyBindingError_Delete(QPropertyBindingError* self) {
-	delete self;
+void QPropertyBindingError_Delete(QPropertyBindingError* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QPropertyBindingError*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QUntypedPropertyBinding* QUntypedPropertyBinding_new() {
-	return new QUntypedPropertyBinding();
+void QUntypedPropertyBinding_new(QUntypedPropertyBinding** outptr_QUntypedPropertyBinding) {
+	QUntypedPropertyBinding* ret = new QUntypedPropertyBinding();
+	*outptr_QUntypedPropertyBinding = ret;
 }
 
-QUntypedPropertyBinding* QUntypedPropertyBinding_new2(QUntypedPropertyBinding* other) {
-	return new QUntypedPropertyBinding(*other);
+void QUntypedPropertyBinding_new2(QUntypedPropertyBinding* other, QUntypedPropertyBinding** outptr_QUntypedPropertyBinding) {
+	QUntypedPropertyBinding* ret = new QUntypedPropertyBinding(*other);
+	*outptr_QUntypedPropertyBinding = ret;
 }
 
 void QUntypedPropertyBinding_OperatorAssign(QUntypedPropertyBinding* self, QUntypedPropertyBinding* other) {
@@ -95,48 +111,77 @@ QMetaType* QUntypedPropertyBinding_ValueMetaType(const QUntypedPropertyBinding* 
 	return new QMetaType(self->valueMetaType());
 }
 
-void QUntypedPropertyBinding_Delete(QUntypedPropertyBinding* self) {
-	delete self;
+void QUntypedPropertyBinding_Delete(QUntypedPropertyBinding* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QUntypedPropertyBinding*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QPropertyObserverBase* QPropertyObserverBase_new() {
-	return new QPropertyObserverBase();
+void QPropertyObserverBase_new(QPropertyObserverBase** outptr_QPropertyObserverBase) {
+	QPropertyObserverBase* ret = new QPropertyObserverBase();
+	*outptr_QPropertyObserverBase = ret;
 }
 
-QPropertyObserverBase* QPropertyObserverBase_new2(QPropertyObserverBase* param1) {
-	return new QPropertyObserverBase(*param1);
+void QPropertyObserverBase_new2(QPropertyObserverBase* param1, QPropertyObserverBase** outptr_QPropertyObserverBase) {
+	QPropertyObserverBase* ret = new QPropertyObserverBase(*param1);
+	*outptr_QPropertyObserverBase = ret;
 }
 
-void QPropertyObserverBase_Delete(QPropertyObserverBase* self) {
-	delete self;
+void QPropertyObserverBase_Delete(QPropertyObserverBase* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QPropertyObserverBase*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QPropertyObserver* QPropertyObserver_new() {
-	return new QPropertyObserver();
+void QPropertyObserver_new(QPropertyObserver** outptr_QPropertyObserver, QPropertyObserverBase** outptr_QPropertyObserverBase) {
+	QPropertyObserver* ret = new QPropertyObserver();
+	*outptr_QPropertyObserver = ret;
+	*outptr_QPropertyObserverBase = static_cast<QPropertyObserverBase*>(ret);
 }
 
-void QPropertyObserver_Delete(QPropertyObserver* self) {
-	delete self;
+void QPropertyObserver_Delete(QPropertyObserver* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QPropertyObserver*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QPropertyNotifier* QPropertyNotifier_new() {
-	return new QPropertyNotifier();
+void QPropertyNotifier_new(QPropertyNotifier** outptr_QPropertyNotifier, QPropertyObserver** outptr_QPropertyObserver, QPropertyObserverBase** outptr_QPropertyObserverBase) {
+	QPropertyNotifier* ret = new QPropertyNotifier();
+	*outptr_QPropertyNotifier = ret;
+	*outptr_QPropertyObserver = static_cast<QPropertyObserver*>(ret);
+	*outptr_QPropertyObserverBase = static_cast<QPropertyObserverBase*>(ret);
 }
 
-void QPropertyNotifier_Delete(QPropertyNotifier* self) {
-	delete self;
+void QPropertyNotifier_Delete(QPropertyNotifier* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QPropertyNotifier*>( self );
+	} else {
+		delete self;
+	}
 }
 
-void QtPrivate__QBindableInterface_Delete(QtPrivate__QBindableInterface* self) {
-	delete self;
+void QtPrivate__QBindableInterface_Delete(QtPrivate__QBindableInterface* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtPrivate::QBindableInterface*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QUntypedBindable* QUntypedBindable_new() {
-	return new QUntypedBindable();
+void QUntypedBindable_new(QUntypedBindable** outptr_QUntypedBindable) {
+	QUntypedBindable* ret = new QUntypedBindable();
+	*outptr_QUntypedBindable = ret;
 }
 
-QUntypedBindable* QUntypedBindable_new2(QUntypedBindable* param1) {
-	return new QUntypedBindable(*param1);
+void QUntypedBindable_new2(QUntypedBindable* param1, QUntypedBindable** outptr_QUntypedBindable) {
+	QUntypedBindable* ret = new QUntypedBindable(*param1);
+	*outptr_QUntypedBindable = ret;
 }
 
 bool QUntypedBindable_IsValid(const QUntypedBindable* self) {
@@ -183,7 +228,11 @@ QUntypedPropertyBinding* QUntypedBindable_MakeBinding1(const QUntypedBindable* s
 	return new QUntypedPropertyBinding(self->makeBinding(*location));
 }
 
-void QUntypedBindable_Delete(QUntypedBindable* self) {
-	delete self;
+void QUntypedBindable_Delete(QUntypedBindable* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QUntypedBindable*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -24,18 +24,18 @@ typedef struct QColor QColor;
 typedef struct QRgba64 QRgba64;
 #endif
 
-QColor* QColor_new();
-QColor* QColor_new2(int color);
-QColor* QColor_new3(int r, int g, int b);
-QColor* QColor_new4(unsigned int rgb);
-QColor* QColor_new5(QRgba64* rgba64);
-QColor* QColor_new6(struct miqt_string name);
-QColor* QColor_new7(const char* aname);
-QColor* QColor_new8(int spec);
-QColor* QColor_new9(int spec, uint16_t a1, uint16_t a2, uint16_t a3, uint16_t a4);
-QColor* QColor_new10(QColor* param1);
-QColor* QColor_new11(int r, int g, int b, int a);
-QColor* QColor_new12(int spec, uint16_t a1, uint16_t a2, uint16_t a3, uint16_t a4, uint16_t a5);
+void QColor_new(QColor** outptr_QColor);
+void QColor_new2(int color, QColor** outptr_QColor);
+void QColor_new3(int r, int g, int b, QColor** outptr_QColor);
+void QColor_new4(unsigned int rgb, QColor** outptr_QColor);
+void QColor_new5(QRgba64* rgba64, QColor** outptr_QColor);
+void QColor_new6(struct miqt_string name, QColor** outptr_QColor);
+void QColor_new7(const char* aname, QColor** outptr_QColor);
+void QColor_new8(int spec, QColor** outptr_QColor);
+void QColor_new9(int spec, uint16_t a1, uint16_t a2, uint16_t a3, uint16_t a4, QColor** outptr_QColor);
+void QColor_new10(QColor* param1, QColor** outptr_QColor);
+void QColor_new11(int r, int g, int b, int a, QColor** outptr_QColor);
+void QColor_new12(int spec, uint16_t a1, uint16_t a2, uint16_t a3, uint16_t a4, uint16_t a5, QColor** outptr_QColor);
 QColor* QColor_FromString(QAnyStringView* name);
 void QColor_OperatorAssign(QColor* self, int color);
 bool QColor_IsValid(const QColor* self);
@@ -157,7 +157,7 @@ QColor* QColor_FromHsl4(int h, int s, int l, int a);
 QColor* QColor_FromHslF4(float h, float s, float l, float a);
 QColor* QColor_Lighter1(const QColor* self, int f);
 QColor* QColor_Darker1(const QColor* self, int f);
-void QColor_Delete(QColor* self);
+void QColor_Delete(QColor* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

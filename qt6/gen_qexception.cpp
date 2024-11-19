@@ -15,7 +15,11 @@ void QtPrivate__ExceptionStore_RethrowException(const QtPrivate__ExceptionStore*
 	self->rethrowException();
 }
 
-void QtPrivate__ExceptionStore_Delete(QtPrivate__ExceptionStore* self) {
-	delete self;
+void QtPrivate__ExceptionStore_Delete(QtPrivate__ExceptionStore* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtPrivate::ExceptionStore*>( self );
+	} else {
+		delete self;
+	}
 }
 

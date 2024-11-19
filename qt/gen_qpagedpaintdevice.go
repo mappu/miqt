@@ -154,7 +154,8 @@ const (
 )
 
 type QPagedPaintDevice struct {
-	h *C.QPagedPaintDevice
+	h          *C.QPagedPaintDevice
+	isSubclass bool
 	*QPaintDevice
 }
 
@@ -172,15 +173,23 @@ func (this *QPagedPaintDevice) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQPagedPaintDevice(h *C.QPagedPaintDevice) *QPagedPaintDevice {
+// newQPagedPaintDevice constructs the type using only CGO pointers.
+func newQPagedPaintDevice(h *C.QPagedPaintDevice, h_QPaintDevice *C.QPaintDevice) *QPagedPaintDevice {
 	if h == nil {
 		return nil
 	}
-	return &QPagedPaintDevice{h: h, QPaintDevice: UnsafeNewQPaintDevice(unsafe.Pointer(h))}
+	return &QPagedPaintDevice{h: h,
+		QPaintDevice: newQPaintDevice(h_QPaintDevice)}
 }
 
-func UnsafeNewQPagedPaintDevice(h unsafe.Pointer) *QPagedPaintDevice {
-	return newQPagedPaintDevice((*C.QPagedPaintDevice)(h))
+// UnsafeNewQPagedPaintDevice constructs the type using only unsafe pointers.
+func UnsafeNewQPagedPaintDevice(h unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QPagedPaintDevice {
+	if h == nil {
+		return nil
+	}
+
+	return &QPagedPaintDevice{h: (*C.QPagedPaintDevice)(h),
+		QPaintDevice: UnsafeNewQPaintDevice(h_QPaintDevice)}
 }
 
 func (this *QPagedPaintDevice) NewPage() bool {
@@ -246,7 +255,7 @@ func (this *QPagedPaintDevice) Margins() *QPagedPaintDevice__Margins {
 
 // Delete this object from C++ memory.
 func (this *QPagedPaintDevice) Delete() {
-	C.QPagedPaintDevice_Delete(this.h)
+	C.QPagedPaintDevice_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -259,7 +268,8 @@ func (this *QPagedPaintDevice) GoGC() {
 }
 
 type QPagedPaintDevice__Margins struct {
-	h *C.QPagedPaintDevice__Margins
+	h          *C.QPagedPaintDevice__Margins
+	isSubclass bool
 }
 
 func (this *QPagedPaintDevice__Margins) cPointer() *C.QPagedPaintDevice__Margins {
@@ -276,6 +286,7 @@ func (this *QPagedPaintDevice__Margins) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPagedPaintDevice__Margins constructs the type using only CGO pointers.
 func newQPagedPaintDevice__Margins(h *C.QPagedPaintDevice__Margins) *QPagedPaintDevice__Margins {
 	if h == nil {
 		return nil
@@ -283,13 +294,18 @@ func newQPagedPaintDevice__Margins(h *C.QPagedPaintDevice__Margins) *QPagedPaint
 	return &QPagedPaintDevice__Margins{h: h}
 }
 
+// UnsafeNewQPagedPaintDevice__Margins constructs the type using only unsafe pointers.
 func UnsafeNewQPagedPaintDevice__Margins(h unsafe.Pointer) *QPagedPaintDevice__Margins {
-	return newQPagedPaintDevice__Margins((*C.QPagedPaintDevice__Margins)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPagedPaintDevice__Margins{h: (*C.QPagedPaintDevice__Margins)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *QPagedPaintDevice__Margins) Delete() {
-	C.QPagedPaintDevice__Margins_Delete(this.h)
+	C.QPagedPaintDevice__Margins_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

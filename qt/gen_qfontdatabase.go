@@ -64,7 +64,8 @@ const (
 )
 
 type QFontDatabase struct {
-	h *C.QFontDatabase
+	h          *C.QFontDatabase
+	isSubclass bool
 }
 
 func (this *QFontDatabase) cPointer() *C.QFontDatabase {
@@ -81,6 +82,7 @@ func (this *QFontDatabase) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQFontDatabase constructs the type using only CGO pointers.
 func newQFontDatabase(h *C.QFontDatabase) *QFontDatabase {
 	if h == nil {
 		return nil
@@ -88,14 +90,23 @@ func newQFontDatabase(h *C.QFontDatabase) *QFontDatabase {
 	return &QFontDatabase{h: h}
 }
 
+// UnsafeNewQFontDatabase constructs the type using only unsafe pointers.
 func UnsafeNewQFontDatabase(h unsafe.Pointer) *QFontDatabase {
-	return newQFontDatabase((*C.QFontDatabase)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QFontDatabase{h: (*C.QFontDatabase)(h)}
 }
 
 // NewQFontDatabase constructs a new QFontDatabase object.
 func NewQFontDatabase() *QFontDatabase {
-	ret := C.QFontDatabase_new()
-	return newQFontDatabase(ret)
+	var outptr_QFontDatabase *C.QFontDatabase = nil
+
+	C.QFontDatabase_new(&outptr_QFontDatabase)
+	ret := newQFontDatabase(outptr_QFontDatabase)
+	ret.isSubclass = true
+	return ret
 }
 
 func QFontDatabase_StandardSizes() []int {
@@ -449,7 +460,7 @@ func (this *QFontDatabase) IsFixedPitch2(family string, style string) bool {
 
 // Delete this object from C++ memory.
 func (this *QFontDatabase) Delete() {
-	C.QFontDatabase_Delete(this.h)
+	C.QFontDatabase_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

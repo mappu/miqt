@@ -20,7 +20,8 @@ const (
 )
 
 type QDeadlineTimer struct {
-	h *C.QDeadlineTimer
+	h          *C.QDeadlineTimer
+	isSubclass bool
 }
 
 func (this *QDeadlineTimer) cPointer() *C.QDeadlineTimer {
@@ -37,6 +38,7 @@ func (this *QDeadlineTimer) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQDeadlineTimer constructs the type using only CGO pointers.
 func newQDeadlineTimer(h *C.QDeadlineTimer) *QDeadlineTimer {
 	if h == nil {
 		return nil
@@ -44,50 +46,83 @@ func newQDeadlineTimer(h *C.QDeadlineTimer) *QDeadlineTimer {
 	return &QDeadlineTimer{h: h}
 }
 
+// UnsafeNewQDeadlineTimer constructs the type using only unsafe pointers.
 func UnsafeNewQDeadlineTimer(h unsafe.Pointer) *QDeadlineTimer {
-	return newQDeadlineTimer((*C.QDeadlineTimer)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QDeadlineTimer{h: (*C.QDeadlineTimer)(h)}
 }
 
 // NewQDeadlineTimer constructs a new QDeadlineTimer object.
 func NewQDeadlineTimer() *QDeadlineTimer {
-	ret := C.QDeadlineTimer_new()
-	return newQDeadlineTimer(ret)
+	var outptr_QDeadlineTimer *C.QDeadlineTimer = nil
+
+	C.QDeadlineTimer_new(&outptr_QDeadlineTimer)
+	ret := newQDeadlineTimer(outptr_QDeadlineTimer)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDeadlineTimer2 constructs a new QDeadlineTimer object.
 func NewQDeadlineTimer2(param1 QDeadlineTimer__ForeverConstant) *QDeadlineTimer {
-	ret := C.QDeadlineTimer_new2((C.int)(param1))
-	return newQDeadlineTimer(ret)
+	var outptr_QDeadlineTimer *C.QDeadlineTimer = nil
+
+	C.QDeadlineTimer_new2((C.int)(param1), &outptr_QDeadlineTimer)
+	ret := newQDeadlineTimer(outptr_QDeadlineTimer)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDeadlineTimer3 constructs a new QDeadlineTimer object.
 func NewQDeadlineTimer3(msecs int64) *QDeadlineTimer {
-	ret := C.QDeadlineTimer_new3((C.longlong)(msecs))
-	return newQDeadlineTimer(ret)
+	var outptr_QDeadlineTimer *C.QDeadlineTimer = nil
+
+	C.QDeadlineTimer_new3((C.longlong)(msecs), &outptr_QDeadlineTimer)
+	ret := newQDeadlineTimer(outptr_QDeadlineTimer)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDeadlineTimer4 constructs a new QDeadlineTimer object.
 func NewQDeadlineTimer4(param1 *QDeadlineTimer) *QDeadlineTimer {
-	ret := C.QDeadlineTimer_new4(param1.cPointer())
-	return newQDeadlineTimer(ret)
+	var outptr_QDeadlineTimer *C.QDeadlineTimer = nil
+
+	C.QDeadlineTimer_new4(param1.cPointer(), &outptr_QDeadlineTimer)
+	ret := newQDeadlineTimer(outptr_QDeadlineTimer)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDeadlineTimer5 constructs a new QDeadlineTimer object.
 func NewQDeadlineTimer5(type_ TimerType) *QDeadlineTimer {
-	ret := C.QDeadlineTimer_new5((C.int)(type_))
-	return newQDeadlineTimer(ret)
+	var outptr_QDeadlineTimer *C.QDeadlineTimer = nil
+
+	C.QDeadlineTimer_new5((C.int)(type_), &outptr_QDeadlineTimer)
+	ret := newQDeadlineTimer(outptr_QDeadlineTimer)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDeadlineTimer6 constructs a new QDeadlineTimer object.
 func NewQDeadlineTimer6(param1 QDeadlineTimer__ForeverConstant, type_ TimerType) *QDeadlineTimer {
-	ret := C.QDeadlineTimer_new6((C.int)(param1), (C.int)(type_))
-	return newQDeadlineTimer(ret)
+	var outptr_QDeadlineTimer *C.QDeadlineTimer = nil
+
+	C.QDeadlineTimer_new6((C.int)(param1), (C.int)(type_), &outptr_QDeadlineTimer)
+	ret := newQDeadlineTimer(outptr_QDeadlineTimer)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDeadlineTimer7 constructs a new QDeadlineTimer object.
 func NewQDeadlineTimer7(msecs int64, typeVal TimerType) *QDeadlineTimer {
-	ret := C.QDeadlineTimer_new7((C.longlong)(msecs), (C.int)(typeVal))
-	return newQDeadlineTimer(ret)
+	var outptr_QDeadlineTimer *C.QDeadlineTimer = nil
+
+	C.QDeadlineTimer_new7((C.longlong)(msecs), (C.int)(typeVal), &outptr_QDeadlineTimer)
+	ret := newQDeadlineTimer(outptr_QDeadlineTimer)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QDeadlineTimer) Swap(other *QDeadlineTimer) {
@@ -201,7 +236,7 @@ func QDeadlineTimer_Current1(timerType TimerType) *QDeadlineTimer {
 
 // Delete this object from C++ memory.
 func (this *QDeadlineTimer) Delete() {
-	C.QDeadlineTimer_Delete(this.h)
+	C.QDeadlineTimer_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

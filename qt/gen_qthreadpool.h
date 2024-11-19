@@ -15,21 +15,29 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QChildEvent;
+class QEvent;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QRunnable;
 class QThread;
 class QThreadPool;
+class QTimerEvent;
 #else
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QRunnable QRunnable;
 typedef struct QThread QThread;
 typedef struct QThreadPool QThreadPool;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
-QThreadPool* QThreadPool_new();
-QThreadPool* QThreadPool_new2(QObject* parent);
+void QThreadPool_new(QThreadPool** outptr_QThreadPool, QObject** outptr_QObject);
+void QThreadPool_new2(QObject* parent, QThreadPool** outptr_QThreadPool, QObject** outptr_QObject);
 QMetaObject* QThreadPool_MetaObject(const QThreadPool* self);
 void* QThreadPool_Metacast(QThreadPool* self, const char* param1);
 struct miqt_string QThreadPool_Tr(const char* s);
@@ -57,7 +65,21 @@ struct miqt_string QThreadPool_TrUtf82(const char* s, const char* c);
 struct miqt_string QThreadPool_TrUtf83(const char* s, const char* c, int n);
 void QThreadPool_Start2(QThreadPool* self, QRunnable* runnable, int priority);
 bool QThreadPool_WaitForDone1(QThreadPool* self, int msecs);
-void QThreadPool_Delete(QThreadPool* self);
+void QThreadPool_override_virtual_Event(void* self, intptr_t slot);
+bool QThreadPool_virtualbase_Event(void* self, QEvent* event);
+void QThreadPool_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QThreadPool_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QThreadPool_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QThreadPool_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QThreadPool_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QThreadPool_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QThreadPool_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QThreadPool_virtualbase_CustomEvent(void* self, QEvent* event);
+void QThreadPool_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QThreadPool_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QThreadPool_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QThreadPool_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QThreadPool_Delete(QThreadPool* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -10,11 +10,13 @@ import "C"
 
 import (
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
 type QKeyEventTransition struct {
-	h *C.QKeyEventTransition
+	h          *C.QKeyEventTransition
+	isSubclass bool
 	*QEventTransition
 }
 
@@ -32,39 +34,75 @@ func (this *QKeyEventTransition) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQKeyEventTransition(h *C.QKeyEventTransition) *QKeyEventTransition {
+// newQKeyEventTransition constructs the type using only CGO pointers.
+func newQKeyEventTransition(h *C.QKeyEventTransition, h_QEventTransition *C.QEventTransition, h_QAbstractTransition *C.QAbstractTransition, h_QObject *C.QObject) *QKeyEventTransition {
 	if h == nil {
 		return nil
 	}
-	return &QKeyEventTransition{h: h, QEventTransition: UnsafeNewQEventTransition(unsafe.Pointer(h))}
+	return &QKeyEventTransition{h: h,
+		QEventTransition: newQEventTransition(h_QEventTransition, h_QAbstractTransition, h_QObject)}
 }
 
-func UnsafeNewQKeyEventTransition(h unsafe.Pointer) *QKeyEventTransition {
-	return newQKeyEventTransition((*C.QKeyEventTransition)(h))
+// UnsafeNewQKeyEventTransition constructs the type using only unsafe pointers.
+func UnsafeNewQKeyEventTransition(h unsafe.Pointer, h_QEventTransition unsafe.Pointer, h_QAbstractTransition unsafe.Pointer, h_QObject unsafe.Pointer) *QKeyEventTransition {
+	if h == nil {
+		return nil
+	}
+
+	return &QKeyEventTransition{h: (*C.QKeyEventTransition)(h),
+		QEventTransition: UnsafeNewQEventTransition(h_QEventTransition, h_QAbstractTransition, h_QObject)}
 }
 
 // NewQKeyEventTransition constructs a new QKeyEventTransition object.
 func NewQKeyEventTransition() *QKeyEventTransition {
-	ret := C.QKeyEventTransition_new()
-	return newQKeyEventTransition(ret)
+	var outptr_QKeyEventTransition *C.QKeyEventTransition = nil
+	var outptr_QEventTransition *C.QEventTransition = nil
+	var outptr_QAbstractTransition *C.QAbstractTransition = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QKeyEventTransition_new(&outptr_QKeyEventTransition, &outptr_QEventTransition, &outptr_QAbstractTransition, &outptr_QObject)
+	ret := newQKeyEventTransition(outptr_QKeyEventTransition, outptr_QEventTransition, outptr_QAbstractTransition, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQKeyEventTransition2 constructs a new QKeyEventTransition object.
 func NewQKeyEventTransition2(object *QObject, typeVal QEvent__Type, key int) *QKeyEventTransition {
-	ret := C.QKeyEventTransition_new2(object.cPointer(), (C.int)(typeVal), (C.int)(key))
-	return newQKeyEventTransition(ret)
+	var outptr_QKeyEventTransition *C.QKeyEventTransition = nil
+	var outptr_QEventTransition *C.QEventTransition = nil
+	var outptr_QAbstractTransition *C.QAbstractTransition = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QKeyEventTransition_new2(object.cPointer(), (C.int)(typeVal), (C.int)(key), &outptr_QKeyEventTransition, &outptr_QEventTransition, &outptr_QAbstractTransition, &outptr_QObject)
+	ret := newQKeyEventTransition(outptr_QKeyEventTransition, outptr_QEventTransition, outptr_QAbstractTransition, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQKeyEventTransition3 constructs a new QKeyEventTransition object.
 func NewQKeyEventTransition3(sourceState *QState) *QKeyEventTransition {
-	ret := C.QKeyEventTransition_new3(sourceState.cPointer())
-	return newQKeyEventTransition(ret)
+	var outptr_QKeyEventTransition *C.QKeyEventTransition = nil
+	var outptr_QEventTransition *C.QEventTransition = nil
+	var outptr_QAbstractTransition *C.QAbstractTransition = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QKeyEventTransition_new3(sourceState.cPointer(), &outptr_QKeyEventTransition, &outptr_QEventTransition, &outptr_QAbstractTransition, &outptr_QObject)
+	ret := newQKeyEventTransition(outptr_QKeyEventTransition, outptr_QEventTransition, outptr_QAbstractTransition, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQKeyEventTransition4 constructs a new QKeyEventTransition object.
 func NewQKeyEventTransition4(object *QObject, typeVal QEvent__Type, key int, sourceState *QState) *QKeyEventTransition {
-	ret := C.QKeyEventTransition_new4(object.cPointer(), (C.int)(typeVal), (C.int)(key), sourceState.cPointer())
-	return newQKeyEventTransition(ret)
+	var outptr_QKeyEventTransition *C.QKeyEventTransition = nil
+	var outptr_QEventTransition *C.QEventTransition = nil
+	var outptr_QAbstractTransition *C.QAbstractTransition = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QKeyEventTransition_new4(object.cPointer(), (C.int)(typeVal), (C.int)(key), sourceState.cPointer(), &outptr_QKeyEventTransition, &outptr_QEventTransition, &outptr_QAbstractTransition, &outptr_QObject)
+	ret := newQKeyEventTransition(outptr_QKeyEventTransition, outptr_QEventTransition, outptr_QAbstractTransition, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QKeyEventTransition) MetaObject() *QMetaObject {
@@ -155,9 +193,82 @@ func QKeyEventTransition_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QKeyEventTransition) callVirtualBase_OnTransition(event *QEvent) {
+
+	C.QKeyEventTransition_virtualbase_OnTransition(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QKeyEventTransition) OnOnTransition(slot func(super func(event *QEvent), event *QEvent)) {
+	C.QKeyEventTransition_override_virtual_OnTransition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QKeyEventTransition_OnTransition
+func miqt_exec_callback_QKeyEventTransition_OnTransition(self *C.QKeyEventTransition, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QKeyEventTransition{h: self}).callVirtualBase_OnTransition, slotval1)
+
+}
+
+func (this *QKeyEventTransition) callVirtualBase_EventTest(event *QEvent) bool {
+
+	return (bool)(C.QKeyEventTransition_virtualbase_EventTest(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QKeyEventTransition) OnEventTest(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	C.QKeyEventTransition_override_virtual_EventTest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QKeyEventTransition_EventTest
+func miqt_exec_callback_QKeyEventTransition_EventTest(self *C.QKeyEventTransition, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QKeyEventTransition{h: self}).callVirtualBase_EventTest, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QKeyEventTransition) callVirtualBase_Event(e *QEvent) bool {
+
+	return (bool)(C.QKeyEventTransition_virtualbase_Event(unsafe.Pointer(this.h), e.cPointer()))
+
+}
+func (this *QKeyEventTransition) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	C.QKeyEventTransition_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QKeyEventTransition_Event
+func miqt_exec_callback_QKeyEventTransition_Event(self *C.QKeyEventTransition, cb C.intptr_t, e *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QEvent) bool, e *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+
+	virtualReturn := gofunc((&QKeyEventTransition{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QKeyEventTransition) Delete() {
-	C.QKeyEventTransition_Delete(this.h)
+	C.QKeyEventTransition_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

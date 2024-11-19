@@ -52,7 +52,8 @@ const (
 )
 
 type QPrintEngine struct {
-	h *C.QPrintEngine
+	h          *C.QPrintEngine
+	isSubclass bool
 }
 
 func (this *QPrintEngine) cPointer() *C.QPrintEngine {
@@ -69,6 +70,7 @@ func (this *QPrintEngine) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPrintEngine constructs the type using only CGO pointers.
 func newQPrintEngine(h *C.QPrintEngine) *QPrintEngine {
 	if h == nil {
 		return nil
@@ -76,8 +78,13 @@ func newQPrintEngine(h *C.QPrintEngine) *QPrintEngine {
 	return &QPrintEngine{h: h}
 }
 
+// UnsafeNewQPrintEngine constructs the type using only unsafe pointers.
 func UnsafeNewQPrintEngine(h unsafe.Pointer) *QPrintEngine {
-	return newQPrintEngine((*C.QPrintEngine)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPrintEngine{h: (*C.QPrintEngine)(h)}
 }
 
 func (this *QPrintEngine) SetProperty(key QPrintEngine__PrintEnginePropertyKey, value *qt.QVariant) {
@@ -113,7 +120,7 @@ func (this *QPrintEngine) OperatorAssign(param1 *QPrintEngine) {
 
 // Delete this object from C++ memory.
 func (this *QPrintEngine) Delete() {
-	C.QPrintEngine_Delete(this.h)
+	C.QPrintEngine_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

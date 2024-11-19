@@ -1,6 +1,7 @@
 #include <QByteArray>
 #include <QIODevice>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -373,7 +374,11 @@ struct miqt_string QIODevice_ReadLine1(QIODevice* self, long long maxlen) {
 	return _ms;
 }
 
-void QIODevice_Delete(QIODevice* self) {
-	delete self;
+void QIODevice_Delete(QIODevice* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QIODevice*>( self );
+	} else {
+		delete self;
+	}
 }
 

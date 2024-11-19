@@ -14,7 +14,8 @@ import (
 )
 
 type QsciCommandSet struct {
-	h *C.QsciCommandSet
+	h          *C.QsciCommandSet
+	isSubclass bool
 }
 
 func (this *QsciCommandSet) cPointer() *C.QsciCommandSet {
@@ -31,6 +32,7 @@ func (this *QsciCommandSet) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQsciCommandSet constructs the type using only CGO pointers.
 func newQsciCommandSet(h *C.QsciCommandSet) *QsciCommandSet {
 	if h == nil {
 		return nil
@@ -38,8 +40,13 @@ func newQsciCommandSet(h *C.QsciCommandSet) *QsciCommandSet {
 	return &QsciCommandSet{h: h}
 }
 
+// UnsafeNewQsciCommandSet constructs the type using only unsafe pointers.
 func UnsafeNewQsciCommandSet(h unsafe.Pointer) *QsciCommandSet {
-	return newQsciCommandSet((*C.QsciCommandSet)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QsciCommandSet{h: (*C.QsciCommandSet)(h)}
 }
 
 func (this *QsciCommandSet) ReadSettings(qs *qt6.QSettings) bool {

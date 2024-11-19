@@ -32,15 +32,15 @@ typedef struct QVector3D QVector3D;
 typedef struct QVector4D QVector4D;
 #endif
 
-QVector3D* QVector3D_new();
-QVector3D* QVector3D_new2(int param1);
-QVector3D* QVector3D_new3(float xpos, float ypos, float zpos);
-QVector3D* QVector3D_new4(QPoint* point);
-QVector3D* QVector3D_new5(QPointF* point);
-QVector3D* QVector3D_new6(QVector2D* vector);
-QVector3D* QVector3D_new7(QVector2D* vector, float zpos);
-QVector3D* QVector3D_new8(QVector4D* vector);
-QVector3D* QVector3D_new9(QVector3D* param1);
+void QVector3D_new(QVector3D** outptr_QVector3D);
+void QVector3D_new2(int param1, QVector3D** outptr_QVector3D);
+void QVector3D_new3(float xpos, float ypos, float zpos, QVector3D** outptr_QVector3D);
+void QVector3D_new4(QPoint* point, QVector3D** outptr_QVector3D);
+void QVector3D_new5(QPointF* point, QVector3D** outptr_QVector3D);
+void QVector3D_new6(QVector2D* vector, QVector3D** outptr_QVector3D);
+void QVector3D_new7(QVector2D* vector, float zpos, QVector3D** outptr_QVector3D);
+void QVector3D_new8(QVector4D* vector, QVector3D** outptr_QVector3D);
+void QVector3D_new9(QVector3D* param1, QVector3D** outptr_QVector3D);
 bool QVector3D_IsNull(const QVector3D* self);
 float QVector3D_X(const QVector3D* self);
 float QVector3D_Y(const QVector3D* self);
@@ -73,7 +73,7 @@ QVector2D* QVector3D_ToVector2D(const QVector3D* self);
 QVector4D* QVector3D_ToVector4D(const QVector3D* self);
 QPoint* QVector3D_ToPoint(const QVector3D* self);
 QPointF* QVector3D_ToPointF(const QVector3D* self);
-void QVector3D_Delete(QVector3D* self);
+void QVector3D_Delete(QVector3D* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

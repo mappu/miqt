@@ -1,5 +1,6 @@
 #include <QAbstractVideoFilter>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -18,8 +19,12 @@ void QVideoFilterRunnable_OperatorAssign(QVideoFilterRunnable* self, QVideoFilte
 	self->operator=(*param1);
 }
 
-void QVideoFilterRunnable_Delete(QVideoFilterRunnable* self) {
-	delete self;
+void QVideoFilterRunnable_Delete(QVideoFilterRunnable* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QVideoFilterRunnable*>( self );
+	} else {
+		delete self;
+	}
 }
 
 QMetaObject* QAbstractVideoFilter_MetaObject(const QAbstractVideoFilter* self) {
@@ -118,7 +123,11 @@ struct miqt_string QAbstractVideoFilter_TrUtf83(const char* s, const char* c, in
 	return _ms;
 }
 
-void QAbstractVideoFilter_Delete(QAbstractVideoFilter* self) {
-	delete self;
+void QAbstractVideoFilter_Delete(QAbstractVideoFilter* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAbstractVideoFilter*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -14,7 +14,8 @@ import (
 )
 
 type QWaitCondition struct {
-	h *C.QWaitCondition
+	h          *C.QWaitCondition
+	isSubclass bool
 }
 
 func (this *QWaitCondition) cPointer() *C.QWaitCondition {
@@ -31,6 +32,7 @@ func (this *QWaitCondition) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQWaitCondition constructs the type using only CGO pointers.
 func newQWaitCondition(h *C.QWaitCondition) *QWaitCondition {
 	if h == nil {
 		return nil
@@ -38,14 +40,23 @@ func newQWaitCondition(h *C.QWaitCondition) *QWaitCondition {
 	return &QWaitCondition{h: h}
 }
 
+// UnsafeNewQWaitCondition constructs the type using only unsafe pointers.
 func UnsafeNewQWaitCondition(h unsafe.Pointer) *QWaitCondition {
-	return newQWaitCondition((*C.QWaitCondition)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QWaitCondition{h: (*C.QWaitCondition)(h)}
 }
 
 // NewQWaitCondition constructs a new QWaitCondition object.
 func NewQWaitCondition() *QWaitCondition {
-	ret := C.QWaitCondition_new()
-	return newQWaitCondition(ret)
+	var outptr_QWaitCondition *C.QWaitCondition = nil
+
+	C.QWaitCondition_new(&outptr_QWaitCondition)
+	ret := newQWaitCondition(outptr_QWaitCondition)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QWaitCondition) Wait(lockedMutex *QMutex) bool {
@@ -90,7 +101,7 @@ func (this *QWaitCondition) Wait23(lockedReadWriteLock *QReadWriteLock, deadline
 
 // Delete this object from C++ memory.
 func (this *QWaitCondition) Delete() {
-	C.QWaitCondition_Delete(this.h)
+	C.QWaitCondition_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

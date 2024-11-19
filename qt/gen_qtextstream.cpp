@@ -11,22 +11,26 @@
 #include "gen_qtextstream.h"
 #include "_cgo_export.h"
 
-QTextStream* QTextStream_new() {
-	return new QTextStream();
+void QTextStream_new(QTextStream** outptr_QTextStream) {
+	QTextStream* ret = new QTextStream();
+	*outptr_QTextStream = ret;
 }
 
-QTextStream* QTextStream_new2(QIODevice* device) {
-	return new QTextStream(device);
+void QTextStream_new2(QIODevice* device, QTextStream** outptr_QTextStream) {
+	QTextStream* ret = new QTextStream(device);
+	*outptr_QTextStream = ret;
 }
 
-QTextStream* QTextStream_new3(struct miqt_string array) {
+void QTextStream_new3(struct miqt_string array, QTextStream** outptr_QTextStream) {
 	QByteArray array_QByteArray(array.data, array.len);
-	return new QTextStream(array_QByteArray);
+	QTextStream* ret = new QTextStream(array_QByteArray);
+	*outptr_QTextStream = ret;
 }
 
-QTextStream* QTextStream_new4(struct miqt_string array, int openMode) {
+void QTextStream_new4(struct miqt_string array, int openMode, QTextStream** outptr_QTextStream) {
 	QByteArray array_QByteArray(array.data, array.len);
-	return new QTextStream(array_QByteArray, static_cast<QIODevice::OpenMode>(openMode));
+	QTextStream* ret = new QTextStream(array_QByteArray, static_cast<QIODevice::OpenMode>(openMode));
+	*outptr_QTextStream = ret;
 }
 
 void QTextStream_SetCodec(QTextStream* self, QTextCodec* codec) {
@@ -415,7 +419,11 @@ struct miqt_string QTextStream_ReadLine1(QTextStream* self, long long maxlen) {
 	return _ms;
 }
 
-void QTextStream_Delete(QTextStream* self) {
-	delete self;
+void QTextStream_Delete(QTextStream* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QTextStream*>( self );
+	} else {
+		delete self;
+	}
 }
 

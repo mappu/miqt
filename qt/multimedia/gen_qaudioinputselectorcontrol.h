@@ -16,10 +16,14 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAudioInputSelectorControl;
+class QMediaControl;
 class QMetaObject;
+class QObject;
 #else
 typedef struct QAudioInputSelectorControl QAudioInputSelectorControl;
+typedef struct QMediaControl QMediaControl;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 #endif
 
 QMetaObject* QAudioInputSelectorControl_MetaObject(const QAudioInputSelectorControl* self);
@@ -39,7 +43,7 @@ struct miqt_string QAudioInputSelectorControl_Tr2(const char* s, const char* c);
 struct miqt_string QAudioInputSelectorControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAudioInputSelectorControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QAudioInputSelectorControl_TrUtf83(const char* s, const char* c, int n);
-void QAudioInputSelectorControl_Delete(QAudioInputSelectorControl* self);
+void QAudioInputSelectorControl_Delete(QAudioInputSelectorControl* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

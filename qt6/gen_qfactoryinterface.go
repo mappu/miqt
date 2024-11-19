@@ -14,7 +14,8 @@ import (
 )
 
 type QFactoryInterface struct {
-	h *C.QFactoryInterface
+	h          *C.QFactoryInterface
+	isSubclass bool
 }
 
 func (this *QFactoryInterface) cPointer() *C.QFactoryInterface {
@@ -31,6 +32,7 @@ func (this *QFactoryInterface) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQFactoryInterface constructs the type using only CGO pointers.
 func newQFactoryInterface(h *C.QFactoryInterface) *QFactoryInterface {
 	if h == nil {
 		return nil
@@ -38,8 +40,13 @@ func newQFactoryInterface(h *C.QFactoryInterface) *QFactoryInterface {
 	return &QFactoryInterface{h: h}
 }
 
+// UnsafeNewQFactoryInterface constructs the type using only unsafe pointers.
 func UnsafeNewQFactoryInterface(h unsafe.Pointer) *QFactoryInterface {
-	return newQFactoryInterface((*C.QFactoryInterface)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QFactoryInterface{h: (*C.QFactoryInterface)(h)}
 }
 
 func (this *QFactoryInterface) Keys() []string {
@@ -57,7 +64,7 @@ func (this *QFactoryInterface) Keys() []string {
 
 // Delete this object from C++ memory.
 func (this *QFactoryInterface) Delete() {
-	C.QFactoryInterface_Delete(this.h)
+	C.QFactoryInterface_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

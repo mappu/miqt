@@ -16,7 +16,8 @@ import (
 )
 
 type QMetaDataReaderControl struct {
-	h *C.QMetaDataReaderControl
+	h          *C.QMetaDataReaderControl
+	isSubclass bool
 	*QMediaControl
 }
 
@@ -34,15 +35,23 @@ func (this *QMetaDataReaderControl) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQMetaDataReaderControl(h *C.QMetaDataReaderControl) *QMetaDataReaderControl {
+// newQMetaDataReaderControl constructs the type using only CGO pointers.
+func newQMetaDataReaderControl(h *C.QMetaDataReaderControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QMetaDataReaderControl {
 	if h == nil {
 		return nil
 	}
-	return &QMetaDataReaderControl{h: h, QMediaControl: UnsafeNewQMediaControl(unsafe.Pointer(h))}
+	return &QMetaDataReaderControl{h: h,
+		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
 }
 
-func UnsafeNewQMetaDataReaderControl(h unsafe.Pointer) *QMetaDataReaderControl {
-	return newQMetaDataReaderControl((*C.QMetaDataReaderControl)(h))
+// UnsafeNewQMetaDataReaderControl constructs the type using only unsafe pointers.
+func UnsafeNewQMetaDataReaderControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QMetaDataReaderControl {
+	if h == nil {
+		return nil
+	}
+
+	return &QMetaDataReaderControl{h: (*C.QMetaDataReaderControl)(h),
+		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
 }
 
 func (this *QMetaDataReaderControl) MetaObject() *qt.QMetaObject {
@@ -212,7 +221,7 @@ func QMetaDataReaderControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QMetaDataReaderControl) Delete() {
-	C.QMetaDataReaderControl_Delete(this.h)
+	C.QMetaDataReaderControl_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

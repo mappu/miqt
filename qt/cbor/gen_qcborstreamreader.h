@@ -26,11 +26,11 @@ typedef struct QCborStreamReader QCborStreamReader;
 typedef struct QIODevice QIODevice;
 #endif
 
-QCborStreamReader* QCborStreamReader_new();
-QCborStreamReader* QCborStreamReader_new2(const char* data, ptrdiff_t lenVal);
-QCborStreamReader* QCborStreamReader_new3(const unsigned char* data, ptrdiff_t lenVal);
-QCborStreamReader* QCborStreamReader_new4(struct miqt_string data);
-QCborStreamReader* QCborStreamReader_new5(QIODevice* device);
+void QCborStreamReader_new(QCborStreamReader** outptr_QCborStreamReader);
+void QCborStreamReader_new2(const char* data, ptrdiff_t lenVal, QCborStreamReader** outptr_QCborStreamReader);
+void QCborStreamReader_new3(const unsigned char* data, ptrdiff_t lenVal, QCborStreamReader** outptr_QCborStreamReader);
+void QCborStreamReader_new4(struct miqt_string data, QCborStreamReader** outptr_QCborStreamReader);
+void QCborStreamReader_new5(QIODevice* device, QCborStreamReader** outptr_QCborStreamReader);
 void QCborStreamReader_SetDevice(QCborStreamReader* self, QIODevice* device);
 QIODevice* QCborStreamReader_Device(const QCborStreamReader* self);
 void QCborStreamReader_AddData(QCborStreamReader* self, struct miqt_string data);
@@ -81,7 +81,7 @@ float QCborStreamReader_ToFloat(const QCborStreamReader* self);
 double QCborStreamReader_ToDouble(const QCborStreamReader* self);
 long long QCborStreamReader_ToInteger(const QCborStreamReader* self);
 bool QCborStreamReader_Next1(QCborStreamReader* self, int maxRecursion);
-void QCborStreamReader_Delete(QCborStreamReader* self);
+void QCborStreamReader_Delete(QCborStreamReader* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

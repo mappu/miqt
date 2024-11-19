@@ -35,7 +35,8 @@ const (
 )
 
 type QTextInlineObject struct {
-	h *C.QTextInlineObject
+	h          *C.QTextInlineObject
+	isSubclass bool
 }
 
 func (this *QTextInlineObject) cPointer() *C.QTextInlineObject {
@@ -52,6 +53,7 @@ func (this *QTextInlineObject) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQTextInlineObject constructs the type using only CGO pointers.
 func newQTextInlineObject(h *C.QTextInlineObject) *QTextInlineObject {
 	if h == nil {
 		return nil
@@ -59,14 +61,23 @@ func newQTextInlineObject(h *C.QTextInlineObject) *QTextInlineObject {
 	return &QTextInlineObject{h: h}
 }
 
+// UnsafeNewQTextInlineObject constructs the type using only unsafe pointers.
 func UnsafeNewQTextInlineObject(h unsafe.Pointer) *QTextInlineObject {
-	return newQTextInlineObject((*C.QTextInlineObject)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QTextInlineObject{h: (*C.QTextInlineObject)(h)}
 }
 
 // NewQTextInlineObject constructs a new QTextInlineObject object.
 func NewQTextInlineObject() *QTextInlineObject {
-	ret := C.QTextInlineObject_new()
-	return newQTextInlineObject(ret)
+	var outptr_QTextInlineObject *C.QTextInlineObject = nil
+
+	C.QTextInlineObject_new(&outptr_QTextInlineObject)
+	ret := newQTextInlineObject(outptr_QTextInlineObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QTextInlineObject) IsValid() bool {
@@ -129,7 +140,7 @@ func (this *QTextInlineObject) Format() *QTextFormat {
 
 // Delete this object from C++ memory.
 func (this *QTextInlineObject) Delete() {
-	C.QTextInlineObject_Delete(this.h)
+	C.QTextInlineObject_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -142,7 +153,8 @@ func (this *QTextInlineObject) GoGC() {
 }
 
 type QTextLayout struct {
-	h *C.QTextLayout
+	h          *C.QTextLayout
+	isSubclass bool
 }
 
 func (this *QTextLayout) cPointer() *C.QTextLayout {
@@ -159,6 +171,7 @@ func (this *QTextLayout) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQTextLayout constructs the type using only CGO pointers.
 func newQTextLayout(h *C.QTextLayout) *QTextLayout {
 	if h == nil {
 		return nil
@@ -166,14 +179,23 @@ func newQTextLayout(h *C.QTextLayout) *QTextLayout {
 	return &QTextLayout{h: h}
 }
 
+// UnsafeNewQTextLayout constructs the type using only unsafe pointers.
 func UnsafeNewQTextLayout(h unsafe.Pointer) *QTextLayout {
-	return newQTextLayout((*C.QTextLayout)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QTextLayout{h: (*C.QTextLayout)(h)}
 }
 
 // NewQTextLayout constructs a new QTextLayout object.
 func NewQTextLayout() *QTextLayout {
-	ret := C.QTextLayout_new()
-	return newQTextLayout(ret)
+	var outptr_QTextLayout *C.QTextLayout = nil
+
+	C.QTextLayout_new(&outptr_QTextLayout)
+	ret := newQTextLayout(outptr_QTextLayout)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextLayout2 constructs a new QTextLayout object.
@@ -182,8 +204,12 @@ func NewQTextLayout2(text string) *QTextLayout {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QTextLayout_new2(text_ms)
-	return newQTextLayout(ret)
+	var outptr_QTextLayout *C.QTextLayout = nil
+
+	C.QTextLayout_new2(text_ms, &outptr_QTextLayout)
+	ret := newQTextLayout(outptr_QTextLayout)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextLayout3 constructs a new QTextLayout object.
@@ -192,14 +218,22 @@ func NewQTextLayout3(text string, font *QFont) *QTextLayout {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QTextLayout_new3(text_ms, font.cPointer())
-	return newQTextLayout(ret)
+	var outptr_QTextLayout *C.QTextLayout = nil
+
+	C.QTextLayout_new3(text_ms, font.cPointer(), &outptr_QTextLayout)
+	ret := newQTextLayout(outptr_QTextLayout)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextLayout4 constructs a new QTextLayout object.
 func NewQTextLayout4(b *QTextBlock) *QTextLayout {
-	ret := C.QTextLayout_new4(b.cPointer())
-	return newQTextLayout(ret)
+	var outptr_QTextLayout *C.QTextLayout = nil
+
+	C.QTextLayout_new4(b.cPointer(), &outptr_QTextLayout)
+	ret := newQTextLayout(outptr_QTextLayout)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextLayout5 constructs a new QTextLayout object.
@@ -208,8 +242,12 @@ func NewQTextLayout5(text string, font *QFont, paintdevice *QPaintDevice) *QText
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QTextLayout_new5(text_ms, font.cPointer(), paintdevice.cPointer())
-	return newQTextLayout(ret)
+	var outptr_QTextLayout *C.QTextLayout = nil
+
+	C.QTextLayout_new5(text_ms, font.cPointer(), paintdevice.cPointer(), &outptr_QTextLayout)
+	ret := newQTextLayout(outptr_QTextLayout)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QTextLayout) SetFont(f *QFont) {
@@ -507,7 +545,7 @@ func (this *QTextLayout) GlyphRuns2(from int, length int) []QGlyphRun {
 
 // Delete this object from C++ memory.
 func (this *QTextLayout) Delete() {
-	C.QTextLayout_Delete(this.h)
+	C.QTextLayout_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -520,7 +558,8 @@ func (this *QTextLayout) GoGC() {
 }
 
 type QTextLine struct {
-	h *C.QTextLine
+	h          *C.QTextLine
+	isSubclass bool
 }
 
 func (this *QTextLine) cPointer() *C.QTextLine {
@@ -537,6 +576,7 @@ func (this *QTextLine) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQTextLine constructs the type using only CGO pointers.
 func newQTextLine(h *C.QTextLine) *QTextLine {
 	if h == nil {
 		return nil
@@ -544,14 +584,23 @@ func newQTextLine(h *C.QTextLine) *QTextLine {
 	return &QTextLine{h: h}
 }
 
+// UnsafeNewQTextLine constructs the type using only unsafe pointers.
 func UnsafeNewQTextLine(h unsafe.Pointer) *QTextLine {
-	return newQTextLine((*C.QTextLine)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QTextLine{h: (*C.QTextLine)(h)}
 }
 
 // NewQTextLine constructs a new QTextLine object.
 func NewQTextLine() *QTextLine {
-	ret := C.QTextLine_new()
-	return newQTextLine(ret)
+	var outptr_QTextLine *C.QTextLine = nil
+
+	C.QTextLine_new(&outptr_QTextLine)
+	ret := newQTextLine(outptr_QTextLine)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QTextLine) IsValid() bool {
@@ -724,7 +773,7 @@ func (this *QTextLine) GlyphRuns2(from int, length int) []QGlyphRun {
 
 // Delete this object from C++ memory.
 func (this *QTextLine) Delete() {
-	C.QTextLine_Delete(this.h)
+	C.QTextLine_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -737,7 +786,8 @@ func (this *QTextLine) GoGC() {
 }
 
 type QTextLayout__FormatRange struct {
-	h *C.QTextLayout__FormatRange
+	h          *C.QTextLayout__FormatRange
+	isSubclass bool
 }
 
 func (this *QTextLayout__FormatRange) cPointer() *C.QTextLayout__FormatRange {
@@ -754,6 +804,7 @@ func (this *QTextLayout__FormatRange) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQTextLayout__FormatRange constructs the type using only CGO pointers.
 func newQTextLayout__FormatRange(h *C.QTextLayout__FormatRange) *QTextLayout__FormatRange {
 	if h == nil {
 		return nil
@@ -761,13 +812,18 @@ func newQTextLayout__FormatRange(h *C.QTextLayout__FormatRange) *QTextLayout__Fo
 	return &QTextLayout__FormatRange{h: h}
 }
 
+// UnsafeNewQTextLayout__FormatRange constructs the type using only unsafe pointers.
 func UnsafeNewQTextLayout__FormatRange(h unsafe.Pointer) *QTextLayout__FormatRange {
-	return newQTextLayout__FormatRange((*C.QTextLayout__FormatRange)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QTextLayout__FormatRange{h: (*C.QTextLayout__FormatRange)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *QTextLayout__FormatRange) Delete() {
-	C.QTextLayout__FormatRange_Delete(this.h)
+	C.QTextLayout__FormatRange_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -32,7 +32,8 @@ const (
 )
 
 type QTileRules struct {
-	h *C.QTileRules
+	h          *C.QTileRules
+	isSubclass bool
 }
 
 func (this *QTileRules) cPointer() *C.QTileRules {
@@ -49,6 +50,7 @@ func (this *QTileRules) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQTileRules constructs the type using only CGO pointers.
 func newQTileRules(h *C.QTileRules) *QTileRules {
 	if h == nil {
 		return nil
@@ -56,37 +58,58 @@ func newQTileRules(h *C.QTileRules) *QTileRules {
 	return &QTileRules{h: h}
 }
 
+// UnsafeNewQTileRules constructs the type using only unsafe pointers.
 func UnsafeNewQTileRules(h unsafe.Pointer) *QTileRules {
-	return newQTileRules((*C.QTileRules)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QTileRules{h: (*C.QTileRules)(h)}
 }
 
 // NewQTileRules constructs a new QTileRules object.
 func NewQTileRules(horizontalRule TileRule, verticalRule TileRule) *QTileRules {
-	ret := C.QTileRules_new((C.int)(horizontalRule), (C.int)(verticalRule))
-	return newQTileRules(ret)
+	var outptr_QTileRules *C.QTileRules = nil
+
+	C.QTileRules_new((C.int)(horizontalRule), (C.int)(verticalRule), &outptr_QTileRules)
+	ret := newQTileRules(outptr_QTileRules)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTileRules2 constructs a new QTileRules object.
 func NewQTileRules2() *QTileRules {
-	ret := C.QTileRules_new2()
-	return newQTileRules(ret)
+	var outptr_QTileRules *C.QTileRules = nil
+
+	C.QTileRules_new2(&outptr_QTileRules)
+	ret := newQTileRules(outptr_QTileRules)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTileRules3 constructs a new QTileRules object.
 func NewQTileRules3(param1 *QTileRules) *QTileRules {
-	ret := C.QTileRules_new3(param1.cPointer())
-	return newQTileRules(ret)
+	var outptr_QTileRules *C.QTileRules = nil
+
+	C.QTileRules_new3(param1.cPointer(), &outptr_QTileRules)
+	ret := newQTileRules(outptr_QTileRules)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTileRules4 constructs a new QTileRules object.
 func NewQTileRules4(rule TileRule) *QTileRules {
-	ret := C.QTileRules_new4((C.int)(rule))
-	return newQTileRules(ret)
+	var outptr_QTileRules *C.QTileRules = nil
+
+	C.QTileRules_new4((C.int)(rule), &outptr_QTileRules)
+	ret := newQTileRules(outptr_QTileRules)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QTileRules) Delete() {
-	C.QTileRules_Delete(this.h)
+	C.QTileRules_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

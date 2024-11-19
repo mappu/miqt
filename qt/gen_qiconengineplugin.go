@@ -14,7 +14,8 @@ import (
 )
 
 type QIconEnginePlugin struct {
-	h *C.QIconEnginePlugin
+	h          *C.QIconEnginePlugin
+	isSubclass bool
 	*QObject
 }
 
@@ -32,15 +33,23 @@ func (this *QIconEnginePlugin) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQIconEnginePlugin(h *C.QIconEnginePlugin) *QIconEnginePlugin {
+// newQIconEnginePlugin constructs the type using only CGO pointers.
+func newQIconEnginePlugin(h *C.QIconEnginePlugin, h_QObject *C.QObject) *QIconEnginePlugin {
 	if h == nil {
 		return nil
 	}
-	return &QIconEnginePlugin{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QIconEnginePlugin{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQIconEnginePlugin(h unsafe.Pointer) *QIconEnginePlugin {
-	return newQIconEnginePlugin((*C.QIconEnginePlugin)(h))
+// UnsafeNewQIconEnginePlugin constructs the type using only unsafe pointers.
+func UnsafeNewQIconEnginePlugin(h unsafe.Pointer, h_QObject unsafe.Pointer) *QIconEnginePlugin {
+	if h == nil {
+		return nil
+	}
+
+	return &QIconEnginePlugin{h: (*C.QIconEnginePlugin)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QIconEnginePlugin) MetaObject() *QMetaObject {
@@ -71,8 +80,12 @@ func QIconEnginePlugin_TrUtf8(s string) string {
 	return _ret
 }
 
-func (this *QIconEnginePlugin) Create() *QIconEngine {
-	return UnsafeNewQIconEngine(unsafe.Pointer(C.QIconEnginePlugin_Create(this.h)))
+func (this *QIconEnginePlugin) Create(filename string) *QIconEngine {
+	filename_ms := C.struct_miqt_string{}
+	filename_ms.data = C.CString(filename)
+	filename_ms.len = C.size_t(len(filename))
+	defer C.free(unsafe.Pointer(filename_ms.data))
+	return UnsafeNewQIconEngine(unsafe.Pointer(C.QIconEnginePlugin_Create(this.h, filename_ms)))
 }
 
 func QIconEnginePlugin_Tr2(s string, c string) string {
@@ -119,17 +132,9 @@ func QIconEnginePlugin_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QIconEnginePlugin) Create1(filename string) *QIconEngine {
-	filename_ms := C.struct_miqt_string{}
-	filename_ms.data = C.CString(filename)
-	filename_ms.len = C.size_t(len(filename))
-	defer C.free(unsafe.Pointer(filename_ms.data))
-	return UnsafeNewQIconEngine(unsafe.Pointer(C.QIconEnginePlugin_Create1(this.h, filename_ms)))
-}
-
 // Delete this object from C++ memory.
 func (this *QIconEnginePlugin) Delete() {
-	C.QIconEnginePlugin_Delete(this.h)
+	C.QIconEnginePlugin_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

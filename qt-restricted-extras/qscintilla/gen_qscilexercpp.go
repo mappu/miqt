@@ -11,6 +11,7 @@ import "C"
 import (
 	"github.com/mappu/miqt/qt"
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
@@ -76,7 +77,8 @@ const (
 )
 
 type QsciLexerCPP struct {
-	h *C.QsciLexerCPP
+	h          *C.QsciLexerCPP
+	isSubclass bool
 	*QsciLexer
 }
 
@@ -94,33 +96,59 @@ func (this *QsciLexerCPP) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQsciLexerCPP(h *C.QsciLexerCPP) *QsciLexerCPP {
+// newQsciLexerCPP constructs the type using only CGO pointers.
+func newQsciLexerCPP(h *C.QsciLexerCPP, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerCPP {
 	if h == nil {
 		return nil
 	}
-	return &QsciLexerCPP{h: h, QsciLexer: UnsafeNewQsciLexer(unsafe.Pointer(h))}
+	return &QsciLexerCPP{h: h,
+		QsciLexer: newQsciLexer(h_QsciLexer, h_QObject)}
 }
 
-func UnsafeNewQsciLexerCPP(h unsafe.Pointer) *QsciLexerCPP {
-	return newQsciLexerCPP((*C.QsciLexerCPP)(h))
+// UnsafeNewQsciLexerCPP constructs the type using only unsafe pointers.
+func UnsafeNewQsciLexerCPP(h unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerCPP {
+	if h == nil {
+		return nil
+	}
+
+	return &QsciLexerCPP{h: (*C.QsciLexerCPP)(h),
+		QsciLexer: UnsafeNewQsciLexer(h_QsciLexer, h_QObject)}
 }
 
 // NewQsciLexerCPP constructs a new QsciLexerCPP object.
 func NewQsciLexerCPP() *QsciLexerCPP {
-	ret := C.QsciLexerCPP_new()
-	return newQsciLexerCPP(ret)
+	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
+	var outptr_QsciLexer *C.QsciLexer = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QsciLexerCPP_new(&outptr_QsciLexerCPP, &outptr_QsciLexer, &outptr_QObject)
+	ret := newQsciLexerCPP(outptr_QsciLexerCPP, outptr_QsciLexer, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQsciLexerCPP2 constructs a new QsciLexerCPP object.
 func NewQsciLexerCPP2(parent *qt.QObject) *QsciLexerCPP {
-	ret := C.QsciLexerCPP_new2((*C.QObject)(parent.UnsafePointer()))
-	return newQsciLexerCPP(ret)
+	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
+	var outptr_QsciLexer *C.QsciLexer = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QsciLexerCPP_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QsciLexerCPP, &outptr_QsciLexer, &outptr_QObject)
+	ret := newQsciLexerCPP(outptr_QsciLexerCPP, outptr_QsciLexer, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQsciLexerCPP3 constructs a new QsciLexerCPP object.
 func NewQsciLexerCPP3(parent *qt.QObject, caseInsensitiveKeywords bool) *QsciLexerCPP {
-	ret := C.QsciLexerCPP_new3((*C.QObject)(parent.UnsafePointer()), (C.bool)(caseInsensitiveKeywords))
-	return newQsciLexerCPP(ret)
+	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
+	var outptr_QsciLexer *C.QsciLexer = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QsciLexerCPP_new3((*C.QObject)(parent.UnsafePointer()), (C.bool)(caseInsensitiveKeywords), &outptr_QsciLexerCPP, &outptr_QsciLexer, &outptr_QObject)
+	ret := newQsciLexerCPP(outptr_QsciLexerCPP, outptr_QsciLexer, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QsciLexerCPP) MetaObject() *qt.QMetaObject {
@@ -386,9 +414,1009 @@ func (this *QsciLexerCPP) BlockStartKeyword1(style *int) string {
 	return C.GoString(_ret)
 }
 
+func (this *QsciLexerCPP) callVirtualBase_SetFoldAtElse(fold bool) {
+
+	C.QsciLexerCPP_virtualbase_SetFoldAtElse(unsafe.Pointer(this.h), (C.bool)(fold))
+
+}
+func (this *QsciLexerCPP) OnSetFoldAtElse(slot func(super func(fold bool), fold bool)) {
+	C.QsciLexerCPP_override_virtual_SetFoldAtElse(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_SetFoldAtElse
+func miqt_exec_callback_QsciLexerCPP_SetFoldAtElse(self *C.QsciLexerCPP, cb C.intptr_t, fold C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(fold bool), fold bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(fold)
+
+	gofunc((&QsciLexerCPP{h: self}).callVirtualBase_SetFoldAtElse, slotval1)
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_SetFoldComments(fold bool) {
+
+	C.QsciLexerCPP_virtualbase_SetFoldComments(unsafe.Pointer(this.h), (C.bool)(fold))
+
+}
+func (this *QsciLexerCPP) OnSetFoldComments(slot func(super func(fold bool), fold bool)) {
+	C.QsciLexerCPP_override_virtual_SetFoldComments(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_SetFoldComments
+func miqt_exec_callback_QsciLexerCPP_SetFoldComments(self *C.QsciLexerCPP, cb C.intptr_t, fold C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(fold bool), fold bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(fold)
+
+	gofunc((&QsciLexerCPP{h: self}).callVirtualBase_SetFoldComments, slotval1)
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_SetFoldCompact(fold bool) {
+
+	C.QsciLexerCPP_virtualbase_SetFoldCompact(unsafe.Pointer(this.h), (C.bool)(fold))
+
+}
+func (this *QsciLexerCPP) OnSetFoldCompact(slot func(super func(fold bool), fold bool)) {
+	C.QsciLexerCPP_override_virtual_SetFoldCompact(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_SetFoldCompact
+func miqt_exec_callback_QsciLexerCPP_SetFoldCompact(self *C.QsciLexerCPP, cb C.intptr_t, fold C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(fold bool), fold bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(fold)
+
+	gofunc((&QsciLexerCPP{h: self}).callVirtualBase_SetFoldCompact, slotval1)
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_SetFoldPreprocessor(fold bool) {
+
+	C.QsciLexerCPP_virtualbase_SetFoldPreprocessor(unsafe.Pointer(this.h), (C.bool)(fold))
+
+}
+func (this *QsciLexerCPP) OnSetFoldPreprocessor(slot func(super func(fold bool), fold bool)) {
+	C.QsciLexerCPP_override_virtual_SetFoldPreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_SetFoldPreprocessor
+func miqt_exec_callback_QsciLexerCPP_SetFoldPreprocessor(self *C.QsciLexerCPP, cb C.intptr_t, fold C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(fold bool), fold bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(fold)
+
+	gofunc((&QsciLexerCPP{h: self}).callVirtualBase_SetFoldPreprocessor, slotval1)
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_SetStylePreprocessor(style bool) {
+
+	C.QsciLexerCPP_virtualbase_SetStylePreprocessor(unsafe.Pointer(this.h), (C.bool)(style))
+
+}
+func (this *QsciLexerCPP) OnSetStylePreprocessor(slot func(super func(style bool), style bool)) {
+	C.QsciLexerCPP_override_virtual_SetStylePreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_SetStylePreprocessor
+func miqt_exec_callback_QsciLexerCPP_SetStylePreprocessor(self *C.QsciLexerCPP, cb C.intptr_t, style C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style bool), style bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(style)
+
+	gofunc((&QsciLexerCPP{h: self}).callVirtualBase_SetStylePreprocessor, slotval1)
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_Language() string {
+
+	_ret := C.QsciLexerCPP_virtualbase_Language(unsafe.Pointer(this.h))
+	return C.GoString(_ret)
+
+}
+func (this *QsciLexerCPP) OnLanguage(slot func(super func() string) string) {
+	C.QsciLexerCPP_override_virtual_Language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_Language
+func miqt_exec_callback_QsciLexerCPP_Language(self *C.QsciLexerCPP, cb C.intptr_t) *C.const_char {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() string) string)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_Language)
+	virtualReturn_Cstring := C.CString(virtualReturn)
+	defer C.free(unsafe.Pointer(virtualReturn_Cstring))
+
+	return virtualReturn_Cstring
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_Lexer() string {
+
+	_ret := C.QsciLexerCPP_virtualbase_Lexer(unsafe.Pointer(this.h))
+	return C.GoString(_ret)
+
+}
+func (this *QsciLexerCPP) OnLexer(slot func(super func() string) string) {
+	C.QsciLexerCPP_override_virtual_Lexer(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_Lexer
+func miqt_exec_callback_QsciLexerCPP_Lexer(self *C.QsciLexerCPP, cb C.intptr_t) *C.const_char {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() string) string)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_Lexer)
+	virtualReturn_Cstring := C.CString(virtualReturn)
+	defer C.free(unsafe.Pointer(virtualReturn_Cstring))
+
+	return virtualReturn_Cstring
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_LexerId() int {
+
+	return (int)(C.QsciLexerCPP_virtualbase_LexerId(unsafe.Pointer(this.h)))
+
+}
+func (this *QsciLexerCPP) OnLexerId(slot func(super func() int) int) {
+	C.QsciLexerCPP_override_virtual_LexerId(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_LexerId
+func miqt_exec_callback_QsciLexerCPP_LexerId(self *C.QsciLexerCPP, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_LexerId)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_AutoCompletionFillups() string {
+
+	_ret := C.QsciLexerCPP_virtualbase_AutoCompletionFillups(unsafe.Pointer(this.h))
+	return C.GoString(_ret)
+
+}
+func (this *QsciLexerCPP) OnAutoCompletionFillups(slot func(super func() string) string) {
+	C.QsciLexerCPP_override_virtual_AutoCompletionFillups(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_AutoCompletionFillups
+func miqt_exec_callback_QsciLexerCPP_AutoCompletionFillups(self *C.QsciLexerCPP, cb C.intptr_t) *C.const_char {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() string) string)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_AutoCompletionFillups)
+	virtualReturn_Cstring := C.CString(virtualReturn)
+	defer C.free(unsafe.Pointer(virtualReturn_Cstring))
+
+	return virtualReturn_Cstring
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_AutoCompletionWordSeparators() []string {
+
+	var _ma C.struct_miqt_array = C.QsciLexerCPP_virtualbase_AutoCompletionWordSeparators(unsafe.Pointer(this.h))
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
+		_ret[i] = _lv_ret
+	}
+	return _ret
+
+}
+func (this *QsciLexerCPP) OnAutoCompletionWordSeparators(slot func(super func() []string) []string) {
+	C.QsciLexerCPP_override_virtual_AutoCompletionWordSeparators(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_AutoCompletionWordSeparators
+func miqt_exec_callback_QsciLexerCPP_AutoCompletionWordSeparators(self *C.QsciLexerCPP, cb C.intptr_t) C.struct_miqt_array {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() []string) []string)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_AutoCompletionWordSeparators)
+	virtualReturn_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	defer C.free(unsafe.Pointer(virtualReturn_CArray))
+	for i := range virtualReturn {
+		virtualReturn_i_ms := C.struct_miqt_string{}
+		virtualReturn_i_ms.data = C.CString(virtualReturn[i])
+		virtualReturn_i_ms.len = C.size_t(len(virtualReturn[i]))
+		defer C.free(unsafe.Pointer(virtualReturn_i_ms.data))
+		virtualReturn_CArray[i] = virtualReturn_i_ms
+	}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+
+	return virtualReturn_ma
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_BlockEnd(style *int) string {
+
+	_ret := C.QsciLexerCPP_virtualbase_BlockEnd(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
+	return C.GoString(_ret)
+
+}
+func (this *QsciLexerCPP) OnBlockEnd(slot func(super func(style *int) string, style *int) string) {
+	C.QsciLexerCPP_override_virtual_BlockEnd(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_BlockEnd
+func miqt_exec_callback_QsciLexerCPP_BlockEnd(self *C.QsciLexerCPP, cb C.intptr_t, style *C.int) *C.const_char {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style *int) string, style *int) string)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (*int)(unsafe.Pointer(style))
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_BlockEnd, slotval1)
+	virtualReturn_Cstring := C.CString(virtualReturn)
+	defer C.free(unsafe.Pointer(virtualReturn_Cstring))
+
+	return virtualReturn_Cstring
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_BlockLookback() int {
+
+	return (int)(C.QsciLexerCPP_virtualbase_BlockLookback(unsafe.Pointer(this.h)))
+
+}
+func (this *QsciLexerCPP) OnBlockLookback(slot func(super func() int) int) {
+	C.QsciLexerCPP_override_virtual_BlockLookback(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_BlockLookback
+func miqt_exec_callback_QsciLexerCPP_BlockLookback(self *C.QsciLexerCPP, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_BlockLookback)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_BlockStart(style *int) string {
+
+	_ret := C.QsciLexerCPP_virtualbase_BlockStart(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
+	return C.GoString(_ret)
+
+}
+func (this *QsciLexerCPP) OnBlockStart(slot func(super func(style *int) string, style *int) string) {
+	C.QsciLexerCPP_override_virtual_BlockStart(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_BlockStart
+func miqt_exec_callback_QsciLexerCPP_BlockStart(self *C.QsciLexerCPP, cb C.intptr_t, style *C.int) *C.const_char {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style *int) string, style *int) string)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (*int)(unsafe.Pointer(style))
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_BlockStart, slotval1)
+	virtualReturn_Cstring := C.CString(virtualReturn)
+	defer C.free(unsafe.Pointer(virtualReturn_Cstring))
+
+	return virtualReturn_Cstring
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_BlockStartKeyword(style *int) string {
+
+	_ret := C.QsciLexerCPP_virtualbase_BlockStartKeyword(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
+	return C.GoString(_ret)
+
+}
+func (this *QsciLexerCPP) OnBlockStartKeyword(slot func(super func(style *int) string, style *int) string) {
+	C.QsciLexerCPP_override_virtual_BlockStartKeyword(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_BlockStartKeyword
+func miqt_exec_callback_QsciLexerCPP_BlockStartKeyword(self *C.QsciLexerCPP, cb C.intptr_t, style *C.int) *C.const_char {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style *int) string, style *int) string)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (*int)(unsafe.Pointer(style))
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_BlockStartKeyword, slotval1)
+	virtualReturn_Cstring := C.CString(virtualReturn)
+	defer C.free(unsafe.Pointer(virtualReturn_Cstring))
+
+	return virtualReturn_Cstring
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_BraceStyle() int {
+
+	return (int)(C.QsciLexerCPP_virtualbase_BraceStyle(unsafe.Pointer(this.h)))
+
+}
+func (this *QsciLexerCPP) OnBraceStyle(slot func(super func() int) int) {
+	C.QsciLexerCPP_override_virtual_BraceStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_BraceStyle
+func miqt_exec_callback_QsciLexerCPP_BraceStyle(self *C.QsciLexerCPP, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_BraceStyle)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_CaseSensitive() bool {
+
+	return (bool)(C.QsciLexerCPP_virtualbase_CaseSensitive(unsafe.Pointer(this.h)))
+
+}
+func (this *QsciLexerCPP) OnCaseSensitive(slot func(super func() bool) bool) {
+	C.QsciLexerCPP_override_virtual_CaseSensitive(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_CaseSensitive
+func miqt_exec_callback_QsciLexerCPP_CaseSensitive(self *C.QsciLexerCPP, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_CaseSensitive)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_Color(style int) *qt.QColor {
+
+	_ret := C.QsciLexerCPP_virtualbase_Color(unsafe.Pointer(this.h), (C.int)(style))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QsciLexerCPP) OnColor(slot func(super func(style int) *qt.QColor, style int) *qt.QColor) {
+	C.QsciLexerCPP_override_virtual_Color(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_Color
+func miqt_exec_callback_QsciLexerCPP_Color(self *C.QsciLexerCPP, cb C.intptr_t, style C.int) *C.QColor {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) *qt.QColor, style int) *qt.QColor)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(style)
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_Color, slotval1)
+
+	return (*C.QColor)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_EolFill(style int) bool {
+
+	return (bool)(C.QsciLexerCPP_virtualbase_EolFill(unsafe.Pointer(this.h), (C.int)(style)))
+
+}
+func (this *QsciLexerCPP) OnEolFill(slot func(super func(style int) bool, style int) bool) {
+	C.QsciLexerCPP_override_virtual_EolFill(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_EolFill
+func miqt_exec_callback_QsciLexerCPP_EolFill(self *C.QsciLexerCPP, cb C.intptr_t, style C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) bool, style int) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(style)
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_EolFill, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_Font(style int) *qt.QFont {
+
+	_ret := C.QsciLexerCPP_virtualbase_Font(unsafe.Pointer(this.h), (C.int)(style))
+	_goptr := qt.UnsafeNewQFont(unsafe.Pointer(_ret))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QsciLexerCPP) OnFont(slot func(super func(style int) *qt.QFont, style int) *qt.QFont) {
+	C.QsciLexerCPP_override_virtual_Font(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_Font
+func miqt_exec_callback_QsciLexerCPP_Font(self *C.QsciLexerCPP, cb C.intptr_t, style C.int) *C.QFont {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) *qt.QFont, style int) *qt.QFont)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(style)
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_Font, slotval1)
+
+	return (*C.QFont)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_IndentationGuideView() int {
+
+	return (int)(C.QsciLexerCPP_virtualbase_IndentationGuideView(unsafe.Pointer(this.h)))
+
+}
+func (this *QsciLexerCPP) OnIndentationGuideView(slot func(super func() int) int) {
+	C.QsciLexerCPP_override_virtual_IndentationGuideView(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_IndentationGuideView
+func miqt_exec_callback_QsciLexerCPP_IndentationGuideView(self *C.QsciLexerCPP, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_IndentationGuideView)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_Keywords(set int) string {
+
+	_ret := C.QsciLexerCPP_virtualbase_Keywords(unsafe.Pointer(this.h), (C.int)(set))
+	return C.GoString(_ret)
+
+}
+func (this *QsciLexerCPP) OnKeywords(slot func(super func(set int) string, set int) string) {
+	C.QsciLexerCPP_override_virtual_Keywords(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_Keywords
+func miqt_exec_callback_QsciLexerCPP_Keywords(self *C.QsciLexerCPP, cb C.intptr_t, set C.int) *C.const_char {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(set int) string, set int) string)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(set)
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_Keywords, slotval1)
+	virtualReturn_Cstring := C.CString(virtualReturn)
+	defer C.free(unsafe.Pointer(virtualReturn_Cstring))
+
+	return virtualReturn_Cstring
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_DefaultStyle() int {
+
+	return (int)(C.QsciLexerCPP_virtualbase_DefaultStyle(unsafe.Pointer(this.h)))
+
+}
+func (this *QsciLexerCPP) OnDefaultStyle(slot func(super func() int) int) {
+	C.QsciLexerCPP_override_virtual_DefaultStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_DefaultStyle
+func miqt_exec_callback_QsciLexerCPP_DefaultStyle(self *C.QsciLexerCPP, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_DefaultStyle)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_Description(style int) string {
+
+	var _ms C.struct_miqt_string = C.QsciLexerCPP_virtualbase_Description(unsafe.Pointer(this.h), (C.int)(style))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
+	return _ret
+}
+func (this *QsciLexerCPP) OnDescription(slot func(super func(style int) string, style int) string) {
+	C.QsciLexerCPP_override_virtual_Description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_Description
+func miqt_exec_callback_QsciLexerCPP_Description(self *C.QsciLexerCPP, cb C.intptr_t, style C.int) C.struct_miqt_string {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) string, style int) string)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(style)
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_Description, slotval1)
+	virtualReturn_ms := C.struct_miqt_string{}
+	virtualReturn_ms.data = C.CString(virtualReturn)
+	virtualReturn_ms.len = C.size_t(len(virtualReturn))
+	defer C.free(unsafe.Pointer(virtualReturn_ms.data))
+
+	return virtualReturn_ms
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_Paper(style int) *qt.QColor {
+
+	_ret := C.QsciLexerCPP_virtualbase_Paper(unsafe.Pointer(this.h), (C.int)(style))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QsciLexerCPP) OnPaper(slot func(super func(style int) *qt.QColor, style int) *qt.QColor) {
+	C.QsciLexerCPP_override_virtual_Paper(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_Paper
+func miqt_exec_callback_QsciLexerCPP_Paper(self *C.QsciLexerCPP, cb C.intptr_t, style C.int) *C.QColor {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) *qt.QColor, style int) *qt.QColor)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(style)
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_Paper, slotval1)
+
+	return (*C.QColor)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_DefaultColorWithStyle(style int) *qt.QColor {
+
+	_ret := C.QsciLexerCPP_virtualbase_DefaultColorWithStyle(unsafe.Pointer(this.h), (C.int)(style))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QsciLexerCPP) OnDefaultColorWithStyle(slot func(super func(style int) *qt.QColor, style int) *qt.QColor) {
+	C.QsciLexerCPP_override_virtual_DefaultColorWithStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_DefaultColorWithStyle
+func miqt_exec_callback_QsciLexerCPP_DefaultColorWithStyle(self *C.QsciLexerCPP, cb C.intptr_t, style C.int) *C.QColor {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) *qt.QColor, style int) *qt.QColor)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(style)
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_DefaultColorWithStyle, slotval1)
+
+	return (*C.QColor)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_DefaultEolFill(style int) bool {
+
+	return (bool)(C.QsciLexerCPP_virtualbase_DefaultEolFill(unsafe.Pointer(this.h), (C.int)(style)))
+
+}
+func (this *QsciLexerCPP) OnDefaultEolFill(slot func(super func(style int) bool, style int) bool) {
+	C.QsciLexerCPP_override_virtual_DefaultEolFill(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_DefaultEolFill
+func miqt_exec_callback_QsciLexerCPP_DefaultEolFill(self *C.QsciLexerCPP, cb C.intptr_t, style C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) bool, style int) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(style)
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_DefaultEolFill, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_DefaultFontWithStyle(style int) *qt.QFont {
+
+	_ret := C.QsciLexerCPP_virtualbase_DefaultFontWithStyle(unsafe.Pointer(this.h), (C.int)(style))
+	_goptr := qt.UnsafeNewQFont(unsafe.Pointer(_ret))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QsciLexerCPP) OnDefaultFontWithStyle(slot func(super func(style int) *qt.QFont, style int) *qt.QFont) {
+	C.QsciLexerCPP_override_virtual_DefaultFontWithStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_DefaultFontWithStyle
+func miqt_exec_callback_QsciLexerCPP_DefaultFontWithStyle(self *C.QsciLexerCPP, cb C.intptr_t, style C.int) *C.QFont {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) *qt.QFont, style int) *qt.QFont)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(style)
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_DefaultFontWithStyle, slotval1)
+
+	return (*C.QFont)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_DefaultPaperWithStyle(style int) *qt.QColor {
+
+	_ret := C.QsciLexerCPP_virtualbase_DefaultPaperWithStyle(unsafe.Pointer(this.h), (C.int)(style))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QsciLexerCPP) OnDefaultPaperWithStyle(slot func(super func(style int) *qt.QColor, style int) *qt.QColor) {
+	C.QsciLexerCPP_override_virtual_DefaultPaperWithStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_DefaultPaperWithStyle
+func miqt_exec_callback_QsciLexerCPP_DefaultPaperWithStyle(self *C.QsciLexerCPP, cb C.intptr_t, style C.int) *C.QColor {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) *qt.QColor, style int) *qt.QColor)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(style)
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_DefaultPaperWithStyle, slotval1)
+
+	return (*C.QColor)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_SetEditor(editor *QsciScintilla) {
+
+	C.QsciLexerCPP_virtualbase_SetEditor(unsafe.Pointer(this.h), editor.cPointer())
+
+}
+func (this *QsciLexerCPP) OnSetEditor(slot func(super func(editor *QsciScintilla), editor *QsciScintilla)) {
+	C.QsciLexerCPP_override_virtual_SetEditor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_SetEditor
+func miqt_exec_callback_QsciLexerCPP_SetEditor(self *C.QsciLexerCPP, cb C.intptr_t, editor *C.QsciScintilla) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(editor *QsciScintilla), editor *QsciScintilla))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQsciScintilla(unsafe.Pointer(editor), nil, nil, nil, nil, nil, nil)
+
+	gofunc((&QsciLexerCPP{h: self}).callVirtualBase_SetEditor, slotval1)
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_RefreshProperties() {
+
+	C.QsciLexerCPP_virtualbase_RefreshProperties(unsafe.Pointer(this.h))
+
+}
+func (this *QsciLexerCPP) OnRefreshProperties(slot func(super func())) {
+	C.QsciLexerCPP_override_virtual_RefreshProperties(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_RefreshProperties
+func miqt_exec_callback_QsciLexerCPP_RefreshProperties(self *C.QsciLexerCPP, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QsciLexerCPP{h: self}).callVirtualBase_RefreshProperties)
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_StyleBitsNeeded() int {
+
+	return (int)(C.QsciLexerCPP_virtualbase_StyleBitsNeeded(unsafe.Pointer(this.h)))
+
+}
+func (this *QsciLexerCPP) OnStyleBitsNeeded(slot func(super func() int) int) {
+	C.QsciLexerCPP_override_virtual_StyleBitsNeeded(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_StyleBitsNeeded
+func miqt_exec_callback_QsciLexerCPP_StyleBitsNeeded(self *C.QsciLexerCPP, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_StyleBitsNeeded)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_WordCharacters() string {
+
+	_ret := C.QsciLexerCPP_virtualbase_WordCharacters(unsafe.Pointer(this.h))
+	return C.GoString(_ret)
+
+}
+func (this *QsciLexerCPP) OnWordCharacters(slot func(super func() string) string) {
+	C.QsciLexerCPP_override_virtual_WordCharacters(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_WordCharacters
+func miqt_exec_callback_QsciLexerCPP_WordCharacters(self *C.QsciLexerCPP, cb C.intptr_t) *C.const_char {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() string) string)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_WordCharacters)
+	virtualReturn_Cstring := C.CString(virtualReturn)
+	defer C.free(unsafe.Pointer(virtualReturn_Cstring))
+
+	return virtualReturn_Cstring
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_SetAutoIndentStyle(autoindentstyle int) {
+
+	C.QsciLexerCPP_virtualbase_SetAutoIndentStyle(unsafe.Pointer(this.h), (C.int)(autoindentstyle))
+
+}
+func (this *QsciLexerCPP) OnSetAutoIndentStyle(slot func(super func(autoindentstyle int), autoindentstyle int)) {
+	C.QsciLexerCPP_override_virtual_SetAutoIndentStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_SetAutoIndentStyle
+func miqt_exec_callback_QsciLexerCPP_SetAutoIndentStyle(self *C.QsciLexerCPP, cb C.intptr_t, autoindentstyle C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(autoindentstyle int), autoindentstyle int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(autoindentstyle)
+
+	gofunc((&QsciLexerCPP{h: self}).callVirtualBase_SetAutoIndentStyle, slotval1)
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_SetColor(c *qt.QColor, style int) {
+
+	C.QsciLexerCPP_virtualbase_SetColor(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()), (C.int)(style))
+
+}
+func (this *QsciLexerCPP) OnSetColor(slot func(super func(c *qt.QColor, style int), c *qt.QColor, style int)) {
+	C.QsciLexerCPP_override_virtual_SetColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_SetColor
+func miqt_exec_callback_QsciLexerCPP_SetColor(self *C.QsciLexerCPP, cb C.intptr_t, c *C.QColor, style C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(c *qt.QColor, style int), c *qt.QColor, style int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQColor(unsafe.Pointer(c))
+	slotval2 := (int)(style)
+
+	gofunc((&QsciLexerCPP{h: self}).callVirtualBase_SetColor, slotval1, slotval2)
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_SetEolFill(eoffill bool, style int) {
+
+	C.QsciLexerCPP_virtualbase_SetEolFill(unsafe.Pointer(this.h), (C.bool)(eoffill), (C.int)(style))
+
+}
+func (this *QsciLexerCPP) OnSetEolFill(slot func(super func(eoffill bool, style int), eoffill bool, style int)) {
+	C.QsciLexerCPP_override_virtual_SetEolFill(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_SetEolFill
+func miqt_exec_callback_QsciLexerCPP_SetEolFill(self *C.QsciLexerCPP, cb C.intptr_t, eoffill C.bool, style C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eoffill bool, style int), eoffill bool, style int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(eoffill)
+
+	slotval2 := (int)(style)
+
+	gofunc((&QsciLexerCPP{h: self}).callVirtualBase_SetEolFill, slotval1, slotval2)
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_SetFont(f *qt.QFont, style int) {
+
+	C.QsciLexerCPP_virtualbase_SetFont(unsafe.Pointer(this.h), (*C.QFont)(f.UnsafePointer()), (C.int)(style))
+
+}
+func (this *QsciLexerCPP) OnSetFont(slot func(super func(f *qt.QFont, style int), f *qt.QFont, style int)) {
+	C.QsciLexerCPP_override_virtual_SetFont(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_SetFont
+func miqt_exec_callback_QsciLexerCPP_SetFont(self *C.QsciLexerCPP, cb C.intptr_t, f *C.QFont, style C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(f *qt.QFont, style int), f *qt.QFont, style int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQFont(unsafe.Pointer(f))
+	slotval2 := (int)(style)
+
+	gofunc((&QsciLexerCPP{h: self}).callVirtualBase_SetFont, slotval1, slotval2)
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_SetPaper(c *qt.QColor, style int) {
+
+	C.QsciLexerCPP_virtualbase_SetPaper(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()), (C.int)(style))
+
+}
+func (this *QsciLexerCPP) OnSetPaper(slot func(super func(c *qt.QColor, style int), c *qt.QColor, style int)) {
+	C.QsciLexerCPP_override_virtual_SetPaper(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_SetPaper
+func miqt_exec_callback_QsciLexerCPP_SetPaper(self *C.QsciLexerCPP, cb C.intptr_t, c *C.QColor, style C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(c *qt.QColor, style int), c *qt.QColor, style int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQColor(unsafe.Pointer(c))
+	slotval2 := (int)(style)
+
+	gofunc((&QsciLexerCPP{h: self}).callVirtualBase_SetPaper, slotval1, slotval2)
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_ReadProperties(qs *qt.QSettings, prefix string) bool {
+	prefix_ms := C.struct_miqt_string{}
+	prefix_ms.data = C.CString(prefix)
+	prefix_ms.len = C.size_t(len(prefix))
+	defer C.free(unsafe.Pointer(prefix_ms.data))
+
+	return (bool)(C.QsciLexerCPP_virtualbase_ReadProperties(unsafe.Pointer(this.h), (*C.QSettings)(qs.UnsafePointer()), prefix_ms))
+
+}
+func (this *QsciLexerCPP) OnReadProperties(slot func(super func(qs *qt.QSettings, prefix string) bool, qs *qt.QSettings, prefix string) bool) {
+	C.QsciLexerCPP_override_virtual_ReadProperties(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_ReadProperties
+func miqt_exec_callback_QsciLexerCPP_ReadProperties(self *C.QsciLexerCPP, cb C.intptr_t, qs *C.QSettings, prefix C.struct_miqt_string) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(qs *qt.QSettings, prefix string) bool, qs *qt.QSettings, prefix string) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQSettings(unsafe.Pointer(qs), nil)
+	var prefix_ms C.struct_miqt_string = prefix
+	prefix_ret := C.GoStringN(prefix_ms.data, C.int(int64(prefix_ms.len)))
+	C.free(unsafe.Pointer(prefix_ms.data))
+	slotval2 := prefix_ret
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_ReadProperties, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QsciLexerCPP) callVirtualBase_WriteProperties(qs *qt.QSettings, prefix string) bool {
+	prefix_ms := C.struct_miqt_string{}
+	prefix_ms.data = C.CString(prefix)
+	prefix_ms.len = C.size_t(len(prefix))
+	defer C.free(unsafe.Pointer(prefix_ms.data))
+
+	return (bool)(C.QsciLexerCPP_virtualbase_WriteProperties(unsafe.Pointer(this.h), (*C.QSettings)(qs.UnsafePointer()), prefix_ms))
+
+}
+func (this *QsciLexerCPP) OnWriteProperties(slot func(super func(qs *qt.QSettings, prefix string) bool, qs *qt.QSettings, prefix string) bool) {
+	C.QsciLexerCPP_override_virtual_WriteProperties(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerCPP_WriteProperties
+func miqt_exec_callback_QsciLexerCPP_WriteProperties(self *C.QsciLexerCPP, cb C.intptr_t, qs *C.QSettings, prefix C.struct_miqt_string) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(qs *qt.QSettings, prefix string) bool, qs *qt.QSettings, prefix string) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQSettings(unsafe.Pointer(qs), nil)
+	var prefix_ms C.struct_miqt_string = prefix
+	prefix_ret := C.GoStringN(prefix_ms.data, C.int(int64(prefix_ms.len)))
+	C.free(unsafe.Pointer(prefix_ms.data))
+	slotval2 := prefix_ret
+
+	virtualReturn := gofunc((&QsciLexerCPP{h: self}).callVirtualBase_WriteProperties, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QsciLexerCPP) Delete() {
-	C.QsciLexerCPP_Delete(this.h)
+	C.QsciLexerCPP_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

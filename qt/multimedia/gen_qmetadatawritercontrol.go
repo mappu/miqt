@@ -16,7 +16,8 @@ import (
 )
 
 type QMetaDataWriterControl struct {
-	h *C.QMetaDataWriterControl
+	h          *C.QMetaDataWriterControl
+	isSubclass bool
 	*QMediaControl
 }
 
@@ -34,15 +35,23 @@ func (this *QMetaDataWriterControl) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQMetaDataWriterControl(h *C.QMetaDataWriterControl) *QMetaDataWriterControl {
+// newQMetaDataWriterControl constructs the type using only CGO pointers.
+func newQMetaDataWriterControl(h *C.QMetaDataWriterControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QMetaDataWriterControl {
 	if h == nil {
 		return nil
 	}
-	return &QMetaDataWriterControl{h: h, QMediaControl: UnsafeNewQMediaControl(unsafe.Pointer(h))}
+	return &QMetaDataWriterControl{h: h,
+		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
 }
 
-func UnsafeNewQMetaDataWriterControl(h unsafe.Pointer) *QMetaDataWriterControl {
-	return newQMetaDataWriterControl((*C.QMetaDataWriterControl)(h))
+// UnsafeNewQMetaDataWriterControl constructs the type using only unsafe pointers.
+func UnsafeNewQMetaDataWriterControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QMetaDataWriterControl {
+	if h == nil {
+		return nil
+	}
+
+	return &QMetaDataWriterControl{h: (*C.QMetaDataWriterControl)(h),
+		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
 }
 
 func (this *QMetaDataWriterControl) MetaObject() *qt.QMetaObject {
@@ -244,7 +253,7 @@ func QMetaDataWriterControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QMetaDataWriterControl) Delete() {
-	C.QMetaDataWriterControl_Delete(this.h)
+	C.QMetaDataWriterControl_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

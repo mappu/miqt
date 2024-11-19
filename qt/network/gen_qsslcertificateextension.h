@@ -22,8 +22,8 @@ typedef struct QSslCertificateExtension QSslCertificateExtension;
 typedef struct QVariant QVariant;
 #endif
 
-QSslCertificateExtension* QSslCertificateExtension_new();
-QSslCertificateExtension* QSslCertificateExtension_new2(QSslCertificateExtension* other);
+void QSslCertificateExtension_new(QSslCertificateExtension** outptr_QSslCertificateExtension);
+void QSslCertificateExtension_new2(QSslCertificateExtension* other, QSslCertificateExtension** outptr_QSslCertificateExtension);
 void QSslCertificateExtension_OperatorAssign(QSslCertificateExtension* self, QSslCertificateExtension* other);
 void QSslCertificateExtension_Swap(QSslCertificateExtension* self, QSslCertificateExtension* other);
 struct miqt_string QSslCertificateExtension_Oid(const QSslCertificateExtension* self);
@@ -31,7 +31,7 @@ struct miqt_string QSslCertificateExtension_Name(const QSslCertificateExtension*
 QVariant* QSslCertificateExtension_Value(const QSslCertificateExtension* self);
 bool QSslCertificateExtension_IsCritical(const QSslCertificateExtension* self);
 bool QSslCertificateExtension_IsSupported(const QSslCertificateExtension* self);
-void QSslCertificateExtension_Delete(QSslCertificateExtension* self);
+void QSslCertificateExtension_Delete(QSslCertificateExtension* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

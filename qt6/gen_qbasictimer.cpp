@@ -4,8 +4,9 @@
 #include "gen_qbasictimer.h"
 #include "_cgo_export.h"
 
-QBasicTimer* QBasicTimer_new() {
-	return new QBasicTimer();
+void QBasicTimer_new(QBasicTimer** outptr_QBasicTimer) {
+	QBasicTimer* ret = new QBasicTimer();
+	*outptr_QBasicTimer = ret;
 }
 
 void QBasicTimer_Swap(QBasicTimer* self, QBasicTimer* other) {
@@ -32,7 +33,11 @@ void QBasicTimer_Stop(QBasicTimer* self) {
 	self->stop();
 }
 
-void QBasicTimer_Delete(QBasicTimer* self) {
-	delete self;
+void QBasicTimer_Delete(QBasicTimer* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QBasicTimer*>( self );
+	} else {
+		delete self;
+	}
 }
 

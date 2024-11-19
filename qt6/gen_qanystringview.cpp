@@ -8,26 +8,31 @@
 #include "gen_qanystringview.h"
 #include "_cgo_export.h"
 
-QAnyStringView* QAnyStringView_new() {
-	return new QAnyStringView();
+void QAnyStringView_new(QAnyStringView** outptr_QAnyStringView) {
+	QAnyStringView* ret = new QAnyStringView();
+	*outptr_QAnyStringView = ret;
 }
 
-QAnyStringView* QAnyStringView_new2(struct miqt_string str) {
+void QAnyStringView_new2(struct miqt_string str, QAnyStringView** outptr_QAnyStringView) {
 	QByteArray str_QByteArray(str.data, str.len);
-	return new QAnyStringView(str_QByteArray);
+	QAnyStringView* ret = new QAnyStringView(str_QByteArray);
+	*outptr_QAnyStringView = ret;
 }
 
-QAnyStringView* QAnyStringView_new3(struct miqt_string str) {
+void QAnyStringView_new3(struct miqt_string str, QAnyStringView** outptr_QAnyStringView) {
 	QString str_QString = QString::fromUtf8(str.data, str.len);
-	return new QAnyStringView(str_QString);
+	QAnyStringView* ret = new QAnyStringView(str_QString);
+	*outptr_QAnyStringView = ret;
 }
 
-QAnyStringView* QAnyStringView_new4(QChar* c) {
-	return new QAnyStringView(*c);
+void QAnyStringView_new4(QChar* c, QAnyStringView** outptr_QAnyStringView) {
+	QAnyStringView* ret = new QAnyStringView(*c);
+	*outptr_QAnyStringView = ret;
 }
 
-QAnyStringView* QAnyStringView_new5(QAnyStringView* param1) {
-	return new QAnyStringView(*param1);
+void QAnyStringView_new5(QAnyStringView* param1, QAnyStringView** outptr_QAnyStringView) {
+	QAnyStringView* ret = new QAnyStringView(*param1);
+	*outptr_QAnyStringView = ret;
 }
 
 struct miqt_string QAnyStringView_ToString(const QAnyStringView* self) {
@@ -92,7 +97,11 @@ int QAnyStringView_Compare3(QAnyStringView* lhs, QAnyStringView* rhs, int cs) {
 	return QAnyStringView::compare(*lhs, *rhs, static_cast<Qt::CaseSensitivity>(cs));
 }
 
-void QAnyStringView_Delete(QAnyStringView* self) {
-	delete self;
+void QAnyStringView_Delete(QAnyStringView* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAnyStringView*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -43,7 +43,8 @@ const (
 )
 
 type QCborStreamReader struct {
-	h *C.QCborStreamReader
+	h          *C.QCborStreamReader
+	isSubclass bool
 }
 
 func (this *QCborStreamReader) cPointer() *C.QCborStreamReader {
@@ -60,6 +61,7 @@ func (this *QCborStreamReader) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCborStreamReader constructs the type using only CGO pointers.
 func newQCborStreamReader(h *C.QCborStreamReader) *QCborStreamReader {
 	if h == nil {
 		return nil
@@ -67,28 +69,45 @@ func newQCborStreamReader(h *C.QCborStreamReader) *QCborStreamReader {
 	return &QCborStreamReader{h: h}
 }
 
+// UnsafeNewQCborStreamReader constructs the type using only unsafe pointers.
 func UnsafeNewQCborStreamReader(h unsafe.Pointer) *QCborStreamReader {
-	return newQCborStreamReader((*C.QCborStreamReader)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCborStreamReader{h: (*C.QCborStreamReader)(h)}
 }
 
 // NewQCborStreamReader constructs a new QCborStreamReader object.
 func NewQCborStreamReader() *QCborStreamReader {
-	ret := C.QCborStreamReader_new()
-	return newQCborStreamReader(ret)
+	var outptr_QCborStreamReader *C.QCborStreamReader = nil
+
+	C.QCborStreamReader_new(&outptr_QCborStreamReader)
+	ret := newQCborStreamReader(outptr_QCborStreamReader)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborStreamReader2 constructs a new QCborStreamReader object.
 func NewQCborStreamReader2(data string, lenVal int64) *QCborStreamReader {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	ret := C.QCborStreamReader_new2(data_Cstring, (C.ptrdiff_t)(lenVal))
-	return newQCborStreamReader(ret)
+	var outptr_QCborStreamReader *C.QCborStreamReader = nil
+
+	C.QCborStreamReader_new2(data_Cstring, (C.ptrdiff_t)(lenVal), &outptr_QCborStreamReader)
+	ret := newQCborStreamReader(outptr_QCborStreamReader)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborStreamReader3 constructs a new QCborStreamReader object.
 func NewQCborStreamReader3(data *byte, lenVal int64) *QCborStreamReader {
-	ret := C.QCborStreamReader_new3((*C.uchar)(unsafe.Pointer(data)), (C.ptrdiff_t)(lenVal))
-	return newQCborStreamReader(ret)
+	var outptr_QCborStreamReader *C.QCborStreamReader = nil
+
+	C.QCborStreamReader_new3((*C.uchar)(unsafe.Pointer(data)), (C.ptrdiff_t)(lenVal), &outptr_QCborStreamReader)
+	ret := newQCborStreamReader(outptr_QCborStreamReader)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborStreamReader4 constructs a new QCborStreamReader object.
@@ -96,14 +115,22 @@ func NewQCborStreamReader4(data []byte) *QCborStreamReader {
 	data_alias := C.struct_miqt_string{}
 	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
 	data_alias.len = C.size_t(len(data))
-	ret := C.QCborStreamReader_new4(data_alias)
-	return newQCborStreamReader(ret)
+	var outptr_QCborStreamReader *C.QCborStreamReader = nil
+
+	C.QCborStreamReader_new4(data_alias, &outptr_QCborStreamReader)
+	ret := newQCborStreamReader(outptr_QCborStreamReader)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborStreamReader5 constructs a new QCborStreamReader object.
 func NewQCborStreamReader5(device *qt6.QIODevice) *QCborStreamReader {
-	ret := C.QCborStreamReader_new5((*C.QIODevice)(device.UnsafePointer()))
-	return newQCborStreamReader(ret)
+	var outptr_QCborStreamReader *C.QCborStreamReader = nil
+
+	C.QCborStreamReader_new5((*C.QIODevice)(device.UnsafePointer()), &outptr_QCborStreamReader)
+	ret := newQCborStreamReader(outptr_QCborStreamReader)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QCborStreamReader) SetDevice(device *qt6.QIODevice) {
@@ -111,7 +138,7 @@ func (this *QCborStreamReader) SetDevice(device *qt6.QIODevice) {
 }
 
 func (this *QCborStreamReader) Device() *qt6.QIODevice {
-	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QCborStreamReader_Device(this.h)))
+	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QCborStreamReader_Device(this.h)), nil, nil)
 }
 
 func (this *QCborStreamReader) AddData(data []byte) {
@@ -316,7 +343,7 @@ func (this *QCborStreamReader) Next1(maxRecursion int) bool {
 
 // Delete this object from C++ memory.
 func (this *QCborStreamReader) Delete() {
-	C.QCborStreamReader_Delete(this.h)
+	C.QCborStreamReader_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

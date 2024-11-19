@@ -14,7 +14,8 @@ import (
 )
 
 type QStringMatcher struct {
-	h *C.QStringMatcher
+	h          *C.QStringMatcher
+	isSubclass bool
 }
 
 func (this *QStringMatcher) cPointer() *C.QStringMatcher {
@@ -31,6 +32,7 @@ func (this *QStringMatcher) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQStringMatcher constructs the type using only CGO pointers.
 func newQStringMatcher(h *C.QStringMatcher) *QStringMatcher {
 	if h == nil {
 		return nil
@@ -38,14 +40,23 @@ func newQStringMatcher(h *C.QStringMatcher) *QStringMatcher {
 	return &QStringMatcher{h: h}
 }
 
+// UnsafeNewQStringMatcher constructs the type using only unsafe pointers.
 func UnsafeNewQStringMatcher(h unsafe.Pointer) *QStringMatcher {
-	return newQStringMatcher((*C.QStringMatcher)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QStringMatcher{h: (*C.QStringMatcher)(h)}
 }
 
 // NewQStringMatcher constructs a new QStringMatcher object.
 func NewQStringMatcher() *QStringMatcher {
-	ret := C.QStringMatcher_new()
-	return newQStringMatcher(ret)
+	var outptr_QStringMatcher *C.QStringMatcher = nil
+
+	C.QStringMatcher_new(&outptr_QStringMatcher)
+	ret := newQStringMatcher(outptr_QStringMatcher)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStringMatcher2 constructs a new QStringMatcher object.
@@ -54,20 +65,32 @@ func NewQStringMatcher2(pattern string) *QStringMatcher {
 	pattern_ms.data = C.CString(pattern)
 	pattern_ms.len = C.size_t(len(pattern))
 	defer C.free(unsafe.Pointer(pattern_ms.data))
-	ret := C.QStringMatcher_new2(pattern_ms)
-	return newQStringMatcher(ret)
+	var outptr_QStringMatcher *C.QStringMatcher = nil
+
+	C.QStringMatcher_new2(pattern_ms, &outptr_QStringMatcher)
+	ret := newQStringMatcher(outptr_QStringMatcher)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStringMatcher3 constructs a new QStringMatcher object.
 func NewQStringMatcher3(uc *QChar, lenVal int64) *QStringMatcher {
-	ret := C.QStringMatcher_new3(uc.cPointer(), (C.ptrdiff_t)(lenVal))
-	return newQStringMatcher(ret)
+	var outptr_QStringMatcher *C.QStringMatcher = nil
+
+	C.QStringMatcher_new3(uc.cPointer(), (C.ptrdiff_t)(lenVal), &outptr_QStringMatcher)
+	ret := newQStringMatcher(outptr_QStringMatcher)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStringMatcher4 constructs a new QStringMatcher object.
 func NewQStringMatcher4(other *QStringMatcher) *QStringMatcher {
-	ret := C.QStringMatcher_new4(other.cPointer())
-	return newQStringMatcher(ret)
+	var outptr_QStringMatcher *C.QStringMatcher = nil
+
+	C.QStringMatcher_new4(other.cPointer(), &outptr_QStringMatcher)
+	ret := newQStringMatcher(outptr_QStringMatcher)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStringMatcher5 constructs a new QStringMatcher object.
@@ -76,14 +99,22 @@ func NewQStringMatcher5(pattern string, cs CaseSensitivity) *QStringMatcher {
 	pattern_ms.data = C.CString(pattern)
 	pattern_ms.len = C.size_t(len(pattern))
 	defer C.free(unsafe.Pointer(pattern_ms.data))
-	ret := C.QStringMatcher_new5(pattern_ms, (C.int)(cs))
-	return newQStringMatcher(ret)
+	var outptr_QStringMatcher *C.QStringMatcher = nil
+
+	C.QStringMatcher_new5(pattern_ms, (C.int)(cs), &outptr_QStringMatcher)
+	ret := newQStringMatcher(outptr_QStringMatcher)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStringMatcher6 constructs a new QStringMatcher object.
 func NewQStringMatcher6(uc *QChar, lenVal int64, cs CaseSensitivity) *QStringMatcher {
-	ret := C.QStringMatcher_new6(uc.cPointer(), (C.ptrdiff_t)(lenVal), (C.int)(cs))
-	return newQStringMatcher(ret)
+	var outptr_QStringMatcher *C.QStringMatcher = nil
+
+	C.QStringMatcher_new6(uc.cPointer(), (C.ptrdiff_t)(lenVal), (C.int)(cs), &outptr_QStringMatcher)
+	ret := newQStringMatcher(outptr_QStringMatcher)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QStringMatcher) OperatorAssign(other *QStringMatcher) {
@@ -139,7 +170,7 @@ func (this *QStringMatcher) IndexIn3(str *QChar, length int64, from int64) int64
 
 // Delete this object from C++ memory.
 func (this *QStringMatcher) Delete() {
-	C.QStringMatcher_Delete(this.h)
+	C.QStringMatcher_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -9,30 +9,36 @@
 #include "gen_qmediaresource.h"
 #include "_cgo_export.h"
 
-QMediaResource* QMediaResource_new() {
-	return new QMediaResource();
+void QMediaResource_new(QMediaResource** outptr_QMediaResource) {
+	QMediaResource* ret = new QMediaResource();
+	*outptr_QMediaResource = ret;
 }
 
-QMediaResource* QMediaResource_new2(QUrl* url) {
-	return new QMediaResource(*url);
+void QMediaResource_new2(QUrl* url, QMediaResource** outptr_QMediaResource) {
+	QMediaResource* ret = new QMediaResource(*url);
+	*outptr_QMediaResource = ret;
 }
 
-QMediaResource* QMediaResource_new3(QNetworkRequest* request) {
-	return new QMediaResource(*request);
+void QMediaResource_new3(QNetworkRequest* request, QMediaResource** outptr_QMediaResource) {
+	QMediaResource* ret = new QMediaResource(*request);
+	*outptr_QMediaResource = ret;
 }
 
-QMediaResource* QMediaResource_new4(QMediaResource* other) {
-	return new QMediaResource(*other);
+void QMediaResource_new4(QMediaResource* other, QMediaResource** outptr_QMediaResource) {
+	QMediaResource* ret = new QMediaResource(*other);
+	*outptr_QMediaResource = ret;
 }
 
-QMediaResource* QMediaResource_new5(QUrl* url, struct miqt_string mimeType) {
+void QMediaResource_new5(QUrl* url, struct miqt_string mimeType, QMediaResource** outptr_QMediaResource) {
 	QString mimeType_QString = QString::fromUtf8(mimeType.data, mimeType.len);
-	return new QMediaResource(*url, mimeType_QString);
+	QMediaResource* ret = new QMediaResource(*url, mimeType_QString);
+	*outptr_QMediaResource = ret;
 }
 
-QMediaResource* QMediaResource_new6(QNetworkRequest* request, struct miqt_string mimeType) {
+void QMediaResource_new6(QNetworkRequest* request, struct miqt_string mimeType, QMediaResource** outptr_QMediaResource) {
 	QString mimeType_QString = QString::fromUtf8(mimeType.data, mimeType.len);
-	return new QMediaResource(*request, mimeType_QString);
+	QMediaResource* ret = new QMediaResource(*request, mimeType_QString);
+	*outptr_QMediaResource = ret;
 }
 
 void QMediaResource_OperatorAssign(QMediaResource* self, QMediaResource* other) {
@@ -171,7 +177,11 @@ void QMediaResource_SetResolution2(QMediaResource* self, int width, int height) 
 	self->setResolution(static_cast<int>(width), static_cast<int>(height));
 }
 
-void QMediaResource_Delete(QMediaResource* self) {
-	delete self;
+void QMediaResource_Delete(QMediaResource* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMediaResource*>( self );
+	} else {
+		delete self;
+	}
 }
 

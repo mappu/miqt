@@ -1,5 +1,6 @@
 #include <QList>
 #include <QMetaObject>
+#include <QObject>
 #include <QSessionManager>
 #include <QString>
 #include <QByteArray>

@@ -1,3 +1,6 @@
+#include <QAbstractTransition>
+#include <QEvent>
+#include <QEventTransition>
 #include <QKeyEventTransition>
 #include <QMetaObject>
 #include <QObject>
@@ -9,20 +12,118 @@
 #include "gen_qkeyeventtransition.h"
 #include "_cgo_export.h"
 
-QKeyEventTransition* QKeyEventTransition_new() {
-	return new QKeyEventTransition();
+class MiqtVirtualQKeyEventTransition : public virtual QKeyEventTransition {
+public:
+
+	MiqtVirtualQKeyEventTransition(): QKeyEventTransition() {};
+	MiqtVirtualQKeyEventTransition(QObject* object, QEvent::Type typeVal, int key): QKeyEventTransition(object, typeVal, key) {};
+	MiqtVirtualQKeyEventTransition(QState* sourceState): QKeyEventTransition(sourceState) {};
+	MiqtVirtualQKeyEventTransition(QObject* object, QEvent::Type typeVal, int key, QState* sourceState): QKeyEventTransition(object, typeVal, key, sourceState) {};
+
+	virtual ~MiqtVirtualQKeyEventTransition() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__OnTransition = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void onTransition(QEvent* event) override {
+		if (handle__OnTransition == 0) {
+			QKeyEventTransition::onTransition(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QKeyEventTransition_OnTransition(this, handle__OnTransition, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_OnTransition(QEvent* event) {
+
+		QKeyEventTransition::onTransition(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventTest = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventTest(QEvent* event) override {
+		if (handle__EventTest == 0) {
+			return QKeyEventTransition::eventTest(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QKeyEventTransition_EventTest(this, handle__EventTest, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventTest(QEvent* event) {
+
+		return QKeyEventTransition::eventTest(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* e) override {
+		if (handle__Event == 0) {
+			return QKeyEventTransition::event(e);
+		}
+		
+		QEvent* sigval1 = e;
+
+		bool callback_return_value = miqt_exec_callback_QKeyEventTransition_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* e) {
+
+		return QKeyEventTransition::event(e);
+
+	}
+
+};
+
+void QKeyEventTransition_new(QKeyEventTransition** outptr_QKeyEventTransition, QEventTransition** outptr_QEventTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject) {
+	MiqtVirtualQKeyEventTransition* ret = new MiqtVirtualQKeyEventTransition();
+	*outptr_QKeyEventTransition = ret;
+	*outptr_QEventTransition = static_cast<QEventTransition*>(ret);
+	*outptr_QAbstractTransition = static_cast<QAbstractTransition*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QKeyEventTransition* QKeyEventTransition_new2(QObject* object, int typeVal, int key) {
-	return new QKeyEventTransition(object, static_cast<QEvent::Type>(typeVal), static_cast<int>(key));
+void QKeyEventTransition_new2(QObject* object, int typeVal, int key, QKeyEventTransition** outptr_QKeyEventTransition, QEventTransition** outptr_QEventTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject) {
+	MiqtVirtualQKeyEventTransition* ret = new MiqtVirtualQKeyEventTransition(object, static_cast<QEvent::Type>(typeVal), static_cast<int>(key));
+	*outptr_QKeyEventTransition = ret;
+	*outptr_QEventTransition = static_cast<QEventTransition*>(ret);
+	*outptr_QAbstractTransition = static_cast<QAbstractTransition*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QKeyEventTransition* QKeyEventTransition_new3(QState* sourceState) {
-	return new QKeyEventTransition(sourceState);
+void QKeyEventTransition_new3(QState* sourceState, QKeyEventTransition** outptr_QKeyEventTransition, QEventTransition** outptr_QEventTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject) {
+	MiqtVirtualQKeyEventTransition* ret = new MiqtVirtualQKeyEventTransition(sourceState);
+	*outptr_QKeyEventTransition = ret;
+	*outptr_QEventTransition = static_cast<QEventTransition*>(ret);
+	*outptr_QAbstractTransition = static_cast<QAbstractTransition*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QKeyEventTransition* QKeyEventTransition_new4(QObject* object, int typeVal, int key, QState* sourceState) {
-	return new QKeyEventTransition(object, static_cast<QEvent::Type>(typeVal), static_cast<int>(key), sourceState);
+void QKeyEventTransition_new4(QObject* object, int typeVal, int key, QState* sourceState, QKeyEventTransition** outptr_QKeyEventTransition, QEventTransition** outptr_QEventTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject) {
+	MiqtVirtualQKeyEventTransition* ret = new MiqtVirtualQKeyEventTransition(object, static_cast<QEvent::Type>(typeVal), static_cast<int>(key), sourceState);
+	*outptr_QKeyEventTransition = ret;
+	*outptr_QEventTransition = static_cast<QEventTransition*>(ret);
+	*outptr_QAbstractTransition = static_cast<QAbstractTransition*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QKeyEventTransition_MetaObject(const QKeyEventTransition* self) {
@@ -116,7 +217,35 @@ struct miqt_string QKeyEventTransition_TrUtf83(const char* s, const char* c, int
 	return _ms;
 }
 
-void QKeyEventTransition_Delete(QKeyEventTransition* self) {
-	delete self;
+void QKeyEventTransition_override_virtual_OnTransition(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQKeyEventTransition*>( (QKeyEventTransition*)(self) )->handle__OnTransition = slot;
+}
+
+void QKeyEventTransition_virtualbase_OnTransition(void* self, QEvent* event) {
+	( (MiqtVirtualQKeyEventTransition*)(self) )->virtualbase_OnTransition(event);
+}
+
+void QKeyEventTransition_override_virtual_EventTest(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQKeyEventTransition*>( (QKeyEventTransition*)(self) )->handle__EventTest = slot;
+}
+
+bool QKeyEventTransition_virtualbase_EventTest(void* self, QEvent* event) {
+	return ( (MiqtVirtualQKeyEventTransition*)(self) )->virtualbase_EventTest(event);
+}
+
+void QKeyEventTransition_override_virtual_Event(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQKeyEventTransition*>( (QKeyEventTransition*)(self) )->handle__Event = slot;
+}
+
+bool QKeyEventTransition_virtualbase_Event(void* self, QEvent* e) {
+	return ( (MiqtVirtualQKeyEventTransition*)(self) )->virtualbase_Event(e);
+}
+
+void QKeyEventTransition_Delete(QKeyEventTransition* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQKeyEventTransition*>( self );
+	} else {
+		delete self;
+	}
 }
 

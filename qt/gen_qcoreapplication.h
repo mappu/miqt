@@ -17,23 +17,29 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractEventDispatcher;
 class QAbstractNativeEventFilter;
+class QChildEvent;
 class QCoreApplication;
 class QEvent;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
+class QTimerEvent;
 class QTranslator;
 #else
 typedef struct QAbstractEventDispatcher QAbstractEventDispatcher;
 typedef struct QAbstractNativeEventFilter QAbstractNativeEventFilter;
+typedef struct QChildEvent QChildEvent;
 typedef struct QCoreApplication QCoreApplication;
 typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QTranslator QTranslator;
 #endif
 
-QCoreApplication* QCoreApplication_new(int* argc, char** argv);
-QCoreApplication* QCoreApplication_new2(int* argc, char** argv, int param3);
+void QCoreApplication_new(int* argc, char** argv, QCoreApplication** outptr_QCoreApplication, QObject** outptr_QObject);
+void QCoreApplication_new2(int* argc, char** argv, int param3, QCoreApplication** outptr_QCoreApplication, QObject** outptr_QObject);
 QMetaObject* QCoreApplication_MetaObject(const QCoreApplication* self);
 void* QCoreApplication_Metacast(QCoreApplication* self, const char* param1);
 struct miqt_string QCoreApplication_Tr(const char* s);
@@ -90,6 +96,7 @@ void QCoreApplication_ApplicationNameChanged(QCoreApplication* self);
 void QCoreApplication_connect_ApplicationNameChanged(QCoreApplication* self, intptr_t slot);
 void QCoreApplication_ApplicationVersionChanged(QCoreApplication* self);
 void QCoreApplication_connect_ApplicationVersionChanged(QCoreApplication* self, intptr_t slot);
+bool QCoreApplication_Event(QCoreApplication* self, QEvent* param1);
 struct miqt_string QCoreApplication_Tr2(const char* s, const char* c);
 struct miqt_string QCoreApplication_Tr3(const char* s, const char* c, int n);
 struct miqt_string QCoreApplication_TrUtf82(const char* s, const char* c);
@@ -103,7 +110,23 @@ void QCoreApplication_SendPostedEvents2(QObject* receiver, int event_type);
 void QCoreApplication_RemovePostedEvents2(QObject* receiver, int eventType);
 struct miqt_string QCoreApplication_Translate3(const char* context, const char* key, const char* disambiguation);
 struct miqt_string QCoreApplication_Translate4(const char* context, const char* key, const char* disambiguation, int n);
-void QCoreApplication_Delete(QCoreApplication* self);
+void QCoreApplication_override_virtual_Notify(void* self, intptr_t slot);
+bool QCoreApplication_virtualbase_Notify(void* self, QObject* param1, QEvent* param2);
+void QCoreApplication_override_virtual_Event(void* self, intptr_t slot);
+bool QCoreApplication_virtualbase_Event(void* self, QEvent* param1);
+void QCoreApplication_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QCoreApplication_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QCoreApplication_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QCoreApplication_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QCoreApplication_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QCoreApplication_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QCoreApplication_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QCoreApplication_virtualbase_CustomEvent(void* self, QEvent* event);
+void QCoreApplication_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QCoreApplication_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QCoreApplication_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QCoreApplication_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QCoreApplication_Delete(QCoreApplication* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

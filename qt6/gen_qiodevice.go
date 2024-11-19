@@ -15,7 +15,8 @@ import (
 )
 
 type QIODevice struct {
-	h *C.QIODevice
+	h          *C.QIODevice
+	isSubclass bool
 	*QObject
 	*QIODeviceBase
 }
@@ -34,15 +35,25 @@ func (this *QIODevice) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQIODevice(h *C.QIODevice) *QIODevice {
+// newQIODevice constructs the type using only CGO pointers.
+func newQIODevice(h *C.QIODevice, h_QObject *C.QObject, h_QIODeviceBase *C.QIODeviceBase) *QIODevice {
 	if h == nil {
 		return nil
 	}
-	return &QIODevice{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h)), QIODeviceBase: UnsafeNewQIODeviceBase(unsafe.Pointer(h))}
+	return &QIODevice{h: h,
+		QObject:       newQObject(h_QObject),
+		QIODeviceBase: newQIODeviceBase(h_QIODeviceBase)}
 }
 
-func UnsafeNewQIODevice(h unsafe.Pointer) *QIODevice {
-	return newQIODevice((*C.QIODevice)(h))
+// UnsafeNewQIODevice constructs the type using only unsafe pointers.
+func UnsafeNewQIODevice(h unsafe.Pointer, h_QObject unsafe.Pointer, h_QIODeviceBase unsafe.Pointer) *QIODevice {
+	if h == nil {
+		return nil
+	}
+
+	return &QIODevice{h: (*C.QIODevice)(h),
+		QObject:       UnsafeNewQObject(h_QObject),
+		QIODeviceBase: UnsafeNewQIODeviceBase(h_QIODeviceBase)}
 }
 
 func (this *QIODevice) MetaObject() *QMetaObject {
@@ -414,7 +425,7 @@ func (this *QIODevice) ReadLine1(maxlen int64) []byte {
 
 // Delete this object from C++ memory.
 func (this *QIODevice) Delete() {
-	C.QIODevice_Delete(this.h)
+	C.QIODevice_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

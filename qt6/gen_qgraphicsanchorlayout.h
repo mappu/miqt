@@ -15,17 +15,25 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QEvent;
 class QGraphicsAnchor;
 class QGraphicsAnchorLayout;
+class QGraphicsLayout;
 class QGraphicsLayoutItem;
 class QMetaObject;
+class QObject;
 class QRectF;
+class QSizeF;
 #else
+typedef struct QEvent QEvent;
 typedef struct QGraphicsAnchor QGraphicsAnchor;
 typedef struct QGraphicsAnchorLayout QGraphicsAnchorLayout;
+typedef struct QGraphicsLayout QGraphicsLayout;
 typedef struct QGraphicsLayoutItem QGraphicsLayoutItem;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 typedef struct QRectF QRectF;
+typedef struct QSizeF QSizeF;
 #endif
 
 QMetaObject* QGraphicsAnchor_MetaObject(const QGraphicsAnchor* self);
@@ -38,10 +46,10 @@ void QGraphicsAnchor_SetSizePolicy(QGraphicsAnchor* self, int policy);
 int QGraphicsAnchor_SizePolicy(const QGraphicsAnchor* self);
 struct miqt_string QGraphicsAnchor_Tr2(const char* s, const char* c);
 struct miqt_string QGraphicsAnchor_Tr3(const char* s, const char* c, int n);
-void QGraphicsAnchor_Delete(QGraphicsAnchor* self);
+void QGraphicsAnchor_Delete(QGraphicsAnchor* self, bool isSubclass);
 
-QGraphicsAnchorLayout* QGraphicsAnchorLayout_new();
-QGraphicsAnchorLayout* QGraphicsAnchorLayout_new2(QGraphicsLayoutItem* parent);
+void QGraphicsAnchorLayout_new(QGraphicsAnchorLayout** outptr_QGraphicsAnchorLayout, QGraphicsLayout** outptr_QGraphicsLayout, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
+void QGraphicsAnchorLayout_new2(QGraphicsLayoutItem* parent, QGraphicsAnchorLayout** outptr_QGraphicsAnchorLayout, QGraphicsLayout** outptr_QGraphicsLayout, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
 QGraphicsAnchor* QGraphicsAnchorLayout_AddAnchor(QGraphicsAnchorLayout* self, QGraphicsLayoutItem* firstItem, int firstEdge, QGraphicsLayoutItem* secondItem, int secondEdge);
 QGraphicsAnchor* QGraphicsAnchorLayout_Anchor(QGraphicsAnchorLayout* self, QGraphicsLayoutItem* firstItem, int firstEdge, QGraphicsLayoutItem* secondItem, int secondEdge);
 void QGraphicsAnchorLayout_AddCornerAnchors(QGraphicsAnchorLayout* self, QGraphicsLayoutItem* firstItem, int firstCorner, QGraphicsLayoutItem* secondItem, int secondCorner);
@@ -56,8 +64,27 @@ void QGraphicsAnchorLayout_SetGeometry(QGraphicsAnchorLayout* self, QRectF* rect
 int QGraphicsAnchorLayout_Count(const QGraphicsAnchorLayout* self);
 QGraphicsLayoutItem* QGraphicsAnchorLayout_ItemAt(const QGraphicsAnchorLayout* self, int index);
 void QGraphicsAnchorLayout_Invalidate(QGraphicsAnchorLayout* self);
+QSizeF* QGraphicsAnchorLayout_SizeHint(const QGraphicsAnchorLayout* self, int which, QSizeF* constraint);
 void QGraphicsAnchorLayout_AddAnchors3(QGraphicsAnchorLayout* self, QGraphicsLayoutItem* firstItem, QGraphicsLayoutItem* secondItem, int orientations);
-void QGraphicsAnchorLayout_Delete(QGraphicsAnchorLayout* self);
+void QGraphicsAnchorLayout_override_virtual_RemoveAt(void* self, intptr_t slot);
+void QGraphicsAnchorLayout_virtualbase_RemoveAt(void* self, int index);
+void QGraphicsAnchorLayout_override_virtual_SetGeometry(void* self, intptr_t slot);
+void QGraphicsAnchorLayout_virtualbase_SetGeometry(void* self, QRectF* rect);
+void QGraphicsAnchorLayout_override_virtual_Count(void* self, intptr_t slot);
+int QGraphicsAnchorLayout_virtualbase_Count(const void* self);
+void QGraphicsAnchorLayout_override_virtual_ItemAt(void* self, intptr_t slot);
+QGraphicsLayoutItem* QGraphicsAnchorLayout_virtualbase_ItemAt(const void* self, int index);
+void QGraphicsAnchorLayout_override_virtual_Invalidate(void* self, intptr_t slot);
+void QGraphicsAnchorLayout_virtualbase_Invalidate(void* self);
+void QGraphicsAnchorLayout_override_virtual_SizeHint(void* self, intptr_t slot);
+QSizeF* QGraphicsAnchorLayout_virtualbase_SizeHint(const void* self, int which, QSizeF* constraint);
+void QGraphicsAnchorLayout_override_virtual_GetContentsMargins(void* self, intptr_t slot);
+void QGraphicsAnchorLayout_virtualbase_GetContentsMargins(const void* self, double* left, double* top, double* right, double* bottom);
+void QGraphicsAnchorLayout_override_virtual_UpdateGeometry(void* self, intptr_t slot);
+void QGraphicsAnchorLayout_virtualbase_UpdateGeometry(void* self);
+void QGraphicsAnchorLayout_override_virtual_WidgetEvent(void* self, intptr_t slot);
+void QGraphicsAnchorLayout_virtualbase_WidgetEvent(void* self, QEvent* e);
+void QGraphicsAnchorLayout_Delete(QGraphicsAnchorLayout* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

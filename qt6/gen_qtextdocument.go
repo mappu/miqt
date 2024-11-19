@@ -58,7 +58,8 @@ const (
 )
 
 type QAbstractUndoItem struct {
-	h *C.QAbstractUndoItem
+	h          *C.QAbstractUndoItem
+	isSubclass bool
 }
 
 func (this *QAbstractUndoItem) cPointer() *C.QAbstractUndoItem {
@@ -75,6 +76,7 @@ func (this *QAbstractUndoItem) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAbstractUndoItem constructs the type using only CGO pointers.
 func newQAbstractUndoItem(h *C.QAbstractUndoItem) *QAbstractUndoItem {
 	if h == nil {
 		return nil
@@ -82,8 +84,13 @@ func newQAbstractUndoItem(h *C.QAbstractUndoItem) *QAbstractUndoItem {
 	return &QAbstractUndoItem{h: h}
 }
 
+// UnsafeNewQAbstractUndoItem constructs the type using only unsafe pointers.
 func UnsafeNewQAbstractUndoItem(h unsafe.Pointer) *QAbstractUndoItem {
-	return newQAbstractUndoItem((*C.QAbstractUndoItem)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAbstractUndoItem{h: (*C.QAbstractUndoItem)(h)}
 }
 
 func (this *QAbstractUndoItem) Undo() {
@@ -100,7 +107,7 @@ func (this *QAbstractUndoItem) OperatorAssign(param1 *QAbstractUndoItem) {
 
 // Delete this object from C++ memory.
 func (this *QAbstractUndoItem) Delete() {
-	C.QAbstractUndoItem_Delete(this.h)
+	C.QAbstractUndoItem_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -113,7 +120,8 @@ func (this *QAbstractUndoItem) GoGC() {
 }
 
 type QTextDocument struct {
-	h *C.QTextDocument
+	h          *C.QTextDocument
+	isSubclass bool
 	*QObject
 }
 
@@ -131,21 +139,34 @@ func (this *QTextDocument) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQTextDocument(h *C.QTextDocument) *QTextDocument {
+// newQTextDocument constructs the type using only CGO pointers.
+func newQTextDocument(h *C.QTextDocument, h_QObject *C.QObject) *QTextDocument {
 	if h == nil {
 		return nil
 	}
-	return &QTextDocument{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QTextDocument{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQTextDocument(h unsafe.Pointer) *QTextDocument {
-	return newQTextDocument((*C.QTextDocument)(h))
+// UnsafeNewQTextDocument constructs the type using only unsafe pointers.
+func UnsafeNewQTextDocument(h unsafe.Pointer, h_QObject unsafe.Pointer) *QTextDocument {
+	if h == nil {
+		return nil
+	}
+
+	return &QTextDocument{h: (*C.QTextDocument)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 // NewQTextDocument constructs a new QTextDocument object.
 func NewQTextDocument() *QTextDocument {
-	ret := C.QTextDocument_new()
-	return newQTextDocument(ret)
+	var outptr_QTextDocument *C.QTextDocument = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QTextDocument_new(&outptr_QTextDocument, &outptr_QObject)
+	ret := newQTextDocument(outptr_QTextDocument, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextDocument2 constructs a new QTextDocument object.
@@ -154,14 +175,24 @@ func NewQTextDocument2(text string) *QTextDocument {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QTextDocument_new2(text_ms)
-	return newQTextDocument(ret)
+	var outptr_QTextDocument *C.QTextDocument = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QTextDocument_new2(text_ms, &outptr_QTextDocument, &outptr_QObject)
+	ret := newQTextDocument(outptr_QTextDocument, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextDocument3 constructs a new QTextDocument object.
 func NewQTextDocument3(parent *QObject) *QTextDocument {
-	ret := C.QTextDocument_new3(parent.cPointer())
-	return newQTextDocument(ret)
+	var outptr_QTextDocument *C.QTextDocument = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QTextDocument_new3(parent.cPointer(), &outptr_QTextDocument, &outptr_QObject)
+	ret := newQTextDocument(outptr_QTextDocument, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextDocument4 constructs a new QTextDocument object.
@@ -170,8 +201,13 @@ func NewQTextDocument4(text string, parent *QObject) *QTextDocument {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QTextDocument_new4(text_ms, parent.cPointer())
-	return newQTextDocument(ret)
+	var outptr_QTextDocument *C.QTextDocument = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QTextDocument_new4(text_ms, parent.cPointer(), &outptr_QTextDocument, &outptr_QObject)
+	ret := newQTextDocument(outptr_QTextDocument, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QTextDocument) MetaObject() *QMetaObject {
@@ -194,7 +230,7 @@ func QTextDocument_Tr(s string) string {
 }
 
 func (this *QTextDocument) Clone() *QTextDocument {
-	return UnsafeNewQTextDocument(unsafe.Pointer(C.QTextDocument_Clone(this.h)))
+	return UnsafeNewQTextDocument(unsafe.Pointer(C.QTextDocument_Clone(this.h)), nil)
 }
 
 func (this *QTextDocument) IsEmpty() bool {
@@ -238,7 +274,7 @@ func (this *QTextDocument) SetDocumentLayout(layout *QAbstractTextDocumentLayout
 }
 
 func (this *QTextDocument) DocumentLayout() *QAbstractTextDocumentLayout {
-	return UnsafeNewQAbstractTextDocumentLayout(unsafe.Pointer(C.QTextDocument_DocumentLayout(this.h)))
+	return UnsafeNewQAbstractTextDocumentLayout(unsafe.Pointer(C.QTextDocument_DocumentLayout(this.h)), nil)
 }
 
 func (this *QTextDocument) SetMetaInformation(info QTextDocument__MetaInformation, param2 string) {
@@ -352,19 +388,19 @@ func (this *QTextDocument) Find3(expr *QRegularExpression, cursor *QTextCursor) 
 }
 
 func (this *QTextDocument) FrameAt(pos int) *QTextFrame {
-	return UnsafeNewQTextFrame(unsafe.Pointer(C.QTextDocument_FrameAt(this.h, (C.int)(pos))))
+	return UnsafeNewQTextFrame(unsafe.Pointer(C.QTextDocument_FrameAt(this.h, (C.int)(pos))), nil, nil)
 }
 
 func (this *QTextDocument) RootFrame() *QTextFrame {
-	return UnsafeNewQTextFrame(unsafe.Pointer(C.QTextDocument_RootFrame(this.h)))
+	return UnsafeNewQTextFrame(unsafe.Pointer(C.QTextDocument_RootFrame(this.h)), nil, nil)
 }
 
 func (this *QTextDocument) Object(objectIndex int) *QTextObject {
-	return UnsafeNewQTextObject(unsafe.Pointer(C.QTextDocument_Object(this.h, (C.int)(objectIndex))))
+	return UnsafeNewQTextObject(unsafe.Pointer(C.QTextDocument_Object(this.h, (C.int)(objectIndex))), nil)
 }
 
 func (this *QTextDocument) ObjectForFormat(param1 *QTextFormat) *QTextObject {
-	return UnsafeNewQTextObject(unsafe.Pointer(C.QTextDocument_ObjectForFormat(this.h, param1.cPointer())))
+	return UnsafeNewQTextObject(unsafe.Pointer(C.QTextDocument_ObjectForFormat(this.h, param1.cPointer())), nil)
 }
 
 func (this *QTextDocument) FindBlock(pos int) *QTextBlock {
@@ -872,7 +908,7 @@ func QTextDocument_Tr3(s string, c string, n int) string {
 }
 
 func (this *QTextDocument) Clone1(parent *QObject) *QTextDocument {
-	return UnsafeNewQTextDocument(unsafe.Pointer(C.QTextDocument_Clone1(this.h, parent.cPointer())))
+	return UnsafeNewQTextDocument(unsafe.Pointer(C.QTextDocument_Clone1(this.h, parent.cPointer())), nil)
 }
 
 func (this *QTextDocument) ToMarkdown1(features QTextDocument__MarkdownFeature) string {
@@ -956,9 +992,249 @@ func (this *QTextDocument) SetModified1(m bool) {
 	C.QTextDocument_SetModified1(this.h, (C.bool)(m))
 }
 
+func (this *QTextDocument) callVirtualBase_Clear() {
+
+	C.QTextDocument_virtualbase_Clear(unsafe.Pointer(this.h))
+
+}
+func (this *QTextDocument) OnClear(slot func(super func())) {
+	C.QTextDocument_override_virtual_Clear(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTextDocument_Clear
+func miqt_exec_callback_QTextDocument_Clear(self *C.QTextDocument, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QTextDocument{h: self}).callVirtualBase_Clear)
+
+}
+
+func (this *QTextDocument) callVirtualBase_CreateObject(f *QTextFormat) *QTextObject {
+
+	return UnsafeNewQTextObject(unsafe.Pointer(C.QTextDocument_virtualbase_CreateObject(unsafe.Pointer(this.h), f.cPointer())), nil)
+}
+func (this *QTextDocument) OnCreateObject(slot func(super func(f *QTextFormat) *QTextObject, f *QTextFormat) *QTextObject) {
+	C.QTextDocument_override_virtual_CreateObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTextDocument_CreateObject
+func miqt_exec_callback_QTextDocument_CreateObject(self *C.QTextDocument, cb C.intptr_t, f *C.QTextFormat) *C.QTextObject {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(f *QTextFormat) *QTextObject, f *QTextFormat) *QTextObject)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTextFormat(unsafe.Pointer(f))
+
+	virtualReturn := gofunc((&QTextDocument{h: self}).callVirtualBase_CreateObject, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTextDocument) callVirtualBase_LoadResource(typeVal int, name *QUrl) *QVariant {
+
+	_ret := C.QTextDocument_virtualbase_LoadResource(unsafe.Pointer(this.h), (C.int)(typeVal), name.cPointer())
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QTextDocument) OnLoadResource(slot func(super func(typeVal int, name *QUrl) *QVariant, typeVal int, name *QUrl) *QVariant) {
+	C.QTextDocument_override_virtual_LoadResource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTextDocument_LoadResource
+func miqt_exec_callback_QTextDocument_LoadResource(self *C.QTextDocument, cb C.intptr_t, typeVal C.int, name *C.QUrl) *C.QVariant {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(typeVal int, name *QUrl) *QVariant, typeVal int, name *QUrl) *QVariant)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(typeVal)
+
+	slotval2 := UnsafeNewQUrl(unsafe.Pointer(name))
+
+	virtualReturn := gofunc((&QTextDocument{h: self}).callVirtualBase_LoadResource, slotval1, slotval2)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTextDocument) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QTextDocument_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QTextDocument) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	C.QTextDocument_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTextDocument_Event
+func miqt_exec_callback_QTextDocument_Event(self *C.QTextDocument, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QTextDocument{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QTextDocument) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QTextDocument_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QTextDocument) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	C.QTextDocument_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTextDocument_EventFilter
+func miqt_exec_callback_QTextDocument_EventFilter(self *C.QTextDocument, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QTextDocument{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QTextDocument) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QTextDocument_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTextDocument) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	C.QTextDocument_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTextDocument_TimerEvent
+func miqt_exec_callback_QTextDocument_TimerEvent(self *C.QTextDocument, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QTextDocument{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QTextDocument) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QTextDocument_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTextDocument) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	C.QTextDocument_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTextDocument_ChildEvent
+func miqt_exec_callback_QTextDocument_ChildEvent(self *C.QTextDocument, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QTextDocument{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QTextDocument) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QTextDocument_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTextDocument) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	C.QTextDocument_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTextDocument_CustomEvent
+func miqt_exec_callback_QTextDocument_CustomEvent(self *C.QTextDocument, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QTextDocument{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QTextDocument) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QTextDocument_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QTextDocument) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QTextDocument_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTextDocument_ConnectNotify
+func miqt_exec_callback_QTextDocument_ConnectNotify(self *C.QTextDocument, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QTextDocument{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QTextDocument) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QTextDocument_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QTextDocument) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QTextDocument_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTextDocument_DisconnectNotify
+func miqt_exec_callback_QTextDocument_DisconnectNotify(self *C.QTextDocument, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QTextDocument{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QTextDocument) Delete() {
-	C.QTextDocument_Delete(this.h)
+	C.QTextDocument_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -17,16 +17,20 @@ extern "C" {
 #ifdef __cplusplus
 class QEvent;
 class QMetaObject;
+class QObject;
 class QsciAPIs;
+class QsciAbstractAPIs;
 class QsciLexer;
 #else
 typedef struct QEvent QEvent;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 typedef struct QsciAPIs QsciAPIs;
+typedef struct QsciAbstractAPIs QsciAbstractAPIs;
 typedef struct QsciLexer QsciLexer;
 #endif
 
-QsciAPIs* QsciAPIs_new(QsciLexer* lexer);
+void QsciAPIs_new(QsciLexer* lexer, QsciAPIs** outptr_QsciAPIs, QsciAbstractAPIs** outptr_QsciAbstractAPIs, QObject** outptr_QObject);
 QMetaObject* QsciAPIs_MetaObject(const QsciAPIs* self);
 void* QsciAPIs_Metacast(QsciAPIs* self, const char* param1);
 struct miqt_string QsciAPIs_Tr(const char* s);
@@ -59,7 +63,15 @@ struct miqt_string QsciAPIs_TrUtf83(const char* s, const char* c, int n);
 bool QsciAPIs_IsPrepared1(const QsciAPIs* self, struct miqt_string filename);
 bool QsciAPIs_LoadPrepared1(QsciAPIs* self, struct miqt_string filename);
 bool QsciAPIs_SavePrepared1(const QsciAPIs* self, struct miqt_string filename);
-void QsciAPIs_Delete(QsciAPIs* self);
+void QsciAPIs_override_virtual_UpdateAutoCompletionList(void* self, intptr_t slot);
+void QsciAPIs_virtualbase_UpdateAutoCompletionList(void* self, struct miqt_array /* of struct miqt_string */  context, struct miqt_array /* of struct miqt_string */  list);
+void QsciAPIs_override_virtual_AutoCompletionSelected(void* self, intptr_t slot);
+void QsciAPIs_virtualbase_AutoCompletionSelected(void* self, struct miqt_string sel);
+void QsciAPIs_override_virtual_CallTips(void* self, intptr_t slot);
+struct miqt_array /* of struct miqt_string */  QsciAPIs_virtualbase_CallTips(void* self, struct miqt_array /* of struct miqt_string */  context, int commas, int style, struct miqt_array /* of int */  shifts);
+void QsciAPIs_override_virtual_Event(void* self, intptr_t slot);
+bool QsciAPIs_virtualbase_Event(void* self, QEvent* e);
+void QsciAPIs_Delete(QsciAPIs* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

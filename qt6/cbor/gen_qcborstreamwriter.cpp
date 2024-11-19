@@ -5,8 +5,9 @@
 #include "gen_qcborstreamwriter.h"
 #include "_cgo_export.h"
 
-QCborStreamWriter* QCborStreamWriter_new(QIODevice* device) {
-	return new QCborStreamWriter(device);
+void QCborStreamWriter_new(QIODevice* device, QCborStreamWriter** outptr_QCborStreamWriter) {
+	QCborStreamWriter* ret = new QCborStreamWriter(device);
+	*outptr_QCborStreamWriter = ret;
 }
 
 void QCborStreamWriter_SetDevice(QCborStreamWriter* self, QIODevice* device) {
@@ -114,7 +115,11 @@ void QCborStreamWriter_Append22(QCborStreamWriter* self, const char* str, ptrdif
 	self->append(str, (qsizetype)(size));
 }
 
-void QCborStreamWriter_Delete(QCborStreamWriter* self) {
-	delete self;
+void QCborStreamWriter_Delete(QCborStreamWriter* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QCborStreamWriter*>( self );
+	} else {
+		delete self;
+	}
 }
 

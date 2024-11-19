@@ -1,4 +1,8 @@
+#include <QAbstractPrintDialog>
+#include <QDialog>
 #include <QMetaObject>
+#include <QObject>
+#include <QPaintDevice>
 #include <QPrintDialog>
 #include <QPrinter>
 #include <QString>
@@ -9,20 +13,149 @@
 #include "gen_qprintdialog.h"
 #include "_cgo_export.h"
 
-QPrintDialog* QPrintDialog_new(QWidget* parent) {
-	return new QPrintDialog(parent);
+class MiqtVirtualQPrintDialog : public virtual QPrintDialog {
+public:
+
+	MiqtVirtualQPrintDialog(QWidget* parent): QPrintDialog(parent) {};
+	MiqtVirtualQPrintDialog(QPrinter* printer): QPrintDialog(printer) {};
+	MiqtVirtualQPrintDialog(): QPrintDialog() {};
+	MiqtVirtualQPrintDialog(QPrinter* printer, QWidget* parent): QPrintDialog(printer, parent) {};
+
+	virtual ~MiqtVirtualQPrintDialog() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Exec = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int exec() override {
+		if (handle__Exec == 0) {
+			return QPrintDialog::exec();
+		}
+		
+
+		int callback_return_value = miqt_exec_callback_QPrintDialog_Exec(this, handle__Exec);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_Exec() {
+
+		return QPrintDialog::exec();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Accept = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void accept() override {
+		if (handle__Accept == 0) {
+			QPrintDialog::accept();
+			return;
+		}
+		
+
+		miqt_exec_callback_QPrintDialog_Accept(this, handle__Accept);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_Accept() {
+
+		QPrintDialog::accept();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Done = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void done(int result) override {
+		if (handle__Done == 0) {
+			QPrintDialog::done(result);
+			return;
+		}
+		
+		int sigval1 = result;
+
+		miqt_exec_callback_QPrintDialog_Done(this, handle__Done, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_Done(int result) {
+
+		QPrintDialog::done(static_cast<int>(result));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetVisible = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setVisible(bool visible) override {
+		if (handle__SetVisible == 0) {
+			QPrintDialog::setVisible(visible);
+			return;
+		}
+		
+		bool sigval1 = visible;
+
+		miqt_exec_callback_QPrintDialog_SetVisible(this, handle__SetVisible, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetVisible(bool visible) {
+
+		QPrintDialog::setVisible(visible);
+
+	}
+
+};
+
+void QPrintDialog_new(QWidget* parent, QPrintDialog** outptr_QPrintDialog, QAbstractPrintDialog** outptr_QAbstractPrintDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+	MiqtVirtualQPrintDialog* ret = new MiqtVirtualQPrintDialog(parent);
+	*outptr_QPrintDialog = ret;
+	*outptr_QAbstractPrintDialog = static_cast<QAbstractPrintDialog*>(ret);
+	*outptr_QDialog = static_cast<QDialog*>(ret);
+	*outptr_QWidget = static_cast<QWidget*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
-QPrintDialog* QPrintDialog_new2(QPrinter* printer) {
-	return new QPrintDialog(printer);
+void QPrintDialog_new2(QPrinter* printer, QPrintDialog** outptr_QPrintDialog, QAbstractPrintDialog** outptr_QAbstractPrintDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+	MiqtVirtualQPrintDialog* ret = new MiqtVirtualQPrintDialog(printer);
+	*outptr_QPrintDialog = ret;
+	*outptr_QAbstractPrintDialog = static_cast<QAbstractPrintDialog*>(ret);
+	*outptr_QDialog = static_cast<QDialog*>(ret);
+	*outptr_QWidget = static_cast<QWidget*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
-QPrintDialog* QPrintDialog_new3() {
-	return new QPrintDialog();
+void QPrintDialog_new3(QPrintDialog** outptr_QPrintDialog, QAbstractPrintDialog** outptr_QAbstractPrintDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+	MiqtVirtualQPrintDialog* ret = new MiqtVirtualQPrintDialog();
+	*outptr_QPrintDialog = ret;
+	*outptr_QAbstractPrintDialog = static_cast<QAbstractPrintDialog*>(ret);
+	*outptr_QDialog = static_cast<QDialog*>(ret);
+	*outptr_QWidget = static_cast<QWidget*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
-QPrintDialog* QPrintDialog_new4(QPrinter* printer, QWidget* parent) {
-	return new QPrintDialog(printer, parent);
+void QPrintDialog_new4(QPrinter* printer, QWidget* parent, QPrintDialog** outptr_QPrintDialog, QAbstractPrintDialog** outptr_QAbstractPrintDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+	MiqtVirtualQPrintDialog* ret = new MiqtVirtualQPrintDialog(printer, parent);
+	*outptr_QPrintDialog = ret;
+	*outptr_QAbstractPrintDialog = static_cast<QAbstractPrintDialog*>(ret);
+	*outptr_QDialog = static_cast<QDialog*>(ret);
+	*outptr_QWidget = static_cast<QWidget*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
 QMetaObject* QPrintDialog_MetaObject(const QPrintDialog* self) {
@@ -82,7 +215,7 @@ void QPrintDialog_Accepted(QPrintDialog* self, QPrinter* printer) {
 }
 
 void QPrintDialog_connect_Accepted(QPrintDialog* self, intptr_t slot) {
-	QPrintDialog::connect(self, static_cast<void (QPrintDialog::*)(QPrinter*)>(&QPrintDialog::accepted), self, [=](QPrinter* printer) {
+	MiqtVirtualQPrintDialog::connect(self, static_cast<void (QPrintDialog::*)(QPrinter*)>(&QPrintDialog::accepted), self, [=](QPrinter* printer) {
 		QPrinter* sigval1 = printer;
 		miqt_exec_callback_QPrintDialog_Accepted(slot, sigval1);
 	});
@@ -114,7 +247,43 @@ void QPrintDialog_SetOption2(QPrintDialog* self, int option, bool on) {
 	self->setOption(static_cast<QAbstractPrintDialog::PrintDialogOption>(option), on);
 }
 
-void QPrintDialog_Delete(QPrintDialog* self) {
-	delete self;
+void QPrintDialog_override_virtual_Exec(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQPrintDialog*>( (QPrintDialog*)(self) )->handle__Exec = slot;
+}
+
+int QPrintDialog_virtualbase_Exec(void* self) {
+	return ( (MiqtVirtualQPrintDialog*)(self) )->virtualbase_Exec();
+}
+
+void QPrintDialog_override_virtual_Accept(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQPrintDialog*>( (QPrintDialog*)(self) )->handle__Accept = slot;
+}
+
+void QPrintDialog_virtualbase_Accept(void* self) {
+	( (MiqtVirtualQPrintDialog*)(self) )->virtualbase_Accept();
+}
+
+void QPrintDialog_override_virtual_Done(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQPrintDialog*>( (QPrintDialog*)(self) )->handle__Done = slot;
+}
+
+void QPrintDialog_virtualbase_Done(void* self, int result) {
+	( (MiqtVirtualQPrintDialog*)(self) )->virtualbase_Done(result);
+}
+
+void QPrintDialog_override_virtual_SetVisible(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQPrintDialog*>( (QPrintDialog*)(self) )->handle__SetVisible = slot;
+}
+
+void QPrintDialog_virtualbase_SetVisible(void* self, bool visible) {
+	( (MiqtVirtualQPrintDialog*)(self) )->virtualbase_SetVisible(visible);
+}
+
+void QPrintDialog_Delete(QPrintDialog* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQPrintDialog*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -9,40 +9,60 @@
 #include "gen_qmetacontainer.h"
 #include "_cgo_export.h"
 
-QtMetaContainerPrivate__QMetaContainerInterface* QtMetaContainerPrivate__QMetaContainerInterface_new() {
-	return new QtMetaContainerPrivate::QMetaContainerInterface();
+void QtMetaContainerPrivate__QMetaContainerInterface_new(QtMetaContainerPrivate__QMetaContainerInterface** outptr_QtMetaContainerPrivate__QMetaContainerInterface) {
+	QtMetaContainerPrivate::QMetaContainerInterface* ret = new QtMetaContainerPrivate::QMetaContainerInterface();
+	*outptr_QtMetaContainerPrivate__QMetaContainerInterface = ret;
 }
 
-void QtMetaContainerPrivate__QMetaContainerInterface_Delete(QtMetaContainerPrivate__QMetaContainerInterface* self) {
-	delete self;
+void QtMetaContainerPrivate__QMetaContainerInterface_Delete(QtMetaContainerPrivate__QMetaContainerInterface* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtMetaContainerPrivate::QMetaContainerInterface*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QtMetaContainerPrivate__QMetaSequenceInterface* QtMetaContainerPrivate__QMetaSequenceInterface_new() {
-	return new QtMetaContainerPrivate::QMetaSequenceInterface();
+void QtMetaContainerPrivate__QMetaSequenceInterface_new(QtMetaContainerPrivate__QMetaSequenceInterface** outptr_QtMetaContainerPrivate__QMetaSequenceInterface, QtMetaContainerPrivate__QMetaContainerInterface** outptr_QtMetaContainerPrivate__QMetaContainerInterface) {
+	QtMetaContainerPrivate::QMetaSequenceInterface* ret = new QtMetaContainerPrivate::QMetaSequenceInterface();
+	*outptr_QtMetaContainerPrivate__QMetaSequenceInterface = ret;
+	*outptr_QtMetaContainerPrivate::QMetaContainerInterface = static_cast<QtMetaContainerPrivate::QMetaContainerInterface*>(ret);
 }
 
-void QtMetaContainerPrivate__QMetaSequenceInterface_Delete(QtMetaContainerPrivate__QMetaSequenceInterface* self) {
-	delete self;
+void QtMetaContainerPrivate__QMetaSequenceInterface_Delete(QtMetaContainerPrivate__QMetaSequenceInterface* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtMetaContainerPrivate::QMetaSequenceInterface*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QtMetaContainerPrivate__QMetaAssociationInterface* QtMetaContainerPrivate__QMetaAssociationInterface_new() {
-	return new QtMetaContainerPrivate::QMetaAssociationInterface();
+void QtMetaContainerPrivate__QMetaAssociationInterface_new(QtMetaContainerPrivate__QMetaAssociationInterface** outptr_QtMetaContainerPrivate__QMetaAssociationInterface, QtMetaContainerPrivate__QMetaContainerInterface** outptr_QtMetaContainerPrivate__QMetaContainerInterface) {
+	QtMetaContainerPrivate::QMetaAssociationInterface* ret = new QtMetaContainerPrivate::QMetaAssociationInterface();
+	*outptr_QtMetaContainerPrivate__QMetaAssociationInterface = ret;
+	*outptr_QtMetaContainerPrivate::QMetaContainerInterface = static_cast<QtMetaContainerPrivate::QMetaContainerInterface*>(ret);
 }
 
-void QtMetaContainerPrivate__QMetaAssociationInterface_Delete(QtMetaContainerPrivate__QMetaAssociationInterface* self) {
-	delete self;
+void QtMetaContainerPrivate__QMetaAssociationInterface_Delete(QtMetaContainerPrivate__QMetaAssociationInterface* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtMetaContainerPrivate::QMetaAssociationInterface*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QMetaContainer* QMetaContainer_new() {
-	return new QMetaContainer();
+void QMetaContainer_new(QMetaContainer** outptr_QMetaContainer) {
+	QMetaContainer* ret = new QMetaContainer();
+	*outptr_QMetaContainer = ret;
 }
 
-QMetaContainer* QMetaContainer_new2(QtMetaContainerPrivate__QMetaContainerInterface* d) {
-	return new QMetaContainer(d);
+void QMetaContainer_new2(QtMetaContainerPrivate__QMetaContainerInterface* d, QMetaContainer** outptr_QMetaContainer) {
+	QMetaContainer* ret = new QMetaContainer(d);
+	*outptr_QMetaContainer = ret;
 }
 
-QMetaContainer* QMetaContainer_new3(QMetaContainer* param1) {
-	return new QMetaContainer(*param1);
+void QMetaContainer_new3(QMetaContainer* param1, QMetaContainer** outptr_QMetaContainer) {
+	QMetaContainer* ret = new QMetaContainer(*param1);
+	*outptr_QMetaContainer = ret;
 }
 
 bool QMetaContainer_HasInputIterator(const QMetaContainer* self) {
@@ -144,16 +164,24 @@ ptrdiff_t QMetaContainer_DiffConstIterator(const QMetaContainer* self, const voi
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-void QMetaContainer_Delete(QMetaContainer* self) {
-	delete self;
+void QMetaContainer_Delete(QMetaContainer* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMetaContainer*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QMetaSequence* QMetaSequence_new() {
-	return new QMetaSequence();
+void QMetaSequence_new(QMetaSequence** outptr_QMetaSequence, QMetaContainer** outptr_QMetaContainer) {
+	QMetaSequence* ret = new QMetaSequence();
+	*outptr_QMetaSequence = ret;
+	*outptr_QMetaContainer = static_cast<QMetaContainer*>(ret);
 }
 
-QMetaSequence* QMetaSequence_new2(QtMetaContainerPrivate__QMetaSequenceInterface* d) {
-	return new QMetaSequence(d);
+void QMetaSequence_new2(QtMetaContainerPrivate__QMetaSequenceInterface* d, QMetaSequence** outptr_QMetaSequence, QMetaContainer** outptr_QMetaContainer) {
+	QMetaSequence* ret = new QMetaSequence(d);
+	*outptr_QMetaSequence = ret;
+	*outptr_QMetaContainer = static_cast<QMetaContainer*>(ret);
 }
 
 QMetaType* QMetaSequence_ValueMetaType(const QMetaSequence* self) {
@@ -276,16 +304,24 @@ void QMetaSequence_ValueAtConstIterator(const QMetaSequence* self, const void* i
 	self->valueAtConstIterator(iterator, result);
 }
 
-void QMetaSequence_Delete(QMetaSequence* self) {
-	delete self;
+void QMetaSequence_Delete(QMetaSequence* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMetaSequence*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QMetaAssociation* QMetaAssociation_new() {
-	return new QMetaAssociation();
+void QMetaAssociation_new(QMetaAssociation** outptr_QMetaAssociation, QMetaContainer** outptr_QMetaContainer) {
+	QMetaAssociation* ret = new QMetaAssociation();
+	*outptr_QMetaAssociation = ret;
+	*outptr_QMetaContainer = static_cast<QMetaContainer*>(ret);
 }
 
-QMetaAssociation* QMetaAssociation_new2(QtMetaContainerPrivate__QMetaAssociationInterface* d) {
-	return new QMetaAssociation(d);
+void QMetaAssociation_new2(QtMetaContainerPrivate__QMetaAssociationInterface* d, QMetaAssociation** outptr_QMetaAssociation, QMetaContainer** outptr_QMetaContainer) {
+	QMetaAssociation* ret = new QMetaAssociation(d);
+	*outptr_QMetaAssociation = ret;
+	*outptr_QMetaContainer = static_cast<QMetaContainer*>(ret);
 }
 
 QMetaType* QMetaAssociation_KeyMetaType(const QMetaAssociation* self) {
@@ -392,7 +428,11 @@ void* QMetaAssociation_CreateConstIteratorAtKey(const QMetaAssociation* self, co
 	return self->createConstIteratorAtKey(container, key);
 }
 
-void QMetaAssociation_Delete(QMetaAssociation* self) {
-	delete self;
+void QMetaAssociation_Delete(QMetaAssociation* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMetaAssociation*>( self );
+	} else {
+		delete self;
+	}
 }
 

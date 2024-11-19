@@ -22,7 +22,8 @@ const (
 )
 
 type QColormap struct {
-	h *C.QColormap
+	h          *C.QColormap
+	isSubclass bool
 }
 
 func (this *QColormap) cPointer() *C.QColormap {
@@ -39,6 +40,7 @@ func (this *QColormap) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQColormap constructs the type using only CGO pointers.
 func newQColormap(h *C.QColormap) *QColormap {
 	if h == nil {
 		return nil
@@ -46,14 +48,23 @@ func newQColormap(h *C.QColormap) *QColormap {
 	return &QColormap{h: h}
 }
 
+// UnsafeNewQColormap constructs the type using only unsafe pointers.
 func UnsafeNewQColormap(h unsafe.Pointer) *QColormap {
-	return newQColormap((*C.QColormap)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QColormap{h: (*C.QColormap)(h)}
 }
 
 // NewQColormap constructs a new QColormap object.
 func NewQColormap(colormap *QColormap) *QColormap {
-	ret := C.QColormap_new(colormap.cPointer())
-	return newQColormap(ret)
+	var outptr_QColormap *C.QColormap = nil
+
+	C.QColormap_new(colormap.cPointer(), &outptr_QColormap)
+	ret := newQColormap(outptr_QColormap)
+	ret.isSubclass = true
+	return ret
 }
 
 func QColormap_Initialize() {
@@ -120,7 +131,7 @@ func QColormap_Instance1(screen int) *QColormap {
 
 // Delete this object from C++ memory.
 func (this *QColormap) Delete() {
-	C.QColormap_Delete(this.h)
+	C.QColormap_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

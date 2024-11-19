@@ -14,7 +14,8 @@ import (
 )
 
 type QtPrivate__ExceptionHolder struct {
-	h *C.QtPrivate__ExceptionHolder
+	h          *C.QtPrivate__ExceptionHolder
+	isSubclass bool
 }
 
 func (this *QtPrivate__ExceptionHolder) cPointer() *C.QtPrivate__ExceptionHolder {
@@ -31,6 +32,7 @@ func (this *QtPrivate__ExceptionHolder) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQtPrivate__ExceptionHolder constructs the type using only CGO pointers.
 func newQtPrivate__ExceptionHolder(h *C.QtPrivate__ExceptionHolder) *QtPrivate__ExceptionHolder {
 	if h == nil {
 		return nil
@@ -38,19 +40,28 @@ func newQtPrivate__ExceptionHolder(h *C.QtPrivate__ExceptionHolder) *QtPrivate__
 	return &QtPrivate__ExceptionHolder{h: h}
 }
 
+// UnsafeNewQtPrivate__ExceptionHolder constructs the type using only unsafe pointers.
 func UnsafeNewQtPrivate__ExceptionHolder(h unsafe.Pointer) *QtPrivate__ExceptionHolder {
-	return newQtPrivate__ExceptionHolder((*C.QtPrivate__ExceptionHolder)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QtPrivate__ExceptionHolder{h: (*C.QtPrivate__ExceptionHolder)(h)}
 }
 
 // NewQtPrivate__ExceptionHolder constructs a new QtPrivate::ExceptionHolder object.
 func NewQtPrivate__ExceptionHolder() *QtPrivate__ExceptionHolder {
-	ret := C.QtPrivate__ExceptionHolder_new()
-	return newQtPrivate__ExceptionHolder(ret)
+	var outptr_QtPrivate__ExceptionHolder *C.QtPrivate__ExceptionHolder = nil
+
+	C.QtPrivate__ExceptionHolder_new(&outptr_QtPrivate__ExceptionHolder)
+	ret := newQtPrivate__ExceptionHolder(outptr_QtPrivate__ExceptionHolder)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QtPrivate__ExceptionHolder) Delete() {
-	C.QtPrivate__ExceptionHolder_Delete(this.h)
+	C.QtPrivate__ExceptionHolder_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -63,7 +74,8 @@ func (this *QtPrivate__ExceptionHolder) GoGC() {
 }
 
 type QtPrivate__ExceptionStore struct {
-	h *C.QtPrivate__ExceptionStore
+	h          *C.QtPrivate__ExceptionStore
+	isSubclass bool
 }
 
 func (this *QtPrivate__ExceptionStore) cPointer() *C.QtPrivate__ExceptionStore {
@@ -80,6 +92,7 @@ func (this *QtPrivate__ExceptionStore) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQtPrivate__ExceptionStore constructs the type using only CGO pointers.
 func newQtPrivate__ExceptionStore(h *C.QtPrivate__ExceptionStore) *QtPrivate__ExceptionStore {
 	if h == nil {
 		return nil
@@ -87,8 +100,13 @@ func newQtPrivate__ExceptionStore(h *C.QtPrivate__ExceptionStore) *QtPrivate__Ex
 	return &QtPrivate__ExceptionStore{h: h}
 }
 
+// UnsafeNewQtPrivate__ExceptionStore constructs the type using only unsafe pointers.
 func UnsafeNewQtPrivate__ExceptionStore(h unsafe.Pointer) *QtPrivate__ExceptionStore {
-	return newQtPrivate__ExceptionStore((*C.QtPrivate__ExceptionStore)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QtPrivate__ExceptionStore{h: (*C.QtPrivate__ExceptionStore)(h)}
 }
 
 func (this *QtPrivate__ExceptionStore) HasException() bool {
@@ -105,7 +123,7 @@ func (this *QtPrivate__ExceptionStore) HasThrown() bool {
 
 // Delete this object from C++ memory.
 func (this *QtPrivate__ExceptionStore) Delete() {
-	C.QtPrivate__ExceptionStore_Delete(this.h)
+	C.QtPrivate__ExceptionStore_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

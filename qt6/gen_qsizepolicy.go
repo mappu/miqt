@@ -55,7 +55,8 @@ const (
 )
 
 type QSizePolicy struct {
-	h *C.QSizePolicy
+	h          *C.QSizePolicy
+	isSubclass bool
 }
 
 func (this *QSizePolicy) cPointer() *C.QSizePolicy {
@@ -72,6 +73,7 @@ func (this *QSizePolicy) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQSizePolicy constructs the type using only CGO pointers.
 func newQSizePolicy(h *C.QSizePolicy) *QSizePolicy {
 	if h == nil {
 		return nil
@@ -79,32 +81,53 @@ func newQSizePolicy(h *C.QSizePolicy) *QSizePolicy {
 	return &QSizePolicy{h: h}
 }
 
+// UnsafeNewQSizePolicy constructs the type using only unsafe pointers.
 func UnsafeNewQSizePolicy(h unsafe.Pointer) *QSizePolicy {
-	return newQSizePolicy((*C.QSizePolicy)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QSizePolicy{h: (*C.QSizePolicy)(h)}
 }
 
 // NewQSizePolicy constructs a new QSizePolicy object.
 func NewQSizePolicy() *QSizePolicy {
-	ret := C.QSizePolicy_new()
-	return newQSizePolicy(ret)
+	var outptr_QSizePolicy *C.QSizePolicy = nil
+
+	C.QSizePolicy_new(&outptr_QSizePolicy)
+	ret := newQSizePolicy(outptr_QSizePolicy)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSizePolicy2 constructs a new QSizePolicy object.
 func NewQSizePolicy2(horizontal QSizePolicy__Policy, vertical QSizePolicy__Policy) *QSizePolicy {
-	ret := C.QSizePolicy_new2((C.int)(horizontal), (C.int)(vertical))
-	return newQSizePolicy(ret)
+	var outptr_QSizePolicy *C.QSizePolicy = nil
+
+	C.QSizePolicy_new2((C.int)(horizontal), (C.int)(vertical), &outptr_QSizePolicy)
+	ret := newQSizePolicy(outptr_QSizePolicy)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSizePolicy3 constructs a new QSizePolicy object.
 func NewQSizePolicy3(param1 *QSizePolicy) *QSizePolicy {
-	ret := C.QSizePolicy_new3(param1.cPointer())
-	return newQSizePolicy(ret)
+	var outptr_QSizePolicy *C.QSizePolicy = nil
+
+	C.QSizePolicy_new3(param1.cPointer(), &outptr_QSizePolicy)
+	ret := newQSizePolicy(outptr_QSizePolicy)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSizePolicy4 constructs a new QSizePolicy object.
 func NewQSizePolicy4(horizontal QSizePolicy__Policy, vertical QSizePolicy__Policy, typeVal QSizePolicy__ControlType) *QSizePolicy {
-	ret := C.QSizePolicy_new4((C.int)(horizontal), (C.int)(vertical), (C.int)(typeVal))
-	return newQSizePolicy(ret)
+	var outptr_QSizePolicy *C.QSizePolicy = nil
+
+	C.QSizePolicy_new4((C.int)(horizontal), (C.int)(vertical), (C.int)(typeVal), &outptr_QSizePolicy)
+	ret := newQSizePolicy(outptr_QSizePolicy)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QSizePolicy) HorizontalPolicy() QSizePolicy__Policy {
@@ -196,7 +219,7 @@ func (this *QSizePolicy) Transposed() *QSizePolicy {
 
 // Delete this object from C++ memory.
 func (this *QSizePolicy) Delete() {
-	C.QSizePolicy_Delete(this.h)
+	C.QSizePolicy_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

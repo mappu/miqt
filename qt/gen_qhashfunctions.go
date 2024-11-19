@@ -14,7 +14,8 @@ import (
 )
 
 type QtPrivate__QHashCombine struct {
-	h *C.QtPrivate__QHashCombine
+	h          *C.QtPrivate__QHashCombine
+	isSubclass bool
 }
 
 func (this *QtPrivate__QHashCombine) cPointer() *C.QtPrivate__QHashCombine {
@@ -31,6 +32,7 @@ func (this *QtPrivate__QHashCombine) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQtPrivate__QHashCombine constructs the type using only CGO pointers.
 func newQtPrivate__QHashCombine(h *C.QtPrivate__QHashCombine) *QtPrivate__QHashCombine {
 	if h == nil {
 		return nil
@@ -38,19 +40,28 @@ func newQtPrivate__QHashCombine(h *C.QtPrivate__QHashCombine) *QtPrivate__QHashC
 	return &QtPrivate__QHashCombine{h: h}
 }
 
+// UnsafeNewQtPrivate__QHashCombine constructs the type using only unsafe pointers.
 func UnsafeNewQtPrivate__QHashCombine(h unsafe.Pointer) *QtPrivate__QHashCombine {
-	return newQtPrivate__QHashCombine((*C.QtPrivate__QHashCombine)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QtPrivate__QHashCombine{h: (*C.QtPrivate__QHashCombine)(h)}
 }
 
 // NewQtPrivate__QHashCombine constructs a new QtPrivate::QHashCombine object.
 func NewQtPrivate__QHashCombine() *QtPrivate__QHashCombine {
-	ret := C.QtPrivate__QHashCombine_new()
-	return newQtPrivate__QHashCombine(ret)
+	var outptr_QtPrivate__QHashCombine *C.QtPrivate__QHashCombine = nil
+
+	C.QtPrivate__QHashCombine_new(&outptr_QtPrivate__QHashCombine)
+	ret := newQtPrivate__QHashCombine(outptr_QtPrivate__QHashCombine)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QtPrivate__QHashCombine) Delete() {
-	C.QtPrivate__QHashCombine_Delete(this.h)
+	C.QtPrivate__QHashCombine_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -63,7 +74,8 @@ func (this *QtPrivate__QHashCombine) GoGC() {
 }
 
 type QtPrivate__QHashCombineCommutative struct {
-	h *C.QtPrivate__QHashCombineCommutative
+	h          *C.QtPrivate__QHashCombineCommutative
+	isSubclass bool
 }
 
 func (this *QtPrivate__QHashCombineCommutative) cPointer() *C.QtPrivate__QHashCombineCommutative {
@@ -80,6 +92,7 @@ func (this *QtPrivate__QHashCombineCommutative) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQtPrivate__QHashCombineCommutative constructs the type using only CGO pointers.
 func newQtPrivate__QHashCombineCommutative(h *C.QtPrivate__QHashCombineCommutative) *QtPrivate__QHashCombineCommutative {
 	if h == nil {
 		return nil
@@ -87,19 +100,28 @@ func newQtPrivate__QHashCombineCommutative(h *C.QtPrivate__QHashCombineCommutati
 	return &QtPrivate__QHashCombineCommutative{h: h}
 }
 
+// UnsafeNewQtPrivate__QHashCombineCommutative constructs the type using only unsafe pointers.
 func UnsafeNewQtPrivate__QHashCombineCommutative(h unsafe.Pointer) *QtPrivate__QHashCombineCommutative {
-	return newQtPrivate__QHashCombineCommutative((*C.QtPrivate__QHashCombineCommutative)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QtPrivate__QHashCombineCommutative{h: (*C.QtPrivate__QHashCombineCommutative)(h)}
 }
 
 // NewQtPrivate__QHashCombineCommutative constructs a new QtPrivate::QHashCombineCommutative object.
 func NewQtPrivate__QHashCombineCommutative() *QtPrivate__QHashCombineCommutative {
-	ret := C.QtPrivate__QHashCombineCommutative_new()
-	return newQtPrivate__QHashCombineCommutative(ret)
+	var outptr_QtPrivate__QHashCombineCommutative *C.QtPrivate__QHashCombineCommutative = nil
+
+	C.QtPrivate__QHashCombineCommutative_new(&outptr_QtPrivate__QHashCombineCommutative)
+	ret := newQtPrivate__QHashCombineCommutative(outptr_QtPrivate__QHashCombineCommutative)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QtPrivate__QHashCombineCommutative) Delete() {
-	C.QtPrivate__QHashCombineCommutative_Delete(this.h)
+	C.QtPrivate__QHashCombineCommutative_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

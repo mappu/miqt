@@ -32,7 +32,8 @@ const (
 )
 
 type QGenericArgument struct {
-	h *C.QGenericArgument
+	h          *C.QGenericArgument
+	isSubclass bool
 }
 
 func (this *QGenericArgument) cPointer() *C.QGenericArgument {
@@ -49,6 +50,7 @@ func (this *QGenericArgument) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQGenericArgument constructs the type using only CGO pointers.
 func newQGenericArgument(h *C.QGenericArgument) *QGenericArgument {
 	if h == nil {
 		return nil
@@ -56,36 +58,57 @@ func newQGenericArgument(h *C.QGenericArgument) *QGenericArgument {
 	return &QGenericArgument{h: h}
 }
 
+// UnsafeNewQGenericArgument constructs the type using only unsafe pointers.
 func UnsafeNewQGenericArgument(h unsafe.Pointer) *QGenericArgument {
-	return newQGenericArgument((*C.QGenericArgument)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QGenericArgument{h: (*C.QGenericArgument)(h)}
 }
 
 // NewQGenericArgument constructs a new QGenericArgument object.
 func NewQGenericArgument() *QGenericArgument {
-	ret := C.QGenericArgument_new()
-	return newQGenericArgument(ret)
+	var outptr_QGenericArgument *C.QGenericArgument = nil
+
+	C.QGenericArgument_new(&outptr_QGenericArgument)
+	ret := newQGenericArgument(outptr_QGenericArgument)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQGenericArgument2 constructs a new QGenericArgument object.
 func NewQGenericArgument2(param1 *QGenericArgument) *QGenericArgument {
-	ret := C.QGenericArgument_new2(param1.cPointer())
-	return newQGenericArgument(ret)
+	var outptr_QGenericArgument *C.QGenericArgument = nil
+
+	C.QGenericArgument_new2(param1.cPointer(), &outptr_QGenericArgument)
+	ret := newQGenericArgument(outptr_QGenericArgument)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQGenericArgument3 constructs a new QGenericArgument object.
 func NewQGenericArgument3(aName string) *QGenericArgument {
 	aName_Cstring := C.CString(aName)
 	defer C.free(unsafe.Pointer(aName_Cstring))
-	ret := C.QGenericArgument_new3(aName_Cstring)
-	return newQGenericArgument(ret)
+	var outptr_QGenericArgument *C.QGenericArgument = nil
+
+	C.QGenericArgument_new3(aName_Cstring, &outptr_QGenericArgument)
+	ret := newQGenericArgument(outptr_QGenericArgument)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQGenericArgument4 constructs a new QGenericArgument object.
 func NewQGenericArgument4(aName string, aData unsafe.Pointer) *QGenericArgument {
 	aName_Cstring := C.CString(aName)
 	defer C.free(unsafe.Pointer(aName_Cstring))
-	ret := C.QGenericArgument_new4(aName_Cstring, aData)
-	return newQGenericArgument(ret)
+	var outptr_QGenericArgument *C.QGenericArgument = nil
+
+	C.QGenericArgument_new4(aName_Cstring, aData, &outptr_QGenericArgument)
+	ret := newQGenericArgument(outptr_QGenericArgument)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QGenericArgument) Data() unsafe.Pointer {
@@ -99,7 +122,7 @@ func (this *QGenericArgument) Name() string {
 
 // Delete this object from C++ memory.
 func (this *QGenericArgument) Delete() {
-	C.QGenericArgument_Delete(this.h)
+	C.QGenericArgument_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -112,7 +135,8 @@ func (this *QGenericArgument) GoGC() {
 }
 
 type QGenericReturnArgument struct {
-	h *C.QGenericReturnArgument
+	h          *C.QGenericReturnArgument
+	isSubclass bool
 	*QGenericArgument
 }
 
@@ -130,48 +154,76 @@ func (this *QGenericReturnArgument) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQGenericReturnArgument(h *C.QGenericReturnArgument) *QGenericReturnArgument {
+// newQGenericReturnArgument constructs the type using only CGO pointers.
+func newQGenericReturnArgument(h *C.QGenericReturnArgument, h_QGenericArgument *C.QGenericArgument) *QGenericReturnArgument {
 	if h == nil {
 		return nil
 	}
-	return &QGenericReturnArgument{h: h, QGenericArgument: UnsafeNewQGenericArgument(unsafe.Pointer(h))}
+	return &QGenericReturnArgument{h: h,
+		QGenericArgument: newQGenericArgument(h_QGenericArgument)}
 }
 
-func UnsafeNewQGenericReturnArgument(h unsafe.Pointer) *QGenericReturnArgument {
-	return newQGenericReturnArgument((*C.QGenericReturnArgument)(h))
+// UnsafeNewQGenericReturnArgument constructs the type using only unsafe pointers.
+func UnsafeNewQGenericReturnArgument(h unsafe.Pointer, h_QGenericArgument unsafe.Pointer) *QGenericReturnArgument {
+	if h == nil {
+		return nil
+	}
+
+	return &QGenericReturnArgument{h: (*C.QGenericReturnArgument)(h),
+		QGenericArgument: UnsafeNewQGenericArgument(h_QGenericArgument)}
 }
 
 // NewQGenericReturnArgument constructs a new QGenericReturnArgument object.
 func NewQGenericReturnArgument() *QGenericReturnArgument {
-	ret := C.QGenericReturnArgument_new()
-	return newQGenericReturnArgument(ret)
+	var outptr_QGenericReturnArgument *C.QGenericReturnArgument = nil
+	var outptr_QGenericArgument *C.QGenericArgument = nil
+
+	C.QGenericReturnArgument_new(&outptr_QGenericReturnArgument, &outptr_QGenericArgument)
+	ret := newQGenericReturnArgument(outptr_QGenericReturnArgument, outptr_QGenericArgument)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQGenericReturnArgument2 constructs a new QGenericReturnArgument object.
 func NewQGenericReturnArgument2(param1 *QGenericReturnArgument) *QGenericReturnArgument {
-	ret := C.QGenericReturnArgument_new2(param1.cPointer())
-	return newQGenericReturnArgument(ret)
+	var outptr_QGenericReturnArgument *C.QGenericReturnArgument = nil
+	var outptr_QGenericArgument *C.QGenericArgument = nil
+
+	C.QGenericReturnArgument_new2(param1.cPointer(), &outptr_QGenericReturnArgument, &outptr_QGenericArgument)
+	ret := newQGenericReturnArgument(outptr_QGenericReturnArgument, outptr_QGenericArgument)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQGenericReturnArgument3 constructs a new QGenericReturnArgument object.
 func NewQGenericReturnArgument3(aName string) *QGenericReturnArgument {
 	aName_Cstring := C.CString(aName)
 	defer C.free(unsafe.Pointer(aName_Cstring))
-	ret := C.QGenericReturnArgument_new3(aName_Cstring)
-	return newQGenericReturnArgument(ret)
+	var outptr_QGenericReturnArgument *C.QGenericReturnArgument = nil
+	var outptr_QGenericArgument *C.QGenericArgument = nil
+
+	C.QGenericReturnArgument_new3(aName_Cstring, &outptr_QGenericReturnArgument, &outptr_QGenericArgument)
+	ret := newQGenericReturnArgument(outptr_QGenericReturnArgument, outptr_QGenericArgument)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQGenericReturnArgument4 constructs a new QGenericReturnArgument object.
 func NewQGenericReturnArgument4(aName string, aData unsafe.Pointer) *QGenericReturnArgument {
 	aName_Cstring := C.CString(aName)
 	defer C.free(unsafe.Pointer(aName_Cstring))
-	ret := C.QGenericReturnArgument_new4(aName_Cstring, aData)
-	return newQGenericReturnArgument(ret)
+	var outptr_QGenericReturnArgument *C.QGenericReturnArgument = nil
+	var outptr_QGenericArgument *C.QGenericArgument = nil
+
+	C.QGenericReturnArgument_new4(aName_Cstring, aData, &outptr_QGenericReturnArgument, &outptr_QGenericArgument)
+	ret := newQGenericReturnArgument(outptr_QGenericReturnArgument, outptr_QGenericArgument)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QGenericReturnArgument) Delete() {
-	C.QGenericReturnArgument_Delete(this.h)
+	C.QGenericReturnArgument_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -184,7 +236,8 @@ func (this *QGenericReturnArgument) GoGC() {
 }
 
 type QMetaObject struct {
-	h *C.QMetaObject
+	h          *C.QMetaObject
+	isSubclass bool
 }
 
 func (this *QMetaObject) cPointer() *C.QMetaObject {
@@ -201,6 +254,7 @@ func (this *QMetaObject) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQMetaObject constructs the type using only CGO pointers.
 func newQMetaObject(h *C.QMetaObject) *QMetaObject {
 	if h == nil {
 		return nil
@@ -208,20 +262,33 @@ func newQMetaObject(h *C.QMetaObject) *QMetaObject {
 	return &QMetaObject{h: h}
 }
 
+// UnsafeNewQMetaObject constructs the type using only unsafe pointers.
 func UnsafeNewQMetaObject(h unsafe.Pointer) *QMetaObject {
-	return newQMetaObject((*C.QMetaObject)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMetaObject{h: (*C.QMetaObject)(h)}
 }
 
 // NewQMetaObject constructs a new QMetaObject object.
 func NewQMetaObject() *QMetaObject {
-	ret := C.QMetaObject_new()
-	return newQMetaObject(ret)
+	var outptr_QMetaObject *C.QMetaObject = nil
+
+	C.QMetaObject_new(&outptr_QMetaObject)
+	ret := newQMetaObject(outptr_QMetaObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMetaObject2 constructs a new QMetaObject object.
 func NewQMetaObject2(param1 *QMetaObject) *QMetaObject {
-	ret := C.QMetaObject_new2(param1.cPointer())
-	return newQMetaObject(ret)
+	var outptr_QMetaObject *C.QMetaObject = nil
+
+	C.QMetaObject_new2(param1.cPointer(), &outptr_QMetaObject)
+	ret := newQMetaObject(outptr_QMetaObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QMetaObject) ClassName() string {
@@ -760,7 +827,7 @@ func (this *QMetaObject) NewInstance10(val0 QGenericArgument, val1 QGenericArgum
 
 // Delete this object from C++ memory.
 func (this *QMetaObject) Delete() {
-	C.QMetaObject_Delete(this.h)
+	C.QMetaObject_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -773,7 +840,8 @@ func (this *QMetaObject) GoGC() {
 }
 
 type QMetaObject__Connection struct {
-	h *C.QMetaObject__Connection
+	h          *C.QMetaObject__Connection
+	isSubclass bool
 }
 
 func (this *QMetaObject__Connection) cPointer() *C.QMetaObject__Connection {
@@ -790,6 +858,7 @@ func (this *QMetaObject__Connection) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQMetaObject__Connection constructs the type using only CGO pointers.
 func newQMetaObject__Connection(h *C.QMetaObject__Connection) *QMetaObject__Connection {
 	if h == nil {
 		return nil
@@ -797,20 +866,33 @@ func newQMetaObject__Connection(h *C.QMetaObject__Connection) *QMetaObject__Conn
 	return &QMetaObject__Connection{h: h}
 }
 
+// UnsafeNewQMetaObject__Connection constructs the type using only unsafe pointers.
 func UnsafeNewQMetaObject__Connection(h unsafe.Pointer) *QMetaObject__Connection {
-	return newQMetaObject__Connection((*C.QMetaObject__Connection)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMetaObject__Connection{h: (*C.QMetaObject__Connection)(h)}
 }
 
 // NewQMetaObject__Connection constructs a new QMetaObject::Connection object.
 func NewQMetaObject__Connection() *QMetaObject__Connection {
-	ret := C.QMetaObject__Connection_new()
-	return newQMetaObject__Connection(ret)
+	var outptr_QMetaObject__Connection *C.QMetaObject__Connection = nil
+
+	C.QMetaObject__Connection_new(&outptr_QMetaObject__Connection)
+	ret := newQMetaObject__Connection(outptr_QMetaObject__Connection)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMetaObject__Connection2 constructs a new QMetaObject::Connection object.
 func NewQMetaObject__Connection2(other *QMetaObject__Connection) *QMetaObject__Connection {
-	ret := C.QMetaObject__Connection_new2(other.cPointer())
-	return newQMetaObject__Connection(ret)
+	var outptr_QMetaObject__Connection *C.QMetaObject__Connection = nil
+
+	C.QMetaObject__Connection_new2(other.cPointer(), &outptr_QMetaObject__Connection)
+	ret := newQMetaObject__Connection(outptr_QMetaObject__Connection)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QMetaObject__Connection) OperatorAssign(other *QMetaObject__Connection) {
@@ -819,7 +901,7 @@ func (this *QMetaObject__Connection) OperatorAssign(other *QMetaObject__Connecti
 
 // Delete this object from C++ memory.
 func (this *QMetaObject__Connection) Delete() {
-	C.QMetaObject__Connection_Delete(this.h)
+	C.QMetaObject__Connection_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -832,7 +914,8 @@ func (this *QMetaObject__Connection) GoGC() {
 }
 
 type QMetaObject__SuperData struct {
-	h *C.QMetaObject__SuperData
+	h          *C.QMetaObject__SuperData
+	isSubclass bool
 }
 
 func (this *QMetaObject__SuperData) cPointer() *C.QMetaObject__SuperData {
@@ -849,6 +932,7 @@ func (this *QMetaObject__SuperData) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQMetaObject__SuperData constructs the type using only CGO pointers.
 func newQMetaObject__SuperData(h *C.QMetaObject__SuperData) *QMetaObject__SuperData {
 	if h == nil {
 		return nil
@@ -856,26 +940,43 @@ func newQMetaObject__SuperData(h *C.QMetaObject__SuperData) *QMetaObject__SuperD
 	return &QMetaObject__SuperData{h: h}
 }
 
+// UnsafeNewQMetaObject__SuperData constructs the type using only unsafe pointers.
 func UnsafeNewQMetaObject__SuperData(h unsafe.Pointer) *QMetaObject__SuperData {
-	return newQMetaObject__SuperData((*C.QMetaObject__SuperData)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMetaObject__SuperData{h: (*C.QMetaObject__SuperData)(h)}
 }
 
 // NewQMetaObject__SuperData constructs a new QMetaObject::SuperData object.
 func NewQMetaObject__SuperData() *QMetaObject__SuperData {
-	ret := C.QMetaObject__SuperData_new()
-	return newQMetaObject__SuperData(ret)
+	var outptr_QMetaObject__SuperData *C.QMetaObject__SuperData = nil
+
+	C.QMetaObject__SuperData_new(&outptr_QMetaObject__SuperData)
+	ret := newQMetaObject__SuperData(outptr_QMetaObject__SuperData)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMetaObject__SuperData2 constructs a new QMetaObject::SuperData object.
 func NewQMetaObject__SuperData2(mo *QMetaObject) *QMetaObject__SuperData {
-	ret := C.QMetaObject__SuperData_new2(mo.cPointer())
-	return newQMetaObject__SuperData(ret)
+	var outptr_QMetaObject__SuperData *C.QMetaObject__SuperData = nil
+
+	C.QMetaObject__SuperData_new2(mo.cPointer(), &outptr_QMetaObject__SuperData)
+	ret := newQMetaObject__SuperData(outptr_QMetaObject__SuperData)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMetaObject__SuperData3 constructs a new QMetaObject::SuperData object.
 func NewQMetaObject__SuperData3(param1 *QMetaObject__SuperData) *QMetaObject__SuperData {
-	ret := C.QMetaObject__SuperData_new3(param1.cPointer())
-	return newQMetaObject__SuperData(ret)
+	var outptr_QMetaObject__SuperData *C.QMetaObject__SuperData = nil
+
+	C.QMetaObject__SuperData_new3(param1.cPointer(), &outptr_QMetaObject__SuperData)
+	ret := newQMetaObject__SuperData(outptr_QMetaObject__SuperData)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QMetaObject__SuperData) OperatorMinusGreater() *QMetaObject {
@@ -888,7 +989,7 @@ func (this *QMetaObject__SuperData) OperatorAssign(param1 *QMetaObject__SuperDat
 
 // Delete this object from C++ memory.
 func (this *QMetaObject__SuperData) Delete() {
-	C.QMetaObject__SuperData_Delete(this.h)
+	C.QMetaObject__SuperData_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

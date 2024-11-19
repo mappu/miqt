@@ -5,8 +5,9 @@
 #include "gen_qcryptographichash.h"
 #include "_cgo_export.h"
 
-QCryptographicHash* QCryptographicHash_new(int method) {
-	return new QCryptographicHash(static_cast<QCryptographicHash::Algorithm>(method));
+void QCryptographicHash_new(int method, QCryptographicHash** outptr_QCryptographicHash) {
+	QCryptographicHash* ret = new QCryptographicHash(static_cast<QCryptographicHash::Algorithm>(method));
+	*outptr_QCryptographicHash = ret;
 }
 
 void QCryptographicHash_Reset(QCryptographicHash* self) {
@@ -49,7 +50,11 @@ int QCryptographicHash_HashLength(int method) {
 	return QCryptographicHash::hashLength(static_cast<QCryptographicHash::Algorithm>(method));
 }
 
-void QCryptographicHash_Delete(QCryptographicHash* self) {
-	delete self;
+void QCryptographicHash_Delete(QCryptographicHash* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QCryptographicHash*>( self );
+	} else {
+		delete self;
+	}
 }
 

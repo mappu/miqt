@@ -10,12 +10,14 @@
 #include "gen_qnetworkinterface.h"
 #include "_cgo_export.h"
 
-QNetworkAddressEntry* QNetworkAddressEntry_new() {
-	return new QNetworkAddressEntry();
+void QNetworkAddressEntry_new(QNetworkAddressEntry** outptr_QNetworkAddressEntry) {
+	QNetworkAddressEntry* ret = new QNetworkAddressEntry();
+	*outptr_QNetworkAddressEntry = ret;
 }
 
-QNetworkAddressEntry* QNetworkAddressEntry_new2(QNetworkAddressEntry* other) {
-	return new QNetworkAddressEntry(*other);
+void QNetworkAddressEntry_new2(QNetworkAddressEntry* other, QNetworkAddressEntry** outptr_QNetworkAddressEntry) {
+	QNetworkAddressEntry* ret = new QNetworkAddressEntry(*other);
+	*outptr_QNetworkAddressEntry = ret;
 }
 
 void QNetworkAddressEntry_OperatorAssign(QNetworkAddressEntry* self, QNetworkAddressEntry* other) {
@@ -103,16 +105,22 @@ bool QNetworkAddressEntry_IsTemporary(const QNetworkAddressEntry* self) {
 	return self->isTemporary();
 }
 
-void QNetworkAddressEntry_Delete(QNetworkAddressEntry* self) {
-	delete self;
+void QNetworkAddressEntry_Delete(QNetworkAddressEntry* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QNetworkAddressEntry*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QNetworkInterface* QNetworkInterface_new() {
-	return new QNetworkInterface();
+void QNetworkInterface_new(QNetworkInterface** outptr_QNetworkInterface) {
+	QNetworkInterface* ret = new QNetworkInterface();
+	*outptr_QNetworkInterface = ret;
 }
 
-QNetworkInterface* QNetworkInterface_new2(QNetworkInterface* other) {
-	return new QNetworkInterface(*other);
+void QNetworkInterface_new2(QNetworkInterface* other, QNetworkInterface** outptr_QNetworkInterface) {
+	QNetworkInterface* ret = new QNetworkInterface(*other);
+	*outptr_QNetworkInterface = ret;
 }
 
 void QNetworkInterface_OperatorAssign(QNetworkInterface* self, QNetworkInterface* other) {
@@ -242,7 +250,11 @@ struct miqt_array /* of QHostAddress* */  QNetworkInterface_AllAddresses() {
 	return _out;
 }
 
-void QNetworkInterface_Delete(QNetworkInterface* self) {
-	delete self;
+void QNetworkInterface_Delete(QNetworkInterface* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QNetworkInterface*>( self );
+	} else {
+		delete self;
+	}
 }
 

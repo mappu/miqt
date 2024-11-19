@@ -16,7 +16,8 @@ import (
 )
 
 type QRadioDataControl struct {
-	h *C.QRadioDataControl
+	h          *C.QRadioDataControl
+	isSubclass bool
 	*QMediaControl
 }
 
@@ -34,15 +35,23 @@ func (this *QRadioDataControl) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQRadioDataControl(h *C.QRadioDataControl) *QRadioDataControl {
+// newQRadioDataControl constructs the type using only CGO pointers.
+func newQRadioDataControl(h *C.QRadioDataControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QRadioDataControl {
 	if h == nil {
 		return nil
 	}
-	return &QRadioDataControl{h: h, QMediaControl: UnsafeNewQMediaControl(unsafe.Pointer(h))}
+	return &QRadioDataControl{h: h,
+		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
 }
 
-func UnsafeNewQRadioDataControl(h unsafe.Pointer) *QRadioDataControl {
-	return newQRadioDataControl((*C.QRadioDataControl)(h))
+// UnsafeNewQRadioDataControl constructs the type using only unsafe pointers.
+func UnsafeNewQRadioDataControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QRadioDataControl {
+	if h == nil {
+		return nil
+	}
+
+	return &QRadioDataControl{h: (*C.QRadioDataControl)(h),
+		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
 }
 
 func (this *QRadioDataControl) MetaObject() *qt.QMetaObject {
@@ -338,7 +347,7 @@ func QRadioDataControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QRadioDataControl) Delete() {
-	C.QRadioDataControl_Delete(this.h)
+	C.QRadioDataControl_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

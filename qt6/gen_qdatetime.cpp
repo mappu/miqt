@@ -10,20 +10,24 @@
 #include "gen_qdatetime.h"
 #include "_cgo_export.h"
 
-QDate* QDate_new() {
-	return new QDate();
+void QDate_new(QDate** outptr_QDate) {
+	QDate* ret = new QDate();
+	*outptr_QDate = ret;
 }
 
-QDate* QDate_new2(int y, int m, int d) {
-	return new QDate(static_cast<int>(y), static_cast<int>(m), static_cast<int>(d));
+void QDate_new2(int y, int m, int d, QDate** outptr_QDate) {
+	QDate* ret = new QDate(static_cast<int>(y), static_cast<int>(m), static_cast<int>(d));
+	*outptr_QDate = ret;
 }
 
-QDate* QDate_new3(int y, int m, int d, QCalendar* cal) {
-	return new QDate(static_cast<int>(y), static_cast<int>(m), static_cast<int>(d), *cal);
+void QDate_new3(int y, int m, int d, QCalendar* cal, QDate** outptr_QDate) {
+	QDate* ret = new QDate(static_cast<int>(y), static_cast<int>(m), static_cast<int>(d), *cal);
+	*outptr_QDate = ret;
 }
 
-QDate* QDate_new4(QDate* param1) {
-	return new QDate(*param1);
+void QDate_new4(QDate* param1, QDate** outptr_QDate) {
+	QDate* ret = new QDate(*param1);
+	*outptr_QDate = ret;
 }
 
 bool QDate_IsNull(const QDate* self) {
@@ -256,28 +260,37 @@ QDate* QDate_FromString34(struct miqt_string stringVal, struct miqt_string forma
 	return new QDate(QDate::fromString(stringVal_QString, format_QString, *cal));
 }
 
-void QDate_Delete(QDate* self) {
-	delete self;
+void QDate_Delete(QDate* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QDate*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QTime* QTime_new() {
-	return new QTime();
+void QTime_new(QTime** outptr_QTime) {
+	QTime* ret = new QTime();
+	*outptr_QTime = ret;
 }
 
-QTime* QTime_new2(int h, int m) {
-	return new QTime(static_cast<int>(h), static_cast<int>(m));
+void QTime_new2(int h, int m, QTime** outptr_QTime) {
+	QTime* ret = new QTime(static_cast<int>(h), static_cast<int>(m));
+	*outptr_QTime = ret;
 }
 
-QTime* QTime_new3(QTime* param1) {
-	return new QTime(*param1);
+void QTime_new3(QTime* param1, QTime** outptr_QTime) {
+	QTime* ret = new QTime(*param1);
+	*outptr_QTime = ret;
 }
 
-QTime* QTime_new4(int h, int m, int s) {
-	return new QTime(static_cast<int>(h), static_cast<int>(m), static_cast<int>(s));
+void QTime_new4(int h, int m, int s, QTime** outptr_QTime) {
+	QTime* ret = new QTime(static_cast<int>(h), static_cast<int>(m), static_cast<int>(s));
+	*outptr_QTime = ret;
 }
 
-QTime* QTime_new5(int h, int m, int s, int ms) {
-	return new QTime(static_cast<int>(h), static_cast<int>(m), static_cast<int>(s), static_cast<int>(ms));
+void QTime_new5(int h, int m, int s, int ms, QTime** outptr_QTime) {
+	QTime* ret = new QTime(static_cast<int>(h), static_cast<int>(m), static_cast<int>(s), static_cast<int>(ms));
+	*outptr_QTime = ret;
 }
 
 bool QTime_IsNull(const QTime* self) {
@@ -398,32 +411,42 @@ bool QTime_IsValid4(int h, int m, int s, int ms) {
 	return QTime::isValid(static_cast<int>(h), static_cast<int>(m), static_cast<int>(s), static_cast<int>(ms));
 }
 
-void QTime_Delete(QTime* self) {
-	delete self;
+void QTime_Delete(QTime* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QTime*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QDateTime* QDateTime_new() {
-	return new QDateTime();
+void QDateTime_new(QDateTime** outptr_QDateTime) {
+	QDateTime* ret = new QDateTime();
+	*outptr_QDateTime = ret;
 }
 
-QDateTime* QDateTime_new2(QDate* date, QTime* time) {
-	return new QDateTime(*date, *time);
+void QDateTime_new2(QDate* date, QTime* time, QDateTime** outptr_QDateTime) {
+	QDateTime* ret = new QDateTime(*date, *time);
+	*outptr_QDateTime = ret;
 }
 
-QDateTime* QDateTime_new3(QDate* date, QTime* time, QTimeZone* timeZone) {
-	return new QDateTime(*date, *time, *timeZone);
+void QDateTime_new3(QDate* date, QTime* time, QTimeZone* timeZone, QDateTime** outptr_QDateTime) {
+	QDateTime* ret = new QDateTime(*date, *time, *timeZone);
+	*outptr_QDateTime = ret;
 }
 
-QDateTime* QDateTime_new4(QDateTime* other) {
-	return new QDateTime(*other);
+void QDateTime_new4(QDateTime* other, QDateTime** outptr_QDateTime) {
+	QDateTime* ret = new QDateTime(*other);
+	*outptr_QDateTime = ret;
 }
 
-QDateTime* QDateTime_new5(QDate* date, QTime* time, int spec) {
-	return new QDateTime(*date, *time, static_cast<Qt::TimeSpec>(spec));
+void QDateTime_new5(QDate* date, QTime* time, int spec, QDateTime** outptr_QDateTime) {
+	QDateTime* ret = new QDateTime(*date, *time, static_cast<Qt::TimeSpec>(spec));
+	*outptr_QDateTime = ret;
 }
 
-QDateTime* QDateTime_new6(QDate* date, QTime* time, int spec, int offsetSeconds) {
-	return new QDateTime(*date, *time, static_cast<Qt::TimeSpec>(spec), static_cast<int>(offsetSeconds));
+void QDateTime_new6(QDate* date, QTime* time, int spec, int offsetSeconds, QDateTime** outptr_QDateTime) {
+	QDateTime* ret = new QDateTime(*date, *time, static_cast<Qt::TimeSpec>(spec), static_cast<int>(offsetSeconds));
+	*outptr_QDateTime = ret;
 }
 
 void QDateTime_OperatorAssign(QDateTime* self, QDateTime* other) {
@@ -689,7 +712,11 @@ QDateTime* QDateTime_FromSecsSinceEpoch3(long long secs, int spec, int offsetFro
 	return new QDateTime(QDateTime::fromSecsSinceEpoch(static_cast<qint64>(secs), static_cast<Qt::TimeSpec>(spec), static_cast<int>(offsetFromUtc)));
 }
 
-void QDateTime_Delete(QDateTime* self) {
-	delete self;
+void QDateTime_Delete(QDateTime* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QDateTime*>( self );
+	} else {
+		delete self;
+	}
 }
 

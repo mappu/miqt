@@ -25,7 +25,8 @@ const (
 )
 
 type QAbstractItemDelegate struct {
-	h *C.QAbstractItemDelegate
+	h          *C.QAbstractItemDelegate
+	isSubclass bool
 	*QObject
 }
 
@@ -43,15 +44,23 @@ func (this *QAbstractItemDelegate) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAbstractItemDelegate(h *C.QAbstractItemDelegate) *QAbstractItemDelegate {
+// newQAbstractItemDelegate constructs the type using only CGO pointers.
+func newQAbstractItemDelegate(h *C.QAbstractItemDelegate, h_QObject *C.QObject) *QAbstractItemDelegate {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractItemDelegate{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QAbstractItemDelegate{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQAbstractItemDelegate(h unsafe.Pointer) *QAbstractItemDelegate {
-	return newQAbstractItemDelegate((*C.QAbstractItemDelegate)(h))
+// UnsafeNewQAbstractItemDelegate constructs the type using only unsafe pointers.
+func UnsafeNewQAbstractItemDelegate(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractItemDelegate {
+	if h == nil {
+		return nil
+	}
+
+	return &QAbstractItemDelegate{h: (*C.QAbstractItemDelegate)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QAbstractItemDelegate) MetaObject() *QMetaObject {
@@ -85,7 +94,7 @@ func (this *QAbstractItemDelegate) SizeHint(option *QStyleOptionViewItem, index 
 }
 
 func (this *QAbstractItemDelegate) CreateEditor(parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QAbstractItemDelegate_CreateEditor(this.h, parent.cPointer(), option.cPointer(), index.cPointer())))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QAbstractItemDelegate_CreateEditor(this.h, parent.cPointer(), option.cPointer(), index.cPointer())), nil, nil)
 }
 
 func (this *QAbstractItemDelegate) DestroyEditor(editor *QWidget, index *QModelIndex) {
@@ -137,7 +146,7 @@ func miqt_exec_callback_QAbstractItemDelegate_CommitData(cb C.intptr_t, editor *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(editor))
+	slotval1 := UnsafeNewQWidget(unsafe.Pointer(editor), nil, nil)
 
 	gofunc(slotval1)
 }
@@ -157,7 +166,7 @@ func miqt_exec_callback_QAbstractItemDelegate_CloseEditor(cb C.intptr_t, editor 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(editor))
+	slotval1 := UnsafeNewQWidget(unsafe.Pointer(editor), nil, nil)
 
 	gofunc(slotval1)
 }
@@ -219,7 +228,7 @@ func miqt_exec_callback_QAbstractItemDelegate_CloseEditor2(cb C.intptr_t, editor
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(editor))
+	slotval1 := UnsafeNewQWidget(unsafe.Pointer(editor), nil, nil)
 	slotval2 := (QAbstractItemDelegate__EndEditHint)(hint)
 
 	gofunc(slotval1, slotval2)
@@ -227,7 +236,7 @@ func miqt_exec_callback_QAbstractItemDelegate_CloseEditor2(cb C.intptr_t, editor
 
 // Delete this object from C++ memory.
 func (this *QAbstractItemDelegate) Delete() {
-	C.QAbstractItemDelegate_Delete(this.h)
+	C.QAbstractItemDelegate_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

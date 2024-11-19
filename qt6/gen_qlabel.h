@@ -15,29 +15,49 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QContextMenuEvent;
+class QEvent;
+class QFocusEvent;
+class QFrame;
+class QKeyEvent;
 class QLabel;
 class QMetaObject;
+class QMouseEvent;
 class QMovie;
+class QObject;
+class QPaintDevice;
+class QPaintEvent;
 class QPicture;
 class QPixmap;
 class QSize;
+class QStyleOptionFrame;
 class QWidget;
 #else
+typedef struct QContextMenuEvent QContextMenuEvent;
+typedef struct QEvent QEvent;
+typedef struct QFocusEvent QFocusEvent;
+typedef struct QFrame QFrame;
+typedef struct QKeyEvent QKeyEvent;
 typedef struct QLabel QLabel;
 typedef struct QMetaObject QMetaObject;
+typedef struct QMouseEvent QMouseEvent;
 typedef struct QMovie QMovie;
+typedef struct QObject QObject;
+typedef struct QPaintDevice QPaintDevice;
+typedef struct QPaintEvent QPaintEvent;
 typedef struct QPicture QPicture;
 typedef struct QPixmap QPixmap;
 typedef struct QSize QSize;
+typedef struct QStyleOptionFrame QStyleOptionFrame;
 typedef struct QWidget QWidget;
 #endif
 
-QLabel* QLabel_new(QWidget* parent);
-QLabel* QLabel_new2();
-QLabel* QLabel_new3(struct miqt_string text);
-QLabel* QLabel_new4(QWidget* parent, int f);
-QLabel* QLabel_new5(struct miqt_string text, QWidget* parent);
-QLabel* QLabel_new6(struct miqt_string text, QWidget* parent, int f);
+void QLabel_new(QWidget* parent, QLabel** outptr_QLabel, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+void QLabel_new2(QLabel** outptr_QLabel, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+void QLabel_new3(struct miqt_string text, QLabel** outptr_QLabel, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+void QLabel_new4(QWidget* parent, int f, QLabel** outptr_QLabel, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+void QLabel_new5(struct miqt_string text, QWidget* parent, QLabel** outptr_QLabel, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+void QLabel_new6(struct miqt_string text, QWidget* parent, int f, QLabel** outptr_QLabel, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
 QMetaObject* QLabel_MetaObject(const QLabel* self);
 void* QLabel_Metacast(QLabel* self, const char* param1);
 struct miqt_string QLabel_Tr(const char* s);
@@ -83,9 +103,50 @@ void QLabel_LinkActivated(QLabel* self, struct miqt_string link);
 void QLabel_connect_LinkActivated(QLabel* self, intptr_t slot);
 void QLabel_LinkHovered(QLabel* self, struct miqt_string link);
 void QLabel_connect_LinkHovered(QLabel* self, intptr_t slot);
+bool QLabel_Event(QLabel* self, QEvent* e);
+void QLabel_KeyPressEvent(QLabel* self, QKeyEvent* ev);
+void QLabel_PaintEvent(QLabel* self, QPaintEvent* param1);
+void QLabel_ChangeEvent(QLabel* self, QEvent* param1);
+void QLabel_MousePressEvent(QLabel* self, QMouseEvent* ev);
+void QLabel_MouseMoveEvent(QLabel* self, QMouseEvent* ev);
+void QLabel_MouseReleaseEvent(QLabel* self, QMouseEvent* ev);
+void QLabel_ContextMenuEvent(QLabel* self, QContextMenuEvent* ev);
+void QLabel_FocusInEvent(QLabel* self, QFocusEvent* ev);
+void QLabel_FocusOutEvent(QLabel* self, QFocusEvent* ev);
+bool QLabel_FocusNextPrevChild(QLabel* self, bool next);
 struct miqt_string QLabel_Tr2(const char* s, const char* c);
 struct miqt_string QLabel_Tr3(const char* s, const char* c, int n);
-void QLabel_Delete(QLabel* self);
+void QLabel_override_virtual_SizeHint(void* self, intptr_t slot);
+QSize* QLabel_virtualbase_SizeHint(const void* self);
+void QLabel_override_virtual_MinimumSizeHint(void* self, intptr_t slot);
+QSize* QLabel_virtualbase_MinimumSizeHint(const void* self);
+void QLabel_override_virtual_HeightForWidth(void* self, intptr_t slot);
+int QLabel_virtualbase_HeightForWidth(const void* self, int param1);
+void QLabel_override_virtual_Event(void* self, intptr_t slot);
+bool QLabel_virtualbase_Event(void* self, QEvent* e);
+void QLabel_override_virtual_KeyPressEvent(void* self, intptr_t slot);
+void QLabel_virtualbase_KeyPressEvent(void* self, QKeyEvent* ev);
+void QLabel_override_virtual_PaintEvent(void* self, intptr_t slot);
+void QLabel_virtualbase_PaintEvent(void* self, QPaintEvent* param1);
+void QLabel_override_virtual_ChangeEvent(void* self, intptr_t slot);
+void QLabel_virtualbase_ChangeEvent(void* self, QEvent* param1);
+void QLabel_override_virtual_MousePressEvent(void* self, intptr_t slot);
+void QLabel_virtualbase_MousePressEvent(void* self, QMouseEvent* ev);
+void QLabel_override_virtual_MouseMoveEvent(void* self, intptr_t slot);
+void QLabel_virtualbase_MouseMoveEvent(void* self, QMouseEvent* ev);
+void QLabel_override_virtual_MouseReleaseEvent(void* self, intptr_t slot);
+void QLabel_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* ev);
+void QLabel_override_virtual_ContextMenuEvent(void* self, intptr_t slot);
+void QLabel_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* ev);
+void QLabel_override_virtual_FocusInEvent(void* self, intptr_t slot);
+void QLabel_virtualbase_FocusInEvent(void* self, QFocusEvent* ev);
+void QLabel_override_virtual_FocusOutEvent(void* self, intptr_t slot);
+void QLabel_virtualbase_FocusOutEvent(void* self, QFocusEvent* ev);
+void QLabel_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
+bool QLabel_virtualbase_FocusNextPrevChild(void* self, bool next);
+void QLabel_override_virtual_InitStyleOption(void* self, intptr_t slot);
+void QLabel_virtualbase_InitStyleOption(const void* self, QStyleOptionFrame* option);
+void QLabel_Delete(QLabel* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

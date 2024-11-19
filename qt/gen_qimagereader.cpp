@@ -13,28 +13,33 @@
 #include "gen_qimagereader.h"
 #include "_cgo_export.h"
 
-QImageReader* QImageReader_new() {
-	return new QImageReader();
+void QImageReader_new(QImageReader** outptr_QImageReader) {
+	QImageReader* ret = new QImageReader();
+	*outptr_QImageReader = ret;
 }
 
-QImageReader* QImageReader_new2(QIODevice* device) {
-	return new QImageReader(device);
+void QImageReader_new2(QIODevice* device, QImageReader** outptr_QImageReader) {
+	QImageReader* ret = new QImageReader(device);
+	*outptr_QImageReader = ret;
 }
 
-QImageReader* QImageReader_new3(struct miqt_string fileName) {
+void QImageReader_new3(struct miqt_string fileName, QImageReader** outptr_QImageReader) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new QImageReader(fileName_QString);
+	QImageReader* ret = new QImageReader(fileName_QString);
+	*outptr_QImageReader = ret;
 }
 
-QImageReader* QImageReader_new4(QIODevice* device, struct miqt_string format) {
+void QImageReader_new4(QIODevice* device, struct miqt_string format, QImageReader** outptr_QImageReader) {
 	QByteArray format_QByteArray(format.data, format.len);
-	return new QImageReader(device, format_QByteArray);
+	QImageReader* ret = new QImageReader(device, format_QByteArray);
+	*outptr_QImageReader = ret;
 }
 
-QImageReader* QImageReader_new5(struct miqt_string fileName, struct miqt_string format) {
+void QImageReader_new5(struct miqt_string fileName, struct miqt_string format, QImageReader** outptr_QImageReader) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QByteArray format_QByteArray(format.data, format.len);
-	return new QImageReader(fileName_QString, format_QByteArray);
+	QImageReader* ret = new QImageReader(fileName_QString, format_QByteArray);
+	*outptr_QImageReader = ret;
 }
 
 struct miqt_string QImageReader_Tr(const char* sourceText) {
@@ -424,7 +429,11 @@ struct miqt_string QImageReader_TrUtf83(const char* sourceText, const char* disa
 	return _ms;
 }
 
-void QImageReader_Delete(QImageReader* self) {
-	delete self;
+void QImageReader_Delete(QImageReader* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QImageReader*>( self );
+	} else {
+		delete self;
+	}
 }
 

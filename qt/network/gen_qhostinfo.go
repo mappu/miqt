@@ -22,7 +22,8 @@ const (
 )
 
 type QHostInfo struct {
-	h *C.QHostInfo
+	h          *C.QHostInfo
+	isSubclass bool
 }
 
 func (this *QHostInfo) cPointer() *C.QHostInfo {
@@ -39,6 +40,7 @@ func (this *QHostInfo) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQHostInfo constructs the type using only CGO pointers.
 func newQHostInfo(h *C.QHostInfo) *QHostInfo {
 	if h == nil {
 		return nil
@@ -46,26 +48,43 @@ func newQHostInfo(h *C.QHostInfo) *QHostInfo {
 	return &QHostInfo{h: h}
 }
 
+// UnsafeNewQHostInfo constructs the type using only unsafe pointers.
 func UnsafeNewQHostInfo(h unsafe.Pointer) *QHostInfo {
-	return newQHostInfo((*C.QHostInfo)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QHostInfo{h: (*C.QHostInfo)(h)}
 }
 
 // NewQHostInfo constructs a new QHostInfo object.
 func NewQHostInfo() *QHostInfo {
-	ret := C.QHostInfo_new()
-	return newQHostInfo(ret)
+	var outptr_QHostInfo *C.QHostInfo = nil
+
+	C.QHostInfo_new(&outptr_QHostInfo)
+	ret := newQHostInfo(outptr_QHostInfo)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQHostInfo2 constructs a new QHostInfo object.
 func NewQHostInfo2(d *QHostInfo) *QHostInfo {
-	ret := C.QHostInfo_new2(d.cPointer())
-	return newQHostInfo(ret)
+	var outptr_QHostInfo *C.QHostInfo = nil
+
+	C.QHostInfo_new2(d.cPointer(), &outptr_QHostInfo)
+	ret := newQHostInfo(outptr_QHostInfo)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQHostInfo3 constructs a new QHostInfo object.
 func NewQHostInfo3(lookupId int) *QHostInfo {
-	ret := C.QHostInfo_new3((C.int)(lookupId))
-	return newQHostInfo(ret)
+	var outptr_QHostInfo *C.QHostInfo = nil
+
+	C.QHostInfo_new3((C.int)(lookupId), &outptr_QHostInfo)
+	ret := newQHostInfo(outptr_QHostInfo)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QHostInfo) OperatorAssign(d *QHostInfo) {
@@ -176,7 +195,7 @@ func QHostInfo_LocalDomainName() string {
 
 // Delete this object from C++ memory.
 func (this *QHostInfo) Delete() {
-	C.QHostInfo_Delete(this.h)
+	C.QHostInfo_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

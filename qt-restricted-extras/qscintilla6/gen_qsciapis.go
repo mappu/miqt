@@ -16,7 +16,8 @@ import (
 )
 
 type QsciAPIs struct {
-	h *C.QsciAPIs
+	h          *C.QsciAPIs
+	isSubclass bool
 	*QsciAbstractAPIs
 }
 
@@ -34,21 +35,35 @@ func (this *QsciAPIs) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQsciAPIs(h *C.QsciAPIs) *QsciAPIs {
+// newQsciAPIs constructs the type using only CGO pointers.
+func newQsciAPIs(h *C.QsciAPIs, h_QsciAbstractAPIs *C.QsciAbstractAPIs, h_QObject *C.QObject) *QsciAPIs {
 	if h == nil {
 		return nil
 	}
-	return &QsciAPIs{h: h, QsciAbstractAPIs: UnsafeNewQsciAbstractAPIs(unsafe.Pointer(h))}
+	return &QsciAPIs{h: h,
+		QsciAbstractAPIs: newQsciAbstractAPIs(h_QsciAbstractAPIs, h_QObject)}
 }
 
-func UnsafeNewQsciAPIs(h unsafe.Pointer) *QsciAPIs {
-	return newQsciAPIs((*C.QsciAPIs)(h))
+// UnsafeNewQsciAPIs constructs the type using only unsafe pointers.
+func UnsafeNewQsciAPIs(h unsafe.Pointer, h_QsciAbstractAPIs unsafe.Pointer, h_QObject unsafe.Pointer) *QsciAPIs {
+	if h == nil {
+		return nil
+	}
+
+	return &QsciAPIs{h: (*C.QsciAPIs)(h),
+		QsciAbstractAPIs: UnsafeNewQsciAbstractAPIs(h_QsciAbstractAPIs, h_QObject)}
 }
 
 // NewQsciAPIs constructs a new QsciAPIs object.
 func NewQsciAPIs(lexer *QsciLexer) *QsciAPIs {
-	ret := C.QsciAPIs_new(lexer.cPointer())
-	return newQsciAPIs(ret)
+	var outptr_QsciAPIs *C.QsciAPIs = nil
+	var outptr_QsciAbstractAPIs *C.QsciAbstractAPIs = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QsciAPIs_new(lexer.cPointer(), &outptr_QsciAPIs, &outptr_QsciAbstractAPIs, &outptr_QObject)
+	ret := newQsciAPIs(outptr_QsciAPIs, outptr_QsciAbstractAPIs, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QsciAPIs) MetaObject() *qt6.QMetaObject {
@@ -300,9 +315,208 @@ func (this *QsciAPIs) SavePrepared1(filename string) bool {
 	return (bool)(C.QsciAPIs_SavePrepared1(this.h, filename_ms))
 }
 
+func (this *QsciAPIs) callVirtualBase_UpdateAutoCompletionList(context []string, list []string) {
+	context_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(context))))
+	defer C.free(unsafe.Pointer(context_CArray))
+	for i := range context {
+		context_i_ms := C.struct_miqt_string{}
+		context_i_ms.data = C.CString(context[i])
+		context_i_ms.len = C.size_t(len(context[i]))
+		defer C.free(unsafe.Pointer(context_i_ms.data))
+		context_CArray[i] = context_i_ms
+	}
+	context_ma := C.struct_miqt_array{len: C.size_t(len(context)), data: unsafe.Pointer(context_CArray)}
+	list_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(list))))
+	defer C.free(unsafe.Pointer(list_CArray))
+	for i := range list {
+		list_i_ms := C.struct_miqt_string{}
+		list_i_ms.data = C.CString(list[i])
+		list_i_ms.len = C.size_t(len(list[i]))
+		defer C.free(unsafe.Pointer(list_i_ms.data))
+		list_CArray[i] = list_i_ms
+	}
+	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
+
+	C.QsciAPIs_virtualbase_UpdateAutoCompletionList(unsafe.Pointer(this.h), context_ma, list_ma)
+
+}
+func (this *QsciAPIs) OnUpdateAutoCompletionList(slot func(super func(context []string, list []string), context []string, list []string)) {
+	C.QsciAPIs_override_virtual_UpdateAutoCompletionList(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciAPIs_UpdateAutoCompletionList
+func miqt_exec_callback_QsciAPIs_UpdateAutoCompletionList(self *C.QsciAPIs, cb C.intptr_t, context C.struct_miqt_array, list C.struct_miqt_array) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(context []string, list []string), context []string, list []string))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	var context_ma C.struct_miqt_array = context
+	context_ret := make([]string, int(context_ma.len))
+	context_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(context_ma.data)) // hey ya
+	for i := 0; i < int(context_ma.len); i++ {
+		var context_lv_ms C.struct_miqt_string = context_outCast[i]
+		context_lv_ret := C.GoStringN(context_lv_ms.data, C.int(int64(context_lv_ms.len)))
+		C.free(unsafe.Pointer(context_lv_ms.data))
+		context_ret[i] = context_lv_ret
+	}
+	slotval1 := context_ret
+
+	var list_ma C.struct_miqt_array = list
+	list_ret := make([]string, int(list_ma.len))
+	list_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(list_ma.data)) // hey ya
+	for i := 0; i < int(list_ma.len); i++ {
+		var list_lv_ms C.struct_miqt_string = list_outCast[i]
+		list_lv_ret := C.GoStringN(list_lv_ms.data, C.int(int64(list_lv_ms.len)))
+		C.free(unsafe.Pointer(list_lv_ms.data))
+		list_ret[i] = list_lv_ret
+	}
+	slotval2 := list_ret
+
+	gofunc((&QsciAPIs{h: self}).callVirtualBase_UpdateAutoCompletionList, slotval1, slotval2)
+
+}
+
+func (this *QsciAPIs) callVirtualBase_AutoCompletionSelected(sel string) {
+	sel_ms := C.struct_miqt_string{}
+	sel_ms.data = C.CString(sel)
+	sel_ms.len = C.size_t(len(sel))
+	defer C.free(unsafe.Pointer(sel_ms.data))
+
+	C.QsciAPIs_virtualbase_AutoCompletionSelected(unsafe.Pointer(this.h), sel_ms)
+
+}
+func (this *QsciAPIs) OnAutoCompletionSelected(slot func(super func(sel string), sel string)) {
+	C.QsciAPIs_override_virtual_AutoCompletionSelected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciAPIs_AutoCompletionSelected
+func miqt_exec_callback_QsciAPIs_AutoCompletionSelected(self *C.QsciAPIs, cb C.intptr_t, sel C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sel string), sel string))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	var sel_ms C.struct_miqt_string = sel
+	sel_ret := C.GoStringN(sel_ms.data, C.int(int64(sel_ms.len)))
+	C.free(unsafe.Pointer(sel_ms.data))
+	slotval1 := sel_ret
+
+	gofunc((&QsciAPIs{h: self}).callVirtualBase_AutoCompletionSelected, slotval1)
+
+}
+
+func (this *QsciAPIs) callVirtualBase_CallTips(context []string, commas int, style QsciScintilla__CallTipsStyle, shifts []int) []string {
+	context_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(context))))
+	defer C.free(unsafe.Pointer(context_CArray))
+	for i := range context {
+		context_i_ms := C.struct_miqt_string{}
+		context_i_ms.data = C.CString(context[i])
+		context_i_ms.len = C.size_t(len(context[i]))
+		defer C.free(unsafe.Pointer(context_i_ms.data))
+		context_CArray[i] = context_i_ms
+	}
+	context_ma := C.struct_miqt_array{len: C.size_t(len(context)), data: unsafe.Pointer(context_CArray)}
+	shifts_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(shifts))))
+	defer C.free(unsafe.Pointer(shifts_CArray))
+	for i := range shifts {
+		shifts_CArray[i] = (C.int)(shifts[i])
+	}
+	shifts_ma := C.struct_miqt_array{len: C.size_t(len(shifts)), data: unsafe.Pointer(shifts_CArray)}
+
+	var _ma C.struct_miqt_array = C.QsciAPIs_virtualbase_CallTips(unsafe.Pointer(this.h), context_ma, (C.int)(commas), (C.int)(style), shifts_ma)
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
+		_ret[i] = _lv_ret
+	}
+	return _ret
+
+}
+func (this *QsciAPIs) OnCallTips(slot func(super func(context []string, commas int, style QsciScintilla__CallTipsStyle, shifts []int) []string, context []string, commas int, style QsciScintilla__CallTipsStyle, shifts []int) []string) {
+	C.QsciAPIs_override_virtual_CallTips(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciAPIs_CallTips
+func miqt_exec_callback_QsciAPIs_CallTips(self *C.QsciAPIs, cb C.intptr_t, context C.struct_miqt_array, commas C.int, style C.int, shifts C.struct_miqt_array) C.struct_miqt_array {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(context []string, commas int, style QsciScintilla__CallTipsStyle, shifts []int) []string, context []string, commas int, style QsciScintilla__CallTipsStyle, shifts []int) []string)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	var context_ma C.struct_miqt_array = context
+	context_ret := make([]string, int(context_ma.len))
+	context_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(context_ma.data)) // hey ya
+	for i := 0; i < int(context_ma.len); i++ {
+		var context_lv_ms C.struct_miqt_string = context_outCast[i]
+		context_lv_ret := C.GoStringN(context_lv_ms.data, C.int(int64(context_lv_ms.len)))
+		C.free(unsafe.Pointer(context_lv_ms.data))
+		context_ret[i] = context_lv_ret
+	}
+	slotval1 := context_ret
+
+	slotval2 := (int)(commas)
+
+	slotval3 := (QsciScintilla__CallTipsStyle)(style)
+
+	var shifts_ma C.struct_miqt_array = shifts
+	shifts_ret := make([]int, int(shifts_ma.len))
+	shifts_outCast := (*[0xffff]C.int)(unsafe.Pointer(shifts_ma.data)) // hey ya
+	for i := 0; i < int(shifts_ma.len); i++ {
+		shifts_ret[i] = (int)(shifts_outCast[i])
+	}
+	slotval4 := shifts_ret
+
+	virtualReturn := gofunc((&QsciAPIs{h: self}).callVirtualBase_CallTips, slotval1, slotval2, slotval3, slotval4)
+	virtualReturn_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	defer C.free(unsafe.Pointer(virtualReturn_CArray))
+	for i := range virtualReturn {
+		virtualReturn_i_ms := C.struct_miqt_string{}
+		virtualReturn_i_ms.data = C.CString(virtualReturn[i])
+		virtualReturn_i_ms.len = C.size_t(len(virtualReturn[i]))
+		defer C.free(unsafe.Pointer(virtualReturn_i_ms.data))
+		virtualReturn_CArray[i] = virtualReturn_i_ms
+	}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+
+	return virtualReturn_ma
+
+}
+
+func (this *QsciAPIs) callVirtualBase_Event(e *qt6.QEvent) bool {
+
+	return (bool)(C.QsciAPIs_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(e.UnsafePointer())))
+
+}
+func (this *QsciAPIs) OnEvent(slot func(super func(e *qt6.QEvent) bool, e *qt6.QEvent) bool) {
+	C.QsciAPIs_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciAPIs_Event
+func miqt_exec_callback_QsciAPIs_Event(self *C.QsciAPIs, cb C.intptr_t, e *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt6.QEvent) bool, e *qt6.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQEvent(unsafe.Pointer(e))
+
+	virtualReturn := gofunc((&QsciAPIs{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QsciAPIs) Delete() {
-	C.QsciAPIs_Delete(this.h)
+	C.QsciAPIs_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

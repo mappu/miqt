@@ -11,6 +11,7 @@ import "C"
 import (
 	"github.com/mappu/miqt/qt"
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
@@ -24,7 +25,8 @@ const (
 )
 
 type QHttpPart struct {
-	h *C.QHttpPart
+	h          *C.QHttpPart
+	isSubclass bool
 }
 
 func (this *QHttpPart) cPointer() *C.QHttpPart {
@@ -41,6 +43,7 @@ func (this *QHttpPart) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQHttpPart constructs the type using only CGO pointers.
 func newQHttpPart(h *C.QHttpPart) *QHttpPart {
 	if h == nil {
 		return nil
@@ -48,20 +51,33 @@ func newQHttpPart(h *C.QHttpPart) *QHttpPart {
 	return &QHttpPart{h: h}
 }
 
+// UnsafeNewQHttpPart constructs the type using only unsafe pointers.
 func UnsafeNewQHttpPart(h unsafe.Pointer) *QHttpPart {
-	return newQHttpPart((*C.QHttpPart)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QHttpPart{h: (*C.QHttpPart)(h)}
 }
 
 // NewQHttpPart constructs a new QHttpPart object.
 func NewQHttpPart() *QHttpPart {
-	ret := C.QHttpPart_new()
-	return newQHttpPart(ret)
+	var outptr_QHttpPart *C.QHttpPart = nil
+
+	C.QHttpPart_new(&outptr_QHttpPart)
+	ret := newQHttpPart(outptr_QHttpPart)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQHttpPart2 constructs a new QHttpPart object.
 func NewQHttpPart2(other *QHttpPart) *QHttpPart {
-	ret := C.QHttpPart_new2(other.cPointer())
-	return newQHttpPart(ret)
+	var outptr_QHttpPart *C.QHttpPart = nil
+
+	C.QHttpPart_new2(other.cPointer(), &outptr_QHttpPart)
+	ret := newQHttpPart(outptr_QHttpPart)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QHttpPart) OperatorAssign(other *QHttpPart) {
@@ -107,7 +123,7 @@ func (this *QHttpPart) SetBodyDevice(device *qt.QIODevice) {
 
 // Delete this object from C++ memory.
 func (this *QHttpPart) Delete() {
-	C.QHttpPart_Delete(this.h)
+	C.QHttpPart_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -120,7 +136,8 @@ func (this *QHttpPart) GoGC() {
 }
 
 type QHttpMultiPart struct {
-	h *C.QHttpMultiPart
+	h          *C.QHttpMultiPart
+	isSubclass bool
 	*qt.QObject
 }
 
@@ -138,39 +155,67 @@ func (this *QHttpMultiPart) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQHttpMultiPart(h *C.QHttpMultiPart) *QHttpMultiPart {
+// newQHttpMultiPart constructs the type using only CGO pointers.
+func newQHttpMultiPart(h *C.QHttpMultiPart, h_QObject *C.QObject) *QHttpMultiPart {
 	if h == nil {
 		return nil
 	}
-	return &QHttpMultiPart{h: h, QObject: qt.UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QHttpMultiPart{h: h,
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
 }
 
-func UnsafeNewQHttpMultiPart(h unsafe.Pointer) *QHttpMultiPart {
-	return newQHttpMultiPart((*C.QHttpMultiPart)(h))
+// UnsafeNewQHttpMultiPart constructs the type using only unsafe pointers.
+func UnsafeNewQHttpMultiPart(h unsafe.Pointer, h_QObject unsafe.Pointer) *QHttpMultiPart {
+	if h == nil {
+		return nil
+	}
+
+	return &QHttpMultiPart{h: (*C.QHttpMultiPart)(h),
+		QObject: qt.UnsafeNewQObject(h_QObject)}
 }
 
 // NewQHttpMultiPart constructs a new QHttpMultiPart object.
 func NewQHttpMultiPart() *QHttpMultiPart {
-	ret := C.QHttpMultiPart_new()
-	return newQHttpMultiPart(ret)
+	var outptr_QHttpMultiPart *C.QHttpMultiPart = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QHttpMultiPart_new(&outptr_QHttpMultiPart, &outptr_QObject)
+	ret := newQHttpMultiPart(outptr_QHttpMultiPart, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQHttpMultiPart2 constructs a new QHttpMultiPart object.
 func NewQHttpMultiPart2(contentType QHttpMultiPart__ContentType) *QHttpMultiPart {
-	ret := C.QHttpMultiPart_new2((C.int)(contentType))
-	return newQHttpMultiPart(ret)
+	var outptr_QHttpMultiPart *C.QHttpMultiPart = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QHttpMultiPart_new2((C.int)(contentType), &outptr_QHttpMultiPart, &outptr_QObject)
+	ret := newQHttpMultiPart(outptr_QHttpMultiPart, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQHttpMultiPart3 constructs a new QHttpMultiPart object.
 func NewQHttpMultiPart3(parent *qt.QObject) *QHttpMultiPart {
-	ret := C.QHttpMultiPart_new3((*C.QObject)(parent.UnsafePointer()))
-	return newQHttpMultiPart(ret)
+	var outptr_QHttpMultiPart *C.QHttpMultiPart = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QHttpMultiPart_new3((*C.QObject)(parent.UnsafePointer()), &outptr_QHttpMultiPart, &outptr_QObject)
+	ret := newQHttpMultiPart(outptr_QHttpMultiPart, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQHttpMultiPart4 constructs a new QHttpMultiPart object.
 func NewQHttpMultiPart4(contentType QHttpMultiPart__ContentType, parent *qt.QObject) *QHttpMultiPart {
-	ret := C.QHttpMultiPart_new4((C.int)(contentType), (*C.QObject)(parent.UnsafePointer()))
-	return newQHttpMultiPart(ret)
+	var outptr_QHttpMultiPart *C.QHttpMultiPart = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QHttpMultiPart_new4((C.int)(contentType), (*C.QObject)(parent.UnsafePointer()), &outptr_QHttpMultiPart, &outptr_QObject)
+	ret := newQHttpMultiPart(outptr_QHttpMultiPart, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QHttpMultiPart) MetaObject() *qt.QMetaObject {
@@ -267,9 +312,175 @@ func QHttpMultiPart_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QHttpMultiPart) callVirtualBase_Event(event *qt.QEvent) bool {
+
+	return (bool)(C.QHttpMultiPart_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QHttpMultiPart) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	C.QHttpMultiPart_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QHttpMultiPart_Event
+func miqt_exec_callback_QHttpMultiPart_Event(self *C.QHttpMultiPart, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QHttpMultiPart{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QHttpMultiPart) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+
+	return (bool)(C.QHttpMultiPart_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QHttpMultiPart) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	C.QHttpMultiPart_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QHttpMultiPart_EventFilter
+func miqt_exec_callback_QHttpMultiPart_EventFilter(self *C.QHttpMultiPart, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QHttpMultiPart{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QHttpMultiPart) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+
+	C.QHttpMultiPart_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+
+}
+func (this *QHttpMultiPart) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	C.QHttpMultiPart_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QHttpMultiPart_TimerEvent
+func miqt_exec_callback_QHttpMultiPart_TimerEvent(self *C.QHttpMultiPart, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QHttpMultiPart{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QHttpMultiPart) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+
+	C.QHttpMultiPart_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+
+}
+func (this *QHttpMultiPart) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	C.QHttpMultiPart_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QHttpMultiPart_ChildEvent
+func miqt_exec_callback_QHttpMultiPart_ChildEvent(self *C.QHttpMultiPart, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QHttpMultiPart{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QHttpMultiPart) callVirtualBase_CustomEvent(event *qt.QEvent) {
+
+	C.QHttpMultiPart_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+
+}
+func (this *QHttpMultiPart) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	C.QHttpMultiPart_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QHttpMultiPart_CustomEvent
+func miqt_exec_callback_QHttpMultiPart_CustomEvent(self *C.QHttpMultiPart, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QHttpMultiPart{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QHttpMultiPart) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+
+	C.QHttpMultiPart_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QHttpMultiPart) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	C.QHttpMultiPart_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QHttpMultiPart_ConnectNotify
+func miqt_exec_callback_QHttpMultiPart_ConnectNotify(self *C.QHttpMultiPart, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QHttpMultiPart{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QHttpMultiPart) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+
+	C.QHttpMultiPart_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QHttpMultiPart) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	C.QHttpMultiPart_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QHttpMultiPart_DisconnectNotify
+func miqt_exec_callback_QHttpMultiPart_DisconnectNotify(self *C.QHttpMultiPart, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QHttpMultiPart{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QHttpMultiPart) Delete() {
-	C.QHttpMultiPart_Delete(this.h)
+	C.QHttpMultiPart_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

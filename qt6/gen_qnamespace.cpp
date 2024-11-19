@@ -5,48 +5,65 @@
 #include "gen_qnamespace.h"
 #include "_cgo_export.h"
 
-Disambiguated_t* Disambiguated_t_new() {
-	return new Qt::Disambiguated_t();
+void Disambiguated_t_new(Disambiguated_t** outptr_Qt__Disambiguated_t) {
+	Qt::Disambiguated_t* ret = new Qt::Disambiguated_t();
+	*outptr_Disambiguated_t = ret;
 }
 
-Disambiguated_t* Disambiguated_t_new2(Disambiguated_t* param1) {
-	return new Qt::Disambiguated_t(*param1);
+void Disambiguated_t_new2(Disambiguated_t* param1, Disambiguated_t** outptr_Qt__Disambiguated_t) {
+	Qt::Disambiguated_t* ret = new Qt::Disambiguated_t(*param1);
+	*outptr_Disambiguated_t = ret;
 }
 
-void Disambiguated_t_Delete(Disambiguated_t* self) {
-	delete self;
+void Disambiguated_t_Delete(Disambiguated_t* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<Qt::Disambiguated_t*>( self );
+	} else {
+		delete self;
+	}
 }
 
-void QInternal_Delete(QInternal* self) {
-	delete self;
+void QInternal_Delete(QInternal* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QInternal*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QKeyCombination* QKeyCombination_new() {
-	return new QKeyCombination();
+void QKeyCombination_new(QKeyCombination** outptr_QKeyCombination) {
+	QKeyCombination* ret = new QKeyCombination();
+	*outptr_QKeyCombination = ret;
 }
 
-QKeyCombination* QKeyCombination_new2(int modifiers) {
-	return new QKeyCombination(static_cast<Qt::Modifiers>(modifiers));
+void QKeyCombination_new2(int modifiers, QKeyCombination** outptr_QKeyCombination) {
+	QKeyCombination* ret = new QKeyCombination(static_cast<Qt::Modifiers>(modifiers));
+	*outptr_QKeyCombination = ret;
 }
 
-QKeyCombination* QKeyCombination_new3(int modifiers) {
-	return new QKeyCombination(static_cast<Qt::KeyboardModifiers>(modifiers));
+void QKeyCombination_new3(int modifiers, QKeyCombination** outptr_QKeyCombination) {
+	QKeyCombination* ret = new QKeyCombination(static_cast<Qt::KeyboardModifiers>(modifiers));
+	*outptr_QKeyCombination = ret;
 }
 
-QKeyCombination* QKeyCombination_new4(QKeyCombination* param1) {
-	return new QKeyCombination(*param1);
+void QKeyCombination_new4(QKeyCombination* param1, QKeyCombination** outptr_QKeyCombination) {
+	QKeyCombination* ret = new QKeyCombination(*param1);
+	*outptr_QKeyCombination = ret;
 }
 
-QKeyCombination* QKeyCombination_new5(int key) {
-	return new QKeyCombination(static_cast<Qt::Key>(key));
+void QKeyCombination_new5(int key, QKeyCombination** outptr_QKeyCombination) {
+	QKeyCombination* ret = new QKeyCombination(static_cast<Qt::Key>(key));
+	*outptr_QKeyCombination = ret;
 }
 
-QKeyCombination* QKeyCombination_new6(int modifiers, int key) {
-	return new QKeyCombination(static_cast<Qt::Modifiers>(modifiers), static_cast<Qt::Key>(key));
+void QKeyCombination_new6(int modifiers, int key, QKeyCombination** outptr_QKeyCombination) {
+	QKeyCombination* ret = new QKeyCombination(static_cast<Qt::Modifiers>(modifiers), static_cast<Qt::Key>(key));
+	*outptr_QKeyCombination = ret;
 }
 
-QKeyCombination* QKeyCombination_new7(int modifiers, int key) {
-	return new QKeyCombination(static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::Key>(key));
+void QKeyCombination_new7(int modifiers, int key, QKeyCombination** outptr_QKeyCombination) {
+	QKeyCombination* ret = new QKeyCombination(static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::Key>(key));
+	*outptr_QKeyCombination = ret;
 }
 
 int QKeyCombination_KeyboardModifiers(const QKeyCombination* self) {
@@ -67,7 +84,11 @@ int QKeyCombination_ToCombined(const QKeyCombination* self) {
 	return self->toCombined();
 }
 
-void QKeyCombination_Delete(QKeyCombination* self) {
-	delete self;
+void QKeyCombination_Delete(QKeyCombination* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QKeyCombination*>( self );
+	} else {
+		delete self;
+	}
 }
 

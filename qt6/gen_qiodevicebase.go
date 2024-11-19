@@ -28,7 +28,8 @@ const (
 )
 
 type QIODeviceBase struct {
-	h *C.QIODeviceBase
+	h          *C.QIODeviceBase
+	isSubclass bool
 }
 
 func (this *QIODeviceBase) cPointer() *C.QIODeviceBase {
@@ -45,6 +46,7 @@ func (this *QIODeviceBase) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQIODeviceBase constructs the type using only CGO pointers.
 func newQIODeviceBase(h *C.QIODeviceBase) *QIODeviceBase {
 	if h == nil {
 		return nil
@@ -52,6 +54,11 @@ func newQIODeviceBase(h *C.QIODeviceBase) *QIODeviceBase {
 	return &QIODeviceBase{h: h}
 }
 
+// UnsafeNewQIODeviceBase constructs the type using only unsafe pointers.
 func UnsafeNewQIODeviceBase(h unsafe.Pointer) *QIODeviceBase {
-	return newQIODeviceBase((*C.QIODeviceBase)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QIODeviceBase{h: (*C.QIODeviceBase)(h)}
 }

@@ -16,7 +16,8 @@ import (
 )
 
 type QAudioRecorder struct {
-	h *C.QAudioRecorder
+	h          *C.QAudioRecorder
+	isSubclass bool
 	*QMediaRecorder
 }
 
@@ -34,27 +35,49 @@ func (this *QAudioRecorder) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAudioRecorder(h *C.QAudioRecorder) *QAudioRecorder {
+// newQAudioRecorder constructs the type using only CGO pointers.
+func newQAudioRecorder(h *C.QAudioRecorder, h_QMediaRecorder *C.QMediaRecorder, h_QObject *C.QObject, h_QMediaBindableInterface *C.QMediaBindableInterface) *QAudioRecorder {
 	if h == nil {
 		return nil
 	}
-	return &QAudioRecorder{h: h, QMediaRecorder: UnsafeNewQMediaRecorder(unsafe.Pointer(h))}
+	return &QAudioRecorder{h: h,
+		QMediaRecorder: newQMediaRecorder(h_QMediaRecorder, h_QObject, h_QMediaBindableInterface)}
 }
 
-func UnsafeNewQAudioRecorder(h unsafe.Pointer) *QAudioRecorder {
-	return newQAudioRecorder((*C.QAudioRecorder)(h))
+// UnsafeNewQAudioRecorder constructs the type using only unsafe pointers.
+func UnsafeNewQAudioRecorder(h unsafe.Pointer, h_QMediaRecorder unsafe.Pointer, h_QObject unsafe.Pointer, h_QMediaBindableInterface unsafe.Pointer) *QAudioRecorder {
+	if h == nil {
+		return nil
+	}
+
+	return &QAudioRecorder{h: (*C.QAudioRecorder)(h),
+		QMediaRecorder: UnsafeNewQMediaRecorder(h_QMediaRecorder, h_QObject, h_QMediaBindableInterface)}
 }
 
 // NewQAudioRecorder constructs a new QAudioRecorder object.
 func NewQAudioRecorder() *QAudioRecorder {
-	ret := C.QAudioRecorder_new()
-	return newQAudioRecorder(ret)
+	var outptr_QAudioRecorder *C.QAudioRecorder = nil
+	var outptr_QMediaRecorder *C.QMediaRecorder = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QMediaBindableInterface *C.QMediaBindableInterface = nil
+
+	C.QAudioRecorder_new(&outptr_QAudioRecorder, &outptr_QMediaRecorder, &outptr_QObject, &outptr_QMediaBindableInterface)
+	ret := newQAudioRecorder(outptr_QAudioRecorder, outptr_QMediaRecorder, outptr_QObject, outptr_QMediaBindableInterface)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAudioRecorder2 constructs a new QAudioRecorder object.
 func NewQAudioRecorder2(parent *qt.QObject) *QAudioRecorder {
-	ret := C.QAudioRecorder_new2((*C.QObject)(parent.UnsafePointer()))
-	return newQAudioRecorder(ret)
+	var outptr_QAudioRecorder *C.QAudioRecorder = nil
+	var outptr_QMediaRecorder *C.QMediaRecorder = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QMediaBindableInterface *C.QMediaBindableInterface = nil
+
+	C.QAudioRecorder_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QAudioRecorder, &outptr_QMediaRecorder, &outptr_QObject, &outptr_QMediaBindableInterface)
+	ret := newQAudioRecorder(outptr_QAudioRecorder, outptr_QMediaRecorder, outptr_QObject, outptr_QMediaBindableInterface)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QAudioRecorder) MetaObject() *qt.QMetaObject {
@@ -219,9 +242,55 @@ func QAudioRecorder_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QAudioRecorder) callVirtualBase_MediaObject() *QMediaObject {
+
+	return UnsafeNewQMediaObject(unsafe.Pointer(C.QAudioRecorder_virtualbase_MediaObject(unsafe.Pointer(this.h))), nil)
+}
+func (this *QAudioRecorder) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
+	C.QAudioRecorder_override_virtual_MediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAudioRecorder_MediaObject
+func miqt_exec_callback_QAudioRecorder_MediaObject(self *C.QAudioRecorder, cb C.intptr_t) *C.QMediaObject {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QMediaObject) *QMediaObject)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QAudioRecorder{h: self}).callVirtualBase_MediaObject)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QAudioRecorder) callVirtualBase_SetMediaObject(object *QMediaObject) bool {
+
+	return (bool)(C.QAudioRecorder_virtualbase_SetMediaObject(unsafe.Pointer(this.h), object.cPointer()))
+
+}
+func (this *QAudioRecorder) OnSetMediaObject(slot func(super func(object *QMediaObject) bool, object *QMediaObject) bool) {
+	C.QAudioRecorder_override_virtual_SetMediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAudioRecorder_SetMediaObject
+func miqt_exec_callback_QAudioRecorder_SetMediaObject(self *C.QAudioRecorder, cb C.intptr_t, object *C.QMediaObject) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(object *QMediaObject) bool, object *QMediaObject) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMediaObject(unsafe.Pointer(object), nil)
+
+	virtualReturn := gofunc((&QAudioRecorder{h: self}).callVirtualBase_SetMediaObject, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QAudioRecorder) Delete() {
-	C.QAudioRecorder_Delete(this.h)
+	C.QAudioRecorder_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

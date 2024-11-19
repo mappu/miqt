@@ -45,7 +45,8 @@ const (
 )
 
 type QStandardPaths struct {
-	h *C.QStandardPaths
+	h          *C.QStandardPaths
+	isSubclass bool
 }
 
 func (this *QStandardPaths) cPointer() *C.QStandardPaths {
@@ -62,6 +63,7 @@ func (this *QStandardPaths) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQStandardPaths constructs the type using only CGO pointers.
 func newQStandardPaths(h *C.QStandardPaths) *QStandardPaths {
 	if h == nil {
 		return nil
@@ -69,8 +71,13 @@ func newQStandardPaths(h *C.QStandardPaths) *QStandardPaths {
 	return &QStandardPaths{h: h}
 }
 
+// UnsafeNewQStandardPaths constructs the type using only unsafe pointers.
 func UnsafeNewQStandardPaths(h unsafe.Pointer) *QStandardPaths {
-	return newQStandardPaths((*C.QStandardPaths)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QStandardPaths{h: (*C.QStandardPaths)(h)}
 }
 
 func QStandardPaths_WritableLocation(typeVal QStandardPaths__StandardLocation) string {

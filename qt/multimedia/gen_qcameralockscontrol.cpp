@@ -1,5 +1,7 @@
 #include <QCameraLocksControl>
+#include <QMediaControl>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -115,7 +117,11 @@ struct miqt_string QCameraLocksControl_TrUtf83(const char* s, const char* c, int
 	return _ms;
 }
 
-void QCameraLocksControl_Delete(QCameraLocksControl* self) {
-	delete self;
+void QCameraLocksControl_Delete(QCameraLocksControl* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QCameraLocksControl*>( self );
+	} else {
+		delete self;
+	}
 }
 

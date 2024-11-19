@@ -15,19 +15,27 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QChildEvent;
+class QEvent;
+class QMetaMethod;
 class QMetaObject;
 class QNetworkConfiguration;
 class QNetworkConfigurationManager;
 class QObject;
+class QTimerEvent;
 #else
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QNetworkConfiguration QNetworkConfiguration;
 typedef struct QNetworkConfigurationManager QNetworkConfigurationManager;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
-QNetworkConfigurationManager* QNetworkConfigurationManager_new();
-QNetworkConfigurationManager* QNetworkConfigurationManager_new2(QObject* parent);
+void QNetworkConfigurationManager_new(QNetworkConfigurationManager** outptr_QNetworkConfigurationManager, QObject** outptr_QObject);
+void QNetworkConfigurationManager_new2(QObject* parent, QNetworkConfigurationManager** outptr_QNetworkConfigurationManager, QObject** outptr_QObject);
 QMetaObject* QNetworkConfigurationManager_MetaObject(const QNetworkConfigurationManager* self);
 void* QNetworkConfigurationManager_Metacast(QNetworkConfigurationManager* self, const char* param1);
 struct miqt_string QNetworkConfigurationManager_Tr(const char* s);
@@ -53,7 +61,21 @@ struct miqt_string QNetworkConfigurationManager_Tr3(const char* s, const char* c
 struct miqt_string QNetworkConfigurationManager_TrUtf82(const char* s, const char* c);
 struct miqt_string QNetworkConfigurationManager_TrUtf83(const char* s, const char* c, int n);
 struct miqt_array /* of QNetworkConfiguration* */  QNetworkConfigurationManager_AllConfigurations1(const QNetworkConfigurationManager* self, int flags);
-void QNetworkConfigurationManager_Delete(QNetworkConfigurationManager* self);
+void QNetworkConfigurationManager_override_virtual_Event(void* self, intptr_t slot);
+bool QNetworkConfigurationManager_virtualbase_Event(void* self, QEvent* event);
+void QNetworkConfigurationManager_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QNetworkConfigurationManager_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QNetworkConfigurationManager_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QNetworkConfigurationManager_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QNetworkConfigurationManager_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QNetworkConfigurationManager_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QNetworkConfigurationManager_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QNetworkConfigurationManager_virtualbase_CustomEvent(void* self, QEvent* event);
+void QNetworkConfigurationManager_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QNetworkConfigurationManager_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QNetworkConfigurationManager_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QNetworkConfigurationManager_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QNetworkConfigurationManager_Delete(QNetworkConfigurationManager* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

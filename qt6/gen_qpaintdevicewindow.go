@@ -14,7 +14,8 @@ import (
 )
 
 type QPaintDeviceWindow struct {
-	h *C.QPaintDeviceWindow
+	h          *C.QPaintDeviceWindow
+	isSubclass bool
 	*QWindow
 	*QPaintDevice
 }
@@ -33,15 +34,25 @@ func (this *QPaintDeviceWindow) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQPaintDeviceWindow(h *C.QPaintDeviceWindow) *QPaintDeviceWindow {
+// newQPaintDeviceWindow constructs the type using only CGO pointers.
+func newQPaintDeviceWindow(h *C.QPaintDeviceWindow, h_QWindow *C.QWindow, h_QObject *C.QObject, h_QSurface *C.QSurface, h_QPaintDevice *C.QPaintDevice) *QPaintDeviceWindow {
 	if h == nil {
 		return nil
 	}
-	return &QPaintDeviceWindow{h: h, QWindow: UnsafeNewQWindow(unsafe.Pointer(h)), QPaintDevice: UnsafeNewQPaintDevice(unsafe.Pointer(h))}
+	return &QPaintDeviceWindow{h: h,
+		QWindow:      newQWindow(h_QWindow, h_QObject, h_QSurface),
+		QPaintDevice: newQPaintDevice(h_QPaintDevice)}
 }
 
-func UnsafeNewQPaintDeviceWindow(h unsafe.Pointer) *QPaintDeviceWindow {
-	return newQPaintDeviceWindow((*C.QPaintDeviceWindow)(h))
+// UnsafeNewQPaintDeviceWindow constructs the type using only unsafe pointers.
+func UnsafeNewQPaintDeviceWindow(h unsafe.Pointer, h_QWindow unsafe.Pointer, h_QObject unsafe.Pointer, h_QSurface unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QPaintDeviceWindow {
+	if h == nil {
+		return nil
+	}
+
+	return &QPaintDeviceWindow{h: (*C.QPaintDeviceWindow)(h),
+		QWindow:      UnsafeNewQWindow(h_QWindow, h_QObject, h_QSurface),
+		QPaintDevice: UnsafeNewQPaintDevice(h_QPaintDevice)}
 }
 
 func (this *QPaintDeviceWindow) MetaObject() *QMetaObject {
@@ -99,7 +110,7 @@ func QPaintDeviceWindow_Tr3(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QPaintDeviceWindow) Delete() {
-	C.QPaintDeviceWindow_Delete(this.h)
+	C.QPaintDeviceWindow_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

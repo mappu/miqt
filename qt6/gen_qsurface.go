@@ -33,7 +33,8 @@ const (
 )
 
 type QSurface struct {
-	h *C.QSurface
+	h          *C.QSurface
+	isSubclass bool
 }
 
 func (this *QSurface) cPointer() *C.QSurface {
@@ -50,6 +51,7 @@ func (this *QSurface) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQSurface constructs the type using only CGO pointers.
 func newQSurface(h *C.QSurface) *QSurface {
 	if h == nil {
 		return nil
@@ -57,8 +59,13 @@ func newQSurface(h *C.QSurface) *QSurface {
 	return &QSurface{h: h}
 }
 
+// UnsafeNewQSurface constructs the type using only unsafe pointers.
 func UnsafeNewQSurface(h unsafe.Pointer) *QSurface {
-	return newQSurface((*C.QSurface)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QSurface{h: (*C.QSurface)(h)}
 }
 
 func (this *QSurface) SurfaceClass() QSurface__SurfaceClass {
@@ -89,7 +96,7 @@ func (this *QSurface) Size() *QSize {
 
 // Delete this object from C++ memory.
 func (this *QSurface) Delete() {
-	C.QSurface_Delete(this.h)
+	C.QSurface_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

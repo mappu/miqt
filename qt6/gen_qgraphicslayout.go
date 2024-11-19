@@ -14,7 +14,8 @@ import (
 )
 
 type QGraphicsLayout struct {
-	h *C.QGraphicsLayout
+	h          *C.QGraphicsLayout
+	isSubclass bool
 	*QGraphicsLayoutItem
 }
 
@@ -32,15 +33,23 @@ func (this *QGraphicsLayout) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQGraphicsLayout(h *C.QGraphicsLayout) *QGraphicsLayout {
+// newQGraphicsLayout constructs the type using only CGO pointers.
+func newQGraphicsLayout(h *C.QGraphicsLayout, h_QGraphicsLayoutItem *C.QGraphicsLayoutItem) *QGraphicsLayout {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsLayout{h: h, QGraphicsLayoutItem: UnsafeNewQGraphicsLayoutItem(unsafe.Pointer(h))}
+	return &QGraphicsLayout{h: h,
+		QGraphicsLayoutItem: newQGraphicsLayoutItem(h_QGraphicsLayoutItem)}
 }
 
-func UnsafeNewQGraphicsLayout(h unsafe.Pointer) *QGraphicsLayout {
-	return newQGraphicsLayout((*C.QGraphicsLayout)(h))
+// UnsafeNewQGraphicsLayout constructs the type using only unsafe pointers.
+func UnsafeNewQGraphicsLayout(h unsafe.Pointer, h_QGraphicsLayoutItem unsafe.Pointer) *QGraphicsLayout {
+	if h == nil {
+		return nil
+	}
+
+	return &QGraphicsLayout{h: (*C.QGraphicsLayout)(h),
+		QGraphicsLayoutItem: UnsafeNewQGraphicsLayoutItem(h_QGraphicsLayoutItem)}
 }
 
 func (this *QGraphicsLayout) SetContentsMargins(left float64, top float64, right float64, bottom float64) {
@@ -93,7 +102,7 @@ func QGraphicsLayout_InstantInvalidatePropagation() bool {
 
 // Delete this object from C++ memory.
 func (this *QGraphicsLayout) Delete() {
-	C.QGraphicsLayout_Delete(this.h)
+	C.QGraphicsLayout_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -26,9 +26,9 @@ typedef struct QRunnable QRunnable;
 typedef struct QThreadPool QThreadPool;
 #endif
 
-QFutureInterfaceBase* QFutureInterfaceBase_new();
-QFutureInterfaceBase* QFutureInterfaceBase_new2(QFutureInterfaceBase* other);
-QFutureInterfaceBase* QFutureInterfaceBase_new3(int initialState);
+void QFutureInterfaceBase_new(QFutureInterfaceBase** outptr_QFutureInterfaceBase);
+void QFutureInterfaceBase_new2(QFutureInterfaceBase* other, QFutureInterfaceBase** outptr_QFutureInterfaceBase);
+void QFutureInterfaceBase_new3(int initialState, QFutureInterfaceBase** outptr_QFutureInterfaceBase);
 void QFutureInterfaceBase_ReportStarted(QFutureInterfaceBase* self);
 void QFutureInterfaceBase_ReportFinished(QFutureInterfaceBase* self);
 void QFutureInterfaceBase_ReportCanceled(QFutureInterfaceBase* self);
@@ -68,7 +68,7 @@ QMutex* QFutureInterfaceBase_MutexWithInt(const QFutureInterfaceBase* self, int 
 bool QFutureInterfaceBase_OperatorEqual(const QFutureInterfaceBase* self, QFutureInterfaceBase* other);
 bool QFutureInterfaceBase_OperatorNotEqual(const QFutureInterfaceBase* self, QFutureInterfaceBase* other);
 void QFutureInterfaceBase_OperatorAssign(QFutureInterfaceBase* self, QFutureInterfaceBase* other);
-void QFutureInterfaceBase_Delete(QFutureInterfaceBase* self);
+void QFutureInterfaceBase_Delete(QFutureInterfaceBase* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

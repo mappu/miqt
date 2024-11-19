@@ -10,11 +10,13 @@ import "C"
 
 import (
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
 type QFileSelector struct {
-	h *C.QFileSelector
+	h          *C.QFileSelector
+	isSubclass bool
 	*QObject
 }
 
@@ -32,27 +34,45 @@ func (this *QFileSelector) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQFileSelector(h *C.QFileSelector) *QFileSelector {
+// newQFileSelector constructs the type using only CGO pointers.
+func newQFileSelector(h *C.QFileSelector, h_QObject *C.QObject) *QFileSelector {
 	if h == nil {
 		return nil
 	}
-	return &QFileSelector{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QFileSelector{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQFileSelector(h unsafe.Pointer) *QFileSelector {
-	return newQFileSelector((*C.QFileSelector)(h))
+// UnsafeNewQFileSelector constructs the type using only unsafe pointers.
+func UnsafeNewQFileSelector(h unsafe.Pointer, h_QObject unsafe.Pointer) *QFileSelector {
+	if h == nil {
+		return nil
+	}
+
+	return &QFileSelector{h: (*C.QFileSelector)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 // NewQFileSelector constructs a new QFileSelector object.
 func NewQFileSelector() *QFileSelector {
-	ret := C.QFileSelector_new()
-	return newQFileSelector(ret)
+	var outptr_QFileSelector *C.QFileSelector = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QFileSelector_new(&outptr_QFileSelector, &outptr_QObject)
+	ret := newQFileSelector(outptr_QFileSelector, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFileSelector2 constructs a new QFileSelector object.
 func NewQFileSelector2(parent *QObject) *QFileSelector {
-	ret := C.QFileSelector_new2(parent.cPointer())
-	return newQFileSelector(ret)
+	var outptr_QFileSelector *C.QFileSelector = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QFileSelector_new2(parent.cPointer(), &outptr_QFileSelector, &outptr_QObject)
+	ret := newQFileSelector(outptr_QFileSelector, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QFileSelector) MetaObject() *QMetaObject {
@@ -185,9 +205,175 @@ func QFileSelector_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QFileSelector) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QFileSelector_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QFileSelector) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	C.QFileSelector_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileSelector_Event
+func miqt_exec_callback_QFileSelector_Event(self *C.QFileSelector, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QFileSelector{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QFileSelector) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QFileSelector_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QFileSelector) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	C.QFileSelector_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileSelector_EventFilter
+func miqt_exec_callback_QFileSelector_EventFilter(self *C.QFileSelector, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QFileSelector{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QFileSelector) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QFileSelector_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QFileSelector) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	C.QFileSelector_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileSelector_TimerEvent
+func miqt_exec_callback_QFileSelector_TimerEvent(self *C.QFileSelector, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QFileSelector{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QFileSelector) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QFileSelector_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QFileSelector) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	C.QFileSelector_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileSelector_ChildEvent
+func miqt_exec_callback_QFileSelector_ChildEvent(self *C.QFileSelector, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QFileSelector{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QFileSelector) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QFileSelector_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QFileSelector) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	C.QFileSelector_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileSelector_CustomEvent
+func miqt_exec_callback_QFileSelector_CustomEvent(self *C.QFileSelector, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QFileSelector{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QFileSelector) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QFileSelector_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QFileSelector) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QFileSelector_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileSelector_ConnectNotify
+func miqt_exec_callback_QFileSelector_ConnectNotify(self *C.QFileSelector, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QFileSelector{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QFileSelector) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QFileSelector_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QFileSelector) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QFileSelector_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileSelector_DisconnectNotify
+func miqt_exec_callback_QFileSelector_DisconnectNotify(self *C.QFileSelector, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QFileSelector{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QFileSelector) Delete() {
-	C.QFileSelector_Delete(this.h)
+	C.QFileSelector_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -1,12 +1,22 @@
 #include <QAbstractButton>
 #include <QButtonGroup>
+#include <QEvent>
+#include <QFocusEvent>
 #include <QIcon>
+#include <QKeyEvent>
 #include <QKeySequence>
 #include <QMetaObject>
+#include <QMouseEvent>
+#include <QObject>
+#include <QPaintDevice>
+#include <QPaintEvent>
+#include <QPoint>
 #include <QSize>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QTimerEvent>
+#include <QWidget>
 #include <qabstractbutton.h>
 #include "gen_qabstractbutton.h"
 #include "_cgo_export.h"
@@ -253,7 +263,11 @@ void QAbstractButton_connect_Clicked1(QAbstractButton* self, intptr_t slot) {
 	});
 }
 
-void QAbstractButton_Delete(QAbstractButton* self) {
-	delete self;
+void QAbstractButton_Delete(QAbstractButton* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAbstractButton*>( self );
+	} else {
+		delete self;
+	}
 }
 

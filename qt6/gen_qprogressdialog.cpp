@@ -1,8 +1,17 @@
+#include <QCloseEvent>
+#include <QContextMenuEvent>
+#include <QDialog>
+#include <QEvent>
+#include <QKeyEvent>
 #include <QLabel>
 #include <QMetaObject>
+#include <QObject>
+#include <QPaintDevice>
 #include <QProgressBar>
 #include <QProgressDialog>
 #include <QPushButton>
+#include <QResizeEvent>
+#include <QShowEvent>
 #include <QSize>
 #include <QString>
 #include <QByteArray>
@@ -12,34 +21,429 @@
 #include "gen_qprogressdialog.h"
 #include "_cgo_export.h"
 
-QProgressDialog* QProgressDialog_new(QWidget* parent) {
-	return new QProgressDialog(parent);
+class MiqtVirtualQProgressDialog : public virtual QProgressDialog {
+public:
+
+	MiqtVirtualQProgressDialog(QWidget* parent): QProgressDialog(parent) {};
+	MiqtVirtualQProgressDialog(): QProgressDialog() {};
+	MiqtVirtualQProgressDialog(const QString& labelText, const QString& cancelButtonText, int minimum, int maximum): QProgressDialog(labelText, cancelButtonText, minimum, maximum) {};
+	MiqtVirtualQProgressDialog(QWidget* parent, Qt::WindowFlags flags): QProgressDialog(parent, flags) {};
+	MiqtVirtualQProgressDialog(const QString& labelText, const QString& cancelButtonText, int minimum, int maximum, QWidget* parent): QProgressDialog(labelText, cancelButtonText, minimum, maximum, parent) {};
+	MiqtVirtualQProgressDialog(const QString& labelText, const QString& cancelButtonText, int minimum, int maximum, QWidget* parent, Qt::WindowFlags flags): QProgressDialog(labelText, cancelButtonText, minimum, maximum, parent, flags) {};
+
+	virtual ~MiqtVirtualQProgressDialog() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SizeHint = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QSize sizeHint() const override {
+		if (handle__SizeHint == 0) {
+			return QProgressDialog::sizeHint();
+		}
+		
+
+		QSize* callback_return_value = miqt_exec_callback_QProgressDialog_SizeHint(const_cast<MiqtVirtualQProgressDialog*>(this), handle__SizeHint);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QSize* virtualbase_SizeHint() const {
+
+		return new QSize(QProgressDialog::sizeHint());
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ResizeEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void resizeEvent(QResizeEvent* event) override {
+		if (handle__ResizeEvent == 0) {
+			QProgressDialog::resizeEvent(event);
+			return;
+		}
+		
+		QResizeEvent* sigval1 = event;
+
+		miqt_exec_callback_QProgressDialog_ResizeEvent(this, handle__ResizeEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ResizeEvent(QResizeEvent* event) {
+
+		QProgressDialog::resizeEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CloseEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void closeEvent(QCloseEvent* event) override {
+		if (handle__CloseEvent == 0) {
+			QProgressDialog::closeEvent(event);
+			return;
+		}
+		
+		QCloseEvent* sigval1 = event;
+
+		miqt_exec_callback_QProgressDialog_CloseEvent(this, handle__CloseEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CloseEvent(QCloseEvent* event) {
+
+		QProgressDialog::closeEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChangeEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void changeEvent(QEvent* event) override {
+		if (handle__ChangeEvent == 0) {
+			QProgressDialog::changeEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QProgressDialog_ChangeEvent(this, handle__ChangeEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChangeEvent(QEvent* event) {
+
+		QProgressDialog::changeEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ShowEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void showEvent(QShowEvent* event) override {
+		if (handle__ShowEvent == 0) {
+			QProgressDialog::showEvent(event);
+			return;
+		}
+		
+		QShowEvent* sigval1 = event;
+
+		miqt_exec_callback_QProgressDialog_ShowEvent(this, handle__ShowEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ShowEvent(QShowEvent* event) {
+
+		QProgressDialog::showEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetVisible = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setVisible(bool visible) override {
+		if (handle__SetVisible == 0) {
+			QProgressDialog::setVisible(visible);
+			return;
+		}
+		
+		bool sigval1 = visible;
+
+		miqt_exec_callback_QProgressDialog_SetVisible(this, handle__SetVisible, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetVisible(bool visible) {
+
+		QProgressDialog::setVisible(visible);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MinimumSizeHint = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QSize minimumSizeHint() const override {
+		if (handle__MinimumSizeHint == 0) {
+			return QProgressDialog::minimumSizeHint();
+		}
+		
+
+		QSize* callback_return_value = miqt_exec_callback_QProgressDialog_MinimumSizeHint(const_cast<MiqtVirtualQProgressDialog*>(this), handle__MinimumSizeHint);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QSize* virtualbase_MinimumSizeHint() const {
+
+		return new QSize(QProgressDialog::minimumSizeHint());
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Open = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void open() override {
+		if (handle__Open == 0) {
+			QProgressDialog::open();
+			return;
+		}
+		
+
+		miqt_exec_callback_QProgressDialog_Open(this, handle__Open);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_Open() {
+
+		QProgressDialog::open();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Exec = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int exec() override {
+		if (handle__Exec == 0) {
+			return QProgressDialog::exec();
+		}
+		
+
+		int callback_return_value = miqt_exec_callback_QProgressDialog_Exec(this, handle__Exec);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_Exec() {
+
+		return QProgressDialog::exec();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Done = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void done(int param1) override {
+		if (handle__Done == 0) {
+			QProgressDialog::done(param1);
+			return;
+		}
+		
+		int sigval1 = param1;
+
+		miqt_exec_callback_QProgressDialog_Done(this, handle__Done, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_Done(int param1) {
+
+		QProgressDialog::done(static_cast<int>(param1));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Accept = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void accept() override {
+		if (handle__Accept == 0) {
+			QProgressDialog::accept();
+			return;
+		}
+		
+
+		miqt_exec_callback_QProgressDialog_Accept(this, handle__Accept);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_Accept() {
+
+		QProgressDialog::accept();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Reject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void reject() override {
+		if (handle__Reject == 0) {
+			QProgressDialog::reject();
+			return;
+		}
+		
+
+		miqt_exec_callback_QProgressDialog_Reject(this, handle__Reject);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_Reject() {
+
+		QProgressDialog::reject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__KeyPressEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void keyPressEvent(QKeyEvent* param1) override {
+		if (handle__KeyPressEvent == 0) {
+			QProgressDialog::keyPressEvent(param1);
+			return;
+		}
+		
+		QKeyEvent* sigval1 = param1;
+
+		miqt_exec_callback_QProgressDialog_KeyPressEvent(this, handle__KeyPressEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_KeyPressEvent(QKeyEvent* param1) {
+
+		QProgressDialog::keyPressEvent(param1);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ContextMenuEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void contextMenuEvent(QContextMenuEvent* param1) override {
+		if (handle__ContextMenuEvent == 0) {
+			QProgressDialog::contextMenuEvent(param1);
+			return;
+		}
+		
+		QContextMenuEvent* sigval1 = param1;
+
+		miqt_exec_callback_QProgressDialog_ContextMenuEvent(this, handle__ContextMenuEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ContextMenuEvent(QContextMenuEvent* param1) {
+
+		QProgressDialog::contextMenuEvent(param1);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* param1, QEvent* param2) override {
+		if (handle__EventFilter == 0) {
+			return QProgressDialog::eventFilter(param1, param2);
+		}
+		
+		QObject* sigval1 = param1;
+		QEvent* sigval2 = param2;
+
+		bool callback_return_value = miqt_exec_callback_QProgressDialog_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* param1, QEvent* param2) {
+
+		return QProgressDialog::eventFilter(param1, param2);
+
+	}
+
+};
+
+void QProgressDialog_new(QWidget* parent, QProgressDialog** outptr_QProgressDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+	MiqtVirtualQProgressDialog* ret = new MiqtVirtualQProgressDialog(parent);
+	*outptr_QProgressDialog = ret;
+	*outptr_QDialog = static_cast<QDialog*>(ret);
+	*outptr_QWidget = static_cast<QWidget*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
-QProgressDialog* QProgressDialog_new2() {
-	return new QProgressDialog();
+void QProgressDialog_new2(QProgressDialog** outptr_QProgressDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+	MiqtVirtualQProgressDialog* ret = new MiqtVirtualQProgressDialog();
+	*outptr_QProgressDialog = ret;
+	*outptr_QDialog = static_cast<QDialog*>(ret);
+	*outptr_QWidget = static_cast<QWidget*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
-QProgressDialog* QProgressDialog_new3(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum) {
+void QProgressDialog_new3(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum, QProgressDialog** outptr_QProgressDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
 	QString labelText_QString = QString::fromUtf8(labelText.data, labelText.len);
 	QString cancelButtonText_QString = QString::fromUtf8(cancelButtonText.data, cancelButtonText.len);
-	return new QProgressDialog(labelText_QString, cancelButtonText_QString, static_cast<int>(minimum), static_cast<int>(maximum));
+	MiqtVirtualQProgressDialog* ret = new MiqtVirtualQProgressDialog(labelText_QString, cancelButtonText_QString, static_cast<int>(minimum), static_cast<int>(maximum));
+	*outptr_QProgressDialog = ret;
+	*outptr_QDialog = static_cast<QDialog*>(ret);
+	*outptr_QWidget = static_cast<QWidget*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
-QProgressDialog* QProgressDialog_new4(QWidget* parent, int flags) {
-	return new QProgressDialog(parent, static_cast<Qt::WindowFlags>(flags));
+void QProgressDialog_new4(QWidget* parent, int flags, QProgressDialog** outptr_QProgressDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+	MiqtVirtualQProgressDialog* ret = new MiqtVirtualQProgressDialog(parent, static_cast<Qt::WindowFlags>(flags));
+	*outptr_QProgressDialog = ret;
+	*outptr_QDialog = static_cast<QDialog*>(ret);
+	*outptr_QWidget = static_cast<QWidget*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
-QProgressDialog* QProgressDialog_new5(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum, QWidget* parent) {
+void QProgressDialog_new5(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum, QWidget* parent, QProgressDialog** outptr_QProgressDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
 	QString labelText_QString = QString::fromUtf8(labelText.data, labelText.len);
 	QString cancelButtonText_QString = QString::fromUtf8(cancelButtonText.data, cancelButtonText.len);
-	return new QProgressDialog(labelText_QString, cancelButtonText_QString, static_cast<int>(minimum), static_cast<int>(maximum), parent);
+	MiqtVirtualQProgressDialog* ret = new MiqtVirtualQProgressDialog(labelText_QString, cancelButtonText_QString, static_cast<int>(minimum), static_cast<int>(maximum), parent);
+	*outptr_QProgressDialog = ret;
+	*outptr_QDialog = static_cast<QDialog*>(ret);
+	*outptr_QWidget = static_cast<QWidget*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
-QProgressDialog* QProgressDialog_new6(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum, QWidget* parent, int flags) {
+void QProgressDialog_new6(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum, QWidget* parent, int flags, QProgressDialog** outptr_QProgressDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
 	QString labelText_QString = QString::fromUtf8(labelText.data, labelText.len);
 	QString cancelButtonText_QString = QString::fromUtf8(cancelButtonText.data, cancelButtonText.len);
-	return new QProgressDialog(labelText_QString, cancelButtonText_QString, static_cast<int>(minimum), static_cast<int>(maximum), parent, static_cast<Qt::WindowFlags>(flags));
+	MiqtVirtualQProgressDialog* ret = new MiqtVirtualQProgressDialog(labelText_QString, cancelButtonText_QString, static_cast<int>(minimum), static_cast<int>(maximum), parent, static_cast<Qt::WindowFlags>(flags));
+	*outptr_QProgressDialog = ret;
+	*outptr_QDialog = static_cast<QDialog*>(ret);
+	*outptr_QWidget = static_cast<QWidget*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
 QMetaObject* QProgressDialog_MetaObject(const QProgressDialog* self) {
@@ -167,7 +571,7 @@ void QProgressDialog_Canceled(QProgressDialog* self) {
 }
 
 void QProgressDialog_connect_Canceled(QProgressDialog* self, intptr_t slot) {
-	QProgressDialog::connect(self, static_cast<void (QProgressDialog::*)()>(&QProgressDialog::canceled), self, [=]() {
+	MiqtVirtualQProgressDialog::connect(self, static_cast<void (QProgressDialog::*)()>(&QProgressDialog::canceled), self, [=]() {
 		miqt_exec_callback_QProgressDialog_Canceled(slot);
 	});
 }
@@ -194,7 +598,131 @@ struct miqt_string QProgressDialog_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QProgressDialog_Delete(QProgressDialog* self) {
-	delete self;
+void QProgressDialog_override_virtual_SizeHint(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__SizeHint = slot;
+}
+
+QSize* QProgressDialog_virtualbase_SizeHint(const void* self) {
+	return ( (const MiqtVirtualQProgressDialog*)(self) )->virtualbase_SizeHint();
+}
+
+void QProgressDialog_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__ResizeEvent = slot;
+}
+
+void QProgressDialog_virtualbase_ResizeEvent(void* self, QResizeEvent* event) {
+	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_ResizeEvent(event);
+}
+
+void QProgressDialog_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__CloseEvent = slot;
+}
+
+void QProgressDialog_virtualbase_CloseEvent(void* self, QCloseEvent* event) {
+	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_CloseEvent(event);
+}
+
+void QProgressDialog_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__ChangeEvent = slot;
+}
+
+void QProgressDialog_virtualbase_ChangeEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_ChangeEvent(event);
+}
+
+void QProgressDialog_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__ShowEvent = slot;
+}
+
+void QProgressDialog_virtualbase_ShowEvent(void* self, QShowEvent* event) {
+	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_ShowEvent(event);
+}
+
+void QProgressDialog_override_virtual_SetVisible(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__SetVisible = slot;
+}
+
+void QProgressDialog_virtualbase_SetVisible(void* self, bool visible) {
+	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_SetVisible(visible);
+}
+
+void QProgressDialog_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__MinimumSizeHint = slot;
+}
+
+QSize* QProgressDialog_virtualbase_MinimumSizeHint(const void* self) {
+	return ( (const MiqtVirtualQProgressDialog*)(self) )->virtualbase_MinimumSizeHint();
+}
+
+void QProgressDialog_override_virtual_Open(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__Open = slot;
+}
+
+void QProgressDialog_virtualbase_Open(void* self) {
+	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_Open();
+}
+
+void QProgressDialog_override_virtual_Exec(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__Exec = slot;
+}
+
+int QProgressDialog_virtualbase_Exec(void* self) {
+	return ( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_Exec();
+}
+
+void QProgressDialog_override_virtual_Done(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__Done = slot;
+}
+
+void QProgressDialog_virtualbase_Done(void* self, int param1) {
+	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_Done(param1);
+}
+
+void QProgressDialog_override_virtual_Accept(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__Accept = slot;
+}
+
+void QProgressDialog_virtualbase_Accept(void* self) {
+	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_Accept();
+}
+
+void QProgressDialog_override_virtual_Reject(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__Reject = slot;
+}
+
+void QProgressDialog_virtualbase_Reject(void* self) {
+	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_Reject();
+}
+
+void QProgressDialog_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__KeyPressEvent = slot;
+}
+
+void QProgressDialog_virtualbase_KeyPressEvent(void* self, QKeyEvent* param1) {
+	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_KeyPressEvent(param1);
+}
+
+void QProgressDialog_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__ContextMenuEvent = slot;
+}
+
+void QProgressDialog_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1) {
+	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_ContextMenuEvent(param1);
+}
+
+void QProgressDialog_override_virtual_EventFilter(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__EventFilter = slot;
+}
+
+bool QProgressDialog_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2) {
+	return ( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_EventFilter(param1, param2);
+}
+
+void QProgressDialog_Delete(QProgressDialog* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQProgressDialog*>( self );
+	} else {
+		delete self;
+	}
 }
 

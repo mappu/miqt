@@ -22,6 +22,8 @@ class QSslError;
 class QSslPreSharedKeyAuthenticator;
 class QSslServer;
 class QSslSocket;
+class QTcpServer;
+class QTcpSocket;
 #else
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
@@ -30,10 +32,12 @@ typedef struct QSslError QSslError;
 typedef struct QSslPreSharedKeyAuthenticator QSslPreSharedKeyAuthenticator;
 typedef struct QSslServer QSslServer;
 typedef struct QSslSocket QSslSocket;
+typedef struct QTcpServer QTcpServer;
+typedef struct QTcpSocket QTcpSocket;
 #endif
 
-QSslServer* QSslServer_new();
-QSslServer* QSslServer_new2(QObject* parent);
+void QSslServer_new(QSslServer** outptr_QSslServer, QTcpServer** outptr_QTcpServer, QObject** outptr_QObject);
+void QSslServer_new2(QObject* parent, QSslServer** outptr_QSslServer, QTcpServer** outptr_QTcpServer, QObject** outptr_QObject);
 QMetaObject* QSslServer_MetaObject(const QSslServer* self);
 void* QSslServer_Metacast(QSslServer* self, const char* param1);
 struct miqt_string QSslServer_Tr(const char* s);
@@ -57,9 +61,16 @@ void QSslServer_HandshakeInterruptedOnError(QSslServer* self, QSslSocket* socket
 void QSslServer_connect_HandshakeInterruptedOnError(QSslServer* self, intptr_t slot);
 void QSslServer_StartedEncryptionHandshake(QSslServer* self, QSslSocket* socket);
 void QSslServer_connect_StartedEncryptionHandshake(QSslServer* self, intptr_t slot);
+void QSslServer_IncomingConnection(QSslServer* self, intptr_t socket);
 struct miqt_string QSslServer_Tr2(const char* s, const char* c);
 struct miqt_string QSslServer_Tr3(const char* s, const char* c, int n);
-void QSslServer_Delete(QSslServer* self);
+void QSslServer_override_virtual_IncomingConnection(void* self, intptr_t slot);
+void QSslServer_virtualbase_IncomingConnection(void* self, intptr_t socket);
+void QSslServer_override_virtual_HasPendingConnections(void* self, intptr_t slot);
+bool QSslServer_virtualbase_HasPendingConnections(const void* self);
+void QSslServer_override_virtual_NextPendingConnection(void* self, intptr_t slot);
+QTcpSocket* QSslServer_virtualbase_NextPendingConnection(void* self);
+void QSslServer_Delete(QSslServer* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

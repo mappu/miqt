@@ -15,7 +15,8 @@ import (
 )
 
 type QVideoEncoderSettingsControl struct {
-	h *C.QVideoEncoderSettingsControl
+	h          *C.QVideoEncoderSettingsControl
+	isSubclass bool
 	*QMediaControl
 }
 
@@ -33,15 +34,23 @@ func (this *QVideoEncoderSettingsControl) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQVideoEncoderSettingsControl(h *C.QVideoEncoderSettingsControl) *QVideoEncoderSettingsControl {
+// newQVideoEncoderSettingsControl constructs the type using only CGO pointers.
+func newQVideoEncoderSettingsControl(h *C.QVideoEncoderSettingsControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QVideoEncoderSettingsControl {
 	if h == nil {
 		return nil
 	}
-	return &QVideoEncoderSettingsControl{h: h, QMediaControl: UnsafeNewQMediaControl(unsafe.Pointer(h))}
+	return &QVideoEncoderSettingsControl{h: h,
+		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
 }
 
-func UnsafeNewQVideoEncoderSettingsControl(h unsafe.Pointer) *QVideoEncoderSettingsControl {
-	return newQVideoEncoderSettingsControl((*C.QVideoEncoderSettingsControl)(h))
+// UnsafeNewQVideoEncoderSettingsControl constructs the type using only unsafe pointers.
+func UnsafeNewQVideoEncoderSettingsControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QVideoEncoderSettingsControl {
+	if h == nil {
+		return nil
+	}
+
+	return &QVideoEncoderSettingsControl{h: (*C.QVideoEncoderSettingsControl)(h),
+		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
 }
 
 func (this *QVideoEncoderSettingsControl) MetaObject() *qt.QMetaObject {
@@ -72,8 +81,8 @@ func QVideoEncoderSettingsControl_TrUtf8(s string) string {
 	return _ret
 }
 
-func (this *QVideoEncoderSettingsControl) SupportedResolutions(settings *QVideoEncoderSettings) []qt.QSize {
-	var _ma C.struct_miqt_array = C.QVideoEncoderSettingsControl_SupportedResolutions(this.h, settings.cPointer())
+func (this *QVideoEncoderSettingsControl) SupportedResolutions(settings *QVideoEncoderSettings, continuous *bool) []qt.QSize {
+	var _ma C.struct_miqt_array = C.QVideoEncoderSettingsControl_SupportedResolutions(this.h, settings.cPointer(), (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]qt.QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -85,8 +94,8 @@ func (this *QVideoEncoderSettingsControl) SupportedResolutions(settings *QVideoE
 	return _ret
 }
 
-func (this *QVideoEncoderSettingsControl) SupportedFrameRates(settings *QVideoEncoderSettings) []float64 {
-	var _ma C.struct_miqt_array = C.QVideoEncoderSettingsControl_SupportedFrameRates(this.h, settings.cPointer())
+func (this *QVideoEncoderSettingsControl) SupportedFrameRates(settings *QVideoEncoderSettings, continuous *bool) []float64 {
+	var _ma C.struct_miqt_array = C.QVideoEncoderSettingsControl_SupportedFrameRates(this.h, settings.cPointer(), (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]float64, int(_ma.len))
 	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -174,32 +183,9 @@ func QVideoEncoderSettingsControl_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QVideoEncoderSettingsControl) SupportedResolutions2(settings *QVideoEncoderSettings, continuous *bool) []qt.QSize {
-	var _ma C.struct_miqt_array = C.QVideoEncoderSettingsControl_SupportedResolutions2(this.h, settings.cPointer(), (*C.bool)(unsafe.Pointer(continuous)))
-	_ret := make([]qt.QSize, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
-	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_lv_ret))
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
-	}
-	return _ret
-}
-
-func (this *QVideoEncoderSettingsControl) SupportedFrameRates2(settings *QVideoEncoderSettings, continuous *bool) []float64 {
-	var _ma C.struct_miqt_array = C.QVideoEncoderSettingsControl_SupportedFrameRates2(this.h, settings.cPointer(), (*C.bool)(unsafe.Pointer(continuous)))
-	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
-	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = (float64)(_outCast[i])
-	}
-	return _ret
-}
-
 // Delete this object from C++ memory.
 func (this *QVideoEncoderSettingsControl) Delete() {
-	C.QVideoEncoderSettingsControl_Delete(this.h)
+	C.QVideoEncoderSettingsControl_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

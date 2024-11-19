@@ -60,7 +60,8 @@ const (
 )
 
 type QFileDialog struct {
-	h *C.QFileDialog
+	h          *C.QFileDialog
+	isSubclass bool
 	*QDialog
 }
 
@@ -78,33 +79,65 @@ func (this *QFileDialog) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQFileDialog(h *C.QFileDialog) *QFileDialog {
+// newQFileDialog constructs the type using only CGO pointers.
+func newQFileDialog(h *C.QFileDialog, h_QDialog *C.QDialog, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QFileDialog {
 	if h == nil {
 		return nil
 	}
-	return &QFileDialog{h: h, QDialog: UnsafeNewQDialog(unsafe.Pointer(h))}
+	return &QFileDialog{h: h,
+		QDialog: newQDialog(h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
-func UnsafeNewQFileDialog(h unsafe.Pointer) *QFileDialog {
-	return newQFileDialog((*C.QFileDialog)(h))
+// UnsafeNewQFileDialog constructs the type using only unsafe pointers.
+func UnsafeNewQFileDialog(h unsafe.Pointer, h_QDialog unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QFileDialog {
+	if h == nil {
+		return nil
+	}
+
+	return &QFileDialog{h: (*C.QFileDialog)(h),
+		QDialog: UnsafeNewQDialog(h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
 // NewQFileDialog constructs a new QFileDialog object.
 func NewQFileDialog(parent *QWidget) *QFileDialog {
-	ret := C.QFileDialog_new(parent.cPointer())
-	return newQFileDialog(ret)
+	var outptr_QFileDialog *C.QFileDialog = nil
+	var outptr_QDialog *C.QDialog = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QFileDialog_new(parent.cPointer(), &outptr_QFileDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQFileDialog(outptr_QFileDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFileDialog2 constructs a new QFileDialog object.
 func NewQFileDialog2(parent *QWidget, f WindowType) *QFileDialog {
-	ret := C.QFileDialog_new2(parent.cPointer(), (C.int)(f))
-	return newQFileDialog(ret)
+	var outptr_QFileDialog *C.QFileDialog = nil
+	var outptr_QDialog *C.QDialog = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QFileDialog_new2(parent.cPointer(), (C.int)(f), &outptr_QFileDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQFileDialog(outptr_QFileDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFileDialog3 constructs a new QFileDialog object.
 func NewQFileDialog3() *QFileDialog {
-	ret := C.QFileDialog_new3()
-	return newQFileDialog(ret)
+	var outptr_QFileDialog *C.QFileDialog = nil
+	var outptr_QDialog *C.QDialog = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QFileDialog_new3(&outptr_QFileDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQFileDialog(outptr_QFileDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFileDialog4 constructs a new QFileDialog object.
@@ -113,8 +146,16 @@ func NewQFileDialog4(parent *QWidget, caption string) *QFileDialog {
 	caption_ms.data = C.CString(caption)
 	caption_ms.len = C.size_t(len(caption))
 	defer C.free(unsafe.Pointer(caption_ms.data))
-	ret := C.QFileDialog_new4(parent.cPointer(), caption_ms)
-	return newQFileDialog(ret)
+	var outptr_QFileDialog *C.QFileDialog = nil
+	var outptr_QDialog *C.QDialog = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QFileDialog_new4(parent.cPointer(), caption_ms, &outptr_QFileDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQFileDialog(outptr_QFileDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFileDialog5 constructs a new QFileDialog object.
@@ -127,8 +168,16 @@ func NewQFileDialog5(parent *QWidget, caption string, directory string) *QFileDi
 	directory_ms.data = C.CString(directory)
 	directory_ms.len = C.size_t(len(directory))
 	defer C.free(unsafe.Pointer(directory_ms.data))
-	ret := C.QFileDialog_new5(parent.cPointer(), caption_ms, directory_ms)
-	return newQFileDialog(ret)
+	var outptr_QFileDialog *C.QFileDialog = nil
+	var outptr_QDialog *C.QDialog = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QFileDialog_new5(parent.cPointer(), caption_ms, directory_ms, &outptr_QFileDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQFileDialog(outptr_QFileDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFileDialog6 constructs a new QFileDialog object.
@@ -145,8 +194,16 @@ func NewQFileDialog6(parent *QWidget, caption string, directory string, filter s
 	filter_ms.data = C.CString(filter)
 	filter_ms.len = C.size_t(len(filter))
 	defer C.free(unsafe.Pointer(filter_ms.data))
-	ret := C.QFileDialog_new6(parent.cPointer(), caption_ms, directory_ms, filter_ms)
-	return newQFileDialog(ret)
+	var outptr_QFileDialog *C.QFileDialog = nil
+	var outptr_QDialog *C.QDialog = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QFileDialog_new6(parent.cPointer(), caption_ms, directory_ms, filter_ms, &outptr_QFileDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQFileDialog(outptr_QFileDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QFileDialog) MetaObject() *QMetaObject {
@@ -444,7 +501,7 @@ func (this *QFileDialog) SetItemDelegate(delegate *QAbstractItemDelegate) {
 }
 
 func (this *QFileDialog) ItemDelegate() *QAbstractItemDelegate {
-	return UnsafeNewQAbstractItemDelegate(unsafe.Pointer(C.QFileDialog_ItemDelegate(this.h)))
+	return UnsafeNewQAbstractItemDelegate(unsafe.Pointer(C.QFileDialog_ItemDelegate(this.h)), nil)
 }
 
 func (this *QFileDialog) SetIconProvider(provider *QAbstractFileIconProvider) {
@@ -502,7 +559,7 @@ func (this *QFileDialog) SetProxyModel(model *QAbstractProxyModel) {
 }
 
 func (this *QFileDialog) ProxyModel() *QAbstractProxyModel {
-	return UnsafeNewQAbstractProxyModel(unsafe.Pointer(C.QFileDialog_ProxyModel(this.h)))
+	return UnsafeNewQAbstractProxyModel(unsafe.Pointer(C.QFileDialog_ProxyModel(this.h)), nil, nil)
 }
 
 func (this *QFileDialog) SetOption(option QFileDialog__Option) {
@@ -1317,9 +1374,351 @@ func QFileDialog_GetOpenFileUrls4(parent *QWidget, caption string, dir *QUrl, fi
 	return _ret
 }
 
+func (this *QFileDialog) callVirtualBase_SetVisible(visible bool) {
+
+	C.QFileDialog_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+
+}
+func (this *QFileDialog) OnSetVisible(slot func(super func(visible bool), visible bool)) {
+	C.QFileDialog_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileDialog_SetVisible
+func miqt_exec_callback_QFileDialog_SetVisible(self *C.QFileDialog, cb C.intptr_t, visible C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(visible)
+
+	gofunc((&QFileDialog{h: self}).callVirtualBase_SetVisible, slotval1)
+
+}
+
+func (this *QFileDialog) callVirtualBase_Done(result int) {
+
+	C.QFileDialog_virtualbase_Done(unsafe.Pointer(this.h), (C.int)(result))
+
+}
+func (this *QFileDialog) OnDone(slot func(super func(result int), result int)) {
+	C.QFileDialog_override_virtual_Done(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileDialog_Done
+func miqt_exec_callback_QFileDialog_Done(self *C.QFileDialog, cb C.intptr_t, result C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(result int), result int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(result)
+
+	gofunc((&QFileDialog{h: self}).callVirtualBase_Done, slotval1)
+
+}
+
+func (this *QFileDialog) callVirtualBase_Accept() {
+
+	C.QFileDialog_virtualbase_Accept(unsafe.Pointer(this.h))
+
+}
+func (this *QFileDialog) OnAccept(slot func(super func())) {
+	C.QFileDialog_override_virtual_Accept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileDialog_Accept
+func miqt_exec_callback_QFileDialog_Accept(self *C.QFileDialog, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QFileDialog{h: self}).callVirtualBase_Accept)
+
+}
+
+func (this *QFileDialog) callVirtualBase_ChangeEvent(e *QEvent) {
+
+	C.QFileDialog_virtualbase_ChangeEvent(unsafe.Pointer(this.h), e.cPointer())
+
+}
+func (this *QFileDialog) OnChangeEvent(slot func(super func(e *QEvent), e *QEvent)) {
+	C.QFileDialog_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileDialog_ChangeEvent
+func miqt_exec_callback_QFileDialog_ChangeEvent(self *C.QFileDialog, cb C.intptr_t, e *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QEvent), e *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+
+	gofunc((&QFileDialog{h: self}).callVirtualBase_ChangeEvent, slotval1)
+
+}
+
+func (this *QFileDialog) callVirtualBase_SizeHint() *QSize {
+
+	_ret := C.QFileDialog_virtualbase_SizeHint(unsafe.Pointer(this.h))
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QFileDialog) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	C.QFileDialog_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileDialog_SizeHint
+func miqt_exec_callback_QFileDialog_SizeHint(self *C.QFileDialog, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QFileDialog{h: self}).callVirtualBase_SizeHint)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QFileDialog) callVirtualBase_MinimumSizeHint() *QSize {
+
+	_ret := C.QFileDialog_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QFileDialog) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+	C.QFileDialog_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileDialog_MinimumSizeHint
+func miqt_exec_callback_QFileDialog_MinimumSizeHint(self *C.QFileDialog, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QFileDialog{h: self}).callVirtualBase_MinimumSizeHint)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QFileDialog) callVirtualBase_Open() {
+
+	C.QFileDialog_virtualbase_Open(unsafe.Pointer(this.h))
+
+}
+func (this *QFileDialog) OnOpen(slot func(super func())) {
+	C.QFileDialog_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileDialog_Open
+func miqt_exec_callback_QFileDialog_Open(self *C.QFileDialog, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QFileDialog{h: self}).callVirtualBase_Open)
+
+}
+
+func (this *QFileDialog) callVirtualBase_Exec() int {
+
+	return (int)(C.QFileDialog_virtualbase_Exec(unsafe.Pointer(this.h)))
+
+}
+func (this *QFileDialog) OnExec(slot func(super func() int) int) {
+	C.QFileDialog_override_virtual_Exec(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileDialog_Exec
+func miqt_exec_callback_QFileDialog_Exec(self *C.QFileDialog, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QFileDialog{h: self}).callVirtualBase_Exec)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QFileDialog) callVirtualBase_Reject() {
+
+	C.QFileDialog_virtualbase_Reject(unsafe.Pointer(this.h))
+
+}
+func (this *QFileDialog) OnReject(slot func(super func())) {
+	C.QFileDialog_override_virtual_Reject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileDialog_Reject
+func miqt_exec_callback_QFileDialog_Reject(self *C.QFileDialog, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QFileDialog{h: self}).callVirtualBase_Reject)
+
+}
+
+func (this *QFileDialog) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
+
+	C.QFileDialog_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QFileDialog) OnKeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
+	C.QFileDialog_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileDialog_KeyPressEvent
+func miqt_exec_callback_QFileDialog_KeyPressEvent(self *C.QFileDialog, cb C.intptr_t, param1 *C.QKeyEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QKeyEvent), param1 *QKeyEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(param1), nil, nil)
+
+	gofunc((&QFileDialog{h: self}).callVirtualBase_KeyPressEvent, slotval1)
+
+}
+
+func (this *QFileDialog) callVirtualBase_CloseEvent(param1 *QCloseEvent) {
+
+	C.QFileDialog_virtualbase_CloseEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QFileDialog) OnCloseEvent(slot func(super func(param1 *QCloseEvent), param1 *QCloseEvent)) {
+	C.QFileDialog_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileDialog_CloseEvent
+func miqt_exec_callback_QFileDialog_CloseEvent(self *C.QFileDialog, cb C.intptr_t, param1 *C.QCloseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QCloseEvent), param1 *QCloseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(param1), nil)
+
+	gofunc((&QFileDialog{h: self}).callVirtualBase_CloseEvent, slotval1)
+
+}
+
+func (this *QFileDialog) callVirtualBase_ShowEvent(param1 *QShowEvent) {
+
+	C.QFileDialog_virtualbase_ShowEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QFileDialog) OnShowEvent(slot func(super func(param1 *QShowEvent), param1 *QShowEvent)) {
+	C.QFileDialog_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileDialog_ShowEvent
+func miqt_exec_callback_QFileDialog_ShowEvent(self *C.QFileDialog, cb C.intptr_t, param1 *C.QShowEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QShowEvent), param1 *QShowEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(param1), nil)
+
+	gofunc((&QFileDialog{h: self}).callVirtualBase_ShowEvent, slotval1)
+
+}
+
+func (this *QFileDialog) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
+
+	C.QFileDialog_virtualbase_ResizeEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QFileDialog) OnResizeEvent(slot func(super func(param1 *QResizeEvent), param1 *QResizeEvent)) {
+	C.QFileDialog_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileDialog_ResizeEvent
+func miqt_exec_callback_QFileDialog_ResizeEvent(self *C.QFileDialog, cb C.intptr_t, param1 *C.QResizeEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QResizeEvent), param1 *QResizeEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(param1), nil)
+
+	gofunc((&QFileDialog{h: self}).callVirtualBase_ResizeEvent, slotval1)
+
+}
+
+func (this *QFileDialog) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEvent) {
+
+	C.QFileDialog_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QFileDialog) OnContextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
+	C.QFileDialog_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileDialog_ContextMenuEvent
+func miqt_exec_callback_QFileDialog_ContextMenuEvent(self *C.QFileDialog, cb C.intptr_t, param1 *C.QContextMenuEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(param1), nil, nil)
+
+	gofunc((&QFileDialog{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
+
+}
+
+func (this *QFileDialog) callVirtualBase_EventFilter(param1 *QObject, param2 *QEvent) bool {
+
+	return (bool)(C.QFileDialog_virtualbase_EventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
+
+}
+func (this *QFileDialog) OnEventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
+	C.QFileDialog_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileDialog_EventFilter
+func miqt_exec_callback_QFileDialog_EventFilter(self *C.QFileDialog, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(param1))
+	slotval2 := UnsafeNewQEvent(unsafe.Pointer(param2))
+
+	virtualReturn := gofunc((&QFileDialog{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QFileDialog) Delete() {
-	C.QFileDialog_Delete(this.h)
+	C.QFileDialog_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

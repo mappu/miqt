@@ -18,13 +18,17 @@ extern "C" {
 class QCameraViewfinderSettings;
 class QCameraViewfinderSettingsControl;
 class QCameraViewfinderSettingsControl2;
+class QMediaControl;
 class QMetaObject;
+class QObject;
 class QVariant;
 #else
 typedef struct QCameraViewfinderSettings QCameraViewfinderSettings;
 typedef struct QCameraViewfinderSettingsControl QCameraViewfinderSettingsControl;
 typedef struct QCameraViewfinderSettingsControl2 QCameraViewfinderSettingsControl2;
+typedef struct QMediaControl QMediaControl;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 typedef struct QVariant QVariant;
 #endif
 
@@ -39,7 +43,7 @@ struct miqt_string QCameraViewfinderSettingsControl_Tr2(const char* s, const cha
 struct miqt_string QCameraViewfinderSettingsControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QCameraViewfinderSettingsControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QCameraViewfinderSettingsControl_TrUtf83(const char* s, const char* c, int n);
-void QCameraViewfinderSettingsControl_Delete(QCameraViewfinderSettingsControl* self);
+void QCameraViewfinderSettingsControl_Delete(QCameraViewfinderSettingsControl* self, bool isSubclass);
 
 QMetaObject* QCameraViewfinderSettingsControl2_MetaObject(const QCameraViewfinderSettingsControl2* self);
 void* QCameraViewfinderSettingsControl2_Metacast(QCameraViewfinderSettingsControl2* self, const char* param1);
@@ -52,7 +56,7 @@ struct miqt_string QCameraViewfinderSettingsControl2_Tr2(const char* s, const ch
 struct miqt_string QCameraViewfinderSettingsControl2_Tr3(const char* s, const char* c, int n);
 struct miqt_string QCameraViewfinderSettingsControl2_TrUtf82(const char* s, const char* c);
 struct miqt_string QCameraViewfinderSettingsControl2_TrUtf83(const char* s, const char* c, int n);
-void QCameraViewfinderSettingsControl2_Delete(QCameraViewfinderSettingsControl2* self);
+void QCameraViewfinderSettingsControl2_Delete(QCameraViewfinderSettingsControl2* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

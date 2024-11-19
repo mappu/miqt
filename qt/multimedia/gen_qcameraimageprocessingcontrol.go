@@ -34,7 +34,8 @@ const (
 )
 
 type QCameraImageProcessingControl struct {
-	h *C.QCameraImageProcessingControl
+	h          *C.QCameraImageProcessingControl
+	isSubclass bool
 	*QMediaControl
 }
 
@@ -52,15 +53,23 @@ func (this *QCameraImageProcessingControl) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQCameraImageProcessingControl(h *C.QCameraImageProcessingControl) *QCameraImageProcessingControl {
+// newQCameraImageProcessingControl constructs the type using only CGO pointers.
+func newQCameraImageProcessingControl(h *C.QCameraImageProcessingControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QCameraImageProcessingControl {
 	if h == nil {
 		return nil
 	}
-	return &QCameraImageProcessingControl{h: h, QMediaControl: UnsafeNewQMediaControl(unsafe.Pointer(h))}
+	return &QCameraImageProcessingControl{h: h,
+		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
 }
 
-func UnsafeNewQCameraImageProcessingControl(h unsafe.Pointer) *QCameraImageProcessingControl {
-	return newQCameraImageProcessingControl((*C.QCameraImageProcessingControl)(h))
+// UnsafeNewQCameraImageProcessingControl constructs the type using only unsafe pointers.
+func UnsafeNewQCameraImageProcessingControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QCameraImageProcessingControl {
+	if h == nil {
+		return nil
+	}
+
+	return &QCameraImageProcessingControl{h: (*C.QCameraImageProcessingControl)(h),
+		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
 }
 
 func (this *QCameraImageProcessingControl) MetaObject() *qt.QMetaObject {
@@ -156,7 +165,7 @@ func QCameraImageProcessingControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QCameraImageProcessingControl) Delete() {
-	C.QCameraImageProcessingControl_Delete(this.h)
+	C.QCameraImageProcessingControl_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

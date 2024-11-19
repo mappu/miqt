@@ -16,7 +16,8 @@ import (
 )
 
 type QSslServer struct {
-	h *C.QSslServer
+	h          *C.QSslServer
+	isSubclass bool
 	*QTcpServer
 }
 
@@ -34,27 +35,47 @@ func (this *QSslServer) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQSslServer(h *C.QSslServer) *QSslServer {
+// newQSslServer constructs the type using only CGO pointers.
+func newQSslServer(h *C.QSslServer, h_QTcpServer *C.QTcpServer, h_QObject *C.QObject) *QSslServer {
 	if h == nil {
 		return nil
 	}
-	return &QSslServer{h: h, QTcpServer: UnsafeNewQTcpServer(unsafe.Pointer(h))}
+	return &QSslServer{h: h,
+		QTcpServer: newQTcpServer(h_QTcpServer, h_QObject)}
 }
 
-func UnsafeNewQSslServer(h unsafe.Pointer) *QSslServer {
-	return newQSslServer((*C.QSslServer)(h))
+// UnsafeNewQSslServer constructs the type using only unsafe pointers.
+func UnsafeNewQSslServer(h unsafe.Pointer, h_QTcpServer unsafe.Pointer, h_QObject unsafe.Pointer) *QSslServer {
+	if h == nil {
+		return nil
+	}
+
+	return &QSslServer{h: (*C.QSslServer)(h),
+		QTcpServer: UnsafeNewQTcpServer(h_QTcpServer, h_QObject)}
 }
 
 // NewQSslServer constructs a new QSslServer object.
 func NewQSslServer() *QSslServer {
-	ret := C.QSslServer_new()
-	return newQSslServer(ret)
+	var outptr_QSslServer *C.QSslServer = nil
+	var outptr_QTcpServer *C.QTcpServer = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QSslServer_new(&outptr_QSslServer, &outptr_QTcpServer, &outptr_QObject)
+	ret := newQSslServer(outptr_QSslServer, outptr_QTcpServer, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSslServer2 constructs a new QSslServer object.
 func NewQSslServer2(parent *qt6.QObject) *QSslServer {
-	ret := C.QSslServer_new2((*C.QObject)(parent.UnsafePointer()))
-	return newQSslServer(ret)
+	var outptr_QSslServer *C.QSslServer = nil
+	var outptr_QTcpServer *C.QTcpServer = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QSslServer_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QSslServer, &outptr_QTcpServer, &outptr_QObject)
+	ret := newQSslServer(outptr_QSslServer, outptr_QTcpServer, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QSslServer) MetaObject() *qt6.QMetaObject {
@@ -116,7 +137,7 @@ func miqt_exec_callback_QSslServer_SslErrors(cb C.intptr_t, socket *C.QSslSocket
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQSslSocket(unsafe.Pointer(socket))
+	slotval1 := UnsafeNewQSslSocket(unsafe.Pointer(socket), nil, nil, nil, nil, nil)
 	var errors_ma C.struct_miqt_array = errors
 	errors_ret := make([]QSslError, int(errors_ma.len))
 	errors_outCast := (*[0xffff]*C.QSslError)(unsafe.Pointer(errors_ma.data)) // hey ya
@@ -146,7 +167,7 @@ func miqt_exec_callback_QSslServer_PeerVerifyError(cb C.intptr_t, socket *C.QSsl
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQSslSocket(unsafe.Pointer(socket))
+	slotval1 := UnsafeNewQSslSocket(unsafe.Pointer(socket), nil, nil, nil, nil, nil)
 	slotval2 := UnsafeNewQSslError(unsafe.Pointer(error))
 
 	gofunc(slotval1, slotval2)
@@ -167,7 +188,7 @@ func miqt_exec_callback_QSslServer_ErrorOccurred(cb C.intptr_t, socket *C.QSslSo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQSslSocket(unsafe.Pointer(socket))
+	slotval1 := UnsafeNewQSslSocket(unsafe.Pointer(socket), nil, nil, nil, nil, nil)
 	slotval2 := (QAbstractSocket__SocketError)(error)
 
 	gofunc(slotval1, slotval2)
@@ -188,7 +209,7 @@ func miqt_exec_callback_QSslServer_PreSharedKeyAuthenticationRequired(cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQSslSocket(unsafe.Pointer(socket))
+	slotval1 := UnsafeNewQSslSocket(unsafe.Pointer(socket), nil, nil, nil, nil, nil)
 	slotval2 := UnsafeNewQSslPreSharedKeyAuthenticator(unsafe.Pointer(authenticator))
 
 	gofunc(slotval1, slotval2)
@@ -213,7 +234,7 @@ func miqt_exec_callback_QSslServer_AlertSent(cb C.intptr_t, socket *C.QSslSocket
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQSslSocket(unsafe.Pointer(socket))
+	slotval1 := UnsafeNewQSslSocket(unsafe.Pointer(socket), nil, nil, nil, nil, nil)
 	slotval2 := (QSsl__AlertLevel)(level)
 
 	slotval3 := (QSsl__AlertType)(typeVal)
@@ -245,7 +266,7 @@ func miqt_exec_callback_QSslServer_AlertReceived(cb C.intptr_t, socket *C.QSslSo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQSslSocket(unsafe.Pointer(socket))
+	slotval1 := UnsafeNewQSslSocket(unsafe.Pointer(socket), nil, nil, nil, nil, nil)
 	slotval2 := (QSsl__AlertLevel)(level)
 
 	slotval3 := (QSsl__AlertType)(typeVal)
@@ -273,7 +294,7 @@ func miqt_exec_callback_QSslServer_HandshakeInterruptedOnError(cb C.intptr_t, so
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQSslSocket(unsafe.Pointer(socket))
+	slotval1 := UnsafeNewQSslSocket(unsafe.Pointer(socket), nil, nil, nil, nil, nil)
 	slotval2 := UnsafeNewQSslError(unsafe.Pointer(error))
 
 	gofunc(slotval1, slotval2)
@@ -294,7 +315,7 @@ func miqt_exec_callback_QSslServer_StartedEncryptionHandshake(cb C.intptr_t, soc
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQSslSocket(unsafe.Pointer(socket))
+	slotval1 := UnsafeNewQSslSocket(unsafe.Pointer(socket), nil, nil, nil, nil, nil)
 
 	gofunc(slotval1)
 }
@@ -321,9 +342,75 @@ func QSslServer_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QSslServer) callVirtualBase_IncomingConnection(socket uintptr) {
+
+	C.QSslServer_virtualbase_IncomingConnection(unsafe.Pointer(this.h), (C.intptr_t)(socket))
+
+}
+func (this *QSslServer) OnIncomingConnection(slot func(super func(socket uintptr), socket uintptr)) {
+	C.QSslServer_override_virtual_IncomingConnection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QSslServer_IncomingConnection
+func miqt_exec_callback_QSslServer_IncomingConnection(self *C.QSslServer, cb C.intptr_t, socket C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(socket uintptr), socket uintptr))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (uintptr)(socket)
+
+	gofunc((&QSslServer{h: self}).callVirtualBase_IncomingConnection, slotval1)
+
+}
+
+func (this *QSslServer) callVirtualBase_HasPendingConnections() bool {
+
+	return (bool)(C.QSslServer_virtualbase_HasPendingConnections(unsafe.Pointer(this.h)))
+
+}
+func (this *QSslServer) OnHasPendingConnections(slot func(super func() bool) bool) {
+	C.QSslServer_override_virtual_HasPendingConnections(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QSslServer_HasPendingConnections
+func miqt_exec_callback_QSslServer_HasPendingConnections(self *C.QSslServer, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QSslServer{h: self}).callVirtualBase_HasPendingConnections)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QSslServer) callVirtualBase_NextPendingConnection() *QTcpSocket {
+
+	return UnsafeNewQTcpSocket(unsafe.Pointer(C.QSslServer_virtualbase_NextPendingConnection(unsafe.Pointer(this.h))), nil, nil, nil, nil)
+}
+func (this *QSslServer) OnNextPendingConnection(slot func(super func() *QTcpSocket) *QTcpSocket) {
+	C.QSslServer_override_virtual_NextPendingConnection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QSslServer_NextPendingConnection
+func miqt_exec_callback_QSslServer_NextPendingConnection(self *C.QSslServer, cb C.intptr_t) *C.QTcpSocket {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QTcpSocket) *QTcpSocket)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QSslServer{h: self}).callVirtualBase_NextPendingConnection)
+
+	return virtualReturn.cPointer()
+
+}
+
 // Delete this object from C++ memory.
 func (this *QSslServer) Delete() {
-	C.QSslServer_Delete(this.h)
+	C.QSslServer_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

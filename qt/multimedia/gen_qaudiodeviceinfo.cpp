@@ -8,12 +8,14 @@
 #include "gen_qaudiodeviceinfo.h"
 #include "_cgo_export.h"
 
-QAudioDeviceInfo* QAudioDeviceInfo_new() {
-	return new QAudioDeviceInfo();
+void QAudioDeviceInfo_new(QAudioDeviceInfo** outptr_QAudioDeviceInfo) {
+	QAudioDeviceInfo* ret = new QAudioDeviceInfo();
+	*outptr_QAudioDeviceInfo = ret;
 }
 
-QAudioDeviceInfo* QAudioDeviceInfo_new2(QAudioDeviceInfo* other) {
-	return new QAudioDeviceInfo(*other);
+void QAudioDeviceInfo_new2(QAudioDeviceInfo* other, QAudioDeviceInfo** outptr_QAudioDeviceInfo) {
+	QAudioDeviceInfo* ret = new QAudioDeviceInfo(*other);
+	*outptr_QAudioDeviceInfo = ret;
 }
 
 void QAudioDeviceInfo_OperatorAssign(QAudioDeviceInfo* self, QAudioDeviceInfo* other) {
@@ -174,7 +176,11 @@ struct miqt_array /* of QAudioDeviceInfo* */  QAudioDeviceInfo_AvailableDevices(
 	return _out;
 }
 
-void QAudioDeviceInfo_Delete(QAudioDeviceInfo* self) {
-	delete self;
+void QAudioDeviceInfo_Delete(QAudioDeviceInfo* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAudioDeviceInfo*>( self );
+	} else {
+		delete self;
+	}
 }
 

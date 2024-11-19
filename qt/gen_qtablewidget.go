@@ -22,7 +22,8 @@ const (
 )
 
 type QTableWidgetSelectionRange struct {
-	h *C.QTableWidgetSelectionRange
+	h          *C.QTableWidgetSelectionRange
+	isSubclass bool
 }
 
 func (this *QTableWidgetSelectionRange) cPointer() *C.QTableWidgetSelectionRange {
@@ -39,6 +40,7 @@ func (this *QTableWidgetSelectionRange) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQTableWidgetSelectionRange constructs the type using only CGO pointers.
 func newQTableWidgetSelectionRange(h *C.QTableWidgetSelectionRange) *QTableWidgetSelectionRange {
 	if h == nil {
 		return nil
@@ -46,26 +48,43 @@ func newQTableWidgetSelectionRange(h *C.QTableWidgetSelectionRange) *QTableWidge
 	return &QTableWidgetSelectionRange{h: h}
 }
 
+// UnsafeNewQTableWidgetSelectionRange constructs the type using only unsafe pointers.
 func UnsafeNewQTableWidgetSelectionRange(h unsafe.Pointer) *QTableWidgetSelectionRange {
-	return newQTableWidgetSelectionRange((*C.QTableWidgetSelectionRange)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QTableWidgetSelectionRange{h: (*C.QTableWidgetSelectionRange)(h)}
 }
 
 // NewQTableWidgetSelectionRange constructs a new QTableWidgetSelectionRange object.
 func NewQTableWidgetSelectionRange() *QTableWidgetSelectionRange {
-	ret := C.QTableWidgetSelectionRange_new()
-	return newQTableWidgetSelectionRange(ret)
+	var outptr_QTableWidgetSelectionRange *C.QTableWidgetSelectionRange = nil
+
+	C.QTableWidgetSelectionRange_new(&outptr_QTableWidgetSelectionRange)
+	ret := newQTableWidgetSelectionRange(outptr_QTableWidgetSelectionRange)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTableWidgetSelectionRange2 constructs a new QTableWidgetSelectionRange object.
 func NewQTableWidgetSelectionRange2(top int, left int, bottom int, right int) *QTableWidgetSelectionRange {
-	ret := C.QTableWidgetSelectionRange_new2((C.int)(top), (C.int)(left), (C.int)(bottom), (C.int)(right))
-	return newQTableWidgetSelectionRange(ret)
+	var outptr_QTableWidgetSelectionRange *C.QTableWidgetSelectionRange = nil
+
+	C.QTableWidgetSelectionRange_new2((C.int)(top), (C.int)(left), (C.int)(bottom), (C.int)(right), &outptr_QTableWidgetSelectionRange)
+	ret := newQTableWidgetSelectionRange(outptr_QTableWidgetSelectionRange)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTableWidgetSelectionRange3 constructs a new QTableWidgetSelectionRange object.
 func NewQTableWidgetSelectionRange3(other *QTableWidgetSelectionRange) *QTableWidgetSelectionRange {
-	ret := C.QTableWidgetSelectionRange_new3(other.cPointer())
-	return newQTableWidgetSelectionRange(ret)
+	var outptr_QTableWidgetSelectionRange *C.QTableWidgetSelectionRange = nil
+
+	C.QTableWidgetSelectionRange_new3(other.cPointer(), &outptr_QTableWidgetSelectionRange)
+	ret := newQTableWidgetSelectionRange(outptr_QTableWidgetSelectionRange)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QTableWidgetSelectionRange) OperatorAssign(other *QTableWidgetSelectionRange) {
@@ -98,7 +117,7 @@ func (this *QTableWidgetSelectionRange) ColumnCount() int {
 
 // Delete this object from C++ memory.
 func (this *QTableWidgetSelectionRange) Delete() {
-	C.QTableWidgetSelectionRange_Delete(this.h)
+	C.QTableWidgetSelectionRange_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -111,7 +130,8 @@ func (this *QTableWidgetSelectionRange) GoGC() {
 }
 
 type QTableWidgetItem struct {
-	h *C.QTableWidgetItem
+	h          *C.QTableWidgetItem
+	isSubclass bool
 }
 
 func (this *QTableWidgetItem) cPointer() *C.QTableWidgetItem {
@@ -128,6 +148,7 @@ func (this *QTableWidgetItem) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQTableWidgetItem constructs the type using only CGO pointers.
 func newQTableWidgetItem(h *C.QTableWidgetItem) *QTableWidgetItem {
 	if h == nil {
 		return nil
@@ -135,14 +156,23 @@ func newQTableWidgetItem(h *C.QTableWidgetItem) *QTableWidgetItem {
 	return &QTableWidgetItem{h: h}
 }
 
+// UnsafeNewQTableWidgetItem constructs the type using only unsafe pointers.
 func UnsafeNewQTableWidgetItem(h unsafe.Pointer) *QTableWidgetItem {
-	return newQTableWidgetItem((*C.QTableWidgetItem)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QTableWidgetItem{h: (*C.QTableWidgetItem)(h)}
 }
 
 // NewQTableWidgetItem constructs a new QTableWidgetItem object.
 func NewQTableWidgetItem() *QTableWidgetItem {
-	ret := C.QTableWidgetItem_new()
-	return newQTableWidgetItem(ret)
+	var outptr_QTableWidgetItem *C.QTableWidgetItem = nil
+
+	C.QTableWidgetItem_new(&outptr_QTableWidgetItem)
+	ret := newQTableWidgetItem(outptr_QTableWidgetItem)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTableWidgetItem2 constructs a new QTableWidgetItem object.
@@ -151,8 +181,12 @@ func NewQTableWidgetItem2(text string) *QTableWidgetItem {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QTableWidgetItem_new2(text_ms)
-	return newQTableWidgetItem(ret)
+	var outptr_QTableWidgetItem *C.QTableWidgetItem = nil
+
+	C.QTableWidgetItem_new2(text_ms, &outptr_QTableWidgetItem)
+	ret := newQTableWidgetItem(outptr_QTableWidgetItem)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTableWidgetItem3 constructs a new QTableWidgetItem object.
@@ -161,20 +195,32 @@ func NewQTableWidgetItem3(icon *QIcon, text string) *QTableWidgetItem {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QTableWidgetItem_new3(icon.cPointer(), text_ms)
-	return newQTableWidgetItem(ret)
+	var outptr_QTableWidgetItem *C.QTableWidgetItem = nil
+
+	C.QTableWidgetItem_new3(icon.cPointer(), text_ms, &outptr_QTableWidgetItem)
+	ret := newQTableWidgetItem(outptr_QTableWidgetItem)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTableWidgetItem4 constructs a new QTableWidgetItem object.
 func NewQTableWidgetItem4(other *QTableWidgetItem) *QTableWidgetItem {
-	ret := C.QTableWidgetItem_new4(other.cPointer())
-	return newQTableWidgetItem(ret)
+	var outptr_QTableWidgetItem *C.QTableWidgetItem = nil
+
+	C.QTableWidgetItem_new4(other.cPointer(), &outptr_QTableWidgetItem)
+	ret := newQTableWidgetItem(outptr_QTableWidgetItem)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTableWidgetItem5 constructs a new QTableWidgetItem object.
 func NewQTableWidgetItem5(typeVal int) *QTableWidgetItem {
-	ret := C.QTableWidgetItem_new5((C.int)(typeVal))
-	return newQTableWidgetItem(ret)
+	var outptr_QTableWidgetItem *C.QTableWidgetItem = nil
+
+	C.QTableWidgetItem_new5((C.int)(typeVal), &outptr_QTableWidgetItem)
+	ret := newQTableWidgetItem(outptr_QTableWidgetItem)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTableWidgetItem6 constructs a new QTableWidgetItem object.
@@ -183,8 +229,12 @@ func NewQTableWidgetItem6(text string, typeVal int) *QTableWidgetItem {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QTableWidgetItem_new6(text_ms, (C.int)(typeVal))
-	return newQTableWidgetItem(ret)
+	var outptr_QTableWidgetItem *C.QTableWidgetItem = nil
+
+	C.QTableWidgetItem_new6(text_ms, (C.int)(typeVal), &outptr_QTableWidgetItem)
+	ret := newQTableWidgetItem(outptr_QTableWidgetItem)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTableWidgetItem7 constructs a new QTableWidgetItem object.
@@ -193,8 +243,12 @@ func NewQTableWidgetItem7(icon *QIcon, text string, typeVal int) *QTableWidgetIt
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QTableWidgetItem_new7(icon.cPointer(), text_ms, (C.int)(typeVal))
-	return newQTableWidgetItem(ret)
+	var outptr_QTableWidgetItem *C.QTableWidgetItem = nil
+
+	C.QTableWidgetItem_new7(icon.cPointer(), text_ms, (C.int)(typeVal), &outptr_QTableWidgetItem)
+	ret := newQTableWidgetItem(outptr_QTableWidgetItem)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QTableWidgetItem) Clone() *QTableWidgetItem {
@@ -202,7 +256,7 @@ func (this *QTableWidgetItem) Clone() *QTableWidgetItem {
 }
 
 func (this *QTableWidgetItem) TableWidget() *QTableWidget {
-	return UnsafeNewQTableWidget(unsafe.Pointer(C.QTableWidgetItem_TableWidget(this.h)))
+	return UnsafeNewQTableWidget(unsafe.Pointer(C.QTableWidgetItem_TableWidget(this.h)), nil, nil, nil, nil, nil, nil, nil)
 }
 
 func (this *QTableWidgetItem) Row() int {
@@ -413,9 +467,154 @@ func (this *QTableWidgetItem) Type() int {
 	return (int)(C.QTableWidgetItem_Type(this.h))
 }
 
+func (this *QTableWidgetItem) callVirtualBase_Clone() *QTableWidgetItem {
+
+	return UnsafeNewQTableWidgetItem(unsafe.Pointer(C.QTableWidgetItem_virtualbase_Clone(unsafe.Pointer(this.h))))
+}
+func (this *QTableWidgetItem) OnClone(slot func(super func() *QTableWidgetItem) *QTableWidgetItem) {
+	C.QTableWidgetItem_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidgetItem_Clone
+func miqt_exec_callback_QTableWidgetItem_Clone(self *C.QTableWidgetItem, cb C.intptr_t) *C.QTableWidgetItem {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QTableWidgetItem) *QTableWidgetItem)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTableWidgetItem{h: self}).callVirtualBase_Clone)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTableWidgetItem) callVirtualBase_Data(role int) *QVariant {
+
+	_ret := C.QTableWidgetItem_virtualbase_Data(unsafe.Pointer(this.h), (C.int)(role))
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QTableWidgetItem) OnData(slot func(super func(role int) *QVariant, role int) *QVariant) {
+	C.QTableWidgetItem_override_virtual_Data(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidgetItem_Data
+func miqt_exec_callback_QTableWidgetItem_Data(self *C.QTableWidgetItem, cb C.intptr_t, role C.int) *C.QVariant {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(role int) *QVariant, role int) *QVariant)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(role)
+
+	virtualReturn := gofunc((&QTableWidgetItem{h: self}).callVirtualBase_Data, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTableWidgetItem) callVirtualBase_SetData(role int, value *QVariant) {
+
+	C.QTableWidgetItem_virtualbase_SetData(unsafe.Pointer(this.h), (C.int)(role), value.cPointer())
+
+}
+func (this *QTableWidgetItem) OnSetData(slot func(super func(role int, value *QVariant), role int, value *QVariant)) {
+	C.QTableWidgetItem_override_virtual_SetData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidgetItem_SetData
+func miqt_exec_callback_QTableWidgetItem_SetData(self *C.QTableWidgetItem, cb C.intptr_t, role C.int, value *C.QVariant) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(role int, value *QVariant), role int, value *QVariant))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(role)
+
+	slotval2 := UnsafeNewQVariant(unsafe.Pointer(value))
+
+	gofunc((&QTableWidgetItem{h: self}).callVirtualBase_SetData, slotval1, slotval2)
+
+}
+
+func (this *QTableWidgetItem) callVirtualBase_OperatorLesser(other *QTableWidgetItem) bool {
+
+	return (bool)(C.QTableWidgetItem_virtualbase_OperatorLesser(unsafe.Pointer(this.h), other.cPointer()))
+
+}
+func (this *QTableWidgetItem) OnOperatorLesser(slot func(super func(other *QTableWidgetItem) bool, other *QTableWidgetItem) bool) {
+	C.QTableWidgetItem_override_virtual_OperatorLesser(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidgetItem_OperatorLesser
+func miqt_exec_callback_QTableWidgetItem_OperatorLesser(self *C.QTableWidgetItem, cb C.intptr_t, other *C.QTableWidgetItem) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(other *QTableWidgetItem) bool, other *QTableWidgetItem) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTableWidgetItem(unsafe.Pointer(other))
+
+	virtualReturn := gofunc((&QTableWidgetItem{h: self}).callVirtualBase_OperatorLesser, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QTableWidgetItem) callVirtualBase_Read(in *QDataStream) {
+
+	C.QTableWidgetItem_virtualbase_Read(unsafe.Pointer(this.h), in.cPointer())
+
+}
+func (this *QTableWidgetItem) OnRead(slot func(super func(in *QDataStream), in *QDataStream)) {
+	C.QTableWidgetItem_override_virtual_Read(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidgetItem_Read
+func miqt_exec_callback_QTableWidgetItem_Read(self *C.QTableWidgetItem, cb C.intptr_t, in *C.QDataStream) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(in *QDataStream), in *QDataStream))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQDataStream(unsafe.Pointer(in))
+
+	gofunc((&QTableWidgetItem{h: self}).callVirtualBase_Read, slotval1)
+
+}
+
+func (this *QTableWidgetItem) callVirtualBase_Write(out *QDataStream) {
+
+	C.QTableWidgetItem_virtualbase_Write(unsafe.Pointer(this.h), out.cPointer())
+
+}
+func (this *QTableWidgetItem) OnWrite(slot func(super func(out *QDataStream), out *QDataStream)) {
+	C.QTableWidgetItem_override_virtual_Write(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidgetItem_Write
+func miqt_exec_callback_QTableWidgetItem_Write(self *C.QTableWidgetItem, cb C.intptr_t, out *C.QDataStream) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(out *QDataStream), out *QDataStream))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQDataStream(unsafe.Pointer(out))
+
+	gofunc((&QTableWidgetItem{h: self}).callVirtualBase_Write, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QTableWidgetItem) Delete() {
-	C.QTableWidgetItem_Delete(this.h)
+	C.QTableWidgetItem_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -428,7 +627,8 @@ func (this *QTableWidgetItem) GoGC() {
 }
 
 type QTableWidget struct {
-	h *C.QTableWidget
+	h          *C.QTableWidget
+	isSubclass bool
 	*QTableView
 }
 
@@ -446,39 +646,91 @@ func (this *QTableWidget) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQTableWidget(h *C.QTableWidget) *QTableWidget {
+// newQTableWidget constructs the type using only CGO pointers.
+func newQTableWidget(h *C.QTableWidget, h_QTableView *C.QTableView, h_QAbstractItemView *C.QAbstractItemView, h_QAbstractScrollArea *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QTableWidget {
 	if h == nil {
 		return nil
 	}
-	return &QTableWidget{h: h, QTableView: UnsafeNewQTableView(unsafe.Pointer(h))}
+	return &QTableWidget{h: h,
+		QTableView: newQTableView(h_QTableView, h_QAbstractItemView, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
-func UnsafeNewQTableWidget(h unsafe.Pointer) *QTableWidget {
-	return newQTableWidget((*C.QTableWidget)(h))
+// UnsafeNewQTableWidget constructs the type using only unsafe pointers.
+func UnsafeNewQTableWidget(h unsafe.Pointer, h_QTableView unsafe.Pointer, h_QAbstractItemView unsafe.Pointer, h_QAbstractScrollArea unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QTableWidget {
+	if h == nil {
+		return nil
+	}
+
+	return &QTableWidget{h: (*C.QTableWidget)(h),
+		QTableView: UnsafeNewQTableView(h_QTableView, h_QAbstractItemView, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
 // NewQTableWidget constructs a new QTableWidget object.
 func NewQTableWidget(parent *QWidget) *QTableWidget {
-	ret := C.QTableWidget_new(parent.cPointer())
-	return newQTableWidget(ret)
+	var outptr_QTableWidget *C.QTableWidget = nil
+	var outptr_QTableView *C.QTableView = nil
+	var outptr_QAbstractItemView *C.QAbstractItemView = nil
+	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QTableWidget_new(parent.cPointer(), &outptr_QTableWidget, &outptr_QTableView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQTableWidget(outptr_QTableWidget, outptr_QTableView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTableWidget2 constructs a new QTableWidget object.
 func NewQTableWidget2() *QTableWidget {
-	ret := C.QTableWidget_new2()
-	return newQTableWidget(ret)
+	var outptr_QTableWidget *C.QTableWidget = nil
+	var outptr_QTableView *C.QTableView = nil
+	var outptr_QAbstractItemView *C.QAbstractItemView = nil
+	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QTableWidget_new2(&outptr_QTableWidget, &outptr_QTableView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQTableWidget(outptr_QTableWidget, outptr_QTableView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTableWidget3 constructs a new QTableWidget object.
 func NewQTableWidget3(rows int, columns int) *QTableWidget {
-	ret := C.QTableWidget_new3((C.int)(rows), (C.int)(columns))
-	return newQTableWidget(ret)
+	var outptr_QTableWidget *C.QTableWidget = nil
+	var outptr_QTableView *C.QTableView = nil
+	var outptr_QAbstractItemView *C.QAbstractItemView = nil
+	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QTableWidget_new3((C.int)(rows), (C.int)(columns), &outptr_QTableWidget, &outptr_QTableView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQTableWidget(outptr_QTableWidget, outptr_QTableView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTableWidget4 constructs a new QTableWidget object.
 func NewQTableWidget4(rows int, columns int, parent *QWidget) *QTableWidget {
-	ret := C.QTableWidget_new4((C.int)(rows), (C.int)(columns), parent.cPointer())
-	return newQTableWidget(ret)
+	var outptr_QTableWidget *C.QTableWidget = nil
+	var outptr_QTableView *C.QTableView = nil
+	var outptr_QAbstractItemView *C.QAbstractItemView = nil
+	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QTableWidget_new4((C.int)(rows), (C.int)(columns), parent.cPointer(), &outptr_QTableWidget, &outptr_QTableView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQTableWidget(outptr_QTableWidget, outptr_QTableView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QTableWidget) MetaObject() *QMetaObject {
@@ -654,7 +906,7 @@ func (this *QTableWidget) IsPersistentEditorOpen(item *QTableWidgetItem) bool {
 }
 
 func (this *QTableWidget) CellWidget(row int, column int) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QTableWidget_CellWidget(this.h, (C.int)(row), (C.int)(column))))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QTableWidget_CellWidget(this.h, (C.int)(row), (C.int)(column))), nil, nil)
 }
 
 func (this *QTableWidget) SetCellWidget(row int, column int, widget *QWidget) {
@@ -1141,9 +1393,753 @@ func (this *QTableWidget) ScrollToItem2(item *QTableWidgetItem, hint QAbstractIt
 	C.QTableWidget_ScrollToItem2(this.h, item.cPointer(), (C.int)(hint))
 }
 
+func (this *QTableWidget) callVirtualBase_Event(e *QEvent) bool {
+
+	return (bool)(C.QTableWidget_virtualbase_Event(unsafe.Pointer(this.h), e.cPointer()))
+
+}
+func (this *QTableWidget) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	C.QTableWidget_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_Event
+func miqt_exec_callback_QTableWidget_Event(self *C.QTableWidget, cb C.intptr_t, e *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QEvent) bool, e *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+
+	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QTableWidget) callVirtualBase_MimeTypes() []string {
+
+	var _ma C.struct_miqt_array = C.QTableWidget_virtualbase_MimeTypes(unsafe.Pointer(this.h))
+	_ret := make([]string, int(_ma.len))
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
+		_ret[i] = _lv_ret
+	}
+	return _ret
+
+}
+func (this *QTableWidget) OnMimeTypes(slot func(super func() []string) []string) {
+	C.QTableWidget_override_virtual_MimeTypes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_MimeTypes
+func miqt_exec_callback_QTableWidget_MimeTypes(self *C.QTableWidget, cb C.intptr_t) C.struct_miqt_array {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() []string) []string)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_MimeTypes)
+	virtualReturn_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	defer C.free(unsafe.Pointer(virtualReturn_CArray))
+	for i := range virtualReturn {
+		virtualReturn_i_ms := C.struct_miqt_string{}
+		virtualReturn_i_ms.data = C.CString(virtualReturn[i])
+		virtualReturn_i_ms.len = C.size_t(len(virtualReturn[i]))
+		defer C.free(unsafe.Pointer(virtualReturn_i_ms.data))
+		virtualReturn_CArray[i] = virtualReturn_i_ms
+	}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+
+	return virtualReturn_ma
+
+}
+
+func (this *QTableWidget) callVirtualBase_MimeData(items []*QTableWidgetItem) *QMimeData {
+	items_CArray := (*[0xffff]*C.QTableWidgetItem)(C.malloc(C.size_t(8 * len(items))))
+	defer C.free(unsafe.Pointer(items_CArray))
+	for i := range items {
+		items_CArray[i] = items[i].cPointer()
+	}
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
+
+	return UnsafeNewQMimeData(unsafe.Pointer(C.QTableWidget_virtualbase_MimeData(unsafe.Pointer(this.h), items_ma)), nil)
+}
+func (this *QTableWidget) OnMimeData(slot func(super func(items []*QTableWidgetItem) *QMimeData, items []*QTableWidgetItem) *QMimeData) {
+	C.QTableWidget_override_virtual_MimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_MimeData
+func miqt_exec_callback_QTableWidget_MimeData(self *C.QTableWidget, cb C.intptr_t, items C.struct_miqt_array) *C.QMimeData {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(items []*QTableWidgetItem) *QMimeData, items []*QTableWidgetItem) *QMimeData)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	var items_ma C.struct_miqt_array = items
+	items_ret := make([]*QTableWidgetItem, int(items_ma.len))
+	items_outCast := (*[0xffff]*C.QTableWidgetItem)(unsafe.Pointer(items_ma.data)) // hey ya
+	for i := 0; i < int(items_ma.len); i++ {
+		items_ret[i] = UnsafeNewQTableWidgetItem(unsafe.Pointer(items_outCast[i]))
+	}
+	slotval1 := items_ret
+
+	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_MimeData, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTableWidget) callVirtualBase_DropMimeData(row int, column int, data *QMimeData, action DropAction) bool {
+
+	return (bool)(C.QTableWidget_virtualbase_DropMimeData(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), data.cPointer(), (C.int)(action)))
+
+}
+func (this *QTableWidget) OnDropMimeData(slot func(super func(row int, column int, data *QMimeData, action DropAction) bool, row int, column int, data *QMimeData, action DropAction) bool) {
+	C.QTableWidget_override_virtual_DropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_DropMimeData
+func miqt_exec_callback_QTableWidget_DropMimeData(self *C.QTableWidget, cb C.intptr_t, row C.int, column C.int, data *C.QMimeData, action C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(row int, column int, data *QMimeData, action DropAction) bool, row int, column int, data *QMimeData, action DropAction) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(row)
+
+	slotval2 := (int)(column)
+
+	slotval3 := UnsafeNewQMimeData(unsafe.Pointer(data), nil)
+	slotval4 := (DropAction)(action)
+
+	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_DropMimeData, slotval1, slotval2, slotval3, slotval4)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QTableWidget) callVirtualBase_SupportedDropActions() DropAction {
+
+	return (DropAction)(C.QTableWidget_virtualbase_SupportedDropActions(unsafe.Pointer(this.h)))
+
+}
+func (this *QTableWidget) OnSupportedDropActions(slot func(super func() DropAction) DropAction) {
+	C.QTableWidget_override_virtual_SupportedDropActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_SupportedDropActions
+func miqt_exec_callback_QTableWidget_SupportedDropActions(self *C.QTableWidget, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() DropAction) DropAction)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_SupportedDropActions)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QTableWidget) callVirtualBase_DropEvent(event *QDropEvent) {
+
+	C.QTableWidget_virtualbase_DropEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTableWidget) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+	C.QTableWidget_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_DropEvent
+func miqt_exec_callback_QTableWidget_DropEvent(self *C.QTableWidget, cb C.intptr_t, event *C.QDropEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDropEvent), event *QDropEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QTableWidget{h: self}).callVirtualBase_DropEvent, slotval1)
+
+}
+
+func (this *QTableWidget) callVirtualBase_SetRootIndex(index *QModelIndex) {
+
+	C.QTableWidget_virtualbase_SetRootIndex(unsafe.Pointer(this.h), index.cPointer())
+
+}
+func (this *QTableWidget) OnSetRootIndex(slot func(super func(index *QModelIndex), index *QModelIndex)) {
+	C.QTableWidget_override_virtual_SetRootIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_SetRootIndex
+func miqt_exec_callback_QTableWidget_SetRootIndex(self *C.QTableWidget, cb C.intptr_t, index *C.QModelIndex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex), index *QModelIndex))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+
+	gofunc((&QTableWidget{h: self}).callVirtualBase_SetRootIndex, slotval1)
+
+}
+
+func (this *QTableWidget) callVirtualBase_SetSelectionModel(selectionModel *QItemSelectionModel) {
+
+	C.QTableWidget_virtualbase_SetSelectionModel(unsafe.Pointer(this.h), selectionModel.cPointer())
+
+}
+func (this *QTableWidget) OnSetSelectionModel(slot func(super func(selectionModel *QItemSelectionModel), selectionModel *QItemSelectionModel)) {
+	C.QTableWidget_override_virtual_SetSelectionModel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_SetSelectionModel
+func miqt_exec_callback_QTableWidget_SetSelectionModel(self *C.QTableWidget, cb C.intptr_t, selectionModel *C.QItemSelectionModel) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(selectionModel *QItemSelectionModel), selectionModel *QItemSelectionModel))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQItemSelectionModel(unsafe.Pointer(selectionModel), nil)
+
+	gofunc((&QTableWidget{h: self}).callVirtualBase_SetSelectionModel, slotval1)
+
+}
+
+func (this *QTableWidget) callVirtualBase_DoItemsLayout() {
+
+	C.QTableWidget_virtualbase_DoItemsLayout(unsafe.Pointer(this.h))
+
+}
+func (this *QTableWidget) OnDoItemsLayout(slot func(super func())) {
+	C.QTableWidget_override_virtual_DoItemsLayout(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_DoItemsLayout
+func miqt_exec_callback_QTableWidget_DoItemsLayout(self *C.QTableWidget, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QTableWidget{h: self}).callVirtualBase_DoItemsLayout)
+
+}
+
+func (this *QTableWidget) callVirtualBase_VisualRect(index *QModelIndex) *QRect {
+
+	_ret := C.QTableWidget_virtualbase_VisualRect(unsafe.Pointer(this.h), index.cPointer())
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QTableWidget) OnVisualRect(slot func(super func(index *QModelIndex) *QRect, index *QModelIndex) *QRect) {
+	C.QTableWidget_override_virtual_VisualRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_VisualRect
+func miqt_exec_callback_QTableWidget_VisualRect(self *C.QTableWidget, cb C.intptr_t, index *C.QModelIndex) *C.QRect {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) *QRect, index *QModelIndex) *QRect)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+
+	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_VisualRect, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTableWidget) callVirtualBase_ScrollTo(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
+
+	C.QTableWidget_virtualbase_ScrollTo(unsafe.Pointer(this.h), index.cPointer(), (C.int)(hint))
+
+}
+func (this *QTableWidget) OnScrollTo(slot func(super func(index *QModelIndex, hint QAbstractItemView__ScrollHint), index *QModelIndex, hint QAbstractItemView__ScrollHint)) {
+	C.QTableWidget_override_virtual_ScrollTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_ScrollTo
+func miqt_exec_callback_QTableWidget_ScrollTo(self *C.QTableWidget, cb C.intptr_t, index *C.QModelIndex, hint C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex, hint QAbstractItemView__ScrollHint), index *QModelIndex, hint QAbstractItemView__ScrollHint))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval2 := (QAbstractItemView__ScrollHint)(hint)
+
+	gofunc((&QTableWidget{h: self}).callVirtualBase_ScrollTo, slotval1, slotval2)
+
+}
+
+func (this *QTableWidget) callVirtualBase_IndexAt(p *QPoint) *QModelIndex {
+
+	_ret := C.QTableWidget_virtualbase_IndexAt(unsafe.Pointer(this.h), p.cPointer())
+	_goptr := newQModelIndex(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QTableWidget) OnIndexAt(slot func(super func(p *QPoint) *QModelIndex, p *QPoint) *QModelIndex) {
+	C.QTableWidget_override_virtual_IndexAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_IndexAt
+func miqt_exec_callback_QTableWidget_IndexAt(self *C.QTableWidget, cb C.intptr_t, p *C.QPoint) *C.QModelIndex {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(p *QPoint) *QModelIndex, p *QPoint) *QModelIndex)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPoint(unsafe.Pointer(p))
+
+	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_IndexAt, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTableWidget) callVirtualBase_ScrollContentsBy(dx int, dy int) {
+
+	C.QTableWidget_virtualbase_ScrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
+
+}
+func (this *QTableWidget) OnScrollContentsBy(slot func(super func(dx int, dy int), dx int, dy int)) {
+	C.QTableWidget_override_virtual_ScrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_ScrollContentsBy
+func miqt_exec_callback_QTableWidget_ScrollContentsBy(self *C.QTableWidget, cb C.intptr_t, dx C.int, dy C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(dx int, dy int), dx int, dy int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(dx)
+
+	slotval2 := (int)(dy)
+
+	gofunc((&QTableWidget{h: self}).callVirtualBase_ScrollContentsBy, slotval1, slotval2)
+
+}
+
+func (this *QTableWidget) callVirtualBase_ViewOptions() *QStyleOptionViewItem {
+
+	_ret := C.QTableWidget_virtualbase_ViewOptions(unsafe.Pointer(this.h))
+	_goptr := newQStyleOptionViewItem(_ret, nil)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QTableWidget) OnViewOptions(slot func(super func() *QStyleOptionViewItem) *QStyleOptionViewItem) {
+	C.QTableWidget_override_virtual_ViewOptions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_ViewOptions
+func miqt_exec_callback_QTableWidget_ViewOptions(self *C.QTableWidget, cb C.intptr_t) *C.QStyleOptionViewItem {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QStyleOptionViewItem) *QStyleOptionViewItem)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_ViewOptions)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTableWidget) callVirtualBase_PaintEvent(e *QPaintEvent) {
+
+	C.QTableWidget_virtualbase_PaintEvent(unsafe.Pointer(this.h), e.cPointer())
+
+}
+func (this *QTableWidget) OnPaintEvent(slot func(super func(e *QPaintEvent), e *QPaintEvent)) {
+	C.QTableWidget_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_PaintEvent
+func miqt_exec_callback_QTableWidget_PaintEvent(self *C.QTableWidget, cb C.intptr_t, e *C.QPaintEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QPaintEvent), e *QPaintEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(e), nil)
+
+	gofunc((&QTableWidget{h: self}).callVirtualBase_PaintEvent, slotval1)
+
+}
+
+func (this *QTableWidget) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QTableWidget_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTableWidget) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	C.QTableWidget_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_TimerEvent
+func miqt_exec_callback_QTableWidget_TimerEvent(self *C.QTableWidget, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QTableWidget{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QTableWidget) callVirtualBase_HorizontalOffset() int {
+
+	return (int)(C.QTableWidget_virtualbase_HorizontalOffset(unsafe.Pointer(this.h)))
+
+}
+func (this *QTableWidget) OnHorizontalOffset(slot func(super func() int) int) {
+	C.QTableWidget_override_virtual_HorizontalOffset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_HorizontalOffset
+func miqt_exec_callback_QTableWidget_HorizontalOffset(self *C.QTableWidget, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_HorizontalOffset)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QTableWidget) callVirtualBase_VerticalOffset() int {
+
+	return (int)(C.QTableWidget_virtualbase_VerticalOffset(unsafe.Pointer(this.h)))
+
+}
+func (this *QTableWidget) OnVerticalOffset(slot func(super func() int) int) {
+	C.QTableWidget_override_virtual_VerticalOffset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_VerticalOffset
+func miqt_exec_callback_QTableWidget_VerticalOffset(self *C.QTableWidget, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_VerticalOffset)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QTableWidget) callVirtualBase_MoveCursor(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex {
+
+	_ret := C.QTableWidget_virtualbase_MoveCursor(unsafe.Pointer(this.h), (C.int)(cursorAction), (C.int)(modifiers))
+	_goptr := newQModelIndex(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QTableWidget) OnMoveCursor(slot func(super func(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex, cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex) {
+	C.QTableWidget_override_virtual_MoveCursor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_MoveCursor
+func miqt_exec_callback_QTableWidget_MoveCursor(self *C.QTableWidget, cb C.intptr_t, cursorAction C.int, modifiers C.int) *C.QModelIndex {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex, cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QAbstractItemView__CursorAction)(cursorAction)
+
+	slotval2 := (KeyboardModifier)(modifiers)
+
+	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_MoveCursor, slotval1, slotval2)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTableWidget) callVirtualBase_SetSelection(rect *QRect, command QItemSelectionModel__SelectionFlag) {
+
+	C.QTableWidget_virtualbase_SetSelection(unsafe.Pointer(this.h), rect.cPointer(), (C.int)(command))
+
+}
+func (this *QTableWidget) OnSetSelection(slot func(super func(rect *QRect, command QItemSelectionModel__SelectionFlag), rect *QRect, command QItemSelectionModel__SelectionFlag)) {
+	C.QTableWidget_override_virtual_SetSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_SetSelection
+func miqt_exec_callback_QTableWidget_SetSelection(self *C.QTableWidget, cb C.intptr_t, rect *C.QRect, command C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect *QRect, command QItemSelectionModel__SelectionFlag), rect *QRect, command QItemSelectionModel__SelectionFlag))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQRect(unsafe.Pointer(rect))
+	slotval2 := (QItemSelectionModel__SelectionFlag)(command)
+
+	gofunc((&QTableWidget{h: self}).callVirtualBase_SetSelection, slotval1, slotval2)
+
+}
+
+func (this *QTableWidget) callVirtualBase_SelectedIndexes() []QModelIndex {
+
+	var _ma C.struct_miqt_array = C.QTableWidget_virtualbase_SelectedIndexes(unsafe.Pointer(this.h))
+	_ret := make([]QModelIndex, int(_ma.len))
+	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
+	}
+	return _ret
+
+}
+func (this *QTableWidget) OnSelectedIndexes(slot func(super func() []QModelIndex) []QModelIndex) {
+	C.QTableWidget_override_virtual_SelectedIndexes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_SelectedIndexes
+func miqt_exec_callback_QTableWidget_SelectedIndexes(self *C.QTableWidget, cb C.intptr_t) C.struct_miqt_array {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() []QModelIndex) []QModelIndex)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_SelectedIndexes)
+	virtualReturn_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	defer C.free(unsafe.Pointer(virtualReturn_CArray))
+	for i := range virtualReturn {
+		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
+	}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+
+	return virtualReturn_ma
+
+}
+
+func (this *QTableWidget) callVirtualBase_UpdateGeometries() {
+
+	C.QTableWidget_virtualbase_UpdateGeometries(unsafe.Pointer(this.h))
+
+}
+func (this *QTableWidget) OnUpdateGeometries(slot func(super func())) {
+	C.QTableWidget_override_virtual_UpdateGeometries(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_UpdateGeometries
+func miqt_exec_callback_QTableWidget_UpdateGeometries(self *C.QTableWidget, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QTableWidget{h: self}).callVirtualBase_UpdateGeometries)
+
+}
+
+func (this *QTableWidget) callVirtualBase_ViewportSizeHint() *QSize {
+
+	_ret := C.QTableWidget_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h))
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QTableWidget) OnViewportSizeHint(slot func(super func() *QSize) *QSize) {
+	C.QTableWidget_override_virtual_ViewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_ViewportSizeHint
+func miqt_exec_callback_QTableWidget_ViewportSizeHint(self *C.QTableWidget, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_ViewportSizeHint)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTableWidget) callVirtualBase_SizeHintForRow(row int) int {
+
+	return (int)(C.QTableWidget_virtualbase_SizeHintForRow(unsafe.Pointer(this.h), (C.int)(row)))
+
+}
+func (this *QTableWidget) OnSizeHintForRow(slot func(super func(row int) int, row int) int) {
+	C.QTableWidget_override_virtual_SizeHintForRow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_SizeHintForRow
+func miqt_exec_callback_QTableWidget_SizeHintForRow(self *C.QTableWidget, cb C.intptr_t, row C.int) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(row int) int, row int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(row)
+
+	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_SizeHintForRow, slotval1)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QTableWidget) callVirtualBase_SizeHintForColumn(column int) int {
+
+	return (int)(C.QTableWidget_virtualbase_SizeHintForColumn(unsafe.Pointer(this.h), (C.int)(column)))
+
+}
+func (this *QTableWidget) OnSizeHintForColumn(slot func(super func(column int) int, column int) int) {
+	C.QTableWidget_override_virtual_SizeHintForColumn(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_SizeHintForColumn
+func miqt_exec_callback_QTableWidget_SizeHintForColumn(self *C.QTableWidget, cb C.intptr_t, column C.int) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(column int) int, column int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(column)
+
+	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_SizeHintForColumn, slotval1)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QTableWidget) callVirtualBase_VerticalScrollbarAction(action int) {
+
+	C.QTableWidget_virtualbase_VerticalScrollbarAction(unsafe.Pointer(this.h), (C.int)(action))
+
+}
+func (this *QTableWidget) OnVerticalScrollbarAction(slot func(super func(action int), action int)) {
+	C.QTableWidget_override_virtual_VerticalScrollbarAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_VerticalScrollbarAction
+func miqt_exec_callback_QTableWidget_VerticalScrollbarAction(self *C.QTableWidget, cb C.intptr_t, action C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(action int), action int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(action)
+
+	gofunc((&QTableWidget{h: self}).callVirtualBase_VerticalScrollbarAction, slotval1)
+
+}
+
+func (this *QTableWidget) callVirtualBase_HorizontalScrollbarAction(action int) {
+
+	C.QTableWidget_virtualbase_HorizontalScrollbarAction(unsafe.Pointer(this.h), (C.int)(action))
+
+}
+func (this *QTableWidget) OnHorizontalScrollbarAction(slot func(super func(action int), action int)) {
+	C.QTableWidget_override_virtual_HorizontalScrollbarAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_HorizontalScrollbarAction
+func miqt_exec_callback_QTableWidget_HorizontalScrollbarAction(self *C.QTableWidget, cb C.intptr_t, action C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(action int), action int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(action)
+
+	gofunc((&QTableWidget{h: self}).callVirtualBase_HorizontalScrollbarAction, slotval1)
+
+}
+
+func (this *QTableWidget) callVirtualBase_IsIndexHidden(index *QModelIndex) bool {
+
+	return (bool)(C.QTableWidget_virtualbase_IsIndexHidden(unsafe.Pointer(this.h), index.cPointer()))
+
+}
+func (this *QTableWidget) OnIsIndexHidden(slot func(super func(index *QModelIndex) bool, index *QModelIndex) bool) {
+	C.QTableWidget_override_virtual_IsIndexHidden(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_IsIndexHidden
+func miqt_exec_callback_QTableWidget_IsIndexHidden(self *C.QTableWidget, cb C.intptr_t, index *C.QModelIndex) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) bool, index *QModelIndex) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+
+	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_IsIndexHidden, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QTableWidget) callVirtualBase_CurrentChanged(current *QModelIndex, previous *QModelIndex) {
+
+	C.QTableWidget_virtualbase_CurrentChanged(unsafe.Pointer(this.h), current.cPointer(), previous.cPointer())
+
+}
+func (this *QTableWidget) OnCurrentChanged(slot func(super func(current *QModelIndex, previous *QModelIndex), current *QModelIndex, previous *QModelIndex)) {
+	C.QTableWidget_override_virtual_CurrentChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTableWidget_CurrentChanged
+func miqt_exec_callback_QTableWidget_CurrentChanged(self *C.QTableWidget, cb C.intptr_t, current *C.QModelIndex, previous *C.QModelIndex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(current *QModelIndex, previous *QModelIndex), current *QModelIndex, previous *QModelIndex))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(current))
+	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(previous))
+
+	gofunc((&QTableWidget{h: self}).callVirtualBase_CurrentChanged, slotval1, slotval2)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QTableWidget) Delete() {
-	C.QTableWidget_Delete(this.h)
+	C.QTableWidget_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

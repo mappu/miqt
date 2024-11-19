@@ -11,20 +11,24 @@
 #include "gen_qmatrix.h"
 #include "_cgo_export.h"
 
-QMatrix* QMatrix_new(int param1) {
-	return new QMatrix(static_cast<Qt::Initialization>(param1));
+void QMatrix_new(int param1, QMatrix** outptr_QMatrix) {
+	QMatrix* ret = new QMatrix(static_cast<Qt::Initialization>(param1));
+	*outptr_QMatrix = ret;
 }
 
-QMatrix* QMatrix_new2() {
-	return new QMatrix();
+void QMatrix_new2(QMatrix** outptr_QMatrix) {
+	QMatrix* ret = new QMatrix();
+	*outptr_QMatrix = ret;
 }
 
-QMatrix* QMatrix_new3(double m11, double m12, double m21, double m22, double dx, double dy) {
-	return new QMatrix(static_cast<qreal>(m11), static_cast<qreal>(m12), static_cast<qreal>(m21), static_cast<qreal>(m22), static_cast<qreal>(dx), static_cast<qreal>(dy));
+void QMatrix_new3(double m11, double m12, double m21, double m22, double dx, double dy, QMatrix** outptr_QMatrix) {
+	QMatrix* ret = new QMatrix(static_cast<qreal>(m11), static_cast<qreal>(m12), static_cast<qreal>(m21), static_cast<qreal>(m22), static_cast<qreal>(dx), static_cast<qreal>(dy));
+	*outptr_QMatrix = ret;
 }
 
-QMatrix* QMatrix_new4(QMatrix* other) {
-	return new QMatrix(*other);
+void QMatrix_new4(QMatrix* other, QMatrix** outptr_QMatrix) {
+	QMatrix* ret = new QMatrix(*other);
+	*outptr_QMatrix = ret;
 }
 
 void QMatrix_OperatorAssign(QMatrix* self, QMatrix* param1) {
@@ -172,7 +176,11 @@ QMatrix* QMatrix_Inverted1(const QMatrix* self, bool* invertible) {
 	return new QMatrix(self->inverted(invertible));
 }
 
-void QMatrix_Delete(QMatrix* self) {
-	delete self;
+void QMatrix_Delete(QMatrix* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMatrix*>( self );
+	} else {
+		delete self;
+	}
 }
 

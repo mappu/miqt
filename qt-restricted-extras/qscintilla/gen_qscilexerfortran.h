@@ -17,15 +17,19 @@ extern "C" {
 #ifdef __cplusplus
 class QMetaObject;
 class QObject;
+class QsciLexer;
 class QsciLexerFortran;
+class QsciLexerFortran77;
 #else
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
+typedef struct QsciLexer QsciLexer;
 typedef struct QsciLexerFortran QsciLexerFortran;
+typedef struct QsciLexerFortran77 QsciLexerFortran77;
 #endif
 
-QsciLexerFortran* QsciLexerFortran_new();
-QsciLexerFortran* QsciLexerFortran_new2(QObject* parent);
+void QsciLexerFortran_new(QsciLexerFortran** outptr_QsciLexerFortran, QsciLexerFortran77** outptr_QsciLexerFortran77, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+void QsciLexerFortran_new2(QObject* parent, QsciLexerFortran** outptr_QsciLexerFortran, QsciLexerFortran77** outptr_QsciLexerFortran77, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
 QMetaObject* QsciLexerFortran_MetaObject(const QsciLexerFortran* self);
 void* QsciLexerFortran_Metacast(QsciLexerFortran* self, const char* param1);
 struct miqt_string QsciLexerFortran_Tr(const char* s);
@@ -37,7 +41,9 @@ struct miqt_string QsciLexerFortran_Tr2(const char* s, const char* c);
 struct miqt_string QsciLexerFortran_Tr3(const char* s, const char* c, int n);
 struct miqt_string QsciLexerFortran_TrUtf82(const char* s, const char* c);
 struct miqt_string QsciLexerFortran_TrUtf83(const char* s, const char* c, int n);
-void QsciLexerFortran_Delete(QsciLexerFortran* self);
+void QsciLexerFortran_override_virtual_SetFoldCompact(void* self, intptr_t slot);
+void QsciLexerFortran_virtualbase_SetFoldCompact(void* self, bool fold);
+void QsciLexerFortran_Delete(QsciLexerFortran* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

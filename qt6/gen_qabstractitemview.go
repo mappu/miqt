@@ -70,8 +70,45 @@ const (
 	QAbstractItemView__InternalMove QAbstractItemView__DragDropMode = 4
 )
 
+type QAbstractItemView__CursorAction int
+
+const (
+	QAbstractItemView__MoveUp       QAbstractItemView__CursorAction = 0
+	QAbstractItemView__MoveDown     QAbstractItemView__CursorAction = 1
+	QAbstractItemView__MoveLeft     QAbstractItemView__CursorAction = 2
+	QAbstractItemView__MoveRight    QAbstractItemView__CursorAction = 3
+	QAbstractItemView__MoveHome     QAbstractItemView__CursorAction = 4
+	QAbstractItemView__MoveEnd      QAbstractItemView__CursorAction = 5
+	QAbstractItemView__MovePageUp   QAbstractItemView__CursorAction = 6
+	QAbstractItemView__MovePageDown QAbstractItemView__CursorAction = 7
+	QAbstractItemView__MoveNext     QAbstractItemView__CursorAction = 8
+	QAbstractItemView__MovePrevious QAbstractItemView__CursorAction = 9
+)
+
+type QAbstractItemView__State int
+
+const (
+	QAbstractItemView__NoState            QAbstractItemView__State = 0
+	QAbstractItemView__DraggingState      QAbstractItemView__State = 1
+	QAbstractItemView__DragSelectingState QAbstractItemView__State = 2
+	QAbstractItemView__EditingState       QAbstractItemView__State = 3
+	QAbstractItemView__ExpandingState     QAbstractItemView__State = 4
+	QAbstractItemView__CollapsingState    QAbstractItemView__State = 5
+	QAbstractItemView__AnimatingState     QAbstractItemView__State = 6
+)
+
+type QAbstractItemView__DropIndicatorPosition int
+
+const (
+	QAbstractItemView__OnItem     QAbstractItemView__DropIndicatorPosition = 0
+	QAbstractItemView__AboveItem  QAbstractItemView__DropIndicatorPosition = 1
+	QAbstractItemView__BelowItem  QAbstractItemView__DropIndicatorPosition = 2
+	QAbstractItemView__OnViewport QAbstractItemView__DropIndicatorPosition = 3
+)
+
 type QAbstractItemView struct {
-	h *C.QAbstractItemView
+	h          *C.QAbstractItemView
+	isSubclass bool
 	*QAbstractScrollArea
 }
 
@@ -89,15 +126,23 @@ func (this *QAbstractItemView) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAbstractItemView(h *C.QAbstractItemView) *QAbstractItemView {
+// newQAbstractItemView constructs the type using only CGO pointers.
+func newQAbstractItemView(h *C.QAbstractItemView, h_QAbstractScrollArea *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QAbstractItemView {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractItemView{h: h, QAbstractScrollArea: UnsafeNewQAbstractScrollArea(unsafe.Pointer(h))}
+	return &QAbstractItemView{h: h,
+		QAbstractScrollArea: newQAbstractScrollArea(h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
-func UnsafeNewQAbstractItemView(h unsafe.Pointer) *QAbstractItemView {
-	return newQAbstractItemView((*C.QAbstractItemView)(h))
+// UnsafeNewQAbstractItemView constructs the type using only unsafe pointers.
+func UnsafeNewQAbstractItemView(h unsafe.Pointer, h_QAbstractScrollArea unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QAbstractItemView {
+	if h == nil {
+		return nil
+	}
+
+	return &QAbstractItemView{h: (*C.QAbstractItemView)(h),
+		QAbstractScrollArea: UnsafeNewQAbstractScrollArea(h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
 func (this *QAbstractItemView) MetaObject() *QMetaObject {
@@ -124,7 +169,7 @@ func (this *QAbstractItemView) SetModel(model *QAbstractItemModel) {
 }
 
 func (this *QAbstractItemView) Model() *QAbstractItemModel {
-	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QAbstractItemView_Model(this.h)))
+	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QAbstractItemView_Model(this.h)), nil)
 }
 
 func (this *QAbstractItemView) SetSelectionModel(selectionModel *QItemSelectionModel) {
@@ -132,7 +177,7 @@ func (this *QAbstractItemView) SetSelectionModel(selectionModel *QItemSelectionM
 }
 
 func (this *QAbstractItemView) SelectionModel() *QItemSelectionModel {
-	return UnsafeNewQItemSelectionModel(unsafe.Pointer(C.QAbstractItemView_SelectionModel(this.h)))
+	return UnsafeNewQItemSelectionModel(unsafe.Pointer(C.QAbstractItemView_SelectionModel(this.h)), nil)
 }
 
 func (this *QAbstractItemView) SetItemDelegate(delegate *QAbstractItemDelegate) {
@@ -140,7 +185,7 @@ func (this *QAbstractItemView) SetItemDelegate(delegate *QAbstractItemDelegate) 
 }
 
 func (this *QAbstractItemView) ItemDelegate() *QAbstractItemDelegate {
-	return UnsafeNewQAbstractItemDelegate(unsafe.Pointer(C.QAbstractItemView_ItemDelegate(this.h)))
+	return UnsafeNewQAbstractItemDelegate(unsafe.Pointer(C.QAbstractItemView_ItemDelegate(this.h)), nil)
 }
 
 func (this *QAbstractItemView) SetSelectionMode(mode QAbstractItemView__SelectionMode) {
@@ -311,8 +356,8 @@ func (this *QAbstractItemView) VisualRect(index *QModelIndex) *QRect {
 	return _goptr
 }
 
-func (this *QAbstractItemView) ScrollTo(index *QModelIndex) {
-	C.QAbstractItemView_ScrollTo(this.h, index.cPointer())
+func (this *QAbstractItemView) ScrollTo(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
+	C.QAbstractItemView_ScrollTo(this.h, index.cPointer(), (C.int)(hint))
 }
 
 func (this *QAbstractItemView) IndexAt(point *QPoint) *QModelIndex {
@@ -354,7 +399,7 @@ func (this *QAbstractItemView) SetIndexWidget(index *QModelIndex, widget *QWidge
 }
 
 func (this *QAbstractItemView) IndexWidget(index *QModelIndex) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QAbstractItemView_IndexWidget(this.h, index.cPointer())))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QAbstractItemView_IndexWidget(this.h, index.cPointer())), nil, nil)
 }
 
 func (this *QAbstractItemView) SetItemDelegateForRow(row int, delegate *QAbstractItemDelegate) {
@@ -362,7 +407,7 @@ func (this *QAbstractItemView) SetItemDelegateForRow(row int, delegate *QAbstrac
 }
 
 func (this *QAbstractItemView) ItemDelegateForRow(row int) *QAbstractItemDelegate {
-	return UnsafeNewQAbstractItemDelegate(unsafe.Pointer(C.QAbstractItemView_ItemDelegateForRow(this.h, (C.int)(row))))
+	return UnsafeNewQAbstractItemDelegate(unsafe.Pointer(C.QAbstractItemView_ItemDelegateForRow(this.h, (C.int)(row))), nil)
 }
 
 func (this *QAbstractItemView) SetItemDelegateForColumn(column int, delegate *QAbstractItemDelegate) {
@@ -370,15 +415,15 @@ func (this *QAbstractItemView) SetItemDelegateForColumn(column int, delegate *QA
 }
 
 func (this *QAbstractItemView) ItemDelegateForColumn(column int) *QAbstractItemDelegate {
-	return UnsafeNewQAbstractItemDelegate(unsafe.Pointer(C.QAbstractItemView_ItemDelegateForColumn(this.h, (C.int)(column))))
+	return UnsafeNewQAbstractItemDelegate(unsafe.Pointer(C.QAbstractItemView_ItemDelegateForColumn(this.h, (C.int)(column))), nil)
 }
 
 func (this *QAbstractItemView) ItemDelegateWithIndex(index *QModelIndex) *QAbstractItemDelegate {
-	return UnsafeNewQAbstractItemDelegate(unsafe.Pointer(C.QAbstractItemView_ItemDelegateWithIndex(this.h, index.cPointer())))
+	return UnsafeNewQAbstractItemDelegate(unsafe.Pointer(C.QAbstractItemView_ItemDelegateWithIndex(this.h, index.cPointer())), nil)
 }
 
 func (this *QAbstractItemView) ItemDelegateForIndex(index *QModelIndex) *QAbstractItemDelegate {
-	return UnsafeNewQAbstractItemDelegate(unsafe.Pointer(C.QAbstractItemView_ItemDelegateForIndex(this.h, index.cPointer())))
+	return UnsafeNewQAbstractItemDelegate(unsafe.Pointer(C.QAbstractItemView_ItemDelegateForIndex(this.h, index.cPointer())), nil)
 }
 
 func (this *QAbstractItemView) InputMethodQuery(query InputMethodQuery) *QVariant {
@@ -587,13 +632,9 @@ func QAbstractItemView_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QAbstractItemView) ScrollTo2(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
-	C.QAbstractItemView_ScrollTo2(this.h, index.cPointer(), (C.int)(hint))
-}
-
 // Delete this object from C++ memory.
 func (this *QAbstractItemView) Delete() {
-	C.QAbstractItemView_Delete(this.h)
+	C.QAbstractItemView_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

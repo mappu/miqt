@@ -19,24 +19,29 @@
 #include "gen_qtextcursor.h"
 #include "_cgo_export.h"
 
-QTextCursor* QTextCursor_new() {
-	return new QTextCursor();
+void QTextCursor_new(QTextCursor** outptr_QTextCursor) {
+	QTextCursor* ret = new QTextCursor();
+	*outptr_QTextCursor = ret;
 }
 
-QTextCursor* QTextCursor_new2(QTextDocument* document) {
-	return new QTextCursor(document);
+void QTextCursor_new2(QTextDocument* document, QTextCursor** outptr_QTextCursor) {
+	QTextCursor* ret = new QTextCursor(document);
+	*outptr_QTextCursor = ret;
 }
 
-QTextCursor* QTextCursor_new3(QTextFrame* frame) {
-	return new QTextCursor(frame);
+void QTextCursor_new3(QTextFrame* frame, QTextCursor** outptr_QTextCursor) {
+	QTextCursor* ret = new QTextCursor(frame);
+	*outptr_QTextCursor = ret;
 }
 
-QTextCursor* QTextCursor_new4(QTextBlock* block) {
-	return new QTextCursor(*block);
+void QTextCursor_new4(QTextBlock* block, QTextCursor** outptr_QTextCursor) {
+	QTextCursor* ret = new QTextCursor(*block);
+	*outptr_QTextCursor = ret;
 }
 
-QTextCursor* QTextCursor_new5(QTextCursor* cursor) {
-	return new QTextCursor(*cursor);
+void QTextCursor_new5(QTextCursor* cursor, QTextCursor** outptr_QTextCursor) {
+	QTextCursor* ret = new QTextCursor(*cursor);
+	*outptr_QTextCursor = ret;
 }
 
 void QTextCursor_OperatorAssign(QTextCursor* self, QTextCursor* other) {
@@ -373,7 +378,11 @@ void QTextCursor_InsertImage2(QTextCursor* self, QImage* image, struct miqt_stri
 	self->insertImage(*image, name_QString);
 }
 
-void QTextCursor_Delete(QTextCursor* self) {
-	delete self;
+void QTextCursor_Delete(QTextCursor* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QTextCursor*>( self );
+	} else {
+		delete self;
+	}
 }
 

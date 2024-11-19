@@ -7,12 +7,54 @@
 #include "gen_qscilexerfortran.h"
 #include "_cgo_export.h"
 
-QsciLexerFortran* QsciLexerFortran_new() {
-	return new QsciLexerFortran();
+class MiqtVirtualQsciLexerFortran : public virtual QsciLexerFortran {
+public:
+
+	MiqtVirtualQsciLexerFortran(): QsciLexerFortran() {};
+	MiqtVirtualQsciLexerFortran(QObject* parent): QsciLexerFortran(parent) {};
+
+	virtual ~MiqtVirtualQsciLexerFortran() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetFoldCompact = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setFoldCompact(bool fold) override {
+		if (handle__SetFoldCompact == 0) {
+			QsciLexerFortran::setFoldCompact(fold);
+			return;
+		}
+		
+		bool sigval1 = fold;
+
+		miqt_exec_callback_QsciLexerFortran_SetFoldCompact(this, handle__SetFoldCompact, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetFoldCompact(bool fold) {
+
+		QsciLexerFortran::setFoldCompact(fold);
+
+	}
+
+};
+
+void QsciLexerFortran_new(QsciLexerFortran** outptr_QsciLexerFortran, QsciLexerFortran77** outptr_QsciLexerFortran77, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
+	MiqtVirtualQsciLexerFortran* ret = new MiqtVirtualQsciLexerFortran();
+	*outptr_QsciLexerFortran = ret;
+	*outptr_QsciLexerFortran77 = static_cast<QsciLexerFortran77*>(ret);
+	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QsciLexerFortran* QsciLexerFortran_new2(QObject* parent) {
-	return new QsciLexerFortran(parent);
+void QsciLexerFortran_new2(QObject* parent, QsciLexerFortran** outptr_QsciLexerFortran, QsciLexerFortran77** outptr_QsciLexerFortran77, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
+	MiqtVirtualQsciLexerFortran* ret = new MiqtVirtualQsciLexerFortran(parent);
+	*outptr_QsciLexerFortran = ret;
+	*outptr_QsciLexerFortran77 = static_cast<QsciLexerFortran77*>(ret);
+	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QsciLexerFortran_MetaObject(const QsciLexerFortran* self) {
@@ -101,7 +143,19 @@ struct miqt_string QsciLexerFortran_TrUtf83(const char* s, const char* c, int n)
 	return _ms;
 }
 
-void QsciLexerFortran_Delete(QsciLexerFortran* self) {
-	delete self;
+void QsciLexerFortran_override_virtual_SetFoldCompact(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQsciLexerFortran*>( (QsciLexerFortran*)(self) )->handle__SetFoldCompact = slot;
+}
+
+void QsciLexerFortran_virtualbase_SetFoldCompact(void* self, bool fold) {
+	( (MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_SetFoldCompact(fold);
+}
+
+void QsciLexerFortran_Delete(QsciLexerFortran* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQsciLexerFortran*>( self );
+	} else {
+		delete self;
+	}
 }
 

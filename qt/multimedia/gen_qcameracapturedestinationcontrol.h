@@ -16,10 +16,14 @@ extern "C" {
 
 #ifdef __cplusplus
 class QCameraCaptureDestinationControl;
+class QMediaControl;
 class QMetaObject;
+class QObject;
 #else
 typedef struct QCameraCaptureDestinationControl QCameraCaptureDestinationControl;
+typedef struct QMediaControl QMediaControl;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 #endif
 
 QMetaObject* QCameraCaptureDestinationControl_MetaObject(const QCameraCaptureDestinationControl* self);
@@ -35,7 +39,7 @@ struct miqt_string QCameraCaptureDestinationControl_Tr2(const char* s, const cha
 struct miqt_string QCameraCaptureDestinationControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QCameraCaptureDestinationControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QCameraCaptureDestinationControl_TrUtf83(const char* s, const char* c, int n);
-void QCameraCaptureDestinationControl_Delete(QCameraCaptureDestinationControl* self);
+void QCameraCaptureDestinationControl_Delete(QCameraCaptureDestinationControl* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

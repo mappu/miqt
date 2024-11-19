@@ -14,7 +14,8 @@ import (
 )
 
 type QFontInfo struct {
-	h *C.QFontInfo
+	h          *C.QFontInfo
+	isSubclass bool
 }
 
 func (this *QFontInfo) cPointer() *C.QFontInfo {
@@ -31,6 +32,7 @@ func (this *QFontInfo) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQFontInfo constructs the type using only CGO pointers.
 func newQFontInfo(h *C.QFontInfo) *QFontInfo {
 	if h == nil {
 		return nil
@@ -38,20 +40,33 @@ func newQFontInfo(h *C.QFontInfo) *QFontInfo {
 	return &QFontInfo{h: h}
 }
 
+// UnsafeNewQFontInfo constructs the type using only unsafe pointers.
 func UnsafeNewQFontInfo(h unsafe.Pointer) *QFontInfo {
-	return newQFontInfo((*C.QFontInfo)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QFontInfo{h: (*C.QFontInfo)(h)}
 }
 
 // NewQFontInfo constructs a new QFontInfo object.
 func NewQFontInfo(param1 *QFont) *QFontInfo {
-	ret := C.QFontInfo_new(param1.cPointer())
-	return newQFontInfo(ret)
+	var outptr_QFontInfo *C.QFontInfo = nil
+
+	C.QFontInfo_new(param1.cPointer(), &outptr_QFontInfo)
+	ret := newQFontInfo(outptr_QFontInfo)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFontInfo2 constructs a new QFontInfo object.
 func NewQFontInfo2(param1 *QFontInfo) *QFontInfo {
-	ret := C.QFontInfo_new2(param1.cPointer())
-	return newQFontInfo(ret)
+	var outptr_QFontInfo *C.QFontInfo = nil
+
+	C.QFontInfo_new2(param1.cPointer(), &outptr_QFontInfo)
+	ret := newQFontInfo(outptr_QFontInfo)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QFontInfo) OperatorAssign(param1 *QFontInfo) {
@@ -134,7 +149,7 @@ func (this *QFontInfo) ExactMatch() bool {
 
 // Delete this object from C++ memory.
 func (this *QFontInfo) Delete() {
-	C.QFontInfo_Delete(this.h)
+	C.QFontInfo_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

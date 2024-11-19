@@ -1,6 +1,8 @@
 #include <QDateTime>
 #include <QFileDevice>
+#include <QIODevice>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -171,7 +173,11 @@ unsigned char* QFileDevice_Map3(QFileDevice* self, long long offset, long long s
 	return static_cast<unsigned char*>(_ret);
 }
 
-void QFileDevice_Delete(QFileDevice* self) {
-	delete self;
+void QFileDevice_Delete(QFileDevice* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QFileDevice*>( self );
+	} else {
+		delete self;
+	}
 }
 

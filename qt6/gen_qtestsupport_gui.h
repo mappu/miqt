@@ -32,12 +32,11 @@ QTest__QTouchEventSequence* QTest__QTouchEventSequence_Press(QTest__QTouchEventS
 QTest__QTouchEventSequence* QTest__QTouchEventSequence_Move(QTest__QTouchEventSequence* self, int touchId, QPoint* pt);
 QTest__QTouchEventSequence* QTest__QTouchEventSequence_Release(QTest__QTouchEventSequence* self, int touchId, QPoint* pt);
 QTest__QTouchEventSequence* QTest__QTouchEventSequence_Stationary(QTest__QTouchEventSequence* self, int touchId);
-bool QTest__QTouchEventSequence_Commit(QTest__QTouchEventSequence* self);
+bool QTest__QTouchEventSequence_Commit(QTest__QTouchEventSequence* self, bool processEvents);
 QTest__QTouchEventSequence* QTest__QTouchEventSequence_Press3(QTest__QTouchEventSequence* self, int touchId, QPoint* pt, QWindow* window);
 QTest__QTouchEventSequence* QTest__QTouchEventSequence_Move3(QTest__QTouchEventSequence* self, int touchId, QPoint* pt, QWindow* window);
 QTest__QTouchEventSequence* QTest__QTouchEventSequence_Release3(QTest__QTouchEventSequence* self, int touchId, QPoint* pt, QWindow* window);
-bool QTest__QTouchEventSequence_Commit1(QTest__QTouchEventSequence* self, bool processEvents);
-void QTest__QTouchEventSequence_Delete(QTest__QTouchEventSequence* self);
+void QTest__QTouchEventSequence_Delete(QTest__QTouchEventSequence* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

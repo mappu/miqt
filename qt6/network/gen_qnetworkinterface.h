@@ -26,8 +26,8 @@ typedef struct QNetworkAddressEntry QNetworkAddressEntry;
 typedef struct QNetworkInterface QNetworkInterface;
 #endif
 
-QNetworkAddressEntry* QNetworkAddressEntry_new();
-QNetworkAddressEntry* QNetworkAddressEntry_new2(QNetworkAddressEntry* other);
+void QNetworkAddressEntry_new(QNetworkAddressEntry** outptr_QNetworkAddressEntry);
+void QNetworkAddressEntry_new2(QNetworkAddressEntry* other, QNetworkAddressEntry** outptr_QNetworkAddressEntry);
 void QNetworkAddressEntry_OperatorAssign(QNetworkAddressEntry* self, QNetworkAddressEntry* other);
 void QNetworkAddressEntry_Swap(QNetworkAddressEntry* self, QNetworkAddressEntry* other);
 bool QNetworkAddressEntry_OperatorEqual(const QNetworkAddressEntry* self, QNetworkAddressEntry* other);
@@ -49,10 +49,10 @@ void QNetworkAddressEntry_SetAddressLifetime(QNetworkAddressEntry* self, QDeadli
 void QNetworkAddressEntry_ClearAddressLifetime(QNetworkAddressEntry* self);
 bool QNetworkAddressEntry_IsPermanent(const QNetworkAddressEntry* self);
 bool QNetworkAddressEntry_IsTemporary(const QNetworkAddressEntry* self);
-void QNetworkAddressEntry_Delete(QNetworkAddressEntry* self);
+void QNetworkAddressEntry_Delete(QNetworkAddressEntry* self, bool isSubclass);
 
-QNetworkInterface* QNetworkInterface_new();
-QNetworkInterface* QNetworkInterface_new2(QNetworkInterface* other);
+void QNetworkInterface_new(QNetworkInterface** outptr_QNetworkInterface);
+void QNetworkInterface_new2(QNetworkInterface* other, QNetworkInterface** outptr_QNetworkInterface);
 void QNetworkInterface_OperatorAssign(QNetworkInterface* self, QNetworkInterface* other);
 void QNetworkInterface_Swap(QNetworkInterface* self, QNetworkInterface* other);
 bool QNetworkInterface_IsValid(const QNetworkInterface* self);
@@ -70,7 +70,7 @@ QNetworkInterface* QNetworkInterface_InterfaceFromIndex(int index);
 struct miqt_string QNetworkInterface_InterfaceNameFromIndex(int index);
 struct miqt_array /* of QNetworkInterface* */  QNetworkInterface_AllInterfaces();
 struct miqt_array /* of QHostAddress* */  QNetworkInterface_AllAddresses();
-void QNetworkInterface_Delete(QNetworkInterface* self);
+void QNetworkInterface_Delete(QNetworkInterface* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

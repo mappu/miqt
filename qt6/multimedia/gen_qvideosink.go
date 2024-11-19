@@ -16,7 +16,8 @@ import (
 )
 
 type QVideoSink struct {
-	h *C.QVideoSink
+	h          *C.QVideoSink
+	isSubclass bool
 	*qt6.QObject
 }
 
@@ -34,27 +35,45 @@ func (this *QVideoSink) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQVideoSink(h *C.QVideoSink) *QVideoSink {
+// newQVideoSink constructs the type using only CGO pointers.
+func newQVideoSink(h *C.QVideoSink, h_QObject *C.QObject) *QVideoSink {
 	if h == nil {
 		return nil
 	}
-	return &QVideoSink{h: h, QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QVideoSink{h: h,
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
 }
 
-func UnsafeNewQVideoSink(h unsafe.Pointer) *QVideoSink {
-	return newQVideoSink((*C.QVideoSink)(h))
+// UnsafeNewQVideoSink constructs the type using only unsafe pointers.
+func UnsafeNewQVideoSink(h unsafe.Pointer, h_QObject unsafe.Pointer) *QVideoSink {
+	if h == nil {
+		return nil
+	}
+
+	return &QVideoSink{h: (*C.QVideoSink)(h),
+		QObject: qt6.UnsafeNewQObject(h_QObject)}
 }
 
 // NewQVideoSink constructs a new QVideoSink object.
 func NewQVideoSink() *QVideoSink {
-	ret := C.QVideoSink_new()
-	return newQVideoSink(ret)
+	var outptr_QVideoSink *C.QVideoSink = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QVideoSink_new(&outptr_QVideoSink, &outptr_QObject)
+	ret := newQVideoSink(outptr_QVideoSink, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVideoSink2 constructs a new QVideoSink object.
 func NewQVideoSink2(parent *qt6.QObject) *QVideoSink {
-	ret := C.QVideoSink_new2((*C.QObject)(parent.UnsafePointer()))
-	return newQVideoSink(ret)
+	var outptr_QVideoSink *C.QVideoSink = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QVideoSink_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QVideoSink, &outptr_QObject)
+	ret := newQVideoSink(outptr_QVideoSink, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QVideoSink) MetaObject() *qt6.QMetaObject {
@@ -195,9 +214,175 @@ func QVideoSink_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QVideoSink) callVirtualBase_Event(event *qt6.QEvent) bool {
+
+	return (bool)(C.QVideoSink_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QVideoSink) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+	C.QVideoSink_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QVideoSink_Event
+func miqt_exec_callback_QVideoSink_Event(self *C.QVideoSink, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QVideoSink{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QVideoSink) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+
+	return (bool)(C.QVideoSink_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QVideoSink) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	C.QVideoSink_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QVideoSink_EventFilter
+func miqt_exec_callback_QVideoSink_EventFilter(self *C.QVideoSink, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QVideoSink{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QVideoSink) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+
+	C.QVideoSink_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+
+}
+func (this *QVideoSink) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	C.QVideoSink_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QVideoSink_TimerEvent
+func miqt_exec_callback_QVideoSink_TimerEvent(self *C.QVideoSink, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QVideoSink{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QVideoSink) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+
+	C.QVideoSink_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+
+}
+func (this *QVideoSink) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	C.QVideoSink_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QVideoSink_ChildEvent
+func miqt_exec_callback_QVideoSink_ChildEvent(self *C.QVideoSink, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QVideoSink{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QVideoSink) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+
+	C.QVideoSink_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+
+}
+func (this *QVideoSink) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	C.QVideoSink_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QVideoSink_CustomEvent
+func miqt_exec_callback_QVideoSink_CustomEvent(self *C.QVideoSink, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent), event *qt6.QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QVideoSink{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QVideoSink) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+
+	C.QVideoSink_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QVideoSink) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	C.QVideoSink_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QVideoSink_ConnectNotify
+func miqt_exec_callback_QVideoSink_ConnectNotify(self *C.QVideoSink, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QVideoSink{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QVideoSink) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+
+	C.QVideoSink_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QVideoSink) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	C.QVideoSink_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QVideoSink_DisconnectNotify
+func miqt_exec_callback_QVideoSink_DisconnectNotify(self *C.QVideoSink, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QVideoSink{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QVideoSink) Delete() {
-	C.QVideoSink_Delete(this.h)
+	C.QVideoSink_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

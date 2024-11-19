@@ -1,28 +1,223 @@
 #include <QAudioDevice>
 #include <QAudioEngine>
+#include <QChildEvent>
+#include <QEvent>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QTimerEvent>
 #include <qaudioengine.h>
 #include "gen_qaudioengine.h"
 #include "_cgo_export.h"
 
-QAudioEngine* QAudioEngine_new() {
-	return new QAudioEngine();
+class MiqtVirtualQAudioEngine : public virtual QAudioEngine {
+public:
+
+	MiqtVirtualQAudioEngine(): QAudioEngine() {};
+	MiqtVirtualQAudioEngine(QObject* parent): QAudioEngine(parent) {};
+	MiqtVirtualQAudioEngine(int sampleRate): QAudioEngine(sampleRate) {};
+	MiqtVirtualQAudioEngine(int sampleRate, QObject* parent): QAudioEngine(sampleRate, parent) {};
+
+	virtual ~MiqtVirtualQAudioEngine() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QAudioEngine::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QAudioEngine_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QAudioEngine::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QAudioEngine::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QAudioEngine_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QAudioEngine::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QAudioEngine::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QAudioEngine_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QAudioEngine::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QAudioEngine::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QAudioEngine_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QAudioEngine::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QAudioEngine::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QAudioEngine_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QAudioEngine::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QAudioEngine::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QAudioEngine_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QAudioEngine::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QAudioEngine::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QAudioEngine_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QAudioEngine::disconnectNotify(*signal);
+
+	}
+
+};
+
+void QAudioEngine_new(QAudioEngine** outptr_QAudioEngine, QObject** outptr_QObject) {
+	MiqtVirtualQAudioEngine* ret = new MiqtVirtualQAudioEngine();
+	*outptr_QAudioEngine = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QAudioEngine* QAudioEngine_new2(QObject* parent) {
-	return new QAudioEngine(parent);
+void QAudioEngine_new2(QObject* parent, QAudioEngine** outptr_QAudioEngine, QObject** outptr_QObject) {
+	MiqtVirtualQAudioEngine* ret = new MiqtVirtualQAudioEngine(parent);
+	*outptr_QAudioEngine = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QAudioEngine* QAudioEngine_new3(int sampleRate) {
-	return new QAudioEngine(static_cast<int>(sampleRate));
+void QAudioEngine_new3(int sampleRate, QAudioEngine** outptr_QAudioEngine, QObject** outptr_QObject) {
+	MiqtVirtualQAudioEngine* ret = new MiqtVirtualQAudioEngine(static_cast<int>(sampleRate));
+	*outptr_QAudioEngine = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QAudioEngine* QAudioEngine_new4(int sampleRate, QObject* parent) {
-	return new QAudioEngine(static_cast<int>(sampleRate), parent);
+void QAudioEngine_new4(int sampleRate, QObject* parent, QAudioEngine** outptr_QAudioEngine, QObject** outptr_QObject) {
+	MiqtVirtualQAudioEngine* ret = new MiqtVirtualQAudioEngine(static_cast<int>(sampleRate), parent);
+	*outptr_QAudioEngine = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QAudioEngine_MetaObject(const QAudioEngine* self) {
@@ -102,7 +297,7 @@ void QAudioEngine_OutputModeChanged(QAudioEngine* self) {
 }
 
 void QAudioEngine_connect_OutputModeChanged(QAudioEngine* self, intptr_t slot) {
-	QAudioEngine::connect(self, static_cast<void (QAudioEngine::*)()>(&QAudioEngine::outputModeChanged), self, [=]() {
+	MiqtVirtualQAudioEngine::connect(self, static_cast<void (QAudioEngine::*)()>(&QAudioEngine::outputModeChanged), self, [=]() {
 		miqt_exec_callback_QAudioEngine_OutputModeChanged(slot);
 	});
 }
@@ -112,7 +307,7 @@ void QAudioEngine_OutputDeviceChanged(QAudioEngine* self) {
 }
 
 void QAudioEngine_connect_OutputDeviceChanged(QAudioEngine* self, intptr_t slot) {
-	QAudioEngine::connect(self, static_cast<void (QAudioEngine::*)()>(&QAudioEngine::outputDeviceChanged), self, [=]() {
+	MiqtVirtualQAudioEngine::connect(self, static_cast<void (QAudioEngine::*)()>(&QAudioEngine::outputDeviceChanged), self, [=]() {
 		miqt_exec_callback_QAudioEngine_OutputDeviceChanged(slot);
 	});
 }
@@ -122,7 +317,7 @@ void QAudioEngine_MasterVolumeChanged(QAudioEngine* self) {
 }
 
 void QAudioEngine_connect_MasterVolumeChanged(QAudioEngine* self, intptr_t slot) {
-	QAudioEngine::connect(self, static_cast<void (QAudioEngine::*)()>(&QAudioEngine::masterVolumeChanged), self, [=]() {
+	MiqtVirtualQAudioEngine::connect(self, static_cast<void (QAudioEngine::*)()>(&QAudioEngine::masterVolumeChanged), self, [=]() {
 		miqt_exec_callback_QAudioEngine_MasterVolumeChanged(slot);
 	});
 }
@@ -132,7 +327,7 @@ void QAudioEngine_PausedChanged(QAudioEngine* self) {
 }
 
 void QAudioEngine_connect_PausedChanged(QAudioEngine* self, intptr_t slot) {
-	QAudioEngine::connect(self, static_cast<void (QAudioEngine::*)()>(&QAudioEngine::pausedChanged), self, [=]() {
+	MiqtVirtualQAudioEngine::connect(self, static_cast<void (QAudioEngine::*)()>(&QAudioEngine::pausedChanged), self, [=]() {
 		miqt_exec_callback_QAudioEngine_PausedChanged(slot);
 	});
 }
@@ -142,7 +337,7 @@ void QAudioEngine_DistanceScaleChanged(QAudioEngine* self) {
 }
 
 void QAudioEngine_connect_DistanceScaleChanged(QAudioEngine* self, intptr_t slot) {
-	QAudioEngine::connect(self, static_cast<void (QAudioEngine::*)()>(&QAudioEngine::distanceScaleChanged), self, [=]() {
+	MiqtVirtualQAudioEngine::connect(self, static_cast<void (QAudioEngine::*)()>(&QAudioEngine::distanceScaleChanged), self, [=]() {
 		miqt_exec_callback_QAudioEngine_DistanceScaleChanged(slot);
 	});
 }
@@ -185,7 +380,67 @@ struct miqt_string QAudioEngine_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QAudioEngine_Delete(QAudioEngine* self) {
-	delete self;
+void QAudioEngine_override_virtual_Event(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAudioEngine*>( (QAudioEngine*)(self) )->handle__Event = slot;
+}
+
+bool QAudioEngine_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQAudioEngine*)(self) )->virtualbase_Event(event);
+}
+
+void QAudioEngine_override_virtual_EventFilter(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAudioEngine*>( (QAudioEngine*)(self) )->handle__EventFilter = slot;
+}
+
+bool QAudioEngine_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQAudioEngine*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+void QAudioEngine_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAudioEngine*>( (QAudioEngine*)(self) )->handle__TimerEvent = slot;
+}
+
+void QAudioEngine_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQAudioEngine*)(self) )->virtualbase_TimerEvent(event);
+}
+
+void QAudioEngine_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAudioEngine*>( (QAudioEngine*)(self) )->handle__ChildEvent = slot;
+}
+
+void QAudioEngine_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQAudioEngine*)(self) )->virtualbase_ChildEvent(event);
+}
+
+void QAudioEngine_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAudioEngine*>( (QAudioEngine*)(self) )->handle__CustomEvent = slot;
+}
+
+void QAudioEngine_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQAudioEngine*)(self) )->virtualbase_CustomEvent(event);
+}
+
+void QAudioEngine_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAudioEngine*>( (QAudioEngine*)(self) )->handle__ConnectNotify = slot;
+}
+
+void QAudioEngine_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQAudioEngine*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+void QAudioEngine_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAudioEngine*>( (QAudioEngine*)(self) )->handle__DisconnectNotify = slot;
+}
+
+void QAudioEngine_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQAudioEngine*)(self) )->virtualbase_DisconnectNotify(signal);
+}
+
+void QAudioEngine_Delete(QAudioEngine* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQAudioEngine*>( self );
+	} else {
+		delete self;
+	}
 }
 

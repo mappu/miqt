@@ -17,12 +17,14 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractVideoSurface;
 class QMetaObject;
+class QObject;
 class QSize;
 class QVideoFrame;
 class QVideoSurfaceFormat;
 #else
 typedef struct QAbstractVideoSurface QAbstractVideoSurface;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 typedef struct QSize QSize;
 typedef struct QVideoFrame QVideoFrame;
 typedef struct QVideoSurfaceFormat QVideoSurfaceFormat;
@@ -32,7 +34,7 @@ QMetaObject* QAbstractVideoSurface_MetaObject(const QAbstractVideoSurface* self)
 void* QAbstractVideoSurface_Metacast(QAbstractVideoSurface* self, const char* param1);
 struct miqt_string QAbstractVideoSurface_Tr(const char* s);
 struct miqt_string QAbstractVideoSurface_TrUtf8(const char* s);
-struct miqt_array /* of int */  QAbstractVideoSurface_SupportedPixelFormats(const QAbstractVideoSurface* self);
+struct miqt_array /* of int */  QAbstractVideoSurface_SupportedPixelFormats(const QAbstractVideoSurface* self, int typeVal);
 bool QAbstractVideoSurface_IsFormatSupported(const QAbstractVideoSurface* self, QVideoSurfaceFormat* format);
 QVideoSurfaceFormat* QAbstractVideoSurface_NearestFormat(const QAbstractVideoSurface* self, QVideoSurfaceFormat* format);
 QVideoSurfaceFormat* QAbstractVideoSurface_SurfaceFormat(const QAbstractVideoSurface* self);
@@ -54,8 +56,7 @@ struct miqt_string QAbstractVideoSurface_Tr2(const char* s, const char* c);
 struct miqt_string QAbstractVideoSurface_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAbstractVideoSurface_TrUtf82(const char* s, const char* c);
 struct miqt_string QAbstractVideoSurface_TrUtf83(const char* s, const char* c, int n);
-struct miqt_array /* of int */  QAbstractVideoSurface_SupportedPixelFormats1(const QAbstractVideoSurface* self, int typeVal);
-void QAbstractVideoSurface_Delete(QAbstractVideoSurface* self);
+void QAbstractVideoSurface_Delete(QAbstractVideoSurface* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

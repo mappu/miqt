@@ -26,10 +26,10 @@ typedef struct QByteArrayView QByteArrayView;
 typedef struct QUuid QUuid;
 #endif
 
-QUuid* QUuid_new();
-QUuid* QUuid_new2(unsigned int l, uint16_t w1, uint16_t w2, unsigned char b1, unsigned char b2, unsigned char b3, unsigned char b4, unsigned char b5, unsigned char b6, unsigned char b7, unsigned char b8);
-QUuid* QUuid_new3(QAnyStringView* stringVal);
-QUuid* QUuid_new4(QUuid* param1);
+void QUuid_new(QUuid** outptr_QUuid);
+void QUuid_new2(unsigned int l, uint16_t w1, uint16_t w2, unsigned char b1, unsigned char b2, unsigned char b3, unsigned char b4, unsigned char b5, unsigned char b6, unsigned char b7, unsigned char b8, QUuid** outptr_QUuid);
+void QUuid_new3(QAnyStringView* stringVal, QUuid** outptr_QUuid);
+void QUuid_new4(QUuid* param1, QUuid** outptr_QUuid);
 QUuid* QUuid_FromString(QAnyStringView* stringVal);
 struct miqt_string QUuid_ToString(const QUuid* self);
 struct miqt_string QUuid_ToByteArray(const QUuid* self);
@@ -49,7 +49,7 @@ int QUuid_Variant(const QUuid* self);
 int QUuid_Version(const QUuid* self);
 struct miqt_string QUuid_ToString1(const QUuid* self, int mode);
 struct miqt_string QUuid_ToByteArray1(const QUuid* self, int mode);
-void QUuid_Delete(QUuid* self);
+void QUuid_Delete(QUuid* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

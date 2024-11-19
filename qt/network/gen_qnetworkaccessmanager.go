@@ -36,7 +36,8 @@ const (
 )
 
 type QNetworkAccessManager struct {
-	h *C.QNetworkAccessManager
+	h          *C.QNetworkAccessManager
+	isSubclass bool
 	*qt.QObject
 }
 
@@ -54,27 +55,45 @@ func (this *QNetworkAccessManager) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQNetworkAccessManager(h *C.QNetworkAccessManager) *QNetworkAccessManager {
+// newQNetworkAccessManager constructs the type using only CGO pointers.
+func newQNetworkAccessManager(h *C.QNetworkAccessManager, h_QObject *C.QObject) *QNetworkAccessManager {
 	if h == nil {
 		return nil
 	}
-	return &QNetworkAccessManager{h: h, QObject: qt.UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QNetworkAccessManager{h: h,
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
 }
 
-func UnsafeNewQNetworkAccessManager(h unsafe.Pointer) *QNetworkAccessManager {
-	return newQNetworkAccessManager((*C.QNetworkAccessManager)(h))
+// UnsafeNewQNetworkAccessManager constructs the type using only unsafe pointers.
+func UnsafeNewQNetworkAccessManager(h unsafe.Pointer, h_QObject unsafe.Pointer) *QNetworkAccessManager {
+	if h == nil {
+		return nil
+	}
+
+	return &QNetworkAccessManager{h: (*C.QNetworkAccessManager)(h),
+		QObject: qt.UnsafeNewQObject(h_QObject)}
 }
 
 // NewQNetworkAccessManager constructs a new QNetworkAccessManager object.
 func NewQNetworkAccessManager() *QNetworkAccessManager {
-	ret := C.QNetworkAccessManager_new()
-	return newQNetworkAccessManager(ret)
+	var outptr_QNetworkAccessManager *C.QNetworkAccessManager = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QNetworkAccessManager_new(&outptr_QNetworkAccessManager, &outptr_QObject)
+	ret := newQNetworkAccessManager(outptr_QNetworkAccessManager, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQNetworkAccessManager2 constructs a new QNetworkAccessManager object.
 func NewQNetworkAccessManager2(parent *qt.QObject) *QNetworkAccessManager {
-	ret := C.QNetworkAccessManager_new2((*C.QObject)(parent.UnsafePointer()))
-	return newQNetworkAccessManager(ret)
+	var outptr_QNetworkAccessManager *C.QNetworkAccessManager = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QNetworkAccessManager_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QNetworkAccessManager, &outptr_QObject)
+	ret := newQNetworkAccessManager(outptr_QNetworkAccessManager, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QNetworkAccessManager) MetaObject() *qt.QMetaObject {
@@ -146,7 +165,7 @@ func (this *QNetworkAccessManager) SetProxyFactory(factory *QNetworkProxyFactory
 }
 
 func (this *QNetworkAccessManager) Cache() *QAbstractNetworkCache {
-	return UnsafeNewQAbstractNetworkCache(unsafe.Pointer(C.QNetworkAccessManager_Cache(this.h)))
+	return UnsafeNewQAbstractNetworkCache(unsafe.Pointer(C.QNetworkAccessManager_Cache(this.h)), nil)
 }
 
 func (this *QNetworkAccessManager) SetCache(cache *QAbstractNetworkCache) {
@@ -154,7 +173,7 @@ func (this *QNetworkAccessManager) SetCache(cache *QAbstractNetworkCache) {
 }
 
 func (this *QNetworkAccessManager) CookieJar() *QNetworkCookieJar {
-	return UnsafeNewQNetworkCookieJar(unsafe.Pointer(C.QNetworkAccessManager_CookieJar(this.h)))
+	return UnsafeNewQNetworkCookieJar(unsafe.Pointer(C.QNetworkAccessManager_CookieJar(this.h)), nil)
 }
 
 func (this *QNetworkAccessManager) SetCookieJar(cookieJar *QNetworkCookieJar) {
@@ -201,44 +220,44 @@ func (this *QNetworkAccessManager) StrictTransportSecurityHosts() []QHstsPolicy 
 }
 
 func (this *QNetworkAccessManager) Head(request *QNetworkRequest) *QNetworkReply {
-	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_Head(this.h, request.cPointer())))
+	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_Head(this.h, request.cPointer())), nil, nil)
 }
 
 func (this *QNetworkAccessManager) Get(request *QNetworkRequest) *QNetworkReply {
-	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_Get(this.h, request.cPointer())))
+	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_Get(this.h, request.cPointer())), nil, nil)
 }
 
 func (this *QNetworkAccessManager) Post(request *QNetworkRequest, data *qt.QIODevice) *QNetworkReply {
-	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_Post(this.h, request.cPointer(), (*C.QIODevice)(data.UnsafePointer()))))
+	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_Post(this.h, request.cPointer(), (*C.QIODevice)(data.UnsafePointer()))), nil, nil)
 }
 
 func (this *QNetworkAccessManager) Post2(request *QNetworkRequest, data []byte) *QNetworkReply {
 	data_alias := C.struct_miqt_string{}
 	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
 	data_alias.len = C.size_t(len(data))
-	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_Post2(this.h, request.cPointer(), data_alias)))
+	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_Post2(this.h, request.cPointer(), data_alias)), nil, nil)
 }
 
 func (this *QNetworkAccessManager) Put(request *QNetworkRequest, data *qt.QIODevice) *QNetworkReply {
-	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_Put(this.h, request.cPointer(), (*C.QIODevice)(data.UnsafePointer()))))
+	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_Put(this.h, request.cPointer(), (*C.QIODevice)(data.UnsafePointer()))), nil, nil)
 }
 
 func (this *QNetworkAccessManager) Put2(request *QNetworkRequest, data []byte) *QNetworkReply {
 	data_alias := C.struct_miqt_string{}
 	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
 	data_alias.len = C.size_t(len(data))
-	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_Put2(this.h, request.cPointer(), data_alias)))
+	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_Put2(this.h, request.cPointer(), data_alias)), nil, nil)
 }
 
 func (this *QNetworkAccessManager) DeleteResource(request *QNetworkRequest) *QNetworkReply {
-	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_DeleteResource(this.h, request.cPointer())))
+	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_DeleteResource(this.h, request.cPointer())), nil, nil)
 }
 
 func (this *QNetworkAccessManager) SendCustomRequest(request *QNetworkRequest, verb []byte) *QNetworkReply {
 	verb_alias := C.struct_miqt_string{}
 	verb_alias.data = (*C.char)(unsafe.Pointer(&verb[0]))
 	verb_alias.len = C.size_t(len(verb))
-	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_SendCustomRequest(this.h, request.cPointer(), verb_alias)))
+	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_SendCustomRequest(this.h, request.cPointer(), verb_alias)), nil, nil)
 }
 
 func (this *QNetworkAccessManager) SendCustomRequest2(request *QNetworkRequest, verb []byte, data []byte) *QNetworkReply {
@@ -248,22 +267,22 @@ func (this *QNetworkAccessManager) SendCustomRequest2(request *QNetworkRequest, 
 	data_alias := C.struct_miqt_string{}
 	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
 	data_alias.len = C.size_t(len(data))
-	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_SendCustomRequest2(this.h, request.cPointer(), verb_alias, data_alias)))
+	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_SendCustomRequest2(this.h, request.cPointer(), verb_alias, data_alias)), nil, nil)
 }
 
 func (this *QNetworkAccessManager) Post3(request *QNetworkRequest, multiPart *QHttpMultiPart) *QNetworkReply {
-	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_Post3(this.h, request.cPointer(), multiPart.cPointer())))
+	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_Post3(this.h, request.cPointer(), multiPart.cPointer())), nil, nil)
 }
 
 func (this *QNetworkAccessManager) Put3(request *QNetworkRequest, multiPart *QHttpMultiPart) *QNetworkReply {
-	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_Put3(this.h, request.cPointer(), multiPart.cPointer())))
+	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_Put3(this.h, request.cPointer(), multiPart.cPointer())), nil, nil)
 }
 
 func (this *QNetworkAccessManager) SendCustomRequest3(request *QNetworkRequest, verb []byte, multiPart *QHttpMultiPart) *QNetworkReply {
 	verb_alias := C.struct_miqt_string{}
 	verb_alias.data = (*C.char)(unsafe.Pointer(&verb[0]))
 	verb_alias.len = C.size_t(len(verb))
-	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_SendCustomRequest3(this.h, request.cPointer(), verb_alias, multiPart.cPointer())))
+	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_SendCustomRequest3(this.h, request.cPointer(), verb_alias, multiPart.cPointer())), nil, nil)
 }
 
 func (this *QNetworkAccessManager) SetConfiguration(config *QNetworkConfiguration) {
@@ -380,7 +399,7 @@ func miqt_exec_callback_QNetworkAccessManager_AuthenticationRequired(cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQNetworkReply(unsafe.Pointer(reply))
+	slotval1 := UnsafeNewQNetworkReply(unsafe.Pointer(reply), nil, nil)
 	slotval2 := UnsafeNewQAuthenticator(unsafe.Pointer(authenticator))
 
 	gofunc(slotval1, slotval2)
@@ -401,7 +420,7 @@ func miqt_exec_callback_QNetworkAccessManager_Finished(cb C.intptr_t, reply *C.Q
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQNetworkReply(unsafe.Pointer(reply))
+	slotval1 := UnsafeNewQNetworkReply(unsafe.Pointer(reply), nil, nil)
 
 	gofunc(slotval1)
 }
@@ -421,7 +440,7 @@ func miqt_exec_callback_QNetworkAccessManager_Encrypted(cb C.intptr_t, reply *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQNetworkReply(unsafe.Pointer(reply))
+	slotval1 := UnsafeNewQNetworkReply(unsafe.Pointer(reply), nil, nil)
 
 	gofunc(slotval1)
 }
@@ -447,7 +466,7 @@ func miqt_exec_callback_QNetworkAccessManager_SslErrors(cb C.intptr_t, reply *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQNetworkReply(unsafe.Pointer(reply))
+	slotval1 := UnsafeNewQNetworkReply(unsafe.Pointer(reply), nil, nil)
 	var errors_ma C.struct_miqt_array = errors
 	errors_ret := make([]QSslError, int(errors_ma.len))
 	errors_outCast := (*[0xffff]*C.QSslError)(unsafe.Pointer(errors_ma.data)) // hey ya
@@ -477,7 +496,7 @@ func miqt_exec_callback_QNetworkAccessManager_PreSharedKeyAuthenticationRequired
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQNetworkReply(unsafe.Pointer(reply))
+	slotval1 := UnsafeNewQNetworkReply(unsafe.Pointer(reply), nil, nil)
 	slotval2 := UnsafeNewQSslPreSharedKeyAuthenticator(unsafe.Pointer(authenticator))
 
 	gofunc(slotval1, slotval2)
@@ -576,7 +595,7 @@ func (this *QNetworkAccessManager) SendCustomRequest32(request *QNetworkRequest,
 	verb_alias := C.struct_miqt_string{}
 	verb_alias.data = (*C.char)(unsafe.Pointer(&verb[0]))
 	verb_alias.len = C.size_t(len(verb))
-	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_SendCustomRequest32(this.h, request.cPointer(), verb_alias, (*C.QIODevice)(data.UnsafePointer()))))
+	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_SendCustomRequest32(this.h, request.cPointer(), verb_alias, (*C.QIODevice)(data.UnsafePointer()))), nil, nil)
 }
 
 func (this *QNetworkAccessManager) ConnectToHostEncrypted22(hostName string, port uint16) {
@@ -607,9 +626,202 @@ func (this *QNetworkAccessManager) SetTransferTimeout1(timeout int) {
 	C.QNetworkAccessManager_SetTransferTimeout1(this.h, (C.int)(timeout))
 }
 
+func (this *QNetworkAccessManager) callVirtualBase_CreateRequest(op QNetworkAccessManager__Operation, request *QNetworkRequest, outgoingData *qt.QIODevice) *QNetworkReply {
+
+	return UnsafeNewQNetworkReply(unsafe.Pointer(C.QNetworkAccessManager_virtualbase_CreateRequest(unsafe.Pointer(this.h), (C.int)(op), request.cPointer(), (*C.QIODevice)(outgoingData.UnsafePointer()))), nil, nil)
+}
+func (this *QNetworkAccessManager) OnCreateRequest(slot func(super func(op QNetworkAccessManager__Operation, request *QNetworkRequest, outgoingData *qt.QIODevice) *QNetworkReply, op QNetworkAccessManager__Operation, request *QNetworkRequest, outgoingData *qt.QIODevice) *QNetworkReply) {
+	C.QNetworkAccessManager_override_virtual_CreateRequest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkAccessManager_CreateRequest
+func miqt_exec_callback_QNetworkAccessManager_CreateRequest(self *C.QNetworkAccessManager, cb C.intptr_t, op C.int, request *C.QNetworkRequest, outgoingData *C.QIODevice) *C.QNetworkReply {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(op QNetworkAccessManager__Operation, request *QNetworkRequest, outgoingData *qt.QIODevice) *QNetworkReply, op QNetworkAccessManager__Operation, request *QNetworkRequest, outgoingData *qt.QIODevice) *QNetworkReply)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QNetworkAccessManager__Operation)(op)
+
+	slotval2 := UnsafeNewQNetworkRequest(unsafe.Pointer(request))
+	slotval3 := qt.UnsafeNewQIODevice(unsafe.Pointer(outgoingData), nil)
+
+	virtualReturn := gofunc((&QNetworkAccessManager{h: self}).callVirtualBase_CreateRequest, slotval1, slotval2, slotval3)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QNetworkAccessManager) callVirtualBase_Event(event *qt.QEvent) bool {
+
+	return (bool)(C.QNetworkAccessManager_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QNetworkAccessManager) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	C.QNetworkAccessManager_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkAccessManager_Event
+func miqt_exec_callback_QNetworkAccessManager_Event(self *C.QNetworkAccessManager, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QNetworkAccessManager{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QNetworkAccessManager) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+
+	return (bool)(C.QNetworkAccessManager_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QNetworkAccessManager) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	C.QNetworkAccessManager_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkAccessManager_EventFilter
+func miqt_exec_callback_QNetworkAccessManager_EventFilter(self *C.QNetworkAccessManager, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QNetworkAccessManager{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QNetworkAccessManager) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+
+	C.QNetworkAccessManager_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+
+}
+func (this *QNetworkAccessManager) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	C.QNetworkAccessManager_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkAccessManager_TimerEvent
+func miqt_exec_callback_QNetworkAccessManager_TimerEvent(self *C.QNetworkAccessManager, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QNetworkAccessManager{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QNetworkAccessManager) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+
+	C.QNetworkAccessManager_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+
+}
+func (this *QNetworkAccessManager) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	C.QNetworkAccessManager_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkAccessManager_ChildEvent
+func miqt_exec_callback_QNetworkAccessManager_ChildEvent(self *C.QNetworkAccessManager, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QNetworkAccessManager{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QNetworkAccessManager) callVirtualBase_CustomEvent(event *qt.QEvent) {
+
+	C.QNetworkAccessManager_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+
+}
+func (this *QNetworkAccessManager) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	C.QNetworkAccessManager_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkAccessManager_CustomEvent
+func miqt_exec_callback_QNetworkAccessManager_CustomEvent(self *C.QNetworkAccessManager, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QNetworkAccessManager{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QNetworkAccessManager) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+
+	C.QNetworkAccessManager_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QNetworkAccessManager) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	C.QNetworkAccessManager_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkAccessManager_ConnectNotify
+func miqt_exec_callback_QNetworkAccessManager_ConnectNotify(self *C.QNetworkAccessManager, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QNetworkAccessManager{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QNetworkAccessManager) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+
+	C.QNetworkAccessManager_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QNetworkAccessManager) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	C.QNetworkAccessManager_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkAccessManager_DisconnectNotify
+func miqt_exec_callback_QNetworkAccessManager_DisconnectNotify(self *C.QNetworkAccessManager, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QNetworkAccessManager{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QNetworkAccessManager) Delete() {
-	C.QNetworkAccessManager_Delete(this.h)
+	C.QNetworkAccessManager_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

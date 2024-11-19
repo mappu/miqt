@@ -14,7 +14,8 @@ import (
 )
 
 type QStaticPlugin struct {
-	h *C.QStaticPlugin
+	h          *C.QStaticPlugin
+	isSubclass bool
 }
 
 func (this *QStaticPlugin) cPointer() *C.QStaticPlugin {
@@ -31,6 +32,7 @@ func (this *QStaticPlugin) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQStaticPlugin constructs the type using only CGO pointers.
 func newQStaticPlugin(h *C.QStaticPlugin) *QStaticPlugin {
 	if h == nil {
 		return nil
@@ -38,8 +40,13 @@ func newQStaticPlugin(h *C.QStaticPlugin) *QStaticPlugin {
 	return &QStaticPlugin{h: h}
 }
 
+// UnsafeNewQStaticPlugin constructs the type using only unsafe pointers.
 func UnsafeNewQStaticPlugin(h unsafe.Pointer) *QStaticPlugin {
-	return newQStaticPlugin((*C.QStaticPlugin)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QStaticPlugin{h: (*C.QStaticPlugin)(h)}
 }
 
 func (this *QStaticPlugin) MetaData() *QJsonObject {
@@ -51,7 +58,7 @@ func (this *QStaticPlugin) MetaData() *QJsonObject {
 
 // Delete this object from C++ memory.
 func (this *QStaticPlugin) Delete() {
-	C.QStaticPlugin_Delete(this.h)
+	C.QStaticPlugin_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

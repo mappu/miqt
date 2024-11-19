@@ -21,7 +21,8 @@ const (
 )
 
 type QHstsPolicy struct {
-	h *C.QHstsPolicy
+	h          *C.QHstsPolicy
+	isSubclass bool
 }
 
 func (this *QHstsPolicy) cPointer() *C.QHstsPolicy {
@@ -38,6 +39,7 @@ func (this *QHstsPolicy) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQHstsPolicy constructs the type using only CGO pointers.
 func newQHstsPolicy(h *C.QHstsPolicy) *QHstsPolicy {
 	if h == nil {
 		return nil
@@ -45,14 +47,23 @@ func newQHstsPolicy(h *C.QHstsPolicy) *QHstsPolicy {
 	return &QHstsPolicy{h: h}
 }
 
+// UnsafeNewQHstsPolicy constructs the type using only unsafe pointers.
 func UnsafeNewQHstsPolicy(h unsafe.Pointer) *QHstsPolicy {
-	return newQHstsPolicy((*C.QHstsPolicy)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QHstsPolicy{h: (*C.QHstsPolicy)(h)}
 }
 
 // NewQHstsPolicy constructs a new QHstsPolicy object.
 func NewQHstsPolicy() *QHstsPolicy {
-	ret := C.QHstsPolicy_new()
-	return newQHstsPolicy(ret)
+	var outptr_QHstsPolicy *C.QHstsPolicy = nil
+
+	C.QHstsPolicy_new(&outptr_QHstsPolicy)
+	ret := newQHstsPolicy(outptr_QHstsPolicy)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQHstsPolicy2 constructs a new QHstsPolicy object.
@@ -61,14 +72,22 @@ func NewQHstsPolicy2(expiry *qt6.QDateTime, flags QHstsPolicy__PolicyFlag, host 
 	host_ms.data = C.CString(host)
 	host_ms.len = C.size_t(len(host))
 	defer C.free(unsafe.Pointer(host_ms.data))
-	ret := C.QHstsPolicy_new2((*C.QDateTime)(expiry.UnsafePointer()), (C.int)(flags), host_ms)
-	return newQHstsPolicy(ret)
+	var outptr_QHstsPolicy *C.QHstsPolicy = nil
+
+	C.QHstsPolicy_new2((*C.QDateTime)(expiry.UnsafePointer()), (C.int)(flags), host_ms, &outptr_QHstsPolicy)
+	ret := newQHstsPolicy(outptr_QHstsPolicy)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQHstsPolicy3 constructs a new QHstsPolicy object.
 func NewQHstsPolicy3(rhs *QHstsPolicy) *QHstsPolicy {
-	ret := C.QHstsPolicy_new3(rhs.cPointer())
-	return newQHstsPolicy(ret)
+	var outptr_QHstsPolicy *C.QHstsPolicy = nil
+
+	C.QHstsPolicy_new3(rhs.cPointer(), &outptr_QHstsPolicy)
+	ret := newQHstsPolicy(outptr_QHstsPolicy)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQHstsPolicy4 constructs a new QHstsPolicy object.
@@ -77,8 +96,12 @@ func NewQHstsPolicy4(expiry *qt6.QDateTime, flags QHstsPolicy__PolicyFlag, host 
 	host_ms.data = C.CString(host)
 	host_ms.len = C.size_t(len(host))
 	defer C.free(unsafe.Pointer(host_ms.data))
-	ret := C.QHstsPolicy_new4((*C.QDateTime)(expiry.UnsafePointer()), (C.int)(flags), host_ms, (C.int)(mode))
-	return newQHstsPolicy(ret)
+	var outptr_QHstsPolicy *C.QHstsPolicy = nil
+
+	C.QHstsPolicy_new4((*C.QDateTime)(expiry.UnsafePointer()), (C.int)(flags), host_ms, (C.int)(mode), &outptr_QHstsPolicy)
+	ret := newQHstsPolicy(outptr_QHstsPolicy)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QHstsPolicy) OperatorAssign(rhs *QHstsPolicy) {
@@ -144,7 +167,7 @@ func (this *QHstsPolicy) Host1(options qt6.QUrl__ComponentFormattingOption) stri
 
 // Delete this object from C++ memory.
 func (this *QHstsPolicy) Delete() {
-	C.QHstsPolicy_Delete(this.h)
+	C.QHstsPolicy_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -15,13 +15,17 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QMediaControl;
 class QMediaNetworkAccessControl;
 class QMetaObject;
 class QNetworkConfiguration;
+class QObject;
 #else
+typedef struct QMediaControl QMediaControl;
 typedef struct QMediaNetworkAccessControl QMediaNetworkAccessControl;
 typedef struct QMetaObject QMetaObject;
 typedef struct QNetworkConfiguration QNetworkConfiguration;
+typedef struct QObject QObject;
 #endif
 
 QMetaObject* QMediaNetworkAccessControl_MetaObject(const QMediaNetworkAccessControl* self);
@@ -36,7 +40,7 @@ struct miqt_string QMediaNetworkAccessControl_Tr2(const char* s, const char* c);
 struct miqt_string QMediaNetworkAccessControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QMediaNetworkAccessControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QMediaNetworkAccessControl_TrUtf83(const char* s, const char* c, int n);
-void QMediaNetworkAccessControl_Delete(QMediaNetworkAccessControl* self);
+void QMediaNetworkAccessControl_Delete(QMediaNetworkAccessControl* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

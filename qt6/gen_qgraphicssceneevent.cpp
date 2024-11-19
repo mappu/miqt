@@ -1,3 +1,4 @@
+#include <QEvent>
 #include <QGraphicsSceneContextMenuEvent>
 #include <QGraphicsSceneDragDropEvent>
 #include <QGraphicsSceneEvent>
@@ -16,8 +17,65 @@
 #include "gen_qgraphicssceneevent.h"
 #include "_cgo_export.h"
 
-QGraphicsSceneEvent* QGraphicsSceneEvent_new(int typeVal) {
-	return new QGraphicsSceneEvent(static_cast<QEvent::Type>(typeVal));
+class MiqtVirtualQGraphicsSceneEvent : public virtual QGraphicsSceneEvent {
+public:
+
+	MiqtVirtualQGraphicsSceneEvent(QEvent::Type typeVal): QGraphicsSceneEvent(typeVal) {};
+
+	virtual ~MiqtVirtualQGraphicsSceneEvent() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetAccepted = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setAccepted(bool accepted) override {
+		if (handle__SetAccepted == 0) {
+			QGraphicsSceneEvent::setAccepted(accepted);
+			return;
+		}
+		
+		bool sigval1 = accepted;
+
+		miqt_exec_callback_QGraphicsSceneEvent_SetAccepted(this, handle__SetAccepted, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetAccepted(bool accepted) {
+
+		QGraphicsSceneEvent::setAccepted(accepted);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Clone = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QEvent* clone() const override {
+		if (handle__Clone == 0) {
+			return QGraphicsSceneEvent::clone();
+		}
+		
+
+		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneEvent_Clone(const_cast<MiqtVirtualQGraphicsSceneEvent*>(this), handle__Clone);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QEvent* virtualbase_Clone() const {
+
+		return QGraphicsSceneEvent::clone();
+
+	}
+
+};
+
+void QGraphicsSceneEvent_new(int typeVal, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent, QEvent** outptr_QEvent) {
+	MiqtVirtualQGraphicsSceneEvent* ret = new MiqtVirtualQGraphicsSceneEvent(static_cast<QEvent::Type>(typeVal));
+	*outptr_QGraphicsSceneEvent = ret;
+	*outptr_QEvent = static_cast<QEvent*>(ret);
 }
 
 QWidget* QGraphicsSceneEvent_Widget(const QGraphicsSceneEvent* self) {
@@ -37,16 +95,42 @@ void QGraphicsSceneEvent_SetTimestamp(QGraphicsSceneEvent* self, unsigned long l
 	self->setTimestamp(static_cast<quint64>(ts));
 }
 
-void QGraphicsSceneEvent_Delete(QGraphicsSceneEvent* self) {
-	delete self;
+void QGraphicsSceneEvent_override_virtual_SetAccepted(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGraphicsSceneEvent*>( (QGraphicsSceneEvent*)(self) )->handle__SetAccepted = slot;
 }
 
-QGraphicsSceneMouseEvent* QGraphicsSceneMouseEvent_new() {
-	return new QGraphicsSceneMouseEvent();
+void QGraphicsSceneEvent_virtualbase_SetAccepted(void* self, bool accepted) {
+	( (MiqtVirtualQGraphicsSceneEvent*)(self) )->virtualbase_SetAccepted(accepted);
 }
 
-QGraphicsSceneMouseEvent* QGraphicsSceneMouseEvent_new2(int typeVal) {
-	return new QGraphicsSceneMouseEvent(static_cast<QEvent::Type>(typeVal));
+void QGraphicsSceneEvent_override_virtual_Clone(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGraphicsSceneEvent*>( (QGraphicsSceneEvent*)(self) )->handle__Clone = slot;
+}
+
+QEvent* QGraphicsSceneEvent_virtualbase_Clone(const void* self) {
+	return ( (const MiqtVirtualQGraphicsSceneEvent*)(self) )->virtualbase_Clone();
+}
+
+void QGraphicsSceneEvent_Delete(QGraphicsSceneEvent* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQGraphicsSceneEvent*>( self );
+	} else {
+		delete self;
+	}
+}
+
+void QGraphicsSceneMouseEvent_new(QGraphicsSceneMouseEvent** outptr_QGraphicsSceneMouseEvent, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent, QEvent** outptr_QEvent) {
+	QGraphicsSceneMouseEvent* ret = new QGraphicsSceneMouseEvent();
+	*outptr_QGraphicsSceneMouseEvent = ret;
+	*outptr_QGraphicsSceneEvent = static_cast<QGraphicsSceneEvent*>(ret);
+	*outptr_QEvent = static_cast<QEvent*>(ret);
+}
+
+void QGraphicsSceneMouseEvent_new2(int typeVal, QGraphicsSceneMouseEvent** outptr_QGraphicsSceneMouseEvent, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent, QEvent** outptr_QEvent) {
+	QGraphicsSceneMouseEvent* ret = new QGraphicsSceneMouseEvent(static_cast<QEvent::Type>(typeVal));
+	*outptr_QGraphicsSceneMouseEvent = ret;
+	*outptr_QGraphicsSceneEvent = static_cast<QGraphicsSceneEvent*>(ret);
+	*outptr_QEvent = static_cast<QEvent*>(ret);
 }
 
 QPointF* QGraphicsSceneMouseEvent_Pos(const QGraphicsSceneMouseEvent* self) {
@@ -166,16 +250,26 @@ void QGraphicsSceneMouseEvent_SetFlags(QGraphicsSceneMouseEvent* self, int flags
 	self->setFlags(static_cast<Qt::MouseEventFlags>(flags));
 }
 
-void QGraphicsSceneMouseEvent_Delete(QGraphicsSceneMouseEvent* self) {
-	delete self;
+void QGraphicsSceneMouseEvent_Delete(QGraphicsSceneMouseEvent* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QGraphicsSceneMouseEvent*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QGraphicsSceneWheelEvent* QGraphicsSceneWheelEvent_new() {
-	return new QGraphicsSceneWheelEvent();
+void QGraphicsSceneWheelEvent_new(QGraphicsSceneWheelEvent** outptr_QGraphicsSceneWheelEvent, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent, QEvent** outptr_QEvent) {
+	QGraphicsSceneWheelEvent* ret = new QGraphicsSceneWheelEvent();
+	*outptr_QGraphicsSceneWheelEvent = ret;
+	*outptr_QGraphicsSceneEvent = static_cast<QGraphicsSceneEvent*>(ret);
+	*outptr_QEvent = static_cast<QEvent*>(ret);
 }
 
-QGraphicsSceneWheelEvent* QGraphicsSceneWheelEvent_new2(int typeVal) {
-	return new QGraphicsSceneWheelEvent(static_cast<QEvent::Type>(typeVal));
+void QGraphicsSceneWheelEvent_new2(int typeVal, QGraphicsSceneWheelEvent** outptr_QGraphicsSceneWheelEvent, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent, QEvent** outptr_QEvent) {
+	QGraphicsSceneWheelEvent* ret = new QGraphicsSceneWheelEvent(static_cast<QEvent::Type>(typeVal));
+	*outptr_QGraphicsSceneWheelEvent = ret;
+	*outptr_QGraphicsSceneEvent = static_cast<QGraphicsSceneEvent*>(ret);
+	*outptr_QEvent = static_cast<QEvent*>(ret);
 }
 
 QPointF* QGraphicsSceneWheelEvent_Pos(const QGraphicsSceneWheelEvent* self) {
@@ -262,16 +356,26 @@ void QGraphicsSceneWheelEvent_SetInverted(QGraphicsSceneWheelEvent* self, bool i
 	self->setInverted(inverted);
 }
 
-void QGraphicsSceneWheelEvent_Delete(QGraphicsSceneWheelEvent* self) {
-	delete self;
+void QGraphicsSceneWheelEvent_Delete(QGraphicsSceneWheelEvent* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QGraphicsSceneWheelEvent*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QGraphicsSceneContextMenuEvent* QGraphicsSceneContextMenuEvent_new() {
-	return new QGraphicsSceneContextMenuEvent();
+void QGraphicsSceneContextMenuEvent_new(QGraphicsSceneContextMenuEvent** outptr_QGraphicsSceneContextMenuEvent, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent, QEvent** outptr_QEvent) {
+	QGraphicsSceneContextMenuEvent* ret = new QGraphicsSceneContextMenuEvent();
+	*outptr_QGraphicsSceneContextMenuEvent = ret;
+	*outptr_QGraphicsSceneEvent = static_cast<QGraphicsSceneEvent*>(ret);
+	*outptr_QEvent = static_cast<QEvent*>(ret);
 }
 
-QGraphicsSceneContextMenuEvent* QGraphicsSceneContextMenuEvent_new2(int typeVal) {
-	return new QGraphicsSceneContextMenuEvent(static_cast<QEvent::Type>(typeVal));
+void QGraphicsSceneContextMenuEvent_new2(int typeVal, QGraphicsSceneContextMenuEvent** outptr_QGraphicsSceneContextMenuEvent, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent, QEvent** outptr_QEvent) {
+	QGraphicsSceneContextMenuEvent* ret = new QGraphicsSceneContextMenuEvent(static_cast<QEvent::Type>(typeVal));
+	*outptr_QGraphicsSceneContextMenuEvent = ret;
+	*outptr_QGraphicsSceneEvent = static_cast<QGraphicsSceneEvent*>(ret);
+	*outptr_QEvent = static_cast<QEvent*>(ret);
 }
 
 QPointF* QGraphicsSceneContextMenuEvent_Pos(const QGraphicsSceneContextMenuEvent* self) {
@@ -316,16 +420,26 @@ void QGraphicsSceneContextMenuEvent_SetReason(QGraphicsSceneContextMenuEvent* se
 	self->setReason(static_cast<QGraphicsSceneContextMenuEvent::Reason>(reason));
 }
 
-void QGraphicsSceneContextMenuEvent_Delete(QGraphicsSceneContextMenuEvent* self) {
-	delete self;
+void QGraphicsSceneContextMenuEvent_Delete(QGraphicsSceneContextMenuEvent* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QGraphicsSceneContextMenuEvent*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QGraphicsSceneHoverEvent* QGraphicsSceneHoverEvent_new() {
-	return new QGraphicsSceneHoverEvent();
+void QGraphicsSceneHoverEvent_new(QGraphicsSceneHoverEvent** outptr_QGraphicsSceneHoverEvent, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent, QEvent** outptr_QEvent) {
+	QGraphicsSceneHoverEvent* ret = new QGraphicsSceneHoverEvent();
+	*outptr_QGraphicsSceneHoverEvent = ret;
+	*outptr_QGraphicsSceneEvent = static_cast<QGraphicsSceneEvent*>(ret);
+	*outptr_QEvent = static_cast<QEvent*>(ret);
 }
 
-QGraphicsSceneHoverEvent* QGraphicsSceneHoverEvent_new2(int typeVal) {
-	return new QGraphicsSceneHoverEvent(static_cast<QEvent::Type>(typeVal));
+void QGraphicsSceneHoverEvent_new2(int typeVal, QGraphicsSceneHoverEvent** outptr_QGraphicsSceneHoverEvent, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent, QEvent** outptr_QEvent) {
+	QGraphicsSceneHoverEvent* ret = new QGraphicsSceneHoverEvent(static_cast<QEvent::Type>(typeVal));
+	*outptr_QGraphicsSceneHoverEvent = ret;
+	*outptr_QGraphicsSceneEvent = static_cast<QGraphicsSceneEvent*>(ret);
+	*outptr_QEvent = static_cast<QEvent*>(ret);
 }
 
 QPointF* QGraphicsSceneHoverEvent_Pos(const QGraphicsSceneHoverEvent* self) {
@@ -385,16 +499,26 @@ void QGraphicsSceneHoverEvent_SetModifiers(QGraphicsSceneHoverEvent* self, int m
 	self->setModifiers(static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-void QGraphicsSceneHoverEvent_Delete(QGraphicsSceneHoverEvent* self) {
-	delete self;
+void QGraphicsSceneHoverEvent_Delete(QGraphicsSceneHoverEvent* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QGraphicsSceneHoverEvent*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QGraphicsSceneHelpEvent* QGraphicsSceneHelpEvent_new() {
-	return new QGraphicsSceneHelpEvent();
+void QGraphicsSceneHelpEvent_new(QGraphicsSceneHelpEvent** outptr_QGraphicsSceneHelpEvent, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent, QEvent** outptr_QEvent) {
+	QGraphicsSceneHelpEvent* ret = new QGraphicsSceneHelpEvent();
+	*outptr_QGraphicsSceneHelpEvent = ret;
+	*outptr_QGraphicsSceneEvent = static_cast<QGraphicsSceneEvent*>(ret);
+	*outptr_QEvent = static_cast<QEvent*>(ret);
 }
 
-QGraphicsSceneHelpEvent* QGraphicsSceneHelpEvent_new2(int typeVal) {
-	return new QGraphicsSceneHelpEvent(static_cast<QEvent::Type>(typeVal));
+void QGraphicsSceneHelpEvent_new2(int typeVal, QGraphicsSceneHelpEvent** outptr_QGraphicsSceneHelpEvent, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent, QEvent** outptr_QEvent) {
+	QGraphicsSceneHelpEvent* ret = new QGraphicsSceneHelpEvent(static_cast<QEvent::Type>(typeVal));
+	*outptr_QGraphicsSceneHelpEvent = ret;
+	*outptr_QGraphicsSceneEvent = static_cast<QGraphicsSceneEvent*>(ret);
+	*outptr_QEvent = static_cast<QEvent*>(ret);
 }
 
 QPointF* QGraphicsSceneHelpEvent_ScenePos(const QGraphicsSceneHelpEvent* self) {
@@ -413,16 +537,26 @@ void QGraphicsSceneHelpEvent_SetScreenPos(QGraphicsSceneHelpEvent* self, QPoint*
 	self->setScreenPos(*pos);
 }
 
-void QGraphicsSceneHelpEvent_Delete(QGraphicsSceneHelpEvent* self) {
-	delete self;
+void QGraphicsSceneHelpEvent_Delete(QGraphicsSceneHelpEvent* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QGraphicsSceneHelpEvent*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QGraphicsSceneDragDropEvent* QGraphicsSceneDragDropEvent_new() {
-	return new QGraphicsSceneDragDropEvent();
+void QGraphicsSceneDragDropEvent_new(QGraphicsSceneDragDropEvent** outptr_QGraphicsSceneDragDropEvent, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent, QEvent** outptr_QEvent) {
+	QGraphicsSceneDragDropEvent* ret = new QGraphicsSceneDragDropEvent();
+	*outptr_QGraphicsSceneDragDropEvent = ret;
+	*outptr_QGraphicsSceneEvent = static_cast<QGraphicsSceneEvent*>(ret);
+	*outptr_QEvent = static_cast<QEvent*>(ret);
 }
 
-QGraphicsSceneDragDropEvent* QGraphicsSceneDragDropEvent_new2(int typeVal) {
-	return new QGraphicsSceneDragDropEvent(static_cast<QEvent::Type>(typeVal));
+void QGraphicsSceneDragDropEvent_new2(int typeVal, QGraphicsSceneDragDropEvent** outptr_QGraphicsSceneDragDropEvent, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent, QEvent** outptr_QEvent) {
+	QGraphicsSceneDragDropEvent* ret = new QGraphicsSceneDragDropEvent(static_cast<QEvent::Type>(typeVal));
+	*outptr_QGraphicsSceneDragDropEvent = ret;
+	*outptr_QGraphicsSceneEvent = static_cast<QGraphicsSceneEvent*>(ret);
+	*outptr_QEvent = static_cast<QEvent*>(ret);
 }
 
 QPointF* QGraphicsSceneDragDropEvent_Pos(const QGraphicsSceneDragDropEvent* self) {
@@ -514,12 +648,19 @@ void QGraphicsSceneDragDropEvent_SetMimeData(QGraphicsSceneDragDropEvent* self, 
 	self->setMimeData(data);
 }
 
-void QGraphicsSceneDragDropEvent_Delete(QGraphicsSceneDragDropEvent* self) {
-	delete self;
+void QGraphicsSceneDragDropEvent_Delete(QGraphicsSceneDragDropEvent* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QGraphicsSceneDragDropEvent*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QGraphicsSceneResizeEvent* QGraphicsSceneResizeEvent_new() {
-	return new QGraphicsSceneResizeEvent();
+void QGraphicsSceneResizeEvent_new(QGraphicsSceneResizeEvent** outptr_QGraphicsSceneResizeEvent, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent, QEvent** outptr_QEvent) {
+	QGraphicsSceneResizeEvent* ret = new QGraphicsSceneResizeEvent();
+	*outptr_QGraphicsSceneResizeEvent = ret;
+	*outptr_QGraphicsSceneEvent = static_cast<QGraphicsSceneEvent*>(ret);
+	*outptr_QEvent = static_cast<QEvent*>(ret);
 }
 
 QSizeF* QGraphicsSceneResizeEvent_OldSize(const QGraphicsSceneResizeEvent* self) {
@@ -538,12 +679,19 @@ void QGraphicsSceneResizeEvent_SetNewSize(QGraphicsSceneResizeEvent* self, QSize
 	self->setNewSize(*size);
 }
 
-void QGraphicsSceneResizeEvent_Delete(QGraphicsSceneResizeEvent* self) {
-	delete self;
+void QGraphicsSceneResizeEvent_Delete(QGraphicsSceneResizeEvent* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QGraphicsSceneResizeEvent*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QGraphicsSceneMoveEvent* QGraphicsSceneMoveEvent_new() {
-	return new QGraphicsSceneMoveEvent();
+void QGraphicsSceneMoveEvent_new(QGraphicsSceneMoveEvent** outptr_QGraphicsSceneMoveEvent, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent, QEvent** outptr_QEvent) {
+	QGraphicsSceneMoveEvent* ret = new QGraphicsSceneMoveEvent();
+	*outptr_QGraphicsSceneMoveEvent = ret;
+	*outptr_QGraphicsSceneEvent = static_cast<QGraphicsSceneEvent*>(ret);
+	*outptr_QEvent = static_cast<QEvent*>(ret);
 }
 
 QPointF* QGraphicsSceneMoveEvent_OldPos(const QGraphicsSceneMoveEvent* self) {
@@ -562,7 +710,11 @@ void QGraphicsSceneMoveEvent_SetNewPos(QGraphicsSceneMoveEvent* self, QPointF* p
 	self->setNewPos(*pos);
 }
 
-void QGraphicsSceneMoveEvent_Delete(QGraphicsSceneMoveEvent* self) {
-	delete self;
+void QGraphicsSceneMoveEvent_Delete(QGraphicsSceneMoveEvent* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QGraphicsSceneMoveEvent*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -60,8 +60,12 @@ QFont* QTextItem_Font(const QTextItem* self) {
 	return new QFont(self->font());
 }
 
-void QTextItem_Delete(QTextItem* self) {
-	delete self;
+void QTextItem_Delete(QTextItem* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QTextItem*>( self );
+	} else {
+		delete self;
+	}
 }
 
 bool QPaintEngine_IsActive(const QPaintEngine* self) {
@@ -140,8 +144,8 @@ void QPaintEngine_DrawTiledPixmap(QPaintEngine* self, QRectF* r, QPixmap* pixmap
 	self->drawTiledPixmap(*r, *pixmap, *s);
 }
 
-void QPaintEngine_DrawImage(QPaintEngine* self, QRectF* r, QImage* pm, QRectF* sr) {
-	self->drawImage(*r, *pm, *sr);
+void QPaintEngine_DrawImage(QPaintEngine* self, QRectF* r, QImage* pm, QRectF* sr, int flags) {
+	self->drawImage(*r, *pm, *sr, static_cast<Qt::ImageConversionFlags>(flags));
 }
 
 void QPaintEngine_SetPaintDevice(QPaintEngine* self, QPaintDevice* device) {
@@ -213,20 +217,16 @@ QPixmap* QPaintEngine_CreatePixmap(QPaintEngine* self, QSize* size) {
 	return new QPixmap(self->createPixmap(*size));
 }
 
-QPixmap* QPaintEngine_CreatePixmapFromImage(QPaintEngine* self, QImage* image) {
-	return new QPixmap(self->createPixmapFromImage(*image));
-}
-
-void QPaintEngine_DrawImage4(QPaintEngine* self, QRectF* r, QImage* pm, QRectF* sr, int flags) {
-	self->drawImage(*r, *pm, *sr, static_cast<Qt::ImageConversionFlags>(flags));
-}
-
-QPixmap* QPaintEngine_CreatePixmapFromImage2(QPaintEngine* self, QImage* image, int flags) {
+QPixmap* QPaintEngine_CreatePixmapFromImage(QPaintEngine* self, QImage* image, int flags) {
 	return new QPixmap(self->createPixmapFromImage(*image, static_cast<Qt::ImageConversionFlags>(flags)));
 }
 
-void QPaintEngine_Delete(QPaintEngine* self) {
-	delete self;
+void QPaintEngine_Delete(QPaintEngine* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QPaintEngine*>( self );
+	} else {
+		delete self;
+	}
 }
 
 int QPaintEngineState_State(const QPaintEngineState* self) {
@@ -307,7 +307,11 @@ bool QPaintEngineState_PenNeedsResolving(const QPaintEngineState* self) {
 	return self->penNeedsResolving();
 }
 
-void QPaintEngineState_Delete(QPaintEngineState* self) {
-	delete self;
+void QPaintEngineState_Delete(QPaintEngineState* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QPaintEngineState*>( self );
+	} else {
+		delete self;
+	}
 }
 

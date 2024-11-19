@@ -16,16 +16,22 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAudioRecorder;
+class QMediaBindableInterface;
+class QMediaObject;
+class QMediaRecorder;
 class QMetaObject;
 class QObject;
 #else
 typedef struct QAudioRecorder QAudioRecorder;
+typedef struct QMediaBindableInterface QMediaBindableInterface;
+typedef struct QMediaObject QMediaObject;
+typedef struct QMediaRecorder QMediaRecorder;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif
 
-QAudioRecorder* QAudioRecorder_new();
-QAudioRecorder* QAudioRecorder_new2(QObject* parent);
+void QAudioRecorder_new(QAudioRecorder** outptr_QAudioRecorder, QMediaRecorder** outptr_QMediaRecorder, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface);
+void QAudioRecorder_new2(QObject* parent, QAudioRecorder** outptr_QAudioRecorder, QMediaRecorder** outptr_QMediaRecorder, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface);
 QMetaObject* QAudioRecorder_MetaObject(const QAudioRecorder* self);
 void* QAudioRecorder_Metacast(QAudioRecorder* self, const char* param1);
 struct miqt_string QAudioRecorder_Tr(const char* s);
@@ -43,7 +49,11 @@ struct miqt_string QAudioRecorder_Tr2(const char* s, const char* c);
 struct miqt_string QAudioRecorder_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAudioRecorder_TrUtf82(const char* s, const char* c);
 struct miqt_string QAudioRecorder_TrUtf83(const char* s, const char* c, int n);
-void QAudioRecorder_Delete(QAudioRecorder* self);
+void QAudioRecorder_override_virtual_MediaObject(void* self, intptr_t slot);
+QMediaObject* QAudioRecorder_virtualbase_MediaObject(const void* self);
+void QAudioRecorder_override_virtual_SetMediaObject(void* self, intptr_t slot);
+bool QAudioRecorder_virtualbase_SetMediaObject(void* self, QMediaObject* object);
+void QAudioRecorder_Delete(QAudioRecorder* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

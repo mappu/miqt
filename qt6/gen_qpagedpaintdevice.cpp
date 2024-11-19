@@ -3,6 +3,7 @@
 #include <QPageRanges>
 #include <QPageSize>
 #include <QPagedPaintDevice>
+#include <QPaintDevice>
 #include <qpagedpaintdevice.h>
 #include "gen_qpagedpaintdevice.h"
 #include "_cgo_export.h"
@@ -23,8 +24,8 @@ bool QPagedPaintDevice_SetPageOrientation(QPagedPaintDevice* self, int orientati
 	return self->setPageOrientation(static_cast<QPageLayout::Orientation>(orientation));
 }
 
-bool QPagedPaintDevice_SetPageMargins(QPagedPaintDevice* self, QMarginsF* margins) {
-	return self->setPageMargins(*margins);
+bool QPagedPaintDevice_SetPageMargins(QPagedPaintDevice* self, QMarginsF* margins, int units) {
+	return self->setPageMargins(*margins, static_cast<QPageLayout::Unit>(units));
 }
 
 QPageLayout* QPagedPaintDevice_PageLayout(const QPagedPaintDevice* self) {
@@ -39,11 +40,11 @@ QPageRanges* QPagedPaintDevice_PageRanges(const QPagedPaintDevice* self) {
 	return new QPageRanges(self->pageRanges());
 }
 
-bool QPagedPaintDevice_SetPageMargins2(QPagedPaintDevice* self, QMarginsF* margins, int units) {
-	return self->setPageMargins(*margins, static_cast<QPageLayout::Unit>(units));
-}
-
-void QPagedPaintDevice_Delete(QPagedPaintDevice* self) {
-	delete self;
+void QPagedPaintDevice_Delete(QPagedPaintDevice* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QPagedPaintDevice*>( self );
+	} else {
+		delete self;
+	}
 }
 

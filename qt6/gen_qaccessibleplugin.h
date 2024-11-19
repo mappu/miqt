@@ -32,7 +32,7 @@ struct miqt_string QAccessiblePlugin_Tr(const char* s);
 QAccessibleInterface* QAccessiblePlugin_Create(QAccessiblePlugin* self, struct miqt_string key, QObject* object);
 struct miqt_string QAccessiblePlugin_Tr2(const char* s, const char* c);
 struct miqt_string QAccessiblePlugin_Tr3(const char* s, const char* c, int n);
-void QAccessiblePlugin_Delete(QAccessiblePlugin* self);
+void QAccessiblePlugin_Delete(QAccessiblePlugin* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

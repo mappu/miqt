@@ -1,5 +1,12 @@
+#include <QEvent>
+#include <QFrame>
 #include <QIcon>
 #include <QMetaObject>
+#include <QObject>
+#include <QPaintDevice>
+#include <QPaintEvent>
+#include <QShowEvent>
+#include <QSize>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -9,16 +16,207 @@
 #include "gen_qtoolbox.h"
 #include "_cgo_export.h"
 
-QToolBox* QToolBox_new(QWidget* parent) {
-	return new QToolBox(parent);
+class MiqtVirtualQToolBox : public virtual QToolBox {
+public:
+
+	MiqtVirtualQToolBox(QWidget* parent): QToolBox(parent) {};
+	MiqtVirtualQToolBox(): QToolBox() {};
+	MiqtVirtualQToolBox(QWidget* parent, Qt::WindowFlags f): QToolBox(parent, f) {};
+
+	virtual ~MiqtVirtualQToolBox() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* e) override {
+		if (handle__Event == 0) {
+			return QToolBox::event(e);
+		}
+		
+		QEvent* sigval1 = e;
+
+		bool callback_return_value = miqt_exec_callback_QToolBox_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* e) {
+
+		return QToolBox::event(e);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ItemInserted = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void itemInserted(int index) override {
+		if (handle__ItemInserted == 0) {
+			QToolBox::itemInserted(index);
+			return;
+		}
+		
+		int sigval1 = index;
+
+		miqt_exec_callback_QToolBox_ItemInserted(this, handle__ItemInserted, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ItemInserted(int index) {
+
+		QToolBox::itemInserted(static_cast<int>(index));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ItemRemoved = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void itemRemoved(int index) override {
+		if (handle__ItemRemoved == 0) {
+			QToolBox::itemRemoved(index);
+			return;
+		}
+		
+		int sigval1 = index;
+
+		miqt_exec_callback_QToolBox_ItemRemoved(this, handle__ItemRemoved, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ItemRemoved(int index) {
+
+		QToolBox::itemRemoved(static_cast<int>(index));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ShowEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void showEvent(QShowEvent* e) override {
+		if (handle__ShowEvent == 0) {
+			QToolBox::showEvent(e);
+			return;
+		}
+		
+		QShowEvent* sigval1 = e;
+
+		miqt_exec_callback_QToolBox_ShowEvent(this, handle__ShowEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ShowEvent(QShowEvent* e) {
+
+		QToolBox::showEvent(e);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChangeEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void changeEvent(QEvent* param1) override {
+		if (handle__ChangeEvent == 0) {
+			QToolBox::changeEvent(param1);
+			return;
+		}
+		
+		QEvent* sigval1 = param1;
+
+		miqt_exec_callback_QToolBox_ChangeEvent(this, handle__ChangeEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChangeEvent(QEvent* param1) {
+
+		QToolBox::changeEvent(param1);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SizeHint = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QSize sizeHint() const override {
+		if (handle__SizeHint == 0) {
+			return QToolBox::sizeHint();
+		}
+		
+
+		QSize* callback_return_value = miqt_exec_callback_QToolBox_SizeHint(const_cast<MiqtVirtualQToolBox*>(this), handle__SizeHint);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QSize* virtualbase_SizeHint() const {
+
+		return new QSize(QToolBox::sizeHint());
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__PaintEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void paintEvent(QPaintEvent* param1) override {
+		if (handle__PaintEvent == 0) {
+			QToolBox::paintEvent(param1);
+			return;
+		}
+		
+		QPaintEvent* sigval1 = param1;
+
+		miqt_exec_callback_QToolBox_PaintEvent(this, handle__PaintEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_PaintEvent(QPaintEvent* param1) {
+
+		QToolBox::paintEvent(param1);
+
+	}
+
+};
+
+void QToolBox_new(QWidget* parent, QToolBox** outptr_QToolBox, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+	MiqtVirtualQToolBox* ret = new MiqtVirtualQToolBox(parent);
+	*outptr_QToolBox = ret;
+	*outptr_QFrame = static_cast<QFrame*>(ret);
+	*outptr_QWidget = static_cast<QWidget*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
-QToolBox* QToolBox_new2() {
-	return new QToolBox();
+void QToolBox_new2(QToolBox** outptr_QToolBox, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+	MiqtVirtualQToolBox* ret = new MiqtVirtualQToolBox();
+	*outptr_QToolBox = ret;
+	*outptr_QFrame = static_cast<QFrame*>(ret);
+	*outptr_QWidget = static_cast<QWidget*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
-QToolBox* QToolBox_new3(QWidget* parent, int f) {
-	return new QToolBox(parent, static_cast<Qt::WindowFlags>(f));
+void QToolBox_new3(QWidget* parent, int f, QToolBox** outptr_QToolBox, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+	MiqtVirtualQToolBox* ret = new MiqtVirtualQToolBox(parent, static_cast<Qt::WindowFlags>(f));
+	*outptr_QToolBox = ret;
+	*outptr_QFrame = static_cast<QFrame*>(ret);
+	*outptr_QWidget = static_cast<QWidget*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
 QMetaObject* QToolBox_MetaObject(const QToolBox* self) {
@@ -156,7 +354,7 @@ void QToolBox_CurrentChanged(QToolBox* self, int index) {
 }
 
 void QToolBox_connect_CurrentChanged(QToolBox* self, intptr_t slot) {
-	QToolBox::connect(self, static_cast<void (QToolBox::*)(int)>(&QToolBox::currentChanged), self, [=](int index) {
+	MiqtVirtualQToolBox::connect(self, static_cast<void (QToolBox::*)(int)>(&QToolBox::currentChanged), self, [=](int index) {
 		int sigval1 = index;
 		miqt_exec_callback_QToolBox_CurrentChanged(slot, sigval1);
 	});
@@ -206,7 +404,67 @@ struct miqt_string QToolBox_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QToolBox_Delete(QToolBox* self) {
-	delete self;
+void QToolBox_override_virtual_Event(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) )->handle__Event = slot;
+}
+
+bool QToolBox_virtualbase_Event(void* self, QEvent* e) {
+	return ( (MiqtVirtualQToolBox*)(self) )->virtualbase_Event(e);
+}
+
+void QToolBox_override_virtual_ItemInserted(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) )->handle__ItemInserted = slot;
+}
+
+void QToolBox_virtualbase_ItemInserted(void* self, int index) {
+	( (MiqtVirtualQToolBox*)(self) )->virtualbase_ItemInserted(index);
+}
+
+void QToolBox_override_virtual_ItemRemoved(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) )->handle__ItemRemoved = slot;
+}
+
+void QToolBox_virtualbase_ItemRemoved(void* self, int index) {
+	( (MiqtVirtualQToolBox*)(self) )->virtualbase_ItemRemoved(index);
+}
+
+void QToolBox_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) )->handle__ShowEvent = slot;
+}
+
+void QToolBox_virtualbase_ShowEvent(void* self, QShowEvent* e) {
+	( (MiqtVirtualQToolBox*)(self) )->virtualbase_ShowEvent(e);
+}
+
+void QToolBox_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) )->handle__ChangeEvent = slot;
+}
+
+void QToolBox_virtualbase_ChangeEvent(void* self, QEvent* param1) {
+	( (MiqtVirtualQToolBox*)(self) )->virtualbase_ChangeEvent(param1);
+}
+
+void QToolBox_override_virtual_SizeHint(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) )->handle__SizeHint = slot;
+}
+
+QSize* QToolBox_virtualbase_SizeHint(const void* self) {
+	return ( (const MiqtVirtualQToolBox*)(self) )->virtualbase_SizeHint();
+}
+
+void QToolBox_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) )->handle__PaintEvent = slot;
+}
+
+void QToolBox_virtualbase_PaintEvent(void* self, QPaintEvent* param1) {
+	( (MiqtVirtualQToolBox*)(self) )->virtualbase_PaintEvent(param1);
+}
+
+void QToolBox_Delete(QToolBox* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQToolBox*>( self );
+	} else {
+		delete self;
+	}
 }
 

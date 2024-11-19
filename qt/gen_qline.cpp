@@ -6,20 +6,24 @@
 #include "gen_qline.h"
 #include "_cgo_export.h"
 
-QLine* QLine_new() {
-	return new QLine();
+void QLine_new(QLine** outptr_QLine) {
+	QLine* ret = new QLine();
+	*outptr_QLine = ret;
 }
 
-QLine* QLine_new2(QPoint* pt1, QPoint* pt2) {
-	return new QLine(*pt1, *pt2);
+void QLine_new2(QPoint* pt1, QPoint* pt2, QLine** outptr_QLine) {
+	QLine* ret = new QLine(*pt1, *pt2);
+	*outptr_QLine = ret;
 }
 
-QLine* QLine_new3(int x1, int y1, int x2, int y2) {
-	return new QLine(static_cast<int>(x1), static_cast<int>(y1), static_cast<int>(x2), static_cast<int>(y2));
+void QLine_new3(int x1, int y1, int x2, int y2, QLine** outptr_QLine) {
+	QLine* ret = new QLine(static_cast<int>(x1), static_cast<int>(y1), static_cast<int>(x2), static_cast<int>(y2));
+	*outptr_QLine = ret;
 }
 
-QLine* QLine_new4(QLine* param1) {
-	return new QLine(*param1);
+void QLine_new4(QLine* param1, QLine** outptr_QLine) {
+	QLine* ret = new QLine(*param1);
+	*outptr_QLine = ret;
 }
 
 bool QLine_IsNull(const QLine* self) {
@@ -102,28 +106,37 @@ bool QLine_OperatorNotEqual(const QLine* self, QLine* d) {
 	return self->operator!=(*d);
 }
 
-void QLine_Delete(QLine* self) {
-	delete self;
+void QLine_Delete(QLine* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QLine*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QLineF* QLineF_new() {
-	return new QLineF();
+void QLineF_new(QLineF** outptr_QLineF) {
+	QLineF* ret = new QLineF();
+	*outptr_QLineF = ret;
 }
 
-QLineF* QLineF_new2(QPointF* pt1, QPointF* pt2) {
-	return new QLineF(*pt1, *pt2);
+void QLineF_new2(QPointF* pt1, QPointF* pt2, QLineF** outptr_QLineF) {
+	QLineF* ret = new QLineF(*pt1, *pt2);
+	*outptr_QLineF = ret;
 }
 
-QLineF* QLineF_new3(double x1, double y1, double x2, double y2) {
-	return new QLineF(static_cast<qreal>(x1), static_cast<qreal>(y1), static_cast<qreal>(x2), static_cast<qreal>(y2));
+void QLineF_new3(double x1, double y1, double x2, double y2, QLineF** outptr_QLineF) {
+	QLineF* ret = new QLineF(static_cast<qreal>(x1), static_cast<qreal>(y1), static_cast<qreal>(x2), static_cast<qreal>(y2));
+	*outptr_QLineF = ret;
 }
 
-QLineF* QLineF_new4(QLine* line) {
-	return new QLineF(*line);
+void QLineF_new4(QLine* line, QLineF** outptr_QLineF) {
+	QLineF* ret = new QLineF(*line);
+	*outptr_QLineF = ret;
 }
 
-QLineF* QLineF_new5(QLineF* param1) {
-	return new QLineF(*param1);
+void QLineF_new5(QLineF* param1, QLineF** outptr_QLineF) {
+	QLineF* ret = new QLineF(*param1);
+	*outptr_QLineF = ret;
 }
 
 QLineF* QLineF_FromPolar(double length, double angle) {
@@ -270,7 +283,11 @@ QLine* QLineF_ToLine(const QLineF* self) {
 	return new QLine(self->toLine());
 }
 
-void QLineF_Delete(QLineF* self) {
-	delete self;
+void QLineF_Delete(QLineF* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QLineF*>( self );
+	} else {
+		delete self;
+	}
 }
 

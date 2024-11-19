@@ -14,7 +14,8 @@ import (
 )
 
 type QPoint struct {
-	h *C.QPoint
+	h          *C.QPoint
+	isSubclass bool
 }
 
 func (this *QPoint) cPointer() *C.QPoint {
@@ -31,6 +32,7 @@ func (this *QPoint) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPoint constructs the type using only CGO pointers.
 func newQPoint(h *C.QPoint) *QPoint {
 	if h == nil {
 		return nil
@@ -38,26 +40,43 @@ func newQPoint(h *C.QPoint) *QPoint {
 	return &QPoint{h: h}
 }
 
+// UnsafeNewQPoint constructs the type using only unsafe pointers.
 func UnsafeNewQPoint(h unsafe.Pointer) *QPoint {
-	return newQPoint((*C.QPoint)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPoint{h: (*C.QPoint)(h)}
 }
 
 // NewQPoint constructs a new QPoint object.
 func NewQPoint() *QPoint {
-	ret := C.QPoint_new()
-	return newQPoint(ret)
+	var outptr_QPoint *C.QPoint = nil
+
+	C.QPoint_new(&outptr_QPoint)
+	ret := newQPoint(outptr_QPoint)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPoint2 constructs a new QPoint object.
 func NewQPoint2(xpos int, ypos int) *QPoint {
-	ret := C.QPoint_new2((C.int)(xpos), (C.int)(ypos))
-	return newQPoint(ret)
+	var outptr_QPoint *C.QPoint = nil
+
+	C.QPoint_new2((C.int)(xpos), (C.int)(ypos), &outptr_QPoint)
+	ret := newQPoint(outptr_QPoint)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPoint3 constructs a new QPoint object.
 func NewQPoint3(param1 *QPoint) *QPoint {
-	ret := C.QPoint_new3(param1.cPointer())
-	return newQPoint(ret)
+	var outptr_QPoint *C.QPoint = nil
+
+	C.QPoint_new3(param1.cPointer(), &outptr_QPoint)
+	ret := newQPoint(outptr_QPoint)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QPoint) IsNull() bool {
@@ -121,7 +140,7 @@ func QPoint_DotProduct(p1 *QPoint, p2 *QPoint) int {
 
 // Delete this object from C++ memory.
 func (this *QPoint) Delete() {
-	C.QPoint_Delete(this.h)
+	C.QPoint_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -134,7 +153,8 @@ func (this *QPoint) GoGC() {
 }
 
 type QPointF struct {
-	h *C.QPointF
+	h          *C.QPointF
+	isSubclass bool
 }
 
 func (this *QPointF) cPointer() *C.QPointF {
@@ -151,6 +171,7 @@ func (this *QPointF) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPointF constructs the type using only CGO pointers.
 func newQPointF(h *C.QPointF) *QPointF {
 	if h == nil {
 		return nil
@@ -158,32 +179,53 @@ func newQPointF(h *C.QPointF) *QPointF {
 	return &QPointF{h: h}
 }
 
+// UnsafeNewQPointF constructs the type using only unsafe pointers.
 func UnsafeNewQPointF(h unsafe.Pointer) *QPointF {
-	return newQPointF((*C.QPointF)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPointF{h: (*C.QPointF)(h)}
 }
 
 // NewQPointF constructs a new QPointF object.
 func NewQPointF() *QPointF {
-	ret := C.QPointF_new()
-	return newQPointF(ret)
+	var outptr_QPointF *C.QPointF = nil
+
+	C.QPointF_new(&outptr_QPointF)
+	ret := newQPointF(outptr_QPointF)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPointF2 constructs a new QPointF object.
 func NewQPointF2(p *QPoint) *QPointF {
-	ret := C.QPointF_new2(p.cPointer())
-	return newQPointF(ret)
+	var outptr_QPointF *C.QPointF = nil
+
+	C.QPointF_new2(p.cPointer(), &outptr_QPointF)
+	ret := newQPointF(outptr_QPointF)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPointF3 constructs a new QPointF object.
 func NewQPointF3(xpos float64, ypos float64) *QPointF {
-	ret := C.QPointF_new3((C.double)(xpos), (C.double)(ypos))
-	return newQPointF(ret)
+	var outptr_QPointF *C.QPointF = nil
+
+	C.QPointF_new3((C.double)(xpos), (C.double)(ypos), &outptr_QPointF)
+	ret := newQPointF(outptr_QPointF)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPointF4 constructs a new QPointF object.
 func NewQPointF4(param1 *QPointF) *QPointF {
-	ret := C.QPointF_new4(param1.cPointer())
-	return newQPointF(ret)
+	var outptr_QPointF *C.QPointF = nil
+
+	C.QPointF_new4(param1.cPointer(), &outptr_QPointF)
+	ret := newQPointF(outptr_QPointF)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QPointF) ManhattanLength() float64 {
@@ -246,7 +288,7 @@ func (this *QPointF) ToPoint() *QPoint {
 
 // Delete this object from C++ memory.
 func (this *QPointF) Delete() {
-	C.QPointF_Delete(this.h)
+	C.QPointF_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -14,7 +14,8 @@ import (
 )
 
 type QtPrivate__ResultItem struct {
-	h *C.QtPrivate__ResultItem
+	h          *C.QtPrivate__ResultItem
+	isSubclass bool
 }
 
 func (this *QtPrivate__ResultItem) cPointer() *C.QtPrivate__ResultItem {
@@ -31,6 +32,7 @@ func (this *QtPrivate__ResultItem) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQtPrivate__ResultItem constructs the type using only CGO pointers.
 func newQtPrivate__ResultItem(h *C.QtPrivate__ResultItem) *QtPrivate__ResultItem {
 	if h == nil {
 		return nil
@@ -38,26 +40,43 @@ func newQtPrivate__ResultItem(h *C.QtPrivate__ResultItem) *QtPrivate__ResultItem
 	return &QtPrivate__ResultItem{h: h}
 }
 
+// UnsafeNewQtPrivate__ResultItem constructs the type using only unsafe pointers.
 func UnsafeNewQtPrivate__ResultItem(h unsafe.Pointer) *QtPrivate__ResultItem {
-	return newQtPrivate__ResultItem((*C.QtPrivate__ResultItem)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QtPrivate__ResultItem{h: (*C.QtPrivate__ResultItem)(h)}
 }
 
 // NewQtPrivate__ResultItem constructs a new QtPrivate::ResultItem object.
 func NewQtPrivate__ResultItem(_result unsafe.Pointer, _count int) *QtPrivate__ResultItem {
-	ret := C.QtPrivate__ResultItem_new(_result, (C.int)(_count))
-	return newQtPrivate__ResultItem(ret)
+	var outptr_QtPrivate__ResultItem *C.QtPrivate__ResultItem = nil
+
+	C.QtPrivate__ResultItem_new(_result, (C.int)(_count), &outptr_QtPrivate__ResultItem)
+	ret := newQtPrivate__ResultItem(outptr_QtPrivate__ResultItem)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQtPrivate__ResultItem2 constructs a new QtPrivate::ResultItem object.
 func NewQtPrivate__ResultItem2(_result unsafe.Pointer) *QtPrivate__ResultItem {
-	ret := C.QtPrivate__ResultItem_new2(_result)
-	return newQtPrivate__ResultItem(ret)
+	var outptr_QtPrivate__ResultItem *C.QtPrivate__ResultItem = nil
+
+	C.QtPrivate__ResultItem_new2(_result, &outptr_QtPrivate__ResultItem)
+	ret := newQtPrivate__ResultItem(outptr_QtPrivate__ResultItem)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQtPrivate__ResultItem3 constructs a new QtPrivate::ResultItem object.
 func NewQtPrivate__ResultItem3() *QtPrivate__ResultItem {
-	ret := C.QtPrivate__ResultItem_new3()
-	return newQtPrivate__ResultItem(ret)
+	var outptr_QtPrivate__ResultItem *C.QtPrivate__ResultItem = nil
+
+	C.QtPrivate__ResultItem_new3(&outptr_QtPrivate__ResultItem)
+	ret := newQtPrivate__ResultItem(outptr_QtPrivate__ResultItem)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QtPrivate__ResultItem) IsValid() bool {
@@ -74,7 +93,7 @@ func (this *QtPrivate__ResultItem) Count() int {
 
 // Delete this object from C++ memory.
 func (this *QtPrivate__ResultItem) Delete() {
-	C.QtPrivate__ResultItem_Delete(this.h)
+	C.QtPrivate__ResultItem_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -87,7 +106,8 @@ func (this *QtPrivate__ResultItem) GoGC() {
 }
 
 type QtPrivate__ResultIteratorBase struct {
-	h *C.QtPrivate__ResultIteratorBase
+	h          *C.QtPrivate__ResultIteratorBase
+	isSubclass bool
 }
 
 func (this *QtPrivate__ResultIteratorBase) cPointer() *C.QtPrivate__ResultIteratorBase {
@@ -104,6 +124,7 @@ func (this *QtPrivate__ResultIteratorBase) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQtPrivate__ResultIteratorBase constructs the type using only CGO pointers.
 func newQtPrivate__ResultIteratorBase(h *C.QtPrivate__ResultIteratorBase) *QtPrivate__ResultIteratorBase {
 	if h == nil {
 		return nil
@@ -111,14 +132,23 @@ func newQtPrivate__ResultIteratorBase(h *C.QtPrivate__ResultIteratorBase) *QtPri
 	return &QtPrivate__ResultIteratorBase{h: h}
 }
 
+// UnsafeNewQtPrivate__ResultIteratorBase constructs the type using only unsafe pointers.
 func UnsafeNewQtPrivate__ResultIteratorBase(h unsafe.Pointer) *QtPrivate__ResultIteratorBase {
-	return newQtPrivate__ResultIteratorBase((*C.QtPrivate__ResultIteratorBase)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QtPrivate__ResultIteratorBase{h: (*C.QtPrivate__ResultIteratorBase)(h)}
 }
 
 // NewQtPrivate__ResultIteratorBase constructs a new QtPrivate::ResultIteratorBase object.
 func NewQtPrivate__ResultIteratorBase() *QtPrivate__ResultIteratorBase {
-	ret := C.QtPrivate__ResultIteratorBase_new()
-	return newQtPrivate__ResultIteratorBase(ret)
+	var outptr_QtPrivate__ResultIteratorBase *C.QtPrivate__ResultIteratorBase = nil
+
+	C.QtPrivate__ResultIteratorBase_new(&outptr_QtPrivate__ResultIteratorBase)
+	ret := newQtPrivate__ResultIteratorBase(outptr_QtPrivate__ResultIteratorBase)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QtPrivate__ResultIteratorBase) VectorIndex() int {
@@ -147,7 +177,7 @@ func (this *QtPrivate__ResultIteratorBase) CanIncrementVectorIndex() bool {
 
 // Delete this object from C++ memory.
 func (this *QtPrivate__ResultIteratorBase) Delete() {
-	C.QtPrivate__ResultIteratorBase_Delete(this.h)
+	C.QtPrivate__ResultIteratorBase_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -160,7 +190,8 @@ func (this *QtPrivate__ResultIteratorBase) GoGC() {
 }
 
 type QtPrivate__ResultStoreBase struct {
-	h *C.QtPrivate__ResultStoreBase
+	h          *C.QtPrivate__ResultStoreBase
+	isSubclass bool
 }
 
 func (this *QtPrivate__ResultStoreBase) cPointer() *C.QtPrivate__ResultStoreBase {
@@ -177,6 +208,7 @@ func (this *QtPrivate__ResultStoreBase) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQtPrivate__ResultStoreBase constructs the type using only CGO pointers.
 func newQtPrivate__ResultStoreBase(h *C.QtPrivate__ResultStoreBase) *QtPrivate__ResultStoreBase {
 	if h == nil {
 		return nil
@@ -184,14 +216,23 @@ func newQtPrivate__ResultStoreBase(h *C.QtPrivate__ResultStoreBase) *QtPrivate__
 	return &QtPrivate__ResultStoreBase{h: h}
 }
 
+// UnsafeNewQtPrivate__ResultStoreBase constructs the type using only unsafe pointers.
 func UnsafeNewQtPrivate__ResultStoreBase(h unsafe.Pointer) *QtPrivate__ResultStoreBase {
-	return newQtPrivate__ResultStoreBase((*C.QtPrivate__ResultStoreBase)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QtPrivate__ResultStoreBase{h: (*C.QtPrivate__ResultStoreBase)(h)}
 }
 
 // NewQtPrivate__ResultStoreBase constructs a new QtPrivate::ResultStoreBase object.
 func NewQtPrivate__ResultStoreBase() *QtPrivate__ResultStoreBase {
-	ret := C.QtPrivate__ResultStoreBase_new()
-	return newQtPrivate__ResultStoreBase(ret)
+	var outptr_QtPrivate__ResultStoreBase *C.QtPrivate__ResultStoreBase = nil
+
+	C.QtPrivate__ResultStoreBase_new(&outptr_QtPrivate__ResultStoreBase)
+	ret := newQtPrivate__ResultStoreBase(outptr_QtPrivate__ResultStoreBase)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QtPrivate__ResultStoreBase) SetFilterMode(enable bool) {
@@ -228,7 +269,7 @@ func (this *QtPrivate__ResultStoreBase) AddCanceledResult(index int) int {
 
 // Delete this object from C++ memory.
 func (this *QtPrivate__ResultStoreBase) Delete() {
-	C.QtPrivate__ResultStoreBase_Delete(this.h)
+	C.QtPrivate__ResultStoreBase_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

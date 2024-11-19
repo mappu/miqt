@@ -14,7 +14,8 @@ import (
 )
 
 type QStorageInfo struct {
-	h *C.QStorageInfo
+	h          *C.QStorageInfo
+	isSubclass bool
 }
 
 func (this *QStorageInfo) cPointer() *C.QStorageInfo {
@@ -31,6 +32,7 @@ func (this *QStorageInfo) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQStorageInfo constructs the type using only CGO pointers.
 func newQStorageInfo(h *C.QStorageInfo) *QStorageInfo {
 	if h == nil {
 		return nil
@@ -38,14 +40,23 @@ func newQStorageInfo(h *C.QStorageInfo) *QStorageInfo {
 	return &QStorageInfo{h: h}
 }
 
+// UnsafeNewQStorageInfo constructs the type using only unsafe pointers.
 func UnsafeNewQStorageInfo(h unsafe.Pointer) *QStorageInfo {
-	return newQStorageInfo((*C.QStorageInfo)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QStorageInfo{h: (*C.QStorageInfo)(h)}
 }
 
 // NewQStorageInfo constructs a new QStorageInfo object.
 func NewQStorageInfo() *QStorageInfo {
-	ret := C.QStorageInfo_new()
-	return newQStorageInfo(ret)
+	var outptr_QStorageInfo *C.QStorageInfo = nil
+
+	C.QStorageInfo_new(&outptr_QStorageInfo)
+	ret := newQStorageInfo(outptr_QStorageInfo)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStorageInfo2 constructs a new QStorageInfo object.
@@ -54,20 +65,32 @@ func NewQStorageInfo2(path string) *QStorageInfo {
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	ret := C.QStorageInfo_new2(path_ms)
-	return newQStorageInfo(ret)
+	var outptr_QStorageInfo *C.QStorageInfo = nil
+
+	C.QStorageInfo_new2(path_ms, &outptr_QStorageInfo)
+	ret := newQStorageInfo(outptr_QStorageInfo)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStorageInfo3 constructs a new QStorageInfo object.
 func NewQStorageInfo3(dir *QDir) *QStorageInfo {
-	ret := C.QStorageInfo_new3(dir.cPointer())
-	return newQStorageInfo(ret)
+	var outptr_QStorageInfo *C.QStorageInfo = nil
+
+	C.QStorageInfo_new3(dir.cPointer(), &outptr_QStorageInfo)
+	ret := newQStorageInfo(outptr_QStorageInfo)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStorageInfo4 constructs a new QStorageInfo object.
 func NewQStorageInfo4(other *QStorageInfo) *QStorageInfo {
-	ret := C.QStorageInfo_new4(other.cPointer())
-	return newQStorageInfo(ret)
+	var outptr_QStorageInfo *C.QStorageInfo = nil
+
+	C.QStorageInfo_new4(other.cPointer(), &outptr_QStorageInfo)
+	ret := newQStorageInfo(outptr_QStorageInfo)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QStorageInfo) OperatorAssign(other *QStorageInfo) {
@@ -186,7 +209,7 @@ func QStorageInfo_Root() *QStorageInfo {
 
 // Delete this object from C++ memory.
 func (this *QStorageInfo) Delete() {
-	C.QStorageInfo_Delete(this.h)
+	C.QStorageInfo_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

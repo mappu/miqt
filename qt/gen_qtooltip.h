@@ -41,7 +41,7 @@ void QToolTip_SetPalette(QPalette* palette);
 QFont* QToolTip_Font();
 void QToolTip_SetFont(QFont* font);
 void QToolTip_ShowText32(QPoint* pos, struct miqt_string text, QWidget* w);
-void QToolTip_Delete(QToolTip* self);
+void QToolTip_Delete(QToolTip* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

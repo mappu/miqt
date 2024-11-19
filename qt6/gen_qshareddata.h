@@ -22,12 +22,12 @@ typedef struct QAdoptSharedDataTag QAdoptSharedDataTag;
 typedef struct QSharedData QSharedData;
 #endif
 
-QSharedData* QSharedData_new();
-QSharedData* QSharedData_new2(QSharedData* param1);
-void QSharedData_Delete(QSharedData* self);
+void QSharedData_new(QSharedData** outptr_QSharedData);
+void QSharedData_new2(QSharedData* param1, QSharedData** outptr_QSharedData);
+void QSharedData_Delete(QSharedData* self, bool isSubclass);
 
-QAdoptSharedDataTag* QAdoptSharedDataTag_new();
-void QAdoptSharedDataTag_Delete(QAdoptSharedDataTag* self);
+void QAdoptSharedDataTag_new(QAdoptSharedDataTag** outptr_QAdoptSharedDataTag);
+void QAdoptSharedDataTag_Delete(QAdoptSharedDataTag* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

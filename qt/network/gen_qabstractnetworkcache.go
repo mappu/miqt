@@ -15,7 +15,8 @@ import (
 )
 
 type QNetworkCacheMetaData struct {
-	h *C.QNetworkCacheMetaData
+	h          *C.QNetworkCacheMetaData
+	isSubclass bool
 }
 
 func (this *QNetworkCacheMetaData) cPointer() *C.QNetworkCacheMetaData {
@@ -32,6 +33,7 @@ func (this *QNetworkCacheMetaData) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQNetworkCacheMetaData constructs the type using only CGO pointers.
 func newQNetworkCacheMetaData(h *C.QNetworkCacheMetaData) *QNetworkCacheMetaData {
 	if h == nil {
 		return nil
@@ -39,20 +41,33 @@ func newQNetworkCacheMetaData(h *C.QNetworkCacheMetaData) *QNetworkCacheMetaData
 	return &QNetworkCacheMetaData{h: h}
 }
 
+// UnsafeNewQNetworkCacheMetaData constructs the type using only unsafe pointers.
 func UnsafeNewQNetworkCacheMetaData(h unsafe.Pointer) *QNetworkCacheMetaData {
-	return newQNetworkCacheMetaData((*C.QNetworkCacheMetaData)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QNetworkCacheMetaData{h: (*C.QNetworkCacheMetaData)(h)}
 }
 
 // NewQNetworkCacheMetaData constructs a new QNetworkCacheMetaData object.
 func NewQNetworkCacheMetaData() *QNetworkCacheMetaData {
-	ret := C.QNetworkCacheMetaData_new()
-	return newQNetworkCacheMetaData(ret)
+	var outptr_QNetworkCacheMetaData *C.QNetworkCacheMetaData = nil
+
+	C.QNetworkCacheMetaData_new(&outptr_QNetworkCacheMetaData)
+	ret := newQNetworkCacheMetaData(outptr_QNetworkCacheMetaData)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQNetworkCacheMetaData2 constructs a new QNetworkCacheMetaData object.
 func NewQNetworkCacheMetaData2(other *QNetworkCacheMetaData) *QNetworkCacheMetaData {
-	ret := C.QNetworkCacheMetaData_new2(other.cPointer())
-	return newQNetworkCacheMetaData(ret)
+	var outptr_QNetworkCacheMetaData *C.QNetworkCacheMetaData = nil
+
+	C.QNetworkCacheMetaData_new2(other.cPointer(), &outptr_QNetworkCacheMetaData)
+	ret := newQNetworkCacheMetaData(outptr_QNetworkCacheMetaData)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QNetworkCacheMetaData) OperatorAssign(other *QNetworkCacheMetaData) {
@@ -215,7 +230,7 @@ func (this *QNetworkCacheMetaData) SetAttributes(attributes map[QNetworkRequest_
 
 // Delete this object from C++ memory.
 func (this *QNetworkCacheMetaData) Delete() {
-	C.QNetworkCacheMetaData_Delete(this.h)
+	C.QNetworkCacheMetaData_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -228,7 +243,8 @@ func (this *QNetworkCacheMetaData) GoGC() {
 }
 
 type QAbstractNetworkCache struct {
-	h *C.QAbstractNetworkCache
+	h          *C.QAbstractNetworkCache
+	isSubclass bool
 	*qt.QObject
 }
 
@@ -246,15 +262,23 @@ func (this *QAbstractNetworkCache) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAbstractNetworkCache(h *C.QAbstractNetworkCache) *QAbstractNetworkCache {
+// newQAbstractNetworkCache constructs the type using only CGO pointers.
+func newQAbstractNetworkCache(h *C.QAbstractNetworkCache, h_QObject *C.QObject) *QAbstractNetworkCache {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractNetworkCache{h: h, QObject: qt.UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QAbstractNetworkCache{h: h,
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
 }
 
-func UnsafeNewQAbstractNetworkCache(h unsafe.Pointer) *QAbstractNetworkCache {
-	return newQAbstractNetworkCache((*C.QAbstractNetworkCache)(h))
+// UnsafeNewQAbstractNetworkCache constructs the type using only unsafe pointers.
+func UnsafeNewQAbstractNetworkCache(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractNetworkCache {
+	if h == nil {
+		return nil
+	}
+
+	return &QAbstractNetworkCache{h: (*C.QAbstractNetworkCache)(h),
+		QObject: qt.UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QAbstractNetworkCache) MetaObject() *qt.QMetaObject {
@@ -297,7 +321,7 @@ func (this *QAbstractNetworkCache) UpdateMetaData(metaData *QNetworkCacheMetaDat
 }
 
 func (this *QAbstractNetworkCache) Data(url *qt.QUrl) *qt.QIODevice {
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractNetworkCache_Data(this.h, (*C.QUrl)(url.UnsafePointer()))))
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractNetworkCache_Data(this.h, (*C.QUrl)(url.UnsafePointer()))), nil)
 }
 
 func (this *QAbstractNetworkCache) Remove(url *qt.QUrl) bool {
@@ -309,7 +333,7 @@ func (this *QAbstractNetworkCache) CacheSize() int64 {
 }
 
 func (this *QAbstractNetworkCache) Prepare(metaData *QNetworkCacheMetaData) *qt.QIODevice {
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractNetworkCache_Prepare(this.h, metaData.cPointer())))
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractNetworkCache_Prepare(this.h, metaData.cPointer())), nil)
 }
 
 func (this *QAbstractNetworkCache) Insert(device *qt.QIODevice) {
@@ -366,7 +390,7 @@ func QAbstractNetworkCache_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAbstractNetworkCache) Delete() {
-	C.QAbstractNetworkCache_Delete(this.h)
+	C.QAbstractNetworkCache_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

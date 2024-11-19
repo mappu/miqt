@@ -1,18 +1,204 @@
 #include <QAction>
 #include <QActionGroup>
+#include <QChildEvent>
+#include <QEvent>
 #include <QIcon>
 #include <QList>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QTimerEvent>
 #include <qactiongroup.h>
 #include "gen_qactiongroup.h"
 #include "_cgo_export.h"
 
-QActionGroup* QActionGroup_new(QObject* parent) {
-	return new QActionGroup(parent);
+class MiqtVirtualQActionGroup : public virtual QActionGroup {
+public:
+
+	MiqtVirtualQActionGroup(QObject* parent): QActionGroup(parent) {};
+
+	virtual ~MiqtVirtualQActionGroup() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QActionGroup::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QActionGroup_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QActionGroup::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QActionGroup::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QActionGroup_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QActionGroup::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QActionGroup::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QActionGroup_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QActionGroup::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QActionGroup::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QActionGroup_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QActionGroup::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QActionGroup::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QActionGroup_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QActionGroup::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QActionGroup::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QActionGroup_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QActionGroup::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QActionGroup::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QActionGroup_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QActionGroup::disconnectNotify(*signal);
+
+	}
+
+};
+
+void QActionGroup_new(QObject* parent, QActionGroup** outptr_QActionGroup, QObject** outptr_QObject) {
+	MiqtVirtualQActionGroup* ret = new MiqtVirtualQActionGroup(parent);
+	*outptr_QActionGroup = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QActionGroup_MetaObject(const QActionGroup* self) {
@@ -111,7 +297,7 @@ void QActionGroup_Triggered(QActionGroup* self, QAction* param1) {
 }
 
 void QActionGroup_connect_Triggered(QActionGroup* self, intptr_t slot) {
-	QActionGroup::connect(self, static_cast<void (QActionGroup::*)(QAction*)>(&QActionGroup::triggered), self, [=](QAction* param1) {
+	MiqtVirtualQActionGroup::connect(self, static_cast<void (QActionGroup::*)(QAction*)>(&QActionGroup::triggered), self, [=](QAction* param1) {
 		QAction* sigval1 = param1;
 		miqt_exec_callback_QActionGroup_Triggered(slot, sigval1);
 	});
@@ -122,7 +308,7 @@ void QActionGroup_Hovered(QActionGroup* self, QAction* param1) {
 }
 
 void QActionGroup_connect_Hovered(QActionGroup* self, intptr_t slot) {
-	QActionGroup::connect(self, static_cast<void (QActionGroup::*)(QAction*)>(&QActionGroup::hovered), self, [=](QAction* param1) {
+	MiqtVirtualQActionGroup::connect(self, static_cast<void (QActionGroup::*)(QAction*)>(&QActionGroup::hovered), self, [=](QAction* param1) {
 		QAction* sigval1 = param1;
 		miqt_exec_callback_QActionGroup_Hovered(slot, sigval1);
 	});
@@ -150,7 +336,67 @@ struct miqt_string QActionGroup_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QActionGroup_Delete(QActionGroup* self) {
-	delete self;
+void QActionGroup_override_virtual_Event(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) )->handle__Event = slot;
+}
+
+bool QActionGroup_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQActionGroup*)(self) )->virtualbase_Event(event);
+}
+
+void QActionGroup_override_virtual_EventFilter(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) )->handle__EventFilter = slot;
+}
+
+bool QActionGroup_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQActionGroup*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+void QActionGroup_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) )->handle__TimerEvent = slot;
+}
+
+void QActionGroup_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQActionGroup*)(self) )->virtualbase_TimerEvent(event);
+}
+
+void QActionGroup_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) )->handle__ChildEvent = slot;
+}
+
+void QActionGroup_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQActionGroup*)(self) )->virtualbase_ChildEvent(event);
+}
+
+void QActionGroup_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) )->handle__CustomEvent = slot;
+}
+
+void QActionGroup_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQActionGroup*)(self) )->virtualbase_CustomEvent(event);
+}
+
+void QActionGroup_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) )->handle__ConnectNotify = slot;
+}
+
+void QActionGroup_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQActionGroup*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+void QActionGroup_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) )->handle__DisconnectNotify = slot;
+}
+
+void QActionGroup_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQActionGroup*)(self) )->virtualbase_DisconnectNotify(signal);
+}
+
+void QActionGroup_Delete(QActionGroup* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQActionGroup*>( self );
+	} else {
+		delete self;
+	}
 }
 

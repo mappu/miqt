@@ -87,7 +87,8 @@ const (
 )
 
 type QPixelFormat struct {
-	h *C.QPixelFormat
+	h          *C.QPixelFormat
+	isSubclass bool
 }
 
 func (this *QPixelFormat) cPointer() *C.QPixelFormat {
@@ -104,6 +105,7 @@ func (this *QPixelFormat) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPixelFormat constructs the type using only CGO pointers.
 func newQPixelFormat(h *C.QPixelFormat) *QPixelFormat {
 	if h == nil {
 		return nil
@@ -111,38 +113,63 @@ func newQPixelFormat(h *C.QPixelFormat) *QPixelFormat {
 	return &QPixelFormat{h: h}
 }
 
+// UnsafeNewQPixelFormat constructs the type using only unsafe pointers.
 func UnsafeNewQPixelFormat(h unsafe.Pointer) *QPixelFormat {
-	return newQPixelFormat((*C.QPixelFormat)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPixelFormat{h: (*C.QPixelFormat)(h)}
 }
 
 // NewQPixelFormat constructs a new QPixelFormat object.
 func NewQPixelFormat() *QPixelFormat {
-	ret := C.QPixelFormat_new()
-	return newQPixelFormat(ret)
+	var outptr_QPixelFormat *C.QPixelFormat = nil
+
+	C.QPixelFormat_new(&outptr_QPixelFormat)
+	ret := newQPixelFormat(outptr_QPixelFormat)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPixelFormat2 constructs a new QPixelFormat object.
 func NewQPixelFormat2(colorModel QPixelFormat__ColorModel, firstSize byte, secondSize byte, thirdSize byte, fourthSize byte, fifthSize byte, alphaSize byte, alphaUsage QPixelFormat__AlphaUsage, alphaPosition QPixelFormat__AlphaPosition, premultiplied QPixelFormat__AlphaPremultiplied, typeInterpretation QPixelFormat__TypeInterpretation) *QPixelFormat {
-	ret := C.QPixelFormat_new2((C.int)(colorModel), (C.uchar)(firstSize), (C.uchar)(secondSize), (C.uchar)(thirdSize), (C.uchar)(fourthSize), (C.uchar)(fifthSize), (C.uchar)(alphaSize), (C.int)(alphaUsage), (C.int)(alphaPosition), (C.int)(premultiplied), (C.int)(typeInterpretation))
-	return newQPixelFormat(ret)
+	var outptr_QPixelFormat *C.QPixelFormat = nil
+
+	C.QPixelFormat_new2((C.int)(colorModel), (C.uchar)(firstSize), (C.uchar)(secondSize), (C.uchar)(thirdSize), (C.uchar)(fourthSize), (C.uchar)(fifthSize), (C.uchar)(alphaSize), (C.int)(alphaUsage), (C.int)(alphaPosition), (C.int)(premultiplied), (C.int)(typeInterpretation), &outptr_QPixelFormat)
+	ret := newQPixelFormat(outptr_QPixelFormat)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPixelFormat3 constructs a new QPixelFormat object.
 func NewQPixelFormat3(param1 *QPixelFormat) *QPixelFormat {
-	ret := C.QPixelFormat_new3(param1.cPointer())
-	return newQPixelFormat(ret)
+	var outptr_QPixelFormat *C.QPixelFormat = nil
+
+	C.QPixelFormat_new3(param1.cPointer(), &outptr_QPixelFormat)
+	ret := newQPixelFormat(outptr_QPixelFormat)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPixelFormat4 constructs a new QPixelFormat object.
 func NewQPixelFormat4(colorModel QPixelFormat__ColorModel, firstSize byte, secondSize byte, thirdSize byte, fourthSize byte, fifthSize byte, alphaSize byte, alphaUsage QPixelFormat__AlphaUsage, alphaPosition QPixelFormat__AlphaPosition, premultiplied QPixelFormat__AlphaPremultiplied, typeInterpretation QPixelFormat__TypeInterpretation, byteOrder QPixelFormat__ByteOrder) *QPixelFormat {
-	ret := C.QPixelFormat_new4((C.int)(colorModel), (C.uchar)(firstSize), (C.uchar)(secondSize), (C.uchar)(thirdSize), (C.uchar)(fourthSize), (C.uchar)(fifthSize), (C.uchar)(alphaSize), (C.int)(alphaUsage), (C.int)(alphaPosition), (C.int)(premultiplied), (C.int)(typeInterpretation), (C.int)(byteOrder))
-	return newQPixelFormat(ret)
+	var outptr_QPixelFormat *C.QPixelFormat = nil
+
+	C.QPixelFormat_new4((C.int)(colorModel), (C.uchar)(firstSize), (C.uchar)(secondSize), (C.uchar)(thirdSize), (C.uchar)(fourthSize), (C.uchar)(fifthSize), (C.uchar)(alphaSize), (C.int)(alphaUsage), (C.int)(alphaPosition), (C.int)(premultiplied), (C.int)(typeInterpretation), (C.int)(byteOrder), &outptr_QPixelFormat)
+	ret := newQPixelFormat(outptr_QPixelFormat)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPixelFormat5 constructs a new QPixelFormat object.
 func NewQPixelFormat5(colorModel QPixelFormat__ColorModel, firstSize byte, secondSize byte, thirdSize byte, fourthSize byte, fifthSize byte, alphaSize byte, alphaUsage QPixelFormat__AlphaUsage, alphaPosition QPixelFormat__AlphaPosition, premultiplied QPixelFormat__AlphaPremultiplied, typeInterpretation QPixelFormat__TypeInterpretation, byteOrder QPixelFormat__ByteOrder, subEnum byte) *QPixelFormat {
-	ret := C.QPixelFormat_new5((C.int)(colorModel), (C.uchar)(firstSize), (C.uchar)(secondSize), (C.uchar)(thirdSize), (C.uchar)(fourthSize), (C.uchar)(fifthSize), (C.uchar)(alphaSize), (C.int)(alphaUsage), (C.int)(alphaPosition), (C.int)(premultiplied), (C.int)(typeInterpretation), (C.int)(byteOrder), (C.uchar)(subEnum))
-	return newQPixelFormat(ret)
+	var outptr_QPixelFormat *C.QPixelFormat = nil
+
+	C.QPixelFormat_new5((C.int)(colorModel), (C.uchar)(firstSize), (C.uchar)(secondSize), (C.uchar)(thirdSize), (C.uchar)(fourthSize), (C.uchar)(fifthSize), (C.uchar)(alphaSize), (C.int)(alphaUsage), (C.int)(alphaPosition), (C.int)(premultiplied), (C.int)(typeInterpretation), (C.int)(byteOrder), (C.uchar)(subEnum), &outptr_QPixelFormat)
+	ret := newQPixelFormat(outptr_QPixelFormat)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QPixelFormat) ColorModel() QPixelFormat__ColorModel {
@@ -235,7 +262,7 @@ func (this *QPixelFormat) SubEnum() byte {
 
 // Delete this object from C++ memory.
 func (this *QPixelFormat) Delete() {
-	C.QPixelFormat_Delete(this.h)
+	C.QPixelFormat_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

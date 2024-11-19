@@ -15,7 +15,8 @@ import (
 )
 
 type QVariantAnimation struct {
-	h *C.QVariantAnimation
+	h          *C.QVariantAnimation
+	isSubclass bool
 	*QAbstractAnimation
 }
 
@@ -33,27 +34,47 @@ func (this *QVariantAnimation) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQVariantAnimation(h *C.QVariantAnimation) *QVariantAnimation {
+// newQVariantAnimation constructs the type using only CGO pointers.
+func newQVariantAnimation(h *C.QVariantAnimation, h_QAbstractAnimation *C.QAbstractAnimation, h_QObject *C.QObject) *QVariantAnimation {
 	if h == nil {
 		return nil
 	}
-	return &QVariantAnimation{h: h, QAbstractAnimation: UnsafeNewQAbstractAnimation(unsafe.Pointer(h))}
+	return &QVariantAnimation{h: h,
+		QAbstractAnimation: newQAbstractAnimation(h_QAbstractAnimation, h_QObject)}
 }
 
-func UnsafeNewQVariantAnimation(h unsafe.Pointer) *QVariantAnimation {
-	return newQVariantAnimation((*C.QVariantAnimation)(h))
+// UnsafeNewQVariantAnimation constructs the type using only unsafe pointers.
+func UnsafeNewQVariantAnimation(h unsafe.Pointer, h_QAbstractAnimation unsafe.Pointer, h_QObject unsafe.Pointer) *QVariantAnimation {
+	if h == nil {
+		return nil
+	}
+
+	return &QVariantAnimation{h: (*C.QVariantAnimation)(h),
+		QAbstractAnimation: UnsafeNewQAbstractAnimation(h_QAbstractAnimation, h_QObject)}
 }
 
 // NewQVariantAnimation constructs a new QVariantAnimation object.
 func NewQVariantAnimation() *QVariantAnimation {
-	ret := C.QVariantAnimation_new()
-	return newQVariantAnimation(ret)
+	var outptr_QVariantAnimation *C.QVariantAnimation = nil
+	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QVariantAnimation_new(&outptr_QVariantAnimation, &outptr_QAbstractAnimation, &outptr_QObject)
+	ret := newQVariantAnimation(outptr_QVariantAnimation, outptr_QAbstractAnimation, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariantAnimation2 constructs a new QVariantAnimation object.
 func NewQVariantAnimation2(parent *QObject) *QVariantAnimation {
-	ret := C.QVariantAnimation_new2(parent.cPointer())
-	return newQVariantAnimation(ret)
+	var outptr_QVariantAnimation *C.QVariantAnimation = nil
+	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QVariantAnimation_new2(parent.cPointer(), &outptr_QVariantAnimation, &outptr_QAbstractAnimation, &outptr_QObject)
+	ret := newQVariantAnimation(outptr_QVariantAnimation, outptr_QAbstractAnimation, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QVariantAnimation) MetaObject() *QMetaObject {
@@ -260,9 +281,180 @@ func QVariantAnimation_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QVariantAnimation) callVirtualBase_Duration() int {
+
+	return (int)(C.QVariantAnimation_virtualbase_Duration(unsafe.Pointer(this.h)))
+
+}
+func (this *QVariantAnimation) OnDuration(slot func(super func() int) int) {
+	C.QVariantAnimation_override_virtual_Duration(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QVariantAnimation_Duration
+func miqt_exec_callback_QVariantAnimation_Duration(self *C.QVariantAnimation, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QVariantAnimation{h: self}).callVirtualBase_Duration)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QVariantAnimation) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QVariantAnimation_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QVariantAnimation) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	C.QVariantAnimation_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QVariantAnimation_Event
+func miqt_exec_callback_QVariantAnimation_Event(self *C.QVariantAnimation, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QVariantAnimation{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QVariantAnimation) callVirtualBase_UpdateCurrentTime(param1 int) {
+
+	C.QVariantAnimation_virtualbase_UpdateCurrentTime(unsafe.Pointer(this.h), (C.int)(param1))
+
+}
+func (this *QVariantAnimation) OnUpdateCurrentTime(slot func(super func(param1 int), param1 int)) {
+	C.QVariantAnimation_override_virtual_UpdateCurrentTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QVariantAnimation_UpdateCurrentTime
+func miqt_exec_callback_QVariantAnimation_UpdateCurrentTime(self *C.QVariantAnimation, cb C.intptr_t, param1 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int), param1 int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(param1)
+
+	gofunc((&QVariantAnimation{h: self}).callVirtualBase_UpdateCurrentTime, slotval1)
+
+}
+
+func (this *QVariantAnimation) callVirtualBase_UpdateState(newState QAbstractAnimation__State, oldState QAbstractAnimation__State) {
+
+	C.QVariantAnimation_virtualbase_UpdateState(unsafe.Pointer(this.h), (C.int)(newState), (C.int)(oldState))
+
+}
+func (this *QVariantAnimation) OnUpdateState(slot func(super func(newState QAbstractAnimation__State, oldState QAbstractAnimation__State), newState QAbstractAnimation__State, oldState QAbstractAnimation__State)) {
+	C.QVariantAnimation_override_virtual_UpdateState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QVariantAnimation_UpdateState
+func miqt_exec_callback_QVariantAnimation_UpdateState(self *C.QVariantAnimation, cb C.intptr_t, newState C.int, oldState C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(newState QAbstractAnimation__State, oldState QAbstractAnimation__State), newState QAbstractAnimation__State, oldState QAbstractAnimation__State))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QAbstractAnimation__State)(newState)
+
+	slotval2 := (QAbstractAnimation__State)(oldState)
+
+	gofunc((&QVariantAnimation{h: self}).callVirtualBase_UpdateState, slotval1, slotval2)
+
+}
+
+func (this *QVariantAnimation) callVirtualBase_UpdateCurrentValue(value *QVariant) {
+
+	C.QVariantAnimation_virtualbase_UpdateCurrentValue(unsafe.Pointer(this.h), value.cPointer())
+
+}
+func (this *QVariantAnimation) OnUpdateCurrentValue(slot func(super func(value *QVariant), value *QVariant)) {
+	C.QVariantAnimation_override_virtual_UpdateCurrentValue(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QVariantAnimation_UpdateCurrentValue
+func miqt_exec_callback_QVariantAnimation_UpdateCurrentValue(self *C.QVariantAnimation, cb C.intptr_t, value *C.QVariant) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(value *QVariant), value *QVariant))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQVariant(unsafe.Pointer(value))
+
+	gofunc((&QVariantAnimation{h: self}).callVirtualBase_UpdateCurrentValue, slotval1)
+
+}
+
+func (this *QVariantAnimation) callVirtualBase_Interpolated(from *QVariant, to *QVariant, progress float64) *QVariant {
+
+	_ret := C.QVariantAnimation_virtualbase_Interpolated(unsafe.Pointer(this.h), from.cPointer(), to.cPointer(), (C.double)(progress))
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QVariantAnimation) OnInterpolated(slot func(super func(from *QVariant, to *QVariant, progress float64) *QVariant, from *QVariant, to *QVariant, progress float64) *QVariant) {
+	C.QVariantAnimation_override_virtual_Interpolated(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QVariantAnimation_Interpolated
+func miqt_exec_callback_QVariantAnimation_Interpolated(self *C.QVariantAnimation, cb C.intptr_t, from *C.QVariant, to *C.QVariant, progress C.double) *C.QVariant {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(from *QVariant, to *QVariant, progress float64) *QVariant, from *QVariant, to *QVariant, progress float64) *QVariant)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQVariant(unsafe.Pointer(from))
+	slotval2 := UnsafeNewQVariant(unsafe.Pointer(to))
+	slotval3 := (float64)(progress)
+
+	virtualReturn := gofunc((&QVariantAnimation{h: self}).callVirtualBase_Interpolated, slotval1, slotval2, slotval3)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QVariantAnimation) callVirtualBase_UpdateDirection(direction QAbstractAnimation__Direction) {
+
+	C.QVariantAnimation_virtualbase_UpdateDirection(unsafe.Pointer(this.h), (C.int)(direction))
+
+}
+func (this *QVariantAnimation) OnUpdateDirection(slot func(super func(direction QAbstractAnimation__Direction), direction QAbstractAnimation__Direction)) {
+	C.QVariantAnimation_override_virtual_UpdateDirection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QVariantAnimation_UpdateDirection
+func miqt_exec_callback_QVariantAnimation_UpdateDirection(self *C.QVariantAnimation, cb C.intptr_t, direction C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(direction QAbstractAnimation__Direction), direction QAbstractAnimation__Direction))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QAbstractAnimation__Direction)(direction)
+
+	gofunc((&QVariantAnimation{h: self}).callVirtualBase_UpdateDirection, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QVariantAnimation) Delete() {
-	C.QVariantAnimation_Delete(this.h)
+	C.QVariantAnimation_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

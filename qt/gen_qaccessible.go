@@ -10,6 +10,7 @@ import "C"
 
 import (
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
@@ -226,7 +227,8 @@ const (
 )
 
 type QAccessible struct {
-	h *C.QAccessible
+	h          *C.QAccessible
+	isSubclass bool
 }
 
 func (this *QAccessible) cPointer() *C.QAccessible {
@@ -243,6 +245,7 @@ func (this *QAccessible) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAccessible constructs the type using only CGO pointers.
 func newQAccessible(h *C.QAccessible) *QAccessible {
 	if h == nil {
 		return nil
@@ -250,8 +253,13 @@ func newQAccessible(h *C.QAccessible) *QAccessible {
 	return &QAccessible{h: h}
 }
 
+// UnsafeNewQAccessible constructs the type using only unsafe pointers.
 func UnsafeNewQAccessible(h unsafe.Pointer) *QAccessible {
-	return newQAccessible((*C.QAccessible)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessible{h: (*C.QAccessible)(h)}
 }
 
 func QAccessible_InstallActivationObserver(param1 *QAccessible__ActivationObserver) {
@@ -321,7 +329,7 @@ func QAccessible_QAccessibleTextBoundaryHelper(cursor *QTextCursor, boundaryType
 
 // Delete this object from C++ memory.
 func (this *QAccessible) Delete() {
-	C.QAccessible_Delete(this.h)
+	C.QAccessible_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -334,7 +342,8 @@ func (this *QAccessible) GoGC() {
 }
 
 type QAccessibleInterface struct {
-	h *C.QAccessibleInterface
+	h          *C.QAccessibleInterface
+	isSubclass bool
 }
 
 func (this *QAccessibleInterface) cPointer() *C.QAccessibleInterface {
@@ -351,6 +360,7 @@ func (this *QAccessibleInterface) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAccessibleInterface constructs the type using only CGO pointers.
 func newQAccessibleInterface(h *C.QAccessibleInterface) *QAccessibleInterface {
 	if h == nil {
 		return nil
@@ -358,8 +368,13 @@ func newQAccessibleInterface(h *C.QAccessibleInterface) *QAccessibleInterface {
 	return &QAccessibleInterface{h: h}
 }
 
+// UnsafeNewQAccessibleInterface constructs the type using only unsafe pointers.
 func UnsafeNewQAccessibleInterface(h unsafe.Pointer) *QAccessibleInterface {
-	return newQAccessibleInterface((*C.QAccessibleInterface)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessibleInterface{h: (*C.QAccessibleInterface)(h)}
 }
 
 func (this *QAccessibleInterface) IsValid() bool {
@@ -371,14 +386,14 @@ func (this *QAccessibleInterface) Object() *QObject {
 }
 
 func (this *QAccessibleInterface) Window() *QWindow {
-	return UnsafeNewQWindow(unsafe.Pointer(C.QAccessibleInterface_Window(this.h)))
+	return UnsafeNewQWindow(unsafe.Pointer(C.QAccessibleInterface_Window(this.h)), nil, nil)
 }
 
-func (this *QAccessibleInterface) Relations() []struct {
+func (this *QAccessibleInterface) Relations(match QAccessible__RelationFlag) []struct {
 	First  *QAccessibleInterface
 	Second QAccessible__RelationFlag
 } {
-	var _ma C.struct_miqt_array = C.QAccessibleInterface_Relations(this.h)
+	var _ma C.struct_miqt_array = C.QAccessibleInterface_Relations(this.h, (C.int)(match))
 	_ret := make([]struct {
 		First  *QAccessibleInterface
 		Second QAccessible__RelationFlag
@@ -506,33 +521,9 @@ func (this *QAccessibleInterface) InterfaceCast(param1 QAccessible__InterfaceTyp
 	return (unsafe.Pointer)(C.QAccessibleInterface_InterfaceCast(this.h, (C.int)(param1)))
 }
 
-func (this *QAccessibleInterface) Relations1(match QAccessible__RelationFlag) []struct {
-	First  *QAccessibleInterface
-	Second QAccessible__RelationFlag
-} {
-	var _ma C.struct_miqt_array = C.QAccessibleInterface_Relations1(this.h, (C.int)(match))
-	_ret := make([]struct {
-		First  *QAccessibleInterface
-		Second QAccessible__RelationFlag
-	}, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_map)(unsafe.Pointer(_ma.data)) // hey ya
-	for i := 0; i < int(_ma.len); i++ {
-		var _vv_mm C.struct_miqt_map = _outCast[i]
-		_vv_First_CArray := (*[0xffff]*C.QAccessibleInterface)(unsafe.Pointer(_vv_mm.keys))
-		_vv_Second_CArray := (*[0xffff]C.int)(unsafe.Pointer(_vv_mm.values))
-		_vv_entry_First := UnsafeNewQAccessibleInterface(unsafe.Pointer(_vv_First_CArray[0]))
-		_vv_entry_Second := (QAccessible__RelationFlag)(_vv_Second_CArray[0])
-
-		_ret[i] = struct {
-			First  *QAccessibleInterface
-			Second QAccessible__RelationFlag
-		}{First: _vv_entry_First, Second: _vv_entry_Second}
-	}
-	return _ret
-}
-
 type QAccessibleTextInterface struct {
-	h *C.QAccessibleTextInterface
+	h          *C.QAccessibleTextInterface
+	isSubclass bool
 }
 
 func (this *QAccessibleTextInterface) cPointer() *C.QAccessibleTextInterface {
@@ -549,6 +540,7 @@ func (this *QAccessibleTextInterface) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAccessibleTextInterface constructs the type using only CGO pointers.
 func newQAccessibleTextInterface(h *C.QAccessibleTextInterface) *QAccessibleTextInterface {
 	if h == nil {
 		return nil
@@ -556,8 +548,13 @@ func newQAccessibleTextInterface(h *C.QAccessibleTextInterface) *QAccessibleText
 	return &QAccessibleTextInterface{h: h}
 }
 
+// UnsafeNewQAccessibleTextInterface constructs the type using only unsafe pointers.
 func UnsafeNewQAccessibleTextInterface(h unsafe.Pointer) *QAccessibleTextInterface {
-	return newQAccessibleTextInterface((*C.QAccessibleTextInterface)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessibleTextInterface{h: (*C.QAccessibleTextInterface)(h)}
 }
 
 func (this *QAccessibleTextInterface) Selection(selectionIndex int, startOffset *int, endOffset *int) {
@@ -648,7 +645,7 @@ func (this *QAccessibleTextInterface) OperatorAssign(param1 *QAccessibleTextInte
 
 // Delete this object from C++ memory.
 func (this *QAccessibleTextInterface) Delete() {
-	C.QAccessibleTextInterface_Delete(this.h)
+	C.QAccessibleTextInterface_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -661,7 +658,8 @@ func (this *QAccessibleTextInterface) GoGC() {
 }
 
 type QAccessibleEditableTextInterface struct {
-	h *C.QAccessibleEditableTextInterface
+	h          *C.QAccessibleEditableTextInterface
+	isSubclass bool
 }
 
 func (this *QAccessibleEditableTextInterface) cPointer() *C.QAccessibleEditableTextInterface {
@@ -678,6 +676,7 @@ func (this *QAccessibleEditableTextInterface) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAccessibleEditableTextInterface constructs the type using only CGO pointers.
 func newQAccessibleEditableTextInterface(h *C.QAccessibleEditableTextInterface) *QAccessibleEditableTextInterface {
 	if h == nil {
 		return nil
@@ -685,8 +684,13 @@ func newQAccessibleEditableTextInterface(h *C.QAccessibleEditableTextInterface) 
 	return &QAccessibleEditableTextInterface{h: h}
 }
 
+// UnsafeNewQAccessibleEditableTextInterface constructs the type using only unsafe pointers.
 func UnsafeNewQAccessibleEditableTextInterface(h unsafe.Pointer) *QAccessibleEditableTextInterface {
-	return newQAccessibleEditableTextInterface((*C.QAccessibleEditableTextInterface)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessibleEditableTextInterface{h: (*C.QAccessibleEditableTextInterface)(h)}
 }
 
 func (this *QAccessibleEditableTextInterface) DeleteText(startOffset int, endOffset int) {
@@ -715,7 +719,7 @@ func (this *QAccessibleEditableTextInterface) OperatorAssign(param1 *QAccessible
 
 // Delete this object from C++ memory.
 func (this *QAccessibleEditableTextInterface) Delete() {
-	C.QAccessibleEditableTextInterface_Delete(this.h)
+	C.QAccessibleEditableTextInterface_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -728,7 +732,8 @@ func (this *QAccessibleEditableTextInterface) GoGC() {
 }
 
 type QAccessibleValueInterface struct {
-	h *C.QAccessibleValueInterface
+	h          *C.QAccessibleValueInterface
+	isSubclass bool
 }
 
 func (this *QAccessibleValueInterface) cPointer() *C.QAccessibleValueInterface {
@@ -745,6 +750,7 @@ func (this *QAccessibleValueInterface) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAccessibleValueInterface constructs the type using only CGO pointers.
 func newQAccessibleValueInterface(h *C.QAccessibleValueInterface) *QAccessibleValueInterface {
 	if h == nil {
 		return nil
@@ -752,8 +758,13 @@ func newQAccessibleValueInterface(h *C.QAccessibleValueInterface) *QAccessibleVa
 	return &QAccessibleValueInterface{h: h}
 }
 
+// UnsafeNewQAccessibleValueInterface constructs the type using only unsafe pointers.
 func UnsafeNewQAccessibleValueInterface(h unsafe.Pointer) *QAccessibleValueInterface {
-	return newQAccessibleValueInterface((*C.QAccessibleValueInterface)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessibleValueInterface{h: (*C.QAccessibleValueInterface)(h)}
 }
 
 func (this *QAccessibleValueInterface) CurrentValue() *QVariant {
@@ -794,7 +805,7 @@ func (this *QAccessibleValueInterface) OperatorAssign(param1 *QAccessibleValueIn
 
 // Delete this object from C++ memory.
 func (this *QAccessibleValueInterface) Delete() {
-	C.QAccessibleValueInterface_Delete(this.h)
+	C.QAccessibleValueInterface_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -807,7 +818,8 @@ func (this *QAccessibleValueInterface) GoGC() {
 }
 
 type QAccessibleTableCellInterface struct {
-	h *C.QAccessibleTableCellInterface
+	h          *C.QAccessibleTableCellInterface
+	isSubclass bool
 }
 
 func (this *QAccessibleTableCellInterface) cPointer() *C.QAccessibleTableCellInterface {
@@ -824,6 +836,7 @@ func (this *QAccessibleTableCellInterface) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAccessibleTableCellInterface constructs the type using only CGO pointers.
 func newQAccessibleTableCellInterface(h *C.QAccessibleTableCellInterface) *QAccessibleTableCellInterface {
 	if h == nil {
 		return nil
@@ -831,8 +844,13 @@ func newQAccessibleTableCellInterface(h *C.QAccessibleTableCellInterface) *QAcce
 	return &QAccessibleTableCellInterface{h: h}
 }
 
+// UnsafeNewQAccessibleTableCellInterface constructs the type using only unsafe pointers.
 func UnsafeNewQAccessibleTableCellInterface(h unsafe.Pointer) *QAccessibleTableCellInterface {
-	return newQAccessibleTableCellInterface((*C.QAccessibleTableCellInterface)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessibleTableCellInterface{h: (*C.QAccessibleTableCellInterface)(h)}
 }
 
 func (this *QAccessibleTableCellInterface) IsSelected() bool {
@@ -885,7 +903,7 @@ func (this *QAccessibleTableCellInterface) OperatorAssign(param1 *QAccessibleTab
 
 // Delete this object from C++ memory.
 func (this *QAccessibleTableCellInterface) Delete() {
-	C.QAccessibleTableCellInterface_Delete(this.h)
+	C.QAccessibleTableCellInterface_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -898,7 +916,8 @@ func (this *QAccessibleTableCellInterface) GoGC() {
 }
 
 type QAccessibleTableInterface struct {
-	h *C.QAccessibleTableInterface
+	h          *C.QAccessibleTableInterface
+	isSubclass bool
 }
 
 func (this *QAccessibleTableInterface) cPointer() *C.QAccessibleTableInterface {
@@ -915,6 +934,7 @@ func (this *QAccessibleTableInterface) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAccessibleTableInterface constructs the type using only CGO pointers.
 func newQAccessibleTableInterface(h *C.QAccessibleTableInterface) *QAccessibleTableInterface {
 	if h == nil {
 		return nil
@@ -922,8 +942,13 @@ func newQAccessibleTableInterface(h *C.QAccessibleTableInterface) *QAccessibleTa
 	return &QAccessibleTableInterface{h: h}
 }
 
+// UnsafeNewQAccessibleTableInterface constructs the type using only unsafe pointers.
 func UnsafeNewQAccessibleTableInterface(h unsafe.Pointer) *QAccessibleTableInterface {
-	return newQAccessibleTableInterface((*C.QAccessibleTableInterface)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessibleTableInterface{h: (*C.QAccessibleTableInterface)(h)}
 }
 
 func (this *QAccessibleTableInterface) Caption() *QAccessibleInterface {
@@ -1032,7 +1057,7 @@ func (this *QAccessibleTableInterface) ModelChange(event *QAccessibleTableModelC
 
 // Delete this object from C++ memory.
 func (this *QAccessibleTableInterface) Delete() {
-	C.QAccessibleTableInterface_Delete(this.h)
+	C.QAccessibleTableInterface_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1045,7 +1070,8 @@ func (this *QAccessibleTableInterface) GoGC() {
 }
 
 type QAccessibleActionInterface struct {
-	h *C.QAccessibleActionInterface
+	h          *C.QAccessibleActionInterface
+	isSubclass bool
 }
 
 func (this *QAccessibleActionInterface) cPointer() *C.QAccessibleActionInterface {
@@ -1062,6 +1088,7 @@ func (this *QAccessibleActionInterface) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAccessibleActionInterface constructs the type using only CGO pointers.
 func newQAccessibleActionInterface(h *C.QAccessibleActionInterface) *QAccessibleActionInterface {
 	if h == nil {
 		return nil
@@ -1069,8 +1096,13 @@ func newQAccessibleActionInterface(h *C.QAccessibleActionInterface) *QAccessible
 	return &QAccessibleActionInterface{h: h}
 }
 
+// UnsafeNewQAccessibleActionInterface constructs the type using only unsafe pointers.
 func UnsafeNewQAccessibleActionInterface(h unsafe.Pointer) *QAccessibleActionInterface {
-	return newQAccessibleActionInterface((*C.QAccessibleActionInterface)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessibleActionInterface{h: (*C.QAccessibleActionInterface)(h)}
 }
 
 func QAccessibleActionInterface_Tr(sourceText string) string {
@@ -1285,7 +1317,7 @@ func QAccessibleActionInterface_TrUtf83(sourceText string, disambiguation string
 
 // Delete this object from C++ memory.
 func (this *QAccessibleActionInterface) Delete() {
-	C.QAccessibleActionInterface_Delete(this.h)
+	C.QAccessibleActionInterface_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1298,7 +1330,8 @@ func (this *QAccessibleActionInterface) GoGC() {
 }
 
 type QAccessibleImageInterface struct {
-	h *C.QAccessibleImageInterface
+	h          *C.QAccessibleImageInterface
+	isSubclass bool
 }
 
 func (this *QAccessibleImageInterface) cPointer() *C.QAccessibleImageInterface {
@@ -1315,6 +1348,7 @@ func (this *QAccessibleImageInterface) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAccessibleImageInterface constructs the type using only CGO pointers.
 func newQAccessibleImageInterface(h *C.QAccessibleImageInterface) *QAccessibleImageInterface {
 	if h == nil {
 		return nil
@@ -1322,8 +1356,13 @@ func newQAccessibleImageInterface(h *C.QAccessibleImageInterface) *QAccessibleIm
 	return &QAccessibleImageInterface{h: h}
 }
 
+// UnsafeNewQAccessibleImageInterface constructs the type using only unsafe pointers.
 func UnsafeNewQAccessibleImageInterface(h unsafe.Pointer) *QAccessibleImageInterface {
-	return newQAccessibleImageInterface((*C.QAccessibleImageInterface)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessibleImageInterface{h: (*C.QAccessibleImageInterface)(h)}
 }
 
 func (this *QAccessibleImageInterface) ImageDescription() string {
@@ -1353,7 +1392,7 @@ func (this *QAccessibleImageInterface) OperatorAssign(param1 *QAccessibleImageIn
 
 // Delete this object from C++ memory.
 func (this *QAccessibleImageInterface) Delete() {
-	C.QAccessibleImageInterface_Delete(this.h)
+	C.QAccessibleImageInterface_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1366,7 +1405,8 @@ func (this *QAccessibleImageInterface) GoGC() {
 }
 
 type QAccessibleEvent struct {
-	h *C.QAccessibleEvent
+	h          *C.QAccessibleEvent
+	isSubclass bool
 }
 
 func (this *QAccessibleEvent) cPointer() *C.QAccessibleEvent {
@@ -1383,6 +1423,7 @@ func (this *QAccessibleEvent) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAccessibleEvent constructs the type using only CGO pointers.
 func newQAccessibleEvent(h *C.QAccessibleEvent) *QAccessibleEvent {
 	if h == nil {
 		return nil
@@ -1390,20 +1431,33 @@ func newQAccessibleEvent(h *C.QAccessibleEvent) *QAccessibleEvent {
 	return &QAccessibleEvent{h: h}
 }
 
+// UnsafeNewQAccessibleEvent constructs the type using only unsafe pointers.
 func UnsafeNewQAccessibleEvent(h unsafe.Pointer) *QAccessibleEvent {
-	return newQAccessibleEvent((*C.QAccessibleEvent)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessibleEvent{h: (*C.QAccessibleEvent)(h)}
 }
 
 // NewQAccessibleEvent constructs a new QAccessibleEvent object.
 func NewQAccessibleEvent(obj *QObject, typ QAccessible__Event) *QAccessibleEvent {
-	ret := C.QAccessibleEvent_new(obj.cPointer(), (C.int)(typ))
-	return newQAccessibleEvent(ret)
+	var outptr_QAccessibleEvent *C.QAccessibleEvent = nil
+
+	C.QAccessibleEvent_new(obj.cPointer(), (C.int)(typ), &outptr_QAccessibleEvent)
+	ret := newQAccessibleEvent(outptr_QAccessibleEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAccessibleEvent2 constructs a new QAccessibleEvent object.
 func NewQAccessibleEvent2(iface *QAccessibleInterface, typ QAccessible__Event) *QAccessibleEvent {
-	ret := C.QAccessibleEvent_new2(iface.cPointer(), (C.int)(typ))
-	return newQAccessibleEvent(ret)
+	var outptr_QAccessibleEvent *C.QAccessibleEvent = nil
+
+	C.QAccessibleEvent_new2(iface.cPointer(), (C.int)(typ), &outptr_QAccessibleEvent)
+	ret := newQAccessibleEvent(outptr_QAccessibleEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QAccessibleEvent) Type() QAccessible__Event {
@@ -1430,9 +1484,30 @@ func (this *QAccessibleEvent) AccessibleInterface() *QAccessibleInterface {
 	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleEvent_AccessibleInterface(this.h)))
 }
 
+func (this *QAccessibleEvent) callVirtualBase_AccessibleInterface() *QAccessibleInterface {
+
+	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleEvent_virtualbase_AccessibleInterface(unsafe.Pointer(this.h))))
+}
+func (this *QAccessibleEvent) OnAccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
+	C.QAccessibleEvent_override_virtual_AccessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAccessibleEvent_AccessibleInterface
+func miqt_exec_callback_QAccessibleEvent_AccessibleInterface(self *C.QAccessibleEvent, cb C.intptr_t) *C.QAccessibleInterface {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QAccessibleInterface) *QAccessibleInterface)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QAccessibleEvent{h: self}).callVirtualBase_AccessibleInterface)
+
+	return virtualReturn.cPointer()
+
+}
+
 // Delete this object from C++ memory.
 func (this *QAccessibleEvent) Delete() {
-	C.QAccessibleEvent_Delete(this.h)
+	C.QAccessibleEvent_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1445,7 +1520,8 @@ func (this *QAccessibleEvent) GoGC() {
 }
 
 type QAccessibleStateChangeEvent struct {
-	h *C.QAccessibleStateChangeEvent
+	h          *C.QAccessibleStateChangeEvent
+	isSubclass bool
 	*QAccessibleEvent
 }
 
@@ -1463,27 +1539,45 @@ func (this *QAccessibleStateChangeEvent) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAccessibleStateChangeEvent(h *C.QAccessibleStateChangeEvent) *QAccessibleStateChangeEvent {
+// newQAccessibleStateChangeEvent constructs the type using only CGO pointers.
+func newQAccessibleStateChangeEvent(h *C.QAccessibleStateChangeEvent, h_QAccessibleEvent *C.QAccessibleEvent) *QAccessibleStateChangeEvent {
 	if h == nil {
 		return nil
 	}
-	return &QAccessibleStateChangeEvent{h: h, QAccessibleEvent: UnsafeNewQAccessibleEvent(unsafe.Pointer(h))}
+	return &QAccessibleStateChangeEvent{h: h,
+		QAccessibleEvent: newQAccessibleEvent(h_QAccessibleEvent)}
 }
 
-func UnsafeNewQAccessibleStateChangeEvent(h unsafe.Pointer) *QAccessibleStateChangeEvent {
-	return newQAccessibleStateChangeEvent((*C.QAccessibleStateChangeEvent)(h))
+// UnsafeNewQAccessibleStateChangeEvent constructs the type using only unsafe pointers.
+func UnsafeNewQAccessibleStateChangeEvent(h unsafe.Pointer, h_QAccessibleEvent unsafe.Pointer) *QAccessibleStateChangeEvent {
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessibleStateChangeEvent{h: (*C.QAccessibleStateChangeEvent)(h),
+		QAccessibleEvent: UnsafeNewQAccessibleEvent(h_QAccessibleEvent)}
 }
 
 // NewQAccessibleStateChangeEvent constructs a new QAccessibleStateChangeEvent object.
 func NewQAccessibleStateChangeEvent(obj *QObject, state QAccessible__State) *QAccessibleStateChangeEvent {
-	ret := C.QAccessibleStateChangeEvent_new(obj.cPointer(), state.cPointer())
-	return newQAccessibleStateChangeEvent(ret)
+	var outptr_QAccessibleStateChangeEvent *C.QAccessibleStateChangeEvent = nil
+	var outptr_QAccessibleEvent *C.QAccessibleEvent = nil
+
+	C.QAccessibleStateChangeEvent_new(obj.cPointer(), state.cPointer(), &outptr_QAccessibleStateChangeEvent, &outptr_QAccessibleEvent)
+	ret := newQAccessibleStateChangeEvent(outptr_QAccessibleStateChangeEvent, outptr_QAccessibleEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAccessibleStateChangeEvent2 constructs a new QAccessibleStateChangeEvent object.
 func NewQAccessibleStateChangeEvent2(iface *QAccessibleInterface, state QAccessible__State) *QAccessibleStateChangeEvent {
-	ret := C.QAccessibleStateChangeEvent_new2(iface.cPointer(), state.cPointer())
-	return newQAccessibleStateChangeEvent(ret)
+	var outptr_QAccessibleStateChangeEvent *C.QAccessibleStateChangeEvent = nil
+	var outptr_QAccessibleEvent *C.QAccessibleEvent = nil
+
+	C.QAccessibleStateChangeEvent_new2(iface.cPointer(), state.cPointer(), &outptr_QAccessibleStateChangeEvent, &outptr_QAccessibleEvent)
+	ret := newQAccessibleStateChangeEvent(outptr_QAccessibleStateChangeEvent, outptr_QAccessibleEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QAccessibleStateChangeEvent) ChangedStates() *QAccessible__State {
@@ -1493,9 +1587,30 @@ func (this *QAccessibleStateChangeEvent) ChangedStates() *QAccessible__State {
 	return _goptr
 }
 
+func (this *QAccessibleStateChangeEvent) callVirtualBase_AccessibleInterface() *QAccessibleInterface {
+
+	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleStateChangeEvent_virtualbase_AccessibleInterface(unsafe.Pointer(this.h))))
+}
+func (this *QAccessibleStateChangeEvent) OnAccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
+	C.QAccessibleStateChangeEvent_override_virtual_AccessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAccessibleStateChangeEvent_AccessibleInterface
+func miqt_exec_callback_QAccessibleStateChangeEvent_AccessibleInterface(self *C.QAccessibleStateChangeEvent, cb C.intptr_t) *C.QAccessibleInterface {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QAccessibleInterface) *QAccessibleInterface)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QAccessibleStateChangeEvent{h: self}).callVirtualBase_AccessibleInterface)
+
+	return virtualReturn.cPointer()
+
+}
+
 // Delete this object from C++ memory.
 func (this *QAccessibleStateChangeEvent) Delete() {
-	C.QAccessibleStateChangeEvent_Delete(this.h)
+	C.QAccessibleStateChangeEvent_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1508,7 +1623,8 @@ func (this *QAccessibleStateChangeEvent) GoGC() {
 }
 
 type QAccessibleTextCursorEvent struct {
-	h *C.QAccessibleTextCursorEvent
+	h          *C.QAccessibleTextCursorEvent
+	isSubclass bool
 	*QAccessibleEvent
 }
 
@@ -1526,27 +1642,45 @@ func (this *QAccessibleTextCursorEvent) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAccessibleTextCursorEvent(h *C.QAccessibleTextCursorEvent) *QAccessibleTextCursorEvent {
+// newQAccessibleTextCursorEvent constructs the type using only CGO pointers.
+func newQAccessibleTextCursorEvent(h *C.QAccessibleTextCursorEvent, h_QAccessibleEvent *C.QAccessibleEvent) *QAccessibleTextCursorEvent {
 	if h == nil {
 		return nil
 	}
-	return &QAccessibleTextCursorEvent{h: h, QAccessibleEvent: UnsafeNewQAccessibleEvent(unsafe.Pointer(h))}
+	return &QAccessibleTextCursorEvent{h: h,
+		QAccessibleEvent: newQAccessibleEvent(h_QAccessibleEvent)}
 }
 
-func UnsafeNewQAccessibleTextCursorEvent(h unsafe.Pointer) *QAccessibleTextCursorEvent {
-	return newQAccessibleTextCursorEvent((*C.QAccessibleTextCursorEvent)(h))
+// UnsafeNewQAccessibleTextCursorEvent constructs the type using only unsafe pointers.
+func UnsafeNewQAccessibleTextCursorEvent(h unsafe.Pointer, h_QAccessibleEvent unsafe.Pointer) *QAccessibleTextCursorEvent {
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessibleTextCursorEvent{h: (*C.QAccessibleTextCursorEvent)(h),
+		QAccessibleEvent: UnsafeNewQAccessibleEvent(h_QAccessibleEvent)}
 }
 
 // NewQAccessibleTextCursorEvent constructs a new QAccessibleTextCursorEvent object.
 func NewQAccessibleTextCursorEvent(obj *QObject, cursorPos int) *QAccessibleTextCursorEvent {
-	ret := C.QAccessibleTextCursorEvent_new(obj.cPointer(), (C.int)(cursorPos))
-	return newQAccessibleTextCursorEvent(ret)
+	var outptr_QAccessibleTextCursorEvent *C.QAccessibleTextCursorEvent = nil
+	var outptr_QAccessibleEvent *C.QAccessibleEvent = nil
+
+	C.QAccessibleTextCursorEvent_new(obj.cPointer(), (C.int)(cursorPos), &outptr_QAccessibleTextCursorEvent, &outptr_QAccessibleEvent)
+	ret := newQAccessibleTextCursorEvent(outptr_QAccessibleTextCursorEvent, outptr_QAccessibleEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAccessibleTextCursorEvent2 constructs a new QAccessibleTextCursorEvent object.
 func NewQAccessibleTextCursorEvent2(iface *QAccessibleInterface, cursorPos int) *QAccessibleTextCursorEvent {
-	ret := C.QAccessibleTextCursorEvent_new2(iface.cPointer(), (C.int)(cursorPos))
-	return newQAccessibleTextCursorEvent(ret)
+	var outptr_QAccessibleTextCursorEvent *C.QAccessibleTextCursorEvent = nil
+	var outptr_QAccessibleEvent *C.QAccessibleEvent = nil
+
+	C.QAccessibleTextCursorEvent_new2(iface.cPointer(), (C.int)(cursorPos), &outptr_QAccessibleTextCursorEvent, &outptr_QAccessibleEvent)
+	ret := newQAccessibleTextCursorEvent(outptr_QAccessibleTextCursorEvent, outptr_QAccessibleEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QAccessibleTextCursorEvent) SetCursorPosition(position int) {
@@ -1557,9 +1691,30 @@ func (this *QAccessibleTextCursorEvent) CursorPosition() int {
 	return (int)(C.QAccessibleTextCursorEvent_CursorPosition(this.h))
 }
 
+func (this *QAccessibleTextCursorEvent) callVirtualBase_AccessibleInterface() *QAccessibleInterface {
+
+	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleTextCursorEvent_virtualbase_AccessibleInterface(unsafe.Pointer(this.h))))
+}
+func (this *QAccessibleTextCursorEvent) OnAccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
+	C.QAccessibleTextCursorEvent_override_virtual_AccessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAccessibleTextCursorEvent_AccessibleInterface
+func miqt_exec_callback_QAccessibleTextCursorEvent_AccessibleInterface(self *C.QAccessibleTextCursorEvent, cb C.intptr_t) *C.QAccessibleInterface {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QAccessibleInterface) *QAccessibleInterface)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QAccessibleTextCursorEvent{h: self}).callVirtualBase_AccessibleInterface)
+
+	return virtualReturn.cPointer()
+
+}
+
 // Delete this object from C++ memory.
 func (this *QAccessibleTextCursorEvent) Delete() {
-	C.QAccessibleTextCursorEvent_Delete(this.h)
+	C.QAccessibleTextCursorEvent_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1572,7 +1727,8 @@ func (this *QAccessibleTextCursorEvent) GoGC() {
 }
 
 type QAccessibleTextSelectionEvent struct {
-	h *C.QAccessibleTextSelectionEvent
+	h          *C.QAccessibleTextSelectionEvent
+	isSubclass bool
 	*QAccessibleTextCursorEvent
 }
 
@@ -1590,27 +1746,47 @@ func (this *QAccessibleTextSelectionEvent) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAccessibleTextSelectionEvent(h *C.QAccessibleTextSelectionEvent) *QAccessibleTextSelectionEvent {
+// newQAccessibleTextSelectionEvent constructs the type using only CGO pointers.
+func newQAccessibleTextSelectionEvent(h *C.QAccessibleTextSelectionEvent, h_QAccessibleTextCursorEvent *C.QAccessibleTextCursorEvent, h_QAccessibleEvent *C.QAccessibleEvent) *QAccessibleTextSelectionEvent {
 	if h == nil {
 		return nil
 	}
-	return &QAccessibleTextSelectionEvent{h: h, QAccessibleTextCursorEvent: UnsafeNewQAccessibleTextCursorEvent(unsafe.Pointer(h))}
+	return &QAccessibleTextSelectionEvent{h: h,
+		QAccessibleTextCursorEvent: newQAccessibleTextCursorEvent(h_QAccessibleTextCursorEvent, h_QAccessibleEvent)}
 }
 
-func UnsafeNewQAccessibleTextSelectionEvent(h unsafe.Pointer) *QAccessibleTextSelectionEvent {
-	return newQAccessibleTextSelectionEvent((*C.QAccessibleTextSelectionEvent)(h))
+// UnsafeNewQAccessibleTextSelectionEvent constructs the type using only unsafe pointers.
+func UnsafeNewQAccessibleTextSelectionEvent(h unsafe.Pointer, h_QAccessibleTextCursorEvent unsafe.Pointer, h_QAccessibleEvent unsafe.Pointer) *QAccessibleTextSelectionEvent {
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessibleTextSelectionEvent{h: (*C.QAccessibleTextSelectionEvent)(h),
+		QAccessibleTextCursorEvent: UnsafeNewQAccessibleTextCursorEvent(h_QAccessibleTextCursorEvent, h_QAccessibleEvent)}
 }
 
 // NewQAccessibleTextSelectionEvent constructs a new QAccessibleTextSelectionEvent object.
 func NewQAccessibleTextSelectionEvent(obj *QObject, start int, end int) *QAccessibleTextSelectionEvent {
-	ret := C.QAccessibleTextSelectionEvent_new(obj.cPointer(), (C.int)(start), (C.int)(end))
-	return newQAccessibleTextSelectionEvent(ret)
+	var outptr_QAccessibleTextSelectionEvent *C.QAccessibleTextSelectionEvent = nil
+	var outptr_QAccessibleTextCursorEvent *C.QAccessibleTextCursorEvent = nil
+	var outptr_QAccessibleEvent *C.QAccessibleEvent = nil
+
+	C.QAccessibleTextSelectionEvent_new(obj.cPointer(), (C.int)(start), (C.int)(end), &outptr_QAccessibleTextSelectionEvent, &outptr_QAccessibleTextCursorEvent, &outptr_QAccessibleEvent)
+	ret := newQAccessibleTextSelectionEvent(outptr_QAccessibleTextSelectionEvent, outptr_QAccessibleTextCursorEvent, outptr_QAccessibleEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAccessibleTextSelectionEvent2 constructs a new QAccessibleTextSelectionEvent object.
 func NewQAccessibleTextSelectionEvent2(iface *QAccessibleInterface, start int, end int) *QAccessibleTextSelectionEvent {
-	ret := C.QAccessibleTextSelectionEvent_new2(iface.cPointer(), (C.int)(start), (C.int)(end))
-	return newQAccessibleTextSelectionEvent(ret)
+	var outptr_QAccessibleTextSelectionEvent *C.QAccessibleTextSelectionEvent = nil
+	var outptr_QAccessibleTextCursorEvent *C.QAccessibleTextCursorEvent = nil
+	var outptr_QAccessibleEvent *C.QAccessibleEvent = nil
+
+	C.QAccessibleTextSelectionEvent_new2(iface.cPointer(), (C.int)(start), (C.int)(end), &outptr_QAccessibleTextSelectionEvent, &outptr_QAccessibleTextCursorEvent, &outptr_QAccessibleEvent)
+	ret := newQAccessibleTextSelectionEvent(outptr_QAccessibleTextSelectionEvent, outptr_QAccessibleTextCursorEvent, outptr_QAccessibleEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QAccessibleTextSelectionEvent) SetSelection(start int, end int) {
@@ -1627,7 +1803,7 @@ func (this *QAccessibleTextSelectionEvent) SelectionEnd() int {
 
 // Delete this object from C++ memory.
 func (this *QAccessibleTextSelectionEvent) Delete() {
-	C.QAccessibleTextSelectionEvent_Delete(this.h)
+	C.QAccessibleTextSelectionEvent_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1640,7 +1816,8 @@ func (this *QAccessibleTextSelectionEvent) GoGC() {
 }
 
 type QAccessibleTextInsertEvent struct {
-	h *C.QAccessibleTextInsertEvent
+	h          *C.QAccessibleTextInsertEvent
+	isSubclass bool
 	*QAccessibleTextCursorEvent
 }
 
@@ -1658,15 +1835,23 @@ func (this *QAccessibleTextInsertEvent) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAccessibleTextInsertEvent(h *C.QAccessibleTextInsertEvent) *QAccessibleTextInsertEvent {
+// newQAccessibleTextInsertEvent constructs the type using only CGO pointers.
+func newQAccessibleTextInsertEvent(h *C.QAccessibleTextInsertEvent, h_QAccessibleTextCursorEvent *C.QAccessibleTextCursorEvent, h_QAccessibleEvent *C.QAccessibleEvent) *QAccessibleTextInsertEvent {
 	if h == nil {
 		return nil
 	}
-	return &QAccessibleTextInsertEvent{h: h, QAccessibleTextCursorEvent: UnsafeNewQAccessibleTextCursorEvent(unsafe.Pointer(h))}
+	return &QAccessibleTextInsertEvent{h: h,
+		QAccessibleTextCursorEvent: newQAccessibleTextCursorEvent(h_QAccessibleTextCursorEvent, h_QAccessibleEvent)}
 }
 
-func UnsafeNewQAccessibleTextInsertEvent(h unsafe.Pointer) *QAccessibleTextInsertEvent {
-	return newQAccessibleTextInsertEvent((*C.QAccessibleTextInsertEvent)(h))
+// UnsafeNewQAccessibleTextInsertEvent constructs the type using only unsafe pointers.
+func UnsafeNewQAccessibleTextInsertEvent(h unsafe.Pointer, h_QAccessibleTextCursorEvent unsafe.Pointer, h_QAccessibleEvent unsafe.Pointer) *QAccessibleTextInsertEvent {
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessibleTextInsertEvent{h: (*C.QAccessibleTextInsertEvent)(h),
+		QAccessibleTextCursorEvent: UnsafeNewQAccessibleTextCursorEvent(h_QAccessibleTextCursorEvent, h_QAccessibleEvent)}
 }
 
 // NewQAccessibleTextInsertEvent constructs a new QAccessibleTextInsertEvent object.
@@ -1675,8 +1860,14 @@ func NewQAccessibleTextInsertEvent(obj *QObject, position int, text string) *QAc
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QAccessibleTextInsertEvent_new(obj.cPointer(), (C.int)(position), text_ms)
-	return newQAccessibleTextInsertEvent(ret)
+	var outptr_QAccessibleTextInsertEvent *C.QAccessibleTextInsertEvent = nil
+	var outptr_QAccessibleTextCursorEvent *C.QAccessibleTextCursorEvent = nil
+	var outptr_QAccessibleEvent *C.QAccessibleEvent = nil
+
+	C.QAccessibleTextInsertEvent_new(obj.cPointer(), (C.int)(position), text_ms, &outptr_QAccessibleTextInsertEvent, &outptr_QAccessibleTextCursorEvent, &outptr_QAccessibleEvent)
+	ret := newQAccessibleTextInsertEvent(outptr_QAccessibleTextInsertEvent, outptr_QAccessibleTextCursorEvent, outptr_QAccessibleEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAccessibleTextInsertEvent2 constructs a new QAccessibleTextInsertEvent object.
@@ -1685,8 +1876,14 @@ func NewQAccessibleTextInsertEvent2(iface *QAccessibleInterface, position int, t
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QAccessibleTextInsertEvent_new2(iface.cPointer(), (C.int)(position), text_ms)
-	return newQAccessibleTextInsertEvent(ret)
+	var outptr_QAccessibleTextInsertEvent *C.QAccessibleTextInsertEvent = nil
+	var outptr_QAccessibleTextCursorEvent *C.QAccessibleTextCursorEvent = nil
+	var outptr_QAccessibleEvent *C.QAccessibleEvent = nil
+
+	C.QAccessibleTextInsertEvent_new2(iface.cPointer(), (C.int)(position), text_ms, &outptr_QAccessibleTextInsertEvent, &outptr_QAccessibleTextCursorEvent, &outptr_QAccessibleEvent)
+	ret := newQAccessibleTextInsertEvent(outptr_QAccessibleTextInsertEvent, outptr_QAccessibleTextCursorEvent, outptr_QAccessibleEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QAccessibleTextInsertEvent) TextInserted() string {
@@ -1702,7 +1899,7 @@ func (this *QAccessibleTextInsertEvent) ChangePosition() int {
 
 // Delete this object from C++ memory.
 func (this *QAccessibleTextInsertEvent) Delete() {
-	C.QAccessibleTextInsertEvent_Delete(this.h)
+	C.QAccessibleTextInsertEvent_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1715,7 +1912,8 @@ func (this *QAccessibleTextInsertEvent) GoGC() {
 }
 
 type QAccessibleTextRemoveEvent struct {
-	h *C.QAccessibleTextRemoveEvent
+	h          *C.QAccessibleTextRemoveEvent
+	isSubclass bool
 	*QAccessibleTextCursorEvent
 }
 
@@ -1733,15 +1931,23 @@ func (this *QAccessibleTextRemoveEvent) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAccessibleTextRemoveEvent(h *C.QAccessibleTextRemoveEvent) *QAccessibleTextRemoveEvent {
+// newQAccessibleTextRemoveEvent constructs the type using only CGO pointers.
+func newQAccessibleTextRemoveEvent(h *C.QAccessibleTextRemoveEvent, h_QAccessibleTextCursorEvent *C.QAccessibleTextCursorEvent, h_QAccessibleEvent *C.QAccessibleEvent) *QAccessibleTextRemoveEvent {
 	if h == nil {
 		return nil
 	}
-	return &QAccessibleTextRemoveEvent{h: h, QAccessibleTextCursorEvent: UnsafeNewQAccessibleTextCursorEvent(unsafe.Pointer(h))}
+	return &QAccessibleTextRemoveEvent{h: h,
+		QAccessibleTextCursorEvent: newQAccessibleTextCursorEvent(h_QAccessibleTextCursorEvent, h_QAccessibleEvent)}
 }
 
-func UnsafeNewQAccessibleTextRemoveEvent(h unsafe.Pointer) *QAccessibleTextRemoveEvent {
-	return newQAccessibleTextRemoveEvent((*C.QAccessibleTextRemoveEvent)(h))
+// UnsafeNewQAccessibleTextRemoveEvent constructs the type using only unsafe pointers.
+func UnsafeNewQAccessibleTextRemoveEvent(h unsafe.Pointer, h_QAccessibleTextCursorEvent unsafe.Pointer, h_QAccessibleEvent unsafe.Pointer) *QAccessibleTextRemoveEvent {
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessibleTextRemoveEvent{h: (*C.QAccessibleTextRemoveEvent)(h),
+		QAccessibleTextCursorEvent: UnsafeNewQAccessibleTextCursorEvent(h_QAccessibleTextCursorEvent, h_QAccessibleEvent)}
 }
 
 // NewQAccessibleTextRemoveEvent constructs a new QAccessibleTextRemoveEvent object.
@@ -1750,8 +1956,14 @@ func NewQAccessibleTextRemoveEvent(obj *QObject, position int, text string) *QAc
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QAccessibleTextRemoveEvent_new(obj.cPointer(), (C.int)(position), text_ms)
-	return newQAccessibleTextRemoveEvent(ret)
+	var outptr_QAccessibleTextRemoveEvent *C.QAccessibleTextRemoveEvent = nil
+	var outptr_QAccessibleTextCursorEvent *C.QAccessibleTextCursorEvent = nil
+	var outptr_QAccessibleEvent *C.QAccessibleEvent = nil
+
+	C.QAccessibleTextRemoveEvent_new(obj.cPointer(), (C.int)(position), text_ms, &outptr_QAccessibleTextRemoveEvent, &outptr_QAccessibleTextCursorEvent, &outptr_QAccessibleEvent)
+	ret := newQAccessibleTextRemoveEvent(outptr_QAccessibleTextRemoveEvent, outptr_QAccessibleTextCursorEvent, outptr_QAccessibleEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAccessibleTextRemoveEvent2 constructs a new QAccessibleTextRemoveEvent object.
@@ -1760,8 +1972,14 @@ func NewQAccessibleTextRemoveEvent2(iface *QAccessibleInterface, position int, t
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QAccessibleTextRemoveEvent_new2(iface.cPointer(), (C.int)(position), text_ms)
-	return newQAccessibleTextRemoveEvent(ret)
+	var outptr_QAccessibleTextRemoveEvent *C.QAccessibleTextRemoveEvent = nil
+	var outptr_QAccessibleTextCursorEvent *C.QAccessibleTextCursorEvent = nil
+	var outptr_QAccessibleEvent *C.QAccessibleEvent = nil
+
+	C.QAccessibleTextRemoveEvent_new2(iface.cPointer(), (C.int)(position), text_ms, &outptr_QAccessibleTextRemoveEvent, &outptr_QAccessibleTextCursorEvent, &outptr_QAccessibleEvent)
+	ret := newQAccessibleTextRemoveEvent(outptr_QAccessibleTextRemoveEvent, outptr_QAccessibleTextCursorEvent, outptr_QAccessibleEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QAccessibleTextRemoveEvent) TextRemoved() string {
@@ -1777,7 +1995,7 @@ func (this *QAccessibleTextRemoveEvent) ChangePosition() int {
 
 // Delete this object from C++ memory.
 func (this *QAccessibleTextRemoveEvent) Delete() {
-	C.QAccessibleTextRemoveEvent_Delete(this.h)
+	C.QAccessibleTextRemoveEvent_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1790,7 +2008,8 @@ func (this *QAccessibleTextRemoveEvent) GoGC() {
 }
 
 type QAccessibleTextUpdateEvent struct {
-	h *C.QAccessibleTextUpdateEvent
+	h          *C.QAccessibleTextUpdateEvent
+	isSubclass bool
 	*QAccessibleTextCursorEvent
 }
 
@@ -1808,15 +2027,23 @@ func (this *QAccessibleTextUpdateEvent) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAccessibleTextUpdateEvent(h *C.QAccessibleTextUpdateEvent) *QAccessibleTextUpdateEvent {
+// newQAccessibleTextUpdateEvent constructs the type using only CGO pointers.
+func newQAccessibleTextUpdateEvent(h *C.QAccessibleTextUpdateEvent, h_QAccessibleTextCursorEvent *C.QAccessibleTextCursorEvent, h_QAccessibleEvent *C.QAccessibleEvent) *QAccessibleTextUpdateEvent {
 	if h == nil {
 		return nil
 	}
-	return &QAccessibleTextUpdateEvent{h: h, QAccessibleTextCursorEvent: UnsafeNewQAccessibleTextCursorEvent(unsafe.Pointer(h))}
+	return &QAccessibleTextUpdateEvent{h: h,
+		QAccessibleTextCursorEvent: newQAccessibleTextCursorEvent(h_QAccessibleTextCursorEvent, h_QAccessibleEvent)}
 }
 
-func UnsafeNewQAccessibleTextUpdateEvent(h unsafe.Pointer) *QAccessibleTextUpdateEvent {
-	return newQAccessibleTextUpdateEvent((*C.QAccessibleTextUpdateEvent)(h))
+// UnsafeNewQAccessibleTextUpdateEvent constructs the type using only unsafe pointers.
+func UnsafeNewQAccessibleTextUpdateEvent(h unsafe.Pointer, h_QAccessibleTextCursorEvent unsafe.Pointer, h_QAccessibleEvent unsafe.Pointer) *QAccessibleTextUpdateEvent {
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessibleTextUpdateEvent{h: (*C.QAccessibleTextUpdateEvent)(h),
+		QAccessibleTextCursorEvent: UnsafeNewQAccessibleTextCursorEvent(h_QAccessibleTextCursorEvent, h_QAccessibleEvent)}
 }
 
 // NewQAccessibleTextUpdateEvent constructs a new QAccessibleTextUpdateEvent object.
@@ -1829,8 +2056,14 @@ func NewQAccessibleTextUpdateEvent(obj *QObject, position int, oldText string, t
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QAccessibleTextUpdateEvent_new(obj.cPointer(), (C.int)(position), oldText_ms, text_ms)
-	return newQAccessibleTextUpdateEvent(ret)
+	var outptr_QAccessibleTextUpdateEvent *C.QAccessibleTextUpdateEvent = nil
+	var outptr_QAccessibleTextCursorEvent *C.QAccessibleTextCursorEvent = nil
+	var outptr_QAccessibleEvent *C.QAccessibleEvent = nil
+
+	C.QAccessibleTextUpdateEvent_new(obj.cPointer(), (C.int)(position), oldText_ms, text_ms, &outptr_QAccessibleTextUpdateEvent, &outptr_QAccessibleTextCursorEvent, &outptr_QAccessibleEvent)
+	ret := newQAccessibleTextUpdateEvent(outptr_QAccessibleTextUpdateEvent, outptr_QAccessibleTextCursorEvent, outptr_QAccessibleEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAccessibleTextUpdateEvent2 constructs a new QAccessibleTextUpdateEvent object.
@@ -1843,8 +2076,14 @@ func NewQAccessibleTextUpdateEvent2(iface *QAccessibleInterface, position int, o
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QAccessibleTextUpdateEvent_new2(iface.cPointer(), (C.int)(position), oldText_ms, text_ms)
-	return newQAccessibleTextUpdateEvent(ret)
+	var outptr_QAccessibleTextUpdateEvent *C.QAccessibleTextUpdateEvent = nil
+	var outptr_QAccessibleTextCursorEvent *C.QAccessibleTextCursorEvent = nil
+	var outptr_QAccessibleEvent *C.QAccessibleEvent = nil
+
+	C.QAccessibleTextUpdateEvent_new2(iface.cPointer(), (C.int)(position), oldText_ms, text_ms, &outptr_QAccessibleTextUpdateEvent, &outptr_QAccessibleTextCursorEvent, &outptr_QAccessibleEvent)
+	ret := newQAccessibleTextUpdateEvent(outptr_QAccessibleTextUpdateEvent, outptr_QAccessibleTextCursorEvent, outptr_QAccessibleEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QAccessibleTextUpdateEvent) TextRemoved() string {
@@ -1867,7 +2106,7 @@ func (this *QAccessibleTextUpdateEvent) ChangePosition() int {
 
 // Delete this object from C++ memory.
 func (this *QAccessibleTextUpdateEvent) Delete() {
-	C.QAccessibleTextUpdateEvent_Delete(this.h)
+	C.QAccessibleTextUpdateEvent_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1880,7 +2119,8 @@ func (this *QAccessibleTextUpdateEvent) GoGC() {
 }
 
 type QAccessibleValueChangeEvent struct {
-	h *C.QAccessibleValueChangeEvent
+	h          *C.QAccessibleValueChangeEvent
+	isSubclass bool
 	*QAccessibleEvent
 }
 
@@ -1898,27 +2138,45 @@ func (this *QAccessibleValueChangeEvent) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAccessibleValueChangeEvent(h *C.QAccessibleValueChangeEvent) *QAccessibleValueChangeEvent {
+// newQAccessibleValueChangeEvent constructs the type using only CGO pointers.
+func newQAccessibleValueChangeEvent(h *C.QAccessibleValueChangeEvent, h_QAccessibleEvent *C.QAccessibleEvent) *QAccessibleValueChangeEvent {
 	if h == nil {
 		return nil
 	}
-	return &QAccessibleValueChangeEvent{h: h, QAccessibleEvent: UnsafeNewQAccessibleEvent(unsafe.Pointer(h))}
+	return &QAccessibleValueChangeEvent{h: h,
+		QAccessibleEvent: newQAccessibleEvent(h_QAccessibleEvent)}
 }
 
-func UnsafeNewQAccessibleValueChangeEvent(h unsafe.Pointer) *QAccessibleValueChangeEvent {
-	return newQAccessibleValueChangeEvent((*C.QAccessibleValueChangeEvent)(h))
+// UnsafeNewQAccessibleValueChangeEvent constructs the type using only unsafe pointers.
+func UnsafeNewQAccessibleValueChangeEvent(h unsafe.Pointer, h_QAccessibleEvent unsafe.Pointer) *QAccessibleValueChangeEvent {
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessibleValueChangeEvent{h: (*C.QAccessibleValueChangeEvent)(h),
+		QAccessibleEvent: UnsafeNewQAccessibleEvent(h_QAccessibleEvent)}
 }
 
 // NewQAccessibleValueChangeEvent constructs a new QAccessibleValueChangeEvent object.
 func NewQAccessibleValueChangeEvent(obj *QObject, val *QVariant) *QAccessibleValueChangeEvent {
-	ret := C.QAccessibleValueChangeEvent_new(obj.cPointer(), val.cPointer())
-	return newQAccessibleValueChangeEvent(ret)
+	var outptr_QAccessibleValueChangeEvent *C.QAccessibleValueChangeEvent = nil
+	var outptr_QAccessibleEvent *C.QAccessibleEvent = nil
+
+	C.QAccessibleValueChangeEvent_new(obj.cPointer(), val.cPointer(), &outptr_QAccessibleValueChangeEvent, &outptr_QAccessibleEvent)
+	ret := newQAccessibleValueChangeEvent(outptr_QAccessibleValueChangeEvent, outptr_QAccessibleEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAccessibleValueChangeEvent2 constructs a new QAccessibleValueChangeEvent object.
 func NewQAccessibleValueChangeEvent2(iface *QAccessibleInterface, val *QVariant) *QAccessibleValueChangeEvent {
-	ret := C.QAccessibleValueChangeEvent_new2(iface.cPointer(), val.cPointer())
-	return newQAccessibleValueChangeEvent(ret)
+	var outptr_QAccessibleValueChangeEvent *C.QAccessibleValueChangeEvent = nil
+	var outptr_QAccessibleEvent *C.QAccessibleEvent = nil
+
+	C.QAccessibleValueChangeEvent_new2(iface.cPointer(), val.cPointer(), &outptr_QAccessibleValueChangeEvent, &outptr_QAccessibleEvent)
+	ret := newQAccessibleValueChangeEvent(outptr_QAccessibleValueChangeEvent, outptr_QAccessibleEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QAccessibleValueChangeEvent) SetValue(val *QVariant) {
@@ -1932,9 +2190,30 @@ func (this *QAccessibleValueChangeEvent) Value() *QVariant {
 	return _goptr
 }
 
+func (this *QAccessibleValueChangeEvent) callVirtualBase_AccessibleInterface() *QAccessibleInterface {
+
+	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleValueChangeEvent_virtualbase_AccessibleInterface(unsafe.Pointer(this.h))))
+}
+func (this *QAccessibleValueChangeEvent) OnAccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
+	C.QAccessibleValueChangeEvent_override_virtual_AccessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAccessibleValueChangeEvent_AccessibleInterface
+func miqt_exec_callback_QAccessibleValueChangeEvent_AccessibleInterface(self *C.QAccessibleValueChangeEvent, cb C.intptr_t) *C.QAccessibleInterface {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QAccessibleInterface) *QAccessibleInterface)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QAccessibleValueChangeEvent{h: self}).callVirtualBase_AccessibleInterface)
+
+	return virtualReturn.cPointer()
+
+}
+
 // Delete this object from C++ memory.
 func (this *QAccessibleValueChangeEvent) Delete() {
-	C.QAccessibleValueChangeEvent_Delete(this.h)
+	C.QAccessibleValueChangeEvent_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1947,7 +2226,8 @@ func (this *QAccessibleValueChangeEvent) GoGC() {
 }
 
 type QAccessibleTableModelChangeEvent struct {
-	h *C.QAccessibleTableModelChangeEvent
+	h          *C.QAccessibleTableModelChangeEvent
+	isSubclass bool
 	*QAccessibleEvent
 }
 
@@ -1965,27 +2245,45 @@ func (this *QAccessibleTableModelChangeEvent) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAccessibleTableModelChangeEvent(h *C.QAccessibleTableModelChangeEvent) *QAccessibleTableModelChangeEvent {
+// newQAccessibleTableModelChangeEvent constructs the type using only CGO pointers.
+func newQAccessibleTableModelChangeEvent(h *C.QAccessibleTableModelChangeEvent, h_QAccessibleEvent *C.QAccessibleEvent) *QAccessibleTableModelChangeEvent {
 	if h == nil {
 		return nil
 	}
-	return &QAccessibleTableModelChangeEvent{h: h, QAccessibleEvent: UnsafeNewQAccessibleEvent(unsafe.Pointer(h))}
+	return &QAccessibleTableModelChangeEvent{h: h,
+		QAccessibleEvent: newQAccessibleEvent(h_QAccessibleEvent)}
 }
 
-func UnsafeNewQAccessibleTableModelChangeEvent(h unsafe.Pointer) *QAccessibleTableModelChangeEvent {
-	return newQAccessibleTableModelChangeEvent((*C.QAccessibleTableModelChangeEvent)(h))
+// UnsafeNewQAccessibleTableModelChangeEvent constructs the type using only unsafe pointers.
+func UnsafeNewQAccessibleTableModelChangeEvent(h unsafe.Pointer, h_QAccessibleEvent unsafe.Pointer) *QAccessibleTableModelChangeEvent {
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessibleTableModelChangeEvent{h: (*C.QAccessibleTableModelChangeEvent)(h),
+		QAccessibleEvent: UnsafeNewQAccessibleEvent(h_QAccessibleEvent)}
 }
 
 // NewQAccessibleTableModelChangeEvent constructs a new QAccessibleTableModelChangeEvent object.
 func NewQAccessibleTableModelChangeEvent(obj *QObject, changeType QAccessibleTableModelChangeEvent__ModelChangeType) *QAccessibleTableModelChangeEvent {
-	ret := C.QAccessibleTableModelChangeEvent_new(obj.cPointer(), (C.int)(changeType))
-	return newQAccessibleTableModelChangeEvent(ret)
+	var outptr_QAccessibleTableModelChangeEvent *C.QAccessibleTableModelChangeEvent = nil
+	var outptr_QAccessibleEvent *C.QAccessibleEvent = nil
+
+	C.QAccessibleTableModelChangeEvent_new(obj.cPointer(), (C.int)(changeType), &outptr_QAccessibleTableModelChangeEvent, &outptr_QAccessibleEvent)
+	ret := newQAccessibleTableModelChangeEvent(outptr_QAccessibleTableModelChangeEvent, outptr_QAccessibleEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAccessibleTableModelChangeEvent2 constructs a new QAccessibleTableModelChangeEvent object.
 func NewQAccessibleTableModelChangeEvent2(iface *QAccessibleInterface, changeType QAccessibleTableModelChangeEvent__ModelChangeType) *QAccessibleTableModelChangeEvent {
-	ret := C.QAccessibleTableModelChangeEvent_new2(iface.cPointer(), (C.int)(changeType))
-	return newQAccessibleTableModelChangeEvent(ret)
+	var outptr_QAccessibleTableModelChangeEvent *C.QAccessibleTableModelChangeEvent = nil
+	var outptr_QAccessibleEvent *C.QAccessibleEvent = nil
+
+	C.QAccessibleTableModelChangeEvent_new2(iface.cPointer(), (C.int)(changeType), &outptr_QAccessibleTableModelChangeEvent, &outptr_QAccessibleEvent)
+	ret := newQAccessibleTableModelChangeEvent(outptr_QAccessibleTableModelChangeEvent, outptr_QAccessibleEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QAccessibleTableModelChangeEvent) SetModelChangeType(changeType QAccessibleTableModelChangeEvent__ModelChangeType) {
@@ -2028,9 +2326,30 @@ func (this *QAccessibleTableModelChangeEvent) LastColumn() int {
 	return (int)(C.QAccessibleTableModelChangeEvent_LastColumn(this.h))
 }
 
+func (this *QAccessibleTableModelChangeEvent) callVirtualBase_AccessibleInterface() *QAccessibleInterface {
+
+	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleTableModelChangeEvent_virtualbase_AccessibleInterface(unsafe.Pointer(this.h))))
+}
+func (this *QAccessibleTableModelChangeEvent) OnAccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
+	C.QAccessibleTableModelChangeEvent_override_virtual_AccessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAccessibleTableModelChangeEvent_AccessibleInterface
+func miqt_exec_callback_QAccessibleTableModelChangeEvent_AccessibleInterface(self *C.QAccessibleTableModelChangeEvent, cb C.intptr_t) *C.QAccessibleInterface {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QAccessibleInterface) *QAccessibleInterface)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QAccessibleTableModelChangeEvent{h: self}).callVirtualBase_AccessibleInterface)
+
+	return virtualReturn.cPointer()
+
+}
+
 // Delete this object from C++ memory.
 func (this *QAccessibleTableModelChangeEvent) Delete() {
-	C.QAccessibleTableModelChangeEvent_Delete(this.h)
+	C.QAccessibleTableModelChangeEvent_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2043,7 +2362,8 @@ func (this *QAccessibleTableModelChangeEvent) GoGC() {
 }
 
 type QAccessible__State struct {
-	h *C.QAccessible__State
+	h          *C.QAccessible__State
+	isSubclass bool
 }
 
 func (this *QAccessible__State) cPointer() *C.QAccessible__State {
@@ -2060,6 +2380,7 @@ func (this *QAccessible__State) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAccessible__State constructs the type using only CGO pointers.
 func newQAccessible__State(h *C.QAccessible__State) *QAccessible__State {
 	if h == nil {
 		return nil
@@ -2067,25 +2388,38 @@ func newQAccessible__State(h *C.QAccessible__State) *QAccessible__State {
 	return &QAccessible__State{h: h}
 }
 
+// UnsafeNewQAccessible__State constructs the type using only unsafe pointers.
 func UnsafeNewQAccessible__State(h unsafe.Pointer) *QAccessible__State {
-	return newQAccessible__State((*C.QAccessible__State)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessible__State{h: (*C.QAccessible__State)(h)}
 }
 
 // NewQAccessible__State constructs a new QAccessible::State object.
 func NewQAccessible__State() *QAccessible__State {
-	ret := C.QAccessible__State_new()
-	return newQAccessible__State(ret)
+	var outptr_QAccessible__State *C.QAccessible__State = nil
+
+	C.QAccessible__State_new(&outptr_QAccessible__State)
+	ret := newQAccessible__State(outptr_QAccessible__State)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAccessible__State2 constructs a new QAccessible::State object.
 func NewQAccessible__State2(param1 *QAccessible__State) *QAccessible__State {
-	ret := C.QAccessible__State_new2(param1.cPointer())
-	return newQAccessible__State(ret)
+	var outptr_QAccessible__State *C.QAccessible__State = nil
+
+	C.QAccessible__State_new2(param1.cPointer(), &outptr_QAccessible__State)
+	ret := newQAccessible__State(outptr_QAccessible__State)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QAccessible__State) Delete() {
-	C.QAccessible__State_Delete(this.h)
+	C.QAccessible__State_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2098,7 +2432,8 @@ func (this *QAccessible__State) GoGC() {
 }
 
 type QAccessible__ActivationObserver struct {
-	h *C.QAccessible__ActivationObserver
+	h          *C.QAccessible__ActivationObserver
+	isSubclass bool
 }
 
 func (this *QAccessible__ActivationObserver) cPointer() *C.QAccessible__ActivationObserver {
@@ -2115,6 +2450,7 @@ func (this *QAccessible__ActivationObserver) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAccessible__ActivationObserver constructs the type using only CGO pointers.
 func newQAccessible__ActivationObserver(h *C.QAccessible__ActivationObserver) *QAccessible__ActivationObserver {
 	if h == nil {
 		return nil
@@ -2122,8 +2458,13 @@ func newQAccessible__ActivationObserver(h *C.QAccessible__ActivationObserver) *Q
 	return &QAccessible__ActivationObserver{h: h}
 }
 
+// UnsafeNewQAccessible__ActivationObserver constructs the type using only unsafe pointers.
 func UnsafeNewQAccessible__ActivationObserver(h unsafe.Pointer) *QAccessible__ActivationObserver {
-	return newQAccessible__ActivationObserver((*C.QAccessible__ActivationObserver)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessible__ActivationObserver{h: (*C.QAccessible__ActivationObserver)(h)}
 }
 
 func (this *QAccessible__ActivationObserver) AccessibilityActiveChanged(active bool) {
@@ -2136,7 +2477,7 @@ func (this *QAccessible__ActivationObserver) OperatorAssign(param1 *QAccessible_
 
 // Delete this object from C++ memory.
 func (this *QAccessible__ActivationObserver) Delete() {
-	C.QAccessible__ActivationObserver_Delete(this.h)
+	C.QAccessible__ActivationObserver_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -42,8 +42,8 @@ typedef struct QJsonValueRefPtr QJsonValueRefPtr;
 typedef struct QVariant QVariant;
 #endif
 
-QJsonObject* QJsonObject_new();
-QJsonObject* QJsonObject_new2(QJsonObject* other);
+void QJsonObject_new(QJsonObject** outptr_QJsonObject);
+void QJsonObject_new2(QJsonObject* other, QJsonObject** outptr_QJsonObject);
 void QJsonObject_OperatorAssign(QJsonObject* self, QJsonObject* other);
 void QJsonObject_Swap(QJsonObject* self, QJsonObject* other);
 QJsonObject* QJsonObject_FromVariantMap(struct miqt_map /* of struct miqt_string to QVariant* */  mapVal);
@@ -75,11 +75,11 @@ QJsonObject__const_iterator* QJsonObject_FindWithKey(const QJsonObject* self, st
 QJsonObject__const_iterator* QJsonObject_ConstFind(const QJsonObject* self, struct miqt_string key);
 QJsonObject__iterator* QJsonObject_Insert(QJsonObject* self, struct miqt_string key, QJsonValue* value);
 bool QJsonObject_Empty(const QJsonObject* self);
-void QJsonObject_Delete(QJsonObject* self);
+void QJsonObject_Delete(QJsonObject* self, bool isSubclass);
 
-QJsonObject__iterator* QJsonObject__iterator_new();
-QJsonObject__iterator* QJsonObject__iterator_new2(QJsonObject* obj, int index);
-QJsonObject__iterator* QJsonObject__iterator_new3(QJsonObject__iterator* param1);
+void QJsonObject__iterator_new(QJsonObject__iterator** outptr_QJsonObject__iterator);
+void QJsonObject__iterator_new2(QJsonObject* obj, int index, QJsonObject__iterator** outptr_QJsonObject__iterator);
+void QJsonObject__iterator_new3(QJsonObject__iterator* param1, QJsonObject__iterator** outptr_QJsonObject__iterator);
 struct miqt_string QJsonObject__iterator_Key(const QJsonObject__iterator* self);
 QJsonValueRef* QJsonObject__iterator_Value(const QJsonObject__iterator* self);
 QJsonValueRef* QJsonObject__iterator_OperatorMultiply(const QJsonObject__iterator* self);
@@ -106,12 +106,12 @@ bool QJsonObject__iterator_OperatorLesserWithOther(const QJsonObject__iterator* 
 bool QJsonObject__iterator_OperatorLesserOrEqualWithOther(const QJsonObject__iterator* self, QJsonObject__const_iterator* other);
 bool QJsonObject__iterator_OperatorGreaterWithOther(const QJsonObject__iterator* self, QJsonObject__const_iterator* other);
 bool QJsonObject__iterator_OperatorGreaterOrEqualWithOther(const QJsonObject__iterator* self, QJsonObject__const_iterator* other);
-void QJsonObject__iterator_Delete(QJsonObject__iterator* self);
+void QJsonObject__iterator_Delete(QJsonObject__iterator* self, bool isSubclass);
 
-QJsonObject__const_iterator* QJsonObject__const_iterator_new();
-QJsonObject__const_iterator* QJsonObject__const_iterator_new2(QJsonObject* obj, int index);
-QJsonObject__const_iterator* QJsonObject__const_iterator_new3(QJsonObject__iterator* other);
-QJsonObject__const_iterator* QJsonObject__const_iterator_new4(QJsonObject__const_iterator* param1);
+void QJsonObject__const_iterator_new(QJsonObject__const_iterator** outptr_QJsonObject__const_iterator);
+void QJsonObject__const_iterator_new2(QJsonObject* obj, int index, QJsonObject__const_iterator** outptr_QJsonObject__const_iterator);
+void QJsonObject__const_iterator_new3(QJsonObject__iterator* other, QJsonObject__const_iterator** outptr_QJsonObject__const_iterator);
+void QJsonObject__const_iterator_new4(QJsonObject__const_iterator* param1, QJsonObject__const_iterator** outptr_QJsonObject__const_iterator);
 struct miqt_string QJsonObject__const_iterator_Key(const QJsonObject__const_iterator* self);
 QJsonValue* QJsonObject__const_iterator_Value(const QJsonObject__const_iterator* self);
 QJsonValue* QJsonObject__const_iterator_OperatorMultiply(const QJsonObject__const_iterator* self);
@@ -138,7 +138,7 @@ bool QJsonObject__const_iterator_OperatorLesserWithOther(const QJsonObject__cons
 bool QJsonObject__const_iterator_OperatorLesserOrEqualWithOther(const QJsonObject__const_iterator* self, QJsonObject__iterator* other);
 bool QJsonObject__const_iterator_OperatorGreaterWithOther(const QJsonObject__const_iterator* self, QJsonObject__iterator* other);
 bool QJsonObject__const_iterator_OperatorGreaterOrEqualWithOther(const QJsonObject__const_iterator* self, QJsonObject__iterator* other);
-void QJsonObject__const_iterator_Delete(QJsonObject__const_iterator* self);
+void QJsonObject__const_iterator_Delete(QJsonObject__const_iterator* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

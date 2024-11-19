@@ -1,4 +1,5 @@
 #include <QClipboard>
+#include <QCoreApplication>
 #include <QCursor>
 #include <QEvent>
 #include <QFont>
@@ -21,12 +22,75 @@
 #include "gen_qguiapplication.h"
 #include "_cgo_export.h"
 
-QGuiApplication* QGuiApplication_new(int* argc, char** argv) {
-	return new QGuiApplication(static_cast<int&>(*argc), argv);
+class MiqtVirtualQGuiApplication : public virtual QGuiApplication {
+public:
+
+	MiqtVirtualQGuiApplication(int& argc, char** argv): QGuiApplication(argc, argv) {};
+	MiqtVirtualQGuiApplication(int& argc, char** argv, int param3): QGuiApplication(argc, argv, param3) {};
+
+	virtual ~MiqtVirtualQGuiApplication() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Notify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool notify(QObject* param1, QEvent* param2) override {
+		if (handle__Notify == 0) {
+			return QGuiApplication::notify(param1, param2);
+		}
+		
+		QObject* sigval1 = param1;
+		QEvent* sigval2 = param2;
+
+		bool callback_return_value = miqt_exec_callback_QGuiApplication_Notify(this, handle__Notify, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Notify(QObject* param1, QEvent* param2) {
+
+		return QGuiApplication::notify(param1, param2);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* param1) override {
+		if (handle__Event == 0) {
+			return QGuiApplication::event(param1);
+		}
+		
+		QEvent* sigval1 = param1;
+
+		bool callback_return_value = miqt_exec_callback_QGuiApplication_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* param1) {
+
+		return QGuiApplication::event(param1);
+
+	}
+
+};
+
+void QGuiApplication_new(int* argc, char** argv, QGuiApplication** outptr_QGuiApplication, QCoreApplication** outptr_QCoreApplication, QObject** outptr_QObject) {
+	MiqtVirtualQGuiApplication* ret = new MiqtVirtualQGuiApplication(static_cast<int&>(*argc), argv);
+	*outptr_QGuiApplication = ret;
+	*outptr_QCoreApplication = static_cast<QCoreApplication*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QGuiApplication* QGuiApplication_new2(int* argc, char** argv, int param3) {
-	return new QGuiApplication(static_cast<int&>(*argc), argv, static_cast<int>(param3));
+void QGuiApplication_new2(int* argc, char** argv, int param3, QGuiApplication** outptr_QGuiApplication, QCoreApplication** outptr_QCoreApplication, QObject** outptr_QObject) {
+	MiqtVirtualQGuiApplication* ret = new MiqtVirtualQGuiApplication(static_cast<int&>(*argc), argv, static_cast<int>(param3));
+	*outptr_QGuiApplication = ret;
+	*outptr_QCoreApplication = static_cast<QCoreApplication*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QGuiApplication_MetaObject(const QGuiApplication* self) {
@@ -339,7 +403,7 @@ void QGuiApplication_FontDatabaseChanged(QGuiApplication* self) {
 }
 
 void QGuiApplication_connect_FontDatabaseChanged(QGuiApplication* self, intptr_t slot) {
-	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)()>(&QGuiApplication::fontDatabaseChanged), self, [=]() {
+	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)()>(&QGuiApplication::fontDatabaseChanged), self, [=]() {
 		miqt_exec_callback_QGuiApplication_FontDatabaseChanged(slot);
 	});
 }
@@ -349,7 +413,7 @@ void QGuiApplication_ScreenAdded(QGuiApplication* self, QScreen* screen) {
 }
 
 void QGuiApplication_connect_ScreenAdded(QGuiApplication* self, intptr_t slot) {
-	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QScreen*)>(&QGuiApplication::screenAdded), self, [=](QScreen* screen) {
+	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QScreen*)>(&QGuiApplication::screenAdded), self, [=](QScreen* screen) {
 		QScreen* sigval1 = screen;
 		miqt_exec_callback_QGuiApplication_ScreenAdded(slot, sigval1);
 	});
@@ -360,7 +424,7 @@ void QGuiApplication_ScreenRemoved(QGuiApplication* self, QScreen* screen) {
 }
 
 void QGuiApplication_connect_ScreenRemoved(QGuiApplication* self, intptr_t slot) {
-	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QScreen*)>(&QGuiApplication::screenRemoved), self, [=](QScreen* screen) {
+	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QScreen*)>(&QGuiApplication::screenRemoved), self, [=](QScreen* screen) {
 		QScreen* sigval1 = screen;
 		miqt_exec_callback_QGuiApplication_ScreenRemoved(slot, sigval1);
 	});
@@ -371,7 +435,7 @@ void QGuiApplication_PrimaryScreenChanged(QGuiApplication* self, QScreen* screen
 }
 
 void QGuiApplication_connect_PrimaryScreenChanged(QGuiApplication* self, intptr_t slot) {
-	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QScreen*)>(&QGuiApplication::primaryScreenChanged), self, [=](QScreen* screen) {
+	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QScreen*)>(&QGuiApplication::primaryScreenChanged), self, [=](QScreen* screen) {
 		QScreen* sigval1 = screen;
 		miqt_exec_callback_QGuiApplication_PrimaryScreenChanged(slot, sigval1);
 	});
@@ -382,7 +446,7 @@ void QGuiApplication_LastWindowClosed(QGuiApplication* self) {
 }
 
 void QGuiApplication_connect_LastWindowClosed(QGuiApplication* self, intptr_t slot) {
-	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)()>(&QGuiApplication::lastWindowClosed), self, [=]() {
+	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)()>(&QGuiApplication::lastWindowClosed), self, [=]() {
 		miqt_exec_callback_QGuiApplication_LastWindowClosed(slot);
 	});
 }
@@ -392,7 +456,7 @@ void QGuiApplication_FocusObjectChanged(QGuiApplication* self, QObject* focusObj
 }
 
 void QGuiApplication_connect_FocusObjectChanged(QGuiApplication* self, intptr_t slot) {
-	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QObject*)>(&QGuiApplication::focusObjectChanged), self, [=](QObject* focusObject) {
+	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QObject*)>(&QGuiApplication::focusObjectChanged), self, [=](QObject* focusObject) {
 		QObject* sigval1 = focusObject;
 		miqt_exec_callback_QGuiApplication_FocusObjectChanged(slot, sigval1);
 	});
@@ -403,7 +467,7 @@ void QGuiApplication_FocusWindowChanged(QGuiApplication* self, QWindow* focusWin
 }
 
 void QGuiApplication_connect_FocusWindowChanged(QGuiApplication* self, intptr_t slot) {
-	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QWindow*)>(&QGuiApplication::focusWindowChanged), self, [=](QWindow* focusWindow) {
+	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QWindow*)>(&QGuiApplication::focusWindowChanged), self, [=](QWindow* focusWindow) {
 		QWindow* sigval1 = focusWindow;
 		miqt_exec_callback_QGuiApplication_FocusWindowChanged(slot, sigval1);
 	});
@@ -414,7 +478,7 @@ void QGuiApplication_ApplicationStateChanged(QGuiApplication* self, int state) {
 }
 
 void QGuiApplication_connect_ApplicationStateChanged(QGuiApplication* self, intptr_t slot) {
-	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(Qt::ApplicationState)>(&QGuiApplication::applicationStateChanged), self, [=](Qt::ApplicationState state) {
+	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(Qt::ApplicationState)>(&QGuiApplication::applicationStateChanged), self, [=](Qt::ApplicationState state) {
 		Qt::ApplicationState state_ret = state;
 		int sigval1 = static_cast<int>(state_ret);
 		miqt_exec_callback_QGuiApplication_ApplicationStateChanged(slot, sigval1);
@@ -426,7 +490,7 @@ void QGuiApplication_LayoutDirectionChanged(QGuiApplication* self, int direction
 }
 
 void QGuiApplication_connect_LayoutDirectionChanged(QGuiApplication* self, intptr_t slot) {
-	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(Qt::LayoutDirection)>(&QGuiApplication::layoutDirectionChanged), self, [=](Qt::LayoutDirection direction) {
+	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(Qt::LayoutDirection)>(&QGuiApplication::layoutDirectionChanged), self, [=](Qt::LayoutDirection direction) {
 		Qt::LayoutDirection direction_ret = direction;
 		int sigval1 = static_cast<int>(direction_ret);
 		miqt_exec_callback_QGuiApplication_LayoutDirectionChanged(slot, sigval1);
@@ -438,7 +502,7 @@ void QGuiApplication_CommitDataRequest(QGuiApplication* self, QSessionManager* s
 }
 
 void QGuiApplication_connect_CommitDataRequest(QGuiApplication* self, intptr_t slot) {
-	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QSessionManager&)>(&QGuiApplication::commitDataRequest), self, [=](QSessionManager& sessionManager) {
+	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QSessionManager&)>(&QGuiApplication::commitDataRequest), self, [=](QSessionManager& sessionManager) {
 		QSessionManager& sessionManager_ret = sessionManager;
 		// Cast returned reference into pointer
 		QSessionManager* sigval1 = &sessionManager_ret;
@@ -451,7 +515,7 @@ void QGuiApplication_SaveStateRequest(QGuiApplication* self, QSessionManager* se
 }
 
 void QGuiApplication_connect_SaveStateRequest(QGuiApplication* self, intptr_t slot) {
-	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QSessionManager&)>(&QGuiApplication::saveStateRequest), self, [=](QSessionManager& sessionManager) {
+	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QSessionManager&)>(&QGuiApplication::saveStateRequest), self, [=](QSessionManager& sessionManager) {
 		QSessionManager& sessionManager_ret = sessionManager;
 		// Cast returned reference into pointer
 		QSessionManager* sigval1 = &sessionManager_ret;
@@ -464,7 +528,7 @@ void QGuiApplication_PaletteChanged(QGuiApplication* self, QPalette* pal) {
 }
 
 void QGuiApplication_connect_PaletteChanged(QGuiApplication* self, intptr_t slot) {
-	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(const QPalette&)>(&QGuiApplication::paletteChanged), self, [=](const QPalette& pal) {
+	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(const QPalette&)>(&QGuiApplication::paletteChanged), self, [=](const QPalette& pal) {
 		const QPalette& pal_ret = pal;
 		// Cast returned reference into pointer
 		QPalette* sigval1 = const_cast<QPalette*>(&pal_ret);
@@ -477,7 +541,7 @@ void QGuiApplication_ApplicationDisplayNameChanged(QGuiApplication* self) {
 }
 
 void QGuiApplication_connect_ApplicationDisplayNameChanged(QGuiApplication* self, intptr_t slot) {
-	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)()>(&QGuiApplication::applicationDisplayNameChanged), self, [=]() {
+	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)()>(&QGuiApplication::applicationDisplayNameChanged), self, [=]() {
 		miqt_exec_callback_QGuiApplication_ApplicationDisplayNameChanged(slot);
 	});
 }
@@ -487,7 +551,7 @@ void QGuiApplication_FontChanged(QGuiApplication* self, QFont* font) {
 }
 
 void QGuiApplication_connect_FontChanged(QGuiApplication* self, intptr_t slot) {
-	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(const QFont&)>(&QGuiApplication::fontChanged), self, [=](const QFont& font) {
+	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(const QFont&)>(&QGuiApplication::fontChanged), self, [=](const QFont& font) {
 		const QFont& font_ret = font;
 		// Cast returned reference into pointer
 		QFont* sigval1 = const_cast<QFont*>(&font_ret);
@@ -539,7 +603,27 @@ struct miqt_string QGuiApplication_TrUtf83(const char* s, const char* c, int n) 
 	return _ms;
 }
 
-void QGuiApplication_Delete(QGuiApplication* self) {
-	delete self;
+void QGuiApplication_override_virtual_Notify(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) )->handle__Notify = slot;
+}
+
+bool QGuiApplication_virtualbase_Notify(void* self, QObject* param1, QEvent* param2) {
+	return ( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_Notify(param1, param2);
+}
+
+void QGuiApplication_override_virtual_Event(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) )->handle__Event = slot;
+}
+
+bool QGuiApplication_virtualbase_Event(void* self, QEvent* param1) {
+	return ( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_Event(param1);
+}
+
+void QGuiApplication_Delete(QGuiApplication* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQGuiApplication*>( self );
+	} else {
+		delete self;
+	}
 }
 

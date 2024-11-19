@@ -10,18 +10,21 @@
 #include "gen_qresource.h"
 #include "_cgo_export.h"
 
-QResource* QResource_new() {
-	return new QResource();
+void QResource_new(QResource** outptr_QResource) {
+	QResource* ret = new QResource();
+	*outptr_QResource = ret;
 }
 
-QResource* QResource_new2(struct miqt_string file) {
+void QResource_new2(struct miqt_string file, QResource** outptr_QResource) {
 	QString file_QString = QString::fromUtf8(file.data, file.len);
-	return new QResource(file_QString);
+	QResource* ret = new QResource(file_QString);
+	*outptr_QResource = ret;
 }
 
-QResource* QResource_new3(struct miqt_string file, QLocale* locale) {
+void QResource_new3(struct miqt_string file, QLocale* locale, QResource** outptr_QResource) {
 	QString file_QString = QString::fromUtf8(file.data, file.len);
-	return new QResource(file_QString, *locale);
+	QResource* ret = new QResource(file_QString, *locale);
+	*outptr_QResource = ret;
 }
 
 void QResource_SetFileName(QResource* self, struct miqt_string file) {
@@ -165,7 +168,11 @@ bool QResource_UnregisterResource22(const unsigned char* rccData, struct miqt_st
 	return QResource::unregisterResource(static_cast<const uchar*>(rccData), resourceRoot_QString);
 }
 
-void QResource_Delete(QResource* self) {
-	delete self;
+void QResource_Delete(QResource* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QResource*>( self );
+	} else {
+		delete self;
+	}
 }
 

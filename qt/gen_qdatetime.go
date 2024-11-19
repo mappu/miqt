@@ -28,7 +28,8 @@ const (
 )
 
 type QDate struct {
-	h *C.QDate
+	h          *C.QDate
+	isSubclass bool
 }
 
 func (this *QDate) cPointer() *C.QDate {
@@ -45,6 +46,7 @@ func (this *QDate) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQDate constructs the type using only CGO pointers.
 func newQDate(h *C.QDate) *QDate {
 	if h == nil {
 		return nil
@@ -52,32 +54,53 @@ func newQDate(h *C.QDate) *QDate {
 	return &QDate{h: h}
 }
 
+// UnsafeNewQDate constructs the type using only unsafe pointers.
 func UnsafeNewQDate(h unsafe.Pointer) *QDate {
-	return newQDate((*C.QDate)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QDate{h: (*C.QDate)(h)}
 }
 
 // NewQDate constructs a new QDate object.
 func NewQDate() *QDate {
-	ret := C.QDate_new()
-	return newQDate(ret)
+	var outptr_QDate *C.QDate = nil
+
+	C.QDate_new(&outptr_QDate)
+	ret := newQDate(outptr_QDate)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDate2 constructs a new QDate object.
 func NewQDate2(y int, m int, d int) *QDate {
-	ret := C.QDate_new2((C.int)(y), (C.int)(m), (C.int)(d))
-	return newQDate(ret)
+	var outptr_QDate *C.QDate = nil
+
+	C.QDate_new2((C.int)(y), (C.int)(m), (C.int)(d), &outptr_QDate)
+	ret := newQDate(outptr_QDate)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDate3 constructs a new QDate object.
 func NewQDate3(y int, m int, d int, cal QCalendar) *QDate {
-	ret := C.QDate_new3((C.int)(y), (C.int)(m), (C.int)(d), cal.cPointer())
-	return newQDate(ret)
+	var outptr_QDate *C.QDate = nil
+
+	C.QDate_new3((C.int)(y), (C.int)(m), (C.int)(d), cal.cPointer(), &outptr_QDate)
+	ret := newQDate(outptr_QDate)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDate4 constructs a new QDate object.
 func NewQDate4(param1 *QDate) *QDate {
-	ret := C.QDate_new4(param1.cPointer())
-	return newQDate(ret)
+	var outptr_QDate *C.QDate = nil
+
+	C.QDate_new4(param1.cPointer(), &outptr_QDate)
+	ret := newQDate(outptr_QDate)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QDate) IsNull() bool {
@@ -466,7 +489,7 @@ func QDate_FromString22(s string, f DateFormat) *QDate {
 
 // Delete this object from C++ memory.
 func (this *QDate) Delete() {
-	C.QDate_Delete(this.h)
+	C.QDate_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -479,7 +502,8 @@ func (this *QDate) GoGC() {
 }
 
 type QTime struct {
-	h *C.QTime
+	h          *C.QTime
+	isSubclass bool
 }
 
 func (this *QTime) cPointer() *C.QTime {
@@ -496,6 +520,7 @@ func (this *QTime) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQTime constructs the type using only CGO pointers.
 func newQTime(h *C.QTime) *QTime {
 	if h == nil {
 		return nil
@@ -503,38 +528,63 @@ func newQTime(h *C.QTime) *QTime {
 	return &QTime{h: h}
 }
 
+// UnsafeNewQTime constructs the type using only unsafe pointers.
 func UnsafeNewQTime(h unsafe.Pointer) *QTime {
-	return newQTime((*C.QTime)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QTime{h: (*C.QTime)(h)}
 }
 
 // NewQTime constructs a new QTime object.
 func NewQTime() *QTime {
-	ret := C.QTime_new()
-	return newQTime(ret)
+	var outptr_QTime *C.QTime = nil
+
+	C.QTime_new(&outptr_QTime)
+	ret := newQTime(outptr_QTime)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTime2 constructs a new QTime object.
 func NewQTime2(h int, m int) *QTime {
-	ret := C.QTime_new2((C.int)(h), (C.int)(m))
-	return newQTime(ret)
+	var outptr_QTime *C.QTime = nil
+
+	C.QTime_new2((C.int)(h), (C.int)(m), &outptr_QTime)
+	ret := newQTime(outptr_QTime)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTime3 constructs a new QTime object.
 func NewQTime3(param1 *QTime) *QTime {
-	ret := C.QTime_new3(param1.cPointer())
-	return newQTime(ret)
+	var outptr_QTime *C.QTime = nil
+
+	C.QTime_new3(param1.cPointer(), &outptr_QTime)
+	ret := newQTime(outptr_QTime)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTime4 constructs a new QTime object.
 func NewQTime4(h int, m int, s int) *QTime {
-	ret := C.QTime_new4((C.int)(h), (C.int)(m), (C.int)(s))
-	return newQTime(ret)
+	var outptr_QTime *C.QTime = nil
+
+	C.QTime_new4((C.int)(h), (C.int)(m), (C.int)(s), &outptr_QTime)
+	ret := newQTime(outptr_QTime)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTime5 constructs a new QTime object.
 func NewQTime5(h int, m int, s int, ms int) *QTime {
-	ret := C.QTime_new5((C.int)(h), (C.int)(m), (C.int)(s), (C.int)(ms))
-	return newQTime(ret)
+	var outptr_QTime *C.QTime = nil
+
+	C.QTime_new5((C.int)(h), (C.int)(m), (C.int)(s), (C.int)(ms), &outptr_QTime)
+	ret := newQTime(outptr_QTime)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QTime) IsNull() bool {
@@ -717,7 +767,7 @@ func QTime_IsValid4(h int, m int, s int, ms int) bool {
 
 // Delete this object from C++ memory.
 func (this *QTime) Delete() {
-	C.QTime_Delete(this.h)
+	C.QTime_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -730,7 +780,8 @@ func (this *QTime) GoGC() {
 }
 
 type QDateTime struct {
-	h *C.QDateTime
+	h          *C.QDateTime
+	isSubclass bool
 }
 
 func (this *QDateTime) cPointer() *C.QDateTime {
@@ -747,6 +798,7 @@ func (this *QDateTime) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQDateTime constructs the type using only CGO pointers.
 func newQDateTime(h *C.QDateTime) *QDateTime {
 	if h == nil {
 		return nil
@@ -754,44 +806,73 @@ func newQDateTime(h *C.QDateTime) *QDateTime {
 	return &QDateTime{h: h}
 }
 
+// UnsafeNewQDateTime constructs the type using only unsafe pointers.
 func UnsafeNewQDateTime(h unsafe.Pointer) *QDateTime {
-	return newQDateTime((*C.QDateTime)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QDateTime{h: (*C.QDateTime)(h)}
 }
 
 // NewQDateTime constructs a new QDateTime object.
 func NewQDateTime(param1 *QDate) *QDateTime {
-	ret := C.QDateTime_new(param1.cPointer())
-	return newQDateTime(ret)
+	var outptr_QDateTime *C.QDateTime = nil
+
+	C.QDateTime_new(param1.cPointer(), &outptr_QDateTime)
+	ret := newQDateTime(outptr_QDateTime)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDateTime2 constructs a new QDateTime object.
 func NewQDateTime2(param1 *QDate, param2 *QTime) *QDateTime {
-	ret := C.QDateTime_new2(param1.cPointer(), param2.cPointer())
-	return newQDateTime(ret)
+	var outptr_QDateTime *C.QDateTime = nil
+
+	C.QDateTime_new2(param1.cPointer(), param2.cPointer(), &outptr_QDateTime)
+	ret := newQDateTime(outptr_QDateTime)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDateTime3 constructs a new QDateTime object.
 func NewQDateTime3(date *QDate, time *QTime, spec TimeSpec, offsetSeconds int) *QDateTime {
-	ret := C.QDateTime_new3(date.cPointer(), time.cPointer(), (C.int)(spec), (C.int)(offsetSeconds))
-	return newQDateTime(ret)
+	var outptr_QDateTime *C.QDateTime = nil
+
+	C.QDateTime_new3(date.cPointer(), time.cPointer(), (C.int)(spec), (C.int)(offsetSeconds), &outptr_QDateTime)
+	ret := newQDateTime(outptr_QDateTime)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDateTime4 constructs a new QDateTime object.
 func NewQDateTime4(date *QDate, time *QTime, timeZone *QTimeZone) *QDateTime {
-	ret := C.QDateTime_new4(date.cPointer(), time.cPointer(), timeZone.cPointer())
-	return newQDateTime(ret)
+	var outptr_QDateTime *C.QDateTime = nil
+
+	C.QDateTime_new4(date.cPointer(), time.cPointer(), timeZone.cPointer(), &outptr_QDateTime)
+	ret := newQDateTime(outptr_QDateTime)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDateTime5 constructs a new QDateTime object.
 func NewQDateTime5(other *QDateTime) *QDateTime {
-	ret := C.QDateTime_new5(other.cPointer())
-	return newQDateTime(ret)
+	var outptr_QDateTime *C.QDateTime = nil
+
+	C.QDateTime_new5(other.cPointer(), &outptr_QDateTime)
+	ret := newQDateTime(outptr_QDateTime)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDateTime6 constructs a new QDateTime object.
 func NewQDateTime6(param1 *QDate, param2 *QTime, spec TimeSpec) *QDateTime {
-	ret := C.QDateTime_new6(param1.cPointer(), param2.cPointer(), (C.int)(spec))
-	return newQDateTime(ret)
+	var outptr_QDateTime *C.QDateTime = nil
+
+	C.QDateTime_new6(param1.cPointer(), param2.cPointer(), (C.int)(spec), &outptr_QDateTime)
+	ret := newQDateTime(outptr_QDateTime)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QDateTime) OperatorAssign(other *QDateTime) {
@@ -1204,7 +1285,7 @@ func QDateTime_FromSecsSinceEpoch3(secs int64, spe TimeSpec, offsetFromUtc int) 
 
 // Delete this object from C++ memory.
 func (this *QDateTime) Delete() {
-	C.QDateTime_Delete(this.h)
+	C.QDateTime_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

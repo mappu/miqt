@@ -17,15 +17,19 @@ extern "C" {
 #ifdef __cplusplus
 class QIODevice;
 class QMediaContent;
+class QMediaControl;
 class QMediaPlayerControl;
 class QMediaTimeRange;
 class QMetaObject;
+class QObject;
 #else
 typedef struct QIODevice QIODevice;
 typedef struct QMediaContent QMediaContent;
+typedef struct QMediaControl QMediaControl;
 typedef struct QMediaPlayerControl QMediaPlayerControl;
 typedef struct QMediaTimeRange QMediaTimeRange;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 #endif
 
 QMetaObject* QMediaPlayerControl_MetaObject(const QMediaPlayerControl* self);
@@ -86,7 +90,7 @@ struct miqt_string QMediaPlayerControl_Tr2(const char* s, const char* c);
 struct miqt_string QMediaPlayerControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QMediaPlayerControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QMediaPlayerControl_TrUtf83(const char* s, const char* c, int n);
-void QMediaPlayerControl_Delete(QMediaPlayerControl* self);
+void QMediaPlayerControl_Delete(QMediaPlayerControl* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

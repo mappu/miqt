@@ -9,8 +9,9 @@
 #include "gen_qstringview.h"
 #include "_cgo_export.h"
 
-QStringView* QStringView_new() {
-	return new QStringView();
+void QStringView_new(QStringView** outptr_QStringView) {
+	QStringView* ret = new QStringView();
+	*outptr_QStringView = ret;
 }
 
 struct miqt_string QStringView_ToString(const QStringView* self) {
@@ -349,7 +350,11 @@ double QStringView_ToDouble1(const QStringView* self, bool* ok) {
 	return self->toDouble(ok);
 }
 
-void QStringView_Delete(QStringView* self) {
-	delete self;
+void QStringView_Delete(QStringView* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QStringView*>( self );
+	} else {
+		delete self;
+	}
 }
 

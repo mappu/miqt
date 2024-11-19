@@ -1,4 +1,6 @@
+#include <QMediaControl>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -190,7 +192,11 @@ struct miqt_string QVideoWidgetControl_TrUtf83(const char* s, const char* c, int
 	return _ms;
 }
 
-void QVideoWidgetControl_Delete(QVideoWidgetControl* self) {
-	delete self;
+void QVideoWidgetControl_Delete(QVideoWidgetControl* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QVideoWidgetControl*>( self );
+	} else {
+		delete self;
+	}
 }
 

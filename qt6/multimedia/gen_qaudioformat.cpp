@@ -3,12 +3,14 @@
 #include "gen_qaudioformat.h"
 #include "_cgo_export.h"
 
-QAudioFormat* QAudioFormat_new() {
-	return new QAudioFormat();
+void QAudioFormat_new(QAudioFormat** outptr_QAudioFormat) {
+	QAudioFormat* ret = new QAudioFormat();
+	*outptr_QAudioFormat = ret;
 }
 
-QAudioFormat* QAudioFormat_new2(QAudioFormat* param1) {
-	return new QAudioFormat(*param1);
+void QAudioFormat_new2(QAudioFormat* param1, QAudioFormat** outptr_QAudioFormat) {
+	QAudioFormat* ret = new QAudioFormat(*param1);
+	*outptr_QAudioFormat = ret;
 }
 
 bool QAudioFormat_IsValid(const QAudioFormat* self) {
@@ -100,7 +102,11 @@ uint32_t QAudioFormat_DefaultChannelConfigForChannelCount(int channelCount) {
 	return static_cast<uint32_t>(_ret);
 }
 
-void QAudioFormat_Delete(QAudioFormat* self) {
-	delete self;
+void QAudioFormat_Delete(QAudioFormat* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAudioFormat*>( self );
+	} else {
+		delete self;
+	}
 }
 

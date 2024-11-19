@@ -20,10 +20,10 @@ class QSizePolicy;
 typedef struct QSizePolicy QSizePolicy;
 #endif
 
-QSizePolicy* QSizePolicy_new();
-QSizePolicy* QSizePolicy_new2(int horizontal, int vertical);
-QSizePolicy* QSizePolicy_new3(QSizePolicy* param1);
-QSizePolicy* QSizePolicy_new4(int horizontal, int vertical, int typeVal);
+void QSizePolicy_new(QSizePolicy** outptr_QSizePolicy);
+void QSizePolicy_new2(int horizontal, int vertical, QSizePolicy** outptr_QSizePolicy);
+void QSizePolicy_new3(QSizePolicy* param1, QSizePolicy** outptr_QSizePolicy);
+void QSizePolicy_new4(int horizontal, int vertical, int typeVal, QSizePolicy** outptr_QSizePolicy);
 int QSizePolicy_HorizontalPolicy(const QSizePolicy* self);
 int QSizePolicy_VerticalPolicy(const QSizePolicy* self);
 int QSizePolicy_ControlType(const QSizePolicy* self);
@@ -45,7 +45,7 @@ bool QSizePolicy_RetainSizeWhenHidden(const QSizePolicy* self);
 void QSizePolicy_SetRetainSizeWhenHidden(QSizePolicy* self, bool retainSize);
 void QSizePolicy_Transpose(QSizePolicy* self);
 QSizePolicy* QSizePolicy_Transposed(const QSizePolicy* self);
-void QSizePolicy_Delete(QSizePolicy* self);
+void QSizePolicy_Delete(QSizePolicy* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

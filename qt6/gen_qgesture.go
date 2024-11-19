@@ -10,6 +10,7 @@ import "C"
 
 import (
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
@@ -39,7 +40,8 @@ const (
 )
 
 type QGesture struct {
-	h *C.QGesture
+	h          *C.QGesture
+	isSubclass bool
 	*QObject
 }
 
@@ -57,27 +59,45 @@ func (this *QGesture) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQGesture(h *C.QGesture) *QGesture {
+// newQGesture constructs the type using only CGO pointers.
+func newQGesture(h *C.QGesture, h_QObject *C.QObject) *QGesture {
 	if h == nil {
 		return nil
 	}
-	return &QGesture{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QGesture{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQGesture(h unsafe.Pointer) *QGesture {
-	return newQGesture((*C.QGesture)(h))
+// UnsafeNewQGesture constructs the type using only unsafe pointers.
+func UnsafeNewQGesture(h unsafe.Pointer, h_QObject unsafe.Pointer) *QGesture {
+	if h == nil {
+		return nil
+	}
+
+	return &QGesture{h: (*C.QGesture)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 // NewQGesture constructs a new QGesture object.
 func NewQGesture() *QGesture {
-	ret := C.QGesture_new()
-	return newQGesture(ret)
+	var outptr_QGesture *C.QGesture = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QGesture_new(&outptr_QGesture, &outptr_QObject)
+	ret := newQGesture(outptr_QGesture, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQGesture2 constructs a new QGesture object.
 func NewQGesture2(parent *QObject) *QGesture {
-	ret := C.QGesture_new2(parent.cPointer())
-	return newQGesture(ret)
+	var outptr_QGesture *C.QGesture = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QGesture_new2(parent.cPointer(), &outptr_QGesture, &outptr_QObject)
+	ret := newQGesture(outptr_QGesture, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QGesture) MetaObject() *QMetaObject {
@@ -156,9 +176,175 @@ func QGesture_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QGesture) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QGesture_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QGesture) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	C.QGesture_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGesture_Event
+func miqt_exec_callback_QGesture_Event(self *C.QGesture, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QGesture{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QGesture) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QGesture_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QGesture) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	C.QGesture_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGesture_EventFilter
+func miqt_exec_callback_QGesture_EventFilter(self *C.QGesture, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QGesture{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QGesture) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QGesture_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGesture) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	C.QGesture_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGesture_TimerEvent
+func miqt_exec_callback_QGesture_TimerEvent(self *C.QGesture, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QGesture{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QGesture) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QGesture_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGesture) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	C.QGesture_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGesture_ChildEvent
+func miqt_exec_callback_QGesture_ChildEvent(self *C.QGesture, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QGesture{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QGesture) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QGesture_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGesture) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	C.QGesture_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGesture_CustomEvent
+func miqt_exec_callback_QGesture_CustomEvent(self *C.QGesture, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QGesture{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QGesture) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QGesture_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QGesture) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QGesture_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGesture_ConnectNotify
+func miqt_exec_callback_QGesture_ConnectNotify(self *C.QGesture, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QGesture{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QGesture) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QGesture_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QGesture) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QGesture_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGesture_DisconnectNotify
+func miqt_exec_callback_QGesture_DisconnectNotify(self *C.QGesture, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QGesture{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QGesture) Delete() {
-	C.QGesture_Delete(this.h)
+	C.QGesture_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -171,7 +357,8 @@ func (this *QGesture) GoGC() {
 }
 
 type QPanGesture struct {
-	h *C.QPanGesture
+	h          *C.QPanGesture
+	isSubclass bool
 	*QGesture
 }
 
@@ -189,27 +376,47 @@ func (this *QPanGesture) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQPanGesture(h *C.QPanGesture) *QPanGesture {
+// newQPanGesture constructs the type using only CGO pointers.
+func newQPanGesture(h *C.QPanGesture, h_QGesture *C.QGesture, h_QObject *C.QObject) *QPanGesture {
 	if h == nil {
 		return nil
 	}
-	return &QPanGesture{h: h, QGesture: UnsafeNewQGesture(unsafe.Pointer(h))}
+	return &QPanGesture{h: h,
+		QGesture: newQGesture(h_QGesture, h_QObject)}
 }
 
-func UnsafeNewQPanGesture(h unsafe.Pointer) *QPanGesture {
-	return newQPanGesture((*C.QPanGesture)(h))
+// UnsafeNewQPanGesture constructs the type using only unsafe pointers.
+func UnsafeNewQPanGesture(h unsafe.Pointer, h_QGesture unsafe.Pointer, h_QObject unsafe.Pointer) *QPanGesture {
+	if h == nil {
+		return nil
+	}
+
+	return &QPanGesture{h: (*C.QPanGesture)(h),
+		QGesture: UnsafeNewQGesture(h_QGesture, h_QObject)}
 }
 
 // NewQPanGesture constructs a new QPanGesture object.
 func NewQPanGesture() *QPanGesture {
-	ret := C.QPanGesture_new()
-	return newQPanGesture(ret)
+	var outptr_QPanGesture *C.QPanGesture = nil
+	var outptr_QGesture *C.QGesture = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QPanGesture_new(&outptr_QPanGesture, &outptr_QGesture, &outptr_QObject)
+	ret := newQPanGesture(outptr_QPanGesture, outptr_QGesture, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPanGesture2 constructs a new QPanGesture object.
 func NewQPanGesture2(parent *QObject) *QPanGesture {
-	ret := C.QPanGesture_new2(parent.cPointer())
-	return newQPanGesture(ret)
+	var outptr_QPanGesture *C.QPanGesture = nil
+	var outptr_QGesture *C.QGesture = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QPanGesture_new2(parent.cPointer(), &outptr_QPanGesture, &outptr_QGesture, &outptr_QObject)
+	ret := newQPanGesture(outptr_QPanGesture, outptr_QGesture, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QPanGesture) MetaObject() *QMetaObject {
@@ -292,7 +499,7 @@ func QPanGesture_Tr3(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QPanGesture) Delete() {
-	C.QPanGesture_Delete(this.h)
+	C.QPanGesture_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -305,7 +512,8 @@ func (this *QPanGesture) GoGC() {
 }
 
 type QPinchGesture struct {
-	h *C.QPinchGesture
+	h          *C.QPinchGesture
+	isSubclass bool
 	*QGesture
 }
 
@@ -323,27 +531,47 @@ func (this *QPinchGesture) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQPinchGesture(h *C.QPinchGesture) *QPinchGesture {
+// newQPinchGesture constructs the type using only CGO pointers.
+func newQPinchGesture(h *C.QPinchGesture, h_QGesture *C.QGesture, h_QObject *C.QObject) *QPinchGesture {
 	if h == nil {
 		return nil
 	}
-	return &QPinchGesture{h: h, QGesture: UnsafeNewQGesture(unsafe.Pointer(h))}
+	return &QPinchGesture{h: h,
+		QGesture: newQGesture(h_QGesture, h_QObject)}
 }
 
-func UnsafeNewQPinchGesture(h unsafe.Pointer) *QPinchGesture {
-	return newQPinchGesture((*C.QPinchGesture)(h))
+// UnsafeNewQPinchGesture constructs the type using only unsafe pointers.
+func UnsafeNewQPinchGesture(h unsafe.Pointer, h_QGesture unsafe.Pointer, h_QObject unsafe.Pointer) *QPinchGesture {
+	if h == nil {
+		return nil
+	}
+
+	return &QPinchGesture{h: (*C.QPinchGesture)(h),
+		QGesture: UnsafeNewQGesture(h_QGesture, h_QObject)}
 }
 
 // NewQPinchGesture constructs a new QPinchGesture object.
 func NewQPinchGesture() *QPinchGesture {
-	ret := C.QPinchGesture_new()
-	return newQPinchGesture(ret)
+	var outptr_QPinchGesture *C.QPinchGesture = nil
+	var outptr_QGesture *C.QGesture = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QPinchGesture_new(&outptr_QPinchGesture, &outptr_QGesture, &outptr_QObject)
+	ret := newQPinchGesture(outptr_QPinchGesture, outptr_QGesture, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPinchGesture2 constructs a new QPinchGesture object.
 func NewQPinchGesture2(parent *QObject) *QPinchGesture {
-	ret := C.QPinchGesture_new2(parent.cPointer())
-	return newQPinchGesture(ret)
+	var outptr_QPinchGesture *C.QPinchGesture = nil
+	var outptr_QGesture *C.QGesture = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QPinchGesture_new2(parent.cPointer(), &outptr_QPinchGesture, &outptr_QGesture, &outptr_QObject)
+	ret := newQPinchGesture(outptr_QPinchGesture, outptr_QGesture, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QPinchGesture) MetaObject() *QMetaObject {
@@ -486,7 +714,7 @@ func QPinchGesture_Tr3(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QPinchGesture) Delete() {
-	C.QPinchGesture_Delete(this.h)
+	C.QPinchGesture_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -499,7 +727,8 @@ func (this *QPinchGesture) GoGC() {
 }
 
 type QSwipeGesture struct {
-	h *C.QSwipeGesture
+	h          *C.QSwipeGesture
+	isSubclass bool
 	*QGesture
 }
 
@@ -517,27 +746,47 @@ func (this *QSwipeGesture) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQSwipeGesture(h *C.QSwipeGesture) *QSwipeGesture {
+// newQSwipeGesture constructs the type using only CGO pointers.
+func newQSwipeGesture(h *C.QSwipeGesture, h_QGesture *C.QGesture, h_QObject *C.QObject) *QSwipeGesture {
 	if h == nil {
 		return nil
 	}
-	return &QSwipeGesture{h: h, QGesture: UnsafeNewQGesture(unsafe.Pointer(h))}
+	return &QSwipeGesture{h: h,
+		QGesture: newQGesture(h_QGesture, h_QObject)}
 }
 
-func UnsafeNewQSwipeGesture(h unsafe.Pointer) *QSwipeGesture {
-	return newQSwipeGesture((*C.QSwipeGesture)(h))
+// UnsafeNewQSwipeGesture constructs the type using only unsafe pointers.
+func UnsafeNewQSwipeGesture(h unsafe.Pointer, h_QGesture unsafe.Pointer, h_QObject unsafe.Pointer) *QSwipeGesture {
+	if h == nil {
+		return nil
+	}
+
+	return &QSwipeGesture{h: (*C.QSwipeGesture)(h),
+		QGesture: UnsafeNewQGesture(h_QGesture, h_QObject)}
 }
 
 // NewQSwipeGesture constructs a new QSwipeGesture object.
 func NewQSwipeGesture() *QSwipeGesture {
-	ret := C.QSwipeGesture_new()
-	return newQSwipeGesture(ret)
+	var outptr_QSwipeGesture *C.QSwipeGesture = nil
+	var outptr_QGesture *C.QGesture = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QSwipeGesture_new(&outptr_QSwipeGesture, &outptr_QGesture, &outptr_QObject)
+	ret := newQSwipeGesture(outptr_QSwipeGesture, outptr_QGesture, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSwipeGesture2 constructs a new QSwipeGesture object.
 func NewQSwipeGesture2(parent *QObject) *QSwipeGesture {
-	ret := C.QSwipeGesture_new2(parent.cPointer())
-	return newQSwipeGesture(ret)
+	var outptr_QSwipeGesture *C.QSwipeGesture = nil
+	var outptr_QGesture *C.QGesture = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QSwipeGesture_new2(parent.cPointer(), &outptr_QSwipeGesture, &outptr_QGesture, &outptr_QObject)
+	ret := newQSwipeGesture(outptr_QSwipeGesture, outptr_QGesture, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QSwipeGesture) MetaObject() *QMetaObject {
@@ -599,7 +848,7 @@ func QSwipeGesture_Tr3(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QSwipeGesture) Delete() {
-	C.QSwipeGesture_Delete(this.h)
+	C.QSwipeGesture_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -612,7 +861,8 @@ func (this *QSwipeGesture) GoGC() {
 }
 
 type QTapGesture struct {
-	h *C.QTapGesture
+	h          *C.QTapGesture
+	isSubclass bool
 	*QGesture
 }
 
@@ -630,27 +880,47 @@ func (this *QTapGesture) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQTapGesture(h *C.QTapGesture) *QTapGesture {
+// newQTapGesture constructs the type using only CGO pointers.
+func newQTapGesture(h *C.QTapGesture, h_QGesture *C.QGesture, h_QObject *C.QObject) *QTapGesture {
 	if h == nil {
 		return nil
 	}
-	return &QTapGesture{h: h, QGesture: UnsafeNewQGesture(unsafe.Pointer(h))}
+	return &QTapGesture{h: h,
+		QGesture: newQGesture(h_QGesture, h_QObject)}
 }
 
-func UnsafeNewQTapGesture(h unsafe.Pointer) *QTapGesture {
-	return newQTapGesture((*C.QTapGesture)(h))
+// UnsafeNewQTapGesture constructs the type using only unsafe pointers.
+func UnsafeNewQTapGesture(h unsafe.Pointer, h_QGesture unsafe.Pointer, h_QObject unsafe.Pointer) *QTapGesture {
+	if h == nil {
+		return nil
+	}
+
+	return &QTapGesture{h: (*C.QTapGesture)(h),
+		QGesture: UnsafeNewQGesture(h_QGesture, h_QObject)}
 }
 
 // NewQTapGesture constructs a new QTapGesture object.
 func NewQTapGesture() *QTapGesture {
-	ret := C.QTapGesture_new()
-	return newQTapGesture(ret)
+	var outptr_QTapGesture *C.QTapGesture = nil
+	var outptr_QGesture *C.QGesture = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QTapGesture_new(&outptr_QTapGesture, &outptr_QGesture, &outptr_QObject)
+	ret := newQTapGesture(outptr_QTapGesture, outptr_QGesture, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTapGesture2 constructs a new QTapGesture object.
 func NewQTapGesture2(parent *QObject) *QTapGesture {
-	ret := C.QTapGesture_new2(parent.cPointer())
-	return newQTapGesture(ret)
+	var outptr_QTapGesture *C.QTapGesture = nil
+	var outptr_QGesture *C.QGesture = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QTapGesture_new2(parent.cPointer(), &outptr_QTapGesture, &outptr_QGesture, &outptr_QObject)
+	ret := newQTapGesture(outptr_QTapGesture, outptr_QGesture, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QTapGesture) MetaObject() *QMetaObject {
@@ -707,7 +977,7 @@ func QTapGesture_Tr3(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QTapGesture) Delete() {
-	C.QTapGesture_Delete(this.h)
+	C.QTapGesture_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -720,7 +990,8 @@ func (this *QTapGesture) GoGC() {
 }
 
 type QTapAndHoldGesture struct {
-	h *C.QTapAndHoldGesture
+	h          *C.QTapAndHoldGesture
+	isSubclass bool
 	*QGesture
 }
 
@@ -738,27 +1009,47 @@ func (this *QTapAndHoldGesture) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQTapAndHoldGesture(h *C.QTapAndHoldGesture) *QTapAndHoldGesture {
+// newQTapAndHoldGesture constructs the type using only CGO pointers.
+func newQTapAndHoldGesture(h *C.QTapAndHoldGesture, h_QGesture *C.QGesture, h_QObject *C.QObject) *QTapAndHoldGesture {
 	if h == nil {
 		return nil
 	}
-	return &QTapAndHoldGesture{h: h, QGesture: UnsafeNewQGesture(unsafe.Pointer(h))}
+	return &QTapAndHoldGesture{h: h,
+		QGesture: newQGesture(h_QGesture, h_QObject)}
 }
 
-func UnsafeNewQTapAndHoldGesture(h unsafe.Pointer) *QTapAndHoldGesture {
-	return newQTapAndHoldGesture((*C.QTapAndHoldGesture)(h))
+// UnsafeNewQTapAndHoldGesture constructs the type using only unsafe pointers.
+func UnsafeNewQTapAndHoldGesture(h unsafe.Pointer, h_QGesture unsafe.Pointer, h_QObject unsafe.Pointer) *QTapAndHoldGesture {
+	if h == nil {
+		return nil
+	}
+
+	return &QTapAndHoldGesture{h: (*C.QTapAndHoldGesture)(h),
+		QGesture: UnsafeNewQGesture(h_QGesture, h_QObject)}
 }
 
 // NewQTapAndHoldGesture constructs a new QTapAndHoldGesture object.
 func NewQTapAndHoldGesture() *QTapAndHoldGesture {
-	ret := C.QTapAndHoldGesture_new()
-	return newQTapAndHoldGesture(ret)
+	var outptr_QTapAndHoldGesture *C.QTapAndHoldGesture = nil
+	var outptr_QGesture *C.QGesture = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QTapAndHoldGesture_new(&outptr_QTapAndHoldGesture, &outptr_QGesture, &outptr_QObject)
+	ret := newQTapAndHoldGesture(outptr_QTapAndHoldGesture, outptr_QGesture, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTapAndHoldGesture2 constructs a new QTapAndHoldGesture object.
 func NewQTapAndHoldGesture2(parent *QObject) *QTapAndHoldGesture {
-	ret := C.QTapAndHoldGesture_new2(parent.cPointer())
-	return newQTapAndHoldGesture(ret)
+	var outptr_QTapAndHoldGesture *C.QTapAndHoldGesture = nil
+	var outptr_QGesture *C.QGesture = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QTapAndHoldGesture_new2(parent.cPointer(), &outptr_QTapAndHoldGesture, &outptr_QGesture, &outptr_QObject)
+	ret := newQTapAndHoldGesture(outptr_QTapAndHoldGesture, outptr_QGesture, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QTapAndHoldGesture) MetaObject() *QMetaObject {
@@ -823,7 +1114,7 @@ func QTapAndHoldGesture_Tr3(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QTapAndHoldGesture) Delete() {
-	C.QTapAndHoldGesture_Delete(this.h)
+	C.QTapAndHoldGesture_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -836,7 +1127,8 @@ func (this *QTapAndHoldGesture) GoGC() {
 }
 
 type QGestureEvent struct {
-	h *C.QGestureEvent
+	h          *C.QGestureEvent
+	isSubclass bool
 	*QEvent
 }
 
@@ -854,15 +1146,23 @@ func (this *QGestureEvent) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQGestureEvent(h *C.QGestureEvent) *QGestureEvent {
+// newQGestureEvent constructs the type using only CGO pointers.
+func newQGestureEvent(h *C.QGestureEvent, h_QEvent *C.QEvent) *QGestureEvent {
 	if h == nil {
 		return nil
 	}
-	return &QGestureEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
+	return &QGestureEvent{h: h,
+		QEvent: newQEvent(h_QEvent)}
 }
 
-func UnsafeNewQGestureEvent(h unsafe.Pointer) *QGestureEvent {
-	return newQGestureEvent((*C.QGestureEvent)(h))
+// UnsafeNewQGestureEvent constructs the type using only unsafe pointers.
+func UnsafeNewQGestureEvent(h unsafe.Pointer, h_QEvent unsafe.Pointer) *QGestureEvent {
+	if h == nil {
+		return nil
+	}
+
+	return &QGestureEvent{h: (*C.QGestureEvent)(h),
+		QEvent: UnsafeNewQEvent(h_QEvent)}
 }
 
 // NewQGestureEvent constructs a new QGestureEvent object.
@@ -873,14 +1173,24 @@ func NewQGestureEvent(gestures []*QGesture) *QGestureEvent {
 		gestures_CArray[i] = gestures[i].cPointer()
 	}
 	gestures_ma := C.struct_miqt_array{len: C.size_t(len(gestures)), data: unsafe.Pointer(gestures_CArray)}
-	ret := C.QGestureEvent_new(gestures_ma)
-	return newQGestureEvent(ret)
+	var outptr_QGestureEvent *C.QGestureEvent = nil
+	var outptr_QEvent *C.QEvent = nil
+
+	C.QGestureEvent_new(gestures_ma, &outptr_QGestureEvent, &outptr_QEvent)
+	ret := newQGestureEvent(outptr_QGestureEvent, outptr_QEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQGestureEvent2 constructs a new QGestureEvent object.
 func NewQGestureEvent2(param1 *QGestureEvent) *QGestureEvent {
-	ret := C.QGestureEvent_new2(param1.cPointer())
-	return newQGestureEvent(ret)
+	var outptr_QGestureEvent *C.QGestureEvent = nil
+	var outptr_QEvent *C.QEvent = nil
+
+	C.QGestureEvent_new2(param1.cPointer(), &outptr_QGestureEvent, &outptr_QEvent)
+	ret := newQGestureEvent(outptr_QGestureEvent, outptr_QEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QGestureEvent) Gestures() []*QGesture {
@@ -888,13 +1198,13 @@ func (this *QGestureEvent) Gestures() []*QGesture {
 	_ret := make([]*QGesture, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGesture(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQGesture(unsafe.Pointer(_outCast[i]), nil)
 	}
 	return _ret
 }
 
 func (this *QGestureEvent) Gesture(typeVal GestureType) *QGesture {
-	return UnsafeNewQGesture(unsafe.Pointer(C.QGestureEvent_Gesture(this.h, (C.int)(typeVal))))
+	return UnsafeNewQGesture(unsafe.Pointer(C.QGestureEvent_Gesture(this.h, (C.int)(typeVal))), nil)
 }
 
 func (this *QGestureEvent) ActiveGestures() []*QGesture {
@@ -902,7 +1212,7 @@ func (this *QGestureEvent) ActiveGestures() []*QGesture {
 	_ret := make([]*QGesture, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGesture(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQGesture(unsafe.Pointer(_outCast[i]), nil)
 	}
 	return _ret
 }
@@ -912,7 +1222,7 @@ func (this *QGestureEvent) CanceledGestures() []*QGesture {
 	_ret := make([]*QGesture, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGesture(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQGesture(unsafe.Pointer(_outCast[i]), nil)
 	}
 	return _ret
 }
@@ -954,7 +1264,7 @@ func (this *QGestureEvent) SetWidget(widget *QWidget) {
 }
 
 func (this *QGestureEvent) Widget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QGestureEvent_Widget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QGestureEvent_Widget(this.h)), nil, nil)
 }
 
 func (this *QGestureEvent) MapToGraphicsScene(gesturePoint *QPointF) *QPointF {
@@ -964,9 +1274,53 @@ func (this *QGestureEvent) MapToGraphicsScene(gesturePoint *QPointF) *QPointF {
 	return _goptr
 }
 
+func (this *QGestureEvent) callVirtualBase_SetAccepted(accepted bool) {
+
+	C.QGestureEvent_virtualbase_SetAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
+
+}
+func (this *QGestureEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	C.QGestureEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGestureEvent_SetAccepted
+func miqt_exec_callback_QGestureEvent_SetAccepted(self *C.QGestureEvent, cb C.intptr_t, accepted C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(accepted bool), accepted bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(accepted)
+
+	gofunc((&QGestureEvent{h: self}).callVirtualBase_SetAccepted, slotval1)
+
+}
+
+func (this *QGestureEvent) callVirtualBase_Clone() *QEvent {
+
+	return UnsafeNewQEvent(unsafe.Pointer(C.QGestureEvent_virtualbase_Clone(unsafe.Pointer(this.h))))
+}
+func (this *QGestureEvent) OnClone(slot func(super func() *QEvent) *QEvent) {
+	C.QGestureEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGestureEvent_Clone
+func miqt_exec_callback_QGestureEvent_Clone(self *C.QGestureEvent, cb C.intptr_t) *C.QEvent {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QEvent) *QEvent)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QGestureEvent{h: self}).callVirtualBase_Clone)
+
+	return virtualReturn.cPointer()
+
+}
+
 // Delete this object from C++ memory.
 func (this *QGestureEvent) Delete() {
-	C.QGestureEvent_Delete(this.h)
+	C.QGestureEvent_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -22,7 +22,8 @@ const (
 )
 
 type QPagedPaintDevice struct {
-	h *C.QPagedPaintDevice
+	h          *C.QPagedPaintDevice
+	isSubclass bool
 	*QPaintDevice
 }
 
@@ -40,15 +41,23 @@ func (this *QPagedPaintDevice) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQPagedPaintDevice(h *C.QPagedPaintDevice) *QPagedPaintDevice {
+// newQPagedPaintDevice constructs the type using only CGO pointers.
+func newQPagedPaintDevice(h *C.QPagedPaintDevice, h_QPaintDevice *C.QPaintDevice) *QPagedPaintDevice {
 	if h == nil {
 		return nil
 	}
-	return &QPagedPaintDevice{h: h, QPaintDevice: UnsafeNewQPaintDevice(unsafe.Pointer(h))}
+	return &QPagedPaintDevice{h: h,
+		QPaintDevice: newQPaintDevice(h_QPaintDevice)}
 }
 
-func UnsafeNewQPagedPaintDevice(h unsafe.Pointer) *QPagedPaintDevice {
-	return newQPagedPaintDevice((*C.QPagedPaintDevice)(h))
+// UnsafeNewQPagedPaintDevice constructs the type using only unsafe pointers.
+func UnsafeNewQPagedPaintDevice(h unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QPagedPaintDevice {
+	if h == nil {
+		return nil
+	}
+
+	return &QPagedPaintDevice{h: (*C.QPagedPaintDevice)(h),
+		QPaintDevice: UnsafeNewQPaintDevice(h_QPaintDevice)}
 }
 
 func (this *QPagedPaintDevice) NewPage() bool {
@@ -67,8 +76,8 @@ func (this *QPagedPaintDevice) SetPageOrientation(orientation QPageLayout__Orien
 	return (bool)(C.QPagedPaintDevice_SetPageOrientation(this.h, (C.int)(orientation)))
 }
 
-func (this *QPagedPaintDevice) SetPageMargins(margins *QMarginsF) bool {
-	return (bool)(C.QPagedPaintDevice_SetPageMargins(this.h, margins.cPointer()))
+func (this *QPagedPaintDevice) SetPageMargins(margins *QMarginsF, units QPageLayout__Unit) bool {
+	return (bool)(C.QPagedPaintDevice_SetPageMargins(this.h, margins.cPointer(), (C.int)(units)))
 }
 
 func (this *QPagedPaintDevice) PageLayout() *QPageLayout {
@@ -89,13 +98,9 @@ func (this *QPagedPaintDevice) PageRanges() *QPageRanges {
 	return _goptr
 }
 
-func (this *QPagedPaintDevice) SetPageMargins2(margins *QMarginsF, units QPageLayout__Unit) bool {
-	return (bool)(C.QPagedPaintDevice_SetPageMargins2(this.h, margins.cPointer(), (C.int)(units)))
-}
-
 // Delete this object from C++ memory.
 func (this *QPagedPaintDevice) Delete() {
-	C.QPagedPaintDevice_Delete(this.h)
+	C.QPagedPaintDevice_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

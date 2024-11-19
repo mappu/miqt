@@ -16,7 +16,8 @@ import (
 )
 
 type QsciLexer struct {
-	h *C.QsciLexer
+	h          *C.QsciLexer
+	isSubclass bool
 	*qt6.QObject
 }
 
@@ -34,15 +35,23 @@ func (this *QsciLexer) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQsciLexer(h *C.QsciLexer) *QsciLexer {
+// newQsciLexer constructs the type using only CGO pointers.
+func newQsciLexer(h *C.QsciLexer, h_QObject *C.QObject) *QsciLexer {
 	if h == nil {
 		return nil
 	}
-	return &QsciLexer{h: h, QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QsciLexer{h: h,
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
 }
 
-func UnsafeNewQsciLexer(h unsafe.Pointer) *QsciLexer {
-	return newQsciLexer((*C.QsciLexer)(h))
+// UnsafeNewQsciLexer constructs the type using only unsafe pointers.
+func UnsafeNewQsciLexer(h unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexer {
+	if h == nil {
+		return nil
+	}
+
+	return &QsciLexer{h: (*C.QsciLexer)(h),
+		QObject: qt6.UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QsciLexer) MetaObject() *qt6.QMetaObject {
@@ -79,7 +88,7 @@ func (this *QsciLexer) LexerId() int {
 }
 
 func (this *QsciLexer) Apis() *QsciAbstractAPIs {
-	return UnsafeNewQsciAbstractAPIs(unsafe.Pointer(C.QsciLexer_Apis(this.h)))
+	return UnsafeNewQsciAbstractAPIs(unsafe.Pointer(C.QsciLexer_Apis(this.h)), nil)
 }
 
 func (this *QsciLexer) AutoCompletionFillups() string {
@@ -104,8 +113,8 @@ func (this *QsciLexer) AutoIndentStyle() int {
 	return (int)(C.QsciLexer_AutoIndentStyle(this.h))
 }
 
-func (this *QsciLexer) BlockEnd() string {
-	_ret := C.QsciLexer_BlockEnd(this.h)
+func (this *QsciLexer) BlockEnd(style *int) string {
+	_ret := C.QsciLexer_BlockEnd(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
 
@@ -113,13 +122,13 @@ func (this *QsciLexer) BlockLookback() int {
 	return (int)(C.QsciLexer_BlockLookback(this.h))
 }
 
-func (this *QsciLexer) BlockStart() string {
-	_ret := C.QsciLexer_BlockStart(this.h)
+func (this *QsciLexer) BlockStart(style *int) string {
+	_ret := C.QsciLexer_BlockStart(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
 
-func (this *QsciLexer) BlockStartKeyword() string {
-	_ret := C.QsciLexer_BlockStartKeyword(this.h)
+func (this *QsciLexer) BlockStartKeyword(style *int) string {
+	_ret := C.QsciLexer_BlockStartKeyword(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
 
@@ -223,7 +232,7 @@ func (this *QsciLexer) DefaultPaperWithStyle(style int) *qt6.QColor {
 }
 
 func (this *QsciLexer) Editor() *QsciScintilla {
-	return UnsafeNewQsciScintilla(unsafe.Pointer(C.QsciLexer_Editor(this.h)))
+	return UnsafeNewQsciScintilla(unsafe.Pointer(C.QsciLexer_Editor(this.h)), nil, nil, nil, nil, nil, nil)
 }
 
 func (this *QsciLexer) SetAPIs(apis *QsciAbstractAPIs) {
@@ -271,20 +280,20 @@ func (this *QsciLexer) SetAutoIndentStyle(autoindentstyle int) {
 	C.QsciLexer_SetAutoIndentStyle(this.h, (C.int)(autoindentstyle))
 }
 
-func (this *QsciLexer) SetColor(c *qt6.QColor) {
-	C.QsciLexer_SetColor(this.h, (*C.QColor)(c.UnsafePointer()))
+func (this *QsciLexer) SetColor(c *qt6.QColor, style int) {
+	C.QsciLexer_SetColor(this.h, (*C.QColor)(c.UnsafePointer()), (C.int)(style))
 }
 
-func (this *QsciLexer) SetEolFill(eoffill bool) {
-	C.QsciLexer_SetEolFill(this.h, (C.bool)(eoffill))
+func (this *QsciLexer) SetEolFill(eoffill bool, style int) {
+	C.QsciLexer_SetEolFill(this.h, (C.bool)(eoffill), (C.int)(style))
 }
 
-func (this *QsciLexer) SetFont(f *qt6.QFont) {
-	C.QsciLexer_SetFont(this.h, (*C.QFont)(f.UnsafePointer()))
+func (this *QsciLexer) SetFont(f *qt6.QFont, style int) {
+	C.QsciLexer_SetFont(this.h, (*C.QFont)(f.UnsafePointer()), (C.int)(style))
 }
 
-func (this *QsciLexer) SetPaper(c *qt6.QColor) {
-	C.QsciLexer_SetPaper(this.h, (*C.QColor)(c.UnsafePointer()))
+func (this *QsciLexer) SetPaper(c *qt6.QColor, style int) {
+	C.QsciLexer_SetPaper(this.h, (*C.QColor)(c.UnsafePointer()), (C.int)(style))
 }
 
 func (this *QsciLexer) ColorChanged(c *qt6.QColor, style int) {
@@ -422,21 +431,6 @@ func QsciLexer_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QsciLexer) BlockEnd1(style *int) string {
-	_ret := C.QsciLexer_BlockEnd1(this.h, (*C.int)(unsafe.Pointer(style)))
-	return C.GoString(_ret)
-}
-
-func (this *QsciLexer) BlockStart1(style *int) string {
-	_ret := C.QsciLexer_BlockStart1(this.h, (*C.int)(unsafe.Pointer(style)))
-	return C.GoString(_ret)
-}
-
-func (this *QsciLexer) BlockStartKeyword1(style *int) string {
-	_ret := C.QsciLexer_BlockStartKeyword1(this.h, (*C.int)(unsafe.Pointer(style)))
-	return C.GoString(_ret)
-}
-
 func (this *QsciLexer) ReadSettings2(qs *qt6.QSettings, prefix string) bool {
 	prefix_Cstring := C.CString(prefix)
 	defer C.free(unsafe.Pointer(prefix_Cstring))
@@ -449,25 +443,9 @@ func (this *QsciLexer) WriteSettings2(qs *qt6.QSettings, prefix string) bool {
 	return (bool)(C.QsciLexer_WriteSettings2(this.h, (*C.QSettings)(qs.UnsafePointer()), prefix_Cstring))
 }
 
-func (this *QsciLexer) SetColor2(c *qt6.QColor, style int) {
-	C.QsciLexer_SetColor2(this.h, (*C.QColor)(c.UnsafePointer()), (C.int)(style))
-}
-
-func (this *QsciLexer) SetEolFill2(eoffill bool, style int) {
-	C.QsciLexer_SetEolFill2(this.h, (C.bool)(eoffill), (C.int)(style))
-}
-
-func (this *QsciLexer) SetFont2(f *qt6.QFont, style int) {
-	C.QsciLexer_SetFont2(this.h, (*C.QFont)(f.UnsafePointer()), (C.int)(style))
-}
-
-func (this *QsciLexer) SetPaper2(c *qt6.QColor, style int) {
-	C.QsciLexer_SetPaper2(this.h, (*C.QColor)(c.UnsafePointer()), (C.int)(style))
-}
-
 // Delete this object from C++ memory.
 func (this *QsciLexer) Delete() {
-	C.QsciLexer_Delete(this.h)
+	C.QsciLexer_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

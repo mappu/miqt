@@ -57,7 +57,8 @@ const (
 )
 
 type QRadioTuner struct {
-	h *C.QRadioTuner
+	h          *C.QRadioTuner
+	isSubclass bool
 	*QMediaObject
 }
 
@@ -75,27 +76,47 @@ func (this *QRadioTuner) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQRadioTuner(h *C.QRadioTuner) *QRadioTuner {
+// newQRadioTuner constructs the type using only CGO pointers.
+func newQRadioTuner(h *C.QRadioTuner, h_QMediaObject *C.QMediaObject, h_QObject *C.QObject) *QRadioTuner {
 	if h == nil {
 		return nil
 	}
-	return &QRadioTuner{h: h, QMediaObject: UnsafeNewQMediaObject(unsafe.Pointer(h))}
+	return &QRadioTuner{h: h,
+		QMediaObject: newQMediaObject(h_QMediaObject, h_QObject)}
 }
 
-func UnsafeNewQRadioTuner(h unsafe.Pointer) *QRadioTuner {
-	return newQRadioTuner((*C.QRadioTuner)(h))
+// UnsafeNewQRadioTuner constructs the type using only unsafe pointers.
+func UnsafeNewQRadioTuner(h unsafe.Pointer, h_QMediaObject unsafe.Pointer, h_QObject unsafe.Pointer) *QRadioTuner {
+	if h == nil {
+		return nil
+	}
+
+	return &QRadioTuner{h: (*C.QRadioTuner)(h),
+		QMediaObject: UnsafeNewQMediaObject(h_QMediaObject, h_QObject)}
 }
 
 // NewQRadioTuner constructs a new QRadioTuner object.
 func NewQRadioTuner() *QRadioTuner {
-	ret := C.QRadioTuner_new()
-	return newQRadioTuner(ret)
+	var outptr_QRadioTuner *C.QRadioTuner = nil
+	var outptr_QMediaObject *C.QMediaObject = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QRadioTuner_new(&outptr_QRadioTuner, &outptr_QMediaObject, &outptr_QObject)
+	ret := newQRadioTuner(outptr_QRadioTuner, outptr_QMediaObject, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRadioTuner2 constructs a new QRadioTuner object.
 func NewQRadioTuner2(parent *qt.QObject) *QRadioTuner {
-	ret := C.QRadioTuner_new2((*C.QObject)(parent.UnsafePointer()))
-	return newQRadioTuner(ret)
+	var outptr_QRadioTuner *C.QRadioTuner = nil
+	var outptr_QMediaObject *C.QMediaObject = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QRadioTuner_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QRadioTuner, &outptr_QMediaObject, &outptr_QObject)
+	ret := newQRadioTuner(outptr_QRadioTuner, outptr_QMediaObject, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QRadioTuner) MetaObject() *qt.QMetaObject {
@@ -211,7 +232,7 @@ func (this *QRadioTuner) ErrorString() string {
 }
 
 func (this *QRadioTuner) RadioData() *QRadioData {
-	return UnsafeNewQRadioData(unsafe.Pointer(C.QRadioTuner_RadioData(this.h)))
+	return UnsafeNewQRadioData(unsafe.Pointer(C.QRadioTuner_RadioData(this.h)), nil, nil)
 }
 
 func (this *QRadioTuner) SearchForward() {
@@ -531,9 +552,122 @@ func (this *QRadioTuner) SearchAllStations1(searchMode QRadioTuner__SearchMode) 
 	C.QRadioTuner_SearchAllStations1(this.h, (C.int)(searchMode))
 }
 
+func (this *QRadioTuner) callVirtualBase_Availability() QMultimedia__AvailabilityStatus {
+
+	return (QMultimedia__AvailabilityStatus)(C.QRadioTuner_virtualbase_Availability(unsafe.Pointer(this.h)))
+
+}
+func (this *QRadioTuner) OnAvailability(slot func(super func() QMultimedia__AvailabilityStatus) QMultimedia__AvailabilityStatus) {
+	C.QRadioTuner_override_virtual_Availability(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QRadioTuner_Availability
+func miqt_exec_callback_QRadioTuner_Availability(self *C.QRadioTuner, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QMultimedia__AvailabilityStatus) QMultimedia__AvailabilityStatus)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QRadioTuner{h: self}).callVirtualBase_Availability)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QRadioTuner) callVirtualBase_IsAvailable() bool {
+
+	return (bool)(C.QRadioTuner_virtualbase_IsAvailable(unsafe.Pointer(this.h)))
+
+}
+func (this *QRadioTuner) OnIsAvailable(slot func(super func() bool) bool) {
+	C.QRadioTuner_override_virtual_IsAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QRadioTuner_IsAvailable
+func miqt_exec_callback_QRadioTuner_IsAvailable(self *C.QRadioTuner, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QRadioTuner{h: self}).callVirtualBase_IsAvailable)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QRadioTuner) callVirtualBase_Service() *QMediaService {
+
+	return UnsafeNewQMediaService(unsafe.Pointer(C.QRadioTuner_virtualbase_Service(unsafe.Pointer(this.h))), nil)
+}
+func (this *QRadioTuner) OnService(slot func(super func() *QMediaService) *QMediaService) {
+	C.QRadioTuner_override_virtual_Service(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QRadioTuner_Service
+func miqt_exec_callback_QRadioTuner_Service(self *C.QRadioTuner, cb C.intptr_t) *C.QMediaService {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QMediaService) *QMediaService)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QRadioTuner{h: self}).callVirtualBase_Service)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QRadioTuner) callVirtualBase_Bind(param1 *qt.QObject) bool {
+
+	return (bool)(C.QRadioTuner_virtualbase_Bind(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer())))
+
+}
+func (this *QRadioTuner) OnBind(slot func(super func(param1 *qt.QObject) bool, param1 *qt.QObject) bool) {
+	C.QRadioTuner_override_virtual_Bind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QRadioTuner_Bind
+func miqt_exec_callback_QRadioTuner_Bind(self *C.QRadioTuner, cb C.intptr_t, param1 *C.QObject) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QObject) bool, param1 *qt.QObject) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(param1))
+
+	virtualReturn := gofunc((&QRadioTuner{h: self}).callVirtualBase_Bind, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QRadioTuner) callVirtualBase_Unbind(param1 *qt.QObject) {
+
+	C.QRadioTuner_virtualbase_Unbind(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()))
+
+}
+func (this *QRadioTuner) OnUnbind(slot func(super func(param1 *qt.QObject), param1 *qt.QObject)) {
+	C.QRadioTuner_override_virtual_Unbind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QRadioTuner_Unbind
+func miqt_exec_callback_QRadioTuner_Unbind(self *C.QRadioTuner, cb C.intptr_t, param1 *C.QObject) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QObject), param1 *qt.QObject))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(param1))
+
+	gofunc((&QRadioTuner{h: self}).callVirtualBase_Unbind, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QRadioTuner) Delete() {
-	C.QRadioTuner_Delete(this.h)
+	C.QRadioTuner_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

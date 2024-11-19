@@ -6,13 +6,15 @@
 #include "gen_qtemporarydir.h"
 #include "_cgo_export.h"
 
-QTemporaryDir* QTemporaryDir_new() {
-	return new QTemporaryDir();
+void QTemporaryDir_new(QTemporaryDir** outptr_QTemporaryDir) {
+	QTemporaryDir* ret = new QTemporaryDir();
+	*outptr_QTemporaryDir = ret;
 }
 
-QTemporaryDir* QTemporaryDir_new2(struct miqt_string templateName) {
+void QTemporaryDir_new2(struct miqt_string templateName, QTemporaryDir** outptr_QTemporaryDir) {
 	QString templateName_QString = QString::fromUtf8(templateName.data, templateName.len);
-	return new QTemporaryDir(templateName_QString);
+	QTemporaryDir* ret = new QTemporaryDir(templateName_QString);
+	*outptr_QTemporaryDir = ret;
 }
 
 bool QTemporaryDir_IsValid(const QTemporaryDir* self) {
@@ -65,7 +67,11 @@ struct miqt_string QTemporaryDir_FilePath(const QTemporaryDir* self, struct miqt
 	return _ms;
 }
 
-void QTemporaryDir_Delete(QTemporaryDir* self) {
-	delete self;
+void QTemporaryDir_Delete(QTemporaryDir* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QTemporaryDir*>( self );
+	} else {
+		delete self;
+	}
 }
 

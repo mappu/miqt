@@ -20,7 +20,7 @@ class QTouchDevice;
 typedef struct QTouchDevice QTouchDevice;
 #endif
 
-QTouchDevice* QTouchDevice_new();
+void QTouchDevice_new(QTouchDevice** outptr_QTouchDevice);
 struct miqt_array /* of QTouchDevice* */  QTouchDevice_Devices();
 struct miqt_string QTouchDevice_Name(const QTouchDevice* self);
 int QTouchDevice_Type(const QTouchDevice* self);
@@ -30,7 +30,7 @@ void QTouchDevice_SetName(QTouchDevice* self, struct miqt_string name);
 void QTouchDevice_SetType(QTouchDevice* self, int devType);
 void QTouchDevice_SetCapabilities(QTouchDevice* self, int caps);
 void QTouchDevice_SetMaximumTouchPoints(QTouchDevice* self, int max);
-void QTouchDevice_Delete(QTouchDevice* self);
+void QTouchDevice_Delete(QTouchDevice* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

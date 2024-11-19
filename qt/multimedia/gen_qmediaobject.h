@@ -58,7 +58,7 @@ struct miqt_string QMediaObject_Tr2(const char* s, const char* c);
 struct miqt_string QMediaObject_Tr3(const char* s, const char* c, int n);
 struct miqt_string QMediaObject_TrUtf82(const char* s, const char* c);
 struct miqt_string QMediaObject_TrUtf83(const char* s, const char* c, int n);
-void QMediaObject_Delete(QMediaObject* self);
+void QMediaObject_Delete(QMediaObject* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

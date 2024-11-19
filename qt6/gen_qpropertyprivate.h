@@ -58,19 +58,19 @@ typedef struct QtPrivate__RefCounted QtPrivate__RefCounted;
 
 void QtPrivate__RefCounted_AddRef(QtPrivate__RefCounted* self);
 bool QtPrivate__RefCounted_Deref(QtPrivate__RefCounted* self);
-void QtPrivate__RefCounted_Delete(QtPrivate__RefCounted* self);
+void QtPrivate__RefCounted_Delete(QtPrivate__RefCounted* self, bool isSubclass);
 
-void QUntypedPropertyData_Delete(QUntypedPropertyData* self);
+void QUntypedPropertyData_Delete(QUntypedPropertyData* self, bool isSubclass);
 
-void QPropertyProxyBindingData_Delete(QPropertyProxyBindingData* self);
+void QPropertyProxyBindingData_Delete(QPropertyProxyBindingData* self, bool isSubclass);
 
-void QtPrivate__MSVCWorkAround_Delete(QtPrivate__MSVCWorkAround* self);
+void QtPrivate__MSVCWorkAround_Delete(QtPrivate__MSVCWorkAround* self, bool isSubclass);
 
-void QtPrivate__BindingFunctionVTable_Delete(QtPrivate__BindingFunctionVTable* self);
+void QtPrivate__BindingFunctionVTable_Delete(QtPrivate__BindingFunctionVTable* self, bool isSubclass);
 
-void QtPrivate__QPropertyBindingFunction_Delete(QtPrivate__QPropertyBindingFunction* self);
+void QtPrivate__QPropertyBindingFunction_Delete(QtPrivate__QPropertyBindingFunction* self, bool isSubclass);
 
-QtPrivate__QPropertyBindingData* QtPrivate__QPropertyBindingData_new();
+void QtPrivate__QPropertyBindingData_new(QtPrivate__QPropertyBindingData** outptr_QtPrivate__QPropertyBindingData);
 bool QtPrivate__QPropertyBindingData_HasBinding(const QtPrivate__QPropertyBindingData* self);
 bool QtPrivate__QPropertyBindingData_IsNotificationDelayed(const QtPrivate__QPropertyBindingData* self);
 QUntypedPropertyBinding* QtPrivate__QPropertyBindingData_SetBinding(QtPrivate__QPropertyBindingData* self, QUntypedPropertyBinding* newBinding, QUntypedPropertyData* propertyDataPtr);
@@ -79,7 +79,7 @@ void QtPrivate__QPropertyBindingData_RemoveBinding(QtPrivate__QPropertyBindingDa
 void QtPrivate__QPropertyBindingData_RegisterWithCurrentlyEvaluatingBinding2(const QtPrivate__QPropertyBindingData* self);
 void QtPrivate__QPropertyBindingData_NotifyObservers(const QtPrivate__QPropertyBindingData* self, QUntypedPropertyData* propertyDataPtr);
 void QtPrivate__QPropertyBindingData_NotifyObservers2(const QtPrivate__QPropertyBindingData* self, QUntypedPropertyData* propertyDataPtr, QBindingStorage* storage);
-void QtPrivate__QPropertyBindingData_Delete(QtPrivate__QPropertyBindingData* self);
+void QtPrivate__QPropertyBindingData_Delete(QtPrivate__QPropertyBindingData* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -20,8 +20,8 @@ class QRgba64;
 typedef struct QRgba64 QRgba64;
 #endif
 
-QRgba64* QRgba64_new();
-QRgba64* QRgba64_new2(QRgba64* param1);
+void QRgba64_new(QRgba64** outptr_QRgba64);
+void QRgba64_new2(QRgba64* param1, QRgba64** outptr_QRgba64);
 QRgba64* QRgba64_FromRgba64(unsigned long long c);
 QRgba64* QRgba64_FromRgba642(uint16_t red, uint16_t green, uint16_t blue, uint16_t alpha);
 QRgba64* QRgba64_FromRgba(unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha);
@@ -45,7 +45,7 @@ uint16_t QRgba64_ToRgb16(const QRgba64* self);
 QRgba64* QRgba64_Premultiplied(const QRgba64* self);
 QRgba64* QRgba64_Unpremultiplied(const QRgba64* self);
 void QRgba64_OperatorAssign(QRgba64* self, unsigned long long _rgba);
-void QRgba64_Delete(QRgba64* self);
+void QRgba64_Delete(QRgba64* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

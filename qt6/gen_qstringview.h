@@ -28,7 +28,7 @@ typedef struct QRegularExpressionMatch QRegularExpressionMatch;
 typedef struct QStringView QStringView;
 #endif
 
-QStringView* QStringView_new();
+void QStringView_new(QStringView** outptr_QStringView);
 struct miqt_string QStringView_ToString(const QStringView* self);
 ptrdiff_t QStringView_Size(const QStringView* self);
 QChar* QStringView_Data(const QStringView* self);
@@ -110,7 +110,7 @@ unsigned long long QStringView_ToULongLong1(const QStringView* self, bool* ok);
 unsigned long long QStringView_ToULongLong2(const QStringView* self, bool* ok, int base);
 float QStringView_ToFloat1(const QStringView* self, bool* ok);
 double QStringView_ToDouble1(const QStringView* self, bool* ok);
-void QStringView_Delete(QStringView* self);
+void QStringView_Delete(QStringView* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

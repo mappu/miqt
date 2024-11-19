@@ -21,7 +21,8 @@ const (
 )
 
 type QCommandLineOption struct {
-	h *C.QCommandLineOption
+	h          *C.QCommandLineOption
+	isSubclass bool
 }
 
 func (this *QCommandLineOption) cPointer() *C.QCommandLineOption {
@@ -38,6 +39,7 @@ func (this *QCommandLineOption) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCommandLineOption constructs the type using only CGO pointers.
 func newQCommandLineOption(h *C.QCommandLineOption) *QCommandLineOption {
 	if h == nil {
 		return nil
@@ -45,8 +47,13 @@ func newQCommandLineOption(h *C.QCommandLineOption) *QCommandLineOption {
 	return &QCommandLineOption{h: h}
 }
 
+// UnsafeNewQCommandLineOption constructs the type using only unsafe pointers.
 func UnsafeNewQCommandLineOption(h unsafe.Pointer) *QCommandLineOption {
-	return newQCommandLineOption((*C.QCommandLineOption)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCommandLineOption{h: (*C.QCommandLineOption)(h)}
 }
 
 // NewQCommandLineOption constructs a new QCommandLineOption object.
@@ -55,8 +62,12 @@ func NewQCommandLineOption(name string) *QCommandLineOption {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	ret := C.QCommandLineOption_new(name_ms)
-	return newQCommandLineOption(ret)
+	var outptr_QCommandLineOption *C.QCommandLineOption = nil
+
+	C.QCommandLineOption_new(name_ms, &outptr_QCommandLineOption)
+	ret := newQCommandLineOption(outptr_QCommandLineOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCommandLineOption2 constructs a new QCommandLineOption object.
@@ -71,8 +82,12 @@ func NewQCommandLineOption2(names []string) *QCommandLineOption {
 		names_CArray[i] = names_i_ms
 	}
 	names_ma := C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray)}
-	ret := C.QCommandLineOption_new2(names_ma)
-	return newQCommandLineOption(ret)
+	var outptr_QCommandLineOption *C.QCommandLineOption = nil
+
+	C.QCommandLineOption_new2(names_ma, &outptr_QCommandLineOption)
+	ret := newQCommandLineOption(outptr_QCommandLineOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCommandLineOption3 constructs a new QCommandLineOption object.
@@ -85,8 +100,12 @@ func NewQCommandLineOption3(name string, description string) *QCommandLineOption
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
 	defer C.free(unsafe.Pointer(description_ms.data))
-	ret := C.QCommandLineOption_new3(name_ms, description_ms)
-	return newQCommandLineOption(ret)
+	var outptr_QCommandLineOption *C.QCommandLineOption = nil
+
+	C.QCommandLineOption_new3(name_ms, description_ms, &outptr_QCommandLineOption)
+	ret := newQCommandLineOption(outptr_QCommandLineOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCommandLineOption4 constructs a new QCommandLineOption object.
@@ -105,14 +124,22 @@ func NewQCommandLineOption4(names []string, description string) *QCommandLineOpt
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
 	defer C.free(unsafe.Pointer(description_ms.data))
-	ret := C.QCommandLineOption_new4(names_ma, description_ms)
-	return newQCommandLineOption(ret)
+	var outptr_QCommandLineOption *C.QCommandLineOption = nil
+
+	C.QCommandLineOption_new4(names_ma, description_ms, &outptr_QCommandLineOption)
+	ret := newQCommandLineOption(outptr_QCommandLineOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCommandLineOption5 constructs a new QCommandLineOption object.
 func NewQCommandLineOption5(other *QCommandLineOption) *QCommandLineOption {
-	ret := C.QCommandLineOption_new5(other.cPointer())
-	return newQCommandLineOption(ret)
+	var outptr_QCommandLineOption *C.QCommandLineOption = nil
+
+	C.QCommandLineOption_new5(other.cPointer(), &outptr_QCommandLineOption)
+	ret := newQCommandLineOption(outptr_QCommandLineOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCommandLineOption6 constructs a new QCommandLineOption object.
@@ -129,8 +156,12 @@ func NewQCommandLineOption6(name string, description string, valueName string) *
 	valueName_ms.data = C.CString(valueName)
 	valueName_ms.len = C.size_t(len(valueName))
 	defer C.free(unsafe.Pointer(valueName_ms.data))
-	ret := C.QCommandLineOption_new6(name_ms, description_ms, valueName_ms)
-	return newQCommandLineOption(ret)
+	var outptr_QCommandLineOption *C.QCommandLineOption = nil
+
+	C.QCommandLineOption_new6(name_ms, description_ms, valueName_ms, &outptr_QCommandLineOption)
+	ret := newQCommandLineOption(outptr_QCommandLineOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCommandLineOption7 constructs a new QCommandLineOption object.
@@ -151,8 +182,12 @@ func NewQCommandLineOption7(name string, description string, valueName string, d
 	defaultValue_ms.data = C.CString(defaultValue)
 	defaultValue_ms.len = C.size_t(len(defaultValue))
 	defer C.free(unsafe.Pointer(defaultValue_ms.data))
-	ret := C.QCommandLineOption_new7(name_ms, description_ms, valueName_ms, defaultValue_ms)
-	return newQCommandLineOption(ret)
+	var outptr_QCommandLineOption *C.QCommandLineOption = nil
+
+	C.QCommandLineOption_new7(name_ms, description_ms, valueName_ms, defaultValue_ms, &outptr_QCommandLineOption)
+	ret := newQCommandLineOption(outptr_QCommandLineOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCommandLineOption8 constructs a new QCommandLineOption object.
@@ -175,8 +210,12 @@ func NewQCommandLineOption8(names []string, description string, valueName string
 	valueName_ms.data = C.CString(valueName)
 	valueName_ms.len = C.size_t(len(valueName))
 	defer C.free(unsafe.Pointer(valueName_ms.data))
-	ret := C.QCommandLineOption_new8(names_ma, description_ms, valueName_ms)
-	return newQCommandLineOption(ret)
+	var outptr_QCommandLineOption *C.QCommandLineOption = nil
+
+	C.QCommandLineOption_new8(names_ma, description_ms, valueName_ms, &outptr_QCommandLineOption)
+	ret := newQCommandLineOption(outptr_QCommandLineOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCommandLineOption9 constructs a new QCommandLineOption object.
@@ -203,8 +242,12 @@ func NewQCommandLineOption9(names []string, description string, valueName string
 	defaultValue_ms.data = C.CString(defaultValue)
 	defaultValue_ms.len = C.size_t(len(defaultValue))
 	defer C.free(unsafe.Pointer(defaultValue_ms.data))
-	ret := C.QCommandLineOption_new9(names_ma, description_ms, valueName_ms, defaultValue_ms)
-	return newQCommandLineOption(ret)
+	var outptr_QCommandLineOption *C.QCommandLineOption = nil
+
+	C.QCommandLineOption_new9(names_ma, description_ms, valueName_ms, defaultValue_ms, &outptr_QCommandLineOption)
+	ret := newQCommandLineOption(outptr_QCommandLineOption)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QCommandLineOption) OperatorAssign(other *QCommandLineOption) {
@@ -311,7 +354,7 @@ func (this *QCommandLineOption) IsHidden() bool {
 
 // Delete this object from C++ memory.
 func (this *QCommandLineOption) Delete() {
-	C.QCommandLineOption_Delete(this.h)
+	C.QCommandLineOption_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

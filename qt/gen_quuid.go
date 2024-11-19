@@ -44,7 +44,8 @@ const (
 )
 
 type QUuid struct {
-	h *C.QUuid
+	h          *C.QUuid
+	isSubclass bool
 }
 
 func (this *QUuid) cPointer() *C.QUuid {
@@ -61,6 +62,7 @@ func (this *QUuid) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQUuid constructs the type using only CGO pointers.
 func newQUuid(h *C.QUuid) *QUuid {
 	if h == nil {
 		return nil
@@ -68,20 +70,33 @@ func newQUuid(h *C.QUuid) *QUuid {
 	return &QUuid{h: h}
 }
 
+// UnsafeNewQUuid constructs the type using only unsafe pointers.
 func UnsafeNewQUuid(h unsafe.Pointer) *QUuid {
-	return newQUuid((*C.QUuid)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QUuid{h: (*C.QUuid)(h)}
 }
 
 // NewQUuid constructs a new QUuid object.
 func NewQUuid() *QUuid {
-	ret := C.QUuid_new()
-	return newQUuid(ret)
+	var outptr_QUuid *C.QUuid = nil
+
+	C.QUuid_new(&outptr_QUuid)
+	ret := newQUuid(outptr_QUuid)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQUuid2 constructs a new QUuid object.
 func NewQUuid2(l uint, w1 uint16, w2 uint16, b1 byte, b2 byte, b3 byte, b4 byte, b5 byte, b6 byte, b7 byte, b8 byte) *QUuid {
-	ret := C.QUuid_new2((C.uint)(l), (C.uint16_t)(w1), (C.uint16_t)(w2), (C.uchar)(b1), (C.uchar)(b2), (C.uchar)(b3), (C.uchar)(b4), (C.uchar)(b5), (C.uchar)(b6), (C.uchar)(b7), (C.uchar)(b8))
-	return newQUuid(ret)
+	var outptr_QUuid *C.QUuid = nil
+
+	C.QUuid_new2((C.uint)(l), (C.uint16_t)(w1), (C.uint16_t)(w2), (C.uchar)(b1), (C.uchar)(b2), (C.uchar)(b3), (C.uchar)(b4), (C.uchar)(b5), (C.uchar)(b6), (C.uchar)(b7), (C.uchar)(b8), &outptr_QUuid)
+	ret := newQUuid(outptr_QUuid)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQUuid3 constructs a new QUuid object.
@@ -90,16 +105,24 @@ func NewQUuid3(param1 string) *QUuid {
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
 	defer C.free(unsafe.Pointer(param1_ms.data))
-	ret := C.QUuid_new3(param1_ms)
-	return newQUuid(ret)
+	var outptr_QUuid *C.QUuid = nil
+
+	C.QUuid_new3(param1_ms, &outptr_QUuid)
+	ret := newQUuid(outptr_QUuid)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQUuid4 constructs a new QUuid object.
 func NewQUuid4(param1 string) *QUuid {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	ret := C.QUuid_new4(param1_Cstring)
-	return newQUuid(ret)
+	var outptr_QUuid *C.QUuid = nil
+
+	C.QUuid_new4(param1_Cstring, &outptr_QUuid)
+	ret := newQUuid(outptr_QUuid)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQUuid5 constructs a new QUuid object.
@@ -107,14 +130,22 @@ func NewQUuid5(param1 []byte) *QUuid {
 	param1_alias := C.struct_miqt_string{}
 	param1_alias.data = (*C.char)(unsafe.Pointer(&param1[0]))
 	param1_alias.len = C.size_t(len(param1))
-	ret := C.QUuid_new5(param1_alias)
-	return newQUuid(ret)
+	var outptr_QUuid *C.QUuid = nil
+
+	C.QUuid_new5(param1_alias, &outptr_QUuid)
+	ret := newQUuid(outptr_QUuid)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQUuid6 constructs a new QUuid object.
 func NewQUuid6(param1 *QUuid) *QUuid {
-	ret := C.QUuid_new6(param1.cPointer())
-	return newQUuid(ret)
+	var outptr_QUuid *C.QUuid = nil
+
+	C.QUuid_new6(param1.cPointer(), &outptr_QUuid)
+	ret := newQUuid(outptr_QUuid)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QUuid) ToString() string {
@@ -241,7 +272,7 @@ func (this *QUuid) Version() QUuid__Version {
 
 // Delete this object from C++ memory.
 func (this *QUuid) Delete() {
-	C.QUuid_Delete(this.h)
+	C.QUuid_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

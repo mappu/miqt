@@ -5,12 +5,14 @@
 #include "gen_qreadwritelock.h"
 #include "_cgo_export.h"
 
-QReadWriteLock* QReadWriteLock_new() {
-	return new QReadWriteLock();
+void QReadWriteLock_new(QReadWriteLock** outptr_QReadWriteLock) {
+	QReadWriteLock* ret = new QReadWriteLock();
+	*outptr_QReadWriteLock = ret;
 }
 
-QReadWriteLock* QReadWriteLock_new2(int recursionMode) {
-	return new QReadWriteLock(static_cast<QReadWriteLock::RecursionMode>(recursionMode));
+void QReadWriteLock_new2(int recursionMode, QReadWriteLock** outptr_QReadWriteLock) {
+	QReadWriteLock* ret = new QReadWriteLock(static_cast<QReadWriteLock::RecursionMode>(recursionMode));
+	*outptr_QReadWriteLock = ret;
 }
 
 void QReadWriteLock_LockForRead(QReadWriteLock* self) {
@@ -41,12 +43,17 @@ void QReadWriteLock_Unlock(QReadWriteLock* self) {
 	self->unlock();
 }
 
-void QReadWriteLock_Delete(QReadWriteLock* self) {
-	delete self;
+void QReadWriteLock_Delete(QReadWriteLock* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QReadWriteLock*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QReadLocker* QReadLocker_new(QReadWriteLock* readWriteLock) {
-	return new QReadLocker(readWriteLock);
+void QReadLocker_new(QReadWriteLock* readWriteLock, QReadLocker** outptr_QReadLocker) {
+	QReadLocker* ret = new QReadLocker(readWriteLock);
+	*outptr_QReadLocker = ret;
 }
 
 void QReadLocker_Unlock(QReadLocker* self) {
@@ -61,12 +68,17 @@ QReadWriteLock* QReadLocker_ReadWriteLock(const QReadLocker* self) {
 	return self->readWriteLock();
 }
 
-void QReadLocker_Delete(QReadLocker* self) {
-	delete self;
+void QReadLocker_Delete(QReadLocker* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QReadLocker*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QWriteLocker* QWriteLocker_new(QReadWriteLock* readWriteLock) {
-	return new QWriteLocker(readWriteLock);
+void QWriteLocker_new(QReadWriteLock* readWriteLock, QWriteLocker** outptr_QWriteLocker) {
+	QWriteLocker* ret = new QWriteLocker(readWriteLock);
+	*outptr_QWriteLocker = ret;
 }
 
 void QWriteLocker_Unlock(QWriteLocker* self) {
@@ -81,7 +93,11 @@ QReadWriteLock* QWriteLocker_ReadWriteLock(const QWriteLocker* self) {
 	return self->readWriteLock();
 }
 
-void QWriteLocker_Delete(QWriteLocker* self) {
-	delete self;
+void QWriteLocker_Delete(QWriteLocker* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QWriteLocker*>( self );
+	} else {
+		delete self;
+	}
 }
 

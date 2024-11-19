@@ -15,36 +15,53 @@
 #include "gen_qmetatype.h"
 #include "_cgo_export.h"
 
-QtPrivate__AbstractDebugStreamFunction* QtPrivate__AbstractDebugStreamFunction_new() {
-	return new QtPrivate::AbstractDebugStreamFunction();
+void QtPrivate__AbstractDebugStreamFunction_new(QtPrivate__AbstractDebugStreamFunction** outptr_QtPrivate__AbstractDebugStreamFunction) {
+	QtPrivate::AbstractDebugStreamFunction* ret = new QtPrivate::AbstractDebugStreamFunction();
+	*outptr_QtPrivate__AbstractDebugStreamFunction = ret;
 }
 
-void QtPrivate__AbstractDebugStreamFunction_Delete(QtPrivate__AbstractDebugStreamFunction* self) {
-	delete self;
+void QtPrivate__AbstractDebugStreamFunction_Delete(QtPrivate__AbstractDebugStreamFunction* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtPrivate::AbstractDebugStreamFunction*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QtPrivate__AbstractComparatorFunction* QtPrivate__AbstractComparatorFunction_new() {
-	return new QtPrivate::AbstractComparatorFunction();
+void QtPrivate__AbstractComparatorFunction_new(QtPrivate__AbstractComparatorFunction** outptr_QtPrivate__AbstractComparatorFunction) {
+	QtPrivate::AbstractComparatorFunction* ret = new QtPrivate::AbstractComparatorFunction();
+	*outptr_QtPrivate__AbstractComparatorFunction = ret;
 }
 
-void QtPrivate__AbstractComparatorFunction_Delete(QtPrivate__AbstractComparatorFunction* self) {
-	delete self;
+void QtPrivate__AbstractComparatorFunction_Delete(QtPrivate__AbstractComparatorFunction* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtPrivate::AbstractComparatorFunction*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QtPrivate__AbstractConverterFunction* QtPrivate__AbstractConverterFunction_new() {
-	return new QtPrivate::AbstractConverterFunction();
+void QtPrivate__AbstractConverterFunction_new(QtPrivate__AbstractConverterFunction** outptr_QtPrivate__AbstractConverterFunction) {
+	QtPrivate::AbstractConverterFunction* ret = new QtPrivate::AbstractConverterFunction();
+	*outptr_QtPrivate__AbstractConverterFunction = ret;
 }
 
-void QtPrivate__AbstractConverterFunction_Delete(QtPrivate__AbstractConverterFunction* self) {
-	delete self;
+void QtPrivate__AbstractConverterFunction_Delete(QtPrivate__AbstractConverterFunction* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtPrivate::AbstractConverterFunction*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QMetaType* QMetaType_new() {
-	return new QMetaType();
+void QMetaType_new(QMetaType** outptr_QMetaType) {
+	QMetaType* ret = new QMetaType();
+	*outptr_QMetaType = ret;
 }
 
-QMetaType* QMetaType_new2(const int typeVal) {
-	return new QMetaType(static_cast<const int>(typeVal));
+void QMetaType_new2(const int typeVal, QMetaType** outptr_QMetaType) {
+	QMetaType* ret = new QMetaType(static_cast<const int>(typeVal));
+	*outptr_QMetaType = ret;
 }
 
 bool QMetaType_UnregisterType(int typeVal) {
@@ -204,32 +221,48 @@ void* QMetaType_Construct2(const QMetaType* self, void* where, const void* copyV
 	return self->construct(where, copyVal);
 }
 
-void QMetaType_Delete(QMetaType* self) {
-	delete self;
+void QMetaType_Delete(QMetaType* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMetaType*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QtMetaTypePrivate__VariantData* QtMetaTypePrivate__VariantData_new(const int metaTypeId_, const void* data_, const unsigned int flags_) {
-	return new QtMetaTypePrivate::VariantData(static_cast<const int>(metaTypeId_), data_, static_cast<const uint>(flags_));
+void QtMetaTypePrivate__VariantData_new(const int metaTypeId_, const void* data_, const unsigned int flags_, QtMetaTypePrivate__VariantData** outptr_QtMetaTypePrivate__VariantData) {
+	QtMetaTypePrivate::VariantData* ret = new QtMetaTypePrivate::VariantData(static_cast<const int>(metaTypeId_), data_, static_cast<const uint>(flags_));
+	*outptr_QtMetaTypePrivate__VariantData = ret;
 }
 
-QtMetaTypePrivate__VariantData* QtMetaTypePrivate__VariantData_new2(QtMetaTypePrivate__VariantData* other) {
-	return new QtMetaTypePrivate::VariantData(*other);
+void QtMetaTypePrivate__VariantData_new2(QtMetaTypePrivate__VariantData* other, QtMetaTypePrivate__VariantData** outptr_QtMetaTypePrivate__VariantData) {
+	QtMetaTypePrivate::VariantData* ret = new QtMetaTypePrivate::VariantData(*other);
+	*outptr_QtMetaTypePrivate__VariantData = ret;
 }
 
-void QtMetaTypePrivate__VariantData_Delete(QtMetaTypePrivate__VariantData* self) {
-	delete self;
+void QtMetaTypePrivate__VariantData_Delete(QtMetaTypePrivate__VariantData* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtMetaTypePrivate::VariantData*>( self );
+	} else {
+		delete self;
+	}
 }
 
-void QtMetaTypePrivate__VectorBoolElements_Delete(QtMetaTypePrivate__VectorBoolElements* self) {
-	delete self;
+void QtMetaTypePrivate__VectorBoolElements_Delete(QtMetaTypePrivate__VectorBoolElements* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtMetaTypePrivate::VectorBoolElements*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QtMetaTypePrivate__QSequentialIterableImpl* QtMetaTypePrivate__QSequentialIterableImpl_new() {
-	return new QtMetaTypePrivate::QSequentialIterableImpl();
+void QtMetaTypePrivate__QSequentialIterableImpl_new(QtMetaTypePrivate__QSequentialIterableImpl** outptr_QtMetaTypePrivate__QSequentialIterableImpl) {
+	QtMetaTypePrivate::QSequentialIterableImpl* ret = new QtMetaTypePrivate::QSequentialIterableImpl();
+	*outptr_QtMetaTypePrivate__QSequentialIterableImpl = ret;
 }
 
-QtMetaTypePrivate__QSequentialIterableImpl* QtMetaTypePrivate__QSequentialIterableImpl_new2(QtMetaTypePrivate__QSequentialIterableImpl* param1) {
-	return new QtMetaTypePrivate::QSequentialIterableImpl(*param1);
+void QtMetaTypePrivate__QSequentialIterableImpl_new2(QtMetaTypePrivate__QSequentialIterableImpl* param1, QtMetaTypePrivate__QSequentialIterableImpl** outptr_QtMetaTypePrivate__QSequentialIterableImpl) {
+	QtMetaTypePrivate::QSequentialIterableImpl* ret = new QtMetaTypePrivate::QSequentialIterableImpl(*param1);
+	*outptr_QtMetaTypePrivate__QSequentialIterableImpl = ret;
 }
 
 int QtMetaTypePrivate__QSequentialIterableImpl_IteratorCapabilities(QtMetaTypePrivate__QSequentialIterableImpl* self) {
@@ -293,16 +326,22 @@ void QtMetaTypePrivate__QSequentialIterableImpl_OperatorAssign(QtMetaTypePrivate
 	self->operator=(*param1);
 }
 
-void QtMetaTypePrivate__QSequentialIterableImpl_Delete(QtMetaTypePrivate__QSequentialIterableImpl* self) {
-	delete self;
+void QtMetaTypePrivate__QSequentialIterableImpl_Delete(QtMetaTypePrivate__QSequentialIterableImpl* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtMetaTypePrivate::QSequentialIterableImpl*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QtMetaTypePrivate__QAssociativeIterableImpl* QtMetaTypePrivate__QAssociativeIterableImpl_new() {
-	return new QtMetaTypePrivate::QAssociativeIterableImpl();
+void QtMetaTypePrivate__QAssociativeIterableImpl_new(QtMetaTypePrivate__QAssociativeIterableImpl** outptr_QtMetaTypePrivate__QAssociativeIterableImpl) {
+	QtMetaTypePrivate::QAssociativeIterableImpl* ret = new QtMetaTypePrivate::QAssociativeIterableImpl();
+	*outptr_QtMetaTypePrivate__QAssociativeIterableImpl = ret;
 }
 
-QtMetaTypePrivate__QAssociativeIterableImpl* QtMetaTypePrivate__QAssociativeIterableImpl_new2(QtMetaTypePrivate__QAssociativeIterableImpl* param1) {
-	return new QtMetaTypePrivate::QAssociativeIterableImpl(*param1);
+void QtMetaTypePrivate__QAssociativeIterableImpl_new2(QtMetaTypePrivate__QAssociativeIterableImpl* param1, QtMetaTypePrivate__QAssociativeIterableImpl** outptr_QtMetaTypePrivate__QAssociativeIterableImpl) {
+	QtMetaTypePrivate::QAssociativeIterableImpl* ret = new QtMetaTypePrivate::QAssociativeIterableImpl(*param1);
+	*outptr_QtMetaTypePrivate__QAssociativeIterableImpl = ret;
 }
 
 void QtMetaTypePrivate__QAssociativeIterableImpl_Begin(QtMetaTypePrivate__QAssociativeIterableImpl* self) {
@@ -351,16 +390,22 @@ void QtMetaTypePrivate__QAssociativeIterableImpl_OperatorAssign(QtMetaTypePrivat
 	self->operator=(*param1);
 }
 
-void QtMetaTypePrivate__QAssociativeIterableImpl_Delete(QtMetaTypePrivate__QAssociativeIterableImpl* self) {
-	delete self;
+void QtMetaTypePrivate__QAssociativeIterableImpl_Delete(QtMetaTypePrivate__QAssociativeIterableImpl* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtMetaTypePrivate::QAssociativeIterableImpl*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QtMetaTypePrivate__QPairVariantInterfaceImpl* QtMetaTypePrivate__QPairVariantInterfaceImpl_new() {
-	return new QtMetaTypePrivate::QPairVariantInterfaceImpl();
+void QtMetaTypePrivate__QPairVariantInterfaceImpl_new(QtMetaTypePrivate__QPairVariantInterfaceImpl** outptr_QtMetaTypePrivate__QPairVariantInterfaceImpl) {
+	QtMetaTypePrivate::QPairVariantInterfaceImpl* ret = new QtMetaTypePrivate::QPairVariantInterfaceImpl();
+	*outptr_QtMetaTypePrivate__QPairVariantInterfaceImpl = ret;
 }
 
-QtMetaTypePrivate__QPairVariantInterfaceImpl* QtMetaTypePrivate__QPairVariantInterfaceImpl_new2(QtMetaTypePrivate__QPairVariantInterfaceImpl* param1) {
-	return new QtMetaTypePrivate::QPairVariantInterfaceImpl(*param1);
+void QtMetaTypePrivate__QPairVariantInterfaceImpl_new2(QtMetaTypePrivate__QPairVariantInterfaceImpl* param1, QtMetaTypePrivate__QPairVariantInterfaceImpl** outptr_QtMetaTypePrivate__QPairVariantInterfaceImpl) {
+	QtMetaTypePrivate::QPairVariantInterfaceImpl* ret = new QtMetaTypePrivate::QPairVariantInterfaceImpl(*param1);
+	*outptr_QtMetaTypePrivate__QPairVariantInterfaceImpl = ret;
 }
 
 QtMetaTypePrivate__VariantData* QtMetaTypePrivate__QPairVariantInterfaceImpl_First(const QtMetaTypePrivate__QPairVariantInterfaceImpl* self) {
@@ -371,7 +416,11 @@ QtMetaTypePrivate__VariantData* QtMetaTypePrivate__QPairVariantInterfaceImpl_Sec
 	return new QtMetaTypePrivate::VariantData(self->second());
 }
 
-void QtMetaTypePrivate__QPairVariantInterfaceImpl_Delete(QtMetaTypePrivate__QPairVariantInterfaceImpl* self) {
-	delete self;
+void QtMetaTypePrivate__QPairVariantInterfaceImpl_Delete(QtMetaTypePrivate__QPairVariantInterfaceImpl* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtMetaTypePrivate::QPairVariantInterfaceImpl*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -37,7 +37,8 @@ const (
 )
 
 type QIPv6Address struct {
-	h *C.QIPv6Address
+	h          *C.QIPv6Address
+	isSubclass bool
 }
 
 func (this *QIPv6Address) cPointer() *C.QIPv6Address {
@@ -54,6 +55,7 @@ func (this *QIPv6Address) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQIPv6Address constructs the type using only CGO pointers.
 func newQIPv6Address(h *C.QIPv6Address) *QIPv6Address {
 	if h == nil {
 		return nil
@@ -61,8 +63,13 @@ func newQIPv6Address(h *C.QIPv6Address) *QIPv6Address {
 	return &QIPv6Address{h: h}
 }
 
+// UnsafeNewQIPv6Address constructs the type using only unsafe pointers.
 func UnsafeNewQIPv6Address(h unsafe.Pointer) *QIPv6Address {
-	return newQIPv6Address((*C.QIPv6Address)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QIPv6Address{h: (*C.QIPv6Address)(h)}
 }
 
 func (this *QIPv6Address) OperatorSubscript(index int) byte {
@@ -71,7 +78,7 @@ func (this *QIPv6Address) OperatorSubscript(index int) byte {
 
 // Delete this object from C++ memory.
 func (this *QIPv6Address) Delete() {
-	C.QIPv6Address_Delete(this.h)
+	C.QIPv6Address_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -84,7 +91,8 @@ func (this *QIPv6Address) GoGC() {
 }
 
 type QHostAddress struct {
-	h *C.QHostAddress
+	h          *C.QHostAddress
+	isSubclass bool
 }
 
 func (this *QHostAddress) cPointer() *C.QHostAddress {
@@ -101,6 +109,7 @@ func (this *QHostAddress) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQHostAddress constructs the type using only CGO pointers.
 func newQHostAddress(h *C.QHostAddress) *QHostAddress {
 	if h == nil {
 		return nil
@@ -108,32 +117,53 @@ func newQHostAddress(h *C.QHostAddress) *QHostAddress {
 	return &QHostAddress{h: h}
 }
 
+// UnsafeNewQHostAddress constructs the type using only unsafe pointers.
 func UnsafeNewQHostAddress(h unsafe.Pointer) *QHostAddress {
-	return newQHostAddress((*C.QHostAddress)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QHostAddress{h: (*C.QHostAddress)(h)}
 }
 
 // NewQHostAddress constructs a new QHostAddress object.
 func NewQHostAddress() *QHostAddress {
-	ret := C.QHostAddress_new()
-	return newQHostAddress(ret)
+	var outptr_QHostAddress *C.QHostAddress = nil
+
+	C.QHostAddress_new(&outptr_QHostAddress)
+	ret := newQHostAddress(outptr_QHostAddress)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQHostAddress2 constructs a new QHostAddress object.
 func NewQHostAddress2(ip4Addr uint) *QHostAddress {
-	ret := C.QHostAddress_new2((C.uint)(ip4Addr))
-	return newQHostAddress(ret)
+	var outptr_QHostAddress *C.QHostAddress = nil
+
+	C.QHostAddress_new2((C.uint)(ip4Addr), &outptr_QHostAddress)
+	ret := newQHostAddress(outptr_QHostAddress)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQHostAddress3 constructs a new QHostAddress object.
 func NewQHostAddress3(ip6Addr *byte) *QHostAddress {
-	ret := C.QHostAddress_new3((*C.uchar)(unsafe.Pointer(ip6Addr)))
-	return newQHostAddress(ret)
+	var outptr_QHostAddress *C.QHostAddress = nil
+
+	C.QHostAddress_new3((*C.uchar)(unsafe.Pointer(ip6Addr)), &outptr_QHostAddress)
+	ret := newQHostAddress(outptr_QHostAddress)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQHostAddress4 constructs a new QHostAddress object.
 func NewQHostAddress4(ip6Addr *QIPv6Address) *QHostAddress {
-	ret := C.QHostAddress_new4(ip6Addr.cPointer())
-	return newQHostAddress(ret)
+	var outptr_QHostAddress *C.QHostAddress = nil
+
+	C.QHostAddress_new4(ip6Addr.cPointer(), &outptr_QHostAddress)
+	ret := newQHostAddress(outptr_QHostAddress)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQHostAddress5 constructs a new QHostAddress object.
@@ -142,20 +172,32 @@ func NewQHostAddress5(address string) *QHostAddress {
 	address_ms.data = C.CString(address)
 	address_ms.len = C.size_t(len(address))
 	defer C.free(unsafe.Pointer(address_ms.data))
-	ret := C.QHostAddress_new5(address_ms)
-	return newQHostAddress(ret)
+	var outptr_QHostAddress *C.QHostAddress = nil
+
+	C.QHostAddress_new5(address_ms, &outptr_QHostAddress)
+	ret := newQHostAddress(outptr_QHostAddress)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQHostAddress6 constructs a new QHostAddress object.
 func NewQHostAddress6(copyVal *QHostAddress) *QHostAddress {
-	ret := C.QHostAddress_new6(copyVal.cPointer())
-	return newQHostAddress(ret)
+	var outptr_QHostAddress *C.QHostAddress = nil
+
+	C.QHostAddress_new6(copyVal.cPointer(), &outptr_QHostAddress)
+	ret := newQHostAddress(outptr_QHostAddress)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQHostAddress7 constructs a new QHostAddress object.
 func NewQHostAddress7(address QHostAddress__SpecialAddress) *QHostAddress {
-	ret := C.QHostAddress_new7((C.int)(address))
-	return newQHostAddress(ret)
+	var outptr_QHostAddress *C.QHostAddress = nil
+
+	C.QHostAddress_new7((C.int)(address), &outptr_QHostAddress)
+	ret := newQHostAddress(outptr_QHostAddress)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QHostAddress) OperatorAssign(other *QHostAddress) {
@@ -343,7 +385,7 @@ func (this *QHostAddress) IsEqual2(address *QHostAddress, mode QHostAddress__Con
 
 // Delete this object from C++ memory.
 func (this *QHostAddress) Delete() {
-	C.QHostAddress_Delete(this.h)
+	C.QHostAddress_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

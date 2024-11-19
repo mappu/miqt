@@ -1,4 +1,5 @@
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -108,7 +109,11 @@ void QsciLexerCustom_StartStyling2(QsciLexerCustom* self, int pos, int styleBits
 	self->startStyling(static_cast<int>(pos), static_cast<int>(styleBits));
 }
 
-void QsciLexerCustom_Delete(QsciLexerCustom* self) {
-	delete self;
+void QsciLexerCustom_Delete(QsciLexerCustom* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QsciLexerCustom*>( self );
+	} else {
+		delete self;
+	}
 }
 

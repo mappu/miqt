@@ -6,8 +6,9 @@
 #include "gen_qloggingcategory.h"
 #include "_cgo_export.h"
 
-QLoggingCategory* QLoggingCategory_new(const char* category) {
-	return new QLoggingCategory(category);
+void QLoggingCategory_new(const char* category, QLoggingCategory** outptr_QLoggingCategory) {
+	QLoggingCategory* ret = new QLoggingCategory(category);
+	*outptr_QLoggingCategory = ret;
 }
 
 bool QLoggingCategory_IsDebugEnabled(const QLoggingCategory* self) {
@@ -51,7 +52,11 @@ void QLoggingCategory_SetFilterRules(struct miqt_string rules) {
 	QLoggingCategory::setFilterRules(rules_QString);
 }
 
-void QLoggingCategory_Delete(QLoggingCategory* self) {
-	delete self;
+void QLoggingCategory_Delete(QLoggingCategory* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QLoggingCategory*>( self );
+	} else {
+		delete self;
+	}
 }
 

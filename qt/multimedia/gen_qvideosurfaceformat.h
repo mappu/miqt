@@ -28,10 +28,10 @@ typedef struct QVariant QVariant;
 typedef struct QVideoSurfaceFormat QVideoSurfaceFormat;
 #endif
 
-QVideoSurfaceFormat* QVideoSurfaceFormat_new();
-QVideoSurfaceFormat* QVideoSurfaceFormat_new2(QSize* size, int pixelFormat);
-QVideoSurfaceFormat* QVideoSurfaceFormat_new3(QVideoSurfaceFormat* format);
-QVideoSurfaceFormat* QVideoSurfaceFormat_new4(QSize* size, int pixelFormat, int handleType);
+void QVideoSurfaceFormat_new(QVideoSurfaceFormat** outptr_QVideoSurfaceFormat);
+void QVideoSurfaceFormat_new2(QSize* size, int pixelFormat, QVideoSurfaceFormat** outptr_QVideoSurfaceFormat);
+void QVideoSurfaceFormat_new3(QVideoSurfaceFormat* format, QVideoSurfaceFormat** outptr_QVideoSurfaceFormat);
+void QVideoSurfaceFormat_new4(QSize* size, int pixelFormat, int handleType, QVideoSurfaceFormat** outptr_QVideoSurfaceFormat);
 void QVideoSurfaceFormat_OperatorAssign(QVideoSurfaceFormat* self, QVideoSurfaceFormat* format);
 bool QVideoSurfaceFormat_OperatorEqual(const QVideoSurfaceFormat* self, QVideoSurfaceFormat* format);
 bool QVideoSurfaceFormat_OperatorNotEqual(const QVideoSurfaceFormat* self, QVideoSurfaceFormat* format);
@@ -60,7 +60,7 @@ QSize* QVideoSurfaceFormat_SizeHint(const QVideoSurfaceFormat* self);
 struct miqt_array /* of struct miqt_string */  QVideoSurfaceFormat_PropertyNames(const QVideoSurfaceFormat* self);
 QVariant* QVideoSurfaceFormat_Property(const QVideoSurfaceFormat* self, const char* name);
 void QVideoSurfaceFormat_SetProperty(QVideoSurfaceFormat* self, const char* name, QVariant* value);
-void QVideoSurfaceFormat_Delete(QVideoSurfaceFormat* self);
+void QVideoSurfaceFormat_Delete(QVideoSurfaceFormat* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

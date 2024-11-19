@@ -14,7 +14,8 @@ import (
 )
 
 type QLinkedListData struct {
-	h *C.QLinkedListData
+	h          *C.QLinkedListData
+	isSubclass bool
 }
 
 func (this *QLinkedListData) cPointer() *C.QLinkedListData {
@@ -31,6 +32,7 @@ func (this *QLinkedListData) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQLinkedListData constructs the type using only CGO pointers.
 func newQLinkedListData(h *C.QLinkedListData) *QLinkedListData {
 	if h == nil {
 		return nil
@@ -38,19 +40,28 @@ func newQLinkedListData(h *C.QLinkedListData) *QLinkedListData {
 	return &QLinkedListData{h: h}
 }
 
+// UnsafeNewQLinkedListData constructs the type using only unsafe pointers.
 func UnsafeNewQLinkedListData(h unsafe.Pointer) *QLinkedListData {
-	return newQLinkedListData((*C.QLinkedListData)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QLinkedListData{h: (*C.QLinkedListData)(h)}
 }
 
 // NewQLinkedListData constructs a new QLinkedListData object.
 func NewQLinkedListData() *QLinkedListData {
-	ret := C.QLinkedListData_new()
-	return newQLinkedListData(ret)
+	var outptr_QLinkedListData *C.QLinkedListData = nil
+
+	C.QLinkedListData_new(&outptr_QLinkedListData)
+	ret := newQLinkedListData(outptr_QLinkedListData)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QLinkedListData) Delete() {
-	C.QLinkedListData_Delete(this.h)
+	C.QLinkedListData_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

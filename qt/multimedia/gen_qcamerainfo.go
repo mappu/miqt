@@ -14,7 +14,8 @@ import (
 )
 
 type QCameraInfo struct {
-	h *C.QCameraInfo
+	h          *C.QCameraInfo
+	isSubclass bool
 }
 
 func (this *QCameraInfo) cPointer() *C.QCameraInfo {
@@ -31,6 +32,7 @@ func (this *QCameraInfo) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCameraInfo constructs the type using only CGO pointers.
 func newQCameraInfo(h *C.QCameraInfo) *QCameraInfo {
 	if h == nil {
 		return nil
@@ -38,26 +40,43 @@ func newQCameraInfo(h *C.QCameraInfo) *QCameraInfo {
 	return &QCameraInfo{h: h}
 }
 
+// UnsafeNewQCameraInfo constructs the type using only unsafe pointers.
 func UnsafeNewQCameraInfo(h unsafe.Pointer) *QCameraInfo {
-	return newQCameraInfo((*C.QCameraInfo)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCameraInfo{h: (*C.QCameraInfo)(h)}
 }
 
 // NewQCameraInfo constructs a new QCameraInfo object.
 func NewQCameraInfo() *QCameraInfo {
-	ret := C.QCameraInfo_new()
-	return newQCameraInfo(ret)
+	var outptr_QCameraInfo *C.QCameraInfo = nil
+
+	C.QCameraInfo_new(&outptr_QCameraInfo)
+	ret := newQCameraInfo(outptr_QCameraInfo)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCameraInfo2 constructs a new QCameraInfo object.
 func NewQCameraInfo2(camera *QCamera) *QCameraInfo {
-	ret := C.QCameraInfo_new2(camera.cPointer())
-	return newQCameraInfo(ret)
+	var outptr_QCameraInfo *C.QCameraInfo = nil
+
+	C.QCameraInfo_new2(camera.cPointer(), &outptr_QCameraInfo)
+	ret := newQCameraInfo(outptr_QCameraInfo)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCameraInfo3 constructs a new QCameraInfo object.
 func NewQCameraInfo3(other *QCameraInfo) *QCameraInfo {
-	ret := C.QCameraInfo_new3(other.cPointer())
-	return newQCameraInfo(ret)
+	var outptr_QCameraInfo *C.QCameraInfo = nil
+
+	C.QCameraInfo_new3(other.cPointer(), &outptr_QCameraInfo)
+	ret := newQCameraInfo(outptr_QCameraInfo)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCameraInfo4 constructs a new QCameraInfo object.
@@ -65,8 +84,12 @@ func NewQCameraInfo4(name []byte) *QCameraInfo {
 	name_alias := C.struct_miqt_string{}
 	name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
 	name_alias.len = C.size_t(len(name))
-	ret := C.QCameraInfo_new4(name_alias)
-	return newQCameraInfo(ret)
+	var outptr_QCameraInfo *C.QCameraInfo = nil
+
+	C.QCameraInfo_new4(name_alias, &outptr_QCameraInfo)
+	ret := newQCameraInfo(outptr_QCameraInfo)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QCameraInfo) OperatorAssign(other *QCameraInfo) {
@@ -142,7 +165,7 @@ func QCameraInfo_AvailableCameras1(position QCamera__Position) []QCameraInfo {
 
 // Delete this object from C++ memory.
 func (this *QCameraInfo) Delete() {
-	C.QCameraInfo_Delete(this.h)
+	C.QCameraInfo_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

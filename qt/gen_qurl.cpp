@@ -9,22 +9,26 @@
 #include "gen_qurl.h"
 #include "_cgo_export.h"
 
-QUrl* QUrl_new() {
-	return new QUrl();
+void QUrl_new(QUrl** outptr_QUrl) {
+	QUrl* ret = new QUrl();
+	*outptr_QUrl = ret;
 }
 
-QUrl* QUrl_new2(QUrl* copyVal) {
-	return new QUrl(*copyVal);
+void QUrl_new2(QUrl* copyVal, QUrl** outptr_QUrl) {
+	QUrl* ret = new QUrl(*copyVal);
+	*outptr_QUrl = ret;
 }
 
-QUrl* QUrl_new3(struct miqt_string url) {
+void QUrl_new3(struct miqt_string url, QUrl** outptr_QUrl) {
 	QString url_QString = QString::fromUtf8(url.data, url.len);
-	return new QUrl(url_QString);
+	QUrl* ret = new QUrl(url_QString);
+	*outptr_QUrl = ret;
 }
 
-QUrl* QUrl_new4(struct miqt_string url, int mode) {
+void QUrl_new4(struct miqt_string url, int mode, QUrl** outptr_QUrl) {
 	QString url_QString = QString::fromUtf8(url.data, url.len);
-	return new QUrl(url_QString, static_cast<QUrl::ParsingMode>(mode));
+	QUrl* ret = new QUrl(url_QString, static_cast<QUrl::ParsingMode>(mode));
+	*outptr_QUrl = ret;
 }
 
 void QUrl_OperatorAssign(QUrl* self, QUrl* copyVal) {
@@ -698,7 +702,11 @@ struct miqt_array /* of QUrl* */  QUrl_FromStringList2(struct miqt_array /* of s
 	return _out;
 }
 
-void QUrl_Delete(QUrl* self) {
-	delete self;
+void QUrl_Delete(QUrl* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QUrl*>( self );
+	} else {
+		delete self;
+	}
 }
 

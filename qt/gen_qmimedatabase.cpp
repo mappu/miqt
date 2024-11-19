@@ -12,8 +12,9 @@
 #include "gen_qmimedatabase.h"
 #include "_cgo_export.h"
 
-QMimeDatabase* QMimeDatabase_new() {
-	return new QMimeDatabase();
+void QMimeDatabase_new(QMimeDatabase** outptr_QMimeDatabase) {
+	QMimeDatabase* ret = new QMimeDatabase();
+	*outptr_QMimeDatabase = ret;
 }
 
 QMimeType* QMimeDatabase_MimeTypeForName(const QMimeDatabase* self, struct miqt_string nameOrAlias) {
@@ -102,7 +103,11 @@ QMimeType* QMimeDatabase_MimeTypeForFile22(const QMimeDatabase* self, QFileInfo*
 	return new QMimeType(self->mimeTypeForFile(*fileInfo, static_cast<QMimeDatabase::MatchMode>(mode)));
 }
 
-void QMimeDatabase_Delete(QMimeDatabase* self) {
-	delete self;
+void QMimeDatabase_Delete(QMimeDatabase* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMimeDatabase*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -1,6 +1,7 @@
 #include <QCameraExposure>
 #include <QList>
 #include <QMetaObject>
+#include <QObject>
 #include <QPointF>
 #include <QString>
 #include <QByteArray>

@@ -55,7 +55,8 @@ const (
 )
 
 type QCborParserError struct {
-	h *C.QCborParserError
+	h          *C.QCborParserError
+	isSubclass bool
 }
 
 func (this *QCborParserError) cPointer() *C.QCborParserError {
@@ -72,6 +73,7 @@ func (this *QCborParserError) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCborParserError constructs the type using only CGO pointers.
 func newQCborParserError(h *C.QCborParserError) *QCborParserError {
 	if h == nil {
 		return nil
@@ -79,8 +81,13 @@ func newQCborParserError(h *C.QCborParserError) *QCborParserError {
 	return &QCborParserError{h: h}
 }
 
+// UnsafeNewQCborParserError constructs the type using only unsafe pointers.
 func UnsafeNewQCborParserError(h unsafe.Pointer) *QCborParserError {
-	return newQCborParserError((*C.QCborParserError)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCborParserError{h: (*C.QCborParserError)(h)}
 }
 
 func (this *QCborParserError) ErrorString() string {
@@ -92,7 +99,7 @@ func (this *QCborParserError) ErrorString() string {
 
 // Delete this object from C++ memory.
 func (this *QCborParserError) Delete() {
-	C.QCborParserError_Delete(this.h)
+	C.QCborParserError_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -105,7 +112,8 @@ func (this *QCborParserError) GoGC() {
 }
 
 type QCborValue struct {
-	h *C.QCborValue
+	h          *C.QCborValue
+	isSubclass bool
 }
 
 func (this *QCborValue) cPointer() *C.QCborValue {
@@ -122,6 +130,7 @@ func (this *QCborValue) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCborValue constructs the type using only CGO pointers.
 func newQCborValue(h *C.QCborValue) *QCborValue {
 	if h == nil {
 		return nil
@@ -129,56 +138,93 @@ func newQCborValue(h *C.QCborValue) *QCborValue {
 	return &QCborValue{h: h}
 }
 
+// UnsafeNewQCborValue constructs the type using only unsafe pointers.
 func UnsafeNewQCborValue(h unsafe.Pointer) *QCborValue {
-	return newQCborValue((*C.QCborValue)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCborValue{h: (*C.QCborValue)(h)}
 }
 
 // NewQCborValue constructs a new QCborValue object.
 func NewQCborValue() *QCborValue {
-	ret := C.QCborValue_new()
-	return newQCborValue(ret)
+	var outptr_QCborValue *C.QCborValue = nil
+
+	C.QCborValue_new(&outptr_QCborValue)
+	ret := newQCborValue(outptr_QCborValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborValue2 constructs a new QCborValue object.
 func NewQCborValue2(t_ QCborValue__Type) *QCborValue {
-	ret := C.QCborValue_new2((C.int)(t_))
-	return newQCborValue(ret)
+	var outptr_QCborValue *C.QCborValue = nil
+
+	C.QCborValue_new2((C.int)(t_), &outptr_QCborValue)
+	ret := newQCborValue(outptr_QCborValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborValue3 constructs a new QCborValue object.
 func NewQCborValue3(b_ bool) *QCborValue {
-	ret := C.QCborValue_new3((C.bool)(b_))
-	return newQCborValue(ret)
+	var outptr_QCborValue *C.QCborValue = nil
+
+	C.QCborValue_new3((C.bool)(b_), &outptr_QCborValue)
+	ret := newQCborValue(outptr_QCborValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborValue4 constructs a new QCborValue object.
 func NewQCborValue4(i int) *QCborValue {
-	ret := C.QCborValue_new4((C.int)(i))
-	return newQCborValue(ret)
+	var outptr_QCborValue *C.QCborValue = nil
+
+	C.QCborValue_new4((C.int)(i), &outptr_QCborValue)
+	ret := newQCborValue(outptr_QCborValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborValue5 constructs a new QCborValue object.
 func NewQCborValue5(u uint) *QCborValue {
-	ret := C.QCborValue_new5((C.uint)(u))
-	return newQCborValue(ret)
+	var outptr_QCborValue *C.QCborValue = nil
+
+	C.QCborValue_new5((C.uint)(u), &outptr_QCborValue)
+	ret := newQCborValue(outptr_QCborValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborValue6 constructs a new QCborValue object.
 func NewQCborValue6(i int64) *QCborValue {
-	ret := C.QCborValue_new6((C.longlong)(i))
-	return newQCborValue(ret)
+	var outptr_QCborValue *C.QCborValue = nil
+
+	C.QCborValue_new6((C.longlong)(i), &outptr_QCborValue)
+	ret := newQCborValue(outptr_QCborValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborValue7 constructs a new QCborValue object.
 func NewQCborValue7(v float64) *QCborValue {
-	ret := C.QCborValue_new7((C.double)(v))
-	return newQCborValue(ret)
+	var outptr_QCborValue *C.QCborValue = nil
+
+	C.QCborValue_new7((C.double)(v), &outptr_QCborValue)
+	ret := newQCborValue(outptr_QCborValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborValue8 constructs a new QCborValue object.
 func NewQCborValue8(st QCborSimpleType) *QCborValue {
-	ret := C.QCborValue_new8((C.uint8_t)(st))
-	return newQCborValue(ret)
+	var outptr_QCborValue *C.QCborValue = nil
+
+	C.QCborValue_new8((C.uint8_t)(st), &outptr_QCborValue)
+	ret := newQCborValue(outptr_QCborValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborValue9 constructs a new QCborValue object.
@@ -186,8 +232,12 @@ func NewQCborValue9(ba []byte) *QCborValue {
 	ba_alias := C.struct_miqt_string{}
 	ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
 	ba_alias.len = C.size_t(len(ba))
-	ret := C.QCborValue_new9(ba_alias)
-	return newQCborValue(ret)
+	var outptr_QCborValue *C.QCborValue = nil
+
+	C.QCborValue_new9(ba_alias, &outptr_QCborValue)
+	ret := newQCborValue(outptr_QCborValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborValue10 constructs a new QCborValue object.
@@ -196,82 +246,134 @@ func NewQCborValue10(s string) *QCborValue {
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
 	defer C.free(unsafe.Pointer(s_ms.data))
-	ret := C.QCborValue_new10(s_ms)
-	return newQCborValue(ret)
+	var outptr_QCborValue *C.QCborValue = nil
+
+	C.QCborValue_new10(s_ms, &outptr_QCborValue)
+	ret := newQCborValue(outptr_QCborValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborValue11 constructs a new QCborValue object.
 func NewQCborValue11(s string) *QCborValue {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	ret := C.QCborValue_new11(s_Cstring)
-	return newQCborValue(ret)
+	var outptr_QCborValue *C.QCborValue = nil
+
+	C.QCborValue_new11(s_Cstring, &outptr_QCborValue)
+	ret := newQCborValue(outptr_QCborValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborValue12 constructs a new QCborValue object.
 func NewQCborValue12(a *QCborArray) *QCborValue {
-	ret := C.QCborValue_new12(a.cPointer())
-	return newQCborValue(ret)
+	var outptr_QCborValue *C.QCborValue = nil
+
+	C.QCborValue_new12(a.cPointer(), &outptr_QCborValue)
+	ret := newQCborValue(outptr_QCborValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborValue13 constructs a new QCborValue object.
 func NewQCborValue13(m *QCborMap) *QCborValue {
-	ret := C.QCborValue_new13(m.cPointer())
-	return newQCborValue(ret)
+	var outptr_QCborValue *C.QCborValue = nil
+
+	C.QCborValue_new13(m.cPointer(), &outptr_QCborValue)
+	ret := newQCborValue(outptr_QCborValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborValue14 constructs a new QCborValue object.
 func NewQCborValue14(tag QCborTag) *QCborValue {
-	ret := C.QCborValue_new14((C.uint64_t)(tag))
-	return newQCborValue(ret)
+	var outptr_QCborValue *C.QCborValue = nil
+
+	C.QCborValue_new14((C.uint64_t)(tag), &outptr_QCborValue)
+	ret := newQCborValue(outptr_QCborValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborValue15 constructs a new QCborValue object.
 func NewQCborValue15(t_ QCborKnownTags) *QCborValue {
-	ret := C.QCborValue_new15((C.int)(t_))
-	return newQCborValue(ret)
+	var outptr_QCborValue *C.QCborValue = nil
+
+	C.QCborValue_new15((C.int)(t_), &outptr_QCborValue)
+	ret := newQCborValue(outptr_QCborValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborValue16 constructs a new QCborValue object.
 func NewQCborValue16(dt *qt.QDateTime) *QCborValue {
-	ret := C.QCborValue_new16((*C.QDateTime)(dt.UnsafePointer()))
-	return newQCborValue(ret)
+	var outptr_QCborValue *C.QCborValue = nil
+
+	C.QCborValue_new16((*C.QDateTime)(dt.UnsafePointer()), &outptr_QCborValue)
+	ret := newQCborValue(outptr_QCborValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborValue17 constructs a new QCborValue object.
 func NewQCborValue17(url *qt.QUrl) *QCborValue {
-	ret := C.QCborValue_new17((*C.QUrl)(url.UnsafePointer()))
-	return newQCborValue(ret)
+	var outptr_QCborValue *C.QCborValue = nil
+
+	C.QCborValue_new17((*C.QUrl)(url.UnsafePointer()), &outptr_QCborValue)
+	ret := newQCborValue(outptr_QCborValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborValue18 constructs a new QCborValue object.
 func NewQCborValue18(rx *qt.QRegularExpression) *QCborValue {
-	ret := C.QCborValue_new18((*C.QRegularExpression)(rx.UnsafePointer()))
-	return newQCborValue(ret)
+	var outptr_QCborValue *C.QCborValue = nil
+
+	C.QCborValue_new18((*C.QRegularExpression)(rx.UnsafePointer()), &outptr_QCborValue)
+	ret := newQCborValue(outptr_QCborValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborValue19 constructs a new QCborValue object.
 func NewQCborValue19(uuid *qt.QUuid) *QCborValue {
-	ret := C.QCborValue_new19((*C.QUuid)(uuid.UnsafePointer()))
-	return newQCborValue(ret)
+	var outptr_QCborValue *C.QCborValue = nil
+
+	C.QCborValue_new19((*C.QUuid)(uuid.UnsafePointer()), &outptr_QCborValue)
+	ret := newQCborValue(outptr_QCborValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborValue20 constructs a new QCborValue object.
 func NewQCborValue20(other *QCborValue) *QCborValue {
-	ret := C.QCborValue_new20(other.cPointer())
-	return newQCborValue(ret)
+	var outptr_QCborValue *C.QCborValue = nil
+
+	C.QCborValue_new20(other.cPointer(), &outptr_QCborValue)
+	ret := newQCborValue(outptr_QCborValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborValue21 constructs a new QCborValue object.
 func NewQCborValue21(tag QCborTag, taggedValue *QCborValue) *QCborValue {
-	ret := C.QCborValue_new21((C.uint64_t)(tag), taggedValue.cPointer())
-	return newQCborValue(ret)
+	var outptr_QCborValue *C.QCborValue = nil
+
+	C.QCborValue_new21((C.uint64_t)(tag), taggedValue.cPointer(), &outptr_QCborValue)
+	ret := newQCborValue(outptr_QCborValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborValue22 constructs a new QCborValue object.
 func NewQCborValue22(t_ QCborKnownTags, tv *QCborValue) *QCborValue {
-	ret := C.QCborValue_new22((C.int)(t_), tv.cPointer())
-	return newQCborValue(ret)
+	var outptr_QCborValue *C.QCborValue = nil
+
+	C.QCborValue_new22((C.int)(t_), tv.cPointer(), &outptr_QCborValue)
+	ret := newQCborValue(outptr_QCborValue)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QCborValue) OperatorAssign(other *QCborValue) {
@@ -716,7 +818,7 @@ func (this *QCborValue) ToDiagnosticNotation1(opts QCborValue__DiagnosticNotatio
 
 // Delete this object from C++ memory.
 func (this *QCborValue) Delete() {
-	C.QCborValue_Delete(this.h)
+	C.QCborValue_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -729,7 +831,8 @@ func (this *QCborValue) GoGC() {
 }
 
 type QCborValueRef struct {
-	h *C.QCborValueRef
+	h          *C.QCborValueRef
+	isSubclass bool
 }
 
 func (this *QCborValueRef) cPointer() *C.QCborValueRef {
@@ -746,6 +849,7 @@ func (this *QCborValueRef) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCborValueRef constructs the type using only CGO pointers.
 func newQCborValueRef(h *C.QCborValueRef) *QCborValueRef {
 	if h == nil {
 		return nil
@@ -753,14 +857,23 @@ func newQCborValueRef(h *C.QCborValueRef) *QCborValueRef {
 	return &QCborValueRef{h: h}
 }
 
+// UnsafeNewQCborValueRef constructs the type using only unsafe pointers.
 func UnsafeNewQCborValueRef(h unsafe.Pointer) *QCborValueRef {
-	return newQCborValueRef((*C.QCborValueRef)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCborValueRef{h: (*C.QCborValueRef)(h)}
 }
 
 // NewQCborValueRef constructs a new QCborValueRef object.
 func NewQCborValueRef(param1 *QCborValueRef) *QCborValueRef {
-	ret := C.QCborValueRef_new(param1.cPointer())
-	return newQCborValueRef(ret)
+	var outptr_QCborValueRef *C.QCborValueRef = nil
+
+	C.QCborValueRef_new(param1.cPointer(), &outptr_QCborValueRef)
+	ret := newQCborValueRef(outptr_QCborValueRef)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QCborValueRef) OperatorAssign(other *QCborValue) {
@@ -1124,7 +1237,7 @@ func (this *QCborValueRef) ToDiagnosticNotation1(opt QCborValue__DiagnosticNotat
 
 // Delete this object from C++ memory.
 func (this *QCborValueRef) Delete() {
-	C.QCborValueRef_Delete(this.h)
+	C.QCborValueRef_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

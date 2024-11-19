@@ -1,4 +1,6 @@
 #include <QByteArray>
+#include <QIODevice>
+#include <QIODeviceBase>
 #include <QList>
 #include <QMetaObject>
 #include <QObject>
@@ -11,16 +13,19 @@
 #include "gen_qprocess.h"
 #include "_cgo_export.h"
 
-QProcessEnvironment* QProcessEnvironment_new() {
-	return new QProcessEnvironment();
+void QProcessEnvironment_new(QProcessEnvironment** outptr_QProcessEnvironment) {
+	QProcessEnvironment* ret = new QProcessEnvironment();
+	*outptr_QProcessEnvironment = ret;
 }
 
-QProcessEnvironment* QProcessEnvironment_new2(int param1) {
-	return new QProcessEnvironment(static_cast<QProcessEnvironment::Initialization>(param1));
+void QProcessEnvironment_new2(int param1, QProcessEnvironment** outptr_QProcessEnvironment) {
+	QProcessEnvironment* ret = new QProcessEnvironment(static_cast<QProcessEnvironment::Initialization>(param1));
+	*outptr_QProcessEnvironment = ret;
 }
 
-QProcessEnvironment* QProcessEnvironment_new3(QProcessEnvironment* other) {
-	return new QProcessEnvironment(*other);
+void QProcessEnvironment_new3(QProcessEnvironment* other, QProcessEnvironment** outptr_QProcessEnvironment) {
+	QProcessEnvironment* ret = new QProcessEnvironment(*other);
+	*outptr_QProcessEnvironment = ret;
 }
 
 void QProcessEnvironment_OperatorAssign(QProcessEnvironment* self, QProcessEnvironment* other) {
@@ -140,16 +145,438 @@ struct miqt_string QProcessEnvironment_Value2(const QProcessEnvironment* self, s
 	return _ms;
 }
 
-void QProcessEnvironment_Delete(QProcessEnvironment* self) {
-	delete self;
+void QProcessEnvironment_Delete(QProcessEnvironment* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QProcessEnvironment*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QProcess* QProcess_new() {
-	return new QProcess();
+class MiqtVirtualQProcess : public virtual QProcess {
+public:
+
+	MiqtVirtualQProcess(): QProcess() {};
+	MiqtVirtualQProcess(QObject* parent): QProcess(parent) {};
+
+	virtual ~MiqtVirtualQProcess() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Open = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool open(QIODeviceBase::OpenMode mode) override {
+		if (handle__Open == 0) {
+			return QProcess::open(mode);
+		}
+		
+		QIODeviceBase::OpenMode mode_ret = mode;
+		int sigval1 = static_cast<int>(mode_ret);
+
+		bool callback_return_value = miqt_exec_callback_QProcess_Open(this, handle__Open, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Open(int mode) {
+
+		return QProcess::open(static_cast<QIODeviceBase::OpenMode>(mode));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__WaitForReadyRead = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool waitForReadyRead(int msecs) override {
+		if (handle__WaitForReadyRead == 0) {
+			return QProcess::waitForReadyRead(msecs);
+		}
+		
+		int sigval1 = msecs;
+
+		bool callback_return_value = miqt_exec_callback_QProcess_WaitForReadyRead(this, handle__WaitForReadyRead, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_WaitForReadyRead(int msecs) {
+
+		return QProcess::waitForReadyRead(static_cast<int>(msecs));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__WaitForBytesWritten = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool waitForBytesWritten(int msecs) override {
+		if (handle__WaitForBytesWritten == 0) {
+			return QProcess::waitForBytesWritten(msecs);
+		}
+		
+		int sigval1 = msecs;
+
+		bool callback_return_value = miqt_exec_callback_QProcess_WaitForBytesWritten(this, handle__WaitForBytesWritten, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_WaitForBytesWritten(int msecs) {
+
+		return QProcess::waitForBytesWritten(static_cast<int>(msecs));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__BytesToWrite = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual qint64 bytesToWrite() const override {
+		if (handle__BytesToWrite == 0) {
+			return QProcess::bytesToWrite();
+		}
+		
+
+		long long callback_return_value = miqt_exec_callback_QProcess_BytesToWrite(const_cast<MiqtVirtualQProcess*>(this), handle__BytesToWrite);
+
+		return static_cast<qint64>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	long long virtualbase_BytesToWrite() const {
+
+		qint64 _ret = QProcess::bytesToWrite();
+		return static_cast<long long>(_ret);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__IsSequential = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool isSequential() const override {
+		if (handle__IsSequential == 0) {
+			return QProcess::isSequential();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QProcess_IsSequential(const_cast<MiqtVirtualQProcess*>(this), handle__IsSequential);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_IsSequential() const {
+
+		return QProcess::isSequential();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Close = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void close() override {
+		if (handle__Close == 0) {
+			QProcess::close();
+			return;
+		}
+		
+
+		miqt_exec_callback_QProcess_Close(this, handle__Close);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_Close() {
+
+		QProcess::close();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ReadData = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual qint64 readData(char* data, qint64 maxlen) override {
+		if (handle__ReadData == 0) {
+			return QProcess::readData(data, maxlen);
+		}
+		
+		char* sigval1 = data;
+		qint64 maxlen_ret = maxlen;
+		long long sigval2 = static_cast<long long>(maxlen_ret);
+
+		long long callback_return_value = miqt_exec_callback_QProcess_ReadData(this, handle__ReadData, sigval1, sigval2);
+
+		return static_cast<qint64>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	long long virtualbase_ReadData(char* data, long long maxlen) {
+
+		qint64 _ret = QProcess::readData(data, static_cast<qint64>(maxlen));
+		return static_cast<long long>(_ret);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__WriteData = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual qint64 writeData(const char* data, qint64 lenVal) override {
+		if (handle__WriteData == 0) {
+			return QProcess::writeData(data, lenVal);
+		}
+		
+		const char* sigval1 = (const char*) data;
+		qint64 lenVal_ret = lenVal;
+		long long sigval2 = static_cast<long long>(lenVal_ret);
+
+		long long callback_return_value = miqt_exec_callback_QProcess_WriteData(this, handle__WriteData, sigval1, sigval2);
+
+		return static_cast<qint64>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	long long virtualbase_WriteData(const char* data, long long lenVal) {
+
+		qint64 _ret = QProcess::writeData(data, static_cast<qint64>(lenVal));
+		return static_cast<long long>(_ret);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Pos = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual qint64 pos() const override {
+		if (handle__Pos == 0) {
+			return QProcess::pos();
+		}
+		
+
+		long long callback_return_value = miqt_exec_callback_QProcess_Pos(const_cast<MiqtVirtualQProcess*>(this), handle__Pos);
+
+		return static_cast<qint64>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	long long virtualbase_Pos() const {
+
+		qint64 _ret = QProcess::pos();
+		return static_cast<long long>(_ret);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Size = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual qint64 size() const override {
+		if (handle__Size == 0) {
+			return QProcess::size();
+		}
+		
+
+		long long callback_return_value = miqt_exec_callback_QProcess_Size(const_cast<MiqtVirtualQProcess*>(this), handle__Size);
+
+		return static_cast<qint64>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	long long virtualbase_Size() const {
+
+		qint64 _ret = QProcess::size();
+		return static_cast<long long>(_ret);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Seek = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool seek(qint64 pos) override {
+		if (handle__Seek == 0) {
+			return QProcess::seek(pos);
+		}
+		
+		qint64 pos_ret = pos;
+		long long sigval1 = static_cast<long long>(pos_ret);
+
+		bool callback_return_value = miqt_exec_callback_QProcess_Seek(this, handle__Seek, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Seek(long long pos) {
+
+		return QProcess::seek(static_cast<qint64>(pos));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__AtEnd = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool atEnd() const override {
+		if (handle__AtEnd == 0) {
+			return QProcess::atEnd();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QProcess_AtEnd(const_cast<MiqtVirtualQProcess*>(this), handle__AtEnd);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_AtEnd() const {
+
+		return QProcess::atEnd();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Reset = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool reset() override {
+		if (handle__Reset == 0) {
+			return QProcess::reset();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QProcess_Reset(this, handle__Reset);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Reset() {
+
+		return QProcess::reset();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__BytesAvailable = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual qint64 bytesAvailable() const override {
+		if (handle__BytesAvailable == 0) {
+			return QProcess::bytesAvailable();
+		}
+		
+
+		long long callback_return_value = miqt_exec_callback_QProcess_BytesAvailable(const_cast<MiqtVirtualQProcess*>(this), handle__BytesAvailable);
+
+		return static_cast<qint64>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	long long virtualbase_BytesAvailable() const {
+
+		qint64 _ret = QProcess::bytesAvailable();
+		return static_cast<long long>(_ret);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CanReadLine = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool canReadLine() const override {
+		if (handle__CanReadLine == 0) {
+			return QProcess::canReadLine();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QProcess_CanReadLine(const_cast<MiqtVirtualQProcess*>(this), handle__CanReadLine);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_CanReadLine() const {
+
+		return QProcess::canReadLine();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ReadLineData = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual qint64 readLineData(char* data, qint64 maxlen) override {
+		if (handle__ReadLineData == 0) {
+			return QProcess::readLineData(data, maxlen);
+		}
+		
+		char* sigval1 = data;
+		qint64 maxlen_ret = maxlen;
+		long long sigval2 = static_cast<long long>(maxlen_ret);
+
+		long long callback_return_value = miqt_exec_callback_QProcess_ReadLineData(this, handle__ReadLineData, sigval1, sigval2);
+
+		return static_cast<qint64>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	long long virtualbase_ReadLineData(char* data, long long maxlen) {
+
+		qint64 _ret = QProcess::readLineData(data, static_cast<qint64>(maxlen));
+		return static_cast<long long>(_ret);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SkipData = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual qint64 skipData(qint64 maxSize) override {
+		if (handle__SkipData == 0) {
+			return QProcess::skipData(maxSize);
+		}
+		
+		qint64 maxSize_ret = maxSize;
+		long long sigval1 = static_cast<long long>(maxSize_ret);
+
+		long long callback_return_value = miqt_exec_callback_QProcess_SkipData(this, handle__SkipData, sigval1);
+
+		return static_cast<qint64>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	long long virtualbase_SkipData(long long maxSize) {
+
+		qint64 _ret = QProcess::skipData(static_cast<qint64>(maxSize));
+		return static_cast<long long>(_ret);
+
+	}
+
+};
+
+void QProcess_new(QProcess** outptr_QProcess, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase) {
+	MiqtVirtualQProcess* ret = new MiqtVirtualQProcess();
+	*outptr_QProcess = ret;
+	*outptr_QIODevice = static_cast<QIODevice*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
+	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(ret);
 }
 
-QProcess* QProcess_new2(QObject* parent) {
-	return new QProcess(parent);
+void QProcess_new2(QObject* parent, QProcess** outptr_QProcess, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase) {
+	MiqtVirtualQProcess* ret = new MiqtVirtualQProcess(parent);
+	*outptr_QProcess = ret;
+	*outptr_QIODevice = static_cast<QIODevice*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
+	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(ret);
 }
 
 QMetaObject* QProcess_MetaObject(const QProcess* self) {
@@ -189,8 +616,8 @@ bool QProcess_StartDetached(QProcess* self) {
 	return self->startDetached();
 }
 
-bool QProcess_Open(QProcess* self) {
-	return self->open();
+bool QProcess_Open(QProcess* self, int mode) {
+	return self->open(static_cast<QIODeviceBase::OpenMode>(mode));
 }
 
 struct miqt_string QProcess_Program(const QProcess* self) {
@@ -368,12 +795,12 @@ bool QProcess_WaitForStarted(QProcess* self) {
 	return self->waitForStarted();
 }
 
-bool QProcess_WaitForReadyRead(QProcess* self) {
-	return self->waitForReadyRead();
+bool QProcess_WaitForReadyRead(QProcess* self, int msecs) {
+	return self->waitForReadyRead(static_cast<int>(msecs));
 }
 
-bool QProcess_WaitForBytesWritten(QProcess* self) {
-	return self->waitForBytesWritten();
+bool QProcess_WaitForBytesWritten(QProcess* self, int msecs) {
+	return self->waitForBytesWritten(static_cast<int>(msecs));
 }
 
 bool QProcess_WaitForFinished(QProcess* self) {
@@ -474,7 +901,7 @@ void QProcess_Finished(QProcess* self, int exitCode) {
 }
 
 void QProcess_connect_Finished(QProcess* self, intptr_t slot) {
-	QProcess::connect(self, static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), self, [=](int exitCode) {
+	MiqtVirtualQProcess::connect(self, static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), self, [=](int exitCode) {
 		int sigval1 = exitCode;
 		miqt_exec_callback_QProcess_Finished(slot, sigval1);
 	});
@@ -485,7 +912,7 @@ void QProcess_ErrorOccurred(QProcess* self, int error) {
 }
 
 void QProcess_connect_ErrorOccurred(QProcess* self, intptr_t slot) {
-	QProcess::connect(self, static_cast<void (QProcess::*)(QProcess::ProcessError)>(&QProcess::errorOccurred), self, [=](QProcess::ProcessError error) {
+	MiqtVirtualQProcess::connect(self, static_cast<void (QProcess::*)(QProcess::ProcessError)>(&QProcess::errorOccurred), self, [=](QProcess::ProcessError error) {
 		QProcess::ProcessError error_ret = error;
 		int sigval1 = static_cast<int>(error_ret);
 		miqt_exec_callback_QProcess_ErrorOccurred(slot, sigval1);
@@ -551,10 +978,6 @@ bool QProcess_StartDetached1(QProcess* self, long long* pid) {
 	return self->startDetached(static_cast<qint64*>(pid));
 }
 
-bool QProcess_Open1(QProcess* self, int mode) {
-	return self->open(static_cast<QIODeviceBase::OpenMode>(mode));
-}
-
 void QProcess_SetStandardOutputFile2(QProcess* self, struct miqt_string fileName, int mode) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	self->setStandardOutputFile(fileName_QString, static_cast<QIODeviceBase::OpenMode>(mode));
@@ -567,14 +990,6 @@ void QProcess_SetStandardErrorFile2(QProcess* self, struct miqt_string fileName,
 
 bool QProcess_WaitForStarted1(QProcess* self, int msecs) {
 	return self->waitForStarted(static_cast<int>(msecs));
-}
-
-bool QProcess_WaitForReadyRead1(QProcess* self, int msecs) {
-	return self->waitForReadyRead(static_cast<int>(msecs));
-}
-
-bool QProcess_WaitForBytesWritten1(QProcess* self, int msecs) {
-	return self->waitForBytesWritten(static_cast<int>(msecs));
 }
 
 bool QProcess_WaitForFinished1(QProcess* self, int msecs) {
@@ -636,7 +1051,7 @@ void QProcess_Finished2(QProcess* self, int exitCode, int exitStatus) {
 }
 
 void QProcess_connect_Finished2(QProcess* self, intptr_t slot) {
-	QProcess::connect(self, static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), self, [=](int exitCode, QProcess::ExitStatus exitStatus) {
+	MiqtVirtualQProcess::connect(self, static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), self, [=](int exitCode, QProcess::ExitStatus exitStatus) {
 		int sigval1 = exitCode;
 		QProcess::ExitStatus exitStatus_ret = exitStatus;
 		int sigval2 = static_cast<int>(exitStatus_ret);
@@ -644,7 +1059,147 @@ void QProcess_connect_Finished2(QProcess* self, intptr_t slot) {
 	});
 }
 
-void QProcess_Delete(QProcess* self) {
-	delete self;
+void QProcess_override_virtual_Open(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__Open = slot;
+}
+
+bool QProcess_virtualbase_Open(void* self, int mode) {
+	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_Open(mode);
+}
+
+void QProcess_override_virtual_WaitForReadyRead(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__WaitForReadyRead = slot;
+}
+
+bool QProcess_virtualbase_WaitForReadyRead(void* self, int msecs) {
+	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_WaitForReadyRead(msecs);
+}
+
+void QProcess_override_virtual_WaitForBytesWritten(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__WaitForBytesWritten = slot;
+}
+
+bool QProcess_virtualbase_WaitForBytesWritten(void* self, int msecs) {
+	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_WaitForBytesWritten(msecs);
+}
+
+void QProcess_override_virtual_BytesToWrite(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__BytesToWrite = slot;
+}
+
+long long QProcess_virtualbase_BytesToWrite(const void* self) {
+	return ( (const MiqtVirtualQProcess*)(self) )->virtualbase_BytesToWrite();
+}
+
+void QProcess_override_virtual_IsSequential(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__IsSequential = slot;
+}
+
+bool QProcess_virtualbase_IsSequential(const void* self) {
+	return ( (const MiqtVirtualQProcess*)(self) )->virtualbase_IsSequential();
+}
+
+void QProcess_override_virtual_Close(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__Close = slot;
+}
+
+void QProcess_virtualbase_Close(void* self) {
+	( (MiqtVirtualQProcess*)(self) )->virtualbase_Close();
+}
+
+void QProcess_override_virtual_ReadData(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__ReadData = slot;
+}
+
+long long QProcess_virtualbase_ReadData(void* self, char* data, long long maxlen) {
+	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_ReadData(data, maxlen);
+}
+
+void QProcess_override_virtual_WriteData(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__WriteData = slot;
+}
+
+long long QProcess_virtualbase_WriteData(void* self, const char* data, long long lenVal) {
+	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_WriteData(data, lenVal);
+}
+
+void QProcess_override_virtual_Pos(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__Pos = slot;
+}
+
+long long QProcess_virtualbase_Pos(const void* self) {
+	return ( (const MiqtVirtualQProcess*)(self) )->virtualbase_Pos();
+}
+
+void QProcess_override_virtual_Size(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__Size = slot;
+}
+
+long long QProcess_virtualbase_Size(const void* self) {
+	return ( (const MiqtVirtualQProcess*)(self) )->virtualbase_Size();
+}
+
+void QProcess_override_virtual_Seek(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__Seek = slot;
+}
+
+bool QProcess_virtualbase_Seek(void* self, long long pos) {
+	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_Seek(pos);
+}
+
+void QProcess_override_virtual_AtEnd(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__AtEnd = slot;
+}
+
+bool QProcess_virtualbase_AtEnd(const void* self) {
+	return ( (const MiqtVirtualQProcess*)(self) )->virtualbase_AtEnd();
+}
+
+void QProcess_override_virtual_Reset(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__Reset = slot;
+}
+
+bool QProcess_virtualbase_Reset(void* self) {
+	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_Reset();
+}
+
+void QProcess_override_virtual_BytesAvailable(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__BytesAvailable = slot;
+}
+
+long long QProcess_virtualbase_BytesAvailable(const void* self) {
+	return ( (const MiqtVirtualQProcess*)(self) )->virtualbase_BytesAvailable();
+}
+
+void QProcess_override_virtual_CanReadLine(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__CanReadLine = slot;
+}
+
+bool QProcess_virtualbase_CanReadLine(const void* self) {
+	return ( (const MiqtVirtualQProcess*)(self) )->virtualbase_CanReadLine();
+}
+
+void QProcess_override_virtual_ReadLineData(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__ReadLineData = slot;
+}
+
+long long QProcess_virtualbase_ReadLineData(void* self, char* data, long long maxlen) {
+	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_ReadLineData(data, maxlen);
+}
+
+void QProcess_override_virtual_SkipData(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__SkipData = slot;
+}
+
+long long QProcess_virtualbase_SkipData(void* self, long long maxSize) {
+	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_SkipData(maxSize);
+}
+
+void QProcess_Delete(QProcess* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQProcess*>( self );
+	} else {
+		delete self;
+	}
 }
 

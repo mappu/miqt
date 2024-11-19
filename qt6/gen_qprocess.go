@@ -71,7 +71,8 @@ const (
 )
 
 type QProcessEnvironment struct {
-	h *C.QProcessEnvironment
+	h          *C.QProcessEnvironment
+	isSubclass bool
 }
 
 func (this *QProcessEnvironment) cPointer() *C.QProcessEnvironment {
@@ -88,6 +89,7 @@ func (this *QProcessEnvironment) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQProcessEnvironment constructs the type using only CGO pointers.
 func newQProcessEnvironment(h *C.QProcessEnvironment) *QProcessEnvironment {
 	if h == nil {
 		return nil
@@ -95,26 +97,43 @@ func newQProcessEnvironment(h *C.QProcessEnvironment) *QProcessEnvironment {
 	return &QProcessEnvironment{h: h}
 }
 
+// UnsafeNewQProcessEnvironment constructs the type using only unsafe pointers.
 func UnsafeNewQProcessEnvironment(h unsafe.Pointer) *QProcessEnvironment {
-	return newQProcessEnvironment((*C.QProcessEnvironment)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QProcessEnvironment{h: (*C.QProcessEnvironment)(h)}
 }
 
 // NewQProcessEnvironment constructs a new QProcessEnvironment object.
 func NewQProcessEnvironment() *QProcessEnvironment {
-	ret := C.QProcessEnvironment_new()
-	return newQProcessEnvironment(ret)
+	var outptr_QProcessEnvironment *C.QProcessEnvironment = nil
+
+	C.QProcessEnvironment_new(&outptr_QProcessEnvironment)
+	ret := newQProcessEnvironment(outptr_QProcessEnvironment)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQProcessEnvironment2 constructs a new QProcessEnvironment object.
 func NewQProcessEnvironment2(param1 QProcessEnvironment__Initialization) *QProcessEnvironment {
-	ret := C.QProcessEnvironment_new2((C.int)(param1))
-	return newQProcessEnvironment(ret)
+	var outptr_QProcessEnvironment *C.QProcessEnvironment = nil
+
+	C.QProcessEnvironment_new2((C.int)(param1), &outptr_QProcessEnvironment)
+	ret := newQProcessEnvironment(outptr_QProcessEnvironment)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQProcessEnvironment3 constructs a new QProcessEnvironment object.
 func NewQProcessEnvironment3(other *QProcessEnvironment) *QProcessEnvironment {
-	ret := C.QProcessEnvironment_new3(other.cPointer())
-	return newQProcessEnvironment(ret)
+	var outptr_QProcessEnvironment *C.QProcessEnvironment = nil
+
+	C.QProcessEnvironment_new3(other.cPointer(), &outptr_QProcessEnvironment)
+	ret := newQProcessEnvironment(outptr_QProcessEnvironment)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QProcessEnvironment) OperatorAssign(other *QProcessEnvironment) {
@@ -238,7 +257,7 @@ func (this *QProcessEnvironment) Value2(name string, defaultValue string) string
 
 // Delete this object from C++ memory.
 func (this *QProcessEnvironment) Delete() {
-	C.QProcessEnvironment_Delete(this.h)
+	C.QProcessEnvironment_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -251,7 +270,8 @@ func (this *QProcessEnvironment) GoGC() {
 }
 
 type QProcess struct {
-	h *C.QProcess
+	h          *C.QProcess
+	isSubclass bool
 	*QIODevice
 }
 
@@ -269,27 +289,49 @@ func (this *QProcess) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQProcess(h *C.QProcess) *QProcess {
+// newQProcess constructs the type using only CGO pointers.
+func newQProcess(h *C.QProcess, h_QIODevice *C.QIODevice, h_QObject *C.QObject, h_QIODeviceBase *C.QIODeviceBase) *QProcess {
 	if h == nil {
 		return nil
 	}
-	return &QProcess{h: h, QIODevice: UnsafeNewQIODevice(unsafe.Pointer(h))}
+	return &QProcess{h: h,
+		QIODevice: newQIODevice(h_QIODevice, h_QObject, h_QIODeviceBase)}
 }
 
-func UnsafeNewQProcess(h unsafe.Pointer) *QProcess {
-	return newQProcess((*C.QProcess)(h))
+// UnsafeNewQProcess constructs the type using only unsafe pointers.
+func UnsafeNewQProcess(h unsafe.Pointer, h_QIODevice unsafe.Pointer, h_QObject unsafe.Pointer, h_QIODeviceBase unsafe.Pointer) *QProcess {
+	if h == nil {
+		return nil
+	}
+
+	return &QProcess{h: (*C.QProcess)(h),
+		QIODevice: UnsafeNewQIODevice(h_QIODevice, h_QObject, h_QIODeviceBase)}
 }
 
 // NewQProcess constructs a new QProcess object.
 func NewQProcess() *QProcess {
-	ret := C.QProcess_new()
-	return newQProcess(ret)
+	var outptr_QProcess *C.QProcess = nil
+	var outptr_QIODevice *C.QIODevice = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QIODeviceBase *C.QIODeviceBase = nil
+
+	C.QProcess_new(&outptr_QProcess, &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
+	ret := newQProcess(outptr_QProcess, outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQProcess2 constructs a new QProcess object.
 func NewQProcess2(parent *QObject) *QProcess {
-	ret := C.QProcess_new2(parent.cPointer())
-	return newQProcess(ret)
+	var outptr_QProcess *C.QProcess = nil
+	var outptr_QIODevice *C.QIODevice = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QIODeviceBase *C.QIODeviceBase = nil
+
+	C.QProcess_new2(parent.cPointer(), &outptr_QProcess, &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
+	ret := newQProcess(outptr_QProcess, outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QProcess) MetaObject() *QMetaObject {
@@ -335,8 +377,8 @@ func (this *QProcess) StartDetached() bool {
 	return (bool)(C.QProcess_StartDetached(this.h))
 }
 
-func (this *QProcess) Open() bool {
-	return (bool)(C.QProcess_Open(this.h))
+func (this *QProcess) Open(mode QIODeviceBase__OpenModeFlag) bool {
+	return (bool)(C.QProcess_Open(this.h, (C.int)(mode)))
 }
 
 func (this *QProcess) Program() string {
@@ -510,12 +552,12 @@ func (this *QProcess) WaitForStarted() bool {
 	return (bool)(C.QProcess_WaitForStarted(this.h))
 }
 
-func (this *QProcess) WaitForReadyRead() bool {
-	return (bool)(C.QProcess_WaitForReadyRead(this.h))
+func (this *QProcess) WaitForReadyRead(msecs int) bool {
+	return (bool)(C.QProcess_WaitForReadyRead(this.h, (C.int)(msecs)))
 }
 
-func (this *QProcess) WaitForBytesWritten() bool {
-	return (bool)(C.QProcess_WaitForBytesWritten(this.h))
+func (this *QProcess) WaitForBytesWritten(msecs int) bool {
+	return (bool)(C.QProcess_WaitForBytesWritten(this.h, (C.int)(msecs)))
 }
 
 func (this *QProcess) WaitForFinished() bool {
@@ -714,10 +756,6 @@ func (this *QProcess) StartDetached1(pid *int64) bool {
 	return (bool)(C.QProcess_StartDetached1(this.h, (*C.longlong)(unsafe.Pointer(pid))))
 }
 
-func (this *QProcess) Open1(mode QIODeviceBase__OpenModeFlag) bool {
-	return (bool)(C.QProcess_Open1(this.h, (C.int)(mode)))
-}
-
 func (this *QProcess) SetStandardOutputFile2(fileName string, mode QIODeviceBase__OpenModeFlag) {
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
@@ -736,14 +774,6 @@ func (this *QProcess) SetStandardErrorFile2(fileName string, mode QIODeviceBase_
 
 func (this *QProcess) WaitForStarted1(msecs int) bool {
 	return (bool)(C.QProcess_WaitForStarted1(this.h, (C.int)(msecs)))
-}
-
-func (this *QProcess) WaitForReadyRead1(msecs int) bool {
-	return (bool)(C.QProcess_WaitForReadyRead1(this.h, (C.int)(msecs)))
-}
-
-func (this *QProcess) WaitForBytesWritten1(msecs int) bool {
-	return (bool)(C.QProcess_WaitForBytesWritten1(this.h, (C.int)(msecs)))
 }
 
 func (this *QProcess) WaitForFinished1(msecs int) bool {
@@ -852,9 +882,420 @@ func miqt_exec_callback_QProcess_Finished2(cb C.intptr_t, exitCode C.int, exitSt
 	gofunc(slotval1, slotval2)
 }
 
+func (this *QProcess) callVirtualBase_Open(mode QIODeviceBase__OpenModeFlag) bool {
+
+	return (bool)(C.QProcess_virtualbase_Open(unsafe.Pointer(this.h), (C.int)(mode)))
+
+}
+func (this *QProcess) OnOpen(slot func(super func(mode QIODeviceBase__OpenModeFlag) bool, mode QIODeviceBase__OpenModeFlag) bool) {
+	C.QProcess_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QProcess_Open
+func miqt_exec_callback_QProcess_Open(self *C.QProcess, cb C.intptr_t, mode C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(mode QIODeviceBase__OpenModeFlag) bool, mode QIODeviceBase__OpenModeFlag) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QIODeviceBase__OpenModeFlag)(mode)
+
+	virtualReturn := gofunc((&QProcess{h: self}).callVirtualBase_Open, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QProcess) callVirtualBase_WaitForReadyRead(msecs int) bool {
+
+	return (bool)(C.QProcess_virtualbase_WaitForReadyRead(unsafe.Pointer(this.h), (C.int)(msecs)))
+
+}
+func (this *QProcess) OnWaitForReadyRead(slot func(super func(msecs int) bool, msecs int) bool) {
+	C.QProcess_override_virtual_WaitForReadyRead(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QProcess_WaitForReadyRead
+func miqt_exec_callback_QProcess_WaitForReadyRead(self *C.QProcess, cb C.intptr_t, msecs C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(msecs int) bool, msecs int) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(msecs)
+
+	virtualReturn := gofunc((&QProcess{h: self}).callVirtualBase_WaitForReadyRead, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QProcess) callVirtualBase_WaitForBytesWritten(msecs int) bool {
+
+	return (bool)(C.QProcess_virtualbase_WaitForBytesWritten(unsafe.Pointer(this.h), (C.int)(msecs)))
+
+}
+func (this *QProcess) OnWaitForBytesWritten(slot func(super func(msecs int) bool, msecs int) bool) {
+	C.QProcess_override_virtual_WaitForBytesWritten(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QProcess_WaitForBytesWritten
+func miqt_exec_callback_QProcess_WaitForBytesWritten(self *C.QProcess, cb C.intptr_t, msecs C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(msecs int) bool, msecs int) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(msecs)
+
+	virtualReturn := gofunc((&QProcess{h: self}).callVirtualBase_WaitForBytesWritten, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QProcess) callVirtualBase_BytesToWrite() int64 {
+
+	return (int64)(C.QProcess_virtualbase_BytesToWrite(unsafe.Pointer(this.h)))
+
+}
+func (this *QProcess) OnBytesToWrite(slot func(super func() int64) int64) {
+	C.QProcess_override_virtual_BytesToWrite(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QProcess_BytesToWrite
+func miqt_exec_callback_QProcess_BytesToWrite(self *C.QProcess, cb C.intptr_t) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QProcess{h: self}).callVirtualBase_BytesToWrite)
+
+	return (C.longlong)(virtualReturn)
+
+}
+
+func (this *QProcess) callVirtualBase_IsSequential() bool {
+
+	return (bool)(C.QProcess_virtualbase_IsSequential(unsafe.Pointer(this.h)))
+
+}
+func (this *QProcess) OnIsSequential(slot func(super func() bool) bool) {
+	C.QProcess_override_virtual_IsSequential(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QProcess_IsSequential
+func miqt_exec_callback_QProcess_IsSequential(self *C.QProcess, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QProcess{h: self}).callVirtualBase_IsSequential)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QProcess) callVirtualBase_Close() {
+
+	C.QProcess_virtualbase_Close(unsafe.Pointer(this.h))
+
+}
+func (this *QProcess) OnClose(slot func(super func())) {
+	C.QProcess_override_virtual_Close(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QProcess_Close
+func miqt_exec_callback_QProcess_Close(self *C.QProcess, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QProcess{h: self}).callVirtualBase_Close)
+
+}
+
+func (this *QProcess) callVirtualBase_ReadData(data string, maxlen int64) int64 {
+	data_Cstring := C.CString(data)
+	defer C.free(unsafe.Pointer(data_Cstring))
+
+	return (int64)(C.QProcess_virtualbase_ReadData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(maxlen)))
+
+}
+func (this *QProcess) OnReadData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
+	C.QProcess_override_virtual_ReadData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QProcess_ReadData
+func miqt_exec_callback_QProcess_ReadData(self *C.QProcess, cb C.intptr_t, data *C.char, maxlen C.longlong) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	data_ret := data
+	slotval1 := C.GoString(data_ret)
+
+	slotval2 := (int64)(maxlen)
+
+	virtualReturn := gofunc((&QProcess{h: self}).callVirtualBase_ReadData, slotval1, slotval2)
+
+	return (C.longlong)(virtualReturn)
+
+}
+
+func (this *QProcess) callVirtualBase_WriteData(data string, lenVal int64) int64 {
+	data_Cstring := C.CString(data)
+	defer C.free(unsafe.Pointer(data_Cstring))
+
+	return (int64)(C.QProcess_virtualbase_WriteData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(lenVal)))
+
+}
+func (this *QProcess) OnWriteData(slot func(super func(data string, lenVal int64) int64, data string, lenVal int64) int64) {
+	C.QProcess_override_virtual_WriteData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QProcess_WriteData
+func miqt_exec_callback_QProcess_WriteData(self *C.QProcess, cb C.intptr_t, data *C.const_char, lenVal C.longlong) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data string, lenVal int64) int64, data string, lenVal int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	data_ret := data
+	slotval1 := C.GoString(data_ret)
+
+	slotval2 := (int64)(lenVal)
+
+	virtualReturn := gofunc((&QProcess{h: self}).callVirtualBase_WriteData, slotval1, slotval2)
+
+	return (C.longlong)(virtualReturn)
+
+}
+
+func (this *QProcess) callVirtualBase_Pos() int64 {
+
+	return (int64)(C.QProcess_virtualbase_Pos(unsafe.Pointer(this.h)))
+
+}
+func (this *QProcess) OnPos(slot func(super func() int64) int64) {
+	C.QProcess_override_virtual_Pos(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QProcess_Pos
+func miqt_exec_callback_QProcess_Pos(self *C.QProcess, cb C.intptr_t) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QProcess{h: self}).callVirtualBase_Pos)
+
+	return (C.longlong)(virtualReturn)
+
+}
+
+func (this *QProcess) callVirtualBase_Size() int64 {
+
+	return (int64)(C.QProcess_virtualbase_Size(unsafe.Pointer(this.h)))
+
+}
+func (this *QProcess) OnSize(slot func(super func() int64) int64) {
+	C.QProcess_override_virtual_Size(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QProcess_Size
+func miqt_exec_callback_QProcess_Size(self *C.QProcess, cb C.intptr_t) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QProcess{h: self}).callVirtualBase_Size)
+
+	return (C.longlong)(virtualReturn)
+
+}
+
+func (this *QProcess) callVirtualBase_Seek(pos int64) bool {
+
+	return (bool)(C.QProcess_virtualbase_Seek(unsafe.Pointer(this.h), (C.longlong)(pos)))
+
+}
+func (this *QProcess) OnSeek(slot func(super func(pos int64) bool, pos int64) bool) {
+	C.QProcess_override_virtual_Seek(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QProcess_Seek
+func miqt_exec_callback_QProcess_Seek(self *C.QProcess, cb C.intptr_t, pos C.longlong) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(pos int64) bool, pos int64) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int64)(pos)
+
+	virtualReturn := gofunc((&QProcess{h: self}).callVirtualBase_Seek, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QProcess) callVirtualBase_AtEnd() bool {
+
+	return (bool)(C.QProcess_virtualbase_AtEnd(unsafe.Pointer(this.h)))
+
+}
+func (this *QProcess) OnAtEnd(slot func(super func() bool) bool) {
+	C.QProcess_override_virtual_AtEnd(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QProcess_AtEnd
+func miqt_exec_callback_QProcess_AtEnd(self *C.QProcess, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QProcess{h: self}).callVirtualBase_AtEnd)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QProcess) callVirtualBase_Reset() bool {
+
+	return (bool)(C.QProcess_virtualbase_Reset(unsafe.Pointer(this.h)))
+
+}
+func (this *QProcess) OnReset(slot func(super func() bool) bool) {
+	C.QProcess_override_virtual_Reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QProcess_Reset
+func miqt_exec_callback_QProcess_Reset(self *C.QProcess, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QProcess{h: self}).callVirtualBase_Reset)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QProcess) callVirtualBase_BytesAvailable() int64 {
+
+	return (int64)(C.QProcess_virtualbase_BytesAvailable(unsafe.Pointer(this.h)))
+
+}
+func (this *QProcess) OnBytesAvailable(slot func(super func() int64) int64) {
+	C.QProcess_override_virtual_BytesAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QProcess_BytesAvailable
+func miqt_exec_callback_QProcess_BytesAvailable(self *C.QProcess, cb C.intptr_t) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QProcess{h: self}).callVirtualBase_BytesAvailable)
+
+	return (C.longlong)(virtualReturn)
+
+}
+
+func (this *QProcess) callVirtualBase_CanReadLine() bool {
+
+	return (bool)(C.QProcess_virtualbase_CanReadLine(unsafe.Pointer(this.h)))
+
+}
+func (this *QProcess) OnCanReadLine(slot func(super func() bool) bool) {
+	C.QProcess_override_virtual_CanReadLine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QProcess_CanReadLine
+func miqt_exec_callback_QProcess_CanReadLine(self *C.QProcess, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QProcess{h: self}).callVirtualBase_CanReadLine)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QProcess) callVirtualBase_ReadLineData(data string, maxlen int64) int64 {
+	data_Cstring := C.CString(data)
+	defer C.free(unsafe.Pointer(data_Cstring))
+
+	return (int64)(C.QProcess_virtualbase_ReadLineData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(maxlen)))
+
+}
+func (this *QProcess) OnReadLineData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
+	C.QProcess_override_virtual_ReadLineData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QProcess_ReadLineData
+func miqt_exec_callback_QProcess_ReadLineData(self *C.QProcess, cb C.intptr_t, data *C.char, maxlen C.longlong) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	data_ret := data
+	slotval1 := C.GoString(data_ret)
+
+	slotval2 := (int64)(maxlen)
+
+	virtualReturn := gofunc((&QProcess{h: self}).callVirtualBase_ReadLineData, slotval1, slotval2)
+
+	return (C.longlong)(virtualReturn)
+
+}
+
+func (this *QProcess) callVirtualBase_SkipData(maxSize int64) int64 {
+
+	return (int64)(C.QProcess_virtualbase_SkipData(unsafe.Pointer(this.h), (C.longlong)(maxSize)))
+
+}
+func (this *QProcess) OnSkipData(slot func(super func(maxSize int64) int64, maxSize int64) int64) {
+	C.QProcess_override_virtual_SkipData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QProcess_SkipData
+func miqt_exec_callback_QProcess_SkipData(self *C.QProcess, cb C.intptr_t, maxSize C.longlong) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(maxSize int64) int64, maxSize int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int64)(maxSize)
+
+	virtualReturn := gofunc((&QProcess{h: self}).callVirtualBase_SkipData, slotval1)
+
+	return (C.longlong)(virtualReturn)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QProcess) Delete() {
-	C.QProcess_Delete(this.h)
+	C.QProcess_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

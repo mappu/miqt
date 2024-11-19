@@ -17,11 +17,15 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractAnimation;
 class QAnimationGroup;
+class QEvent;
 class QMetaObject;
+class QObject;
 #else
 typedef struct QAbstractAnimation QAbstractAnimation;
 typedef struct QAnimationGroup QAnimationGroup;
+typedef struct QEvent QEvent;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 #endif
 
 QMetaObject* QAnimationGroup_MetaObject(const QAnimationGroup* self);
@@ -36,11 +40,12 @@ void QAnimationGroup_InsertAnimation(QAnimationGroup* self, int index, QAbstract
 void QAnimationGroup_RemoveAnimation(QAnimationGroup* self, QAbstractAnimation* animation);
 QAbstractAnimation* QAnimationGroup_TakeAnimation(QAnimationGroup* self, int index);
 void QAnimationGroup_Clear(QAnimationGroup* self);
+bool QAnimationGroup_Event(QAnimationGroup* self, QEvent* event);
 struct miqt_string QAnimationGroup_Tr2(const char* s, const char* c);
 struct miqt_string QAnimationGroup_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAnimationGroup_TrUtf82(const char* s, const char* c);
 struct miqt_string QAnimationGroup_TrUtf83(const char* s, const char* c, int n);
-void QAnimationGroup_Delete(QAnimationGroup* self);
+void QAnimationGroup_Delete(QAnimationGroup* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

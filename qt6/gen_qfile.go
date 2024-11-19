@@ -10,11 +10,13 @@ import "C"
 
 import (
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
 type QFile struct {
-	h *C.QFile
+	h          *C.QFile
+	isSubclass bool
 	*QFileDevice
 }
 
@@ -32,21 +34,37 @@ func (this *QFile) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQFile(h *C.QFile) *QFile {
+// newQFile constructs the type using only CGO pointers.
+func newQFile(h *C.QFile, h_QFileDevice *C.QFileDevice, h_QIODevice *C.QIODevice, h_QObject *C.QObject, h_QIODeviceBase *C.QIODeviceBase) *QFile {
 	if h == nil {
 		return nil
 	}
-	return &QFile{h: h, QFileDevice: UnsafeNewQFileDevice(unsafe.Pointer(h))}
+	return &QFile{h: h,
+		QFileDevice: newQFileDevice(h_QFileDevice, h_QIODevice, h_QObject, h_QIODeviceBase)}
 }
 
-func UnsafeNewQFile(h unsafe.Pointer) *QFile {
-	return newQFile((*C.QFile)(h))
+// UnsafeNewQFile constructs the type using only unsafe pointers.
+func UnsafeNewQFile(h unsafe.Pointer, h_QFileDevice unsafe.Pointer, h_QIODevice unsafe.Pointer, h_QObject unsafe.Pointer, h_QIODeviceBase unsafe.Pointer) *QFile {
+	if h == nil {
+		return nil
+	}
+
+	return &QFile{h: (*C.QFile)(h),
+		QFileDevice: UnsafeNewQFileDevice(h_QFileDevice, h_QIODevice, h_QObject, h_QIODeviceBase)}
 }
 
 // NewQFile constructs a new QFile object.
 func NewQFile() *QFile {
-	ret := C.QFile_new()
-	return newQFile(ret)
+	var outptr_QFile *C.QFile = nil
+	var outptr_QFileDevice *C.QFileDevice = nil
+	var outptr_QIODevice *C.QIODevice = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QIODeviceBase *C.QIODeviceBase = nil
+
+	C.QFile_new(&outptr_QFile, &outptr_QFileDevice, &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
+	ret := newQFile(outptr_QFile, outptr_QFileDevice, outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFile2 constructs a new QFile object.
@@ -55,14 +73,30 @@ func NewQFile2(name string) *QFile {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	ret := C.QFile_new2(name_ms)
-	return newQFile(ret)
+	var outptr_QFile *C.QFile = nil
+	var outptr_QFileDevice *C.QFileDevice = nil
+	var outptr_QIODevice *C.QIODevice = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QIODeviceBase *C.QIODeviceBase = nil
+
+	C.QFile_new2(name_ms, &outptr_QFile, &outptr_QFileDevice, &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
+	ret := newQFile(outptr_QFile, outptr_QFileDevice, outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFile3 constructs a new QFile object.
 func NewQFile3(parent *QObject) *QFile {
-	ret := C.QFile_new3(parent.cPointer())
-	return newQFile(ret)
+	var outptr_QFile *C.QFile = nil
+	var outptr_QFileDevice *C.QFileDevice = nil
+	var outptr_QIODevice *C.QIODevice = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QIODeviceBase *C.QIODeviceBase = nil
+
+	C.QFile_new3(parent.cPointer(), &outptr_QFile, &outptr_QFileDevice, &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
+	ret := newQFile(outptr_QFile, outptr_QFileDevice, outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFile4 constructs a new QFile object.
@@ -71,8 +105,16 @@ func NewQFile4(name string, parent *QObject) *QFile {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	ret := C.QFile_new4(name_ms, parent.cPointer())
-	return newQFile(ret)
+	var outptr_QFile *C.QFile = nil
+	var outptr_QFileDevice *C.QFileDevice = nil
+	var outptr_QIODevice *C.QIODevice = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QIODeviceBase *C.QIODeviceBase = nil
+
+	C.QFile_new4(name_ms, parent.cPointer(), &outptr_QFile, &outptr_QFileDevice, &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
+	ret := newQFile(outptr_QFile, outptr_QFileDevice, outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QFile) MetaObject() *QMetaObject {
@@ -331,9 +373,357 @@ func (this *QFile) Open33(fd int, ioFlags QIODeviceBase__OpenModeFlag, handleFla
 	return (bool)(C.QFile_Open33(this.h, (C.int)(fd), (C.int)(ioFlags), (C.int)(handleFlags)))
 }
 
+func (this *QFile) callVirtualBase_FileName() string {
+
+	var _ms C.struct_miqt_string = C.QFile_virtualbase_FileName(unsafe.Pointer(this.h))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
+	return _ret
+}
+func (this *QFile) OnFileName(slot func(super func() string) string) {
+	C.QFile_override_virtual_FileName(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFile_FileName
+func miqt_exec_callback_QFile_FileName(self *C.QFile, cb C.intptr_t) C.struct_miqt_string {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() string) string)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QFile{h: self}).callVirtualBase_FileName)
+	virtualReturn_ms := C.struct_miqt_string{}
+	virtualReturn_ms.data = C.CString(virtualReturn)
+	virtualReturn_ms.len = C.size_t(len(virtualReturn))
+	defer C.free(unsafe.Pointer(virtualReturn_ms.data))
+
+	return virtualReturn_ms
+
+}
+
+func (this *QFile) callVirtualBase_Open(flags QIODeviceBase__OpenModeFlag) bool {
+
+	return (bool)(C.QFile_virtualbase_Open(unsafe.Pointer(this.h), (C.int)(flags)))
+
+}
+func (this *QFile) OnOpen(slot func(super func(flags QIODeviceBase__OpenModeFlag) bool, flags QIODeviceBase__OpenModeFlag) bool) {
+	C.QFile_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFile_Open
+func miqt_exec_callback_QFile_Open(self *C.QFile, cb C.intptr_t, flags C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(flags QIODeviceBase__OpenModeFlag) bool, flags QIODeviceBase__OpenModeFlag) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QIODeviceBase__OpenModeFlag)(flags)
+
+	virtualReturn := gofunc((&QFile{h: self}).callVirtualBase_Open, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QFile) callVirtualBase_Size() int64 {
+
+	return (int64)(C.QFile_virtualbase_Size(unsafe.Pointer(this.h)))
+
+}
+func (this *QFile) OnSize(slot func(super func() int64) int64) {
+	C.QFile_override_virtual_Size(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFile_Size
+func miqt_exec_callback_QFile_Size(self *C.QFile, cb C.intptr_t) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QFile{h: self}).callVirtualBase_Size)
+
+	return (C.longlong)(virtualReturn)
+
+}
+
+func (this *QFile) callVirtualBase_Resize(sz int64) bool {
+
+	return (bool)(C.QFile_virtualbase_Resize(unsafe.Pointer(this.h), (C.longlong)(sz)))
+
+}
+func (this *QFile) OnResize(slot func(super func(sz int64) bool, sz int64) bool) {
+	C.QFile_override_virtual_Resize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFile_Resize
+func miqt_exec_callback_QFile_Resize(self *C.QFile, cb C.intptr_t, sz C.longlong) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sz int64) bool, sz int64) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int64)(sz)
+
+	virtualReturn := gofunc((&QFile{h: self}).callVirtualBase_Resize, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QFile) callVirtualBase_Permissions() QFileDevice__Permission {
+
+	return (QFileDevice__Permission)(C.QFile_virtualbase_Permissions(unsafe.Pointer(this.h)))
+
+}
+func (this *QFile) OnPermissions(slot func(super func() QFileDevice__Permission) QFileDevice__Permission) {
+	C.QFile_override_virtual_Permissions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFile_Permissions
+func miqt_exec_callback_QFile_Permissions(self *C.QFile, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QFileDevice__Permission) QFileDevice__Permission)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QFile{h: self}).callVirtualBase_Permissions)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QFile) callVirtualBase_SetPermissions(permissionSpec QFileDevice__Permission) bool {
+
+	return (bool)(C.QFile_virtualbase_SetPermissions(unsafe.Pointer(this.h), (C.int)(permissionSpec)))
+
+}
+func (this *QFile) OnSetPermissions(slot func(super func(permissionSpec QFileDevice__Permission) bool, permissionSpec QFileDevice__Permission) bool) {
+	C.QFile_override_virtual_SetPermissions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFile_SetPermissions
+func miqt_exec_callback_QFile_SetPermissions(self *C.QFile, cb C.intptr_t, permissionSpec C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(permissionSpec QFileDevice__Permission) bool, permissionSpec QFileDevice__Permission) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QFileDevice__Permission)(permissionSpec)
+
+	virtualReturn := gofunc((&QFile{h: self}).callVirtualBase_SetPermissions, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QFile) callVirtualBase_Close() {
+
+	C.QFile_virtualbase_Close(unsafe.Pointer(this.h))
+
+}
+func (this *QFile) OnClose(slot func(super func())) {
+	C.QFile_override_virtual_Close(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFile_Close
+func miqt_exec_callback_QFile_Close(self *C.QFile, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QFile{h: self}).callVirtualBase_Close)
+
+}
+
+func (this *QFile) callVirtualBase_IsSequential() bool {
+
+	return (bool)(C.QFile_virtualbase_IsSequential(unsafe.Pointer(this.h)))
+
+}
+func (this *QFile) OnIsSequential(slot func(super func() bool) bool) {
+	C.QFile_override_virtual_IsSequential(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFile_IsSequential
+func miqt_exec_callback_QFile_IsSequential(self *C.QFile, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QFile{h: self}).callVirtualBase_IsSequential)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QFile) callVirtualBase_Pos() int64 {
+
+	return (int64)(C.QFile_virtualbase_Pos(unsafe.Pointer(this.h)))
+
+}
+func (this *QFile) OnPos(slot func(super func() int64) int64) {
+	C.QFile_override_virtual_Pos(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFile_Pos
+func miqt_exec_callback_QFile_Pos(self *C.QFile, cb C.intptr_t) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QFile{h: self}).callVirtualBase_Pos)
+
+	return (C.longlong)(virtualReturn)
+
+}
+
+func (this *QFile) callVirtualBase_Seek(offset int64) bool {
+
+	return (bool)(C.QFile_virtualbase_Seek(unsafe.Pointer(this.h), (C.longlong)(offset)))
+
+}
+func (this *QFile) OnSeek(slot func(super func(offset int64) bool, offset int64) bool) {
+	C.QFile_override_virtual_Seek(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFile_Seek
+func miqt_exec_callback_QFile_Seek(self *C.QFile, cb C.intptr_t, offset C.longlong) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset int64) bool, offset int64) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int64)(offset)
+
+	virtualReturn := gofunc((&QFile{h: self}).callVirtualBase_Seek, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QFile) callVirtualBase_AtEnd() bool {
+
+	return (bool)(C.QFile_virtualbase_AtEnd(unsafe.Pointer(this.h)))
+
+}
+func (this *QFile) OnAtEnd(slot func(super func() bool) bool) {
+	C.QFile_override_virtual_AtEnd(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFile_AtEnd
+func miqt_exec_callback_QFile_AtEnd(self *C.QFile, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QFile{h: self}).callVirtualBase_AtEnd)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QFile) callVirtualBase_ReadData(data string, maxlen int64) int64 {
+	data_Cstring := C.CString(data)
+	defer C.free(unsafe.Pointer(data_Cstring))
+
+	return (int64)(C.QFile_virtualbase_ReadData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(maxlen)))
+
+}
+func (this *QFile) OnReadData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
+	C.QFile_override_virtual_ReadData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFile_ReadData
+func miqt_exec_callback_QFile_ReadData(self *C.QFile, cb C.intptr_t, data *C.char, maxlen C.longlong) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	data_ret := data
+	slotval1 := C.GoString(data_ret)
+
+	slotval2 := (int64)(maxlen)
+
+	virtualReturn := gofunc((&QFile{h: self}).callVirtualBase_ReadData, slotval1, slotval2)
+
+	return (C.longlong)(virtualReturn)
+
+}
+
+func (this *QFile) callVirtualBase_WriteData(data string, lenVal int64) int64 {
+	data_Cstring := C.CString(data)
+	defer C.free(unsafe.Pointer(data_Cstring))
+
+	return (int64)(C.QFile_virtualbase_WriteData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(lenVal)))
+
+}
+func (this *QFile) OnWriteData(slot func(super func(data string, lenVal int64) int64, data string, lenVal int64) int64) {
+	C.QFile_override_virtual_WriteData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFile_WriteData
+func miqt_exec_callback_QFile_WriteData(self *C.QFile, cb C.intptr_t, data *C.const_char, lenVal C.longlong) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data string, lenVal int64) int64, data string, lenVal int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	data_ret := data
+	slotval1 := C.GoString(data_ret)
+
+	slotval2 := (int64)(lenVal)
+
+	virtualReturn := gofunc((&QFile{h: self}).callVirtualBase_WriteData, slotval1, slotval2)
+
+	return (C.longlong)(virtualReturn)
+
+}
+
+func (this *QFile) callVirtualBase_ReadLineData(data string, maxlen int64) int64 {
+	data_Cstring := C.CString(data)
+	defer C.free(unsafe.Pointer(data_Cstring))
+
+	return (int64)(C.QFile_virtualbase_ReadLineData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(maxlen)))
+
+}
+func (this *QFile) OnReadLineData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
+	C.QFile_override_virtual_ReadLineData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFile_ReadLineData
+func miqt_exec_callback_QFile_ReadLineData(self *C.QFile, cb C.intptr_t, data *C.char, maxlen C.longlong) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	data_ret := data
+	slotval1 := C.GoString(data_ret)
+
+	slotval2 := (int64)(maxlen)
+
+	virtualReturn := gofunc((&QFile{h: self}).callVirtualBase_ReadLineData, slotval1, slotval2)
+
+	return (C.longlong)(virtualReturn)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QFile) Delete() {
-	C.QFile_Delete(this.h)
+	C.QFile_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

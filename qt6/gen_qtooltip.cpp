@@ -66,7 +66,11 @@ void QToolTip_ShowText5(QPoint* pos, struct miqt_string text, QWidget* w, QRect*
 	QToolTip::showText(*pos, text_QString, w, *rect, static_cast<int>(msecShowTime));
 }
 
-void QToolTip_Delete(QToolTip* self) {
-	delete self;
+void QToolTip_Delete(QToolTip* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QToolTip*>( self );
+	} else {
+		delete self;
+	}
 }
 

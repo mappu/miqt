@@ -9,53 +9,65 @@
 #include "gen_qcolor.h"
 #include "_cgo_export.h"
 
-QColor* QColor_new() {
-	return new QColor();
+void QColor_new(QColor** outptr_QColor) {
+	QColor* ret = new QColor();
+	*outptr_QColor = ret;
 }
 
-QColor* QColor_new2(int color) {
-	return new QColor(static_cast<Qt::GlobalColor>(color));
+void QColor_new2(int color, QColor** outptr_QColor) {
+	QColor* ret = new QColor(static_cast<Qt::GlobalColor>(color));
+	*outptr_QColor = ret;
 }
 
-QColor* QColor_new3(int r, int g, int b) {
-	return new QColor(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b));
+void QColor_new3(int r, int g, int b, QColor** outptr_QColor) {
+	QColor* ret = new QColor(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b));
+	*outptr_QColor = ret;
 }
 
-QColor* QColor_new4(unsigned int rgb) {
-	return new QColor(static_cast<QRgb>(rgb));
+void QColor_new4(unsigned int rgb, QColor** outptr_QColor) {
+	QColor* ret = new QColor(static_cast<QRgb>(rgb));
+	*outptr_QColor = ret;
 }
 
-QColor* QColor_new5(QRgba64* rgba64) {
-	return new QColor(*rgba64);
+void QColor_new5(QRgba64* rgba64, QColor** outptr_QColor) {
+	QColor* ret = new QColor(*rgba64);
+	*outptr_QColor = ret;
 }
 
-QColor* QColor_new6(struct miqt_string name) {
+void QColor_new6(struct miqt_string name, QColor** outptr_QColor) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	return new QColor(name_QString);
+	QColor* ret = new QColor(name_QString);
+	*outptr_QColor = ret;
 }
 
-QColor* QColor_new7(const char* aname) {
-	return new QColor(aname);
+void QColor_new7(const char* aname, QColor** outptr_QColor) {
+	QColor* ret = new QColor(aname);
+	*outptr_QColor = ret;
 }
 
-QColor* QColor_new8(int spec) {
-	return new QColor(static_cast<QColor::Spec>(spec));
+void QColor_new8(int spec, QColor** outptr_QColor) {
+	QColor* ret = new QColor(static_cast<QColor::Spec>(spec));
+	*outptr_QColor = ret;
 }
 
-QColor* QColor_new9(int spec, uint16_t a1, uint16_t a2, uint16_t a3, uint16_t a4) {
-	return new QColor(static_cast<QColor::Spec>(spec), static_cast<ushort>(a1), static_cast<ushort>(a2), static_cast<ushort>(a3), static_cast<ushort>(a4));
+void QColor_new9(int spec, uint16_t a1, uint16_t a2, uint16_t a3, uint16_t a4, QColor** outptr_QColor) {
+	QColor* ret = new QColor(static_cast<QColor::Spec>(spec), static_cast<ushort>(a1), static_cast<ushort>(a2), static_cast<ushort>(a3), static_cast<ushort>(a4));
+	*outptr_QColor = ret;
 }
 
-QColor* QColor_new10(QColor* param1) {
-	return new QColor(*param1);
+void QColor_new10(QColor* param1, QColor** outptr_QColor) {
+	QColor* ret = new QColor(*param1);
+	*outptr_QColor = ret;
 }
 
-QColor* QColor_new11(int r, int g, int b, int a) {
-	return new QColor(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b), static_cast<int>(a));
+void QColor_new11(int r, int g, int b, int a, QColor** outptr_QColor) {
+	QColor* ret = new QColor(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b), static_cast<int>(a));
+	*outptr_QColor = ret;
 }
 
-QColor* QColor_new12(int spec, uint16_t a1, uint16_t a2, uint16_t a3, uint16_t a4, uint16_t a5) {
-	return new QColor(static_cast<QColor::Spec>(spec), static_cast<ushort>(a1), static_cast<ushort>(a2), static_cast<ushort>(a3), static_cast<ushort>(a4), static_cast<ushort>(a5));
+void QColor_new12(int spec, uint16_t a1, uint16_t a2, uint16_t a3, uint16_t a4, uint16_t a5, QColor** outptr_QColor) {
+	QColor* ret = new QColor(static_cast<QColor::Spec>(spec), static_cast<ushort>(a1), static_cast<ushort>(a2), static_cast<ushort>(a3), static_cast<ushort>(a4), static_cast<ushort>(a5));
+	*outptr_QColor = ret;
 }
 
 QColor* QColor_FromString(QAnyStringView* name) {
@@ -577,7 +589,11 @@ QColor* QColor_Darker1(const QColor* self, int f) {
 	return new QColor(self->darker(static_cast<int>(f)));
 }
 
-void QColor_Delete(QColor* self) {
-	delete self;
+void QColor_Delete(QColor* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QColor*>( self );
+	} else {
+		delete self;
+	}
 }
 

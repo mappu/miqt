@@ -1,6 +1,8 @@
 #include <QAudioRoleControl>
 #include <QList>
+#include <QMediaControl>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -117,7 +119,11 @@ struct miqt_string QAudioRoleControl_TrUtf83(const char* s, const char* c, int n
 	return _ms;
 }
 
-void QAudioRoleControl_Delete(QAudioRoleControl* self) {
-	delete self;
+void QAudioRoleControl_Delete(QAudioRoleControl* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAudioRoleControl*>( self );
+	} else {
+		delete self;
+	}
 }
 

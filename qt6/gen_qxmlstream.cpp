@@ -16,13 +16,15 @@
 #include "gen_qxmlstream.h"
 #include "_cgo_export.h"
 
-QtPrivate__QXmlString* QtPrivate__QXmlString_new(struct miqt_string s) {
+void QtPrivate__QXmlString_new(struct miqt_string s, QtPrivate__QXmlString** outptr_QtPrivate__QXmlString) {
 	QString s_QString = QString::fromUtf8(s.data, s.len);
-	return new QtPrivate::QXmlString(s_QString);
+	QtPrivate::QXmlString* ret = new QtPrivate::QXmlString(s_QString);
+	*outptr_QtPrivate__QXmlString = ret;
 }
 
-QtPrivate__QXmlString* QtPrivate__QXmlString_new2() {
-	return new QtPrivate::QXmlString();
+void QtPrivate__QXmlString_new2(QtPrivate__QXmlString** outptr_QtPrivate__QXmlString) {
+	QtPrivate::QXmlString* ret = new QtPrivate::QXmlString();
+	*outptr_QtPrivate__QXmlString = ret;
 }
 
 void QtPrivate__QXmlString_OperatorAssign(QtPrivate__QXmlString* self, struct miqt_string s) {
@@ -35,29 +37,37 @@ ptrdiff_t QtPrivate__QXmlString_Size(const QtPrivate__QXmlString* self) {
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-void QtPrivate__QXmlString_Delete(QtPrivate__QXmlString* self) {
-	delete self;
+void QtPrivate__QXmlString_Delete(QtPrivate__QXmlString* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QtPrivate::QXmlString*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QXmlStreamAttribute* QXmlStreamAttribute_new() {
-	return new QXmlStreamAttribute();
+void QXmlStreamAttribute_new(QXmlStreamAttribute** outptr_QXmlStreamAttribute) {
+	QXmlStreamAttribute* ret = new QXmlStreamAttribute();
+	*outptr_QXmlStreamAttribute = ret;
 }
 
-QXmlStreamAttribute* QXmlStreamAttribute_new2(struct miqt_string qualifiedName, struct miqt_string value) {
+void QXmlStreamAttribute_new2(struct miqt_string qualifiedName, struct miqt_string value, QXmlStreamAttribute** outptr_QXmlStreamAttribute) {
 	QString qualifiedName_QString = QString::fromUtf8(qualifiedName.data, qualifiedName.len);
 	QString value_QString = QString::fromUtf8(value.data, value.len);
-	return new QXmlStreamAttribute(qualifiedName_QString, value_QString);
+	QXmlStreamAttribute* ret = new QXmlStreamAttribute(qualifiedName_QString, value_QString);
+	*outptr_QXmlStreamAttribute = ret;
 }
 
-QXmlStreamAttribute* QXmlStreamAttribute_new3(struct miqt_string namespaceUri, struct miqt_string name, struct miqt_string value) {
+void QXmlStreamAttribute_new3(struct miqt_string namespaceUri, struct miqt_string name, struct miqt_string value, QXmlStreamAttribute** outptr_QXmlStreamAttribute) {
 	QString namespaceUri_QString = QString::fromUtf8(namespaceUri.data, namespaceUri.len);
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	QString value_QString = QString::fromUtf8(value.data, value.len);
-	return new QXmlStreamAttribute(namespaceUri_QString, name_QString, value_QString);
+	QXmlStreamAttribute* ret = new QXmlStreamAttribute(namespaceUri_QString, name_QString, value_QString);
+	*outptr_QXmlStreamAttribute = ret;
 }
 
-QXmlStreamAttribute* QXmlStreamAttribute_new4(QXmlStreamAttribute* param1) {
-	return new QXmlStreamAttribute(*param1);
+void QXmlStreamAttribute_new4(QXmlStreamAttribute* param1, QXmlStreamAttribute** outptr_QXmlStreamAttribute) {
+	QXmlStreamAttribute* ret = new QXmlStreamAttribute(*param1);
+	*outptr_QXmlStreamAttribute = ret;
 }
 
 bool QXmlStreamAttribute_IsDefault(const QXmlStreamAttribute* self) {
@@ -76,18 +86,24 @@ void QXmlStreamAttribute_OperatorAssign(QXmlStreamAttribute* self, QXmlStreamAtt
 	self->operator=(*param1);
 }
 
-void QXmlStreamAttribute_Delete(QXmlStreamAttribute* self) {
-	delete self;
+void QXmlStreamAttribute_Delete(QXmlStreamAttribute* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QXmlStreamAttribute*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QXmlStreamNamespaceDeclaration* QXmlStreamNamespaceDeclaration_new() {
-	return new QXmlStreamNamespaceDeclaration();
+void QXmlStreamNamespaceDeclaration_new(QXmlStreamNamespaceDeclaration** outptr_QXmlStreamNamespaceDeclaration) {
+	QXmlStreamNamespaceDeclaration* ret = new QXmlStreamNamespaceDeclaration();
+	*outptr_QXmlStreamNamespaceDeclaration = ret;
 }
 
-QXmlStreamNamespaceDeclaration* QXmlStreamNamespaceDeclaration_new2(struct miqt_string prefix, struct miqt_string namespaceUri) {
+void QXmlStreamNamespaceDeclaration_new2(struct miqt_string prefix, struct miqt_string namespaceUri, QXmlStreamNamespaceDeclaration** outptr_QXmlStreamNamespaceDeclaration) {
 	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 	QString namespaceUri_QString = QString::fromUtf8(namespaceUri.data, namespaceUri.len);
-	return new QXmlStreamNamespaceDeclaration(prefix_QString, namespaceUri_QString);
+	QXmlStreamNamespaceDeclaration* ret = new QXmlStreamNamespaceDeclaration(prefix_QString, namespaceUri_QString);
+	*outptr_QXmlStreamNamespaceDeclaration = ret;
 }
 
 bool QXmlStreamNamespaceDeclaration_OperatorEqual(const QXmlStreamNamespaceDeclaration* self, QXmlStreamNamespaceDeclaration* other) {
@@ -98,12 +114,17 @@ bool QXmlStreamNamespaceDeclaration_OperatorNotEqual(const QXmlStreamNamespaceDe
 	return self->operator!=(*other);
 }
 
-void QXmlStreamNamespaceDeclaration_Delete(QXmlStreamNamespaceDeclaration* self) {
-	delete self;
+void QXmlStreamNamespaceDeclaration_Delete(QXmlStreamNamespaceDeclaration* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QXmlStreamNamespaceDeclaration*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QXmlStreamNotationDeclaration* QXmlStreamNotationDeclaration_new() {
-	return new QXmlStreamNotationDeclaration();
+void QXmlStreamNotationDeclaration_new(QXmlStreamNotationDeclaration** outptr_QXmlStreamNotationDeclaration) {
+	QXmlStreamNotationDeclaration* ret = new QXmlStreamNotationDeclaration();
+	*outptr_QXmlStreamNotationDeclaration = ret;
 }
 
 bool QXmlStreamNotationDeclaration_OperatorEqual(const QXmlStreamNotationDeclaration* self, QXmlStreamNotationDeclaration* other) {
@@ -114,12 +135,17 @@ bool QXmlStreamNotationDeclaration_OperatorNotEqual(const QXmlStreamNotationDecl
 	return self->operator!=(*other);
 }
 
-void QXmlStreamNotationDeclaration_Delete(QXmlStreamNotationDeclaration* self) {
-	delete self;
+void QXmlStreamNotationDeclaration_Delete(QXmlStreamNotationDeclaration* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QXmlStreamNotationDeclaration*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QXmlStreamEntityDeclaration* QXmlStreamEntityDeclaration_new() {
-	return new QXmlStreamEntityDeclaration();
+void QXmlStreamEntityDeclaration_new(QXmlStreamEntityDeclaration** outptr_QXmlStreamEntityDeclaration) {
+	QXmlStreamEntityDeclaration* ret = new QXmlStreamEntityDeclaration();
+	*outptr_QXmlStreamEntityDeclaration = ret;
 }
 
 bool QXmlStreamEntityDeclaration_OperatorEqual(const QXmlStreamEntityDeclaration* self, QXmlStreamEntityDeclaration* other) {
@@ -130,8 +156,12 @@ bool QXmlStreamEntityDeclaration_OperatorNotEqual(const QXmlStreamEntityDeclarat
 	return self->operator!=(*other);
 }
 
-void QXmlStreamEntityDeclaration_Delete(QXmlStreamEntityDeclaration* self) {
-	delete self;
+void QXmlStreamEntityDeclaration_Delete(QXmlStreamEntityDeclaration* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QXmlStreamEntityDeclaration*>( self );
+	} else {
+		delete self;
+	}
 }
 
 struct miqt_string QXmlStreamEntityResolver_ResolveEntity(QXmlStreamEntityResolver* self, struct miqt_string publicId, struct miqt_string systemId) {
@@ -163,30 +193,39 @@ void QXmlStreamEntityResolver_OperatorAssign(QXmlStreamEntityResolver* self, QXm
 	self->operator=(*param1);
 }
 
-void QXmlStreamEntityResolver_Delete(QXmlStreamEntityResolver* self) {
-	delete self;
+void QXmlStreamEntityResolver_Delete(QXmlStreamEntityResolver* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QXmlStreamEntityResolver*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QXmlStreamReader* QXmlStreamReader_new() {
-	return new QXmlStreamReader();
+void QXmlStreamReader_new(QXmlStreamReader** outptr_QXmlStreamReader) {
+	QXmlStreamReader* ret = new QXmlStreamReader();
+	*outptr_QXmlStreamReader = ret;
 }
 
-QXmlStreamReader* QXmlStreamReader_new2(QIODevice* device) {
-	return new QXmlStreamReader(device);
+void QXmlStreamReader_new2(QIODevice* device, QXmlStreamReader** outptr_QXmlStreamReader) {
+	QXmlStreamReader* ret = new QXmlStreamReader(device);
+	*outptr_QXmlStreamReader = ret;
 }
 
-QXmlStreamReader* QXmlStreamReader_new3(struct miqt_string data) {
+void QXmlStreamReader_new3(struct miqt_string data, QXmlStreamReader** outptr_QXmlStreamReader) {
 	QByteArray data_QByteArray(data.data, data.len);
-	return new QXmlStreamReader(data_QByteArray);
+	QXmlStreamReader* ret = new QXmlStreamReader(data_QByteArray);
+	*outptr_QXmlStreamReader = ret;
 }
 
-QXmlStreamReader* QXmlStreamReader_new4(struct miqt_string data) {
+void QXmlStreamReader_new4(struct miqt_string data, QXmlStreamReader** outptr_QXmlStreamReader) {
 	QString data_QString = QString::fromUtf8(data.data, data.len);
-	return new QXmlStreamReader(data_QString);
+	QXmlStreamReader* ret = new QXmlStreamReader(data_QString);
+	*outptr_QXmlStreamReader = ret;
 }
 
-QXmlStreamReader* QXmlStreamReader_new5(const char* data) {
-	return new QXmlStreamReader(data);
+void QXmlStreamReader_new5(const char* data, QXmlStreamReader** outptr_QXmlStreamReader) {
+	QXmlStreamReader* ret = new QXmlStreamReader(data);
+	*outptr_QXmlStreamReader = ret;
 }
 
 void QXmlStreamReader_SetDevice(QXmlStreamReader* self, QIODevice* device) {
@@ -439,16 +478,22 @@ void QXmlStreamReader_RaiseError1(QXmlStreamReader* self, struct miqt_string mes
 	self->raiseError(message_QString);
 }
 
-void QXmlStreamReader_Delete(QXmlStreamReader* self) {
-	delete self;
+void QXmlStreamReader_Delete(QXmlStreamReader* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QXmlStreamReader*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QXmlStreamWriter* QXmlStreamWriter_new() {
-	return new QXmlStreamWriter();
+void QXmlStreamWriter_new(QXmlStreamWriter** outptr_QXmlStreamWriter) {
+	QXmlStreamWriter* ret = new QXmlStreamWriter();
+	*outptr_QXmlStreamWriter = ret;
 }
 
-QXmlStreamWriter* QXmlStreamWriter_new2(QIODevice* device) {
-	return new QXmlStreamWriter(device);
+void QXmlStreamWriter_new2(QIODevice* device, QXmlStreamWriter** outptr_QXmlStreamWriter) {
+	QXmlStreamWriter* ret = new QXmlStreamWriter(device);
+	*outptr_QXmlStreamWriter = ret;
 }
 
 void QXmlStreamWriter_SetDevice(QXmlStreamWriter* self, QIODevice* device) {
@@ -609,7 +654,11 @@ void QXmlStreamWriter_WriteProcessingInstruction2(QXmlStreamWriter* self, struct
 	self->writeProcessingInstruction(target_QString, data_QString);
 }
 
-void QXmlStreamWriter_Delete(QXmlStreamWriter* self) {
-	delete self;
+void QXmlStreamWriter_Delete(QXmlStreamWriter* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QXmlStreamWriter*>( self );
+	} else {
+		delete self;
+	}
 }
 

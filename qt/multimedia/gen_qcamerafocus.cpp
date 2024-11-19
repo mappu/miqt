@@ -2,6 +2,7 @@
 #include <QCameraFocusZone>
 #include <QList>
 #include <QMetaObject>
+#include <QObject>
 #include <QPointF>
 #include <QRectF>
 #include <QString>
@@ -11,20 +12,24 @@
 #include "gen_qcamerafocus.h"
 #include "_cgo_export.h"
 
-QCameraFocusZone* QCameraFocusZone_new() {
-	return new QCameraFocusZone();
+void QCameraFocusZone_new(QCameraFocusZone** outptr_QCameraFocusZone) {
+	QCameraFocusZone* ret = new QCameraFocusZone();
+	*outptr_QCameraFocusZone = ret;
 }
 
-QCameraFocusZone* QCameraFocusZone_new2(QRectF* area) {
-	return new QCameraFocusZone(*area);
+void QCameraFocusZone_new2(QRectF* area, QCameraFocusZone** outptr_QCameraFocusZone) {
+	QCameraFocusZone* ret = new QCameraFocusZone(*area);
+	*outptr_QCameraFocusZone = ret;
 }
 
-QCameraFocusZone* QCameraFocusZone_new3(QCameraFocusZone* other) {
-	return new QCameraFocusZone(*other);
+void QCameraFocusZone_new3(QCameraFocusZone* other, QCameraFocusZone** outptr_QCameraFocusZone) {
+	QCameraFocusZone* ret = new QCameraFocusZone(*other);
+	*outptr_QCameraFocusZone = ret;
 }
 
-QCameraFocusZone* QCameraFocusZone_new4(QRectF* area, int status) {
-	return new QCameraFocusZone(*area, static_cast<QCameraFocusZone::FocusZoneStatus>(status));
+void QCameraFocusZone_new4(QRectF* area, int status, QCameraFocusZone** outptr_QCameraFocusZone) {
+	QCameraFocusZone* ret = new QCameraFocusZone(*area, static_cast<QCameraFocusZone::FocusZoneStatus>(status));
+	*outptr_QCameraFocusZone = ret;
 }
 
 void QCameraFocusZone_OperatorAssign(QCameraFocusZone* self, QCameraFocusZone* other) {
@@ -56,8 +61,12 @@ void QCameraFocusZone_SetStatus(QCameraFocusZone* self, int status) {
 	self->setStatus(static_cast<QCameraFocusZone::FocusZoneStatus>(status));
 }
 
-void QCameraFocusZone_Delete(QCameraFocusZone* self) {
-	delete self;
+void QCameraFocusZone_Delete(QCameraFocusZone* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QCameraFocusZone*>( self );
+	} else {
+		delete self;
+	}
 }
 
 QMetaObject* QCameraFocus_MetaObject(const QCameraFocus* self) {

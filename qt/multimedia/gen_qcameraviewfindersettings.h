@@ -22,8 +22,8 @@ typedef struct QCameraViewfinderSettings QCameraViewfinderSettings;
 typedef struct QSize QSize;
 #endif
 
-QCameraViewfinderSettings* QCameraViewfinderSettings_new();
-QCameraViewfinderSettings* QCameraViewfinderSettings_new2(QCameraViewfinderSettings* other);
+void QCameraViewfinderSettings_new(QCameraViewfinderSettings** outptr_QCameraViewfinderSettings);
+void QCameraViewfinderSettings_new2(QCameraViewfinderSettings* other, QCameraViewfinderSettings** outptr_QCameraViewfinderSettings);
 void QCameraViewfinderSettings_OperatorAssign(QCameraViewfinderSettings* self, QCameraViewfinderSettings* other);
 void QCameraViewfinderSettings_Swap(QCameraViewfinderSettings* self, QCameraViewfinderSettings* other);
 bool QCameraViewfinderSettings_IsNull(const QCameraViewfinderSettings* self);
@@ -39,7 +39,7 @@ void QCameraViewfinderSettings_SetPixelFormat(QCameraViewfinderSettings* self, i
 QSize* QCameraViewfinderSettings_PixelAspectRatio(const QCameraViewfinderSettings* self);
 void QCameraViewfinderSettings_SetPixelAspectRatio(QCameraViewfinderSettings* self, QSize* ratio);
 void QCameraViewfinderSettings_SetPixelAspectRatio2(QCameraViewfinderSettings* self, int horizontal, int vertical);
-void QCameraViewfinderSettings_Delete(QCameraViewfinderSettings* self);
+void QCameraViewfinderSettings_Delete(QCameraViewfinderSettings* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

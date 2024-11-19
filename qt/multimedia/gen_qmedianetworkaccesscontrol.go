@@ -17,7 +17,8 @@ import (
 )
 
 type QMediaNetworkAccessControl struct {
-	h *C.QMediaNetworkAccessControl
+	h          *C.QMediaNetworkAccessControl
+	isSubclass bool
 	*QMediaControl
 }
 
@@ -35,15 +36,23 @@ func (this *QMediaNetworkAccessControl) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQMediaNetworkAccessControl(h *C.QMediaNetworkAccessControl) *QMediaNetworkAccessControl {
+// newQMediaNetworkAccessControl constructs the type using only CGO pointers.
+func newQMediaNetworkAccessControl(h *C.QMediaNetworkAccessControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QMediaNetworkAccessControl {
 	if h == nil {
 		return nil
 	}
-	return &QMediaNetworkAccessControl{h: h, QMediaControl: UnsafeNewQMediaControl(unsafe.Pointer(h))}
+	return &QMediaNetworkAccessControl{h: h,
+		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
 }
 
-func UnsafeNewQMediaNetworkAccessControl(h unsafe.Pointer) *QMediaNetworkAccessControl {
-	return newQMediaNetworkAccessControl((*C.QMediaNetworkAccessControl)(h))
+// UnsafeNewQMediaNetworkAccessControl constructs the type using only unsafe pointers.
+func UnsafeNewQMediaNetworkAccessControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QMediaNetworkAccessControl {
+	if h == nil {
+		return nil
+	}
+
+	return &QMediaNetworkAccessControl{h: (*C.QMediaNetworkAccessControl)(h),
+		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
 }
 
 func (this *QMediaNetworkAccessControl) MetaObject() *qt.QMetaObject {
@@ -157,7 +166,7 @@ func QMediaNetworkAccessControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QMediaNetworkAccessControl) Delete() {
-	C.QMediaNetworkAccessControl_Delete(this.h)
+	C.QMediaNetworkAccessControl_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

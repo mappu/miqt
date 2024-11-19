@@ -32,11 +32,11 @@ typedef struct QRect QRect;
 typedef struct QSize QSize;
 #endif
 
-QImageReader* QImageReader_new();
-QImageReader* QImageReader_new2(QIODevice* device);
-QImageReader* QImageReader_new3(struct miqt_string fileName);
-QImageReader* QImageReader_new4(QIODevice* device, struct miqt_string format);
-QImageReader* QImageReader_new5(struct miqt_string fileName, struct miqt_string format);
+void QImageReader_new(QImageReader** outptr_QImageReader);
+void QImageReader_new2(QIODevice* device, QImageReader** outptr_QImageReader);
+void QImageReader_new3(struct miqt_string fileName, QImageReader** outptr_QImageReader);
+void QImageReader_new4(QIODevice* device, struct miqt_string format, QImageReader** outptr_QImageReader);
+void QImageReader_new5(struct miqt_string fileName, struct miqt_string format, QImageReader** outptr_QImageReader);
 struct miqt_string QImageReader_Tr(const char* sourceText);
 struct miqt_string QImageReader_TrUtf8(const char* sourceText);
 void QImageReader_SetFormat(QImageReader* self, struct miqt_string format);
@@ -93,7 +93,7 @@ struct miqt_string QImageReader_Tr2(const char* sourceText, const char* disambig
 struct miqt_string QImageReader_Tr3(const char* sourceText, const char* disambiguation, int n);
 struct miqt_string QImageReader_TrUtf82(const char* sourceText, const char* disambiguation);
 struct miqt_string QImageReader_TrUtf83(const char* sourceText, const char* disambiguation, int n);
-void QImageReader_Delete(QImageReader* self);
+void QImageReader_Delete(QImageReader* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

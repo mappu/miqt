@@ -14,7 +14,8 @@ import (
 )
 
 type QMediaTimeRange struct {
-	h *C.QMediaTimeRange
+	h          *C.QMediaTimeRange
+	isSubclass bool
 }
 
 func (this *QMediaTimeRange) cPointer() *C.QMediaTimeRange {
@@ -31,6 +32,7 @@ func (this *QMediaTimeRange) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQMediaTimeRange constructs the type using only CGO pointers.
 func newQMediaTimeRange(h *C.QMediaTimeRange) *QMediaTimeRange {
 	if h == nil {
 		return nil
@@ -38,32 +40,53 @@ func newQMediaTimeRange(h *C.QMediaTimeRange) *QMediaTimeRange {
 	return &QMediaTimeRange{h: h}
 }
 
+// UnsafeNewQMediaTimeRange constructs the type using only unsafe pointers.
 func UnsafeNewQMediaTimeRange(h unsafe.Pointer) *QMediaTimeRange {
-	return newQMediaTimeRange((*C.QMediaTimeRange)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMediaTimeRange{h: (*C.QMediaTimeRange)(h)}
 }
 
 // NewQMediaTimeRange constructs a new QMediaTimeRange object.
 func NewQMediaTimeRange() *QMediaTimeRange {
-	ret := C.QMediaTimeRange_new()
-	return newQMediaTimeRange(ret)
+	var outptr_QMediaTimeRange *C.QMediaTimeRange = nil
+
+	C.QMediaTimeRange_new(&outptr_QMediaTimeRange)
+	ret := newQMediaTimeRange(outptr_QMediaTimeRange)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMediaTimeRange2 constructs a new QMediaTimeRange object.
 func NewQMediaTimeRange2(start int64, end int64) *QMediaTimeRange {
-	ret := C.QMediaTimeRange_new2((C.longlong)(start), (C.longlong)(end))
-	return newQMediaTimeRange(ret)
+	var outptr_QMediaTimeRange *C.QMediaTimeRange = nil
+
+	C.QMediaTimeRange_new2((C.longlong)(start), (C.longlong)(end), &outptr_QMediaTimeRange)
+	ret := newQMediaTimeRange(outptr_QMediaTimeRange)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMediaTimeRange3 constructs a new QMediaTimeRange object.
 func NewQMediaTimeRange3(param1 *QMediaTimeRange__Interval) *QMediaTimeRange {
-	ret := C.QMediaTimeRange_new3(param1.cPointer())
-	return newQMediaTimeRange(ret)
+	var outptr_QMediaTimeRange *C.QMediaTimeRange = nil
+
+	C.QMediaTimeRange_new3(param1.cPointer(), &outptr_QMediaTimeRange)
+	ret := newQMediaTimeRange(outptr_QMediaTimeRange)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMediaTimeRange4 constructs a new QMediaTimeRange object.
 func NewQMediaTimeRange4(rangeVal *QMediaTimeRange) *QMediaTimeRange {
-	ret := C.QMediaTimeRange_new4(rangeVal.cPointer())
-	return newQMediaTimeRange(ret)
+	var outptr_QMediaTimeRange *C.QMediaTimeRange = nil
+
+	C.QMediaTimeRange_new4(rangeVal.cPointer(), &outptr_QMediaTimeRange)
+	ret := newQMediaTimeRange(outptr_QMediaTimeRange)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QMediaTimeRange) OperatorAssign(param1 *QMediaTimeRange) {
@@ -161,7 +184,7 @@ func (this *QMediaTimeRange) Clear() {
 
 // Delete this object from C++ memory.
 func (this *QMediaTimeRange) Delete() {
-	C.QMediaTimeRange_Delete(this.h)
+	C.QMediaTimeRange_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -174,7 +197,8 @@ func (this *QMediaTimeRange) GoGC() {
 }
 
 type QMediaTimeRange__Interval struct {
-	h *C.QMediaTimeRange__Interval
+	h          *C.QMediaTimeRange__Interval
+	isSubclass bool
 }
 
 func (this *QMediaTimeRange__Interval) cPointer() *C.QMediaTimeRange__Interval {
@@ -191,6 +215,7 @@ func (this *QMediaTimeRange__Interval) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQMediaTimeRange__Interval constructs the type using only CGO pointers.
 func newQMediaTimeRange__Interval(h *C.QMediaTimeRange__Interval) *QMediaTimeRange__Interval {
 	if h == nil {
 		return nil
@@ -198,26 +223,43 @@ func newQMediaTimeRange__Interval(h *C.QMediaTimeRange__Interval) *QMediaTimeRan
 	return &QMediaTimeRange__Interval{h: h}
 }
 
+// UnsafeNewQMediaTimeRange__Interval constructs the type using only unsafe pointers.
 func UnsafeNewQMediaTimeRange__Interval(h unsafe.Pointer) *QMediaTimeRange__Interval {
-	return newQMediaTimeRange__Interval((*C.QMediaTimeRange__Interval)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMediaTimeRange__Interval{h: (*C.QMediaTimeRange__Interval)(h)}
 }
 
 // NewQMediaTimeRange__Interval constructs a new QMediaTimeRange::Interval object.
 func NewQMediaTimeRange__Interval() *QMediaTimeRange__Interval {
-	ret := C.QMediaTimeRange__Interval_new()
-	return newQMediaTimeRange__Interval(ret)
+	var outptr_QMediaTimeRange__Interval *C.QMediaTimeRange__Interval = nil
+
+	C.QMediaTimeRange__Interval_new(&outptr_QMediaTimeRange__Interval)
+	ret := newQMediaTimeRange__Interval(outptr_QMediaTimeRange__Interval)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMediaTimeRange__Interval2 constructs a new QMediaTimeRange::Interval object.
 func NewQMediaTimeRange__Interval2(start int64, end int64) *QMediaTimeRange__Interval {
-	ret := C.QMediaTimeRange__Interval_new2((C.longlong)(start), (C.longlong)(end))
-	return newQMediaTimeRange__Interval(ret)
+	var outptr_QMediaTimeRange__Interval *C.QMediaTimeRange__Interval = nil
+
+	C.QMediaTimeRange__Interval_new2((C.longlong)(start), (C.longlong)(end), &outptr_QMediaTimeRange__Interval)
+	ret := newQMediaTimeRange__Interval(outptr_QMediaTimeRange__Interval)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMediaTimeRange__Interval3 constructs a new QMediaTimeRange::Interval object.
 func NewQMediaTimeRange__Interval3(param1 *QMediaTimeRange__Interval) *QMediaTimeRange__Interval {
-	ret := C.QMediaTimeRange__Interval_new3(param1.cPointer())
-	return newQMediaTimeRange__Interval(ret)
+	var outptr_QMediaTimeRange__Interval *C.QMediaTimeRange__Interval = nil
+
+	C.QMediaTimeRange__Interval_new3(param1.cPointer(), &outptr_QMediaTimeRange__Interval)
+	ret := newQMediaTimeRange__Interval(outptr_QMediaTimeRange__Interval)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QMediaTimeRange__Interval) Start() int64 {
@@ -252,7 +294,7 @@ func (this *QMediaTimeRange__Interval) Translated(offset int64) *QMediaTimeRange
 
 // Delete this object from C++ memory.
 func (this *QMediaTimeRange__Interval) Delete() {
-	C.QMediaTimeRange__Interval_Delete(this.h)
+	C.QMediaTimeRange__Interval_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

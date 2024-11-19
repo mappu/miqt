@@ -14,7 +14,8 @@ import (
 )
 
 type QStringView struct {
-	h *C.QStringView
+	h          *C.QStringView
+	isSubclass bool
 }
 
 func (this *QStringView) cPointer() *C.QStringView {
@@ -31,6 +32,7 @@ func (this *QStringView) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQStringView constructs the type using only CGO pointers.
 func newQStringView(h *C.QStringView) *QStringView {
 	if h == nil {
 		return nil
@@ -38,14 +40,23 @@ func newQStringView(h *C.QStringView) *QStringView {
 	return &QStringView{h: h}
 }
 
+// UnsafeNewQStringView constructs the type using only unsafe pointers.
 func UnsafeNewQStringView(h unsafe.Pointer) *QStringView {
-	return newQStringView((*C.QStringView)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QStringView{h: (*C.QStringView)(h)}
 }
 
 // NewQStringView constructs a new QStringView object.
 func NewQStringView() *QStringView {
-	ret := C.QStringView_new()
-	return newQStringView(ret)
+	var outptr_QStringView *C.QStringView = nil
+
+	C.QStringView_new(&outptr_QStringView)
+	ret := newQStringView(outptr_QStringView)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QStringView) ToString() string {
@@ -362,7 +373,7 @@ func (this *QStringView) ToDouble1(ok *bool) float64 {
 
 // Delete this object from C++ memory.
 func (this *QStringView) Delete() {
-	C.QStringView_Delete(this.h)
+	C.QStringView_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

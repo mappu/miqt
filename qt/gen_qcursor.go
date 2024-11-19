@@ -14,7 +14,8 @@ import (
 )
 
 type QCursor struct {
-	h *C.QCursor
+	h          *C.QCursor
+	isSubclass bool
 }
 
 func (this *QCursor) cPointer() *C.QCursor {
@@ -31,6 +32,7 @@ func (this *QCursor) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCursor constructs the type using only CGO pointers.
 func newQCursor(h *C.QCursor) *QCursor {
 	if h == nil {
 		return nil
@@ -38,62 +40,103 @@ func newQCursor(h *C.QCursor) *QCursor {
 	return &QCursor{h: h}
 }
 
+// UnsafeNewQCursor constructs the type using only unsafe pointers.
 func UnsafeNewQCursor(h unsafe.Pointer) *QCursor {
-	return newQCursor((*C.QCursor)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCursor{h: (*C.QCursor)(h)}
 }
 
 // NewQCursor constructs a new QCursor object.
 func NewQCursor() *QCursor {
-	ret := C.QCursor_new()
-	return newQCursor(ret)
+	var outptr_QCursor *C.QCursor = nil
+
+	C.QCursor_new(&outptr_QCursor)
+	ret := newQCursor(outptr_QCursor)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCursor2 constructs a new QCursor object.
 func NewQCursor2(shape CursorShape) *QCursor {
-	ret := C.QCursor_new2((C.int)(shape))
-	return newQCursor(ret)
+	var outptr_QCursor *C.QCursor = nil
+
+	C.QCursor_new2((C.int)(shape), &outptr_QCursor)
+	ret := newQCursor(outptr_QCursor)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCursor3 constructs a new QCursor object.
 func NewQCursor3(bitmap *QBitmap, mask *QBitmap) *QCursor {
-	ret := C.QCursor_new3(bitmap.cPointer(), mask.cPointer())
-	return newQCursor(ret)
+	var outptr_QCursor *C.QCursor = nil
+
+	C.QCursor_new3(bitmap.cPointer(), mask.cPointer(), &outptr_QCursor)
+	ret := newQCursor(outptr_QCursor)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCursor4 constructs a new QCursor object.
 func NewQCursor4(pixmap *QPixmap) *QCursor {
-	ret := C.QCursor_new4(pixmap.cPointer())
-	return newQCursor(ret)
+	var outptr_QCursor *C.QCursor = nil
+
+	C.QCursor_new4(pixmap.cPointer(), &outptr_QCursor)
+	ret := newQCursor(outptr_QCursor)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCursor5 constructs a new QCursor object.
 func NewQCursor5(cursor *QCursor) *QCursor {
-	ret := C.QCursor_new5(cursor.cPointer())
-	return newQCursor(ret)
+	var outptr_QCursor *C.QCursor = nil
+
+	C.QCursor_new5(cursor.cPointer(), &outptr_QCursor)
+	ret := newQCursor(outptr_QCursor)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCursor6 constructs a new QCursor object.
 func NewQCursor6(bitmap *QBitmap, mask *QBitmap, hotX int) *QCursor {
-	ret := C.QCursor_new6(bitmap.cPointer(), mask.cPointer(), (C.int)(hotX))
-	return newQCursor(ret)
+	var outptr_QCursor *C.QCursor = nil
+
+	C.QCursor_new6(bitmap.cPointer(), mask.cPointer(), (C.int)(hotX), &outptr_QCursor)
+	ret := newQCursor(outptr_QCursor)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCursor7 constructs a new QCursor object.
 func NewQCursor7(bitmap *QBitmap, mask *QBitmap, hotX int, hotY int) *QCursor {
-	ret := C.QCursor_new7(bitmap.cPointer(), mask.cPointer(), (C.int)(hotX), (C.int)(hotY))
-	return newQCursor(ret)
+	var outptr_QCursor *C.QCursor = nil
+
+	C.QCursor_new7(bitmap.cPointer(), mask.cPointer(), (C.int)(hotX), (C.int)(hotY), &outptr_QCursor)
+	ret := newQCursor(outptr_QCursor)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCursor8 constructs a new QCursor object.
 func NewQCursor8(pixmap *QPixmap, hotX int) *QCursor {
-	ret := C.QCursor_new8(pixmap.cPointer(), (C.int)(hotX))
-	return newQCursor(ret)
+	var outptr_QCursor *C.QCursor = nil
+
+	C.QCursor_new8(pixmap.cPointer(), (C.int)(hotX), &outptr_QCursor)
+	ret := newQCursor(outptr_QCursor)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCursor9 constructs a new QCursor object.
 func NewQCursor9(pixmap *QPixmap, hotX int, hotY int) *QCursor {
-	ret := C.QCursor_new9(pixmap.cPointer(), (C.int)(hotX), (C.int)(hotY))
-	return newQCursor(ret)
+	var outptr_QCursor *C.QCursor = nil
+
+	C.QCursor_new9(pixmap.cPointer(), (C.int)(hotX), (C.int)(hotY), &outptr_QCursor)
+	ret := newQCursor(outptr_QCursor)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QCursor) OperatorAssign(cursor *QCursor) {
@@ -113,30 +156,30 @@ func (this *QCursor) SetShape(newShape CursorShape) {
 }
 
 func (this *QCursor) Bitmap() *QBitmap {
-	return UnsafeNewQBitmap(unsafe.Pointer(C.QCursor_Bitmap(this.h)))
+	return UnsafeNewQBitmap(unsafe.Pointer(C.QCursor_Bitmap(this.h)), nil, nil)
 }
 
 func (this *QCursor) Mask() *QBitmap {
-	return UnsafeNewQBitmap(unsafe.Pointer(C.QCursor_Mask(this.h)))
+	return UnsafeNewQBitmap(unsafe.Pointer(C.QCursor_Mask(this.h)), nil, nil)
 }
 
 func (this *QCursor) BitmapWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QBitmap {
 	_ret := C.QCursor_BitmapWithQtReturnByValueConstant(this.h, (C.int)(param1))
-	_goptr := newQBitmap(_ret)
+	_goptr := newQBitmap(_ret, nil, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCursor) MaskWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QBitmap {
 	_ret := C.QCursor_MaskWithQtReturnByValueConstant(this.h, (C.int)(param1))
-	_goptr := newQBitmap(_ret)
+	_goptr := newQBitmap(_ret, nil, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCursor) Pixmap() *QPixmap {
 	_ret := C.QCursor_Pixmap(this.h)
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -180,7 +223,7 @@ func QCursor_SetPos3(screen *QScreen, p *QPoint) {
 
 // Delete this object from C++ memory.
 func (this *QCursor) Delete() {
-	C.QCursor_Delete(this.h)
+	C.QCursor_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

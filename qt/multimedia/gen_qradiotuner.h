@@ -15,19 +15,23 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QMediaObject;
+class QMediaService;
 class QMetaObject;
 class QObject;
 class QRadioData;
 class QRadioTuner;
 #else
+typedef struct QMediaObject QMediaObject;
+typedef struct QMediaService QMediaService;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QRadioData QRadioData;
 typedef struct QRadioTuner QRadioTuner;
 #endif
 
-QRadioTuner* QRadioTuner_new();
-QRadioTuner* QRadioTuner_new2(QObject* parent);
+void QRadioTuner_new(QRadioTuner** outptr_QRadioTuner, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject);
+void QRadioTuner_new2(QObject* parent, QRadioTuner** outptr_QRadioTuner, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject);
 QMetaObject* QRadioTuner_MetaObject(const QRadioTuner* self);
 void* QRadioTuner_Metacast(QRadioTuner* self, const char* param1);
 struct miqt_string QRadioTuner_Tr(const char* s);
@@ -87,7 +91,17 @@ struct miqt_string QRadioTuner_Tr3(const char* s, const char* c, int n);
 struct miqt_string QRadioTuner_TrUtf82(const char* s, const char* c);
 struct miqt_string QRadioTuner_TrUtf83(const char* s, const char* c, int n);
 void QRadioTuner_SearchAllStations1(QRadioTuner* self, int searchMode);
-void QRadioTuner_Delete(QRadioTuner* self);
+void QRadioTuner_override_virtual_Availability(void* self, intptr_t slot);
+int QRadioTuner_virtualbase_Availability(const void* self);
+void QRadioTuner_override_virtual_IsAvailable(void* self, intptr_t slot);
+bool QRadioTuner_virtualbase_IsAvailable(const void* self);
+void QRadioTuner_override_virtual_Service(void* self, intptr_t slot);
+QMediaService* QRadioTuner_virtualbase_Service(const void* self);
+void QRadioTuner_override_virtual_Bind(void* self, intptr_t slot);
+bool QRadioTuner_virtualbase_Bind(void* self, QObject* param1);
+void QRadioTuner_override_virtual_Unbind(void* self, intptr_t slot);
+void QRadioTuner_virtualbase_Unbind(void* self, QObject* param1);
+void QRadioTuner_Delete(QRadioTuner* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

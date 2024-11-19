@@ -1,7 +1,9 @@
 #include <QAbstractState>
 #include <QAbstractTransition>
+#include <QEvent>
 #include <QHistoryState>
 #include <QMetaObject>
+#include <QObject>
 #include <QState>
 #include <QString>
 #include <QByteArray>
@@ -10,20 +12,115 @@
 #include "gen_qhistorystate.h"
 #include "_cgo_export.h"
 
-QHistoryState* QHistoryState_new() {
-	return new QHistoryState();
+class MiqtVirtualQHistoryState : public virtual QHistoryState {
+public:
+
+	MiqtVirtualQHistoryState(): QHistoryState() {};
+	MiqtVirtualQHistoryState(QHistoryState::HistoryType typeVal): QHistoryState(typeVal) {};
+	MiqtVirtualQHistoryState(QState* parent): QHistoryState(parent) {};
+	MiqtVirtualQHistoryState(QHistoryState::HistoryType typeVal, QState* parent): QHistoryState(typeVal, parent) {};
+
+	virtual ~MiqtVirtualQHistoryState() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__OnEntry = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void onEntry(QEvent* event) override {
+		if (handle__OnEntry == 0) {
+			QHistoryState::onEntry(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QHistoryState_OnEntry(this, handle__OnEntry, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_OnEntry(QEvent* event) {
+
+		QHistoryState::onEntry(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__OnExit = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void onExit(QEvent* event) override {
+		if (handle__OnExit == 0) {
+			QHistoryState::onExit(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QHistoryState_OnExit(this, handle__OnExit, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_OnExit(QEvent* event) {
+
+		QHistoryState::onExit(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* e) override {
+		if (handle__Event == 0) {
+			return QHistoryState::event(e);
+		}
+		
+		QEvent* sigval1 = e;
+
+		bool callback_return_value = miqt_exec_callback_QHistoryState_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* e) {
+
+		return QHistoryState::event(e);
+
+	}
+
+};
+
+void QHistoryState_new(QHistoryState** outptr_QHistoryState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject) {
+	MiqtVirtualQHistoryState* ret = new MiqtVirtualQHistoryState();
+	*outptr_QHistoryState = ret;
+	*outptr_QAbstractState = static_cast<QAbstractState*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QHistoryState* QHistoryState_new2(int typeVal) {
-	return new QHistoryState(static_cast<QHistoryState::HistoryType>(typeVal));
+void QHistoryState_new2(int typeVal, QHistoryState** outptr_QHistoryState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject) {
+	MiqtVirtualQHistoryState* ret = new MiqtVirtualQHistoryState(static_cast<QHistoryState::HistoryType>(typeVal));
+	*outptr_QHistoryState = ret;
+	*outptr_QAbstractState = static_cast<QAbstractState*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QHistoryState* QHistoryState_new3(QState* parent) {
-	return new QHistoryState(parent);
+void QHistoryState_new3(QState* parent, QHistoryState** outptr_QHistoryState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject) {
+	MiqtVirtualQHistoryState* ret = new MiqtVirtualQHistoryState(parent);
+	*outptr_QHistoryState = ret;
+	*outptr_QAbstractState = static_cast<QAbstractState*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QHistoryState* QHistoryState_new4(int typeVal, QState* parent) {
-	return new QHistoryState(static_cast<QHistoryState::HistoryType>(typeVal), parent);
+void QHistoryState_new4(int typeVal, QState* parent, QHistoryState** outptr_QHistoryState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject) {
+	MiqtVirtualQHistoryState* ret = new MiqtVirtualQHistoryState(static_cast<QHistoryState::HistoryType>(typeVal), parent);
+	*outptr_QHistoryState = ret;
+	*outptr_QAbstractState = static_cast<QAbstractState*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QHistoryState_MetaObject(const QHistoryState* self) {
@@ -125,7 +222,35 @@ struct miqt_string QHistoryState_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QHistoryState_Delete(QHistoryState* self) {
-	delete self;
+void QHistoryState_override_virtual_OnEntry(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQHistoryState*>( (QHistoryState*)(self) )->handle__OnEntry = slot;
+}
+
+void QHistoryState_virtualbase_OnEntry(void* self, QEvent* event) {
+	( (MiqtVirtualQHistoryState*)(self) )->virtualbase_OnEntry(event);
+}
+
+void QHistoryState_override_virtual_OnExit(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQHistoryState*>( (QHistoryState*)(self) )->handle__OnExit = slot;
+}
+
+void QHistoryState_virtualbase_OnExit(void* self, QEvent* event) {
+	( (MiqtVirtualQHistoryState*)(self) )->virtualbase_OnExit(event);
+}
+
+void QHistoryState_override_virtual_Event(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQHistoryState*>( (QHistoryState*)(self) )->handle__Event = slot;
+}
+
+bool QHistoryState_virtualbase_Event(void* self, QEvent* e) {
+	return ( (MiqtVirtualQHistoryState*)(self) )->virtualbase_Event(e);
+}
+
+void QHistoryState_Delete(QHistoryState* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQHistoryState*>( self );
+	} else {
+		delete self;
+	}
 }
 

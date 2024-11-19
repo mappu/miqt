@@ -3,8 +3,9 @@
 #include "gen_qelapsedtimer.h"
 #include "_cgo_export.h"
 
-QElapsedTimer* QElapsedTimer_new() {
-	return new QElapsedTimer();
+void QElapsedTimer_new(QElapsedTimer** outptr_QElapsedTimer) {
+	QElapsedTimer* ret = new QElapsedTimer();
+	*outptr_QElapsedTimer = ret;
 }
 
 int QElapsedTimer_ClockType() {
@@ -70,7 +71,11 @@ bool QElapsedTimer_OperatorNotEqual(const QElapsedTimer* self, QElapsedTimer* ot
 	return self->operator!=(*other);
 }
 
-void QElapsedTimer_Delete(QElapsedTimer* self) {
-	delete self;
+void QElapsedTimer_Delete(QElapsedTimer* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QElapsedTimer*>( self );
+	} else {
+		delete self;
+	}
 }
 

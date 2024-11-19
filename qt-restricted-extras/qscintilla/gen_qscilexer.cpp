@@ -2,6 +2,7 @@
 #include <QFont>
 #include <QList>
 #include <QMetaObject>
+#include <QObject>
 #include <QSettings>
 #include <QString>
 #include <QByteArray>
@@ -84,20 +85,20 @@ int QsciLexer_AutoIndentStyle(QsciLexer* self) {
 	return self->autoIndentStyle();
 }
 
-const char* QsciLexer_BlockEnd(const QsciLexer* self) {
-	return (const char*) self->blockEnd();
+const char* QsciLexer_BlockEnd(const QsciLexer* self, int* style) {
+	return (const char*) self->blockEnd(static_cast<int*>(style));
 }
 
 int QsciLexer_BlockLookback(const QsciLexer* self) {
 	return self->blockLookback();
 }
 
-const char* QsciLexer_BlockStart(const QsciLexer* self) {
-	return (const char*) self->blockStart();
+const char* QsciLexer_BlockStart(const QsciLexer* self, int* style) {
+	return (const char*) self->blockStart(static_cast<int*>(style));
 }
 
-const char* QsciLexer_BlockStartKeyword(const QsciLexer* self) {
-	return (const char*) self->blockStartKeyword();
+const char* QsciLexer_BlockStartKeyword(const QsciLexer* self, int* style) {
+	return (const char*) self->blockStartKeyword(static_cast<int*>(style));
 }
 
 int QsciLexer_BraceStyle(const QsciLexer* self) {
@@ -223,20 +224,20 @@ void QsciLexer_SetAutoIndentStyle(QsciLexer* self, int autoindentstyle) {
 	self->setAutoIndentStyle(static_cast<int>(autoindentstyle));
 }
 
-void QsciLexer_SetColor(QsciLexer* self, QColor* c) {
-	self->setColor(*c);
+void QsciLexer_SetColor(QsciLexer* self, QColor* c, int style) {
+	self->setColor(*c, static_cast<int>(style));
 }
 
-void QsciLexer_SetEolFill(QsciLexer* self, bool eoffill) {
-	self->setEolFill(eoffill);
+void QsciLexer_SetEolFill(QsciLexer* self, bool eoffill, int style) {
+	self->setEolFill(eoffill, static_cast<int>(style));
 }
 
-void QsciLexer_SetFont(QsciLexer* self, QFont* f) {
-	self->setFont(*f);
+void QsciLexer_SetFont(QsciLexer* self, QFont* f, int style) {
+	self->setFont(*f, static_cast<int>(style));
 }
 
-void QsciLexer_SetPaper(QsciLexer* self, QColor* c) {
-	self->setPaper(*c);
+void QsciLexer_SetPaper(QsciLexer* self, QColor* c, int style) {
+	self->setPaper(*c, static_cast<int>(style));
 }
 
 void QsciLexer_ColorChanged(QsciLexer* self, QColor* c, int style) {
@@ -349,18 +350,6 @@ struct miqt_string QsciLexer_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-const char* QsciLexer_BlockEnd1(const QsciLexer* self, int* style) {
-	return (const char*) self->blockEnd(static_cast<int*>(style));
-}
-
-const char* QsciLexer_BlockStart1(const QsciLexer* self, int* style) {
-	return (const char*) self->blockStart(static_cast<int*>(style));
-}
-
-const char* QsciLexer_BlockStartKeyword1(const QsciLexer* self, int* style) {
-	return (const char*) self->blockStartKeyword(static_cast<int*>(style));
-}
-
 bool QsciLexer_ReadSettings2(QsciLexer* self, QSettings* qs, const char* prefix) {
 	return self->readSettings(*qs, prefix);
 }
@@ -369,23 +358,11 @@ bool QsciLexer_WriteSettings2(const QsciLexer* self, QSettings* qs, const char* 
 	return self->writeSettings(*qs, prefix);
 }
 
-void QsciLexer_SetColor2(QsciLexer* self, QColor* c, int style) {
-	self->setColor(*c, static_cast<int>(style));
-}
-
-void QsciLexer_SetEolFill2(QsciLexer* self, bool eoffill, int style) {
-	self->setEolFill(eoffill, static_cast<int>(style));
-}
-
-void QsciLexer_SetFont2(QsciLexer* self, QFont* f, int style) {
-	self->setFont(*f, static_cast<int>(style));
-}
-
-void QsciLexer_SetPaper2(QsciLexer* self, QColor* c, int style) {
-	self->setPaper(*c, static_cast<int>(style));
-}
-
-void QsciLexer_Delete(QsciLexer* self) {
-	delete self;
+void QsciLexer_Delete(QsciLexer* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QsciLexer*>( self );
+	} else {
+		delete self;
+	}
 }
 

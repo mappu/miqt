@@ -74,7 +74,8 @@ const (
 )
 
 type QFileDevice struct {
-	h *C.QFileDevice
+	h          *C.QFileDevice
+	isSubclass bool
 	*QIODevice
 }
 
@@ -92,15 +93,23 @@ func (this *QFileDevice) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQFileDevice(h *C.QFileDevice) *QFileDevice {
+// newQFileDevice constructs the type using only CGO pointers.
+func newQFileDevice(h *C.QFileDevice, h_QIODevice *C.QIODevice, h_QObject *C.QObject, h_QIODeviceBase *C.QIODeviceBase) *QFileDevice {
 	if h == nil {
 		return nil
 	}
-	return &QFileDevice{h: h, QIODevice: UnsafeNewQIODevice(unsafe.Pointer(h))}
+	return &QFileDevice{h: h,
+		QIODevice: newQIODevice(h_QIODevice, h_QObject, h_QIODeviceBase)}
 }
 
-func UnsafeNewQFileDevice(h unsafe.Pointer) *QFileDevice {
-	return newQFileDevice((*C.QFileDevice)(h))
+// UnsafeNewQFileDevice constructs the type using only unsafe pointers.
+func UnsafeNewQFileDevice(h unsafe.Pointer, h_QIODevice unsafe.Pointer, h_QObject unsafe.Pointer, h_QIODeviceBase unsafe.Pointer) *QFileDevice {
+	if h == nil {
+		return nil
+	}
+
+	return &QFileDevice{h: (*C.QFileDevice)(h),
+		QIODevice: UnsafeNewQIODevice(h_QIODevice, h_QObject, h_QIODeviceBase)}
 }
 
 func (this *QFileDevice) MetaObject() *QMetaObject {
@@ -228,7 +237,7 @@ func (this *QFileDevice) Map3(offset int64, size int64, flags QFileDevice__Memor
 
 // Delete this object from C++ memory.
 func (this *QFileDevice) Delete() {
-	C.QFileDevice_Delete(this.h)
+	C.QFileDevice_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

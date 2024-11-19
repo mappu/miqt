@@ -14,7 +14,8 @@ import (
 )
 
 type QGenericPlugin struct {
-	h *C.QGenericPlugin
+	h          *C.QGenericPlugin
+	isSubclass bool
 	*QObject
 }
 
@@ -32,15 +33,23 @@ func (this *QGenericPlugin) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQGenericPlugin(h *C.QGenericPlugin) *QGenericPlugin {
+// newQGenericPlugin constructs the type using only CGO pointers.
+func newQGenericPlugin(h *C.QGenericPlugin, h_QObject *C.QObject) *QGenericPlugin {
 	if h == nil {
 		return nil
 	}
-	return &QGenericPlugin{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QGenericPlugin{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQGenericPlugin(h unsafe.Pointer) *QGenericPlugin {
-	return newQGenericPlugin((*C.QGenericPlugin)(h))
+// UnsafeNewQGenericPlugin constructs the type using only unsafe pointers.
+func UnsafeNewQGenericPlugin(h unsafe.Pointer, h_QObject unsafe.Pointer) *QGenericPlugin {
+	if h == nil {
+		return nil
+	}
+
+	return &QGenericPlugin{h: (*C.QGenericPlugin)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QGenericPlugin) MetaObject() *QMetaObject {
@@ -129,7 +138,7 @@ func QGenericPlugin_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QGenericPlugin) Delete() {
-	C.QGenericPlugin_Delete(this.h)
+	C.QGenericPlugin_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

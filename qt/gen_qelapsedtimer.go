@@ -24,7 +24,8 @@ const (
 )
 
 type QElapsedTimer struct {
-	h *C.QElapsedTimer
+	h          *C.QElapsedTimer
+	isSubclass bool
 }
 
 func (this *QElapsedTimer) cPointer() *C.QElapsedTimer {
@@ -41,6 +42,7 @@ func (this *QElapsedTimer) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQElapsedTimer constructs the type using only CGO pointers.
 func newQElapsedTimer(h *C.QElapsedTimer) *QElapsedTimer {
 	if h == nil {
 		return nil
@@ -48,14 +50,23 @@ func newQElapsedTimer(h *C.QElapsedTimer) *QElapsedTimer {
 	return &QElapsedTimer{h: h}
 }
 
+// UnsafeNewQElapsedTimer constructs the type using only unsafe pointers.
 func UnsafeNewQElapsedTimer(h unsafe.Pointer) *QElapsedTimer {
-	return newQElapsedTimer((*C.QElapsedTimer)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QElapsedTimer{h: (*C.QElapsedTimer)(h)}
 }
 
 // NewQElapsedTimer constructs a new QElapsedTimer object.
 func NewQElapsedTimer() *QElapsedTimer {
-	ret := C.QElapsedTimer_new()
-	return newQElapsedTimer(ret)
+	var outptr_QElapsedTimer *C.QElapsedTimer = nil
+
+	C.QElapsedTimer_new(&outptr_QElapsedTimer)
+	ret := newQElapsedTimer(outptr_QElapsedTimer)
+	ret.isSubclass = true
+	return ret
 }
 
 func QElapsedTimer_ClockType() QElapsedTimer__ClockType {
@@ -116,7 +127,7 @@ func (this *QElapsedTimer) OperatorNotEqual(other *QElapsedTimer) bool {
 
 // Delete this object from C++ memory.
 func (this *QElapsedTimer) Delete() {
-	C.QElapsedTimer_Delete(this.h)
+	C.QElapsedTimer_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

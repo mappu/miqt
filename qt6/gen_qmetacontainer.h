@@ -44,18 +44,18 @@ typedef struct QtMetaContainerPrivate__QMetaContainerInterface QtMetaContainerPr
 typedef struct QtMetaContainerPrivate__QMetaSequenceInterface QtMetaContainerPrivate__QMetaSequenceInterface;
 #endif
 
-QtMetaContainerPrivate__QMetaContainerInterface* QtMetaContainerPrivate__QMetaContainerInterface_new();
-void QtMetaContainerPrivate__QMetaContainerInterface_Delete(QtMetaContainerPrivate__QMetaContainerInterface* self);
+void QtMetaContainerPrivate__QMetaContainerInterface_new(QtMetaContainerPrivate__QMetaContainerInterface** outptr_QtMetaContainerPrivate__QMetaContainerInterface);
+void QtMetaContainerPrivate__QMetaContainerInterface_Delete(QtMetaContainerPrivate__QMetaContainerInterface* self, bool isSubclass);
 
-QtMetaContainerPrivate__QMetaSequenceInterface* QtMetaContainerPrivate__QMetaSequenceInterface_new();
-void QtMetaContainerPrivate__QMetaSequenceInterface_Delete(QtMetaContainerPrivate__QMetaSequenceInterface* self);
+void QtMetaContainerPrivate__QMetaSequenceInterface_new(QtMetaContainerPrivate__QMetaSequenceInterface** outptr_QtMetaContainerPrivate__QMetaSequenceInterface, QtMetaContainerPrivate__QMetaContainerInterface** outptr_QtMetaContainerPrivate__QMetaContainerInterface);
+void QtMetaContainerPrivate__QMetaSequenceInterface_Delete(QtMetaContainerPrivate__QMetaSequenceInterface* self, bool isSubclass);
 
-QtMetaContainerPrivate__QMetaAssociationInterface* QtMetaContainerPrivate__QMetaAssociationInterface_new();
-void QtMetaContainerPrivate__QMetaAssociationInterface_Delete(QtMetaContainerPrivate__QMetaAssociationInterface* self);
+void QtMetaContainerPrivate__QMetaAssociationInterface_new(QtMetaContainerPrivate__QMetaAssociationInterface** outptr_QtMetaContainerPrivate__QMetaAssociationInterface, QtMetaContainerPrivate__QMetaContainerInterface** outptr_QtMetaContainerPrivate__QMetaContainerInterface);
+void QtMetaContainerPrivate__QMetaAssociationInterface_Delete(QtMetaContainerPrivate__QMetaAssociationInterface* self, bool isSubclass);
 
-QMetaContainer* QMetaContainer_new();
-QMetaContainer* QMetaContainer_new2(QtMetaContainerPrivate__QMetaContainerInterface* d);
-QMetaContainer* QMetaContainer_new3(QMetaContainer* param1);
+void QMetaContainer_new(QMetaContainer** outptr_QMetaContainer);
+void QMetaContainer_new2(QtMetaContainerPrivate__QMetaContainerInterface* d, QMetaContainer** outptr_QMetaContainer);
+void QMetaContainer_new3(QMetaContainer* param1, QMetaContainer** outptr_QMetaContainer);
 bool QMetaContainer_HasInputIterator(const QMetaContainer* self);
 bool QMetaContainer_HasForwardIterator(const QMetaContainer* self);
 bool QMetaContainer_HasBidirectionalIterator(const QMetaContainer* self);
@@ -80,10 +80,10 @@ bool QMetaContainer_CompareConstIterator(const QMetaContainer* self, const void*
 void QMetaContainer_CopyConstIterator(const QMetaContainer* self, void* target, const void* source);
 void QMetaContainer_AdvanceConstIterator(const QMetaContainer* self, void* iterator, ptrdiff_t step);
 ptrdiff_t QMetaContainer_DiffConstIterator(const QMetaContainer* self, const void* i, const void* j);
-void QMetaContainer_Delete(QMetaContainer* self);
+void QMetaContainer_Delete(QMetaContainer* self, bool isSubclass);
 
-QMetaSequence* QMetaSequence_new();
-QMetaSequence* QMetaSequence_new2(QtMetaContainerPrivate__QMetaSequenceInterface* d);
+void QMetaSequence_new(QMetaSequence** outptr_QMetaSequence, QMetaContainer** outptr_QMetaContainer);
+void QMetaSequence_new2(QtMetaContainerPrivate__QMetaSequenceInterface* d, QMetaSequence** outptr_QMetaSequence, QMetaContainer** outptr_QMetaContainer);
 QMetaType* QMetaSequence_ValueMetaType(const QMetaSequence* self);
 bool QMetaSequence_IsSortable(const QMetaSequence* self);
 bool QMetaSequence_CanAddValueAtBegin(const QMetaSequence* self);
@@ -114,10 +114,10 @@ bool QMetaSequence_CanEraseRangeAtIterator(const QMetaSequence* self);
 void QMetaSequence_EraseRangeAtIterator(const QMetaSequence* self, void* container, const void* iterator1, const void* iterator2);
 bool QMetaSequence_CanGetValueAtConstIterator(const QMetaSequence* self);
 void QMetaSequence_ValueAtConstIterator(const QMetaSequence* self, const void* iterator, void* result);
-void QMetaSequence_Delete(QMetaSequence* self);
+void QMetaSequence_Delete(QMetaSequence* self, bool isSubclass);
 
-QMetaAssociation* QMetaAssociation_new();
-QMetaAssociation* QMetaAssociation_new2(QtMetaContainerPrivate__QMetaAssociationInterface* d);
+void QMetaAssociation_new(QMetaAssociation** outptr_QMetaAssociation, QMetaContainer** outptr_QMetaContainer);
+void QMetaAssociation_new2(QtMetaContainerPrivate__QMetaAssociationInterface* d, QMetaAssociation** outptr_QMetaAssociation, QMetaContainer** outptr_QMetaContainer);
 QMetaType* QMetaAssociation_KeyMetaType(const QMetaAssociation* self);
 QMetaType* QMetaAssociation_MappedMetaType(const QMetaAssociation* self);
 bool QMetaAssociation_CanInsertKey(const QMetaAssociation* self);
@@ -144,7 +144,7 @@ bool QMetaAssociation_CanCreateIteratorAtKey(const QMetaAssociation* self);
 void* QMetaAssociation_CreateIteratorAtKey(const QMetaAssociation* self, void* container, const void* key);
 bool QMetaAssociation_CanCreateConstIteratorAtKey(const QMetaAssociation* self);
 void* QMetaAssociation_CreateConstIteratorAtKey(const QMetaAssociation* self, const void* container, const void* key);
-void QMetaAssociation_Delete(QMetaAssociation* self);
+void QMetaAssociation_Delete(QMetaAssociation* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */
