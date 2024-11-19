@@ -709,7 +709,9 @@ import "C"
 		`)
 
 		// Embed all inherited types to directly allow calling inherited methods
-		for _, base := range c.Inherits {
+		// Only include the direct inherits; the recursive inherits will exist
+		// on these types already
+		for _, base := range c.DirectInherits {
 
 			if pkg, ok := KnownClassnames[base]; ok && pkg.PackageName != gfs.currentPackageName {
 				// Cross-package parent class

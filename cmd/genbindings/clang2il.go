@@ -265,7 +265,7 @@ func processClassType(node map[string]interface{}, addNamePrefix string) (CppCla
 
 			if typ, ok := base["type"].(map[string]interface{}); ok {
 				if qualType, ok := typ["qualType"].(string); ok {
-					ret.Inherits = append(ret.Inherits, qualType)
+					ret.DirectInherits = append(ret.DirectInherits, qualType)
 				}
 			}
 		}

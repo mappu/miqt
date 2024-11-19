@@ -372,13 +372,13 @@ func (e CppEnum) ShortEnumName() string {
 }
 
 type CppClass struct {
-	ClassName string
-	Abstract  bool
-	Ctors     []CppMethod // only use the parameters
-	Inherits  []string    // other class names
-	Methods   []CppMethod
-	Props     []CppProperty
-	CanDelete bool
+	ClassName      string
+	Abstract       bool
+	Ctors          []CppMethod // only use the parameters
+	DirectInherits []string    // other class names. This only includes direct inheritance - use AllInherits() to find recursive inheritance
+	Methods        []CppMethod
+	Props          []CppProperty
+	CanDelete      bool
 
 	ChildTypedefs  []CppTypedef
 	ChildClassdefs []CppClass
@@ -431,7 +431,10 @@ func (c *CppClass) VirtualMethods() []CppMethod {
 		retNames[m.CppCallTarget()] = struct{}{}
 	}
 
-	for _, inh := range c.Inherits {
+	// Only allow virtual overrides for direct inherits, not all inherits -
+	// Go will automatically allow virtual overrides for the base type because
+	// the parent struct is nested
+	for _, inh := range c.DirectInherits { // AllInherits() {
 		cinfo, ok := KnownClassnames[inh]
 		if !ok {
 			panic("Class " + c.ClassName + " inherits from unknown class " + inh)
@@ -475,6 +478,31 @@ func (c *CppClass) VirtualMethods() []CppMethod {
 		// do not consider them for grandparent classes
 		for _, privMethod := range c.PrivateMethods {
 			block[privMethod] = struct{}{}
+		}
+	}
+
+	return ret
+}
+
+// AllInherits recursively finds and lists all the parent classes of this class.
+func (c *CppClass) AllInherits() []string {
+	var ret []string
+
+	// FIXME prevent duplicates arising from diamond inheritance
+
+	for _, baseClass := range c.DirectInherits {
+
+		ret = append(ret, baseClass)
+
+		// And everything that class inherits - unless - we've seen it before
+		baseClassInfo, ok := KnownClassnames[baseClass]
+		if !ok {
+			panic("Class " + c.ClassName + " inherits from unknown class " + baseClass)
+		}
+
+		recurseInfo := baseClassInfo.Class.AllInherits()
+		for _, childClass := range recurseInfo {
+			ret = append(ret, childClass)
 		}
 	}
 
