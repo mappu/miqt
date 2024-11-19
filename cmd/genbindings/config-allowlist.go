@@ -131,7 +131,8 @@ func ImportHeaderForClass(className string) bool {
 
 func AllowClass(className string) bool {
 
-	if strings.HasSuffix(className, "Private") || strings.HasSuffix(className, "PrivateShared") {
+	if strings.HasSuffix(className, "Private") || strings.HasSuffix(className, "PrivateShared") ||
+		strings.Contains(className, "Private::") || strings.HasSuffix(className, "PrivateShared::") {
 		return false
 	}
 
