@@ -14,7 +14,8 @@ import (
 )
 
 type QStylePainter struct {
-	h *C.QStylePainter
+	h          *C.QStylePainter
+	isSubclass bool
 	*QPainter
 }
 
@@ -32,33 +33,56 @@ func (this *QStylePainter) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStylePainter(h *C.QStylePainter) *QStylePainter {
+// newQStylePainter constructs the type using only CGO pointers.
+func newQStylePainter(h *C.QStylePainter, h_QPainter *C.QPainter) *QStylePainter {
 	if h == nil {
 		return nil
 	}
-	return &QStylePainter{h: h, QPainter: UnsafeNewQPainter(unsafe.Pointer(h))}
+	return &QStylePainter{h: h,
+		QPainter: newQPainter(h_QPainter)}
 }
 
-func UnsafeNewQStylePainter(h unsafe.Pointer) *QStylePainter {
-	return newQStylePainter((*C.QStylePainter)(h))
+// UnsafeNewQStylePainter constructs the type using only unsafe pointers.
+func UnsafeNewQStylePainter(h unsafe.Pointer, h_QPainter unsafe.Pointer) *QStylePainter {
+	if h == nil {
+		return nil
+	}
+
+	return &QStylePainter{h: (*C.QStylePainter)(h),
+		QPainter: UnsafeNewQPainter(h_QPainter)}
 }
 
 // NewQStylePainter constructs a new QStylePainter object.
 func NewQStylePainter(w *QWidget) *QStylePainter {
-	ret := C.QStylePainter_new(w.cPointer())
-	return newQStylePainter(ret)
+	var outptr_QStylePainter *C.QStylePainter = nil
+	var outptr_QPainter *C.QPainter = nil
+
+	C.QStylePainter_new(w.cPointer(), &outptr_QStylePainter, &outptr_QPainter)
+	ret := newQStylePainter(outptr_QStylePainter, outptr_QPainter)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStylePainter2 constructs a new QStylePainter object.
 func NewQStylePainter2() *QStylePainter {
-	ret := C.QStylePainter_new2()
-	return newQStylePainter(ret)
+	var outptr_QStylePainter *C.QStylePainter = nil
+	var outptr_QPainter *C.QPainter = nil
+
+	C.QStylePainter_new2(&outptr_QStylePainter, &outptr_QPainter)
+	ret := newQStylePainter(outptr_QStylePainter, outptr_QPainter)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStylePainter3 constructs a new QStylePainter object.
 func NewQStylePainter3(pd *QPaintDevice, w *QWidget) *QStylePainter {
-	ret := C.QStylePainter_new3(pd.cPointer(), w.cPointer())
-	return newQStylePainter(ret)
+	var outptr_QStylePainter *C.QStylePainter = nil
+	var outptr_QPainter *C.QPainter = nil
+
+	C.QStylePainter_new3(pd.cPointer(), w.cPointer(), &outptr_QStylePainter, &outptr_QPainter)
+	ret := newQStylePainter(outptr_QStylePainter, outptr_QPainter)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QStylePainter) Begin(w *QWidget) bool {
@@ -94,7 +118,7 @@ func (this *QStylePainter) DrawItemPixmap(r *QRect, flags int, pixmap *QPixmap) 
 }
 
 func (this *QStylePainter) Style() *QStyle {
-	return UnsafeNewQStyle(unsafe.Pointer(C.QStylePainter_Style(this.h)))
+	return UnsafeNewQStyle(unsafe.Pointer(C.QStylePainter_Style(this.h)), nil)
 }
 
 func (this *QStylePainter) DrawItemText6(r *QRect, flags int, pal *QPalette, enabled bool, text string, textRole QPalette__ColorRole) {
@@ -107,7 +131,7 @@ func (this *QStylePainter) DrawItemText6(r *QRect, flags int, pal *QPalette, ena
 
 // Delete this object from C++ memory.
 func (this *QStylePainter) Delete() {
-	C.QStylePainter_Delete(this.h)
+	C.QStylePainter_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

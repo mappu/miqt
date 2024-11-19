@@ -5,30 +5,36 @@
 #include "gen_qaudiobuffer.h"
 #include "_cgo_export.h"
 
-QAudioBuffer* QAudioBuffer_new() {
-	return new QAudioBuffer();
+void QAudioBuffer_new(QAudioBuffer** outptr_QAudioBuffer) {
+	QAudioBuffer* ret = new QAudioBuffer();
+	*outptr_QAudioBuffer = ret;
 }
 
-QAudioBuffer* QAudioBuffer_new2(QAudioBuffer* other) {
-	return new QAudioBuffer(*other);
+void QAudioBuffer_new2(QAudioBuffer* other, QAudioBuffer** outptr_QAudioBuffer) {
+	QAudioBuffer* ret = new QAudioBuffer(*other);
+	*outptr_QAudioBuffer = ret;
 }
 
-QAudioBuffer* QAudioBuffer_new3(struct miqt_string data, QAudioFormat* format) {
+void QAudioBuffer_new3(struct miqt_string data, QAudioFormat* format, QAudioBuffer** outptr_QAudioBuffer) {
 	QByteArray data_QByteArray(data.data, data.len);
-	return new QAudioBuffer(data_QByteArray, *format);
+	QAudioBuffer* ret = new QAudioBuffer(data_QByteArray, *format);
+	*outptr_QAudioBuffer = ret;
 }
 
-QAudioBuffer* QAudioBuffer_new4(int numFrames, QAudioFormat* format) {
-	return new QAudioBuffer(static_cast<int>(numFrames), *format);
+void QAudioBuffer_new4(int numFrames, QAudioFormat* format, QAudioBuffer** outptr_QAudioBuffer) {
+	QAudioBuffer* ret = new QAudioBuffer(static_cast<int>(numFrames), *format);
+	*outptr_QAudioBuffer = ret;
 }
 
-QAudioBuffer* QAudioBuffer_new5(struct miqt_string data, QAudioFormat* format, long long startTime) {
+void QAudioBuffer_new5(struct miqt_string data, QAudioFormat* format, long long startTime, QAudioBuffer** outptr_QAudioBuffer) {
 	QByteArray data_QByteArray(data.data, data.len);
-	return new QAudioBuffer(data_QByteArray, *format, static_cast<qint64>(startTime));
+	QAudioBuffer* ret = new QAudioBuffer(data_QByteArray, *format, static_cast<qint64>(startTime));
+	*outptr_QAudioBuffer = ret;
 }
 
-QAudioBuffer* QAudioBuffer_new6(int numFrames, QAudioFormat* format, long long startTime) {
-	return new QAudioBuffer(static_cast<int>(numFrames), *format, static_cast<qint64>(startTime));
+void QAudioBuffer_new6(int numFrames, QAudioFormat* format, long long startTime, QAudioBuffer** outptr_QAudioBuffer) {
+	QAudioBuffer* ret = new QAudioBuffer(static_cast<int>(numFrames), *format, static_cast<qint64>(startTime));
+	*outptr_QAudioBuffer = ret;
 }
 
 void QAudioBuffer_OperatorAssign(QAudioBuffer* self, QAudioBuffer* other) {
@@ -76,7 +82,11 @@ long long QAudioBuffer_StartTime(const QAudioBuffer* self) {
 	return static_cast<long long>(_ret);
 }
 
-void QAudioBuffer_Delete(QAudioBuffer* self) {
-	delete self;
+void QAudioBuffer_Delete(QAudioBuffer* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAudioBuffer*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -56,7 +56,8 @@ const (
 )
 
 type QGraphicsView struct {
-	h *C.QGraphicsView
+	h          *C.QGraphicsView
+	isSubclass bool
 	*QAbstractScrollArea
 }
 
@@ -74,39 +75,83 @@ func (this *QGraphicsView) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQGraphicsView(h *C.QGraphicsView) *QGraphicsView {
+// newQGraphicsView constructs the type using only CGO pointers.
+func newQGraphicsView(h *C.QGraphicsView, h_QAbstractScrollArea *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QGraphicsView {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsView{h: h, QAbstractScrollArea: UnsafeNewQAbstractScrollArea(unsafe.Pointer(h))}
+	return &QGraphicsView{h: h,
+		QAbstractScrollArea: newQAbstractScrollArea(h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
-func UnsafeNewQGraphicsView(h unsafe.Pointer) *QGraphicsView {
-	return newQGraphicsView((*C.QGraphicsView)(h))
+// UnsafeNewQGraphicsView constructs the type using only unsafe pointers.
+func UnsafeNewQGraphicsView(h unsafe.Pointer, h_QAbstractScrollArea unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QGraphicsView {
+	if h == nil {
+		return nil
+	}
+
+	return &QGraphicsView{h: (*C.QGraphicsView)(h),
+		QAbstractScrollArea: UnsafeNewQAbstractScrollArea(h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
 // NewQGraphicsView constructs a new QGraphicsView object.
 func NewQGraphicsView(parent *QWidget) *QGraphicsView {
-	ret := C.QGraphicsView_new(parent.cPointer())
-	return newQGraphicsView(ret)
+	var outptr_QGraphicsView *C.QGraphicsView = nil
+	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QGraphicsView_new(parent.cPointer(), &outptr_QGraphicsView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQGraphicsView(outptr_QGraphicsView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQGraphicsView2 constructs a new QGraphicsView object.
 func NewQGraphicsView2() *QGraphicsView {
-	ret := C.QGraphicsView_new2()
-	return newQGraphicsView(ret)
+	var outptr_QGraphicsView *C.QGraphicsView = nil
+	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QGraphicsView_new2(&outptr_QGraphicsView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQGraphicsView(outptr_QGraphicsView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQGraphicsView3 constructs a new QGraphicsView object.
 func NewQGraphicsView3(scene *QGraphicsScene) *QGraphicsView {
-	ret := C.QGraphicsView_new3(scene.cPointer())
-	return newQGraphicsView(ret)
+	var outptr_QGraphicsView *C.QGraphicsView = nil
+	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QGraphicsView_new3(scene.cPointer(), &outptr_QGraphicsView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQGraphicsView(outptr_QGraphicsView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQGraphicsView4 constructs a new QGraphicsView object.
 func NewQGraphicsView4(scene *QGraphicsScene, parent *QWidget) *QGraphicsView {
-	ret := C.QGraphicsView_new4(scene.cPointer(), parent.cPointer())
-	return newQGraphicsView(ret)
+	var outptr_QGraphicsView *C.QGraphicsView = nil
+	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QGraphicsView_new4(scene.cPointer(), parent.cPointer(), &outptr_QGraphicsView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQGraphicsView(outptr_QGraphicsView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QGraphicsView) MetaObject() *QMetaObject {
@@ -235,7 +280,7 @@ func (this *QGraphicsView) SetInteractive(allowed bool) {
 }
 
 func (this *QGraphicsView) Scene() *QGraphicsScene {
-	return UnsafeNewQGraphicsScene(unsafe.Pointer(C.QGraphicsView_Scene(this.h)))
+	return UnsafeNewQGraphicsScene(unsafe.Pointer(C.QGraphicsView_Scene(this.h)), nil)
 }
 
 func (this *QGraphicsView) SetScene(scene *QGraphicsScene) {
@@ -649,9 +694,723 @@ func (this *QGraphicsView) InvalidateScene2(rect *QRectF, layers QGraphicsScene_
 	C.QGraphicsView_InvalidateScene2(this.h, rect.cPointer(), (C.int)(layers))
 }
 
+func (this *QGraphicsView) callVirtualBase_SizeHint() *QSize {
+
+	_ret := C.QGraphicsView_virtualbase_SizeHint(unsafe.Pointer(this.h))
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QGraphicsView) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	C.QGraphicsView_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_SizeHint
+func miqt_exec_callback_QGraphicsView_SizeHint(self *C.QGraphicsView, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QGraphicsView{h: self}).callVirtualBase_SizeHint)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QGraphicsView) callVirtualBase_InputMethodQuery(query InputMethodQuery) *QVariant {
+
+	_ret := C.QGraphicsView_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QGraphicsView) OnInputMethodQuery(slot func(super func(query InputMethodQuery) *QVariant, query InputMethodQuery) *QVariant) {
+	C.QGraphicsView_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_InputMethodQuery
+func miqt_exec_callback_QGraphicsView_InputMethodQuery(self *C.QGraphicsView, cb C.intptr_t, query C.int) *C.QVariant {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(query InputMethodQuery) *QVariant, query InputMethodQuery) *QVariant)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (InputMethodQuery)(query)
+
+	virtualReturn := gofunc((&QGraphicsView{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QGraphicsView) callVirtualBase_SetupViewport(widget *QWidget) {
+
+	C.QGraphicsView_virtualbase_SetupViewport(unsafe.Pointer(this.h), widget.cPointer())
+
+}
+func (this *QGraphicsView) OnSetupViewport(slot func(super func(widget *QWidget), widget *QWidget)) {
+	C.QGraphicsView_override_virtual_SetupViewport(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_SetupViewport
+func miqt_exec_callback_QGraphicsView_SetupViewport(self *C.QGraphicsView, cb C.intptr_t, widget *C.QWidget) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(widget *QWidget), widget *QWidget))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+
+	gofunc((&QGraphicsView{h: self}).callVirtualBase_SetupViewport, slotval1)
+
+}
+
+func (this *QGraphicsView) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QGraphicsView_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QGraphicsView) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	C.QGraphicsView_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_Event
+func miqt_exec_callback_QGraphicsView_Event(self *C.QGraphicsView, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QGraphicsView{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QGraphicsView) callVirtualBase_ViewportEvent(event *QEvent) bool {
+
+	return (bool)(C.QGraphicsView_virtualbase_ViewportEvent(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QGraphicsView) OnViewportEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	C.QGraphicsView_override_virtual_ViewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_ViewportEvent
+func miqt_exec_callback_QGraphicsView_ViewportEvent(self *C.QGraphicsView, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QGraphicsView{h: self}).callVirtualBase_ViewportEvent, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QGraphicsView) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
+
+	C.QGraphicsView_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGraphicsView) OnContextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
+	C.QGraphicsView_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_ContextMenuEvent
+func miqt_exec_callback_QGraphicsView_ContextMenuEvent(self *C.QGraphicsView, cb C.intptr_t, event *C.QContextMenuEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QContextMenuEvent), event *QContextMenuEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(event), nil, nil)
+
+	gofunc((&QGraphicsView{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
+
+}
+
+func (this *QGraphicsView) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+
+	C.QGraphicsView_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGraphicsView) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+	C.QGraphicsView_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_DragEnterEvent
+func miqt_exec_callback_QGraphicsView_DragEnterEvent(self *C.QGraphicsView, cb C.intptr_t, event *C.QDragEnterEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragEnterEvent), event *QDragEnterEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQDragEnterEvent(unsafe.Pointer(event), nil, nil, nil)
+
+	gofunc((&QGraphicsView{h: self}).callVirtualBase_DragEnterEvent, slotval1)
+
+}
+
+func (this *QGraphicsView) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
+
+	C.QGraphicsView_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGraphicsView) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+	C.QGraphicsView_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_DragLeaveEvent
+func miqt_exec_callback_QGraphicsView_DragLeaveEvent(self *C.QGraphicsView, cb C.intptr_t, event *C.QDragLeaveEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQDragLeaveEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QGraphicsView{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
+
+}
+
+func (this *QGraphicsView) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+
+	C.QGraphicsView_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGraphicsView) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+	C.QGraphicsView_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_DragMoveEvent
+func miqt_exec_callback_QGraphicsView_DragMoveEvent(self *C.QGraphicsView, cb C.intptr_t, event *C.QDragMoveEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragMoveEvent), event *QDragMoveEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+
+	gofunc((&QGraphicsView{h: self}).callVirtualBase_DragMoveEvent, slotval1)
+
+}
+
+func (this *QGraphicsView) callVirtualBase_DropEvent(event *QDropEvent) {
+
+	C.QGraphicsView_virtualbase_DropEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGraphicsView) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+	C.QGraphicsView_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_DropEvent
+func miqt_exec_callback_QGraphicsView_DropEvent(self *C.QGraphicsView, cb C.intptr_t, event *C.QDropEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDropEvent), event *QDropEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QGraphicsView{h: self}).callVirtualBase_DropEvent, slotval1)
+
+}
+
+func (this *QGraphicsView) callVirtualBase_FocusInEvent(event *QFocusEvent) {
+
+	C.QGraphicsView_virtualbase_FocusInEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGraphicsView) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	C.QGraphicsView_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_FocusInEvent
+func miqt_exec_callback_QGraphicsView_FocusInEvent(self *C.QGraphicsView, cb C.intptr_t, event *C.QFocusEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QFocusEvent), event *QFocusEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QGraphicsView{h: self}).callVirtualBase_FocusInEvent, slotval1)
+
+}
+
+func (this *QGraphicsView) callVirtualBase_FocusNextPrevChild(next bool) bool {
+
+	return (bool)(C.QGraphicsView_virtualbase_FocusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
+
+}
+func (this *QGraphicsView) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	C.QGraphicsView_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_FocusNextPrevChild
+func miqt_exec_callback_QGraphicsView_FocusNextPrevChild(self *C.QGraphicsView, cb C.intptr_t, next C.bool) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(next bool) bool, next bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(next)
+
+	virtualReturn := gofunc((&QGraphicsView{h: self}).callVirtualBase_FocusNextPrevChild, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QGraphicsView) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
+
+	C.QGraphicsView_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGraphicsView) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	C.QGraphicsView_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_FocusOutEvent
+func miqt_exec_callback_QGraphicsView_FocusOutEvent(self *C.QGraphicsView, cb C.intptr_t, event *C.QFocusEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QFocusEvent), event *QFocusEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QGraphicsView{h: self}).callVirtualBase_FocusOutEvent, slotval1)
+
+}
+
+func (this *QGraphicsView) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
+
+	C.QGraphicsView_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGraphicsView) OnKeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	C.QGraphicsView_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_KeyPressEvent
+func miqt_exec_callback_QGraphicsView_KeyPressEvent(self *C.QGraphicsView, cb C.intptr_t, event *C.QKeyEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QKeyEvent), event *QKeyEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+
+	gofunc((&QGraphicsView{h: self}).callVirtualBase_KeyPressEvent, slotval1)
+
+}
+
+func (this *QGraphicsView) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
+
+	C.QGraphicsView_virtualbase_KeyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGraphicsView) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	C.QGraphicsView_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_KeyReleaseEvent
+func miqt_exec_callback_QGraphicsView_KeyReleaseEvent(self *C.QGraphicsView, cb C.intptr_t, event *C.QKeyEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QKeyEvent), event *QKeyEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+
+	gofunc((&QGraphicsView{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
+
+}
+
+func (this *QGraphicsView) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+
+	C.QGraphicsView_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGraphicsView) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	C.QGraphicsView_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_MouseDoubleClickEvent
+func miqt_exec_callback_QGraphicsView_MouseDoubleClickEvent(self *C.QGraphicsView, cb C.intptr_t, event *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+
+	gofunc((&QGraphicsView{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
+
+}
+
+func (this *QGraphicsView) callVirtualBase_MousePressEvent(event *QMouseEvent) {
+
+	C.QGraphicsView_virtualbase_MousePressEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGraphicsView) OnMousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	C.QGraphicsView_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_MousePressEvent
+func miqt_exec_callback_QGraphicsView_MousePressEvent(self *C.QGraphicsView, cb C.intptr_t, event *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+
+	gofunc((&QGraphicsView{h: self}).callVirtualBase_MousePressEvent, slotval1)
+
+}
+
+func (this *QGraphicsView) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
+
+	C.QGraphicsView_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGraphicsView) OnMouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	C.QGraphicsView_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_MouseMoveEvent
+func miqt_exec_callback_QGraphicsView_MouseMoveEvent(self *C.QGraphicsView, cb C.intptr_t, event *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+
+	gofunc((&QGraphicsView{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
+
+}
+
+func (this *QGraphicsView) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
+
+	C.QGraphicsView_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGraphicsView) OnMouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	C.QGraphicsView_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_MouseReleaseEvent
+func miqt_exec_callback_QGraphicsView_MouseReleaseEvent(self *C.QGraphicsView, cb C.intptr_t, event *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+
+	gofunc((&QGraphicsView{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
+
+}
+
+func (this *QGraphicsView) callVirtualBase_WheelEvent(event *QWheelEvent) {
+
+	C.QGraphicsView_virtualbase_WheelEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGraphicsView) OnWheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
+	C.QGraphicsView_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_WheelEvent
+func miqt_exec_callback_QGraphicsView_WheelEvent(self *C.QGraphicsView, cb C.intptr_t, event *C.QWheelEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QWheelEvent), event *QWheelEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+
+	gofunc((&QGraphicsView{h: self}).callVirtualBase_WheelEvent, slotval1)
+
+}
+
+func (this *QGraphicsView) callVirtualBase_PaintEvent(event *QPaintEvent) {
+
+	C.QGraphicsView_virtualbase_PaintEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGraphicsView) OnPaintEvent(slot func(super func(event *QPaintEvent), event *QPaintEvent)) {
+	C.QGraphicsView_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_PaintEvent
+func miqt_exec_callback_QGraphicsView_PaintEvent(self *C.QGraphicsView, cb C.intptr_t, event *C.QPaintEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QPaintEvent), event *QPaintEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QGraphicsView{h: self}).callVirtualBase_PaintEvent, slotval1)
+
+}
+
+func (this *QGraphicsView) callVirtualBase_ResizeEvent(event *QResizeEvent) {
+
+	C.QGraphicsView_virtualbase_ResizeEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGraphicsView) OnResizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
+	C.QGraphicsView_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_ResizeEvent
+func miqt_exec_callback_QGraphicsView_ResizeEvent(self *C.QGraphicsView, cb C.intptr_t, event *C.QResizeEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QResizeEvent), event *QResizeEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QGraphicsView{h: self}).callVirtualBase_ResizeEvent, slotval1)
+
+}
+
+func (this *QGraphicsView) callVirtualBase_ScrollContentsBy(dx int, dy int) {
+
+	C.QGraphicsView_virtualbase_ScrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
+
+}
+func (this *QGraphicsView) OnScrollContentsBy(slot func(super func(dx int, dy int), dx int, dy int)) {
+	C.QGraphicsView_override_virtual_ScrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_ScrollContentsBy
+func miqt_exec_callback_QGraphicsView_ScrollContentsBy(self *C.QGraphicsView, cb C.intptr_t, dx C.int, dy C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(dx int, dy int), dx int, dy int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(dx)
+
+	slotval2 := (int)(dy)
+
+	gofunc((&QGraphicsView{h: self}).callVirtualBase_ScrollContentsBy, slotval1, slotval2)
+
+}
+
+func (this *QGraphicsView) callVirtualBase_ShowEvent(event *QShowEvent) {
+
+	C.QGraphicsView_virtualbase_ShowEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGraphicsView) OnShowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
+	C.QGraphicsView_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_ShowEvent
+func miqt_exec_callback_QGraphicsView_ShowEvent(self *C.QGraphicsView, cb C.intptr_t, event *C.QShowEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QShowEvent), event *QShowEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QGraphicsView{h: self}).callVirtualBase_ShowEvent, slotval1)
+
+}
+
+func (this *QGraphicsView) callVirtualBase_InputMethodEvent(event *QInputMethodEvent) {
+
+	C.QGraphicsView_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGraphicsView) OnInputMethodEvent(slot func(super func(event *QInputMethodEvent), event *QInputMethodEvent)) {
+	C.QGraphicsView_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_InputMethodEvent
+func miqt_exec_callback_QGraphicsView_InputMethodEvent(self *C.QGraphicsView, cb C.intptr_t, event *C.QInputMethodEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QInputMethodEvent), event *QInputMethodEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QGraphicsView{h: self}).callVirtualBase_InputMethodEvent, slotval1)
+
+}
+
+func (this *QGraphicsView) callVirtualBase_DrawBackground(painter *QPainter, rect *QRectF) {
+
+	C.QGraphicsView_virtualbase_DrawBackground(unsafe.Pointer(this.h), painter.cPointer(), rect.cPointer())
+
+}
+func (this *QGraphicsView) OnDrawBackground(slot func(super func(painter *QPainter, rect *QRectF), painter *QPainter, rect *QRectF)) {
+	C.QGraphicsView_override_virtual_DrawBackground(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_DrawBackground
+func miqt_exec_callback_QGraphicsView_DrawBackground(self *C.QGraphicsView, cb C.intptr_t, painter *C.QPainter, rect *C.QRectF) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter, rect *QRectF), painter *QPainter, rect *QRectF))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval2 := UnsafeNewQRectF(unsafe.Pointer(rect))
+
+	gofunc((&QGraphicsView{h: self}).callVirtualBase_DrawBackground, slotval1, slotval2)
+
+}
+
+func (this *QGraphicsView) callVirtualBase_DrawForeground(painter *QPainter, rect *QRectF) {
+
+	C.QGraphicsView_virtualbase_DrawForeground(unsafe.Pointer(this.h), painter.cPointer(), rect.cPointer())
+
+}
+func (this *QGraphicsView) OnDrawForeground(slot func(super func(painter *QPainter, rect *QRectF), painter *QPainter, rect *QRectF)) {
+	C.QGraphicsView_override_virtual_DrawForeground(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_DrawForeground
+func miqt_exec_callback_QGraphicsView_DrawForeground(self *C.QGraphicsView, cb C.intptr_t, painter *C.QPainter, rect *C.QRectF) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter, rect *QRectF), painter *QPainter, rect *QRectF))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval2 := UnsafeNewQRectF(unsafe.Pointer(rect))
+
+	gofunc((&QGraphicsView{h: self}).callVirtualBase_DrawForeground, slotval1, slotval2)
+
+}
+
+func (this *QGraphicsView) callVirtualBase_MinimumSizeHint() *QSize {
+
+	_ret := C.QGraphicsView_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QGraphicsView) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+	C.QGraphicsView_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_MinimumSizeHint
+func miqt_exec_callback_QGraphicsView_MinimumSizeHint(self *C.QGraphicsView, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QGraphicsView{h: self}).callVirtualBase_MinimumSizeHint)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QGraphicsView) callVirtualBase_EventFilter(param1 *QObject, param2 *QEvent) bool {
+
+	return (bool)(C.QGraphicsView_virtualbase_EventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
+
+}
+func (this *QGraphicsView) OnEventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
+	C.QGraphicsView_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_EventFilter
+func miqt_exec_callback_QGraphicsView_EventFilter(self *C.QGraphicsView, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(param1))
+	slotval2 := UnsafeNewQEvent(unsafe.Pointer(param2))
+
+	virtualReturn := gofunc((&QGraphicsView{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QGraphicsView) callVirtualBase_ViewportSizeHint() *QSize {
+
+	_ret := C.QGraphicsView_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h))
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QGraphicsView) OnViewportSizeHint(slot func(super func() *QSize) *QSize) {
+	C.QGraphicsView_override_virtual_ViewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsView_ViewportSizeHint
+func miqt_exec_callback_QGraphicsView_ViewportSizeHint(self *C.QGraphicsView, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QGraphicsView{h: self}).callVirtualBase_ViewportSizeHint)
+
+	return virtualReturn.cPointer()
+
+}
+
 // Delete this object from C++ memory.
 func (this *QGraphicsView) Delete() {
-	C.QGraphicsView_Delete(this.h)
+	C.QGraphicsView_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

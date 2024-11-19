@@ -26,11 +26,11 @@ typedef struct QsciScintillaBase QsciScintillaBase;
 typedef struct QsciStyle QsciStyle;
 #endif
 
-QsciStyle* QsciStyle_new();
-QsciStyle* QsciStyle_new2(int style, struct miqt_string description, QColor* color, QColor* paper, QFont* font);
-QsciStyle* QsciStyle_new3(QsciStyle* param1);
-QsciStyle* QsciStyle_new4(int style);
-QsciStyle* QsciStyle_new5(int style, struct miqt_string description, QColor* color, QColor* paper, QFont* font, bool eolFill);
+void QsciStyle_new(QsciStyle** outptr_QsciStyle);
+void QsciStyle_new2(int style, struct miqt_string description, QColor* color, QColor* paper, QFont* font, QsciStyle** outptr_QsciStyle);
+void QsciStyle_new3(QsciStyle* param1, QsciStyle** outptr_QsciStyle);
+void QsciStyle_new4(int style, QsciStyle** outptr_QsciStyle);
+void QsciStyle_new5(int style, struct miqt_string description, QColor* color, QColor* paper, QFont* font, bool eolFill, QsciStyle** outptr_QsciStyle);
 void QsciStyle_Apply(const QsciStyle* self, QsciScintillaBase* sci);
 void QsciStyle_SetStyle(QsciStyle* self, int style);
 int QsciStyle_Style(const QsciStyle* self);
@@ -53,7 +53,7 @@ bool QsciStyle_Changeable(const QsciStyle* self);
 void QsciStyle_SetHotspot(QsciStyle* self, bool hotspot);
 bool QsciStyle_Hotspot(const QsciStyle* self);
 void QsciStyle_Refresh(QsciStyle* self);
-void QsciStyle_Delete(QsciStyle* self);
+void QsciStyle_Delete(QsciStyle* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

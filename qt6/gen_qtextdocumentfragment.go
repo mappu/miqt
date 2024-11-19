@@ -14,7 +14,8 @@ import (
 )
 
 type QTextDocumentFragment struct {
-	h *C.QTextDocumentFragment
+	h          *C.QTextDocumentFragment
+	isSubclass bool
 }
 
 func (this *QTextDocumentFragment) cPointer() *C.QTextDocumentFragment {
@@ -31,6 +32,7 @@ func (this *QTextDocumentFragment) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQTextDocumentFragment constructs the type using only CGO pointers.
 func newQTextDocumentFragment(h *C.QTextDocumentFragment) *QTextDocumentFragment {
 	if h == nil {
 		return nil
@@ -38,32 +40,53 @@ func newQTextDocumentFragment(h *C.QTextDocumentFragment) *QTextDocumentFragment
 	return &QTextDocumentFragment{h: h}
 }
 
+// UnsafeNewQTextDocumentFragment constructs the type using only unsafe pointers.
 func UnsafeNewQTextDocumentFragment(h unsafe.Pointer) *QTextDocumentFragment {
-	return newQTextDocumentFragment((*C.QTextDocumentFragment)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QTextDocumentFragment{h: (*C.QTextDocumentFragment)(h)}
 }
 
 // NewQTextDocumentFragment constructs a new QTextDocumentFragment object.
 func NewQTextDocumentFragment() *QTextDocumentFragment {
-	ret := C.QTextDocumentFragment_new()
-	return newQTextDocumentFragment(ret)
+	var outptr_QTextDocumentFragment *C.QTextDocumentFragment = nil
+
+	C.QTextDocumentFragment_new(&outptr_QTextDocumentFragment)
+	ret := newQTextDocumentFragment(outptr_QTextDocumentFragment)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextDocumentFragment2 constructs a new QTextDocumentFragment object.
 func NewQTextDocumentFragment2(document *QTextDocument) *QTextDocumentFragment {
-	ret := C.QTextDocumentFragment_new2(document.cPointer())
-	return newQTextDocumentFragment(ret)
+	var outptr_QTextDocumentFragment *C.QTextDocumentFragment = nil
+
+	C.QTextDocumentFragment_new2(document.cPointer(), &outptr_QTextDocumentFragment)
+	ret := newQTextDocumentFragment(outptr_QTextDocumentFragment)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextDocumentFragment3 constructs a new QTextDocumentFragment object.
 func NewQTextDocumentFragment3(rangeVal *QTextCursor) *QTextDocumentFragment {
-	ret := C.QTextDocumentFragment_new3(rangeVal.cPointer())
-	return newQTextDocumentFragment(ret)
+	var outptr_QTextDocumentFragment *C.QTextDocumentFragment = nil
+
+	C.QTextDocumentFragment_new3(rangeVal.cPointer(), &outptr_QTextDocumentFragment)
+	ret := newQTextDocumentFragment(outptr_QTextDocumentFragment)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextDocumentFragment4 constructs a new QTextDocumentFragment object.
 func NewQTextDocumentFragment4(rhs *QTextDocumentFragment) *QTextDocumentFragment {
-	ret := C.QTextDocumentFragment_new4(rhs.cPointer())
-	return newQTextDocumentFragment(ret)
+	var outptr_QTextDocumentFragment *C.QTextDocumentFragment = nil
+
+	C.QTextDocumentFragment_new4(rhs.cPointer(), &outptr_QTextDocumentFragment)
+	ret := newQTextDocumentFragment(outptr_QTextDocumentFragment)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QTextDocumentFragment) OperatorAssign(rhs *QTextDocumentFragment) {
@@ -166,7 +189,7 @@ func QTextDocumentFragment_FromMarkdown2(markdown string, features QTextDocument
 
 // Delete this object from C++ memory.
 func (this *QTextDocumentFragment) Delete() {
-	C.QTextDocumentFragment_Delete(this.h)
+	C.QTextDocumentFragment_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -91,7 +91,8 @@ const (
 )
 
 type QCamera struct {
-	h *C.QCamera
+	h          *C.QCamera
+	isSubclass bool
 	*QMediaObject
 }
 
@@ -109,21 +110,35 @@ func (this *QCamera) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQCamera(h *C.QCamera) *QCamera {
+// newQCamera constructs the type using only CGO pointers.
+func newQCamera(h *C.QCamera, h_QMediaObject *C.QMediaObject, h_QObject *C.QObject) *QCamera {
 	if h == nil {
 		return nil
 	}
-	return &QCamera{h: h, QMediaObject: UnsafeNewQMediaObject(unsafe.Pointer(h))}
+	return &QCamera{h: h,
+		QMediaObject: newQMediaObject(h_QMediaObject, h_QObject)}
 }
 
-func UnsafeNewQCamera(h unsafe.Pointer) *QCamera {
-	return newQCamera((*C.QCamera)(h))
+// UnsafeNewQCamera constructs the type using only unsafe pointers.
+func UnsafeNewQCamera(h unsafe.Pointer, h_QMediaObject unsafe.Pointer, h_QObject unsafe.Pointer) *QCamera {
+	if h == nil {
+		return nil
+	}
+
+	return &QCamera{h: (*C.QCamera)(h),
+		QMediaObject: UnsafeNewQMediaObject(h_QMediaObject, h_QObject)}
 }
 
 // NewQCamera constructs a new QCamera object.
 func NewQCamera() *QCamera {
-	ret := C.QCamera_new()
-	return newQCamera(ret)
+	var outptr_QCamera *C.QCamera = nil
+	var outptr_QMediaObject *C.QMediaObject = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QCamera_new(&outptr_QCamera, &outptr_QMediaObject, &outptr_QObject)
+	ret := newQCamera(outptr_QCamera, outptr_QMediaObject, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCamera2 constructs a new QCamera object.
@@ -131,26 +146,50 @@ func NewQCamera2(deviceName []byte) *QCamera {
 	deviceName_alias := C.struct_miqt_string{}
 	deviceName_alias.data = (*C.char)(unsafe.Pointer(&deviceName[0]))
 	deviceName_alias.len = C.size_t(len(deviceName))
-	ret := C.QCamera_new2(deviceName_alias)
-	return newQCamera(ret)
+	var outptr_QCamera *C.QCamera = nil
+	var outptr_QMediaObject *C.QMediaObject = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QCamera_new2(deviceName_alias, &outptr_QCamera, &outptr_QMediaObject, &outptr_QObject)
+	ret := newQCamera(outptr_QCamera, outptr_QMediaObject, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCamera3 constructs a new QCamera object.
 func NewQCamera3(cameraInfo *QCameraInfo) *QCamera {
-	ret := C.QCamera_new3(cameraInfo.cPointer())
-	return newQCamera(ret)
+	var outptr_QCamera *C.QCamera = nil
+	var outptr_QMediaObject *C.QMediaObject = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QCamera_new3(cameraInfo.cPointer(), &outptr_QCamera, &outptr_QMediaObject, &outptr_QObject)
+	ret := newQCamera(outptr_QCamera, outptr_QMediaObject, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCamera4 constructs a new QCamera object.
 func NewQCamera4(position QCamera__Position) *QCamera {
-	ret := C.QCamera_new4((C.int)(position))
-	return newQCamera(ret)
+	var outptr_QCamera *C.QCamera = nil
+	var outptr_QMediaObject *C.QMediaObject = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QCamera_new4((C.int)(position), &outptr_QCamera, &outptr_QMediaObject, &outptr_QObject)
+	ret := newQCamera(outptr_QCamera, outptr_QMediaObject, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCamera5 constructs a new QCamera object.
 func NewQCamera5(parent *qt.QObject) *QCamera {
-	ret := C.QCamera_new5((*C.QObject)(parent.UnsafePointer()))
-	return newQCamera(ret)
+	var outptr_QCamera *C.QCamera = nil
+	var outptr_QMediaObject *C.QMediaObject = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QCamera_new5((*C.QObject)(parent.UnsafePointer()), &outptr_QCamera, &outptr_QMediaObject, &outptr_QObject)
+	ret := newQCamera(outptr_QCamera, outptr_QMediaObject, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCamera6 constructs a new QCamera object.
@@ -158,20 +197,38 @@ func NewQCamera6(deviceName []byte, parent *qt.QObject) *QCamera {
 	deviceName_alias := C.struct_miqt_string{}
 	deviceName_alias.data = (*C.char)(unsafe.Pointer(&deviceName[0]))
 	deviceName_alias.len = C.size_t(len(deviceName))
-	ret := C.QCamera_new6(deviceName_alias, (*C.QObject)(parent.UnsafePointer()))
-	return newQCamera(ret)
+	var outptr_QCamera *C.QCamera = nil
+	var outptr_QMediaObject *C.QMediaObject = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QCamera_new6(deviceName_alias, (*C.QObject)(parent.UnsafePointer()), &outptr_QCamera, &outptr_QMediaObject, &outptr_QObject)
+	ret := newQCamera(outptr_QCamera, outptr_QMediaObject, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCamera7 constructs a new QCamera object.
 func NewQCamera7(cameraInfo *QCameraInfo, parent *qt.QObject) *QCamera {
-	ret := C.QCamera_new7(cameraInfo.cPointer(), (*C.QObject)(parent.UnsafePointer()))
-	return newQCamera(ret)
+	var outptr_QCamera *C.QCamera = nil
+	var outptr_QMediaObject *C.QMediaObject = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QCamera_new7(cameraInfo.cPointer(), (*C.QObject)(parent.UnsafePointer()), &outptr_QCamera, &outptr_QMediaObject, &outptr_QObject)
+	ret := newQCamera(outptr_QCamera, outptr_QMediaObject, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCamera8 constructs a new QCamera object.
 func NewQCamera8(position QCamera__Position, parent *qt.QObject) *QCamera {
-	ret := C.QCamera_new8((C.int)(position), (*C.QObject)(parent.UnsafePointer()))
-	return newQCamera(ret)
+	var outptr_QCamera *C.QCamera = nil
+	var outptr_QMediaObject *C.QMediaObject = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QCamera_new8((C.int)(position), (*C.QObject)(parent.UnsafePointer()), &outptr_QCamera, &outptr_QMediaObject, &outptr_QObject)
+	ret := newQCamera(outptr_QCamera, outptr_QMediaObject, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QCamera) MetaObject() *qt.QMetaObject {
@@ -246,15 +303,15 @@ func (this *QCamera) IsCaptureModeSupported(mode QCamera__CaptureMode) bool {
 }
 
 func (this *QCamera) Exposure() *QCameraExposure {
-	return UnsafeNewQCameraExposure(unsafe.Pointer(C.QCamera_Exposure(this.h)))
+	return UnsafeNewQCameraExposure(unsafe.Pointer(C.QCamera_Exposure(this.h)), nil)
 }
 
 func (this *QCamera) Focus() *QCameraFocus {
-	return UnsafeNewQCameraFocus(unsafe.Pointer(C.QCamera_Focus(this.h)))
+	return UnsafeNewQCameraFocus(unsafe.Pointer(C.QCamera_Focus(this.h)), nil)
 }
 
 func (this *QCamera) ImageProcessing() *QCameraImageProcessing {
-	return UnsafeNewQCameraImageProcessing(unsafe.Pointer(C.QCamera_ImageProcessing(this.h)))
+	return UnsafeNewQCameraImageProcessing(unsafe.Pointer(C.QCamera_ImageProcessing(this.h)), nil)
 }
 
 func (this *QCamera) SetViewfinder(viewfinder *QVideoWidget) {
@@ -665,9 +722,122 @@ func (this *QCamera) SupportedViewfinderPixelFormats1(settings *QCameraViewfinde
 	return _ret
 }
 
+func (this *QCamera) callVirtualBase_Availability() QMultimedia__AvailabilityStatus {
+
+	return (QMultimedia__AvailabilityStatus)(C.QCamera_virtualbase_Availability(unsafe.Pointer(this.h)))
+
+}
+func (this *QCamera) OnAvailability(slot func(super func() QMultimedia__AvailabilityStatus) QMultimedia__AvailabilityStatus) {
+	C.QCamera_override_virtual_Availability(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QCamera_Availability
+func miqt_exec_callback_QCamera_Availability(self *C.QCamera, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QMultimedia__AvailabilityStatus) QMultimedia__AvailabilityStatus)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QCamera{h: self}).callVirtualBase_Availability)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QCamera) callVirtualBase_IsAvailable() bool {
+
+	return (bool)(C.QCamera_virtualbase_IsAvailable(unsafe.Pointer(this.h)))
+
+}
+func (this *QCamera) OnIsAvailable(slot func(super func() bool) bool) {
+	C.QCamera_override_virtual_IsAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QCamera_IsAvailable
+func miqt_exec_callback_QCamera_IsAvailable(self *C.QCamera, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QCamera{h: self}).callVirtualBase_IsAvailable)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QCamera) callVirtualBase_Service() *QMediaService {
+
+	return UnsafeNewQMediaService(unsafe.Pointer(C.QCamera_virtualbase_Service(unsafe.Pointer(this.h))), nil)
+}
+func (this *QCamera) OnService(slot func(super func() *QMediaService) *QMediaService) {
+	C.QCamera_override_virtual_Service(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QCamera_Service
+func miqt_exec_callback_QCamera_Service(self *C.QCamera, cb C.intptr_t) *C.QMediaService {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QMediaService) *QMediaService)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QCamera{h: self}).callVirtualBase_Service)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QCamera) callVirtualBase_Bind(param1 *qt.QObject) bool {
+
+	return (bool)(C.QCamera_virtualbase_Bind(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer())))
+
+}
+func (this *QCamera) OnBind(slot func(super func(param1 *qt.QObject) bool, param1 *qt.QObject) bool) {
+	C.QCamera_override_virtual_Bind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QCamera_Bind
+func miqt_exec_callback_QCamera_Bind(self *C.QCamera, cb C.intptr_t, param1 *C.QObject) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QObject) bool, param1 *qt.QObject) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(param1))
+
+	virtualReturn := gofunc((&QCamera{h: self}).callVirtualBase_Bind, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QCamera) callVirtualBase_Unbind(param1 *qt.QObject) {
+
+	C.QCamera_virtualbase_Unbind(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()))
+
+}
+func (this *QCamera) OnUnbind(slot func(super func(param1 *qt.QObject), param1 *qt.QObject)) {
+	C.QCamera_override_virtual_Unbind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QCamera_Unbind
+func miqt_exec_callback_QCamera_Unbind(self *C.QCamera, cb C.intptr_t, param1 *C.QObject) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QObject), param1 *qt.QObject))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(param1))
+
+	gofunc((&QCamera{h: self}).callVirtualBase_Unbind, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QCamera) Delete() {
-	C.QCamera_Delete(this.h)
+	C.QCamera_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -680,7 +850,8 @@ func (this *QCamera) GoGC() {
 }
 
 type QCamera__FrameRateRange struct {
-	h *C.QCamera__FrameRateRange
+	h          *C.QCamera__FrameRateRange
+	isSubclass bool
 }
 
 func (this *QCamera__FrameRateRange) cPointer() *C.QCamera__FrameRateRange {
@@ -697,6 +868,7 @@ func (this *QCamera__FrameRateRange) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCamera__FrameRateRange constructs the type using only CGO pointers.
 func newQCamera__FrameRateRange(h *C.QCamera__FrameRateRange) *QCamera__FrameRateRange {
 	if h == nil {
 		return nil
@@ -704,31 +876,48 @@ func newQCamera__FrameRateRange(h *C.QCamera__FrameRateRange) *QCamera__FrameRat
 	return &QCamera__FrameRateRange{h: h}
 }
 
+// UnsafeNewQCamera__FrameRateRange constructs the type using only unsafe pointers.
 func UnsafeNewQCamera__FrameRateRange(h unsafe.Pointer) *QCamera__FrameRateRange {
-	return newQCamera__FrameRateRange((*C.QCamera__FrameRateRange)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCamera__FrameRateRange{h: (*C.QCamera__FrameRateRange)(h)}
 }
 
 // NewQCamera__FrameRateRange constructs a new QCamera::FrameRateRange object.
 func NewQCamera__FrameRateRange() *QCamera__FrameRateRange {
-	ret := C.QCamera__FrameRateRange_new()
-	return newQCamera__FrameRateRange(ret)
+	var outptr_QCamera__FrameRateRange *C.QCamera__FrameRateRange = nil
+
+	C.QCamera__FrameRateRange_new(&outptr_QCamera__FrameRateRange)
+	ret := newQCamera__FrameRateRange(outptr_QCamera__FrameRateRange)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCamera__FrameRateRange2 constructs a new QCamera::FrameRateRange object.
 func NewQCamera__FrameRateRange2(minimum float64, maximum float64) *QCamera__FrameRateRange {
-	ret := C.QCamera__FrameRateRange_new2((C.double)(minimum), (C.double)(maximum))
-	return newQCamera__FrameRateRange(ret)
+	var outptr_QCamera__FrameRateRange *C.QCamera__FrameRateRange = nil
+
+	C.QCamera__FrameRateRange_new2((C.double)(minimum), (C.double)(maximum), &outptr_QCamera__FrameRateRange)
+	ret := newQCamera__FrameRateRange(outptr_QCamera__FrameRateRange)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCamera__FrameRateRange3 constructs a new QCamera::FrameRateRange object.
 func NewQCamera__FrameRateRange3(param1 *QCamera__FrameRateRange) *QCamera__FrameRateRange {
-	ret := C.QCamera__FrameRateRange_new3(param1.cPointer())
-	return newQCamera__FrameRateRange(ret)
+	var outptr_QCamera__FrameRateRange *C.QCamera__FrameRateRange = nil
+
+	C.QCamera__FrameRateRange_new3(param1.cPointer(), &outptr_QCamera__FrameRateRange)
+	ret := newQCamera__FrameRateRange(outptr_QCamera__FrameRateRange)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QCamera__FrameRateRange) Delete() {
-	C.QCamera__FrameRateRange_Delete(this.h)
+	C.QCamera__FrameRateRange_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

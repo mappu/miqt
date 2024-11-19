@@ -7,12 +7,14 @@
 #include "gen_qfontinfo.h"
 #include "_cgo_export.h"
 
-QFontInfo* QFontInfo_new(QFont* param1) {
-	return new QFontInfo(*param1);
+void QFontInfo_new(QFont* param1, QFontInfo** outptr_QFontInfo) {
+	QFontInfo* ret = new QFontInfo(*param1);
+	*outptr_QFontInfo = ret;
 }
 
-QFontInfo* QFontInfo_new2(QFontInfo* param1) {
-	return new QFontInfo(*param1);
+void QFontInfo_new2(QFontInfo* param1, QFontInfo** outptr_QFontInfo) {
+	QFontInfo* ret = new QFontInfo(*param1);
+	*outptr_QFontInfo = ret;
 }
 
 void QFontInfo_OperatorAssign(QFontInfo* self, QFontInfo* param1) {
@@ -104,7 +106,11 @@ bool QFontInfo_ExactMatch(const QFontInfo* self) {
 	return self->exactMatch();
 }
 
-void QFontInfo_Delete(QFontInfo* self) {
-	delete self;
+void QFontInfo_Delete(QFontInfo* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QFontInfo*>( self );
+	} else {
+		delete self;
+	}
 }
 

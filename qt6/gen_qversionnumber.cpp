@@ -9,34 +9,40 @@
 #include "gen_qversionnumber.h"
 #include "_cgo_export.h"
 
-QVersionNumber* QVersionNumber_new() {
-	return new QVersionNumber();
+void QVersionNumber_new(QVersionNumber** outptr_QVersionNumber) {
+	QVersionNumber* ret = new QVersionNumber();
+	*outptr_QVersionNumber = ret;
 }
 
-QVersionNumber* QVersionNumber_new2(struct miqt_array /* of int */  seg) {
+void QVersionNumber_new2(struct miqt_array /* of int */  seg, QVersionNumber** outptr_QVersionNumber) {
 	QList<int> seg_QList;
 	seg_QList.reserve(seg.len);
 	int* seg_arr = static_cast<int*>(seg.data);
 	for(size_t i = 0; i < seg.len; ++i) {
 		seg_QList.push_back(static_cast<int>(seg_arr[i]));
 	}
-	return new QVersionNumber(seg_QList);
+	QVersionNumber* ret = new QVersionNumber(seg_QList);
+	*outptr_QVersionNumber = ret;
 }
 
-QVersionNumber* QVersionNumber_new3(int maj) {
-	return new QVersionNumber(static_cast<int>(maj));
+void QVersionNumber_new3(int maj, QVersionNumber** outptr_QVersionNumber) {
+	QVersionNumber* ret = new QVersionNumber(static_cast<int>(maj));
+	*outptr_QVersionNumber = ret;
 }
 
-QVersionNumber* QVersionNumber_new4(int maj, int min) {
-	return new QVersionNumber(static_cast<int>(maj), static_cast<int>(min));
+void QVersionNumber_new4(int maj, int min, QVersionNumber** outptr_QVersionNumber) {
+	QVersionNumber* ret = new QVersionNumber(static_cast<int>(maj), static_cast<int>(min));
+	*outptr_QVersionNumber = ret;
 }
 
-QVersionNumber* QVersionNumber_new5(int maj, int min, int mic) {
-	return new QVersionNumber(static_cast<int>(maj), static_cast<int>(min), static_cast<int>(mic));
+void QVersionNumber_new5(int maj, int min, int mic, QVersionNumber** outptr_QVersionNumber) {
+	QVersionNumber* ret = new QVersionNumber(static_cast<int>(maj), static_cast<int>(min), static_cast<int>(mic));
+	*outptr_QVersionNumber = ret;
 }
 
-QVersionNumber* QVersionNumber_new6(QVersionNumber* param1) {
-	return new QVersionNumber(*param1);
+void QVersionNumber_new6(QVersionNumber* param1, QVersionNumber** outptr_QVersionNumber) {
+	QVersionNumber* ret = new QVersionNumber(*param1);
+	*outptr_QVersionNumber = ret;
 }
 
 bool QVersionNumber_IsNull(const QVersionNumber* self) {
@@ -116,16 +122,22 @@ QVersionNumber* QVersionNumber_FromString2(QAnyStringView* stringVal, ptrdiff_t*
 	return new QVersionNumber(QVersionNumber::fromString(*stringVal, (qsizetype*)(suffixIndex)));
 }
 
-void QVersionNumber_Delete(QVersionNumber* self) {
-	delete self;
+void QVersionNumber_Delete(QVersionNumber* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QVersionNumber*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QTypeRevision* QTypeRevision_new() {
-	return new QTypeRevision();
+void QTypeRevision_new(QTypeRevision** outptr_QTypeRevision) {
+	QTypeRevision* ret = new QTypeRevision();
+	*outptr_QTypeRevision = ret;
 }
 
-QTypeRevision* QTypeRevision_new2(QTypeRevision* param1) {
-	return new QTypeRevision(*param1);
+void QTypeRevision_new2(QTypeRevision* param1, QTypeRevision** outptr_QTypeRevision) {
+	QTypeRevision* ret = new QTypeRevision(*param1);
+	*outptr_QTypeRevision = ret;
 }
 
 QTypeRevision* QTypeRevision_Zero() {
@@ -154,7 +166,11 @@ bool QTypeRevision_IsValid(const QTypeRevision* self) {
 	return self->isValid();
 }
 
-void QTypeRevision_Delete(QTypeRevision* self) {
-	delete self;
+void QTypeRevision_Delete(QTypeRevision* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QTypeRevision*>( self );
+	} else {
+		delete self;
+	}
 }
 

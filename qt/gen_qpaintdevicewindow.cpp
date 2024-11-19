@@ -1,10 +1,17 @@
+#include <QEvent>
+#include <QExposeEvent>
 #include <QMetaObject>
+#include <QObject>
+#include <QPaintDevice>
 #include <QPaintDeviceWindow>
+#include <QPaintEvent>
 #include <QRect>
 #include <QRegion>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QSurface>
+#include <QWindow>
 #include <qpaintdevicewindow.h>
 #include "gen_qpaintdevicewindow.h"
 #include "_cgo_export.h"
@@ -95,7 +102,11 @@ struct miqt_string QPaintDeviceWindow_TrUtf83(const char* s, const char* c, int 
 	return _ms;
 }
 
-void QPaintDeviceWindow_Delete(QPaintDeviceWindow* self) {
-	delete self;
+void QPaintDeviceWindow_Delete(QPaintDeviceWindow* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QPaintDeviceWindow*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -1,6 +1,8 @@
 #include <QAbstractAnimation>
 #include <QAnimationGroup>
+#include <QEvent>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -114,7 +116,11 @@ struct miqt_string QAnimationGroup_TrUtf83(const char* s, const char* c, int n) 
 	return _ms;
 }
 
-void QAnimationGroup_Delete(QAnimationGroup* self) {
-	delete self;
+void QAnimationGroup_Delete(QAnimationGroup* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAnimationGroup*>( self );
+	} else {
+		delete self;
+	}
 }
 

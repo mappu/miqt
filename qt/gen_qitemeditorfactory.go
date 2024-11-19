@@ -10,11 +10,13 @@ import "C"
 
 import (
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
 type QItemEditorCreatorBase struct {
-	h *C.QItemEditorCreatorBase
+	h          *C.QItemEditorCreatorBase
+	isSubclass bool
 }
 
 func (this *QItemEditorCreatorBase) cPointer() *C.QItemEditorCreatorBase {
@@ -31,6 +33,7 @@ func (this *QItemEditorCreatorBase) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQItemEditorCreatorBase constructs the type using only CGO pointers.
 func newQItemEditorCreatorBase(h *C.QItemEditorCreatorBase) *QItemEditorCreatorBase {
 	if h == nil {
 		return nil
@@ -38,12 +41,17 @@ func newQItemEditorCreatorBase(h *C.QItemEditorCreatorBase) *QItemEditorCreatorB
 	return &QItemEditorCreatorBase{h: h}
 }
 
+// UnsafeNewQItemEditorCreatorBase constructs the type using only unsafe pointers.
 func UnsafeNewQItemEditorCreatorBase(h unsafe.Pointer) *QItemEditorCreatorBase {
-	return newQItemEditorCreatorBase((*C.QItemEditorCreatorBase)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QItemEditorCreatorBase{h: (*C.QItemEditorCreatorBase)(h)}
 }
 
 func (this *QItemEditorCreatorBase) CreateWidget(parent *QWidget) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QItemEditorCreatorBase_CreateWidget(this.h, parent.cPointer())))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QItemEditorCreatorBase_CreateWidget(this.h, parent.cPointer())), nil, nil)
 }
 
 func (this *QItemEditorCreatorBase) ValuePropertyName() []byte {
@@ -59,7 +67,7 @@ func (this *QItemEditorCreatorBase) OperatorAssign(param1 *QItemEditorCreatorBas
 
 // Delete this object from C++ memory.
 func (this *QItemEditorCreatorBase) Delete() {
-	C.QItemEditorCreatorBase_Delete(this.h)
+	C.QItemEditorCreatorBase_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -72,7 +80,8 @@ func (this *QItemEditorCreatorBase) GoGC() {
 }
 
 type QItemEditorFactory struct {
-	h *C.QItemEditorFactory
+	h          *C.QItemEditorFactory
+	isSubclass bool
 }
 
 func (this *QItemEditorFactory) cPointer() *C.QItemEditorFactory {
@@ -89,6 +98,7 @@ func (this *QItemEditorFactory) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQItemEditorFactory constructs the type using only CGO pointers.
 func newQItemEditorFactory(h *C.QItemEditorFactory) *QItemEditorFactory {
 	if h == nil {
 		return nil
@@ -96,24 +106,37 @@ func newQItemEditorFactory(h *C.QItemEditorFactory) *QItemEditorFactory {
 	return &QItemEditorFactory{h: h}
 }
 
+// UnsafeNewQItemEditorFactory constructs the type using only unsafe pointers.
 func UnsafeNewQItemEditorFactory(h unsafe.Pointer) *QItemEditorFactory {
-	return newQItemEditorFactory((*C.QItemEditorFactory)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QItemEditorFactory{h: (*C.QItemEditorFactory)(h)}
 }
 
 // NewQItemEditorFactory constructs a new QItemEditorFactory object.
 func NewQItemEditorFactory() *QItemEditorFactory {
-	ret := C.QItemEditorFactory_new()
-	return newQItemEditorFactory(ret)
+	var outptr_QItemEditorFactory *C.QItemEditorFactory = nil
+
+	C.QItemEditorFactory_new(&outptr_QItemEditorFactory)
+	ret := newQItemEditorFactory(outptr_QItemEditorFactory)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQItemEditorFactory2 constructs a new QItemEditorFactory object.
 func NewQItemEditorFactory2(param1 *QItemEditorFactory) *QItemEditorFactory {
-	ret := C.QItemEditorFactory_new2(param1.cPointer())
-	return newQItemEditorFactory(ret)
+	var outptr_QItemEditorFactory *C.QItemEditorFactory = nil
+
+	C.QItemEditorFactory_new2(param1.cPointer(), &outptr_QItemEditorFactory)
+	ret := newQItemEditorFactory(outptr_QItemEditorFactory)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QItemEditorFactory) CreateEditor(userType int, parent *QWidget) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QItemEditorFactory_CreateEditor(this.h, (C.int)(userType), parent.cPointer())))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QItemEditorFactory_CreateEditor(this.h, (C.int)(userType), parent.cPointer())), nil, nil)
 }
 
 func (this *QItemEditorFactory) ValuePropertyName(userType int) []byte {
@@ -135,9 +158,65 @@ func QItemEditorFactory_SetDefaultFactory(factory *QItemEditorFactory) {
 	C.QItemEditorFactory_SetDefaultFactory(factory.cPointer())
 }
 
+func (this *QItemEditorFactory) callVirtualBase_CreateEditor(userType int, parent *QWidget) *QWidget {
+
+	return UnsafeNewQWidget(unsafe.Pointer(C.QItemEditorFactory_virtualbase_CreateEditor(unsafe.Pointer(this.h), (C.int)(userType), parent.cPointer())), nil, nil)
+}
+func (this *QItemEditorFactory) OnCreateEditor(slot func(super func(userType int, parent *QWidget) *QWidget, userType int, parent *QWidget) *QWidget) {
+	C.QItemEditorFactory_override_virtual_CreateEditor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QItemEditorFactory_CreateEditor
+func miqt_exec_callback_QItemEditorFactory_CreateEditor(self *C.QItemEditorFactory, cb C.intptr_t, userType C.int, parent *C.QWidget) *C.QWidget {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(userType int, parent *QWidget) *QWidget, userType int, parent *QWidget) *QWidget)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(userType)
+
+	slotval2 := UnsafeNewQWidget(unsafe.Pointer(parent), nil, nil)
+
+	virtualReturn := gofunc((&QItemEditorFactory{h: self}).callVirtualBase_CreateEditor, slotval1, slotval2)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QItemEditorFactory) callVirtualBase_ValuePropertyName(userType int) []byte {
+
+	var _bytearray C.struct_miqt_string = C.QItemEditorFactory_virtualbase_ValuePropertyName(unsafe.Pointer(this.h), (C.int)(userType))
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
+}
+func (this *QItemEditorFactory) OnValuePropertyName(slot func(super func(userType int) []byte, userType int) []byte) {
+	C.QItemEditorFactory_override_virtual_ValuePropertyName(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QItemEditorFactory_ValuePropertyName
+func miqt_exec_callback_QItemEditorFactory_ValuePropertyName(self *C.QItemEditorFactory, cb C.intptr_t, userType C.int) C.struct_miqt_string {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(userType int) []byte, userType int) []byte)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(userType)
+
+	virtualReturn := gofunc((&QItemEditorFactory{h: self}).callVirtualBase_ValuePropertyName, slotval1)
+	virtualReturn_alias := C.struct_miqt_string{}
+	virtualReturn_alias.data = (*C.char)(unsafe.Pointer(&virtualReturn[0]))
+	virtualReturn_alias.len = C.size_t(len(virtualReturn))
+
+	return virtualReturn_alias
+
+}
+
 // Delete this object from C++ memory.
 func (this *QItemEditorFactory) Delete() {
-	C.QItemEditorFactory_Delete(this.h)
+	C.QItemEditorFactory_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

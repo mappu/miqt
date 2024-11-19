@@ -16,7 +16,8 @@ import (
 )
 
 type QCameraCaptureBufferFormatControl struct {
-	h *C.QCameraCaptureBufferFormatControl
+	h          *C.QCameraCaptureBufferFormatControl
+	isSubclass bool
 	*QMediaControl
 }
 
@@ -34,15 +35,23 @@ func (this *QCameraCaptureBufferFormatControl) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQCameraCaptureBufferFormatControl(h *C.QCameraCaptureBufferFormatControl) *QCameraCaptureBufferFormatControl {
+// newQCameraCaptureBufferFormatControl constructs the type using only CGO pointers.
+func newQCameraCaptureBufferFormatControl(h *C.QCameraCaptureBufferFormatControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QCameraCaptureBufferFormatControl {
 	if h == nil {
 		return nil
 	}
-	return &QCameraCaptureBufferFormatControl{h: h, QMediaControl: UnsafeNewQMediaControl(unsafe.Pointer(h))}
+	return &QCameraCaptureBufferFormatControl{h: h,
+		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
 }
 
-func UnsafeNewQCameraCaptureBufferFormatControl(h unsafe.Pointer) *QCameraCaptureBufferFormatControl {
-	return newQCameraCaptureBufferFormatControl((*C.QCameraCaptureBufferFormatControl)(h))
+// UnsafeNewQCameraCaptureBufferFormatControl constructs the type using only unsafe pointers.
+func UnsafeNewQCameraCaptureBufferFormatControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QCameraCaptureBufferFormatControl {
+	if h == nil {
+		return nil
+	}
+
+	return &QCameraCaptureBufferFormatControl{h: (*C.QCameraCaptureBufferFormatControl)(h),
+		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
 }
 
 func (this *QCameraCaptureBufferFormatControl) MetaObject() *qt.QMetaObject {
@@ -157,7 +166,7 @@ func QCameraCaptureBufferFormatControl_TrUtf83(s string, c string, n int) string
 
 // Delete this object from C++ memory.
 func (this *QCameraCaptureBufferFormatControl) Delete() {
-	C.QCameraCaptureBufferFormatControl_Delete(this.h)
+	C.QCameraCaptureBufferFormatControl_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

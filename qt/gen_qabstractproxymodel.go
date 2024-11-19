@@ -14,7 +14,8 @@ import (
 )
 
 type QAbstractProxyModel struct {
-	h *C.QAbstractProxyModel
+	h          *C.QAbstractProxyModel
+	isSubclass bool
 	*QAbstractItemModel
 }
 
@@ -32,15 +33,23 @@ func (this *QAbstractProxyModel) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAbstractProxyModel(h *C.QAbstractProxyModel) *QAbstractProxyModel {
+// newQAbstractProxyModel constructs the type using only CGO pointers.
+func newQAbstractProxyModel(h *C.QAbstractProxyModel, h_QAbstractItemModel *C.QAbstractItemModel, h_QObject *C.QObject) *QAbstractProxyModel {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractProxyModel{h: h, QAbstractItemModel: UnsafeNewQAbstractItemModel(unsafe.Pointer(h))}
+	return &QAbstractProxyModel{h: h,
+		QAbstractItemModel: newQAbstractItemModel(h_QAbstractItemModel, h_QObject)}
 }
 
-func UnsafeNewQAbstractProxyModel(h unsafe.Pointer) *QAbstractProxyModel {
-	return newQAbstractProxyModel((*C.QAbstractProxyModel)(h))
+// UnsafeNewQAbstractProxyModel constructs the type using only unsafe pointers.
+func UnsafeNewQAbstractProxyModel(h unsafe.Pointer, h_QAbstractItemModel unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractProxyModel {
+	if h == nil {
+		return nil
+	}
+
+	return &QAbstractProxyModel{h: (*C.QAbstractProxyModel)(h),
+		QAbstractItemModel: UnsafeNewQAbstractItemModel(h_QAbstractItemModel, h_QObject)}
 }
 
 func (this *QAbstractProxyModel) MetaObject() *QMetaObject {
@@ -76,7 +85,7 @@ func (this *QAbstractProxyModel) SetSourceModel(sourceModel *QAbstractItemModel)
 }
 
 func (this *QAbstractProxyModel) SourceModel() *QAbstractItemModel {
-	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QAbstractProxyModel_SourceModel(this.h)))
+	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QAbstractProxyModel_SourceModel(this.h)), nil)
 }
 
 func (this *QAbstractProxyModel) MapToSource(proxyIndex *QModelIndex) *QModelIndex {
@@ -101,15 +110,15 @@ func (this *QAbstractProxyModel) Revert() {
 	C.QAbstractProxyModel_Revert(this.h)
 }
 
-func (this *QAbstractProxyModel) Data(proxyIndex *QModelIndex) *QVariant {
-	_ret := C.QAbstractProxyModel_Data(this.h, proxyIndex.cPointer())
+func (this *QAbstractProxyModel) Data(proxyIndex *QModelIndex, role int) *QVariant {
+	_ret := C.QAbstractProxyModel_Data(this.h, proxyIndex.cPointer(), (C.int)(role))
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QAbstractProxyModel) HeaderData(section int, orientation Orientation) *QVariant {
-	_ret := C.QAbstractProxyModel_HeaderData(this.h, (C.int)(section), (C.int)(orientation))
+func (this *QAbstractProxyModel) HeaderData(section int, orientation Orientation, role int) *QVariant {
+	_ret := C.QAbstractProxyModel_HeaderData(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role))
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -137,8 +146,8 @@ func (this *QAbstractProxyModel) Flags(index *QModelIndex) ItemFlag {
 	return (ItemFlag)(C.QAbstractProxyModel_Flags(this.h, index.cPointer()))
 }
 
-func (this *QAbstractProxyModel) SetData(index *QModelIndex, value *QVariant) bool {
-	return (bool)(C.QAbstractProxyModel_SetData(this.h, index.cPointer(), value.cPointer()))
+func (this *QAbstractProxyModel) SetData(index *QModelIndex, value *QVariant, role int) bool {
+	return (bool)(C.QAbstractProxyModel_SetData(this.h, index.cPointer(), value.cPointer(), (C.int)(role)))
 }
 
 func (this *QAbstractProxyModel) SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
@@ -160,8 +169,8 @@ func (this *QAbstractProxyModel) SetItemData(index *QModelIndex, roles map[int]Q
 	return (bool)(C.QAbstractProxyModel_SetItemData(this.h, index.cPointer(), roles_mm))
 }
 
-func (this *QAbstractProxyModel) SetHeaderData(section int, orientation Orientation, value *QVariant) bool {
-	return (bool)(C.QAbstractProxyModel_SetHeaderData(this.h, (C.int)(section), (C.int)(orientation), value.cPointer()))
+func (this *QAbstractProxyModel) SetHeaderData(section int, orientation Orientation, value *QVariant, role int) bool {
+	return (bool)(C.QAbstractProxyModel_SetHeaderData(this.h, (C.int)(section), (C.int)(orientation), value.cPointer(), (C.int)(role)))
 }
 
 func (this *QAbstractProxyModel) Buddy(index *QModelIndex) *QModelIndex {
@@ -179,8 +188,8 @@ func (this *QAbstractProxyModel) FetchMore(parent *QModelIndex) {
 	C.QAbstractProxyModel_FetchMore(this.h, parent.cPointer())
 }
 
-func (this *QAbstractProxyModel) Sort(column int) {
-	C.QAbstractProxyModel_Sort(this.h, (C.int)(column))
+func (this *QAbstractProxyModel) Sort(column int, order SortOrder) {
+	C.QAbstractProxyModel_Sort(this.h, (C.int)(column), (C.int)(order))
 }
 
 func (this *QAbstractProxyModel) Span(index *QModelIndex) *QSize {
@@ -190,8 +199,8 @@ func (this *QAbstractProxyModel) Span(index *QModelIndex) *QSize {
 	return _goptr
 }
 
-func (this *QAbstractProxyModel) HasChildren() bool {
-	return (bool)(C.QAbstractProxyModel_HasChildren(this.h))
+func (this *QAbstractProxyModel) HasChildren(parent *QModelIndex) bool {
+	return (bool)(C.QAbstractProxyModel_HasChildren(this.h, parent.cPointer()))
 }
 
 func (this *QAbstractProxyModel) Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
@@ -208,7 +217,7 @@ func (this *QAbstractProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
-	return UnsafeNewQMimeData(unsafe.Pointer(C.QAbstractProxyModel_MimeData(this.h, indexes_ma)))
+	return UnsafeNewQMimeData(unsafe.Pointer(C.QAbstractProxyModel_MimeData(this.h, indexes_ma)), nil)
 }
 
 func (this *QAbstractProxyModel) CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
@@ -284,39 +293,9 @@ func QAbstractProxyModel_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QAbstractProxyModel) Data2(proxyIndex *QModelIndex, role int) *QVariant {
-	_ret := C.QAbstractProxyModel_Data2(this.h, proxyIndex.cPointer(), (C.int)(role))
-	_goptr := newQVariant(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
-}
-
-func (this *QAbstractProxyModel) HeaderData3(section int, orientation Orientation, role int) *QVariant {
-	_ret := C.QAbstractProxyModel_HeaderData3(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role))
-	_goptr := newQVariant(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
-}
-
-func (this *QAbstractProxyModel) SetData3(index *QModelIndex, value *QVariant, role int) bool {
-	return (bool)(C.QAbstractProxyModel_SetData3(this.h, index.cPointer(), value.cPointer(), (C.int)(role)))
-}
-
-func (this *QAbstractProxyModel) SetHeaderData4(section int, orientation Orientation, value *QVariant, role int) bool {
-	return (bool)(C.QAbstractProxyModel_SetHeaderData4(this.h, (C.int)(section), (C.int)(orientation), value.cPointer(), (C.int)(role)))
-}
-
-func (this *QAbstractProxyModel) Sort2(column int, order SortOrder) {
-	C.QAbstractProxyModel_Sort2(this.h, (C.int)(column), (C.int)(order))
-}
-
-func (this *QAbstractProxyModel) HasChildren1(parent *QModelIndex) bool {
-	return (bool)(C.QAbstractProxyModel_HasChildren1(this.h, parent.cPointer()))
-}
-
 // Delete this object from C++ memory.
 func (this *QAbstractProxyModel) Delete() {
-	C.QAbstractProxyModel_Delete(this.h)
+	C.QAbstractProxyModel_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

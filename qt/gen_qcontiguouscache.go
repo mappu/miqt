@@ -14,7 +14,8 @@ import (
 )
 
 type QContiguousCacheData struct {
-	h *C.QContiguousCacheData
+	h          *C.QContiguousCacheData
+	isSubclass bool
 }
 
 func (this *QContiguousCacheData) cPointer() *C.QContiguousCacheData {
@@ -31,6 +32,7 @@ func (this *QContiguousCacheData) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQContiguousCacheData constructs the type using only CGO pointers.
 func newQContiguousCacheData(h *C.QContiguousCacheData) *QContiguousCacheData {
 	if h == nil {
 		return nil
@@ -38,8 +40,13 @@ func newQContiguousCacheData(h *C.QContiguousCacheData) *QContiguousCacheData {
 	return &QContiguousCacheData{h: h}
 }
 
+// UnsafeNewQContiguousCacheData constructs the type using only unsafe pointers.
 func UnsafeNewQContiguousCacheData(h unsafe.Pointer) *QContiguousCacheData {
-	return newQContiguousCacheData((*C.QContiguousCacheData)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QContiguousCacheData{h: (*C.QContiguousCacheData)(h)}
 }
 
 func QContiguousCacheData_AllocateData(size int, alignment int) *QContiguousCacheData {
@@ -52,7 +59,7 @@ func QContiguousCacheData_FreeData(data *QContiguousCacheData) {
 
 // Delete this object from C++ memory.
 func (this *QContiguousCacheData) Delete() {
-	C.QContiguousCacheData_Delete(this.h)
+	C.QContiguousCacheData_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

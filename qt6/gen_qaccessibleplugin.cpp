@@ -55,7 +55,11 @@ struct miqt_string QAccessiblePlugin_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QAccessiblePlugin_Delete(QAccessiblePlugin* self) {
-	delete self;
+void QAccessiblePlugin_Delete(QAccessiblePlugin* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAccessiblePlugin*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -30,11 +30,11 @@ typedef struct QSizeF QSizeF;
 typedef struct QVector2D QVector2D;
 #endif
 
-QEventPoint* QEventPoint_new();
-QEventPoint* QEventPoint_new2(int pointId, uint8_t state, QPointF* scenePosition, QPointF* globalPosition);
-QEventPoint* QEventPoint_new3(QEventPoint* other);
-QEventPoint* QEventPoint_new4(int id);
-QEventPoint* QEventPoint_new5(int id, QPointingDevice* device);
+void QEventPoint_new(QEventPoint** outptr_QEventPoint);
+void QEventPoint_new2(int pointId, uint8_t state, QPointF* scenePosition, QPointF* globalPosition, QEventPoint** outptr_QEventPoint);
+void QEventPoint_new3(QEventPoint* other, QEventPoint** outptr_QEventPoint);
+void QEventPoint_new4(int id, QEventPoint** outptr_QEventPoint);
+void QEventPoint_new5(int id, QPointingDevice* device, QEventPoint** outptr_QEventPoint);
 void QEventPoint_OperatorAssign(QEventPoint* self, QEventPoint* other);
 bool QEventPoint_OperatorEqual(const QEventPoint* self, QEventPoint* other);
 bool QEventPoint_OperatorNotEqual(const QEventPoint* self, QEventPoint* other);
@@ -79,7 +79,7 @@ QSizeF* QEventPoint_EllipseDiameters(const QEventPoint* self);
 bool QEventPoint_IsAccepted(const QEventPoint* self);
 void QEventPoint_SetAccepted(QEventPoint* self);
 void QEventPoint_SetAccepted1(QEventPoint* self, bool accepted);
-void QEventPoint_Delete(QEventPoint* self);
+void QEventPoint_Delete(QEventPoint* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

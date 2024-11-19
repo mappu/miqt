@@ -1,4 +1,5 @@
 #include <QMetaObject>
+#include <QObject>
 #include <QPicture>
 #include <QPictureFormatPlugin>
 #include <QString>
@@ -99,7 +100,11 @@ struct miqt_string QPictureFormatPlugin_TrUtf83(const char* s, const char* c, in
 	return _ms;
 }
 
-void QPictureFormatPlugin_Delete(QPictureFormatPlugin* self) {
-	delete self;
+void QPictureFormatPlugin_Delete(QPictureFormatPlugin* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QPictureFormatPlugin*>( self );
+	} else {
+		delete self;
+	}
 }
 

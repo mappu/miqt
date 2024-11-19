@@ -15,23 +15,31 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QChildEvent;
+class QEvent;
+class QMetaMethod;
 class QMetaObject;
 class QNetworkConfiguration;
 class QNetworkInterface;
 class QNetworkSession;
 class QObject;
+class QTimerEvent;
 class QVariant;
 #else
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QNetworkConfiguration QNetworkConfiguration;
 typedef struct QNetworkInterface QNetworkInterface;
 typedef struct QNetworkSession QNetworkSession;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 #endif
 
-QNetworkSession* QNetworkSession_new(QNetworkConfiguration* connConfig);
-QNetworkSession* QNetworkSession_new2(QNetworkConfiguration* connConfig, QObject* parent);
+void QNetworkSession_new(QNetworkConfiguration* connConfig, QNetworkSession** outptr_QNetworkSession, QObject** outptr_QObject);
+void QNetworkSession_new2(QNetworkConfiguration* connConfig, QObject* parent, QNetworkSession** outptr_QNetworkSession, QObject** outptr_QObject);
 QMetaObject* QNetworkSession_MetaObject(const QNetworkSession* self);
 void* QNetworkSession_Metacast(QNetworkSession* self, const char* param1);
 struct miqt_string QNetworkSession_Tr(const char* s);
@@ -70,12 +78,28 @@ void QNetworkSession_NewConfigurationActivated(QNetworkSession* self);
 void QNetworkSession_connect_NewConfigurationActivated(QNetworkSession* self, intptr_t slot);
 void QNetworkSession_UsagePoliciesChanged(QNetworkSession* self, int usagePolicies);
 void QNetworkSession_connect_UsagePoliciesChanged(QNetworkSession* self, intptr_t slot);
+void QNetworkSession_ConnectNotify(QNetworkSession* self, QMetaMethod* signal);
+void QNetworkSession_DisconnectNotify(QNetworkSession* self, QMetaMethod* signal);
 struct miqt_string QNetworkSession_Tr2(const char* s, const char* c);
 struct miqt_string QNetworkSession_Tr3(const char* s, const char* c, int n);
 struct miqt_string QNetworkSession_TrUtf82(const char* s, const char* c);
 struct miqt_string QNetworkSession_TrUtf83(const char* s, const char* c, int n);
 bool QNetworkSession_WaitForOpened1(QNetworkSession* self, int msecs);
-void QNetworkSession_Delete(QNetworkSession* self);
+void QNetworkSession_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QNetworkSession_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QNetworkSession_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QNetworkSession_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QNetworkSession_override_virtual_Event(void* self, intptr_t slot);
+bool QNetworkSession_virtualbase_Event(void* self, QEvent* event);
+void QNetworkSession_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QNetworkSession_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QNetworkSession_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QNetworkSession_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QNetworkSession_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QNetworkSession_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QNetworkSession_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QNetworkSession_virtualbase_CustomEvent(void* self, QEvent* event);
+void QNetworkSession_Delete(QNetworkSession* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

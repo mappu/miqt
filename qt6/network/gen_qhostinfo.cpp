@@ -8,16 +8,19 @@
 #include "gen_qhostinfo.h"
 #include "_cgo_export.h"
 
-QHostInfo* QHostInfo_new() {
-	return new QHostInfo();
+void QHostInfo_new(QHostInfo** outptr_QHostInfo) {
+	QHostInfo* ret = new QHostInfo();
+	*outptr_QHostInfo = ret;
 }
 
-QHostInfo* QHostInfo_new2(QHostInfo* d) {
-	return new QHostInfo(*d);
+void QHostInfo_new2(QHostInfo* d, QHostInfo** outptr_QHostInfo) {
+	QHostInfo* ret = new QHostInfo(*d);
+	*outptr_QHostInfo = ret;
 }
 
-QHostInfo* QHostInfo_new3(int lookupId) {
-	return new QHostInfo(static_cast<int>(lookupId));
+void QHostInfo_new3(int lookupId, QHostInfo** outptr_QHostInfo) {
+	QHostInfo* ret = new QHostInfo(static_cast<int>(lookupId));
+	*outptr_QHostInfo = ret;
 }
 
 void QHostInfo_OperatorAssign(QHostInfo* self, QHostInfo* d) {
@@ -131,7 +134,11 @@ struct miqt_string QHostInfo_LocalDomainName() {
 	return _ms;
 }
 
-void QHostInfo_Delete(QHostInfo* self) {
-	delete self;
+void QHostInfo_Delete(QHostInfo* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QHostInfo*>( self );
+	} else {
+		delete self;
+	}
 }
 

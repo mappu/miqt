@@ -20,8 +20,8 @@ class QThreadStorageData;
 typedef struct QThreadStorageData QThreadStorageData;
 #endif
 
-QThreadStorageData* QThreadStorageData_new(QThreadStorageData* param1);
-void QThreadStorageData_Delete(QThreadStorageData* self);
+void QThreadStorageData_new(QThreadStorageData* param1, QThreadStorageData** outptr_QThreadStorageData);
+void QThreadStorageData_Delete(QThreadStorageData* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

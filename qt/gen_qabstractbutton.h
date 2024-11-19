@@ -17,17 +17,37 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractButton;
 class QButtonGroup;
+class QEvent;
+class QFocusEvent;
 class QIcon;
+class QKeyEvent;
 class QKeySequence;
 class QMetaObject;
+class QMouseEvent;
+class QObject;
+class QPaintDevice;
+class QPaintEvent;
+class QPoint;
 class QSize;
+class QTimerEvent;
+class QWidget;
 #else
 typedef struct QAbstractButton QAbstractButton;
 typedef struct QButtonGroup QButtonGroup;
+typedef struct QEvent QEvent;
+typedef struct QFocusEvent QFocusEvent;
 typedef struct QIcon QIcon;
+typedef struct QKeyEvent QKeyEvent;
 typedef struct QKeySequence QKeySequence;
 typedef struct QMetaObject QMetaObject;
+typedef struct QMouseEvent QMouseEvent;
+typedef struct QObject QObject;
+typedef struct QPaintDevice QPaintDevice;
+typedef struct QPaintEvent QPaintEvent;
+typedef struct QPoint QPoint;
 typedef struct QSize QSize;
+typedef struct QTimerEvent QTimerEvent;
+typedef struct QWidget QWidget;
 #endif
 
 QMetaObject* QAbstractButton_MetaObject(const QAbstractButton* self);
@@ -68,6 +88,20 @@ void QAbstractButton_Clicked(QAbstractButton* self);
 void QAbstractButton_connect_Clicked(QAbstractButton* self, intptr_t slot);
 void QAbstractButton_Toggled(QAbstractButton* self, bool checked);
 void QAbstractButton_connect_Toggled(QAbstractButton* self, intptr_t slot);
+void QAbstractButton_PaintEvent(QAbstractButton* self, QPaintEvent* e);
+bool QAbstractButton_HitButton(const QAbstractButton* self, QPoint* pos);
+void QAbstractButton_CheckStateSet(QAbstractButton* self);
+void QAbstractButton_NextCheckState(QAbstractButton* self);
+bool QAbstractButton_Event(QAbstractButton* self, QEvent* e);
+void QAbstractButton_KeyPressEvent(QAbstractButton* self, QKeyEvent* e);
+void QAbstractButton_KeyReleaseEvent(QAbstractButton* self, QKeyEvent* e);
+void QAbstractButton_MousePressEvent(QAbstractButton* self, QMouseEvent* e);
+void QAbstractButton_MouseReleaseEvent(QAbstractButton* self, QMouseEvent* e);
+void QAbstractButton_MouseMoveEvent(QAbstractButton* self, QMouseEvent* e);
+void QAbstractButton_FocusInEvent(QAbstractButton* self, QFocusEvent* e);
+void QAbstractButton_FocusOutEvent(QAbstractButton* self, QFocusEvent* e);
+void QAbstractButton_ChangeEvent(QAbstractButton* self, QEvent* e);
+void QAbstractButton_TimerEvent(QAbstractButton* self, QTimerEvent* e);
 struct miqt_string QAbstractButton_Tr2(const char* s, const char* c);
 struct miqt_string QAbstractButton_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAbstractButton_TrUtf82(const char* s, const char* c);
@@ -75,7 +109,7 @@ struct miqt_string QAbstractButton_TrUtf83(const char* s, const char* c, int n);
 void QAbstractButton_AnimateClick1(QAbstractButton* self, int msec);
 void QAbstractButton_Clicked1(QAbstractButton* self, bool checked);
 void QAbstractButton_connect_Clicked1(QAbstractButton* self, intptr_t slot);
-void QAbstractButton_Delete(QAbstractButton* self);
+void QAbstractButton_Delete(QAbstractButton* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

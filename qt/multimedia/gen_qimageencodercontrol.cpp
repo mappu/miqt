@@ -1,7 +1,9 @@
 #include <QImageEncoderControl>
 #include <QImageEncoderSettings>
 #include <QList>
+#include <QMediaControl>
 #include <QMetaObject>
+#include <QObject>
 #include <QSize>
 #include <QString>
 #include <QByteArray>
@@ -72,8 +74,8 @@ struct miqt_string QImageEncoderControl_ImageCodecDescription(const QImageEncode
 	return _ms;
 }
 
-struct miqt_array /* of QSize* */  QImageEncoderControl_SupportedResolutions(const QImageEncoderControl* self, QImageEncoderSettings* settings) {
-	QList<QSize> _ret = self->supportedResolutions(*settings);
+struct miqt_array /* of QSize* */  QImageEncoderControl_SupportedResolutions(const QImageEncoderControl* self, QImageEncoderSettings* settings, bool* continuous) {
+	QList<QSize> _ret = self->supportedResolutions(*settings, continuous);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -137,20 +139,11 @@ struct miqt_string QImageEncoderControl_TrUtf83(const char* s, const char* c, in
 	return _ms;
 }
 
-struct miqt_array /* of QSize* */  QImageEncoderControl_SupportedResolutions2(const QImageEncoderControl* self, QImageEncoderSettings* settings, bool* continuous) {
-	QList<QSize> _ret = self->supportedResolutions(*settings, continuous);
-	// Convert QList<> from C++ memory to manually-managed C memory
-	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QSize(_ret[i]);
+void QImageEncoderControl_Delete(QImageEncoderControl* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QImageEncoderControl*>( self );
+	} else {
+		delete self;
 	}
-	struct miqt_array _out;
-	_out.len = _ret.length();
-	_out.data = static_cast<void*>(_arr);
-	return _out;
-}
-
-void QImageEncoderControl_Delete(QImageEncoderControl* self) {
-	delete self;
 }
 

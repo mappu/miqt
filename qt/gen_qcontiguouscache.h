@@ -22,7 +22,7 @@ typedef struct QContiguousCacheData QContiguousCacheData;
 
 QContiguousCacheData* QContiguousCacheData_AllocateData(int size, int alignment);
 void QContiguousCacheData_FreeData(QContiguousCacheData* data);
-void QContiguousCacheData_Delete(QContiguousCacheData* self);
+void QContiguousCacheData_Delete(QContiguousCacheData* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

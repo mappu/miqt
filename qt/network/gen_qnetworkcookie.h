@@ -26,10 +26,10 @@ typedef struct QNetworkCookie QNetworkCookie;
 typedef struct QUrl QUrl;
 #endif
 
-QNetworkCookie* QNetworkCookie_new();
-QNetworkCookie* QNetworkCookie_new2(QNetworkCookie* other);
-QNetworkCookie* QNetworkCookie_new3(struct miqt_string name);
-QNetworkCookie* QNetworkCookie_new4(struct miqt_string name, struct miqt_string value);
+void QNetworkCookie_new(QNetworkCookie** outptr_QNetworkCookie);
+void QNetworkCookie_new2(QNetworkCookie* other, QNetworkCookie** outptr_QNetworkCookie);
+void QNetworkCookie_new3(struct miqt_string name, QNetworkCookie** outptr_QNetworkCookie);
+void QNetworkCookie_new4(struct miqt_string name, struct miqt_string value, QNetworkCookie** outptr_QNetworkCookie);
 void QNetworkCookie_OperatorAssign(QNetworkCookie* self, QNetworkCookie* other);
 void QNetworkCookie_Swap(QNetworkCookie* self, QNetworkCookie* other);
 bool QNetworkCookie_OperatorEqual(const QNetworkCookie* self, QNetworkCookie* other);
@@ -54,7 +54,7 @@ bool QNetworkCookie_HasSameIdentifier(const QNetworkCookie* self, QNetworkCookie
 void QNetworkCookie_Normalize(QNetworkCookie* self, QUrl* url);
 struct miqt_array /* of QNetworkCookie* */  QNetworkCookie_ParseCookies(struct miqt_string cookieString);
 struct miqt_string QNetworkCookie_ToRawForm1(const QNetworkCookie* self, int form);
-void QNetworkCookie_Delete(QNetworkCookie* self);
+void QNetworkCookie_Delete(QNetworkCookie* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

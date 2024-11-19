@@ -12,12 +12,14 @@
 #include "gen_qjsonarray.h"
 #include "_cgo_export.h"
 
-QJsonArray* QJsonArray_new() {
-	return new QJsonArray();
+void QJsonArray_new(QJsonArray** outptr_QJsonArray) {
+	QJsonArray* ret = new QJsonArray();
+	*outptr_QJsonArray = ret;
 }
 
-QJsonArray* QJsonArray_new2(QJsonArray* other) {
-	return new QJsonArray(*other);
+void QJsonArray_new2(QJsonArray* other, QJsonArray** outptr_QJsonArray) {
+	QJsonArray* ret = new QJsonArray(*other);
+	*outptr_QJsonArray = ret;
 }
 
 void QJsonArray_OperatorAssign(QJsonArray* self, QJsonArray* other) {
@@ -193,20 +195,27 @@ bool QJsonArray_Empty(const QJsonArray* self) {
 	return self->empty();
 }
 
-void QJsonArray_Delete(QJsonArray* self) {
-	delete self;
+void QJsonArray_Delete(QJsonArray* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QJsonArray*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QJsonArray__iterator* QJsonArray__iterator_new() {
-	return new QJsonArray::iterator();
+void QJsonArray__iterator_new(QJsonArray__iterator** outptr_QJsonArray__iterator) {
+	QJsonArray::iterator* ret = new QJsonArray::iterator();
+	*outptr_QJsonArray__iterator = ret;
 }
 
-QJsonArray__iterator* QJsonArray__iterator_new2(QJsonArray* array, ptrdiff_t index) {
-	return new QJsonArray::iterator(array, (qsizetype)(index));
+void QJsonArray__iterator_new2(QJsonArray* array, ptrdiff_t index, QJsonArray__iterator** outptr_QJsonArray__iterator) {
+	QJsonArray::iterator* ret = new QJsonArray::iterator(array, (qsizetype)(index));
+	*outptr_QJsonArray__iterator = ret;
 }
 
-QJsonArray__iterator* QJsonArray__iterator_new3(QJsonArray__iterator* other) {
-	return new QJsonArray::iterator(*other);
+void QJsonArray__iterator_new3(QJsonArray__iterator* other, QJsonArray__iterator** outptr_QJsonArray__iterator) {
+	QJsonArray::iterator* ret = new QJsonArray::iterator(*other);
+	*outptr_QJsonArray__iterator = ret;
 }
 
 void QJsonArray__iterator_OperatorAssign(QJsonArray__iterator* self, QJsonArray__iterator* other) {
@@ -322,24 +331,32 @@ ptrdiff_t QJsonArray__iterator_OperatorMinusWithQJsonArrayiterator(const QJsonAr
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-void QJsonArray__iterator_Delete(QJsonArray__iterator* self) {
-	delete self;
+void QJsonArray__iterator_Delete(QJsonArray__iterator* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QJsonArray::iterator*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QJsonArray__const_iterator* QJsonArray__const_iterator_new() {
-	return new QJsonArray::const_iterator();
+void QJsonArray__const_iterator_new(QJsonArray__const_iterator** outptr_QJsonArray__const_iterator) {
+	QJsonArray::const_iterator* ret = new QJsonArray::const_iterator();
+	*outptr_QJsonArray__const_iterator = ret;
 }
 
-QJsonArray__const_iterator* QJsonArray__const_iterator_new2(QJsonArray* array, ptrdiff_t index) {
-	return new QJsonArray::const_iterator(array, (qsizetype)(index));
+void QJsonArray__const_iterator_new2(QJsonArray* array, ptrdiff_t index, QJsonArray__const_iterator** outptr_QJsonArray__const_iterator) {
+	QJsonArray::const_iterator* ret = new QJsonArray::const_iterator(array, (qsizetype)(index));
+	*outptr_QJsonArray__const_iterator = ret;
 }
 
-QJsonArray__const_iterator* QJsonArray__const_iterator_new3(QJsonArray__iterator* o) {
-	return new QJsonArray::const_iterator(*o);
+void QJsonArray__const_iterator_new3(QJsonArray__iterator* o, QJsonArray__const_iterator** outptr_QJsonArray__const_iterator) {
+	QJsonArray::const_iterator* ret = new QJsonArray::const_iterator(*o);
+	*outptr_QJsonArray__const_iterator = ret;
 }
 
-QJsonArray__const_iterator* QJsonArray__const_iterator_new4(QJsonArray__const_iterator* other) {
-	return new QJsonArray::const_iterator(*other);
+void QJsonArray__const_iterator_new4(QJsonArray__const_iterator* other, QJsonArray__const_iterator** outptr_QJsonArray__const_iterator) {
+	QJsonArray::const_iterator* ret = new QJsonArray::const_iterator(*other);
+	*outptr_QJsonArray__const_iterator = ret;
 }
 
 void QJsonArray__const_iterator_OperatorAssign(QJsonArray__const_iterator* self, QJsonArray__const_iterator* other) {
@@ -427,7 +444,11 @@ ptrdiff_t QJsonArray__const_iterator_OperatorMinusWithQJsonArrayconstIterator(co
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-void QJsonArray__const_iterator_Delete(QJsonArray__const_iterator* self) {
-	delete self;
+void QJsonArray__const_iterator_Delete(QJsonArray__const_iterator* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QJsonArray::const_iterator*>( self );
+	} else {
+		delete self;
+	}
 }
 

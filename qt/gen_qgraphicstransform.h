@@ -41,10 +41,10 @@ struct miqt_string QGraphicsTransform_Tr2(const char* s, const char* c);
 struct miqt_string QGraphicsTransform_Tr3(const char* s, const char* c, int n);
 struct miqt_string QGraphicsTransform_TrUtf82(const char* s, const char* c);
 struct miqt_string QGraphicsTransform_TrUtf83(const char* s, const char* c, int n);
-void QGraphicsTransform_Delete(QGraphicsTransform* self);
+void QGraphicsTransform_Delete(QGraphicsTransform* self, bool isSubclass);
 
-QGraphicsScale* QGraphicsScale_new();
-QGraphicsScale* QGraphicsScale_new2(QObject* parent);
+void QGraphicsScale_new(QGraphicsScale** outptr_QGraphicsScale, QGraphicsTransform** outptr_QGraphicsTransform, QObject** outptr_QObject);
+void QGraphicsScale_new2(QObject* parent, QGraphicsScale** outptr_QGraphicsScale, QGraphicsTransform** outptr_QGraphicsTransform, QObject** outptr_QObject);
 QMetaObject* QGraphicsScale_MetaObject(const QGraphicsScale* self);
 void* QGraphicsScale_Metacast(QGraphicsScale* self, const char* param1);
 struct miqt_string QGraphicsScale_Tr(const char* s);
@@ -72,10 +72,12 @@ struct miqt_string QGraphicsScale_Tr2(const char* s, const char* c);
 struct miqt_string QGraphicsScale_Tr3(const char* s, const char* c, int n);
 struct miqt_string QGraphicsScale_TrUtf82(const char* s, const char* c);
 struct miqt_string QGraphicsScale_TrUtf83(const char* s, const char* c, int n);
-void QGraphicsScale_Delete(QGraphicsScale* self);
+void QGraphicsScale_override_virtual_ApplyTo(void* self, intptr_t slot);
+void QGraphicsScale_virtualbase_ApplyTo(const void* self, QMatrix4x4* matrix);
+void QGraphicsScale_Delete(QGraphicsScale* self, bool isSubclass);
 
-QGraphicsRotation* QGraphicsRotation_new();
-QGraphicsRotation* QGraphicsRotation_new2(QObject* parent);
+void QGraphicsRotation_new(QGraphicsRotation** outptr_QGraphicsRotation, QGraphicsTransform** outptr_QGraphicsTransform, QObject** outptr_QObject);
+void QGraphicsRotation_new2(QObject* parent, QGraphicsRotation** outptr_QGraphicsRotation, QGraphicsTransform** outptr_QGraphicsTransform, QObject** outptr_QObject);
 QMetaObject* QGraphicsRotation_MetaObject(const QGraphicsRotation* self);
 void* QGraphicsRotation_Metacast(QGraphicsRotation* self, const char* param1);
 struct miqt_string QGraphicsRotation_Tr(const char* s);
@@ -98,7 +100,9 @@ struct miqt_string QGraphicsRotation_Tr2(const char* s, const char* c);
 struct miqt_string QGraphicsRotation_Tr3(const char* s, const char* c, int n);
 struct miqt_string QGraphicsRotation_TrUtf82(const char* s, const char* c);
 struct miqt_string QGraphicsRotation_TrUtf83(const char* s, const char* c, int n);
-void QGraphicsRotation_Delete(QGraphicsRotation* self);
+void QGraphicsRotation_override_virtual_ApplyTo(void* self, intptr_t slot);
+void QGraphicsRotation_virtualbase_ApplyTo(const void* self, QMatrix4x4* matrix);
+void QGraphicsRotation_Delete(QGraphicsRotation* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

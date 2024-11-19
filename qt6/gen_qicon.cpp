@@ -13,25 +13,30 @@
 #include "gen_qicon.h"
 #include "_cgo_export.h"
 
-QIcon* QIcon_new() {
-	return new QIcon();
+void QIcon_new(QIcon** outptr_QIcon) {
+	QIcon* ret = new QIcon();
+	*outptr_QIcon = ret;
 }
 
-QIcon* QIcon_new2(QPixmap* pixmap) {
-	return new QIcon(*pixmap);
+void QIcon_new2(QPixmap* pixmap, QIcon** outptr_QIcon) {
+	QIcon* ret = new QIcon(*pixmap);
+	*outptr_QIcon = ret;
 }
 
-QIcon* QIcon_new3(QIcon* other) {
-	return new QIcon(*other);
+void QIcon_new3(QIcon* other, QIcon** outptr_QIcon) {
+	QIcon* ret = new QIcon(*other);
+	*outptr_QIcon = ret;
 }
 
-QIcon* QIcon_new4(struct miqt_string fileName) {
+void QIcon_new4(struct miqt_string fileName, QIcon** outptr_QIcon) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new QIcon(fileName_QString);
+	QIcon* ret = new QIcon(fileName_QString);
+	*outptr_QIcon = ret;
 }
 
-QIcon* QIcon_new5(QIconEngine* engine) {
-	return new QIcon(engine);
+void QIcon_new5(QIconEngine* engine, QIcon** outptr_QIcon) {
+	QIcon* ret = new QIcon(engine);
+	*outptr_QIcon = ret;
 }
 
 void QIcon_OperatorAssign(QIcon* self, QIcon* other) {
@@ -374,7 +379,11 @@ struct miqt_array /* of QSize* */  QIcon_AvailableSizes2(const QIcon* self, int 
 	return _out;
 }
 
-void QIcon_Delete(QIcon* self) {
-	delete self;
+void QIcon_Delete(QIcon* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QIcon*>( self );
+	} else {
+		delete self;
+	}
 }
 

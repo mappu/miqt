@@ -24,10 +24,10 @@ typedef struct QUrl QUrl;
 typedef struct QUrlQuery QUrlQuery;
 #endif
 
-QUrl* QUrl_new();
-QUrl* QUrl_new2(QUrl* copyVal);
-QUrl* QUrl_new3(struct miqt_string url);
-QUrl* QUrl_new4(struct miqt_string url, int mode);
+void QUrl_new(QUrl** outptr_QUrl);
+void QUrl_new2(QUrl* copyVal, QUrl** outptr_QUrl);
+void QUrl_new3(struct miqt_string url, QUrl** outptr_QUrl);
+void QUrl_new4(struct miqt_string url, int mode, QUrl** outptr_QUrl);
 void QUrl_OperatorAssign(QUrl* self, QUrl* copyVal);
 void QUrl_OperatorAssignWithUrl(QUrl* self, struct miqt_string url);
 void QUrl_Swap(QUrl* self, QUrl* other);
@@ -112,7 +112,7 @@ void QUrl_SetFragment2(QUrl* self, struct miqt_string fragment, int mode);
 struct miqt_string QUrl_ToPercentEncoding2(struct miqt_string param1, struct miqt_string exclude);
 struct miqt_string QUrl_ToPercentEncoding3(struct miqt_string param1, struct miqt_string exclude, struct miqt_string include);
 struct miqt_array /* of QUrl* */  QUrl_FromStringList2(struct miqt_array /* of struct miqt_string */  uris, int mode);
-void QUrl_Delete(QUrl* self);
+void QUrl_Delete(QUrl* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

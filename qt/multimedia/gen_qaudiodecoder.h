@@ -19,6 +19,8 @@ class QAudioBuffer;
 class QAudioDecoder;
 class QAudioFormat;
 class QIODevice;
+class QMediaObject;
+class QMediaService;
 class QMetaObject;
 class QObject;
 #else
@@ -26,12 +28,14 @@ typedef struct QAudioBuffer QAudioBuffer;
 typedef struct QAudioDecoder QAudioDecoder;
 typedef struct QAudioFormat QAudioFormat;
 typedef struct QIODevice QIODevice;
+typedef struct QMediaObject QMediaObject;
+typedef struct QMediaService QMediaService;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif
 
-QAudioDecoder* QAudioDecoder_new();
-QAudioDecoder* QAudioDecoder_new2(QObject* parent);
+void QAudioDecoder_new(QAudioDecoder** outptr_QAudioDecoder, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject);
+void QAudioDecoder_new2(QObject* parent, QAudioDecoder** outptr_QAudioDecoder, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject);
 QMetaObject* QAudioDecoder_MetaObject(const QAudioDecoder* self);
 void* QAudioDecoder_Metacast(QAudioDecoder* self, const char* param1);
 struct miqt_string QAudioDecoder_Tr(const char* s);
@@ -77,7 +81,17 @@ struct miqt_string QAudioDecoder_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAudioDecoder_TrUtf82(const char* s, const char* c);
 struct miqt_string QAudioDecoder_TrUtf83(const char* s, const char* c, int n);
 int QAudioDecoder_HasSupport2(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs);
-void QAudioDecoder_Delete(QAudioDecoder* self);
+void QAudioDecoder_override_virtual_Bind(void* self, intptr_t slot);
+bool QAudioDecoder_virtualbase_Bind(void* self, QObject* param1);
+void QAudioDecoder_override_virtual_Unbind(void* self, intptr_t slot);
+void QAudioDecoder_virtualbase_Unbind(void* self, QObject* param1);
+void QAudioDecoder_override_virtual_IsAvailable(void* self, intptr_t slot);
+bool QAudioDecoder_virtualbase_IsAvailable(const void* self);
+void QAudioDecoder_override_virtual_Availability(void* self, intptr_t slot);
+int QAudioDecoder_virtualbase_Availability(const void* self);
+void QAudioDecoder_override_virtual_Service(void* self, intptr_t slot);
+QMediaService* QAudioDecoder_virtualbase_Service(const void* self);
+void QAudioDecoder_Delete(QAudioDecoder* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

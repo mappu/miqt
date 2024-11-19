@@ -1,17 +1,204 @@
 #include <QAudioEngine>
 #include <QAudioRoom>
+#include <QChildEvent>
+#include <QEvent>
+#include <QMetaMethod>
 #include <QMetaObject>
+#include <QObject>
 #include <QQuaternion>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QTimerEvent>
 #include <QVector3D>
 #include <qaudioroom.h>
 #include "gen_qaudioroom.h"
 #include "_cgo_export.h"
 
-QAudioRoom* QAudioRoom_new(QAudioEngine* engine) {
-	return new QAudioRoom(engine);
+class MiqtVirtualQAudioRoom : public virtual QAudioRoom {
+public:
+
+	MiqtVirtualQAudioRoom(QAudioEngine* engine): QAudioRoom(engine) {};
+
+	virtual ~MiqtVirtualQAudioRoom() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QAudioRoom::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QAudioRoom_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QAudioRoom::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QAudioRoom::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QAudioRoom_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QAudioRoom::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QAudioRoom::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QAudioRoom_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QAudioRoom::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QAudioRoom::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QAudioRoom_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QAudioRoom::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QAudioRoom::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QAudioRoom_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QAudioRoom::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QAudioRoom::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QAudioRoom_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QAudioRoom::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QAudioRoom::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QAudioRoom_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QAudioRoom::disconnectNotify(*signal);
+
+	}
+
+};
+
+void QAudioRoom_new(QAudioEngine* engine, QAudioRoom** outptr_QAudioRoom, QObject** outptr_QObject) {
+	MiqtVirtualQAudioRoom* ret = new MiqtVirtualQAudioRoom(engine);
+	*outptr_QAudioRoom = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QAudioRoom_MetaObject(const QAudioRoom* self) {
@@ -103,7 +290,7 @@ void QAudioRoom_PositionChanged(QAudioRoom* self) {
 }
 
 void QAudioRoom_connect_PositionChanged(QAudioRoom* self, intptr_t slot) {
-	QAudioRoom::connect(self, static_cast<void (QAudioRoom::*)()>(&QAudioRoom::positionChanged), self, [=]() {
+	MiqtVirtualQAudioRoom::connect(self, static_cast<void (QAudioRoom::*)()>(&QAudioRoom::positionChanged), self, [=]() {
 		miqt_exec_callback_QAudioRoom_PositionChanged(slot);
 	});
 }
@@ -113,7 +300,7 @@ void QAudioRoom_DimensionsChanged(QAudioRoom* self) {
 }
 
 void QAudioRoom_connect_DimensionsChanged(QAudioRoom* self, intptr_t slot) {
-	QAudioRoom::connect(self, static_cast<void (QAudioRoom::*)()>(&QAudioRoom::dimensionsChanged), self, [=]() {
+	MiqtVirtualQAudioRoom::connect(self, static_cast<void (QAudioRoom::*)()>(&QAudioRoom::dimensionsChanged), self, [=]() {
 		miqt_exec_callback_QAudioRoom_DimensionsChanged(slot);
 	});
 }
@@ -123,7 +310,7 @@ void QAudioRoom_RotationChanged(QAudioRoom* self) {
 }
 
 void QAudioRoom_connect_RotationChanged(QAudioRoom* self, intptr_t slot) {
-	QAudioRoom::connect(self, static_cast<void (QAudioRoom::*)()>(&QAudioRoom::rotationChanged), self, [=]() {
+	MiqtVirtualQAudioRoom::connect(self, static_cast<void (QAudioRoom::*)()>(&QAudioRoom::rotationChanged), self, [=]() {
 		miqt_exec_callback_QAudioRoom_RotationChanged(slot);
 	});
 }
@@ -133,7 +320,7 @@ void QAudioRoom_WallsChanged(QAudioRoom* self) {
 }
 
 void QAudioRoom_connect_WallsChanged(QAudioRoom* self, intptr_t slot) {
-	QAudioRoom::connect(self, static_cast<void (QAudioRoom::*)()>(&QAudioRoom::wallsChanged), self, [=]() {
+	MiqtVirtualQAudioRoom::connect(self, static_cast<void (QAudioRoom::*)()>(&QAudioRoom::wallsChanged), self, [=]() {
 		miqt_exec_callback_QAudioRoom_WallsChanged(slot);
 	});
 }
@@ -143,7 +330,7 @@ void QAudioRoom_ReflectionGainChanged(QAudioRoom* self) {
 }
 
 void QAudioRoom_connect_ReflectionGainChanged(QAudioRoom* self, intptr_t slot) {
-	QAudioRoom::connect(self, static_cast<void (QAudioRoom::*)()>(&QAudioRoom::reflectionGainChanged), self, [=]() {
+	MiqtVirtualQAudioRoom::connect(self, static_cast<void (QAudioRoom::*)()>(&QAudioRoom::reflectionGainChanged), self, [=]() {
 		miqt_exec_callback_QAudioRoom_ReflectionGainChanged(slot);
 	});
 }
@@ -153,7 +340,7 @@ void QAudioRoom_ReverbGainChanged(QAudioRoom* self) {
 }
 
 void QAudioRoom_connect_ReverbGainChanged(QAudioRoom* self, intptr_t slot) {
-	QAudioRoom::connect(self, static_cast<void (QAudioRoom::*)()>(&QAudioRoom::reverbGainChanged), self, [=]() {
+	MiqtVirtualQAudioRoom::connect(self, static_cast<void (QAudioRoom::*)()>(&QAudioRoom::reverbGainChanged), self, [=]() {
 		miqt_exec_callback_QAudioRoom_ReverbGainChanged(slot);
 	});
 }
@@ -163,7 +350,7 @@ void QAudioRoom_ReverbTimeChanged(QAudioRoom* self) {
 }
 
 void QAudioRoom_connect_ReverbTimeChanged(QAudioRoom* self, intptr_t slot) {
-	QAudioRoom::connect(self, static_cast<void (QAudioRoom::*)()>(&QAudioRoom::reverbTimeChanged), self, [=]() {
+	MiqtVirtualQAudioRoom::connect(self, static_cast<void (QAudioRoom::*)()>(&QAudioRoom::reverbTimeChanged), self, [=]() {
 		miqt_exec_callback_QAudioRoom_ReverbTimeChanged(slot);
 	});
 }
@@ -173,7 +360,7 @@ void QAudioRoom_ReverbBrightnessChanged(QAudioRoom* self) {
 }
 
 void QAudioRoom_connect_ReverbBrightnessChanged(QAudioRoom* self, intptr_t slot) {
-	QAudioRoom::connect(self, static_cast<void (QAudioRoom::*)()>(&QAudioRoom::reverbBrightnessChanged), self, [=]() {
+	MiqtVirtualQAudioRoom::connect(self, static_cast<void (QAudioRoom::*)()>(&QAudioRoom::reverbBrightnessChanged), self, [=]() {
 		miqt_exec_callback_QAudioRoom_ReverbBrightnessChanged(slot);
 	});
 }
@@ -200,7 +387,67 @@ struct miqt_string QAudioRoom_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QAudioRoom_Delete(QAudioRoom* self) {
-	delete self;
+void QAudioRoom_override_virtual_Event(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAudioRoom*>( (QAudioRoom*)(self) )->handle__Event = slot;
+}
+
+bool QAudioRoom_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQAudioRoom*)(self) )->virtualbase_Event(event);
+}
+
+void QAudioRoom_override_virtual_EventFilter(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAudioRoom*>( (QAudioRoom*)(self) )->handle__EventFilter = slot;
+}
+
+bool QAudioRoom_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQAudioRoom*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+void QAudioRoom_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAudioRoom*>( (QAudioRoom*)(self) )->handle__TimerEvent = slot;
+}
+
+void QAudioRoom_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQAudioRoom*)(self) )->virtualbase_TimerEvent(event);
+}
+
+void QAudioRoom_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAudioRoom*>( (QAudioRoom*)(self) )->handle__ChildEvent = slot;
+}
+
+void QAudioRoom_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQAudioRoom*)(self) )->virtualbase_ChildEvent(event);
+}
+
+void QAudioRoom_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAudioRoom*>( (QAudioRoom*)(self) )->handle__CustomEvent = slot;
+}
+
+void QAudioRoom_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQAudioRoom*)(self) )->virtualbase_CustomEvent(event);
+}
+
+void QAudioRoom_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAudioRoom*>( (QAudioRoom*)(self) )->handle__ConnectNotify = slot;
+}
+
+void QAudioRoom_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQAudioRoom*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+void QAudioRoom_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAudioRoom*>( (QAudioRoom*)(self) )->handle__DisconnectNotify = slot;
+}
+
+void QAudioRoom_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQAudioRoom*)(self) )->virtualbase_DisconnectNotify(signal);
+}
+
+void QAudioRoom_Delete(QAudioRoom* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQAudioRoom*>( self );
+	} else {
+		delete self;
+	}
 }
 

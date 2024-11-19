@@ -9,35 +9,41 @@
 #include "gen_qdir.h"
 #include "_cgo_export.h"
 
-QDir* QDir_new(QDir* param1) {
-	return new QDir(*param1);
+void QDir_new(QDir* param1, QDir** outptr_QDir) {
+	QDir* ret = new QDir(*param1);
+	*outptr_QDir = ret;
 }
 
-QDir* QDir_new2() {
-	return new QDir();
+void QDir_new2(QDir** outptr_QDir) {
+	QDir* ret = new QDir();
+	*outptr_QDir = ret;
 }
 
-QDir* QDir_new3(struct miqt_string path, struct miqt_string nameFilter) {
+void QDir_new3(struct miqt_string path, struct miqt_string nameFilter, QDir** outptr_QDir) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
 	QString nameFilter_QString = QString::fromUtf8(nameFilter.data, nameFilter.len);
-	return new QDir(path_QString, nameFilter_QString);
+	QDir* ret = new QDir(path_QString, nameFilter_QString);
+	*outptr_QDir = ret;
 }
 
-QDir* QDir_new4(struct miqt_string path) {
+void QDir_new4(struct miqt_string path, QDir** outptr_QDir) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
-	return new QDir(path_QString);
+	QDir* ret = new QDir(path_QString);
+	*outptr_QDir = ret;
 }
 
-QDir* QDir_new5(struct miqt_string path, struct miqt_string nameFilter, int sort) {
-	QString path_QString = QString::fromUtf8(path.data, path.len);
-	QString nameFilter_QString = QString::fromUtf8(nameFilter.data, nameFilter.len);
-	return new QDir(path_QString, nameFilter_QString, static_cast<QDir::SortFlags>(sort));
-}
-
-QDir* QDir_new6(struct miqt_string path, struct miqt_string nameFilter, int sort, int filter) {
+void QDir_new5(struct miqt_string path, struct miqt_string nameFilter, int sort, QDir** outptr_QDir) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
 	QString nameFilter_QString = QString::fromUtf8(nameFilter.data, nameFilter.len);
-	return new QDir(path_QString, nameFilter_QString, static_cast<QDir::SortFlags>(sort), static_cast<QDir::Filters>(filter));
+	QDir* ret = new QDir(path_QString, nameFilter_QString, static_cast<QDir::SortFlags>(sort));
+	*outptr_QDir = ret;
+}
+
+void QDir_new6(struct miqt_string path, struct miqt_string nameFilter, int sort, int filter, QDir** outptr_QDir) {
+	QString path_QString = QString::fromUtf8(path.data, path.len);
+	QString nameFilter_QString = QString::fromUtf8(nameFilter.data, nameFilter.len);
+	QDir* ret = new QDir(path_QString, nameFilter_QString, static_cast<QDir::SortFlags>(sort), static_cast<QDir::Filters>(filter));
+	*outptr_QDir = ret;
 }
 
 void QDir_OperatorAssign(QDir* self, QDir* param1) {
@@ -751,7 +757,11 @@ struct miqt_array /* of QFileInfo* */  QDir_EntryInfoList3(const QDir* self, str
 	return _out;
 }
 
-void QDir_Delete(QDir* self) {
-	delete self;
+void QDir_Delete(QDir* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QDir*>( self );
+	} else {
+		delete self;
+	}
 }
 

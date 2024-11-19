@@ -16,28 +16,38 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAudioEncoderSettings;
+class QChildEvent;
+class QEvent;
+class QMediaBindableInterface;
 class QMediaObject;
 class QMediaRecorder;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QSize;
+class QTimerEvent;
 class QUrl;
 class QVariant;
 class QVideoEncoderSettings;
 #else
 typedef struct QAudioEncoderSettings QAudioEncoderSettings;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
+typedef struct QMediaBindableInterface QMediaBindableInterface;
 typedef struct QMediaObject QMediaObject;
 typedef struct QMediaRecorder QMediaRecorder;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QSize QSize;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QUrl QUrl;
 typedef struct QVariant QVariant;
 typedef struct QVideoEncoderSettings QVideoEncoderSettings;
 #endif
 
-QMediaRecorder* QMediaRecorder_new(QMediaObject* mediaObject);
-QMediaRecorder* QMediaRecorder_new2(QMediaObject* mediaObject, QObject* parent);
+void QMediaRecorder_new(QMediaObject* mediaObject, QMediaRecorder** outptr_QMediaRecorder, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface);
+void QMediaRecorder_new2(QMediaObject* mediaObject, QObject* parent, QMediaRecorder** outptr_QMediaRecorder, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface);
 QMetaObject* QMediaRecorder_MetaObject(const QMediaRecorder* self);
 void* QMediaRecorder_Metacast(QMediaRecorder* self, const char* param1);
 struct miqt_string QMediaRecorder_Tr(const char* s);
@@ -107,6 +117,7 @@ void QMediaRecorder_AvailabilityChanged(QMediaRecorder* self, bool available);
 void QMediaRecorder_connect_AvailabilityChanged(QMediaRecorder* self, intptr_t slot);
 void QMediaRecorder_AvailabilityChangedWithAvailability(QMediaRecorder* self, int availability);
 void QMediaRecorder_connect_AvailabilityChangedWithAvailability(QMediaRecorder* self, intptr_t slot);
+bool QMediaRecorder_SetMediaObject(QMediaRecorder* self, QMediaObject* object);
 struct miqt_string QMediaRecorder_Tr2(const char* s, const char* c);
 struct miqt_string QMediaRecorder_Tr3(const char* s, const char* c, int n);
 struct miqt_string QMediaRecorder_TrUtf82(const char* s, const char* c);
@@ -119,7 +130,25 @@ struct miqt_array /* of double */  QMediaRecorder_SupportedFrameRates1(const QMe
 struct miqt_array /* of double */  QMediaRecorder_SupportedFrameRates2(const QMediaRecorder* self, QVideoEncoderSettings* settings, bool* continuous);
 void QMediaRecorder_SetEncodingSettings2(QMediaRecorder* self, QAudioEncoderSettings* audioSettings, QVideoEncoderSettings* videoSettings);
 void QMediaRecorder_SetEncodingSettings3(QMediaRecorder* self, QAudioEncoderSettings* audioSettings, QVideoEncoderSettings* videoSettings, struct miqt_string containerMimeType);
-void QMediaRecorder_Delete(QMediaRecorder* self);
+void QMediaRecorder_override_virtual_MediaObject(void* self, intptr_t slot);
+QMediaObject* QMediaRecorder_virtualbase_MediaObject(const void* self);
+void QMediaRecorder_override_virtual_SetMediaObject(void* self, intptr_t slot);
+bool QMediaRecorder_virtualbase_SetMediaObject(void* self, QMediaObject* object);
+void QMediaRecorder_override_virtual_Event(void* self, intptr_t slot);
+bool QMediaRecorder_virtualbase_Event(void* self, QEvent* event);
+void QMediaRecorder_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QMediaRecorder_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QMediaRecorder_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QMediaRecorder_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QMediaRecorder_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QMediaRecorder_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QMediaRecorder_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QMediaRecorder_virtualbase_CustomEvent(void* self, QEvent* event);
+void QMediaRecorder_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QMediaRecorder_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QMediaRecorder_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QMediaRecorder_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QMediaRecorder_Delete(QMediaRecorder* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

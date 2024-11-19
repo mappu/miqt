@@ -38,3 +38,19 @@ func ifv[T any](condition bool, trueval T, falseval T) T {
 func addr[T any](s T) *T {
 	return &s
 }
+
+func slice_to_set[T comparable](list []T) map[T]struct{} {
+	ret := make(map[T]struct{}, len(list))
+	for _, v := range list {
+		ret[v] = struct{}{}
+	}
+	return ret
+}
+
+func slice_copy[T comparable](input []T) []T {
+	ret := make([]T, len(input))
+	for i, elem := range input {
+		ret[i] = elem
+	}
+	return ret
+}

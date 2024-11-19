@@ -7,6 +7,7 @@
 #include <QList>
 #include <QMetaObject>
 #include <QModelIndex>
+#include <QObject>
 #include <QPainter>
 #include <QSize>
 #include <QString>
@@ -201,7 +202,11 @@ void QAbstractItemDelegate_connect_CloseEditor2(QAbstractItemDelegate* self, int
 	});
 }
 
-void QAbstractItemDelegate_Delete(QAbstractItemDelegate* self) {
-	delete self;
+void QAbstractItemDelegate_Delete(QAbstractItemDelegate* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAbstractItemDelegate*>( self );
+	} else {
+		delete self;
+	}
 }
 

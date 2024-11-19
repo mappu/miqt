@@ -26,7 +26,8 @@ const (
 )
 
 type QJsonValue struct {
-	h *C.QJsonValue
+	h          *C.QJsonValue
+	isSubclass bool
 }
 
 func (this *QJsonValue) cPointer() *C.QJsonValue {
@@ -43,6 +44,7 @@ func (this *QJsonValue) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQJsonValue constructs the type using only CGO pointers.
 func newQJsonValue(h *C.QJsonValue) *QJsonValue {
 	if h == nil {
 		return nil
@@ -50,38 +52,63 @@ func newQJsonValue(h *C.QJsonValue) *QJsonValue {
 	return &QJsonValue{h: h}
 }
 
+// UnsafeNewQJsonValue constructs the type using only unsafe pointers.
 func UnsafeNewQJsonValue(h unsafe.Pointer) *QJsonValue {
-	return newQJsonValue((*C.QJsonValue)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QJsonValue{h: (*C.QJsonValue)(h)}
 }
 
 // NewQJsonValue constructs a new QJsonValue object.
 func NewQJsonValue() *QJsonValue {
-	ret := C.QJsonValue_new()
-	return newQJsonValue(ret)
+	var outptr_QJsonValue *C.QJsonValue = nil
+
+	C.QJsonValue_new(&outptr_QJsonValue)
+	ret := newQJsonValue(outptr_QJsonValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQJsonValue2 constructs a new QJsonValue object.
 func NewQJsonValue2(b bool) *QJsonValue {
-	ret := C.QJsonValue_new2((C.bool)(b))
-	return newQJsonValue(ret)
+	var outptr_QJsonValue *C.QJsonValue = nil
+
+	C.QJsonValue_new2((C.bool)(b), &outptr_QJsonValue)
+	ret := newQJsonValue(outptr_QJsonValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQJsonValue3 constructs a new QJsonValue object.
 func NewQJsonValue3(n float64) *QJsonValue {
-	ret := C.QJsonValue_new3((C.double)(n))
-	return newQJsonValue(ret)
+	var outptr_QJsonValue *C.QJsonValue = nil
+
+	C.QJsonValue_new3((C.double)(n), &outptr_QJsonValue)
+	ret := newQJsonValue(outptr_QJsonValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQJsonValue4 constructs a new QJsonValue object.
 func NewQJsonValue4(n int) *QJsonValue {
-	ret := C.QJsonValue_new4((C.int)(n))
-	return newQJsonValue(ret)
+	var outptr_QJsonValue *C.QJsonValue = nil
+
+	C.QJsonValue_new4((C.int)(n), &outptr_QJsonValue)
+	ret := newQJsonValue(outptr_QJsonValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQJsonValue5 constructs a new QJsonValue object.
 func NewQJsonValue5(v int64) *QJsonValue {
-	ret := C.QJsonValue_new5((C.longlong)(v))
-	return newQJsonValue(ret)
+	var outptr_QJsonValue *C.QJsonValue = nil
+
+	C.QJsonValue_new5((C.longlong)(v), &outptr_QJsonValue)
+	ret := newQJsonValue(outptr_QJsonValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQJsonValue6 constructs a new QJsonValue object.
@@ -90,40 +117,64 @@ func NewQJsonValue6(s string) *QJsonValue {
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
 	defer C.free(unsafe.Pointer(s_ms.data))
-	ret := C.QJsonValue_new6(s_ms)
-	return newQJsonValue(ret)
+	var outptr_QJsonValue *C.QJsonValue = nil
+
+	C.QJsonValue_new6(s_ms, &outptr_QJsonValue)
+	ret := newQJsonValue(outptr_QJsonValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQJsonValue7 constructs a new QJsonValue object.
 func NewQJsonValue7(s string) *QJsonValue {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	ret := C.QJsonValue_new7(s_Cstring)
-	return newQJsonValue(ret)
+	var outptr_QJsonValue *C.QJsonValue = nil
+
+	C.QJsonValue_new7(s_Cstring, &outptr_QJsonValue)
+	ret := newQJsonValue(outptr_QJsonValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQJsonValue8 constructs a new QJsonValue object.
 func NewQJsonValue8(a *QJsonArray) *QJsonValue {
-	ret := C.QJsonValue_new8(a.cPointer())
-	return newQJsonValue(ret)
+	var outptr_QJsonValue *C.QJsonValue = nil
+
+	C.QJsonValue_new8(a.cPointer(), &outptr_QJsonValue)
+	ret := newQJsonValue(outptr_QJsonValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQJsonValue9 constructs a new QJsonValue object.
 func NewQJsonValue9(o *QJsonObject) *QJsonValue {
-	ret := C.QJsonValue_new9(o.cPointer())
-	return newQJsonValue(ret)
+	var outptr_QJsonValue *C.QJsonValue = nil
+
+	C.QJsonValue_new9(o.cPointer(), &outptr_QJsonValue)
+	ret := newQJsonValue(outptr_QJsonValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQJsonValue10 constructs a new QJsonValue object.
 func NewQJsonValue10(other *QJsonValue) *QJsonValue {
-	ret := C.QJsonValue_new10(other.cPointer())
-	return newQJsonValue(ret)
+	var outptr_QJsonValue *C.QJsonValue = nil
+
+	C.QJsonValue_new10(other.cPointer(), &outptr_QJsonValue)
+	ret := newQJsonValue(outptr_QJsonValue)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQJsonValue11 constructs a new QJsonValue object.
 func NewQJsonValue11(param1 QJsonValue__Type) *QJsonValue {
-	ret := C.QJsonValue_new11((C.int)(param1))
-	return newQJsonValue(ret)
+	var outptr_QJsonValue *C.QJsonValue = nil
+
+	C.QJsonValue_new11((C.int)(param1), &outptr_QJsonValue)
+	ret := newQJsonValue(outptr_QJsonValue)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QJsonValue) OperatorAssign(other *QJsonValue) {
@@ -278,7 +329,7 @@ func (this *QJsonValue) ToDouble1(defaultValue float64) float64 {
 
 // Delete this object from C++ memory.
 func (this *QJsonValue) Delete() {
-	C.QJsonValue_Delete(this.h)
+	C.QJsonValue_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -291,7 +342,8 @@ func (this *QJsonValue) GoGC() {
 }
 
 type QJsonValueRef struct {
-	h *C.QJsonValueRef
+	h          *C.QJsonValueRef
+	isSubclass bool
 }
 
 func (this *QJsonValueRef) cPointer() *C.QJsonValueRef {
@@ -308,6 +360,7 @@ func (this *QJsonValueRef) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQJsonValueRef constructs the type using only CGO pointers.
 func newQJsonValueRef(h *C.QJsonValueRef) *QJsonValueRef {
 	if h == nil {
 		return nil
@@ -315,26 +368,43 @@ func newQJsonValueRef(h *C.QJsonValueRef) *QJsonValueRef {
 	return &QJsonValueRef{h: h}
 }
 
+// UnsafeNewQJsonValueRef constructs the type using only unsafe pointers.
 func UnsafeNewQJsonValueRef(h unsafe.Pointer) *QJsonValueRef {
-	return newQJsonValueRef((*C.QJsonValueRef)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QJsonValueRef{h: (*C.QJsonValueRef)(h)}
 }
 
 // NewQJsonValueRef constructs a new QJsonValueRef object.
 func NewQJsonValueRef(param1 *QJsonValueRef) *QJsonValueRef {
-	ret := C.QJsonValueRef_new(param1.cPointer())
-	return newQJsonValueRef(ret)
+	var outptr_QJsonValueRef *C.QJsonValueRef = nil
+
+	C.QJsonValueRef_new(param1.cPointer(), &outptr_QJsonValueRef)
+	ret := newQJsonValueRef(outptr_QJsonValueRef)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQJsonValueRef2 constructs a new QJsonValueRef object.
 func NewQJsonValueRef2(array *QJsonArray, idx int) *QJsonValueRef {
-	ret := C.QJsonValueRef_new2(array.cPointer(), (C.int)(idx))
-	return newQJsonValueRef(ret)
+	var outptr_QJsonValueRef *C.QJsonValueRef = nil
+
+	C.QJsonValueRef_new2(array.cPointer(), (C.int)(idx), &outptr_QJsonValueRef)
+	ret := newQJsonValueRef(outptr_QJsonValueRef)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQJsonValueRef3 constructs a new QJsonValueRef object.
 func NewQJsonValueRef3(object *QJsonObject, idx int) *QJsonValueRef {
-	ret := C.QJsonValueRef_new3(object.cPointer(), (C.int)(idx))
-	return newQJsonValueRef(ret)
+	var outptr_QJsonValueRef *C.QJsonValueRef = nil
+
+	C.QJsonValueRef_new3(object.cPointer(), (C.int)(idx), &outptr_QJsonValueRef)
+	ret := newQJsonValueRef(outptr_QJsonValueRef)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QJsonValueRef) OperatorAssign(val *QJsonValue) {
@@ -450,7 +520,7 @@ func (this *QJsonValueRef) OperatorNotEqual(other *QJsonValue) bool {
 
 // Delete this object from C++ memory.
 func (this *QJsonValueRef) Delete() {
-	C.QJsonValueRef_Delete(this.h)
+	C.QJsonValueRef_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -463,7 +533,8 @@ func (this *QJsonValueRef) GoGC() {
 }
 
 type QJsonValuePtr struct {
-	h *C.QJsonValuePtr
+	h          *C.QJsonValuePtr
+	isSubclass bool
 }
 
 func (this *QJsonValuePtr) cPointer() *C.QJsonValuePtr {
@@ -480,6 +551,7 @@ func (this *QJsonValuePtr) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQJsonValuePtr constructs the type using only CGO pointers.
 func newQJsonValuePtr(h *C.QJsonValuePtr) *QJsonValuePtr {
 	if h == nil {
 		return nil
@@ -487,20 +559,33 @@ func newQJsonValuePtr(h *C.QJsonValuePtr) *QJsonValuePtr {
 	return &QJsonValuePtr{h: h}
 }
 
+// UnsafeNewQJsonValuePtr constructs the type using only unsafe pointers.
 func UnsafeNewQJsonValuePtr(h unsafe.Pointer) *QJsonValuePtr {
-	return newQJsonValuePtr((*C.QJsonValuePtr)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QJsonValuePtr{h: (*C.QJsonValuePtr)(h)}
 }
 
 // NewQJsonValuePtr constructs a new QJsonValuePtr object.
 func NewQJsonValuePtr(val *QJsonValue) *QJsonValuePtr {
-	ret := C.QJsonValuePtr_new(val.cPointer())
-	return newQJsonValuePtr(ret)
+	var outptr_QJsonValuePtr *C.QJsonValuePtr = nil
+
+	C.QJsonValuePtr_new(val.cPointer(), &outptr_QJsonValuePtr)
+	ret := newQJsonValuePtr(outptr_QJsonValuePtr)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQJsonValuePtr2 constructs a new QJsonValuePtr object.
 func NewQJsonValuePtr2(param1 *QJsonValuePtr) *QJsonValuePtr {
-	ret := C.QJsonValuePtr_new2(param1.cPointer())
-	return newQJsonValuePtr(ret)
+	var outptr_QJsonValuePtr *C.QJsonValuePtr = nil
+
+	C.QJsonValuePtr_new2(param1.cPointer(), &outptr_QJsonValuePtr)
+	ret := newQJsonValuePtr(outptr_QJsonValuePtr)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QJsonValuePtr) OperatorMultiply() *QJsonValue {
@@ -517,7 +602,7 @@ func (this *QJsonValuePtr) OperatorAssign(param1 *QJsonValuePtr) {
 
 // Delete this object from C++ memory.
 func (this *QJsonValuePtr) Delete() {
-	C.QJsonValuePtr_Delete(this.h)
+	C.QJsonValuePtr_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -530,7 +615,8 @@ func (this *QJsonValuePtr) GoGC() {
 }
 
 type QJsonValueRefPtr struct {
-	h *C.QJsonValueRefPtr
+	h          *C.QJsonValueRefPtr
+	isSubclass bool
 }
 
 func (this *QJsonValueRefPtr) cPointer() *C.QJsonValueRefPtr {
@@ -547,6 +633,7 @@ func (this *QJsonValueRefPtr) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQJsonValueRefPtr constructs the type using only CGO pointers.
 func newQJsonValueRefPtr(h *C.QJsonValueRefPtr) *QJsonValueRefPtr {
 	if h == nil {
 		return nil
@@ -554,26 +641,43 @@ func newQJsonValueRefPtr(h *C.QJsonValueRefPtr) *QJsonValueRefPtr {
 	return &QJsonValueRefPtr{h: h}
 }
 
+// UnsafeNewQJsonValueRefPtr constructs the type using only unsafe pointers.
 func UnsafeNewQJsonValueRefPtr(h unsafe.Pointer) *QJsonValueRefPtr {
-	return newQJsonValueRefPtr((*C.QJsonValueRefPtr)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QJsonValueRefPtr{h: (*C.QJsonValueRefPtr)(h)}
 }
 
 // NewQJsonValueRefPtr constructs a new QJsonValueRefPtr object.
 func NewQJsonValueRefPtr(array *QJsonArray, idx int) *QJsonValueRefPtr {
-	ret := C.QJsonValueRefPtr_new(array.cPointer(), (C.int)(idx))
-	return newQJsonValueRefPtr(ret)
+	var outptr_QJsonValueRefPtr *C.QJsonValueRefPtr = nil
+
+	C.QJsonValueRefPtr_new(array.cPointer(), (C.int)(idx), &outptr_QJsonValueRefPtr)
+	ret := newQJsonValueRefPtr(outptr_QJsonValueRefPtr)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQJsonValueRefPtr2 constructs a new QJsonValueRefPtr object.
 func NewQJsonValueRefPtr2(object *QJsonObject, idx int) *QJsonValueRefPtr {
-	ret := C.QJsonValueRefPtr_new2(object.cPointer(), (C.int)(idx))
-	return newQJsonValueRefPtr(ret)
+	var outptr_QJsonValueRefPtr *C.QJsonValueRefPtr = nil
+
+	C.QJsonValueRefPtr_new2(object.cPointer(), (C.int)(idx), &outptr_QJsonValueRefPtr)
+	ret := newQJsonValueRefPtr(outptr_QJsonValueRefPtr)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQJsonValueRefPtr3 constructs a new QJsonValueRefPtr object.
 func NewQJsonValueRefPtr3(param1 *QJsonValueRefPtr) *QJsonValueRefPtr {
-	ret := C.QJsonValueRefPtr_new3(param1.cPointer())
-	return newQJsonValueRefPtr(ret)
+	var outptr_QJsonValueRefPtr *C.QJsonValueRefPtr = nil
+
+	C.QJsonValueRefPtr_new3(param1.cPointer(), &outptr_QJsonValueRefPtr)
+	ret := newQJsonValueRefPtr(outptr_QJsonValueRefPtr)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QJsonValueRefPtr) OperatorMultiply() *QJsonValueRef {
@@ -590,7 +694,7 @@ func (this *QJsonValueRefPtr) OperatorAssign(param1 *QJsonValueRefPtr) {
 
 // Delete this object from C++ memory.
 func (this *QJsonValueRefPtr) Delete() {
-	C.QJsonValueRefPtr_Delete(this.h)
+	C.QJsonValueRefPtr_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

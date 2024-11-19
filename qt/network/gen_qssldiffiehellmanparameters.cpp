@@ -8,12 +8,14 @@
 #include "gen_qssldiffiehellmanparameters.h"
 #include "_cgo_export.h"
 
-QSslDiffieHellmanParameters* QSslDiffieHellmanParameters_new() {
-	return new QSslDiffieHellmanParameters();
+void QSslDiffieHellmanParameters_new(QSslDiffieHellmanParameters** outptr_QSslDiffieHellmanParameters) {
+	QSslDiffieHellmanParameters* ret = new QSslDiffieHellmanParameters();
+	*outptr_QSslDiffieHellmanParameters = ret;
 }
 
-QSslDiffieHellmanParameters* QSslDiffieHellmanParameters_new2(QSslDiffieHellmanParameters* other) {
-	return new QSslDiffieHellmanParameters(*other);
+void QSslDiffieHellmanParameters_new2(QSslDiffieHellmanParameters* other, QSslDiffieHellmanParameters** outptr_QSslDiffieHellmanParameters) {
+	QSslDiffieHellmanParameters* ret = new QSslDiffieHellmanParameters(*other);
+	*outptr_QSslDiffieHellmanParameters = ret;
 }
 
 QSslDiffieHellmanParameters* QSslDiffieHellmanParameters_DefaultParameters() {
@@ -70,7 +72,11 @@ QSslDiffieHellmanParameters* QSslDiffieHellmanParameters_FromEncoded22(QIODevice
 	return new QSslDiffieHellmanParameters(QSslDiffieHellmanParameters::fromEncoded(device, static_cast<QSsl::EncodingFormat>(format)));
 }
 
-void QSslDiffieHellmanParameters_Delete(QSslDiffieHellmanParameters* self) {
-	delete self;
+void QSslDiffieHellmanParameters_Delete(QSslDiffieHellmanParameters* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QSslDiffieHellmanParameters*>( self );
+	} else {
+		delete self;
+	}
 }
 

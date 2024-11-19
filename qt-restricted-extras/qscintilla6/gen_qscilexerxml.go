@@ -11,11 +11,13 @@ import "C"
 import (
 	"github.com/mappu/miqt/qt6"
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
 type QsciLexerXML struct {
-	h *C.QsciLexerXML
+	h          *C.QsciLexerXML
+	isSubclass bool
 	*QsciLexerHTML
 }
 
@@ -33,27 +35,49 @@ func (this *QsciLexerXML) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQsciLexerXML(h *C.QsciLexerXML) *QsciLexerXML {
+// newQsciLexerXML constructs the type using only CGO pointers.
+func newQsciLexerXML(h *C.QsciLexerXML, h_QsciLexerHTML *C.QsciLexerHTML, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerXML {
 	if h == nil {
 		return nil
 	}
-	return &QsciLexerXML{h: h, QsciLexerHTML: UnsafeNewQsciLexerHTML(unsafe.Pointer(h))}
+	return &QsciLexerXML{h: h,
+		QsciLexerHTML: newQsciLexerHTML(h_QsciLexerHTML, h_QsciLexer, h_QObject)}
 }
 
-func UnsafeNewQsciLexerXML(h unsafe.Pointer) *QsciLexerXML {
-	return newQsciLexerXML((*C.QsciLexerXML)(h))
+// UnsafeNewQsciLexerXML constructs the type using only unsafe pointers.
+func UnsafeNewQsciLexerXML(h unsafe.Pointer, h_QsciLexerHTML unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerXML {
+	if h == nil {
+		return nil
+	}
+
+	return &QsciLexerXML{h: (*C.QsciLexerXML)(h),
+		QsciLexerHTML: UnsafeNewQsciLexerHTML(h_QsciLexerHTML, h_QsciLexer, h_QObject)}
 }
 
 // NewQsciLexerXML constructs a new QsciLexerXML object.
 func NewQsciLexerXML() *QsciLexerXML {
-	ret := C.QsciLexerXML_new()
-	return newQsciLexerXML(ret)
+	var outptr_QsciLexerXML *C.QsciLexerXML = nil
+	var outptr_QsciLexerHTML *C.QsciLexerHTML = nil
+	var outptr_QsciLexer *C.QsciLexer = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QsciLexerXML_new(&outptr_QsciLexerXML, &outptr_QsciLexerHTML, &outptr_QsciLexer, &outptr_QObject)
+	ret := newQsciLexerXML(outptr_QsciLexerXML, outptr_QsciLexerHTML, outptr_QsciLexer, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQsciLexerXML2 constructs a new QsciLexerXML object.
 func NewQsciLexerXML2(parent *qt6.QObject) *QsciLexerXML {
-	ret := C.QsciLexerXML_new2((*C.QObject)(parent.UnsafePointer()))
-	return newQsciLexerXML(ret)
+	var outptr_QsciLexerXML *C.QsciLexerXML = nil
+	var outptr_QsciLexerHTML *C.QsciLexerHTML = nil
+	var outptr_QsciLexer *C.QsciLexer = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QsciLexerXML_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QsciLexerXML, &outptr_QsciLexerHTML, &outptr_QsciLexer, &outptr_QObject)
+	ret := newQsciLexerXML(outptr_QsciLexerXML, outptr_QsciLexerHTML, outptr_QsciLexer, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QsciLexerXML) MetaObject() *qt6.QMetaObject {
@@ -149,9 +173,78 @@ func QsciLexerXML_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QsciLexerXML) callVirtualBase_SetFoldCompact(fold bool) {
+
+	C.QsciLexerXML_virtualbase_SetFoldCompact(unsafe.Pointer(this.h), (C.bool)(fold))
+
+}
+func (this *QsciLexerXML) OnSetFoldCompact(slot func(super func(fold bool), fold bool)) {
+	C.QsciLexerXML_override_virtual_SetFoldCompact(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerXML_SetFoldCompact
+func miqt_exec_callback_QsciLexerXML_SetFoldCompact(self *C.QsciLexerXML, cb C.intptr_t, fold C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(fold bool), fold bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(fold)
+
+	gofunc((&QsciLexerXML{h: self}).callVirtualBase_SetFoldCompact, slotval1)
+
+}
+
+func (this *QsciLexerXML) callVirtualBase_SetFoldPreprocessor(fold bool) {
+
+	C.QsciLexerXML_virtualbase_SetFoldPreprocessor(unsafe.Pointer(this.h), (C.bool)(fold))
+
+}
+func (this *QsciLexerXML) OnSetFoldPreprocessor(slot func(super func(fold bool), fold bool)) {
+	C.QsciLexerXML_override_virtual_SetFoldPreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerXML_SetFoldPreprocessor
+func miqt_exec_callback_QsciLexerXML_SetFoldPreprocessor(self *C.QsciLexerXML, cb C.intptr_t, fold C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(fold bool), fold bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(fold)
+
+	gofunc((&QsciLexerXML{h: self}).callVirtualBase_SetFoldPreprocessor, slotval1)
+
+}
+
+func (this *QsciLexerXML) callVirtualBase_SetCaseSensitiveTags(sens bool) {
+
+	C.QsciLexerXML_virtualbase_SetCaseSensitiveTags(unsafe.Pointer(this.h), (C.bool)(sens))
+
+}
+func (this *QsciLexerXML) OnSetCaseSensitiveTags(slot func(super func(sens bool), sens bool)) {
+	C.QsciLexerXML_override_virtual_SetCaseSensitiveTags(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerXML_SetCaseSensitiveTags
+func miqt_exec_callback_QsciLexerXML_SetCaseSensitiveTags(self *C.QsciLexerXML, cb C.intptr_t, sens C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sens bool), sens bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(sens)
+
+	gofunc((&QsciLexerXML{h: self}).callVirtualBase_SetCaseSensitiveTags, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QsciLexerXML) Delete() {
-	C.QsciLexerXML_Delete(this.h)
+	C.QsciLexerXML_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -38,7 +38,8 @@ const (
 )
 
 type QCryptographicHash struct {
-	h *C.QCryptographicHash
+	h          *C.QCryptographicHash
+	isSubclass bool
 }
 
 func (this *QCryptographicHash) cPointer() *C.QCryptographicHash {
@@ -55,6 +56,7 @@ func (this *QCryptographicHash) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCryptographicHash constructs the type using only CGO pointers.
 func newQCryptographicHash(h *C.QCryptographicHash) *QCryptographicHash {
 	if h == nil {
 		return nil
@@ -62,14 +64,23 @@ func newQCryptographicHash(h *C.QCryptographicHash) *QCryptographicHash {
 	return &QCryptographicHash{h: h}
 }
 
+// UnsafeNewQCryptographicHash constructs the type using only unsafe pointers.
 func UnsafeNewQCryptographicHash(h unsafe.Pointer) *QCryptographicHash {
-	return newQCryptographicHash((*C.QCryptographicHash)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCryptographicHash{h: (*C.QCryptographicHash)(h)}
 }
 
 // NewQCryptographicHash constructs a new QCryptographicHash object.
 func NewQCryptographicHash(method QCryptographicHash__Algorithm) *QCryptographicHash {
-	ret := C.QCryptographicHash_new((C.int)(method))
-	return newQCryptographicHash(ret)
+	var outptr_QCryptographicHash *C.QCryptographicHash = nil
+
+	C.QCryptographicHash_new((C.int)(method), &outptr_QCryptographicHash)
+	ret := newQCryptographicHash(outptr_QCryptographicHash)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QCryptographicHash) Reset() {
@@ -116,7 +127,7 @@ func QCryptographicHash_HashLength(method QCryptographicHash__Algorithm) int {
 
 // Delete this object from C++ memory.
 func (this *QCryptographicHash) Delete() {
-	C.QCryptographicHash_Delete(this.h)
+	C.QCryptographicHash_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

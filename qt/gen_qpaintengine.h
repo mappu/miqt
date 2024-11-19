@@ -64,7 +64,7 @@ double QTextItem_Width(const QTextItem* self);
 int QTextItem_RenderFlags(const QTextItem* self);
 struct miqt_string QTextItem_Text(const QTextItem* self);
 QFont* QTextItem_Font(const QTextItem* self);
-void QTextItem_Delete(QTextItem* self);
+void QTextItem_Delete(QTextItem* self, bool isSubclass);
 
 bool QPaintEngine_IsActive(const QPaintEngine* self);
 void QPaintEngine_SetActive(QPaintEngine* self, bool newState);
@@ -85,7 +85,7 @@ void QPaintEngine_DrawPolygon2(QPaintEngine* self, QPoint* points, int pointCoun
 void QPaintEngine_DrawPixmap(QPaintEngine* self, QRectF* r, QPixmap* pm, QRectF* sr);
 void QPaintEngine_DrawTextItem(QPaintEngine* self, QPointF* p, QTextItem* textItem);
 void QPaintEngine_DrawTiledPixmap(QPaintEngine* self, QRectF* r, QPixmap* pixmap, QPointF* s);
-void QPaintEngine_DrawImage(QPaintEngine* self, QRectF* r, QImage* pm, QRectF* sr);
+void QPaintEngine_DrawImage(QPaintEngine* self, QRectF* r, QImage* pm, QRectF* sr, int flags);
 void QPaintEngine_SetPaintDevice(QPaintEngine* self, QPaintDevice* device);
 QPaintDevice* QPaintEngine_PaintDevice(const QPaintEngine* self);
 void QPaintEngine_SetSystemClip(QPaintEngine* self, QRegion* baseClip);
@@ -102,8 +102,7 @@ bool QPaintEngine_HasFeature(const QPaintEngine* self, int feature);
 QPainter* QPaintEngine_Painter(const QPaintEngine* self);
 void QPaintEngine_SyncState(QPaintEngine* self);
 bool QPaintEngine_IsExtended(const QPaintEngine* self);
-void QPaintEngine_DrawImage4(QPaintEngine* self, QRectF* r, QImage* pm, QRectF* sr, int flags);
-void QPaintEngine_Delete(QPaintEngine* self);
+void QPaintEngine_Delete(QPaintEngine* self, bool isSubclass);
 
 int QPaintEngineState_State(const QPaintEngineState* self);
 QPen* QPaintEngineState_Pen(const QPaintEngineState* self);
@@ -124,7 +123,7 @@ double QPaintEngineState_Opacity(const QPaintEngineState* self);
 QPainter* QPaintEngineState_Painter(const QPaintEngineState* self);
 bool QPaintEngineState_BrushNeedsResolving(const QPaintEngineState* self);
 bool QPaintEngineState_PenNeedsResolving(const QPaintEngineState* self);
-void QPaintEngineState_Delete(QPaintEngineState* self);
+void QPaintEngineState_Delete(QPaintEngineState* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

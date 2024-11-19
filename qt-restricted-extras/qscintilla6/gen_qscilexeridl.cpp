@@ -8,12 +8,150 @@
 #include "gen_qscilexeridl.h"
 #include "_cgo_export.h"
 
-QsciLexerIDL* QsciLexerIDL_new() {
-	return new QsciLexerIDL();
+class MiqtVirtualQsciLexerIDL : public virtual QsciLexerIDL {
+public:
+
+	MiqtVirtualQsciLexerIDL(): QsciLexerIDL() {};
+	MiqtVirtualQsciLexerIDL(QObject* parent): QsciLexerIDL(parent) {};
+
+	virtual ~MiqtVirtualQsciLexerIDL() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetFoldAtElse = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setFoldAtElse(bool fold) override {
+		if (handle__SetFoldAtElse == 0) {
+			QsciLexerIDL::setFoldAtElse(fold);
+			return;
+		}
+		
+		bool sigval1 = fold;
+
+		miqt_exec_callback_QsciLexerIDL_SetFoldAtElse(this, handle__SetFoldAtElse, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetFoldAtElse(bool fold) {
+
+		QsciLexerIDL::setFoldAtElse(fold);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetFoldComments = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setFoldComments(bool fold) override {
+		if (handle__SetFoldComments == 0) {
+			QsciLexerIDL::setFoldComments(fold);
+			return;
+		}
+		
+		bool sigval1 = fold;
+
+		miqt_exec_callback_QsciLexerIDL_SetFoldComments(this, handle__SetFoldComments, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetFoldComments(bool fold) {
+
+		QsciLexerIDL::setFoldComments(fold);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetFoldCompact = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setFoldCompact(bool fold) override {
+		if (handle__SetFoldCompact == 0) {
+			QsciLexerIDL::setFoldCompact(fold);
+			return;
+		}
+		
+		bool sigval1 = fold;
+
+		miqt_exec_callback_QsciLexerIDL_SetFoldCompact(this, handle__SetFoldCompact, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetFoldCompact(bool fold) {
+
+		QsciLexerIDL::setFoldCompact(fold);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetFoldPreprocessor = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setFoldPreprocessor(bool fold) override {
+		if (handle__SetFoldPreprocessor == 0) {
+			QsciLexerIDL::setFoldPreprocessor(fold);
+			return;
+		}
+		
+		bool sigval1 = fold;
+
+		miqt_exec_callback_QsciLexerIDL_SetFoldPreprocessor(this, handle__SetFoldPreprocessor, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetFoldPreprocessor(bool fold) {
+
+		QsciLexerIDL::setFoldPreprocessor(fold);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetStylePreprocessor = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setStylePreprocessor(bool style) override {
+		if (handle__SetStylePreprocessor == 0) {
+			QsciLexerIDL::setStylePreprocessor(style);
+			return;
+		}
+		
+		bool sigval1 = style;
+
+		miqt_exec_callback_QsciLexerIDL_SetStylePreprocessor(this, handle__SetStylePreprocessor, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetStylePreprocessor(bool style) {
+
+		QsciLexerIDL::setStylePreprocessor(style);
+
+	}
+
+};
+
+void QsciLexerIDL_new(QsciLexerIDL** outptr_QsciLexerIDL, QsciLexerCPP** outptr_QsciLexerCPP, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
+	MiqtVirtualQsciLexerIDL* ret = new MiqtVirtualQsciLexerIDL();
+	*outptr_QsciLexerIDL = ret;
+	*outptr_QsciLexerCPP = static_cast<QsciLexerCPP*>(ret);
+	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QsciLexerIDL* QsciLexerIDL_new2(QObject* parent) {
-	return new QsciLexerIDL(parent);
+void QsciLexerIDL_new2(QObject* parent, QsciLexerIDL** outptr_QsciLexerIDL, QsciLexerCPP** outptr_QsciLexerCPP, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
+	MiqtVirtualQsciLexerIDL* ret = new MiqtVirtualQsciLexerIDL(parent);
+	*outptr_QsciLexerIDL = ret;
+	*outptr_QsciLexerCPP = static_cast<QsciLexerCPP*>(ret);
+	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QsciLexerIDL_MetaObject(const QsciLexerIDL* self) {
@@ -80,7 +218,51 @@ struct miqt_string QsciLexerIDL_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QsciLexerIDL_Delete(QsciLexerIDL* self) {
-	delete self;
+void QsciLexerIDL_override_virtual_SetFoldAtElse(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQsciLexerIDL*>( (QsciLexerIDL*)(self) )->handle__SetFoldAtElse = slot;
+}
+
+void QsciLexerIDL_virtualbase_SetFoldAtElse(void* self, bool fold) {
+	( (MiqtVirtualQsciLexerIDL*)(self) )->virtualbase_SetFoldAtElse(fold);
+}
+
+void QsciLexerIDL_override_virtual_SetFoldComments(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQsciLexerIDL*>( (QsciLexerIDL*)(self) )->handle__SetFoldComments = slot;
+}
+
+void QsciLexerIDL_virtualbase_SetFoldComments(void* self, bool fold) {
+	( (MiqtVirtualQsciLexerIDL*)(self) )->virtualbase_SetFoldComments(fold);
+}
+
+void QsciLexerIDL_override_virtual_SetFoldCompact(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQsciLexerIDL*>( (QsciLexerIDL*)(self) )->handle__SetFoldCompact = slot;
+}
+
+void QsciLexerIDL_virtualbase_SetFoldCompact(void* self, bool fold) {
+	( (MiqtVirtualQsciLexerIDL*)(self) )->virtualbase_SetFoldCompact(fold);
+}
+
+void QsciLexerIDL_override_virtual_SetFoldPreprocessor(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQsciLexerIDL*>( (QsciLexerIDL*)(self) )->handle__SetFoldPreprocessor = slot;
+}
+
+void QsciLexerIDL_virtualbase_SetFoldPreprocessor(void* self, bool fold) {
+	( (MiqtVirtualQsciLexerIDL*)(self) )->virtualbase_SetFoldPreprocessor(fold);
+}
+
+void QsciLexerIDL_override_virtual_SetStylePreprocessor(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQsciLexerIDL*>( (QsciLexerIDL*)(self) )->handle__SetStylePreprocessor = slot;
+}
+
+void QsciLexerIDL_virtualbase_SetStylePreprocessor(void* self, bool style) {
+	( (MiqtVirtualQsciLexerIDL*)(self) )->virtualbase_SetStylePreprocessor(style);
+}
+
+void QsciLexerIDL_Delete(QsciLexerIDL* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQsciLexerIDL*>( self );
+	} else {
+		delete self;
+	}
 }
 

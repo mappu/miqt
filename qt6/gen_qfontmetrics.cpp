@@ -15,16 +15,19 @@
 #include "gen_qfontmetrics.h"
 #include "_cgo_export.h"
 
-QFontMetrics* QFontMetrics_new(QFont* param1) {
-	return new QFontMetrics(*param1);
+void QFontMetrics_new(QFont* param1, QFontMetrics** outptr_QFontMetrics) {
+	QFontMetrics* ret = new QFontMetrics(*param1);
+	*outptr_QFontMetrics = ret;
 }
 
-QFontMetrics* QFontMetrics_new2(QFont* font, QPaintDevice* pd) {
-	return new QFontMetrics(*font, pd);
+void QFontMetrics_new2(QFont* font, QPaintDevice* pd, QFontMetrics** outptr_QFontMetrics) {
+	QFontMetrics* ret = new QFontMetrics(*font, pd);
+	*outptr_QFontMetrics = ret;
 }
 
-QFontMetrics* QFontMetrics_new3(QFontMetrics* param1) {
-	return new QFontMetrics(*param1);
+void QFontMetrics_new3(QFontMetrics* param1, QFontMetrics** outptr_QFontMetrics) {
+	QFontMetrics* ret = new QFontMetrics(*param1);
+	*outptr_QFontMetrics = ret;
 }
 
 void QFontMetrics_OperatorAssign(QFontMetrics* self, QFontMetrics* param1) {
@@ -236,24 +239,32 @@ struct miqt_string QFontMetrics_ElidedText4(const QFontMetrics* self, struct miq
 	return _ms;
 }
 
-void QFontMetrics_Delete(QFontMetrics* self) {
-	delete self;
+void QFontMetrics_Delete(QFontMetrics* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QFontMetrics*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QFontMetricsF* QFontMetricsF_new(QFont* font) {
-	return new QFontMetricsF(*font);
+void QFontMetricsF_new(QFont* font, QFontMetricsF** outptr_QFontMetricsF) {
+	QFontMetricsF* ret = new QFontMetricsF(*font);
+	*outptr_QFontMetricsF = ret;
 }
 
-QFontMetricsF* QFontMetricsF_new2(QFont* font, QPaintDevice* pd) {
-	return new QFontMetricsF(*font, pd);
+void QFontMetricsF_new2(QFont* font, QPaintDevice* pd, QFontMetricsF** outptr_QFontMetricsF) {
+	QFontMetricsF* ret = new QFontMetricsF(*font, pd);
+	*outptr_QFontMetricsF = ret;
 }
 
-QFontMetricsF* QFontMetricsF_new3(QFontMetrics* param1) {
-	return new QFontMetricsF(*param1);
+void QFontMetricsF_new3(QFontMetrics* param1, QFontMetricsF** outptr_QFontMetricsF) {
+	QFontMetricsF* ret = new QFontMetricsF(*param1);
+	*outptr_QFontMetricsF = ret;
 }
 
-QFontMetricsF* QFontMetricsF_new4(QFontMetricsF* param1) {
-	return new QFontMetricsF(*param1);
+void QFontMetricsF_new4(QFontMetricsF* param1, QFontMetricsF** outptr_QFontMetricsF) {
+	QFontMetricsF* ret = new QFontMetricsF(*param1);
+	*outptr_QFontMetricsF = ret;
 }
 
 void QFontMetricsF_OperatorAssign(QFontMetricsF* self, QFontMetricsF* param1) {
@@ -475,7 +486,11 @@ struct miqt_string QFontMetricsF_ElidedText4(const QFontMetricsF* self, struct m
 	return _ms;
 }
 
-void QFontMetricsF_Delete(QFontMetricsF* self) {
-	delete self;
+void QFontMetricsF_Delete(QFontMetricsF* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QFontMetricsF*>( self );
+	} else {
+		delete self;
+	}
 }
 

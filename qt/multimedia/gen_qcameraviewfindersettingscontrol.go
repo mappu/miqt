@@ -26,7 +26,8 @@ const (
 )
 
 type QCameraViewfinderSettingsControl struct {
-	h *C.QCameraViewfinderSettingsControl
+	h          *C.QCameraViewfinderSettingsControl
+	isSubclass bool
 	*QMediaControl
 }
 
@@ -44,15 +45,23 @@ func (this *QCameraViewfinderSettingsControl) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQCameraViewfinderSettingsControl(h *C.QCameraViewfinderSettingsControl) *QCameraViewfinderSettingsControl {
+// newQCameraViewfinderSettingsControl constructs the type using only CGO pointers.
+func newQCameraViewfinderSettingsControl(h *C.QCameraViewfinderSettingsControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QCameraViewfinderSettingsControl {
 	if h == nil {
 		return nil
 	}
-	return &QCameraViewfinderSettingsControl{h: h, QMediaControl: UnsafeNewQMediaControl(unsafe.Pointer(h))}
+	return &QCameraViewfinderSettingsControl{h: h,
+		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
 }
 
-func UnsafeNewQCameraViewfinderSettingsControl(h unsafe.Pointer) *QCameraViewfinderSettingsControl {
-	return newQCameraViewfinderSettingsControl((*C.QCameraViewfinderSettingsControl)(h))
+// UnsafeNewQCameraViewfinderSettingsControl constructs the type using only unsafe pointers.
+func UnsafeNewQCameraViewfinderSettingsControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QCameraViewfinderSettingsControl {
+	if h == nil {
+		return nil
+	}
+
+	return &QCameraViewfinderSettingsControl{h: (*C.QCameraViewfinderSettingsControl)(h),
+		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
 }
 
 func (this *QCameraViewfinderSettingsControl) MetaObject() *qt.QMetaObject {
@@ -144,7 +153,7 @@ func QCameraViewfinderSettingsControl_TrUtf83(s string, c string, n int) string 
 
 // Delete this object from C++ memory.
 func (this *QCameraViewfinderSettingsControl) Delete() {
-	C.QCameraViewfinderSettingsControl_Delete(this.h)
+	C.QCameraViewfinderSettingsControl_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -157,7 +166,8 @@ func (this *QCameraViewfinderSettingsControl) GoGC() {
 }
 
 type QCameraViewfinderSettingsControl2 struct {
-	h *C.QCameraViewfinderSettingsControl2
+	h          *C.QCameraViewfinderSettingsControl2
+	isSubclass bool
 	*QMediaControl
 }
 
@@ -175,15 +185,23 @@ func (this *QCameraViewfinderSettingsControl2) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQCameraViewfinderSettingsControl2(h *C.QCameraViewfinderSettingsControl2) *QCameraViewfinderSettingsControl2 {
+// newQCameraViewfinderSettingsControl2 constructs the type using only CGO pointers.
+func newQCameraViewfinderSettingsControl2(h *C.QCameraViewfinderSettingsControl2, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QCameraViewfinderSettingsControl2 {
 	if h == nil {
 		return nil
 	}
-	return &QCameraViewfinderSettingsControl2{h: h, QMediaControl: UnsafeNewQMediaControl(unsafe.Pointer(h))}
+	return &QCameraViewfinderSettingsControl2{h: h,
+		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
 }
 
-func UnsafeNewQCameraViewfinderSettingsControl2(h unsafe.Pointer) *QCameraViewfinderSettingsControl2 {
-	return newQCameraViewfinderSettingsControl2((*C.QCameraViewfinderSettingsControl2)(h))
+// UnsafeNewQCameraViewfinderSettingsControl2 constructs the type using only unsafe pointers.
+func UnsafeNewQCameraViewfinderSettingsControl2(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QCameraViewfinderSettingsControl2 {
+	if h == nil {
+		return nil
+	}
+
+	return &QCameraViewfinderSettingsControl2{h: (*C.QCameraViewfinderSettingsControl2)(h),
+		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
 }
 
 func (this *QCameraViewfinderSettingsControl2) MetaObject() *qt.QMetaObject {
@@ -284,7 +302,7 @@ func QCameraViewfinderSettingsControl2_TrUtf83(s string, c string, n int) string
 
 // Delete this object from C++ memory.
 func (this *QCameraViewfinderSettingsControl2) Delete() {
-	C.QCameraViewfinderSettingsControl2_Delete(this.h)
+	C.QCameraViewfinderSettingsControl2_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -28,7 +28,8 @@ const (
 )
 
 type QCommandLineParser struct {
-	h *C.QCommandLineParser
+	h          *C.QCommandLineParser
+	isSubclass bool
 }
 
 func (this *QCommandLineParser) cPointer() *C.QCommandLineParser {
@@ -45,6 +46,7 @@ func (this *QCommandLineParser) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCommandLineParser constructs the type using only CGO pointers.
 func newQCommandLineParser(h *C.QCommandLineParser) *QCommandLineParser {
 	if h == nil {
 		return nil
@@ -52,14 +54,23 @@ func newQCommandLineParser(h *C.QCommandLineParser) *QCommandLineParser {
 	return &QCommandLineParser{h: h}
 }
 
+// UnsafeNewQCommandLineParser constructs the type using only unsafe pointers.
 func UnsafeNewQCommandLineParser(h unsafe.Pointer) *QCommandLineParser {
-	return newQCommandLineParser((*C.QCommandLineParser)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCommandLineParser{h: (*C.QCommandLineParser)(h)}
 }
 
 // NewQCommandLineParser constructs a new QCommandLineParser object.
 func NewQCommandLineParser() *QCommandLineParser {
-	ret := C.QCommandLineParser_new()
-	return newQCommandLineParser(ret)
+	var outptr_QCommandLineParser *C.QCommandLineParser = nil
+
+	C.QCommandLineParser_new(&outptr_QCommandLineParser)
+	ret := newQCommandLineParser(outptr_QCommandLineParser)
+	ret.isSubclass = true
+	return ret
 }
 
 func QCommandLineParser_Tr(sourceText string) string {
@@ -335,7 +346,7 @@ func (this *QCommandLineParser) ShowHelp1(exitCode int) {
 
 // Delete this object from C++ memory.
 func (this *QCommandLineParser) Delete() {
-	C.QCommandLineParser_Delete(this.h)
+	C.QCommandLineParser_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

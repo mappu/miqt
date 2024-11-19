@@ -1,5 +1,7 @@
 #include <QList>
+#include <QMediaControl>
 #include <QMetaObject>
+#include <QObject>
 #include <QSize>
 #include <QString>
 #include <QByteArray>
@@ -40,8 +42,8 @@ struct miqt_string QVideoEncoderSettingsControl_TrUtf8(const char* s) {
 	return _ms;
 }
 
-struct miqt_array /* of QSize* */  QVideoEncoderSettingsControl_SupportedResolutions(const QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings) {
-	QList<QSize> _ret = self->supportedResolutions(*settings);
+struct miqt_array /* of QSize* */  QVideoEncoderSettingsControl_SupportedResolutions(const QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings, bool* continuous) {
+	QList<QSize> _ret = self->supportedResolutions(*settings, continuous);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -53,8 +55,8 @@ struct miqt_array /* of QSize* */  QVideoEncoderSettingsControl_SupportedResolut
 	return _out;
 }
 
-struct miqt_array /* of double */  QVideoEncoderSettingsControl_SupportedFrameRates(const QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings) {
-	QList<qreal> _ret = self->supportedFrameRates(*settings);
+struct miqt_array /* of double */  QVideoEncoderSettingsControl_SupportedFrameRates(const QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings, bool* continuous) {
+	QList<qreal> _ret = self->supportedFrameRates(*settings, continuous);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	double* _arr = static_cast<double*>(malloc(sizeof(double) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -150,33 +152,11 @@ struct miqt_string QVideoEncoderSettingsControl_TrUtf83(const char* s, const cha
 	return _ms;
 }
 
-struct miqt_array /* of QSize* */  QVideoEncoderSettingsControl_SupportedResolutions2(const QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings, bool* continuous) {
-	QList<QSize> _ret = self->supportedResolutions(*settings, continuous);
-	// Convert QList<> from C++ memory to manually-managed C memory
-	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QSize(_ret[i]);
+void QVideoEncoderSettingsControl_Delete(QVideoEncoderSettingsControl* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QVideoEncoderSettingsControl*>( self );
+	} else {
+		delete self;
 	}
-	struct miqt_array _out;
-	_out.len = _ret.length();
-	_out.data = static_cast<void*>(_arr);
-	return _out;
-}
-
-struct miqt_array /* of double */  QVideoEncoderSettingsControl_SupportedFrameRates2(const QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings, bool* continuous) {
-	QList<qreal> _ret = self->supportedFrameRates(*settings, continuous);
-	// Convert QList<> from C++ memory to manually-managed C memory
-	double* _arr = static_cast<double*>(malloc(sizeof(double) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = _ret[i];
-	}
-	struct miqt_array _out;
-	_out.len = _ret.length();
-	_out.data = static_cast<void*>(_arr);
-	return _out;
-}
-
-void QVideoEncoderSettingsControl_Delete(QVideoEncoderSettingsControl* self) {
-	delete self;
 }
 

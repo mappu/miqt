@@ -23,7 +23,8 @@ const (
 )
 
 type QLockFile struct {
-	h *C.QLockFile
+	h          *C.QLockFile
+	isSubclass bool
 }
 
 func (this *QLockFile) cPointer() *C.QLockFile {
@@ -40,6 +41,7 @@ func (this *QLockFile) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQLockFile constructs the type using only CGO pointers.
 func newQLockFile(h *C.QLockFile) *QLockFile {
 	if h == nil {
 		return nil
@@ -47,8 +49,13 @@ func newQLockFile(h *C.QLockFile) *QLockFile {
 	return &QLockFile{h: h}
 }
 
+// UnsafeNewQLockFile constructs the type using only unsafe pointers.
 func UnsafeNewQLockFile(h unsafe.Pointer) *QLockFile {
-	return newQLockFile((*C.QLockFile)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QLockFile{h: (*C.QLockFile)(h)}
 }
 
 // NewQLockFile constructs a new QLockFile object.
@@ -57,8 +64,12 @@ func NewQLockFile(fileName string) *QLockFile {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	ret := C.QLockFile_new(fileName_ms)
-	return newQLockFile(ret)
+	var outptr_QLockFile *C.QLockFile = nil
+
+	C.QLockFile_new(fileName_ms, &outptr_QLockFile)
+	ret := newQLockFile(outptr_QLockFile)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QLockFile) Lock() bool {
@@ -99,7 +110,7 @@ func (this *QLockFile) TryLock1(timeout int) bool {
 
 // Delete this object from C++ memory.
 func (this *QLockFile) Delete() {
-	C.QLockFile_Delete(this.h)
+	C.QLockFile_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

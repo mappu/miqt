@@ -6,8 +6,9 @@
 #include "gen_qwaitcondition.h"
 #include "_cgo_export.h"
 
-QWaitCondition* QWaitCondition_new() {
-	return new QWaitCondition();
+void QWaitCondition_new(QWaitCondition** outptr_QWaitCondition) {
+	QWaitCondition* ret = new QWaitCondition();
+	*outptr_QWaitCondition = ret;
 }
 
 bool QWaitCondition_Wait(QWaitCondition* self, QMutex* lockedMutex) {
@@ -50,7 +51,11 @@ bool QWaitCondition_Wait23(QWaitCondition* self, QReadWriteLock* lockedReadWrite
 	return self->wait(lockedReadWriteLock, *deadline);
 }
 
-void QWaitCondition_Delete(QWaitCondition* self) {
-	delete self;
+void QWaitCondition_Delete(QWaitCondition* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QWaitCondition*>( self );
+	} else {
+		delete self;
+	}
 }
 

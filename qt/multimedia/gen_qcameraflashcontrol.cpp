@@ -1,5 +1,7 @@
 #include <QCameraFlashControl>
+#include <QMediaControl>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -109,7 +111,11 @@ struct miqt_string QCameraFlashControl_TrUtf83(const char* s, const char* c, int
 	return _ms;
 }
 
-void QCameraFlashControl_Delete(QCameraFlashControl* self) {
-	delete self;
+void QCameraFlashControl_Delete(QCameraFlashControl* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QCameraFlashControl*>( self );
+	} else {
+		delete self;
+	}
 }
 

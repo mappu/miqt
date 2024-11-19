@@ -16,7 +16,8 @@ import (
 )
 
 type QMediaGaplessPlaybackControl struct {
-	h *C.QMediaGaplessPlaybackControl
+	h          *C.QMediaGaplessPlaybackControl
+	isSubclass bool
 	*QMediaControl
 }
 
@@ -34,15 +35,23 @@ func (this *QMediaGaplessPlaybackControl) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQMediaGaplessPlaybackControl(h *C.QMediaGaplessPlaybackControl) *QMediaGaplessPlaybackControl {
+// newQMediaGaplessPlaybackControl constructs the type using only CGO pointers.
+func newQMediaGaplessPlaybackControl(h *C.QMediaGaplessPlaybackControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QMediaGaplessPlaybackControl {
 	if h == nil {
 		return nil
 	}
-	return &QMediaGaplessPlaybackControl{h: h, QMediaControl: UnsafeNewQMediaControl(unsafe.Pointer(h))}
+	return &QMediaGaplessPlaybackControl{h: h,
+		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
 }
 
-func UnsafeNewQMediaGaplessPlaybackControl(h unsafe.Pointer) *QMediaGaplessPlaybackControl {
-	return newQMediaGaplessPlaybackControl((*C.QMediaGaplessPlaybackControl)(h))
+// UnsafeNewQMediaGaplessPlaybackControl constructs the type using only unsafe pointers.
+func UnsafeNewQMediaGaplessPlaybackControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QMediaGaplessPlaybackControl {
+	if h == nil {
+		return nil
+	}
+
+	return &QMediaGaplessPlaybackControl{h: (*C.QMediaGaplessPlaybackControl)(h),
+		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
 }
 
 func (this *QMediaGaplessPlaybackControl) MetaObject() *qt.QMetaObject {
@@ -199,7 +208,7 @@ func QMediaGaplessPlaybackControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QMediaGaplessPlaybackControl) Delete() {
-	C.QMediaGaplessPlaybackControl_Delete(this.h)
+	C.QMediaGaplessPlaybackControl_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

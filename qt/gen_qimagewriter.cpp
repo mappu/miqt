@@ -10,24 +10,28 @@
 #include "gen_qimagewriter.h"
 #include "_cgo_export.h"
 
-QImageWriter* QImageWriter_new() {
-	return new QImageWriter();
+void QImageWriter_new(QImageWriter** outptr_QImageWriter) {
+	QImageWriter* ret = new QImageWriter();
+	*outptr_QImageWriter = ret;
 }
 
-QImageWriter* QImageWriter_new2(QIODevice* device, struct miqt_string format) {
+void QImageWriter_new2(QIODevice* device, struct miqt_string format, QImageWriter** outptr_QImageWriter) {
 	QByteArray format_QByteArray(format.data, format.len);
-	return new QImageWriter(device, format_QByteArray);
+	QImageWriter* ret = new QImageWriter(device, format_QByteArray);
+	*outptr_QImageWriter = ret;
 }
 
-QImageWriter* QImageWriter_new3(struct miqt_string fileName) {
+void QImageWriter_new3(struct miqt_string fileName, QImageWriter** outptr_QImageWriter) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new QImageWriter(fileName_QString);
+	QImageWriter* ret = new QImageWriter(fileName_QString);
+	*outptr_QImageWriter = ret;
 }
 
-QImageWriter* QImageWriter_new4(struct miqt_string fileName, struct miqt_string format) {
+void QImageWriter_new4(struct miqt_string fileName, struct miqt_string format, QImageWriter** outptr_QImageWriter) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QByteArray format_QByteArray(format.data, format.len);
-	return new QImageWriter(fileName_QString, format_QByteArray);
+	QImageWriter* ret = new QImageWriter(fileName_QString, format_QByteArray);
+	*outptr_QImageWriter = ret;
 }
 
 struct miqt_string QImageWriter_Tr(const char* sourceText) {
@@ -320,7 +324,11 @@ struct miqt_string QImageWriter_TrUtf83(const char* sourceText, const char* disa
 	return _ms;
 }
 
-void QImageWriter_Delete(QImageWriter* self) {
-	delete self;
+void QImageWriter_Delete(QImageWriter* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QImageWriter*>( self );
+	} else {
+		delete self;
+	}
 }
 

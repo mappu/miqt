@@ -8,7 +8,11 @@ QMediaObject* QMediaBindableInterface_MediaObject(const QMediaBindableInterface*
 	return self->mediaObject();
 }
 
-void QMediaBindableInterface_Delete(QMediaBindableInterface* self) {
-	delete self;
+void QMediaBindableInterface_Delete(QMediaBindableInterface* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMediaBindableInterface*>( self );
+	} else {
+		delete self;
+	}
 }
 

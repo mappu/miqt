@@ -15,27 +15,35 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QChildEvent;
+class QEvent;
 class QImage;
 class QImageCapture;
 class QMediaCaptureSession;
 class QMediaMetaData;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QSize;
+class QTimerEvent;
 class QVideoFrame;
 #else
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QImage QImage;
 typedef struct QImageCapture QImageCapture;
 typedef struct QMediaCaptureSession QMediaCaptureSession;
 typedef struct QMediaMetaData QMediaMetaData;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QSize QSize;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QVideoFrame QVideoFrame;
 #endif
 
-QImageCapture* QImageCapture_new();
-QImageCapture* QImageCapture_new2(QObject* parent);
+void QImageCapture_new(QImageCapture** outptr_QImageCapture, QObject** outptr_QObject);
+void QImageCapture_new2(QObject* parent, QImageCapture** outptr_QImageCapture, QObject** outptr_QObject);
 QMetaObject* QImageCapture_MetaObject(const QImageCapture* self);
 void* QImageCapture_Metacast(QImageCapture* self, const char* param1);
 struct miqt_string QImageCapture_Tr(const char* s);
@@ -86,7 +94,21 @@ void QImageCapture_connect_ImageSaved(QImageCapture* self, intptr_t slot);
 struct miqt_string QImageCapture_Tr2(const char* s, const char* c);
 struct miqt_string QImageCapture_Tr3(const char* s, const char* c, int n);
 int QImageCapture_CaptureToFile1(QImageCapture* self, struct miqt_string location);
-void QImageCapture_Delete(QImageCapture* self);
+void QImageCapture_override_virtual_Event(void* self, intptr_t slot);
+bool QImageCapture_virtualbase_Event(void* self, QEvent* event);
+void QImageCapture_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QImageCapture_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QImageCapture_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QImageCapture_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QImageCapture_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QImageCapture_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QImageCapture_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QImageCapture_virtualbase_CustomEvent(void* self, QEvent* event);
+void QImageCapture_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QImageCapture_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QImageCapture_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QImageCapture_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QImageCapture_Delete(QImageCapture* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

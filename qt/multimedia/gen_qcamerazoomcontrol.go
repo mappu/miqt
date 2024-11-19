@@ -16,7 +16,8 @@ import (
 )
 
 type QCameraZoomControl struct {
-	h *C.QCameraZoomControl
+	h          *C.QCameraZoomControl
+	isSubclass bool
 	*QMediaControl
 }
 
@@ -34,15 +35,23 @@ func (this *QCameraZoomControl) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQCameraZoomControl(h *C.QCameraZoomControl) *QCameraZoomControl {
+// newQCameraZoomControl constructs the type using only CGO pointers.
+func newQCameraZoomControl(h *C.QCameraZoomControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QCameraZoomControl {
 	if h == nil {
 		return nil
 	}
-	return &QCameraZoomControl{h: h, QMediaControl: UnsafeNewQMediaControl(unsafe.Pointer(h))}
+	return &QCameraZoomControl{h: h,
+		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
 }
 
-func UnsafeNewQCameraZoomControl(h unsafe.Pointer) *QCameraZoomControl {
-	return newQCameraZoomControl((*C.QCameraZoomControl)(h))
+// UnsafeNewQCameraZoomControl constructs the type using only unsafe pointers.
+func UnsafeNewQCameraZoomControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QCameraZoomControl {
+	if h == nil {
+		return nil
+	}
+
+	return &QCameraZoomControl{h: (*C.QCameraZoomControl)(h),
+		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
 }
 
 func (this *QCameraZoomControl) MetaObject() *qt.QMetaObject {
@@ -267,7 +276,7 @@ func QCameraZoomControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QCameraZoomControl) Delete() {
-	C.QCameraZoomControl_Delete(this.h)
+	C.QCameraZoomControl_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

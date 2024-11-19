@@ -1,8 +1,10 @@
 #include <QIODevice>
 #include <QMediaContent>
+#include <QMediaControl>
 #include <QMediaPlayerControl>
 #include <QMediaTimeRange>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -349,7 +351,11 @@ struct miqt_string QMediaPlayerControl_TrUtf83(const char* s, const char* c, int
 	return _ms;
 }
 
-void QMediaPlayerControl_Delete(QMediaPlayerControl* self) {
-	delete self;
+void QMediaPlayerControl_Delete(QMediaPlayerControl* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMediaPlayerControl*>( self );
+	} else {
+		delete self;
+	}
 }
 

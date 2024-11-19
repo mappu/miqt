@@ -1,4 +1,5 @@
 #include <QEventPoint>
+#include <QInputDevice>
 #include <QMetaObject>
 #include <QObject>
 #include <QPointerEvent>
@@ -11,12 +12,14 @@
 #include "gen_qpointingdevice.h"
 #include "_cgo_export.h"
 
-QPointingDeviceUniqueId* QPointingDeviceUniqueId_new() {
-	return new QPointingDeviceUniqueId();
+void QPointingDeviceUniqueId_new(QPointingDeviceUniqueId** outptr_QPointingDeviceUniqueId) {
+	QPointingDeviceUniqueId* ret = new QPointingDeviceUniqueId();
+	*outptr_QPointingDeviceUniqueId = ret;
 }
 
-QPointingDeviceUniqueId* QPointingDeviceUniqueId_new2(QPointingDeviceUniqueId* param1) {
-	return new QPointingDeviceUniqueId(*param1);
+void QPointingDeviceUniqueId_new2(QPointingDeviceUniqueId* param1, QPointingDeviceUniqueId** outptr_QPointingDeviceUniqueId) {
+	QPointingDeviceUniqueId* ret = new QPointingDeviceUniqueId(*param1);
+	*outptr_QPointingDeviceUniqueId = ret;
 }
 
 QPointingDeviceUniqueId* QPointingDeviceUniqueId_FromNumericId(long long id) {
@@ -32,39 +35,61 @@ long long QPointingDeviceUniqueId_NumericId(const QPointingDeviceUniqueId* self)
 	return static_cast<long long>(_ret);
 }
 
-void QPointingDeviceUniqueId_Delete(QPointingDeviceUniqueId* self) {
-	delete self;
+void QPointingDeviceUniqueId_Delete(QPointingDeviceUniqueId* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QPointingDeviceUniqueId*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QPointingDevice* QPointingDevice_new() {
-	return new QPointingDevice();
+void QPointingDevice_new(QPointingDevice** outptr_QPointingDevice, QInputDevice** outptr_QInputDevice, QObject** outptr_QObject) {
+	QPointingDevice* ret = new QPointingDevice();
+	*outptr_QPointingDevice = ret;
+	*outptr_QInputDevice = static_cast<QInputDevice*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QPointingDevice* QPointingDevice_new2(struct miqt_string name, long long systemId, int devType, int pType, int caps, int maxPoints, int buttonCount) {
+void QPointingDevice_new2(struct miqt_string name, long long systemId, int devType, int pType, int caps, int maxPoints, int buttonCount, QPointingDevice** outptr_QPointingDevice, QInputDevice** outptr_QInputDevice, QObject** outptr_QObject) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	return new QPointingDevice(name_QString, static_cast<qint64>(systemId), static_cast<QInputDevice::DeviceType>(devType), static_cast<QPointingDevice::PointerType>(pType), static_cast<QInputDevice::Capabilities>(caps), static_cast<int>(maxPoints), static_cast<int>(buttonCount));
+	QPointingDevice* ret = new QPointingDevice(name_QString, static_cast<qint64>(systemId), static_cast<QInputDevice::DeviceType>(devType), static_cast<QPointingDevice::PointerType>(pType), static_cast<QInputDevice::Capabilities>(caps), static_cast<int>(maxPoints), static_cast<int>(buttonCount));
+	*outptr_QPointingDevice = ret;
+	*outptr_QInputDevice = static_cast<QInputDevice*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QPointingDevice* QPointingDevice_new3(QObject* parent) {
-	return new QPointingDevice(parent);
+void QPointingDevice_new3(QObject* parent, QPointingDevice** outptr_QPointingDevice, QInputDevice** outptr_QInputDevice, QObject** outptr_QObject) {
+	QPointingDevice* ret = new QPointingDevice(parent);
+	*outptr_QPointingDevice = ret;
+	*outptr_QInputDevice = static_cast<QInputDevice*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QPointingDevice* QPointingDevice_new4(struct miqt_string name, long long systemId, int devType, int pType, int caps, int maxPoints, int buttonCount, struct miqt_string seatName) {
+void QPointingDevice_new4(struct miqt_string name, long long systemId, int devType, int pType, int caps, int maxPoints, int buttonCount, struct miqt_string seatName, QPointingDevice** outptr_QPointingDevice, QInputDevice** outptr_QInputDevice, QObject** outptr_QObject) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	QString seatName_QString = QString::fromUtf8(seatName.data, seatName.len);
-	return new QPointingDevice(name_QString, static_cast<qint64>(systemId), static_cast<QInputDevice::DeviceType>(devType), static_cast<QPointingDevice::PointerType>(pType), static_cast<QInputDevice::Capabilities>(caps), static_cast<int>(maxPoints), static_cast<int>(buttonCount), seatName_QString);
+	QPointingDevice* ret = new QPointingDevice(name_QString, static_cast<qint64>(systemId), static_cast<QInputDevice::DeviceType>(devType), static_cast<QPointingDevice::PointerType>(pType), static_cast<QInputDevice::Capabilities>(caps), static_cast<int>(maxPoints), static_cast<int>(buttonCount), seatName_QString);
+	*outptr_QPointingDevice = ret;
+	*outptr_QInputDevice = static_cast<QInputDevice*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QPointingDevice* QPointingDevice_new5(struct miqt_string name, long long systemId, int devType, int pType, int caps, int maxPoints, int buttonCount, struct miqt_string seatName, QPointingDeviceUniqueId* uniqueId) {
+void QPointingDevice_new5(struct miqt_string name, long long systemId, int devType, int pType, int caps, int maxPoints, int buttonCount, struct miqt_string seatName, QPointingDeviceUniqueId* uniqueId, QPointingDevice** outptr_QPointingDevice, QInputDevice** outptr_QInputDevice, QObject** outptr_QObject) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	QString seatName_QString = QString::fromUtf8(seatName.data, seatName.len);
-	return new QPointingDevice(name_QString, static_cast<qint64>(systemId), static_cast<QInputDevice::DeviceType>(devType), static_cast<QPointingDevice::PointerType>(pType), static_cast<QInputDevice::Capabilities>(caps), static_cast<int>(maxPoints), static_cast<int>(buttonCount), seatName_QString, *uniqueId);
+	QPointingDevice* ret = new QPointingDevice(name_QString, static_cast<qint64>(systemId), static_cast<QInputDevice::DeviceType>(devType), static_cast<QPointingDevice::PointerType>(pType), static_cast<QInputDevice::Capabilities>(caps), static_cast<int>(maxPoints), static_cast<int>(buttonCount), seatName_QString, *uniqueId);
+	*outptr_QPointingDevice = ret;
+	*outptr_QInputDevice = static_cast<QInputDevice*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QPointingDevice* QPointingDevice_new6(struct miqt_string name, long long systemId, int devType, int pType, int caps, int maxPoints, int buttonCount, struct miqt_string seatName, QPointingDeviceUniqueId* uniqueId, QObject* parent) {
+void QPointingDevice_new6(struct miqt_string name, long long systemId, int devType, int pType, int caps, int maxPoints, int buttonCount, struct miqt_string seatName, QPointingDeviceUniqueId* uniqueId, QObject* parent, QPointingDevice** outptr_QPointingDevice, QInputDevice** outptr_QInputDevice, QObject** outptr_QObject) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	QString seatName_QString = QString::fromUtf8(seatName.data, seatName.len);
-	return new QPointingDevice(name_QString, static_cast<qint64>(systemId), static_cast<QInputDevice::DeviceType>(devType), static_cast<QPointingDevice::PointerType>(pType), static_cast<QInputDevice::Capabilities>(caps), static_cast<int>(maxPoints), static_cast<int>(buttonCount), seatName_QString, *uniqueId, parent);
+	QPointingDevice* ret = new QPointingDevice(name_QString, static_cast<qint64>(systemId), static_cast<QInputDevice::DeviceType>(devType), static_cast<QPointingDevice::PointerType>(pType), static_cast<QInputDevice::Capabilities>(caps), static_cast<int>(maxPoints), static_cast<int>(buttonCount), seatName_QString, *uniqueId, parent);
+	*outptr_QPointingDevice = ret;
+	*outptr_QInputDevice = static_cast<QInputDevice*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QPointingDevice_MetaObject(const QPointingDevice* self) {
@@ -167,7 +192,11 @@ QPointingDevice* QPointingDevice_PrimaryPointingDevice1(struct miqt_string seatN
 	return (QPointingDevice*) QPointingDevice::primaryPointingDevice(seatName_QString);
 }
 
-void QPointingDevice_Delete(QPointingDevice* self) {
-	delete self;
+void QPointingDevice_Delete(QPointingDevice* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QPointingDevice*>( self );
+	} else {
+		delete self;
+	}
 }
 

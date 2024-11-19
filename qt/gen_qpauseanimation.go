@@ -10,11 +10,13 @@ import "C"
 
 import (
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
 type QPauseAnimation struct {
-	h *C.QPauseAnimation
+	h          *C.QPauseAnimation
+	isSubclass bool
 	*QAbstractAnimation
 }
 
@@ -32,39 +34,71 @@ func (this *QPauseAnimation) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQPauseAnimation(h *C.QPauseAnimation) *QPauseAnimation {
+// newQPauseAnimation constructs the type using only CGO pointers.
+func newQPauseAnimation(h *C.QPauseAnimation, h_QAbstractAnimation *C.QAbstractAnimation, h_QObject *C.QObject) *QPauseAnimation {
 	if h == nil {
 		return nil
 	}
-	return &QPauseAnimation{h: h, QAbstractAnimation: UnsafeNewQAbstractAnimation(unsafe.Pointer(h))}
+	return &QPauseAnimation{h: h,
+		QAbstractAnimation: newQAbstractAnimation(h_QAbstractAnimation, h_QObject)}
 }
 
-func UnsafeNewQPauseAnimation(h unsafe.Pointer) *QPauseAnimation {
-	return newQPauseAnimation((*C.QPauseAnimation)(h))
+// UnsafeNewQPauseAnimation constructs the type using only unsafe pointers.
+func UnsafeNewQPauseAnimation(h unsafe.Pointer, h_QAbstractAnimation unsafe.Pointer, h_QObject unsafe.Pointer) *QPauseAnimation {
+	if h == nil {
+		return nil
+	}
+
+	return &QPauseAnimation{h: (*C.QPauseAnimation)(h),
+		QAbstractAnimation: UnsafeNewQAbstractAnimation(h_QAbstractAnimation, h_QObject)}
 }
 
 // NewQPauseAnimation constructs a new QPauseAnimation object.
 func NewQPauseAnimation() *QPauseAnimation {
-	ret := C.QPauseAnimation_new()
-	return newQPauseAnimation(ret)
+	var outptr_QPauseAnimation *C.QPauseAnimation = nil
+	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QPauseAnimation_new(&outptr_QPauseAnimation, &outptr_QAbstractAnimation, &outptr_QObject)
+	ret := newQPauseAnimation(outptr_QPauseAnimation, outptr_QAbstractAnimation, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPauseAnimation2 constructs a new QPauseAnimation object.
 func NewQPauseAnimation2(msecs int) *QPauseAnimation {
-	ret := C.QPauseAnimation_new2((C.int)(msecs))
-	return newQPauseAnimation(ret)
+	var outptr_QPauseAnimation *C.QPauseAnimation = nil
+	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QPauseAnimation_new2((C.int)(msecs), &outptr_QPauseAnimation, &outptr_QAbstractAnimation, &outptr_QObject)
+	ret := newQPauseAnimation(outptr_QPauseAnimation, outptr_QAbstractAnimation, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPauseAnimation3 constructs a new QPauseAnimation object.
 func NewQPauseAnimation3(parent *QObject) *QPauseAnimation {
-	ret := C.QPauseAnimation_new3(parent.cPointer())
-	return newQPauseAnimation(ret)
+	var outptr_QPauseAnimation *C.QPauseAnimation = nil
+	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QPauseAnimation_new3(parent.cPointer(), &outptr_QPauseAnimation, &outptr_QAbstractAnimation, &outptr_QObject)
+	ret := newQPauseAnimation(outptr_QPauseAnimation, outptr_QAbstractAnimation, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPauseAnimation4 constructs a new QPauseAnimation object.
 func NewQPauseAnimation4(msecs int, parent *QObject) *QPauseAnimation {
-	ret := C.QPauseAnimation_new4((C.int)(msecs), parent.cPointer())
-	return newQPauseAnimation(ret)
+	var outptr_QPauseAnimation *C.QPauseAnimation = nil
+	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QPauseAnimation_new4((C.int)(msecs), parent.cPointer(), &outptr_QPauseAnimation, &outptr_QAbstractAnimation, &outptr_QObject)
+	ret := newQPauseAnimation(outptr_QPauseAnimation, outptr_QAbstractAnimation, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QPauseAnimation) MetaObject() *QMetaObject {
@@ -147,9 +181,127 @@ func QPauseAnimation_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QPauseAnimation) callVirtualBase_Duration() int {
+
+	return (int)(C.QPauseAnimation_virtualbase_Duration(unsafe.Pointer(this.h)))
+
+}
+func (this *QPauseAnimation) OnDuration(slot func(super func() int) int) {
+	C.QPauseAnimation_override_virtual_Duration(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QPauseAnimation_Duration
+func miqt_exec_callback_QPauseAnimation_Duration(self *C.QPauseAnimation, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QPauseAnimation{h: self}).callVirtualBase_Duration)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QPauseAnimation) callVirtualBase_Event(e *QEvent) bool {
+
+	return (bool)(C.QPauseAnimation_virtualbase_Event(unsafe.Pointer(this.h), e.cPointer()))
+
+}
+func (this *QPauseAnimation) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	C.QPauseAnimation_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QPauseAnimation_Event
+func miqt_exec_callback_QPauseAnimation_Event(self *C.QPauseAnimation, cb C.intptr_t, e *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QEvent) bool, e *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+
+	virtualReturn := gofunc((&QPauseAnimation{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QPauseAnimation) callVirtualBase_UpdateCurrentTime(param1 int) {
+
+	C.QPauseAnimation_virtualbase_UpdateCurrentTime(unsafe.Pointer(this.h), (C.int)(param1))
+
+}
+func (this *QPauseAnimation) OnUpdateCurrentTime(slot func(super func(param1 int), param1 int)) {
+	C.QPauseAnimation_override_virtual_UpdateCurrentTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QPauseAnimation_UpdateCurrentTime
+func miqt_exec_callback_QPauseAnimation_UpdateCurrentTime(self *C.QPauseAnimation, cb C.intptr_t, param1 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int), param1 int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(param1)
+
+	gofunc((&QPauseAnimation{h: self}).callVirtualBase_UpdateCurrentTime, slotval1)
+
+}
+
+func (this *QPauseAnimation) callVirtualBase_UpdateState(newState QAbstractAnimation__State, oldState QAbstractAnimation__State) {
+
+	C.QPauseAnimation_virtualbase_UpdateState(unsafe.Pointer(this.h), (C.int)(newState), (C.int)(oldState))
+
+}
+func (this *QPauseAnimation) OnUpdateState(slot func(super func(newState QAbstractAnimation__State, oldState QAbstractAnimation__State), newState QAbstractAnimation__State, oldState QAbstractAnimation__State)) {
+	C.QPauseAnimation_override_virtual_UpdateState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QPauseAnimation_UpdateState
+func miqt_exec_callback_QPauseAnimation_UpdateState(self *C.QPauseAnimation, cb C.intptr_t, newState C.int, oldState C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(newState QAbstractAnimation__State, oldState QAbstractAnimation__State), newState QAbstractAnimation__State, oldState QAbstractAnimation__State))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QAbstractAnimation__State)(newState)
+
+	slotval2 := (QAbstractAnimation__State)(oldState)
+
+	gofunc((&QPauseAnimation{h: self}).callVirtualBase_UpdateState, slotval1, slotval2)
+
+}
+
+func (this *QPauseAnimation) callVirtualBase_UpdateDirection(direction QAbstractAnimation__Direction) {
+
+	C.QPauseAnimation_virtualbase_UpdateDirection(unsafe.Pointer(this.h), (C.int)(direction))
+
+}
+func (this *QPauseAnimation) OnUpdateDirection(slot func(super func(direction QAbstractAnimation__Direction), direction QAbstractAnimation__Direction)) {
+	C.QPauseAnimation_override_virtual_UpdateDirection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QPauseAnimation_UpdateDirection
+func miqt_exec_callback_QPauseAnimation_UpdateDirection(self *C.QPauseAnimation, cb C.intptr_t, direction C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(direction QAbstractAnimation__Direction), direction QAbstractAnimation__Direction))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QAbstractAnimation__Direction)(direction)
+
+	gofunc((&QPauseAnimation{h: self}).callVirtualBase_UpdateDirection, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QPauseAnimation) Delete() {
-	C.QPauseAnimation_Delete(this.h)
+	C.QPauseAnimation_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

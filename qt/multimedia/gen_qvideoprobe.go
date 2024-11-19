@@ -16,7 +16,8 @@ import (
 )
 
 type QVideoProbe struct {
-	h *C.QVideoProbe
+	h          *C.QVideoProbe
+	isSubclass bool
 	*qt.QObject
 }
 
@@ -34,27 +35,45 @@ func (this *QVideoProbe) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQVideoProbe(h *C.QVideoProbe) *QVideoProbe {
+// newQVideoProbe constructs the type using only CGO pointers.
+func newQVideoProbe(h *C.QVideoProbe, h_QObject *C.QObject) *QVideoProbe {
 	if h == nil {
 		return nil
 	}
-	return &QVideoProbe{h: h, QObject: qt.UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QVideoProbe{h: h,
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
 }
 
-func UnsafeNewQVideoProbe(h unsafe.Pointer) *QVideoProbe {
-	return newQVideoProbe((*C.QVideoProbe)(h))
+// UnsafeNewQVideoProbe constructs the type using only unsafe pointers.
+func UnsafeNewQVideoProbe(h unsafe.Pointer, h_QObject unsafe.Pointer) *QVideoProbe {
+	if h == nil {
+		return nil
+	}
+
+	return &QVideoProbe{h: (*C.QVideoProbe)(h),
+		QObject: qt.UnsafeNewQObject(h_QObject)}
 }
 
 // NewQVideoProbe constructs a new QVideoProbe object.
 func NewQVideoProbe() *QVideoProbe {
-	ret := C.QVideoProbe_new()
-	return newQVideoProbe(ret)
+	var outptr_QVideoProbe *C.QVideoProbe = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QVideoProbe_new(&outptr_QVideoProbe, &outptr_QObject)
+	ret := newQVideoProbe(outptr_QVideoProbe, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVideoProbe2 constructs a new QVideoProbe object.
 func NewQVideoProbe2(parent *qt.QObject) *QVideoProbe {
-	ret := C.QVideoProbe_new2((*C.QObject)(parent.UnsafePointer()))
-	return newQVideoProbe(ret)
+	var outptr_QVideoProbe *C.QVideoProbe = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QVideoProbe_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QVideoProbe, &outptr_QObject)
+	ret := newQVideoProbe(outptr_QVideoProbe, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QVideoProbe) MetaObject() *qt.QMetaObject {
@@ -178,9 +197,175 @@ func QVideoProbe_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QVideoProbe) callVirtualBase_Event(event *qt.QEvent) bool {
+
+	return (bool)(C.QVideoProbe_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QVideoProbe) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	C.QVideoProbe_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QVideoProbe_Event
+func miqt_exec_callback_QVideoProbe_Event(self *C.QVideoProbe, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QVideoProbe{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QVideoProbe) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+
+	return (bool)(C.QVideoProbe_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QVideoProbe) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	C.QVideoProbe_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QVideoProbe_EventFilter
+func miqt_exec_callback_QVideoProbe_EventFilter(self *C.QVideoProbe, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QVideoProbe{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QVideoProbe) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+
+	C.QVideoProbe_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+
+}
+func (this *QVideoProbe) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	C.QVideoProbe_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QVideoProbe_TimerEvent
+func miqt_exec_callback_QVideoProbe_TimerEvent(self *C.QVideoProbe, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QVideoProbe{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QVideoProbe) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+
+	C.QVideoProbe_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+
+}
+func (this *QVideoProbe) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	C.QVideoProbe_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QVideoProbe_ChildEvent
+func miqt_exec_callback_QVideoProbe_ChildEvent(self *C.QVideoProbe, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QVideoProbe{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QVideoProbe) callVirtualBase_CustomEvent(event *qt.QEvent) {
+
+	C.QVideoProbe_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+
+}
+func (this *QVideoProbe) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	C.QVideoProbe_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QVideoProbe_CustomEvent
+func miqt_exec_callback_QVideoProbe_CustomEvent(self *C.QVideoProbe, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QVideoProbe{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QVideoProbe) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+
+	C.QVideoProbe_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QVideoProbe) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	C.QVideoProbe_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QVideoProbe_ConnectNotify
+func miqt_exec_callback_QVideoProbe_ConnectNotify(self *C.QVideoProbe, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QVideoProbe{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QVideoProbe) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+
+	C.QVideoProbe_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QVideoProbe) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	C.QVideoProbe_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QVideoProbe_DisconnectNotify
+func miqt_exec_callback_QVideoProbe_DisconnectNotify(self *C.QVideoProbe, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QVideoProbe{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QVideoProbe) Delete() {
-	C.QVideoProbe_Delete(this.h)
+	C.QVideoProbe_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

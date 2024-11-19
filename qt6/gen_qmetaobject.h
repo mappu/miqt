@@ -42,8 +42,8 @@ typedef struct QUntypedBindable QUntypedBindable;
 typedef struct QVariant QVariant;
 #endif
 
-QMetaMethod* QMetaMethod_new();
-QMetaMethod* QMetaMethod_new2(QMetaMethod* param1);
+void QMetaMethod_new(QMetaMethod** outptr_QMetaMethod);
+void QMetaMethod_new2(QMetaMethod* param1, QMetaMethod** outptr_QMetaMethod);
 struct miqt_string QMetaMethod_MethodSignature(const QMetaMethod* self);
 struct miqt_string QMetaMethod_Name(const QMetaMethod* self);
 const char* QMetaMethod_TypeName(const QMetaMethod* self);
@@ -132,10 +132,10 @@ bool QMetaMethod_InvokeOnGadget82(const QMetaMethod* self, void* gadget, QGeneri
 bool QMetaMethod_InvokeOnGadget92(const QMetaMethod* self, void* gadget, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7);
 bool QMetaMethod_InvokeOnGadget102(const QMetaMethod* self, void* gadget, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7, QGenericArgument* val8);
 bool QMetaMethod_InvokeOnGadget112(const QMetaMethod* self, void* gadget, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7, QGenericArgument* val8, QGenericArgument* val9);
-void QMetaMethod_Delete(QMetaMethod* self);
+void QMetaMethod_Delete(QMetaMethod* self, bool isSubclass);
 
-QMetaEnum* QMetaEnum_new();
-QMetaEnum* QMetaEnum_new2(QMetaEnum* param1);
+void QMetaEnum_new(QMetaEnum** outptr_QMetaEnum);
+void QMetaEnum_new2(QMetaEnum* param1, QMetaEnum** outptr_QMetaEnum);
 const char* QMetaEnum_Name(const QMetaEnum* self);
 const char* QMetaEnum_EnumName(const QMetaEnum* self);
 bool QMetaEnum_IsFlag(const QMetaEnum* self);
@@ -152,9 +152,9 @@ QMetaObject* QMetaEnum_EnclosingMetaObject(const QMetaEnum* self);
 bool QMetaEnum_IsValid(const QMetaEnum* self);
 int QMetaEnum_KeyToValue2(const QMetaEnum* self, const char* key, bool* ok);
 int QMetaEnum_KeysToValue2(const QMetaEnum* self, const char* keys, bool* ok);
-void QMetaEnum_Delete(QMetaEnum* self);
+void QMetaEnum_Delete(QMetaEnum* self, bool isSubclass);
 
-QMetaProperty* QMetaProperty_new();
+void QMetaProperty_new(QMetaProperty** outptr_QMetaProperty);
 const char* QMetaProperty_Name(const QMetaProperty* self);
 const char* QMetaProperty_TypeName(const QMetaProperty* self);
 int QMetaProperty_Type(const QMetaProperty* self);
@@ -192,13 +192,13 @@ bool QMetaProperty_HasStdCppSet(const QMetaProperty* self);
 bool QMetaProperty_IsAlias(const QMetaProperty* self);
 bool QMetaProperty_IsValid(const QMetaProperty* self);
 QMetaObject* QMetaProperty_EnclosingMetaObject(const QMetaProperty* self);
-void QMetaProperty_Delete(QMetaProperty* self);
+void QMetaProperty_Delete(QMetaProperty* self, bool isSubclass);
 
-QMetaClassInfo* QMetaClassInfo_new();
+void QMetaClassInfo_new(QMetaClassInfo** outptr_QMetaClassInfo);
 const char* QMetaClassInfo_Name(const QMetaClassInfo* self);
 const char* QMetaClassInfo_Value(const QMetaClassInfo* self);
 QMetaObject* QMetaClassInfo_EnclosingMetaObject(const QMetaClassInfo* self);
-void QMetaClassInfo_Delete(QMetaClassInfo* self);
+void QMetaClassInfo_Delete(QMetaClassInfo* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

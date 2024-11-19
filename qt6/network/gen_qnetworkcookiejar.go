@@ -11,11 +11,13 @@ import "C"
 import (
 	"github.com/mappu/miqt/qt6"
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
 type QNetworkCookieJar struct {
-	h *C.QNetworkCookieJar
+	h          *C.QNetworkCookieJar
+	isSubclass bool
 	*qt6.QObject
 }
 
@@ -33,27 +35,45 @@ func (this *QNetworkCookieJar) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQNetworkCookieJar(h *C.QNetworkCookieJar) *QNetworkCookieJar {
+// newQNetworkCookieJar constructs the type using only CGO pointers.
+func newQNetworkCookieJar(h *C.QNetworkCookieJar, h_QObject *C.QObject) *QNetworkCookieJar {
 	if h == nil {
 		return nil
 	}
-	return &QNetworkCookieJar{h: h, QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QNetworkCookieJar{h: h,
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
 }
 
-func UnsafeNewQNetworkCookieJar(h unsafe.Pointer) *QNetworkCookieJar {
-	return newQNetworkCookieJar((*C.QNetworkCookieJar)(h))
+// UnsafeNewQNetworkCookieJar constructs the type using only unsafe pointers.
+func UnsafeNewQNetworkCookieJar(h unsafe.Pointer, h_QObject unsafe.Pointer) *QNetworkCookieJar {
+	if h == nil {
+		return nil
+	}
+
+	return &QNetworkCookieJar{h: (*C.QNetworkCookieJar)(h),
+		QObject: qt6.UnsafeNewQObject(h_QObject)}
 }
 
 // NewQNetworkCookieJar constructs a new QNetworkCookieJar object.
 func NewQNetworkCookieJar() *QNetworkCookieJar {
-	ret := C.QNetworkCookieJar_new()
-	return newQNetworkCookieJar(ret)
+	var outptr_QNetworkCookieJar *C.QNetworkCookieJar = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QNetworkCookieJar_new(&outptr_QNetworkCookieJar, &outptr_QObject)
+	ret := newQNetworkCookieJar(outptr_QNetworkCookieJar, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQNetworkCookieJar2 constructs a new QNetworkCookieJar object.
 func NewQNetworkCookieJar2(parent *qt6.QObject) *QNetworkCookieJar {
-	ret := C.QNetworkCookieJar_new2((*C.QObject)(parent.UnsafePointer()))
-	return newQNetworkCookieJar(ret)
+	var outptr_QNetworkCookieJar *C.QNetworkCookieJar = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QNetworkCookieJar_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QNetworkCookieJar, &outptr_QObject)
+	ret := newQNetworkCookieJar(outptr_QNetworkCookieJar, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QNetworkCookieJar) MetaObject() *qt6.QMetaObject {
@@ -132,9 +152,358 @@ func QNetworkCookieJar_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QNetworkCookieJar) callVirtualBase_CookiesForUrl(url *qt6.QUrl) []QNetworkCookie {
+
+	var _ma C.struct_miqt_array = C.QNetworkCookieJar_virtualbase_CookiesForUrl(unsafe.Pointer(this.h), (*C.QUrl)(url.UnsafePointer()))
+	_ret := make([]QNetworkCookie, int(_ma.len))
+	_outCast := (*[0xffff]*C.QNetworkCookie)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQNetworkCookie(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
+	}
+	return _ret
+
+}
+func (this *QNetworkCookieJar) OnCookiesForUrl(slot func(super func(url *qt6.QUrl) []QNetworkCookie, url *qt6.QUrl) []QNetworkCookie) {
+	C.QNetworkCookieJar_override_virtual_CookiesForUrl(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkCookieJar_CookiesForUrl
+func miqt_exec_callback_QNetworkCookieJar_CookiesForUrl(self *C.QNetworkCookieJar, cb C.intptr_t, url *C.QUrl) C.struct_miqt_array {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(url *qt6.QUrl) []QNetworkCookie, url *qt6.QUrl) []QNetworkCookie)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQUrl(unsafe.Pointer(url))
+
+	virtualReturn := gofunc((&QNetworkCookieJar{h: self}).callVirtualBase_CookiesForUrl, slotval1)
+	virtualReturn_CArray := (*[0xffff]*C.QNetworkCookie)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	defer C.free(unsafe.Pointer(virtualReturn_CArray))
+	for i := range virtualReturn {
+		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
+	}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+
+	return virtualReturn_ma
+
+}
+
+func (this *QNetworkCookieJar) callVirtualBase_SetCookiesFromUrl(cookieList []QNetworkCookie, url *qt6.QUrl) bool {
+	cookieList_CArray := (*[0xffff]*C.QNetworkCookie)(C.malloc(C.size_t(8 * len(cookieList))))
+	defer C.free(unsafe.Pointer(cookieList_CArray))
+	for i := range cookieList {
+		cookieList_CArray[i] = cookieList[i].cPointer()
+	}
+	cookieList_ma := C.struct_miqt_array{len: C.size_t(len(cookieList)), data: unsafe.Pointer(cookieList_CArray)}
+
+	return (bool)(C.QNetworkCookieJar_virtualbase_SetCookiesFromUrl(unsafe.Pointer(this.h), cookieList_ma, (*C.QUrl)(url.UnsafePointer())))
+
+}
+func (this *QNetworkCookieJar) OnSetCookiesFromUrl(slot func(super func(cookieList []QNetworkCookie, url *qt6.QUrl) bool, cookieList []QNetworkCookie, url *qt6.QUrl) bool) {
+	C.QNetworkCookieJar_override_virtual_SetCookiesFromUrl(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkCookieJar_SetCookiesFromUrl
+func miqt_exec_callback_QNetworkCookieJar_SetCookiesFromUrl(self *C.QNetworkCookieJar, cb C.intptr_t, cookieList C.struct_miqt_array, url *C.QUrl) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(cookieList []QNetworkCookie, url *qt6.QUrl) bool, cookieList []QNetworkCookie, url *qt6.QUrl) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	var cookieList_ma C.struct_miqt_array = cookieList
+	cookieList_ret := make([]QNetworkCookie, int(cookieList_ma.len))
+	cookieList_outCast := (*[0xffff]*C.QNetworkCookie)(unsafe.Pointer(cookieList_ma.data)) // hey ya
+	for i := 0; i < int(cookieList_ma.len); i++ {
+		cookieList_lv_ret := cookieList_outCast[i]
+		cookieList_lv_goptr := newQNetworkCookie(cookieList_lv_ret)
+		cookieList_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		cookieList_ret[i] = *cookieList_lv_goptr
+	}
+	slotval1 := cookieList_ret
+
+	slotval2 := qt6.UnsafeNewQUrl(unsafe.Pointer(url))
+
+	virtualReturn := gofunc((&QNetworkCookieJar{h: self}).callVirtualBase_SetCookiesFromUrl, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QNetworkCookieJar) callVirtualBase_InsertCookie(cookie *QNetworkCookie) bool {
+
+	return (bool)(C.QNetworkCookieJar_virtualbase_InsertCookie(unsafe.Pointer(this.h), cookie.cPointer()))
+
+}
+func (this *QNetworkCookieJar) OnInsertCookie(slot func(super func(cookie *QNetworkCookie) bool, cookie *QNetworkCookie) bool) {
+	C.QNetworkCookieJar_override_virtual_InsertCookie(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkCookieJar_InsertCookie
+func miqt_exec_callback_QNetworkCookieJar_InsertCookie(self *C.QNetworkCookieJar, cb C.intptr_t, cookie *C.QNetworkCookie) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(cookie *QNetworkCookie) bool, cookie *QNetworkCookie) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQNetworkCookie(unsafe.Pointer(cookie))
+
+	virtualReturn := gofunc((&QNetworkCookieJar{h: self}).callVirtualBase_InsertCookie, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QNetworkCookieJar) callVirtualBase_UpdateCookie(cookie *QNetworkCookie) bool {
+
+	return (bool)(C.QNetworkCookieJar_virtualbase_UpdateCookie(unsafe.Pointer(this.h), cookie.cPointer()))
+
+}
+func (this *QNetworkCookieJar) OnUpdateCookie(slot func(super func(cookie *QNetworkCookie) bool, cookie *QNetworkCookie) bool) {
+	C.QNetworkCookieJar_override_virtual_UpdateCookie(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkCookieJar_UpdateCookie
+func miqt_exec_callback_QNetworkCookieJar_UpdateCookie(self *C.QNetworkCookieJar, cb C.intptr_t, cookie *C.QNetworkCookie) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(cookie *QNetworkCookie) bool, cookie *QNetworkCookie) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQNetworkCookie(unsafe.Pointer(cookie))
+
+	virtualReturn := gofunc((&QNetworkCookieJar{h: self}).callVirtualBase_UpdateCookie, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QNetworkCookieJar) callVirtualBase_DeleteCookie(cookie *QNetworkCookie) bool {
+
+	return (bool)(C.QNetworkCookieJar_virtualbase_DeleteCookie(unsafe.Pointer(this.h), cookie.cPointer()))
+
+}
+func (this *QNetworkCookieJar) OnDeleteCookie(slot func(super func(cookie *QNetworkCookie) bool, cookie *QNetworkCookie) bool) {
+	C.QNetworkCookieJar_override_virtual_DeleteCookie(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkCookieJar_DeleteCookie
+func miqt_exec_callback_QNetworkCookieJar_DeleteCookie(self *C.QNetworkCookieJar, cb C.intptr_t, cookie *C.QNetworkCookie) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(cookie *QNetworkCookie) bool, cookie *QNetworkCookie) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQNetworkCookie(unsafe.Pointer(cookie))
+
+	virtualReturn := gofunc((&QNetworkCookieJar{h: self}).callVirtualBase_DeleteCookie, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QNetworkCookieJar) callVirtualBase_ValidateCookie(cookie *QNetworkCookie, url *qt6.QUrl) bool {
+
+	return (bool)(C.QNetworkCookieJar_virtualbase_ValidateCookie(unsafe.Pointer(this.h), cookie.cPointer(), (*C.QUrl)(url.UnsafePointer())))
+
+}
+func (this *QNetworkCookieJar) OnValidateCookie(slot func(super func(cookie *QNetworkCookie, url *qt6.QUrl) bool, cookie *QNetworkCookie, url *qt6.QUrl) bool) {
+	C.QNetworkCookieJar_override_virtual_ValidateCookie(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkCookieJar_ValidateCookie
+func miqt_exec_callback_QNetworkCookieJar_ValidateCookie(self *C.QNetworkCookieJar, cb C.intptr_t, cookie *C.QNetworkCookie, url *C.QUrl) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(cookie *QNetworkCookie, url *qt6.QUrl) bool, cookie *QNetworkCookie, url *qt6.QUrl) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQNetworkCookie(unsafe.Pointer(cookie))
+	slotval2 := qt6.UnsafeNewQUrl(unsafe.Pointer(url))
+
+	virtualReturn := gofunc((&QNetworkCookieJar{h: self}).callVirtualBase_ValidateCookie, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QNetworkCookieJar) callVirtualBase_Event(event *qt6.QEvent) bool {
+
+	return (bool)(C.QNetworkCookieJar_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QNetworkCookieJar) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+	C.QNetworkCookieJar_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkCookieJar_Event
+func miqt_exec_callback_QNetworkCookieJar_Event(self *C.QNetworkCookieJar, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QNetworkCookieJar{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QNetworkCookieJar) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+
+	return (bool)(C.QNetworkCookieJar_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QNetworkCookieJar) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	C.QNetworkCookieJar_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkCookieJar_EventFilter
+func miqt_exec_callback_QNetworkCookieJar_EventFilter(self *C.QNetworkCookieJar, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QNetworkCookieJar{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QNetworkCookieJar) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+
+	C.QNetworkCookieJar_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+
+}
+func (this *QNetworkCookieJar) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	C.QNetworkCookieJar_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkCookieJar_TimerEvent
+func miqt_exec_callback_QNetworkCookieJar_TimerEvent(self *C.QNetworkCookieJar, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QNetworkCookieJar{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QNetworkCookieJar) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+
+	C.QNetworkCookieJar_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+
+}
+func (this *QNetworkCookieJar) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	C.QNetworkCookieJar_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkCookieJar_ChildEvent
+func miqt_exec_callback_QNetworkCookieJar_ChildEvent(self *C.QNetworkCookieJar, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QNetworkCookieJar{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QNetworkCookieJar) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+
+	C.QNetworkCookieJar_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+
+}
+func (this *QNetworkCookieJar) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	C.QNetworkCookieJar_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkCookieJar_CustomEvent
+func miqt_exec_callback_QNetworkCookieJar_CustomEvent(self *C.QNetworkCookieJar, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent), event *qt6.QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QNetworkCookieJar{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QNetworkCookieJar) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+
+	C.QNetworkCookieJar_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QNetworkCookieJar) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	C.QNetworkCookieJar_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkCookieJar_ConnectNotify
+func miqt_exec_callback_QNetworkCookieJar_ConnectNotify(self *C.QNetworkCookieJar, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QNetworkCookieJar{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QNetworkCookieJar) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+
+	C.QNetworkCookieJar_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QNetworkCookieJar) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	C.QNetworkCookieJar_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkCookieJar_DisconnectNotify
+func miqt_exec_callback_QNetworkCookieJar_DisconnectNotify(self *C.QNetworkCookieJar, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QNetworkCookieJar{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QNetworkCookieJar) Delete() {
-	C.QNetworkCookieJar_Delete(this.h)
+	C.QNetworkCookieJar_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

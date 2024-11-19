@@ -16,28 +16,36 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAudioOutput;
+class QChildEvent;
+class QEvent;
 class QIODevice;
 class QMediaMetaData;
 class QMediaPlayer;
 class QMediaTimeRange;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
+class QTimerEvent;
 class QUrl;
 class QVideoSink;
 #else
 typedef struct QAudioOutput QAudioOutput;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QIODevice QIODevice;
 typedef struct QMediaMetaData QMediaMetaData;
 typedef struct QMediaPlayer QMediaPlayer;
 typedef struct QMediaTimeRange QMediaTimeRange;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QUrl QUrl;
 typedef struct QVideoSink QVideoSink;
 #endif
 
-QMediaPlayer* QMediaPlayer_new();
-QMediaPlayer* QMediaPlayer_new2(QObject* parent);
+void QMediaPlayer_new(QMediaPlayer** outptr_QMediaPlayer, QObject** outptr_QObject);
+void QMediaPlayer_new2(QObject* parent, QMediaPlayer** outptr_QMediaPlayer, QObject** outptr_QObject);
 QMetaObject* QMediaPlayer_MetaObject(const QMediaPlayer* self);
 void* QMediaPlayer_Metacast(QMediaPlayer* self, const char* param1);
 struct miqt_string QMediaPlayer_Tr(const char* s);
@@ -120,7 +128,21 @@ void QMediaPlayer_connect_ErrorOccurred(QMediaPlayer* self, intptr_t slot);
 struct miqt_string QMediaPlayer_Tr2(const char* s, const char* c);
 struct miqt_string QMediaPlayer_Tr3(const char* s, const char* c, int n);
 void QMediaPlayer_SetSourceDevice2(QMediaPlayer* self, QIODevice* device, QUrl* sourceUrl);
-void QMediaPlayer_Delete(QMediaPlayer* self);
+void QMediaPlayer_override_virtual_Event(void* self, intptr_t slot);
+bool QMediaPlayer_virtualbase_Event(void* self, QEvent* event);
+void QMediaPlayer_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QMediaPlayer_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QMediaPlayer_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QMediaPlayer_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QMediaPlayer_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QMediaPlayer_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QMediaPlayer_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QMediaPlayer_virtualbase_CustomEvent(void* self, QEvent* event);
+void QMediaPlayer_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QMediaPlayer_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QMediaPlayer_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QMediaPlayer_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QMediaPlayer_Delete(QMediaPlayer* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

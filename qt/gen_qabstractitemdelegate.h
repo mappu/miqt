@@ -23,6 +23,7 @@ class QFontMetrics;
 class QHelpEvent;
 class QMetaObject;
 class QModelIndex;
+class QObject;
 class QPainter;
 class QSize;
 class QStyleOptionViewItem;
@@ -36,6 +37,7 @@ typedef struct QFontMetrics QFontMetrics;
 typedef struct QHelpEvent QHelpEvent;
 typedef struct QMetaObject QMetaObject;
 typedef struct QModelIndex QModelIndex;
+typedef struct QObject QObject;
 typedef struct QPainter QPainter;
 typedef struct QSize QSize;
 typedef struct QStyleOptionViewItem QStyleOptionViewItem;
@@ -69,7 +71,7 @@ struct miqt_string QAbstractItemDelegate_TrUtf82(const char* s, const char* c);
 struct miqt_string QAbstractItemDelegate_TrUtf83(const char* s, const char* c, int n);
 void QAbstractItemDelegate_CloseEditor2(QAbstractItemDelegate* self, QWidget* editor, int hint);
 void QAbstractItemDelegate_connect_CloseEditor2(QAbstractItemDelegate* self, intptr_t slot);
-void QAbstractItemDelegate_Delete(QAbstractItemDelegate* self);
+void QAbstractItemDelegate_Delete(QAbstractItemDelegate* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

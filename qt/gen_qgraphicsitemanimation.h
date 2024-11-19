@@ -15,27 +15,35 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QChildEvent;
+class QEvent;
 class QGraphicsItem;
 class QGraphicsItemAnimation;
 class QMatrix;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QPointF;
 class QTimeLine;
+class QTimerEvent;
 class QTransform;
 #else
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QGraphicsItem QGraphicsItem;
 typedef struct QGraphicsItemAnimation QGraphicsItemAnimation;
 typedef struct QMatrix QMatrix;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QPointF QPointF;
 typedef struct QTimeLine QTimeLine;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QTransform QTransform;
 #endif
 
-QGraphicsItemAnimation* QGraphicsItemAnimation_new();
-QGraphicsItemAnimation* QGraphicsItemAnimation_new2(QObject* parent);
+void QGraphicsItemAnimation_new(QGraphicsItemAnimation** outptr_QGraphicsItemAnimation, QObject** outptr_QObject);
+void QGraphicsItemAnimation_new2(QObject* parent, QGraphicsItemAnimation** outptr_QGraphicsItemAnimation, QObject** outptr_QObject);
 QMetaObject* QGraphicsItemAnimation_MetaObject(const QGraphicsItemAnimation* self);
 void* QGraphicsItemAnimation_Metacast(QGraphicsItemAnimation* self, const char* param1);
 struct miqt_string QGraphicsItemAnimation_Tr(const char* s);
@@ -67,11 +75,31 @@ void QGraphicsItemAnimation_SetShearAt(QGraphicsItemAnimation* self, double step
 void QGraphicsItemAnimation_Clear(QGraphicsItemAnimation* self);
 void QGraphicsItemAnimation_SetStep(QGraphicsItemAnimation* self, double x);
 void QGraphicsItemAnimation_Reset(QGraphicsItemAnimation* self);
+void QGraphicsItemAnimation_BeforeAnimationStep(QGraphicsItemAnimation* self, double step);
+void QGraphicsItemAnimation_AfterAnimationStep(QGraphicsItemAnimation* self, double step);
 struct miqt_string QGraphicsItemAnimation_Tr2(const char* s, const char* c);
 struct miqt_string QGraphicsItemAnimation_Tr3(const char* s, const char* c, int n);
 struct miqt_string QGraphicsItemAnimation_TrUtf82(const char* s, const char* c);
 struct miqt_string QGraphicsItemAnimation_TrUtf83(const char* s, const char* c, int n);
-void QGraphicsItemAnimation_Delete(QGraphicsItemAnimation* self);
+void QGraphicsItemAnimation_override_virtual_BeforeAnimationStep(void* self, intptr_t slot);
+void QGraphicsItemAnimation_virtualbase_BeforeAnimationStep(void* self, double step);
+void QGraphicsItemAnimation_override_virtual_AfterAnimationStep(void* self, intptr_t slot);
+void QGraphicsItemAnimation_virtualbase_AfterAnimationStep(void* self, double step);
+void QGraphicsItemAnimation_override_virtual_Event(void* self, intptr_t slot);
+bool QGraphicsItemAnimation_virtualbase_Event(void* self, QEvent* event);
+void QGraphicsItemAnimation_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QGraphicsItemAnimation_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QGraphicsItemAnimation_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QGraphicsItemAnimation_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QGraphicsItemAnimation_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QGraphicsItemAnimation_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QGraphicsItemAnimation_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QGraphicsItemAnimation_virtualbase_CustomEvent(void* self, QEvent* event);
+void QGraphicsItemAnimation_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QGraphicsItemAnimation_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QGraphicsItemAnimation_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QGraphicsItemAnimation_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QGraphicsItemAnimation_Delete(QGraphicsItemAnimation* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

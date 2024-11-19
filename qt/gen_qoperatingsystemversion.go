@@ -26,7 +26,8 @@ const (
 )
 
 type QOperatingSystemVersion struct {
-	h *C.QOperatingSystemVersion
+	h          *C.QOperatingSystemVersion
+	isSubclass bool
 }
 
 func (this *QOperatingSystemVersion) cPointer() *C.QOperatingSystemVersion {
@@ -43,6 +44,7 @@ func (this *QOperatingSystemVersion) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQOperatingSystemVersion constructs the type using only CGO pointers.
 func newQOperatingSystemVersion(h *C.QOperatingSystemVersion) *QOperatingSystemVersion {
 	if h == nil {
 		return nil
@@ -50,26 +52,43 @@ func newQOperatingSystemVersion(h *C.QOperatingSystemVersion) *QOperatingSystemV
 	return &QOperatingSystemVersion{h: h}
 }
 
+// UnsafeNewQOperatingSystemVersion constructs the type using only unsafe pointers.
 func UnsafeNewQOperatingSystemVersion(h unsafe.Pointer) *QOperatingSystemVersion {
-	return newQOperatingSystemVersion((*C.QOperatingSystemVersion)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QOperatingSystemVersion{h: (*C.QOperatingSystemVersion)(h)}
 }
 
 // NewQOperatingSystemVersion constructs a new QOperatingSystemVersion object.
 func NewQOperatingSystemVersion(osType QOperatingSystemVersion__OSType, vmajor int) *QOperatingSystemVersion {
-	ret := C.QOperatingSystemVersion_new((C.int)(osType), (C.int)(vmajor))
-	return newQOperatingSystemVersion(ret)
+	var outptr_QOperatingSystemVersion *C.QOperatingSystemVersion = nil
+
+	C.QOperatingSystemVersion_new((C.int)(osType), (C.int)(vmajor), &outptr_QOperatingSystemVersion)
+	ret := newQOperatingSystemVersion(outptr_QOperatingSystemVersion)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQOperatingSystemVersion2 constructs a new QOperatingSystemVersion object.
 func NewQOperatingSystemVersion2(osType QOperatingSystemVersion__OSType, vmajor int, vminor int) *QOperatingSystemVersion {
-	ret := C.QOperatingSystemVersion_new2((C.int)(osType), (C.int)(vmajor), (C.int)(vminor))
-	return newQOperatingSystemVersion(ret)
+	var outptr_QOperatingSystemVersion *C.QOperatingSystemVersion = nil
+
+	C.QOperatingSystemVersion_new2((C.int)(osType), (C.int)(vmajor), (C.int)(vminor), &outptr_QOperatingSystemVersion)
+	ret := newQOperatingSystemVersion(outptr_QOperatingSystemVersion)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQOperatingSystemVersion3 constructs a new QOperatingSystemVersion object.
 func NewQOperatingSystemVersion3(osType QOperatingSystemVersion__OSType, vmajor int, vminor int, vmicro int) *QOperatingSystemVersion {
-	ret := C.QOperatingSystemVersion_new3((C.int)(osType), (C.int)(vmajor), (C.int)(vminor), (C.int)(vmicro))
-	return newQOperatingSystemVersion(ret)
+	var outptr_QOperatingSystemVersion *C.QOperatingSystemVersion = nil
+
+	C.QOperatingSystemVersion_new3((C.int)(osType), (C.int)(vmajor), (C.int)(vminor), (C.int)(vmicro), &outptr_QOperatingSystemVersion)
+	ret := newQOperatingSystemVersion(outptr_QOperatingSystemVersion)
+	ret.isSubclass = true
+	return ret
 }
 
 func QOperatingSystemVersion_Current() *QOperatingSystemVersion {
@@ -112,7 +131,7 @@ func (this *QOperatingSystemVersion) Name() string {
 
 // Delete this object from C++ memory.
 func (this *QOperatingSystemVersion) Delete() {
-	C.QOperatingSystemVersion_Delete(this.h)
+	C.QOperatingSystemVersion_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

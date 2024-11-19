@@ -24,7 +24,7 @@ void QRunnable_Run(QRunnable* self);
 bool QRunnable_AutoDelete(const QRunnable* self);
 void QRunnable_SetAutoDelete(QRunnable* self, bool _autoDelete);
 void QRunnable_OperatorAssign(QRunnable* self, QRunnable* param1);
-void QRunnable_Delete(QRunnable* self);
+void QRunnable_Delete(QRunnable* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

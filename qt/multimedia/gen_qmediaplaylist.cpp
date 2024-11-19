@@ -1,25 +1,262 @@
+#include <QChildEvent>
+#include <QEvent>
 #include <QIODevice>
 #include <QList>
+#include <QMediaBindableInterface>
 #include <QMediaContent>
 #include <QMediaObject>
 #include <QMediaPlaylist>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QNetworkRequest>
 #include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QTimerEvent>
 #include <QUrl>
 #include <qmediaplaylist.h>
 #include "gen_qmediaplaylist.h"
 #include "_cgo_export.h"
 
-QMediaPlaylist* QMediaPlaylist_new() {
-	return new QMediaPlaylist();
+class MiqtVirtualQMediaPlaylist : public virtual QMediaPlaylist {
+public:
+
+	MiqtVirtualQMediaPlaylist(): QMediaPlaylist() {};
+	MiqtVirtualQMediaPlaylist(QObject* parent): QMediaPlaylist(parent) {};
+
+	virtual ~MiqtVirtualQMediaPlaylist() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MediaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QMediaObject* mediaObject() const override {
+		if (handle__MediaObject == 0) {
+			return QMediaPlaylist::mediaObject();
+		}
+		
+
+		QMediaObject* callback_return_value = miqt_exec_callback_QMediaPlaylist_MediaObject(const_cast<MiqtVirtualQMediaPlaylist*>(this), handle__MediaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMediaObject* virtualbase_MediaObject() const {
+
+		return QMediaPlaylist::mediaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetMediaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool setMediaObject(QMediaObject* object) override {
+		if (handle__SetMediaObject == 0) {
+			return QMediaPlaylist::setMediaObject(object);
+		}
+		
+		QMediaObject* sigval1 = object;
+
+		bool callback_return_value = miqt_exec_callback_QMediaPlaylist_SetMediaObject(this, handle__SetMediaObject, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_SetMediaObject(QMediaObject* object) {
+
+		return QMediaPlaylist::setMediaObject(object);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QMediaPlaylist::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QMediaPlaylist_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QMediaPlaylist::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QMediaPlaylist::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QMediaPlaylist_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QMediaPlaylist::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QMediaPlaylist::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QMediaPlaylist_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QMediaPlaylist::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QMediaPlaylist::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QMediaPlaylist_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QMediaPlaylist::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QMediaPlaylist::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QMediaPlaylist_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QMediaPlaylist::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QMediaPlaylist::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QMediaPlaylist_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QMediaPlaylist::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QMediaPlaylist::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QMediaPlaylist_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QMediaPlaylist::disconnectNotify(*signal);
+
+	}
+
+};
+
+void QMediaPlaylist_new(QMediaPlaylist** outptr_QMediaPlaylist, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface) {
+	MiqtVirtualQMediaPlaylist* ret = new MiqtVirtualQMediaPlaylist();
+	*outptr_QMediaPlaylist = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
+	*outptr_QMediaBindableInterface = static_cast<QMediaBindableInterface*>(ret);
 }
 
-QMediaPlaylist* QMediaPlaylist_new2(QObject* parent) {
-	return new QMediaPlaylist(parent);
+void QMediaPlaylist_new2(QObject* parent, QMediaPlaylist** outptr_QMediaPlaylist, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface) {
+	MiqtVirtualQMediaPlaylist* ret = new MiqtVirtualQMediaPlaylist(parent);
+	*outptr_QMediaPlaylist = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
+	*outptr_QMediaBindableInterface = static_cast<QMediaBindableInterface*>(ret);
 }
 
 QMetaObject* QMediaPlaylist_MetaObject(const QMediaPlaylist* self) {
@@ -198,7 +435,7 @@ void QMediaPlaylist_CurrentIndexChanged(QMediaPlaylist* self, int index) {
 }
 
 void QMediaPlaylist_connect_CurrentIndexChanged(QMediaPlaylist* self, intptr_t slot) {
-	QMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(int)>(&QMediaPlaylist::currentIndexChanged), self, [=](int index) {
+	MiqtVirtualQMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(int)>(&QMediaPlaylist::currentIndexChanged), self, [=](int index) {
 		int sigval1 = index;
 		miqt_exec_callback_QMediaPlaylist_CurrentIndexChanged(slot, sigval1);
 	});
@@ -209,7 +446,7 @@ void QMediaPlaylist_PlaybackModeChanged(QMediaPlaylist* self, int mode) {
 }
 
 void QMediaPlaylist_connect_PlaybackModeChanged(QMediaPlaylist* self, intptr_t slot) {
-	QMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(QMediaPlaylist::PlaybackMode)>(&QMediaPlaylist::playbackModeChanged), self, [=](QMediaPlaylist::PlaybackMode mode) {
+	MiqtVirtualQMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(QMediaPlaylist::PlaybackMode)>(&QMediaPlaylist::playbackModeChanged), self, [=](QMediaPlaylist::PlaybackMode mode) {
 		QMediaPlaylist::PlaybackMode mode_ret = mode;
 		int sigval1 = static_cast<int>(mode_ret);
 		miqt_exec_callback_QMediaPlaylist_PlaybackModeChanged(slot, sigval1);
@@ -221,7 +458,7 @@ void QMediaPlaylist_CurrentMediaChanged(QMediaPlaylist* self, QMediaContent* par
 }
 
 void QMediaPlaylist_connect_CurrentMediaChanged(QMediaPlaylist* self, intptr_t slot) {
-	QMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(const QMediaContent&)>(&QMediaPlaylist::currentMediaChanged), self, [=](const QMediaContent& param1) {
+	MiqtVirtualQMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(const QMediaContent&)>(&QMediaPlaylist::currentMediaChanged), self, [=](const QMediaContent& param1) {
 		const QMediaContent& param1_ret = param1;
 		// Cast returned reference into pointer
 		QMediaContent* sigval1 = const_cast<QMediaContent*>(&param1_ret);
@@ -234,7 +471,7 @@ void QMediaPlaylist_MediaAboutToBeInserted(QMediaPlaylist* self, int start, int 
 }
 
 void QMediaPlaylist_connect_MediaAboutToBeInserted(QMediaPlaylist* self, intptr_t slot) {
-	QMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(int, int)>(&QMediaPlaylist::mediaAboutToBeInserted), self, [=](int start, int end) {
+	MiqtVirtualQMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(int, int)>(&QMediaPlaylist::mediaAboutToBeInserted), self, [=](int start, int end) {
 		int sigval1 = start;
 		int sigval2 = end;
 		miqt_exec_callback_QMediaPlaylist_MediaAboutToBeInserted(slot, sigval1, sigval2);
@@ -246,7 +483,7 @@ void QMediaPlaylist_MediaInserted(QMediaPlaylist* self, int start, int end) {
 }
 
 void QMediaPlaylist_connect_MediaInserted(QMediaPlaylist* self, intptr_t slot) {
-	QMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(int, int)>(&QMediaPlaylist::mediaInserted), self, [=](int start, int end) {
+	MiqtVirtualQMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(int, int)>(&QMediaPlaylist::mediaInserted), self, [=](int start, int end) {
 		int sigval1 = start;
 		int sigval2 = end;
 		miqt_exec_callback_QMediaPlaylist_MediaInserted(slot, sigval1, sigval2);
@@ -258,7 +495,7 @@ void QMediaPlaylist_MediaAboutToBeRemoved(QMediaPlaylist* self, int start, int e
 }
 
 void QMediaPlaylist_connect_MediaAboutToBeRemoved(QMediaPlaylist* self, intptr_t slot) {
-	QMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(int, int)>(&QMediaPlaylist::mediaAboutToBeRemoved), self, [=](int start, int end) {
+	MiqtVirtualQMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(int, int)>(&QMediaPlaylist::mediaAboutToBeRemoved), self, [=](int start, int end) {
 		int sigval1 = start;
 		int sigval2 = end;
 		miqt_exec_callback_QMediaPlaylist_MediaAboutToBeRemoved(slot, sigval1, sigval2);
@@ -270,7 +507,7 @@ void QMediaPlaylist_MediaRemoved(QMediaPlaylist* self, int start, int end) {
 }
 
 void QMediaPlaylist_connect_MediaRemoved(QMediaPlaylist* self, intptr_t slot) {
-	QMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(int, int)>(&QMediaPlaylist::mediaRemoved), self, [=](int start, int end) {
+	MiqtVirtualQMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(int, int)>(&QMediaPlaylist::mediaRemoved), self, [=](int start, int end) {
 		int sigval1 = start;
 		int sigval2 = end;
 		miqt_exec_callback_QMediaPlaylist_MediaRemoved(slot, sigval1, sigval2);
@@ -282,7 +519,7 @@ void QMediaPlaylist_MediaChanged(QMediaPlaylist* self, int start, int end) {
 }
 
 void QMediaPlaylist_connect_MediaChanged(QMediaPlaylist* self, intptr_t slot) {
-	QMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(int, int)>(&QMediaPlaylist::mediaChanged), self, [=](int start, int end) {
+	MiqtVirtualQMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(int, int)>(&QMediaPlaylist::mediaChanged), self, [=](int start, int end) {
 		int sigval1 = start;
 		int sigval2 = end;
 		miqt_exec_callback_QMediaPlaylist_MediaChanged(slot, sigval1, sigval2);
@@ -294,7 +531,7 @@ void QMediaPlaylist_Loaded(QMediaPlaylist* self) {
 }
 
 void QMediaPlaylist_connect_Loaded(QMediaPlaylist* self, intptr_t slot) {
-	QMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)()>(&QMediaPlaylist::loaded), self, [=]() {
+	MiqtVirtualQMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)()>(&QMediaPlaylist::loaded), self, [=]() {
 		miqt_exec_callback_QMediaPlaylist_Loaded(slot);
 	});
 }
@@ -304,7 +541,7 @@ void QMediaPlaylist_LoadFailed(QMediaPlaylist* self) {
 }
 
 void QMediaPlaylist_connect_LoadFailed(QMediaPlaylist* self, intptr_t slot) {
-	QMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)()>(&QMediaPlaylist::loadFailed), self, [=]() {
+	MiqtVirtualQMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)()>(&QMediaPlaylist::loadFailed), self, [=]() {
 		miqt_exec_callback_QMediaPlaylist_LoadFailed(slot);
 	});
 }
@@ -377,7 +614,83 @@ bool QMediaPlaylist_Save22(QMediaPlaylist* self, QUrl* location, const char* for
 	return self->save(*location, format);
 }
 
-void QMediaPlaylist_Delete(QMediaPlaylist* self) {
-	delete self;
+void QMediaPlaylist_override_virtual_MediaObject(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) )->handle__MediaObject = slot;
+}
+
+QMediaObject* QMediaPlaylist_virtualbase_MediaObject(const void* self) {
+	return ( (const MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_MediaObject();
+}
+
+void QMediaPlaylist_override_virtual_SetMediaObject(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) )->handle__SetMediaObject = slot;
+}
+
+bool QMediaPlaylist_virtualbase_SetMediaObject(void* self, QMediaObject* object) {
+	return ( (MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_SetMediaObject(object);
+}
+
+void QMediaPlaylist_override_virtual_Event(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) )->handle__Event = slot;
+}
+
+bool QMediaPlaylist_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_Event(event);
+}
+
+void QMediaPlaylist_override_virtual_EventFilter(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) )->handle__EventFilter = slot;
+}
+
+bool QMediaPlaylist_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+void QMediaPlaylist_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) )->handle__TimerEvent = slot;
+}
+
+void QMediaPlaylist_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_TimerEvent(event);
+}
+
+void QMediaPlaylist_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) )->handle__ChildEvent = slot;
+}
+
+void QMediaPlaylist_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_ChildEvent(event);
+}
+
+void QMediaPlaylist_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) )->handle__CustomEvent = slot;
+}
+
+void QMediaPlaylist_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_CustomEvent(event);
+}
+
+void QMediaPlaylist_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) )->handle__ConnectNotify = slot;
+}
+
+void QMediaPlaylist_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+void QMediaPlaylist_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) )->handle__DisconnectNotify = slot;
+}
+
+void QMediaPlaylist_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_DisconnectNotify(signal);
+}
+
+void QMediaPlaylist_Delete(QMediaPlaylist* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQMediaPlaylist*>( self );
+	} else {
+		delete self;
+	}
 }
 

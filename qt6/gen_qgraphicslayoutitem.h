@@ -64,9 +64,10 @@ void QGraphicsLayoutItem_SetParentLayoutItem(QGraphicsLayoutItem* self, QGraphic
 bool QGraphicsLayoutItem_IsLayout(const QGraphicsLayoutItem* self);
 QGraphicsItem* QGraphicsLayoutItem_GraphicsItem(const QGraphicsLayoutItem* self);
 bool QGraphicsLayoutItem_OwnedByLayout(const QGraphicsLayoutItem* self);
+QSizeF* QGraphicsLayoutItem_SizeHint(const QGraphicsLayoutItem* self, int which, QSizeF* constraint);
 void QGraphicsLayoutItem_SetSizePolicy3(QGraphicsLayoutItem* self, int hPolicy, int vPolicy, int controlType);
 QSizeF* QGraphicsLayoutItem_EffectiveSizeHint2(const QGraphicsLayoutItem* self, int which, QSizeF* constraint);
-void QGraphicsLayoutItem_Delete(QGraphicsLayoutItem* self);
+void QGraphicsLayoutItem_Delete(QGraphicsLayoutItem* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

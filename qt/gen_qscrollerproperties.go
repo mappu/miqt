@@ -57,7 +57,8 @@ const (
 )
 
 type QScrollerProperties struct {
-	h *C.QScrollerProperties
+	h          *C.QScrollerProperties
+	isSubclass bool
 }
 
 func (this *QScrollerProperties) cPointer() *C.QScrollerProperties {
@@ -74,6 +75,7 @@ func (this *QScrollerProperties) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQScrollerProperties constructs the type using only CGO pointers.
 func newQScrollerProperties(h *C.QScrollerProperties) *QScrollerProperties {
 	if h == nil {
 		return nil
@@ -81,20 +83,33 @@ func newQScrollerProperties(h *C.QScrollerProperties) *QScrollerProperties {
 	return &QScrollerProperties{h: h}
 }
 
+// UnsafeNewQScrollerProperties constructs the type using only unsafe pointers.
 func UnsafeNewQScrollerProperties(h unsafe.Pointer) *QScrollerProperties {
-	return newQScrollerProperties((*C.QScrollerProperties)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QScrollerProperties{h: (*C.QScrollerProperties)(h)}
 }
 
 // NewQScrollerProperties constructs a new QScrollerProperties object.
 func NewQScrollerProperties() *QScrollerProperties {
-	ret := C.QScrollerProperties_new()
-	return newQScrollerProperties(ret)
+	var outptr_QScrollerProperties *C.QScrollerProperties = nil
+
+	C.QScrollerProperties_new(&outptr_QScrollerProperties)
+	ret := newQScrollerProperties(outptr_QScrollerProperties)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQScrollerProperties2 constructs a new QScrollerProperties object.
 func NewQScrollerProperties2(sp *QScrollerProperties) *QScrollerProperties {
-	ret := C.QScrollerProperties_new2(sp.cPointer())
-	return newQScrollerProperties(ret)
+	var outptr_QScrollerProperties *C.QScrollerProperties = nil
+
+	C.QScrollerProperties_new2(sp.cPointer(), &outptr_QScrollerProperties)
+	ret := newQScrollerProperties(outptr_QScrollerProperties)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QScrollerProperties) OperatorAssign(sp *QScrollerProperties) {
@@ -130,7 +145,7 @@ func (this *QScrollerProperties) SetScrollMetric(metric QScrollerProperties__Scr
 
 // Delete this object from C++ memory.
 func (this *QScrollerProperties) Delete() {
-	C.QScrollerProperties_Delete(this.h)
+	C.QScrollerProperties_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

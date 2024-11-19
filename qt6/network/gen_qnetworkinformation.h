@@ -17,9 +17,11 @@ extern "C" {
 #ifdef __cplusplus
 class QMetaObject;
 class QNetworkInformation;
+class QObject;
 #else
 typedef struct QMetaObject QMetaObject;
 typedef struct QNetworkInformation QNetworkInformation;
+typedef struct QObject QObject;
 #endif
 
 QMetaObject* QNetworkInformation_MetaObject(const QNetworkInformation* self);

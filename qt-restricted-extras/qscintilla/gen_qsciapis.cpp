@@ -1,6 +1,7 @@
 #include <QEvent>
 #include <QList>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -8,8 +9,234 @@
 #include "gen_qsciapis.h"
 #include "_cgo_export.h"
 
-QsciAPIs* QsciAPIs_new(QsciLexer* lexer) {
-	return new QsciAPIs(lexer);
+class MiqtVirtualQsciAPIs : public virtual QsciAPIs {
+public:
+
+	MiqtVirtualQsciAPIs(QsciLexer* lexer): QsciAPIs(lexer) {};
+
+	virtual ~MiqtVirtualQsciAPIs() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__UpdateAutoCompletionList = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void updateAutoCompletionList(const QStringList& context, QStringList& list) override {
+		if (handle__UpdateAutoCompletionList == 0) {
+			QsciAPIs::updateAutoCompletionList(context, list);
+			return;
+		}
+		
+		const QStringList& context_ret = context;
+		// Convert QList<> from C++ memory to manually-managed C memory
+		struct miqt_string* context_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * context_ret.length()));
+		for (size_t i = 0, e = context_ret.length(); i < e; ++i) {
+			QString context_lv_ret = context_ret[i];
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray context_lv_b = context_lv_ret.toUtf8();
+			struct miqt_string context_lv_ms;
+			context_lv_ms.len = context_lv_b.length();
+			context_lv_ms.data = static_cast<char*>(malloc(context_lv_ms.len));
+			memcpy(context_lv_ms.data, context_lv_b.data(), context_lv_ms.len);
+			context_arr[i] = context_lv_ms;
+		}
+		struct miqt_array context_out;
+		context_out.len = context_ret.length();
+		context_out.data = static_cast<void*>(context_arr);
+		struct miqt_array /* of struct miqt_string */  sigval1 = context_out;
+		QStringList& list_ret = list;
+		// Convert QList<> from C++ memory to manually-managed C memory
+		struct miqt_string* list_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * list_ret.length()));
+		for (size_t i = 0, e = list_ret.length(); i < e; ++i) {
+			QString list_lv_ret = list_ret[i];
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray list_lv_b = list_lv_ret.toUtf8();
+			struct miqt_string list_lv_ms;
+			list_lv_ms.len = list_lv_b.length();
+			list_lv_ms.data = static_cast<char*>(malloc(list_lv_ms.len));
+			memcpy(list_lv_ms.data, list_lv_b.data(), list_lv_ms.len);
+			list_arr[i] = list_lv_ms;
+		}
+		struct miqt_array list_out;
+		list_out.len = list_ret.length();
+		list_out.data = static_cast<void*>(list_arr);
+		struct miqt_array /* of struct miqt_string */  sigval2 = list_out;
+
+		miqt_exec_callback_QsciAPIs_UpdateAutoCompletionList(this, handle__UpdateAutoCompletionList, sigval1, sigval2);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_UpdateAutoCompletionList(struct miqt_array /* of struct miqt_string */  context, struct miqt_array /* of struct miqt_string */  list) {
+		QStringList context_QList;
+		context_QList.reserve(context.len);
+		struct miqt_string* context_arr = static_cast<struct miqt_string*>(context.data);
+		for(size_t i = 0; i < context.len; ++i) {
+			QString context_arr_i_QString = QString::fromUtf8(context_arr[i].data, context_arr[i].len);
+			context_QList.push_back(context_arr_i_QString);
+		}
+		QStringList list_QList;
+		list_QList.reserve(list.len);
+		struct miqt_string* list_arr = static_cast<struct miqt_string*>(list.data);
+		for(size_t i = 0; i < list.len; ++i) {
+			QString list_arr_i_QString = QString::fromUtf8(list_arr[i].data, list_arr[i].len);
+			list_QList.push_back(list_arr_i_QString);
+		}
+
+		QsciAPIs::updateAutoCompletionList(context_QList, list_QList);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__AutoCompletionSelected = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void autoCompletionSelected(const QString& sel) override {
+		if (handle__AutoCompletionSelected == 0) {
+			QsciAPIs::autoCompletionSelected(sel);
+			return;
+		}
+		
+		const QString sel_ret = sel;
+		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+		QByteArray sel_b = sel_ret.toUtf8();
+		struct miqt_string sel_ms;
+		sel_ms.len = sel_b.length();
+		sel_ms.data = static_cast<char*>(malloc(sel_ms.len));
+		memcpy(sel_ms.data, sel_b.data(), sel_ms.len);
+		struct miqt_string sigval1 = sel_ms;
+
+		miqt_exec_callback_QsciAPIs_AutoCompletionSelected(this, handle__AutoCompletionSelected, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_AutoCompletionSelected(struct miqt_string sel) {
+		QString sel_QString = QString::fromUtf8(sel.data, sel.len);
+
+		QsciAPIs::autoCompletionSelected(sel_QString);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CallTips = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QStringList callTips(const QStringList& context, int commas, QsciScintilla::CallTipsStyle style, QList<int>& shifts) override {
+		if (handle__CallTips == 0) {
+			return QsciAPIs::callTips(context, commas, style, shifts);
+		}
+		
+		const QStringList& context_ret = context;
+		// Convert QList<> from C++ memory to manually-managed C memory
+		struct miqt_string* context_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * context_ret.length()));
+		for (size_t i = 0, e = context_ret.length(); i < e; ++i) {
+			QString context_lv_ret = context_ret[i];
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray context_lv_b = context_lv_ret.toUtf8();
+			struct miqt_string context_lv_ms;
+			context_lv_ms.len = context_lv_b.length();
+			context_lv_ms.data = static_cast<char*>(malloc(context_lv_ms.len));
+			memcpy(context_lv_ms.data, context_lv_b.data(), context_lv_ms.len);
+			context_arr[i] = context_lv_ms;
+		}
+		struct miqt_array context_out;
+		context_out.len = context_ret.length();
+		context_out.data = static_cast<void*>(context_arr);
+		struct miqt_array /* of struct miqt_string */  sigval1 = context_out;
+		int sigval2 = commas;
+		QsciScintilla::CallTipsStyle style_ret = style;
+		int sigval3 = static_cast<int>(style_ret);
+		QList<int>& shifts_ret = shifts;
+		// Convert QList<> from C++ memory to manually-managed C memory
+		int* shifts_arr = static_cast<int*>(malloc(sizeof(int) * shifts_ret.length()));
+		for (size_t i = 0, e = shifts_ret.length(); i < e; ++i) {
+			shifts_arr[i] = shifts_ret[i];
+		}
+		struct miqt_array shifts_out;
+		shifts_out.len = shifts_ret.length();
+		shifts_out.data = static_cast<void*>(shifts_arr);
+		struct miqt_array /* of int */  sigval4 = shifts_out;
+
+		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QsciAPIs_CallTips(this, handle__CallTips, sigval1, sigval2, sigval3, sigval4);
+		QStringList callback_return_value_QList;
+		callback_return_value_QList.reserve(callback_return_value.len);
+		struct miqt_string* callback_return_value_arr = static_cast<struct miqt_string*>(callback_return_value.data);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			QString callback_return_value_arr_i_QString = QString::fromUtf8(callback_return_value_arr[i].data, callback_return_value_arr[i].len);
+			callback_return_value_QList.push_back(callback_return_value_arr_i_QString);
+		}
+
+		return callback_return_value_QList;
+	}
+
+	// Wrapper to allow calling protected method
+	struct miqt_array /* of struct miqt_string */  virtualbase_CallTips(struct miqt_array /* of struct miqt_string */  context, int commas, int style, struct miqt_array /* of int */  shifts) {
+		QStringList context_QList;
+		context_QList.reserve(context.len);
+		struct miqt_string* context_arr = static_cast<struct miqt_string*>(context.data);
+		for(size_t i = 0; i < context.len; ++i) {
+			QString context_arr_i_QString = QString::fromUtf8(context_arr[i].data, context_arr[i].len);
+			context_QList.push_back(context_arr_i_QString);
+		}
+		QList<int> shifts_QList;
+		shifts_QList.reserve(shifts.len);
+		int* shifts_arr = static_cast<int*>(shifts.data);
+		for(size_t i = 0; i < shifts.len; ++i) {
+			shifts_QList.push_back(static_cast<int>(shifts_arr[i]));
+		}
+
+		QStringList _ret = QsciAPIs::callTips(context_QList, static_cast<int>(commas), static_cast<QsciScintilla::CallTipsStyle>(style), shifts_QList);
+		// Convert QList<> from C++ memory to manually-managed C memory
+		struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
+		for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+			QString _lv_ret = _ret[i];
+			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+			QByteArray _lv_b = _lv_ret.toUtf8();
+			struct miqt_string _lv_ms;
+			_lv_ms.len = _lv_b.length();
+			_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+			memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+			_arr[i] = _lv_ms;
+		}
+		struct miqt_array _out;
+		_out.len = _ret.length();
+		_out.data = static_cast<void*>(_arr);
+		return _out;
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* e) override {
+		if (handle__Event == 0) {
+			return QsciAPIs::event(e);
+		}
+		
+		QEvent* sigval1 = e;
+
+		bool callback_return_value = miqt_exec_callback_QsciAPIs_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* e) {
+
+		return QsciAPIs::event(e);
+
+	}
+
+};
+
+void QsciAPIs_new(QsciLexer* lexer, QsciAPIs** outptr_QsciAPIs, QsciAbstractAPIs** outptr_QsciAbstractAPIs, QObject** outptr_QObject) {
+	MiqtVirtualQsciAPIs* ret = new MiqtVirtualQsciAPIs(lexer);
+	*outptr_QsciAPIs = ret;
+	*outptr_QsciAbstractAPIs = static_cast<QsciAbstractAPIs*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QsciAPIs_MetaObject(const QsciAPIs* self) {
@@ -177,7 +404,7 @@ void QsciAPIs_ApiPreparationCancelled(QsciAPIs* self) {
 }
 
 void QsciAPIs_connect_ApiPreparationCancelled(QsciAPIs* self, intptr_t slot) {
-	QsciAPIs::connect(self, static_cast<void (QsciAPIs::*)()>(&QsciAPIs::apiPreparationCancelled), self, [=]() {
+	MiqtVirtualQsciAPIs::connect(self, static_cast<void (QsciAPIs::*)()>(&QsciAPIs::apiPreparationCancelled), self, [=]() {
 		miqt_exec_callback_QsciAPIs_ApiPreparationCancelled(slot);
 	});
 }
@@ -187,7 +414,7 @@ void QsciAPIs_ApiPreparationStarted(QsciAPIs* self) {
 }
 
 void QsciAPIs_connect_ApiPreparationStarted(QsciAPIs* self, intptr_t slot) {
-	QsciAPIs::connect(self, static_cast<void (QsciAPIs::*)()>(&QsciAPIs::apiPreparationStarted), self, [=]() {
+	MiqtVirtualQsciAPIs::connect(self, static_cast<void (QsciAPIs::*)()>(&QsciAPIs::apiPreparationStarted), self, [=]() {
 		miqt_exec_callback_QsciAPIs_ApiPreparationStarted(slot);
 	});
 }
@@ -197,7 +424,7 @@ void QsciAPIs_ApiPreparationFinished(QsciAPIs* self) {
 }
 
 void QsciAPIs_connect_ApiPreparationFinished(QsciAPIs* self, intptr_t slot) {
-	QsciAPIs::connect(self, static_cast<void (QsciAPIs::*)()>(&QsciAPIs::apiPreparationFinished), self, [=]() {
+	MiqtVirtualQsciAPIs::connect(self, static_cast<void (QsciAPIs::*)()>(&QsciAPIs::apiPreparationFinished), self, [=]() {
 		miqt_exec_callback_QsciAPIs_ApiPreparationFinished(slot);
 	});
 }
@@ -261,7 +488,43 @@ bool QsciAPIs_SavePrepared1(const QsciAPIs* self, struct miqt_string filename) {
 	return self->savePrepared(filename_QString);
 }
 
-void QsciAPIs_Delete(QsciAPIs* self) {
-	delete self;
+void QsciAPIs_override_virtual_UpdateAutoCompletionList(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQsciAPIs*>( (QsciAPIs*)(self) )->handle__UpdateAutoCompletionList = slot;
+}
+
+void QsciAPIs_virtualbase_UpdateAutoCompletionList(void* self, struct miqt_array /* of struct miqt_string */  context, struct miqt_array /* of struct miqt_string */  list) {
+	( (MiqtVirtualQsciAPIs*)(self) )->virtualbase_UpdateAutoCompletionList(context, list);
+}
+
+void QsciAPIs_override_virtual_AutoCompletionSelected(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQsciAPIs*>( (QsciAPIs*)(self) )->handle__AutoCompletionSelected = slot;
+}
+
+void QsciAPIs_virtualbase_AutoCompletionSelected(void* self, struct miqt_string sel) {
+	( (MiqtVirtualQsciAPIs*)(self) )->virtualbase_AutoCompletionSelected(sel);
+}
+
+void QsciAPIs_override_virtual_CallTips(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQsciAPIs*>( (QsciAPIs*)(self) )->handle__CallTips = slot;
+}
+
+struct miqt_array /* of struct miqt_string */  QsciAPIs_virtualbase_CallTips(void* self, struct miqt_array /* of struct miqt_string */  context, int commas, int style, struct miqt_array /* of int */  shifts) {
+	return ( (MiqtVirtualQsciAPIs*)(self) )->virtualbase_CallTips(context, commas, style, shifts);
+}
+
+void QsciAPIs_override_virtual_Event(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQsciAPIs*>( (QsciAPIs*)(self) )->handle__Event = slot;
+}
+
+bool QsciAPIs_virtualbase_Event(void* self, QEvent* e) {
+	return ( (MiqtVirtualQsciAPIs*)(self) )->virtualbase_Event(e);
+}
+
+void QsciAPIs_Delete(QsciAPIs* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQsciAPIs*>( self );
+	} else {
+		delete self;
+	}
 }
 

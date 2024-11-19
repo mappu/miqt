@@ -19,12 +19,14 @@ class QClipboard;
 class QImage;
 class QMetaObject;
 class QMimeData;
+class QObject;
 class QPixmap;
 #else
 typedef struct QClipboard QClipboard;
 typedef struct QImage QImage;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMimeData QMimeData;
+typedef struct QObject QObject;
 typedef struct QPixmap QPixmap;
 #endif
 

@@ -14,7 +14,8 @@ import (
 )
 
 type QsciStyledText struct {
-	h *C.QsciStyledText
+	h          *C.QsciStyledText
+	isSubclass bool
 }
 
 func (this *QsciStyledText) cPointer() *C.QsciStyledText {
@@ -31,6 +32,7 @@ func (this *QsciStyledText) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQsciStyledText constructs the type using only CGO pointers.
 func newQsciStyledText(h *C.QsciStyledText) *QsciStyledText {
 	if h == nil {
 		return nil
@@ -38,8 +40,13 @@ func newQsciStyledText(h *C.QsciStyledText) *QsciStyledText {
 	return &QsciStyledText{h: h}
 }
 
+// UnsafeNewQsciStyledText constructs the type using only unsafe pointers.
 func UnsafeNewQsciStyledText(h unsafe.Pointer) *QsciStyledText {
-	return newQsciStyledText((*C.QsciStyledText)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QsciStyledText{h: (*C.QsciStyledText)(h)}
 }
 
 // NewQsciStyledText constructs a new QsciStyledText object.
@@ -48,8 +55,12 @@ func NewQsciStyledText(text string, style int) *QsciStyledText {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QsciStyledText_new(text_ms, (C.int)(style))
-	return newQsciStyledText(ret)
+	var outptr_QsciStyledText *C.QsciStyledText = nil
+
+	C.QsciStyledText_new(text_ms, (C.int)(style), &outptr_QsciStyledText)
+	ret := newQsciStyledText(outptr_QsciStyledText)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQsciStyledText2 constructs a new QsciStyledText object.
@@ -58,14 +69,22 @@ func NewQsciStyledText2(text string, style *QsciStyle) *QsciStyledText {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QsciStyledText_new2(text_ms, style.cPointer())
-	return newQsciStyledText(ret)
+	var outptr_QsciStyledText *C.QsciStyledText = nil
+
+	C.QsciStyledText_new2(text_ms, style.cPointer(), &outptr_QsciStyledText)
+	ret := newQsciStyledText(outptr_QsciStyledText)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQsciStyledText3 constructs a new QsciStyledText object.
 func NewQsciStyledText3(param1 *QsciStyledText) *QsciStyledText {
-	ret := C.QsciStyledText_new3(param1.cPointer())
-	return newQsciStyledText(ret)
+	var outptr_QsciStyledText *C.QsciStyledText = nil
+
+	C.QsciStyledText_new3(param1.cPointer(), &outptr_QsciStyledText)
+	ret := newQsciStyledText(outptr_QsciStyledText)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QsciStyledText) Apply(sci *QsciScintillaBase) {
@@ -85,7 +104,7 @@ func (this *QsciStyledText) Style() int {
 
 // Delete this object from C++ memory.
 func (this *QsciStyledText) Delete() {
-	C.QsciStyledText_Delete(this.h)
+	C.QsciStyledText_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

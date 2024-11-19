@@ -15,7 +15,8 @@ import (
 )
 
 type QAudioSystemFactoryInterface struct {
-	h *C.QAudioSystemFactoryInterface
+	h          *C.QAudioSystemFactoryInterface
+	isSubclass bool
 }
 
 func (this *QAudioSystemFactoryInterface) cPointer() *C.QAudioSystemFactoryInterface {
@@ -32,6 +33,7 @@ func (this *QAudioSystemFactoryInterface) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAudioSystemFactoryInterface constructs the type using only CGO pointers.
 func newQAudioSystemFactoryInterface(h *C.QAudioSystemFactoryInterface) *QAudioSystemFactoryInterface {
 	if h == nil {
 		return nil
@@ -39,8 +41,13 @@ func newQAudioSystemFactoryInterface(h *C.QAudioSystemFactoryInterface) *QAudioS
 	return &QAudioSystemFactoryInterface{h: h}
 }
 
+// UnsafeNewQAudioSystemFactoryInterface constructs the type using only unsafe pointers.
 func UnsafeNewQAudioSystemFactoryInterface(h unsafe.Pointer) *QAudioSystemFactoryInterface {
-	return newQAudioSystemFactoryInterface((*C.QAudioSystemFactoryInterface)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAudioSystemFactoryInterface{h: (*C.QAudioSystemFactoryInterface)(h)}
 }
 
 func (this *QAudioSystemFactoryInterface) AvailableDevices(param1 QAudio__Mode) [][]byte {
@@ -60,21 +67,21 @@ func (this *QAudioSystemFactoryInterface) CreateInput(device []byte) *QAbstractA
 	device_alias := C.struct_miqt_string{}
 	device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
 	device_alias.len = C.size_t(len(device))
-	return UnsafeNewQAbstractAudioInput(unsafe.Pointer(C.QAudioSystemFactoryInterface_CreateInput(this.h, device_alias)))
+	return UnsafeNewQAbstractAudioInput(unsafe.Pointer(C.QAudioSystemFactoryInterface_CreateInput(this.h, device_alias)), nil)
 }
 
 func (this *QAudioSystemFactoryInterface) CreateOutput(device []byte) *QAbstractAudioOutput {
 	device_alias := C.struct_miqt_string{}
 	device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
 	device_alias.len = C.size_t(len(device))
-	return UnsafeNewQAbstractAudioOutput(unsafe.Pointer(C.QAudioSystemFactoryInterface_CreateOutput(this.h, device_alias)))
+	return UnsafeNewQAbstractAudioOutput(unsafe.Pointer(C.QAudioSystemFactoryInterface_CreateOutput(this.h, device_alias)), nil)
 }
 
 func (this *QAudioSystemFactoryInterface) CreateDeviceInfo(device []byte, mode QAudio__Mode) *QAbstractAudioDeviceInfo {
 	device_alias := C.struct_miqt_string{}
 	device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
 	device_alias.len = C.size_t(len(device))
-	return UnsafeNewQAbstractAudioDeviceInfo(unsafe.Pointer(C.QAudioSystemFactoryInterface_CreateDeviceInfo(this.h, device_alias, (C.int)(mode))))
+	return UnsafeNewQAbstractAudioDeviceInfo(unsafe.Pointer(C.QAudioSystemFactoryInterface_CreateDeviceInfo(this.h, device_alias, (C.int)(mode))), nil)
 }
 
 func (this *QAudioSystemFactoryInterface) OperatorAssign(param1 *QAudioSystemFactoryInterface) {
@@ -83,7 +90,7 @@ func (this *QAudioSystemFactoryInterface) OperatorAssign(param1 *QAudioSystemFac
 
 // Delete this object from C++ memory.
 func (this *QAudioSystemFactoryInterface) Delete() {
-	C.QAudioSystemFactoryInterface_Delete(this.h)
+	C.QAudioSystemFactoryInterface_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -96,7 +103,8 @@ func (this *QAudioSystemFactoryInterface) GoGC() {
 }
 
 type QAudioSystemPlugin struct {
-	h *C.QAudioSystemPlugin
+	h          *C.QAudioSystemPlugin
+	isSubclass bool
 	*qt.QObject
 	*QAudioSystemFactoryInterface
 }
@@ -115,15 +123,25 @@ func (this *QAudioSystemPlugin) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAudioSystemPlugin(h *C.QAudioSystemPlugin) *QAudioSystemPlugin {
+// newQAudioSystemPlugin constructs the type using only CGO pointers.
+func newQAudioSystemPlugin(h *C.QAudioSystemPlugin, h_QObject *C.QObject, h_QAudioSystemFactoryInterface *C.QAudioSystemFactoryInterface) *QAudioSystemPlugin {
 	if h == nil {
 		return nil
 	}
-	return &QAudioSystemPlugin{h: h, QObject: qt.UnsafeNewQObject(unsafe.Pointer(h)), QAudioSystemFactoryInterface: UnsafeNewQAudioSystemFactoryInterface(unsafe.Pointer(h))}
+	return &QAudioSystemPlugin{h: h,
+		QObject:                      qt.UnsafeNewQObject(unsafe.Pointer(h_QObject)),
+		QAudioSystemFactoryInterface: newQAudioSystemFactoryInterface(h_QAudioSystemFactoryInterface)}
 }
 
-func UnsafeNewQAudioSystemPlugin(h unsafe.Pointer) *QAudioSystemPlugin {
-	return newQAudioSystemPlugin((*C.QAudioSystemPlugin)(h))
+// UnsafeNewQAudioSystemPlugin constructs the type using only unsafe pointers.
+func UnsafeNewQAudioSystemPlugin(h unsafe.Pointer, h_QObject unsafe.Pointer, h_QAudioSystemFactoryInterface unsafe.Pointer) *QAudioSystemPlugin {
+	if h == nil {
+		return nil
+	}
+
+	return &QAudioSystemPlugin{h: (*C.QAudioSystemPlugin)(h),
+		QObject:                      qt.UnsafeNewQObject(h_QObject),
+		QAudioSystemFactoryInterface: UnsafeNewQAudioSystemFactoryInterface(h_QAudioSystemFactoryInterface)}
 }
 
 func (this *QAudioSystemPlugin) MetaObject() *qt.QMetaObject {
@@ -171,21 +189,21 @@ func (this *QAudioSystemPlugin) CreateInput(device []byte) *QAbstractAudioInput 
 	device_alias := C.struct_miqt_string{}
 	device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
 	device_alias.len = C.size_t(len(device))
-	return UnsafeNewQAbstractAudioInput(unsafe.Pointer(C.QAudioSystemPlugin_CreateInput(this.h, device_alias)))
+	return UnsafeNewQAbstractAudioInput(unsafe.Pointer(C.QAudioSystemPlugin_CreateInput(this.h, device_alias)), nil)
 }
 
 func (this *QAudioSystemPlugin) CreateOutput(device []byte) *QAbstractAudioOutput {
 	device_alias := C.struct_miqt_string{}
 	device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
 	device_alias.len = C.size_t(len(device))
-	return UnsafeNewQAbstractAudioOutput(unsafe.Pointer(C.QAudioSystemPlugin_CreateOutput(this.h, device_alias)))
+	return UnsafeNewQAbstractAudioOutput(unsafe.Pointer(C.QAudioSystemPlugin_CreateOutput(this.h, device_alias)), nil)
 }
 
 func (this *QAudioSystemPlugin) CreateDeviceInfo(device []byte, mode QAudio__Mode) *QAbstractAudioDeviceInfo {
 	device_alias := C.struct_miqt_string{}
 	device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
 	device_alias.len = C.size_t(len(device))
-	return UnsafeNewQAbstractAudioDeviceInfo(unsafe.Pointer(C.QAudioSystemPlugin_CreateDeviceInfo(this.h, device_alias, (C.int)(mode))))
+	return UnsafeNewQAbstractAudioDeviceInfo(unsafe.Pointer(C.QAudioSystemPlugin_CreateDeviceInfo(this.h, device_alias, (C.int)(mode))), nil)
 }
 
 func QAudioSystemPlugin_Tr2(s string, c string) string {
@@ -234,7 +252,7 @@ func QAudioSystemPlugin_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAudioSystemPlugin) Delete() {
-	C.QAudioSystemPlugin_Delete(this.h)
+	C.QAudioSystemPlugin_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

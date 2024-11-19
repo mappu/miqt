@@ -2,6 +2,7 @@
 #include <QImage>
 #include <QMetaObject>
 #include <QMimeData>
+#include <QObject>
 #include <QPixmap>
 #include <QString>
 #include <QByteArray>

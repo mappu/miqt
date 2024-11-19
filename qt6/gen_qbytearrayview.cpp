@@ -4,12 +4,14 @@
 #include "gen_qbytearrayview.h"
 #include "_cgo_export.h"
 
-QByteArrayView* QByteArrayView_new() {
-	return new QByteArrayView();
+void QByteArrayView_new(QByteArrayView** outptr_QByteArrayView) {
+	QByteArrayView* ret = new QByteArrayView();
+	*outptr_QByteArrayView = ret;
 }
 
-QByteArrayView* QByteArrayView_new2(QByteArrayView* param1) {
-	return new QByteArrayView(*param1);
+void QByteArrayView_new2(QByteArrayView* param1, QByteArrayView** outptr_QByteArrayView) {
+	QByteArrayView* ret = new QByteArrayView(*param1);
+	*outptr_QByteArrayView = ret;
 }
 
 struct miqt_string QByteArrayView_ToByteArray(const QByteArrayView* self) {
@@ -342,7 +344,11 @@ int QByteArrayView_Compare2(const QByteArrayView* self, QByteArrayView* a, int c
 	return self->compare(*a, static_cast<Qt::CaseSensitivity>(cs));
 }
 
-void QByteArrayView_Delete(QByteArrayView* self) {
-	delete self;
+void QByteArrayView_Delete(QByteArrayView* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QByteArrayView*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -33,7 +33,8 @@ const (
 )
 
 type QTouchDevice struct {
-	h *C.QTouchDevice
+	h          *C.QTouchDevice
+	isSubclass bool
 }
 
 func (this *QTouchDevice) cPointer() *C.QTouchDevice {
@@ -50,6 +51,7 @@ func (this *QTouchDevice) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQTouchDevice constructs the type using only CGO pointers.
 func newQTouchDevice(h *C.QTouchDevice) *QTouchDevice {
 	if h == nil {
 		return nil
@@ -57,14 +59,23 @@ func newQTouchDevice(h *C.QTouchDevice) *QTouchDevice {
 	return &QTouchDevice{h: h}
 }
 
+// UnsafeNewQTouchDevice constructs the type using only unsafe pointers.
 func UnsafeNewQTouchDevice(h unsafe.Pointer) *QTouchDevice {
-	return newQTouchDevice((*C.QTouchDevice)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QTouchDevice{h: (*C.QTouchDevice)(h)}
 }
 
 // NewQTouchDevice constructs a new QTouchDevice object.
 func NewQTouchDevice() *QTouchDevice {
-	ret := C.QTouchDevice_new()
-	return newQTouchDevice(ret)
+	var outptr_QTouchDevice *C.QTouchDevice = nil
+
+	C.QTouchDevice_new(&outptr_QTouchDevice)
+	ret := newQTouchDevice(outptr_QTouchDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 func QTouchDevice_Devices() []*QTouchDevice {
@@ -118,7 +129,7 @@ func (this *QTouchDevice) SetMaximumTouchPoints(max int) {
 
 // Delete this object from C++ memory.
 func (this *QTouchDevice) Delete() {
-	C.QTouchDevice_Delete(this.h)
+	C.QTouchDevice_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

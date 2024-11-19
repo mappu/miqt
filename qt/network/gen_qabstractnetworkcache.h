@@ -20,6 +20,7 @@ class QDateTime;
 class QIODevice;
 class QMetaObject;
 class QNetworkCacheMetaData;
+class QObject;
 class QUrl;
 class QVariant;
 #else
@@ -28,12 +29,13 @@ typedef struct QDateTime QDateTime;
 typedef struct QIODevice QIODevice;
 typedef struct QMetaObject QMetaObject;
 typedef struct QNetworkCacheMetaData QNetworkCacheMetaData;
+typedef struct QObject QObject;
 typedef struct QUrl QUrl;
 typedef struct QVariant QVariant;
 #endif
 
-QNetworkCacheMetaData* QNetworkCacheMetaData_new();
-QNetworkCacheMetaData* QNetworkCacheMetaData_new2(QNetworkCacheMetaData* other);
+void QNetworkCacheMetaData_new(QNetworkCacheMetaData** outptr_QNetworkCacheMetaData);
+void QNetworkCacheMetaData_new2(QNetworkCacheMetaData* other, QNetworkCacheMetaData** outptr_QNetworkCacheMetaData);
 void QNetworkCacheMetaData_OperatorAssign(QNetworkCacheMetaData* self, QNetworkCacheMetaData* other);
 void QNetworkCacheMetaData_Swap(QNetworkCacheMetaData* self, QNetworkCacheMetaData* other);
 bool QNetworkCacheMetaData_OperatorEqual(const QNetworkCacheMetaData* self, QNetworkCacheMetaData* other);
@@ -51,7 +53,7 @@ bool QNetworkCacheMetaData_SaveToDisk(const QNetworkCacheMetaData* self);
 void QNetworkCacheMetaData_SetSaveToDisk(QNetworkCacheMetaData* self, bool allow);
 struct miqt_map /* of int to QVariant* */  QNetworkCacheMetaData_Attributes(const QNetworkCacheMetaData* self);
 void QNetworkCacheMetaData_SetAttributes(QNetworkCacheMetaData* self, struct miqt_map /* of int to QVariant* */  attributes);
-void QNetworkCacheMetaData_Delete(QNetworkCacheMetaData* self);
+void QNetworkCacheMetaData_Delete(QNetworkCacheMetaData* self, bool isSubclass);
 
 QMetaObject* QAbstractNetworkCache_MetaObject(const QAbstractNetworkCache* self);
 void* QAbstractNetworkCache_Metacast(QAbstractNetworkCache* self, const char* param1);
@@ -69,7 +71,7 @@ struct miqt_string QAbstractNetworkCache_Tr2(const char* s, const char* c);
 struct miqt_string QAbstractNetworkCache_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAbstractNetworkCache_TrUtf82(const char* s, const char* c);
 struct miqt_string QAbstractNetworkCache_TrUtf83(const char* s, const char* c, int n);
-void QAbstractNetworkCache_Delete(QAbstractNetworkCache* self);
+void QAbstractNetworkCache_Delete(QAbstractNetworkCache* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

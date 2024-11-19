@@ -11,11 +11,13 @@ import "C"
 import (
 	"github.com/mappu/miqt/qt6"
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
 type QsciLexerFortran struct {
-	h *C.QsciLexerFortran
+	h          *C.QsciLexerFortran
+	isSubclass bool
 	*QsciLexerFortran77
 }
 
@@ -33,27 +35,49 @@ func (this *QsciLexerFortran) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQsciLexerFortran(h *C.QsciLexerFortran) *QsciLexerFortran {
+// newQsciLexerFortran constructs the type using only CGO pointers.
+func newQsciLexerFortran(h *C.QsciLexerFortran, h_QsciLexerFortran77 *C.QsciLexerFortran77, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerFortran {
 	if h == nil {
 		return nil
 	}
-	return &QsciLexerFortran{h: h, QsciLexerFortran77: UnsafeNewQsciLexerFortran77(unsafe.Pointer(h))}
+	return &QsciLexerFortran{h: h,
+		QsciLexerFortran77: newQsciLexerFortran77(h_QsciLexerFortran77, h_QsciLexer, h_QObject)}
 }
 
-func UnsafeNewQsciLexerFortran(h unsafe.Pointer) *QsciLexerFortran {
-	return newQsciLexerFortran((*C.QsciLexerFortran)(h))
+// UnsafeNewQsciLexerFortran constructs the type using only unsafe pointers.
+func UnsafeNewQsciLexerFortran(h unsafe.Pointer, h_QsciLexerFortran77 unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerFortran {
+	if h == nil {
+		return nil
+	}
+
+	return &QsciLexerFortran{h: (*C.QsciLexerFortran)(h),
+		QsciLexerFortran77: UnsafeNewQsciLexerFortran77(h_QsciLexerFortran77, h_QsciLexer, h_QObject)}
 }
 
 // NewQsciLexerFortran constructs a new QsciLexerFortran object.
 func NewQsciLexerFortran() *QsciLexerFortran {
-	ret := C.QsciLexerFortran_new()
-	return newQsciLexerFortran(ret)
+	var outptr_QsciLexerFortran *C.QsciLexerFortran = nil
+	var outptr_QsciLexerFortran77 *C.QsciLexerFortran77 = nil
+	var outptr_QsciLexer *C.QsciLexer = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QsciLexerFortran_new(&outptr_QsciLexerFortran, &outptr_QsciLexerFortran77, &outptr_QsciLexer, &outptr_QObject)
+	ret := newQsciLexerFortran(outptr_QsciLexerFortran, outptr_QsciLexerFortran77, outptr_QsciLexer, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQsciLexerFortran2 constructs a new QsciLexerFortran object.
 func NewQsciLexerFortran2(parent *qt6.QObject) *QsciLexerFortran {
-	ret := C.QsciLexerFortran_new2((*C.QObject)(parent.UnsafePointer()))
-	return newQsciLexerFortran(ret)
+	var outptr_QsciLexerFortran *C.QsciLexerFortran = nil
+	var outptr_QsciLexerFortran77 *C.QsciLexerFortran77 = nil
+	var outptr_QsciLexer *C.QsciLexer = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QsciLexerFortran_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QsciLexerFortran, &outptr_QsciLexerFortran77, &outptr_QsciLexer, &outptr_QObject)
+	ret := newQsciLexerFortran(outptr_QsciLexerFortran, outptr_QsciLexerFortran77, outptr_QsciLexer, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QsciLexerFortran) MetaObject() *qt6.QMetaObject {
@@ -112,9 +136,32 @@ func QsciLexerFortran_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QsciLexerFortran) callVirtualBase_SetFoldCompact(fold bool) {
+
+	C.QsciLexerFortran_virtualbase_SetFoldCompact(unsafe.Pointer(this.h), (C.bool)(fold))
+
+}
+func (this *QsciLexerFortran) OnSetFoldCompact(slot func(super func(fold bool), fold bool)) {
+	C.QsciLexerFortran_override_virtual_SetFoldCompact(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QsciLexerFortran_SetFoldCompact
+func miqt_exec_callback_QsciLexerFortran_SetFoldCompact(self *C.QsciLexerFortran, cb C.intptr_t, fold C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(fold bool), fold bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(fold)
+
+	gofunc((&QsciLexerFortran{h: self}).callVirtualBase_SetFoldCompact, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QsciLexerFortran) Delete() {
-	C.QsciLexerFortran_Delete(this.h)
+	C.QsciLexerFortran_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

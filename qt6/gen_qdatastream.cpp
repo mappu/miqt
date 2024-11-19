@@ -1,22 +1,28 @@
 #include <QByteArray>
 #include <QDataStream>
 #include <QIODevice>
-#define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__StreamStateSaver
+#include <QIODeviceBase>
 #include <qdatastream.h>
 #include "gen_qdatastream.h"
 #include "_cgo_export.h"
 
-QDataStream* QDataStream_new() {
-	return new QDataStream();
+void QDataStream_new(QDataStream** outptr_QDataStream, QIODeviceBase** outptr_QIODeviceBase) {
+	QDataStream* ret = new QDataStream();
+	*outptr_QDataStream = ret;
+	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(ret);
 }
 
-QDataStream* QDataStream_new2(QIODevice* param1) {
-	return new QDataStream(param1);
+void QDataStream_new2(QIODevice* param1, QDataStream** outptr_QDataStream, QIODeviceBase** outptr_QIODeviceBase) {
+	QDataStream* ret = new QDataStream(param1);
+	*outptr_QDataStream = ret;
+	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(ret);
 }
 
-QDataStream* QDataStream_new3(struct miqt_string param1) {
+void QDataStream_new3(struct miqt_string param1, QDataStream** outptr_QDataStream, QIODeviceBase** outptr_QIODeviceBase) {
 	QByteArray param1_QByteArray(param1.data, param1.len);
-	return new QDataStream(param1_QByteArray);
+	QDataStream* ret = new QDataStream(param1_QByteArray);
+	*outptr_QDataStream = ret;
+	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(ret);
 }
 
 QIODevice* QDataStream_Device(const QDataStream* self) {
@@ -216,15 +222,11 @@ bool QDataStream_IsDeviceTransactionStarted(const QDataStream* self) {
 	return self->isDeviceTransactionStarted();
 }
 
-void QDataStream_Delete(QDataStream* self) {
-	delete self;
-}
-
-QtPrivate__StreamStateSaver* QtPrivate__StreamStateSaver_new(QDataStream* s) {
-	return new QtPrivate::StreamStateSaver(s);
-}
-
-void QtPrivate__StreamStateSaver_Delete(QtPrivate__StreamStateSaver* self) {
-	delete self;
+void QDataStream_Delete(QDataStream* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QDataStream*>( self );
+	} else {
+		delete self;
+	}
 }
 

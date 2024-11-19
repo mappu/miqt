@@ -37,7 +37,8 @@ const (
 )
 
 type QSslCertificate struct {
-	h *C.QSslCertificate
+	h          *C.QSslCertificate
+	isSubclass bool
 }
 
 func (this *QSslCertificate) cPointer() *C.QSslCertificate {
@@ -54,6 +55,7 @@ func (this *QSslCertificate) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQSslCertificate constructs the type using only CGO pointers.
 func newQSslCertificate(h *C.QSslCertificate) *QSslCertificate {
 	if h == nil {
 		return nil
@@ -61,32 +63,53 @@ func newQSslCertificate(h *C.QSslCertificate) *QSslCertificate {
 	return &QSslCertificate{h: h}
 }
 
+// UnsafeNewQSslCertificate constructs the type using only unsafe pointers.
 func UnsafeNewQSslCertificate(h unsafe.Pointer) *QSslCertificate {
-	return newQSslCertificate((*C.QSslCertificate)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QSslCertificate{h: (*C.QSslCertificate)(h)}
 }
 
 // NewQSslCertificate constructs a new QSslCertificate object.
 func NewQSslCertificate(device *qt.QIODevice) *QSslCertificate {
-	ret := C.QSslCertificate_new((*C.QIODevice)(device.UnsafePointer()))
-	return newQSslCertificate(ret)
+	var outptr_QSslCertificate *C.QSslCertificate = nil
+
+	C.QSslCertificate_new((*C.QIODevice)(device.UnsafePointer()), &outptr_QSslCertificate)
+	ret := newQSslCertificate(outptr_QSslCertificate)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSslCertificate2 constructs a new QSslCertificate object.
 func NewQSslCertificate2() *QSslCertificate {
-	ret := C.QSslCertificate_new2()
-	return newQSslCertificate(ret)
+	var outptr_QSslCertificate *C.QSslCertificate = nil
+
+	C.QSslCertificate_new2(&outptr_QSslCertificate)
+	ret := newQSslCertificate(outptr_QSslCertificate)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSslCertificate3 constructs a new QSslCertificate object.
 func NewQSslCertificate3(other *QSslCertificate) *QSslCertificate {
-	ret := C.QSslCertificate_new3(other.cPointer())
-	return newQSslCertificate(ret)
+	var outptr_QSslCertificate *C.QSslCertificate = nil
+
+	C.QSslCertificate_new3(other.cPointer(), &outptr_QSslCertificate)
+	ret := newQSslCertificate(outptr_QSslCertificate)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSslCertificate4 constructs a new QSslCertificate object.
 func NewQSslCertificate4(device *qt.QIODevice, format QSsl__EncodingFormat) *QSslCertificate {
-	ret := C.QSslCertificate_new4((*C.QIODevice)(device.UnsafePointer()), (C.int)(format))
-	return newQSslCertificate(ret)
+	var outptr_QSslCertificate *C.QSslCertificate = nil
+
+	C.QSslCertificate_new4((*C.QIODevice)(device.UnsafePointer()), (C.int)(format), &outptr_QSslCertificate)
+	ret := newQSslCertificate(outptr_QSslCertificate)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSslCertificate5 constructs a new QSslCertificate object.
@@ -94,8 +117,12 @@ func NewQSslCertificate5(data []byte) *QSslCertificate {
 	data_alias := C.struct_miqt_string{}
 	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
 	data_alias.len = C.size_t(len(data))
-	ret := C.QSslCertificate_new5(data_alias)
-	return newQSslCertificate(ret)
+	var outptr_QSslCertificate *C.QSslCertificate = nil
+
+	C.QSslCertificate_new5(data_alias, &outptr_QSslCertificate)
+	ret := newQSslCertificate(outptr_QSslCertificate)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSslCertificate6 constructs a new QSslCertificate object.
@@ -103,8 +130,12 @@ func NewQSslCertificate6(data []byte, format QSsl__EncodingFormat) *QSslCertific
 	data_alias := C.struct_miqt_string{}
 	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
 	data_alias.len = C.size_t(len(data))
-	ret := C.QSslCertificate_new6(data_alias, (C.int)(format))
-	return newQSslCertificate(ret)
+	var outptr_QSslCertificate *C.QSslCertificate = nil
+
+	C.QSslCertificate_new6(data_alias, (C.int)(format), &outptr_QSslCertificate)
+	ret := newQSslCertificate(outptr_QSslCertificate)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QSslCertificate) OperatorAssign(other *QSslCertificate) {
@@ -521,7 +552,7 @@ func QSslCertificate_ImportPkcs125(device *qt.QIODevice, key *QSslKey, cert *QSs
 
 // Delete this object from C++ memory.
 func (this *QSslCertificate) Delete() {
-	C.QSslCertificate_Delete(this.h)
+	C.QSslCertificate_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -19,8 +19,10 @@ class QAbstractVideoSurface;
 class QGraphicsVideoItem;
 class QIODevice;
 class QMediaContent;
+class QMediaObject;
 class QMediaPlayer;
 class QMediaPlaylist;
+class QMediaService;
 class QMetaObject;
 class QNetworkConfiguration;
 class QObject;
@@ -30,17 +32,19 @@ typedef struct QAbstractVideoSurface QAbstractVideoSurface;
 typedef struct QGraphicsVideoItem QGraphicsVideoItem;
 typedef struct QIODevice QIODevice;
 typedef struct QMediaContent QMediaContent;
+typedef struct QMediaObject QMediaObject;
 typedef struct QMediaPlayer QMediaPlayer;
 typedef struct QMediaPlaylist QMediaPlaylist;
+typedef struct QMediaService QMediaService;
 typedef struct QMetaObject QMetaObject;
 typedef struct QNetworkConfiguration QNetworkConfiguration;
 typedef struct QObject QObject;
 typedef struct QVideoWidget QVideoWidget;
 #endif
 
-QMediaPlayer* QMediaPlayer_new();
-QMediaPlayer* QMediaPlayer_new2(QObject* parent);
-QMediaPlayer* QMediaPlayer_new3(QObject* parent, int flags);
+void QMediaPlayer_new(QMediaPlayer** outptr_QMediaPlayer, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject);
+void QMediaPlayer_new2(QObject* parent, QMediaPlayer** outptr_QMediaPlayer, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject);
+void QMediaPlayer_new3(QObject* parent, int flags, QMediaPlayer** outptr_QMediaPlayer, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject);
 QMetaObject* QMediaPlayer_MetaObject(const QMediaPlayer* self);
 void* QMediaPlayer_Metacast(QMediaPlayer* self, const char* param1);
 struct miqt_string QMediaPlayer_Tr(const char* s);
@@ -130,7 +134,17 @@ int QMediaPlayer_HasSupport2(struct miqt_string mimeType, struct miqt_array /* o
 int QMediaPlayer_HasSupport3(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs, int flags);
 struct miqt_array /* of struct miqt_string */  QMediaPlayer_SupportedMimeTypes1(int flags);
 void QMediaPlayer_SetMedia2(QMediaPlayer* self, QMediaContent* media, QIODevice* stream);
-void QMediaPlayer_Delete(QMediaPlayer* self);
+void QMediaPlayer_override_virtual_Availability(void* self, intptr_t slot);
+int QMediaPlayer_virtualbase_Availability(const void* self);
+void QMediaPlayer_override_virtual_Bind(void* self, intptr_t slot);
+bool QMediaPlayer_virtualbase_Bind(void* self, QObject* param1);
+void QMediaPlayer_override_virtual_Unbind(void* self, intptr_t slot);
+void QMediaPlayer_virtualbase_Unbind(void* self, QObject* param1);
+void QMediaPlayer_override_virtual_IsAvailable(void* self, intptr_t slot);
+bool QMediaPlayer_virtualbase_IsAvailable(const void* self);
+void QMediaPlayer_override_virtual_Service(void* self, intptr_t slot);
+QMediaService* QMediaPlayer_virtualbase_Service(const void* self);
+void QMediaPlayer_Delete(QMediaPlayer* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

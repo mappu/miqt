@@ -39,7 +39,8 @@ const (
 )
 
 type QMetaMethod struct {
-	h *C.QMetaMethod
+	h          *C.QMetaMethod
+	isSubclass bool
 }
 
 func (this *QMetaMethod) cPointer() *C.QMetaMethod {
@@ -56,6 +57,7 @@ func (this *QMetaMethod) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQMetaMethod constructs the type using only CGO pointers.
 func newQMetaMethod(h *C.QMetaMethod) *QMetaMethod {
 	if h == nil {
 		return nil
@@ -63,20 +65,33 @@ func newQMetaMethod(h *C.QMetaMethod) *QMetaMethod {
 	return &QMetaMethod{h: h}
 }
 
+// UnsafeNewQMetaMethod constructs the type using only unsafe pointers.
 func UnsafeNewQMetaMethod(h unsafe.Pointer) *QMetaMethod {
-	return newQMetaMethod((*C.QMetaMethod)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMetaMethod{h: (*C.QMetaMethod)(h)}
 }
 
 // NewQMetaMethod constructs a new QMetaMethod object.
 func NewQMetaMethod() *QMetaMethod {
-	ret := C.QMetaMethod_new()
-	return newQMetaMethod(ret)
+	var outptr_QMetaMethod *C.QMetaMethod = nil
+
+	C.QMetaMethod_new(&outptr_QMetaMethod)
+	ret := newQMetaMethod(outptr_QMetaMethod)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMetaMethod2 constructs a new QMetaMethod object.
 func NewQMetaMethod2(param1 *QMetaMethod) *QMetaMethod {
-	ret := C.QMetaMethod_new2(param1.cPointer())
-	return newQMetaMethod(ret)
+	var outptr_QMetaMethod *C.QMetaMethod = nil
+
+	C.QMetaMethod_new2(param1.cPointer(), &outptr_QMetaMethod)
+	ret := newQMetaMethod(outptr_QMetaMethod)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QMetaMethod) MethodSignature() []byte {
@@ -439,7 +454,7 @@ func (this *QMetaMethod) InvokeOnGadget112(gadget unsafe.Pointer, val0 QGenericA
 
 // Delete this object from C++ memory.
 func (this *QMetaMethod) Delete() {
-	C.QMetaMethod_Delete(this.h)
+	C.QMetaMethod_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -452,7 +467,8 @@ func (this *QMetaMethod) GoGC() {
 }
 
 type QMetaEnum struct {
-	h *C.QMetaEnum
+	h          *C.QMetaEnum
+	isSubclass bool
 }
 
 func (this *QMetaEnum) cPointer() *C.QMetaEnum {
@@ -469,6 +485,7 @@ func (this *QMetaEnum) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQMetaEnum constructs the type using only CGO pointers.
 func newQMetaEnum(h *C.QMetaEnum) *QMetaEnum {
 	if h == nil {
 		return nil
@@ -476,20 +493,33 @@ func newQMetaEnum(h *C.QMetaEnum) *QMetaEnum {
 	return &QMetaEnum{h: h}
 }
 
+// UnsafeNewQMetaEnum constructs the type using only unsafe pointers.
 func UnsafeNewQMetaEnum(h unsafe.Pointer) *QMetaEnum {
-	return newQMetaEnum((*C.QMetaEnum)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMetaEnum{h: (*C.QMetaEnum)(h)}
 }
 
 // NewQMetaEnum constructs a new QMetaEnum object.
 func NewQMetaEnum() *QMetaEnum {
-	ret := C.QMetaEnum_new()
-	return newQMetaEnum(ret)
+	var outptr_QMetaEnum *C.QMetaEnum = nil
+
+	C.QMetaEnum_new(&outptr_QMetaEnum)
+	ret := newQMetaEnum(outptr_QMetaEnum)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMetaEnum2 constructs a new QMetaEnum object.
 func NewQMetaEnum2(param1 *QMetaEnum) *QMetaEnum {
-	ret := C.QMetaEnum_new2(param1.cPointer())
-	return newQMetaEnum(ret)
+	var outptr_QMetaEnum *C.QMetaEnum = nil
+
+	C.QMetaEnum_new2(param1.cPointer(), &outptr_QMetaEnum)
+	ret := newQMetaEnum(outptr_QMetaEnum)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QMetaEnum) Name() string {
@@ -574,7 +604,7 @@ func (this *QMetaEnum) KeysToValue2(keys string, ok *bool) int {
 
 // Delete this object from C++ memory.
 func (this *QMetaEnum) Delete() {
-	C.QMetaEnum_Delete(this.h)
+	C.QMetaEnum_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -587,7 +617,8 @@ func (this *QMetaEnum) GoGC() {
 }
 
 type QMetaProperty struct {
-	h *C.QMetaProperty
+	h          *C.QMetaProperty
+	isSubclass bool
 }
 
 func (this *QMetaProperty) cPointer() *C.QMetaProperty {
@@ -604,6 +635,7 @@ func (this *QMetaProperty) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQMetaProperty constructs the type using only CGO pointers.
 func newQMetaProperty(h *C.QMetaProperty) *QMetaProperty {
 	if h == nil {
 		return nil
@@ -611,14 +643,23 @@ func newQMetaProperty(h *C.QMetaProperty) *QMetaProperty {
 	return &QMetaProperty{h: h}
 }
 
+// UnsafeNewQMetaProperty constructs the type using only unsafe pointers.
 func UnsafeNewQMetaProperty(h unsafe.Pointer) *QMetaProperty {
-	return newQMetaProperty((*C.QMetaProperty)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMetaProperty{h: (*C.QMetaProperty)(h)}
 }
 
 // NewQMetaProperty constructs a new QMetaProperty object.
 func NewQMetaProperty() *QMetaProperty {
-	ret := C.QMetaProperty_new()
-	return newQMetaProperty(ret)
+	var outptr_QMetaProperty *C.QMetaProperty = nil
+
+	C.QMetaProperty_new(&outptr_QMetaProperty)
+	ret := newQMetaProperty(outptr_QMetaProperty)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QMetaProperty) Name() string {
@@ -789,7 +830,7 @@ func (this *QMetaProperty) IsUser1(obj *QObject) bool {
 
 // Delete this object from C++ memory.
 func (this *QMetaProperty) Delete() {
-	C.QMetaProperty_Delete(this.h)
+	C.QMetaProperty_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -802,7 +843,8 @@ func (this *QMetaProperty) GoGC() {
 }
 
 type QMetaClassInfo struct {
-	h *C.QMetaClassInfo
+	h          *C.QMetaClassInfo
+	isSubclass bool
 }
 
 func (this *QMetaClassInfo) cPointer() *C.QMetaClassInfo {
@@ -819,6 +861,7 @@ func (this *QMetaClassInfo) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQMetaClassInfo constructs the type using only CGO pointers.
 func newQMetaClassInfo(h *C.QMetaClassInfo) *QMetaClassInfo {
 	if h == nil {
 		return nil
@@ -826,14 +869,23 @@ func newQMetaClassInfo(h *C.QMetaClassInfo) *QMetaClassInfo {
 	return &QMetaClassInfo{h: h}
 }
 
+// UnsafeNewQMetaClassInfo constructs the type using only unsafe pointers.
 func UnsafeNewQMetaClassInfo(h unsafe.Pointer) *QMetaClassInfo {
-	return newQMetaClassInfo((*C.QMetaClassInfo)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMetaClassInfo{h: (*C.QMetaClassInfo)(h)}
 }
 
 // NewQMetaClassInfo constructs a new QMetaClassInfo object.
 func NewQMetaClassInfo() *QMetaClassInfo {
-	ret := C.QMetaClassInfo_new()
-	return newQMetaClassInfo(ret)
+	var outptr_QMetaClassInfo *C.QMetaClassInfo = nil
+
+	C.QMetaClassInfo_new(&outptr_QMetaClassInfo)
+	ret := newQMetaClassInfo(outptr_QMetaClassInfo)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QMetaClassInfo) Name() string {
@@ -852,7 +904,7 @@ func (this *QMetaClassInfo) EnclosingMetaObject() *QMetaObject {
 
 // Delete this object from C++ memory.
 func (this *QMetaClassInfo) Delete() {
-	C.QMetaClassInfo_Delete(this.h)
+	C.QMetaClassInfo_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

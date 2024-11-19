@@ -79,7 +79,8 @@ const (
 )
 
 type QVariant struct {
-	h *C.QVariant
+	h          *C.QVariant
+	isSubclass bool
 }
 
 func (this *QVariant) cPointer() *C.QVariant {
@@ -96,6 +97,7 @@ func (this *QVariant) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQVariant constructs the type using only CGO pointers.
 func newQVariant(h *C.QVariant) *QVariant {
 	if h == nil {
 		return nil
@@ -103,76 +105,125 @@ func newQVariant(h *C.QVariant) *QVariant {
 	return &QVariant{h: h}
 }
 
+// UnsafeNewQVariant constructs the type using only unsafe pointers.
 func UnsafeNewQVariant(h unsafe.Pointer) *QVariant {
-	return newQVariant((*C.QVariant)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QVariant{h: (*C.QVariant)(h)}
 }
 
 // NewQVariant constructs a new QVariant object.
 func NewQVariant() *QVariant {
-	ret := C.QVariant_new()
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new(&outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant2 constructs a new QVariant object.
 func NewQVariant2(typeVal QMetaType) *QVariant {
-	ret := C.QVariant_new2(typeVal.cPointer())
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new2(typeVal.cPointer(), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant3 constructs a new QVariant object.
 func NewQVariant3(other *QVariant) *QVariant {
-	ret := C.QVariant_new3(other.cPointer())
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new3(other.cPointer(), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant4 constructs a new QVariant object.
 func NewQVariant4(i int) *QVariant {
-	ret := C.QVariant_new4((C.int)(i))
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new4((C.int)(i), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant5 constructs a new QVariant object.
 func NewQVariant5(ui uint) *QVariant {
-	ret := C.QVariant_new5((C.uint)(ui))
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new5((C.uint)(ui), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant6 constructs a new QVariant object.
 func NewQVariant6(ll int64) *QVariant {
-	ret := C.QVariant_new6((C.longlong)(ll))
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new6((C.longlong)(ll), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant7 constructs a new QVariant object.
 func NewQVariant7(ull uint64) *QVariant {
-	ret := C.QVariant_new7((C.ulonglong)(ull))
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new7((C.ulonglong)(ull), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant8 constructs a new QVariant object.
 func NewQVariant8(b bool) *QVariant {
-	ret := C.QVariant_new8((C.bool)(b))
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new8((C.bool)(b), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant9 constructs a new QVariant object.
 func NewQVariant9(d float64) *QVariant {
-	ret := C.QVariant_new9((C.double)(d))
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new9((C.double)(d), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant10 constructs a new QVariant object.
 func NewQVariant10(f float32) *QVariant {
-	ret := C.QVariant_new10((C.float)(f))
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new10((C.float)(f), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant11 constructs a new QVariant object.
 func NewQVariant11(str string) *QVariant {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	ret := C.QVariant_new11(str_Cstring)
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new11(str_Cstring, &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant12 constructs a new QVariant object.
@@ -180,14 +231,22 @@ func NewQVariant12(bytearray []byte) *QVariant {
 	bytearray_alias := C.struct_miqt_string{}
 	bytearray_alias.data = (*C.char)(unsafe.Pointer(&bytearray[0]))
 	bytearray_alias.len = C.size_t(len(bytearray))
-	ret := C.QVariant_new12(bytearray_alias)
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new12(bytearray_alias, &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant13 constructs a new QVariant object.
 func NewQVariant13(bitarray *QBitArray) *QVariant {
-	ret := C.QVariant_new13(bitarray.cPointer())
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new13(bitarray.cPointer(), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant14 constructs a new QVariant object.
@@ -196,8 +255,12 @@ func NewQVariant14(stringVal string) *QVariant {
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
 	defer C.free(unsafe.Pointer(stringVal_ms.data))
-	ret := C.QVariant_new14(stringVal_ms)
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new14(stringVal_ms, &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant15 constructs a new QVariant object.
@@ -212,32 +275,52 @@ func NewQVariant15(stringlist []string) *QVariant {
 		stringlist_CArray[i] = stringlist_i_ms
 	}
 	stringlist_ma := C.struct_miqt_array{len: C.size_t(len(stringlist)), data: unsafe.Pointer(stringlist_CArray)}
-	ret := C.QVariant_new15(stringlist_ma)
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new15(stringlist_ma, &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant16 constructs a new QVariant object.
 func NewQVariant16(qchar QChar) *QVariant {
-	ret := C.QVariant_new16(qchar.cPointer())
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new16(qchar.cPointer(), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant17 constructs a new QVariant object.
 func NewQVariant17(date QDate) *QVariant {
-	ret := C.QVariant_new17(date.cPointer())
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new17(date.cPointer(), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant18 constructs a new QVariant object.
 func NewQVariant18(time QTime) *QVariant {
-	ret := C.QVariant_new18(time.cPointer())
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new18(time.cPointer(), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant19 constructs a new QVariant object.
 func NewQVariant19(datetime *QDateTime) *QVariant {
-	ret := C.QVariant_new19(datetime.cPointer())
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new19(datetime.cPointer(), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant20 constructs a new QVariant object.
@@ -261,8 +344,12 @@ func NewQVariant20(mapVal map[string]QVariant) *QVariant {
 		keys:   unsafe.Pointer(mapVal_Keys_CArray),
 		values: unsafe.Pointer(mapVal_Values_CArray),
 	}
-	ret := C.QVariant_new20(mapVal_mm)
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new20(mapVal_mm, &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant21 constructs a new QVariant object.
@@ -286,134 +373,222 @@ func NewQVariant21(hash map[string]QVariant) *QVariant {
 		keys:   unsafe.Pointer(hash_Keys_CArray),
 		values: unsafe.Pointer(hash_Values_CArray),
 	}
-	ret := C.QVariant_new21(hash_mm)
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new21(hash_mm, &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant22 constructs a new QVariant object.
 func NewQVariant22(size *QSize) *QVariant {
-	ret := C.QVariant_new22(size.cPointer())
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new22(size.cPointer(), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant23 constructs a new QVariant object.
 func NewQVariant23(size *QSizeF) *QVariant {
-	ret := C.QVariant_new23(size.cPointer())
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new23(size.cPointer(), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant24 constructs a new QVariant object.
 func NewQVariant24(pt *QPoint) *QVariant {
-	ret := C.QVariant_new24(pt.cPointer())
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new24(pt.cPointer(), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant25 constructs a new QVariant object.
 func NewQVariant25(pt *QPointF) *QVariant {
-	ret := C.QVariant_new25(pt.cPointer())
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new25(pt.cPointer(), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant26 constructs a new QVariant object.
 func NewQVariant26(line *QLine) *QVariant {
-	ret := C.QVariant_new26(line.cPointer())
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new26(line.cPointer(), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant27 constructs a new QVariant object.
 func NewQVariant27(line *QLineF) *QVariant {
-	ret := C.QVariant_new27(line.cPointer())
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new27(line.cPointer(), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant28 constructs a new QVariant object.
 func NewQVariant28(rect *QRect) *QVariant {
-	ret := C.QVariant_new28(rect.cPointer())
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new28(rect.cPointer(), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant29 constructs a new QVariant object.
 func NewQVariant29(rect *QRectF) *QVariant {
-	ret := C.QVariant_new29(rect.cPointer())
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new29(rect.cPointer(), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant30 constructs a new QVariant object.
 func NewQVariant30(locale *QLocale) *QVariant {
-	ret := C.QVariant_new30(locale.cPointer())
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new30(locale.cPointer(), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant31 constructs a new QVariant object.
 func NewQVariant31(re *QRegularExpression) *QVariant {
-	ret := C.QVariant_new31(re.cPointer())
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new31(re.cPointer(), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant32 constructs a new QVariant object.
 func NewQVariant32(easing *QEasingCurve) *QVariant {
-	ret := C.QVariant_new32(easing.cPointer())
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new32(easing.cPointer(), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant33 constructs a new QVariant object.
 func NewQVariant33(uuid *QUuid) *QVariant {
-	ret := C.QVariant_new33(uuid.cPointer())
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new33(uuid.cPointer(), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant34 constructs a new QVariant object.
 func NewQVariant34(url *QUrl) *QVariant {
-	ret := C.QVariant_new34(url.cPointer())
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new34(url.cPointer(), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant35 constructs a new QVariant object.
 func NewQVariant35(jsonValue *QJsonValue) *QVariant {
-	ret := C.QVariant_new35(jsonValue.cPointer())
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new35(jsonValue.cPointer(), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant36 constructs a new QVariant object.
 func NewQVariant36(jsonObject *QJsonObject) *QVariant {
-	ret := C.QVariant_new36(jsonObject.cPointer())
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new36(jsonObject.cPointer(), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant37 constructs a new QVariant object.
 func NewQVariant37(jsonArray *QJsonArray) *QVariant {
-	ret := C.QVariant_new37(jsonArray.cPointer())
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new37(jsonArray.cPointer(), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant38 constructs a new QVariant object.
 func NewQVariant38(jsonDocument *QJsonDocument) *QVariant {
-	ret := C.QVariant_new38(jsonDocument.cPointer())
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new38(jsonDocument.cPointer(), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant39 constructs a new QVariant object.
 func NewQVariant39(modelIndex *QModelIndex) *QVariant {
-	ret := C.QVariant_new39(modelIndex.cPointer())
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new39(modelIndex.cPointer(), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant40 constructs a new QVariant object.
 func NewQVariant40(modelIndex *QPersistentModelIndex) *QVariant {
-	ret := C.QVariant_new40(modelIndex.cPointer())
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new40(modelIndex.cPointer(), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant41 constructs a new QVariant object.
 func NewQVariant41(typeVal QVariant__Type) *QVariant {
-	ret := C.QVariant_new41((C.int)(typeVal))
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new41((C.int)(typeVal), &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariant42 constructs a new QVariant object.
 func NewQVariant42(typeVal QMetaType, copyVal unsafe.Pointer) *QVariant {
-	ret := C.QVariant_new42(typeVal.cPointer(), copyVal)
-	return newQVariant(ret)
+	var outptr_QVariant *C.QVariant = nil
+
+	C.QVariant_new42(typeVal.cPointer(), copyVal, &outptr_QVariant)
+	ret := newQVariant(outptr_QVariant)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QVariant) OperatorAssign(other *QVariant) {
@@ -827,7 +1002,7 @@ func (this *QVariant) ToReal1(ok *bool) float64 {
 
 // Delete this object from C++ memory.
 func (this *QVariant) Delete() {
-	C.QVariant_Delete(this.h)
+	C.QVariant_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -839,59 +1014,9 @@ func (this *QVariant) GoGC() {
 	})
 }
 
-type QtPrivate__QVariantTypeCoercer struct {
-	h *C.QtPrivate__QVariantTypeCoercer
-}
-
-func (this *QtPrivate__QVariantTypeCoercer) cPointer() *C.QtPrivate__QVariantTypeCoercer {
-	if this == nil {
-		return nil
-	}
-	return this.h
-}
-
-func (this *QtPrivate__QVariantTypeCoercer) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
-}
-
-func newQtPrivate__QVariantTypeCoercer(h *C.QtPrivate__QVariantTypeCoercer) *QtPrivate__QVariantTypeCoercer {
-	if h == nil {
-		return nil
-	}
-	return &QtPrivate__QVariantTypeCoercer{h: h}
-}
-
-func UnsafeNewQtPrivate__QVariantTypeCoercer(h unsafe.Pointer) *QtPrivate__QVariantTypeCoercer {
-	return newQtPrivate__QVariantTypeCoercer((*C.QtPrivate__QVariantTypeCoercer)(h))
-}
-
-func (this *QtPrivate__QVariantTypeCoercer) Convert(value *QVariant, typeVal *QMetaType) unsafe.Pointer {
-	return (unsafe.Pointer)(C.QtPrivate__QVariantTypeCoercer_Convert(this.h, value.cPointer(), typeVal.cPointer()))
-}
-
-func (this *QtPrivate__QVariantTypeCoercer) Coerce(value *QVariant, typeVal *QMetaType) unsafe.Pointer {
-	return (unsafe.Pointer)(C.QtPrivate__QVariantTypeCoercer_Coerce(this.h, value.cPointer(), typeVal.cPointer()))
-}
-
-// Delete this object from C++ memory.
-func (this *QtPrivate__QVariantTypeCoercer) Delete() {
-	C.QtPrivate__QVariantTypeCoercer_Delete(this.h)
-}
-
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
-func (this *QtPrivate__QVariantTypeCoercer) GoGC() {
-	runtime.SetFinalizer(this, func(this *QtPrivate__QVariantTypeCoercer) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
-	})
-}
-
 type QVariantConstPointer struct {
-	h *C.QVariantConstPointer
+	h          *C.QVariantConstPointer
+	isSubclass bool
 }
 
 func (this *QVariantConstPointer) cPointer() *C.QVariantConstPointer {
@@ -908,6 +1033,7 @@ func (this *QVariantConstPointer) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQVariantConstPointer constructs the type using only CGO pointers.
 func newQVariantConstPointer(h *C.QVariantConstPointer) *QVariantConstPointer {
 	if h == nil {
 		return nil
@@ -915,20 +1041,33 @@ func newQVariantConstPointer(h *C.QVariantConstPointer) *QVariantConstPointer {
 	return &QVariantConstPointer{h: h}
 }
 
+// UnsafeNewQVariantConstPointer constructs the type using only unsafe pointers.
 func UnsafeNewQVariantConstPointer(h unsafe.Pointer) *QVariantConstPointer {
-	return newQVariantConstPointer((*C.QVariantConstPointer)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QVariantConstPointer{h: (*C.QVariantConstPointer)(h)}
 }
 
 // NewQVariantConstPointer constructs a new QVariantConstPointer object.
 func NewQVariantConstPointer(variant QVariant) *QVariantConstPointer {
-	ret := C.QVariantConstPointer_new(variant.cPointer())
-	return newQVariantConstPointer(ret)
+	var outptr_QVariantConstPointer *C.QVariantConstPointer = nil
+
+	C.QVariantConstPointer_new(variant.cPointer(), &outptr_QVariantConstPointer)
+	ret := newQVariantConstPointer(outptr_QVariantConstPointer)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVariantConstPointer2 constructs a new QVariantConstPointer object.
 func NewQVariantConstPointer2(param1 *QVariantConstPointer) *QVariantConstPointer {
-	ret := C.QVariantConstPointer_new2(param1.cPointer())
-	return newQVariantConstPointer(ret)
+	var outptr_QVariantConstPointer *C.QVariantConstPointer = nil
+
+	C.QVariantConstPointer_new2(param1.cPointer(), &outptr_QVariantConstPointer)
+	ret := newQVariantConstPointer(outptr_QVariantConstPointer)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QVariantConstPointer) OperatorMultiply() *QVariant {
@@ -948,7 +1087,7 @@ func (this *QVariantConstPointer) OperatorAssign(param1 *QVariantConstPointer) {
 
 // Delete this object from C++ memory.
 func (this *QVariantConstPointer) Delete() {
-	C.QVariantConstPointer_Delete(this.h)
+	C.QVariantConstPointer_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -55,7 +55,8 @@ const (
 )
 
 type QNetworkReply struct {
-	h *C.QNetworkReply
+	h          *C.QNetworkReply
+	isSubclass bool
 	*qt6.QIODevice
 }
 
@@ -73,15 +74,23 @@ func (this *QNetworkReply) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQNetworkReply(h *C.QNetworkReply) *QNetworkReply {
+// newQNetworkReply constructs the type using only CGO pointers.
+func newQNetworkReply(h *C.QNetworkReply, h_QIODevice *C.QIODevice, h_QObject *C.QObject, h_QIODeviceBase *C.QIODeviceBase) *QNetworkReply {
 	if h == nil {
 		return nil
 	}
-	return &QNetworkReply{h: h, QIODevice: qt6.UnsafeNewQIODevice(unsafe.Pointer(h))}
+	return &QNetworkReply{h: h,
+		QIODevice: qt6.UnsafeNewQIODevice(unsafe.Pointer(h_QIODevice), unsafe.Pointer(h_QObject), unsafe.Pointer(h_QIODeviceBase))}
 }
 
-func UnsafeNewQNetworkReply(h unsafe.Pointer) *QNetworkReply {
-	return newQNetworkReply((*C.QNetworkReply)(h))
+// UnsafeNewQNetworkReply constructs the type using only unsafe pointers.
+func UnsafeNewQNetworkReply(h unsafe.Pointer, h_QIODevice unsafe.Pointer, h_QObject unsafe.Pointer, h_QIODeviceBase unsafe.Pointer) *QNetworkReply {
+	if h == nil {
+		return nil
+	}
+
+	return &QNetworkReply{h: (*C.QNetworkReply)(h),
+		QIODevice: qt6.UnsafeNewQIODevice(h_QIODevice, h_QObject, h_QIODeviceBase)}
 }
 
 func (this *QNetworkReply) MetaObject() *qt6.QMetaObject {
@@ -120,7 +129,7 @@ func (this *QNetworkReply) SetReadBufferSize(size int64) {
 }
 
 func (this *QNetworkReply) Manager() *QNetworkAccessManager {
-	return UnsafeNewQNetworkAccessManager(unsafe.Pointer(C.QNetworkReply_Manager(this.h)))
+	return UnsafeNewQNetworkAccessManager(unsafe.Pointer(C.QNetworkReply_Manager(this.h)), nil)
 }
 
 func (this *QNetworkReply) Operation() QNetworkAccessManager__Operation {
@@ -521,7 +530,7 @@ func QNetworkReply_Tr3(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QNetworkReply) Delete() {
-	C.QNetworkReply_Delete(this.h)
+	C.QNetworkReply_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

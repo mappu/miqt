@@ -46,7 +46,8 @@ const (
 )
 
 type QRegularExpression struct {
-	h *C.QRegularExpression
+	h          *C.QRegularExpression
+	isSubclass bool
 }
 
 func (this *QRegularExpression) cPointer() *C.QRegularExpression {
@@ -63,6 +64,7 @@ func (this *QRegularExpression) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQRegularExpression constructs the type using only CGO pointers.
 func newQRegularExpression(h *C.QRegularExpression) *QRegularExpression {
 	if h == nil {
 		return nil
@@ -70,14 +72,23 @@ func newQRegularExpression(h *C.QRegularExpression) *QRegularExpression {
 	return &QRegularExpression{h: h}
 }
 
+// UnsafeNewQRegularExpression constructs the type using only unsafe pointers.
 func UnsafeNewQRegularExpression(h unsafe.Pointer) *QRegularExpression {
-	return newQRegularExpression((*C.QRegularExpression)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QRegularExpression{h: (*C.QRegularExpression)(h)}
 }
 
 // NewQRegularExpression constructs a new QRegularExpression object.
 func NewQRegularExpression() *QRegularExpression {
-	ret := C.QRegularExpression_new()
-	return newQRegularExpression(ret)
+	var outptr_QRegularExpression *C.QRegularExpression = nil
+
+	C.QRegularExpression_new(&outptr_QRegularExpression)
+	ret := newQRegularExpression(outptr_QRegularExpression)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRegularExpression2 constructs a new QRegularExpression object.
@@ -86,14 +97,22 @@ func NewQRegularExpression2(pattern string) *QRegularExpression {
 	pattern_ms.data = C.CString(pattern)
 	pattern_ms.len = C.size_t(len(pattern))
 	defer C.free(unsafe.Pointer(pattern_ms.data))
-	ret := C.QRegularExpression_new2(pattern_ms)
-	return newQRegularExpression(ret)
+	var outptr_QRegularExpression *C.QRegularExpression = nil
+
+	C.QRegularExpression_new2(pattern_ms, &outptr_QRegularExpression)
+	ret := newQRegularExpression(outptr_QRegularExpression)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRegularExpression3 constructs a new QRegularExpression object.
 func NewQRegularExpression3(re *QRegularExpression) *QRegularExpression {
-	ret := C.QRegularExpression_new3(re.cPointer())
-	return newQRegularExpression(ret)
+	var outptr_QRegularExpression *C.QRegularExpression = nil
+
+	C.QRegularExpression_new3(re.cPointer(), &outptr_QRegularExpression)
+	ret := newQRegularExpression(outptr_QRegularExpression)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRegularExpression4 constructs a new QRegularExpression object.
@@ -102,8 +121,12 @@ func NewQRegularExpression4(pattern string, options QRegularExpression__PatternO
 	pattern_ms.data = C.CString(pattern)
 	pattern_ms.len = C.size_t(len(pattern))
 	defer C.free(unsafe.Pointer(pattern_ms.data))
-	ret := C.QRegularExpression_new4(pattern_ms, (C.int)(options))
-	return newQRegularExpression(ret)
+	var outptr_QRegularExpression *C.QRegularExpression = nil
+
+	C.QRegularExpression_new4(pattern_ms, (C.int)(options), &outptr_QRegularExpression)
+	ret := newQRegularExpression(outptr_QRegularExpression)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QRegularExpression) PatternOptions() QRegularExpression__PatternOption {
@@ -304,7 +327,7 @@ func (this *QRegularExpression) GlobalMatch4(subject string, offset int, matchTy
 
 // Delete this object from C++ memory.
 func (this *QRegularExpression) Delete() {
-	C.QRegularExpression_Delete(this.h)
+	C.QRegularExpression_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -317,7 +340,8 @@ func (this *QRegularExpression) GoGC() {
 }
 
 type QRegularExpressionMatch struct {
-	h *C.QRegularExpressionMatch
+	h          *C.QRegularExpressionMatch
+	isSubclass bool
 }
 
 func (this *QRegularExpressionMatch) cPointer() *C.QRegularExpressionMatch {
@@ -334,6 +358,7 @@ func (this *QRegularExpressionMatch) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQRegularExpressionMatch constructs the type using only CGO pointers.
 func newQRegularExpressionMatch(h *C.QRegularExpressionMatch) *QRegularExpressionMatch {
 	if h == nil {
 		return nil
@@ -341,20 +366,33 @@ func newQRegularExpressionMatch(h *C.QRegularExpressionMatch) *QRegularExpressio
 	return &QRegularExpressionMatch{h: h}
 }
 
+// UnsafeNewQRegularExpressionMatch constructs the type using only unsafe pointers.
 func UnsafeNewQRegularExpressionMatch(h unsafe.Pointer) *QRegularExpressionMatch {
-	return newQRegularExpressionMatch((*C.QRegularExpressionMatch)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QRegularExpressionMatch{h: (*C.QRegularExpressionMatch)(h)}
 }
 
 // NewQRegularExpressionMatch constructs a new QRegularExpressionMatch object.
 func NewQRegularExpressionMatch() *QRegularExpressionMatch {
-	ret := C.QRegularExpressionMatch_new()
-	return newQRegularExpressionMatch(ret)
+	var outptr_QRegularExpressionMatch *C.QRegularExpressionMatch = nil
+
+	C.QRegularExpressionMatch_new(&outptr_QRegularExpressionMatch)
+	ret := newQRegularExpressionMatch(outptr_QRegularExpressionMatch)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRegularExpressionMatch2 constructs a new QRegularExpressionMatch object.
 func NewQRegularExpressionMatch2(match *QRegularExpressionMatch) *QRegularExpressionMatch {
-	ret := C.QRegularExpressionMatch_new2(match.cPointer())
-	return newQRegularExpressionMatch(ret)
+	var outptr_QRegularExpressionMatch *C.QRegularExpressionMatch = nil
+
+	C.QRegularExpressionMatch_new2(match.cPointer(), &outptr_QRegularExpressionMatch)
+	ret := newQRegularExpressionMatch(outptr_QRegularExpressionMatch)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QRegularExpressionMatch) OperatorAssign(match *QRegularExpressionMatch) {
@@ -484,7 +522,7 @@ func (this *QRegularExpressionMatch) CapturedEnd1(nth int) int {
 
 // Delete this object from C++ memory.
 func (this *QRegularExpressionMatch) Delete() {
-	C.QRegularExpressionMatch_Delete(this.h)
+	C.QRegularExpressionMatch_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -497,7 +535,8 @@ func (this *QRegularExpressionMatch) GoGC() {
 }
 
 type QRegularExpressionMatchIterator struct {
-	h *C.QRegularExpressionMatchIterator
+	h          *C.QRegularExpressionMatchIterator
+	isSubclass bool
 }
 
 func (this *QRegularExpressionMatchIterator) cPointer() *C.QRegularExpressionMatchIterator {
@@ -514,6 +553,7 @@ func (this *QRegularExpressionMatchIterator) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQRegularExpressionMatchIterator constructs the type using only CGO pointers.
 func newQRegularExpressionMatchIterator(h *C.QRegularExpressionMatchIterator) *QRegularExpressionMatchIterator {
 	if h == nil {
 		return nil
@@ -521,20 +561,33 @@ func newQRegularExpressionMatchIterator(h *C.QRegularExpressionMatchIterator) *Q
 	return &QRegularExpressionMatchIterator{h: h}
 }
 
+// UnsafeNewQRegularExpressionMatchIterator constructs the type using only unsafe pointers.
 func UnsafeNewQRegularExpressionMatchIterator(h unsafe.Pointer) *QRegularExpressionMatchIterator {
-	return newQRegularExpressionMatchIterator((*C.QRegularExpressionMatchIterator)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QRegularExpressionMatchIterator{h: (*C.QRegularExpressionMatchIterator)(h)}
 }
 
 // NewQRegularExpressionMatchIterator constructs a new QRegularExpressionMatchIterator object.
 func NewQRegularExpressionMatchIterator() *QRegularExpressionMatchIterator {
-	ret := C.QRegularExpressionMatchIterator_new()
-	return newQRegularExpressionMatchIterator(ret)
+	var outptr_QRegularExpressionMatchIterator *C.QRegularExpressionMatchIterator = nil
+
+	C.QRegularExpressionMatchIterator_new(&outptr_QRegularExpressionMatchIterator)
+	ret := newQRegularExpressionMatchIterator(outptr_QRegularExpressionMatchIterator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRegularExpressionMatchIterator2 constructs a new QRegularExpressionMatchIterator object.
 func NewQRegularExpressionMatchIterator2(iterator *QRegularExpressionMatchIterator) *QRegularExpressionMatchIterator {
-	ret := C.QRegularExpressionMatchIterator_new2(iterator.cPointer())
-	return newQRegularExpressionMatchIterator(ret)
+	var outptr_QRegularExpressionMatchIterator *C.QRegularExpressionMatchIterator = nil
+
+	C.QRegularExpressionMatchIterator_new2(iterator.cPointer(), &outptr_QRegularExpressionMatchIterator)
+	ret := newQRegularExpressionMatchIterator(outptr_QRegularExpressionMatchIterator)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QRegularExpressionMatchIterator) OperatorAssign(iterator *QRegularExpressionMatchIterator) {
@@ -584,7 +637,7 @@ func (this *QRegularExpressionMatchIterator) MatchOptions() QRegularExpression__
 
 // Delete this object from C++ memory.
 func (this *QRegularExpressionMatchIterator) Delete() {
-	C.QRegularExpressionMatchIterator_Delete(this.h)
+	C.QRegularExpressionMatchIterator_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

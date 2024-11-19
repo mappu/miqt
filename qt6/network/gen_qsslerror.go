@@ -57,7 +57,8 @@ const (
 )
 
 type QSslError struct {
-	h *C.QSslError
+	h          *C.QSslError
+	isSubclass bool
 }
 
 func (this *QSslError) cPointer() *C.QSslError {
@@ -74,6 +75,7 @@ func (this *QSslError) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQSslError constructs the type using only CGO pointers.
 func newQSslError(h *C.QSslError) *QSslError {
 	if h == nil {
 		return nil
@@ -81,32 +83,53 @@ func newQSslError(h *C.QSslError) *QSslError {
 	return &QSslError{h: h}
 }
 
+// UnsafeNewQSslError constructs the type using only unsafe pointers.
 func UnsafeNewQSslError(h unsafe.Pointer) *QSslError {
-	return newQSslError((*C.QSslError)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QSslError{h: (*C.QSslError)(h)}
 }
 
 // NewQSslError constructs a new QSslError object.
 func NewQSslError() *QSslError {
-	ret := C.QSslError_new()
-	return newQSslError(ret)
+	var outptr_QSslError *C.QSslError = nil
+
+	C.QSslError_new(&outptr_QSslError)
+	ret := newQSslError(outptr_QSslError)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSslError2 constructs a new QSslError object.
 func NewQSslError2(error QSslError__SslError) *QSslError {
-	ret := C.QSslError_new2((C.int)(error))
-	return newQSslError(ret)
+	var outptr_QSslError *C.QSslError = nil
+
+	C.QSslError_new2((C.int)(error), &outptr_QSslError)
+	ret := newQSslError(outptr_QSslError)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSslError3 constructs a new QSslError object.
 func NewQSslError3(error QSslError__SslError, certificate *QSslCertificate) *QSslError {
-	ret := C.QSslError_new3((C.int)(error), certificate.cPointer())
-	return newQSslError(ret)
+	var outptr_QSslError *C.QSslError = nil
+
+	C.QSslError_new3((C.int)(error), certificate.cPointer(), &outptr_QSslError)
+	ret := newQSslError(outptr_QSslError)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSslError4 constructs a new QSslError object.
 func NewQSslError4(other *QSslError) *QSslError {
-	ret := C.QSslError_new4(other.cPointer())
-	return newQSslError(ret)
+	var outptr_QSslError *C.QSslError = nil
+
+	C.QSslError_new4(other.cPointer(), &outptr_QSslError)
+	ret := newQSslError(outptr_QSslError)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QSslError) Swap(other *QSslError) {
@@ -145,7 +168,7 @@ func (this *QSslError) Certificate() *QSslCertificate {
 
 // Delete this object from C++ memory.
 func (this *QSslError) Delete() {
-	C.QSslError_Delete(this.h)
+	C.QSslError_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

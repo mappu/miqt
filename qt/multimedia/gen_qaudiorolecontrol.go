@@ -16,7 +16,8 @@ import (
 )
 
 type QAudioRoleControl struct {
-	h *C.QAudioRoleControl
+	h          *C.QAudioRoleControl
+	isSubclass bool
 	*QMediaControl
 }
 
@@ -34,15 +35,23 @@ func (this *QAudioRoleControl) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAudioRoleControl(h *C.QAudioRoleControl) *QAudioRoleControl {
+// newQAudioRoleControl constructs the type using only CGO pointers.
+func newQAudioRoleControl(h *C.QAudioRoleControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QAudioRoleControl {
 	if h == nil {
 		return nil
 	}
-	return &QAudioRoleControl{h: h, QMediaControl: UnsafeNewQMediaControl(unsafe.Pointer(h))}
+	return &QAudioRoleControl{h: h,
+		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
 }
 
-func UnsafeNewQAudioRoleControl(h unsafe.Pointer) *QAudioRoleControl {
-	return newQAudioRoleControl((*C.QAudioRoleControl)(h))
+// UnsafeNewQAudioRoleControl constructs the type using only unsafe pointers.
+func UnsafeNewQAudioRoleControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QAudioRoleControl {
+	if h == nil {
+		return nil
+	}
+
+	return &QAudioRoleControl{h: (*C.QAudioRoleControl)(h),
+		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
 }
 
 func (this *QAudioRoleControl) MetaObject() *qt.QMetaObject {
@@ -157,7 +166,7 @@ func QAudioRoleControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAudioRoleControl) Delete() {
-	C.QAudioRoleControl_Delete(this.h)
+	C.QAudioRoleControl_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

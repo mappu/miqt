@@ -85,7 +85,8 @@ const (
 )
 
 type QMediaFormat struct {
-	h *C.QMediaFormat
+	h          *C.QMediaFormat
+	isSubclass bool
 }
 
 func (this *QMediaFormat) cPointer() *C.QMediaFormat {
@@ -102,6 +103,7 @@ func (this *QMediaFormat) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQMediaFormat constructs the type using only CGO pointers.
 func newQMediaFormat(h *C.QMediaFormat) *QMediaFormat {
 	if h == nil {
 		return nil
@@ -109,26 +111,43 @@ func newQMediaFormat(h *C.QMediaFormat) *QMediaFormat {
 	return &QMediaFormat{h: h}
 }
 
+// UnsafeNewQMediaFormat constructs the type using only unsafe pointers.
 func UnsafeNewQMediaFormat(h unsafe.Pointer) *QMediaFormat {
-	return newQMediaFormat((*C.QMediaFormat)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMediaFormat{h: (*C.QMediaFormat)(h)}
 }
 
 // NewQMediaFormat constructs a new QMediaFormat object.
 func NewQMediaFormat() *QMediaFormat {
-	ret := C.QMediaFormat_new()
-	return newQMediaFormat(ret)
+	var outptr_QMediaFormat *C.QMediaFormat = nil
+
+	C.QMediaFormat_new(&outptr_QMediaFormat)
+	ret := newQMediaFormat(outptr_QMediaFormat)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMediaFormat2 constructs a new QMediaFormat object.
 func NewQMediaFormat2(other *QMediaFormat) *QMediaFormat {
-	ret := C.QMediaFormat_new2(other.cPointer())
-	return newQMediaFormat(ret)
+	var outptr_QMediaFormat *C.QMediaFormat = nil
+
+	C.QMediaFormat_new2(other.cPointer(), &outptr_QMediaFormat)
+	ret := newQMediaFormat(outptr_QMediaFormat)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMediaFormat3 constructs a new QMediaFormat object.
 func NewQMediaFormat3(format QMediaFormat__FileFormat) *QMediaFormat {
-	ret := C.QMediaFormat_new3((C.int)(format))
-	return newQMediaFormat(ret)
+	var outptr_QMediaFormat *C.QMediaFormat = nil
+
+	C.QMediaFormat_new3((C.int)(format), &outptr_QMediaFormat)
+	ret := newQMediaFormat(outptr_QMediaFormat)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QMediaFormat) OperatorAssign(other *QMediaFormat) {
@@ -260,7 +279,7 @@ func (this *QMediaFormat) ResolveForEncoding(flags QMediaFormat__ResolveFlags) {
 
 // Delete this object from C++ memory.
 func (this *QMediaFormat) Delete() {
-	C.QMediaFormat_Delete(this.h)
+	C.QMediaFormat_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

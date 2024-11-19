@@ -147,155 +147,9 @@ const (
 	QtMetaTypePrivate__QSequentialIterableImpl__ToEnd   QtMetaTypePrivate__QSequentialIterableImpl__Position = 1
 )
 
-type QtPrivate__AbstractDebugStreamFunction struct {
-	h *C.QtPrivate__AbstractDebugStreamFunction
-}
-
-func (this *QtPrivate__AbstractDebugStreamFunction) cPointer() *C.QtPrivate__AbstractDebugStreamFunction {
-	if this == nil {
-		return nil
-	}
-	return this.h
-}
-
-func (this *QtPrivate__AbstractDebugStreamFunction) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
-}
-
-func newQtPrivate__AbstractDebugStreamFunction(h *C.QtPrivate__AbstractDebugStreamFunction) *QtPrivate__AbstractDebugStreamFunction {
-	if h == nil {
-		return nil
-	}
-	return &QtPrivate__AbstractDebugStreamFunction{h: h}
-}
-
-func UnsafeNewQtPrivate__AbstractDebugStreamFunction(h unsafe.Pointer) *QtPrivate__AbstractDebugStreamFunction {
-	return newQtPrivate__AbstractDebugStreamFunction((*C.QtPrivate__AbstractDebugStreamFunction)(h))
-}
-
-// NewQtPrivate__AbstractDebugStreamFunction constructs a new QtPrivate::AbstractDebugStreamFunction object.
-func NewQtPrivate__AbstractDebugStreamFunction() *QtPrivate__AbstractDebugStreamFunction {
-	ret := C.QtPrivate__AbstractDebugStreamFunction_new()
-	return newQtPrivate__AbstractDebugStreamFunction(ret)
-}
-
-// Delete this object from C++ memory.
-func (this *QtPrivate__AbstractDebugStreamFunction) Delete() {
-	C.QtPrivate__AbstractDebugStreamFunction_Delete(this.h)
-}
-
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
-func (this *QtPrivate__AbstractDebugStreamFunction) GoGC() {
-	runtime.SetFinalizer(this, func(this *QtPrivate__AbstractDebugStreamFunction) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
-	})
-}
-
-type QtPrivate__AbstractComparatorFunction struct {
-	h *C.QtPrivate__AbstractComparatorFunction
-}
-
-func (this *QtPrivate__AbstractComparatorFunction) cPointer() *C.QtPrivate__AbstractComparatorFunction {
-	if this == nil {
-		return nil
-	}
-	return this.h
-}
-
-func (this *QtPrivate__AbstractComparatorFunction) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
-}
-
-func newQtPrivate__AbstractComparatorFunction(h *C.QtPrivate__AbstractComparatorFunction) *QtPrivate__AbstractComparatorFunction {
-	if h == nil {
-		return nil
-	}
-	return &QtPrivate__AbstractComparatorFunction{h: h}
-}
-
-func UnsafeNewQtPrivate__AbstractComparatorFunction(h unsafe.Pointer) *QtPrivate__AbstractComparatorFunction {
-	return newQtPrivate__AbstractComparatorFunction((*C.QtPrivate__AbstractComparatorFunction)(h))
-}
-
-// NewQtPrivate__AbstractComparatorFunction constructs a new QtPrivate::AbstractComparatorFunction object.
-func NewQtPrivate__AbstractComparatorFunction() *QtPrivate__AbstractComparatorFunction {
-	ret := C.QtPrivate__AbstractComparatorFunction_new()
-	return newQtPrivate__AbstractComparatorFunction(ret)
-}
-
-// Delete this object from C++ memory.
-func (this *QtPrivate__AbstractComparatorFunction) Delete() {
-	C.QtPrivate__AbstractComparatorFunction_Delete(this.h)
-}
-
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
-func (this *QtPrivate__AbstractComparatorFunction) GoGC() {
-	runtime.SetFinalizer(this, func(this *QtPrivate__AbstractComparatorFunction) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
-	})
-}
-
-type QtPrivate__AbstractConverterFunction struct {
-	h *C.QtPrivate__AbstractConverterFunction
-}
-
-func (this *QtPrivate__AbstractConverterFunction) cPointer() *C.QtPrivate__AbstractConverterFunction {
-	if this == nil {
-		return nil
-	}
-	return this.h
-}
-
-func (this *QtPrivate__AbstractConverterFunction) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
-}
-
-func newQtPrivate__AbstractConverterFunction(h *C.QtPrivate__AbstractConverterFunction) *QtPrivate__AbstractConverterFunction {
-	if h == nil {
-		return nil
-	}
-	return &QtPrivate__AbstractConverterFunction{h: h}
-}
-
-func UnsafeNewQtPrivate__AbstractConverterFunction(h unsafe.Pointer) *QtPrivate__AbstractConverterFunction {
-	return newQtPrivate__AbstractConverterFunction((*C.QtPrivate__AbstractConverterFunction)(h))
-}
-
-// NewQtPrivate__AbstractConverterFunction constructs a new QtPrivate::AbstractConverterFunction object.
-func NewQtPrivate__AbstractConverterFunction() *QtPrivate__AbstractConverterFunction {
-	ret := C.QtPrivate__AbstractConverterFunction_new()
-	return newQtPrivate__AbstractConverterFunction(ret)
-}
-
-// Delete this object from C++ memory.
-func (this *QtPrivate__AbstractConverterFunction) Delete() {
-	C.QtPrivate__AbstractConverterFunction_Delete(this.h)
-}
-
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
-func (this *QtPrivate__AbstractConverterFunction) GoGC() {
-	runtime.SetFinalizer(this, func(this *QtPrivate__AbstractConverterFunction) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
-	})
-}
-
 type QMetaType struct {
-	h *C.QMetaType
+	h          *C.QMetaType
+	isSubclass bool
 }
 
 func (this *QMetaType) cPointer() *C.QMetaType {
@@ -312,6 +166,7 @@ func (this *QMetaType) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQMetaType constructs the type using only CGO pointers.
 func newQMetaType(h *C.QMetaType) *QMetaType {
 	if h == nil {
 		return nil
@@ -319,20 +174,33 @@ func newQMetaType(h *C.QMetaType) *QMetaType {
 	return &QMetaType{h: h}
 }
 
+// UnsafeNewQMetaType constructs the type using only unsafe pointers.
 func UnsafeNewQMetaType(h unsafe.Pointer) *QMetaType {
-	return newQMetaType((*C.QMetaType)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMetaType{h: (*C.QMetaType)(h)}
 }
 
 // NewQMetaType constructs a new QMetaType object.
 func NewQMetaType() *QMetaType {
-	ret := C.QMetaType_new()
-	return newQMetaType(ret)
+	var outptr_QMetaType *C.QMetaType = nil
+
+	C.QMetaType_new(&outptr_QMetaType)
+	ret := newQMetaType(outptr_QMetaType)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMetaType2 constructs a new QMetaType object.
 func NewQMetaType2(typeVal int) *QMetaType {
-	ret := C.QMetaType_new2((C.int)(typeVal))
-	return newQMetaType(ret)
+	var outptr_QMetaType *C.QMetaType = nil
+
+	C.QMetaType_new2((C.int)(typeVal), &outptr_QMetaType)
+	ret := newQMetaType(outptr_QMetaType)
+	ret.isSubclass = true
+	return ret
 }
 
 func QMetaType_UnregisterType(typeVal int) bool {
@@ -499,402 +367,13 @@ func (this *QMetaType) Construct2(where unsafe.Pointer, copyVal unsafe.Pointer) 
 
 // Delete this object from C++ memory.
 func (this *QMetaType) Delete() {
-	C.QMetaType_Delete(this.h)
+	C.QMetaType_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
 // from C++ memory once it is unreachable from Go memory.
 func (this *QMetaType) GoGC() {
 	runtime.SetFinalizer(this, func(this *QMetaType) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
-	})
-}
-
-type QtMetaTypePrivate__VariantData struct {
-	h *C.QtMetaTypePrivate__VariantData
-}
-
-func (this *QtMetaTypePrivate__VariantData) cPointer() *C.QtMetaTypePrivate__VariantData {
-	if this == nil {
-		return nil
-	}
-	return this.h
-}
-
-func (this *QtMetaTypePrivate__VariantData) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
-}
-
-func newQtMetaTypePrivate__VariantData(h *C.QtMetaTypePrivate__VariantData) *QtMetaTypePrivate__VariantData {
-	if h == nil {
-		return nil
-	}
-	return &QtMetaTypePrivate__VariantData{h: h}
-}
-
-func UnsafeNewQtMetaTypePrivate__VariantData(h unsafe.Pointer) *QtMetaTypePrivate__VariantData {
-	return newQtMetaTypePrivate__VariantData((*C.QtMetaTypePrivate__VariantData)(h))
-}
-
-// NewQtMetaTypePrivate__VariantData constructs a new QtMetaTypePrivate::VariantData object.
-func NewQtMetaTypePrivate__VariantData(metaTypeId_ int, data_ unsafe.Pointer, flags_ uint) *QtMetaTypePrivate__VariantData {
-	ret := C.QtMetaTypePrivate__VariantData_new((C.int)(metaTypeId_), data_, (C.uint)(flags_))
-	return newQtMetaTypePrivate__VariantData(ret)
-}
-
-// NewQtMetaTypePrivate__VariantData2 constructs a new QtMetaTypePrivate::VariantData object.
-func NewQtMetaTypePrivate__VariantData2(other *QtMetaTypePrivate__VariantData) *QtMetaTypePrivate__VariantData {
-	ret := C.QtMetaTypePrivate__VariantData_new2(other.cPointer())
-	return newQtMetaTypePrivate__VariantData(ret)
-}
-
-// Delete this object from C++ memory.
-func (this *QtMetaTypePrivate__VariantData) Delete() {
-	C.QtMetaTypePrivate__VariantData_Delete(this.h)
-}
-
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
-func (this *QtMetaTypePrivate__VariantData) GoGC() {
-	runtime.SetFinalizer(this, func(this *QtMetaTypePrivate__VariantData) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
-	})
-}
-
-type QtMetaTypePrivate__VectorBoolElements struct {
-	h *C.QtMetaTypePrivate__VectorBoolElements
-}
-
-func (this *QtMetaTypePrivate__VectorBoolElements) cPointer() *C.QtMetaTypePrivate__VectorBoolElements {
-	if this == nil {
-		return nil
-	}
-	return this.h
-}
-
-func (this *QtMetaTypePrivate__VectorBoolElements) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
-}
-
-func newQtMetaTypePrivate__VectorBoolElements(h *C.QtMetaTypePrivate__VectorBoolElements) *QtMetaTypePrivate__VectorBoolElements {
-	if h == nil {
-		return nil
-	}
-	return &QtMetaTypePrivate__VectorBoolElements{h: h}
-}
-
-func UnsafeNewQtMetaTypePrivate__VectorBoolElements(h unsafe.Pointer) *QtMetaTypePrivate__VectorBoolElements {
-	return newQtMetaTypePrivate__VectorBoolElements((*C.QtMetaTypePrivate__VectorBoolElements)(h))
-}
-
-// Delete this object from C++ memory.
-func (this *QtMetaTypePrivate__VectorBoolElements) Delete() {
-	C.QtMetaTypePrivate__VectorBoolElements_Delete(this.h)
-}
-
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
-func (this *QtMetaTypePrivate__VectorBoolElements) GoGC() {
-	runtime.SetFinalizer(this, func(this *QtMetaTypePrivate__VectorBoolElements) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
-	})
-}
-
-type QtMetaTypePrivate__QSequentialIterableImpl struct {
-	h *C.QtMetaTypePrivate__QSequentialIterableImpl
-}
-
-func (this *QtMetaTypePrivate__QSequentialIterableImpl) cPointer() *C.QtMetaTypePrivate__QSequentialIterableImpl {
-	if this == nil {
-		return nil
-	}
-	return this.h
-}
-
-func (this *QtMetaTypePrivate__QSequentialIterableImpl) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
-}
-
-func newQtMetaTypePrivate__QSequentialIterableImpl(h *C.QtMetaTypePrivate__QSequentialIterableImpl) *QtMetaTypePrivate__QSequentialIterableImpl {
-	if h == nil {
-		return nil
-	}
-	return &QtMetaTypePrivate__QSequentialIterableImpl{h: h}
-}
-
-func UnsafeNewQtMetaTypePrivate__QSequentialIterableImpl(h unsafe.Pointer) *QtMetaTypePrivate__QSequentialIterableImpl {
-	return newQtMetaTypePrivate__QSequentialIterableImpl((*C.QtMetaTypePrivate__QSequentialIterableImpl)(h))
-}
-
-// NewQtMetaTypePrivate__QSequentialIterableImpl constructs a new QtMetaTypePrivate::QSequentialIterableImpl object.
-func NewQtMetaTypePrivate__QSequentialIterableImpl() *QtMetaTypePrivate__QSequentialIterableImpl {
-	ret := C.QtMetaTypePrivate__QSequentialIterableImpl_new()
-	return newQtMetaTypePrivate__QSequentialIterableImpl(ret)
-}
-
-// NewQtMetaTypePrivate__QSequentialIterableImpl2 constructs a new QtMetaTypePrivate::QSequentialIterableImpl object.
-func NewQtMetaTypePrivate__QSequentialIterableImpl2(param1 *QtMetaTypePrivate__QSequentialIterableImpl) *QtMetaTypePrivate__QSequentialIterableImpl {
-	ret := C.QtMetaTypePrivate__QSequentialIterableImpl_new2(param1.cPointer())
-	return newQtMetaTypePrivate__QSequentialIterableImpl(ret)
-}
-
-func (this *QtMetaTypePrivate__QSequentialIterableImpl) IteratorCapabilities() QtMetaTypePrivate__IteratorCapability {
-	return (QtMetaTypePrivate__IteratorCapability)(C.QtMetaTypePrivate__QSequentialIterableImpl_IteratorCapabilities(this.h))
-}
-
-func (this *QtMetaTypePrivate__QSequentialIterableImpl) Revision() uint {
-	return (uint)(C.QtMetaTypePrivate__QSequentialIterableImpl_Revision(this.h))
-}
-
-func (this *QtMetaTypePrivate__QSequentialIterableImpl) ContainerCapabilities() uint {
-	return (uint)(C.QtMetaTypePrivate__QSequentialIterableImpl_ContainerCapabilities(this.h))
-}
-
-func (this *QtMetaTypePrivate__QSequentialIterableImpl) MoveToBegin() {
-	C.QtMetaTypePrivate__QSequentialIterableImpl_MoveToBegin(this.h)
-}
-
-func (this *QtMetaTypePrivate__QSequentialIterableImpl) MoveToEnd() {
-	C.QtMetaTypePrivate__QSequentialIterableImpl_MoveToEnd(this.h)
-}
-
-func (this *QtMetaTypePrivate__QSequentialIterableImpl) Equal(other *QtMetaTypePrivate__QSequentialIterableImpl) bool {
-	return (bool)(C.QtMetaTypePrivate__QSequentialIterableImpl_Equal(this.h, other.cPointer()))
-}
-
-func (this *QtMetaTypePrivate__QSequentialIterableImpl) Advance(i int) *QtMetaTypePrivate__QSequentialIterableImpl {
-	return UnsafeNewQtMetaTypePrivate__QSequentialIterableImpl(unsafe.Pointer(C.QtMetaTypePrivate__QSequentialIterableImpl_Advance(this.h, (C.int)(i))))
-}
-
-func (this *QtMetaTypePrivate__QSequentialIterableImpl) Append(newElement unsafe.Pointer) {
-	C.QtMetaTypePrivate__QSequentialIterableImpl_Append(this.h, newElement)
-}
-
-func (this *QtMetaTypePrivate__QSequentialIterableImpl) GetCurrent() *QtMetaTypePrivate__VariantData {
-	_ret := C.QtMetaTypePrivate__QSequentialIterableImpl_GetCurrent(this.h)
-	_goptr := newQtMetaTypePrivate__VariantData(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
-}
-
-func (this *QtMetaTypePrivate__QSequentialIterableImpl) At(idx int) *QtMetaTypePrivate__VariantData {
-	_ret := C.QtMetaTypePrivate__QSequentialIterableImpl_At(this.h, (C.int)(idx))
-	_goptr := newQtMetaTypePrivate__VariantData(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
-}
-
-func (this *QtMetaTypePrivate__QSequentialIterableImpl) Size() int {
-	return (int)(C.QtMetaTypePrivate__QSequentialIterableImpl_Size(this.h))
-}
-
-func (this *QtMetaTypePrivate__QSequentialIterableImpl) DestroyIter() {
-	C.QtMetaTypePrivate__QSequentialIterableImpl_DestroyIter(this.h)
-}
-
-func (this *QtMetaTypePrivate__QSequentialIterableImpl) Copy(other *QtMetaTypePrivate__QSequentialIterableImpl) {
-	C.QtMetaTypePrivate__QSequentialIterableImpl_Copy(this.h, other.cPointer())
-}
-
-func (this *QtMetaTypePrivate__QSequentialIterableImpl) OperatorAssign(param1 *QtMetaTypePrivate__QSequentialIterableImpl) {
-	C.QtMetaTypePrivate__QSequentialIterableImpl_OperatorAssign(this.h, param1.cPointer())
-}
-
-// Delete this object from C++ memory.
-func (this *QtMetaTypePrivate__QSequentialIterableImpl) Delete() {
-	C.QtMetaTypePrivate__QSequentialIterableImpl_Delete(this.h)
-}
-
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
-func (this *QtMetaTypePrivate__QSequentialIterableImpl) GoGC() {
-	runtime.SetFinalizer(this, func(this *QtMetaTypePrivate__QSequentialIterableImpl) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
-	})
-}
-
-type QtMetaTypePrivate__QAssociativeIterableImpl struct {
-	h *C.QtMetaTypePrivate__QAssociativeIterableImpl
-}
-
-func (this *QtMetaTypePrivate__QAssociativeIterableImpl) cPointer() *C.QtMetaTypePrivate__QAssociativeIterableImpl {
-	if this == nil {
-		return nil
-	}
-	return this.h
-}
-
-func (this *QtMetaTypePrivate__QAssociativeIterableImpl) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
-}
-
-func newQtMetaTypePrivate__QAssociativeIterableImpl(h *C.QtMetaTypePrivate__QAssociativeIterableImpl) *QtMetaTypePrivate__QAssociativeIterableImpl {
-	if h == nil {
-		return nil
-	}
-	return &QtMetaTypePrivate__QAssociativeIterableImpl{h: h}
-}
-
-func UnsafeNewQtMetaTypePrivate__QAssociativeIterableImpl(h unsafe.Pointer) *QtMetaTypePrivate__QAssociativeIterableImpl {
-	return newQtMetaTypePrivate__QAssociativeIterableImpl((*C.QtMetaTypePrivate__QAssociativeIterableImpl)(h))
-}
-
-// NewQtMetaTypePrivate__QAssociativeIterableImpl constructs a new QtMetaTypePrivate::QAssociativeIterableImpl object.
-func NewQtMetaTypePrivate__QAssociativeIterableImpl() *QtMetaTypePrivate__QAssociativeIterableImpl {
-	ret := C.QtMetaTypePrivate__QAssociativeIterableImpl_new()
-	return newQtMetaTypePrivate__QAssociativeIterableImpl(ret)
-}
-
-// NewQtMetaTypePrivate__QAssociativeIterableImpl2 constructs a new QtMetaTypePrivate::QAssociativeIterableImpl object.
-func NewQtMetaTypePrivate__QAssociativeIterableImpl2(param1 *QtMetaTypePrivate__QAssociativeIterableImpl) *QtMetaTypePrivate__QAssociativeIterableImpl {
-	ret := C.QtMetaTypePrivate__QAssociativeIterableImpl_new2(param1.cPointer())
-	return newQtMetaTypePrivate__QAssociativeIterableImpl(ret)
-}
-
-func (this *QtMetaTypePrivate__QAssociativeIterableImpl) Begin() {
-	C.QtMetaTypePrivate__QAssociativeIterableImpl_Begin(this.h)
-}
-
-func (this *QtMetaTypePrivate__QAssociativeIterableImpl) End() {
-	C.QtMetaTypePrivate__QAssociativeIterableImpl_End(this.h)
-}
-
-func (this *QtMetaTypePrivate__QAssociativeIterableImpl) Equal(other *QtMetaTypePrivate__QAssociativeIterableImpl) bool {
-	return (bool)(C.QtMetaTypePrivate__QAssociativeIterableImpl_Equal(this.h, other.cPointer()))
-}
-
-func (this *QtMetaTypePrivate__QAssociativeIterableImpl) Advance(i int) *QtMetaTypePrivate__QAssociativeIterableImpl {
-	return UnsafeNewQtMetaTypePrivate__QAssociativeIterableImpl(unsafe.Pointer(C.QtMetaTypePrivate__QAssociativeIterableImpl_Advance(this.h, (C.int)(i))))
-}
-
-func (this *QtMetaTypePrivate__QAssociativeIterableImpl) DestroyIter() {
-	C.QtMetaTypePrivate__QAssociativeIterableImpl_DestroyIter(this.h)
-}
-
-func (this *QtMetaTypePrivate__QAssociativeIterableImpl) GetCurrentKey() *QtMetaTypePrivate__VariantData {
-	_ret := C.QtMetaTypePrivate__QAssociativeIterableImpl_GetCurrentKey(this.h)
-	_goptr := newQtMetaTypePrivate__VariantData(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
-}
-
-func (this *QtMetaTypePrivate__QAssociativeIterableImpl) GetCurrentValue() *QtMetaTypePrivate__VariantData {
-	_ret := C.QtMetaTypePrivate__QAssociativeIterableImpl_GetCurrentValue(this.h)
-	_goptr := newQtMetaTypePrivate__VariantData(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
-}
-
-func (this *QtMetaTypePrivate__QAssociativeIterableImpl) Find(key *QtMetaTypePrivate__VariantData) {
-	C.QtMetaTypePrivate__QAssociativeIterableImpl_Find(this.h, key.cPointer())
-}
-
-func (this *QtMetaTypePrivate__QAssociativeIterableImpl) Size() int {
-	return (int)(C.QtMetaTypePrivate__QAssociativeIterableImpl_Size(this.h))
-}
-
-func (this *QtMetaTypePrivate__QAssociativeIterableImpl) Copy(other *QtMetaTypePrivate__QAssociativeIterableImpl) {
-	C.QtMetaTypePrivate__QAssociativeIterableImpl_Copy(this.h, other.cPointer())
-}
-
-func (this *QtMetaTypePrivate__QAssociativeIterableImpl) OperatorAssign(param1 *QtMetaTypePrivate__QAssociativeIterableImpl) {
-	C.QtMetaTypePrivate__QAssociativeIterableImpl_OperatorAssign(this.h, param1.cPointer())
-}
-
-// Delete this object from C++ memory.
-func (this *QtMetaTypePrivate__QAssociativeIterableImpl) Delete() {
-	C.QtMetaTypePrivate__QAssociativeIterableImpl_Delete(this.h)
-}
-
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
-func (this *QtMetaTypePrivate__QAssociativeIterableImpl) GoGC() {
-	runtime.SetFinalizer(this, func(this *QtMetaTypePrivate__QAssociativeIterableImpl) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
-	})
-}
-
-type QtMetaTypePrivate__QPairVariantInterfaceImpl struct {
-	h *C.QtMetaTypePrivate__QPairVariantInterfaceImpl
-}
-
-func (this *QtMetaTypePrivate__QPairVariantInterfaceImpl) cPointer() *C.QtMetaTypePrivate__QPairVariantInterfaceImpl {
-	if this == nil {
-		return nil
-	}
-	return this.h
-}
-
-func (this *QtMetaTypePrivate__QPairVariantInterfaceImpl) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
-}
-
-func newQtMetaTypePrivate__QPairVariantInterfaceImpl(h *C.QtMetaTypePrivate__QPairVariantInterfaceImpl) *QtMetaTypePrivate__QPairVariantInterfaceImpl {
-	if h == nil {
-		return nil
-	}
-	return &QtMetaTypePrivate__QPairVariantInterfaceImpl{h: h}
-}
-
-func UnsafeNewQtMetaTypePrivate__QPairVariantInterfaceImpl(h unsafe.Pointer) *QtMetaTypePrivate__QPairVariantInterfaceImpl {
-	return newQtMetaTypePrivate__QPairVariantInterfaceImpl((*C.QtMetaTypePrivate__QPairVariantInterfaceImpl)(h))
-}
-
-// NewQtMetaTypePrivate__QPairVariantInterfaceImpl constructs a new QtMetaTypePrivate::QPairVariantInterfaceImpl object.
-func NewQtMetaTypePrivate__QPairVariantInterfaceImpl() *QtMetaTypePrivate__QPairVariantInterfaceImpl {
-	ret := C.QtMetaTypePrivate__QPairVariantInterfaceImpl_new()
-	return newQtMetaTypePrivate__QPairVariantInterfaceImpl(ret)
-}
-
-// NewQtMetaTypePrivate__QPairVariantInterfaceImpl2 constructs a new QtMetaTypePrivate::QPairVariantInterfaceImpl object.
-func NewQtMetaTypePrivate__QPairVariantInterfaceImpl2(param1 *QtMetaTypePrivate__QPairVariantInterfaceImpl) *QtMetaTypePrivate__QPairVariantInterfaceImpl {
-	ret := C.QtMetaTypePrivate__QPairVariantInterfaceImpl_new2(param1.cPointer())
-	return newQtMetaTypePrivate__QPairVariantInterfaceImpl(ret)
-}
-
-func (this *QtMetaTypePrivate__QPairVariantInterfaceImpl) First() *QtMetaTypePrivate__VariantData {
-	_ret := C.QtMetaTypePrivate__QPairVariantInterfaceImpl_First(this.h)
-	_goptr := newQtMetaTypePrivate__VariantData(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
-}
-
-func (this *QtMetaTypePrivate__QPairVariantInterfaceImpl) Second() *QtMetaTypePrivate__VariantData {
-	_ret := C.QtMetaTypePrivate__QPairVariantInterfaceImpl_Second(this.h)
-	_goptr := newQtMetaTypePrivate__VariantData(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
-}
-
-// Delete this object from C++ memory.
-func (this *QtMetaTypePrivate__QPairVariantInterfaceImpl) Delete() {
-	C.QtMetaTypePrivate__QPairVariantInterfaceImpl_Delete(this.h)
-}
-
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
-func (this *QtMetaTypePrivate__QPairVariantInterfaceImpl) GoGC() {
-	runtime.SetFinalizer(this, func(this *QtMetaTypePrivate__QPairVariantInterfaceImpl) {
 		this.Delete()
 		runtime.KeepAlive(this.h)
 	})

@@ -14,7 +14,8 @@ import (
 )
 
 type QTextTableCell struct {
-	h *C.QTextTableCell
+	h          *C.QTextTableCell
+	isSubclass bool
 }
 
 func (this *QTextTableCell) cPointer() *C.QTextTableCell {
@@ -31,6 +32,7 @@ func (this *QTextTableCell) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQTextTableCell constructs the type using only CGO pointers.
 func newQTextTableCell(h *C.QTextTableCell) *QTextTableCell {
 	if h == nil {
 		return nil
@@ -38,20 +40,33 @@ func newQTextTableCell(h *C.QTextTableCell) *QTextTableCell {
 	return &QTextTableCell{h: h}
 }
 
+// UnsafeNewQTextTableCell constructs the type using only unsafe pointers.
 func UnsafeNewQTextTableCell(h unsafe.Pointer) *QTextTableCell {
-	return newQTextTableCell((*C.QTextTableCell)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QTextTableCell{h: (*C.QTextTableCell)(h)}
 }
 
 // NewQTextTableCell constructs a new QTextTableCell object.
 func NewQTextTableCell() *QTextTableCell {
-	ret := C.QTextTableCell_new()
-	return newQTextTableCell(ret)
+	var outptr_QTextTableCell *C.QTextTableCell = nil
+
+	C.QTextTableCell_new(&outptr_QTextTableCell)
+	ret := newQTextTableCell(outptr_QTextTableCell)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextTableCell2 constructs a new QTextTableCell object.
 func NewQTextTableCell2(o *QTextTableCell) *QTextTableCell {
-	ret := C.QTextTableCell_new2(o.cPointer())
-	return newQTextTableCell(ret)
+	var outptr_QTextTableCell *C.QTextTableCell = nil
+
+	C.QTextTableCell_new2(o.cPointer(), &outptr_QTextTableCell)
+	ret := newQTextTableCell(outptr_QTextTableCell)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QTextTableCell) OperatorAssign(o *QTextTableCell) {
@@ -64,7 +79,7 @@ func (this *QTextTableCell) SetFormat(format *QTextCharFormat) {
 
 func (this *QTextTableCell) Format() *QTextCharFormat {
 	_ret := C.QTextTableCell_Format(this.h)
-	_goptr := newQTextCharFormat(_ret)
+	_goptr := newQTextCharFormat(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -139,7 +154,7 @@ func (this *QTextTableCell) TableCellFormatIndex() int {
 
 // Delete this object from C++ memory.
 func (this *QTextTableCell) Delete() {
-	C.QTextTableCell_Delete(this.h)
+	C.QTextTableCell_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -152,7 +167,8 @@ func (this *QTextTableCell) GoGC() {
 }
 
 type QTextTable struct {
-	h *C.QTextTable
+	h          *C.QTextTable
+	isSubclass bool
 	*QTextFrame
 }
 
@@ -170,21 +186,36 @@ func (this *QTextTable) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQTextTable(h *C.QTextTable) *QTextTable {
+// newQTextTable constructs the type using only CGO pointers.
+func newQTextTable(h *C.QTextTable, h_QTextFrame *C.QTextFrame, h_QTextObject *C.QTextObject, h_QObject *C.QObject) *QTextTable {
 	if h == nil {
 		return nil
 	}
-	return &QTextTable{h: h, QTextFrame: UnsafeNewQTextFrame(unsafe.Pointer(h))}
+	return &QTextTable{h: h,
+		QTextFrame: newQTextFrame(h_QTextFrame, h_QTextObject, h_QObject)}
 }
 
-func UnsafeNewQTextTable(h unsafe.Pointer) *QTextTable {
-	return newQTextTable((*C.QTextTable)(h))
+// UnsafeNewQTextTable constructs the type using only unsafe pointers.
+func UnsafeNewQTextTable(h unsafe.Pointer, h_QTextFrame unsafe.Pointer, h_QTextObject unsafe.Pointer, h_QObject unsafe.Pointer) *QTextTable {
+	if h == nil {
+		return nil
+	}
+
+	return &QTextTable{h: (*C.QTextTable)(h),
+		QTextFrame: UnsafeNewQTextFrame(h_QTextFrame, h_QTextObject, h_QObject)}
 }
 
 // NewQTextTable constructs a new QTextTable object.
 func NewQTextTable(doc *QTextDocument) *QTextTable {
-	ret := C.QTextTable_new(doc.cPointer())
-	return newQTextTable(ret)
+	var outptr_QTextTable *C.QTextTable = nil
+	var outptr_QTextFrame *C.QTextFrame = nil
+	var outptr_QTextObject *C.QTextObject = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QTextTable_new(doc.cPointer(), &outptr_QTextTable, &outptr_QTextFrame, &outptr_QTextObject, &outptr_QObject)
+	ret := newQTextTable(outptr_QTextTable, outptr_QTextFrame, outptr_QTextObject, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QTextTable) MetaObject() *QMetaObject {
@@ -295,7 +326,7 @@ func (this *QTextTable) SetFormat(format *QTextTableFormat) {
 
 func (this *QTextTable) Format() *QTextTableFormat {
 	_ret := C.QTextTable_Format(this.h)
-	_goptr := newQTextTableFormat(_ret)
+	_goptr := newQTextTableFormat(_ret, nil, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -324,7 +355,7 @@ func QTextTable_Tr3(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QTextTable) Delete() {
-	C.QTextTable_Delete(this.h)
+	C.QTextTable_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -12,29 +12,35 @@
 #include "gen_qlocale.h"
 #include "_cgo_export.h"
 
-QLocale* QLocale_new() {
-	return new QLocale();
+void QLocale_new(QLocale** outptr_QLocale) {
+	QLocale* ret = new QLocale();
+	*outptr_QLocale = ret;
 }
 
-QLocale* QLocale_new2(struct miqt_string name) {
+void QLocale_new2(struct miqt_string name, QLocale** outptr_QLocale) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	return new QLocale(name_QString);
+	QLocale* ret = new QLocale(name_QString);
+	*outptr_QLocale = ret;
 }
 
-QLocale* QLocale_new3(int language) {
-	return new QLocale(static_cast<QLocale::Language>(language));
+void QLocale_new3(int language, QLocale** outptr_QLocale) {
+	QLocale* ret = new QLocale(static_cast<QLocale::Language>(language));
+	*outptr_QLocale = ret;
 }
 
-QLocale* QLocale_new4(int language, int script, int country) {
-	return new QLocale(static_cast<QLocale::Language>(language), static_cast<QLocale::Script>(script), static_cast<QLocale::Country>(country));
+void QLocale_new4(int language, int script, int country, QLocale** outptr_QLocale) {
+	QLocale* ret = new QLocale(static_cast<QLocale::Language>(language), static_cast<QLocale::Script>(script), static_cast<QLocale::Country>(country));
+	*outptr_QLocale = ret;
 }
 
-QLocale* QLocale_new5(QLocale* other) {
-	return new QLocale(*other);
+void QLocale_new5(QLocale* other, QLocale** outptr_QLocale) {
+	QLocale* ret = new QLocale(*other);
+	*outptr_QLocale = ret;
 }
 
-QLocale* QLocale_new6(int language, int country) {
-	return new QLocale(static_cast<QLocale::Language>(language), static_cast<QLocale::Country>(country));
+void QLocale_new6(int language, int country, QLocale** outptr_QLocale) {
+	QLocale* ret = new QLocale(static_cast<QLocale::Language>(language), static_cast<QLocale::Country>(country));
+	*outptr_QLocale = ret;
 }
 
 void QLocale_OperatorAssign(QLocale* self, QLocale* other) {
@@ -1281,7 +1287,11 @@ struct miqt_string QLocale_QuoteString2(const QLocale* self, struct miqt_string 
 	return _ms;
 }
 
-void QLocale_Delete(QLocale* self) {
-	delete self;
+void QLocale_Delete(QLocale* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QLocale*>( self );
+	} else {
+		delete self;
+	}
 }
 

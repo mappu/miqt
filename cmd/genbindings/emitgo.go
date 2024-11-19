@@ -13,7 +13,7 @@ import (
 func goReservedWord(s string) bool {
 	switch s {
 	case "default", "const", "func", "var", "type", "len", "new", "copy", "import", "range", "string", "map", "int", "select",
-		"ret": // not a language-reserved word, but a binding-reserved word
+		"super", "ret": // not language-reserved words, but a binding-reserved words
 		return true
 	default:
 		return false
@@ -152,6 +152,20 @@ func (p CppParameter) RenderTypeGo(gfs *goFileState) string {
 	}
 
 	return ret // ignore const
+}
+
+func (p CppParameter) renderReturnTypeGo(gfs *goFileState) string {
+	ret := p.RenderTypeGo(gfs)
+	if ret == "void" {
+		ret = ""
+	}
+
+	if p.QtClassType() && p.ParameterType != "QString" && p.ParameterType != "QByteArray" && !(p.Pointer || p.ByRef) {
+		// FIXME normalize this part
+		ret = "*" + ret
+	}
+
+	return ret
 }
 
 func (p CppParameter) parameterTypeCgo() string {
@@ -565,14 +579,22 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		shouldReturn = "" + namePrefix + "_ret := "
 
 		crossPackage := ""
-		if pkg, ok := KnownClassnames[rt.ParameterType]; ok && pkg.PackageName != gfs.currentPackageName {
+		pkg, ok := KnownClassnames[rt.ParameterType]
+		if !ok {
+			panic("emitCabiToGo: Encountered an unknown Qt class")
+		}
+
+		if pkg.PackageName != gfs.currentPackageName {
 			crossPackage = path.Base(pkg.PackageName) + "."
 			gfs.imports[importPathForQtPackage(pkg.PackageName)] = struct{}{}
 		}
 
+		// FIXME This needs to somehow figure out the real child pointers
+		extraConstructArgs := strings.Repeat(", nil", len(pkg.Class.AllInherits()))
+
 		if rt.Pointer || rt.ByRef {
 			gfs.imports["unsafe"] = struct{}{}
-			return assignExpr + " " + crossPackage + "UnsafeNew" + cabiClassName(rt.ParameterType) + "(unsafe.Pointer(" + rvalue + "))"
+			return assignExpr + " " + crossPackage + "UnsafeNew" + cabiClassName(rt.ParameterType) + "(unsafe.Pointer(" + rvalue + ")" + extraConstructArgs + ")"
 
 		} else {
 			// This is return by value, but CABI has new'd it into a
@@ -582,10 +604,10 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 			// of Go scope
 
 			if crossPackage == "" {
-				afterword += namePrefix + "_goptr := new" + cabiClassName(rt.ParameterType) + "(" + namePrefix + "_ret)\n"
+				afterword += namePrefix + "_goptr := new" + cabiClassName(rt.ParameterType) + "(" + namePrefix + "_ret" + extraConstructArgs + ")\n"
 			} else {
 				gfs.imports["unsafe"] = struct{}{}
-				afterword += namePrefix + "_goptr := " + crossPackage + "UnsafeNew" + cabiClassName(rt.ParameterType) + "(unsafe.Pointer(" + namePrefix + "_ret))\n"
+				afterword += namePrefix + "_goptr := " + crossPackage + "UnsafeNew" + cabiClassName(rt.ParameterType) + "(unsafe.Pointer(" + namePrefix + "_ret)" + extraConstructArgs + ")\n"
 
 			}
 			afterword += namePrefix + "_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer\n"
@@ -703,13 +725,18 @@ import "C"
 
 		goClassName := cabiClassName(c.ClassName)
 
+		// Type definition
+
 		ret.WriteString(`
 		type ` + goClassName + ` struct {
 			h *C.` + goClassName + `
+			isSubclass bool
 		`)
 
 		// Embed all inherited types to directly allow calling inherited methods
-		for _, base := range c.Inherits {
+		// Only include the direct inherits; the recursive inherits will exist
+		// on these types already
+		for _, base := range c.DirectInherits {
 
 			if pkg, ok := KnownClassnames[base]; ok && pkg.PackageName != gfs.currentPackageName {
 				// Cross-package parent class
@@ -740,81 +767,132 @@ import "C"
 		}
 		
 		`)
+
+		// CGO types only exist within the same Go file, so other Go files can't
+		// call this same private ctor function, unless it goes through unsafe.Pointer{}.
+		// This is probably because C types can possibly violate the ODR whereas
+		// that never happens in Go's type system.
+
 		gfs.imports["unsafe"] = struct{}{}
 
 		localInit := "h: h"
-		for _, base := range c.Inherits {
-			gfs.imports["unsafe"] = struct{}{}
+		unsafeInit := "h: (*C." + goClassName + ")(h)"
+		extraCArgs := ""
+		extraUnsafeArgs := ""
 
+		// We require arguments for all inherits, but we only embed the direct inherits
+		// Any recursive inherits will be owned by the base
+		for _, base := range c.AllInherits() {
+
+			extraCArgs += ", h_" + cabiClassName(base) + " *C." + cabiClassName(base)
+			extraUnsafeArgs += ", h_" + cabiClassName(base) + " unsafe.Pointer"
+		}
+
+		for _, base := range c.DirectInherits {
 			ctorPrefix := ""
-			if pkg, ok := KnownClassnames[base]; ok && pkg.PackageName != gfs.currentPackageName {
-				ctorPrefix = path.Base(pkg.PackageName) + "."
+			pkg, ok := KnownClassnames[base]
+			if !ok {
+				panic("Class " + c.ClassName + " has unknown parent " + base)
 			}
 
-			localInit += ", " + cabiClassName(base) + ": " + ctorPrefix + "UnsafeNew" + cabiClassName(base) + "(unsafe.Pointer(h))"
+			constructRequiresParams := pkg.Class.AllInherits()
+			var ixxParams []string = make([]string, 0, len(constructRequiresParams)+1)
+			ixxParams = append(ixxParams, "h_"+cabiClassName(base))
+			for _, grandchildInheritedClass := range constructRequiresParams {
+				ixxParams = append(ixxParams, "h_"+cabiClassName(grandchildInheritedClass))
+			}
+
+			if pkg.PackageName != gfs.currentPackageName {
+				ctorPrefix = path.Base(pkg.PackageName) + "."
+
+				localInit += ",\n" + cabiClassName(base) + ": " + ctorPrefix + "UnsafeNew" + cabiClassName(base) + "(unsafe.Pointer(" + strings.Join(ixxParams, "), unsafe.Pointer(") + "))"
+			} else {
+				localInit += ",\n" + cabiClassName(base) + ": new" + cabiClassName(base) + "(" + strings.Join(ixxParams, ", ") + ")"
+
+			}
+
+			unsafeInit += ",\n" + cabiClassName(base) + ": " + ctorPrefix + "UnsafeNew" + cabiClassName(base) + "(" + strings.Join(ixxParams, ", ") + ")"
 		}
 
 		ret.WriteString(`
-			func new` + goClassName + `(h *C.` + goClassName + `) *` + goClassName + ` {
+			// new` + goClassName + ` constructs the type using only CGO pointers.
+			func new` + goClassName + `(h *C.` + goClassName + extraCArgs + `) *` + goClassName + ` {
 				if h == nil {
 					return nil
 				}
 				return &` + goClassName + `{` + localInit + `}
 			}
 			
-		`)
-
-		// CGO types only exist within the same Go file, so other Go files can't
-		// call this same private ctor function, unless it goes through unsafe.Pointer{}.
-		// This is probably because C types can possibly violate the ODR whereas
-		// that never happens in Go's type system.
-		gfs.imports["unsafe"] = struct{}{}
-		ret.WriteString(`
-			func UnsafeNew` + goClassName + `(h unsafe.Pointer) *` + goClassName + ` {
-				return new` + goClassName + `( (*C.` + goClassName + `)(h) )
+			// UnsafeNew` + goClassName + ` constructs the type using only unsafe pointers.
+			func UnsafeNew` + goClassName + `(h unsafe.Pointer` + extraUnsafeArgs + `) *` + goClassName + ` {				
+				if h == nil {
+					return nil
+				}
+				
+				return &` + goClassName + `{` + unsafeInit + `}
 			}
 			
 		`)
+
+		//
 
 		for i, ctor := range c.Ctors {
 			preamble, forwarding := gfs.emitParametersGo2CABIForwarding(ctor)
 
+			ret.WriteString(`
+			// New` + goClassName + maybeSuffix(i) + ` constructs a new ` + c.ClassName + ` object.
+			func New` + goClassName + maybeSuffix(i) + `(` + gfs.emitParametersGo(ctor.Parameters) + `) *` + goClassName + ` {
+				`,
+			)
+
 			if ctor.LinuxOnly {
 				gfs.imports["runtime"] = struct{}{}
 				ret.WriteString(`
-			// New` + goClassName + maybeSuffix(i) + ` constructs a new ` + c.ClassName + ` object.
-			func New` + goClassName + maybeSuffix(i) + `(` + gfs.emitParametersGo(ctor.Parameters) + `) *` + goClassName + ` {
-				if runtime.GOOS == "linux" {
-					` + preamble + ` ret := C.` + goClassName + `_new` + maybeSuffix(i) + `(` + forwarding + `)
-					return new` + goClassName + `(ret)
-				} else {
-					panic("Unsupported OS")
-				}
+					if runtime.GOOS != "linux" {
+						panic("Unsupported OS")
+					}
+				`)
+			}
+
+			ret.WriteString(preamble)
+
+			// Outptr management
+
+			outptrs := make([]string, 0, len(c.AllInherits())+1)
+			ret.WriteString(`var outptr_` + cabiClassName(c.ClassName) + ` *C.` + goClassName + " = nil\n")
+			outptrs = append(outptrs, "outptr_"+cabiClassName(c.ClassName))
+			for _, baseClass := range c.AllInherits() {
+				ret.WriteString(`var outptr_` + cabiClassName(baseClass) + ` *C.` + cabiClassName(baseClass) + " = nil\n")
+				outptrs = append(outptrs, "outptr_"+cabiClassName(baseClass))
+			}
+
+			if len(forwarding) > 0 {
+				forwarding += ", "
+			}
+			forwarding += "&" + strings.Join(outptrs, ", &")
+
+			// Call Cgo constructor
+
+			ret.WriteString(`
+				C.` + goClassName + `_new` + maybeSuffix(i) + `(` + forwarding + `)
+				ret := new` + goClassName + `(` + strings.Join(outptrs, `, `) + `)
+				ret.isSubclass = true
+				return ret
 			}
 			
 			`)
-			} else {
-				ret.WriteString(`
-			// New` + goClassName + maybeSuffix(i) + ` constructs a new ` + c.ClassName + ` object.
-			func New` + goClassName + maybeSuffix(i) + `(` + gfs.emitParametersGo(ctor.Parameters) + `) *` + goClassName + ` {
-				` + preamble + ` ret := C.` + goClassName + `_new` + maybeSuffix(i) + `(` + forwarding + `)
-				return new` + goClassName + `(ret)
-			}
-			
-			`)
-			}
+
 		}
 
 		for _, m := range c.Methods {
+
+			if m.IsProtected {
+				continue // Don't add a direct call for it
+			}
+
 			preamble, forwarding := gfs.emitParametersGo2CABIForwarding(m)
 
-			returnTypeDecl := m.ReturnType.RenderTypeGo(&gfs)
-			if returnTypeDecl == "void" {
-				returnTypeDecl = ""
-			}
-			if m.ReturnType.QtClassType() && m.ReturnType.ParameterType != "QString" && m.ReturnType.ParameterType != "QByteArray" && !(m.ReturnType.Pointer || m.ReturnType.ByRef) {
-				returnTypeDecl = "*" + returnTypeDecl
-			}
+			returnTypeDecl := m.ReturnType.renderReturnTypeGo(&gfs)
 
 			rvalue := `C.` + goClassName + `_` + m.SafeMethodName() + `(` + forwarding + `)`
 
@@ -859,13 +937,15 @@ import "C"
 					conversion += gfs.emitCabiToGo(fmt.Sprintf("slotval%d := ", i+1), pp, pp.ParameterName) + "\n"
 				}
 
-				ret.WriteString(`func (this *` + goClassName + `) On` + m.SafeMethodName() + `(slot func(` + gfs.emitParametersGo(m.Parameters) + `)) {
+				goCbType := `func(` + gfs.emitParametersGo(m.Parameters) + `)`
+
+				ret.WriteString(`func (this *` + goClassName + `) On` + m.SafeMethodName() + `(slot ` + goCbType + `) {
 					C.` + goClassName + `_connect_` + m.SafeMethodName() + `(this.h, C.intptr_t(cgo.NewHandle(slot)) )
 				}
 				
 				//export miqt_exec_callback_` + goClassName + `_` + m.SafeMethodName() + `
 				func miqt_exec_callback_` + goClassName + `_` + m.SafeMethodName() + `(cb C.intptr_t` + ifv(len(m.Parameters) > 0, ", ", "") + strings.Join(cgoNamedParams, `, `) + `) {
-					gofunc, ok := cgo.Handle(cb).Value().(func(` + gfs.emitParametersGo(m.Parameters) + `))
+					gofunc, ok := cgo.Handle(cb).Value().(` + goCbType + `)
 					if !ok {
 						panic("miqt: callback of non-callback type (heap corruption?)")
 					}
@@ -879,13 +959,100 @@ import "C"
 			}
 		}
 
+		for _, m := range c.VirtualMethods() {
+			gfs.imports["unsafe"] = struct{}{}
+			gfs.imports["runtime/cgo"] = struct{}{}
+
+			// Add a package-private function to call the C++ base class method
+			// QWidget_virtualbase_PaintEvent
+
+			{
+				preamble, forwarding := gfs.emitParametersGo2CABIForwarding(m)
+
+				forwarding = "unsafe.Pointer(this.h)" + strings.TrimPrefix(forwarding, `this.h`) // TODO integrate properly
+
+				returnTypeDecl := m.ReturnType.renderReturnTypeGo(&gfs)
+
+				ret.WriteString(`
+				func (this *` + goClassName + `) callVirtualBase_` + m.SafeMethodName() + `(` + gfs.emitParametersGo(m.Parameters) + `) ` + returnTypeDecl + ` {
+					` + preamble + `
+					` + gfs.emitCabiToGo("return ", m.ReturnType, `C.`+goClassName+`_virtualbase_`+m.SafeMethodName()+`(`+forwarding+`)`) + `
+				}
+			`)
+
+			}
+
+			// Add a function to set the virtual override handle
+			// It must be possible to call the base class version, so pass
+			// that a as a 'super' callback as an extra parameter
+
+			{
+
+				var cgoNamedParams []string
+				var paramNames []string = []string{"(&" + goClassName + "{h: self}).callVirtualBase_" + m.SafeMethodName()}
+				conversion := ""
+
+				if len(m.Parameters) > 0 {
+					conversion = "// Convert all CABI parameters to Go parameters\n"
+				}
+				for i, pp := range m.Parameters {
+					cgoNamedParams = append(cgoNamedParams, pp.ParameterName+" "+pp.parameterTypeCgo())
+
+					paramNames = append(paramNames, fmt.Sprintf("slotval%d", i+1))
+					conversion += gfs.emitCabiToGo(fmt.Sprintf("slotval%d := ", i+1), pp, pp.ParameterName) + "\n"
+				}
+
+				cabiReturnType := m.ReturnType.parameterTypeCgo()
+				if cabiReturnType == "C.void" {
+					cabiReturnType = ""
+				}
+
+				superCbType := `func(` + gfs.emitParametersGo(m.Parameters) + `) ` + m.ReturnType.renderReturnTypeGo(&gfs)
+
+				goCbType := `func(super ` + superCbType
+				if len(m.Parameters) > 0 {
+					goCbType += `, ` + gfs.emitParametersGo(m.Parameters)
+				}
+				goCbType += `) ` + m.ReturnType.renderReturnTypeGo(&gfs)
+
+				ret.WriteString(`func (this *` + goClassName + `) On` + m.SafeMethodName() + `(slot ` + goCbType + `) {
+					C.` + goClassName + `_override_virtual_` + m.SafeMethodName() + `(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)) )
+				}
+				
+				//export miqt_exec_callback_` + goClassName + `_` + m.SafeMethodName() + `
+				func miqt_exec_callback_` + goClassName + `_` + m.SafeMethodName() + `(self *C.` + goClassName + `, cb C.intptr_t` + ifv(len(m.Parameters) > 0, ", ", "") + strings.Join(cgoNamedParams, `, `) + `) ` + cabiReturnType + `{
+					gofunc, ok := cgo.Handle(cb).Value().(` + goCbType + `)
+					if !ok {
+						panic("miqt: callback of non-callback type (heap corruption?)")
+					}
+				
+			`)
+				ret.WriteString(conversion + "\n")
+				if cabiReturnType == "" {
+					ret.WriteString(`gofunc(` + strings.Join(paramNames, `, `) + " )\n")
+				} else {
+					ret.WriteString(`virtualReturn := gofunc(` + strings.Join(paramNames, `, `) + " )\n")
+					virtualRetP := m.ReturnType // copy
+					virtualRetP.ParameterName = "virtualReturn"
+					binding, rvalue := gfs.emitParameterGo2CABIForwarding(virtualRetP)
+					ret.WriteString(binding + "\n")
+					ret.WriteString("return " + rvalue + "\n")
+				}
+				ret.WriteString(`
+				}
+			`)
+
+			}
+
+		}
+
 		if c.CanDelete {
 			gfs.imports["runtime"] = struct{}{} // Finalizer
 
 			ret.WriteString(`
 			// Delete this object from C++ memory.
 			func (this *` + goClassName + `) Delete() {
-				C.` + goClassName + `_Delete(this.h)
+				C.` + goClassName + `_Delete(this.h, C.bool(this.isSubclass))
 			}
 				
 			// GoGC adds a Go Finalizer to this pointer, so that it will be deleted

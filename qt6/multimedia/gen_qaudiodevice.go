@@ -22,7 +22,8 @@ const (
 )
 
 type QAudioDevice struct {
-	h *C.QAudioDevice
+	h          *C.QAudioDevice
+	isSubclass bool
 }
 
 func (this *QAudioDevice) cPointer() *C.QAudioDevice {
@@ -39,6 +40,7 @@ func (this *QAudioDevice) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAudioDevice constructs the type using only CGO pointers.
 func newQAudioDevice(h *C.QAudioDevice) *QAudioDevice {
 	if h == nil {
 		return nil
@@ -46,20 +48,33 @@ func newQAudioDevice(h *C.QAudioDevice) *QAudioDevice {
 	return &QAudioDevice{h: h}
 }
 
+// UnsafeNewQAudioDevice constructs the type using only unsafe pointers.
 func UnsafeNewQAudioDevice(h unsafe.Pointer) *QAudioDevice {
-	return newQAudioDevice((*C.QAudioDevice)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAudioDevice{h: (*C.QAudioDevice)(h)}
 }
 
 // NewQAudioDevice constructs a new QAudioDevice object.
 func NewQAudioDevice() *QAudioDevice {
-	ret := C.QAudioDevice_new()
-	return newQAudioDevice(ret)
+	var outptr_QAudioDevice *C.QAudioDevice = nil
+
+	C.QAudioDevice_new(&outptr_QAudioDevice)
+	ret := newQAudioDevice(outptr_QAudioDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAudioDevice2 constructs a new QAudioDevice object.
 func NewQAudioDevice2(other *QAudioDevice) *QAudioDevice {
-	ret := C.QAudioDevice_new2(other.cPointer())
-	return newQAudioDevice(ret)
+	var outptr_QAudioDevice *C.QAudioDevice = nil
+
+	C.QAudioDevice_new2(other.cPointer(), &outptr_QAudioDevice)
+	ret := newQAudioDevice(outptr_QAudioDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QAudioDevice) Swap(other *QAudioDevice) {
@@ -147,7 +162,7 @@ func (this *QAudioDevice) ChannelConfiguration() QAudioFormat__ChannelConfig {
 
 // Delete this object from C++ memory.
 func (this *QAudioDevice) Delete() {
-	C.QAudioDevice_Delete(this.h)
+	C.QAudioDevice_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

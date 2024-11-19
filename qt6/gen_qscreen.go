@@ -15,7 +15,8 @@ import (
 )
 
 type QScreen struct {
-	h *C.QScreen
+	h          *C.QScreen
+	isSubclass bool
 	*QObject
 }
 
@@ -33,15 +34,23 @@ func (this *QScreen) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQScreen(h *C.QScreen) *QScreen {
+// newQScreen constructs the type using only CGO pointers.
+func newQScreen(h *C.QScreen, h_QObject *C.QObject) *QScreen {
 	if h == nil {
 		return nil
 	}
-	return &QScreen{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QScreen{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQScreen(h unsafe.Pointer) *QScreen {
-	return newQScreen((*C.QScreen)(h))
+// UnsafeNewQScreen constructs the type using only unsafe pointers.
+func UnsafeNewQScreen(h unsafe.Pointer, h_QObject unsafe.Pointer) *QScreen {
+	if h == nil {
+		return nil
+	}
+
+	return &QScreen{h: (*C.QScreen)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QScreen) MetaObject() *QMetaObject {
@@ -163,13 +172,13 @@ func (this *QScreen) VirtualSiblings() []*QScreen {
 	_ret := make([]*QScreen, int(_ma.len))
 	_outCast := (*[0xffff]*C.QScreen)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQScreen(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQScreen(unsafe.Pointer(_outCast[i]), nil)
 	}
 	return _ret
 }
 
 func (this *QScreen) VirtualSiblingAt(point QPoint) *QScreen {
-	return UnsafeNewQScreen(unsafe.Pointer(C.QScreen_VirtualSiblingAt(this.h, point.cPointer())))
+	return UnsafeNewQScreen(unsafe.Pointer(C.QScreen_VirtualSiblingAt(this.h, point.cPointer())), nil)
 }
 
 func (this *QScreen) VirtualSize() *QSize {
@@ -240,7 +249,7 @@ func (this *QScreen) IsLandscape(orientation ScreenOrientation) bool {
 
 func (this *QScreen) GrabWindow() *QPixmap {
 	_ret := C.QScreen_GrabWindow(this.h)
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -453,42 +462,42 @@ func QScreen_Tr3(s string, c string, n int) string {
 
 func (this *QScreen) GrabWindow1(window uintptr) *QPixmap {
 	_ret := C.QScreen_GrabWindow1(this.h, (C.uintptr_t)(window))
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScreen) GrabWindow2(window uintptr, x int) *QPixmap {
 	_ret := C.QScreen_GrabWindow2(this.h, (C.uintptr_t)(window), (C.int)(x))
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScreen) GrabWindow3(window uintptr, x int, y int) *QPixmap {
 	_ret := C.QScreen_GrabWindow3(this.h, (C.uintptr_t)(window), (C.int)(x), (C.int)(y))
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScreen) GrabWindow4(window uintptr, x int, y int, w int) *QPixmap {
 	_ret := C.QScreen_GrabWindow4(this.h, (C.uintptr_t)(window), (C.int)(x), (C.int)(y), (C.int)(w))
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScreen) GrabWindow5(window uintptr, x int, y int, w int, h int) *QPixmap {
 	_ret := C.QScreen_GrabWindow5(this.h, (C.uintptr_t)(window), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h))
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 // Delete this object from C++ memory.
 func (this *QScreen) Delete() {
-	C.QScreen_Delete(this.h)
+	C.QScreen_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

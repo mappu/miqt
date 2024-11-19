@@ -15,7 +15,8 @@ import (
 )
 
 type QAbstractTextDocumentLayout struct {
-	h *C.QAbstractTextDocumentLayout
+	h          *C.QAbstractTextDocumentLayout
+	isSubclass bool
 	*QObject
 }
 
@@ -33,15 +34,23 @@ func (this *QAbstractTextDocumentLayout) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAbstractTextDocumentLayout(h *C.QAbstractTextDocumentLayout) *QAbstractTextDocumentLayout {
+// newQAbstractTextDocumentLayout constructs the type using only CGO pointers.
+func newQAbstractTextDocumentLayout(h *C.QAbstractTextDocumentLayout, h_QObject *C.QObject) *QAbstractTextDocumentLayout {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractTextDocumentLayout{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QAbstractTextDocumentLayout{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQAbstractTextDocumentLayout(h unsafe.Pointer) *QAbstractTextDocumentLayout {
-	return newQAbstractTextDocumentLayout((*C.QAbstractTextDocumentLayout)(h))
+// UnsafeNewQAbstractTextDocumentLayout constructs the type using only unsafe pointers.
+func UnsafeNewQAbstractTextDocumentLayout(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractTextDocumentLayout {
+	if h == nil {
+		return nil
+	}
+
+	return &QAbstractTextDocumentLayout{h: (*C.QAbstractTextDocumentLayout)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QAbstractTextDocumentLayout) MetaObject() *QMetaObject {
@@ -133,7 +142,7 @@ func (this *QAbstractTextDocumentLayout) PaintDevice() *QPaintDevice {
 }
 
 func (this *QAbstractTextDocumentLayout) Document() *QTextDocument {
-	return UnsafeNewQTextDocument(unsafe.Pointer(C.QAbstractTextDocumentLayout_Document(this.h)))
+	return UnsafeNewQTextDocument(unsafe.Pointer(C.QAbstractTextDocumentLayout_Document(this.h)), nil)
 }
 
 func (this *QAbstractTextDocumentLayout) RegisterHandler(objectType int, component *QObject) {
@@ -273,7 +282,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_Update1(cb C.intptr_t, param
 
 // Delete this object from C++ memory.
 func (this *QAbstractTextDocumentLayout) Delete() {
-	C.QAbstractTextDocumentLayout_Delete(this.h)
+	C.QAbstractTextDocumentLayout_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -286,7 +295,8 @@ func (this *QAbstractTextDocumentLayout) GoGC() {
 }
 
 type QTextObjectInterface struct {
-	h *C.QTextObjectInterface
+	h          *C.QTextObjectInterface
+	isSubclass bool
 }
 
 func (this *QTextObjectInterface) cPointer() *C.QTextObjectInterface {
@@ -303,6 +313,7 @@ func (this *QTextObjectInterface) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQTextObjectInterface constructs the type using only CGO pointers.
 func newQTextObjectInterface(h *C.QTextObjectInterface) *QTextObjectInterface {
 	if h == nil {
 		return nil
@@ -310,8 +321,13 @@ func newQTextObjectInterface(h *C.QTextObjectInterface) *QTextObjectInterface {
 	return &QTextObjectInterface{h: h}
 }
 
+// UnsafeNewQTextObjectInterface constructs the type using only unsafe pointers.
 func UnsafeNewQTextObjectInterface(h unsafe.Pointer) *QTextObjectInterface {
-	return newQTextObjectInterface((*C.QTextObjectInterface)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QTextObjectInterface{h: (*C.QTextObjectInterface)(h)}
 }
 
 func (this *QTextObjectInterface) IntrinsicSize(doc *QTextDocument, posInDocument int, format *QTextFormat) *QSizeF {
@@ -331,7 +347,7 @@ func (this *QTextObjectInterface) OperatorAssign(param1 *QTextObjectInterface) {
 
 // Delete this object from C++ memory.
 func (this *QTextObjectInterface) Delete() {
-	C.QTextObjectInterface_Delete(this.h)
+	C.QTextObjectInterface_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -344,7 +360,8 @@ func (this *QTextObjectInterface) GoGC() {
 }
 
 type QAbstractTextDocumentLayout__Selection struct {
-	h *C.QAbstractTextDocumentLayout__Selection
+	h          *C.QAbstractTextDocumentLayout__Selection
+	isSubclass bool
 }
 
 func (this *QAbstractTextDocumentLayout__Selection) cPointer() *C.QAbstractTextDocumentLayout__Selection {
@@ -361,6 +378,7 @@ func (this *QAbstractTextDocumentLayout__Selection) UnsafePointer() unsafe.Point
 	return unsafe.Pointer(this.h)
 }
 
+// newQAbstractTextDocumentLayout__Selection constructs the type using only CGO pointers.
 func newQAbstractTextDocumentLayout__Selection(h *C.QAbstractTextDocumentLayout__Selection) *QAbstractTextDocumentLayout__Selection {
 	if h == nil {
 		return nil
@@ -368,14 +386,23 @@ func newQAbstractTextDocumentLayout__Selection(h *C.QAbstractTextDocumentLayout_
 	return &QAbstractTextDocumentLayout__Selection{h: h}
 }
 
+// UnsafeNewQAbstractTextDocumentLayout__Selection constructs the type using only unsafe pointers.
 func UnsafeNewQAbstractTextDocumentLayout__Selection(h unsafe.Pointer) *QAbstractTextDocumentLayout__Selection {
-	return newQAbstractTextDocumentLayout__Selection((*C.QAbstractTextDocumentLayout__Selection)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAbstractTextDocumentLayout__Selection{h: (*C.QAbstractTextDocumentLayout__Selection)(h)}
 }
 
 // NewQAbstractTextDocumentLayout__Selection constructs a new QAbstractTextDocumentLayout::Selection object.
 func NewQAbstractTextDocumentLayout__Selection(param1 *QAbstractTextDocumentLayout__Selection) *QAbstractTextDocumentLayout__Selection {
-	ret := C.QAbstractTextDocumentLayout__Selection_new(param1.cPointer())
-	return newQAbstractTextDocumentLayout__Selection(ret)
+	var outptr_QAbstractTextDocumentLayout__Selection *C.QAbstractTextDocumentLayout__Selection = nil
+
+	C.QAbstractTextDocumentLayout__Selection_new(param1.cPointer(), &outptr_QAbstractTextDocumentLayout__Selection)
+	ret := newQAbstractTextDocumentLayout__Selection(outptr_QAbstractTextDocumentLayout__Selection)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QAbstractTextDocumentLayout__Selection) OperatorAssign(param1 *QAbstractTextDocumentLayout__Selection) {
@@ -384,7 +411,7 @@ func (this *QAbstractTextDocumentLayout__Selection) OperatorAssign(param1 *QAbst
 
 // Delete this object from C++ memory.
 func (this *QAbstractTextDocumentLayout__Selection) Delete() {
-	C.QAbstractTextDocumentLayout__Selection_Delete(this.h)
+	C.QAbstractTextDocumentLayout__Selection_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -397,7 +424,8 @@ func (this *QAbstractTextDocumentLayout__Selection) GoGC() {
 }
 
 type QAbstractTextDocumentLayout__PaintContext struct {
-	h *C.QAbstractTextDocumentLayout__PaintContext
+	h          *C.QAbstractTextDocumentLayout__PaintContext
+	isSubclass bool
 }
 
 func (this *QAbstractTextDocumentLayout__PaintContext) cPointer() *C.QAbstractTextDocumentLayout__PaintContext {
@@ -414,6 +442,7 @@ func (this *QAbstractTextDocumentLayout__PaintContext) UnsafePointer() unsafe.Po
 	return unsafe.Pointer(this.h)
 }
 
+// newQAbstractTextDocumentLayout__PaintContext constructs the type using only CGO pointers.
 func newQAbstractTextDocumentLayout__PaintContext(h *C.QAbstractTextDocumentLayout__PaintContext) *QAbstractTextDocumentLayout__PaintContext {
 	if h == nil {
 		return nil
@@ -421,20 +450,33 @@ func newQAbstractTextDocumentLayout__PaintContext(h *C.QAbstractTextDocumentLayo
 	return &QAbstractTextDocumentLayout__PaintContext{h: h}
 }
 
+// UnsafeNewQAbstractTextDocumentLayout__PaintContext constructs the type using only unsafe pointers.
 func UnsafeNewQAbstractTextDocumentLayout__PaintContext(h unsafe.Pointer) *QAbstractTextDocumentLayout__PaintContext {
-	return newQAbstractTextDocumentLayout__PaintContext((*C.QAbstractTextDocumentLayout__PaintContext)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAbstractTextDocumentLayout__PaintContext{h: (*C.QAbstractTextDocumentLayout__PaintContext)(h)}
 }
 
 // NewQAbstractTextDocumentLayout__PaintContext constructs a new QAbstractTextDocumentLayout::PaintContext object.
 func NewQAbstractTextDocumentLayout__PaintContext() *QAbstractTextDocumentLayout__PaintContext {
-	ret := C.QAbstractTextDocumentLayout__PaintContext_new()
-	return newQAbstractTextDocumentLayout__PaintContext(ret)
+	var outptr_QAbstractTextDocumentLayout__PaintContext *C.QAbstractTextDocumentLayout__PaintContext = nil
+
+	C.QAbstractTextDocumentLayout__PaintContext_new(&outptr_QAbstractTextDocumentLayout__PaintContext)
+	ret := newQAbstractTextDocumentLayout__PaintContext(outptr_QAbstractTextDocumentLayout__PaintContext)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAbstractTextDocumentLayout__PaintContext2 constructs a new QAbstractTextDocumentLayout::PaintContext object.
 func NewQAbstractTextDocumentLayout__PaintContext2(param1 *QAbstractTextDocumentLayout__PaintContext) *QAbstractTextDocumentLayout__PaintContext {
-	ret := C.QAbstractTextDocumentLayout__PaintContext_new2(param1.cPointer())
-	return newQAbstractTextDocumentLayout__PaintContext(ret)
+	var outptr_QAbstractTextDocumentLayout__PaintContext *C.QAbstractTextDocumentLayout__PaintContext = nil
+
+	C.QAbstractTextDocumentLayout__PaintContext_new2(param1.cPointer(), &outptr_QAbstractTextDocumentLayout__PaintContext)
+	ret := newQAbstractTextDocumentLayout__PaintContext(outptr_QAbstractTextDocumentLayout__PaintContext)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QAbstractTextDocumentLayout__PaintContext) OperatorAssign(param1 *QAbstractTextDocumentLayout__PaintContext) {
@@ -443,7 +485,7 @@ func (this *QAbstractTextDocumentLayout__PaintContext) OperatorAssign(param1 *QA
 
 // Delete this object from C++ memory.
 func (this *QAbstractTextDocumentLayout__PaintContext) Delete() {
-	C.QAbstractTextDocumentLayout__PaintContext_Delete(this.h)
+	C.QAbstractTextDocumentLayout__PaintContext_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

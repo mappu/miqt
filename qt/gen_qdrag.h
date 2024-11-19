@@ -15,22 +15,30 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QChildEvent;
 class QDrag;
+class QEvent;
+class QMetaMethod;
 class QMetaObject;
 class QMimeData;
 class QObject;
 class QPixmap;
 class QPoint;
+class QTimerEvent;
 #else
+typedef struct QChildEvent QChildEvent;
 typedef struct QDrag QDrag;
+typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMimeData QMimeData;
 typedef struct QObject QObject;
 typedef struct QPixmap QPixmap;
 typedef struct QPoint QPoint;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
-QDrag* QDrag_new(QObject* dragSource);
+void QDrag_new(QObject* dragSource, QDrag** outptr_QDrag, QObject** outptr_QObject);
 QMetaObject* QDrag_MetaObject(const QDrag* self);
 void* QDrag_Metacast(QDrag* self, const char* param1);
 struct miqt_string QDrag_Tr(const char* s);
@@ -61,7 +69,21 @@ struct miqt_string QDrag_TrUtf82(const char* s, const char* c);
 struct miqt_string QDrag_TrUtf83(const char* s, const char* c, int n);
 int QDrag_Start1(QDrag* self, int supportedActions);
 int QDrag_Exec1(QDrag* self, int supportedActions);
-void QDrag_Delete(QDrag* self);
+void QDrag_override_virtual_Event(void* self, intptr_t slot);
+bool QDrag_virtualbase_Event(void* self, QEvent* event);
+void QDrag_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QDrag_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QDrag_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QDrag_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QDrag_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QDrag_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QDrag_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QDrag_virtualbase_CustomEvent(void* self, QEvent* event);
+void QDrag_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QDrag_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QDrag_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QDrag_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QDrag_Delete(QDrag* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -6,36 +6,44 @@
 #include "gen_qpen.h"
 #include "_cgo_export.h"
 
-QPen* QPen_new() {
-	return new QPen();
+void QPen_new(QPen** outptr_QPen) {
+	QPen* ret = new QPen();
+	*outptr_QPen = ret;
 }
 
-QPen* QPen_new2(int param1) {
-	return new QPen(static_cast<Qt::PenStyle>(param1));
+void QPen_new2(int param1, QPen** outptr_QPen) {
+	QPen* ret = new QPen(static_cast<Qt::PenStyle>(param1));
+	*outptr_QPen = ret;
 }
 
-QPen* QPen_new3(QColor* color) {
-	return new QPen(*color);
+void QPen_new3(QColor* color, QPen** outptr_QPen) {
+	QPen* ret = new QPen(*color);
+	*outptr_QPen = ret;
 }
 
-QPen* QPen_new4(QBrush* brush, double width) {
-	return new QPen(*brush, static_cast<qreal>(width));
+void QPen_new4(QBrush* brush, double width, QPen** outptr_QPen) {
+	QPen* ret = new QPen(*brush, static_cast<qreal>(width));
+	*outptr_QPen = ret;
 }
 
-QPen* QPen_new5(QPen* pen) {
-	return new QPen(*pen);
+void QPen_new5(QPen* pen, QPen** outptr_QPen) {
+	QPen* ret = new QPen(*pen);
+	*outptr_QPen = ret;
 }
 
-QPen* QPen_new6(QBrush* brush, double width, int s) {
-	return new QPen(*brush, static_cast<qreal>(width), static_cast<Qt::PenStyle>(s));
+void QPen_new6(QBrush* brush, double width, int s, QPen** outptr_QPen) {
+	QPen* ret = new QPen(*brush, static_cast<qreal>(width), static_cast<Qt::PenStyle>(s));
+	*outptr_QPen = ret;
 }
 
-QPen* QPen_new7(QBrush* brush, double width, int s, int c) {
-	return new QPen(*brush, static_cast<qreal>(width), static_cast<Qt::PenStyle>(s), static_cast<Qt::PenCapStyle>(c));
+void QPen_new7(QBrush* brush, double width, int s, int c, QPen** outptr_QPen) {
+	QPen* ret = new QPen(*brush, static_cast<qreal>(width), static_cast<Qt::PenStyle>(s), static_cast<Qt::PenCapStyle>(c));
+	*outptr_QPen = ret;
 }
 
-QPen* QPen_new8(QBrush* brush, double width, int s, int c, int j) {
-	return new QPen(*brush, static_cast<qreal>(width), static_cast<Qt::PenStyle>(s), static_cast<Qt::PenCapStyle>(c), static_cast<Qt::PenJoinStyle>(j));
+void QPen_new8(QBrush* brush, double width, int s, int c, int j, QPen** outptr_QPen) {
+	QPen* ret = new QPen(*brush, static_cast<qreal>(width), static_cast<Qt::PenStyle>(s), static_cast<Qt::PenCapStyle>(c), static_cast<Qt::PenJoinStyle>(j));
+	*outptr_QPen = ret;
 }
 
 void QPen_OperatorAssign(QPen* self, QPen* pen) {
@@ -171,7 +179,11 @@ bool QPen_IsDetached(QPen* self) {
 	return self->isDetached();
 }
 
-void QPen_Delete(QPen* self) {
-	delete self;
+void QPen_Delete(QPen* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QPen*>( self );
+	} else {
+		delete self;
+	}
 }
 

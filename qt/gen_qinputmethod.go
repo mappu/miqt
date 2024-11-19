@@ -21,7 +21,8 @@ const (
 )
 
 type QInputMethod struct {
-	h *C.QInputMethod
+	h          *C.QInputMethod
+	isSubclass bool
 	*QObject
 }
 
@@ -39,15 +40,23 @@ func (this *QInputMethod) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQInputMethod(h *C.QInputMethod) *QInputMethod {
+// newQInputMethod constructs the type using only CGO pointers.
+func newQInputMethod(h *C.QInputMethod, h_QObject *C.QObject) *QInputMethod {
 	if h == nil {
 		return nil
 	}
-	return &QInputMethod{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QInputMethod{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQInputMethod(h unsafe.Pointer) *QInputMethod {
-	return newQInputMethod((*C.QInputMethod)(h))
+// UnsafeNewQInputMethod constructs the type using only unsafe pointers.
+func UnsafeNewQInputMethod(h unsafe.Pointer, h_QObject unsafe.Pointer) *QInputMethod {
+	if h == nil {
+		return nil
+	}
+
+	return &QInputMethod{h: (*C.QInputMethod)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QInputMethod) MetaObject() *QMetaObject {

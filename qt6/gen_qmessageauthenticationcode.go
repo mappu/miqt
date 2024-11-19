@@ -14,7 +14,8 @@ import (
 )
 
 type QMessageAuthenticationCode struct {
-	h *C.QMessageAuthenticationCode
+	h          *C.QMessageAuthenticationCode
+	isSubclass bool
 }
 
 func (this *QMessageAuthenticationCode) cPointer() *C.QMessageAuthenticationCode {
@@ -31,6 +32,7 @@ func (this *QMessageAuthenticationCode) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQMessageAuthenticationCode constructs the type using only CGO pointers.
 func newQMessageAuthenticationCode(h *C.QMessageAuthenticationCode) *QMessageAuthenticationCode {
 	if h == nil {
 		return nil
@@ -38,14 +40,23 @@ func newQMessageAuthenticationCode(h *C.QMessageAuthenticationCode) *QMessageAut
 	return &QMessageAuthenticationCode{h: h}
 }
 
+// UnsafeNewQMessageAuthenticationCode constructs the type using only unsafe pointers.
 func UnsafeNewQMessageAuthenticationCode(h unsafe.Pointer) *QMessageAuthenticationCode {
-	return newQMessageAuthenticationCode((*C.QMessageAuthenticationCode)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMessageAuthenticationCode{h: (*C.QMessageAuthenticationCode)(h)}
 }
 
 // NewQMessageAuthenticationCode constructs a new QMessageAuthenticationCode object.
 func NewQMessageAuthenticationCode(method QCryptographicHash__Algorithm) *QMessageAuthenticationCode {
-	ret := C.QMessageAuthenticationCode_new((C.int)(method))
-	return newQMessageAuthenticationCode(ret)
+	var outptr_QMessageAuthenticationCode *C.QMessageAuthenticationCode = nil
+
+	C.QMessageAuthenticationCode_new((C.int)(method), &outptr_QMessageAuthenticationCode)
+	ret := newQMessageAuthenticationCode(outptr_QMessageAuthenticationCode)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMessageAuthenticationCode2 constructs a new QMessageAuthenticationCode object.
@@ -53,8 +64,12 @@ func NewQMessageAuthenticationCode2(method QCryptographicHash__Algorithm, key []
 	key_alias := C.struct_miqt_string{}
 	key_alias.data = (*C.char)(unsafe.Pointer(&key[0]))
 	key_alias.len = C.size_t(len(key))
-	ret := C.QMessageAuthenticationCode_new2((C.int)(method), key_alias)
-	return newQMessageAuthenticationCode(ret)
+	var outptr_QMessageAuthenticationCode *C.QMessageAuthenticationCode = nil
+
+	C.QMessageAuthenticationCode_new2((C.int)(method), key_alias, &outptr_QMessageAuthenticationCode)
+	ret := newQMessageAuthenticationCode(outptr_QMessageAuthenticationCode)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QMessageAuthenticationCode) Reset() {
@@ -107,7 +122,7 @@ func QMessageAuthenticationCode_Hash(message []byte, key []byte, method QCryptog
 
 // Delete this object from C++ memory.
 func (this *QMessageAuthenticationCode) Delete() {
-	C.QMessageAuthenticationCode_Delete(this.h)
+	C.QMessageAuthenticationCode_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

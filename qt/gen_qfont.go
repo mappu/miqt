@@ -139,7 +139,8 @@ const (
 )
 
 type QFont struct {
-	h *C.QFont
+	h          *C.QFont
+	isSubclass bool
 }
 
 func (this *QFont) cPointer() *C.QFont {
@@ -156,6 +157,7 @@ func (this *QFont) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQFont constructs the type using only CGO pointers.
 func newQFont(h *C.QFont) *QFont {
 	if h == nil {
 		return nil
@@ -163,14 +165,23 @@ func newQFont(h *C.QFont) *QFont {
 	return &QFont{h: h}
 }
 
+// UnsafeNewQFont constructs the type using only unsafe pointers.
 func UnsafeNewQFont(h unsafe.Pointer) *QFont {
-	return newQFont((*C.QFont)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QFont{h: (*C.QFont)(h)}
 }
 
 // NewQFont constructs a new QFont object.
 func NewQFont() *QFont {
-	ret := C.QFont_new()
-	return newQFont(ret)
+	var outptr_QFont *C.QFont = nil
+
+	C.QFont_new(&outptr_QFont)
+	ret := newQFont(outptr_QFont)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFont2 constructs a new QFont object.
@@ -179,26 +190,42 @@ func NewQFont2(family string) *QFont {
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
 	defer C.free(unsafe.Pointer(family_ms.data))
-	ret := C.QFont_new2(family_ms)
-	return newQFont(ret)
+	var outptr_QFont *C.QFont = nil
+
+	C.QFont_new2(family_ms, &outptr_QFont)
+	ret := newQFont(outptr_QFont)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFont3 constructs a new QFont object.
 func NewQFont3(font *QFont, pd *QPaintDevice) *QFont {
-	ret := C.QFont_new3(font.cPointer(), pd.cPointer())
-	return newQFont(ret)
+	var outptr_QFont *C.QFont = nil
+
+	C.QFont_new3(font.cPointer(), pd.cPointer(), &outptr_QFont)
+	ret := newQFont(outptr_QFont)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFont4 constructs a new QFont object.
 func NewQFont4(font *QFont, pd *QPaintDevice) *QFont {
-	ret := C.QFont_new4(font.cPointer(), pd.cPointer())
-	return newQFont(ret)
+	var outptr_QFont *C.QFont = nil
+
+	C.QFont_new4(font.cPointer(), pd.cPointer(), &outptr_QFont)
+	ret := newQFont(outptr_QFont)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFont5 constructs a new QFont object.
 func NewQFont5(font *QFont) *QFont {
-	ret := C.QFont_new5(font.cPointer())
-	return newQFont(ret)
+	var outptr_QFont *C.QFont = nil
+
+	C.QFont_new5(font.cPointer(), &outptr_QFont)
+	ret := newQFont(outptr_QFont)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFont6 constructs a new QFont object.
@@ -207,8 +234,12 @@ func NewQFont6(family string, pointSize int) *QFont {
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
 	defer C.free(unsafe.Pointer(family_ms.data))
-	ret := C.QFont_new6(family_ms, (C.int)(pointSize))
-	return newQFont(ret)
+	var outptr_QFont *C.QFont = nil
+
+	C.QFont_new6(family_ms, (C.int)(pointSize), &outptr_QFont)
+	ret := newQFont(outptr_QFont)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFont7 constructs a new QFont object.
@@ -217,8 +248,12 @@ func NewQFont7(family string, pointSize int, weight int) *QFont {
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
 	defer C.free(unsafe.Pointer(family_ms.data))
-	ret := C.QFont_new7(family_ms, (C.int)(pointSize), (C.int)(weight))
-	return newQFont(ret)
+	var outptr_QFont *C.QFont = nil
+
+	C.QFont_new7(family_ms, (C.int)(pointSize), (C.int)(weight), &outptr_QFont)
+	ret := newQFont(outptr_QFont)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFont8 constructs a new QFont object.
@@ -227,8 +262,12 @@ func NewQFont8(family string, pointSize int, weight int, italic bool) *QFont {
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
 	defer C.free(unsafe.Pointer(family_ms.data))
-	ret := C.QFont_new8(family_ms, (C.int)(pointSize), (C.int)(weight), (C.bool)(italic))
-	return newQFont(ret)
+	var outptr_QFont *C.QFont = nil
+
+	C.QFont_new8(family_ms, (C.int)(pointSize), (C.int)(weight), (C.bool)(italic), &outptr_QFont)
+	ret := newQFont(outptr_QFont)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QFont) Swap(other *QFont) {
@@ -650,7 +689,7 @@ func (this *QFont) SetStyleHint2(param1 QFont__StyleHint, param2 QFont__StyleStr
 
 // Delete this object from C++ memory.
 func (this *QFont) Delete() {
-	C.QFont_Delete(this.h)
+	C.QFont_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

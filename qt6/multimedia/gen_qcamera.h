@@ -18,26 +18,34 @@ extern "C" {
 class QCamera;
 class QCameraDevice;
 class QCameraFormat;
+class QChildEvent;
+class QEvent;
 class QMediaCaptureSession;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QPointF;
+class QTimerEvent;
 #else
 typedef struct QCamera QCamera;
 typedef struct QCameraDevice QCameraDevice;
 typedef struct QCameraFormat QCameraFormat;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QMediaCaptureSession QMediaCaptureSession;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QPointF QPointF;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
-QCamera* QCamera_new();
-QCamera* QCamera_new2(QCameraDevice* cameraDevice);
-QCamera* QCamera_new3(int position);
-QCamera* QCamera_new4(QObject* parent);
-QCamera* QCamera_new5(QCameraDevice* cameraDevice, QObject* parent);
-QCamera* QCamera_new6(int position, QObject* parent);
+void QCamera_new(QCamera** outptr_QCamera, QObject** outptr_QObject);
+void QCamera_new2(QCameraDevice* cameraDevice, QCamera** outptr_QCamera, QObject** outptr_QObject);
+void QCamera_new3(int position, QCamera** outptr_QCamera, QObject** outptr_QObject);
+void QCamera_new4(QObject* parent, QCamera** outptr_QCamera, QObject** outptr_QObject);
+void QCamera_new5(QCameraDevice* cameraDevice, QObject* parent, QCamera** outptr_QCamera, QObject** outptr_QObject);
+void QCamera_new6(int position, QObject* parent, QCamera** outptr_QCamera, QObject** outptr_QObject);
 QMetaObject* QCamera_MetaObject(const QCamera* self);
 void* QCamera_Metacast(QCamera* self, const char* param1);
 struct miqt_string QCamera_Tr(const char* s);
@@ -154,7 +162,21 @@ void QCamera_HueChanged(QCamera* self);
 void QCamera_connect_HueChanged(QCamera* self, intptr_t slot);
 struct miqt_string QCamera_Tr2(const char* s, const char* c);
 struct miqt_string QCamera_Tr3(const char* s, const char* c, int n);
-void QCamera_Delete(QCamera* self);
+void QCamera_override_virtual_Event(void* self, intptr_t slot);
+bool QCamera_virtualbase_Event(void* self, QEvent* event);
+void QCamera_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QCamera_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QCamera_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QCamera_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QCamera_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QCamera_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QCamera_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QCamera_virtualbase_CustomEvent(void* self, QEvent* event);
+void QCamera_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QCamera_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QCamera_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QCamera_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QCamera_Delete(QCamera* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

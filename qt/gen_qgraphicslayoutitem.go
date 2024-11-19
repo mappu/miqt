@@ -14,7 +14,8 @@ import (
 )
 
 type QGraphicsLayoutItem struct {
-	h *C.QGraphicsLayoutItem
+	h          *C.QGraphicsLayoutItem
+	isSubclass bool
 }
 
 func (this *QGraphicsLayoutItem) cPointer() *C.QGraphicsLayoutItem {
@@ -31,6 +32,7 @@ func (this *QGraphicsLayoutItem) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQGraphicsLayoutItem constructs the type using only CGO pointers.
 func newQGraphicsLayoutItem(h *C.QGraphicsLayoutItem) *QGraphicsLayoutItem {
 	if h == nil {
 		return nil
@@ -38,8 +40,13 @@ func newQGraphicsLayoutItem(h *C.QGraphicsLayoutItem) *QGraphicsLayoutItem {
 	return &QGraphicsLayoutItem{h: h}
 }
 
+// UnsafeNewQGraphicsLayoutItem constructs the type using only unsafe pointers.
 func UnsafeNewQGraphicsLayoutItem(h unsafe.Pointer) *QGraphicsLayoutItem {
-	return newQGraphicsLayoutItem((*C.QGraphicsLayoutItem)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QGraphicsLayoutItem{h: (*C.QGraphicsLayoutItem)(h)}
 }
 
 func (this *QGraphicsLayoutItem) SetSizePolicy(policy *QSizePolicy) {
@@ -216,7 +223,7 @@ func (this *QGraphicsLayoutItem) EffectiveSizeHint2(which SizeHint, constraint *
 
 // Delete this object from C++ memory.
 func (this *QGraphicsLayoutItem) Delete() {
-	C.QGraphicsLayoutItem_Delete(this.h)
+	C.QGraphicsLayoutItem_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

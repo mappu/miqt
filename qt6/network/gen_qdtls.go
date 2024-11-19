@@ -39,7 +39,8 @@ const (
 )
 
 type QDtlsClientVerifier struct {
-	h *C.QDtlsClientVerifier
+	h          *C.QDtlsClientVerifier
+	isSubclass bool
 	*qt6.QObject
 }
 
@@ -57,27 +58,45 @@ func (this *QDtlsClientVerifier) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQDtlsClientVerifier(h *C.QDtlsClientVerifier) *QDtlsClientVerifier {
+// newQDtlsClientVerifier constructs the type using only CGO pointers.
+func newQDtlsClientVerifier(h *C.QDtlsClientVerifier, h_QObject *C.QObject) *QDtlsClientVerifier {
 	if h == nil {
 		return nil
 	}
-	return &QDtlsClientVerifier{h: h, QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QDtlsClientVerifier{h: h,
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
 }
 
-func UnsafeNewQDtlsClientVerifier(h unsafe.Pointer) *QDtlsClientVerifier {
-	return newQDtlsClientVerifier((*C.QDtlsClientVerifier)(h))
+// UnsafeNewQDtlsClientVerifier constructs the type using only unsafe pointers.
+func UnsafeNewQDtlsClientVerifier(h unsafe.Pointer, h_QObject unsafe.Pointer) *QDtlsClientVerifier {
+	if h == nil {
+		return nil
+	}
+
+	return &QDtlsClientVerifier{h: (*C.QDtlsClientVerifier)(h),
+		QObject: qt6.UnsafeNewQObject(h_QObject)}
 }
 
 // NewQDtlsClientVerifier constructs a new QDtlsClientVerifier object.
 func NewQDtlsClientVerifier() *QDtlsClientVerifier {
-	ret := C.QDtlsClientVerifier_new()
-	return newQDtlsClientVerifier(ret)
+	var outptr_QDtlsClientVerifier *C.QDtlsClientVerifier = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QDtlsClientVerifier_new(&outptr_QDtlsClientVerifier, &outptr_QObject)
+	ret := newQDtlsClientVerifier(outptr_QDtlsClientVerifier, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDtlsClientVerifier2 constructs a new QDtlsClientVerifier object.
 func NewQDtlsClientVerifier2(parent *qt6.QObject) *QDtlsClientVerifier {
-	ret := C.QDtlsClientVerifier_new2((*C.QObject)(parent.UnsafePointer()))
-	return newQDtlsClientVerifier(ret)
+	var outptr_QDtlsClientVerifier *C.QDtlsClientVerifier = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QDtlsClientVerifier_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QDtlsClientVerifier, &outptr_QObject)
+	ret := newQDtlsClientVerifier(outptr_QDtlsClientVerifier, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QDtlsClientVerifier) MetaObject() *qt6.QMetaObject {
@@ -157,9 +176,175 @@ func QDtlsClientVerifier_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QDtlsClientVerifier) callVirtualBase_Event(event *qt6.QEvent) bool {
+
+	return (bool)(C.QDtlsClientVerifier_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QDtlsClientVerifier) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+	C.QDtlsClientVerifier_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDtlsClientVerifier_Event
+func miqt_exec_callback_QDtlsClientVerifier_Event(self *C.QDtlsClientVerifier, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QDtlsClientVerifier{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QDtlsClientVerifier) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+
+	return (bool)(C.QDtlsClientVerifier_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QDtlsClientVerifier) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	C.QDtlsClientVerifier_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDtlsClientVerifier_EventFilter
+func miqt_exec_callback_QDtlsClientVerifier_EventFilter(self *C.QDtlsClientVerifier, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QDtlsClientVerifier{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QDtlsClientVerifier) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+
+	C.QDtlsClientVerifier_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+
+}
+func (this *QDtlsClientVerifier) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	C.QDtlsClientVerifier_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDtlsClientVerifier_TimerEvent
+func miqt_exec_callback_QDtlsClientVerifier_TimerEvent(self *C.QDtlsClientVerifier, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QDtlsClientVerifier{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QDtlsClientVerifier) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+
+	C.QDtlsClientVerifier_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+
+}
+func (this *QDtlsClientVerifier) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	C.QDtlsClientVerifier_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDtlsClientVerifier_ChildEvent
+func miqt_exec_callback_QDtlsClientVerifier_ChildEvent(self *C.QDtlsClientVerifier, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QDtlsClientVerifier{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QDtlsClientVerifier) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+
+	C.QDtlsClientVerifier_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+
+}
+func (this *QDtlsClientVerifier) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	C.QDtlsClientVerifier_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDtlsClientVerifier_CustomEvent
+func miqt_exec_callback_QDtlsClientVerifier_CustomEvent(self *C.QDtlsClientVerifier, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent), event *qt6.QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QDtlsClientVerifier{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QDtlsClientVerifier) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+
+	C.QDtlsClientVerifier_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QDtlsClientVerifier) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	C.QDtlsClientVerifier_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDtlsClientVerifier_ConnectNotify
+func miqt_exec_callback_QDtlsClientVerifier_ConnectNotify(self *C.QDtlsClientVerifier, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QDtlsClientVerifier{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QDtlsClientVerifier) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+
+	C.QDtlsClientVerifier_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QDtlsClientVerifier) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	C.QDtlsClientVerifier_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDtlsClientVerifier_DisconnectNotify
+func miqt_exec_callback_QDtlsClientVerifier_DisconnectNotify(self *C.QDtlsClientVerifier, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QDtlsClientVerifier{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QDtlsClientVerifier) Delete() {
-	C.QDtlsClientVerifier_Delete(this.h)
+	C.QDtlsClientVerifier_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -172,7 +357,8 @@ func (this *QDtlsClientVerifier) GoGC() {
 }
 
 type QDtls struct {
-	h *C.QDtls
+	h          *C.QDtls
+	isSubclass bool
 	*qt6.QObject
 }
 
@@ -190,27 +376,45 @@ func (this *QDtls) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQDtls(h *C.QDtls) *QDtls {
+// newQDtls constructs the type using only CGO pointers.
+func newQDtls(h *C.QDtls, h_QObject *C.QObject) *QDtls {
 	if h == nil {
 		return nil
 	}
-	return &QDtls{h: h, QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QDtls{h: h,
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
 }
 
-func UnsafeNewQDtls(h unsafe.Pointer) *QDtls {
-	return newQDtls((*C.QDtls)(h))
+// UnsafeNewQDtls constructs the type using only unsafe pointers.
+func UnsafeNewQDtls(h unsafe.Pointer, h_QObject unsafe.Pointer) *QDtls {
+	if h == nil {
+		return nil
+	}
+
+	return &QDtls{h: (*C.QDtls)(h),
+		QObject: qt6.UnsafeNewQObject(h_QObject)}
 }
 
 // NewQDtls constructs a new QDtls object.
 func NewQDtls(mode QSslSocket__SslMode) *QDtls {
-	ret := C.QDtls_new((C.int)(mode))
-	return newQDtls(ret)
+	var outptr_QDtls *C.QDtls = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QDtls_new((C.int)(mode), &outptr_QDtls, &outptr_QObject)
+	ret := newQDtls(outptr_QDtls, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDtls2 constructs a new QDtls object.
 func NewQDtls2(mode QSslSocket__SslMode, parent *qt6.QObject) *QDtls {
-	ret := C.QDtls_new2((C.int)(mode), (*C.QObject)(parent.UnsafePointer()))
-	return newQDtls(ret)
+	var outptr_QDtls *C.QDtls = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QDtls_new2((C.int)(mode), (*C.QObject)(parent.UnsafePointer()), &outptr_QDtls, &outptr_QObject)
+	ret := newQDtls(outptr_QDtls, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QDtls) MetaObject() *qt6.QMetaObject {
@@ -460,9 +664,175 @@ func (this *QDtls) DoHandshake2(socket *QUdpSocket, dgram []byte) bool {
 	return (bool)(C.QDtls_DoHandshake2(this.h, socket.cPointer(), dgram_alias))
 }
 
+func (this *QDtls) callVirtualBase_Event(event *qt6.QEvent) bool {
+
+	return (bool)(C.QDtls_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QDtls) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+	C.QDtls_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDtls_Event
+func miqt_exec_callback_QDtls_Event(self *C.QDtls, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QDtls{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QDtls) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+
+	return (bool)(C.QDtls_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QDtls) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	C.QDtls_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDtls_EventFilter
+func miqt_exec_callback_QDtls_EventFilter(self *C.QDtls, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QDtls{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QDtls) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+
+	C.QDtls_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+
+}
+func (this *QDtls) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	C.QDtls_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDtls_TimerEvent
+func miqt_exec_callback_QDtls_TimerEvent(self *C.QDtls, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QDtls{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QDtls) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+
+	C.QDtls_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+
+}
+func (this *QDtls) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	C.QDtls_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDtls_ChildEvent
+func miqt_exec_callback_QDtls_ChildEvent(self *C.QDtls, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QDtls{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QDtls) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+
+	C.QDtls_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+
+}
+func (this *QDtls) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	C.QDtls_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDtls_CustomEvent
+func miqt_exec_callback_QDtls_CustomEvent(self *C.QDtls, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent), event *qt6.QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QDtls{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QDtls) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+
+	C.QDtls_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QDtls) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	C.QDtls_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDtls_ConnectNotify
+func miqt_exec_callback_QDtls_ConnectNotify(self *C.QDtls, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QDtls{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QDtls) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+
+	C.QDtls_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QDtls) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	C.QDtls_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDtls_DisconnectNotify
+func miqt_exec_callback_QDtls_DisconnectNotify(self *C.QDtls, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QDtls{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QDtls) Delete() {
-	C.QDtls_Delete(this.h)
+	C.QDtls_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -475,7 +845,8 @@ func (this *QDtls) GoGC() {
 }
 
 type QDtlsClientVerifier__GeneratorParameters struct {
-	h *C.QDtlsClientVerifier__GeneratorParameters
+	h          *C.QDtlsClientVerifier__GeneratorParameters
+	isSubclass bool
 }
 
 func (this *QDtlsClientVerifier__GeneratorParameters) cPointer() *C.QDtlsClientVerifier__GeneratorParameters {
@@ -492,6 +863,7 @@ func (this *QDtlsClientVerifier__GeneratorParameters) UnsafePointer() unsafe.Poi
 	return unsafe.Pointer(this.h)
 }
 
+// newQDtlsClientVerifier__GeneratorParameters constructs the type using only CGO pointers.
 func newQDtlsClientVerifier__GeneratorParameters(h *C.QDtlsClientVerifier__GeneratorParameters) *QDtlsClientVerifier__GeneratorParameters {
 	if h == nil {
 		return nil
@@ -499,14 +871,23 @@ func newQDtlsClientVerifier__GeneratorParameters(h *C.QDtlsClientVerifier__Gener
 	return &QDtlsClientVerifier__GeneratorParameters{h: h}
 }
 
+// UnsafeNewQDtlsClientVerifier__GeneratorParameters constructs the type using only unsafe pointers.
 func UnsafeNewQDtlsClientVerifier__GeneratorParameters(h unsafe.Pointer) *QDtlsClientVerifier__GeneratorParameters {
-	return newQDtlsClientVerifier__GeneratorParameters((*C.QDtlsClientVerifier__GeneratorParameters)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QDtlsClientVerifier__GeneratorParameters{h: (*C.QDtlsClientVerifier__GeneratorParameters)(h)}
 }
 
 // NewQDtlsClientVerifier__GeneratorParameters constructs a new QDtlsClientVerifier::GeneratorParameters object.
 func NewQDtlsClientVerifier__GeneratorParameters() *QDtlsClientVerifier__GeneratorParameters {
-	ret := C.QDtlsClientVerifier__GeneratorParameters_new()
-	return newQDtlsClientVerifier__GeneratorParameters(ret)
+	var outptr_QDtlsClientVerifier__GeneratorParameters *C.QDtlsClientVerifier__GeneratorParameters = nil
+
+	C.QDtlsClientVerifier__GeneratorParameters_new(&outptr_QDtlsClientVerifier__GeneratorParameters)
+	ret := newQDtlsClientVerifier__GeneratorParameters(outptr_QDtlsClientVerifier__GeneratorParameters)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDtlsClientVerifier__GeneratorParameters2 constructs a new QDtlsClientVerifier::GeneratorParameters object.
@@ -514,14 +895,22 @@ func NewQDtlsClientVerifier__GeneratorParameters2(a qt6.QCryptographicHash__Algo
 	s_alias := C.struct_miqt_string{}
 	s_alias.data = (*C.char)(unsafe.Pointer(&s[0]))
 	s_alias.len = C.size_t(len(s))
-	ret := C.QDtlsClientVerifier__GeneratorParameters_new2((C.int)(a), s_alias)
-	return newQDtlsClientVerifier__GeneratorParameters(ret)
+	var outptr_QDtlsClientVerifier__GeneratorParameters *C.QDtlsClientVerifier__GeneratorParameters = nil
+
+	C.QDtlsClientVerifier__GeneratorParameters_new2((C.int)(a), s_alias, &outptr_QDtlsClientVerifier__GeneratorParameters)
+	ret := newQDtlsClientVerifier__GeneratorParameters(outptr_QDtlsClientVerifier__GeneratorParameters)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDtlsClientVerifier__GeneratorParameters3 constructs a new QDtlsClientVerifier::GeneratorParameters object.
 func NewQDtlsClientVerifier__GeneratorParameters3(param1 *QDtlsClientVerifier__GeneratorParameters) *QDtlsClientVerifier__GeneratorParameters {
-	ret := C.QDtlsClientVerifier__GeneratorParameters_new3(param1.cPointer())
-	return newQDtlsClientVerifier__GeneratorParameters(ret)
+	var outptr_QDtlsClientVerifier__GeneratorParameters *C.QDtlsClientVerifier__GeneratorParameters = nil
+
+	C.QDtlsClientVerifier__GeneratorParameters_new3(param1.cPointer(), &outptr_QDtlsClientVerifier__GeneratorParameters)
+	ret := newQDtlsClientVerifier__GeneratorParameters(outptr_QDtlsClientVerifier__GeneratorParameters)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QDtlsClientVerifier__GeneratorParameters) OperatorAssign(param1 *QDtlsClientVerifier__GeneratorParameters) {
@@ -530,7 +919,7 @@ func (this *QDtlsClientVerifier__GeneratorParameters) OperatorAssign(param1 *QDt
 
 // Delete this object from C++ memory.
 func (this *QDtlsClientVerifier__GeneratorParameters) Delete() {
-	C.QDtlsClientVerifier__GeneratorParameters_Delete(this.h)
+	C.QDtlsClientVerifier__GeneratorParameters_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -15,25 +15,29 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QChildEvent;
 class QGridLayout;
 class QLayout;
 class QLayoutItem;
 class QMetaObject;
+class QObject;
 class QRect;
 class QSize;
 class QWidget;
 #else
+typedef struct QChildEvent QChildEvent;
 typedef struct QGridLayout QGridLayout;
 typedef struct QLayout QLayout;
 typedef struct QLayoutItem QLayoutItem;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 typedef struct QRect QRect;
 typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-QGridLayout* QGridLayout_new(QWidget* parent);
-QGridLayout* QGridLayout_new2();
+void QGridLayout_new(QWidget* parent, QGridLayout** outptr_QGridLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem);
+void QGridLayout_new2(QGridLayout** outptr_QGridLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem);
 QMetaObject* QGridLayout_MetaObject(const QGridLayout* self);
 void* QGridLayout_Metacast(QGridLayout* self, const char* param1);
 struct miqt_string QGridLayout_Tr(const char* s);
@@ -78,6 +82,7 @@ void QGridLayout_SetGeometry(QGridLayout* self, QRect* geometry);
 void QGridLayout_AddItem(QGridLayout* self, QLayoutItem* item, int row, int column);
 void QGridLayout_SetDefaultPositioning(QGridLayout* self, int n, int orient);
 void QGridLayout_GetItemPosition(const QGridLayout* self, int idx, int* row, int* column, int* rowSpan, int* columnSpan);
+void QGridLayout_AddItemWithQLayoutItem(QGridLayout* self, QLayoutItem* param1);
 struct miqt_string QGridLayout_Tr2(const char* s, const char* c);
 struct miqt_string QGridLayout_Tr3(const char* s, const char* c, int n);
 struct miqt_string QGridLayout_TrUtf82(const char* s, const char* c);
@@ -89,7 +94,45 @@ void QGridLayout_AddLayout6(QGridLayout* self, QLayout* param1, int row, int col
 void QGridLayout_AddItem4(QGridLayout* self, QLayoutItem* item, int row, int column, int rowSpan);
 void QGridLayout_AddItem5(QGridLayout* self, QLayoutItem* item, int row, int column, int rowSpan, int columnSpan);
 void QGridLayout_AddItem6(QGridLayout* self, QLayoutItem* item, int row, int column, int rowSpan, int columnSpan, int param6);
-void QGridLayout_Delete(QGridLayout* self);
+void QGridLayout_override_virtual_SizeHint(void* self, intptr_t slot);
+QSize* QGridLayout_virtualbase_SizeHint(const void* self);
+void QGridLayout_override_virtual_MinimumSize(void* self, intptr_t slot);
+QSize* QGridLayout_virtualbase_MinimumSize(const void* self);
+void QGridLayout_override_virtual_MaximumSize(void* self, intptr_t slot);
+QSize* QGridLayout_virtualbase_MaximumSize(const void* self);
+void QGridLayout_override_virtual_HasHeightForWidth(void* self, intptr_t slot);
+bool QGridLayout_virtualbase_HasHeightForWidth(const void* self);
+void QGridLayout_override_virtual_HeightForWidth(void* self, intptr_t slot);
+int QGridLayout_virtualbase_HeightForWidth(const void* self, int param1);
+void QGridLayout_override_virtual_MinimumHeightForWidth(void* self, intptr_t slot);
+int QGridLayout_virtualbase_MinimumHeightForWidth(const void* self, int param1);
+void QGridLayout_override_virtual_ExpandingDirections(void* self, intptr_t slot);
+int QGridLayout_virtualbase_ExpandingDirections(const void* self);
+void QGridLayout_override_virtual_Invalidate(void* self, intptr_t slot);
+void QGridLayout_virtualbase_Invalidate(void* self);
+void QGridLayout_override_virtual_ItemAt(void* self, intptr_t slot);
+QLayoutItem* QGridLayout_virtualbase_ItemAt(const void* self, int index);
+void QGridLayout_override_virtual_TakeAt(void* self, intptr_t slot);
+QLayoutItem* QGridLayout_virtualbase_TakeAt(void* self, int index);
+void QGridLayout_override_virtual_Count(void* self, intptr_t slot);
+int QGridLayout_virtualbase_Count(const void* self);
+void QGridLayout_override_virtual_SetGeometry(void* self, intptr_t slot);
+void QGridLayout_virtualbase_SetGeometry(void* self, QRect* geometry);
+void QGridLayout_override_virtual_AddItemWithQLayoutItem(void* self, intptr_t slot);
+void QGridLayout_virtualbase_AddItemWithQLayoutItem(void* self, QLayoutItem* param1);
+void QGridLayout_override_virtual_Geometry(void* self, intptr_t slot);
+QRect* QGridLayout_virtualbase_Geometry(const void* self);
+void QGridLayout_override_virtual_IndexOf(void* self, intptr_t slot);
+int QGridLayout_virtualbase_IndexOf(const void* self, QWidget* param1);
+void QGridLayout_override_virtual_IsEmpty(void* self, intptr_t slot);
+bool QGridLayout_virtualbase_IsEmpty(const void* self);
+void QGridLayout_override_virtual_ControlTypes(void* self, intptr_t slot);
+int QGridLayout_virtualbase_ControlTypes(const void* self);
+void QGridLayout_override_virtual_Layout(void* self, intptr_t slot);
+QLayout* QGridLayout_virtualbase_Layout(void* self);
+void QGridLayout_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QGridLayout_virtualbase_ChildEvent(void* self, QChildEvent* e);
+void QGridLayout_Delete(QGridLayout* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

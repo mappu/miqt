@@ -7,12 +7,20 @@
 #include "gen_qscilexeroctave.h"
 #include "_cgo_export.h"
 
-QsciLexerOctave* QsciLexerOctave_new() {
-	return new QsciLexerOctave();
+void QsciLexerOctave_new(QsciLexerOctave** outptr_QsciLexerOctave, QsciLexerMatlab** outptr_QsciLexerMatlab, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
+	QsciLexerOctave* ret = new QsciLexerOctave();
+	*outptr_QsciLexerOctave = ret;
+	*outptr_QsciLexerMatlab = static_cast<QsciLexerMatlab*>(ret);
+	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QsciLexerOctave* QsciLexerOctave_new2(QObject* parent) {
-	return new QsciLexerOctave(parent);
+void QsciLexerOctave_new2(QObject* parent, QsciLexerOctave** outptr_QsciLexerOctave, QsciLexerMatlab** outptr_QsciLexerMatlab, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
+	QsciLexerOctave* ret = new QsciLexerOctave(parent);
+	*outptr_QsciLexerOctave = ret;
+	*outptr_QsciLexerMatlab = static_cast<QsciLexerMatlab*>(ret);
+	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QsciLexerOctave_MetaObject(const QsciLexerOctave* self) {
@@ -68,7 +76,11 @@ struct miqt_string QsciLexerOctave_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QsciLexerOctave_Delete(QsciLexerOctave* self) {
-	delete self;
+void QsciLexerOctave_Delete(QsciLexerOctave* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QsciLexerOctave*>( self );
+	} else {
+		delete self;
+	}
 }
 

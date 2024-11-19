@@ -14,7 +14,8 @@ import (
 )
 
 type QVersionNumber struct {
-	h *C.QVersionNumber
+	h          *C.QVersionNumber
+	isSubclass bool
 }
 
 func (this *QVersionNumber) cPointer() *C.QVersionNumber {
@@ -31,6 +32,7 @@ func (this *QVersionNumber) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQVersionNumber constructs the type using only CGO pointers.
 func newQVersionNumber(h *C.QVersionNumber) *QVersionNumber {
 	if h == nil {
 		return nil
@@ -38,14 +40,23 @@ func newQVersionNumber(h *C.QVersionNumber) *QVersionNumber {
 	return &QVersionNumber{h: h}
 }
 
+// UnsafeNewQVersionNumber constructs the type using only unsafe pointers.
 func UnsafeNewQVersionNumber(h unsafe.Pointer) *QVersionNumber {
-	return newQVersionNumber((*C.QVersionNumber)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QVersionNumber{h: (*C.QVersionNumber)(h)}
 }
 
 // NewQVersionNumber constructs a new QVersionNumber object.
 func NewQVersionNumber() *QVersionNumber {
-	ret := C.QVersionNumber_new()
-	return newQVersionNumber(ret)
+	var outptr_QVersionNumber *C.QVersionNumber = nil
+
+	C.QVersionNumber_new(&outptr_QVersionNumber)
+	ret := newQVersionNumber(outptr_QVersionNumber)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVersionNumber2 constructs a new QVersionNumber object.
@@ -56,32 +67,52 @@ func NewQVersionNumber2(seg []int) *QVersionNumber {
 		seg_CArray[i] = (C.int)(seg[i])
 	}
 	seg_ma := C.struct_miqt_array{len: C.size_t(len(seg)), data: unsafe.Pointer(seg_CArray)}
-	ret := C.QVersionNumber_new2(seg_ma)
-	return newQVersionNumber(ret)
+	var outptr_QVersionNumber *C.QVersionNumber = nil
+
+	C.QVersionNumber_new2(seg_ma, &outptr_QVersionNumber)
+	ret := newQVersionNumber(outptr_QVersionNumber)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVersionNumber3 constructs a new QVersionNumber object.
 func NewQVersionNumber3(maj int) *QVersionNumber {
-	ret := C.QVersionNumber_new3((C.int)(maj))
-	return newQVersionNumber(ret)
+	var outptr_QVersionNumber *C.QVersionNumber = nil
+
+	C.QVersionNumber_new3((C.int)(maj), &outptr_QVersionNumber)
+	ret := newQVersionNumber(outptr_QVersionNumber)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVersionNumber4 constructs a new QVersionNumber object.
 func NewQVersionNumber4(maj int, min int) *QVersionNumber {
-	ret := C.QVersionNumber_new4((C.int)(maj), (C.int)(min))
-	return newQVersionNumber(ret)
+	var outptr_QVersionNumber *C.QVersionNumber = nil
+
+	C.QVersionNumber_new4((C.int)(maj), (C.int)(min), &outptr_QVersionNumber)
+	ret := newQVersionNumber(outptr_QVersionNumber)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVersionNumber5 constructs a new QVersionNumber object.
 func NewQVersionNumber5(maj int, min int, mic int) *QVersionNumber {
-	ret := C.QVersionNumber_new5((C.int)(maj), (C.int)(min), (C.int)(mic))
-	return newQVersionNumber(ret)
+	var outptr_QVersionNumber *C.QVersionNumber = nil
+
+	C.QVersionNumber_new5((C.int)(maj), (C.int)(min), (C.int)(mic), &outptr_QVersionNumber)
+	ret := newQVersionNumber(outptr_QVersionNumber)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQVersionNumber6 constructs a new QVersionNumber object.
 func NewQVersionNumber6(param1 *QVersionNumber) *QVersionNumber {
-	ret := C.QVersionNumber_new6(param1.cPointer())
-	return newQVersionNumber(ret)
+	var outptr_QVersionNumber *C.QVersionNumber = nil
+
+	C.QVersionNumber_new6(param1.cPointer(), &outptr_QVersionNumber)
+	ret := newQVersionNumber(outptr_QVersionNumber)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QVersionNumber) IsNull() bool {
@@ -167,7 +198,7 @@ func QVersionNumber_FromString2(stringVal QAnyStringView, suffixIndex *int64) *Q
 
 // Delete this object from C++ memory.
 func (this *QVersionNumber) Delete() {
-	C.QVersionNumber_Delete(this.h)
+	C.QVersionNumber_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -180,7 +211,8 @@ func (this *QVersionNumber) GoGC() {
 }
 
 type QTypeRevision struct {
-	h *C.QTypeRevision
+	h          *C.QTypeRevision
+	isSubclass bool
 }
 
 func (this *QTypeRevision) cPointer() *C.QTypeRevision {
@@ -197,6 +229,7 @@ func (this *QTypeRevision) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQTypeRevision constructs the type using only CGO pointers.
 func newQTypeRevision(h *C.QTypeRevision) *QTypeRevision {
 	if h == nil {
 		return nil
@@ -204,20 +237,33 @@ func newQTypeRevision(h *C.QTypeRevision) *QTypeRevision {
 	return &QTypeRevision{h: h}
 }
 
+// UnsafeNewQTypeRevision constructs the type using only unsafe pointers.
 func UnsafeNewQTypeRevision(h unsafe.Pointer) *QTypeRevision {
-	return newQTypeRevision((*C.QTypeRevision)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QTypeRevision{h: (*C.QTypeRevision)(h)}
 }
 
 // NewQTypeRevision constructs a new QTypeRevision object.
 func NewQTypeRevision() *QTypeRevision {
-	ret := C.QTypeRevision_new()
-	return newQTypeRevision(ret)
+	var outptr_QTypeRevision *C.QTypeRevision = nil
+
+	C.QTypeRevision_new(&outptr_QTypeRevision)
+	ret := newQTypeRevision(outptr_QTypeRevision)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTypeRevision2 constructs a new QTypeRevision object.
 func NewQTypeRevision2(param1 *QTypeRevision) *QTypeRevision {
-	ret := C.QTypeRevision_new2(param1.cPointer())
-	return newQTypeRevision(ret)
+	var outptr_QTypeRevision *C.QTypeRevision = nil
+
+	C.QTypeRevision_new2(param1.cPointer(), &outptr_QTypeRevision)
+	ret := newQTypeRevision(outptr_QTypeRevision)
+	ret.isSubclass = true
+	return ret
 }
 
 func QTypeRevision_Zero() *QTypeRevision {
@@ -249,7 +295,7 @@ func (this *QTypeRevision) IsValid() bool {
 
 // Delete this object from C++ memory.
 func (this *QTypeRevision) Delete() {
-	C.QTypeRevision_Delete(this.h)
+	C.QTypeRevision_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

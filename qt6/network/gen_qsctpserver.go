@@ -11,11 +11,13 @@ import "C"
 import (
 	"github.com/mappu/miqt/qt6"
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
 type QSctpServer struct {
-	h *C.QSctpServer
+	h          *C.QSctpServer
+	isSubclass bool
 	*QTcpServer
 }
 
@@ -33,27 +35,47 @@ func (this *QSctpServer) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQSctpServer(h *C.QSctpServer) *QSctpServer {
+// newQSctpServer constructs the type using only CGO pointers.
+func newQSctpServer(h *C.QSctpServer, h_QTcpServer *C.QTcpServer, h_QObject *C.QObject) *QSctpServer {
 	if h == nil {
 		return nil
 	}
-	return &QSctpServer{h: h, QTcpServer: UnsafeNewQTcpServer(unsafe.Pointer(h))}
+	return &QSctpServer{h: h,
+		QTcpServer: newQTcpServer(h_QTcpServer, h_QObject)}
 }
 
-func UnsafeNewQSctpServer(h unsafe.Pointer) *QSctpServer {
-	return newQSctpServer((*C.QSctpServer)(h))
+// UnsafeNewQSctpServer constructs the type using only unsafe pointers.
+func UnsafeNewQSctpServer(h unsafe.Pointer, h_QTcpServer unsafe.Pointer, h_QObject unsafe.Pointer) *QSctpServer {
+	if h == nil {
+		return nil
+	}
+
+	return &QSctpServer{h: (*C.QSctpServer)(h),
+		QTcpServer: UnsafeNewQTcpServer(h_QTcpServer, h_QObject)}
 }
 
 // NewQSctpServer constructs a new QSctpServer object.
 func NewQSctpServer() *QSctpServer {
-	ret := C.QSctpServer_new()
-	return newQSctpServer(ret)
+	var outptr_QSctpServer *C.QSctpServer = nil
+	var outptr_QTcpServer *C.QTcpServer = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QSctpServer_new(&outptr_QSctpServer, &outptr_QTcpServer, &outptr_QObject)
+	ret := newQSctpServer(outptr_QSctpServer, outptr_QTcpServer, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSctpServer2 constructs a new QSctpServer object.
 func NewQSctpServer2(parent *qt6.QObject) *QSctpServer {
-	ret := C.QSctpServer_new2((*C.QObject)(parent.UnsafePointer()))
-	return newQSctpServer(ret)
+	var outptr_QSctpServer *C.QSctpServer = nil
+	var outptr_QTcpServer *C.QTcpServer = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QSctpServer_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QSctpServer, &outptr_QTcpServer, &outptr_QObject)
+	ret := newQSctpServer(outptr_QSctpServer, outptr_QTcpServer, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QSctpServer) MetaObject() *qt6.QMetaObject {
@@ -84,7 +106,7 @@ func (this *QSctpServer) MaximumChannelCount() int {
 }
 
 func (this *QSctpServer) NextPendingDatagramConnection() *QSctpSocket {
-	return UnsafeNewQSctpSocket(unsafe.Pointer(C.QSctpServer_NextPendingDatagramConnection(this.h)))
+	return UnsafeNewQSctpSocket(unsafe.Pointer(C.QSctpServer_NextPendingDatagramConnection(this.h)), nil, nil, nil, nil, nil)
 }
 
 func QSctpServer_Tr2(s string, c string) string {
@@ -109,9 +131,75 @@ func QSctpServer_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QSctpServer) callVirtualBase_IncomingConnection(handle uintptr) {
+
+	C.QSctpServer_virtualbase_IncomingConnection(unsafe.Pointer(this.h), (C.intptr_t)(handle))
+
+}
+func (this *QSctpServer) OnIncomingConnection(slot func(super func(handle uintptr), handle uintptr)) {
+	C.QSctpServer_override_virtual_IncomingConnection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QSctpServer_IncomingConnection
+func miqt_exec_callback_QSctpServer_IncomingConnection(self *C.QSctpServer, cb C.intptr_t, handle C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(handle uintptr), handle uintptr))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (uintptr)(handle)
+
+	gofunc((&QSctpServer{h: self}).callVirtualBase_IncomingConnection, slotval1)
+
+}
+
+func (this *QSctpServer) callVirtualBase_HasPendingConnections() bool {
+
+	return (bool)(C.QSctpServer_virtualbase_HasPendingConnections(unsafe.Pointer(this.h)))
+
+}
+func (this *QSctpServer) OnHasPendingConnections(slot func(super func() bool) bool) {
+	C.QSctpServer_override_virtual_HasPendingConnections(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QSctpServer_HasPendingConnections
+func miqt_exec_callback_QSctpServer_HasPendingConnections(self *C.QSctpServer, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QSctpServer{h: self}).callVirtualBase_HasPendingConnections)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QSctpServer) callVirtualBase_NextPendingConnection() *QTcpSocket {
+
+	return UnsafeNewQTcpSocket(unsafe.Pointer(C.QSctpServer_virtualbase_NextPendingConnection(unsafe.Pointer(this.h))), nil, nil, nil, nil)
+}
+func (this *QSctpServer) OnNextPendingConnection(slot func(super func() *QTcpSocket) *QTcpSocket) {
+	C.QSctpServer_override_virtual_NextPendingConnection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QSctpServer_NextPendingConnection
+func miqt_exec_callback_QSctpServer_NextPendingConnection(self *C.QSctpServer, cb C.intptr_t) *C.QTcpSocket {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QTcpSocket) *QTcpSocket)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QSctpServer{h: self}).callVirtualBase_NextPendingConnection)
+
+	return virtualReturn.cPointer()
+
+}
+
 // Delete this object from C++ memory.
 func (this *QSctpServer) Delete() {
-	C.QSctpServer_Delete(this.h)
+	C.QSctpServer_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

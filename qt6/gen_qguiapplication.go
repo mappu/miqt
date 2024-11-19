@@ -15,7 +15,8 @@ import (
 )
 
 type QGuiApplication struct {
-	h *C.QGuiApplication
+	h          *C.QGuiApplication
+	isSubclass bool
 	*QCoreApplication
 }
 
@@ -33,15 +34,23 @@ func (this *QGuiApplication) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQGuiApplication(h *C.QGuiApplication) *QGuiApplication {
+// newQGuiApplication constructs the type using only CGO pointers.
+func newQGuiApplication(h *C.QGuiApplication, h_QCoreApplication *C.QCoreApplication, h_QObject *C.QObject) *QGuiApplication {
 	if h == nil {
 		return nil
 	}
-	return &QGuiApplication{h: h, QCoreApplication: UnsafeNewQCoreApplication(unsafe.Pointer(h))}
+	return &QGuiApplication{h: h,
+		QCoreApplication: newQCoreApplication(h_QCoreApplication, h_QObject)}
 }
 
-func UnsafeNewQGuiApplication(h unsafe.Pointer) *QGuiApplication {
-	return newQGuiApplication((*C.QGuiApplication)(h))
+// UnsafeNewQGuiApplication constructs the type using only unsafe pointers.
+func UnsafeNewQGuiApplication(h unsafe.Pointer, h_QCoreApplication unsafe.Pointer, h_QObject unsafe.Pointer) *QGuiApplication {
+	if h == nil {
+		return nil
+	}
+
+	return &QGuiApplication{h: (*C.QGuiApplication)(h),
+		QCoreApplication: UnsafeNewQCoreApplication(h_QCoreApplication, h_QObject)}
 }
 
 // NewQGuiApplication constructs a new QGuiApplication object.
@@ -56,8 +65,14 @@ func NewQGuiApplication(args []string) *QGuiApplication {
 
 	runtime.LockOSThread() // Prevent Go from migrating the main Qt thread
 
-	ret := C.QGuiApplication_new(argc, &argv[0])
-	return newQGuiApplication(ret)
+	var outptr_QGuiApplication *C.QGuiApplication = nil
+	var outptr_QCoreApplication *C.QCoreApplication = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QGuiApplication_new(argc, &argv[0], &outptr_QGuiApplication, &outptr_QCoreApplication, &outptr_QObject)
+	ret := newQGuiApplication(outptr_QGuiApplication, outptr_QCoreApplication, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQGuiApplication2 constructs a new QGuiApplication object.
@@ -72,8 +87,14 @@ func NewQGuiApplication2(args []string, param3 int) *QGuiApplication {
 
 	runtime.LockOSThread() // Prevent Go from migrating the main Qt thread
 
-	ret := C.QGuiApplication_new2(argc, &argv[0], (C.int)(param3))
-	return newQGuiApplication(ret)
+	var outptr_QGuiApplication *C.QGuiApplication = nil
+	var outptr_QCoreApplication *C.QCoreApplication = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QGuiApplication_new2(argc, &argv[0], (C.int)(param3), &outptr_QGuiApplication, &outptr_QCoreApplication, &outptr_QObject)
+	ret := newQGuiApplication(outptr_QGuiApplication, outptr_QCoreApplication, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QGuiApplication) MetaObject() *QMetaObject {
@@ -130,7 +151,7 @@ func QGuiApplication_AllWindows() []*QWindow {
 	_ret := make([]*QWindow, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWindow)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQWindow(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQWindow(unsafe.Pointer(_outCast[i]), nil, nil)
 	}
 	return _ret
 }
@@ -140,13 +161,13 @@ func QGuiApplication_TopLevelWindows() []*QWindow {
 	_ret := make([]*QWindow, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWindow)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQWindow(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQWindow(unsafe.Pointer(_outCast[i]), nil, nil)
 	}
 	return _ret
 }
 
 func QGuiApplication_TopLevelAt(pos *QPoint) *QWindow {
-	return UnsafeNewQWindow(unsafe.Pointer(C.QGuiApplication_TopLevelAt(pos.cPointer())))
+	return UnsafeNewQWindow(unsafe.Pointer(C.QGuiApplication_TopLevelAt(pos.cPointer())), nil, nil)
 }
 
 func QGuiApplication_SetWindowIcon(icon *QIcon) {
@@ -168,11 +189,11 @@ func QGuiApplication_PlatformName() string {
 }
 
 func QGuiApplication_ModalWindow() *QWindow {
-	return UnsafeNewQWindow(unsafe.Pointer(C.QGuiApplication_ModalWindow()))
+	return UnsafeNewQWindow(unsafe.Pointer(C.QGuiApplication_ModalWindow()), nil, nil)
 }
 
 func QGuiApplication_FocusWindow() *QWindow {
-	return UnsafeNewQWindow(unsafe.Pointer(C.QGuiApplication_FocusWindow()))
+	return UnsafeNewQWindow(unsafe.Pointer(C.QGuiApplication_FocusWindow()), nil, nil)
 }
 
 func QGuiApplication_FocusObject() *QObject {
@@ -180,7 +201,7 @@ func QGuiApplication_FocusObject() *QObject {
 }
 
 func QGuiApplication_PrimaryScreen() *QScreen {
-	return UnsafeNewQScreen(unsafe.Pointer(C.QGuiApplication_PrimaryScreen()))
+	return UnsafeNewQScreen(unsafe.Pointer(C.QGuiApplication_PrimaryScreen()), nil)
 }
 
 func QGuiApplication_Screens() []*QScreen {
@@ -188,13 +209,13 @@ func QGuiApplication_Screens() []*QScreen {
 	_ret := make([]*QScreen, int(_ma.len))
 	_outCast := (*[0xffff]*C.QScreen)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQScreen(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQScreen(unsafe.Pointer(_outCast[i]), nil)
 	}
 	return _ret
 }
 
 func QGuiApplication_ScreenAt(point *QPoint) *QScreen {
-	return UnsafeNewQScreen(unsafe.Pointer(C.QGuiApplication_ScreenAt(point.cPointer())))
+	return UnsafeNewQScreen(unsafe.Pointer(C.QGuiApplication_ScreenAt(point.cPointer())), nil)
 }
 
 func (this *QGuiApplication) DevicePixelRatio() float64 {
@@ -229,7 +250,7 @@ func QGuiApplication_SetFont(font *QFont) {
 }
 
 func QGuiApplication_Clipboard() *QClipboard {
-	return UnsafeNewQClipboard(unsafe.Pointer(C.QGuiApplication_Clipboard()))
+	return UnsafeNewQClipboard(unsafe.Pointer(C.QGuiApplication_Clipboard()), nil)
 }
 
 func QGuiApplication_Palette() *QPalette {
@@ -272,7 +293,7 @@ func QGuiApplication_IsLeftToRight() bool {
 }
 
 func QGuiApplication_StyleHints() *QStyleHints {
-	return UnsafeNewQStyleHints(unsafe.Pointer(C.QGuiApplication_StyleHints()))
+	return UnsafeNewQStyleHints(unsafe.Pointer(C.QGuiApplication_StyleHints()), nil)
 }
 
 func QGuiApplication_SetDesktopSettingsAware(on bool) {
@@ -284,7 +305,7 @@ func QGuiApplication_DesktopSettingsAware() bool {
 }
 
 func QGuiApplication_InputMethod() *QInputMethod {
-	return UnsafeNewQInputMethod(unsafe.Pointer(C.QGuiApplication_InputMethod()))
+	return UnsafeNewQInputMethod(unsafe.Pointer(C.QGuiApplication_InputMethod()), nil)
 }
 
 func QGuiApplication_SetQuitOnLastWindowClosed(quit bool) {
@@ -373,7 +394,7 @@ func miqt_exec_callback_QGuiApplication_ScreenAdded(cb C.intptr_t, screen *C.QSc
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQScreen(unsafe.Pointer(screen))
+	slotval1 := UnsafeNewQScreen(unsafe.Pointer(screen), nil)
 
 	gofunc(slotval1)
 }
@@ -393,7 +414,7 @@ func miqt_exec_callback_QGuiApplication_ScreenRemoved(cb C.intptr_t, screen *C.Q
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQScreen(unsafe.Pointer(screen))
+	slotval1 := UnsafeNewQScreen(unsafe.Pointer(screen), nil)
 
 	gofunc(slotval1)
 }
@@ -413,7 +434,7 @@ func miqt_exec_callback_QGuiApplication_PrimaryScreenChanged(cb C.intptr_t, scre
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQScreen(unsafe.Pointer(screen))
+	slotval1 := UnsafeNewQScreen(unsafe.Pointer(screen), nil)
 
 	gofunc(slotval1)
 }
@@ -470,7 +491,7 @@ func miqt_exec_callback_QGuiApplication_FocusWindowChanged(cb C.intptr_t, focusW
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWindow(unsafe.Pointer(focusWindow))
+	slotval1 := UnsafeNewQWindow(unsafe.Pointer(focusWindow), nil, nil)
 
 	gofunc(slotval1)
 }
@@ -530,7 +551,7 @@ func miqt_exec_callback_QGuiApplication_CommitDataRequest(cb C.intptr_t, session
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQSessionManager(unsafe.Pointer(sessionManager))
+	slotval1 := UnsafeNewQSessionManager(unsafe.Pointer(sessionManager), nil)
 
 	gofunc(slotval1)
 }
@@ -550,7 +571,7 @@ func miqt_exec_callback_QGuiApplication_SaveStateRequest(cb C.intptr_t, sessionM
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQSessionManager(unsafe.Pointer(sessionManager))
+	slotval1 := UnsafeNewQSessionManager(unsafe.Pointer(sessionManager), nil)
 
 	gofunc(slotval1)
 }
@@ -634,9 +655,60 @@ func QGuiApplication_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QGuiApplication) callVirtualBase_Notify(param1 *QObject, param2 *QEvent) bool {
+
+	return (bool)(C.QGuiApplication_virtualbase_Notify(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
+
+}
+func (this *QGuiApplication) OnNotify(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
+	C.QGuiApplication_override_virtual_Notify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGuiApplication_Notify
+func miqt_exec_callback_QGuiApplication_Notify(self *C.QGuiApplication, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(param1))
+	slotval2 := UnsafeNewQEvent(unsafe.Pointer(param2))
+
+	virtualReturn := gofunc((&QGuiApplication{h: self}).callVirtualBase_Notify, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QGuiApplication) callVirtualBase_Event(param1 *QEvent) bool {
+
+	return (bool)(C.QGuiApplication_virtualbase_Event(unsafe.Pointer(this.h), param1.cPointer()))
+
+}
+func (this *QGuiApplication) OnEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
+	C.QGuiApplication_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGuiApplication_Event
+func miqt_exec_callback_QGuiApplication_Event(self *C.QGuiApplication, cb C.intptr_t, param1 *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent) bool, param1 *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+
+	virtualReturn := gofunc((&QGuiApplication{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QGuiApplication) Delete() {
-	C.QGuiApplication_Delete(this.h)
+	C.QGuiApplication_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

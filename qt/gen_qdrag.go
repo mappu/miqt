@@ -15,7 +15,8 @@ import (
 )
 
 type QDrag struct {
-	h *C.QDrag
+	h          *C.QDrag
+	isSubclass bool
 	*QObject
 }
 
@@ -33,21 +34,34 @@ func (this *QDrag) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQDrag(h *C.QDrag) *QDrag {
+// newQDrag constructs the type using only CGO pointers.
+func newQDrag(h *C.QDrag, h_QObject *C.QObject) *QDrag {
 	if h == nil {
 		return nil
 	}
-	return &QDrag{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QDrag{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQDrag(h unsafe.Pointer) *QDrag {
-	return newQDrag((*C.QDrag)(h))
+// UnsafeNewQDrag constructs the type using only unsafe pointers.
+func UnsafeNewQDrag(h unsafe.Pointer, h_QObject unsafe.Pointer) *QDrag {
+	if h == nil {
+		return nil
+	}
+
+	return &QDrag{h: (*C.QDrag)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 // NewQDrag constructs a new QDrag object.
 func NewQDrag(dragSource *QObject) *QDrag {
-	ret := C.QDrag_new(dragSource.cPointer())
-	return newQDrag(ret)
+	var outptr_QDrag *C.QDrag = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QDrag_new(dragSource.cPointer(), &outptr_QDrag, &outptr_QObject)
+	ret := newQDrag(outptr_QDrag, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QDrag) MetaObject() *QMetaObject {
@@ -83,7 +97,7 @@ func (this *QDrag) SetMimeData(data *QMimeData) {
 }
 
 func (this *QDrag) MimeData() *QMimeData {
-	return UnsafeNewQMimeData(unsafe.Pointer(C.QDrag_MimeData(this.h)))
+	return UnsafeNewQMimeData(unsafe.Pointer(C.QDrag_MimeData(this.h)), nil)
 }
 
 func (this *QDrag) SetPixmap(pixmap *QPixmap) {
@@ -92,7 +106,7 @@ func (this *QDrag) SetPixmap(pixmap *QPixmap) {
 
 func (this *QDrag) Pixmap() *QPixmap {
 	_ret := C.QDrag_Pixmap(this.h)
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -134,7 +148,7 @@ func (this *QDrag) SetDragCursor(cursor *QPixmap, action DropAction) {
 
 func (this *QDrag) DragCursor(action DropAction) *QPixmap {
 	_ret := C.QDrag_DragCursor(this.h, (C.int)(action))
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -243,9 +257,175 @@ func (this *QDrag) Exec1(supportedActions DropAction) DropAction {
 	return (DropAction)(C.QDrag_Exec1(this.h, (C.int)(supportedActions)))
 }
 
+func (this *QDrag) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QDrag_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QDrag) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	C.QDrag_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDrag_Event
+func miqt_exec_callback_QDrag_Event(self *C.QDrag, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QDrag{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QDrag) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QDrag_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QDrag) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	C.QDrag_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDrag_EventFilter
+func miqt_exec_callback_QDrag_EventFilter(self *C.QDrag, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QDrag{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QDrag) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QDrag_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDrag) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	C.QDrag_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDrag_TimerEvent
+func miqt_exec_callback_QDrag_TimerEvent(self *C.QDrag, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QDrag{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QDrag) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QDrag_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDrag) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	C.QDrag_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDrag_ChildEvent
+func miqt_exec_callback_QDrag_ChildEvent(self *C.QDrag, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QDrag{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QDrag) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QDrag_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDrag) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	C.QDrag_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDrag_CustomEvent
+func miqt_exec_callback_QDrag_CustomEvent(self *C.QDrag, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QDrag{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QDrag) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QDrag_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QDrag) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QDrag_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDrag_ConnectNotify
+func miqt_exec_callback_QDrag_ConnectNotify(self *C.QDrag, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QDrag{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QDrag) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QDrag_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QDrag) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QDrag_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QDrag_DisconnectNotify
+func miqt_exec_callback_QDrag_DisconnectNotify(self *C.QDrag, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QDrag{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QDrag) Delete() {
-	C.QDrag_Delete(this.h)
+	C.QDrag_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

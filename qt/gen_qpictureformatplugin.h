@@ -16,10 +16,12 @@ extern "C" {
 
 #ifdef __cplusplus
 class QMetaObject;
+class QObject;
 class QPicture;
 class QPictureFormatPlugin;
 #else
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 typedef struct QPicture QPicture;
 typedef struct QPictureFormatPlugin QPictureFormatPlugin;
 #endif
@@ -35,7 +37,7 @@ struct miqt_string QPictureFormatPlugin_Tr2(const char* s, const char* c);
 struct miqt_string QPictureFormatPlugin_Tr3(const char* s, const char* c, int n);
 struct miqt_string QPictureFormatPlugin_TrUtf82(const char* s, const char* c);
 struct miqt_string QPictureFormatPlugin_TrUtf83(const char* s, const char* c, int n);
-void QPictureFormatPlugin_Delete(QPictureFormatPlugin* self);
+void QPictureFormatPlugin_Delete(QPictureFormatPlugin* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -38,8 +38,8 @@ typedef struct QJsonValueConstRef QJsonValueConstRef;
 typedef struct QJsonValueRef QJsonValueRef;
 #endif
 
-QJsonArray* QJsonArray_new();
-QJsonArray* QJsonArray_new2(QJsonArray* other);
+void QJsonArray_new(QJsonArray** outptr_QJsonArray);
+void QJsonArray_new2(QJsonArray* other, QJsonArray** outptr_QJsonArray);
 void QJsonArray_OperatorAssign(QJsonArray* self, QJsonArray* other);
 QJsonArray* QJsonArray_FromStringList(struct miqt_array /* of struct miqt_string */  list);
 ptrdiff_t QJsonArray_Size(const QJsonArray* self);
@@ -80,11 +80,11 @@ void QJsonArray_PushFront(QJsonArray* self, QJsonValue* t);
 void QJsonArray_PopFront(QJsonArray* self);
 void QJsonArray_PopBack(QJsonArray* self);
 bool QJsonArray_Empty(const QJsonArray* self);
-void QJsonArray_Delete(QJsonArray* self);
+void QJsonArray_Delete(QJsonArray* self, bool isSubclass);
 
-QJsonArray__iterator* QJsonArray__iterator_new();
-QJsonArray__iterator* QJsonArray__iterator_new2(QJsonArray* array, ptrdiff_t index);
-QJsonArray__iterator* QJsonArray__iterator_new3(QJsonArray__iterator* other);
+void QJsonArray__iterator_new(QJsonArray__iterator** outptr_QJsonArray__iterator);
+void QJsonArray__iterator_new2(QJsonArray* array, ptrdiff_t index, QJsonArray__iterator** outptr_QJsonArray__iterator);
+void QJsonArray__iterator_new3(QJsonArray__iterator* other, QJsonArray__iterator** outptr_QJsonArray__iterator);
 void QJsonArray__iterator_OperatorAssign(QJsonArray__iterator* self, QJsonArray__iterator* other);
 QJsonValueRef* QJsonArray__iterator_OperatorMultiply(const QJsonArray__iterator* self);
 QJsonValueConstRef* QJsonArray__iterator_OperatorMinusGreater(const QJsonArray__iterator* self);
@@ -111,12 +111,12 @@ QJsonArray__iterator* QJsonArray__iterator_OperatorMinusAssign(QJsonArray__itera
 QJsonArray__iterator* QJsonArray__iterator_OperatorPlus(const QJsonArray__iterator* self, ptrdiff_t j);
 QJsonArray__iterator* QJsonArray__iterator_OperatorMinus(const QJsonArray__iterator* self, ptrdiff_t j);
 ptrdiff_t QJsonArray__iterator_OperatorMinusWithQJsonArrayiterator(const QJsonArray__iterator* self, QJsonArray__iterator* j);
-void QJsonArray__iterator_Delete(QJsonArray__iterator* self);
+void QJsonArray__iterator_Delete(QJsonArray__iterator* self, bool isSubclass);
 
-QJsonArray__const_iterator* QJsonArray__const_iterator_new();
-QJsonArray__const_iterator* QJsonArray__const_iterator_new2(QJsonArray* array, ptrdiff_t index);
-QJsonArray__const_iterator* QJsonArray__const_iterator_new3(QJsonArray__iterator* o);
-QJsonArray__const_iterator* QJsonArray__const_iterator_new4(QJsonArray__const_iterator* other);
+void QJsonArray__const_iterator_new(QJsonArray__const_iterator** outptr_QJsonArray__const_iterator);
+void QJsonArray__const_iterator_new2(QJsonArray* array, ptrdiff_t index, QJsonArray__const_iterator** outptr_QJsonArray__const_iterator);
+void QJsonArray__const_iterator_new3(QJsonArray__iterator* o, QJsonArray__const_iterator** outptr_QJsonArray__const_iterator);
+void QJsonArray__const_iterator_new4(QJsonArray__const_iterator* other, QJsonArray__const_iterator** outptr_QJsonArray__const_iterator);
 void QJsonArray__const_iterator_OperatorAssign(QJsonArray__const_iterator* self, QJsonArray__const_iterator* other);
 QJsonValueConstRef* QJsonArray__const_iterator_OperatorMultiply(const QJsonArray__const_iterator* self);
 QJsonValueConstRef* QJsonArray__const_iterator_OperatorMinusGreater(const QJsonArray__const_iterator* self);
@@ -136,7 +136,7 @@ QJsonArray__const_iterator* QJsonArray__const_iterator_OperatorMinusAssign(QJson
 QJsonArray__const_iterator* QJsonArray__const_iterator_OperatorPlus(const QJsonArray__const_iterator* self, ptrdiff_t j);
 QJsonArray__const_iterator* QJsonArray__const_iterator_OperatorMinus(const QJsonArray__const_iterator* self, ptrdiff_t j);
 ptrdiff_t QJsonArray__const_iterator_OperatorMinusWithQJsonArrayconstIterator(const QJsonArray__const_iterator* self, QJsonArray__const_iterator* j);
-void QJsonArray__const_iterator_Delete(QJsonArray__const_iterator* self);
+void QJsonArray__const_iterator_Delete(QJsonArray__const_iterator* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -21,6 +21,7 @@ class QImage;
 class QImageIOHandler;
 class QImageIOPlugin;
 class QMetaObject;
+class QObject;
 class QRect;
 class QVariant;
 #else
@@ -30,6 +31,7 @@ typedef struct QImage QImage;
 typedef struct QImageIOHandler QImageIOHandler;
 typedef struct QImageIOPlugin QImageIOPlugin;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 typedef struct QRect QRect;
 typedef struct QVariant QVariant;
 #endif
@@ -53,20 +55,19 @@ int QImageIOHandler_ImageCount(const QImageIOHandler* self);
 int QImageIOHandler_NextImageDelay(const QImageIOHandler* self);
 int QImageIOHandler_CurrentImageNumber(const QImageIOHandler* self);
 QRect* QImageIOHandler_CurrentImageRect(const QImageIOHandler* self);
-void QImageIOHandler_Delete(QImageIOHandler* self);
+void QImageIOHandler_Delete(QImageIOHandler* self, bool isSubclass);
 
 QMetaObject* QImageIOPlugin_MetaObject(const QImageIOPlugin* self);
 void* QImageIOPlugin_Metacast(QImageIOPlugin* self, const char* param1);
 struct miqt_string QImageIOPlugin_Tr(const char* s);
 struct miqt_string QImageIOPlugin_TrUtf8(const char* s);
 int QImageIOPlugin_Capabilities(const QImageIOPlugin* self, QIODevice* device, struct miqt_string format);
-QImageIOHandler* QImageIOPlugin_Create(const QImageIOPlugin* self, QIODevice* device);
+QImageIOHandler* QImageIOPlugin_Create(const QImageIOPlugin* self, QIODevice* device, struct miqt_string format);
 struct miqt_string QImageIOPlugin_Tr2(const char* s, const char* c);
 struct miqt_string QImageIOPlugin_Tr3(const char* s, const char* c, int n);
 struct miqt_string QImageIOPlugin_TrUtf82(const char* s, const char* c);
 struct miqt_string QImageIOPlugin_TrUtf83(const char* s, const char* c, int n);
-QImageIOHandler* QImageIOPlugin_Create2(const QImageIOPlugin* self, QIODevice* device, struct miqt_string format);
-void QImageIOPlugin_Delete(QImageIOPlugin* self);
+void QImageIOPlugin_Delete(QImageIOPlugin* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

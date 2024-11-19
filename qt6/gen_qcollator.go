@@ -14,7 +14,8 @@ import (
 )
 
 type QCollatorSortKey struct {
-	h *C.QCollatorSortKey
+	h          *C.QCollatorSortKey
+	isSubclass bool
 }
 
 func (this *QCollatorSortKey) cPointer() *C.QCollatorSortKey {
@@ -31,6 +32,7 @@ func (this *QCollatorSortKey) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCollatorSortKey constructs the type using only CGO pointers.
 func newQCollatorSortKey(h *C.QCollatorSortKey) *QCollatorSortKey {
 	if h == nil {
 		return nil
@@ -38,14 +40,23 @@ func newQCollatorSortKey(h *C.QCollatorSortKey) *QCollatorSortKey {
 	return &QCollatorSortKey{h: h}
 }
 
+// UnsafeNewQCollatorSortKey constructs the type using only unsafe pointers.
 func UnsafeNewQCollatorSortKey(h unsafe.Pointer) *QCollatorSortKey {
-	return newQCollatorSortKey((*C.QCollatorSortKey)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCollatorSortKey{h: (*C.QCollatorSortKey)(h)}
 }
 
 // NewQCollatorSortKey constructs a new QCollatorSortKey object.
 func NewQCollatorSortKey(other *QCollatorSortKey) *QCollatorSortKey {
-	ret := C.QCollatorSortKey_new(other.cPointer())
-	return newQCollatorSortKey(ret)
+	var outptr_QCollatorSortKey *C.QCollatorSortKey = nil
+
+	C.QCollatorSortKey_new(other.cPointer(), &outptr_QCollatorSortKey)
+	ret := newQCollatorSortKey(outptr_QCollatorSortKey)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QCollatorSortKey) OperatorAssign(other *QCollatorSortKey) {
@@ -62,7 +73,7 @@ func (this *QCollatorSortKey) Compare(key *QCollatorSortKey) int {
 
 // Delete this object from C++ memory.
 func (this *QCollatorSortKey) Delete() {
-	C.QCollatorSortKey_Delete(this.h)
+	C.QCollatorSortKey_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -75,7 +86,8 @@ func (this *QCollatorSortKey) GoGC() {
 }
 
 type QCollator struct {
-	h *C.QCollator
+	h          *C.QCollator
+	isSubclass bool
 }
 
 func (this *QCollator) cPointer() *C.QCollator {
@@ -92,6 +104,7 @@ func (this *QCollator) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCollator constructs the type using only CGO pointers.
 func newQCollator(h *C.QCollator) *QCollator {
 	if h == nil {
 		return nil
@@ -99,26 +112,43 @@ func newQCollator(h *C.QCollator) *QCollator {
 	return &QCollator{h: h}
 }
 
+// UnsafeNewQCollator constructs the type using only unsafe pointers.
 func UnsafeNewQCollator(h unsafe.Pointer) *QCollator {
-	return newQCollator((*C.QCollator)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCollator{h: (*C.QCollator)(h)}
 }
 
 // NewQCollator constructs a new QCollator object.
 func NewQCollator() *QCollator {
-	ret := C.QCollator_new()
-	return newQCollator(ret)
+	var outptr_QCollator *C.QCollator = nil
+
+	C.QCollator_new(&outptr_QCollator)
+	ret := newQCollator(outptr_QCollator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCollator2 constructs a new QCollator object.
 func NewQCollator2(locale *QLocale) *QCollator {
-	ret := C.QCollator_new2(locale.cPointer())
-	return newQCollator(ret)
+	var outptr_QCollator *C.QCollator = nil
+
+	C.QCollator_new2(locale.cPointer(), &outptr_QCollator)
+	ret := newQCollator(outptr_QCollator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCollator3 constructs a new QCollator object.
 func NewQCollator3(param1 *QCollator) *QCollator {
-	ret := C.QCollator_new3(param1.cPointer())
-	return newQCollator(ret)
+	var outptr_QCollator *C.QCollator = nil
+
+	C.QCollator_new3(param1.cPointer(), &outptr_QCollator)
+	ret := newQCollator(outptr_QCollator)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QCollator) OperatorAssign(param1 *QCollator) {
@@ -205,7 +235,7 @@ func (this *QCollator) SortKey(stringVal string) *QCollatorSortKey {
 
 // Delete this object from C++ memory.
 func (this *QCollator) Delete() {
-	C.QCollator_Delete(this.h)
+	C.QCollator_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

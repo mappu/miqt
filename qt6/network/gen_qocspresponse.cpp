@@ -4,12 +4,14 @@
 #include "gen_qocspresponse.h"
 #include "_cgo_export.h"
 
-QOcspResponse* QOcspResponse_new() {
-	return new QOcspResponse();
+void QOcspResponse_new(QOcspResponse** outptr_QOcspResponse) {
+	QOcspResponse* ret = new QOcspResponse();
+	*outptr_QOcspResponse = ret;
 }
 
-QOcspResponse* QOcspResponse_new2(QOcspResponse* other) {
-	return new QOcspResponse(*other);
+void QOcspResponse_new2(QOcspResponse* other, QOcspResponse** outptr_QOcspResponse) {
+	QOcspResponse* ret = new QOcspResponse(*other);
+	*outptr_QOcspResponse = ret;
 }
 
 void QOcspResponse_OperatorAssign(QOcspResponse* self, QOcspResponse* other) {
@@ -38,7 +40,11 @@ void QOcspResponse_Swap(QOcspResponse* self, QOcspResponse* other) {
 	self->swap(*other);
 }
 
-void QOcspResponse_Delete(QOcspResponse* self) {
-	delete self;
+void QOcspResponse_Delete(QOcspResponse* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QOcspResponse*>( self );
+	} else {
+		delete self;
+	}
 }
 

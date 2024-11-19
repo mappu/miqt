@@ -1,8 +1,11 @@
 #include <QByteArray>
+#include <QChildEvent>
 #include <QColor>
+#include <QEvent>
 #include <QIODevice>
 #include <QImage>
 #include <QList>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QMovie>
 #include <QObject>
@@ -12,47 +15,251 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QTimerEvent>
 #include <qmovie.h>
 #include "gen_qmovie.h"
 #include "_cgo_export.h"
 
-QMovie* QMovie_new() {
-	return new QMovie();
+class MiqtVirtualQMovie : public virtual QMovie {
+public:
+
+	MiqtVirtualQMovie(): QMovie() {};
+	MiqtVirtualQMovie(QIODevice* device): QMovie(device) {};
+	MiqtVirtualQMovie(const QString& fileName): QMovie(fileName) {};
+	MiqtVirtualQMovie(QObject* parent): QMovie(parent) {};
+	MiqtVirtualQMovie(QIODevice* device, const QByteArray& format): QMovie(device, format) {};
+	MiqtVirtualQMovie(QIODevice* device, const QByteArray& format, QObject* parent): QMovie(device, format, parent) {};
+	MiqtVirtualQMovie(const QString& fileName, const QByteArray& format): QMovie(fileName, format) {};
+	MiqtVirtualQMovie(const QString& fileName, const QByteArray& format, QObject* parent): QMovie(fileName, format, parent) {};
+
+	virtual ~MiqtVirtualQMovie() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QMovie::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QMovie_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QMovie::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QMovie::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QMovie_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QMovie::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QMovie::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QMovie_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QMovie::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QMovie::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QMovie_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QMovie::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QMovie::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QMovie_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QMovie::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QMovie::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QMovie_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QMovie::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QMovie::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QMovie_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QMovie::disconnectNotify(*signal);
+
+	}
+
+};
+
+void QMovie_new(QMovie** outptr_QMovie, QObject** outptr_QObject) {
+	MiqtVirtualQMovie* ret = new MiqtVirtualQMovie();
+	*outptr_QMovie = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QMovie* QMovie_new2(QIODevice* device) {
-	return new QMovie(device);
+void QMovie_new2(QIODevice* device, QMovie** outptr_QMovie, QObject** outptr_QObject) {
+	MiqtVirtualQMovie* ret = new MiqtVirtualQMovie(device);
+	*outptr_QMovie = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QMovie* QMovie_new3(struct miqt_string fileName) {
+void QMovie_new3(struct miqt_string fileName, QMovie** outptr_QMovie, QObject** outptr_QObject) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new QMovie(fileName_QString);
+	MiqtVirtualQMovie* ret = new MiqtVirtualQMovie(fileName_QString);
+	*outptr_QMovie = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QMovie* QMovie_new4(QObject* parent) {
-	return new QMovie(parent);
+void QMovie_new4(QObject* parent, QMovie** outptr_QMovie, QObject** outptr_QObject) {
+	MiqtVirtualQMovie* ret = new MiqtVirtualQMovie(parent);
+	*outptr_QMovie = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QMovie* QMovie_new5(QIODevice* device, struct miqt_string format) {
+void QMovie_new5(QIODevice* device, struct miqt_string format, QMovie** outptr_QMovie, QObject** outptr_QObject) {
 	QByteArray format_QByteArray(format.data, format.len);
-	return new QMovie(device, format_QByteArray);
+	MiqtVirtualQMovie* ret = new MiqtVirtualQMovie(device, format_QByteArray);
+	*outptr_QMovie = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QMovie* QMovie_new6(QIODevice* device, struct miqt_string format, QObject* parent) {
+void QMovie_new6(QIODevice* device, struct miqt_string format, QObject* parent, QMovie** outptr_QMovie, QObject** outptr_QObject) {
 	QByteArray format_QByteArray(format.data, format.len);
-	return new QMovie(device, format_QByteArray, parent);
+	MiqtVirtualQMovie* ret = new MiqtVirtualQMovie(device, format_QByteArray, parent);
+	*outptr_QMovie = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QMovie* QMovie_new7(struct miqt_string fileName, struct miqt_string format) {
+void QMovie_new7(struct miqt_string fileName, struct miqt_string format, QMovie** outptr_QMovie, QObject** outptr_QObject) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QByteArray format_QByteArray(format.data, format.len);
-	return new QMovie(fileName_QString, format_QByteArray);
+	MiqtVirtualQMovie* ret = new MiqtVirtualQMovie(fileName_QString, format_QByteArray);
+	*outptr_QMovie = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QMovie* QMovie_new8(struct miqt_string fileName, struct miqt_string format, QObject* parent) {
+void QMovie_new8(struct miqt_string fileName, struct miqt_string format, QObject* parent, QMovie** outptr_QMovie, QObject** outptr_QObject) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QByteArray format_QByteArray(format.data, format.len);
-	return new QMovie(fileName_QString, format_QByteArray, parent);
+	MiqtVirtualQMovie* ret = new MiqtVirtualQMovie(fileName_QString, format_QByteArray, parent);
+	*outptr_QMovie = ret;
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QMovie_MetaObject(const QMovie* self) {
@@ -232,7 +439,7 @@ void QMovie_Started(QMovie* self) {
 }
 
 void QMovie_connect_Started(QMovie* self, intptr_t slot) {
-	QMovie::connect(self, static_cast<void (QMovie::*)()>(&QMovie::started), self, [=]() {
+	MiqtVirtualQMovie::connect(self, static_cast<void (QMovie::*)()>(&QMovie::started), self, [=]() {
 		miqt_exec_callback_QMovie_Started(slot);
 	});
 }
@@ -242,7 +449,7 @@ void QMovie_Resized(QMovie* self, QSize* size) {
 }
 
 void QMovie_connect_Resized(QMovie* self, intptr_t slot) {
-	QMovie::connect(self, static_cast<void (QMovie::*)(const QSize&)>(&QMovie::resized), self, [=](const QSize& size) {
+	MiqtVirtualQMovie::connect(self, static_cast<void (QMovie::*)(const QSize&)>(&QMovie::resized), self, [=](const QSize& size) {
 		const QSize& size_ret = size;
 		// Cast returned reference into pointer
 		QSize* sigval1 = const_cast<QSize*>(&size_ret);
@@ -255,7 +462,7 @@ void QMovie_Updated(QMovie* self, QRect* rect) {
 }
 
 void QMovie_connect_Updated(QMovie* self, intptr_t slot) {
-	QMovie::connect(self, static_cast<void (QMovie::*)(const QRect&)>(&QMovie::updated), self, [=](const QRect& rect) {
+	MiqtVirtualQMovie::connect(self, static_cast<void (QMovie::*)(const QRect&)>(&QMovie::updated), self, [=](const QRect& rect) {
 		const QRect& rect_ret = rect;
 		// Cast returned reference into pointer
 		QRect* sigval1 = const_cast<QRect*>(&rect_ret);
@@ -268,7 +475,7 @@ void QMovie_StateChanged(QMovie* self, int state) {
 }
 
 void QMovie_connect_StateChanged(QMovie* self, intptr_t slot) {
-	QMovie::connect(self, static_cast<void (QMovie::*)(QMovie::MovieState)>(&QMovie::stateChanged), self, [=](QMovie::MovieState state) {
+	MiqtVirtualQMovie::connect(self, static_cast<void (QMovie::*)(QMovie::MovieState)>(&QMovie::stateChanged), self, [=](QMovie::MovieState state) {
 		QMovie::MovieState state_ret = state;
 		int sigval1 = static_cast<int>(state_ret);
 		miqt_exec_callback_QMovie_StateChanged(slot, sigval1);
@@ -280,7 +487,7 @@ void QMovie_Error(QMovie* self, int error) {
 }
 
 void QMovie_connect_Error(QMovie* self, intptr_t slot) {
-	QMovie::connect(self, static_cast<void (QMovie::*)(QImageReader::ImageReaderError)>(&QMovie::error), self, [=](QImageReader::ImageReaderError error) {
+	MiqtVirtualQMovie::connect(self, static_cast<void (QMovie::*)(QImageReader::ImageReaderError)>(&QMovie::error), self, [=](QImageReader::ImageReaderError error) {
 		QImageReader::ImageReaderError error_ret = error;
 		int sigval1 = static_cast<int>(error_ret);
 		miqt_exec_callback_QMovie_Error(slot, sigval1);
@@ -292,7 +499,7 @@ void QMovie_Finished(QMovie* self) {
 }
 
 void QMovie_connect_Finished(QMovie* self, intptr_t slot) {
-	QMovie::connect(self, static_cast<void (QMovie::*)()>(&QMovie::finished), self, [=]() {
+	MiqtVirtualQMovie::connect(self, static_cast<void (QMovie::*)()>(&QMovie::finished), self, [=]() {
 		miqt_exec_callback_QMovie_Finished(slot);
 	});
 }
@@ -302,7 +509,7 @@ void QMovie_FrameChanged(QMovie* self, int frameNumber) {
 }
 
 void QMovie_connect_FrameChanged(QMovie* self, intptr_t slot) {
-	QMovie::connect(self, static_cast<void (QMovie::*)(int)>(&QMovie::frameChanged), self, [=](int frameNumber) {
+	MiqtVirtualQMovie::connect(self, static_cast<void (QMovie::*)(int)>(&QMovie::frameChanged), self, [=](int frameNumber) {
 		int sigval1 = frameNumber;
 		miqt_exec_callback_QMovie_FrameChanged(slot, sigval1);
 	});
@@ -372,7 +579,67 @@ struct miqt_string QMovie_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QMovie_Delete(QMovie* self) {
-	delete self;
+void QMovie_override_virtual_Event(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQMovie*>( (QMovie*)(self) )->handle__Event = slot;
+}
+
+bool QMovie_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQMovie*)(self) )->virtualbase_Event(event);
+}
+
+void QMovie_override_virtual_EventFilter(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQMovie*>( (QMovie*)(self) )->handle__EventFilter = slot;
+}
+
+bool QMovie_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQMovie*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+void QMovie_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQMovie*>( (QMovie*)(self) )->handle__TimerEvent = slot;
+}
+
+void QMovie_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQMovie*)(self) )->virtualbase_TimerEvent(event);
+}
+
+void QMovie_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQMovie*>( (QMovie*)(self) )->handle__ChildEvent = slot;
+}
+
+void QMovie_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQMovie*)(self) )->virtualbase_ChildEvent(event);
+}
+
+void QMovie_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQMovie*>( (QMovie*)(self) )->handle__CustomEvent = slot;
+}
+
+void QMovie_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQMovie*)(self) )->virtualbase_CustomEvent(event);
+}
+
+void QMovie_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQMovie*>( (QMovie*)(self) )->handle__ConnectNotify = slot;
+}
+
+void QMovie_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQMovie*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+void QMovie_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQMovie*>( (QMovie*)(self) )->handle__DisconnectNotify = slot;
+}
+
+void QMovie_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQMovie*)(self) )->virtualbase_DisconnectNotify(signal);
+}
+
+void QMovie_Delete(QMovie* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQMovie*>( self );
+	} else {
+		delete self;
+	}
 }
 

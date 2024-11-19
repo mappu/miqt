@@ -27,7 +27,8 @@ const (
 )
 
 type QLocalServer struct {
-	h *C.QLocalServer
+	h          *C.QLocalServer
+	isSubclass bool
 	*qt6.QObject
 }
 
@@ -45,27 +46,45 @@ func (this *QLocalServer) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQLocalServer(h *C.QLocalServer) *QLocalServer {
+// newQLocalServer constructs the type using only CGO pointers.
+func newQLocalServer(h *C.QLocalServer, h_QObject *C.QObject) *QLocalServer {
 	if h == nil {
 		return nil
 	}
-	return &QLocalServer{h: h, QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QLocalServer{h: h,
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
 }
 
-func UnsafeNewQLocalServer(h unsafe.Pointer) *QLocalServer {
-	return newQLocalServer((*C.QLocalServer)(h))
+// UnsafeNewQLocalServer constructs the type using only unsafe pointers.
+func UnsafeNewQLocalServer(h unsafe.Pointer, h_QObject unsafe.Pointer) *QLocalServer {
+	if h == nil {
+		return nil
+	}
+
+	return &QLocalServer{h: (*C.QLocalServer)(h),
+		QObject: qt6.UnsafeNewQObject(h_QObject)}
 }
 
 // NewQLocalServer constructs a new QLocalServer object.
 func NewQLocalServer() *QLocalServer {
-	ret := C.QLocalServer_new()
-	return newQLocalServer(ret)
+	var outptr_QLocalServer *C.QLocalServer = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QLocalServer_new(&outptr_QLocalServer, &outptr_QObject)
+	ret := newQLocalServer(outptr_QLocalServer, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLocalServer2 constructs a new QLocalServer object.
 func NewQLocalServer2(parent *qt6.QObject) *QLocalServer {
-	ret := C.QLocalServer_new2((*C.QObject)(parent.UnsafePointer()))
-	return newQLocalServer(ret)
+	var outptr_QLocalServer *C.QLocalServer = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QLocalServer_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QLocalServer, &outptr_QObject)
+	ret := newQLocalServer(outptr_QLocalServer, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QLocalServer) MetaObject() *qt6.QMetaObject {
@@ -140,7 +159,7 @@ func (this *QLocalServer) MaxPendingConnections() int {
 }
 
 func (this *QLocalServer) NextPendingConnection() *QLocalSocket {
-	return UnsafeNewQLocalSocket(unsafe.Pointer(C.QLocalServer_NextPendingConnection(this.h)))
+	return UnsafeNewQLocalSocket(unsafe.Pointer(C.QLocalServer_NextPendingConnection(this.h)), nil, nil, nil)
 }
 
 func (this *QLocalServer) ServerName() string {
@@ -227,9 +246,241 @@ func (this *QLocalServer) WaitForNewConnection2(msec int, timedOut *bool) bool {
 	return (bool)(C.QLocalServer_WaitForNewConnection2(this.h, (C.int)(msec), (*C.bool)(unsafe.Pointer(timedOut))))
 }
 
+func (this *QLocalServer) callVirtualBase_HasPendingConnections() bool {
+
+	return (bool)(C.QLocalServer_virtualbase_HasPendingConnections(unsafe.Pointer(this.h)))
+
+}
+func (this *QLocalServer) OnHasPendingConnections(slot func(super func() bool) bool) {
+	C.QLocalServer_override_virtual_HasPendingConnections(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLocalServer_HasPendingConnections
+func miqt_exec_callback_QLocalServer_HasPendingConnections(self *C.QLocalServer, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QLocalServer{h: self}).callVirtualBase_HasPendingConnections)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QLocalServer) callVirtualBase_NextPendingConnection() *QLocalSocket {
+
+	return UnsafeNewQLocalSocket(unsafe.Pointer(C.QLocalServer_virtualbase_NextPendingConnection(unsafe.Pointer(this.h))), nil, nil, nil)
+}
+func (this *QLocalServer) OnNextPendingConnection(slot func(super func() *QLocalSocket) *QLocalSocket) {
+	C.QLocalServer_override_virtual_NextPendingConnection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLocalServer_NextPendingConnection
+func miqt_exec_callback_QLocalServer_NextPendingConnection(self *C.QLocalServer, cb C.intptr_t) *C.QLocalSocket {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QLocalSocket) *QLocalSocket)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QLocalServer{h: self}).callVirtualBase_NextPendingConnection)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QLocalServer) callVirtualBase_IncomingConnection(socketDescriptor uintptr) {
+
+	C.QLocalServer_virtualbase_IncomingConnection(unsafe.Pointer(this.h), (C.uintptr_t)(socketDescriptor))
+
+}
+func (this *QLocalServer) OnIncomingConnection(slot func(super func(socketDescriptor uintptr), socketDescriptor uintptr)) {
+	C.QLocalServer_override_virtual_IncomingConnection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLocalServer_IncomingConnection
+func miqt_exec_callback_QLocalServer_IncomingConnection(self *C.QLocalServer, cb C.intptr_t, socketDescriptor C.uintptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(socketDescriptor uintptr), socketDescriptor uintptr))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (uintptr)(socketDescriptor)
+
+	gofunc((&QLocalServer{h: self}).callVirtualBase_IncomingConnection, slotval1)
+
+}
+
+func (this *QLocalServer) callVirtualBase_Event(event *qt6.QEvent) bool {
+
+	return (bool)(C.QLocalServer_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QLocalServer) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+	C.QLocalServer_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLocalServer_Event
+func miqt_exec_callback_QLocalServer_Event(self *C.QLocalServer, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QLocalServer{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QLocalServer) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+
+	return (bool)(C.QLocalServer_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QLocalServer) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	C.QLocalServer_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLocalServer_EventFilter
+func miqt_exec_callback_QLocalServer_EventFilter(self *C.QLocalServer, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QLocalServer{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QLocalServer) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+
+	C.QLocalServer_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+
+}
+func (this *QLocalServer) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	C.QLocalServer_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLocalServer_TimerEvent
+func miqt_exec_callback_QLocalServer_TimerEvent(self *C.QLocalServer, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QLocalServer{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QLocalServer) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+
+	C.QLocalServer_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+
+}
+func (this *QLocalServer) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	C.QLocalServer_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLocalServer_ChildEvent
+func miqt_exec_callback_QLocalServer_ChildEvent(self *C.QLocalServer, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QLocalServer{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QLocalServer) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+
+	C.QLocalServer_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+
+}
+func (this *QLocalServer) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	C.QLocalServer_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLocalServer_CustomEvent
+func miqt_exec_callback_QLocalServer_CustomEvent(self *C.QLocalServer, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent), event *qt6.QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QLocalServer{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QLocalServer) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+
+	C.QLocalServer_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QLocalServer) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	C.QLocalServer_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLocalServer_ConnectNotify
+func miqt_exec_callback_QLocalServer_ConnectNotify(self *C.QLocalServer, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QLocalServer{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QLocalServer) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+
+	C.QLocalServer_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QLocalServer) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	C.QLocalServer_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLocalServer_DisconnectNotify
+func miqt_exec_callback_QLocalServer_DisconnectNotify(self *C.QLocalServer, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QLocalServer{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QLocalServer) Delete() {
-	C.QLocalServer_Delete(this.h)
+	C.QLocalServer_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

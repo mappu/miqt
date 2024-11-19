@@ -8,8 +8,9 @@
 #include "gen_qbackingstore.h"
 #include "_cgo_export.h"
 
-QBackingStore* QBackingStore_new(QWindow* window) {
-	return new QBackingStore(window);
+void QBackingStore_new(QWindow* window, QBackingStore** outptr_QBackingStore) {
+	QBackingStore* ret = new QBackingStore(window);
+	*outptr_QBackingStore = ret;
 }
 
 QWindow* QBackingStore_Window(const QBackingStore* self) {
@@ -64,7 +65,11 @@ void QBackingStore_Flush3(QBackingStore* self, QRegion* region, QWindow* window,
 	self->flush(*region, window, *offset);
 }
 
-void QBackingStore_Delete(QBackingStore* self) {
-	delete self;
+void QBackingStore_Delete(QBackingStore* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QBackingStore*>( self );
+	} else {
+		delete self;
+	}
 }
 

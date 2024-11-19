@@ -1,15 +1,32 @@
 #include <QAbstractItemDelegate>
 #include <QAbstractItemModel>
 #include <QAbstractItemView>
+#include <QAbstractScrollArea>
+#include <QDragEnterEvent>
+#include <QDragLeaveEvent>
+#include <QDragMoveEvent>
+#include <QDropEvent>
+#include <QEvent>
+#include <QFocusEvent>
+#include <QFrame>
+#include <QInputMethodEvent>
 #include <QItemSelectionModel>
+#include <QKeyEvent>
+#include <QList>
 #include <QMetaObject>
 #include <QModelIndex>
+#include <QMouseEvent>
+#include <QObject>
+#include <QPaintDevice>
 #include <QPoint>
 #include <QRect>
+#include <QResizeEvent>
 #include <QSize>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QStyleOptionViewItem>
+#include <QTimerEvent>
 #include <QVariant>
 #include <QWidget>
 #include <qabstractitemview.h>
@@ -231,8 +248,8 @@ QRect* QAbstractItemView_VisualRect(const QAbstractItemView* self, QModelIndex* 
 	return new QRect(self->visualRect(*index));
 }
 
-void QAbstractItemView_ScrollTo(QAbstractItemView* self, QModelIndex* index) {
-	self->scrollTo(*index);
+void QAbstractItemView_ScrollTo(QAbstractItemView* self, QModelIndex* index, int hint) {
+	self->scrollTo(*index, static_cast<QAbstractItemView::ScrollHint>(hint));
 }
 
 QModelIndex* QAbstractItemView_IndexAt(const QAbstractItemView* self, QPoint* point) {
@@ -467,11 +484,11 @@ struct miqt_string QAbstractItemView_TrUtf83(const char* s, const char* c, int n
 	return _ms;
 }
 
-void QAbstractItemView_ScrollTo2(QAbstractItemView* self, QModelIndex* index, int hint) {
-	self->scrollTo(*index, static_cast<QAbstractItemView::ScrollHint>(hint));
-}
-
-void QAbstractItemView_Delete(QAbstractItemView* self) {
-	delete self;
+void QAbstractItemView_Delete(QAbstractItemView* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAbstractItemView*>( self );
+	} else {
+		delete self;
+	}
 }
 

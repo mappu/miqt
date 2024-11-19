@@ -17,17 +17,25 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractButton;
 class QButtonGroup;
+class QChildEvent;
+class QEvent;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
+class QTimerEvent;
 #else
 typedef struct QAbstractButton QAbstractButton;
 typedef struct QButtonGroup QButtonGroup;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
-QButtonGroup* QButtonGroup_new();
-QButtonGroup* QButtonGroup_new2(QObject* parent);
+void QButtonGroup_new(QButtonGroup** outptr_QButtonGroup, QObject** outptr_QObject);
+void QButtonGroup_new2(QObject* parent, QButtonGroup** outptr_QButtonGroup, QObject** outptr_QObject);
 QMetaObject* QButtonGroup_MetaObject(const QButtonGroup* self);
 void* QButtonGroup_Metacast(QButtonGroup* self, const char* param1);
 struct miqt_string QButtonGroup_Tr(const char* s);
@@ -71,7 +79,21 @@ struct miqt_string QButtonGroup_Tr3(const char* s, const char* c, int n);
 struct miqt_string QButtonGroup_TrUtf82(const char* s, const char* c);
 struct miqt_string QButtonGroup_TrUtf83(const char* s, const char* c, int n);
 void QButtonGroup_AddButton2(QButtonGroup* self, QAbstractButton* param1, int id);
-void QButtonGroup_Delete(QButtonGroup* self);
+void QButtonGroup_override_virtual_Event(void* self, intptr_t slot);
+bool QButtonGroup_virtualbase_Event(void* self, QEvent* event);
+void QButtonGroup_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QButtonGroup_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QButtonGroup_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QButtonGroup_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QButtonGroup_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QButtonGroup_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QButtonGroup_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QButtonGroup_virtualbase_CustomEvent(void* self, QEvent* event);
+void QButtonGroup_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QButtonGroup_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QButtonGroup_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QButtonGroup_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QButtonGroup_Delete(QButtonGroup* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

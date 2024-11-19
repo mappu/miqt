@@ -1,7 +1,9 @@
+#include <QChildEvent>
 #include <QLayout>
 #include <QLayoutItem>
 #include <QMargins>
 #include <QMetaObject>
+#include <QObject>
 #include <QRect>
 #include <QSize>
 #include <QString>
@@ -269,7 +271,11 @@ QLayoutItem* QLayout_ReplaceWidget3(QLayout* self, QWidget* from, QWidget* to, i
 	return self->replaceWidget(from, to, static_cast<Qt::FindChildOptions>(options));
 }
 
-void QLayout_Delete(QLayout* self) {
-	delete self;
+void QLayout_Delete(QLayout* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QLayout*>( self );
+	} else {
+		delete self;
+	}
 }
 

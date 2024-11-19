@@ -1,4 +1,10 @@
+#include <QEvent>
+#include <QFrame>
 #include <QMetaObject>
+#include <QObject>
+#include <QPaintDevice>
+#include <QPaintEvent>
+#include <QSize>
 #include <QStackedWidget>
 #include <QString>
 #include <QByteArray>
@@ -8,12 +14,125 @@
 #include "gen_qstackedwidget.h"
 #include "_cgo_export.h"
 
-QStackedWidget* QStackedWidget_new(QWidget* parent) {
-	return new QStackedWidget(parent);
+class MiqtVirtualQStackedWidget : public virtual QStackedWidget {
+public:
+
+	MiqtVirtualQStackedWidget(QWidget* parent): QStackedWidget(parent) {};
+	MiqtVirtualQStackedWidget(): QStackedWidget() {};
+
+	virtual ~MiqtVirtualQStackedWidget() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* e) override {
+		if (handle__Event == 0) {
+			return QStackedWidget::event(e);
+		}
+		
+		QEvent* sigval1 = e;
+
+		bool callback_return_value = miqt_exec_callback_QStackedWidget_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* e) {
+
+		return QStackedWidget::event(e);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SizeHint = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QSize sizeHint() const override {
+		if (handle__SizeHint == 0) {
+			return QStackedWidget::sizeHint();
+		}
+		
+
+		QSize* callback_return_value = miqt_exec_callback_QStackedWidget_SizeHint(const_cast<MiqtVirtualQStackedWidget*>(this), handle__SizeHint);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QSize* virtualbase_SizeHint() const {
+
+		return new QSize(QStackedWidget::sizeHint());
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__PaintEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void paintEvent(QPaintEvent* param1) override {
+		if (handle__PaintEvent == 0) {
+			QStackedWidget::paintEvent(param1);
+			return;
+		}
+		
+		QPaintEvent* sigval1 = param1;
+
+		miqt_exec_callback_QStackedWidget_PaintEvent(this, handle__PaintEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_PaintEvent(QPaintEvent* param1) {
+
+		QStackedWidget::paintEvent(param1);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChangeEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void changeEvent(QEvent* param1) override {
+		if (handle__ChangeEvent == 0) {
+			QStackedWidget::changeEvent(param1);
+			return;
+		}
+		
+		QEvent* sigval1 = param1;
+
+		miqt_exec_callback_QStackedWidget_ChangeEvent(this, handle__ChangeEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChangeEvent(QEvent* param1) {
+
+		QStackedWidget::changeEvent(param1);
+
+	}
+
+};
+
+void QStackedWidget_new(QWidget* parent, QStackedWidget** outptr_QStackedWidget, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+	MiqtVirtualQStackedWidget* ret = new MiqtVirtualQStackedWidget(parent);
+	*outptr_QStackedWidget = ret;
+	*outptr_QFrame = static_cast<QFrame*>(ret);
+	*outptr_QWidget = static_cast<QWidget*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
-QStackedWidget* QStackedWidget_new2() {
-	return new QStackedWidget();
+void QStackedWidget_new2(QStackedWidget** outptr_QStackedWidget, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+	MiqtVirtualQStackedWidget* ret = new MiqtVirtualQStackedWidget();
+	*outptr_QStackedWidget = ret;
+	*outptr_QFrame = static_cast<QFrame*>(ret);
+	*outptr_QWidget = static_cast<QWidget*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
 }
 
 QMetaObject* QStackedWidget_MetaObject(const QStackedWidget* self) {
@@ -91,7 +210,7 @@ void QStackedWidget_CurrentChanged(QStackedWidget* self, int param1) {
 }
 
 void QStackedWidget_connect_CurrentChanged(QStackedWidget* self, intptr_t slot) {
-	QStackedWidget::connect(self, static_cast<void (QStackedWidget::*)(int)>(&QStackedWidget::currentChanged), self, [=](int param1) {
+	MiqtVirtualQStackedWidget::connect(self, static_cast<void (QStackedWidget::*)(int)>(&QStackedWidget::currentChanged), self, [=](int param1) {
 		int sigval1 = param1;
 		miqt_exec_callback_QStackedWidget_CurrentChanged(slot, sigval1);
 	});
@@ -102,7 +221,7 @@ void QStackedWidget_WidgetRemoved(QStackedWidget* self, int index) {
 }
 
 void QStackedWidget_connect_WidgetRemoved(QStackedWidget* self, intptr_t slot) {
-	QStackedWidget::connect(self, static_cast<void (QStackedWidget::*)(int)>(&QStackedWidget::widgetRemoved), self, [=](int index) {
+	MiqtVirtualQStackedWidget::connect(self, static_cast<void (QStackedWidget::*)(int)>(&QStackedWidget::widgetRemoved), self, [=](int index) {
 		int sigval1 = index;
 		miqt_exec_callback_QStackedWidget_WidgetRemoved(slot, sigval1);
 	});
@@ -152,7 +271,43 @@ struct miqt_string QStackedWidget_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QStackedWidget_Delete(QStackedWidget* self) {
-	delete self;
+void QStackedWidget_override_virtual_Event(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) )->handle__Event = slot;
+}
+
+bool QStackedWidget_virtualbase_Event(void* self, QEvent* e) {
+	return ( (MiqtVirtualQStackedWidget*)(self) )->virtualbase_Event(e);
+}
+
+void QStackedWidget_override_virtual_SizeHint(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) )->handle__SizeHint = slot;
+}
+
+QSize* QStackedWidget_virtualbase_SizeHint(const void* self) {
+	return ( (const MiqtVirtualQStackedWidget*)(self) )->virtualbase_SizeHint();
+}
+
+void QStackedWidget_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) )->handle__PaintEvent = slot;
+}
+
+void QStackedWidget_virtualbase_PaintEvent(void* self, QPaintEvent* param1) {
+	( (MiqtVirtualQStackedWidget*)(self) )->virtualbase_PaintEvent(param1);
+}
+
+void QStackedWidget_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) )->handle__ChangeEvent = slot;
+}
+
+void QStackedWidget_virtualbase_ChangeEvent(void* self, QEvent* param1) {
+	( (MiqtVirtualQStackedWidget*)(self) )->virtualbase_ChangeEvent(param1);
+}
+
+void QStackedWidget_Delete(QStackedWidget* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQStackedWidget*>( self );
+	} else {
+		delete self;
+	}
 }
 

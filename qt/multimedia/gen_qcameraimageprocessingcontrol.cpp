@@ -1,5 +1,7 @@
 #include <QCameraImageProcessingControl>
+#include <QMediaControl>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -98,7 +100,11 @@ struct miqt_string QCameraImageProcessingControl_TrUtf83(const char* s, const ch
 	return _ms;
 }
 
-void QCameraImageProcessingControl_Delete(QCameraImageProcessingControl* self) {
-	delete self;
+void QCameraImageProcessingControl_Delete(QCameraImageProcessingControl* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QCameraImageProcessingControl*>( self );
+	} else {
+		delete self;
+	}
 }
 

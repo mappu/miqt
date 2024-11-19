@@ -14,7 +14,8 @@ import (
 )
 
 type QDesktopServices struct {
-	h *C.QDesktopServices
+	h          *C.QDesktopServices
+	isSubclass bool
 }
 
 func (this *QDesktopServices) cPointer() *C.QDesktopServices {
@@ -31,6 +32,7 @@ func (this *QDesktopServices) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQDesktopServices constructs the type using only CGO pointers.
 func newQDesktopServices(h *C.QDesktopServices) *QDesktopServices {
 	if h == nil {
 		return nil
@@ -38,8 +40,13 @@ func newQDesktopServices(h *C.QDesktopServices) *QDesktopServices {
 	return &QDesktopServices{h: h}
 }
 
+// UnsafeNewQDesktopServices constructs the type using only unsafe pointers.
 func UnsafeNewQDesktopServices(h unsafe.Pointer) *QDesktopServices {
-	return newQDesktopServices((*C.QDesktopServices)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QDesktopServices{h: (*C.QDesktopServices)(h)}
 }
 
 func QDesktopServices_OpenUrl(url *QUrl) bool {
@@ -66,7 +73,7 @@ func QDesktopServices_UnsetUrlHandler(scheme string) {
 
 // Delete this object from C++ memory.
 func (this *QDesktopServices) Delete() {
-	C.QDesktopServices_Delete(this.h)
+	C.QDesktopServices_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

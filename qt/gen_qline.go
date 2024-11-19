@@ -22,7 +22,8 @@ const (
 )
 
 type QLine struct {
-	h *C.QLine
+	h          *C.QLine
+	isSubclass bool
 }
 
 func (this *QLine) cPointer() *C.QLine {
@@ -39,6 +40,7 @@ func (this *QLine) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQLine constructs the type using only CGO pointers.
 func newQLine(h *C.QLine) *QLine {
 	if h == nil {
 		return nil
@@ -46,32 +48,53 @@ func newQLine(h *C.QLine) *QLine {
 	return &QLine{h: h}
 }
 
+// UnsafeNewQLine constructs the type using only unsafe pointers.
 func UnsafeNewQLine(h unsafe.Pointer) *QLine {
-	return newQLine((*C.QLine)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QLine{h: (*C.QLine)(h)}
 }
 
 // NewQLine constructs a new QLine object.
 func NewQLine() *QLine {
-	ret := C.QLine_new()
-	return newQLine(ret)
+	var outptr_QLine *C.QLine = nil
+
+	C.QLine_new(&outptr_QLine)
+	ret := newQLine(outptr_QLine)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLine2 constructs a new QLine object.
 func NewQLine2(pt1 *QPoint, pt2 *QPoint) *QLine {
-	ret := C.QLine_new2(pt1.cPointer(), pt2.cPointer())
-	return newQLine(ret)
+	var outptr_QLine *C.QLine = nil
+
+	C.QLine_new2(pt1.cPointer(), pt2.cPointer(), &outptr_QLine)
+	ret := newQLine(outptr_QLine)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLine3 constructs a new QLine object.
 func NewQLine3(x1 int, y1 int, x2 int, y2 int) *QLine {
-	ret := C.QLine_new3((C.int)(x1), (C.int)(y1), (C.int)(x2), (C.int)(y2))
-	return newQLine(ret)
+	var outptr_QLine *C.QLine = nil
+
+	C.QLine_new3((C.int)(x1), (C.int)(y1), (C.int)(x2), (C.int)(y2), &outptr_QLine)
+	ret := newQLine(outptr_QLine)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLine4 constructs a new QLine object.
 func NewQLine4(param1 *QLine) *QLine {
-	ret := C.QLine_new4(param1.cPointer())
-	return newQLine(ret)
+	var outptr_QLine *C.QLine = nil
+
+	C.QLine_new4(param1.cPointer(), &outptr_QLine)
+	ret := newQLine(outptr_QLine)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QLine) IsNull() bool {
@@ -171,7 +194,7 @@ func (this *QLine) OperatorNotEqual(d *QLine) bool {
 
 // Delete this object from C++ memory.
 func (this *QLine) Delete() {
-	C.QLine_Delete(this.h)
+	C.QLine_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -184,7 +207,8 @@ func (this *QLine) GoGC() {
 }
 
 type QLineF struct {
-	h *C.QLineF
+	h          *C.QLineF
+	isSubclass bool
 }
 
 func (this *QLineF) cPointer() *C.QLineF {
@@ -201,6 +225,7 @@ func (this *QLineF) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQLineF constructs the type using only CGO pointers.
 func newQLineF(h *C.QLineF) *QLineF {
 	if h == nil {
 		return nil
@@ -208,38 +233,63 @@ func newQLineF(h *C.QLineF) *QLineF {
 	return &QLineF{h: h}
 }
 
+// UnsafeNewQLineF constructs the type using only unsafe pointers.
 func UnsafeNewQLineF(h unsafe.Pointer) *QLineF {
-	return newQLineF((*C.QLineF)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QLineF{h: (*C.QLineF)(h)}
 }
 
 // NewQLineF constructs a new QLineF object.
 func NewQLineF() *QLineF {
-	ret := C.QLineF_new()
-	return newQLineF(ret)
+	var outptr_QLineF *C.QLineF = nil
+
+	C.QLineF_new(&outptr_QLineF)
+	ret := newQLineF(outptr_QLineF)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLineF2 constructs a new QLineF object.
 func NewQLineF2(pt1 *QPointF, pt2 *QPointF) *QLineF {
-	ret := C.QLineF_new2(pt1.cPointer(), pt2.cPointer())
-	return newQLineF(ret)
+	var outptr_QLineF *C.QLineF = nil
+
+	C.QLineF_new2(pt1.cPointer(), pt2.cPointer(), &outptr_QLineF)
+	ret := newQLineF(outptr_QLineF)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLineF3 constructs a new QLineF object.
 func NewQLineF3(x1 float64, y1 float64, x2 float64, y2 float64) *QLineF {
-	ret := C.QLineF_new3((C.double)(x1), (C.double)(y1), (C.double)(x2), (C.double)(y2))
-	return newQLineF(ret)
+	var outptr_QLineF *C.QLineF = nil
+
+	C.QLineF_new3((C.double)(x1), (C.double)(y1), (C.double)(x2), (C.double)(y2), &outptr_QLineF)
+	ret := newQLineF(outptr_QLineF)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLineF4 constructs a new QLineF object.
 func NewQLineF4(line *QLine) *QLineF {
-	ret := C.QLineF_new4(line.cPointer())
-	return newQLineF(ret)
+	var outptr_QLineF *C.QLineF = nil
+
+	C.QLineF_new4(line.cPointer(), &outptr_QLineF)
+	ret := newQLineF(outptr_QLineF)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLineF5 constructs a new QLineF object.
 func NewQLineF5(param1 *QLineF) *QLineF {
-	ret := C.QLineF_new5(param1.cPointer())
-	return newQLineF(ret)
+	var outptr_QLineF *C.QLineF = nil
+
+	C.QLineF_new5(param1.cPointer(), &outptr_QLineF)
+	ret := newQLineF(outptr_QLineF)
+	ret.isSubclass = true
+	return ret
 }
 
 func QLineF_FromPolar(length float64, angle float64) *QLineF {
@@ -406,7 +456,7 @@ func (this *QLineF) ToLine() *QLine {
 
 // Delete this object from C++ memory.
 func (this *QLineF) Delete() {
-	C.QLineF_Delete(this.h)
+	C.QLineF_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

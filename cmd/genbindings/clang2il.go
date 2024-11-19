@@ -185,6 +185,14 @@ func processTypedef(node map[string]interface{}, addNamePrefix string) (CppTyped
 	return CppTypedef{}, errors.New("processTypedef: ???")
 }
 
+type visibilityState int
+
+const (
+	VsPublic    visibilityState = 1
+	VsProtected                 = 2
+	VsPrivate                   = 3
+)
+
 // processClassType parses a single C++ class definition into our intermediate format.
 func processClassType(node map[string]interface{}, addNamePrefix string) (CppClass, error) {
 	var ret CppClass
@@ -229,10 +237,10 @@ func processClassType(node map[string]interface{}, addNamePrefix string) (CppCla
 		}
 	}
 
-	// Check if this was 'struct' (default visible) or 'class' (default invisible)
-	visibility := true
+	// Check if this was 'struct' (default public) or 'class' (default private)
+	visibility := VsPublic
 	if tagUsed, ok := node["tagUsed"].(string); ok && tagUsed == "class" {
-		visibility = false
+		visibility = VsPrivate
 	}
 
 	// Check if this is an abstract class
@@ -257,7 +265,7 @@ func processClassType(node map[string]interface{}, addNamePrefix string) (CppCla
 
 			if typ, ok := base["type"].(map[string]interface{}); ok {
 				if qualType, ok := typ["qualType"].(string); ok {
-					ret.Inherits = append(ret.Inherits, qualType)
+					ret.DirectInherits = append(ret.DirectInherits, qualType)
 				}
 			}
 		}
@@ -289,9 +297,11 @@ nextMethod:
 
 			switch access {
 			case "public":
-				visibility = true
-			case "private", "protected":
-				visibility = false
+				visibility = VsPublic
+			case "protected":
+				visibility = VsProtected
+			case "private":
+				visibility = VsPrivate
 			default:
 				panic("unexpected access visibility '" + access + "'")
 			}
@@ -315,7 +325,7 @@ nextMethod:
 			// Child class type definition e.g. QAbstractEventDispatcher::TimerInfo
 			// Parse as a whole child class
 
-			if !visibility {
+			if visibility != VsPublic {
 				continue // Skip private/protected
 			}
 
@@ -341,8 +351,8 @@ nextMethod:
 		case "EnumDecl":
 			// Child class enum
 
-			if !visibility {
-				continue // Skip private/protected
+			if visibility == VsPrivate {
+				continue // Skip private, ALLOW protected
 			}
 
 			en, err := processEnum(node, nodename+"::")
@@ -359,7 +369,7 @@ nextMethod:
 				// This is an implicit ctor. Therefore the class is constructable
 				// even if we're currently in a `private:` block.
 
-			} else if !visibility {
+			} else if visibility != VsPublic {
 				continue // Skip private/protected
 			}
 
@@ -403,7 +413,8 @@ nextMethod:
 				continue
 			}
 
-			if !visibility {
+			if visibility != VsPublic {
+				// TODO Is there any use case for allowing MIQT to overload a virtual destructor?
 				ret.CanDelete = false
 				continue
 			}
@@ -415,19 +426,24 @@ nextMethod:
 			}
 
 		case "CXXMethodDecl":
-			if !visibility {
-				continue // Skip private/protected
-			}
-
-			// Check if this is `= delete`
-			if isExplicitlyDeleted(node) {
-				continue
-			}
 
 			// Method
 			methodName, ok := node["name"].(string)
 			if !ok {
 				return CppClass{}, errors.New("method has no name")
+			}
+
+			// If this is a virtual method, we want to allow overriding it even
+			// if it is protected
+			// But we can only call it if it is public
+			if visibility == VsPrivate {
+				ret.PrivateMethods = append(ret.PrivateMethods, methodName)
+				continue // Skip private, ALLOW protected
+			}
+
+			// Check if this is `= delete`
+			if isExplicitlyDeleted(node) {
+				continue
 			}
 
 			var mm CppMethod
@@ -445,6 +461,14 @@ nextMethod:
 			}
 
 			mm.IsSignal = isSignal && !mm.IsStatic && AllowSignal(mm)
+			mm.IsProtected = (visibility == VsProtected)
+
+			if mm.IsProtected && !mm.IsVirtual {
+				// Protected method, so we can't call it
+				// Non-virtual, so we can't override it
+				// There is nothing we can do with this function
+				continue nextMethod
+			}
 
 			// Once all processing is complete, pass to exceptions for final decision
 
@@ -648,6 +672,14 @@ func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 		mm.IsStatic = true
 	}
 
+	if virtual, ok := node["virtual"].(bool); ok && virtual {
+		mm.IsVirtual = true
+	}
+
+	if pure, ok := node["pure"].(bool); ok && pure {
+		mm.IsPureVirtual = true
+	}
+
 	if methodInner, ok := node["inner"].([]interface{}); ok {
 		paramCounter := 0
 		for _, methodObj := range methodInner {
@@ -689,6 +721,12 @@ func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 
 				// Next
 				paramCounter++
+
+			case "OverrideAttr":
+				// void keyPressEvent(QKeyEvent *e) override;
+				// This is a virtual method being overridden and is a replacement
+				// for actually using the 'virtual' keyword
+				mm.IsVirtual = true
 
 			default:
 				// Something else inside a declaration??

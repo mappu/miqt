@@ -14,7 +14,8 @@ import (
 )
 
 type QBindingStatus struct {
-	h *C.QBindingStatus
+	h          *C.QBindingStatus
+	isSubclass bool
 }
 
 func (this *QBindingStatus) cPointer() *C.QBindingStatus {
@@ -31,6 +32,7 @@ func (this *QBindingStatus) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQBindingStatus constructs the type using only CGO pointers.
 func newQBindingStatus(h *C.QBindingStatus) *QBindingStatus {
 	if h == nil {
 		return nil
@@ -38,13 +40,18 @@ func newQBindingStatus(h *C.QBindingStatus) *QBindingStatus {
 	return &QBindingStatus{h: h}
 }
 
+// UnsafeNewQBindingStatus constructs the type using only unsafe pointers.
 func UnsafeNewQBindingStatus(h unsafe.Pointer) *QBindingStatus {
-	return newQBindingStatus((*C.QBindingStatus)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QBindingStatus{h: (*C.QBindingStatus)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *QBindingStatus) Delete() {
-	C.QBindingStatus_Delete(this.h)
+	C.QBindingStatus_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -57,7 +64,8 @@ func (this *QBindingStatus) GoGC() {
 }
 
 type QBindingStorage struct {
-	h *C.QBindingStorage
+	h          *C.QBindingStorage
+	isSubclass bool
 }
 
 func (this *QBindingStorage) cPointer() *C.QBindingStorage {
@@ -74,6 +82,7 @@ func (this *QBindingStorage) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQBindingStorage constructs the type using only CGO pointers.
 func newQBindingStorage(h *C.QBindingStorage) *QBindingStorage {
 	if h == nil {
 		return nil
@@ -81,14 +90,23 @@ func newQBindingStorage(h *C.QBindingStorage) *QBindingStorage {
 	return &QBindingStorage{h: h}
 }
 
+// UnsafeNewQBindingStorage constructs the type using only unsafe pointers.
 func UnsafeNewQBindingStorage(h unsafe.Pointer) *QBindingStorage {
-	return newQBindingStorage((*C.QBindingStorage)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QBindingStorage{h: (*C.QBindingStorage)(h)}
 }
 
 // NewQBindingStorage constructs a new QBindingStorage object.
 func NewQBindingStorage() *QBindingStorage {
-	ret := C.QBindingStorage_new()
-	return newQBindingStorage(ret)
+	var outptr_QBindingStorage *C.QBindingStorage = nil
+
+	C.QBindingStorage_new(&outptr_QBindingStorage)
+	ret := newQBindingStorage(outptr_QBindingStorage)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QBindingStorage) IsEmpty() bool {
@@ -105,7 +123,7 @@ func (this *QBindingStorage) RegisterDependency(data *QUntypedPropertyData) {
 
 // Delete this object from C++ memory.
 func (this *QBindingStorage) Delete() {
-	C.QBindingStorage_Delete(this.h)
+	C.QBindingStorage_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

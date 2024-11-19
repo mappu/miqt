@@ -57,8 +57,8 @@ bool QIconEngine_Write(const QIconEngine* self, QDataStream* out) {
 	return self->write(*out);
 }
 
-struct miqt_array /* of QSize* */  QIconEngine_AvailableSizes(QIconEngine* self) {
-	QList<QSize> _ret = self->availableSizes();
+struct miqt_array /* of QSize* */  QIconEngine_AvailableSizes(QIconEngine* self, int mode, int state) {
+	QList<QSize> _ret = self->availableSizes(static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -93,45 +93,28 @@ void QIconEngine_VirtualHook(QIconEngine* self, int id, void* data) {
 	self->virtual_hook(static_cast<int>(id), data);
 }
 
-struct miqt_array /* of QSize* */  QIconEngine_AvailableSizes1(QIconEngine* self, int mode) {
-	QList<QSize> _ret = self->availableSizes(static_cast<QIcon::Mode>(mode));
-	// Convert QList<> from C++ memory to manually-managed C memory
-	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QSize(_ret[i]);
+void QIconEngine_Delete(QIconEngine* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QIconEngine*>( self );
+	} else {
+		delete self;
 	}
-	struct miqt_array _out;
-	_out.len = _ret.length();
-	_out.data = static_cast<void*>(_arr);
-	return _out;
 }
 
-struct miqt_array /* of QSize* */  QIconEngine_AvailableSizes2(QIconEngine* self, int mode, int state) {
-	QList<QSize> _ret = self->availableSizes(static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
-	// Convert QList<> from C++ memory to manually-managed C memory
-	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QSize(_ret[i]);
-	}
-	struct miqt_array _out;
-	_out.len = _ret.length();
-	_out.data = static_cast<void*>(_arr);
-	return _out;
-}
-
-void QIconEngine_Delete(QIconEngine* self) {
-	delete self;
-}
-
-QIconEngine__ScaledPixmapArgument* QIconEngine__ScaledPixmapArgument_new(QIconEngine__ScaledPixmapArgument* param1) {
-	return new QIconEngine::ScaledPixmapArgument(*param1);
+void QIconEngine__ScaledPixmapArgument_new(QIconEngine__ScaledPixmapArgument* param1, QIconEngine__ScaledPixmapArgument** outptr_QIconEngine__ScaledPixmapArgument) {
+	QIconEngine::ScaledPixmapArgument* ret = new QIconEngine::ScaledPixmapArgument(*param1);
+	*outptr_QIconEngine__ScaledPixmapArgument = ret;
 }
 
 void QIconEngine__ScaledPixmapArgument_OperatorAssign(QIconEngine__ScaledPixmapArgument* self, QIconEngine__ScaledPixmapArgument* param1) {
 	self->operator=(*param1);
 }
 
-void QIconEngine__ScaledPixmapArgument_Delete(QIconEngine__ScaledPixmapArgument* self) {
-	delete self;
+void QIconEngine__ScaledPixmapArgument_Delete(QIconEngine__ScaledPixmapArgument* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QIconEngine::ScaledPixmapArgument*>( self );
+	} else {
+		delete self;
+	}
 }
 

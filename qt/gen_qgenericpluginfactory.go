@@ -14,7 +14,8 @@ import (
 )
 
 type QGenericPluginFactory struct {
-	h *C.QGenericPluginFactory
+	h          *C.QGenericPluginFactory
+	isSubclass bool
 }
 
 func (this *QGenericPluginFactory) cPointer() *C.QGenericPluginFactory {
@@ -31,6 +32,7 @@ func (this *QGenericPluginFactory) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQGenericPluginFactory constructs the type using only CGO pointers.
 func newQGenericPluginFactory(h *C.QGenericPluginFactory) *QGenericPluginFactory {
 	if h == nil {
 		return nil
@@ -38,8 +40,13 @@ func newQGenericPluginFactory(h *C.QGenericPluginFactory) *QGenericPluginFactory
 	return &QGenericPluginFactory{h: h}
 }
 
+// UnsafeNewQGenericPluginFactory constructs the type using only unsafe pointers.
 func UnsafeNewQGenericPluginFactory(h unsafe.Pointer) *QGenericPluginFactory {
-	return newQGenericPluginFactory((*C.QGenericPluginFactory)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QGenericPluginFactory{h: (*C.QGenericPluginFactory)(h)}
 }
 
 func QGenericPluginFactory_Keys() []string {
@@ -69,7 +76,7 @@ func QGenericPluginFactory_Create(param1 string, param2 string) *QObject {
 
 // Delete this object from C++ memory.
 func (this *QGenericPluginFactory) Delete() {
-	C.QGenericPluginFactory_Delete(this.h)
+	C.QGenericPluginFactory_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -17,9 +17,13 @@ extern "C" {
 #ifdef __cplusplus
 class QPaintDevice;
 class QPaintEngine;
+class QPainter;
+class QPoint;
 #else
 typedef struct QPaintDevice QPaintDevice;
 typedef struct QPaintEngine QPaintEngine;
+typedef struct QPainter QPainter;
+typedef struct QPoint QPoint;
 #endif
 
 int QPaintDevice_DevType(const QPaintDevice* self);
@@ -38,7 +42,11 @@ double QPaintDevice_DevicePixelRatioF(const QPaintDevice* self);
 int QPaintDevice_ColorCount(const QPaintDevice* self);
 int QPaintDevice_Depth(const QPaintDevice* self);
 double QPaintDevice_DevicePixelRatioFScale();
-void QPaintDevice_Delete(QPaintDevice* self);
+int QPaintDevice_Metric(const QPaintDevice* self, int metric);
+void QPaintDevice_InitPainter(const QPaintDevice* self, QPainter* painter);
+QPaintDevice* QPaintDevice_Redirected(const QPaintDevice* self, QPoint* offset);
+QPainter* QPaintDevice_SharedPainter(const QPaintDevice* self);
+void QPaintDevice_Delete(QPaintDevice* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

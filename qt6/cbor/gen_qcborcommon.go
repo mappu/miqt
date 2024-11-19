@@ -75,7 +75,8 @@ const (
 )
 
 type QCborError struct {
-	h *C.QCborError
+	h          *C.QCborError
+	isSubclass bool
 }
 
 func (this *QCborError) cPointer() *C.QCborError {
@@ -92,6 +93,7 @@ func (this *QCborError) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCborError constructs the type using only CGO pointers.
 func newQCborError(h *C.QCborError) *QCborError {
 	if h == nil {
 		return nil
@@ -99,8 +101,13 @@ func newQCborError(h *C.QCborError) *QCborError {
 	return &QCborError{h: h}
 }
 
+// UnsafeNewQCborError constructs the type using only unsafe pointers.
 func UnsafeNewQCborError(h unsafe.Pointer) *QCborError {
-	return newQCborError((*C.QCborError)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCborError{h: (*C.QCborError)(h)}
 }
 
 func (this *QCborError) ToString() string {
@@ -112,7 +119,7 @@ func (this *QCborError) ToString() string {
 
 // Delete this object from C++ memory.
 func (this *QCborError) Delete() {
-	C.QCborError_Delete(this.h)
+	C.QCborError_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

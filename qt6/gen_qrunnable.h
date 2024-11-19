@@ -23,7 +23,7 @@ typedef struct QRunnable QRunnable;
 void QRunnable_Run(QRunnable* self);
 bool QRunnable_AutoDelete(const QRunnable* self);
 void QRunnable_SetAutoDelete(QRunnable* self, bool autoDelete);
-void QRunnable_Delete(QRunnable* self);
+void QRunnable_Delete(QRunnable* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -1,6 +1,8 @@
 #include <QAudioBuffer>
 #include <QMediaAudioProbeControl>
+#include <QMediaControl>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -105,7 +107,11 @@ struct miqt_string QMediaAudioProbeControl_TrUtf83(const char* s, const char* c,
 	return _ms;
 }
 
-void QMediaAudioProbeControl_Delete(QMediaAudioProbeControl* self) {
-	delete self;
+void QMediaAudioProbeControl_Delete(QMediaAudioProbeControl* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMediaAudioProbeControl*>( self );
+	} else {
+		delete self;
+	}
 }
 

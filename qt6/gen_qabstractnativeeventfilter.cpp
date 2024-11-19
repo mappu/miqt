@@ -9,7 +9,11 @@ bool QAbstractNativeEventFilter_NativeEventFilter(QAbstractNativeEventFilter* se
 	return self->nativeEventFilter(eventType_QByteArray, message, (qintptr*)(result));
 }
 
-void QAbstractNativeEventFilter_Delete(QAbstractNativeEventFilter* self) {
-	delete self;
+void QAbstractNativeEventFilter_Delete(QAbstractNativeEventFilter* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAbstractNativeEventFilter*>( self );
+	} else {
+		delete self;
+	}
 }
 

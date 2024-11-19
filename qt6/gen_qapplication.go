@@ -15,7 +15,8 @@ import (
 )
 
 type QApplication struct {
-	h *C.QApplication
+	h          *C.QApplication
+	isSubclass bool
 	*QGuiApplication
 }
 
@@ -33,15 +34,23 @@ func (this *QApplication) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQApplication(h *C.QApplication) *QApplication {
+// newQApplication constructs the type using only CGO pointers.
+func newQApplication(h *C.QApplication, h_QGuiApplication *C.QGuiApplication, h_QCoreApplication *C.QCoreApplication, h_QObject *C.QObject) *QApplication {
 	if h == nil {
 		return nil
 	}
-	return &QApplication{h: h, QGuiApplication: UnsafeNewQGuiApplication(unsafe.Pointer(h))}
+	return &QApplication{h: h,
+		QGuiApplication: newQGuiApplication(h_QGuiApplication, h_QCoreApplication, h_QObject)}
 }
 
-func UnsafeNewQApplication(h unsafe.Pointer) *QApplication {
-	return newQApplication((*C.QApplication)(h))
+// UnsafeNewQApplication constructs the type using only unsafe pointers.
+func UnsafeNewQApplication(h unsafe.Pointer, h_QGuiApplication unsafe.Pointer, h_QCoreApplication unsafe.Pointer, h_QObject unsafe.Pointer) *QApplication {
+	if h == nil {
+		return nil
+	}
+
+	return &QApplication{h: (*C.QApplication)(h),
+		QGuiApplication: UnsafeNewQGuiApplication(h_QGuiApplication, h_QCoreApplication, h_QObject)}
 }
 
 // NewQApplication constructs a new QApplication object.
@@ -56,8 +65,15 @@ func NewQApplication(args []string) *QApplication {
 
 	runtime.LockOSThread() // Prevent Go from migrating the main Qt thread
 
-	ret := C.QApplication_new(argc, &argv[0])
-	return newQApplication(ret)
+	var outptr_QApplication *C.QApplication = nil
+	var outptr_QGuiApplication *C.QGuiApplication = nil
+	var outptr_QCoreApplication *C.QCoreApplication = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QApplication_new(argc, &argv[0], &outptr_QApplication, &outptr_QGuiApplication, &outptr_QCoreApplication, &outptr_QObject)
+	ret := newQApplication(outptr_QApplication, outptr_QGuiApplication, outptr_QCoreApplication, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQApplication2 constructs a new QApplication object.
@@ -72,8 +88,15 @@ func NewQApplication2(args []string, param3 int) *QApplication {
 
 	runtime.LockOSThread() // Prevent Go from migrating the main Qt thread
 
-	ret := C.QApplication_new2(argc, &argv[0], (C.int)(param3))
-	return newQApplication(ret)
+	var outptr_QApplication *C.QApplication = nil
+	var outptr_QGuiApplication *C.QGuiApplication = nil
+	var outptr_QCoreApplication *C.QCoreApplication = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QApplication_new2(argc, &argv[0], (C.int)(param3), &outptr_QApplication, &outptr_QGuiApplication, &outptr_QCoreApplication, &outptr_QObject)
+	ret := newQApplication(outptr_QApplication, outptr_QGuiApplication, outptr_QCoreApplication, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QApplication) MetaObject() *QMetaObject {
@@ -96,7 +119,7 @@ func QApplication_Tr(s string) string {
 }
 
 func QApplication_Style() *QStyle {
-	return UnsafeNewQStyle(unsafe.Pointer(C.QApplication_Style()))
+	return UnsafeNewQStyle(unsafe.Pointer(C.QApplication_Style()), nil)
 }
 
 func QApplication_SetStyle(style *QStyle) {
@@ -108,7 +131,7 @@ func QApplication_SetStyleWithStyle(style string) *QStyle {
 	style_ms.data = C.CString(style)
 	style_ms.len = C.size_t(len(style))
 	defer C.free(unsafe.Pointer(style_ms.data))
-	return UnsafeNewQStyle(unsafe.Pointer(C.QApplication_SetStyleWithStyle(style_ms)))
+	return UnsafeNewQStyle(unsafe.Pointer(C.QApplication_SetStyleWithStyle(style_ms)), nil)
 }
 
 func QApplication_Palette(param1 *QWidget) *QPalette {
@@ -170,7 +193,7 @@ func QApplication_AllWidgets() []*QWidget {
 	_ret := make([]*QWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQWidget(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQWidget(unsafe.Pointer(_outCast[i]), nil, nil)
 	}
 	return _ret
 }
@@ -180,25 +203,25 @@ func QApplication_TopLevelWidgets() []*QWidget {
 	_ret := make([]*QWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQWidget(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQWidget(unsafe.Pointer(_outCast[i]), nil, nil)
 	}
 	return _ret
 }
 
 func QApplication_ActivePopupWidget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_ActivePopupWidget()))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_ActivePopupWidget()), nil, nil)
 }
 
 func QApplication_ActiveModalWidget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_ActiveModalWidget()))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_ActiveModalWidget()), nil, nil)
 }
 
 func QApplication_FocusWidget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_FocusWidget()))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_FocusWidget()), nil, nil)
 }
 
 func QApplication_ActiveWindow() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_ActiveWindow()))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_ActiveWindow()), nil, nil)
 }
 
 func QApplication_SetActiveWindow(act *QWidget) {
@@ -206,19 +229,19 @@ func QApplication_SetActiveWindow(act *QWidget) {
 }
 
 func QApplication_WidgetAt(p *QPoint) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_WidgetAt(p.cPointer())))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_WidgetAt(p.cPointer())), nil, nil)
 }
 
 func QApplication_WidgetAt2(x int, y int) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_WidgetAt2((C.int)(x), (C.int)(y))))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_WidgetAt2((C.int)(x), (C.int)(y))), nil, nil)
 }
 
 func QApplication_TopLevelAt(p *QPoint) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_TopLevelAt(p.cPointer())))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_TopLevelAt(p.cPointer())), nil, nil)
 }
 
 func QApplication_TopLevelAt2(x int, y int) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_TopLevelAt2((C.int)(x), (C.int)(y))))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_TopLevelAt2((C.int)(x), (C.int)(y))), nil, nil)
 }
 
 func QApplication_Beep() {
@@ -308,8 +331,8 @@ func miqt_exec_callback_QApplication_FocusChanged(cb C.intptr_t, old *C.QWidget,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(old))
-	slotval2 := UnsafeNewQWidget(unsafe.Pointer(now))
+	slotval1 := UnsafeNewQWidget(unsafe.Pointer(old), nil, nil)
+	slotval2 := UnsafeNewQWidget(unsafe.Pointer(now), nil, nil)
 
 	gofunc(slotval1, slotval2)
 }
@@ -387,9 +410,60 @@ func QApplication_SetEffectEnabled2(param1 UIEffect, enable bool) {
 	C.QApplication_SetEffectEnabled2((C.int)(param1), (C.bool)(enable))
 }
 
+func (this *QApplication) callVirtualBase_Notify(param1 *QObject, param2 *QEvent) bool {
+
+	return (bool)(C.QApplication_virtualbase_Notify(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
+
+}
+func (this *QApplication) OnNotify(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
+	C.QApplication_override_virtual_Notify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QApplication_Notify
+func miqt_exec_callback_QApplication_Notify(self *C.QApplication, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(param1))
+	slotval2 := UnsafeNewQEvent(unsafe.Pointer(param2))
+
+	virtualReturn := gofunc((&QApplication{h: self}).callVirtualBase_Notify, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QApplication) callVirtualBase_Event(param1 *QEvent) bool {
+
+	return (bool)(C.QApplication_virtualbase_Event(unsafe.Pointer(this.h), param1.cPointer()))
+
+}
+func (this *QApplication) OnEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
+	C.QApplication_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QApplication_Event
+func miqt_exec_callback_QApplication_Event(self *C.QApplication, cb C.intptr_t, param1 *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent) bool, param1 *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+
+	virtualReturn := gofunc((&QApplication{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QApplication) Delete() {
-	C.QApplication_Delete(this.h)
+	C.QApplication_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

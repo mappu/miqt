@@ -12,37 +12,48 @@ unsigned char QIPv6Address_OperatorSubscript(const QIPv6Address* self, int index
 	return static_cast<unsigned char>(_ret);
 }
 
-void QIPv6Address_Delete(QIPv6Address* self) {
-	delete self;
+void QIPv6Address_Delete(QIPv6Address* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QIPv6Address*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QHostAddress* QHostAddress_new() {
-	return new QHostAddress();
+void QHostAddress_new(QHostAddress** outptr_QHostAddress) {
+	QHostAddress* ret = new QHostAddress();
+	*outptr_QHostAddress = ret;
 }
 
-QHostAddress* QHostAddress_new2(unsigned int ip4Addr) {
-	return new QHostAddress(static_cast<quint32>(ip4Addr));
+void QHostAddress_new2(unsigned int ip4Addr, QHostAddress** outptr_QHostAddress) {
+	QHostAddress* ret = new QHostAddress(static_cast<quint32>(ip4Addr));
+	*outptr_QHostAddress = ret;
 }
 
-QHostAddress* QHostAddress_new3(const unsigned char* ip6Addr) {
-	return new QHostAddress(static_cast<const quint8*>(ip6Addr));
+void QHostAddress_new3(const unsigned char* ip6Addr, QHostAddress** outptr_QHostAddress) {
+	QHostAddress* ret = new QHostAddress(static_cast<const quint8*>(ip6Addr));
+	*outptr_QHostAddress = ret;
 }
 
-QHostAddress* QHostAddress_new4(QIPv6Address* ip6Addr) {
-	return new QHostAddress(*ip6Addr);
+void QHostAddress_new4(QIPv6Address* ip6Addr, QHostAddress** outptr_QHostAddress) {
+	QHostAddress* ret = new QHostAddress(*ip6Addr);
+	*outptr_QHostAddress = ret;
 }
 
-QHostAddress* QHostAddress_new5(struct miqt_string address) {
+void QHostAddress_new5(struct miqt_string address, QHostAddress** outptr_QHostAddress) {
 	QString address_QString = QString::fromUtf8(address.data, address.len);
-	return new QHostAddress(address_QString);
+	QHostAddress* ret = new QHostAddress(address_QString);
+	*outptr_QHostAddress = ret;
 }
 
-QHostAddress* QHostAddress_new6(QHostAddress* copyVal) {
-	return new QHostAddress(*copyVal);
+void QHostAddress_new6(QHostAddress* copyVal, QHostAddress** outptr_QHostAddress) {
+	QHostAddress* ret = new QHostAddress(*copyVal);
+	*outptr_QHostAddress = ret;
 }
 
-QHostAddress* QHostAddress_new7(int address) {
-	return new QHostAddress(static_cast<QHostAddress::SpecialAddress>(address));
+void QHostAddress_new7(int address, QHostAddress** outptr_QHostAddress) {
+	QHostAddress* ret = new QHostAddress(static_cast<QHostAddress::SpecialAddress>(address));
+	*outptr_QHostAddress = ret;
 }
 
 void QHostAddress_OperatorAssign(QHostAddress* self, QHostAddress* other) {
@@ -212,7 +223,11 @@ bool QHostAddress_IsEqual2(const QHostAddress* self, QHostAddress* address, int 
 	return self->isEqual(*address, static_cast<QHostAddress::ConversionMode>(mode));
 }
 
-void QHostAddress_Delete(QHostAddress* self) {
-	delete self;
+void QHostAddress_Delete(QHostAddress* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QHostAddress*>( self );
+	} else {
+		delete self;
+	}
 }
 

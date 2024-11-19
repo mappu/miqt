@@ -14,7 +14,8 @@ import (
 )
 
 type QHttp2Configuration struct {
-	h *C.QHttp2Configuration
+	h          *C.QHttp2Configuration
+	isSubclass bool
 }
 
 func (this *QHttp2Configuration) cPointer() *C.QHttp2Configuration {
@@ -31,6 +32,7 @@ func (this *QHttp2Configuration) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQHttp2Configuration constructs the type using only CGO pointers.
 func newQHttp2Configuration(h *C.QHttp2Configuration) *QHttp2Configuration {
 	if h == nil {
 		return nil
@@ -38,20 +40,33 @@ func newQHttp2Configuration(h *C.QHttp2Configuration) *QHttp2Configuration {
 	return &QHttp2Configuration{h: h}
 }
 
+// UnsafeNewQHttp2Configuration constructs the type using only unsafe pointers.
 func UnsafeNewQHttp2Configuration(h unsafe.Pointer) *QHttp2Configuration {
-	return newQHttp2Configuration((*C.QHttp2Configuration)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QHttp2Configuration{h: (*C.QHttp2Configuration)(h)}
 }
 
 // NewQHttp2Configuration constructs a new QHttp2Configuration object.
 func NewQHttp2Configuration() *QHttp2Configuration {
-	ret := C.QHttp2Configuration_new()
-	return newQHttp2Configuration(ret)
+	var outptr_QHttp2Configuration *C.QHttp2Configuration = nil
+
+	C.QHttp2Configuration_new(&outptr_QHttp2Configuration)
+	ret := newQHttp2Configuration(outptr_QHttp2Configuration)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQHttp2Configuration2 constructs a new QHttp2Configuration object.
 func NewQHttp2Configuration2(other *QHttp2Configuration) *QHttp2Configuration {
-	ret := C.QHttp2Configuration_new2(other.cPointer())
-	return newQHttp2Configuration(ret)
+	var outptr_QHttp2Configuration *C.QHttp2Configuration = nil
+
+	C.QHttp2Configuration_new2(other.cPointer(), &outptr_QHttp2Configuration)
+	ret := newQHttp2Configuration(outptr_QHttp2Configuration)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QHttp2Configuration) OperatorAssign(other *QHttp2Configuration) {
@@ -104,7 +119,7 @@ func (this *QHttp2Configuration) Swap(other *QHttp2Configuration) {
 
 // Delete this object from C++ memory.
 func (this *QHttp2Configuration) Delete() {
-	C.QHttp2Configuration_Delete(this.h)
+	C.QHttp2Configuration_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

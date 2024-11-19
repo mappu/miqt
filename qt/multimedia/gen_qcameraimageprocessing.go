@@ -44,7 +44,8 @@ const (
 )
 
 type QCameraImageProcessing struct {
-	h *C.QCameraImageProcessing
+	h          *C.QCameraImageProcessing
+	isSubclass bool
 	*qt.QObject
 }
 
@@ -62,15 +63,23 @@ func (this *QCameraImageProcessing) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQCameraImageProcessing(h *C.QCameraImageProcessing) *QCameraImageProcessing {
+// newQCameraImageProcessing constructs the type using only CGO pointers.
+func newQCameraImageProcessing(h *C.QCameraImageProcessing, h_QObject *C.QObject) *QCameraImageProcessing {
 	if h == nil {
 		return nil
 	}
-	return &QCameraImageProcessing{h: h, QObject: qt.UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QCameraImageProcessing{h: h,
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
 }
 
-func UnsafeNewQCameraImageProcessing(h unsafe.Pointer) *QCameraImageProcessing {
-	return newQCameraImageProcessing((*C.QCameraImageProcessing)(h))
+// UnsafeNewQCameraImageProcessing constructs the type using only unsafe pointers.
+func UnsafeNewQCameraImageProcessing(h unsafe.Pointer, h_QObject unsafe.Pointer) *QCameraImageProcessing {
+	if h == nil {
+		return nil
+	}
+
+	return &QCameraImageProcessing{h: (*C.QCameraImageProcessing)(h),
+		QObject: qt.UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QCameraImageProcessing) MetaObject() *qt.QMetaObject {

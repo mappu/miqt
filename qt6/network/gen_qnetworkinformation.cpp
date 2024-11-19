@@ -1,6 +1,7 @@
 #include <QList>
 #include <QMetaObject>
 #include <QNetworkInformation>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>

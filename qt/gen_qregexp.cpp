@@ -7,27 +7,32 @@
 #include "gen_qregexp.h"
 #include "_cgo_export.h"
 
-QRegExp* QRegExp_new() {
-	return new QRegExp();
+void QRegExp_new(QRegExp** outptr_QRegExp) {
+	QRegExp* ret = new QRegExp();
+	*outptr_QRegExp = ret;
 }
 
-QRegExp* QRegExp_new2(struct miqt_string pattern) {
+void QRegExp_new2(struct miqt_string pattern, QRegExp** outptr_QRegExp) {
 	QString pattern_QString = QString::fromUtf8(pattern.data, pattern.len);
-	return new QRegExp(pattern_QString);
+	QRegExp* ret = new QRegExp(pattern_QString);
+	*outptr_QRegExp = ret;
 }
 
-QRegExp* QRegExp_new3(QRegExp* rx) {
-	return new QRegExp(*rx);
+void QRegExp_new3(QRegExp* rx, QRegExp** outptr_QRegExp) {
+	QRegExp* ret = new QRegExp(*rx);
+	*outptr_QRegExp = ret;
 }
 
-QRegExp* QRegExp_new4(struct miqt_string pattern, int cs) {
+void QRegExp_new4(struct miqt_string pattern, int cs, QRegExp** outptr_QRegExp) {
 	QString pattern_QString = QString::fromUtf8(pattern.data, pattern.len);
-	return new QRegExp(pattern_QString, static_cast<Qt::CaseSensitivity>(cs));
+	QRegExp* ret = new QRegExp(pattern_QString, static_cast<Qt::CaseSensitivity>(cs));
+	*outptr_QRegExp = ret;
 }
 
-QRegExp* QRegExp_new5(struct miqt_string pattern, int cs, int syntax) {
+void QRegExp_new5(struct miqt_string pattern, int cs, int syntax, QRegExp** outptr_QRegExp) {
 	QString pattern_QString = QString::fromUtf8(pattern.data, pattern.len);
-	return new QRegExp(pattern_QString, static_cast<Qt::CaseSensitivity>(cs), static_cast<QRegExp::PatternSyntax>(syntax));
+	QRegExp* ret = new QRegExp(pattern_QString, static_cast<Qt::CaseSensitivity>(cs), static_cast<QRegExp::PatternSyntax>(syntax));
+	*outptr_QRegExp = ret;
 }
 
 void QRegExp_OperatorAssign(QRegExp* self, QRegExp* rx) {
@@ -273,7 +278,11 @@ int QRegExp_Pos1WithNth(QRegExp* self, int nth) {
 	return self->pos(static_cast<int>(nth));
 }
 
-void QRegExp_Delete(QRegExp* self) {
-	delete self;
+void QRegExp_Delete(QRegExp* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QRegExp*>( self );
+	} else {
+		delete self;
+	}
 }
 

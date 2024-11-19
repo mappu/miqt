@@ -16,7 +16,8 @@ import (
 )
 
 type QAudioDecoderControl struct {
-	h *C.QAudioDecoderControl
+	h          *C.QAudioDecoderControl
+	isSubclass bool
 	*QMediaControl
 }
 
@@ -34,15 +35,23 @@ func (this *QAudioDecoderControl) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAudioDecoderControl(h *C.QAudioDecoderControl) *QAudioDecoderControl {
+// newQAudioDecoderControl constructs the type using only CGO pointers.
+func newQAudioDecoderControl(h *C.QAudioDecoderControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QAudioDecoderControl {
 	if h == nil {
 		return nil
 	}
-	return &QAudioDecoderControl{h: h, QMediaControl: UnsafeNewQMediaControl(unsafe.Pointer(h))}
+	return &QAudioDecoderControl{h: h,
+		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
 }
 
-func UnsafeNewQAudioDecoderControl(h unsafe.Pointer) *QAudioDecoderControl {
-	return newQAudioDecoderControl((*C.QAudioDecoderControl)(h))
+// UnsafeNewQAudioDecoderControl constructs the type using only unsafe pointers.
+func UnsafeNewQAudioDecoderControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QAudioDecoderControl {
+	if h == nil {
+		return nil
+	}
+
+	return &QAudioDecoderControl{h: (*C.QAudioDecoderControl)(h),
+		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
 }
 
 func (this *QAudioDecoderControl) MetaObject() *qt.QMetaObject {
@@ -93,7 +102,7 @@ func (this *QAudioDecoderControl) SetSourceFilename(fileName string) {
 }
 
 func (this *QAudioDecoderControl) SourceDevice() *qt.QIODevice {
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAudioDecoderControl_SourceDevice(this.h)))
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAudioDecoderControl_SourceDevice(this.h)), nil)
 }
 
 func (this *QAudioDecoderControl) SetSourceDevice(device *qt.QIODevice) {
@@ -364,7 +373,7 @@ func QAudioDecoderControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAudioDecoderControl) Delete() {
-	C.QAudioDecoderControl_Delete(this.h)
+	C.QAudioDecoderControl_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

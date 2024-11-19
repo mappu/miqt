@@ -33,7 +33,8 @@ const (
 )
 
 type QAudioDecoder struct {
-	h *C.QAudioDecoder
+	h          *C.QAudioDecoder
+	isSubclass bool
 	*QMediaObject
 }
 
@@ -51,27 +52,47 @@ func (this *QAudioDecoder) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAudioDecoder(h *C.QAudioDecoder) *QAudioDecoder {
+// newQAudioDecoder constructs the type using only CGO pointers.
+func newQAudioDecoder(h *C.QAudioDecoder, h_QMediaObject *C.QMediaObject, h_QObject *C.QObject) *QAudioDecoder {
 	if h == nil {
 		return nil
 	}
-	return &QAudioDecoder{h: h, QMediaObject: UnsafeNewQMediaObject(unsafe.Pointer(h))}
+	return &QAudioDecoder{h: h,
+		QMediaObject: newQMediaObject(h_QMediaObject, h_QObject)}
 }
 
-func UnsafeNewQAudioDecoder(h unsafe.Pointer) *QAudioDecoder {
-	return newQAudioDecoder((*C.QAudioDecoder)(h))
+// UnsafeNewQAudioDecoder constructs the type using only unsafe pointers.
+func UnsafeNewQAudioDecoder(h unsafe.Pointer, h_QMediaObject unsafe.Pointer, h_QObject unsafe.Pointer) *QAudioDecoder {
+	if h == nil {
+		return nil
+	}
+
+	return &QAudioDecoder{h: (*C.QAudioDecoder)(h),
+		QMediaObject: UnsafeNewQMediaObject(h_QMediaObject, h_QObject)}
 }
 
 // NewQAudioDecoder constructs a new QAudioDecoder object.
 func NewQAudioDecoder() *QAudioDecoder {
-	ret := C.QAudioDecoder_new()
-	return newQAudioDecoder(ret)
+	var outptr_QAudioDecoder *C.QAudioDecoder = nil
+	var outptr_QMediaObject *C.QMediaObject = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QAudioDecoder_new(&outptr_QAudioDecoder, &outptr_QMediaObject, &outptr_QObject)
+	ret := newQAudioDecoder(outptr_QAudioDecoder, outptr_QMediaObject, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAudioDecoder2 constructs a new QAudioDecoder object.
 func NewQAudioDecoder2(parent *qt.QObject) *QAudioDecoder {
-	ret := C.QAudioDecoder_new2((*C.QObject)(parent.UnsafePointer()))
-	return newQAudioDecoder(ret)
+	var outptr_QAudioDecoder *C.QAudioDecoder = nil
+	var outptr_QMediaObject *C.QMediaObject = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QAudioDecoder_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QAudioDecoder, &outptr_QMediaObject, &outptr_QObject)
+	ret := newQAudioDecoder(outptr_QAudioDecoder, outptr_QMediaObject, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QAudioDecoder) MetaObject() *qt.QMetaObject {
@@ -130,7 +151,7 @@ func (this *QAudioDecoder) SetSourceFilename(fileName string) {
 }
 
 func (this *QAudioDecoder) SourceDevice() *qt.QIODevice {
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAudioDecoder_SourceDevice(this.h)))
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAudioDecoder_SourceDevice(this.h)), nil)
 }
 
 func (this *QAudioDecoder) SetSourceDevice(device *qt.QIODevice) {
@@ -427,9 +448,122 @@ func QAudioDecoder_HasSupport2(mimeType string, codecs []string) QMultimedia__Su
 	return (QMultimedia__SupportEstimate)(C.QAudioDecoder_HasSupport2(mimeType_ms, codecs_ma))
 }
 
+func (this *QAudioDecoder) callVirtualBase_Bind(param1 *qt.QObject) bool {
+
+	return (bool)(C.QAudioDecoder_virtualbase_Bind(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer())))
+
+}
+func (this *QAudioDecoder) OnBind(slot func(super func(param1 *qt.QObject) bool, param1 *qt.QObject) bool) {
+	C.QAudioDecoder_override_virtual_Bind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAudioDecoder_Bind
+func miqt_exec_callback_QAudioDecoder_Bind(self *C.QAudioDecoder, cb C.intptr_t, param1 *C.QObject) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QObject) bool, param1 *qt.QObject) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(param1))
+
+	virtualReturn := gofunc((&QAudioDecoder{h: self}).callVirtualBase_Bind, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QAudioDecoder) callVirtualBase_Unbind(param1 *qt.QObject) {
+
+	C.QAudioDecoder_virtualbase_Unbind(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()))
+
+}
+func (this *QAudioDecoder) OnUnbind(slot func(super func(param1 *qt.QObject), param1 *qt.QObject)) {
+	C.QAudioDecoder_override_virtual_Unbind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAudioDecoder_Unbind
+func miqt_exec_callback_QAudioDecoder_Unbind(self *C.QAudioDecoder, cb C.intptr_t, param1 *C.QObject) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QObject), param1 *qt.QObject))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(param1))
+
+	gofunc((&QAudioDecoder{h: self}).callVirtualBase_Unbind, slotval1)
+
+}
+
+func (this *QAudioDecoder) callVirtualBase_IsAvailable() bool {
+
+	return (bool)(C.QAudioDecoder_virtualbase_IsAvailable(unsafe.Pointer(this.h)))
+
+}
+func (this *QAudioDecoder) OnIsAvailable(slot func(super func() bool) bool) {
+	C.QAudioDecoder_override_virtual_IsAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAudioDecoder_IsAvailable
+func miqt_exec_callback_QAudioDecoder_IsAvailable(self *C.QAudioDecoder, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QAudioDecoder{h: self}).callVirtualBase_IsAvailable)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QAudioDecoder) callVirtualBase_Availability() QMultimedia__AvailabilityStatus {
+
+	return (QMultimedia__AvailabilityStatus)(C.QAudioDecoder_virtualbase_Availability(unsafe.Pointer(this.h)))
+
+}
+func (this *QAudioDecoder) OnAvailability(slot func(super func() QMultimedia__AvailabilityStatus) QMultimedia__AvailabilityStatus) {
+	C.QAudioDecoder_override_virtual_Availability(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAudioDecoder_Availability
+func miqt_exec_callback_QAudioDecoder_Availability(self *C.QAudioDecoder, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QMultimedia__AvailabilityStatus) QMultimedia__AvailabilityStatus)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QAudioDecoder{h: self}).callVirtualBase_Availability)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QAudioDecoder) callVirtualBase_Service() *QMediaService {
+
+	return UnsafeNewQMediaService(unsafe.Pointer(C.QAudioDecoder_virtualbase_Service(unsafe.Pointer(this.h))), nil)
+}
+func (this *QAudioDecoder) OnService(slot func(super func() *QMediaService) *QMediaService) {
+	C.QAudioDecoder_override_virtual_Service(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAudioDecoder_Service
+func miqt_exec_callback_QAudioDecoder_Service(self *C.QAudioDecoder, cb C.intptr_t) *C.QMediaService {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QMediaService) *QMediaService)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QAudioDecoder{h: self}).callVirtualBase_Service)
+
+	return virtualReturn.cPointer()
+
+}
+
 // Delete this object from C++ memory.
 func (this *QAudioDecoder) Delete() {
-	C.QAudioDecoder_Delete(this.h)
+	C.QAudioDecoder_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -45,7 +45,8 @@ const (
 )
 
 type QCameraFocusZone struct {
-	h *C.QCameraFocusZone
+	h          *C.QCameraFocusZone
+	isSubclass bool
 }
 
 func (this *QCameraFocusZone) cPointer() *C.QCameraFocusZone {
@@ -62,6 +63,7 @@ func (this *QCameraFocusZone) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCameraFocusZone constructs the type using only CGO pointers.
 func newQCameraFocusZone(h *C.QCameraFocusZone) *QCameraFocusZone {
 	if h == nil {
 		return nil
@@ -69,32 +71,53 @@ func newQCameraFocusZone(h *C.QCameraFocusZone) *QCameraFocusZone {
 	return &QCameraFocusZone{h: h}
 }
 
+// UnsafeNewQCameraFocusZone constructs the type using only unsafe pointers.
 func UnsafeNewQCameraFocusZone(h unsafe.Pointer) *QCameraFocusZone {
-	return newQCameraFocusZone((*C.QCameraFocusZone)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCameraFocusZone{h: (*C.QCameraFocusZone)(h)}
 }
 
 // NewQCameraFocusZone constructs a new QCameraFocusZone object.
 func NewQCameraFocusZone() *QCameraFocusZone {
-	ret := C.QCameraFocusZone_new()
-	return newQCameraFocusZone(ret)
+	var outptr_QCameraFocusZone *C.QCameraFocusZone = nil
+
+	C.QCameraFocusZone_new(&outptr_QCameraFocusZone)
+	ret := newQCameraFocusZone(outptr_QCameraFocusZone)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCameraFocusZone2 constructs a new QCameraFocusZone object.
 func NewQCameraFocusZone2(area *qt.QRectF) *QCameraFocusZone {
-	ret := C.QCameraFocusZone_new2((*C.QRectF)(area.UnsafePointer()))
-	return newQCameraFocusZone(ret)
+	var outptr_QCameraFocusZone *C.QCameraFocusZone = nil
+
+	C.QCameraFocusZone_new2((*C.QRectF)(area.UnsafePointer()), &outptr_QCameraFocusZone)
+	ret := newQCameraFocusZone(outptr_QCameraFocusZone)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCameraFocusZone3 constructs a new QCameraFocusZone object.
 func NewQCameraFocusZone3(other *QCameraFocusZone) *QCameraFocusZone {
-	ret := C.QCameraFocusZone_new3(other.cPointer())
-	return newQCameraFocusZone(ret)
+	var outptr_QCameraFocusZone *C.QCameraFocusZone = nil
+
+	C.QCameraFocusZone_new3(other.cPointer(), &outptr_QCameraFocusZone)
+	ret := newQCameraFocusZone(outptr_QCameraFocusZone)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCameraFocusZone4 constructs a new QCameraFocusZone object.
 func NewQCameraFocusZone4(area *qt.QRectF, status QCameraFocusZone__FocusZoneStatus) *QCameraFocusZone {
-	ret := C.QCameraFocusZone_new4((*C.QRectF)(area.UnsafePointer()), (C.int)(status))
-	return newQCameraFocusZone(ret)
+	var outptr_QCameraFocusZone *C.QCameraFocusZone = nil
+
+	C.QCameraFocusZone_new4((*C.QRectF)(area.UnsafePointer()), (C.int)(status), &outptr_QCameraFocusZone)
+	ret := newQCameraFocusZone(outptr_QCameraFocusZone)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QCameraFocusZone) OperatorAssign(other *QCameraFocusZone) {
@@ -130,7 +153,7 @@ func (this *QCameraFocusZone) SetStatus(status QCameraFocusZone__FocusZoneStatus
 
 // Delete this object from C++ memory.
 func (this *QCameraFocusZone) Delete() {
-	C.QCameraFocusZone_Delete(this.h)
+	C.QCameraFocusZone_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -143,7 +166,8 @@ func (this *QCameraFocusZone) GoGC() {
 }
 
 type QCameraFocus struct {
-	h *C.QCameraFocus
+	h          *C.QCameraFocus
+	isSubclass bool
 	*qt.QObject
 }
 
@@ -161,15 +185,23 @@ func (this *QCameraFocus) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQCameraFocus(h *C.QCameraFocus) *QCameraFocus {
+// newQCameraFocus constructs the type using only CGO pointers.
+func newQCameraFocus(h *C.QCameraFocus, h_QObject *C.QObject) *QCameraFocus {
 	if h == nil {
 		return nil
 	}
-	return &QCameraFocus{h: h, QObject: qt.UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QCameraFocus{h: h,
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
 }
 
-func UnsafeNewQCameraFocus(h unsafe.Pointer) *QCameraFocus {
-	return newQCameraFocus((*C.QCameraFocus)(h))
+// UnsafeNewQCameraFocus constructs the type using only unsafe pointers.
+func UnsafeNewQCameraFocus(h unsafe.Pointer, h_QObject unsafe.Pointer) *QCameraFocus {
+	if h == nil {
+		return nil
+	}
+
+	return &QCameraFocus{h: (*C.QCameraFocus)(h),
+		QObject: qt.UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QCameraFocus) MetaObject() *qt.QMetaObject {

@@ -34,7 +34,11 @@ QObject* QGenericPluginFactory_Create(struct miqt_string param1, struct miqt_str
 	return QGenericPluginFactory::create(param1_QString, param2_QString);
 }
 
-void QGenericPluginFactory_Delete(QGenericPluginFactory* self) {
-	delete self;
+void QGenericPluginFactory_Delete(QGenericPluginFactory* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QGenericPluginFactory*>( self );
+	} else {
+		delete self;
+	}
 }
 

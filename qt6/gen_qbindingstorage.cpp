@@ -5,12 +5,17 @@
 #include "gen_qbindingstorage.h"
 #include "_cgo_export.h"
 
-void QBindingStatus_Delete(QBindingStatus* self) {
-	delete self;
+void QBindingStatus_Delete(QBindingStatus* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QBindingStatus*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QBindingStorage* QBindingStorage_new() {
-	return new QBindingStorage();
+void QBindingStorage_new(QBindingStorage** outptr_QBindingStorage) {
+	QBindingStorage* ret = new QBindingStorage();
+	*outptr_QBindingStorage = ret;
 }
 
 bool QBindingStorage_IsEmpty(QBindingStorage* self) {
@@ -25,7 +30,11 @@ void QBindingStorage_RegisterDependency(const QBindingStorage* self, QUntypedPro
 	self->registerDependency(data);
 }
 
-void QBindingStorage_Delete(QBindingStorage* self) {
-	delete self;
+void QBindingStorage_Delete(QBindingStorage* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QBindingStorage*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -78,7 +78,8 @@ const (
 )
 
 type QRadioData struct {
-	h *C.QRadioData
+	h          *C.QRadioData
+	isSubclass bool
 	*qt.QObject
 	*QMediaBindableInterface
 }
@@ -97,27 +98,49 @@ func (this *QRadioData) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQRadioData(h *C.QRadioData) *QRadioData {
+// newQRadioData constructs the type using only CGO pointers.
+func newQRadioData(h *C.QRadioData, h_QObject *C.QObject, h_QMediaBindableInterface *C.QMediaBindableInterface) *QRadioData {
 	if h == nil {
 		return nil
 	}
-	return &QRadioData{h: h, QObject: qt.UnsafeNewQObject(unsafe.Pointer(h)), QMediaBindableInterface: UnsafeNewQMediaBindableInterface(unsafe.Pointer(h))}
+	return &QRadioData{h: h,
+		QObject:                 qt.UnsafeNewQObject(unsafe.Pointer(h_QObject)),
+		QMediaBindableInterface: newQMediaBindableInterface(h_QMediaBindableInterface)}
 }
 
-func UnsafeNewQRadioData(h unsafe.Pointer) *QRadioData {
-	return newQRadioData((*C.QRadioData)(h))
+// UnsafeNewQRadioData constructs the type using only unsafe pointers.
+func UnsafeNewQRadioData(h unsafe.Pointer, h_QObject unsafe.Pointer, h_QMediaBindableInterface unsafe.Pointer) *QRadioData {
+	if h == nil {
+		return nil
+	}
+
+	return &QRadioData{h: (*C.QRadioData)(h),
+		QObject:                 qt.UnsafeNewQObject(h_QObject),
+		QMediaBindableInterface: UnsafeNewQMediaBindableInterface(h_QMediaBindableInterface)}
 }
 
 // NewQRadioData constructs a new QRadioData object.
 func NewQRadioData(mediaObject *QMediaObject) *QRadioData {
-	ret := C.QRadioData_new(mediaObject.cPointer())
-	return newQRadioData(ret)
+	var outptr_QRadioData *C.QRadioData = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QMediaBindableInterface *C.QMediaBindableInterface = nil
+
+	C.QRadioData_new(mediaObject.cPointer(), &outptr_QRadioData, &outptr_QObject, &outptr_QMediaBindableInterface)
+	ret := newQRadioData(outptr_QRadioData, outptr_QObject, outptr_QMediaBindableInterface)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRadioData2 constructs a new QRadioData object.
 func NewQRadioData2(mediaObject *QMediaObject, parent *qt.QObject) *QRadioData {
-	ret := C.QRadioData_new2(mediaObject.cPointer(), (*C.QObject)(parent.UnsafePointer()))
-	return newQRadioData(ret)
+	var outptr_QRadioData *C.QRadioData = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QMediaBindableInterface *C.QMediaBindableInterface = nil
+
+	C.QRadioData_new2(mediaObject.cPointer(), (*C.QObject)(parent.UnsafePointer()), &outptr_QRadioData, &outptr_QObject, &outptr_QMediaBindableInterface)
+	ret := newQRadioData(outptr_QRadioData, outptr_QObject, outptr_QMediaBindableInterface)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QRadioData) MetaObject() *qt.QMetaObject {
@@ -153,7 +176,7 @@ func (this *QRadioData) Availability() QMultimedia__AvailabilityStatus {
 }
 
 func (this *QRadioData) MediaObject() *QMediaObject {
-	return UnsafeNewQMediaObject(unsafe.Pointer(C.QRadioData_MediaObject(this.h)))
+	return UnsafeNewQMediaObject(unsafe.Pointer(C.QRadioData_MediaObject(this.h)), nil)
 }
 
 func (this *QRadioData) StationId() string {
@@ -419,9 +442,221 @@ func QRadioData_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QRadioData) callVirtualBase_MediaObject() *QMediaObject {
+
+	return UnsafeNewQMediaObject(unsafe.Pointer(C.QRadioData_virtualbase_MediaObject(unsafe.Pointer(this.h))), nil)
+}
+func (this *QRadioData) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
+	C.QRadioData_override_virtual_MediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QRadioData_MediaObject
+func miqt_exec_callback_QRadioData_MediaObject(self *C.QRadioData, cb C.intptr_t) *C.QMediaObject {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QMediaObject) *QMediaObject)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QRadioData{h: self}).callVirtualBase_MediaObject)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QRadioData) callVirtualBase_SetMediaObject(mediaObject *QMediaObject) bool {
+
+	return (bool)(C.QRadioData_virtualbase_SetMediaObject(unsafe.Pointer(this.h), mediaObject.cPointer()))
+
+}
+func (this *QRadioData) OnSetMediaObject(slot func(super func(mediaObject *QMediaObject) bool, mediaObject *QMediaObject) bool) {
+	C.QRadioData_override_virtual_SetMediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QRadioData_SetMediaObject
+func miqt_exec_callback_QRadioData_SetMediaObject(self *C.QRadioData, cb C.intptr_t, mediaObject *C.QMediaObject) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(mediaObject *QMediaObject) bool, mediaObject *QMediaObject) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMediaObject(unsafe.Pointer(mediaObject), nil)
+
+	virtualReturn := gofunc((&QRadioData{h: self}).callVirtualBase_SetMediaObject, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QRadioData) callVirtualBase_Event(event *qt.QEvent) bool {
+
+	return (bool)(C.QRadioData_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QRadioData) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	C.QRadioData_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QRadioData_Event
+func miqt_exec_callback_QRadioData_Event(self *C.QRadioData, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QRadioData{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QRadioData) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+
+	return (bool)(C.QRadioData_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QRadioData) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	C.QRadioData_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QRadioData_EventFilter
+func miqt_exec_callback_QRadioData_EventFilter(self *C.QRadioData, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QRadioData{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QRadioData) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+
+	C.QRadioData_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+
+}
+func (this *QRadioData) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	C.QRadioData_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QRadioData_TimerEvent
+func miqt_exec_callback_QRadioData_TimerEvent(self *C.QRadioData, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QRadioData{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QRadioData) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+
+	C.QRadioData_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+
+}
+func (this *QRadioData) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	C.QRadioData_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QRadioData_ChildEvent
+func miqt_exec_callback_QRadioData_ChildEvent(self *C.QRadioData, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QRadioData{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QRadioData) callVirtualBase_CustomEvent(event *qt.QEvent) {
+
+	C.QRadioData_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+
+}
+func (this *QRadioData) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	C.QRadioData_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QRadioData_CustomEvent
+func miqt_exec_callback_QRadioData_CustomEvent(self *C.QRadioData, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QRadioData{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QRadioData) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+
+	C.QRadioData_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QRadioData) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	C.QRadioData_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QRadioData_ConnectNotify
+func miqt_exec_callback_QRadioData_ConnectNotify(self *C.QRadioData, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QRadioData{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QRadioData) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+
+	C.QRadioData_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QRadioData) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	C.QRadioData_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QRadioData_DisconnectNotify
+func miqt_exec_callback_QRadioData_DisconnectNotify(self *C.QRadioData, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QRadioData{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QRadioData) Delete() {
-	C.QRadioData_Delete(this.h)
+	C.QRadioData_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

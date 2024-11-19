@@ -24,7 +24,8 @@ const (
 )
 
 type QImageReader struct {
-	h *C.QImageReader
+	h          *C.QImageReader
+	isSubclass bool
 }
 
 func (this *QImageReader) cPointer() *C.QImageReader {
@@ -41,6 +42,7 @@ func (this *QImageReader) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQImageReader constructs the type using only CGO pointers.
 func newQImageReader(h *C.QImageReader) *QImageReader {
 	if h == nil {
 		return nil
@@ -48,20 +50,33 @@ func newQImageReader(h *C.QImageReader) *QImageReader {
 	return &QImageReader{h: h}
 }
 
+// UnsafeNewQImageReader constructs the type using only unsafe pointers.
 func UnsafeNewQImageReader(h unsafe.Pointer) *QImageReader {
-	return newQImageReader((*C.QImageReader)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QImageReader{h: (*C.QImageReader)(h)}
 }
 
 // NewQImageReader constructs a new QImageReader object.
 func NewQImageReader() *QImageReader {
-	ret := C.QImageReader_new()
-	return newQImageReader(ret)
+	var outptr_QImageReader *C.QImageReader = nil
+
+	C.QImageReader_new(&outptr_QImageReader)
+	ret := newQImageReader(outptr_QImageReader)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQImageReader2 constructs a new QImageReader object.
 func NewQImageReader2(device *QIODevice) *QImageReader {
-	ret := C.QImageReader_new2(device.cPointer())
-	return newQImageReader(ret)
+	var outptr_QImageReader *C.QImageReader = nil
+
+	C.QImageReader_new2(device.cPointer(), &outptr_QImageReader)
+	ret := newQImageReader(outptr_QImageReader)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQImageReader3 constructs a new QImageReader object.
@@ -70,8 +85,12 @@ func NewQImageReader3(fileName string) *QImageReader {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	ret := C.QImageReader_new3(fileName_ms)
-	return newQImageReader(ret)
+	var outptr_QImageReader *C.QImageReader = nil
+
+	C.QImageReader_new3(fileName_ms, &outptr_QImageReader)
+	ret := newQImageReader(outptr_QImageReader)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQImageReader4 constructs a new QImageReader object.
@@ -79,8 +98,12 @@ func NewQImageReader4(device *QIODevice, format []byte) *QImageReader {
 	format_alias := C.struct_miqt_string{}
 	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
 	format_alias.len = C.size_t(len(format))
-	ret := C.QImageReader_new4(device.cPointer(), format_alias)
-	return newQImageReader(ret)
+	var outptr_QImageReader *C.QImageReader = nil
+
+	C.QImageReader_new4(device.cPointer(), format_alias, &outptr_QImageReader)
+	ret := newQImageReader(outptr_QImageReader)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQImageReader5 constructs a new QImageReader object.
@@ -92,8 +115,12 @@ func NewQImageReader5(fileName string, format []byte) *QImageReader {
 	format_alias := C.struct_miqt_string{}
 	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
 	format_alias.len = C.size_t(len(format))
-	ret := C.QImageReader_new5(fileName_ms, format_alias)
-	return newQImageReader(ret)
+	var outptr_QImageReader *C.QImageReader = nil
+
+	C.QImageReader_new5(fileName_ms, format_alias, &outptr_QImageReader)
+	ret := newQImageReader(outptr_QImageReader)
+	ret.isSubclass = true
+	return ret
 }
 
 func QImageReader_Tr(sourceText string) string {
@@ -149,7 +176,7 @@ func (this *QImageReader) SetDevice(device *QIODevice) {
 }
 
 func (this *QImageReader) Device() *QIODevice {
-	return UnsafeNewQIODevice(unsafe.Pointer(C.QImageReader_Device(this.h)))
+	return UnsafeNewQIODevice(unsafe.Pointer(C.QImageReader_Device(this.h)), nil)
 }
 
 func (this *QImageReader) SetFileName(fileName string) {
@@ -304,7 +331,7 @@ func (this *QImageReader) CanRead() bool {
 
 func (this *QImageReader) Read() *QImage {
 	_ret := C.QImageReader_Read(this.h)
-	_goptr := newQImage(_ret)
+	_goptr := newQImage(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -465,7 +492,7 @@ func QImageReader_TrUtf83(sourceText string, disambiguation string, n int) strin
 
 // Delete this object from C++ memory.
 func (this *QImageReader) Delete() {
-	C.QImageReader_Delete(this.h)
+	C.QImageReader_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

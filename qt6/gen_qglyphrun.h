@@ -26,8 +26,8 @@ typedef struct QRawFont QRawFont;
 typedef struct QRectF QRectF;
 #endif
 
-QGlyphRun* QGlyphRun_new();
-QGlyphRun* QGlyphRun_new2(QGlyphRun* other);
+void QGlyphRun_new(QGlyphRun** outptr_QGlyphRun);
+void QGlyphRun_new2(QGlyphRun* other, QGlyphRun** outptr_QGlyphRun);
 void QGlyphRun_OperatorAssign(QGlyphRun* self, QGlyphRun* other);
 void QGlyphRun_Swap(QGlyphRun* self, QGlyphRun* other);
 QRawFont* QGlyphRun_RawFont(const QGlyphRun* self);
@@ -55,7 +55,7 @@ void QGlyphRun_SetBoundingRect(QGlyphRun* self, QRectF* boundingRect);
 QRectF* QGlyphRun_BoundingRect(const QGlyphRun* self);
 bool QGlyphRun_IsEmpty(const QGlyphRun* self);
 void QGlyphRun_SetFlag2(QGlyphRun* self, int flag, bool enabled);
-void QGlyphRun_Delete(QGlyphRun* self);
+void QGlyphRun_Delete(QGlyphRun* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

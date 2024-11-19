@@ -24,14 +24,14 @@ typedef struct QColor QColor;
 typedef struct QPen QPen;
 #endif
 
-QPen* QPen_new();
-QPen* QPen_new2(int param1);
-QPen* QPen_new3(QColor* color);
-QPen* QPen_new4(QBrush* brush, double width);
-QPen* QPen_new5(QPen* pen);
-QPen* QPen_new6(QBrush* brush, double width, int s);
-QPen* QPen_new7(QBrush* brush, double width, int s, int c);
-QPen* QPen_new8(QBrush* brush, double width, int s, int c, int j);
+void QPen_new(QPen** outptr_QPen);
+void QPen_new2(int param1, QPen** outptr_QPen);
+void QPen_new3(QColor* color, QPen** outptr_QPen);
+void QPen_new4(QBrush* brush, double width, QPen** outptr_QPen);
+void QPen_new5(QPen* pen, QPen** outptr_QPen);
+void QPen_new6(QBrush* brush, double width, int s, QPen** outptr_QPen);
+void QPen_new7(QBrush* brush, double width, int s, int c, QPen** outptr_QPen);
+void QPen_new8(QBrush* brush, double width, int s, int c, int j, QPen** outptr_QPen);
 void QPen_OperatorAssign(QPen* self, QPen* pen);
 void QPen_Swap(QPen* self, QPen* other);
 int QPen_Style(const QPen* self);
@@ -60,7 +60,7 @@ void QPen_SetCosmetic(QPen* self, bool cosmetic);
 bool QPen_OperatorEqual(const QPen* self, QPen* p);
 bool QPen_OperatorNotEqual(const QPen* self, QPen* p);
 bool QPen_IsDetached(QPen* self);
-void QPen_Delete(QPen* self);
+void QPen_Delete(QPen* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

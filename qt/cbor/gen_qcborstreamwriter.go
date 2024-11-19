@@ -15,7 +15,8 @@ import (
 )
 
 type QCborStreamWriter struct {
-	h *C.QCborStreamWriter
+	h          *C.QCborStreamWriter
+	isSubclass bool
 }
 
 func (this *QCborStreamWriter) cPointer() *C.QCborStreamWriter {
@@ -32,6 +33,7 @@ func (this *QCborStreamWriter) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCborStreamWriter constructs the type using only CGO pointers.
 func newQCborStreamWriter(h *C.QCborStreamWriter) *QCborStreamWriter {
 	if h == nil {
 		return nil
@@ -39,14 +41,23 @@ func newQCborStreamWriter(h *C.QCborStreamWriter) *QCborStreamWriter {
 	return &QCborStreamWriter{h: h}
 }
 
+// UnsafeNewQCborStreamWriter constructs the type using only unsafe pointers.
 func UnsafeNewQCborStreamWriter(h unsafe.Pointer) *QCborStreamWriter {
-	return newQCborStreamWriter((*C.QCborStreamWriter)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCborStreamWriter{h: (*C.QCborStreamWriter)(h)}
 }
 
 // NewQCborStreamWriter constructs a new QCborStreamWriter object.
 func NewQCborStreamWriter(device *qt.QIODevice) *QCborStreamWriter {
-	ret := C.QCborStreamWriter_new((*C.QIODevice)(device.UnsafePointer()))
-	return newQCborStreamWriter(ret)
+	var outptr_QCborStreamWriter *C.QCborStreamWriter = nil
+
+	C.QCborStreamWriter_new((*C.QIODevice)(device.UnsafePointer()), &outptr_QCborStreamWriter)
+	ret := newQCborStreamWriter(outptr_QCborStreamWriter)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QCborStreamWriter) SetDevice(device *qt.QIODevice) {
@@ -54,7 +65,7 @@ func (this *QCborStreamWriter) SetDevice(device *qt.QIODevice) {
 }
 
 func (this *QCborStreamWriter) Device() *qt.QIODevice {
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QCborStreamWriter_Device(this.h)))
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QCborStreamWriter_Device(this.h)), nil)
 }
 
 func (this *QCborStreamWriter) Append(u uint64) {
@@ -166,7 +177,7 @@ func (this *QCborStreamWriter) Append22(str string, size int64) {
 
 // Delete this object from C++ memory.
 func (this *QCborStreamWriter) Delete() {
-	C.QCborStreamWriter_Delete(this.h)
+	C.QCborStreamWriter_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

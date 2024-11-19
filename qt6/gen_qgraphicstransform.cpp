@@ -57,16 +57,60 @@ struct miqt_string QGraphicsTransform_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QGraphicsTransform_Delete(QGraphicsTransform* self) {
-	delete self;
+void QGraphicsTransform_Delete(QGraphicsTransform* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QGraphicsTransform*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QGraphicsScale* QGraphicsScale_new() {
-	return new QGraphicsScale();
+class MiqtVirtualQGraphicsScale : public virtual QGraphicsScale {
+public:
+
+	MiqtVirtualQGraphicsScale(): QGraphicsScale() {};
+	MiqtVirtualQGraphicsScale(QObject* parent): QGraphicsScale(parent) {};
+
+	virtual ~MiqtVirtualQGraphicsScale() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ApplyTo = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void applyTo(QMatrix4x4* matrix) const override {
+		if (handle__ApplyTo == 0) {
+			QGraphicsScale::applyTo(matrix);
+			return;
+		}
+		
+		QMatrix4x4* sigval1 = matrix;
+
+		miqt_exec_callback_QGraphicsScale_ApplyTo(const_cast<MiqtVirtualQGraphicsScale*>(this), handle__ApplyTo, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ApplyTo(QMatrix4x4* matrix) const {
+
+		QGraphicsScale::applyTo(matrix);
+
+	}
+
+};
+
+void QGraphicsScale_new(QGraphicsScale** outptr_QGraphicsScale, QGraphicsTransform** outptr_QGraphicsTransform, QObject** outptr_QObject) {
+	MiqtVirtualQGraphicsScale* ret = new MiqtVirtualQGraphicsScale();
+	*outptr_QGraphicsScale = ret;
+	*outptr_QGraphicsTransform = static_cast<QGraphicsTransform*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QGraphicsScale* QGraphicsScale_new2(QObject* parent) {
-	return new QGraphicsScale(parent);
+void QGraphicsScale_new2(QObject* parent, QGraphicsScale** outptr_QGraphicsScale, QGraphicsTransform** outptr_QGraphicsTransform, QObject** outptr_QObject) {
+	MiqtVirtualQGraphicsScale* ret = new MiqtVirtualQGraphicsScale(parent);
+	*outptr_QGraphicsScale = ret;
+	*outptr_QGraphicsTransform = static_cast<QGraphicsTransform*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QGraphicsScale_MetaObject(const QGraphicsScale* self) {
@@ -132,7 +176,7 @@ void QGraphicsScale_OriginChanged(QGraphicsScale* self) {
 }
 
 void QGraphicsScale_connect_OriginChanged(QGraphicsScale* self, intptr_t slot) {
-	QGraphicsScale::connect(self, static_cast<void (QGraphicsScale::*)()>(&QGraphicsScale::originChanged), self, [=]() {
+	MiqtVirtualQGraphicsScale::connect(self, static_cast<void (QGraphicsScale::*)()>(&QGraphicsScale::originChanged), self, [=]() {
 		miqt_exec_callback_QGraphicsScale_OriginChanged(slot);
 	});
 }
@@ -142,7 +186,7 @@ void QGraphicsScale_XScaleChanged(QGraphicsScale* self) {
 }
 
 void QGraphicsScale_connect_XScaleChanged(QGraphicsScale* self, intptr_t slot) {
-	QGraphicsScale::connect(self, static_cast<void (QGraphicsScale::*)()>(&QGraphicsScale::xScaleChanged), self, [=]() {
+	MiqtVirtualQGraphicsScale::connect(self, static_cast<void (QGraphicsScale::*)()>(&QGraphicsScale::xScaleChanged), self, [=]() {
 		miqt_exec_callback_QGraphicsScale_XScaleChanged(slot);
 	});
 }
@@ -152,7 +196,7 @@ void QGraphicsScale_YScaleChanged(QGraphicsScale* self) {
 }
 
 void QGraphicsScale_connect_YScaleChanged(QGraphicsScale* self, intptr_t slot) {
-	QGraphicsScale::connect(self, static_cast<void (QGraphicsScale::*)()>(&QGraphicsScale::yScaleChanged), self, [=]() {
+	MiqtVirtualQGraphicsScale::connect(self, static_cast<void (QGraphicsScale::*)()>(&QGraphicsScale::yScaleChanged), self, [=]() {
 		miqt_exec_callback_QGraphicsScale_YScaleChanged(slot);
 	});
 }
@@ -162,7 +206,7 @@ void QGraphicsScale_ZScaleChanged(QGraphicsScale* self) {
 }
 
 void QGraphicsScale_connect_ZScaleChanged(QGraphicsScale* self, intptr_t slot) {
-	QGraphicsScale::connect(self, static_cast<void (QGraphicsScale::*)()>(&QGraphicsScale::zScaleChanged), self, [=]() {
+	MiqtVirtualQGraphicsScale::connect(self, static_cast<void (QGraphicsScale::*)()>(&QGraphicsScale::zScaleChanged), self, [=]() {
 		miqt_exec_callback_QGraphicsScale_ZScaleChanged(slot);
 	});
 }
@@ -172,7 +216,7 @@ void QGraphicsScale_ScaleChanged(QGraphicsScale* self) {
 }
 
 void QGraphicsScale_connect_ScaleChanged(QGraphicsScale* self, intptr_t slot) {
-	QGraphicsScale::connect(self, static_cast<void (QGraphicsScale::*)()>(&QGraphicsScale::scaleChanged), self, [=]() {
+	MiqtVirtualQGraphicsScale::connect(self, static_cast<void (QGraphicsScale::*)()>(&QGraphicsScale::scaleChanged), self, [=]() {
 		miqt_exec_callback_QGraphicsScale_ScaleChanged(slot);
 	});
 }
@@ -199,16 +243,68 @@ struct miqt_string QGraphicsScale_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QGraphicsScale_Delete(QGraphicsScale* self) {
-	delete self;
+void QGraphicsScale_override_virtual_ApplyTo(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGraphicsScale*>( (QGraphicsScale*)(self) )->handle__ApplyTo = slot;
 }
 
-QGraphicsRotation* QGraphicsRotation_new() {
-	return new QGraphicsRotation();
+void QGraphicsScale_virtualbase_ApplyTo(const void* self, QMatrix4x4* matrix) {
+	( (const MiqtVirtualQGraphicsScale*)(self) )->virtualbase_ApplyTo(matrix);
 }
 
-QGraphicsRotation* QGraphicsRotation_new2(QObject* parent) {
-	return new QGraphicsRotation(parent);
+void QGraphicsScale_Delete(QGraphicsScale* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQGraphicsScale*>( self );
+	} else {
+		delete self;
+	}
+}
+
+class MiqtVirtualQGraphicsRotation : public virtual QGraphicsRotation {
+public:
+
+	MiqtVirtualQGraphicsRotation(): QGraphicsRotation() {};
+	MiqtVirtualQGraphicsRotation(QObject* parent): QGraphicsRotation(parent) {};
+
+	virtual ~MiqtVirtualQGraphicsRotation() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ApplyTo = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void applyTo(QMatrix4x4* matrix) const override {
+		if (handle__ApplyTo == 0) {
+			QGraphicsRotation::applyTo(matrix);
+			return;
+		}
+		
+		QMatrix4x4* sigval1 = matrix;
+
+		miqt_exec_callback_QGraphicsRotation_ApplyTo(const_cast<MiqtVirtualQGraphicsRotation*>(this), handle__ApplyTo, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ApplyTo(QMatrix4x4* matrix) const {
+
+		QGraphicsRotation::applyTo(matrix);
+
+	}
+
+};
+
+void QGraphicsRotation_new(QGraphicsRotation** outptr_QGraphicsRotation, QGraphicsTransform** outptr_QGraphicsTransform, QObject** outptr_QObject) {
+	MiqtVirtualQGraphicsRotation* ret = new MiqtVirtualQGraphicsRotation();
+	*outptr_QGraphicsRotation = ret;
+	*outptr_QGraphicsTransform = static_cast<QGraphicsTransform*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
+}
+
+void QGraphicsRotation_new2(QObject* parent, QGraphicsRotation** outptr_QGraphicsRotation, QGraphicsTransform** outptr_QGraphicsTransform, QObject** outptr_QObject) {
+	MiqtVirtualQGraphicsRotation* ret = new MiqtVirtualQGraphicsRotation(parent);
+	*outptr_QGraphicsRotation = ret;
+	*outptr_QGraphicsTransform = static_cast<QGraphicsTransform*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QGraphicsRotation_MetaObject(const QGraphicsRotation* self) {
@@ -268,7 +364,7 @@ void QGraphicsRotation_OriginChanged(QGraphicsRotation* self) {
 }
 
 void QGraphicsRotation_connect_OriginChanged(QGraphicsRotation* self, intptr_t slot) {
-	QGraphicsRotation::connect(self, static_cast<void (QGraphicsRotation::*)()>(&QGraphicsRotation::originChanged), self, [=]() {
+	MiqtVirtualQGraphicsRotation::connect(self, static_cast<void (QGraphicsRotation::*)()>(&QGraphicsRotation::originChanged), self, [=]() {
 		miqt_exec_callback_QGraphicsRotation_OriginChanged(slot);
 	});
 }
@@ -278,7 +374,7 @@ void QGraphicsRotation_AngleChanged(QGraphicsRotation* self) {
 }
 
 void QGraphicsRotation_connect_AngleChanged(QGraphicsRotation* self, intptr_t slot) {
-	QGraphicsRotation::connect(self, static_cast<void (QGraphicsRotation::*)()>(&QGraphicsRotation::angleChanged), self, [=]() {
+	MiqtVirtualQGraphicsRotation::connect(self, static_cast<void (QGraphicsRotation::*)()>(&QGraphicsRotation::angleChanged), self, [=]() {
 		miqt_exec_callback_QGraphicsRotation_AngleChanged(slot);
 	});
 }
@@ -288,7 +384,7 @@ void QGraphicsRotation_AxisChanged(QGraphicsRotation* self) {
 }
 
 void QGraphicsRotation_connect_AxisChanged(QGraphicsRotation* self, intptr_t slot) {
-	QGraphicsRotation::connect(self, static_cast<void (QGraphicsRotation::*)()>(&QGraphicsRotation::axisChanged), self, [=]() {
+	MiqtVirtualQGraphicsRotation::connect(self, static_cast<void (QGraphicsRotation::*)()>(&QGraphicsRotation::axisChanged), self, [=]() {
 		miqt_exec_callback_QGraphicsRotation_AxisChanged(slot);
 	});
 }
@@ -315,7 +411,19 @@ struct miqt_string QGraphicsRotation_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QGraphicsRotation_Delete(QGraphicsRotation* self) {
-	delete self;
+void QGraphicsRotation_override_virtual_ApplyTo(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGraphicsRotation*>( (QGraphicsRotation*)(self) )->handle__ApplyTo = slot;
+}
+
+void QGraphicsRotation_virtualbase_ApplyTo(const void* self, QMatrix4x4* matrix) {
+	( (const MiqtVirtualQGraphicsRotation*)(self) )->virtualbase_ApplyTo(matrix);
+}
+
+void QGraphicsRotation_Delete(QGraphicsRotation* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQGraphicsRotation*>( self );
+	} else {
+		delete self;
+	}
 }
 

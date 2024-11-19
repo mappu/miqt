@@ -32,7 +32,7 @@ void QGestureRecognizer_Reset(QGestureRecognizer* self, QGesture* state);
 int QGestureRecognizer_RegisterRecognizer(QGestureRecognizer* recognizer);
 void QGestureRecognizer_UnregisterRecognizer(int typeVal);
 void QGestureRecognizer_OperatorAssign(QGestureRecognizer* self, QGestureRecognizer* param1);
-void QGestureRecognizer_Delete(QGestureRecognizer* self);
+void QGestureRecognizer_Delete(QGestureRecognizer* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -7,12 +7,14 @@
 #include "gen_qchar.h"
 #include "_cgo_export.h"
 
-QLatin1Char* QLatin1Char_new(char c) {
-	return new QLatin1Char(static_cast<char>(c));
+void QLatin1Char_new(char c, QLatin1Char** outptr_QLatin1Char) {
+	QLatin1Char* ret = new QLatin1Char(static_cast<char>(c));
+	*outptr_QLatin1Char = ret;
 }
 
-QLatin1Char* QLatin1Char_new2(QLatin1Char* param1) {
-	return new QLatin1Char(*param1);
+void QLatin1Char_new2(QLatin1Char* param1, QLatin1Char** outptr_QLatin1Char) {
+	QLatin1Char* ret = new QLatin1Char(*param1);
+	*outptr_QLatin1Char = ret;
 }
 
 char QLatin1Char_ToLatin1(const QLatin1Char* self) {
@@ -24,52 +26,67 @@ uint16_t QLatin1Char_Unicode(const QLatin1Char* self) {
 	return static_cast<uint16_t>(_ret);
 }
 
-void QLatin1Char_Delete(QLatin1Char* self) {
-	delete self;
+void QLatin1Char_Delete(QLatin1Char* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QLatin1Char*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QChar* QChar_new() {
-	return new QChar();
+void QChar_new(QChar** outptr_QChar) {
+	QChar* ret = new QChar();
+	*outptr_QChar = ret;
 }
 
-QChar* QChar_new2(uint16_t rc) {
-	return new QChar(static_cast<ushort>(rc));
+void QChar_new2(uint16_t rc, QChar** outptr_QChar) {
+	QChar* ret = new QChar(static_cast<ushort>(rc));
+	*outptr_QChar = ret;
 }
 
-QChar* QChar_new3(unsigned char c, unsigned char r) {
-	return new QChar(static_cast<uchar>(c), static_cast<uchar>(r));
+void QChar_new3(unsigned char c, unsigned char r, QChar** outptr_QChar) {
+	QChar* ret = new QChar(static_cast<uchar>(c), static_cast<uchar>(r));
+	*outptr_QChar = ret;
 }
 
-QChar* QChar_new4(int16_t rc) {
-	return new QChar(static_cast<short>(rc));
+void QChar_new4(int16_t rc, QChar** outptr_QChar) {
+	QChar* ret = new QChar(static_cast<short>(rc));
+	*outptr_QChar = ret;
 }
 
-QChar* QChar_new5(unsigned int rc) {
-	return new QChar(static_cast<uint>(rc));
+void QChar_new5(unsigned int rc, QChar** outptr_QChar) {
+	QChar* ret = new QChar(static_cast<uint>(rc));
+	*outptr_QChar = ret;
 }
 
-QChar* QChar_new6(int rc) {
-	return new QChar(static_cast<int>(rc));
+void QChar_new6(int rc, QChar** outptr_QChar) {
+	QChar* ret = new QChar(static_cast<int>(rc));
+	*outptr_QChar = ret;
 }
 
-QChar* QChar_new7(int s) {
-	return new QChar(static_cast<QChar::SpecialCharacter>(s));
+void QChar_new7(int s, QChar** outptr_QChar) {
+	QChar* ret = new QChar(static_cast<QChar::SpecialCharacter>(s));
+	*outptr_QChar = ret;
 }
 
-QChar* QChar_new8(QLatin1Char* ch) {
-	return new QChar(*ch);
+void QChar_new8(QLatin1Char* ch, QChar** outptr_QChar) {
+	QChar* ret = new QChar(*ch);
+	*outptr_QChar = ret;
 }
 
-QChar* QChar_new9(char c) {
-	return new QChar(static_cast<char>(c));
+void QChar_new9(char c, QChar** outptr_QChar) {
+	QChar* ret = new QChar(static_cast<char>(c));
+	*outptr_QChar = ret;
 }
 
-QChar* QChar_new10(unsigned char c) {
-	return new QChar(static_cast<uchar>(c));
+void QChar_new10(unsigned char c, QChar** outptr_QChar) {
+	QChar* ret = new QChar(static_cast<uchar>(c));
+	*outptr_QChar = ret;
 }
 
-QChar* QChar_new11(QChar* param1) {
-	return new QChar(*param1);
+void QChar_new11(QChar* param1, QChar** outptr_QChar) {
+	QChar* ret = new QChar(*param1);
+	*outptr_QChar = ret;
 }
 
 int QChar_Category(const QChar* self) {
@@ -425,7 +442,11 @@ bool QChar_IsTitleCaseWithUcs4(unsigned int ucs4) {
 	return QChar::isTitleCase(static_cast<uint>(ucs4));
 }
 
-void QChar_Delete(QChar* self) {
-	delete self;
+void QChar_Delete(QChar* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QChar*>( self );
+	} else {
+		delete self;
+	}
 }
 

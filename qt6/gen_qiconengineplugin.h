@@ -18,20 +18,21 @@ extern "C" {
 class QIconEngine;
 class QIconEnginePlugin;
 class QMetaObject;
+class QObject;
 #else
 typedef struct QIconEngine QIconEngine;
 typedef struct QIconEnginePlugin QIconEnginePlugin;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 #endif
 
 QMetaObject* QIconEnginePlugin_MetaObject(const QIconEnginePlugin* self);
 void* QIconEnginePlugin_Metacast(QIconEnginePlugin* self, const char* param1);
 struct miqt_string QIconEnginePlugin_Tr(const char* s);
-QIconEngine* QIconEnginePlugin_Create(QIconEnginePlugin* self);
+QIconEngine* QIconEnginePlugin_Create(QIconEnginePlugin* self, struct miqt_string filename);
 struct miqt_string QIconEnginePlugin_Tr2(const char* s, const char* c);
 struct miqt_string QIconEnginePlugin_Tr3(const char* s, const char* c, int n);
-QIconEngine* QIconEnginePlugin_Create1(QIconEnginePlugin* self, struct miqt_string filename);
-void QIconEnginePlugin_Delete(QIconEnginePlugin* self);
+void QIconEnginePlugin_Delete(QIconEnginePlugin* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

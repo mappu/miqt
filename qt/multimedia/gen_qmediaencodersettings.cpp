@@ -11,12 +11,14 @@
 #include "gen_qmediaencodersettings.h"
 #include "_cgo_export.h"
 
-QAudioEncoderSettings* QAudioEncoderSettings_new() {
-	return new QAudioEncoderSettings();
+void QAudioEncoderSettings_new(QAudioEncoderSettings** outptr_QAudioEncoderSettings) {
+	QAudioEncoderSettings* ret = new QAudioEncoderSettings();
+	*outptr_QAudioEncoderSettings = ret;
 }
 
-QAudioEncoderSettings* QAudioEncoderSettings_new2(QAudioEncoderSettings* other) {
-	return new QAudioEncoderSettings(*other);
+void QAudioEncoderSettings_new2(QAudioEncoderSettings* other, QAudioEncoderSettings** outptr_QAudioEncoderSettings) {
+	QAudioEncoderSettings* ret = new QAudioEncoderSettings(*other);
+	*outptr_QAudioEncoderSettings = ret;
 }
 
 void QAudioEncoderSettings_OperatorAssign(QAudioEncoderSettings* self, QAudioEncoderSettings* other) {
@@ -139,16 +141,22 @@ void QAudioEncoderSettings_SetEncodingOptions(QAudioEncoderSettings* self, struc
 	self->setEncodingOptions(options_QMap);
 }
 
-void QAudioEncoderSettings_Delete(QAudioEncoderSettings* self) {
-	delete self;
+void QAudioEncoderSettings_Delete(QAudioEncoderSettings* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAudioEncoderSettings*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QVideoEncoderSettings* QVideoEncoderSettings_new() {
-	return new QVideoEncoderSettings();
+void QVideoEncoderSettings_new(QVideoEncoderSettings** outptr_QVideoEncoderSettings) {
+	QVideoEncoderSettings* ret = new QVideoEncoderSettings();
+	*outptr_QVideoEncoderSettings = ret;
 }
 
-QVideoEncoderSettings* QVideoEncoderSettings_new2(QVideoEncoderSettings* other) {
-	return new QVideoEncoderSettings(*other);
+void QVideoEncoderSettings_new2(QVideoEncoderSettings* other, QVideoEncoderSettings** outptr_QVideoEncoderSettings) {
+	QVideoEncoderSettings* ret = new QVideoEncoderSettings(*other);
+	*outptr_QVideoEncoderSettings = ret;
 }
 
 void QVideoEncoderSettings_OperatorAssign(QVideoEncoderSettings* self, QVideoEncoderSettings* other) {
@@ -276,16 +284,22 @@ void QVideoEncoderSettings_SetEncodingOptions(QVideoEncoderSettings* self, struc
 	self->setEncodingOptions(options_QMap);
 }
 
-void QVideoEncoderSettings_Delete(QVideoEncoderSettings* self) {
-	delete self;
+void QVideoEncoderSettings_Delete(QVideoEncoderSettings* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QVideoEncoderSettings*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QImageEncoderSettings* QImageEncoderSettings_new() {
-	return new QImageEncoderSettings();
+void QImageEncoderSettings_new(QImageEncoderSettings** outptr_QImageEncoderSettings) {
+	QImageEncoderSettings* ret = new QImageEncoderSettings();
+	*outptr_QImageEncoderSettings = ret;
 }
 
-QImageEncoderSettings* QImageEncoderSettings_new2(QImageEncoderSettings* other) {
-	return new QImageEncoderSettings(*other);
+void QImageEncoderSettings_new2(QImageEncoderSettings* other, QImageEncoderSettings** outptr_QImageEncoderSettings) {
+	QImageEncoderSettings* ret = new QImageEncoderSettings(*other);
+	*outptr_QImageEncoderSettings = ret;
 }
 
 void QImageEncoderSettings_OperatorAssign(QImageEncoderSettings* self, QImageEncoderSettings* other) {
@@ -387,7 +401,11 @@ void QImageEncoderSettings_SetEncodingOptions(QImageEncoderSettings* self, struc
 	self->setEncodingOptions(options_QMap);
 }
 
-void QImageEncoderSettings_Delete(QImageEncoderSettings* self) {
-	delete self;
+void QImageEncoderSettings_Delete(QImageEncoderSettings* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QImageEncoderSettings*>( self );
+	} else {
+		delete self;
+	}
 }
 

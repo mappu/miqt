@@ -1702,7 +1702,8 @@ const (
 )
 
 type QInternal struct {
-	h *C.QInternal
+	h          *C.QInternal
+	isSubclass bool
 }
 
 func (this *QInternal) cPointer() *C.QInternal {
@@ -1719,6 +1720,7 @@ func (this *QInternal) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQInternal constructs the type using only CGO pointers.
 func newQInternal(h *C.QInternal) *QInternal {
 	if h == nil {
 		return nil
@@ -1726,13 +1728,18 @@ func newQInternal(h *C.QInternal) *QInternal {
 	return &QInternal{h: h}
 }
 
+// UnsafeNewQInternal constructs the type using only unsafe pointers.
 func UnsafeNewQInternal(h unsafe.Pointer) *QInternal {
-	return newQInternal((*C.QInternal)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QInternal{h: (*C.QInternal)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *QInternal) Delete() {
-	C.QInternal_Delete(this.h)
+	C.QInternal_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

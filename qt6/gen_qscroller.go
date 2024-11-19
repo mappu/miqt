@@ -40,7 +40,8 @@ const (
 )
 
 type QScroller struct {
-	h *C.QScroller
+	h          *C.QScroller
+	isSubclass bool
 	*QObject
 }
 
@@ -58,15 +59,23 @@ func (this *QScroller) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQScroller(h *C.QScroller) *QScroller {
+// newQScroller constructs the type using only CGO pointers.
+func newQScroller(h *C.QScroller, h_QObject *C.QObject) *QScroller {
 	if h == nil {
 		return nil
 	}
-	return &QScroller{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QScroller{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQScroller(h unsafe.Pointer) *QScroller {
-	return newQScroller((*C.QScroller)(h))
+// UnsafeNewQScroller constructs the type using only unsafe pointers.
+func UnsafeNewQScroller(h unsafe.Pointer, h_QObject unsafe.Pointer) *QScroller {
+	if h == nil {
+		return nil
+	}
+
+	return &QScroller{h: (*C.QScroller)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QScroller) MetaObject() *QMetaObject {
@@ -93,11 +102,11 @@ func QScroller_HasScroller(target *QObject) bool {
 }
 
 func QScroller_Scroller(target *QObject) *QScroller {
-	return UnsafeNewQScroller(unsafe.Pointer(C.QScroller_Scroller(target.cPointer())))
+	return UnsafeNewQScroller(unsafe.Pointer(C.QScroller_Scroller(target.cPointer())), nil)
 }
 
 func QScroller_ScrollerWithTarget(target *QObject) *QScroller {
-	return UnsafeNewQScroller(unsafe.Pointer(C.QScroller_ScrollerWithTarget(target.cPointer())))
+	return UnsafeNewQScroller(unsafe.Pointer(C.QScroller_ScrollerWithTarget(target.cPointer())), nil)
 }
 
 func QScroller_GrabGesture(target *QObject) GestureType {
@@ -117,7 +126,7 @@ func QScroller_ActiveScrollers() []*QScroller {
 	_ret := make([]*QScroller, int(_ma.len))
 	_outCast := (*[0xffff]*C.QScroller)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQScroller(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQScroller(unsafe.Pointer(_outCast[i]), nil)
 	}
 	return _ret
 }

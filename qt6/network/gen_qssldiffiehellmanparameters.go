@@ -23,7 +23,8 @@ const (
 )
 
 type QSslDiffieHellmanParameters struct {
-	h *C.QSslDiffieHellmanParameters
+	h          *C.QSslDiffieHellmanParameters
+	isSubclass bool
 }
 
 func (this *QSslDiffieHellmanParameters) cPointer() *C.QSslDiffieHellmanParameters {
@@ -40,6 +41,7 @@ func (this *QSslDiffieHellmanParameters) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQSslDiffieHellmanParameters constructs the type using only CGO pointers.
 func newQSslDiffieHellmanParameters(h *C.QSslDiffieHellmanParameters) *QSslDiffieHellmanParameters {
 	if h == nil {
 		return nil
@@ -47,20 +49,33 @@ func newQSslDiffieHellmanParameters(h *C.QSslDiffieHellmanParameters) *QSslDiffi
 	return &QSslDiffieHellmanParameters{h: h}
 }
 
+// UnsafeNewQSslDiffieHellmanParameters constructs the type using only unsafe pointers.
 func UnsafeNewQSslDiffieHellmanParameters(h unsafe.Pointer) *QSslDiffieHellmanParameters {
-	return newQSslDiffieHellmanParameters((*C.QSslDiffieHellmanParameters)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QSslDiffieHellmanParameters{h: (*C.QSslDiffieHellmanParameters)(h)}
 }
 
 // NewQSslDiffieHellmanParameters constructs a new QSslDiffieHellmanParameters object.
 func NewQSslDiffieHellmanParameters() *QSslDiffieHellmanParameters {
-	ret := C.QSslDiffieHellmanParameters_new()
-	return newQSslDiffieHellmanParameters(ret)
+	var outptr_QSslDiffieHellmanParameters *C.QSslDiffieHellmanParameters = nil
+
+	C.QSslDiffieHellmanParameters_new(&outptr_QSslDiffieHellmanParameters)
+	ret := newQSslDiffieHellmanParameters(outptr_QSslDiffieHellmanParameters)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSslDiffieHellmanParameters2 constructs a new QSslDiffieHellmanParameters object.
 func NewQSslDiffieHellmanParameters2(other *QSslDiffieHellmanParameters) *QSslDiffieHellmanParameters {
-	ret := C.QSslDiffieHellmanParameters_new2(other.cPointer())
-	return newQSslDiffieHellmanParameters(ret)
+	var outptr_QSslDiffieHellmanParameters *C.QSslDiffieHellmanParameters = nil
+
+	C.QSslDiffieHellmanParameters_new2(other.cPointer(), &outptr_QSslDiffieHellmanParameters)
+	ret := newQSslDiffieHellmanParameters(outptr_QSslDiffieHellmanParameters)
+	ret.isSubclass = true
+	return ret
 }
 
 func QSslDiffieHellmanParameters_DefaultParameters() *QSslDiffieHellmanParameters {
@@ -133,7 +148,7 @@ func QSslDiffieHellmanParameters_FromEncoded22(device *qt6.QIODevice, format QSs
 
 // Delete this object from C++ memory.
 func (this *QSslDiffieHellmanParameters) Delete() {
-	C.QSslDiffieHellmanParameters_Delete(this.h)
+	C.QSslDiffieHellmanParameters_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

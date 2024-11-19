@@ -23,7 +23,8 @@ const (
 )
 
 type QImageWriter struct {
-	h *C.QImageWriter
+	h          *C.QImageWriter
+	isSubclass bool
 }
 
 func (this *QImageWriter) cPointer() *C.QImageWriter {
@@ -40,6 +41,7 @@ func (this *QImageWriter) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQImageWriter constructs the type using only CGO pointers.
 func newQImageWriter(h *C.QImageWriter) *QImageWriter {
 	if h == nil {
 		return nil
@@ -47,14 +49,23 @@ func newQImageWriter(h *C.QImageWriter) *QImageWriter {
 	return &QImageWriter{h: h}
 }
 
+// UnsafeNewQImageWriter constructs the type using only unsafe pointers.
 func UnsafeNewQImageWriter(h unsafe.Pointer) *QImageWriter {
-	return newQImageWriter((*C.QImageWriter)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QImageWriter{h: (*C.QImageWriter)(h)}
 }
 
 // NewQImageWriter constructs a new QImageWriter object.
 func NewQImageWriter() *QImageWriter {
-	ret := C.QImageWriter_new()
-	return newQImageWriter(ret)
+	var outptr_QImageWriter *C.QImageWriter = nil
+
+	C.QImageWriter_new(&outptr_QImageWriter)
+	ret := newQImageWriter(outptr_QImageWriter)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQImageWriter2 constructs a new QImageWriter object.
@@ -62,8 +73,12 @@ func NewQImageWriter2(device *QIODevice, format []byte) *QImageWriter {
 	format_alias := C.struct_miqt_string{}
 	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
 	format_alias.len = C.size_t(len(format))
-	ret := C.QImageWriter_new2(device.cPointer(), format_alias)
-	return newQImageWriter(ret)
+	var outptr_QImageWriter *C.QImageWriter = nil
+
+	C.QImageWriter_new2(device.cPointer(), format_alias, &outptr_QImageWriter)
+	ret := newQImageWriter(outptr_QImageWriter)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQImageWriter3 constructs a new QImageWriter object.
@@ -72,8 +87,12 @@ func NewQImageWriter3(fileName string) *QImageWriter {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	ret := C.QImageWriter_new3(fileName_ms)
-	return newQImageWriter(ret)
+	var outptr_QImageWriter *C.QImageWriter = nil
+
+	C.QImageWriter_new3(fileName_ms, &outptr_QImageWriter)
+	ret := newQImageWriter(outptr_QImageWriter)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQImageWriter4 constructs a new QImageWriter object.
@@ -85,8 +104,12 @@ func NewQImageWriter4(fileName string, format []byte) *QImageWriter {
 	format_alias := C.struct_miqt_string{}
 	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
 	format_alias.len = C.size_t(len(format))
-	ret := C.QImageWriter_new4(fileName_ms, format_alias)
-	return newQImageWriter(ret)
+	var outptr_QImageWriter *C.QImageWriter = nil
+
+	C.QImageWriter_new4(fileName_ms, format_alias, &outptr_QImageWriter)
+	ret := newQImageWriter(outptr_QImageWriter)
+	ret.isSubclass = true
+	return ret
 }
 
 func QImageWriter_Tr(sourceText string) string {
@@ -117,7 +140,7 @@ func (this *QImageWriter) SetDevice(device *QIODevice) {
 }
 
 func (this *QImageWriter) Device() *QIODevice {
-	return UnsafeNewQIODevice(unsafe.Pointer(C.QImageWriter_Device(this.h)))
+	return UnsafeNewQIODevice(unsafe.Pointer(C.QImageWriter_Device(this.h)), nil, nil)
 }
 
 func (this *QImageWriter) SetFileName(fileName string) {
@@ -303,7 +326,7 @@ func QImageWriter_Tr3(sourceText string, disambiguation string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QImageWriter) Delete() {
-	C.QImageWriter_Delete(this.h)
+	C.QImageWriter_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

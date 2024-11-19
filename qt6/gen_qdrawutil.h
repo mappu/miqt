@@ -20,11 +20,11 @@ class QTileRules;
 typedef struct QTileRules QTileRules;
 #endif
 
-QTileRules* QTileRules_new(int horizontalRule, int verticalRule);
-QTileRules* QTileRules_new2();
-QTileRules* QTileRules_new3(QTileRules* param1);
-QTileRules* QTileRules_new4(int rule);
-void QTileRules_Delete(QTileRules* self);
+void QTileRules_new(int horizontalRule, int verticalRule, QTileRules** outptr_QTileRules);
+void QTileRules_new2(QTileRules** outptr_QTileRules);
+void QTileRules_new3(QTileRules* param1, QTileRules** outptr_QTileRules);
+void QTileRules_new4(int rule, QTileRules** outptr_QTileRules);
+void QTileRules_Delete(QTileRules* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

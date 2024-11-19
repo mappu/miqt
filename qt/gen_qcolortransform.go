@@ -14,7 +14,8 @@ import (
 )
 
 type QColorTransform struct {
-	h *C.QColorTransform
+	h          *C.QColorTransform
+	isSubclass bool
 }
 
 func (this *QColorTransform) cPointer() *C.QColorTransform {
@@ -31,6 +32,7 @@ func (this *QColorTransform) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQColorTransform constructs the type using only CGO pointers.
 func newQColorTransform(h *C.QColorTransform) *QColorTransform {
 	if h == nil {
 		return nil
@@ -38,20 +40,33 @@ func newQColorTransform(h *C.QColorTransform) *QColorTransform {
 	return &QColorTransform{h: h}
 }
 
+// UnsafeNewQColorTransform constructs the type using only unsafe pointers.
 func UnsafeNewQColorTransform(h unsafe.Pointer) *QColorTransform {
-	return newQColorTransform((*C.QColorTransform)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QColorTransform{h: (*C.QColorTransform)(h)}
 }
 
 // NewQColorTransform constructs a new QColorTransform object.
 func NewQColorTransform() *QColorTransform {
-	ret := C.QColorTransform_new()
-	return newQColorTransform(ret)
+	var outptr_QColorTransform *C.QColorTransform = nil
+
+	C.QColorTransform_new(&outptr_QColorTransform)
+	ret := newQColorTransform(outptr_QColorTransform)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQColorTransform2 constructs a new QColorTransform object.
 func NewQColorTransform2(colorTransform *QColorTransform) *QColorTransform {
-	ret := C.QColorTransform_new2(colorTransform.cPointer())
-	return newQColorTransform(ret)
+	var outptr_QColorTransform *C.QColorTransform = nil
+
+	C.QColorTransform_new2(colorTransform.cPointer(), &outptr_QColorTransform)
+	ret := newQColorTransform(outptr_QColorTransform)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QColorTransform) OperatorAssign(other *QColorTransform) {
@@ -82,7 +97,7 @@ func (this *QColorTransform) MapWithColor(color *QColor) *QColor {
 
 // Delete this object from C++ memory.
 func (this *QColorTransform) Delete() {
-	C.QColorTransform_Delete(this.h)
+	C.QColorTransform_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

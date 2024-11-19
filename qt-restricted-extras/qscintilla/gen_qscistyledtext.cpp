@@ -5,18 +5,21 @@
 #include "gen_qscistyledtext.h"
 #include "_cgo_export.h"
 
-QsciStyledText* QsciStyledText_new(struct miqt_string text, int style) {
+void QsciStyledText_new(struct miqt_string text, int style, QsciStyledText** outptr_QsciStyledText) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new QsciStyledText(text_QString, static_cast<int>(style));
+	QsciStyledText* ret = new QsciStyledText(text_QString, static_cast<int>(style));
+	*outptr_QsciStyledText = ret;
 }
 
-QsciStyledText* QsciStyledText_new2(struct miqt_string text, QsciStyle* style) {
+void QsciStyledText_new2(struct miqt_string text, QsciStyle* style, QsciStyledText** outptr_QsciStyledText) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new QsciStyledText(text_QString, *style);
+	QsciStyledText* ret = new QsciStyledText(text_QString, *style);
+	*outptr_QsciStyledText = ret;
 }
 
-QsciStyledText* QsciStyledText_new3(QsciStyledText* param1) {
-	return new QsciStyledText(*param1);
+void QsciStyledText_new3(QsciStyledText* param1, QsciStyledText** outptr_QsciStyledText) {
+	QsciStyledText* ret = new QsciStyledText(*param1);
+	*outptr_QsciStyledText = ret;
 }
 
 void QsciStyledText_Apply(const QsciStyledText* self, QsciScintillaBase* sci) {
@@ -38,7 +41,11 @@ int QsciStyledText_Style(const QsciStyledText* self) {
 	return self->style();
 }
 
-void QsciStyledText_Delete(QsciStyledText* self) {
-	delete self;
+void QsciStyledText_Delete(QsciStyledText* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QsciStyledText*>( self );
+	} else {
+		delete self;
+	}
 }
 

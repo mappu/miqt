@@ -15,7 +15,8 @@ import (
 )
 
 type QAuthenticator struct {
-	h *C.QAuthenticator
+	h          *C.QAuthenticator
+	isSubclass bool
 }
 
 func (this *QAuthenticator) cPointer() *C.QAuthenticator {
@@ -32,6 +33,7 @@ func (this *QAuthenticator) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAuthenticator constructs the type using only CGO pointers.
 func newQAuthenticator(h *C.QAuthenticator) *QAuthenticator {
 	if h == nil {
 		return nil
@@ -39,20 +41,33 @@ func newQAuthenticator(h *C.QAuthenticator) *QAuthenticator {
 	return &QAuthenticator{h: h}
 }
 
+// UnsafeNewQAuthenticator constructs the type using only unsafe pointers.
 func UnsafeNewQAuthenticator(h unsafe.Pointer) *QAuthenticator {
-	return newQAuthenticator((*C.QAuthenticator)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAuthenticator{h: (*C.QAuthenticator)(h)}
 }
 
 // NewQAuthenticator constructs a new QAuthenticator object.
 func NewQAuthenticator() *QAuthenticator {
-	ret := C.QAuthenticator_new()
-	return newQAuthenticator(ret)
+	var outptr_QAuthenticator *C.QAuthenticator = nil
+
+	C.QAuthenticator_new(&outptr_QAuthenticator)
+	ret := newQAuthenticator(outptr_QAuthenticator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAuthenticator2 constructs a new QAuthenticator object.
 func NewQAuthenticator2(other *QAuthenticator) *QAuthenticator {
-	ret := C.QAuthenticator_new2(other.cPointer())
-	return newQAuthenticator(ret)
+	var outptr_QAuthenticator *C.QAuthenticator = nil
+
+	C.QAuthenticator_new2(other.cPointer(), &outptr_QAuthenticator)
+	ret := newQAuthenticator(outptr_QAuthenticator)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QAuthenticator) OperatorAssign(other *QAuthenticator) {
@@ -161,7 +176,7 @@ func (this *QAuthenticator) Detach() {
 
 // Delete this object from C++ memory.
 func (this *QAuthenticator) Delete() {
-	C.QAuthenticator_Delete(this.h)
+	C.QAuthenticator_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

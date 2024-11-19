@@ -30,7 +30,8 @@ const (
 )
 
 type QIcon struct {
-	h *C.QIcon
+	h          *C.QIcon
+	isSubclass bool
 }
 
 func (this *QIcon) cPointer() *C.QIcon {
@@ -47,6 +48,7 @@ func (this *QIcon) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQIcon constructs the type using only CGO pointers.
 func newQIcon(h *C.QIcon) *QIcon {
 	if h == nil {
 		return nil
@@ -54,26 +56,43 @@ func newQIcon(h *C.QIcon) *QIcon {
 	return &QIcon{h: h}
 }
 
+// UnsafeNewQIcon constructs the type using only unsafe pointers.
 func UnsafeNewQIcon(h unsafe.Pointer) *QIcon {
-	return newQIcon((*C.QIcon)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QIcon{h: (*C.QIcon)(h)}
 }
 
 // NewQIcon constructs a new QIcon object.
 func NewQIcon() *QIcon {
-	ret := C.QIcon_new()
-	return newQIcon(ret)
+	var outptr_QIcon *C.QIcon = nil
+
+	C.QIcon_new(&outptr_QIcon)
+	ret := newQIcon(outptr_QIcon)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQIcon2 constructs a new QIcon object.
 func NewQIcon2(pixmap *QPixmap) *QIcon {
-	ret := C.QIcon_new2(pixmap.cPointer())
-	return newQIcon(ret)
+	var outptr_QIcon *C.QIcon = nil
+
+	C.QIcon_new2(pixmap.cPointer(), &outptr_QIcon)
+	ret := newQIcon(outptr_QIcon)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQIcon3 constructs a new QIcon object.
 func NewQIcon3(other *QIcon) *QIcon {
-	ret := C.QIcon_new3(other.cPointer())
-	return newQIcon(ret)
+	var outptr_QIcon *C.QIcon = nil
+
+	C.QIcon_new3(other.cPointer(), &outptr_QIcon)
+	ret := newQIcon(outptr_QIcon)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQIcon4 constructs a new QIcon object.
@@ -82,14 +101,22 @@ func NewQIcon4(fileName string) *QIcon {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	ret := C.QIcon_new4(fileName_ms)
-	return newQIcon(ret)
+	var outptr_QIcon *C.QIcon = nil
+
+	C.QIcon_new4(fileName_ms, &outptr_QIcon)
+	ret := newQIcon(outptr_QIcon)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQIcon5 constructs a new QIcon object.
 func NewQIcon5(engine *QIconEngine) *QIcon {
-	ret := C.QIcon_new5(engine.cPointer())
-	return newQIcon(ret)
+	var outptr_QIcon *C.QIcon = nil
+
+	C.QIcon_new5(engine.cPointer(), &outptr_QIcon)
+	ret := newQIcon(outptr_QIcon)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QIcon) OperatorAssign(other *QIcon) {
@@ -102,35 +129,35 @@ func (this *QIcon) Swap(other *QIcon) {
 
 func (this *QIcon) Pixmap(size *QSize) *QPixmap {
 	_ret := C.QIcon_Pixmap(this.h, size.cPointer())
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) Pixmap2(w int, h int) *QPixmap {
 	_ret := C.QIcon_Pixmap2(this.h, (C.int)(w), (C.int)(h))
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) PixmapWithExtent(extent int) *QPixmap {
 	_ret := C.QIcon_PixmapWithExtent(this.h, (C.int)(extent))
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) Pixmap3(size *QSize, devicePixelRatio float64) *QPixmap {
 	_ret := C.QIcon_Pixmap3(this.h, size.cPointer(), (C.double)(devicePixelRatio))
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) Pixmap4(window *QWindow, size *QSize) *QPixmap {
 	_ret := C.QIcon_Pixmap4(this.h, window.cPointer(), size.cPointer())
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -329,70 +356,70 @@ func QIcon_SetFallbackThemeName(name string) {
 
 func (this *QIcon) Pixmap22(size *QSize, mode QIcon__Mode) *QPixmap {
 	_ret := C.QIcon_Pixmap22(this.h, size.cPointer(), (C.int)(mode))
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) Pixmap32(size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
 	_ret := C.QIcon_Pixmap32(this.h, size.cPointer(), (C.int)(mode), (C.int)(state))
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) Pixmap33(w int, h int, mode QIcon__Mode) *QPixmap {
 	_ret := C.QIcon_Pixmap33(this.h, (C.int)(w), (C.int)(h), (C.int)(mode))
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) Pixmap42(w int, h int, mode QIcon__Mode, state QIcon__State) *QPixmap {
 	_ret := C.QIcon_Pixmap42(this.h, (C.int)(w), (C.int)(h), (C.int)(mode), (C.int)(state))
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) Pixmap23(extent int, mode QIcon__Mode) *QPixmap {
 	_ret := C.QIcon_Pixmap23(this.h, (C.int)(extent), (C.int)(mode))
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) Pixmap34(extent int, mode QIcon__Mode, state QIcon__State) *QPixmap {
 	_ret := C.QIcon_Pixmap34(this.h, (C.int)(extent), (C.int)(mode), (C.int)(state))
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) Pixmap35(size *QSize, devicePixelRatio float64, mode QIcon__Mode) *QPixmap {
 	_ret := C.QIcon_Pixmap35(this.h, size.cPointer(), (C.double)(devicePixelRatio), (C.int)(mode))
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) Pixmap43(size *QSize, devicePixelRatio float64, mode QIcon__Mode, state QIcon__State) *QPixmap {
 	_ret := C.QIcon_Pixmap43(this.h, size.cPointer(), (C.double)(devicePixelRatio), (C.int)(mode), (C.int)(state))
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) Pixmap36(window *QWindow, size *QSize, mode QIcon__Mode) *QPixmap {
 	_ret := C.QIcon_Pixmap36(this.h, window.cPointer(), size.cPointer(), (C.int)(mode))
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIcon) Pixmap44(window *QWindow, size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
 	_ret := C.QIcon_Pixmap44(this.h, window.cPointer(), size.cPointer(), (C.int)(mode), (C.int)(state))
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -509,7 +536,7 @@ func (this *QIcon) AvailableSizes2(mode QIcon__Mode, state QIcon__State) []QSize
 
 // Delete this object from C++ memory.
 func (this *QIcon) Delete() {
-	C.QIcon_Delete(this.h)
+	C.QIcon_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

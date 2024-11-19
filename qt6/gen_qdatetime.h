@@ -28,10 +28,10 @@ typedef struct QTime QTime;
 typedef struct QTimeZone QTimeZone;
 #endif
 
-QDate* QDate_new();
-QDate* QDate_new2(int y, int m, int d);
-QDate* QDate_new3(int y, int m, int d, QCalendar* cal);
-QDate* QDate_new4(QDate* param1);
+void QDate_new(QDate** outptr_QDate);
+void QDate_new2(int y, int m, int d, QDate** outptr_QDate);
+void QDate_new3(int y, int m, int d, QCalendar* cal, QDate** outptr_QDate);
+void QDate_new4(QDate* param1, QDate** outptr_QDate);
 bool QDate_IsNull(const QDate* self);
 bool QDate_IsValid(const QDate* self);
 int QDate_Year(const QDate* self);
@@ -80,13 +80,13 @@ struct miqt_string QDate_ToString1(const QDate* self, int format);
 struct miqt_string QDate_ToString22(const QDate* self, struct miqt_string format, QCalendar* cal);
 QDate* QDate_FromString23(struct miqt_string stringVal, int format);
 QDate* QDate_FromString34(struct miqt_string stringVal, struct miqt_string format, QCalendar* cal);
-void QDate_Delete(QDate* self);
+void QDate_Delete(QDate* self, bool isSubclass);
 
-QTime* QTime_new();
-QTime* QTime_new2(int h, int m);
-QTime* QTime_new3(QTime* param1);
-QTime* QTime_new4(int h, int m, int s);
-QTime* QTime_new5(int h, int m, int s, int ms);
+void QTime_new(QTime** outptr_QTime);
+void QTime_new2(int h, int m, QTime** outptr_QTime);
+void QTime_new3(QTime* param1, QTime** outptr_QTime);
+void QTime_new4(int h, int m, int s, QTime** outptr_QTime);
+void QTime_new5(int h, int m, int s, int ms, QTime** outptr_QTime);
 bool QTime_IsNull(const QTime* self);
 bool QTime_IsValid(const QTime* self);
 int QTime_Hour(const QTime* self);
@@ -110,14 +110,14 @@ struct miqt_string QTime_ToString1(const QTime* self, int f);
 bool QTime_SetHMS4(QTime* self, int h, int m, int s, int ms);
 QTime* QTime_FromString23(struct miqt_string stringVal, int format);
 bool QTime_IsValid4(int h, int m, int s, int ms);
-void QTime_Delete(QTime* self);
+void QTime_Delete(QTime* self, bool isSubclass);
 
-QDateTime* QDateTime_new();
-QDateTime* QDateTime_new2(QDate* date, QTime* time);
-QDateTime* QDateTime_new3(QDate* date, QTime* time, QTimeZone* timeZone);
-QDateTime* QDateTime_new4(QDateTime* other);
-QDateTime* QDateTime_new5(QDate* date, QTime* time, int spec);
-QDateTime* QDateTime_new6(QDate* date, QTime* time, int spec, int offsetSeconds);
+void QDateTime_new(QDateTime** outptr_QDateTime);
+void QDateTime_new2(QDate* date, QTime* time, QDateTime** outptr_QDateTime);
+void QDateTime_new3(QDate* date, QTime* time, QTimeZone* timeZone, QDateTime** outptr_QDateTime);
+void QDateTime_new4(QDateTime* other, QDateTime** outptr_QDateTime);
+void QDateTime_new5(QDate* date, QTime* time, int spec, QDateTime** outptr_QDateTime);
+void QDateTime_new6(QDate* date, QTime* time, int spec, int offsetSeconds, QDateTime** outptr_QDateTime);
 void QDateTime_OperatorAssign(QDateTime* self, QDateTime* other);
 void QDateTime_Swap(QDateTime* self, QDateTime* other);
 bool QDateTime_IsNull(const QDateTime* self);
@@ -171,7 +171,7 @@ QDateTime* QDateTime_FromMSecsSinceEpoch22(long long msecs, int spec);
 QDateTime* QDateTime_FromMSecsSinceEpoch3(long long msecs, int spec, int offsetFromUtc);
 QDateTime* QDateTime_FromSecsSinceEpoch22(long long secs, int spec);
 QDateTime* QDateTime_FromSecsSinceEpoch3(long long secs, int spec, int offsetFromUtc);
-void QDateTime_Delete(QDateTime* self);
+void QDateTime_Delete(QDateTime* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

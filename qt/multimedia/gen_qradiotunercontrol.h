@@ -15,10 +15,14 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QMediaControl;
 class QMetaObject;
+class QObject;
 class QRadioTunerControl;
 #else
+typedef struct QMediaControl QMediaControl;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 typedef struct QRadioTunerControl QRadioTunerControl;
 #endif
 
@@ -46,7 +50,7 @@ bool QRadioTunerControl_IsSearching(const QRadioTunerControl* self);
 bool QRadioTunerControl_IsAntennaConnected(const QRadioTunerControl* self);
 void QRadioTunerControl_SearchForward(QRadioTunerControl* self);
 void QRadioTunerControl_SearchBackward(QRadioTunerControl* self);
-void QRadioTunerControl_SearchAllStations(QRadioTunerControl* self);
+void QRadioTunerControl_SearchAllStations(QRadioTunerControl* self, int searchMode);
 void QRadioTunerControl_CancelSearch(QRadioTunerControl* self);
 void QRadioTunerControl_Start(QRadioTunerControl* self);
 void QRadioTunerControl_Stop(QRadioTunerControl* self);
@@ -78,8 +82,7 @@ struct miqt_string QRadioTunerControl_Tr2(const char* s, const char* c);
 struct miqt_string QRadioTunerControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QRadioTunerControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QRadioTunerControl_TrUtf83(const char* s, const char* c, int n);
-void QRadioTunerControl_SearchAllStations1(QRadioTunerControl* self, int searchMode);
-void QRadioTunerControl_Delete(QRadioTunerControl* self);
+void QRadioTunerControl_Delete(QRadioTunerControl* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

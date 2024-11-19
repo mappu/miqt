@@ -14,7 +14,8 @@ import (
 )
 
 type QBitArray struct {
-	h *C.QBitArray
+	h          *C.QBitArray
+	isSubclass bool
 }
 
 func (this *QBitArray) cPointer() *C.QBitArray {
@@ -31,6 +32,7 @@ func (this *QBitArray) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQBitArray constructs the type using only CGO pointers.
 func newQBitArray(h *C.QBitArray) *QBitArray {
 	if h == nil {
 		return nil
@@ -38,32 +40,53 @@ func newQBitArray(h *C.QBitArray) *QBitArray {
 	return &QBitArray{h: h}
 }
 
+// UnsafeNewQBitArray constructs the type using only unsafe pointers.
 func UnsafeNewQBitArray(h unsafe.Pointer) *QBitArray {
-	return newQBitArray((*C.QBitArray)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QBitArray{h: (*C.QBitArray)(h)}
 }
 
 // NewQBitArray constructs a new QBitArray object.
 func NewQBitArray() *QBitArray {
-	ret := C.QBitArray_new()
-	return newQBitArray(ret)
+	var outptr_QBitArray *C.QBitArray = nil
+
+	C.QBitArray_new(&outptr_QBitArray)
+	ret := newQBitArray(outptr_QBitArray)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQBitArray2 constructs a new QBitArray object.
 func NewQBitArray2(size int) *QBitArray {
-	ret := C.QBitArray_new2((C.int)(size))
-	return newQBitArray(ret)
+	var outptr_QBitArray *C.QBitArray = nil
+
+	C.QBitArray_new2((C.int)(size), &outptr_QBitArray)
+	ret := newQBitArray(outptr_QBitArray)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQBitArray3 constructs a new QBitArray object.
 func NewQBitArray3(other *QBitArray) *QBitArray {
-	ret := C.QBitArray_new3(other.cPointer())
-	return newQBitArray(ret)
+	var outptr_QBitArray *C.QBitArray = nil
+
+	C.QBitArray_new3(other.cPointer(), &outptr_QBitArray)
+	ret := newQBitArray(outptr_QBitArray)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQBitArray4 constructs a new QBitArray object.
 func NewQBitArray4(size int, val bool) *QBitArray {
-	ret := C.QBitArray_new4((C.int)(size), (C.bool)(val))
-	return newQBitArray(ret)
+	var outptr_QBitArray *C.QBitArray = nil
+
+	C.QBitArray_new4((C.int)(size), (C.bool)(val), &outptr_QBitArray)
+	ret := newQBitArray(outptr_QBitArray)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QBitArray) OperatorAssign(other *QBitArray) {
@@ -208,7 +231,7 @@ func (this *QBitArray) Fill22(val bool, size int) bool {
 
 // Delete this object from C++ memory.
 func (this *QBitArray) Delete() {
-	C.QBitArray_Delete(this.h)
+	C.QBitArray_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -221,7 +244,8 @@ func (this *QBitArray) GoGC() {
 }
 
 type QBitRef struct {
-	h *C.QBitRef
+	h          *C.QBitRef
+	isSubclass bool
 }
 
 func (this *QBitRef) cPointer() *C.QBitRef {
@@ -238,6 +262,7 @@ func (this *QBitRef) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQBitRef constructs the type using only CGO pointers.
 func newQBitRef(h *C.QBitRef) *QBitRef {
 	if h == nil {
 		return nil
@@ -245,14 +270,23 @@ func newQBitRef(h *C.QBitRef) *QBitRef {
 	return &QBitRef{h: h}
 }
 
+// UnsafeNewQBitRef constructs the type using only unsafe pointers.
 func UnsafeNewQBitRef(h unsafe.Pointer) *QBitRef {
-	return newQBitRef((*C.QBitRef)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QBitRef{h: (*C.QBitRef)(h)}
 }
 
 // NewQBitRef constructs a new QBitRef object.
 func NewQBitRef(param1 *QBitRef) *QBitRef {
-	ret := C.QBitRef_new(param1.cPointer())
-	return newQBitRef(ret)
+	var outptr_QBitRef *C.QBitRef = nil
+
+	C.QBitRef_new(param1.cPointer(), &outptr_QBitRef)
+	ret := newQBitRef(outptr_QBitRef)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QBitRef) OperatorNot() bool {
@@ -269,7 +303,7 @@ func (this *QBitRef) OperatorAssignWithVal(val bool) {
 
 // Delete this object from C++ memory.
 func (this *QBitRef) Delete() {
-	C.QBitRef_Delete(this.h)
+	C.QBitRef_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

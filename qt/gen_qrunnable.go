@@ -14,7 +14,8 @@ import (
 )
 
 type QRunnable struct {
-	h *C.QRunnable
+	h          *C.QRunnable
+	isSubclass bool
 }
 
 func (this *QRunnable) cPointer() *C.QRunnable {
@@ -31,6 +32,7 @@ func (this *QRunnable) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQRunnable constructs the type using only CGO pointers.
 func newQRunnable(h *C.QRunnable) *QRunnable {
 	if h == nil {
 		return nil
@@ -38,8 +40,13 @@ func newQRunnable(h *C.QRunnable) *QRunnable {
 	return &QRunnable{h: h}
 }
 
+// UnsafeNewQRunnable constructs the type using only unsafe pointers.
 func UnsafeNewQRunnable(h unsafe.Pointer) *QRunnable {
-	return newQRunnable((*C.QRunnable)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QRunnable{h: (*C.QRunnable)(h)}
 }
 
 func (this *QRunnable) Run() {
@@ -60,7 +67,7 @@ func (this *QRunnable) OperatorAssign(param1 *QRunnable) {
 
 // Delete this object from C++ memory.
 func (this *QRunnable) Delete() {
-	C.QRunnable_Delete(this.h)
+	C.QRunnable_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

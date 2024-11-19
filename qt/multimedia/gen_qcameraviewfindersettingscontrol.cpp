@@ -2,7 +2,9 @@
 #include <QCameraViewfinderSettingsControl>
 #include <QCameraViewfinderSettingsControl2>
 #include <QList>
+#include <QMediaControl>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -97,8 +99,12 @@ struct miqt_string QCameraViewfinderSettingsControl_TrUtf83(const char* s, const
 	return _ms;
 }
 
-void QCameraViewfinderSettingsControl_Delete(QCameraViewfinderSettingsControl* self) {
-	delete self;
+void QCameraViewfinderSettingsControl_Delete(QCameraViewfinderSettingsControl* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QCameraViewfinderSettingsControl*>( self );
+	} else {
+		delete self;
+	}
 }
 
 QMetaObject* QCameraViewfinderSettingsControl2_MetaObject(const QCameraViewfinderSettingsControl2* self) {
@@ -196,7 +202,11 @@ struct miqt_string QCameraViewfinderSettingsControl2_TrUtf83(const char* s, cons
 	return _ms;
 }
 
-void QCameraViewfinderSettingsControl2_Delete(QCameraViewfinderSettingsControl2* self) {
-	delete self;
+void QCameraViewfinderSettingsControl2_Delete(QCameraViewfinderSettingsControl2* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QCameraViewfinderSettingsControl2*>( self );
+	} else {
+		delete self;
+	}
 }
 

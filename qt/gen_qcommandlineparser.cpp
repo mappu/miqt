@@ -9,8 +9,9 @@
 #include "gen_qcommandlineparser.h"
 #include "_cgo_export.h"
 
-QCommandLineParser* QCommandLineParser_new() {
-	return new QCommandLineParser();
+void QCommandLineParser_new(QCommandLineParser** outptr_QCommandLineParser) {
+	QCommandLineParser* ret = new QCommandLineParser();
+	*outptr_QCommandLineParser = ret;
 }
 
 struct miqt_string QCommandLineParser_Tr(const char* sourceText) {
@@ -323,7 +324,11 @@ void QCommandLineParser_AddPositionalArgument3(QCommandLineParser* self, struct 
 	self->addPositionalArgument(name_QString, description_QString, syntax_QString);
 }
 
-void QCommandLineParser_Delete(QCommandLineParser* self) {
-	delete self;
+void QCommandLineParser_Delete(QCommandLineParser* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QCommandLineParser*>( self );
+	} else {
+		delete self;
+	}
 }
 

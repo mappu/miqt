@@ -15,7 +15,8 @@ import (
 )
 
 type QCborArray struct {
-	h *C.QCborArray
+	h          *C.QCborArray
+	isSubclass bool
 }
 
 func (this *QCborArray) cPointer() *C.QCborArray {
@@ -32,6 +33,7 @@ func (this *QCborArray) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCborArray constructs the type using only CGO pointers.
 func newQCborArray(h *C.QCborArray) *QCborArray {
 	if h == nil {
 		return nil
@@ -39,20 +41,33 @@ func newQCborArray(h *C.QCborArray) *QCborArray {
 	return &QCborArray{h: h}
 }
 
+// UnsafeNewQCborArray constructs the type using only unsafe pointers.
 func UnsafeNewQCborArray(h unsafe.Pointer) *QCborArray {
-	return newQCborArray((*C.QCborArray)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCborArray{h: (*C.QCborArray)(h)}
 }
 
 // NewQCborArray constructs a new QCborArray object.
 func NewQCborArray() *QCborArray {
-	ret := C.QCborArray_new()
-	return newQCborArray(ret)
+	var outptr_QCborArray *C.QCborArray = nil
+
+	C.QCborArray_new(&outptr_QCborArray)
+	ret := newQCborArray(outptr_QCborArray)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborArray2 constructs a new QCborArray object.
 func NewQCborArray2(other *QCborArray) *QCborArray {
-	ret := C.QCborArray_new2(other.cPointer())
-	return newQCborArray(ret)
+	var outptr_QCborArray *C.QCborArray = nil
+
+	C.QCborArray_new2(other.cPointer(), &outptr_QCborArray)
+	ret := newQCborArray(outptr_QCborArray)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QCborArray) OperatorAssign(other *QCborArray) {
@@ -362,7 +377,7 @@ func (this *QCborArray) ToJsonArray() *qt.QJsonArray {
 
 // Delete this object from C++ memory.
 func (this *QCborArray) Delete() {
-	C.QCborArray_Delete(this.h)
+	C.QCborArray_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -375,7 +390,8 @@ func (this *QCborArray) GoGC() {
 }
 
 type QCborArray__Iterator struct {
-	h *C.QCborArray__Iterator
+	h          *C.QCborArray__Iterator
+	isSubclass bool
 }
 
 func (this *QCborArray__Iterator) cPointer() *C.QCborArray__Iterator {
@@ -392,6 +408,7 @@ func (this *QCborArray__Iterator) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCborArray__Iterator constructs the type using only CGO pointers.
 func newQCborArray__Iterator(h *C.QCborArray__Iterator) *QCborArray__Iterator {
 	if h == nil {
 		return nil
@@ -399,20 +416,33 @@ func newQCborArray__Iterator(h *C.QCborArray__Iterator) *QCborArray__Iterator {
 	return &QCborArray__Iterator{h: h}
 }
 
+// UnsafeNewQCborArray__Iterator constructs the type using only unsafe pointers.
 func UnsafeNewQCborArray__Iterator(h unsafe.Pointer) *QCborArray__Iterator {
-	return newQCborArray__Iterator((*C.QCborArray__Iterator)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCborArray__Iterator{h: (*C.QCborArray__Iterator)(h)}
 }
 
 // NewQCborArray__Iterator constructs a new QCborArray::Iterator object.
 func NewQCborArray__Iterator() *QCborArray__Iterator {
-	ret := C.QCborArray__Iterator_new()
-	return newQCborArray__Iterator(ret)
+	var outptr_QCborArray__Iterator *C.QCborArray__Iterator = nil
+
+	C.QCborArray__Iterator_new(&outptr_QCborArray__Iterator)
+	ret := newQCborArray__Iterator(outptr_QCborArray__Iterator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborArray__Iterator2 constructs a new QCborArray::Iterator object.
 func NewQCborArray__Iterator2(param1 *QCborArray__Iterator) *QCborArray__Iterator {
-	ret := C.QCborArray__Iterator_new2(param1.cPointer())
-	return newQCborArray__Iterator(ret)
+	var outptr_QCborArray__Iterator *C.QCborArray__Iterator = nil
+
+	C.QCborArray__Iterator_new2(param1.cPointer(), &outptr_QCborArray__Iterator)
+	ret := newQCborArray__Iterator(outptr_QCborArray__Iterator)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QCborArray__Iterator) OperatorAssign(other *QCborArray__Iterator) {
@@ -535,7 +565,7 @@ func (this *QCborArray__Iterator) OperatorMinusWithQCborArrayIterator(j QCborArr
 
 // Delete this object from C++ memory.
 func (this *QCborArray__Iterator) Delete() {
-	C.QCborArray__Iterator_Delete(this.h)
+	C.QCborArray__Iterator_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -548,7 +578,8 @@ func (this *QCborArray__Iterator) GoGC() {
 }
 
 type QCborArray__ConstIterator struct {
-	h *C.QCborArray__ConstIterator
+	h          *C.QCborArray__ConstIterator
+	isSubclass bool
 }
 
 func (this *QCborArray__ConstIterator) cPointer() *C.QCborArray__ConstIterator {
@@ -565,6 +596,7 @@ func (this *QCborArray__ConstIterator) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCborArray__ConstIterator constructs the type using only CGO pointers.
 func newQCborArray__ConstIterator(h *C.QCborArray__ConstIterator) *QCborArray__ConstIterator {
 	if h == nil {
 		return nil
@@ -572,20 +604,33 @@ func newQCborArray__ConstIterator(h *C.QCborArray__ConstIterator) *QCborArray__C
 	return &QCborArray__ConstIterator{h: h}
 }
 
+// UnsafeNewQCborArray__ConstIterator constructs the type using only unsafe pointers.
 func UnsafeNewQCborArray__ConstIterator(h unsafe.Pointer) *QCborArray__ConstIterator {
-	return newQCborArray__ConstIterator((*C.QCborArray__ConstIterator)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCborArray__ConstIterator{h: (*C.QCborArray__ConstIterator)(h)}
 }
 
 // NewQCborArray__ConstIterator constructs a new QCborArray::ConstIterator object.
 func NewQCborArray__ConstIterator() *QCborArray__ConstIterator {
-	ret := C.QCborArray__ConstIterator_new()
-	return newQCborArray__ConstIterator(ret)
+	var outptr_QCborArray__ConstIterator *C.QCborArray__ConstIterator = nil
+
+	C.QCborArray__ConstIterator_new(&outptr_QCborArray__ConstIterator)
+	ret := newQCborArray__ConstIterator(outptr_QCborArray__ConstIterator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborArray__ConstIterator2 constructs a new QCborArray::ConstIterator object.
 func NewQCborArray__ConstIterator2(param1 *QCborArray__ConstIterator) *QCborArray__ConstIterator {
-	ret := C.QCborArray__ConstIterator_new2(param1.cPointer())
-	return newQCborArray__ConstIterator(ret)
+	var outptr_QCborArray__ConstIterator *C.QCborArray__ConstIterator = nil
+
+	C.QCborArray__ConstIterator_new2(param1.cPointer(), &outptr_QCborArray__ConstIterator)
+	ret := newQCborArray__ConstIterator(outptr_QCborArray__ConstIterator)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QCborArray__ConstIterator) OperatorAssign(other *QCborArray__ConstIterator) {
@@ -708,7 +753,7 @@ func (this *QCborArray__ConstIterator) OperatorMinusWithQCborArrayConstIterator(
 
 // Delete this object from C++ memory.
 func (this *QCborArray__ConstIterator) Delete() {
-	C.QCborArray__ConstIterator_Delete(this.h)
+	C.QCborArray__ConstIterator_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

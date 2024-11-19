@@ -3,6 +3,8 @@
 #include <QAudioFormat>
 #include <QIODevice>
 #include <QList>
+#include <QMediaObject>
+#include <QMediaService>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>
@@ -12,12 +14,142 @@
 #include "gen_qaudiodecoder.h"
 #include "_cgo_export.h"
 
-QAudioDecoder* QAudioDecoder_new() {
-	return new QAudioDecoder();
+class MiqtVirtualQAudioDecoder : public virtual QAudioDecoder {
+public:
+
+	MiqtVirtualQAudioDecoder(): QAudioDecoder() {};
+	MiqtVirtualQAudioDecoder(QObject* parent): QAudioDecoder(parent) {};
+
+	virtual ~MiqtVirtualQAudioDecoder() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Bind = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool bind(QObject* param1) override {
+		if (handle__Bind == 0) {
+			return QAudioDecoder::bind(param1);
+		}
+		
+		QObject* sigval1 = param1;
+
+		bool callback_return_value = miqt_exec_callback_QAudioDecoder_Bind(this, handle__Bind, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Bind(QObject* param1) {
+
+		return QAudioDecoder::bind(param1);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Unbind = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void unbind(QObject* param1) override {
+		if (handle__Unbind == 0) {
+			QAudioDecoder::unbind(param1);
+			return;
+		}
+		
+		QObject* sigval1 = param1;
+
+		miqt_exec_callback_QAudioDecoder_Unbind(this, handle__Unbind, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_Unbind(QObject* param1) {
+
+		QAudioDecoder::unbind(param1);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__IsAvailable = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool isAvailable() const override {
+		if (handle__IsAvailable == 0) {
+			return QAudioDecoder::isAvailable();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QAudioDecoder_IsAvailable(const_cast<MiqtVirtualQAudioDecoder*>(this), handle__IsAvailable);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_IsAvailable() const {
+
+		return QAudioDecoder::isAvailable();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Availability = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QMultimedia::AvailabilityStatus availability() const override {
+		if (handle__Availability == 0) {
+			return QAudioDecoder::availability();
+		}
+		
+
+		int callback_return_value = miqt_exec_callback_QAudioDecoder_Availability(const_cast<MiqtVirtualQAudioDecoder*>(this), handle__Availability);
+
+		return static_cast<QMultimedia::AvailabilityStatus>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_Availability() const {
+
+		QMultimedia::AvailabilityStatus _ret = QAudioDecoder::availability();
+		return static_cast<int>(_ret);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Service = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QMediaService* service() const override {
+		if (handle__Service == 0) {
+			return QAudioDecoder::service();
+		}
+		
+
+		QMediaService* callback_return_value = miqt_exec_callback_QAudioDecoder_Service(const_cast<MiqtVirtualQAudioDecoder*>(this), handle__Service);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMediaService* virtualbase_Service() const {
+
+		return QAudioDecoder::service();
+
+	}
+
+};
+
+void QAudioDecoder_new(QAudioDecoder** outptr_QAudioDecoder, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject) {
+	MiqtVirtualQAudioDecoder* ret = new MiqtVirtualQAudioDecoder();
+	*outptr_QAudioDecoder = ret;
+	*outptr_QMediaObject = static_cast<QMediaObject*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QAudioDecoder* QAudioDecoder_new2(QObject* parent) {
-	return new QAudioDecoder(parent);
+void QAudioDecoder_new2(QObject* parent, QAudioDecoder** outptr_QAudioDecoder, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject) {
+	MiqtVirtualQAudioDecoder* ret = new MiqtVirtualQAudioDecoder(parent);
+	*outptr_QAudioDecoder = ret;
+	*outptr_QMediaObject = static_cast<QMediaObject*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QAudioDecoder_MetaObject(const QAudioDecoder* self) {
@@ -140,7 +272,7 @@ void QAudioDecoder_BufferAvailableChanged(QAudioDecoder* self, bool param1) {
 }
 
 void QAudioDecoder_connect_BufferAvailableChanged(QAudioDecoder* self, intptr_t slot) {
-	QAudioDecoder::connect(self, static_cast<void (QAudioDecoder::*)(bool)>(&QAudioDecoder::bufferAvailableChanged), self, [=](bool param1) {
+	MiqtVirtualQAudioDecoder::connect(self, static_cast<void (QAudioDecoder::*)(bool)>(&QAudioDecoder::bufferAvailableChanged), self, [=](bool param1) {
 		bool sigval1 = param1;
 		miqt_exec_callback_QAudioDecoder_BufferAvailableChanged(slot, sigval1);
 	});
@@ -151,7 +283,7 @@ void QAudioDecoder_BufferReady(QAudioDecoder* self) {
 }
 
 void QAudioDecoder_connect_BufferReady(QAudioDecoder* self, intptr_t slot) {
-	QAudioDecoder::connect(self, static_cast<void (QAudioDecoder::*)()>(&QAudioDecoder::bufferReady), self, [=]() {
+	MiqtVirtualQAudioDecoder::connect(self, static_cast<void (QAudioDecoder::*)()>(&QAudioDecoder::bufferReady), self, [=]() {
 		miqt_exec_callback_QAudioDecoder_BufferReady(slot);
 	});
 }
@@ -161,7 +293,7 @@ void QAudioDecoder_Finished(QAudioDecoder* self) {
 }
 
 void QAudioDecoder_connect_Finished(QAudioDecoder* self, intptr_t slot) {
-	QAudioDecoder::connect(self, static_cast<void (QAudioDecoder::*)()>(&QAudioDecoder::finished), self, [=]() {
+	MiqtVirtualQAudioDecoder::connect(self, static_cast<void (QAudioDecoder::*)()>(&QAudioDecoder::finished), self, [=]() {
 		miqt_exec_callback_QAudioDecoder_Finished(slot);
 	});
 }
@@ -171,7 +303,7 @@ void QAudioDecoder_StateChanged(QAudioDecoder* self, int newState) {
 }
 
 void QAudioDecoder_connect_StateChanged(QAudioDecoder* self, intptr_t slot) {
-	QAudioDecoder::connect(self, static_cast<void (QAudioDecoder::*)(QAudioDecoder::State)>(&QAudioDecoder::stateChanged), self, [=](QAudioDecoder::State newState) {
+	MiqtVirtualQAudioDecoder::connect(self, static_cast<void (QAudioDecoder::*)(QAudioDecoder::State)>(&QAudioDecoder::stateChanged), self, [=](QAudioDecoder::State newState) {
 		QAudioDecoder::State newState_ret = newState;
 		int sigval1 = static_cast<int>(newState_ret);
 		miqt_exec_callback_QAudioDecoder_StateChanged(slot, sigval1);
@@ -183,7 +315,7 @@ void QAudioDecoder_FormatChanged(QAudioDecoder* self, QAudioFormat* format) {
 }
 
 void QAudioDecoder_connect_FormatChanged(QAudioDecoder* self, intptr_t slot) {
-	QAudioDecoder::connect(self, static_cast<void (QAudioDecoder::*)(const QAudioFormat&)>(&QAudioDecoder::formatChanged), self, [=](const QAudioFormat& format) {
+	MiqtVirtualQAudioDecoder::connect(self, static_cast<void (QAudioDecoder::*)(const QAudioFormat&)>(&QAudioDecoder::formatChanged), self, [=](const QAudioFormat& format) {
 		const QAudioFormat& format_ret = format;
 		// Cast returned reference into pointer
 		QAudioFormat* sigval1 = const_cast<QAudioFormat*>(&format_ret);
@@ -196,7 +328,7 @@ void QAudioDecoder_ErrorWithError(QAudioDecoder* self, int error) {
 }
 
 void QAudioDecoder_connect_ErrorWithError(QAudioDecoder* self, intptr_t slot) {
-	QAudioDecoder::connect(self, static_cast<void (QAudioDecoder::*)(QAudioDecoder::Error)>(&QAudioDecoder::error), self, [=](QAudioDecoder::Error error) {
+	MiqtVirtualQAudioDecoder::connect(self, static_cast<void (QAudioDecoder::*)(QAudioDecoder::Error)>(&QAudioDecoder::error), self, [=](QAudioDecoder::Error error) {
 		QAudioDecoder::Error error_ret = error;
 		int sigval1 = static_cast<int>(error_ret);
 		miqt_exec_callback_QAudioDecoder_ErrorWithError(slot, sigval1);
@@ -208,7 +340,7 @@ void QAudioDecoder_SourceChanged(QAudioDecoder* self) {
 }
 
 void QAudioDecoder_connect_SourceChanged(QAudioDecoder* self, intptr_t slot) {
-	QAudioDecoder::connect(self, static_cast<void (QAudioDecoder::*)()>(&QAudioDecoder::sourceChanged), self, [=]() {
+	MiqtVirtualQAudioDecoder::connect(self, static_cast<void (QAudioDecoder::*)()>(&QAudioDecoder::sourceChanged), self, [=]() {
 		miqt_exec_callback_QAudioDecoder_SourceChanged(slot);
 	});
 }
@@ -218,7 +350,7 @@ void QAudioDecoder_PositionChanged(QAudioDecoder* self, long long position) {
 }
 
 void QAudioDecoder_connect_PositionChanged(QAudioDecoder* self, intptr_t slot) {
-	QAudioDecoder::connect(self, static_cast<void (QAudioDecoder::*)(qint64)>(&QAudioDecoder::positionChanged), self, [=](qint64 position) {
+	MiqtVirtualQAudioDecoder::connect(self, static_cast<void (QAudioDecoder::*)(qint64)>(&QAudioDecoder::positionChanged), self, [=](qint64 position) {
 		qint64 position_ret = position;
 		long long sigval1 = static_cast<long long>(position_ret);
 		miqt_exec_callback_QAudioDecoder_PositionChanged(slot, sigval1);
@@ -230,7 +362,7 @@ void QAudioDecoder_DurationChanged(QAudioDecoder* self, long long duration) {
 }
 
 void QAudioDecoder_connect_DurationChanged(QAudioDecoder* self, intptr_t slot) {
-	QAudioDecoder::connect(self, static_cast<void (QAudioDecoder::*)(qint64)>(&QAudioDecoder::durationChanged), self, [=](qint64 duration) {
+	MiqtVirtualQAudioDecoder::connect(self, static_cast<void (QAudioDecoder::*)(qint64)>(&QAudioDecoder::durationChanged), self, [=](qint64 duration) {
 		qint64 duration_ret = duration;
 		long long sigval1 = static_cast<long long>(duration_ret);
 		miqt_exec_callback_QAudioDecoder_DurationChanged(slot, sigval1);
@@ -302,7 +434,51 @@ int QAudioDecoder_HasSupport2(struct miqt_string mimeType, struct miqt_array /* 
 	return static_cast<int>(_ret);
 }
 
-void QAudioDecoder_Delete(QAudioDecoder* self) {
-	delete self;
+void QAudioDecoder_override_virtual_Bind(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) )->handle__Bind = slot;
+}
+
+bool QAudioDecoder_virtualbase_Bind(void* self, QObject* param1) {
+	return ( (MiqtVirtualQAudioDecoder*)(self) )->virtualbase_Bind(param1);
+}
+
+void QAudioDecoder_override_virtual_Unbind(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) )->handle__Unbind = slot;
+}
+
+void QAudioDecoder_virtualbase_Unbind(void* self, QObject* param1) {
+	( (MiqtVirtualQAudioDecoder*)(self) )->virtualbase_Unbind(param1);
+}
+
+void QAudioDecoder_override_virtual_IsAvailable(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) )->handle__IsAvailable = slot;
+}
+
+bool QAudioDecoder_virtualbase_IsAvailable(const void* self) {
+	return ( (const MiqtVirtualQAudioDecoder*)(self) )->virtualbase_IsAvailable();
+}
+
+void QAudioDecoder_override_virtual_Availability(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) )->handle__Availability = slot;
+}
+
+int QAudioDecoder_virtualbase_Availability(const void* self) {
+	return ( (const MiqtVirtualQAudioDecoder*)(self) )->virtualbase_Availability();
+}
+
+void QAudioDecoder_override_virtual_Service(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) )->handle__Service = slot;
+}
+
+QMediaService* QAudioDecoder_virtualbase_Service(const void* self) {
+	return ( (const MiqtVirtualQAudioDecoder*)(self) )->virtualbase_Service();
+}
+
+void QAudioDecoder_Delete(QAudioDecoder* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQAudioDecoder*>( self );
+	} else {
+		delete self;
+	}
 }
 

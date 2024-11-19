@@ -216,7 +216,8 @@ const (
 )
 
 type QAccessible struct {
-	h *C.QAccessible
+	h          *C.QAccessible
+	isSubclass bool
 }
 
 func (this *QAccessible) cPointer() *C.QAccessible {
@@ -233,6 +234,7 @@ func (this *QAccessible) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAccessible constructs the type using only CGO pointers.
 func newQAccessible(h *C.QAccessible) *QAccessible {
 	if h == nil {
 		return nil
@@ -240,8 +242,13 @@ func newQAccessible(h *C.QAccessible) *QAccessible {
 	return &QAccessible{h: h}
 }
 
+// UnsafeNewQAccessible constructs the type using only unsafe pointers.
 func UnsafeNewQAccessible(h unsafe.Pointer) *QAccessible {
-	return newQAccessible((*C.QAccessible)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessible{h: (*C.QAccessible)(h)}
 }
 
 func QAccessible_InstallActivationObserver(param1 *QAccessible__ActivationObserver) {
@@ -311,7 +318,7 @@ func QAccessible_QAccessibleTextBoundaryHelper(cursor *QTextCursor, boundaryType
 
 // Delete this object from C++ memory.
 func (this *QAccessible) Delete() {
-	C.QAccessible_Delete(this.h)
+	C.QAccessible_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -324,7 +331,8 @@ func (this *QAccessible) GoGC() {
 }
 
 type QAccessible__State struct {
-	h *C.QAccessible__State
+	h          *C.QAccessible__State
+	isSubclass bool
 }
 
 func (this *QAccessible__State) cPointer() *C.QAccessible__State {
@@ -341,6 +349,7 @@ func (this *QAccessible__State) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAccessible__State constructs the type using only CGO pointers.
 func newQAccessible__State(h *C.QAccessible__State) *QAccessible__State {
 	if h == nil {
 		return nil
@@ -348,19 +357,28 @@ func newQAccessible__State(h *C.QAccessible__State) *QAccessible__State {
 	return &QAccessible__State{h: h}
 }
 
+// UnsafeNewQAccessible__State constructs the type using only unsafe pointers.
 func UnsafeNewQAccessible__State(h unsafe.Pointer) *QAccessible__State {
-	return newQAccessible__State((*C.QAccessible__State)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessible__State{h: (*C.QAccessible__State)(h)}
 }
 
 // NewQAccessible__State constructs a new QAccessible::State object.
 func NewQAccessible__State() *QAccessible__State {
-	ret := C.QAccessible__State_new()
-	return newQAccessible__State(ret)
+	var outptr_QAccessible__State *C.QAccessible__State = nil
+
+	C.QAccessible__State_new(&outptr_QAccessible__State)
+	ret := newQAccessible__State(outptr_QAccessible__State)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QAccessible__State) Delete() {
-	C.QAccessible__State_Delete(this.h)
+	C.QAccessible__State_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -373,7 +391,8 @@ func (this *QAccessible__State) GoGC() {
 }
 
 type QAccessible__ActivationObserver struct {
-	h *C.QAccessible__ActivationObserver
+	h          *C.QAccessible__ActivationObserver
+	isSubclass bool
 }
 
 func (this *QAccessible__ActivationObserver) cPointer() *C.QAccessible__ActivationObserver {
@@ -390,6 +409,7 @@ func (this *QAccessible__ActivationObserver) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAccessible__ActivationObserver constructs the type using only CGO pointers.
 func newQAccessible__ActivationObserver(h *C.QAccessible__ActivationObserver) *QAccessible__ActivationObserver {
 	if h == nil {
 		return nil
@@ -397,8 +417,13 @@ func newQAccessible__ActivationObserver(h *C.QAccessible__ActivationObserver) *Q
 	return &QAccessible__ActivationObserver{h: h}
 }
 
+// UnsafeNewQAccessible__ActivationObserver constructs the type using only unsafe pointers.
 func UnsafeNewQAccessible__ActivationObserver(h unsafe.Pointer) *QAccessible__ActivationObserver {
-	return newQAccessible__ActivationObserver((*C.QAccessible__ActivationObserver)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAccessible__ActivationObserver{h: (*C.QAccessible__ActivationObserver)(h)}
 }
 
 func (this *QAccessible__ActivationObserver) AccessibilityActiveChanged(active bool) {
@@ -411,7 +436,7 @@ func (this *QAccessible__ActivationObserver) OperatorAssign(param1 *QAccessible_
 
 // Delete this object from C++ memory.
 func (this *QAccessible__ActivationObserver) Delete() {
-	C.QAccessible__ActivationObserver_Delete(this.h)
+	C.QAccessible__ActivationObserver_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

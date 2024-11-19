@@ -16,10 +16,14 @@ extern "C" {
 
 #ifdef __cplusplus
 class QCustomAudioRoleControl;
+class QMediaControl;
 class QMetaObject;
+class QObject;
 #else
 typedef struct QCustomAudioRoleControl QCustomAudioRoleControl;
+typedef struct QMediaControl QMediaControl;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 #endif
 
 QMetaObject* QCustomAudioRoleControl_MetaObject(const QCustomAudioRoleControl* self);
@@ -35,7 +39,7 @@ struct miqt_string QCustomAudioRoleControl_Tr2(const char* s, const char* c);
 struct miqt_string QCustomAudioRoleControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QCustomAudioRoleControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QCustomAudioRoleControl_TrUtf83(const char* s, const char* c, int n);
-void QCustomAudioRoleControl_Delete(QCustomAudioRoleControl* self);
+void QCustomAudioRoleControl_Delete(QCustomAudioRoleControl* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

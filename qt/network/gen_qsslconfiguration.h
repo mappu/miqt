@@ -34,8 +34,8 @@ typedef struct QSslKey QSslKey;
 typedef struct QVariant QVariant;
 #endif
 
-QSslConfiguration* QSslConfiguration_new();
-QSslConfiguration* QSslConfiguration_new2(QSslConfiguration* other);
+void QSslConfiguration_new(QSslConfiguration** outptr_QSslConfiguration);
+void QSslConfiguration_new2(QSslConfiguration* other, QSslConfiguration** outptr_QSslConfiguration);
 void QSslConfiguration_OperatorAssign(QSslConfiguration* self, QSslConfiguration* other);
 void QSslConfiguration_Swap(QSslConfiguration* self, QSslConfiguration* other);
 bool QSslConfiguration_OperatorEqual(const QSslConfiguration* self, QSslConfiguration* other);
@@ -95,7 +95,7 @@ struct miqt_string QSslConfiguration_NextNegotiatedProtocol(const QSslConfigurat
 int QSslConfiguration_NextProtocolNegotiationStatus(const QSslConfiguration* self);
 bool QSslConfiguration_AddCaCertificates2(QSslConfiguration* self, struct miqt_string path, int format);
 bool QSslConfiguration_AddCaCertificates3(QSslConfiguration* self, struct miqt_string path, int format, int syntax);
-void QSslConfiguration_Delete(QSslConfiguration* self);
+void QSslConfiguration_Delete(QSslConfiguration* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

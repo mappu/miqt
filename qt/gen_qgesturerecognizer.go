@@ -27,7 +27,8 @@ const (
 )
 
 type QGestureRecognizer struct {
-	h *C.QGestureRecognizer
+	h          *C.QGestureRecognizer
+	isSubclass bool
 }
 
 func (this *QGestureRecognizer) cPointer() *C.QGestureRecognizer {
@@ -44,6 +45,7 @@ func (this *QGestureRecognizer) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQGestureRecognizer constructs the type using only CGO pointers.
 func newQGestureRecognizer(h *C.QGestureRecognizer) *QGestureRecognizer {
 	if h == nil {
 		return nil
@@ -51,12 +53,17 @@ func newQGestureRecognizer(h *C.QGestureRecognizer) *QGestureRecognizer {
 	return &QGestureRecognizer{h: h}
 }
 
+// UnsafeNewQGestureRecognizer constructs the type using only unsafe pointers.
 func UnsafeNewQGestureRecognizer(h unsafe.Pointer) *QGestureRecognizer {
-	return newQGestureRecognizer((*C.QGestureRecognizer)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QGestureRecognizer{h: (*C.QGestureRecognizer)(h)}
 }
 
 func (this *QGestureRecognizer) Create(target *QObject) *QGesture {
-	return UnsafeNewQGesture(unsafe.Pointer(C.QGestureRecognizer_Create(this.h, target.cPointer())))
+	return UnsafeNewQGesture(unsafe.Pointer(C.QGestureRecognizer_Create(this.h, target.cPointer())), nil)
 }
 
 func (this *QGestureRecognizer) Recognize(state *QGesture, watched *QObject, event *QEvent) QGestureRecognizer__ResultFlag {
@@ -81,7 +88,7 @@ func (this *QGestureRecognizer) OperatorAssign(param1 *QGestureRecognizer) {
 
 // Delete this object from C++ memory.
 func (this *QGestureRecognizer) Delete() {
-	C.QGestureRecognizer_Delete(this.h)
+	C.QGestureRecognizer_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -45,12 +45,12 @@ void QValidator_Changed(QValidator* self);
 void QValidator_connect_Changed(QValidator* self, intptr_t slot);
 struct miqt_string QValidator_Tr2(const char* s, const char* c);
 struct miqt_string QValidator_Tr3(const char* s, const char* c, int n);
-void QValidator_Delete(QValidator* self);
+void QValidator_Delete(QValidator* self, bool isSubclass);
 
-QIntValidator* QIntValidator_new();
-QIntValidator* QIntValidator_new2(int bottom, int top);
-QIntValidator* QIntValidator_new3(QObject* parent);
-QIntValidator* QIntValidator_new4(int bottom, int top, QObject* parent);
+void QIntValidator_new(QIntValidator** outptr_QIntValidator, QValidator** outptr_QValidator, QObject** outptr_QObject);
+void QIntValidator_new2(int bottom, int top, QIntValidator** outptr_QIntValidator, QValidator** outptr_QValidator, QObject** outptr_QObject);
+void QIntValidator_new3(QObject* parent, QIntValidator** outptr_QIntValidator, QValidator** outptr_QValidator, QObject** outptr_QObject);
+void QIntValidator_new4(int bottom, int top, QObject* parent, QIntValidator** outptr_QIntValidator, QValidator** outptr_QValidator, QObject** outptr_QObject);
 QMetaObject* QIntValidator_MetaObject(const QIntValidator* self);
 void* QIntValidator_Metacast(QIntValidator* self, const char* param1);
 struct miqt_string QIntValidator_Tr(const char* s);
@@ -67,12 +67,16 @@ void QIntValidator_TopChanged(QIntValidator* self, int top);
 void QIntValidator_connect_TopChanged(QIntValidator* self, intptr_t slot);
 struct miqt_string QIntValidator_Tr2(const char* s, const char* c);
 struct miqt_string QIntValidator_Tr3(const char* s, const char* c, int n);
-void QIntValidator_Delete(QIntValidator* self);
+void QIntValidator_override_virtual_Validate(void* self, intptr_t slot);
+int QIntValidator_virtualbase_Validate(const void* self, struct miqt_string param1, int* param2);
+void QIntValidator_override_virtual_Fixup(void* self, intptr_t slot);
+void QIntValidator_virtualbase_Fixup(const void* self, struct miqt_string input);
+void QIntValidator_Delete(QIntValidator* self, bool isSubclass);
 
-QDoubleValidator* QDoubleValidator_new();
-QDoubleValidator* QDoubleValidator_new2(double bottom, double top, int decimals);
-QDoubleValidator* QDoubleValidator_new3(QObject* parent);
-QDoubleValidator* QDoubleValidator_new4(double bottom, double top, int decimals, QObject* parent);
+void QDoubleValidator_new(QDoubleValidator** outptr_QDoubleValidator, QValidator** outptr_QValidator, QObject** outptr_QObject);
+void QDoubleValidator_new2(double bottom, double top, int decimals, QDoubleValidator** outptr_QDoubleValidator, QValidator** outptr_QValidator, QObject** outptr_QObject);
+void QDoubleValidator_new3(QObject* parent, QDoubleValidator** outptr_QDoubleValidator, QValidator** outptr_QValidator, QObject** outptr_QObject);
+void QDoubleValidator_new4(double bottom, double top, int decimals, QObject* parent, QDoubleValidator** outptr_QDoubleValidator, QValidator** outptr_QValidator, QObject** outptr_QObject);
 QMetaObject* QDoubleValidator_MetaObject(const QDoubleValidator* self);
 void* QDoubleValidator_Metacast(QDoubleValidator* self, const char* param1);
 struct miqt_string QDoubleValidator_Tr(const char* s);
@@ -98,12 +102,16 @@ void QDoubleValidator_NotationChanged(QDoubleValidator* self, int notation);
 void QDoubleValidator_connect_NotationChanged(QDoubleValidator* self, intptr_t slot);
 struct miqt_string QDoubleValidator_Tr2(const char* s, const char* c);
 struct miqt_string QDoubleValidator_Tr3(const char* s, const char* c, int n);
-void QDoubleValidator_Delete(QDoubleValidator* self);
+void QDoubleValidator_override_virtual_Validate(void* self, intptr_t slot);
+int QDoubleValidator_virtualbase_Validate(const void* self, struct miqt_string param1, int* param2);
+void QDoubleValidator_override_virtual_Fixup(void* self, intptr_t slot);
+void QDoubleValidator_virtualbase_Fixup(const void* self, struct miqt_string input);
+void QDoubleValidator_Delete(QDoubleValidator* self, bool isSubclass);
 
-QRegularExpressionValidator* QRegularExpressionValidator_new();
-QRegularExpressionValidator* QRegularExpressionValidator_new2(QRegularExpression* re);
-QRegularExpressionValidator* QRegularExpressionValidator_new3(QObject* parent);
-QRegularExpressionValidator* QRegularExpressionValidator_new4(QRegularExpression* re, QObject* parent);
+void QRegularExpressionValidator_new(QRegularExpressionValidator** outptr_QRegularExpressionValidator, QValidator** outptr_QValidator, QObject** outptr_QObject);
+void QRegularExpressionValidator_new2(QRegularExpression* re, QRegularExpressionValidator** outptr_QRegularExpressionValidator, QValidator** outptr_QValidator, QObject** outptr_QObject);
+void QRegularExpressionValidator_new3(QObject* parent, QRegularExpressionValidator** outptr_QRegularExpressionValidator, QValidator** outptr_QValidator, QObject** outptr_QObject);
+void QRegularExpressionValidator_new4(QRegularExpression* re, QObject* parent, QRegularExpressionValidator** outptr_QRegularExpressionValidator, QValidator** outptr_QValidator, QObject** outptr_QObject);
 QMetaObject* QRegularExpressionValidator_MetaObject(const QRegularExpressionValidator* self);
 void* QRegularExpressionValidator_Metacast(QRegularExpressionValidator* self, const char* param1);
 struct miqt_string QRegularExpressionValidator_Tr(const char* s);
@@ -114,7 +122,11 @@ void QRegularExpressionValidator_RegularExpressionChanged(QRegularExpressionVali
 void QRegularExpressionValidator_connect_RegularExpressionChanged(QRegularExpressionValidator* self, intptr_t slot);
 struct miqt_string QRegularExpressionValidator_Tr2(const char* s, const char* c);
 struct miqt_string QRegularExpressionValidator_Tr3(const char* s, const char* c, int n);
-void QRegularExpressionValidator_Delete(QRegularExpressionValidator* self);
+void QRegularExpressionValidator_override_virtual_Validate(void* self, intptr_t slot);
+int QRegularExpressionValidator_virtualbase_Validate(const void* self, struct miqt_string input, int* pos);
+void QRegularExpressionValidator_override_virtual_Fixup(void* self, intptr_t slot);
+void QRegularExpressionValidator_virtualbase_Fixup(const void* self, struct miqt_string param1);
+void QRegularExpressionValidator_Delete(QRegularExpressionValidator* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

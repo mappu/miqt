@@ -20,7 +20,7 @@ class QElapsedTimer;
 typedef struct QElapsedTimer QElapsedTimer;
 #endif
 
-QElapsedTimer* QElapsedTimer_new();
+void QElapsedTimer_new(QElapsedTimer** outptr_QElapsedTimer);
 int QElapsedTimer_ClockType();
 bool QElapsedTimer_IsMonotonic();
 void QElapsedTimer_Start(QElapsedTimer* self);
@@ -33,7 +33,7 @@ bool QElapsedTimer_HasExpired(const QElapsedTimer* self, long long timeout);
 long long QElapsedTimer_MsecsSinceReference(const QElapsedTimer* self);
 long long QElapsedTimer_MsecsTo(const QElapsedTimer* self, QElapsedTimer* other);
 long long QElapsedTimer_SecsTo(const QElapsedTimer* self, QElapsedTimer* other);
-void QElapsedTimer_Delete(QElapsedTimer* self);
+void QElapsedTimer_Delete(QElapsedTimer* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

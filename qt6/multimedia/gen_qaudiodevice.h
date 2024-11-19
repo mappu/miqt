@@ -24,8 +24,8 @@ typedef struct QAudioFormat QAudioFormat;
 typedef struct QByteArray QByteArray;
 #endif
 
-QAudioDevice* QAudioDevice_new();
-QAudioDevice* QAudioDevice_new2(QAudioDevice* other);
+void QAudioDevice_new(QAudioDevice** outptr_QAudioDevice);
+void QAudioDevice_new2(QAudioDevice* other, QAudioDevice** outptr_QAudioDevice);
 void QAudioDevice_Swap(QAudioDevice* self, QAudioDevice* other);
 void QAudioDevice_OperatorAssign(QAudioDevice* self, QAudioDevice* other);
 bool QAudioDevice_OperatorEqual(const QAudioDevice* self, QAudioDevice* other);
@@ -43,7 +43,7 @@ int QAudioDevice_MinimumChannelCount(const QAudioDevice* self);
 int QAudioDevice_MaximumChannelCount(const QAudioDevice* self);
 struct miqt_array /* of uint16_t */  QAudioDevice_SupportedSampleFormats(const QAudioDevice* self);
 uint32_t QAudioDevice_ChannelConfiguration(const QAudioDevice* self);
-void QAudioDevice_Delete(QAudioDevice* self);
+void QAudioDevice_Delete(QAudioDevice* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

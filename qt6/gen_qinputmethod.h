@@ -18,6 +18,7 @@ extern "C" {
 class QInputMethod;
 class QLocale;
 class QMetaObject;
+class QObject;
 class QRectF;
 class QTransform;
 class QVariant;
@@ -25,6 +26,7 @@ class QVariant;
 typedef struct QInputMethod QInputMethod;
 typedef struct QLocale QLocale;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 typedef struct QRectF QRectF;
 typedef struct QTransform QTransform;
 typedef struct QVariant QVariant;

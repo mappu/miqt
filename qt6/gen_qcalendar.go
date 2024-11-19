@@ -32,7 +32,8 @@ const (
 )
 
 type QCalendar struct {
-	h *C.QCalendar
+	h          *C.QCalendar
+	isSubclass bool
 }
 
 func (this *QCalendar) cPointer() *C.QCalendar {
@@ -49,6 +50,7 @@ func (this *QCalendar) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCalendar constructs the type using only CGO pointers.
 func newQCalendar(h *C.QCalendar) *QCalendar {
 	if h == nil {
 		return nil
@@ -56,32 +58,53 @@ func newQCalendar(h *C.QCalendar) *QCalendar {
 	return &QCalendar{h: h}
 }
 
+// UnsafeNewQCalendar constructs the type using only unsafe pointers.
 func UnsafeNewQCalendar(h unsafe.Pointer) *QCalendar {
-	return newQCalendar((*C.QCalendar)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCalendar{h: (*C.QCalendar)(h)}
 }
 
 // NewQCalendar constructs a new QCalendar object.
 func NewQCalendar() *QCalendar {
-	ret := C.QCalendar_new()
-	return newQCalendar(ret)
+	var outptr_QCalendar *C.QCalendar = nil
+
+	C.QCalendar_new(&outptr_QCalendar)
+	ret := newQCalendar(outptr_QCalendar)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCalendar2 constructs a new QCalendar object.
 func NewQCalendar2(system QCalendar__System) *QCalendar {
-	ret := C.QCalendar_new2((C.int)(system))
-	return newQCalendar(ret)
+	var outptr_QCalendar *C.QCalendar = nil
+
+	C.QCalendar_new2((C.int)(system), &outptr_QCalendar)
+	ret := newQCalendar(outptr_QCalendar)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCalendar3 constructs a new QCalendar object.
 func NewQCalendar3(name QAnyStringView) *QCalendar {
-	ret := C.QCalendar_new3(name.cPointer())
-	return newQCalendar(ret)
+	var outptr_QCalendar *C.QCalendar = nil
+
+	C.QCalendar_new3(name.cPointer(), &outptr_QCalendar)
+	ret := newQCalendar(outptr_QCalendar)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCalendar4 constructs a new QCalendar object.
 func NewQCalendar4(id QCalendar__SystemId) *QCalendar {
-	ret := C.QCalendar_new4(id.cPointer())
-	return newQCalendar(ret)
+	var outptr_QCalendar *C.QCalendar = nil
+
+	C.QCalendar_new4(id.cPointer(), &outptr_QCalendar)
+	ret := newQCalendar(outptr_QCalendar)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QCalendar) IsValid() bool {
@@ -265,7 +288,7 @@ func (this *QCalendar) StandaloneWeekDayName3(locale *QLocale, day int, format Q
 
 // Delete this object from C++ memory.
 func (this *QCalendar) Delete() {
-	C.QCalendar_Delete(this.h)
+	C.QCalendar_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -278,7 +301,8 @@ func (this *QCalendar) GoGC() {
 }
 
 type QCalendar__YearMonthDay struct {
-	h *C.QCalendar__YearMonthDay
+	h          *C.QCalendar__YearMonthDay
+	isSubclass bool
 }
 
 func (this *QCalendar__YearMonthDay) cPointer() *C.QCalendar__YearMonthDay {
@@ -295,6 +319,7 @@ func (this *QCalendar__YearMonthDay) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCalendar__YearMonthDay constructs the type using only CGO pointers.
 func newQCalendar__YearMonthDay(h *C.QCalendar__YearMonthDay) *QCalendar__YearMonthDay {
 	if h == nil {
 		return nil
@@ -302,32 +327,53 @@ func newQCalendar__YearMonthDay(h *C.QCalendar__YearMonthDay) *QCalendar__YearMo
 	return &QCalendar__YearMonthDay{h: h}
 }
 
+// UnsafeNewQCalendar__YearMonthDay constructs the type using only unsafe pointers.
 func UnsafeNewQCalendar__YearMonthDay(h unsafe.Pointer) *QCalendar__YearMonthDay {
-	return newQCalendar__YearMonthDay((*C.QCalendar__YearMonthDay)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCalendar__YearMonthDay{h: (*C.QCalendar__YearMonthDay)(h)}
 }
 
 // NewQCalendar__YearMonthDay constructs a new QCalendar::YearMonthDay object.
 func NewQCalendar__YearMonthDay() *QCalendar__YearMonthDay {
-	ret := C.QCalendar__YearMonthDay_new()
-	return newQCalendar__YearMonthDay(ret)
+	var outptr_QCalendar__YearMonthDay *C.QCalendar__YearMonthDay = nil
+
+	C.QCalendar__YearMonthDay_new(&outptr_QCalendar__YearMonthDay)
+	ret := newQCalendar__YearMonthDay(outptr_QCalendar__YearMonthDay)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCalendar__YearMonthDay2 constructs a new QCalendar::YearMonthDay object.
 func NewQCalendar__YearMonthDay2(y int) *QCalendar__YearMonthDay {
-	ret := C.QCalendar__YearMonthDay_new2((C.int)(y))
-	return newQCalendar__YearMonthDay(ret)
+	var outptr_QCalendar__YearMonthDay *C.QCalendar__YearMonthDay = nil
+
+	C.QCalendar__YearMonthDay_new2((C.int)(y), &outptr_QCalendar__YearMonthDay)
+	ret := newQCalendar__YearMonthDay(outptr_QCalendar__YearMonthDay)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCalendar__YearMonthDay3 constructs a new QCalendar::YearMonthDay object.
 func NewQCalendar__YearMonthDay3(y int, m int) *QCalendar__YearMonthDay {
-	ret := C.QCalendar__YearMonthDay_new3((C.int)(y), (C.int)(m))
-	return newQCalendar__YearMonthDay(ret)
+	var outptr_QCalendar__YearMonthDay *C.QCalendar__YearMonthDay = nil
+
+	C.QCalendar__YearMonthDay_new3((C.int)(y), (C.int)(m), &outptr_QCalendar__YearMonthDay)
+	ret := newQCalendar__YearMonthDay(outptr_QCalendar__YearMonthDay)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCalendar__YearMonthDay4 constructs a new QCalendar::YearMonthDay object.
 func NewQCalendar__YearMonthDay4(y int, m int, d int) *QCalendar__YearMonthDay {
-	ret := C.QCalendar__YearMonthDay_new4((C.int)(y), (C.int)(m), (C.int)(d))
-	return newQCalendar__YearMonthDay(ret)
+	var outptr_QCalendar__YearMonthDay *C.QCalendar__YearMonthDay = nil
+
+	C.QCalendar__YearMonthDay_new4((C.int)(y), (C.int)(m), (C.int)(d), &outptr_QCalendar__YearMonthDay)
+	ret := newQCalendar__YearMonthDay(outptr_QCalendar__YearMonthDay)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QCalendar__YearMonthDay) IsValid() bool {
@@ -336,7 +382,7 @@ func (this *QCalendar__YearMonthDay) IsValid() bool {
 
 // Delete this object from C++ memory.
 func (this *QCalendar__YearMonthDay) Delete() {
-	C.QCalendar__YearMonthDay_Delete(this.h)
+	C.QCalendar__YearMonthDay_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -349,7 +395,8 @@ func (this *QCalendar__YearMonthDay) GoGC() {
 }
 
 type QCalendar__SystemId struct {
-	h *C.QCalendar__SystemId
+	h          *C.QCalendar__SystemId
+	isSubclass bool
 }
 
 func (this *QCalendar__SystemId) cPointer() *C.QCalendar__SystemId {
@@ -366,6 +413,7 @@ func (this *QCalendar__SystemId) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCalendar__SystemId constructs the type using only CGO pointers.
 func newQCalendar__SystemId(h *C.QCalendar__SystemId) *QCalendar__SystemId {
 	if h == nil {
 		return nil
@@ -373,14 +421,23 @@ func newQCalendar__SystemId(h *C.QCalendar__SystemId) *QCalendar__SystemId {
 	return &QCalendar__SystemId{h: h}
 }
 
+// UnsafeNewQCalendar__SystemId constructs the type using only unsafe pointers.
 func UnsafeNewQCalendar__SystemId(h unsafe.Pointer) *QCalendar__SystemId {
-	return newQCalendar__SystemId((*C.QCalendar__SystemId)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCalendar__SystemId{h: (*C.QCalendar__SystemId)(h)}
 }
 
 // NewQCalendar__SystemId constructs a new QCalendar::SystemId object.
 func NewQCalendar__SystemId() *QCalendar__SystemId {
-	ret := C.QCalendar__SystemId_new()
-	return newQCalendar__SystemId(ret)
+	var outptr_QCalendar__SystemId *C.QCalendar__SystemId = nil
+
+	C.QCalendar__SystemId_new(&outptr_QCalendar__SystemId)
+	ret := newQCalendar__SystemId(outptr_QCalendar__SystemId)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QCalendar__SystemId) Index() uint64 {
@@ -393,7 +450,7 @@ func (this *QCalendar__SystemId) IsValid() bool {
 
 // Delete this object from C++ memory.
 func (this *QCalendar__SystemId) Delete() {
-	C.QCalendar__SystemId_Delete(this.h)
+	C.QCalendar__SystemId_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

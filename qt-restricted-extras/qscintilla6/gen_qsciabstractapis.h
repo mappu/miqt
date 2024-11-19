@@ -16,10 +16,12 @@ extern "C" {
 
 #ifdef __cplusplus
 class QMetaObject;
+class QObject;
 class QsciAbstractAPIs;
 class QsciLexer;
 #else
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 typedef struct QsciAbstractAPIs QsciAbstractAPIs;
 typedef struct QsciLexer QsciLexer;
 #endif
@@ -33,7 +35,7 @@ void QsciAbstractAPIs_AutoCompletionSelected(QsciAbstractAPIs* self, struct miqt
 struct miqt_array /* of struct miqt_string */  QsciAbstractAPIs_CallTips(QsciAbstractAPIs* self, struct miqt_array /* of struct miqt_string */  context, int commas, int style, struct miqt_array /* of int */  shifts);
 struct miqt_string QsciAbstractAPIs_Tr2(const char* s, const char* c);
 struct miqt_string QsciAbstractAPIs_Tr3(const char* s, const char* c, int n);
-void QsciAbstractAPIs_Delete(QsciAbstractAPIs* self);
+void QsciAbstractAPIs_Delete(QsciAbstractAPIs* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

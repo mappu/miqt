@@ -16,7 +16,8 @@ import (
 )
 
 type QMediaObject struct {
-	h *C.QMediaObject
+	h          *C.QMediaObject
+	isSubclass bool
 	*qt.QObject
 }
 
@@ -34,15 +35,23 @@ func (this *QMediaObject) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQMediaObject(h *C.QMediaObject) *QMediaObject {
+// newQMediaObject constructs the type using only CGO pointers.
+func newQMediaObject(h *C.QMediaObject, h_QObject *C.QObject) *QMediaObject {
 	if h == nil {
 		return nil
 	}
-	return &QMediaObject{h: h, QObject: qt.UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QMediaObject{h: h,
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
 }
 
-func UnsafeNewQMediaObject(h unsafe.Pointer) *QMediaObject {
-	return newQMediaObject((*C.QMediaObject)(h))
+// UnsafeNewQMediaObject constructs the type using only unsafe pointers.
+func UnsafeNewQMediaObject(h unsafe.Pointer, h_QObject unsafe.Pointer) *QMediaObject {
+	if h == nil {
+		return nil
+	}
+
+	return &QMediaObject{h: (*C.QMediaObject)(h),
+		QObject: qt.UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QMediaObject) MetaObject() *qt.QMetaObject {
@@ -82,7 +91,7 @@ func (this *QMediaObject) Availability() QMultimedia__AvailabilityStatus {
 }
 
 func (this *QMediaObject) Service() *QMediaService {
-	return UnsafeNewQMediaService(unsafe.Pointer(C.QMediaObject_Service(this.h)))
+	return UnsafeNewQMediaService(unsafe.Pointer(C.QMediaObject_Service(this.h)), nil)
 }
 
 func (this *QMediaObject) NotifyInterval() int {
@@ -300,7 +309,7 @@ func QMediaObject_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QMediaObject) Delete() {
-	C.QMediaObject_Delete(this.h)
+	C.QMediaObject_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -16,7 +16,8 @@ import (
 )
 
 type QCustomAudioRoleControl struct {
-	h *C.QCustomAudioRoleControl
+	h          *C.QCustomAudioRoleControl
+	isSubclass bool
 	*QMediaControl
 }
 
@@ -34,15 +35,23 @@ func (this *QCustomAudioRoleControl) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQCustomAudioRoleControl(h *C.QCustomAudioRoleControl) *QCustomAudioRoleControl {
+// newQCustomAudioRoleControl constructs the type using only CGO pointers.
+func newQCustomAudioRoleControl(h *C.QCustomAudioRoleControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QCustomAudioRoleControl {
 	if h == nil {
 		return nil
 	}
-	return &QCustomAudioRoleControl{h: h, QMediaControl: UnsafeNewQMediaControl(unsafe.Pointer(h))}
+	return &QCustomAudioRoleControl{h: h,
+		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
 }
 
-func UnsafeNewQCustomAudioRoleControl(h unsafe.Pointer) *QCustomAudioRoleControl {
-	return newQCustomAudioRoleControl((*C.QCustomAudioRoleControl)(h))
+// UnsafeNewQCustomAudioRoleControl constructs the type using only unsafe pointers.
+func UnsafeNewQCustomAudioRoleControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QCustomAudioRoleControl {
+	if h == nil {
+		return nil
+	}
+
+	return &QCustomAudioRoleControl{h: (*C.QCustomAudioRoleControl)(h),
+		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
 }
 
 func (this *QCustomAudioRoleControl) MetaObject() *qt.QMetaObject {
@@ -174,7 +183,7 @@ func QCustomAudioRoleControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QCustomAudioRoleControl) Delete() {
-	C.QCustomAudioRoleControl_Delete(this.h)
+	C.QCustomAudioRoleControl_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

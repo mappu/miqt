@@ -16,22 +16,30 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAction;
+class QChildEvent;
+class QEvent;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
+class QTimerEvent;
 class QUndoCommand;
 class QUndoStack;
 #else
 typedef struct QAction QAction;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QUndoCommand QUndoCommand;
 typedef struct QUndoStack QUndoStack;
 #endif
 
-QUndoCommand* QUndoCommand_new();
-QUndoCommand* QUndoCommand_new2(struct miqt_string text);
-QUndoCommand* QUndoCommand_new3(QUndoCommand* parent);
-QUndoCommand* QUndoCommand_new4(struct miqt_string text, QUndoCommand* parent);
+void QUndoCommand_new(QUndoCommand** outptr_QUndoCommand);
+void QUndoCommand_new2(struct miqt_string text, QUndoCommand** outptr_QUndoCommand);
+void QUndoCommand_new3(QUndoCommand* parent, QUndoCommand** outptr_QUndoCommand);
+void QUndoCommand_new4(struct miqt_string text, QUndoCommand* parent, QUndoCommand** outptr_QUndoCommand);
 void QUndoCommand_Undo(QUndoCommand* self);
 void QUndoCommand_Redo(QUndoCommand* self);
 struct miqt_string QUndoCommand_Text(const QUndoCommand* self);
@@ -43,10 +51,18 @@ int QUndoCommand_Id(const QUndoCommand* self);
 bool QUndoCommand_MergeWith(QUndoCommand* self, QUndoCommand* other);
 int QUndoCommand_ChildCount(const QUndoCommand* self);
 QUndoCommand* QUndoCommand_Child(const QUndoCommand* self, int index);
-void QUndoCommand_Delete(QUndoCommand* self);
+void QUndoCommand_override_virtual_Undo(void* self, intptr_t slot);
+void QUndoCommand_virtualbase_Undo(void* self);
+void QUndoCommand_override_virtual_Redo(void* self, intptr_t slot);
+void QUndoCommand_virtualbase_Redo(void* self);
+void QUndoCommand_override_virtual_Id(void* self, intptr_t slot);
+int QUndoCommand_virtualbase_Id(const void* self);
+void QUndoCommand_override_virtual_MergeWith(void* self, intptr_t slot);
+bool QUndoCommand_virtualbase_MergeWith(void* self, QUndoCommand* other);
+void QUndoCommand_Delete(QUndoCommand* self, bool isSubclass);
 
-QUndoStack* QUndoStack_new();
-QUndoStack* QUndoStack_new2(QObject* parent);
+void QUndoStack_new(QUndoStack** outptr_QUndoStack, QObject** outptr_QObject);
+void QUndoStack_new2(QObject* parent, QUndoStack** outptr_QUndoStack, QObject** outptr_QObject);
 QMetaObject* QUndoStack_MetaObject(const QUndoStack* self);
 void* QUndoStack_Metacast(QUndoStack* self, const char* param1);
 struct miqt_string QUndoStack_Tr(const char* s);
@@ -92,7 +108,21 @@ struct miqt_string QUndoStack_Tr3(const char* s, const char* c, int n);
 QAction* QUndoStack_CreateUndoAction2(const QUndoStack* self, QObject* parent, struct miqt_string prefix);
 QAction* QUndoStack_CreateRedoAction2(const QUndoStack* self, QObject* parent, struct miqt_string prefix);
 void QUndoStack_SetActive1(QUndoStack* self, bool active);
-void QUndoStack_Delete(QUndoStack* self);
+void QUndoStack_override_virtual_Event(void* self, intptr_t slot);
+bool QUndoStack_virtualbase_Event(void* self, QEvent* event);
+void QUndoStack_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QUndoStack_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QUndoStack_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QUndoStack_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QUndoStack_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QUndoStack_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QUndoStack_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QUndoStack_virtualbase_CustomEvent(void* self, QEvent* event);
+void QUndoStack_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QUndoStack_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QUndoStack_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QUndoStack_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QUndoStack_Delete(QUndoStack* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

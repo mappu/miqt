@@ -9,6 +9,7 @@
 #include <QModelIndex>
 #include <QModelRoleData>
 #include <QModelRoleDataSpan>
+#include <QObject>
 #include <QPersistentModelIndex>
 #include <QSize>
 #include <QString>
@@ -19,12 +20,14 @@
 #include "gen_qabstractitemmodel.h"
 #include "_cgo_export.h"
 
-QModelRoleData* QModelRoleData_new(int role) {
-	return new QModelRoleData(static_cast<int>(role));
+void QModelRoleData_new(int role, QModelRoleData** outptr_QModelRoleData) {
+	QModelRoleData* ret = new QModelRoleData(static_cast<int>(role));
+	*outptr_QModelRoleData = ret;
 }
 
-QModelRoleData* QModelRoleData_new2(QModelRoleData* param1) {
-	return new QModelRoleData(*param1);
+void QModelRoleData_new2(QModelRoleData* param1, QModelRoleData** outptr_QModelRoleData) {
+	QModelRoleData* ret = new QModelRoleData(*param1);
+	*outptr_QModelRoleData = ret;
 }
 
 int QModelRoleData_Role(const QModelRoleData* self) {
@@ -51,24 +54,32 @@ void QModelRoleData_OperatorAssign(QModelRoleData* self, QModelRoleData* param1)
 	self->operator=(*param1);
 }
 
-void QModelRoleData_Delete(QModelRoleData* self) {
-	delete self;
+void QModelRoleData_Delete(QModelRoleData* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QModelRoleData*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QModelRoleDataSpan* QModelRoleDataSpan_new() {
-	return new QModelRoleDataSpan();
+void QModelRoleDataSpan_new(QModelRoleDataSpan** outptr_QModelRoleDataSpan) {
+	QModelRoleDataSpan* ret = new QModelRoleDataSpan();
+	*outptr_QModelRoleDataSpan = ret;
 }
 
-QModelRoleDataSpan* QModelRoleDataSpan_new2(QModelRoleData* modelRoleData) {
-	return new QModelRoleDataSpan(*modelRoleData);
+void QModelRoleDataSpan_new2(QModelRoleData* modelRoleData, QModelRoleDataSpan** outptr_QModelRoleDataSpan) {
+	QModelRoleDataSpan* ret = new QModelRoleDataSpan(*modelRoleData);
+	*outptr_QModelRoleDataSpan = ret;
 }
 
-QModelRoleDataSpan* QModelRoleDataSpan_new3(QModelRoleData* modelRoleData, ptrdiff_t lenVal) {
-	return new QModelRoleDataSpan(modelRoleData, (qsizetype)(lenVal));
+void QModelRoleDataSpan_new3(QModelRoleData* modelRoleData, ptrdiff_t lenVal, QModelRoleDataSpan** outptr_QModelRoleDataSpan) {
+	QModelRoleDataSpan* ret = new QModelRoleDataSpan(modelRoleData, (qsizetype)(lenVal));
+	*outptr_QModelRoleDataSpan = ret;
 }
 
-QModelRoleDataSpan* QModelRoleDataSpan_new4(QModelRoleDataSpan* param1) {
-	return new QModelRoleDataSpan(*param1);
+void QModelRoleDataSpan_new4(QModelRoleDataSpan* param1, QModelRoleDataSpan** outptr_QModelRoleDataSpan) {
+	QModelRoleDataSpan* ret = new QModelRoleDataSpan(*param1);
+	*outptr_QModelRoleDataSpan = ret;
 }
 
 ptrdiff_t QModelRoleDataSpan_Size(const QModelRoleDataSpan* self) {
@@ -103,16 +114,22 @@ QVariant* QModelRoleDataSpan_DataForRole(const QModelRoleDataSpan* self, int rol
 	return self->dataForRole(static_cast<int>(role));
 }
 
-void QModelRoleDataSpan_Delete(QModelRoleDataSpan* self) {
-	delete self;
+void QModelRoleDataSpan_Delete(QModelRoleDataSpan* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QModelRoleDataSpan*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QModelIndex* QModelIndex_new() {
-	return new QModelIndex();
+void QModelIndex_new(QModelIndex** outptr_QModelIndex) {
+	QModelIndex* ret = new QModelIndex();
+	*outptr_QModelIndex = ret;
 }
 
-QModelIndex* QModelIndex_new2(QModelIndex* param1) {
-	return new QModelIndex(*param1);
+void QModelIndex_new2(QModelIndex* param1, QModelIndex** outptr_QModelIndex) {
+	QModelIndex* ret = new QModelIndex(*param1);
+	*outptr_QModelIndex = ret;
 }
 
 int QModelIndex_Row(const QModelIndex* self) {
@@ -189,20 +206,27 @@ QVariant* QModelIndex_Data1(const QModelIndex* self, int role) {
 	return new QVariant(self->data(static_cast<int>(role)));
 }
 
-void QModelIndex_Delete(QModelIndex* self) {
-	delete self;
+void QModelIndex_Delete(QModelIndex* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QModelIndex*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QPersistentModelIndex* QPersistentModelIndex_new() {
-	return new QPersistentModelIndex();
+void QPersistentModelIndex_new(QPersistentModelIndex** outptr_QPersistentModelIndex) {
+	QPersistentModelIndex* ret = new QPersistentModelIndex();
+	*outptr_QPersistentModelIndex = ret;
 }
 
-QPersistentModelIndex* QPersistentModelIndex_new2(QModelIndex* index) {
-	return new QPersistentModelIndex(*index);
+void QPersistentModelIndex_new2(QModelIndex* index, QPersistentModelIndex** outptr_QPersistentModelIndex) {
+	QPersistentModelIndex* ret = new QPersistentModelIndex(*index);
+	*outptr_QPersistentModelIndex = ret;
 }
 
-QPersistentModelIndex* QPersistentModelIndex_new3(QPersistentModelIndex* other) {
-	return new QPersistentModelIndex(*other);
+void QPersistentModelIndex_new3(QPersistentModelIndex* other, QPersistentModelIndex** outptr_QPersistentModelIndex) {
+	QPersistentModelIndex* ret = new QPersistentModelIndex(*other);
+	*outptr_QPersistentModelIndex = ret;
 }
 
 bool QPersistentModelIndex_OperatorLesser(const QPersistentModelIndex* self, QPersistentModelIndex* other) {
@@ -291,8 +315,12 @@ QVariant* QPersistentModelIndex_Data1(const QPersistentModelIndex* self, int rol
 	return new QVariant(self->data(static_cast<int>(role)));
 }
 
-void QPersistentModelIndex_Delete(QPersistentModelIndex* self) {
-	delete self;
+void QPersistentModelIndex_Delete(QPersistentModelIndex* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QPersistentModelIndex*>( self );
+	} else {
+		delete self;
+	}
 }
 
 QMetaObject* QAbstractItemModel_MetaObject(const QAbstractItemModel* self) {
@@ -318,8 +346,8 @@ bool QAbstractItemModel_HasIndex(const QAbstractItemModel* self, int row, int co
 	return self->hasIndex(static_cast<int>(row), static_cast<int>(column));
 }
 
-QModelIndex* QAbstractItemModel_Index(const QAbstractItemModel* self, int row, int column) {
-	return new QModelIndex(self->index(static_cast<int>(row), static_cast<int>(column)));
+QModelIndex* QAbstractItemModel_Index(const QAbstractItemModel* self, int row, int column, QModelIndex* parent) {
+	return new QModelIndex(self->index(static_cast<int>(row), static_cast<int>(column), *parent));
 }
 
 QModelIndex* QAbstractItemModel_Parent(const QAbstractItemModel* self, QModelIndex* child) {
@@ -330,32 +358,32 @@ QModelIndex* QAbstractItemModel_Sibling(const QAbstractItemModel* self, int row,
 	return new QModelIndex(self->sibling(static_cast<int>(row), static_cast<int>(column), *idx));
 }
 
-int QAbstractItemModel_RowCount(const QAbstractItemModel* self) {
-	return self->rowCount();
+int QAbstractItemModel_RowCount(const QAbstractItemModel* self, QModelIndex* parent) {
+	return self->rowCount(*parent);
 }
 
-int QAbstractItemModel_ColumnCount(const QAbstractItemModel* self) {
-	return self->columnCount();
+int QAbstractItemModel_ColumnCount(const QAbstractItemModel* self, QModelIndex* parent) {
+	return self->columnCount(*parent);
 }
 
-bool QAbstractItemModel_HasChildren(const QAbstractItemModel* self) {
-	return self->hasChildren();
+bool QAbstractItemModel_HasChildren(const QAbstractItemModel* self, QModelIndex* parent) {
+	return self->hasChildren(*parent);
 }
 
-QVariant* QAbstractItemModel_Data(const QAbstractItemModel* self, QModelIndex* index) {
-	return new QVariant(self->data(*index));
+QVariant* QAbstractItemModel_Data(const QAbstractItemModel* self, QModelIndex* index, int role) {
+	return new QVariant(self->data(*index, static_cast<int>(role)));
 }
 
-bool QAbstractItemModel_SetData(QAbstractItemModel* self, QModelIndex* index, QVariant* value) {
-	return self->setData(*index, *value);
+bool QAbstractItemModel_SetData(QAbstractItemModel* self, QModelIndex* index, QVariant* value, int role) {
+	return self->setData(*index, *value, static_cast<int>(role));
 }
 
-QVariant* QAbstractItemModel_HeaderData(const QAbstractItemModel* self, int section, int orientation) {
-	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation)));
+QVariant* QAbstractItemModel_HeaderData(const QAbstractItemModel* self, int section, int orientation, int role) {
+	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
 }
 
-bool QAbstractItemModel_SetHeaderData(QAbstractItemModel* self, int section, int orientation, QVariant* value) {
-	return self->setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value);
+bool QAbstractItemModel_SetHeaderData(QAbstractItemModel* self, int section, int orientation, QVariant* value, int role) {
+	return self->setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
 }
 
 struct miqt_map /* of int to QVariant* */  QAbstractItemModel_ItemData(const QAbstractItemModel* self, QModelIndex* index) {
@@ -438,20 +466,20 @@ int QAbstractItemModel_SupportedDragActions(const QAbstractItemModel* self) {
 	return static_cast<int>(_ret);
 }
 
-bool QAbstractItemModel_InsertRows(QAbstractItemModel* self, int row, int count) {
-	return self->insertRows(static_cast<int>(row), static_cast<int>(count));
+bool QAbstractItemModel_InsertRows(QAbstractItemModel* self, int row, int count, QModelIndex* parent) {
+	return self->insertRows(static_cast<int>(row), static_cast<int>(count), *parent);
 }
 
-bool QAbstractItemModel_InsertColumns(QAbstractItemModel* self, int column, int count) {
-	return self->insertColumns(static_cast<int>(column), static_cast<int>(count));
+bool QAbstractItemModel_InsertColumns(QAbstractItemModel* self, int column, int count, QModelIndex* parent) {
+	return self->insertColumns(static_cast<int>(column), static_cast<int>(count), *parent);
 }
 
-bool QAbstractItemModel_RemoveRows(QAbstractItemModel* self, int row, int count) {
-	return self->removeRows(static_cast<int>(row), static_cast<int>(count));
+bool QAbstractItemModel_RemoveRows(QAbstractItemModel* self, int row, int count, QModelIndex* parent) {
+	return self->removeRows(static_cast<int>(row), static_cast<int>(count), *parent);
 }
 
-bool QAbstractItemModel_RemoveColumns(QAbstractItemModel* self, int column, int count) {
-	return self->removeColumns(static_cast<int>(column), static_cast<int>(count));
+bool QAbstractItemModel_RemoveColumns(QAbstractItemModel* self, int column, int count, QModelIndex* parent) {
+	return self->removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
 }
 
 bool QAbstractItemModel_MoveRows(QAbstractItemModel* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
@@ -499,16 +527,16 @@ int QAbstractItemModel_Flags(const QAbstractItemModel* self, QModelIndex* index)
 	return static_cast<int>(_ret);
 }
 
-void QAbstractItemModel_Sort(QAbstractItemModel* self, int column) {
-	self->sort(static_cast<int>(column));
+void QAbstractItemModel_Sort(QAbstractItemModel* self, int column, int order) {
+	self->sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 }
 
 QModelIndex* QAbstractItemModel_Buddy(const QAbstractItemModel* self, QModelIndex* index) {
 	return new QModelIndex(self->buddy(*index));
 }
 
-struct miqt_array /* of QModelIndex* */  QAbstractItemModel_Match(const QAbstractItemModel* self, QModelIndex* start, int role, QVariant* value) {
-	QModelIndexList _ret = self->match(*start, static_cast<int>(role), *value);
+struct miqt_array /* of QModelIndex* */  QAbstractItemModel_Match(const QAbstractItemModel* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
+	QModelIndexList _ret = self->match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -639,54 +667,6 @@ bool QAbstractItemModel_HasIndex3(const QAbstractItemModel* self, int row, int c
 	return self->hasIndex(static_cast<int>(row), static_cast<int>(column), *parent);
 }
 
-QModelIndex* QAbstractItemModel_Index3(const QAbstractItemModel* self, int row, int column, QModelIndex* parent) {
-	return new QModelIndex(self->index(static_cast<int>(row), static_cast<int>(column), *parent));
-}
-
-int QAbstractItemModel_RowCount1(const QAbstractItemModel* self, QModelIndex* parent) {
-	return self->rowCount(*parent);
-}
-
-int QAbstractItemModel_ColumnCount1(const QAbstractItemModel* self, QModelIndex* parent) {
-	return self->columnCount(*parent);
-}
-
-bool QAbstractItemModel_HasChildren1(const QAbstractItemModel* self, QModelIndex* parent) {
-	return self->hasChildren(*parent);
-}
-
-QVariant* QAbstractItemModel_Data2(const QAbstractItemModel* self, QModelIndex* index, int role) {
-	return new QVariant(self->data(*index, static_cast<int>(role)));
-}
-
-bool QAbstractItemModel_SetData3(QAbstractItemModel* self, QModelIndex* index, QVariant* value, int role) {
-	return self->setData(*index, *value, static_cast<int>(role));
-}
-
-QVariant* QAbstractItemModel_HeaderData3(const QAbstractItemModel* self, int section, int orientation, int role) {
-	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
-}
-
-bool QAbstractItemModel_SetHeaderData4(QAbstractItemModel* self, int section, int orientation, QVariant* value, int role) {
-	return self->setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
-}
-
-bool QAbstractItemModel_InsertRows3(QAbstractItemModel* self, int row, int count, QModelIndex* parent) {
-	return self->insertRows(static_cast<int>(row), static_cast<int>(count), *parent);
-}
-
-bool QAbstractItemModel_InsertColumns3(QAbstractItemModel* self, int column, int count, QModelIndex* parent) {
-	return self->insertColumns(static_cast<int>(column), static_cast<int>(count), *parent);
-}
-
-bool QAbstractItemModel_RemoveRows3(QAbstractItemModel* self, int row, int count, QModelIndex* parent) {
-	return self->removeRows(static_cast<int>(row), static_cast<int>(count), *parent);
-}
-
-bool QAbstractItemModel_RemoveColumns3(QAbstractItemModel* self, int column, int count, QModelIndex* parent) {
-	return self->removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
-}
-
 bool QAbstractItemModel_InsertRow2(QAbstractItemModel* self, int row, QModelIndex* parent) {
 	return self->insertRow(static_cast<int>(row), *parent);
 }
@@ -701,36 +681,6 @@ bool QAbstractItemModel_RemoveRow2(QAbstractItemModel* self, int row, QModelInde
 
 bool QAbstractItemModel_RemoveColumn2(QAbstractItemModel* self, int column, QModelIndex* parent) {
 	return self->removeColumn(static_cast<int>(column), *parent);
-}
-
-void QAbstractItemModel_Sort2(QAbstractItemModel* self, int column, int order) {
-	self->sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
-}
-
-struct miqt_array /* of QModelIndex* */  QAbstractItemModel_Match4(const QAbstractItemModel* self, QModelIndex* start, int role, QVariant* value, int hits) {
-	QModelIndexList _ret = self->match(*start, static_cast<int>(role), *value, static_cast<int>(hits));
-	// Convert QList<> from C++ memory to manually-managed C memory
-	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QModelIndex(_ret[i]);
-	}
-	struct miqt_array _out;
-	_out.len = _ret.length();
-	_out.data = static_cast<void*>(_arr);
-	return _out;
-}
-
-struct miqt_array /* of QModelIndex* */  QAbstractItemModel_Match5(const QAbstractItemModel* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
-	QModelIndexList _ret = self->match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
-	// Convert QList<> from C++ memory to manually-managed C memory
-	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QModelIndex(_ret[i]);
-	}
-	struct miqt_array _out;
-	_out.len = _ret.length();
-	_out.data = static_cast<void*>(_arr);
-	return _out;
 }
 
 bool QAbstractItemModel_CheckIndex2(const QAbstractItemModel* self, QModelIndex* index, int options) {
@@ -877,8 +827,12 @@ void QAbstractItemModel_connect_LayoutAboutToBeChanged2(QAbstractItemModel* self
 	});
 }
 
-void QAbstractItemModel_Delete(QAbstractItemModel* self) {
-	delete self;
+void QAbstractItemModel_Delete(QAbstractItemModel* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAbstractItemModel*>( self );
+	} else {
+		delete self;
+	}
 }
 
 QMetaObject* QAbstractTableModel_MetaObject(const QAbstractTableModel* self) {
@@ -900,8 +854,8 @@ struct miqt_string QAbstractTableModel_Tr(const char* s) {
 	return _ms;
 }
 
-QModelIndex* QAbstractTableModel_Index(const QAbstractTableModel* self, int row, int column) {
-	return new QModelIndex(self->index(static_cast<int>(row), static_cast<int>(column)));
+QModelIndex* QAbstractTableModel_Index(const QAbstractTableModel* self, int row, int column, QModelIndex* parent) {
+	return new QModelIndex(self->index(static_cast<int>(row), static_cast<int>(column), *parent));
 }
 
 QModelIndex* QAbstractTableModel_Sibling(const QAbstractTableModel* self, int row, int column, QModelIndex* idx) {
@@ -939,12 +893,12 @@ struct miqt_string QAbstractTableModel_Tr3(const char* s, const char* c, int n) 
 	return _ms;
 }
 
-QModelIndex* QAbstractTableModel_Index3(const QAbstractTableModel* self, int row, int column, QModelIndex* parent) {
-	return new QModelIndex(self->index(static_cast<int>(row), static_cast<int>(column), *parent));
-}
-
-void QAbstractTableModel_Delete(QAbstractTableModel* self) {
-	delete self;
+void QAbstractTableModel_Delete(QAbstractTableModel* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAbstractTableModel*>( self );
+	} else {
+		delete self;
+	}
 }
 
 QMetaObject* QAbstractListModel_MetaObject(const QAbstractListModel* self) {
@@ -966,8 +920,8 @@ struct miqt_string QAbstractListModel_Tr(const char* s) {
 	return _ms;
 }
 
-QModelIndex* QAbstractListModel_Index(const QAbstractListModel* self, int row) {
-	return new QModelIndex(self->index(static_cast<int>(row)));
+QModelIndex* QAbstractListModel_Index(const QAbstractListModel* self, int row, int column, QModelIndex* parent) {
+	return new QModelIndex(self->index(static_cast<int>(row), static_cast<int>(column), *parent));
 }
 
 QModelIndex* QAbstractListModel_Sibling(const QAbstractListModel* self, int row, int column, QModelIndex* idx) {
@@ -1005,15 +959,11 @@ struct miqt_string QAbstractListModel_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-QModelIndex* QAbstractListModel_Index2(const QAbstractListModel* self, int row, int column) {
-	return new QModelIndex(self->index(static_cast<int>(row), static_cast<int>(column)));
-}
-
-QModelIndex* QAbstractListModel_Index3(const QAbstractListModel* self, int row, int column, QModelIndex* parent) {
-	return new QModelIndex(self->index(static_cast<int>(row), static_cast<int>(column), *parent));
-}
-
-void QAbstractListModel_Delete(QAbstractListModel* self) {
-	delete self;
+void QAbstractListModel_Delete(QAbstractListModel* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAbstractListModel*>( self );
+	} else {
+		delete self;
+	}
 }
 

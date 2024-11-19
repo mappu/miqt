@@ -7,30 +7,36 @@
 #include "gen_qstringmatcher.h"
 #include "_cgo_export.h"
 
-QStringMatcher* QStringMatcher_new() {
-	return new QStringMatcher();
+void QStringMatcher_new(QStringMatcher** outptr_QStringMatcher) {
+	QStringMatcher* ret = new QStringMatcher();
+	*outptr_QStringMatcher = ret;
 }
 
-QStringMatcher* QStringMatcher_new2(struct miqt_string pattern) {
+void QStringMatcher_new2(struct miqt_string pattern, QStringMatcher** outptr_QStringMatcher) {
 	QString pattern_QString = QString::fromUtf8(pattern.data, pattern.len);
-	return new QStringMatcher(pattern_QString);
+	QStringMatcher* ret = new QStringMatcher(pattern_QString);
+	*outptr_QStringMatcher = ret;
 }
 
-QStringMatcher* QStringMatcher_new3(QChar* uc, int lenVal) {
-	return new QStringMatcher(uc, static_cast<int>(lenVal));
+void QStringMatcher_new3(QChar* uc, int lenVal, QStringMatcher** outptr_QStringMatcher) {
+	QStringMatcher* ret = new QStringMatcher(uc, static_cast<int>(lenVal));
+	*outptr_QStringMatcher = ret;
 }
 
-QStringMatcher* QStringMatcher_new4(QStringMatcher* other) {
-	return new QStringMatcher(*other);
+void QStringMatcher_new4(QStringMatcher* other, QStringMatcher** outptr_QStringMatcher) {
+	QStringMatcher* ret = new QStringMatcher(*other);
+	*outptr_QStringMatcher = ret;
 }
 
-QStringMatcher* QStringMatcher_new5(struct miqt_string pattern, int cs) {
+void QStringMatcher_new5(struct miqt_string pattern, int cs, QStringMatcher** outptr_QStringMatcher) {
 	QString pattern_QString = QString::fromUtf8(pattern.data, pattern.len);
-	return new QStringMatcher(pattern_QString, static_cast<Qt::CaseSensitivity>(cs));
+	QStringMatcher* ret = new QStringMatcher(pattern_QString, static_cast<Qt::CaseSensitivity>(cs));
+	*outptr_QStringMatcher = ret;
 }
 
-QStringMatcher* QStringMatcher_new6(QChar* uc, int lenVal, int cs) {
-	return new QStringMatcher(uc, static_cast<int>(lenVal), static_cast<Qt::CaseSensitivity>(cs));
+void QStringMatcher_new6(QChar* uc, int lenVal, int cs, QStringMatcher** outptr_QStringMatcher) {
+	QStringMatcher* ret = new QStringMatcher(uc, static_cast<int>(lenVal), static_cast<Qt::CaseSensitivity>(cs));
+	*outptr_QStringMatcher = ret;
 }
 
 void QStringMatcher_OperatorAssign(QStringMatcher* self, QStringMatcher* other) {
@@ -80,7 +86,11 @@ int QStringMatcher_IndexIn3(const QStringMatcher* self, QChar* str, int length, 
 	return self->indexIn(str, static_cast<int>(length), static_cast<int>(from));
 }
 
-void QStringMatcher_Delete(QStringMatcher* self) {
-	delete self;
+void QStringMatcher_Delete(QStringMatcher* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QStringMatcher*>( self );
+	} else {
+		delete self;
+	}
 }
 

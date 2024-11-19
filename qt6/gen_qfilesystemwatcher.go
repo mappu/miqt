@@ -10,11 +10,13 @@ import "C"
 
 import (
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
 type QFileSystemWatcher struct {
-	h *C.QFileSystemWatcher
+	h          *C.QFileSystemWatcher
+	isSubclass bool
 	*QObject
 }
 
@@ -32,21 +34,34 @@ func (this *QFileSystemWatcher) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQFileSystemWatcher(h *C.QFileSystemWatcher) *QFileSystemWatcher {
+// newQFileSystemWatcher constructs the type using only CGO pointers.
+func newQFileSystemWatcher(h *C.QFileSystemWatcher, h_QObject *C.QObject) *QFileSystemWatcher {
 	if h == nil {
 		return nil
 	}
-	return &QFileSystemWatcher{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QFileSystemWatcher{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQFileSystemWatcher(h unsafe.Pointer) *QFileSystemWatcher {
-	return newQFileSystemWatcher((*C.QFileSystemWatcher)(h))
+// UnsafeNewQFileSystemWatcher constructs the type using only unsafe pointers.
+func UnsafeNewQFileSystemWatcher(h unsafe.Pointer, h_QObject unsafe.Pointer) *QFileSystemWatcher {
+	if h == nil {
+		return nil
+	}
+
+	return &QFileSystemWatcher{h: (*C.QFileSystemWatcher)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 // NewQFileSystemWatcher constructs a new QFileSystemWatcher object.
 func NewQFileSystemWatcher() *QFileSystemWatcher {
-	ret := C.QFileSystemWatcher_new()
-	return newQFileSystemWatcher(ret)
+	var outptr_QFileSystemWatcher *C.QFileSystemWatcher = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QFileSystemWatcher_new(&outptr_QFileSystemWatcher, &outptr_QObject)
+	ret := newQFileSystemWatcher(outptr_QFileSystemWatcher, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFileSystemWatcher2 constructs a new QFileSystemWatcher object.
@@ -61,14 +76,24 @@ func NewQFileSystemWatcher2(paths []string) *QFileSystemWatcher {
 		paths_CArray[i] = paths_i_ms
 	}
 	paths_ma := C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray)}
-	ret := C.QFileSystemWatcher_new2(paths_ma)
-	return newQFileSystemWatcher(ret)
+	var outptr_QFileSystemWatcher *C.QFileSystemWatcher = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QFileSystemWatcher_new2(paths_ma, &outptr_QFileSystemWatcher, &outptr_QObject)
+	ret := newQFileSystemWatcher(outptr_QFileSystemWatcher, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFileSystemWatcher3 constructs a new QFileSystemWatcher object.
 func NewQFileSystemWatcher3(parent *QObject) *QFileSystemWatcher {
-	ret := C.QFileSystemWatcher_new3(parent.cPointer())
-	return newQFileSystemWatcher(ret)
+	var outptr_QFileSystemWatcher *C.QFileSystemWatcher = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QFileSystemWatcher_new3(parent.cPointer(), &outptr_QFileSystemWatcher, &outptr_QObject)
+	ret := newQFileSystemWatcher(outptr_QFileSystemWatcher, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQFileSystemWatcher4 constructs a new QFileSystemWatcher object.
@@ -83,8 +108,13 @@ func NewQFileSystemWatcher4(paths []string, parent *QObject) *QFileSystemWatcher
 		paths_CArray[i] = paths_i_ms
 	}
 	paths_ma := C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray)}
-	ret := C.QFileSystemWatcher_new4(paths_ma, parent.cPointer())
-	return newQFileSystemWatcher(ret)
+	var outptr_QFileSystemWatcher *C.QFileSystemWatcher = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QFileSystemWatcher_new4(paths_ma, parent.cPointer(), &outptr_QFileSystemWatcher, &outptr_QObject)
+	ret := newQFileSystemWatcher(outptr_QFileSystemWatcher, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QFileSystemWatcher) MetaObject() *QMetaObject {
@@ -216,9 +246,175 @@ func QFileSystemWatcher_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QFileSystemWatcher) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QFileSystemWatcher_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QFileSystemWatcher) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	C.QFileSystemWatcher_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileSystemWatcher_Event
+func miqt_exec_callback_QFileSystemWatcher_Event(self *C.QFileSystemWatcher, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QFileSystemWatcher{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QFileSystemWatcher) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QFileSystemWatcher_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QFileSystemWatcher) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	C.QFileSystemWatcher_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileSystemWatcher_EventFilter
+func miqt_exec_callback_QFileSystemWatcher_EventFilter(self *C.QFileSystemWatcher, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QFileSystemWatcher{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QFileSystemWatcher) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QFileSystemWatcher_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QFileSystemWatcher) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	C.QFileSystemWatcher_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileSystemWatcher_TimerEvent
+func miqt_exec_callback_QFileSystemWatcher_TimerEvent(self *C.QFileSystemWatcher, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QFileSystemWatcher{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QFileSystemWatcher) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QFileSystemWatcher_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QFileSystemWatcher) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	C.QFileSystemWatcher_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileSystemWatcher_ChildEvent
+func miqt_exec_callback_QFileSystemWatcher_ChildEvent(self *C.QFileSystemWatcher, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QFileSystemWatcher{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QFileSystemWatcher) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QFileSystemWatcher_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QFileSystemWatcher) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	C.QFileSystemWatcher_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileSystemWatcher_CustomEvent
+func miqt_exec_callback_QFileSystemWatcher_CustomEvent(self *C.QFileSystemWatcher, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QFileSystemWatcher{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QFileSystemWatcher) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QFileSystemWatcher_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QFileSystemWatcher) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QFileSystemWatcher_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileSystemWatcher_ConnectNotify
+func miqt_exec_callback_QFileSystemWatcher_ConnectNotify(self *C.QFileSystemWatcher, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QFileSystemWatcher{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QFileSystemWatcher) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QFileSystemWatcher_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QFileSystemWatcher) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QFileSystemWatcher_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileSystemWatcher_DisconnectNotify
+func miqt_exec_callback_QFileSystemWatcher_DisconnectNotify(self *C.QFileSystemWatcher, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QFileSystemWatcher{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QFileSystemWatcher) Delete() {
-	C.QFileSystemWatcher_Delete(this.h)
+	C.QFileSystemWatcher_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

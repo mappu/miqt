@@ -14,7 +14,8 @@ import (
 )
 
 type QNetworkDatagram struct {
-	h *C.QNetworkDatagram
+	h          *C.QNetworkDatagram
+	isSubclass bool
 }
 
 func (this *QNetworkDatagram) cPointer() *C.QNetworkDatagram {
@@ -31,6 +32,7 @@ func (this *QNetworkDatagram) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQNetworkDatagram constructs the type using only CGO pointers.
 func newQNetworkDatagram(h *C.QNetworkDatagram) *QNetworkDatagram {
 	if h == nil {
 		return nil
@@ -38,14 +40,23 @@ func newQNetworkDatagram(h *C.QNetworkDatagram) *QNetworkDatagram {
 	return &QNetworkDatagram{h: h}
 }
 
+// UnsafeNewQNetworkDatagram constructs the type using only unsafe pointers.
 func UnsafeNewQNetworkDatagram(h unsafe.Pointer) *QNetworkDatagram {
-	return newQNetworkDatagram((*C.QNetworkDatagram)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QNetworkDatagram{h: (*C.QNetworkDatagram)(h)}
 }
 
 // NewQNetworkDatagram constructs a new QNetworkDatagram object.
 func NewQNetworkDatagram() *QNetworkDatagram {
-	ret := C.QNetworkDatagram_new()
-	return newQNetworkDatagram(ret)
+	var outptr_QNetworkDatagram *C.QNetworkDatagram = nil
+
+	C.QNetworkDatagram_new(&outptr_QNetworkDatagram)
+	ret := newQNetworkDatagram(outptr_QNetworkDatagram)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQNetworkDatagram2 constructs a new QNetworkDatagram object.
@@ -53,14 +64,22 @@ func NewQNetworkDatagram2(data []byte) *QNetworkDatagram {
 	data_alias := C.struct_miqt_string{}
 	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
 	data_alias.len = C.size_t(len(data))
-	ret := C.QNetworkDatagram_new2(data_alias)
-	return newQNetworkDatagram(ret)
+	var outptr_QNetworkDatagram *C.QNetworkDatagram = nil
+
+	C.QNetworkDatagram_new2(data_alias, &outptr_QNetworkDatagram)
+	ret := newQNetworkDatagram(outptr_QNetworkDatagram)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQNetworkDatagram3 constructs a new QNetworkDatagram object.
 func NewQNetworkDatagram3(other *QNetworkDatagram) *QNetworkDatagram {
-	ret := C.QNetworkDatagram_new3(other.cPointer())
-	return newQNetworkDatagram(ret)
+	var outptr_QNetworkDatagram *C.QNetworkDatagram = nil
+
+	C.QNetworkDatagram_new3(other.cPointer(), &outptr_QNetworkDatagram)
+	ret := newQNetworkDatagram(outptr_QNetworkDatagram)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQNetworkDatagram4 constructs a new QNetworkDatagram object.
@@ -68,8 +87,12 @@ func NewQNetworkDatagram4(data []byte, destinationAddress *QHostAddress) *QNetwo
 	data_alias := C.struct_miqt_string{}
 	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
 	data_alias.len = C.size_t(len(data))
-	ret := C.QNetworkDatagram_new4(data_alias, destinationAddress.cPointer())
-	return newQNetworkDatagram(ret)
+	var outptr_QNetworkDatagram *C.QNetworkDatagram = nil
+
+	C.QNetworkDatagram_new4(data_alias, destinationAddress.cPointer(), &outptr_QNetworkDatagram)
+	ret := newQNetworkDatagram(outptr_QNetworkDatagram)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQNetworkDatagram5 constructs a new QNetworkDatagram object.
@@ -77,8 +100,12 @@ func NewQNetworkDatagram5(data []byte, destinationAddress *QHostAddress, port ui
 	data_alias := C.struct_miqt_string{}
 	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
 	data_alias.len = C.size_t(len(data))
-	ret := C.QNetworkDatagram_new5(data_alias, destinationAddress.cPointer(), (C.uint16_t)(port))
-	return newQNetworkDatagram(ret)
+	var outptr_QNetworkDatagram *C.QNetworkDatagram = nil
+
+	C.QNetworkDatagram_new5(data_alias, destinationAddress.cPointer(), (C.uint16_t)(port), &outptr_QNetworkDatagram)
+	ret := newQNetworkDatagram(outptr_QNetworkDatagram)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QNetworkDatagram) OperatorAssign(other *QNetworkDatagram) {
@@ -177,7 +204,7 @@ func (this *QNetworkDatagram) SetSender2(address *QHostAddress, port uint16) {
 
 // Delete this object from C++ memory.
 func (this *QNetworkDatagram) Delete() {
-	C.QNetworkDatagram_Delete(this.h)
+	C.QNetworkDatagram_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

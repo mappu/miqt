@@ -1,11 +1,14 @@
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
 #include <QTextCharFormat>
 #include <QTextCursor>
 #include <QTextDocument>
+#include <QTextFrame>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QTextFrame__iterator
+#include <QTextObject>
 #include <QTextTable>
 #include <QTextTableCell>
 #include <QTextTableFormat>
@@ -13,12 +16,14 @@
 #include "gen_qtexttable.h"
 #include "_cgo_export.h"
 
-QTextTableCell* QTextTableCell_new() {
-	return new QTextTableCell();
+void QTextTableCell_new(QTextTableCell** outptr_QTextTableCell) {
+	QTextTableCell* ret = new QTextTableCell();
+	*outptr_QTextTableCell = ret;
 }
 
-QTextTableCell* QTextTableCell_new2(QTextTableCell* o) {
-	return new QTextTableCell(*o);
+void QTextTableCell_new2(QTextTableCell* o, QTextTableCell** outptr_QTextTableCell) {
+	QTextTableCell* ret = new QTextTableCell(*o);
+	*outptr_QTextTableCell = ret;
 }
 
 void QTextTableCell_OperatorAssign(QTextTableCell* self, QTextTableCell* o) {
@@ -89,12 +94,20 @@ int QTextTableCell_TableCellFormatIndex(const QTextTableCell* self) {
 	return self->tableCellFormatIndex();
 }
 
-void QTextTableCell_Delete(QTextTableCell* self) {
-	delete self;
+void QTextTableCell_Delete(QTextTableCell* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QTextTableCell*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QTextTable* QTextTable_new(QTextDocument* doc) {
-	return new QTextTable(doc);
+void QTextTable_new(QTextDocument* doc, QTextTable** outptr_QTextTable, QTextFrame** outptr_QTextFrame, QTextObject** outptr_QTextObject, QObject** outptr_QObject) {
+	QTextTable* ret = new QTextTable(doc);
+	*outptr_QTextTable = ret;
+	*outptr_QTextFrame = static_cast<QTextFrame*>(ret);
+	*outptr_QTextObject = static_cast<QTextObject*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QTextTable_MetaObject(const QTextTable* self) {
@@ -214,7 +227,11 @@ struct miqt_string QTextTable_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QTextTable_Delete(QTextTable* self) {
-	delete self;
+void QTextTable_Delete(QTextTable* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QTextTable*>( self );
+	} else {
+		delete self;
+	}
 }
 

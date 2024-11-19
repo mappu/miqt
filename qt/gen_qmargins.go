@@ -14,7 +14,8 @@ import (
 )
 
 type QMargins struct {
-	h *C.QMargins
+	h          *C.QMargins
+	isSubclass bool
 }
 
 func (this *QMargins) cPointer() *C.QMargins {
@@ -31,6 +32,7 @@ func (this *QMargins) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQMargins constructs the type using only CGO pointers.
 func newQMargins(h *C.QMargins) *QMargins {
 	if h == nil {
 		return nil
@@ -38,26 +40,43 @@ func newQMargins(h *C.QMargins) *QMargins {
 	return &QMargins{h: h}
 }
 
+// UnsafeNewQMargins constructs the type using only unsafe pointers.
 func UnsafeNewQMargins(h unsafe.Pointer) *QMargins {
-	return newQMargins((*C.QMargins)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMargins{h: (*C.QMargins)(h)}
 }
 
 // NewQMargins constructs a new QMargins object.
 func NewQMargins() *QMargins {
-	ret := C.QMargins_new()
-	return newQMargins(ret)
+	var outptr_QMargins *C.QMargins = nil
+
+	C.QMargins_new(&outptr_QMargins)
+	ret := newQMargins(outptr_QMargins)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMargins2 constructs a new QMargins object.
 func NewQMargins2(left int, top int, right int, bottom int) *QMargins {
-	ret := C.QMargins_new2((C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
-	return newQMargins(ret)
+	var outptr_QMargins *C.QMargins = nil
+
+	C.QMargins_new2((C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom), &outptr_QMargins)
+	ret := newQMargins(outptr_QMargins)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMargins3 constructs a new QMargins object.
 func NewQMargins3(param1 *QMargins) *QMargins {
-	ret := C.QMargins_new3(param1.cPointer())
-	return newQMargins(ret)
+	var outptr_QMargins *C.QMargins = nil
+
+	C.QMargins_new3(param1.cPointer(), &outptr_QMargins)
+	ret := newQMargins(outptr_QMargins)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QMargins) IsNull() bool {
@@ -130,7 +149,7 @@ func (this *QMargins) OperatorDivideAssignWithQreal(param1 float64) *QMargins {
 
 // Delete this object from C++ memory.
 func (this *QMargins) Delete() {
-	C.QMargins_Delete(this.h)
+	C.QMargins_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -143,7 +162,8 @@ func (this *QMargins) GoGC() {
 }
 
 type QMarginsF struct {
-	h *C.QMarginsF
+	h          *C.QMarginsF
+	isSubclass bool
 }
 
 func (this *QMarginsF) cPointer() *C.QMarginsF {
@@ -160,6 +180,7 @@ func (this *QMarginsF) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQMarginsF constructs the type using only CGO pointers.
 func newQMarginsF(h *C.QMarginsF) *QMarginsF {
 	if h == nil {
 		return nil
@@ -167,32 +188,53 @@ func newQMarginsF(h *C.QMarginsF) *QMarginsF {
 	return &QMarginsF{h: h}
 }
 
+// UnsafeNewQMarginsF constructs the type using only unsafe pointers.
 func UnsafeNewQMarginsF(h unsafe.Pointer) *QMarginsF {
-	return newQMarginsF((*C.QMarginsF)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMarginsF{h: (*C.QMarginsF)(h)}
 }
 
 // NewQMarginsF constructs a new QMarginsF object.
 func NewQMarginsF() *QMarginsF {
-	ret := C.QMarginsF_new()
-	return newQMarginsF(ret)
+	var outptr_QMarginsF *C.QMarginsF = nil
+
+	C.QMarginsF_new(&outptr_QMarginsF)
+	ret := newQMarginsF(outptr_QMarginsF)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMarginsF2 constructs a new QMarginsF object.
 func NewQMarginsF2(left float64, top float64, right float64, bottom float64) *QMarginsF {
-	ret := C.QMarginsF_new2((C.double)(left), (C.double)(top), (C.double)(right), (C.double)(bottom))
-	return newQMarginsF(ret)
+	var outptr_QMarginsF *C.QMarginsF = nil
+
+	C.QMarginsF_new2((C.double)(left), (C.double)(top), (C.double)(right), (C.double)(bottom), &outptr_QMarginsF)
+	ret := newQMarginsF(outptr_QMarginsF)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMarginsF3 constructs a new QMarginsF object.
 func NewQMarginsF3(margins *QMargins) *QMarginsF {
-	ret := C.QMarginsF_new3(margins.cPointer())
-	return newQMarginsF(ret)
+	var outptr_QMarginsF *C.QMarginsF = nil
+
+	C.QMarginsF_new3(margins.cPointer(), &outptr_QMarginsF)
+	ret := newQMarginsF(outptr_QMarginsF)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMarginsF4 constructs a new QMarginsF object.
 func NewQMarginsF4(param1 *QMarginsF) *QMarginsF {
-	ret := C.QMarginsF_new4(param1.cPointer())
-	return newQMarginsF(ret)
+	var outptr_QMarginsF *C.QMarginsF = nil
+
+	C.QMarginsF_new4(param1.cPointer(), &outptr_QMarginsF)
+	ret := newQMarginsF(outptr_QMarginsF)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QMarginsF) IsNull() bool {
@@ -264,7 +306,7 @@ func (this *QMarginsF) ToMargins() *QMargins {
 
 // Delete this object from C++ memory.
 func (this *QMarginsF) Delete() {
-	C.QMarginsF_Delete(this.h)
+	C.QMarginsF_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

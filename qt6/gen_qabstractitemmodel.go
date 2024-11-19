@@ -32,7 +32,8 @@ const (
 )
 
 type QModelRoleData struct {
-	h *C.QModelRoleData
+	h          *C.QModelRoleData
+	isSubclass bool
 }
 
 func (this *QModelRoleData) cPointer() *C.QModelRoleData {
@@ -49,6 +50,7 @@ func (this *QModelRoleData) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQModelRoleData constructs the type using only CGO pointers.
 func newQModelRoleData(h *C.QModelRoleData) *QModelRoleData {
 	if h == nil {
 		return nil
@@ -56,20 +58,33 @@ func newQModelRoleData(h *C.QModelRoleData) *QModelRoleData {
 	return &QModelRoleData{h: h}
 }
 
+// UnsafeNewQModelRoleData constructs the type using only unsafe pointers.
 func UnsafeNewQModelRoleData(h unsafe.Pointer) *QModelRoleData {
-	return newQModelRoleData((*C.QModelRoleData)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QModelRoleData{h: (*C.QModelRoleData)(h)}
 }
 
 // NewQModelRoleData constructs a new QModelRoleData object.
 func NewQModelRoleData(role int) *QModelRoleData {
-	ret := C.QModelRoleData_new((C.int)(role))
-	return newQModelRoleData(ret)
+	var outptr_QModelRoleData *C.QModelRoleData = nil
+
+	C.QModelRoleData_new((C.int)(role), &outptr_QModelRoleData)
+	ret := newQModelRoleData(outptr_QModelRoleData)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQModelRoleData2 constructs a new QModelRoleData object.
 func NewQModelRoleData2(param1 *QModelRoleData) *QModelRoleData {
-	ret := C.QModelRoleData_new2(param1.cPointer())
-	return newQModelRoleData(ret)
+	var outptr_QModelRoleData *C.QModelRoleData = nil
+
+	C.QModelRoleData_new2(param1.cPointer(), &outptr_QModelRoleData)
+	ret := newQModelRoleData(outptr_QModelRoleData)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QModelRoleData) Role() int {
@@ -94,7 +109,7 @@ func (this *QModelRoleData) OperatorAssign(param1 *QModelRoleData) {
 
 // Delete this object from C++ memory.
 func (this *QModelRoleData) Delete() {
-	C.QModelRoleData_Delete(this.h)
+	C.QModelRoleData_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -107,7 +122,8 @@ func (this *QModelRoleData) GoGC() {
 }
 
 type QModelRoleDataSpan struct {
-	h *C.QModelRoleDataSpan
+	h          *C.QModelRoleDataSpan
+	isSubclass bool
 }
 
 func (this *QModelRoleDataSpan) cPointer() *C.QModelRoleDataSpan {
@@ -124,6 +140,7 @@ func (this *QModelRoleDataSpan) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQModelRoleDataSpan constructs the type using only CGO pointers.
 func newQModelRoleDataSpan(h *C.QModelRoleDataSpan) *QModelRoleDataSpan {
 	if h == nil {
 		return nil
@@ -131,32 +148,53 @@ func newQModelRoleDataSpan(h *C.QModelRoleDataSpan) *QModelRoleDataSpan {
 	return &QModelRoleDataSpan{h: h}
 }
 
+// UnsafeNewQModelRoleDataSpan constructs the type using only unsafe pointers.
 func UnsafeNewQModelRoleDataSpan(h unsafe.Pointer) *QModelRoleDataSpan {
-	return newQModelRoleDataSpan((*C.QModelRoleDataSpan)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QModelRoleDataSpan{h: (*C.QModelRoleDataSpan)(h)}
 }
 
 // NewQModelRoleDataSpan constructs a new QModelRoleDataSpan object.
 func NewQModelRoleDataSpan() *QModelRoleDataSpan {
-	ret := C.QModelRoleDataSpan_new()
-	return newQModelRoleDataSpan(ret)
+	var outptr_QModelRoleDataSpan *C.QModelRoleDataSpan = nil
+
+	C.QModelRoleDataSpan_new(&outptr_QModelRoleDataSpan)
+	ret := newQModelRoleDataSpan(outptr_QModelRoleDataSpan)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQModelRoleDataSpan2 constructs a new QModelRoleDataSpan object.
 func NewQModelRoleDataSpan2(modelRoleData *QModelRoleData) *QModelRoleDataSpan {
-	ret := C.QModelRoleDataSpan_new2(modelRoleData.cPointer())
-	return newQModelRoleDataSpan(ret)
+	var outptr_QModelRoleDataSpan *C.QModelRoleDataSpan = nil
+
+	C.QModelRoleDataSpan_new2(modelRoleData.cPointer(), &outptr_QModelRoleDataSpan)
+	ret := newQModelRoleDataSpan(outptr_QModelRoleDataSpan)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQModelRoleDataSpan3 constructs a new QModelRoleDataSpan object.
 func NewQModelRoleDataSpan3(modelRoleData *QModelRoleData, lenVal int64) *QModelRoleDataSpan {
-	ret := C.QModelRoleDataSpan_new3(modelRoleData.cPointer(), (C.ptrdiff_t)(lenVal))
-	return newQModelRoleDataSpan(ret)
+	var outptr_QModelRoleDataSpan *C.QModelRoleDataSpan = nil
+
+	C.QModelRoleDataSpan_new3(modelRoleData.cPointer(), (C.ptrdiff_t)(lenVal), &outptr_QModelRoleDataSpan)
+	ret := newQModelRoleDataSpan(outptr_QModelRoleDataSpan)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQModelRoleDataSpan4 constructs a new QModelRoleDataSpan object.
 func NewQModelRoleDataSpan4(param1 *QModelRoleDataSpan) *QModelRoleDataSpan {
-	ret := C.QModelRoleDataSpan_new4(param1.cPointer())
-	return newQModelRoleDataSpan(ret)
+	var outptr_QModelRoleDataSpan *C.QModelRoleDataSpan = nil
+
+	C.QModelRoleDataSpan_new4(param1.cPointer(), &outptr_QModelRoleDataSpan)
+	ret := newQModelRoleDataSpan(outptr_QModelRoleDataSpan)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QModelRoleDataSpan) Size() int64 {
@@ -189,7 +227,7 @@ func (this *QModelRoleDataSpan) DataForRole(role int) *QVariant {
 
 // Delete this object from C++ memory.
 func (this *QModelRoleDataSpan) Delete() {
-	C.QModelRoleDataSpan_Delete(this.h)
+	C.QModelRoleDataSpan_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -202,7 +240,8 @@ func (this *QModelRoleDataSpan) GoGC() {
 }
 
 type QModelIndex struct {
-	h *C.QModelIndex
+	h          *C.QModelIndex
+	isSubclass bool
 }
 
 func (this *QModelIndex) cPointer() *C.QModelIndex {
@@ -219,6 +258,7 @@ func (this *QModelIndex) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQModelIndex constructs the type using only CGO pointers.
 func newQModelIndex(h *C.QModelIndex) *QModelIndex {
 	if h == nil {
 		return nil
@@ -226,20 +266,33 @@ func newQModelIndex(h *C.QModelIndex) *QModelIndex {
 	return &QModelIndex{h: h}
 }
 
+// UnsafeNewQModelIndex constructs the type using only unsafe pointers.
 func UnsafeNewQModelIndex(h unsafe.Pointer) *QModelIndex {
-	return newQModelIndex((*C.QModelIndex)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QModelIndex{h: (*C.QModelIndex)(h)}
 }
 
 // NewQModelIndex constructs a new QModelIndex object.
 func NewQModelIndex() *QModelIndex {
-	ret := C.QModelIndex_new()
-	return newQModelIndex(ret)
+	var outptr_QModelIndex *C.QModelIndex = nil
+
+	C.QModelIndex_new(&outptr_QModelIndex)
+	ret := newQModelIndex(outptr_QModelIndex)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQModelIndex2 constructs a new QModelIndex object.
 func NewQModelIndex2(param1 *QModelIndex) *QModelIndex {
-	ret := C.QModelIndex_new2(param1.cPointer())
-	return newQModelIndex(ret)
+	var outptr_QModelIndex *C.QModelIndex = nil
+
+	C.QModelIndex_new2(param1.cPointer(), &outptr_QModelIndex)
+	ret := newQModelIndex(outptr_QModelIndex)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QModelIndex) Row() int {
@@ -306,7 +359,7 @@ func (this *QModelIndex) Flags() ItemFlag {
 }
 
 func (this *QModelIndex) Model() *QAbstractItemModel {
-	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QModelIndex_Model(this.h)))
+	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QModelIndex_Model(this.h)), nil)
 }
 
 func (this *QModelIndex) IsValid() bool {
@@ -334,7 +387,7 @@ func (this *QModelIndex) Data1(role int) *QVariant {
 
 // Delete this object from C++ memory.
 func (this *QModelIndex) Delete() {
-	C.QModelIndex_Delete(this.h)
+	C.QModelIndex_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -347,7 +400,8 @@ func (this *QModelIndex) GoGC() {
 }
 
 type QPersistentModelIndex struct {
-	h *C.QPersistentModelIndex
+	h          *C.QPersistentModelIndex
+	isSubclass bool
 }
 
 func (this *QPersistentModelIndex) cPointer() *C.QPersistentModelIndex {
@@ -364,6 +418,7 @@ func (this *QPersistentModelIndex) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPersistentModelIndex constructs the type using only CGO pointers.
 func newQPersistentModelIndex(h *C.QPersistentModelIndex) *QPersistentModelIndex {
 	if h == nil {
 		return nil
@@ -371,26 +426,43 @@ func newQPersistentModelIndex(h *C.QPersistentModelIndex) *QPersistentModelIndex
 	return &QPersistentModelIndex{h: h}
 }
 
+// UnsafeNewQPersistentModelIndex constructs the type using only unsafe pointers.
 func UnsafeNewQPersistentModelIndex(h unsafe.Pointer) *QPersistentModelIndex {
-	return newQPersistentModelIndex((*C.QPersistentModelIndex)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPersistentModelIndex{h: (*C.QPersistentModelIndex)(h)}
 }
 
 // NewQPersistentModelIndex constructs a new QPersistentModelIndex object.
 func NewQPersistentModelIndex() *QPersistentModelIndex {
-	ret := C.QPersistentModelIndex_new()
-	return newQPersistentModelIndex(ret)
+	var outptr_QPersistentModelIndex *C.QPersistentModelIndex = nil
+
+	C.QPersistentModelIndex_new(&outptr_QPersistentModelIndex)
+	ret := newQPersistentModelIndex(outptr_QPersistentModelIndex)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPersistentModelIndex2 constructs a new QPersistentModelIndex object.
 func NewQPersistentModelIndex2(index *QModelIndex) *QPersistentModelIndex {
-	ret := C.QPersistentModelIndex_new2(index.cPointer())
-	return newQPersistentModelIndex(ret)
+	var outptr_QPersistentModelIndex *C.QPersistentModelIndex = nil
+
+	C.QPersistentModelIndex_new2(index.cPointer(), &outptr_QPersistentModelIndex)
+	ret := newQPersistentModelIndex(outptr_QPersistentModelIndex)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPersistentModelIndex3 constructs a new QPersistentModelIndex object.
 func NewQPersistentModelIndex3(other *QPersistentModelIndex) *QPersistentModelIndex {
-	ret := C.QPersistentModelIndex_new3(other.cPointer())
-	return newQPersistentModelIndex(ret)
+	var outptr_QPersistentModelIndex *C.QPersistentModelIndex = nil
+
+	C.QPersistentModelIndex_new3(other.cPointer(), &outptr_QPersistentModelIndex)
+	ret := newQPersistentModelIndex(outptr_QPersistentModelIndex)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QPersistentModelIndex) OperatorLesser(other *QPersistentModelIndex) bool {
@@ -475,7 +547,7 @@ func (this *QPersistentModelIndex) Flags() ItemFlag {
 }
 
 func (this *QPersistentModelIndex) Model() *QAbstractItemModel {
-	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QPersistentModelIndex_Model(this.h)))
+	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QPersistentModelIndex_Model(this.h)), nil)
 }
 
 func (this *QPersistentModelIndex) IsValid() bool {
@@ -491,7 +563,7 @@ func (this *QPersistentModelIndex) Data1(role int) *QVariant {
 
 // Delete this object from C++ memory.
 func (this *QPersistentModelIndex) Delete() {
-	C.QPersistentModelIndex_Delete(this.h)
+	C.QPersistentModelIndex_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -504,7 +576,8 @@ func (this *QPersistentModelIndex) GoGC() {
 }
 
 type QAbstractItemModel struct {
-	h *C.QAbstractItemModel
+	h          *C.QAbstractItemModel
+	isSubclass bool
 	*QObject
 }
 
@@ -522,15 +595,23 @@ func (this *QAbstractItemModel) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAbstractItemModel(h *C.QAbstractItemModel) *QAbstractItemModel {
+// newQAbstractItemModel constructs the type using only CGO pointers.
+func newQAbstractItemModel(h *C.QAbstractItemModel, h_QObject *C.QObject) *QAbstractItemModel {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractItemModel{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QAbstractItemModel{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQAbstractItemModel(h unsafe.Pointer) *QAbstractItemModel {
-	return newQAbstractItemModel((*C.QAbstractItemModel)(h))
+// UnsafeNewQAbstractItemModel constructs the type using only unsafe pointers.
+func UnsafeNewQAbstractItemModel(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractItemModel {
+	if h == nil {
+		return nil
+	}
+
+	return &QAbstractItemModel{h: (*C.QAbstractItemModel)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QAbstractItemModel) MetaObject() *QMetaObject {
@@ -556,8 +637,8 @@ func (this *QAbstractItemModel) HasIndex(row int, column int) bool {
 	return (bool)(C.QAbstractItemModel_HasIndex(this.h, (C.int)(row), (C.int)(column)))
 }
 
-func (this *QAbstractItemModel) Index(row int, column int) *QModelIndex {
-	_ret := C.QAbstractItemModel_Index(this.h, (C.int)(row), (C.int)(column))
+func (this *QAbstractItemModel) Index(row int, column int, parent *QModelIndex) *QModelIndex {
+	_ret := C.QAbstractItemModel_Index(this.h, (C.int)(row), (C.int)(column), parent.cPointer())
 	_goptr := newQModelIndex(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -577,38 +658,38 @@ func (this *QAbstractItemModel) Sibling(row int, column int, idx *QModelIndex) *
 	return _goptr
 }
 
-func (this *QAbstractItemModel) RowCount() int {
-	return (int)(C.QAbstractItemModel_RowCount(this.h))
+func (this *QAbstractItemModel) RowCount(parent *QModelIndex) int {
+	return (int)(C.QAbstractItemModel_RowCount(this.h, parent.cPointer()))
 }
 
-func (this *QAbstractItemModel) ColumnCount() int {
-	return (int)(C.QAbstractItemModel_ColumnCount(this.h))
+func (this *QAbstractItemModel) ColumnCount(parent *QModelIndex) int {
+	return (int)(C.QAbstractItemModel_ColumnCount(this.h, parent.cPointer()))
 }
 
-func (this *QAbstractItemModel) HasChildren() bool {
-	return (bool)(C.QAbstractItemModel_HasChildren(this.h))
+func (this *QAbstractItemModel) HasChildren(parent *QModelIndex) bool {
+	return (bool)(C.QAbstractItemModel_HasChildren(this.h, parent.cPointer()))
 }
 
-func (this *QAbstractItemModel) Data(index *QModelIndex) *QVariant {
-	_ret := C.QAbstractItemModel_Data(this.h, index.cPointer())
+func (this *QAbstractItemModel) Data(index *QModelIndex, role int) *QVariant {
+	_ret := C.QAbstractItemModel_Data(this.h, index.cPointer(), (C.int)(role))
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QAbstractItemModel) SetData(index *QModelIndex, value *QVariant) bool {
-	return (bool)(C.QAbstractItemModel_SetData(this.h, index.cPointer(), value.cPointer()))
+func (this *QAbstractItemModel) SetData(index *QModelIndex, value *QVariant, role int) bool {
+	return (bool)(C.QAbstractItemModel_SetData(this.h, index.cPointer(), value.cPointer(), (C.int)(role)))
 }
 
-func (this *QAbstractItemModel) HeaderData(section int, orientation Orientation) *QVariant {
-	_ret := C.QAbstractItemModel_HeaderData(this.h, (C.int)(section), (C.int)(orientation))
+func (this *QAbstractItemModel) HeaderData(section int, orientation Orientation, role int) *QVariant {
+	_ret := C.QAbstractItemModel_HeaderData(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role))
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QAbstractItemModel) SetHeaderData(section int, orientation Orientation, value *QVariant) bool {
-	return (bool)(C.QAbstractItemModel_SetHeaderData(this.h, (C.int)(section), (C.int)(orientation), value.cPointer()))
+func (this *QAbstractItemModel) SetHeaderData(section int, orientation Orientation, value *QVariant, role int) bool {
+	return (bool)(C.QAbstractItemModel_SetHeaderData(this.h, (C.int)(section), (C.int)(orientation), value.cPointer(), (C.int)(role)))
 }
 
 func (this *QAbstractItemModel) ItemData(index *QModelIndex) map[int]QVariant {
@@ -672,7 +753,7 @@ func (this *QAbstractItemModel) MimeData(indexes []QModelIndex) *QMimeData {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
-	return UnsafeNewQMimeData(unsafe.Pointer(C.QAbstractItemModel_MimeData(this.h, indexes_ma)))
+	return UnsafeNewQMimeData(unsafe.Pointer(C.QAbstractItemModel_MimeData(this.h, indexes_ma)), nil)
 }
 
 func (this *QAbstractItemModel) CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
@@ -691,20 +772,20 @@ func (this *QAbstractItemModel) SupportedDragActions() DropAction {
 	return (DropAction)(C.QAbstractItemModel_SupportedDragActions(this.h))
 }
 
-func (this *QAbstractItemModel) InsertRows(row int, count int) bool {
-	return (bool)(C.QAbstractItemModel_InsertRows(this.h, (C.int)(row), (C.int)(count)))
+func (this *QAbstractItemModel) InsertRows(row int, count int, parent *QModelIndex) bool {
+	return (bool)(C.QAbstractItemModel_InsertRows(this.h, (C.int)(row), (C.int)(count), parent.cPointer()))
 }
 
-func (this *QAbstractItemModel) InsertColumns(column int, count int) bool {
-	return (bool)(C.QAbstractItemModel_InsertColumns(this.h, (C.int)(column), (C.int)(count)))
+func (this *QAbstractItemModel) InsertColumns(column int, count int, parent *QModelIndex) bool {
+	return (bool)(C.QAbstractItemModel_InsertColumns(this.h, (C.int)(column), (C.int)(count), parent.cPointer()))
 }
 
-func (this *QAbstractItemModel) RemoveRows(row int, count int) bool {
-	return (bool)(C.QAbstractItemModel_RemoveRows(this.h, (C.int)(row), (C.int)(count)))
+func (this *QAbstractItemModel) RemoveRows(row int, count int, parent *QModelIndex) bool {
+	return (bool)(C.QAbstractItemModel_RemoveRows(this.h, (C.int)(row), (C.int)(count), parent.cPointer()))
 }
 
-func (this *QAbstractItemModel) RemoveColumns(column int, count int) bool {
-	return (bool)(C.QAbstractItemModel_RemoveColumns(this.h, (C.int)(column), (C.int)(count)))
+func (this *QAbstractItemModel) RemoveColumns(column int, count int, parent *QModelIndex) bool {
+	return (bool)(C.QAbstractItemModel_RemoveColumns(this.h, (C.int)(column), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QAbstractItemModel) MoveRows(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool {
@@ -751,8 +832,8 @@ func (this *QAbstractItemModel) Flags(index *QModelIndex) ItemFlag {
 	return (ItemFlag)(C.QAbstractItemModel_Flags(this.h, index.cPointer()))
 }
 
-func (this *QAbstractItemModel) Sort(column int) {
-	C.QAbstractItemModel_Sort(this.h, (C.int)(column))
+func (this *QAbstractItemModel) Sort(column int, order SortOrder) {
+	C.QAbstractItemModel_Sort(this.h, (C.int)(column), (C.int)(order))
 }
 
 func (this *QAbstractItemModel) Buddy(index *QModelIndex) *QModelIndex {
@@ -762,8 +843,8 @@ func (this *QAbstractItemModel) Buddy(index *QModelIndex) *QModelIndex {
 	return _goptr
 }
 
-func (this *QAbstractItemModel) Match(start *QModelIndex, role int, value *QVariant) []QModelIndex {
-	var _ma C.struct_miqt_array = C.QAbstractItemModel_Match(this.h, start.cPointer(), (C.int)(role), value.cPointer())
+func (this *QAbstractItemModel) Match(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
+	var _ma C.struct_miqt_array = C.QAbstractItemModel_Match(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -920,63 +1001,6 @@ func (this *QAbstractItemModel) HasIndex3(row int, column int, parent *QModelInd
 	return (bool)(C.QAbstractItemModel_HasIndex3(this.h, (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
-func (this *QAbstractItemModel) Index3(row int, column int, parent *QModelIndex) *QModelIndex {
-	_ret := C.QAbstractItemModel_Index3(this.h, (C.int)(row), (C.int)(column), parent.cPointer())
-	_goptr := newQModelIndex(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
-}
-
-func (this *QAbstractItemModel) RowCount1(parent *QModelIndex) int {
-	return (int)(C.QAbstractItemModel_RowCount1(this.h, parent.cPointer()))
-}
-
-func (this *QAbstractItemModel) ColumnCount1(parent *QModelIndex) int {
-	return (int)(C.QAbstractItemModel_ColumnCount1(this.h, parent.cPointer()))
-}
-
-func (this *QAbstractItemModel) HasChildren1(parent *QModelIndex) bool {
-	return (bool)(C.QAbstractItemModel_HasChildren1(this.h, parent.cPointer()))
-}
-
-func (this *QAbstractItemModel) Data2(index *QModelIndex, role int) *QVariant {
-	_ret := C.QAbstractItemModel_Data2(this.h, index.cPointer(), (C.int)(role))
-	_goptr := newQVariant(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
-}
-
-func (this *QAbstractItemModel) SetData3(index *QModelIndex, value *QVariant, role int) bool {
-	return (bool)(C.QAbstractItemModel_SetData3(this.h, index.cPointer(), value.cPointer(), (C.int)(role)))
-}
-
-func (this *QAbstractItemModel) HeaderData3(section int, orientation Orientation, role int) *QVariant {
-	_ret := C.QAbstractItemModel_HeaderData3(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role))
-	_goptr := newQVariant(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
-}
-
-func (this *QAbstractItemModel) SetHeaderData4(section int, orientation Orientation, value *QVariant, role int) bool {
-	return (bool)(C.QAbstractItemModel_SetHeaderData4(this.h, (C.int)(section), (C.int)(orientation), value.cPointer(), (C.int)(role)))
-}
-
-func (this *QAbstractItemModel) InsertRows3(row int, count int, parent *QModelIndex) bool {
-	return (bool)(C.QAbstractItemModel_InsertRows3(this.h, (C.int)(row), (C.int)(count), parent.cPointer()))
-}
-
-func (this *QAbstractItemModel) InsertColumns3(column int, count int, parent *QModelIndex) bool {
-	return (bool)(C.QAbstractItemModel_InsertColumns3(this.h, (C.int)(column), (C.int)(count), parent.cPointer()))
-}
-
-func (this *QAbstractItemModel) RemoveRows3(row int, count int, parent *QModelIndex) bool {
-	return (bool)(C.QAbstractItemModel_RemoveRows3(this.h, (C.int)(row), (C.int)(count), parent.cPointer()))
-}
-
-func (this *QAbstractItemModel) RemoveColumns3(column int, count int, parent *QModelIndex) bool {
-	return (bool)(C.QAbstractItemModel_RemoveColumns3(this.h, (C.int)(column), (C.int)(count), parent.cPointer()))
-}
-
 func (this *QAbstractItemModel) InsertRow2(row int, parent *QModelIndex) bool {
 	return (bool)(C.QAbstractItemModel_InsertRow2(this.h, (C.int)(row), parent.cPointer()))
 }
@@ -991,36 +1015,6 @@ func (this *QAbstractItemModel) RemoveRow2(row int, parent *QModelIndex) bool {
 
 func (this *QAbstractItemModel) RemoveColumn2(column int, parent *QModelIndex) bool {
 	return (bool)(C.QAbstractItemModel_RemoveColumn2(this.h, (C.int)(column), parent.cPointer()))
-}
-
-func (this *QAbstractItemModel) Sort2(column int, order SortOrder) {
-	C.QAbstractItemModel_Sort2(this.h, (C.int)(column), (C.int)(order))
-}
-
-func (this *QAbstractItemModel) Match4(start *QModelIndex, role int, value *QVariant, hits int) []QModelIndex {
-	var _ma C.struct_miqt_array = C.QAbstractItemModel_Match4(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits))
-	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
-	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
-	}
-	return _ret
-}
-
-func (this *QAbstractItemModel) Match5(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
-	var _ma C.struct_miqt_array = C.QAbstractItemModel_Match5(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
-	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
-	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
-	}
-	return _ret
 }
 
 func (this *QAbstractItemModel) CheckIndex2(index *QModelIndex, options QAbstractItemModel__CheckIndexOption) bool {
@@ -1207,7 +1201,7 @@ func miqt_exec_callback_QAbstractItemModel_LayoutAboutToBeChanged2(cb C.intptr_t
 
 // Delete this object from C++ memory.
 func (this *QAbstractItemModel) Delete() {
-	C.QAbstractItemModel_Delete(this.h)
+	C.QAbstractItemModel_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1220,7 +1214,8 @@ func (this *QAbstractItemModel) GoGC() {
 }
 
 type QAbstractTableModel struct {
-	h *C.QAbstractTableModel
+	h          *C.QAbstractTableModel
+	isSubclass bool
 	*QAbstractItemModel
 }
 
@@ -1238,15 +1233,23 @@ func (this *QAbstractTableModel) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAbstractTableModel(h *C.QAbstractTableModel) *QAbstractTableModel {
+// newQAbstractTableModel constructs the type using only CGO pointers.
+func newQAbstractTableModel(h *C.QAbstractTableModel, h_QAbstractItemModel *C.QAbstractItemModel, h_QObject *C.QObject) *QAbstractTableModel {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractTableModel{h: h, QAbstractItemModel: UnsafeNewQAbstractItemModel(unsafe.Pointer(h))}
+	return &QAbstractTableModel{h: h,
+		QAbstractItemModel: newQAbstractItemModel(h_QAbstractItemModel, h_QObject)}
 }
 
-func UnsafeNewQAbstractTableModel(h unsafe.Pointer) *QAbstractTableModel {
-	return newQAbstractTableModel((*C.QAbstractTableModel)(h))
+// UnsafeNewQAbstractTableModel constructs the type using only unsafe pointers.
+func UnsafeNewQAbstractTableModel(h unsafe.Pointer, h_QAbstractItemModel unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractTableModel {
+	if h == nil {
+		return nil
+	}
+
+	return &QAbstractTableModel{h: (*C.QAbstractTableModel)(h),
+		QAbstractItemModel: UnsafeNewQAbstractItemModel(h_QAbstractItemModel, h_QObject)}
 }
 
 func (this *QAbstractTableModel) MetaObject() *QMetaObject {
@@ -1268,8 +1271,8 @@ func QAbstractTableModel_Tr(s string) string {
 	return _ret
 }
 
-func (this *QAbstractTableModel) Index(row int, column int) *QModelIndex {
-	_ret := C.QAbstractTableModel_Index(this.h, (C.int)(row), (C.int)(column))
+func (this *QAbstractTableModel) Index(row int, column int, parent *QModelIndex) *QModelIndex {
+	_ret := C.QAbstractTableModel_Index(this.h, (C.int)(row), (C.int)(column), parent.cPointer())
 	_goptr := newQModelIndex(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -1312,16 +1315,9 @@ func QAbstractTableModel_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QAbstractTableModel) Index3(row int, column int, parent *QModelIndex) *QModelIndex {
-	_ret := C.QAbstractTableModel_Index3(this.h, (C.int)(row), (C.int)(column), parent.cPointer())
-	_goptr := newQModelIndex(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
-}
-
 // Delete this object from C++ memory.
 func (this *QAbstractTableModel) Delete() {
-	C.QAbstractTableModel_Delete(this.h)
+	C.QAbstractTableModel_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1334,7 +1330,8 @@ func (this *QAbstractTableModel) GoGC() {
 }
 
 type QAbstractListModel struct {
-	h *C.QAbstractListModel
+	h          *C.QAbstractListModel
+	isSubclass bool
 	*QAbstractItemModel
 }
 
@@ -1352,15 +1349,23 @@ func (this *QAbstractListModel) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAbstractListModel(h *C.QAbstractListModel) *QAbstractListModel {
+// newQAbstractListModel constructs the type using only CGO pointers.
+func newQAbstractListModel(h *C.QAbstractListModel, h_QAbstractItemModel *C.QAbstractItemModel, h_QObject *C.QObject) *QAbstractListModel {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractListModel{h: h, QAbstractItemModel: UnsafeNewQAbstractItemModel(unsafe.Pointer(h))}
+	return &QAbstractListModel{h: h,
+		QAbstractItemModel: newQAbstractItemModel(h_QAbstractItemModel, h_QObject)}
 }
 
-func UnsafeNewQAbstractListModel(h unsafe.Pointer) *QAbstractListModel {
-	return newQAbstractListModel((*C.QAbstractListModel)(h))
+// UnsafeNewQAbstractListModel constructs the type using only unsafe pointers.
+func UnsafeNewQAbstractListModel(h unsafe.Pointer, h_QAbstractItemModel unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractListModel {
+	if h == nil {
+		return nil
+	}
+
+	return &QAbstractListModel{h: (*C.QAbstractListModel)(h),
+		QAbstractItemModel: UnsafeNewQAbstractItemModel(h_QAbstractItemModel, h_QObject)}
 }
 
 func (this *QAbstractListModel) MetaObject() *QMetaObject {
@@ -1382,8 +1387,8 @@ func QAbstractListModel_Tr(s string) string {
 	return _ret
 }
 
-func (this *QAbstractListModel) Index(row int) *QModelIndex {
-	_ret := C.QAbstractListModel_Index(this.h, (C.int)(row))
+func (this *QAbstractListModel) Index(row int, column int, parent *QModelIndex) *QModelIndex {
+	_ret := C.QAbstractListModel_Index(this.h, (C.int)(row), (C.int)(column), parent.cPointer())
 	_goptr := newQModelIndex(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -1426,23 +1431,9 @@ func QAbstractListModel_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QAbstractListModel) Index2(row int, column int) *QModelIndex {
-	_ret := C.QAbstractListModel_Index2(this.h, (C.int)(row), (C.int)(column))
-	_goptr := newQModelIndex(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
-}
-
-func (this *QAbstractListModel) Index3(row int, column int, parent *QModelIndex) *QModelIndex {
-	_ret := C.QAbstractListModel_Index3(this.h, (C.int)(row), (C.int)(column), parent.cPointer())
-	_goptr := newQModelIndex(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
-}
-
 // Delete this object from C++ memory.
 func (this *QAbstractListModel) Delete() {
-	C.QAbstractListModel_Delete(this.h)
+	C.QAbstractListModel_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

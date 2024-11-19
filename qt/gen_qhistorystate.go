@@ -10,6 +10,7 @@ import "C"
 
 import (
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
@@ -21,7 +22,8 @@ const (
 )
 
 type QHistoryState struct {
-	h *C.QHistoryState
+	h          *C.QHistoryState
+	isSubclass bool
 	*QAbstractState
 }
 
@@ -39,39 +41,71 @@ func (this *QHistoryState) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQHistoryState(h *C.QHistoryState) *QHistoryState {
+// newQHistoryState constructs the type using only CGO pointers.
+func newQHistoryState(h *C.QHistoryState, h_QAbstractState *C.QAbstractState, h_QObject *C.QObject) *QHistoryState {
 	if h == nil {
 		return nil
 	}
-	return &QHistoryState{h: h, QAbstractState: UnsafeNewQAbstractState(unsafe.Pointer(h))}
+	return &QHistoryState{h: h,
+		QAbstractState: newQAbstractState(h_QAbstractState, h_QObject)}
 }
 
-func UnsafeNewQHistoryState(h unsafe.Pointer) *QHistoryState {
-	return newQHistoryState((*C.QHistoryState)(h))
+// UnsafeNewQHistoryState constructs the type using only unsafe pointers.
+func UnsafeNewQHistoryState(h unsafe.Pointer, h_QAbstractState unsafe.Pointer, h_QObject unsafe.Pointer) *QHistoryState {
+	if h == nil {
+		return nil
+	}
+
+	return &QHistoryState{h: (*C.QHistoryState)(h),
+		QAbstractState: UnsafeNewQAbstractState(h_QAbstractState, h_QObject)}
 }
 
 // NewQHistoryState constructs a new QHistoryState object.
 func NewQHistoryState() *QHistoryState {
-	ret := C.QHistoryState_new()
-	return newQHistoryState(ret)
+	var outptr_QHistoryState *C.QHistoryState = nil
+	var outptr_QAbstractState *C.QAbstractState = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QHistoryState_new(&outptr_QHistoryState, &outptr_QAbstractState, &outptr_QObject)
+	ret := newQHistoryState(outptr_QHistoryState, outptr_QAbstractState, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQHistoryState2 constructs a new QHistoryState object.
 func NewQHistoryState2(typeVal QHistoryState__HistoryType) *QHistoryState {
-	ret := C.QHistoryState_new2((C.int)(typeVal))
-	return newQHistoryState(ret)
+	var outptr_QHistoryState *C.QHistoryState = nil
+	var outptr_QAbstractState *C.QAbstractState = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QHistoryState_new2((C.int)(typeVal), &outptr_QHistoryState, &outptr_QAbstractState, &outptr_QObject)
+	ret := newQHistoryState(outptr_QHistoryState, outptr_QAbstractState, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQHistoryState3 constructs a new QHistoryState object.
 func NewQHistoryState3(parent *QState) *QHistoryState {
-	ret := C.QHistoryState_new3(parent.cPointer())
-	return newQHistoryState(ret)
+	var outptr_QHistoryState *C.QHistoryState = nil
+	var outptr_QAbstractState *C.QAbstractState = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QHistoryState_new3(parent.cPointer(), &outptr_QHistoryState, &outptr_QAbstractState, &outptr_QObject)
+	ret := newQHistoryState(outptr_QHistoryState, outptr_QAbstractState, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQHistoryState4 constructs a new QHistoryState object.
 func NewQHistoryState4(typeVal QHistoryState__HistoryType, parent *QState) *QHistoryState {
-	ret := C.QHistoryState_new4((C.int)(typeVal), parent.cPointer())
-	return newQHistoryState(ret)
+	var outptr_QHistoryState *C.QHistoryState = nil
+	var outptr_QAbstractState *C.QAbstractState = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QHistoryState_new4((C.int)(typeVal), parent.cPointer(), &outptr_QHistoryState, &outptr_QAbstractState, &outptr_QObject)
+	ret := newQHistoryState(outptr_QHistoryState, outptr_QAbstractState, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QHistoryState) MetaObject() *QMetaObject {
@@ -103,7 +137,7 @@ func QHistoryState_TrUtf8(s string) string {
 }
 
 func (this *QHistoryState) DefaultTransition() *QAbstractTransition {
-	return UnsafeNewQAbstractTransition(unsafe.Pointer(C.QHistoryState_DefaultTransition(this.h)))
+	return UnsafeNewQAbstractTransition(unsafe.Pointer(C.QHistoryState_DefaultTransition(this.h)), nil)
 }
 
 func (this *QHistoryState) SetDefaultTransition(transition *QAbstractTransition) {
@@ -111,7 +145,7 @@ func (this *QHistoryState) SetDefaultTransition(transition *QAbstractTransition)
 }
 
 func (this *QHistoryState) DefaultState() *QAbstractState {
-	return UnsafeNewQAbstractState(unsafe.Pointer(C.QHistoryState_DefaultState(this.h)))
+	return UnsafeNewQAbstractState(unsafe.Pointer(C.QHistoryState_DefaultState(this.h)), nil)
 }
 
 func (this *QHistoryState) SetDefaultState(state *QAbstractState) {
@@ -170,9 +204,80 @@ func QHistoryState_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QHistoryState) callVirtualBase_OnEntry(event *QEvent) {
+
+	C.QHistoryState_virtualbase_OnEntry(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QHistoryState) OnOnEntry(slot func(super func(event *QEvent), event *QEvent)) {
+	C.QHistoryState_override_virtual_OnEntry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QHistoryState_OnEntry
+func miqt_exec_callback_QHistoryState_OnEntry(self *C.QHistoryState, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QHistoryState{h: self}).callVirtualBase_OnEntry, slotval1)
+
+}
+
+func (this *QHistoryState) callVirtualBase_OnExit(event *QEvent) {
+
+	C.QHistoryState_virtualbase_OnExit(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QHistoryState) OnOnExit(slot func(super func(event *QEvent), event *QEvent)) {
+	C.QHistoryState_override_virtual_OnExit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QHistoryState_OnExit
+func miqt_exec_callback_QHistoryState_OnExit(self *C.QHistoryState, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QHistoryState{h: self}).callVirtualBase_OnExit, slotval1)
+
+}
+
+func (this *QHistoryState) callVirtualBase_Event(e *QEvent) bool {
+
+	return (bool)(C.QHistoryState_virtualbase_Event(unsafe.Pointer(this.h), e.cPointer()))
+
+}
+func (this *QHistoryState) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	C.QHistoryState_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QHistoryState_Event
+func miqt_exec_callback_QHistoryState_Event(self *C.QHistoryState, cb C.intptr_t, e *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QEvent) bool, e *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+
+	virtualReturn := gofunc((&QHistoryState{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QHistoryState) Delete() {
-	C.QHistoryState_Delete(this.h)
+	C.QHistoryState_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

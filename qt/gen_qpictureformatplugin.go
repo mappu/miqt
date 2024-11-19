@@ -14,7 +14,8 @@ import (
 )
 
 type QPictureFormatPlugin struct {
-	h *C.QPictureFormatPlugin
+	h          *C.QPictureFormatPlugin
+	isSubclass bool
 	*QObject
 }
 
@@ -32,15 +33,23 @@ func (this *QPictureFormatPlugin) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQPictureFormatPlugin(h *C.QPictureFormatPlugin) *QPictureFormatPlugin {
+// newQPictureFormatPlugin constructs the type using only CGO pointers.
+func newQPictureFormatPlugin(h *C.QPictureFormatPlugin, h_QObject *C.QObject) *QPictureFormatPlugin {
 	if h == nil {
 		return nil
 	}
-	return &QPictureFormatPlugin{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QPictureFormatPlugin{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQPictureFormatPlugin(h unsafe.Pointer) *QPictureFormatPlugin {
-	return newQPictureFormatPlugin((*C.QPictureFormatPlugin)(h))
+// UnsafeNewQPictureFormatPlugin constructs the type using only unsafe pointers.
+func UnsafeNewQPictureFormatPlugin(h unsafe.Pointer, h_QObject unsafe.Pointer) *QPictureFormatPlugin {
+	if h == nil {
+		return nil
+	}
+
+	return &QPictureFormatPlugin{h: (*C.QPictureFormatPlugin)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QPictureFormatPlugin) MetaObject() *QMetaObject {
@@ -149,7 +158,7 @@ func QPictureFormatPlugin_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QPictureFormatPlugin) Delete() {
-	C.QPictureFormatPlugin_Delete(this.h)
+	C.QPictureFormatPlugin_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

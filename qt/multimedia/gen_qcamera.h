@@ -29,6 +29,8 @@ class QCameraImageProcessing;
 class QCameraInfo;
 class QCameraViewfinderSettings;
 class QGraphicsVideoItem;
+class QMediaObject;
+class QMediaService;
 class QMetaObject;
 class QObject;
 class QSize;
@@ -44,20 +46,22 @@ typedef struct QCameraImageProcessing QCameraImageProcessing;
 typedef struct QCameraInfo QCameraInfo;
 typedef struct QCameraViewfinderSettings QCameraViewfinderSettings;
 typedef struct QGraphicsVideoItem QGraphicsVideoItem;
+typedef struct QMediaObject QMediaObject;
+typedef struct QMediaService QMediaService;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QSize QSize;
 typedef struct QVideoWidget QVideoWidget;
 #endif
 
-QCamera* QCamera_new();
-QCamera* QCamera_new2(struct miqt_string deviceName);
-QCamera* QCamera_new3(QCameraInfo* cameraInfo);
-QCamera* QCamera_new4(int position);
-QCamera* QCamera_new5(QObject* parent);
-QCamera* QCamera_new6(struct miqt_string deviceName, QObject* parent);
-QCamera* QCamera_new7(QCameraInfo* cameraInfo, QObject* parent);
-QCamera* QCamera_new8(int position, QObject* parent);
+void QCamera_new(QCamera** outptr_QCamera, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject);
+void QCamera_new2(struct miqt_string deviceName, QCamera** outptr_QCamera, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject);
+void QCamera_new3(QCameraInfo* cameraInfo, QCamera** outptr_QCamera, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject);
+void QCamera_new4(int position, QCamera** outptr_QCamera, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject);
+void QCamera_new5(QObject* parent, QCamera** outptr_QCamera, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject);
+void QCamera_new6(struct miqt_string deviceName, QObject* parent, QCamera** outptr_QCamera, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject);
+void QCamera_new7(QCameraInfo* cameraInfo, QObject* parent, QCamera** outptr_QCamera, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject);
+void QCamera_new8(int position, QObject* parent, QCamera** outptr_QCamera, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject);
 QMetaObject* QCamera_MetaObject(const QCamera* self);
 void* QCamera_Metacast(QCamera* self, const char* param1);
 struct miqt_string QCamera_Tr(const char* s);
@@ -122,12 +126,22 @@ struct miqt_array /* of QCameraViewfinderSettings* */  QCamera_SupportedViewfind
 struct miqt_array /* of QSize* */  QCamera_SupportedViewfinderResolutions1(const QCamera* self, QCameraViewfinderSettings* settings);
 struct miqt_array /* of QCamera__FrameRateRange* */  QCamera_SupportedViewfinderFrameRateRanges1(const QCamera* self, QCameraViewfinderSettings* settings);
 struct miqt_array /* of int */  QCamera_SupportedViewfinderPixelFormats1(const QCamera* self, QCameraViewfinderSettings* settings);
-void QCamera_Delete(QCamera* self);
+void QCamera_override_virtual_Availability(void* self, intptr_t slot);
+int QCamera_virtualbase_Availability(const void* self);
+void QCamera_override_virtual_IsAvailable(void* self, intptr_t slot);
+bool QCamera_virtualbase_IsAvailable(const void* self);
+void QCamera_override_virtual_Service(void* self, intptr_t slot);
+QMediaService* QCamera_virtualbase_Service(const void* self);
+void QCamera_override_virtual_Bind(void* self, intptr_t slot);
+bool QCamera_virtualbase_Bind(void* self, QObject* param1);
+void QCamera_override_virtual_Unbind(void* self, intptr_t slot);
+void QCamera_virtualbase_Unbind(void* self, QObject* param1);
+void QCamera_Delete(QCamera* self, bool isSubclass);
 
-QCamera__FrameRateRange* QCamera__FrameRateRange_new();
-QCamera__FrameRateRange* QCamera__FrameRateRange_new2(double minimum, double maximum);
-QCamera__FrameRateRange* QCamera__FrameRateRange_new3(QCamera__FrameRateRange* param1);
-void QCamera__FrameRateRange_Delete(QCamera__FrameRateRange* self);
+void QCamera__FrameRateRange_new(QCamera__FrameRateRange** outptr_QCamera__FrameRateRange);
+void QCamera__FrameRateRange_new2(double minimum, double maximum, QCamera__FrameRateRange** outptr_QCamera__FrameRateRange);
+void QCamera__FrameRateRange_new3(QCamera__FrameRateRange* param1, QCamera__FrameRateRange** outptr_QCamera__FrameRateRange);
+void QCamera__FrameRateRange_Delete(QCamera__FrameRateRange* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

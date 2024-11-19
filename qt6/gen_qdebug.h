@@ -21,6 +21,7 @@ class QChar;
 class QDebug;
 class QDebugStateSaver;
 class QIODevice;
+class QIODeviceBase;
 class QNoDebug;
 #else
 typedef struct QByteArray QByteArray;
@@ -29,11 +30,12 @@ typedef struct QChar QChar;
 typedef struct QDebug QDebug;
 typedef struct QDebugStateSaver QDebugStateSaver;
 typedef struct QIODevice QIODevice;
+typedef struct QIODeviceBase QIODeviceBase;
 typedef struct QNoDebug QNoDebug;
 #endif
 
-QDebug* QDebug_new(QIODevice* device);
-QDebug* QDebug_new2(QDebug* o);
+void QDebug_new(QIODevice* device, QDebug** outptr_QDebug, QIODeviceBase** outptr_QIODeviceBase);
+void QDebug_new2(QDebug* o, QDebug** outptr_QDebug, QIODeviceBase** outptr_QIODeviceBase);
 void QDebug_OperatorAssign(QDebug* self, QDebug* other);
 void QDebug_Swap(QDebug* self, QDebug* other);
 QDebug* QDebug_ResetFormat(QDebug* self);
@@ -67,10 +69,10 @@ QDebug* QDebug_OperatorShiftLeftWithQByteArray(QDebug* self, struct miqt_string 
 QDebug* QDebug_OperatorShiftLeftWithQByteArrayView(QDebug* self, QByteArrayView* t);
 QDebug* QDebug_OperatorShiftLeftWithVoid(QDebug* self, const void* t);
 QDebug* QDebug_MaybeQuote1(QDebug* self, char c);
-void QDebug_Delete(QDebug* self);
+void QDebug_Delete(QDebug* self, bool isSubclass);
 
-QDebugStateSaver* QDebugStateSaver_new(QDebug* dbg);
-void QDebugStateSaver_Delete(QDebugStateSaver* self);
+void QDebugStateSaver_new(QDebug* dbg, QDebugStateSaver** outptr_QDebugStateSaver);
+void QDebugStateSaver_Delete(QDebugStateSaver* self, bool isSubclass);
 
 QNoDebug* QNoDebug_Space(QNoDebug* self);
 QNoDebug* QNoDebug_Nospace(QNoDebug* self);
@@ -80,7 +82,7 @@ QNoDebug* QNoDebug_Noquote(QNoDebug* self);
 QNoDebug* QNoDebug_MaybeQuote(QNoDebug* self);
 QNoDebug* QNoDebug_Verbosity(QNoDebug* self, int param1);
 QNoDebug* QNoDebug_MaybeQuote1(QNoDebug* self, const char param1);
-void QNoDebug_Delete(QNoDebug* self);
+void QNoDebug_Delete(QNoDebug* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -23,7 +23,8 @@ const (
 )
 
 type QColorDialog struct {
-	h *C.QColorDialog
+	h          *C.QColorDialog
+	isSubclass bool
 	*QDialog
 }
 
@@ -41,39 +42,79 @@ func (this *QColorDialog) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQColorDialog(h *C.QColorDialog) *QColorDialog {
+// newQColorDialog constructs the type using only CGO pointers.
+func newQColorDialog(h *C.QColorDialog, h_QDialog *C.QDialog, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QColorDialog {
 	if h == nil {
 		return nil
 	}
-	return &QColorDialog{h: h, QDialog: UnsafeNewQDialog(unsafe.Pointer(h))}
+	return &QColorDialog{h: h,
+		QDialog: newQDialog(h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
-func UnsafeNewQColorDialog(h unsafe.Pointer) *QColorDialog {
-	return newQColorDialog((*C.QColorDialog)(h))
+// UnsafeNewQColorDialog constructs the type using only unsafe pointers.
+func UnsafeNewQColorDialog(h unsafe.Pointer, h_QDialog unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QColorDialog {
+	if h == nil {
+		return nil
+	}
+
+	return &QColorDialog{h: (*C.QColorDialog)(h),
+		QDialog: UnsafeNewQDialog(h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
 // NewQColorDialog constructs a new QColorDialog object.
 func NewQColorDialog(parent *QWidget) *QColorDialog {
-	ret := C.QColorDialog_new(parent.cPointer())
-	return newQColorDialog(ret)
+	var outptr_QColorDialog *C.QColorDialog = nil
+	var outptr_QDialog *C.QDialog = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QColorDialog_new(parent.cPointer(), &outptr_QColorDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQColorDialog(outptr_QColorDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQColorDialog2 constructs a new QColorDialog object.
 func NewQColorDialog2() *QColorDialog {
-	ret := C.QColorDialog_new2()
-	return newQColorDialog(ret)
+	var outptr_QColorDialog *C.QColorDialog = nil
+	var outptr_QDialog *C.QDialog = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QColorDialog_new2(&outptr_QColorDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQColorDialog(outptr_QColorDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQColorDialog3 constructs a new QColorDialog object.
 func NewQColorDialog3(initial *QColor) *QColorDialog {
-	ret := C.QColorDialog_new3(initial.cPointer())
-	return newQColorDialog(ret)
+	var outptr_QColorDialog *C.QColorDialog = nil
+	var outptr_QDialog *C.QDialog = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QColorDialog_new3(initial.cPointer(), &outptr_QColorDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQColorDialog(outptr_QColorDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQColorDialog4 constructs a new QColorDialog object.
 func NewQColorDialog4(initial *QColor, parent *QWidget) *QColorDialog {
-	ret := C.QColorDialog_new4(initial.cPointer(), parent.cPointer())
-	return newQColorDialog(ret)
+	var outptr_QColorDialog *C.QColorDialog = nil
+	var outptr_QDialog *C.QDialog = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QColorDialog_new4(initial.cPointer(), parent.cPointer(), &outptr_QColorDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQColorDialog(outptr_QColorDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QColorDialog) MetaObject() *QMetaObject {
@@ -315,9 +356,351 @@ func QColorDialog_GetRgba3(rgba uint, ok *bool, parent *QWidget) uint {
 	return (uint)(C.QColorDialog_GetRgba3((C.uint)(rgba), (*C.bool)(unsafe.Pointer(ok)), parent.cPointer()))
 }
 
+func (this *QColorDialog) callVirtualBase_SetVisible(visible bool) {
+
+	C.QColorDialog_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+
+}
+func (this *QColorDialog) OnSetVisible(slot func(super func(visible bool), visible bool)) {
+	C.QColorDialog_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QColorDialog_SetVisible
+func miqt_exec_callback_QColorDialog_SetVisible(self *C.QColorDialog, cb C.intptr_t, visible C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(visible)
+
+	gofunc((&QColorDialog{h: self}).callVirtualBase_SetVisible, slotval1)
+
+}
+
+func (this *QColorDialog) callVirtualBase_ChangeEvent(event *QEvent) {
+
+	C.QColorDialog_virtualbase_ChangeEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QColorDialog) OnChangeEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	C.QColorDialog_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QColorDialog_ChangeEvent
+func miqt_exec_callback_QColorDialog_ChangeEvent(self *C.QColorDialog, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QColorDialog{h: self}).callVirtualBase_ChangeEvent, slotval1)
+
+}
+
+func (this *QColorDialog) callVirtualBase_Done(result int) {
+
+	C.QColorDialog_virtualbase_Done(unsafe.Pointer(this.h), (C.int)(result))
+
+}
+func (this *QColorDialog) OnDone(slot func(super func(result int), result int)) {
+	C.QColorDialog_override_virtual_Done(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QColorDialog_Done
+func miqt_exec_callback_QColorDialog_Done(self *C.QColorDialog, cb C.intptr_t, result C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(result int), result int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(result)
+
+	gofunc((&QColorDialog{h: self}).callVirtualBase_Done, slotval1)
+
+}
+
+func (this *QColorDialog) callVirtualBase_SizeHint() *QSize {
+
+	_ret := C.QColorDialog_virtualbase_SizeHint(unsafe.Pointer(this.h))
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QColorDialog) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	C.QColorDialog_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QColorDialog_SizeHint
+func miqt_exec_callback_QColorDialog_SizeHint(self *C.QColorDialog, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QColorDialog{h: self}).callVirtualBase_SizeHint)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QColorDialog) callVirtualBase_MinimumSizeHint() *QSize {
+
+	_ret := C.QColorDialog_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QColorDialog) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+	C.QColorDialog_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QColorDialog_MinimumSizeHint
+func miqt_exec_callback_QColorDialog_MinimumSizeHint(self *C.QColorDialog, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QColorDialog{h: self}).callVirtualBase_MinimumSizeHint)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QColorDialog) callVirtualBase_Open() {
+
+	C.QColorDialog_virtualbase_Open(unsafe.Pointer(this.h))
+
+}
+func (this *QColorDialog) OnOpen(slot func(super func())) {
+	C.QColorDialog_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QColorDialog_Open
+func miqt_exec_callback_QColorDialog_Open(self *C.QColorDialog, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QColorDialog{h: self}).callVirtualBase_Open)
+
+}
+
+func (this *QColorDialog) callVirtualBase_Exec() int {
+
+	return (int)(C.QColorDialog_virtualbase_Exec(unsafe.Pointer(this.h)))
+
+}
+func (this *QColorDialog) OnExec(slot func(super func() int) int) {
+	C.QColorDialog_override_virtual_Exec(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QColorDialog_Exec
+func miqt_exec_callback_QColorDialog_Exec(self *C.QColorDialog, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QColorDialog{h: self}).callVirtualBase_Exec)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QColorDialog) callVirtualBase_Accept() {
+
+	C.QColorDialog_virtualbase_Accept(unsafe.Pointer(this.h))
+
+}
+func (this *QColorDialog) OnAccept(slot func(super func())) {
+	C.QColorDialog_override_virtual_Accept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QColorDialog_Accept
+func miqt_exec_callback_QColorDialog_Accept(self *C.QColorDialog, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QColorDialog{h: self}).callVirtualBase_Accept)
+
+}
+
+func (this *QColorDialog) callVirtualBase_Reject() {
+
+	C.QColorDialog_virtualbase_Reject(unsafe.Pointer(this.h))
+
+}
+func (this *QColorDialog) OnReject(slot func(super func())) {
+	C.QColorDialog_override_virtual_Reject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QColorDialog_Reject
+func miqt_exec_callback_QColorDialog_Reject(self *C.QColorDialog, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QColorDialog{h: self}).callVirtualBase_Reject)
+
+}
+
+func (this *QColorDialog) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
+
+	C.QColorDialog_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QColorDialog) OnKeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
+	C.QColorDialog_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QColorDialog_KeyPressEvent
+func miqt_exec_callback_QColorDialog_KeyPressEvent(self *C.QColorDialog, cb C.intptr_t, param1 *C.QKeyEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QKeyEvent), param1 *QKeyEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(param1), nil, nil)
+
+	gofunc((&QColorDialog{h: self}).callVirtualBase_KeyPressEvent, slotval1)
+
+}
+
+func (this *QColorDialog) callVirtualBase_CloseEvent(param1 *QCloseEvent) {
+
+	C.QColorDialog_virtualbase_CloseEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QColorDialog) OnCloseEvent(slot func(super func(param1 *QCloseEvent), param1 *QCloseEvent)) {
+	C.QColorDialog_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QColorDialog_CloseEvent
+func miqt_exec_callback_QColorDialog_CloseEvent(self *C.QColorDialog, cb C.intptr_t, param1 *C.QCloseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QCloseEvent), param1 *QCloseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(param1), nil)
+
+	gofunc((&QColorDialog{h: self}).callVirtualBase_CloseEvent, slotval1)
+
+}
+
+func (this *QColorDialog) callVirtualBase_ShowEvent(param1 *QShowEvent) {
+
+	C.QColorDialog_virtualbase_ShowEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QColorDialog) OnShowEvent(slot func(super func(param1 *QShowEvent), param1 *QShowEvent)) {
+	C.QColorDialog_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QColorDialog_ShowEvent
+func miqt_exec_callback_QColorDialog_ShowEvent(self *C.QColorDialog, cb C.intptr_t, param1 *C.QShowEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QShowEvent), param1 *QShowEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(param1), nil)
+
+	gofunc((&QColorDialog{h: self}).callVirtualBase_ShowEvent, slotval1)
+
+}
+
+func (this *QColorDialog) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
+
+	C.QColorDialog_virtualbase_ResizeEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QColorDialog) OnResizeEvent(slot func(super func(param1 *QResizeEvent), param1 *QResizeEvent)) {
+	C.QColorDialog_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QColorDialog_ResizeEvent
+func miqt_exec_callback_QColorDialog_ResizeEvent(self *C.QColorDialog, cb C.intptr_t, param1 *C.QResizeEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QResizeEvent), param1 *QResizeEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(param1), nil)
+
+	gofunc((&QColorDialog{h: self}).callVirtualBase_ResizeEvent, slotval1)
+
+}
+
+func (this *QColorDialog) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEvent) {
+
+	C.QColorDialog_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QColorDialog) OnContextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
+	C.QColorDialog_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QColorDialog_ContextMenuEvent
+func miqt_exec_callback_QColorDialog_ContextMenuEvent(self *C.QColorDialog, cb C.intptr_t, param1 *C.QContextMenuEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(param1), nil, nil)
+
+	gofunc((&QColorDialog{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
+
+}
+
+func (this *QColorDialog) callVirtualBase_EventFilter(param1 *QObject, param2 *QEvent) bool {
+
+	return (bool)(C.QColorDialog_virtualbase_EventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
+
+}
+func (this *QColorDialog) OnEventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
+	C.QColorDialog_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QColorDialog_EventFilter
+func miqt_exec_callback_QColorDialog_EventFilter(self *C.QColorDialog, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(param1))
+	slotval2 := UnsafeNewQEvent(unsafe.Pointer(param2))
+
+	virtualReturn := gofunc((&QColorDialog{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QColorDialog) Delete() {
-	C.QColorDialog_Delete(this.h)
+	C.QColorDialog_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

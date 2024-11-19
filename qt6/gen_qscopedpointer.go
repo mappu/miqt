@@ -14,7 +14,8 @@ import (
 )
 
 type QScopedPointerPodDeleter struct {
-	h *C.QScopedPointerPodDeleter
+	h          *C.QScopedPointerPodDeleter
+	isSubclass bool
 }
 
 func (this *QScopedPointerPodDeleter) cPointer() *C.QScopedPointerPodDeleter {
@@ -31,6 +32,7 @@ func (this *QScopedPointerPodDeleter) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQScopedPointerPodDeleter constructs the type using only CGO pointers.
 func newQScopedPointerPodDeleter(h *C.QScopedPointerPodDeleter) *QScopedPointerPodDeleter {
 	if h == nil {
 		return nil
@@ -38,8 +40,13 @@ func newQScopedPointerPodDeleter(h *C.QScopedPointerPodDeleter) *QScopedPointerP
 	return &QScopedPointerPodDeleter{h: h}
 }
 
+// UnsafeNewQScopedPointerPodDeleter constructs the type using only unsafe pointers.
 func UnsafeNewQScopedPointerPodDeleter(h unsafe.Pointer) *QScopedPointerPodDeleter {
-	return newQScopedPointerPodDeleter((*C.QScopedPointerPodDeleter)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QScopedPointerPodDeleter{h: (*C.QScopedPointerPodDeleter)(h)}
 }
 
 func QScopedPointerPodDeleter_Cleanup(pointer unsafe.Pointer) {
@@ -52,7 +59,7 @@ func (this *QScopedPointerPodDeleter) OperatorCall(pointer unsafe.Pointer) {
 
 // Delete this object from C++ memory.
 func (this *QScopedPointerPodDeleter) Delete() {
-	C.QScopedPointerPodDeleter_Delete(this.h)
+	C.QScopedPointerPodDeleter_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

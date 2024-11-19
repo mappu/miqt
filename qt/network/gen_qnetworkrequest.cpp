@@ -13,16 +13,19 @@
 #include "gen_qnetworkrequest.h"
 #include "_cgo_export.h"
 
-QNetworkRequest* QNetworkRequest_new() {
-	return new QNetworkRequest();
+void QNetworkRequest_new(QNetworkRequest** outptr_QNetworkRequest) {
+	QNetworkRequest* ret = new QNetworkRequest();
+	*outptr_QNetworkRequest = ret;
 }
 
-QNetworkRequest* QNetworkRequest_new2(QUrl* url) {
-	return new QNetworkRequest(*url);
+void QNetworkRequest_new2(QUrl* url, QNetworkRequest** outptr_QNetworkRequest) {
+	QNetworkRequest* ret = new QNetworkRequest(*url);
+	*outptr_QNetworkRequest = ret;
 }
 
-QNetworkRequest* QNetworkRequest_new3(QNetworkRequest* other) {
-	return new QNetworkRequest(*other);
+void QNetworkRequest_new3(QNetworkRequest* other, QNetworkRequest** outptr_QNetworkRequest) {
+	QNetworkRequest* ret = new QNetworkRequest(*other);
+	*outptr_QNetworkRequest = ret;
 }
 
 void QNetworkRequest_OperatorAssign(QNetworkRequest* self, QNetworkRequest* other) {
@@ -177,7 +180,11 @@ void QNetworkRequest_SetTransferTimeout1(QNetworkRequest* self, int timeout) {
 	self->setTransferTimeout(static_cast<int>(timeout));
 }
 
-void QNetworkRequest_Delete(QNetworkRequest* self) {
-	delete self;
+void QNetworkRequest_Delete(QNetworkRequest* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QNetworkRequest*>( self );
+	} else {
+		delete self;
+	}
 }
 

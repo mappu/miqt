@@ -18,6 +18,7 @@ extern "C" {
 class QAnyStringView;
 class QBindingStorage;
 class QByteArray;
+class QChildEvent;
 class QEvent;
 class QMetaMethod;
 class QMetaObject;
@@ -30,11 +31,13 @@ class QObject;
 class QObjectData;
 class QSignalBlocker;
 class QThread;
+class QTimerEvent;
 class QVariant;
 #else
 typedef struct QAnyStringView QAnyStringView;
 typedef struct QBindingStorage QBindingStorage;
 typedef struct QByteArray QByteArray;
+typedef struct QChildEvent QChildEvent;
 typedef struct QEvent QEvent;
 typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
@@ -43,14 +46,15 @@ typedef struct QObject QObject;
 typedef struct QObjectData QObjectData;
 typedef struct QSignalBlocker QSignalBlocker;
 typedef struct QThread QThread;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 #endif
 
 QMetaObject* QObjectData_DynamicMetaObject(const QObjectData* self);
-void QObjectData_Delete(QObjectData* self);
+void QObjectData_Delete(QObjectData* self, bool isSubclass);
 
-QObject* QObject_new();
-QObject* QObject_new2(QObject* parent);
+void QObject_new(QObject** outptr_QObject);
+void QObject_new2(QObject* parent, QObject** outptr_QObject);
 QMetaObject* QObject_MetaObject(const QObject* self);
 void* QObject_Metacast(QObject* self, const char* param1);
 struct miqt_string QObject_Tr(const char* s);
@@ -87,6 +91,11 @@ void QObject_connect_Destroyed(QObject* self, intptr_t slot);
 QObject* QObject_Parent(const QObject* self);
 bool QObject_Inherits(const QObject* self, const char* classname);
 void QObject_DeleteLater(QObject* self);
+void QObject_TimerEvent(QObject* self, QTimerEvent* event);
+void QObject_ChildEvent(QObject* self, QChildEvent* event);
+void QObject_CustomEvent(QObject* self, QEvent* event);
+void QObject_ConnectNotify(QObject* self, QMetaMethod* signal);
+void QObject_DisconnectNotify(QObject* self, QMetaMethod* signal);
 struct miqt_string QObject_Tr2(const char* s, const char* c);
 struct miqt_string QObject_Tr3(const char* s, const char* c, int n);
 int QObject_StartTimer2(QObject* self, int interval, int timerType);
@@ -94,13 +103,27 @@ QMetaObject__Connection* QObject_Connect5(QObject* sender, QMetaMethod* signal, 
 QMetaObject__Connection* QObject_Connect4(const QObject* self, QObject* sender, const char* signal, const char* member, int typeVal);
 void QObject_Destroyed1(QObject* self, QObject* param1);
 void QObject_connect_Destroyed1(QObject* self, intptr_t slot);
-void QObject_Delete(QObject* self);
+void QObject_override_virtual_Event(void* self, intptr_t slot);
+bool QObject_virtualbase_Event(void* self, QEvent* event);
+void QObject_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QObject_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QObject_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QObject_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QObject_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QObject_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QObject_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QObject_virtualbase_CustomEvent(void* self, QEvent* event);
+void QObject_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QObject_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QObject_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QObject_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QObject_Delete(QObject* self, bool isSubclass);
 
-QSignalBlocker* QSignalBlocker_new(QObject* o);
-QSignalBlocker* QSignalBlocker_new2(QObject* o);
+void QSignalBlocker_new(QObject* o, QSignalBlocker** outptr_QSignalBlocker);
+void QSignalBlocker_new2(QObject* o, QSignalBlocker** outptr_QSignalBlocker);
 void QSignalBlocker_Reblock(QSignalBlocker* self);
 void QSignalBlocker_Unblock(QSignalBlocker* self);
-void QSignalBlocker_Delete(QSignalBlocker* self);
+void QSignalBlocker_Delete(QSignalBlocker* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

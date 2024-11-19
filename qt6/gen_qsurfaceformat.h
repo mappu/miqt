@@ -22,9 +22,9 @@ typedef struct QColorSpace QColorSpace;
 typedef struct QSurfaceFormat QSurfaceFormat;
 #endif
 
-QSurfaceFormat* QSurfaceFormat_new();
-QSurfaceFormat* QSurfaceFormat_new2(int options);
-QSurfaceFormat* QSurfaceFormat_new3(QSurfaceFormat* other);
+void QSurfaceFormat_new(QSurfaceFormat** outptr_QSurfaceFormat);
+void QSurfaceFormat_new2(int options, QSurfaceFormat** outptr_QSurfaceFormat);
+void QSurfaceFormat_new3(QSurfaceFormat* other, QSurfaceFormat** outptr_QSurfaceFormat);
 void QSurfaceFormat_OperatorAssign(QSurfaceFormat* self, QSurfaceFormat* other);
 void QSurfaceFormat_SetDepthBufferSize(QSurfaceFormat* self, int size);
 int QSurfaceFormat_DepthBufferSize(const QSurfaceFormat* self);
@@ -67,7 +67,7 @@ void QSurfaceFormat_SetColorSpaceWithColorSpace(QSurfaceFormat* self, int colorS
 void QSurfaceFormat_SetDefaultFormat(QSurfaceFormat* format);
 QSurfaceFormat* QSurfaceFormat_DefaultFormat();
 void QSurfaceFormat_SetOption2(QSurfaceFormat* self, int option, bool on);
-void QSurfaceFormat_Delete(QSurfaceFormat* self);
+void QSurfaceFormat_Delete(QSurfaceFormat* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

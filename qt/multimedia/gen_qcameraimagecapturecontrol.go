@@ -16,7 +16,8 @@ import (
 )
 
 type QCameraImageCaptureControl struct {
-	h *C.QCameraImageCaptureControl
+	h          *C.QCameraImageCaptureControl
+	isSubclass bool
 	*QMediaControl
 }
 
@@ -34,15 +35,23 @@ func (this *QCameraImageCaptureControl) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQCameraImageCaptureControl(h *C.QCameraImageCaptureControl) *QCameraImageCaptureControl {
+// newQCameraImageCaptureControl constructs the type using only CGO pointers.
+func newQCameraImageCaptureControl(h *C.QCameraImageCaptureControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QCameraImageCaptureControl {
 	if h == nil {
 		return nil
 	}
-	return &QCameraImageCaptureControl{h: h, QMediaControl: UnsafeNewQMediaControl(unsafe.Pointer(h))}
+	return &QCameraImageCaptureControl{h: h,
+		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
 }
 
-func UnsafeNewQCameraImageCaptureControl(h unsafe.Pointer) *QCameraImageCaptureControl {
-	return newQCameraImageCaptureControl((*C.QCameraImageCaptureControl)(h))
+// UnsafeNewQCameraImageCaptureControl constructs the type using only unsafe pointers.
+func UnsafeNewQCameraImageCaptureControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QCameraImageCaptureControl {
+	if h == nil {
+		return nil
+	}
+
+	return &QCameraImageCaptureControl{h: (*C.QCameraImageCaptureControl)(h),
+		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
 }
 
 func (this *QCameraImageCaptureControl) MetaObject() *qt.QMetaObject {
@@ -154,7 +163,7 @@ func miqt_exec_callback_QCameraImageCaptureControl_ImageCaptured(cb C.intptr_t, 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (int)(requestId)
 
-	slotval2 := qt.UnsafeNewQImage(unsafe.Pointer(preview))
+	slotval2 := qt.UnsafeNewQImage(unsafe.Pointer(preview), nil)
 
 	gofunc(slotval1, slotval2)
 }
@@ -317,7 +326,7 @@ func QCameraImageCaptureControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QCameraImageCaptureControl) Delete() {
-	C.QCameraImageCaptureControl_Delete(this.h)
+	C.QCameraImageCaptureControl_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

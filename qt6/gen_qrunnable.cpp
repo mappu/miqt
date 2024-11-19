@@ -15,7 +15,11 @@ void QRunnable_SetAutoDelete(QRunnable* self, bool autoDelete) {
 	self->setAutoDelete(autoDelete);
 }
 
-void QRunnable_Delete(QRunnable* self) {
-	delete self;
+void QRunnable_Delete(QRunnable* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QRunnable*>( self );
+	} else {
+		delete self;
+	}
 }
 

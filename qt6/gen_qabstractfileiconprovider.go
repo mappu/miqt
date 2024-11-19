@@ -10,6 +10,7 @@ import "C"
 
 import (
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
@@ -32,7 +33,8 @@ const (
 )
 
 type QAbstractFileIconProvider struct {
-	h *C.QAbstractFileIconProvider
+	h          *C.QAbstractFileIconProvider
+	isSubclass bool
 }
 
 func (this *QAbstractFileIconProvider) cPointer() *C.QAbstractFileIconProvider {
@@ -49,6 +51,7 @@ func (this *QAbstractFileIconProvider) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAbstractFileIconProvider constructs the type using only CGO pointers.
 func newQAbstractFileIconProvider(h *C.QAbstractFileIconProvider) *QAbstractFileIconProvider {
 	if h == nil {
 		return nil
@@ -56,14 +59,23 @@ func newQAbstractFileIconProvider(h *C.QAbstractFileIconProvider) *QAbstractFile
 	return &QAbstractFileIconProvider{h: h}
 }
 
+// UnsafeNewQAbstractFileIconProvider constructs the type using only unsafe pointers.
 func UnsafeNewQAbstractFileIconProvider(h unsafe.Pointer) *QAbstractFileIconProvider {
-	return newQAbstractFileIconProvider((*C.QAbstractFileIconProvider)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAbstractFileIconProvider{h: (*C.QAbstractFileIconProvider)(h)}
 }
 
 // NewQAbstractFileIconProvider constructs a new QAbstractFileIconProvider object.
 func NewQAbstractFileIconProvider() *QAbstractFileIconProvider {
-	ret := C.QAbstractFileIconProvider_new()
-	return newQAbstractFileIconProvider(ret)
+	var outptr_QAbstractFileIconProvider *C.QAbstractFileIconProvider = nil
+
+	C.QAbstractFileIconProvider_new(&outptr_QAbstractFileIconProvider)
+	ret := newQAbstractFileIconProvider(outptr_QAbstractFileIconProvider)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QAbstractFileIconProvider) Icon(param1 QAbstractFileIconProvider__IconType) *QIcon {
@@ -95,9 +107,141 @@ func (this *QAbstractFileIconProvider) Options() QAbstractFileIconProvider__Opti
 	return (QAbstractFileIconProvider__Option)(C.QAbstractFileIconProvider_Options(this.h))
 }
 
+func (this *QAbstractFileIconProvider) callVirtualBase_Icon(param1 QAbstractFileIconProvider__IconType) *QIcon {
+
+	_ret := C.QAbstractFileIconProvider_virtualbase_Icon(unsafe.Pointer(this.h), (C.int)(param1))
+	_goptr := newQIcon(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QAbstractFileIconProvider) OnIcon(slot func(super func(param1 QAbstractFileIconProvider__IconType) *QIcon, param1 QAbstractFileIconProvider__IconType) *QIcon) {
+	C.QAbstractFileIconProvider_override_virtual_Icon(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractFileIconProvider_Icon
+func miqt_exec_callback_QAbstractFileIconProvider_Icon(self *C.QAbstractFileIconProvider, cb C.intptr_t, param1 C.int) *C.QIcon {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QAbstractFileIconProvider__IconType) *QIcon, param1 QAbstractFileIconProvider__IconType) *QIcon)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QAbstractFileIconProvider__IconType)(param1)
+
+	virtualReturn := gofunc((&QAbstractFileIconProvider{h: self}).callVirtualBase_Icon, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QAbstractFileIconProvider) callVirtualBase_IconWithQFileInfo(param1 *QFileInfo) *QIcon {
+
+	_ret := C.QAbstractFileIconProvider_virtualbase_IconWithQFileInfo(unsafe.Pointer(this.h), param1.cPointer())
+	_goptr := newQIcon(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QAbstractFileIconProvider) OnIconWithQFileInfo(slot func(super func(param1 *QFileInfo) *QIcon, param1 *QFileInfo) *QIcon) {
+	C.QAbstractFileIconProvider_override_virtual_IconWithQFileInfo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractFileIconProvider_IconWithQFileInfo
+func miqt_exec_callback_QAbstractFileIconProvider_IconWithQFileInfo(self *C.QAbstractFileIconProvider, cb C.intptr_t, param1 *C.QFileInfo) *C.QIcon {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QFileInfo) *QIcon, param1 *QFileInfo) *QIcon)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQFileInfo(unsafe.Pointer(param1))
+
+	virtualReturn := gofunc((&QAbstractFileIconProvider{h: self}).callVirtualBase_IconWithQFileInfo, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QAbstractFileIconProvider) callVirtualBase_Type(param1 *QFileInfo) string {
+
+	var _ms C.struct_miqt_string = C.QAbstractFileIconProvider_virtualbase_Type(unsafe.Pointer(this.h), param1.cPointer())
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
+	return _ret
+}
+func (this *QAbstractFileIconProvider) OnType(slot func(super func(param1 *QFileInfo) string, param1 *QFileInfo) string) {
+	C.QAbstractFileIconProvider_override_virtual_Type(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractFileIconProvider_Type
+func miqt_exec_callback_QAbstractFileIconProvider_Type(self *C.QAbstractFileIconProvider, cb C.intptr_t, param1 *C.QFileInfo) C.struct_miqt_string {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QFileInfo) string, param1 *QFileInfo) string)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQFileInfo(unsafe.Pointer(param1))
+
+	virtualReturn := gofunc((&QAbstractFileIconProvider{h: self}).callVirtualBase_Type, slotval1)
+	virtualReturn_ms := C.struct_miqt_string{}
+	virtualReturn_ms.data = C.CString(virtualReturn)
+	virtualReturn_ms.len = C.size_t(len(virtualReturn))
+	defer C.free(unsafe.Pointer(virtualReturn_ms.data))
+
+	return virtualReturn_ms
+
+}
+
+func (this *QAbstractFileIconProvider) callVirtualBase_SetOptions(options QAbstractFileIconProvider__Option) {
+
+	C.QAbstractFileIconProvider_virtualbase_SetOptions(unsafe.Pointer(this.h), (C.int)(options))
+
+}
+func (this *QAbstractFileIconProvider) OnSetOptions(slot func(super func(options QAbstractFileIconProvider__Option), options QAbstractFileIconProvider__Option)) {
+	C.QAbstractFileIconProvider_override_virtual_SetOptions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractFileIconProvider_SetOptions
+func miqt_exec_callback_QAbstractFileIconProvider_SetOptions(self *C.QAbstractFileIconProvider, cb C.intptr_t, options C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(options QAbstractFileIconProvider__Option), options QAbstractFileIconProvider__Option))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QAbstractFileIconProvider__Option)(options)
+
+	gofunc((&QAbstractFileIconProvider{h: self}).callVirtualBase_SetOptions, slotval1)
+
+}
+
+func (this *QAbstractFileIconProvider) callVirtualBase_Options() QAbstractFileIconProvider__Option {
+
+	return (QAbstractFileIconProvider__Option)(C.QAbstractFileIconProvider_virtualbase_Options(unsafe.Pointer(this.h)))
+
+}
+func (this *QAbstractFileIconProvider) OnOptions(slot func(super func() QAbstractFileIconProvider__Option) QAbstractFileIconProvider__Option) {
+	C.QAbstractFileIconProvider_override_virtual_Options(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractFileIconProvider_Options
+func miqt_exec_callback_QAbstractFileIconProvider_Options(self *C.QAbstractFileIconProvider, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QAbstractFileIconProvider__Option) QAbstractFileIconProvider__Option)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QAbstractFileIconProvider{h: self}).callVirtualBase_Options)
+
+	return (C.int)(virtualReturn)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QAbstractFileIconProvider) Delete() {
-	C.QAbstractFileIconProvider_Delete(this.h)
+	C.QAbstractFileIconProvider_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

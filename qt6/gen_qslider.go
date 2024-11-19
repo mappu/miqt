@@ -10,6 +10,7 @@ import "C"
 
 import (
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
@@ -25,7 +26,8 @@ const (
 )
 
 type QSlider struct {
-	h *C.QSlider
+	h          *C.QSlider
+	isSubclass bool
 	*QAbstractSlider
 }
 
@@ -43,39 +45,79 @@ func (this *QSlider) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQSlider(h *C.QSlider) *QSlider {
+// newQSlider constructs the type using only CGO pointers.
+func newQSlider(h *C.QSlider, h_QAbstractSlider *C.QAbstractSlider, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QSlider {
 	if h == nil {
 		return nil
 	}
-	return &QSlider{h: h, QAbstractSlider: UnsafeNewQAbstractSlider(unsafe.Pointer(h))}
+	return &QSlider{h: h,
+		QAbstractSlider: newQAbstractSlider(h_QAbstractSlider, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
-func UnsafeNewQSlider(h unsafe.Pointer) *QSlider {
-	return newQSlider((*C.QSlider)(h))
+// UnsafeNewQSlider constructs the type using only unsafe pointers.
+func UnsafeNewQSlider(h unsafe.Pointer, h_QAbstractSlider unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QSlider {
+	if h == nil {
+		return nil
+	}
+
+	return &QSlider{h: (*C.QSlider)(h),
+		QAbstractSlider: UnsafeNewQAbstractSlider(h_QAbstractSlider, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
 // NewQSlider constructs a new QSlider object.
 func NewQSlider(parent *QWidget) *QSlider {
-	ret := C.QSlider_new(parent.cPointer())
-	return newQSlider(ret)
+	var outptr_QSlider *C.QSlider = nil
+	var outptr_QAbstractSlider *C.QAbstractSlider = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QSlider_new(parent.cPointer(), &outptr_QSlider, &outptr_QAbstractSlider, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQSlider(outptr_QSlider, outptr_QAbstractSlider, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSlider2 constructs a new QSlider object.
 func NewQSlider2() *QSlider {
-	ret := C.QSlider_new2()
-	return newQSlider(ret)
+	var outptr_QSlider *C.QSlider = nil
+	var outptr_QAbstractSlider *C.QAbstractSlider = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QSlider_new2(&outptr_QSlider, &outptr_QAbstractSlider, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQSlider(outptr_QSlider, outptr_QAbstractSlider, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSlider3 constructs a new QSlider object.
 func NewQSlider3(orientation Orientation) *QSlider {
-	ret := C.QSlider_new3((C.int)(orientation))
-	return newQSlider(ret)
+	var outptr_QSlider *C.QSlider = nil
+	var outptr_QAbstractSlider *C.QAbstractSlider = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QSlider_new3((C.int)(orientation), &outptr_QSlider, &outptr_QAbstractSlider, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQSlider(outptr_QSlider, outptr_QAbstractSlider, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSlider4 constructs a new QSlider object.
 func NewQSlider4(orientation Orientation, parent *QWidget) *QSlider {
-	ret := C.QSlider_new4((C.int)(orientation), parent.cPointer())
-	return newQSlider(ret)
+	var outptr_QSlider *C.QSlider = nil
+	var outptr_QAbstractSlider *C.QAbstractSlider = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QSlider_new4((C.int)(orientation), parent.cPointer(), &outptr_QSlider, &outptr_QAbstractSlider, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQSlider(outptr_QSlider, outptr_QAbstractSlider, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QSlider) MetaObject() *QMetaObject {
@@ -153,9 +195,314 @@ func QSlider_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QSlider) callVirtualBase_SizeHint() *QSize {
+
+	_ret := C.QSlider_virtualbase_SizeHint(unsafe.Pointer(this.h))
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QSlider) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	C.QSlider_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QSlider_SizeHint
+func miqt_exec_callback_QSlider_SizeHint(self *C.QSlider, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QSlider{h: self}).callVirtualBase_SizeHint)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QSlider) callVirtualBase_MinimumSizeHint() *QSize {
+
+	_ret := C.QSlider_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QSlider) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+	C.QSlider_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QSlider_MinimumSizeHint
+func miqt_exec_callback_QSlider_MinimumSizeHint(self *C.QSlider, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QSlider{h: self}).callVirtualBase_MinimumSizeHint)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QSlider) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QSlider_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QSlider) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	C.QSlider_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QSlider_Event
+func miqt_exec_callback_QSlider_Event(self *C.QSlider, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QSlider{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QSlider) callVirtualBase_PaintEvent(ev *QPaintEvent) {
+
+	C.QSlider_virtualbase_PaintEvent(unsafe.Pointer(this.h), ev.cPointer())
+
+}
+func (this *QSlider) OnPaintEvent(slot func(super func(ev *QPaintEvent), ev *QPaintEvent)) {
+	C.QSlider_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QSlider_PaintEvent
+func miqt_exec_callback_QSlider_PaintEvent(self *C.QSlider, cb C.intptr_t, ev *C.QPaintEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(ev *QPaintEvent), ev *QPaintEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(ev), nil)
+
+	gofunc((&QSlider{h: self}).callVirtualBase_PaintEvent, slotval1)
+
+}
+
+func (this *QSlider) callVirtualBase_MousePressEvent(ev *QMouseEvent) {
+
+	C.QSlider_virtualbase_MousePressEvent(unsafe.Pointer(this.h), ev.cPointer())
+
+}
+func (this *QSlider) OnMousePressEvent(slot func(super func(ev *QMouseEvent), ev *QMouseEvent)) {
+	C.QSlider_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QSlider_MousePressEvent
+func miqt_exec_callback_QSlider_MousePressEvent(self *C.QSlider, cb C.intptr_t, ev *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(ev *QMouseEvent), ev *QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(ev), nil, nil, nil, nil)
+
+	gofunc((&QSlider{h: self}).callVirtualBase_MousePressEvent, slotval1)
+
+}
+
+func (this *QSlider) callVirtualBase_MouseReleaseEvent(ev *QMouseEvent) {
+
+	C.QSlider_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), ev.cPointer())
+
+}
+func (this *QSlider) OnMouseReleaseEvent(slot func(super func(ev *QMouseEvent), ev *QMouseEvent)) {
+	C.QSlider_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QSlider_MouseReleaseEvent
+func miqt_exec_callback_QSlider_MouseReleaseEvent(self *C.QSlider, cb C.intptr_t, ev *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(ev *QMouseEvent), ev *QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(ev), nil, nil, nil, nil)
+
+	gofunc((&QSlider{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
+
+}
+
+func (this *QSlider) callVirtualBase_MouseMoveEvent(ev *QMouseEvent) {
+
+	C.QSlider_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), ev.cPointer())
+
+}
+func (this *QSlider) OnMouseMoveEvent(slot func(super func(ev *QMouseEvent), ev *QMouseEvent)) {
+	C.QSlider_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QSlider_MouseMoveEvent
+func miqt_exec_callback_QSlider_MouseMoveEvent(self *C.QSlider, cb C.intptr_t, ev *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(ev *QMouseEvent), ev *QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(ev), nil, nil, nil, nil)
+
+	gofunc((&QSlider{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
+
+}
+
+func (this *QSlider) callVirtualBase_InitStyleOption(option *QStyleOptionSlider) {
+
+	C.QSlider_virtualbase_InitStyleOption(unsafe.Pointer(this.h), option.cPointer())
+
+}
+func (this *QSlider) OnInitStyleOption(slot func(super func(option *QStyleOptionSlider), option *QStyleOptionSlider)) {
+	C.QSlider_override_virtual_InitStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QSlider_InitStyleOption
+func miqt_exec_callback_QSlider_InitStyleOption(self *C.QSlider, cb C.intptr_t, option *C.QStyleOptionSlider) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(option *QStyleOptionSlider), option *QStyleOptionSlider))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQStyleOptionSlider(unsafe.Pointer(option), nil, nil)
+
+	gofunc((&QSlider{h: self}).callVirtualBase_InitStyleOption, slotval1)
+
+}
+
+func (this *QSlider) callVirtualBase_SliderChange(change QAbstractSlider__SliderChange) {
+
+	C.QSlider_virtualbase_SliderChange(unsafe.Pointer(this.h), (C.int)(change))
+
+}
+func (this *QSlider) OnSliderChange(slot func(super func(change QAbstractSlider__SliderChange), change QAbstractSlider__SliderChange)) {
+	C.QSlider_override_virtual_SliderChange(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QSlider_SliderChange
+func miqt_exec_callback_QSlider_SliderChange(self *C.QSlider, cb C.intptr_t, change C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(change QAbstractSlider__SliderChange), change QAbstractSlider__SliderChange))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QAbstractSlider__SliderChange)(change)
+
+	gofunc((&QSlider{h: self}).callVirtualBase_SliderChange, slotval1)
+
+}
+
+func (this *QSlider) callVirtualBase_KeyPressEvent(ev *QKeyEvent) {
+
+	C.QSlider_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), ev.cPointer())
+
+}
+func (this *QSlider) OnKeyPressEvent(slot func(super func(ev *QKeyEvent), ev *QKeyEvent)) {
+	C.QSlider_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QSlider_KeyPressEvent
+func miqt_exec_callback_QSlider_KeyPressEvent(self *C.QSlider, cb C.intptr_t, ev *C.QKeyEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(ev *QKeyEvent), ev *QKeyEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(ev), nil, nil)
+
+	gofunc((&QSlider{h: self}).callVirtualBase_KeyPressEvent, slotval1)
+
+}
+
+func (this *QSlider) callVirtualBase_TimerEvent(param1 *QTimerEvent) {
+
+	C.QSlider_virtualbase_TimerEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QSlider) OnTimerEvent(slot func(super func(param1 *QTimerEvent), param1 *QTimerEvent)) {
+	C.QSlider_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QSlider_TimerEvent
+func miqt_exec_callback_QSlider_TimerEvent(self *C.QSlider, cb C.intptr_t, param1 *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QTimerEvent), param1 *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(param1), nil)
+
+	gofunc((&QSlider{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QSlider) callVirtualBase_WheelEvent(e *QWheelEvent) {
+
+	C.QSlider_virtualbase_WheelEvent(unsafe.Pointer(this.h), e.cPointer())
+
+}
+func (this *QSlider) OnWheelEvent(slot func(super func(e *QWheelEvent), e *QWheelEvent)) {
+	C.QSlider_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QSlider_WheelEvent
+func miqt_exec_callback_QSlider_WheelEvent(self *C.QSlider, cb C.intptr_t, e *C.QWheelEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QWheelEvent), e *QWheelEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(e), nil, nil, nil, nil)
+
+	gofunc((&QSlider{h: self}).callVirtualBase_WheelEvent, slotval1)
+
+}
+
+func (this *QSlider) callVirtualBase_ChangeEvent(e *QEvent) {
+
+	C.QSlider_virtualbase_ChangeEvent(unsafe.Pointer(this.h), e.cPointer())
+
+}
+func (this *QSlider) OnChangeEvent(slot func(super func(e *QEvent), e *QEvent)) {
+	C.QSlider_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QSlider_ChangeEvent
+func miqt_exec_callback_QSlider_ChangeEvent(self *C.QSlider, cb C.intptr_t, e *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QEvent), e *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+
+	gofunc((&QSlider{h: self}).callVirtualBase_ChangeEvent, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QSlider) Delete() {
-	C.QSlider_Delete(this.h)
+	C.QSlider_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

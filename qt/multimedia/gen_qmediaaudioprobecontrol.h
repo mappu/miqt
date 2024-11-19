@@ -17,11 +17,15 @@ extern "C" {
 #ifdef __cplusplus
 class QAudioBuffer;
 class QMediaAudioProbeControl;
+class QMediaControl;
 class QMetaObject;
+class QObject;
 #else
 typedef struct QAudioBuffer QAudioBuffer;
 typedef struct QMediaAudioProbeControl QMediaAudioProbeControl;
+typedef struct QMediaControl QMediaControl;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 #endif
 
 QMetaObject* QMediaAudioProbeControl_MetaObject(const QMediaAudioProbeControl* self);
@@ -36,7 +40,7 @@ struct miqt_string QMediaAudioProbeControl_Tr2(const char* s, const char* c);
 struct miqt_string QMediaAudioProbeControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QMediaAudioProbeControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QMediaAudioProbeControl_TrUtf83(const char* s, const char* c, int n);
-void QMediaAudioProbeControl_Delete(QMediaAudioProbeControl* self);
+void QMediaAudioProbeControl_Delete(QMediaAudioProbeControl* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

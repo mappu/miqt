@@ -24,9 +24,9 @@ typedef struct QSize QSize;
 typedef struct QVideoFrameFormat QVideoFrameFormat;
 #endif
 
-QVideoFrameFormat* QVideoFrameFormat_new();
-QVideoFrameFormat* QVideoFrameFormat_new2(QSize* size, int pixelFormat);
-QVideoFrameFormat* QVideoFrameFormat_new3(QVideoFrameFormat* format);
+void QVideoFrameFormat_new(QVideoFrameFormat** outptr_QVideoFrameFormat);
+void QVideoFrameFormat_new2(QSize* size, int pixelFormat, QVideoFrameFormat** outptr_QVideoFrameFormat);
+void QVideoFrameFormat_new3(QVideoFrameFormat* format, QVideoFrameFormat** outptr_QVideoFrameFormat);
 void QVideoFrameFormat_Swap(QVideoFrameFormat* self, QVideoFrameFormat* other);
 void QVideoFrameFormat_Detach(QVideoFrameFormat* self);
 void QVideoFrameFormat_OperatorAssign(QVideoFrameFormat* self, QVideoFrameFormat* format);
@@ -63,7 +63,7 @@ void QVideoFrameFormat_SetMaxLuminance(QVideoFrameFormat* self, float lum);
 int QVideoFrameFormat_PixelFormatFromImageFormat(int format);
 int QVideoFrameFormat_ImageFormatFromPixelFormat(int format);
 struct miqt_string QVideoFrameFormat_PixelFormatToString(int pixelFormat);
-void QVideoFrameFormat_Delete(QVideoFrameFormat* self);
+void QVideoFrameFormat_Delete(QVideoFrameFormat* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

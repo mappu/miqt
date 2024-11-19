@@ -165,7 +165,8 @@ const (
 )
 
 type QPageSize struct {
-	h *C.QPageSize
+	h          *C.QPageSize
+	isSubclass bool
 }
 
 func (this *QPageSize) cPointer() *C.QPageSize {
@@ -182,6 +183,7 @@ func (this *QPageSize) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPageSize constructs the type using only CGO pointers.
 func newQPageSize(h *C.QPageSize) *QPageSize {
 	if h == nil {
 		return nil
@@ -189,38 +191,63 @@ func newQPageSize(h *C.QPageSize) *QPageSize {
 	return &QPageSize{h: h}
 }
 
+// UnsafeNewQPageSize constructs the type using only unsafe pointers.
 func UnsafeNewQPageSize(h unsafe.Pointer) *QPageSize {
-	return newQPageSize((*C.QPageSize)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPageSize{h: (*C.QPageSize)(h)}
 }
 
 // NewQPageSize constructs a new QPageSize object.
 func NewQPageSize() *QPageSize {
-	ret := C.QPageSize_new()
-	return newQPageSize(ret)
+	var outptr_QPageSize *C.QPageSize = nil
+
+	C.QPageSize_new(&outptr_QPageSize)
+	ret := newQPageSize(outptr_QPageSize)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPageSize2 constructs a new QPageSize object.
 func NewQPageSize2(pageSizeId QPageSize__PageSizeId) *QPageSize {
-	ret := C.QPageSize_new2((C.int)(pageSizeId))
-	return newQPageSize(ret)
+	var outptr_QPageSize *C.QPageSize = nil
+
+	C.QPageSize_new2((C.int)(pageSizeId), &outptr_QPageSize)
+	ret := newQPageSize(outptr_QPageSize)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPageSize3 constructs a new QPageSize object.
 func NewQPageSize3(pointSize *QSize) *QPageSize {
-	ret := C.QPageSize_new3(pointSize.cPointer())
-	return newQPageSize(ret)
+	var outptr_QPageSize *C.QPageSize = nil
+
+	C.QPageSize_new3(pointSize.cPointer(), &outptr_QPageSize)
+	ret := newQPageSize(outptr_QPageSize)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPageSize4 constructs a new QPageSize object.
 func NewQPageSize4(size *QSizeF, units QPageSize__Unit) *QPageSize {
-	ret := C.QPageSize_new4(size.cPointer(), (C.int)(units))
-	return newQPageSize(ret)
+	var outptr_QPageSize *C.QPageSize = nil
+
+	C.QPageSize_new4(size.cPointer(), (C.int)(units), &outptr_QPageSize)
+	ret := newQPageSize(outptr_QPageSize)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPageSize5 constructs a new QPageSize object.
 func NewQPageSize5(other *QPageSize) *QPageSize {
-	ret := C.QPageSize_new5(other.cPointer())
-	return newQPageSize(ret)
+	var outptr_QPageSize *C.QPageSize = nil
+
+	C.QPageSize_new5(other.cPointer(), &outptr_QPageSize)
+	ret := newQPageSize(outptr_QPageSize)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPageSize6 constructs a new QPageSize object.
@@ -229,8 +256,12 @@ func NewQPageSize6(pointSize *QSize, name string) *QPageSize {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	ret := C.QPageSize_new6(pointSize.cPointer(), name_ms)
-	return newQPageSize(ret)
+	var outptr_QPageSize *C.QPageSize = nil
+
+	C.QPageSize_new6(pointSize.cPointer(), name_ms, &outptr_QPageSize)
+	ret := newQPageSize(outptr_QPageSize)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPageSize7 constructs a new QPageSize object.
@@ -239,8 +270,12 @@ func NewQPageSize7(pointSize *QSize, name string, matchPolicy QPageSize__SizeMat
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	ret := C.QPageSize_new7(pointSize.cPointer(), name_ms, (C.int)(matchPolicy))
-	return newQPageSize(ret)
+	var outptr_QPageSize *C.QPageSize = nil
+
+	C.QPageSize_new7(pointSize.cPointer(), name_ms, (C.int)(matchPolicy), &outptr_QPageSize)
+	ret := newQPageSize(outptr_QPageSize)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPageSize8 constructs a new QPageSize object.
@@ -249,8 +284,12 @@ func NewQPageSize8(size *QSizeF, units QPageSize__Unit, name string) *QPageSize 
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	ret := C.QPageSize_new8(size.cPointer(), (C.int)(units), name_ms)
-	return newQPageSize(ret)
+	var outptr_QPageSize *C.QPageSize = nil
+
+	C.QPageSize_new8(size.cPointer(), (C.int)(units), name_ms, &outptr_QPageSize)
+	ret := newQPageSize(outptr_QPageSize)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPageSize9 constructs a new QPageSize object.
@@ -259,8 +298,12 @@ func NewQPageSize9(size *QSizeF, units QPageSize__Unit, name string, matchPolicy
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	ret := C.QPageSize_new9(size.cPointer(), (C.int)(units), name_ms, (C.int)(matchPolicy))
-	return newQPageSize(ret)
+	var outptr_QPageSize *C.QPageSize = nil
+
+	C.QPageSize_new9(size.cPointer(), (C.int)(units), name_ms, (C.int)(matchPolicy), &outptr_QPageSize)
+	ret := newQPageSize(outptr_QPageSize)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QPageSize) OperatorAssign(other *QPageSize) {
@@ -426,7 +469,7 @@ func QPageSize_Id3(size *QSizeF, units QPageSize__Unit, matchPolicy QPageSize__S
 
 // Delete this object from C++ memory.
 func (this *QPageSize) Delete() {
-	C.QPageSize_Delete(this.h)
+	C.QPageSize_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

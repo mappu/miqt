@@ -1,6 +1,8 @@
 #include <QMediaContent>
+#include <QMediaControl>
 #include <QMediaGaplessPlaybackControl>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -138,7 +140,11 @@ struct miqt_string QMediaGaplessPlaybackControl_TrUtf83(const char* s, const cha
 	return _ms;
 }
 
-void QMediaGaplessPlaybackControl_Delete(QMediaGaplessPlaybackControl* self) {
-	delete self;
+void QMediaGaplessPlaybackControl_Delete(QMediaGaplessPlaybackControl* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMediaGaplessPlaybackControl*>( self );
+	} else {
+		delete self;
+	}
 }
 

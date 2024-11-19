@@ -15,20 +15,38 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QCloseEvent;
+class QContextMenuEvent;
+class QDialog;
+class QEvent;
 class QInputDialog;
+class QKeyEvent;
 class QMetaObject;
+class QObject;
+class QPaintDevice;
+class QResizeEvent;
+class QShowEvent;
 class QSize;
 class QWidget;
 #else
+typedef struct QCloseEvent QCloseEvent;
+typedef struct QContextMenuEvent QContextMenuEvent;
+typedef struct QDialog QDialog;
+typedef struct QEvent QEvent;
 typedef struct QInputDialog QInputDialog;
+typedef struct QKeyEvent QKeyEvent;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
+typedef struct QPaintDevice QPaintDevice;
+typedef struct QResizeEvent QResizeEvent;
+typedef struct QShowEvent QShowEvent;
 typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-QInputDialog* QInputDialog_new(QWidget* parent);
-QInputDialog* QInputDialog_new2();
-QInputDialog* QInputDialog_new3(QWidget* parent, int flags);
+void QInputDialog_new(QWidget* parent, QInputDialog** outptr_QInputDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+void QInputDialog_new2(QInputDialog** outptr_QInputDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+void QInputDialog_new3(QWidget* parent, int flags, QInputDialog** outptr_QInputDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
 QMetaObject* QInputDialog_MetaObject(const QInputDialog* self);
 void* QInputDialog_Metacast(QInputDialog* self, const char* param1);
 struct miqt_string QInputDialog_Tr(const char* s);
@@ -126,7 +144,35 @@ double QInputDialog_GetDouble6(QWidget* parent, struct miqt_string title, struct
 double QInputDialog_GetDouble7(QWidget* parent, struct miqt_string title, struct miqt_string label, double value, double minValue, double maxValue, int decimals);
 double QInputDialog_GetDouble8(QWidget* parent, struct miqt_string title, struct miqt_string label, double value, double minValue, double maxValue, int decimals, bool* ok);
 double QInputDialog_GetDouble9(QWidget* parent, struct miqt_string title, struct miqt_string label, double value, double minValue, double maxValue, int decimals, bool* ok, int flags);
-void QInputDialog_Delete(QInputDialog* self);
+void QInputDialog_override_virtual_MinimumSizeHint(void* self, intptr_t slot);
+QSize* QInputDialog_virtualbase_MinimumSizeHint(const void* self);
+void QInputDialog_override_virtual_SizeHint(void* self, intptr_t slot);
+QSize* QInputDialog_virtualbase_SizeHint(const void* self);
+void QInputDialog_override_virtual_SetVisible(void* self, intptr_t slot);
+void QInputDialog_virtualbase_SetVisible(void* self, bool visible);
+void QInputDialog_override_virtual_Done(void* self, intptr_t slot);
+void QInputDialog_virtualbase_Done(void* self, int result);
+void QInputDialog_override_virtual_Open(void* self, intptr_t slot);
+void QInputDialog_virtualbase_Open(void* self);
+void QInputDialog_override_virtual_Exec(void* self, intptr_t slot);
+int QInputDialog_virtualbase_Exec(void* self);
+void QInputDialog_override_virtual_Accept(void* self, intptr_t slot);
+void QInputDialog_virtualbase_Accept(void* self);
+void QInputDialog_override_virtual_Reject(void* self, intptr_t slot);
+void QInputDialog_virtualbase_Reject(void* self);
+void QInputDialog_override_virtual_KeyPressEvent(void* self, intptr_t slot);
+void QInputDialog_virtualbase_KeyPressEvent(void* self, QKeyEvent* param1);
+void QInputDialog_override_virtual_CloseEvent(void* self, intptr_t slot);
+void QInputDialog_virtualbase_CloseEvent(void* self, QCloseEvent* param1);
+void QInputDialog_override_virtual_ShowEvent(void* self, intptr_t slot);
+void QInputDialog_virtualbase_ShowEvent(void* self, QShowEvent* param1);
+void QInputDialog_override_virtual_ResizeEvent(void* self, intptr_t slot);
+void QInputDialog_virtualbase_ResizeEvent(void* self, QResizeEvent* param1);
+void QInputDialog_override_virtual_ContextMenuEvent(void* self, intptr_t slot);
+void QInputDialog_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1);
+void QInputDialog_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QInputDialog_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2);
+void QInputDialog_Delete(QInputDialog* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -7,22 +7,26 @@
 #include "gen_qhstspolicy.h"
 #include "_cgo_export.h"
 
-QHstsPolicy* QHstsPolicy_new() {
-	return new QHstsPolicy();
+void QHstsPolicy_new(QHstsPolicy** outptr_QHstsPolicy) {
+	QHstsPolicy* ret = new QHstsPolicy();
+	*outptr_QHstsPolicy = ret;
 }
 
-QHstsPolicy* QHstsPolicy_new2(QDateTime* expiry, int flags, struct miqt_string host) {
+void QHstsPolicy_new2(QDateTime* expiry, int flags, struct miqt_string host, QHstsPolicy** outptr_QHstsPolicy) {
 	QString host_QString = QString::fromUtf8(host.data, host.len);
-	return new QHstsPolicy(*expiry, static_cast<QHstsPolicy::PolicyFlags>(flags), host_QString);
+	QHstsPolicy* ret = new QHstsPolicy(*expiry, static_cast<QHstsPolicy::PolicyFlags>(flags), host_QString);
+	*outptr_QHstsPolicy = ret;
 }
 
-QHstsPolicy* QHstsPolicy_new3(QHstsPolicy* rhs) {
-	return new QHstsPolicy(*rhs);
+void QHstsPolicy_new3(QHstsPolicy* rhs, QHstsPolicy** outptr_QHstsPolicy) {
+	QHstsPolicy* ret = new QHstsPolicy(*rhs);
+	*outptr_QHstsPolicy = ret;
 }
 
-QHstsPolicy* QHstsPolicy_new4(QDateTime* expiry, int flags, struct miqt_string host, int mode) {
+void QHstsPolicy_new4(QDateTime* expiry, int flags, struct miqt_string host, int mode, QHstsPolicy** outptr_QHstsPolicy) {
 	QString host_QString = QString::fromUtf8(host.data, host.len);
-	return new QHstsPolicy(*expiry, static_cast<QHstsPolicy::PolicyFlags>(flags), host_QString, static_cast<QUrl::ParsingMode>(mode));
+	QHstsPolicy* ret = new QHstsPolicy(*expiry, static_cast<QHstsPolicy::PolicyFlags>(flags), host_QString, static_cast<QUrl::ParsingMode>(mode));
+	*outptr_QHstsPolicy = ret;
 }
 
 void QHstsPolicy_OperatorAssign(QHstsPolicy* self, QHstsPolicy* rhs) {
@@ -85,7 +89,11 @@ struct miqt_string QHstsPolicy_Host1(const QHstsPolicy* self, int options) {
 	return _ms;
 }
 
-void QHstsPolicy_Delete(QHstsPolicy* self) {
-	delete self;
+void QHstsPolicy_Delete(QHstsPolicy* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QHstsPolicy*>( self );
+	} else {
+		delete self;
+	}
 }
 

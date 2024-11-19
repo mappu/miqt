@@ -16,7 +16,8 @@ import (
 )
 
 type QAbstractAudioDeviceInfo struct {
-	h *C.QAbstractAudioDeviceInfo
+	h          *C.QAbstractAudioDeviceInfo
+	isSubclass bool
 	*qt.QObject
 }
 
@@ -34,15 +35,23 @@ func (this *QAbstractAudioDeviceInfo) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAbstractAudioDeviceInfo(h *C.QAbstractAudioDeviceInfo) *QAbstractAudioDeviceInfo {
+// newQAbstractAudioDeviceInfo constructs the type using only CGO pointers.
+func newQAbstractAudioDeviceInfo(h *C.QAbstractAudioDeviceInfo, h_QObject *C.QObject) *QAbstractAudioDeviceInfo {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractAudioDeviceInfo{h: h, QObject: qt.UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QAbstractAudioDeviceInfo{h: h,
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
 }
 
-func UnsafeNewQAbstractAudioDeviceInfo(h unsafe.Pointer) *QAbstractAudioDeviceInfo {
-	return newQAbstractAudioDeviceInfo((*C.QAbstractAudioDeviceInfo)(h))
+// UnsafeNewQAbstractAudioDeviceInfo constructs the type using only unsafe pointers.
+func UnsafeNewQAbstractAudioDeviceInfo(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractAudioDeviceInfo {
+	if h == nil {
+		return nil
+	}
+
+	return &QAbstractAudioDeviceInfo{h: (*C.QAbstractAudioDeviceInfo)(h),
+		QObject: qt.UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QAbstractAudioDeviceInfo) MetaObject() *qt.QMetaObject {
@@ -200,7 +209,7 @@ func QAbstractAudioDeviceInfo_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAbstractAudioDeviceInfo) Delete() {
-	C.QAbstractAudioDeviceInfo_Delete(this.h)
+	C.QAbstractAudioDeviceInfo_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -213,7 +222,8 @@ func (this *QAbstractAudioDeviceInfo) GoGC() {
 }
 
 type QAbstractAudioOutput struct {
-	h *C.QAbstractAudioOutput
+	h          *C.QAbstractAudioOutput
+	isSubclass bool
 	*qt.QObject
 }
 
@@ -231,15 +241,23 @@ func (this *QAbstractAudioOutput) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAbstractAudioOutput(h *C.QAbstractAudioOutput) *QAbstractAudioOutput {
+// newQAbstractAudioOutput constructs the type using only CGO pointers.
+func newQAbstractAudioOutput(h *C.QAbstractAudioOutput, h_QObject *C.QObject) *QAbstractAudioOutput {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractAudioOutput{h: h, QObject: qt.UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QAbstractAudioOutput{h: h,
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
 }
 
-func UnsafeNewQAbstractAudioOutput(h unsafe.Pointer) *QAbstractAudioOutput {
-	return newQAbstractAudioOutput((*C.QAbstractAudioOutput)(h))
+// UnsafeNewQAbstractAudioOutput constructs the type using only unsafe pointers.
+func UnsafeNewQAbstractAudioOutput(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractAudioOutput {
+	if h == nil {
+		return nil
+	}
+
+	return &QAbstractAudioOutput{h: (*C.QAbstractAudioOutput)(h),
+		QObject: qt.UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QAbstractAudioOutput) MetaObject() *qt.QMetaObject {
@@ -275,7 +293,7 @@ func (this *QAbstractAudioOutput) Start(device *qt.QIODevice) {
 }
 
 func (this *QAbstractAudioOutput) Start2() *qt.QIODevice {
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractAudioOutput_Start2(this.h)))
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractAudioOutput_Start2(this.h)), nil)
 }
 
 func (this *QAbstractAudioOutput) Stop() {
@@ -471,7 +489,7 @@ func QAbstractAudioOutput_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAbstractAudioOutput) Delete() {
-	C.QAbstractAudioOutput_Delete(this.h)
+	C.QAbstractAudioOutput_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -484,7 +502,8 @@ func (this *QAbstractAudioOutput) GoGC() {
 }
 
 type QAbstractAudioInput struct {
-	h *C.QAbstractAudioInput
+	h          *C.QAbstractAudioInput
+	isSubclass bool
 	*qt.QObject
 }
 
@@ -502,15 +521,23 @@ func (this *QAbstractAudioInput) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAbstractAudioInput(h *C.QAbstractAudioInput) *QAbstractAudioInput {
+// newQAbstractAudioInput constructs the type using only CGO pointers.
+func newQAbstractAudioInput(h *C.QAbstractAudioInput, h_QObject *C.QObject) *QAbstractAudioInput {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractAudioInput{h: h, QObject: qt.UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QAbstractAudioInput{h: h,
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
 }
 
-func UnsafeNewQAbstractAudioInput(h unsafe.Pointer) *QAbstractAudioInput {
-	return newQAbstractAudioInput((*C.QAbstractAudioInput)(h))
+// UnsafeNewQAbstractAudioInput constructs the type using only unsafe pointers.
+func UnsafeNewQAbstractAudioInput(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractAudioInput {
+	if h == nil {
+		return nil
+	}
+
+	return &QAbstractAudioInput{h: (*C.QAbstractAudioInput)(h),
+		QObject: qt.UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QAbstractAudioInput) MetaObject() *qt.QMetaObject {
@@ -546,7 +573,7 @@ func (this *QAbstractAudioInput) Start(device *qt.QIODevice) {
 }
 
 func (this *QAbstractAudioInput) Start2() *qt.QIODevice {
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractAudioInput_Start2(this.h)))
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractAudioInput_Start2(this.h)), nil)
 }
 
 func (this *QAbstractAudioInput) Stop() {
@@ -727,7 +754,7 @@ func QAbstractAudioInput_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAbstractAudioInput) Delete() {
-	C.QAbstractAudioInput_Delete(this.h)
+	C.QAbstractAudioInput_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

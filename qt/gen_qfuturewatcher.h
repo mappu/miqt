@@ -17,11 +17,15 @@ extern "C" {
 #ifdef __cplusplus
 class QEvent;
 class QFutureWatcherBase;
+class QMetaMethod;
 class QMetaObject;
+class QObject;
 #else
 typedef struct QEvent QEvent;
 typedef struct QFutureWatcherBase QFutureWatcherBase;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 #endif
 
 QMetaObject* QFutureWatcherBase_MetaObject(const QFutureWatcherBase* self);
@@ -65,11 +69,13 @@ void QFutureWatcherBase_SetPaused(QFutureWatcherBase* self, bool paused);
 void QFutureWatcherBase_Pause(QFutureWatcherBase* self);
 void QFutureWatcherBase_Resume(QFutureWatcherBase* self);
 void QFutureWatcherBase_TogglePaused(QFutureWatcherBase* self);
+void QFutureWatcherBase_ConnectNotify(QFutureWatcherBase* self, QMetaMethod* signal);
+void QFutureWatcherBase_DisconnectNotify(QFutureWatcherBase* self, QMetaMethod* signal);
 struct miqt_string QFutureWatcherBase_Tr2(const char* s, const char* c);
 struct miqt_string QFutureWatcherBase_Tr3(const char* s, const char* c, int n);
 struct miqt_string QFutureWatcherBase_TrUtf82(const char* s, const char* c);
 struct miqt_string QFutureWatcherBase_TrUtf83(const char* s, const char* c, int n);
-void QFutureWatcherBase_Delete(QFutureWatcherBase* self);
+void QFutureWatcherBase_Delete(QFutureWatcherBase* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

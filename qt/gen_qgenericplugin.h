@@ -33,7 +33,7 @@ struct miqt_string QGenericPlugin_Tr2(const char* s, const char* c);
 struct miqt_string QGenericPlugin_Tr3(const char* s, const char* c, int n);
 struct miqt_string QGenericPlugin_TrUtf82(const char* s, const char* c);
 struct miqt_string QGenericPlugin_TrUtf83(const char* s, const char* c, int n);
-void QGenericPlugin_Delete(QGenericPlugin* self);
+void QGenericPlugin_Delete(QGenericPlugin* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -21,7 +21,8 @@ const (
 )
 
 type QRegion struct {
-	h *C.QRegion
+	h          *C.QRegion
+	isSubclass bool
 }
 
 func (this *QRegion) cPointer() *C.QRegion {
@@ -38,6 +39,7 @@ func (this *QRegion) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQRegion constructs the type using only CGO pointers.
 func newQRegion(h *C.QRegion) *QRegion {
 	if h == nil {
 		return nil
@@ -45,50 +47,83 @@ func newQRegion(h *C.QRegion) *QRegion {
 	return &QRegion{h: h}
 }
 
+// UnsafeNewQRegion constructs the type using only unsafe pointers.
 func UnsafeNewQRegion(h unsafe.Pointer) *QRegion {
-	return newQRegion((*C.QRegion)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QRegion{h: (*C.QRegion)(h)}
 }
 
 // NewQRegion constructs a new QRegion object.
 func NewQRegion() *QRegion {
-	ret := C.QRegion_new()
-	return newQRegion(ret)
+	var outptr_QRegion *C.QRegion = nil
+
+	C.QRegion_new(&outptr_QRegion)
+	ret := newQRegion(outptr_QRegion)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRegion2 constructs a new QRegion object.
 func NewQRegion2(x int, y int, w int, h int) *QRegion {
-	ret := C.QRegion_new2((C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h))
-	return newQRegion(ret)
+	var outptr_QRegion *C.QRegion = nil
+
+	C.QRegion_new2((C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), &outptr_QRegion)
+	ret := newQRegion(outptr_QRegion)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRegion3 constructs a new QRegion object.
 func NewQRegion3(r *QRect) *QRegion {
-	ret := C.QRegion_new3(r.cPointer())
-	return newQRegion(ret)
+	var outptr_QRegion *C.QRegion = nil
+
+	C.QRegion_new3(r.cPointer(), &outptr_QRegion)
+	ret := newQRegion(outptr_QRegion)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRegion4 constructs a new QRegion object.
 func NewQRegion4(region *QRegion) *QRegion {
-	ret := C.QRegion_new4(region.cPointer())
-	return newQRegion(ret)
+	var outptr_QRegion *C.QRegion = nil
+
+	C.QRegion_new4(region.cPointer(), &outptr_QRegion)
+	ret := newQRegion(outptr_QRegion)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRegion5 constructs a new QRegion object.
 func NewQRegion5(bitmap *QBitmap) *QRegion {
-	ret := C.QRegion_new5(bitmap.cPointer())
-	return newQRegion(ret)
+	var outptr_QRegion *C.QRegion = nil
+
+	C.QRegion_new5(bitmap.cPointer(), &outptr_QRegion)
+	ret := newQRegion(outptr_QRegion)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRegion6 constructs a new QRegion object.
 func NewQRegion6(x int, y int, w int, h int, t QRegion__RegionType) *QRegion {
-	ret := C.QRegion_new6((C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(t))
-	return newQRegion(ret)
+	var outptr_QRegion *C.QRegion = nil
+
+	C.QRegion_new6((C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(t), &outptr_QRegion)
+	ret := newQRegion(outptr_QRegion)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRegion7 constructs a new QRegion object.
 func NewQRegion7(r *QRect, t QRegion__RegionType) *QRegion {
-	ret := C.QRegion_new7(r.cPointer(), (C.int)(t))
-	return newQRegion(ret)
+	var outptr_QRegion *C.QRegion = nil
+
+	C.QRegion_new7(r.cPointer(), (C.int)(t), &outptr_QRegion)
+	ret := newQRegion(outptr_QRegion)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QRegion) OperatorAssign(param1 *QRegion) {
@@ -318,7 +353,7 @@ func (this *QRegion) OperatorNotEqual(r *QRegion) bool {
 
 // Delete this object from C++ memory.
 func (this *QRegion) Delete() {
-	C.QRegion_Delete(this.h)
+	C.QRegion_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

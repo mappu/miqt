@@ -5,13 +5,15 @@
 #include "gen_qmessageauthenticationcode.h"
 #include "_cgo_export.h"
 
-QMessageAuthenticationCode* QMessageAuthenticationCode_new(int method) {
-	return new QMessageAuthenticationCode(static_cast<QCryptographicHash::Algorithm>(method));
+void QMessageAuthenticationCode_new(int method, QMessageAuthenticationCode** outptr_QMessageAuthenticationCode) {
+	QMessageAuthenticationCode* ret = new QMessageAuthenticationCode(static_cast<QCryptographicHash::Algorithm>(method));
+	*outptr_QMessageAuthenticationCode = ret;
 }
 
-QMessageAuthenticationCode* QMessageAuthenticationCode_new2(int method, struct miqt_string key) {
+void QMessageAuthenticationCode_new2(int method, struct miqt_string key, QMessageAuthenticationCode** outptr_QMessageAuthenticationCode) {
 	QByteArray key_QByteArray(key.data, key.len);
-	return new QMessageAuthenticationCode(static_cast<QCryptographicHash::Algorithm>(method), key_QByteArray);
+	QMessageAuthenticationCode* ret = new QMessageAuthenticationCode(static_cast<QCryptographicHash::Algorithm>(method), key_QByteArray);
+	*outptr_QMessageAuthenticationCode = ret;
 }
 
 void QMessageAuthenticationCode_Reset(QMessageAuthenticationCode* self) {
@@ -56,7 +58,11 @@ struct miqt_string QMessageAuthenticationCode_Hash(struct miqt_string message, s
 	return _ms;
 }
 
-void QMessageAuthenticationCode_Delete(QMessageAuthenticationCode* self) {
-	delete self;
+void QMessageAuthenticationCode_Delete(QMessageAuthenticationCode* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMessageAuthenticationCode*>( self );
+	} else {
+		delete self;
+	}
 }
 

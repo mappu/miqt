@@ -16,6 +16,7 @@ extern "C" {
 
 #ifdef __cplusplus
 class QClipboard;
+class QCoreApplication;
 class QCursor;
 class QEvent;
 class QFont;
@@ -32,6 +33,7 @@ class QStyleHints;
 class QWindow;
 #else
 typedef struct QClipboard QClipboard;
+typedef struct QCoreApplication QCoreApplication;
 typedef struct QCursor QCursor;
 typedef struct QEvent QEvent;
 typedef struct QFont QFont;
@@ -48,8 +50,8 @@ typedef struct QStyleHints QStyleHints;
 typedef struct QWindow QWindow;
 #endif
 
-QGuiApplication* QGuiApplication_new(int* argc, char** argv);
-QGuiApplication* QGuiApplication_new2(int* argc, char** argv, int param3);
+void QGuiApplication_new(int* argc, char** argv, QGuiApplication** outptr_QGuiApplication, QCoreApplication** outptr_QCoreApplication, QObject** outptr_QObject);
+void QGuiApplication_new2(int* argc, char** argv, int param3, QGuiApplication** outptr_QGuiApplication, QCoreApplication** outptr_QCoreApplication, QObject** outptr_QObject);
 QMetaObject* QGuiApplication_MetaObject(const QGuiApplication* self);
 void* QGuiApplication_Metacast(QGuiApplication* self, const char* param1);
 struct miqt_string QGuiApplication_Tr(const char* s);
@@ -130,9 +132,14 @@ void QGuiApplication_PaletteChanged(QGuiApplication* self, QPalette* pal);
 void QGuiApplication_connect_PaletteChanged(QGuiApplication* self, intptr_t slot);
 void QGuiApplication_FontChanged(QGuiApplication* self, QFont* font);
 void QGuiApplication_connect_FontChanged(QGuiApplication* self, intptr_t slot);
+bool QGuiApplication_Event(QGuiApplication* self, QEvent* param1);
 struct miqt_string QGuiApplication_Tr2(const char* s, const char* c);
 struct miqt_string QGuiApplication_Tr3(const char* s, const char* c, int n);
-void QGuiApplication_Delete(QGuiApplication* self);
+void QGuiApplication_override_virtual_Notify(void* self, intptr_t slot);
+bool QGuiApplication_virtualbase_Notify(void* self, QObject* param1, QEvent* param2);
+void QGuiApplication_override_virtual_Event(void* self, intptr_t slot);
+bool QGuiApplication_virtualbase_Event(void* self, QEvent* param1);
+void QGuiApplication_Delete(QGuiApplication* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

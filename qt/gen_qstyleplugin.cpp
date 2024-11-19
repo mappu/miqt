@@ -1,4 +1,5 @@
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -87,7 +88,11 @@ struct miqt_string QStylePlugin_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QStylePlugin_Delete(QStylePlugin* self) {
-	delete self;
+void QStylePlugin_Delete(QStylePlugin* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QStylePlugin*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -1,5 +1,8 @@
 #include <QAudioRecorder>
 #include <QList>
+#include <QMediaBindableInterface>
+#include <QMediaObject>
+#include <QMediaRecorder>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>
@@ -9,12 +12,75 @@
 #include "gen_qaudiorecorder.h"
 #include "_cgo_export.h"
 
-QAudioRecorder* QAudioRecorder_new() {
-	return new QAudioRecorder();
+class MiqtVirtualQAudioRecorder : public virtual QAudioRecorder {
+public:
+
+	MiqtVirtualQAudioRecorder(): QAudioRecorder() {};
+	MiqtVirtualQAudioRecorder(QObject* parent): QAudioRecorder(parent) {};
+
+	virtual ~MiqtVirtualQAudioRecorder() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MediaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QMediaObject* mediaObject() const override {
+		if (handle__MediaObject == 0) {
+			return QAudioRecorder::mediaObject();
+		}
+		
+
+		QMediaObject* callback_return_value = miqt_exec_callback_QAudioRecorder_MediaObject(const_cast<MiqtVirtualQAudioRecorder*>(this), handle__MediaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMediaObject* virtualbase_MediaObject() const {
+
+		return QAudioRecorder::mediaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetMediaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool setMediaObject(QMediaObject* object) override {
+		if (handle__SetMediaObject == 0) {
+			return QAudioRecorder::setMediaObject(object);
+		}
+		
+		QMediaObject* sigval1 = object;
+
+		bool callback_return_value = miqt_exec_callback_QAudioRecorder_SetMediaObject(this, handle__SetMediaObject, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_SetMediaObject(QMediaObject* object) {
+
+		return QAudioRecorder::setMediaObject(object);
+
+	}
+
+};
+
+void QAudioRecorder_new(QAudioRecorder** outptr_QAudioRecorder, QMediaRecorder** outptr_QMediaRecorder, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface) {
+	MiqtVirtualQAudioRecorder* ret = new MiqtVirtualQAudioRecorder();
+	*outptr_QAudioRecorder = ret;
+	*outptr_QMediaRecorder = static_cast<QMediaRecorder*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
+	*outptr_QMediaBindableInterface = static_cast<QMediaBindableInterface*>(ret);
 }
 
-QAudioRecorder* QAudioRecorder_new2(QObject* parent) {
-	return new QAudioRecorder(parent);
+void QAudioRecorder_new2(QObject* parent, QAudioRecorder** outptr_QAudioRecorder, QMediaRecorder** outptr_QMediaRecorder, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface) {
+	MiqtVirtualQAudioRecorder* ret = new MiqtVirtualQAudioRecorder(parent);
+	*outptr_QAudioRecorder = ret;
+	*outptr_QMediaRecorder = static_cast<QMediaRecorder*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
+	*outptr_QMediaBindableInterface = static_cast<QMediaBindableInterface*>(ret);
 }
 
 QMetaObject* QAudioRecorder_MetaObject(const QAudioRecorder* self) {
@@ -112,7 +178,7 @@ void QAudioRecorder_AudioInputChanged(QAudioRecorder* self, struct miqt_string n
 }
 
 void QAudioRecorder_connect_AudioInputChanged(QAudioRecorder* self, intptr_t slot) {
-	QAudioRecorder::connect(self, static_cast<void (QAudioRecorder::*)(const QString&)>(&QAudioRecorder::audioInputChanged), self, [=](const QString& name) {
+	MiqtVirtualQAudioRecorder::connect(self, static_cast<void (QAudioRecorder::*)(const QString&)>(&QAudioRecorder::audioInputChanged), self, [=](const QString& name) {
 		const QString name_ret = name;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray name_b = name_ret.toUtf8();
@@ -130,7 +196,7 @@ void QAudioRecorder_AvailableAudioInputsChanged(QAudioRecorder* self) {
 }
 
 void QAudioRecorder_connect_AvailableAudioInputsChanged(QAudioRecorder* self, intptr_t slot) {
-	QAudioRecorder::connect(self, static_cast<void (QAudioRecorder::*)()>(&QAudioRecorder::availableAudioInputsChanged), self, [=]() {
+	MiqtVirtualQAudioRecorder::connect(self, static_cast<void (QAudioRecorder::*)()>(&QAudioRecorder::availableAudioInputsChanged), self, [=]() {
 		miqt_exec_callback_QAudioRecorder_AvailableAudioInputsChanged(slot);
 	});
 }
@@ -179,7 +245,27 @@ struct miqt_string QAudioRecorder_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QAudioRecorder_Delete(QAudioRecorder* self) {
-	delete self;
+void QAudioRecorder_override_virtual_MediaObject(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAudioRecorder*>( (QAudioRecorder*)(self) )->handle__MediaObject = slot;
+}
+
+QMediaObject* QAudioRecorder_virtualbase_MediaObject(const void* self) {
+	return ( (const MiqtVirtualQAudioRecorder*)(self) )->virtualbase_MediaObject();
+}
+
+void QAudioRecorder_override_virtual_SetMediaObject(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQAudioRecorder*>( (QAudioRecorder*)(self) )->handle__SetMediaObject = slot;
+}
+
+bool QAudioRecorder_virtualbase_SetMediaObject(void* self, QMediaObject* object) {
+	return ( (MiqtVirtualQAudioRecorder*)(self) )->virtualbase_SetMediaObject(object);
+}
+
+void QAudioRecorder_Delete(QAudioRecorder* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQAudioRecorder*>( self );
+	} else {
+		delete self;
+	}
 }
 

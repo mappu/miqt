@@ -48,7 +48,8 @@ const (
 )
 
 type QImageCapture struct {
-	h *C.QImageCapture
+	h          *C.QImageCapture
+	isSubclass bool
 	*qt6.QObject
 }
 
@@ -66,27 +67,45 @@ func (this *QImageCapture) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQImageCapture(h *C.QImageCapture) *QImageCapture {
+// newQImageCapture constructs the type using only CGO pointers.
+func newQImageCapture(h *C.QImageCapture, h_QObject *C.QObject) *QImageCapture {
 	if h == nil {
 		return nil
 	}
-	return &QImageCapture{h: h, QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QImageCapture{h: h,
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
 }
 
-func UnsafeNewQImageCapture(h unsafe.Pointer) *QImageCapture {
-	return newQImageCapture((*C.QImageCapture)(h))
+// UnsafeNewQImageCapture constructs the type using only unsafe pointers.
+func UnsafeNewQImageCapture(h unsafe.Pointer, h_QObject unsafe.Pointer) *QImageCapture {
+	if h == nil {
+		return nil
+	}
+
+	return &QImageCapture{h: (*C.QImageCapture)(h),
+		QObject: qt6.UnsafeNewQObject(h_QObject)}
 }
 
 // NewQImageCapture constructs a new QImageCapture object.
 func NewQImageCapture() *QImageCapture {
-	ret := C.QImageCapture_new()
-	return newQImageCapture(ret)
+	var outptr_QImageCapture *C.QImageCapture = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QImageCapture_new(&outptr_QImageCapture, &outptr_QObject)
+	ret := newQImageCapture(outptr_QImageCapture, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQImageCapture2 constructs a new QImageCapture object.
 func NewQImageCapture2(parent *qt6.QObject) *QImageCapture {
-	ret := C.QImageCapture_new2((*C.QObject)(parent.UnsafePointer()))
-	return newQImageCapture(ret)
+	var outptr_QImageCapture *C.QImageCapture = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QImageCapture_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QImageCapture, &outptr_QObject)
+	ret := newQImageCapture(outptr_QImageCapture, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QImageCapture) MetaObject() *qt6.QMetaObject {
@@ -113,7 +132,7 @@ func (this *QImageCapture) IsAvailable() bool {
 }
 
 func (this *QImageCapture) CaptureSession() *QMediaCaptureSession {
-	return UnsafeNewQMediaCaptureSession(unsafe.Pointer(C.QImageCapture_CaptureSession(this.h)))
+	return UnsafeNewQMediaCaptureSession(unsafe.Pointer(C.QImageCapture_CaptureSession(this.h)), nil)
 }
 
 func (this *QImageCapture) Error() QImageCapture__Error {
@@ -382,7 +401,7 @@ func miqt_exec_callback_QImageCapture_ImageCaptured(cb C.intptr_t, id C.int, pre
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (int)(id)
 
-	slotval2 := qt6.UnsafeNewQImage(unsafe.Pointer(preview))
+	slotval2 := qt6.UnsafeNewQImage(unsafe.Pointer(preview), nil)
 
 	gofunc(slotval1, slotval2)
 }
@@ -490,9 +509,175 @@ func (this *QImageCapture) CaptureToFile1(location string) int {
 	return (int)(C.QImageCapture_CaptureToFile1(this.h, location_ms))
 }
 
+func (this *QImageCapture) callVirtualBase_Event(event *qt6.QEvent) bool {
+
+	return (bool)(C.QImageCapture_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QImageCapture) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+	C.QImageCapture_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageCapture_Event
+func miqt_exec_callback_QImageCapture_Event(self *C.QImageCapture, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QImageCapture{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QImageCapture) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+
+	return (bool)(C.QImageCapture_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QImageCapture) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	C.QImageCapture_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageCapture_EventFilter
+func miqt_exec_callback_QImageCapture_EventFilter(self *C.QImageCapture, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QImageCapture{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QImageCapture) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+
+	C.QImageCapture_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+
+}
+func (this *QImageCapture) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	C.QImageCapture_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageCapture_TimerEvent
+func miqt_exec_callback_QImageCapture_TimerEvent(self *C.QImageCapture, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QImageCapture{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QImageCapture) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+
+	C.QImageCapture_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+
+}
+func (this *QImageCapture) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	C.QImageCapture_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageCapture_ChildEvent
+func miqt_exec_callback_QImageCapture_ChildEvent(self *C.QImageCapture, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QImageCapture{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QImageCapture) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+
+	C.QImageCapture_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+
+}
+func (this *QImageCapture) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	C.QImageCapture_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageCapture_CustomEvent
+func miqt_exec_callback_QImageCapture_CustomEvent(self *C.QImageCapture, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent), event *qt6.QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QImageCapture{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QImageCapture) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+
+	C.QImageCapture_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QImageCapture) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	C.QImageCapture_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageCapture_ConnectNotify
+func miqt_exec_callback_QImageCapture_ConnectNotify(self *C.QImageCapture, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QImageCapture{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QImageCapture) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+
+	C.QImageCapture_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QImageCapture) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	C.QImageCapture_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageCapture_DisconnectNotify
+func miqt_exec_callback_QImageCapture_DisconnectNotify(self *C.QImageCapture, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QImageCapture{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QImageCapture) Delete() {
-	C.QImageCapture_Delete(this.h)
+	C.QImageCapture_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

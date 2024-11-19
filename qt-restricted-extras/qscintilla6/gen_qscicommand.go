@@ -118,7 +118,8 @@ const (
 )
 
 type QsciCommand struct {
-	h *C.QsciCommand
+	h          *C.QsciCommand
+	isSubclass bool
 }
 
 func (this *QsciCommand) cPointer() *C.QsciCommand {
@@ -135,6 +136,7 @@ func (this *QsciCommand) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQsciCommand constructs the type using only CGO pointers.
 func newQsciCommand(h *C.QsciCommand) *QsciCommand {
 	if h == nil {
 		return nil
@@ -142,8 +144,13 @@ func newQsciCommand(h *C.QsciCommand) *QsciCommand {
 	return &QsciCommand{h: h}
 }
 
+// UnsafeNewQsciCommand constructs the type using only unsafe pointers.
 func UnsafeNewQsciCommand(h unsafe.Pointer) *QsciCommand {
-	return newQsciCommand((*C.QsciCommand)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QsciCommand{h: (*C.QsciCommand)(h)}
 }
 
 func (this *QsciCommand) Command() QsciCommand__Command {
@@ -183,7 +190,7 @@ func (this *QsciCommand) Description() string {
 
 // Delete this object from C++ memory.
 func (this *QsciCommand) Delete() {
-	C.QsciCommand_Delete(this.h)
+	C.QsciCommand_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

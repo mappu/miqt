@@ -131,51 +131,9 @@ const (
 	QMetaType__IsConst                  QMetaType__TypeFlag = 8192
 )
 
-type QtPrivate__QMetaTypeInterface struct {
-	h *C.QtPrivate__QMetaTypeInterface
-}
-
-func (this *QtPrivate__QMetaTypeInterface) cPointer() *C.QtPrivate__QMetaTypeInterface {
-	if this == nil {
-		return nil
-	}
-	return this.h
-}
-
-func (this *QtPrivate__QMetaTypeInterface) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
-}
-
-func newQtPrivate__QMetaTypeInterface(h *C.QtPrivate__QMetaTypeInterface) *QtPrivate__QMetaTypeInterface {
-	if h == nil {
-		return nil
-	}
-	return &QtPrivate__QMetaTypeInterface{h: h}
-}
-
-func UnsafeNewQtPrivate__QMetaTypeInterface(h unsafe.Pointer) *QtPrivate__QMetaTypeInterface {
-	return newQtPrivate__QMetaTypeInterface((*C.QtPrivate__QMetaTypeInterface)(h))
-}
-
-// Delete this object from C++ memory.
-func (this *QtPrivate__QMetaTypeInterface) Delete() {
-	C.QtPrivate__QMetaTypeInterface_Delete(this.h)
-}
-
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
-func (this *QtPrivate__QMetaTypeInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QtPrivate__QMetaTypeInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
-	})
-}
-
 type QMetaType struct {
-	h *C.QMetaType
+	h          *C.QMetaType
+	isSubclass bool
 }
 
 func (this *QMetaType) cPointer() *C.QMetaType {
@@ -192,6 +150,7 @@ func (this *QMetaType) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQMetaType constructs the type using only CGO pointers.
 func newQMetaType(h *C.QMetaType) *QMetaType {
 	if h == nil {
 		return nil
@@ -199,26 +158,43 @@ func newQMetaType(h *C.QMetaType) *QMetaType {
 	return &QMetaType{h: h}
 }
 
+// UnsafeNewQMetaType constructs the type using only unsafe pointers.
 func UnsafeNewQMetaType(h unsafe.Pointer) *QMetaType {
-	return newQMetaType((*C.QMetaType)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMetaType{h: (*C.QMetaType)(h)}
 }
 
 // NewQMetaType constructs a new QMetaType object.
 func NewQMetaType(typeVal int) *QMetaType {
-	ret := C.QMetaType_new((C.int)(typeVal))
-	return newQMetaType(ret)
+	var outptr_QMetaType *C.QMetaType = nil
+
+	C.QMetaType_new((C.int)(typeVal), &outptr_QMetaType)
+	ret := newQMetaType(outptr_QMetaType)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMetaType2 constructs a new QMetaType object.
 func NewQMetaType2() *QMetaType {
-	ret := C.QMetaType_new2()
-	return newQMetaType(ret)
+	var outptr_QMetaType *C.QMetaType = nil
+
+	C.QMetaType_new2(&outptr_QMetaType)
+	ret := newQMetaType(outptr_QMetaType)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMetaType3 constructs a new QMetaType object.
 func NewQMetaType3(param1 *QMetaType) *QMetaType {
-	ret := C.QMetaType_new3(param1.cPointer())
-	return newQMetaType(ret)
+	var outptr_QMetaType *C.QMetaType = nil
+
+	C.QMetaType_new3(param1.cPointer(), &outptr_QMetaType)
+	ret := newQMetaType(outptr_QMetaType)
+	ret.isSubclass = true
+	return ret
 }
 
 func QMetaType_RegisterNormalizedTypedef(normalizedTypeName []byte, typeVal QMetaType) {
@@ -455,143 +431,13 @@ func (this *QMetaType) Construct2(where unsafe.Pointer, copyVal unsafe.Pointer) 
 
 // Delete this object from C++ memory.
 func (this *QMetaType) Delete() {
-	C.QMetaType_Delete(this.h)
+	C.QMetaType_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
 // from C++ memory once it is unreachable from Go memory.
 func (this *QMetaType) GoGC() {
 	runtime.SetFinalizer(this, func(this *QMetaType) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
-	})
-}
-
-type QtMetaTypePrivate__QPairVariantInterfaceImpl struct {
-	h *C.QtMetaTypePrivate__QPairVariantInterfaceImpl
-}
-
-func (this *QtMetaTypePrivate__QPairVariantInterfaceImpl) cPointer() *C.QtMetaTypePrivate__QPairVariantInterfaceImpl {
-	if this == nil {
-		return nil
-	}
-	return this.h
-}
-
-func (this *QtMetaTypePrivate__QPairVariantInterfaceImpl) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
-}
-
-func newQtMetaTypePrivate__QPairVariantInterfaceImpl(h *C.QtMetaTypePrivate__QPairVariantInterfaceImpl) *QtMetaTypePrivate__QPairVariantInterfaceImpl {
-	if h == nil {
-		return nil
-	}
-	return &QtMetaTypePrivate__QPairVariantInterfaceImpl{h: h}
-}
-
-func UnsafeNewQtMetaTypePrivate__QPairVariantInterfaceImpl(h unsafe.Pointer) *QtMetaTypePrivate__QPairVariantInterfaceImpl {
-	return newQtMetaTypePrivate__QPairVariantInterfaceImpl((*C.QtMetaTypePrivate__QPairVariantInterfaceImpl)(h))
-}
-
-// NewQtMetaTypePrivate__QPairVariantInterfaceImpl constructs a new QtMetaTypePrivate::QPairVariantInterfaceImpl object.
-func NewQtMetaTypePrivate__QPairVariantInterfaceImpl() *QtMetaTypePrivate__QPairVariantInterfaceImpl {
-	ret := C.QtMetaTypePrivate__QPairVariantInterfaceImpl_new()
-	return newQtMetaTypePrivate__QPairVariantInterfaceImpl(ret)
-}
-
-// NewQtMetaTypePrivate__QPairVariantInterfaceImpl2 constructs a new QtMetaTypePrivate::QPairVariantInterfaceImpl object.
-func NewQtMetaTypePrivate__QPairVariantInterfaceImpl2(param1 *QtMetaTypePrivate__QPairVariantInterfaceImpl) *QtMetaTypePrivate__QPairVariantInterfaceImpl {
-	ret := C.QtMetaTypePrivate__QPairVariantInterfaceImpl_new2(param1.cPointer())
-	return newQtMetaTypePrivate__QPairVariantInterfaceImpl(ret)
-}
-
-func (this *QtMetaTypePrivate__QPairVariantInterfaceImpl) First(dataPtr unsafe.Pointer) {
-	C.QtMetaTypePrivate__QPairVariantInterfaceImpl_First(this.h, dataPtr)
-}
-
-func (this *QtMetaTypePrivate__QPairVariantInterfaceImpl) Second(dataPtr unsafe.Pointer) {
-	C.QtMetaTypePrivate__QPairVariantInterfaceImpl_Second(this.h, dataPtr)
-}
-
-// Delete this object from C++ memory.
-func (this *QtMetaTypePrivate__QPairVariantInterfaceImpl) Delete() {
-	C.QtMetaTypePrivate__QPairVariantInterfaceImpl_Delete(this.h)
-}
-
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
-func (this *QtMetaTypePrivate__QPairVariantInterfaceImpl) GoGC() {
-	runtime.SetFinalizer(this, func(this *QtMetaTypePrivate__QPairVariantInterfaceImpl) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
-	})
-}
-
-type QtPrivate__QTypeNormalizer struct {
-	h *C.QtPrivate__QTypeNormalizer
-}
-
-func (this *QtPrivate__QTypeNormalizer) cPointer() *C.QtPrivate__QTypeNormalizer {
-	if this == nil {
-		return nil
-	}
-	return this.h
-}
-
-func (this *QtPrivate__QTypeNormalizer) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
-}
-
-func newQtPrivate__QTypeNormalizer(h *C.QtPrivate__QTypeNormalizer) *QtPrivate__QTypeNormalizer {
-	if h == nil {
-		return nil
-	}
-	return &QtPrivate__QTypeNormalizer{h: h}
-}
-
-func UnsafeNewQtPrivate__QTypeNormalizer(h unsafe.Pointer) *QtPrivate__QTypeNormalizer {
-	return newQtPrivate__QTypeNormalizer((*C.QtPrivate__QTypeNormalizer)(h))
-}
-
-func (this *QtPrivate__QTypeNormalizer) NormalizeTypeFromSignature(begin string, end string) int {
-	begin_Cstring := C.CString(begin)
-	defer C.free(unsafe.Pointer(begin_Cstring))
-	end_Cstring := C.CString(end)
-	defer C.free(unsafe.Pointer(end_Cstring))
-	return (int)(C.QtPrivate__QTypeNormalizer_NormalizeTypeFromSignature(this.h, begin_Cstring, end_Cstring))
-}
-
-func (this *QtPrivate__QTypeNormalizer) NormalizeType(begin string, end string) int {
-	begin_Cstring := C.CString(begin)
-	defer C.free(unsafe.Pointer(begin_Cstring))
-	end_Cstring := C.CString(end)
-	defer C.free(unsafe.Pointer(end_Cstring))
-	return (int)(C.QtPrivate__QTypeNormalizer_NormalizeType(this.h, begin_Cstring, end_Cstring))
-}
-
-func (this *QtPrivate__QTypeNormalizer) NormalizeType3(begin string, end string, adjustConst bool) int {
-	begin_Cstring := C.CString(begin)
-	defer C.free(unsafe.Pointer(begin_Cstring))
-	end_Cstring := C.CString(end)
-	defer C.free(unsafe.Pointer(end_Cstring))
-	return (int)(C.QtPrivate__QTypeNormalizer_NormalizeType3(this.h, begin_Cstring, end_Cstring, (C.bool)(adjustConst)))
-}
-
-// Delete this object from C++ memory.
-func (this *QtPrivate__QTypeNormalizer) Delete() {
-	C.QtPrivate__QTypeNormalizer_Delete(this.h)
-}
-
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
-func (this *QtPrivate__QTypeNormalizer) GoGC() {
-	runtime.SetFinalizer(this, func(this *QtPrivate__QTypeNormalizer) {
 		this.Delete()
 		runtime.KeepAlive(this.h)
 	})

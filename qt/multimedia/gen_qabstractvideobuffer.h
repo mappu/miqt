@@ -30,10 +30,10 @@ int QAbstractVideoBuffer_MapMode(const QAbstractVideoBuffer* self);
 unsigned char* QAbstractVideoBuffer_Map(QAbstractVideoBuffer* self, int mode, int* numBytes, int* bytesPerLine);
 void QAbstractVideoBuffer_Unmap(QAbstractVideoBuffer* self);
 QVariant* QAbstractVideoBuffer_Handle(const QAbstractVideoBuffer* self);
-void QAbstractVideoBuffer_Delete(QAbstractVideoBuffer* self);
+void QAbstractVideoBuffer_Delete(QAbstractVideoBuffer* self, bool isSubclass);
 
 unsigned char* QAbstractPlanarVideoBuffer_Map(QAbstractPlanarVideoBuffer* self, int mode, int* numBytes, int* bytesPerLine);
-void QAbstractPlanarVideoBuffer_Delete(QAbstractPlanarVideoBuffer* self);
+void QAbstractPlanarVideoBuffer_Delete(QAbstractPlanarVideoBuffer* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

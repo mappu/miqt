@@ -15,7 +15,8 @@ import (
 )
 
 type QAbstractState struct {
-	h *C.QAbstractState
+	h          *C.QAbstractState
+	isSubclass bool
 	*QObject
 }
 
@@ -33,15 +34,23 @@ func (this *QAbstractState) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAbstractState(h *C.QAbstractState) *QAbstractState {
+// newQAbstractState constructs the type using only CGO pointers.
+func newQAbstractState(h *C.QAbstractState, h_QObject *C.QObject) *QAbstractState {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractState{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QAbstractState{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQAbstractState(h unsafe.Pointer) *QAbstractState {
-	return newQAbstractState((*C.QAbstractState)(h))
+// UnsafeNewQAbstractState constructs the type using only unsafe pointers.
+func UnsafeNewQAbstractState(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractState {
+	if h == nil {
+		return nil
+	}
+
+	return &QAbstractState{h: (*C.QAbstractState)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QAbstractState) MetaObject() *QMetaObject {
@@ -73,11 +82,11 @@ func QAbstractState_TrUtf8(s string) string {
 }
 
 func (this *QAbstractState) ParentState() *QState {
-	return UnsafeNewQState(unsafe.Pointer(C.QAbstractState_ParentState(this.h)))
+	return UnsafeNewQState(unsafe.Pointer(C.QAbstractState_ParentState(this.h)), nil, nil)
 }
 
 func (this *QAbstractState) Machine() *QStateMachine {
-	return UnsafeNewQStateMachine(unsafe.Pointer(C.QAbstractState_Machine(this.h)))
+	return UnsafeNewQStateMachine(unsafe.Pointer(C.QAbstractState_Machine(this.h)), nil, nil, nil)
 }
 
 func (this *QAbstractState) Active() bool {
@@ -150,7 +159,7 @@ func QAbstractState_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAbstractState) Delete() {
-	C.QAbstractState_Delete(this.h)
+	C.QAbstractState_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

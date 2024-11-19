@@ -9,16 +9,19 @@
 #include "gen_qprinterinfo.h"
 #include "_cgo_export.h"
 
-QPrinterInfo* QPrinterInfo_new() {
-	return new QPrinterInfo();
+void QPrinterInfo_new(QPrinterInfo** outptr_QPrinterInfo) {
+	QPrinterInfo* ret = new QPrinterInfo();
+	*outptr_QPrinterInfo = ret;
 }
 
-QPrinterInfo* QPrinterInfo_new2(QPrinterInfo* other) {
-	return new QPrinterInfo(*other);
+void QPrinterInfo_new2(QPrinterInfo* other, QPrinterInfo** outptr_QPrinterInfo) {
+	QPrinterInfo* ret = new QPrinterInfo(*other);
+	*outptr_QPrinterInfo = ret;
 }
 
-QPrinterInfo* QPrinterInfo_new3(QPrinter* printer) {
-	return new QPrinterInfo(*printer);
+void QPrinterInfo_new3(QPrinter* printer, QPrinterInfo** outptr_QPrinterInfo) {
+	QPrinterInfo* ret = new QPrinterInfo(*printer);
+	*outptr_QPrinterInfo = ret;
 }
 
 void QPrinterInfo_OperatorAssign(QPrinterInfo* self, QPrinterInfo* other) {
@@ -263,7 +266,11 @@ QPrinterInfo* QPrinterInfo_PrinterInfo(struct miqt_string printerName) {
 	return new QPrinterInfo(QPrinterInfo::printerInfo(printerName_QString));
 }
 
-void QPrinterInfo_Delete(QPrinterInfo* self) {
-	delete self;
+void QPrinterInfo_Delete(QPrinterInfo* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QPrinterInfo*>( self );
+	} else {
+		delete self;
+	}
 }
 

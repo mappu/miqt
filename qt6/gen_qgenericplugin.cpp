@@ -55,7 +55,11 @@ struct miqt_string QGenericPlugin_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QGenericPlugin_Delete(QGenericPlugin* self) {
-	delete self;
+void QGenericPlugin_Delete(QGenericPlugin* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QGenericPlugin*>( self );
+	} else {
+		delete self;
+	}
 }
 

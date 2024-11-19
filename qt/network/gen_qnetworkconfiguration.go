@@ -59,7 +59,8 @@ const (
 )
 
 type QNetworkConfiguration struct {
-	h *C.QNetworkConfiguration
+	h          *C.QNetworkConfiguration
+	isSubclass bool
 }
 
 func (this *QNetworkConfiguration) cPointer() *C.QNetworkConfiguration {
@@ -76,6 +77,7 @@ func (this *QNetworkConfiguration) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQNetworkConfiguration constructs the type using only CGO pointers.
 func newQNetworkConfiguration(h *C.QNetworkConfiguration) *QNetworkConfiguration {
 	if h == nil {
 		return nil
@@ -83,20 +85,33 @@ func newQNetworkConfiguration(h *C.QNetworkConfiguration) *QNetworkConfiguration
 	return &QNetworkConfiguration{h: h}
 }
 
+// UnsafeNewQNetworkConfiguration constructs the type using only unsafe pointers.
 func UnsafeNewQNetworkConfiguration(h unsafe.Pointer) *QNetworkConfiguration {
-	return newQNetworkConfiguration((*C.QNetworkConfiguration)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QNetworkConfiguration{h: (*C.QNetworkConfiguration)(h)}
 }
 
 // NewQNetworkConfiguration constructs a new QNetworkConfiguration object.
 func NewQNetworkConfiguration() *QNetworkConfiguration {
-	ret := C.QNetworkConfiguration_new()
-	return newQNetworkConfiguration(ret)
+	var outptr_QNetworkConfiguration *C.QNetworkConfiguration = nil
+
+	C.QNetworkConfiguration_new(&outptr_QNetworkConfiguration)
+	ret := newQNetworkConfiguration(outptr_QNetworkConfiguration)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQNetworkConfiguration2 constructs a new QNetworkConfiguration object.
 func NewQNetworkConfiguration2(other *QNetworkConfiguration) *QNetworkConfiguration {
-	ret := C.QNetworkConfiguration_new2(other.cPointer())
-	return newQNetworkConfiguration(ret)
+	var outptr_QNetworkConfiguration *C.QNetworkConfiguration = nil
+
+	C.QNetworkConfiguration_new2(other.cPointer(), &outptr_QNetworkConfiguration)
+	ret := newQNetworkConfiguration(outptr_QNetworkConfiguration)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QNetworkConfiguration) OperatorAssign(other *QNetworkConfiguration) {
@@ -187,7 +202,7 @@ func (this *QNetworkConfiguration) SetConnectTimeout(timeout int) bool {
 
 // Delete this object from C++ memory.
 func (this *QNetworkConfiguration) Delete() {
-	C.QNetworkConfiguration_Delete(this.h)
+	C.QNetworkConfiguration_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

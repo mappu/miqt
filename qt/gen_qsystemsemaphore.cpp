@@ -6,19 +6,22 @@
 #include "gen_qsystemsemaphore.h"
 #include "_cgo_export.h"
 
-QSystemSemaphore* QSystemSemaphore_new(struct miqt_string key) {
+void QSystemSemaphore_new(struct miqt_string key, QSystemSemaphore** outptr_QSystemSemaphore) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
-	return new QSystemSemaphore(key_QString);
+	QSystemSemaphore* ret = new QSystemSemaphore(key_QString);
+	*outptr_QSystemSemaphore = ret;
 }
 
-QSystemSemaphore* QSystemSemaphore_new2(struct miqt_string key, int initialValue) {
+void QSystemSemaphore_new2(struct miqt_string key, int initialValue, QSystemSemaphore** outptr_QSystemSemaphore) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
-	return new QSystemSemaphore(key_QString, static_cast<int>(initialValue));
+	QSystemSemaphore* ret = new QSystemSemaphore(key_QString, static_cast<int>(initialValue));
+	*outptr_QSystemSemaphore = ret;
 }
 
-QSystemSemaphore* QSystemSemaphore_new3(struct miqt_string key, int initialValue, int mode) {
+void QSystemSemaphore_new3(struct miqt_string key, int initialValue, int mode, QSystemSemaphore** outptr_QSystemSemaphore) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
-	return new QSystemSemaphore(key_QString, static_cast<int>(initialValue), static_cast<QSystemSemaphore::AccessMode>(mode));
+	QSystemSemaphore* ret = new QSystemSemaphore(key_QString, static_cast<int>(initialValue), static_cast<QSystemSemaphore::AccessMode>(mode));
+	*outptr_QSystemSemaphore = ret;
 }
 
 void QSystemSemaphore_SetKey(QSystemSemaphore* self, struct miqt_string key) {
@@ -75,7 +78,11 @@ bool QSystemSemaphore_Release1(QSystemSemaphore* self, int n) {
 	return self->release(static_cast<int>(n));
 }
 
-void QSystemSemaphore_Delete(QSystemSemaphore* self) {
-	delete self;
+void QSystemSemaphore_Delete(QSystemSemaphore* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QSystemSemaphore*>( self );
+	} else {
+		delete self;
+	}
 }
 

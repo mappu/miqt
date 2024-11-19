@@ -18,24 +18,32 @@ extern "C" {
 class QAbstractItemDelegate;
 class QAbstractItemModel;
 class QByteArray;
+class QChildEvent;
 class QDataWidgetMapper;
+class QEvent;
+class QMetaMethod;
 class QMetaObject;
 class QModelIndex;
 class QObject;
+class QTimerEvent;
 class QWidget;
 #else
 typedef struct QAbstractItemDelegate QAbstractItemDelegate;
 typedef struct QAbstractItemModel QAbstractItemModel;
 typedef struct QByteArray QByteArray;
+typedef struct QChildEvent QChildEvent;
 typedef struct QDataWidgetMapper QDataWidgetMapper;
+typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QModelIndex QModelIndex;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QWidget QWidget;
 #endif
 
-QDataWidgetMapper* QDataWidgetMapper_new();
-QDataWidgetMapper* QDataWidgetMapper_new2(QObject* parent);
+void QDataWidgetMapper_new(QDataWidgetMapper** outptr_QDataWidgetMapper, QObject** outptr_QObject);
+void QDataWidgetMapper_new2(QObject* parent, QDataWidgetMapper** outptr_QDataWidgetMapper, QObject** outptr_QObject);
 QMetaObject* QDataWidgetMapper_MetaObject(const QDataWidgetMapper* self);
 void* QDataWidgetMapper_Metacast(QDataWidgetMapper* self, const char* param1);
 struct miqt_string QDataWidgetMapper_Tr(const char* s);
@@ -72,7 +80,23 @@ struct miqt_string QDataWidgetMapper_Tr2(const char* s, const char* c);
 struct miqt_string QDataWidgetMapper_Tr3(const char* s, const char* c, int n);
 struct miqt_string QDataWidgetMapper_TrUtf82(const char* s, const char* c);
 struct miqt_string QDataWidgetMapper_TrUtf83(const char* s, const char* c, int n);
-void QDataWidgetMapper_Delete(QDataWidgetMapper* self);
+void QDataWidgetMapper_override_virtual_SetCurrentIndex(void* self, intptr_t slot);
+void QDataWidgetMapper_virtualbase_SetCurrentIndex(void* self, int index);
+void QDataWidgetMapper_override_virtual_Event(void* self, intptr_t slot);
+bool QDataWidgetMapper_virtualbase_Event(void* self, QEvent* event);
+void QDataWidgetMapper_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QDataWidgetMapper_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QDataWidgetMapper_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QDataWidgetMapper_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QDataWidgetMapper_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QDataWidgetMapper_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QDataWidgetMapper_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QDataWidgetMapper_virtualbase_CustomEvent(void* self, QEvent* event);
+void QDataWidgetMapper_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QDataWidgetMapper_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QDataWidgetMapper_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QDataWidgetMapper_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QDataWidgetMapper_Delete(QDataWidgetMapper* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

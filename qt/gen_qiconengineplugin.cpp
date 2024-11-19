@@ -1,6 +1,7 @@
 #include <QIconEngine>
 #include <QIconEnginePlugin>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -38,8 +39,9 @@ struct miqt_string QIconEnginePlugin_TrUtf8(const char* s) {
 	return _ms;
 }
 
-QIconEngine* QIconEnginePlugin_Create(QIconEnginePlugin* self) {
-	return self->create();
+QIconEngine* QIconEnginePlugin_Create(QIconEnginePlugin* self, struct miqt_string filename) {
+	QString filename_QString = QString::fromUtf8(filename.data, filename.len);
+	return self->create(filename_QString);
 }
 
 struct miqt_string QIconEnginePlugin_Tr2(const char* s, const char* c) {
@@ -86,12 +88,11 @@ struct miqt_string QIconEnginePlugin_TrUtf83(const char* s, const char* c, int n
 	return _ms;
 }
 
-QIconEngine* QIconEnginePlugin_Create1(QIconEnginePlugin* self, struct miqt_string filename) {
-	QString filename_QString = QString::fromUtf8(filename.data, filename.len);
-	return self->create(filename_QString);
-}
-
-void QIconEnginePlugin_Delete(QIconEnginePlugin* self) {
-	delete self;
+void QIconEnginePlugin_Delete(QIconEnginePlugin* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QIconEnginePlugin*>( self );
+	} else {
+		delete self;
+	}
 }
 

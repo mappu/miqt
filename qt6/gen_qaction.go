@@ -42,7 +42,8 @@ const (
 )
 
 type QAction struct {
-	h *C.QAction
+	h          *C.QAction
+	isSubclass bool
 	*QObject
 }
 
@@ -60,21 +61,34 @@ func (this *QAction) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAction(h *C.QAction) *QAction {
+// newQAction constructs the type using only CGO pointers.
+func newQAction(h *C.QAction, h_QObject *C.QObject) *QAction {
 	if h == nil {
 		return nil
 	}
-	return &QAction{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QAction{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQAction(h unsafe.Pointer) *QAction {
-	return newQAction((*C.QAction)(h))
+// UnsafeNewQAction constructs the type using only unsafe pointers.
+func UnsafeNewQAction(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAction {
+	if h == nil {
+		return nil
+	}
+
+	return &QAction{h: (*C.QAction)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 // NewQAction constructs a new QAction object.
 func NewQAction() *QAction {
-	ret := C.QAction_new()
-	return newQAction(ret)
+	var outptr_QAction *C.QAction = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QAction_new(&outptr_QAction, &outptr_QObject)
+	ret := newQAction(outptr_QAction, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAction2 constructs a new QAction object.
@@ -83,8 +97,13 @@ func NewQAction2(text string) *QAction {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QAction_new2(text_ms)
-	return newQAction(ret)
+	var outptr_QAction *C.QAction = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QAction_new2(text_ms, &outptr_QAction, &outptr_QObject)
+	ret := newQAction(outptr_QAction, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAction3 constructs a new QAction object.
@@ -93,14 +112,24 @@ func NewQAction3(icon *QIcon, text string) *QAction {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QAction_new3(icon.cPointer(), text_ms)
-	return newQAction(ret)
+	var outptr_QAction *C.QAction = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QAction_new3(icon.cPointer(), text_ms, &outptr_QAction, &outptr_QObject)
+	ret := newQAction(outptr_QAction, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAction4 constructs a new QAction object.
 func NewQAction4(parent *QObject) *QAction {
-	ret := C.QAction_new4(parent.cPointer())
-	return newQAction(ret)
+	var outptr_QAction *C.QAction = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QAction_new4(parent.cPointer(), &outptr_QAction, &outptr_QObject)
+	ret := newQAction(outptr_QAction, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAction5 constructs a new QAction object.
@@ -109,8 +138,13 @@ func NewQAction5(text string, parent *QObject) *QAction {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QAction_new5(text_ms, parent.cPointer())
-	return newQAction(ret)
+	var outptr_QAction *C.QAction = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QAction_new5(text_ms, parent.cPointer(), &outptr_QAction, &outptr_QObject)
+	ret := newQAction(outptr_QAction, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAction6 constructs a new QAction object.
@@ -119,8 +153,13 @@ func NewQAction6(icon *QIcon, text string, parent *QObject) *QAction {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QAction_new6(icon.cPointer(), text_ms, parent.cPointer())
-	return newQAction(ret)
+	var outptr_QAction *C.QAction = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QAction_new6(icon.cPointer(), text_ms, parent.cPointer(), &outptr_QAction, &outptr_QObject)
+	ret := newQAction(outptr_QAction, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QAction) MetaObject() *QMetaObject {
@@ -157,7 +196,7 @@ func (this *QAction) SetActionGroup(group *QActionGroup) {
 }
 
 func (this *QAction) ActionGroup() *QActionGroup {
-	return UnsafeNewQActionGroup(unsafe.Pointer(C.QAction_ActionGroup(this.h)))
+	return UnsafeNewQActionGroup(unsafe.Pointer(C.QAction_ActionGroup(this.h)), nil)
 }
 
 func (this *QAction) SetIcon(icon *QIcon) {
@@ -596,9 +635,175 @@ func miqt_exec_callback_QAction_Triggered1(cb C.intptr_t, checked C.bool) {
 	gofunc(slotval1)
 }
 
+func (this *QAction) callVirtualBase_Event(param1 *QEvent) bool {
+
+	return (bool)(C.QAction_virtualbase_Event(unsafe.Pointer(this.h), param1.cPointer()))
+
+}
+func (this *QAction) OnEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
+	C.QAction_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAction_Event
+func miqt_exec_callback_QAction_Event(self *C.QAction, cb C.intptr_t, param1 *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent) bool, param1 *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+
+	virtualReturn := gofunc((&QAction{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QAction) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QAction_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QAction) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	C.QAction_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAction_EventFilter
+func miqt_exec_callback_QAction_EventFilter(self *C.QAction, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QAction{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QAction) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QAction_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QAction) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	C.QAction_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAction_TimerEvent
+func miqt_exec_callback_QAction_TimerEvent(self *C.QAction, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QAction{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QAction) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QAction_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QAction) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	C.QAction_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAction_ChildEvent
+func miqt_exec_callback_QAction_ChildEvent(self *C.QAction, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QAction{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QAction) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QAction_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QAction) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	C.QAction_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAction_CustomEvent
+func miqt_exec_callback_QAction_CustomEvent(self *C.QAction, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QAction{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QAction) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QAction_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QAction) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QAction_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAction_ConnectNotify
+func miqt_exec_callback_QAction_ConnectNotify(self *C.QAction, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QAction{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QAction) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QAction_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QAction) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QAction_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAction_DisconnectNotify
+func miqt_exec_callback_QAction_DisconnectNotify(self *C.QAction, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QAction{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QAction) Delete() {
-	C.QAction_Delete(this.h)
+	C.QAction_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

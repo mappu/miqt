@@ -15,7 +15,8 @@ import (
 )
 
 type QToolBox struct {
-	h *C.QToolBox
+	h          *C.QToolBox
+	isSubclass bool
 	*QFrame
 }
 
@@ -33,33 +34,65 @@ func (this *QToolBox) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQToolBox(h *C.QToolBox) *QToolBox {
+// newQToolBox constructs the type using only CGO pointers.
+func newQToolBox(h *C.QToolBox, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QToolBox {
 	if h == nil {
 		return nil
 	}
-	return &QToolBox{h: h, QFrame: UnsafeNewQFrame(unsafe.Pointer(h))}
+	return &QToolBox{h: h,
+		QFrame: newQFrame(h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
-func UnsafeNewQToolBox(h unsafe.Pointer) *QToolBox {
-	return newQToolBox((*C.QToolBox)(h))
+// UnsafeNewQToolBox constructs the type using only unsafe pointers.
+func UnsafeNewQToolBox(h unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QToolBox {
+	if h == nil {
+		return nil
+	}
+
+	return &QToolBox{h: (*C.QToolBox)(h),
+		QFrame: UnsafeNewQFrame(h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
 // NewQToolBox constructs a new QToolBox object.
 func NewQToolBox(parent *QWidget) *QToolBox {
-	ret := C.QToolBox_new(parent.cPointer())
-	return newQToolBox(ret)
+	var outptr_QToolBox *C.QToolBox = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QToolBox_new(parent.cPointer(), &outptr_QToolBox, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQToolBox(outptr_QToolBox, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQToolBox2 constructs a new QToolBox object.
 func NewQToolBox2() *QToolBox {
-	ret := C.QToolBox_new2()
-	return newQToolBox(ret)
+	var outptr_QToolBox *C.QToolBox = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QToolBox_new2(&outptr_QToolBox, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQToolBox(outptr_QToolBox, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQToolBox3 constructs a new QToolBox object.
 func NewQToolBox3(parent *QWidget, f WindowType) *QToolBox {
-	ret := C.QToolBox_new3(parent.cPointer(), (C.int)(f))
-	return newQToolBox(ret)
+	var outptr_QToolBox *C.QToolBox = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QToolBox_new3(parent.cPointer(), (C.int)(f), &outptr_QToolBox, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQToolBox(outptr_QToolBox, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QToolBox) MetaObject() *QMetaObject {
@@ -180,11 +213,11 @@ func (this *QToolBox) CurrentIndex() int {
 }
 
 func (this *QToolBox) CurrentWidget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QToolBox_CurrentWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QToolBox_CurrentWidget(this.h)), nil, nil)
 }
 
 func (this *QToolBox) Widget(index int) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QToolBox_Widget(this.h, (C.int)(index))))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QToolBox_Widget(this.h, (C.int)(index))), nil, nil)
 }
 
 func (this *QToolBox) IndexOf(widget *QWidget) int {
@@ -267,9 +300,174 @@ func QToolBox_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QToolBox) callVirtualBase_Event(e *QEvent) bool {
+
+	return (bool)(C.QToolBox_virtualbase_Event(unsafe.Pointer(this.h), e.cPointer()))
+
+}
+func (this *QToolBox) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	C.QToolBox_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QToolBox_Event
+func miqt_exec_callback_QToolBox_Event(self *C.QToolBox, cb C.intptr_t, e *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QEvent) bool, e *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+
+	virtualReturn := gofunc((&QToolBox{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QToolBox) callVirtualBase_ItemInserted(index int) {
+
+	C.QToolBox_virtualbase_ItemInserted(unsafe.Pointer(this.h), (C.int)(index))
+
+}
+func (this *QToolBox) OnItemInserted(slot func(super func(index int), index int)) {
+	C.QToolBox_override_virtual_ItemInserted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QToolBox_ItemInserted
+func miqt_exec_callback_QToolBox_ItemInserted(self *C.QToolBox, cb C.intptr_t, index C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index int), index int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(index)
+
+	gofunc((&QToolBox{h: self}).callVirtualBase_ItemInserted, slotval1)
+
+}
+
+func (this *QToolBox) callVirtualBase_ItemRemoved(index int) {
+
+	C.QToolBox_virtualbase_ItemRemoved(unsafe.Pointer(this.h), (C.int)(index))
+
+}
+func (this *QToolBox) OnItemRemoved(slot func(super func(index int), index int)) {
+	C.QToolBox_override_virtual_ItemRemoved(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QToolBox_ItemRemoved
+func miqt_exec_callback_QToolBox_ItemRemoved(self *C.QToolBox, cb C.intptr_t, index C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index int), index int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(index)
+
+	gofunc((&QToolBox{h: self}).callVirtualBase_ItemRemoved, slotval1)
+
+}
+
+func (this *QToolBox) callVirtualBase_ShowEvent(e *QShowEvent) {
+
+	C.QToolBox_virtualbase_ShowEvent(unsafe.Pointer(this.h), e.cPointer())
+
+}
+func (this *QToolBox) OnShowEvent(slot func(super func(e *QShowEvent), e *QShowEvent)) {
+	C.QToolBox_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QToolBox_ShowEvent
+func miqt_exec_callback_QToolBox_ShowEvent(self *C.QToolBox, cb C.intptr_t, e *C.QShowEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QShowEvent), e *QShowEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(e), nil)
+
+	gofunc((&QToolBox{h: self}).callVirtualBase_ShowEvent, slotval1)
+
+}
+
+func (this *QToolBox) callVirtualBase_ChangeEvent(param1 *QEvent) {
+
+	C.QToolBox_virtualbase_ChangeEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QToolBox) OnChangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
+	C.QToolBox_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QToolBox_ChangeEvent
+func miqt_exec_callback_QToolBox_ChangeEvent(self *C.QToolBox, cb C.intptr_t, param1 *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent), param1 *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+
+	gofunc((&QToolBox{h: self}).callVirtualBase_ChangeEvent, slotval1)
+
+}
+
+func (this *QToolBox) callVirtualBase_SizeHint() *QSize {
+
+	_ret := C.QToolBox_virtualbase_SizeHint(unsafe.Pointer(this.h))
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QToolBox) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	C.QToolBox_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QToolBox_SizeHint
+func miqt_exec_callback_QToolBox_SizeHint(self *C.QToolBox, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QToolBox{h: self}).callVirtualBase_SizeHint)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QToolBox) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
+
+	C.QToolBox_virtualbase_PaintEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QToolBox) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
+	C.QToolBox_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QToolBox_PaintEvent
+func miqt_exec_callback_QToolBox_PaintEvent(self *C.QToolBox, cb C.intptr_t, param1 *C.QPaintEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QPaintEvent), param1 *QPaintEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(param1), nil)
+
+	gofunc((&QToolBox{h: self}).callVirtualBase_PaintEvent, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QToolBox) Delete() {
-	C.QToolBox_Delete(this.h)
+	C.QToolBox_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

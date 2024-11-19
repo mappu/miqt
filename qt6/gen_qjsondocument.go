@@ -41,7 +41,8 @@ const (
 )
 
 type QJsonParseError struct {
-	h *C.QJsonParseError
+	h          *C.QJsonParseError
+	isSubclass bool
 }
 
 func (this *QJsonParseError) cPointer() *C.QJsonParseError {
@@ -58,6 +59,7 @@ func (this *QJsonParseError) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQJsonParseError constructs the type using only CGO pointers.
 func newQJsonParseError(h *C.QJsonParseError) *QJsonParseError {
 	if h == nil {
 		return nil
@@ -65,8 +67,13 @@ func newQJsonParseError(h *C.QJsonParseError) *QJsonParseError {
 	return &QJsonParseError{h: h}
 }
 
+// UnsafeNewQJsonParseError constructs the type using only unsafe pointers.
 func UnsafeNewQJsonParseError(h unsafe.Pointer) *QJsonParseError {
-	return newQJsonParseError((*C.QJsonParseError)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QJsonParseError{h: (*C.QJsonParseError)(h)}
 }
 
 func (this *QJsonParseError) ErrorString() string {
@@ -78,7 +85,7 @@ func (this *QJsonParseError) ErrorString() string {
 
 // Delete this object from C++ memory.
 func (this *QJsonParseError) Delete() {
-	C.QJsonParseError_Delete(this.h)
+	C.QJsonParseError_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -91,7 +98,8 @@ func (this *QJsonParseError) GoGC() {
 }
 
 type QJsonDocument struct {
-	h *C.QJsonDocument
+	h          *C.QJsonDocument
+	isSubclass bool
 }
 
 func (this *QJsonDocument) cPointer() *C.QJsonDocument {
@@ -108,6 +116,7 @@ func (this *QJsonDocument) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQJsonDocument constructs the type using only CGO pointers.
 func newQJsonDocument(h *C.QJsonDocument) *QJsonDocument {
 	if h == nil {
 		return nil
@@ -115,32 +124,53 @@ func newQJsonDocument(h *C.QJsonDocument) *QJsonDocument {
 	return &QJsonDocument{h: h}
 }
 
+// UnsafeNewQJsonDocument constructs the type using only unsafe pointers.
 func UnsafeNewQJsonDocument(h unsafe.Pointer) *QJsonDocument {
-	return newQJsonDocument((*C.QJsonDocument)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QJsonDocument{h: (*C.QJsonDocument)(h)}
 }
 
 // NewQJsonDocument constructs a new QJsonDocument object.
 func NewQJsonDocument() *QJsonDocument {
-	ret := C.QJsonDocument_new()
-	return newQJsonDocument(ret)
+	var outptr_QJsonDocument *C.QJsonDocument = nil
+
+	C.QJsonDocument_new(&outptr_QJsonDocument)
+	ret := newQJsonDocument(outptr_QJsonDocument)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQJsonDocument2 constructs a new QJsonDocument object.
 func NewQJsonDocument2(object *QJsonObject) *QJsonDocument {
-	ret := C.QJsonDocument_new2(object.cPointer())
-	return newQJsonDocument(ret)
+	var outptr_QJsonDocument *C.QJsonDocument = nil
+
+	C.QJsonDocument_new2(object.cPointer(), &outptr_QJsonDocument)
+	ret := newQJsonDocument(outptr_QJsonDocument)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQJsonDocument3 constructs a new QJsonDocument object.
 func NewQJsonDocument3(array *QJsonArray) *QJsonDocument {
-	ret := C.QJsonDocument_new3(array.cPointer())
-	return newQJsonDocument(ret)
+	var outptr_QJsonDocument *C.QJsonDocument = nil
+
+	C.QJsonDocument_new3(array.cPointer(), &outptr_QJsonDocument)
+	ret := newQJsonDocument(outptr_QJsonDocument)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQJsonDocument4 constructs a new QJsonDocument object.
 func NewQJsonDocument4(other *QJsonDocument) *QJsonDocument {
-	ret := C.QJsonDocument_new4(other.cPointer())
-	return newQJsonDocument(ret)
+	var outptr_QJsonDocument *C.QJsonDocument = nil
+
+	C.QJsonDocument_new4(other.cPointer(), &outptr_QJsonDocument)
+	ret := newQJsonDocument(outptr_QJsonDocument)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QJsonDocument) OperatorAssign(other *QJsonDocument) {
@@ -265,7 +295,7 @@ func (this *QJsonDocument) ToJson1(format QJsonDocument__JsonFormat) []byte {
 
 // Delete this object from C++ memory.
 func (this *QJsonDocument) Delete() {
-	C.QJsonDocument_Delete(this.h)
+	C.QJsonDocument_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

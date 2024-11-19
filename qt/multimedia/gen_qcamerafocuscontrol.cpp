@@ -1,7 +1,9 @@
 #include <QCameraFocusControl>
 #include <QCameraFocusZone>
 #include <QList>
+#include <QMediaControl>
 #include <QMetaObject>
+#include <QObject>
 #include <QPointF>
 #include <QString>
 #include <QByteArray>
@@ -178,7 +180,11 @@ struct miqt_string QCameraFocusControl_TrUtf83(const char* s, const char* c, int
 	return _ms;
 }
 
-void QCameraFocusControl_Delete(QCameraFocusControl* self) {
-	delete self;
+void QCameraFocusControl_Delete(QCameraFocusControl* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QCameraFocusControl*>( self );
+	} else {
+		delete self;
+	}
 }
 

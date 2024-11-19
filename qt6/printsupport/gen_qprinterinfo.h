@@ -24,9 +24,9 @@ typedef struct QPrinter QPrinter;
 typedef struct QPrinterInfo QPrinterInfo;
 #endif
 
-QPrinterInfo* QPrinterInfo_new();
-QPrinterInfo* QPrinterInfo_new2(QPrinterInfo* other);
-QPrinterInfo* QPrinterInfo_new3(QPrinter* printer);
+void QPrinterInfo_new(QPrinterInfo** outptr_QPrinterInfo);
+void QPrinterInfo_new2(QPrinterInfo* other, QPrinterInfo** outptr_QPrinterInfo);
+void QPrinterInfo_new3(QPrinter* printer, QPrinterInfo** outptr_QPrinterInfo);
 void QPrinterInfo_OperatorAssign(QPrinterInfo* self, QPrinterInfo* other);
 struct miqt_string QPrinterInfo_PrinterName(const QPrinterInfo* self);
 struct miqt_string QPrinterInfo_Description(const QPrinterInfo* self);
@@ -51,7 +51,7 @@ struct miqt_array /* of QPrinterInfo* */  QPrinterInfo_AvailablePrinters();
 struct miqt_string QPrinterInfo_DefaultPrinterName();
 QPrinterInfo* QPrinterInfo_DefaultPrinter();
 QPrinterInfo* QPrinterInfo_PrinterInfo(struct miqt_string printerName);
-void QPrinterInfo_Delete(QPrinterInfo* self);
+void QPrinterInfo_Delete(QPrinterInfo* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -10,12 +10,14 @@
 #include "gen_qcameradevice.h"
 #include "_cgo_export.h"
 
-QCameraFormat* QCameraFormat_new() {
-	return new QCameraFormat();
+void QCameraFormat_new(QCameraFormat** outptr_QCameraFormat) {
+	QCameraFormat* ret = new QCameraFormat();
+	*outptr_QCameraFormat = ret;
 }
 
-QCameraFormat* QCameraFormat_new2(QCameraFormat* other) {
-	return new QCameraFormat(*other);
+void QCameraFormat_new2(QCameraFormat* other, QCameraFormat** outptr_QCameraFormat) {
+	QCameraFormat* ret = new QCameraFormat(*other);
+	*outptr_QCameraFormat = ret;
 }
 
 void QCameraFormat_OperatorAssign(QCameraFormat* self, QCameraFormat* other) {
@@ -51,16 +53,22 @@ bool QCameraFormat_OperatorNotEqual(const QCameraFormat* self, QCameraFormat* ot
 	return self->operator!=(*other);
 }
 
-void QCameraFormat_Delete(QCameraFormat* self) {
-	delete self;
+void QCameraFormat_Delete(QCameraFormat* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QCameraFormat*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QCameraDevice* QCameraDevice_new() {
-	return new QCameraDevice();
+void QCameraDevice_new(QCameraDevice** outptr_QCameraDevice) {
+	QCameraDevice* ret = new QCameraDevice();
+	*outptr_QCameraDevice = ret;
 }
 
-QCameraDevice* QCameraDevice_new2(QCameraDevice* other) {
-	return new QCameraDevice(*other);
+void QCameraDevice_new2(QCameraDevice* other, QCameraDevice** outptr_QCameraDevice) {
+	QCameraDevice* ret = new QCameraDevice(*other);
+	*outptr_QCameraDevice = ret;
 }
 
 void QCameraDevice_OperatorAssign(QCameraDevice* self, QCameraDevice* other) {
@@ -134,7 +142,11 @@ struct miqt_array /* of QCameraFormat* */  QCameraDevice_VideoFormats(const QCam
 	return _out;
 }
 
-void QCameraDevice_Delete(QCameraDevice* self) {
-	delete self;
+void QCameraDevice_Delete(QCameraDevice* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QCameraDevice*>( self );
+	} else {
+		delete self;
+	}
 }
 

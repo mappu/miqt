@@ -5,6 +5,7 @@
 #include <QMap>
 #include <QMetaObject>
 #include <QNetworkCacheMetaData>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -14,12 +15,14 @@
 #include "gen_qabstractnetworkcache.h"
 #include "_cgo_export.h"
 
-QNetworkCacheMetaData* QNetworkCacheMetaData_new() {
-	return new QNetworkCacheMetaData();
+void QNetworkCacheMetaData_new(QNetworkCacheMetaData** outptr_QNetworkCacheMetaData) {
+	QNetworkCacheMetaData* ret = new QNetworkCacheMetaData();
+	*outptr_QNetworkCacheMetaData = ret;
 }
 
-QNetworkCacheMetaData* QNetworkCacheMetaData_new2(QNetworkCacheMetaData* other) {
-	return new QNetworkCacheMetaData(*other);
+void QNetworkCacheMetaData_new2(QNetworkCacheMetaData* other, QNetworkCacheMetaData** outptr_QNetworkCacheMetaData) {
+	QNetworkCacheMetaData* ret = new QNetworkCacheMetaData(*other);
+	*outptr_QNetworkCacheMetaData = ret;
 }
 
 void QNetworkCacheMetaData_OperatorAssign(QNetworkCacheMetaData* self, QNetworkCacheMetaData* other) {
@@ -154,8 +157,12 @@ void QNetworkCacheMetaData_SetAttributes(QNetworkCacheMetaData* self, struct miq
 	self->setAttributes(attributes_QMap);
 }
 
-void QNetworkCacheMetaData_Delete(QNetworkCacheMetaData* self) {
-	delete self;
+void QNetworkCacheMetaData_Delete(QNetworkCacheMetaData* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QNetworkCacheMetaData*>( self );
+	} else {
+		delete self;
+	}
 }
 
 QMetaObject* QAbstractNetworkCache_MetaObject(const QAbstractNetworkCache* self) {
@@ -232,7 +239,11 @@ struct miqt_string QAbstractNetworkCache_Tr3(const char* s, const char* c, int n
 	return _ms;
 }
 
-void QAbstractNetworkCache_Delete(QAbstractNetworkCache* self) {
-	delete self;
+void QAbstractNetworkCache_Delete(QAbstractNetworkCache* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAbstractNetworkCache*>( self );
+	} else {
+		delete self;
+	}
 }
 

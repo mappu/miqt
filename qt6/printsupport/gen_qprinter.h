@@ -15,12 +15,24 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QMarginsF;
+class QPageLayout;
+class QPageRanges;
+class QPageSize;
+class QPagedPaintDevice;
+class QPaintDevice;
 class QPaintEngine;
 class QPrintEngine;
 class QPrinter;
 class QPrinterInfo;
 class QRectF;
 #else
+typedef struct QMarginsF QMarginsF;
+typedef struct QPageLayout QPageLayout;
+typedef struct QPageRanges QPageRanges;
+typedef struct QPageSize QPageSize;
+typedef struct QPagedPaintDevice QPagedPaintDevice;
+typedef struct QPaintDevice QPaintDevice;
 typedef struct QPaintEngine QPaintEngine;
 typedef struct QPrintEngine QPrintEngine;
 typedef struct QPrinter QPrinter;
@@ -28,10 +40,10 @@ typedef struct QPrinterInfo QPrinterInfo;
 typedef struct QRectF QRectF;
 #endif
 
-QPrinter* QPrinter_new();
-QPrinter* QPrinter_new2(QPrinterInfo* printer);
-QPrinter* QPrinter_new3(int mode);
-QPrinter* QPrinter_new4(QPrinterInfo* printer, int mode);
+void QPrinter_new(QPrinter** outptr_QPrinter, QPagedPaintDevice** outptr_QPagedPaintDevice, QPaintDevice** outptr_QPaintDevice);
+void QPrinter_new2(QPrinterInfo* printer, QPrinter** outptr_QPrinter, QPagedPaintDevice** outptr_QPagedPaintDevice, QPaintDevice** outptr_QPaintDevice);
+void QPrinter_new3(int mode, QPrinter** outptr_QPrinter, QPagedPaintDevice** outptr_QPagedPaintDevice, QPaintDevice** outptr_QPaintDevice);
+void QPrinter_new4(QPrinterInfo* printer, int mode, QPrinter** outptr_QPrinter, QPagedPaintDevice** outptr_QPagedPaintDevice, QPaintDevice** outptr_QPaintDevice);
 int QPrinter_DevType(const QPrinter* self);
 void QPrinter_SetOutputFormat(QPrinter* self, int format);
 int QPrinter_OutputFormat(const QPrinter* self);
@@ -82,7 +94,26 @@ int QPrinter_FromPage(const QPrinter* self);
 int QPrinter_ToPage(const QPrinter* self);
 void QPrinter_SetPrintRange(QPrinter* self, int rangeVal);
 int QPrinter_PrintRange(const QPrinter* self);
-void QPrinter_Delete(QPrinter* self);
+int QPrinter_Metric(const QPrinter* self, int param1);
+void QPrinter_override_virtual_DevType(void* self, intptr_t slot);
+int QPrinter_virtualbase_DevType(const void* self);
+void QPrinter_override_virtual_NewPage(void* self, intptr_t slot);
+bool QPrinter_virtualbase_NewPage(void* self);
+void QPrinter_override_virtual_PaintEngine(void* self, intptr_t slot);
+QPaintEngine* QPrinter_virtualbase_PaintEngine(const void* self);
+void QPrinter_override_virtual_Metric(void* self, intptr_t slot);
+int QPrinter_virtualbase_Metric(const void* self, int param1);
+void QPrinter_override_virtual_SetPageLayout(void* self, intptr_t slot);
+bool QPrinter_virtualbase_SetPageLayout(void* self, QPageLayout* pageLayout);
+void QPrinter_override_virtual_SetPageSize(void* self, intptr_t slot);
+bool QPrinter_virtualbase_SetPageSize(void* self, QPageSize* pageSize);
+void QPrinter_override_virtual_SetPageOrientation(void* self, intptr_t slot);
+bool QPrinter_virtualbase_SetPageOrientation(void* self, int orientation);
+void QPrinter_override_virtual_SetPageMargins(void* self, intptr_t slot);
+bool QPrinter_virtualbase_SetPageMargins(void* self, QMarginsF* margins, int units);
+void QPrinter_override_virtual_SetPageRanges(void* self, intptr_t slot);
+void QPrinter_virtualbase_SetPageRanges(void* self, QPageRanges* ranges);
+void QPrinter_Delete(QPrinter* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

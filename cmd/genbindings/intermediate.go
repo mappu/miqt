@@ -238,6 +238,9 @@ type CppMethod struct {
 	IsStatic           bool
 	IsSignal           bool
 	IsConst            bool
+	IsVirtual          bool
+	IsPureVirtual      bool           // Virtual method was declared with = 0 i.e. there is no base method here to call
+	IsProtected        bool           // If true, we can't call this method but we may still be able to overload it
 	HiddenParams       []CppParameter // Populated if there is an overload with more parameters
 
 	// Special quirks
@@ -369,17 +372,141 @@ func (e CppEnum) ShortEnumName() string {
 }
 
 type CppClass struct {
-	ClassName string
-	Abstract  bool
-	Ctors     []CppMethod // only use the parameters
-	Inherits  []string    // other class names
-	Methods   []CppMethod
-	Props     []CppProperty
-	CanDelete bool
+	ClassName      string
+	Abstract       bool
+	Ctors          []CppMethod // only use the parameters
+	DirectInherits []string    // other class names. This only includes direct inheritance - use AllInherits() to find recursive inheritance
+	Methods        []CppMethod
+	Props          []CppProperty
+	CanDelete      bool
 
 	ChildTypedefs  []CppTypedef
 	ChildClassdefs []CppClass
 	ChildEnums     []CppEnum
+	PrivateMethods []string
+}
+
+// Virtual checks if the class has any virtual methods. This requires global
+// state knowledge as virtual methods might have been inherited.
+// C++ constructors cannot be virtual.
+func (c *CppClass) VirtualMethods() []CppMethod {
+	var ret []CppMethod
+	var retNames = make(map[string]struct{}, 0) // if name is present, a child class found it first
+	var block = slice_to_set(c.PrivateMethods)
+
+	if len(c.Ctors) == 0 {
+		// This class can't be constructed
+		// Therefore there's no way to get a derived version of it for subclassing
+		// (Unless we add custom constructors, but that seems like there would be
+		// no in-Qt use for such a thing)
+		// Pretend that this class is non-virtual
+		return nil
+	}
+
+	// FIXME Allowing the subclassing of QAccessibleWidget compiles fine,
+	// but, always gives a linker error:
+	//
+	//   /usr/lib/go-1.19/pkg/tool/linux_amd64/link: running g++ failed: exit status 1
+	//   /usr/bin/ld: /tmp/go-link-1745036494/000362.o: in function `MiqtVirtualQAccessibleWidget::MiqtVirtualQAccessibleWidget(QWidget*)':
+	//   undefined reference to `vtable for MiqtVirtualQAccessibleWidget'
+	//
+	// An undefined vtable usually indicates that the virtual class is missing
+	// definitions for some virtual methods, but AFAICT we have complete coverage.
+	if c.ClassName == "QAccessibleWidget" {
+		return nil
+	}
+
+	for _, m := range c.Methods {
+		if !m.IsVirtual {
+			continue
+		}
+		if m.IsSignal {
+			continue
+		}
+		if !AllowVirtual(m) {
+			continue
+		}
+
+		ret = append(ret, m)
+		retNames[m.CppCallTarget()] = struct{}{}
+	}
+
+	// Only allow virtual overrides for direct inherits, not all inherits -
+	// Go will automatically allow virtual overrides for the base type because
+	// the parent struct is nested
+	for _, inh := range c.DirectInherits { // AllInherits() {
+		cinfo, ok := KnownClassnames[inh]
+		if !ok {
+			panic("Class " + c.ClassName + " inherits from unknown class " + inh)
+		}
+
+		for _, m := range cinfo.Class.Methods {
+			if !m.IsVirtual {
+				continue
+			}
+			if m.IsSignal {
+				continue
+			}
+			if !AllowVirtual(m) {
+				continue
+			}
+			if _, ok := retNames[m.CppCallTarget()]; ok {
+				continue // Already found in a child class
+			}
+
+			// It's possible that a child class marked a parent method as private
+			// (e.g. Qt 5 QAbstractTableModel marks parent() as private)
+			// But then we find the protected version further down
+			// Use a blocklist to prevent exposing any deeper methods in the call chain
+			if _, ok := block[m.MethodName]; ok {
+				continue // Marked as private in a child class
+			}
+
+			// The class info we loaded has not had all typedefs applied to it
+			// m is copied by value. Mutate it
+			applyTypedefs_Method(&m)
+			// Same with astTransformBlocklist
+			if !blocklist_MethodAllowed(&m) {
+				continue
+			}
+
+			ret = append(ret, m)
+			retNames[m.CppCallTarget()] = struct{}{}
+		}
+
+		// Append this parent's private-virtuals to blocklist so that we
+		// do not consider them for grandparent classes
+		for _, privMethod := range c.PrivateMethods {
+			block[privMethod] = struct{}{}
+		}
+	}
+
+	return ret
+}
+
+// AllInherits recursively finds and lists all the parent classes of this class.
+func (c *CppClass) AllInherits() []string {
+	var ret []string
+
+	// FIXME prevent duplicates arising from diamond inheritance
+
+	for _, baseClass := range c.DirectInherits {
+
+		ret = append(ret, baseClass)
+
+		// And everything that class inherits - unless - we've seen it before
+		baseClassInfo, ok := KnownClassnames[baseClass]
+		if !ok {
+			panic("Class " + c.ClassName + " inherits from unknown class " + baseClass)
+		}
+
+		recurseInfo := baseClassInfo.Class.AllInherits()
+		for _, childClass := range recurseInfo {
+			ret = append(ret, childClass)
+		}
+	}
+
+	return ret
 }
 
 type CppTypedef struct {

@@ -38,9 +38,9 @@ typedef struct QRectF QRectF;
 typedef struct QRegion QRegion;
 #endif
 
-QPainterPath* QPainterPath_new();
-QPainterPath* QPainterPath_new2(QPointF* startPoint);
-QPainterPath* QPainterPath_new3(QPainterPath* other);
+void QPainterPath_new(QPainterPath** outptr_QPainterPath);
+void QPainterPath_new2(QPointF* startPoint, QPainterPath** outptr_QPainterPath);
+void QPainterPath_new3(QPainterPath* other, QPainterPath** outptr_QPainterPath);
 void QPainterPath_OperatorAssign(QPainterPath* self, QPainterPath* other);
 void QPainterPath_Swap(QPainterPath* self, QPainterPath* other);
 void QPainterPath_Clear(QPainterPath* self);
@@ -111,10 +111,10 @@ QPainterPath* QPainterPath_OperatorPlusAssign(QPainterPath* self, QPainterPath* 
 QPainterPath* QPainterPath_OperatorMinusAssign(QPainterPath* self, QPainterPath* other);
 void QPainterPath_AddRoundedRect4(QPainterPath* self, QRectF* rect, double xRadius, double yRadius, int mode);
 void QPainterPath_AddRoundedRect7(QPainterPath* self, double x, double y, double w, double h, double xRadius, double yRadius, int mode);
-void QPainterPath_Delete(QPainterPath* self);
+void QPainterPath_Delete(QPainterPath* self, bool isSubclass);
 
-QPainterPathStroker* QPainterPathStroker_new();
-QPainterPathStroker* QPainterPathStroker_new2(QPen* pen);
+void QPainterPathStroker_new(QPainterPathStroker** outptr_QPainterPathStroker);
+void QPainterPathStroker_new2(QPen* pen, QPainterPathStroker** outptr_QPainterPathStroker);
 void QPainterPathStroker_SetWidth(QPainterPathStroker* self, double width);
 double QPainterPathStroker_Width(const QPainterPathStroker* self);
 void QPainterPathStroker_SetCapStyle(QPainterPathStroker* self, int style);
@@ -131,14 +131,14 @@ struct miqt_array /* of double */  QPainterPathStroker_DashPattern(const QPainte
 void QPainterPathStroker_SetDashOffset(QPainterPathStroker* self, double offset);
 double QPainterPathStroker_DashOffset(const QPainterPathStroker* self);
 QPainterPath* QPainterPathStroker_CreateStroke(const QPainterPathStroker* self, QPainterPath* path);
-void QPainterPathStroker_Delete(QPainterPathStroker* self);
+void QPainterPathStroker_Delete(QPainterPathStroker* self, bool isSubclass);
 
 bool QPainterPath__Element_IsMoveTo(const QPainterPath__Element* self);
 bool QPainterPath__Element_IsLineTo(const QPainterPath__Element* self);
 bool QPainterPath__Element_IsCurveTo(const QPainterPath__Element* self);
 bool QPainterPath__Element_OperatorEqual(const QPainterPath__Element* self, QPainterPath__Element* e);
 bool QPainterPath__Element_OperatorNotEqual(const QPainterPath__Element* self, QPainterPath__Element* e);
-void QPainterPath__Element_Delete(QPainterPath__Element* self);
+void QPainterPath__Element_Delete(QPainterPath__Element* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

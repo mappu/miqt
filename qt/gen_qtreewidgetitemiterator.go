@@ -39,7 +39,8 @@ const (
 )
 
 type QTreeWidgetItemIterator struct {
-	h *C.QTreeWidgetItemIterator
+	h          *C.QTreeWidgetItemIterator
+	isSubclass bool
 }
 
 func (this *QTreeWidgetItemIterator) cPointer() *C.QTreeWidgetItemIterator {
@@ -56,6 +57,7 @@ func (this *QTreeWidgetItemIterator) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQTreeWidgetItemIterator constructs the type using only CGO pointers.
 func newQTreeWidgetItemIterator(h *C.QTreeWidgetItemIterator) *QTreeWidgetItemIterator {
 	if h == nil {
 		return nil
@@ -63,38 +65,63 @@ func newQTreeWidgetItemIterator(h *C.QTreeWidgetItemIterator) *QTreeWidgetItemIt
 	return &QTreeWidgetItemIterator{h: h}
 }
 
+// UnsafeNewQTreeWidgetItemIterator constructs the type using only unsafe pointers.
 func UnsafeNewQTreeWidgetItemIterator(h unsafe.Pointer) *QTreeWidgetItemIterator {
-	return newQTreeWidgetItemIterator((*C.QTreeWidgetItemIterator)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QTreeWidgetItemIterator{h: (*C.QTreeWidgetItemIterator)(h)}
 }
 
 // NewQTreeWidgetItemIterator constructs a new QTreeWidgetItemIterator object.
 func NewQTreeWidgetItemIterator(it *QTreeWidgetItemIterator) *QTreeWidgetItemIterator {
-	ret := C.QTreeWidgetItemIterator_new(it.cPointer())
-	return newQTreeWidgetItemIterator(ret)
+	var outptr_QTreeWidgetItemIterator *C.QTreeWidgetItemIterator = nil
+
+	C.QTreeWidgetItemIterator_new(it.cPointer(), &outptr_QTreeWidgetItemIterator)
+	ret := newQTreeWidgetItemIterator(outptr_QTreeWidgetItemIterator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTreeWidgetItemIterator2 constructs a new QTreeWidgetItemIterator object.
 func NewQTreeWidgetItemIterator2(widget *QTreeWidget) *QTreeWidgetItemIterator {
-	ret := C.QTreeWidgetItemIterator_new2(widget.cPointer())
-	return newQTreeWidgetItemIterator(ret)
+	var outptr_QTreeWidgetItemIterator *C.QTreeWidgetItemIterator = nil
+
+	C.QTreeWidgetItemIterator_new2(widget.cPointer(), &outptr_QTreeWidgetItemIterator)
+	ret := newQTreeWidgetItemIterator(outptr_QTreeWidgetItemIterator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTreeWidgetItemIterator3 constructs a new QTreeWidgetItemIterator object.
 func NewQTreeWidgetItemIterator3(item *QTreeWidgetItem) *QTreeWidgetItemIterator {
-	ret := C.QTreeWidgetItemIterator_new3(item.cPointer())
-	return newQTreeWidgetItemIterator(ret)
+	var outptr_QTreeWidgetItemIterator *C.QTreeWidgetItemIterator = nil
+
+	C.QTreeWidgetItemIterator_new3(item.cPointer(), &outptr_QTreeWidgetItemIterator)
+	ret := newQTreeWidgetItemIterator(outptr_QTreeWidgetItemIterator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTreeWidgetItemIterator4 constructs a new QTreeWidgetItemIterator object.
 func NewQTreeWidgetItemIterator4(widget *QTreeWidget, flags QTreeWidgetItemIterator__IteratorFlag) *QTreeWidgetItemIterator {
-	ret := C.QTreeWidgetItemIterator_new4(widget.cPointer(), (C.int)(flags))
-	return newQTreeWidgetItemIterator(ret)
+	var outptr_QTreeWidgetItemIterator *C.QTreeWidgetItemIterator = nil
+
+	C.QTreeWidgetItemIterator_new4(widget.cPointer(), (C.int)(flags), &outptr_QTreeWidgetItemIterator)
+	ret := newQTreeWidgetItemIterator(outptr_QTreeWidgetItemIterator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTreeWidgetItemIterator5 constructs a new QTreeWidgetItemIterator object.
 func NewQTreeWidgetItemIterator5(item *QTreeWidgetItem, flags QTreeWidgetItemIterator__IteratorFlag) *QTreeWidgetItemIterator {
-	ret := C.QTreeWidgetItemIterator_new5(item.cPointer(), (C.int)(flags))
-	return newQTreeWidgetItemIterator(ret)
+	var outptr_QTreeWidgetItemIterator *C.QTreeWidgetItemIterator = nil
+
+	C.QTreeWidgetItemIterator_new5(item.cPointer(), (C.int)(flags), &outptr_QTreeWidgetItemIterator)
+	ret := newQTreeWidgetItemIterator(outptr_QTreeWidgetItemIterator)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QTreeWidgetItemIterator) OperatorAssign(it *QTreeWidgetItemIterator) {
@@ -137,7 +164,7 @@ func (this *QTreeWidgetItemIterator) OperatorMultiply() *QTreeWidgetItem {
 
 // Delete this object from C++ memory.
 func (this *QTreeWidgetItemIterator) Delete() {
-	C.QTreeWidgetItemIterator_Delete(this.h)
+	C.QTreeWidgetItemIterator_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

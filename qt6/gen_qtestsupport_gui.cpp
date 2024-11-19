@@ -29,8 +29,8 @@ QTest__QTouchEventSequence* QTest__QTouchEventSequence_Stationary(QTest__QTouchE
 	return &_ret;
 }
 
-bool QTest__QTouchEventSequence_Commit(QTest__QTouchEventSequence* self) {
-	return self->commit();
+bool QTest__QTouchEventSequence_Commit(QTest__QTouchEventSequence* self, bool processEvents) {
+	return self->commit(processEvents);
 }
 
 QTest__QTouchEventSequence* QTest__QTouchEventSequence_Press3(QTest__QTouchEventSequence* self, int touchId, QPoint* pt, QWindow* window) {
@@ -51,11 +51,11 @@ QTest__QTouchEventSequence* QTest__QTouchEventSequence_Release3(QTest__QTouchEve
 	return &_ret;
 }
 
-bool QTest__QTouchEventSequence_Commit1(QTest__QTouchEventSequence* self, bool processEvents) {
-	return self->commit(processEvents);
-}
-
-void QTest__QTouchEventSequence_Delete(QTest__QTouchEventSequence* self) {
-	delete self;
+void QTest__QTouchEventSequence_Delete(QTest__QTouchEventSequence* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QTest::QTouchEventSequence*>( self );
+	} else {
+		delete self;
+	}
 }
 

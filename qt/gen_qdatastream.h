@@ -18,21 +18,15 @@ extern "C" {
 class QByteArray;
 class QDataStream;
 class QIODevice;
-#if defined(WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__StreamStateSaver)
-typedef QtPrivate::StreamStateSaver QtPrivate__StreamStateSaver;
-#else
-class QtPrivate__StreamStateSaver;
-#endif
 #else
 typedef struct QByteArray QByteArray;
 typedef struct QDataStream QDataStream;
 typedef struct QIODevice QIODevice;
-typedef struct QtPrivate__StreamStateSaver QtPrivate__StreamStateSaver;
 #endif
 
-QDataStream* QDataStream_new();
-QDataStream* QDataStream_new2(QIODevice* param1);
-QDataStream* QDataStream_new3(struct miqt_string param1);
+void QDataStream_new(QDataStream** outptr_QDataStream);
+void QDataStream_new2(QIODevice* param1, QDataStream** outptr_QDataStream);
+void QDataStream_new3(struct miqt_string param1, QDataStream** outptr_QDataStream);
 QIODevice* QDataStream_Device(const QDataStream* self);
 void QDataStream_SetDevice(QDataStream* self, QIODevice* device);
 void QDataStream_UnsetDevice(QDataStream* self);
@@ -79,10 +73,7 @@ void QDataStream_StartTransaction(QDataStream* self);
 bool QDataStream_CommitTransaction(QDataStream* self);
 void QDataStream_RollbackTransaction(QDataStream* self);
 void QDataStream_AbortTransaction(QDataStream* self);
-void QDataStream_Delete(QDataStream* self);
-
-QtPrivate__StreamStateSaver* QtPrivate__StreamStateSaver_new(QDataStream* s);
-void QtPrivate__StreamStateSaver_Delete(QtPrivate__StreamStateSaver* self);
+void QDataStream_Delete(QDataStream* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

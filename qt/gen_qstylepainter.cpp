@@ -1,4 +1,5 @@
 #include <QPaintDevice>
+#include <QPainter>
 #include <QPalette>
 #include <QPixmap>
 #include <QRect>
@@ -14,16 +15,22 @@
 #include "gen_qstylepainter.h"
 #include "_cgo_export.h"
 
-QStylePainter* QStylePainter_new(QWidget* w) {
-	return new QStylePainter(w);
+void QStylePainter_new(QWidget* w, QStylePainter** outptr_QStylePainter, QPainter** outptr_QPainter) {
+	QStylePainter* ret = new QStylePainter(w);
+	*outptr_QStylePainter = ret;
+	*outptr_QPainter = static_cast<QPainter*>(ret);
 }
 
-QStylePainter* QStylePainter_new2() {
-	return new QStylePainter();
+void QStylePainter_new2(QStylePainter** outptr_QStylePainter, QPainter** outptr_QPainter) {
+	QStylePainter* ret = new QStylePainter();
+	*outptr_QStylePainter = ret;
+	*outptr_QPainter = static_cast<QPainter*>(ret);
 }
 
-QStylePainter* QStylePainter_new3(QPaintDevice* pd, QWidget* w) {
-	return new QStylePainter(pd, w);
+void QStylePainter_new3(QPaintDevice* pd, QWidget* w, QStylePainter** outptr_QStylePainter, QPainter** outptr_QPainter) {
+	QStylePainter* ret = new QStylePainter(pd, w);
+	*outptr_QStylePainter = ret;
+	*outptr_QPainter = static_cast<QPainter*>(ret);
 }
 
 bool QStylePainter_Begin(QStylePainter* self, QWidget* w) {
@@ -64,7 +71,11 @@ void QStylePainter_DrawItemText6(QStylePainter* self, QRect* r, int flags, QPale
 	self->drawItemText(*r, static_cast<int>(flags), *pal, enabled, text_QString, static_cast<QPalette::ColorRole>(textRole));
 }
 
-void QStylePainter_Delete(QStylePainter* self) {
-	delete self;
+void QStylePainter_Delete(QStylePainter* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QStylePainter*>( self );
+	} else {
+		delete self;
+	}
 }
 

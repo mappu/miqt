@@ -13,7 +13,8 @@ import (
 )
 
 type QVLABaseBase struct {
-	h *C.QVLABaseBase
+	h          *C.QVLABaseBase
+	isSubclass bool
 }
 
 func (this *QVLABaseBase) cPointer() *C.QVLABaseBase {
@@ -30,6 +31,7 @@ func (this *QVLABaseBase) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQVLABaseBase constructs the type using only CGO pointers.
 func newQVLABaseBase(h *C.QVLABaseBase) *QVLABaseBase {
 	if h == nil {
 		return nil
@@ -37,8 +39,13 @@ func newQVLABaseBase(h *C.QVLABaseBase) *QVLABaseBase {
 	return &QVLABaseBase{h: h}
 }
 
+// UnsafeNewQVLABaseBase constructs the type using only unsafe pointers.
 func UnsafeNewQVLABaseBase(h unsafe.Pointer) *QVLABaseBase {
-	return newQVLABaseBase((*C.QVLABaseBase)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QVLABaseBase{h: (*C.QVLABaseBase)(h)}
 }
 
 func (this *QVLABaseBase) Capacity() int64 {

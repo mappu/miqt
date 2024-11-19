@@ -38,7 +38,8 @@ const (
 )
 
 type QTimeZone struct {
-	h *C.QTimeZone
+	h          *C.QTimeZone
+	isSubclass bool
 }
 
 func (this *QTimeZone) cPointer() *C.QTimeZone {
@@ -55,6 +56,7 @@ func (this *QTimeZone) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQTimeZone constructs the type using only CGO pointers.
 func newQTimeZone(h *C.QTimeZone) *QTimeZone {
 	if h == nil {
 		return nil
@@ -62,14 +64,23 @@ func newQTimeZone(h *C.QTimeZone) *QTimeZone {
 	return &QTimeZone{h: h}
 }
 
+// UnsafeNewQTimeZone constructs the type using only unsafe pointers.
 func UnsafeNewQTimeZone(h unsafe.Pointer) *QTimeZone {
-	return newQTimeZone((*C.QTimeZone)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QTimeZone{h: (*C.QTimeZone)(h)}
 }
 
 // NewQTimeZone constructs a new QTimeZone object.
 func NewQTimeZone() *QTimeZone {
-	ret := C.QTimeZone_new()
-	return newQTimeZone(ret)
+	var outptr_QTimeZone *C.QTimeZone = nil
+
+	C.QTimeZone_new(&outptr_QTimeZone)
+	ret := newQTimeZone(outptr_QTimeZone)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTimeZone2 constructs a new QTimeZone object.
@@ -77,14 +88,22 @@ func NewQTimeZone2(ianaId []byte) *QTimeZone {
 	ianaId_alias := C.struct_miqt_string{}
 	ianaId_alias.data = (*C.char)(unsafe.Pointer(&ianaId[0]))
 	ianaId_alias.len = C.size_t(len(ianaId))
-	ret := C.QTimeZone_new2(ianaId_alias)
-	return newQTimeZone(ret)
+	var outptr_QTimeZone *C.QTimeZone = nil
+
+	C.QTimeZone_new2(ianaId_alias, &outptr_QTimeZone)
+	ret := newQTimeZone(outptr_QTimeZone)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTimeZone3 constructs a new QTimeZone object.
 func NewQTimeZone3(offsetSeconds int) *QTimeZone {
-	ret := C.QTimeZone_new3((C.int)(offsetSeconds))
-	return newQTimeZone(ret)
+	var outptr_QTimeZone *C.QTimeZone = nil
+
+	C.QTimeZone_new3((C.int)(offsetSeconds), &outptr_QTimeZone)
+	ret := newQTimeZone(outptr_QTimeZone)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTimeZone4 constructs a new QTimeZone object.
@@ -100,14 +119,22 @@ func NewQTimeZone4(zoneId []byte, offsetSeconds int, name string, abbreviation s
 	abbreviation_ms.data = C.CString(abbreviation)
 	abbreviation_ms.len = C.size_t(len(abbreviation))
 	defer C.free(unsafe.Pointer(abbreviation_ms.data))
-	ret := C.QTimeZone_new4(zoneId_alias, (C.int)(offsetSeconds), name_ms, abbreviation_ms)
-	return newQTimeZone(ret)
+	var outptr_QTimeZone *C.QTimeZone = nil
+
+	C.QTimeZone_new4(zoneId_alias, (C.int)(offsetSeconds), name_ms, abbreviation_ms, &outptr_QTimeZone)
+	ret := newQTimeZone(outptr_QTimeZone)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTimeZone5 constructs a new QTimeZone object.
 func NewQTimeZone5(other *QTimeZone) *QTimeZone {
-	ret := C.QTimeZone_new5(other.cPointer())
-	return newQTimeZone(ret)
+	var outptr_QTimeZone *C.QTimeZone = nil
+
+	C.QTimeZone_new5(other.cPointer(), &outptr_QTimeZone)
+	ret := newQTimeZone(outptr_QTimeZone)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTimeZone6 constructs a new QTimeZone object.
@@ -123,8 +150,12 @@ func NewQTimeZone6(zoneId []byte, offsetSeconds int, name string, abbreviation s
 	abbreviation_ms.data = C.CString(abbreviation)
 	abbreviation_ms.len = C.size_t(len(abbreviation))
 	defer C.free(unsafe.Pointer(abbreviation_ms.data))
-	ret := C.QTimeZone_new6(zoneId_alias, (C.int)(offsetSeconds), name_ms, abbreviation_ms, (C.int)(country))
-	return newQTimeZone(ret)
+	var outptr_QTimeZone *C.QTimeZone = nil
+
+	C.QTimeZone_new6(zoneId_alias, (C.int)(offsetSeconds), name_ms, abbreviation_ms, (C.int)(country), &outptr_QTimeZone)
+	ret := newQTimeZone(outptr_QTimeZone)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTimeZone7 constructs a new QTimeZone object.
@@ -144,8 +175,12 @@ func NewQTimeZone7(zoneId []byte, offsetSeconds int, name string, abbreviation s
 	comment_ms.data = C.CString(comment)
 	comment_ms.len = C.size_t(len(comment))
 	defer C.free(unsafe.Pointer(comment_ms.data))
-	ret := C.QTimeZone_new7(zoneId_alias, (C.int)(offsetSeconds), name_ms, abbreviation_ms, (C.int)(country), comment_ms)
-	return newQTimeZone(ret)
+	var outptr_QTimeZone *C.QTimeZone = nil
+
+	C.QTimeZone_new7(zoneId_alias, (C.int)(offsetSeconds), name_ms, abbreviation_ms, (C.int)(country), comment_ms, &outptr_QTimeZone)
+	ret := newQTimeZone(outptr_QTimeZone)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QTimeZone) OperatorAssign(other *QTimeZone) {
@@ -416,7 +451,7 @@ func (this *QTimeZone) DisplayName32(timeType QTimeZone__TimeType, nameType QTim
 
 // Delete this object from C++ memory.
 func (this *QTimeZone) Delete() {
-	C.QTimeZone_Delete(this.h)
+	C.QTimeZone_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -429,7 +464,8 @@ func (this *QTimeZone) GoGC() {
 }
 
 type QTimeZone__OffsetData struct {
-	h *C.QTimeZone__OffsetData
+	h          *C.QTimeZone__OffsetData
+	isSubclass bool
 }
 
 func (this *QTimeZone__OffsetData) cPointer() *C.QTimeZone__OffsetData {
@@ -446,6 +482,7 @@ func (this *QTimeZone__OffsetData) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQTimeZone__OffsetData constructs the type using only CGO pointers.
 func newQTimeZone__OffsetData(h *C.QTimeZone__OffsetData) *QTimeZone__OffsetData {
 	if h == nil {
 		return nil
@@ -453,14 +490,23 @@ func newQTimeZone__OffsetData(h *C.QTimeZone__OffsetData) *QTimeZone__OffsetData
 	return &QTimeZone__OffsetData{h: h}
 }
 
+// UnsafeNewQTimeZone__OffsetData constructs the type using only unsafe pointers.
 func UnsafeNewQTimeZone__OffsetData(h unsafe.Pointer) *QTimeZone__OffsetData {
-	return newQTimeZone__OffsetData((*C.QTimeZone__OffsetData)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QTimeZone__OffsetData{h: (*C.QTimeZone__OffsetData)(h)}
 }
 
 // NewQTimeZone__OffsetData constructs a new QTimeZone::OffsetData object.
 func NewQTimeZone__OffsetData(param1 *QTimeZone__OffsetData) *QTimeZone__OffsetData {
-	ret := C.QTimeZone__OffsetData_new(param1.cPointer())
-	return newQTimeZone__OffsetData(ret)
+	var outptr_QTimeZone__OffsetData *C.QTimeZone__OffsetData = nil
+
+	C.QTimeZone__OffsetData_new(param1.cPointer(), &outptr_QTimeZone__OffsetData)
+	ret := newQTimeZone__OffsetData(outptr_QTimeZone__OffsetData)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QTimeZone__OffsetData) OperatorAssign(param1 *QTimeZone__OffsetData) {
@@ -469,7 +515,7 @@ func (this *QTimeZone__OffsetData) OperatorAssign(param1 *QTimeZone__OffsetData)
 
 // Delete this object from C++ memory.
 func (this *QTimeZone__OffsetData) Delete() {
-	C.QTimeZone__OffsetData_Delete(this.h)
+	C.QTimeZone__OffsetData_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

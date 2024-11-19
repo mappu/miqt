@@ -16,7 +16,8 @@ import (
 )
 
 type QVideoDeviceSelectorControl struct {
-	h *C.QVideoDeviceSelectorControl
+	h          *C.QVideoDeviceSelectorControl
+	isSubclass bool
 	*QMediaControl
 }
 
@@ -34,15 +35,23 @@ func (this *QVideoDeviceSelectorControl) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQVideoDeviceSelectorControl(h *C.QVideoDeviceSelectorControl) *QVideoDeviceSelectorControl {
+// newQVideoDeviceSelectorControl constructs the type using only CGO pointers.
+func newQVideoDeviceSelectorControl(h *C.QVideoDeviceSelectorControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QVideoDeviceSelectorControl {
 	if h == nil {
 		return nil
 	}
-	return &QVideoDeviceSelectorControl{h: h, QMediaControl: UnsafeNewQMediaControl(unsafe.Pointer(h))}
+	return &QVideoDeviceSelectorControl{h: h,
+		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
 }
 
-func UnsafeNewQVideoDeviceSelectorControl(h unsafe.Pointer) *QVideoDeviceSelectorControl {
-	return newQVideoDeviceSelectorControl((*C.QVideoDeviceSelectorControl)(h))
+// UnsafeNewQVideoDeviceSelectorControl constructs the type using only unsafe pointers.
+func UnsafeNewQVideoDeviceSelectorControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QVideoDeviceSelectorControl {
+	if h == nil {
+		return nil
+	}
+
+	return &QVideoDeviceSelectorControl{h: (*C.QVideoDeviceSelectorControl)(h),
+		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
 }
 
 func (this *QVideoDeviceSelectorControl) MetaObject() *qt.QMetaObject {
@@ -213,7 +222,7 @@ func QVideoDeviceSelectorControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QVideoDeviceSelectorControl) Delete() {
-	C.QVideoDeviceSelectorControl_Delete(this.h)
+	C.QVideoDeviceSelectorControl_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

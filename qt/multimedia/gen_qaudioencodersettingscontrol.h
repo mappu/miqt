@@ -17,11 +17,15 @@ extern "C" {
 #ifdef __cplusplus
 class QAudioEncoderSettings;
 class QAudioEncoderSettingsControl;
+class QMediaControl;
 class QMetaObject;
+class QObject;
 #else
 typedef struct QAudioEncoderSettings QAudioEncoderSettings;
 typedef struct QAudioEncoderSettingsControl QAudioEncoderSettingsControl;
+typedef struct QMediaControl QMediaControl;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 #endif
 
 QMetaObject* QAudioEncoderSettingsControl_MetaObject(const QAudioEncoderSettingsControl* self);
@@ -30,15 +34,14 @@ struct miqt_string QAudioEncoderSettingsControl_Tr(const char* s);
 struct miqt_string QAudioEncoderSettingsControl_TrUtf8(const char* s);
 struct miqt_array /* of struct miqt_string */  QAudioEncoderSettingsControl_SupportedAudioCodecs(const QAudioEncoderSettingsControl* self);
 struct miqt_string QAudioEncoderSettingsControl_CodecDescription(const QAudioEncoderSettingsControl* self, struct miqt_string codecName);
-struct miqt_array /* of int */  QAudioEncoderSettingsControl_SupportedSampleRates(const QAudioEncoderSettingsControl* self, QAudioEncoderSettings* settings);
+struct miqt_array /* of int */  QAudioEncoderSettingsControl_SupportedSampleRates(const QAudioEncoderSettingsControl* self, QAudioEncoderSettings* settings, bool* continuous);
 QAudioEncoderSettings* QAudioEncoderSettingsControl_AudioSettings(const QAudioEncoderSettingsControl* self);
 void QAudioEncoderSettingsControl_SetAudioSettings(QAudioEncoderSettingsControl* self, QAudioEncoderSettings* settings);
 struct miqt_string QAudioEncoderSettingsControl_Tr2(const char* s, const char* c);
 struct miqt_string QAudioEncoderSettingsControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAudioEncoderSettingsControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QAudioEncoderSettingsControl_TrUtf83(const char* s, const char* c, int n);
-struct miqt_array /* of int */  QAudioEncoderSettingsControl_SupportedSampleRates2(const QAudioEncoderSettingsControl* self, QAudioEncoderSettings* settings, bool* continuous);
-void QAudioEncoderSettingsControl_Delete(QAudioEncoderSettingsControl* self);
+void QAudioEncoderSettingsControl_Delete(QAudioEncoderSettingsControl* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

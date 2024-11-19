@@ -14,7 +14,8 @@ import (
 )
 
 type QsciDocument struct {
-	h *C.QsciDocument
+	h          *C.QsciDocument
+	isSubclass bool
 }
 
 func (this *QsciDocument) cPointer() *C.QsciDocument {
@@ -31,6 +32,7 @@ func (this *QsciDocument) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQsciDocument constructs the type using only CGO pointers.
 func newQsciDocument(h *C.QsciDocument) *QsciDocument {
 	if h == nil {
 		return nil
@@ -38,20 +40,33 @@ func newQsciDocument(h *C.QsciDocument) *QsciDocument {
 	return &QsciDocument{h: h}
 }
 
+// UnsafeNewQsciDocument constructs the type using only unsafe pointers.
 func UnsafeNewQsciDocument(h unsafe.Pointer) *QsciDocument {
-	return newQsciDocument((*C.QsciDocument)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QsciDocument{h: (*C.QsciDocument)(h)}
 }
 
 // NewQsciDocument constructs a new QsciDocument object.
 func NewQsciDocument() *QsciDocument {
-	ret := C.QsciDocument_new()
-	return newQsciDocument(ret)
+	var outptr_QsciDocument *C.QsciDocument = nil
+
+	C.QsciDocument_new(&outptr_QsciDocument)
+	ret := newQsciDocument(outptr_QsciDocument)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQsciDocument2 constructs a new QsciDocument object.
 func NewQsciDocument2(param1 *QsciDocument) *QsciDocument {
-	ret := C.QsciDocument_new2(param1.cPointer())
-	return newQsciDocument(ret)
+	var outptr_QsciDocument *C.QsciDocument = nil
+
+	C.QsciDocument_new2(param1.cPointer(), &outptr_QsciDocument)
+	ret := newQsciDocument(outptr_QsciDocument)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QsciDocument) OperatorAssign(param1 *QsciDocument) {
@@ -60,7 +75,7 @@ func (this *QsciDocument) OperatorAssign(param1 *QsciDocument) {
 
 // Delete this object from C++ memory.
 func (this *QsciDocument) Delete() {
-	C.QsciDocument_Delete(this.h)
+	C.QsciDocument_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

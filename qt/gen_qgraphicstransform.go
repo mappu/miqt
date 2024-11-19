@@ -15,7 +15,8 @@ import (
 )
 
 type QGraphicsTransform struct {
-	h *C.QGraphicsTransform
+	h          *C.QGraphicsTransform
+	isSubclass bool
 	*QObject
 }
 
@@ -33,15 +34,23 @@ func (this *QGraphicsTransform) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQGraphicsTransform(h *C.QGraphicsTransform) *QGraphicsTransform {
+// newQGraphicsTransform constructs the type using only CGO pointers.
+func newQGraphicsTransform(h *C.QGraphicsTransform, h_QObject *C.QObject) *QGraphicsTransform {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsTransform{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QGraphicsTransform{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQGraphicsTransform(h unsafe.Pointer) *QGraphicsTransform {
-	return newQGraphicsTransform((*C.QGraphicsTransform)(h))
+// UnsafeNewQGraphicsTransform constructs the type using only unsafe pointers.
+func UnsafeNewQGraphicsTransform(h unsafe.Pointer, h_QObject unsafe.Pointer) *QGraphicsTransform {
+	if h == nil {
+		return nil
+	}
+
+	return &QGraphicsTransform{h: (*C.QGraphicsTransform)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QGraphicsTransform) MetaObject() *QMetaObject {
@@ -122,7 +131,7 @@ func QGraphicsTransform_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QGraphicsTransform) Delete() {
-	C.QGraphicsTransform_Delete(this.h)
+	C.QGraphicsTransform_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -135,7 +144,8 @@ func (this *QGraphicsTransform) GoGC() {
 }
 
 type QGraphicsScale struct {
-	h *C.QGraphicsScale
+	h          *C.QGraphicsScale
+	isSubclass bool
 	*QGraphicsTransform
 }
 
@@ -153,27 +163,47 @@ func (this *QGraphicsScale) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQGraphicsScale(h *C.QGraphicsScale) *QGraphicsScale {
+// newQGraphicsScale constructs the type using only CGO pointers.
+func newQGraphicsScale(h *C.QGraphicsScale, h_QGraphicsTransform *C.QGraphicsTransform, h_QObject *C.QObject) *QGraphicsScale {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsScale{h: h, QGraphicsTransform: UnsafeNewQGraphicsTransform(unsafe.Pointer(h))}
+	return &QGraphicsScale{h: h,
+		QGraphicsTransform: newQGraphicsTransform(h_QGraphicsTransform, h_QObject)}
 }
 
-func UnsafeNewQGraphicsScale(h unsafe.Pointer) *QGraphicsScale {
-	return newQGraphicsScale((*C.QGraphicsScale)(h))
+// UnsafeNewQGraphicsScale constructs the type using only unsafe pointers.
+func UnsafeNewQGraphicsScale(h unsafe.Pointer, h_QGraphicsTransform unsafe.Pointer, h_QObject unsafe.Pointer) *QGraphicsScale {
+	if h == nil {
+		return nil
+	}
+
+	return &QGraphicsScale{h: (*C.QGraphicsScale)(h),
+		QGraphicsTransform: UnsafeNewQGraphicsTransform(h_QGraphicsTransform, h_QObject)}
 }
 
 // NewQGraphicsScale constructs a new QGraphicsScale object.
 func NewQGraphicsScale() *QGraphicsScale {
-	ret := C.QGraphicsScale_new()
-	return newQGraphicsScale(ret)
+	var outptr_QGraphicsScale *C.QGraphicsScale = nil
+	var outptr_QGraphicsTransform *C.QGraphicsTransform = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QGraphicsScale_new(&outptr_QGraphicsScale, &outptr_QGraphicsTransform, &outptr_QObject)
+	ret := newQGraphicsScale(outptr_QGraphicsScale, outptr_QGraphicsTransform, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQGraphicsScale2 constructs a new QGraphicsScale object.
 func NewQGraphicsScale2(parent *QObject) *QGraphicsScale {
-	ret := C.QGraphicsScale_new2(parent.cPointer())
-	return newQGraphicsScale(ret)
+	var outptr_QGraphicsScale *C.QGraphicsScale = nil
+	var outptr_QGraphicsTransform *C.QGraphicsTransform = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QGraphicsScale_new2(parent.cPointer(), &outptr_QGraphicsScale, &outptr_QGraphicsTransform, &outptr_QObject)
+	ret := newQGraphicsScale(outptr_QGraphicsScale, outptr_QGraphicsTransform, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QGraphicsScale) MetaObject() *QMetaObject {
@@ -372,9 +402,32 @@ func QGraphicsScale_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QGraphicsScale) callVirtualBase_ApplyTo(matrix *QMatrix4x4) {
+
+	C.QGraphicsScale_virtualbase_ApplyTo(unsafe.Pointer(this.h), matrix.cPointer())
+
+}
+func (this *QGraphicsScale) OnApplyTo(slot func(super func(matrix *QMatrix4x4), matrix *QMatrix4x4)) {
+	C.QGraphicsScale_override_virtual_ApplyTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsScale_ApplyTo
+func miqt_exec_callback_QGraphicsScale_ApplyTo(self *C.QGraphicsScale, cb C.intptr_t, matrix *C.QMatrix4x4) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(matrix *QMatrix4x4), matrix *QMatrix4x4))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMatrix4x4(unsafe.Pointer(matrix))
+
+	gofunc((&QGraphicsScale{h: self}).callVirtualBase_ApplyTo, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QGraphicsScale) Delete() {
-	C.QGraphicsScale_Delete(this.h)
+	C.QGraphicsScale_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -387,7 +440,8 @@ func (this *QGraphicsScale) GoGC() {
 }
 
 type QGraphicsRotation struct {
-	h *C.QGraphicsRotation
+	h          *C.QGraphicsRotation
+	isSubclass bool
 	*QGraphicsTransform
 }
 
@@ -405,27 +459,47 @@ func (this *QGraphicsRotation) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQGraphicsRotation(h *C.QGraphicsRotation) *QGraphicsRotation {
+// newQGraphicsRotation constructs the type using only CGO pointers.
+func newQGraphicsRotation(h *C.QGraphicsRotation, h_QGraphicsTransform *C.QGraphicsTransform, h_QObject *C.QObject) *QGraphicsRotation {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsRotation{h: h, QGraphicsTransform: UnsafeNewQGraphicsTransform(unsafe.Pointer(h))}
+	return &QGraphicsRotation{h: h,
+		QGraphicsTransform: newQGraphicsTransform(h_QGraphicsTransform, h_QObject)}
 }
 
-func UnsafeNewQGraphicsRotation(h unsafe.Pointer) *QGraphicsRotation {
-	return newQGraphicsRotation((*C.QGraphicsRotation)(h))
+// UnsafeNewQGraphicsRotation constructs the type using only unsafe pointers.
+func UnsafeNewQGraphicsRotation(h unsafe.Pointer, h_QGraphicsTransform unsafe.Pointer, h_QObject unsafe.Pointer) *QGraphicsRotation {
+	if h == nil {
+		return nil
+	}
+
+	return &QGraphicsRotation{h: (*C.QGraphicsRotation)(h),
+		QGraphicsTransform: UnsafeNewQGraphicsTransform(h_QGraphicsTransform, h_QObject)}
 }
 
 // NewQGraphicsRotation constructs a new QGraphicsRotation object.
 func NewQGraphicsRotation() *QGraphicsRotation {
-	ret := C.QGraphicsRotation_new()
-	return newQGraphicsRotation(ret)
+	var outptr_QGraphicsRotation *C.QGraphicsRotation = nil
+	var outptr_QGraphicsTransform *C.QGraphicsTransform = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QGraphicsRotation_new(&outptr_QGraphicsRotation, &outptr_QGraphicsTransform, &outptr_QObject)
+	ret := newQGraphicsRotation(outptr_QGraphicsRotation, outptr_QGraphicsTransform, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQGraphicsRotation2 constructs a new QGraphicsRotation object.
 func NewQGraphicsRotation2(parent *QObject) *QGraphicsRotation {
-	ret := C.QGraphicsRotation_new2(parent.cPointer())
-	return newQGraphicsRotation(ret)
+	var outptr_QGraphicsRotation *C.QGraphicsRotation = nil
+	var outptr_QGraphicsTransform *C.QGraphicsTransform = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QGraphicsRotation_new2(parent.cPointer(), &outptr_QGraphicsRotation, &outptr_QGraphicsTransform, &outptr_QObject)
+	ret := newQGraphicsRotation(outptr_QGraphicsRotation, outptr_QGraphicsTransform, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QGraphicsRotation) MetaObject() *QMetaObject {
@@ -589,9 +663,32 @@ func QGraphicsRotation_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QGraphicsRotation) callVirtualBase_ApplyTo(matrix *QMatrix4x4) {
+
+	C.QGraphicsRotation_virtualbase_ApplyTo(unsafe.Pointer(this.h), matrix.cPointer())
+
+}
+func (this *QGraphicsRotation) OnApplyTo(slot func(super func(matrix *QMatrix4x4), matrix *QMatrix4x4)) {
+	C.QGraphicsRotation_override_virtual_ApplyTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsRotation_ApplyTo
+func miqt_exec_callback_QGraphicsRotation_ApplyTo(self *C.QGraphicsRotation, cb C.intptr_t, matrix *C.QMatrix4x4) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(matrix *QMatrix4x4), matrix *QMatrix4x4))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMatrix4x4(unsafe.Pointer(matrix))
+
+	gofunc((&QGraphicsRotation{h: self}).callVirtualBase_ApplyTo, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QGraphicsRotation) Delete() {
-	C.QGraphicsRotation_Delete(this.h)
+	C.QGraphicsRotation_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

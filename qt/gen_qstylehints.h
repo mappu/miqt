@@ -17,10 +17,12 @@ extern "C" {
 #ifdef __cplusplus
 class QChar;
 class QMetaObject;
+class QObject;
 class QStyleHints;
 #else
 typedef struct QChar QChar;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 typedef struct QStyleHints QStyleHints;
 #endif
 
@@ -88,7 +90,7 @@ struct miqt_string QStyleHints_Tr2(const char* s, const char* c);
 struct miqt_string QStyleHints_Tr3(const char* s, const char* c, int n);
 struct miqt_string QStyleHints_TrUtf82(const char* s, const char* c);
 struct miqt_string QStyleHints_TrUtf83(const char* s, const char* c, int n);
-void QStyleHints_Delete(QStyleHints* self);
+void QStyleHints_Delete(QStyleHints* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -48,7 +48,8 @@ const (
 )
 
 type QMediaMetaData struct {
-	h *C.QMediaMetaData
+	h          *C.QMediaMetaData
+	isSubclass bool
 }
 
 func (this *QMediaMetaData) cPointer() *C.QMediaMetaData {
@@ -65,6 +66,7 @@ func (this *QMediaMetaData) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQMediaMetaData constructs the type using only CGO pointers.
 func newQMediaMetaData(h *C.QMediaMetaData) *QMediaMetaData {
 	if h == nil {
 		return nil
@@ -72,20 +74,33 @@ func newQMediaMetaData(h *C.QMediaMetaData) *QMediaMetaData {
 	return &QMediaMetaData{h: h}
 }
 
+// UnsafeNewQMediaMetaData constructs the type using only unsafe pointers.
 func UnsafeNewQMediaMetaData(h unsafe.Pointer) *QMediaMetaData {
-	return newQMediaMetaData((*C.QMediaMetaData)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMediaMetaData{h: (*C.QMediaMetaData)(h)}
 }
 
 // NewQMediaMetaData constructs a new QMediaMetaData object.
 func NewQMediaMetaData(param1 *QMediaMetaData) *QMediaMetaData {
-	ret := C.QMediaMetaData_new(param1.cPointer())
-	return newQMediaMetaData(ret)
+	var outptr_QMediaMetaData *C.QMediaMetaData = nil
+
+	C.QMediaMetaData_new(param1.cPointer(), &outptr_QMediaMetaData)
+	ret := newQMediaMetaData(outptr_QMediaMetaData)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMediaMetaData2 constructs a new QMediaMetaData object.
 func NewQMediaMetaData2() *QMediaMetaData {
-	ret := C.QMediaMetaData_new2()
-	return newQMediaMetaData(ret)
+	var outptr_QMediaMetaData *C.QMediaMetaData = nil
+
+	C.QMediaMetaData_new2(&outptr_QMediaMetaData)
+	ret := newQMediaMetaData(outptr_QMediaMetaData)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QMediaMetaData) Value(k QMediaMetaData__Key) *qt6.QVariant {
@@ -141,7 +156,7 @@ func QMediaMetaData_MetaDataKeyToString(k QMediaMetaData__Key) string {
 
 // Delete this object from C++ memory.
 func (this *QMediaMetaData) Delete() {
-	C.QMediaMetaData_Delete(this.h)
+	C.QMediaMetaData_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -37,7 +37,8 @@ const (
 )
 
 type QAbstractVideoBuffer struct {
-	h *C.QAbstractVideoBuffer
+	h          *C.QAbstractVideoBuffer
+	isSubclass bool
 }
 
 func (this *QAbstractVideoBuffer) cPointer() *C.QAbstractVideoBuffer {
@@ -54,6 +55,7 @@ func (this *QAbstractVideoBuffer) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAbstractVideoBuffer constructs the type using only CGO pointers.
 func newQAbstractVideoBuffer(h *C.QAbstractVideoBuffer) *QAbstractVideoBuffer {
 	if h == nil {
 		return nil
@@ -61,8 +63,13 @@ func newQAbstractVideoBuffer(h *C.QAbstractVideoBuffer) *QAbstractVideoBuffer {
 	return &QAbstractVideoBuffer{h: h}
 }
 
+// UnsafeNewQAbstractVideoBuffer constructs the type using only unsafe pointers.
 func UnsafeNewQAbstractVideoBuffer(h unsafe.Pointer) *QAbstractVideoBuffer {
-	return newQAbstractVideoBuffer((*C.QAbstractVideoBuffer)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAbstractVideoBuffer{h: (*C.QAbstractVideoBuffer)(h)}
 }
 
 func (this *QAbstractVideoBuffer) Release() {
@@ -94,7 +101,7 @@ func (this *QAbstractVideoBuffer) Handle() *qt.QVariant {
 
 // Delete this object from C++ memory.
 func (this *QAbstractVideoBuffer) Delete() {
-	C.QAbstractVideoBuffer_Delete(this.h)
+	C.QAbstractVideoBuffer_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -107,7 +114,8 @@ func (this *QAbstractVideoBuffer) GoGC() {
 }
 
 type QAbstractPlanarVideoBuffer struct {
-	h *C.QAbstractPlanarVideoBuffer
+	h          *C.QAbstractPlanarVideoBuffer
+	isSubclass bool
 	*QAbstractVideoBuffer
 }
 
@@ -125,15 +133,23 @@ func (this *QAbstractPlanarVideoBuffer) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAbstractPlanarVideoBuffer(h *C.QAbstractPlanarVideoBuffer) *QAbstractPlanarVideoBuffer {
+// newQAbstractPlanarVideoBuffer constructs the type using only CGO pointers.
+func newQAbstractPlanarVideoBuffer(h *C.QAbstractPlanarVideoBuffer, h_QAbstractVideoBuffer *C.QAbstractVideoBuffer) *QAbstractPlanarVideoBuffer {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractPlanarVideoBuffer{h: h, QAbstractVideoBuffer: UnsafeNewQAbstractVideoBuffer(unsafe.Pointer(h))}
+	return &QAbstractPlanarVideoBuffer{h: h,
+		QAbstractVideoBuffer: newQAbstractVideoBuffer(h_QAbstractVideoBuffer)}
 }
 
-func UnsafeNewQAbstractPlanarVideoBuffer(h unsafe.Pointer) *QAbstractPlanarVideoBuffer {
-	return newQAbstractPlanarVideoBuffer((*C.QAbstractPlanarVideoBuffer)(h))
+// UnsafeNewQAbstractPlanarVideoBuffer constructs the type using only unsafe pointers.
+func UnsafeNewQAbstractPlanarVideoBuffer(h unsafe.Pointer, h_QAbstractVideoBuffer unsafe.Pointer) *QAbstractPlanarVideoBuffer {
+	if h == nil {
+		return nil
+	}
+
+	return &QAbstractPlanarVideoBuffer{h: (*C.QAbstractPlanarVideoBuffer)(h),
+		QAbstractVideoBuffer: UnsafeNewQAbstractVideoBuffer(h_QAbstractVideoBuffer)}
 }
 
 func (this *QAbstractPlanarVideoBuffer) Map(mode QAbstractVideoBuffer__MapMode, numBytes *int, bytesPerLine *int) *byte {
@@ -142,7 +158,7 @@ func (this *QAbstractPlanarVideoBuffer) Map(mode QAbstractVideoBuffer__MapMode, 
 
 // Delete this object from C++ memory.
 func (this *QAbstractPlanarVideoBuffer) Delete() {
-	C.QAbstractPlanarVideoBuffer_Delete(this.h)
+	C.QAbstractPlanarVideoBuffer_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

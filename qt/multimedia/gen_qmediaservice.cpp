@@ -1,6 +1,7 @@
 #include <QMediaControl>
 #include <QMediaService>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -90,7 +91,11 @@ struct miqt_string QMediaService_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QMediaService_Delete(QMediaService* self) {
-	delete self;
+void QMediaService_Delete(QMediaService* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMediaService*>( self );
+	} else {
+		delete self;
+	}
 }
 

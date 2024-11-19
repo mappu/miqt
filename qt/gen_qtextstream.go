@@ -50,7 +50,8 @@ const (
 )
 
 type QTextStream struct {
-	h *C.QTextStream
+	h          *C.QTextStream
+	isSubclass bool
 }
 
 func (this *QTextStream) cPointer() *C.QTextStream {
@@ -67,6 +68,7 @@ func (this *QTextStream) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQTextStream constructs the type using only CGO pointers.
 func newQTextStream(h *C.QTextStream) *QTextStream {
 	if h == nil {
 		return nil
@@ -74,20 +76,33 @@ func newQTextStream(h *C.QTextStream) *QTextStream {
 	return &QTextStream{h: h}
 }
 
+// UnsafeNewQTextStream constructs the type using only unsafe pointers.
 func UnsafeNewQTextStream(h unsafe.Pointer) *QTextStream {
-	return newQTextStream((*C.QTextStream)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QTextStream{h: (*C.QTextStream)(h)}
 }
 
 // NewQTextStream constructs a new QTextStream object.
 func NewQTextStream() *QTextStream {
-	ret := C.QTextStream_new()
-	return newQTextStream(ret)
+	var outptr_QTextStream *C.QTextStream = nil
+
+	C.QTextStream_new(&outptr_QTextStream)
+	ret := newQTextStream(outptr_QTextStream)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextStream2 constructs a new QTextStream object.
 func NewQTextStream2(device *QIODevice) *QTextStream {
-	ret := C.QTextStream_new2(device.cPointer())
-	return newQTextStream(ret)
+	var outptr_QTextStream *C.QTextStream = nil
+
+	C.QTextStream_new2(device.cPointer(), &outptr_QTextStream)
+	ret := newQTextStream(outptr_QTextStream)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextStream3 constructs a new QTextStream object.
@@ -95,8 +110,12 @@ func NewQTextStream3(array []byte) *QTextStream {
 	array_alias := C.struct_miqt_string{}
 	array_alias.data = (*C.char)(unsafe.Pointer(&array[0]))
 	array_alias.len = C.size_t(len(array))
-	ret := C.QTextStream_new3(array_alias)
-	return newQTextStream(ret)
+	var outptr_QTextStream *C.QTextStream = nil
+
+	C.QTextStream_new3(array_alias, &outptr_QTextStream)
+	ret := newQTextStream(outptr_QTextStream)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextStream4 constructs a new QTextStream object.
@@ -104,8 +123,12 @@ func NewQTextStream4(array []byte, openMode QIODevice__OpenModeFlag) *QTextStrea
 	array_alias := C.struct_miqt_string{}
 	array_alias.data = (*C.char)(unsafe.Pointer(&array[0]))
 	array_alias.len = C.size_t(len(array))
-	ret := C.QTextStream_new4(array_alias, (C.int)(openMode))
-	return newQTextStream(ret)
+	var outptr_QTextStream *C.QTextStream = nil
+
+	C.QTextStream_new4(array_alias, (C.int)(openMode), &outptr_QTextStream)
+	ret := newQTextStream(outptr_QTextStream)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QTextStream) SetCodec(codec *QTextCodec) {
@@ -154,7 +177,7 @@ func (this *QTextStream) SetDevice(device *QIODevice) {
 }
 
 func (this *QTextStream) Device() *QIODevice {
-	return UnsafeNewQIODevice(unsafe.Pointer(C.QTextStream_Device(this.h)))
+	return UnsafeNewQIODevice(unsafe.Pointer(C.QTextStream_Device(this.h)), nil)
 }
 
 func (this *QTextStream) String() string {
@@ -431,7 +454,7 @@ func (this *QTextStream) ReadLine1(maxlen int64) string {
 
 // Delete this object from C++ memory.
 func (this *QTextStream) Delete() {
-	C.QTextStream_Delete(this.h)
+	C.QTextStream_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -8,58 +8,71 @@
 #include "gen_qkeysequence.h"
 #include "_cgo_export.h"
 
-QKeySequence* QKeySequence_new() {
-	return new QKeySequence();
+void QKeySequence_new(QKeySequence** outptr_QKeySequence) {
+	QKeySequence* ret = new QKeySequence();
+	*outptr_QKeySequence = ret;
 }
 
-QKeySequence* QKeySequence_new2(struct miqt_string key) {
+void QKeySequence_new2(struct miqt_string key, QKeySequence** outptr_QKeySequence) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
-	return new QKeySequence(key_QString);
+	QKeySequence* ret = new QKeySequence(key_QString);
+	*outptr_QKeySequence = ret;
 }
 
-QKeySequence* QKeySequence_new3(int k1) {
-	return new QKeySequence(static_cast<int>(k1));
+void QKeySequence_new3(int k1, QKeySequence** outptr_QKeySequence) {
+	QKeySequence* ret = new QKeySequence(static_cast<int>(k1));
+	*outptr_QKeySequence = ret;
 }
 
-QKeySequence* QKeySequence_new4(QKeyCombination* k1) {
-	return new QKeySequence(*k1);
+void QKeySequence_new4(QKeyCombination* k1, QKeySequence** outptr_QKeySequence) {
+	QKeySequence* ret = new QKeySequence(*k1);
+	*outptr_QKeySequence = ret;
 }
 
-QKeySequence* QKeySequence_new5(QKeySequence* ks) {
-	return new QKeySequence(*ks);
+void QKeySequence_new5(QKeySequence* ks, QKeySequence** outptr_QKeySequence) {
+	QKeySequence* ret = new QKeySequence(*ks);
+	*outptr_QKeySequence = ret;
 }
 
-QKeySequence* QKeySequence_new6(int key) {
-	return new QKeySequence(static_cast<QKeySequence::StandardKey>(key));
+void QKeySequence_new6(int key, QKeySequence** outptr_QKeySequence) {
+	QKeySequence* ret = new QKeySequence(static_cast<QKeySequence::StandardKey>(key));
+	*outptr_QKeySequence = ret;
 }
 
-QKeySequence* QKeySequence_new7(struct miqt_string key, int format) {
+void QKeySequence_new7(struct miqt_string key, int format, QKeySequence** outptr_QKeySequence) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
-	return new QKeySequence(key_QString, static_cast<QKeySequence::SequenceFormat>(format));
+	QKeySequence* ret = new QKeySequence(key_QString, static_cast<QKeySequence::SequenceFormat>(format));
+	*outptr_QKeySequence = ret;
 }
 
-QKeySequence* QKeySequence_new8(int k1, int k2) {
-	return new QKeySequence(static_cast<int>(k1), static_cast<int>(k2));
+void QKeySequence_new8(int k1, int k2, QKeySequence** outptr_QKeySequence) {
+	QKeySequence* ret = new QKeySequence(static_cast<int>(k1), static_cast<int>(k2));
+	*outptr_QKeySequence = ret;
 }
 
-QKeySequence* QKeySequence_new9(int k1, int k2, int k3) {
-	return new QKeySequence(static_cast<int>(k1), static_cast<int>(k2), static_cast<int>(k3));
+void QKeySequence_new9(int k1, int k2, int k3, QKeySequence** outptr_QKeySequence) {
+	QKeySequence* ret = new QKeySequence(static_cast<int>(k1), static_cast<int>(k2), static_cast<int>(k3));
+	*outptr_QKeySequence = ret;
 }
 
-QKeySequence* QKeySequence_new10(int k1, int k2, int k3, int k4) {
-	return new QKeySequence(static_cast<int>(k1), static_cast<int>(k2), static_cast<int>(k3), static_cast<int>(k4));
+void QKeySequence_new10(int k1, int k2, int k3, int k4, QKeySequence** outptr_QKeySequence) {
+	QKeySequence* ret = new QKeySequence(static_cast<int>(k1), static_cast<int>(k2), static_cast<int>(k3), static_cast<int>(k4));
+	*outptr_QKeySequence = ret;
 }
 
-QKeySequence* QKeySequence_new11(QKeyCombination* k1, QKeyCombination* k2) {
-	return new QKeySequence(*k1, *k2);
+void QKeySequence_new11(QKeyCombination* k1, QKeyCombination* k2, QKeySequence** outptr_QKeySequence) {
+	QKeySequence* ret = new QKeySequence(*k1, *k2);
+	*outptr_QKeySequence = ret;
 }
 
-QKeySequence* QKeySequence_new12(QKeyCombination* k1, QKeyCombination* k2, QKeyCombination* k3) {
-	return new QKeySequence(*k1, *k2, *k3);
+void QKeySequence_new12(QKeyCombination* k1, QKeyCombination* k2, QKeyCombination* k3, QKeySequence** outptr_QKeySequence) {
+	QKeySequence* ret = new QKeySequence(*k1, *k2, *k3);
+	*outptr_QKeySequence = ret;
 }
 
-QKeySequence* QKeySequence_new13(QKeyCombination* k1, QKeyCombination* k2, QKeyCombination* k3, QKeyCombination* k4) {
-	return new QKeySequence(*k1, *k2, *k3, *k4);
+void QKeySequence_new13(QKeyCombination* k1, QKeyCombination* k2, QKeyCombination* k3, QKeyCombination* k4, QKeySequence** outptr_QKeySequence) {
+	QKeySequence* ret = new QKeySequence(*k1, *k2, *k3, *k4);
+	*outptr_QKeySequence = ret;
 }
 
 int QKeySequence_Count(const QKeySequence* self) {
@@ -227,7 +240,11 @@ struct miqt_string QKeySequence_ListToString2(struct miqt_array /* of QKeySequen
 	return _ms;
 }
 
-void QKeySequence_Delete(QKeySequence* self) {
-	delete self;
+void QKeySequence_Delete(QKeySequence* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QKeySequence*>( self );
+	} else {
+		delete self;
+	}
 }
 

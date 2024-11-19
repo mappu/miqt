@@ -23,7 +23,8 @@ const (
 )
 
 type QCameraFormat struct {
-	h *C.QCameraFormat
+	h          *C.QCameraFormat
+	isSubclass bool
 }
 
 func (this *QCameraFormat) cPointer() *C.QCameraFormat {
@@ -40,6 +41,7 @@ func (this *QCameraFormat) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCameraFormat constructs the type using only CGO pointers.
 func newQCameraFormat(h *C.QCameraFormat) *QCameraFormat {
 	if h == nil {
 		return nil
@@ -47,20 +49,33 @@ func newQCameraFormat(h *C.QCameraFormat) *QCameraFormat {
 	return &QCameraFormat{h: h}
 }
 
+// UnsafeNewQCameraFormat constructs the type using only unsafe pointers.
 func UnsafeNewQCameraFormat(h unsafe.Pointer) *QCameraFormat {
-	return newQCameraFormat((*C.QCameraFormat)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCameraFormat{h: (*C.QCameraFormat)(h)}
 }
 
 // NewQCameraFormat constructs a new QCameraFormat object.
 func NewQCameraFormat() *QCameraFormat {
-	ret := C.QCameraFormat_new()
-	return newQCameraFormat(ret)
+	var outptr_QCameraFormat *C.QCameraFormat = nil
+
+	C.QCameraFormat_new(&outptr_QCameraFormat)
+	ret := newQCameraFormat(outptr_QCameraFormat)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCameraFormat2 constructs a new QCameraFormat object.
 func NewQCameraFormat2(other *QCameraFormat) *QCameraFormat {
-	ret := C.QCameraFormat_new2(other.cPointer())
-	return newQCameraFormat(ret)
+	var outptr_QCameraFormat *C.QCameraFormat = nil
+
+	C.QCameraFormat_new2(other.cPointer(), &outptr_QCameraFormat)
+	ret := newQCameraFormat(outptr_QCameraFormat)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QCameraFormat) OperatorAssign(other *QCameraFormat) {
@@ -100,7 +115,7 @@ func (this *QCameraFormat) OperatorNotEqual(other *QCameraFormat) bool {
 
 // Delete this object from C++ memory.
 func (this *QCameraFormat) Delete() {
-	C.QCameraFormat_Delete(this.h)
+	C.QCameraFormat_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -113,7 +128,8 @@ func (this *QCameraFormat) GoGC() {
 }
 
 type QCameraDevice struct {
-	h *C.QCameraDevice
+	h          *C.QCameraDevice
+	isSubclass bool
 }
 
 func (this *QCameraDevice) cPointer() *C.QCameraDevice {
@@ -130,6 +146,7 @@ func (this *QCameraDevice) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCameraDevice constructs the type using only CGO pointers.
 func newQCameraDevice(h *C.QCameraDevice) *QCameraDevice {
 	if h == nil {
 		return nil
@@ -137,20 +154,33 @@ func newQCameraDevice(h *C.QCameraDevice) *QCameraDevice {
 	return &QCameraDevice{h: h}
 }
 
+// UnsafeNewQCameraDevice constructs the type using only unsafe pointers.
 func UnsafeNewQCameraDevice(h unsafe.Pointer) *QCameraDevice {
-	return newQCameraDevice((*C.QCameraDevice)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCameraDevice{h: (*C.QCameraDevice)(h)}
 }
 
 // NewQCameraDevice constructs a new QCameraDevice object.
 func NewQCameraDevice() *QCameraDevice {
-	ret := C.QCameraDevice_new()
-	return newQCameraDevice(ret)
+	var outptr_QCameraDevice *C.QCameraDevice = nil
+
+	C.QCameraDevice_new(&outptr_QCameraDevice)
+	ret := newQCameraDevice(outptr_QCameraDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCameraDevice2 constructs a new QCameraDevice object.
 func NewQCameraDevice2(other *QCameraDevice) *QCameraDevice {
-	ret := C.QCameraDevice_new2(other.cPointer())
-	return newQCameraDevice(ret)
+	var outptr_QCameraDevice *C.QCameraDevice = nil
+
+	C.QCameraDevice_new2(other.cPointer(), &outptr_QCameraDevice)
+	ret := newQCameraDevice(outptr_QCameraDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QCameraDevice) OperatorAssign(other *QCameraDevice) {
@@ -219,7 +249,7 @@ func (this *QCameraDevice) VideoFormats() []QCameraFormat {
 
 // Delete this object from C++ memory.
 func (this *QCameraDevice) Delete() {
-	C.QCameraDevice_Delete(this.h)
+	C.QCameraDevice_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

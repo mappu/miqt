@@ -5,27 +5,23 @@
 #include <QMetaObject>
 #include <QMetaType>
 #include <QPartialOrdering>
-#define WORKAROUND_INNER_CLASS_DEFINITION_QtMetaTypePrivate__QPairVariantInterfaceImpl
-#define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__QMetaTypeInterface
-#define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__QTypeNormalizer
 #include <qmetatype.h>
 #include "gen_qmetatype.h"
 #include "_cgo_export.h"
 
-void QtPrivate__QMetaTypeInterface_Delete(QtPrivate__QMetaTypeInterface* self) {
-	delete self;
+void QMetaType_new(int typeVal, QMetaType** outptr_QMetaType) {
+	QMetaType* ret = new QMetaType(static_cast<int>(typeVal));
+	*outptr_QMetaType = ret;
 }
 
-QMetaType* QMetaType_new(int typeVal) {
-	return new QMetaType(static_cast<int>(typeVal));
+void QMetaType_new2(QMetaType** outptr_QMetaType) {
+	QMetaType* ret = new QMetaType();
+	*outptr_QMetaType = ret;
 }
 
-QMetaType* QMetaType_new2() {
-	return new QMetaType();
-}
-
-QMetaType* QMetaType_new3(QMetaType* param1) {
-	return new QMetaType(*param1);
+void QMetaType_new3(QMetaType* param1, QMetaType** outptr_QMetaType) {
+	QMetaType* ret = new QMetaType(*param1);
+	*outptr_QMetaType = ret;
 }
 
 void QMetaType_RegisterNormalizedTypedef(struct miqt_string normalizedTypeName, QMetaType* typeVal) {
@@ -250,43 +246,11 @@ void* QMetaType_Construct2(const QMetaType* self, void* where, const void* copyV
 	return self->construct(where, copyVal);
 }
 
-void QMetaType_Delete(QMetaType* self) {
-	delete self;
-}
-
-QtMetaTypePrivate__QPairVariantInterfaceImpl* QtMetaTypePrivate__QPairVariantInterfaceImpl_new() {
-	return new QtMetaTypePrivate::QPairVariantInterfaceImpl();
-}
-
-QtMetaTypePrivate__QPairVariantInterfaceImpl* QtMetaTypePrivate__QPairVariantInterfaceImpl_new2(QtMetaTypePrivate__QPairVariantInterfaceImpl* param1) {
-	return new QtMetaTypePrivate::QPairVariantInterfaceImpl(*param1);
-}
-
-void QtMetaTypePrivate__QPairVariantInterfaceImpl_First(const QtMetaTypePrivate__QPairVariantInterfaceImpl* self, void* dataPtr) {
-	self->first(dataPtr);
-}
-
-void QtMetaTypePrivate__QPairVariantInterfaceImpl_Second(const QtMetaTypePrivate__QPairVariantInterfaceImpl* self, void* dataPtr) {
-	self->second(dataPtr);
-}
-
-void QtMetaTypePrivate__QPairVariantInterfaceImpl_Delete(QtMetaTypePrivate__QPairVariantInterfaceImpl* self) {
-	delete self;
-}
-
-int QtPrivate__QTypeNormalizer_NormalizeTypeFromSignature(QtPrivate__QTypeNormalizer* self, const char* begin, const char* end) {
-	return self->normalizeTypeFromSignature(begin, end);
-}
-
-int QtPrivate__QTypeNormalizer_NormalizeType(QtPrivate__QTypeNormalizer* self, const char* begin, const char* end) {
-	return self->normalizeType(begin, end);
-}
-
-int QtPrivate__QTypeNormalizer_NormalizeType3(QtPrivate__QTypeNormalizer* self, const char* begin, const char* end, bool adjustConst) {
-	return self->normalizeType(begin, end, adjustConst);
-}
-
-void QtPrivate__QTypeNormalizer_Delete(QtPrivate__QTypeNormalizer* self) {
-	delete self;
+void QMetaType_Delete(QMetaType* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMetaType*>( self );
+	} else {
+		delete self;
+	}
 }
 

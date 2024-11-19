@@ -20,7 +20,7 @@ class QStringTokenizerBaseBase;
 typedef struct QStringTokenizerBaseBase QStringTokenizerBaseBase;
 #endif
 
-QStringTokenizerBaseBase* QStringTokenizerBaseBase_new(QStringTokenizerBaseBase* param1);
+void QStringTokenizerBaseBase_new(QStringTokenizerBaseBase* param1, QStringTokenizerBaseBase** outptr_QStringTokenizerBaseBase);
 
 #ifdef __cplusplus
 } /* extern C */

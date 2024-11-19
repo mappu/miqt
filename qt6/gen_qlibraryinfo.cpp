@@ -63,7 +63,11 @@ struct miqt_array /* of struct miqt_string */  QLibraryInfo_PlatformPluginArgume
 	return _out;
 }
 
-void QLibraryInfo_Delete(QLibraryInfo* self) {
-	delete self;
+void QLibraryInfo_Delete(QLibraryInfo* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QLibraryInfo*>( self );
+	} else {
+		delete self;
+	}
 }
 

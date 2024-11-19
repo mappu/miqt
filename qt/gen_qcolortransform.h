@@ -24,14 +24,14 @@ typedef struct QColorTransform QColorTransform;
 typedef struct QRgba64 QRgba64;
 #endif
 
-QColorTransform* QColorTransform_new();
-QColorTransform* QColorTransform_new2(QColorTransform* colorTransform);
+void QColorTransform_new(QColorTransform** outptr_QColorTransform);
+void QColorTransform_new2(QColorTransform* colorTransform, QColorTransform** outptr_QColorTransform);
 void QColorTransform_OperatorAssign(QColorTransform* self, QColorTransform* other);
 void QColorTransform_Swap(QColorTransform* self, QColorTransform* other);
 unsigned int QColorTransform_Map(const QColorTransform* self, unsigned int argb);
 QRgba64* QColorTransform_MapWithRgba64(const QColorTransform* self, QRgba64* rgba64);
 QColor* QColorTransform_MapWithColor(const QColorTransform* self, QColor* color);
-void QColorTransform_Delete(QColorTransform* self);
+void QColorTransform_Delete(QColorTransform* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

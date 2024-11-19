@@ -12,24 +12,28 @@
 #include "gen_qtextdocumentwriter.h"
 #include "_cgo_export.h"
 
-QTextDocumentWriter* QTextDocumentWriter_new() {
-	return new QTextDocumentWriter();
+void QTextDocumentWriter_new(QTextDocumentWriter** outptr_QTextDocumentWriter) {
+	QTextDocumentWriter* ret = new QTextDocumentWriter();
+	*outptr_QTextDocumentWriter = ret;
 }
 
-QTextDocumentWriter* QTextDocumentWriter_new2(QIODevice* device, struct miqt_string format) {
+void QTextDocumentWriter_new2(QIODevice* device, struct miqt_string format, QTextDocumentWriter** outptr_QTextDocumentWriter) {
 	QByteArray format_QByteArray(format.data, format.len);
-	return new QTextDocumentWriter(device, format_QByteArray);
+	QTextDocumentWriter* ret = new QTextDocumentWriter(device, format_QByteArray);
+	*outptr_QTextDocumentWriter = ret;
 }
 
-QTextDocumentWriter* QTextDocumentWriter_new3(struct miqt_string fileName) {
+void QTextDocumentWriter_new3(struct miqt_string fileName, QTextDocumentWriter** outptr_QTextDocumentWriter) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new QTextDocumentWriter(fileName_QString);
+	QTextDocumentWriter* ret = new QTextDocumentWriter(fileName_QString);
+	*outptr_QTextDocumentWriter = ret;
 }
 
-QTextDocumentWriter* QTextDocumentWriter_new4(struct miqt_string fileName, struct miqt_string format) {
+void QTextDocumentWriter_new4(struct miqt_string fileName, struct miqt_string format, QTextDocumentWriter** outptr_QTextDocumentWriter) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QByteArray format_QByteArray(format.data, format.len);
-	return new QTextDocumentWriter(fileName_QString, format_QByteArray);
+	QTextDocumentWriter* ret = new QTextDocumentWriter(fileName_QString, format_QByteArray);
+	*outptr_QTextDocumentWriter = ret;
 }
 
 void QTextDocumentWriter_SetFormat(QTextDocumentWriter* self, struct miqt_string format) {
@@ -104,7 +108,11 @@ struct miqt_array /* of struct miqt_string */  QTextDocumentWriter_SupportedDocu
 	return _out;
 }
 
-void QTextDocumentWriter_Delete(QTextDocumentWriter* self) {
-	delete self;
+void QTextDocumentWriter_Delete(QTextDocumentWriter* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QTextDocumentWriter*>( self );
+	} else {
+		delete self;
+	}
 }
 

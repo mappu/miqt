@@ -29,16 +29,20 @@ typedef struct QWidget QWidget;
 QWidget* QItemEditorCreatorBase_CreateWidget(const QItemEditorCreatorBase* self, QWidget* parent);
 struct miqt_string QItemEditorCreatorBase_ValuePropertyName(const QItemEditorCreatorBase* self);
 void QItemEditorCreatorBase_OperatorAssign(QItemEditorCreatorBase* self, QItemEditorCreatorBase* param1);
-void QItemEditorCreatorBase_Delete(QItemEditorCreatorBase* self);
+void QItemEditorCreatorBase_Delete(QItemEditorCreatorBase* self, bool isSubclass);
 
-QItemEditorFactory* QItemEditorFactory_new();
-QItemEditorFactory* QItemEditorFactory_new2(QItemEditorFactory* param1);
+void QItemEditorFactory_new(QItemEditorFactory** outptr_QItemEditorFactory);
+void QItemEditorFactory_new2(QItemEditorFactory* param1, QItemEditorFactory** outptr_QItemEditorFactory);
 QWidget* QItemEditorFactory_CreateEditor(const QItemEditorFactory* self, int userType, QWidget* parent);
 struct miqt_string QItemEditorFactory_ValuePropertyName(const QItemEditorFactory* self, int userType);
 void QItemEditorFactory_RegisterEditor(QItemEditorFactory* self, int userType, QItemEditorCreatorBase* creator);
 QItemEditorFactory* QItemEditorFactory_DefaultFactory();
 void QItemEditorFactory_SetDefaultFactory(QItemEditorFactory* factory);
-void QItemEditorFactory_Delete(QItemEditorFactory* self);
+void QItemEditorFactory_override_virtual_CreateEditor(void* self, intptr_t slot);
+QWidget* QItemEditorFactory_virtualbase_CreateEditor(const void* self, int userType, QWidget* parent);
+void QItemEditorFactory_override_virtual_ValuePropertyName(void* self, intptr_t slot);
+struct miqt_string QItemEditorFactory_virtualbase_ValuePropertyName(const void* self, int userType);
+void QItemEditorFactory_Delete(QItemEditorFactory* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -15,7 +15,8 @@ import (
 )
 
 type QAudioEncoderSettingsControl struct {
-	h *C.QAudioEncoderSettingsControl
+	h          *C.QAudioEncoderSettingsControl
+	isSubclass bool
 	*QMediaControl
 }
 
@@ -33,15 +34,23 @@ func (this *QAudioEncoderSettingsControl) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAudioEncoderSettingsControl(h *C.QAudioEncoderSettingsControl) *QAudioEncoderSettingsControl {
+// newQAudioEncoderSettingsControl constructs the type using only CGO pointers.
+func newQAudioEncoderSettingsControl(h *C.QAudioEncoderSettingsControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QAudioEncoderSettingsControl {
 	if h == nil {
 		return nil
 	}
-	return &QAudioEncoderSettingsControl{h: h, QMediaControl: UnsafeNewQMediaControl(unsafe.Pointer(h))}
+	return &QAudioEncoderSettingsControl{h: h,
+		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
 }
 
-func UnsafeNewQAudioEncoderSettingsControl(h unsafe.Pointer) *QAudioEncoderSettingsControl {
-	return newQAudioEncoderSettingsControl((*C.QAudioEncoderSettingsControl)(h))
+// UnsafeNewQAudioEncoderSettingsControl constructs the type using only unsafe pointers.
+func UnsafeNewQAudioEncoderSettingsControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QAudioEncoderSettingsControl {
+	if h == nil {
+		return nil
+	}
+
+	return &QAudioEncoderSettingsControl{h: (*C.QAudioEncoderSettingsControl)(h),
+		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
 }
 
 func (this *QAudioEncoderSettingsControl) MetaObject() *qt.QMetaObject {
@@ -96,8 +105,8 @@ func (this *QAudioEncoderSettingsControl) CodecDescription(codecName string) str
 	return _ret
 }
 
-func (this *QAudioEncoderSettingsControl) SupportedSampleRates(settings *QAudioEncoderSettings) []int {
-	var _ma C.struct_miqt_array = C.QAudioEncoderSettingsControl_SupportedSampleRates(this.h, settings.cPointer())
+func (this *QAudioEncoderSettingsControl) SupportedSampleRates(settings *QAudioEncoderSettings, continuous *bool) []int {
+	var _ma C.struct_miqt_array = C.QAudioEncoderSettingsControl_SupportedSampleRates(this.h, settings.cPointer(), (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -161,19 +170,9 @@ func QAudioEncoderSettingsControl_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QAudioEncoderSettingsControl) SupportedSampleRates2(settings *QAudioEncoderSettings, continuous *bool) []int {
-	var _ma C.struct_miqt_array = C.QAudioEncoderSettingsControl_SupportedSampleRates2(this.h, settings.cPointer(), (*C.bool)(unsafe.Pointer(continuous)))
-	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
-	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = (int)(_outCast[i])
-	}
-	return _ret
-}
-
 // Delete this object from C++ memory.
 func (this *QAudioEncoderSettingsControl) Delete() {
-	C.QAudioEncoderSettingsControl_Delete(this.h)
+	C.QAudioEncoderSettingsControl_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

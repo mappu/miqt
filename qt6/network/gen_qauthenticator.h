@@ -22,8 +22,8 @@ typedef struct QAuthenticator QAuthenticator;
 typedef struct QVariant QVariant;
 #endif
 
-QAuthenticator* QAuthenticator_new();
-QAuthenticator* QAuthenticator_new2(QAuthenticator* other);
+void QAuthenticator_new(QAuthenticator** outptr_QAuthenticator);
+void QAuthenticator_new2(QAuthenticator* other, QAuthenticator** outptr_QAuthenticator);
 void QAuthenticator_OperatorAssign(QAuthenticator* self, QAuthenticator* other);
 bool QAuthenticator_OperatorEqual(const QAuthenticator* self, QAuthenticator* other);
 bool QAuthenticator_OperatorNotEqual(const QAuthenticator* self, QAuthenticator* other);
@@ -38,7 +38,7 @@ struct miqt_map /* of struct miqt_string to QVariant* */  QAuthenticator_Options
 void QAuthenticator_SetOption(QAuthenticator* self, struct miqt_string opt, QVariant* value);
 bool QAuthenticator_IsNull(const QAuthenticator* self);
 void QAuthenticator_Detach(QAuthenticator* self);
-void QAuthenticator_Delete(QAuthenticator* self);
+void QAuthenticator_Delete(QAuthenticator* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

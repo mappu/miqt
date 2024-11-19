@@ -1,7 +1,9 @@
 #include <QApplication>
+#include <QCoreApplication>
 #include <QEvent>
 #include <QFont>
 #include <QFontMetrics>
+#include <QGuiApplication>
 #include <QList>
 #include <QMetaObject>
 #include <QObject>
@@ -16,12 +18,77 @@
 #include "gen_qapplication.h"
 #include "_cgo_export.h"
 
-QApplication* QApplication_new(int* argc, char** argv) {
-	return new QApplication(static_cast<int&>(*argc), argv);
+class MiqtVirtualQApplication : public virtual QApplication {
+public:
+
+	MiqtVirtualQApplication(int& argc, char** argv): QApplication(argc, argv) {};
+	MiqtVirtualQApplication(int& argc, char** argv, int param3): QApplication(argc, argv, param3) {};
+
+	virtual ~MiqtVirtualQApplication() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Notify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool notify(QObject* param1, QEvent* param2) override {
+		if (handle__Notify == 0) {
+			return QApplication::notify(param1, param2);
+		}
+		
+		QObject* sigval1 = param1;
+		QEvent* sigval2 = param2;
+
+		bool callback_return_value = miqt_exec_callback_QApplication_Notify(this, handle__Notify, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Notify(QObject* param1, QEvent* param2) {
+
+		return QApplication::notify(param1, param2);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* param1) override {
+		if (handle__Event == 0) {
+			return QApplication::event(param1);
+		}
+		
+		QEvent* sigval1 = param1;
+
+		bool callback_return_value = miqt_exec_callback_QApplication_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* param1) {
+
+		return QApplication::event(param1);
+
+	}
+
+};
+
+void QApplication_new(int* argc, char** argv, QApplication** outptr_QApplication, QGuiApplication** outptr_QGuiApplication, QCoreApplication** outptr_QCoreApplication, QObject** outptr_QObject) {
+	MiqtVirtualQApplication* ret = new MiqtVirtualQApplication(static_cast<int&>(*argc), argv);
+	*outptr_QApplication = ret;
+	*outptr_QGuiApplication = static_cast<QGuiApplication*>(ret);
+	*outptr_QCoreApplication = static_cast<QCoreApplication*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QApplication* QApplication_new2(int* argc, char** argv, int param3) {
-	return new QApplication(static_cast<int&>(*argc), argv, static_cast<int>(param3));
+void QApplication_new2(int* argc, char** argv, int param3, QApplication** outptr_QApplication, QGuiApplication** outptr_QGuiApplication, QCoreApplication** outptr_QCoreApplication, QObject** outptr_QObject) {
+	MiqtVirtualQApplication* ret = new MiqtVirtualQApplication(static_cast<int&>(*argc), argv, static_cast<int>(param3));
+	*outptr_QApplication = ret;
+	*outptr_QGuiApplication = static_cast<QGuiApplication*>(ret);
+	*outptr_QCoreApplication = static_cast<QCoreApplication*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QApplication_MetaObject(const QApplication* self) {
@@ -227,7 +294,7 @@ void QApplication_FocusChanged(QApplication* self, QWidget* old, QWidget* now) {
 }
 
 void QApplication_connect_FocusChanged(QApplication* self, intptr_t slot) {
-	QApplication::connect(self, static_cast<void (QApplication::*)(QWidget*, QWidget*)>(&QApplication::focusChanged), self, [=](QWidget* old, QWidget* now) {
+	MiqtVirtualQApplication::connect(self, static_cast<void (QApplication::*)(QWidget*, QWidget*)>(&QApplication::focusChanged), self, [=](QWidget* old, QWidget* now) {
 		QWidget* sigval1 = old;
 		QWidget* sigval2 = now;
 		miqt_exec_callback_QApplication_FocusChanged(slot, sigval1, sigval2);
@@ -304,7 +371,27 @@ void QApplication_SetEffectEnabled2(int param1, bool enable) {
 	QApplication::setEffectEnabled(static_cast<Qt::UIEffect>(param1), enable);
 }
 
-void QApplication_Delete(QApplication* self) {
-	delete self;
+void QApplication_override_virtual_Notify(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQApplication*>( (QApplication*)(self) )->handle__Notify = slot;
+}
+
+bool QApplication_virtualbase_Notify(void* self, QObject* param1, QEvent* param2) {
+	return ( (MiqtVirtualQApplication*)(self) )->virtualbase_Notify(param1, param2);
+}
+
+void QApplication_override_virtual_Event(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQApplication*>( (QApplication*)(self) )->handle__Event = slot;
+}
+
+bool QApplication_virtualbase_Event(void* self, QEvent* param1) {
+	return ( (MiqtVirtualQApplication*)(self) )->virtualbase_Event(param1);
+}
+
+void QApplication_Delete(QApplication* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQApplication*>( self );
+	} else {
+		delete self;
+	}
 }
 

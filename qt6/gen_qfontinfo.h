@@ -22,8 +22,8 @@ typedef struct QFont QFont;
 typedef struct QFontInfo QFontInfo;
 #endif
 
-QFontInfo* QFontInfo_new(QFont* param1);
-QFontInfo* QFontInfo_new2(QFontInfo* param1);
+void QFontInfo_new(QFont* param1, QFontInfo** outptr_QFontInfo);
+void QFontInfo_new2(QFontInfo* param1, QFontInfo** outptr_QFontInfo);
 void QFontInfo_OperatorAssign(QFontInfo* self, QFontInfo* param1);
 void QFontInfo_Swap(QFontInfo* self, QFontInfo* other);
 struct miqt_string QFontInfo_Family(const QFontInfo* self);
@@ -42,7 +42,7 @@ bool QFontInfo_FixedPitch(const QFontInfo* self);
 int QFontInfo_StyleHint(const QFontInfo* self);
 int QFontInfo_LegacyWeight(const QFontInfo* self);
 bool QFontInfo_ExactMatch(const QFontInfo* self);
-void QFontInfo_Delete(QFontInfo* self);
+void QFontInfo_Delete(QFontInfo* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

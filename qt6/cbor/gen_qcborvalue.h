@@ -49,30 +49,30 @@ typedef struct QVariant QVariant;
 #endif
 
 struct miqt_string QCborParserError_ErrorString(const QCborParserError* self);
-void QCborParserError_Delete(QCborParserError* self);
+void QCborParserError_Delete(QCborParserError* self, bool isSubclass);
 
-QCborValue* QCborValue_new();
-QCborValue* QCborValue_new2(int t_);
-QCborValue* QCborValue_new3(bool b_);
-QCborValue* QCborValue_new4(int i);
-QCborValue* QCborValue_new5(unsigned int u);
-QCborValue* QCborValue_new6(long long i);
-QCborValue* QCborValue_new7(double v);
-QCborValue* QCborValue_new8(uint8_t st);
-QCborValue* QCborValue_new9(struct miqt_string ba);
-QCborValue* QCborValue_new10(struct miqt_string s);
-QCborValue* QCborValue_new11(const char* s);
-QCborValue* QCborValue_new12(QCborArray* a);
-QCborValue* QCborValue_new13(QCborMap* m);
-QCborValue* QCborValue_new14(uint64_t tag);
-QCborValue* QCborValue_new15(int t_);
-QCborValue* QCborValue_new16(QDateTime* dt);
-QCborValue* QCborValue_new17(QUrl* url);
-QCborValue* QCborValue_new18(QRegularExpression* rx);
-QCborValue* QCborValue_new19(QUuid* uuid);
-QCborValue* QCborValue_new20(QCborValue* other);
-QCborValue* QCborValue_new21(uint64_t tag, QCborValue* taggedValue);
-QCborValue* QCborValue_new22(int t_, QCborValue* tv);
+void QCborValue_new(QCborValue** outptr_QCborValue);
+void QCborValue_new2(int t_, QCborValue** outptr_QCborValue);
+void QCborValue_new3(bool b_, QCborValue** outptr_QCborValue);
+void QCborValue_new4(int i, QCborValue** outptr_QCborValue);
+void QCborValue_new5(unsigned int u, QCborValue** outptr_QCborValue);
+void QCborValue_new6(long long i, QCborValue** outptr_QCborValue);
+void QCborValue_new7(double v, QCborValue** outptr_QCborValue);
+void QCborValue_new8(uint8_t st, QCborValue** outptr_QCborValue);
+void QCborValue_new9(struct miqt_string ba, QCborValue** outptr_QCborValue);
+void QCborValue_new10(struct miqt_string s, QCborValue** outptr_QCborValue);
+void QCborValue_new11(const char* s, QCborValue** outptr_QCborValue);
+void QCborValue_new12(QCborArray* a, QCborValue** outptr_QCborValue);
+void QCborValue_new13(QCborMap* m, QCborValue** outptr_QCborValue);
+void QCborValue_new14(uint64_t tag, QCborValue** outptr_QCborValue);
+void QCborValue_new15(int t_, QCborValue** outptr_QCborValue);
+void QCborValue_new16(QDateTime* dt, QCborValue** outptr_QCborValue);
+void QCborValue_new17(QUrl* url, QCborValue** outptr_QCborValue);
+void QCborValue_new18(QRegularExpression* rx, QCborValue** outptr_QCborValue);
+void QCborValue_new19(QUuid* uuid, QCborValue** outptr_QCborValue);
+void QCborValue_new20(QCborValue* other, QCborValue** outptr_QCborValue);
+void QCborValue_new21(uint64_t tag, QCborValue* taggedValue, QCborValue** outptr_QCborValue);
+void QCborValue_new22(int t_, QCborValue* tv, QCborValue** outptr_QCborValue);
 void QCborValue_OperatorAssign(QCborValue* self, QCborValue* other);
 void QCborValue_Swap(QCborValue* self, QCborValue* other);
 int QCborValue_Type(const QCborValue* self);
@@ -149,9 +149,9 @@ QCborValue* QCborValue_FromCbor33(const unsigned char* data, ptrdiff_t lenVal, Q
 struct miqt_string QCborValue_ToCbor1(const QCborValue* self, int opt);
 void QCborValue_ToCbor2(const QCborValue* self, QCborStreamWriter* writer, int opt);
 struct miqt_string QCborValue_ToDiagnosticNotation1(const QCborValue* self, int opts);
-void QCborValue_Delete(QCborValue* self);
+void QCborValue_Delete(QCborValue* self, bool isSubclass);
 
-QCborValueConstRef* QCborValueConstRef_new(QCborValueConstRef* param1);
+void QCborValueConstRef_new(QCborValueConstRef* param1, QCborValueConstRef** outptr_QCborValueConstRef);
 int QCborValueConstRef_Type(const QCborValueConstRef* self);
 bool QCborValueConstRef_IsInteger(const QCborValueConstRef* self);
 bool QCborValueConstRef_IsByteArray(const QCborValueConstRef* self);
@@ -215,9 +215,9 @@ QUuid* QCborValueConstRef_ToUuid1(const QCborValueConstRef* self, QUuid* default
 struct miqt_string QCborValueConstRef_ToCbor1(const QCborValueConstRef* self, int opt);
 void QCborValueConstRef_ToCbor2(const QCborValueConstRef* self, QCborStreamWriter* writer, int opt);
 struct miqt_string QCborValueConstRef_ToDiagnosticNotation1(const QCborValueConstRef* self, int opt);
-void QCborValueConstRef_Delete(QCborValueConstRef* self);
+void QCborValueConstRef_Delete(QCborValueConstRef* self, bool isSubclass);
 
-QCborValueRef* QCborValueRef_new(QCborValueRef* param1);
+void QCborValueRef_new(QCborValueRef* param1, QCborValueRef** outptr_QCborValueRef, QCborValueConstRef** outptr_QCborValueConstRef);
 void QCborValueRef_OperatorAssign(QCborValueRef* self, QCborValue* other);
 void QCborValueRef_OperatorAssignWithOther(QCborValueRef* self, QCborValueRef* other);
 QCborValueRef* QCborValueRef_OperatorSubscript(QCborValueRef* self, long long key);
@@ -285,7 +285,7 @@ QUuid* QCborValueRef_ToUuid1(const QCborValueRef* self, QUuid* defaultValue);
 struct miqt_string QCborValueRef_ToCbor1(QCborValueRef* self, int opt);
 void QCborValueRef_ToCbor2(QCborValueRef* self, QCborStreamWriter* writer, int opt);
 struct miqt_string QCborValueRef_ToDiagnosticNotation1(QCborValueRef* self, int opt);
-void QCborValueRef_Delete(QCborValueRef* self);
+void QCborValueRef_Delete(QCborValueRef* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

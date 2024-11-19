@@ -15,7 +15,8 @@ import (
 )
 
 type QPrinterInfo struct {
-	h *C.QPrinterInfo
+	h          *C.QPrinterInfo
+	isSubclass bool
 }
 
 func (this *QPrinterInfo) cPointer() *C.QPrinterInfo {
@@ -32,6 +33,7 @@ func (this *QPrinterInfo) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPrinterInfo constructs the type using only CGO pointers.
 func newQPrinterInfo(h *C.QPrinterInfo) *QPrinterInfo {
 	if h == nil {
 		return nil
@@ -39,26 +41,43 @@ func newQPrinterInfo(h *C.QPrinterInfo) *QPrinterInfo {
 	return &QPrinterInfo{h: h}
 }
 
+// UnsafeNewQPrinterInfo constructs the type using only unsafe pointers.
 func UnsafeNewQPrinterInfo(h unsafe.Pointer) *QPrinterInfo {
-	return newQPrinterInfo((*C.QPrinterInfo)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPrinterInfo{h: (*C.QPrinterInfo)(h)}
 }
 
 // NewQPrinterInfo constructs a new QPrinterInfo object.
 func NewQPrinterInfo() *QPrinterInfo {
-	ret := C.QPrinterInfo_new()
-	return newQPrinterInfo(ret)
+	var outptr_QPrinterInfo *C.QPrinterInfo = nil
+
+	C.QPrinterInfo_new(&outptr_QPrinterInfo)
+	ret := newQPrinterInfo(outptr_QPrinterInfo)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPrinterInfo2 constructs a new QPrinterInfo object.
 func NewQPrinterInfo2(other *QPrinterInfo) *QPrinterInfo {
-	ret := C.QPrinterInfo_new2(other.cPointer())
-	return newQPrinterInfo(ret)
+	var outptr_QPrinterInfo *C.QPrinterInfo = nil
+
+	C.QPrinterInfo_new2(other.cPointer(), &outptr_QPrinterInfo)
+	ret := newQPrinterInfo(outptr_QPrinterInfo)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPrinterInfo3 constructs a new QPrinterInfo object.
 func NewQPrinterInfo3(printer *QPrinter) *QPrinterInfo {
-	ret := C.QPrinterInfo_new3(printer.cPointer())
-	return newQPrinterInfo(ret)
+	var outptr_QPrinterInfo *C.QPrinterInfo = nil
+
+	C.QPrinterInfo_new3(printer.cPointer(), &outptr_QPrinterInfo)
+	ret := newQPrinterInfo(outptr_QPrinterInfo)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QPrinterInfo) OperatorAssign(other *QPrinterInfo) {
@@ -279,7 +298,7 @@ func QPrinterInfo_PrinterInfo(printerName string) *QPrinterInfo {
 
 // Delete this object from C++ memory.
 func (this *QPrinterInfo) Delete() {
-	C.QPrinterInfo_Delete(this.h)
+	C.QPrinterInfo_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

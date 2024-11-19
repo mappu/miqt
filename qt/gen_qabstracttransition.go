@@ -21,7 +21,8 @@ const (
 )
 
 type QAbstractTransition struct {
-	h *C.QAbstractTransition
+	h          *C.QAbstractTransition
+	isSubclass bool
 	*QObject
 }
 
@@ -39,15 +40,23 @@ func (this *QAbstractTransition) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAbstractTransition(h *C.QAbstractTransition) *QAbstractTransition {
+// newQAbstractTransition constructs the type using only CGO pointers.
+func newQAbstractTransition(h *C.QAbstractTransition, h_QObject *C.QObject) *QAbstractTransition {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractTransition{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QAbstractTransition{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQAbstractTransition(h unsafe.Pointer) *QAbstractTransition {
-	return newQAbstractTransition((*C.QAbstractTransition)(h))
+// UnsafeNewQAbstractTransition constructs the type using only unsafe pointers.
+func UnsafeNewQAbstractTransition(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractTransition {
+	if h == nil {
+		return nil
+	}
+
+	return &QAbstractTransition{h: (*C.QAbstractTransition)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QAbstractTransition) MetaObject() *QMetaObject {
@@ -79,11 +88,11 @@ func QAbstractTransition_TrUtf8(s string) string {
 }
 
 func (this *QAbstractTransition) SourceState() *QState {
-	return UnsafeNewQState(unsafe.Pointer(C.QAbstractTransition_SourceState(this.h)))
+	return UnsafeNewQState(unsafe.Pointer(C.QAbstractTransition_SourceState(this.h)), nil, nil)
 }
 
 func (this *QAbstractTransition) TargetState() *QAbstractState {
-	return UnsafeNewQAbstractState(unsafe.Pointer(C.QAbstractTransition_TargetState(this.h)))
+	return UnsafeNewQAbstractState(unsafe.Pointer(C.QAbstractTransition_TargetState(this.h)), nil)
 }
 
 func (this *QAbstractTransition) SetTargetState(target *QAbstractState) {
@@ -95,7 +104,7 @@ func (this *QAbstractTransition) TargetStates() []*QAbstractState {
 	_ret := make([]*QAbstractState, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractState)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQAbstractState(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQAbstractState(unsafe.Pointer(_outCast[i]), nil)
 	}
 	return _ret
 }
@@ -119,7 +128,7 @@ func (this *QAbstractTransition) SetTransitionType(typeVal QAbstractTransition__
 }
 
 func (this *QAbstractTransition) Machine() *QStateMachine {
-	return UnsafeNewQStateMachine(unsafe.Pointer(C.QAbstractTransition_Machine(this.h)))
+	return UnsafeNewQStateMachine(unsafe.Pointer(C.QAbstractTransition_Machine(this.h)), nil, nil, nil)
 }
 
 func (this *QAbstractTransition) AddAnimation(animation *QAbstractAnimation) {
@@ -135,7 +144,7 @@ func (this *QAbstractTransition) Animations() []*QAbstractAnimation {
 	_ret := make([]*QAbstractAnimation, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractAnimation)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQAbstractAnimation(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQAbstractAnimation(unsafe.Pointer(_outCast[i]), nil)
 	}
 	return _ret
 }
@@ -186,7 +195,7 @@ func QAbstractTransition_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAbstractTransition) Delete() {
-	C.QAbstractTransition_Delete(this.h)
+	C.QAbstractTransition_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

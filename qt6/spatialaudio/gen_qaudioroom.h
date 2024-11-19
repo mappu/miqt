@@ -17,18 +17,28 @@ extern "C" {
 #ifdef __cplusplus
 class QAudioEngine;
 class QAudioRoom;
+class QChildEvent;
+class QEvent;
+class QMetaMethod;
 class QMetaObject;
+class QObject;
 class QQuaternion;
+class QTimerEvent;
 class QVector3D;
 #else
 typedef struct QAudioEngine QAudioEngine;
 typedef struct QAudioRoom QAudioRoom;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 typedef struct QQuaternion QQuaternion;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QVector3D QVector3D;
 #endif
 
-QAudioRoom* QAudioRoom_new(QAudioEngine* engine);
+void QAudioRoom_new(QAudioEngine* engine, QAudioRoom** outptr_QAudioRoom, QObject** outptr_QObject);
 QMetaObject* QAudioRoom_MetaObject(const QAudioRoom* self);
 void* QAudioRoom_Metacast(QAudioRoom* self, const char* param1);
 struct miqt_string QAudioRoom_Tr(const char* s);
@@ -66,7 +76,21 @@ void QAudioRoom_ReverbBrightnessChanged(QAudioRoom* self);
 void QAudioRoom_connect_ReverbBrightnessChanged(QAudioRoom* self, intptr_t slot);
 struct miqt_string QAudioRoom_Tr2(const char* s, const char* c);
 struct miqt_string QAudioRoom_Tr3(const char* s, const char* c, int n);
-void QAudioRoom_Delete(QAudioRoom* self);
+void QAudioRoom_override_virtual_Event(void* self, intptr_t slot);
+bool QAudioRoom_virtualbase_Event(void* self, QEvent* event);
+void QAudioRoom_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QAudioRoom_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QAudioRoom_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QAudioRoom_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QAudioRoom_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QAudioRoom_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QAudioRoom_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QAudioRoom_virtualbase_CustomEvent(void* self, QEvent* event);
+void QAudioRoom_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QAudioRoom_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QAudioRoom_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QAudioRoom_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QAudioRoom_Delete(QAudioRoom* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

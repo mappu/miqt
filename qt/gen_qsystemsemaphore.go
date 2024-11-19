@@ -33,7 +33,8 @@ const (
 )
 
 type QSystemSemaphore struct {
-	h *C.QSystemSemaphore
+	h          *C.QSystemSemaphore
+	isSubclass bool
 }
 
 func (this *QSystemSemaphore) cPointer() *C.QSystemSemaphore {
@@ -50,6 +51,7 @@ func (this *QSystemSemaphore) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQSystemSemaphore constructs the type using only CGO pointers.
 func newQSystemSemaphore(h *C.QSystemSemaphore) *QSystemSemaphore {
 	if h == nil {
 		return nil
@@ -57,8 +59,13 @@ func newQSystemSemaphore(h *C.QSystemSemaphore) *QSystemSemaphore {
 	return &QSystemSemaphore{h: h}
 }
 
+// UnsafeNewQSystemSemaphore constructs the type using only unsafe pointers.
 func UnsafeNewQSystemSemaphore(h unsafe.Pointer) *QSystemSemaphore {
-	return newQSystemSemaphore((*C.QSystemSemaphore)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QSystemSemaphore{h: (*C.QSystemSemaphore)(h)}
 }
 
 // NewQSystemSemaphore constructs a new QSystemSemaphore object.
@@ -67,8 +74,12 @@ func NewQSystemSemaphore(key string) *QSystemSemaphore {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	ret := C.QSystemSemaphore_new(key_ms)
-	return newQSystemSemaphore(ret)
+	var outptr_QSystemSemaphore *C.QSystemSemaphore = nil
+
+	C.QSystemSemaphore_new(key_ms, &outptr_QSystemSemaphore)
+	ret := newQSystemSemaphore(outptr_QSystemSemaphore)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSystemSemaphore2 constructs a new QSystemSemaphore object.
@@ -77,8 +88,12 @@ func NewQSystemSemaphore2(key string, initialValue int) *QSystemSemaphore {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	ret := C.QSystemSemaphore_new2(key_ms, (C.int)(initialValue))
-	return newQSystemSemaphore(ret)
+	var outptr_QSystemSemaphore *C.QSystemSemaphore = nil
+
+	C.QSystemSemaphore_new2(key_ms, (C.int)(initialValue), &outptr_QSystemSemaphore)
+	ret := newQSystemSemaphore(outptr_QSystemSemaphore)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQSystemSemaphore3 constructs a new QSystemSemaphore object.
@@ -87,8 +102,12 @@ func NewQSystemSemaphore3(key string, initialValue int, mode QSystemSemaphore__A
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	ret := C.QSystemSemaphore_new3(key_ms, (C.int)(initialValue), (C.int)(mode))
-	return newQSystemSemaphore(ret)
+	var outptr_QSystemSemaphore *C.QSystemSemaphore = nil
+
+	C.QSystemSemaphore_new3(key_ms, (C.int)(initialValue), (C.int)(mode), &outptr_QSystemSemaphore)
+	ret := newQSystemSemaphore(outptr_QSystemSemaphore)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QSystemSemaphore) SetKey(key string) {
@@ -147,7 +166,7 @@ func (this *QSystemSemaphore) Release1(n int) bool {
 
 // Delete this object from C++ memory.
 func (this *QSystemSemaphore) Delete() {
-	C.QSystemSemaphore_Delete(this.h)
+	C.QSystemSemaphore_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

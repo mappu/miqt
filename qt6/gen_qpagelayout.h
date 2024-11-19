@@ -30,11 +30,11 @@ typedef struct QRect QRect;
 typedef struct QRectF QRectF;
 #endif
 
-QPageLayout* QPageLayout_new();
-QPageLayout* QPageLayout_new2(QPageSize* pageSize, int orientation, QMarginsF* margins);
-QPageLayout* QPageLayout_new3(QPageLayout* other);
-QPageLayout* QPageLayout_new4(QPageSize* pageSize, int orientation, QMarginsF* margins, int units);
-QPageLayout* QPageLayout_new5(QPageSize* pageSize, int orientation, QMarginsF* margins, int units, QMarginsF* minMargins);
+void QPageLayout_new(QPageLayout** outptr_QPageLayout);
+void QPageLayout_new2(QPageSize* pageSize, int orientation, QMarginsF* margins, QPageLayout** outptr_QPageLayout);
+void QPageLayout_new3(QPageLayout* other, QPageLayout** outptr_QPageLayout);
+void QPageLayout_new4(QPageSize* pageSize, int orientation, QMarginsF* margins, int units, QPageLayout** outptr_QPageLayout);
+void QPageLayout_new5(QPageSize* pageSize, int orientation, QMarginsF* margins, int units, QMarginsF* minMargins, QPageLayout** outptr_QPageLayout);
 void QPageLayout_OperatorAssign(QPageLayout* self, QPageLayout* other);
 void QPageLayout_Swap(QPageLayout* self, QPageLayout* other);
 bool QPageLayout_IsEquivalentTo(const QPageLayout* self, QPageLayout* other);
@@ -68,7 +68,7 @@ QRectF* QPageLayout_PaintRectWithUnits(const QPageLayout* self, int units);
 QRect* QPageLayout_PaintRectPoints(const QPageLayout* self);
 QRect* QPageLayout_PaintRectPixels(const QPageLayout* self, int resolution);
 void QPageLayout_SetPageSize2(QPageLayout* self, QPageSize* pageSize, QMarginsF* minMargins);
-void QPageLayout_Delete(QPageLayout* self);
+void QPageLayout_Delete(QPageLayout* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

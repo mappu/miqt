@@ -14,7 +14,8 @@ import (
 )
 
 type QAbstractConcatenable struct {
-	h *C.QAbstractConcatenable
+	h          *C.QAbstractConcatenable
+	isSubclass bool
 }
 
 func (this *QAbstractConcatenable) cPointer() *C.QAbstractConcatenable {
@@ -31,6 +32,7 @@ func (this *QAbstractConcatenable) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAbstractConcatenable constructs the type using only CGO pointers.
 func newQAbstractConcatenable(h *C.QAbstractConcatenable) *QAbstractConcatenable {
 	if h == nil {
 		return nil
@@ -38,13 +40,18 @@ func newQAbstractConcatenable(h *C.QAbstractConcatenable) *QAbstractConcatenable
 	return &QAbstractConcatenable{h: h}
 }
 
+// UnsafeNewQAbstractConcatenable constructs the type using only unsafe pointers.
 func UnsafeNewQAbstractConcatenable(h unsafe.Pointer) *QAbstractConcatenable {
-	return newQAbstractConcatenable((*C.QAbstractConcatenable)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAbstractConcatenable{h: (*C.QAbstractConcatenable)(h)}
 }
 
 // Delete this object from C++ memory.
 func (this *QAbstractConcatenable) Delete() {
-	C.QAbstractConcatenable_Delete(this.h)
+	C.QAbstractConcatenable_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

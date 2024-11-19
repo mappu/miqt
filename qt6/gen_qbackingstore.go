@@ -14,7 +14,8 @@ import (
 )
 
 type QBackingStore struct {
-	h *C.QBackingStore
+	h          *C.QBackingStore
+	isSubclass bool
 }
 
 func (this *QBackingStore) cPointer() *C.QBackingStore {
@@ -31,6 +32,7 @@ func (this *QBackingStore) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQBackingStore constructs the type using only CGO pointers.
 func newQBackingStore(h *C.QBackingStore) *QBackingStore {
 	if h == nil {
 		return nil
@@ -38,18 +40,27 @@ func newQBackingStore(h *C.QBackingStore) *QBackingStore {
 	return &QBackingStore{h: h}
 }
 
+// UnsafeNewQBackingStore constructs the type using only unsafe pointers.
 func UnsafeNewQBackingStore(h unsafe.Pointer) *QBackingStore {
-	return newQBackingStore((*C.QBackingStore)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QBackingStore{h: (*C.QBackingStore)(h)}
 }
 
 // NewQBackingStore constructs a new QBackingStore object.
 func NewQBackingStore(window *QWindow) *QBackingStore {
-	ret := C.QBackingStore_new(window.cPointer())
-	return newQBackingStore(ret)
+	var outptr_QBackingStore *C.QBackingStore = nil
+
+	C.QBackingStore_new(window.cPointer(), &outptr_QBackingStore)
+	ret := newQBackingStore(outptr_QBackingStore)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QBackingStore) Window() *QWindow {
-	return UnsafeNewQWindow(unsafe.Pointer(C.QBackingStore_Window(this.h)))
+	return UnsafeNewQWindow(unsafe.Pointer(C.QBackingStore_Window(this.h)), nil, nil)
 }
 
 func (this *QBackingStore) PaintDevice() *QPaintDevice {
@@ -108,7 +119,7 @@ func (this *QBackingStore) Flush3(region *QRegion, window *QWindow, offset *QPoi
 
 // Delete this object from C++ memory.
 func (this *QBackingStore) Delete() {
-	C.QBackingStore_Delete(this.h)
+	C.QBackingStore_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

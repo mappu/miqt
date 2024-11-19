@@ -50,7 +50,7 @@ typedef struct QTextLine QTextLine;
 typedef struct QTextOption QTextOption;
 #endif
 
-QTextInlineObject* QTextInlineObject_new();
+void QTextInlineObject_new(QTextInlineObject** outptr_QTextInlineObject);
 bool QTextInlineObject_IsValid(const QTextInlineObject* self);
 QRectF* QTextInlineObject_Rect(const QTextInlineObject* self);
 double QTextInlineObject_Width(const QTextInlineObject* self);
@@ -64,13 +64,13 @@ void QTextInlineObject_SetDescent(QTextInlineObject* self, double d);
 int QTextInlineObject_TextPosition(const QTextInlineObject* self);
 int QTextInlineObject_FormatIndex(const QTextInlineObject* self);
 QTextFormat* QTextInlineObject_Format(const QTextInlineObject* self);
-void QTextInlineObject_Delete(QTextInlineObject* self);
+void QTextInlineObject_Delete(QTextInlineObject* self, bool isSubclass);
 
-QTextLayout* QTextLayout_new();
-QTextLayout* QTextLayout_new2(struct miqt_string text);
-QTextLayout* QTextLayout_new3(struct miqt_string text, QFont* font);
-QTextLayout* QTextLayout_new4(QTextBlock* b);
-QTextLayout* QTextLayout_new5(struct miqt_string text, QFont* font, QPaintDevice* paintdevice);
+void QTextLayout_new(QTextLayout** outptr_QTextLayout);
+void QTextLayout_new2(struct miqt_string text, QTextLayout** outptr_QTextLayout);
+void QTextLayout_new3(struct miqt_string text, QFont* font, QTextLayout** outptr_QTextLayout);
+void QTextLayout_new4(QTextBlock* b, QTextLayout** outptr_QTextLayout);
+void QTextLayout_new5(struct miqt_string text, QFont* font, QPaintDevice* paintdevice, QTextLayout** outptr_QTextLayout);
 void QTextLayout_SetFont(QTextLayout* self, QFont* f);
 QFont* QTextLayout_Font(const QTextLayout* self);
 void QTextLayout_SetRawFont(QTextLayout* self, QRawFont* rawFont);
@@ -119,9 +119,9 @@ void QTextLayout_Draw3(const QTextLayout* self, QPainter* p, QPointF* pos, struc
 void QTextLayout_Draw4(const QTextLayout* self, QPainter* p, QPointF* pos, struct miqt_array /* of QTextLayout__FormatRange* */  selections, QRectF* clip);
 struct miqt_array /* of QGlyphRun* */  QTextLayout_GlyphRuns1(const QTextLayout* self, int from);
 struct miqt_array /* of QGlyphRun* */  QTextLayout_GlyphRuns2(const QTextLayout* self, int from, int length);
-void QTextLayout_Delete(QTextLayout* self);
+void QTextLayout_Delete(QTextLayout* self, bool isSubclass);
 
-QTextLine* QTextLine_new();
+void QTextLine_new(QTextLine** outptr_QTextLine);
 bool QTextLine_IsValid(const QTextLine* self);
 QRectF* QTextLine_Rect(const QTextLine* self);
 double QTextLine_X(const QTextLine* self);
@@ -155,9 +155,9 @@ int QTextLine_XToCursor2(const QTextLine* self, double x, int param2);
 void QTextLine_Draw3(const QTextLine* self, QPainter* p, QPointF* point, QTextLayout__FormatRange* selection);
 struct miqt_array /* of QGlyphRun* */  QTextLine_GlyphRuns1(const QTextLine* self, int from);
 struct miqt_array /* of QGlyphRun* */  QTextLine_GlyphRuns2(const QTextLine* self, int from, int length);
-void QTextLine_Delete(QTextLine* self);
+void QTextLine_Delete(QTextLine* self, bool isSubclass);
 
-void QTextLayout__FormatRange_Delete(QTextLayout__FormatRange* self);
+void QTextLayout__FormatRange_Delete(QTextLayout__FormatRange* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

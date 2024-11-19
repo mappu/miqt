@@ -191,7 +191,8 @@ const (
 )
 
 type QEvent struct {
-	h *C.QEvent
+	h          *C.QEvent
+	isSubclass bool
 }
 
 func (this *QEvent) cPointer() *C.QEvent {
@@ -208,6 +209,7 @@ func (this *QEvent) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQEvent constructs the type using only CGO pointers.
 func newQEvent(h *C.QEvent) *QEvent {
 	if h == nil {
 		return nil
@@ -215,20 +217,33 @@ func newQEvent(h *C.QEvent) *QEvent {
 	return &QEvent{h: h}
 }
 
+// UnsafeNewQEvent constructs the type using only unsafe pointers.
 func UnsafeNewQEvent(h unsafe.Pointer) *QEvent {
-	return newQEvent((*C.QEvent)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QEvent{h: (*C.QEvent)(h)}
 }
 
 // NewQEvent constructs a new QEvent object.
 func NewQEvent(typeVal QEvent__Type) *QEvent {
-	ret := C.QEvent_new((C.int)(typeVal))
-	return newQEvent(ret)
+	var outptr_QEvent *C.QEvent = nil
+
+	C.QEvent_new((C.int)(typeVal), &outptr_QEvent)
+	ret := newQEvent(outptr_QEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQEvent2 constructs a new QEvent object.
 func NewQEvent2(other *QEvent) *QEvent {
-	ret := C.QEvent_new2(other.cPointer())
-	return newQEvent(ret)
+	var outptr_QEvent *C.QEvent = nil
+
+	C.QEvent_new2(other.cPointer(), &outptr_QEvent)
+	ret := newQEvent(outptr_QEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QEvent) OperatorAssign(other *QEvent) {
@@ -269,7 +284,7 @@ func QEvent_RegisterEventType1(hint int) int {
 
 // Delete this object from C++ memory.
 func (this *QEvent) Delete() {
-	C.QEvent_Delete(this.h)
+	C.QEvent_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -282,7 +297,8 @@ func (this *QEvent) GoGC() {
 }
 
 type QTimerEvent struct {
-	h *C.QTimerEvent
+	h          *C.QTimerEvent
+	isSubclass bool
 	*QEvent
 }
 
@@ -300,27 +316,45 @@ func (this *QTimerEvent) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQTimerEvent(h *C.QTimerEvent) *QTimerEvent {
+// newQTimerEvent constructs the type using only CGO pointers.
+func newQTimerEvent(h *C.QTimerEvent, h_QEvent *C.QEvent) *QTimerEvent {
 	if h == nil {
 		return nil
 	}
-	return &QTimerEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
+	return &QTimerEvent{h: h,
+		QEvent: newQEvent(h_QEvent)}
 }
 
-func UnsafeNewQTimerEvent(h unsafe.Pointer) *QTimerEvent {
-	return newQTimerEvent((*C.QTimerEvent)(h))
+// UnsafeNewQTimerEvent constructs the type using only unsafe pointers.
+func UnsafeNewQTimerEvent(h unsafe.Pointer, h_QEvent unsafe.Pointer) *QTimerEvent {
+	if h == nil {
+		return nil
+	}
+
+	return &QTimerEvent{h: (*C.QTimerEvent)(h),
+		QEvent: UnsafeNewQEvent(h_QEvent)}
 }
 
 // NewQTimerEvent constructs a new QTimerEvent object.
 func NewQTimerEvent(timerId int) *QTimerEvent {
-	ret := C.QTimerEvent_new((C.int)(timerId))
-	return newQTimerEvent(ret)
+	var outptr_QTimerEvent *C.QTimerEvent = nil
+	var outptr_QEvent *C.QEvent = nil
+
+	C.QTimerEvent_new((C.int)(timerId), &outptr_QTimerEvent, &outptr_QEvent)
+	ret := newQTimerEvent(outptr_QTimerEvent, outptr_QEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTimerEvent2 constructs a new QTimerEvent object.
 func NewQTimerEvent2(param1 *QTimerEvent) *QTimerEvent {
-	ret := C.QTimerEvent_new2(param1.cPointer())
-	return newQTimerEvent(ret)
+	var outptr_QTimerEvent *C.QTimerEvent = nil
+	var outptr_QEvent *C.QEvent = nil
+
+	C.QTimerEvent_new2(param1.cPointer(), &outptr_QTimerEvent, &outptr_QEvent)
+	ret := newQTimerEvent(outptr_QTimerEvent, outptr_QEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QTimerEvent) TimerId() int {
@@ -329,7 +363,7 @@ func (this *QTimerEvent) TimerId() int {
 
 // Delete this object from C++ memory.
 func (this *QTimerEvent) Delete() {
-	C.QTimerEvent_Delete(this.h)
+	C.QTimerEvent_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -342,7 +376,8 @@ func (this *QTimerEvent) GoGC() {
 }
 
 type QChildEvent struct {
-	h *C.QChildEvent
+	h          *C.QChildEvent
+	isSubclass bool
 	*QEvent
 }
 
@@ -360,27 +395,45 @@ func (this *QChildEvent) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQChildEvent(h *C.QChildEvent) *QChildEvent {
+// newQChildEvent constructs the type using only CGO pointers.
+func newQChildEvent(h *C.QChildEvent, h_QEvent *C.QEvent) *QChildEvent {
 	if h == nil {
 		return nil
 	}
-	return &QChildEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
+	return &QChildEvent{h: h,
+		QEvent: newQEvent(h_QEvent)}
 }
 
-func UnsafeNewQChildEvent(h unsafe.Pointer) *QChildEvent {
-	return newQChildEvent((*C.QChildEvent)(h))
+// UnsafeNewQChildEvent constructs the type using only unsafe pointers.
+func UnsafeNewQChildEvent(h unsafe.Pointer, h_QEvent unsafe.Pointer) *QChildEvent {
+	if h == nil {
+		return nil
+	}
+
+	return &QChildEvent{h: (*C.QChildEvent)(h),
+		QEvent: UnsafeNewQEvent(h_QEvent)}
 }
 
 // NewQChildEvent constructs a new QChildEvent object.
 func NewQChildEvent(typeVal QEvent__Type, child *QObject) *QChildEvent {
-	ret := C.QChildEvent_new((C.int)(typeVal), child.cPointer())
-	return newQChildEvent(ret)
+	var outptr_QChildEvent *C.QChildEvent = nil
+	var outptr_QEvent *C.QEvent = nil
+
+	C.QChildEvent_new((C.int)(typeVal), child.cPointer(), &outptr_QChildEvent, &outptr_QEvent)
+	ret := newQChildEvent(outptr_QChildEvent, outptr_QEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQChildEvent2 constructs a new QChildEvent object.
 func NewQChildEvent2(param1 *QChildEvent) *QChildEvent {
-	ret := C.QChildEvent_new2(param1.cPointer())
-	return newQChildEvent(ret)
+	var outptr_QChildEvent *C.QChildEvent = nil
+	var outptr_QEvent *C.QEvent = nil
+
+	C.QChildEvent_new2(param1.cPointer(), &outptr_QChildEvent, &outptr_QEvent)
+	ret := newQChildEvent(outptr_QChildEvent, outptr_QEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QChildEvent) Child() *QObject {
@@ -401,7 +454,7 @@ func (this *QChildEvent) Removed() bool {
 
 // Delete this object from C++ memory.
 func (this *QChildEvent) Delete() {
-	C.QChildEvent_Delete(this.h)
+	C.QChildEvent_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -414,7 +467,8 @@ func (this *QChildEvent) GoGC() {
 }
 
 type QDynamicPropertyChangeEvent struct {
-	h *C.QDynamicPropertyChangeEvent
+	h          *C.QDynamicPropertyChangeEvent
+	isSubclass bool
 	*QEvent
 }
 
@@ -432,15 +486,23 @@ func (this *QDynamicPropertyChangeEvent) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQDynamicPropertyChangeEvent(h *C.QDynamicPropertyChangeEvent) *QDynamicPropertyChangeEvent {
+// newQDynamicPropertyChangeEvent constructs the type using only CGO pointers.
+func newQDynamicPropertyChangeEvent(h *C.QDynamicPropertyChangeEvent, h_QEvent *C.QEvent) *QDynamicPropertyChangeEvent {
 	if h == nil {
 		return nil
 	}
-	return &QDynamicPropertyChangeEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
+	return &QDynamicPropertyChangeEvent{h: h,
+		QEvent: newQEvent(h_QEvent)}
 }
 
-func UnsafeNewQDynamicPropertyChangeEvent(h unsafe.Pointer) *QDynamicPropertyChangeEvent {
-	return newQDynamicPropertyChangeEvent((*C.QDynamicPropertyChangeEvent)(h))
+// UnsafeNewQDynamicPropertyChangeEvent constructs the type using only unsafe pointers.
+func UnsafeNewQDynamicPropertyChangeEvent(h unsafe.Pointer, h_QEvent unsafe.Pointer) *QDynamicPropertyChangeEvent {
+	if h == nil {
+		return nil
+	}
+
+	return &QDynamicPropertyChangeEvent{h: (*C.QDynamicPropertyChangeEvent)(h),
+		QEvent: UnsafeNewQEvent(h_QEvent)}
 }
 
 // NewQDynamicPropertyChangeEvent constructs a new QDynamicPropertyChangeEvent object.
@@ -448,14 +510,24 @@ func NewQDynamicPropertyChangeEvent(name []byte) *QDynamicPropertyChangeEvent {
 	name_alias := C.struct_miqt_string{}
 	name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
 	name_alias.len = C.size_t(len(name))
-	ret := C.QDynamicPropertyChangeEvent_new(name_alias)
-	return newQDynamicPropertyChangeEvent(ret)
+	var outptr_QDynamicPropertyChangeEvent *C.QDynamicPropertyChangeEvent = nil
+	var outptr_QEvent *C.QEvent = nil
+
+	C.QDynamicPropertyChangeEvent_new(name_alias, &outptr_QDynamicPropertyChangeEvent, &outptr_QEvent)
+	ret := newQDynamicPropertyChangeEvent(outptr_QDynamicPropertyChangeEvent, outptr_QEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDynamicPropertyChangeEvent2 constructs a new QDynamicPropertyChangeEvent object.
 func NewQDynamicPropertyChangeEvent2(param1 *QDynamicPropertyChangeEvent) *QDynamicPropertyChangeEvent {
-	ret := C.QDynamicPropertyChangeEvent_new2(param1.cPointer())
-	return newQDynamicPropertyChangeEvent(ret)
+	var outptr_QDynamicPropertyChangeEvent *C.QDynamicPropertyChangeEvent = nil
+	var outptr_QEvent *C.QEvent = nil
+
+	C.QDynamicPropertyChangeEvent_new2(param1.cPointer(), &outptr_QDynamicPropertyChangeEvent, &outptr_QEvent)
+	ret := newQDynamicPropertyChangeEvent(outptr_QDynamicPropertyChangeEvent, outptr_QEvent)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QDynamicPropertyChangeEvent) PropertyName() []byte {
@@ -467,7 +539,7 @@ func (this *QDynamicPropertyChangeEvent) PropertyName() []byte {
 
 // Delete this object from C++ memory.
 func (this *QDynamicPropertyChangeEvent) Delete() {
-	C.QDynamicPropertyChangeEvent_Delete(this.h)
+	C.QDynamicPropertyChangeEvent_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

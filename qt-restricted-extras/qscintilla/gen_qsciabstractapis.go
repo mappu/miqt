@@ -15,7 +15,8 @@ import (
 )
 
 type QsciAbstractAPIs struct {
-	h *C.QsciAbstractAPIs
+	h          *C.QsciAbstractAPIs
+	isSubclass bool
 	*qt.QObject
 }
 
@@ -33,15 +34,23 @@ func (this *QsciAbstractAPIs) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQsciAbstractAPIs(h *C.QsciAbstractAPIs) *QsciAbstractAPIs {
+// newQsciAbstractAPIs constructs the type using only CGO pointers.
+func newQsciAbstractAPIs(h *C.QsciAbstractAPIs, h_QObject *C.QObject) *QsciAbstractAPIs {
 	if h == nil {
 		return nil
 	}
-	return &QsciAbstractAPIs{h: h, QObject: qt.UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QsciAbstractAPIs{h: h,
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
 }
 
-func UnsafeNewQsciAbstractAPIs(h unsafe.Pointer) *QsciAbstractAPIs {
-	return newQsciAbstractAPIs((*C.QsciAbstractAPIs)(h))
+// UnsafeNewQsciAbstractAPIs constructs the type using only unsafe pointers.
+func UnsafeNewQsciAbstractAPIs(h unsafe.Pointer, h_QObject unsafe.Pointer) *QsciAbstractAPIs {
+	if h == nil {
+		return nil
+	}
+
+	return &QsciAbstractAPIs{h: (*C.QsciAbstractAPIs)(h),
+		QObject: qt.UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QsciAbstractAPIs) MetaObject() *qt.QMetaObject {
@@ -73,7 +82,7 @@ func QsciAbstractAPIs_TrUtf8(s string) string {
 }
 
 func (this *QsciAbstractAPIs) Lexer() *QsciLexer {
-	return UnsafeNewQsciLexer(unsafe.Pointer(C.QsciAbstractAPIs_Lexer(this.h)))
+	return UnsafeNewQsciLexer(unsafe.Pointer(C.QsciAbstractAPIs_Lexer(this.h)), nil)
 }
 
 func (this *QsciAbstractAPIs) UpdateAutoCompletionList(context []string, list []string) {
@@ -183,7 +192,7 @@ func QsciAbstractAPIs_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QsciAbstractAPIs) Delete() {
-	C.QsciAbstractAPIs_Delete(this.h)
+	C.QsciAbstractAPIs_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

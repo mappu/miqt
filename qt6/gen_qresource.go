@@ -22,7 +22,8 @@ const (
 )
 
 type QResource struct {
-	h *C.QResource
+	h          *C.QResource
+	isSubclass bool
 }
 
 func (this *QResource) cPointer() *C.QResource {
@@ -39,6 +40,7 @@ func (this *QResource) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQResource constructs the type using only CGO pointers.
 func newQResource(h *C.QResource) *QResource {
 	if h == nil {
 		return nil
@@ -46,14 +48,23 @@ func newQResource(h *C.QResource) *QResource {
 	return &QResource{h: h}
 }
 
+// UnsafeNewQResource constructs the type using only unsafe pointers.
 func UnsafeNewQResource(h unsafe.Pointer) *QResource {
-	return newQResource((*C.QResource)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QResource{h: (*C.QResource)(h)}
 }
 
 // NewQResource constructs a new QResource object.
 func NewQResource() *QResource {
-	ret := C.QResource_new()
-	return newQResource(ret)
+	var outptr_QResource *C.QResource = nil
+
+	C.QResource_new(&outptr_QResource)
+	ret := newQResource(outptr_QResource)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQResource2 constructs a new QResource object.
@@ -62,8 +73,12 @@ func NewQResource2(file string) *QResource {
 	file_ms.data = C.CString(file)
 	file_ms.len = C.size_t(len(file))
 	defer C.free(unsafe.Pointer(file_ms.data))
-	ret := C.QResource_new2(file_ms)
-	return newQResource(ret)
+	var outptr_QResource *C.QResource = nil
+
+	C.QResource_new2(file_ms, &outptr_QResource)
+	ret := newQResource(outptr_QResource)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQResource3 constructs a new QResource object.
@@ -72,8 +87,12 @@ func NewQResource3(file string, locale *QLocale) *QResource {
 	file_ms.data = C.CString(file)
 	file_ms.len = C.size_t(len(file))
 	defer C.free(unsafe.Pointer(file_ms.data))
-	ret := C.QResource_new3(file_ms, locale.cPointer())
-	return newQResource(ret)
+	var outptr_QResource *C.QResource = nil
+
+	C.QResource_new3(file_ms, locale.cPointer(), &outptr_QResource)
+	ret := newQResource(outptr_QResource)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QResource) SetFileName(file string) {
@@ -209,7 +228,7 @@ func QResource_UnregisterResource22(rccData *byte, resourceRoot string) bool {
 
 // Delete this object from C++ memory.
 func (this *QResource) Delete() {
-	C.QResource_Delete(this.h)
+	C.QResource_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

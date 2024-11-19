@@ -31,7 +31,8 @@ const (
 )
 
 type QCameraFeedbackControl struct {
-	h *C.QCameraFeedbackControl
+	h          *C.QCameraFeedbackControl
+	isSubclass bool
 	*QMediaControl
 }
 
@@ -49,15 +50,23 @@ func (this *QCameraFeedbackControl) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQCameraFeedbackControl(h *C.QCameraFeedbackControl) *QCameraFeedbackControl {
+// newQCameraFeedbackControl constructs the type using only CGO pointers.
+func newQCameraFeedbackControl(h *C.QCameraFeedbackControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QCameraFeedbackControl {
 	if h == nil {
 		return nil
 	}
-	return &QCameraFeedbackControl{h: h, QMediaControl: UnsafeNewQMediaControl(unsafe.Pointer(h))}
+	return &QCameraFeedbackControl{h: h,
+		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
 }
 
-func UnsafeNewQCameraFeedbackControl(h unsafe.Pointer) *QCameraFeedbackControl {
-	return newQCameraFeedbackControl((*C.QCameraFeedbackControl)(h))
+// UnsafeNewQCameraFeedbackControl constructs the type using only unsafe pointers.
+func UnsafeNewQCameraFeedbackControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QCameraFeedbackControl {
+	if h == nil {
+		return nil
+	}
+
+	return &QCameraFeedbackControl{h: (*C.QCameraFeedbackControl)(h),
+		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
 }
 
 func (this *QCameraFeedbackControl) MetaObject() *qt.QMetaObject {
@@ -158,7 +167,7 @@ func QCameraFeedbackControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QCameraFeedbackControl) Delete() {
-	C.QCameraFeedbackControl_Delete(this.h)
+	C.QCameraFeedbackControl_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

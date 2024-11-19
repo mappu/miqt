@@ -19,17 +19,21 @@ class QColor;
 class QFont;
 class QMetaObject;
 class QObject;
+class QsciLexer;
+class QsciLexerCPP;
 class QsciLexerJavaScript;
 #else
 typedef struct QColor QColor;
 typedef struct QFont QFont;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
+typedef struct QsciLexer QsciLexer;
+typedef struct QsciLexerCPP QsciLexerCPP;
 typedef struct QsciLexerJavaScript QsciLexerJavaScript;
 #endif
 
-QsciLexerJavaScript* QsciLexerJavaScript_new();
-QsciLexerJavaScript* QsciLexerJavaScript_new2(QObject* parent);
+void QsciLexerJavaScript_new(QsciLexerJavaScript** outptr_QsciLexerJavaScript, QsciLexerCPP** outptr_QsciLexerCPP, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+void QsciLexerJavaScript_new2(QObject* parent, QsciLexerJavaScript** outptr_QsciLexerJavaScript, QsciLexerCPP** outptr_QsciLexerCPP, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
 QMetaObject* QsciLexerJavaScript_MetaObject(const QsciLexerJavaScript* self);
 void* QsciLexerJavaScript_Metacast(QsciLexerJavaScript* self, const char* param1);
 struct miqt_string QsciLexerJavaScript_Tr(const char* s);
@@ -45,7 +49,17 @@ struct miqt_string QsciLexerJavaScript_Tr2(const char* s, const char* c);
 struct miqt_string QsciLexerJavaScript_Tr3(const char* s, const char* c, int n);
 struct miqt_string QsciLexerJavaScript_TrUtf82(const char* s, const char* c);
 struct miqt_string QsciLexerJavaScript_TrUtf83(const char* s, const char* c, int n);
-void QsciLexerJavaScript_Delete(QsciLexerJavaScript* self);
+void QsciLexerJavaScript_override_virtual_SetFoldAtElse(void* self, intptr_t slot);
+void QsciLexerJavaScript_virtualbase_SetFoldAtElse(void* self, bool fold);
+void QsciLexerJavaScript_override_virtual_SetFoldComments(void* self, intptr_t slot);
+void QsciLexerJavaScript_virtualbase_SetFoldComments(void* self, bool fold);
+void QsciLexerJavaScript_override_virtual_SetFoldCompact(void* self, intptr_t slot);
+void QsciLexerJavaScript_virtualbase_SetFoldCompact(void* self, bool fold);
+void QsciLexerJavaScript_override_virtual_SetFoldPreprocessor(void* self, intptr_t slot);
+void QsciLexerJavaScript_virtualbase_SetFoldPreprocessor(void* self, bool fold);
+void QsciLexerJavaScript_override_virtual_SetStylePreprocessor(void* self, intptr_t slot);
+void QsciLexerJavaScript_virtualbase_SetStylePreprocessor(void* self, bool style);
+void QsciLexerJavaScript_Delete(QsciLexerJavaScript* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

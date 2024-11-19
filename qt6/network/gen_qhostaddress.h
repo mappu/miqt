@@ -23,15 +23,15 @@ typedef struct QIPv6Address QIPv6Address;
 #endif
 
 unsigned char QIPv6Address_OperatorSubscript(const QIPv6Address* self, int index);
-void QIPv6Address_Delete(QIPv6Address* self);
+void QIPv6Address_Delete(QIPv6Address* self, bool isSubclass);
 
-QHostAddress* QHostAddress_new();
-QHostAddress* QHostAddress_new2(unsigned int ip4Addr);
-QHostAddress* QHostAddress_new3(const unsigned char* ip6Addr);
-QHostAddress* QHostAddress_new4(QIPv6Address* ip6Addr);
-QHostAddress* QHostAddress_new5(struct miqt_string address);
-QHostAddress* QHostAddress_new6(QHostAddress* copyVal);
-QHostAddress* QHostAddress_new7(int address);
+void QHostAddress_new(QHostAddress** outptr_QHostAddress);
+void QHostAddress_new2(unsigned int ip4Addr, QHostAddress** outptr_QHostAddress);
+void QHostAddress_new3(const unsigned char* ip6Addr, QHostAddress** outptr_QHostAddress);
+void QHostAddress_new4(QIPv6Address* ip6Addr, QHostAddress** outptr_QHostAddress);
+void QHostAddress_new5(struct miqt_string address, QHostAddress** outptr_QHostAddress);
+void QHostAddress_new6(QHostAddress* copyVal, QHostAddress** outptr_QHostAddress);
+void QHostAddress_new7(int address, QHostAddress** outptr_QHostAddress);
 void QHostAddress_OperatorAssign(QHostAddress* self, QHostAddress* other);
 void QHostAddress_OperatorAssignWithAddress(QHostAddress* self, int address);
 void QHostAddress_Swap(QHostAddress* self, QHostAddress* other);
@@ -65,7 +65,7 @@ bool QHostAddress_IsBroadcast(const QHostAddress* self);
 struct miqt_map /* tuple of QHostAddress* and int */  QHostAddress_ParseSubnet(struct miqt_string subnet);
 unsigned int QHostAddress_ToIPv4Address1(const QHostAddress* self, bool* ok);
 bool QHostAddress_IsEqual2(const QHostAddress* self, QHostAddress* address, int mode);
-void QHostAddress_Delete(QHostAddress* self);
+void QHostAddress_Delete(QHostAddress* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

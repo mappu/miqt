@@ -1,6 +1,7 @@
 #include <QAbstractVideoSurface>
 #include <QList>
 #include <QMetaObject>
+#include <QObject>
 #include <QSize>
 #include <QString>
 #include <QByteArray>
@@ -41,8 +42,8 @@ struct miqt_string QAbstractVideoSurface_TrUtf8(const char* s) {
 	return _ms;
 }
 
-struct miqt_array /* of int */  QAbstractVideoSurface_SupportedPixelFormats(const QAbstractVideoSurface* self) {
-	QList<QVideoFrame::PixelFormat> _ret = self->supportedPixelFormats();
+struct miqt_array /* of int */  QAbstractVideoSurface_SupportedPixelFormats(const QAbstractVideoSurface* self, int typeVal) {
+	QList<QVideoFrame::PixelFormat> _ret = self->supportedPixelFormats(static_cast<QAbstractVideoBuffer::HandleType>(typeVal));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -183,21 +184,11 @@ struct miqt_string QAbstractVideoSurface_TrUtf83(const char* s, const char* c, i
 	return _ms;
 }
 
-struct miqt_array /* of int */  QAbstractVideoSurface_SupportedPixelFormats1(const QAbstractVideoSurface* self, int typeVal) {
-	QList<QVideoFrame::PixelFormat> _ret = self->supportedPixelFormats(static_cast<QAbstractVideoBuffer::HandleType>(typeVal));
-	// Convert QList<> from C++ memory to manually-managed C memory
-	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		QVideoFrame::PixelFormat _lv_ret = _ret[i];
-		_arr[i] = static_cast<int>(_lv_ret);
+void QAbstractVideoSurface_Delete(QAbstractVideoSurface* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAbstractVideoSurface*>( self );
+	} else {
+		delete self;
 	}
-	struct miqt_array _out;
-	_out.len = _ret.length();
-	_out.data = static_cast<void*>(_arr);
-	return _out;
-}
-
-void QAbstractVideoSurface_Delete(QAbstractVideoSurface* self) {
-	delete self;
 }
 

@@ -14,7 +14,8 @@ import (
 )
 
 type QWhatsThis struct {
-	h *C.QWhatsThis
+	h          *C.QWhatsThis
+	isSubclass bool
 }
 
 func (this *QWhatsThis) cPointer() *C.QWhatsThis {
@@ -31,6 +32,7 @@ func (this *QWhatsThis) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQWhatsThis constructs the type using only CGO pointers.
 func newQWhatsThis(h *C.QWhatsThis) *QWhatsThis {
 	if h == nil {
 		return nil
@@ -38,8 +40,13 @@ func newQWhatsThis(h *C.QWhatsThis) *QWhatsThis {
 	return &QWhatsThis{h: h}
 }
 
+// UnsafeNewQWhatsThis constructs the type using only unsafe pointers.
 func UnsafeNewQWhatsThis(h unsafe.Pointer) *QWhatsThis {
-	return newQWhatsThis((*C.QWhatsThis)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QWhatsThis{h: (*C.QWhatsThis)(h)}
 }
 
 func QWhatsThis_EnterWhatsThisMode() {
@@ -67,7 +74,7 @@ func QWhatsThis_HideText() {
 }
 
 func QWhatsThis_CreateAction() *QAction {
-	return UnsafeNewQAction(unsafe.Pointer(C.QWhatsThis_CreateAction()))
+	return UnsafeNewQAction(unsafe.Pointer(C.QWhatsThis_CreateAction()), nil)
 }
 
 func QWhatsThis_ShowText3(pos *QPoint, text string, w *QWidget) {
@@ -79,12 +86,12 @@ func QWhatsThis_ShowText3(pos *QPoint, text string, w *QWidget) {
 }
 
 func QWhatsThis_CreateAction1(parent *QObject) *QAction {
-	return UnsafeNewQAction(unsafe.Pointer(C.QWhatsThis_CreateAction1(parent.cPointer())))
+	return UnsafeNewQAction(unsafe.Pointer(C.QWhatsThis_CreateAction1(parent.cPointer())), nil)
 }
 
 // Delete this object from C++ memory.
 func (this *QWhatsThis) Delete() {
-	C.QWhatsThis_Delete(this.h)
+	C.QWhatsThis_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

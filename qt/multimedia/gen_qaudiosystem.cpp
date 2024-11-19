@@ -5,6 +5,7 @@
 #include <QIODevice>
 #include <QList>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -192,8 +193,12 @@ struct miqt_string QAbstractAudioDeviceInfo_TrUtf83(const char* s, const char* c
 	return _ms;
 }
 
-void QAbstractAudioDeviceInfo_Delete(QAbstractAudioDeviceInfo* self) {
-	delete self;
+void QAbstractAudioDeviceInfo_Delete(QAbstractAudioDeviceInfo* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAbstractAudioDeviceInfo*>( self );
+	} else {
+		delete self;
+	}
 }
 
 QMetaObject* QAbstractAudioOutput_MetaObject(const QAbstractAudioOutput* self) {
@@ -405,8 +410,12 @@ struct miqt_string QAbstractAudioOutput_TrUtf83(const char* s, const char* c, in
 	return _ms;
 }
 
-void QAbstractAudioOutput_Delete(QAbstractAudioOutput* self) {
-	delete self;
+void QAbstractAudioOutput_Delete(QAbstractAudioOutput* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAbstractAudioOutput*>( self );
+	} else {
+		delete self;
+	}
 }
 
 QMetaObject* QAbstractAudioInput_MetaObject(const QAbstractAudioInput* self) {
@@ -602,7 +611,11 @@ struct miqt_string QAbstractAudioInput_TrUtf83(const char* s, const char* c, int
 	return _ms;
 }
 
-void QAbstractAudioInput_Delete(QAbstractAudioInput* self) {
-	delete self;
+void QAbstractAudioInput_Delete(QAbstractAudioInput* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAbstractAudioInput*>( self );
+	} else {
+		delete self;
+	}
 }
 

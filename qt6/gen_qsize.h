@@ -26,9 +26,9 @@ typedef struct QSize QSize;
 typedef struct QSizeF QSizeF;
 #endif
 
-QSize* QSize_new();
-QSize* QSize_new2(int w, int h);
-QSize* QSize_new3(QSize* param1);
+void QSize_new(QSize** outptr_QSize);
+void QSize_new2(int w, int h, QSize** outptr_QSize);
+void QSize_new3(QSize* param1, QSize** outptr_QSize);
 bool QSize_IsNull(const QSize* self);
 bool QSize_IsEmpty(const QSize* self);
 bool QSize_IsValid(const QSize* self);
@@ -51,12 +51,12 @@ QSize* QSize_OperatorMinusAssign(QSize* self, QSize* param1);
 QSize* QSize_OperatorMultiplyAssign(QSize* self, double c);
 QSize* QSize_OperatorDivideAssign(QSize* self, double c);
 QSizeF* QSize_ToSizeF(const QSize* self);
-void QSize_Delete(QSize* self);
+void QSize_Delete(QSize* self, bool isSubclass);
 
-QSizeF* QSizeF_new();
-QSizeF* QSizeF_new2(QSize* sz);
-QSizeF* QSizeF_new3(double w, double h);
-QSizeF* QSizeF_new4(QSizeF* param1);
+void QSizeF_new(QSizeF** outptr_QSizeF);
+void QSizeF_new2(QSize* sz, QSizeF** outptr_QSizeF);
+void QSizeF_new3(double w, double h, QSizeF** outptr_QSizeF);
+void QSizeF_new4(QSizeF* param1, QSizeF** outptr_QSizeF);
 bool QSizeF_IsNull(const QSizeF* self);
 bool QSizeF_IsEmpty(const QSizeF* self);
 bool QSizeF_IsValid(const QSizeF* self);
@@ -79,7 +79,7 @@ QSizeF* QSizeF_OperatorMinusAssign(QSizeF* self, QSizeF* param1);
 QSizeF* QSizeF_OperatorMultiplyAssign(QSizeF* self, double c);
 QSizeF* QSizeF_OperatorDivideAssign(QSizeF* self, double c);
 QSize* QSizeF_ToSize(const QSizeF* self);
-void QSizeF_Delete(QSizeF* self);
+void QSizeF_Delete(QSizeF* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

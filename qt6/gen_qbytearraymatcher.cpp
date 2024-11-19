@@ -6,29 +6,35 @@
 #include "gen_qbytearraymatcher.h"
 #include "_cgo_export.h"
 
-QByteArrayMatcher* QByteArrayMatcher_new() {
-	return new QByteArrayMatcher();
+void QByteArrayMatcher_new(QByteArrayMatcher** outptr_QByteArrayMatcher) {
+	QByteArrayMatcher* ret = new QByteArrayMatcher();
+	*outptr_QByteArrayMatcher = ret;
 }
 
-QByteArrayMatcher* QByteArrayMatcher_new2(struct miqt_string pattern) {
+void QByteArrayMatcher_new2(struct miqt_string pattern, QByteArrayMatcher** outptr_QByteArrayMatcher) {
 	QByteArray pattern_QByteArray(pattern.data, pattern.len);
-	return new QByteArrayMatcher(pattern_QByteArray);
+	QByteArrayMatcher* ret = new QByteArrayMatcher(pattern_QByteArray);
+	*outptr_QByteArrayMatcher = ret;
 }
 
-QByteArrayMatcher* QByteArrayMatcher_new3(QByteArrayView* pattern) {
-	return new QByteArrayMatcher(*pattern);
+void QByteArrayMatcher_new3(QByteArrayView* pattern, QByteArrayMatcher** outptr_QByteArrayMatcher) {
+	QByteArrayMatcher* ret = new QByteArrayMatcher(*pattern);
+	*outptr_QByteArrayMatcher = ret;
 }
 
-QByteArrayMatcher* QByteArrayMatcher_new4(const char* pattern) {
-	return new QByteArrayMatcher(pattern);
+void QByteArrayMatcher_new4(const char* pattern, QByteArrayMatcher** outptr_QByteArrayMatcher) {
+	QByteArrayMatcher* ret = new QByteArrayMatcher(pattern);
+	*outptr_QByteArrayMatcher = ret;
 }
 
-QByteArrayMatcher* QByteArrayMatcher_new5(QByteArrayMatcher* other) {
-	return new QByteArrayMatcher(*other);
+void QByteArrayMatcher_new5(QByteArrayMatcher* other, QByteArrayMatcher** outptr_QByteArrayMatcher) {
+	QByteArrayMatcher* ret = new QByteArrayMatcher(*other);
+	*outptr_QByteArrayMatcher = ret;
 }
 
-QByteArrayMatcher* QByteArrayMatcher_new6(const char* pattern, ptrdiff_t length) {
-	return new QByteArrayMatcher(pattern, (qsizetype)(length));
+void QByteArrayMatcher_new6(const char* pattern, ptrdiff_t length, QByteArrayMatcher** outptr_QByteArrayMatcher) {
+	QByteArrayMatcher* ret = new QByteArrayMatcher(pattern, (qsizetype)(length));
+	*outptr_QByteArrayMatcher = ret;
 }
 
 void QByteArrayMatcher_OperatorAssign(QByteArrayMatcher* self, QByteArrayMatcher* other) {
@@ -69,7 +75,11 @@ ptrdiff_t QByteArrayMatcher_IndexIn2(const QByteArrayMatcher* self, QByteArrayVi
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-void QByteArrayMatcher_Delete(QByteArrayMatcher* self) {
-	delete self;
+void QByteArrayMatcher_Delete(QByteArrayMatcher* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QByteArrayMatcher*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -561,7 +561,8 @@ const (
 )
 
 type QStyleOption struct {
-	h *C.QStyleOption
+	h          *C.QStyleOption
+	isSubclass bool
 }
 
 func (this *QStyleOption) cPointer() *C.QStyleOption {
@@ -578,6 +579,7 @@ func (this *QStyleOption) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQStyleOption constructs the type using only CGO pointers.
 func newQStyleOption(h *C.QStyleOption) *QStyleOption {
 	if h == nil {
 		return nil
@@ -585,32 +587,53 @@ func newQStyleOption(h *C.QStyleOption) *QStyleOption {
 	return &QStyleOption{h: h}
 }
 
+// UnsafeNewQStyleOption constructs the type using only unsafe pointers.
 func UnsafeNewQStyleOption(h unsafe.Pointer) *QStyleOption {
-	return newQStyleOption((*C.QStyleOption)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleOption{h: (*C.QStyleOption)(h)}
 }
 
 // NewQStyleOption constructs a new QStyleOption object.
 func NewQStyleOption() *QStyleOption {
-	ret := C.QStyleOption_new()
-	return newQStyleOption(ret)
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOption_new(&outptr_QStyleOption)
+	ret := newQStyleOption(outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOption2 constructs a new QStyleOption object.
 func NewQStyleOption2(other *QStyleOption) *QStyleOption {
-	ret := C.QStyleOption_new2(other.cPointer())
-	return newQStyleOption(ret)
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOption_new2(other.cPointer(), &outptr_QStyleOption)
+	ret := newQStyleOption(outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOption3 constructs a new QStyleOption object.
 func NewQStyleOption3(version int) *QStyleOption {
-	ret := C.QStyleOption_new3((C.int)(version))
-	return newQStyleOption(ret)
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOption_new3((C.int)(version), &outptr_QStyleOption)
+	ret := newQStyleOption(outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOption4 constructs a new QStyleOption object.
 func NewQStyleOption4(version int, typeVal int) *QStyleOption {
-	ret := C.QStyleOption_new4((C.int)(version), (C.int)(typeVal))
-	return newQStyleOption(ret)
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOption_new4((C.int)(version), (C.int)(typeVal), &outptr_QStyleOption)
+	ret := newQStyleOption(outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QStyleOption) InitFrom(w *QWidget) {
@@ -623,7 +646,7 @@ func (this *QStyleOption) OperatorAssign(other *QStyleOption) {
 
 // Delete this object from C++ memory.
 func (this *QStyleOption) Delete() {
-	C.QStyleOption_Delete(this.h)
+	C.QStyleOption_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -636,7 +659,8 @@ func (this *QStyleOption) GoGC() {
 }
 
 type QStyleOptionFocusRect struct {
-	h *C.QStyleOptionFocusRect
+	h          *C.QStyleOptionFocusRect
+	isSubclass bool
 	*QStyleOption
 }
 
@@ -654,32 +678,50 @@ func (this *QStyleOptionFocusRect) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleOptionFocusRect(h *C.QStyleOptionFocusRect) *QStyleOptionFocusRect {
+// newQStyleOptionFocusRect constructs the type using only CGO pointers.
+func newQStyleOptionFocusRect(h *C.QStyleOptionFocusRect, h_QStyleOption *C.QStyleOption) *QStyleOptionFocusRect {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionFocusRect{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
+	return &QStyleOptionFocusRect{h: h,
+		QStyleOption: newQStyleOption(h_QStyleOption)}
 }
 
-func UnsafeNewQStyleOptionFocusRect(h unsafe.Pointer) *QStyleOptionFocusRect {
-	return newQStyleOptionFocusRect((*C.QStyleOptionFocusRect)(h))
+// UnsafeNewQStyleOptionFocusRect constructs the type using only unsafe pointers.
+func UnsafeNewQStyleOptionFocusRect(h unsafe.Pointer, h_QStyleOption unsafe.Pointer) *QStyleOptionFocusRect {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleOptionFocusRect{h: (*C.QStyleOptionFocusRect)(h),
+		QStyleOption: UnsafeNewQStyleOption(h_QStyleOption)}
 }
 
 // NewQStyleOptionFocusRect constructs a new QStyleOptionFocusRect object.
 func NewQStyleOptionFocusRect() *QStyleOptionFocusRect {
-	ret := C.QStyleOptionFocusRect_new()
-	return newQStyleOptionFocusRect(ret)
+	var outptr_QStyleOptionFocusRect *C.QStyleOptionFocusRect = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionFocusRect_new(&outptr_QStyleOptionFocusRect, &outptr_QStyleOption)
+	ret := newQStyleOptionFocusRect(outptr_QStyleOptionFocusRect, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOptionFocusRect2 constructs a new QStyleOptionFocusRect object.
 func NewQStyleOptionFocusRect2(other *QStyleOptionFocusRect) *QStyleOptionFocusRect {
-	ret := C.QStyleOptionFocusRect_new2(other.cPointer())
-	return newQStyleOptionFocusRect(ret)
+	var outptr_QStyleOptionFocusRect *C.QStyleOptionFocusRect = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionFocusRect_new2(other.cPointer(), &outptr_QStyleOptionFocusRect, &outptr_QStyleOption)
+	ret := newQStyleOptionFocusRect(outptr_QStyleOptionFocusRect, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionFocusRect) Delete() {
-	C.QStyleOptionFocusRect_Delete(this.h)
+	C.QStyleOptionFocusRect_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -692,7 +734,8 @@ func (this *QStyleOptionFocusRect) GoGC() {
 }
 
 type QStyleOptionFrame struct {
-	h *C.QStyleOptionFrame
+	h          *C.QStyleOptionFrame
+	isSubclass bool
 	*QStyleOption
 }
 
@@ -710,32 +753,50 @@ func (this *QStyleOptionFrame) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleOptionFrame(h *C.QStyleOptionFrame) *QStyleOptionFrame {
+// newQStyleOptionFrame constructs the type using only CGO pointers.
+func newQStyleOptionFrame(h *C.QStyleOptionFrame, h_QStyleOption *C.QStyleOption) *QStyleOptionFrame {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionFrame{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
+	return &QStyleOptionFrame{h: h,
+		QStyleOption: newQStyleOption(h_QStyleOption)}
 }
 
-func UnsafeNewQStyleOptionFrame(h unsafe.Pointer) *QStyleOptionFrame {
-	return newQStyleOptionFrame((*C.QStyleOptionFrame)(h))
+// UnsafeNewQStyleOptionFrame constructs the type using only unsafe pointers.
+func UnsafeNewQStyleOptionFrame(h unsafe.Pointer, h_QStyleOption unsafe.Pointer) *QStyleOptionFrame {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleOptionFrame{h: (*C.QStyleOptionFrame)(h),
+		QStyleOption: UnsafeNewQStyleOption(h_QStyleOption)}
 }
 
 // NewQStyleOptionFrame constructs a new QStyleOptionFrame object.
 func NewQStyleOptionFrame() *QStyleOptionFrame {
-	ret := C.QStyleOptionFrame_new()
-	return newQStyleOptionFrame(ret)
+	var outptr_QStyleOptionFrame *C.QStyleOptionFrame = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionFrame_new(&outptr_QStyleOptionFrame, &outptr_QStyleOption)
+	ret := newQStyleOptionFrame(outptr_QStyleOptionFrame, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOptionFrame2 constructs a new QStyleOptionFrame object.
 func NewQStyleOptionFrame2(other *QStyleOptionFrame) *QStyleOptionFrame {
-	ret := C.QStyleOptionFrame_new2(other.cPointer())
-	return newQStyleOptionFrame(ret)
+	var outptr_QStyleOptionFrame *C.QStyleOptionFrame = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionFrame_new2(other.cPointer(), &outptr_QStyleOptionFrame, &outptr_QStyleOption)
+	ret := newQStyleOptionFrame(outptr_QStyleOptionFrame, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionFrame) Delete() {
-	C.QStyleOptionFrame_Delete(this.h)
+	C.QStyleOptionFrame_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -748,7 +809,8 @@ func (this *QStyleOptionFrame) GoGC() {
 }
 
 type QStyleOptionTabWidgetFrame struct {
-	h *C.QStyleOptionTabWidgetFrame
+	h          *C.QStyleOptionTabWidgetFrame
+	isSubclass bool
 	*QStyleOption
 }
 
@@ -766,32 +828,50 @@ func (this *QStyleOptionTabWidgetFrame) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleOptionTabWidgetFrame(h *C.QStyleOptionTabWidgetFrame) *QStyleOptionTabWidgetFrame {
+// newQStyleOptionTabWidgetFrame constructs the type using only CGO pointers.
+func newQStyleOptionTabWidgetFrame(h *C.QStyleOptionTabWidgetFrame, h_QStyleOption *C.QStyleOption) *QStyleOptionTabWidgetFrame {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionTabWidgetFrame{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
+	return &QStyleOptionTabWidgetFrame{h: h,
+		QStyleOption: newQStyleOption(h_QStyleOption)}
 }
 
-func UnsafeNewQStyleOptionTabWidgetFrame(h unsafe.Pointer) *QStyleOptionTabWidgetFrame {
-	return newQStyleOptionTabWidgetFrame((*C.QStyleOptionTabWidgetFrame)(h))
+// UnsafeNewQStyleOptionTabWidgetFrame constructs the type using only unsafe pointers.
+func UnsafeNewQStyleOptionTabWidgetFrame(h unsafe.Pointer, h_QStyleOption unsafe.Pointer) *QStyleOptionTabWidgetFrame {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleOptionTabWidgetFrame{h: (*C.QStyleOptionTabWidgetFrame)(h),
+		QStyleOption: UnsafeNewQStyleOption(h_QStyleOption)}
 }
 
 // NewQStyleOptionTabWidgetFrame constructs a new QStyleOptionTabWidgetFrame object.
 func NewQStyleOptionTabWidgetFrame() *QStyleOptionTabWidgetFrame {
-	ret := C.QStyleOptionTabWidgetFrame_new()
-	return newQStyleOptionTabWidgetFrame(ret)
+	var outptr_QStyleOptionTabWidgetFrame *C.QStyleOptionTabWidgetFrame = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionTabWidgetFrame_new(&outptr_QStyleOptionTabWidgetFrame, &outptr_QStyleOption)
+	ret := newQStyleOptionTabWidgetFrame(outptr_QStyleOptionTabWidgetFrame, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOptionTabWidgetFrame2 constructs a new QStyleOptionTabWidgetFrame object.
 func NewQStyleOptionTabWidgetFrame2(other *QStyleOptionTabWidgetFrame) *QStyleOptionTabWidgetFrame {
-	ret := C.QStyleOptionTabWidgetFrame_new2(other.cPointer())
-	return newQStyleOptionTabWidgetFrame(ret)
+	var outptr_QStyleOptionTabWidgetFrame *C.QStyleOptionTabWidgetFrame = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionTabWidgetFrame_new2(other.cPointer(), &outptr_QStyleOptionTabWidgetFrame, &outptr_QStyleOption)
+	ret := newQStyleOptionTabWidgetFrame(outptr_QStyleOptionTabWidgetFrame, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionTabWidgetFrame) Delete() {
-	C.QStyleOptionTabWidgetFrame_Delete(this.h)
+	C.QStyleOptionTabWidgetFrame_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -804,7 +884,8 @@ func (this *QStyleOptionTabWidgetFrame) GoGC() {
 }
 
 type QStyleOptionTabBarBase struct {
-	h *C.QStyleOptionTabBarBase
+	h          *C.QStyleOptionTabBarBase
+	isSubclass bool
 	*QStyleOption
 }
 
@@ -822,32 +903,50 @@ func (this *QStyleOptionTabBarBase) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleOptionTabBarBase(h *C.QStyleOptionTabBarBase) *QStyleOptionTabBarBase {
+// newQStyleOptionTabBarBase constructs the type using only CGO pointers.
+func newQStyleOptionTabBarBase(h *C.QStyleOptionTabBarBase, h_QStyleOption *C.QStyleOption) *QStyleOptionTabBarBase {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionTabBarBase{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
+	return &QStyleOptionTabBarBase{h: h,
+		QStyleOption: newQStyleOption(h_QStyleOption)}
 }
 
-func UnsafeNewQStyleOptionTabBarBase(h unsafe.Pointer) *QStyleOptionTabBarBase {
-	return newQStyleOptionTabBarBase((*C.QStyleOptionTabBarBase)(h))
+// UnsafeNewQStyleOptionTabBarBase constructs the type using only unsafe pointers.
+func UnsafeNewQStyleOptionTabBarBase(h unsafe.Pointer, h_QStyleOption unsafe.Pointer) *QStyleOptionTabBarBase {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleOptionTabBarBase{h: (*C.QStyleOptionTabBarBase)(h),
+		QStyleOption: UnsafeNewQStyleOption(h_QStyleOption)}
 }
 
 // NewQStyleOptionTabBarBase constructs a new QStyleOptionTabBarBase object.
 func NewQStyleOptionTabBarBase() *QStyleOptionTabBarBase {
-	ret := C.QStyleOptionTabBarBase_new()
-	return newQStyleOptionTabBarBase(ret)
+	var outptr_QStyleOptionTabBarBase *C.QStyleOptionTabBarBase = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionTabBarBase_new(&outptr_QStyleOptionTabBarBase, &outptr_QStyleOption)
+	ret := newQStyleOptionTabBarBase(outptr_QStyleOptionTabBarBase, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOptionTabBarBase2 constructs a new QStyleOptionTabBarBase object.
 func NewQStyleOptionTabBarBase2(other *QStyleOptionTabBarBase) *QStyleOptionTabBarBase {
-	ret := C.QStyleOptionTabBarBase_new2(other.cPointer())
-	return newQStyleOptionTabBarBase(ret)
+	var outptr_QStyleOptionTabBarBase *C.QStyleOptionTabBarBase = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionTabBarBase_new2(other.cPointer(), &outptr_QStyleOptionTabBarBase, &outptr_QStyleOption)
+	ret := newQStyleOptionTabBarBase(outptr_QStyleOptionTabBarBase, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionTabBarBase) Delete() {
-	C.QStyleOptionTabBarBase_Delete(this.h)
+	C.QStyleOptionTabBarBase_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -860,7 +959,8 @@ func (this *QStyleOptionTabBarBase) GoGC() {
 }
 
 type QStyleOptionHeader struct {
-	h *C.QStyleOptionHeader
+	h          *C.QStyleOptionHeader
+	isSubclass bool
 	*QStyleOption
 }
 
@@ -878,32 +978,50 @@ func (this *QStyleOptionHeader) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleOptionHeader(h *C.QStyleOptionHeader) *QStyleOptionHeader {
+// newQStyleOptionHeader constructs the type using only CGO pointers.
+func newQStyleOptionHeader(h *C.QStyleOptionHeader, h_QStyleOption *C.QStyleOption) *QStyleOptionHeader {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionHeader{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
+	return &QStyleOptionHeader{h: h,
+		QStyleOption: newQStyleOption(h_QStyleOption)}
 }
 
-func UnsafeNewQStyleOptionHeader(h unsafe.Pointer) *QStyleOptionHeader {
-	return newQStyleOptionHeader((*C.QStyleOptionHeader)(h))
+// UnsafeNewQStyleOptionHeader constructs the type using only unsafe pointers.
+func UnsafeNewQStyleOptionHeader(h unsafe.Pointer, h_QStyleOption unsafe.Pointer) *QStyleOptionHeader {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleOptionHeader{h: (*C.QStyleOptionHeader)(h),
+		QStyleOption: UnsafeNewQStyleOption(h_QStyleOption)}
 }
 
 // NewQStyleOptionHeader constructs a new QStyleOptionHeader object.
 func NewQStyleOptionHeader() *QStyleOptionHeader {
-	ret := C.QStyleOptionHeader_new()
-	return newQStyleOptionHeader(ret)
+	var outptr_QStyleOptionHeader *C.QStyleOptionHeader = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionHeader_new(&outptr_QStyleOptionHeader, &outptr_QStyleOption)
+	ret := newQStyleOptionHeader(outptr_QStyleOptionHeader, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOptionHeader2 constructs a new QStyleOptionHeader object.
 func NewQStyleOptionHeader2(other *QStyleOptionHeader) *QStyleOptionHeader {
-	ret := C.QStyleOptionHeader_new2(other.cPointer())
-	return newQStyleOptionHeader(ret)
+	var outptr_QStyleOptionHeader *C.QStyleOptionHeader = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionHeader_new2(other.cPointer(), &outptr_QStyleOptionHeader, &outptr_QStyleOption)
+	ret := newQStyleOptionHeader(outptr_QStyleOptionHeader, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionHeader) Delete() {
-	C.QStyleOptionHeader_Delete(this.h)
+	C.QStyleOptionHeader_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -916,7 +1034,8 @@ func (this *QStyleOptionHeader) GoGC() {
 }
 
 type QStyleOptionHeaderV2 struct {
-	h *C.QStyleOptionHeaderV2
+	h          *C.QStyleOptionHeaderV2
+	isSubclass bool
 	*QStyleOptionHeader
 }
 
@@ -934,32 +1053,52 @@ func (this *QStyleOptionHeaderV2) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleOptionHeaderV2(h *C.QStyleOptionHeaderV2) *QStyleOptionHeaderV2 {
+// newQStyleOptionHeaderV2 constructs the type using only CGO pointers.
+func newQStyleOptionHeaderV2(h *C.QStyleOptionHeaderV2, h_QStyleOptionHeader *C.QStyleOptionHeader, h_QStyleOption *C.QStyleOption) *QStyleOptionHeaderV2 {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionHeaderV2{h: h, QStyleOptionHeader: UnsafeNewQStyleOptionHeader(unsafe.Pointer(h))}
+	return &QStyleOptionHeaderV2{h: h,
+		QStyleOptionHeader: newQStyleOptionHeader(h_QStyleOptionHeader, h_QStyleOption)}
 }
 
-func UnsafeNewQStyleOptionHeaderV2(h unsafe.Pointer) *QStyleOptionHeaderV2 {
-	return newQStyleOptionHeaderV2((*C.QStyleOptionHeaderV2)(h))
+// UnsafeNewQStyleOptionHeaderV2 constructs the type using only unsafe pointers.
+func UnsafeNewQStyleOptionHeaderV2(h unsafe.Pointer, h_QStyleOptionHeader unsafe.Pointer, h_QStyleOption unsafe.Pointer) *QStyleOptionHeaderV2 {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleOptionHeaderV2{h: (*C.QStyleOptionHeaderV2)(h),
+		QStyleOptionHeader: UnsafeNewQStyleOptionHeader(h_QStyleOptionHeader, h_QStyleOption)}
 }
 
 // NewQStyleOptionHeaderV2 constructs a new QStyleOptionHeaderV2 object.
 func NewQStyleOptionHeaderV2() *QStyleOptionHeaderV2 {
-	ret := C.QStyleOptionHeaderV2_new()
-	return newQStyleOptionHeaderV2(ret)
+	var outptr_QStyleOptionHeaderV2 *C.QStyleOptionHeaderV2 = nil
+	var outptr_QStyleOptionHeader *C.QStyleOptionHeader = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionHeaderV2_new(&outptr_QStyleOptionHeaderV2, &outptr_QStyleOptionHeader, &outptr_QStyleOption)
+	ret := newQStyleOptionHeaderV2(outptr_QStyleOptionHeaderV2, outptr_QStyleOptionHeader, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOptionHeaderV22 constructs a new QStyleOptionHeaderV2 object.
 func NewQStyleOptionHeaderV22(other *QStyleOptionHeaderV2) *QStyleOptionHeaderV2 {
-	ret := C.QStyleOptionHeaderV2_new2(other.cPointer())
-	return newQStyleOptionHeaderV2(ret)
+	var outptr_QStyleOptionHeaderV2 *C.QStyleOptionHeaderV2 = nil
+	var outptr_QStyleOptionHeader *C.QStyleOptionHeader = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionHeaderV2_new2(other.cPointer(), &outptr_QStyleOptionHeaderV2, &outptr_QStyleOptionHeader, &outptr_QStyleOption)
+	ret := newQStyleOptionHeaderV2(outptr_QStyleOptionHeaderV2, outptr_QStyleOptionHeader, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionHeaderV2) Delete() {
-	C.QStyleOptionHeaderV2_Delete(this.h)
+	C.QStyleOptionHeaderV2_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -972,7 +1111,8 @@ func (this *QStyleOptionHeaderV2) GoGC() {
 }
 
 type QStyleOptionButton struct {
-	h *C.QStyleOptionButton
+	h          *C.QStyleOptionButton
+	isSubclass bool
 	*QStyleOption
 }
 
@@ -990,32 +1130,50 @@ func (this *QStyleOptionButton) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleOptionButton(h *C.QStyleOptionButton) *QStyleOptionButton {
+// newQStyleOptionButton constructs the type using only CGO pointers.
+func newQStyleOptionButton(h *C.QStyleOptionButton, h_QStyleOption *C.QStyleOption) *QStyleOptionButton {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionButton{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
+	return &QStyleOptionButton{h: h,
+		QStyleOption: newQStyleOption(h_QStyleOption)}
 }
 
-func UnsafeNewQStyleOptionButton(h unsafe.Pointer) *QStyleOptionButton {
-	return newQStyleOptionButton((*C.QStyleOptionButton)(h))
+// UnsafeNewQStyleOptionButton constructs the type using only unsafe pointers.
+func UnsafeNewQStyleOptionButton(h unsafe.Pointer, h_QStyleOption unsafe.Pointer) *QStyleOptionButton {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleOptionButton{h: (*C.QStyleOptionButton)(h),
+		QStyleOption: UnsafeNewQStyleOption(h_QStyleOption)}
 }
 
 // NewQStyleOptionButton constructs a new QStyleOptionButton object.
 func NewQStyleOptionButton() *QStyleOptionButton {
-	ret := C.QStyleOptionButton_new()
-	return newQStyleOptionButton(ret)
+	var outptr_QStyleOptionButton *C.QStyleOptionButton = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionButton_new(&outptr_QStyleOptionButton, &outptr_QStyleOption)
+	ret := newQStyleOptionButton(outptr_QStyleOptionButton, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOptionButton2 constructs a new QStyleOptionButton object.
 func NewQStyleOptionButton2(other *QStyleOptionButton) *QStyleOptionButton {
-	ret := C.QStyleOptionButton_new2(other.cPointer())
-	return newQStyleOptionButton(ret)
+	var outptr_QStyleOptionButton *C.QStyleOptionButton = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionButton_new2(other.cPointer(), &outptr_QStyleOptionButton, &outptr_QStyleOption)
+	ret := newQStyleOptionButton(outptr_QStyleOptionButton, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionButton) Delete() {
-	C.QStyleOptionButton_Delete(this.h)
+	C.QStyleOptionButton_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1028,7 +1186,8 @@ func (this *QStyleOptionButton) GoGC() {
 }
 
 type QStyleOptionTab struct {
-	h *C.QStyleOptionTab
+	h          *C.QStyleOptionTab
+	isSubclass bool
 	*QStyleOption
 }
 
@@ -1046,32 +1205,50 @@ func (this *QStyleOptionTab) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleOptionTab(h *C.QStyleOptionTab) *QStyleOptionTab {
+// newQStyleOptionTab constructs the type using only CGO pointers.
+func newQStyleOptionTab(h *C.QStyleOptionTab, h_QStyleOption *C.QStyleOption) *QStyleOptionTab {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionTab{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
+	return &QStyleOptionTab{h: h,
+		QStyleOption: newQStyleOption(h_QStyleOption)}
 }
 
-func UnsafeNewQStyleOptionTab(h unsafe.Pointer) *QStyleOptionTab {
-	return newQStyleOptionTab((*C.QStyleOptionTab)(h))
+// UnsafeNewQStyleOptionTab constructs the type using only unsafe pointers.
+func UnsafeNewQStyleOptionTab(h unsafe.Pointer, h_QStyleOption unsafe.Pointer) *QStyleOptionTab {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleOptionTab{h: (*C.QStyleOptionTab)(h),
+		QStyleOption: UnsafeNewQStyleOption(h_QStyleOption)}
 }
 
 // NewQStyleOptionTab constructs a new QStyleOptionTab object.
 func NewQStyleOptionTab() *QStyleOptionTab {
-	ret := C.QStyleOptionTab_new()
-	return newQStyleOptionTab(ret)
+	var outptr_QStyleOptionTab *C.QStyleOptionTab = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionTab_new(&outptr_QStyleOptionTab, &outptr_QStyleOption)
+	ret := newQStyleOptionTab(outptr_QStyleOptionTab, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOptionTab2 constructs a new QStyleOptionTab object.
 func NewQStyleOptionTab2(other *QStyleOptionTab) *QStyleOptionTab {
-	ret := C.QStyleOptionTab_new2(other.cPointer())
-	return newQStyleOptionTab(ret)
+	var outptr_QStyleOptionTab *C.QStyleOptionTab = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionTab_new2(other.cPointer(), &outptr_QStyleOptionTab, &outptr_QStyleOption)
+	ret := newQStyleOptionTab(outptr_QStyleOptionTab, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionTab) Delete() {
-	C.QStyleOptionTab_Delete(this.h)
+	C.QStyleOptionTab_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1084,7 +1261,8 @@ func (this *QStyleOptionTab) GoGC() {
 }
 
 type QStyleOptionToolBar struct {
-	h *C.QStyleOptionToolBar
+	h          *C.QStyleOptionToolBar
+	isSubclass bool
 	*QStyleOption
 }
 
@@ -1102,32 +1280,50 @@ func (this *QStyleOptionToolBar) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleOptionToolBar(h *C.QStyleOptionToolBar) *QStyleOptionToolBar {
+// newQStyleOptionToolBar constructs the type using only CGO pointers.
+func newQStyleOptionToolBar(h *C.QStyleOptionToolBar, h_QStyleOption *C.QStyleOption) *QStyleOptionToolBar {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionToolBar{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
+	return &QStyleOptionToolBar{h: h,
+		QStyleOption: newQStyleOption(h_QStyleOption)}
 }
 
-func UnsafeNewQStyleOptionToolBar(h unsafe.Pointer) *QStyleOptionToolBar {
-	return newQStyleOptionToolBar((*C.QStyleOptionToolBar)(h))
+// UnsafeNewQStyleOptionToolBar constructs the type using only unsafe pointers.
+func UnsafeNewQStyleOptionToolBar(h unsafe.Pointer, h_QStyleOption unsafe.Pointer) *QStyleOptionToolBar {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleOptionToolBar{h: (*C.QStyleOptionToolBar)(h),
+		QStyleOption: UnsafeNewQStyleOption(h_QStyleOption)}
 }
 
 // NewQStyleOptionToolBar constructs a new QStyleOptionToolBar object.
 func NewQStyleOptionToolBar() *QStyleOptionToolBar {
-	ret := C.QStyleOptionToolBar_new()
-	return newQStyleOptionToolBar(ret)
+	var outptr_QStyleOptionToolBar *C.QStyleOptionToolBar = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionToolBar_new(&outptr_QStyleOptionToolBar, &outptr_QStyleOption)
+	ret := newQStyleOptionToolBar(outptr_QStyleOptionToolBar, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOptionToolBar2 constructs a new QStyleOptionToolBar object.
 func NewQStyleOptionToolBar2(other *QStyleOptionToolBar) *QStyleOptionToolBar {
-	ret := C.QStyleOptionToolBar_new2(other.cPointer())
-	return newQStyleOptionToolBar(ret)
+	var outptr_QStyleOptionToolBar *C.QStyleOptionToolBar = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionToolBar_new2(other.cPointer(), &outptr_QStyleOptionToolBar, &outptr_QStyleOption)
+	ret := newQStyleOptionToolBar(outptr_QStyleOptionToolBar, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionToolBar) Delete() {
-	C.QStyleOptionToolBar_Delete(this.h)
+	C.QStyleOptionToolBar_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1140,7 +1336,8 @@ func (this *QStyleOptionToolBar) GoGC() {
 }
 
 type QStyleOptionProgressBar struct {
-	h *C.QStyleOptionProgressBar
+	h          *C.QStyleOptionProgressBar
+	isSubclass bool
 	*QStyleOption
 }
 
@@ -1158,32 +1355,50 @@ func (this *QStyleOptionProgressBar) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleOptionProgressBar(h *C.QStyleOptionProgressBar) *QStyleOptionProgressBar {
+// newQStyleOptionProgressBar constructs the type using only CGO pointers.
+func newQStyleOptionProgressBar(h *C.QStyleOptionProgressBar, h_QStyleOption *C.QStyleOption) *QStyleOptionProgressBar {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionProgressBar{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
+	return &QStyleOptionProgressBar{h: h,
+		QStyleOption: newQStyleOption(h_QStyleOption)}
 }
 
-func UnsafeNewQStyleOptionProgressBar(h unsafe.Pointer) *QStyleOptionProgressBar {
-	return newQStyleOptionProgressBar((*C.QStyleOptionProgressBar)(h))
+// UnsafeNewQStyleOptionProgressBar constructs the type using only unsafe pointers.
+func UnsafeNewQStyleOptionProgressBar(h unsafe.Pointer, h_QStyleOption unsafe.Pointer) *QStyleOptionProgressBar {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleOptionProgressBar{h: (*C.QStyleOptionProgressBar)(h),
+		QStyleOption: UnsafeNewQStyleOption(h_QStyleOption)}
 }
 
 // NewQStyleOptionProgressBar constructs a new QStyleOptionProgressBar object.
 func NewQStyleOptionProgressBar() *QStyleOptionProgressBar {
-	ret := C.QStyleOptionProgressBar_new()
-	return newQStyleOptionProgressBar(ret)
+	var outptr_QStyleOptionProgressBar *C.QStyleOptionProgressBar = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionProgressBar_new(&outptr_QStyleOptionProgressBar, &outptr_QStyleOption)
+	ret := newQStyleOptionProgressBar(outptr_QStyleOptionProgressBar, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOptionProgressBar2 constructs a new QStyleOptionProgressBar object.
 func NewQStyleOptionProgressBar2(other *QStyleOptionProgressBar) *QStyleOptionProgressBar {
-	ret := C.QStyleOptionProgressBar_new2(other.cPointer())
-	return newQStyleOptionProgressBar(ret)
+	var outptr_QStyleOptionProgressBar *C.QStyleOptionProgressBar = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionProgressBar_new2(other.cPointer(), &outptr_QStyleOptionProgressBar, &outptr_QStyleOption)
+	ret := newQStyleOptionProgressBar(outptr_QStyleOptionProgressBar, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionProgressBar) Delete() {
-	C.QStyleOptionProgressBar_Delete(this.h)
+	C.QStyleOptionProgressBar_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1196,7 +1411,8 @@ func (this *QStyleOptionProgressBar) GoGC() {
 }
 
 type QStyleOptionMenuItem struct {
-	h *C.QStyleOptionMenuItem
+	h          *C.QStyleOptionMenuItem
+	isSubclass bool
 	*QStyleOption
 }
 
@@ -1214,32 +1430,50 @@ func (this *QStyleOptionMenuItem) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleOptionMenuItem(h *C.QStyleOptionMenuItem) *QStyleOptionMenuItem {
+// newQStyleOptionMenuItem constructs the type using only CGO pointers.
+func newQStyleOptionMenuItem(h *C.QStyleOptionMenuItem, h_QStyleOption *C.QStyleOption) *QStyleOptionMenuItem {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionMenuItem{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
+	return &QStyleOptionMenuItem{h: h,
+		QStyleOption: newQStyleOption(h_QStyleOption)}
 }
 
-func UnsafeNewQStyleOptionMenuItem(h unsafe.Pointer) *QStyleOptionMenuItem {
-	return newQStyleOptionMenuItem((*C.QStyleOptionMenuItem)(h))
+// UnsafeNewQStyleOptionMenuItem constructs the type using only unsafe pointers.
+func UnsafeNewQStyleOptionMenuItem(h unsafe.Pointer, h_QStyleOption unsafe.Pointer) *QStyleOptionMenuItem {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleOptionMenuItem{h: (*C.QStyleOptionMenuItem)(h),
+		QStyleOption: UnsafeNewQStyleOption(h_QStyleOption)}
 }
 
 // NewQStyleOptionMenuItem constructs a new QStyleOptionMenuItem object.
 func NewQStyleOptionMenuItem() *QStyleOptionMenuItem {
-	ret := C.QStyleOptionMenuItem_new()
-	return newQStyleOptionMenuItem(ret)
+	var outptr_QStyleOptionMenuItem *C.QStyleOptionMenuItem = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionMenuItem_new(&outptr_QStyleOptionMenuItem, &outptr_QStyleOption)
+	ret := newQStyleOptionMenuItem(outptr_QStyleOptionMenuItem, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOptionMenuItem2 constructs a new QStyleOptionMenuItem object.
 func NewQStyleOptionMenuItem2(other *QStyleOptionMenuItem) *QStyleOptionMenuItem {
-	ret := C.QStyleOptionMenuItem_new2(other.cPointer())
-	return newQStyleOptionMenuItem(ret)
+	var outptr_QStyleOptionMenuItem *C.QStyleOptionMenuItem = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionMenuItem_new2(other.cPointer(), &outptr_QStyleOptionMenuItem, &outptr_QStyleOption)
+	ret := newQStyleOptionMenuItem(outptr_QStyleOptionMenuItem, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionMenuItem) Delete() {
-	C.QStyleOptionMenuItem_Delete(this.h)
+	C.QStyleOptionMenuItem_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1252,7 +1486,8 @@ func (this *QStyleOptionMenuItem) GoGC() {
 }
 
 type QStyleOptionDockWidget struct {
-	h *C.QStyleOptionDockWidget
+	h          *C.QStyleOptionDockWidget
+	isSubclass bool
 	*QStyleOption
 }
 
@@ -1270,32 +1505,50 @@ func (this *QStyleOptionDockWidget) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleOptionDockWidget(h *C.QStyleOptionDockWidget) *QStyleOptionDockWidget {
+// newQStyleOptionDockWidget constructs the type using only CGO pointers.
+func newQStyleOptionDockWidget(h *C.QStyleOptionDockWidget, h_QStyleOption *C.QStyleOption) *QStyleOptionDockWidget {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionDockWidget{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
+	return &QStyleOptionDockWidget{h: h,
+		QStyleOption: newQStyleOption(h_QStyleOption)}
 }
 
-func UnsafeNewQStyleOptionDockWidget(h unsafe.Pointer) *QStyleOptionDockWidget {
-	return newQStyleOptionDockWidget((*C.QStyleOptionDockWidget)(h))
+// UnsafeNewQStyleOptionDockWidget constructs the type using only unsafe pointers.
+func UnsafeNewQStyleOptionDockWidget(h unsafe.Pointer, h_QStyleOption unsafe.Pointer) *QStyleOptionDockWidget {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleOptionDockWidget{h: (*C.QStyleOptionDockWidget)(h),
+		QStyleOption: UnsafeNewQStyleOption(h_QStyleOption)}
 }
 
 // NewQStyleOptionDockWidget constructs a new QStyleOptionDockWidget object.
 func NewQStyleOptionDockWidget() *QStyleOptionDockWidget {
-	ret := C.QStyleOptionDockWidget_new()
-	return newQStyleOptionDockWidget(ret)
+	var outptr_QStyleOptionDockWidget *C.QStyleOptionDockWidget = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionDockWidget_new(&outptr_QStyleOptionDockWidget, &outptr_QStyleOption)
+	ret := newQStyleOptionDockWidget(outptr_QStyleOptionDockWidget, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOptionDockWidget2 constructs a new QStyleOptionDockWidget object.
 func NewQStyleOptionDockWidget2(other *QStyleOptionDockWidget) *QStyleOptionDockWidget {
-	ret := C.QStyleOptionDockWidget_new2(other.cPointer())
-	return newQStyleOptionDockWidget(ret)
+	var outptr_QStyleOptionDockWidget *C.QStyleOptionDockWidget = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionDockWidget_new2(other.cPointer(), &outptr_QStyleOptionDockWidget, &outptr_QStyleOption)
+	ret := newQStyleOptionDockWidget(outptr_QStyleOptionDockWidget, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionDockWidget) Delete() {
-	C.QStyleOptionDockWidget_Delete(this.h)
+	C.QStyleOptionDockWidget_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1308,7 +1561,8 @@ func (this *QStyleOptionDockWidget) GoGC() {
 }
 
 type QStyleOptionViewItem struct {
-	h *C.QStyleOptionViewItem
+	h          *C.QStyleOptionViewItem
+	isSubclass bool
 	*QStyleOption
 }
 
@@ -1326,32 +1580,50 @@ func (this *QStyleOptionViewItem) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleOptionViewItem(h *C.QStyleOptionViewItem) *QStyleOptionViewItem {
+// newQStyleOptionViewItem constructs the type using only CGO pointers.
+func newQStyleOptionViewItem(h *C.QStyleOptionViewItem, h_QStyleOption *C.QStyleOption) *QStyleOptionViewItem {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionViewItem{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
+	return &QStyleOptionViewItem{h: h,
+		QStyleOption: newQStyleOption(h_QStyleOption)}
 }
 
-func UnsafeNewQStyleOptionViewItem(h unsafe.Pointer) *QStyleOptionViewItem {
-	return newQStyleOptionViewItem((*C.QStyleOptionViewItem)(h))
+// UnsafeNewQStyleOptionViewItem constructs the type using only unsafe pointers.
+func UnsafeNewQStyleOptionViewItem(h unsafe.Pointer, h_QStyleOption unsafe.Pointer) *QStyleOptionViewItem {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleOptionViewItem{h: (*C.QStyleOptionViewItem)(h),
+		QStyleOption: UnsafeNewQStyleOption(h_QStyleOption)}
 }
 
 // NewQStyleOptionViewItem constructs a new QStyleOptionViewItem object.
 func NewQStyleOptionViewItem() *QStyleOptionViewItem {
-	ret := C.QStyleOptionViewItem_new()
-	return newQStyleOptionViewItem(ret)
+	var outptr_QStyleOptionViewItem *C.QStyleOptionViewItem = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionViewItem_new(&outptr_QStyleOptionViewItem, &outptr_QStyleOption)
+	ret := newQStyleOptionViewItem(outptr_QStyleOptionViewItem, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOptionViewItem2 constructs a new QStyleOptionViewItem object.
 func NewQStyleOptionViewItem2(other *QStyleOptionViewItem) *QStyleOptionViewItem {
-	ret := C.QStyleOptionViewItem_new2(other.cPointer())
-	return newQStyleOptionViewItem(ret)
+	var outptr_QStyleOptionViewItem *C.QStyleOptionViewItem = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionViewItem_new2(other.cPointer(), &outptr_QStyleOptionViewItem, &outptr_QStyleOption)
+	ret := newQStyleOptionViewItem(outptr_QStyleOptionViewItem, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionViewItem) Delete() {
-	C.QStyleOptionViewItem_Delete(this.h)
+	C.QStyleOptionViewItem_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1364,7 +1636,8 @@ func (this *QStyleOptionViewItem) GoGC() {
 }
 
 type QStyleOptionToolBox struct {
-	h *C.QStyleOptionToolBox
+	h          *C.QStyleOptionToolBox
+	isSubclass bool
 	*QStyleOption
 }
 
@@ -1382,32 +1655,50 @@ func (this *QStyleOptionToolBox) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleOptionToolBox(h *C.QStyleOptionToolBox) *QStyleOptionToolBox {
+// newQStyleOptionToolBox constructs the type using only CGO pointers.
+func newQStyleOptionToolBox(h *C.QStyleOptionToolBox, h_QStyleOption *C.QStyleOption) *QStyleOptionToolBox {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionToolBox{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
+	return &QStyleOptionToolBox{h: h,
+		QStyleOption: newQStyleOption(h_QStyleOption)}
 }
 
-func UnsafeNewQStyleOptionToolBox(h unsafe.Pointer) *QStyleOptionToolBox {
-	return newQStyleOptionToolBox((*C.QStyleOptionToolBox)(h))
+// UnsafeNewQStyleOptionToolBox constructs the type using only unsafe pointers.
+func UnsafeNewQStyleOptionToolBox(h unsafe.Pointer, h_QStyleOption unsafe.Pointer) *QStyleOptionToolBox {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleOptionToolBox{h: (*C.QStyleOptionToolBox)(h),
+		QStyleOption: UnsafeNewQStyleOption(h_QStyleOption)}
 }
 
 // NewQStyleOptionToolBox constructs a new QStyleOptionToolBox object.
 func NewQStyleOptionToolBox() *QStyleOptionToolBox {
-	ret := C.QStyleOptionToolBox_new()
-	return newQStyleOptionToolBox(ret)
+	var outptr_QStyleOptionToolBox *C.QStyleOptionToolBox = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionToolBox_new(&outptr_QStyleOptionToolBox, &outptr_QStyleOption)
+	ret := newQStyleOptionToolBox(outptr_QStyleOptionToolBox, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOptionToolBox2 constructs a new QStyleOptionToolBox object.
 func NewQStyleOptionToolBox2(other *QStyleOptionToolBox) *QStyleOptionToolBox {
-	ret := C.QStyleOptionToolBox_new2(other.cPointer())
-	return newQStyleOptionToolBox(ret)
+	var outptr_QStyleOptionToolBox *C.QStyleOptionToolBox = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionToolBox_new2(other.cPointer(), &outptr_QStyleOptionToolBox, &outptr_QStyleOption)
+	ret := newQStyleOptionToolBox(outptr_QStyleOptionToolBox, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionToolBox) Delete() {
-	C.QStyleOptionToolBox_Delete(this.h)
+	C.QStyleOptionToolBox_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1420,7 +1711,8 @@ func (this *QStyleOptionToolBox) GoGC() {
 }
 
 type QStyleOptionRubberBand struct {
-	h *C.QStyleOptionRubberBand
+	h          *C.QStyleOptionRubberBand
+	isSubclass bool
 	*QStyleOption
 }
 
@@ -1438,32 +1730,50 @@ func (this *QStyleOptionRubberBand) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleOptionRubberBand(h *C.QStyleOptionRubberBand) *QStyleOptionRubberBand {
+// newQStyleOptionRubberBand constructs the type using only CGO pointers.
+func newQStyleOptionRubberBand(h *C.QStyleOptionRubberBand, h_QStyleOption *C.QStyleOption) *QStyleOptionRubberBand {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionRubberBand{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
+	return &QStyleOptionRubberBand{h: h,
+		QStyleOption: newQStyleOption(h_QStyleOption)}
 }
 
-func UnsafeNewQStyleOptionRubberBand(h unsafe.Pointer) *QStyleOptionRubberBand {
-	return newQStyleOptionRubberBand((*C.QStyleOptionRubberBand)(h))
+// UnsafeNewQStyleOptionRubberBand constructs the type using only unsafe pointers.
+func UnsafeNewQStyleOptionRubberBand(h unsafe.Pointer, h_QStyleOption unsafe.Pointer) *QStyleOptionRubberBand {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleOptionRubberBand{h: (*C.QStyleOptionRubberBand)(h),
+		QStyleOption: UnsafeNewQStyleOption(h_QStyleOption)}
 }
 
 // NewQStyleOptionRubberBand constructs a new QStyleOptionRubberBand object.
 func NewQStyleOptionRubberBand() *QStyleOptionRubberBand {
-	ret := C.QStyleOptionRubberBand_new()
-	return newQStyleOptionRubberBand(ret)
+	var outptr_QStyleOptionRubberBand *C.QStyleOptionRubberBand = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionRubberBand_new(&outptr_QStyleOptionRubberBand, &outptr_QStyleOption)
+	ret := newQStyleOptionRubberBand(outptr_QStyleOptionRubberBand, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOptionRubberBand2 constructs a new QStyleOptionRubberBand object.
 func NewQStyleOptionRubberBand2(other *QStyleOptionRubberBand) *QStyleOptionRubberBand {
-	ret := C.QStyleOptionRubberBand_new2(other.cPointer())
-	return newQStyleOptionRubberBand(ret)
+	var outptr_QStyleOptionRubberBand *C.QStyleOptionRubberBand = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionRubberBand_new2(other.cPointer(), &outptr_QStyleOptionRubberBand, &outptr_QStyleOption)
+	ret := newQStyleOptionRubberBand(outptr_QStyleOptionRubberBand, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionRubberBand) Delete() {
-	C.QStyleOptionRubberBand_Delete(this.h)
+	C.QStyleOptionRubberBand_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1476,7 +1786,8 @@ func (this *QStyleOptionRubberBand) GoGC() {
 }
 
 type QStyleOptionComplex struct {
-	h *C.QStyleOptionComplex
+	h          *C.QStyleOptionComplex
+	isSubclass bool
 	*QStyleOption
 }
 
@@ -1494,44 +1805,72 @@ func (this *QStyleOptionComplex) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleOptionComplex(h *C.QStyleOptionComplex) *QStyleOptionComplex {
+// newQStyleOptionComplex constructs the type using only CGO pointers.
+func newQStyleOptionComplex(h *C.QStyleOptionComplex, h_QStyleOption *C.QStyleOption) *QStyleOptionComplex {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionComplex{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
+	return &QStyleOptionComplex{h: h,
+		QStyleOption: newQStyleOption(h_QStyleOption)}
 }
 
-func UnsafeNewQStyleOptionComplex(h unsafe.Pointer) *QStyleOptionComplex {
-	return newQStyleOptionComplex((*C.QStyleOptionComplex)(h))
+// UnsafeNewQStyleOptionComplex constructs the type using only unsafe pointers.
+func UnsafeNewQStyleOptionComplex(h unsafe.Pointer, h_QStyleOption unsafe.Pointer) *QStyleOptionComplex {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleOptionComplex{h: (*C.QStyleOptionComplex)(h),
+		QStyleOption: UnsafeNewQStyleOption(h_QStyleOption)}
 }
 
 // NewQStyleOptionComplex constructs a new QStyleOptionComplex object.
 func NewQStyleOptionComplex() *QStyleOptionComplex {
-	ret := C.QStyleOptionComplex_new()
-	return newQStyleOptionComplex(ret)
+	var outptr_QStyleOptionComplex *C.QStyleOptionComplex = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionComplex_new(&outptr_QStyleOptionComplex, &outptr_QStyleOption)
+	ret := newQStyleOptionComplex(outptr_QStyleOptionComplex, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOptionComplex2 constructs a new QStyleOptionComplex object.
 func NewQStyleOptionComplex2(other *QStyleOptionComplex) *QStyleOptionComplex {
-	ret := C.QStyleOptionComplex_new2(other.cPointer())
-	return newQStyleOptionComplex(ret)
+	var outptr_QStyleOptionComplex *C.QStyleOptionComplex = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionComplex_new2(other.cPointer(), &outptr_QStyleOptionComplex, &outptr_QStyleOption)
+	ret := newQStyleOptionComplex(outptr_QStyleOptionComplex, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOptionComplex3 constructs a new QStyleOptionComplex object.
 func NewQStyleOptionComplex3(version int) *QStyleOptionComplex {
-	ret := C.QStyleOptionComplex_new3((C.int)(version))
-	return newQStyleOptionComplex(ret)
+	var outptr_QStyleOptionComplex *C.QStyleOptionComplex = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionComplex_new3((C.int)(version), &outptr_QStyleOptionComplex, &outptr_QStyleOption)
+	ret := newQStyleOptionComplex(outptr_QStyleOptionComplex, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOptionComplex4 constructs a new QStyleOptionComplex object.
 func NewQStyleOptionComplex4(version int, typeVal int) *QStyleOptionComplex {
-	ret := C.QStyleOptionComplex_new4((C.int)(version), (C.int)(typeVal))
-	return newQStyleOptionComplex(ret)
+	var outptr_QStyleOptionComplex *C.QStyleOptionComplex = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionComplex_new4((C.int)(version), (C.int)(typeVal), &outptr_QStyleOptionComplex, &outptr_QStyleOption)
+	ret := newQStyleOptionComplex(outptr_QStyleOptionComplex, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionComplex) Delete() {
-	C.QStyleOptionComplex_Delete(this.h)
+	C.QStyleOptionComplex_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1544,7 +1883,8 @@ func (this *QStyleOptionComplex) GoGC() {
 }
 
 type QStyleOptionSlider struct {
-	h *C.QStyleOptionSlider
+	h          *C.QStyleOptionSlider
+	isSubclass bool
 	*QStyleOptionComplex
 }
 
@@ -1562,32 +1902,52 @@ func (this *QStyleOptionSlider) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleOptionSlider(h *C.QStyleOptionSlider) *QStyleOptionSlider {
+// newQStyleOptionSlider constructs the type using only CGO pointers.
+func newQStyleOptionSlider(h *C.QStyleOptionSlider, h_QStyleOptionComplex *C.QStyleOptionComplex, h_QStyleOption *C.QStyleOption) *QStyleOptionSlider {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionSlider{h: h, QStyleOptionComplex: UnsafeNewQStyleOptionComplex(unsafe.Pointer(h))}
+	return &QStyleOptionSlider{h: h,
+		QStyleOptionComplex: newQStyleOptionComplex(h_QStyleOptionComplex, h_QStyleOption)}
 }
 
-func UnsafeNewQStyleOptionSlider(h unsafe.Pointer) *QStyleOptionSlider {
-	return newQStyleOptionSlider((*C.QStyleOptionSlider)(h))
+// UnsafeNewQStyleOptionSlider constructs the type using only unsafe pointers.
+func UnsafeNewQStyleOptionSlider(h unsafe.Pointer, h_QStyleOptionComplex unsafe.Pointer, h_QStyleOption unsafe.Pointer) *QStyleOptionSlider {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleOptionSlider{h: (*C.QStyleOptionSlider)(h),
+		QStyleOptionComplex: UnsafeNewQStyleOptionComplex(h_QStyleOptionComplex, h_QStyleOption)}
 }
 
 // NewQStyleOptionSlider constructs a new QStyleOptionSlider object.
 func NewQStyleOptionSlider() *QStyleOptionSlider {
-	ret := C.QStyleOptionSlider_new()
-	return newQStyleOptionSlider(ret)
+	var outptr_QStyleOptionSlider *C.QStyleOptionSlider = nil
+	var outptr_QStyleOptionComplex *C.QStyleOptionComplex = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionSlider_new(&outptr_QStyleOptionSlider, &outptr_QStyleOptionComplex, &outptr_QStyleOption)
+	ret := newQStyleOptionSlider(outptr_QStyleOptionSlider, outptr_QStyleOptionComplex, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOptionSlider2 constructs a new QStyleOptionSlider object.
 func NewQStyleOptionSlider2(other *QStyleOptionSlider) *QStyleOptionSlider {
-	ret := C.QStyleOptionSlider_new2(other.cPointer())
-	return newQStyleOptionSlider(ret)
+	var outptr_QStyleOptionSlider *C.QStyleOptionSlider = nil
+	var outptr_QStyleOptionComplex *C.QStyleOptionComplex = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionSlider_new2(other.cPointer(), &outptr_QStyleOptionSlider, &outptr_QStyleOptionComplex, &outptr_QStyleOption)
+	ret := newQStyleOptionSlider(outptr_QStyleOptionSlider, outptr_QStyleOptionComplex, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionSlider) Delete() {
-	C.QStyleOptionSlider_Delete(this.h)
+	C.QStyleOptionSlider_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1600,7 +1960,8 @@ func (this *QStyleOptionSlider) GoGC() {
 }
 
 type QStyleOptionSpinBox struct {
-	h *C.QStyleOptionSpinBox
+	h          *C.QStyleOptionSpinBox
+	isSubclass bool
 	*QStyleOptionComplex
 }
 
@@ -1618,32 +1979,52 @@ func (this *QStyleOptionSpinBox) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleOptionSpinBox(h *C.QStyleOptionSpinBox) *QStyleOptionSpinBox {
+// newQStyleOptionSpinBox constructs the type using only CGO pointers.
+func newQStyleOptionSpinBox(h *C.QStyleOptionSpinBox, h_QStyleOptionComplex *C.QStyleOptionComplex, h_QStyleOption *C.QStyleOption) *QStyleOptionSpinBox {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionSpinBox{h: h, QStyleOptionComplex: UnsafeNewQStyleOptionComplex(unsafe.Pointer(h))}
+	return &QStyleOptionSpinBox{h: h,
+		QStyleOptionComplex: newQStyleOptionComplex(h_QStyleOptionComplex, h_QStyleOption)}
 }
 
-func UnsafeNewQStyleOptionSpinBox(h unsafe.Pointer) *QStyleOptionSpinBox {
-	return newQStyleOptionSpinBox((*C.QStyleOptionSpinBox)(h))
+// UnsafeNewQStyleOptionSpinBox constructs the type using only unsafe pointers.
+func UnsafeNewQStyleOptionSpinBox(h unsafe.Pointer, h_QStyleOptionComplex unsafe.Pointer, h_QStyleOption unsafe.Pointer) *QStyleOptionSpinBox {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleOptionSpinBox{h: (*C.QStyleOptionSpinBox)(h),
+		QStyleOptionComplex: UnsafeNewQStyleOptionComplex(h_QStyleOptionComplex, h_QStyleOption)}
 }
 
 // NewQStyleOptionSpinBox constructs a new QStyleOptionSpinBox object.
 func NewQStyleOptionSpinBox() *QStyleOptionSpinBox {
-	ret := C.QStyleOptionSpinBox_new()
-	return newQStyleOptionSpinBox(ret)
+	var outptr_QStyleOptionSpinBox *C.QStyleOptionSpinBox = nil
+	var outptr_QStyleOptionComplex *C.QStyleOptionComplex = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionSpinBox_new(&outptr_QStyleOptionSpinBox, &outptr_QStyleOptionComplex, &outptr_QStyleOption)
+	ret := newQStyleOptionSpinBox(outptr_QStyleOptionSpinBox, outptr_QStyleOptionComplex, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOptionSpinBox2 constructs a new QStyleOptionSpinBox object.
 func NewQStyleOptionSpinBox2(other *QStyleOptionSpinBox) *QStyleOptionSpinBox {
-	ret := C.QStyleOptionSpinBox_new2(other.cPointer())
-	return newQStyleOptionSpinBox(ret)
+	var outptr_QStyleOptionSpinBox *C.QStyleOptionSpinBox = nil
+	var outptr_QStyleOptionComplex *C.QStyleOptionComplex = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionSpinBox_new2(other.cPointer(), &outptr_QStyleOptionSpinBox, &outptr_QStyleOptionComplex, &outptr_QStyleOption)
+	ret := newQStyleOptionSpinBox(outptr_QStyleOptionSpinBox, outptr_QStyleOptionComplex, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionSpinBox) Delete() {
-	C.QStyleOptionSpinBox_Delete(this.h)
+	C.QStyleOptionSpinBox_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1656,7 +2037,8 @@ func (this *QStyleOptionSpinBox) GoGC() {
 }
 
 type QStyleOptionToolButton struct {
-	h *C.QStyleOptionToolButton
+	h          *C.QStyleOptionToolButton
+	isSubclass bool
 	*QStyleOptionComplex
 }
 
@@ -1674,32 +2056,52 @@ func (this *QStyleOptionToolButton) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleOptionToolButton(h *C.QStyleOptionToolButton) *QStyleOptionToolButton {
+// newQStyleOptionToolButton constructs the type using only CGO pointers.
+func newQStyleOptionToolButton(h *C.QStyleOptionToolButton, h_QStyleOptionComplex *C.QStyleOptionComplex, h_QStyleOption *C.QStyleOption) *QStyleOptionToolButton {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionToolButton{h: h, QStyleOptionComplex: UnsafeNewQStyleOptionComplex(unsafe.Pointer(h))}
+	return &QStyleOptionToolButton{h: h,
+		QStyleOptionComplex: newQStyleOptionComplex(h_QStyleOptionComplex, h_QStyleOption)}
 }
 
-func UnsafeNewQStyleOptionToolButton(h unsafe.Pointer) *QStyleOptionToolButton {
-	return newQStyleOptionToolButton((*C.QStyleOptionToolButton)(h))
+// UnsafeNewQStyleOptionToolButton constructs the type using only unsafe pointers.
+func UnsafeNewQStyleOptionToolButton(h unsafe.Pointer, h_QStyleOptionComplex unsafe.Pointer, h_QStyleOption unsafe.Pointer) *QStyleOptionToolButton {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleOptionToolButton{h: (*C.QStyleOptionToolButton)(h),
+		QStyleOptionComplex: UnsafeNewQStyleOptionComplex(h_QStyleOptionComplex, h_QStyleOption)}
 }
 
 // NewQStyleOptionToolButton constructs a new QStyleOptionToolButton object.
 func NewQStyleOptionToolButton() *QStyleOptionToolButton {
-	ret := C.QStyleOptionToolButton_new()
-	return newQStyleOptionToolButton(ret)
+	var outptr_QStyleOptionToolButton *C.QStyleOptionToolButton = nil
+	var outptr_QStyleOptionComplex *C.QStyleOptionComplex = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionToolButton_new(&outptr_QStyleOptionToolButton, &outptr_QStyleOptionComplex, &outptr_QStyleOption)
+	ret := newQStyleOptionToolButton(outptr_QStyleOptionToolButton, outptr_QStyleOptionComplex, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOptionToolButton2 constructs a new QStyleOptionToolButton object.
 func NewQStyleOptionToolButton2(other *QStyleOptionToolButton) *QStyleOptionToolButton {
-	ret := C.QStyleOptionToolButton_new2(other.cPointer())
-	return newQStyleOptionToolButton(ret)
+	var outptr_QStyleOptionToolButton *C.QStyleOptionToolButton = nil
+	var outptr_QStyleOptionComplex *C.QStyleOptionComplex = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionToolButton_new2(other.cPointer(), &outptr_QStyleOptionToolButton, &outptr_QStyleOptionComplex, &outptr_QStyleOption)
+	ret := newQStyleOptionToolButton(outptr_QStyleOptionToolButton, outptr_QStyleOptionComplex, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionToolButton) Delete() {
-	C.QStyleOptionToolButton_Delete(this.h)
+	C.QStyleOptionToolButton_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1712,7 +2114,8 @@ func (this *QStyleOptionToolButton) GoGC() {
 }
 
 type QStyleOptionComboBox struct {
-	h *C.QStyleOptionComboBox
+	h          *C.QStyleOptionComboBox
+	isSubclass bool
 	*QStyleOptionComplex
 }
 
@@ -1730,32 +2133,52 @@ func (this *QStyleOptionComboBox) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleOptionComboBox(h *C.QStyleOptionComboBox) *QStyleOptionComboBox {
+// newQStyleOptionComboBox constructs the type using only CGO pointers.
+func newQStyleOptionComboBox(h *C.QStyleOptionComboBox, h_QStyleOptionComplex *C.QStyleOptionComplex, h_QStyleOption *C.QStyleOption) *QStyleOptionComboBox {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionComboBox{h: h, QStyleOptionComplex: UnsafeNewQStyleOptionComplex(unsafe.Pointer(h))}
+	return &QStyleOptionComboBox{h: h,
+		QStyleOptionComplex: newQStyleOptionComplex(h_QStyleOptionComplex, h_QStyleOption)}
 }
 
-func UnsafeNewQStyleOptionComboBox(h unsafe.Pointer) *QStyleOptionComboBox {
-	return newQStyleOptionComboBox((*C.QStyleOptionComboBox)(h))
+// UnsafeNewQStyleOptionComboBox constructs the type using only unsafe pointers.
+func UnsafeNewQStyleOptionComboBox(h unsafe.Pointer, h_QStyleOptionComplex unsafe.Pointer, h_QStyleOption unsafe.Pointer) *QStyleOptionComboBox {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleOptionComboBox{h: (*C.QStyleOptionComboBox)(h),
+		QStyleOptionComplex: UnsafeNewQStyleOptionComplex(h_QStyleOptionComplex, h_QStyleOption)}
 }
 
 // NewQStyleOptionComboBox constructs a new QStyleOptionComboBox object.
 func NewQStyleOptionComboBox() *QStyleOptionComboBox {
-	ret := C.QStyleOptionComboBox_new()
-	return newQStyleOptionComboBox(ret)
+	var outptr_QStyleOptionComboBox *C.QStyleOptionComboBox = nil
+	var outptr_QStyleOptionComplex *C.QStyleOptionComplex = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionComboBox_new(&outptr_QStyleOptionComboBox, &outptr_QStyleOptionComplex, &outptr_QStyleOption)
+	ret := newQStyleOptionComboBox(outptr_QStyleOptionComboBox, outptr_QStyleOptionComplex, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOptionComboBox2 constructs a new QStyleOptionComboBox object.
 func NewQStyleOptionComboBox2(other *QStyleOptionComboBox) *QStyleOptionComboBox {
-	ret := C.QStyleOptionComboBox_new2(other.cPointer())
-	return newQStyleOptionComboBox(ret)
+	var outptr_QStyleOptionComboBox *C.QStyleOptionComboBox = nil
+	var outptr_QStyleOptionComplex *C.QStyleOptionComplex = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionComboBox_new2(other.cPointer(), &outptr_QStyleOptionComboBox, &outptr_QStyleOptionComplex, &outptr_QStyleOption)
+	ret := newQStyleOptionComboBox(outptr_QStyleOptionComboBox, outptr_QStyleOptionComplex, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionComboBox) Delete() {
-	C.QStyleOptionComboBox_Delete(this.h)
+	C.QStyleOptionComboBox_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1768,7 +2191,8 @@ func (this *QStyleOptionComboBox) GoGC() {
 }
 
 type QStyleOptionTitleBar struct {
-	h *C.QStyleOptionTitleBar
+	h          *C.QStyleOptionTitleBar
+	isSubclass bool
 	*QStyleOptionComplex
 }
 
@@ -1786,32 +2210,52 @@ func (this *QStyleOptionTitleBar) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleOptionTitleBar(h *C.QStyleOptionTitleBar) *QStyleOptionTitleBar {
+// newQStyleOptionTitleBar constructs the type using only CGO pointers.
+func newQStyleOptionTitleBar(h *C.QStyleOptionTitleBar, h_QStyleOptionComplex *C.QStyleOptionComplex, h_QStyleOption *C.QStyleOption) *QStyleOptionTitleBar {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionTitleBar{h: h, QStyleOptionComplex: UnsafeNewQStyleOptionComplex(unsafe.Pointer(h))}
+	return &QStyleOptionTitleBar{h: h,
+		QStyleOptionComplex: newQStyleOptionComplex(h_QStyleOptionComplex, h_QStyleOption)}
 }
 
-func UnsafeNewQStyleOptionTitleBar(h unsafe.Pointer) *QStyleOptionTitleBar {
-	return newQStyleOptionTitleBar((*C.QStyleOptionTitleBar)(h))
+// UnsafeNewQStyleOptionTitleBar constructs the type using only unsafe pointers.
+func UnsafeNewQStyleOptionTitleBar(h unsafe.Pointer, h_QStyleOptionComplex unsafe.Pointer, h_QStyleOption unsafe.Pointer) *QStyleOptionTitleBar {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleOptionTitleBar{h: (*C.QStyleOptionTitleBar)(h),
+		QStyleOptionComplex: UnsafeNewQStyleOptionComplex(h_QStyleOptionComplex, h_QStyleOption)}
 }
 
 // NewQStyleOptionTitleBar constructs a new QStyleOptionTitleBar object.
 func NewQStyleOptionTitleBar() *QStyleOptionTitleBar {
-	ret := C.QStyleOptionTitleBar_new()
-	return newQStyleOptionTitleBar(ret)
+	var outptr_QStyleOptionTitleBar *C.QStyleOptionTitleBar = nil
+	var outptr_QStyleOptionComplex *C.QStyleOptionComplex = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionTitleBar_new(&outptr_QStyleOptionTitleBar, &outptr_QStyleOptionComplex, &outptr_QStyleOption)
+	ret := newQStyleOptionTitleBar(outptr_QStyleOptionTitleBar, outptr_QStyleOptionComplex, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOptionTitleBar2 constructs a new QStyleOptionTitleBar object.
 func NewQStyleOptionTitleBar2(other *QStyleOptionTitleBar) *QStyleOptionTitleBar {
-	ret := C.QStyleOptionTitleBar_new2(other.cPointer())
-	return newQStyleOptionTitleBar(ret)
+	var outptr_QStyleOptionTitleBar *C.QStyleOptionTitleBar = nil
+	var outptr_QStyleOptionComplex *C.QStyleOptionComplex = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionTitleBar_new2(other.cPointer(), &outptr_QStyleOptionTitleBar, &outptr_QStyleOptionComplex, &outptr_QStyleOption)
+	ret := newQStyleOptionTitleBar(outptr_QStyleOptionTitleBar, outptr_QStyleOptionComplex, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionTitleBar) Delete() {
-	C.QStyleOptionTitleBar_Delete(this.h)
+	C.QStyleOptionTitleBar_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1824,7 +2268,8 @@ func (this *QStyleOptionTitleBar) GoGC() {
 }
 
 type QStyleOptionGroupBox struct {
-	h *C.QStyleOptionGroupBox
+	h          *C.QStyleOptionGroupBox
+	isSubclass bool
 	*QStyleOptionComplex
 }
 
@@ -1842,32 +2287,52 @@ func (this *QStyleOptionGroupBox) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleOptionGroupBox(h *C.QStyleOptionGroupBox) *QStyleOptionGroupBox {
+// newQStyleOptionGroupBox constructs the type using only CGO pointers.
+func newQStyleOptionGroupBox(h *C.QStyleOptionGroupBox, h_QStyleOptionComplex *C.QStyleOptionComplex, h_QStyleOption *C.QStyleOption) *QStyleOptionGroupBox {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionGroupBox{h: h, QStyleOptionComplex: UnsafeNewQStyleOptionComplex(unsafe.Pointer(h))}
+	return &QStyleOptionGroupBox{h: h,
+		QStyleOptionComplex: newQStyleOptionComplex(h_QStyleOptionComplex, h_QStyleOption)}
 }
 
-func UnsafeNewQStyleOptionGroupBox(h unsafe.Pointer) *QStyleOptionGroupBox {
-	return newQStyleOptionGroupBox((*C.QStyleOptionGroupBox)(h))
+// UnsafeNewQStyleOptionGroupBox constructs the type using only unsafe pointers.
+func UnsafeNewQStyleOptionGroupBox(h unsafe.Pointer, h_QStyleOptionComplex unsafe.Pointer, h_QStyleOption unsafe.Pointer) *QStyleOptionGroupBox {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleOptionGroupBox{h: (*C.QStyleOptionGroupBox)(h),
+		QStyleOptionComplex: UnsafeNewQStyleOptionComplex(h_QStyleOptionComplex, h_QStyleOption)}
 }
 
 // NewQStyleOptionGroupBox constructs a new QStyleOptionGroupBox object.
 func NewQStyleOptionGroupBox() *QStyleOptionGroupBox {
-	ret := C.QStyleOptionGroupBox_new()
-	return newQStyleOptionGroupBox(ret)
+	var outptr_QStyleOptionGroupBox *C.QStyleOptionGroupBox = nil
+	var outptr_QStyleOptionComplex *C.QStyleOptionComplex = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionGroupBox_new(&outptr_QStyleOptionGroupBox, &outptr_QStyleOptionComplex, &outptr_QStyleOption)
+	ret := newQStyleOptionGroupBox(outptr_QStyleOptionGroupBox, outptr_QStyleOptionComplex, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOptionGroupBox2 constructs a new QStyleOptionGroupBox object.
 func NewQStyleOptionGroupBox2(other *QStyleOptionGroupBox) *QStyleOptionGroupBox {
-	ret := C.QStyleOptionGroupBox_new2(other.cPointer())
-	return newQStyleOptionGroupBox(ret)
+	var outptr_QStyleOptionGroupBox *C.QStyleOptionGroupBox = nil
+	var outptr_QStyleOptionComplex *C.QStyleOptionComplex = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionGroupBox_new2(other.cPointer(), &outptr_QStyleOptionGroupBox, &outptr_QStyleOptionComplex, &outptr_QStyleOption)
+	ret := newQStyleOptionGroupBox(outptr_QStyleOptionGroupBox, outptr_QStyleOptionComplex, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionGroupBox) Delete() {
-	C.QStyleOptionGroupBox_Delete(this.h)
+	C.QStyleOptionGroupBox_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1880,7 +2345,8 @@ func (this *QStyleOptionGroupBox) GoGC() {
 }
 
 type QStyleOptionSizeGrip struct {
-	h *C.QStyleOptionSizeGrip
+	h          *C.QStyleOptionSizeGrip
+	isSubclass bool
 	*QStyleOptionComplex
 }
 
@@ -1898,32 +2364,52 @@ func (this *QStyleOptionSizeGrip) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleOptionSizeGrip(h *C.QStyleOptionSizeGrip) *QStyleOptionSizeGrip {
+// newQStyleOptionSizeGrip constructs the type using only CGO pointers.
+func newQStyleOptionSizeGrip(h *C.QStyleOptionSizeGrip, h_QStyleOptionComplex *C.QStyleOptionComplex, h_QStyleOption *C.QStyleOption) *QStyleOptionSizeGrip {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionSizeGrip{h: h, QStyleOptionComplex: UnsafeNewQStyleOptionComplex(unsafe.Pointer(h))}
+	return &QStyleOptionSizeGrip{h: h,
+		QStyleOptionComplex: newQStyleOptionComplex(h_QStyleOptionComplex, h_QStyleOption)}
 }
 
-func UnsafeNewQStyleOptionSizeGrip(h unsafe.Pointer) *QStyleOptionSizeGrip {
-	return newQStyleOptionSizeGrip((*C.QStyleOptionSizeGrip)(h))
+// UnsafeNewQStyleOptionSizeGrip constructs the type using only unsafe pointers.
+func UnsafeNewQStyleOptionSizeGrip(h unsafe.Pointer, h_QStyleOptionComplex unsafe.Pointer, h_QStyleOption unsafe.Pointer) *QStyleOptionSizeGrip {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleOptionSizeGrip{h: (*C.QStyleOptionSizeGrip)(h),
+		QStyleOptionComplex: UnsafeNewQStyleOptionComplex(h_QStyleOptionComplex, h_QStyleOption)}
 }
 
 // NewQStyleOptionSizeGrip constructs a new QStyleOptionSizeGrip object.
 func NewQStyleOptionSizeGrip() *QStyleOptionSizeGrip {
-	ret := C.QStyleOptionSizeGrip_new()
-	return newQStyleOptionSizeGrip(ret)
+	var outptr_QStyleOptionSizeGrip *C.QStyleOptionSizeGrip = nil
+	var outptr_QStyleOptionComplex *C.QStyleOptionComplex = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionSizeGrip_new(&outptr_QStyleOptionSizeGrip, &outptr_QStyleOptionComplex, &outptr_QStyleOption)
+	ret := newQStyleOptionSizeGrip(outptr_QStyleOptionSizeGrip, outptr_QStyleOptionComplex, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOptionSizeGrip2 constructs a new QStyleOptionSizeGrip object.
 func NewQStyleOptionSizeGrip2(other *QStyleOptionSizeGrip) *QStyleOptionSizeGrip {
-	ret := C.QStyleOptionSizeGrip_new2(other.cPointer())
-	return newQStyleOptionSizeGrip(ret)
+	var outptr_QStyleOptionSizeGrip *C.QStyleOptionSizeGrip = nil
+	var outptr_QStyleOptionComplex *C.QStyleOptionComplex = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionSizeGrip_new2(other.cPointer(), &outptr_QStyleOptionSizeGrip, &outptr_QStyleOptionComplex, &outptr_QStyleOption)
+	ret := newQStyleOptionSizeGrip(outptr_QStyleOptionSizeGrip, outptr_QStyleOptionComplex, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionSizeGrip) Delete() {
-	C.QStyleOptionSizeGrip_Delete(this.h)
+	C.QStyleOptionSizeGrip_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1936,7 +2422,8 @@ func (this *QStyleOptionSizeGrip) GoGC() {
 }
 
 type QStyleOptionGraphicsItem struct {
-	h *C.QStyleOptionGraphicsItem
+	h          *C.QStyleOptionGraphicsItem
+	isSubclass bool
 	*QStyleOption
 }
 
@@ -1954,27 +2441,45 @@ func (this *QStyleOptionGraphicsItem) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleOptionGraphicsItem(h *C.QStyleOptionGraphicsItem) *QStyleOptionGraphicsItem {
+// newQStyleOptionGraphicsItem constructs the type using only CGO pointers.
+func newQStyleOptionGraphicsItem(h *C.QStyleOptionGraphicsItem, h_QStyleOption *C.QStyleOption) *QStyleOptionGraphicsItem {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionGraphicsItem{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
+	return &QStyleOptionGraphicsItem{h: h,
+		QStyleOption: newQStyleOption(h_QStyleOption)}
 }
 
-func UnsafeNewQStyleOptionGraphicsItem(h unsafe.Pointer) *QStyleOptionGraphicsItem {
-	return newQStyleOptionGraphicsItem((*C.QStyleOptionGraphicsItem)(h))
+// UnsafeNewQStyleOptionGraphicsItem constructs the type using only unsafe pointers.
+func UnsafeNewQStyleOptionGraphicsItem(h unsafe.Pointer, h_QStyleOption unsafe.Pointer) *QStyleOptionGraphicsItem {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleOptionGraphicsItem{h: (*C.QStyleOptionGraphicsItem)(h),
+		QStyleOption: UnsafeNewQStyleOption(h_QStyleOption)}
 }
 
 // NewQStyleOptionGraphicsItem constructs a new QStyleOptionGraphicsItem object.
 func NewQStyleOptionGraphicsItem() *QStyleOptionGraphicsItem {
-	ret := C.QStyleOptionGraphicsItem_new()
-	return newQStyleOptionGraphicsItem(ret)
+	var outptr_QStyleOptionGraphicsItem *C.QStyleOptionGraphicsItem = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionGraphicsItem_new(&outptr_QStyleOptionGraphicsItem, &outptr_QStyleOption)
+	ret := newQStyleOptionGraphicsItem(outptr_QStyleOptionGraphicsItem, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleOptionGraphicsItem2 constructs a new QStyleOptionGraphicsItem object.
 func NewQStyleOptionGraphicsItem2(other *QStyleOptionGraphicsItem) *QStyleOptionGraphicsItem {
-	ret := C.QStyleOptionGraphicsItem_new2(other.cPointer())
-	return newQStyleOptionGraphicsItem(ret)
+	var outptr_QStyleOptionGraphicsItem *C.QStyleOptionGraphicsItem = nil
+	var outptr_QStyleOption *C.QStyleOption = nil
+
+	C.QStyleOptionGraphicsItem_new2(other.cPointer(), &outptr_QStyleOptionGraphicsItem, &outptr_QStyleOption)
+	ret := newQStyleOptionGraphicsItem(outptr_QStyleOptionGraphicsItem, outptr_QStyleOption)
+	ret.isSubclass = true
+	return ret
 }
 
 func QStyleOptionGraphicsItem_LevelOfDetailFromTransform(worldTransform *QTransform) float64 {
@@ -1983,7 +2488,7 @@ func QStyleOptionGraphicsItem_LevelOfDetailFromTransform(worldTransform *QTransf
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionGraphicsItem) Delete() {
-	C.QStyleOptionGraphicsItem_Delete(this.h)
+	C.QStyleOptionGraphicsItem_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1996,7 +2501,8 @@ func (this *QStyleOptionGraphicsItem) GoGC() {
 }
 
 type QStyleHintReturn struct {
-	h *C.QStyleHintReturn
+	h          *C.QStyleHintReturn
+	isSubclass bool
 }
 
 func (this *QStyleHintReturn) cPointer() *C.QStyleHintReturn {
@@ -2013,6 +2519,7 @@ func (this *QStyleHintReturn) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQStyleHintReturn constructs the type using only CGO pointers.
 func newQStyleHintReturn(h *C.QStyleHintReturn) *QStyleHintReturn {
 	if h == nil {
 		return nil
@@ -2020,32 +2527,53 @@ func newQStyleHintReturn(h *C.QStyleHintReturn) *QStyleHintReturn {
 	return &QStyleHintReturn{h: h}
 }
 
+// UnsafeNewQStyleHintReturn constructs the type using only unsafe pointers.
 func UnsafeNewQStyleHintReturn(h unsafe.Pointer) *QStyleHintReturn {
-	return newQStyleHintReturn((*C.QStyleHintReturn)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleHintReturn{h: (*C.QStyleHintReturn)(h)}
 }
 
 // NewQStyleHintReturn constructs a new QStyleHintReturn object.
 func NewQStyleHintReturn() *QStyleHintReturn {
-	ret := C.QStyleHintReturn_new()
-	return newQStyleHintReturn(ret)
+	var outptr_QStyleHintReturn *C.QStyleHintReturn = nil
+
+	C.QStyleHintReturn_new(&outptr_QStyleHintReturn)
+	ret := newQStyleHintReturn(outptr_QStyleHintReturn)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleHintReturn2 constructs a new QStyleHintReturn object.
 func NewQStyleHintReturn2(param1 *QStyleHintReturn) *QStyleHintReturn {
-	ret := C.QStyleHintReturn_new2(param1.cPointer())
-	return newQStyleHintReturn(ret)
+	var outptr_QStyleHintReturn *C.QStyleHintReturn = nil
+
+	C.QStyleHintReturn_new2(param1.cPointer(), &outptr_QStyleHintReturn)
+	ret := newQStyleHintReturn(outptr_QStyleHintReturn)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleHintReturn3 constructs a new QStyleHintReturn object.
 func NewQStyleHintReturn3(version int) *QStyleHintReturn {
-	ret := C.QStyleHintReturn_new3((C.int)(version))
-	return newQStyleHintReturn(ret)
+	var outptr_QStyleHintReturn *C.QStyleHintReturn = nil
+
+	C.QStyleHintReturn_new3((C.int)(version), &outptr_QStyleHintReturn)
+	ret := newQStyleHintReturn(outptr_QStyleHintReturn)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleHintReturn4 constructs a new QStyleHintReturn object.
 func NewQStyleHintReturn4(version int, typeVal int) *QStyleHintReturn {
-	ret := C.QStyleHintReturn_new4((C.int)(version), (C.int)(typeVal))
-	return newQStyleHintReturn(ret)
+	var outptr_QStyleHintReturn *C.QStyleHintReturn = nil
+
+	C.QStyleHintReturn_new4((C.int)(version), (C.int)(typeVal), &outptr_QStyleHintReturn)
+	ret := newQStyleHintReturn(outptr_QStyleHintReturn)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QStyleHintReturn) OperatorAssign(param1 *QStyleHintReturn) {
@@ -2054,7 +2582,7 @@ func (this *QStyleHintReturn) OperatorAssign(param1 *QStyleHintReturn) {
 
 // Delete this object from C++ memory.
 func (this *QStyleHintReturn) Delete() {
-	C.QStyleHintReturn_Delete(this.h)
+	C.QStyleHintReturn_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2067,7 +2595,8 @@ func (this *QStyleHintReturn) GoGC() {
 }
 
 type QStyleHintReturnMask struct {
-	h *C.QStyleHintReturnMask
+	h          *C.QStyleHintReturnMask
+	isSubclass bool
 	*QStyleHintReturn
 }
 
@@ -2085,27 +2614,45 @@ func (this *QStyleHintReturnMask) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleHintReturnMask(h *C.QStyleHintReturnMask) *QStyleHintReturnMask {
+// newQStyleHintReturnMask constructs the type using only CGO pointers.
+func newQStyleHintReturnMask(h *C.QStyleHintReturnMask, h_QStyleHintReturn *C.QStyleHintReturn) *QStyleHintReturnMask {
 	if h == nil {
 		return nil
 	}
-	return &QStyleHintReturnMask{h: h, QStyleHintReturn: UnsafeNewQStyleHintReturn(unsafe.Pointer(h))}
+	return &QStyleHintReturnMask{h: h,
+		QStyleHintReturn: newQStyleHintReturn(h_QStyleHintReturn)}
 }
 
-func UnsafeNewQStyleHintReturnMask(h unsafe.Pointer) *QStyleHintReturnMask {
-	return newQStyleHintReturnMask((*C.QStyleHintReturnMask)(h))
+// UnsafeNewQStyleHintReturnMask constructs the type using only unsafe pointers.
+func UnsafeNewQStyleHintReturnMask(h unsafe.Pointer, h_QStyleHintReturn unsafe.Pointer) *QStyleHintReturnMask {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleHintReturnMask{h: (*C.QStyleHintReturnMask)(h),
+		QStyleHintReturn: UnsafeNewQStyleHintReturn(h_QStyleHintReturn)}
 }
 
 // NewQStyleHintReturnMask constructs a new QStyleHintReturnMask object.
 func NewQStyleHintReturnMask() *QStyleHintReturnMask {
-	ret := C.QStyleHintReturnMask_new()
-	return newQStyleHintReturnMask(ret)
+	var outptr_QStyleHintReturnMask *C.QStyleHintReturnMask = nil
+	var outptr_QStyleHintReturn *C.QStyleHintReturn = nil
+
+	C.QStyleHintReturnMask_new(&outptr_QStyleHintReturnMask, &outptr_QStyleHintReturn)
+	ret := newQStyleHintReturnMask(outptr_QStyleHintReturnMask, outptr_QStyleHintReturn)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleHintReturnMask2 constructs a new QStyleHintReturnMask object.
 func NewQStyleHintReturnMask2(param1 *QStyleHintReturnMask) *QStyleHintReturnMask {
-	ret := C.QStyleHintReturnMask_new2(param1.cPointer())
-	return newQStyleHintReturnMask(ret)
+	var outptr_QStyleHintReturnMask *C.QStyleHintReturnMask = nil
+	var outptr_QStyleHintReturn *C.QStyleHintReturn = nil
+
+	C.QStyleHintReturnMask_new2(param1.cPointer(), &outptr_QStyleHintReturnMask, &outptr_QStyleHintReturn)
+	ret := newQStyleHintReturnMask(outptr_QStyleHintReturnMask, outptr_QStyleHintReturn)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QStyleHintReturnMask) OperatorAssign(param1 *QStyleHintReturnMask) {
@@ -2114,7 +2661,7 @@ func (this *QStyleHintReturnMask) OperatorAssign(param1 *QStyleHintReturnMask) {
 
 // Delete this object from C++ memory.
 func (this *QStyleHintReturnMask) Delete() {
-	C.QStyleHintReturnMask_Delete(this.h)
+	C.QStyleHintReturnMask_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2127,7 +2674,8 @@ func (this *QStyleHintReturnMask) GoGC() {
 }
 
 type QStyleHintReturnVariant struct {
-	h *C.QStyleHintReturnVariant
+	h          *C.QStyleHintReturnVariant
+	isSubclass bool
 	*QStyleHintReturn
 }
 
@@ -2145,27 +2693,45 @@ func (this *QStyleHintReturnVariant) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQStyleHintReturnVariant(h *C.QStyleHintReturnVariant) *QStyleHintReturnVariant {
+// newQStyleHintReturnVariant constructs the type using only CGO pointers.
+func newQStyleHintReturnVariant(h *C.QStyleHintReturnVariant, h_QStyleHintReturn *C.QStyleHintReturn) *QStyleHintReturnVariant {
 	if h == nil {
 		return nil
 	}
-	return &QStyleHintReturnVariant{h: h, QStyleHintReturn: UnsafeNewQStyleHintReturn(unsafe.Pointer(h))}
+	return &QStyleHintReturnVariant{h: h,
+		QStyleHintReturn: newQStyleHintReturn(h_QStyleHintReturn)}
 }
 
-func UnsafeNewQStyleHintReturnVariant(h unsafe.Pointer) *QStyleHintReturnVariant {
-	return newQStyleHintReturnVariant((*C.QStyleHintReturnVariant)(h))
+// UnsafeNewQStyleHintReturnVariant constructs the type using only unsafe pointers.
+func UnsafeNewQStyleHintReturnVariant(h unsafe.Pointer, h_QStyleHintReturn unsafe.Pointer) *QStyleHintReturnVariant {
+	if h == nil {
+		return nil
+	}
+
+	return &QStyleHintReturnVariant{h: (*C.QStyleHintReturnVariant)(h),
+		QStyleHintReturn: UnsafeNewQStyleHintReturn(h_QStyleHintReturn)}
 }
 
 // NewQStyleHintReturnVariant constructs a new QStyleHintReturnVariant object.
 func NewQStyleHintReturnVariant() *QStyleHintReturnVariant {
-	ret := C.QStyleHintReturnVariant_new()
-	return newQStyleHintReturnVariant(ret)
+	var outptr_QStyleHintReturnVariant *C.QStyleHintReturnVariant = nil
+	var outptr_QStyleHintReturn *C.QStyleHintReturn = nil
+
+	C.QStyleHintReturnVariant_new(&outptr_QStyleHintReturnVariant, &outptr_QStyleHintReturn)
+	ret := newQStyleHintReturnVariant(outptr_QStyleHintReturnVariant, outptr_QStyleHintReturn)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQStyleHintReturnVariant2 constructs a new QStyleHintReturnVariant object.
 func NewQStyleHintReturnVariant2(param1 *QStyleHintReturnVariant) *QStyleHintReturnVariant {
-	ret := C.QStyleHintReturnVariant_new2(param1.cPointer())
-	return newQStyleHintReturnVariant(ret)
+	var outptr_QStyleHintReturnVariant *C.QStyleHintReturnVariant = nil
+	var outptr_QStyleHintReturn *C.QStyleHintReturn = nil
+
+	C.QStyleHintReturnVariant_new2(param1.cPointer(), &outptr_QStyleHintReturnVariant, &outptr_QStyleHintReturn)
+	ret := newQStyleHintReturnVariant(outptr_QStyleHintReturnVariant, outptr_QStyleHintReturn)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QStyleHintReturnVariant) OperatorAssign(param1 *QStyleHintReturnVariant) {
@@ -2174,7 +2740,7 @@ func (this *QStyleHintReturnVariant) OperatorAssign(param1 *QStyleHintReturnVari
 
 // Delete this object from C++ memory.
 func (this *QStyleHintReturnVariant) Delete() {
-	C.QStyleHintReturnVariant_Delete(this.h)
+	C.QStyleHintReturnVariant_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

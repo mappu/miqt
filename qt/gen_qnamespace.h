@@ -20,7 +20,7 @@ class QInternal;
 typedef struct QInternal QInternal;
 #endif
 
-void QInternal_Delete(QInternal* self);
+void QInternal_Delete(QInternal* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

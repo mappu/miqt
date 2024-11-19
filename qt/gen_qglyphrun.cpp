@@ -7,12 +7,14 @@
 #include "gen_qglyphrun.h"
 #include "_cgo_export.h"
 
-QGlyphRun* QGlyphRun_new() {
-	return new QGlyphRun();
+void QGlyphRun_new(QGlyphRun** outptr_QGlyphRun) {
+	QGlyphRun* ret = new QGlyphRun();
+	*outptr_QGlyphRun = ret;
 }
 
-QGlyphRun* QGlyphRun_new2(QGlyphRun* other) {
-	return new QGlyphRun(*other);
+void QGlyphRun_new2(QGlyphRun* other, QGlyphRun** outptr_QGlyphRun) {
+	QGlyphRun* ret = new QGlyphRun(*other);
+	*outptr_QGlyphRun = ret;
 }
 
 void QGlyphRun_OperatorAssign(QGlyphRun* self, QGlyphRun* other) {
@@ -154,7 +156,11 @@ void QGlyphRun_SetFlag2(QGlyphRun* self, int flag, bool enabled) {
 	self->setFlag(static_cast<QGlyphRun::GlyphRunFlag>(flag), enabled);
 }
 
-void QGlyphRun_Delete(QGlyphRun* self) {
-	delete self;
+void QGlyphRun_Delete(QGlyphRun* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QGlyphRun*>( self );
+	} else {
+		delete self;
+	}
 }
 

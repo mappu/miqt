@@ -5,6 +5,7 @@
 #include <QMetaObject>
 #include <QMimeData>
 #include <QModelIndex>
+#include <QObject>
 #include <QSize>
 #include <QString>
 #include <QByteArray>
@@ -68,12 +69,12 @@ void QAbstractProxyModel_Revert(QAbstractProxyModel* self) {
 	self->revert();
 }
 
-QVariant* QAbstractProxyModel_Data(const QAbstractProxyModel* self, QModelIndex* proxyIndex) {
-	return new QVariant(self->data(*proxyIndex));
+QVariant* QAbstractProxyModel_Data(const QAbstractProxyModel* self, QModelIndex* proxyIndex, int role) {
+	return new QVariant(self->data(*proxyIndex, static_cast<int>(role)));
 }
 
-QVariant* QAbstractProxyModel_HeaderData(const QAbstractProxyModel* self, int section, int orientation) {
-	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation)));
+QVariant* QAbstractProxyModel_HeaderData(const QAbstractProxyModel* self, int section, int orientation, int role) {
+	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
 }
 
 struct miqt_map /* of int to QVariant* */  QAbstractProxyModel_ItemData(const QAbstractProxyModel* self, QModelIndex* index) {
@@ -99,8 +100,8 @@ int QAbstractProxyModel_Flags(const QAbstractProxyModel* self, QModelIndex* inde
 	return static_cast<int>(_ret);
 }
 
-bool QAbstractProxyModel_SetData(QAbstractProxyModel* self, QModelIndex* index, QVariant* value) {
-	return self->setData(*index, *value);
+bool QAbstractProxyModel_SetData(QAbstractProxyModel* self, QModelIndex* index, QVariant* value, int role) {
+	return self->setData(*index, *value, static_cast<int>(role));
 }
 
 bool QAbstractProxyModel_SetItemData(QAbstractProxyModel* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles) {
@@ -113,8 +114,8 @@ bool QAbstractProxyModel_SetItemData(QAbstractProxyModel* self, QModelIndex* ind
 	return self->setItemData(*index, roles_QMap);
 }
 
-bool QAbstractProxyModel_SetHeaderData(QAbstractProxyModel* self, int section, int orientation, QVariant* value) {
-	return self->setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value);
+bool QAbstractProxyModel_SetHeaderData(QAbstractProxyModel* self, int section, int orientation, QVariant* value, int role) {
+	return self->setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
 }
 
 QModelIndex* QAbstractProxyModel_Buddy(const QAbstractProxyModel* self, QModelIndex* index) {
@@ -129,16 +130,16 @@ void QAbstractProxyModel_FetchMore(QAbstractProxyModel* self, QModelIndex* paren
 	self->fetchMore(*parent);
 }
 
-void QAbstractProxyModel_Sort(QAbstractProxyModel* self, int column) {
-	self->sort(static_cast<int>(column));
+void QAbstractProxyModel_Sort(QAbstractProxyModel* self, int column, int order) {
+	self->sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 }
 
 QSize* QAbstractProxyModel_Span(const QAbstractProxyModel* self, QModelIndex* index) {
 	return new QSize(self->span(*index));
 }
 
-bool QAbstractProxyModel_HasChildren(const QAbstractProxyModel* self) {
-	return self->hasChildren();
+bool QAbstractProxyModel_HasChildren(const QAbstractProxyModel* self, QModelIndex* parent) {
+	return self->hasChildren(*parent);
 }
 
 QModelIndex* QAbstractProxyModel_Sibling(const QAbstractProxyModel* self, int row, int column, QModelIndex* idx) {
@@ -237,31 +238,11 @@ struct miqt_string QAbstractProxyModel_TrUtf83(const char* s, const char* c, int
 	return _ms;
 }
 
-QVariant* QAbstractProxyModel_Data2(const QAbstractProxyModel* self, QModelIndex* proxyIndex, int role) {
-	return new QVariant(self->data(*proxyIndex, static_cast<int>(role)));
-}
-
-QVariant* QAbstractProxyModel_HeaderData3(const QAbstractProxyModel* self, int section, int orientation, int role) {
-	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
-}
-
-bool QAbstractProxyModel_SetData3(QAbstractProxyModel* self, QModelIndex* index, QVariant* value, int role) {
-	return self->setData(*index, *value, static_cast<int>(role));
-}
-
-bool QAbstractProxyModel_SetHeaderData4(QAbstractProxyModel* self, int section, int orientation, QVariant* value, int role) {
-	return self->setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
-}
-
-void QAbstractProxyModel_Sort2(QAbstractProxyModel* self, int column, int order) {
-	self->sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
-}
-
-bool QAbstractProxyModel_HasChildren1(const QAbstractProxyModel* self, QModelIndex* parent) {
-	return self->hasChildren(*parent);
-}
-
-void QAbstractProxyModel_Delete(QAbstractProxyModel* self) {
-	delete self;
+void QAbstractProxyModel_Delete(QAbstractProxyModel* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAbstractProxyModel*>( self );
+	} else {
+		delete self;
+	}
 }
 

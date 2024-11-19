@@ -16,19 +16,25 @@ extern "C" {
 
 #ifdef __cplusplus
 class QMetaObject;
+class QObject;
 class QTextBlock;
+class QTextBlockGroup;
 class QTextDocument;
 class QTextList;
 class QTextListFormat;
+class QTextObject;
 #else
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 typedef struct QTextBlock QTextBlock;
+typedef struct QTextBlockGroup QTextBlockGroup;
 typedef struct QTextDocument QTextDocument;
 typedef struct QTextList QTextList;
 typedef struct QTextListFormat QTextListFormat;
+typedef struct QTextObject QTextObject;
 #endif
 
-QTextList* QTextList_new(QTextDocument* doc);
+void QTextList_new(QTextDocument* doc, QTextList** outptr_QTextList, QTextBlockGroup** outptr_QTextBlockGroup, QTextObject** outptr_QTextObject, QObject** outptr_QObject);
 QMetaObject* QTextList_MetaObject(const QTextList* self);
 void* QTextList_Metacast(QTextList* self, const char* param1);
 struct miqt_string QTextList_Tr(const char* s);
@@ -47,7 +53,13 @@ struct miqt_string QTextList_Tr2(const char* s, const char* c);
 struct miqt_string QTextList_Tr3(const char* s, const char* c, int n);
 struct miqt_string QTextList_TrUtf82(const char* s, const char* c);
 struct miqt_string QTextList_TrUtf83(const char* s, const char* c, int n);
-void QTextList_Delete(QTextList* self);
+void QTextList_override_virtual_BlockInserted(void* self, intptr_t slot);
+void QTextList_virtualbase_BlockInserted(void* self, QTextBlock* block);
+void QTextList_override_virtual_BlockRemoved(void* self, intptr_t slot);
+void QTextList_virtualbase_BlockRemoved(void* self, QTextBlock* block);
+void QTextList_override_virtual_BlockFormatChanged(void* self, intptr_t slot);
+void QTextList_virtualbase_BlockFormatChanged(void* self, QTextBlock* block);
+void QTextList_Delete(QTextList* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

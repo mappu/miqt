@@ -5,27 +5,32 @@
 #include "gen_qnetworkdatagram.h"
 #include "_cgo_export.h"
 
-QNetworkDatagram* QNetworkDatagram_new() {
-	return new QNetworkDatagram();
+void QNetworkDatagram_new(QNetworkDatagram** outptr_QNetworkDatagram) {
+	QNetworkDatagram* ret = new QNetworkDatagram();
+	*outptr_QNetworkDatagram = ret;
 }
 
-QNetworkDatagram* QNetworkDatagram_new2(struct miqt_string data) {
+void QNetworkDatagram_new2(struct miqt_string data, QNetworkDatagram** outptr_QNetworkDatagram) {
 	QByteArray data_QByteArray(data.data, data.len);
-	return new QNetworkDatagram(data_QByteArray);
+	QNetworkDatagram* ret = new QNetworkDatagram(data_QByteArray);
+	*outptr_QNetworkDatagram = ret;
 }
 
-QNetworkDatagram* QNetworkDatagram_new3(QNetworkDatagram* other) {
-	return new QNetworkDatagram(*other);
+void QNetworkDatagram_new3(QNetworkDatagram* other, QNetworkDatagram** outptr_QNetworkDatagram) {
+	QNetworkDatagram* ret = new QNetworkDatagram(*other);
+	*outptr_QNetworkDatagram = ret;
 }
 
-QNetworkDatagram* QNetworkDatagram_new4(struct miqt_string data, QHostAddress* destinationAddress) {
+void QNetworkDatagram_new4(struct miqt_string data, QHostAddress* destinationAddress, QNetworkDatagram** outptr_QNetworkDatagram) {
 	QByteArray data_QByteArray(data.data, data.len);
-	return new QNetworkDatagram(data_QByteArray, *destinationAddress);
+	QNetworkDatagram* ret = new QNetworkDatagram(data_QByteArray, *destinationAddress);
+	*outptr_QNetworkDatagram = ret;
 }
 
-QNetworkDatagram* QNetworkDatagram_new5(struct miqt_string data, QHostAddress* destinationAddress, uint16_t port) {
+void QNetworkDatagram_new5(struct miqt_string data, QHostAddress* destinationAddress, uint16_t port, QNetworkDatagram** outptr_QNetworkDatagram) {
 	QByteArray data_QByteArray(data.data, data.len);
-	return new QNetworkDatagram(data_QByteArray, *destinationAddress, static_cast<quint16>(port));
+	QNetworkDatagram* ret = new QNetworkDatagram(data_QByteArray, *destinationAddress, static_cast<quint16>(port));
+	*outptr_QNetworkDatagram = ret;
 }
 
 void QNetworkDatagram_OperatorAssign(QNetworkDatagram* self, QNetworkDatagram* other) {
@@ -112,7 +117,11 @@ void QNetworkDatagram_SetSender2(QNetworkDatagram* self, QHostAddress* address, 
 	self->setSender(*address, static_cast<quint16>(port));
 }
 
-void QNetworkDatagram_Delete(QNetworkDatagram* self) {
-	delete self;
+void QNetworkDatagram_Delete(QNetworkDatagram* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QNetworkDatagram*>( self );
+	} else {
+		delete self;
+	}
 }
 

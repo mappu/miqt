@@ -15,7 +15,8 @@ import (
 )
 
 type QCborMap struct {
-	h *C.QCborMap
+	h          *C.QCborMap
+	isSubclass bool
 }
 
 func (this *QCborMap) cPointer() *C.QCborMap {
@@ -32,6 +33,7 @@ func (this *QCborMap) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCborMap constructs the type using only CGO pointers.
 func newQCborMap(h *C.QCborMap) *QCborMap {
 	if h == nil {
 		return nil
@@ -39,20 +41,33 @@ func newQCborMap(h *C.QCborMap) *QCborMap {
 	return &QCborMap{h: h}
 }
 
+// UnsafeNewQCborMap constructs the type using only unsafe pointers.
 func UnsafeNewQCborMap(h unsafe.Pointer) *QCborMap {
-	return newQCborMap((*C.QCborMap)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCborMap{h: (*C.QCborMap)(h)}
 }
 
 // NewQCborMap constructs a new QCborMap object.
 func NewQCborMap() *QCborMap {
-	ret := C.QCborMap_new()
-	return newQCborMap(ret)
+	var outptr_QCborMap *C.QCborMap = nil
+
+	C.QCborMap_new(&outptr_QCborMap)
+	ret := newQCborMap(outptr_QCborMap)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborMap2 constructs a new QCborMap object.
 func NewQCborMap2(other *QCborMap) *QCborMap {
-	ret := C.QCborMap_new2(other.cPointer())
-	return newQCborMap(ret)
+	var outptr_QCborMap *C.QCborMap = nil
+
+	C.QCborMap_new2(other.cPointer(), &outptr_QCborMap)
+	ret := newQCborMap(outptr_QCborMap)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QCborMap) OperatorAssign(other *QCborMap) {
@@ -560,7 +575,7 @@ func (this *QCborMap) ToJsonObject() *qt.QJsonObject {
 
 // Delete this object from C++ memory.
 func (this *QCborMap) Delete() {
-	C.QCborMap_Delete(this.h)
+	C.QCborMap_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -573,7 +588,8 @@ func (this *QCborMap) GoGC() {
 }
 
 type QCborMap__Iterator struct {
-	h *C.QCborMap__Iterator
+	h          *C.QCborMap__Iterator
+	isSubclass bool
 }
 
 func (this *QCborMap__Iterator) cPointer() *C.QCborMap__Iterator {
@@ -590,6 +606,7 @@ func (this *QCborMap__Iterator) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCborMap__Iterator constructs the type using only CGO pointers.
 func newQCborMap__Iterator(h *C.QCborMap__Iterator) *QCborMap__Iterator {
 	if h == nil {
 		return nil
@@ -597,20 +614,33 @@ func newQCborMap__Iterator(h *C.QCborMap__Iterator) *QCborMap__Iterator {
 	return &QCborMap__Iterator{h: h}
 }
 
+// UnsafeNewQCborMap__Iterator constructs the type using only unsafe pointers.
 func UnsafeNewQCborMap__Iterator(h unsafe.Pointer) *QCborMap__Iterator {
-	return newQCborMap__Iterator((*C.QCborMap__Iterator)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCborMap__Iterator{h: (*C.QCborMap__Iterator)(h)}
 }
 
 // NewQCborMap__Iterator constructs a new QCborMap::Iterator object.
 func NewQCborMap__Iterator() *QCborMap__Iterator {
-	ret := C.QCborMap__Iterator_new()
-	return newQCborMap__Iterator(ret)
+	var outptr_QCborMap__Iterator *C.QCborMap__Iterator = nil
+
+	C.QCborMap__Iterator_new(&outptr_QCborMap__Iterator)
+	ret := newQCborMap__Iterator(outptr_QCborMap__Iterator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborMap__Iterator2 constructs a new QCborMap::Iterator object.
 func NewQCborMap__Iterator2(param1 *QCborMap__Iterator) *QCborMap__Iterator {
-	ret := C.QCborMap__Iterator_new2(param1.cPointer())
-	return newQCborMap__Iterator(ret)
+	var outptr_QCborMap__Iterator *C.QCborMap__Iterator = nil
+
+	C.QCborMap__Iterator_new2(param1.cPointer(), &outptr_QCborMap__Iterator)
+	ret := newQCborMap__Iterator(outptr_QCborMap__Iterator)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QCborMap__Iterator) OperatorAssign(other *QCborMap__Iterator) {
@@ -756,7 +786,7 @@ func (this *QCborMap__Iterator) OperatorMinusWithQCborMapIterator(j QCborMap__It
 
 // Delete this object from C++ memory.
 func (this *QCborMap__Iterator) Delete() {
-	C.QCborMap__Iterator_Delete(this.h)
+	C.QCborMap__Iterator_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -769,7 +799,8 @@ func (this *QCborMap__Iterator) GoGC() {
 }
 
 type QCborMap__ConstIterator struct {
-	h *C.QCborMap__ConstIterator
+	h          *C.QCborMap__ConstIterator
+	isSubclass bool
 }
 
 func (this *QCborMap__ConstIterator) cPointer() *C.QCborMap__ConstIterator {
@@ -786,6 +817,7 @@ func (this *QCborMap__ConstIterator) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQCborMap__ConstIterator constructs the type using only CGO pointers.
 func newQCborMap__ConstIterator(h *C.QCborMap__ConstIterator) *QCborMap__ConstIterator {
 	if h == nil {
 		return nil
@@ -793,20 +825,33 @@ func newQCborMap__ConstIterator(h *C.QCborMap__ConstIterator) *QCborMap__ConstIt
 	return &QCborMap__ConstIterator{h: h}
 }
 
+// UnsafeNewQCborMap__ConstIterator constructs the type using only unsafe pointers.
 func UnsafeNewQCborMap__ConstIterator(h unsafe.Pointer) *QCborMap__ConstIterator {
-	return newQCborMap__ConstIterator((*C.QCborMap__ConstIterator)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QCborMap__ConstIterator{h: (*C.QCborMap__ConstIterator)(h)}
 }
 
 // NewQCborMap__ConstIterator constructs a new QCborMap::ConstIterator object.
 func NewQCborMap__ConstIterator() *QCborMap__ConstIterator {
-	ret := C.QCborMap__ConstIterator_new()
-	return newQCborMap__ConstIterator(ret)
+	var outptr_QCborMap__ConstIterator *C.QCborMap__ConstIterator = nil
+
+	C.QCborMap__ConstIterator_new(&outptr_QCborMap__ConstIterator)
+	ret := newQCborMap__ConstIterator(outptr_QCborMap__ConstIterator)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQCborMap__ConstIterator2 constructs a new QCborMap::ConstIterator object.
 func NewQCborMap__ConstIterator2(param1 *QCborMap__ConstIterator) *QCborMap__ConstIterator {
-	ret := C.QCborMap__ConstIterator_new2(param1.cPointer())
-	return newQCborMap__ConstIterator(ret)
+	var outptr_QCborMap__ConstIterator *C.QCborMap__ConstIterator = nil
+
+	C.QCborMap__ConstIterator_new2(param1.cPointer(), &outptr_QCborMap__ConstIterator)
+	ret := newQCborMap__ConstIterator(outptr_QCborMap__ConstIterator)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QCborMap__ConstIterator) OperatorAssign(other *QCborMap__ConstIterator) {
@@ -952,7 +997,7 @@ func (this *QCborMap__ConstIterator) OperatorMinusWithQCborMapConstIterator(j QC
 
 // Delete this object from C++ memory.
 func (this *QCborMap__ConstIterator) Delete() {
-	C.QCborMap__ConstIterator_Delete(this.h)
+	C.QCborMap__ConstIterator_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

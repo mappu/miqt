@@ -6,12 +6,14 @@
 #include "gen_qaudioformat.h"
 #include "_cgo_export.h"
 
-QAudioFormat* QAudioFormat_new() {
-	return new QAudioFormat();
+void QAudioFormat_new(QAudioFormat** outptr_QAudioFormat) {
+	QAudioFormat* ret = new QAudioFormat();
+	*outptr_QAudioFormat = ret;
 }
 
-QAudioFormat* QAudioFormat_new2(QAudioFormat* other) {
-	return new QAudioFormat(*other);
+void QAudioFormat_new2(QAudioFormat* other, QAudioFormat** outptr_QAudioFormat) {
+	QAudioFormat* ret = new QAudioFormat(*other);
+	*outptr_QAudioFormat = ret;
 }
 
 void QAudioFormat_OperatorAssign(QAudioFormat* self, QAudioFormat* other) {
@@ -122,7 +124,11 @@ int QAudioFormat_BytesPerFrame(const QAudioFormat* self) {
 	return self->bytesPerFrame();
 }
 
-void QAudioFormat_Delete(QAudioFormat* self) {
-	delete self;
+void QAudioFormat_Delete(QAudioFormat* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAudioFormat*>( self );
+	} else {
+		delete self;
+	}
 }
 

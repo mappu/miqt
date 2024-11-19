@@ -23,7 +23,8 @@ const (
 )
 
 type QPainterPath struct {
-	h *C.QPainterPath
+	h          *C.QPainterPath
+	isSubclass bool
 }
 
 func (this *QPainterPath) cPointer() *C.QPainterPath {
@@ -40,6 +41,7 @@ func (this *QPainterPath) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPainterPath constructs the type using only CGO pointers.
 func newQPainterPath(h *C.QPainterPath) *QPainterPath {
 	if h == nil {
 		return nil
@@ -47,26 +49,43 @@ func newQPainterPath(h *C.QPainterPath) *QPainterPath {
 	return &QPainterPath{h: h}
 }
 
+// UnsafeNewQPainterPath constructs the type using only unsafe pointers.
 func UnsafeNewQPainterPath(h unsafe.Pointer) *QPainterPath {
-	return newQPainterPath((*C.QPainterPath)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPainterPath{h: (*C.QPainterPath)(h)}
 }
 
 // NewQPainterPath constructs a new QPainterPath object.
 func NewQPainterPath() *QPainterPath {
-	ret := C.QPainterPath_new()
-	return newQPainterPath(ret)
+	var outptr_QPainterPath *C.QPainterPath = nil
+
+	C.QPainterPath_new(&outptr_QPainterPath)
+	ret := newQPainterPath(outptr_QPainterPath)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPainterPath2 constructs a new QPainterPath object.
 func NewQPainterPath2(startPoint *QPointF) *QPainterPath {
-	ret := C.QPainterPath_new2(startPoint.cPointer())
-	return newQPainterPath(ret)
+	var outptr_QPainterPath *C.QPainterPath = nil
+
+	C.QPainterPath_new2(startPoint.cPointer(), &outptr_QPainterPath)
+	ret := newQPainterPath(outptr_QPainterPath)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPainterPath3 constructs a new QPainterPath object.
 func NewQPainterPath3(other *QPainterPath) *QPainterPath {
-	ret := C.QPainterPath_new3(other.cPointer())
-	return newQPainterPath(ret)
+	var outptr_QPainterPath *C.QPainterPath = nil
+
+	C.QPainterPath_new3(other.cPointer(), &outptr_QPainterPath)
+	ret := newQPainterPath(outptr_QPainterPath)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QPainterPath) OperatorAssign(other *QPainterPath) {
@@ -407,7 +426,7 @@ func (this *QPainterPath) AddRoundedRect7(x float64, y float64, w float64, h flo
 
 // Delete this object from C++ memory.
 func (this *QPainterPath) Delete() {
-	C.QPainterPath_Delete(this.h)
+	C.QPainterPath_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -420,7 +439,8 @@ func (this *QPainterPath) GoGC() {
 }
 
 type QPainterPathStroker struct {
-	h *C.QPainterPathStroker
+	h          *C.QPainterPathStroker
+	isSubclass bool
 }
 
 func (this *QPainterPathStroker) cPointer() *C.QPainterPathStroker {
@@ -437,6 +457,7 @@ func (this *QPainterPathStroker) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPainterPathStroker constructs the type using only CGO pointers.
 func newQPainterPathStroker(h *C.QPainterPathStroker) *QPainterPathStroker {
 	if h == nil {
 		return nil
@@ -444,20 +465,33 @@ func newQPainterPathStroker(h *C.QPainterPathStroker) *QPainterPathStroker {
 	return &QPainterPathStroker{h: h}
 }
 
+// UnsafeNewQPainterPathStroker constructs the type using only unsafe pointers.
 func UnsafeNewQPainterPathStroker(h unsafe.Pointer) *QPainterPathStroker {
-	return newQPainterPathStroker((*C.QPainterPathStroker)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPainterPathStroker{h: (*C.QPainterPathStroker)(h)}
 }
 
 // NewQPainterPathStroker constructs a new QPainterPathStroker object.
 func NewQPainterPathStroker() *QPainterPathStroker {
-	ret := C.QPainterPathStroker_new()
-	return newQPainterPathStroker(ret)
+	var outptr_QPainterPathStroker *C.QPainterPathStroker = nil
+
+	C.QPainterPathStroker_new(&outptr_QPainterPathStroker)
+	ret := newQPainterPathStroker(outptr_QPainterPathStroker)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPainterPathStroker2 constructs a new QPainterPathStroker object.
 func NewQPainterPathStroker2(pen *QPen) *QPainterPathStroker {
-	ret := C.QPainterPathStroker_new2(pen.cPointer())
-	return newQPainterPathStroker(ret)
+	var outptr_QPainterPathStroker *C.QPainterPathStroker = nil
+
+	C.QPainterPathStroker_new2(pen.cPointer(), &outptr_QPainterPathStroker)
+	ret := newQPainterPathStroker(outptr_QPainterPathStroker)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QPainterPathStroker) SetWidth(width float64) {
@@ -541,7 +575,7 @@ func (this *QPainterPathStroker) CreateStroke(path *QPainterPath) *QPainterPath 
 
 // Delete this object from C++ memory.
 func (this *QPainterPathStroker) Delete() {
-	C.QPainterPathStroker_Delete(this.h)
+	C.QPainterPathStroker_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -554,7 +588,8 @@ func (this *QPainterPathStroker) GoGC() {
 }
 
 type QPainterPath__Element struct {
-	h *C.QPainterPath__Element
+	h          *C.QPainterPath__Element
+	isSubclass bool
 }
 
 func (this *QPainterPath__Element) cPointer() *C.QPainterPath__Element {
@@ -571,6 +606,7 @@ func (this *QPainterPath__Element) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPainterPath__Element constructs the type using only CGO pointers.
 func newQPainterPath__Element(h *C.QPainterPath__Element) *QPainterPath__Element {
 	if h == nil {
 		return nil
@@ -578,8 +614,13 @@ func newQPainterPath__Element(h *C.QPainterPath__Element) *QPainterPath__Element
 	return &QPainterPath__Element{h: h}
 }
 
+// UnsafeNewQPainterPath__Element constructs the type using only unsafe pointers.
 func UnsafeNewQPainterPath__Element(h unsafe.Pointer) *QPainterPath__Element {
-	return newQPainterPath__Element((*C.QPainterPath__Element)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPainterPath__Element{h: (*C.QPainterPath__Element)(h)}
 }
 
 func (this *QPainterPath__Element) IsMoveTo() bool {
@@ -604,7 +645,7 @@ func (this *QPainterPath__Element) OperatorNotEqual(e *QPainterPath__Element) bo
 
 // Delete this object from C++ memory.
 func (this *QPainterPath__Element) Delete() {
-	C.QPainterPath__Element_Delete(this.h)
+	C.QPainterPath__Element_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

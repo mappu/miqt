@@ -14,7 +14,8 @@ import (
 )
 
 type QTextDocumentWriter struct {
-	h *C.QTextDocumentWriter
+	h          *C.QTextDocumentWriter
+	isSubclass bool
 }
 
 func (this *QTextDocumentWriter) cPointer() *C.QTextDocumentWriter {
@@ -31,6 +32,7 @@ func (this *QTextDocumentWriter) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQTextDocumentWriter constructs the type using only CGO pointers.
 func newQTextDocumentWriter(h *C.QTextDocumentWriter) *QTextDocumentWriter {
 	if h == nil {
 		return nil
@@ -38,14 +40,23 @@ func newQTextDocumentWriter(h *C.QTextDocumentWriter) *QTextDocumentWriter {
 	return &QTextDocumentWriter{h: h}
 }
 
+// UnsafeNewQTextDocumentWriter constructs the type using only unsafe pointers.
 func UnsafeNewQTextDocumentWriter(h unsafe.Pointer) *QTextDocumentWriter {
-	return newQTextDocumentWriter((*C.QTextDocumentWriter)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QTextDocumentWriter{h: (*C.QTextDocumentWriter)(h)}
 }
 
 // NewQTextDocumentWriter constructs a new QTextDocumentWriter object.
 func NewQTextDocumentWriter() *QTextDocumentWriter {
-	ret := C.QTextDocumentWriter_new()
-	return newQTextDocumentWriter(ret)
+	var outptr_QTextDocumentWriter *C.QTextDocumentWriter = nil
+
+	C.QTextDocumentWriter_new(&outptr_QTextDocumentWriter)
+	ret := newQTextDocumentWriter(outptr_QTextDocumentWriter)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextDocumentWriter2 constructs a new QTextDocumentWriter object.
@@ -53,8 +64,12 @@ func NewQTextDocumentWriter2(device *QIODevice, format []byte) *QTextDocumentWri
 	format_alias := C.struct_miqt_string{}
 	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
 	format_alias.len = C.size_t(len(format))
-	ret := C.QTextDocumentWriter_new2(device.cPointer(), format_alias)
-	return newQTextDocumentWriter(ret)
+	var outptr_QTextDocumentWriter *C.QTextDocumentWriter = nil
+
+	C.QTextDocumentWriter_new2(device.cPointer(), format_alias, &outptr_QTextDocumentWriter)
+	ret := newQTextDocumentWriter(outptr_QTextDocumentWriter)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextDocumentWriter3 constructs a new QTextDocumentWriter object.
@@ -63,8 +78,12 @@ func NewQTextDocumentWriter3(fileName string) *QTextDocumentWriter {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	ret := C.QTextDocumentWriter_new3(fileName_ms)
-	return newQTextDocumentWriter(ret)
+	var outptr_QTextDocumentWriter *C.QTextDocumentWriter = nil
+
+	C.QTextDocumentWriter_new3(fileName_ms, &outptr_QTextDocumentWriter)
+	ret := newQTextDocumentWriter(outptr_QTextDocumentWriter)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQTextDocumentWriter4 constructs a new QTextDocumentWriter object.
@@ -76,8 +95,12 @@ func NewQTextDocumentWriter4(fileName string, format []byte) *QTextDocumentWrite
 	format_alias := C.struct_miqt_string{}
 	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
 	format_alias.len = C.size_t(len(format))
-	ret := C.QTextDocumentWriter_new4(fileName_ms, format_alias)
-	return newQTextDocumentWriter(ret)
+	var outptr_QTextDocumentWriter *C.QTextDocumentWriter = nil
+
+	C.QTextDocumentWriter_new4(fileName_ms, format_alias, &outptr_QTextDocumentWriter)
+	ret := newQTextDocumentWriter(outptr_QTextDocumentWriter)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QTextDocumentWriter) SetFormat(format []byte) {
@@ -99,7 +122,7 @@ func (this *QTextDocumentWriter) SetDevice(device *QIODevice) {
 }
 
 func (this *QTextDocumentWriter) Device() *QIODevice {
-	return UnsafeNewQIODevice(unsafe.Pointer(C.QTextDocumentWriter_Device(this.h)))
+	return UnsafeNewQIODevice(unsafe.Pointer(C.QTextDocumentWriter_Device(this.h)), nil)
 }
 
 func (this *QTextDocumentWriter) SetFileName(fileName string) {
@@ -148,7 +171,7 @@ func QTextDocumentWriter_SupportedDocumentFormats() [][]byte {
 
 // Delete this object from C++ memory.
 func (this *QTextDocumentWriter) Delete() {
-	C.QTextDocumentWriter_Delete(this.h)
+	C.QTextDocumentWriter_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

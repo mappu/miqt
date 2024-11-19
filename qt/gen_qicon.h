@@ -32,11 +32,11 @@ typedef struct QSize QSize;
 typedef struct QWindow QWindow;
 #endif
 
-QIcon* QIcon_new();
-QIcon* QIcon_new2(QPixmap* pixmap);
-QIcon* QIcon_new3(QIcon* other);
-QIcon* QIcon_new4(struct miqt_string fileName);
-QIcon* QIcon_new5(QIconEngine* engine);
+void QIcon_new(QIcon** outptr_QIcon);
+void QIcon_new2(QPixmap* pixmap, QIcon** outptr_QIcon);
+void QIcon_new3(QIcon* other, QIcon** outptr_QIcon);
+void QIcon_new4(struct miqt_string fileName, QIcon** outptr_QIcon);
+void QIcon_new5(QIconEngine* engine, QIcon** outptr_QIcon);
 void QIcon_OperatorAssign(QIcon* self, QIcon* other);
 void QIcon_Swap(QIcon* self, QIcon* other);
 QPixmap* QIcon_Pixmap(const QIcon* self, QSize* size);
@@ -93,7 +93,7 @@ void QIcon_AddFile3(QIcon* self, struct miqt_string fileName, QSize* size, int m
 void QIcon_AddFile4(QIcon* self, struct miqt_string fileName, QSize* size, int mode, int state);
 struct miqt_array /* of QSize* */  QIcon_AvailableSizes1(const QIcon* self, int mode);
 struct miqt_array /* of QSize* */  QIcon_AvailableSizes2(const QIcon* self, int mode, int state);
-void QIcon_Delete(QIcon* self);
+void QIcon_Delete(QIcon* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

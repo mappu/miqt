@@ -23,7 +23,8 @@ const (
 )
 
 type QIconEngine struct {
-	h *C.QIconEngine
+	h          *C.QIconEngine
+	isSubclass bool
 }
 
 func (this *QIconEngine) cPointer() *C.QIconEngine {
@@ -40,6 +41,7 @@ func (this *QIconEngine) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQIconEngine constructs the type using only CGO pointers.
 func newQIconEngine(h *C.QIconEngine) *QIconEngine {
 	if h == nil {
 		return nil
@@ -47,8 +49,13 @@ func newQIconEngine(h *C.QIconEngine) *QIconEngine {
 	return &QIconEngine{h: h}
 }
 
+// UnsafeNewQIconEngine constructs the type using only unsafe pointers.
 func UnsafeNewQIconEngine(h unsafe.Pointer) *QIconEngine {
-	return newQIconEngine((*C.QIconEngine)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QIconEngine{h: (*C.QIconEngine)(h)}
 }
 
 func (this *QIconEngine) Paint(painter *QPainter, rect *QRect, mode QIcon__Mode, state QIcon__State) {
@@ -64,7 +71,7 @@ func (this *QIconEngine) ActualSize(size *QSize, mode QIcon__Mode, state QIcon__
 
 func (this *QIconEngine) Pixmap(size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
 	_ret := C.QIconEngine_Pixmap(this.h, size.cPointer(), (C.int)(mode), (C.int)(state))
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -100,8 +107,8 @@ func (this *QIconEngine) Write(out *QDataStream) bool {
 	return (bool)(C.QIconEngine_Write(this.h, out.cPointer()))
 }
 
-func (this *QIconEngine) AvailableSizes() []QSize {
-	var _ma C.struct_miqt_array = C.QIconEngine_AvailableSizes(this.h)
+func (this *QIconEngine) AvailableSizes(mode QIcon__Mode, state QIcon__State) []QSize {
+	var _ma C.struct_miqt_array = C.QIconEngine_AvailableSizes(this.h, (C.int)(mode), (C.int)(state))
 	_ret := make([]QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -126,7 +133,7 @@ func (this *QIconEngine) IsNull() bool {
 
 func (this *QIconEngine) ScaledPixmap(size *QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap {
 	_ret := C.QIconEngine_ScaledPixmap(this.h, size.cPointer(), (C.int)(mode), (C.int)(state), (C.double)(scale))
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -135,35 +142,9 @@ func (this *QIconEngine) VirtualHook(id int, data unsafe.Pointer) {
 	C.QIconEngine_VirtualHook(this.h, (C.int)(id), data)
 }
 
-func (this *QIconEngine) AvailableSizes1(mode QIcon__Mode) []QSize {
-	var _ma C.struct_miqt_array = C.QIconEngine_AvailableSizes1(this.h, (C.int)(mode))
-	_ret := make([]QSize, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
-	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQSize(_lv_ret)
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
-	}
-	return _ret
-}
-
-func (this *QIconEngine) AvailableSizes2(mode QIcon__Mode, state QIcon__State) []QSize {
-	var _ma C.struct_miqt_array = C.QIconEngine_AvailableSizes2(this.h, (C.int)(mode), (C.int)(state))
-	_ret := make([]QSize, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
-	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQSize(_lv_ret)
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
-	}
-	return _ret
-}
-
 // Delete this object from C++ memory.
 func (this *QIconEngine) Delete() {
-	C.QIconEngine_Delete(this.h)
+	C.QIconEngine_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -176,7 +157,8 @@ func (this *QIconEngine) GoGC() {
 }
 
 type QIconEngine__AvailableSizesArgument struct {
-	h *C.QIconEngine__AvailableSizesArgument
+	h          *C.QIconEngine__AvailableSizesArgument
+	isSubclass bool
 }
 
 func (this *QIconEngine__AvailableSizesArgument) cPointer() *C.QIconEngine__AvailableSizesArgument {
@@ -193,6 +175,7 @@ func (this *QIconEngine__AvailableSizesArgument) UnsafePointer() unsafe.Pointer 
 	return unsafe.Pointer(this.h)
 }
 
+// newQIconEngine__AvailableSizesArgument constructs the type using only CGO pointers.
 func newQIconEngine__AvailableSizesArgument(h *C.QIconEngine__AvailableSizesArgument) *QIconEngine__AvailableSizesArgument {
 	if h == nil {
 		return nil
@@ -200,14 +183,23 @@ func newQIconEngine__AvailableSizesArgument(h *C.QIconEngine__AvailableSizesArgu
 	return &QIconEngine__AvailableSizesArgument{h: h}
 }
 
+// UnsafeNewQIconEngine__AvailableSizesArgument constructs the type using only unsafe pointers.
 func UnsafeNewQIconEngine__AvailableSizesArgument(h unsafe.Pointer) *QIconEngine__AvailableSizesArgument {
-	return newQIconEngine__AvailableSizesArgument((*C.QIconEngine__AvailableSizesArgument)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QIconEngine__AvailableSizesArgument{h: (*C.QIconEngine__AvailableSizesArgument)(h)}
 }
 
 // NewQIconEngine__AvailableSizesArgument constructs a new QIconEngine::AvailableSizesArgument object.
 func NewQIconEngine__AvailableSizesArgument(param1 *QIconEngine__AvailableSizesArgument) *QIconEngine__AvailableSizesArgument {
-	ret := C.QIconEngine__AvailableSizesArgument_new(param1.cPointer())
-	return newQIconEngine__AvailableSizesArgument(ret)
+	var outptr_QIconEngine__AvailableSizesArgument *C.QIconEngine__AvailableSizesArgument = nil
+
+	C.QIconEngine__AvailableSizesArgument_new(param1.cPointer(), &outptr_QIconEngine__AvailableSizesArgument)
+	ret := newQIconEngine__AvailableSizesArgument(outptr_QIconEngine__AvailableSizesArgument)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QIconEngine__AvailableSizesArgument) OperatorAssign(param1 *QIconEngine__AvailableSizesArgument) {
@@ -216,7 +208,7 @@ func (this *QIconEngine__AvailableSizesArgument) OperatorAssign(param1 *QIconEng
 
 // Delete this object from C++ memory.
 func (this *QIconEngine__AvailableSizesArgument) Delete() {
-	C.QIconEngine__AvailableSizesArgument_Delete(this.h)
+	C.QIconEngine__AvailableSizesArgument_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -229,7 +221,8 @@ func (this *QIconEngine__AvailableSizesArgument) GoGC() {
 }
 
 type QIconEngine__ScaledPixmapArgument struct {
-	h *C.QIconEngine__ScaledPixmapArgument
+	h          *C.QIconEngine__ScaledPixmapArgument
+	isSubclass bool
 }
 
 func (this *QIconEngine__ScaledPixmapArgument) cPointer() *C.QIconEngine__ScaledPixmapArgument {
@@ -246,6 +239,7 @@ func (this *QIconEngine__ScaledPixmapArgument) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQIconEngine__ScaledPixmapArgument constructs the type using only CGO pointers.
 func newQIconEngine__ScaledPixmapArgument(h *C.QIconEngine__ScaledPixmapArgument) *QIconEngine__ScaledPixmapArgument {
 	if h == nil {
 		return nil
@@ -253,14 +247,23 @@ func newQIconEngine__ScaledPixmapArgument(h *C.QIconEngine__ScaledPixmapArgument
 	return &QIconEngine__ScaledPixmapArgument{h: h}
 }
 
+// UnsafeNewQIconEngine__ScaledPixmapArgument constructs the type using only unsafe pointers.
 func UnsafeNewQIconEngine__ScaledPixmapArgument(h unsafe.Pointer) *QIconEngine__ScaledPixmapArgument {
-	return newQIconEngine__ScaledPixmapArgument((*C.QIconEngine__ScaledPixmapArgument)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QIconEngine__ScaledPixmapArgument{h: (*C.QIconEngine__ScaledPixmapArgument)(h)}
 }
 
 // NewQIconEngine__ScaledPixmapArgument constructs a new QIconEngine::ScaledPixmapArgument object.
 func NewQIconEngine__ScaledPixmapArgument(param1 *QIconEngine__ScaledPixmapArgument) *QIconEngine__ScaledPixmapArgument {
-	ret := C.QIconEngine__ScaledPixmapArgument_new(param1.cPointer())
-	return newQIconEngine__ScaledPixmapArgument(ret)
+	var outptr_QIconEngine__ScaledPixmapArgument *C.QIconEngine__ScaledPixmapArgument = nil
+
+	C.QIconEngine__ScaledPixmapArgument_new(param1.cPointer(), &outptr_QIconEngine__ScaledPixmapArgument)
+	ret := newQIconEngine__ScaledPixmapArgument(outptr_QIconEngine__ScaledPixmapArgument)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QIconEngine__ScaledPixmapArgument) OperatorAssign(param1 *QIconEngine__ScaledPixmapArgument) {
@@ -269,7 +272,7 @@ func (this *QIconEngine__ScaledPixmapArgument) OperatorAssign(param1 *QIconEngin
 
 // Delete this object from C++ memory.
 func (this *QIconEngine__ScaledPixmapArgument) Delete() {
-	C.QIconEngine__ScaledPixmapArgument_Delete(this.h)
+	C.QIconEngine__ScaledPixmapArgument_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

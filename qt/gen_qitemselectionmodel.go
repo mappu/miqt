@@ -31,7 +31,8 @@ const (
 )
 
 type QItemSelectionRange struct {
-	h *C.QItemSelectionRange
+	h          *C.QItemSelectionRange
+	isSubclass bool
 }
 
 func (this *QItemSelectionRange) cPointer() *C.QItemSelectionRange {
@@ -48,6 +49,7 @@ func (this *QItemSelectionRange) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQItemSelectionRange constructs the type using only CGO pointers.
 func newQItemSelectionRange(h *C.QItemSelectionRange) *QItemSelectionRange {
 	if h == nil {
 		return nil
@@ -55,32 +57,53 @@ func newQItemSelectionRange(h *C.QItemSelectionRange) *QItemSelectionRange {
 	return &QItemSelectionRange{h: h}
 }
 
+// UnsafeNewQItemSelectionRange constructs the type using only unsafe pointers.
 func UnsafeNewQItemSelectionRange(h unsafe.Pointer) *QItemSelectionRange {
-	return newQItemSelectionRange((*C.QItemSelectionRange)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QItemSelectionRange{h: (*C.QItemSelectionRange)(h)}
 }
 
 // NewQItemSelectionRange constructs a new QItemSelectionRange object.
 func NewQItemSelectionRange() *QItemSelectionRange {
-	ret := C.QItemSelectionRange_new()
-	return newQItemSelectionRange(ret)
+	var outptr_QItemSelectionRange *C.QItemSelectionRange = nil
+
+	C.QItemSelectionRange_new(&outptr_QItemSelectionRange)
+	ret := newQItemSelectionRange(outptr_QItemSelectionRange)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQItemSelectionRange2 constructs a new QItemSelectionRange object.
 func NewQItemSelectionRange2(other *QItemSelectionRange) *QItemSelectionRange {
-	ret := C.QItemSelectionRange_new2(other.cPointer())
-	return newQItemSelectionRange(ret)
+	var outptr_QItemSelectionRange *C.QItemSelectionRange = nil
+
+	C.QItemSelectionRange_new2(other.cPointer(), &outptr_QItemSelectionRange)
+	ret := newQItemSelectionRange(outptr_QItemSelectionRange)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQItemSelectionRange3 constructs a new QItemSelectionRange object.
 func NewQItemSelectionRange3(topL *QModelIndex, bottomR *QModelIndex) *QItemSelectionRange {
-	ret := C.QItemSelectionRange_new3(topL.cPointer(), bottomR.cPointer())
-	return newQItemSelectionRange(ret)
+	var outptr_QItemSelectionRange *C.QItemSelectionRange = nil
+
+	C.QItemSelectionRange_new3(topL.cPointer(), bottomR.cPointer(), &outptr_QItemSelectionRange)
+	ret := newQItemSelectionRange(outptr_QItemSelectionRange)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQItemSelectionRange4 constructs a new QItemSelectionRange object.
 func NewQItemSelectionRange4(index *QModelIndex) *QItemSelectionRange {
-	ret := C.QItemSelectionRange_new4(index.cPointer())
-	return newQItemSelectionRange(ret)
+	var outptr_QItemSelectionRange *C.QItemSelectionRange = nil
+
+	C.QItemSelectionRange_new4(index.cPointer(), &outptr_QItemSelectionRange)
+	ret := newQItemSelectionRange(outptr_QItemSelectionRange)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QItemSelectionRange) OperatorAssign(other *QItemSelectionRange) {
@@ -131,7 +154,7 @@ func (this *QItemSelectionRange) Parent() *QModelIndex {
 }
 
 func (this *QItemSelectionRange) Model() *QAbstractItemModel {
-	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QItemSelectionRange_Model(this.h)))
+	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QItemSelectionRange_Model(this.h)), nil)
 }
 
 func (this *QItemSelectionRange) Contains(index *QModelIndex) bool {
@@ -188,7 +211,7 @@ func (this *QItemSelectionRange) Indexes() []QModelIndex {
 
 // Delete this object from C++ memory.
 func (this *QItemSelectionRange) Delete() {
-	C.QItemSelectionRange_Delete(this.h)
+	C.QItemSelectionRange_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -201,7 +224,8 @@ func (this *QItemSelectionRange) GoGC() {
 }
 
 type QItemSelectionModel struct {
-	h *C.QItemSelectionModel
+	h          *C.QItemSelectionModel
+	isSubclass bool
 	*QObject
 }
 
@@ -219,33 +243,56 @@ func (this *QItemSelectionModel) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQItemSelectionModel(h *C.QItemSelectionModel) *QItemSelectionModel {
+// newQItemSelectionModel constructs the type using only CGO pointers.
+func newQItemSelectionModel(h *C.QItemSelectionModel, h_QObject *C.QObject) *QItemSelectionModel {
 	if h == nil {
 		return nil
 	}
-	return &QItemSelectionModel{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QItemSelectionModel{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQItemSelectionModel(h unsafe.Pointer) *QItemSelectionModel {
-	return newQItemSelectionModel((*C.QItemSelectionModel)(h))
+// UnsafeNewQItemSelectionModel constructs the type using only unsafe pointers.
+func UnsafeNewQItemSelectionModel(h unsafe.Pointer, h_QObject unsafe.Pointer) *QItemSelectionModel {
+	if h == nil {
+		return nil
+	}
+
+	return &QItemSelectionModel{h: (*C.QItemSelectionModel)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 // NewQItemSelectionModel constructs a new QItemSelectionModel object.
 func NewQItemSelectionModel() *QItemSelectionModel {
-	ret := C.QItemSelectionModel_new()
-	return newQItemSelectionModel(ret)
+	var outptr_QItemSelectionModel *C.QItemSelectionModel = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QItemSelectionModel_new(&outptr_QItemSelectionModel, &outptr_QObject)
+	ret := newQItemSelectionModel(outptr_QItemSelectionModel, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQItemSelectionModel2 constructs a new QItemSelectionModel object.
 func NewQItemSelectionModel2(model *QAbstractItemModel, parent *QObject) *QItemSelectionModel {
-	ret := C.QItemSelectionModel_new2(model.cPointer(), parent.cPointer())
-	return newQItemSelectionModel(ret)
+	var outptr_QItemSelectionModel *C.QItemSelectionModel = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QItemSelectionModel_new2(model.cPointer(), parent.cPointer(), &outptr_QItemSelectionModel, &outptr_QObject)
+	ret := newQItemSelectionModel(outptr_QItemSelectionModel, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQItemSelectionModel3 constructs a new QItemSelectionModel object.
 func NewQItemSelectionModel3(model *QAbstractItemModel) *QItemSelectionModel {
-	ret := C.QItemSelectionModel_new3(model.cPointer())
-	return newQItemSelectionModel(ret)
+	var outptr_QItemSelectionModel *C.QItemSelectionModel = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QItemSelectionModel_new3(model.cPointer(), &outptr_QItemSelectionModel, &outptr_QObject)
+	ret := newQItemSelectionModel(outptr_QItemSelectionModel, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QItemSelectionModel) MetaObject() *QMetaObject {
@@ -347,11 +394,11 @@ func (this *QItemSelectionModel) SelectedColumns() []QModelIndex {
 }
 
 func (this *QItemSelectionModel) Model() *QAbstractItemModel {
-	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QItemSelectionModel_Model(this.h)))
+	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QItemSelectionModel_Model(this.h)), nil)
 }
 
 func (this *QItemSelectionModel) Model2() *QAbstractItemModel {
-	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QItemSelectionModel_Model2(this.h)))
+	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QItemSelectionModel_Model2(this.h)), nil)
 }
 
 func (this *QItemSelectionModel) SetModel(model *QAbstractItemModel) {
@@ -460,7 +507,7 @@ func miqt_exec_callback_QItemSelectionModel_ModelChanged(cb C.intptr_t, model *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAbstractItemModel(unsafe.Pointer(model))
+	slotval1 := UnsafeNewQAbstractItemModel(unsafe.Pointer(model), nil)
 
 	gofunc(slotval1)
 }
@@ -551,9 +598,283 @@ func (this *QItemSelectionModel) SelectedColumns1(row int) []QModelIndex {
 	return _ret
 }
 
+func (this *QItemSelectionModel) callVirtualBase_SetCurrentIndex(index *QModelIndex, command QItemSelectionModel__SelectionFlag) {
+
+	C.QItemSelectionModel_virtualbase_SetCurrentIndex(unsafe.Pointer(this.h), index.cPointer(), (C.int)(command))
+
+}
+func (this *QItemSelectionModel) OnSetCurrentIndex(slot func(super func(index *QModelIndex, command QItemSelectionModel__SelectionFlag), index *QModelIndex, command QItemSelectionModel__SelectionFlag)) {
+	C.QItemSelectionModel_override_virtual_SetCurrentIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QItemSelectionModel_SetCurrentIndex
+func miqt_exec_callback_QItemSelectionModel_SetCurrentIndex(self *C.QItemSelectionModel, cb C.intptr_t, index *C.QModelIndex, command C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex, command QItemSelectionModel__SelectionFlag), index *QModelIndex, command QItemSelectionModel__SelectionFlag))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval2 := (QItemSelectionModel__SelectionFlag)(command)
+
+	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_SetCurrentIndex, slotval1, slotval2)
+
+}
+
+func (this *QItemSelectionModel) callVirtualBase_Select(index *QModelIndex, command QItemSelectionModel__SelectionFlag) {
+
+	C.QItemSelectionModel_virtualbase_Select(unsafe.Pointer(this.h), index.cPointer(), (C.int)(command))
+
+}
+func (this *QItemSelectionModel) OnSelect(slot func(super func(index *QModelIndex, command QItemSelectionModel__SelectionFlag), index *QModelIndex, command QItemSelectionModel__SelectionFlag)) {
+	C.QItemSelectionModel_override_virtual_Select(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QItemSelectionModel_Select
+func miqt_exec_callback_QItemSelectionModel_Select(self *C.QItemSelectionModel, cb C.intptr_t, index *C.QModelIndex, command C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex, command QItemSelectionModel__SelectionFlag), index *QModelIndex, command QItemSelectionModel__SelectionFlag))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval2 := (QItemSelectionModel__SelectionFlag)(command)
+
+	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_Select, slotval1, slotval2)
+
+}
+
+func (this *QItemSelectionModel) callVirtualBase_Clear() {
+
+	C.QItemSelectionModel_virtualbase_Clear(unsafe.Pointer(this.h))
+
+}
+func (this *QItemSelectionModel) OnClear(slot func(super func())) {
+	C.QItemSelectionModel_override_virtual_Clear(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QItemSelectionModel_Clear
+func miqt_exec_callback_QItemSelectionModel_Clear(self *C.QItemSelectionModel, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_Clear)
+
+}
+
+func (this *QItemSelectionModel) callVirtualBase_Reset() {
+
+	C.QItemSelectionModel_virtualbase_Reset(unsafe.Pointer(this.h))
+
+}
+func (this *QItemSelectionModel) OnReset(slot func(super func())) {
+	C.QItemSelectionModel_override_virtual_Reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QItemSelectionModel_Reset
+func miqt_exec_callback_QItemSelectionModel_Reset(self *C.QItemSelectionModel, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_Reset)
+
+}
+
+func (this *QItemSelectionModel) callVirtualBase_ClearCurrentIndex() {
+
+	C.QItemSelectionModel_virtualbase_ClearCurrentIndex(unsafe.Pointer(this.h))
+
+}
+func (this *QItemSelectionModel) OnClearCurrentIndex(slot func(super func())) {
+	C.QItemSelectionModel_override_virtual_ClearCurrentIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QItemSelectionModel_ClearCurrentIndex
+func miqt_exec_callback_QItemSelectionModel_ClearCurrentIndex(self *C.QItemSelectionModel, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_ClearCurrentIndex)
+
+}
+
+func (this *QItemSelectionModel) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QItemSelectionModel_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QItemSelectionModel) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	C.QItemSelectionModel_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QItemSelectionModel_Event
+func miqt_exec_callback_QItemSelectionModel_Event(self *C.QItemSelectionModel, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QItemSelectionModel{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QItemSelectionModel) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QItemSelectionModel_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QItemSelectionModel) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	C.QItemSelectionModel_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QItemSelectionModel_EventFilter
+func miqt_exec_callback_QItemSelectionModel_EventFilter(self *C.QItemSelectionModel, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QItemSelectionModel{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QItemSelectionModel) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QItemSelectionModel_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QItemSelectionModel) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	C.QItemSelectionModel_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QItemSelectionModel_TimerEvent
+func miqt_exec_callback_QItemSelectionModel_TimerEvent(self *C.QItemSelectionModel, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QItemSelectionModel) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QItemSelectionModel_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QItemSelectionModel) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	C.QItemSelectionModel_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QItemSelectionModel_ChildEvent
+func miqt_exec_callback_QItemSelectionModel_ChildEvent(self *C.QItemSelectionModel, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QItemSelectionModel) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QItemSelectionModel_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QItemSelectionModel) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	C.QItemSelectionModel_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QItemSelectionModel_CustomEvent
+func miqt_exec_callback_QItemSelectionModel_CustomEvent(self *C.QItemSelectionModel, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QItemSelectionModel) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QItemSelectionModel_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QItemSelectionModel) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QItemSelectionModel_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QItemSelectionModel_ConnectNotify
+func miqt_exec_callback_QItemSelectionModel_ConnectNotify(self *C.QItemSelectionModel, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QItemSelectionModel) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QItemSelectionModel_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QItemSelectionModel) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QItemSelectionModel_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QItemSelectionModel_DisconnectNotify
+func miqt_exec_callback_QItemSelectionModel_DisconnectNotify(self *C.QItemSelectionModel, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QItemSelectionModel) Delete() {
-	C.QItemSelectionModel_Delete(this.h)
+	C.QItemSelectionModel_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -1,6 +1,8 @@
 #include <QList>
+#include <QMediaControl>
 #include <QMetaDataWriterControl>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -175,7 +177,11 @@ struct miqt_string QMetaDataWriterControl_TrUtf83(const char* s, const char* c, 
 	return _ms;
 }
 
-void QMetaDataWriterControl_Delete(QMetaDataWriterControl* self) {
-	delete self;
+void QMetaDataWriterControl_Delete(QMetaDataWriterControl* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMetaDataWriterControl*>( self );
+	} else {
+		delete self;
+	}
 }
 

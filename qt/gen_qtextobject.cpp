@@ -1,6 +1,7 @@
 #include <QGlyphRun>
 #include <QList>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -194,12 +195,19 @@ void QTextFrameLayoutData_OperatorAssign(QTextFrameLayoutData* self, QTextFrameL
 	self->operator=(*param1);
 }
 
-void QTextFrameLayoutData_Delete(QTextFrameLayoutData* self) {
-	delete self;
+void QTextFrameLayoutData_Delete(QTextFrameLayoutData* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QTextFrameLayoutData*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QTextFrame* QTextFrame_new(QTextDocument* doc) {
-	return new QTextFrame(doc);
+void QTextFrame_new(QTextDocument* doc, QTextFrame** outptr_QTextFrame, QTextObject** outptr_QTextObject, QObject** outptr_QObject) {
+	QTextFrame* ret = new QTextFrame(doc);
+	*outptr_QTextFrame = ret;
+	*outptr_QTextObject = static_cast<QTextObject*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QTextFrame_MetaObject(const QTextFrame* self) {
@@ -333,24 +341,34 @@ struct miqt_string QTextFrame_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QTextFrame_Delete(QTextFrame* self) {
-	delete self;
+void QTextFrame_Delete(QTextFrame* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QTextFrame*>( self );
+	} else {
+		delete self;
+	}
 }
 
 void QTextBlockUserData_OperatorAssign(QTextBlockUserData* self, QTextBlockUserData* param1) {
 	self->operator=(*param1);
 }
 
-void QTextBlockUserData_Delete(QTextBlockUserData* self) {
-	delete self;
+void QTextBlockUserData_Delete(QTextBlockUserData* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QTextBlockUserData*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QTextBlock* QTextBlock_new() {
-	return new QTextBlock();
+void QTextBlock_new(QTextBlock** outptr_QTextBlock) {
+	QTextBlock* ret = new QTextBlock();
+	*outptr_QTextBlock = ret;
 }
 
-QTextBlock* QTextBlock_new2(QTextBlock* o) {
-	return new QTextBlock(*o);
+void QTextBlock_new2(QTextBlock* o, QTextBlock** outptr_QTextBlock) {
+	QTextBlock* ret = new QTextBlock(*o);
+	*outptr_QTextBlock = ret;
 }
 
 void QTextBlock_OperatorAssign(QTextBlock* self, QTextBlock* o) {
@@ -514,16 +532,22 @@ int QTextBlock_FragmentIndex(const QTextBlock* self) {
 	return self->fragmentIndex();
 }
 
-void QTextBlock_Delete(QTextBlock* self) {
-	delete self;
+void QTextBlock_Delete(QTextBlock* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QTextBlock*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QTextFragment* QTextFragment_new() {
-	return new QTextFragment();
+void QTextFragment_new(QTextFragment** outptr_QTextFragment) {
+	QTextFragment* ret = new QTextFragment();
+	*outptr_QTextFragment = ret;
 }
 
-QTextFragment* QTextFragment_new2(QTextFragment* o) {
-	return new QTextFragment(*o);
+void QTextFragment_new2(QTextFragment* o, QTextFragment** outptr_QTextFragment) {
+	QTextFragment* ret = new QTextFragment(*o);
+	*outptr_QTextFragment = ret;
 }
 
 void QTextFragment_OperatorAssign(QTextFragment* self, QTextFragment* o) {
@@ -616,16 +640,22 @@ struct miqt_array /* of QGlyphRun* */  QTextFragment_GlyphRuns2(const QTextFragm
 	return _out;
 }
 
-void QTextFragment_Delete(QTextFragment* self) {
-	delete self;
+void QTextFragment_Delete(QTextFragment* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QTextFragment*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QTextFrame__iterator* QTextFrame__iterator_new() {
-	return new QTextFrame::iterator();
+void QTextFrame__iterator_new(QTextFrame__iterator** outptr_QTextFrame__iterator) {
+	QTextFrame::iterator* ret = new QTextFrame::iterator();
+	*outptr_QTextFrame__iterator = ret;
 }
 
-QTextFrame__iterator* QTextFrame__iterator_new2(QTextFrame__iterator* o) {
-	return new QTextFrame::iterator(*o);
+void QTextFrame__iterator_new2(QTextFrame__iterator* o, QTextFrame__iterator** outptr_QTextFrame__iterator) {
+	QTextFrame::iterator* ret = new QTextFrame::iterator(*o);
+	*outptr_QTextFrame__iterator = ret;
 }
 
 void QTextFrame__iterator_OperatorAssign(QTextFrame__iterator* self, QTextFrame__iterator* o) {
@@ -676,16 +706,22 @@ QTextFrame__iterator* QTextFrame__iterator_OperatorMinusMinusWithInt(QTextFrame_
 	return new QTextFrame::iterator(self->operator--(static_cast<int>(param1)));
 }
 
-void QTextFrame__iterator_Delete(QTextFrame__iterator* self) {
-	delete self;
+void QTextFrame__iterator_Delete(QTextFrame__iterator* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QTextFrame::iterator*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QTextBlock__iterator* QTextBlock__iterator_new() {
-	return new QTextBlock::iterator();
+void QTextBlock__iterator_new(QTextBlock__iterator** outptr_QTextBlock__iterator) {
+	QTextBlock::iterator* ret = new QTextBlock::iterator();
+	*outptr_QTextBlock__iterator = ret;
 }
 
-QTextBlock__iterator* QTextBlock__iterator_new2(QTextBlock__iterator* o) {
-	return new QTextBlock::iterator(*o);
+void QTextBlock__iterator_new2(QTextBlock__iterator* o, QTextBlock__iterator** outptr_QTextBlock__iterator) {
+	QTextBlock::iterator* ret = new QTextBlock::iterator(*o);
+	*outptr_QTextBlock__iterator = ret;
 }
 
 void QTextBlock__iterator_OperatorAssign(QTextBlock__iterator* self, QTextBlock__iterator* o) {
@@ -728,7 +764,11 @@ QTextBlock__iterator* QTextBlock__iterator_OperatorMinusMinusWithInt(QTextBlock_
 	return new QTextBlock::iterator(self->operator--(static_cast<int>(param1)));
 }
 
-void QTextBlock__iterator_Delete(QTextBlock__iterator* self) {
-	delete self;
+void QTextBlock__iterator_Delete(QTextBlock__iterator* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QTextBlock::iterator*>( self );
+	} else {
+		delete self;
+	}
 }
 

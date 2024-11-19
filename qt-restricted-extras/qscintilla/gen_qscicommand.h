@@ -28,7 +28,7 @@ int QsciCommand_Key(const QsciCommand* self);
 int QsciCommand_AlternateKey(const QsciCommand* self);
 bool QsciCommand_ValidKey(int key);
 struct miqt_string QsciCommand_Description(const QsciCommand* self);
-void QsciCommand_Delete(QsciCommand* self);
+void QsciCommand_Delete(QsciCommand* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

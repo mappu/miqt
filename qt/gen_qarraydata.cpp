@@ -1,5 +1,4 @@
 #include <QArrayData>
-#define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__QContainerImplHelper
 #include <qarraydata.h>
 #include "gen_qarraydata.h"
 #include "_cgo_export.h"
@@ -54,11 +53,11 @@ QArrayData* QArrayData_ReallocateUnaligned4(QArrayData* data, size_t objectSize,
 	return QArrayData::reallocateUnaligned(data, static_cast<size_t>(objectSize), static_cast<size_t>(newCapacity), static_cast<QArrayData::AllocationOptions>(newOptions));
 }
 
-void QArrayData_Delete(QArrayData* self) {
-	delete self;
-}
-
-void QtPrivate__QContainerImplHelper_Delete(QtPrivate__QContainerImplHelper* self) {
-	delete self;
+void QArrayData_Delete(QArrayData* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QArrayData*>( self );
+	} else {
+		delete self;
+	}
 }
 

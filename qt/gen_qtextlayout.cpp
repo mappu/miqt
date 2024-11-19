@@ -20,8 +20,9 @@
 #include "gen_qtextlayout.h"
 #include "_cgo_export.h"
 
-QTextInlineObject* QTextInlineObject_new() {
-	return new QTextInlineObject();
+void QTextInlineObject_new(QTextInlineObject** outptr_QTextInlineObject) {
+	QTextInlineObject* ret = new QTextInlineObject();
+	*outptr_QTextInlineObject = ret;
 }
 
 bool QTextInlineObject_IsValid(const QTextInlineObject* self) {
@@ -81,31 +82,40 @@ QTextFormat* QTextInlineObject_Format(const QTextInlineObject* self) {
 	return new QTextFormat(self->format());
 }
 
-void QTextInlineObject_Delete(QTextInlineObject* self) {
-	delete self;
+void QTextInlineObject_Delete(QTextInlineObject* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QTextInlineObject*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QTextLayout* QTextLayout_new() {
-	return new QTextLayout();
+void QTextLayout_new(QTextLayout** outptr_QTextLayout) {
+	QTextLayout* ret = new QTextLayout();
+	*outptr_QTextLayout = ret;
 }
 
-QTextLayout* QTextLayout_new2(struct miqt_string text) {
+void QTextLayout_new2(struct miqt_string text, QTextLayout** outptr_QTextLayout) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new QTextLayout(text_QString);
+	QTextLayout* ret = new QTextLayout(text_QString);
+	*outptr_QTextLayout = ret;
 }
 
-QTextLayout* QTextLayout_new3(struct miqt_string text, QFont* font) {
+void QTextLayout_new3(struct miqt_string text, QFont* font, QTextLayout** outptr_QTextLayout) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new QTextLayout(text_QString, *font);
+	QTextLayout* ret = new QTextLayout(text_QString, *font);
+	*outptr_QTextLayout = ret;
 }
 
-QTextLayout* QTextLayout_new4(QTextBlock* b) {
-	return new QTextLayout(*b);
+void QTextLayout_new4(QTextBlock* b, QTextLayout** outptr_QTextLayout) {
+	QTextLayout* ret = new QTextLayout(*b);
+	*outptr_QTextLayout = ret;
 }
 
-QTextLayout* QTextLayout_new5(struct miqt_string text, QFont* font, QPaintDevice* paintdevice) {
+void QTextLayout_new5(struct miqt_string text, QFont* font, QPaintDevice* paintdevice, QTextLayout** outptr_QTextLayout) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new QTextLayout(text_QString, *font, paintdevice);
+	QTextLayout* ret = new QTextLayout(text_QString, *font, paintdevice);
+	*outptr_QTextLayout = ret;
 }
 
 void QTextLayout_SetFont(QTextLayout* self, QFont* f) {
@@ -390,12 +400,17 @@ struct miqt_array /* of QGlyphRun* */  QTextLayout_GlyphRuns2(const QTextLayout*
 	return _out;
 }
 
-void QTextLayout_Delete(QTextLayout* self) {
-	delete self;
+void QTextLayout_Delete(QTextLayout* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QTextLayout*>( self );
+	} else {
+		delete self;
+	}
 }
 
-QTextLine* QTextLine_new() {
-	return new QTextLine();
+void QTextLine_new(QTextLine** outptr_QTextLine) {
+	QTextLine* ret = new QTextLine();
+	*outptr_QTextLine = ret;
 }
 
 bool QTextLine_IsValid(const QTextLine* self) {
@@ -570,11 +585,19 @@ struct miqt_array /* of QGlyphRun* */  QTextLine_GlyphRuns2(const QTextLine* sel
 	return _out;
 }
 
-void QTextLine_Delete(QTextLine* self) {
-	delete self;
+void QTextLine_Delete(QTextLine* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QTextLine*>( self );
+	} else {
+		delete self;
+	}
 }
 
-void QTextLayout__FormatRange_Delete(QTextLayout__FormatRange* self) {
-	delete self;
+void QTextLayout__FormatRange_Delete(QTextLayout__FormatRange* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QTextLayout::FormatRange*>( self );
+	} else {
+		delete self;
+	}
 }
 

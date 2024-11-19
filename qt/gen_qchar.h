@@ -22,23 +22,23 @@ typedef struct QChar QChar;
 typedef struct QLatin1Char QLatin1Char;
 #endif
 
-QLatin1Char* QLatin1Char_new(char c);
-QLatin1Char* QLatin1Char_new2(QLatin1Char* param1);
+void QLatin1Char_new(char c, QLatin1Char** outptr_QLatin1Char);
+void QLatin1Char_new2(QLatin1Char* param1, QLatin1Char** outptr_QLatin1Char);
 char QLatin1Char_ToLatin1(const QLatin1Char* self);
 uint16_t QLatin1Char_Unicode(const QLatin1Char* self);
-void QLatin1Char_Delete(QLatin1Char* self);
+void QLatin1Char_Delete(QLatin1Char* self, bool isSubclass);
 
-QChar* QChar_new();
-QChar* QChar_new2(uint16_t rc);
-QChar* QChar_new3(unsigned char c, unsigned char r);
-QChar* QChar_new4(int16_t rc);
-QChar* QChar_new5(unsigned int rc);
-QChar* QChar_new6(int rc);
-QChar* QChar_new7(int s);
-QChar* QChar_new8(QLatin1Char* ch);
-QChar* QChar_new9(char c);
-QChar* QChar_new10(unsigned char c);
-QChar* QChar_new11(QChar* param1);
+void QChar_new(QChar** outptr_QChar);
+void QChar_new2(uint16_t rc, QChar** outptr_QChar);
+void QChar_new3(unsigned char c, unsigned char r, QChar** outptr_QChar);
+void QChar_new4(int16_t rc, QChar** outptr_QChar);
+void QChar_new5(unsigned int rc, QChar** outptr_QChar);
+void QChar_new6(int rc, QChar** outptr_QChar);
+void QChar_new7(int s, QChar** outptr_QChar);
+void QChar_new8(QLatin1Char* ch, QChar** outptr_QChar);
+void QChar_new9(char c, QChar** outptr_QChar);
+void QChar_new10(unsigned char c, QChar** outptr_QChar);
+void QChar_new11(QChar* param1, QChar** outptr_QChar);
 int QChar_Category(const QChar* self);
 int QChar_Direction(const QChar* self);
 int QChar_JoiningType(const QChar* self);
@@ -117,7 +117,7 @@ bool QChar_IsDigitWithUcs4(unsigned int ucs4);
 bool QChar_IsLowerWithUcs4(unsigned int ucs4);
 bool QChar_IsUpperWithUcs4(unsigned int ucs4);
 bool QChar_IsTitleCaseWithUcs4(unsigned int ucs4);
-void QChar_Delete(QChar* self);
+void QChar_Delete(QChar* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

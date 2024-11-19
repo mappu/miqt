@@ -21,7 +21,8 @@ const (
 )
 
 type QBasicMutex struct {
-	h *C.QBasicMutex
+	h          *C.QBasicMutex
+	isSubclass bool
 }
 
 func (this *QBasicMutex) cPointer() *C.QBasicMutex {
@@ -38,6 +39,7 @@ func (this *QBasicMutex) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQBasicMutex constructs the type using only CGO pointers.
 func newQBasicMutex(h *C.QBasicMutex) *QBasicMutex {
 	if h == nil {
 		return nil
@@ -45,14 +47,23 @@ func newQBasicMutex(h *C.QBasicMutex) *QBasicMutex {
 	return &QBasicMutex{h: h}
 }
 
+// UnsafeNewQBasicMutex constructs the type using only unsafe pointers.
 func UnsafeNewQBasicMutex(h unsafe.Pointer) *QBasicMutex {
-	return newQBasicMutex((*C.QBasicMutex)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QBasicMutex{h: (*C.QBasicMutex)(h)}
 }
 
 // NewQBasicMutex constructs a new QBasicMutex object.
 func NewQBasicMutex() *QBasicMutex {
-	ret := C.QBasicMutex_new()
-	return newQBasicMutex(ret)
+	var outptr_QBasicMutex *C.QBasicMutex = nil
+
+	C.QBasicMutex_new(&outptr_QBasicMutex)
+	ret := newQBasicMutex(outptr_QBasicMutex)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QBasicMutex) Lock() {
@@ -81,7 +92,7 @@ func (this *QBasicMutex) IsRecursive2() bool {
 
 // Delete this object from C++ memory.
 func (this *QBasicMutex) Delete() {
-	C.QBasicMutex_Delete(this.h)
+	C.QBasicMutex_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -94,7 +105,8 @@ func (this *QBasicMutex) GoGC() {
 }
 
 type QMutex struct {
-	h *C.QMutex
+	h          *C.QMutex
+	isSubclass bool
 	*QBasicMutex
 }
 
@@ -112,27 +124,45 @@ func (this *QMutex) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQMutex(h *C.QMutex) *QMutex {
+// newQMutex constructs the type using only CGO pointers.
+func newQMutex(h *C.QMutex, h_QBasicMutex *C.QBasicMutex) *QMutex {
 	if h == nil {
 		return nil
 	}
-	return &QMutex{h: h, QBasicMutex: UnsafeNewQBasicMutex(unsafe.Pointer(h))}
+	return &QMutex{h: h,
+		QBasicMutex: newQBasicMutex(h_QBasicMutex)}
 }
 
-func UnsafeNewQMutex(h unsafe.Pointer) *QMutex {
-	return newQMutex((*C.QMutex)(h))
+// UnsafeNewQMutex constructs the type using only unsafe pointers.
+func UnsafeNewQMutex(h unsafe.Pointer, h_QBasicMutex unsafe.Pointer) *QMutex {
+	if h == nil {
+		return nil
+	}
+
+	return &QMutex{h: (*C.QMutex)(h),
+		QBasicMutex: UnsafeNewQBasicMutex(h_QBasicMutex)}
 }
 
 // NewQMutex constructs a new QMutex object.
 func NewQMutex() *QMutex {
-	ret := C.QMutex_new()
-	return newQMutex(ret)
+	var outptr_QMutex *C.QMutex = nil
+	var outptr_QBasicMutex *C.QBasicMutex = nil
+
+	C.QMutex_new(&outptr_QMutex, &outptr_QBasicMutex)
+	ret := newQMutex(outptr_QMutex, outptr_QBasicMutex)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMutex2 constructs a new QMutex object.
 func NewQMutex2(mode QMutex__RecursionMode) *QMutex {
-	ret := C.QMutex_new2((C.int)(mode))
-	return newQMutex(ret)
+	var outptr_QMutex *C.QMutex = nil
+	var outptr_QBasicMutex *C.QBasicMutex = nil
+
+	C.QMutex_new2((C.int)(mode), &outptr_QMutex, &outptr_QBasicMutex)
+	ret := newQMutex(outptr_QMutex, outptr_QBasicMutex)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QMutex) Lock() {
@@ -161,7 +191,7 @@ func (this *QMutex) TryLock1(timeout int) bool {
 
 // Delete this object from C++ memory.
 func (this *QMutex) Delete() {
-	C.QMutex_Delete(this.h)
+	C.QMutex_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -174,7 +204,8 @@ func (this *QMutex) GoGC() {
 }
 
 type QRecursiveMutex struct {
-	h *C.QRecursiveMutex
+	h          *C.QRecursiveMutex
+	isSubclass bool
 }
 
 func (this *QRecursiveMutex) cPointer() *C.QRecursiveMutex {
@@ -191,6 +222,7 @@ func (this *QRecursiveMutex) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQRecursiveMutex constructs the type using only CGO pointers.
 func newQRecursiveMutex(h *C.QRecursiveMutex) *QRecursiveMutex {
 	if h == nil {
 		return nil
@@ -198,19 +230,28 @@ func newQRecursiveMutex(h *C.QRecursiveMutex) *QRecursiveMutex {
 	return &QRecursiveMutex{h: h}
 }
 
+// UnsafeNewQRecursiveMutex constructs the type using only unsafe pointers.
 func UnsafeNewQRecursiveMutex(h unsafe.Pointer) *QRecursiveMutex {
-	return newQRecursiveMutex((*C.QRecursiveMutex)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QRecursiveMutex{h: (*C.QRecursiveMutex)(h)}
 }
 
 // NewQRecursiveMutex constructs a new QRecursiveMutex object.
 func NewQRecursiveMutex() *QRecursiveMutex {
-	ret := C.QRecursiveMutex_new()
-	return newQRecursiveMutex(ret)
+	var outptr_QRecursiveMutex *C.QRecursiveMutex = nil
+
+	C.QRecursiveMutex_new(&outptr_QRecursiveMutex)
+	ret := newQRecursiveMutex(outptr_QRecursiveMutex)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QRecursiveMutex) Delete() {
-	C.QRecursiveMutex_Delete(this.h)
+	C.QRecursiveMutex_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -223,7 +264,8 @@ func (this *QRecursiveMutex) GoGC() {
 }
 
 type QMutexLocker struct {
-	h *C.QMutexLocker
+	h          *C.QMutexLocker
+	isSubclass bool
 }
 
 func (this *QMutexLocker) cPointer() *C.QMutexLocker {
@@ -240,6 +282,7 @@ func (this *QMutexLocker) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQMutexLocker constructs the type using only CGO pointers.
 func newQMutexLocker(h *C.QMutexLocker) *QMutexLocker {
 	if h == nil {
 		return nil
@@ -247,20 +290,33 @@ func newQMutexLocker(h *C.QMutexLocker) *QMutexLocker {
 	return &QMutexLocker{h: h}
 }
 
+// UnsafeNewQMutexLocker constructs the type using only unsafe pointers.
 func UnsafeNewQMutexLocker(h unsafe.Pointer) *QMutexLocker {
-	return newQMutexLocker((*C.QMutexLocker)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMutexLocker{h: (*C.QMutexLocker)(h)}
 }
 
 // NewQMutexLocker constructs a new QMutexLocker object.
 func NewQMutexLocker(m *QBasicMutex) *QMutexLocker {
-	ret := C.QMutexLocker_new(m.cPointer())
-	return newQMutexLocker(ret)
+	var outptr_QMutexLocker *C.QMutexLocker = nil
+
+	C.QMutexLocker_new(m.cPointer(), &outptr_QMutexLocker)
+	ret := newQMutexLocker(outptr_QMutexLocker)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMutexLocker2 constructs a new QMutexLocker object.
 func NewQMutexLocker2(m *QRecursiveMutex) *QMutexLocker {
-	ret := C.QMutexLocker_new2(m.cPointer())
-	return newQMutexLocker(ret)
+	var outptr_QMutexLocker *C.QMutexLocker = nil
+
+	C.QMutexLocker_new2(m.cPointer(), &outptr_QMutexLocker)
+	ret := newQMutexLocker(outptr_QMutexLocker)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QMutexLocker) Unlock() {
@@ -272,12 +328,12 @@ func (this *QMutexLocker) Relock() {
 }
 
 func (this *QMutexLocker) Mutex() *QMutex {
-	return UnsafeNewQMutex(unsafe.Pointer(C.QMutexLocker_Mutex(this.h)))
+	return UnsafeNewQMutex(unsafe.Pointer(C.QMutexLocker_Mutex(this.h)), nil)
 }
 
 // Delete this object from C++ memory.
 func (this *QMutexLocker) Delete() {
-	C.QMutexLocker_Delete(this.h)
+	C.QMutexLocker_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

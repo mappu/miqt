@@ -6,12 +6,14 @@
 #include "gen_qsslellipticcurve.h"
 #include "_cgo_export.h"
 
-QSslEllipticCurve* QSslEllipticCurve_new() {
-	return new QSslEllipticCurve();
+void QSslEllipticCurve_new(QSslEllipticCurve** outptr_QSslEllipticCurve) {
+	QSslEllipticCurve* ret = new QSslEllipticCurve();
+	*outptr_QSslEllipticCurve = ret;
 }
 
-QSslEllipticCurve* QSslEllipticCurve_new2(QSslEllipticCurve* param1) {
-	return new QSslEllipticCurve(*param1);
+void QSslEllipticCurve_new2(QSslEllipticCurve* param1, QSslEllipticCurve** outptr_QSslEllipticCurve) {
+	QSslEllipticCurve* ret = new QSslEllipticCurve(*param1);
+	*outptr_QSslEllipticCurve = ret;
 }
 
 QSslEllipticCurve* QSslEllipticCurve_FromShortName(struct miqt_string name) {
@@ -54,7 +56,11 @@ bool QSslEllipticCurve_IsTlsNamedCurve(const QSslEllipticCurve* self) {
 	return self->isTlsNamedCurve();
 }
 
-void QSslEllipticCurve_Delete(QSslEllipticCurve* self) {
-	delete self;
+void QSslEllipticCurve_Delete(QSslEllipticCurve* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QSslEllipticCurve*>( self );
+	} else {
+		delete self;
+	}
 }
 

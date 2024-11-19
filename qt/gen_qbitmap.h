@@ -18,6 +18,8 @@ extern "C" {
 class QBitmap;
 class QImage;
 class QMatrix;
+class QPaintDevice;
+class QPaintEngine;
 class QPixmap;
 class QSize;
 class QTransform;
@@ -25,18 +27,20 @@ class QTransform;
 typedef struct QBitmap QBitmap;
 typedef struct QImage QImage;
 typedef struct QMatrix QMatrix;
+typedef struct QPaintDevice QPaintDevice;
+typedef struct QPaintEngine QPaintEngine;
 typedef struct QPixmap QPixmap;
 typedef struct QSize QSize;
 typedef struct QTransform QTransform;
 #endif
 
-QBitmap* QBitmap_new();
-QBitmap* QBitmap_new2(QPixmap* param1);
-QBitmap* QBitmap_new3(int w, int h);
-QBitmap* QBitmap_new4(QSize* param1);
-QBitmap* QBitmap_new5(struct miqt_string fileName);
-QBitmap* QBitmap_new6(QBitmap* other);
-QBitmap* QBitmap_new7(struct miqt_string fileName, const char* format);
+void QBitmap_new(QBitmap** outptr_QBitmap, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice);
+void QBitmap_new2(QPixmap* param1, QBitmap** outptr_QBitmap, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice);
+void QBitmap_new3(int w, int h, QBitmap** outptr_QBitmap, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice);
+void QBitmap_new4(QSize* param1, QBitmap** outptr_QBitmap, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice);
+void QBitmap_new5(struct miqt_string fileName, QBitmap** outptr_QBitmap, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice);
+void QBitmap_new6(QBitmap* other, QBitmap** outptr_QBitmap, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice);
+void QBitmap_new7(struct miqt_string fileName, const char* format, QBitmap** outptr_QBitmap, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice);
 void QBitmap_OperatorAssign(QBitmap* self, QBitmap* other);
 void QBitmap_OperatorAssignWithQPixmap(QBitmap* self, QPixmap* param1);
 void QBitmap_Swap(QBitmap* self, QBitmap* other);
@@ -47,7 +51,13 @@ QBitmap* QBitmap_Transformed(const QBitmap* self, QMatrix* param1);
 QBitmap* QBitmap_TransformedWithMatrix(const QBitmap* self, QTransform* matrix);
 QBitmap* QBitmap_FromImage2(QImage* image, int flags);
 QBitmap* QBitmap_FromData3(QSize* size, const unsigned char* bits, int monoFormat);
-void QBitmap_Delete(QBitmap* self);
+void QBitmap_override_virtual_DevType(void* self, intptr_t slot);
+int QBitmap_virtualbase_DevType(const void* self);
+void QBitmap_override_virtual_PaintEngine(void* self, intptr_t slot);
+QPaintEngine* QBitmap_virtualbase_PaintEngine(const void* self);
+void QBitmap_override_virtual_Metric(void* self, intptr_t slot);
+int QBitmap_virtualbase_Metric(const void* self, int param1);
+void QBitmap_Delete(QBitmap* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

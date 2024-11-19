@@ -31,7 +31,8 @@ const (
 )
 
 type QPaintDevice struct {
-	h *C.QPaintDevice
+	h          *C.QPaintDevice
+	isSubclass bool
 }
 
 func (this *QPaintDevice) cPointer() *C.QPaintDevice {
@@ -48,6 +49,7 @@ func (this *QPaintDevice) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPaintDevice constructs the type using only CGO pointers.
 func newQPaintDevice(h *C.QPaintDevice) *QPaintDevice {
 	if h == nil {
 		return nil
@@ -55,8 +57,13 @@ func newQPaintDevice(h *C.QPaintDevice) *QPaintDevice {
 	return &QPaintDevice{h: h}
 }
 
+// UnsafeNewQPaintDevice constructs the type using only unsafe pointers.
 func UnsafeNewQPaintDevice(h unsafe.Pointer) *QPaintDevice {
-	return newQPaintDevice((*C.QPaintDevice)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPaintDevice{h: (*C.QPaintDevice)(h)}
 }
 
 func (this *QPaintDevice) DevType() int {
@@ -125,7 +132,7 @@ func QPaintDevice_DevicePixelRatioFScale() float64 {
 
 // Delete this object from C++ memory.
 func (this *QPaintDevice) Delete() {
-	C.QPaintDevice_Delete(this.h)
+	C.QPaintDevice_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

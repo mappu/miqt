@@ -6,9 +6,10 @@
 #include "gen_qlockfile.h"
 #include "_cgo_export.h"
 
-QLockFile* QLockFile_new(struct miqt_string fileName) {
+void QLockFile_new(struct miqt_string fileName, QLockFile** outptr_QLockFile) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new QLockFile(fileName_QString);
+	QLockFile* ret = new QLockFile(fileName_QString);
+	*outptr_QLockFile = ret;
 }
 
 bool QLockFile_Lock(QLockFile* self) {
@@ -48,7 +49,11 @@ bool QLockFile_TryLock1(QLockFile* self, int timeout) {
 	return self->tryLock(static_cast<int>(timeout));
 }
 
-void QLockFile_Delete(QLockFile* self) {
-	delete self;
+void QLockFile_Delete(QLockFile* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QLockFile*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -7,12 +7,14 @@
 #include "gen_qsslcertificateextension.h"
 #include "_cgo_export.h"
 
-QSslCertificateExtension* QSslCertificateExtension_new() {
-	return new QSslCertificateExtension();
+void QSslCertificateExtension_new(QSslCertificateExtension** outptr_QSslCertificateExtension) {
+	QSslCertificateExtension* ret = new QSslCertificateExtension();
+	*outptr_QSslCertificateExtension = ret;
 }
 
-QSslCertificateExtension* QSslCertificateExtension_new2(QSslCertificateExtension* other) {
-	return new QSslCertificateExtension(*other);
+void QSslCertificateExtension_new2(QSslCertificateExtension* other, QSslCertificateExtension** outptr_QSslCertificateExtension) {
+	QSslCertificateExtension* ret = new QSslCertificateExtension(*other);
+	*outptr_QSslCertificateExtension = ret;
 }
 
 void QSslCertificateExtension_OperatorAssign(QSslCertificateExtension* self, QSslCertificateExtension* other) {
@@ -57,7 +59,11 @@ bool QSslCertificateExtension_IsSupported(const QSslCertificateExtension* self) 
 	return self->isSupported();
 }
 
-void QSslCertificateExtension_Delete(QSslCertificateExtension* self) {
-	delete self;
+void QSslCertificateExtension_Delete(QSslCertificateExtension* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QSslCertificateExtension*>( self );
+	} else {
+		delete self;
+	}
 }
 

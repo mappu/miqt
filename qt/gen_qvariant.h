@@ -58,11 +58,6 @@ typedef QVariant::Handler QVariant__Handler;
 #else
 class QVariant__Handler;
 #endif
-#if defined(WORKAROUND_INNER_CLASS_DEFINITION_QVariant__Private__Data)
-typedef QVariant::Private::Data QVariant__Private__Data;
-#else
-class QVariant__Private__Data;
-#endif
 class QVariantComparisonHelper;
 #else
 typedef struct QAssociativeIterable__const_iterator QAssociativeIterable__const_iterator;
@@ -96,54 +91,53 @@ typedef struct QUrl QUrl;
 typedef struct QUuid QUuid;
 typedef struct QVariant QVariant;
 typedef struct QVariant__Handler QVariant__Handler;
-typedef struct QVariant__Private__Data QVariant__Private__Data;
 typedef struct QVariantComparisonHelper QVariantComparisonHelper;
 #endif
 
-QVariant* QVariant_new();
-QVariant* QVariant_new2(int typeVal);
-QVariant* QVariant_new3(int typeId, const void* copyVal);
-QVariant* QVariant_new4(int typeId, const void* copyVal, unsigned int flags);
-QVariant* QVariant_new5(QVariant* other);
-QVariant* QVariant_new6(QDataStream* s);
-QVariant* QVariant_new7(int i);
-QVariant* QVariant_new8(unsigned int ui);
-QVariant* QVariant_new9(long long ll);
-QVariant* QVariant_new10(unsigned long long ull);
-QVariant* QVariant_new11(bool b);
-QVariant* QVariant_new12(double d);
-QVariant* QVariant_new13(float f);
-QVariant* QVariant_new14(const char* str);
-QVariant* QVariant_new15(struct miqt_string bytearray);
-QVariant* QVariant_new16(QBitArray* bitarray);
-QVariant* QVariant_new17(struct miqt_string stringVal);
-QVariant* QVariant_new18(struct miqt_array /* of struct miqt_string */  stringlist);
-QVariant* QVariant_new19(QChar* qchar);
-QVariant* QVariant_new20(QDate* date);
-QVariant* QVariant_new21(QTime* time);
-QVariant* QVariant_new22(QDateTime* datetime);
-QVariant* QVariant_new23(struct miqt_map /* of struct miqt_string to QVariant* */  mapVal);
-QVariant* QVariant_new24(struct miqt_map /* of struct miqt_string to QVariant* */  hash);
-QVariant* QVariant_new25(QSize* size);
-QVariant* QVariant_new26(QSizeF* size);
-QVariant* QVariant_new27(QPoint* pt);
-QVariant* QVariant_new28(QPointF* pt);
-QVariant* QVariant_new29(QLine* line);
-QVariant* QVariant_new30(QLineF* line);
-QVariant* QVariant_new31(QRect* rect);
-QVariant* QVariant_new32(QRectF* rect);
-QVariant* QVariant_new33(QLocale* locale);
-QVariant* QVariant_new34(QRegExp* regExp);
-QVariant* QVariant_new35(QRegularExpression* re);
-QVariant* QVariant_new36(QEasingCurve* easing);
-QVariant* QVariant_new37(QUuid* uuid);
-QVariant* QVariant_new38(QUrl* url);
-QVariant* QVariant_new39(QJsonValue* jsonValue);
-QVariant* QVariant_new40(QJsonObject* jsonObject);
-QVariant* QVariant_new41(QJsonArray* jsonArray);
-QVariant* QVariant_new42(QJsonDocument* jsonDocument);
-QVariant* QVariant_new43(QModelIndex* modelIndex);
-QVariant* QVariant_new44(QPersistentModelIndex* modelIndex);
+void QVariant_new(QVariant** outptr_QVariant);
+void QVariant_new2(int typeVal, QVariant** outptr_QVariant);
+void QVariant_new3(int typeId, const void* copyVal, QVariant** outptr_QVariant);
+void QVariant_new4(int typeId, const void* copyVal, unsigned int flags, QVariant** outptr_QVariant);
+void QVariant_new5(QVariant* other, QVariant** outptr_QVariant);
+void QVariant_new6(QDataStream* s, QVariant** outptr_QVariant);
+void QVariant_new7(int i, QVariant** outptr_QVariant);
+void QVariant_new8(unsigned int ui, QVariant** outptr_QVariant);
+void QVariant_new9(long long ll, QVariant** outptr_QVariant);
+void QVariant_new10(unsigned long long ull, QVariant** outptr_QVariant);
+void QVariant_new11(bool b, QVariant** outptr_QVariant);
+void QVariant_new12(double d, QVariant** outptr_QVariant);
+void QVariant_new13(float f, QVariant** outptr_QVariant);
+void QVariant_new14(const char* str, QVariant** outptr_QVariant);
+void QVariant_new15(struct miqt_string bytearray, QVariant** outptr_QVariant);
+void QVariant_new16(QBitArray* bitarray, QVariant** outptr_QVariant);
+void QVariant_new17(struct miqt_string stringVal, QVariant** outptr_QVariant);
+void QVariant_new18(struct miqt_array /* of struct miqt_string */  stringlist, QVariant** outptr_QVariant);
+void QVariant_new19(QChar* qchar, QVariant** outptr_QVariant);
+void QVariant_new20(QDate* date, QVariant** outptr_QVariant);
+void QVariant_new21(QTime* time, QVariant** outptr_QVariant);
+void QVariant_new22(QDateTime* datetime, QVariant** outptr_QVariant);
+void QVariant_new23(struct miqt_map /* of struct miqt_string to QVariant* */  mapVal, QVariant** outptr_QVariant);
+void QVariant_new24(struct miqt_map /* of struct miqt_string to QVariant* */  hash, QVariant** outptr_QVariant);
+void QVariant_new25(QSize* size, QVariant** outptr_QVariant);
+void QVariant_new26(QSizeF* size, QVariant** outptr_QVariant);
+void QVariant_new27(QPoint* pt, QVariant** outptr_QVariant);
+void QVariant_new28(QPointF* pt, QVariant** outptr_QVariant);
+void QVariant_new29(QLine* line, QVariant** outptr_QVariant);
+void QVariant_new30(QLineF* line, QVariant** outptr_QVariant);
+void QVariant_new31(QRect* rect, QVariant** outptr_QVariant);
+void QVariant_new32(QRectF* rect, QVariant** outptr_QVariant);
+void QVariant_new33(QLocale* locale, QVariant** outptr_QVariant);
+void QVariant_new34(QRegExp* regExp, QVariant** outptr_QVariant);
+void QVariant_new35(QRegularExpression* re, QVariant** outptr_QVariant);
+void QVariant_new36(QEasingCurve* easing, QVariant** outptr_QVariant);
+void QVariant_new37(QUuid* uuid, QVariant** outptr_QVariant);
+void QVariant_new38(QUrl* url, QVariant** outptr_QVariant);
+void QVariant_new39(QJsonValue* jsonValue, QVariant** outptr_QVariant);
+void QVariant_new40(QJsonObject* jsonObject, QVariant** outptr_QVariant);
+void QVariant_new41(QJsonArray* jsonArray, QVariant** outptr_QVariant);
+void QVariant_new42(QJsonDocument* jsonDocument, QVariant** outptr_QVariant);
+void QVariant_new43(QModelIndex* modelIndex, QVariant** outptr_QVariant);
+void QVariant_new44(QPersistentModelIndex* modelIndex, QVariant** outptr_QVariant);
 void QVariant_OperatorAssign(QVariant* self, QVariant* other);
 void QVariant_Swap(QVariant* self, QVariant* other);
 int QVariant_Type(const QVariant* self);
@@ -214,20 +208,15 @@ unsigned long long QVariant_ToULongLong1(const QVariant* self, bool* ok);
 double QVariant_ToDouble1(const QVariant* self, bool* ok);
 float QVariant_ToFloat1(const QVariant* self, bool* ok);
 double QVariant_ToReal1(const QVariant* self, bool* ok);
-void QVariant_Delete(QVariant* self);
+void QVariant_Delete(QVariant* self, bool isSubclass);
 
-QVariantComparisonHelper* QVariantComparisonHelper_new(QVariant* varVal);
-QVariantComparisonHelper* QVariantComparisonHelper_new2(QVariantComparisonHelper* param1);
-void QVariantComparisonHelper_Delete(QVariantComparisonHelper* self);
+void QVariantComparisonHelper_new(QVariant* varVal, QVariantComparisonHelper** outptr_QVariantComparisonHelper);
+void QVariantComparisonHelper_new2(QVariantComparisonHelper* param1, QVariantComparisonHelper** outptr_QVariantComparisonHelper);
+void QVariantComparisonHelper_Delete(QVariantComparisonHelper* self, bool isSubclass);
 
-QVariant__Private__Data* QVariant__Private__Data_new();
-QVariant__Private__Data* QVariant__Private__Data_new2(QVariant__Private__Data* param1);
-void QVariant__Private__Data_OperatorAssign(QVariant__Private__Data* self, QVariant__Private__Data* param1);
-void QVariant__Private__Data_Delete(QVariant__Private__Data* self);
+void QVariant__Handler_Delete(QVariant__Handler* self, bool isSubclass);
 
-void QVariant__Handler_Delete(QVariant__Handler* self);
-
-QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_new(QSequentialIterable__const_iterator* other);
+void QSequentialIterable__const_iterator_new(QSequentialIterable__const_iterator* other, QSequentialIterable__const_iterator** outptr_QSequentialIterable__const_iterator);
 void QSequentialIterable__const_iterator_OperatorAssign(QSequentialIterable__const_iterator* self, QSequentialIterable__const_iterator* other);
 QVariant* QSequentialIterable__const_iterator_OperatorMultiply(const QSequentialIterable__const_iterator* self);
 bool QSequentialIterable__const_iterator_OperatorEqual(const QSequentialIterable__const_iterator* self, QSequentialIterable__const_iterator* o);
@@ -240,9 +229,9 @@ QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_Operato
 QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorMinusAssign(QSequentialIterable__const_iterator* self, int j);
 QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorPlus(const QSequentialIterable__const_iterator* self, int j);
 QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorMinus(const QSequentialIterable__const_iterator* self, int j);
-void QSequentialIterable__const_iterator_Delete(QSequentialIterable__const_iterator* self);
+void QSequentialIterable__const_iterator_Delete(QSequentialIterable__const_iterator* self, bool isSubclass);
 
-QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_new(QAssociativeIterable__const_iterator* other);
+void QAssociativeIterable__const_iterator_new(QAssociativeIterable__const_iterator* other, QAssociativeIterable__const_iterator** outptr_QAssociativeIterable__const_iterator);
 void QAssociativeIterable__const_iterator_OperatorAssign(QAssociativeIterable__const_iterator* self, QAssociativeIterable__const_iterator* other);
 QVariant* QAssociativeIterable__const_iterator_Key(const QAssociativeIterable__const_iterator* self);
 QVariant* QAssociativeIterable__const_iterator_Value(const QAssociativeIterable__const_iterator* self);
@@ -257,7 +246,7 @@ QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_Opera
 QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorMinusAssign(QAssociativeIterable__const_iterator* self, int j);
 QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorPlus(const QAssociativeIterable__const_iterator* self, int j);
 QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorMinus(const QAssociativeIterable__const_iterator* self, int j);
-void QAssociativeIterable__const_iterator_Delete(QAssociativeIterable__const_iterator* self);
+void QAssociativeIterable__const_iterator_Delete(QAssociativeIterable__const_iterator* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

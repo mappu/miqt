@@ -4,12 +4,14 @@
 #include "gen_qscrollerproperties.h"
 #include "_cgo_export.h"
 
-QScrollerProperties* QScrollerProperties_new() {
-	return new QScrollerProperties();
+void QScrollerProperties_new(QScrollerProperties** outptr_QScrollerProperties) {
+	QScrollerProperties* ret = new QScrollerProperties();
+	*outptr_QScrollerProperties = ret;
 }
 
-QScrollerProperties* QScrollerProperties_new2(QScrollerProperties* sp) {
-	return new QScrollerProperties(*sp);
+void QScrollerProperties_new2(QScrollerProperties* sp, QScrollerProperties** outptr_QScrollerProperties) {
+	QScrollerProperties* ret = new QScrollerProperties(*sp);
+	*outptr_QScrollerProperties = ret;
 }
 
 void QScrollerProperties_OperatorAssign(QScrollerProperties* self, QScrollerProperties* sp) {
@@ -40,7 +42,11 @@ void QScrollerProperties_SetScrollMetric(QScrollerProperties* self, int metric, 
 	self->setScrollMetric(static_cast<QScrollerProperties::ScrollMetric>(metric), *value);
 }
 
-void QScrollerProperties_Delete(QScrollerProperties* self) {
-	delete self;
+void QScrollerProperties_Delete(QScrollerProperties* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QScrollerProperties*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -22,21 +22,6 @@ class QDebug;
 class QMetaObject;
 class QMetaType;
 class QPartialOrdering;
-#if defined(WORKAROUND_INNER_CLASS_DEFINITION_QtMetaTypePrivate__QPairVariantInterfaceImpl)
-typedef QtMetaTypePrivate::QPairVariantInterfaceImpl QtMetaTypePrivate__QPairVariantInterfaceImpl;
-#else
-class QtMetaTypePrivate__QPairVariantInterfaceImpl;
-#endif
-#if defined(WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__QMetaTypeInterface)
-typedef QtPrivate::QMetaTypeInterface QtPrivate__QMetaTypeInterface;
-#else
-class QtPrivate__QMetaTypeInterface;
-#endif
-#if defined(WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__QTypeNormalizer)
-typedef QtPrivate::QTypeNormalizer QtPrivate__QTypeNormalizer;
-#else
-class QtPrivate__QTypeNormalizer;
-#endif
 #else
 typedef struct QByteArray QByteArray;
 typedef struct QByteArrayView QByteArrayView;
@@ -45,16 +30,11 @@ typedef struct QDebug QDebug;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMetaType QMetaType;
 typedef struct QPartialOrdering QPartialOrdering;
-typedef struct QtMetaTypePrivate__QPairVariantInterfaceImpl QtMetaTypePrivate__QPairVariantInterfaceImpl;
-typedef struct QtPrivate__QMetaTypeInterface QtPrivate__QMetaTypeInterface;
-typedef struct QtPrivate__QTypeNormalizer QtPrivate__QTypeNormalizer;
 #endif
 
-void QtPrivate__QMetaTypeInterface_Delete(QtPrivate__QMetaTypeInterface* self);
-
-QMetaType* QMetaType_new(int typeVal);
-QMetaType* QMetaType_new2();
-QMetaType* QMetaType_new3(QMetaType* param1);
+void QMetaType_new(int typeVal, QMetaType** outptr_QMetaType);
+void QMetaType_new2(QMetaType** outptr_QMetaType);
+void QMetaType_new3(QMetaType* param1, QMetaType** outptr_QMetaType);
 void QMetaType_RegisterNormalizedTypedef(struct miqt_string normalizedTypeName, QMetaType* typeVal);
 int QMetaType_Type(const char* typeName);
 int QMetaType_TypeWithTypeName(struct miqt_string typeName);
@@ -109,18 +89,7 @@ void* QMetaType_Create22(int typeVal, const void* copyVal);
 int QMetaType_Id1(const QMetaType* self, int param1);
 void* QMetaType_Create1(const QMetaType* self, const void* copyVal);
 void* QMetaType_Construct2(const QMetaType* self, void* where, const void* copyVal);
-void QMetaType_Delete(QMetaType* self);
-
-QtMetaTypePrivate__QPairVariantInterfaceImpl* QtMetaTypePrivate__QPairVariantInterfaceImpl_new();
-QtMetaTypePrivate__QPairVariantInterfaceImpl* QtMetaTypePrivate__QPairVariantInterfaceImpl_new2(QtMetaTypePrivate__QPairVariantInterfaceImpl* param1);
-void QtMetaTypePrivate__QPairVariantInterfaceImpl_First(const QtMetaTypePrivate__QPairVariantInterfaceImpl* self, void* dataPtr);
-void QtMetaTypePrivate__QPairVariantInterfaceImpl_Second(const QtMetaTypePrivate__QPairVariantInterfaceImpl* self, void* dataPtr);
-void QtMetaTypePrivate__QPairVariantInterfaceImpl_Delete(QtMetaTypePrivate__QPairVariantInterfaceImpl* self);
-
-int QtPrivate__QTypeNormalizer_NormalizeTypeFromSignature(QtPrivate__QTypeNormalizer* self, const char* begin, const char* end);
-int QtPrivate__QTypeNormalizer_NormalizeType(QtPrivate__QTypeNormalizer* self, const char* begin, const char* end);
-int QtPrivate__QTypeNormalizer_NormalizeType3(QtPrivate__QTypeNormalizer* self, const char* begin, const char* end, bool adjustConst);
-void QtPrivate__QTypeNormalizer_Delete(QtPrivate__QTypeNormalizer* self);
+void QMetaType_Delete(QMetaType* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

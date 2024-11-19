@@ -1,8 +1,10 @@
 #include <QAbstractAnimation>
 #include <QAbstractState>
 #include <QAbstractTransition>
+#include <QEvent>
 #include <QList>
 #include <QMetaObject>
+#include <QObject>
 #include <QState>
 #include <QStateMachine>
 #include <QString>
@@ -155,7 +157,11 @@ struct miqt_string QAbstractTransition_TrUtf83(const char* s, const char* c, int
 	return _ms;
 }
 
-void QAbstractTransition_Delete(QAbstractTransition* self) {
-	delete self;
+void QAbstractTransition_Delete(QAbstractTransition* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QAbstractTransition*>( self );
+	} else {
+		delete self;
+	}
 }
 

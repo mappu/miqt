@@ -1,5 +1,6 @@
 #include <QList>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -108,7 +109,11 @@ struct miqt_string QsciAbstractAPIs_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QsciAbstractAPIs_Delete(QsciAbstractAPIs* self) {
-	delete self;
+void QsciAbstractAPIs_Delete(QsciAbstractAPIs* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QsciAbstractAPIs*>( self );
+	} else {
+		delete self;
+	}
 }
 

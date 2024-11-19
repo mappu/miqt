@@ -14,7 +14,8 @@ import (
 )
 
 type QAnyStringView struct {
-	h *C.QAnyStringView
+	h          *C.QAnyStringView
+	isSubclass bool
 }
 
 func (this *QAnyStringView) cPointer() *C.QAnyStringView {
@@ -31,6 +32,7 @@ func (this *QAnyStringView) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQAnyStringView constructs the type using only CGO pointers.
 func newQAnyStringView(h *C.QAnyStringView) *QAnyStringView {
 	if h == nil {
 		return nil
@@ -38,14 +40,23 @@ func newQAnyStringView(h *C.QAnyStringView) *QAnyStringView {
 	return &QAnyStringView{h: h}
 }
 
+// UnsafeNewQAnyStringView constructs the type using only unsafe pointers.
 func UnsafeNewQAnyStringView(h unsafe.Pointer) *QAnyStringView {
-	return newQAnyStringView((*C.QAnyStringView)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAnyStringView{h: (*C.QAnyStringView)(h)}
 }
 
 // NewQAnyStringView constructs a new QAnyStringView object.
 func NewQAnyStringView() *QAnyStringView {
-	ret := C.QAnyStringView_new()
-	return newQAnyStringView(ret)
+	var outptr_QAnyStringView *C.QAnyStringView = nil
+
+	C.QAnyStringView_new(&outptr_QAnyStringView)
+	ret := newQAnyStringView(outptr_QAnyStringView)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAnyStringView2 constructs a new QAnyStringView object.
@@ -53,8 +64,12 @@ func NewQAnyStringView2(str []byte) *QAnyStringView {
 	str_alias := C.struct_miqt_string{}
 	str_alias.data = (*C.char)(unsafe.Pointer(&str[0]))
 	str_alias.len = C.size_t(len(str))
-	ret := C.QAnyStringView_new2(str_alias)
-	return newQAnyStringView(ret)
+	var outptr_QAnyStringView *C.QAnyStringView = nil
+
+	C.QAnyStringView_new2(str_alias, &outptr_QAnyStringView)
+	ret := newQAnyStringView(outptr_QAnyStringView)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAnyStringView3 constructs a new QAnyStringView object.
@@ -63,20 +78,32 @@ func NewQAnyStringView3(str string) *QAnyStringView {
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
 	defer C.free(unsafe.Pointer(str_ms.data))
-	ret := C.QAnyStringView_new3(str_ms)
-	return newQAnyStringView(ret)
+	var outptr_QAnyStringView *C.QAnyStringView = nil
+
+	C.QAnyStringView_new3(str_ms, &outptr_QAnyStringView)
+	ret := newQAnyStringView(outptr_QAnyStringView)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAnyStringView4 constructs a new QAnyStringView object.
 func NewQAnyStringView4(c *QChar) *QAnyStringView {
-	ret := C.QAnyStringView_new4(c.cPointer())
-	return newQAnyStringView(ret)
+	var outptr_QAnyStringView *C.QAnyStringView = nil
+
+	C.QAnyStringView_new4(c.cPointer(), &outptr_QAnyStringView)
+	ret := newQAnyStringView(outptr_QAnyStringView)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQAnyStringView5 constructs a new QAnyStringView object.
 func NewQAnyStringView5(param1 *QAnyStringView) *QAnyStringView {
-	ret := C.QAnyStringView_new5(param1.cPointer())
-	return newQAnyStringView(ret)
+	var outptr_QAnyStringView *C.QAnyStringView = nil
+
+	C.QAnyStringView_new5(param1.cPointer(), &outptr_QAnyStringView)
+	ret := newQAnyStringView(outptr_QAnyStringView)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QAnyStringView) ToString() string {
@@ -142,7 +169,7 @@ func QAnyStringView_Compare3(lhs QAnyStringView, rhs QAnyStringView, cs CaseSens
 
 // Delete this object from C++ memory.
 func (this *QAnyStringView) Delete() {
-	C.QAnyStringView_Delete(this.h)
+	C.QAnyStringView_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

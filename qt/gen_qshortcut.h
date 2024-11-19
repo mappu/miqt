@@ -15,22 +15,32 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QChildEvent;
+class QEvent;
 class QKeySequence;
+class QMetaMethod;
 class QMetaObject;
+class QObject;
 class QShortcut;
+class QTimerEvent;
 class QWidget;
 #else
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QKeySequence QKeySequence;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 typedef struct QShortcut QShortcut;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QWidget QWidget;
 #endif
 
-QShortcut* QShortcut_new(QWidget* parent);
-QShortcut* QShortcut_new2(QKeySequence* key, QWidget* parent);
-QShortcut* QShortcut_new3(QKeySequence* key, QWidget* parent, const char* member);
-QShortcut* QShortcut_new4(QKeySequence* key, QWidget* parent, const char* member, const char* ambiguousMember);
-QShortcut* QShortcut_new5(QKeySequence* key, QWidget* parent, const char* member, const char* ambiguousMember, int shortcutContext);
+void QShortcut_new(QWidget* parent, QShortcut** outptr_QShortcut, QObject** outptr_QObject);
+void QShortcut_new2(QKeySequence* key, QWidget* parent, QShortcut** outptr_QShortcut, QObject** outptr_QObject);
+void QShortcut_new3(QKeySequence* key, QWidget* parent, const char* member, QShortcut** outptr_QShortcut, QObject** outptr_QObject);
+void QShortcut_new4(QKeySequence* key, QWidget* parent, const char* member, const char* ambiguousMember, QShortcut** outptr_QShortcut, QObject** outptr_QObject);
+void QShortcut_new5(QKeySequence* key, QWidget* parent, const char* member, const char* ambiguousMember, int shortcutContext, QShortcut** outptr_QShortcut, QObject** outptr_QObject);
 QMetaObject* QShortcut_MetaObject(const QShortcut* self);
 void* QShortcut_Metacast(QShortcut* self, const char* param1);
 struct miqt_string QShortcut_Tr(const char* s);
@@ -51,11 +61,26 @@ void QShortcut_Activated(QShortcut* self);
 void QShortcut_connect_Activated(QShortcut* self, intptr_t slot);
 void QShortcut_ActivatedAmbiguously(QShortcut* self);
 void QShortcut_connect_ActivatedAmbiguously(QShortcut* self, intptr_t slot);
+bool QShortcut_Event(QShortcut* self, QEvent* e);
 struct miqt_string QShortcut_Tr2(const char* s, const char* c);
 struct miqt_string QShortcut_Tr3(const char* s, const char* c, int n);
 struct miqt_string QShortcut_TrUtf82(const char* s, const char* c);
 struct miqt_string QShortcut_TrUtf83(const char* s, const char* c, int n);
-void QShortcut_Delete(QShortcut* self);
+void QShortcut_override_virtual_Event(void* self, intptr_t slot);
+bool QShortcut_virtualbase_Event(void* self, QEvent* e);
+void QShortcut_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QShortcut_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QShortcut_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QShortcut_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QShortcut_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QShortcut_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QShortcut_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QShortcut_virtualbase_CustomEvent(void* self, QEvent* event);
+void QShortcut_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QShortcut_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QShortcut_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QShortcut_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+void QShortcut_Delete(QShortcut* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -22,15 +22,15 @@ typedef struct QOcspResponse QOcspResponse;
 typedef struct QSslCertificate QSslCertificate;
 #endif
 
-QOcspResponse* QOcspResponse_new();
-QOcspResponse* QOcspResponse_new2(QOcspResponse* other);
+void QOcspResponse_new(QOcspResponse** outptr_QOcspResponse);
+void QOcspResponse_new2(QOcspResponse* other, QOcspResponse** outptr_QOcspResponse);
 void QOcspResponse_OperatorAssign(QOcspResponse* self, QOcspResponse* other);
 int QOcspResponse_CertificateStatus(const QOcspResponse* self);
 int QOcspResponse_RevocationReason(const QOcspResponse* self);
 QSslCertificate* QOcspResponse_Responder(const QOcspResponse* self);
 QSslCertificate* QOcspResponse_Subject(const QOcspResponse* self);
 void QOcspResponse_Swap(QOcspResponse* self, QOcspResponse* other);
-void QOcspResponse_Delete(QOcspResponse* self);
+void QOcspResponse_Delete(QOcspResponse* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

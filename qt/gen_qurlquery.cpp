@@ -9,21 +9,25 @@
 #include "gen_qurlquery.h"
 #include "_cgo_export.h"
 
-QUrlQuery* QUrlQuery_new() {
-	return new QUrlQuery();
+void QUrlQuery_new(QUrlQuery** outptr_QUrlQuery) {
+	QUrlQuery* ret = new QUrlQuery();
+	*outptr_QUrlQuery = ret;
 }
 
-QUrlQuery* QUrlQuery_new2(QUrl* url) {
-	return new QUrlQuery(*url);
+void QUrlQuery_new2(QUrl* url, QUrlQuery** outptr_QUrlQuery) {
+	QUrlQuery* ret = new QUrlQuery(*url);
+	*outptr_QUrlQuery = ret;
 }
 
-QUrlQuery* QUrlQuery_new3(struct miqt_string queryString) {
+void QUrlQuery_new3(struct miqt_string queryString, QUrlQuery** outptr_QUrlQuery) {
 	QString queryString_QString = QString::fromUtf8(queryString.data, queryString.len);
-	return new QUrlQuery(queryString_QString);
+	QUrlQuery* ret = new QUrlQuery(queryString_QString);
+	*outptr_QUrlQuery = ret;
 }
 
-QUrlQuery* QUrlQuery_new4(QUrlQuery* other) {
-	return new QUrlQuery(*other);
+void QUrlQuery_new4(QUrlQuery* other, QUrlQuery** outptr_QUrlQuery) {
+	QUrlQuery* ret = new QUrlQuery(*other);
+	*outptr_QUrlQuery = ret;
 }
 
 void QUrlQuery_OperatorAssign(QUrlQuery* self, QUrlQuery* other) {
@@ -301,7 +305,11 @@ struct miqt_array /* of struct miqt_string */  QUrlQuery_AllQueryItemValues2(con
 	return _out;
 }
 
-void QUrlQuery_Delete(QUrlQuery* self) {
-	delete self;
+void QUrlQuery_Delete(QUrlQuery* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QUrlQuery*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -7,12 +7,13 @@
 #include "gen_qcommandlineoption.h"
 #include "_cgo_export.h"
 
-QCommandLineOption* QCommandLineOption_new(struct miqt_string name) {
+void QCommandLineOption_new(struct miqt_string name, QCommandLineOption** outptr_QCommandLineOption) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	return new QCommandLineOption(name_QString);
+	QCommandLineOption* ret = new QCommandLineOption(name_QString);
+	*outptr_QCommandLineOption = ret;
 }
 
-QCommandLineOption* QCommandLineOption_new2(struct miqt_array /* of struct miqt_string */  names) {
+void QCommandLineOption_new2(struct miqt_array /* of struct miqt_string */  names, QCommandLineOption** outptr_QCommandLineOption) {
 	QStringList names_QList;
 	names_QList.reserve(names.len);
 	struct miqt_string* names_arr = static_cast<struct miqt_string*>(names.data);
@@ -20,16 +21,18 @@ QCommandLineOption* QCommandLineOption_new2(struct miqt_array /* of struct miqt_
 		QString names_arr_i_QString = QString::fromUtf8(names_arr[i].data, names_arr[i].len);
 		names_QList.push_back(names_arr_i_QString);
 	}
-	return new QCommandLineOption(names_QList);
+	QCommandLineOption* ret = new QCommandLineOption(names_QList);
+	*outptr_QCommandLineOption = ret;
 }
 
-QCommandLineOption* QCommandLineOption_new3(struct miqt_string name, struct miqt_string description) {
+void QCommandLineOption_new3(struct miqt_string name, struct miqt_string description, QCommandLineOption** outptr_QCommandLineOption) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	QString description_QString = QString::fromUtf8(description.data, description.len);
-	return new QCommandLineOption(name_QString, description_QString);
+	QCommandLineOption* ret = new QCommandLineOption(name_QString, description_QString);
+	*outptr_QCommandLineOption = ret;
 }
 
-QCommandLineOption* QCommandLineOption_new4(struct miqt_array /* of struct miqt_string */  names, struct miqt_string description) {
+void QCommandLineOption_new4(struct miqt_array /* of struct miqt_string */  names, struct miqt_string description, QCommandLineOption** outptr_QCommandLineOption) {
 	QStringList names_QList;
 	names_QList.reserve(names.len);
 	struct miqt_string* names_arr = static_cast<struct miqt_string*>(names.data);
@@ -38,53 +41,59 @@ QCommandLineOption* QCommandLineOption_new4(struct miqt_array /* of struct miqt_
 		names_QList.push_back(names_arr_i_QString);
 	}
 	QString description_QString = QString::fromUtf8(description.data, description.len);
-	return new QCommandLineOption(names_QList, description_QString);
+	QCommandLineOption* ret = new QCommandLineOption(names_QList, description_QString);
+	*outptr_QCommandLineOption = ret;
 }
 
-QCommandLineOption* QCommandLineOption_new5(QCommandLineOption* other) {
-	return new QCommandLineOption(*other);
+void QCommandLineOption_new5(QCommandLineOption* other, QCommandLineOption** outptr_QCommandLineOption) {
+	QCommandLineOption* ret = new QCommandLineOption(*other);
+	*outptr_QCommandLineOption = ret;
 }
 
-QCommandLineOption* QCommandLineOption_new6(struct miqt_string name, struct miqt_string description, struct miqt_string valueName) {
-	QString name_QString = QString::fromUtf8(name.data, name.len);
-	QString description_QString = QString::fromUtf8(description.data, description.len);
-	QString valueName_QString = QString::fromUtf8(valueName.data, valueName.len);
-	return new QCommandLineOption(name_QString, description_QString, valueName_QString);
-}
-
-QCommandLineOption* QCommandLineOption_new7(struct miqt_string name, struct miqt_string description, struct miqt_string valueName, struct miqt_string defaultValue) {
+void QCommandLineOption_new6(struct miqt_string name, struct miqt_string description, struct miqt_string valueName, QCommandLineOption** outptr_QCommandLineOption) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	QString description_QString = QString::fromUtf8(description.data, description.len);
 	QString valueName_QString = QString::fromUtf8(valueName.data, valueName.len);
-	QString defaultValue_QString = QString::fromUtf8(defaultValue.data, defaultValue.len);
-	return new QCommandLineOption(name_QString, description_QString, valueName_QString, defaultValue_QString);
+	QCommandLineOption* ret = new QCommandLineOption(name_QString, description_QString, valueName_QString);
+	*outptr_QCommandLineOption = ret;
 }
 
-QCommandLineOption* QCommandLineOption_new8(struct miqt_array /* of struct miqt_string */  names, struct miqt_string description, struct miqt_string valueName) {
-	QStringList names_QList;
-	names_QList.reserve(names.len);
-	struct miqt_string* names_arr = static_cast<struct miqt_string*>(names.data);
-	for(size_t i = 0; i < names.len; ++i) {
-		QString names_arr_i_QString = QString::fromUtf8(names_arr[i].data, names_arr[i].len);
-		names_QList.push_back(names_arr_i_QString);
-	}
-	QString description_QString = QString::fromUtf8(description.data, description.len);
-	QString valueName_QString = QString::fromUtf8(valueName.data, valueName.len);
-	return new QCommandLineOption(names_QList, description_QString, valueName_QString);
-}
-
-QCommandLineOption* QCommandLineOption_new9(struct miqt_array /* of struct miqt_string */  names, struct miqt_string description, struct miqt_string valueName, struct miqt_string defaultValue) {
-	QStringList names_QList;
-	names_QList.reserve(names.len);
-	struct miqt_string* names_arr = static_cast<struct miqt_string*>(names.data);
-	for(size_t i = 0; i < names.len; ++i) {
-		QString names_arr_i_QString = QString::fromUtf8(names_arr[i].data, names_arr[i].len);
-		names_QList.push_back(names_arr_i_QString);
-	}
+void QCommandLineOption_new7(struct miqt_string name, struct miqt_string description, struct miqt_string valueName, struct miqt_string defaultValue, QCommandLineOption** outptr_QCommandLineOption) {
+	QString name_QString = QString::fromUtf8(name.data, name.len);
 	QString description_QString = QString::fromUtf8(description.data, description.len);
 	QString valueName_QString = QString::fromUtf8(valueName.data, valueName.len);
 	QString defaultValue_QString = QString::fromUtf8(defaultValue.data, defaultValue.len);
-	return new QCommandLineOption(names_QList, description_QString, valueName_QString, defaultValue_QString);
+	QCommandLineOption* ret = new QCommandLineOption(name_QString, description_QString, valueName_QString, defaultValue_QString);
+	*outptr_QCommandLineOption = ret;
+}
+
+void QCommandLineOption_new8(struct miqt_array /* of struct miqt_string */  names, struct miqt_string description, struct miqt_string valueName, QCommandLineOption** outptr_QCommandLineOption) {
+	QStringList names_QList;
+	names_QList.reserve(names.len);
+	struct miqt_string* names_arr = static_cast<struct miqt_string*>(names.data);
+	for(size_t i = 0; i < names.len; ++i) {
+		QString names_arr_i_QString = QString::fromUtf8(names_arr[i].data, names_arr[i].len);
+		names_QList.push_back(names_arr_i_QString);
+	}
+	QString description_QString = QString::fromUtf8(description.data, description.len);
+	QString valueName_QString = QString::fromUtf8(valueName.data, valueName.len);
+	QCommandLineOption* ret = new QCommandLineOption(names_QList, description_QString, valueName_QString);
+	*outptr_QCommandLineOption = ret;
+}
+
+void QCommandLineOption_new9(struct miqt_array /* of struct miqt_string */  names, struct miqt_string description, struct miqt_string valueName, struct miqt_string defaultValue, QCommandLineOption** outptr_QCommandLineOption) {
+	QStringList names_QList;
+	names_QList.reserve(names.len);
+	struct miqt_string* names_arr = static_cast<struct miqt_string*>(names.data);
+	for(size_t i = 0; i < names.len; ++i) {
+		QString names_arr_i_QString = QString::fromUtf8(names_arr[i].data, names_arr[i].len);
+		names_QList.push_back(names_arr_i_QString);
+	}
+	QString description_QString = QString::fromUtf8(description.data, description.len);
+	QString valueName_QString = QString::fromUtf8(valueName.data, valueName.len);
+	QString defaultValue_QString = QString::fromUtf8(defaultValue.data, defaultValue.len);
+	QCommandLineOption* ret = new QCommandLineOption(names_QList, description_QString, valueName_QString, defaultValue_QString);
+	*outptr_QCommandLineOption = ret;
 }
 
 void QCommandLineOption_OperatorAssign(QCommandLineOption* self, QCommandLineOption* other) {
@@ -200,7 +209,11 @@ bool QCommandLineOption_IsHidden(const QCommandLineOption* self) {
 	return self->isHidden();
 }
 
-void QCommandLineOption_Delete(QCommandLineOption* self) {
-	delete self;
+void QCommandLineOption_Delete(QCommandLineOption* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QCommandLineOption*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -75,7 +75,8 @@ const (
 )
 
 type QDataStream struct {
-	h *C.QDataStream
+	h          *C.QDataStream
+	isSubclass bool
 }
 
 func (this *QDataStream) cPointer() *C.QDataStream {
@@ -92,6 +93,7 @@ func (this *QDataStream) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQDataStream constructs the type using only CGO pointers.
 func newQDataStream(h *C.QDataStream) *QDataStream {
 	if h == nil {
 		return nil
@@ -99,20 +101,33 @@ func newQDataStream(h *C.QDataStream) *QDataStream {
 	return &QDataStream{h: h}
 }
 
+// UnsafeNewQDataStream constructs the type using only unsafe pointers.
 func UnsafeNewQDataStream(h unsafe.Pointer) *QDataStream {
-	return newQDataStream((*C.QDataStream)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QDataStream{h: (*C.QDataStream)(h)}
 }
 
 // NewQDataStream constructs a new QDataStream object.
 func NewQDataStream() *QDataStream {
-	ret := C.QDataStream_new()
-	return newQDataStream(ret)
+	var outptr_QDataStream *C.QDataStream = nil
+
+	C.QDataStream_new(&outptr_QDataStream)
+	ret := newQDataStream(outptr_QDataStream)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDataStream2 constructs a new QDataStream object.
 func NewQDataStream2(param1 *QIODevice) *QDataStream {
-	ret := C.QDataStream_new2(param1.cPointer())
-	return newQDataStream(ret)
+	var outptr_QDataStream *C.QDataStream = nil
+
+	C.QDataStream_new2(param1.cPointer(), &outptr_QDataStream)
+	ret := newQDataStream(outptr_QDataStream)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQDataStream3 constructs a new QDataStream object.
@@ -120,12 +135,16 @@ func NewQDataStream3(param1 []byte) *QDataStream {
 	param1_alias := C.struct_miqt_string{}
 	param1_alias.data = (*C.char)(unsafe.Pointer(&param1[0]))
 	param1_alias.len = C.size_t(len(param1))
-	ret := C.QDataStream_new3(param1_alias)
-	return newQDataStream(ret)
+	var outptr_QDataStream *C.QDataStream = nil
+
+	C.QDataStream_new3(param1_alias, &outptr_QDataStream)
+	ret := newQDataStream(outptr_QDataStream)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QDataStream) Device() *QIODevice {
-	return UnsafeNewQIODevice(unsafe.Pointer(C.QDataStream_Device(this.h)))
+	return UnsafeNewQIODevice(unsafe.Pointer(C.QDataStream_Device(this.h)), nil)
 }
 
 func (this *QDataStream) SetDevice(device *QIODevice) {
@@ -322,62 +341,13 @@ func (this *QDataStream) AbortTransaction() {
 
 // Delete this object from C++ memory.
 func (this *QDataStream) Delete() {
-	C.QDataStream_Delete(this.h)
+	C.QDataStream_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
 // from C++ memory once it is unreachable from Go memory.
 func (this *QDataStream) GoGC() {
 	runtime.SetFinalizer(this, func(this *QDataStream) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
-	})
-}
-
-type QtPrivate__StreamStateSaver struct {
-	h *C.QtPrivate__StreamStateSaver
-}
-
-func (this *QtPrivate__StreamStateSaver) cPointer() *C.QtPrivate__StreamStateSaver {
-	if this == nil {
-		return nil
-	}
-	return this.h
-}
-
-func (this *QtPrivate__StreamStateSaver) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
-}
-
-func newQtPrivate__StreamStateSaver(h *C.QtPrivate__StreamStateSaver) *QtPrivate__StreamStateSaver {
-	if h == nil {
-		return nil
-	}
-	return &QtPrivate__StreamStateSaver{h: h}
-}
-
-func UnsafeNewQtPrivate__StreamStateSaver(h unsafe.Pointer) *QtPrivate__StreamStateSaver {
-	return newQtPrivate__StreamStateSaver((*C.QtPrivate__StreamStateSaver)(h))
-}
-
-// NewQtPrivate__StreamStateSaver constructs a new QtPrivate::StreamStateSaver object.
-func NewQtPrivate__StreamStateSaver(s *QDataStream) *QtPrivate__StreamStateSaver {
-	ret := C.QtPrivate__StreamStateSaver_new(s.cPointer())
-	return newQtPrivate__StreamStateSaver(ret)
-}
-
-// Delete this object from C++ memory.
-func (this *QtPrivate__StreamStateSaver) Delete() {
-	C.QtPrivate__StreamStateSaver_Delete(this.h)
-}
-
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
-func (this *QtPrivate__StreamStateSaver) GoGC() {
-	runtime.SetFinalizer(this, func(this *QtPrivate__StreamStateSaver) {
 		this.Delete()
 		runtime.KeepAlive(this.h)
 	})

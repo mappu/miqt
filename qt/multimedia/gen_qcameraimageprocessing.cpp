@@ -1,5 +1,6 @@
 #include <QCameraImageProcessing>
 #include <QMetaObject>
+#include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>

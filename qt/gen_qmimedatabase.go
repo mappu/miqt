@@ -22,7 +22,8 @@ const (
 )
 
 type QMimeDatabase struct {
-	h *C.QMimeDatabase
+	h          *C.QMimeDatabase
+	isSubclass bool
 }
 
 func (this *QMimeDatabase) cPointer() *C.QMimeDatabase {
@@ -39,6 +40,7 @@ func (this *QMimeDatabase) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQMimeDatabase constructs the type using only CGO pointers.
 func newQMimeDatabase(h *C.QMimeDatabase) *QMimeDatabase {
 	if h == nil {
 		return nil
@@ -46,14 +48,23 @@ func newQMimeDatabase(h *C.QMimeDatabase) *QMimeDatabase {
 	return &QMimeDatabase{h: h}
 }
 
+// UnsafeNewQMimeDatabase constructs the type using only unsafe pointers.
 func UnsafeNewQMimeDatabase(h unsafe.Pointer) *QMimeDatabase {
-	return newQMimeDatabase((*C.QMimeDatabase)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMimeDatabase{h: (*C.QMimeDatabase)(h)}
 }
 
 // NewQMimeDatabase constructs a new QMimeDatabase object.
 func NewQMimeDatabase() *QMimeDatabase {
-	ret := C.QMimeDatabase_new()
-	return newQMimeDatabase(ret)
+	var outptr_QMimeDatabase *C.QMimeDatabase = nil
+
+	C.QMimeDatabase_new(&outptr_QMimeDatabase)
+	ret := newQMimeDatabase(outptr_QMimeDatabase)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QMimeDatabase) MimeTypeForName(nameOrAlias string) *QMimeType {
@@ -195,7 +206,7 @@ func (this *QMimeDatabase) MimeTypeForFile22(fileInfo *QFileInfo, mode QMimeData
 
 // Delete this object from C++ memory.
 func (this *QMimeDatabase) Delete() {
-	C.QMimeDatabase_Delete(this.h)
+	C.QMimeDatabase_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

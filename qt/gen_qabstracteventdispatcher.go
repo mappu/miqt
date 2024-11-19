@@ -15,7 +15,8 @@ import (
 )
 
 type QAbstractEventDispatcher struct {
-	h *C.QAbstractEventDispatcher
+	h          *C.QAbstractEventDispatcher
+	isSubclass bool
 	*QObject
 }
 
@@ -33,15 +34,23 @@ func (this *QAbstractEventDispatcher) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQAbstractEventDispatcher(h *C.QAbstractEventDispatcher) *QAbstractEventDispatcher {
+// newQAbstractEventDispatcher constructs the type using only CGO pointers.
+func newQAbstractEventDispatcher(h *C.QAbstractEventDispatcher, h_QObject *C.QObject) *QAbstractEventDispatcher {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractEventDispatcher{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QAbstractEventDispatcher{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQAbstractEventDispatcher(h unsafe.Pointer) *QAbstractEventDispatcher {
-	return newQAbstractEventDispatcher((*C.QAbstractEventDispatcher)(h))
+// UnsafeNewQAbstractEventDispatcher constructs the type using only unsafe pointers.
+func UnsafeNewQAbstractEventDispatcher(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractEventDispatcher {
+	if h == nil {
+		return nil
+	}
+
+	return &QAbstractEventDispatcher{h: (*C.QAbstractEventDispatcher)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QAbstractEventDispatcher) MetaObject() *QMetaObject {
@@ -73,7 +82,7 @@ func QAbstractEventDispatcher_TrUtf8(s string) string {
 }
 
 func QAbstractEventDispatcher_Instance() *QAbstractEventDispatcher {
-	return UnsafeNewQAbstractEventDispatcher(unsafe.Pointer(C.QAbstractEventDispatcher_Instance()))
+	return UnsafeNewQAbstractEventDispatcher(unsafe.Pointer(C.QAbstractEventDispatcher_Instance()), nil)
 }
 
 func (this *QAbstractEventDispatcher) ProcessEvents(flags QEventLoop__ProcessEventsFlag) bool {
@@ -239,12 +248,12 @@ func QAbstractEventDispatcher_TrUtf83(s string, c string, n int) string {
 }
 
 func QAbstractEventDispatcher_Instance1(thread *QThread) *QAbstractEventDispatcher {
-	return UnsafeNewQAbstractEventDispatcher(unsafe.Pointer(C.QAbstractEventDispatcher_Instance1(thread.cPointer())))
+	return UnsafeNewQAbstractEventDispatcher(unsafe.Pointer(C.QAbstractEventDispatcher_Instance1(thread.cPointer())), nil)
 }
 
 // Delete this object from C++ memory.
 func (this *QAbstractEventDispatcher) Delete() {
-	C.QAbstractEventDispatcher_Delete(this.h)
+	C.QAbstractEventDispatcher_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -257,7 +266,8 @@ func (this *QAbstractEventDispatcher) GoGC() {
 }
 
 type QAbstractEventDispatcher__TimerInfo struct {
-	h *C.QAbstractEventDispatcher__TimerInfo
+	h          *C.QAbstractEventDispatcher__TimerInfo
+	isSubclass bool
 }
 
 func (this *QAbstractEventDispatcher__TimerInfo) cPointer() *C.QAbstractEventDispatcher__TimerInfo {
@@ -274,6 +284,7 @@ func (this *QAbstractEventDispatcher__TimerInfo) UnsafePointer() unsafe.Pointer 
 	return unsafe.Pointer(this.h)
 }
 
+// newQAbstractEventDispatcher__TimerInfo constructs the type using only CGO pointers.
 func newQAbstractEventDispatcher__TimerInfo(h *C.QAbstractEventDispatcher__TimerInfo) *QAbstractEventDispatcher__TimerInfo {
 	if h == nil {
 		return nil
@@ -281,19 +292,28 @@ func newQAbstractEventDispatcher__TimerInfo(h *C.QAbstractEventDispatcher__Timer
 	return &QAbstractEventDispatcher__TimerInfo{h: h}
 }
 
+// UnsafeNewQAbstractEventDispatcher__TimerInfo constructs the type using only unsafe pointers.
 func UnsafeNewQAbstractEventDispatcher__TimerInfo(h unsafe.Pointer) *QAbstractEventDispatcher__TimerInfo {
-	return newQAbstractEventDispatcher__TimerInfo((*C.QAbstractEventDispatcher__TimerInfo)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QAbstractEventDispatcher__TimerInfo{h: (*C.QAbstractEventDispatcher__TimerInfo)(h)}
 }
 
 // NewQAbstractEventDispatcher__TimerInfo constructs a new QAbstractEventDispatcher::TimerInfo object.
 func NewQAbstractEventDispatcher__TimerInfo(id int, i int, t TimerType) *QAbstractEventDispatcher__TimerInfo {
-	ret := C.QAbstractEventDispatcher__TimerInfo_new((C.int)(id), (C.int)(i), (C.int)(t))
-	return newQAbstractEventDispatcher__TimerInfo(ret)
+	var outptr_QAbstractEventDispatcher__TimerInfo *C.QAbstractEventDispatcher__TimerInfo = nil
+
+	C.QAbstractEventDispatcher__TimerInfo_new((C.int)(id), (C.int)(i), (C.int)(t), &outptr_QAbstractEventDispatcher__TimerInfo)
+	ret := newQAbstractEventDispatcher__TimerInfo(outptr_QAbstractEventDispatcher__TimerInfo)
+	ret.isSubclass = true
+	return ret
 }
 
 // Delete this object from C++ memory.
 func (this *QAbstractEventDispatcher__TimerInfo) Delete() {
-	C.QAbstractEventDispatcher__TimerInfo_Delete(this.h)
+	C.QAbstractEventDispatcher__TimerInfo_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

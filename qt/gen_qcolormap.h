@@ -22,7 +22,7 @@ typedef struct QColor QColor;
 typedef struct QColormap QColormap;
 #endif
 
-QColormap* QColormap_new(QColormap* colormap);
+void QColormap_new(QColormap* colormap, QColormap** outptr_QColormap);
 void QColormap_Initialize();
 void QColormap_Cleanup();
 QColormap* QColormap_Instance();
@@ -34,7 +34,7 @@ unsigned int QColormap_Pixel(const QColormap* self, QColor* color);
 QColor* QColormap_ColorAt(const QColormap* self, unsigned int pixel);
 struct miqt_array /* of QColor* */  QColormap_Colormap(const QColormap* self);
 QColormap* QColormap_Instance1(int screen);
-void QColormap_Delete(QColormap* self);
+void QColormap_Delete(QColormap* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

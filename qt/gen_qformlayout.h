@@ -15,6 +15,7 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QChildEvent;
 class QFormLayout;
 #if defined(WORKAROUND_INNER_CLASS_DEFINITION_QFormLayout__TakeRowResult)
 typedef QFormLayout::TakeRowResult QFormLayout__TakeRowResult;
@@ -24,22 +25,25 @@ class QFormLayout__TakeRowResult;
 class QLayout;
 class QLayoutItem;
 class QMetaObject;
+class QObject;
 class QRect;
 class QSize;
 class QWidget;
 #else
+typedef struct QChildEvent QChildEvent;
 typedef struct QFormLayout QFormLayout;
 typedef struct QFormLayout__TakeRowResult QFormLayout__TakeRowResult;
 typedef struct QLayout QLayout;
 typedef struct QLayoutItem QLayoutItem;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 typedef struct QRect QRect;
 typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-QFormLayout* QFormLayout_new(QWidget* parent);
-QFormLayout* QFormLayout_new2();
+void QFormLayout_new(QWidget* parent, QFormLayout** outptr_QFormLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem);
+void QFormLayout_new2(QFormLayout** outptr_QFormLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem);
 QMetaObject* QFormLayout_MetaObject(const QFormLayout* self);
 void* QFormLayout_Metacast(QFormLayout* self, const char* param1);
 struct miqt_string QFormLayout_Tr(const char* s);
@@ -98,9 +102,45 @@ struct miqt_string QFormLayout_Tr2(const char* s, const char* c);
 struct miqt_string QFormLayout_Tr3(const char* s, const char* c, int n);
 struct miqt_string QFormLayout_TrUtf82(const char* s, const char* c);
 struct miqt_string QFormLayout_TrUtf83(const char* s, const char* c, int n);
-void QFormLayout_Delete(QFormLayout* self);
+void QFormLayout_override_virtual_AddItem(void* self, intptr_t slot);
+void QFormLayout_virtualbase_AddItem(void* self, QLayoutItem* item);
+void QFormLayout_override_virtual_ItemAtWithIndex(void* self, intptr_t slot);
+QLayoutItem* QFormLayout_virtualbase_ItemAtWithIndex(const void* self, int index);
+void QFormLayout_override_virtual_TakeAt(void* self, intptr_t slot);
+QLayoutItem* QFormLayout_virtualbase_TakeAt(void* self, int index);
+void QFormLayout_override_virtual_SetGeometry(void* self, intptr_t slot);
+void QFormLayout_virtualbase_SetGeometry(void* self, QRect* rect);
+void QFormLayout_override_virtual_MinimumSize(void* self, intptr_t slot);
+QSize* QFormLayout_virtualbase_MinimumSize(const void* self);
+void QFormLayout_override_virtual_SizeHint(void* self, intptr_t slot);
+QSize* QFormLayout_virtualbase_SizeHint(const void* self);
+void QFormLayout_override_virtual_Invalidate(void* self, intptr_t slot);
+void QFormLayout_virtualbase_Invalidate(void* self);
+void QFormLayout_override_virtual_HasHeightForWidth(void* self, intptr_t slot);
+bool QFormLayout_virtualbase_HasHeightForWidth(const void* self);
+void QFormLayout_override_virtual_HeightForWidth(void* self, intptr_t slot);
+int QFormLayout_virtualbase_HeightForWidth(const void* self, int width);
+void QFormLayout_override_virtual_ExpandingDirections(void* self, intptr_t slot);
+int QFormLayout_virtualbase_ExpandingDirections(const void* self);
+void QFormLayout_override_virtual_Count(void* self, intptr_t slot);
+int QFormLayout_virtualbase_Count(const void* self);
+void QFormLayout_override_virtual_Geometry(void* self, intptr_t slot);
+QRect* QFormLayout_virtualbase_Geometry(const void* self);
+void QFormLayout_override_virtual_MaximumSize(void* self, intptr_t slot);
+QSize* QFormLayout_virtualbase_MaximumSize(const void* self);
+void QFormLayout_override_virtual_IndexOf(void* self, intptr_t slot);
+int QFormLayout_virtualbase_IndexOf(const void* self, QWidget* param1);
+void QFormLayout_override_virtual_IsEmpty(void* self, intptr_t slot);
+bool QFormLayout_virtualbase_IsEmpty(const void* self);
+void QFormLayout_override_virtual_ControlTypes(void* self, intptr_t slot);
+int QFormLayout_virtualbase_ControlTypes(const void* self);
+void QFormLayout_override_virtual_Layout(void* self, intptr_t slot);
+QLayout* QFormLayout_virtualbase_Layout(void* self);
+void QFormLayout_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QFormLayout_virtualbase_ChildEvent(void* self, QChildEvent* e);
+void QFormLayout_Delete(QFormLayout* self, bool isSubclass);
 
-void QFormLayout__TakeRowResult_Delete(QFormLayout__TakeRowResult* self);
+void QFormLayout__TakeRowResult_Delete(QFormLayout__TakeRowResult* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

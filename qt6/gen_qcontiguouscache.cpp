@@ -11,7 +11,11 @@ void QContiguousCacheData_FreeData(QContiguousCacheData* data) {
 	QContiguousCacheData::freeData(data);
 }
 
-void QContiguousCacheData_Delete(QContiguousCacheData* self) {
-	delete self;
+void QContiguousCacheData_Delete(QContiguousCacheData* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QContiguousCacheData*>( self );
+	} else {
+		delete self;
+	}
 }
 

@@ -40,59 +40,59 @@ typedef struct QXmlStreamStringRef QXmlStreamStringRef;
 typedef struct QXmlStreamWriter QXmlStreamWriter;
 #endif
 
-QXmlStreamStringRef* QXmlStreamStringRef_new();
-QXmlStreamStringRef* QXmlStreamStringRef_new2(struct miqt_string aString);
-QXmlStreamStringRef* QXmlStreamStringRef_new3(QXmlStreamStringRef* other);
+void QXmlStreamStringRef_new(QXmlStreamStringRef** outptr_QXmlStreamStringRef);
+void QXmlStreamStringRef_new2(struct miqt_string aString, QXmlStreamStringRef** outptr_QXmlStreamStringRef);
+void QXmlStreamStringRef_new3(QXmlStreamStringRef* other, QXmlStreamStringRef** outptr_QXmlStreamStringRef);
 void QXmlStreamStringRef_OperatorAssign(QXmlStreamStringRef* self, QXmlStreamStringRef* other);
 void QXmlStreamStringRef_Swap(QXmlStreamStringRef* self, QXmlStreamStringRef* other);
 void QXmlStreamStringRef_Clear(QXmlStreamStringRef* self);
 struct miqt_string QXmlStreamStringRef_String(const QXmlStreamStringRef* self);
 int QXmlStreamStringRef_Position(const QXmlStreamStringRef* self);
 int QXmlStreamStringRef_Size(const QXmlStreamStringRef* self);
-void QXmlStreamStringRef_Delete(QXmlStreamStringRef* self);
+void QXmlStreamStringRef_Delete(QXmlStreamStringRef* self, bool isSubclass);
 
-QXmlStreamAttribute* QXmlStreamAttribute_new();
-QXmlStreamAttribute* QXmlStreamAttribute_new2(struct miqt_string qualifiedName, struct miqt_string value);
-QXmlStreamAttribute* QXmlStreamAttribute_new3(struct miqt_string namespaceUri, struct miqt_string name, struct miqt_string value);
-QXmlStreamAttribute* QXmlStreamAttribute_new4(QXmlStreamAttribute* param1);
+void QXmlStreamAttribute_new(QXmlStreamAttribute** outptr_QXmlStreamAttribute);
+void QXmlStreamAttribute_new2(struct miqt_string qualifiedName, struct miqt_string value, QXmlStreamAttribute** outptr_QXmlStreamAttribute);
+void QXmlStreamAttribute_new3(struct miqt_string namespaceUri, struct miqt_string name, struct miqt_string value, QXmlStreamAttribute** outptr_QXmlStreamAttribute);
+void QXmlStreamAttribute_new4(QXmlStreamAttribute* param1, QXmlStreamAttribute** outptr_QXmlStreamAttribute);
 void QXmlStreamAttribute_OperatorAssign(QXmlStreamAttribute* self, QXmlStreamAttribute* param1);
 bool QXmlStreamAttribute_IsDefault(const QXmlStreamAttribute* self);
 bool QXmlStreamAttribute_OperatorEqual(const QXmlStreamAttribute* self, QXmlStreamAttribute* other);
 bool QXmlStreamAttribute_OperatorNotEqual(const QXmlStreamAttribute* self, QXmlStreamAttribute* other);
-void QXmlStreamAttribute_Delete(QXmlStreamAttribute* self);
+void QXmlStreamAttribute_Delete(QXmlStreamAttribute* self, bool isSubclass);
 
-QXmlStreamNamespaceDeclaration* QXmlStreamNamespaceDeclaration_new();
-QXmlStreamNamespaceDeclaration* QXmlStreamNamespaceDeclaration_new2(struct miqt_string prefix, struct miqt_string namespaceUri);
-QXmlStreamNamespaceDeclaration* QXmlStreamNamespaceDeclaration_new3(QXmlStreamNamespaceDeclaration* param1);
+void QXmlStreamNamespaceDeclaration_new(QXmlStreamNamespaceDeclaration** outptr_QXmlStreamNamespaceDeclaration);
+void QXmlStreamNamespaceDeclaration_new2(struct miqt_string prefix, struct miqt_string namespaceUri, QXmlStreamNamespaceDeclaration** outptr_QXmlStreamNamespaceDeclaration);
+void QXmlStreamNamespaceDeclaration_new3(QXmlStreamNamespaceDeclaration* param1, QXmlStreamNamespaceDeclaration** outptr_QXmlStreamNamespaceDeclaration);
 void QXmlStreamNamespaceDeclaration_OperatorAssign(QXmlStreamNamespaceDeclaration* self, QXmlStreamNamespaceDeclaration* param1);
 bool QXmlStreamNamespaceDeclaration_OperatorEqual(const QXmlStreamNamespaceDeclaration* self, QXmlStreamNamespaceDeclaration* other);
 bool QXmlStreamNamespaceDeclaration_OperatorNotEqual(const QXmlStreamNamespaceDeclaration* self, QXmlStreamNamespaceDeclaration* other);
-void QXmlStreamNamespaceDeclaration_Delete(QXmlStreamNamespaceDeclaration* self);
+void QXmlStreamNamespaceDeclaration_Delete(QXmlStreamNamespaceDeclaration* self, bool isSubclass);
 
-QXmlStreamNotationDeclaration* QXmlStreamNotationDeclaration_new();
-QXmlStreamNotationDeclaration* QXmlStreamNotationDeclaration_new2(QXmlStreamNotationDeclaration* param1);
+void QXmlStreamNotationDeclaration_new(QXmlStreamNotationDeclaration** outptr_QXmlStreamNotationDeclaration);
+void QXmlStreamNotationDeclaration_new2(QXmlStreamNotationDeclaration* param1, QXmlStreamNotationDeclaration** outptr_QXmlStreamNotationDeclaration);
 void QXmlStreamNotationDeclaration_OperatorAssign(QXmlStreamNotationDeclaration* self, QXmlStreamNotationDeclaration* param1);
 bool QXmlStreamNotationDeclaration_OperatorEqual(const QXmlStreamNotationDeclaration* self, QXmlStreamNotationDeclaration* other);
 bool QXmlStreamNotationDeclaration_OperatorNotEqual(const QXmlStreamNotationDeclaration* self, QXmlStreamNotationDeclaration* other);
-void QXmlStreamNotationDeclaration_Delete(QXmlStreamNotationDeclaration* self);
+void QXmlStreamNotationDeclaration_Delete(QXmlStreamNotationDeclaration* self, bool isSubclass);
 
-QXmlStreamEntityDeclaration* QXmlStreamEntityDeclaration_new();
-QXmlStreamEntityDeclaration* QXmlStreamEntityDeclaration_new2(QXmlStreamEntityDeclaration* param1);
+void QXmlStreamEntityDeclaration_new(QXmlStreamEntityDeclaration** outptr_QXmlStreamEntityDeclaration);
+void QXmlStreamEntityDeclaration_new2(QXmlStreamEntityDeclaration* param1, QXmlStreamEntityDeclaration** outptr_QXmlStreamEntityDeclaration);
 void QXmlStreamEntityDeclaration_OperatorAssign(QXmlStreamEntityDeclaration* self, QXmlStreamEntityDeclaration* param1);
 bool QXmlStreamEntityDeclaration_OperatorEqual(const QXmlStreamEntityDeclaration* self, QXmlStreamEntityDeclaration* other);
 bool QXmlStreamEntityDeclaration_OperatorNotEqual(const QXmlStreamEntityDeclaration* self, QXmlStreamEntityDeclaration* other);
-void QXmlStreamEntityDeclaration_Delete(QXmlStreamEntityDeclaration* self);
+void QXmlStreamEntityDeclaration_Delete(QXmlStreamEntityDeclaration* self, bool isSubclass);
 
 struct miqt_string QXmlStreamEntityResolver_ResolveEntity(QXmlStreamEntityResolver* self, struct miqt_string publicId, struct miqt_string systemId);
 struct miqt_string QXmlStreamEntityResolver_ResolveUndeclaredEntity(QXmlStreamEntityResolver* self, struct miqt_string name);
 void QXmlStreamEntityResolver_OperatorAssign(QXmlStreamEntityResolver* self, QXmlStreamEntityResolver* param1);
-void QXmlStreamEntityResolver_Delete(QXmlStreamEntityResolver* self);
+void QXmlStreamEntityResolver_Delete(QXmlStreamEntityResolver* self, bool isSubclass);
 
-QXmlStreamReader* QXmlStreamReader_new();
-QXmlStreamReader* QXmlStreamReader_new2(QIODevice* device);
-QXmlStreamReader* QXmlStreamReader_new3(struct miqt_string data);
-QXmlStreamReader* QXmlStreamReader_new4(struct miqt_string data);
-QXmlStreamReader* QXmlStreamReader_new5(const char* data);
+void QXmlStreamReader_new(QXmlStreamReader** outptr_QXmlStreamReader);
+void QXmlStreamReader_new2(QIODevice* device, QXmlStreamReader** outptr_QXmlStreamReader);
+void QXmlStreamReader_new3(struct miqt_string data, QXmlStreamReader** outptr_QXmlStreamReader);
+void QXmlStreamReader_new4(struct miqt_string data, QXmlStreamReader** outptr_QXmlStreamReader);
+void QXmlStreamReader_new5(const char* data, QXmlStreamReader** outptr_QXmlStreamReader);
 void QXmlStreamReader_SetDevice(QXmlStreamReader* self, QIODevice* device);
 QIODevice* QXmlStreamReader_Device(const QXmlStreamReader* self);
 void QXmlStreamReader_AddData(QXmlStreamReader* self, struct miqt_string data);
@@ -138,10 +138,10 @@ void QXmlStreamReader_SetEntityResolver(QXmlStreamReader* self, QXmlStreamEntity
 QXmlStreamEntityResolver* QXmlStreamReader_EntityResolver(const QXmlStreamReader* self);
 struct miqt_string QXmlStreamReader_ReadElementText1(QXmlStreamReader* self, int behaviour);
 void QXmlStreamReader_RaiseError1(QXmlStreamReader* self, struct miqt_string message);
-void QXmlStreamReader_Delete(QXmlStreamReader* self);
+void QXmlStreamReader_Delete(QXmlStreamReader* self, bool isSubclass);
 
-QXmlStreamWriter* QXmlStreamWriter_new();
-QXmlStreamWriter* QXmlStreamWriter_new2(QIODevice* device);
+void QXmlStreamWriter_new(QXmlStreamWriter** outptr_QXmlStreamWriter);
+void QXmlStreamWriter_new2(QIODevice* device, QXmlStreamWriter** outptr_QXmlStreamWriter);
 void QXmlStreamWriter_SetDevice(QXmlStreamWriter* self, QIODevice* device);
 QIODevice* QXmlStreamWriter_Device(const QXmlStreamWriter* self);
 void QXmlStreamWriter_SetCodec(QXmlStreamWriter* self, QTextCodec* codec);
@@ -177,7 +177,7 @@ void QXmlStreamWriter_WriteCurrentToken(QXmlStreamWriter* self, QXmlStreamReader
 bool QXmlStreamWriter_HasError(const QXmlStreamWriter* self);
 void QXmlStreamWriter_WriteNamespace2(QXmlStreamWriter* self, struct miqt_string namespaceUri, struct miqt_string prefix);
 void QXmlStreamWriter_WriteProcessingInstruction2(QXmlStreamWriter* self, struct miqt_string target, struct miqt_string data);
-void QXmlStreamWriter_Delete(QXmlStreamWriter* self);
+void QXmlStreamWriter_Delete(QXmlStreamWriter* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

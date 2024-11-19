@@ -22,8 +22,8 @@ typedef struct QMediaMetaData QMediaMetaData;
 typedef struct QVariant QVariant;
 #endif
 
-QMediaMetaData* QMediaMetaData_new(QMediaMetaData* param1);
-QMediaMetaData* QMediaMetaData_new2();
+void QMediaMetaData_new(QMediaMetaData* param1, QMediaMetaData** outptr_QMediaMetaData);
+void QMediaMetaData_new2(QMediaMetaData** outptr_QMediaMetaData);
 QVariant* QMediaMetaData_Value(const QMediaMetaData* self, int k);
 void QMediaMetaData_Insert(QMediaMetaData* self, int k, QVariant* value);
 void QMediaMetaData_Remove(QMediaMetaData* self, int k);
@@ -33,7 +33,7 @@ void QMediaMetaData_Clear(QMediaMetaData* self);
 bool QMediaMetaData_IsEmpty(const QMediaMetaData* self);
 struct miqt_string QMediaMetaData_StringValue(const QMediaMetaData* self, int k);
 struct miqt_string QMediaMetaData_MetaDataKeyToString(int k);
-void QMediaMetaData_Delete(QMediaMetaData* self);
+void QMediaMetaData_Delete(QMediaMetaData* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

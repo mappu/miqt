@@ -31,7 +31,8 @@ const (
 )
 
 type QInputDialog struct {
-	h *C.QInputDialog
+	h          *C.QInputDialog
+	isSubclass bool
 	*QDialog
 }
 
@@ -49,33 +50,65 @@ func (this *QInputDialog) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQInputDialog(h *C.QInputDialog) *QInputDialog {
+// newQInputDialog constructs the type using only CGO pointers.
+func newQInputDialog(h *C.QInputDialog, h_QDialog *C.QDialog, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QInputDialog {
 	if h == nil {
 		return nil
 	}
-	return &QInputDialog{h: h, QDialog: UnsafeNewQDialog(unsafe.Pointer(h))}
+	return &QInputDialog{h: h,
+		QDialog: newQDialog(h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
-func UnsafeNewQInputDialog(h unsafe.Pointer) *QInputDialog {
-	return newQInputDialog((*C.QInputDialog)(h))
+// UnsafeNewQInputDialog constructs the type using only unsafe pointers.
+func UnsafeNewQInputDialog(h unsafe.Pointer, h_QDialog unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QInputDialog {
+	if h == nil {
+		return nil
+	}
+
+	return &QInputDialog{h: (*C.QInputDialog)(h),
+		QDialog: UnsafeNewQDialog(h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
 // NewQInputDialog constructs a new QInputDialog object.
 func NewQInputDialog(parent *QWidget) *QInputDialog {
-	ret := C.QInputDialog_new(parent.cPointer())
-	return newQInputDialog(ret)
+	var outptr_QInputDialog *C.QInputDialog = nil
+	var outptr_QDialog *C.QDialog = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QInputDialog_new(parent.cPointer(), &outptr_QInputDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQInputDialog(outptr_QInputDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQInputDialog2 constructs a new QInputDialog object.
 func NewQInputDialog2() *QInputDialog {
-	ret := C.QInputDialog_new2()
-	return newQInputDialog(ret)
+	var outptr_QInputDialog *C.QInputDialog = nil
+	var outptr_QDialog *C.QDialog = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QInputDialog_new2(&outptr_QInputDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQInputDialog(outptr_QInputDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQInputDialog3 constructs a new QInputDialog object.
 func NewQInputDialog3(parent *QWidget, flags WindowType) *QInputDialog {
-	ret := C.QInputDialog_new3(parent.cPointer(), (C.int)(flags))
-	return newQInputDialog(ret)
+	var outptr_QInputDialog *C.QInputDialog = nil
+	var outptr_QDialog *C.QDialog = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QInputDialog_new3(parent.cPointer(), (C.int)(flags), &outptr_QInputDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQInputDialog(outptr_QInputDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QInputDialog) MetaObject() *QMetaObject {
@@ -1013,9 +1046,328 @@ func QInputDialog_GetDouble10(parent *QWidget, title string, label string, value
 	return (float64)(C.QInputDialog_GetDouble10(parent.cPointer(), title_ms, label_ms, (C.double)(value), (C.double)(minValue), (C.double)(maxValue), (C.int)(decimals), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags), (C.double)(step)))
 }
 
+func (this *QInputDialog) callVirtualBase_MinimumSizeHint() *QSize {
+
+	_ret := C.QInputDialog_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QInputDialog) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+	C.QInputDialog_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QInputDialog_MinimumSizeHint
+func miqt_exec_callback_QInputDialog_MinimumSizeHint(self *C.QInputDialog, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QInputDialog{h: self}).callVirtualBase_MinimumSizeHint)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QInputDialog) callVirtualBase_SizeHint() *QSize {
+
+	_ret := C.QInputDialog_virtualbase_SizeHint(unsafe.Pointer(this.h))
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QInputDialog) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	C.QInputDialog_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QInputDialog_SizeHint
+func miqt_exec_callback_QInputDialog_SizeHint(self *C.QInputDialog, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QInputDialog{h: self}).callVirtualBase_SizeHint)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QInputDialog) callVirtualBase_SetVisible(visible bool) {
+
+	C.QInputDialog_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+
+}
+func (this *QInputDialog) OnSetVisible(slot func(super func(visible bool), visible bool)) {
+	C.QInputDialog_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QInputDialog_SetVisible
+func miqt_exec_callback_QInputDialog_SetVisible(self *C.QInputDialog, cb C.intptr_t, visible C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(visible)
+
+	gofunc((&QInputDialog{h: self}).callVirtualBase_SetVisible, slotval1)
+
+}
+
+func (this *QInputDialog) callVirtualBase_Done(result int) {
+
+	C.QInputDialog_virtualbase_Done(unsafe.Pointer(this.h), (C.int)(result))
+
+}
+func (this *QInputDialog) OnDone(slot func(super func(result int), result int)) {
+	C.QInputDialog_override_virtual_Done(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QInputDialog_Done
+func miqt_exec_callback_QInputDialog_Done(self *C.QInputDialog, cb C.intptr_t, result C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(result int), result int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(result)
+
+	gofunc((&QInputDialog{h: self}).callVirtualBase_Done, slotval1)
+
+}
+
+func (this *QInputDialog) callVirtualBase_Open() {
+
+	C.QInputDialog_virtualbase_Open(unsafe.Pointer(this.h))
+
+}
+func (this *QInputDialog) OnOpen(slot func(super func())) {
+	C.QInputDialog_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QInputDialog_Open
+func miqt_exec_callback_QInputDialog_Open(self *C.QInputDialog, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QInputDialog{h: self}).callVirtualBase_Open)
+
+}
+
+func (this *QInputDialog) callVirtualBase_Exec() int {
+
+	return (int)(C.QInputDialog_virtualbase_Exec(unsafe.Pointer(this.h)))
+
+}
+func (this *QInputDialog) OnExec(slot func(super func() int) int) {
+	C.QInputDialog_override_virtual_Exec(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QInputDialog_Exec
+func miqt_exec_callback_QInputDialog_Exec(self *C.QInputDialog, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QInputDialog{h: self}).callVirtualBase_Exec)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QInputDialog) callVirtualBase_Accept() {
+
+	C.QInputDialog_virtualbase_Accept(unsafe.Pointer(this.h))
+
+}
+func (this *QInputDialog) OnAccept(slot func(super func())) {
+	C.QInputDialog_override_virtual_Accept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QInputDialog_Accept
+func miqt_exec_callback_QInputDialog_Accept(self *C.QInputDialog, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QInputDialog{h: self}).callVirtualBase_Accept)
+
+}
+
+func (this *QInputDialog) callVirtualBase_Reject() {
+
+	C.QInputDialog_virtualbase_Reject(unsafe.Pointer(this.h))
+
+}
+func (this *QInputDialog) OnReject(slot func(super func())) {
+	C.QInputDialog_override_virtual_Reject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QInputDialog_Reject
+func miqt_exec_callback_QInputDialog_Reject(self *C.QInputDialog, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QInputDialog{h: self}).callVirtualBase_Reject)
+
+}
+
+func (this *QInputDialog) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
+
+	C.QInputDialog_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QInputDialog) OnKeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
+	C.QInputDialog_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QInputDialog_KeyPressEvent
+func miqt_exec_callback_QInputDialog_KeyPressEvent(self *C.QInputDialog, cb C.intptr_t, param1 *C.QKeyEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QKeyEvent), param1 *QKeyEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(param1), nil, nil)
+
+	gofunc((&QInputDialog{h: self}).callVirtualBase_KeyPressEvent, slotval1)
+
+}
+
+func (this *QInputDialog) callVirtualBase_CloseEvent(param1 *QCloseEvent) {
+
+	C.QInputDialog_virtualbase_CloseEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QInputDialog) OnCloseEvent(slot func(super func(param1 *QCloseEvent), param1 *QCloseEvent)) {
+	C.QInputDialog_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QInputDialog_CloseEvent
+func miqt_exec_callback_QInputDialog_CloseEvent(self *C.QInputDialog, cb C.intptr_t, param1 *C.QCloseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QCloseEvent), param1 *QCloseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(param1), nil)
+
+	gofunc((&QInputDialog{h: self}).callVirtualBase_CloseEvent, slotval1)
+
+}
+
+func (this *QInputDialog) callVirtualBase_ShowEvent(param1 *QShowEvent) {
+
+	C.QInputDialog_virtualbase_ShowEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QInputDialog) OnShowEvent(slot func(super func(param1 *QShowEvent), param1 *QShowEvent)) {
+	C.QInputDialog_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QInputDialog_ShowEvent
+func miqt_exec_callback_QInputDialog_ShowEvent(self *C.QInputDialog, cb C.intptr_t, param1 *C.QShowEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QShowEvent), param1 *QShowEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(param1), nil)
+
+	gofunc((&QInputDialog{h: self}).callVirtualBase_ShowEvent, slotval1)
+
+}
+
+func (this *QInputDialog) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
+
+	C.QInputDialog_virtualbase_ResizeEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QInputDialog) OnResizeEvent(slot func(super func(param1 *QResizeEvent), param1 *QResizeEvent)) {
+	C.QInputDialog_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QInputDialog_ResizeEvent
+func miqt_exec_callback_QInputDialog_ResizeEvent(self *C.QInputDialog, cb C.intptr_t, param1 *C.QResizeEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QResizeEvent), param1 *QResizeEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(param1), nil)
+
+	gofunc((&QInputDialog{h: self}).callVirtualBase_ResizeEvent, slotval1)
+
+}
+
+func (this *QInputDialog) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEvent) {
+
+	C.QInputDialog_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QInputDialog) OnContextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
+	C.QInputDialog_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QInputDialog_ContextMenuEvent
+func miqt_exec_callback_QInputDialog_ContextMenuEvent(self *C.QInputDialog, cb C.intptr_t, param1 *C.QContextMenuEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(param1), nil, nil)
+
+	gofunc((&QInputDialog{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
+
+}
+
+func (this *QInputDialog) callVirtualBase_EventFilter(param1 *QObject, param2 *QEvent) bool {
+
+	return (bool)(C.QInputDialog_virtualbase_EventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
+
+}
+func (this *QInputDialog) OnEventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
+	C.QInputDialog_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QInputDialog_EventFilter
+func miqt_exec_callback_QInputDialog_EventFilter(self *C.QInputDialog, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(param1))
+	slotval2 := UnsafeNewQEvent(unsafe.Pointer(param2))
+
+	virtualReturn := gofunc((&QInputDialog{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QInputDialog) Delete() {
-	C.QInputDialog_Delete(this.h)
+	C.QInputDialog_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

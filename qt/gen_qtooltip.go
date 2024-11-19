@@ -14,7 +14,8 @@ import (
 )
 
 type QToolTip struct {
-	h *C.QToolTip
+	h          *C.QToolTip
+	isSubclass bool
 }
 
 func (this *QToolTip) cPointer() *C.QToolTip {
@@ -31,6 +32,7 @@ func (this *QToolTip) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQToolTip constructs the type using only CGO pointers.
 func newQToolTip(h *C.QToolTip) *QToolTip {
 	if h == nil {
 		return nil
@@ -38,8 +40,13 @@ func newQToolTip(h *C.QToolTip) *QToolTip {
 	return &QToolTip{h: h}
 }
 
+// UnsafeNewQToolTip constructs the type using only unsafe pointers.
 func UnsafeNewQToolTip(h unsafe.Pointer) *QToolTip {
-	return newQToolTip((*C.QToolTip)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QToolTip{h: (*C.QToolTip)(h)}
 }
 
 func QToolTip_ShowText(pos *QPoint, text string) {
@@ -113,7 +120,7 @@ func QToolTip_ShowText32(pos *QPoint, text string, w *QWidget) {
 
 // Delete this object from C++ memory.
 func (this *QToolTip) Delete() {
-	C.QToolTip_Delete(this.h)
+	C.QToolTip_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

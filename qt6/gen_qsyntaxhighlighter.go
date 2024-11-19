@@ -14,7 +14,8 @@ import (
 )
 
 type QSyntaxHighlighter struct {
-	h *C.QSyntaxHighlighter
+	h          *C.QSyntaxHighlighter
+	isSubclass bool
 	*QObject
 }
 
@@ -32,15 +33,23 @@ func (this *QSyntaxHighlighter) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQSyntaxHighlighter(h *C.QSyntaxHighlighter) *QSyntaxHighlighter {
+// newQSyntaxHighlighter constructs the type using only CGO pointers.
+func newQSyntaxHighlighter(h *C.QSyntaxHighlighter, h_QObject *C.QObject) *QSyntaxHighlighter {
 	if h == nil {
 		return nil
 	}
-	return &QSyntaxHighlighter{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QSyntaxHighlighter{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQSyntaxHighlighter(h unsafe.Pointer) *QSyntaxHighlighter {
-	return newQSyntaxHighlighter((*C.QSyntaxHighlighter)(h))
+// UnsafeNewQSyntaxHighlighter constructs the type using only unsafe pointers.
+func UnsafeNewQSyntaxHighlighter(h unsafe.Pointer, h_QObject unsafe.Pointer) *QSyntaxHighlighter {
+	if h == nil {
+		return nil
+	}
+
+	return &QSyntaxHighlighter{h: (*C.QSyntaxHighlighter)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 func (this *QSyntaxHighlighter) MetaObject() *QMetaObject {
@@ -67,7 +76,7 @@ func (this *QSyntaxHighlighter) SetDocument(doc *QTextDocument) {
 }
 
 func (this *QSyntaxHighlighter) Document() *QTextDocument {
-	return UnsafeNewQTextDocument(unsafe.Pointer(C.QSyntaxHighlighter_Document(this.h)))
+	return UnsafeNewQTextDocument(unsafe.Pointer(C.QSyntaxHighlighter_Document(this.h)), nil)
 }
 
 func (this *QSyntaxHighlighter) Rehighlight() {
@@ -102,7 +111,7 @@ func QSyntaxHighlighter_Tr3(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QSyntaxHighlighter) Delete() {
-	C.QSyntaxHighlighter_Delete(this.h)
+	C.QSyntaxHighlighter_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

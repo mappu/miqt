@@ -10,6 +10,7 @@ import "C"
 
 import (
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
@@ -24,7 +25,8 @@ const (
 )
 
 type QLibrary struct {
-	h *C.QLibrary
+	h          *C.QLibrary
+	isSubclass bool
 	*QObject
 }
 
@@ -42,21 +44,34 @@ func (this *QLibrary) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQLibrary(h *C.QLibrary) *QLibrary {
+// newQLibrary constructs the type using only CGO pointers.
+func newQLibrary(h *C.QLibrary, h_QObject *C.QObject) *QLibrary {
 	if h == nil {
 		return nil
 	}
-	return &QLibrary{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
+	return &QLibrary{h: h,
+		QObject: newQObject(h_QObject)}
 }
 
-func UnsafeNewQLibrary(h unsafe.Pointer) *QLibrary {
-	return newQLibrary((*C.QLibrary)(h))
+// UnsafeNewQLibrary constructs the type using only unsafe pointers.
+func UnsafeNewQLibrary(h unsafe.Pointer, h_QObject unsafe.Pointer) *QLibrary {
+	if h == nil {
+		return nil
+	}
+
+	return &QLibrary{h: (*C.QLibrary)(h),
+		QObject: UnsafeNewQObject(h_QObject)}
 }
 
 // NewQLibrary constructs a new QLibrary object.
 func NewQLibrary() *QLibrary {
-	ret := C.QLibrary_new()
-	return newQLibrary(ret)
+	var outptr_QLibrary *C.QLibrary = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QLibrary_new(&outptr_QLibrary, &outptr_QObject)
+	ret := newQLibrary(outptr_QLibrary, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLibrary2 constructs a new QLibrary object.
@@ -65,8 +80,13 @@ func NewQLibrary2(fileName string) *QLibrary {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	ret := C.QLibrary_new2(fileName_ms)
-	return newQLibrary(ret)
+	var outptr_QLibrary *C.QLibrary = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QLibrary_new2(fileName_ms, &outptr_QLibrary, &outptr_QObject)
+	ret := newQLibrary(outptr_QLibrary, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLibrary3 constructs a new QLibrary object.
@@ -75,8 +95,13 @@ func NewQLibrary3(fileName string, verNum int) *QLibrary {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	ret := C.QLibrary_new3(fileName_ms, (C.int)(verNum))
-	return newQLibrary(ret)
+	var outptr_QLibrary *C.QLibrary = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QLibrary_new3(fileName_ms, (C.int)(verNum), &outptr_QLibrary, &outptr_QObject)
+	ret := newQLibrary(outptr_QLibrary, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLibrary4 constructs a new QLibrary object.
@@ -89,14 +114,24 @@ func NewQLibrary4(fileName string, version string) *QLibrary {
 	version_ms.data = C.CString(version)
 	version_ms.len = C.size_t(len(version))
 	defer C.free(unsafe.Pointer(version_ms.data))
-	ret := C.QLibrary_new4(fileName_ms, version_ms)
-	return newQLibrary(ret)
+	var outptr_QLibrary *C.QLibrary = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QLibrary_new4(fileName_ms, version_ms, &outptr_QLibrary, &outptr_QObject)
+	ret := newQLibrary(outptr_QLibrary, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLibrary5 constructs a new QLibrary object.
 func NewQLibrary5(parent *QObject) *QLibrary {
-	ret := C.QLibrary_new5(parent.cPointer())
-	return newQLibrary(ret)
+	var outptr_QLibrary *C.QLibrary = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QLibrary_new5(parent.cPointer(), &outptr_QLibrary, &outptr_QObject)
+	ret := newQLibrary(outptr_QLibrary, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLibrary6 constructs a new QLibrary object.
@@ -105,8 +140,13 @@ func NewQLibrary6(fileName string, parent *QObject) *QLibrary {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	ret := C.QLibrary_new6(fileName_ms, parent.cPointer())
-	return newQLibrary(ret)
+	var outptr_QLibrary *C.QLibrary = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QLibrary_new6(fileName_ms, parent.cPointer(), &outptr_QLibrary, &outptr_QObject)
+	ret := newQLibrary(outptr_QLibrary, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLibrary7 constructs a new QLibrary object.
@@ -115,8 +155,13 @@ func NewQLibrary7(fileName string, verNum int, parent *QObject) *QLibrary {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	ret := C.QLibrary_new7(fileName_ms, (C.int)(verNum), parent.cPointer())
-	return newQLibrary(ret)
+	var outptr_QLibrary *C.QLibrary = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QLibrary_new7(fileName_ms, (C.int)(verNum), parent.cPointer(), &outptr_QLibrary, &outptr_QObject)
+	ret := newQLibrary(outptr_QLibrary, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLibrary8 constructs a new QLibrary object.
@@ -129,8 +174,13 @@ func NewQLibrary8(fileName string, version string, parent *QObject) *QLibrary {
 	version_ms.data = C.CString(version)
 	version_ms.len = C.size_t(len(version))
 	defer C.free(unsafe.Pointer(version_ms.data))
-	ret := C.QLibrary_new8(fileName_ms, version_ms, parent.cPointer())
-	return newQLibrary(ret)
+	var outptr_QLibrary *C.QLibrary = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QLibrary_new8(fileName_ms, version_ms, parent.cPointer(), &outptr_QLibrary, &outptr_QObject)
+	ret := newQLibrary(outptr_QLibrary, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QLibrary) MetaObject() *QMetaObject {
@@ -244,9 +294,175 @@ func QLibrary_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QLibrary) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QLibrary_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QLibrary) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	C.QLibrary_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLibrary_Event
+func miqt_exec_callback_QLibrary_Event(self *C.QLibrary, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QLibrary{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QLibrary) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QLibrary_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QLibrary) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	C.QLibrary_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLibrary_EventFilter
+func miqt_exec_callback_QLibrary_EventFilter(self *C.QLibrary, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QLibrary{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QLibrary) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QLibrary_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QLibrary) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	C.QLibrary_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLibrary_TimerEvent
+func miqt_exec_callback_QLibrary_TimerEvent(self *C.QLibrary, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QLibrary{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QLibrary) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QLibrary_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QLibrary) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	C.QLibrary_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLibrary_ChildEvent
+func miqt_exec_callback_QLibrary_ChildEvent(self *C.QLibrary, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QLibrary{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QLibrary) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QLibrary_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QLibrary) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	C.QLibrary_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLibrary_CustomEvent
+func miqt_exec_callback_QLibrary_CustomEvent(self *C.QLibrary, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QLibrary{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QLibrary) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QLibrary_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QLibrary) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QLibrary_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLibrary_ConnectNotify
+func miqt_exec_callback_QLibrary_ConnectNotify(self *C.QLibrary, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QLibrary{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QLibrary) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QLibrary_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QLibrary) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QLibrary_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLibrary_DisconnectNotify
+func miqt_exec_callback_QLibrary_DisconnectNotify(self *C.QLibrary, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QLibrary{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QLibrary) Delete() {
-	C.QLibrary_Delete(this.h)
+	C.QLibrary_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

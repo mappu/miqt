@@ -8,16 +8,19 @@
 #include "gen_qmediaformat.h"
 #include "_cgo_export.h"
 
-QMediaFormat* QMediaFormat_new() {
-	return new QMediaFormat();
+void QMediaFormat_new(QMediaFormat** outptr_QMediaFormat) {
+	QMediaFormat* ret = new QMediaFormat();
+	*outptr_QMediaFormat = ret;
 }
 
-QMediaFormat* QMediaFormat_new2(QMediaFormat* other) {
-	return new QMediaFormat(*other);
+void QMediaFormat_new2(QMediaFormat* other, QMediaFormat** outptr_QMediaFormat) {
+	QMediaFormat* ret = new QMediaFormat(*other);
+	*outptr_QMediaFormat = ret;
 }
 
-QMediaFormat* QMediaFormat_new3(int format) {
-	return new QMediaFormat(static_cast<QMediaFormat::FileFormat>(format));
+void QMediaFormat_new3(int format, QMediaFormat** outptr_QMediaFormat) {
+	QMediaFormat* ret = new QMediaFormat(static_cast<QMediaFormat::FileFormat>(format));
+	*outptr_QMediaFormat = ret;
 }
 
 void QMediaFormat_OperatorAssign(QMediaFormat* self, QMediaFormat* other) {
@@ -183,7 +186,11 @@ void QMediaFormat_ResolveForEncoding(QMediaFormat* self, int flags) {
 	self->resolveForEncoding(static_cast<QMediaFormat::ResolveFlags>(flags));
 }
 
-void QMediaFormat_Delete(QMediaFormat* self) {
-	delete self;
+void QMediaFormat_Delete(QMediaFormat* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<QMediaFormat*>( self );
+	} else {
+		delete self;
+	}
 }
 

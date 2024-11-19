@@ -9,12 +9,150 @@
 #include "gen_qscilexerjavascript.h"
 #include "_cgo_export.h"
 
-QsciLexerJavaScript* QsciLexerJavaScript_new() {
-	return new QsciLexerJavaScript();
+class MiqtVirtualQsciLexerJavaScript : public virtual QsciLexerJavaScript {
+public:
+
+	MiqtVirtualQsciLexerJavaScript(): QsciLexerJavaScript() {};
+	MiqtVirtualQsciLexerJavaScript(QObject* parent): QsciLexerJavaScript(parent) {};
+
+	virtual ~MiqtVirtualQsciLexerJavaScript() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetFoldAtElse = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setFoldAtElse(bool fold) override {
+		if (handle__SetFoldAtElse == 0) {
+			QsciLexerJavaScript::setFoldAtElse(fold);
+			return;
+		}
+		
+		bool sigval1 = fold;
+
+		miqt_exec_callback_QsciLexerJavaScript_SetFoldAtElse(this, handle__SetFoldAtElse, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetFoldAtElse(bool fold) {
+
+		QsciLexerJavaScript::setFoldAtElse(fold);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetFoldComments = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setFoldComments(bool fold) override {
+		if (handle__SetFoldComments == 0) {
+			QsciLexerJavaScript::setFoldComments(fold);
+			return;
+		}
+		
+		bool sigval1 = fold;
+
+		miqt_exec_callback_QsciLexerJavaScript_SetFoldComments(this, handle__SetFoldComments, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetFoldComments(bool fold) {
+
+		QsciLexerJavaScript::setFoldComments(fold);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetFoldCompact = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setFoldCompact(bool fold) override {
+		if (handle__SetFoldCompact == 0) {
+			QsciLexerJavaScript::setFoldCompact(fold);
+			return;
+		}
+		
+		bool sigval1 = fold;
+
+		miqt_exec_callback_QsciLexerJavaScript_SetFoldCompact(this, handle__SetFoldCompact, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetFoldCompact(bool fold) {
+
+		QsciLexerJavaScript::setFoldCompact(fold);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetFoldPreprocessor = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setFoldPreprocessor(bool fold) override {
+		if (handle__SetFoldPreprocessor == 0) {
+			QsciLexerJavaScript::setFoldPreprocessor(fold);
+			return;
+		}
+		
+		bool sigval1 = fold;
+
+		miqt_exec_callback_QsciLexerJavaScript_SetFoldPreprocessor(this, handle__SetFoldPreprocessor, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetFoldPreprocessor(bool fold) {
+
+		QsciLexerJavaScript::setFoldPreprocessor(fold);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetStylePreprocessor = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setStylePreprocessor(bool style) override {
+		if (handle__SetStylePreprocessor == 0) {
+			QsciLexerJavaScript::setStylePreprocessor(style);
+			return;
+		}
+		
+		bool sigval1 = style;
+
+		miqt_exec_callback_QsciLexerJavaScript_SetStylePreprocessor(this, handle__SetStylePreprocessor, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetStylePreprocessor(bool style) {
+
+		QsciLexerJavaScript::setStylePreprocessor(style);
+
+	}
+
+};
+
+void QsciLexerJavaScript_new(QsciLexerJavaScript** outptr_QsciLexerJavaScript, QsciLexerCPP** outptr_QsciLexerCPP, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
+	MiqtVirtualQsciLexerJavaScript* ret = new MiqtVirtualQsciLexerJavaScript();
+	*outptr_QsciLexerJavaScript = ret;
+	*outptr_QsciLexerCPP = static_cast<QsciLexerCPP*>(ret);
+	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
-QsciLexerJavaScript* QsciLexerJavaScript_new2(QObject* parent) {
-	return new QsciLexerJavaScript(parent);
+void QsciLexerJavaScript_new2(QObject* parent, QsciLexerJavaScript** outptr_QsciLexerJavaScript, QsciLexerCPP** outptr_QsciLexerCPP, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
+	MiqtVirtualQsciLexerJavaScript* ret = new MiqtVirtualQsciLexerJavaScript(parent);
+	*outptr_QsciLexerJavaScript = ret;
+	*outptr_QsciLexerCPP = static_cast<QsciLexerCPP*>(ret);
+	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
+	*outptr_QObject = static_cast<QObject*>(ret);
 }
 
 QMetaObject* QsciLexerJavaScript_MetaObject(const QsciLexerJavaScript* self) {
@@ -93,7 +231,51 @@ struct miqt_string QsciLexerJavaScript_Tr3(const char* s, const char* c, int n) 
 	return _ms;
 }
 
-void QsciLexerJavaScript_Delete(QsciLexerJavaScript* self) {
-	delete self;
+void QsciLexerJavaScript_override_virtual_SetFoldAtElse(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQsciLexerJavaScript*>( (QsciLexerJavaScript*)(self) )->handle__SetFoldAtElse = slot;
+}
+
+void QsciLexerJavaScript_virtualbase_SetFoldAtElse(void* self, bool fold) {
+	( (MiqtVirtualQsciLexerJavaScript*)(self) )->virtualbase_SetFoldAtElse(fold);
+}
+
+void QsciLexerJavaScript_override_virtual_SetFoldComments(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQsciLexerJavaScript*>( (QsciLexerJavaScript*)(self) )->handle__SetFoldComments = slot;
+}
+
+void QsciLexerJavaScript_virtualbase_SetFoldComments(void* self, bool fold) {
+	( (MiqtVirtualQsciLexerJavaScript*)(self) )->virtualbase_SetFoldComments(fold);
+}
+
+void QsciLexerJavaScript_override_virtual_SetFoldCompact(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQsciLexerJavaScript*>( (QsciLexerJavaScript*)(self) )->handle__SetFoldCompact = slot;
+}
+
+void QsciLexerJavaScript_virtualbase_SetFoldCompact(void* self, bool fold) {
+	( (MiqtVirtualQsciLexerJavaScript*)(self) )->virtualbase_SetFoldCompact(fold);
+}
+
+void QsciLexerJavaScript_override_virtual_SetFoldPreprocessor(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQsciLexerJavaScript*>( (QsciLexerJavaScript*)(self) )->handle__SetFoldPreprocessor = slot;
+}
+
+void QsciLexerJavaScript_virtualbase_SetFoldPreprocessor(void* self, bool fold) {
+	( (MiqtVirtualQsciLexerJavaScript*)(self) )->virtualbase_SetFoldPreprocessor(fold);
+}
+
+void QsciLexerJavaScript_override_virtual_SetStylePreprocessor(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQsciLexerJavaScript*>( (QsciLexerJavaScript*)(self) )->handle__SetStylePreprocessor = slot;
+}
+
+void QsciLexerJavaScript_virtualbase_SetStylePreprocessor(void* self, bool style) {
+	( (MiqtVirtualQsciLexerJavaScript*)(self) )->virtualbase_SetStylePreprocessor(style);
+}
+
+void QsciLexerJavaScript_Delete(QsciLexerJavaScript* self, bool isSubclass) {
+	if (isSubclass) {
+		delete dynamic_cast<MiqtVirtualQsciLexerJavaScript*>( self );
+	} else {
+		delete self;
+	}
 }
 

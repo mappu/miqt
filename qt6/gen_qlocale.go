@@ -890,7 +890,8 @@ const (
 )
 
 type QLocale struct {
-	h *C.QLocale
+	h          *C.QLocale
+	isSubclass bool
 }
 
 func (this *QLocale) cPointer() *C.QLocale {
@@ -907,6 +908,7 @@ func (this *QLocale) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQLocale constructs the type using only CGO pointers.
 func newQLocale(h *C.QLocale) *QLocale {
 	if h == nil {
 		return nil
@@ -914,14 +916,23 @@ func newQLocale(h *C.QLocale) *QLocale {
 	return &QLocale{h: h}
 }
 
+// UnsafeNewQLocale constructs the type using only unsafe pointers.
 func UnsafeNewQLocale(h unsafe.Pointer) *QLocale {
-	return newQLocale((*C.QLocale)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QLocale{h: (*C.QLocale)(h)}
 }
 
 // NewQLocale constructs a new QLocale object.
 func NewQLocale() *QLocale {
-	ret := C.QLocale_new()
-	return newQLocale(ret)
+	var outptr_QLocale *C.QLocale = nil
+
+	C.QLocale_new(&outptr_QLocale)
+	ret := newQLocale(outptr_QLocale)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLocale2 constructs a new QLocale object.
@@ -930,38 +941,62 @@ func NewQLocale2(name string) *QLocale {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	ret := C.QLocale_new2(name_ms)
-	return newQLocale(ret)
+	var outptr_QLocale *C.QLocale = nil
+
+	C.QLocale_new2(name_ms, &outptr_QLocale)
+	ret := newQLocale(outptr_QLocale)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLocale3 constructs a new QLocale object.
 func NewQLocale3(language QLocale__Language, territory QLocale__Country) *QLocale {
-	ret := C.QLocale_new3((C.uint16_t)(language), (C.uint16_t)(territory))
-	return newQLocale(ret)
+	var outptr_QLocale *C.QLocale = nil
+
+	C.QLocale_new3((C.uint16_t)(language), (C.uint16_t)(territory), &outptr_QLocale)
+	ret := newQLocale(outptr_QLocale)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLocale4 constructs a new QLocale object.
 func NewQLocale4(language QLocale__Language) *QLocale {
-	ret := C.QLocale_new4((C.uint16_t)(language))
-	return newQLocale(ret)
+	var outptr_QLocale *C.QLocale = nil
+
+	C.QLocale_new4((C.uint16_t)(language), &outptr_QLocale)
+	ret := newQLocale(outptr_QLocale)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLocale5 constructs a new QLocale object.
 func NewQLocale5(other *QLocale) *QLocale {
-	ret := C.QLocale_new5(other.cPointer())
-	return newQLocale(ret)
+	var outptr_QLocale *C.QLocale = nil
+
+	C.QLocale_new5(other.cPointer(), &outptr_QLocale)
+	ret := newQLocale(outptr_QLocale)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLocale6 constructs a new QLocale object.
 func NewQLocale6(language QLocale__Language, script QLocale__Script) *QLocale {
-	ret := C.QLocale_new6((C.uint16_t)(language), (C.uint16_t)(script))
-	return newQLocale(ret)
+	var outptr_QLocale *C.QLocale = nil
+
+	C.QLocale_new6((C.uint16_t)(language), (C.uint16_t)(script), &outptr_QLocale)
+	ret := newQLocale(outptr_QLocale)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLocale7 constructs a new QLocale object.
 func NewQLocale7(language QLocale__Language, script QLocale__Script, territory QLocale__Country) *QLocale {
-	ret := C.QLocale_new7((C.uint16_t)(language), (C.uint16_t)(script), (C.uint16_t)(territory))
-	return newQLocale(ret)
+	var outptr_QLocale *C.QLocale = nil
+
+	C.QLocale_new7((C.uint16_t)(language), (C.uint16_t)(script), (C.uint16_t)(territory), &outptr_QLocale)
+	ret := newQLocale(outptr_QLocale)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QLocale) OperatorAssign(other *QLocale) {
@@ -2112,7 +2147,7 @@ func (this *QLocale) QuoteString2(str string, style QLocale__QuotationStyle) str
 
 // Delete this object from C++ memory.
 func (this *QLocale) Delete() {
-	C.QLocale_Delete(this.h)
+	C.QLocale_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

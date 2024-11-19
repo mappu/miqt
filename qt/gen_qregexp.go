@@ -33,7 +33,8 @@ const (
 )
 
 type QRegExp struct {
-	h *C.QRegExp
+	h          *C.QRegExp
+	isSubclass bool
 }
 
 func (this *QRegExp) cPointer() *C.QRegExp {
@@ -50,6 +51,7 @@ func (this *QRegExp) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQRegExp constructs the type using only CGO pointers.
 func newQRegExp(h *C.QRegExp) *QRegExp {
 	if h == nil {
 		return nil
@@ -57,14 +59,23 @@ func newQRegExp(h *C.QRegExp) *QRegExp {
 	return &QRegExp{h: h}
 }
 
+// UnsafeNewQRegExp constructs the type using only unsafe pointers.
 func UnsafeNewQRegExp(h unsafe.Pointer) *QRegExp {
-	return newQRegExp((*C.QRegExp)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QRegExp{h: (*C.QRegExp)(h)}
 }
 
 // NewQRegExp constructs a new QRegExp object.
 func NewQRegExp() *QRegExp {
-	ret := C.QRegExp_new()
-	return newQRegExp(ret)
+	var outptr_QRegExp *C.QRegExp = nil
+
+	C.QRegExp_new(&outptr_QRegExp)
+	ret := newQRegExp(outptr_QRegExp)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRegExp2 constructs a new QRegExp object.
@@ -73,14 +84,22 @@ func NewQRegExp2(pattern string) *QRegExp {
 	pattern_ms.data = C.CString(pattern)
 	pattern_ms.len = C.size_t(len(pattern))
 	defer C.free(unsafe.Pointer(pattern_ms.data))
-	ret := C.QRegExp_new2(pattern_ms)
-	return newQRegExp(ret)
+	var outptr_QRegExp *C.QRegExp = nil
+
+	C.QRegExp_new2(pattern_ms, &outptr_QRegExp)
+	ret := newQRegExp(outptr_QRegExp)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRegExp3 constructs a new QRegExp object.
 func NewQRegExp3(rx *QRegExp) *QRegExp {
-	ret := C.QRegExp_new3(rx.cPointer())
-	return newQRegExp(ret)
+	var outptr_QRegExp *C.QRegExp = nil
+
+	C.QRegExp_new3(rx.cPointer(), &outptr_QRegExp)
+	ret := newQRegExp(outptr_QRegExp)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRegExp4 constructs a new QRegExp object.
@@ -89,8 +108,12 @@ func NewQRegExp4(pattern string, cs CaseSensitivity) *QRegExp {
 	pattern_ms.data = C.CString(pattern)
 	pattern_ms.len = C.size_t(len(pattern))
 	defer C.free(unsafe.Pointer(pattern_ms.data))
-	ret := C.QRegExp_new4(pattern_ms, (C.int)(cs))
-	return newQRegExp(ret)
+	var outptr_QRegExp *C.QRegExp = nil
+
+	C.QRegExp_new4(pattern_ms, (C.int)(cs), &outptr_QRegExp)
+	ret := newQRegExp(outptr_QRegExp)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQRegExp5 constructs a new QRegExp object.
@@ -99,8 +122,12 @@ func NewQRegExp5(pattern string, cs CaseSensitivity, syntax QRegExp__PatternSynt
 	pattern_ms.data = C.CString(pattern)
 	pattern_ms.len = C.size_t(len(pattern))
 	defer C.free(unsafe.Pointer(pattern_ms.data))
-	ret := C.QRegExp_new5(pattern_ms, (C.int)(cs), (C.int)(syntax))
-	return newQRegExp(ret)
+	var outptr_QRegExp *C.QRegExp = nil
+
+	C.QRegExp_new5(pattern_ms, (C.int)(cs), (C.int)(syntax), &outptr_QRegExp)
+	ret := newQRegExp(outptr_QRegExp)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QRegExp) OperatorAssign(rx *QRegExp) {
@@ -327,7 +354,7 @@ func (this *QRegExp) Pos1WithNth(nth int) int {
 
 // Delete this object from C++ memory.
 func (this *QRegExp) Delete() {
-	C.QRegExp_Delete(this.h)
+	C.QRegExp_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

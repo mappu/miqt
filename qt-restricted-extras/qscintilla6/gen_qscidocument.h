@@ -20,10 +20,10 @@ class QsciDocument;
 typedef struct QsciDocument QsciDocument;
 #endif
 
-QsciDocument* QsciDocument_new();
-QsciDocument* QsciDocument_new2(QsciDocument* param1);
+void QsciDocument_new(QsciDocument** outptr_QsciDocument);
+void QsciDocument_new2(QsciDocument* param1, QsciDocument** outptr_QsciDocument);
 void QsciDocument_OperatorAssign(QsciDocument* self, QsciDocument* param1);
-void QsciDocument_Delete(QsciDocument* self);
+void QsciDocument_Delete(QsciDocument* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

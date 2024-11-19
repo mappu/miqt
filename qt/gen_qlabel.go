@@ -15,7 +15,8 @@ import (
 )
 
 type QLabel struct {
-	h *C.QLabel
+	h          *C.QLabel
+	isSubclass bool
 	*QFrame
 }
 
@@ -33,27 +34,51 @@ func (this *QLabel) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQLabel(h *C.QLabel) *QLabel {
+// newQLabel constructs the type using only CGO pointers.
+func newQLabel(h *C.QLabel, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QLabel {
 	if h == nil {
 		return nil
 	}
-	return &QLabel{h: h, QFrame: UnsafeNewQFrame(unsafe.Pointer(h))}
+	return &QLabel{h: h,
+		QFrame: newQFrame(h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
-func UnsafeNewQLabel(h unsafe.Pointer) *QLabel {
-	return newQLabel((*C.QLabel)(h))
+// UnsafeNewQLabel constructs the type using only unsafe pointers.
+func UnsafeNewQLabel(h unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QLabel {
+	if h == nil {
+		return nil
+	}
+
+	return &QLabel{h: (*C.QLabel)(h),
+		QFrame: UnsafeNewQFrame(h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
 }
 
 // NewQLabel constructs a new QLabel object.
 func NewQLabel(parent *QWidget) *QLabel {
-	ret := C.QLabel_new(parent.cPointer())
-	return newQLabel(ret)
+	var outptr_QLabel *C.QLabel = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QLabel_new(parent.cPointer(), &outptr_QLabel, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQLabel(outptr_QLabel, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLabel2 constructs a new QLabel object.
 func NewQLabel2() *QLabel {
-	ret := C.QLabel_new2()
-	return newQLabel(ret)
+	var outptr_QLabel *C.QLabel = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QLabel_new2(&outptr_QLabel, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQLabel(outptr_QLabel, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLabel3 constructs a new QLabel object.
@@ -62,14 +87,30 @@ func NewQLabel3(text string) *QLabel {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QLabel_new3(text_ms)
-	return newQLabel(ret)
+	var outptr_QLabel *C.QLabel = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QLabel_new3(text_ms, &outptr_QLabel, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQLabel(outptr_QLabel, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLabel4 constructs a new QLabel object.
 func NewQLabel4(parent *QWidget, f WindowType) *QLabel {
-	ret := C.QLabel_new4(parent.cPointer(), (C.int)(f))
-	return newQLabel(ret)
+	var outptr_QLabel *C.QLabel = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QLabel_new4(parent.cPointer(), (C.int)(f), &outptr_QLabel, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQLabel(outptr_QLabel, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLabel5 constructs a new QLabel object.
@@ -78,8 +119,16 @@ func NewQLabel5(text string, parent *QWidget) *QLabel {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QLabel_new5(text_ms, parent.cPointer())
-	return newQLabel(ret)
+	var outptr_QLabel *C.QLabel = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QLabel_new5(text_ms, parent.cPointer(), &outptr_QLabel, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQLabel(outptr_QLabel, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQLabel6 constructs a new QLabel object.
@@ -88,8 +137,16 @@ func NewQLabel6(text string, parent *QWidget, f WindowType) *QLabel {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QLabel_new6(text_ms, parent.cPointer(), (C.int)(f))
-	return newQLabel(ret)
+	var outptr_QLabel *C.QLabel = nil
+	var outptr_QFrame *C.QFrame = nil
+	var outptr_QWidget *C.QWidget = nil
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+
+	C.QLabel_new6(text_ms, parent.cPointer(), (C.int)(f), &outptr_QLabel, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
+	ret := newQLabel(outptr_QLabel, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QLabel) MetaObject() *QMetaObject {
@@ -128,29 +185,29 @@ func (this *QLabel) Text() string {
 }
 
 func (this *QLabel) Pixmap() *QPixmap {
-	return UnsafeNewQPixmap(unsafe.Pointer(C.QLabel_Pixmap(this.h)))
+	return UnsafeNewQPixmap(unsafe.Pointer(C.QLabel_Pixmap(this.h)), nil)
 }
 
 func (this *QLabel) PixmapWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QPixmap {
 	_ret := C.QLabel_PixmapWithQtReturnByValueConstant(this.h, (C.int)(param1))
-	_goptr := newQPixmap(_ret)
+	_goptr := newQPixmap(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLabel) Picture() *QPicture {
-	return UnsafeNewQPicture(unsafe.Pointer(C.QLabel_Picture(this.h)))
+	return UnsafeNewQPicture(unsafe.Pointer(C.QLabel_Picture(this.h)), nil)
 }
 
 func (this *QLabel) PictureWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QPicture {
 	_ret := C.QLabel_PictureWithQtReturnByValueConstant(this.h, (C.int)(param1))
-	_goptr := newQPicture(_ret)
+	_goptr := newQPicture(_ret, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLabel) Movie() *QMovie {
-	return UnsafeNewQMovie(unsafe.Pointer(C.QLabel_Movie(this.h)))
+	return UnsafeNewQMovie(unsafe.Pointer(C.QLabel_Movie(this.h)), nil)
 }
 
 func (this *QLabel) TextFormat() TextFormat {
@@ -220,7 +277,7 @@ func (this *QLabel) SetBuddy(buddy *QWidget) {
 }
 
 func (this *QLabel) Buddy() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QLabel_Buddy(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QLabel_Buddy(this.h)), nil, nil)
 }
 
 func (this *QLabel) HeightForWidth(param1 int) int {
@@ -392,9 +449,341 @@ func QLabel_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QLabel) callVirtualBase_SizeHint() *QSize {
+
+	_ret := C.QLabel_virtualbase_SizeHint(unsafe.Pointer(this.h))
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QLabel) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	C.QLabel_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLabel_SizeHint
+func miqt_exec_callback_QLabel_SizeHint(self *C.QLabel, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QLabel{h: self}).callVirtualBase_SizeHint)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QLabel) callVirtualBase_MinimumSizeHint() *QSize {
+
+	_ret := C.QLabel_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
+	_goptr := newQSize(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QLabel) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+	C.QLabel_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLabel_MinimumSizeHint
+func miqt_exec_callback_QLabel_MinimumSizeHint(self *C.QLabel, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QLabel{h: self}).callVirtualBase_MinimumSizeHint)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QLabel) callVirtualBase_HeightForWidth(param1 int) int {
+
+	return (int)(C.QLabel_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+
+}
+func (this *QLabel) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	C.QLabel_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLabel_HeightForWidth
+func miqt_exec_callback_QLabel_HeightForWidth(self *C.QLabel, cb C.intptr_t, param1 C.int) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(param1)
+
+	virtualReturn := gofunc((&QLabel{h: self}).callVirtualBase_HeightForWidth, slotval1)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QLabel) callVirtualBase_Event(e *QEvent) bool {
+
+	return (bool)(C.QLabel_virtualbase_Event(unsafe.Pointer(this.h), e.cPointer()))
+
+}
+func (this *QLabel) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	C.QLabel_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLabel_Event
+func miqt_exec_callback_QLabel_Event(self *C.QLabel, cb C.intptr_t, e *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QEvent) bool, e *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+
+	virtualReturn := gofunc((&QLabel{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QLabel) callVirtualBase_KeyPressEvent(ev *QKeyEvent) {
+
+	C.QLabel_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), ev.cPointer())
+
+}
+func (this *QLabel) OnKeyPressEvent(slot func(super func(ev *QKeyEvent), ev *QKeyEvent)) {
+	C.QLabel_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLabel_KeyPressEvent
+func miqt_exec_callback_QLabel_KeyPressEvent(self *C.QLabel, cb C.intptr_t, ev *C.QKeyEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(ev *QKeyEvent), ev *QKeyEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(ev), nil, nil)
+
+	gofunc((&QLabel{h: self}).callVirtualBase_KeyPressEvent, slotval1)
+
+}
+
+func (this *QLabel) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
+
+	C.QLabel_virtualbase_PaintEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QLabel) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
+	C.QLabel_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLabel_PaintEvent
+func miqt_exec_callback_QLabel_PaintEvent(self *C.QLabel, cb C.intptr_t, param1 *C.QPaintEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QPaintEvent), param1 *QPaintEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(param1), nil)
+
+	gofunc((&QLabel{h: self}).callVirtualBase_PaintEvent, slotval1)
+
+}
+
+func (this *QLabel) callVirtualBase_ChangeEvent(param1 *QEvent) {
+
+	C.QLabel_virtualbase_ChangeEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QLabel) OnChangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
+	C.QLabel_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLabel_ChangeEvent
+func miqt_exec_callback_QLabel_ChangeEvent(self *C.QLabel, cb C.intptr_t, param1 *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent), param1 *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+
+	gofunc((&QLabel{h: self}).callVirtualBase_ChangeEvent, slotval1)
+
+}
+
+func (this *QLabel) callVirtualBase_MousePressEvent(ev *QMouseEvent) {
+
+	C.QLabel_virtualbase_MousePressEvent(unsafe.Pointer(this.h), ev.cPointer())
+
+}
+func (this *QLabel) OnMousePressEvent(slot func(super func(ev *QMouseEvent), ev *QMouseEvent)) {
+	C.QLabel_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLabel_MousePressEvent
+func miqt_exec_callback_QLabel_MousePressEvent(self *C.QLabel, cb C.intptr_t, ev *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(ev *QMouseEvent), ev *QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(ev), nil, nil)
+
+	gofunc((&QLabel{h: self}).callVirtualBase_MousePressEvent, slotval1)
+
+}
+
+func (this *QLabel) callVirtualBase_MouseMoveEvent(ev *QMouseEvent) {
+
+	C.QLabel_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), ev.cPointer())
+
+}
+func (this *QLabel) OnMouseMoveEvent(slot func(super func(ev *QMouseEvent), ev *QMouseEvent)) {
+	C.QLabel_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLabel_MouseMoveEvent
+func miqt_exec_callback_QLabel_MouseMoveEvent(self *C.QLabel, cb C.intptr_t, ev *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(ev *QMouseEvent), ev *QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(ev), nil, nil)
+
+	gofunc((&QLabel{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
+
+}
+
+func (this *QLabel) callVirtualBase_MouseReleaseEvent(ev *QMouseEvent) {
+
+	C.QLabel_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), ev.cPointer())
+
+}
+func (this *QLabel) OnMouseReleaseEvent(slot func(super func(ev *QMouseEvent), ev *QMouseEvent)) {
+	C.QLabel_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLabel_MouseReleaseEvent
+func miqt_exec_callback_QLabel_MouseReleaseEvent(self *C.QLabel, cb C.intptr_t, ev *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(ev *QMouseEvent), ev *QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(ev), nil, nil)
+
+	gofunc((&QLabel{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
+
+}
+
+func (this *QLabel) callVirtualBase_ContextMenuEvent(ev *QContextMenuEvent) {
+
+	C.QLabel_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), ev.cPointer())
+
+}
+func (this *QLabel) OnContextMenuEvent(slot func(super func(ev *QContextMenuEvent), ev *QContextMenuEvent)) {
+	C.QLabel_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLabel_ContextMenuEvent
+func miqt_exec_callback_QLabel_ContextMenuEvent(self *C.QLabel, cb C.intptr_t, ev *C.QContextMenuEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(ev *QContextMenuEvent), ev *QContextMenuEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(ev), nil, nil)
+
+	gofunc((&QLabel{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
+
+}
+
+func (this *QLabel) callVirtualBase_FocusInEvent(ev *QFocusEvent) {
+
+	C.QLabel_virtualbase_FocusInEvent(unsafe.Pointer(this.h), ev.cPointer())
+
+}
+func (this *QLabel) OnFocusInEvent(slot func(super func(ev *QFocusEvent), ev *QFocusEvent)) {
+	C.QLabel_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLabel_FocusInEvent
+func miqt_exec_callback_QLabel_FocusInEvent(self *C.QLabel, cb C.intptr_t, ev *C.QFocusEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(ev *QFocusEvent), ev *QFocusEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(ev), nil)
+
+	gofunc((&QLabel{h: self}).callVirtualBase_FocusInEvent, slotval1)
+
+}
+
+func (this *QLabel) callVirtualBase_FocusOutEvent(ev *QFocusEvent) {
+
+	C.QLabel_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), ev.cPointer())
+
+}
+func (this *QLabel) OnFocusOutEvent(slot func(super func(ev *QFocusEvent), ev *QFocusEvent)) {
+	C.QLabel_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLabel_FocusOutEvent
+func miqt_exec_callback_QLabel_FocusOutEvent(self *C.QLabel, cb C.intptr_t, ev *C.QFocusEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(ev *QFocusEvent), ev *QFocusEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(ev), nil)
+
+	gofunc((&QLabel{h: self}).callVirtualBase_FocusOutEvent, slotval1)
+
+}
+
+func (this *QLabel) callVirtualBase_FocusNextPrevChild(next bool) bool {
+
+	return (bool)(C.QLabel_virtualbase_FocusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
+
+}
+func (this *QLabel) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	C.QLabel_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLabel_FocusNextPrevChild
+func miqt_exec_callback_QLabel_FocusNextPrevChild(self *C.QLabel, cb C.intptr_t, next C.bool) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(next bool) bool, next bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(next)
+
+	virtualReturn := gofunc((&QLabel{h: self}).callVirtualBase_FocusNextPrevChild, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QLabel) Delete() {
-	C.QLabel_Delete(this.h)
+	C.QLabel_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

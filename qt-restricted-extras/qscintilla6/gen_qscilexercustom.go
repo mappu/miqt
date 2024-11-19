@@ -15,7 +15,8 @@ import (
 )
 
 type QsciLexerCustom struct {
-	h *C.QsciLexerCustom
+	h          *C.QsciLexerCustom
+	isSubclass bool
 	*QsciLexer
 }
 
@@ -33,15 +34,23 @@ func (this *QsciLexerCustom) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQsciLexerCustom(h *C.QsciLexerCustom) *QsciLexerCustom {
+// newQsciLexerCustom constructs the type using only CGO pointers.
+func newQsciLexerCustom(h *C.QsciLexerCustom, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerCustom {
 	if h == nil {
 		return nil
 	}
-	return &QsciLexerCustom{h: h, QsciLexer: UnsafeNewQsciLexer(unsafe.Pointer(h))}
+	return &QsciLexerCustom{h: h,
+		QsciLexer: newQsciLexer(h_QsciLexer, h_QObject)}
 }
 
-func UnsafeNewQsciLexerCustom(h unsafe.Pointer) *QsciLexerCustom {
-	return newQsciLexerCustom((*C.QsciLexerCustom)(h))
+// UnsafeNewQsciLexerCustom constructs the type using only unsafe pointers.
+func UnsafeNewQsciLexerCustom(h unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerCustom {
+	if h == nil {
+		return nil
+	}
+
+	return &QsciLexerCustom{h: (*C.QsciLexerCustom)(h),
+		QsciLexer: UnsafeNewQsciLexer(h_QsciLexer, h_QObject)}
 }
 
 func (this *QsciLexerCustom) MetaObject() *qt6.QMetaObject {
@@ -115,7 +124,7 @@ func (this *QsciLexerCustom) StartStyling2(pos int, styleBits int) {
 
 // Delete this object from C++ memory.
 func (this *QsciLexerCustom) Delete() {
-	C.QsciLexerCustom_Delete(this.h)
+	C.QsciLexerCustom_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

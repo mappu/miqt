@@ -19,13 +19,17 @@ class QAudioBuffer;
 class QAudioDecoderControl;
 class QAudioFormat;
 class QIODevice;
+class QMediaControl;
 class QMetaObject;
+class QObject;
 #else
 typedef struct QAudioBuffer QAudioBuffer;
 typedef struct QAudioDecoderControl QAudioDecoderControl;
 typedef struct QAudioFormat QAudioFormat;
 typedef struct QIODevice QIODevice;
+typedef struct QMediaControl QMediaControl;
 typedef struct QMetaObject QMetaObject;
+typedef struct QObject QObject;
 #endif
 
 QMetaObject* QAudioDecoderControl_MetaObject(const QAudioDecoderControl* self);
@@ -67,7 +71,7 @@ struct miqt_string QAudioDecoderControl_Tr2(const char* s, const char* c);
 struct miqt_string QAudioDecoderControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAudioDecoderControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QAudioDecoderControl_TrUtf83(const char* s, const char* c, int n);
-void QAudioDecoderControl_Delete(QAudioDecoderControl* self);
+void QAudioDecoderControl_Delete(QAudioDecoderControl* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

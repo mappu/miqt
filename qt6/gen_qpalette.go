@@ -53,7 +53,8 @@ const (
 )
 
 type QPalette struct {
-	h *C.QPalette
+	h          *C.QPalette
+	isSubclass bool
 }
 
 func (this *QPalette) cPointer() *C.QPalette {
@@ -70,6 +71,7 @@ func (this *QPalette) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPalette constructs the type using only CGO pointers.
 func newQPalette(h *C.QPalette) *QPalette {
 	if h == nil {
 		return nil
@@ -77,50 +79,83 @@ func newQPalette(h *C.QPalette) *QPalette {
 	return &QPalette{h: h}
 }
 
+// UnsafeNewQPalette constructs the type using only unsafe pointers.
 func UnsafeNewQPalette(h unsafe.Pointer) *QPalette {
-	return newQPalette((*C.QPalette)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPalette{h: (*C.QPalette)(h)}
 }
 
 // NewQPalette constructs a new QPalette object.
 func NewQPalette() *QPalette {
-	ret := C.QPalette_new()
-	return newQPalette(ret)
+	var outptr_QPalette *C.QPalette = nil
+
+	C.QPalette_new(&outptr_QPalette)
+	ret := newQPalette(outptr_QPalette)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPalette2 constructs a new QPalette object.
 func NewQPalette2(button *QColor) *QPalette {
-	ret := C.QPalette_new2(button.cPointer())
-	return newQPalette(ret)
+	var outptr_QPalette *C.QPalette = nil
+
+	C.QPalette_new2(button.cPointer(), &outptr_QPalette)
+	ret := newQPalette(outptr_QPalette)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPalette3 constructs a new QPalette object.
 func NewQPalette3(button GlobalColor) *QPalette {
-	ret := C.QPalette_new3((C.int)(button))
-	return newQPalette(ret)
+	var outptr_QPalette *C.QPalette = nil
+
+	C.QPalette_new3((C.int)(button), &outptr_QPalette)
+	ret := newQPalette(outptr_QPalette)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPalette4 constructs a new QPalette object.
 func NewQPalette4(button *QColor, window *QColor) *QPalette {
-	ret := C.QPalette_new4(button.cPointer(), window.cPointer())
-	return newQPalette(ret)
+	var outptr_QPalette *C.QPalette = nil
+
+	C.QPalette_new4(button.cPointer(), window.cPointer(), &outptr_QPalette)
+	ret := newQPalette(outptr_QPalette)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPalette5 constructs a new QPalette object.
 func NewQPalette5(windowText *QBrush, button *QBrush, light *QBrush, dark *QBrush, mid *QBrush, text *QBrush, bright_text *QBrush, base *QBrush, window *QBrush) *QPalette {
-	ret := C.QPalette_new5(windowText.cPointer(), button.cPointer(), light.cPointer(), dark.cPointer(), mid.cPointer(), text.cPointer(), bright_text.cPointer(), base.cPointer(), window.cPointer())
-	return newQPalette(ret)
+	var outptr_QPalette *C.QPalette = nil
+
+	C.QPalette_new5(windowText.cPointer(), button.cPointer(), light.cPointer(), dark.cPointer(), mid.cPointer(), text.cPointer(), bright_text.cPointer(), base.cPointer(), window.cPointer(), &outptr_QPalette)
+	ret := newQPalette(outptr_QPalette)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPalette6 constructs a new QPalette object.
 func NewQPalette6(windowText *QColor, window *QColor, light *QColor, dark *QColor, mid *QColor, text *QColor, base *QColor) *QPalette {
-	ret := C.QPalette_new6(windowText.cPointer(), window.cPointer(), light.cPointer(), dark.cPointer(), mid.cPointer(), text.cPointer(), base.cPointer())
-	return newQPalette(ret)
+	var outptr_QPalette *C.QPalette = nil
+
+	C.QPalette_new6(windowText.cPointer(), window.cPointer(), light.cPointer(), dark.cPointer(), mid.cPointer(), text.cPointer(), base.cPointer(), &outptr_QPalette)
+	ret := newQPalette(outptr_QPalette)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPalette7 constructs a new QPalette object.
 func NewQPalette7(palette *QPalette) *QPalette {
-	ret := C.QPalette_new7(palette.cPointer())
-	return newQPalette(ret)
+	var outptr_QPalette *C.QPalette = nil
+
+	C.QPalette_new7(palette.cPointer(), &outptr_QPalette)
+	ret := newQPalette(outptr_QPalette)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QPalette) OperatorAssign(palette *QPalette) {
@@ -296,7 +331,7 @@ func (this *QPalette) SetResolveMask(mask uint64) {
 
 // Delete this object from C++ memory.
 func (this *QPalette) Delete() {
-	C.QPalette_Delete(this.h)
+	C.QPalette_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

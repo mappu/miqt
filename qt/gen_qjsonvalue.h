@@ -32,17 +32,17 @@ typedef struct QJsonValueRefPtr QJsonValueRefPtr;
 typedef struct QVariant QVariant;
 #endif
 
-QJsonValue* QJsonValue_new();
-QJsonValue* QJsonValue_new2(bool b);
-QJsonValue* QJsonValue_new3(double n);
-QJsonValue* QJsonValue_new4(int n);
-QJsonValue* QJsonValue_new5(long long v);
-QJsonValue* QJsonValue_new6(struct miqt_string s);
-QJsonValue* QJsonValue_new7(const char* s);
-QJsonValue* QJsonValue_new8(QJsonArray* a);
-QJsonValue* QJsonValue_new9(QJsonObject* o);
-QJsonValue* QJsonValue_new10(QJsonValue* other);
-QJsonValue* QJsonValue_new11(int param1);
+void QJsonValue_new(QJsonValue** outptr_QJsonValue);
+void QJsonValue_new2(bool b, QJsonValue** outptr_QJsonValue);
+void QJsonValue_new3(double n, QJsonValue** outptr_QJsonValue);
+void QJsonValue_new4(int n, QJsonValue** outptr_QJsonValue);
+void QJsonValue_new5(long long v, QJsonValue** outptr_QJsonValue);
+void QJsonValue_new6(struct miqt_string s, QJsonValue** outptr_QJsonValue);
+void QJsonValue_new7(const char* s, QJsonValue** outptr_QJsonValue);
+void QJsonValue_new8(QJsonArray* a, QJsonValue** outptr_QJsonValue);
+void QJsonValue_new9(QJsonObject* o, QJsonValue** outptr_QJsonValue);
+void QJsonValue_new10(QJsonValue* other, QJsonValue** outptr_QJsonValue);
+void QJsonValue_new11(int param1, QJsonValue** outptr_QJsonValue);
 void QJsonValue_OperatorAssign(QJsonValue* self, QJsonValue* other);
 void QJsonValue_Swap(QJsonValue* self, QJsonValue* other);
 QJsonValue* QJsonValue_FromVariant(QVariant* variant);
@@ -71,11 +71,11 @@ bool QJsonValue_OperatorNotEqual(const QJsonValue* self, QJsonValue* other);
 bool QJsonValue_ToBool1(const QJsonValue* self, bool defaultValue);
 int QJsonValue_ToInt1(const QJsonValue* self, int defaultValue);
 double QJsonValue_ToDouble1(const QJsonValue* self, double defaultValue);
-void QJsonValue_Delete(QJsonValue* self);
+void QJsonValue_Delete(QJsonValue* self, bool isSubclass);
 
-QJsonValueRef* QJsonValueRef_new(QJsonValueRef* param1);
-QJsonValueRef* QJsonValueRef_new2(QJsonArray* array, int idx);
-QJsonValueRef* QJsonValueRef_new3(QJsonObject* object, int idx);
+void QJsonValueRef_new(QJsonValueRef* param1, QJsonValueRef** outptr_QJsonValueRef);
+void QJsonValueRef_new2(QJsonArray* array, int idx, QJsonValueRef** outptr_QJsonValueRef);
+void QJsonValueRef_new3(QJsonObject* object, int idx, QJsonValueRef** outptr_QJsonValueRef);
 void QJsonValueRef_OperatorAssign(QJsonValueRef* self, QJsonValue* val);
 void QJsonValueRef_OperatorAssignWithVal(QJsonValueRef* self, QJsonValueRef* val);
 QVariant* QJsonValueRef_ToVariant(const QJsonValueRef* self);
@@ -99,22 +99,22 @@ double QJsonValueRef_ToDoubleWithDefaultValue(const QJsonValueRef* self, double 
 struct miqt_string QJsonValueRef_ToStringWithDefaultValue(const QJsonValueRef* self, struct miqt_string defaultValue);
 bool QJsonValueRef_OperatorEqual(const QJsonValueRef* self, QJsonValue* other);
 bool QJsonValueRef_OperatorNotEqual(const QJsonValueRef* self, QJsonValue* other);
-void QJsonValueRef_Delete(QJsonValueRef* self);
+void QJsonValueRef_Delete(QJsonValueRef* self, bool isSubclass);
 
-QJsonValuePtr* QJsonValuePtr_new(QJsonValue* val);
-QJsonValuePtr* QJsonValuePtr_new2(QJsonValuePtr* param1);
+void QJsonValuePtr_new(QJsonValue* val, QJsonValuePtr** outptr_QJsonValuePtr);
+void QJsonValuePtr_new2(QJsonValuePtr* param1, QJsonValuePtr** outptr_QJsonValuePtr);
 QJsonValue* QJsonValuePtr_OperatorMultiply(QJsonValuePtr* self);
 QJsonValue* QJsonValuePtr_OperatorMinusGreater(QJsonValuePtr* self);
 void QJsonValuePtr_OperatorAssign(QJsonValuePtr* self, QJsonValuePtr* param1);
-void QJsonValuePtr_Delete(QJsonValuePtr* self);
+void QJsonValuePtr_Delete(QJsonValuePtr* self, bool isSubclass);
 
-QJsonValueRefPtr* QJsonValueRefPtr_new(QJsonArray* array, int idx);
-QJsonValueRefPtr* QJsonValueRefPtr_new2(QJsonObject* object, int idx);
-QJsonValueRefPtr* QJsonValueRefPtr_new3(QJsonValueRefPtr* param1);
+void QJsonValueRefPtr_new(QJsonArray* array, int idx, QJsonValueRefPtr** outptr_QJsonValueRefPtr);
+void QJsonValueRefPtr_new2(QJsonObject* object, int idx, QJsonValueRefPtr** outptr_QJsonValueRefPtr);
+void QJsonValueRefPtr_new3(QJsonValueRefPtr* param1, QJsonValueRefPtr** outptr_QJsonValueRefPtr);
 QJsonValueRef* QJsonValueRefPtr_OperatorMultiply(QJsonValueRefPtr* self);
 QJsonValueRef* QJsonValueRefPtr_OperatorMinusGreater(QJsonValueRefPtr* self);
 void QJsonValueRefPtr_OperatorAssign(QJsonValueRefPtr* self, QJsonValueRefPtr* param1);
-void QJsonValueRefPtr_Delete(QJsonValueRefPtr* self);
+void QJsonValueRefPtr_Delete(QJsonValueRefPtr* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

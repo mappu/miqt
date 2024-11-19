@@ -74,8 +74,8 @@ typedef struct QTextOption QTextOption;
 typedef struct QTransform QTransform;
 #endif
 
-QPainter* QPainter_new();
-QPainter* QPainter_new2(QPaintDevice* param1);
+void QPainter_new(QPainter** outptr_QPainter);
+void QPainter_new2(QPaintDevice* param1, QPainter** outptr_QPainter);
 QPaintDevice* QPainter_Device(const QPainter* self);
 bool QPainter_Begin(QPainter* self, QPaintDevice* param1);
 bool QPainter_End(QPainter* self);
@@ -295,14 +295,14 @@ void QPainter_DrawText32(QPainter* self, QRectF* r, struct miqt_string text, QTe
 QRectF* QPainter_BoundingRect32(QPainter* self, QRectF* rect, struct miqt_string text, QTextOption* o);
 void QPainter_SetRenderHint2(QPainter* self, int hint, bool on);
 void QPainter_SetRenderHints2(QPainter* self, int hints, bool on);
-void QPainter_Delete(QPainter* self);
+void QPainter_Delete(QPainter* self, bool isSubclass);
 
 QPainter__PixmapFragment* QPainter__PixmapFragment_Create(QPointF* pos, QRectF* sourceRect);
 QPainter__PixmapFragment* QPainter__PixmapFragment_Create3(QPointF* pos, QRectF* sourceRect, double scaleX);
 QPainter__PixmapFragment* QPainter__PixmapFragment_Create4(QPointF* pos, QRectF* sourceRect, double scaleX, double scaleY);
 QPainter__PixmapFragment* QPainter__PixmapFragment_Create5(QPointF* pos, QRectF* sourceRect, double scaleX, double scaleY, double rotation);
 QPainter__PixmapFragment* QPainter__PixmapFragment_Create6(QPointF* pos, QRectF* sourceRect, double scaleX, double scaleY, double rotation, double opacity);
-void QPainter__PixmapFragment_Delete(QPainter__PixmapFragment* self);
+void QPainter__PixmapFragment_Delete(QPainter__PixmapFragment* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

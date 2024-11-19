@@ -39,157 +39,9 @@ const (
 	QtMetaContainerPrivate__QMetaContainerInterface__Unspecified QtMetaContainerPrivate__QMetaContainerInterface__Position = 2
 )
 
-type QtMetaContainerPrivate__QMetaContainerInterface struct {
-	h *C.QtMetaContainerPrivate__QMetaContainerInterface
-}
-
-func (this *QtMetaContainerPrivate__QMetaContainerInterface) cPointer() *C.QtMetaContainerPrivate__QMetaContainerInterface {
-	if this == nil {
-		return nil
-	}
-	return this.h
-}
-
-func (this *QtMetaContainerPrivate__QMetaContainerInterface) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
-}
-
-func newQtMetaContainerPrivate__QMetaContainerInterface(h *C.QtMetaContainerPrivate__QMetaContainerInterface) *QtMetaContainerPrivate__QMetaContainerInterface {
-	if h == nil {
-		return nil
-	}
-	return &QtMetaContainerPrivate__QMetaContainerInterface{h: h}
-}
-
-func UnsafeNewQtMetaContainerPrivate__QMetaContainerInterface(h unsafe.Pointer) *QtMetaContainerPrivate__QMetaContainerInterface {
-	return newQtMetaContainerPrivate__QMetaContainerInterface((*C.QtMetaContainerPrivate__QMetaContainerInterface)(h))
-}
-
-// NewQtMetaContainerPrivate__QMetaContainerInterface constructs a new QtMetaContainerPrivate::QMetaContainerInterface object.
-func NewQtMetaContainerPrivate__QMetaContainerInterface() *QtMetaContainerPrivate__QMetaContainerInterface {
-	ret := C.QtMetaContainerPrivate__QMetaContainerInterface_new()
-	return newQtMetaContainerPrivate__QMetaContainerInterface(ret)
-}
-
-// Delete this object from C++ memory.
-func (this *QtMetaContainerPrivate__QMetaContainerInterface) Delete() {
-	C.QtMetaContainerPrivate__QMetaContainerInterface_Delete(this.h)
-}
-
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
-func (this *QtMetaContainerPrivate__QMetaContainerInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QtMetaContainerPrivate__QMetaContainerInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
-	})
-}
-
-type QtMetaContainerPrivate__QMetaSequenceInterface struct {
-	h *C.QtMetaContainerPrivate__QMetaSequenceInterface
-	*QtMetaContainerPrivate__QMetaContainerInterface
-}
-
-func (this *QtMetaContainerPrivate__QMetaSequenceInterface) cPointer() *C.QtMetaContainerPrivate__QMetaSequenceInterface {
-	if this == nil {
-		return nil
-	}
-	return this.h
-}
-
-func (this *QtMetaContainerPrivate__QMetaSequenceInterface) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
-}
-
-func newQtMetaContainerPrivate__QMetaSequenceInterface(h *C.QtMetaContainerPrivate__QMetaSequenceInterface) *QtMetaContainerPrivate__QMetaSequenceInterface {
-	if h == nil {
-		return nil
-	}
-	return &QtMetaContainerPrivate__QMetaSequenceInterface{h: h, QtMetaContainerPrivate__QMetaContainerInterface: UnsafeNewQtMetaContainerPrivate__QMetaContainerInterface(unsafe.Pointer(h))}
-}
-
-func UnsafeNewQtMetaContainerPrivate__QMetaSequenceInterface(h unsafe.Pointer) *QtMetaContainerPrivate__QMetaSequenceInterface {
-	return newQtMetaContainerPrivate__QMetaSequenceInterface((*C.QtMetaContainerPrivate__QMetaSequenceInterface)(h))
-}
-
-// NewQtMetaContainerPrivate__QMetaSequenceInterface constructs a new QtMetaContainerPrivate::QMetaSequenceInterface object.
-func NewQtMetaContainerPrivate__QMetaSequenceInterface() *QtMetaContainerPrivate__QMetaSequenceInterface {
-	ret := C.QtMetaContainerPrivate__QMetaSequenceInterface_new()
-	return newQtMetaContainerPrivate__QMetaSequenceInterface(ret)
-}
-
-// Delete this object from C++ memory.
-func (this *QtMetaContainerPrivate__QMetaSequenceInterface) Delete() {
-	C.QtMetaContainerPrivate__QMetaSequenceInterface_Delete(this.h)
-}
-
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
-func (this *QtMetaContainerPrivate__QMetaSequenceInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QtMetaContainerPrivate__QMetaSequenceInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
-	})
-}
-
-type QtMetaContainerPrivate__QMetaAssociationInterface struct {
-	h *C.QtMetaContainerPrivate__QMetaAssociationInterface
-	*QtMetaContainerPrivate__QMetaContainerInterface
-}
-
-func (this *QtMetaContainerPrivate__QMetaAssociationInterface) cPointer() *C.QtMetaContainerPrivate__QMetaAssociationInterface {
-	if this == nil {
-		return nil
-	}
-	return this.h
-}
-
-func (this *QtMetaContainerPrivate__QMetaAssociationInterface) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
-}
-
-func newQtMetaContainerPrivate__QMetaAssociationInterface(h *C.QtMetaContainerPrivate__QMetaAssociationInterface) *QtMetaContainerPrivate__QMetaAssociationInterface {
-	if h == nil {
-		return nil
-	}
-	return &QtMetaContainerPrivate__QMetaAssociationInterface{h: h, QtMetaContainerPrivate__QMetaContainerInterface: UnsafeNewQtMetaContainerPrivate__QMetaContainerInterface(unsafe.Pointer(h))}
-}
-
-func UnsafeNewQtMetaContainerPrivate__QMetaAssociationInterface(h unsafe.Pointer) *QtMetaContainerPrivate__QMetaAssociationInterface {
-	return newQtMetaContainerPrivate__QMetaAssociationInterface((*C.QtMetaContainerPrivate__QMetaAssociationInterface)(h))
-}
-
-// NewQtMetaContainerPrivate__QMetaAssociationInterface constructs a new QtMetaContainerPrivate::QMetaAssociationInterface object.
-func NewQtMetaContainerPrivate__QMetaAssociationInterface() *QtMetaContainerPrivate__QMetaAssociationInterface {
-	ret := C.QtMetaContainerPrivate__QMetaAssociationInterface_new()
-	return newQtMetaContainerPrivate__QMetaAssociationInterface(ret)
-}
-
-// Delete this object from C++ memory.
-func (this *QtMetaContainerPrivate__QMetaAssociationInterface) Delete() {
-	C.QtMetaContainerPrivate__QMetaAssociationInterface_Delete(this.h)
-}
-
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
-func (this *QtMetaContainerPrivate__QMetaAssociationInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QtMetaContainerPrivate__QMetaAssociationInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
-	})
-}
-
 type QMetaContainer struct {
-	h *C.QMetaContainer
+	h          *C.QMetaContainer
+	isSubclass bool
 }
 
 func (this *QMetaContainer) cPointer() *C.QMetaContainer {
@@ -206,6 +58,7 @@ func (this *QMetaContainer) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQMetaContainer constructs the type using only CGO pointers.
 func newQMetaContainer(h *C.QMetaContainer) *QMetaContainer {
 	if h == nil {
 		return nil
@@ -213,26 +66,33 @@ func newQMetaContainer(h *C.QMetaContainer) *QMetaContainer {
 	return &QMetaContainer{h: h}
 }
 
+// UnsafeNewQMetaContainer constructs the type using only unsafe pointers.
 func UnsafeNewQMetaContainer(h unsafe.Pointer) *QMetaContainer {
-	return newQMetaContainer((*C.QMetaContainer)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QMetaContainer{h: (*C.QMetaContainer)(h)}
 }
 
 // NewQMetaContainer constructs a new QMetaContainer object.
 func NewQMetaContainer() *QMetaContainer {
-	ret := C.QMetaContainer_new()
-	return newQMetaContainer(ret)
+	var outptr_QMetaContainer *C.QMetaContainer = nil
+
+	C.QMetaContainer_new(&outptr_QMetaContainer)
+	ret := newQMetaContainer(outptr_QMetaContainer)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQMetaContainer2 constructs a new QMetaContainer object.
-func NewQMetaContainer2(d *QtMetaContainerPrivate__QMetaContainerInterface) *QMetaContainer {
-	ret := C.QMetaContainer_new2(d.cPointer())
-	return newQMetaContainer(ret)
-}
+func NewQMetaContainer2(param1 *QMetaContainer) *QMetaContainer {
+	var outptr_QMetaContainer *C.QMetaContainer = nil
 
-// NewQMetaContainer3 constructs a new QMetaContainer object.
-func NewQMetaContainer3(param1 *QMetaContainer) *QMetaContainer {
-	ret := C.QMetaContainer_new3(param1.cPointer())
-	return newQMetaContainer(ret)
+	C.QMetaContainer_new2(param1.cPointer(), &outptr_QMetaContainer)
+	ret := newQMetaContainer(outptr_QMetaContainer)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QMetaContainer) HasInputIterator() bool {
@@ -333,7 +193,7 @@ func (this *QMetaContainer) DiffConstIterator(i unsafe.Pointer, j unsafe.Pointer
 
 // Delete this object from C++ memory.
 func (this *QMetaContainer) Delete() {
-	C.QMetaContainer_Delete(this.h)
+	C.QMetaContainer_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -346,7 +206,8 @@ func (this *QMetaContainer) GoGC() {
 }
 
 type QMetaSequence struct {
-	h *C.QMetaSequence
+	h          *C.QMetaSequence
+	isSubclass bool
 	*QMetaContainer
 }
 
@@ -364,27 +225,34 @@ func (this *QMetaSequence) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQMetaSequence(h *C.QMetaSequence) *QMetaSequence {
+// newQMetaSequence constructs the type using only CGO pointers.
+func newQMetaSequence(h *C.QMetaSequence, h_QMetaContainer *C.QMetaContainer) *QMetaSequence {
 	if h == nil {
 		return nil
 	}
-	return &QMetaSequence{h: h, QMetaContainer: UnsafeNewQMetaContainer(unsafe.Pointer(h))}
+	return &QMetaSequence{h: h,
+		QMetaContainer: newQMetaContainer(h_QMetaContainer)}
 }
 
-func UnsafeNewQMetaSequence(h unsafe.Pointer) *QMetaSequence {
-	return newQMetaSequence((*C.QMetaSequence)(h))
+// UnsafeNewQMetaSequence constructs the type using only unsafe pointers.
+func UnsafeNewQMetaSequence(h unsafe.Pointer, h_QMetaContainer unsafe.Pointer) *QMetaSequence {
+	if h == nil {
+		return nil
+	}
+
+	return &QMetaSequence{h: (*C.QMetaSequence)(h),
+		QMetaContainer: UnsafeNewQMetaContainer(h_QMetaContainer)}
 }
 
 // NewQMetaSequence constructs a new QMetaSequence object.
 func NewQMetaSequence() *QMetaSequence {
-	ret := C.QMetaSequence_new()
-	return newQMetaSequence(ret)
-}
+	var outptr_QMetaSequence *C.QMetaSequence = nil
+	var outptr_QMetaContainer *C.QMetaContainer = nil
 
-// NewQMetaSequence2 constructs a new QMetaSequence object.
-func NewQMetaSequence2(d *QtMetaContainerPrivate__QMetaSequenceInterface) *QMetaSequence {
-	ret := C.QMetaSequence_new2(d.cPointer())
-	return newQMetaSequence(ret)
+	C.QMetaSequence_new(&outptr_QMetaSequence, &outptr_QMetaContainer)
+	ret := newQMetaSequence(outptr_QMetaSequence, outptr_QMetaContainer)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QMetaSequence) ValueMetaType() *QMetaType {
@@ -512,7 +380,7 @@ func (this *QMetaSequence) ValueAtConstIterator(iterator unsafe.Pointer, result 
 
 // Delete this object from C++ memory.
 func (this *QMetaSequence) Delete() {
-	C.QMetaSequence_Delete(this.h)
+	C.QMetaSequence_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -525,7 +393,8 @@ func (this *QMetaSequence) GoGC() {
 }
 
 type QMetaAssociation struct {
-	h *C.QMetaAssociation
+	h          *C.QMetaAssociation
+	isSubclass bool
 	*QMetaContainer
 }
 
@@ -543,27 +412,34 @@ func (this *QMetaAssociation) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
-func newQMetaAssociation(h *C.QMetaAssociation) *QMetaAssociation {
+// newQMetaAssociation constructs the type using only CGO pointers.
+func newQMetaAssociation(h *C.QMetaAssociation, h_QMetaContainer *C.QMetaContainer) *QMetaAssociation {
 	if h == nil {
 		return nil
 	}
-	return &QMetaAssociation{h: h, QMetaContainer: UnsafeNewQMetaContainer(unsafe.Pointer(h))}
+	return &QMetaAssociation{h: h,
+		QMetaContainer: newQMetaContainer(h_QMetaContainer)}
 }
 
-func UnsafeNewQMetaAssociation(h unsafe.Pointer) *QMetaAssociation {
-	return newQMetaAssociation((*C.QMetaAssociation)(h))
+// UnsafeNewQMetaAssociation constructs the type using only unsafe pointers.
+func UnsafeNewQMetaAssociation(h unsafe.Pointer, h_QMetaContainer unsafe.Pointer) *QMetaAssociation {
+	if h == nil {
+		return nil
+	}
+
+	return &QMetaAssociation{h: (*C.QMetaAssociation)(h),
+		QMetaContainer: UnsafeNewQMetaContainer(h_QMetaContainer)}
 }
 
 // NewQMetaAssociation constructs a new QMetaAssociation object.
 func NewQMetaAssociation() *QMetaAssociation {
-	ret := C.QMetaAssociation_new()
-	return newQMetaAssociation(ret)
-}
+	var outptr_QMetaAssociation *C.QMetaAssociation = nil
+	var outptr_QMetaContainer *C.QMetaContainer = nil
 
-// NewQMetaAssociation2 constructs a new QMetaAssociation object.
-func NewQMetaAssociation2(d *QtMetaContainerPrivate__QMetaAssociationInterface) *QMetaAssociation {
-	ret := C.QMetaAssociation_new2(d.cPointer())
-	return newQMetaAssociation(ret)
+	C.QMetaAssociation_new(&outptr_QMetaAssociation, &outptr_QMetaContainer)
+	ret := newQMetaAssociation(outptr_QMetaAssociation, outptr_QMetaContainer)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QMetaAssociation) KeyMetaType() *QMetaType {
@@ -678,7 +554,7 @@ func (this *QMetaAssociation) CreateConstIteratorAtKey(container unsafe.Pointer,
 
 // Delete this object from C++ memory.
 func (this *QMetaAssociation) Delete() {
-	C.QMetaAssociation_Delete(this.h)
+	C.QMetaAssociation_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

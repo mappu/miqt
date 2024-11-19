@@ -39,7 +39,8 @@ const (
 )
 
 type QPageLayout struct {
-	h *C.QPageLayout
+	h          *C.QPageLayout
+	isSubclass bool
 }
 
 func (this *QPageLayout) cPointer() *C.QPageLayout {
@@ -56,6 +57,7 @@ func (this *QPageLayout) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQPageLayout constructs the type using only CGO pointers.
 func newQPageLayout(h *C.QPageLayout) *QPageLayout {
 	if h == nil {
 		return nil
@@ -63,38 +65,63 @@ func newQPageLayout(h *C.QPageLayout) *QPageLayout {
 	return &QPageLayout{h: h}
 }
 
+// UnsafeNewQPageLayout constructs the type using only unsafe pointers.
 func UnsafeNewQPageLayout(h unsafe.Pointer) *QPageLayout {
-	return newQPageLayout((*C.QPageLayout)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QPageLayout{h: (*C.QPageLayout)(h)}
 }
 
 // NewQPageLayout constructs a new QPageLayout object.
 func NewQPageLayout() *QPageLayout {
-	ret := C.QPageLayout_new()
-	return newQPageLayout(ret)
+	var outptr_QPageLayout *C.QPageLayout = nil
+
+	C.QPageLayout_new(&outptr_QPageLayout)
+	ret := newQPageLayout(outptr_QPageLayout)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPageLayout2 constructs a new QPageLayout object.
 func NewQPageLayout2(pageSize *QPageSize, orientation QPageLayout__Orientation, margins *QMarginsF) *QPageLayout {
-	ret := C.QPageLayout_new2(pageSize.cPointer(), (C.int)(orientation), margins.cPointer())
-	return newQPageLayout(ret)
+	var outptr_QPageLayout *C.QPageLayout = nil
+
+	C.QPageLayout_new2(pageSize.cPointer(), (C.int)(orientation), margins.cPointer(), &outptr_QPageLayout)
+	ret := newQPageLayout(outptr_QPageLayout)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPageLayout3 constructs a new QPageLayout object.
 func NewQPageLayout3(other *QPageLayout) *QPageLayout {
-	ret := C.QPageLayout_new3(other.cPointer())
-	return newQPageLayout(ret)
+	var outptr_QPageLayout *C.QPageLayout = nil
+
+	C.QPageLayout_new3(other.cPointer(), &outptr_QPageLayout)
+	ret := newQPageLayout(outptr_QPageLayout)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPageLayout4 constructs a new QPageLayout object.
 func NewQPageLayout4(pageSize *QPageSize, orientation QPageLayout__Orientation, margins *QMarginsF, units QPageLayout__Unit) *QPageLayout {
-	ret := C.QPageLayout_new4(pageSize.cPointer(), (C.int)(orientation), margins.cPointer(), (C.int)(units))
-	return newQPageLayout(ret)
+	var outptr_QPageLayout *C.QPageLayout = nil
+
+	C.QPageLayout_new4(pageSize.cPointer(), (C.int)(orientation), margins.cPointer(), (C.int)(units), &outptr_QPageLayout)
+	ret := newQPageLayout(outptr_QPageLayout)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQPageLayout5 constructs a new QPageLayout object.
 func NewQPageLayout5(pageSize *QPageSize, orientation QPageLayout__Orientation, margins *QMarginsF, units QPageLayout__Unit, minMargins *QMarginsF) *QPageLayout {
-	ret := C.QPageLayout_new5(pageSize.cPointer(), (C.int)(orientation), margins.cPointer(), (C.int)(units), minMargins.cPointer())
-	return newQPageLayout(ret)
+	var outptr_QPageLayout *C.QPageLayout = nil
+
+	C.QPageLayout_new5(pageSize.cPointer(), (C.int)(orientation), margins.cPointer(), (C.int)(units), minMargins.cPointer(), &outptr_QPageLayout)
+	ret := newQPageLayout(outptr_QPageLayout)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QPageLayout) OperatorAssign(other *QPageLayout) {
@@ -276,7 +303,7 @@ func (this *QPageLayout) SetPageSize2(pageSize *QPageSize, minMargins *QMarginsF
 
 // Delete this object from C++ memory.
 func (this *QPageLayout) Delete() {
-	C.QPageLayout_Delete(this.h)
+	C.QPageLayout_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

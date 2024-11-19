@@ -14,7 +14,8 @@ import (
 )
 
 type QByteArrayView struct {
-	h *C.QByteArrayView
+	h          *C.QByteArrayView
+	isSubclass bool
 }
 
 func (this *QByteArrayView) cPointer() *C.QByteArrayView {
@@ -31,6 +32,7 @@ func (this *QByteArrayView) UnsafePointer() unsafe.Pointer {
 	return unsafe.Pointer(this.h)
 }
 
+// newQByteArrayView constructs the type using only CGO pointers.
 func newQByteArrayView(h *C.QByteArrayView) *QByteArrayView {
 	if h == nil {
 		return nil
@@ -38,20 +40,33 @@ func newQByteArrayView(h *C.QByteArrayView) *QByteArrayView {
 	return &QByteArrayView{h: h}
 }
 
+// UnsafeNewQByteArrayView constructs the type using only unsafe pointers.
 func UnsafeNewQByteArrayView(h unsafe.Pointer) *QByteArrayView {
-	return newQByteArrayView((*C.QByteArrayView)(h))
+	if h == nil {
+		return nil
+	}
+
+	return &QByteArrayView{h: (*C.QByteArrayView)(h)}
 }
 
 // NewQByteArrayView constructs a new QByteArrayView object.
 func NewQByteArrayView() *QByteArrayView {
-	ret := C.QByteArrayView_new()
-	return newQByteArrayView(ret)
+	var outptr_QByteArrayView *C.QByteArrayView = nil
+
+	C.QByteArrayView_new(&outptr_QByteArrayView)
+	ret := newQByteArrayView(outptr_QByteArrayView)
+	ret.isSubclass = true
+	return ret
 }
 
 // NewQByteArrayView2 constructs a new QByteArrayView object.
 func NewQByteArrayView2(param1 *QByteArrayView) *QByteArrayView {
-	ret := C.QByteArrayView_new2(param1.cPointer())
-	return newQByteArrayView(ret)
+	var outptr_QByteArrayView *C.QByteArrayView = nil
+
+	C.QByteArrayView_new2(param1.cPointer(), &outptr_QByteArrayView)
+	ret := newQByteArrayView(outptr_QByteArrayView)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QByteArrayView) ToByteArray() []byte {
@@ -375,7 +390,7 @@ func (this *QByteArrayView) Compare2(a QByteArrayView, cs CaseSensitivity) int {
 
 // Delete this object from C++ memory.
 func (this *QByteArrayView) Delete() {
-	C.QByteArrayView_Delete(this.h)
+	C.QByteArrayView_Delete(this.h, C.bool(this.isSubclass))
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
