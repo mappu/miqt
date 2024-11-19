@@ -73,8 +73,8 @@ func (p CppParameter) RenderTypeCabi() string {
 		ret = "_Float16" // No idea where this typedef comes from, but it exists
 	case "qreal":
 		ret = "double"
-	case "qintptr", "QIntegerForSizeof<void *>::Signed":
-		ret = "intptr_t"
+	case "qintptr", "QIntegerForSizeof<void *>::Signed": // long long int
+		ret = "intptr_t" // long int
 	case "quintptr", "uintptr", "QIntegerForSizeof<void *>::Unsigned":
 		ret = "uintptr_t"
 	case "qsizetype", "qptrdiff", "QIntegerForSizeof<std::size_t>::Signed":
@@ -513,6 +513,9 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 
 		if p.QtCppOriginalType != nil && p.QtCppOriginalType.Const != p.Const {
 			afterCall += indent + "" + assignExpression + "const_cast<" + p.RenderTypeCabi() + ">(static_cast<" + p.RenderTypeIntermediateCpp() + ">(" + namePrefix + "_ret));\n"
+		} else if p.QtCppOriginalType != nil && p.QtCppOriginalType.ParameterType == "qintptr" {
+			// Hard int cast
+			afterCall += indent + "" + assignExpression + "(" + p.RenderTypeCabi() + ")(" + namePrefix + "_ret);\n"
 		} else {
 			afterCall += indent + "" + assignExpression + "static_cast<" + p.RenderTypeCabi() + ">(" + namePrefix + "_ret);\n"
 		}
