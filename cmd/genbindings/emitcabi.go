@@ -595,6 +595,11 @@ func getReferencedTypes(src *CppParsedHeader) []string {
 			}
 			maybeAddType(vm.ReturnType)
 		}
+		for _, cn := range c.AllInherits() {
+			maybeAddType(CppParameter{
+				ParameterType: cn,
+			})
+		}
 	}
 
 	// Some types (e.g. QRgb) are found but are typedefs, not classes
@@ -709,7 +714,7 @@ extern "C" {
 		methodPrefixName := cabiClassName(c.ClassName)
 
 		for i, ctor := range c.Ctors {
-			ret.WriteString(fmt.Sprintf("%s %s_new%s(%s);\n", methodPrefixName+"*", methodPrefixName, maybeSuffix(i), emitParametersCabi(ctor, "")))
+			ret.WriteString(fmt.Sprintf("void %s_new%s(%s);\n", methodPrefixName, maybeSuffix(i), emitParametersCabiConstructor(&c, &ctor)))
 		}
 
 		for _, m := range c.Methods {
@@ -747,6 +752,33 @@ extern "C" {
 func fullyQualifiedConstructor(className string) string {
 	parts := strings.Split(className, `::`)
 	return className + "::" + parts[len(parts)-1]
+}
+
+func emitParametersCabiConstructor(c *CppClass, ctor *CppMethod) string {
+
+	plist := slice_copy(ctor.Parameters) // semi-shallow copy
+
+	plist = append(plist, CppParameter{
+		ParameterName: cabiClassName("outptr_" + c.ClassName),
+		ParameterType: c.ClassName,
+		Pointer:       true,
+		PointerCount:  2,
+	})
+	for _, baseClass := range c.AllInherits() {
+		plist = append(plist, CppParameter{
+			ParameterName: cabiClassName("outptr_" + baseClass),
+			ParameterType: baseClass,
+			Pointer:       true,
+			PointerCount:  2,
+		})
+	}
+
+	slist := make([]string, 0, len(plist))
+	for _, p := range plist {
+		slist = append(slist, p.RenderTypeCabi()+" "+p.ParameterName)
+	}
+
+	return strings.Join(slist, `, `)
 }
 
 func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {

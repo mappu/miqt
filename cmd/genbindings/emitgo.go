@@ -579,14 +579,22 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		shouldReturn = "" + namePrefix + "_ret := "
 
 		crossPackage := ""
-		if pkg, ok := KnownClassnames[rt.ParameterType]; ok && pkg.PackageName != gfs.currentPackageName {
+		pkg, ok := KnownClassnames[rt.ParameterType]
+		if !ok {
+			panic("emitCabiToGo: Encountered an unknown Qt class")
+		}
+
+		if pkg.PackageName != gfs.currentPackageName {
 			crossPackage = path.Base(pkg.PackageName) + "."
 			gfs.imports[importPathForQtPackage(pkg.PackageName)] = struct{}{}
 		}
 
+		// FIXME This needs to somehow figure out the real child pointers
+		extraConstructArgs := strings.Repeat(", nil", len(pkg.Class.AllInherits()))
+
 		if rt.Pointer || rt.ByRef {
 			gfs.imports["unsafe"] = struct{}{}
-			return assignExpr + " " + crossPackage + "UnsafeNew" + cabiClassName(rt.ParameterType) + "(unsafe.Pointer(" + rvalue + "))"
+			return assignExpr + " " + crossPackage + "UnsafeNew" + cabiClassName(rt.ParameterType) + "(unsafe.Pointer(" + rvalue + ")" + extraConstructArgs + ")"
 
 		} else {
 			// This is return by value, but CABI has new'd it into a
@@ -596,10 +604,10 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 			// of Go scope
 
 			if crossPackage == "" {
-				afterword += namePrefix + "_goptr := new" + cabiClassName(rt.ParameterType) + "(" + namePrefix + "_ret)\n"
+				afterword += namePrefix + "_goptr := new" + cabiClassName(rt.ParameterType) + "(" + namePrefix + "_ret" + extraConstructArgs + ")\n"
 			} else {
 				gfs.imports["unsafe"] = struct{}{}
-				afterword += namePrefix + "_goptr := " + crossPackage + "UnsafeNew" + cabiClassName(rt.ParameterType) + "(unsafe.Pointer(" + namePrefix + "_ret))\n"
+				afterword += namePrefix + "_goptr := " + crossPackage + "UnsafeNew" + cabiClassName(rt.ParameterType) + "(unsafe.Pointer(" + namePrefix + "_ret)" + extraConstructArgs + ")\n"
 
 			}
 			afterword += namePrefix + "_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer\n"
@@ -758,69 +766,121 @@ import "C"
 		}
 		
 		`)
+
+		// CGO types only exist within the same Go file, so other Go files can't
+		// call this same private ctor function, unless it goes through unsafe.Pointer{}.
+		// This is probably because C types can possibly violate the ODR whereas
+		// that never happens in Go's type system.
+
 		gfs.imports["unsafe"] = struct{}{}
 
 		localInit := "h: h"
-		for _, base := range c.Inherits {
-			gfs.imports["unsafe"] = struct{}{}
+		unsafeInit := "h: (*C." + goClassName + ")(h)"
+		extraCArgs := ""
+		extraUnsafeArgs := ""
 
+		// We require arguments for all inherits, but we only embed the direct inherits
+		// Any recursive inherits will be owned by the base
+		for _, base := range c.AllInherits() {
+
+			extraCArgs += ", h_" + cabiClassName(base) + " *C." + cabiClassName(base)
+			extraUnsafeArgs += ", h_" + cabiClassName(base) + " unsafe.Pointer"
+		}
+
+		for _, base := range c.DirectInherits {
 			ctorPrefix := ""
-			if pkg, ok := KnownClassnames[base]; ok && pkg.PackageName != gfs.currentPackageName {
-				ctorPrefix = path.Base(pkg.PackageName) + "."
+			pkg, ok := KnownClassnames[base]
+			if !ok {
+				panic("Class " + c.ClassName + " has unknown parent " + base)
 			}
 
-			localInit += ", " + cabiClassName(base) + ": " + ctorPrefix + "UnsafeNew" + cabiClassName(base) + "(unsafe.Pointer(h))"
+			constructRequiresParams := pkg.Class.AllInherits()
+			var ixxParams []string = make([]string, 0, len(constructRequiresParams)+1)
+			ixxParams = append(ixxParams, "h_"+cabiClassName(base))
+			for _, grandchildInheritedClass := range constructRequiresParams {
+				ixxParams = append(ixxParams, "h_"+cabiClassName(grandchildInheritedClass))
+			}
+
+			if pkg.PackageName != gfs.currentPackageName {
+				ctorPrefix = path.Base(pkg.PackageName) + "."
+
+				localInit += ",\n" + cabiClassName(base) + ": " + ctorPrefix + "UnsafeNew" + cabiClassName(base) + "(unsafe.Pointer(" + strings.Join(ixxParams, "), unsafe.Pointer(") + "))"
+			} else {
+				localInit += ",\n" + cabiClassName(base) + ": new" + cabiClassName(base) + "(" + strings.Join(ixxParams, ", ") + ")"
+
+			}
+
+			unsafeInit += ",\n" + cabiClassName(base) + ": " + ctorPrefix + "UnsafeNew" + cabiClassName(base) + "(" + strings.Join(ixxParams, ", ") + ")"
 		}
 
 		ret.WriteString(`
-			func new` + goClassName + `(h *C.` + goClassName + `) *` + goClassName + ` {
+			// new` + goClassName + ` constructs the type using only CGO pointers.
+			func new` + goClassName + `(h *C.` + goClassName + extraCArgs + `) *` + goClassName + ` {
 				if h == nil {
 					return nil
 				}
 				return &` + goClassName + `{` + localInit + `}
 			}
 			
-		`)
-
-		// CGO types only exist within the same Go file, so other Go files can't
-		// call this same private ctor function, unless it goes through unsafe.Pointer{}.
-		// This is probably because C types can possibly violate the ODR whereas
-		// that never happens in Go's type system.
-		gfs.imports["unsafe"] = struct{}{}
-		ret.WriteString(`
-			func UnsafeNew` + goClassName + `(h unsafe.Pointer) *` + goClassName + ` {
-				return new` + goClassName + `( (*C.` + goClassName + `)(h) )
+			// UnsafeNew` + goClassName + ` constructs the type using only unsafe pointers.
+			func UnsafeNew` + goClassName + `(h unsafe.Pointer` + extraUnsafeArgs + `) *` + goClassName + ` {				
+				if h == nil {
+					return nil
+				}
+				
+				return &` + goClassName + `{` + unsafeInit + `}
 			}
 			
 		`)
+
+		//
 
 		for i, ctor := range c.Ctors {
 			preamble, forwarding := gfs.emitParametersGo2CABIForwarding(ctor)
 
+			ret.WriteString(`
+			// New` + goClassName + maybeSuffix(i) + ` constructs a new ` + c.ClassName + ` object.
+			func New` + goClassName + maybeSuffix(i) + `(` + gfs.emitParametersGo(ctor.Parameters) + `) *` + goClassName + ` {
+				`,
+			)
+
 			if ctor.LinuxOnly {
 				gfs.imports["runtime"] = struct{}{}
 				ret.WriteString(`
-			// New` + goClassName + maybeSuffix(i) + ` constructs a new ` + c.ClassName + ` object.
-			func New` + goClassName + maybeSuffix(i) + `(` + gfs.emitParametersGo(ctor.Parameters) + `) *` + goClassName + ` {
-				if runtime.GOOS == "linux" {
-					` + preamble + ` ret := C.` + goClassName + `_new` + maybeSuffix(i) + `(` + forwarding + `)
-					return new` + goClassName + `(ret)
-				} else {
-					panic("Unsupported OS")
-				}
+					if runtime.GOOS != "linux" {
+						panic("Unsupported OS")
+					}
+				`)
+			}
+
+			ret.WriteString(preamble)
+
+			// Outptr management
+
+			outptrs := make([]string, 0, len(c.AllInherits())+1)
+			ret.WriteString(`var outptr_` + cabiClassName(c.ClassName) + ` *C.` + goClassName + " = nil\n")
+			outptrs = append(outptrs, "outptr_"+cabiClassName(c.ClassName))
+			for _, baseClass := range c.AllInherits() {
+				ret.WriteString(`var outptr_` + cabiClassName(baseClass) + ` *C.` + baseClass + " = nil\n")
+				outptrs = append(outptrs, "outptr_"+cabiClassName(baseClass))
+			}
+
+			if len(forwarding) > 0 {
+				forwarding += ", "
+			}
+			forwarding += "&" + strings.Join(outptrs, ", &")
+
+			// Call Cgo constructor
+
+			ret.WriteString(`
+				C.` + goClassName + `_new` + maybeSuffix(i) + `(` + forwarding + `)
+				ret := new` + goClassName + `(` + strings.Join(outptrs, `, `) + `)
+				ret.isSubclass = true
+				return ret
 			}
 			
 			`)
-			} else {
-				ret.WriteString(`
-			// New` + goClassName + maybeSuffix(i) + ` constructs a new ` + c.ClassName + ` object.
-			func New` + goClassName + maybeSuffix(i) + `(` + gfs.emitParametersGo(ctor.Parameters) + `) *` + goClassName + ` {
-				` + preamble + ` ret := C.` + goClassName + `_new` + maybeSuffix(i) + `(` + forwarding + `)
-				return new` + goClassName + `(ret)
-			}
-			
-			`)
-			}
+
 		}
 
 		for _, m := range c.Methods {
