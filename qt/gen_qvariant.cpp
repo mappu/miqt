@@ -34,7 +34,6 @@
 #include <QUuid>
 #include <QVariant>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QVariant__Handler
-#define WORKAROUND_INNER_CLASS_DEFINITION_QVariant__Private__Data
 #include <QVariantComparisonHelper>
 #include <qvariant.h>
 #include "gen_qvariant.h"
@@ -665,28 +664,6 @@ void QVariantComparisonHelper_new2(QVariantComparisonHelper* param1, QVariantCom
 void QVariantComparisonHelper_Delete(QVariantComparisonHelper* self, bool isSubclass) {
 	if (isSubclass) {
 		delete dynamic_cast<QVariantComparisonHelper*>( self );
-	} else {
-		delete self;
-	}
-}
-
-void QVariant__Private__Data_new(QVariant__Private__Data** outptr_QVariant__Private__Data) {
-	QVariant::Private::Data* ret = new QVariant::Private::Data();
-	*outptr_QVariant__Private__Data = ret;
-}
-
-void QVariant__Private__Data_new2(QVariant__Private__Data* param1, QVariant__Private__Data** outptr_QVariant__Private__Data) {
-	QVariant::Private::Data* ret = new QVariant::Private::Data(*param1);
-	*outptr_QVariant__Private__Data = ret;
-}
-
-void QVariant__Private__Data_OperatorAssign(QVariant__Private__Data* self, QVariant__Private__Data* param1) {
-	self->operator=(*param1);
-}
-
-void QVariant__Private__Data_Delete(QVariant__Private__Data* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QVariant::Private::Data*>( self );
 	} else {
 		delete self;
 	}

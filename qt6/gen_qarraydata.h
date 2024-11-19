@@ -16,14 +16,8 @@ extern "C" {
 
 #ifdef __cplusplus
 class QArrayData;
-#if defined(WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__QContainerImplHelper)
-typedef QtPrivate::QContainerImplHelper QtPrivate__QContainerImplHelper;
-#else
-class QtPrivate__QContainerImplHelper;
-#endif
 #else
 typedef struct QArrayData QArrayData;
-typedef struct QtPrivate__QContainerImplHelper QtPrivate__QContainerImplHelper;
 #endif
 
 ptrdiff_t QArrayData_AllocatedCapacity(QArrayData* self);
@@ -36,8 +30,6 @@ ptrdiff_t QArrayData_DetachCapacity(const QArrayData* self, ptrdiff_t newSize);
 struct miqt_map /* tuple of QArrayData* and void* */  QArrayData_ReallocateUnaligned(QArrayData* data, void* dataPointer, ptrdiff_t objectSize, ptrdiff_t newCapacity, int option);
 void QArrayData_Deallocate(QArrayData* data, ptrdiff_t objectSize, ptrdiff_t alignment);
 void QArrayData_Delete(QArrayData* self, bool isSubclass);
-
-void QtPrivate__QContainerImplHelper_Delete(QtPrivate__QContainerImplHelper* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

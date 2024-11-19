@@ -45,11 +45,6 @@ class QUrl;
 class QUuid;
 class QVariant;
 class QVariantConstPointer;
-#if defined(WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__QVariantTypeCoercer)
-typedef QtPrivate::QVariantTypeCoercer QtPrivate__QVariantTypeCoercer;
-#else
-class QtPrivate__QVariantTypeCoercer;
-#endif
 #else
 typedef struct QBitArray QBitArray;
 typedef struct QByteArray QByteArray;
@@ -81,7 +76,6 @@ typedef struct QUrl QUrl;
 typedef struct QUuid QUuid;
 typedef struct QVariant QVariant;
 typedef struct QVariantConstPointer QVariantConstPointer;
-typedef struct QtPrivate__QVariantTypeCoercer QtPrivate__QVariantTypeCoercer;
 #endif
 
 void QVariant_new(QVariant** outptr_QVariant);
@@ -197,10 +191,6 @@ double QVariant_ToDouble1(const QVariant* self, bool* ok);
 float QVariant_ToFloat1(const QVariant* self, bool* ok);
 double QVariant_ToReal1(const QVariant* self, bool* ok);
 void QVariant_Delete(QVariant* self, bool isSubclass);
-
-const void* QtPrivate__QVariantTypeCoercer_Convert(QtPrivate__QVariantTypeCoercer* self, QVariant* value, QMetaType* typeVal);
-const void* QtPrivate__QVariantTypeCoercer_Coerce(QtPrivate__QVariantTypeCoercer* self, QVariant* value, QMetaType* typeVal);
-void QtPrivate__QVariantTypeCoercer_Delete(QtPrivate__QVariantTypeCoercer* self, bool isSubclass);
 
 void QVariantConstPointer_new(QVariant* variant, QVariantConstPointer** outptr_QVariantConstPointer);
 void QVariantConstPointer_new2(QVariantConstPointer* param1, QVariantConstPointer** outptr_QVariantConstPointer);

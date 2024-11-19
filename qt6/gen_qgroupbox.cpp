@@ -893,7 +893,7 @@ public:
 		struct miqt_string sigval1 = eventType_ms;
 		void* sigval2 = message;
 		qintptr* result_ret = result;
-		intptr_t* sigval3 = static_cast<intptr_t*>(result_ret);
+		intptr_t* sigval3 = (intptr_t*)(result_ret);
 
 		bool callback_return_value = miqt_exec_callback_QGroupBox_NativeEvent(this, handle__NativeEvent, sigval1, sigval2, sigval3);
 

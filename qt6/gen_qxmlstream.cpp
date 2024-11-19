@@ -11,39 +11,9 @@
 #include <QXmlStreamNotationDeclaration>
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
-#define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__QXmlString
 #include <qxmlstream.h>
 #include "gen_qxmlstream.h"
 #include "_cgo_export.h"
-
-void QtPrivate__QXmlString_new(struct miqt_string s, QtPrivate__QXmlString** outptr_QtPrivate__QXmlString) {
-	QString s_QString = QString::fromUtf8(s.data, s.len);
-	QtPrivate::QXmlString* ret = new QtPrivate::QXmlString(s_QString);
-	*outptr_QtPrivate__QXmlString = ret;
-}
-
-void QtPrivate__QXmlString_new2(QtPrivate__QXmlString** outptr_QtPrivate__QXmlString) {
-	QtPrivate::QXmlString* ret = new QtPrivate::QXmlString();
-	*outptr_QtPrivate__QXmlString = ret;
-}
-
-void QtPrivate__QXmlString_OperatorAssign(QtPrivate__QXmlString* self, struct miqt_string s) {
-	QString s_QString = QString::fromUtf8(s.data, s.len);
-	self->operator=(s_QString);
-}
-
-ptrdiff_t QtPrivate__QXmlString_Size(const QtPrivate__QXmlString* self) {
-	qsizetype _ret = self->size();
-	return static_cast<ptrdiff_t>(_ret);
-}
-
-void QtPrivate__QXmlString_Delete(QtPrivate__QXmlString* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QtPrivate::QXmlString*>( self );
-	} else {
-		delete self;
-	}
-}
 
 void QXmlStreamAttribute_new(QXmlStreamAttribute** outptr_QXmlStreamAttribute) {
 	QXmlStreamAttribute* ret = new QXmlStreamAttribute();

@@ -5,8 +5,6 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__QRegularExpressionMatchIteratorRangeBasedForIterator
-#define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__QRegularExpressionMatchIteratorRangeBasedForIteratorSentinel
 #include <qregularexpression.h>
 #include "gen_qregularexpression.h"
 #include "_cgo_export.h"
@@ -385,19 +383,6 @@ void QRegularExpressionMatch_Delete(QRegularExpressionMatch* self, bool isSubcla
 	}
 }
 
-void QtPrivate__QRegularExpressionMatchIteratorRangeBasedForIteratorSentinel_new(QtPrivate__QRegularExpressionMatchIteratorRangeBasedForIteratorSentinel** outptr_QtPrivate__QRegularExpressionMatchIteratorRangeBasedForIteratorSentinel) {
-	QtPrivate::QRegularExpressionMatchIteratorRangeBasedForIteratorSentinel* ret = new QtPrivate::QRegularExpressionMatchIteratorRangeBasedForIteratorSentinel();
-	*outptr_QtPrivate__QRegularExpressionMatchIteratorRangeBasedForIteratorSentinel = ret;
-}
-
-void QtPrivate__QRegularExpressionMatchIteratorRangeBasedForIteratorSentinel_Delete(QtPrivate__QRegularExpressionMatchIteratorRangeBasedForIteratorSentinel* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QtPrivate::QRegularExpressionMatchIteratorRangeBasedForIteratorSentinel*>( self );
-	} else {
-		delete self;
-	}
-}
-
 void QRegularExpressionMatchIterator_new(QRegularExpressionMatchIterator** outptr_QRegularExpressionMatchIterator) {
 	QRegularExpressionMatchIterator* ret = new QRegularExpressionMatchIterator();
 	*outptr_QRegularExpressionMatchIterator = ret;
@@ -449,30 +434,6 @@ int QRegularExpressionMatchIterator_MatchOptions(const QRegularExpressionMatchIt
 void QRegularExpressionMatchIterator_Delete(QRegularExpressionMatchIterator* self, bool isSubclass) {
 	if (isSubclass) {
 		delete dynamic_cast<QRegularExpressionMatchIterator*>( self );
-	} else {
-		delete self;
-	}
-}
-
-void QtPrivate__QRegularExpressionMatchIteratorRangeBasedForIterator_new(QtPrivate__QRegularExpressionMatchIteratorRangeBasedForIterator** outptr_QtPrivate__QRegularExpressionMatchIteratorRangeBasedForIterator) {
-	QtPrivate::QRegularExpressionMatchIteratorRangeBasedForIterator* ret = new QtPrivate::QRegularExpressionMatchIteratorRangeBasedForIterator();
-	*outptr_QtPrivate__QRegularExpressionMatchIteratorRangeBasedForIterator = ret;
-}
-
-void QtPrivate__QRegularExpressionMatchIteratorRangeBasedForIterator_new2(QRegularExpressionMatchIterator* iterator, QtPrivate__QRegularExpressionMatchIteratorRangeBasedForIterator** outptr_QtPrivate__QRegularExpressionMatchIteratorRangeBasedForIterator) {
-	QtPrivate::QRegularExpressionMatchIteratorRangeBasedForIterator* ret = new QtPrivate::QRegularExpressionMatchIteratorRangeBasedForIterator(*iterator);
-	*outptr_QtPrivate__QRegularExpressionMatchIteratorRangeBasedForIterator = ret;
-}
-
-QRegularExpressionMatch* QtPrivate__QRegularExpressionMatchIteratorRangeBasedForIterator_OperatorMultiply(const QtPrivate__QRegularExpressionMatchIteratorRangeBasedForIterator* self) {
-	const QRegularExpressionMatch& _ret = self->operator*();
-	// Cast returned reference into pointer
-	return const_cast<QRegularExpressionMatch*>(&_ret);
-}
-
-void QtPrivate__QRegularExpressionMatchIteratorRangeBasedForIterator_Delete(QtPrivate__QRegularExpressionMatchIteratorRangeBasedForIterator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QtPrivate::QRegularExpressionMatchIteratorRangeBasedForIterator*>( self );
 	} else {
 		delete self;
 	}

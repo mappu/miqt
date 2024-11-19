@@ -2,65 +2,16 @@
 #include <QMetaContainer>
 #include <QMetaSequence>
 #include <QMetaType>
-#define WORKAROUND_INNER_CLASS_DEFINITION_QtMetaContainerPrivate__QMetaAssociationInterface
-#define WORKAROUND_INNER_CLASS_DEFINITION_QtMetaContainerPrivate__QMetaContainerInterface
-#define WORKAROUND_INNER_CLASS_DEFINITION_QtMetaContainerPrivate__QMetaSequenceInterface
 #include <qmetacontainer.h>
 #include "gen_qmetacontainer.h"
 #include "_cgo_export.h"
-
-void QtMetaContainerPrivate__QMetaContainerInterface_new(QtMetaContainerPrivate__QMetaContainerInterface** outptr_QtMetaContainerPrivate__QMetaContainerInterface) {
-	QtMetaContainerPrivate::QMetaContainerInterface* ret = new QtMetaContainerPrivate::QMetaContainerInterface();
-	*outptr_QtMetaContainerPrivate__QMetaContainerInterface = ret;
-}
-
-void QtMetaContainerPrivate__QMetaContainerInterface_Delete(QtMetaContainerPrivate__QMetaContainerInterface* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QtMetaContainerPrivate::QMetaContainerInterface*>( self );
-	} else {
-		delete self;
-	}
-}
-
-void QtMetaContainerPrivate__QMetaSequenceInterface_new(QtMetaContainerPrivate__QMetaSequenceInterface** outptr_QtMetaContainerPrivate__QMetaSequenceInterface, QtMetaContainerPrivate__QMetaContainerInterface** outptr_QtMetaContainerPrivate__QMetaContainerInterface) {
-	QtMetaContainerPrivate::QMetaSequenceInterface* ret = new QtMetaContainerPrivate::QMetaSequenceInterface();
-	*outptr_QtMetaContainerPrivate__QMetaSequenceInterface = ret;
-	*outptr_QtMetaContainerPrivate::QMetaContainerInterface = static_cast<QtMetaContainerPrivate::QMetaContainerInterface*>(ret);
-}
-
-void QtMetaContainerPrivate__QMetaSequenceInterface_Delete(QtMetaContainerPrivate__QMetaSequenceInterface* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QtMetaContainerPrivate::QMetaSequenceInterface*>( self );
-	} else {
-		delete self;
-	}
-}
-
-void QtMetaContainerPrivate__QMetaAssociationInterface_new(QtMetaContainerPrivate__QMetaAssociationInterface** outptr_QtMetaContainerPrivate__QMetaAssociationInterface, QtMetaContainerPrivate__QMetaContainerInterface** outptr_QtMetaContainerPrivate__QMetaContainerInterface) {
-	QtMetaContainerPrivate::QMetaAssociationInterface* ret = new QtMetaContainerPrivate::QMetaAssociationInterface();
-	*outptr_QtMetaContainerPrivate__QMetaAssociationInterface = ret;
-	*outptr_QtMetaContainerPrivate::QMetaContainerInterface = static_cast<QtMetaContainerPrivate::QMetaContainerInterface*>(ret);
-}
-
-void QtMetaContainerPrivate__QMetaAssociationInterface_Delete(QtMetaContainerPrivate__QMetaAssociationInterface* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QtMetaContainerPrivate::QMetaAssociationInterface*>( self );
-	} else {
-		delete self;
-	}
-}
 
 void QMetaContainer_new(QMetaContainer** outptr_QMetaContainer) {
 	QMetaContainer* ret = new QMetaContainer();
 	*outptr_QMetaContainer = ret;
 }
 
-void QMetaContainer_new2(QtMetaContainerPrivate__QMetaContainerInterface* d, QMetaContainer** outptr_QMetaContainer) {
-	QMetaContainer* ret = new QMetaContainer(d);
-	*outptr_QMetaContainer = ret;
-}
-
-void QMetaContainer_new3(QMetaContainer* param1, QMetaContainer** outptr_QMetaContainer) {
+void QMetaContainer_new2(QMetaContainer* param1, QMetaContainer** outptr_QMetaContainer) {
 	QMetaContainer* ret = new QMetaContainer(*param1);
 	*outptr_QMetaContainer = ret;
 }
@@ -174,12 +125,6 @@ void QMetaContainer_Delete(QMetaContainer* self, bool isSubclass) {
 
 void QMetaSequence_new(QMetaSequence** outptr_QMetaSequence, QMetaContainer** outptr_QMetaContainer) {
 	QMetaSequence* ret = new QMetaSequence();
-	*outptr_QMetaSequence = ret;
-	*outptr_QMetaContainer = static_cast<QMetaContainer*>(ret);
-}
-
-void QMetaSequence_new2(QtMetaContainerPrivate__QMetaSequenceInterface* d, QMetaSequence** outptr_QMetaSequence, QMetaContainer** outptr_QMetaContainer) {
-	QMetaSequence* ret = new QMetaSequence(d);
 	*outptr_QMetaSequence = ret;
 	*outptr_QMetaContainer = static_cast<QMetaContainer*>(ret);
 }
@@ -314,12 +259,6 @@ void QMetaSequence_Delete(QMetaSequence* self, bool isSubclass) {
 
 void QMetaAssociation_new(QMetaAssociation** outptr_QMetaAssociation, QMetaContainer** outptr_QMetaContainer) {
 	QMetaAssociation* ret = new QMetaAssociation();
-	*outptr_QMetaAssociation = ret;
-	*outptr_QMetaContainer = static_cast<QMetaContainer*>(ret);
-}
-
-void QMetaAssociation_new2(QtMetaContainerPrivate__QMetaAssociationInterface* d, QMetaAssociation** outptr_QMetaAssociation, QMetaContainer** outptr_QMetaContainer) {
-	QMetaAssociation* ret = new QMetaAssociation(d);
 	*outptr_QMetaAssociation = ret;
 	*outptr_QMetaContainer = static_cast<QMetaContainer*>(ret);
 }

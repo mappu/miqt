@@ -536,7 +536,7 @@ bool QLocalSocket_SetSocketDescriptor(QLocalSocket* self, intptr_t socketDescrip
 
 intptr_t QLocalSocket_SocketDescriptor(const QLocalSocket* self) {
 	qintptr _ret = self->socketDescriptor();
-	return static_cast<intptr_t>(_ret);
+	return (intptr_t)(_ret);
 }
 
 int QLocalSocket_State(const QLocalSocket* self) {

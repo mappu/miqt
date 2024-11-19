@@ -24,11 +24,6 @@ class QXmlStreamNamespaceDeclaration;
 class QXmlStreamNotationDeclaration;
 class QXmlStreamReader;
 class QXmlStreamWriter;
-#if defined(WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__QXmlString)
-typedef QtPrivate::QXmlString QtPrivate__QXmlString;
-#else
-class QtPrivate__QXmlString;
-#endif
 #else
 typedef struct QByteArray QByteArray;
 typedef struct QIODevice QIODevice;
@@ -39,14 +34,7 @@ typedef struct QXmlStreamNamespaceDeclaration QXmlStreamNamespaceDeclaration;
 typedef struct QXmlStreamNotationDeclaration QXmlStreamNotationDeclaration;
 typedef struct QXmlStreamReader QXmlStreamReader;
 typedef struct QXmlStreamWriter QXmlStreamWriter;
-typedef struct QtPrivate__QXmlString QtPrivate__QXmlString;
 #endif
-
-void QtPrivate__QXmlString_new(struct miqt_string s, QtPrivate__QXmlString** outptr_QtPrivate__QXmlString);
-void QtPrivate__QXmlString_new2(QtPrivate__QXmlString** outptr_QtPrivate__QXmlString);
-void QtPrivate__QXmlString_OperatorAssign(QtPrivate__QXmlString* self, struct miqt_string s);
-ptrdiff_t QtPrivate__QXmlString_Size(const QtPrivate__QXmlString* self);
-void QtPrivate__QXmlString_Delete(QtPrivate__QXmlString* self, bool isSubclass);
 
 void QXmlStreamAttribute_new(QXmlStreamAttribute** outptr_QXmlStreamAttribute);
 void QXmlStreamAttribute_new2(struct miqt_string qualifiedName, struct miqt_string value, QXmlStreamAttribute** outptr_QXmlStreamAttribute);

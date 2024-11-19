@@ -2,7 +2,6 @@
 #include <QDataStream>
 #include <QIODevice>
 #include <QIODeviceBase>
-#define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__StreamStateSaver
 #include <qdatastream.h>
 #include "gen_qdatastream.h"
 #include "_cgo_export.h"
@@ -226,19 +225,6 @@ bool QDataStream_IsDeviceTransactionStarted(const QDataStream* self) {
 void QDataStream_Delete(QDataStream* self, bool isSubclass) {
 	if (isSubclass) {
 		delete dynamic_cast<QDataStream*>( self );
-	} else {
-		delete self;
-	}
-}
-
-void QtPrivate__StreamStateSaver_new(QDataStream* s, QtPrivate__StreamStateSaver** outptr_QtPrivate__StreamStateSaver) {
-	QtPrivate::StreamStateSaver* ret = new QtPrivate::StreamStateSaver(s);
-	*outptr_QtPrivate__StreamStateSaver = ret;
-}
-
-void QtPrivate__StreamStateSaver_Delete(QtPrivate__StreamStateSaver* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QtPrivate::StreamStateSaver*>( self );
 	} else {
 		delete self;
 	}

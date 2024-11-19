@@ -58,11 +58,6 @@ typedef QVariant::Handler QVariant__Handler;
 #else
 class QVariant__Handler;
 #endif
-#if defined(WORKAROUND_INNER_CLASS_DEFINITION_QVariant__Private__Data)
-typedef QVariant::Private::Data QVariant__Private__Data;
-#else
-class QVariant__Private__Data;
-#endif
 class QVariantComparisonHelper;
 #else
 typedef struct QAssociativeIterable__const_iterator QAssociativeIterable__const_iterator;
@@ -96,7 +91,6 @@ typedef struct QUrl QUrl;
 typedef struct QUuid QUuid;
 typedef struct QVariant QVariant;
 typedef struct QVariant__Handler QVariant__Handler;
-typedef struct QVariant__Private__Data QVariant__Private__Data;
 typedef struct QVariantComparisonHelper QVariantComparisonHelper;
 #endif
 
@@ -219,11 +213,6 @@ void QVariant_Delete(QVariant* self, bool isSubclass);
 void QVariantComparisonHelper_new(QVariant* varVal, QVariantComparisonHelper** outptr_QVariantComparisonHelper);
 void QVariantComparisonHelper_new2(QVariantComparisonHelper* param1, QVariantComparisonHelper** outptr_QVariantComparisonHelper);
 void QVariantComparisonHelper_Delete(QVariantComparisonHelper* self, bool isSubclass);
-
-void QVariant__Private__Data_new(QVariant__Private__Data** outptr_QVariant__Private__Data);
-void QVariant__Private__Data_new2(QVariant__Private__Data* param1, QVariant__Private__Data** outptr_QVariant__Private__Data);
-void QVariant__Private__Data_OperatorAssign(QVariant__Private__Data* self, QVariant__Private__Data* param1);
-void QVariant__Private__Data_Delete(QVariant__Private__Data* self, bool isSubclass);
 
 void QVariant__Handler_Delete(QVariant__Handler* self, bool isSubclass);
 

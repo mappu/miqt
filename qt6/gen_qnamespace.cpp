@@ -5,12 +5,12 @@
 #include "gen_qnamespace.h"
 #include "_cgo_export.h"
 
-void Disambiguated_t_new(Disambiguated_t** outptr_Qt__Disambiguated_t) {
+void Disambiguated_t_new(Disambiguated_t** outptr_Disambiguated_t) {
 	Qt::Disambiguated_t* ret = new Qt::Disambiguated_t();
 	*outptr_Disambiguated_t = ret;
 }
 
-void Disambiguated_t_new2(Disambiguated_t* param1, Disambiguated_t** outptr_Qt__Disambiguated_t) {
+void Disambiguated_t_new2(Disambiguated_t* param1, Disambiguated_t** outptr_Disambiguated_t) {
 	Qt::Disambiguated_t* ret = new Qt::Disambiguated_t(*param1);
 	*outptr_Disambiguated_t = ret;
 }

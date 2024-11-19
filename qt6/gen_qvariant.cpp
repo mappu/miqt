@@ -33,7 +33,6 @@
 #include <QUuid>
 #include <QVariant>
 #include <QVariantConstPointer>
-#define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__QVariantTypeCoercer
 #include <qvariant.h>
 #include "gen_qvariant.h"
 #include "_cgo_export.h"
@@ -635,22 +634,6 @@ double QVariant_ToReal1(const QVariant* self, bool* ok) {
 void QVariant_Delete(QVariant* self, bool isSubclass) {
 	if (isSubclass) {
 		delete dynamic_cast<QVariant*>( self );
-	} else {
-		delete self;
-	}
-}
-
-const void* QtPrivate__QVariantTypeCoercer_Convert(QtPrivate__QVariantTypeCoercer* self, QVariant* value, QMetaType* typeVal) {
-	return (const void*) self->convert(*value, *typeVal);
-}
-
-const void* QtPrivate__QVariantTypeCoercer_Coerce(QtPrivate__QVariantTypeCoercer* self, QVariant* value, QMetaType* typeVal) {
-	return (const void*) self->coerce(*value, *typeVal);
-}
-
-void QtPrivate__QVariantTypeCoercer_Delete(QtPrivate__QVariantTypeCoercer* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QtPrivate::QVariantTypeCoercer*>( self );
 	} else {
 		delete self;
 	}

@@ -9,7 +9,6 @@
 #include <cstring>
 #include <QUntypedBindable>
 #include <QUntypedPropertyBinding>
-#define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__QBindableInterface
 #include <qproperty.h>
 #include "gen_qproperty.h"
 #include "_cgo_export.h"
@@ -161,14 +160,6 @@ void QPropertyNotifier_new(QPropertyNotifier** outptr_QPropertyNotifier, QProper
 void QPropertyNotifier_Delete(QPropertyNotifier* self, bool isSubclass) {
 	if (isSubclass) {
 		delete dynamic_cast<QPropertyNotifier*>( self );
-	} else {
-		delete self;
-	}
-}
-
-void QtPrivate__QBindableInterface_Delete(QtPrivate__QBindableInterface* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QtPrivate::QBindableInterface*>( self );
 	} else {
 		delete self;
 	}

@@ -28,8 +28,8 @@ typedef struct QKeyCombination QKeyCombination;
 typedef struct Disambiguated_t Disambiguated_t;
 #endif
 
-void Disambiguated_t_new(Disambiguated_t** outptr_Qt__Disambiguated_t);
-void Disambiguated_t_new2(Disambiguated_t* param1, Disambiguated_t** outptr_Qt__Disambiguated_t);
+void Disambiguated_t_new(Disambiguated_t** outptr_Disambiguated_t);
+void Disambiguated_t_new2(Disambiguated_t* param1, Disambiguated_t** outptr_Disambiguated_t);
 void Disambiguated_t_Delete(Disambiguated_t* self, bool isSubclass);
 
 void QInternal_Delete(QInternal* self, bool isSubclass);

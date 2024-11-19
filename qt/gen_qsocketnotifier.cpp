@@ -238,7 +238,7 @@ struct miqt_string QSocketNotifier_TrUtf8(const char* s) {
 
 intptr_t QSocketNotifier_Socket(const QSocketNotifier* self) {
 	qintptr _ret = self->socket();
-	return static_cast<intptr_t>(_ret);
+	return (intptr_t)(_ret);
 }
 
 int QSocketNotifier_Type(const QSocketNotifier* self) {

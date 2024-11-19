@@ -245,7 +245,7 @@ void QSocketNotifier_SetSocket(QSocketNotifier* self, intptr_t socket) {
 
 intptr_t QSocketNotifier_Socket(const QSocketNotifier* self) {
 	qintptr _ret = self->socket();
-	return static_cast<intptr_t>(_ret);
+	return (intptr_t)(_ret);
 }
 
 int QSocketNotifier_Type(const QSocketNotifier* self) {

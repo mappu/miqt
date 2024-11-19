@@ -5,20 +5,9 @@
 #include <QMetaObject>
 #include <QMetaType>
 #include <QPartialOrdering>
-#define WORKAROUND_INNER_CLASS_DEFINITION_QtMetaTypePrivate__QPairVariantInterfaceImpl
-#define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__QMetaTypeInterface
-#define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__QTypeNormalizer
 #include <qmetatype.h>
 #include "gen_qmetatype.h"
 #include "_cgo_export.h"
-
-void QtPrivate__QMetaTypeInterface_Delete(QtPrivate__QMetaTypeInterface* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QtPrivate::QMetaTypeInterface*>( self );
-	} else {
-		delete self;
-	}
-}
 
 void QMetaType_new(int typeVal, QMetaType** outptr_QMetaType) {
 	QMetaType* ret = new QMetaType(static_cast<int>(typeVal));
@@ -260,52 +249,6 @@ void* QMetaType_Construct2(const QMetaType* self, void* where, const void* copyV
 void QMetaType_Delete(QMetaType* self, bool isSubclass) {
 	if (isSubclass) {
 		delete dynamic_cast<QMetaType*>( self );
-	} else {
-		delete self;
-	}
-}
-
-void QtMetaTypePrivate__QPairVariantInterfaceImpl_new(QtMetaTypePrivate__QPairVariantInterfaceImpl** outptr_QtMetaTypePrivate__QPairVariantInterfaceImpl) {
-	QtMetaTypePrivate::QPairVariantInterfaceImpl* ret = new QtMetaTypePrivate::QPairVariantInterfaceImpl();
-	*outptr_QtMetaTypePrivate__QPairVariantInterfaceImpl = ret;
-}
-
-void QtMetaTypePrivate__QPairVariantInterfaceImpl_new2(QtMetaTypePrivate__QPairVariantInterfaceImpl* param1, QtMetaTypePrivate__QPairVariantInterfaceImpl** outptr_QtMetaTypePrivate__QPairVariantInterfaceImpl) {
-	QtMetaTypePrivate::QPairVariantInterfaceImpl* ret = new QtMetaTypePrivate::QPairVariantInterfaceImpl(*param1);
-	*outptr_QtMetaTypePrivate__QPairVariantInterfaceImpl = ret;
-}
-
-void QtMetaTypePrivate__QPairVariantInterfaceImpl_First(const QtMetaTypePrivate__QPairVariantInterfaceImpl* self, void* dataPtr) {
-	self->first(dataPtr);
-}
-
-void QtMetaTypePrivate__QPairVariantInterfaceImpl_Second(const QtMetaTypePrivate__QPairVariantInterfaceImpl* self, void* dataPtr) {
-	self->second(dataPtr);
-}
-
-void QtMetaTypePrivate__QPairVariantInterfaceImpl_Delete(QtMetaTypePrivate__QPairVariantInterfaceImpl* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QtMetaTypePrivate::QPairVariantInterfaceImpl*>( self );
-	} else {
-		delete self;
-	}
-}
-
-int QtPrivate__QTypeNormalizer_NormalizeTypeFromSignature(QtPrivate__QTypeNormalizer* self, const char* begin, const char* end) {
-	return self->normalizeTypeFromSignature(begin, end);
-}
-
-int QtPrivate__QTypeNormalizer_NormalizeType(QtPrivate__QTypeNormalizer* self, const char* begin, const char* end) {
-	return self->normalizeType(begin, end);
-}
-
-int QtPrivate__QTypeNormalizer_NormalizeType3(QtPrivate__QTypeNormalizer* self, const char* begin, const char* end, bool adjustConst) {
-	return self->normalizeType(begin, end, adjustConst);
-}
-
-void QtPrivate__QTypeNormalizer_Delete(QtPrivate__QTypeNormalizer* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QtPrivate::QTypeNormalizer*>( self );
 	} else {
 		delete self;
 	}

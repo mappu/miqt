@@ -1014,64 +1014,6 @@ func (this *QVariant) GoGC() {
 	})
 }
 
-type QtPrivate__QVariantTypeCoercer struct {
-	h          *C.QtPrivate__QVariantTypeCoercer
-	isSubclass bool
-}
-
-func (this *QtPrivate__QVariantTypeCoercer) cPointer() *C.QtPrivate__QVariantTypeCoercer {
-	if this == nil {
-		return nil
-	}
-	return this.h
-}
-
-func (this *QtPrivate__QVariantTypeCoercer) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
-}
-
-// newQtPrivate__QVariantTypeCoercer constructs the type using only CGO pointers.
-func newQtPrivate__QVariantTypeCoercer(h *C.QtPrivate__QVariantTypeCoercer) *QtPrivate__QVariantTypeCoercer {
-	if h == nil {
-		return nil
-	}
-	return &QtPrivate__QVariantTypeCoercer{h: h}
-}
-
-// UnsafeNewQtPrivate__QVariantTypeCoercer constructs the type using only unsafe pointers.
-func UnsafeNewQtPrivate__QVariantTypeCoercer(h unsafe.Pointer) *QtPrivate__QVariantTypeCoercer {
-	if h == nil {
-		return nil
-	}
-
-	return &QtPrivate__QVariantTypeCoercer{h: (*C.QtPrivate__QVariantTypeCoercer)(h)}
-}
-
-func (this *QtPrivate__QVariantTypeCoercer) Convert(value *QVariant, typeVal *QMetaType) unsafe.Pointer {
-	return (unsafe.Pointer)(C.QtPrivate__QVariantTypeCoercer_Convert(this.h, value.cPointer(), typeVal.cPointer()))
-}
-
-func (this *QtPrivate__QVariantTypeCoercer) Coerce(value *QVariant, typeVal *QMetaType) unsafe.Pointer {
-	return (unsafe.Pointer)(C.QtPrivate__QVariantTypeCoercer_Coerce(this.h, value.cPointer(), typeVal.cPointer()))
-}
-
-// Delete this object from C++ memory.
-func (this *QtPrivate__QVariantTypeCoercer) Delete() {
-	C.QtPrivate__QVariantTypeCoercer_Delete(this.h, C.bool(this.isSubclass))
-}
-
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
-func (this *QtPrivate__QVariantTypeCoercer) GoGC() {
-	runtime.SetFinalizer(this, func(this *QtPrivate__QVariantTypeCoercer) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
-	})
-}
-
 type QVariantConstPointer struct {
 	h          *C.QVariantConstPointer
 	isSubclass bool

@@ -406,7 +406,7 @@ int QLocalServer_SocketOptions(const QLocalServer* self) {
 
 intptr_t QLocalServer_SocketDescriptor(const QLocalServer* self) {
 	qintptr _ret = self->socketDescriptor();
-	return static_cast<intptr_t>(_ret);
+	return (intptr_t)(_ret);
 }
 
 struct miqt_string QLocalServer_Tr2(const char* s, const char* c) {

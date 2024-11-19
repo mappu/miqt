@@ -224,7 +224,7 @@ public:
 	intptr_t virtualbase_SocketDescriptor() const {
 
 		qintptr _ret = QAbstractSocket::socketDescriptor();
-		return static_cast<intptr_t>(_ret);
+		return (intptr_t)(_ret);
 
 	}
 
@@ -238,7 +238,7 @@ public:
 		}
 		
 		qintptr socketDescriptor_ret = socketDescriptor;
-		intptr_t sigval1 = static_cast<intptr_t>(socketDescriptor_ret);
+		intptr_t sigval1 = (intptr_t)(socketDescriptor_ret);
 		QAbstractSocket::SocketState state_ret = state;
 		int sigval2 = static_cast<int>(state_ret);
 		QIODeviceBase::OpenMode openMode_ret = openMode;
@@ -829,7 +829,7 @@ void QAbstractSocket_Abort(QAbstractSocket* self) {
 
 intptr_t QAbstractSocket_SocketDescriptor(const QAbstractSocket* self) {
 	qintptr _ret = self->socketDescriptor();
-	return static_cast<intptr_t>(_ret);
+	return (intptr_t)(_ret);
 }
 
 bool QAbstractSocket_SetSocketDescriptor(QAbstractSocket* self, intptr_t socketDescriptor, int state, int openMode) {

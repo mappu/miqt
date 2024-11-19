@@ -19,43 +19,15 @@ class QMetaAssociation;
 class QMetaContainer;
 class QMetaSequence;
 class QMetaType;
-#if defined(WORKAROUND_INNER_CLASS_DEFINITION_QtMetaContainerPrivate__QMetaAssociationInterface)
-typedef QtMetaContainerPrivate::QMetaAssociationInterface QtMetaContainerPrivate__QMetaAssociationInterface;
-#else
-class QtMetaContainerPrivate__QMetaAssociationInterface;
-#endif
-#if defined(WORKAROUND_INNER_CLASS_DEFINITION_QtMetaContainerPrivate__QMetaContainerInterface)
-typedef QtMetaContainerPrivate::QMetaContainerInterface QtMetaContainerPrivate__QMetaContainerInterface;
-#else
-class QtMetaContainerPrivate__QMetaContainerInterface;
-#endif
-#if defined(WORKAROUND_INNER_CLASS_DEFINITION_QtMetaContainerPrivate__QMetaSequenceInterface)
-typedef QtMetaContainerPrivate::QMetaSequenceInterface QtMetaContainerPrivate__QMetaSequenceInterface;
-#else
-class QtMetaContainerPrivate__QMetaSequenceInterface;
-#endif
 #else
 typedef struct QMetaAssociation QMetaAssociation;
 typedef struct QMetaContainer QMetaContainer;
 typedef struct QMetaSequence QMetaSequence;
 typedef struct QMetaType QMetaType;
-typedef struct QtMetaContainerPrivate__QMetaAssociationInterface QtMetaContainerPrivate__QMetaAssociationInterface;
-typedef struct QtMetaContainerPrivate__QMetaContainerInterface QtMetaContainerPrivate__QMetaContainerInterface;
-typedef struct QtMetaContainerPrivate__QMetaSequenceInterface QtMetaContainerPrivate__QMetaSequenceInterface;
 #endif
 
-void QtMetaContainerPrivate__QMetaContainerInterface_new(QtMetaContainerPrivate__QMetaContainerInterface** outptr_QtMetaContainerPrivate__QMetaContainerInterface);
-void QtMetaContainerPrivate__QMetaContainerInterface_Delete(QtMetaContainerPrivate__QMetaContainerInterface* self, bool isSubclass);
-
-void QtMetaContainerPrivate__QMetaSequenceInterface_new(QtMetaContainerPrivate__QMetaSequenceInterface** outptr_QtMetaContainerPrivate__QMetaSequenceInterface, QtMetaContainerPrivate__QMetaContainerInterface** outptr_QtMetaContainerPrivate__QMetaContainerInterface);
-void QtMetaContainerPrivate__QMetaSequenceInterface_Delete(QtMetaContainerPrivate__QMetaSequenceInterface* self, bool isSubclass);
-
-void QtMetaContainerPrivate__QMetaAssociationInterface_new(QtMetaContainerPrivate__QMetaAssociationInterface** outptr_QtMetaContainerPrivate__QMetaAssociationInterface, QtMetaContainerPrivate__QMetaContainerInterface** outptr_QtMetaContainerPrivate__QMetaContainerInterface);
-void QtMetaContainerPrivate__QMetaAssociationInterface_Delete(QtMetaContainerPrivate__QMetaAssociationInterface* self, bool isSubclass);
-
 void QMetaContainer_new(QMetaContainer** outptr_QMetaContainer);
-void QMetaContainer_new2(QtMetaContainerPrivate__QMetaContainerInterface* d, QMetaContainer** outptr_QMetaContainer);
-void QMetaContainer_new3(QMetaContainer* param1, QMetaContainer** outptr_QMetaContainer);
+void QMetaContainer_new2(QMetaContainer* param1, QMetaContainer** outptr_QMetaContainer);
 bool QMetaContainer_HasInputIterator(const QMetaContainer* self);
 bool QMetaContainer_HasForwardIterator(const QMetaContainer* self);
 bool QMetaContainer_HasBidirectionalIterator(const QMetaContainer* self);
@@ -83,7 +55,6 @@ ptrdiff_t QMetaContainer_DiffConstIterator(const QMetaContainer* self, const voi
 void QMetaContainer_Delete(QMetaContainer* self, bool isSubclass);
 
 void QMetaSequence_new(QMetaSequence** outptr_QMetaSequence, QMetaContainer** outptr_QMetaContainer);
-void QMetaSequence_new2(QtMetaContainerPrivate__QMetaSequenceInterface* d, QMetaSequence** outptr_QMetaSequence, QMetaContainer** outptr_QMetaContainer);
 QMetaType* QMetaSequence_ValueMetaType(const QMetaSequence* self);
 bool QMetaSequence_IsSortable(const QMetaSequence* self);
 bool QMetaSequence_CanAddValueAtBegin(const QMetaSequence* self);
@@ -117,7 +88,6 @@ void QMetaSequence_ValueAtConstIterator(const QMetaSequence* self, const void* i
 void QMetaSequence_Delete(QMetaSequence* self, bool isSubclass);
 
 void QMetaAssociation_new(QMetaAssociation** outptr_QMetaAssociation, QMetaContainer** outptr_QMetaContainer);
-void QMetaAssociation_new2(QtMetaContainerPrivate__QMetaAssociationInterface* d, QMetaAssociation** outptr_QMetaAssociation, QMetaContainer** outptr_QMetaContainer);
 QMetaType* QMetaAssociation_KeyMetaType(const QMetaAssociation* self);
 QMetaType* QMetaAssociation_MappedMetaType(const QMetaAssociation* self);
 bool QMetaAssociation_CanInsertKey(const QMetaAssociation* self);

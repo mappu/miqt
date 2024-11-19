@@ -513,56 +513,6 @@ func (this *QPropertyNotifier) GoGC() {
 	})
 }
 
-type QtPrivate__QBindableInterface struct {
-	h          *C.QtPrivate__QBindableInterface
-	isSubclass bool
-}
-
-func (this *QtPrivate__QBindableInterface) cPointer() *C.QtPrivate__QBindableInterface {
-	if this == nil {
-		return nil
-	}
-	return this.h
-}
-
-func (this *QtPrivate__QBindableInterface) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
-}
-
-// newQtPrivate__QBindableInterface constructs the type using only CGO pointers.
-func newQtPrivate__QBindableInterface(h *C.QtPrivate__QBindableInterface) *QtPrivate__QBindableInterface {
-	if h == nil {
-		return nil
-	}
-	return &QtPrivate__QBindableInterface{h: h}
-}
-
-// UnsafeNewQtPrivate__QBindableInterface constructs the type using only unsafe pointers.
-func UnsafeNewQtPrivate__QBindableInterface(h unsafe.Pointer) *QtPrivate__QBindableInterface {
-	if h == nil {
-		return nil
-	}
-
-	return &QtPrivate__QBindableInterface{h: (*C.QtPrivate__QBindableInterface)(h)}
-}
-
-// Delete this object from C++ memory.
-func (this *QtPrivate__QBindableInterface) Delete() {
-	C.QtPrivate__QBindableInterface_Delete(this.h, C.bool(this.isSubclass))
-}
-
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
-func (this *QtPrivate__QBindableInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QtPrivate__QBindableInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
-	})
-}
-
 type QUntypedBindable struct {
 	h          *C.QUntypedBindable
 	isSubclass bool

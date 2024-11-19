@@ -34,7 +34,7 @@ public:
 		}
 		
 		qintptr socket_ret = socket;
-		intptr_t sigval1 = static_cast<intptr_t>(socket_ret);
+		intptr_t sigval1 = (intptr_t)(socket_ret);
 
 		miqt_exec_callback_QSslServer_IncomingConnection(this, handle__IncomingConnection, sigval1);
 

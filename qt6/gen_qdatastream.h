@@ -19,17 +19,11 @@ class QByteArray;
 class QDataStream;
 class QIODevice;
 class QIODeviceBase;
-#if defined(WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__StreamStateSaver)
-typedef QtPrivate::StreamStateSaver QtPrivate__StreamStateSaver;
-#else
-class QtPrivate__StreamStateSaver;
-#endif
 #else
 typedef struct QByteArray QByteArray;
 typedef struct QDataStream QDataStream;
 typedef struct QIODevice QIODevice;
 typedef struct QIODeviceBase QIODeviceBase;
-typedef struct QtPrivate__StreamStateSaver QtPrivate__StreamStateSaver;
 #endif
 
 void QDataStream_new(QDataStream** outptr_QDataStream, QIODeviceBase** outptr_QIODeviceBase);
@@ -84,9 +78,6 @@ void QDataStream_RollbackTransaction(QDataStream* self);
 void QDataStream_AbortTransaction(QDataStream* self);
 bool QDataStream_IsDeviceTransactionStarted(const QDataStream* self);
 void QDataStream_Delete(QDataStream* self, bool isSubclass);
-
-void QtPrivate__StreamStateSaver_new(QDataStream* s, QtPrivate__StreamStateSaver** outptr_QtPrivate__StreamStateSaver);
-void QtPrivate__StreamStateSaver_Delete(QtPrivate__StreamStateSaver* self, bool isSubclass);
 
 #ifdef __cplusplus
 } /* extern C */

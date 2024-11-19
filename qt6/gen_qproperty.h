@@ -23,11 +23,6 @@ class QPropertyObserver;
 class QPropertyObserverBase;
 class QUntypedBindable;
 class QUntypedPropertyBinding;
-#if defined(WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__QBindableInterface)
-typedef QtPrivate::QBindableInterface QtPrivate__QBindableInterface;
-#else
-class QtPrivate__QBindableInterface;
-#endif
 #else
 typedef struct QMetaType QMetaType;
 typedef struct QPropertyBindingError QPropertyBindingError;
@@ -37,7 +32,6 @@ typedef struct QPropertyObserver QPropertyObserver;
 typedef struct QPropertyObserverBase QPropertyObserverBase;
 typedef struct QUntypedBindable QUntypedBindable;
 typedef struct QUntypedPropertyBinding QUntypedPropertyBinding;
-typedef struct QtPrivate__QBindableInterface QtPrivate__QBindableInterface;
 #endif
 
 void QPropertyBindingSourceLocation_new(QPropertyBindingSourceLocation** outptr_QPropertyBindingSourceLocation);
@@ -71,8 +65,6 @@ void QPropertyObserver_Delete(QPropertyObserver* self, bool isSubclass);
 
 void QPropertyNotifier_new(QPropertyNotifier** outptr_QPropertyNotifier, QPropertyObserver** outptr_QPropertyObserver, QPropertyObserverBase** outptr_QPropertyObserverBase);
 void QPropertyNotifier_Delete(QPropertyNotifier* self, bool isSubclass);
-
-void QtPrivate__QBindableInterface_Delete(QtPrivate__QBindableInterface* self, bool isSubclass);
 
 void QUntypedBindable_new(QUntypedBindable** outptr_QUntypedBindable);
 void QUntypedBindable_new2(QUntypedBindable* param1, QUntypedBindable** outptr_QUntypedBindable);

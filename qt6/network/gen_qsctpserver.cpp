@@ -30,7 +30,7 @@ public:
 		}
 		
 		qintptr handle_ret = handle;
-		intptr_t sigval1 = static_cast<intptr_t>(handle_ret);
+		intptr_t sigval1 = (intptr_t)(handle_ret);
 
 		miqt_exec_callback_QSctpServer_IncomingConnection(this, handle__IncomingConnection, sigval1);
 

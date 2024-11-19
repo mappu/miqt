@@ -78,7 +78,7 @@ public:
 		}
 		
 		qintptr handle_ret = handle;
-		intptr_t sigval1 = static_cast<intptr_t>(handle_ret);
+		intptr_t sigval1 = (intptr_t)(handle_ret);
 
 		miqt_exec_callback_QTcpServer_IncomingConnection(this, handle__IncomingConnection, sigval1);
 
@@ -338,7 +338,7 @@ QHostAddress* QTcpServer_ServerAddress(const QTcpServer* self) {
 
 intptr_t QTcpServer_SocketDescriptor(const QTcpServer* self) {
 	qintptr _ret = self->socketDescriptor();
-	return static_cast<intptr_t>(_ret);
+	return (intptr_t)(_ret);
 }
 
 bool QTcpServer_SetSocketDescriptor(QTcpServer* self, intptr_t socketDescriptor) {
