@@ -64,7 +64,6 @@ void QXmlStreamEntityDeclaration_Delete(QXmlStreamEntityDeclaration* self, bool 
 
 struct miqt_string QXmlStreamEntityResolver_ResolveEntity(QXmlStreamEntityResolver* self, struct miqt_string publicId, struct miqt_string systemId);
 struct miqt_string QXmlStreamEntityResolver_ResolveUndeclaredEntity(QXmlStreamEntityResolver* self, struct miqt_string name);
-void QXmlStreamEntityResolver_OperatorAssign(QXmlStreamEntityResolver* self, QXmlStreamEntityResolver* param1);
 void QXmlStreamEntityResolver_Delete(QXmlStreamEntityResolver* self, bool isSubclass);
 
 void QXmlStreamReader_new(QXmlStreamReader** outptr_QXmlStreamReader);

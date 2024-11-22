@@ -695,7 +695,7 @@ void QStandardItem_Write(const QStandardItem* self, QDataStream* out) {
 }
 
 bool QStandardItem_OperatorLesser(const QStandardItem* self, QStandardItem* other) {
-	return self->operator<(*other);
+	return (*self < *other);
 }
 
 QStandardItem* QStandardItem_Child2(const QStandardItem* self, int row, int column) {

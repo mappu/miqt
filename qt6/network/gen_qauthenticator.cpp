@@ -23,11 +23,11 @@ void QAuthenticator_OperatorAssign(QAuthenticator* self, QAuthenticator* other) 
 }
 
 bool QAuthenticator_OperatorEqual(const QAuthenticator* self, QAuthenticator* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QAuthenticator_OperatorNotEqual(const QAuthenticator* self, QAuthenticator* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 struct miqt_string QAuthenticator_User(const QAuthenticator* self) {

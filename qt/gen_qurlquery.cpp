@@ -35,11 +35,11 @@ void QUrlQuery_OperatorAssign(QUrlQuery* self, QUrlQuery* other) {
 }
 
 bool QUrlQuery_OperatorEqual(const QUrlQuery* self, QUrlQuery* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QUrlQuery_OperatorNotEqual(const QUrlQuery* self, QUrlQuery* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 void QUrlQuery_Swap(QUrlQuery* self, QUrlQuery* other) {

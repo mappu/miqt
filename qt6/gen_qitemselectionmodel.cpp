@@ -102,11 +102,11 @@ QItemSelectionRange* QItemSelectionRange_Intersected(const QItemSelectionRange* 
 }
 
 bool QItemSelectionRange_OperatorEqual(const QItemSelectionRange* self, QItemSelectionRange* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QItemSelectionRange_OperatorNotEqual(const QItemSelectionRange* self, QItemSelectionRange* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QItemSelectionRange_IsValid(const QItemSelectionRange* self) {

@@ -357,15 +357,15 @@ bool QUrl_IsDetached(const QUrl* self) {
 }
 
 bool QUrl_OperatorLesser(const QUrl* self, QUrl* url) {
-	return self->operator<(*url);
+	return (*self < *url);
 }
 
 bool QUrl_OperatorEqual(const QUrl* self, QUrl* url) {
-	return self->operator==(*url);
+	return (*self == *url);
 }
 
 bool QUrl_OperatorNotEqual(const QUrl* self, QUrl* url) {
-	return self->operator!=(*url);
+	return (*self != *url);
 }
 
 struct miqt_string QUrl_FromPercentEncoding(struct miqt_string param1) {

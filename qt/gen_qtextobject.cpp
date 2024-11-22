@@ -380,15 +380,15 @@ bool QTextBlock_IsValid(const QTextBlock* self) {
 }
 
 bool QTextBlock_OperatorEqual(const QTextBlock* self, QTextBlock* o) {
-	return self->operator==(*o);
+	return (*self == *o);
 }
 
 bool QTextBlock_OperatorNotEqual(const QTextBlock* self, QTextBlock* o) {
-	return self->operator!=(*o);
+	return (*self != *o);
 }
 
 bool QTextBlock_OperatorLesser(const QTextBlock* self, QTextBlock* o) {
-	return self->operator<(*o);
+	return (*self < *o);
 }
 
 int QTextBlock_Position(const QTextBlock* self) {
@@ -559,15 +559,15 @@ bool QTextFragment_IsValid(const QTextFragment* self) {
 }
 
 bool QTextFragment_OperatorEqual(const QTextFragment* self, QTextFragment* o) {
-	return self->operator==(*o);
+	return (*self == *o);
 }
 
 bool QTextFragment_OperatorNotEqual(const QTextFragment* self, QTextFragment* o) {
-	return self->operator!=(*o);
+	return (*self != *o);
 }
 
 bool QTextFragment_OperatorLesser(const QTextFragment* self, QTextFragment* o) {
-	return self->operator<(*o);
+	return (*self < *o);
 }
 
 int QTextFragment_Position(const QTextFragment* self) {
@@ -679,11 +679,11 @@ bool QTextFrame__iterator_AtEnd(const QTextFrame__iterator* self) {
 }
 
 bool QTextFrame__iterator_OperatorEqual(const QTextFrame__iterator* self, QTextFrame__iterator* o) {
-	return self->operator==(*o);
+	return (*self == *o);
 }
 
 bool QTextFrame__iterator_OperatorNotEqual(const QTextFrame__iterator* self, QTextFrame__iterator* o) {
-	return self->operator!=(*o);
+	return (*self != *o);
 }
 
 QTextFrame__iterator* QTextFrame__iterator_OperatorPlusPlus(QTextFrame__iterator* self) {
@@ -737,11 +737,11 @@ bool QTextBlock__iterator_AtEnd(const QTextBlock__iterator* self) {
 }
 
 bool QTextBlock__iterator_OperatorEqual(const QTextBlock__iterator* self, QTextBlock__iterator* o) {
-	return self->operator==(*o);
+	return (*self == *o);
 }
 
 bool QTextBlock__iterator_OperatorNotEqual(const QTextBlock__iterator* self, QTextBlock__iterator* o) {
-	return self->operator!=(*o);
+	return (*self != *o);
 }
 
 QTextBlock__iterator* QTextBlock__iterator_OperatorPlusPlus(QTextBlock__iterator* self) {

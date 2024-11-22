@@ -28,11 +28,11 @@ void QAudioDevice_OperatorAssign(QAudioDevice* self, QAudioDevice* other) {
 }
 
 bool QAudioDevice_OperatorEqual(const QAudioDevice* self, QAudioDevice* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QAudioDevice_OperatorNotEqual(const QAudioDevice* self, QAudioDevice* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QAudioDevice_IsNull(const QAudioDevice* self) {

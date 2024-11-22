@@ -37,11 +37,11 @@ void QNetworkRequest_Swap(QNetworkRequest* self, QNetworkRequest* other) {
 }
 
 bool QNetworkRequest_OperatorEqual(const QNetworkRequest* self, QNetworkRequest* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QNetworkRequest_OperatorNotEqual(const QNetworkRequest* self, QNetworkRequest* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 QUrl* QNetworkRequest_Url(const QNetworkRequest* self) {

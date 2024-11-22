@@ -50,11 +50,11 @@ bool QMediaResource_IsNull(const QMediaResource* self) {
 }
 
 bool QMediaResource_OperatorEqual(const QMediaResource* self, QMediaResource* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QMediaResource_OperatorNotEqual(const QMediaResource* self, QMediaResource* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 QUrl* QMediaResource_Url(const QMediaResource* self) {

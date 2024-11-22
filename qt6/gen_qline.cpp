@@ -99,11 +99,11 @@ void QLine_SetLine(QLine* self, int x1, int y1, int x2, int y2) {
 }
 
 bool QLine_OperatorEqual(const QLine* self, QLine* d) {
-	return self->operator==(*d);
+	return (*self == *d);
 }
 
 bool QLine_OperatorNotEqual(const QLine* self, QLine* d) {
-	return self->operator!=(*d);
+	return (*self != *d);
 }
 
 QLineF* QLine_ToLineF(const QLine* self) {
@@ -266,11 +266,11 @@ void QLineF_SetLine(QLineF* self, double x1, double y1, double x2, double y2) {
 }
 
 bool QLineF_OperatorEqual(const QLineF* self, QLineF* d) {
-	return self->operator==(*d);
+	return (*self == *d);
 }
 
 bool QLineF_OperatorNotEqual(const QLineF* self, QLineF* d) {
-	return self->operator!=(*d);
+	return (*self != *d);
 }
 
 QLine* QLineF_ToLine(const QLineF* self) {

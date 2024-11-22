@@ -106,11 +106,11 @@ bool QXmlStreamAttribute_IsDefault(const QXmlStreamAttribute* self) {
 }
 
 bool QXmlStreamAttribute_OperatorEqual(const QXmlStreamAttribute* self, QXmlStreamAttribute* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QXmlStreamAttribute_OperatorNotEqual(const QXmlStreamAttribute* self, QXmlStreamAttribute* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 void QXmlStreamAttribute_Delete(QXmlStreamAttribute* self, bool isSubclass) {
@@ -143,11 +143,11 @@ void QXmlStreamNamespaceDeclaration_OperatorAssign(QXmlStreamNamespaceDeclaratio
 }
 
 bool QXmlStreamNamespaceDeclaration_OperatorEqual(const QXmlStreamNamespaceDeclaration* self, QXmlStreamNamespaceDeclaration* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QXmlStreamNamespaceDeclaration_OperatorNotEqual(const QXmlStreamNamespaceDeclaration* self, QXmlStreamNamespaceDeclaration* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 void QXmlStreamNamespaceDeclaration_Delete(QXmlStreamNamespaceDeclaration* self, bool isSubclass) {
@@ -173,11 +173,11 @@ void QXmlStreamNotationDeclaration_OperatorAssign(QXmlStreamNotationDeclaration*
 }
 
 bool QXmlStreamNotationDeclaration_OperatorEqual(const QXmlStreamNotationDeclaration* self, QXmlStreamNotationDeclaration* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QXmlStreamNotationDeclaration_OperatorNotEqual(const QXmlStreamNotationDeclaration* self, QXmlStreamNotationDeclaration* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 void QXmlStreamNotationDeclaration_Delete(QXmlStreamNotationDeclaration* self, bool isSubclass) {
@@ -203,11 +203,11 @@ void QXmlStreamEntityDeclaration_OperatorAssign(QXmlStreamEntityDeclaration* sel
 }
 
 bool QXmlStreamEntityDeclaration_OperatorEqual(const QXmlStreamEntityDeclaration* self, QXmlStreamEntityDeclaration* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QXmlStreamEntityDeclaration_OperatorNotEqual(const QXmlStreamEntityDeclaration* self, QXmlStreamEntityDeclaration* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 void QXmlStreamEntityDeclaration_Delete(QXmlStreamEntityDeclaration* self, bool isSubclass) {
@@ -241,10 +241,6 @@ struct miqt_string QXmlStreamEntityResolver_ResolveUndeclaredEntity(QXmlStreamEn
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
-}
-
-void QXmlStreamEntityResolver_OperatorAssign(QXmlStreamEntityResolver* self, QXmlStreamEntityResolver* param1) {
-	self->operator=(*param1);
 }
 
 void QXmlStreamEntityResolver_Delete(QXmlStreamEntityResolver* self, bool isSubclass) {

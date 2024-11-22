@@ -53,11 +53,11 @@ double QTextLength_RawValue(const QTextLength* self) {
 }
 
 bool QTextLength_OperatorEqual(const QTextLength* self, QTextLength* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QTextLength_OperatorNotEqual(const QTextLength* self, QTextLength* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 void QTextLength_Delete(QTextLength* self, bool isSubclass) {
@@ -281,11 +281,11 @@ QTextTableCellFormat* QTextFormat_ToTableCellFormat(const QTextFormat* self) {
 }
 
 bool QTextFormat_OperatorEqual(const QTextFormat* self, QTextFormat* rhs) {
-	return self->operator==(*rhs);
+	return (*self == *rhs);
 }
 
 bool QTextFormat_OperatorNotEqual(const QTextFormat* self, QTextFormat* rhs) {
-	return self->operator!=(*rhs);
+	return (*self != *rhs);
 }
 
 void QTextFormat_SetLayoutDirection(QTextFormat* self, int direction) {

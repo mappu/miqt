@@ -312,27 +312,27 @@ void QTextCursor_EndEditBlock(QTextCursor* self) {
 }
 
 bool QTextCursor_OperatorNotEqual(const QTextCursor* self, QTextCursor* rhs) {
-	return self->operator!=(*rhs);
+	return (*self != *rhs);
 }
 
 bool QTextCursor_OperatorLesser(const QTextCursor* self, QTextCursor* rhs) {
-	return self->operator<(*rhs);
+	return (*self < *rhs);
 }
 
 bool QTextCursor_OperatorLesserOrEqual(const QTextCursor* self, QTextCursor* rhs) {
-	return self->operator<=(*rhs);
+	return (*self <= *rhs);
 }
 
 bool QTextCursor_OperatorEqual(const QTextCursor* self, QTextCursor* rhs) {
-	return self->operator==(*rhs);
+	return (*self == *rhs);
 }
 
 bool QTextCursor_OperatorGreaterOrEqual(const QTextCursor* self, QTextCursor* rhs) {
-	return self->operator>=(*rhs);
+	return (*self >= *rhs);
 }
 
 bool QTextCursor_OperatorGreater(const QTextCursor* self, QTextCursor* rhs) {
-	return self->operator>(*rhs);
+	return (*self > *rhs);
 }
 
 bool QTextCursor_IsCopyOf(const QTextCursor* self, QTextCursor* other) {

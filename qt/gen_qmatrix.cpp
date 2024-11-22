@@ -155,11 +155,11 @@ QMatrix* QMatrix_Inverted(const QMatrix* self) {
 }
 
 bool QMatrix_OperatorEqual(const QMatrix* self, QMatrix* param1) {
-	return self->operator==(*param1);
+	return (*self == *param1);
 }
 
 bool QMatrix_OperatorNotEqual(const QMatrix* self, QMatrix* param1) {
-	return self->operator!=(*param1);
+	return (*self != *param1);
 }
 
 QMatrix* QMatrix_OperatorMultiplyAssign(QMatrix* self, QMatrix* param1) {

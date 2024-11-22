@@ -289,11 +289,11 @@ QPainterPath* QPainterPath_Simplified(const QPainterPath* self) {
 }
 
 bool QPainterPath_OperatorEqual(const QPainterPath* self, QPainterPath* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QPainterPath_OperatorNotEqual(const QPainterPath* self, QPainterPath* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 QPainterPath* QPainterPath_OperatorBitwiseAnd(const QPainterPath* self, QPainterPath* other) {
@@ -464,11 +464,11 @@ bool QPainterPath__Element_IsCurveTo(const QPainterPath__Element* self) {
 }
 
 bool QPainterPath__Element_OperatorEqual(const QPainterPath__Element* self, QPainterPath__Element* e) {
-	return self->operator==(*e);
+	return (*self == *e);
 }
 
 bool QPainterPath__Element_OperatorNotEqual(const QPainterPath__Element* self, QPainterPath__Element* e) {
-	return self->operator!=(*e);
+	return (*self != *e);
 }
 
 void QPainterPath__Element_Delete(QPainterPath__Element* self, bool isSubclass) {

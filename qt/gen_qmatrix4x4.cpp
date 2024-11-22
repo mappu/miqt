@@ -127,11 +127,11 @@ QMatrix4x4* QMatrix4x4_OperatorDivideAssign(QMatrix4x4* self, float divisor) {
 }
 
 bool QMatrix4x4_OperatorEqual(const QMatrix4x4* self, QMatrix4x4* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QMatrix4x4_OperatorNotEqual(const QMatrix4x4* self, QMatrix4x4* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 void QMatrix4x4_Scale(QMatrix4x4* self, QVector3D* vector) {

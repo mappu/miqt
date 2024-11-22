@@ -139,11 +139,11 @@ bool QBrush_IsOpaque(const QBrush* self) {
 }
 
 bool QBrush_OperatorEqual(const QBrush* self, QBrush* b) {
-	return self->operator==(*b);
+	return (*self == *b);
 }
 
 bool QBrush_OperatorNotEqual(const QBrush* self, QBrush* b) {
-	return self->operator!=(*b);
+	return (*self != *b);
 }
 
 bool QBrush_IsDetached(const QBrush* self) {
@@ -265,11 +265,11 @@ void QGradient_SetInterpolationMode(QGradient* self, int mode) {
 }
 
 bool QGradient_OperatorEqual(const QGradient* self, QGradient* gradient) {
-	return self->operator==(*gradient);
+	return (*self == *gradient);
 }
 
 bool QGradient_OperatorNotEqual(const QGradient* self, QGradient* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 void QGradient_Delete(QGradient* self, bool isSubclass) {

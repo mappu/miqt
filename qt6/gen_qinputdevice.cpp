@@ -335,7 +335,7 @@ QInputDevice* QInputDevice_PrimaryKeyboard() {
 }
 
 bool QInputDevice_OperatorEqual(const QInputDevice* self, QInputDevice* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 void QInputDevice_AvailableVirtualGeometryChanged(QInputDevice* self, QRect* area) {

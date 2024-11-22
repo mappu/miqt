@@ -782,11 +782,11 @@ struct miqt_array /* of struct miqt_string */  QLocale_UiLanguages(const QLocale
 }
 
 bool QLocale_OperatorEqual(const QLocale* self, QLocale* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QLocale_OperatorNotEqual(const QLocale* self, QLocale* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 struct miqt_string QLocale_LanguageToString(int language) {

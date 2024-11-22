@@ -208,11 +208,11 @@ void QRegion_OperatorBitwiseNotAssign(QRegion* self, QRegion* r) {
 }
 
 bool QRegion_OperatorEqual(const QRegion* self, QRegion* r) {
-	return self->operator==(*r);
+	return (*self == *r);
 }
 
 bool QRegion_OperatorNotEqual(const QRegion* self, QRegion* r) {
-	return self->operator!=(*r);
+	return (*self != *r);
 }
 
 void QRegion_Delete(QRegion* self, bool isSubclass) {

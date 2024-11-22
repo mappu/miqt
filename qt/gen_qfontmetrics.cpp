@@ -188,11 +188,11 @@ double QFontMetrics_FontDpi(const QFontMetrics* self) {
 }
 
 bool QFontMetrics_OperatorEqual(const QFontMetrics* self, QFontMetrics* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QFontMetrics_OperatorNotEqual(const QFontMetrics* self, QFontMetrics* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 int QFontMetrics_Width22(const QFontMetrics* self, struct miqt_string param1, int lenVal) {
@@ -444,11 +444,11 @@ double QFontMetricsF_FontDpi(const QFontMetricsF* self) {
 }
 
 bool QFontMetricsF_OperatorEqual(const QFontMetricsF* self, QFontMetricsF* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QFontMetricsF_OperatorNotEqual(const QFontMetricsF* self, QFontMetricsF* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 double QFontMetricsF_HorizontalAdvance2(const QFontMetricsF* self, struct miqt_string stringVal, int length) {

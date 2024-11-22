@@ -62,11 +62,11 @@ void QMediaServiceProviderHint_OperatorAssign(QMediaServiceProviderHint* self, Q
 }
 
 bool QMediaServiceProviderHint_OperatorEqual(const QMediaServiceProviderHint* self, QMediaServiceProviderHint* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QMediaServiceProviderHint_OperatorNotEqual(const QMediaServiceProviderHint* self, QMediaServiceProviderHint* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QMediaServiceProviderHint_IsNull(const QMediaServiceProviderHint* self) {

@@ -34,11 +34,11 @@ void QNetworkCacheMetaData_Swap(QNetworkCacheMetaData* self, QNetworkCacheMetaDa
 }
 
 bool QNetworkCacheMetaData_OperatorEqual(const QNetworkCacheMetaData* self, QNetworkCacheMetaData* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QNetworkCacheMetaData_OperatorNotEqual(const QNetworkCacheMetaData* self, QNetworkCacheMetaData* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QNetworkCacheMetaData_IsValid(const QNetworkCacheMetaData* self) {

@@ -75,11 +75,11 @@ int QTextTableCell_LastPosition(const QTextTableCell* self) {
 }
 
 bool QTextTableCell_OperatorEqual(const QTextTableCell* self, QTextTableCell* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QTextTableCell_OperatorNotEqual(const QTextTableCell* self, QTextTableCell* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 QTextFrame__iterator* QTextTableCell_Begin(const QTextTableCell* self) {

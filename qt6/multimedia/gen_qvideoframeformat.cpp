@@ -36,11 +36,11 @@ void QVideoFrameFormat_OperatorAssign(QVideoFrameFormat* self, QVideoFrameFormat
 }
 
 bool QVideoFrameFormat_OperatorEqual(const QVideoFrameFormat* self, QVideoFrameFormat* format) {
-	return self->operator==(*format);
+	return (*self == *format);
 }
 
 bool QVideoFrameFormat_OperatorNotEqual(const QVideoFrameFormat* self, QVideoFrameFormat* format) {
-	return self->operator!=(*format);
+	return (*self != *format);
 }
 
 bool QVideoFrameFormat_IsValid(const QVideoFrameFormat* self) {

@@ -175,11 +175,11 @@ struct miqt_string QMediaFormat_VideoCodecDescription(int codec) {
 }
 
 bool QMediaFormat_OperatorEqual(const QMediaFormat* self, QMediaFormat* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QMediaFormat_OperatorNotEqual(const QMediaFormat* self, QMediaFormat* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 void QMediaFormat_ResolveForEncoding(QMediaFormat* self, int flags) {

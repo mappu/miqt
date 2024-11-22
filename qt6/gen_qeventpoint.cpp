@@ -38,11 +38,11 @@ void QEventPoint_OperatorAssign(QEventPoint* self, QEventPoint* other) {
 }
 
 bool QEventPoint_OperatorEqual(const QEventPoint* self, QEventPoint* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QEventPoint_OperatorNotEqual(const QEventPoint* self, QEventPoint* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 void QEventPoint_Swap(QEventPoint* self, QEventPoint* other) {

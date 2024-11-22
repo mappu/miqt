@@ -588,27 +588,27 @@ const void* QVariant_Data2(const QVariant* self) {
 }
 
 bool QVariant_OperatorEqual(const QVariant* self, QVariant* v) {
-	return self->operator==(*v);
+	return (*self == *v);
 }
 
 bool QVariant_OperatorNotEqual(const QVariant* self, QVariant* v) {
-	return self->operator!=(*v);
+	return (*self != *v);
 }
 
 bool QVariant_OperatorLesser(const QVariant* self, QVariant* v) {
-	return self->operator<(*v);
+	return (*self < *v);
 }
 
 bool QVariant_OperatorLesserOrEqual(const QVariant* self, QVariant* v) {
-	return self->operator<=(*v);
+	return (*self <= *v);
 }
 
 bool QVariant_OperatorGreater(const QVariant* self, QVariant* v) {
-	return self->operator>(*v);
+	return (*self > *v);
 }
 
 bool QVariant_OperatorGreaterOrEqual(const QVariant* self, QVariant* v) {
-	return self->operator>=(*v);
+	return (*self >= *v);
 }
 
 int QVariant_ToInt1(const QVariant* self, bool* ok) {
@@ -691,11 +691,11 @@ QVariant* QSequentialIterable__const_iterator_OperatorMultiply(const QSequential
 }
 
 bool QSequentialIterable__const_iterator_OperatorEqual(const QSequentialIterable__const_iterator* self, QSequentialIterable__const_iterator* o) {
-	return self->operator==(*o);
+	return (*self == *o);
 }
 
 bool QSequentialIterable__const_iterator_OperatorNotEqual(const QSequentialIterable__const_iterator* self, QSequentialIterable__const_iterator* o) {
-	return self->operator!=(*o);
+	return (*self != *o);
 }
 
 QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorPlusPlus(QSequentialIterable__const_iterator* self) {
@@ -768,11 +768,11 @@ QVariant* QAssociativeIterable__const_iterator_OperatorMultiply(const QAssociati
 }
 
 bool QAssociativeIterable__const_iterator_OperatorEqual(const QAssociativeIterable__const_iterator* self, QAssociativeIterable__const_iterator* o) {
-	return self->operator==(*o);
+	return (*self == *o);
 }
 
 bool QAssociativeIterable__const_iterator_OperatorNotEqual(const QAssociativeIterable__const_iterator* self, QAssociativeIterable__const_iterator* o) {
-	return self->operator!=(*o);
+	return (*self != *o);
 }
 
 QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorPlusPlus(QAssociativeIterable__const_iterator* self) {

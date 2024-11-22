@@ -191,15 +191,15 @@ bool QModelIndex_IsValid(const QModelIndex* self) {
 }
 
 bool QModelIndex_OperatorEqual(const QModelIndex* self, QModelIndex* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QModelIndex_OperatorNotEqual(const QModelIndex* self, QModelIndex* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QModelIndex_OperatorLesser(const QModelIndex* self, QModelIndex* other) {
-	return self->operator<(*other);
+	return (*self < *other);
 }
 
 QVariant* QModelIndex_Data1(const QModelIndex* self, int role) {
@@ -230,15 +230,15 @@ void QPersistentModelIndex_new3(QPersistentModelIndex* other, QPersistentModelIn
 }
 
 bool QPersistentModelIndex_OperatorLesser(const QPersistentModelIndex* self, QPersistentModelIndex* other) {
-	return self->operator<(*other);
+	return (*self < *other);
 }
 
 bool QPersistentModelIndex_OperatorEqual(const QPersistentModelIndex* self, QPersistentModelIndex* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QPersistentModelIndex_OperatorNotEqual(const QPersistentModelIndex* self, QPersistentModelIndex* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 void QPersistentModelIndex_OperatorAssign(QPersistentModelIndex* self, QPersistentModelIndex* other) {
@@ -250,11 +250,11 @@ void QPersistentModelIndex_Swap(QPersistentModelIndex* self, QPersistentModelInd
 }
 
 bool QPersistentModelIndex_OperatorEqualWithOther(const QPersistentModelIndex* self, QModelIndex* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QPersistentModelIndex_OperatorNotEqualWithOther(const QPersistentModelIndex* self, QModelIndex* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 void QPersistentModelIndex_OperatorAssignWithOther(QPersistentModelIndex* self, QModelIndex* other) {

@@ -126,11 +126,11 @@ void QNetworkProxyQuery_Swap(QNetworkProxyQuery* self, QNetworkProxyQuery* other
 }
 
 bool QNetworkProxyQuery_OperatorEqual(const QNetworkProxyQuery* self, QNetworkProxyQuery* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QNetworkProxyQuery_OperatorNotEqual(const QNetworkProxyQuery* self, QNetworkProxyQuery* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 int QNetworkProxyQuery_QueryType(const QNetworkProxyQuery* self) {
@@ -265,11 +265,11 @@ void QNetworkProxy_Swap(QNetworkProxy* self, QNetworkProxy* other) {
 }
 
 bool QNetworkProxy_OperatorEqual(const QNetworkProxy* self, QNetworkProxy* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QNetworkProxy_OperatorNotEqual(const QNetworkProxy* self, QNetworkProxy* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 void QNetworkProxy_SetType(QNetworkProxy* self, int typeVal) {

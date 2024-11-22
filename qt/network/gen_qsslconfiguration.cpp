@@ -33,11 +33,11 @@ void QSslConfiguration_Swap(QSslConfiguration* self, QSslConfiguration* other) {
 }
 
 bool QSslConfiguration_OperatorEqual(const QSslConfiguration* self, QSslConfiguration* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QSslConfiguration_OperatorNotEqual(const QSslConfiguration* self, QSslConfiguration* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QSslConfiguration_IsNull(const QSslConfiguration* self) {

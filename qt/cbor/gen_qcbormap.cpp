@@ -145,15 +145,15 @@ int QCborMap_Compare(const QCborMap* self, QCborMap* other) {
 }
 
 bool QCborMap_OperatorEqual(const QCborMap* self, QCborMap* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QCborMap_OperatorNotEqual(const QCborMap* self, QCborMap* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QCborMap_OperatorLesser(const QCborMap* self, QCborMap* other) {
-	return self->operator<(*other);
+	return (*self < *other);
 }
 
 QCborMap__Iterator* QCborMap_Begin(QCborMap* self) {
@@ -399,51 +399,51 @@ QCborValueRef* QCborMap__Iterator_Value(const QCborMap__Iterator* self) {
 }
 
 bool QCborMap__Iterator_OperatorEqual(const QCborMap__Iterator* self, QCborMap__Iterator* o) {
-	return self->operator==(*o);
+	return (*self == *o);
 }
 
 bool QCborMap__Iterator_OperatorNotEqual(const QCborMap__Iterator* self, QCborMap__Iterator* o) {
-	return self->operator!=(*o);
+	return (*self != *o);
 }
 
 bool QCborMap__Iterator_OperatorLesser(const QCborMap__Iterator* self, QCborMap__Iterator* other) {
-	return self->operator<(*other);
+	return (*self < *other);
 }
 
 bool QCborMap__Iterator_OperatorLesserOrEqual(const QCborMap__Iterator* self, QCborMap__Iterator* other) {
-	return self->operator<=(*other);
+	return (*self <= *other);
 }
 
 bool QCborMap__Iterator_OperatorGreater(const QCborMap__Iterator* self, QCborMap__Iterator* other) {
-	return self->operator>(*other);
+	return (*self > *other);
 }
 
 bool QCborMap__Iterator_OperatorGreaterOrEqual(const QCborMap__Iterator* self, QCborMap__Iterator* other) {
-	return self->operator>=(*other);
+	return (*self >= *other);
 }
 
 bool QCborMap__Iterator_OperatorEqualWithQCborMapConstIterator(const QCborMap__Iterator* self, QCborMap__ConstIterator* o) {
-	return self->operator==(*o);
+	return (*self == *o);
 }
 
 bool QCborMap__Iterator_OperatorNotEqualWithQCborMapConstIterator(const QCborMap__Iterator* self, QCborMap__ConstIterator* o) {
-	return self->operator!=(*o);
+	return (*self != *o);
 }
 
 bool QCborMap__Iterator_OperatorLesserWithOther(const QCborMap__Iterator* self, QCborMap__ConstIterator* other) {
-	return self->operator<(*other);
+	return (*self < *other);
 }
 
 bool QCborMap__Iterator_OperatorLesserOrEqualWithOther(const QCborMap__Iterator* self, QCborMap__ConstIterator* other) {
-	return self->operator<=(*other);
+	return (*self <= *other);
 }
 
 bool QCborMap__Iterator_OperatorGreaterWithOther(const QCborMap__Iterator* self, QCborMap__ConstIterator* other) {
-	return self->operator>(*other);
+	return (*self > *other);
 }
 
 bool QCborMap__Iterator_OperatorGreaterOrEqualWithOther(const QCborMap__Iterator* self, QCborMap__ConstIterator* other) {
-	return self->operator>=(*other);
+	return (*self >= *other);
 }
 
 QCborMap__Iterator* QCborMap__Iterator_OperatorPlusPlus(QCborMap__Iterator* self) {
@@ -540,51 +540,51 @@ QCborValueRef* QCborMap__ConstIterator_Value(const QCborMap__ConstIterator* self
 }
 
 bool QCborMap__ConstIterator_OperatorEqual(const QCborMap__ConstIterator* self, QCborMap__Iterator* o) {
-	return self->operator==(*o);
+	return (*self == *o);
 }
 
 bool QCborMap__ConstIterator_OperatorNotEqual(const QCborMap__ConstIterator* self, QCborMap__Iterator* o) {
-	return self->operator!=(*o);
+	return (*self != *o);
 }
 
 bool QCborMap__ConstIterator_OperatorLesser(const QCborMap__ConstIterator* self, QCborMap__Iterator* other) {
-	return self->operator<(*other);
+	return (*self < *other);
 }
 
 bool QCborMap__ConstIterator_OperatorLesserOrEqual(const QCborMap__ConstIterator* self, QCborMap__Iterator* other) {
-	return self->operator<=(*other);
+	return (*self <= *other);
 }
 
 bool QCborMap__ConstIterator_OperatorGreater(const QCborMap__ConstIterator* self, QCborMap__Iterator* other) {
-	return self->operator>(*other);
+	return (*self > *other);
 }
 
 bool QCborMap__ConstIterator_OperatorGreaterOrEqual(const QCborMap__ConstIterator* self, QCborMap__Iterator* other) {
-	return self->operator>=(*other);
+	return (*self >= *other);
 }
 
 bool QCborMap__ConstIterator_OperatorEqualWithQCborMapConstIterator(const QCborMap__ConstIterator* self, QCborMap__ConstIterator* o) {
-	return self->operator==(*o);
+	return (*self == *o);
 }
 
 bool QCborMap__ConstIterator_OperatorNotEqualWithQCborMapConstIterator(const QCborMap__ConstIterator* self, QCborMap__ConstIterator* o) {
-	return self->operator!=(*o);
+	return (*self != *o);
 }
 
 bool QCborMap__ConstIterator_OperatorLesserWithOther(const QCborMap__ConstIterator* self, QCborMap__ConstIterator* other) {
-	return self->operator<(*other);
+	return (*self < *other);
 }
 
 bool QCborMap__ConstIterator_OperatorLesserOrEqualWithOther(const QCborMap__ConstIterator* self, QCborMap__ConstIterator* other) {
-	return self->operator<=(*other);
+	return (*self <= *other);
 }
 
 bool QCborMap__ConstIterator_OperatorGreaterWithOther(const QCborMap__ConstIterator* self, QCborMap__ConstIterator* other) {
-	return self->operator>(*other);
+	return (*self > *other);
 }
 
 bool QCborMap__ConstIterator_OperatorGreaterOrEqualWithOther(const QCborMap__ConstIterator* self, QCborMap__ConstIterator* other) {
-	return self->operator>=(*other);
+	return (*self >= *other);
 }
 
 QCborMap__ConstIterator* QCborMap__ConstIterator_OperatorPlusPlus(QCborMap__ConstIterator* self) {

@@ -64,11 +64,11 @@ void QMediaContent_OperatorAssign(QMediaContent* self, QMediaContent* other) {
 }
 
 bool QMediaContent_OperatorEqual(const QMediaContent* self, QMediaContent* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QMediaContent_OperatorNotEqual(const QMediaContent* self, QMediaContent* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QMediaContent_IsNull(const QMediaContent* self) {

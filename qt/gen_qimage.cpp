@@ -255,11 +255,11 @@ int QImage_DevType(const QImage* self) {
 }
 
 bool QImage_OperatorEqual(const QImage* self, QImage* param1) {
-	return self->operator==(*param1);
+	return (*self == *param1);
 }
 
 bool QImage_OperatorNotEqual(const QImage* self, QImage* param1) {
-	return self->operator!=(*param1);
+	return (*self != *param1);
 }
 
 void QImage_Detach(QImage* self) {

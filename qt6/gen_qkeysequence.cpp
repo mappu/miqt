@@ -166,27 +166,27 @@ void QKeySequence_Swap(QKeySequence* self, QKeySequence* other) {
 }
 
 bool QKeySequence_OperatorEqual(const QKeySequence* self, QKeySequence* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QKeySequence_OperatorNotEqual(const QKeySequence* self, QKeySequence* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QKeySequence_OperatorLesser(const QKeySequence* self, QKeySequence* ks) {
-	return self->operator<(*ks);
+	return (*self < *ks);
 }
 
 bool QKeySequence_OperatorGreater(const QKeySequence* self, QKeySequence* other) {
-	return self->operator>(*other);
+	return (*self > *other);
 }
 
 bool QKeySequence_OperatorLesserOrEqual(const QKeySequence* self, QKeySequence* other) {
-	return self->operator<=(*other);
+	return (*self <= *other);
 }
 
 bool QKeySequence_OperatorGreaterOrEqual(const QKeySequence* self, QKeySequence* other) {
-	return self->operator>=(*other);
+	return (*self >= *other);
 }
 
 bool QKeySequence_IsDetached(const QKeySequence* self) {

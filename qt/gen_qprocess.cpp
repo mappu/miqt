@@ -31,11 +31,11 @@ void QProcessEnvironment_Swap(QProcessEnvironment* self, QProcessEnvironment* ot
 }
 
 bool QProcessEnvironment_OperatorEqual(const QProcessEnvironment* self, QProcessEnvironment* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QProcessEnvironment_OperatorNotEqual(const QProcessEnvironment* self, QProcessEnvironment* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QProcessEnvironment_IsEmpty(const QProcessEnvironment* self) {

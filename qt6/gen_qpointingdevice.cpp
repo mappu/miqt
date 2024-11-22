@@ -145,7 +145,7 @@ QPointingDevice* QPointingDevice_PrimaryPointingDevice() {
 }
 
 bool QPointingDevice_OperatorEqual(const QPointingDevice* self, QPointingDevice* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 void QPointingDevice_GrabChanged(const QPointingDevice* self, QObject* grabber, int transition, QPointerEvent* event, QEventPoint* point) {

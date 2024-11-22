@@ -26,11 +26,11 @@ void QMimeType_Swap(QMimeType* self, QMimeType* other) {
 }
 
 bool QMimeType_OperatorEqual(const QMimeType* self, QMimeType* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QMimeType_OperatorNotEqual(const QMimeType* self, QMimeType* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QMimeType_IsValid(const QMimeType* self) {

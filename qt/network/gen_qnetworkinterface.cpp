@@ -29,11 +29,11 @@ void QNetworkAddressEntry_Swap(QNetworkAddressEntry* self, QNetworkAddressEntry*
 }
 
 bool QNetworkAddressEntry_OperatorEqual(const QNetworkAddressEntry* self, QNetworkAddressEntry* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QNetworkAddressEntry_OperatorNotEqual(const QNetworkAddressEntry* self, QNetworkAddressEntry* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 int8_t QNetworkAddressEntry_DnsEligibility(const QNetworkAddressEntry* self) {

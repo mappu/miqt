@@ -159,11 +159,11 @@ struct miqt_string QRegularExpression_AnchoredPattern(struct miqt_string express
 }
 
 bool QRegularExpression_OperatorEqual(const QRegularExpression* self, QRegularExpression* re) {
-	return self->operator==(*re);
+	return (*self == *re);
 }
 
 bool QRegularExpression_OperatorNotEqual(const QRegularExpression* self, QRegularExpression* re) {
-	return self->operator!=(*re);
+	return (*self != *re);
 }
 
 QRegularExpressionMatch* QRegularExpression_Match2(const QRegularExpression* self, struct miqt_string subject, ptrdiff_t offset) {

@@ -125,11 +125,11 @@ void* QSslKey_Handle(const QSslKey* self) {
 }
 
 bool QSslKey_OperatorEqual(const QSslKey* self, QSslKey* key) {
-	return self->operator==(*key);
+	return (*self == *key);
 }
 
 bool QSslKey_OperatorNotEqual(const QSslKey* self, QSslKey* key) {
-	return self->operator!=(*key);
+	return (*self != *key);
 }
 
 struct miqt_string QSslKey_ToPem1(const QSslKey* self, struct miqt_string passPhrase) {

@@ -37,11 +37,11 @@ void QCameraFocusZone_OperatorAssign(QCameraFocusZone* self, QCameraFocusZone* o
 }
 
 bool QCameraFocusZone_OperatorEqual(const QCameraFocusZone* self, QCameraFocusZone* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QCameraFocusZone_OperatorNotEqual(const QCameraFocusZone* self, QCameraFocusZone* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QCameraFocusZone_IsValid(const QCameraFocusZone* self) {

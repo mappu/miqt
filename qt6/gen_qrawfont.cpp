@@ -62,11 +62,11 @@ bool QRawFont_IsValid(const QRawFont* self) {
 }
 
 bool QRawFont_OperatorEqual(const QRawFont* self, QRawFont* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QRawFont_OperatorNotEqual(const QRawFont* self, QRawFont* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 struct miqt_string QRawFont_FamilyName(const QRawFont* self) {

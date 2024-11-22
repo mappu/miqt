@@ -552,7 +552,7 @@ void QTreeWidgetItem_SetData(QTreeWidgetItem* self, int column, int role, QVaria
 }
 
 bool QTreeWidgetItem_OperatorLesser(const QTreeWidgetItem* self, QTreeWidgetItem* other) {
-	return self->operator<(*other);
+	return (*self < *other);
 }
 
 void QTreeWidgetItem_Read(QTreeWidgetItem* self, QDataStream* in) {

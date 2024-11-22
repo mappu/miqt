@@ -71,19 +71,19 @@ bool QUuid_IsNull(const QUuid* self) {
 }
 
 bool QUuid_OperatorEqual(const QUuid* self, QUuid* orig) {
-	return self->operator==(*orig);
+	return (*self == *orig);
 }
 
 bool QUuid_OperatorNotEqual(const QUuid* self, QUuid* orig) {
-	return self->operator!=(*orig);
+	return (*self != *orig);
 }
 
 bool QUuid_OperatorLesser(const QUuid* self, QUuid* other) {
-	return self->operator<(*other);
+	return (*self < *other);
 }
 
 bool QUuid_OperatorGreater(const QUuid* self, QUuid* other) {
-	return self->operator>(*other);
+	return (*self > *other);
 }
 
 QUuid* QUuid_CreateUuid() {

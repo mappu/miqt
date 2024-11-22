@@ -88,11 +88,11 @@ Scintilla__Internal__Point* Scintilla__Internal__Point_FromInts(int x_, int y_) 
 }
 
 bool Scintilla__Internal__Point_OperatorEqual(const Scintilla__Internal__Point* self, Scintilla__Internal__Point* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool Scintilla__Internal__Point_OperatorNotEqual(const Scintilla__Internal__Point* self, Scintilla__Internal__Point* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 Scintilla__Internal__Point* Scintilla__Internal__Point_OperatorPlus(const Scintilla__Internal__Point* self, Scintilla__Internal__Point* other) {
@@ -112,7 +112,7 @@ void Scintilla__Internal__Point_Delete(Scintilla__Internal__Point* self, bool is
 }
 
 bool Scintilla__Internal__Interval_OperatorEqual(const Scintilla__Internal__Interval* self, Scintilla__Internal__Interval* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 double Scintilla__Internal__Interval_Width(const Scintilla__Internal__Interval* self) {
@@ -175,7 +175,7 @@ Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_FromInts(int le
 }
 
 bool Scintilla__Internal__PRectangle_OperatorEqual(const Scintilla__Internal__PRectangle* self, Scintilla__Internal__PRectangle* rc) {
-	return self->operator==(*rc);
+	return (*self == *rc);
 }
 
 bool Scintilla__Internal__PRectangle_Contains(const Scintilla__Internal__PRectangle* self, Scintilla__Internal__Point* pt) {
@@ -331,7 +331,7 @@ float Scintilla__Internal__ColourRGBA_GetAlphaComponent(const Scintilla__Interna
 }
 
 bool Scintilla__Internal__ColourRGBA_OperatorEqual(const Scintilla__Internal__ColourRGBA* self, Scintilla__Internal__ColourRGBA* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool Scintilla__Internal__ColourRGBA_IsOpaque(const Scintilla__Internal__ColourRGBA* self) {
