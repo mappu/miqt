@@ -67,7 +67,7 @@ jobs:
     - name: Linux64 bindings compile
       run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src miqt/linux64:qt64 /bin/bash -c 'cd qt6 && go build'
     
-  miqt_linux64_qt6_7:
+  miqt_linux64_qt6_8:
     runs-on: ubuntu-24.04
     
     steps:
@@ -75,16 +75,16 @@ jobs:
       uses: actions/checkout@v4
     
     - name: Linux64 docker build
-      run: docker build -t miqt/linux64:qt67 -f docker/linux64-go1.22-qt6.7-dynamic.Dockerfile .
+      run: docker build -t miqt/linux64:qt68 -f docker/linux64-go1.23-qt6.8-dynamic.Dockerfile .
     
     - name: Cache GOCACHE
       uses: actions/cache@v4
       with:
         path: ~/.cache/go-build
-        key: linux64-qt67-gocache
+        key: linux64-qt68-gocache
     
     - name: Linux64 bindings compile
-      run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src miqt/linux64:qt67 /bin/bash -c 'cd qt6 && go build'
+      run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src miqt/linux64:qt68 /bin/bash -c 'cd qt6 && go build'
     
   miqt_win64_qt5:
     runs-on: ubuntu-24.04
