@@ -26,11 +26,11 @@ void QNetworkConfiguration_Swap(QNetworkConfiguration* self, QNetworkConfigurati
 }
 
 bool QNetworkConfiguration_OperatorEqual(const QNetworkConfiguration* self, QNetworkConfiguration* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QNetworkConfiguration_OperatorNotEqual(const QNetworkConfiguration* self, QNetworkConfiguration* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 int QNetworkConfiguration_State(const QNetworkConfiguration* self) {

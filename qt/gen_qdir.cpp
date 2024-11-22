@@ -450,11 +450,11 @@ bool QDir_MakeAbsolute(QDir* self) {
 }
 
 bool QDir_OperatorEqual(const QDir* self, QDir* dir) {
-	return self->operator==(*dir);
+	return (*self == *dir);
 }
 
 bool QDir_OperatorNotEqual(const QDir* self, QDir* dir) {
-	return self->operator!=(*dir);
+	return (*self != *dir);
 }
 
 bool QDir_Remove(QDir* self, struct miqt_string fileName) {

@@ -230,11 +230,11 @@ QBrush* QPalette_PlaceholderText(const QPalette* self) {
 }
 
 bool QPalette_OperatorEqual(const QPalette* self, QPalette* p) {
-	return self->operator==(*p);
+	return (*self == *p);
 }
 
 bool QPalette_OperatorNotEqual(const QPalette* self, QPalette* p) {
-	return self->operator!=(*p);
+	return (*self != *p);
 }
 
 bool QPalette_IsCopyOf(const QPalette* self, QPalette* p) {

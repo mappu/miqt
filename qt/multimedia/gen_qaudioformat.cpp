@@ -21,11 +21,11 @@ void QAudioFormat_OperatorAssign(QAudioFormat* self, QAudioFormat* other) {
 }
 
 bool QAudioFormat_OperatorEqual(const QAudioFormat* self, QAudioFormat* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QAudioFormat_OperatorNotEqual(const QAudioFormat* self, QAudioFormat* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QAudioFormat_IsValid(const QAudioFormat* self) {

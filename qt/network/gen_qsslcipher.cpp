@@ -37,11 +37,11 @@ void QSslCipher_Swap(QSslCipher* self, QSslCipher* other) {
 }
 
 bool QSslCipher_OperatorEqual(const QSslCipher* self, QSslCipher* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QSslCipher_OperatorNotEqual(const QSslCipher* self, QSslCipher* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QSslCipher_IsNull(const QSslCipher* self) {

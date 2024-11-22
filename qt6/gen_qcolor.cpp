@@ -454,11 +454,11 @@ QColor* QColor_Darker(const QColor* self) {
 }
 
 bool QColor_OperatorEqual(const QColor* self, QColor* c) {
-	return self->operator==(*c);
+	return (*self == *c);
 }
 
 bool QColor_OperatorNotEqual(const QColor* self, QColor* c) {
-	return self->operator!=(*c);
+	return (*self != *c);
 }
 
 bool QColor_IsValidColor(struct miqt_string name) {

@@ -35,11 +35,11 @@ void QHttpPart_Swap(QHttpPart* self, QHttpPart* other) {
 }
 
 bool QHttpPart_OperatorEqual(const QHttpPart* self, QHttpPart* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QHttpPart_OperatorNotEqual(const QHttpPart* self, QHttpPart* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 void QHttpPart_SetHeader(QHttpPart* self, int header, QVariant* value) {

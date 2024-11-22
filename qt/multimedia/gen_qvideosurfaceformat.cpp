@@ -33,11 +33,11 @@ void QVideoSurfaceFormat_OperatorAssign(QVideoSurfaceFormat* self, QVideoSurface
 }
 
 bool QVideoSurfaceFormat_OperatorEqual(const QVideoSurfaceFormat* self, QVideoSurfaceFormat* format) {
-	return self->operator==(*format);
+	return (*self == *format);
 }
 
 bool QVideoSurfaceFormat_OperatorNotEqual(const QVideoSurfaceFormat* self, QVideoSurfaceFormat* format) {
-	return self->operator!=(*format);
+	return (*self != *format);
 }
 
 bool QVideoSurfaceFormat_IsValid(const QVideoSurfaceFormat* self) {

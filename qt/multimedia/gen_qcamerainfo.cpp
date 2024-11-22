@@ -35,11 +35,11 @@ void QCameraInfo_OperatorAssign(QCameraInfo* self, QCameraInfo* other) {
 }
 
 bool QCameraInfo_OperatorEqual(const QCameraInfo* self, QCameraInfo* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QCameraInfo_OperatorNotEqual(const QCameraInfo* self, QCameraInfo* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QCameraInfo_IsNull(const QCameraInfo* self) {

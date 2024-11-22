@@ -173,11 +173,11 @@ bool QJsonObject_Contains(const QJsonObject* self, struct miqt_string key) {
 }
 
 bool QJsonObject_OperatorEqual(const QJsonObject* self, QJsonObject* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QJsonObject_OperatorNotEqual(const QJsonObject* self, QJsonObject* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 QJsonObject__iterator* QJsonObject_Begin(QJsonObject* self) {
@@ -283,27 +283,27 @@ QJsonValueRef* QJsonObject__iterator_OperatorSubscript(QJsonObject__iterator* se
 }
 
 bool QJsonObject__iterator_OperatorEqual(const QJsonObject__iterator* self, QJsonObject__iterator* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QJsonObject__iterator_OperatorNotEqual(const QJsonObject__iterator* self, QJsonObject__iterator* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QJsonObject__iterator_OperatorLesser(const QJsonObject__iterator* self, QJsonObject__iterator* other) {
-	return self->operator<(*other);
+	return (*self < *other);
 }
 
 bool QJsonObject__iterator_OperatorLesserOrEqual(const QJsonObject__iterator* self, QJsonObject__iterator* other) {
-	return self->operator<=(*other);
+	return (*self <= *other);
 }
 
 bool QJsonObject__iterator_OperatorGreater(const QJsonObject__iterator* self, QJsonObject__iterator* other) {
-	return self->operator>(*other);
+	return (*self > *other);
 }
 
 bool QJsonObject__iterator_OperatorGreaterOrEqual(const QJsonObject__iterator* self, QJsonObject__iterator* other) {
-	return self->operator>=(*other);
+	return (*self >= *other);
 }
 
 QJsonObject__iterator* QJsonObject__iterator_OperatorPlusPlus(QJsonObject__iterator* self) {
@@ -351,27 +351,27 @@ int QJsonObject__iterator_OperatorMinusWithQJsonObjectiterator(const QJsonObject
 }
 
 bool QJsonObject__iterator_OperatorEqualWithOther(const QJsonObject__iterator* self, QJsonObject__const_iterator* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QJsonObject__iterator_OperatorNotEqualWithOther(const QJsonObject__iterator* self, QJsonObject__const_iterator* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QJsonObject__iterator_OperatorLesserWithOther(const QJsonObject__iterator* self, QJsonObject__const_iterator* other) {
-	return self->operator<(*other);
+	return (*self < *other);
 }
 
 bool QJsonObject__iterator_OperatorLesserOrEqualWithOther(const QJsonObject__iterator* self, QJsonObject__const_iterator* other) {
-	return self->operator<=(*other);
+	return (*self <= *other);
 }
 
 bool QJsonObject__iterator_OperatorGreaterWithOther(const QJsonObject__iterator* self, QJsonObject__const_iterator* other) {
-	return self->operator>(*other);
+	return (*self > *other);
 }
 
 bool QJsonObject__iterator_OperatorGreaterOrEqualWithOther(const QJsonObject__iterator* self, QJsonObject__const_iterator* other) {
-	return self->operator>=(*other);
+	return (*self >= *other);
 }
 
 void QJsonObject__iterator_Delete(QJsonObject__iterator* self, bool isSubclass) {
@@ -430,27 +430,27 @@ QJsonValue* QJsonObject__const_iterator_OperatorSubscript(QJsonObject__const_ite
 }
 
 bool QJsonObject__const_iterator_OperatorEqual(const QJsonObject__const_iterator* self, QJsonObject__const_iterator* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QJsonObject__const_iterator_OperatorNotEqual(const QJsonObject__const_iterator* self, QJsonObject__const_iterator* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QJsonObject__const_iterator_OperatorLesser(const QJsonObject__const_iterator* self, QJsonObject__const_iterator* other) {
-	return self->operator<(*other);
+	return (*self < *other);
 }
 
 bool QJsonObject__const_iterator_OperatorLesserOrEqual(const QJsonObject__const_iterator* self, QJsonObject__const_iterator* other) {
-	return self->operator<=(*other);
+	return (*self <= *other);
 }
 
 bool QJsonObject__const_iterator_OperatorGreater(const QJsonObject__const_iterator* self, QJsonObject__const_iterator* other) {
-	return self->operator>(*other);
+	return (*self > *other);
 }
 
 bool QJsonObject__const_iterator_OperatorGreaterOrEqual(const QJsonObject__const_iterator* self, QJsonObject__const_iterator* other) {
-	return self->operator>=(*other);
+	return (*self >= *other);
 }
 
 QJsonObject__const_iterator* QJsonObject__const_iterator_OperatorPlusPlus(QJsonObject__const_iterator* self) {
@@ -498,27 +498,27 @@ int QJsonObject__const_iterator_OperatorMinusWithQJsonObjectconstIterator(const 
 }
 
 bool QJsonObject__const_iterator_OperatorEqualWithOther(const QJsonObject__const_iterator* self, QJsonObject__iterator* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QJsonObject__const_iterator_OperatorNotEqualWithOther(const QJsonObject__const_iterator* self, QJsonObject__iterator* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QJsonObject__const_iterator_OperatorLesserWithOther(const QJsonObject__const_iterator* self, QJsonObject__iterator* other) {
-	return self->operator<(*other);
+	return (*self < *other);
 }
 
 bool QJsonObject__const_iterator_OperatorLesserOrEqualWithOther(const QJsonObject__const_iterator* self, QJsonObject__iterator* other) {
-	return self->operator<=(*other);
+	return (*self <= *other);
 }
 
 bool QJsonObject__const_iterator_OperatorGreaterWithOther(const QJsonObject__const_iterator* self, QJsonObject__iterator* other) {
-	return self->operator>(*other);
+	return (*self > *other);
 }
 
 bool QJsonObject__const_iterator_OperatorGreaterOrEqualWithOther(const QJsonObject__const_iterator* self, QJsonObject__iterator* other) {
-	return self->operator>=(*other);
+	return (*self >= *other);
 }
 
 void QJsonObject__const_iterator_Delete(QJsonObject__const_iterator* self, bool isSubclass) {

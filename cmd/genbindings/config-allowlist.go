@@ -234,6 +234,11 @@ func AllowMethod(className string, mm CppMethod) error {
 		return ErrTooComplex
 	}
 
+	if className == "QXmlStreamEntityResolver" && mm.MethodName == "operator=" {
+		// Present in Qt 6.7, but marked as =delete by Q_DISABLE_COPY_MOVE in Qt 6.8
+		return ErrTooComplex
+	}
+
 	return nil // OK, allow
 }
 

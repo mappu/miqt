@@ -36,11 +36,11 @@ void QVideoFrame_OperatorAssign(QVideoFrame* self, QVideoFrame* other) {
 }
 
 bool QVideoFrame_OperatorEqual(const QVideoFrame* self, QVideoFrame* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QVideoFrame_OperatorNotEqual(const QVideoFrame* self, QVideoFrame* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QVideoFrame_IsValid(const QVideoFrame* self) {

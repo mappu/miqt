@@ -431,7 +431,7 @@ void QListWidgetItem_SetData(QListWidgetItem* self, int role, QVariant* value) {
 }
 
 bool QListWidgetItem_OperatorLesser(const QListWidgetItem* self, QListWidgetItem* other) {
-	return self->operator<(*other);
+	return (*self < *other);
 }
 
 void QListWidgetItem_Read(QListWidgetItem* self, QDataStream* in) {

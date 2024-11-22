@@ -72,11 +72,11 @@ bool QSizePolicy_HasWidthForHeight(const QSizePolicy* self) {
 }
 
 bool QSizePolicy_OperatorEqual(const QSizePolicy* self, QSizePolicy* s) {
-	return self->operator==(*s);
+	return (*self == *s);
 }
 
 bool QSizePolicy_OperatorNotEqual(const QSizePolicy* self, QSizePolicy* s) {
-	return self->operator!=(*s);
+	return (*self != *s);
 }
 
 int QSizePolicy_HorizontalStretch(const QSizePolicy* self) {

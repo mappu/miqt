@@ -26,11 +26,11 @@ void QAudioEncoderSettings_OperatorAssign(QAudioEncoderSettings* self, QAudioEnc
 }
 
 bool QAudioEncoderSettings_OperatorEqual(const QAudioEncoderSettings* self, QAudioEncoderSettings* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QAudioEncoderSettings_OperatorNotEqual(const QAudioEncoderSettings* self, QAudioEncoderSettings* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QAudioEncoderSettings_IsNull(const QAudioEncoderSettings* self) {
@@ -164,11 +164,11 @@ void QVideoEncoderSettings_OperatorAssign(QVideoEncoderSettings* self, QVideoEnc
 }
 
 bool QVideoEncoderSettings_OperatorEqual(const QVideoEncoderSettings* self, QVideoEncoderSettings* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QVideoEncoderSettings_OperatorNotEqual(const QVideoEncoderSettings* self, QVideoEncoderSettings* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QVideoEncoderSettings_IsNull(const QVideoEncoderSettings* self) {
@@ -307,11 +307,11 @@ void QImageEncoderSettings_OperatorAssign(QImageEncoderSettings* self, QImageEnc
 }
 
 bool QImageEncoderSettings_OperatorEqual(const QImageEncoderSettings* self, QImageEncoderSettings* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QImageEncoderSettings_OperatorNotEqual(const QImageEncoderSettings* self, QImageEncoderSettings* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QImageEncoderSettings_IsNull(const QImageEncoderSettings* self) {

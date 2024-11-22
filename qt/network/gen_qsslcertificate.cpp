@@ -54,11 +54,11 @@ void QSslCertificate_Swap(QSslCertificate* self, QSslCertificate* other) {
 }
 
 bool QSslCertificate_OperatorEqual(const QSslCertificate* self, QSslCertificate* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QSslCertificate_OperatorNotEqual(const QSslCertificate* self, QSslCertificate* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QSslCertificate_IsNull(const QSslCertificate* self) {

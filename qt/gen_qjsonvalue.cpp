@@ -178,11 +178,11 @@ QJsonValue* QJsonValue_OperatorSubscriptWithInt(const QJsonValue* self, int i) {
 }
 
 bool QJsonValue_OperatorEqual(const QJsonValue* self, QJsonValue* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QJsonValue_OperatorNotEqual(const QJsonValue* self, QJsonValue* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QJsonValue_ToBool1(const QJsonValue* self, bool defaultValue) {
@@ -321,11 +321,11 @@ struct miqt_string QJsonValueRef_ToStringWithDefaultValue(const QJsonValueRef* s
 }
 
 bool QJsonValueRef_OperatorEqual(const QJsonValueRef* self, QJsonValue* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QJsonValueRef_OperatorNotEqual(const QJsonValueRef* self, QJsonValue* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 void QJsonValueRef_Delete(QJsonValueRef* self, bool isSubclass) {

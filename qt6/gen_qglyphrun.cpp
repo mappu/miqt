@@ -88,11 +88,11 @@ void QGlyphRun_Clear(QGlyphRun* self) {
 }
 
 bool QGlyphRun_OperatorEqual(const QGlyphRun* self, QGlyphRun* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QGlyphRun_OperatorNotEqual(const QGlyphRun* self, QGlyphRun* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 void QGlyphRun_SetOverline(QGlyphRun* self, bool overline) {

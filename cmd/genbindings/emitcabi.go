@@ -1026,6 +1026,14 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 
 			callTarget += m.CppCallTarget() + "(" + forwarding + ")"
 
+			// Qt 6.8 moved many operator== implementations from class methods
+			// into global operators.
+			// By using infix syntax, either can be called
+			if m.IsReadonlyOperator() && len(m.Parameters) == 1 {
+				operator := m.CppCallTarget()[8:]
+				callTarget = "(*self " + operator + " " + forwarding + ")"
+			}
+
 			if m.LinuxOnly {
 				ret.WriteString(fmt.Sprintf(
 					"%s %s_%s(%s) {\n"+

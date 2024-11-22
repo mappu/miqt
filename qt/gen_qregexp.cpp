@@ -44,11 +44,11 @@ void QRegExp_Swap(QRegExp* self, QRegExp* other) {
 }
 
 bool QRegExp_OperatorEqual(const QRegExp* self, QRegExp* rx) {
-	return self->operator==(*rx);
+	return (*self == *rx);
 }
 
 bool QRegExp_OperatorNotEqual(const QRegExp* self, QRegExp* rx) {
-	return self->operator!=(*rx);
+	return (*self != *rx);
 }
 
 bool QRegExp_IsEmpty(const QRegExp* self) {

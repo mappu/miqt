@@ -42,11 +42,11 @@ void QNetworkCookie_Swap(QNetworkCookie* self, QNetworkCookie* other) {
 }
 
 bool QNetworkCookie_OperatorEqual(const QNetworkCookie* self, QNetworkCookie* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QNetworkCookie_OperatorNotEqual(const QNetworkCookie* self, QNetworkCookie* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QNetworkCookie_IsSecure(const QNetworkCookie* self) {

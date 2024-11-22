@@ -176,11 +176,11 @@ QTransform* QTransform_RotateRadians(QTransform* self, double a) {
 }
 
 bool QTransform_OperatorEqual(const QTransform* self, QTransform* param1) {
-	return self->operator==(*param1);
+	return (*self == *param1);
 }
 
 bool QTransform_OperatorNotEqual(const QTransform* self, QTransform* param1) {
-	return self->operator!=(*param1);
+	return (*self != *param1);
 }
 
 QTransform* QTransform_OperatorMultiplyAssign(QTransform* self, QTransform* param1) {

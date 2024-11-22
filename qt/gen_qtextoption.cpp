@@ -162,11 +162,11 @@ void QTextOption__Tab_new4(double pos, int tabType, QChar* delim, QTextOption__T
 }
 
 bool QTextOption__Tab_OperatorEqual(const QTextOption__Tab* self, QTextOption__Tab* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QTextOption__Tab_OperatorNotEqual(const QTextOption__Tab* self, QTextOption__Tab* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 void QTextOption__Tab_Delete(QTextOption__Tab* self, bool isSubclass) {

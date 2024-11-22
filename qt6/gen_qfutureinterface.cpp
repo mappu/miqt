@@ -223,11 +223,11 @@ bool QFutureInterfaceBase_HasException(const QFutureInterfaceBase* self) {
 }
 
 bool QFutureInterfaceBase_OperatorEqual(const QFutureInterfaceBase* self, QFutureInterfaceBase* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QFutureInterfaceBase_OperatorNotEqual(const QFutureInterfaceBase* self, QFutureInterfaceBase* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 void QFutureInterfaceBase_Swap(QFutureInterfaceBase* self, QFutureInterfaceBase* other) {

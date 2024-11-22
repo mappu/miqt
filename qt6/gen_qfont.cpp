@@ -337,15 +337,15 @@ void QFont_OperatorAssign(QFont* self, QFont* param1) {
 }
 
 bool QFont_OperatorEqual(const QFont* self, QFont* param1) {
-	return self->operator==(*param1);
+	return (*self == *param1);
 }
 
 bool QFont_OperatorNotEqual(const QFont* self, QFont* param1) {
-	return self->operator!=(*param1);
+	return (*self != *param1);
 }
 
 bool QFont_OperatorLesser(const QFont* self, QFont* param1) {
-	return self->operator<(*param1);
+	return (*self < *param1);
 }
 
 bool QFont_IsCopyOf(const QFont* self, QFont* param1) {

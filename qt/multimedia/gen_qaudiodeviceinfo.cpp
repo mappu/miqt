@@ -23,11 +23,11 @@ void QAudioDeviceInfo_OperatorAssign(QAudioDeviceInfo* self, QAudioDeviceInfo* o
 }
 
 bool QAudioDeviceInfo_OperatorEqual(const QAudioDeviceInfo* self, QAudioDeviceInfo* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QAudioDeviceInfo_OperatorNotEqual(const QAudioDeviceInfo* self, QAudioDeviceInfo* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QAudioDeviceInfo_IsNull(const QAudioDeviceInfo* self) {

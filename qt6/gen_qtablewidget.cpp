@@ -449,7 +449,7 @@ void QTableWidgetItem_SetData(QTableWidgetItem* self, int role, QVariant* value)
 }
 
 bool QTableWidgetItem_OperatorLesser(const QTableWidgetItem* self, QTableWidgetItem* other) {
-	return self->operator<(*other);
+	return (*self < *other);
 }
 
 void QTableWidgetItem_Read(QTableWidgetItem* self, QDataStream* in) {

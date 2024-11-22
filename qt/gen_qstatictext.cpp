@@ -94,11 +94,11 @@ int QStaticText_PerformanceHint(const QStaticText* self) {
 }
 
 bool QStaticText_OperatorEqual(const QStaticText* self, QStaticText* param1) {
-	return self->operator==(*param1);
+	return (*self == *param1);
 }
 
 bool QStaticText_OperatorNotEqual(const QStaticText* self, QStaticText* param1) {
-	return self->operator!=(*param1);
+	return (*self != *param1);
 }
 
 void QStaticText_Prepare1(QStaticText* self, QTransform* matrix) {

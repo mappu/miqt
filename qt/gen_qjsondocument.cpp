@@ -150,11 +150,11 @@ QJsonValue* QJsonDocument_OperatorSubscriptWithInt(const QJsonDocument* self, in
 }
 
 bool QJsonDocument_OperatorEqual(const QJsonDocument* self, QJsonDocument* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QJsonDocument_OperatorNotEqual(const QJsonDocument* self, QJsonDocument* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QJsonDocument_IsNull(const QJsonDocument* self) {

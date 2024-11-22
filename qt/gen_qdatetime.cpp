@@ -246,27 +246,27 @@ long long QDate_DaysTo(const QDate* self, QDate* param1) {
 }
 
 bool QDate_OperatorEqual(const QDate* self, QDate* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QDate_OperatorNotEqual(const QDate* self, QDate* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QDate_OperatorLesser(const QDate* self, QDate* other) {
-	return self->operator<(*other);
+	return (*self < *other);
 }
 
 bool QDate_OperatorLesserOrEqual(const QDate* self, QDate* other) {
-	return self->operator<=(*other);
+	return (*self <= *other);
 }
 
 bool QDate_OperatorGreater(const QDate* self, QDate* other) {
-	return self->operator>(*other);
+	return (*self > *other);
 }
 
 bool QDate_OperatorGreaterOrEqual(const QDate* self, QDate* other) {
-	return self->operator>=(*other);
+	return (*self >= *other);
 }
 
 QDate* QDate_CurrentDate() {
@@ -488,27 +488,27 @@ int QTime_MsecsTo(const QTime* self, QTime* param1) {
 }
 
 bool QTime_OperatorEqual(const QTime* self, QTime* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QTime_OperatorNotEqual(const QTime* self, QTime* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QTime_OperatorLesser(const QTime* self, QTime* other) {
-	return self->operator<(*other);
+	return (*self < *other);
 }
 
 bool QTime_OperatorLesserOrEqual(const QTime* self, QTime* other) {
-	return self->operator<=(*other);
+	return (*self <= *other);
 }
 
 bool QTime_OperatorGreater(const QTime* self, QTime* other) {
-	return self->operator>(*other);
+	return (*self > *other);
 }
 
 bool QTime_OperatorGreaterOrEqual(const QTime* self, QTime* other) {
-	return self->operator>=(*other);
+	return (*self >= *other);
 }
 
 QTime* QTime_FromMSecsSinceStartOfDay(int msecs) {
@@ -793,27 +793,27 @@ long long QDateTime_MsecsTo(const QDateTime* self, QDateTime* param1) {
 }
 
 bool QDateTime_OperatorEqual(const QDateTime* self, QDateTime* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QDateTime_OperatorNotEqual(const QDateTime* self, QDateTime* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QDateTime_OperatorLesser(const QDateTime* self, QDateTime* other) {
-	return self->operator<(*other);
+	return (*self < *other);
 }
 
 bool QDateTime_OperatorLesserOrEqual(const QDateTime* self, QDateTime* other) {
-	return self->operator<=(*other);
+	return (*self <= *other);
 }
 
 bool QDateTime_OperatorGreater(const QDateTime* self, QDateTime* other) {
-	return self->operator>(*other);
+	return (*self > *other);
 }
 
 bool QDateTime_OperatorGreaterOrEqual(const QDateTime* self, QDateTime* other) {
-	return self->operator>=(*other);
+	return (*self >= *other);
 }
 
 void QDateTime_SetUtcOffset(QDateTime* self, int seconds) {

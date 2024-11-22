@@ -19,11 +19,11 @@ void QScrollerProperties_OperatorAssign(QScrollerProperties* self, QScrollerProp
 }
 
 bool QScrollerProperties_OperatorEqual(const QScrollerProperties* self, QScrollerProperties* sp) {
-	return self->operator==(*sp);
+	return (*self == *sp);
 }
 
 bool QScrollerProperties_OperatorNotEqual(const QScrollerProperties* self, QScrollerProperties* sp) {
-	return self->operator!=(*sp);
+	return (*self != *sp);
 }
 
 void QScrollerProperties_SetDefaultScrollerProperties(QScrollerProperties* sp) {

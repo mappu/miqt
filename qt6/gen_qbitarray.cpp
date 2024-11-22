@@ -116,11 +116,11 @@ void QBitArray_OperatorBitwiseNotAssign(QBitArray* self, QBitArray* param1) {
 }
 
 bool QBitArray_OperatorEqual(const QBitArray* self, QBitArray* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QBitArray_OperatorNotEqual(const QBitArray* self, QBitArray* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QBitArray_Fill(QBitArray* self, bool val) {

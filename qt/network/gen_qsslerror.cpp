@@ -36,11 +36,11 @@ void QSslError_OperatorAssign(QSslError* self, QSslError* other) {
 }
 
 bool QSslError_OperatorEqual(const QSslError* self, QSslError* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QSslError_OperatorNotEqual(const QSslError* self, QSslError* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 int QSslError_Error(const QSslError* self) {

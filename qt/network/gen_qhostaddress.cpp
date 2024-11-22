@@ -154,19 +154,19 @@ bool QHostAddress_IsEqual(const QHostAddress* self, QHostAddress* address) {
 }
 
 bool QHostAddress_OperatorEqual(const QHostAddress* self, QHostAddress* address) {
-	return self->operator==(*address);
+	return (*self == *address);
 }
 
 bool QHostAddress_OperatorEqualWithAddress(const QHostAddress* self, int address) {
-	return self->operator==(static_cast<QHostAddress::SpecialAddress>(address));
+	return (*self == static_cast<QHostAddress::SpecialAddress>(address));
 }
 
 bool QHostAddress_OperatorNotEqual(const QHostAddress* self, QHostAddress* address) {
-	return self->operator!=(*address);
+	return (*self != *address);
 }
 
 bool QHostAddress_OperatorNotEqualWithAddress(const QHostAddress* self, int address) {
-	return self->operator!=(static_cast<QHostAddress::SpecialAddress>(address));
+	return (*self != static_cast<QHostAddress::SpecialAddress>(address));
 }
 
 bool QHostAddress_IsNull(const QHostAddress* self) {

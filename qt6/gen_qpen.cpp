@@ -168,11 +168,11 @@ void QPen_SetCosmetic(QPen* self, bool cosmetic) {
 }
 
 bool QPen_OperatorEqual(const QPen* self, QPen* p) {
-	return self->operator==(*p);
+	return (*self == *p);
 }
 
 bool QPen_OperatorNotEqual(const QPen* self, QPen* p) {
-	return self->operator!=(*p);
+	return (*self != *p);
 }
 
 bool QPen_IsDetached(QPen* self) {

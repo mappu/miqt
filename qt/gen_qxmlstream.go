@@ -610,10 +610,6 @@ func (this *QXmlStreamEntityResolver) ResolveUndeclaredEntity(name string) strin
 	return _ret
 }
 
-func (this *QXmlStreamEntityResolver) OperatorAssign(param1 *QXmlStreamEntityResolver) {
-	C.QXmlStreamEntityResolver_OperatorAssign(this.h, param1.cPointer())
-}
-
 // Delete this object from C++ memory.
 func (this *QXmlStreamEntityResolver) Delete() {
 	C.QXmlStreamEntityResolver_Delete(this.h, C.bool(this.isSubclass))

@@ -46,11 +46,11 @@ bool QCameraFormat_IsNull(const QCameraFormat* self) {
 }
 
 bool QCameraFormat_OperatorEqual(const QCameraFormat* self, QCameraFormat* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QCameraFormat_OperatorNotEqual(const QCameraFormat* self, QCameraFormat* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 void QCameraFormat_Delete(QCameraFormat* self, bool isSubclass) {
@@ -76,11 +76,11 @@ void QCameraDevice_OperatorAssign(QCameraDevice* self, QCameraDevice* other) {
 }
 
 bool QCameraDevice_OperatorEqual(const QCameraDevice* self, QCameraDevice* other) {
-	return self->operator==(*other);
+	return (*self == *other);
 }
 
 bool QCameraDevice_OperatorNotEqual(const QCameraDevice* self, QCameraDevice* other) {
-	return self->operator!=(*other);
+	return (*self != *other);
 }
 
 bool QCameraDevice_IsNull(const QCameraDevice* self) {

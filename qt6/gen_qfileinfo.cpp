@@ -45,11 +45,11 @@ void QFileInfo_Swap(QFileInfo* self, QFileInfo* other) {
 }
 
 bool QFileInfo_OperatorEqual(const QFileInfo* self, QFileInfo* fileinfo) {
-	return self->operator==(*fileinfo);
+	return (*self == *fileinfo);
 }
 
 bool QFileInfo_OperatorNotEqual(const QFileInfo* self, QFileInfo* fileinfo) {
-	return self->operator!=(*fileinfo);
+	return (*self != *fileinfo);
 }
 
 void QFileInfo_SetFile(QFileInfo* self, struct miqt_string file) {
