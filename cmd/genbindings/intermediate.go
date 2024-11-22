@@ -348,6 +348,16 @@ func (nm CppMethod) SafeMethodName() string {
 	return tmp
 }
 
+func (nm CppMethod) IsReadonlyOperator() bool {
+	targ := nm.CppCallTarget()
+	switch targ {
+	case "operator==", "operator!=",
+		"operator<", "operator<=", "operator>", "operator>=":
+		return true
+	}
+	return false
+}
+
 type CppEnumEntry struct {
 	EntryName  string
 	EntryValue string
