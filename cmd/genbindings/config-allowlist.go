@@ -211,6 +211,20 @@ func AllowVirtualForClass(className string) bool {
 		return false
 	}
 
+	// Pure virtual method futureInterface() returns an unprojectable template type
+	if className == "QFutureWatcherBase" {
+		return false
+	}
+
+	// Pure virtual dtor (should be possible to support)
+	if className == "QObjectData" {
+		return false
+	}
+
+	if className == "QAccessibleObject" {
+		return false // undefined reference to `vtable for MiqtVirtualQAccessibleObject'
+	}
+
 	return true
 }
 
