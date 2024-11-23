@@ -435,10 +435,12 @@ func (c *CppClass) VirtualMethods() []CppMethod {
 	// Only allow virtual overrides for direct inherits, not all inherits -
 	// Go will automatically allow virtual overrides for the base type because
 	// the parent struct is nested
-	for _, inh := range c.DirectInherits { // AllInherits() {
-		cinfo, ok := KnownClassnames[inh]
-		if !ok {
-			panic("Class " + c.ClassName + " inherits from unknown class " + inh)
+	for _, cinfo := range c.DirectInheritClassInfo() {
+
+		// If a base class is permanently unprojectable, the child classes
+		// should be too
+		if !AllowVirtualForClass(cinfo.Class.ClassName) {
+			return nil
 		}
 
 		for _, m := range cinfo.Class.Methods {
@@ -491,20 +493,36 @@ func (c *CppClass) AllInherits() []string {
 
 	// FIXME prevent duplicates arising from diamond inheritance
 
-	for _, baseClass := range c.DirectInherits {
+	for _, baseClassInfo := range c.DirectInheritClassInfo() {
 
-		ret = append(ret, baseClass)
-
-		// And everything that class inherits - unless - we've seen it before
-		baseClassInfo, ok := KnownClassnames[baseClass]
-		if !ok {
-			panic("Class " + c.ClassName + " inherits from unknown class " + baseClass)
-		}
+		ret = append(ret, baseClassInfo.Class.ClassName)
 
 		recurseInfo := baseClassInfo.Class.AllInherits()
 		for _, childClass := range recurseInfo {
 			ret = append(ret, childClass)
 		}
+	}
+
+	return ret
+}
+
+// DirectInheritClassInfo looks up the CppClass for each entry in DirectInherits.
+func (c *CppClass) DirectInheritClassInfo() []lookupResultClass {
+	var ret []lookupResultClass
+
+	for _, inh := range c.DirectInherits { // AllInherits() {
+		cinfo, ok := KnownClassnames[inh]
+		if !ok {
+			if strings.HasPrefix(inh, `QList<`) {
+				// OK, allow this one to slip through
+				// e.g. QItemSelection extends a QList<>
+				continue
+			} else {
+				panic("Class " + c.ClassName + " inherits from unknown class " + inh)
+			}
+		}
+
+		ret = append(ret, cinfo)
 	}
 
 	return ret

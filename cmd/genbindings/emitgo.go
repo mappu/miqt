@@ -738,7 +738,10 @@ import "C"
 		// on these types already
 		for _, base := range c.DirectInherits {
 
-			if pkg, ok := KnownClassnames[base]; ok && pkg.PackageName != gfs.currentPackageName {
+			if strings.HasPrefix(base, `QList<`) {
+				ret.WriteString("/* Also inherits unprojectable " + base + " */\n")
+
+			} else if pkg, ok := KnownClassnames[base]; ok && pkg.PackageName != gfs.currentPackageName {
 				// Cross-package parent class
 				ret.WriteString("*" + path.Base(pkg.PackageName) + "." + cabiClassName(base) + "\n")
 				gfs.imports[importPathForQtPackage(pkg.PackageName)] = struct{}{}
@@ -788,12 +791,9 @@ import "C"
 			extraUnsafeArgs += ", h_" + cabiClassName(base) + " unsafe.Pointer"
 		}
 
-		for _, base := range c.DirectInherits {
+		for _, pkg := range c.DirectInheritClassInfo() {
 			ctorPrefix := ""
-			pkg, ok := KnownClassnames[base]
-			if !ok {
-				panic("Class " + c.ClassName + " has unknown parent " + base)
-			}
+			base := pkg.Class.ClassName
 
 			constructRequiresParams := pkg.Class.AllInherits()
 			var ixxParams []string = make([]string, 0, len(constructRequiresParams)+1)

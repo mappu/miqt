@@ -146,10 +146,10 @@ func AllowClass(className string) bool {
 
 	switch className {
 	case
-		"QTextStreamManipulator",     // Only seems to contain garbage methods
-		"QException",                 // Extends std::exception, too hard
-		"QUnhandledException",        // As above (child class)
-		"QItemSelection",             // Extends a QList<>, too hard
+		"QTextStreamManipulator", // Only seems to contain garbage methods
+		"QException",             // Extends std::exception, too hard
+		"QUnhandledException",    // As above (child class)
+		// "QItemSelection",             // Extends a QList<>, too hard
 		"QXmlStreamAttributes",       // Extends a QList<>, too hard
 		"QPolygon",                   // Extends a QVector<QPoint> template class, too hard
 		"QPolygonF",                  // Extends a QVector<QPoint> template class, too hard
