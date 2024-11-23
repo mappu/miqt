@@ -15,29 +15,39 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QChildEvent;
 class QDoubleValidator;
+class QEvent;
 class QIntValidator;
 class QLocale;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QRegExp;
 class QRegExpValidator;
 class QRegularExpression;
 class QRegularExpressionValidator;
+class QTimerEvent;
 class QValidator;
 #else
+typedef struct QChildEvent QChildEvent;
 typedef struct QDoubleValidator QDoubleValidator;
+typedef struct QEvent QEvent;
 typedef struct QIntValidator QIntValidator;
 typedef struct QLocale QLocale;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QRegExp QRegExp;
 typedef struct QRegExpValidator QRegExpValidator;
 typedef struct QRegularExpression QRegularExpression;
 typedef struct QRegularExpressionValidator QRegularExpressionValidator;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QValidator QValidator;
 #endif
 
+void QValidator_new(QValidator** outptr_QValidator, QObject** outptr_QObject);
+void QValidator_new2(QObject* parent, QValidator** outptr_QValidator, QObject** outptr_QObject);
 QMetaObject* QValidator_MetaObject(const QValidator* self);
 void* QValidator_Metacast(QValidator* self, const char* param1);
 struct miqt_string QValidator_Tr(const char* s);
@@ -52,6 +62,24 @@ struct miqt_string QValidator_Tr2(const char* s, const char* c);
 struct miqt_string QValidator_Tr3(const char* s, const char* c, int n);
 struct miqt_string QValidator_TrUtf82(const char* s, const char* c);
 struct miqt_string QValidator_TrUtf83(const char* s, const char* c, int n);
+void QValidator_override_virtual_Validate(void* self, intptr_t slot);
+int QValidator_virtualbase_Validate(const void* self, struct miqt_string param1, int* param2);
+void QValidator_override_virtual_Fixup(void* self, intptr_t slot);
+void QValidator_virtualbase_Fixup(const void* self, struct miqt_string param1);
+void QValidator_override_virtual_Event(void* self, intptr_t slot);
+bool QValidator_virtualbase_Event(void* self, QEvent* event);
+void QValidator_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QValidator_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QValidator_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QValidator_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QValidator_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QValidator_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QValidator_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QValidator_virtualbase_CustomEvent(void* self, QEvent* event);
+void QValidator_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QValidator_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QValidator_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QValidator_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QValidator_Delete(QValidator* self, bool isSubclass);
 
 void QIntValidator_new(QIntValidator** outptr_QIntValidator, QValidator** outptr_QValidator, QObject** outptr_QObject);

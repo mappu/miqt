@@ -550,6 +550,34 @@ func miqt_exec_callback_QColumnView_SetSelection(self *C.QColumnView, cb C.intpt
 
 }
 
+func (this *QColumnView) callVirtualBase_VisualRegionForSelection(selection *QItemSelection) *QRegion {
+
+	_ret := C.QColumnView_virtualbase_VisualRegionForSelection(unsafe.Pointer(this.h), selection.cPointer())
+	_goptr := newQRegion(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QColumnView) OnVisualRegionForSelection(slot func(super func(selection *QItemSelection) *QRegion, selection *QItemSelection) *QRegion) {
+	C.QColumnView_override_virtual_VisualRegionForSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QColumnView_VisualRegionForSelection
+func miqt_exec_callback_QColumnView_VisualRegionForSelection(self *C.QColumnView, cb C.intptr_t, selection *C.QItemSelection) *C.QRegion {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(selection *QItemSelection) *QRegion, selection *QItemSelection) *QRegion)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selection))
+
+	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_VisualRegionForSelection, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
 func (this *QColumnView) callVirtualBase_HorizontalOffset() int {
 
 	return (int)(C.QColumnView_virtualbase_HorizontalOffset(unsafe.Pointer(this.h)))
@@ -901,6 +929,30 @@ func miqt_exec_callback_QColumnView_RowsAboutToBeRemoved(self *C.QColumnView, cb
 	slotval3 := (int)(end)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_RowsAboutToBeRemoved, slotval1, slotval2, slotval3)
+
+}
+
+func (this *QColumnView) callVirtualBase_SelectionChanged(selected *QItemSelection, deselected *QItemSelection) {
+
+	C.QColumnView_virtualbase_SelectionChanged(unsafe.Pointer(this.h), selected.cPointer(), deselected.cPointer())
+
+}
+func (this *QColumnView) OnSelectionChanged(slot func(super func(selected *QItemSelection, deselected *QItemSelection), selected *QItemSelection, deselected *QItemSelection)) {
+	C.QColumnView_override_virtual_SelectionChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QColumnView_SelectionChanged
+func miqt_exec_callback_QColumnView_SelectionChanged(self *C.QColumnView, cb C.intptr_t, selected *C.QItemSelection, deselected *C.QItemSelection) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(selected *QItemSelection, deselected *QItemSelection), selected *QItemSelection, deselected *QItemSelection))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selected))
+	slotval2 := UnsafeNewQItemSelection(unsafe.Pointer(deselected))
+
+	gofunc((&QColumnView{h: self}).callVirtualBase_SelectionChanged, slotval1, slotval2)
 
 }
 

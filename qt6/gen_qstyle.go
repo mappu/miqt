@@ -10,6 +10,7 @@ import "C"
 
 import (
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
@@ -671,6 +672,17 @@ func UnsafeNewQStyle(h unsafe.Pointer, h_QObject unsafe.Pointer) *QStyle {
 		QObject: UnsafeNewQObject(h_QObject)}
 }
 
+// NewQStyle constructs a new QStyle object.
+func NewQStyle() *QStyle {
+	var outptr_QStyle *C.QStyle = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QStyle_new(&outptr_QStyle, &outptr_QObject)
+	ret := newQStyle(outptr_QStyle, outptr_QObject)
+	ret.isSubclass = true
+	return ret
+}
+
 func (this *QStyle) MetaObject() *QMetaObject {
 	return UnsafeNewQMetaObject(unsafe.Pointer(C.QStyle_MetaObject(this.h)))
 }
@@ -901,6 +913,741 @@ func (this *QStyle) CombinedLayoutSpacing4(controls1 QSizePolicy__ControlType, c
 
 func (this *QStyle) CombinedLayoutSpacing5(controls1 QSizePolicy__ControlType, controls2 QSizePolicy__ControlType, orientation Orientation, option *QStyleOption, widget *QWidget) int {
 	return (int)(C.QStyle_CombinedLayoutSpacing5(this.h, (C.int)(controls1), (C.int)(controls2), (C.int)(orientation), option.cPointer(), widget.cPointer()))
+}
+
+func (this *QStyle) callVirtualBase_Polish(widget *QWidget) {
+
+	C.QStyle_virtualbase_Polish(unsafe.Pointer(this.h), widget.cPointer())
+
+}
+func (this *QStyle) OnPolish(slot func(super func(widget *QWidget), widget *QWidget)) {
+	C.QStyle_override_virtual_Polish(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_Polish
+func miqt_exec_callback_QStyle_Polish(self *C.QStyle, cb C.intptr_t, widget *C.QWidget) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(widget *QWidget), widget *QWidget))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+
+	gofunc((&QStyle{h: self}).callVirtualBase_Polish, slotval1)
+
+}
+
+func (this *QStyle) callVirtualBase_Unpolish(widget *QWidget) {
+
+	C.QStyle_virtualbase_Unpolish(unsafe.Pointer(this.h), widget.cPointer())
+
+}
+func (this *QStyle) OnUnpolish(slot func(super func(widget *QWidget), widget *QWidget)) {
+	C.QStyle_override_virtual_Unpolish(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_Unpolish
+func miqt_exec_callback_QStyle_Unpolish(self *C.QStyle, cb C.intptr_t, widget *C.QWidget) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(widget *QWidget), widget *QWidget))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+
+	gofunc((&QStyle{h: self}).callVirtualBase_Unpolish, slotval1)
+
+}
+
+func (this *QStyle) callVirtualBase_PolishWithApplication(application *QApplication) {
+
+	C.QStyle_virtualbase_PolishWithApplication(unsafe.Pointer(this.h), application.cPointer())
+
+}
+func (this *QStyle) OnPolishWithApplication(slot func(super func(application *QApplication), application *QApplication)) {
+	C.QStyle_override_virtual_PolishWithApplication(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_PolishWithApplication
+func miqt_exec_callback_QStyle_PolishWithApplication(self *C.QStyle, cb C.intptr_t, application *C.QApplication) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(application *QApplication), application *QApplication))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQApplication(unsafe.Pointer(application), nil, nil, nil)
+
+	gofunc((&QStyle{h: self}).callVirtualBase_PolishWithApplication, slotval1)
+
+}
+
+func (this *QStyle) callVirtualBase_UnpolishWithApplication(application *QApplication) {
+
+	C.QStyle_virtualbase_UnpolishWithApplication(unsafe.Pointer(this.h), application.cPointer())
+
+}
+func (this *QStyle) OnUnpolishWithApplication(slot func(super func(application *QApplication), application *QApplication)) {
+	C.QStyle_override_virtual_UnpolishWithApplication(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_UnpolishWithApplication
+func miqt_exec_callback_QStyle_UnpolishWithApplication(self *C.QStyle, cb C.intptr_t, application *C.QApplication) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(application *QApplication), application *QApplication))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQApplication(unsafe.Pointer(application), nil, nil, nil)
+
+	gofunc((&QStyle{h: self}).callVirtualBase_UnpolishWithApplication, slotval1)
+
+}
+
+func (this *QStyle) callVirtualBase_PolishWithPalette(palette *QPalette) {
+
+	C.QStyle_virtualbase_PolishWithPalette(unsafe.Pointer(this.h), palette.cPointer())
+
+}
+func (this *QStyle) OnPolishWithPalette(slot func(super func(palette *QPalette), palette *QPalette)) {
+	C.QStyle_override_virtual_PolishWithPalette(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_PolishWithPalette
+func miqt_exec_callback_QStyle_PolishWithPalette(self *C.QStyle, cb C.intptr_t, palette *C.QPalette) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(palette *QPalette), palette *QPalette))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPalette(unsafe.Pointer(palette))
+
+	gofunc((&QStyle{h: self}).callVirtualBase_PolishWithPalette, slotval1)
+
+}
+
+func (this *QStyle) callVirtualBase_ItemTextRect(fm *QFontMetrics, r *QRect, flags int, enabled bool, text string) *QRect {
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+
+	_ret := C.QStyle_virtualbase_ItemTextRect(unsafe.Pointer(this.h), fm.cPointer(), r.cPointer(), (C.int)(flags), (C.bool)(enabled), text_ms)
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QStyle) OnItemTextRect(slot func(super func(fm *QFontMetrics, r *QRect, flags int, enabled bool, text string) *QRect, fm *QFontMetrics, r *QRect, flags int, enabled bool, text string) *QRect) {
+	C.QStyle_override_virtual_ItemTextRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_ItemTextRect
+func miqt_exec_callback_QStyle_ItemTextRect(self *C.QStyle, cb C.intptr_t, fm *C.QFontMetrics, r *C.QRect, flags C.int, enabled C.bool, text C.struct_miqt_string) *C.QRect {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(fm *QFontMetrics, r *QRect, flags int, enabled bool, text string) *QRect, fm *QFontMetrics, r *QRect, flags int, enabled bool, text string) *QRect)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQFontMetrics(unsafe.Pointer(fm))
+	slotval2 := UnsafeNewQRect(unsafe.Pointer(r))
+	slotval3 := (int)(flags)
+
+	slotval4 := (bool)(enabled)
+
+	var text_ms C.struct_miqt_string = text
+	text_ret := C.GoStringN(text_ms.data, C.int(int64(text_ms.len)))
+	C.free(unsafe.Pointer(text_ms.data))
+	slotval5 := text_ret
+
+	virtualReturn := gofunc((&QStyle{h: self}).callVirtualBase_ItemTextRect, slotval1, slotval2, slotval3, slotval4, slotval5)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QStyle) callVirtualBase_ItemPixmapRect(r *QRect, flags int, pixmap *QPixmap) *QRect {
+
+	_ret := C.QStyle_virtualbase_ItemPixmapRect(unsafe.Pointer(this.h), r.cPointer(), (C.int)(flags), pixmap.cPointer())
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QStyle) OnItemPixmapRect(slot func(super func(r *QRect, flags int, pixmap *QPixmap) *QRect, r *QRect, flags int, pixmap *QPixmap) *QRect) {
+	C.QStyle_override_virtual_ItemPixmapRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_ItemPixmapRect
+func miqt_exec_callback_QStyle_ItemPixmapRect(self *C.QStyle, cb C.intptr_t, r *C.QRect, flags C.int, pixmap *C.QPixmap) *C.QRect {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(r *QRect, flags int, pixmap *QPixmap) *QRect, r *QRect, flags int, pixmap *QPixmap) *QRect)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQRect(unsafe.Pointer(r))
+	slotval2 := (int)(flags)
+
+	slotval3 := UnsafeNewQPixmap(unsafe.Pointer(pixmap), nil)
+
+	virtualReturn := gofunc((&QStyle{h: self}).callVirtualBase_ItemPixmapRect, slotval1, slotval2, slotval3)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QStyle) callVirtualBase_DrawItemText(painter *QPainter, rect *QRect, flags int, pal *QPalette, enabled bool, text string, textRole QPalette__ColorRole) {
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+
+	C.QStyle_virtualbase_DrawItemText(unsafe.Pointer(this.h), painter.cPointer(), rect.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), text_ms, (C.int)(textRole))
+
+}
+func (this *QStyle) OnDrawItemText(slot func(super func(painter *QPainter, rect *QRect, flags int, pal *QPalette, enabled bool, text string, textRole QPalette__ColorRole), painter *QPainter, rect *QRect, flags int, pal *QPalette, enabled bool, text string, textRole QPalette__ColorRole)) {
+	C.QStyle_override_virtual_DrawItemText(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_DrawItemText
+func miqt_exec_callback_QStyle_DrawItemText(self *C.QStyle, cb C.intptr_t, painter *C.QPainter, rect *C.QRect, flags C.int, pal *C.QPalette, enabled C.bool, text C.struct_miqt_string, textRole C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter, rect *QRect, flags int, pal *QPalette, enabled bool, text string, textRole QPalette__ColorRole), painter *QPainter, rect *QRect, flags int, pal *QPalette, enabled bool, text string, textRole QPalette__ColorRole))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval2 := UnsafeNewQRect(unsafe.Pointer(rect))
+	slotval3 := (int)(flags)
+
+	slotval4 := UnsafeNewQPalette(unsafe.Pointer(pal))
+	slotval5 := (bool)(enabled)
+
+	var text_ms C.struct_miqt_string = text
+	text_ret := C.GoStringN(text_ms.data, C.int(int64(text_ms.len)))
+	C.free(unsafe.Pointer(text_ms.data))
+	slotval6 := text_ret
+	slotval7 := (QPalette__ColorRole)(textRole)
+
+	gofunc((&QStyle{h: self}).callVirtualBase_DrawItemText, slotval1, slotval2, slotval3, slotval4, slotval5, slotval6, slotval7)
+
+}
+
+func (this *QStyle) callVirtualBase_DrawItemPixmap(painter *QPainter, rect *QRect, alignment int, pixmap *QPixmap) {
+
+	C.QStyle_virtualbase_DrawItemPixmap(unsafe.Pointer(this.h), painter.cPointer(), rect.cPointer(), (C.int)(alignment), pixmap.cPointer())
+
+}
+func (this *QStyle) OnDrawItemPixmap(slot func(super func(painter *QPainter, rect *QRect, alignment int, pixmap *QPixmap), painter *QPainter, rect *QRect, alignment int, pixmap *QPixmap)) {
+	C.QStyle_override_virtual_DrawItemPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_DrawItemPixmap
+func miqt_exec_callback_QStyle_DrawItemPixmap(self *C.QStyle, cb C.intptr_t, painter *C.QPainter, rect *C.QRect, alignment C.int, pixmap *C.QPixmap) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter, rect *QRect, alignment int, pixmap *QPixmap), painter *QPainter, rect *QRect, alignment int, pixmap *QPixmap))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval2 := UnsafeNewQRect(unsafe.Pointer(rect))
+	slotval3 := (int)(alignment)
+
+	slotval4 := UnsafeNewQPixmap(unsafe.Pointer(pixmap), nil)
+
+	gofunc((&QStyle{h: self}).callVirtualBase_DrawItemPixmap, slotval1, slotval2, slotval3, slotval4)
+
+}
+
+func (this *QStyle) callVirtualBase_StandardPalette() *QPalette {
+
+	_ret := C.QStyle_virtualbase_StandardPalette(unsafe.Pointer(this.h))
+	_goptr := newQPalette(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QStyle) OnStandardPalette(slot func(super func() *QPalette) *QPalette) {
+	C.QStyle_override_virtual_StandardPalette(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_StandardPalette
+func miqt_exec_callback_QStyle_StandardPalette(self *C.QStyle, cb C.intptr_t) *C.QPalette {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPalette) *QPalette)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QStyle{h: self}).callVirtualBase_StandardPalette)
+
+	return virtualReturn.cPointer()
+
+}
+func (this *QStyle) OnDrawPrimitive(slot func(pe QStyle__PrimitiveElement, opt *QStyleOption, p *QPainter, w *QWidget)) {
+	C.QStyle_override_virtual_DrawPrimitive(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_DrawPrimitive
+func miqt_exec_callback_QStyle_DrawPrimitive(self *C.QStyle, cb C.intptr_t, pe C.int, opt *C.QStyleOption, p *C.QPainter, w *C.QWidget) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(pe QStyle__PrimitiveElement, opt *QStyleOption, p *QPainter, w *QWidget))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QStyle__PrimitiveElement)(pe)
+
+	slotval2 := UnsafeNewQStyleOption(unsafe.Pointer(opt))
+	slotval3 := UnsafeNewQPainter(unsafe.Pointer(p))
+	slotval4 := UnsafeNewQWidget(unsafe.Pointer(w), nil, nil)
+
+	gofunc(slotval1, slotval2, slotval3, slotval4)
+
+}
+func (this *QStyle) OnDrawControl(slot func(element QStyle__ControlElement, opt *QStyleOption, p *QPainter, w *QWidget)) {
+	C.QStyle_override_virtual_DrawControl(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_DrawControl
+func miqt_exec_callback_QStyle_DrawControl(self *C.QStyle, cb C.intptr_t, element C.int, opt *C.QStyleOption, p *C.QPainter, w *C.QWidget) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(element QStyle__ControlElement, opt *QStyleOption, p *QPainter, w *QWidget))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QStyle__ControlElement)(element)
+
+	slotval2 := UnsafeNewQStyleOption(unsafe.Pointer(opt))
+	slotval3 := UnsafeNewQPainter(unsafe.Pointer(p))
+	slotval4 := UnsafeNewQWidget(unsafe.Pointer(w), nil, nil)
+
+	gofunc(slotval1, slotval2, slotval3, slotval4)
+
+}
+func (this *QStyle) OnSubElementRect(slot func(subElement QStyle__SubElement, option *QStyleOption, widget *QWidget) *QRect) {
+	C.QStyle_override_virtual_SubElementRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_SubElementRect
+func miqt_exec_callback_QStyle_SubElementRect(self *C.QStyle, cb C.intptr_t, subElement C.int, option *C.QStyleOption, widget *C.QWidget) *C.QRect {
+	gofunc, ok := cgo.Handle(cb).Value().(func(subElement QStyle__SubElement, option *QStyleOption, widget *QWidget) *QRect)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QStyle__SubElement)(subElement)
+
+	slotval2 := UnsafeNewQStyleOption(unsafe.Pointer(option))
+	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+
+	virtualReturn := gofunc(slotval1, slotval2, slotval3)
+
+	return virtualReturn.cPointer()
+
+}
+func (this *QStyle) OnDrawComplexControl(slot func(cc QStyle__ComplexControl, opt *QStyleOptionComplex, p *QPainter, widget *QWidget)) {
+	C.QStyle_override_virtual_DrawComplexControl(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_DrawComplexControl
+func miqt_exec_callback_QStyle_DrawComplexControl(self *C.QStyle, cb C.intptr_t, cc C.int, opt *C.QStyleOptionComplex, p *C.QPainter, widget *C.QWidget) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(cc QStyle__ComplexControl, opt *QStyleOptionComplex, p *QPainter, widget *QWidget))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QStyle__ComplexControl)(cc)
+
+	slotval2 := UnsafeNewQStyleOptionComplex(unsafe.Pointer(opt), nil)
+	slotval3 := UnsafeNewQPainter(unsafe.Pointer(p))
+	slotval4 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+
+	gofunc(slotval1, slotval2, slotval3, slotval4)
+
+}
+func (this *QStyle) OnHitTestComplexControl(slot func(cc QStyle__ComplexControl, opt *QStyleOptionComplex, pt *QPoint, widget *QWidget) QStyle__SubControl) {
+	C.QStyle_override_virtual_HitTestComplexControl(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_HitTestComplexControl
+func miqt_exec_callback_QStyle_HitTestComplexControl(self *C.QStyle, cb C.intptr_t, cc C.int, opt *C.QStyleOptionComplex, pt *C.QPoint, widget *C.QWidget) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(cc QStyle__ComplexControl, opt *QStyleOptionComplex, pt *QPoint, widget *QWidget) QStyle__SubControl)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QStyle__ComplexControl)(cc)
+
+	slotval2 := UnsafeNewQStyleOptionComplex(unsafe.Pointer(opt), nil)
+	slotval3 := UnsafeNewQPoint(unsafe.Pointer(pt))
+	slotval4 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+
+	virtualReturn := gofunc(slotval1, slotval2, slotval3, slotval4)
+
+	return (C.int)(virtualReturn)
+
+}
+func (this *QStyle) OnSubControlRect(slot func(cc QStyle__ComplexControl, opt *QStyleOptionComplex, sc QStyle__SubControl, widget *QWidget) *QRect) {
+	C.QStyle_override_virtual_SubControlRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_SubControlRect
+func miqt_exec_callback_QStyle_SubControlRect(self *C.QStyle, cb C.intptr_t, cc C.int, opt *C.QStyleOptionComplex, sc C.int, widget *C.QWidget) *C.QRect {
+	gofunc, ok := cgo.Handle(cb).Value().(func(cc QStyle__ComplexControl, opt *QStyleOptionComplex, sc QStyle__SubControl, widget *QWidget) *QRect)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QStyle__ComplexControl)(cc)
+
+	slotval2 := UnsafeNewQStyleOptionComplex(unsafe.Pointer(opt), nil)
+	slotval3 := (QStyle__SubControl)(sc)
+
+	slotval4 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+
+	virtualReturn := gofunc(slotval1, slotval2, slotval3, slotval4)
+
+	return virtualReturn.cPointer()
+
+}
+func (this *QStyle) OnPixelMetric(slot func(metric QStyle__PixelMetric, option *QStyleOption, widget *QWidget) int) {
+	C.QStyle_override_virtual_PixelMetric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_PixelMetric
+func miqt_exec_callback_QStyle_PixelMetric(self *C.QStyle, cb C.intptr_t, metric C.int, option *C.QStyleOption, widget *C.QWidget) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(metric QStyle__PixelMetric, option *QStyleOption, widget *QWidget) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QStyle__PixelMetric)(metric)
+
+	slotval2 := UnsafeNewQStyleOption(unsafe.Pointer(option))
+	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+
+	virtualReturn := gofunc(slotval1, slotval2, slotval3)
+
+	return (C.int)(virtualReturn)
+
+}
+func (this *QStyle) OnSizeFromContents(slot func(ct QStyle__ContentsType, opt *QStyleOption, contentsSize *QSize, w *QWidget) *QSize) {
+	C.QStyle_override_virtual_SizeFromContents(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_SizeFromContents
+func miqt_exec_callback_QStyle_SizeFromContents(self *C.QStyle, cb C.intptr_t, ct C.int, opt *C.QStyleOption, contentsSize *C.QSize, w *C.QWidget) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(ct QStyle__ContentsType, opt *QStyleOption, contentsSize *QSize, w *QWidget) *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QStyle__ContentsType)(ct)
+
+	slotval2 := UnsafeNewQStyleOption(unsafe.Pointer(opt))
+	slotval3 := UnsafeNewQSize(unsafe.Pointer(contentsSize))
+	slotval4 := UnsafeNewQWidget(unsafe.Pointer(w), nil, nil)
+
+	virtualReturn := gofunc(slotval1, slotval2, slotval3, slotval4)
+
+	return virtualReturn.cPointer()
+
+}
+func (this *QStyle) OnStyleHint(slot func(stylehint QStyle__StyleHint, opt *QStyleOption, widget *QWidget, returnData *QStyleHintReturn) int) {
+	C.QStyle_override_virtual_StyleHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_StyleHint
+func miqt_exec_callback_QStyle_StyleHint(self *C.QStyle, cb C.intptr_t, stylehint C.int, opt *C.QStyleOption, widget *C.QWidget, returnData *C.QStyleHintReturn) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(stylehint QStyle__StyleHint, opt *QStyleOption, widget *QWidget, returnData *QStyleHintReturn) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QStyle__StyleHint)(stylehint)
+
+	slotval2 := UnsafeNewQStyleOption(unsafe.Pointer(opt))
+	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval4 := UnsafeNewQStyleHintReturn(unsafe.Pointer(returnData))
+
+	virtualReturn := gofunc(slotval1, slotval2, slotval3, slotval4)
+
+	return (C.int)(virtualReturn)
+
+}
+func (this *QStyle) OnStandardPixmap(slot func(standardPixmap QStyle__StandardPixmap, opt *QStyleOption, widget *QWidget) *QPixmap) {
+	C.QStyle_override_virtual_StandardPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_StandardPixmap
+func miqt_exec_callback_QStyle_StandardPixmap(self *C.QStyle, cb C.intptr_t, standardPixmap C.int, opt *C.QStyleOption, widget *C.QWidget) *C.QPixmap {
+	gofunc, ok := cgo.Handle(cb).Value().(func(standardPixmap QStyle__StandardPixmap, opt *QStyleOption, widget *QWidget) *QPixmap)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QStyle__StandardPixmap)(standardPixmap)
+
+	slotval2 := UnsafeNewQStyleOption(unsafe.Pointer(opt))
+	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+
+	virtualReturn := gofunc(slotval1, slotval2, slotval3)
+
+	return virtualReturn.cPointer()
+
+}
+func (this *QStyle) OnStandardIcon(slot func(standardIcon QStyle__StandardPixmap, option *QStyleOption, widget *QWidget) *QIcon) {
+	C.QStyle_override_virtual_StandardIcon(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_StandardIcon
+func miqt_exec_callback_QStyle_StandardIcon(self *C.QStyle, cb C.intptr_t, standardIcon C.int, option *C.QStyleOption, widget *C.QWidget) *C.QIcon {
+	gofunc, ok := cgo.Handle(cb).Value().(func(standardIcon QStyle__StandardPixmap, option *QStyleOption, widget *QWidget) *QIcon)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QStyle__StandardPixmap)(standardIcon)
+
+	slotval2 := UnsafeNewQStyleOption(unsafe.Pointer(option))
+	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+
+	virtualReturn := gofunc(slotval1, slotval2, slotval3)
+
+	return virtualReturn.cPointer()
+
+}
+func (this *QStyle) OnGeneratedIconPixmap(slot func(iconMode QIcon__Mode, pixmap *QPixmap, opt *QStyleOption) *QPixmap) {
+	C.QStyle_override_virtual_GeneratedIconPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_GeneratedIconPixmap
+func miqt_exec_callback_QStyle_GeneratedIconPixmap(self *C.QStyle, cb C.intptr_t, iconMode C.int, pixmap *C.QPixmap, opt *C.QStyleOption) *C.QPixmap {
+	gofunc, ok := cgo.Handle(cb).Value().(func(iconMode QIcon__Mode, pixmap *QPixmap, opt *QStyleOption) *QPixmap)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QIcon__Mode)(iconMode)
+
+	slotval2 := UnsafeNewQPixmap(unsafe.Pointer(pixmap), nil)
+	slotval3 := UnsafeNewQStyleOption(unsafe.Pointer(opt))
+
+	virtualReturn := gofunc(slotval1, slotval2, slotval3)
+
+	return virtualReturn.cPointer()
+
+}
+func (this *QStyle) OnLayoutSpacing(slot func(control1 QSizePolicy__ControlType, control2 QSizePolicy__ControlType, orientation Orientation, option *QStyleOption, widget *QWidget) int) {
+	C.QStyle_override_virtual_LayoutSpacing(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_LayoutSpacing
+func miqt_exec_callback_QStyle_LayoutSpacing(self *C.QStyle, cb C.intptr_t, control1 C.int, control2 C.int, orientation C.int, option *C.QStyleOption, widget *C.QWidget) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(control1 QSizePolicy__ControlType, control2 QSizePolicy__ControlType, orientation Orientation, option *QStyleOption, widget *QWidget) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QSizePolicy__ControlType)(control1)
+
+	slotval2 := (QSizePolicy__ControlType)(control2)
+
+	slotval3 := (Orientation)(orientation)
+
+	slotval4 := UnsafeNewQStyleOption(unsafe.Pointer(option))
+	slotval5 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+
+	virtualReturn := gofunc(slotval1, slotval2, slotval3, slotval4, slotval5)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QStyle) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QStyle_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QStyle) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	C.QStyle_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_Event
+func miqt_exec_callback_QStyle_Event(self *C.QStyle, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QStyle{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QStyle) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QStyle_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QStyle) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	C.QStyle_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_EventFilter
+func miqt_exec_callback_QStyle_EventFilter(self *C.QStyle, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QStyle{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QStyle) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QStyle_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QStyle) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	C.QStyle_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_TimerEvent
+func miqt_exec_callback_QStyle_TimerEvent(self *C.QStyle, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QStyle{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QStyle) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QStyle_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QStyle) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	C.QStyle_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_ChildEvent
+func miqt_exec_callback_QStyle_ChildEvent(self *C.QStyle, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QStyle{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QStyle) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QStyle_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QStyle) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	C.QStyle_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_CustomEvent
+func miqt_exec_callback_QStyle_CustomEvent(self *C.QStyle, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QStyle{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QStyle) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QStyle_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QStyle) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QStyle_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_ConnectNotify
+func miqt_exec_callback_QStyle_ConnectNotify(self *C.QStyle, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QStyle{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QStyle) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QStyle_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QStyle) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QStyle_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStyle_DisconnectNotify
+func miqt_exec_callback_QStyle_DisconnectNotify(self *C.QStyle, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QStyle{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
 }
 
 // Delete this object from C++ memory.

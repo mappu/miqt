@@ -949,6 +949,34 @@ func miqt_exec_callback_QTreeView_SetSelection(self *C.QTreeView, cb C.intptr_t,
 
 }
 
+func (this *QTreeView) callVirtualBase_VisualRegionForSelection(selection *QItemSelection) *QRegion {
+
+	_ret := C.QTreeView_virtualbase_VisualRegionForSelection(unsafe.Pointer(this.h), selection.cPointer())
+	_goptr := newQRegion(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QTreeView) OnVisualRegionForSelection(slot func(super func(selection *QItemSelection) *QRegion, selection *QItemSelection) *QRegion) {
+	C.QTreeView_override_virtual_VisualRegionForSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeView_VisualRegionForSelection
+func miqt_exec_callback_QTreeView_VisualRegionForSelection(self *C.QTreeView, cb C.intptr_t, selection *C.QItemSelection) *C.QRegion {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(selection *QItemSelection) *QRegion, selection *QItemSelection) *QRegion)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selection))
+
+	virtualReturn := gofunc((&QTreeView{h: self}).callVirtualBase_VisualRegionForSelection, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
 func (this *QTreeView) callVirtualBase_SelectedIndexes() []QModelIndex {
 
 	var _ma C.struct_miqt_array = C.QTreeView_virtualbase_SelectedIndexes(unsafe.Pointer(this.h))
@@ -1360,6 +1388,30 @@ func miqt_exec_callback_QTreeView_IsIndexHidden(self *C.QTreeView, cb C.intptr_t
 	virtualReturn := gofunc((&QTreeView{h: self}).callVirtualBase_IsIndexHidden, slotval1)
 
 	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QTreeView) callVirtualBase_SelectionChanged(selected *QItemSelection, deselected *QItemSelection) {
+
+	C.QTreeView_virtualbase_SelectionChanged(unsafe.Pointer(this.h), selected.cPointer(), deselected.cPointer())
+
+}
+func (this *QTreeView) OnSelectionChanged(slot func(super func(selected *QItemSelection, deselected *QItemSelection), selected *QItemSelection, deselected *QItemSelection)) {
+	C.QTreeView_override_virtual_SelectionChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTreeView_SelectionChanged
+func miqt_exec_callback_QTreeView_SelectionChanged(self *C.QTreeView, cb C.intptr_t, selected *C.QItemSelection, deselected *C.QItemSelection) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(selected *QItemSelection, deselected *QItemSelection), selected *QItemSelection, deselected *QItemSelection))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selected))
+	slotval2 := UnsafeNewQItemSelection(unsafe.Pointer(deselected))
+
+	gofunc((&QTreeView{h: self}).callVirtualBase_SelectionChanged, slotval1, slotval2)
 
 }
 

@@ -78,6 +78,28 @@ func UnsafeNewQGraphicsEffect(h unsafe.Pointer, h_QObject unsafe.Pointer) *QGrap
 		QObject: UnsafeNewQObject(h_QObject)}
 }
 
+// NewQGraphicsEffect constructs a new QGraphicsEffect object.
+func NewQGraphicsEffect() *QGraphicsEffect {
+	var outptr_QGraphicsEffect *C.QGraphicsEffect = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QGraphicsEffect_new(&outptr_QGraphicsEffect, &outptr_QObject)
+	ret := newQGraphicsEffect(outptr_QGraphicsEffect, outptr_QObject)
+	ret.isSubclass = true
+	return ret
+}
+
+// NewQGraphicsEffect2 constructs a new QGraphicsEffect object.
+func NewQGraphicsEffect2(parent *QObject) *QGraphicsEffect {
+	var outptr_QGraphicsEffect *C.QGraphicsEffect = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QGraphicsEffect_new2(parent.cPointer(), &outptr_QGraphicsEffect, &outptr_QObject)
+	ret := newQGraphicsEffect(outptr_QGraphicsEffect, outptr_QObject)
+	ret.isSubclass = true
+	return ret
+}
+
 func (this *QGraphicsEffect) MetaObject() *QMetaObject {
 	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsEffect_MetaObject(this.h)))
 }
@@ -194,6 +216,240 @@ func QGraphicsEffect_TrUtf83(s string, c string, n int) string {
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
+}
+
+func (this *QGraphicsEffect) callVirtualBase_BoundingRectFor(sourceRect *QRectF) *QRectF {
+
+	_ret := C.QGraphicsEffect_virtualbase_BoundingRectFor(unsafe.Pointer(this.h), sourceRect.cPointer())
+	_goptr := newQRectF(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QGraphicsEffect) OnBoundingRectFor(slot func(super func(sourceRect *QRectF) *QRectF, sourceRect *QRectF) *QRectF) {
+	C.QGraphicsEffect_override_virtual_BoundingRectFor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsEffect_BoundingRectFor
+func miqt_exec_callback_QGraphicsEffect_BoundingRectFor(self *C.QGraphicsEffect, cb C.intptr_t, sourceRect *C.QRectF) *C.QRectF {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sourceRect *QRectF) *QRectF, sourceRect *QRectF) *QRectF)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQRectF(unsafe.Pointer(sourceRect))
+
+	virtualReturn := gofunc((&QGraphicsEffect{h: self}).callVirtualBase_BoundingRectFor, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+func (this *QGraphicsEffect) OnDraw(slot func(painter *QPainter)) {
+	C.QGraphicsEffect_override_virtual_Draw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsEffect_Draw
+func miqt_exec_callback_QGraphicsEffect_Draw(self *C.QGraphicsEffect, cb C.intptr_t, painter *C.QPainter) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(painter *QPainter))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+
+	gofunc(slotval1)
+
+}
+
+func (this *QGraphicsEffect) callVirtualBase_SourceChanged(flags QGraphicsEffect__ChangeFlag) {
+
+	C.QGraphicsEffect_virtualbase_SourceChanged(unsafe.Pointer(this.h), (C.int)(flags))
+
+}
+func (this *QGraphicsEffect) OnSourceChanged(slot func(super func(flags QGraphicsEffect__ChangeFlag), flags QGraphicsEffect__ChangeFlag)) {
+	C.QGraphicsEffect_override_virtual_SourceChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsEffect_SourceChanged
+func miqt_exec_callback_QGraphicsEffect_SourceChanged(self *C.QGraphicsEffect, cb C.intptr_t, flags C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(flags QGraphicsEffect__ChangeFlag), flags QGraphicsEffect__ChangeFlag))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QGraphicsEffect__ChangeFlag)(flags)
+
+	gofunc((&QGraphicsEffect{h: self}).callVirtualBase_SourceChanged, slotval1)
+
+}
+
+func (this *QGraphicsEffect) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QGraphicsEffect_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QGraphicsEffect) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	C.QGraphicsEffect_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsEffect_Event
+func miqt_exec_callback_QGraphicsEffect_Event(self *C.QGraphicsEffect, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QGraphicsEffect{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QGraphicsEffect) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QGraphicsEffect_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QGraphicsEffect) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	C.QGraphicsEffect_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsEffect_EventFilter
+func miqt_exec_callback_QGraphicsEffect_EventFilter(self *C.QGraphicsEffect, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QGraphicsEffect{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QGraphicsEffect) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QGraphicsEffect_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGraphicsEffect) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	C.QGraphicsEffect_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsEffect_TimerEvent
+func miqt_exec_callback_QGraphicsEffect_TimerEvent(self *C.QGraphicsEffect, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QGraphicsEffect{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QGraphicsEffect) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QGraphicsEffect_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGraphicsEffect) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	C.QGraphicsEffect_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsEffect_ChildEvent
+func miqt_exec_callback_QGraphicsEffect_ChildEvent(self *C.QGraphicsEffect, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QGraphicsEffect{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QGraphicsEffect) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QGraphicsEffect_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGraphicsEffect) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	C.QGraphicsEffect_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsEffect_CustomEvent
+func miqt_exec_callback_QGraphicsEffect_CustomEvent(self *C.QGraphicsEffect, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QGraphicsEffect{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QGraphicsEffect) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QGraphicsEffect_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QGraphicsEffect) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QGraphicsEffect_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsEffect_ConnectNotify
+func miqt_exec_callback_QGraphicsEffect_ConnectNotify(self *C.QGraphicsEffect, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QGraphicsEffect{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QGraphicsEffect) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QGraphicsEffect_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QGraphicsEffect) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QGraphicsEffect_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsEffect_DisconnectNotify
+func miqt_exec_callback_QGraphicsEffect_DisconnectNotify(self *C.QGraphicsEffect, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QGraphicsEffect{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
 }
 
 // Delete this object from C++ memory.

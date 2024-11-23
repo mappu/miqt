@@ -25,6 +25,9 @@ typedef QPagedPaintDevice::Margins QPagedPaintDevice__Margins;
 class QPagedPaintDevice__Margins;
 #endif
 class QPaintDevice;
+class QPaintEngine;
+class QPainter;
+class QPoint;
 class QSizeF;
 #else
 typedef struct QMarginsF QMarginsF;
@@ -33,9 +36,13 @@ typedef struct QPageSize QPageSize;
 typedef struct QPagedPaintDevice QPagedPaintDevice;
 typedef struct QPagedPaintDevice__Margins QPagedPaintDevice__Margins;
 typedef struct QPaintDevice QPaintDevice;
+typedef struct QPaintEngine QPaintEngine;
+typedef struct QPainter QPainter;
+typedef struct QPoint QPoint;
 typedef struct QSizeF QSizeF;
 #endif
 
+void QPagedPaintDevice_new(QPagedPaintDevice** outptr_QPagedPaintDevice, QPaintDevice** outptr_QPaintDevice);
 bool QPagedPaintDevice_NewPage(QPagedPaintDevice* self);
 bool QPagedPaintDevice_SetPageLayout(QPagedPaintDevice* self, QPageLayout* pageLayout);
 bool QPagedPaintDevice_SetPageSize(QPagedPaintDevice* self, QPageSize* pageSize);
@@ -49,6 +56,26 @@ void QPagedPaintDevice_SetPageSizeMM(QPagedPaintDevice* self, QSizeF* size);
 QSizeF* QPagedPaintDevice_PageSizeMM(const QPagedPaintDevice* self);
 void QPagedPaintDevice_SetMargins(QPagedPaintDevice* self, QPagedPaintDevice__Margins* margins);
 QPagedPaintDevice__Margins* QPagedPaintDevice_Margins(const QPagedPaintDevice* self);
+void QPagedPaintDevice_override_virtual_NewPage(void* self, intptr_t slot);
+bool QPagedPaintDevice_virtualbase_NewPage(void* self);
+void QPagedPaintDevice_override_virtual_SetPageSizeWithSize(void* self, intptr_t slot);
+void QPagedPaintDevice_virtualbase_SetPageSizeWithSize(void* self, int size);
+void QPagedPaintDevice_override_virtual_SetPageSizeMM(void* self, intptr_t slot);
+void QPagedPaintDevice_virtualbase_SetPageSizeMM(void* self, QSizeF* size);
+void QPagedPaintDevice_override_virtual_SetMargins(void* self, intptr_t slot);
+void QPagedPaintDevice_virtualbase_SetMargins(void* self, QPagedPaintDevice__Margins* margins);
+void QPagedPaintDevice_override_virtual_DevType(void* self, intptr_t slot);
+int QPagedPaintDevice_virtualbase_DevType(const void* self);
+void QPagedPaintDevice_override_virtual_PaintEngine(void* self, intptr_t slot);
+QPaintEngine* QPagedPaintDevice_virtualbase_PaintEngine(const void* self);
+void QPagedPaintDevice_override_virtual_Metric(void* self, intptr_t slot);
+int QPagedPaintDevice_virtualbase_Metric(const void* self, int metric);
+void QPagedPaintDevice_override_virtual_InitPainter(void* self, intptr_t slot);
+void QPagedPaintDevice_virtualbase_InitPainter(const void* self, QPainter* painter);
+void QPagedPaintDevice_override_virtual_Redirected(void* self, intptr_t slot);
+QPaintDevice* QPagedPaintDevice_virtualbase_Redirected(const void* self, QPoint* offset);
+void QPagedPaintDevice_override_virtual_SharedPainter(void* self, intptr_t slot);
+QPainter* QPagedPaintDevice_virtualbase_SharedPainter(const void* self);
 void QPagedPaintDevice_Delete(QPagedPaintDevice* self, bool isSubclass);
 
 void QPagedPaintDevice__Margins_Delete(QPagedPaintDevice__Margins* self, bool isSubclass);

@@ -16,32 +16,42 @@ extern "C" {
 
 #ifdef __cplusplus
 class QBrush;
+class QChildEvent;
 class QColor;
+class QEvent;
 class QGraphicsBlurEffect;
 class QGraphicsColorizeEffect;
 class QGraphicsDropShadowEffect;
 class QGraphicsEffect;
 class QGraphicsOpacityEffect;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QPainter;
 class QPointF;
 class QRectF;
+class QTimerEvent;
 #else
 typedef struct QBrush QBrush;
+typedef struct QChildEvent QChildEvent;
 typedef struct QColor QColor;
+typedef struct QEvent QEvent;
 typedef struct QGraphicsBlurEffect QGraphicsBlurEffect;
 typedef struct QGraphicsColorizeEffect QGraphicsColorizeEffect;
 typedef struct QGraphicsDropShadowEffect QGraphicsDropShadowEffect;
 typedef struct QGraphicsEffect QGraphicsEffect;
 typedef struct QGraphicsOpacityEffect QGraphicsOpacityEffect;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QPainter QPainter;
 typedef struct QPointF QPointF;
 typedef struct QRectF QRectF;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
+void QGraphicsEffect_new(QGraphicsEffect** outptr_QGraphicsEffect, QObject** outptr_QObject);
+void QGraphicsEffect_new2(QObject* parent, QGraphicsEffect** outptr_QGraphicsEffect, QObject** outptr_QObject);
 QMetaObject* QGraphicsEffect_MetaObject(const QGraphicsEffect* self);
 void* QGraphicsEffect_Metacast(QGraphicsEffect* self, const char* param1);
 struct miqt_string QGraphicsEffect_Tr(const char* s);
@@ -56,6 +66,26 @@ void QGraphicsEffect_Draw(QGraphicsEffect* self, QPainter* painter);
 void QGraphicsEffect_SourceChanged(QGraphicsEffect* self, int flags);
 struct miqt_string QGraphicsEffect_Tr2(const char* s, const char* c);
 struct miqt_string QGraphicsEffect_Tr3(const char* s, const char* c, int n);
+void QGraphicsEffect_override_virtual_BoundingRectFor(void* self, intptr_t slot);
+QRectF* QGraphicsEffect_virtualbase_BoundingRectFor(const void* self, QRectF* sourceRect);
+void QGraphicsEffect_override_virtual_Draw(void* self, intptr_t slot);
+void QGraphicsEffect_virtualbase_Draw(void* self, QPainter* painter);
+void QGraphicsEffect_override_virtual_SourceChanged(void* self, intptr_t slot);
+void QGraphicsEffect_virtualbase_SourceChanged(void* self, int flags);
+void QGraphicsEffect_override_virtual_Event(void* self, intptr_t slot);
+bool QGraphicsEffect_virtualbase_Event(void* self, QEvent* event);
+void QGraphicsEffect_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QGraphicsEffect_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QGraphicsEffect_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QGraphicsEffect_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QGraphicsEffect_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QGraphicsEffect_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QGraphicsEffect_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QGraphicsEffect_virtualbase_CustomEvent(void* self, QEvent* event);
+void QGraphicsEffect_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QGraphicsEffect_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QGraphicsEffect_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QGraphicsEffect_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QGraphicsEffect_Delete(QGraphicsEffect* self, bool isSubclass);
 
 void QGraphicsColorizeEffect_new(QGraphicsColorizeEffect** outptr_QGraphicsColorizeEffect, QGraphicsEffect** outptr_QGraphicsEffect, QObject** outptr_QObject);

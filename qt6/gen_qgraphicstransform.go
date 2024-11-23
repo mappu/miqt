@@ -53,6 +53,28 @@ func UnsafeNewQGraphicsTransform(h unsafe.Pointer, h_QObject unsafe.Pointer) *QG
 		QObject: UnsafeNewQObject(h_QObject)}
 }
 
+// NewQGraphicsTransform constructs a new QGraphicsTransform object.
+func NewQGraphicsTransform() *QGraphicsTransform {
+	var outptr_QGraphicsTransform *C.QGraphicsTransform = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QGraphicsTransform_new(&outptr_QGraphicsTransform, &outptr_QObject)
+	ret := newQGraphicsTransform(outptr_QGraphicsTransform, outptr_QObject)
+	ret.isSubclass = true
+	return ret
+}
+
+// NewQGraphicsTransform2 constructs a new QGraphicsTransform object.
+func NewQGraphicsTransform2(parent *QObject) *QGraphicsTransform {
+	var outptr_QGraphicsTransform *C.QGraphicsTransform = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QGraphicsTransform_new2(parent.cPointer(), &outptr_QGraphicsTransform, &outptr_QObject)
+	ret := newQGraphicsTransform(outptr_QGraphicsTransform, outptr_QObject)
+	ret.isSubclass = true
+	return ret
+}
+
 func (this *QGraphicsTransform) MetaObject() *QMetaObject {
 	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsTransform_MetaObject(this.h)))
 }
@@ -96,6 +118,189 @@ func QGraphicsTransform_Tr3(s string, c string, n int) string {
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
+}
+func (this *QGraphicsTransform) OnApplyTo(slot func(matrix *QMatrix4x4)) {
+	C.QGraphicsTransform_override_virtual_ApplyTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsTransform_ApplyTo
+func miqt_exec_callback_QGraphicsTransform_ApplyTo(self *C.QGraphicsTransform, cb C.intptr_t, matrix *C.QMatrix4x4) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(matrix *QMatrix4x4))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMatrix4x4(unsafe.Pointer(matrix))
+
+	gofunc(slotval1)
+
+}
+
+func (this *QGraphicsTransform) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QGraphicsTransform_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QGraphicsTransform) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	C.QGraphicsTransform_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsTransform_Event
+func miqt_exec_callback_QGraphicsTransform_Event(self *C.QGraphicsTransform, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QGraphicsTransform{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QGraphicsTransform) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QGraphicsTransform_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QGraphicsTransform) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	C.QGraphicsTransform_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsTransform_EventFilter
+func miqt_exec_callback_QGraphicsTransform_EventFilter(self *C.QGraphicsTransform, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QGraphicsTransform{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QGraphicsTransform) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QGraphicsTransform_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGraphicsTransform) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	C.QGraphicsTransform_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsTransform_TimerEvent
+func miqt_exec_callback_QGraphicsTransform_TimerEvent(self *C.QGraphicsTransform, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QGraphicsTransform{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QGraphicsTransform) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QGraphicsTransform_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGraphicsTransform) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	C.QGraphicsTransform_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsTransform_ChildEvent
+func miqt_exec_callback_QGraphicsTransform_ChildEvent(self *C.QGraphicsTransform, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QGraphicsTransform{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QGraphicsTransform) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QGraphicsTransform_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGraphicsTransform) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	C.QGraphicsTransform_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsTransform_CustomEvent
+func miqt_exec_callback_QGraphicsTransform_CustomEvent(self *C.QGraphicsTransform, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QGraphicsTransform{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QGraphicsTransform) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QGraphicsTransform_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QGraphicsTransform) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QGraphicsTransform_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsTransform_ConnectNotify
+func miqt_exec_callback_QGraphicsTransform_ConnectNotify(self *C.QGraphicsTransform, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QGraphicsTransform{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QGraphicsTransform) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QGraphicsTransform_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QGraphicsTransform) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QGraphicsTransform_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsTransform_DisconnectNotify
+func miqt_exec_callback_QGraphicsTransform_DisconnectNotify(self *C.QGraphicsTransform, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QGraphicsTransform{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
 }
 
 // Delete this object from C++ memory.

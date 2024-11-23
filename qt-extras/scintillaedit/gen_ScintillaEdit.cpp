@@ -695,6 +695,558 @@ void Scintilla__Internal__SurfaceMode_Delete(Scintilla__Internal__SurfaceMode* s
 	}
 }
 
+class MiqtVirtualScintillaInternalSurface : public virtual Scintilla::Internal::Surface {
+public:
+
+	MiqtVirtualScintillaInternalSurface(): Scintilla::Internal::Surface() {};
+
+	virtual ~MiqtVirtualScintillaInternalSurface() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Init = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void Init(Scintilla::Internal::WindowID wid) override {
+		if (handle__Init == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla::Internal::WindowID wid_ret = wid;
+		void* sigval1 = static_cast<void*>(wid_ret);
+
+		miqt_exec_callback_Scintilla__Internal__Surface_Init(this, handle__Init, sigval1);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Init2 = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void Init(Scintilla::Internal::SurfaceID sid, Scintilla::Internal::WindowID wid) override {
+		if (handle__Init2 == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla::Internal::SurfaceID sid_ret = sid;
+		void* sigval1 = static_cast<void*>(sid_ret);
+		Scintilla::Internal::WindowID wid_ret = wid;
+		void* sigval2 = static_cast<void*>(wid_ret);
+
+		miqt_exec_callback_Scintilla__Internal__Surface_Init2(this, handle__Init2, sigval1, sigval2);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetMode = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void SetMode(Scintilla::Internal::SurfaceMode mode) override {
+		if (handle__SetMode == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla__Internal__SurfaceMode* sigval1 = new Scintilla::Internal::SurfaceMode(mode);
+
+		miqt_exec_callback_Scintilla__Internal__Surface_SetMode(this, handle__SetMode, sigval1);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Release = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void Release() override {
+		if (handle__Release == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+
+		miqt_exec_callback_Scintilla__Internal__Surface_Release(this, handle__Release);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SupportsFeature = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int SupportsFeature(Scintilla::Supports feature) override {
+		if (handle__SupportsFeature == 0) {
+			return 0; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla::Supports feature_ret = feature;
+		int sigval1 = static_cast<int>(feature_ret);
+
+		int callback_return_value = miqt_exec_callback_Scintilla__Internal__Surface_SupportsFeature(this, handle__SupportsFeature, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Initialised = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool Initialised() override {
+		if (handle__Initialised == 0) {
+			return false; // Pure virtual, there is no base we can call
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_Scintilla__Internal__Surface_Initialised(this, handle__Initialised);
+
+		return callback_return_value;
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__LogPixelsY = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int LogPixelsY() override {
+		if (handle__LogPixelsY == 0) {
+			return 0; // Pure virtual, there is no base we can call
+		}
+		
+
+		int callback_return_value = miqt_exec_callback_Scintilla__Internal__Surface_LogPixelsY(this, handle__LogPixelsY);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__PixelDivisions = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int PixelDivisions() override {
+		if (handle__PixelDivisions == 0) {
+			return 0; // Pure virtual, there is no base we can call
+		}
+		
+
+		int callback_return_value = miqt_exec_callback_Scintilla__Internal__Surface_PixelDivisions(this, handle__PixelDivisions);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DeviceHeightFont = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int DeviceHeightFont(int points) override {
+		if (handle__DeviceHeightFont == 0) {
+			return 0; // Pure virtual, there is no base we can call
+		}
+		
+		int sigval1 = points;
+
+		int callback_return_value = miqt_exec_callback_Scintilla__Internal__Surface_DeviceHeightFont(this, handle__DeviceHeightFont, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__LineDraw = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void LineDraw(Scintilla::Internal::Point start, Scintilla::Internal::Point end, Scintilla::Internal::Stroke stroke) override {
+		if (handle__LineDraw == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla__Internal__Point* sigval1 = new Scintilla::Internal::Point(start);
+		Scintilla__Internal__Point* sigval2 = new Scintilla::Internal::Point(end);
+		Scintilla__Internal__Stroke* sigval3 = new Scintilla::Internal::Stroke(stroke);
+
+		miqt_exec_callback_Scintilla__Internal__Surface_LineDraw(this, handle__LineDraw, sigval1, sigval2, sigval3);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__PolyLine = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void PolyLine(const Scintilla::Internal::Point* pts, size_t npts, Scintilla::Internal::Stroke stroke) override {
+		if (handle__PolyLine == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla__Internal__Point* sigval1 = (Scintilla__Internal__Point*) pts;
+		size_t sigval2 = npts;
+		Scintilla__Internal__Stroke* sigval3 = new Scintilla::Internal::Stroke(stroke);
+
+		miqt_exec_callback_Scintilla__Internal__Surface_PolyLine(this, handle__PolyLine, sigval1, sigval2, sigval3);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Polygon = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void Polygon(const Scintilla::Internal::Point* pts, size_t npts, Scintilla::Internal::FillStroke fillStroke) override {
+		if (handle__Polygon == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla__Internal__Point* sigval1 = (Scintilla__Internal__Point*) pts;
+		size_t sigval2 = npts;
+		Scintilla__Internal__FillStroke* sigval3 = new Scintilla::Internal::FillStroke(fillStroke);
+
+		miqt_exec_callback_Scintilla__Internal__Surface_Polygon(this, handle__Polygon, sigval1, sigval2, sigval3);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__RectangleDraw = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void RectangleDraw(Scintilla::Internal::PRectangle rc, Scintilla::Internal::FillStroke fillStroke) override {
+		if (handle__RectangleDraw == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla__Internal__PRectangle* sigval1 = new Scintilla::Internal::PRectangle(rc);
+		Scintilla__Internal__FillStroke* sigval2 = new Scintilla::Internal::FillStroke(fillStroke);
+
+		miqt_exec_callback_Scintilla__Internal__Surface_RectangleDraw(this, handle__RectangleDraw, sigval1, sigval2);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__RectangleFrame = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void RectangleFrame(Scintilla::Internal::PRectangle rc, Scintilla::Internal::Stroke stroke) override {
+		if (handle__RectangleFrame == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla__Internal__PRectangle* sigval1 = new Scintilla::Internal::PRectangle(rc);
+		Scintilla__Internal__Stroke* sigval2 = new Scintilla::Internal::Stroke(stroke);
+
+		miqt_exec_callback_Scintilla__Internal__Surface_RectangleFrame(this, handle__RectangleFrame, sigval1, sigval2);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__FillRectangle = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void FillRectangle(Scintilla::Internal::PRectangle rc, Scintilla::Internal::Fill fill) override {
+		if (handle__FillRectangle == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla__Internal__PRectangle* sigval1 = new Scintilla::Internal::PRectangle(rc);
+		Scintilla__Internal__Fill* sigval2 = new Scintilla::Internal::Fill(fill);
+
+		miqt_exec_callback_Scintilla__Internal__Surface_FillRectangle(this, handle__FillRectangle, sigval1, sigval2);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__FillRectangleAligned = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void FillRectangleAligned(Scintilla::Internal::PRectangle rc, Scintilla::Internal::Fill fill) override {
+		if (handle__FillRectangleAligned == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla__Internal__PRectangle* sigval1 = new Scintilla::Internal::PRectangle(rc);
+		Scintilla__Internal__Fill* sigval2 = new Scintilla::Internal::Fill(fill);
+
+		miqt_exec_callback_Scintilla__Internal__Surface_FillRectangleAligned(this, handle__FillRectangleAligned, sigval1, sigval2);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__FillRectangle2 = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void FillRectangle(Scintilla::Internal::PRectangle rc, Scintilla::Internal::Surface& surfacePattern) override {
+		if (handle__FillRectangle2 == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla__Internal__PRectangle* sigval1 = new Scintilla::Internal::PRectangle(rc);
+		Scintilla::Internal::Surface& surfacePattern_ret = surfacePattern;
+		// Cast returned reference into pointer
+		Scintilla__Internal__Surface* sigval2 = &surfacePattern_ret;
+
+		miqt_exec_callback_Scintilla__Internal__Surface_FillRectangle2(this, handle__FillRectangle2, sigval1, sigval2);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__RoundedRectangle = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void RoundedRectangle(Scintilla::Internal::PRectangle rc, Scintilla::Internal::FillStroke fillStroke) override {
+		if (handle__RoundedRectangle == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla__Internal__PRectangle* sigval1 = new Scintilla::Internal::PRectangle(rc);
+		Scintilla__Internal__FillStroke* sigval2 = new Scintilla::Internal::FillStroke(fillStroke);
+
+		miqt_exec_callback_Scintilla__Internal__Surface_RoundedRectangle(this, handle__RoundedRectangle, sigval1, sigval2);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__AlphaRectangle = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void AlphaRectangle(Scintilla::Internal::PRectangle rc, Scintilla::Internal::XYPOSITION cornerSize, Scintilla::Internal::FillStroke fillStroke) override {
+		if (handle__AlphaRectangle == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla__Internal__PRectangle* sigval1 = new Scintilla::Internal::PRectangle(rc);
+		Scintilla::Internal::XYPOSITION cornerSize_ret = cornerSize;
+		double sigval2 = static_cast<double>(cornerSize_ret);
+		Scintilla__Internal__FillStroke* sigval3 = new Scintilla::Internal::FillStroke(fillStroke);
+
+		miqt_exec_callback_Scintilla__Internal__Surface_AlphaRectangle(this, handle__AlphaRectangle, sigval1, sigval2, sigval3);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DrawRGBAImage = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void DrawRGBAImage(Scintilla::Internal::PRectangle rc, int width, int height, const unsigned char* pixelsImage) override {
+		if (handle__DrawRGBAImage == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla__Internal__PRectangle* sigval1 = new Scintilla::Internal::PRectangle(rc);
+		int sigval2 = width;
+		int sigval3 = height;
+		const unsigned char* sigval4 = (const unsigned char*) pixelsImage;
+
+		miqt_exec_callback_Scintilla__Internal__Surface_DrawRGBAImage(this, handle__DrawRGBAImage, sigval1, sigval2, sigval3, sigval4);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Ellipse = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void Ellipse(Scintilla::Internal::PRectangle rc, Scintilla::Internal::FillStroke fillStroke) override {
+		if (handle__Ellipse == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla__Internal__PRectangle* sigval1 = new Scintilla::Internal::PRectangle(rc);
+		Scintilla__Internal__FillStroke* sigval2 = new Scintilla::Internal::FillStroke(fillStroke);
+
+		miqt_exec_callback_Scintilla__Internal__Surface_Ellipse(this, handle__Ellipse, sigval1, sigval2);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Stadium = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void Stadium(Scintilla::Internal::PRectangle rc, Scintilla::Internal::FillStroke fillStroke, Scintilla::Internal::Surface::Ends ends) override {
+		if (handle__Stadium == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla__Internal__PRectangle* sigval1 = new Scintilla::Internal::PRectangle(rc);
+		Scintilla__Internal__FillStroke* sigval2 = new Scintilla::Internal::FillStroke(fillStroke);
+		Scintilla::Internal::Surface::Ends ends_ret = ends;
+		int sigval3 = static_cast<int>(ends_ret);
+
+		miqt_exec_callback_Scintilla__Internal__Surface_Stadium(this, handle__Stadium, sigval1, sigval2, sigval3);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Copy = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void Copy(Scintilla::Internal::PRectangle rc, Scintilla::Internal::Point from, Scintilla::Internal::Surface& surfaceSource) override {
+		if (handle__Copy == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla__Internal__PRectangle* sigval1 = new Scintilla::Internal::PRectangle(rc);
+		Scintilla__Internal__Point* sigval2 = new Scintilla::Internal::Point(from);
+		Scintilla::Internal::Surface& surfaceSource_ret = surfaceSource;
+		// Cast returned reference into pointer
+		Scintilla__Internal__Surface* sigval3 = &surfaceSource_ret;
+
+		miqt_exec_callback_Scintilla__Internal__Surface_Copy(this, handle__Copy, sigval1, sigval2, sigval3);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Ascent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual Scintilla::Internal::XYPOSITION Ascent(const Scintilla::Internal::Font* font_) override {
+		if (handle__Ascent == 0) {
+			return 0; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla__Internal__Font* sigval1 = (Scintilla__Internal__Font*) font_;
+
+		double callback_return_value = miqt_exec_callback_Scintilla__Internal__Surface_Ascent(this, handle__Ascent, sigval1);
+
+		return static_cast<Scintilla::Internal::XYPOSITION>(callback_return_value);
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Descent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual Scintilla::Internal::XYPOSITION Descent(const Scintilla::Internal::Font* font_) override {
+		if (handle__Descent == 0) {
+			return 0; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla__Internal__Font* sigval1 = (Scintilla__Internal__Font*) font_;
+
+		double callback_return_value = miqt_exec_callback_Scintilla__Internal__Surface_Descent(this, handle__Descent, sigval1);
+
+		return static_cast<Scintilla::Internal::XYPOSITION>(callback_return_value);
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__InternalLeading = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual Scintilla::Internal::XYPOSITION InternalLeading(const Scintilla::Internal::Font* font_) override {
+		if (handle__InternalLeading == 0) {
+			return 0; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla__Internal__Font* sigval1 = (Scintilla__Internal__Font*) font_;
+
+		double callback_return_value = miqt_exec_callback_Scintilla__Internal__Surface_InternalLeading(this, handle__InternalLeading, sigval1);
+
+		return static_cast<Scintilla::Internal::XYPOSITION>(callback_return_value);
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Height = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual Scintilla::Internal::XYPOSITION Height(const Scintilla::Internal::Font* font_) override {
+		if (handle__Height == 0) {
+			return 0; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla__Internal__Font* sigval1 = (Scintilla__Internal__Font*) font_;
+
+		double callback_return_value = miqt_exec_callback_Scintilla__Internal__Surface_Height(this, handle__Height, sigval1);
+
+		return static_cast<Scintilla::Internal::XYPOSITION>(callback_return_value);
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__AverageCharWidth = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual Scintilla::Internal::XYPOSITION AverageCharWidth(const Scintilla::Internal::Font* font_) override {
+		if (handle__AverageCharWidth == 0) {
+			return 0; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla__Internal__Font* sigval1 = (Scintilla__Internal__Font*) font_;
+
+		double callback_return_value = miqt_exec_callback_Scintilla__Internal__Surface_AverageCharWidth(this, handle__AverageCharWidth, sigval1);
+
+		return static_cast<Scintilla::Internal::XYPOSITION>(callback_return_value);
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetClip = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void SetClip(Scintilla::Internal::PRectangle rc) override {
+		if (handle__SetClip == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla__Internal__PRectangle* sigval1 = new Scintilla::Internal::PRectangle(rc);
+
+		miqt_exec_callback_Scintilla__Internal__Surface_SetClip(this, handle__SetClip, sigval1);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__PopClip = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void PopClip() override {
+		if (handle__PopClip == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+
+		miqt_exec_callback_Scintilla__Internal__Surface_PopClip(this, handle__PopClip);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__FlushCachedState = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void FlushCachedState() override {
+		if (handle__FlushCachedState == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+
+		miqt_exec_callback_Scintilla__Internal__Surface_FlushCachedState(this, handle__FlushCachedState);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__FlushDrawing = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void FlushDrawing() override {
+		if (handle__FlushDrawing == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+
+		miqt_exec_callback_Scintilla__Internal__Surface_FlushDrawing(this, handle__FlushDrawing);
+
+		
+	}
+
+};
+
+void Scintilla__Internal__Surface_new(Scintilla__Internal__Surface** outptr_Scintilla__Internal__Surface) {
+	MiqtVirtualScintillaInternalSurface* ret = new MiqtVirtualScintillaInternalSurface();
+	*outptr_Scintilla__Internal__Surface = ret;
+}
+
 void Scintilla__Internal__Surface_Init(Scintilla__Internal__Surface* self, void* wid) {
 	self->Init(wid);
 }
@@ -828,9 +1380,137 @@ void Scintilla__Internal__Surface_FlushDrawing(Scintilla__Internal__Surface* sel
 	self->FlushDrawing();
 }
 
+void Scintilla__Internal__Surface_override_virtual_Init(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__Init = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_Init2(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__Init2 = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_SetMode(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__SetMode = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_Release(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__Release = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_SupportsFeature(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__SupportsFeature = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_Initialised(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__Initialised = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_LogPixelsY(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__LogPixelsY = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_PixelDivisions(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__PixelDivisions = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_DeviceHeightFont(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__DeviceHeightFont = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_LineDraw(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__LineDraw = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_PolyLine(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__PolyLine = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_Polygon(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__Polygon = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_RectangleDraw(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__RectangleDraw = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_RectangleFrame(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__RectangleFrame = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_FillRectangle(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__FillRectangle = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_FillRectangleAligned(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__FillRectangleAligned = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_FillRectangle2(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__FillRectangle2 = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_RoundedRectangle(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__RoundedRectangle = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_AlphaRectangle(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__AlphaRectangle = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_DrawRGBAImage(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__DrawRGBAImage = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_Ellipse(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__Ellipse = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_Stadium(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__Stadium = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_Copy(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__Copy = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_Ascent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__Ascent = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_Descent(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__Descent = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_InternalLeading(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__InternalLeading = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_Height(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__Height = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_AverageCharWidth(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__AverageCharWidth = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_SetClip(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__SetClip = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_PopClip(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__PopClip = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_FlushCachedState(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__FlushCachedState = slot;
+}
+
+void Scintilla__Internal__Surface_override_virtual_FlushDrawing(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalSurface*>( (Scintilla__Internal__Surface*)(self) )->handle__FlushDrawing = slot;
+}
+
 void Scintilla__Internal__Surface_Delete(Scintilla__Internal__Surface* self, bool isSubclass) {
 	if (isSubclass) {
-		delete dynamic_cast<Scintilla::Internal::Surface*>( self );
+		delete dynamic_cast<MiqtVirtualScintillaInternalSurface*>( self );
 	} else {
 		delete self;
 	}
@@ -943,6 +1623,333 @@ void Scintilla__Internal__ListOptions_Delete(Scintilla__Internal__ListOptions* s
 	}
 }
 
+class MiqtVirtualScintillaInternalListBox : public virtual Scintilla::Internal::ListBox {
+public:
+
+	MiqtVirtualScintillaInternalListBox(): Scintilla::Internal::ListBox() {};
+
+	virtual ~MiqtVirtualScintillaInternalListBox() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetFont = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void SetFont(const Scintilla::Internal::Font* font) override {
+		if (handle__SetFont == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla__Internal__Font* sigval1 = (Scintilla__Internal__Font*) font;
+
+		miqt_exec_callback_Scintilla__Internal__ListBox_SetFont(this, handle__SetFont, sigval1);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Create = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void Create(Scintilla::Internal::Window& parent, int ctrlID, Scintilla::Internal::Point location, int lineHeight_, bool unicodeMode_, Scintilla::Technology technology_) override {
+		if (handle__Create == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla::Internal::Window& parent_ret = parent;
+		// Cast returned reference into pointer
+		Scintilla__Internal__Window* sigval1 = &parent_ret;
+		int sigval2 = ctrlID;
+		Scintilla__Internal__Point* sigval3 = new Scintilla::Internal::Point(location);
+		int sigval4 = lineHeight_;
+		bool sigval5 = unicodeMode_;
+		Scintilla::Technology technology__ret = technology_;
+		int sigval6 = static_cast<int>(technology__ret);
+
+		miqt_exec_callback_Scintilla__Internal__ListBox_Create(this, handle__Create, sigval1, sigval2, sigval3, sigval4, sigval5, sigval6);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetAverageCharWidth = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void SetAverageCharWidth(int width) override {
+		if (handle__SetAverageCharWidth == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		int sigval1 = width;
+
+		miqt_exec_callback_Scintilla__Internal__ListBox_SetAverageCharWidth(this, handle__SetAverageCharWidth, sigval1);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetVisibleRows = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void SetVisibleRows(int rows) override {
+		if (handle__SetVisibleRows == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		int sigval1 = rows;
+
+		miqt_exec_callback_Scintilla__Internal__ListBox_SetVisibleRows(this, handle__SetVisibleRows, sigval1);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__GetVisibleRows = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int GetVisibleRows() const override {
+		if (handle__GetVisibleRows == 0) {
+			return 0; // Pure virtual, there is no base we can call
+		}
+		
+
+		int callback_return_value = miqt_exec_callback_Scintilla__Internal__ListBox_GetVisibleRows(const_cast<MiqtVirtualScintillaInternalListBox*>(this), handle__GetVisibleRows);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__GetDesiredRect = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual Scintilla::Internal::PRectangle GetDesiredRect() override {
+		if (handle__GetDesiredRect == 0) {
+			return Scintilla::Internal::PRectangle(); // Pure virtual, there is no base we can call
+		}
+		
+
+		Scintilla__Internal__PRectangle* callback_return_value = miqt_exec_callback_Scintilla__Internal__ListBox_GetDesiredRect(this, handle__GetDesiredRect);
+
+		return *callback_return_value;
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CaretFromEdge = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int CaretFromEdge() override {
+		if (handle__CaretFromEdge == 0) {
+			return 0; // Pure virtual, there is no base we can call
+		}
+		
+
+		int callback_return_value = miqt_exec_callback_Scintilla__Internal__ListBox_CaretFromEdge(this, handle__CaretFromEdge);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Clear = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void Clear() override {
+		if (handle__Clear == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+
+		miqt_exec_callback_Scintilla__Internal__ListBox_Clear(this, handle__Clear);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Append = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void Append(char* s, int typeVal) override {
+		if (handle__Append == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		char* sigval1 = s;
+		int sigval2 = typeVal;
+
+		miqt_exec_callback_Scintilla__Internal__ListBox_Append(this, handle__Append, sigval1, sigval2);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Length = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int Length() override {
+		if (handle__Length == 0) {
+			return 0; // Pure virtual, there is no base we can call
+		}
+		
+
+		int callback_return_value = miqt_exec_callback_Scintilla__Internal__ListBox_Length(this, handle__Length);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Select = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void Select(int n) override {
+		if (handle__Select == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		int sigval1 = n;
+
+		miqt_exec_callback_Scintilla__Internal__ListBox_Select(this, handle__Select, sigval1);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__GetSelection = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int GetSelection() override {
+		if (handle__GetSelection == 0) {
+			return 0; // Pure virtual, there is no base we can call
+		}
+		
+
+		int callback_return_value = miqt_exec_callback_Scintilla__Internal__ListBox_GetSelection(this, handle__GetSelection);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Find = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int Find(const char* prefix) override {
+		if (handle__Find == 0) {
+			return 0; // Pure virtual, there is no base we can call
+		}
+		
+		const char* sigval1 = (const char*) prefix;
+
+		int callback_return_value = miqt_exec_callback_Scintilla__Internal__ListBox_Find(this, handle__Find, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__RegisterImage = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void RegisterImage(int typeVal, const char* xpm_data) override {
+		if (handle__RegisterImage == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		int sigval1 = typeVal;
+		const char* sigval2 = (const char*) xpm_data;
+
+		miqt_exec_callback_Scintilla__Internal__ListBox_RegisterImage(this, handle__RegisterImage, sigval1, sigval2);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__RegisterRGBAImage = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void RegisterRGBAImage(int typeVal, int width, int height, const unsigned char* pixelsImage) override {
+		if (handle__RegisterRGBAImage == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		int sigval1 = typeVal;
+		int sigval2 = width;
+		int sigval3 = height;
+		const unsigned char* sigval4 = (const unsigned char*) pixelsImage;
+
+		miqt_exec_callback_Scintilla__Internal__ListBox_RegisterRGBAImage(this, handle__RegisterRGBAImage, sigval1, sigval2, sigval3, sigval4);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ClearRegisteredImages = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void ClearRegisteredImages() override {
+		if (handle__ClearRegisteredImages == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+
+		miqt_exec_callback_Scintilla__Internal__ListBox_ClearRegisteredImages(this, handle__ClearRegisteredImages);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetDelegate = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void SetDelegate(Scintilla::Internal::IListBoxDelegate* lbDelegate) override {
+		if (handle__SetDelegate == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla__Internal__IListBoxDelegate* sigval1 = lbDelegate;
+
+		miqt_exec_callback_Scintilla__Internal__ListBox_SetDelegate(this, handle__SetDelegate, sigval1);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetList = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void SetList(const char* list, char separator, char typesep) override {
+		if (handle__SetList == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		const char* sigval1 = (const char*) list;
+		char sigval2 = separator;
+		char sigval3 = typesep;
+
+		miqt_exec_callback_Scintilla__Internal__ListBox_SetList(this, handle__SetList, sigval1, sigval2, sigval3);
+
+		
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetOptions = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void SetOptions(Scintilla::Internal::ListOptions options_) override {
+		if (handle__SetOptions == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+		Scintilla__Internal__ListOptions* sigval1 = new Scintilla::Internal::ListOptions(options_);
+
+		miqt_exec_callback_Scintilla__Internal__ListBox_SetOptions(this, handle__SetOptions, sigval1);
+
+		
+	}
+
+};
+
+void Scintilla__Internal__ListBox_new(Scintilla__Internal__ListBox** outptr_Scintilla__Internal__ListBox, Scintilla__Internal__Window** outptr_Scintilla__Internal__Window) {
+	MiqtVirtualScintillaInternalListBox* ret = new MiqtVirtualScintillaInternalListBox();
+	*outptr_Scintilla__Internal__ListBox = ret;
+	*outptr_Scintilla__Internal__Window = static_cast<Scintilla::Internal::Window*>(ret);
+}
+
 void Scintilla__Internal__ListBox_SetFont(Scintilla__Internal__ListBox* self, Scintilla__Internal__Font* font) {
 	self->SetFont(font);
 }
@@ -1019,9 +2026,85 @@ void Scintilla__Internal__ListBox_SetOptions(Scintilla__Internal__ListBox* self,
 	self->SetOptions(*options_);
 }
 
+void Scintilla__Internal__ListBox_override_virtual_SetFont(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalListBox*>( (Scintilla__Internal__ListBox*)(self) )->handle__SetFont = slot;
+}
+
+void Scintilla__Internal__ListBox_override_virtual_Create(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalListBox*>( (Scintilla__Internal__ListBox*)(self) )->handle__Create = slot;
+}
+
+void Scintilla__Internal__ListBox_override_virtual_SetAverageCharWidth(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalListBox*>( (Scintilla__Internal__ListBox*)(self) )->handle__SetAverageCharWidth = slot;
+}
+
+void Scintilla__Internal__ListBox_override_virtual_SetVisibleRows(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalListBox*>( (Scintilla__Internal__ListBox*)(self) )->handle__SetVisibleRows = slot;
+}
+
+void Scintilla__Internal__ListBox_override_virtual_GetVisibleRows(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalListBox*>( (Scintilla__Internal__ListBox*)(self) )->handle__GetVisibleRows = slot;
+}
+
+void Scintilla__Internal__ListBox_override_virtual_GetDesiredRect(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalListBox*>( (Scintilla__Internal__ListBox*)(self) )->handle__GetDesiredRect = slot;
+}
+
+void Scintilla__Internal__ListBox_override_virtual_CaretFromEdge(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalListBox*>( (Scintilla__Internal__ListBox*)(self) )->handle__CaretFromEdge = slot;
+}
+
+void Scintilla__Internal__ListBox_override_virtual_Clear(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalListBox*>( (Scintilla__Internal__ListBox*)(self) )->handle__Clear = slot;
+}
+
+void Scintilla__Internal__ListBox_override_virtual_Append(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalListBox*>( (Scintilla__Internal__ListBox*)(self) )->handle__Append = slot;
+}
+
+void Scintilla__Internal__ListBox_override_virtual_Length(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalListBox*>( (Scintilla__Internal__ListBox*)(self) )->handle__Length = slot;
+}
+
+void Scintilla__Internal__ListBox_override_virtual_Select(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalListBox*>( (Scintilla__Internal__ListBox*)(self) )->handle__Select = slot;
+}
+
+void Scintilla__Internal__ListBox_override_virtual_GetSelection(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalListBox*>( (Scintilla__Internal__ListBox*)(self) )->handle__GetSelection = slot;
+}
+
+void Scintilla__Internal__ListBox_override_virtual_Find(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalListBox*>( (Scintilla__Internal__ListBox*)(self) )->handle__Find = slot;
+}
+
+void Scintilla__Internal__ListBox_override_virtual_RegisterImage(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalListBox*>( (Scintilla__Internal__ListBox*)(self) )->handle__RegisterImage = slot;
+}
+
+void Scintilla__Internal__ListBox_override_virtual_RegisterRGBAImage(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalListBox*>( (Scintilla__Internal__ListBox*)(self) )->handle__RegisterRGBAImage = slot;
+}
+
+void Scintilla__Internal__ListBox_override_virtual_ClearRegisteredImages(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalListBox*>( (Scintilla__Internal__ListBox*)(self) )->handle__ClearRegisteredImages = slot;
+}
+
+void Scintilla__Internal__ListBox_override_virtual_SetDelegate(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalListBox*>( (Scintilla__Internal__ListBox*)(self) )->handle__SetDelegate = slot;
+}
+
+void Scintilla__Internal__ListBox_override_virtual_SetList(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalListBox*>( (Scintilla__Internal__ListBox*)(self) )->handle__SetList = slot;
+}
+
+void Scintilla__Internal__ListBox_override_virtual_SetOptions(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualScintillaInternalListBox*>( (Scintilla__Internal__ListBox*)(self) )->handle__SetOptions = slot;
+}
+
 void Scintilla__Internal__ListBox_Delete(Scintilla__Internal__ListBox* self, bool isSubclass) {
 	if (isSubclass) {
-		delete dynamic_cast<Scintilla::Internal::ListBox*>( self );
+		delete dynamic_cast<MiqtVirtualScintillaInternalListBox*>( self );
 	} else {
 		delete self;
 	}

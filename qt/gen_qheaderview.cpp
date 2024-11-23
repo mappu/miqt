@@ -11,6 +11,7 @@
 #include <QFrame>
 #include <QHeaderView>
 #include <QInputMethodEvent>
+#include <QItemSelection>
 #include <QItemSelectionModel>
 #include <QKeyEvent>
 #include <QList>
@@ -23,6 +24,7 @@
 #include <QPainter>
 #include <QPoint>
 #include <QRect>
+#include <QRegion>
 #include <QResizeEvent>
 #include <QSize>
 #include <QString>
@@ -729,6 +731,31 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
+	intptr_t handle__VisualRegionForSelection = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QRegion visualRegionForSelection(const QItemSelection& selection) const override {
+		if (handle__VisualRegionForSelection == 0) {
+			return QHeaderView::visualRegionForSelection(selection);
+		}
+		
+		const QItemSelection& selection_ret = selection;
+		// Cast returned reference into pointer
+		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selection_ret);
+
+		QRegion* callback_return_value = miqt_exec_callback_QHeaderView_VisualRegionForSelection(const_cast<MiqtVirtualQHeaderView*>(this), handle__VisualRegionForSelection, sigval1);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QRegion* virtualbase_VisualRegionForSelection(QItemSelection* selection) const {
+
+		return new QRegion(QHeaderView::visualRegionForSelection(*selection));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetSelectionModel = 0;
 
 	// Subclass to allow providing a Go implementation
@@ -928,6 +955,35 @@ public:
 	void virtualbase_RowsAboutToBeRemoved(QModelIndex* parent, int start, int end) {
 
 		QHeaderView::rowsAboutToBeRemoved(*parent, static_cast<int>(start), static_cast<int>(end));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SelectionChanged = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void selectionChanged(const QItemSelection& selected, const QItemSelection& deselected) override {
+		if (handle__SelectionChanged == 0) {
+			QHeaderView::selectionChanged(selected, deselected);
+			return;
+		}
+		
+		const QItemSelection& selected_ret = selected;
+		// Cast returned reference into pointer
+		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selected_ret);
+		const QItemSelection& deselected_ret = deselected;
+		// Cast returned reference into pointer
+		QItemSelection* sigval2 = const_cast<QItemSelection*>(&deselected_ret);
+
+		miqt_exec_callback_QHeaderView_SelectionChanged(this, handle__SelectionChanged, sigval1, sigval2);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SelectionChanged(QItemSelection* selected, QItemSelection* deselected) {
+
+		QHeaderView::selectionChanged(*selected, *deselected);
 
 	}
 
@@ -2307,6 +2363,14 @@ void QHeaderView_virtualbase_SetSelection(void* self, QRect* rect, int flags) {
 	( (MiqtVirtualQHeaderView*)(self) )->virtualbase_SetSelection(rect, flags);
 }
 
+void QHeaderView_override_virtual_VisualRegionForSelection(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) )->handle__VisualRegionForSelection = slot;
+}
+
+QRegion* QHeaderView_virtualbase_VisualRegionForSelection(const void* self, QItemSelection* selection) {
+	return ( (const MiqtVirtualQHeaderView*)(self) )->virtualbase_VisualRegionForSelection(selection);
+}
+
 void QHeaderView_override_virtual_SetSelectionModel(void* self, intptr_t slot) {
 	dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) )->handle__SetSelectionModel = slot;
 }
@@ -2369,6 +2433,14 @@ void QHeaderView_override_virtual_RowsAboutToBeRemoved(void* self, intptr_t slot
 
 void QHeaderView_virtualbase_RowsAboutToBeRemoved(void* self, QModelIndex* parent, int start, int end) {
 	( (MiqtVirtualQHeaderView*)(self) )->virtualbase_RowsAboutToBeRemoved(parent, start, end);
+}
+
+void QHeaderView_override_virtual_SelectionChanged(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) )->handle__SelectionChanged = slot;
+}
+
+void QHeaderView_virtualbase_SelectionChanged(void* self, QItemSelection* selected, QItemSelection* deselected) {
+	( (MiqtVirtualQHeaderView*)(self) )->virtualbase_SelectionChanged(selected, deselected);
 }
 
 void QHeaderView_override_virtual_UpdateEditorData(void* self, intptr_t slot) {

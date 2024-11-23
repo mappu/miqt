@@ -255,25 +255,18 @@ func (this *QsciLexerRuby) BlockStartKeyword1(style *int) string {
 	_ret := C.QsciLexerRuby_BlockStartKeyword1(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
-
-func (this *QsciLexerRuby) callVirtualBase_Language() string {
-
-	_ret := C.QsciLexerRuby_virtualbase_Language(unsafe.Pointer(this.h))
-	return C.GoString(_ret)
-
-}
-func (this *QsciLexerRuby) OnLanguage(slot func(super func() string) string) {
+func (this *QsciLexerRuby) OnLanguage(slot func() string) {
 	C.QsciLexerRuby_override_virtual_Language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerRuby_Language
 func miqt_exec_callback_QsciLexerRuby_Language(self *C.QsciLexerRuby, cb C.intptr_t) *C.const_char {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() string) string)
+	gofunc, ok := cgo.Handle(cb).Value().(func() string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	virtualReturn := gofunc((&QsciLexerRuby{h: self}).callVirtualBase_Language)
+	virtualReturn := gofunc()
 	virtualReturn_Cstring := C.CString(virtualReturn)
 	defer C.free(unsafe.Pointer(virtualReturn_Cstring))
 
@@ -696,21 +689,13 @@ func miqt_exec_callback_QsciLexerRuby_DefaultStyle(self *C.QsciLexerRuby, cb C.i
 	return (C.int)(virtualReturn)
 
 }
-
-func (this *QsciLexerRuby) callVirtualBase_Description(style int) string {
-
-	var _ms C.struct_miqt_string = C.QsciLexerRuby_virtualbase_Description(unsafe.Pointer(this.h), (C.int)(style))
-	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms.data))
-	return _ret
-}
-func (this *QsciLexerRuby) OnDescription(slot func(super func(style int) string, style int) string) {
+func (this *QsciLexerRuby) OnDescription(slot func(style int) string) {
 	C.QsciLexerRuby_override_virtual_Description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerRuby_Description
 func miqt_exec_callback_QsciLexerRuby_Description(self *C.QsciLexerRuby, cb C.intptr_t, style C.int) C.struct_miqt_string {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) string, style int) string)
+	gofunc, ok := cgo.Handle(cb).Value().(func(style int) string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -718,7 +703,7 @@ func miqt_exec_callback_QsciLexerRuby_Description(self *C.QsciLexerRuby, cb C.in
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (int)(style)
 
-	virtualReturn := gofunc((&QsciLexerRuby{h: self}).callVirtualBase_Description, slotval1)
+	virtualReturn := gofunc(slotval1)
 	virtualReturn_ms := C.struct_miqt_string{}
 	virtualReturn_ms.data = C.CString(virtualReturn)
 	virtualReturn_ms.len = C.size_t(len(virtualReturn))

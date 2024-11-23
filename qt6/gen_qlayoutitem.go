@@ -50,6 +50,36 @@ func UnsafeNewQLayoutItem(h unsafe.Pointer) *QLayoutItem {
 	return &QLayoutItem{h: (*C.QLayoutItem)(h)}
 }
 
+// NewQLayoutItem constructs a new QLayoutItem object.
+func NewQLayoutItem() *QLayoutItem {
+	var outptr_QLayoutItem *C.QLayoutItem = nil
+
+	C.QLayoutItem_new(&outptr_QLayoutItem)
+	ret := newQLayoutItem(outptr_QLayoutItem)
+	ret.isSubclass = true
+	return ret
+}
+
+// NewQLayoutItem2 constructs a new QLayoutItem object.
+func NewQLayoutItem2(param1 *QLayoutItem) *QLayoutItem {
+	var outptr_QLayoutItem *C.QLayoutItem = nil
+
+	C.QLayoutItem_new2(param1.cPointer(), &outptr_QLayoutItem)
+	ret := newQLayoutItem(outptr_QLayoutItem)
+	ret.isSubclass = true
+	return ret
+}
+
+// NewQLayoutItem3 constructs a new QLayoutItem object.
+func NewQLayoutItem3(alignment AlignmentFlag) *QLayoutItem {
+	var outptr_QLayoutItem *C.QLayoutItem = nil
+
+	C.QLayoutItem_new3((C.int)(alignment), &outptr_QLayoutItem)
+	ret := newQLayoutItem(outptr_QLayoutItem)
+	ret.isSubclass = true
+	return ret
+}
+
 func (this *QLayoutItem) SizeHint() *QSize {
 	_ret := C.QLayoutItem_SizeHint(this.h)
 	_goptr := newQSize(_ret)
@@ -128,6 +158,296 @@ func (this *QLayoutItem) SetAlignment(a AlignmentFlag) {
 
 func (this *QLayoutItem) ControlTypes() QSizePolicy__ControlType {
 	return (QSizePolicy__ControlType)(C.QLayoutItem_ControlTypes(this.h))
+}
+func (this *QLayoutItem) OnSizeHint(slot func() *QSize) {
+	C.QLayoutItem_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLayoutItem_SizeHint
+func miqt_exec_callback_QLayoutItem_SizeHint(self *C.QLayoutItem, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func() *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc()
+
+	return virtualReturn.cPointer()
+
+}
+func (this *QLayoutItem) OnMinimumSize(slot func() *QSize) {
+	C.QLayoutItem_override_virtual_MinimumSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLayoutItem_MinimumSize
+func miqt_exec_callback_QLayoutItem_MinimumSize(self *C.QLayoutItem, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func() *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc()
+
+	return virtualReturn.cPointer()
+
+}
+func (this *QLayoutItem) OnMaximumSize(slot func() *QSize) {
+	C.QLayoutItem_override_virtual_MaximumSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLayoutItem_MaximumSize
+func miqt_exec_callback_QLayoutItem_MaximumSize(self *C.QLayoutItem, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func() *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc()
+
+	return virtualReturn.cPointer()
+
+}
+func (this *QLayoutItem) OnExpandingDirections(slot func() Orientation) {
+	C.QLayoutItem_override_virtual_ExpandingDirections(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLayoutItem_ExpandingDirections
+func miqt_exec_callback_QLayoutItem_ExpandingDirections(self *C.QLayoutItem, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func() Orientation)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc()
+
+	return (C.int)(virtualReturn)
+
+}
+func (this *QLayoutItem) OnSetGeometry(slot func(geometry *QRect)) {
+	C.QLayoutItem_override_virtual_SetGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLayoutItem_SetGeometry
+func miqt_exec_callback_QLayoutItem_SetGeometry(self *C.QLayoutItem, cb C.intptr_t, geometry *C.QRect) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(geometry *QRect))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQRect(unsafe.Pointer(geometry))
+
+	gofunc(slotval1)
+
+}
+func (this *QLayoutItem) OnGeometry(slot func() *QRect) {
+	C.QLayoutItem_override_virtual_Geometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLayoutItem_Geometry
+func miqt_exec_callback_QLayoutItem_Geometry(self *C.QLayoutItem, cb C.intptr_t) *C.QRect {
+	gofunc, ok := cgo.Handle(cb).Value().(func() *QRect)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc()
+
+	return virtualReturn.cPointer()
+
+}
+func (this *QLayoutItem) OnIsEmpty(slot func() bool) {
+	C.QLayoutItem_override_virtual_IsEmpty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLayoutItem_IsEmpty
+func miqt_exec_callback_QLayoutItem_IsEmpty(self *C.QLayoutItem, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func() bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc()
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QLayoutItem) callVirtualBase_HasHeightForWidth() bool {
+
+	return (bool)(C.QLayoutItem_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+
+}
+func (this *QLayoutItem) OnHasHeightForWidth(slot func(super func() bool) bool) {
+	C.QLayoutItem_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLayoutItem_HasHeightForWidth
+func miqt_exec_callback_QLayoutItem_HasHeightForWidth(self *C.QLayoutItem, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QLayoutItem{h: self}).callVirtualBase_HasHeightForWidth)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QLayoutItem) callVirtualBase_HeightForWidth(param1 int) int {
+
+	return (int)(C.QLayoutItem_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+
+}
+func (this *QLayoutItem) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	C.QLayoutItem_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLayoutItem_HeightForWidth
+func miqt_exec_callback_QLayoutItem_HeightForWidth(self *C.QLayoutItem, cb C.intptr_t, param1 C.int) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(param1)
+
+	virtualReturn := gofunc((&QLayoutItem{h: self}).callVirtualBase_HeightForWidth, slotval1)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QLayoutItem) callVirtualBase_MinimumHeightForWidth(param1 int) int {
+
+	return (int)(C.QLayoutItem_virtualbase_MinimumHeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+
+}
+func (this *QLayoutItem) OnMinimumHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	C.QLayoutItem_override_virtual_MinimumHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLayoutItem_MinimumHeightForWidth
+func miqt_exec_callback_QLayoutItem_MinimumHeightForWidth(self *C.QLayoutItem, cb C.intptr_t, param1 C.int) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(param1)
+
+	virtualReturn := gofunc((&QLayoutItem{h: self}).callVirtualBase_MinimumHeightForWidth, slotval1)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QLayoutItem) callVirtualBase_Invalidate() {
+
+	C.QLayoutItem_virtualbase_Invalidate(unsafe.Pointer(this.h))
+
+}
+func (this *QLayoutItem) OnInvalidate(slot func(super func())) {
+	C.QLayoutItem_override_virtual_Invalidate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLayoutItem_Invalidate
+func miqt_exec_callback_QLayoutItem_Invalidate(self *C.QLayoutItem, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QLayoutItem{h: self}).callVirtualBase_Invalidate)
+
+}
+
+func (this *QLayoutItem) callVirtualBase_Widget() *QWidget {
+
+	return UnsafeNewQWidget(unsafe.Pointer(C.QLayoutItem_virtualbase_Widget(unsafe.Pointer(this.h))), nil, nil)
+}
+func (this *QLayoutItem) OnWidget(slot func(super func() *QWidget) *QWidget) {
+	C.QLayoutItem_override_virtual_Widget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLayoutItem_Widget
+func miqt_exec_callback_QLayoutItem_Widget(self *C.QLayoutItem, cb C.intptr_t) *C.QWidget {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QWidget) *QWidget)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QLayoutItem{h: self}).callVirtualBase_Widget)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QLayoutItem) callVirtualBase_Layout() *QLayout {
+
+	return UnsafeNewQLayout(unsafe.Pointer(C.QLayoutItem_virtualbase_Layout(unsafe.Pointer(this.h))), nil, nil)
+}
+func (this *QLayoutItem) OnLayout(slot func(super func() *QLayout) *QLayout) {
+	C.QLayoutItem_override_virtual_Layout(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLayoutItem_Layout
+func miqt_exec_callback_QLayoutItem_Layout(self *C.QLayoutItem, cb C.intptr_t) *C.QLayout {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QLayout) *QLayout)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QLayoutItem{h: self}).callVirtualBase_Layout)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QLayoutItem) callVirtualBase_SpacerItem() *QSpacerItem {
+
+	return UnsafeNewQSpacerItem(unsafe.Pointer(C.QLayoutItem_virtualbase_SpacerItem(unsafe.Pointer(this.h))), nil)
+}
+func (this *QLayoutItem) OnSpacerItem(slot func(super func() *QSpacerItem) *QSpacerItem) {
+	C.QLayoutItem_override_virtual_SpacerItem(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLayoutItem_SpacerItem
+func miqt_exec_callback_QLayoutItem_SpacerItem(self *C.QLayoutItem, cb C.intptr_t) *C.QSpacerItem {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSpacerItem) *QSpacerItem)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QLayoutItem{h: self}).callVirtualBase_SpacerItem)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QLayoutItem) callVirtualBase_ControlTypes() QSizePolicy__ControlType {
+
+	return (QSizePolicy__ControlType)(C.QLayoutItem_virtualbase_ControlTypes(unsafe.Pointer(this.h)))
+
+}
+func (this *QLayoutItem) OnControlTypes(slot func(super func() QSizePolicy__ControlType) QSizePolicy__ControlType) {
+	C.QLayoutItem_override_virtual_ControlTypes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QLayoutItem_ControlTypes
+func miqt_exec_callback_QLayoutItem_ControlTypes(self *C.QLayoutItem, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSizePolicy__ControlType) QSizePolicy__ControlType)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QLayoutItem{h: self}).callVirtualBase_ControlTypes)
+
+	return (C.int)(virtualReturn)
+
 }
 
 // Delete this object from C++ memory.

@@ -17,6 +17,7 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractItemModel;
 class QAbstractProxyModel;
+class QItemSelection;
 class QMetaObject;
 class QMimeData;
 class QModelIndex;
@@ -29,6 +30,7 @@ class QVariant;
 #else
 typedef struct QAbstractItemModel QAbstractItemModel;
 typedef struct QAbstractProxyModel QAbstractProxyModel;
+typedef struct QItemSelection QItemSelection;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMimeData QMimeData;
 typedef struct QModelIndex QModelIndex;
@@ -49,6 +51,8 @@ struct miqt_string QSortFilterProxyModel_TrUtf8(const char* s);
 void QSortFilterProxyModel_SetSourceModel(QSortFilterProxyModel* self, QAbstractItemModel* sourceModel);
 QModelIndex* QSortFilterProxyModel_MapToSource(const QSortFilterProxyModel* self, QModelIndex* proxyIndex);
 QModelIndex* QSortFilterProxyModel_MapFromSource(const QSortFilterProxyModel* self, QModelIndex* sourceIndex);
+QItemSelection* QSortFilterProxyModel_MapSelectionToSource(const QSortFilterProxyModel* self, QItemSelection* proxySelection);
+QItemSelection* QSortFilterProxyModel_MapSelectionFromSource(const QSortFilterProxyModel* self, QItemSelection* sourceSelection);
 QRegExp* QSortFilterProxyModel_FilterRegExp(const QSortFilterProxyModel* self);
 QRegularExpression* QSortFilterProxyModel_FilterRegularExpression(const QSortFilterProxyModel* self);
 int QSortFilterProxyModel_FilterKeyColumn(const QSortFilterProxyModel* self);
@@ -129,6 +133,10 @@ void QSortFilterProxyModel_override_virtual_MapToSource(void* self, intptr_t slo
 QModelIndex* QSortFilterProxyModel_virtualbase_MapToSource(const void* self, QModelIndex* proxyIndex);
 void QSortFilterProxyModel_override_virtual_MapFromSource(void* self, intptr_t slot);
 QModelIndex* QSortFilterProxyModel_virtualbase_MapFromSource(const void* self, QModelIndex* sourceIndex);
+void QSortFilterProxyModel_override_virtual_MapSelectionToSource(void* self, intptr_t slot);
+QItemSelection* QSortFilterProxyModel_virtualbase_MapSelectionToSource(const void* self, QItemSelection* proxySelection);
+void QSortFilterProxyModel_override_virtual_MapSelectionFromSource(void* self, intptr_t slot);
+QItemSelection* QSortFilterProxyModel_virtualbase_MapSelectionFromSource(const void* self, QItemSelection* sourceSelection);
 void QSortFilterProxyModel_override_virtual_FilterAcceptsRow(void* self, intptr_t slot);
 bool QSortFilterProxyModel_virtualbase_FilterAcceptsRow(const void* self, int source_row, QModelIndex* source_parent);
 void QSortFilterProxyModel_override_virtual_FilterAcceptsColumn(void* self, intptr_t slot);

@@ -1,5 +1,6 @@
 #include <QAbstractItemModel>
 #include <QAbstractProxyModel>
+#include <QItemSelection>
 #include <QList>
 #include <QMap>
 #include <QMetaObject>
@@ -97,6 +98,56 @@ public:
 	QModelIndex* virtualbase_MapFromSource(QModelIndex* sourceIndex) const {
 
 		return new QModelIndex(QSortFilterProxyModel::mapFromSource(*sourceIndex));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MapSelectionToSource = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QItemSelection mapSelectionToSource(const QItemSelection& proxySelection) const override {
+		if (handle__MapSelectionToSource == 0) {
+			return QSortFilterProxyModel::mapSelectionToSource(proxySelection);
+		}
+		
+		const QItemSelection& proxySelection_ret = proxySelection;
+		// Cast returned reference into pointer
+		QItemSelection* sigval1 = const_cast<QItemSelection*>(&proxySelection_ret);
+
+		QItemSelection* callback_return_value = miqt_exec_callback_QSortFilterProxyModel_MapSelectionToSource(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__MapSelectionToSource, sigval1);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QItemSelection* virtualbase_MapSelectionToSource(QItemSelection* proxySelection) const {
+
+		return new QItemSelection(QSortFilterProxyModel::mapSelectionToSource(*proxySelection));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MapSelectionFromSource = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QItemSelection mapSelectionFromSource(const QItemSelection& sourceSelection) const override {
+		if (handle__MapSelectionFromSource == 0) {
+			return QSortFilterProxyModel::mapSelectionFromSource(sourceSelection);
+		}
+		
+		const QItemSelection& sourceSelection_ret = sourceSelection;
+		// Cast returned reference into pointer
+		QItemSelection* sigval1 = const_cast<QItemSelection*>(&sourceSelection_ret);
+
+		QItemSelection* callback_return_value = miqt_exec_callback_QSortFilterProxyModel_MapSelectionFromSource(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__MapSelectionFromSource, sigval1);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QItemSelection* virtualbase_MapSelectionFromSource(QItemSelection* sourceSelection) const {
+
+		return new QItemSelection(QSortFilterProxyModel::mapSelectionFromSource(*sourceSelection));
 
 	}
 
@@ -1137,6 +1188,14 @@ QModelIndex* QSortFilterProxyModel_MapFromSource(const QSortFilterProxyModel* se
 	return new QModelIndex(self->mapFromSource(*sourceIndex));
 }
 
+QItemSelection* QSortFilterProxyModel_MapSelectionToSource(const QSortFilterProxyModel* self, QItemSelection* proxySelection) {
+	return new QItemSelection(self->mapSelectionToSource(*proxySelection));
+}
+
+QItemSelection* QSortFilterProxyModel_MapSelectionFromSource(const QSortFilterProxyModel* self, QItemSelection* sourceSelection) {
+	return new QItemSelection(self->mapSelectionFromSource(*sourceSelection));
+}
+
 QRegExp* QSortFilterProxyModel_FilterRegExp(const QSortFilterProxyModel* self) {
 	return new QRegExp(self->filterRegExp());
 }
@@ -1534,6 +1593,22 @@ void QSortFilterProxyModel_override_virtual_MapFromSource(void* self, intptr_t s
 
 QModelIndex* QSortFilterProxyModel_virtualbase_MapFromSource(const void* self, QModelIndex* sourceIndex) {
 	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->virtualbase_MapFromSource(sourceIndex);
+}
+
+void QSortFilterProxyModel_override_virtual_MapSelectionToSource(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQSortFilterProxyModel*>( (QSortFilterProxyModel*)(self) )->handle__MapSelectionToSource = slot;
+}
+
+QItemSelection* QSortFilterProxyModel_virtualbase_MapSelectionToSource(const void* self, QItemSelection* proxySelection) {
+	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->virtualbase_MapSelectionToSource(proxySelection);
+}
+
+void QSortFilterProxyModel_override_virtual_MapSelectionFromSource(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQSortFilterProxyModel*>( (QSortFilterProxyModel*)(self) )->handle__MapSelectionFromSource = slot;
+}
+
+QItemSelection* QSortFilterProxyModel_virtualbase_MapSelectionFromSource(const void* self, QItemSelection* sourceSelection) {
+	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->virtualbase_MapSelectionFromSource(sourceSelection);
 }
 
 void QSortFilterProxyModel_override_virtual_FilterAcceptsRow(void* self, intptr_t slot) {

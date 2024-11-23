@@ -10,6 +10,7 @@
 #include <QFont>
 #include <QFrame>
 #include <QIcon>
+#include <QItemSelection>
 #include <QItemSelectionModel>
 #include <QList>
 #include <QListView>
@@ -24,6 +25,7 @@
 #include <QPaintEvent>
 #include <QPoint>
 #include <QRect>
+#include <QRegion>
 #include <QResizeEvent>
 #include <QSize>
 #include <QString>
@@ -1374,6 +1376,31 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
+	intptr_t handle__VisualRegionForSelection = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QRegion visualRegionForSelection(const QItemSelection& selection) const override {
+		if (handle__VisualRegionForSelection == 0) {
+			return QListWidget::visualRegionForSelection(selection);
+		}
+		
+		const QItemSelection& selection_ret = selection;
+		// Cast returned reference into pointer
+		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selection_ret);
+
+		QRegion* callback_return_value = miqt_exec_callback_QListWidget_VisualRegionForSelection(const_cast<MiqtVirtualQListWidget*>(this), handle__VisualRegionForSelection, sigval1);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QRegion* virtualbase_VisualRegionForSelection(QItemSelection* selection) const {
+
+		return new QRegion(QListWidget::visualRegionForSelection(*selection));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SelectedIndexes = 0;
 
 	// Subclass to allow providing a Go implementation
@@ -1455,6 +1482,35 @@ public:
 	bool virtualbase_IsIndexHidden(QModelIndex* index) const {
 
 		return QListWidget::isIndexHidden(*index);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SelectionChanged = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void selectionChanged(const QItemSelection& selected, const QItemSelection& deselected) override {
+		if (handle__SelectionChanged == 0) {
+			QListWidget::selectionChanged(selected, deselected);
+			return;
+		}
+		
+		const QItemSelection& selected_ret = selected;
+		// Cast returned reference into pointer
+		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selected_ret);
+		const QItemSelection& deselected_ret = deselected;
+		// Cast returned reference into pointer
+		QItemSelection* sigval2 = const_cast<QItemSelection*>(&deselected_ret);
+
+		miqt_exec_callback_QListWidget_SelectionChanged(this, handle__SelectionChanged, sigval1, sigval2);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SelectionChanged(QItemSelection* selected, QItemSelection* deselected) {
+
+		QListWidget::selectionChanged(*selected, *deselected);
 
 	}
 
@@ -2174,6 +2230,14 @@ void QListWidget_virtualbase_SetSelection(void* self, QRect* rect, int command) 
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_SetSelection(rect, command);
 }
 
+void QListWidget_override_virtual_VisualRegionForSelection(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__VisualRegionForSelection = slot;
+}
+
+QRegion* QListWidget_virtualbase_VisualRegionForSelection(const void* self, QItemSelection* selection) {
+	return ( (const MiqtVirtualQListWidget*)(self) )->virtualbase_VisualRegionForSelection(selection);
+}
+
 void QListWidget_override_virtual_SelectedIndexes(void* self, intptr_t slot) {
 	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__SelectedIndexes = slot;
 }
@@ -2196,6 +2260,14 @@ void QListWidget_override_virtual_IsIndexHidden(void* self, intptr_t slot) {
 
 bool QListWidget_virtualbase_IsIndexHidden(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQListWidget*)(self) )->virtualbase_IsIndexHidden(index);
+}
+
+void QListWidget_override_virtual_SelectionChanged(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__SelectionChanged = slot;
+}
+
+void QListWidget_virtualbase_SelectionChanged(void* self, QItemSelection* selected, QItemSelection* deselected) {
+	( (MiqtVirtualQListWidget*)(self) )->virtualbase_SelectionChanged(selected, deselected);
 }
 
 void QListWidget_override_virtual_CurrentChanged(void* self, intptr_t slot) {

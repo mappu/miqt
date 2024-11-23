@@ -15,15 +15,25 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QChildEvent;
+class QEvent;
 class QGenericPlugin;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
+class QTimerEvent;
 #else
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QGenericPlugin QGenericPlugin;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
+void QGenericPlugin_new(QGenericPlugin** outptr_QGenericPlugin, QObject** outptr_QObject);
+void QGenericPlugin_new2(QObject* parent, QGenericPlugin** outptr_QGenericPlugin, QObject** outptr_QObject);
 QMetaObject* QGenericPlugin_MetaObject(const QGenericPlugin* self);
 void* QGenericPlugin_Metacast(QGenericPlugin* self, const char* param1);
 struct miqt_string QGenericPlugin_Tr(const char* s);
@@ -33,6 +43,22 @@ struct miqt_string QGenericPlugin_Tr2(const char* s, const char* c);
 struct miqt_string QGenericPlugin_Tr3(const char* s, const char* c, int n);
 struct miqt_string QGenericPlugin_TrUtf82(const char* s, const char* c);
 struct miqt_string QGenericPlugin_TrUtf83(const char* s, const char* c, int n);
+void QGenericPlugin_override_virtual_Create(void* self, intptr_t slot);
+QObject* QGenericPlugin_virtualbase_Create(void* self, struct miqt_string name, struct miqt_string spec);
+void QGenericPlugin_override_virtual_Event(void* self, intptr_t slot);
+bool QGenericPlugin_virtualbase_Event(void* self, QEvent* event);
+void QGenericPlugin_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QGenericPlugin_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QGenericPlugin_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QGenericPlugin_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QGenericPlugin_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QGenericPlugin_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QGenericPlugin_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QGenericPlugin_virtualbase_CustomEvent(void* self, QEvent* event);
+void QGenericPlugin_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QGenericPlugin_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QGenericPlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QGenericPlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QGenericPlugin_Delete(QGenericPlugin* self, bool isSubclass);
 
 #ifdef __cplusplus

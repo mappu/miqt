@@ -7,6 +7,154 @@
 #include "gen_qgraphicslayoutitem.h"
 #include "_cgo_export.h"
 
+class MiqtVirtualQGraphicsLayoutItem : public virtual QGraphicsLayoutItem {
+public:
+
+	MiqtVirtualQGraphicsLayoutItem(): QGraphicsLayoutItem() {};
+	MiqtVirtualQGraphicsLayoutItem(QGraphicsLayoutItem* parent): QGraphicsLayoutItem(parent) {};
+	MiqtVirtualQGraphicsLayoutItem(QGraphicsLayoutItem* parent, bool isLayout): QGraphicsLayoutItem(parent, isLayout) {};
+
+	virtual ~MiqtVirtualQGraphicsLayoutItem() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetGeometry = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setGeometry(const QRectF& rect) override {
+		if (handle__SetGeometry == 0) {
+			QGraphicsLayoutItem::setGeometry(rect);
+			return;
+		}
+		
+		const QRectF& rect_ret = rect;
+		// Cast returned reference into pointer
+		QRectF* sigval1 = const_cast<QRectF*>(&rect_ret);
+
+		miqt_exec_callback_QGraphicsLayoutItem_SetGeometry(this, handle__SetGeometry, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetGeometry(QRectF* rect) {
+
+		QGraphicsLayoutItem::setGeometry(*rect);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__GetContentsMargins = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void getContentsMargins(qreal* left, qreal* top, qreal* right, qreal* bottom) const override {
+		if (handle__GetContentsMargins == 0) {
+			QGraphicsLayoutItem::getContentsMargins(left, top, right, bottom);
+			return;
+		}
+		
+		qreal* left_ret = left;
+		double* sigval1 = static_cast<double*>(left_ret);
+		qreal* top_ret = top;
+		double* sigval2 = static_cast<double*>(top_ret);
+		qreal* right_ret = right;
+		double* sigval3 = static_cast<double*>(right_ret);
+		qreal* bottom_ret = bottom;
+		double* sigval4 = static_cast<double*>(bottom_ret);
+
+		miqt_exec_callback_QGraphicsLayoutItem_GetContentsMargins(const_cast<MiqtVirtualQGraphicsLayoutItem*>(this), handle__GetContentsMargins, sigval1, sigval2, sigval3, sigval4);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_GetContentsMargins(double* left, double* top, double* right, double* bottom) const {
+
+		QGraphicsLayoutItem::getContentsMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__UpdateGeometry = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void updateGeometry() override {
+		if (handle__UpdateGeometry == 0) {
+			QGraphicsLayoutItem::updateGeometry();
+			return;
+		}
+		
+
+		miqt_exec_callback_QGraphicsLayoutItem_UpdateGeometry(this, handle__UpdateGeometry);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_UpdateGeometry() {
+
+		QGraphicsLayoutItem::updateGeometry();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__IsEmpty = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool isEmpty() const override {
+		if (handle__IsEmpty == 0) {
+			return QGraphicsLayoutItem::isEmpty();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QGraphicsLayoutItem_IsEmpty(const_cast<MiqtVirtualQGraphicsLayoutItem*>(this), handle__IsEmpty);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_IsEmpty() const {
+
+		return QGraphicsLayoutItem::isEmpty();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SizeHint = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QSizeF sizeHint(Qt::SizeHint which, const QSizeF& constraint) const override {
+		if (handle__SizeHint == 0) {
+			return QSizeF(); // Pure virtual, there is no base we can call
+		}
+		
+		Qt::SizeHint which_ret = which;
+		int sigval1 = static_cast<int>(which_ret);
+		const QSizeF& constraint_ret = constraint;
+		// Cast returned reference into pointer
+		QSizeF* sigval2 = const_cast<QSizeF*>(&constraint_ret);
+
+		QSizeF* callback_return_value = miqt_exec_callback_QGraphicsLayoutItem_SizeHint(const_cast<MiqtVirtualQGraphicsLayoutItem*>(this), handle__SizeHint, sigval1, sigval2);
+
+		return *callback_return_value;
+	}
+
+};
+
+void QGraphicsLayoutItem_new(QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
+	MiqtVirtualQGraphicsLayoutItem* ret = new MiqtVirtualQGraphicsLayoutItem();
+	*outptr_QGraphicsLayoutItem = ret;
+}
+
+void QGraphicsLayoutItem_new2(QGraphicsLayoutItem* parent, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
+	MiqtVirtualQGraphicsLayoutItem* ret = new MiqtVirtualQGraphicsLayoutItem(parent);
+	*outptr_QGraphicsLayoutItem = ret;
+}
+
+void QGraphicsLayoutItem_new3(QGraphicsLayoutItem* parent, bool isLayout, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
+	MiqtVirtualQGraphicsLayoutItem* ret = new MiqtVirtualQGraphicsLayoutItem(parent, isLayout);
+	*outptr_QGraphicsLayoutItem = ret;
+}
+
 void QGraphicsLayoutItem_SetSizePolicy(QGraphicsLayoutItem* self, QSizePolicy* policy) {
 	self->setSizePolicy(*policy);
 }
@@ -165,9 +313,45 @@ QSizeF* QGraphicsLayoutItem_EffectiveSizeHint2(const QGraphicsLayoutItem* self, 
 	return new QSizeF(self->effectiveSizeHint(static_cast<Qt::SizeHint>(which), *constraint));
 }
 
+void QGraphicsLayoutItem_override_virtual_SetGeometry(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGraphicsLayoutItem*>( (QGraphicsLayoutItem*)(self) )->handle__SetGeometry = slot;
+}
+
+void QGraphicsLayoutItem_virtualbase_SetGeometry(void* self, QRectF* rect) {
+	( (MiqtVirtualQGraphicsLayoutItem*)(self) )->virtualbase_SetGeometry(rect);
+}
+
+void QGraphicsLayoutItem_override_virtual_GetContentsMargins(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGraphicsLayoutItem*>( (QGraphicsLayoutItem*)(self) )->handle__GetContentsMargins = slot;
+}
+
+void QGraphicsLayoutItem_virtualbase_GetContentsMargins(const void* self, double* left, double* top, double* right, double* bottom) {
+	( (const MiqtVirtualQGraphicsLayoutItem*)(self) )->virtualbase_GetContentsMargins(left, top, right, bottom);
+}
+
+void QGraphicsLayoutItem_override_virtual_UpdateGeometry(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGraphicsLayoutItem*>( (QGraphicsLayoutItem*)(self) )->handle__UpdateGeometry = slot;
+}
+
+void QGraphicsLayoutItem_virtualbase_UpdateGeometry(void* self) {
+	( (MiqtVirtualQGraphicsLayoutItem*)(self) )->virtualbase_UpdateGeometry();
+}
+
+void QGraphicsLayoutItem_override_virtual_IsEmpty(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGraphicsLayoutItem*>( (QGraphicsLayoutItem*)(self) )->handle__IsEmpty = slot;
+}
+
+bool QGraphicsLayoutItem_virtualbase_IsEmpty(const void* self) {
+	return ( (const MiqtVirtualQGraphicsLayoutItem*)(self) )->virtualbase_IsEmpty();
+}
+
+void QGraphicsLayoutItem_override_virtual_SizeHint(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQGraphicsLayoutItem*>( (QGraphicsLayoutItem*)(self) )->handle__SizeHint = slot;
+}
+
 void QGraphicsLayoutItem_Delete(QGraphicsLayoutItem* self, bool isSubclass) {
 	if (isSubclass) {
-		delete dynamic_cast<QGraphicsLayoutItem*>( self );
+		delete dynamic_cast<MiqtVirtualQGraphicsLayoutItem*>( self );
 	} else {
 		delete self;
 	}

@@ -418,6 +418,44 @@ void QNetworkProxy_Delete(QNetworkProxy* self, bool isSubclass) {
 	}
 }
 
+class MiqtVirtualQNetworkProxyFactory : public virtual QNetworkProxyFactory {
+public:
+
+	MiqtVirtualQNetworkProxyFactory(): QNetworkProxyFactory() {};
+
+	virtual ~MiqtVirtualQNetworkProxyFactory() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__QueryProxy = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QList<QNetworkProxy> queryProxy(const QNetworkProxyQuery& query) override {
+		if (handle__QueryProxy == 0) {
+			return QList<QNetworkProxy>(); // Pure virtual, there is no base we can call
+		}
+		
+		const QNetworkProxyQuery& query_ret = query;
+		// Cast returned reference into pointer
+		QNetworkProxyQuery* sigval1 = const_cast<QNetworkProxyQuery*>(&query_ret);
+
+		struct miqt_array /* of QNetworkProxy* */  callback_return_value = miqt_exec_callback_QNetworkProxyFactory_QueryProxy(this, handle__QueryProxy, sigval1);
+		QList<QNetworkProxy> callback_return_value_QList;
+		callback_return_value_QList.reserve(callback_return_value.len);
+		QNetworkProxy** callback_return_value_arr = static_cast<QNetworkProxy**>(callback_return_value.data);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
+		}
+
+		return callback_return_value_QList;
+	}
+
+};
+
+void QNetworkProxyFactory_new(QNetworkProxyFactory** outptr_QNetworkProxyFactory) {
+	MiqtVirtualQNetworkProxyFactory* ret = new MiqtVirtualQNetworkProxyFactory();
+	*outptr_QNetworkProxyFactory = ret;
+}
+
 struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_QueryProxy(QNetworkProxyFactory* self, QNetworkProxyQuery* query) {
 	QList<QNetworkProxy> _ret = self->queryProxy(*query);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -486,9 +524,13 @@ struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_SystemProxyForQu
 	return _out;
 }
 
+void QNetworkProxyFactory_override_virtual_QueryProxy(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQNetworkProxyFactory*>( (QNetworkProxyFactory*)(self) )->handle__QueryProxy = slot;
+}
+
 void QNetworkProxyFactory_Delete(QNetworkProxyFactory* self, bool isSubclass) {
 	if (isSubclass) {
-		delete dynamic_cast<QNetworkProxyFactory*>( self );
+		delete dynamic_cast<MiqtVirtualQNetworkProxyFactory*>( self );
 	} else {
 		delete self;
 	}

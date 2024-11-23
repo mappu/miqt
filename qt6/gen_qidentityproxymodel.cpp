@@ -2,6 +2,7 @@
 #include <QAbstractProxyModel>
 #include <QByteArray>
 #include <QIdentityProxyModel>
+#include <QItemSelection>
 #include <QList>
 #include <QMap>
 #include <QMetaObject>
@@ -257,6 +258,56 @@ public:
 	QModelIndex* virtualbase_Sibling(int row, int column, QModelIndex* idx) const {
 
 		return new QModelIndex(QIdentityProxyModel::sibling(static_cast<int>(row), static_cast<int>(column), *idx));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MapSelectionFromSource = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QItemSelection mapSelectionFromSource(const QItemSelection& selection) const override {
+		if (handle__MapSelectionFromSource == 0) {
+			return QIdentityProxyModel::mapSelectionFromSource(selection);
+		}
+		
+		const QItemSelection& selection_ret = selection;
+		// Cast returned reference into pointer
+		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selection_ret);
+
+		QItemSelection* callback_return_value = miqt_exec_callback_QIdentityProxyModel_MapSelectionFromSource(const_cast<MiqtVirtualQIdentityProxyModel*>(this), handle__MapSelectionFromSource, sigval1);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QItemSelection* virtualbase_MapSelectionFromSource(QItemSelection* selection) const {
+
+		return new QItemSelection(QIdentityProxyModel::mapSelectionFromSource(*selection));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MapSelectionToSource = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QItemSelection mapSelectionToSource(const QItemSelection& selection) const override {
+		if (handle__MapSelectionToSource == 0) {
+			return QIdentityProxyModel::mapSelectionToSource(selection);
+		}
+		
+		const QItemSelection& selection_ret = selection;
+		// Cast returned reference into pointer
+		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selection_ret);
+
+		QItemSelection* callback_return_value = miqt_exec_callback_QIdentityProxyModel_MapSelectionToSource(const_cast<MiqtVirtualQIdentityProxyModel*>(this), handle__MapSelectionToSource, sigval1);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QItemSelection* virtualbase_MapSelectionToSource(QItemSelection* selection) const {
+
+		return new QItemSelection(QIdentityProxyModel::mapSelectionToSource(*selection));
 
 	}
 
@@ -1205,6 +1256,14 @@ QModelIndex* QIdentityProxyModel_Sibling(const QIdentityProxyModel* self, int ro
 	return new QModelIndex(self->sibling(static_cast<int>(row), static_cast<int>(column), *idx));
 }
 
+QItemSelection* QIdentityProxyModel_MapSelectionFromSource(const QIdentityProxyModel* self, QItemSelection* selection) {
+	return new QItemSelection(self->mapSelectionFromSource(*selection));
+}
+
+QItemSelection* QIdentityProxyModel_MapSelectionToSource(const QIdentityProxyModel* self, QItemSelection* selection) {
+	return new QItemSelection(self->mapSelectionToSource(*selection));
+}
+
 struct miqt_array /* of QModelIndex* */  QIdentityProxyModel_Match(const QIdentityProxyModel* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
 	QModelIndexList _ret = self->match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -1338,6 +1397,22 @@ void QIdentityProxyModel_override_virtual_Sibling(void* self, intptr_t slot) {
 
 QModelIndex* QIdentityProxyModel_virtualbase_Sibling(const void* self, int row, int column, QModelIndex* idx) {
 	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_Sibling(row, column, idx);
+}
+
+void QIdentityProxyModel_override_virtual_MapSelectionFromSource(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) )->handle__MapSelectionFromSource = slot;
+}
+
+QItemSelection* QIdentityProxyModel_virtualbase_MapSelectionFromSource(const void* self, QItemSelection* selection) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_MapSelectionFromSource(selection);
+}
+
+void QIdentityProxyModel_override_virtual_MapSelectionToSource(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) )->handle__MapSelectionToSource = slot;
+}
+
+QItemSelection* QIdentityProxyModel_virtualbase_MapSelectionToSource(const void* self, QItemSelection* selection) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_MapSelectionToSource(selection);
 }
 
 void QIdentityProxyModel_override_virtual_Match(void* self, intptr_t slot) {

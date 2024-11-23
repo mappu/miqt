@@ -68,6 +68,28 @@ func UnsafeNewQIODevice(h unsafe.Pointer, h_QObject unsafe.Pointer) *QIODevice {
 		QObject: UnsafeNewQObject(h_QObject)}
 }
 
+// NewQIODevice constructs a new QIODevice object.
+func NewQIODevice() *QIODevice {
+	var outptr_QIODevice *C.QIODevice = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QIODevice_new(&outptr_QIODevice, &outptr_QObject)
+	ret := newQIODevice(outptr_QIODevice, outptr_QObject)
+	ret.isSubclass = true
+	return ret
+}
+
+// NewQIODevice2 constructs a new QIODevice object.
+func NewQIODevice2(parent *QObject) *QIODevice {
+	var outptr_QIODevice *C.QIODevice = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QIODevice_new2(parent.cPointer(), &outptr_QIODevice, &outptr_QObject)
+	ret := newQIODevice(outptr_QIODevice, outptr_QObject)
+	ret.isSubclass = true
+	return ret
+}
+
 func (this *QIODevice) MetaObject() *QMetaObject {
 	return UnsafeNewQMetaObject(unsafe.Pointer(C.QIODevice_MetaObject(this.h)))
 }
@@ -464,6 +486,542 @@ func (this *QIODevice) ReadLine1(maxlen int64) []byte {
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
+}
+
+func (this *QIODevice) callVirtualBase_IsSequential() bool {
+
+	return (bool)(C.QIODevice_virtualbase_IsSequential(unsafe.Pointer(this.h)))
+
+}
+func (this *QIODevice) OnIsSequential(slot func(super func() bool) bool) {
+	C.QIODevice_override_virtual_IsSequential(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QIODevice_IsSequential
+func miqt_exec_callback_QIODevice_IsSequential(self *C.QIODevice, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QIODevice{h: self}).callVirtualBase_IsSequential)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QIODevice) callVirtualBase_Open(mode QIODevice__OpenModeFlag) bool {
+
+	return (bool)(C.QIODevice_virtualbase_Open(unsafe.Pointer(this.h), (C.int)(mode)))
+
+}
+func (this *QIODevice) OnOpen(slot func(super func(mode QIODevice__OpenModeFlag) bool, mode QIODevice__OpenModeFlag) bool) {
+	C.QIODevice_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QIODevice_Open
+func miqt_exec_callback_QIODevice_Open(self *C.QIODevice, cb C.intptr_t, mode C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(mode QIODevice__OpenModeFlag) bool, mode QIODevice__OpenModeFlag) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QIODevice__OpenModeFlag)(mode)
+
+	virtualReturn := gofunc((&QIODevice{h: self}).callVirtualBase_Open, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QIODevice) callVirtualBase_Close() {
+
+	C.QIODevice_virtualbase_Close(unsafe.Pointer(this.h))
+
+}
+func (this *QIODevice) OnClose(slot func(super func())) {
+	C.QIODevice_override_virtual_Close(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QIODevice_Close
+func miqt_exec_callback_QIODevice_Close(self *C.QIODevice, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QIODevice{h: self}).callVirtualBase_Close)
+
+}
+
+func (this *QIODevice) callVirtualBase_Pos() int64 {
+
+	return (int64)(C.QIODevice_virtualbase_Pos(unsafe.Pointer(this.h)))
+
+}
+func (this *QIODevice) OnPos(slot func(super func() int64) int64) {
+	C.QIODevice_override_virtual_Pos(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QIODevice_Pos
+func miqt_exec_callback_QIODevice_Pos(self *C.QIODevice, cb C.intptr_t) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QIODevice{h: self}).callVirtualBase_Pos)
+
+	return (C.longlong)(virtualReturn)
+
+}
+
+func (this *QIODevice) callVirtualBase_Size() int64 {
+
+	return (int64)(C.QIODevice_virtualbase_Size(unsafe.Pointer(this.h)))
+
+}
+func (this *QIODevice) OnSize(slot func(super func() int64) int64) {
+	C.QIODevice_override_virtual_Size(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QIODevice_Size
+func miqt_exec_callback_QIODevice_Size(self *C.QIODevice, cb C.intptr_t) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QIODevice{h: self}).callVirtualBase_Size)
+
+	return (C.longlong)(virtualReturn)
+
+}
+
+func (this *QIODevice) callVirtualBase_Seek(pos int64) bool {
+
+	return (bool)(C.QIODevice_virtualbase_Seek(unsafe.Pointer(this.h), (C.longlong)(pos)))
+
+}
+func (this *QIODevice) OnSeek(slot func(super func(pos int64) bool, pos int64) bool) {
+	C.QIODevice_override_virtual_Seek(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QIODevice_Seek
+func miqt_exec_callback_QIODevice_Seek(self *C.QIODevice, cb C.intptr_t, pos C.longlong) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(pos int64) bool, pos int64) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int64)(pos)
+
+	virtualReturn := gofunc((&QIODevice{h: self}).callVirtualBase_Seek, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QIODevice) callVirtualBase_AtEnd() bool {
+
+	return (bool)(C.QIODevice_virtualbase_AtEnd(unsafe.Pointer(this.h)))
+
+}
+func (this *QIODevice) OnAtEnd(slot func(super func() bool) bool) {
+	C.QIODevice_override_virtual_AtEnd(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QIODevice_AtEnd
+func miqt_exec_callback_QIODevice_AtEnd(self *C.QIODevice, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QIODevice{h: self}).callVirtualBase_AtEnd)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QIODevice) callVirtualBase_Reset() bool {
+
+	return (bool)(C.QIODevice_virtualbase_Reset(unsafe.Pointer(this.h)))
+
+}
+func (this *QIODevice) OnReset(slot func(super func() bool) bool) {
+	C.QIODevice_override_virtual_Reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QIODevice_Reset
+func miqt_exec_callback_QIODevice_Reset(self *C.QIODevice, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QIODevice{h: self}).callVirtualBase_Reset)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QIODevice) callVirtualBase_BytesAvailable() int64 {
+
+	return (int64)(C.QIODevice_virtualbase_BytesAvailable(unsafe.Pointer(this.h)))
+
+}
+func (this *QIODevice) OnBytesAvailable(slot func(super func() int64) int64) {
+	C.QIODevice_override_virtual_BytesAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QIODevice_BytesAvailable
+func miqt_exec_callback_QIODevice_BytesAvailable(self *C.QIODevice, cb C.intptr_t) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QIODevice{h: self}).callVirtualBase_BytesAvailable)
+
+	return (C.longlong)(virtualReturn)
+
+}
+
+func (this *QIODevice) callVirtualBase_BytesToWrite() int64 {
+
+	return (int64)(C.QIODevice_virtualbase_BytesToWrite(unsafe.Pointer(this.h)))
+
+}
+func (this *QIODevice) OnBytesToWrite(slot func(super func() int64) int64) {
+	C.QIODevice_override_virtual_BytesToWrite(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QIODevice_BytesToWrite
+func miqt_exec_callback_QIODevice_BytesToWrite(self *C.QIODevice, cb C.intptr_t) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QIODevice{h: self}).callVirtualBase_BytesToWrite)
+
+	return (C.longlong)(virtualReturn)
+
+}
+
+func (this *QIODevice) callVirtualBase_CanReadLine() bool {
+
+	return (bool)(C.QIODevice_virtualbase_CanReadLine(unsafe.Pointer(this.h)))
+
+}
+func (this *QIODevice) OnCanReadLine(slot func(super func() bool) bool) {
+	C.QIODevice_override_virtual_CanReadLine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QIODevice_CanReadLine
+func miqt_exec_callback_QIODevice_CanReadLine(self *C.QIODevice, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QIODevice{h: self}).callVirtualBase_CanReadLine)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QIODevice) callVirtualBase_WaitForReadyRead(msecs int) bool {
+
+	return (bool)(C.QIODevice_virtualbase_WaitForReadyRead(unsafe.Pointer(this.h), (C.int)(msecs)))
+
+}
+func (this *QIODevice) OnWaitForReadyRead(slot func(super func(msecs int) bool, msecs int) bool) {
+	C.QIODevice_override_virtual_WaitForReadyRead(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QIODevice_WaitForReadyRead
+func miqt_exec_callback_QIODevice_WaitForReadyRead(self *C.QIODevice, cb C.intptr_t, msecs C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(msecs int) bool, msecs int) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(msecs)
+
+	virtualReturn := gofunc((&QIODevice{h: self}).callVirtualBase_WaitForReadyRead, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QIODevice) callVirtualBase_WaitForBytesWritten(msecs int) bool {
+
+	return (bool)(C.QIODevice_virtualbase_WaitForBytesWritten(unsafe.Pointer(this.h), (C.int)(msecs)))
+
+}
+func (this *QIODevice) OnWaitForBytesWritten(slot func(super func(msecs int) bool, msecs int) bool) {
+	C.QIODevice_override_virtual_WaitForBytesWritten(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QIODevice_WaitForBytesWritten
+func miqt_exec_callback_QIODevice_WaitForBytesWritten(self *C.QIODevice, cb C.intptr_t, msecs C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(msecs int) bool, msecs int) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(msecs)
+
+	virtualReturn := gofunc((&QIODevice{h: self}).callVirtualBase_WaitForBytesWritten, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+func (this *QIODevice) OnReadData(slot func(data string, maxlen int64) int64) {
+	C.QIODevice_override_virtual_ReadData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QIODevice_ReadData
+func miqt_exec_callback_QIODevice_ReadData(self *C.QIODevice, cb C.intptr_t, data *C.char, maxlen C.longlong) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(data string, maxlen int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	data_ret := data
+	slotval1 := C.GoString(data_ret)
+
+	slotval2 := (int64)(maxlen)
+
+	virtualReturn := gofunc(slotval1, slotval2)
+
+	return (C.longlong)(virtualReturn)
+
+}
+
+func (this *QIODevice) callVirtualBase_ReadLineData(data string, maxlen int64) int64 {
+	data_Cstring := C.CString(data)
+	defer C.free(unsafe.Pointer(data_Cstring))
+
+	return (int64)(C.QIODevice_virtualbase_ReadLineData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(maxlen)))
+
+}
+func (this *QIODevice) OnReadLineData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
+	C.QIODevice_override_virtual_ReadLineData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QIODevice_ReadLineData
+func miqt_exec_callback_QIODevice_ReadLineData(self *C.QIODevice, cb C.intptr_t, data *C.char, maxlen C.longlong) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	data_ret := data
+	slotval1 := C.GoString(data_ret)
+
+	slotval2 := (int64)(maxlen)
+
+	virtualReturn := gofunc((&QIODevice{h: self}).callVirtualBase_ReadLineData, slotval1, slotval2)
+
+	return (C.longlong)(virtualReturn)
+
+}
+func (this *QIODevice) OnWriteData(slot func(data string, lenVal int64) int64) {
+	C.QIODevice_override_virtual_WriteData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QIODevice_WriteData
+func miqt_exec_callback_QIODevice_WriteData(self *C.QIODevice, cb C.intptr_t, data *C.const_char, lenVal C.longlong) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(data string, lenVal int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	data_ret := data
+	slotval1 := C.GoString(data_ret)
+
+	slotval2 := (int64)(lenVal)
+
+	virtualReturn := gofunc(slotval1, slotval2)
+
+	return (C.longlong)(virtualReturn)
+
+}
+
+func (this *QIODevice) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QIODevice_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QIODevice) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	C.QIODevice_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QIODevice_Event
+func miqt_exec_callback_QIODevice_Event(self *C.QIODevice, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QIODevice{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QIODevice) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QIODevice_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QIODevice) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	C.QIODevice_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QIODevice_EventFilter
+func miqt_exec_callback_QIODevice_EventFilter(self *C.QIODevice, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QIODevice{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QIODevice) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QIODevice_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QIODevice) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	C.QIODevice_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QIODevice_TimerEvent
+func miqt_exec_callback_QIODevice_TimerEvent(self *C.QIODevice, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QIODevice{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QIODevice) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QIODevice_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QIODevice) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	C.QIODevice_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QIODevice_ChildEvent
+func miqt_exec_callback_QIODevice_ChildEvent(self *C.QIODevice, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QIODevice{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QIODevice) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QIODevice_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QIODevice) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	C.QIODevice_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QIODevice_CustomEvent
+func miqt_exec_callback_QIODevice_CustomEvent(self *C.QIODevice, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QIODevice{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QIODevice) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QIODevice_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QIODevice) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QIODevice_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QIODevice_ConnectNotify
+func miqt_exec_callback_QIODevice_ConnectNotify(self *C.QIODevice, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QIODevice{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QIODevice) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QIODevice_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QIODevice) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QIODevice_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QIODevice_DisconnectNotify
+func miqt_exec_callback_QIODevice_DisconnectNotify(self *C.QIODevice, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QIODevice{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
 }
 
 // Delete this object from C++ memory.

@@ -53,6 +53,28 @@ func UnsafeNewQAbstractEventDispatcher(h unsafe.Pointer, h_QObject unsafe.Pointe
 		QObject: UnsafeNewQObject(h_QObject)}
 }
 
+// NewQAbstractEventDispatcher constructs a new QAbstractEventDispatcher object.
+func NewQAbstractEventDispatcher() *QAbstractEventDispatcher {
+	var outptr_QAbstractEventDispatcher *C.QAbstractEventDispatcher = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QAbstractEventDispatcher_new(&outptr_QAbstractEventDispatcher, &outptr_QObject)
+	ret := newQAbstractEventDispatcher(outptr_QAbstractEventDispatcher, outptr_QObject)
+	ret.isSubclass = true
+	return ret
+}
+
+// NewQAbstractEventDispatcher2 constructs a new QAbstractEventDispatcher object.
+func NewQAbstractEventDispatcher2(parent *QObject) *QAbstractEventDispatcher {
+	var outptr_QAbstractEventDispatcher *C.QAbstractEventDispatcher = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QAbstractEventDispatcher_new2(parent.cPointer(), &outptr_QAbstractEventDispatcher, &outptr_QObject)
+	ret := newQAbstractEventDispatcher(outptr_QAbstractEventDispatcher, outptr_QObject)
+	ret.isSubclass = true
+	return ret
+}
+
 func (this *QAbstractEventDispatcher) MetaObject() *QMetaObject {
 	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractEventDispatcher_MetaObject(this.h)))
 }
@@ -210,6 +232,398 @@ func QAbstractEventDispatcher_Tr3(s string, c string, n int) string {
 
 func QAbstractEventDispatcher_Instance1(thread *QThread) *QAbstractEventDispatcher {
 	return UnsafeNewQAbstractEventDispatcher(unsafe.Pointer(C.QAbstractEventDispatcher_Instance1(thread.cPointer())), nil)
+}
+func (this *QAbstractEventDispatcher) OnProcessEvents(slot func(flags QEventLoop__ProcessEventsFlag) bool) {
+	C.QAbstractEventDispatcher_override_virtual_ProcessEvents(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractEventDispatcher_ProcessEvents
+func miqt_exec_callback_QAbstractEventDispatcher_ProcessEvents(self *C.QAbstractEventDispatcher, cb C.intptr_t, flags C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(flags QEventLoop__ProcessEventsFlag) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QEventLoop__ProcessEventsFlag)(flags)
+
+	virtualReturn := gofunc(slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+func (this *QAbstractEventDispatcher) OnRegisterSocketNotifier(slot func(notifier *QSocketNotifier)) {
+	C.QAbstractEventDispatcher_override_virtual_RegisterSocketNotifier(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractEventDispatcher_RegisterSocketNotifier
+func miqt_exec_callback_QAbstractEventDispatcher_RegisterSocketNotifier(self *C.QAbstractEventDispatcher, cb C.intptr_t, notifier *C.QSocketNotifier) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(notifier *QSocketNotifier))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQSocketNotifier(unsafe.Pointer(notifier), nil)
+
+	gofunc(slotval1)
+
+}
+func (this *QAbstractEventDispatcher) OnUnregisterSocketNotifier(slot func(notifier *QSocketNotifier)) {
+	C.QAbstractEventDispatcher_override_virtual_UnregisterSocketNotifier(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractEventDispatcher_UnregisterSocketNotifier
+func miqt_exec_callback_QAbstractEventDispatcher_UnregisterSocketNotifier(self *C.QAbstractEventDispatcher, cb C.intptr_t, notifier *C.QSocketNotifier) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(notifier *QSocketNotifier))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQSocketNotifier(unsafe.Pointer(notifier), nil)
+
+	gofunc(slotval1)
+
+}
+func (this *QAbstractEventDispatcher) OnRegisterTimer2(slot func(timerId int, interval int64, timerType TimerType, object *QObject)) {
+	C.QAbstractEventDispatcher_override_virtual_RegisterTimer2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractEventDispatcher_RegisterTimer2
+func miqt_exec_callback_QAbstractEventDispatcher_RegisterTimer2(self *C.QAbstractEventDispatcher, cb C.intptr_t, timerId C.int, interval C.longlong, timerType C.int, object *C.QObject) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(timerId int, interval int64, timerType TimerType, object *QObject))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(timerId)
+
+	slotval2 := (int64)(interval)
+
+	slotval3 := (TimerType)(timerType)
+
+	slotval4 := UnsafeNewQObject(unsafe.Pointer(object))
+
+	gofunc(slotval1, slotval2, slotval3, slotval4)
+
+}
+func (this *QAbstractEventDispatcher) OnUnregisterTimer(slot func(timerId int) bool) {
+	C.QAbstractEventDispatcher_override_virtual_UnregisterTimer(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractEventDispatcher_UnregisterTimer
+func miqt_exec_callback_QAbstractEventDispatcher_UnregisterTimer(self *C.QAbstractEventDispatcher, cb C.intptr_t, timerId C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(timerId int) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(timerId)
+
+	virtualReturn := gofunc(slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+func (this *QAbstractEventDispatcher) OnUnregisterTimers(slot func(object *QObject) bool) {
+	C.QAbstractEventDispatcher_override_virtual_UnregisterTimers(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractEventDispatcher_UnregisterTimers
+func miqt_exec_callback_QAbstractEventDispatcher_UnregisterTimers(self *C.QAbstractEventDispatcher, cb C.intptr_t, object *C.QObject) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(object *QObject) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(object))
+
+	virtualReturn := gofunc(slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+func (this *QAbstractEventDispatcher) OnRegisteredTimers(slot func(object *QObject) []QAbstractEventDispatcher__TimerInfo) {
+	C.QAbstractEventDispatcher_override_virtual_RegisteredTimers(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractEventDispatcher_RegisteredTimers
+func miqt_exec_callback_QAbstractEventDispatcher_RegisteredTimers(self *C.QAbstractEventDispatcher, cb C.intptr_t, object *C.QObject) C.struct_miqt_array {
+	gofunc, ok := cgo.Handle(cb).Value().(func(object *QObject) []QAbstractEventDispatcher__TimerInfo)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(object))
+
+	virtualReturn := gofunc(slotval1)
+	virtualReturn_CArray := (*[0xffff]*C.QAbstractEventDispatcher__TimerInfo)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	defer C.free(unsafe.Pointer(virtualReturn_CArray))
+	for i := range virtualReturn {
+		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
+	}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+
+	return virtualReturn_ma
+
+}
+func (this *QAbstractEventDispatcher) OnRemainingTime(slot func(timerId int) int) {
+	C.QAbstractEventDispatcher_override_virtual_RemainingTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractEventDispatcher_RemainingTime
+func miqt_exec_callback_QAbstractEventDispatcher_RemainingTime(self *C.QAbstractEventDispatcher, cb C.intptr_t, timerId C.int) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(timerId int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(timerId)
+
+	virtualReturn := gofunc(slotval1)
+
+	return (C.int)(virtualReturn)
+
+}
+func (this *QAbstractEventDispatcher) OnWakeUp(slot func()) {
+	C.QAbstractEventDispatcher_override_virtual_WakeUp(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractEventDispatcher_WakeUp
+func miqt_exec_callback_QAbstractEventDispatcher_WakeUp(self *C.QAbstractEventDispatcher, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+
+}
+func (this *QAbstractEventDispatcher) OnInterrupt(slot func()) {
+	C.QAbstractEventDispatcher_override_virtual_Interrupt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractEventDispatcher_Interrupt
+func miqt_exec_callback_QAbstractEventDispatcher_Interrupt(self *C.QAbstractEventDispatcher, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+
+}
+
+func (this *QAbstractEventDispatcher) callVirtualBase_StartingUp() {
+
+	C.QAbstractEventDispatcher_virtualbase_StartingUp(unsafe.Pointer(this.h))
+
+}
+func (this *QAbstractEventDispatcher) OnStartingUp(slot func(super func())) {
+	C.QAbstractEventDispatcher_override_virtual_StartingUp(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractEventDispatcher_StartingUp
+func miqt_exec_callback_QAbstractEventDispatcher_StartingUp(self *C.QAbstractEventDispatcher, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QAbstractEventDispatcher{h: self}).callVirtualBase_StartingUp)
+
+}
+
+func (this *QAbstractEventDispatcher) callVirtualBase_ClosingDown() {
+
+	C.QAbstractEventDispatcher_virtualbase_ClosingDown(unsafe.Pointer(this.h))
+
+}
+func (this *QAbstractEventDispatcher) OnClosingDown(slot func(super func())) {
+	C.QAbstractEventDispatcher_override_virtual_ClosingDown(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractEventDispatcher_ClosingDown
+func miqt_exec_callback_QAbstractEventDispatcher_ClosingDown(self *C.QAbstractEventDispatcher, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QAbstractEventDispatcher{h: self}).callVirtualBase_ClosingDown)
+
+}
+
+func (this *QAbstractEventDispatcher) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QAbstractEventDispatcher_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QAbstractEventDispatcher) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	C.QAbstractEventDispatcher_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractEventDispatcher_Event
+func miqt_exec_callback_QAbstractEventDispatcher_Event(self *C.QAbstractEventDispatcher, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QAbstractEventDispatcher{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QAbstractEventDispatcher) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QAbstractEventDispatcher_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QAbstractEventDispatcher) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	C.QAbstractEventDispatcher_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractEventDispatcher_EventFilter
+func miqt_exec_callback_QAbstractEventDispatcher_EventFilter(self *C.QAbstractEventDispatcher, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QAbstractEventDispatcher{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QAbstractEventDispatcher) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QAbstractEventDispatcher_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QAbstractEventDispatcher) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	C.QAbstractEventDispatcher_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractEventDispatcher_TimerEvent
+func miqt_exec_callback_QAbstractEventDispatcher_TimerEvent(self *C.QAbstractEventDispatcher, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QAbstractEventDispatcher{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QAbstractEventDispatcher) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QAbstractEventDispatcher_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QAbstractEventDispatcher) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	C.QAbstractEventDispatcher_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractEventDispatcher_ChildEvent
+func miqt_exec_callback_QAbstractEventDispatcher_ChildEvent(self *C.QAbstractEventDispatcher, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QAbstractEventDispatcher{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QAbstractEventDispatcher) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QAbstractEventDispatcher_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QAbstractEventDispatcher) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	C.QAbstractEventDispatcher_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractEventDispatcher_CustomEvent
+func miqt_exec_callback_QAbstractEventDispatcher_CustomEvent(self *C.QAbstractEventDispatcher, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QAbstractEventDispatcher{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QAbstractEventDispatcher) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QAbstractEventDispatcher_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QAbstractEventDispatcher) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QAbstractEventDispatcher_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractEventDispatcher_ConnectNotify
+func miqt_exec_callback_QAbstractEventDispatcher_ConnectNotify(self *C.QAbstractEventDispatcher, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QAbstractEventDispatcher{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QAbstractEventDispatcher) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QAbstractEventDispatcher_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QAbstractEventDispatcher) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QAbstractEventDispatcher_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractEventDispatcher_DisconnectNotify
+func miqt_exec_callback_QAbstractEventDispatcher_DisconnectNotify(self *C.QAbstractEventDispatcher, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QAbstractEventDispatcher{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
 }
 
 // Delete this object from C++ memory.

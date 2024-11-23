@@ -15,23 +15,33 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QChildEvent;
+class QEvent;
 class QGraphicsRotation;
 class QGraphicsScale;
 class QGraphicsTransform;
 class QMatrix4x4;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
+class QTimerEvent;
 class QVector3D;
 #else
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QGraphicsRotation QGraphicsRotation;
 typedef struct QGraphicsScale QGraphicsScale;
 typedef struct QGraphicsTransform QGraphicsTransform;
 typedef struct QMatrix4x4 QMatrix4x4;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QVector3D QVector3D;
 #endif
 
+void QGraphicsTransform_new(QGraphicsTransform** outptr_QGraphicsTransform, QObject** outptr_QObject);
+void QGraphicsTransform_new2(QObject* parent, QGraphicsTransform** outptr_QGraphicsTransform, QObject** outptr_QObject);
 QMetaObject* QGraphicsTransform_MetaObject(const QGraphicsTransform* self);
 void* QGraphicsTransform_Metacast(QGraphicsTransform* self, const char* param1);
 struct miqt_string QGraphicsTransform_Tr(const char* s);
@@ -41,6 +51,22 @@ struct miqt_string QGraphicsTransform_Tr2(const char* s, const char* c);
 struct miqt_string QGraphicsTransform_Tr3(const char* s, const char* c, int n);
 struct miqt_string QGraphicsTransform_TrUtf82(const char* s, const char* c);
 struct miqt_string QGraphicsTransform_TrUtf83(const char* s, const char* c, int n);
+void QGraphicsTransform_override_virtual_ApplyTo(void* self, intptr_t slot);
+void QGraphicsTransform_virtualbase_ApplyTo(const void* self, QMatrix4x4* matrix);
+void QGraphicsTransform_override_virtual_Event(void* self, intptr_t slot);
+bool QGraphicsTransform_virtualbase_Event(void* self, QEvent* event);
+void QGraphicsTransform_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QGraphicsTransform_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QGraphicsTransform_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QGraphicsTransform_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QGraphicsTransform_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QGraphicsTransform_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QGraphicsTransform_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QGraphicsTransform_virtualbase_CustomEvent(void* self, QEvent* event);
+void QGraphicsTransform_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QGraphicsTransform_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QGraphicsTransform_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QGraphicsTransform_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QGraphicsTransform_Delete(QGraphicsTransform* self, bool isSubclass);
 
 void QGraphicsScale_new(QGraphicsScale** outptr_QGraphicsScale, QGraphicsTransform** outptr_QGraphicsTransform, QObject** outptr_QObject);

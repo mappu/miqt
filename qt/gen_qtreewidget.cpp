@@ -9,6 +9,7 @@
 #include <QFont>
 #include <QFrame>
 #include <QIcon>
+#include <QItemSelection>
 #include <QItemSelectionModel>
 #include <QKeyEvent>
 #include <QList>
@@ -22,6 +23,7 @@
 #include <QPainter>
 #include <QPoint>
 #include <QRect>
+#include <QRegion>
 #include <QSize>
 #include <QString>
 #include <QByteArray>
@@ -1366,6 +1368,31 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
+	intptr_t handle__VisualRegionForSelection = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QRegion visualRegionForSelection(const QItemSelection& selection) const override {
+		if (handle__VisualRegionForSelection == 0) {
+			return QTreeWidget::visualRegionForSelection(selection);
+		}
+		
+		const QItemSelection& selection_ret = selection;
+		// Cast returned reference into pointer
+		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selection_ret);
+
+		QRegion* callback_return_value = miqt_exec_callback_QTreeWidget_VisualRegionForSelection(const_cast<MiqtVirtualQTreeWidget*>(this), handle__VisualRegionForSelection, sigval1);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QRegion* virtualbase_VisualRegionForSelection(QItemSelection* selection) const {
+
+		return new QRegion(QTreeWidget::visualRegionForSelection(*selection));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SelectedIndexes = 0;
 
 	// Subclass to allow providing a Go implementation
@@ -1791,6 +1818,35 @@ public:
 	bool virtualbase_IsIndexHidden(QModelIndex* index) const {
 
 		return QTreeWidget::isIndexHidden(*index);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SelectionChanged = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void selectionChanged(const QItemSelection& selected, const QItemSelection& deselected) override {
+		if (handle__SelectionChanged == 0) {
+			QTreeWidget::selectionChanged(selected, deselected);
+			return;
+		}
+		
+		const QItemSelection& selected_ret = selected;
+		// Cast returned reference into pointer
+		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selected_ret);
+		const QItemSelection& deselected_ret = deselected;
+		// Cast returned reference into pointer
+		QItemSelection* sigval2 = const_cast<QItemSelection*>(&deselected_ret);
+
+		miqt_exec_callback_QTreeWidget_SelectionChanged(this, handle__SelectionChanged, sigval1, sigval2);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SelectionChanged(QItemSelection* selected, QItemSelection* deselected) {
+
+		QTreeWidget::selectionChanged(*selected, *deselected);
 
 	}
 
@@ -2500,6 +2556,14 @@ void QTreeWidget_virtualbase_SetSelection(void* self, QRect* rect, int command) 
 	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_SetSelection(rect, command);
 }
 
+void QTreeWidget_override_virtual_VisualRegionForSelection(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) )->handle__VisualRegionForSelection = slot;
+}
+
+QRegion* QTreeWidget_virtualbase_VisualRegionForSelection(const void* self, QItemSelection* selection) {
+	return ( (const MiqtVirtualQTreeWidget*)(self) )->virtualbase_VisualRegionForSelection(selection);
+}
+
 void QTreeWidget_override_virtual_SelectedIndexes(void* self, intptr_t slot) {
 	dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) )->handle__SelectedIndexes = slot;
 }
@@ -2634,6 +2698,14 @@ void QTreeWidget_override_virtual_IsIndexHidden(void* self, intptr_t slot) {
 
 bool QTreeWidget_virtualbase_IsIndexHidden(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQTreeWidget*)(self) )->virtualbase_IsIndexHidden(index);
+}
+
+void QTreeWidget_override_virtual_SelectionChanged(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) )->handle__SelectionChanged = slot;
+}
+
+void QTreeWidget_virtualbase_SelectionChanged(void* self, QItemSelection* selected, QItemSelection* deselected) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_SelectionChanged(selected, deselected);
 }
 
 void QTreeWidget_override_virtual_CurrentChanged(void* self, intptr_t slot) {
