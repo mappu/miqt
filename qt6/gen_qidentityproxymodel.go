@@ -152,6 +152,20 @@ func (this *QIdentityProxyModel) Sibling(row int, column int, idx *QModelIndex) 
 	return _goptr
 }
 
+func (this *QIdentityProxyModel) MapSelectionFromSource(selection *QItemSelection) *QItemSelection {
+	_ret := C.QIdentityProxyModel_MapSelectionFromSource(this.h, selection.cPointer())
+	_goptr := newQItemSelection(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func (this *QIdentityProxyModel) MapSelectionToSource(selection *QItemSelection) *QItemSelection {
+	_ret := C.QIdentityProxyModel_MapSelectionToSource(this.h, selection.cPointer())
+	_goptr := newQItemSelection(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func (this *QIdentityProxyModel) Match(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
 	var _ma C.struct_miqt_array = C.QIdentityProxyModel_Match(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
 	_ret := make([]QModelIndex, int(_ma.len))
@@ -472,6 +486,62 @@ func miqt_exec_callback_QIdentityProxyModel_Sibling(self *C.QIdentityProxyModel,
 	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(idx))
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_Sibling, slotval1, slotval2, slotval3)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QIdentityProxyModel) callVirtualBase_MapSelectionFromSource(selection *QItemSelection) *QItemSelection {
+
+	_ret := C.QIdentityProxyModel_virtualbase_MapSelectionFromSource(unsafe.Pointer(this.h), selection.cPointer())
+	_goptr := newQItemSelection(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QIdentityProxyModel) OnMapSelectionFromSource(slot func(super func(selection *QItemSelection) *QItemSelection, selection *QItemSelection) *QItemSelection) {
+	C.QIdentityProxyModel_override_virtual_MapSelectionFromSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QIdentityProxyModel_MapSelectionFromSource
+func miqt_exec_callback_QIdentityProxyModel_MapSelectionFromSource(self *C.QIdentityProxyModel, cb C.intptr_t, selection *C.QItemSelection) *C.QItemSelection {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(selection *QItemSelection) *QItemSelection, selection *QItemSelection) *QItemSelection)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selection))
+
+	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_MapSelectionFromSource, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QIdentityProxyModel) callVirtualBase_MapSelectionToSource(selection *QItemSelection) *QItemSelection {
+
+	_ret := C.QIdentityProxyModel_virtualbase_MapSelectionToSource(unsafe.Pointer(this.h), selection.cPointer())
+	_goptr := newQItemSelection(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QIdentityProxyModel) OnMapSelectionToSource(slot func(super func(selection *QItemSelection) *QItemSelection, selection *QItemSelection) *QItemSelection) {
+	C.QIdentityProxyModel_override_virtual_MapSelectionToSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QIdentityProxyModel_MapSelectionToSource
+func miqt_exec_callback_QIdentityProxyModel_MapSelectionToSource(self *C.QIdentityProxyModel, cb C.intptr_t, selection *C.QItemSelection) *C.QItemSelection {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(selection *QItemSelection) *QItemSelection, selection *QItemSelection) *QItemSelection)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selection))
+
+	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_MapSelectionToSource, slotval1)
 
 	return virtualReturn.cPointer()
 

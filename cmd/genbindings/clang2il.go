@@ -373,10 +373,6 @@ nextMethod:
 				continue // Skip private/protected
 			}
 
-			if ret.Abstract {
-				continue // The bindings can't construct an abstract class
-			}
-
 			// Check if this is `= delete`
 			if isExplicitlyDeleted(node) {
 				continue

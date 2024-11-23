@@ -1,6 +1,7 @@
 #include <QAbstractItemModel>
 #include <QAbstractProxyModel>
 #include <QByteArray>
+#include <QItemSelection>
 #include <QList>
 #include <QMap>
 #include <QMetaObject>
@@ -565,6 +566,56 @@ public:
 	void virtualbase_Sort(int column, int order) {
 
 		QTransposeProxyModel::sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MapSelectionToSource = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QItemSelection mapSelectionToSource(const QItemSelection& selection) const override {
+		if (handle__MapSelectionToSource == 0) {
+			return QTransposeProxyModel::mapSelectionToSource(selection);
+		}
+		
+		const QItemSelection& selection_ret = selection;
+		// Cast returned reference into pointer
+		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selection_ret);
+
+		QItemSelection* callback_return_value = miqt_exec_callback_QTransposeProxyModel_MapSelectionToSource(const_cast<MiqtVirtualQTransposeProxyModel*>(this), handle__MapSelectionToSource, sigval1);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QItemSelection* virtualbase_MapSelectionToSource(QItemSelection* selection) const {
+
+		return new QItemSelection(QTransposeProxyModel::mapSelectionToSource(*selection));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MapSelectionFromSource = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QItemSelection mapSelectionFromSource(const QItemSelection& selection) const override {
+		if (handle__MapSelectionFromSource == 0) {
+			return QTransposeProxyModel::mapSelectionFromSource(selection);
+		}
+		
+		const QItemSelection& selection_ret = selection;
+		// Cast returned reference into pointer
+		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selection_ret);
+
+		QItemSelection* callback_return_value = miqt_exec_callback_QTransposeProxyModel_MapSelectionFromSource(const_cast<MiqtVirtualQTransposeProxyModel*>(this), handle__MapSelectionFromSource, sigval1);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QItemSelection* virtualbase_MapSelectionFromSource(QItemSelection* selection) const {
+
+		return new QItemSelection(QTransposeProxyModel::mapSelectionFromSource(*selection));
 
 	}
 
@@ -1390,6 +1441,22 @@ void QTransposeProxyModel_override_virtual_Sort(void* self, intptr_t slot) {
 
 void QTransposeProxyModel_virtualbase_Sort(void* self, int column, int order) {
 	( (MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_Sort(column, order);
+}
+
+void QTransposeProxyModel_override_virtual_MapSelectionToSource(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__MapSelectionToSource = slot;
+}
+
+QItemSelection* QTransposeProxyModel_virtualbase_MapSelectionToSource(const void* self, QItemSelection* selection) {
+	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_MapSelectionToSource(selection);
+}
+
+void QTransposeProxyModel_override_virtual_MapSelectionFromSource(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__MapSelectionFromSource = slot;
+}
+
+QItemSelection* QTransposeProxyModel_virtualbase_MapSelectionFromSource(const void* self, QItemSelection* selection) {
+	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_MapSelectionFromSource(selection);
 }
 
 void QTransposeProxyModel_override_virtual_Submit(void* self, intptr_t slot) {

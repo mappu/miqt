@@ -75,6 +75,28 @@ func UnsafeNewQAbstractAnimation(h unsafe.Pointer, h_QObject unsafe.Pointer) *QA
 		QObject: UnsafeNewQObject(h_QObject)}
 }
 
+// NewQAbstractAnimation constructs a new QAbstractAnimation object.
+func NewQAbstractAnimation() *QAbstractAnimation {
+	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QAbstractAnimation_new(&outptr_QAbstractAnimation, &outptr_QObject)
+	ret := newQAbstractAnimation(outptr_QAbstractAnimation, outptr_QObject)
+	ret.isSubclass = true
+	return ret
+}
+
+// NewQAbstractAnimation2 constructs a new QAbstractAnimation object.
+func NewQAbstractAnimation2(parent *QObject) *QAbstractAnimation {
+	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QAbstractAnimation_new2(parent.cPointer(), &outptr_QAbstractAnimation, &outptr_QObject)
+	ret := newQAbstractAnimation(outptr_QAbstractAnimation, outptr_QObject)
+	ret.isSubclass = true
+	return ret
+}
+
 func (this *QAbstractAnimation) MetaObject() *QMetaObject {
 	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractAnimation_MetaObject(this.h)))
 }
@@ -296,6 +318,253 @@ func QAbstractAnimation_TrUtf83(s string, c string, n int) string {
 
 func (this *QAbstractAnimation) Start1(policy QAbstractAnimation__DeletionPolicy) {
 	C.QAbstractAnimation_Start1(this.h, (C.int)(policy))
+}
+func (this *QAbstractAnimation) OnDuration(slot func() int) {
+	C.QAbstractAnimation_override_virtual_Duration(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractAnimation_Duration
+func miqt_exec_callback_QAbstractAnimation_Duration(self *C.QAbstractAnimation, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func() int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc()
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QAbstractAnimation) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QAbstractAnimation_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QAbstractAnimation) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	C.QAbstractAnimation_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractAnimation_Event
+func miqt_exec_callback_QAbstractAnimation_Event(self *C.QAbstractAnimation, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QAbstractAnimation{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+func (this *QAbstractAnimation) OnUpdateCurrentTime(slot func(currentTime int)) {
+	C.QAbstractAnimation_override_virtual_UpdateCurrentTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractAnimation_UpdateCurrentTime
+func miqt_exec_callback_QAbstractAnimation_UpdateCurrentTime(self *C.QAbstractAnimation, cb C.intptr_t, currentTime C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(currentTime int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(currentTime)
+
+	gofunc(slotval1)
+
+}
+
+func (this *QAbstractAnimation) callVirtualBase_UpdateState(newState QAbstractAnimation__State, oldState QAbstractAnimation__State) {
+
+	C.QAbstractAnimation_virtualbase_UpdateState(unsafe.Pointer(this.h), (C.int)(newState), (C.int)(oldState))
+
+}
+func (this *QAbstractAnimation) OnUpdateState(slot func(super func(newState QAbstractAnimation__State, oldState QAbstractAnimation__State), newState QAbstractAnimation__State, oldState QAbstractAnimation__State)) {
+	C.QAbstractAnimation_override_virtual_UpdateState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractAnimation_UpdateState
+func miqt_exec_callback_QAbstractAnimation_UpdateState(self *C.QAbstractAnimation, cb C.intptr_t, newState C.int, oldState C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(newState QAbstractAnimation__State, oldState QAbstractAnimation__State), newState QAbstractAnimation__State, oldState QAbstractAnimation__State))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QAbstractAnimation__State)(newState)
+
+	slotval2 := (QAbstractAnimation__State)(oldState)
+
+	gofunc((&QAbstractAnimation{h: self}).callVirtualBase_UpdateState, slotval1, slotval2)
+
+}
+
+func (this *QAbstractAnimation) callVirtualBase_UpdateDirection(direction QAbstractAnimation__Direction) {
+
+	C.QAbstractAnimation_virtualbase_UpdateDirection(unsafe.Pointer(this.h), (C.int)(direction))
+
+}
+func (this *QAbstractAnimation) OnUpdateDirection(slot func(super func(direction QAbstractAnimation__Direction), direction QAbstractAnimation__Direction)) {
+	C.QAbstractAnimation_override_virtual_UpdateDirection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractAnimation_UpdateDirection
+func miqt_exec_callback_QAbstractAnimation_UpdateDirection(self *C.QAbstractAnimation, cb C.intptr_t, direction C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(direction QAbstractAnimation__Direction), direction QAbstractAnimation__Direction))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QAbstractAnimation__Direction)(direction)
+
+	gofunc((&QAbstractAnimation{h: self}).callVirtualBase_UpdateDirection, slotval1)
+
+}
+
+func (this *QAbstractAnimation) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QAbstractAnimation_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QAbstractAnimation) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	C.QAbstractAnimation_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractAnimation_EventFilter
+func miqt_exec_callback_QAbstractAnimation_EventFilter(self *C.QAbstractAnimation, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QAbstractAnimation{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QAbstractAnimation) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QAbstractAnimation_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QAbstractAnimation) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	C.QAbstractAnimation_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractAnimation_TimerEvent
+func miqt_exec_callback_QAbstractAnimation_TimerEvent(self *C.QAbstractAnimation, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QAbstractAnimation{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QAbstractAnimation) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QAbstractAnimation_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QAbstractAnimation) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	C.QAbstractAnimation_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractAnimation_ChildEvent
+func miqt_exec_callback_QAbstractAnimation_ChildEvent(self *C.QAbstractAnimation, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QAbstractAnimation{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QAbstractAnimation) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QAbstractAnimation_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QAbstractAnimation) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	C.QAbstractAnimation_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractAnimation_CustomEvent
+func miqt_exec_callback_QAbstractAnimation_CustomEvent(self *C.QAbstractAnimation, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QAbstractAnimation{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QAbstractAnimation) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QAbstractAnimation_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QAbstractAnimation) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QAbstractAnimation_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractAnimation_ConnectNotify
+func miqt_exec_callback_QAbstractAnimation_ConnectNotify(self *C.QAbstractAnimation, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QAbstractAnimation{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QAbstractAnimation) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QAbstractAnimation_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QAbstractAnimation) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QAbstractAnimation_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractAnimation_DisconnectNotify
+func miqt_exec_callback_QAbstractAnimation_DisconnectNotify(self *C.QAbstractAnimation, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QAbstractAnimation{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
 }
 
 // Delete this object from C++ memory.

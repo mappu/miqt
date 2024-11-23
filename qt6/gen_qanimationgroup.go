@@ -10,6 +10,7 @@ import "C"
 
 import (
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
@@ -50,6 +51,30 @@ func UnsafeNewQAnimationGroup(h unsafe.Pointer, h_QAbstractAnimation unsafe.Poin
 
 	return &QAnimationGroup{h: (*C.QAnimationGroup)(h),
 		QAbstractAnimation: UnsafeNewQAbstractAnimation(h_QAbstractAnimation, h_QObject)}
+}
+
+// NewQAnimationGroup constructs a new QAnimationGroup object.
+func NewQAnimationGroup() *QAnimationGroup {
+	var outptr_QAnimationGroup *C.QAnimationGroup = nil
+	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QAnimationGroup_new(&outptr_QAnimationGroup, &outptr_QAbstractAnimation, &outptr_QObject)
+	ret := newQAnimationGroup(outptr_QAnimationGroup, outptr_QAbstractAnimation, outptr_QObject)
+	ret.isSubclass = true
+	return ret
+}
+
+// NewQAnimationGroup2 constructs a new QAnimationGroup object.
+func NewQAnimationGroup2(parent *QObject) *QAnimationGroup {
+	var outptr_QAnimationGroup *C.QAnimationGroup = nil
+	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QAnimationGroup_new2(parent.cPointer(), &outptr_QAnimationGroup, &outptr_QAbstractAnimation, &outptr_QObject)
+	ret := newQAnimationGroup(outptr_QAnimationGroup, outptr_QAbstractAnimation, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QAnimationGroup) MetaObject() *QMetaObject {
@@ -123,6 +148,112 @@ func QAnimationGroup_Tr3(s string, c string, n int) string {
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
+}
+
+func (this *QAnimationGroup) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QAnimationGroup_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QAnimationGroup) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	C.QAnimationGroup_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAnimationGroup_Event
+func miqt_exec_callback_QAnimationGroup_Event(self *C.QAnimationGroup, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QAnimationGroup{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+func (this *QAnimationGroup) OnDuration(slot func() int) {
+	C.QAnimationGroup_override_virtual_Duration(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAnimationGroup_Duration
+func miqt_exec_callback_QAnimationGroup_Duration(self *C.QAnimationGroup, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func() int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc()
+
+	return (C.int)(virtualReturn)
+
+}
+func (this *QAnimationGroup) OnUpdateCurrentTime(slot func(currentTime int)) {
+	C.QAnimationGroup_override_virtual_UpdateCurrentTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAnimationGroup_UpdateCurrentTime
+func miqt_exec_callback_QAnimationGroup_UpdateCurrentTime(self *C.QAnimationGroup, cb C.intptr_t, currentTime C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(currentTime int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(currentTime)
+
+	gofunc(slotval1)
+
+}
+
+func (this *QAnimationGroup) callVirtualBase_UpdateState(newState QAbstractAnimation__State, oldState QAbstractAnimation__State) {
+
+	C.QAnimationGroup_virtualbase_UpdateState(unsafe.Pointer(this.h), (C.int)(newState), (C.int)(oldState))
+
+}
+func (this *QAnimationGroup) OnUpdateState(slot func(super func(newState QAbstractAnimation__State, oldState QAbstractAnimation__State), newState QAbstractAnimation__State, oldState QAbstractAnimation__State)) {
+	C.QAnimationGroup_override_virtual_UpdateState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAnimationGroup_UpdateState
+func miqt_exec_callback_QAnimationGroup_UpdateState(self *C.QAnimationGroup, cb C.intptr_t, newState C.int, oldState C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(newState QAbstractAnimation__State, oldState QAbstractAnimation__State), newState QAbstractAnimation__State, oldState QAbstractAnimation__State))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QAbstractAnimation__State)(newState)
+
+	slotval2 := (QAbstractAnimation__State)(oldState)
+
+	gofunc((&QAnimationGroup{h: self}).callVirtualBase_UpdateState, slotval1, slotval2)
+
+}
+
+func (this *QAnimationGroup) callVirtualBase_UpdateDirection(direction QAbstractAnimation__Direction) {
+
+	C.QAnimationGroup_virtualbase_UpdateDirection(unsafe.Pointer(this.h), (C.int)(direction))
+
+}
+func (this *QAnimationGroup) OnUpdateDirection(slot func(super func(direction QAbstractAnimation__Direction), direction QAbstractAnimation__Direction)) {
+	C.QAnimationGroup_override_virtual_UpdateDirection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAnimationGroup_UpdateDirection
+func miqt_exec_callback_QAnimationGroup_UpdateDirection(self *C.QAnimationGroup, cb C.intptr_t, direction C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(direction QAbstractAnimation__Direction), direction QAbstractAnimation__Direction))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QAbstractAnimation__Direction)(direction)
+
+	gofunc((&QAnimationGroup{h: self}).callVirtualBase_UpdateDirection, slotval1)
+
 }
 
 // Delete this object from C++ memory.

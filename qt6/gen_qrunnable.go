@@ -10,6 +10,7 @@ import "C"
 
 import (
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
@@ -49,6 +50,16 @@ func UnsafeNewQRunnable(h unsafe.Pointer) *QRunnable {
 	return &QRunnable{h: (*C.QRunnable)(h)}
 }
 
+// NewQRunnable constructs a new QRunnable object.
+func NewQRunnable() *QRunnable {
+	var outptr_QRunnable *C.QRunnable = nil
+
+	C.QRunnable_new(&outptr_QRunnable)
+	ret := newQRunnable(outptr_QRunnable)
+	ret.isSubclass = true
+	return ret
+}
+
 func (this *QRunnable) Run() {
 	C.QRunnable_Run(this.h)
 }
@@ -59,6 +70,20 @@ func (this *QRunnable) AutoDelete() bool {
 
 func (this *QRunnable) SetAutoDelete(autoDelete bool) {
 	C.QRunnable_SetAutoDelete(this.h, (C.bool)(autoDelete))
+}
+func (this *QRunnable) OnRun(slot func()) {
+	C.QRunnable_override_virtual_Run(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QRunnable_Run
+func miqt_exec_callback_QRunnable_Run(self *C.QRunnable, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+
 }
 
 // Delete this object from C++ memory.

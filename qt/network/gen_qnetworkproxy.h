@@ -105,6 +105,7 @@ struct miqt_string QNetworkProxy_RawHeader(const QNetworkProxy* self, struct miq
 void QNetworkProxy_SetRawHeader(QNetworkProxy* self, struct miqt_string headerName, struct miqt_string value);
 void QNetworkProxy_Delete(QNetworkProxy* self, bool isSubclass);
 
+void QNetworkProxyFactory_new(QNetworkProxyFactory** outptr_QNetworkProxyFactory);
 struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_QueryProxy(QNetworkProxyFactory* self, QNetworkProxyQuery* query);
 bool QNetworkProxyFactory_UsesSystemConfiguration();
 void QNetworkProxyFactory_SetUseSystemConfiguration(bool enable);
@@ -113,6 +114,8 @@ struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_ProxyForQuery(QN
 struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_SystemProxyForQuery();
 void QNetworkProxyFactory_OperatorAssign(QNetworkProxyFactory* self, QNetworkProxyFactory* param1);
 struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_SystemProxyForQuery1(QNetworkProxyQuery* query);
+void QNetworkProxyFactory_override_virtual_QueryProxy(void* self, intptr_t slot);
+struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_virtualbase_QueryProxy(void* self, QNetworkProxyQuery* query);
 void QNetworkProxyFactory_Delete(QNetworkProxyFactory* self, bool isSubclass);
 
 #ifdef __cplusplus

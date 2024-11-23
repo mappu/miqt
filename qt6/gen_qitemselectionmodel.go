@@ -376,6 +376,13 @@ func (this *QItemSelectionModel) SelectedColumns() []QModelIndex {
 	return _ret
 }
 
+func (this *QItemSelectionModel) Selection() *QItemSelection {
+	_ret := C.QItemSelectionModel_Selection(this.h)
+	_goptr := newQItemSelection(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func (this *QItemSelectionModel) Model() *QAbstractItemModel {
 	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QItemSelectionModel_Model(this.h)), nil)
 }
@@ -396,6 +403,10 @@ func (this *QItemSelectionModel) Select(index *QModelIndex, command QItemSelecti
 	C.QItemSelectionModel_Select(this.h, index.cPointer(), (C.int)(command))
 }
 
+func (this *QItemSelectionModel) Select2(selection *QItemSelection, command QItemSelectionModel__SelectionFlag) {
+	C.QItemSelectionModel_Select2(this.h, selection.cPointer(), (C.int)(command))
+}
+
 func (this *QItemSelectionModel) Clear() {
 	C.QItemSelectionModel_Clear(this.h)
 }
@@ -410,6 +421,27 @@ func (this *QItemSelectionModel) ClearSelection() {
 
 func (this *QItemSelectionModel) ClearCurrentIndex() {
 	C.QItemSelectionModel_ClearCurrentIndex(this.h)
+}
+
+func (this *QItemSelectionModel) SelectionChanged(selected *QItemSelection, deselected *QItemSelection) {
+	C.QItemSelectionModel_SelectionChanged(this.h, selected.cPointer(), deselected.cPointer())
+}
+func (this *QItemSelectionModel) OnSelectionChanged(slot func(selected *QItemSelection, deselected *QItemSelection)) {
+	C.QItemSelectionModel_connect_SelectionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QItemSelectionModel_SelectionChanged
+func miqt_exec_callback_QItemSelectionModel_SelectionChanged(cb C.intptr_t, selected *C.QItemSelection, deselected *C.QItemSelection) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(selected *QItemSelection, deselected *QItemSelection))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selected))
+	slotval2 := UnsafeNewQItemSelection(unsafe.Pointer(deselected))
+
+	gofunc(slotval1, slotval2)
 }
 
 func (this *QItemSelectionModel) CurrentChanged(current *QModelIndex, previous *QModelIndex) {
@@ -604,6 +636,30 @@ func miqt_exec_callback_QItemSelectionModel_Select(self *C.QItemSelectionModel, 
 	slotval2 := (QItemSelectionModel__SelectionFlag)(command)
 
 	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_Select, slotval1, slotval2)
+
+}
+
+func (this *QItemSelectionModel) callVirtualBase_Select2(selection *QItemSelection, command QItemSelectionModel__SelectionFlag) {
+
+	C.QItemSelectionModel_virtualbase_Select2(unsafe.Pointer(this.h), selection.cPointer(), (C.int)(command))
+
+}
+func (this *QItemSelectionModel) OnSelect2(slot func(super func(selection *QItemSelection, command QItemSelectionModel__SelectionFlag), selection *QItemSelection, command QItemSelectionModel__SelectionFlag)) {
+	C.QItemSelectionModel_override_virtual_Select2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QItemSelectionModel_Select2
+func miqt_exec_callback_QItemSelectionModel_Select2(self *C.QItemSelectionModel, cb C.intptr_t, selection *C.QItemSelection, command C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(selection *QItemSelection, command QItemSelectionModel__SelectionFlag), selection *QItemSelection, command QItemSelectionModel__SelectionFlag))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selection))
+	slotval2 := (QItemSelectionModel__SelectionFlag)(command)
+
+	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_Select2, slotval1, slotval2)
 
 }
 
@@ -842,6 +898,117 @@ func (this *QItemSelectionModel) Delete() {
 // from C++ memory once it is unreachable from Go memory.
 func (this *QItemSelectionModel) GoGC() {
 	runtime.SetFinalizer(this, func(this *QItemSelectionModel) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
+}
+
+type QItemSelection struct {
+	h          *C.QItemSelection
+	isSubclass bool
+	/* Also inherits unprojectable QList<QItemSelectionRange> */
+
+}
+
+func (this *QItemSelection) cPointer() *C.QItemSelection {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func (this *QItemSelection) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
+// newQItemSelection constructs the type using only CGO pointers.
+func newQItemSelection(h *C.QItemSelection) *QItemSelection {
+	if h == nil {
+		return nil
+	}
+	return &QItemSelection{h: h}
+}
+
+// UnsafeNewQItemSelection constructs the type using only unsafe pointers.
+func UnsafeNewQItemSelection(h unsafe.Pointer) *QItemSelection {
+	if h == nil {
+		return nil
+	}
+
+	return &QItemSelection{h: (*C.QItemSelection)(h)}
+}
+
+// NewQItemSelection constructs a new QItemSelection object.
+func NewQItemSelection(topLeft *QModelIndex, bottomRight *QModelIndex) *QItemSelection {
+	var outptr_QItemSelection *C.QItemSelection = nil
+
+	C.QItemSelection_new(topLeft.cPointer(), bottomRight.cPointer(), &outptr_QItemSelection)
+	ret := newQItemSelection(outptr_QItemSelection)
+	ret.isSubclass = true
+	return ret
+}
+
+// NewQItemSelection2 constructs a new QItemSelection object.
+func NewQItemSelection2() *QItemSelection {
+	var outptr_QItemSelection *C.QItemSelection = nil
+
+	C.QItemSelection_new2(&outptr_QItemSelection)
+	ret := newQItemSelection(outptr_QItemSelection)
+	ret.isSubclass = true
+	return ret
+}
+
+// NewQItemSelection3 constructs a new QItemSelection object.
+func NewQItemSelection3(param1 *QItemSelection) *QItemSelection {
+	var outptr_QItemSelection *C.QItemSelection = nil
+
+	C.QItemSelection_new3(param1.cPointer(), &outptr_QItemSelection)
+	ret := newQItemSelection(outptr_QItemSelection)
+	ret.isSubclass = true
+	return ret
+}
+
+func (this *QItemSelection) Select(topLeft *QModelIndex, bottomRight *QModelIndex) {
+	C.QItemSelection_Select(this.h, topLeft.cPointer(), bottomRight.cPointer())
+}
+
+func (this *QItemSelection) Contains(index *QModelIndex) bool {
+	return (bool)(C.QItemSelection_Contains(this.h, index.cPointer()))
+}
+
+func (this *QItemSelection) Indexes() []QModelIndex {
+	var _ma C.struct_miqt_array = C.QItemSelection_Indexes(this.h)
+	_ret := make([]QModelIndex, int(_ma.len))
+	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
+	}
+	return _ret
+}
+
+func (this *QItemSelection) Merge(other *QItemSelection, command QItemSelectionModel__SelectionFlag) {
+	C.QItemSelection_Merge(this.h, other.cPointer(), (C.int)(command))
+}
+
+func QItemSelection_Split(rangeVal *QItemSelectionRange, other *QItemSelectionRange, result *QItemSelection) {
+	C.QItemSelection_Split(rangeVal.cPointer(), other.cPointer(), result.cPointer())
+}
+
+// Delete this object from C++ memory.
+func (this *QItemSelection) Delete() {
+	C.QItemSelection_Delete(this.h, C.bool(this.isSubclass))
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QItemSelection) GoGC() {
+	runtime.SetFinalizer(this, func(this *QItemSelection) {
 		this.Delete()
 		runtime.KeepAlive(this.h)
 	})

@@ -10,6 +10,7 @@ import "C"
 
 import (
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
@@ -217,6 +218,26 @@ func UnsafeNewQPaintEngine(h unsafe.Pointer) *QPaintEngine {
 	return &QPaintEngine{h: (*C.QPaintEngine)(h)}
 }
 
+// NewQPaintEngine constructs a new QPaintEngine object.
+func NewQPaintEngine() *QPaintEngine {
+	var outptr_QPaintEngine *C.QPaintEngine = nil
+
+	C.QPaintEngine_new(&outptr_QPaintEngine)
+	ret := newQPaintEngine(outptr_QPaintEngine)
+	ret.isSubclass = true
+	return ret
+}
+
+// NewQPaintEngine2 constructs a new QPaintEngine object.
+func NewQPaintEngine2(features QPaintEngine__PaintEngineFeature) *QPaintEngine {
+	var outptr_QPaintEngine *C.QPaintEngine = nil
+
+	C.QPaintEngine_new2((C.int)(features), &outptr_QPaintEngine)
+	ret := newQPaintEngine(outptr_QPaintEngine)
+	ret.isSubclass = true
+	return ret
+}
+
 func (this *QPaintEngine) IsActive() bool {
 	return (bool)(C.QPaintEngine_IsActive(this.h))
 }
@@ -368,6 +389,458 @@ func (this *QPaintEngine) SyncState() {
 
 func (this *QPaintEngine) IsExtended() bool {
 	return (bool)(C.QPaintEngine_IsExtended(this.h))
+}
+func (this *QPaintEngine) OnBegin(slot func(pdev *QPaintDevice) bool) {
+	C.QPaintEngine_override_virtual_Begin(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QPaintEngine_Begin
+func miqt_exec_callback_QPaintEngine_Begin(self *C.QPaintEngine, cb C.intptr_t, pdev *C.QPaintDevice) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(pdev *QPaintDevice) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPaintDevice(unsafe.Pointer(pdev))
+
+	virtualReturn := gofunc(slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+func (this *QPaintEngine) OnEnd(slot func() bool) {
+	C.QPaintEngine_override_virtual_End(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QPaintEngine_End
+func miqt_exec_callback_QPaintEngine_End(self *C.QPaintEngine, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func() bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc()
+
+	return (C.bool)(virtualReturn)
+
+}
+func (this *QPaintEngine) OnUpdateState(slot func(state *QPaintEngineState)) {
+	C.QPaintEngine_override_virtual_UpdateState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QPaintEngine_UpdateState
+func miqt_exec_callback_QPaintEngine_UpdateState(self *C.QPaintEngine, cb C.intptr_t, state *C.QPaintEngineState) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(state *QPaintEngineState))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPaintEngineState(unsafe.Pointer(state))
+
+	gofunc(slotval1)
+
+}
+
+func (this *QPaintEngine) callVirtualBase_DrawRects(rects *QRect, rectCount int) {
+
+	C.QPaintEngine_virtualbase_DrawRects(unsafe.Pointer(this.h), rects.cPointer(), (C.int)(rectCount))
+
+}
+func (this *QPaintEngine) OnDrawRects(slot func(super func(rects *QRect, rectCount int), rects *QRect, rectCount int)) {
+	C.QPaintEngine_override_virtual_DrawRects(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QPaintEngine_DrawRects
+func miqt_exec_callback_QPaintEngine_DrawRects(self *C.QPaintEngine, cb C.intptr_t, rects *C.QRect, rectCount C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rects *QRect, rectCount int), rects *QRect, rectCount int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQRect(unsafe.Pointer(rects))
+	slotval2 := (int)(rectCount)
+
+	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawRects, slotval1, slotval2)
+
+}
+
+func (this *QPaintEngine) callVirtualBase_DrawRects2(rects *QRectF, rectCount int) {
+
+	C.QPaintEngine_virtualbase_DrawRects2(unsafe.Pointer(this.h), rects.cPointer(), (C.int)(rectCount))
+
+}
+func (this *QPaintEngine) OnDrawRects2(slot func(super func(rects *QRectF, rectCount int), rects *QRectF, rectCount int)) {
+	C.QPaintEngine_override_virtual_DrawRects2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QPaintEngine_DrawRects2
+func miqt_exec_callback_QPaintEngine_DrawRects2(self *C.QPaintEngine, cb C.intptr_t, rects *C.QRectF, rectCount C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rects *QRectF, rectCount int), rects *QRectF, rectCount int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQRectF(unsafe.Pointer(rects))
+	slotval2 := (int)(rectCount)
+
+	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawRects2, slotval1, slotval2)
+
+}
+
+func (this *QPaintEngine) callVirtualBase_DrawLines(lines *QLine, lineCount int) {
+
+	C.QPaintEngine_virtualbase_DrawLines(unsafe.Pointer(this.h), lines.cPointer(), (C.int)(lineCount))
+
+}
+func (this *QPaintEngine) OnDrawLines(slot func(super func(lines *QLine, lineCount int), lines *QLine, lineCount int)) {
+	C.QPaintEngine_override_virtual_DrawLines(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QPaintEngine_DrawLines
+func miqt_exec_callback_QPaintEngine_DrawLines(self *C.QPaintEngine, cb C.intptr_t, lines *C.QLine, lineCount C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(lines *QLine, lineCount int), lines *QLine, lineCount int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQLine(unsafe.Pointer(lines))
+	slotval2 := (int)(lineCount)
+
+	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawLines, slotval1, slotval2)
+
+}
+
+func (this *QPaintEngine) callVirtualBase_DrawLines2(lines *QLineF, lineCount int) {
+
+	C.QPaintEngine_virtualbase_DrawLines2(unsafe.Pointer(this.h), lines.cPointer(), (C.int)(lineCount))
+
+}
+func (this *QPaintEngine) OnDrawLines2(slot func(super func(lines *QLineF, lineCount int), lines *QLineF, lineCount int)) {
+	C.QPaintEngine_override_virtual_DrawLines2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QPaintEngine_DrawLines2
+func miqt_exec_callback_QPaintEngine_DrawLines2(self *C.QPaintEngine, cb C.intptr_t, lines *C.QLineF, lineCount C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(lines *QLineF, lineCount int), lines *QLineF, lineCount int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQLineF(unsafe.Pointer(lines))
+	slotval2 := (int)(lineCount)
+
+	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawLines2, slotval1, slotval2)
+
+}
+
+func (this *QPaintEngine) callVirtualBase_DrawEllipse(r *QRectF) {
+
+	C.QPaintEngine_virtualbase_DrawEllipse(unsafe.Pointer(this.h), r.cPointer())
+
+}
+func (this *QPaintEngine) OnDrawEllipse(slot func(super func(r *QRectF), r *QRectF)) {
+	C.QPaintEngine_override_virtual_DrawEllipse(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QPaintEngine_DrawEllipse
+func miqt_exec_callback_QPaintEngine_DrawEllipse(self *C.QPaintEngine, cb C.intptr_t, r *C.QRectF) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(r *QRectF), r *QRectF))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQRectF(unsafe.Pointer(r))
+
+	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawEllipse, slotval1)
+
+}
+
+func (this *QPaintEngine) callVirtualBase_DrawEllipseWithQRect(r *QRect) {
+
+	C.QPaintEngine_virtualbase_DrawEllipseWithQRect(unsafe.Pointer(this.h), r.cPointer())
+
+}
+func (this *QPaintEngine) OnDrawEllipseWithQRect(slot func(super func(r *QRect), r *QRect)) {
+	C.QPaintEngine_override_virtual_DrawEllipseWithQRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QPaintEngine_DrawEllipseWithQRect
+func miqt_exec_callback_QPaintEngine_DrawEllipseWithQRect(self *C.QPaintEngine, cb C.intptr_t, r *C.QRect) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(r *QRect), r *QRect))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQRect(unsafe.Pointer(r))
+
+	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawEllipseWithQRect, slotval1)
+
+}
+
+func (this *QPaintEngine) callVirtualBase_DrawPath(path *QPainterPath) {
+
+	C.QPaintEngine_virtualbase_DrawPath(unsafe.Pointer(this.h), path.cPointer())
+
+}
+func (this *QPaintEngine) OnDrawPath(slot func(super func(path *QPainterPath), path *QPainterPath)) {
+	C.QPaintEngine_override_virtual_DrawPath(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QPaintEngine_DrawPath
+func miqt_exec_callback_QPaintEngine_DrawPath(self *C.QPaintEngine, cb C.intptr_t, path *C.QPainterPath) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(path *QPainterPath), path *QPainterPath))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPainterPath(unsafe.Pointer(path))
+
+	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawPath, slotval1)
+
+}
+
+func (this *QPaintEngine) callVirtualBase_DrawPoints(points *QPointF, pointCount int) {
+
+	C.QPaintEngine_virtualbase_DrawPoints(unsafe.Pointer(this.h), points.cPointer(), (C.int)(pointCount))
+
+}
+func (this *QPaintEngine) OnDrawPoints(slot func(super func(points *QPointF, pointCount int), points *QPointF, pointCount int)) {
+	C.QPaintEngine_override_virtual_DrawPoints(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QPaintEngine_DrawPoints
+func miqt_exec_callback_QPaintEngine_DrawPoints(self *C.QPaintEngine, cb C.intptr_t, points *C.QPointF, pointCount C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(points *QPointF, pointCount int), points *QPointF, pointCount int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPointF(unsafe.Pointer(points))
+	slotval2 := (int)(pointCount)
+
+	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawPoints, slotval1, slotval2)
+
+}
+
+func (this *QPaintEngine) callVirtualBase_DrawPoints2(points *QPoint, pointCount int) {
+
+	C.QPaintEngine_virtualbase_DrawPoints2(unsafe.Pointer(this.h), points.cPointer(), (C.int)(pointCount))
+
+}
+func (this *QPaintEngine) OnDrawPoints2(slot func(super func(points *QPoint, pointCount int), points *QPoint, pointCount int)) {
+	C.QPaintEngine_override_virtual_DrawPoints2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QPaintEngine_DrawPoints2
+func miqt_exec_callback_QPaintEngine_DrawPoints2(self *C.QPaintEngine, cb C.intptr_t, points *C.QPoint, pointCount C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(points *QPoint, pointCount int), points *QPoint, pointCount int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPoint(unsafe.Pointer(points))
+	slotval2 := (int)(pointCount)
+
+	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawPoints2, slotval1, slotval2)
+
+}
+
+func (this *QPaintEngine) callVirtualBase_DrawPolygon(points *QPointF, pointCount int, mode QPaintEngine__PolygonDrawMode) {
+
+	C.QPaintEngine_virtualbase_DrawPolygon(unsafe.Pointer(this.h), points.cPointer(), (C.int)(pointCount), (C.int)(mode))
+
+}
+func (this *QPaintEngine) OnDrawPolygon(slot func(super func(points *QPointF, pointCount int, mode QPaintEngine__PolygonDrawMode), points *QPointF, pointCount int, mode QPaintEngine__PolygonDrawMode)) {
+	C.QPaintEngine_override_virtual_DrawPolygon(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QPaintEngine_DrawPolygon
+func miqt_exec_callback_QPaintEngine_DrawPolygon(self *C.QPaintEngine, cb C.intptr_t, points *C.QPointF, pointCount C.int, mode C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(points *QPointF, pointCount int, mode QPaintEngine__PolygonDrawMode), points *QPointF, pointCount int, mode QPaintEngine__PolygonDrawMode))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPointF(unsafe.Pointer(points))
+	slotval2 := (int)(pointCount)
+
+	slotval3 := (QPaintEngine__PolygonDrawMode)(mode)
+
+	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawPolygon, slotval1, slotval2, slotval3)
+
+}
+
+func (this *QPaintEngine) callVirtualBase_DrawPolygon2(points *QPoint, pointCount int, mode QPaintEngine__PolygonDrawMode) {
+
+	C.QPaintEngine_virtualbase_DrawPolygon2(unsafe.Pointer(this.h), points.cPointer(), (C.int)(pointCount), (C.int)(mode))
+
+}
+func (this *QPaintEngine) OnDrawPolygon2(slot func(super func(points *QPoint, pointCount int, mode QPaintEngine__PolygonDrawMode), points *QPoint, pointCount int, mode QPaintEngine__PolygonDrawMode)) {
+	C.QPaintEngine_override_virtual_DrawPolygon2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QPaintEngine_DrawPolygon2
+func miqt_exec_callback_QPaintEngine_DrawPolygon2(self *C.QPaintEngine, cb C.intptr_t, points *C.QPoint, pointCount C.int, mode C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(points *QPoint, pointCount int, mode QPaintEngine__PolygonDrawMode), points *QPoint, pointCount int, mode QPaintEngine__PolygonDrawMode))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPoint(unsafe.Pointer(points))
+	slotval2 := (int)(pointCount)
+
+	slotval3 := (QPaintEngine__PolygonDrawMode)(mode)
+
+	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawPolygon2, slotval1, slotval2, slotval3)
+
+}
+func (this *QPaintEngine) OnDrawPixmap(slot func(r *QRectF, pm *QPixmap, sr *QRectF)) {
+	C.QPaintEngine_override_virtual_DrawPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QPaintEngine_DrawPixmap
+func miqt_exec_callback_QPaintEngine_DrawPixmap(self *C.QPaintEngine, cb C.intptr_t, r *C.QRectF, pm *C.QPixmap, sr *C.QRectF) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(r *QRectF, pm *QPixmap, sr *QRectF))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQRectF(unsafe.Pointer(r))
+	slotval2 := UnsafeNewQPixmap(unsafe.Pointer(pm), nil)
+	slotval3 := UnsafeNewQRectF(unsafe.Pointer(sr))
+
+	gofunc(slotval1, slotval2, slotval3)
+
+}
+
+func (this *QPaintEngine) callVirtualBase_DrawTextItem(p *QPointF, textItem *QTextItem) {
+
+	C.QPaintEngine_virtualbase_DrawTextItem(unsafe.Pointer(this.h), p.cPointer(), textItem.cPointer())
+
+}
+func (this *QPaintEngine) OnDrawTextItem(slot func(super func(p *QPointF, textItem *QTextItem), p *QPointF, textItem *QTextItem)) {
+	C.QPaintEngine_override_virtual_DrawTextItem(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QPaintEngine_DrawTextItem
+func miqt_exec_callback_QPaintEngine_DrawTextItem(self *C.QPaintEngine, cb C.intptr_t, p *C.QPointF, textItem *C.QTextItem) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(p *QPointF, textItem *QTextItem), p *QPointF, textItem *QTextItem))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQPointF(unsafe.Pointer(p))
+	slotval2 := UnsafeNewQTextItem(unsafe.Pointer(textItem))
+
+	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawTextItem, slotval1, slotval2)
+
+}
+
+func (this *QPaintEngine) callVirtualBase_DrawTiledPixmap(r *QRectF, pixmap *QPixmap, s *QPointF) {
+
+	C.QPaintEngine_virtualbase_DrawTiledPixmap(unsafe.Pointer(this.h), r.cPointer(), pixmap.cPointer(), s.cPointer())
+
+}
+func (this *QPaintEngine) OnDrawTiledPixmap(slot func(super func(r *QRectF, pixmap *QPixmap, s *QPointF), r *QRectF, pixmap *QPixmap, s *QPointF)) {
+	C.QPaintEngine_override_virtual_DrawTiledPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QPaintEngine_DrawTiledPixmap
+func miqt_exec_callback_QPaintEngine_DrawTiledPixmap(self *C.QPaintEngine, cb C.intptr_t, r *C.QRectF, pixmap *C.QPixmap, s *C.QPointF) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(r *QRectF, pixmap *QPixmap, s *QPointF), r *QRectF, pixmap *QPixmap, s *QPointF))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQRectF(unsafe.Pointer(r))
+	slotval2 := UnsafeNewQPixmap(unsafe.Pointer(pixmap), nil)
+	slotval3 := UnsafeNewQPointF(unsafe.Pointer(s))
+
+	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawTiledPixmap, slotval1, slotval2, slotval3)
+
+}
+
+func (this *QPaintEngine) callVirtualBase_DrawImage(r *QRectF, pm *QImage, sr *QRectF, flags ImageConversionFlag) {
+
+	C.QPaintEngine_virtualbase_DrawImage(unsafe.Pointer(this.h), r.cPointer(), pm.cPointer(), sr.cPointer(), (C.int)(flags))
+
+}
+func (this *QPaintEngine) OnDrawImage(slot func(super func(r *QRectF, pm *QImage, sr *QRectF, flags ImageConversionFlag), r *QRectF, pm *QImage, sr *QRectF, flags ImageConversionFlag)) {
+	C.QPaintEngine_override_virtual_DrawImage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QPaintEngine_DrawImage
+func miqt_exec_callback_QPaintEngine_DrawImage(self *C.QPaintEngine, cb C.intptr_t, r *C.QRectF, pm *C.QImage, sr *C.QRectF, flags C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(r *QRectF, pm *QImage, sr *QRectF, flags ImageConversionFlag), r *QRectF, pm *QImage, sr *QRectF, flags ImageConversionFlag))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQRectF(unsafe.Pointer(r))
+	slotval2 := UnsafeNewQImage(unsafe.Pointer(pm), nil)
+	slotval3 := UnsafeNewQRectF(unsafe.Pointer(sr))
+	slotval4 := (ImageConversionFlag)(flags)
+
+	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawImage, slotval1, slotval2, slotval3, slotval4)
+
+}
+
+func (this *QPaintEngine) callVirtualBase_CoordinateOffset() *QPoint {
+
+	_ret := C.QPaintEngine_virtualbase_CoordinateOffset(unsafe.Pointer(this.h))
+	_goptr := newQPoint(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QPaintEngine) OnCoordinateOffset(slot func(super func() *QPoint) *QPoint) {
+	C.QPaintEngine_override_virtual_CoordinateOffset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QPaintEngine_CoordinateOffset
+func miqt_exec_callback_QPaintEngine_CoordinateOffset(self *C.QPaintEngine, cb C.intptr_t) *C.QPoint {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPoint) *QPoint)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QPaintEngine{h: self}).callVirtualBase_CoordinateOffset)
+
+	return virtualReturn.cPointer()
+
+}
+func (this *QPaintEngine) OnType(slot func() QPaintEngine__Type) {
+	C.QPaintEngine_override_virtual_Type(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QPaintEngine_Type
+func miqt_exec_callback_QPaintEngine_Type(self *C.QPaintEngine, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func() QPaintEngine__Type)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc()
+
+	return (C.int)(virtualReturn)
+
 }
 
 // Delete this object from C++ memory.

@@ -10,6 +10,7 @@ import "C"
 
 import (
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
@@ -50,6 +51,28 @@ func UnsafeNewQAccessiblePlugin(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAc
 
 	return &QAccessiblePlugin{h: (*C.QAccessiblePlugin)(h),
 		QObject: UnsafeNewQObject(h_QObject)}
+}
+
+// NewQAccessiblePlugin constructs a new QAccessiblePlugin object.
+func NewQAccessiblePlugin() *QAccessiblePlugin {
+	var outptr_QAccessiblePlugin *C.QAccessiblePlugin = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QAccessiblePlugin_new(&outptr_QAccessiblePlugin, &outptr_QObject)
+	ret := newQAccessiblePlugin(outptr_QAccessiblePlugin, outptr_QObject)
+	ret.isSubclass = true
+	return ret
+}
+
+// NewQAccessiblePlugin2 constructs a new QAccessiblePlugin object.
+func NewQAccessiblePlugin2(parent *QObject) *QAccessiblePlugin {
+	var outptr_QAccessiblePlugin *C.QAccessiblePlugin = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QAccessiblePlugin_new2(parent.cPointer(), &outptr_QAccessiblePlugin, &outptr_QObject)
+	ret := newQAccessiblePlugin(outptr_QAccessiblePlugin, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QAccessiblePlugin) MetaObject() *QMetaObject {
@@ -130,6 +153,195 @@ func QAccessiblePlugin_TrUtf83(s string, c string, n int) string {
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
+}
+func (this *QAccessiblePlugin) OnCreate(slot func(key string, object *QObject) *QAccessibleInterface) {
+	C.QAccessiblePlugin_override_virtual_Create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAccessiblePlugin_Create
+func miqt_exec_callback_QAccessiblePlugin_Create(self *C.QAccessiblePlugin, cb C.intptr_t, key C.struct_miqt_string, object *C.QObject) *C.QAccessibleInterface {
+	gofunc, ok := cgo.Handle(cb).Value().(func(key string, object *QObject) *QAccessibleInterface)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	var key_ms C.struct_miqt_string = key
+	key_ret := C.GoStringN(key_ms.data, C.int(int64(key_ms.len)))
+	C.free(unsafe.Pointer(key_ms.data))
+	slotval1 := key_ret
+	slotval2 := UnsafeNewQObject(unsafe.Pointer(object))
+
+	virtualReturn := gofunc(slotval1, slotval2)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QAccessiblePlugin) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QAccessiblePlugin_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QAccessiblePlugin) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	C.QAccessiblePlugin_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAccessiblePlugin_Event
+func miqt_exec_callback_QAccessiblePlugin_Event(self *C.QAccessiblePlugin, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QAccessiblePlugin{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QAccessiblePlugin) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QAccessiblePlugin_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QAccessiblePlugin) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	C.QAccessiblePlugin_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAccessiblePlugin_EventFilter
+func miqt_exec_callback_QAccessiblePlugin_EventFilter(self *C.QAccessiblePlugin, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QAccessiblePlugin{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QAccessiblePlugin) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QAccessiblePlugin_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QAccessiblePlugin) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	C.QAccessiblePlugin_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAccessiblePlugin_TimerEvent
+func miqt_exec_callback_QAccessiblePlugin_TimerEvent(self *C.QAccessiblePlugin, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QAccessiblePlugin{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QAccessiblePlugin) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QAccessiblePlugin_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QAccessiblePlugin) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	C.QAccessiblePlugin_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAccessiblePlugin_ChildEvent
+func miqt_exec_callback_QAccessiblePlugin_ChildEvent(self *C.QAccessiblePlugin, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QAccessiblePlugin{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QAccessiblePlugin) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QAccessiblePlugin_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QAccessiblePlugin) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	C.QAccessiblePlugin_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAccessiblePlugin_CustomEvent
+func miqt_exec_callback_QAccessiblePlugin_CustomEvent(self *C.QAccessiblePlugin, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QAccessiblePlugin{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QAccessiblePlugin) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QAccessiblePlugin_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QAccessiblePlugin) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QAccessiblePlugin_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAccessiblePlugin_ConnectNotify
+func miqt_exec_callback_QAccessiblePlugin_ConnectNotify(self *C.QAccessiblePlugin, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QAccessiblePlugin{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QAccessiblePlugin) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QAccessiblePlugin_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QAccessiblePlugin) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QAccessiblePlugin_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAccessiblePlugin_DisconnectNotify
+func miqt_exec_callback_QAccessiblePlugin_DisconnectNotify(self *C.QAccessiblePlugin, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QAccessiblePlugin{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
 }
 
 // Delete this object from C++ memory.

@@ -27,6 +27,12 @@ func astTransformBlocklist(parsed *CppParsedHeader) {
 			continue
 		}
 
+		// If this class is abstract, but we return !AllowVirtualForClass, then
+		// delete its constructors
+		if c.Abstract && !AllowVirtualForClass(c.ClassName) {
+			c.Ctors = nil
+		}
+
 		// Keep
 		parsed.Classes[j] = c
 		j++

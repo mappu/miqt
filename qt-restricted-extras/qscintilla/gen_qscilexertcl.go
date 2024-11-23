@@ -239,25 +239,18 @@ func QsciLexerTCL_TrUtf83(s string, c string, n int) string {
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
-
-func (this *QsciLexerTCL) callVirtualBase_Language() string {
-
-	_ret := C.QsciLexerTCL_virtualbase_Language(unsafe.Pointer(this.h))
-	return C.GoString(_ret)
-
-}
-func (this *QsciLexerTCL) OnLanguage(slot func(super func() string) string) {
+func (this *QsciLexerTCL) OnLanguage(slot func() string) {
 	C.QsciLexerTCL_override_virtual_Language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerTCL_Language
 func miqt_exec_callback_QsciLexerTCL_Language(self *C.QsciLexerTCL, cb C.intptr_t) *C.const_char {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() string) string)
+	gofunc, ok := cgo.Handle(cb).Value().(func() string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
-	virtualReturn := gofunc((&QsciLexerTCL{h: self}).callVirtualBase_Language)
+	virtualReturn := gofunc()
 	virtualReturn_Cstring := C.CString(virtualReturn)
 	defer C.free(unsafe.Pointer(virtualReturn_Cstring))
 
@@ -680,21 +673,13 @@ func miqt_exec_callback_QsciLexerTCL_DefaultStyle(self *C.QsciLexerTCL, cb C.int
 	return (C.int)(virtualReturn)
 
 }
-
-func (this *QsciLexerTCL) callVirtualBase_Description(style int) string {
-
-	var _ms C.struct_miqt_string = C.QsciLexerTCL_virtualbase_Description(unsafe.Pointer(this.h), (C.int)(style))
-	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms.data))
-	return _ret
-}
-func (this *QsciLexerTCL) OnDescription(slot func(super func(style int) string, style int) string) {
+func (this *QsciLexerTCL) OnDescription(slot func(style int) string) {
 	C.QsciLexerTCL_override_virtual_Description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerTCL_Description
 func miqt_exec_callback_QsciLexerTCL_Description(self *C.QsciLexerTCL, cb C.intptr_t, style C.int) C.struct_miqt_string {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) string, style int) string)
+	gofunc, ok := cgo.Handle(cb).Value().(func(style int) string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -702,7 +687,7 @@ func miqt_exec_callback_QsciLexerTCL_Description(self *C.QsciLexerTCL, cb C.intp
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (int)(style)
 
-	virtualReturn := gofunc((&QsciLexerTCL{h: self}).callVirtualBase_Description, slotval1)
+	virtualReturn := gofunc(slotval1)
 	virtualReturn_ms := C.struct_miqt_string{}
 	virtualReturn_ms.data = C.CString(virtualReturn)
 	virtualReturn_ms.len = C.size_t(len(virtualReturn))

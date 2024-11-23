@@ -10,6 +10,7 @@ import "C"
 
 import (
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
@@ -93,6 +94,16 @@ func UnsafeNewQImageIOHandler(h unsafe.Pointer) *QImageIOHandler {
 	}
 
 	return &QImageIOHandler{h: (*C.QImageIOHandler)(h)}
+}
+
+// NewQImageIOHandler constructs a new QImageIOHandler object.
+func NewQImageIOHandler() *QImageIOHandler {
+	var outptr_QImageIOHandler *C.QImageIOHandler = nil
+
+	C.QImageIOHandler_new(&outptr_QImageIOHandler)
+	ret := newQImageIOHandler(outptr_QImageIOHandler)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QImageIOHandler) SetDevice(device *QIODevice) {
@@ -189,6 +200,331 @@ func (this *QImageIOHandler) CurrentImageRect() *QRect {
 	return _goptr
 }
 
+func (this *QImageIOHandler) callVirtualBase_Name() []byte {
+
+	var _bytearray C.struct_miqt_string = C.QImageIOHandler_virtualbase_Name(unsafe.Pointer(this.h))
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
+}
+func (this *QImageIOHandler) OnName(slot func(super func() []byte) []byte) {
+	C.QImageIOHandler_override_virtual_Name(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageIOHandler_Name
+func miqt_exec_callback_QImageIOHandler_Name(self *C.QImageIOHandler, cb C.intptr_t) C.struct_miqt_string {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() []byte) []byte)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QImageIOHandler{h: self}).callVirtualBase_Name)
+	virtualReturn_alias := C.struct_miqt_string{}
+	virtualReturn_alias.data = (*C.char)(unsafe.Pointer(&virtualReturn[0]))
+	virtualReturn_alias.len = C.size_t(len(virtualReturn))
+
+	return virtualReturn_alias
+
+}
+func (this *QImageIOHandler) OnCanRead(slot func() bool) {
+	C.QImageIOHandler_override_virtual_CanRead(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageIOHandler_CanRead
+func miqt_exec_callback_QImageIOHandler_CanRead(self *C.QImageIOHandler, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func() bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc()
+
+	return (C.bool)(virtualReturn)
+
+}
+func (this *QImageIOHandler) OnRead(slot func(image *QImage) bool) {
+	C.QImageIOHandler_override_virtual_Read(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageIOHandler_Read
+func miqt_exec_callback_QImageIOHandler_Read(self *C.QImageIOHandler, cb C.intptr_t, image *C.QImage) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(image *QImage) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQImage(unsafe.Pointer(image), nil)
+
+	virtualReturn := gofunc(slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QImageIOHandler) callVirtualBase_Write(image *QImage) bool {
+
+	return (bool)(C.QImageIOHandler_virtualbase_Write(unsafe.Pointer(this.h), image.cPointer()))
+
+}
+func (this *QImageIOHandler) OnWrite(slot func(super func(image *QImage) bool, image *QImage) bool) {
+	C.QImageIOHandler_override_virtual_Write(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageIOHandler_Write
+func miqt_exec_callback_QImageIOHandler_Write(self *C.QImageIOHandler, cb C.intptr_t, image *C.QImage) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(image *QImage) bool, image *QImage) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQImage(unsafe.Pointer(image), nil)
+
+	virtualReturn := gofunc((&QImageIOHandler{h: self}).callVirtualBase_Write, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QImageIOHandler) callVirtualBase_Option(option QImageIOHandler__ImageOption) *QVariant {
+
+	_ret := C.QImageIOHandler_virtualbase_Option(unsafe.Pointer(this.h), (C.int)(option))
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QImageIOHandler) OnOption(slot func(super func(option QImageIOHandler__ImageOption) *QVariant, option QImageIOHandler__ImageOption) *QVariant) {
+	C.QImageIOHandler_override_virtual_Option(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageIOHandler_Option
+func miqt_exec_callback_QImageIOHandler_Option(self *C.QImageIOHandler, cb C.intptr_t, option C.int) *C.QVariant {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(option QImageIOHandler__ImageOption) *QVariant, option QImageIOHandler__ImageOption) *QVariant)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QImageIOHandler__ImageOption)(option)
+
+	virtualReturn := gofunc((&QImageIOHandler{h: self}).callVirtualBase_Option, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QImageIOHandler) callVirtualBase_SetOption(option QImageIOHandler__ImageOption, value *QVariant) {
+
+	C.QImageIOHandler_virtualbase_SetOption(unsafe.Pointer(this.h), (C.int)(option), value.cPointer())
+
+}
+func (this *QImageIOHandler) OnSetOption(slot func(super func(option QImageIOHandler__ImageOption, value *QVariant), option QImageIOHandler__ImageOption, value *QVariant)) {
+	C.QImageIOHandler_override_virtual_SetOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageIOHandler_SetOption
+func miqt_exec_callback_QImageIOHandler_SetOption(self *C.QImageIOHandler, cb C.intptr_t, option C.int, value *C.QVariant) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(option QImageIOHandler__ImageOption, value *QVariant), option QImageIOHandler__ImageOption, value *QVariant))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QImageIOHandler__ImageOption)(option)
+
+	slotval2 := UnsafeNewQVariant(unsafe.Pointer(value))
+
+	gofunc((&QImageIOHandler{h: self}).callVirtualBase_SetOption, slotval1, slotval2)
+
+}
+
+func (this *QImageIOHandler) callVirtualBase_SupportsOption(option QImageIOHandler__ImageOption) bool {
+
+	return (bool)(C.QImageIOHandler_virtualbase_SupportsOption(unsafe.Pointer(this.h), (C.int)(option)))
+
+}
+func (this *QImageIOHandler) OnSupportsOption(slot func(super func(option QImageIOHandler__ImageOption) bool, option QImageIOHandler__ImageOption) bool) {
+	C.QImageIOHandler_override_virtual_SupportsOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageIOHandler_SupportsOption
+func miqt_exec_callback_QImageIOHandler_SupportsOption(self *C.QImageIOHandler, cb C.intptr_t, option C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(option QImageIOHandler__ImageOption) bool, option QImageIOHandler__ImageOption) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QImageIOHandler__ImageOption)(option)
+
+	virtualReturn := gofunc((&QImageIOHandler{h: self}).callVirtualBase_SupportsOption, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QImageIOHandler) callVirtualBase_JumpToNextImage() bool {
+
+	return (bool)(C.QImageIOHandler_virtualbase_JumpToNextImage(unsafe.Pointer(this.h)))
+
+}
+func (this *QImageIOHandler) OnJumpToNextImage(slot func(super func() bool) bool) {
+	C.QImageIOHandler_override_virtual_JumpToNextImage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageIOHandler_JumpToNextImage
+func miqt_exec_callback_QImageIOHandler_JumpToNextImage(self *C.QImageIOHandler, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QImageIOHandler{h: self}).callVirtualBase_JumpToNextImage)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QImageIOHandler) callVirtualBase_JumpToImage(imageNumber int) bool {
+
+	return (bool)(C.QImageIOHandler_virtualbase_JumpToImage(unsafe.Pointer(this.h), (C.int)(imageNumber)))
+
+}
+func (this *QImageIOHandler) OnJumpToImage(slot func(super func(imageNumber int) bool, imageNumber int) bool) {
+	C.QImageIOHandler_override_virtual_JumpToImage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageIOHandler_JumpToImage
+func miqt_exec_callback_QImageIOHandler_JumpToImage(self *C.QImageIOHandler, cb C.intptr_t, imageNumber C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(imageNumber int) bool, imageNumber int) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(imageNumber)
+
+	virtualReturn := gofunc((&QImageIOHandler{h: self}).callVirtualBase_JumpToImage, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QImageIOHandler) callVirtualBase_LoopCount() int {
+
+	return (int)(C.QImageIOHandler_virtualbase_LoopCount(unsafe.Pointer(this.h)))
+
+}
+func (this *QImageIOHandler) OnLoopCount(slot func(super func() int) int) {
+	C.QImageIOHandler_override_virtual_LoopCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageIOHandler_LoopCount
+func miqt_exec_callback_QImageIOHandler_LoopCount(self *C.QImageIOHandler, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QImageIOHandler{h: self}).callVirtualBase_LoopCount)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QImageIOHandler) callVirtualBase_ImageCount() int {
+
+	return (int)(C.QImageIOHandler_virtualbase_ImageCount(unsafe.Pointer(this.h)))
+
+}
+func (this *QImageIOHandler) OnImageCount(slot func(super func() int) int) {
+	C.QImageIOHandler_override_virtual_ImageCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageIOHandler_ImageCount
+func miqt_exec_callback_QImageIOHandler_ImageCount(self *C.QImageIOHandler, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QImageIOHandler{h: self}).callVirtualBase_ImageCount)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QImageIOHandler) callVirtualBase_NextImageDelay() int {
+
+	return (int)(C.QImageIOHandler_virtualbase_NextImageDelay(unsafe.Pointer(this.h)))
+
+}
+func (this *QImageIOHandler) OnNextImageDelay(slot func(super func() int) int) {
+	C.QImageIOHandler_override_virtual_NextImageDelay(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageIOHandler_NextImageDelay
+func miqt_exec_callback_QImageIOHandler_NextImageDelay(self *C.QImageIOHandler, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QImageIOHandler{h: self}).callVirtualBase_NextImageDelay)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QImageIOHandler) callVirtualBase_CurrentImageNumber() int {
+
+	return (int)(C.QImageIOHandler_virtualbase_CurrentImageNumber(unsafe.Pointer(this.h)))
+
+}
+func (this *QImageIOHandler) OnCurrentImageNumber(slot func(super func() int) int) {
+	C.QImageIOHandler_override_virtual_CurrentImageNumber(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageIOHandler_CurrentImageNumber
+func miqt_exec_callback_QImageIOHandler_CurrentImageNumber(self *C.QImageIOHandler, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QImageIOHandler{h: self}).callVirtualBase_CurrentImageNumber)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QImageIOHandler) callVirtualBase_CurrentImageRect() *QRect {
+
+	_ret := C.QImageIOHandler_virtualbase_CurrentImageRect(unsafe.Pointer(this.h))
+	_goptr := newQRect(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QImageIOHandler) OnCurrentImageRect(slot func(super func() *QRect) *QRect) {
+	C.QImageIOHandler_override_virtual_CurrentImageRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageIOHandler_CurrentImageRect
+func miqt_exec_callback_QImageIOHandler_CurrentImageRect(self *C.QImageIOHandler, cb C.intptr_t) *C.QRect {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QRect) *QRect)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QImageIOHandler{h: self}).callVirtualBase_CurrentImageRect)
+
+	return virtualReturn.cPointer()
+
+}
+
 // Delete this object from C++ memory.
 func (this *QImageIOHandler) Delete() {
 	C.QImageIOHandler_Delete(this.h, C.bool(this.isSubclass))
@@ -240,6 +576,28 @@ func UnsafeNewQImageIOPlugin(h unsafe.Pointer, h_QObject unsafe.Pointer) *QImage
 
 	return &QImageIOPlugin{h: (*C.QImageIOPlugin)(h),
 		QObject: UnsafeNewQObject(h_QObject)}
+}
+
+// NewQImageIOPlugin constructs a new QImageIOPlugin object.
+func NewQImageIOPlugin() *QImageIOPlugin {
+	var outptr_QImageIOPlugin *C.QImageIOPlugin = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QImageIOPlugin_new(&outptr_QImageIOPlugin, &outptr_QObject)
+	ret := newQImageIOPlugin(outptr_QImageIOPlugin, outptr_QObject)
+	ret.isSubclass = true
+	return ret
+}
+
+// NewQImageIOPlugin2 constructs a new QImageIOPlugin object.
+func NewQImageIOPlugin2(parent *QObject) *QImageIOPlugin {
+	var outptr_QImageIOPlugin *C.QImageIOPlugin = nil
+	var outptr_QObject *C.QObject = nil
+
+	C.QImageIOPlugin_new2(parent.cPointer(), &outptr_QImageIOPlugin, &outptr_QObject)
+	ret := newQImageIOPlugin(outptr_QImageIOPlugin, outptr_QObject)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QImageIOPlugin) MetaObject() *QMetaObject {
@@ -326,6 +684,218 @@ func QImageIOPlugin_TrUtf83(s string, c string, n int) string {
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
+}
+func (this *QImageIOPlugin) OnCapabilities(slot func(device *QIODevice, format []byte) QImageIOPlugin__Capability) {
+	C.QImageIOPlugin_override_virtual_Capabilities(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageIOPlugin_Capabilities
+func miqt_exec_callback_QImageIOPlugin_Capabilities(self *C.QImageIOPlugin, cb C.intptr_t, device *C.QIODevice, format C.struct_miqt_string) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(device *QIODevice, format []byte) QImageIOPlugin__Capability)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQIODevice(unsafe.Pointer(device), nil)
+	var format_bytearray C.struct_miqt_string = format
+	format_ret := C.GoBytes(unsafe.Pointer(format_bytearray.data), C.int(int64(format_bytearray.len)))
+	C.free(unsafe.Pointer(format_bytearray.data))
+	slotval2 := format_ret
+
+	virtualReturn := gofunc(slotval1, slotval2)
+
+	return (C.int)(virtualReturn)
+
+}
+func (this *QImageIOPlugin) OnCreate(slot func(device *QIODevice, format []byte) *QImageIOHandler) {
+	C.QImageIOPlugin_override_virtual_Create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageIOPlugin_Create
+func miqt_exec_callback_QImageIOPlugin_Create(self *C.QImageIOPlugin, cb C.intptr_t, device *C.QIODevice, format C.struct_miqt_string) *C.QImageIOHandler {
+	gofunc, ok := cgo.Handle(cb).Value().(func(device *QIODevice, format []byte) *QImageIOHandler)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQIODevice(unsafe.Pointer(device), nil)
+	var format_bytearray C.struct_miqt_string = format
+	format_ret := C.GoBytes(unsafe.Pointer(format_bytearray.data), C.int(int64(format_bytearray.len)))
+	C.free(unsafe.Pointer(format_bytearray.data))
+	slotval2 := format_ret
+
+	virtualReturn := gofunc(slotval1, slotval2)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QImageIOPlugin) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QImageIOPlugin_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QImageIOPlugin) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	C.QImageIOPlugin_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageIOPlugin_Event
+func miqt_exec_callback_QImageIOPlugin_Event(self *C.QImageIOPlugin, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QImageIOPlugin{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QImageIOPlugin) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QImageIOPlugin_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QImageIOPlugin) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	C.QImageIOPlugin_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageIOPlugin_EventFilter
+func miqt_exec_callback_QImageIOPlugin_EventFilter(self *C.QImageIOPlugin, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QImageIOPlugin{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QImageIOPlugin) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QImageIOPlugin_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QImageIOPlugin) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	C.QImageIOPlugin_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageIOPlugin_TimerEvent
+func miqt_exec_callback_QImageIOPlugin_TimerEvent(self *C.QImageIOPlugin, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QImageIOPlugin{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QImageIOPlugin) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QImageIOPlugin_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QImageIOPlugin) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	C.QImageIOPlugin_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageIOPlugin_ChildEvent
+func miqt_exec_callback_QImageIOPlugin_ChildEvent(self *C.QImageIOPlugin, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+
+	gofunc((&QImageIOPlugin{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QImageIOPlugin) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QImageIOPlugin_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QImageIOPlugin) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	C.QImageIOPlugin_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageIOPlugin_CustomEvent
+func miqt_exec_callback_QImageIOPlugin_CustomEvent(self *C.QImageIOPlugin, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QImageIOPlugin{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QImageIOPlugin) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QImageIOPlugin_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QImageIOPlugin) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QImageIOPlugin_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageIOPlugin_ConnectNotify
+func miqt_exec_callback_QImageIOPlugin_ConnectNotify(self *C.QImageIOPlugin, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QImageIOPlugin{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QImageIOPlugin) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QImageIOPlugin_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QImageIOPlugin) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	C.QImageIOPlugin_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QImageIOPlugin_DisconnectNotify
+func miqt_exec_callback_QImageIOPlugin_DisconnectNotify(self *C.QImageIOPlugin, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QImageIOPlugin{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
 }
 
 // Delete this object from C++ memory.

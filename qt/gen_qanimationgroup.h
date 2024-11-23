@@ -28,6 +28,8 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif
 
+void QAnimationGroup_new(QAnimationGroup** outptr_QAnimationGroup, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject);
+void QAnimationGroup_new2(QObject* parent, QAnimationGroup** outptr_QAnimationGroup, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject);
 QMetaObject* QAnimationGroup_MetaObject(const QAnimationGroup* self);
 void* QAnimationGroup_Metacast(QAnimationGroup* self, const char* param1);
 struct miqt_string QAnimationGroup_Tr(const char* s);
@@ -45,6 +47,16 @@ struct miqt_string QAnimationGroup_Tr2(const char* s, const char* c);
 struct miqt_string QAnimationGroup_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAnimationGroup_TrUtf82(const char* s, const char* c);
 struct miqt_string QAnimationGroup_TrUtf83(const char* s, const char* c, int n);
+void QAnimationGroup_override_virtual_Event(void* self, intptr_t slot);
+bool QAnimationGroup_virtualbase_Event(void* self, QEvent* event);
+void QAnimationGroup_override_virtual_Duration(void* self, intptr_t slot);
+int QAnimationGroup_virtualbase_Duration(const void* self);
+void QAnimationGroup_override_virtual_UpdateCurrentTime(void* self, intptr_t slot);
+void QAnimationGroup_virtualbase_UpdateCurrentTime(void* self, int currentTime);
+void QAnimationGroup_override_virtual_UpdateState(void* self, intptr_t slot);
+void QAnimationGroup_virtualbase_UpdateState(void* self, int newState, int oldState);
+void QAnimationGroup_override_virtual_UpdateDirection(void* self, intptr_t slot);
+void QAnimationGroup_virtualbase_UpdateDirection(void* self, int direction);
 void QAnimationGroup_Delete(QAnimationGroup* self, bool isSubclass);
 
 #ifdef __cplusplus

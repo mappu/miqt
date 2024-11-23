@@ -10,6 +10,7 @@ import "C"
 
 import (
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
@@ -62,6 +63,16 @@ func UnsafeNewQGestureRecognizer(h unsafe.Pointer) *QGestureRecognizer {
 	return &QGestureRecognizer{h: (*C.QGestureRecognizer)(h)}
 }
 
+// NewQGestureRecognizer constructs a new QGestureRecognizer object.
+func NewQGestureRecognizer() *QGestureRecognizer {
+	var outptr_QGestureRecognizer *C.QGestureRecognizer = nil
+
+	C.QGestureRecognizer_new(&outptr_QGestureRecognizer)
+	ret := newQGestureRecognizer(outptr_QGestureRecognizer)
+	ret.isSubclass = true
+	return ret
+}
+
 func (this *QGestureRecognizer) Create(target *QObject) *QGesture {
 	return UnsafeNewQGesture(unsafe.Pointer(C.QGestureRecognizer_Create(this.h, target.cPointer())), nil)
 }
@@ -84,6 +95,74 @@ func QGestureRecognizer_UnregisterRecognizer(typeVal GestureType) {
 
 func (this *QGestureRecognizer) OperatorAssign(param1 *QGestureRecognizer) {
 	C.QGestureRecognizer_OperatorAssign(this.h, param1.cPointer())
+}
+
+func (this *QGestureRecognizer) callVirtualBase_Create(target *QObject) *QGesture {
+
+	return UnsafeNewQGesture(unsafe.Pointer(C.QGestureRecognizer_virtualbase_Create(unsafe.Pointer(this.h), target.cPointer())), nil)
+}
+func (this *QGestureRecognizer) OnCreate(slot func(super func(target *QObject) *QGesture, target *QObject) *QGesture) {
+	C.QGestureRecognizer_override_virtual_Create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGestureRecognizer_Create
+func miqt_exec_callback_QGestureRecognizer_Create(self *C.QGestureRecognizer, cb C.intptr_t, target *C.QObject) *C.QGesture {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(target *QObject) *QGesture, target *QObject) *QGesture)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(target))
+
+	virtualReturn := gofunc((&QGestureRecognizer{h: self}).callVirtualBase_Create, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+func (this *QGestureRecognizer) OnRecognize(slot func(state *QGesture, watched *QObject, event *QEvent) QGestureRecognizer__ResultFlag) {
+	C.QGestureRecognizer_override_virtual_Recognize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGestureRecognizer_Recognize
+func miqt_exec_callback_QGestureRecognizer_Recognize(self *C.QGestureRecognizer, cb C.intptr_t, state *C.QGesture, watched *C.QObject, event *C.QEvent) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(state *QGesture, watched *QObject, event *QEvent) QGestureRecognizer__ResultFlag)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQGesture(unsafe.Pointer(state), nil)
+	slotval2 := UnsafeNewQObject(unsafe.Pointer(watched))
+	slotval3 := UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc(slotval1, slotval2, slotval3)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QGestureRecognizer) callVirtualBase_Reset(state *QGesture) {
+
+	C.QGestureRecognizer_virtualbase_Reset(unsafe.Pointer(this.h), state.cPointer())
+
+}
+func (this *QGestureRecognizer) OnReset(slot func(super func(state *QGesture), state *QGesture)) {
+	C.QGestureRecognizer_override_virtual_Reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGestureRecognizer_Reset
+func miqt_exec_callback_QGestureRecognizer_Reset(self *C.QGestureRecognizer, cb C.intptr_t, state *C.QGesture) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(state *QGesture), state *QGesture))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQGesture(unsafe.Pointer(state), nil)
+
+	gofunc((&QGestureRecognizer{h: self}).callVirtualBase_Reset, slotval1)
+
 }
 
 // Delete this object from C++ memory.

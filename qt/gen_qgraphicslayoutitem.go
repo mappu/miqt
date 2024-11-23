@@ -10,6 +10,7 @@ import "C"
 
 import (
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
@@ -47,6 +48,36 @@ func UnsafeNewQGraphicsLayoutItem(h unsafe.Pointer) *QGraphicsLayoutItem {
 	}
 
 	return &QGraphicsLayoutItem{h: (*C.QGraphicsLayoutItem)(h)}
+}
+
+// NewQGraphicsLayoutItem constructs a new QGraphicsLayoutItem object.
+func NewQGraphicsLayoutItem() *QGraphicsLayoutItem {
+	var outptr_QGraphicsLayoutItem *C.QGraphicsLayoutItem = nil
+
+	C.QGraphicsLayoutItem_new(&outptr_QGraphicsLayoutItem)
+	ret := newQGraphicsLayoutItem(outptr_QGraphicsLayoutItem)
+	ret.isSubclass = true
+	return ret
+}
+
+// NewQGraphicsLayoutItem2 constructs a new QGraphicsLayoutItem object.
+func NewQGraphicsLayoutItem2(parent *QGraphicsLayoutItem) *QGraphicsLayoutItem {
+	var outptr_QGraphicsLayoutItem *C.QGraphicsLayoutItem = nil
+
+	C.QGraphicsLayoutItem_new2(parent.cPointer(), &outptr_QGraphicsLayoutItem)
+	ret := newQGraphicsLayoutItem(outptr_QGraphicsLayoutItem)
+	ret.isSubclass = true
+	return ret
+}
+
+// NewQGraphicsLayoutItem3 constructs a new QGraphicsLayoutItem object.
+func NewQGraphicsLayoutItem3(parent *QGraphicsLayoutItem, isLayout bool) *QGraphicsLayoutItem {
+	var outptr_QGraphicsLayoutItem *C.QGraphicsLayoutItem = nil
+
+	C.QGraphicsLayoutItem_new3(parent.cPointer(), (C.bool)(isLayout), &outptr_QGraphicsLayoutItem)
+	ret := newQGraphicsLayoutItem(outptr_QGraphicsLayoutItem)
+	ret.isSubclass = true
+	return ret
 }
 
 func (this *QGraphicsLayoutItem) SetSizePolicy(policy *QSizePolicy) {
@@ -219,6 +250,99 @@ func (this *QGraphicsLayoutItem) EffectiveSizeHint2(which SizeHint, constraint *
 	_goptr := newQSizeF(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
+}
+
+func (this *QGraphicsLayoutItem) callVirtualBase_SetGeometry(rect *QRectF) {
+
+	C.QGraphicsLayoutItem_virtualbase_SetGeometry(unsafe.Pointer(this.h), rect.cPointer())
+
+}
+func (this *QGraphicsLayoutItem) OnSetGeometry(slot func(super func(rect *QRectF), rect *QRectF)) {
+	C.QGraphicsLayoutItem_override_virtual_SetGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsLayoutItem_SetGeometry
+func miqt_exec_callback_QGraphicsLayoutItem_SetGeometry(self *C.QGraphicsLayoutItem, cb C.intptr_t, rect *C.QRectF) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect *QRectF), rect *QRectF))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQRectF(unsafe.Pointer(rect))
+
+	gofunc((&QGraphicsLayoutItem{h: self}).callVirtualBase_SetGeometry, slotval1)
+
+}
+
+func (this *QGraphicsLayoutItem) callVirtualBase_GetContentsMargins(left *float64, top *float64, right *float64, bottom *float64) {
+
+	C.QGraphicsLayoutItem_virtualbase_GetContentsMargins(unsafe.Pointer(this.h), (*C.double)(unsafe.Pointer(left)), (*C.double)(unsafe.Pointer(top)), (*C.double)(unsafe.Pointer(right)), (*C.double)(unsafe.Pointer(bottom)))
+
+}
+func (this *QGraphicsLayoutItem) OnGetContentsMargins(slot func(super func(left *float64, top *float64, right *float64, bottom *float64), left *float64, top *float64, right *float64, bottom *float64)) {
+	C.QGraphicsLayoutItem_override_virtual_GetContentsMargins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsLayoutItem_GetContentsMargins
+func miqt_exec_callback_QGraphicsLayoutItem_GetContentsMargins(self *C.QGraphicsLayoutItem, cb C.intptr_t, left *C.double, top *C.double, right *C.double, bottom *C.double) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(left *float64, top *float64, right *float64, bottom *float64), left *float64, top *float64, right *float64, bottom *float64))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (*float64)(unsafe.Pointer(left))
+
+	slotval2 := (*float64)(unsafe.Pointer(top))
+
+	slotval3 := (*float64)(unsafe.Pointer(right))
+
+	slotval4 := (*float64)(unsafe.Pointer(bottom))
+
+	gofunc((&QGraphicsLayoutItem{h: self}).callVirtualBase_GetContentsMargins, slotval1, slotval2, slotval3, slotval4)
+
+}
+
+func (this *QGraphicsLayoutItem) callVirtualBase_UpdateGeometry() {
+
+	C.QGraphicsLayoutItem_virtualbase_UpdateGeometry(unsafe.Pointer(this.h))
+
+}
+func (this *QGraphicsLayoutItem) OnUpdateGeometry(slot func(super func())) {
+	C.QGraphicsLayoutItem_override_virtual_UpdateGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsLayoutItem_UpdateGeometry
+func miqt_exec_callback_QGraphicsLayoutItem_UpdateGeometry(self *C.QGraphicsLayoutItem, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QGraphicsLayoutItem{h: self}).callVirtualBase_UpdateGeometry)
+
+}
+func (this *QGraphicsLayoutItem) OnSizeHint(slot func(which SizeHint, constraint *QSizeF) *QSizeF) {
+	C.QGraphicsLayoutItem_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QGraphicsLayoutItem_SizeHint
+func miqt_exec_callback_QGraphicsLayoutItem_SizeHint(self *C.QGraphicsLayoutItem, cb C.intptr_t, which C.int, constraint *C.QSizeF) *C.QSizeF {
+	gofunc, ok := cgo.Handle(cb).Value().(func(which SizeHint, constraint *QSizeF) *QSizeF)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (SizeHint)(which)
+
+	slotval2 := UnsafeNewQSizeF(unsafe.Pointer(constraint))
+
+	virtualReturn := gofunc(slotval1, slotval2)
+
+	return virtualReturn.cPointer()
+
 }
 
 // Delete this object from C++ memory.

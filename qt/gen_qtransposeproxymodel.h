@@ -17,6 +17,7 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractItemModel;
 class QAbstractProxyModel;
+class QItemSelection;
 class QMetaObject;
 class QMimeData;
 class QModelIndex;
@@ -27,6 +28,7 @@ class QVariant;
 #else
 typedef struct QAbstractItemModel QAbstractItemModel;
 typedef struct QAbstractProxyModel QAbstractProxyModel;
+typedef struct QItemSelection QItemSelection;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMimeData QMimeData;
 typedef struct QModelIndex QModelIndex;
@@ -103,6 +105,10 @@ void QTransposeProxyModel_override_virtual_MoveColumns(void* self, intptr_t slot
 bool QTransposeProxyModel_virtualbase_MoveColumns(void* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild);
 void QTransposeProxyModel_override_virtual_Sort(void* self, intptr_t slot);
 void QTransposeProxyModel_virtualbase_Sort(void* self, int column, int order);
+void QTransposeProxyModel_override_virtual_MapSelectionToSource(void* self, intptr_t slot);
+QItemSelection* QTransposeProxyModel_virtualbase_MapSelectionToSource(const void* self, QItemSelection* selection);
+void QTransposeProxyModel_override_virtual_MapSelectionFromSource(void* self, intptr_t slot);
+QItemSelection* QTransposeProxyModel_virtualbase_MapSelectionFromSource(const void* self, QItemSelection* selection);
 void QTransposeProxyModel_override_virtual_Submit(void* self, intptr_t slot);
 bool QTransposeProxyModel_virtualbase_Submit(void* self);
 void QTransposeProxyModel_override_virtual_Revert(void* self, intptr_t slot);

@@ -36,6 +36,8 @@ typedef struct QObject QObject;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
+void QAbstractAnimation_new(QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject);
+void QAbstractAnimation_new2(QObject* parent, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject);
 QMetaObject* QAbstractAnimation_MetaObject(const QAbstractAnimation* self);
 void* QAbstractAnimation_Metacast(QAbstractAnimation* self, const char* param1);
 struct miqt_string QAbstractAnimation_Tr(const char* s);
@@ -74,6 +76,28 @@ struct miqt_string QAbstractAnimation_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAbstractAnimation_TrUtf82(const char* s, const char* c);
 struct miqt_string QAbstractAnimation_TrUtf83(const char* s, const char* c, int n);
 void QAbstractAnimation_Start1(QAbstractAnimation* self, int policy);
+void QAbstractAnimation_override_virtual_Duration(void* self, intptr_t slot);
+int QAbstractAnimation_virtualbase_Duration(const void* self);
+void QAbstractAnimation_override_virtual_Event(void* self, intptr_t slot);
+bool QAbstractAnimation_virtualbase_Event(void* self, QEvent* event);
+void QAbstractAnimation_override_virtual_UpdateCurrentTime(void* self, intptr_t slot);
+void QAbstractAnimation_virtualbase_UpdateCurrentTime(void* self, int currentTime);
+void QAbstractAnimation_override_virtual_UpdateState(void* self, intptr_t slot);
+void QAbstractAnimation_virtualbase_UpdateState(void* self, int newState, int oldState);
+void QAbstractAnimation_override_virtual_UpdateDirection(void* self, intptr_t slot);
+void QAbstractAnimation_virtualbase_UpdateDirection(void* self, int direction);
+void QAbstractAnimation_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QAbstractAnimation_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QAbstractAnimation_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QAbstractAnimation_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QAbstractAnimation_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QAbstractAnimation_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QAbstractAnimation_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QAbstractAnimation_virtualbase_CustomEvent(void* self, QEvent* event);
+void QAbstractAnimation_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QAbstractAnimation_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QAbstractAnimation_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QAbstractAnimation_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QAbstractAnimation_Delete(QAbstractAnimation* self, bool isSubclass);
 
 void QAnimationDriver_new(QAnimationDriver** outptr_QAnimationDriver, QObject** outptr_QObject);

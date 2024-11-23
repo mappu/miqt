@@ -18,12 +18,18 @@ extern "C" {
 class QEvent;
 class QGraphicsLayout;
 class QGraphicsLayoutItem;
+class QRectF;
+class QSizeF;
 #else
 typedef struct QEvent QEvent;
 typedef struct QGraphicsLayout QGraphicsLayout;
 typedef struct QGraphicsLayoutItem QGraphicsLayoutItem;
+typedef struct QRectF QRectF;
+typedef struct QSizeF QSizeF;
 #endif
 
+void QGraphicsLayout_new(QGraphicsLayout** outptr_QGraphicsLayout, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
+void QGraphicsLayout_new2(QGraphicsLayoutItem* parent, QGraphicsLayout** outptr_QGraphicsLayout, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
 void QGraphicsLayout_SetContentsMargins(QGraphicsLayout* self, double left, double top, double right, double bottom);
 void QGraphicsLayout_GetContentsMargins(const QGraphicsLayout* self, double* left, double* top, double* right, double* bottom);
 void QGraphicsLayout_Activate(QGraphicsLayout* self);
@@ -36,6 +42,26 @@ QGraphicsLayoutItem* QGraphicsLayout_ItemAt(const QGraphicsLayout* self, int i);
 void QGraphicsLayout_RemoveAt(QGraphicsLayout* self, int index);
 void QGraphicsLayout_SetInstantInvalidatePropagation(bool enable);
 bool QGraphicsLayout_InstantInvalidatePropagation();
+void QGraphicsLayout_override_virtual_GetContentsMargins(void* self, intptr_t slot);
+void QGraphicsLayout_virtualbase_GetContentsMargins(const void* self, double* left, double* top, double* right, double* bottom);
+void QGraphicsLayout_override_virtual_Invalidate(void* self, intptr_t slot);
+void QGraphicsLayout_virtualbase_Invalidate(void* self);
+void QGraphicsLayout_override_virtual_UpdateGeometry(void* self, intptr_t slot);
+void QGraphicsLayout_virtualbase_UpdateGeometry(void* self);
+void QGraphicsLayout_override_virtual_WidgetEvent(void* self, intptr_t slot);
+void QGraphicsLayout_virtualbase_WidgetEvent(void* self, QEvent* e);
+void QGraphicsLayout_override_virtual_Count(void* self, intptr_t slot);
+int QGraphicsLayout_virtualbase_Count(const void* self);
+void QGraphicsLayout_override_virtual_ItemAt(void* self, intptr_t slot);
+QGraphicsLayoutItem* QGraphicsLayout_virtualbase_ItemAt(const void* self, int i);
+void QGraphicsLayout_override_virtual_RemoveAt(void* self, intptr_t slot);
+void QGraphicsLayout_virtualbase_RemoveAt(void* self, int index);
+void QGraphicsLayout_override_virtual_SetGeometry(void* self, intptr_t slot);
+void QGraphicsLayout_virtualbase_SetGeometry(void* self, QRectF* rect);
+void QGraphicsLayout_override_virtual_IsEmpty(void* self, intptr_t slot);
+bool QGraphicsLayout_virtualbase_IsEmpty(const void* self);
+void QGraphicsLayout_override_virtual_SizeHint(void* self, intptr_t slot);
+QSizeF* QGraphicsLayout_virtualbase_SizeHint(const void* self, int which, QSizeF* constraint);
 void QGraphicsLayout_Delete(QGraphicsLayout* self, bool isSubclass);
 
 #ifdef __cplusplus

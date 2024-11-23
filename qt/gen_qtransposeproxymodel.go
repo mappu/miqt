@@ -865,6 +865,62 @@ func miqt_exec_callback_QTransposeProxyModel_Sort(self *C.QTransposeProxyModel, 
 
 }
 
+func (this *QTransposeProxyModel) callVirtualBase_MapSelectionToSource(selection *QItemSelection) *QItemSelection {
+
+	_ret := C.QTransposeProxyModel_virtualbase_MapSelectionToSource(unsafe.Pointer(this.h), selection.cPointer())
+	_goptr := newQItemSelection(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QTransposeProxyModel) OnMapSelectionToSource(slot func(super func(selection *QItemSelection) *QItemSelection, selection *QItemSelection) *QItemSelection) {
+	C.QTransposeProxyModel_override_virtual_MapSelectionToSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTransposeProxyModel_MapSelectionToSource
+func miqt_exec_callback_QTransposeProxyModel_MapSelectionToSource(self *C.QTransposeProxyModel, cb C.intptr_t, selection *C.QItemSelection) *C.QItemSelection {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(selection *QItemSelection) *QItemSelection, selection *QItemSelection) *QItemSelection)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selection))
+
+	virtualReturn := gofunc((&QTransposeProxyModel{h: self}).callVirtualBase_MapSelectionToSource, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTransposeProxyModel) callVirtualBase_MapSelectionFromSource(selection *QItemSelection) *QItemSelection {
+
+	_ret := C.QTransposeProxyModel_virtualbase_MapSelectionFromSource(unsafe.Pointer(this.h), selection.cPointer())
+	_goptr := newQItemSelection(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QTransposeProxyModel) OnMapSelectionFromSource(slot func(super func(selection *QItemSelection) *QItemSelection, selection *QItemSelection) *QItemSelection) {
+	C.QTransposeProxyModel_override_virtual_MapSelectionFromSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTransposeProxyModel_MapSelectionFromSource
+func miqt_exec_callback_QTransposeProxyModel_MapSelectionFromSource(self *C.QTransposeProxyModel, cb C.intptr_t, selection *C.QItemSelection) *C.QItemSelection {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(selection *QItemSelection) *QItemSelection, selection *QItemSelection) *QItemSelection)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selection))
+
+	virtualReturn := gofunc((&QTransposeProxyModel{h: self}).callVirtualBase_MapSelectionFromSource, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
 func (this *QTransposeProxyModel) callVirtualBase_Submit() bool {
 
 	return (bool)(C.QTransposeProxyModel_virtualbase_Submit(unsafe.Pointer(this.h)))

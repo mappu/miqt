@@ -11,6 +11,7 @@ import "C"
 import (
 	"github.com/mappu/miqt/qt"
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
@@ -765,6 +766,16 @@ func UnsafeNewQNetworkProxyFactory(h unsafe.Pointer) *QNetworkProxyFactory {
 	return &QNetworkProxyFactory{h: (*C.QNetworkProxyFactory)(h)}
 }
 
+// NewQNetworkProxyFactory constructs a new QNetworkProxyFactory object.
+func NewQNetworkProxyFactory() *QNetworkProxyFactory {
+	var outptr_QNetworkProxyFactory *C.QNetworkProxyFactory = nil
+
+	C.QNetworkProxyFactory_new(&outptr_QNetworkProxyFactory)
+	ret := newQNetworkProxyFactory(outptr_QNetworkProxyFactory)
+	ret.isSubclass = true
+	return ret
+}
+
 func (this *QNetworkProxyFactory) QueryProxy(query *QNetworkProxyQuery) []QNetworkProxy {
 	var _ma C.struct_miqt_array = C.QNetworkProxyFactory_QueryProxy(this.h, query.cPointer())
 	_ret := make([]QNetworkProxy, int(_ma.len))
@@ -831,6 +842,31 @@ func QNetworkProxyFactory_SystemProxyForQuery1(query *QNetworkProxyQuery) []QNet
 		_ret[i] = *_lv_goptr
 	}
 	return _ret
+}
+func (this *QNetworkProxyFactory) OnQueryProxy(slot func(query *QNetworkProxyQuery) []QNetworkProxy) {
+	C.QNetworkProxyFactory_override_virtual_QueryProxy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QNetworkProxyFactory_QueryProxy
+func miqt_exec_callback_QNetworkProxyFactory_QueryProxy(self *C.QNetworkProxyFactory, cb C.intptr_t, query *C.QNetworkProxyQuery) C.struct_miqt_array {
+	gofunc, ok := cgo.Handle(cb).Value().(func(query *QNetworkProxyQuery) []QNetworkProxy)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQNetworkProxyQuery(unsafe.Pointer(query))
+
+	virtualReturn := gofunc(slotval1)
+	virtualReturn_CArray := (*[0xffff]*C.QNetworkProxy)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	defer C.free(unsafe.Pointer(virtualReturn_CArray))
+	for i := range virtualReturn {
+		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
+	}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+
+	return virtualReturn_ma
+
 }
 
 // Delete this object from C++ memory.

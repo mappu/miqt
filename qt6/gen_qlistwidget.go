@@ -1856,6 +1856,34 @@ func miqt_exec_callback_QListWidget_SetSelection(self *C.QListWidget, cb C.intpt
 
 }
 
+func (this *QListWidget) callVirtualBase_VisualRegionForSelection(selection *QItemSelection) *QRegion {
+
+	_ret := C.QListWidget_virtualbase_VisualRegionForSelection(unsafe.Pointer(this.h), selection.cPointer())
+	_goptr := newQRegion(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QListWidget) OnVisualRegionForSelection(slot func(super func(selection *QItemSelection) *QRegion, selection *QItemSelection) *QRegion) {
+	C.QListWidget_override_virtual_VisualRegionForSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QListWidget_VisualRegionForSelection
+func miqt_exec_callback_QListWidget_VisualRegionForSelection(self *C.QListWidget, cb C.intptr_t, selection *C.QItemSelection) *C.QRegion {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(selection *QItemSelection) *QRegion, selection *QItemSelection) *QRegion)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selection))
+
+	virtualReturn := gofunc((&QListWidget{h: self}).callVirtualBase_VisualRegionForSelection, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
 func (this *QListWidget) callVirtualBase_SelectedIndexes() []QModelIndex {
 
 	var _ma C.struct_miqt_array = C.QListWidget_virtualbase_SelectedIndexes(unsafe.Pointer(this.h))
@@ -1935,6 +1963,30 @@ func miqt_exec_callback_QListWidget_IsIndexHidden(self *C.QListWidget, cb C.intp
 	virtualReturn := gofunc((&QListWidget{h: self}).callVirtualBase_IsIndexHidden, slotval1)
 
 	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QListWidget) callVirtualBase_SelectionChanged(selected *QItemSelection, deselected *QItemSelection) {
+
+	C.QListWidget_virtualbase_SelectionChanged(unsafe.Pointer(this.h), selected.cPointer(), deselected.cPointer())
+
+}
+func (this *QListWidget) OnSelectionChanged(slot func(super func(selected *QItemSelection, deselected *QItemSelection), selected *QItemSelection, deselected *QItemSelection)) {
+	C.QListWidget_override_virtual_SelectionChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QListWidget_SelectionChanged
+func miqt_exec_callback_QListWidget_SelectionChanged(self *C.QListWidget, cb C.intptr_t, selected *C.QItemSelection, deselected *C.QItemSelection) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(selected *QItemSelection, deselected *QItemSelection), selected *QItemSelection, deselected *QItemSelection))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selected))
+	slotval2 := UnsafeNewQItemSelection(unsafe.Pointer(deselected))
+
+	gofunc((&QListWidget{h: self}).callVirtualBase_SelectionChanged, slotval1, slotval2)
 
 }
 

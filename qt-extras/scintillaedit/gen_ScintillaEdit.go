@@ -3635,6 +3635,16 @@ func UnsafeNewScintilla__Internal__Surface(h unsafe.Pointer) *Scintilla__Interna
 	return &Scintilla__Internal__Surface{h: (*C.Scintilla__Internal__Surface)(h)}
 }
 
+// NewScintilla__Internal__Surface constructs a new Scintilla::Internal::Surface object.
+func NewScintilla__Internal__Surface() *Scintilla__Internal__Surface {
+	var outptr_Scintilla__Internal__Surface *C.Scintilla__Internal__Surface = nil
+
+	C.Scintilla__Internal__Surface_new(&outptr_Scintilla__Internal__Surface)
+	ret := newScintilla__Internal__Surface(outptr_Scintilla__Internal__Surface)
+	ret.isSubclass = true
+	return ret
+}
+
 func (this *Scintilla__Internal__Surface) Init(wid unsafe.Pointer) {
 	C.Scintilla__Internal__Surface_Init(this.h, wid)
 }
@@ -3761,6 +3771,674 @@ func (this *Scintilla__Internal__Surface) FlushCachedState() {
 
 func (this *Scintilla__Internal__Surface) FlushDrawing() {
 	C.Scintilla__Internal__Surface_FlushDrawing(this.h)
+}
+func (this *Scintilla__Internal__Surface) OnInit(slot func(wid unsafe.Pointer)) {
+	C.Scintilla__Internal__Surface_override_virtual_Init(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_Init
+func miqt_exec_callback_Scintilla__Internal__Surface_Init(self *C.Scintilla__Internal__Surface, cb C.intptr_t, wid unsafe.Pointer) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(wid unsafe.Pointer))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (unsafe.Pointer)(wid)
+
+	gofunc(slotval1)
+
+}
+func (this *Scintilla__Internal__Surface) OnInit2(slot func(sid unsafe.Pointer, wid unsafe.Pointer)) {
+	C.Scintilla__Internal__Surface_override_virtual_Init2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_Init2
+func miqt_exec_callback_Scintilla__Internal__Surface_Init2(self *C.Scintilla__Internal__Surface, cb C.intptr_t, sid unsafe.Pointer, wid unsafe.Pointer) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(sid unsafe.Pointer, wid unsafe.Pointer))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (unsafe.Pointer)(sid)
+
+	slotval2 := (unsafe.Pointer)(wid)
+
+	gofunc(slotval1, slotval2)
+
+}
+func (this *Scintilla__Internal__Surface) OnSetMode(slot func(mode Scintilla__Internal__SurfaceMode)) {
+	C.Scintilla__Internal__Surface_override_virtual_SetMode(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_SetMode
+func miqt_exec_callback_Scintilla__Internal__Surface_SetMode(self *C.Scintilla__Internal__Surface, cb C.intptr_t, mode *C.Scintilla__Internal__SurfaceMode) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(mode Scintilla__Internal__SurfaceMode))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	mode_ret := mode
+	mode_goptr := newScintilla__Internal__SurfaceMode(mode_ret)
+	mode_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval1 := *mode_goptr
+
+	gofunc(slotval1)
+
+}
+func (this *Scintilla__Internal__Surface) OnRelease(slot func()) {
+	C.Scintilla__Internal__Surface_override_virtual_Release(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_Release
+func miqt_exec_callback_Scintilla__Internal__Surface_Release(self *C.Scintilla__Internal__Surface, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+
+}
+func (this *Scintilla__Internal__Surface) OnSupportsFeature(slot func(feature Scintilla__Supports) int) {
+	C.Scintilla__Internal__Surface_override_virtual_SupportsFeature(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_SupportsFeature
+func miqt_exec_callback_Scintilla__Internal__Surface_SupportsFeature(self *C.Scintilla__Internal__Surface, cb C.intptr_t, feature C.int) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(feature Scintilla__Supports) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (Scintilla__Supports)(feature)
+
+	virtualReturn := gofunc(slotval1)
+
+	return (C.int)(virtualReturn)
+
+}
+func (this *Scintilla__Internal__Surface) OnInitialised(slot func() bool) {
+	C.Scintilla__Internal__Surface_override_virtual_Initialised(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_Initialised
+func miqt_exec_callback_Scintilla__Internal__Surface_Initialised(self *C.Scintilla__Internal__Surface, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func() bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc()
+
+	return (C.bool)(virtualReturn)
+
+}
+func (this *Scintilla__Internal__Surface) OnLogPixelsY(slot func() int) {
+	C.Scintilla__Internal__Surface_override_virtual_LogPixelsY(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_LogPixelsY
+func miqt_exec_callback_Scintilla__Internal__Surface_LogPixelsY(self *C.Scintilla__Internal__Surface, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func() int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc()
+
+	return (C.int)(virtualReturn)
+
+}
+func (this *Scintilla__Internal__Surface) OnPixelDivisions(slot func() int) {
+	C.Scintilla__Internal__Surface_override_virtual_PixelDivisions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_PixelDivisions
+func miqt_exec_callback_Scintilla__Internal__Surface_PixelDivisions(self *C.Scintilla__Internal__Surface, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func() int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc()
+
+	return (C.int)(virtualReturn)
+
+}
+func (this *Scintilla__Internal__Surface) OnDeviceHeightFont(slot func(points int) int) {
+	C.Scintilla__Internal__Surface_override_virtual_DeviceHeightFont(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_DeviceHeightFont
+func miqt_exec_callback_Scintilla__Internal__Surface_DeviceHeightFont(self *C.Scintilla__Internal__Surface, cb C.intptr_t, points C.int) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(points int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(points)
+
+	virtualReturn := gofunc(slotval1)
+
+	return (C.int)(virtualReturn)
+
+}
+func (this *Scintilla__Internal__Surface) OnLineDraw(slot func(start Scintilla__Internal__Point, end Scintilla__Internal__Point, stroke Scintilla__Internal__Stroke)) {
+	C.Scintilla__Internal__Surface_override_virtual_LineDraw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_LineDraw
+func miqt_exec_callback_Scintilla__Internal__Surface_LineDraw(self *C.Scintilla__Internal__Surface, cb C.intptr_t, start *C.Scintilla__Internal__Point, end *C.Scintilla__Internal__Point, stroke *C.Scintilla__Internal__Stroke) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(start Scintilla__Internal__Point, end Scintilla__Internal__Point, stroke Scintilla__Internal__Stroke))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	start_ret := start
+	start_goptr := newScintilla__Internal__Point(start_ret)
+	start_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval1 := *start_goptr
+
+	end_ret := end
+	end_goptr := newScintilla__Internal__Point(end_ret)
+	end_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval2 := *end_goptr
+
+	stroke_ret := stroke
+	stroke_goptr := newScintilla__Internal__Stroke(stroke_ret)
+	stroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval3 := *stroke_goptr
+
+	gofunc(slotval1, slotval2, slotval3)
+
+}
+func (this *Scintilla__Internal__Surface) OnPolyLine(slot func(pts *Scintilla__Internal__Point, npts uint64, stroke Scintilla__Internal__Stroke)) {
+	C.Scintilla__Internal__Surface_override_virtual_PolyLine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_PolyLine
+func miqt_exec_callback_Scintilla__Internal__Surface_PolyLine(self *C.Scintilla__Internal__Surface, cb C.intptr_t, pts *C.Scintilla__Internal__Point, npts C.size_t, stroke *C.Scintilla__Internal__Stroke) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(pts *Scintilla__Internal__Point, npts uint64, stroke Scintilla__Internal__Stroke))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewScintilla__Internal__Point(unsafe.Pointer(pts))
+	slotval2 := (uint64)(npts)
+
+	stroke_ret := stroke
+	stroke_goptr := newScintilla__Internal__Stroke(stroke_ret)
+	stroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval3 := *stroke_goptr
+
+	gofunc(slotval1, slotval2, slotval3)
+
+}
+func (this *Scintilla__Internal__Surface) OnPolygon(slot func(pts *Scintilla__Internal__Point, npts uint64, fillStroke Scintilla__Internal__FillStroke)) {
+	C.Scintilla__Internal__Surface_override_virtual_Polygon(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_Polygon
+func miqt_exec_callback_Scintilla__Internal__Surface_Polygon(self *C.Scintilla__Internal__Surface, cb C.intptr_t, pts *C.Scintilla__Internal__Point, npts C.size_t, fillStroke *C.Scintilla__Internal__FillStroke) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(pts *Scintilla__Internal__Point, npts uint64, fillStroke Scintilla__Internal__FillStroke))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewScintilla__Internal__Point(unsafe.Pointer(pts))
+	slotval2 := (uint64)(npts)
+
+	fillStroke_ret := fillStroke
+	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke_ret)
+	fillStroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval3 := *fillStroke_goptr
+
+	gofunc(slotval1, slotval2, slotval3)
+
+}
+func (this *Scintilla__Internal__Surface) OnRectangleDraw(slot func(rc Scintilla__Internal__PRectangle, fillStroke Scintilla__Internal__FillStroke)) {
+	C.Scintilla__Internal__Surface_override_virtual_RectangleDraw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_RectangleDraw
+func miqt_exec_callback_Scintilla__Internal__Surface_RectangleDraw(self *C.Scintilla__Internal__Surface, cb C.intptr_t, rc *C.Scintilla__Internal__PRectangle, fillStroke *C.Scintilla__Internal__FillStroke) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(rc Scintilla__Internal__PRectangle, fillStroke Scintilla__Internal__FillStroke))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	rc_ret := rc
+	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval1 := *rc_goptr
+
+	fillStroke_ret := fillStroke
+	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke_ret)
+	fillStroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval2 := *fillStroke_goptr
+
+	gofunc(slotval1, slotval2)
+
+}
+func (this *Scintilla__Internal__Surface) OnRectangleFrame(slot func(rc Scintilla__Internal__PRectangle, stroke Scintilla__Internal__Stroke)) {
+	C.Scintilla__Internal__Surface_override_virtual_RectangleFrame(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_RectangleFrame
+func miqt_exec_callback_Scintilla__Internal__Surface_RectangleFrame(self *C.Scintilla__Internal__Surface, cb C.intptr_t, rc *C.Scintilla__Internal__PRectangle, stroke *C.Scintilla__Internal__Stroke) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(rc Scintilla__Internal__PRectangle, stroke Scintilla__Internal__Stroke))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	rc_ret := rc
+	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval1 := *rc_goptr
+
+	stroke_ret := stroke
+	stroke_goptr := newScintilla__Internal__Stroke(stroke_ret)
+	stroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval2 := *stroke_goptr
+
+	gofunc(slotval1, slotval2)
+
+}
+func (this *Scintilla__Internal__Surface) OnFillRectangle(slot func(rc Scintilla__Internal__PRectangle, fill Scintilla__Internal__Fill)) {
+	C.Scintilla__Internal__Surface_override_virtual_FillRectangle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_FillRectangle
+func miqt_exec_callback_Scintilla__Internal__Surface_FillRectangle(self *C.Scintilla__Internal__Surface, cb C.intptr_t, rc *C.Scintilla__Internal__PRectangle, fill *C.Scintilla__Internal__Fill) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(rc Scintilla__Internal__PRectangle, fill Scintilla__Internal__Fill))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	rc_ret := rc
+	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval1 := *rc_goptr
+
+	fill_ret := fill
+	fill_goptr := newScintilla__Internal__Fill(fill_ret)
+	fill_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval2 := *fill_goptr
+
+	gofunc(slotval1, slotval2)
+
+}
+func (this *Scintilla__Internal__Surface) OnFillRectangleAligned(slot func(rc Scintilla__Internal__PRectangle, fill Scintilla__Internal__Fill)) {
+	C.Scintilla__Internal__Surface_override_virtual_FillRectangleAligned(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_FillRectangleAligned
+func miqt_exec_callback_Scintilla__Internal__Surface_FillRectangleAligned(self *C.Scintilla__Internal__Surface, cb C.intptr_t, rc *C.Scintilla__Internal__PRectangle, fill *C.Scintilla__Internal__Fill) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(rc Scintilla__Internal__PRectangle, fill Scintilla__Internal__Fill))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	rc_ret := rc
+	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval1 := *rc_goptr
+
+	fill_ret := fill
+	fill_goptr := newScintilla__Internal__Fill(fill_ret)
+	fill_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval2 := *fill_goptr
+
+	gofunc(slotval1, slotval2)
+
+}
+func (this *Scintilla__Internal__Surface) OnFillRectangle2(slot func(rc Scintilla__Internal__PRectangle, surfacePattern *Scintilla__Internal__Surface)) {
+	C.Scintilla__Internal__Surface_override_virtual_FillRectangle2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_FillRectangle2
+func miqt_exec_callback_Scintilla__Internal__Surface_FillRectangle2(self *C.Scintilla__Internal__Surface, cb C.intptr_t, rc *C.Scintilla__Internal__PRectangle, surfacePattern *C.Scintilla__Internal__Surface) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(rc Scintilla__Internal__PRectangle, surfacePattern *Scintilla__Internal__Surface))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	rc_ret := rc
+	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval1 := *rc_goptr
+
+	slotval2 := UnsafeNewScintilla__Internal__Surface(unsafe.Pointer(surfacePattern))
+
+	gofunc(slotval1, slotval2)
+
+}
+func (this *Scintilla__Internal__Surface) OnRoundedRectangle(slot func(rc Scintilla__Internal__PRectangle, fillStroke Scintilla__Internal__FillStroke)) {
+	C.Scintilla__Internal__Surface_override_virtual_RoundedRectangle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_RoundedRectangle
+func miqt_exec_callback_Scintilla__Internal__Surface_RoundedRectangle(self *C.Scintilla__Internal__Surface, cb C.intptr_t, rc *C.Scintilla__Internal__PRectangle, fillStroke *C.Scintilla__Internal__FillStroke) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(rc Scintilla__Internal__PRectangle, fillStroke Scintilla__Internal__FillStroke))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	rc_ret := rc
+	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval1 := *rc_goptr
+
+	fillStroke_ret := fillStroke
+	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke_ret)
+	fillStroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval2 := *fillStroke_goptr
+
+	gofunc(slotval1, slotval2)
+
+}
+func (this *Scintilla__Internal__Surface) OnAlphaRectangle(slot func(rc Scintilla__Internal__PRectangle, cornerSize float64, fillStroke Scintilla__Internal__FillStroke)) {
+	C.Scintilla__Internal__Surface_override_virtual_AlphaRectangle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_AlphaRectangle
+func miqt_exec_callback_Scintilla__Internal__Surface_AlphaRectangle(self *C.Scintilla__Internal__Surface, cb C.intptr_t, rc *C.Scintilla__Internal__PRectangle, cornerSize C.double, fillStroke *C.Scintilla__Internal__FillStroke) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(rc Scintilla__Internal__PRectangle, cornerSize float64, fillStroke Scintilla__Internal__FillStroke))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	rc_ret := rc
+	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval1 := *rc_goptr
+
+	slotval2 := (float64)(cornerSize)
+
+	fillStroke_ret := fillStroke
+	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke_ret)
+	fillStroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval3 := *fillStroke_goptr
+
+	gofunc(slotval1, slotval2, slotval3)
+
+}
+func (this *Scintilla__Internal__Surface) OnDrawRGBAImage(slot func(rc Scintilla__Internal__PRectangle, width int, height int, pixelsImage *byte)) {
+	C.Scintilla__Internal__Surface_override_virtual_DrawRGBAImage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_DrawRGBAImage
+func miqt_exec_callback_Scintilla__Internal__Surface_DrawRGBAImage(self *C.Scintilla__Internal__Surface, cb C.intptr_t, rc *C.Scintilla__Internal__PRectangle, width C.int, height C.int, pixelsImage *C.uchar) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(rc Scintilla__Internal__PRectangle, width int, height int, pixelsImage *byte))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	rc_ret := rc
+	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval1 := *rc_goptr
+
+	slotval2 := (int)(width)
+
+	slotval3 := (int)(height)
+
+	slotval4 := (*byte)(unsafe.Pointer(pixelsImage))
+
+	gofunc(slotval1, slotval2, slotval3, slotval4)
+
+}
+func (this *Scintilla__Internal__Surface) OnEllipse(slot func(rc Scintilla__Internal__PRectangle, fillStroke Scintilla__Internal__FillStroke)) {
+	C.Scintilla__Internal__Surface_override_virtual_Ellipse(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_Ellipse
+func miqt_exec_callback_Scintilla__Internal__Surface_Ellipse(self *C.Scintilla__Internal__Surface, cb C.intptr_t, rc *C.Scintilla__Internal__PRectangle, fillStroke *C.Scintilla__Internal__FillStroke) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(rc Scintilla__Internal__PRectangle, fillStroke Scintilla__Internal__FillStroke))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	rc_ret := rc
+	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval1 := *rc_goptr
+
+	fillStroke_ret := fillStroke
+	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke_ret)
+	fillStroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval2 := *fillStroke_goptr
+
+	gofunc(slotval1, slotval2)
+
+}
+func (this *Scintilla__Internal__Surface) OnStadium(slot func(rc Scintilla__Internal__PRectangle, fillStroke Scintilla__Internal__FillStroke, ends Scintilla__Internal__Surface__Ends)) {
+	C.Scintilla__Internal__Surface_override_virtual_Stadium(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_Stadium
+func miqt_exec_callback_Scintilla__Internal__Surface_Stadium(self *C.Scintilla__Internal__Surface, cb C.intptr_t, rc *C.Scintilla__Internal__PRectangle, fillStroke *C.Scintilla__Internal__FillStroke, ends C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(rc Scintilla__Internal__PRectangle, fillStroke Scintilla__Internal__FillStroke, ends Scintilla__Internal__Surface__Ends))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	rc_ret := rc
+	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval1 := *rc_goptr
+
+	fillStroke_ret := fillStroke
+	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke_ret)
+	fillStroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval2 := *fillStroke_goptr
+
+	slotval3 := (Scintilla__Internal__Surface__Ends)(ends)
+
+	gofunc(slotval1, slotval2, slotval3)
+
+}
+func (this *Scintilla__Internal__Surface) OnCopy(slot func(rc Scintilla__Internal__PRectangle, from Scintilla__Internal__Point, surfaceSource *Scintilla__Internal__Surface)) {
+	C.Scintilla__Internal__Surface_override_virtual_Copy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_Copy
+func miqt_exec_callback_Scintilla__Internal__Surface_Copy(self *C.Scintilla__Internal__Surface, cb C.intptr_t, rc *C.Scintilla__Internal__PRectangle, from *C.Scintilla__Internal__Point, surfaceSource *C.Scintilla__Internal__Surface) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(rc Scintilla__Internal__PRectangle, from Scintilla__Internal__Point, surfaceSource *Scintilla__Internal__Surface))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	rc_ret := rc
+	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval1 := *rc_goptr
+
+	from_ret := from
+	from_goptr := newScintilla__Internal__Point(from_ret)
+	from_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval2 := *from_goptr
+
+	slotval3 := UnsafeNewScintilla__Internal__Surface(unsafe.Pointer(surfaceSource))
+
+	gofunc(slotval1, slotval2, slotval3)
+
+}
+func (this *Scintilla__Internal__Surface) OnAscent(slot func(font_ *Scintilla__Internal__Font) float64) {
+	C.Scintilla__Internal__Surface_override_virtual_Ascent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_Ascent
+func miqt_exec_callback_Scintilla__Internal__Surface_Ascent(self *C.Scintilla__Internal__Surface, cb C.intptr_t, font_ *C.Scintilla__Internal__Font) C.double {
+	gofunc, ok := cgo.Handle(cb).Value().(func(font_ *Scintilla__Internal__Font) float64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewScintilla__Internal__Font(unsafe.Pointer(font_))
+
+	virtualReturn := gofunc(slotval1)
+
+	return (C.double)(virtualReturn)
+
+}
+func (this *Scintilla__Internal__Surface) OnDescent(slot func(font_ *Scintilla__Internal__Font) float64) {
+	C.Scintilla__Internal__Surface_override_virtual_Descent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_Descent
+func miqt_exec_callback_Scintilla__Internal__Surface_Descent(self *C.Scintilla__Internal__Surface, cb C.intptr_t, font_ *C.Scintilla__Internal__Font) C.double {
+	gofunc, ok := cgo.Handle(cb).Value().(func(font_ *Scintilla__Internal__Font) float64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewScintilla__Internal__Font(unsafe.Pointer(font_))
+
+	virtualReturn := gofunc(slotval1)
+
+	return (C.double)(virtualReturn)
+
+}
+func (this *Scintilla__Internal__Surface) OnInternalLeading(slot func(font_ *Scintilla__Internal__Font) float64) {
+	C.Scintilla__Internal__Surface_override_virtual_InternalLeading(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_InternalLeading
+func miqt_exec_callback_Scintilla__Internal__Surface_InternalLeading(self *C.Scintilla__Internal__Surface, cb C.intptr_t, font_ *C.Scintilla__Internal__Font) C.double {
+	gofunc, ok := cgo.Handle(cb).Value().(func(font_ *Scintilla__Internal__Font) float64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewScintilla__Internal__Font(unsafe.Pointer(font_))
+
+	virtualReturn := gofunc(slotval1)
+
+	return (C.double)(virtualReturn)
+
+}
+func (this *Scintilla__Internal__Surface) OnHeight(slot func(font_ *Scintilla__Internal__Font) float64) {
+	C.Scintilla__Internal__Surface_override_virtual_Height(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_Height
+func miqt_exec_callback_Scintilla__Internal__Surface_Height(self *C.Scintilla__Internal__Surface, cb C.intptr_t, font_ *C.Scintilla__Internal__Font) C.double {
+	gofunc, ok := cgo.Handle(cb).Value().(func(font_ *Scintilla__Internal__Font) float64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewScintilla__Internal__Font(unsafe.Pointer(font_))
+
+	virtualReturn := gofunc(slotval1)
+
+	return (C.double)(virtualReturn)
+
+}
+func (this *Scintilla__Internal__Surface) OnAverageCharWidth(slot func(font_ *Scintilla__Internal__Font) float64) {
+	C.Scintilla__Internal__Surface_override_virtual_AverageCharWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_AverageCharWidth
+func miqt_exec_callback_Scintilla__Internal__Surface_AverageCharWidth(self *C.Scintilla__Internal__Surface, cb C.intptr_t, font_ *C.Scintilla__Internal__Font) C.double {
+	gofunc, ok := cgo.Handle(cb).Value().(func(font_ *Scintilla__Internal__Font) float64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewScintilla__Internal__Font(unsafe.Pointer(font_))
+
+	virtualReturn := gofunc(slotval1)
+
+	return (C.double)(virtualReturn)
+
+}
+func (this *Scintilla__Internal__Surface) OnSetClip(slot func(rc Scintilla__Internal__PRectangle)) {
+	C.Scintilla__Internal__Surface_override_virtual_SetClip(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_SetClip
+func miqt_exec_callback_Scintilla__Internal__Surface_SetClip(self *C.Scintilla__Internal__Surface, cb C.intptr_t, rc *C.Scintilla__Internal__PRectangle) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(rc Scintilla__Internal__PRectangle))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	rc_ret := rc
+	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval1 := *rc_goptr
+
+	gofunc(slotval1)
+
+}
+func (this *Scintilla__Internal__Surface) OnPopClip(slot func()) {
+	C.Scintilla__Internal__Surface_override_virtual_PopClip(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_PopClip
+func miqt_exec_callback_Scintilla__Internal__Surface_PopClip(self *C.Scintilla__Internal__Surface, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+
+}
+func (this *Scintilla__Internal__Surface) OnFlushCachedState(slot func()) {
+	C.Scintilla__Internal__Surface_override_virtual_FlushCachedState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_FlushCachedState
+func miqt_exec_callback_Scintilla__Internal__Surface_FlushCachedState(self *C.Scintilla__Internal__Surface, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+
+}
+func (this *Scintilla__Internal__Surface) OnFlushDrawing(slot func()) {
+	C.Scintilla__Internal__Surface_override_virtual_FlushDrawing(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__Surface_FlushDrawing
+func miqt_exec_callback_Scintilla__Internal__Surface_FlushDrawing(self *C.Scintilla__Internal__Surface, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+
 }
 
 // Delete this object from C++ memory.
@@ -4109,6 +4787,17 @@ func UnsafeNewScintilla__Internal__ListBox(h unsafe.Pointer, h_Scintilla__Intern
 		Scintilla__Internal__Window: UnsafeNewScintilla__Internal__Window(h_Scintilla__Internal__Window)}
 }
 
+// NewScintilla__Internal__ListBox constructs a new Scintilla::Internal::ListBox object.
+func NewScintilla__Internal__ListBox() *Scintilla__Internal__ListBox {
+	var outptr_Scintilla__Internal__ListBox *C.Scintilla__Internal__ListBox = nil
+	var outptr_Scintilla__Internal__Window *C.Scintilla__Internal__Window = nil
+
+	C.Scintilla__Internal__ListBox_new(&outptr_Scintilla__Internal__ListBox, &outptr_Scintilla__Internal__Window)
+	ret := newScintilla__Internal__ListBox(outptr_Scintilla__Internal__ListBox, outptr_Scintilla__Internal__Window)
+	ret.isSubclass = true
+	return ret
+}
+
 func (this *Scintilla__Internal__ListBox) SetFont(font *Scintilla__Internal__Font) {
 	C.Scintilla__Internal__ListBox_SetFont(this.h, font.cPointer())
 }
@@ -4194,6 +4883,353 @@ func (this *Scintilla__Internal__ListBox) SetList(list string, separator int8, t
 
 func (this *Scintilla__Internal__ListBox) SetOptions(options_ Scintilla__Internal__ListOptions) {
 	C.Scintilla__Internal__ListBox_SetOptions(this.h, options_.cPointer())
+}
+func (this *Scintilla__Internal__ListBox) OnSetFont(slot func(font *Scintilla__Internal__Font)) {
+	C.Scintilla__Internal__ListBox_override_virtual_SetFont(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__ListBox_SetFont
+func miqt_exec_callback_Scintilla__Internal__ListBox_SetFont(self *C.Scintilla__Internal__ListBox, cb C.intptr_t, font *C.Scintilla__Internal__Font) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(font *Scintilla__Internal__Font))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewScintilla__Internal__Font(unsafe.Pointer(font))
+
+	gofunc(slotval1)
+
+}
+func (this *Scintilla__Internal__ListBox) OnCreate(slot func(parent *Scintilla__Internal__Window, ctrlID int, location Scintilla__Internal__Point, lineHeight_ int, unicodeMode_ bool, technology_ Scintilla__Technology)) {
+	C.Scintilla__Internal__ListBox_override_virtual_Create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__ListBox_Create
+func miqt_exec_callback_Scintilla__Internal__ListBox_Create(self *C.Scintilla__Internal__ListBox, cb C.intptr_t, parent *C.Scintilla__Internal__Window, ctrlID C.int, location *C.Scintilla__Internal__Point, lineHeight_ C.int, unicodeMode_ C.bool, technology_ C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(parent *Scintilla__Internal__Window, ctrlID int, location Scintilla__Internal__Point, lineHeight_ int, unicodeMode_ bool, technology_ Scintilla__Technology))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewScintilla__Internal__Window(unsafe.Pointer(parent))
+	slotval2 := (int)(ctrlID)
+
+	location_ret := location
+	location_goptr := newScintilla__Internal__Point(location_ret)
+	location_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval3 := *location_goptr
+
+	slotval4 := (int)(lineHeight_)
+
+	slotval5 := (bool)(unicodeMode_)
+
+	slotval6 := (Scintilla__Technology)(technology_)
+
+	gofunc(slotval1, slotval2, slotval3, slotval4, slotval5, slotval6)
+
+}
+func (this *Scintilla__Internal__ListBox) OnSetAverageCharWidth(slot func(width int)) {
+	C.Scintilla__Internal__ListBox_override_virtual_SetAverageCharWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__ListBox_SetAverageCharWidth
+func miqt_exec_callback_Scintilla__Internal__ListBox_SetAverageCharWidth(self *C.Scintilla__Internal__ListBox, cb C.intptr_t, width C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(width int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(width)
+
+	gofunc(slotval1)
+
+}
+func (this *Scintilla__Internal__ListBox) OnSetVisibleRows(slot func(rows int)) {
+	C.Scintilla__Internal__ListBox_override_virtual_SetVisibleRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__ListBox_SetVisibleRows
+func miqt_exec_callback_Scintilla__Internal__ListBox_SetVisibleRows(self *C.Scintilla__Internal__ListBox, cb C.intptr_t, rows C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(rows int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(rows)
+
+	gofunc(slotval1)
+
+}
+func (this *Scintilla__Internal__ListBox) OnGetVisibleRows(slot func() int) {
+	C.Scintilla__Internal__ListBox_override_virtual_GetVisibleRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__ListBox_GetVisibleRows
+func miqt_exec_callback_Scintilla__Internal__ListBox_GetVisibleRows(self *C.Scintilla__Internal__ListBox, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func() int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc()
+
+	return (C.int)(virtualReturn)
+
+}
+func (this *Scintilla__Internal__ListBox) OnGetDesiredRect(slot func() *Scintilla__Internal__PRectangle) {
+	C.Scintilla__Internal__ListBox_override_virtual_GetDesiredRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__ListBox_GetDesiredRect
+func miqt_exec_callback_Scintilla__Internal__ListBox_GetDesiredRect(self *C.Scintilla__Internal__ListBox, cb C.intptr_t) *C.Scintilla__Internal__PRectangle {
+	gofunc, ok := cgo.Handle(cb).Value().(func() *Scintilla__Internal__PRectangle)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc()
+
+	return virtualReturn.cPointer()
+
+}
+func (this *Scintilla__Internal__ListBox) OnCaretFromEdge(slot func() int) {
+	C.Scintilla__Internal__ListBox_override_virtual_CaretFromEdge(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__ListBox_CaretFromEdge
+func miqt_exec_callback_Scintilla__Internal__ListBox_CaretFromEdge(self *C.Scintilla__Internal__ListBox, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func() int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc()
+
+	return (C.int)(virtualReturn)
+
+}
+func (this *Scintilla__Internal__ListBox) OnClear(slot func()) {
+	C.Scintilla__Internal__ListBox_override_virtual_Clear(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__ListBox_Clear
+func miqt_exec_callback_Scintilla__Internal__ListBox_Clear(self *C.Scintilla__Internal__ListBox, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+
+}
+func (this *Scintilla__Internal__ListBox) OnAppend(slot func(s string, typeVal int)) {
+	C.Scintilla__Internal__ListBox_override_virtual_Append(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__ListBox_Append
+func miqt_exec_callback_Scintilla__Internal__ListBox_Append(self *C.Scintilla__Internal__ListBox, cb C.intptr_t, s *C.char, typeVal C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(s string, typeVal int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	s_ret := s
+	slotval1 := C.GoString(s_ret)
+
+	slotval2 := (int)(typeVal)
+
+	gofunc(slotval1, slotval2)
+
+}
+func (this *Scintilla__Internal__ListBox) OnLength(slot func() int) {
+	C.Scintilla__Internal__ListBox_override_virtual_Length(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__ListBox_Length
+func miqt_exec_callback_Scintilla__Internal__ListBox_Length(self *C.Scintilla__Internal__ListBox, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func() int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc()
+
+	return (C.int)(virtualReturn)
+
+}
+func (this *Scintilla__Internal__ListBox) OnSelect(slot func(n int)) {
+	C.Scintilla__Internal__ListBox_override_virtual_Select(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__ListBox_Select
+func miqt_exec_callback_Scintilla__Internal__ListBox_Select(self *C.Scintilla__Internal__ListBox, cb C.intptr_t, n C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(n int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(n)
+
+	gofunc(slotval1)
+
+}
+func (this *Scintilla__Internal__ListBox) OnGetSelection(slot func() int) {
+	C.Scintilla__Internal__ListBox_override_virtual_GetSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__ListBox_GetSelection
+func miqt_exec_callback_Scintilla__Internal__ListBox_GetSelection(self *C.Scintilla__Internal__ListBox, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func() int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc()
+
+	return (C.int)(virtualReturn)
+
+}
+func (this *Scintilla__Internal__ListBox) OnFind(slot func(prefix string) int) {
+	C.Scintilla__Internal__ListBox_override_virtual_Find(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__ListBox_Find
+func miqt_exec_callback_Scintilla__Internal__ListBox_Find(self *C.Scintilla__Internal__ListBox, cb C.intptr_t, prefix *C.const_char) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(prefix string) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	prefix_ret := prefix
+	slotval1 := C.GoString(prefix_ret)
+
+	virtualReturn := gofunc(slotval1)
+
+	return (C.int)(virtualReturn)
+
+}
+func (this *Scintilla__Internal__ListBox) OnRegisterImage(slot func(typeVal int, xpm_data string)) {
+	C.Scintilla__Internal__ListBox_override_virtual_RegisterImage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__ListBox_RegisterImage
+func miqt_exec_callback_Scintilla__Internal__ListBox_RegisterImage(self *C.Scintilla__Internal__ListBox, cb C.intptr_t, typeVal C.int, xpm_data *C.const_char) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(typeVal int, xpm_data string))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(typeVal)
+
+	xpm_data_ret := xpm_data
+	slotval2 := C.GoString(xpm_data_ret)
+
+	gofunc(slotval1, slotval2)
+
+}
+func (this *Scintilla__Internal__ListBox) OnRegisterRGBAImage(slot func(typeVal int, width int, height int, pixelsImage *byte)) {
+	C.Scintilla__Internal__ListBox_override_virtual_RegisterRGBAImage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__ListBox_RegisterRGBAImage
+func miqt_exec_callback_Scintilla__Internal__ListBox_RegisterRGBAImage(self *C.Scintilla__Internal__ListBox, cb C.intptr_t, typeVal C.int, width C.int, height C.int, pixelsImage *C.uchar) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(typeVal int, width int, height int, pixelsImage *byte))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(typeVal)
+
+	slotval2 := (int)(width)
+
+	slotval3 := (int)(height)
+
+	slotval4 := (*byte)(unsafe.Pointer(pixelsImage))
+
+	gofunc(slotval1, slotval2, slotval3, slotval4)
+
+}
+func (this *Scintilla__Internal__ListBox) OnClearRegisteredImages(slot func()) {
+	C.Scintilla__Internal__ListBox_override_virtual_ClearRegisteredImages(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__ListBox_ClearRegisteredImages
+func miqt_exec_callback_Scintilla__Internal__ListBox_ClearRegisteredImages(self *C.Scintilla__Internal__ListBox, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+
+}
+func (this *Scintilla__Internal__ListBox) OnSetDelegate(slot func(lbDelegate *Scintilla__Internal__IListBoxDelegate)) {
+	C.Scintilla__Internal__ListBox_override_virtual_SetDelegate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__ListBox_SetDelegate
+func miqt_exec_callback_Scintilla__Internal__ListBox_SetDelegate(self *C.Scintilla__Internal__ListBox, cb C.intptr_t, lbDelegate *C.Scintilla__Internal__IListBoxDelegate) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(lbDelegate *Scintilla__Internal__IListBoxDelegate))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewScintilla__Internal__IListBoxDelegate(unsafe.Pointer(lbDelegate))
+
+	gofunc(slotval1)
+
+}
+func (this *Scintilla__Internal__ListBox) OnSetList(slot func(list string, separator int8, typesep int8)) {
+	C.Scintilla__Internal__ListBox_override_virtual_SetList(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__ListBox_SetList
+func miqt_exec_callback_Scintilla__Internal__ListBox_SetList(self *C.Scintilla__Internal__ListBox, cb C.intptr_t, list *C.const_char, separator C.char, typesep C.char) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(list string, separator int8, typesep int8))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	list_ret := list
+	slotval1 := C.GoString(list_ret)
+
+	slotval2 := (int8)(separator)
+
+	slotval3 := (int8)(typesep)
+
+	gofunc(slotval1, slotval2, slotval3)
+
+}
+func (this *Scintilla__Internal__ListBox) OnSetOptions(slot func(options_ Scintilla__Internal__ListOptions)) {
+	C.Scintilla__Internal__ListBox_override_virtual_SetOptions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_Scintilla__Internal__ListBox_SetOptions
+func miqt_exec_callback_Scintilla__Internal__ListBox_SetOptions(self *C.Scintilla__Internal__ListBox, cb C.intptr_t, options_ *C.Scintilla__Internal__ListOptions) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(options_ Scintilla__Internal__ListOptions))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	options__ret := options_
+	options__goptr := newScintilla__Internal__ListOptions(options__ret)
+	options__goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval1 := *options__goptr
+
+	gofunc(slotval1)
+
 }
 
 // Delete this object from C++ memory.

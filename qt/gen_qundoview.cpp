@@ -6,6 +6,7 @@
 #include <QEvent>
 #include <QFrame>
 #include <QIcon>
+#include <QItemSelection>
 #include <QList>
 #include <QListView>
 #include <QMetaObject>
@@ -16,6 +17,7 @@
 #include <QPaintEvent>
 #include <QPoint>
 #include <QRect>
+#include <QRegion>
 #include <QResizeEvent>
 #include <QSize>
 #include <QString>
@@ -705,6 +707,31 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
+	intptr_t handle__VisualRegionForSelection = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QRegion visualRegionForSelection(const QItemSelection& selection) const override {
+		if (handle__VisualRegionForSelection == 0) {
+			return QUndoView::visualRegionForSelection(selection);
+		}
+		
+		const QItemSelection& selection_ret = selection;
+		// Cast returned reference into pointer
+		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selection_ret);
+
+		QRegion* callback_return_value = miqt_exec_callback_QUndoView_VisualRegionForSelection(const_cast<MiqtVirtualQUndoView*>(this), handle__VisualRegionForSelection, sigval1);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QRegion* virtualbase_VisualRegionForSelection(QItemSelection* selection) const {
+
+		return new QRegion(QUndoView::visualRegionForSelection(*selection));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SelectedIndexes = 0;
 
 	// Subclass to allow providing a Go implementation
@@ -786,6 +813,35 @@ public:
 	bool virtualbase_IsIndexHidden(QModelIndex* index) const {
 
 		return QUndoView::isIndexHidden(*index);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SelectionChanged = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void selectionChanged(const QItemSelection& selected, const QItemSelection& deselected) override {
+		if (handle__SelectionChanged == 0) {
+			QUndoView::selectionChanged(selected, deselected);
+			return;
+		}
+		
+		const QItemSelection& selected_ret = selected;
+		// Cast returned reference into pointer
+		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selected_ret);
+		const QItemSelection& deselected_ret = deselected;
+		// Cast returned reference into pointer
+		QItemSelection* sigval2 = const_cast<QItemSelection*>(&deselected_ret);
+
+		miqt_exec_callback_QUndoView_SelectionChanged(this, handle__SelectionChanged, sigval1, sigval2);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SelectionChanged(QItemSelection* selected, QItemSelection* deselected) {
+
+		QUndoView::selectionChanged(*selected, *deselected);
 
 	}
 
@@ -1236,6 +1292,14 @@ void QUndoView_virtualbase_SetSelection(void* self, QRect* rect, int command) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_SetSelection(rect, command);
 }
 
+void QUndoView_override_virtual_VisualRegionForSelection(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__VisualRegionForSelection = slot;
+}
+
+QRegion* QUndoView_virtualbase_VisualRegionForSelection(const void* self, QItemSelection* selection) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_VisualRegionForSelection(selection);
+}
+
 void QUndoView_override_virtual_SelectedIndexes(void* self, intptr_t slot) {
 	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__SelectedIndexes = slot;
 }
@@ -1258,6 +1322,14 @@ void QUndoView_override_virtual_IsIndexHidden(void* self, intptr_t slot) {
 
 bool QUndoView_virtualbase_IsIndexHidden(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_IsIndexHidden(index);
+}
+
+void QUndoView_override_virtual_SelectionChanged(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__SelectionChanged = slot;
+}
+
+void QUndoView_virtualbase_SelectionChanged(void* self, QItemSelection* selected, QItemSelection* deselected) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_SelectionChanged(selected, deselected);
 }
 
 void QUndoView_override_virtual_CurrentChanged(void* self, intptr_t slot) {

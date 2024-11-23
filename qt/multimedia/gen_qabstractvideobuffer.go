@@ -11,6 +11,7 @@ import "C"
 import (
 	"github.com/mappu/miqt/qt"
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
@@ -72,6 +73,16 @@ func UnsafeNewQAbstractVideoBuffer(h unsafe.Pointer) *QAbstractVideoBuffer {
 	return &QAbstractVideoBuffer{h: (*C.QAbstractVideoBuffer)(h)}
 }
 
+// NewQAbstractVideoBuffer constructs a new QAbstractVideoBuffer object.
+func NewQAbstractVideoBuffer(typeVal QAbstractVideoBuffer__HandleType) *QAbstractVideoBuffer {
+	var outptr_QAbstractVideoBuffer *C.QAbstractVideoBuffer = nil
+
+	C.QAbstractVideoBuffer_new((C.int)(typeVal), &outptr_QAbstractVideoBuffer)
+	ret := newQAbstractVideoBuffer(outptr_QAbstractVideoBuffer)
+	ret.isSubclass = true
+	return ret
+}
+
 func (this *QAbstractVideoBuffer) Release() {
 	C.QAbstractVideoBuffer_Release(this.h)
 }
@@ -97,6 +108,104 @@ func (this *QAbstractVideoBuffer) Handle() *qt.QVariant {
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
+}
+
+func (this *QAbstractVideoBuffer) callVirtualBase_Release() {
+
+	C.QAbstractVideoBuffer_virtualbase_Release(unsafe.Pointer(this.h))
+
+}
+func (this *QAbstractVideoBuffer) OnRelease(slot func(super func())) {
+	C.QAbstractVideoBuffer_override_virtual_Release(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractVideoBuffer_Release
+func miqt_exec_callback_QAbstractVideoBuffer_Release(self *C.QAbstractVideoBuffer, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QAbstractVideoBuffer{h: self}).callVirtualBase_Release)
+
+}
+func (this *QAbstractVideoBuffer) OnMapMode(slot func() QAbstractVideoBuffer__MapMode) {
+	C.QAbstractVideoBuffer_override_virtual_MapMode(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractVideoBuffer_MapMode
+func miqt_exec_callback_QAbstractVideoBuffer_MapMode(self *C.QAbstractVideoBuffer, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func() QAbstractVideoBuffer__MapMode)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc()
+
+	return (C.int)(virtualReturn)
+
+}
+func (this *QAbstractVideoBuffer) OnMap(slot func(mode QAbstractVideoBuffer__MapMode, numBytes *int, bytesPerLine *int) *byte) {
+	C.QAbstractVideoBuffer_override_virtual_Map(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractVideoBuffer_Map
+func miqt_exec_callback_QAbstractVideoBuffer_Map(self *C.QAbstractVideoBuffer, cb C.intptr_t, mode C.int, numBytes *C.int, bytesPerLine *C.int) *C.uchar {
+	gofunc, ok := cgo.Handle(cb).Value().(func(mode QAbstractVideoBuffer__MapMode, numBytes *int, bytesPerLine *int) *byte)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QAbstractVideoBuffer__MapMode)(mode)
+
+	slotval2 := (*int)(unsafe.Pointer(numBytes))
+
+	slotval3 := (*int)(unsafe.Pointer(bytesPerLine))
+
+	virtualReturn := gofunc(slotval1, slotval2, slotval3)
+
+	return (*C.uchar)(unsafe.Pointer(virtualReturn))
+
+}
+func (this *QAbstractVideoBuffer) OnUnmap(slot func()) {
+	C.QAbstractVideoBuffer_override_virtual_Unmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractVideoBuffer_Unmap
+func miqt_exec_callback_QAbstractVideoBuffer_Unmap(self *C.QAbstractVideoBuffer, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+
+}
+
+func (this *QAbstractVideoBuffer) callVirtualBase_Handle() *qt.QVariant {
+
+	_ret := C.QAbstractVideoBuffer_virtualbase_Handle(unsafe.Pointer(this.h))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QAbstractVideoBuffer) OnHandle(slot func(super func() *qt.QVariant) *qt.QVariant) {
+	C.QAbstractVideoBuffer_override_virtual_Handle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractVideoBuffer_Handle
+func miqt_exec_callback_QAbstractVideoBuffer_Handle(self *C.QAbstractVideoBuffer, cb C.intptr_t) *C.QVariant {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QVariant) *qt.QVariant)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QAbstractVideoBuffer{h: self}).callVirtualBase_Handle)
+
+	return (*C.QVariant)(virtualReturn.UnsafePointer())
+
 }
 
 // Delete this object from C++ memory.
@@ -152,8 +261,123 @@ func UnsafeNewQAbstractPlanarVideoBuffer(h unsafe.Pointer, h_QAbstractVideoBuffe
 		QAbstractVideoBuffer: UnsafeNewQAbstractVideoBuffer(h_QAbstractVideoBuffer)}
 }
 
+// NewQAbstractPlanarVideoBuffer constructs a new QAbstractPlanarVideoBuffer object.
+func NewQAbstractPlanarVideoBuffer(typeVal QAbstractVideoBuffer__HandleType) *QAbstractPlanarVideoBuffer {
+	var outptr_QAbstractPlanarVideoBuffer *C.QAbstractPlanarVideoBuffer = nil
+	var outptr_QAbstractVideoBuffer *C.QAbstractVideoBuffer = nil
+
+	C.QAbstractPlanarVideoBuffer_new((C.int)(typeVal), &outptr_QAbstractPlanarVideoBuffer, &outptr_QAbstractVideoBuffer)
+	ret := newQAbstractPlanarVideoBuffer(outptr_QAbstractPlanarVideoBuffer, outptr_QAbstractVideoBuffer)
+	ret.isSubclass = true
+	return ret
+}
+
 func (this *QAbstractPlanarVideoBuffer) Map(mode QAbstractVideoBuffer__MapMode, numBytes *int, bytesPerLine *int) *byte {
 	return (*byte)(unsafe.Pointer(C.QAbstractPlanarVideoBuffer_Map(this.h, (C.int)(mode), (*C.int)(unsafe.Pointer(numBytes)), (*C.int)(unsafe.Pointer(bytesPerLine)))))
+}
+
+func (this *QAbstractPlanarVideoBuffer) callVirtualBase_Map(mode QAbstractVideoBuffer__MapMode, numBytes *int, bytesPerLine *int) *byte {
+
+	return (*byte)(unsafe.Pointer(C.QAbstractPlanarVideoBuffer_virtualbase_Map(unsafe.Pointer(this.h), (C.int)(mode), (*C.int)(unsafe.Pointer(numBytes)), (*C.int)(unsafe.Pointer(bytesPerLine)))))
+
+}
+func (this *QAbstractPlanarVideoBuffer) OnMap(slot func(super func(mode QAbstractVideoBuffer__MapMode, numBytes *int, bytesPerLine *int) *byte, mode QAbstractVideoBuffer__MapMode, numBytes *int, bytesPerLine *int) *byte) {
+	C.QAbstractPlanarVideoBuffer_override_virtual_Map(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractPlanarVideoBuffer_Map
+func miqt_exec_callback_QAbstractPlanarVideoBuffer_Map(self *C.QAbstractPlanarVideoBuffer, cb C.intptr_t, mode C.int, numBytes *C.int, bytesPerLine *C.int) *C.uchar {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(mode QAbstractVideoBuffer__MapMode, numBytes *int, bytesPerLine *int) *byte, mode QAbstractVideoBuffer__MapMode, numBytes *int, bytesPerLine *int) *byte)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QAbstractVideoBuffer__MapMode)(mode)
+
+	slotval2 := (*int)(unsafe.Pointer(numBytes))
+
+	slotval3 := (*int)(unsafe.Pointer(bytesPerLine))
+
+	virtualReturn := gofunc((&QAbstractPlanarVideoBuffer{h: self}).callVirtualBase_Map, slotval1, slotval2, slotval3)
+
+	return (*C.uchar)(unsafe.Pointer(virtualReturn))
+
+}
+
+func (this *QAbstractPlanarVideoBuffer) callVirtualBase_Release() {
+
+	C.QAbstractPlanarVideoBuffer_virtualbase_Release(unsafe.Pointer(this.h))
+
+}
+func (this *QAbstractPlanarVideoBuffer) OnRelease(slot func(super func())) {
+	C.QAbstractPlanarVideoBuffer_override_virtual_Release(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractPlanarVideoBuffer_Release
+func miqt_exec_callback_QAbstractPlanarVideoBuffer_Release(self *C.QAbstractPlanarVideoBuffer, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QAbstractPlanarVideoBuffer{h: self}).callVirtualBase_Release)
+
+}
+func (this *QAbstractPlanarVideoBuffer) OnMapMode(slot func() QAbstractVideoBuffer__MapMode) {
+	C.QAbstractPlanarVideoBuffer_override_virtual_MapMode(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractPlanarVideoBuffer_MapMode
+func miqt_exec_callback_QAbstractPlanarVideoBuffer_MapMode(self *C.QAbstractPlanarVideoBuffer, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func() QAbstractVideoBuffer__MapMode)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc()
+
+	return (C.int)(virtualReturn)
+
+}
+func (this *QAbstractPlanarVideoBuffer) OnUnmap(slot func()) {
+	C.QAbstractPlanarVideoBuffer_override_virtual_Unmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractPlanarVideoBuffer_Unmap
+func miqt_exec_callback_QAbstractPlanarVideoBuffer_Unmap(self *C.QAbstractPlanarVideoBuffer, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+
+}
+
+func (this *QAbstractPlanarVideoBuffer) callVirtualBase_Handle() *qt.QVariant {
+
+	_ret := C.QAbstractPlanarVideoBuffer_virtualbase_Handle(unsafe.Pointer(this.h))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QAbstractPlanarVideoBuffer) OnHandle(slot func(super func() *qt.QVariant) *qt.QVariant) {
+	C.QAbstractPlanarVideoBuffer_override_virtual_Handle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractPlanarVideoBuffer_Handle
+func miqt_exec_callback_QAbstractPlanarVideoBuffer_Handle(self *C.QAbstractPlanarVideoBuffer, cb C.intptr_t) *C.QVariant {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QVariant) *qt.QVariant)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QAbstractPlanarVideoBuffer{h: self}).callVirtualBase_Handle)
+
+	return (*C.QVariant)(virtualReturn.UnsafePointer())
+
 }
 
 // Delete this object from C++ memory.

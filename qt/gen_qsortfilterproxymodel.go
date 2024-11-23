@@ -125,6 +125,20 @@ func (this *QSortFilterProxyModel) MapFromSource(sourceIndex *QModelIndex) *QMod
 	return _goptr
 }
 
+func (this *QSortFilterProxyModel) MapSelectionToSource(proxySelection *QItemSelection) *QItemSelection {
+	_ret := C.QSortFilterProxyModel_MapSelectionToSource(this.h, proxySelection.cPointer())
+	_goptr := newQItemSelection(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func (this *QSortFilterProxyModel) MapSelectionFromSource(sourceSelection *QItemSelection) *QItemSelection {
+	_ret := C.QSortFilterProxyModel_MapSelectionFromSource(this.h, sourceSelection.cPointer())
+	_goptr := newQItemSelection(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func (this *QSortFilterProxyModel) FilterRegExp() *QRegExp {
 	_ret := C.QSortFilterProxyModel_FilterRegExp(this.h)
 	_goptr := newQRegExp(_ret)
@@ -662,6 +676,62 @@ func miqt_exec_callback_QSortFilterProxyModel_MapFromSource(self *C.QSortFilterP
 	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(sourceIndex))
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_MapFromSource, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QSortFilterProxyModel) callVirtualBase_MapSelectionToSource(proxySelection *QItemSelection) *QItemSelection {
+
+	_ret := C.QSortFilterProxyModel_virtualbase_MapSelectionToSource(unsafe.Pointer(this.h), proxySelection.cPointer())
+	_goptr := newQItemSelection(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QSortFilterProxyModel) OnMapSelectionToSource(slot func(super func(proxySelection *QItemSelection) *QItemSelection, proxySelection *QItemSelection) *QItemSelection) {
+	C.QSortFilterProxyModel_override_virtual_MapSelectionToSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QSortFilterProxyModel_MapSelectionToSource
+func miqt_exec_callback_QSortFilterProxyModel_MapSelectionToSource(self *C.QSortFilterProxyModel, cb C.intptr_t, proxySelection *C.QItemSelection) *C.QItemSelection {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(proxySelection *QItemSelection) *QItemSelection, proxySelection *QItemSelection) *QItemSelection)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(proxySelection))
+
+	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_MapSelectionToSource, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QSortFilterProxyModel) callVirtualBase_MapSelectionFromSource(sourceSelection *QItemSelection) *QItemSelection {
+
+	_ret := C.QSortFilterProxyModel_virtualbase_MapSelectionFromSource(unsafe.Pointer(this.h), sourceSelection.cPointer())
+	_goptr := newQItemSelection(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QSortFilterProxyModel) OnMapSelectionFromSource(slot func(super func(sourceSelection *QItemSelection) *QItemSelection, sourceSelection *QItemSelection) *QItemSelection) {
+	C.QSortFilterProxyModel_override_virtual_MapSelectionFromSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QSortFilterProxyModel_MapSelectionFromSource
+func miqt_exec_callback_QSortFilterProxyModel_MapSelectionFromSource(self *C.QSortFilterProxyModel, cb C.intptr_t, sourceSelection *C.QItemSelection) *C.QItemSelection {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sourceSelection *QItemSelection) *QItemSelection, sourceSelection *QItemSelection) *QItemSelection)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(sourceSelection))
+
+	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_MapSelectionFromSource, slotval1)
 
 	return virtualReturn.cPointer()
 

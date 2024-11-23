@@ -16,20 +16,30 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAbstractVideoSurface;
+class QChildEvent;
+class QEvent;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QSize;
+class QTimerEvent;
 class QVideoFrame;
 class QVideoSurfaceFormat;
 #else
 typedef struct QAbstractVideoSurface QAbstractVideoSurface;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QSize QSize;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QVideoFrame QVideoFrame;
 typedef struct QVideoSurfaceFormat QVideoSurfaceFormat;
 #endif
 
+void QAbstractVideoSurface_new(QAbstractVideoSurface** outptr_QAbstractVideoSurface, QObject** outptr_QObject);
+void QAbstractVideoSurface_new2(QObject* parent, QAbstractVideoSurface** outptr_QAbstractVideoSurface, QObject** outptr_QObject);
 QMetaObject* QAbstractVideoSurface_MetaObject(const QAbstractVideoSurface* self);
 void* QAbstractVideoSurface_Metacast(QAbstractVideoSurface* self, const char* param1);
 struct miqt_string QAbstractVideoSurface_Tr(const char* s);
@@ -56,6 +66,32 @@ struct miqt_string QAbstractVideoSurface_Tr2(const char* s, const char* c);
 struct miqt_string QAbstractVideoSurface_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAbstractVideoSurface_TrUtf82(const char* s, const char* c);
 struct miqt_string QAbstractVideoSurface_TrUtf83(const char* s, const char* c, int n);
+void QAbstractVideoSurface_override_virtual_SupportedPixelFormats(void* self, intptr_t slot);
+struct miqt_array /* of int */  QAbstractVideoSurface_virtualbase_SupportedPixelFormats(const void* self, int typeVal);
+void QAbstractVideoSurface_override_virtual_IsFormatSupported(void* self, intptr_t slot);
+bool QAbstractVideoSurface_virtualbase_IsFormatSupported(const void* self, QVideoSurfaceFormat* format);
+void QAbstractVideoSurface_override_virtual_NearestFormat(void* self, intptr_t slot);
+QVideoSurfaceFormat* QAbstractVideoSurface_virtualbase_NearestFormat(const void* self, QVideoSurfaceFormat* format);
+void QAbstractVideoSurface_override_virtual_Start(void* self, intptr_t slot);
+bool QAbstractVideoSurface_virtualbase_Start(void* self, QVideoSurfaceFormat* format);
+void QAbstractVideoSurface_override_virtual_Stop(void* self, intptr_t slot);
+void QAbstractVideoSurface_virtualbase_Stop(void* self);
+void QAbstractVideoSurface_override_virtual_Present(void* self, intptr_t slot);
+bool QAbstractVideoSurface_virtualbase_Present(void* self, QVideoFrame* frame);
+void QAbstractVideoSurface_override_virtual_Event(void* self, intptr_t slot);
+bool QAbstractVideoSurface_virtualbase_Event(void* self, QEvent* event);
+void QAbstractVideoSurface_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QAbstractVideoSurface_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+void QAbstractVideoSurface_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QAbstractVideoSurface_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+void QAbstractVideoSurface_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QAbstractVideoSurface_virtualbase_ChildEvent(void* self, QChildEvent* event);
+void QAbstractVideoSurface_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QAbstractVideoSurface_virtualbase_CustomEvent(void* self, QEvent* event);
+void QAbstractVideoSurface_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QAbstractVideoSurface_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+void QAbstractVideoSurface_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QAbstractVideoSurface_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QAbstractVideoSurface_Delete(QAbstractVideoSurface* self, bool isSubclass);
 
 #ifdef __cplusplus

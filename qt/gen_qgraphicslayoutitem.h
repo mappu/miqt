@@ -28,6 +28,9 @@ typedef struct QSizeF QSizeF;
 typedef struct QSizePolicy QSizePolicy;
 #endif
 
+void QGraphicsLayoutItem_new(QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
+void QGraphicsLayoutItem_new2(QGraphicsLayoutItem* parent, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
+void QGraphicsLayoutItem_new3(QGraphicsLayoutItem* parent, bool isLayout, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
 void QGraphicsLayoutItem_SetSizePolicy(QGraphicsLayoutItem* self, QSizePolicy* policy);
 void QGraphicsLayoutItem_SetSizePolicy2(QGraphicsLayoutItem* self, int hPolicy, int vPolicy);
 QSizePolicy* QGraphicsLayoutItem_SizePolicy(const QGraphicsLayoutItem* self);
@@ -66,6 +69,14 @@ bool QGraphicsLayoutItem_OwnedByLayout(const QGraphicsLayoutItem* self);
 QSizeF* QGraphicsLayoutItem_SizeHint(const QGraphicsLayoutItem* self, int which, QSizeF* constraint);
 void QGraphicsLayoutItem_SetSizePolicy3(QGraphicsLayoutItem* self, int hPolicy, int vPolicy, int controlType);
 QSizeF* QGraphicsLayoutItem_EffectiveSizeHint2(const QGraphicsLayoutItem* self, int which, QSizeF* constraint);
+void QGraphicsLayoutItem_override_virtual_SetGeometry(void* self, intptr_t slot);
+void QGraphicsLayoutItem_virtualbase_SetGeometry(void* self, QRectF* rect);
+void QGraphicsLayoutItem_override_virtual_GetContentsMargins(void* self, intptr_t slot);
+void QGraphicsLayoutItem_virtualbase_GetContentsMargins(const void* self, double* left, double* top, double* right, double* bottom);
+void QGraphicsLayoutItem_override_virtual_UpdateGeometry(void* self, intptr_t slot);
+void QGraphicsLayoutItem_virtualbase_UpdateGeometry(void* self);
+void QGraphicsLayoutItem_override_virtual_SizeHint(void* self, intptr_t slot);
+QSizeF* QGraphicsLayoutItem_virtualbase_SizeHint(const void* self, int which, QSizeF* constraint);
 void QGraphicsLayoutItem_Delete(QGraphicsLayoutItem* self, bool isSubclass);
 
 #ifdef __cplusplus

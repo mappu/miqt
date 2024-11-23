@@ -3,6 +3,35 @@
 #include "gen_qrunnable.h"
 #include "_cgo_export.h"
 
+class MiqtVirtualQRunnable : public virtual QRunnable {
+public:
+
+	MiqtVirtualQRunnable(): QRunnable() {};
+
+	virtual ~MiqtVirtualQRunnable() = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Run = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void run() override {
+		if (handle__Run == 0) {
+			return; // Pure virtual, there is no base we can call
+		}
+		
+
+		miqt_exec_callback_QRunnable_Run(this, handle__Run);
+
+		
+	}
+
+};
+
+void QRunnable_new(QRunnable** outptr_QRunnable) {
+	MiqtVirtualQRunnable* ret = new MiqtVirtualQRunnable();
+	*outptr_QRunnable = ret;
+}
+
 void QRunnable_Run(QRunnable* self) {
 	self->run();
 }
@@ -15,9 +44,13 @@ void QRunnable_SetAutoDelete(QRunnable* self, bool autoDelete) {
 	self->setAutoDelete(autoDelete);
 }
 
+void QRunnable_override_virtual_Run(void* self, intptr_t slot) {
+	dynamic_cast<MiqtVirtualQRunnable*>( (QRunnable*)(self) )->handle__Run = slot;
+}
+
 void QRunnable_Delete(QRunnable* self, bool isSubclass) {
 	if (isSubclass) {
-		delete dynamic_cast<QRunnable*>( self );
+		delete dynamic_cast<MiqtVirtualQRunnable*>( self );
 	} else {
 		delete self;
 	}
