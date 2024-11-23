@@ -225,6 +225,12 @@ func AllowVirtualForClass(className string) bool {
 		return false // undefined reference to `vtable for MiqtVirtualQAccessibleObject'
 	}
 
+	// Pure virtual method registerEventNotifier takes a QWinEventNotifier* on Windows
+	// which is platform-specific
+	if className == "QAbstractEventDispatcher" {
+		return false
+	}
+
 	return true
 }
 
