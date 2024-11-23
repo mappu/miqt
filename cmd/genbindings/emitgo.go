@@ -965,8 +965,9 @@ import "C"
 
 			// Add a package-private function to call the C++ base class method
 			// QWidget_virtualbase_PaintEvent
+			// This is only possible if the function is not pure-virtual
 
-			{
+			if !m.IsPureVirtual {
 				preamble, forwarding := gfs.emitParametersGo2CABIForwarding(m)
 
 				forwarding = "unsafe.Pointer(this.h)" + strings.TrimPrefix(forwarding, `this.h`) // TODO integrate properly
@@ -989,7 +990,10 @@ import "C"
 			{
 
 				var cgoNamedParams []string
-				var paramNames []string = []string{"(&" + goClassName + "{h: self}).callVirtualBase_" + m.SafeMethodName()}
+				var paramNames []string
+				if !m.IsPureVirtual {
+					paramNames = append(paramNames, "(&"+goClassName+"{h: self}).callVirtualBase_"+m.SafeMethodName())
+				}
 				conversion := ""
 
 				if len(m.Parameters) > 0 {
@@ -1009,10 +1013,14 @@ import "C"
 
 				superCbType := `func(` + gfs.emitParametersGo(m.Parameters) + `) ` + m.ReturnType.renderReturnTypeGo(&gfs)
 
-				goCbType := `func(super ` + superCbType
-				if len(m.Parameters) > 0 {
-					goCbType += `, ` + gfs.emitParametersGo(m.Parameters)
+				goCbType := `func(`
+				if !m.IsPureVirtual {
+					goCbType += `super ` + superCbType
+					if len(m.Parameters) > 0 {
+						goCbType += `, `
+					}
 				}
+				goCbType += gfs.emitParametersGo(m.Parameters)
 				goCbType += `) ` + m.ReturnType.renderReturnTypeGo(&gfs)
 
 				ret.WriteString(`func (this *` + goClassName + `) On` + m.SafeMethodName() + `(slot ` + goCbType + `) {
