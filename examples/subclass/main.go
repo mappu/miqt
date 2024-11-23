@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/mappu/miqt/qt"
@@ -46,6 +47,12 @@ func main() {
 
 		currentColor = (currentColor + 1) % len(useColors)
 		w.Update() // repaints in next event loop tick
+	})
+
+	w.OnKeyPressEvent(func(super func(ev *qt.QKeyEvent), ev *qt.QKeyEvent) {
+		super(ev)
+
+		w.SetTitle(fmt.Sprintf("Keypress %d", ev.Key()))
 	})
 
 	w.Show()
