@@ -22,7 +22,6 @@ typedef QAbstractEventDispatcher::TimerInfo QAbstractEventDispatcher__TimerInfo;
 class QAbstractEventDispatcher__TimerInfo;
 #endif
 class QAbstractNativeEventFilter;
-class QByteArray;
 class QMetaObject;
 class QObject;
 class QSocketNotifier;
@@ -31,7 +30,6 @@ class QThread;
 typedef struct QAbstractEventDispatcher QAbstractEventDispatcher;
 typedef struct QAbstractEventDispatcher__TimerInfo QAbstractEventDispatcher__TimerInfo;
 typedef struct QAbstractNativeEventFilter QAbstractNativeEventFilter;
-typedef struct QByteArray QByteArray;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QSocketNotifier QSocketNotifier;

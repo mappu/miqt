@@ -15,12 +15,10 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QByteArray;
 class QItemEditorCreatorBase;
 class QItemEditorFactory;
 class QWidget;
 #else
-typedef struct QByteArray QByteArray;
 typedef struct QItemEditorCreatorBase QItemEditorCreatorBase;
 typedef struct QItemEditorFactory QItemEditorFactory;
 typedef struct QWidget QWidget;

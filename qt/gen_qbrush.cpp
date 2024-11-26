@@ -8,6 +8,7 @@
 #include <QLinearGradient>
 #include <QList>
 #include <QMatrix>
+#include <QPair>
 #include <QPixmap>
 #include <QPointF>
 #include <QRadialGradient>

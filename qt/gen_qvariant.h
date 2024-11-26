@@ -21,7 +21,6 @@ typedef QAssociativeIterable::const_iterator QAssociativeIterable__const_iterato
 class QAssociativeIterable__const_iterator;
 #endif
 class QBitArray;
-class QByteArray;
 class QChar;
 class QDataStream;
 class QDate;
@@ -62,7 +61,6 @@ class QVariantComparisonHelper;
 #else
 typedef struct QAssociativeIterable__const_iterator QAssociativeIterable__const_iterator;
 typedef struct QBitArray QBitArray;
-typedef struct QByteArray QByteArray;
 typedef struct QChar QChar;
 typedef struct QDataStream QDataStream;
 typedef struct QDate QDate;

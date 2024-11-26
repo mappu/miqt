@@ -16,7 +16,6 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAbstractScrollArea;
-class QByteArray;
 class QColor;
 class QContextMenuEvent;
 class QDragEnterEvent;
@@ -48,7 +47,6 @@ class QWidget;
 class QsciScintillaBase;
 #else
 typedef struct QAbstractScrollArea QAbstractScrollArea;
-typedef struct QByteArray QByteArray;
 typedef struct QColor QColor;
 typedef struct QContextMenuEvent QContextMenuEvent;
 typedef struct QDragEnterEvent QDragEnterEvent;

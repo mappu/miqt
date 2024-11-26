@@ -17,7 +17,6 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractNetworkCache;
 class QAuthenticator;
-class QByteArray;
 class QChildEvent;
 class QEvent;
 class QHstsPolicy;
@@ -39,7 +38,6 @@ class QTimerEvent;
 #else
 typedef struct QAbstractNetworkCache QAbstractNetworkCache;
 typedef struct QAuthenticator QAuthenticator;
-typedef struct QByteArray QByteArray;
 typedef struct QChildEvent QChildEvent;
 typedef struct QEvent QEvent;
 typedef struct QHstsPolicy QHstsPolicy;

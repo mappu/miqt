@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QByteArray;
 class QChar;
 class QTextCodec;
 #if defined(WORKAROUND_INNER_CLASS_DEFINITION_QTextCodec__ConverterState)
@@ -26,7 +25,6 @@ class QTextCodec__ConverterState;
 class QTextDecoder;
 class QTextEncoder;
 #else
-typedef struct QByteArray QByteArray;
 typedef struct QChar QChar;
 typedef struct QTextCodec QTextCodec;
 typedef struct QTextCodec__ConverterState QTextCodec__ConverterState;

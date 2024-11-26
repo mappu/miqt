@@ -15,11 +15,9 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QByteArray;
 class QHostAddress;
 class QNetworkDatagram;
 #else
-typedef struct QByteArray QByteArray;
 typedef struct QHostAddress QHostAddress;
 typedef struct QNetworkDatagram QNetworkDatagram;
 #endif

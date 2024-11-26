@@ -17,7 +17,6 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractItemDelegate;
 class QAbstractItemModel;
-class QByteArray;
 class QChildEvent;
 class QDataWidgetMapper;
 class QEvent;
@@ -30,7 +29,6 @@ class QWidget;
 #else
 typedef struct QAbstractItemDelegate QAbstractItemDelegate;
 typedef struct QAbstractItemModel QAbstractItemModel;
-typedef struct QByteArray QByteArray;
 typedef struct QChildEvent QChildEvent;
 typedef struct QDataWidgetMapper QDataWidgetMapper;
 typedef struct QEvent QEvent;

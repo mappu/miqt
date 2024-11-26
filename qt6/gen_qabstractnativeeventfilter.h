@@ -16,10 +16,8 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAbstractNativeEventFilter;
-class QByteArray;
 #else
 typedef struct QAbstractNativeEventFilter QAbstractNativeEventFilter;
-typedef struct QByteArray QByteArray;
 #endif
 
 void QAbstractNativeEventFilter_new(QAbstractNativeEventFilter** outptr_QAbstractNativeEventFilter);

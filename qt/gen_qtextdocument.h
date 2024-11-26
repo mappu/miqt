@@ -17,7 +17,6 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractTextDocumentLayout;
 class QAbstractUndoItem;
-class QByteArray;
 class QChar;
 class QChildEvent;
 class QEvent;
@@ -44,7 +43,6 @@ class QVariant;
 #else
 typedef struct QAbstractTextDocumentLayout QAbstractTextDocumentLayout;
 typedef struct QAbstractUndoItem QAbstractUndoItem;
-typedef struct QByteArray QByteArray;
 typedef struct QChar QChar;
 typedef struct QChildEvent QChildEvent;
 typedef struct QEvent QEvent;

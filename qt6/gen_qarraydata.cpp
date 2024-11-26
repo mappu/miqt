@@ -1,4 +1,5 @@
 #include <QArrayData>
+#include <QPair>
 #include <qarraydata.h>
 #include "gen_qarraydata.h"
 #include "_cgo_export.h"

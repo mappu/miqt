@@ -2,6 +2,7 @@
 #include <QMediaService>
 #include <QMetaObject>
 #include <QObject>
+#include <QPair>
 #include <QRadioData>
 #include <QRadioTuner>
 #include <QString>

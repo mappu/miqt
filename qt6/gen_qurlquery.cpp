@@ -1,5 +1,6 @@
 #include <QChar>
 #include <QList>
+#include <QPair>
 #include <QString>
 #include <QByteArray>
 #include <cstring>

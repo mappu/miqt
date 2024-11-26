@@ -1,4 +1,5 @@
 #include <QAbstractNetworkCache>
+#include <QByteArray>
 #include <QDateTime>
 #include <QIODevice>
 #include <QList>
@@ -6,6 +7,7 @@
 #include <QMetaObject>
 #include <QNetworkCacheMetaData>
 #include <QObject>
+#include <QPair>
 #include <QString>
 #include <QByteArray>
 #include <cstring>

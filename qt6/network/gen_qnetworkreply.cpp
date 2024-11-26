@@ -7,6 +7,7 @@
 #include <QNetworkReply>
 #include <QNetworkRequest>
 #include <QObject>
+#include <QPair>
 #include <QSslConfiguration>
 #include <QSslError>
 #include <QSslPreSharedKeyAuthenticator>

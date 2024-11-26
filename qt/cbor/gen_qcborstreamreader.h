@@ -15,12 +15,10 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QByteArray;
 class QCborError;
 class QCborStreamReader;
 class QIODevice;
 #else
-typedef struct QByteArray QByteArray;
 typedef struct QCborError QCborError;
 typedef struct QCborStreamReader QCborStreamReader;
 typedef struct QIODevice QIODevice;

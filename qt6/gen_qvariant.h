@@ -16,7 +16,6 @@ extern "C" {
 
 #ifdef __cplusplus
 class QBitArray;
-class QByteArray;
 class QChar;
 class QDataStream;
 class QDate;
@@ -47,7 +46,6 @@ class QVariant;
 class QVariantConstPointer;
 #else
 typedef struct QBitArray QBitArray;
-typedef struct QByteArray QByteArray;
 typedef struct QChar QChar;
 typedef struct QDataStream QDataStream;
 typedef struct QDate QDate;

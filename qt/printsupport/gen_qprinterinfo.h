@@ -18,10 +18,12 @@ extern "C" {
 class QPageSize;
 class QPrinter;
 class QPrinterInfo;
+class QSizeF;
 #else
 typedef struct QPageSize QPageSize;
 typedef struct QPrinter QPrinter;
 typedef struct QPrinterInfo QPrinterInfo;
+typedef struct QSizeF QSizeF;
 #endif
 
 void QPrinterInfo_new(QPrinterInfo** outptr_QPrinterInfo);

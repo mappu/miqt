@@ -18,7 +18,6 @@ extern "C" {
 class QAbstractItemModel;
 class QAbstractListModel;
 class QAbstractTableModel;
-class QByteArray;
 class QChildEvent;
 class QEvent;
 class QMetaMethod;
@@ -36,7 +35,6 @@ class QVariant;
 typedef struct QAbstractItemModel QAbstractItemModel;
 typedef struct QAbstractListModel QAbstractListModel;
 typedef struct QAbstractTableModel QAbstractTableModel;
-typedef struct QByteArray QByteArray;
 typedef struct QChildEvent QChildEvent;
 typedef struct QEvent QEvent;
 typedef struct QMetaMethod QMetaMethod;

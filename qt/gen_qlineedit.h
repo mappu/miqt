@@ -17,7 +17,6 @@ extern "C" {
 #ifdef __cplusplus
 class QAction;
 class QActionEvent;
-class QByteArray;
 class QCloseEvent;
 class QCompleter;
 class QContextMenuEvent;
@@ -54,7 +53,6 @@ class QWidget;
 #else
 typedef struct QAction QAction;
 typedef struct QActionEvent QActionEvent;
-typedef struct QByteArray QByteArray;
 typedef struct QCloseEvent QCloseEvent;
 typedef struct QCompleter QCompleter;
 typedef struct QContextMenuEvent QContextMenuEvent;

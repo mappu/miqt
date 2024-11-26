@@ -18,7 +18,6 @@ extern "C" {
 class QAbstractButton;
 class QActionEvent;
 class QButtonGroup;
-class QByteArray;
 class QCloseEvent;
 class QContextMenuEvent;
 class QDragEnterEvent;
@@ -54,7 +53,6 @@ class QWidget;
 typedef struct QAbstractButton QAbstractButton;
 typedef struct QActionEvent QActionEvent;
 typedef struct QButtonGroup QButtonGroup;
-typedef struct QByteArray QByteArray;
 typedef struct QCloseEvent QCloseEvent;
 typedef struct QContextMenuEvent QContextMenuEvent;
 typedef struct QDragEnterEvent QDragEnterEvent;

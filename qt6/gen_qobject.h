@@ -17,7 +17,6 @@ extern "C" {
 #ifdef __cplusplus
 class QAnyStringView;
 class QBindingStorage;
-class QByteArray;
 class QChildEvent;
 class QEvent;
 class QMetaMethod;
@@ -36,7 +35,6 @@ class QVariant;
 #else
 typedef struct QAnyStringView QAnyStringView;
 typedef struct QBindingStorage QBindingStorage;
-typedef struct QByteArray QByteArray;
 typedef struct QChildEvent QChildEvent;
 typedef struct QEvent QEvent;
 typedef struct QMetaMethod QMetaMethod;

@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QByteArray;
 class QChildEvent;
 class QEvent;
 class QHttpMultiPart;
@@ -27,7 +26,6 @@ class QObject;
 class QTimerEvent;
 class QVariant;
 #else
-typedef struct QByteArray QByteArray;
 typedef struct QChildEvent QChildEvent;
 typedef struct QEvent QEvent;
 typedef struct QHttpMultiPart QHttpMultiPart;

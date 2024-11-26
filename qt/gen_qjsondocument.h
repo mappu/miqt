@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QByteArray;
 class QJsonArray;
 class QJsonDocument;
 class QJsonObject;
@@ -23,7 +22,6 @@ class QJsonParseError;
 class QJsonValue;
 class QVariant;
 #else
-typedef struct QByteArray QByteArray;
 typedef struct QJsonArray QJsonArray;
 typedef struct QJsonDocument QJsonDocument;
 typedef struct QJsonObject QJsonObject;

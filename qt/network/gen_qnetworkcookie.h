@@ -15,12 +15,10 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QByteArray;
 class QDateTime;
 class QNetworkCookie;
 class QUrl;
 #else
-typedef struct QByteArray QByteArray;
 typedef struct QDateTime QDateTime;
 typedef struct QNetworkCookie QNetworkCookie;
 typedef struct QUrl QUrl;

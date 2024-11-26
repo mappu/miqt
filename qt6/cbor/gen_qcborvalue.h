@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QByteArray;
 class QCborArray;
 class QCborMap;
 class QCborParserError;
@@ -31,7 +30,6 @@ class QUrl;
 class QUuid;
 class QVariant;
 #else
-typedef struct QByteArray QByteArray;
 typedef struct QCborArray QCborArray;
 typedef struct QCborMap QCborMap;
 typedef struct QCborParserError QCborParserError;

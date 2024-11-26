@@ -16,12 +16,10 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAnyStringView;
-class QByteArray;
 class QByteArrayView;
 class QUuid;
 #else
 typedef struct QAnyStringView QAnyStringView;
-typedef struct QByteArray QByteArray;
 typedef struct QByteArrayView QByteArrayView;
 typedef struct QUuid QUuid;
 #endif

@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QByteArray;
 class QNetworkConfiguration;
 class QNetworkProxy;
 class QNetworkProxyFactory;
@@ -23,7 +22,6 @@ class QNetworkProxyQuery;
 class QUrl;
 class QVariant;
 #else
-typedef struct QByteArray QByteArray;
 typedef struct QNetworkConfiguration QNetworkConfiguration;
 typedef struct QNetworkProxy QNetworkProxy;
 typedef struct QNetworkProxyFactory QNetworkProxyFactory;

@@ -299,7 +299,8 @@ func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, for
 			p.ParameterType == "qulonglong" ||
 			p.GetQtCppType().ParameterType == "qintptr" ||
 			p.GetQtCppType().ParameterType == "qsizetype" || // Qt 6 qversionnumber.h: invalid ‘static_cast’ from type ‘ptrdiff_t*’ {aka ‘long int*’} to type ‘qsizetype*’ {aka ‘long long int*’}
-			p.ParameterType == "qint8" {
+			p.ParameterType == "qint8" ||
+			(p.IsFlagType() && p.ByRef) {
 			// QDataStream::operator>>() by reference (qint64)
 			// QLockFile::getLockInfo() by pointer
 			// QTextStream::operator>>() by reference (qlonglong + qulonglong)
@@ -556,24 +557,28 @@ func getReferencedTypes(src *CppParsedHeader) []string {
 
 	foundTypes := map[string]struct{}{}
 
-	maybeAddType := func(p CppParameter) {
+	var maybeAddType func(p CppParameter)
+	maybeAddType = func(p CppParameter) {
 		if p.QtClassType() {
 			foundTypes[p.ParameterType] = struct{}{}
 		}
 		if t, ok := p.QListOf(); ok {
 			foundTypes["QList"] = struct{}{} // FIXME or QVector?
-			if t.QtClassType() {
-				foundTypes[t.ParameterType] = struct{}{}
-			}
+			maybeAddType(t)
 		}
 		if kType, vType, ok := p.QMapOf(); ok {
 			foundTypes["QMap"] = struct{}{} // FIXME or QHash?
-			if kType.QtClassType() {
-				foundTypes[kType.ParameterType] = struct{}{}
-			}
-			if vType.QtClassType() {
-				foundTypes[vType.ParameterType] = struct{}{}
-			}
+			maybeAddType(kType)
+			maybeAddType(vType)
+		}
+		if kType, vType, ok := p.QPairOf(); ok {
+			foundTypes["QPair"] = struct{}{}
+			maybeAddType(kType)
+			maybeAddType(vType)
+		}
+		if t, ok := p.QSetOf(); ok {
+			foundTypes["QSet"] = struct{}{}
+			maybeAddType(t)
 		}
 	}
 
@@ -639,7 +644,7 @@ func cabiClassName(className string) string {
 
 func cabiPreventStructDeclaration(className string) bool {
 	switch className {
-	case "QList", "QString", "QSet", "QMap", "QHash":
+	case "QList", "QString", "QSet", "QMap", "QHash", "QPair", "QVector", "QByteArray":
 		return true // These types are reprojected
 	default:
 		return false

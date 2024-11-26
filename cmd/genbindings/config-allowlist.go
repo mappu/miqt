@@ -34,6 +34,14 @@ func InsertTypedefs(qt6 bool) {
 	KnownTypedefs["QFileDevice::Permissions"] = lookupResultTypedef{pp, CppTypedef{"QFile::Permissions", parseSingleTypeString("QFlags<QFileDevice::Permission>")}}
 	KnownTypedefs["QIODevice::OpenMode"] = lookupResultTypedef{pp, CppTypedef{"QIODevice::OpenMode", parseSingleTypeString("QIODeviceBase::OpenMode")}}
 
+	// Qt 5 WebKit - use of an empty enum (should be possible to support?)
+	KnownEnums["QWebPluginFactory::Extension"] = lookupResultEnum{"qt/webkit", CppEnum{
+		EnumName: "QWebPluginFactory::Extension",
+		UnderlyingType: CppParameter{
+			ParameterType: "int",
+		},
+	}}
+
 	if qt6 {
 		// Qt 6 QVariant helper types - needs investigation
 		KnownTypedefs["QVariantHash"] = lookupResultTypedef{"qt6", CppTypedef{"QVariantHash", parseSingleTypeString("QHash<QString,QVariant>")}}
@@ -228,6 +236,14 @@ func AllowVirtualForClass(className string) bool {
 	// Pure virtual method registerEventNotifier takes a QWinEventNotifier* on Windows
 	// which is platform-specific
 	if className == "QAbstractEventDispatcher" {
+		return false
+	}
+
+	// Qt 5 QWebkit: undefined reference to typeinfo
+	if className == "QWebNotificationPresenter" {
+		return false
+	}
+	if className == "QWebHapticFeedbackPlayer" {
 		return false
 	}
 
@@ -492,6 +508,8 @@ func AllowType(p CppParameter, isReturnType bool) error {
 		"QPostEventList",                  // Qt QCoreApplication: private headers required
 		"QMetaCallEvent",                  // ..
 		"QPostEvent",                      // ..
+		"QWebFrameAdapter",                // Qt 5 Webkit: Used by e.g. qwebframe.h but never defined anywhere
+		"QWebPageAdapter",                 // ...
 		"____last____":
 		return ErrTooComplex
 	}

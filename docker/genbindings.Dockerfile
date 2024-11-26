@@ -5,8 +5,12 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
         golang-go \
         qtbase5-dev \
         qtmultimedia5-dev \
+        qtscript5-dev \
+        libqt5svg5-dev \
+        libqt5webkit5-dev \
         qt6-base-dev \
         qt6-multimedia-dev \
+        qt6-svg-dev \
         libqscintilla2-qt5-dev \
         libqscintilla2-qt6-dev \
         clang \
