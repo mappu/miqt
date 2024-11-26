@@ -7,6 +7,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
         qtmultimedia5-dev \
         qtscript5-dev \
         libqt5svg5-dev \
+        libqt5webkit5-dev \
         qt6-base-dev \
         qt6-multimedia-dev \
         qt6-svg-dev \

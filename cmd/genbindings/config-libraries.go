@@ -114,6 +114,21 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
+	// Qt 5 QWebkit: depends on Qt5PrintSupport but only at runtime, not at
+	// codegen time
+	generate(
+		"qt/webkit",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/QtWebKit",
+			"/usr/include/x86_64-linux-gnu/qt5/QtWebKitWidgets",
+		},
+		AllowAllHeaders,
+		clangBin,
+		pkgConfigCflags("Qt5WebKitWidgets"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
 	// Depends on QtCore/Gui/Widgets, QPrintSupport
 	generate(
 		"qt-restricted-extras/qscintilla",
