@@ -33,6 +33,7 @@ examples/libraries/extras-scintillaedit/extras-scintillaedit
 examples/libraries/qt-multimedia/qt-multimedia
 examples/libraries/qt-network/qt-network
 examples/libraries/qt-printsupport/qt-printsupport
+examples/libraries/qt-script/qt-script
 examples/libraries/qt-svg/qt-svg
 examples/libraries/qt6-multimedia/qt6-multimedia
 examples/libraries/restricted-extras-qscintilla/restricted-extras-qscintilla
