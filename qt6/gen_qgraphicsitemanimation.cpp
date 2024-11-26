@@ -6,6 +6,7 @@
 #include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
+#include <QPair>
 #include <QPointF>
 #include <QString>
 #include <QByteArray>

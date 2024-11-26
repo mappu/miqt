@@ -4,6 +4,7 @@
 #include <QAccessibleEvent>
 #include <QAccessibleInterface>
 #include <QObject>
+#include <QPair>
 #include <QTextCursor>
 #include <qaccessible_base.h>
 #include "gen_qaccessible_base.h"

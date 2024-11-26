@@ -15,11 +15,9 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QByteArray;
 class QDir;
 class QStorageInfo;
 #else
-typedef struct QByteArray QByteArray;
 typedef struct QDir QDir;
 typedef struct QStorageInfo QStorageInfo;
 #endif

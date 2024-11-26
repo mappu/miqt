@@ -5,6 +5,7 @@
 #include <QAccessibleWidget>
 #include <QColor>
 #include <QList>
+#include <QPair>
 #include <QRect>
 #include <QString>
 #include <QByteArray>

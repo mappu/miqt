@@ -17,7 +17,6 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractItemModel;
 class QAbstractProxyModel;
-class QByteArray;
 class QItemSelection;
 class QMetaObject;
 class QMimeData;
@@ -30,7 +29,6 @@ class QVariant;
 #else
 typedef struct QAbstractItemModel QAbstractItemModel;
 typedef struct QAbstractProxyModel QAbstractProxyModel;
-typedef struct QByteArray QByteArray;
 typedef struct QItemSelection QItemSelection;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMimeData QMimeData;

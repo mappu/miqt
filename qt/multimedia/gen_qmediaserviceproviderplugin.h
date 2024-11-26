@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QByteArray;
 class QMediaService;
 class QMediaServiceCameraInfoInterface;
 class QMediaServiceDefaultDeviceInterface;
@@ -28,7 +27,6 @@ class QMediaServiceSupportedFormatsInterface;
 class QMetaObject;
 class QObject;
 #else
-typedef struct QByteArray QByteArray;
 typedef struct QMediaService QMediaService;
 typedef struct QMediaServiceCameraInfoInterface QMediaServiceCameraInfoInterface;
 typedef struct QMediaServiceDefaultDeviceInterface QMediaServiceDefaultDeviceInterface;

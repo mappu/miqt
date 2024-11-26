@@ -7,6 +7,7 @@
 #include <QImage>
 #include <QLinearGradient>
 #include <QList>
+#include <QPair>
 #include <QPixmap>
 #include <QPointF>
 #include <QRadialGradient>

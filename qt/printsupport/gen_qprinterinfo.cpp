@@ -1,7 +1,9 @@
 #include <QList>
 #include <QPageSize>
+#include <QPair>
 #include <QPrinter>
 #include <QPrinterInfo>
+#include <QSizeF>
 #include <QString>
 #include <QByteArray>
 #include <cstring>

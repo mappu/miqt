@@ -16,7 +16,6 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAccessibleInterface;
-class QByteArray;
 class QChildEvent;
 class QCloseEvent;
 class QCursor;
@@ -50,7 +49,6 @@ class QWheelEvent;
 class QWindow;
 #else
 typedef struct QAccessibleInterface QAccessibleInterface;
-typedef struct QByteArray QByteArray;
 typedef struct QChildEvent QChildEvent;
 typedef struct QCloseEvent QCloseEvent;
 typedef struct QCursor QCursor;

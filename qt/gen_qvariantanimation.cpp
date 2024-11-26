@@ -4,6 +4,7 @@
 #include <QList>
 #include <QMetaObject>
 #include <QObject>
+#include <QPair>
 #include <QString>
 #include <QByteArray>
 #include <cstring>

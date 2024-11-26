@@ -15,10 +15,8 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QByteArray;
 class QSslPreSharedKeyAuthenticator;
 #else
-typedef struct QByteArray QByteArray;
 typedef struct QSslPreSharedKeyAuthenticator QSslPreSharedKeyAuthenticator;
 #endif
 

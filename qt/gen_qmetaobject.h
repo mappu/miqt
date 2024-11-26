@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QByteArray;
 class QGenericArgument;
 class QGenericReturnArgument;
 class QMetaClassInfo;
@@ -26,7 +25,6 @@ class QMetaProperty;
 class QObject;
 class QVariant;
 #else
-typedef struct QByteArray QByteArray;
 typedef struct QGenericArgument QGenericArgument;
 typedef struct QGenericReturnArgument QGenericReturnArgument;
 typedef struct QMetaClassInfo QMetaClassInfo;

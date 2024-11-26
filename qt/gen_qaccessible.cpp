@@ -21,6 +21,7 @@
 #include <QColor>
 #include <QList>
 #include <QObject>
+#include <QPair>
 #include <QPoint>
 #include <QRect>
 #include <QSize>

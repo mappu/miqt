@@ -18,7 +18,6 @@ extern "C" {
 class QAbstractItemModel;
 class QAbstractItemView;
 class QAbstractScrollArea;
-class QByteArray;
 class QDragEnterEvent;
 class QDragLeaveEvent;
 class QDragMoveEvent;
@@ -51,7 +50,6 @@ class QWidget;
 typedef struct QAbstractItemModel QAbstractItemModel;
 typedef struct QAbstractItemView QAbstractItemView;
 typedef struct QAbstractScrollArea QAbstractScrollArea;
-typedef struct QByteArray QByteArray;
 typedef struct QDragEnterEvent QDragEnterEvent;
 typedef struct QDragLeaveEvent QDragLeaveEvent;
 typedef struct QDragMoveEvent QDragMoveEvent;

@@ -15,12 +15,10 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QByteArray;
 class QColorSpace;
 class QColorTransform;
 class QPointF;
 #else
-typedef struct QByteArray QByteArray;
 typedef struct QColorSpace QColorSpace;
 typedef struct QColorTransform QColorTransform;
 typedef struct QPointF QPointF;

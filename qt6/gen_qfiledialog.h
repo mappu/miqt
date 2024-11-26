@@ -18,7 +18,6 @@ extern "C" {
 class QAbstractFileIconProvider;
 class QAbstractItemDelegate;
 class QAbstractProxyModel;
-class QByteArray;
 class QCloseEvent;
 class QContextMenuEvent;
 class QDialog;
@@ -38,7 +37,6 @@ class QWidget;
 typedef struct QAbstractFileIconProvider QAbstractFileIconProvider;
 typedef struct QAbstractItemDelegate QAbstractItemDelegate;
 typedef struct QAbstractProxyModel QAbstractProxyModel;
-typedef struct QByteArray QByteArray;
 typedef struct QCloseEvent QCloseEvent;
 typedef struct QContextMenuEvent QContextMenuEvent;
 typedef struct QDialog QDialog;

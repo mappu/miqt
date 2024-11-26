@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QByteArray;
 class QChildEvent;
 class QDtls;
 class QDtlsClientVerifier;
@@ -36,7 +35,6 @@ class QSslPreSharedKeyAuthenticator;
 class QTimerEvent;
 class QUdpSocket;
 #else
-typedef struct QByteArray QByteArray;
 typedef struct QChildEvent QChildEvent;
 typedef struct QDtls QDtls;
 typedef struct QDtlsClientVerifier QDtlsClientVerifier;

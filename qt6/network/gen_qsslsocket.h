@@ -16,7 +16,6 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAbstractSocket;
-class QByteArray;
 class QIODevice;
 class QIODeviceBase;
 class QMetaObject;
@@ -33,7 +32,6 @@ class QTcpSocket;
 class QVariant;
 #else
 typedef struct QAbstractSocket QAbstractSocket;
-typedef struct QByteArray QByteArray;
 typedef struct QIODevice QIODevice;
 typedef struct QIODeviceBase QIODeviceBase;
 typedef struct QMetaObject QMetaObject;

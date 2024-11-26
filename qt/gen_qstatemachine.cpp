@@ -4,6 +4,7 @@
 #include <QList>
 #include <QMetaObject>
 #include <QObject>
+#include <QSet>
 #include <QState>
 #include <QStateMachine>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QStateMachine__SignalEvent

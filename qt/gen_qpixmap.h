@@ -16,7 +16,6 @@ extern "C" {
 
 #ifdef __cplusplus
 class QBitmap;
-class QByteArray;
 class QColor;
 class QIODevice;
 class QImage;
@@ -34,7 +33,6 @@ class QSize;
 class QTransform;
 #else
 typedef struct QBitmap QBitmap;
-typedef struct QByteArray QByteArray;
 typedef struct QColor QColor;
 typedef struct QIODevice QIODevice;
 typedef struct QImage QImage;

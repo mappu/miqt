@@ -15,12 +15,10 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QByteArray;
 class QCameraDevice;
 class QCameraFormat;
 class QSize;
 #else
-typedef struct QByteArray QByteArray;
 typedef struct QCameraDevice QCameraDevice;
 typedef struct QCameraFormat QCameraFormat;
 typedef struct QSize QSize;

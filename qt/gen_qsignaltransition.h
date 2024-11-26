@@ -16,7 +16,6 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAbstractTransition;
-class QByteArray;
 class QEvent;
 class QMetaObject;
 class QObject;
@@ -24,7 +23,6 @@ class QSignalTransition;
 class QState;
 #else
 typedef struct QAbstractTransition QAbstractTransition;
-typedef struct QByteArray QByteArray;
 typedef struct QEvent QEvent;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;

@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QByteArray;
 class QIODevice;
 class QXmlStreamAttribute;
 class QXmlStreamEntityDeclaration;
@@ -25,7 +24,6 @@ class QXmlStreamNotationDeclaration;
 class QXmlStreamReader;
 class QXmlStreamWriter;
 #else
-typedef struct QByteArray QByteArray;
 typedef struct QIODevice QIODevice;
 typedef struct QXmlStreamAttribute QXmlStreamAttribute;
 typedef struct QXmlStreamEntityDeclaration QXmlStreamEntityDeclaration;

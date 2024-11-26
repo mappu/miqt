@@ -1,6 +1,7 @@
 #include <QMediaControl>
 #include <QMetaObject>
 #include <QObject>
+#include <QPair>
 #include <QRadioTunerControl>
 #include <QString>
 #include <QByteArray>

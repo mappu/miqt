@@ -1,4 +1,5 @@
 #include <QColorSpace>
+#include <QPair>
 #include <QSurfaceFormat>
 #include <qsurfaceformat.h>
 #include "gen_qsurfaceformat.h"

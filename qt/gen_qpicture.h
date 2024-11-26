@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QByteArray;
 class QIODevice;
 class QPaintDevice;
 class QPaintEngine;
@@ -25,7 +24,6 @@ class QPictureIO;
 class QPoint;
 class QRect;
 #else
-typedef struct QByteArray QByteArray;
 typedef struct QIODevice QIODevice;
 typedef struct QPaintDevice QPaintDevice;
 typedef struct QPaintEngine QPaintEngine;

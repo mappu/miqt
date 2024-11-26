@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QByteArray;
 class QChildEvent;
 class QDnsDomainNameRecord;
 class QDnsHostAddressRecord;
@@ -30,7 +29,6 @@ class QMetaObject;
 class QObject;
 class QTimerEvent;
 #else
-typedef struct QByteArray QByteArray;
 typedef struct QChildEvent QChildEvent;
 typedef struct QDnsDomainNameRecord QDnsDomainNameRecord;
 typedef struct QDnsHostAddressRecord QDnsHostAddressRecord;

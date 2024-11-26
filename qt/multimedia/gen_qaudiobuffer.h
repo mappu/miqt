@@ -17,11 +17,9 @@ extern "C" {
 #ifdef __cplusplus
 class QAudioBuffer;
 class QAudioFormat;
-class QByteArray;
 #else
 typedef struct QAudioBuffer QAudioBuffer;
 typedef struct QAudioFormat QAudioFormat;
-typedef struct QByteArray QByteArray;
 #endif
 
 void QAudioBuffer_new(QAudioBuffer** outptr_QAudioBuffer);

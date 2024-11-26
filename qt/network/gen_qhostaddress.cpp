@@ -1,5 +1,6 @@
 #include <QHostAddress>
 #include <QIPv6Address>
+#include <QPair>
 #include <QString>
 #include <QByteArray>
 #include <cstring>

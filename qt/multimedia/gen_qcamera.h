@@ -16,7 +16,6 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAbstractVideoSurface;
-class QByteArray;
 class QCamera;
 #if defined(WORKAROUND_INNER_CLASS_DEFINITION_QCamera__FrameRateRange)
 typedef QCamera::FrameRateRange QCamera__FrameRateRange;
@@ -37,7 +36,6 @@ class QSize;
 class QVideoWidget;
 #else
 typedef struct QAbstractVideoSurface QAbstractVideoSurface;
-typedef struct QByteArray QByteArray;
 typedef struct QCamera QCamera;
 typedef struct QCamera__FrameRateRange QCamera__FrameRateRange;
 typedef struct QCameraExposure QCameraExposure;

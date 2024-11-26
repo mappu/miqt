@@ -18,6 +18,7 @@
 #include <QObject>
 #include <QPaintDevice>
 #include <QPaintEvent>
+#include <QPair>
 #include <QRect>
 #include <QResizeEvent>
 #include <QSize>

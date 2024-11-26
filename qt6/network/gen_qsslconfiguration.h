@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QByteArray;
 class QSslCertificate;
 class QSslCipher;
 class QSslConfiguration;
@@ -24,7 +23,6 @@ class QSslEllipticCurve;
 class QSslKey;
 class QVariant;
 #else
-typedef struct QByteArray QByteArray;
 typedef struct QSslCertificate QSslCertificate;
 typedef struct QSslCipher QSslCipher;
 typedef struct QSslConfiguration QSslConfiguration;

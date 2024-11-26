@@ -16,7 +16,6 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAbstractAnimation;
-class QByteArray;
 class QEvent;
 class QMetaObject;
 class QObject;
@@ -25,7 +24,6 @@ class QVariant;
 class QVariantAnimation;
 #else
 typedef struct QAbstractAnimation QAbstractAnimation;
-typedef struct QByteArray QByteArray;
 typedef struct QEvent QEvent;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
