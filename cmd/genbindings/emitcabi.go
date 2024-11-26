@@ -557,24 +557,28 @@ func getReferencedTypes(src *CppParsedHeader) []string {
 
 	foundTypes := map[string]struct{}{}
 
-	maybeAddType := func(p CppParameter) {
+	var maybeAddType func(p CppParameter)
+	maybeAddType = func(p CppParameter) {
 		if p.QtClassType() {
 			foundTypes[p.ParameterType] = struct{}{}
 		}
 		if t, ok := p.QListOf(); ok {
 			foundTypes["QList"] = struct{}{} // FIXME or QVector?
-			if t.QtClassType() {
-				foundTypes[t.ParameterType] = struct{}{}
-			}
+			maybeAddType(t)
 		}
 		if kType, vType, ok := p.QMapOf(); ok {
 			foundTypes["QMap"] = struct{}{} // FIXME or QHash?
-			if kType.QtClassType() {
-				foundTypes[kType.ParameterType] = struct{}{}
-			}
-			if vType.QtClassType() {
-				foundTypes[vType.ParameterType] = struct{}{}
-			}
+			maybeAddType(kType)
+			maybeAddType(vType)
+		}
+		if kType, vType, ok := p.QPairOf(); ok {
+			foundTypes["QPair"] = struct{}{}
+			maybeAddType(kType)
+			maybeAddType(vType)
+		}
+		if t, ok := p.QSetOf(); ok {
+			foundTypes["QSet"] = struct{}{}
+			maybeAddType(t)
 		}
 	}
 
@@ -640,7 +644,7 @@ func cabiClassName(className string) string {
 
 func cabiPreventStructDeclaration(className string) bool {
 	switch className {
-	case "QList", "QString", "QSet", "QMap", "QHash":
+	case "QList", "QString", "QSet", "QMap", "QHash", "QPair", "QVector", "QByteArray":
 		return true // These types are reprojected
 	default:
 		return false
