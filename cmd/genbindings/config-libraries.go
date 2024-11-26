@@ -63,6 +63,18 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 	)
 
 	generate(
+		"qt/svg",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/QtSvg",
+		},
+		AllowAllHeaders,
+		clangBin,
+		pkgConfigCflags("Qt5Svg"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	generate(
 		"qt/network",
 		[]string{
 			"/usr/include/x86_64-linux-gnu/qt5/QtNetwork",
@@ -169,6 +181,20 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		AllowAllHeaders,
 		clangBin,
 		"--std=c++17 "+pkgConfigCflags("Qt6PrintSupport"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 6 SVG
+	generate(
+		"qt6/svg",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtSvg",
+			"/usr/include/x86_64-linux-gnu/qt6/QtSvgWidgets",
+		},
+		AllowAllHeaders,
+		clangBin,
+		"--std=c++17 "+pkgConfigCflags("Qt6SvgWidgets"),
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
