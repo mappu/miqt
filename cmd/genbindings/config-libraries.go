@@ -102,6 +102,18 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
+	generate(
+		"qt/script",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/QtScript",
+		},
+		AllowAllHeaders,
+		clangBin,
+		pkgConfigCflags("Qt5Script"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
 	// Depends on QtCore/Gui/Widgets, QPrintSupport
 	generate(
 		"qt-restricted-extras/qscintilla",
