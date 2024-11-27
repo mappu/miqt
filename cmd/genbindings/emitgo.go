@@ -688,6 +688,10 @@ import "C"
 					preventShortNames[e.EnumName] = struct{}{}
 					continue nextEnum
 				}
+				if _, ok := KnownEnums[shortEnumName+"::"+ee.EntryName]; ok {
+					preventShortNames[e.EnumName] = struct{}{}
+					continue nextEnum
+				}
 
 			}
 		}
