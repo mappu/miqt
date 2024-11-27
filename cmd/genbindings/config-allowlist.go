@@ -385,6 +385,12 @@ func AllowType(p CppParameter, isReturnType bool) error {
 	if strings.HasPrefix(p.ParameterType, "EncodedData<") {
 		return ErrTooComplex // e.g. Qt 6 qstringconverter.h
 	}
+	if strings.HasPrefix(p.ParameterType, "QQmlListProperty<") {
+		return ErrTooComplex // e.g. Qt 5 QWebChannel qmlwebchannel.h . Supporting this will be required for QML in future
+	}
+	if strings.HasPrefix(p.ParameterType, "QWebEngineCallback<") {
+		return ErrTooComplex // Function pointer types in QtWebEngine
+	}
 
 	if strings.HasPrefix(p.ParameterType, "std::") {
 		// std::initializer           e.g. qcborarray.h
@@ -510,6 +516,7 @@ func AllowType(p CppParameter, isReturnType bool) error {
 		"QPostEvent",                      // ..
 		"QWebFrameAdapter",                // Qt 5 Webkit: Used by e.g. qwebframe.h but never defined anywhere
 		"QWebPageAdapter",                 // ...
+		"QQmlWebChannelAttached",          // Qt 5 qqmlwebchannel.h. Need to add QML support for this to work
 		"____last____":
 		return ErrTooComplex
 	}

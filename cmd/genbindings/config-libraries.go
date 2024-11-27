@@ -129,6 +129,41 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
+	// Qt 5 QWebChannel
+	generate(
+		"qt/webchannel",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/QtWebChannel",
+		},
+		AllowAllHeaders,
+		clangBin,
+		pkgConfigCflags("Qt5WebChannel"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 5 QWebEngine
+	generate(
+		"qt/webengine",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/QtWebEngine",
+			"/usr/include/x86_64-linux-gnu/qt5/QtWebEngineCore",
+			"/usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets",
+		},
+
+		func(fullpath string) bool {
+			baseName := filepath.Base(fullpath)
+			if baseName == "qquickwebengineprofile.h" || baseName == "qquickwebenginescript.h" {
+				return false
+			}
+			return true
+		},
+		clangBin,
+		pkgConfigCflags("Qt5WebEngineWidgets"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
 	// Depends on QtCore/Gui/Widgets, QPrintSupport
 	generate(
 		"qt-restricted-extras/qscintilla",
@@ -269,6 +304,40 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
+	// Qt 6 QWebChannel
+	generate(
+		"qt6/webchannel",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtWebChannel",
+		},
+		AllowAllHeaders,
+		clangBin,
+		"--std=c++17 "+pkgConfigCflags("Qt6WebChannel"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 6 QWebEngine
+	generate(
+		"qt6/webengine",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtWebEngineCore",
+			"/usr/include/x86_64-linux-gnu/qt6/QtWebEngineWidgets",
+		},
+		func(fullpath string) bool {
+			baseName := filepath.Base(fullpath)
+			if baseName == "qtwebenginewidgets-config.h" {
+				return false
+			}
+			return true
+		},
+		clangBin,
+		"--std=c++17 "+pkgConfigCflags("Qt6WebEngineWidgets"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 6 QScintilla
 	// Depends on QtCore/Gui/Widgets, QPrintSupport
 	generate(
 		"qt-restricted-extras/qscintilla6",
