@@ -37,10 +37,10 @@ const (
 type QNetworkInformation__Feature int
 
 const (
-	QNetworkInformation__Reachability    QNetworkInformation__Feature = 1
-	QNetworkInformation__CaptivePortal   QNetworkInformation__Feature = 2
-	QNetworkInformation__TransportMedium QNetworkInformation__Feature = 4
-	QNetworkInformation__Metered         QNetworkInformation__Feature = 8
+	QNetworkInformation__Feature__Reachability    QNetworkInformation__Feature = 1
+	QNetworkInformation__Feature__CaptivePortal   QNetworkInformation__Feature = 2
+	QNetworkInformation__Feature__TransportMedium QNetworkInformation__Feature = 4
+	QNetworkInformation__Feature__Metered         QNetworkInformation__Feature = 8
 )
 
 type QNetworkInformation struct {
