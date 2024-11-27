@@ -1,4 +1,4 @@
-package qt6
+package network
 
 /*
 #cgo pkg-config: Qt6Network
