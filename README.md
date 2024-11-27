@@ -123,9 +123,9 @@ Fork this repository and add your library to the `genbindings/config-libraries` 
 
 ### Linux (native)
 
-*Tested with Debian 12 / Qt 5.15 / Qt 6.4 / GCC 12*
+*Tested with Debian 12 / Qt 5.15 + 6.4 / GCC 12*
 
-*Tested with Fedora 40 / Qt 6.7 / GCC 14*
+*Tested with Fedora 40 + 41 / Qt 6.7 + 6.8 / GCC 14*
 
 For dynamic linking, with the system Qt (Qt 5):
 
