@@ -1,5 +1,32 @@
 # CHANGELOG
 
+## 2024-11-27 v0.7.0
+
+- **BREAKING:** Reorder `QVariant` constructors for new `QMap<>` support (#13)
+- **BREAKING:** Rename `qt/qprintsupport` to `qt/printsupport` (#57, #90 by @jamalsa)
+- **BREAKING:** Move uncommonly used Qt CBOR classes to new `qt/cbor` subpackage (#8, #82 by @rcalixte)
+- Add subclassing support (#42, #69, #78)
+- Add Qt 6.8 compatibility (#84, #91)
+- Add Qt 5/6 Network bindings (#57)
+- Add Qt 5/6 Multimedia and MultimediaWidgets bindings (#50, #57, #71, #75)
+- Add Qt 5/6 Svg bindings (#95)
+- Add Qt 5/6 WebEngine bindings (#96)
+- Add Qt 5 Webkit bindings (#95)
+- Add Qt 5 Script bindings (#95)
+- Add Qt 6 Spatial Audio bindings (#57)
+- Add Qt 6 QScintilla bindings (#57)
+- Add `QMap<>` and `QHash<>` bindings (#13)
+- Add `QPair<>` bindings (#81)
+- Add automatic goroutine thread affinity with `runtime.LockOSThread` (#72, #83)
+- Optimize C ABI allocations for `miqt_array` / `QList<>` (#56)
+- Fix lint warnings (#77 vy @rcalixte)
+- Fix an issue with virtual parent pointers (#80, #78)
+- Fix an issue with typedefs in `QMap<>` (#81)
+- Examples: Add `trivialwizard6` and `mdoutliner6` (#66 by @rcalixte, #67 by @rcalixte)
+- Examples: Add model/view examples (#88, #93)
+- Docs: Update docs for libicu on Windows (#56)
+- Docs: Add Linux ARM64 support to README (#64 by @rcalixte)
+
 ## 2024-10-31 v0.6.0
 
 - **BREAKING:** Represent `QByteArray` as Go `[]byte`
