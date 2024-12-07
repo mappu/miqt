@@ -51,7 +51,7 @@ Yes. You must also meet your Qt license obligations: either use Qt dynamically-l
 
 ### Q3. Why does it take so long to compile?
 
-The first time MIQT is used, your `go build` would take about 10 minutes. But after that, any `go build` is very fast.
+The first time MIQT is used, your `go build` would take [about 10 minutes](https://github.com/mappu/miqt/discussions/65). But after that, any `go build` is very fast.
 
 If you are compiling your app within a Dockerfile, you could cache the build step by running `go install github.com/mappu/miqt/qt`.
 
