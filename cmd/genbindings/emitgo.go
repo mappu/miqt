@@ -1028,6 +1028,9 @@ import "C"
 				goCbType += `) ` + m.ReturnType.renderReturnTypeGo(&gfs)
 
 				ret.WriteString(`func (this *` + goClassName + `) On` + m.SafeMethodName() + `(slot ` + goCbType + `) {
+					if ! this.isSubclass {
+						panic("miqt: can only override virtual methods for directly constructed types")
+					}
 					C.` + goClassName + `_override_virtual_` + m.SafeMethodName() + `(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)) )
 				}
 				
