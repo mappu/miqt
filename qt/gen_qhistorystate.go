@@ -210,6 +210,9 @@ func (this *QHistoryState) callVirtualBase_OnEntry(event *QEvent) {
 
 }
 func (this *QHistoryState) OnOnEntry(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QHistoryState_override_virtual_OnEntry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -233,6 +236,9 @@ func (this *QHistoryState) callVirtualBase_OnExit(event *QEvent) {
 
 }
 func (this *QHistoryState) OnOnExit(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QHistoryState_override_virtual_OnExit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -256,6 +262,9 @@ func (this *QHistoryState) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QHistoryState) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QHistoryState_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

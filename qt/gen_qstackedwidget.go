@@ -239,6 +239,9 @@ func (this *QStackedWidget) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QStackedWidget) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStackedWidget_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -267,6 +270,9 @@ func (this *QStackedWidget) callVirtualBase_SizeHint() *QSize {
 
 }
 func (this *QStackedWidget) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStackedWidget_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -289,6 +295,9 @@ func (this *QStackedWidget) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
 
 }
 func (this *QStackedWidget) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStackedWidget_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -312,6 +321,9 @@ func (this *QStackedWidget) callVirtualBase_ChangeEvent(param1 *QEvent) {
 
 }
 func (this *QStackedWidget) OnChangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStackedWidget_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

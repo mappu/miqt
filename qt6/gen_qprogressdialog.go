@@ -334,6 +334,9 @@ func (this *QProgressDialog) callVirtualBase_SizeHint() *QSize {
 
 }
 func (this *QProgressDialog) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QProgressDialog_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -356,6 +359,9 @@ func (this *QProgressDialog) callVirtualBase_ResizeEvent(event *QResizeEvent) {
 
 }
 func (this *QProgressDialog) OnResizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QProgressDialog_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -379,6 +385,9 @@ func (this *QProgressDialog) callVirtualBase_CloseEvent(event *QCloseEvent) {
 
 }
 func (this *QProgressDialog) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QProgressDialog_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -402,6 +411,9 @@ func (this *QProgressDialog) callVirtualBase_ChangeEvent(event *QEvent) {
 
 }
 func (this *QProgressDialog) OnChangeEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QProgressDialog_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -425,6 +437,9 @@ func (this *QProgressDialog) callVirtualBase_ShowEvent(event *QShowEvent) {
 
 }
 func (this *QProgressDialog) OnShowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QProgressDialog_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -448,6 +463,9 @@ func (this *QProgressDialog) callVirtualBase_SetVisible(visible bool) {
 
 }
 func (this *QProgressDialog) OnSetVisible(slot func(super func(visible bool), visible bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QProgressDialog_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -474,6 +492,9 @@ func (this *QProgressDialog) callVirtualBase_MinimumSizeHint() *QSize {
 
 }
 func (this *QProgressDialog) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QProgressDialog_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -496,6 +517,9 @@ func (this *QProgressDialog) callVirtualBase_Open() {
 
 }
 func (this *QProgressDialog) OnOpen(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QProgressDialog_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -516,6 +540,9 @@ func (this *QProgressDialog) callVirtualBase_Exec() int {
 
 }
 func (this *QProgressDialog) OnExec(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QProgressDialog_override_virtual_Exec(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -538,6 +565,9 @@ func (this *QProgressDialog) callVirtualBase_Done(param1 int) {
 
 }
 func (this *QProgressDialog) OnDone(slot func(super func(param1 int), param1 int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QProgressDialog_override_virtual_Done(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -561,6 +591,9 @@ func (this *QProgressDialog) callVirtualBase_Accept() {
 
 }
 func (this *QProgressDialog) OnAccept(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QProgressDialog_override_virtual_Accept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -581,6 +614,9 @@ func (this *QProgressDialog) callVirtualBase_Reject() {
 
 }
 func (this *QProgressDialog) OnReject(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QProgressDialog_override_virtual_Reject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -601,6 +637,9 @@ func (this *QProgressDialog) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
 
 }
 func (this *QProgressDialog) OnKeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QProgressDialog_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -624,6 +663,9 @@ func (this *QProgressDialog) callVirtualBase_ContextMenuEvent(param1 *QContextMe
 
 }
 func (this *QProgressDialog) OnContextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QProgressDialog_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -647,6 +689,9 @@ func (this *QProgressDialog) callVirtualBase_EventFilter(param1 *QObject, param2
 
 }
 func (this *QProgressDialog) OnEventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QProgressDialog_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

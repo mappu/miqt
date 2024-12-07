@@ -248,6 +248,9 @@ func (this *QPrintDialog) callVirtualBase_Exec() int {
 
 }
 func (this *QPrintDialog) OnExec(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPrintDialog_override_virtual_Exec(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -270,6 +273,9 @@ func (this *QPrintDialog) callVirtualBase_Accept() {
 
 }
 func (this *QPrintDialog) OnAccept(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPrintDialog_override_virtual_Accept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -290,6 +296,9 @@ func (this *QPrintDialog) callVirtualBase_Done(result int) {
 
 }
 func (this *QPrintDialog) OnDone(slot func(super func(result int), result int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPrintDialog_override_virtual_Done(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -313,6 +322,9 @@ func (this *QPrintDialog) callVirtualBase_SetVisible(visible bool) {
 
 }
 func (this *QPrintDialog) OnSetVisible(slot func(super func(visible bool), visible bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPrintDialog_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

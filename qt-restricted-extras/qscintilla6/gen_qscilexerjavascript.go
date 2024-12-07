@@ -169,6 +169,9 @@ func (this *QsciLexerJavaScript) callVirtualBase_SetFoldAtElse(fold bool) {
 
 }
 func (this *QsciLexerJavaScript) OnSetFoldAtElse(slot func(super func(fold bool), fold bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerJavaScript_override_virtual_SetFoldAtElse(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -192,6 +195,9 @@ func (this *QsciLexerJavaScript) callVirtualBase_SetFoldComments(fold bool) {
 
 }
 func (this *QsciLexerJavaScript) OnSetFoldComments(slot func(super func(fold bool), fold bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerJavaScript_override_virtual_SetFoldComments(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -215,6 +221,9 @@ func (this *QsciLexerJavaScript) callVirtualBase_SetFoldCompact(fold bool) {
 
 }
 func (this *QsciLexerJavaScript) OnSetFoldCompact(slot func(super func(fold bool), fold bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerJavaScript_override_virtual_SetFoldCompact(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -238,6 +247,9 @@ func (this *QsciLexerJavaScript) callVirtualBase_SetFoldPreprocessor(fold bool) 
 
 }
 func (this *QsciLexerJavaScript) OnSetFoldPreprocessor(slot func(super func(fold bool), fold bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerJavaScript_override_virtual_SetFoldPreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -261,6 +273,9 @@ func (this *QsciLexerJavaScript) callVirtualBase_SetStylePreprocessor(style bool
 
 }
 func (this *QsciLexerJavaScript) OnSetStylePreprocessor(slot func(super func(style bool), style bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerJavaScript_override_virtual_SetStylePreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

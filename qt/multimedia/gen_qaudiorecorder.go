@@ -247,6 +247,9 @@ func (this *QAudioRecorder) callVirtualBase_MediaObject() *QMediaObject {
 	return UnsafeNewQMediaObject(unsafe.Pointer(C.QAudioRecorder_virtualbase_MediaObject(unsafe.Pointer(this.h))), nil)
 }
 func (this *QAudioRecorder) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAudioRecorder_override_virtual_MediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -269,6 +272,9 @@ func (this *QAudioRecorder) callVirtualBase_SetMediaObject(object *QMediaObject)
 
 }
 func (this *QAudioRecorder) OnSetMediaObject(slot func(super func(object *QMediaObject) bool, object *QMediaObject) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAudioRecorder_override_virtual_SetMediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

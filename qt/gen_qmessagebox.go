@@ -1371,6 +1371,9 @@ func (this *QMessageBox) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QMessageBox) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMessageBox_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1396,6 +1399,9 @@ func (this *QMessageBox) callVirtualBase_ResizeEvent(event *QResizeEvent) {
 
 }
 func (this *QMessageBox) OnResizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMessageBox_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1419,6 +1425,9 @@ func (this *QMessageBox) callVirtualBase_ShowEvent(event *QShowEvent) {
 
 }
 func (this *QMessageBox) OnShowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMessageBox_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1442,6 +1451,9 @@ func (this *QMessageBox) callVirtualBase_CloseEvent(event *QCloseEvent) {
 
 }
 func (this *QMessageBox) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMessageBox_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1465,6 +1477,9 @@ func (this *QMessageBox) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
 
 }
 func (this *QMessageBox) OnKeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMessageBox_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1488,6 +1503,9 @@ func (this *QMessageBox) callVirtualBase_ChangeEvent(event *QEvent) {
 
 }
 func (this *QMessageBox) OnChangeEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMessageBox_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1511,6 +1529,9 @@ func (this *QMessageBox) callVirtualBase_SetVisible(visible bool) {
 
 }
 func (this *QMessageBox) OnSetVisible(slot func(super func(visible bool), visible bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMessageBox_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1537,6 +1558,9 @@ func (this *QMessageBox) callVirtualBase_SizeHint() *QSize {
 
 }
 func (this *QMessageBox) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMessageBox_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1562,6 +1586,9 @@ func (this *QMessageBox) callVirtualBase_MinimumSizeHint() *QSize {
 
 }
 func (this *QMessageBox) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMessageBox_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1584,6 +1611,9 @@ func (this *QMessageBox) callVirtualBase_Open() {
 
 }
 func (this *QMessageBox) OnOpen(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMessageBox_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1604,6 +1634,9 @@ func (this *QMessageBox) callVirtualBase_Exec() int {
 
 }
 func (this *QMessageBox) OnExec(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMessageBox_override_virtual_Exec(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1626,6 +1659,9 @@ func (this *QMessageBox) callVirtualBase_Done(param1 int) {
 
 }
 func (this *QMessageBox) OnDone(slot func(super func(param1 int), param1 int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMessageBox_override_virtual_Done(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1649,6 +1685,9 @@ func (this *QMessageBox) callVirtualBase_Accept() {
 
 }
 func (this *QMessageBox) OnAccept(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMessageBox_override_virtual_Accept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1669,6 +1708,9 @@ func (this *QMessageBox) callVirtualBase_Reject() {
 
 }
 func (this *QMessageBox) OnReject(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMessageBox_override_virtual_Reject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1689,6 +1731,9 @@ func (this *QMessageBox) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEv
 
 }
 func (this *QMessageBox) OnContextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMessageBox_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1712,6 +1757,9 @@ func (this *QMessageBox) callVirtualBase_EventFilter(param1 *QObject, param2 *QE
 
 }
 func (this *QMessageBox) OnEventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMessageBox_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

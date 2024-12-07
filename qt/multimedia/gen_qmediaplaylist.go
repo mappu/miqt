@@ -558,6 +558,9 @@ func (this *QMediaPlaylist) callVirtualBase_MediaObject() *QMediaObject {
 	return UnsafeNewQMediaObject(unsafe.Pointer(C.QMediaPlaylist_virtualbase_MediaObject(unsafe.Pointer(this.h))), nil)
 }
 func (this *QMediaPlaylist) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaPlaylist_override_virtual_MediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -580,6 +583,9 @@ func (this *QMediaPlaylist) callVirtualBase_SetMediaObject(object *QMediaObject)
 
 }
 func (this *QMediaPlaylist) OnSetMediaObject(slot func(super func(object *QMediaObject) bool, object *QMediaObject) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaPlaylist_override_virtual_SetMediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -605,6 +611,9 @@ func (this *QMediaPlaylist) callVirtualBase_Event(event *qt.QEvent) bool {
 
 }
 func (this *QMediaPlaylist) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaPlaylist_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -630,6 +639,9 @@ func (this *QMediaPlaylist) callVirtualBase_EventFilter(watched *qt.QObject, eve
 
 }
 func (this *QMediaPlaylist) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaPlaylist_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -656,6 +668,9 @@ func (this *QMediaPlaylist) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
 }
 func (this *QMediaPlaylist) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaPlaylist_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -679,6 +694,9 @@ func (this *QMediaPlaylist) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
 }
 func (this *QMediaPlaylist) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaPlaylist_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -702,6 +720,9 @@ func (this *QMediaPlaylist) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
 }
 func (this *QMediaPlaylist) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaPlaylist_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -725,6 +746,9 @@ func (this *QMediaPlaylist) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod
 
 }
 func (this *QMediaPlaylist) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaPlaylist_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -748,6 +772,9 @@ func (this *QMediaPlaylist) callVirtualBase_DisconnectNotify(signal *qt.QMetaMet
 
 }
 func (this *QMediaPlaylist) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaPlaylist_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

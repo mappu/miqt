@@ -147,6 +147,9 @@ func (this *QInputEvent) callVirtualBase_Clone() *QInputEvent {
 	return UnsafeNewQInputEvent(unsafe.Pointer(C.QInputEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QInputEvent) OnClone(slot func(super func() *QInputEvent) *QInputEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QInputEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -169,6 +172,9 @@ func (this *QInputEvent) callVirtualBase_SetTimestamp(timestamp uint64) {
 
 }
 func (this *QInputEvent) OnSetTimestamp(slot func(super func(timestamp uint64), timestamp uint64)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QInputEvent_override_virtual_SetTimestamp(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -192,6 +198,9 @@ func (this *QInputEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QInputEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QInputEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -394,6 +403,9 @@ func (this *QPointerEvent) callVirtualBase_Clone() *QPointerEvent {
 	return UnsafeNewQPointerEvent(unsafe.Pointer(C.QPointerEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil, nil)
 }
 func (this *QPointerEvent) OnClone(slot func(super func() *QPointerEvent) *QPointerEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPointerEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -416,6 +428,9 @@ func (this *QPointerEvent) callVirtualBase_SetTimestamp(timestamp uint64) {
 
 }
 func (this *QPointerEvent) OnSetTimestamp(slot func(super func(timestamp uint64), timestamp uint64)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPointerEvent_override_virtual_SetTimestamp(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -439,6 +454,9 @@ func (this *QPointerEvent) callVirtualBase_IsBeginEvent() bool {
 
 }
 func (this *QPointerEvent) OnIsBeginEvent(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPointerEvent_override_virtual_IsBeginEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -461,6 +479,9 @@ func (this *QPointerEvent) callVirtualBase_IsUpdateEvent() bool {
 
 }
 func (this *QPointerEvent) OnIsUpdateEvent(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPointerEvent_override_virtual_IsUpdateEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -483,6 +504,9 @@ func (this *QPointerEvent) callVirtualBase_IsEndEvent() bool {
 
 }
 func (this *QPointerEvent) OnIsEndEvent(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPointerEvent_override_virtual_IsEndEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -505,6 +529,9 @@ func (this *QPointerEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QPointerEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPointerEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -769,6 +796,9 @@ func (this *QEnterEvent) callVirtualBase_Clone() *QEnterEvent {
 	return UnsafeNewQEnterEvent(unsafe.Pointer(C.QEnterEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil, nil, nil, nil)
 }
 func (this *QEnterEvent) OnClone(slot func(super func() *QEnterEvent) *QEnterEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QEnterEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -791,6 +821,9 @@ func (this *QEnterEvent) callVirtualBase_IsBeginEvent() bool {
 
 }
 func (this *QEnterEvent) OnIsBeginEvent(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QEnterEvent_override_virtual_IsBeginEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -813,6 +846,9 @@ func (this *QEnterEvent) callVirtualBase_IsUpdateEvent() bool {
 
 }
 func (this *QEnterEvent) OnIsUpdateEvent(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QEnterEvent_override_virtual_IsUpdateEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -835,6 +871,9 @@ func (this *QEnterEvent) callVirtualBase_IsEndEvent() bool {
 
 }
 func (this *QEnterEvent) OnIsEndEvent(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QEnterEvent_override_virtual_IsEndEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1084,6 +1123,9 @@ func (this *QMouseEvent) callVirtualBase_Clone() *QMouseEvent {
 	return UnsafeNewQMouseEvent(unsafe.Pointer(C.QMouseEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil, nil, nil, nil)
 }
 func (this *QMouseEvent) OnClone(slot func(super func() *QMouseEvent) *QMouseEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMouseEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1106,6 +1148,9 @@ func (this *QMouseEvent) callVirtualBase_IsBeginEvent() bool {
 
 }
 func (this *QMouseEvent) OnIsBeginEvent(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMouseEvent_override_virtual_IsBeginEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1128,6 +1173,9 @@ func (this *QMouseEvent) callVirtualBase_IsUpdateEvent() bool {
 
 }
 func (this *QMouseEvent) OnIsUpdateEvent(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMouseEvent_override_virtual_IsUpdateEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1150,6 +1198,9 @@ func (this *QMouseEvent) callVirtualBase_IsEndEvent() bool {
 
 }
 func (this *QMouseEvent) OnIsEndEvent(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMouseEvent_override_virtual_IsEndEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1344,6 +1395,9 @@ func (this *QHoverEvent) callVirtualBase_Clone() *QHoverEvent {
 	return UnsafeNewQHoverEvent(unsafe.Pointer(C.QHoverEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil, nil, nil, nil)
 }
 func (this *QHoverEvent) OnClone(slot func(super func() *QHoverEvent) *QHoverEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QHoverEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1366,6 +1420,9 @@ func (this *QHoverEvent) callVirtualBase_IsUpdateEvent() bool {
 
 }
 func (this *QHoverEvent) OnIsUpdateEvent(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QHoverEvent_override_virtual_IsUpdateEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1388,6 +1445,9 @@ func (this *QHoverEvent) callVirtualBase_IsBeginEvent() bool {
 
 }
 func (this *QHoverEvent) OnIsBeginEvent(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QHoverEvent_override_virtual_IsBeginEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1410,6 +1470,9 @@ func (this *QHoverEvent) callVirtualBase_IsEndEvent() bool {
 
 }
 func (this *QHoverEvent) OnIsEndEvent(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QHoverEvent_override_virtual_IsEndEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1576,6 +1639,9 @@ func (this *QWheelEvent) callVirtualBase_Clone() *QWheelEvent {
 	return UnsafeNewQWheelEvent(unsafe.Pointer(C.QWheelEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil, nil, nil, nil)
 }
 func (this *QWheelEvent) OnClone(slot func(super func() *QWheelEvent) *QWheelEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWheelEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1598,6 +1664,9 @@ func (this *QWheelEvent) callVirtualBase_IsBeginEvent() bool {
 
 }
 func (this *QWheelEvent) OnIsBeginEvent(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWheelEvent_override_virtual_IsBeginEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1620,6 +1689,9 @@ func (this *QWheelEvent) callVirtualBase_IsUpdateEvent() bool {
 
 }
 func (this *QWheelEvent) OnIsUpdateEvent(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWheelEvent_override_virtual_IsUpdateEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1642,6 +1714,9 @@ func (this *QWheelEvent) callVirtualBase_IsEndEvent() bool {
 
 }
 func (this *QWheelEvent) OnIsEndEvent(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWheelEvent_override_virtual_IsEndEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1814,6 +1889,9 @@ func (this *QTabletEvent) callVirtualBase_Clone() *QTabletEvent {
 	return UnsafeNewQTabletEvent(unsafe.Pointer(C.QTabletEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil, nil, nil, nil)
 }
 func (this *QTabletEvent) OnClone(slot func(super func() *QTabletEvent) *QTabletEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabletEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1836,6 +1914,9 @@ func (this *QTabletEvent) callVirtualBase_IsBeginEvent() bool {
 
 }
 func (this *QTabletEvent) OnIsBeginEvent(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabletEvent_override_virtual_IsBeginEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1858,6 +1939,9 @@ func (this *QTabletEvent) callVirtualBase_IsUpdateEvent() bool {
 
 }
 func (this *QTabletEvent) OnIsUpdateEvent(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabletEvent_override_virtual_IsUpdateEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1880,6 +1964,9 @@ func (this *QTabletEvent) callVirtualBase_IsEndEvent() bool {
 
 }
 func (this *QTabletEvent) OnIsEndEvent(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabletEvent_override_virtual_IsEndEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -2054,6 +2141,9 @@ func (this *QNativeGestureEvent) callVirtualBase_Clone() *QNativeGestureEvent {
 	return UnsafeNewQNativeGestureEvent(unsafe.Pointer(C.QNativeGestureEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil, nil, nil, nil)
 }
 func (this *QNativeGestureEvent) OnClone(slot func(super func() *QNativeGestureEvent) *QNativeGestureEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QNativeGestureEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -2076,6 +2166,9 @@ func (this *QNativeGestureEvent) callVirtualBase_IsBeginEvent() bool {
 
 }
 func (this *QNativeGestureEvent) OnIsBeginEvent(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QNativeGestureEvent_override_virtual_IsBeginEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -2098,6 +2191,9 @@ func (this *QNativeGestureEvent) callVirtualBase_IsUpdateEvent() bool {
 
 }
 func (this *QNativeGestureEvent) OnIsUpdateEvent(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QNativeGestureEvent_override_virtual_IsUpdateEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -2120,6 +2216,9 @@ func (this *QNativeGestureEvent) callVirtualBase_IsEndEvent() bool {
 
 }
 func (this *QNativeGestureEvent) OnIsEndEvent(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QNativeGestureEvent_override_virtual_IsEndEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -2380,6 +2479,9 @@ func (this *QKeyEvent) callVirtualBase_Clone() *QKeyEvent {
 	return UnsafeNewQKeyEvent(unsafe.Pointer(C.QKeyEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil, nil)
 }
 func (this *QKeyEvent) OnClone(slot func(super func() *QKeyEvent) *QKeyEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QKeyEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -2402,6 +2504,9 @@ func (this *QKeyEvent) callVirtualBase_SetTimestamp(timestamp uint64) {
 
 }
 func (this *QKeyEvent) OnSetTimestamp(slot func(super func(timestamp uint64), timestamp uint64)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QKeyEvent_override_virtual_SetTimestamp(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -2515,6 +2620,9 @@ func (this *QFocusEvent) callVirtualBase_Clone() *QFocusEvent {
 	return UnsafeNewQFocusEvent(unsafe.Pointer(C.QFocusEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QFocusEvent) OnClone(slot func(super func() *QFocusEvent) *QFocusEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFocusEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -2537,6 +2645,9 @@ func (this *QFocusEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QFocusEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFocusEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -2646,6 +2757,9 @@ func (this *QPaintEvent) callVirtualBase_Clone() *QPaintEvent {
 	return UnsafeNewQPaintEvent(unsafe.Pointer(C.QPaintEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QPaintEvent) OnClone(slot func(super func() *QPaintEvent) *QPaintEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPaintEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -2668,6 +2782,9 @@ func (this *QPaintEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QPaintEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPaintEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -2766,6 +2883,9 @@ func (this *QMoveEvent) callVirtualBase_Clone() *QMoveEvent {
 	return UnsafeNewQMoveEvent(unsafe.Pointer(C.QMoveEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QMoveEvent) OnClone(slot func(super func() *QMoveEvent) *QMoveEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMoveEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -2788,6 +2908,9 @@ func (this *QMoveEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QMoveEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMoveEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -2882,6 +3005,9 @@ func (this *QExposeEvent) callVirtualBase_Clone() *QExposeEvent {
 	return UnsafeNewQExposeEvent(unsafe.Pointer(C.QExposeEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QExposeEvent) OnClone(slot func(super func() *QExposeEvent) *QExposeEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QExposeEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -2904,6 +3030,9 @@ func (this *QExposeEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QExposeEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QExposeEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -2998,6 +3127,9 @@ func (this *QPlatformSurfaceEvent) callVirtualBase_Clone() *QPlatformSurfaceEven
 	return UnsafeNewQPlatformSurfaceEvent(unsafe.Pointer(C.QPlatformSurfaceEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QPlatformSurfaceEvent) OnClone(slot func(super func() *QPlatformSurfaceEvent) *QPlatformSurfaceEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPlatformSurfaceEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3020,6 +3152,9 @@ func (this *QPlatformSurfaceEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QPlatformSurfaceEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPlatformSurfaceEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3118,6 +3253,9 @@ func (this *QResizeEvent) callVirtualBase_Clone() *QResizeEvent {
 	return UnsafeNewQResizeEvent(unsafe.Pointer(C.QResizeEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QResizeEvent) OnClone(slot func(super func() *QResizeEvent) *QResizeEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QResizeEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3140,6 +3278,9 @@ func (this *QResizeEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QResizeEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QResizeEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3230,6 +3371,9 @@ func (this *QCloseEvent) callVirtualBase_Clone() *QCloseEvent {
 	return UnsafeNewQCloseEvent(unsafe.Pointer(C.QCloseEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QCloseEvent) OnClone(slot func(super func() *QCloseEvent) *QCloseEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCloseEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3252,6 +3396,9 @@ func (this *QCloseEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QCloseEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCloseEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3342,6 +3489,9 @@ func (this *QIconDragEvent) callVirtualBase_Clone() *QIconDragEvent {
 	return UnsafeNewQIconDragEvent(unsafe.Pointer(C.QIconDragEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QIconDragEvent) OnClone(slot func(super func() *QIconDragEvent) *QIconDragEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIconDragEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3364,6 +3514,9 @@ func (this *QIconDragEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QIconDragEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIconDragEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3454,6 +3607,9 @@ func (this *QShowEvent) callVirtualBase_Clone() *QShowEvent {
 	return UnsafeNewQShowEvent(unsafe.Pointer(C.QShowEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QShowEvent) OnClone(slot func(super func() *QShowEvent) *QShowEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QShowEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3476,6 +3632,9 @@ func (this *QShowEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QShowEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QShowEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3566,6 +3725,9 @@ func (this *QHideEvent) callVirtualBase_Clone() *QHideEvent {
 	return UnsafeNewQHideEvent(unsafe.Pointer(C.QHideEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QHideEvent) OnClone(slot func(super func() *QHideEvent) *QHideEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QHideEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3588,6 +3750,9 @@ func (this *QHideEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QHideEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QHideEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3731,6 +3896,9 @@ func (this *QContextMenuEvent) callVirtualBase_Clone() *QContextMenuEvent {
 	return UnsafeNewQContextMenuEvent(unsafe.Pointer(C.QContextMenuEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil, nil)
 }
 func (this *QContextMenuEvent) OnClone(slot func(super func() *QContextMenuEvent) *QContextMenuEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QContextMenuEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3753,6 +3921,9 @@ func (this *QContextMenuEvent) callVirtualBase_SetTimestamp(timestamp uint64) {
 
 }
 func (this *QContextMenuEvent) OnSetTimestamp(slot func(super func(timestamp uint64), timestamp uint64)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QContextMenuEvent_override_virtual_SetTimestamp(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3923,6 +4094,9 @@ func (this *QInputMethodEvent) callVirtualBase_Clone() *QInputMethodEvent {
 	return UnsafeNewQInputMethodEvent(unsafe.Pointer(C.QInputMethodEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QInputMethodEvent) OnClone(slot func(super func() *QInputMethodEvent) *QInputMethodEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QInputMethodEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3945,6 +4119,9 @@ func (this *QInputMethodEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QInputMethodEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QInputMethodEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4050,6 +4227,9 @@ func (this *QInputMethodQueryEvent) callVirtualBase_Clone() *QInputMethodQueryEv
 	return UnsafeNewQInputMethodQueryEvent(unsafe.Pointer(C.QInputMethodQueryEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QInputMethodQueryEvent) OnClone(slot func(super func() *QInputMethodQueryEvent) *QInputMethodQueryEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QInputMethodQueryEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4072,6 +4252,9 @@ func (this *QInputMethodQueryEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QInputMethodQueryEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QInputMethodQueryEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4238,6 +4421,9 @@ func (this *QDropEvent) callVirtualBase_Clone() *QDropEvent {
 	return UnsafeNewQDropEvent(unsafe.Pointer(C.QDropEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QDropEvent) OnClone(slot func(super func() *QDropEvent) *QDropEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDropEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4260,6 +4446,9 @@ func (this *QDropEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QDropEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDropEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4386,6 +4575,9 @@ func (this *QDragMoveEvent) callVirtualBase_Clone() *QDragMoveEvent {
 	return UnsafeNewQDragMoveEvent(unsafe.Pointer(C.QDragMoveEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil, nil)
 }
 func (this *QDragMoveEvent) OnClone(slot func(super func() *QDragMoveEvent) *QDragMoveEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDragMoveEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4477,6 +4669,9 @@ func (this *QDragEnterEvent) callVirtualBase_Clone() *QDragEnterEvent {
 	return UnsafeNewQDragEnterEvent(unsafe.Pointer(C.QDragEnterEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil, nil, nil)
 }
 func (this *QDragEnterEvent) OnClone(slot func(super func() *QDragEnterEvent) *QDragEnterEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDragEnterEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4566,6 +4761,9 @@ func (this *QDragLeaveEvent) callVirtualBase_Clone() *QDragLeaveEvent {
 	return UnsafeNewQDragLeaveEvent(unsafe.Pointer(C.QDragLeaveEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QDragLeaveEvent) OnClone(slot func(super func() *QDragLeaveEvent) *QDragLeaveEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDragLeaveEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4588,6 +4786,9 @@ func (this *QDragLeaveEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QDragLeaveEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDragLeaveEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4702,6 +4903,9 @@ func (this *QHelpEvent) callVirtualBase_Clone() *QHelpEvent {
 	return UnsafeNewQHelpEvent(unsafe.Pointer(C.QHelpEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QHelpEvent) OnClone(slot func(super func() *QHelpEvent) *QHelpEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QHelpEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4724,6 +4928,9 @@ func (this *QHelpEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QHelpEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QHelpEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4825,6 +5032,9 @@ func (this *QStatusTipEvent) callVirtualBase_Clone() *QStatusTipEvent {
 	return UnsafeNewQStatusTipEvent(unsafe.Pointer(C.QStatusTipEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QStatusTipEvent) OnClone(slot func(super func() *QStatusTipEvent) *QStatusTipEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStatusTipEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4847,6 +5057,9 @@ func (this *QStatusTipEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QStatusTipEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStatusTipEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4948,6 +5161,9 @@ func (this *QWhatsThisClickedEvent) callVirtualBase_Clone() *QWhatsThisClickedEv
 	return UnsafeNewQWhatsThisClickedEvent(unsafe.Pointer(C.QWhatsThisClickedEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QWhatsThisClickedEvent) OnClone(slot func(super func() *QWhatsThisClickedEvent) *QWhatsThisClickedEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWhatsThisClickedEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4970,6 +5186,9 @@ func (this *QWhatsThisClickedEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QWhatsThisClickedEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWhatsThisClickedEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5079,6 +5298,9 @@ func (this *QActionEvent) callVirtualBase_Clone() *QActionEvent {
 	return UnsafeNewQActionEvent(unsafe.Pointer(C.QActionEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QActionEvent) OnClone(slot func(super func() *QActionEvent) *QActionEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QActionEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5101,6 +5323,9 @@ func (this *QActionEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QActionEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QActionEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5224,6 +5449,9 @@ func (this *QFileOpenEvent) callVirtualBase_Clone() *QFileOpenEvent {
 	return UnsafeNewQFileOpenEvent(unsafe.Pointer(C.QFileOpenEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QFileOpenEvent) OnClone(slot func(super func() *QFileOpenEvent) *QFileOpenEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileOpenEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5246,6 +5474,9 @@ func (this *QFileOpenEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QFileOpenEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileOpenEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5340,6 +5571,9 @@ func (this *QToolBarChangeEvent) callVirtualBase_Clone() *QToolBarChangeEvent {
 	return UnsafeNewQToolBarChangeEvent(unsafe.Pointer(C.QToolBarChangeEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QToolBarChangeEvent) OnClone(slot func(super func() *QToolBarChangeEvent) *QToolBarChangeEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QToolBarChangeEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5362,6 +5596,9 @@ func (this *QToolBarChangeEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QToolBarChangeEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QToolBarChangeEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5475,6 +5712,9 @@ func (this *QShortcutEvent) callVirtualBase_Clone() *QShortcutEvent {
 	return UnsafeNewQShortcutEvent(unsafe.Pointer(C.QShortcutEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QShortcutEvent) OnClone(slot func(super func() *QShortcutEvent) *QShortcutEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QShortcutEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5497,6 +5737,9 @@ func (this *QShortcutEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QShortcutEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QShortcutEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5606,6 +5849,9 @@ func (this *QWindowStateChangeEvent) callVirtualBase_Clone() *QWindowStateChange
 	return UnsafeNewQWindowStateChangeEvent(unsafe.Pointer(C.QWindowStateChangeEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QWindowStateChangeEvent) OnClone(slot func(super func() *QWindowStateChangeEvent) *QWindowStateChangeEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWindowStateChangeEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5628,6 +5874,9 @@ func (this *QWindowStateChangeEvent) callVirtualBase_SetAccepted(accepted bool) 
 
 }
 func (this *QWindowStateChangeEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWindowStateChangeEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5830,6 +6079,9 @@ func (this *QTouchEvent) callVirtualBase_Clone() *QTouchEvent {
 	return UnsafeNewQTouchEvent(unsafe.Pointer(C.QTouchEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil, nil, nil)
 }
 func (this *QTouchEvent) OnClone(slot func(super func() *QTouchEvent) *QTouchEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTouchEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5852,6 +6104,9 @@ func (this *QTouchEvent) callVirtualBase_IsBeginEvent() bool {
 
 }
 func (this *QTouchEvent) OnIsBeginEvent(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTouchEvent_override_virtual_IsBeginEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5874,6 +6129,9 @@ func (this *QTouchEvent) callVirtualBase_IsUpdateEvent() bool {
 
 }
 func (this *QTouchEvent) OnIsUpdateEvent(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTouchEvent_override_virtual_IsUpdateEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5896,6 +6154,9 @@ func (this *QTouchEvent) callVirtualBase_IsEndEvent() bool {
 
 }
 func (this *QTouchEvent) OnIsEndEvent(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTouchEvent_override_virtual_IsEndEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5918,6 +6179,9 @@ func (this *QTouchEvent) callVirtualBase_SetTimestamp(timestamp uint64) {
 
 }
 func (this *QTouchEvent) OnSetTimestamp(slot func(super func(timestamp uint64), timestamp uint64)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTouchEvent_override_virtual_SetTimestamp(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5941,6 +6205,9 @@ func (this *QTouchEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QTouchEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTouchEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -6071,6 +6338,9 @@ func (this *QScrollPrepareEvent) callVirtualBase_Clone() *QScrollPrepareEvent {
 	return UnsafeNewQScrollPrepareEvent(unsafe.Pointer(C.QScrollPrepareEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QScrollPrepareEvent) OnClone(slot func(super func() *QScrollPrepareEvent) *QScrollPrepareEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QScrollPrepareEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -6093,6 +6363,9 @@ func (this *QScrollPrepareEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QScrollPrepareEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QScrollPrepareEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -6201,6 +6474,9 @@ func (this *QScrollEvent) callVirtualBase_Clone() *QScrollEvent {
 	return UnsafeNewQScrollEvent(unsafe.Pointer(C.QScrollEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QScrollEvent) OnClone(slot func(super func() *QScrollEvent) *QScrollEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QScrollEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -6223,6 +6499,9 @@ func (this *QScrollEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QScrollEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QScrollEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -6321,6 +6600,9 @@ func (this *QScreenOrientationChangeEvent) callVirtualBase_Clone() *QScreenOrien
 	return UnsafeNewQScreenOrientationChangeEvent(unsafe.Pointer(C.QScreenOrientationChangeEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QScreenOrientationChangeEvent) OnClone(slot func(super func() *QScreenOrientationChangeEvent) *QScreenOrientationChangeEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QScreenOrientationChangeEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -6343,6 +6625,9 @@ func (this *QScreenOrientationChangeEvent) callVirtualBase_SetAccepted(accepted 
 
 }
 func (this *QScreenOrientationChangeEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QScreenOrientationChangeEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -6437,6 +6722,9 @@ func (this *QApplicationStateChangeEvent) callVirtualBase_Clone() *QApplicationS
 	return UnsafeNewQApplicationStateChangeEvent(unsafe.Pointer(C.QApplicationStateChangeEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
 }
 func (this *QApplicationStateChangeEvent) OnClone(slot func(super func() *QApplicationStateChangeEvent) *QApplicationStateChangeEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QApplicationStateChangeEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -6459,6 +6747,9 @@ func (this *QApplicationStateChangeEvent) callVirtualBase_SetAccepted(accepted b
 
 }
 func (this *QApplicationStateChangeEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QApplicationStateChangeEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

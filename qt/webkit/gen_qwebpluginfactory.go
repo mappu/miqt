@@ -201,6 +201,9 @@ func QWebPluginFactory_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 func (this *QWebPluginFactory) OnPlugins(slot func() []QWebPluginFactory__Plugin) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPluginFactory_override_virtual_Plugins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -229,6 +232,9 @@ func (this *QWebPluginFactory) callVirtualBase_RefreshPlugins() {
 
 }
 func (this *QWebPluginFactory) OnRefreshPlugins(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPluginFactory_override_virtual_RefreshPlugins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -243,6 +249,9 @@ func miqt_exec_callback_QWebPluginFactory_RefreshPlugins(self *C.QWebPluginFacto
 
 }
 func (this *QWebPluginFactory) OnCreate(slot func(mimeType string, param2 *qt.QUrl, argumentNames []string, argumentValues []string) *qt.QObject) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPluginFactory_override_virtual_Create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -293,6 +302,9 @@ func (this *QWebPluginFactory) callVirtualBase_Extension(extension QWebPluginFac
 
 }
 func (this *QWebPluginFactory) OnExtension(slot func(super func(extension QWebPluginFactory__Extension, option *QWebPluginFactory__ExtensionOption, output *QWebPluginFactory__ExtensionReturn) bool, extension QWebPluginFactory__Extension, option *QWebPluginFactory__ExtensionOption, output *QWebPluginFactory__ExtensionReturn) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPluginFactory_override_virtual_Extension(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -321,6 +333,9 @@ func (this *QWebPluginFactory) callVirtualBase_SupportsExtension(extension QWebP
 
 }
 func (this *QWebPluginFactory) OnSupportsExtension(slot func(super func(extension QWebPluginFactory__Extension) bool, extension QWebPluginFactory__Extension) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPluginFactory_override_virtual_SupportsExtension(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -346,6 +361,9 @@ func (this *QWebPluginFactory) callVirtualBase_Event(event *qt.QEvent) bool {
 
 }
 func (this *QWebPluginFactory) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPluginFactory_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -371,6 +389,9 @@ func (this *QWebPluginFactory) callVirtualBase_EventFilter(watched *qt.QObject, 
 
 }
 func (this *QWebPluginFactory) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPluginFactory_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -397,6 +418,9 @@ func (this *QWebPluginFactory) callVirtualBase_TimerEvent(event *qt.QTimerEvent)
 
 }
 func (this *QWebPluginFactory) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPluginFactory_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -420,6 +444,9 @@ func (this *QWebPluginFactory) callVirtualBase_ChildEvent(event *qt.QChildEvent)
 
 }
 func (this *QWebPluginFactory) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPluginFactory_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -443,6 +470,9 @@ func (this *QWebPluginFactory) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
 }
 func (this *QWebPluginFactory) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPluginFactory_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -466,6 +496,9 @@ func (this *QWebPluginFactory) callVirtualBase_ConnectNotify(signal *qt.QMetaMet
 
 }
 func (this *QWebPluginFactory) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPluginFactory_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -489,6 +522,9 @@ func (this *QWebPluginFactory) callVirtualBase_DisconnectNotify(signal *qt.QMeta
 
 }
 func (this *QWebPluginFactory) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPluginFactory_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

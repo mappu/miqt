@@ -453,6 +453,9 @@ func (this *QCalendarWidget) callVirtualBase_SizeHint() *QSize {
 
 }
 func (this *QCalendarWidget) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -478,6 +481,9 @@ func (this *QCalendarWidget) callVirtualBase_MinimumSizeHint() *QSize {
 
 }
 func (this *QCalendarWidget) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -500,6 +506,9 @@ func (this *QCalendarWidget) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QCalendarWidget) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -525,6 +534,9 @@ func (this *QCalendarWidget) callVirtualBase_EventFilter(watched *QObject, event
 
 }
 func (this *QCalendarWidget) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -551,6 +563,9 @@ func (this *QCalendarWidget) callVirtualBase_MousePressEvent(event *QMouseEvent)
 
 }
 func (this *QCalendarWidget) OnMousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -574,6 +589,9 @@ func (this *QCalendarWidget) callVirtualBase_ResizeEvent(event *QResizeEvent) {
 
 }
 func (this *QCalendarWidget) OnResizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -597,6 +615,9 @@ func (this *QCalendarWidget) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
 
 }
 func (this *QCalendarWidget) OnKeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -620,6 +641,9 @@ func (this *QCalendarWidget) callVirtualBase_PaintCell(painter *QPainter, rect *
 
 }
 func (this *QCalendarWidget) OnPaintCell(slot func(super func(painter *QPainter, rect *QRect, date QDate), painter *QPainter, rect *QRect, date QDate)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_PaintCell(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -648,6 +672,9 @@ func (this *QCalendarWidget) callVirtualBase_DevType() int {
 
 }
 func (this *QCalendarWidget) OnDevType(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -670,6 +697,9 @@ func (this *QCalendarWidget) callVirtualBase_SetVisible(visible bool) {
 
 }
 func (this *QCalendarWidget) OnSetVisible(slot func(super func(visible bool), visible bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -693,6 +723,9 @@ func (this *QCalendarWidget) callVirtualBase_HeightForWidth(param1 int) int {
 
 }
 func (this *QCalendarWidget) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -718,6 +751,9 @@ func (this *QCalendarWidget) callVirtualBase_HasHeightForWidth() bool {
 
 }
 func (this *QCalendarWidget) OnHasHeightForWidth(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -739,6 +775,9 @@ func (this *QCalendarWidget) callVirtualBase_PaintEngine() *QPaintEngine {
 	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QCalendarWidget_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
 }
 func (this *QCalendarWidget) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -761,6 +800,9 @@ func (this *QCalendarWidget) callVirtualBase_MouseReleaseEvent(event *QMouseEven
 
 }
 func (this *QCalendarWidget) OnMouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -784,6 +826,9 @@ func (this *QCalendarWidget) callVirtualBase_MouseDoubleClickEvent(event *QMouse
 
 }
 func (this *QCalendarWidget) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -807,6 +852,9 @@ func (this *QCalendarWidget) callVirtualBase_MouseMoveEvent(event *QMouseEvent) 
 
 }
 func (this *QCalendarWidget) OnMouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -830,6 +878,9 @@ func (this *QCalendarWidget) callVirtualBase_WheelEvent(event *QWheelEvent) {
 
 }
 func (this *QCalendarWidget) OnWheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -853,6 +904,9 @@ func (this *QCalendarWidget) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
 
 }
 func (this *QCalendarWidget) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -876,6 +930,9 @@ func (this *QCalendarWidget) callVirtualBase_FocusInEvent(event *QFocusEvent) {
 
 }
 func (this *QCalendarWidget) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -899,6 +956,9 @@ func (this *QCalendarWidget) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
 
 }
 func (this *QCalendarWidget) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -922,6 +982,9 @@ func (this *QCalendarWidget) callVirtualBase_EnterEvent(event *QEnterEvent) {
 
 }
 func (this *QCalendarWidget) OnEnterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -945,6 +1008,9 @@ func (this *QCalendarWidget) callVirtualBase_LeaveEvent(event *QEvent) {
 
 }
 func (this *QCalendarWidget) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -968,6 +1034,9 @@ func (this *QCalendarWidget) callVirtualBase_PaintEvent(event *QPaintEvent) {
 
 }
 func (this *QCalendarWidget) OnPaintEvent(slot func(super func(event *QPaintEvent), event *QPaintEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -991,6 +1060,9 @@ func (this *QCalendarWidget) callVirtualBase_MoveEvent(event *QMoveEvent) {
 
 }
 func (this *QCalendarWidget) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1014,6 +1086,9 @@ func (this *QCalendarWidget) callVirtualBase_CloseEvent(event *QCloseEvent) {
 
 }
 func (this *QCalendarWidget) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1037,6 +1112,9 @@ func (this *QCalendarWidget) callVirtualBase_ContextMenuEvent(event *QContextMen
 
 }
 func (this *QCalendarWidget) OnContextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1060,6 +1138,9 @@ func (this *QCalendarWidget) callVirtualBase_TabletEvent(event *QTabletEvent) {
 
 }
 func (this *QCalendarWidget) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1083,6 +1164,9 @@ func (this *QCalendarWidget) callVirtualBase_ActionEvent(event *QActionEvent) {
 
 }
 func (this *QCalendarWidget) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1106,6 +1190,9 @@ func (this *QCalendarWidget) callVirtualBase_DragEnterEvent(event *QDragEnterEve
 
 }
 func (this *QCalendarWidget) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1129,6 +1216,9 @@ func (this *QCalendarWidget) callVirtualBase_DragMoveEvent(event *QDragMoveEvent
 
 }
 func (this *QCalendarWidget) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1152,6 +1242,9 @@ func (this *QCalendarWidget) callVirtualBase_DragLeaveEvent(event *QDragLeaveEve
 
 }
 func (this *QCalendarWidget) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1175,6 +1268,9 @@ func (this *QCalendarWidget) callVirtualBase_DropEvent(event *QDropEvent) {
 
 }
 func (this *QCalendarWidget) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1198,6 +1294,9 @@ func (this *QCalendarWidget) callVirtualBase_ShowEvent(event *QShowEvent) {
 
 }
 func (this *QCalendarWidget) OnShowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1221,6 +1320,9 @@ func (this *QCalendarWidget) callVirtualBase_HideEvent(event *QHideEvent) {
 
 }
 func (this *QCalendarWidget) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1247,6 +1349,9 @@ func (this *QCalendarWidget) callVirtualBase_NativeEvent(eventType []byte, messa
 
 }
 func (this *QCalendarWidget) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1278,6 +1383,9 @@ func (this *QCalendarWidget) callVirtualBase_ChangeEvent(param1 *QEvent) {
 
 }
 func (this *QCalendarWidget) OnChangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1301,6 +1409,9 @@ func (this *QCalendarWidget) callVirtualBase_Metric(param1 QPaintDevice__PaintDe
 
 }
 func (this *QCalendarWidget) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1326,6 +1437,9 @@ func (this *QCalendarWidget) callVirtualBase_InitPainter(painter *QPainter) {
 
 }
 func (this *QCalendarWidget) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1348,6 +1462,9 @@ func (this *QCalendarWidget) callVirtualBase_Redirected(offset *QPoint) *QPaintD
 	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QCalendarWidget_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer())))
 }
 func (this *QCalendarWidget) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1372,6 +1489,9 @@ func (this *QCalendarWidget) callVirtualBase_SharedPainter() *QPainter {
 	return UnsafeNewQPainter(unsafe.Pointer(C.QCalendarWidget_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
 }
 func (this *QCalendarWidget) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1394,6 +1514,9 @@ func (this *QCalendarWidget) callVirtualBase_InputMethodEvent(param1 *QInputMeth
 
 }
 func (this *QCalendarWidget) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1420,6 +1543,9 @@ func (this *QCalendarWidget) callVirtualBase_InputMethodQuery(param1 InputMethod
 
 }
 func (this *QCalendarWidget) OnInputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1445,6 +1571,9 @@ func (this *QCalendarWidget) callVirtualBase_FocusNextPrevChild(next bool) bool 
 
 }
 func (this *QCalendarWidget) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCalendarWidget_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

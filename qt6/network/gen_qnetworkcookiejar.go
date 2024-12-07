@@ -167,6 +167,9 @@ func (this *QNetworkCookieJar) callVirtualBase_CookiesForUrl(url *qt6.QUrl) []QN
 
 }
 func (this *QNetworkCookieJar) OnCookiesForUrl(slot func(super func(url *qt6.QUrl) []QNetworkCookie, url *qt6.QUrl) []QNetworkCookie) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QNetworkCookieJar_override_virtual_CookiesForUrl(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -204,6 +207,9 @@ func (this *QNetworkCookieJar) callVirtualBase_SetCookiesFromUrl(cookieList []QN
 
 }
 func (this *QNetworkCookieJar) OnSetCookiesFromUrl(slot func(super func(cookieList []QNetworkCookie, url *qt6.QUrl) bool, cookieList []QNetworkCookie, url *qt6.QUrl) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QNetworkCookieJar_override_virtual_SetCookiesFromUrl(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -240,6 +246,9 @@ func (this *QNetworkCookieJar) callVirtualBase_InsertCookie(cookie *QNetworkCook
 
 }
 func (this *QNetworkCookieJar) OnInsertCookie(slot func(super func(cookie *QNetworkCookie) bool, cookie *QNetworkCookie) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QNetworkCookieJar_override_virtual_InsertCookie(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -265,6 +274,9 @@ func (this *QNetworkCookieJar) callVirtualBase_UpdateCookie(cookie *QNetworkCook
 
 }
 func (this *QNetworkCookieJar) OnUpdateCookie(slot func(super func(cookie *QNetworkCookie) bool, cookie *QNetworkCookie) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QNetworkCookieJar_override_virtual_UpdateCookie(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -290,6 +302,9 @@ func (this *QNetworkCookieJar) callVirtualBase_DeleteCookie(cookie *QNetworkCook
 
 }
 func (this *QNetworkCookieJar) OnDeleteCookie(slot func(super func(cookie *QNetworkCookie) bool, cookie *QNetworkCookie) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QNetworkCookieJar_override_virtual_DeleteCookie(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -315,6 +330,9 @@ func (this *QNetworkCookieJar) callVirtualBase_ValidateCookie(cookie *QNetworkCo
 
 }
 func (this *QNetworkCookieJar) OnValidateCookie(slot func(super func(cookie *QNetworkCookie, url *qt6.QUrl) bool, cookie *QNetworkCookie, url *qt6.QUrl) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QNetworkCookieJar_override_virtual_ValidateCookie(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -341,6 +359,9 @@ func (this *QNetworkCookieJar) callVirtualBase_Event(event *qt6.QEvent) bool {
 
 }
 func (this *QNetworkCookieJar) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QNetworkCookieJar_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -366,6 +387,9 @@ func (this *QNetworkCookieJar) callVirtualBase_EventFilter(watched *qt6.QObject,
 
 }
 func (this *QNetworkCookieJar) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QNetworkCookieJar_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -392,6 +416,9 @@ func (this *QNetworkCookieJar) callVirtualBase_TimerEvent(event *qt6.QTimerEvent
 
 }
 func (this *QNetworkCookieJar) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QNetworkCookieJar_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -415,6 +442,9 @@ func (this *QNetworkCookieJar) callVirtualBase_ChildEvent(event *qt6.QChildEvent
 
 }
 func (this *QNetworkCookieJar) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QNetworkCookieJar_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -438,6 +468,9 @@ func (this *QNetworkCookieJar) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 
 }
 func (this *QNetworkCookieJar) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QNetworkCookieJar_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -461,6 +494,9 @@ func (this *QNetworkCookieJar) callVirtualBase_ConnectNotify(signal *qt6.QMetaMe
 
 }
 func (this *QNetworkCookieJar) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QNetworkCookieJar_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -484,6 +520,9 @@ func (this *QNetworkCookieJar) callVirtualBase_DisconnectNotify(signal *qt6.QMet
 
 }
 func (this *QNetworkCookieJar) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QNetworkCookieJar_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

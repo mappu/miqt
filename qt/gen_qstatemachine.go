@@ -324,6 +324,9 @@ func (this *QStateMachine) callVirtualBase_EventFilter(watched *QObject, event *
 
 }
 func (this *QStateMachine) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStateMachine_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -350,6 +353,9 @@ func (this *QStateMachine) callVirtualBase_OnEntry(event *QEvent) {
 
 }
 func (this *QStateMachine) OnOnEntry(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStateMachine_override_virtual_OnEntry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -373,6 +379,9 @@ func (this *QStateMachine) callVirtualBase_OnExit(event *QEvent) {
 
 }
 func (this *QStateMachine) OnOnExit(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStateMachine_override_virtual_OnExit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -396,6 +405,9 @@ func (this *QStateMachine) callVirtualBase_BeginSelectTransitions(event *QEvent)
 
 }
 func (this *QStateMachine) OnBeginSelectTransitions(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStateMachine_override_virtual_BeginSelectTransitions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -419,6 +431,9 @@ func (this *QStateMachine) callVirtualBase_EndSelectTransitions(event *QEvent) {
 
 }
 func (this *QStateMachine) OnEndSelectTransitions(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStateMachine_override_virtual_EndSelectTransitions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -442,6 +457,9 @@ func (this *QStateMachine) callVirtualBase_BeginMicrostep(event *QEvent) {
 
 }
 func (this *QStateMachine) OnBeginMicrostep(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStateMachine_override_virtual_BeginMicrostep(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -465,6 +483,9 @@ func (this *QStateMachine) callVirtualBase_EndMicrostep(event *QEvent) {
 
 }
 func (this *QStateMachine) OnEndMicrostep(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStateMachine_override_virtual_EndMicrostep(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -488,6 +509,9 @@ func (this *QStateMachine) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QStateMachine) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStateMachine_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

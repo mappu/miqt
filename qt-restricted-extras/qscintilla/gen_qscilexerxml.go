@@ -210,6 +210,9 @@ func (this *QsciLexerXML) callVirtualBase_SetFoldCompact(fold bool) {
 
 }
 func (this *QsciLexerXML) OnSetFoldCompact(slot func(super func(fold bool), fold bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerXML_override_virtual_SetFoldCompact(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -233,6 +236,9 @@ func (this *QsciLexerXML) callVirtualBase_SetFoldPreprocessor(fold bool) {
 
 }
 func (this *QsciLexerXML) OnSetFoldPreprocessor(slot func(super func(fold bool), fold bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerXML_override_virtual_SetFoldPreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -256,6 +262,9 @@ func (this *QsciLexerXML) callVirtualBase_SetCaseSensitiveTags(sens bool) {
 
 }
 func (this *QsciLexerXML) OnSetCaseSensitiveTags(slot func(super func(sens bool), sens bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerXML_override_virtual_SetCaseSensitiveTags(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

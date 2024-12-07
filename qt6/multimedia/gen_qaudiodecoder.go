@@ -380,6 +380,9 @@ func (this *QAudioDecoder) callVirtualBase_Event(event *qt6.QEvent) bool {
 
 }
 func (this *QAudioDecoder) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAudioDecoder_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -405,6 +408,9 @@ func (this *QAudioDecoder) callVirtualBase_EventFilter(watched *qt6.QObject, eve
 
 }
 func (this *QAudioDecoder) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAudioDecoder_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -431,6 +437,9 @@ func (this *QAudioDecoder) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 
 }
 func (this *QAudioDecoder) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAudioDecoder_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -454,6 +463,9 @@ func (this *QAudioDecoder) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 
 }
 func (this *QAudioDecoder) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAudioDecoder_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -477,6 +489,9 @@ func (this *QAudioDecoder) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 
 }
 func (this *QAudioDecoder) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAudioDecoder_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -500,6 +515,9 @@ func (this *QAudioDecoder) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod
 
 }
 func (this *QAudioDecoder) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAudioDecoder_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -523,6 +541,9 @@ func (this *QAudioDecoder) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMet
 
 }
 func (this *QAudioDecoder) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAudioDecoder_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

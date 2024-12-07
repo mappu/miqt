@@ -267,6 +267,9 @@ func (this *QPicture) callVirtualBase_DevType() int {
 
 }
 func (this *QPicture) OnDevType(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPicture_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -291,6 +294,9 @@ func (this *QPicture) callVirtualBase_SetData(data string, size uint) {
 
 }
 func (this *QPicture) OnSetData(slot func(super func(data string, size uint), data string, size uint)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPicture_override_virtual_SetData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -316,6 +322,9 @@ func (this *QPicture) callVirtualBase_PaintEngine() *QPaintEngine {
 	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QPicture_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
 }
 func (this *QPicture) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPicture_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -338,6 +347,9 @@ func (this *QPicture) callVirtualBase_Metric(m QPaintDevice__PaintDeviceMetric) 
 
 }
 func (this *QPicture) OnMetric(slot func(super func(m QPaintDevice__PaintDeviceMetric) int, m QPaintDevice__PaintDeviceMetric) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPicture_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -363,6 +375,9 @@ func (this *QPicture) callVirtualBase_InitPainter(painter *QPainter) {
 
 }
 func (this *QPicture) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPicture_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -385,6 +400,9 @@ func (this *QPicture) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QPicture_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer())))
 }
 func (this *QPicture) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPicture_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -409,6 +427,9 @@ func (this *QPicture) callVirtualBase_SharedPainter() *QPainter {
 	return UnsafeNewQPainter(unsafe.Pointer(C.QPicture_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
 }
 func (this *QPicture) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPicture_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

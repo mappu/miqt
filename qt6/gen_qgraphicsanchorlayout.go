@@ -257,6 +257,9 @@ func (this *QGraphicsAnchorLayout) callVirtualBase_RemoveAt(index int) {
 
 }
 func (this *QGraphicsAnchorLayout) OnRemoveAt(slot func(super func(index int), index int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsAnchorLayout_override_virtual_RemoveAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -280,6 +283,9 @@ func (this *QGraphicsAnchorLayout) callVirtualBase_SetGeometry(rect *QRectF) {
 
 }
 func (this *QGraphicsAnchorLayout) OnSetGeometry(slot func(super func(rect *QRectF), rect *QRectF)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsAnchorLayout_override_virtual_SetGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -303,6 +309,9 @@ func (this *QGraphicsAnchorLayout) callVirtualBase_Count() int {
 
 }
 func (this *QGraphicsAnchorLayout) OnCount(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsAnchorLayout_override_virtual_Count(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -324,6 +333,9 @@ func (this *QGraphicsAnchorLayout) callVirtualBase_ItemAt(index int) *QGraphicsL
 	return UnsafeNewQGraphicsLayoutItem(unsafe.Pointer(C.QGraphicsAnchorLayout_virtualbase_ItemAt(unsafe.Pointer(this.h), (C.int)(index))))
 }
 func (this *QGraphicsAnchorLayout) OnItemAt(slot func(super func(index int) *QGraphicsLayoutItem, index int) *QGraphicsLayoutItem) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsAnchorLayout_override_virtual_ItemAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -349,6 +361,9 @@ func (this *QGraphicsAnchorLayout) callVirtualBase_Invalidate() {
 
 }
 func (this *QGraphicsAnchorLayout) OnInvalidate(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsAnchorLayout_override_virtual_Invalidate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -372,6 +387,9 @@ func (this *QGraphicsAnchorLayout) callVirtualBase_SizeHint(which SizeHint, cons
 
 }
 func (this *QGraphicsAnchorLayout) OnSizeHint(slot func(super func(which SizeHint, constraint *QSizeF) *QSizeF, which SizeHint, constraint *QSizeF) *QSizeF) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsAnchorLayout_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -399,6 +417,9 @@ func (this *QGraphicsAnchorLayout) callVirtualBase_GetContentsMargins(left *floa
 
 }
 func (this *QGraphicsAnchorLayout) OnGetContentsMargins(slot func(super func(left *float64, top *float64, right *float64, bottom *float64), left *float64, top *float64, right *float64, bottom *float64)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsAnchorLayout_override_virtual_GetContentsMargins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -428,6 +449,9 @@ func (this *QGraphicsAnchorLayout) callVirtualBase_UpdateGeometry() {
 
 }
 func (this *QGraphicsAnchorLayout) OnUpdateGeometry(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsAnchorLayout_override_virtual_UpdateGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -448,6 +472,9 @@ func (this *QGraphicsAnchorLayout) callVirtualBase_WidgetEvent(e *QEvent) {
 
 }
 func (this *QGraphicsAnchorLayout) OnWidgetEvent(slot func(super func(e *QEvent), e *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsAnchorLayout_override_virtual_WidgetEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

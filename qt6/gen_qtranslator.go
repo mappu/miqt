@@ -285,6 +285,9 @@ func (this *QTranslator) callVirtualBase_Translate(context string, sourceText st
 	return _ret
 }
 func (this *QTranslator) OnTranslate(slot func(super func(context string, sourceText string, disambiguation string, n int) string, context string, sourceText string, disambiguation string, n int) string) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTranslator_override_virtual_Translate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -323,6 +326,9 @@ func (this *QTranslator) callVirtualBase_IsEmpty() bool {
 
 }
 func (this *QTranslator) OnIsEmpty(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTranslator_override_virtual_IsEmpty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -345,6 +351,9 @@ func (this *QTranslator) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QTranslator) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTranslator_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -370,6 +379,9 @@ func (this *QTranslator) callVirtualBase_EventFilter(watched *QObject, event *QE
 
 }
 func (this *QTranslator) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTranslator_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -396,6 +408,9 @@ func (this *QTranslator) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QTranslator) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTranslator_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -419,6 +434,9 @@ func (this *QTranslator) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QTranslator) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTranslator_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -442,6 +460,9 @@ func (this *QTranslator) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QTranslator) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTranslator_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -465,6 +486,9 @@ func (this *QTranslator) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QTranslator) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTranslator_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -488,6 +512,9 @@ func (this *QTranslator) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QTranslator) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTranslator_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

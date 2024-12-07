@@ -453,6 +453,9 @@ func (this *QIODevice) callVirtualBase_IsSequential() bool {
 
 }
 func (this *QIODevice) OnIsSequential(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIODevice_override_virtual_IsSequential(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -475,6 +478,9 @@ func (this *QIODevice) callVirtualBase_Open(mode QIODeviceBase__OpenModeFlag) bo
 
 }
 func (this *QIODevice) OnOpen(slot func(super func(mode QIODeviceBase__OpenModeFlag) bool, mode QIODeviceBase__OpenModeFlag) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIODevice_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -500,6 +506,9 @@ func (this *QIODevice) callVirtualBase_Close() {
 
 }
 func (this *QIODevice) OnClose(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIODevice_override_virtual_Close(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -520,6 +529,9 @@ func (this *QIODevice) callVirtualBase_Pos() int64 {
 
 }
 func (this *QIODevice) OnPos(slot func(super func() int64) int64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIODevice_override_virtual_Pos(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -542,6 +554,9 @@ func (this *QIODevice) callVirtualBase_Size() int64 {
 
 }
 func (this *QIODevice) OnSize(slot func(super func() int64) int64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIODevice_override_virtual_Size(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -564,6 +579,9 @@ func (this *QIODevice) callVirtualBase_Seek(pos int64) bool {
 
 }
 func (this *QIODevice) OnSeek(slot func(super func(pos int64) bool, pos int64) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIODevice_override_virtual_Seek(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -589,6 +607,9 @@ func (this *QIODevice) callVirtualBase_AtEnd() bool {
 
 }
 func (this *QIODevice) OnAtEnd(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIODevice_override_virtual_AtEnd(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -611,6 +632,9 @@ func (this *QIODevice) callVirtualBase_Reset() bool {
 
 }
 func (this *QIODevice) OnReset(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIODevice_override_virtual_Reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -633,6 +657,9 @@ func (this *QIODevice) callVirtualBase_BytesAvailable() int64 {
 
 }
 func (this *QIODevice) OnBytesAvailable(slot func(super func() int64) int64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIODevice_override_virtual_BytesAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -655,6 +682,9 @@ func (this *QIODevice) callVirtualBase_BytesToWrite() int64 {
 
 }
 func (this *QIODevice) OnBytesToWrite(slot func(super func() int64) int64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIODevice_override_virtual_BytesToWrite(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -677,6 +707,9 @@ func (this *QIODevice) callVirtualBase_CanReadLine() bool {
 
 }
 func (this *QIODevice) OnCanReadLine(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIODevice_override_virtual_CanReadLine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -699,6 +732,9 @@ func (this *QIODevice) callVirtualBase_WaitForReadyRead(msecs int) bool {
 
 }
 func (this *QIODevice) OnWaitForReadyRead(slot func(super func(msecs int) bool, msecs int) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIODevice_override_virtual_WaitForReadyRead(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -724,6 +760,9 @@ func (this *QIODevice) callVirtualBase_WaitForBytesWritten(msecs int) bool {
 
 }
 func (this *QIODevice) OnWaitForBytesWritten(slot func(super func(msecs int) bool, msecs int) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIODevice_override_virtual_WaitForBytesWritten(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -743,6 +782,9 @@ func miqt_exec_callback_QIODevice_WaitForBytesWritten(self *C.QIODevice, cb C.in
 
 }
 func (this *QIODevice) OnReadData(slot func(data string, maxlen int64) int64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIODevice_override_virtual_ReadData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -773,6 +815,9 @@ func (this *QIODevice) callVirtualBase_ReadLineData(data string, maxlen int64) i
 
 }
 func (this *QIODevice) OnReadLineData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIODevice_override_virtual_ReadLineData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -801,6 +846,9 @@ func (this *QIODevice) callVirtualBase_SkipData(maxSize int64) int64 {
 
 }
 func (this *QIODevice) OnSkipData(slot func(super func(maxSize int64) int64, maxSize int64) int64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIODevice_override_virtual_SkipData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -820,6 +868,9 @@ func miqt_exec_callback_QIODevice_SkipData(self *C.QIODevice, cb C.intptr_t, max
 
 }
 func (this *QIODevice) OnWriteData(slot func(data string, lenVal int64) int64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIODevice_override_virtual_WriteData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -848,6 +899,9 @@ func (this *QIODevice) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QIODevice) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIODevice_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -873,6 +927,9 @@ func (this *QIODevice) callVirtualBase_EventFilter(watched *QObject, event *QEve
 
 }
 func (this *QIODevice) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIODevice_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -899,6 +956,9 @@ func (this *QIODevice) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QIODevice) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIODevice_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -922,6 +982,9 @@ func (this *QIODevice) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QIODevice) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIODevice_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -945,6 +1008,9 @@ func (this *QIODevice) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QIODevice) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIODevice_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -968,6 +1034,9 @@ func (this *QIODevice) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QIODevice) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIODevice_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -991,6 +1060,9 @@ func (this *QIODevice) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QIODevice) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIODevice_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

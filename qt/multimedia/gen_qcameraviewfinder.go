@@ -165,6 +165,9 @@ func (this *QCameraViewfinder) callVirtualBase_MediaObject() *QMediaObject {
 	return UnsafeNewQMediaObject(unsafe.Pointer(C.QCameraViewfinder_virtualbase_MediaObject(unsafe.Pointer(this.h))), nil)
 }
 func (this *QCameraViewfinder) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCameraViewfinder_override_virtual_MediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -187,6 +190,9 @@ func (this *QCameraViewfinder) callVirtualBase_SetMediaObject(object *QMediaObje
 
 }
 func (this *QCameraViewfinder) OnSetMediaObject(slot func(super func(object *QMediaObject) bool, object *QMediaObject) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCameraViewfinder_override_virtual_SetMediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -215,6 +221,9 @@ func (this *QCameraViewfinder) callVirtualBase_SizeHint() *qt.QSize {
 
 }
 func (this *QCameraViewfinder) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCameraViewfinder_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -237,6 +246,9 @@ func (this *QCameraViewfinder) callVirtualBase_Event(event *qt.QEvent) bool {
 
 }
 func (this *QCameraViewfinder) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCameraViewfinder_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -262,6 +274,9 @@ func (this *QCameraViewfinder) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
 
 }
 func (this *QCameraViewfinder) OnShowEvent(slot func(super func(event *qt.QShowEvent), event *qt.QShowEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCameraViewfinder_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -285,6 +300,9 @@ func (this *QCameraViewfinder) callVirtualBase_HideEvent(event *qt.QHideEvent) {
 
 }
 func (this *QCameraViewfinder) OnHideEvent(slot func(super func(event *qt.QHideEvent), event *qt.QHideEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCameraViewfinder_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -308,6 +326,9 @@ func (this *QCameraViewfinder) callVirtualBase_ResizeEvent(event *qt.QResizeEven
 
 }
 func (this *QCameraViewfinder) OnResizeEvent(slot func(super func(event *qt.QResizeEvent), event *qt.QResizeEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCameraViewfinder_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -331,6 +352,9 @@ func (this *QCameraViewfinder) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
 
 }
 func (this *QCameraViewfinder) OnMoveEvent(slot func(super func(event *qt.QMoveEvent), event *qt.QMoveEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCameraViewfinder_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -354,6 +378,9 @@ func (this *QCameraViewfinder) callVirtualBase_PaintEvent(event *qt.QPaintEvent)
 
 }
 func (this *QCameraViewfinder) OnPaintEvent(slot func(super func(event *qt.QPaintEvent), event *qt.QPaintEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCameraViewfinder_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

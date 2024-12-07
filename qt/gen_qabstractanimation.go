@@ -320,6 +320,9 @@ func (this *QAbstractAnimation) Start1(policy QAbstractAnimation__DeletionPolicy
 	C.QAbstractAnimation_Start1(this.h, (C.int)(policy))
 }
 func (this *QAbstractAnimation) OnDuration(slot func() int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractAnimation_override_virtual_Duration(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -342,6 +345,9 @@ func (this *QAbstractAnimation) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QAbstractAnimation) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractAnimation_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -361,6 +367,9 @@ func miqt_exec_callback_QAbstractAnimation_Event(self *C.QAbstractAnimation, cb 
 
 }
 func (this *QAbstractAnimation) OnUpdateCurrentTime(slot func(currentTime int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractAnimation_override_virtual_UpdateCurrentTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -384,6 +393,9 @@ func (this *QAbstractAnimation) callVirtualBase_UpdateState(newState QAbstractAn
 
 }
 func (this *QAbstractAnimation) OnUpdateState(slot func(super func(newState QAbstractAnimation__State, oldState QAbstractAnimation__State), newState QAbstractAnimation__State, oldState QAbstractAnimation__State)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractAnimation_override_virtual_UpdateState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -409,6 +421,9 @@ func (this *QAbstractAnimation) callVirtualBase_UpdateDirection(direction QAbstr
 
 }
 func (this *QAbstractAnimation) OnUpdateDirection(slot func(super func(direction QAbstractAnimation__Direction), direction QAbstractAnimation__Direction)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractAnimation_override_virtual_UpdateDirection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -432,6 +447,9 @@ func (this *QAbstractAnimation) callVirtualBase_EventFilter(watched *QObject, ev
 
 }
 func (this *QAbstractAnimation) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractAnimation_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -458,6 +476,9 @@ func (this *QAbstractAnimation) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QAbstractAnimation) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractAnimation_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -481,6 +502,9 @@ func (this *QAbstractAnimation) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QAbstractAnimation) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractAnimation_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -504,6 +528,9 @@ func (this *QAbstractAnimation) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QAbstractAnimation) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractAnimation_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -527,6 +554,9 @@ func (this *QAbstractAnimation) callVirtualBase_ConnectNotify(signal *QMetaMetho
 
 }
 func (this *QAbstractAnimation) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractAnimation_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -550,6 +580,9 @@ func (this *QAbstractAnimation) callVirtualBase_DisconnectNotify(signal *QMetaMe
 
 }
 func (this *QAbstractAnimation) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractAnimation_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -782,6 +815,9 @@ func (this *QAnimationDriver) callVirtualBase_Advance() {
 
 }
 func (this *QAnimationDriver) OnAdvance(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAnimationDriver_override_virtual_Advance(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -802,6 +838,9 @@ func (this *QAnimationDriver) callVirtualBase_Elapsed() int64 {
 
 }
 func (this *QAnimationDriver) OnElapsed(slot func(super func() int64) int64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAnimationDriver_override_virtual_Elapsed(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -824,6 +863,9 @@ func (this *QAnimationDriver) callVirtualBase_Start() {
 
 }
 func (this *QAnimationDriver) OnStart(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAnimationDriver_override_virtual_Start(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -844,6 +886,9 @@ func (this *QAnimationDriver) callVirtualBase_Stop() {
 
 }
 func (this *QAnimationDriver) OnStop(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAnimationDriver_override_virtual_Stop(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -864,6 +909,9 @@ func (this *QAnimationDriver) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QAnimationDriver) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAnimationDriver_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -889,6 +937,9 @@ func (this *QAnimationDriver) callVirtualBase_EventFilter(watched *QObject, even
 
 }
 func (this *QAnimationDriver) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAnimationDriver_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -915,6 +966,9 @@ func (this *QAnimationDriver) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QAnimationDriver) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAnimationDriver_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -938,6 +992,9 @@ func (this *QAnimationDriver) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QAnimationDriver) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAnimationDriver_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -961,6 +1018,9 @@ func (this *QAnimationDriver) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QAnimationDriver) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAnimationDriver_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -984,6 +1044,9 @@ func (this *QAnimationDriver) callVirtualBase_ConnectNotify(signal *QMetaMethod)
 
 }
 func (this *QAnimationDriver) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAnimationDriver_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1007,6 +1070,9 @@ func (this *QAnimationDriver) callVirtualBase_DisconnectNotify(signal *QMetaMeth
 
 }
 func (this *QAnimationDriver) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAnimationDriver_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

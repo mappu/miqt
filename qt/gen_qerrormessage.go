@@ -183,6 +183,9 @@ func (this *QErrorMessage) callVirtualBase_Done(param1 int) {
 
 }
 func (this *QErrorMessage) OnDone(slot func(super func(param1 int), param1 int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_Done(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -206,6 +209,9 @@ func (this *QErrorMessage) callVirtualBase_ChangeEvent(e *QEvent) {
 
 }
 func (this *QErrorMessage) OnChangeEvent(slot func(super func(e *QEvent), e *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -229,6 +235,9 @@ func (this *QErrorMessage) callVirtualBase_SetVisible(visible bool) {
 
 }
 func (this *QErrorMessage) OnSetVisible(slot func(super func(visible bool), visible bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -255,6 +264,9 @@ func (this *QErrorMessage) callVirtualBase_SizeHint() *QSize {
 
 }
 func (this *QErrorMessage) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -280,6 +292,9 @@ func (this *QErrorMessage) callVirtualBase_MinimumSizeHint() *QSize {
 
 }
 func (this *QErrorMessage) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -302,6 +317,9 @@ func (this *QErrorMessage) callVirtualBase_Open() {
 
 }
 func (this *QErrorMessage) OnOpen(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -322,6 +340,9 @@ func (this *QErrorMessage) callVirtualBase_Exec() int {
 
 }
 func (this *QErrorMessage) OnExec(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_Exec(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -344,6 +365,9 @@ func (this *QErrorMessage) callVirtualBase_Accept() {
 
 }
 func (this *QErrorMessage) OnAccept(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_Accept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -364,6 +388,9 @@ func (this *QErrorMessage) callVirtualBase_Reject() {
 
 }
 func (this *QErrorMessage) OnReject(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_Reject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -384,6 +411,9 @@ func (this *QErrorMessage) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
 
 }
 func (this *QErrorMessage) OnKeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -407,6 +437,9 @@ func (this *QErrorMessage) callVirtualBase_CloseEvent(param1 *QCloseEvent) {
 
 }
 func (this *QErrorMessage) OnCloseEvent(slot func(super func(param1 *QCloseEvent), param1 *QCloseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -430,6 +463,9 @@ func (this *QErrorMessage) callVirtualBase_ShowEvent(param1 *QShowEvent) {
 
 }
 func (this *QErrorMessage) OnShowEvent(slot func(super func(param1 *QShowEvent), param1 *QShowEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -453,6 +489,9 @@ func (this *QErrorMessage) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
 
 }
 func (this *QErrorMessage) OnResizeEvent(slot func(super func(param1 *QResizeEvent), param1 *QResizeEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -476,6 +515,9 @@ func (this *QErrorMessage) callVirtualBase_ContextMenuEvent(param1 *QContextMenu
 
 }
 func (this *QErrorMessage) OnContextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -499,6 +541,9 @@ func (this *QErrorMessage) callVirtualBase_EventFilter(param1 *QObject, param2 *
 
 }
 func (this *QErrorMessage) OnEventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

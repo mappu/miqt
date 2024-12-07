@@ -229,6 +229,9 @@ func (this *QsciLexerPostScript) callVirtualBase_SetTokenize(tokenize bool) {
 
 }
 func (this *QsciLexerPostScript) OnSetTokenize(slot func(super func(tokenize bool), tokenize bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_SetTokenize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -252,6 +255,9 @@ func (this *QsciLexerPostScript) callVirtualBase_SetLevel(level int) {
 
 }
 func (this *QsciLexerPostScript) OnSetLevel(slot func(super func(level int), level int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_SetLevel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -275,6 +281,9 @@ func (this *QsciLexerPostScript) callVirtualBase_SetFoldCompact(fold bool) {
 
 }
 func (this *QsciLexerPostScript) OnSetFoldCompact(slot func(super func(fold bool), fold bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_SetFoldCompact(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -298,6 +307,9 @@ func (this *QsciLexerPostScript) callVirtualBase_SetFoldAtElse(fold bool) {
 
 }
 func (this *QsciLexerPostScript) OnSetFoldAtElse(slot func(super func(fold bool), fold bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_SetFoldAtElse(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -315,6 +327,9 @@ func miqt_exec_callback_QsciLexerPostScript_SetFoldAtElse(self *C.QsciLexerPostS
 
 }
 func (this *QsciLexerPostScript) OnLanguage(slot func() string) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_Language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -340,6 +355,9 @@ func (this *QsciLexerPostScript) callVirtualBase_Lexer() string {
 
 }
 func (this *QsciLexerPostScript) OnLexer(slot func(super func() string) string) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_Lexer(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -364,6 +382,9 @@ func (this *QsciLexerPostScript) callVirtualBase_LexerId() int {
 
 }
 func (this *QsciLexerPostScript) OnLexerId(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_LexerId(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -387,6 +408,9 @@ func (this *QsciLexerPostScript) callVirtualBase_AutoCompletionFillups() string 
 
 }
 func (this *QsciLexerPostScript) OnAutoCompletionFillups(slot func(super func() string) string) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_AutoCompletionFillups(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -420,6 +444,9 @@ func (this *QsciLexerPostScript) callVirtualBase_AutoCompletionWordSeparators() 
 
 }
 func (this *QsciLexerPostScript) OnAutoCompletionWordSeparators(slot func(super func() []string) []string) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_AutoCompletionWordSeparators(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -453,6 +480,9 @@ func (this *QsciLexerPostScript) callVirtualBase_BlockEnd(style *int) string {
 
 }
 func (this *QsciLexerPostScript) OnBlockEnd(slot func(super func(style *int) string, style *int) string) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_BlockEnd(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -480,6 +510,9 @@ func (this *QsciLexerPostScript) callVirtualBase_BlockLookback() int {
 
 }
 func (this *QsciLexerPostScript) OnBlockLookback(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_BlockLookback(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -503,6 +536,9 @@ func (this *QsciLexerPostScript) callVirtualBase_BlockStart(style *int) string {
 
 }
 func (this *QsciLexerPostScript) OnBlockStart(slot func(super func(style *int) string, style *int) string) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_BlockStart(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -531,6 +567,9 @@ func (this *QsciLexerPostScript) callVirtualBase_BlockStartKeyword(style *int) s
 
 }
 func (this *QsciLexerPostScript) OnBlockStartKeyword(slot func(super func(style *int) string, style *int) string) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_BlockStartKeyword(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -558,6 +597,9 @@ func (this *QsciLexerPostScript) callVirtualBase_BraceStyle() int {
 
 }
 func (this *QsciLexerPostScript) OnBraceStyle(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_BraceStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -580,6 +622,9 @@ func (this *QsciLexerPostScript) callVirtualBase_CaseSensitive() bool {
 
 }
 func (this *QsciLexerPostScript) OnCaseSensitive(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_CaseSensitive(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -605,6 +650,9 @@ func (this *QsciLexerPostScript) callVirtualBase_Color(style int) *qt6.QColor {
 
 }
 func (this *QsciLexerPostScript) OnColor(slot func(super func(style int) *qt6.QColor, style int) *qt6.QColor) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_Color(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -630,6 +678,9 @@ func (this *QsciLexerPostScript) callVirtualBase_EolFill(style int) bool {
 
 }
 func (this *QsciLexerPostScript) OnEolFill(slot func(super func(style int) bool, style int) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_EolFill(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -658,6 +709,9 @@ func (this *QsciLexerPostScript) callVirtualBase_Font(style int) *qt6.QFont {
 
 }
 func (this *QsciLexerPostScript) OnFont(slot func(super func(style int) *qt6.QFont, style int) *qt6.QFont) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_Font(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -683,6 +737,9 @@ func (this *QsciLexerPostScript) callVirtualBase_IndentationGuideView() int {
 
 }
 func (this *QsciLexerPostScript) OnIndentationGuideView(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_IndentationGuideView(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -706,6 +763,9 @@ func (this *QsciLexerPostScript) callVirtualBase_Keywords(set int) string {
 
 }
 func (this *QsciLexerPostScript) OnKeywords(slot func(super func(set int) string, set int) string) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_Keywords(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -733,6 +793,9 @@ func (this *QsciLexerPostScript) callVirtualBase_DefaultStyle() int {
 
 }
 func (this *QsciLexerPostScript) OnDefaultStyle(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_DefaultStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -749,6 +812,9 @@ func miqt_exec_callback_QsciLexerPostScript_DefaultStyle(self *C.QsciLexerPostSc
 
 }
 func (this *QsciLexerPostScript) OnDescription(slot func(style int) string) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_Description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -781,6 +847,9 @@ func (this *QsciLexerPostScript) callVirtualBase_Paper(style int) *qt6.QColor {
 
 }
 func (this *QsciLexerPostScript) OnPaper(slot func(super func(style int) *qt6.QColor, style int) *qt6.QColor) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_Paper(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -809,6 +878,9 @@ func (this *QsciLexerPostScript) callVirtualBase_DefaultColorWithStyle(style int
 
 }
 func (this *QsciLexerPostScript) OnDefaultColorWithStyle(slot func(super func(style int) *qt6.QColor, style int) *qt6.QColor) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_DefaultColorWithStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -834,6 +906,9 @@ func (this *QsciLexerPostScript) callVirtualBase_DefaultEolFill(style int) bool 
 
 }
 func (this *QsciLexerPostScript) OnDefaultEolFill(slot func(super func(style int) bool, style int) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_DefaultEolFill(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -862,6 +937,9 @@ func (this *QsciLexerPostScript) callVirtualBase_DefaultFontWithStyle(style int)
 
 }
 func (this *QsciLexerPostScript) OnDefaultFontWithStyle(slot func(super func(style int) *qt6.QFont, style int) *qt6.QFont) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_DefaultFontWithStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -890,6 +968,9 @@ func (this *QsciLexerPostScript) callVirtualBase_DefaultPaperWithStyle(style int
 
 }
 func (this *QsciLexerPostScript) OnDefaultPaperWithStyle(slot func(super func(style int) *qt6.QColor, style int) *qt6.QColor) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_DefaultPaperWithStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -915,6 +996,9 @@ func (this *QsciLexerPostScript) callVirtualBase_SetEditor(editor *QsciScintilla
 
 }
 func (this *QsciLexerPostScript) OnSetEditor(slot func(super func(editor *QsciScintilla), editor *QsciScintilla)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_SetEditor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -938,6 +1022,9 @@ func (this *QsciLexerPostScript) callVirtualBase_RefreshProperties() {
 
 }
 func (this *QsciLexerPostScript) OnRefreshProperties(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_RefreshProperties(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -958,6 +1045,9 @@ func (this *QsciLexerPostScript) callVirtualBase_StyleBitsNeeded() int {
 
 }
 func (this *QsciLexerPostScript) OnStyleBitsNeeded(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_StyleBitsNeeded(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -981,6 +1071,9 @@ func (this *QsciLexerPostScript) callVirtualBase_WordCharacters() string {
 
 }
 func (this *QsciLexerPostScript) OnWordCharacters(slot func(super func() string) string) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_WordCharacters(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1005,6 +1098,9 @@ func (this *QsciLexerPostScript) callVirtualBase_SetAutoIndentStyle(autoindentst
 
 }
 func (this *QsciLexerPostScript) OnSetAutoIndentStyle(slot func(super func(autoindentstyle int), autoindentstyle int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_SetAutoIndentStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1028,6 +1124,9 @@ func (this *QsciLexerPostScript) callVirtualBase_SetColor(c *qt6.QColor, style i
 
 }
 func (this *QsciLexerPostScript) OnSetColor(slot func(super func(c *qt6.QColor, style int), c *qt6.QColor, style int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_SetColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1052,6 +1151,9 @@ func (this *QsciLexerPostScript) callVirtualBase_SetEolFill(eoffill bool, style 
 
 }
 func (this *QsciLexerPostScript) OnSetEolFill(slot func(super func(eoffill bool, style int), eoffill bool, style int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_SetEolFill(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1077,6 +1179,9 @@ func (this *QsciLexerPostScript) callVirtualBase_SetFont(f *qt6.QFont, style int
 
 }
 func (this *QsciLexerPostScript) OnSetFont(slot func(super func(f *qt6.QFont, style int), f *qt6.QFont, style int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_SetFont(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1101,6 +1206,9 @@ func (this *QsciLexerPostScript) callVirtualBase_SetPaper(c *qt6.QColor, style i
 
 }
 func (this *QsciLexerPostScript) OnSetPaper(slot func(super func(c *qt6.QColor, style int), c *qt6.QColor, style int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_SetPaper(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1129,6 +1237,9 @@ func (this *QsciLexerPostScript) callVirtualBase_ReadProperties(qs *qt6.QSetting
 
 }
 func (this *QsciLexerPostScript) OnReadProperties(slot func(super func(qs *qt6.QSettings, prefix string) bool, qs *qt6.QSettings, prefix string) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_ReadProperties(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1162,6 +1273,9 @@ func (this *QsciLexerPostScript) callVirtualBase_WriteProperties(qs *qt6.QSettin
 
 }
 func (this *QsciLexerPostScript) OnWriteProperties(slot func(super func(qs *qt6.QSettings, prefix string) bool, qs *qt6.QSettings, prefix string) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerPostScript_override_virtual_WriteProperties(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

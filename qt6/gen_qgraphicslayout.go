@@ -129,6 +129,9 @@ func (this *QGraphicsLayout) callVirtualBase_GetContentsMargins(left *float64, t
 
 }
 func (this *QGraphicsLayout) OnGetContentsMargins(slot func(super func(left *float64, top *float64, right *float64, bottom *float64), left *float64, top *float64, right *float64, bottom *float64)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsLayout_override_virtual_GetContentsMargins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -158,6 +161,9 @@ func (this *QGraphicsLayout) callVirtualBase_Invalidate() {
 
 }
 func (this *QGraphicsLayout) OnInvalidate(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsLayout_override_virtual_Invalidate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -178,6 +184,9 @@ func (this *QGraphicsLayout) callVirtualBase_UpdateGeometry() {
 
 }
 func (this *QGraphicsLayout) OnUpdateGeometry(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsLayout_override_virtual_UpdateGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -198,6 +207,9 @@ func (this *QGraphicsLayout) callVirtualBase_WidgetEvent(e *QEvent) {
 
 }
 func (this *QGraphicsLayout) OnWidgetEvent(slot func(super func(e *QEvent), e *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsLayout_override_virtual_WidgetEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -215,6 +227,9 @@ func miqt_exec_callback_QGraphicsLayout_WidgetEvent(self *C.QGraphicsLayout, cb 
 
 }
 func (this *QGraphicsLayout) OnCount(slot func() int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsLayout_override_virtual_Count(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -231,6 +246,9 @@ func miqt_exec_callback_QGraphicsLayout_Count(self *C.QGraphicsLayout, cb C.intp
 
 }
 func (this *QGraphicsLayout) OnItemAt(slot func(i int) *QGraphicsLayoutItem) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsLayout_override_virtual_ItemAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -250,6 +268,9 @@ func miqt_exec_callback_QGraphicsLayout_ItemAt(self *C.QGraphicsLayout, cb C.int
 
 }
 func (this *QGraphicsLayout) OnRemoveAt(slot func(index int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsLayout_override_virtual_RemoveAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -273,6 +294,9 @@ func (this *QGraphicsLayout) callVirtualBase_SetGeometry(rect *QRectF) {
 
 }
 func (this *QGraphicsLayout) OnSetGeometry(slot func(super func(rect *QRectF), rect *QRectF)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsLayout_override_virtual_SetGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -296,6 +320,9 @@ func (this *QGraphicsLayout) callVirtualBase_IsEmpty() bool {
 
 }
 func (this *QGraphicsLayout) OnIsEmpty(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsLayout_override_virtual_IsEmpty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -312,6 +339,9 @@ func miqt_exec_callback_QGraphicsLayout_IsEmpty(self *C.QGraphicsLayout, cb C.in
 
 }
 func (this *QGraphicsLayout) OnSizeHint(slot func(which SizeHint, constraint *QSizeF) *QSizeF) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsLayout_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

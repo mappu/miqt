@@ -193,6 +193,9 @@ func (this *QTextList) callVirtualBase_BlockInserted(block *QTextBlock) {
 
 }
 func (this *QTextList) OnBlockInserted(slot func(super func(block *QTextBlock), block *QTextBlock)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextList_override_virtual_BlockInserted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -216,6 +219,9 @@ func (this *QTextList) callVirtualBase_BlockRemoved(block *QTextBlock) {
 
 }
 func (this *QTextList) OnBlockRemoved(slot func(super func(block *QTextBlock), block *QTextBlock)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextList_override_virtual_BlockRemoved(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -239,6 +245,9 @@ func (this *QTextList) callVirtualBase_BlockFormatChanged(block *QTextBlock) {
 
 }
 func (this *QTextList) OnBlockFormatChanged(slot func(super func(block *QTextBlock), block *QTextBlock)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextList_override_virtual_BlockFormatChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

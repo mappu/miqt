@@ -290,6 +290,9 @@ func QAbstractVideoSurface_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 func (this *QAbstractVideoSurface) OnSupportedPixelFormats(slot func(typeVal QAbstractVideoBuffer__HandleType) []QVideoFrame__PixelFormat) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractVideoSurface_override_virtual_SupportedPixelFormats(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -321,6 +324,9 @@ func (this *QAbstractVideoSurface) callVirtualBase_IsFormatSupported(format *QVi
 
 }
 func (this *QAbstractVideoSurface) OnIsFormatSupported(slot func(super func(format *QVideoSurfaceFormat) bool, format *QVideoSurfaceFormat) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractVideoSurface_override_virtual_IsFormatSupported(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -349,6 +355,9 @@ func (this *QAbstractVideoSurface) callVirtualBase_NearestFormat(format *QVideoS
 
 }
 func (this *QAbstractVideoSurface) OnNearestFormat(slot func(super func(format *QVideoSurfaceFormat) *QVideoSurfaceFormat, format *QVideoSurfaceFormat) *QVideoSurfaceFormat) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractVideoSurface_override_virtual_NearestFormat(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -374,6 +383,9 @@ func (this *QAbstractVideoSurface) callVirtualBase_Start(format *QVideoSurfaceFo
 
 }
 func (this *QAbstractVideoSurface) OnStart(slot func(super func(format *QVideoSurfaceFormat) bool, format *QVideoSurfaceFormat) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractVideoSurface_override_virtual_Start(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -399,6 +411,9 @@ func (this *QAbstractVideoSurface) callVirtualBase_Stop() {
 
 }
 func (this *QAbstractVideoSurface) OnStop(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractVideoSurface_override_virtual_Stop(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -413,6 +428,9 @@ func miqt_exec_callback_QAbstractVideoSurface_Stop(self *C.QAbstractVideoSurface
 
 }
 func (this *QAbstractVideoSurface) OnPresent(slot func(frame *QVideoFrame) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractVideoSurface_override_virtual_Present(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -438,6 +456,9 @@ func (this *QAbstractVideoSurface) callVirtualBase_Event(event *qt.QEvent) bool 
 
 }
 func (this *QAbstractVideoSurface) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractVideoSurface_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -463,6 +484,9 @@ func (this *QAbstractVideoSurface) callVirtualBase_EventFilter(watched *qt.QObje
 
 }
 func (this *QAbstractVideoSurface) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractVideoSurface_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -489,6 +513,9 @@ func (this *QAbstractVideoSurface) callVirtualBase_TimerEvent(event *qt.QTimerEv
 
 }
 func (this *QAbstractVideoSurface) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractVideoSurface_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -512,6 +539,9 @@ func (this *QAbstractVideoSurface) callVirtualBase_ChildEvent(event *qt.QChildEv
 
 }
 func (this *QAbstractVideoSurface) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractVideoSurface_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -535,6 +565,9 @@ func (this *QAbstractVideoSurface) callVirtualBase_CustomEvent(event *qt.QEvent)
 
 }
 func (this *QAbstractVideoSurface) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractVideoSurface_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -558,6 +591,9 @@ func (this *QAbstractVideoSurface) callVirtualBase_ConnectNotify(signal *qt.QMet
 
 }
 func (this *QAbstractVideoSurface) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractVideoSurface_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -581,6 +617,9 @@ func (this *QAbstractVideoSurface) callVirtualBase_DisconnectNotify(signal *qt.Q
 
 }
 func (this *QAbstractVideoSurface) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractVideoSurface_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

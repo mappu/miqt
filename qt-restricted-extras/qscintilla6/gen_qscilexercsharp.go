@@ -169,6 +169,9 @@ func (this *QsciLexerCSharp) callVirtualBase_SetFoldAtElse(fold bool) {
 
 }
 func (this *QsciLexerCSharp) OnSetFoldAtElse(slot func(super func(fold bool), fold bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerCSharp_override_virtual_SetFoldAtElse(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -192,6 +195,9 @@ func (this *QsciLexerCSharp) callVirtualBase_SetFoldComments(fold bool) {
 
 }
 func (this *QsciLexerCSharp) OnSetFoldComments(slot func(super func(fold bool), fold bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerCSharp_override_virtual_SetFoldComments(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -215,6 +221,9 @@ func (this *QsciLexerCSharp) callVirtualBase_SetFoldCompact(fold bool) {
 
 }
 func (this *QsciLexerCSharp) OnSetFoldCompact(slot func(super func(fold bool), fold bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerCSharp_override_virtual_SetFoldCompact(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -238,6 +247,9 @@ func (this *QsciLexerCSharp) callVirtualBase_SetFoldPreprocessor(fold bool) {
 
 }
 func (this *QsciLexerCSharp) OnSetFoldPreprocessor(slot func(super func(fold bool), fold bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerCSharp_override_virtual_SetFoldPreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -261,6 +273,9 @@ func (this *QsciLexerCSharp) callVirtualBase_SetStylePreprocessor(style bool) {
 
 }
 func (this *QsciLexerCSharp) OnSetStylePreprocessor(slot func(super func(style bool), style bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerCSharp_override_virtual_SetStylePreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

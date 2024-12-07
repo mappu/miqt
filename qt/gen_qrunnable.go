@@ -76,6 +76,9 @@ func (this *QRunnable) OperatorAssign(param1 *QRunnable) {
 	C.QRunnable_OperatorAssign(this.h, param1.cPointer())
 }
 func (this *QRunnable) OnRun(slot func()) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRunnable_override_virtual_Run(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

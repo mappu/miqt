@@ -101,6 +101,9 @@ func (this *QTest__QTouchEventWidgetSequence) callVirtualBase_Stationary(touchId
 	return UnsafeNewQTest__QTouchEventWidgetSequence(unsafe.Pointer(C.QTest__QTouchEventWidgetSequence_virtualbase_Stationary(unsafe.Pointer(this.h), (C.int)(touchId))), nil)
 }
 func (this *QTest__QTouchEventWidgetSequence) OnStationary(slot func(super func(touchId int) *QTest__QTouchEventWidgetSequence, touchId int) *QTest__QTouchEventWidgetSequence) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTest__QTouchEventWidgetSequence_override_virtual_Stationary(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -126,6 +129,9 @@ func (this *QTest__QTouchEventWidgetSequence) callVirtualBase_Commit(processEven
 
 }
 func (this *QTest__QTouchEventWidgetSequence) OnCommit(slot func(super func(processEvents bool) bool, processEvents bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTest__QTouchEventWidgetSequence_override_virtual_Commit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

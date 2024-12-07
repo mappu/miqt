@@ -842,6 +842,9 @@ func (this *QMediaPlayer) callVirtualBase_Availability() QMultimedia__Availabili
 
 }
 func (this *QMediaPlayer) OnAvailability(slot func(super func() QMultimedia__AvailabilityStatus) QMultimedia__AvailabilityStatus) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaPlayer_override_virtual_Availability(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -864,6 +867,9 @@ func (this *QMediaPlayer) callVirtualBase_Bind(param1 *qt.QObject) bool {
 
 }
 func (this *QMediaPlayer) OnBind(slot func(super func(param1 *qt.QObject) bool, param1 *qt.QObject) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaPlayer_override_virtual_Bind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -889,6 +895,9 @@ func (this *QMediaPlayer) callVirtualBase_Unbind(param1 *qt.QObject) {
 
 }
 func (this *QMediaPlayer) OnUnbind(slot func(super func(param1 *qt.QObject), param1 *qt.QObject)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaPlayer_override_virtual_Unbind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -912,6 +921,9 @@ func (this *QMediaPlayer) callVirtualBase_IsAvailable() bool {
 
 }
 func (this *QMediaPlayer) OnIsAvailable(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaPlayer_override_virtual_IsAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -933,6 +945,9 @@ func (this *QMediaPlayer) callVirtualBase_Service() *QMediaService {
 	return UnsafeNewQMediaService(unsafe.Pointer(C.QMediaPlayer_virtualbase_Service(unsafe.Pointer(this.h))), nil)
 }
 func (this *QMediaPlayer) OnService(slot func(super func() *QMediaService) *QMediaService) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaPlayer_override_virtual_Service(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

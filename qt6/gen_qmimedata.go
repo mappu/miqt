@@ -265,6 +265,9 @@ func (this *QMimeData) callVirtualBase_HasFormat(mimetype string) bool {
 
 }
 func (this *QMimeData) OnHasFormat(slot func(super func(mimetype string) bool, mimetype string) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMimeData_override_virtual_HasFormat(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -302,6 +305,9 @@ func (this *QMimeData) callVirtualBase_Formats() []string {
 
 }
 func (this *QMimeData) OnFormats(slot func(super func() []string) []string) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMimeData_override_virtual_Formats(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -341,6 +347,9 @@ func (this *QMimeData) callVirtualBase_RetrieveData(mimetype string, preferredTy
 
 }
 func (this *QMimeData) OnRetrieveData(slot func(super func(mimetype string, preferredType QMetaType) *QVariant, mimetype string, preferredType QMetaType) *QVariant) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMimeData_override_virtual_RetrieveData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -373,6 +382,9 @@ func (this *QMimeData) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QMimeData) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMimeData_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -398,6 +410,9 @@ func (this *QMimeData) callVirtualBase_EventFilter(watched *QObject, event *QEve
 
 }
 func (this *QMimeData) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMimeData_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -424,6 +439,9 @@ func (this *QMimeData) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QMimeData) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMimeData_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -447,6 +465,9 @@ func (this *QMimeData) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QMimeData) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMimeData_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -470,6 +491,9 @@ func (this *QMimeData) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QMimeData) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMimeData_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -493,6 +517,9 @@ func (this *QMimeData) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QMimeData) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMimeData_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -516,6 +543,9 @@ func (this *QMimeData) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QMimeData) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMimeData_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

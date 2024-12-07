@@ -115,6 +115,9 @@ func (this *QsciPrinter) callVirtualBase_FormatPage(painter *qt6.QPainter, drawi
 
 }
 func (this *QsciPrinter) OnFormatPage(slot func(super func(painter *qt6.QPainter, drawing bool, area *qt6.QRect, pagenr int), painter *qt6.QPainter, drawing bool, area *qt6.QRect, pagenr int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciPrinter_override_virtual_FormatPage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -142,6 +145,9 @@ func (this *QsciPrinter) callVirtualBase_SetMagnification(magnification int) {
 
 }
 func (this *QsciPrinter) OnSetMagnification(slot func(super func(magnification int), magnification int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciPrinter_override_virtual_SetMagnification(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -165,6 +171,9 @@ func (this *QsciPrinter) callVirtualBase_PrintRange(qsb *QsciScintillaBase, pain
 
 }
 func (this *QsciPrinter) OnPrintRange(slot func(super func(qsb *QsciScintillaBase, painter *qt6.QPainter, from int, to int) int, qsb *QsciScintillaBase, painter *qt6.QPainter, from int, to int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciPrinter_override_virtual_PrintRange(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -194,6 +203,9 @@ func (this *QsciPrinter) callVirtualBase_PrintRange2(qsb *QsciScintillaBase, fro
 
 }
 func (this *QsciPrinter) OnPrintRange2(slot func(super func(qsb *QsciScintillaBase, from int, to int) int, qsb *QsciScintillaBase, from int, to int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciPrinter_override_virtual_PrintRange2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -222,6 +234,9 @@ func (this *QsciPrinter) callVirtualBase_SetWrapMode(wmode QsciScintilla__WrapMo
 
 }
 func (this *QsciPrinter) OnSetWrapMode(slot func(super func(wmode QsciScintilla__WrapMode), wmode QsciScintilla__WrapMode)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciPrinter_override_virtual_SetWrapMode(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -245,6 +260,9 @@ func (this *QsciPrinter) callVirtualBase_DevType() int {
 
 }
 func (this *QsciPrinter) OnDevType(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciPrinter_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -267,6 +285,9 @@ func (this *QsciPrinter) callVirtualBase_NewPage() bool {
 
 }
 func (this *QsciPrinter) OnNewPage(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciPrinter_override_virtual_NewPage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -288,6 +309,9 @@ func (this *QsciPrinter) callVirtualBase_PaintEngine() *qt6.QPaintEngine {
 	return qt6.UnsafeNewQPaintEngine(unsafe.Pointer(C.QsciPrinter_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
 }
 func (this *QsciPrinter) OnPaintEngine(slot func(super func() *qt6.QPaintEngine) *qt6.QPaintEngine) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciPrinter_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -310,6 +334,9 @@ func (this *QsciPrinter) callVirtualBase_Metric(param1 qt6.QPaintDevice__PaintDe
 
 }
 func (this *QsciPrinter) OnMetric(slot func(super func(param1 qt6.QPaintDevice__PaintDeviceMetric) int, param1 qt6.QPaintDevice__PaintDeviceMetric) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciPrinter_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

@@ -77,6 +77,9 @@ func (this *QScriptExtensionInterface) OperatorAssign(param1 *QScriptExtensionIn
 	C.QScriptExtensionInterface_OperatorAssign(this.h, param1.cPointer())
 }
 func (this *QScriptExtensionInterface) OnInitialize(slot func(key string, engine *QScriptEngine)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QScriptExtensionInterface_override_virtual_Initialize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -98,6 +101,9 @@ func miqt_exec_callback_QScriptExtensionInterface_Initialize(self *C.QScriptExte
 
 }
 func (this *QScriptExtensionInterface) OnKeys(slot func() []string) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QScriptExtensionInterface_override_virtual_Keys(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

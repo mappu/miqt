@@ -182,6 +182,9 @@ func (this *QGesture) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QGesture) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGesture_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -207,6 +210,9 @@ func (this *QGesture) callVirtualBase_EventFilter(watched *QObject, event *QEven
 
 }
 func (this *QGesture) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGesture_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -233,6 +239,9 @@ func (this *QGesture) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QGesture) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGesture_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -256,6 +265,9 @@ func (this *QGesture) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QGesture) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGesture_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -279,6 +291,9 @@ func (this *QGesture) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QGesture) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGesture_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -302,6 +317,9 @@ func (this *QGesture) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QGesture) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGesture_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -325,6 +343,9 @@ func (this *QGesture) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QGesture) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGesture_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1280,6 +1301,9 @@ func (this *QGestureEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QGestureEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGestureEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1302,6 +1326,9 @@ func (this *QGestureEvent) callVirtualBase_Clone() *QEvent {
 	return UnsafeNewQEvent(unsafe.Pointer(C.QGestureEvent_virtualbase_Clone(unsafe.Pointer(this.h))))
 }
 func (this *QGestureEvent) OnClone(slot func(super func() *QEvent) *QEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGestureEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

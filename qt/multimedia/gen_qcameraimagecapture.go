@@ -543,6 +543,9 @@ func (this *QCameraImageCapture) callVirtualBase_MediaObject() *QMediaObject {
 	return UnsafeNewQMediaObject(unsafe.Pointer(C.QCameraImageCapture_virtualbase_MediaObject(unsafe.Pointer(this.h))), nil)
 }
 func (this *QCameraImageCapture) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCameraImageCapture_override_virtual_MediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -565,6 +568,9 @@ func (this *QCameraImageCapture) callVirtualBase_SetMediaObject(mediaObject *QMe
 
 }
 func (this *QCameraImageCapture) OnSetMediaObject(slot func(super func(mediaObject *QMediaObject) bool, mediaObject *QMediaObject) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCameraImageCapture_override_virtual_SetMediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -590,6 +596,9 @@ func (this *QCameraImageCapture) callVirtualBase_Event(event *qt.QEvent) bool {
 
 }
 func (this *QCameraImageCapture) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCameraImageCapture_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -615,6 +624,9 @@ func (this *QCameraImageCapture) callVirtualBase_EventFilter(watched *qt.QObject
 
 }
 func (this *QCameraImageCapture) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCameraImageCapture_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -641,6 +653,9 @@ func (this *QCameraImageCapture) callVirtualBase_TimerEvent(event *qt.QTimerEven
 
 }
 func (this *QCameraImageCapture) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCameraImageCapture_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -664,6 +679,9 @@ func (this *QCameraImageCapture) callVirtualBase_ChildEvent(event *qt.QChildEven
 
 }
 func (this *QCameraImageCapture) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCameraImageCapture_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -687,6 +705,9 @@ func (this *QCameraImageCapture) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
 }
 func (this *QCameraImageCapture) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCameraImageCapture_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -710,6 +731,9 @@ func (this *QCameraImageCapture) callVirtualBase_ConnectNotify(signal *qt.QMetaM
 
 }
 func (this *QCameraImageCapture) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCameraImageCapture_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -733,6 +757,9 @@ func (this *QCameraImageCapture) callVirtualBase_DisconnectNotify(signal *qt.QMe
 
 }
 func (this *QCameraImageCapture) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCameraImageCapture_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

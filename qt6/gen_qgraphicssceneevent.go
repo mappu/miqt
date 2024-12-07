@@ -94,6 +94,9 @@ func (this *QGraphicsSceneEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QGraphicsSceneEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsSceneEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -116,6 +119,9 @@ func (this *QGraphicsSceneEvent) callVirtualBase_Clone() *QEvent {
 	return UnsafeNewQEvent(unsafe.Pointer(C.QGraphicsSceneEvent_virtualbase_Clone(unsafe.Pointer(this.h))))
 }
 func (this *QGraphicsSceneEvent) OnClone(slot func(super func() *QEvent) *QEvent) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsSceneEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

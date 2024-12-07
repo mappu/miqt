@@ -293,6 +293,9 @@ func (this *QDataWidgetMapper) callVirtualBase_SetCurrentIndex(index int) {
 
 }
 func (this *QDataWidgetMapper) OnSetCurrentIndex(slot func(super func(index int), index int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDataWidgetMapper_override_virtual_SetCurrentIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -316,6 +319,9 @@ func (this *QDataWidgetMapper) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QDataWidgetMapper) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDataWidgetMapper_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -341,6 +347,9 @@ func (this *QDataWidgetMapper) callVirtualBase_EventFilter(watched *QObject, eve
 
 }
 func (this *QDataWidgetMapper) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDataWidgetMapper_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -367,6 +376,9 @@ func (this *QDataWidgetMapper) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QDataWidgetMapper) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDataWidgetMapper_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -390,6 +402,9 @@ func (this *QDataWidgetMapper) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QDataWidgetMapper) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDataWidgetMapper_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -413,6 +428,9 @@ func (this *QDataWidgetMapper) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QDataWidgetMapper) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDataWidgetMapper_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -436,6 +454,9 @@ func (this *QDataWidgetMapper) callVirtualBase_ConnectNotify(signal *QMetaMethod
 
 }
 func (this *QDataWidgetMapper) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDataWidgetMapper_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -459,6 +480,9 @@ func (this *QDataWidgetMapper) callVirtualBase_DisconnectNotify(signal *QMetaMet
 
 }
 func (this *QDataWidgetMapper) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDataWidgetMapper_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

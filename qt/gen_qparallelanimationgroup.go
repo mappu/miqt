@@ -161,6 +161,9 @@ func (this *QParallelAnimationGroup) callVirtualBase_Duration() int {
 
 }
 func (this *QParallelAnimationGroup) OnDuration(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QParallelAnimationGroup_override_virtual_Duration(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -183,6 +186,9 @@ func (this *QParallelAnimationGroup) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QParallelAnimationGroup) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QParallelAnimationGroup_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -208,6 +214,9 @@ func (this *QParallelAnimationGroup) callVirtualBase_UpdateCurrentTime(currentTi
 
 }
 func (this *QParallelAnimationGroup) OnUpdateCurrentTime(slot func(super func(currentTime int), currentTime int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QParallelAnimationGroup_override_virtual_UpdateCurrentTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -231,6 +240,9 @@ func (this *QParallelAnimationGroup) callVirtualBase_UpdateState(newState QAbstr
 
 }
 func (this *QParallelAnimationGroup) OnUpdateState(slot func(super func(newState QAbstractAnimation__State, oldState QAbstractAnimation__State), newState QAbstractAnimation__State, oldState QAbstractAnimation__State)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QParallelAnimationGroup_override_virtual_UpdateState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -256,6 +268,9 @@ func (this *QParallelAnimationGroup) callVirtualBase_UpdateDirection(direction Q
 
 }
 func (this *QParallelAnimationGroup) OnUpdateDirection(slot func(super func(direction QAbstractAnimation__Direction), direction QAbstractAnimation__Direction)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QParallelAnimationGroup_override_virtual_UpdateDirection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
