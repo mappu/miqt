@@ -576,7 +576,6 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 
 	} else if rt.QtClassType() {
 		// Construct our Go type based on this inner CABI type
-		shouldReturn = "" + namePrefix + "_ret := "
 
 		crossPackage := ""
 		pkg, ok := KnownClassnames[rt.ParameterType]
@@ -592,36 +591,42 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		// FIXME This needs to somehow figure out the real child pointers
 		extraConstructArgs := strings.Repeat(", nil", len(pkg.Class.AllInherits()))
 
-		if rt.Pointer || rt.ByRef {
-			gfs.imports["unsafe"] = struct{}{}
-			return assignExpr + " " + crossPackage + "UnsafeNew" + cabiClassName(rt.ParameterType) + "(unsafe.Pointer(" + rvalue + ")" + extraConstructArgs + ")"
+		// We can only reference the rvalue once, in case it is a complex
+		// expression
 
+		var rvalue2 string
+		if crossPackage == "" {
+			rvalue2 = "new" + cabiClassName(rt.ParameterType) + "(" + rvalue + extraConstructArgs + ")"
 		} else {
+			gfs.imports["unsafe"] = struct{}{}
+			rvalue2 = crossPackage + "UnsafeNew" + cabiClassName(rt.ParameterType) + "(unsafe.Pointer(" + rvalue + ")" + extraConstructArgs + ")"
+		}
+
+		if !(rt.Pointer || rt.ByRef) {
 			// This is return by value, but CABI has new'd it into a
 			// heap type for us
 			// To preserve Qt's approximate semantics, add a runtime
 			// finalizer to automatically Delete once the type goes out
 			// of Go scope
-
-			if crossPackage == "" {
-				afterword += namePrefix + "_goptr := new" + cabiClassName(rt.ParameterType) + "(" + namePrefix + "_ret" + extraConstructArgs + ")\n"
-			} else {
-				gfs.imports["unsafe"] = struct{}{}
-				afterword += namePrefix + "_goptr := " + crossPackage + "UnsafeNew" + cabiClassName(rt.ParameterType) + "(unsafe.Pointer(" + namePrefix + "_ret)" + extraConstructArgs + ")\n"
-
-			}
+			afterword += namePrefix + "_goptr := " + rvalue2 + "\n"
 			afterword += namePrefix + "_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer\n"
 
 			// If this is a function return, we have converted value-returned Qt types to pointers
 			// If this is a slot return, we haven't
 			// TODO standardize this
+			// e.g. QStringListModel::ItemData
 			if strings.Contains(assignExpr, `return`) {
 				afterword += assignExpr + "" + namePrefix + "_goptr\n"
 			} else {
 				afterword += assignExpr + " *" + namePrefix + "_goptr\n"
 			}
+
+		} else {
+			// No need for temporary _goptr variable
+			afterword += assignExpr + "" + rvalue2 + "\n"
 		}
-		return shouldReturn + " " + rvalue + "\n" + afterword
+
+		return afterword
 
 	} else if rt.IntType() || rt.IsKnownEnum() || rt.IsFlagType() || rt.ParameterType == "bool" || rt.QtCppOriginalType != nil {
 
