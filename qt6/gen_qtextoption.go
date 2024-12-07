@@ -188,8 +188,7 @@ func (this *QTextOption) Tabs() []QTextOption__Tab {
 	_ret := make([]QTextOption__Tab, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTextOption__Tab)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQTextOption__Tab(_lv_ret)
+		_lv_goptr := newQTextOption__Tab(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}

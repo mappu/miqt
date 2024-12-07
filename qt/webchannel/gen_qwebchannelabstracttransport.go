@@ -124,7 +124,8 @@ func miqt_exec_callback_QWebChannelAbstractTransport_MessageReceived(cb C.intptr
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQJsonObject(unsafe.Pointer(message))
-	slotval2 := UnsafeNewQWebChannelAbstractTransport(unsafe.Pointer(transport), nil)
+
+	slotval2 := newQWebChannelAbstractTransport(transport, nil)
 
 	gofunc(slotval1, slotval2)
 }
@@ -242,6 +243,7 @@ func miqt_exec_callback_QWebChannelAbstractTransport_EventFilter(self *C.QWebCha
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QWebChannelAbstractTransport{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

@@ -134,8 +134,7 @@ func (this *QVideoSurfaceFormat) HandleType() QAbstractVideoBuffer__HandleType {
 }
 
 func (this *QVideoSurfaceFormat) FrameSize() *qt.QSize {
-	_ret := C.QVideoSurfaceFormat_FrameSize(this.h)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoSurfaceFormat_FrameSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -157,8 +156,7 @@ func (this *QVideoSurfaceFormat) FrameHeight() int {
 }
 
 func (this *QVideoSurfaceFormat) Viewport() *qt.QRect {
-	_ret := C.QVideoSurfaceFormat_Viewport(this.h)
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QVideoSurfaceFormat_Viewport(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -184,8 +182,7 @@ func (this *QVideoSurfaceFormat) SetFrameRate(rate float64) {
 }
 
 func (this *QVideoSurfaceFormat) PixelAspectRatio() *qt.QSize {
-	_ret := C.QVideoSurfaceFormat_PixelAspectRatio(this.h)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoSurfaceFormat_PixelAspectRatio(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -215,8 +212,7 @@ func (this *QVideoSurfaceFormat) SetMirrored(mirrored bool) {
 }
 
 func (this *QVideoSurfaceFormat) SizeHint() *qt.QSize {
-	_ret := C.QVideoSurfaceFormat_SizeHint(this.h)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoSurfaceFormat_SizeHint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -237,8 +233,7 @@ func (this *QVideoSurfaceFormat) PropertyNames() [][]byte {
 func (this *QVideoSurfaceFormat) Property(name string) *qt.QVariant {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	_ret := C.QVideoSurfaceFormat_Property(this.h, name_Cstring)
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QVideoSurfaceFormat_Property(this.h, name_Cstring)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

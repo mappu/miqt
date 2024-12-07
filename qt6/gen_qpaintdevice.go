@@ -75,7 +75,7 @@ func (this *QPaintDevice) PaintingActive() bool {
 }
 
 func (this *QPaintDevice) PaintEngine() *QPaintEngine {
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QPaintDevice_PaintEngine(this.h)))
+	return newQPaintEngine(C.QPaintDevice_PaintEngine(this.h))
 }
 
 func (this *QPaintDevice) Width() int {

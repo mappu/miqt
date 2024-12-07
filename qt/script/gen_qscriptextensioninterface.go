@@ -95,7 +95,7 @@ func miqt_exec_callback_QScriptExtensionInterface_Initialize(self *C.QScriptExte
 	key_ret := C.GoStringN(key_ms.data, C.int(int64(key_ms.len)))
 	C.free(unsafe.Pointer(key_ms.data))
 	slotval1 := key_ret
-	slotval2 := UnsafeNewQScriptEngine(unsafe.Pointer(engine), nil)
+	slotval2 := newQScriptEngine(engine, nil)
 
 	gofunc(slotval1, slotval2)
 

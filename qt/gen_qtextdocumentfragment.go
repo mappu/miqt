@@ -116,8 +116,7 @@ func QTextDocumentFragment_FromPlainText(plainText string) *QTextDocumentFragmen
 	plainText_ms.data = C.CString(plainText)
 	plainText_ms.len = C.size_t(len(plainText))
 	defer C.free(unsafe.Pointer(plainText_ms.data))
-	_ret := C.QTextDocumentFragment_FromPlainText(plainText_ms)
-	_goptr := newQTextDocumentFragment(_ret)
+	_goptr := newQTextDocumentFragment(C.QTextDocumentFragment_FromPlainText(plainText_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -127,8 +126,7 @@ func QTextDocumentFragment_FromHtml(html string) *QTextDocumentFragment {
 	html_ms.data = C.CString(html)
 	html_ms.len = C.size_t(len(html))
 	defer C.free(unsafe.Pointer(html_ms.data))
-	_ret := C.QTextDocumentFragment_FromHtml(html_ms)
-	_goptr := newQTextDocumentFragment(_ret)
+	_goptr := newQTextDocumentFragment(C.QTextDocumentFragment_FromHtml(html_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -138,8 +136,7 @@ func QTextDocumentFragment_FromHtml2(html string, resourceProvider *QTextDocumen
 	html_ms.data = C.CString(html)
 	html_ms.len = C.size_t(len(html))
 	defer C.free(unsafe.Pointer(html_ms.data))
-	_ret := C.QTextDocumentFragment_FromHtml2(html_ms, resourceProvider.cPointer())
-	_goptr := newQTextDocumentFragment(_ret)
+	_goptr := newQTextDocumentFragment(C.QTextDocumentFragment_FromHtml2(html_ms, resourceProvider.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

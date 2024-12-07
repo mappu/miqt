@@ -109,8 +109,7 @@ func (this *QCameraImageProcessingControl) IsParameterValueSupported(parameter Q
 }
 
 func (this *QCameraImageProcessingControl) Parameter(parameter QCameraImageProcessingControl__ProcessingParameter) *qt.QVariant {
-	_ret := C.QCameraImageProcessingControl_Parameter(this.h, (C.int)(parameter))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QCameraImageProcessingControl_Parameter(this.h, (C.int)(parameter))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

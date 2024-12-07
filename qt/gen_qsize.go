@@ -112,8 +112,7 @@ func (this *QSize) Transpose() {
 }
 
 func (this *QSize) Transposed() *QSize {
-	_ret := C.QSize_Transposed(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSize_Transposed(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -127,61 +126,55 @@ func (this *QSize) Scale2(s *QSize, mode AspectRatioMode) {
 }
 
 func (this *QSize) Scaled(w int, h int, mode AspectRatioMode) *QSize {
-	_ret := C.QSize_Scaled(this.h, (C.int)(w), (C.int)(h), (C.int)(mode))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSize_Scaled(this.h, (C.int)(w), (C.int)(h), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSize) Scaled2(s *QSize, mode AspectRatioMode) *QSize {
-	_ret := C.QSize_Scaled2(this.h, s.cPointer(), (C.int)(mode))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSize_Scaled2(this.h, s.cPointer(), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSize) ExpandedTo(param1 *QSize) *QSize {
-	_ret := C.QSize_ExpandedTo(this.h, param1.cPointer())
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSize_ExpandedTo(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSize) BoundedTo(param1 *QSize) *QSize {
-	_ret := C.QSize_BoundedTo(this.h, param1.cPointer())
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSize_BoundedTo(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSize) GrownBy(m QMargins) *QSize {
-	_ret := C.QSize_GrownBy(this.h, m.cPointer())
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSize_GrownBy(this.h, m.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSize) ShrunkBy(m QMargins) *QSize {
-	_ret := C.QSize_ShrunkBy(this.h, m.cPointer())
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSize_ShrunkBy(this.h, m.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSize) OperatorPlusAssign(param1 *QSize) *QSize {
-	return UnsafeNewQSize(unsafe.Pointer(C.QSize_OperatorPlusAssign(this.h, param1.cPointer())))
+	return newQSize(C.QSize_OperatorPlusAssign(this.h, param1.cPointer()))
 }
 
 func (this *QSize) OperatorMinusAssign(param1 *QSize) *QSize {
-	return UnsafeNewQSize(unsafe.Pointer(C.QSize_OperatorMinusAssign(this.h, param1.cPointer())))
+	return newQSize(C.QSize_OperatorMinusAssign(this.h, param1.cPointer()))
 }
 
 func (this *QSize) OperatorMultiplyAssign(c float64) *QSize {
-	return UnsafeNewQSize(unsafe.Pointer(C.QSize_OperatorMultiplyAssign(this.h, (C.double)(c))))
+	return newQSize(C.QSize_OperatorMultiplyAssign(this.h, (C.double)(c)))
 }
 
 func (this *QSize) OperatorDivideAssign(c float64) *QSize {
-	return UnsafeNewQSize(unsafe.Pointer(C.QSize_OperatorDivideAssign(this.h, (C.double)(c))))
+	return newQSize(C.QSize_OperatorDivideAssign(this.h, (C.double)(c)))
 }
 
 // Delete this object from C++ memory.
@@ -307,8 +300,7 @@ func (this *QSizeF) Transpose() {
 }
 
 func (this *QSizeF) Transposed() *QSizeF {
-	_ret := C.QSizeF_Transposed(this.h)
-	_goptr := newQSizeF(_ret)
+	_goptr := newQSizeF(C.QSizeF_Transposed(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -322,66 +314,59 @@ func (this *QSizeF) Scale2(s *QSizeF, mode AspectRatioMode) {
 }
 
 func (this *QSizeF) Scaled(w float64, h float64, mode AspectRatioMode) *QSizeF {
-	_ret := C.QSizeF_Scaled(this.h, (C.double)(w), (C.double)(h), (C.int)(mode))
-	_goptr := newQSizeF(_ret)
+	_goptr := newQSizeF(C.QSizeF_Scaled(this.h, (C.double)(w), (C.double)(h), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSizeF) Scaled2(s *QSizeF, mode AspectRatioMode) *QSizeF {
-	_ret := C.QSizeF_Scaled2(this.h, s.cPointer(), (C.int)(mode))
-	_goptr := newQSizeF(_ret)
+	_goptr := newQSizeF(C.QSizeF_Scaled2(this.h, s.cPointer(), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSizeF) ExpandedTo(param1 *QSizeF) *QSizeF {
-	_ret := C.QSizeF_ExpandedTo(this.h, param1.cPointer())
-	_goptr := newQSizeF(_ret)
+	_goptr := newQSizeF(C.QSizeF_ExpandedTo(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSizeF) BoundedTo(param1 *QSizeF) *QSizeF {
-	_ret := C.QSizeF_BoundedTo(this.h, param1.cPointer())
-	_goptr := newQSizeF(_ret)
+	_goptr := newQSizeF(C.QSizeF_BoundedTo(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSizeF) GrownBy(m QMarginsF) *QSizeF {
-	_ret := C.QSizeF_GrownBy(this.h, m.cPointer())
-	_goptr := newQSizeF(_ret)
+	_goptr := newQSizeF(C.QSizeF_GrownBy(this.h, m.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSizeF) ShrunkBy(m QMarginsF) *QSizeF {
-	_ret := C.QSizeF_ShrunkBy(this.h, m.cPointer())
-	_goptr := newQSizeF(_ret)
+	_goptr := newQSizeF(C.QSizeF_ShrunkBy(this.h, m.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSizeF) OperatorPlusAssign(param1 *QSizeF) *QSizeF {
-	return UnsafeNewQSizeF(unsafe.Pointer(C.QSizeF_OperatorPlusAssign(this.h, param1.cPointer())))
+	return newQSizeF(C.QSizeF_OperatorPlusAssign(this.h, param1.cPointer()))
 }
 
 func (this *QSizeF) OperatorMinusAssign(param1 *QSizeF) *QSizeF {
-	return UnsafeNewQSizeF(unsafe.Pointer(C.QSizeF_OperatorMinusAssign(this.h, param1.cPointer())))
+	return newQSizeF(C.QSizeF_OperatorMinusAssign(this.h, param1.cPointer()))
 }
 
 func (this *QSizeF) OperatorMultiplyAssign(c float64) *QSizeF {
-	return UnsafeNewQSizeF(unsafe.Pointer(C.QSizeF_OperatorMultiplyAssign(this.h, (C.double)(c))))
+	return newQSizeF(C.QSizeF_OperatorMultiplyAssign(this.h, (C.double)(c)))
 }
 
 func (this *QSizeF) OperatorDivideAssign(c float64) *QSizeF {
-	return UnsafeNewQSizeF(unsafe.Pointer(C.QSizeF_OperatorDivideAssign(this.h, (C.double)(c))))
+	return newQSizeF(C.QSizeF_OperatorDivideAssign(this.h, (C.double)(c)))
 }
 
 func (this *QSizeF) ToSize() *QSize {
-	_ret := C.QSizeF_ToSize(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSizeF_ToSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

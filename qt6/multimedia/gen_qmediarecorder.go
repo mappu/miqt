@@ -137,8 +137,7 @@ func (this *QMediaRecorder) IsAvailable() bool {
 }
 
 func (this *QMediaRecorder) OutputLocation() *qt6.QUrl {
-	_ret := C.QMediaRecorder_OutputLocation(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QMediaRecorder_OutputLocation(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -148,8 +147,7 @@ func (this *QMediaRecorder) SetOutputLocation(location *qt6.QUrl) {
 }
 
 func (this *QMediaRecorder) ActualLocation() *qt6.QUrl {
-	_ret := C.QMediaRecorder_ActualLocation(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QMediaRecorder_ActualLocation(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -174,8 +172,7 @@ func (this *QMediaRecorder) Duration() int64 {
 }
 
 func (this *QMediaRecorder) MediaFormat() *QMediaFormat {
-	_ret := C.QMediaRecorder_MediaFormat(this.h)
-	_goptr := newQMediaFormat(_ret)
+	_goptr := newQMediaFormat(C.QMediaRecorder_MediaFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -201,8 +198,7 @@ func (this *QMediaRecorder) SetQuality(quality QMediaRecorder__Quality) {
 }
 
 func (this *QMediaRecorder) VideoResolution() *qt6.QSize {
-	_ret := C.QMediaRecorder_VideoResolution(this.h)
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QMediaRecorder_VideoResolution(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -256,8 +252,7 @@ func (this *QMediaRecorder) SetAudioSampleRate(sampleRate int) {
 }
 
 func (this *QMediaRecorder) MetaData() *QMediaMetaData {
-	_ret := C.QMediaRecorder_MetaData(this.h)
-	_goptr := newQMediaMetaData(_ret)
+	_goptr := newQMediaMetaData(C.QMediaRecorder_MetaData(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -271,7 +266,7 @@ func (this *QMediaRecorder) AddMetaData(metaData *QMediaMetaData) {
 }
 
 func (this *QMediaRecorder) CaptureSession() *QMediaCaptureSession {
-	return UnsafeNewQMediaCaptureSession(unsafe.Pointer(C.QMediaRecorder_CaptureSession(this.h)), nil)
+	return newQMediaCaptureSession(C.QMediaRecorder_CaptureSession(this.h), nil)
 }
 
 func (this *QMediaRecorder) Record() {
@@ -650,6 +645,7 @@ func miqt_exec_callback_QMediaRecorder_EventFilter(self *C.QMediaRecorder, cb C.
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QMediaRecorder{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

@@ -62,7 +62,7 @@ func (this *QsciCommandSet) Commands() []*QsciCommand {
 	_ret := make([]*QsciCommand, int(_ma.len))
 	_outCast := (*[0xffff]*C.QsciCommand)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQsciCommand(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQsciCommand(_outCast[i])
 	}
 	return _ret
 }
@@ -76,11 +76,11 @@ func (this *QsciCommandSet) ClearAlternateKeys() {
 }
 
 func (this *QsciCommandSet) BoundTo(key int) *QsciCommand {
-	return UnsafeNewQsciCommand(unsafe.Pointer(C.QsciCommandSet_BoundTo(this.h, (C.int)(key))))
+	return newQsciCommand(C.QsciCommandSet_BoundTo(this.h, (C.int)(key)))
 }
 
 func (this *QsciCommandSet) Find(command QsciCommand__Command) *QsciCommand {
-	return UnsafeNewQsciCommand(unsafe.Pointer(C.QsciCommandSet_Find(this.h, (C.int)(command))))
+	return newQsciCommand(C.QsciCommandSet_Find(this.h, (C.int)(command)))
 }
 
 func (this *QsciCommandSet) ReadSettings2(qs *qt.QSettings, prefix string) bool {

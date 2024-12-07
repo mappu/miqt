@@ -181,7 +181,7 @@ func NewQMovie8(fileName string, format []byte, parent *QObject) *QMovie {
 }
 
 func (this *QMovie) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMovie_MetaObject(this.h)))
+	return newQMetaObject(C.QMovie_MetaObject(this.h))
 }
 
 func (this *QMovie) Metacast(param1 string) unsafe.Pointer {
@@ -217,7 +217,7 @@ func (this *QMovie) SetDevice(device *QIODevice) {
 }
 
 func (this *QMovie) Device() *QIODevice {
-	return UnsafeNewQIODevice(unsafe.Pointer(C.QMovie_Device(this.h)), nil, nil)
+	return newQIODevice(C.QMovie_Device(this.h), nil, nil)
 }
 
 func (this *QMovie) SetFileName(fileName string) {
@@ -254,8 +254,7 @@ func (this *QMovie) SetBackgroundColor(color *QColor) {
 }
 
 func (this *QMovie) BackgroundColor() *QColor {
-	_ret := C.QMovie_BackgroundColor(this.h)
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QMovie_BackgroundColor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -265,22 +264,19 @@ func (this *QMovie) State() QMovie__MovieState {
 }
 
 func (this *QMovie) FrameRect() *QRect {
-	_ret := C.QMovie_FrameRect(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QMovie_FrameRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMovie) CurrentImage() *QImage {
-	_ret := C.QMovie_CurrentImage(this.h)
-	_goptr := newQImage(_ret, nil)
+	_goptr := newQImage(C.QMovie_CurrentImage(this.h), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMovie) CurrentPixmap() *QPixmap {
-	_ret := C.QMovie_CurrentPixmap(this.h)
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QMovie_CurrentPixmap(this.h), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -325,8 +321,7 @@ func (this *QMovie) Speed() int {
 }
 
 func (this *QMovie) ScaledSize() *QSize {
-	_ret := C.QMovie_ScaledSize(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QMovie_ScaledSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -375,7 +370,7 @@ func miqt_exec_callback_QMovie_Resized(cb C.intptr_t, size *C.QSize) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQSize(unsafe.Pointer(size))
+	slotval1 := newQSize(size)
 
 	gofunc(slotval1)
 }
@@ -395,7 +390,7 @@ func miqt_exec_callback_QMovie_Updated(cb C.intptr_t, rect *C.QRect) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRect(unsafe.Pointer(rect))
+	slotval1 := newQRect(rect)
 
 	gofunc(slotval1)
 }
@@ -539,7 +534,7 @@ func miqt_exec_callback_QMovie_Event(self *C.QMovie, cb C.intptr_t, event *C.QEv
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QMovie{h: self}).callVirtualBase_Event, slotval1)
 
@@ -567,8 +562,9 @@ func miqt_exec_callback_QMovie_EventFilter(self *C.QMovie, cb C.intptr_t, watche
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QMovie{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -596,7 +592,7 @@ func miqt_exec_callback_QMovie_TimerEvent(self *C.QMovie, cb C.intptr_t, event *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QMovie{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -622,7 +618,7 @@ func miqt_exec_callback_QMovie_ChildEvent(self *C.QMovie, cb C.intptr_t, event *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QMovie{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -648,7 +644,7 @@ func miqt_exec_callback_QMovie_CustomEvent(self *C.QMovie, cb C.intptr_t, event 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QMovie{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -674,7 +670,7 @@ func miqt_exec_callback_QMovie_ConnectNotify(self *C.QMovie, cb C.intptr_t, sign
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QMovie{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -700,7 +696,7 @@ func miqt_exec_callback_QMovie_DisconnectNotify(self *C.QMovie, cb C.intptr_t, s
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QMovie{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

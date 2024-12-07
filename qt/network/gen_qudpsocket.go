@@ -125,8 +125,7 @@ func (this *QUdpSocket) LeaveMulticastGroup2(groupAddress *QHostAddress, iface *
 }
 
 func (this *QUdpSocket) MulticastInterface() *QNetworkInterface {
-	_ret := C.QUdpSocket_MulticastInterface(this.h)
-	_goptr := newQNetworkInterface(_ret)
+	_goptr := newQNetworkInterface(C.QUdpSocket_MulticastInterface(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -144,8 +143,7 @@ func (this *QUdpSocket) PendingDatagramSize() int64 {
 }
 
 func (this *QUdpSocket) ReceiveDatagram() *QNetworkDatagram {
-	_ret := C.QUdpSocket_ReceiveDatagram(this.h)
-	_goptr := newQNetworkDatagram(_ret)
+	_goptr := newQNetworkDatagram(C.QUdpSocket_ReceiveDatagram(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -218,8 +216,7 @@ func QUdpSocket_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QUdpSocket) ReceiveDatagram1(maxSize int64) *QNetworkDatagram {
-	_ret := C.QUdpSocket_ReceiveDatagram1(this.h, (C.longlong)(maxSize))
-	_goptr := newQNetworkDatagram(_ret)
+	_goptr := newQNetworkDatagram(C.QUdpSocket_ReceiveDatagram1(this.h, (C.longlong)(maxSize)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -508,8 +505,7 @@ func miqt_exec_callback_QUdpSocket_SetSocketOption(self *C.QUdpSocket, cb C.intp
 
 func (this *QUdpSocket) callVirtualBase_SocketOption(option QAbstractSocket__SocketOption) *qt.QVariant {
 
-	_ret := C.QUdpSocket_virtualbase_SocketOption(unsafe.Pointer(this.h), (C.int)(option))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QUdpSocket_virtualbase_SocketOption(unsafe.Pointer(this.h), (C.int)(option))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

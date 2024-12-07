@@ -94,8 +94,7 @@ func (this *QMediaNetworkAccessControl) SetConfigurations(configuration []networ
 }
 
 func (this *QMediaNetworkAccessControl) CurrentConfiguration() *network.QNetworkConfiguration {
-	_ret := C.QMediaNetworkAccessControl_CurrentConfiguration(this.h)
-	_goptr := network.UnsafeNewQNetworkConfiguration(unsafe.Pointer(_ret))
+	_goptr := network.UnsafeNewQNetworkConfiguration(unsafe.Pointer(C.QMediaNetworkAccessControl_CurrentConfiguration(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

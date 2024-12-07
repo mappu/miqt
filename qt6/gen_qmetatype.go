@@ -231,7 +231,7 @@ func QMetaType_TypeFlags(typeVal int) QMetaType__TypeFlag {
 }
 
 func QMetaType_MetaObjectForType(typeVal int) *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaType_MetaObjectForType((C.int)(typeVal))))
+	return newQMetaObject(C.QMetaType_MetaObjectForType((C.int)(typeVal)))
 }
 
 func QMetaType_Create(typeVal int) unsafe.Pointer {
@@ -279,7 +279,7 @@ func (this *QMetaType) Flags() QMetaType__TypeFlag {
 }
 
 func (this *QMetaType) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaType_MetaObject(this.h)))
+	return newQMetaObject(C.QMetaType_MetaObject(this.h))
 }
 
 func (this *QMetaType) Name() string {
@@ -304,8 +304,7 @@ func (this *QMetaType) DestructWithData(data unsafe.Pointer) {
 }
 
 func (this *QMetaType) Compare(lhs unsafe.Pointer, rhs unsafe.Pointer) *QPartialOrdering {
-	_ret := C.QMetaType_Compare(this.h, lhs, rhs)
-	_goptr := newQPartialOrdering(_ret)
+	_goptr := newQPartialOrdering(C.QMetaType_Compare(this.h, lhs, rhs))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -343,8 +342,7 @@ func QMetaType_Load2(stream *QDataStream, typeVal int, data unsafe.Pointer) bool
 }
 
 func QMetaType_FromName(name QByteArrayView) *QMetaType {
-	_ret := C.QMetaType_FromName(name.cPointer())
-	_goptr := newQMetaType(_ret)
+	_goptr := newQMetaType(C.QMetaType_FromName(name.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

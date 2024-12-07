@@ -229,8 +229,7 @@ func (this *QPagedPaintDevice) SetPageMargins2(margins *QMarginsF, units QPageLa
 }
 
 func (this *QPagedPaintDevice) PageLayout() *QPageLayout {
-	_ret := C.QPagedPaintDevice_PageLayout(this.h)
-	_goptr := newQPageLayout(_ret)
+	_goptr := newQPageLayout(C.QPagedPaintDevice_PageLayout(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -248,8 +247,7 @@ func (this *QPagedPaintDevice) SetPageSizeMM(size *QSizeF) {
 }
 
 func (this *QPagedPaintDevice) PageSizeMM() *QSizeF {
-	_ret := C.QPagedPaintDevice_PageSizeMM(this.h)
-	_goptr := newQSizeF(_ret)
+	_goptr := newQSizeF(C.QPagedPaintDevice_PageSizeMM(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -259,8 +257,7 @@ func (this *QPagedPaintDevice) SetMargins(margins *QPagedPaintDevice__Margins) {
 }
 
 func (this *QPagedPaintDevice) Margins() *QPagedPaintDevice__Margins {
-	_ret := C.QPagedPaintDevice_Margins(this.h)
-	_goptr := newQPagedPaintDevice__Margins(_ret)
+	_goptr := newQPagedPaintDevice__Margins(C.QPagedPaintDevice_Margins(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -330,7 +327,7 @@ func miqt_exec_callback_QPagedPaintDevice_SetPageSizeMM(self *C.QPagedPaintDevic
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQSizeF(unsafe.Pointer(size))
+	slotval1 := newQSizeF(size)
 
 	gofunc((&QPagedPaintDevice{h: self}).callVirtualBase_SetPageSizeMM, slotval1)
 
@@ -356,7 +353,7 @@ func miqt_exec_callback_QPagedPaintDevice_SetMargins(self *C.QPagedPaintDevice, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPagedPaintDevice__Margins(unsafe.Pointer(margins))
+	slotval1 := newQPagedPaintDevice__Margins(margins)
 
 	gofunc((&QPagedPaintDevice{h: self}).callVirtualBase_SetMargins, slotval1)
 
@@ -454,7 +451,7 @@ func miqt_exec_callback_QPagedPaintDevice_InitPainter(self *C.QPagedPaintDevice,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval1 := newQPainter(painter)
 
 	gofunc((&QPagedPaintDevice{h: self}).callVirtualBase_InitPainter, slotval1)
 
@@ -462,7 +459,8 @@ func miqt_exec_callback_QPagedPaintDevice_InitPainter(self *C.QPagedPaintDevice,
 
 func (this *QPagedPaintDevice) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QPagedPaintDevice_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer())))
+	return newQPaintDevice(C.QPagedPaintDevice_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+
 }
 func (this *QPagedPaintDevice) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
 	if !this.isSubclass {
@@ -479,7 +477,7 @@ func miqt_exec_callback_QPagedPaintDevice_Redirected(self *C.QPagedPaintDevice, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(offset))
+	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QPagedPaintDevice{h: self}).callVirtualBase_Redirected, slotval1)
 
@@ -489,7 +487,8 @@ func miqt_exec_callback_QPagedPaintDevice_Redirected(self *C.QPagedPaintDevice, 
 
 func (this *QPagedPaintDevice) callVirtualBase_SharedPainter() *QPainter {
 
-	return UnsafeNewQPainter(unsafe.Pointer(C.QPagedPaintDevice_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+	return newQPainter(C.QPagedPaintDevice_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+
 }
 func (this *QPagedPaintDevice) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
 	if !this.isSubclass {

@@ -114,11 +114,11 @@ func QVideoWidget_TrUtf8(s string) string {
 }
 
 func (this *QVideoWidget) MediaObject() *QMediaObject {
-	return UnsafeNewQMediaObject(unsafe.Pointer(C.QVideoWidget_MediaObject(this.h)), nil)
+	return newQMediaObject(C.QVideoWidget_MediaObject(this.h), nil)
 }
 
 func (this *QVideoWidget) VideoSurface() *QAbstractVideoSurface {
-	return UnsafeNewQAbstractVideoSurface(unsafe.Pointer(C.QVideoWidget_VideoSurface(this.h)), nil)
+	return newQAbstractVideoSurface(C.QVideoWidget_VideoSurface(this.h), nil)
 }
 
 func (this *QVideoWidget) AspectRatioMode() qt.AspectRatioMode {
@@ -142,8 +142,7 @@ func (this *QVideoWidget) Saturation() int {
 }
 
 func (this *QVideoWidget) SizeHint() *qt.QSize {
-	_ret := C.QVideoWidget_SizeHint(this.h)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoWidget_SizeHint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -318,7 +317,8 @@ func QVideoWidget_TrUtf83(s string, c string, n int) string {
 
 func (this *QVideoWidget) callVirtualBase_MediaObject() *QMediaObject {
 
-	return UnsafeNewQMediaObject(unsafe.Pointer(C.QVideoWidget_virtualbase_MediaObject(unsafe.Pointer(this.h))), nil)
+	return newQMediaObject(C.QVideoWidget_virtualbase_MediaObject(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QVideoWidget) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
 	if !this.isSubclass {
@@ -342,8 +342,7 @@ func miqt_exec_callback_QVideoWidget_MediaObject(self *C.QVideoWidget, cb C.intp
 
 func (this *QVideoWidget) callVirtualBase_SizeHint() *qt.QSize {
 
-	_ret := C.QVideoWidget_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoWidget_virtualbase_SizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -546,7 +545,7 @@ func miqt_exec_callback_QVideoWidget_SetMediaObject(self *C.QVideoWidget, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMediaObject(unsafe.Pointer(object), nil)
+	slotval1 := newQMediaObject(object, nil)
 
 	virtualReturn := gofunc((&QVideoWidget{h: self}).callVirtualBase_SetMediaObject, slotval1)
 
@@ -607,8 +606,7 @@ func miqt_exec_callback_QVideoWidget_SetVisible(self *C.QVideoWidget, cb C.intpt
 
 func (this *QVideoWidget) callVirtualBase_MinimumSizeHint() *qt.QSize {
 
-	_ret := C.QVideoWidget_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoWidget_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -689,6 +687,7 @@ func miqt_exec_callback_QVideoWidget_HasHeightForWidth(self *C.QVideoWidget, cb 
 func (this *QVideoWidget) callVirtualBase_PaintEngine() *qt.QPaintEngine {
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QVideoWidget_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+
 }
 func (this *QVideoWidget) OnPaintEngine(slot func(super func() *qt.QPaintEngine) *qt.QPaintEngine) {
 	if !this.isSubclass {
@@ -1324,6 +1323,7 @@ func miqt_exec_callback_QVideoWidget_InitPainter(self *C.QVideoWidget, cb C.intp
 func (this *QVideoWidget) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QVideoWidget_virtualbase_Redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
+
 }
 func (this *QVideoWidget) OnRedirected(slot func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice) {
 	if !this.isSubclass {
@@ -1351,6 +1351,7 @@ func miqt_exec_callback_QVideoWidget_Redirected(self *C.QVideoWidget, cb C.intpt
 func (this *QVideoWidget) callVirtualBase_SharedPainter() *qt.QPainter {
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QVideoWidget_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+
 }
 func (this *QVideoWidget) OnSharedPainter(slot func(super func() *qt.QPainter) *qt.QPainter) {
 	if !this.isSubclass {
@@ -1400,8 +1401,7 @@ func miqt_exec_callback_QVideoWidget_InputMethodEvent(self *C.QVideoWidget, cb C
 
 func (this *QVideoWidget) callVirtualBase_InputMethodQuery(param1 qt.InputMethodQuery) *qt.QVariant {
 
-	_ret := C.QVideoWidget_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QVideoWidget_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

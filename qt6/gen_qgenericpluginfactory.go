@@ -71,7 +71,7 @@ func QGenericPluginFactory_Create(param1 string, param2 string) *QObject {
 	param2_ms.data = C.CString(param2)
 	param2_ms.len = C.size_t(len(param2))
 	defer C.free(unsafe.Pointer(param2_ms.data))
-	return UnsafeNewQObject(unsafe.Pointer(C.QGenericPluginFactory_Create(param1_ms, param2_ms)))
+	return newQObject(C.QGenericPluginFactory_Create(param1_ms, param2_ms))
 }
 
 // Delete this object from C++ memory.

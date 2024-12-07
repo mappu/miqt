@@ -108,7 +108,7 @@ func (this *QGraphicsLayout) Count() int {
 }
 
 func (this *QGraphicsLayout) ItemAt(i int) *QGraphicsLayoutItem {
-	return UnsafeNewQGraphicsLayoutItem(unsafe.Pointer(C.QGraphicsLayout_ItemAt(this.h, (C.int)(i))))
+	return newQGraphicsLayoutItem(C.QGraphicsLayout_ItemAt(this.h, (C.int)(i)))
 }
 
 func (this *QGraphicsLayout) RemoveAt(index int) {
@@ -221,7 +221,7 @@ func miqt_exec_callback_QGraphicsLayout_WidgetEvent(self *C.QGraphicsLayout, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	gofunc((&QGraphicsLayout{h: self}).callVirtualBase_WidgetEvent, slotval1)
 
@@ -308,7 +308,7 @@ func miqt_exec_callback_QGraphicsLayout_SetGeometry(self *C.QGraphicsLayout, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRectF(unsafe.Pointer(rect))
+	slotval1 := newQRectF(rect)
 
 	gofunc((&QGraphicsLayout{h: self}).callVirtualBase_SetGeometry, slotval1)
 
@@ -330,7 +330,7 @@ func miqt_exec_callback_QGraphicsLayout_SizeHint(self *C.QGraphicsLayout, cb C.i
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (SizeHint)(which)
 
-	slotval2 := UnsafeNewQSizeF(unsafe.Pointer(constraint))
+	slotval2 := newQSizeF(constraint)
 
 	virtualReturn := gofunc(slotval1, slotval2)
 

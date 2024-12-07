@@ -130,15 +130,13 @@ func QAnyStringView_Equal(lhs QAnyStringView, rhs QAnyStringView) bool {
 }
 
 func (this *QAnyStringView) Front() *QChar {
-	_ret := C.QAnyStringView_Front(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QAnyStringView_Front(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAnyStringView) Back() *QChar {
-	_ret := C.QAnyStringView_Back(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QAnyStringView_Back(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

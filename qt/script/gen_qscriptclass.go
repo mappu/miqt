@@ -76,7 +76,7 @@ func NewQScriptClass(engine *QScriptEngine) *QScriptClass {
 }
 
 func (this *QScriptClass) Engine() *QScriptEngine {
-	return UnsafeNewQScriptEngine(unsafe.Pointer(C.QScriptClass_Engine(this.h)), nil)
+	return newQScriptEngine(C.QScriptClass_Engine(this.h), nil)
 }
 
 func (this *QScriptClass) QueryProperty(object *QScriptValue, name *QScriptString, flags QScriptClass__QueryFlag, id *uint) QScriptClass__QueryFlag {
@@ -84,8 +84,7 @@ func (this *QScriptClass) QueryProperty(object *QScriptValue, name *QScriptStrin
 }
 
 func (this *QScriptClass) Property(object *QScriptValue, name *QScriptString, id uint) *QScriptValue {
-	_ret := C.QScriptClass_Property(this.h, object.cPointer(), name.cPointer(), (C.uint)(id))
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptClass_Property(this.h, object.cPointer(), name.cPointer(), (C.uint)(id)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -99,12 +98,11 @@ func (this *QScriptClass) PropertyFlags(object *QScriptValue, name *QScriptStrin
 }
 
 func (this *QScriptClass) NewIterator(object *QScriptValue) *QScriptClassPropertyIterator {
-	return UnsafeNewQScriptClassPropertyIterator(unsafe.Pointer(C.QScriptClass_NewIterator(this.h, object.cPointer())))
+	return newQScriptClassPropertyIterator(C.QScriptClass_NewIterator(this.h, object.cPointer()))
 }
 
 func (this *QScriptClass) Prototype() *QScriptValue {
-	_ret := C.QScriptClass_Prototype(this.h)
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptClass_Prototype(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -121,8 +119,7 @@ func (this *QScriptClass) SupportsExtension(extension QScriptClass__Extension) b
 }
 
 func (this *QScriptClass) Extension(extension QScriptClass__Extension, argument *qt.QVariant) *qt.QVariant {
-	_ret := C.QScriptClass_Extension(this.h, (C.int)(extension), (*C.QVariant)(argument.UnsafePointer()))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QScriptClass_Extension(this.h, (C.int)(extension), (*C.QVariant)(argument.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -147,8 +144,10 @@ func miqt_exec_callback_QScriptClass_QueryProperty(self *C.QScriptClass, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQScriptValue(unsafe.Pointer(object))
-	slotval2 := UnsafeNewQScriptString(unsafe.Pointer(name))
+	slotval1 := newQScriptValue(object)
+
+	slotval2 := newQScriptString(name)
+
 	slotval3 := (QScriptClass__QueryFlag)(flags)
 
 	slotval4 := (*uint)(unsafe.Pointer(id))
@@ -161,8 +160,7 @@ func miqt_exec_callback_QScriptClass_QueryProperty(self *C.QScriptClass, cb C.in
 
 func (this *QScriptClass) callVirtualBase_Property(object *QScriptValue, name *QScriptString, id uint) *QScriptValue {
 
-	_ret := C.QScriptClass_virtualbase_Property(unsafe.Pointer(this.h), object.cPointer(), name.cPointer(), (C.uint)(id))
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptClass_virtualbase_Property(unsafe.Pointer(this.h), object.cPointer(), name.cPointer(), (C.uint)(id)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -182,8 +180,10 @@ func miqt_exec_callback_QScriptClass_Property(self *C.QScriptClass, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQScriptValue(unsafe.Pointer(object))
-	slotval2 := UnsafeNewQScriptString(unsafe.Pointer(name))
+	slotval1 := newQScriptValue(object)
+
+	slotval2 := newQScriptString(name)
+
 	slotval3 := (uint)(id)
 
 	virtualReturn := gofunc((&QScriptClass{h: self}).callVirtualBase_Property, slotval1, slotval2, slotval3)
@@ -212,11 +212,13 @@ func miqt_exec_callback_QScriptClass_SetProperty(self *C.QScriptClass, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQScriptValue(unsafe.Pointer(object))
-	slotval2 := UnsafeNewQScriptString(unsafe.Pointer(name))
+	slotval1 := newQScriptValue(object)
+
+	slotval2 := newQScriptString(name)
+
 	slotval3 := (uint)(id)
 
-	slotval4 := UnsafeNewQScriptValue(unsafe.Pointer(value))
+	slotval4 := newQScriptValue(value)
 
 	gofunc((&QScriptClass{h: self}).callVirtualBase_SetProperty, slotval1, slotval2, slotval3, slotval4)
 
@@ -242,8 +244,10 @@ func miqt_exec_callback_QScriptClass_PropertyFlags(self *C.QScriptClass, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQScriptValue(unsafe.Pointer(object))
-	slotval2 := UnsafeNewQScriptString(unsafe.Pointer(name))
+	slotval1 := newQScriptValue(object)
+
+	slotval2 := newQScriptString(name)
+
 	slotval3 := (uint)(id)
 
 	virtualReturn := gofunc((&QScriptClass{h: self}).callVirtualBase_PropertyFlags, slotval1, slotval2, slotval3)
@@ -254,7 +258,8 @@ func miqt_exec_callback_QScriptClass_PropertyFlags(self *C.QScriptClass, cb C.in
 
 func (this *QScriptClass) callVirtualBase_NewIterator(object *QScriptValue) *QScriptClassPropertyIterator {
 
-	return UnsafeNewQScriptClassPropertyIterator(unsafe.Pointer(C.QScriptClass_virtualbase_NewIterator(unsafe.Pointer(this.h), object.cPointer())))
+	return newQScriptClassPropertyIterator(C.QScriptClass_virtualbase_NewIterator(unsafe.Pointer(this.h), object.cPointer()))
+
 }
 func (this *QScriptClass) OnNewIterator(slot func(super func(object *QScriptValue) *QScriptClassPropertyIterator, object *QScriptValue) *QScriptClassPropertyIterator) {
 	if !this.isSubclass {
@@ -271,7 +276,7 @@ func miqt_exec_callback_QScriptClass_NewIterator(self *C.QScriptClass, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQScriptValue(unsafe.Pointer(object))
+	slotval1 := newQScriptValue(object)
 
 	virtualReturn := gofunc((&QScriptClass{h: self}).callVirtualBase_NewIterator, slotval1)
 
@@ -281,8 +286,7 @@ func miqt_exec_callback_QScriptClass_NewIterator(self *C.QScriptClass, cb C.intp
 
 func (this *QScriptClass) callVirtualBase_Prototype() *QScriptValue {
 
-	_ret := C.QScriptClass_virtualbase_Prototype(unsafe.Pointer(this.h))
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptClass_virtualbase_Prototype(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -368,8 +372,7 @@ func miqt_exec_callback_QScriptClass_SupportsExtension(self *C.QScriptClass, cb 
 
 func (this *QScriptClass) callVirtualBase_Extension(extension QScriptClass__Extension, argument *qt.QVariant) *qt.QVariant {
 
-	_ret := C.QScriptClass_virtualbase_Extension(unsafe.Pointer(this.h), (C.int)(extension), (*C.QVariant)(argument.UnsafePointer()))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QScriptClass_virtualbase_Extension(unsafe.Pointer(this.h), (C.int)(extension), (*C.QVariant)(argument.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

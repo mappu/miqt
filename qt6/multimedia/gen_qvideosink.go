@@ -96,8 +96,7 @@ func QVideoSink_Tr(s string) string {
 }
 
 func (this *QVideoSink) VideoSize() *qt6.QSize {
-	_ret := C.QVideoSink_VideoSize(this.h)
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QVideoSink_VideoSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -122,8 +121,7 @@ func (this *QVideoSink) SetVideoFrame(frame *QVideoFrame) {
 }
 
 func (this *QVideoSink) VideoFrame() *QVideoFrame {
-	_ret := C.QVideoSink_VideoFrame(this.h)
-	_goptr := newQVideoFrame(_ret)
+	_goptr := newQVideoFrame(C.QVideoSink_VideoFrame(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -143,7 +141,7 @@ func miqt_exec_callback_QVideoSink_VideoFrameChanged(cb C.intptr_t, frame *C.QVi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVideoFrame(unsafe.Pointer(frame))
+	slotval1 := newQVideoFrame(frame)
 
 	gofunc(slotval1)
 }
@@ -263,6 +261,7 @@ func miqt_exec_callback_QVideoSink_EventFilter(self *C.QVideoSink, cb C.intptr_t
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QVideoSink{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

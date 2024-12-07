@@ -135,8 +135,7 @@ func (this *QMediaPlayerControl) IsSeekable() bool {
 }
 
 func (this *QMediaPlayerControl) AvailablePlaybackRanges() *QMediaTimeRange {
-	_ret := C.QMediaPlayerControl_AvailablePlaybackRanges(this.h)
-	_goptr := newQMediaTimeRange(_ret)
+	_goptr := newQMediaTimeRange(C.QMediaPlayerControl_AvailablePlaybackRanges(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -150,8 +149,7 @@ func (this *QMediaPlayerControl) SetPlaybackRate(rate float64) {
 }
 
 func (this *QMediaPlayerControl) Media() *QMediaContent {
-	_ret := C.QMediaPlayerControl_Media(this.h)
-	_goptr := newQMediaContent(_ret)
+	_goptr := newQMediaContent(C.QMediaPlayerControl_Media(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -191,7 +189,7 @@ func miqt_exec_callback_QMediaPlayerControl_MediaChanged(cb C.intptr_t, content 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMediaContent(unsafe.Pointer(content))
+	slotval1 := newQMediaContent(content)
 
 	gofunc(slotval1)
 }
@@ -411,7 +409,7 @@ func miqt_exec_callback_QMediaPlayerControl_AvailablePlaybackRangesChanged(cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMediaTimeRange(unsafe.Pointer(ranges))
+	slotval1 := newQMediaTimeRange(ranges)
 
 	gofunc(slotval1)
 }

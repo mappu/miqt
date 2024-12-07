@@ -79,15 +79,13 @@ func NewQAbstractFileIconProvider() *QAbstractFileIconProvider {
 }
 
 func (this *QAbstractFileIconProvider) Icon(param1 QAbstractFileIconProvider__IconType) *QIcon {
-	_ret := C.QAbstractFileIconProvider_Icon(this.h, (C.int)(param1))
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QAbstractFileIconProvider_Icon(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractFileIconProvider) IconWithQFileInfo(param1 *QFileInfo) *QIcon {
-	_ret := C.QAbstractFileIconProvider_IconWithQFileInfo(this.h, param1.cPointer())
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QAbstractFileIconProvider_IconWithQFileInfo(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -109,8 +107,7 @@ func (this *QAbstractFileIconProvider) Options() QAbstractFileIconProvider__Opti
 
 func (this *QAbstractFileIconProvider) callVirtualBase_Icon(param1 QAbstractFileIconProvider__IconType) *QIcon {
 
-	_ret := C.QAbstractFileIconProvider_virtualbase_Icon(unsafe.Pointer(this.h), (C.int)(param1))
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QAbstractFileIconProvider_virtualbase_Icon(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -140,8 +137,7 @@ func miqt_exec_callback_QAbstractFileIconProvider_Icon(self *C.QAbstractFileIcon
 
 func (this *QAbstractFileIconProvider) callVirtualBase_IconWithQFileInfo(param1 *QFileInfo) *QIcon {
 
-	_ret := C.QAbstractFileIconProvider_virtualbase_IconWithQFileInfo(unsafe.Pointer(this.h), param1.cPointer())
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QAbstractFileIconProvider_virtualbase_IconWithQFileInfo(unsafe.Pointer(this.h), param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -161,7 +157,7 @@ func miqt_exec_callback_QAbstractFileIconProvider_IconWithQFileInfo(self *C.QAbs
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFileInfo(unsafe.Pointer(param1))
+	slotval1 := newQFileInfo(param1)
 
 	virtualReturn := gofunc((&QAbstractFileIconProvider{h: self}).callVirtualBase_IconWithQFileInfo, slotval1)
 
@@ -191,7 +187,7 @@ func miqt_exec_callback_QAbstractFileIconProvider_Type(self *C.QAbstractFileIcon
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFileInfo(unsafe.Pointer(param1))
+	slotval1 := newQFileInfo(param1)
 
 	virtualReturn := gofunc((&QAbstractFileIconProvider{h: self}).callVirtualBase_Type, slotval1)
 	virtualReturn_ms := C.struct_miqt_string{}

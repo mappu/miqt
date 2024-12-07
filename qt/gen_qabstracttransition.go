@@ -83,7 +83,7 @@ func NewQAbstractTransition2(sourceState *QState) *QAbstractTransition {
 }
 
 func (this *QAbstractTransition) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractTransition_MetaObject(this.h)))
+	return newQMetaObject(C.QAbstractTransition_MetaObject(this.h))
 }
 
 func (this *QAbstractTransition) Metacast(param1 string) unsafe.Pointer {
@@ -111,11 +111,11 @@ func QAbstractTransition_TrUtf8(s string) string {
 }
 
 func (this *QAbstractTransition) SourceState() *QState {
-	return UnsafeNewQState(unsafe.Pointer(C.QAbstractTransition_SourceState(this.h)), nil, nil)
+	return newQState(C.QAbstractTransition_SourceState(this.h), nil, nil)
 }
 
 func (this *QAbstractTransition) TargetState() *QAbstractState {
-	return UnsafeNewQAbstractState(unsafe.Pointer(C.QAbstractTransition_TargetState(this.h)), nil)
+	return newQAbstractState(C.QAbstractTransition_TargetState(this.h), nil)
 }
 
 func (this *QAbstractTransition) SetTargetState(target *QAbstractState) {
@@ -127,7 +127,7 @@ func (this *QAbstractTransition) TargetStates() []*QAbstractState {
 	_ret := make([]*QAbstractState, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractState)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQAbstractState(unsafe.Pointer(_outCast[i]), nil)
+		_ret[i] = newQAbstractState(_outCast[i], nil)
 	}
 	return _ret
 }
@@ -151,7 +151,7 @@ func (this *QAbstractTransition) SetTransitionType(typeVal QAbstractTransition__
 }
 
 func (this *QAbstractTransition) Machine() *QStateMachine {
-	return UnsafeNewQStateMachine(unsafe.Pointer(C.QAbstractTransition_Machine(this.h)), nil, nil, nil)
+	return newQStateMachine(C.QAbstractTransition_Machine(this.h), nil, nil, nil)
 }
 
 func (this *QAbstractTransition) AddAnimation(animation *QAbstractAnimation) {
@@ -167,7 +167,7 @@ func (this *QAbstractTransition) Animations() []*QAbstractAnimation {
 	_ret := make([]*QAbstractAnimation, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractAnimation)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQAbstractAnimation(unsafe.Pointer(_outCast[i]), nil)
+		_ret[i] = newQAbstractAnimation(_outCast[i], nil)
 	}
 	return _ret
 }
@@ -230,7 +230,7 @@ func miqt_exec_callback_QAbstractTransition_EventTest(self *C.QAbstractTransitio
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc(slotval1)
 
@@ -252,7 +252,7 @@ func miqt_exec_callback_QAbstractTransition_OnTransition(self *C.QAbstractTransi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc(slotval1)
 
@@ -278,7 +278,7 @@ func miqt_exec_callback_QAbstractTransition_Event(self *C.QAbstractTransition, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QAbstractTransition{h: self}).callVirtualBase_Event, slotval1)
 
@@ -306,8 +306,9 @@ func miqt_exec_callback_QAbstractTransition_EventFilter(self *C.QAbstractTransit
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QAbstractTransition{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -335,7 +336,7 @@ func miqt_exec_callback_QAbstractTransition_TimerEvent(self *C.QAbstractTransiti
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QAbstractTransition{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -361,7 +362,7 @@ func miqt_exec_callback_QAbstractTransition_ChildEvent(self *C.QAbstractTransiti
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QAbstractTransition{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -387,7 +388,7 @@ func miqt_exec_callback_QAbstractTransition_CustomEvent(self *C.QAbstractTransit
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QAbstractTransition{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -413,7 +414,7 @@ func miqt_exec_callback_QAbstractTransition_ConnectNotify(self *C.QAbstractTrans
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QAbstractTransition{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -439,7 +440,7 @@ func miqt_exec_callback_QAbstractTransition_DisconnectNotify(self *C.QAbstractTr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QAbstractTransition{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

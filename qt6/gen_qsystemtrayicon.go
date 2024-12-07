@@ -117,7 +117,7 @@ func NewQSystemTrayIcon4(icon *QIcon, parent *QObject) *QSystemTrayIcon {
 }
 
 func (this *QSystemTrayIcon) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSystemTrayIcon_MetaObject(this.h)))
+	return newQMetaObject(C.QSystemTrayIcon_MetaObject(this.h))
 }
 
 func (this *QSystemTrayIcon) Metacast(param1 string) unsafe.Pointer {
@@ -140,12 +140,11 @@ func (this *QSystemTrayIcon) SetContextMenu(menu *QMenu) {
 }
 
 func (this *QSystemTrayIcon) ContextMenu() *QMenu {
-	return UnsafeNewQMenu(unsafe.Pointer(C.QSystemTrayIcon_ContextMenu(this.h)), nil, nil, nil)
+	return newQMenu(C.QSystemTrayIcon_ContextMenu(this.h), nil, nil, nil)
 }
 
 func (this *QSystemTrayIcon) Icon() *QIcon {
-	_ret := C.QSystemTrayIcon_Icon(this.h)
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QSystemTrayIcon_Icon(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -178,8 +177,7 @@ func QSystemTrayIcon_SupportsMessages() bool {
 }
 
 func (this *QSystemTrayIcon) Geometry() *QRect {
-	_ret := C.QSystemTrayIcon_Geometry(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QSystemTrayIcon_Geometry(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -339,7 +337,7 @@ func miqt_exec_callback_QSystemTrayIcon_Event(self *C.QSystemTrayIcon, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QSystemTrayIcon{h: self}).callVirtualBase_Event, slotval1)
 
@@ -367,8 +365,9 @@ func miqt_exec_callback_QSystemTrayIcon_EventFilter(self *C.QSystemTrayIcon, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QSystemTrayIcon{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -396,7 +395,7 @@ func miqt_exec_callback_QSystemTrayIcon_TimerEvent(self *C.QSystemTrayIcon, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QSystemTrayIcon{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -422,7 +421,7 @@ func miqt_exec_callback_QSystemTrayIcon_ChildEvent(self *C.QSystemTrayIcon, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QSystemTrayIcon{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -448,7 +447,7 @@ func miqt_exec_callback_QSystemTrayIcon_CustomEvent(self *C.QSystemTrayIcon, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QSystemTrayIcon{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -474,7 +473,7 @@ func miqt_exec_callback_QSystemTrayIcon_ConnectNotify(self *C.QSystemTrayIcon, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QSystemTrayIcon{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -500,7 +499,7 @@ func miqt_exec_callback_QSystemTrayIcon_DisconnectNotify(self *C.QSystemTrayIcon
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QSystemTrayIcon{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

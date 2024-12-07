@@ -58,8 +58,7 @@ func UnsafeNewQVideoFilterRunnable(h unsafe.Pointer) *QVideoFilterRunnable {
 }
 
 func (this *QVideoFilterRunnable) Run(input *QVideoFrame, surfaceFormat *QVideoSurfaceFormat, flags QVideoFilterRunnable__RunFlag) *QVideoFrame {
-	_ret := C.QVideoFilterRunnable_Run(this.h, input.cPointer(), surfaceFormat.cPointer(), (C.int)(flags))
-	_goptr := newQVideoFrame(_ret)
+	_goptr := newQVideoFrame(C.QVideoFilterRunnable_Run(this.h, input.cPointer(), surfaceFormat.cPointer(), (C.int)(flags)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -180,7 +179,7 @@ func (this *QAbstractVideoFilter) SetActive(v bool) {
 }
 
 func (this *QAbstractVideoFilter) CreateFilterRunnable() *QVideoFilterRunnable {
-	return UnsafeNewQVideoFilterRunnable(unsafe.Pointer(C.QAbstractVideoFilter_CreateFilterRunnable(this.h)))
+	return newQVideoFilterRunnable(C.QAbstractVideoFilter_CreateFilterRunnable(this.h))
 }
 
 func (this *QAbstractVideoFilter) ActiveChanged() {
@@ -312,6 +311,7 @@ func miqt_exec_callback_QAbstractVideoFilter_EventFilter(self *C.QAbstractVideoF
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QAbstractVideoFilter{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

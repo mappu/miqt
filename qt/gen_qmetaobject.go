@@ -181,7 +181,7 @@ func (this *QMetaMethod) Revision() int {
 }
 
 func (this *QMetaMethod) EnclosingMetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaMethod_EnclosingMetaObject(this.h)))
+	return newQMetaObject(C.QMetaMethod_EnclosingMetaObject(this.h))
 }
 
 func (this *QMetaMethod) Invoke(object *QObject, connectionType ConnectionType, returnValue QGenericReturnArgument) bool {
@@ -583,7 +583,7 @@ func (this *QMetaEnum) ValueToKeys(value int) []byte {
 }
 
 func (this *QMetaEnum) EnclosingMetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaEnum_EnclosingMetaObject(this.h)))
+	return newQMetaObject(C.QMetaEnum_EnclosingMetaObject(this.h))
 }
 
 func (this *QMetaEnum) IsValid() bool {
@@ -741,8 +741,7 @@ func (this *QMetaProperty) IsEnumType() bool {
 }
 
 func (this *QMetaProperty) Enumerator() *QMetaEnum {
-	_ret := C.QMetaProperty_Enumerator(this.h)
-	_goptr := newQMetaEnum(_ret)
+	_goptr := newQMetaEnum(C.QMetaProperty_Enumerator(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -752,8 +751,7 @@ func (this *QMetaProperty) HasNotifySignal() bool {
 }
 
 func (this *QMetaProperty) NotifySignal() *QMetaMethod {
-	_ret := C.QMetaProperty_NotifySignal(this.h)
-	_goptr := newQMetaMethod(_ret)
+	_goptr := newQMetaMethod(C.QMetaProperty_NotifySignal(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -767,8 +765,7 @@ func (this *QMetaProperty) Revision() int {
 }
 
 func (this *QMetaProperty) Read(obj *QObject) *QVariant {
-	_ret := C.QMetaProperty_Read(this.h, obj.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QMetaProperty_Read(this.h, obj.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -782,8 +779,7 @@ func (this *QMetaProperty) Reset(obj *QObject) bool {
 }
 
 func (this *QMetaProperty) ReadOnGadget(gadget unsafe.Pointer) *QVariant {
-	_ret := C.QMetaProperty_ReadOnGadget(this.h, gadget)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QMetaProperty_ReadOnGadget(this.h, gadget))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -805,7 +801,7 @@ func (this *QMetaProperty) IsValid() bool {
 }
 
 func (this *QMetaProperty) EnclosingMetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaProperty_EnclosingMetaObject(this.h)))
+	return newQMetaObject(C.QMetaProperty_EnclosingMetaObject(this.h))
 }
 
 func (this *QMetaProperty) IsDesignable1(obj *QObject) bool {
@@ -899,7 +895,7 @@ func (this *QMetaClassInfo) Value() string {
 }
 
 func (this *QMetaClassInfo) EnclosingMetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaClassInfo_EnclosingMetaObject(this.h)))
+	return newQMetaObject(C.QMetaClassInfo_EnclosingMetaObject(this.h))
 }
 
 // Delete this object from C++ memory.

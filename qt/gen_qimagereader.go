@@ -176,7 +176,7 @@ func (this *QImageReader) SetDevice(device *QIODevice) {
 }
 
 func (this *QImageReader) Device() *QIODevice {
-	return UnsafeNewQIODevice(unsafe.Pointer(C.QImageReader_Device(this.h)), nil)
+	return newQIODevice(C.QImageReader_Device(this.h), nil)
 }
 
 func (this *QImageReader) SetFileName(fileName string) {
@@ -195,8 +195,7 @@ func (this *QImageReader) FileName() string {
 }
 
 func (this *QImageReader) Size() *QSize {
-	_ret := C.QImageReader_Size(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QImageReader_Size(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -234,8 +233,7 @@ func (this *QImageReader) SetClipRect(rect *QRect) {
 }
 
 func (this *QImageReader) ClipRect() *QRect {
-	_ret := C.QImageReader_ClipRect(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QImageReader_ClipRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -245,8 +243,7 @@ func (this *QImageReader) SetScaledSize(size *QSize) {
 }
 
 func (this *QImageReader) ScaledSize() *QSize {
-	_ret := C.QImageReader_ScaledSize(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QImageReader_ScaledSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -264,8 +261,7 @@ func (this *QImageReader) SetScaledClipRect(rect *QRect) {
 }
 
 func (this *QImageReader) ScaledClipRect() *QRect {
-	_ret := C.QImageReader_ScaledClipRect(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QImageReader_ScaledClipRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -275,8 +271,7 @@ func (this *QImageReader) SetBackgroundColor(color *QColor) {
 }
 
 func (this *QImageReader) BackgroundColor() *QColor {
-	_ret := C.QImageReader_BackgroundColor(this.h)
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QImageReader_BackgroundColor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -330,8 +325,7 @@ func (this *QImageReader) CanRead() bool {
 }
 
 func (this *QImageReader) Read() *QImage {
-	_ret := C.QImageReader_Read(this.h)
-	_goptr := newQImage(_ret, nil)
+	_goptr := newQImage(C.QImageReader_Read(this.h), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -365,8 +359,7 @@ func (this *QImageReader) CurrentImageNumber() int {
 }
 
 func (this *QImageReader) CurrentImageRect() *QRect {
-	_ret := C.QImageReader_CurrentImageRect(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QImageReader_CurrentImageRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -73,7 +73,7 @@ func NewQActionGroup(parent *QObject) *QActionGroup {
 }
 
 func (this *QActionGroup) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QActionGroup_MetaObject(this.h)))
+	return newQMetaObject(C.QActionGroup_MetaObject(this.h))
 }
 
 func (this *QActionGroup) Metacast(param1 string) unsafe.Pointer {
@@ -92,7 +92,7 @@ func QActionGroup_Tr(s string) string {
 }
 
 func (this *QActionGroup) AddAction(a *QAction) *QAction {
-	return UnsafeNewQAction(unsafe.Pointer(C.QActionGroup_AddAction(this.h, a.cPointer())), nil)
+	return newQAction(C.QActionGroup_AddAction(this.h, a.cPointer()), nil)
 }
 
 func (this *QActionGroup) AddActionWithText(text string) *QAction {
@@ -100,7 +100,7 @@ func (this *QActionGroup) AddActionWithText(text string) *QAction {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return UnsafeNewQAction(unsafe.Pointer(C.QActionGroup_AddActionWithText(this.h, text_ms)), nil)
+	return newQAction(C.QActionGroup_AddActionWithText(this.h, text_ms), nil)
 }
 
 func (this *QActionGroup) AddAction2(icon *QIcon, text string) *QAction {
@@ -108,7 +108,7 @@ func (this *QActionGroup) AddAction2(icon *QIcon, text string) *QAction {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return UnsafeNewQAction(unsafe.Pointer(C.QActionGroup_AddAction2(this.h, icon.cPointer(), text_ms)), nil)
+	return newQAction(C.QActionGroup_AddAction2(this.h, icon.cPointer(), text_ms), nil)
 }
 
 func (this *QActionGroup) RemoveAction(a *QAction) {
@@ -120,13 +120,13 @@ func (this *QActionGroup) Actions() []*QAction {
 	_ret := make([]*QAction, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQAction(unsafe.Pointer(_outCast[i]), nil)
+		_ret[i] = newQAction(_outCast[i], nil)
 	}
 	return _ret
 }
 
 func (this *QActionGroup) CheckedAction() *QAction {
-	return UnsafeNewQAction(unsafe.Pointer(C.QActionGroup_CheckedAction(this.h)), nil)
+	return newQAction(C.QActionGroup_CheckedAction(this.h), nil)
 }
 
 func (this *QActionGroup) IsExclusive() bool {
@@ -180,7 +180,7 @@ func miqt_exec_callback_QActionGroup_Triggered(cb C.intptr_t, param1 *C.QAction)
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAction(unsafe.Pointer(param1), nil)
+	slotval1 := newQAction(param1, nil)
 
 	gofunc(slotval1)
 }
@@ -200,7 +200,7 @@ func miqt_exec_callback_QActionGroup_Hovered(cb C.intptr_t, param1 *C.QAction) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAction(unsafe.Pointer(param1), nil)
+	slotval1 := newQAction(param1, nil)
 
 	gofunc(slotval1)
 }
@@ -247,7 +247,7 @@ func miqt_exec_callback_QActionGroup_Event(self *C.QActionGroup, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QActionGroup{h: self}).callVirtualBase_Event, slotval1)
 
@@ -275,8 +275,9 @@ func miqt_exec_callback_QActionGroup_EventFilter(self *C.QActionGroup, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QActionGroup{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -304,7 +305,7 @@ func miqt_exec_callback_QActionGroup_TimerEvent(self *C.QActionGroup, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QActionGroup{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -330,7 +331,7 @@ func miqt_exec_callback_QActionGroup_ChildEvent(self *C.QActionGroup, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QActionGroup{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -356,7 +357,7 @@ func miqt_exec_callback_QActionGroup_CustomEvent(self *C.QActionGroup, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QActionGroup{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -382,7 +383,7 @@ func miqt_exec_callback_QActionGroup_ConnectNotify(self *C.QActionGroup, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QActionGroup{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -408,7 +409,7 @@ func miqt_exec_callback_QActionGroup_DisconnectNotify(self *C.QActionGroup, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QActionGroup{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

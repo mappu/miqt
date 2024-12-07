@@ -114,7 +114,7 @@ func NewQFile4(name string, parent *QObject) *QFile {
 }
 
 func (this *QFile) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QFile_MetaObject(this.h)))
+	return newQMetaObject(C.QFile_MetaObject(this.h))
 }
 
 func (this *QFile) Metacast(param1 string) unsafe.Pointer {

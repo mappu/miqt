@@ -132,8 +132,7 @@ func (this *QsciLexerFortran77) BraceStyle() int {
 }
 
 func (this *QsciLexerFortran77) DefaultColor(style int) *qt6.QColor {
-	_ret := C.QsciLexerFortran77_DefaultColor(this.h, (C.int)(style))
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerFortran77_DefaultColor(this.h, (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -143,15 +142,13 @@ func (this *QsciLexerFortran77) DefaultEolFill(style int) bool {
 }
 
 func (this *QsciLexerFortran77) DefaultFont(style int) *qt6.QFont {
-	_ret := C.QsciLexerFortran77_DefaultFont(this.h, (C.int)(style))
-	_goptr := qt6.UnsafeNewQFont(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerFortran77_DefaultFont(this.h, (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciLexerFortran77) DefaultPaper(style int) *qt6.QColor {
-	_ret := C.QsciLexerFortran77_DefaultPaper(this.h, (C.int)(style))
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerFortran77_DefaultPaper(this.h, (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -544,8 +541,7 @@ func miqt_exec_callback_QsciLexerFortran77_CaseSensitive(self *C.QsciLexerFortra
 
 func (this *QsciLexerFortran77) callVirtualBase_Color(style int) *qt6.QColor {
 
-	_ret := C.QsciLexerFortran77_virtualbase_Color(unsafe.Pointer(this.h), (C.int)(style))
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerFortran77_virtualbase_Color(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -603,8 +599,7 @@ func miqt_exec_callback_QsciLexerFortran77_EolFill(self *C.QsciLexerFortran77, c
 
 func (this *QsciLexerFortran77) callVirtualBase_Font(style int) *qt6.QFont {
 
-	_ret := C.QsciLexerFortran77_virtualbase_Font(unsafe.Pointer(this.h), (C.int)(style))
-	_goptr := qt6.UnsafeNewQFont(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerFortran77_virtualbase_Font(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -741,8 +736,7 @@ func miqt_exec_callback_QsciLexerFortran77_Description(self *C.QsciLexerFortran7
 
 func (this *QsciLexerFortran77) callVirtualBase_Paper(style int) *qt6.QColor {
 
-	_ret := C.QsciLexerFortran77_virtualbase_Paper(unsafe.Pointer(this.h), (C.int)(style))
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerFortran77_virtualbase_Paper(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -772,8 +766,7 @@ func miqt_exec_callback_QsciLexerFortran77_Paper(self *C.QsciLexerFortran77, cb 
 
 func (this *QsciLexerFortran77) callVirtualBase_DefaultColorWithStyle(style int) *qt6.QColor {
 
-	_ret := C.QsciLexerFortran77_virtualbase_DefaultColorWithStyle(unsafe.Pointer(this.h), (C.int)(style))
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerFortran77_virtualbase_DefaultColorWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -831,8 +824,7 @@ func miqt_exec_callback_QsciLexerFortran77_DefaultEolFill(self *C.QsciLexerFortr
 
 func (this *QsciLexerFortran77) callVirtualBase_DefaultFontWithStyle(style int) *qt6.QFont {
 
-	_ret := C.QsciLexerFortran77_virtualbase_DefaultFontWithStyle(unsafe.Pointer(this.h), (C.int)(style))
-	_goptr := qt6.UnsafeNewQFont(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerFortran77_virtualbase_DefaultFontWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -862,8 +854,7 @@ func miqt_exec_callback_QsciLexerFortran77_DefaultFontWithStyle(self *C.QsciLexe
 
 func (this *QsciLexerFortran77) callVirtualBase_DefaultPaperWithStyle(style int) *qt6.QColor {
 
-	_ret := C.QsciLexerFortran77_virtualbase_DefaultPaperWithStyle(unsafe.Pointer(this.h), (C.int)(style))
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerFortran77_virtualbase_DefaultPaperWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -911,7 +902,7 @@ func miqt_exec_callback_QsciLexerFortran77_SetEditor(self *C.QsciLexerFortran77,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQsciScintilla(unsafe.Pointer(editor), nil, nil, nil, nil, nil, nil)
+	slotval1 := newQsciScintilla(editor, nil, nil, nil, nil, nil, nil)
 
 	gofunc((&QsciLexerFortran77{h: self}).callVirtualBase_SetEditor, slotval1)
 
@@ -1040,6 +1031,7 @@ func miqt_exec_callback_QsciLexerFortran77_SetColor(self *C.QsciLexerFortran77, 
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQColor(unsafe.Pointer(c))
+
 	slotval2 := (int)(style)
 
 	gofunc((&QsciLexerFortran77{h: self}).callVirtualBase_SetColor, slotval1, slotval2)
@@ -1095,6 +1087,7 @@ func miqt_exec_callback_QsciLexerFortran77_SetFont(self *C.QsciLexerFortran77, c
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQFont(unsafe.Pointer(f))
+
 	slotval2 := (int)(style)
 
 	gofunc((&QsciLexerFortran77{h: self}).callVirtualBase_SetFont, slotval1, slotval2)
@@ -1122,6 +1115,7 @@ func miqt_exec_callback_QsciLexerFortran77_SetPaper(self *C.QsciLexerFortran77, 
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQColor(unsafe.Pointer(c))
+
 	slotval2 := (int)(style)
 
 	gofunc((&QsciLexerFortran77{h: self}).callVirtualBase_SetPaper, slotval1, slotval2)
@@ -1153,6 +1147,7 @@ func miqt_exec_callback_QsciLexerFortran77_ReadProperties(self *C.QsciLexerFortr
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQSettings(unsafe.Pointer(qs), nil)
+
 	var prefix_ms C.struct_miqt_string = prefix
 	prefix_ret := C.GoStringN(prefix_ms.data, C.int(int64(prefix_ms.len)))
 	C.free(unsafe.Pointer(prefix_ms.data))
@@ -1189,6 +1184,7 @@ func miqt_exec_callback_QsciLexerFortran77_WriteProperties(self *C.QsciLexerFort
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQSettings(unsafe.Pointer(qs), nil)
+
 	var prefix_ms C.struct_miqt_string = prefix
 	prefix_ret := C.GoStringN(prefix_ms.data, C.int(int64(prefix_ms.len)))
 	C.free(unsafe.Pointer(prefix_ms.data))

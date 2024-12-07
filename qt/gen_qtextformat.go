@@ -448,8 +448,7 @@ func (this *QTextFormat) SetObjectIndex(object int) {
 }
 
 func (this *QTextFormat) Property(propertyId int) *QVariant {
-	_ret := C.QTextFormat_Property(this.h, (C.int)(propertyId))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QTextFormat_Property(this.h, (C.int)(propertyId)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -486,29 +485,25 @@ func (this *QTextFormat) StringProperty(propertyId int) string {
 }
 
 func (this *QTextFormat) ColorProperty(propertyId int) *QColor {
-	_ret := C.QTextFormat_ColorProperty(this.h, (C.int)(propertyId))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QTextFormat_ColorProperty(this.h, (C.int)(propertyId)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) PenProperty(propertyId int) *QPen {
-	_ret := C.QTextFormat_PenProperty(this.h, (C.int)(propertyId))
-	_goptr := newQPen(_ret)
+	_goptr := newQPen(C.QTextFormat_PenProperty(this.h, (C.int)(propertyId)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) BrushProperty(propertyId int) *QBrush {
-	_ret := C.QTextFormat_BrushProperty(this.h, (C.int)(propertyId))
-	_goptr := newQBrush(_ret)
+	_goptr := newQBrush(C.QTextFormat_BrushProperty(this.h, (C.int)(propertyId)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) LengthProperty(propertyId int) *QTextLength {
-	_ret := C.QTextFormat_LengthProperty(this.h, (C.int)(propertyId))
-	_goptr := newQTextLength(_ret)
+	_goptr := newQTextLength(C.QTextFormat_LengthProperty(this.h, (C.int)(propertyId)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -518,8 +513,7 @@ func (this *QTextFormat) LengthVectorProperty(propertyId int) []QTextLength {
 	_ret := make([]QTextLength, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTextLength)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_vv_ret := _outCast[i]
-		_vv_goptr := newQTextLength(_vv_ret)
+		_vv_goptr := newQTextLength(_outCast[i])
 		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_vv_goptr
 	}
@@ -544,8 +538,7 @@ func (this *QTextFormat) Properties() map[int]QVariant {
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
-		_mapval_ret := _Values[i]
-		_mapval_goptr := newQVariant(_mapval_ret)
+		_mapval_goptr := newQVariant(_Values[i])
 		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_entry_Value := *_mapval_goptr
 
@@ -595,50 +588,43 @@ func (this *QTextFormat) IsTableCellFormat() bool {
 }
 
 func (this *QTextFormat) ToBlockFormat() *QTextBlockFormat {
-	_ret := C.QTextFormat_ToBlockFormat(this.h)
-	_goptr := newQTextBlockFormat(_ret, nil)
+	_goptr := newQTextBlockFormat(C.QTextFormat_ToBlockFormat(this.h), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) ToCharFormat() *QTextCharFormat {
-	_ret := C.QTextFormat_ToCharFormat(this.h)
-	_goptr := newQTextCharFormat(_ret, nil)
+	_goptr := newQTextCharFormat(C.QTextFormat_ToCharFormat(this.h), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) ToListFormat() *QTextListFormat {
-	_ret := C.QTextFormat_ToListFormat(this.h)
-	_goptr := newQTextListFormat(_ret, nil)
+	_goptr := newQTextListFormat(C.QTextFormat_ToListFormat(this.h), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) ToTableFormat() *QTextTableFormat {
-	_ret := C.QTextFormat_ToTableFormat(this.h)
-	_goptr := newQTextTableFormat(_ret, nil, nil)
+	_goptr := newQTextTableFormat(C.QTextFormat_ToTableFormat(this.h), nil, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) ToFrameFormat() *QTextFrameFormat {
-	_ret := C.QTextFormat_ToFrameFormat(this.h)
-	_goptr := newQTextFrameFormat(_ret, nil)
+	_goptr := newQTextFrameFormat(C.QTextFormat_ToFrameFormat(this.h), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) ToImageFormat() *QTextImageFormat {
-	_ret := C.QTextFormat_ToImageFormat(this.h)
-	_goptr := newQTextImageFormat(_ret, nil, nil)
+	_goptr := newQTextImageFormat(C.QTextFormat_ToImageFormat(this.h), nil, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) ToTableCellFormat() *QTextTableCellFormat {
-	_ret := C.QTextFormat_ToTableCellFormat(this.h)
-	_goptr := newQTextTableCellFormat(_ret, nil, nil)
+	_goptr := newQTextTableCellFormat(C.QTextFormat_ToTableCellFormat(this.h), nil, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -664,8 +650,7 @@ func (this *QTextFormat) SetBackground(brush *QBrush) {
 }
 
 func (this *QTextFormat) Background() *QBrush {
-	_ret := C.QTextFormat_Background(this.h)
-	_goptr := newQBrush(_ret)
+	_goptr := newQBrush(C.QTextFormat_Background(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -679,8 +664,7 @@ func (this *QTextFormat) SetForeground(brush *QBrush) {
 }
 
 func (this *QTextFormat) Foreground() *QBrush {
-	_ret := C.QTextFormat_Foreground(this.h)
-	_goptr := newQBrush(_ret)
+	_goptr := newQBrush(C.QTextFormat_Foreground(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -777,8 +761,7 @@ func (this *QTextCharFormat) SetFontWithFont(font *QFont) {
 }
 
 func (this *QTextCharFormat) Font() *QFont {
-	_ret := C.QTextCharFormat_Font(this.h)
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QTextCharFormat_Font(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -813,8 +796,7 @@ func (this *QTextCharFormat) SetFontFamilies(families []string) {
 }
 
 func (this *QTextCharFormat) FontFamilies() *QVariant {
-	_ret := C.QTextCharFormat_FontFamilies(this.h)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QTextCharFormat_FontFamilies(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -828,8 +810,7 @@ func (this *QTextCharFormat) SetFontStyleName(styleName string) {
 }
 
 func (this *QTextCharFormat) FontStyleName() *QVariant {
-	_ret := C.QTextCharFormat_FontStyleName(this.h)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QTextCharFormat_FontStyleName(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -919,8 +900,7 @@ func (this *QTextCharFormat) SetUnderlineColor(color *QColor) {
 }
 
 func (this *QTextCharFormat) UnderlineColor() *QColor {
-	_ret := C.QTextCharFormat_UnderlineColor(this.h)
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QTextCharFormat_UnderlineColor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -994,8 +974,7 @@ func (this *QTextCharFormat) SetTextOutline(pen *QPen) {
 }
 
 func (this *QTextCharFormat) TextOutline() *QPen {
-	_ret := C.QTextCharFormat_TextOutline(this.h)
-	_goptr := newQPen(_ret)
+	_goptr := newQPen(C.QTextCharFormat_TextOutline(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1290,8 +1269,7 @@ func (this *QTextBlockFormat) TabPositions() []QTextOption__Tab {
 	_ret := make([]QTextOption__Tab, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTextOption__Tab)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQTextOption__Tab(_lv_ret)
+		_lv_goptr := newQTextOption__Tab(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -1643,8 +1621,7 @@ func (this *QTextFrameFormat) SetBorderBrush(brush *QBrush) {
 }
 
 func (this *QTextFrameFormat) BorderBrush() *QBrush {
-	_ret := C.QTextFrameFormat_BorderBrush(this.h)
-	_goptr := newQBrush(_ret)
+	_goptr := newQBrush(C.QTextFrameFormat_BorderBrush(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1714,8 +1691,7 @@ func (this *QTextFrameFormat) SetWidthWithLength(length *QTextLength) {
 }
 
 func (this *QTextFrameFormat) Width() *QTextLength {
-	_ret := C.QTextFrameFormat_Width(this.h)
-	_goptr := newQTextLength(_ret)
+	_goptr := newQTextLength(C.QTextFrameFormat_Width(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1729,8 +1705,7 @@ func (this *QTextFrameFormat) SetHeightWithHeight(height *QTextLength) {
 }
 
 func (this *QTextFrameFormat) Height() *QTextLength {
-	_ret := C.QTextFrameFormat_Height(this.h)
-	_goptr := newQTextLength(_ret)
+	_goptr := newQTextLength(C.QTextFrameFormat_Height(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1835,8 +1810,7 @@ func (this *QTextTableFormat) ColumnWidthConstraints() []QTextLength {
 	_ret := make([]QTextLength, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTextLength)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_vv_ret := _outCast[i]
-		_vv_goptr := newQTextLength(_vv_ret)
+		_vv_goptr := newQTextLength(_outCast[i])
 		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_vv_goptr
 	}
@@ -2069,8 +2043,7 @@ func (this *QTextTableCellFormat) SetTopBorderBrush(brush *QBrush) {
 }
 
 func (this *QTextTableCellFormat) TopBorderBrush() *QBrush {
-	_ret := C.QTextTableCellFormat_TopBorderBrush(this.h)
-	_goptr := newQBrush(_ret)
+	_goptr := newQBrush(C.QTextTableCellFormat_TopBorderBrush(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -2080,8 +2053,7 @@ func (this *QTextTableCellFormat) SetBottomBorderBrush(brush *QBrush) {
 }
 
 func (this *QTextTableCellFormat) BottomBorderBrush() *QBrush {
-	_ret := C.QTextTableCellFormat_BottomBorderBrush(this.h)
-	_goptr := newQBrush(_ret)
+	_goptr := newQBrush(C.QTextTableCellFormat_BottomBorderBrush(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -2091,8 +2063,7 @@ func (this *QTextTableCellFormat) SetLeftBorderBrush(brush *QBrush) {
 }
 
 func (this *QTextTableCellFormat) LeftBorderBrush() *QBrush {
-	_ret := C.QTextTableCellFormat_LeftBorderBrush(this.h)
-	_goptr := newQBrush(_ret)
+	_goptr := newQBrush(C.QTextTableCellFormat_LeftBorderBrush(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -2102,8 +2073,7 @@ func (this *QTextTableCellFormat) SetRightBorderBrush(brush *QBrush) {
 }
 
 func (this *QTextTableCellFormat) RightBorderBrush() *QBrush {
-	_ret := C.QTextTableCellFormat_RightBorderBrush(this.h)
-	_goptr := newQBrush(_ret)
+	_goptr := newQBrush(C.QTextTableCellFormat_RightBorderBrush(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

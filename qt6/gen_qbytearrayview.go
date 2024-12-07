@@ -99,36 +99,31 @@ func (this *QByteArrayView) At(n int64) int8 {
 }
 
 func (this *QByteArrayView) First(n int64) *QByteArrayView {
-	_ret := C.QByteArrayView_First(this.h, (C.ptrdiff_t)(n))
-	_goptr := newQByteArrayView(_ret)
+	_goptr := newQByteArrayView(C.QByteArrayView_First(this.h, (C.ptrdiff_t)(n)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QByteArrayView) Last(n int64) *QByteArrayView {
-	_ret := C.QByteArrayView_Last(this.h, (C.ptrdiff_t)(n))
-	_goptr := newQByteArrayView(_ret)
+	_goptr := newQByteArrayView(C.QByteArrayView_Last(this.h, (C.ptrdiff_t)(n)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QByteArrayView) Sliced(pos int64) *QByteArrayView {
-	_ret := C.QByteArrayView_Sliced(this.h, (C.ptrdiff_t)(pos))
-	_goptr := newQByteArrayView(_ret)
+	_goptr := newQByteArrayView(C.QByteArrayView_Sliced(this.h, (C.ptrdiff_t)(pos)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QByteArrayView) Sliced2(pos int64, n int64) *QByteArrayView {
-	_ret := C.QByteArrayView_Sliced2(this.h, (C.ptrdiff_t)(pos), (C.ptrdiff_t)(n))
-	_goptr := newQByteArrayView(_ret)
+	_goptr := newQByteArrayView(C.QByteArrayView_Sliced2(this.h, (C.ptrdiff_t)(pos), (C.ptrdiff_t)(n)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QByteArrayView) Chopped(lenVal int64) *QByteArrayView {
-	_ret := C.QByteArrayView_Chopped(this.h, (C.ptrdiff_t)(lenVal))
-	_goptr := newQByteArrayView(_ret)
+	_goptr := newQByteArrayView(C.QByteArrayView_Chopped(this.h, (C.ptrdiff_t)(lenVal)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -142,8 +137,7 @@ func (this *QByteArrayView) Chop(n int64) {
 }
 
 func (this *QByteArrayView) Trimmed() *QByteArrayView {
-	_ret := C.QByteArrayView_Trimmed(this.h)
-	_goptr := newQByteArrayView(_ret)
+	_goptr := newQByteArrayView(C.QByteArrayView_Trimmed(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

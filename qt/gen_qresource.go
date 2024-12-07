@@ -122,8 +122,7 @@ func (this *QResource) SetLocale(locale *QLocale) {
 }
 
 func (this *QResource) Locale() *QLocale {
-	_ret := C.QResource_Locale(this.h)
-	_goptr := newQLocale(_ret)
+	_goptr := newQLocale(C.QResource_Locale(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -156,8 +155,7 @@ func (this *QResource) UncompressedData() []byte {
 }
 
 func (this *QResource) LastModified() *QDateTime {
-	_ret := C.QResource_LastModified(this.h)
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QResource_LastModified(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -187,8 +187,7 @@ func (this *QMediaFormat) IsSupported(mode QMediaFormat__ConversionMode) bool {
 }
 
 func (this *QMediaFormat) MimeType() *qt6.QMimeType {
-	_ret := C.QMediaFormat_MimeType(this.h)
-	_goptr := qt6.UnsafeNewQMimeType(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQMimeType(unsafe.Pointer(C.QMediaFormat_MimeType(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

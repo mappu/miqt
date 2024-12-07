@@ -104,8 +104,7 @@ func NewQMediaMetaData2() *QMediaMetaData {
 }
 
 func (this *QMediaMetaData) Value(k QMediaMetaData__Key) *qt6.QVariant {
-	_ret := C.QMediaMetaData_Value(this.h, (C.int)(k))
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QMediaMetaData_Value(this.h, (C.int)(k))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

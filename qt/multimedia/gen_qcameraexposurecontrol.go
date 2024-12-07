@@ -103,15 +103,13 @@ func (this *QCameraExposureControl) IsParameterSupported(parameter QCameraExposu
 }
 
 func (this *QCameraExposureControl) RequestedValue(parameter QCameraExposureControl__ExposureParameter) *qt.QVariant {
-	_ret := C.QCameraExposureControl_RequestedValue(this.h, (C.int)(parameter))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QCameraExposureControl_RequestedValue(this.h, (C.int)(parameter))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCameraExposureControl) ActualValue(parameter QCameraExposureControl__ExposureParameter) *qt.QVariant {
-	_ret := C.QCameraExposureControl_ActualValue(this.h, (C.int)(parameter))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QCameraExposureControl_ActualValue(this.h, (C.int)(parameter))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

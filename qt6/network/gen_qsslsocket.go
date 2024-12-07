@@ -165,8 +165,7 @@ func (this *QSslSocket) SetSocketOption(option QAbstractSocket__SocketOption, va
 }
 
 func (this *QSslSocket) SocketOption(option QAbstractSocket__SocketOption) *qt6.QVariant {
-	_ret := C.QSslSocket_SocketOption(this.h, (C.int)(option))
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QSslSocket_SocketOption(this.h, (C.int)(option))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -251,8 +250,7 @@ func (this *QSslSocket) EncryptedBytesToWrite() int64 {
 }
 
 func (this *QSslSocket) SslConfiguration() *QSslConfiguration {
-	_ret := C.QSslSocket_SslConfiguration(this.h)
-	_goptr := newQSslConfiguration(_ret)
+	_goptr := newQSslConfiguration(C.QSslSocket_SslConfiguration(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -276,8 +274,7 @@ func (this *QSslSocket) LocalCertificateChain() []QSslCertificate {
 	_ret := make([]QSslCertificate, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSslCertificate)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQSslCertificate(_lv_ret)
+		_lv_goptr := newQSslCertificate(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -297,15 +294,13 @@ func (this *QSslSocket) SetLocalCertificateWithFileName(fileName string) {
 }
 
 func (this *QSslSocket) LocalCertificate() *QSslCertificate {
-	_ret := C.QSslSocket_LocalCertificate(this.h)
-	_goptr := newQSslCertificate(_ret)
+	_goptr := newQSslCertificate(C.QSslSocket_LocalCertificate(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSslSocket) PeerCertificate() *QSslCertificate {
-	_ret := C.QSslSocket_PeerCertificate(this.h)
-	_goptr := newQSslCertificate(_ret)
+	_goptr := newQSslCertificate(C.QSslSocket_PeerCertificate(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -315,8 +310,7 @@ func (this *QSslSocket) PeerCertificateChain() []QSslCertificate {
 	_ret := make([]QSslCertificate, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSslCertificate)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQSslCertificate(_lv_ret)
+		_lv_goptr := newQSslCertificate(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -324,8 +318,7 @@ func (this *QSslSocket) PeerCertificateChain() []QSslCertificate {
 }
 
 func (this *QSslSocket) SessionCipher() *QSslCipher {
-	_ret := C.QSslSocket_SessionCipher(this.h)
-	_goptr := newQSslCipher(_ret)
+	_goptr := newQSslCipher(C.QSslSocket_SessionCipher(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -339,8 +332,7 @@ func (this *QSslSocket) OcspResponses() []QOcspResponse {
 	_ret := make([]QOcspResponse, int(_ma.len))
 	_outCast := (*[0xffff]*C.QOcspResponse)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQOcspResponse(_lv_ret)
+		_lv_goptr := newQOcspResponse(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -360,8 +352,7 @@ func (this *QSslSocket) SetPrivateKeyWithFileName(fileName string) {
 }
 
 func (this *QSslSocket) PrivateKey() *QSslKey {
-	_ret := C.QSslSocket_PrivateKey(this.h)
-	_goptr := newQSslKey(_ret)
+	_goptr := newQSslKey(C.QSslSocket_PrivateKey(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -391,8 +382,7 @@ func (this *QSslSocket) SslHandshakeErrors() []QSslError {
 	_ret := make([]QSslError, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSslError)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQSslError(_lv_ret)
+		_lv_goptr := newQSslError(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -553,7 +543,7 @@ func miqt_exec_callback_QSslSocket_PeerVerifyError(cb C.intptr_t, error *C.QSslE
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQSslError(unsafe.Pointer(error))
+	slotval1 := newQSslError(error)
 
 	gofunc(slotval1)
 }
@@ -583,8 +573,7 @@ func miqt_exec_callback_QSslSocket_SslErrors(cb C.intptr_t, errors C.struct_miqt
 	errors_ret := make([]QSslError, int(errors_ma.len))
 	errors_outCast := (*[0xffff]*C.QSslError)(unsafe.Pointer(errors_ma.data)) // hey ya
 	for i := 0; i < int(errors_ma.len); i++ {
-		errors_lv_ret := errors_outCast[i]
-		errors_lv_goptr := newQSslError(errors_lv_ret)
+		errors_lv_goptr := newQSslError(errors_outCast[i])
 		errors_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		errors_ret[i] = *errors_lv_goptr
 	}
@@ -648,7 +637,7 @@ func miqt_exec_callback_QSslSocket_PreSharedKeyAuthenticationRequired(cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQSslPreSharedKeyAuthenticator(unsafe.Pointer(authenticator))
+	slotval1 := newQSslPreSharedKeyAuthenticator(authenticator)
 
 	gofunc(slotval1)
 }
@@ -747,7 +736,7 @@ func miqt_exec_callback_QSslSocket_HandshakeInterruptedOnError(cb C.intptr_t, er
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQSslError(unsafe.Pointer(error))
+	slotval1 := newQSslError(error)
 
 	gofunc(slotval1)
 }
@@ -1065,8 +1054,7 @@ func miqt_exec_callback_QSslSocket_SetSocketOption(self *C.QSslSocket, cb C.intp
 
 func (this *QSslSocket) callVirtualBase_SocketOption(option QAbstractSocket__SocketOption) *qt6.QVariant {
 
-	_ret := C.QSslSocket_virtualbase_SocketOption(unsafe.Pointer(this.h), (C.int)(option))
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QSslSocket_virtualbase_SocketOption(unsafe.Pointer(this.h), (C.int)(option))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

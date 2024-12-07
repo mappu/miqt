@@ -136,7 +136,7 @@ func NewQGraphicsScene6(x float64, y float64, width float64, height float64, par
 }
 
 func (this *QGraphicsScene) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsScene_MetaObject(this.h)))
+	return newQMetaObject(C.QGraphicsScene_MetaObject(this.h))
 }
 
 func (this *QGraphicsScene) Metacast(param1 string) unsafe.Pointer {
@@ -164,8 +164,7 @@ func QGraphicsScene_TrUtf8(s string) string {
 }
 
 func (this *QGraphicsScene) SceneRect() *QRectF {
-	_ret := C.QGraphicsScene_SceneRect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsScene_SceneRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -215,8 +214,7 @@ func (this *QGraphicsScene) SetBspTreeDepth(depth int) {
 }
 
 func (this *QGraphicsScene) ItemsBoundingRect() *QRectF {
-	_ret := C.QGraphicsScene_ItemsBoundingRect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsScene_ItemsBoundingRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -226,7 +224,7 @@ func (this *QGraphicsScene) Items() []*QGraphicsItem {
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
 	return _ret
 }
@@ -236,7 +234,7 @@ func (this *QGraphicsScene) ItemsWithPos(pos *QPointF) []*QGraphicsItem {
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
 	return _ret
 }
@@ -246,7 +244,7 @@ func (this *QGraphicsScene) ItemsWithRect(rect *QRectF) []*QGraphicsItem {
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
 	return _ret
 }
@@ -256,7 +254,7 @@ func (this *QGraphicsScene) ItemsWithPath(path *QPainterPath) []*QGraphicsItem {
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
 	return _ret
 }
@@ -266,13 +264,13 @@ func (this *QGraphicsScene) CollidingItems(item *QGraphicsItem) []*QGraphicsItem
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
 	return _ret
 }
 
 func (this *QGraphicsScene) ItemAt(pos *QPointF, deviceTransform *QTransform) *QGraphicsItem {
-	return UnsafeNewQGraphicsItem(unsafe.Pointer(C.QGraphicsScene_ItemAt(this.h, pos.cPointer(), deviceTransform.cPointer())))
+	return newQGraphicsItem(C.QGraphicsScene_ItemAt(this.h, pos.cPointer(), deviceTransform.cPointer()))
 }
 
 func (this *QGraphicsScene) Items2(x float64, y float64, w float64, h float64, mode ItemSelectionMode, order SortOrder) []*QGraphicsItem {
@@ -280,13 +278,13 @@ func (this *QGraphicsScene) Items2(x float64, y float64, w float64, h float64, m
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
 	return _ret
 }
 
 func (this *QGraphicsScene) ItemAt2(x float64, y float64, deviceTransform *QTransform) *QGraphicsItem {
-	return UnsafeNewQGraphicsItem(unsafe.Pointer(C.QGraphicsScene_ItemAt2(this.h, (C.double)(x), (C.double)(y), deviceTransform.cPointer())))
+	return newQGraphicsItem(C.QGraphicsScene_ItemAt2(this.h, (C.double)(x), (C.double)(y), deviceTransform.cPointer()))
 }
 
 func (this *QGraphicsScene) SelectedItems() []*QGraphicsItem {
@@ -294,14 +292,13 @@ func (this *QGraphicsScene) SelectedItems() []*QGraphicsItem {
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
 	return _ret
 }
 
 func (this *QGraphicsScene) SelectionArea() *QPainterPath {
-	_ret := C.QGraphicsScene_SelectionArea(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsScene_SelectionArea(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -325,7 +322,7 @@ func (this *QGraphicsScene) CreateItemGroup(items []*QGraphicsItem) *QGraphicsIt
 		items_CArray[i] = items[i].cPointer()
 	}
 	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
-	return UnsafeNewQGraphicsItemGroup(unsafe.Pointer(C.QGraphicsScene_CreateItemGroup(this.h, items_ma)), nil)
+	return newQGraphicsItemGroup(C.QGraphicsScene_CreateItemGroup(this.h, items_ma), nil)
 }
 
 func (this *QGraphicsScene) DestroyItemGroup(group *QGraphicsItemGroup) {
@@ -337,23 +334,23 @@ func (this *QGraphicsScene) AddItem(item *QGraphicsItem) {
 }
 
 func (this *QGraphicsScene) AddEllipse(rect *QRectF) *QGraphicsEllipseItem {
-	return UnsafeNewQGraphicsEllipseItem(unsafe.Pointer(C.QGraphicsScene_AddEllipse(this.h, rect.cPointer())), nil, nil)
+	return newQGraphicsEllipseItem(C.QGraphicsScene_AddEllipse(this.h, rect.cPointer()), nil, nil)
 }
 
 func (this *QGraphicsScene) AddLine(line *QLineF) *QGraphicsLineItem {
-	return UnsafeNewQGraphicsLineItem(unsafe.Pointer(C.QGraphicsScene_AddLine(this.h, line.cPointer())), nil)
+	return newQGraphicsLineItem(C.QGraphicsScene_AddLine(this.h, line.cPointer()), nil)
 }
 
 func (this *QGraphicsScene) AddPath(path *QPainterPath) *QGraphicsPathItem {
-	return UnsafeNewQGraphicsPathItem(unsafe.Pointer(C.QGraphicsScene_AddPath(this.h, path.cPointer())), nil, nil)
+	return newQGraphicsPathItem(C.QGraphicsScene_AddPath(this.h, path.cPointer()), nil, nil)
 }
 
 func (this *QGraphicsScene) AddPixmap(pixmap *QPixmap) *QGraphicsPixmapItem {
-	return UnsafeNewQGraphicsPixmapItem(unsafe.Pointer(C.QGraphicsScene_AddPixmap(this.h, pixmap.cPointer())), nil)
+	return newQGraphicsPixmapItem(C.QGraphicsScene_AddPixmap(this.h, pixmap.cPointer()), nil)
 }
 
 func (this *QGraphicsScene) AddRect(rect *QRectF) *QGraphicsRectItem {
-	return UnsafeNewQGraphicsRectItem(unsafe.Pointer(C.QGraphicsScene_AddRect(this.h, rect.cPointer())), nil, nil)
+	return newQGraphicsRectItem(C.QGraphicsScene_AddRect(this.h, rect.cPointer()), nil, nil)
 }
 
 func (this *QGraphicsScene) AddText(text string) *QGraphicsTextItem {
@@ -361,7 +358,7 @@ func (this *QGraphicsScene) AddText(text string) *QGraphicsTextItem {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return UnsafeNewQGraphicsTextItem(unsafe.Pointer(C.QGraphicsScene_AddText(this.h, text_ms)), nil, nil, nil)
+	return newQGraphicsTextItem(C.QGraphicsScene_AddText(this.h, text_ms), nil, nil, nil)
 }
 
 func (this *QGraphicsScene) AddSimpleText(text string) *QGraphicsSimpleTextItem {
@@ -369,23 +366,23 @@ func (this *QGraphicsScene) AddSimpleText(text string) *QGraphicsSimpleTextItem 
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return UnsafeNewQGraphicsSimpleTextItem(unsafe.Pointer(C.QGraphicsScene_AddSimpleText(this.h, text_ms)), nil, nil)
+	return newQGraphicsSimpleTextItem(C.QGraphicsScene_AddSimpleText(this.h, text_ms), nil, nil)
 }
 
 func (this *QGraphicsScene) AddWidget(widget *QWidget) *QGraphicsProxyWidget {
-	return UnsafeNewQGraphicsProxyWidget(unsafe.Pointer(C.QGraphicsScene_AddWidget(this.h, widget.cPointer())), nil, nil, nil, nil, nil)
+	return newQGraphicsProxyWidget(C.QGraphicsScene_AddWidget(this.h, widget.cPointer()), nil, nil, nil, nil, nil)
 }
 
 func (this *QGraphicsScene) AddEllipse2(x float64, y float64, w float64, h float64) *QGraphicsEllipseItem {
-	return UnsafeNewQGraphicsEllipseItem(unsafe.Pointer(C.QGraphicsScene_AddEllipse2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h))), nil, nil)
+	return newQGraphicsEllipseItem(C.QGraphicsScene_AddEllipse2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h)), nil, nil)
 }
 
 func (this *QGraphicsScene) AddLine2(x1 float64, y1 float64, x2 float64, y2 float64) *QGraphicsLineItem {
-	return UnsafeNewQGraphicsLineItem(unsafe.Pointer(C.QGraphicsScene_AddLine2(this.h, (C.double)(x1), (C.double)(y1), (C.double)(x2), (C.double)(y2))), nil)
+	return newQGraphicsLineItem(C.QGraphicsScene_AddLine2(this.h, (C.double)(x1), (C.double)(y1), (C.double)(x2), (C.double)(y2)), nil)
 }
 
 func (this *QGraphicsScene) AddRect2(x float64, y float64, w float64, h float64) *QGraphicsRectItem {
-	return UnsafeNewQGraphicsRectItem(unsafe.Pointer(C.QGraphicsScene_AddRect2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h))), nil, nil)
+	return newQGraphicsRectItem(C.QGraphicsScene_AddRect2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h)), nil, nil)
 }
 
 func (this *QGraphicsScene) RemoveItem(item *QGraphicsItem) {
@@ -393,7 +390,7 @@ func (this *QGraphicsScene) RemoveItem(item *QGraphicsItem) {
 }
 
 func (this *QGraphicsScene) FocusItem() *QGraphicsItem {
-	return UnsafeNewQGraphicsItem(unsafe.Pointer(C.QGraphicsScene_FocusItem(this.h)))
+	return newQGraphicsItem(C.QGraphicsScene_FocusItem(this.h))
 }
 
 func (this *QGraphicsScene) SetFocusItem(item *QGraphicsItem) {
@@ -421,12 +418,11 @@ func (this *QGraphicsScene) StickyFocus() bool {
 }
 
 func (this *QGraphicsScene) MouseGrabberItem() *QGraphicsItem {
-	return UnsafeNewQGraphicsItem(unsafe.Pointer(C.QGraphicsScene_MouseGrabberItem(this.h)))
+	return newQGraphicsItem(C.QGraphicsScene_MouseGrabberItem(this.h))
 }
 
 func (this *QGraphicsScene) BackgroundBrush() *QBrush {
-	_ret := C.QGraphicsScene_BackgroundBrush(this.h)
-	_goptr := newQBrush(_ret)
+	_goptr := newQBrush(C.QGraphicsScene_BackgroundBrush(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -436,8 +432,7 @@ func (this *QGraphicsScene) SetBackgroundBrush(brush *QBrush) {
 }
 
 func (this *QGraphicsScene) ForegroundBrush() *QBrush {
-	_ret := C.QGraphicsScene_ForegroundBrush(this.h)
-	_goptr := newQBrush(_ret)
+	_goptr := newQBrush(C.QGraphicsScene_ForegroundBrush(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -447,8 +442,7 @@ func (this *QGraphicsScene) SetForegroundBrush(brush *QBrush) {
 }
 
 func (this *QGraphicsScene) InputMethodQuery(query InputMethodQuery) *QVariant {
-	_ret := C.QGraphicsScene_InputMethodQuery(this.h, (C.int)(query))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsScene_InputMethodQuery(this.h, (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -458,7 +452,7 @@ func (this *QGraphicsScene) Views() []*QGraphicsView {
 	_ret := make([]*QGraphicsView, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsView)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGraphicsView(unsafe.Pointer(_outCast[i]), nil, nil, nil, nil, nil)
+		_ret[i] = newQGraphicsView(_outCast[i], nil, nil, nil, nil, nil)
 	}
 	return _ret
 }
@@ -472,7 +466,7 @@ func (this *QGraphicsScene) Invalidate(x float64, y float64, w float64, h float6
 }
 
 func (this *QGraphicsScene) Style() *QStyle {
-	return UnsafeNewQStyle(unsafe.Pointer(C.QGraphicsScene_Style(this.h)), nil)
+	return newQStyle(C.QGraphicsScene_Style(this.h), nil)
 }
 
 func (this *QGraphicsScene) SetStyle(style *QStyle) {
@@ -480,8 +474,7 @@ func (this *QGraphicsScene) SetStyle(style *QStyle) {
 }
 
 func (this *QGraphicsScene) Font() *QFont {
-	_ret := C.QGraphicsScene_Font(this.h)
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QGraphicsScene_Font(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -491,8 +484,7 @@ func (this *QGraphicsScene) SetFont(font *QFont) {
 }
 
 func (this *QGraphicsScene) Palette() *QPalette {
-	_ret := C.QGraphicsScene_Palette(this.h)
-	_goptr := newQPalette(_ret)
+	_goptr := newQPalette(C.QGraphicsScene_Palette(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -506,7 +498,7 @@ func (this *QGraphicsScene) IsActive() bool {
 }
 
 func (this *QGraphicsScene) ActivePanel() *QGraphicsItem {
-	return UnsafeNewQGraphicsItem(unsafe.Pointer(C.QGraphicsScene_ActivePanel(this.h)))
+	return newQGraphicsItem(C.QGraphicsScene_ActivePanel(this.h))
 }
 
 func (this *QGraphicsScene) SetActivePanel(item *QGraphicsItem) {
@@ -514,7 +506,7 @@ func (this *QGraphicsScene) SetActivePanel(item *QGraphicsItem) {
 }
 
 func (this *QGraphicsScene) ActiveWindow() *QGraphicsWidget {
-	return UnsafeNewQGraphicsWidget(unsafe.Pointer(C.QGraphicsScene_ActiveWindow(this.h)), nil, nil, nil, nil)
+	return newQGraphicsWidget(C.QGraphicsScene_ActiveWindow(this.h), nil, nil, nil, nil)
 }
 
 func (this *QGraphicsScene) SetActiveWindow(widget *QGraphicsWidget) {
@@ -586,8 +578,7 @@ func miqt_exec_callback_QGraphicsScene_Changed(cb C.intptr_t, region C.struct_mi
 	region_ret := make([]QRectF, int(region_ma.len))
 	region_outCast := (*[0xffff]*C.QRectF)(unsafe.Pointer(region_ma.data)) // hey ya
 	for i := 0; i < int(region_ma.len); i++ {
-		region_lv_ret := region_outCast[i]
-		region_lv_goptr := newQRectF(region_lv_ret)
+		region_lv_goptr := newQRectF(region_outCast[i])
 		region_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		region_ret[i] = *region_lv_goptr
 	}
@@ -611,7 +602,7 @@ func miqt_exec_callback_QGraphicsScene_SceneRectChanged(cb C.intptr_t, rect *C.Q
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRectF(unsafe.Pointer(rect))
+	slotval1 := newQRectF(rect)
 
 	gofunc(slotval1)
 }
@@ -648,8 +639,10 @@ func miqt_exec_callback_QGraphicsScene_FocusItemChanged(cb C.intptr_t, newFocus 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsItem(unsafe.Pointer(newFocus))
-	slotval2 := UnsafeNewQGraphicsItem(unsafe.Pointer(oldFocus))
+	slotval1 := newQGraphicsItem(newFocus)
+
+	slotval2 := newQGraphicsItem(oldFocus)
+
 	slotval3 := (FocusReason)(reason)
 
 	gofunc(slotval1, slotval2, slotval3)
@@ -716,7 +709,7 @@ func (this *QGraphicsScene) Items1(order SortOrder) []*QGraphicsItem {
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
 	return _ret
 }
@@ -726,7 +719,7 @@ func (this *QGraphicsScene) Items22(pos *QPointF, mode ItemSelectionMode) []*QGr
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
 	return _ret
 }
@@ -736,7 +729,7 @@ func (this *QGraphicsScene) Items3(pos *QPointF, mode ItemSelectionMode, order S
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
 	return _ret
 }
@@ -746,7 +739,7 @@ func (this *QGraphicsScene) Items4(pos *QPointF, mode ItemSelectionMode, order S
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
 	return _ret
 }
@@ -756,7 +749,7 @@ func (this *QGraphicsScene) Items23(rect *QRectF, mode ItemSelectionMode) []*QGr
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
 	return _ret
 }
@@ -766,7 +759,7 @@ func (this *QGraphicsScene) Items32(rect *QRectF, mode ItemSelectionMode, order 
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
 	return _ret
 }
@@ -776,7 +769,7 @@ func (this *QGraphicsScene) Items42(rect *QRectF, mode ItemSelectionMode, order 
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
 	return _ret
 }
@@ -786,7 +779,7 @@ func (this *QGraphicsScene) Items25(path *QPainterPath, mode ItemSelectionMode) 
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
 	return _ret
 }
@@ -796,7 +789,7 @@ func (this *QGraphicsScene) Items34(path *QPainterPath, mode ItemSelectionMode, 
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
 	return _ret
 }
@@ -806,7 +799,7 @@ func (this *QGraphicsScene) Items44(path *QPainterPath, mode ItemSelectionMode, 
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
 	return _ret
 }
@@ -816,7 +809,7 @@ func (this *QGraphicsScene) CollidingItems2(item *QGraphicsItem, mode ItemSelect
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
 	return _ret
 }
@@ -826,7 +819,7 @@ func (this *QGraphicsScene) Items7(x float64, y float64, w float64, h float64, m
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
 	return _ret
 }
@@ -848,31 +841,31 @@ func (this *QGraphicsScene) SetSelectionArea4(path *QPainterPath, selectionOpera
 }
 
 func (this *QGraphicsScene) AddEllipse22(rect *QRectF, pen *QPen) *QGraphicsEllipseItem {
-	return UnsafeNewQGraphicsEllipseItem(unsafe.Pointer(C.QGraphicsScene_AddEllipse22(this.h, rect.cPointer(), pen.cPointer())), nil, nil)
+	return newQGraphicsEllipseItem(C.QGraphicsScene_AddEllipse22(this.h, rect.cPointer(), pen.cPointer()), nil, nil)
 }
 
 func (this *QGraphicsScene) AddEllipse3(rect *QRectF, pen *QPen, brush *QBrush) *QGraphicsEllipseItem {
-	return UnsafeNewQGraphicsEllipseItem(unsafe.Pointer(C.QGraphicsScene_AddEllipse3(this.h, rect.cPointer(), pen.cPointer(), brush.cPointer())), nil, nil)
+	return newQGraphicsEllipseItem(C.QGraphicsScene_AddEllipse3(this.h, rect.cPointer(), pen.cPointer(), brush.cPointer()), nil, nil)
 }
 
 func (this *QGraphicsScene) AddLine22(line *QLineF, pen *QPen) *QGraphicsLineItem {
-	return UnsafeNewQGraphicsLineItem(unsafe.Pointer(C.QGraphicsScene_AddLine22(this.h, line.cPointer(), pen.cPointer())), nil)
+	return newQGraphicsLineItem(C.QGraphicsScene_AddLine22(this.h, line.cPointer(), pen.cPointer()), nil)
 }
 
 func (this *QGraphicsScene) AddPath2(path *QPainterPath, pen *QPen) *QGraphicsPathItem {
-	return UnsafeNewQGraphicsPathItem(unsafe.Pointer(C.QGraphicsScene_AddPath2(this.h, path.cPointer(), pen.cPointer())), nil, nil)
+	return newQGraphicsPathItem(C.QGraphicsScene_AddPath2(this.h, path.cPointer(), pen.cPointer()), nil, nil)
 }
 
 func (this *QGraphicsScene) AddPath3(path *QPainterPath, pen *QPen, brush *QBrush) *QGraphicsPathItem {
-	return UnsafeNewQGraphicsPathItem(unsafe.Pointer(C.QGraphicsScene_AddPath3(this.h, path.cPointer(), pen.cPointer(), brush.cPointer())), nil, nil)
+	return newQGraphicsPathItem(C.QGraphicsScene_AddPath3(this.h, path.cPointer(), pen.cPointer(), brush.cPointer()), nil, nil)
 }
 
 func (this *QGraphicsScene) AddRect22(rect *QRectF, pen *QPen) *QGraphicsRectItem {
-	return UnsafeNewQGraphicsRectItem(unsafe.Pointer(C.QGraphicsScene_AddRect22(this.h, rect.cPointer(), pen.cPointer())), nil, nil)
+	return newQGraphicsRectItem(C.QGraphicsScene_AddRect22(this.h, rect.cPointer(), pen.cPointer()), nil, nil)
 }
 
 func (this *QGraphicsScene) AddRect3(rect *QRectF, pen *QPen, brush *QBrush) *QGraphicsRectItem {
-	return UnsafeNewQGraphicsRectItem(unsafe.Pointer(C.QGraphicsScene_AddRect3(this.h, rect.cPointer(), pen.cPointer(), brush.cPointer())), nil, nil)
+	return newQGraphicsRectItem(C.QGraphicsScene_AddRect3(this.h, rect.cPointer(), pen.cPointer(), brush.cPointer()), nil, nil)
 }
 
 func (this *QGraphicsScene) AddText2(text string, font *QFont) *QGraphicsTextItem {
@@ -880,7 +873,7 @@ func (this *QGraphicsScene) AddText2(text string, font *QFont) *QGraphicsTextIte
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return UnsafeNewQGraphicsTextItem(unsafe.Pointer(C.QGraphicsScene_AddText2(this.h, text_ms, font.cPointer())), nil, nil, nil)
+	return newQGraphicsTextItem(C.QGraphicsScene_AddText2(this.h, text_ms, font.cPointer()), nil, nil, nil)
 }
 
 func (this *QGraphicsScene) AddSimpleText2(text string, font *QFont) *QGraphicsSimpleTextItem {
@@ -888,31 +881,31 @@ func (this *QGraphicsScene) AddSimpleText2(text string, font *QFont) *QGraphicsS
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return UnsafeNewQGraphicsSimpleTextItem(unsafe.Pointer(C.QGraphicsScene_AddSimpleText2(this.h, text_ms, font.cPointer())), nil, nil)
+	return newQGraphicsSimpleTextItem(C.QGraphicsScene_AddSimpleText2(this.h, text_ms, font.cPointer()), nil, nil)
 }
 
 func (this *QGraphicsScene) AddWidget2(widget *QWidget, wFlags WindowType) *QGraphicsProxyWidget {
-	return UnsafeNewQGraphicsProxyWidget(unsafe.Pointer(C.QGraphicsScene_AddWidget2(this.h, widget.cPointer(), (C.int)(wFlags))), nil, nil, nil, nil, nil)
+	return newQGraphicsProxyWidget(C.QGraphicsScene_AddWidget2(this.h, widget.cPointer(), (C.int)(wFlags)), nil, nil, nil, nil, nil)
 }
 
 func (this *QGraphicsScene) AddEllipse5(x float64, y float64, w float64, h float64, pen *QPen) *QGraphicsEllipseItem {
-	return UnsafeNewQGraphicsEllipseItem(unsafe.Pointer(C.QGraphicsScene_AddEllipse5(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), pen.cPointer())), nil, nil)
+	return newQGraphicsEllipseItem(C.QGraphicsScene_AddEllipse5(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), pen.cPointer()), nil, nil)
 }
 
 func (this *QGraphicsScene) AddEllipse6(x float64, y float64, w float64, h float64, pen *QPen, brush *QBrush) *QGraphicsEllipseItem {
-	return UnsafeNewQGraphicsEllipseItem(unsafe.Pointer(C.QGraphicsScene_AddEllipse6(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), pen.cPointer(), brush.cPointer())), nil, nil)
+	return newQGraphicsEllipseItem(C.QGraphicsScene_AddEllipse6(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), pen.cPointer(), brush.cPointer()), nil, nil)
 }
 
 func (this *QGraphicsScene) AddLine5(x1 float64, y1 float64, x2 float64, y2 float64, pen *QPen) *QGraphicsLineItem {
-	return UnsafeNewQGraphicsLineItem(unsafe.Pointer(C.QGraphicsScene_AddLine5(this.h, (C.double)(x1), (C.double)(y1), (C.double)(x2), (C.double)(y2), pen.cPointer())), nil)
+	return newQGraphicsLineItem(C.QGraphicsScene_AddLine5(this.h, (C.double)(x1), (C.double)(y1), (C.double)(x2), (C.double)(y2), pen.cPointer()), nil)
 }
 
 func (this *QGraphicsScene) AddRect5(x float64, y float64, w float64, h float64, pen *QPen) *QGraphicsRectItem {
-	return UnsafeNewQGraphicsRectItem(unsafe.Pointer(C.QGraphicsScene_AddRect5(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), pen.cPointer())), nil, nil)
+	return newQGraphicsRectItem(C.QGraphicsScene_AddRect5(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), pen.cPointer()), nil, nil)
 }
 
 func (this *QGraphicsScene) AddRect6(x float64, y float64, w float64, h float64, pen *QPen, brush *QBrush) *QGraphicsRectItem {
-	return UnsafeNewQGraphicsRectItem(unsafe.Pointer(C.QGraphicsScene_AddRect6(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), pen.cPointer(), brush.cPointer())), nil, nil)
+	return newQGraphicsRectItem(C.QGraphicsScene_AddRect6(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), pen.cPointer(), brush.cPointer()), nil, nil)
 }
 
 func (this *QGraphicsScene) SetFocusItem2(item *QGraphicsItem, focusReason FocusReason) {
@@ -941,8 +934,7 @@ func (this *QGraphicsScene) Invalidate22(rect *QRectF, layers QGraphicsScene__Sc
 
 func (this *QGraphicsScene) callVirtualBase_InputMethodQuery(query InputMethodQuery) *QVariant {
 
-	_ret := C.QGraphicsScene_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsScene_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -990,7 +982,7 @@ func miqt_exec_callback_QGraphicsScene_Event(self *C.QGraphicsScene, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGraphicsScene{h: self}).callVirtualBase_Event, slotval1)
 
@@ -1018,8 +1010,9 @@ func miqt_exec_callback_QGraphicsScene_EventFilter(self *C.QGraphicsScene, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGraphicsScene{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -1047,7 +1040,7 @@ func miqt_exec_callback_QGraphicsScene_ContextMenuEvent(self *C.QGraphicsScene, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneContextMenuEvent(event, nil, nil)
 
 	gofunc((&QGraphicsScene{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -1073,7 +1066,7 @@ func miqt_exec_callback_QGraphicsScene_DragEnterEvent(self *C.QGraphicsScene, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsScene{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -1099,7 +1092,7 @@ func miqt_exec_callback_QGraphicsScene_DragMoveEvent(self *C.QGraphicsScene, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsScene{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1125,7 +1118,7 @@ func miqt_exec_callback_QGraphicsScene_DragLeaveEvent(self *C.QGraphicsScene, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsScene{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1151,7 +1144,7 @@ func miqt_exec_callback_QGraphicsScene_DropEvent(self *C.QGraphicsScene, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsScene{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1177,7 +1170,7 @@ func miqt_exec_callback_QGraphicsScene_FocusInEvent(self *C.QGraphicsScene, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QGraphicsScene{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -1203,7 +1196,7 @@ func miqt_exec_callback_QGraphicsScene_FocusOutEvent(self *C.QGraphicsScene, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QGraphicsScene{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -1229,7 +1222,7 @@ func miqt_exec_callback_QGraphicsScene_HelpEvent(self *C.QGraphicsScene, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneHelpEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneHelpEvent(event, nil, nil)
 
 	gofunc((&QGraphicsScene{h: self}).callVirtualBase_HelpEvent, slotval1)
 
@@ -1255,7 +1248,7 @@ func miqt_exec_callback_QGraphicsScene_KeyPressEvent(self *C.QGraphicsScene, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QGraphicsScene{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -1281,7 +1274,7 @@ func miqt_exec_callback_QGraphicsScene_KeyReleaseEvent(self *C.QGraphicsScene, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QGraphicsScene{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -1307,7 +1300,7 @@ func miqt_exec_callback_QGraphicsScene_MousePressEvent(self *C.QGraphicsScene, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsScene{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -1333,7 +1326,7 @@ func miqt_exec_callback_QGraphicsScene_MouseMoveEvent(self *C.QGraphicsScene, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsScene{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -1359,7 +1352,7 @@ func miqt_exec_callback_QGraphicsScene_MouseReleaseEvent(self *C.QGraphicsScene,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsScene{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -1385,7 +1378,7 @@ func miqt_exec_callback_QGraphicsScene_MouseDoubleClickEvent(self *C.QGraphicsSc
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsScene{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -1411,7 +1404,7 @@ func miqt_exec_callback_QGraphicsScene_WheelEvent(self *C.QGraphicsScene, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneWheelEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneWheelEvent(event, nil, nil)
 
 	gofunc((&QGraphicsScene{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -1437,7 +1430,7 @@ func miqt_exec_callback_QGraphicsScene_InputMethodEvent(self *C.QGraphicsScene, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQInputMethodEvent(event, nil)
 
 	gofunc((&QGraphicsScene{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -1463,8 +1456,9 @@ func miqt_exec_callback_QGraphicsScene_DrawBackground(self *C.QGraphicsScene, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQRectF(unsafe.Pointer(rect))
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQRectF(rect)
 
 	gofunc((&QGraphicsScene{h: self}).callVirtualBase_DrawBackground, slotval1, slotval2)
 
@@ -1490,8 +1484,9 @@ func miqt_exec_callback_QGraphicsScene_DrawForeground(self *C.QGraphicsScene, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQRectF(unsafe.Pointer(rect))
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQRectF(rect)
 
 	gofunc((&QGraphicsScene{h: self}).callVirtualBase_DrawForeground, slotval1, slotval2)
 
@@ -1517,7 +1512,7 @@ func miqt_exec_callback_QGraphicsScene_TimerEvent(self *C.QGraphicsScene, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QGraphicsScene{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -1543,7 +1538,7 @@ func miqt_exec_callback_QGraphicsScene_ChildEvent(self *C.QGraphicsScene, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QGraphicsScene{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -1569,7 +1564,7 @@ func miqt_exec_callback_QGraphicsScene_CustomEvent(self *C.QGraphicsScene, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QGraphicsScene{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -1595,7 +1590,7 @@ func miqt_exec_callback_QGraphicsScene_ConnectNotify(self *C.QGraphicsScene, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QGraphicsScene{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -1621,7 +1616,7 @@ func miqt_exec_callback_QGraphicsScene_DisconnectNotify(self *C.QGraphicsScene, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QGraphicsScene{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

@@ -56,7 +56,7 @@ func UnsafeNewQPaintDeviceWindow(h unsafe.Pointer, h_QWindow unsafe.Pointer, h_Q
 }
 
 func (this *QPaintDeviceWindow) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QPaintDeviceWindow_MetaObject(this.h)))
+	return newQMetaObject(C.QPaintDeviceWindow_MetaObject(this.h))
 }
 
 func (this *QPaintDeviceWindow) Metacast(param1 string) unsafe.Pointer {

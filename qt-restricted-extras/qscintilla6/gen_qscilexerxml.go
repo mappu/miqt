@@ -110,8 +110,7 @@ func (this *QsciLexerXML) Lexer() string {
 }
 
 func (this *QsciLexerXML) DefaultColor(style int) *qt6.QColor {
-	_ret := C.QsciLexerXML_DefaultColor(this.h, (C.int)(style))
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerXML_DefaultColor(this.h, (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -121,15 +120,13 @@ func (this *QsciLexerXML) DefaultEolFill(style int) bool {
 }
 
 func (this *QsciLexerXML) DefaultFont(style int) *qt6.QFont {
-	_ret := C.QsciLexerXML_DefaultFont(this.h, (C.int)(style))
-	_goptr := qt6.UnsafeNewQFont(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerXML_DefaultFont(this.h, (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciLexerXML) DefaultPaper(style int) *qt6.QColor {
-	_ret := C.QsciLexerXML_DefaultPaper(this.h, (C.int)(style))
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerXML_DefaultPaper(this.h, (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

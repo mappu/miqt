@@ -164,8 +164,7 @@ func (this *QCollator) SetLocale(locale *QLocale) {
 }
 
 func (this *QCollator) Locale() *QLocale {
-	_ret := C.QCollator_Locale(this.h)
-	_goptr := newQLocale(_ret)
+	_goptr := newQLocale(C.QCollator_Locale(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -227,8 +226,7 @@ func (this *QCollator) SortKey(stringVal string) *QCollatorSortKey {
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
 	defer C.free(unsafe.Pointer(stringVal_ms.data))
-	_ret := C.QCollator_SortKey(this.h, stringVal_ms)
-	_goptr := newQCollatorSortKey(_ret)
+	_goptr := newQCollatorSortKey(C.QCollator_SortKey(this.h, stringVal_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

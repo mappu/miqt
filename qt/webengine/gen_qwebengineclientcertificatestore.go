@@ -58,8 +58,7 @@ func (this *QWebEngineClientCertificateStore) Certificates() []network.QSslCerti
 	_ret := make([]network.QSslCertificate, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSslCertificate)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_vv_ret := _outCast[i]
-		_vv_goptr := network.UnsafeNewQSslCertificate(unsafe.Pointer(_vv_ret))
+		_vv_goptr := network.UnsafeNewQSslCertificate(unsafe.Pointer(_outCast[i]))
 		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_vv_goptr
 	}

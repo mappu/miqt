@@ -50,7 +50,7 @@ func UnsafeNewQMediaBindableInterface(h unsafe.Pointer) *QMediaBindableInterface
 }
 
 func (this *QMediaBindableInterface) MediaObject() *QMediaObject {
-	return UnsafeNewQMediaObject(unsafe.Pointer(C.QMediaBindableInterface_MediaObject(this.h)), nil)
+	return newQMediaObject(C.QMediaBindableInterface_MediaObject(this.h), nil)
 }
 
 // Delete this object from C++ memory.

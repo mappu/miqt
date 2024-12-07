@@ -80,7 +80,7 @@ func NewQSortFilterProxyModel2(parent *QObject) *QSortFilterProxyModel {
 }
 
 func (this *QSortFilterProxyModel) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSortFilterProxyModel_MetaObject(this.h)))
+	return newQMetaObject(C.QSortFilterProxyModel_MetaObject(this.h))
 }
 
 func (this *QSortFilterProxyModel) Metacast(param1 string) unsafe.Pointer {
@@ -112,43 +112,37 @@ func (this *QSortFilterProxyModel) SetSourceModel(sourceModel *QAbstractItemMode
 }
 
 func (this *QSortFilterProxyModel) MapToSource(proxyIndex *QModelIndex) *QModelIndex {
-	_ret := C.QSortFilterProxyModel_MapToSource(this.h, proxyIndex.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QSortFilterProxyModel_MapToSource(this.h, proxyIndex.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) MapFromSource(sourceIndex *QModelIndex) *QModelIndex {
-	_ret := C.QSortFilterProxyModel_MapFromSource(this.h, sourceIndex.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QSortFilterProxyModel_MapFromSource(this.h, sourceIndex.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) MapSelectionToSource(proxySelection *QItemSelection) *QItemSelection {
-	_ret := C.QSortFilterProxyModel_MapSelectionToSource(this.h, proxySelection.cPointer())
-	_goptr := newQItemSelection(_ret)
+	_goptr := newQItemSelection(C.QSortFilterProxyModel_MapSelectionToSource(this.h, proxySelection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) MapSelectionFromSource(sourceSelection *QItemSelection) *QItemSelection {
-	_ret := C.QSortFilterProxyModel_MapSelectionFromSource(this.h, sourceSelection.cPointer())
-	_goptr := newQItemSelection(_ret)
+	_goptr := newQItemSelection(C.QSortFilterProxyModel_MapSelectionFromSource(this.h, sourceSelection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) FilterRegExp() *QRegExp {
-	_ret := C.QSortFilterProxyModel_FilterRegExp(this.h)
-	_goptr := newQRegExp(_ret)
+	_goptr := newQRegExp(C.QSortFilterProxyModel_FilterRegExp(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) FilterRegularExpression() *QRegularExpression {
-	_ret := C.QSortFilterProxyModel_FilterRegularExpression(this.h)
-	_goptr := newQRegularExpression(_ret)
+	_goptr := newQRegularExpression(C.QSortFilterProxyModel_FilterRegularExpression(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -274,22 +268,19 @@ func (this *QSortFilterProxyModel) Invalidate() {
 }
 
 func (this *QSortFilterProxyModel) Index(row int, column int, parent *QModelIndex) *QModelIndex {
-	_ret := C.QSortFilterProxyModel_Index(this.h, (C.int)(row), (C.int)(column), parent.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QSortFilterProxyModel_Index(this.h, (C.int)(row), (C.int)(column), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) Parent(child *QModelIndex) *QModelIndex {
-	_ret := C.QSortFilterProxyModel_Parent(this.h, child.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QSortFilterProxyModel_Parent(this.h, child.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
-	_ret := C.QSortFilterProxyModel_Sibling(this.h, (C.int)(row), (C.int)(column), idx.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QSortFilterProxyModel_Sibling(this.h, (C.int)(row), (C.int)(column), idx.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -307,8 +298,7 @@ func (this *QSortFilterProxyModel) HasChildren(parent *QModelIndex) bool {
 }
 
 func (this *QSortFilterProxyModel) Data(index *QModelIndex, role int) *QVariant {
-	_ret := C.QSortFilterProxyModel_Data(this.h, index.cPointer(), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QSortFilterProxyModel_Data(this.h, index.cPointer(), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -318,8 +308,7 @@ func (this *QSortFilterProxyModel) SetData(index *QModelIndex, value *QVariant, 
 }
 
 func (this *QSortFilterProxyModel) HeaderData(section int, orientation Orientation, role int) *QVariant {
-	_ret := C.QSortFilterProxyModel_HeaderData(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QSortFilterProxyModel_HeaderData(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -335,7 +324,7 @@ func (this *QSortFilterProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
-	return UnsafeNewQMimeData(unsafe.Pointer(C.QSortFilterProxyModel_MimeData(this.h, indexes_ma)), nil)
+	return newQMimeData(C.QSortFilterProxyModel_MimeData(this.h, indexes_ma), nil)
 }
 
 func (this *QSortFilterProxyModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
@@ -371,8 +360,7 @@ func (this *QSortFilterProxyModel) Flags(index *QModelIndex) ItemFlag {
 }
 
 func (this *QSortFilterProxyModel) Buddy(index *QModelIndex) *QModelIndex {
-	_ret := C.QSortFilterProxyModel_Buddy(this.h, index.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QSortFilterProxyModel_Buddy(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -382,8 +370,7 @@ func (this *QSortFilterProxyModel) Match(start *QModelIndex, role int, value *QV
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -391,8 +378,7 @@ func (this *QSortFilterProxyModel) Match(start *QModelIndex, role int, value *QV
 }
 
 func (this *QSortFilterProxyModel) Span(index *QModelIndex) *QSize {
-	_ret := C.QSortFilterProxyModel_Span(this.h, index.cPointer())
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSortFilterProxyModel_Span(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -622,7 +608,7 @@ func miqt_exec_callback_QSortFilterProxyModel_SetSourceModel(self *C.QSortFilter
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAbstractItemModel(unsafe.Pointer(sourceModel), nil)
+	slotval1 := newQAbstractItemModel(sourceModel, nil)
 
 	gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_SetSourceModel, slotval1)
 
@@ -630,8 +616,7 @@ func miqt_exec_callback_QSortFilterProxyModel_SetSourceModel(self *C.QSortFilter
 
 func (this *QSortFilterProxyModel) callVirtualBase_MapToSource(proxyIndex *QModelIndex) *QModelIndex {
 
-	_ret := C.QSortFilterProxyModel_virtualbase_MapToSource(unsafe.Pointer(this.h), proxyIndex.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QSortFilterProxyModel_virtualbase_MapToSource(unsafe.Pointer(this.h), proxyIndex.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -651,7 +636,7 @@ func miqt_exec_callback_QSortFilterProxyModel_MapToSource(self *C.QSortFilterPro
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(proxyIndex))
+	slotval1 := newQModelIndex(proxyIndex)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_MapToSource, slotval1)
 
@@ -661,8 +646,7 @@ func miqt_exec_callback_QSortFilterProxyModel_MapToSource(self *C.QSortFilterPro
 
 func (this *QSortFilterProxyModel) callVirtualBase_MapFromSource(sourceIndex *QModelIndex) *QModelIndex {
 
-	_ret := C.QSortFilterProxyModel_virtualbase_MapFromSource(unsafe.Pointer(this.h), sourceIndex.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QSortFilterProxyModel_virtualbase_MapFromSource(unsafe.Pointer(this.h), sourceIndex.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -682,7 +666,7 @@ func miqt_exec_callback_QSortFilterProxyModel_MapFromSource(self *C.QSortFilterP
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(sourceIndex))
+	slotval1 := newQModelIndex(sourceIndex)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_MapFromSource, slotval1)
 
@@ -692,8 +676,7 @@ func miqt_exec_callback_QSortFilterProxyModel_MapFromSource(self *C.QSortFilterP
 
 func (this *QSortFilterProxyModel) callVirtualBase_MapSelectionToSource(proxySelection *QItemSelection) *QItemSelection {
 
-	_ret := C.QSortFilterProxyModel_virtualbase_MapSelectionToSource(unsafe.Pointer(this.h), proxySelection.cPointer())
-	_goptr := newQItemSelection(_ret)
+	_goptr := newQItemSelection(C.QSortFilterProxyModel_virtualbase_MapSelectionToSource(unsafe.Pointer(this.h), proxySelection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -713,7 +696,7 @@ func miqt_exec_callback_QSortFilterProxyModel_MapSelectionToSource(self *C.QSort
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(proxySelection))
+	slotval1 := newQItemSelection(proxySelection)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_MapSelectionToSource, slotval1)
 
@@ -723,8 +706,7 @@ func miqt_exec_callback_QSortFilterProxyModel_MapSelectionToSource(self *C.QSort
 
 func (this *QSortFilterProxyModel) callVirtualBase_MapSelectionFromSource(sourceSelection *QItemSelection) *QItemSelection {
 
-	_ret := C.QSortFilterProxyModel_virtualbase_MapSelectionFromSource(unsafe.Pointer(this.h), sourceSelection.cPointer())
-	_goptr := newQItemSelection(_ret)
+	_goptr := newQItemSelection(C.QSortFilterProxyModel_virtualbase_MapSelectionFromSource(unsafe.Pointer(this.h), sourceSelection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -744,7 +726,7 @@ func miqt_exec_callback_QSortFilterProxyModel_MapSelectionFromSource(self *C.QSo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(sourceSelection))
+	slotval1 := newQItemSelection(sourceSelection)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_MapSelectionFromSource, slotval1)
 
@@ -774,7 +756,7 @@ func miqt_exec_callback_QSortFilterProxyModel_FilterAcceptsRow(self *C.QSortFilt
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (int)(source_row)
 
-	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(source_parent))
+	slotval2 := newQModelIndex(source_parent)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_FilterAcceptsRow, slotval1, slotval2)
 
@@ -804,7 +786,7 @@ func miqt_exec_callback_QSortFilterProxyModel_FilterAcceptsColumn(self *C.QSortF
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (int)(source_column)
 
-	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(source_parent))
+	slotval2 := newQModelIndex(source_parent)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_FilterAcceptsColumn, slotval1, slotval2)
 
@@ -832,8 +814,9 @@ func miqt_exec_callback_QSortFilterProxyModel_LessThan(self *C.QSortFilterProxyM
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(source_left))
-	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(source_right))
+	slotval1 := newQModelIndex(source_left)
+
+	slotval2 := newQModelIndex(source_right)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_LessThan, slotval1, slotval2)
 
@@ -843,8 +826,7 @@ func miqt_exec_callback_QSortFilterProxyModel_LessThan(self *C.QSortFilterProxyM
 
 func (this *QSortFilterProxyModel) callVirtualBase_Index(row int, column int, parent *QModelIndex) *QModelIndex {
 
-	_ret := C.QSortFilterProxyModel_virtualbase_Index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), parent.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QSortFilterProxyModel_virtualbase_Index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -868,7 +850,7 @@ func miqt_exec_callback_QSortFilterProxyModel_Index(self *C.QSortFilterProxyMode
 
 	slotval2 := (int)(column)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_Index, slotval1, slotval2, slotval3)
 
@@ -878,8 +860,7 @@ func miqt_exec_callback_QSortFilterProxyModel_Index(self *C.QSortFilterProxyMode
 
 func (this *QSortFilterProxyModel) callVirtualBase_Parent(child *QModelIndex) *QModelIndex {
 
-	_ret := C.QSortFilterProxyModel_virtualbase_Parent(unsafe.Pointer(this.h), child.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QSortFilterProxyModel_virtualbase_Parent(unsafe.Pointer(this.h), child.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -899,7 +880,7 @@ func miqt_exec_callback_QSortFilterProxyModel_Parent(self *C.QSortFilterProxyMod
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(child))
+	slotval1 := newQModelIndex(child)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_Parent, slotval1)
 
@@ -909,8 +890,7 @@ func miqt_exec_callback_QSortFilterProxyModel_Parent(self *C.QSortFilterProxyMod
 
 func (this *QSortFilterProxyModel) callVirtualBase_Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
 
-	_ret := C.QSortFilterProxyModel_virtualbase_Sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), idx.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QSortFilterProxyModel_virtualbase_Sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), idx.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -934,7 +914,7 @@ func miqt_exec_callback_QSortFilterProxyModel_Sibling(self *C.QSortFilterProxyMo
 
 	slotval2 := (int)(column)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(idx))
+	slotval3 := newQModelIndex(idx)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_Sibling, slotval1, slotval2, slotval3)
 
@@ -962,7 +942,7 @@ func miqt_exec_callback_QSortFilterProxyModel_RowCount(self *C.QSortFilterProxyM
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_RowCount, slotval1)
 
@@ -990,7 +970,7 @@ func miqt_exec_callback_QSortFilterProxyModel_ColumnCount(self *C.QSortFilterPro
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_ColumnCount, slotval1)
 
@@ -1018,7 +998,7 @@ func miqt_exec_callback_QSortFilterProxyModel_HasChildren(self *C.QSortFilterPro
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_HasChildren, slotval1)
 
@@ -1028,8 +1008,7 @@ func miqt_exec_callback_QSortFilterProxyModel_HasChildren(self *C.QSortFilterPro
 
 func (this *QSortFilterProxyModel) callVirtualBase_Data(index *QModelIndex, role int) *QVariant {
 
-	_ret := C.QSortFilterProxyModel_virtualbase_Data(unsafe.Pointer(this.h), index.cPointer(), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QSortFilterProxyModel_virtualbase_Data(unsafe.Pointer(this.h), index.cPointer(), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1049,7 +1028,8 @@ func miqt_exec_callback_QSortFilterProxyModel_Data(self *C.QSortFilterProxyModel
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
+
 	slotval2 := (int)(role)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_Data, slotval1, slotval2)
@@ -1078,8 +1058,10 @@ func miqt_exec_callback_QSortFilterProxyModel_SetData(self *C.QSortFilterProxyMo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval1 := newQModelIndex(index)
+
+	slotval2 := newQVariant(value)
+
 	slotval3 := (int)(role)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_SetData, slotval1, slotval2, slotval3)
@@ -1090,8 +1072,7 @@ func miqt_exec_callback_QSortFilterProxyModel_SetData(self *C.QSortFilterProxyMo
 
 func (this *QSortFilterProxyModel) callVirtualBase_HeaderData(section int, orientation Orientation, role int) *QVariant {
 
-	_ret := C.QSortFilterProxyModel_virtualbase_HeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QSortFilterProxyModel_virtualbase_HeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1147,7 +1128,8 @@ func miqt_exec_callback_QSortFilterProxyModel_SetHeaderData(self *C.QSortFilterP
 
 	slotval2 := (Orientation)(orientation)
 
-	slotval3 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval3 := newQVariant(value)
+
 	slotval4 := (int)(role)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_SetHeaderData, slotval1, slotval2, slotval3, slotval4)
@@ -1164,7 +1146,8 @@ func (this *QSortFilterProxyModel) callVirtualBase_MimeData(indexes []QModelInde
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 
-	return UnsafeNewQMimeData(unsafe.Pointer(C.QSortFilterProxyModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma)), nil)
+	return newQMimeData(C.QSortFilterProxyModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma), nil)
+
 }
 func (this *QSortFilterProxyModel) OnMimeData(slot func(super func(indexes []QModelIndex) *QMimeData, indexes []QModelIndex) *QMimeData) {
 	if !this.isSubclass {
@@ -1185,8 +1168,7 @@ func miqt_exec_callback_QSortFilterProxyModel_MimeData(self *C.QSortFilterProxyM
 	indexes_ret := make([]QModelIndex, int(indexes_ma.len))
 	indexes_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(indexes_ma.data)) // hey ya
 	for i := 0; i < int(indexes_ma.len); i++ {
-		indexes_lv_ret := indexes_outCast[i]
-		indexes_lv_goptr := newQModelIndex(indexes_lv_ret)
+		indexes_lv_goptr := newQModelIndex(indexes_outCast[i])
 		indexes_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		indexes_ret[i] = *indexes_lv_goptr
 	}
@@ -1218,14 +1200,15 @@ func miqt_exec_callback_QSortFilterProxyModel_DropMimeData(self *C.QSortFilterPr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMimeData(unsafe.Pointer(data), nil)
+	slotval1 := newQMimeData(data, nil)
+
 	slotval2 := (DropAction)(action)
 
 	slotval3 := (int)(row)
 
 	slotval4 := (int)(column)
 
-	slotval5 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval5 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_DropMimeData, slotval1, slotval2, slotval3, slotval4, slotval5)
 
@@ -1257,7 +1240,7 @@ func miqt_exec_callback_QSortFilterProxyModel_InsertRows(self *C.QSortFilterProx
 
 	slotval2 := (int)(count)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_InsertRows, slotval1, slotval2, slotval3)
 
@@ -1289,7 +1272,7 @@ func miqt_exec_callback_QSortFilterProxyModel_InsertColumns(self *C.QSortFilterP
 
 	slotval2 := (int)(count)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_InsertColumns, slotval1, slotval2, slotval3)
 
@@ -1321,7 +1304,7 @@ func miqt_exec_callback_QSortFilterProxyModel_RemoveRows(self *C.QSortFilterProx
 
 	slotval2 := (int)(count)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_RemoveRows, slotval1, slotval2, slotval3)
 
@@ -1353,7 +1336,7 @@ func miqt_exec_callback_QSortFilterProxyModel_RemoveColumns(self *C.QSortFilterP
 
 	slotval2 := (int)(count)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_RemoveColumns, slotval1, slotval2, slotval3)
 
@@ -1381,7 +1364,7 @@ func miqt_exec_callback_QSortFilterProxyModel_FetchMore(self *C.QSortFilterProxy
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_FetchMore, slotval1)
 
@@ -1407,7 +1390,7 @@ func miqt_exec_callback_QSortFilterProxyModel_CanFetchMore(self *C.QSortFilterPr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_CanFetchMore, slotval1)
 
@@ -1435,7 +1418,7 @@ func miqt_exec_callback_QSortFilterProxyModel_Flags(self *C.QSortFilterProxyMode
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_Flags, slotval1)
 
@@ -1445,8 +1428,7 @@ func miqt_exec_callback_QSortFilterProxyModel_Flags(self *C.QSortFilterProxyMode
 
 func (this *QSortFilterProxyModel) callVirtualBase_Buddy(index *QModelIndex) *QModelIndex {
 
-	_ret := C.QSortFilterProxyModel_virtualbase_Buddy(unsafe.Pointer(this.h), index.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QSortFilterProxyModel_virtualbase_Buddy(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1466,7 +1448,7 @@ func miqt_exec_callback_QSortFilterProxyModel_Buddy(self *C.QSortFilterProxyMode
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_Buddy, slotval1)
 
@@ -1480,8 +1462,7 @@ func (this *QSortFilterProxyModel) callVirtualBase_Match(start *QModelIndex, rol
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -1503,10 +1484,12 @@ func miqt_exec_callback_QSortFilterProxyModel_Match(self *C.QSortFilterProxyMode
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(start))
+	slotval1 := newQModelIndex(start)
+
 	slotval2 := (int)(role)
 
-	slotval3 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval3 := newQVariant(value)
+
 	slotval4 := (int)(hits)
 
 	slotval5 := (MatchFlag)(flags)
@@ -1525,8 +1508,7 @@ func miqt_exec_callback_QSortFilterProxyModel_Match(self *C.QSortFilterProxyMode
 
 func (this *QSortFilterProxyModel) callVirtualBase_Span(index *QModelIndex) *QSize {
 
-	_ret := C.QSortFilterProxyModel_virtualbase_Span(unsafe.Pointer(this.h), index.cPointer())
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSortFilterProxyModel_virtualbase_Span(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1546,7 +1528,7 @@ func miqt_exec_callback_QSortFilterProxyModel_Span(self *C.QSortFilterProxyModel
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_Span, slotval1)
 
@@ -1708,8 +1690,7 @@ func (this *QSortFilterProxyModel) callVirtualBase_ItemData(index *QModelIndex) 
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
-		_mapval_ret := _Values[i]
-		_mapval_goptr := newQVariant(_mapval_ret)
+		_mapval_goptr := newQVariant(_Values[i])
 		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_entry_Value := *_mapval_goptr
 
@@ -1733,7 +1714,7 @@ func miqt_exec_callback_QSortFilterProxyModel_ItemData(self *C.QSortFilterProxyM
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_ItemData, slotval1)
 	virtualReturn_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
@@ -1791,7 +1772,8 @@ func miqt_exec_callback_QSortFilterProxyModel_SetItemData(self *C.QSortFilterPro
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
+
 	var roles_mm C.struct_miqt_map = roles
 	roles_ret := make(map[int]QVariant, int(roles_mm.len))
 	roles_Keys := (*[0xffff]C.int)(unsafe.Pointer(roles_mm.keys))
@@ -1799,8 +1781,7 @@ func miqt_exec_callback_QSortFilterProxyModel_SetItemData(self *C.QSortFilterPro
 	for i := 0; i < int(roles_mm.len); i++ {
 		roles_entry_Key := (int)(roles_Keys[i])
 
-		roles_mapval_ret := roles_Values[i]
-		roles_mapval_goptr := newQVariant(roles_mapval_ret)
+		roles_mapval_goptr := newQVariant(roles_Values[i])
 		roles_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		roles_entry_Value := *roles_mapval_goptr
 
@@ -1834,14 +1815,15 @@ func miqt_exec_callback_QSortFilterProxyModel_CanDropMimeData(self *C.QSortFilte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMimeData(unsafe.Pointer(data), nil)
+	slotval1 := newQMimeData(data, nil)
+
 	slotval2 := (DropAction)(action)
 
 	slotval3 := (int)(row)
 
 	slotval4 := (int)(column)
 
-	slotval5 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval5 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_CanDropMimeData, slotval1, slotval2, slotval3, slotval4, slotval5)
 

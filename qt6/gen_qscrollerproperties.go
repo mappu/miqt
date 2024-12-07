@@ -133,8 +133,7 @@ func QScrollerProperties_UnsetDefaultScrollerProperties() {
 }
 
 func (this *QScrollerProperties) ScrollMetric(metric QScrollerProperties__ScrollMetric) *QVariant {
-	_ret := C.QScrollerProperties_ScrollMetric(this.h, (C.int)(metric))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QScrollerProperties_ScrollMetric(this.h, (C.int)(metric)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

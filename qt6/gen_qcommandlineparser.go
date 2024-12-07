@@ -105,15 +105,13 @@ func (this *QCommandLineParser) AddOptions(options []QCommandLineOption) bool {
 }
 
 func (this *QCommandLineParser) AddVersionOption() *QCommandLineOption {
-	_ret := C.QCommandLineParser_AddVersionOption(this.h)
-	_goptr := newQCommandLineOption(_ret)
+	_goptr := newQCommandLineOption(C.QCommandLineParser_AddVersionOption(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCommandLineParser) AddHelpOption() *QCommandLineOption {
-	_ret := C.QCommandLineParser_AddHelpOption(this.h)
-	_goptr := newQCommandLineOption(_ret)
+	_goptr := newQCommandLineOption(C.QCommandLineParser_AddHelpOption(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -132,8 +132,7 @@ func (this *QDtlsClientVerifier) SetCookieGeneratorParameters(params *QDtlsClien
 }
 
 func (this *QDtlsClientVerifier) CookieGeneratorParameters() *QDtlsClientVerifier__GeneratorParameters {
-	_ret := C.QDtlsClientVerifier_CookieGeneratorParameters(this.h)
-	_goptr := newQDtlsClientVerifier__GeneratorParameters(_ret)
+	_goptr := newQDtlsClientVerifier__GeneratorParameters(C.QDtlsClientVerifier_CookieGeneratorParameters(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -256,6 +255,7 @@ func miqt_exec_callback_QDtlsClientVerifier_EventFilter(self *C.QDtlsClientVerif
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QDtlsClientVerifier{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
@@ -510,8 +510,7 @@ func (this *QDtls) SetPeerVerificationName(name string) bool {
 }
 
 func (this *QDtls) PeerAddress() *QHostAddress {
-	_ret := C.QDtls_PeerAddress(this.h)
-	_goptr := newQHostAddress(_ret)
+	_goptr := newQHostAddress(C.QDtls_PeerAddress(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -544,8 +543,7 @@ func (this *QDtls) SetCookieGeneratorParameters(params *QDtlsClientVerifier__Gen
 }
 
 func (this *QDtls) CookieGeneratorParameters() *QDtlsClientVerifier__GeneratorParameters {
-	_ret := C.QDtls_CookieGeneratorParameters(this.h)
-	_goptr := newQDtlsClientVerifier__GeneratorParameters(_ret)
+	_goptr := newQDtlsClientVerifier__GeneratorParameters(C.QDtls_CookieGeneratorParameters(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -555,8 +553,7 @@ func (this *QDtls) SetDtlsConfiguration(configuration *QSslConfiguration) bool {
 }
 
 func (this *QDtls) DtlsConfiguration() *QSslConfiguration {
-	_ret := C.QDtls_DtlsConfiguration(this.h)
-	_goptr := newQSslConfiguration(_ret)
+	_goptr := newQSslConfiguration(C.QDtls_DtlsConfiguration(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -590,8 +587,7 @@ func (this *QDtls) IsConnectionEncrypted() bool {
 }
 
 func (this *QDtls) SessionCipher() *QSslCipher {
-	_ret := C.QDtls_SessionCipher(this.h)
-	_goptr := newQSslCipher(_ret)
+	_goptr := newQSslCipher(C.QDtls_SessionCipher(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -633,8 +629,7 @@ func (this *QDtls) PeerVerificationErrors() []QSslError {
 	_ret := make([]QSslError, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSslError)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_vv_ret := _outCast[i]
-		_vv_goptr := newQSslError(_vv_ret)
+		_vv_goptr := newQSslError(_outCast[i])
 		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_vv_goptr
 	}
@@ -666,7 +661,7 @@ func miqt_exec_callback_QDtls_PskRequired(cb C.intptr_t, authenticator *C.QSslPr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQSslPreSharedKeyAuthenticator(unsafe.Pointer(authenticator))
+	slotval1 := newQSslPreSharedKeyAuthenticator(authenticator)
 
 	gofunc(slotval1)
 }
@@ -796,6 +791,7 @@ func miqt_exec_callback_QDtls_EventFilter(self *C.QDtls, cb C.intptr_t, watched 
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QDtls{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

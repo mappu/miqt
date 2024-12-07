@@ -130,7 +130,7 @@ func NewQLineEdit4(param1 string, parent *QWidget) *QLineEdit {
 }
 
 func (this *QLineEdit) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QLineEdit_MetaObject(this.h)))
+	return newQMetaObject(C.QLineEdit_MetaObject(this.h))
 }
 
 func (this *QLineEdit) Metacast(param1 string) unsafe.Pointer {
@@ -222,7 +222,7 @@ func (this *QLineEdit) SetValidator(validator *QValidator) {
 }
 
 func (this *QLineEdit) Validator() *QValidator {
-	return UnsafeNewQValidator(unsafe.Pointer(C.QLineEdit_Validator(this.h)), nil)
+	return newQValidator(C.QLineEdit_Validator(this.h), nil)
 }
 
 func (this *QLineEdit) SetCompleter(completer *QCompleter) {
@@ -230,19 +230,17 @@ func (this *QLineEdit) SetCompleter(completer *QCompleter) {
 }
 
 func (this *QLineEdit) Completer() *QCompleter {
-	return UnsafeNewQCompleter(unsafe.Pointer(C.QLineEdit_Completer(this.h)), nil)
+	return newQCompleter(C.QLineEdit_Completer(this.h), nil)
 }
 
 func (this *QLineEdit) SizeHint() *QSize {
-	_ret := C.QLineEdit_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QLineEdit_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLineEdit) MinimumSizeHint() *QSize {
-	_ret := C.QLineEdit_MinimumSizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QLineEdit_MinimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -386,8 +384,7 @@ func (this *QLineEdit) SetTextMarginsWithMargins(margins *QMargins) {
 }
 
 func (this *QLineEdit) TextMargins() *QMargins {
-	_ret := C.QLineEdit_TextMargins(this.h)
-	_goptr := newQMargins(_ret)
+	_goptr := newQMargins(C.QLineEdit_TextMargins(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -397,7 +394,7 @@ func (this *QLineEdit) AddAction(action *QAction, position QLineEdit__ActionPosi
 }
 
 func (this *QLineEdit) AddAction2(icon *QIcon, position QLineEdit__ActionPosition) *QAction {
-	return UnsafeNewQAction(unsafe.Pointer(C.QLineEdit_AddAction2(this.h, icon.cPointer(), (C.int)(position))), nil)
+	return newQAction(C.QLineEdit_AddAction2(this.h, icon.cPointer(), (C.int)(position)), nil)
 }
 
 func (this *QLineEdit) SetText(text string) {
@@ -449,7 +446,7 @@ func (this *QLineEdit) Insert(param1 string) {
 }
 
 func (this *QLineEdit) CreateStandardContextMenu() *QMenu {
-	return UnsafeNewQMenu(unsafe.Pointer(C.QLineEdit_CreateStandardContextMenu(this.h)), nil, nil, nil)
+	return newQMenu(C.QLineEdit_CreateStandardContextMenu(this.h), nil, nil, nil)
 }
 
 func (this *QLineEdit) TextChanged(param1 string) {
@@ -597,15 +594,13 @@ func miqt_exec_callback_QLineEdit_InputRejected(cb C.intptr_t) {
 }
 
 func (this *QLineEdit) InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	_ret := C.QLineEdit_InputMethodQuery(this.h, (C.int)(param1))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QLineEdit_InputMethodQuery(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLineEdit) InputMethodQuery2(property InputMethodQuery, argument QVariant) *QVariant {
-	_ret := C.QLineEdit_InputMethodQuery2(this.h, (C.int)(property), argument.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QLineEdit_InputMethodQuery2(this.h, (C.int)(property), argument.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -650,8 +645,7 @@ func (this *QLineEdit) CursorBackward2(mark bool, steps int) {
 
 func (this *QLineEdit) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QLineEdit_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QLineEdit_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -678,8 +672,7 @@ func miqt_exec_callback_QLineEdit_SizeHint(self *C.QLineEdit, cb C.intptr_t) *C.
 
 func (this *QLineEdit) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QLineEdit_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QLineEdit_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -724,7 +717,7 @@ func miqt_exec_callback_QLineEdit_MousePressEvent(self *C.QLineEdit, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(param1, nil, nil, nil, nil)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -750,7 +743,7 @@ func miqt_exec_callback_QLineEdit_MouseMoveEvent(self *C.QLineEdit, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(param1, nil, nil, nil, nil)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -776,7 +769,7 @@ func miqt_exec_callback_QLineEdit_MouseReleaseEvent(self *C.QLineEdit, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(param1, nil, nil, nil, nil)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -802,7 +795,7 @@ func miqt_exec_callback_QLineEdit_MouseDoubleClickEvent(self *C.QLineEdit, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(param1, nil, nil, nil, nil)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -828,7 +821,7 @@ func miqt_exec_callback_QLineEdit_KeyPressEvent(self *C.QLineEdit, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQKeyEvent(param1, nil, nil)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -854,7 +847,7 @@ func miqt_exec_callback_QLineEdit_KeyReleaseEvent(self *C.QLineEdit, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQKeyEvent(param1, nil, nil)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -880,7 +873,7 @@ func miqt_exec_callback_QLineEdit_FocusInEvent(self *C.QLineEdit, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQFocusEvent(param1, nil)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -906,7 +899,7 @@ func miqt_exec_callback_QLineEdit_FocusOutEvent(self *C.QLineEdit, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQFocusEvent(param1, nil)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -932,7 +925,7 @@ func miqt_exec_callback_QLineEdit_PaintEvent(self *C.QLineEdit, cb C.intptr_t, p
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQPaintEvent(param1, nil)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -958,7 +951,7 @@ func miqt_exec_callback_QLineEdit_DragEnterEvent(self *C.QLineEdit, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragEnterEvent(unsafe.Pointer(param1), nil, nil, nil)
+	slotval1 := newQDragEnterEvent(param1, nil, nil, nil)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -984,7 +977,7 @@ func miqt_exec_callback_QLineEdit_DragMoveEvent(self *C.QLineEdit, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragMoveEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQDragMoveEvent(e, nil, nil)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1010,7 +1003,7 @@ func miqt_exec_callback_QLineEdit_DragLeaveEvent(self *C.QLineEdit, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragLeaveEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQDragLeaveEvent(e, nil)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1036,7 +1029,7 @@ func miqt_exec_callback_QLineEdit_DropEvent(self *C.QLineEdit, cb C.intptr_t, pa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDropEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQDropEvent(param1, nil)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1062,7 +1055,7 @@ func miqt_exec_callback_QLineEdit_ChangeEvent(self *C.QLineEdit, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -1088,7 +1081,7 @@ func miqt_exec_callback_QLineEdit_ContextMenuEvent(self *C.QLineEdit, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQContextMenuEvent(param1, nil, nil)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -1114,7 +1107,7 @@ func miqt_exec_callback_QLineEdit_InputMethodEvent(self *C.QLineEdit, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQInputMethodEvent(param1, nil)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -1140,7 +1133,7 @@ func miqt_exec_callback_QLineEdit_InitStyleOption(self *C.QLineEdit, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStyleOptionFrame(unsafe.Pointer(option), nil)
+	slotval1 := newQStyleOptionFrame(option, nil)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_InitStyleOption, slotval1)
 
@@ -1148,8 +1141,7 @@ func miqt_exec_callback_QLineEdit_InitStyleOption(self *C.QLineEdit, cb C.intptr
 
 func (this *QLineEdit) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_ret := C.QLineEdit_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QLineEdit_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1197,7 +1189,7 @@ func miqt_exec_callback_QLineEdit_TimerEvent(self *C.QLineEdit, cb C.intptr_t, p
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQTimerEvent(param1, nil)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -1223,7 +1215,7 @@ func miqt_exec_callback_QLineEdit_Event(self *C.QLineEdit, cb C.intptr_t, param1
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	virtualReturn := gofunc((&QLineEdit{h: self}).callVirtualBase_Event, slotval1)
 
@@ -1337,7 +1329,8 @@ func miqt_exec_callback_QLineEdit_HasHeightForWidth(self *C.QLineEdit, cb C.intp
 
 func (this *QLineEdit) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QLineEdit_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return newQPaintEngine(C.QLineEdit_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+
 }
 func (this *QLineEdit) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
 	if !this.isSubclass {
@@ -1379,7 +1372,7 @@ func miqt_exec_callback_QLineEdit_WheelEvent(self *C.QLineEdit, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -1405,7 +1398,7 @@ func miqt_exec_callback_QLineEdit_EnterEvent(self *C.QLineEdit, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEnterEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQEnterEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_EnterEvent, slotval1)
 
@@ -1431,7 +1424,7 @@ func miqt_exec_callback_QLineEdit_LeaveEvent(self *C.QLineEdit, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_LeaveEvent, slotval1)
 
@@ -1457,7 +1450,7 @@ func miqt_exec_callback_QLineEdit_MoveEvent(self *C.QLineEdit, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMoveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQMoveEvent(event, nil)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -1483,7 +1476,7 @@ func miqt_exec_callback_QLineEdit_ResizeEvent(self *C.QLineEdit, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQResizeEvent(event, nil)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -1509,7 +1502,7 @@ func miqt_exec_callback_QLineEdit_CloseEvent(self *C.QLineEdit, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQCloseEvent(event, nil)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -1535,7 +1528,7 @@ func miqt_exec_callback_QLineEdit_TabletEvent(self *C.QLineEdit, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTabletEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQTabletEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -1561,7 +1554,7 @@ func miqt_exec_callback_QLineEdit_ActionEvent(self *C.QLineEdit, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQActionEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQActionEvent(event, nil)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -1587,7 +1580,7 @@ func miqt_exec_callback_QLineEdit_ShowEvent(self *C.QLineEdit, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQShowEvent(event, nil)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1613,7 +1606,7 @@ func miqt_exec_callback_QLineEdit_HideEvent(self *C.QLineEdit, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHideEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQHideEvent(event, nil)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -1704,7 +1697,7 @@ func miqt_exec_callback_QLineEdit_InitPainter(self *C.QLineEdit, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval1 := newQPainter(painter)
 
 	gofunc((&QLineEdit{h: self}).callVirtualBase_InitPainter, slotval1)
 
@@ -1712,7 +1705,8 @@ func miqt_exec_callback_QLineEdit_InitPainter(self *C.QLineEdit, cb C.intptr_t, 
 
 func (this *QLineEdit) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QLineEdit_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer())))
+	return newQPaintDevice(C.QLineEdit_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+
 }
 func (this *QLineEdit) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
 	if !this.isSubclass {
@@ -1729,7 +1723,7 @@ func miqt_exec_callback_QLineEdit_Redirected(self *C.QLineEdit, cb C.intptr_t, o
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(offset))
+	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QLineEdit{h: self}).callVirtualBase_Redirected, slotval1)
 
@@ -1739,7 +1733,8 @@ func miqt_exec_callback_QLineEdit_Redirected(self *C.QLineEdit, cb C.intptr_t, o
 
 func (this *QLineEdit) callVirtualBase_SharedPainter() *QPainter {
 
-	return UnsafeNewQPainter(unsafe.Pointer(C.QLineEdit_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+	return newQPainter(C.QLineEdit_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+
 }
 func (this *QLineEdit) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
 	if !this.isSubclass {

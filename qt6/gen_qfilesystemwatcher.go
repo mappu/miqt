@@ -118,7 +118,7 @@ func NewQFileSystemWatcher4(paths []string, parent *QObject) *QFileSystemWatcher
 }
 
 func (this *QFileSystemWatcher) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QFileSystemWatcher_MetaObject(this.h)))
+	return newQMetaObject(C.QFileSystemWatcher_MetaObject(this.h))
 }
 
 func (this *QFileSystemWatcher) Metacast(param1 string) unsafe.Pointer {
@@ -266,7 +266,7 @@ func miqt_exec_callback_QFileSystemWatcher_Event(self *C.QFileSystemWatcher, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QFileSystemWatcher{h: self}).callVirtualBase_Event, slotval1)
 
@@ -294,8 +294,9 @@ func miqt_exec_callback_QFileSystemWatcher_EventFilter(self *C.QFileSystemWatche
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QFileSystemWatcher{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -323,7 +324,7 @@ func miqt_exec_callback_QFileSystemWatcher_TimerEvent(self *C.QFileSystemWatcher
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QFileSystemWatcher{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -349,7 +350,7 @@ func miqt_exec_callback_QFileSystemWatcher_ChildEvent(self *C.QFileSystemWatcher
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QFileSystemWatcher{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -375,7 +376,7 @@ func miqt_exec_callback_QFileSystemWatcher_CustomEvent(self *C.QFileSystemWatche
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QFileSystemWatcher{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -401,7 +402,7 @@ func miqt_exec_callback_QFileSystemWatcher_ConnectNotify(self *C.QFileSystemWatc
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QFileSystemWatcher{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -427,7 +428,7 @@ func miqt_exec_callback_QFileSystemWatcher_DisconnectNotify(self *C.QFileSystemW
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QFileSystemWatcher{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

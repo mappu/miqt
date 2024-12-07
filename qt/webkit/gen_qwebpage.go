@@ -297,23 +297,23 @@ func QWebPage_TrUtf8(s string) string {
 }
 
 func (this *QWebPage) MainFrame() *QWebFrame {
-	return UnsafeNewQWebFrame(unsafe.Pointer(C.QWebPage_MainFrame(this.h)), nil)
+	return newQWebFrame(C.QWebPage_MainFrame(this.h), nil)
 }
 
 func (this *QWebPage) CurrentFrame() *QWebFrame {
-	return UnsafeNewQWebFrame(unsafe.Pointer(C.QWebPage_CurrentFrame(this.h)), nil)
+	return newQWebFrame(C.QWebPage_CurrentFrame(this.h), nil)
 }
 
 func (this *QWebPage) FrameAt(pos *qt.QPoint) *QWebFrame {
-	return UnsafeNewQWebFrame(unsafe.Pointer(C.QWebPage_FrameAt(this.h, (*C.QPoint)(pos.UnsafePointer()))), nil)
+	return newQWebFrame(C.QWebPage_FrameAt(this.h, (*C.QPoint)(pos.UnsafePointer())), nil)
 }
 
 func (this *QWebPage) History() *QWebHistory {
-	return UnsafeNewQWebHistory(unsafe.Pointer(C.QWebPage_History(this.h)))
+	return newQWebHistory(C.QWebPage_History(this.h))
 }
 
 func (this *QWebPage) Settings() *QWebSettings {
-	return UnsafeNewQWebSettings(unsafe.Pointer(C.QWebPage_Settings(this.h)))
+	return newQWebSettings(C.QWebPage_Settings(this.h))
 }
 
 func (this *QWebPage) SetView(view *qt.QWidget) {
@@ -345,7 +345,7 @@ func (this *QWebPage) SetPluginFactory(factory *QWebPluginFactory) {
 }
 
 func (this *QWebPage) PluginFactory() *QWebPluginFactory {
-	return UnsafeNewQWebPluginFactory(unsafe.Pointer(C.QWebPage_PluginFactory(this.h)), nil)
+	return newQWebPluginFactory(C.QWebPage_PluginFactory(this.h), nil)
 }
 
 func (this *QWebPage) TotalBytes() uint64 {
@@ -411,8 +411,7 @@ func (this *QWebPage) ResetDevicePixelRatio() {
 }
 
 func (this *QWebPage) ViewportSize() *qt.QSize {
-	_ret := C.QWebPage_ViewportSize(this.h)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebPage_ViewportSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -422,15 +421,13 @@ func (this *QWebPage) SetViewportSize(size *qt.QSize) {
 }
 
 func (this *QWebPage) ViewportAttributesForSize(availableSize *qt.QSize) *QWebPage__ViewportAttributes {
-	_ret := C.QWebPage_ViewportAttributesForSize(this.h, (*C.QSize)(availableSize.UnsafePointer()))
-	_goptr := newQWebPage__ViewportAttributes(_ret)
+	_goptr := newQWebPage__ViewportAttributes(C.QWebPage_ViewportAttributesForSize(this.h, (*C.QSize)(availableSize.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebPage) PreferredContentsSize() *qt.QSize {
-	_ret := C.QWebPage_PreferredContentsSize(this.h)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebPage_PreferredContentsSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -452,8 +449,7 @@ func (this *QWebPage) FocusNextPrevChild(next bool) bool {
 }
 
 func (this *QWebPage) InputMethodQuery(property qt.InputMethodQuery) *qt.QVariant {
-	_ret := C.QWebPage_InputMethodQuery(this.h, (C.int)(property))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QWebPage_InputMethodQuery(this.h, (C.int)(property))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -487,8 +483,7 @@ func (this *QWebPage) SetPalette(palette *qt.QPalette) {
 }
 
 func (this *QWebPage) Palette() *qt.QPalette {
-	_ret := C.QWebPage_Palette(this.h)
-	_goptr := qt.UnsafeNewQPalette(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQPalette(unsafe.Pointer(C.QWebPage_Palette(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -709,7 +704,7 @@ func miqt_exec_callback_QWebPage_FrameCreated(cb C.intptr_t, frame *C.QWebFrame)
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebFrame(unsafe.Pointer(frame), nil)
+	slotval1 := newQWebFrame(frame, nil)
 
 	gofunc(slotval1)
 }
@@ -810,7 +805,7 @@ func miqt_exec_callback_QWebPage_PrintRequested(cb C.intptr_t, frame *C.QWebFram
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebFrame(unsafe.Pointer(frame), nil)
+	slotval1 := newQWebFrame(frame, nil)
 
 	gofunc(slotval1)
 }
@@ -950,7 +945,7 @@ func miqt_exec_callback_QWebPage_FocusedElementChanged(cb C.intptr_t, element *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebElement(unsafe.Pointer(element))
+	slotval1 := newQWebElement(element)
 
 	gofunc(slotval1)
 }
@@ -1008,7 +1003,8 @@ func miqt_exec_callback_QWebPage_DatabaseQuotaExceeded(cb C.intptr_t, frame *C.Q
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebFrame(unsafe.Pointer(frame), nil)
+	slotval1 := newQWebFrame(frame, nil)
+
 	var databaseName_ms C.struct_miqt_string = databaseName
 	databaseName_ret := C.GoStringN(databaseName_ms.data, C.int(int64(databaseName_ms.len)))
 	C.free(unsafe.Pointer(databaseName_ms.data))
@@ -1032,7 +1028,8 @@ func miqt_exec_callback_QWebPage_ApplicationCacheQuotaExceeded(cb C.intptr_t, or
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebSecurityOrigin(unsafe.Pointer(origin))
+	slotval1 := newQWebSecurityOrigin(origin)
+
 	slotval2 := (uint64)(defaultOriginQuota)
 
 	slotval3 := (uint64)(totalSpaceNeeded)
@@ -1055,8 +1052,9 @@ func miqt_exec_callback_QWebPage_SaveFrameStateRequested(cb C.intptr_t, frame *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebFrame(unsafe.Pointer(frame), nil)
-	slotval2 := UnsafeNewQWebHistoryItem(unsafe.Pointer(item))
+	slotval1 := newQWebFrame(frame, nil)
+
+	slotval2 := newQWebHistoryItem(item)
 
 	gofunc(slotval1, slotval2)
 }
@@ -1076,7 +1074,7 @@ func miqt_exec_callback_QWebPage_RestoreFrameStateRequested(cb C.intptr_t, frame
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebFrame(unsafe.Pointer(frame), nil)
+	slotval1 := newQWebFrame(frame, nil)
 
 	gofunc(slotval1)
 }
@@ -1113,7 +1111,8 @@ func miqt_exec_callback_QWebPage_FeaturePermissionRequested(cb C.intptr_t, frame
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebFrame(unsafe.Pointer(frame), nil)
+	slotval1 := newQWebFrame(frame, nil)
+
 	slotval2 := (QWebPage__Feature)(feature)
 
 	gofunc(slotval1, slotval2)
@@ -1134,7 +1133,8 @@ func miqt_exec_callback_QWebPage_FeaturePermissionRequestCanceled(cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebFrame(unsafe.Pointer(frame), nil)
+	slotval1 := newQWebFrame(frame, nil)
+
 	slotval2 := (QWebPage__Feature)(feature)
 
 	gofunc(slotval1, slotval2)
@@ -1155,8 +1155,7 @@ func miqt_exec_callback_QWebPage_FullScreenRequested(cb C.intptr_t, fullScreenRe
 	}
 
 	// Convert all CABI parameters to Go parameters
-	fullScreenRequest_ret := fullScreenRequest
-	fullScreenRequest_goptr := newQWebFullScreenRequest(fullScreenRequest_ret)
+	fullScreenRequest_goptr := newQWebFullScreenRequest(fullScreenRequest)
 	fullScreenRequest_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *fullScreenRequest_goptr
 
@@ -1354,8 +1353,9 @@ func miqt_exec_callback_QWebPage_Extension(self *C.QWebPage, cb C.intptr_t, exte
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QWebPage__Extension)(extension)
 
-	slotval2 := UnsafeNewQWebPage__ExtensionOption(unsafe.Pointer(option))
-	slotval3 := UnsafeNewQWebPage__ExtensionReturn(unsafe.Pointer(output))
+	slotval2 := newQWebPage__ExtensionOption(option)
+
+	slotval3 := newQWebPage__ExtensionReturn(output)
 
 	virtualReturn := gofunc((&QWebPage{h: self}).callVirtualBase_Extension, slotval1, slotval2, slotval3)
 
@@ -1418,7 +1418,8 @@ func miqt_exec_callback_QWebPage_ShouldInterruptJavaScript(self *C.QWebPage, cb 
 
 func (this *QWebPage) callVirtualBase_CreateWindow(typeVal QWebPage__WebWindowType) *QWebPage {
 
-	return UnsafeNewQWebPage(unsafe.Pointer(C.QWebPage_virtualbase_CreateWindow(unsafe.Pointer(this.h), (C.int)(typeVal))), nil)
+	return newQWebPage(C.QWebPage_virtualbase_CreateWindow(unsafe.Pointer(this.h), (C.int)(typeVal)), nil)
+
 }
 func (this *QWebPage) OnCreateWindow(slot func(super func(typeVal QWebPage__WebWindowType) *QWebPage, typeVal QWebPage__WebWindowType) *QWebPage) {
 	if !this.isSubclass {
@@ -1470,6 +1471,7 @@ func (this *QWebPage) callVirtualBase_CreatePlugin(classid string, url *qt.QUrl,
 	paramValues_ma := C.struct_miqt_array{len: C.size_t(len(paramValues)), data: unsafe.Pointer(paramValues_CArray)}
 
 	return qt.UnsafeNewQObject(unsafe.Pointer(C.QWebPage_virtualbase_CreatePlugin(unsafe.Pointer(this.h), classid_ms, (*C.QUrl)(url.UnsafePointer()), paramNames_ma, paramValues_ma)))
+
 }
 func (this *QWebPage) OnCreatePlugin(slot func(super func(classid string, url *qt.QUrl, paramNames []string, paramValues []string) *qt.QObject, classid string, url *qt.QUrl, paramNames []string, paramValues []string) *qt.QObject) {
 	if !this.isSubclass {
@@ -1491,6 +1493,7 @@ func miqt_exec_callback_QWebPage_CreatePlugin(self *C.QWebPage, cb C.intptr_t, c
 	C.free(unsafe.Pointer(classid_ms.data))
 	slotval1 := classid_ret
 	slotval2 := qt.UnsafeNewQUrl(unsafe.Pointer(url))
+
 	var paramNames_ma C.struct_miqt_array = paramNames
 	paramNames_ret := make([]string, int(paramNames_ma.len))
 	paramNames_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(paramNames_ma.data)) // hey ya
@@ -1539,8 +1542,10 @@ func miqt_exec_callback_QWebPage_AcceptNavigationRequest(self *C.QWebPage, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebFrame(unsafe.Pointer(frame), nil)
+	slotval1 := newQWebFrame(frame, nil)
+
 	slotval2 := network.UnsafeNewQNetworkRequest(unsafe.Pointer(request))
+
 	slotval3 := (QWebPage__NavigationType)(typeVal)
 
 	virtualReturn := gofunc((&QWebPage{h: self}).callVirtualBase_AcceptNavigationRequest, slotval1, slotval2, slotval3)
@@ -1575,7 +1580,8 @@ func miqt_exec_callback_QWebPage_ChooseFile(self *C.QWebPage, cb C.intptr_t, ori
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebFrame(unsafe.Pointer(originatingFrame), nil)
+	slotval1 := newQWebFrame(originatingFrame, nil)
+
 	var oldFile_ms C.struct_miqt_string = oldFile
 	oldFile_ret := C.GoStringN(oldFile_ms.data, C.int(int64(oldFile_ms.len)))
 	C.free(unsafe.Pointer(oldFile_ms.data))
@@ -1615,7 +1621,8 @@ func miqt_exec_callback_QWebPage_JavaScriptAlert(self *C.QWebPage, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebFrame(unsafe.Pointer(originatingFrame), nil)
+	slotval1 := newQWebFrame(originatingFrame, nil)
+
 	var msg_ms C.struct_miqt_string = msg
 	msg_ret := C.GoStringN(msg_ms.data, C.int(int64(msg_ms.len)))
 	C.free(unsafe.Pointer(msg_ms.data))
@@ -1649,7 +1656,8 @@ func miqt_exec_callback_QWebPage_JavaScriptConfirm(self *C.QWebPage, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebFrame(unsafe.Pointer(originatingFrame), nil)
+	slotval1 := newQWebFrame(originatingFrame, nil)
+
 	var msg_ms C.struct_miqt_string = msg
 	msg_ret := C.GoStringN(msg_ms.data, C.int(int64(msg_ms.len)))
 	C.free(unsafe.Pointer(msg_ms.data))
@@ -1759,6 +1767,7 @@ func miqt_exec_callback_QWebPage_EventFilter(self *C.QWebPage, cb C.intptr_t, wa
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QWebPage{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
@@ -1996,8 +2005,7 @@ func (this *QWebPage__ViewportAttributes) IsValid() bool {
 }
 
 func (this *QWebPage__ViewportAttributes) Size() *qt.QSizeF {
-	_ret := C.QWebPage__ViewportAttributes_Size(this.h)
-	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QWebPage__ViewportAttributes_Size(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

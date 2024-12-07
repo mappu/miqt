@@ -160,8 +160,7 @@ func (this *QSslError) ErrorString() string {
 }
 
 func (this *QSslError) Certificate() *QSslCertificate {
-	_ret := C.QSslError_Certificate(this.h)
-	_goptr := newQSslCertificate(_ret)
+	_goptr := newQSslCertificate(C.QSslError_Certificate(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

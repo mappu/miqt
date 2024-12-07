@@ -109,7 +109,7 @@ func QWebEngineView_TrUtf8(s string) string {
 }
 
 func (this *QWebEngineView) Page() *QWebEnginePage {
-	return UnsafeNewQWebEnginePage(unsafe.Pointer(C.QWebEngineView_Page(this.h)), nil)
+	return newQWebEnginePage(C.QWebEngineView_Page(this.h), nil)
 }
 
 func (this *QWebEngineView) SetPage(page *QWebEnginePage) {
@@ -140,7 +140,7 @@ func (this *QWebEngineView) SetContent(data []byte) {
 }
 
 func (this *QWebEngineView) History() *QWebEngineHistory {
-	return UnsafeNewQWebEngineHistory(unsafe.Pointer(C.QWebEngineView_History(this.h)))
+	return newQWebEngineHistory(C.QWebEngineView_History(this.h))
 }
 
 func (this *QWebEngineView) Title() string {
@@ -155,22 +155,19 @@ func (this *QWebEngineView) SetUrl(url *qt.QUrl) {
 }
 
 func (this *QWebEngineView) Url() *qt.QUrl {
-	_ret := C.QWebEngineView_Url(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineView_Url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineView) IconUrl() *qt.QUrl {
-	_ret := C.QWebEngineView_IconUrl(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineView_IconUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineView) Icon() *qt.QIcon {
-	_ret := C.QWebEngineView_Icon(this.h)
-	_goptr := qt.UnsafeNewQIcon(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQIcon(unsafe.Pointer(C.QWebEngineView_Icon(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -211,14 +208,13 @@ func (this *QWebEngineView) FindText(subString string) {
 }
 
 func (this *QWebEngineView) SizeHint() *qt.QSize {
-	_ret := C.QWebEngineView_SizeHint(this.h)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebEngineView_SizeHint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineView) Settings() *QWebEngineSettings {
-	return UnsafeNewQWebEngineSettings(unsafe.Pointer(C.QWebEngineView_Settings(this.h)))
+	return newQWebEngineSettings(C.QWebEngineView_Settings(this.h))
 }
 
 func (this *QWebEngineView) Stop() {
@@ -508,8 +504,7 @@ func (this *QWebEngineView) FindText2(subString string, options QWebEnginePage__
 
 func (this *QWebEngineView) callVirtualBase_SizeHint() *qt.QSize {
 
-	_ret := C.QWebEngineView_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebEngineView_virtualbase_SizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -536,7 +531,8 @@ func miqt_exec_callback_QWebEngineView_SizeHint(self *C.QWebEngineView, cb C.int
 
 func (this *QWebEngineView) callVirtualBase_CreateWindow(typeVal QWebEnginePage__WebWindowType) *QWebEngineView {
 
-	return UnsafeNewQWebEngineView(unsafe.Pointer(C.QWebEngineView_virtualbase_CreateWindow(unsafe.Pointer(this.h), (C.int)(typeVal))), nil, nil, nil)
+	return newQWebEngineView(C.QWebEngineView_virtualbase_CreateWindow(unsafe.Pointer(this.h), (C.int)(typeVal)), nil, nil, nil)
+
 }
 func (this *QWebEngineView) OnCreateWindow(slot func(super func(typeVal QWebEnginePage__WebWindowType) *QWebEngineView, typeVal QWebEnginePage__WebWindowType) *QWebEngineView) {
 	if !this.isSubclass {
@@ -850,8 +846,7 @@ func miqt_exec_callback_QWebEngineView_SetVisible(self *C.QWebEngineView, cb C.i
 
 func (this *QWebEngineView) callVirtualBase_MinimumSizeHint() *qt.QSize {
 
-	_ret := C.QWebEngineView_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebEngineView_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -932,6 +927,7 @@ func miqt_exec_callback_QWebEngineView_HasHeightForWidth(self *C.QWebEngineView,
 func (this *QWebEngineView) callVirtualBase_PaintEngine() *qt.QPaintEngine {
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QWebEngineView_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+
 }
 func (this *QWebEngineView) OnPaintEngine(slot func(super func() *qt.QPaintEngine) *qt.QPaintEngine) {
 	if !this.isSubclass {
@@ -1489,6 +1485,7 @@ func miqt_exec_callback_QWebEngineView_InitPainter(self *C.QWebEngineView, cb C.
 func (this *QWebEngineView) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QWebEngineView_virtualbase_Redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
+
 }
 func (this *QWebEngineView) OnRedirected(slot func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice) {
 	if !this.isSubclass {
@@ -1516,6 +1513,7 @@ func miqt_exec_callback_QWebEngineView_Redirected(self *C.QWebEngineView, cb C.i
 func (this *QWebEngineView) callVirtualBase_SharedPainter() *qt.QPainter {
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QWebEngineView_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+
 }
 func (this *QWebEngineView) OnSharedPainter(slot func(super func() *qt.QPainter) *qt.QPainter) {
 	if !this.isSubclass {
@@ -1565,8 +1563,7 @@ func miqt_exec_callback_QWebEngineView_InputMethodEvent(self *C.QWebEngineView, 
 
 func (this *QWebEngineView) callVirtualBase_InputMethodQuery(param1 qt.InputMethodQuery) *qt.QVariant {
 
-	_ret := C.QWebEngineView_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QWebEngineView_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

@@ -156,7 +156,7 @@ func NewQWizard3(parent *QWidget, flags WindowType) *QWizard {
 }
 
 func (this *QWizard) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QWizard_MetaObject(this.h)))
+	return newQMetaObject(C.QWizard_MetaObject(this.h))
 }
 
 func (this *QWizard) Metacast(param1 string) unsafe.Pointer {
@@ -196,7 +196,7 @@ func (this *QWizard) RemovePage(id int) {
 }
 
 func (this *QWizard) Page(id int) *QWizardPage {
-	return UnsafeNewQWizardPage(unsafe.Pointer(C.QWizard_Page(this.h, (C.int)(id))), nil, nil, nil)
+	return newQWizardPage(C.QWizard_Page(this.h, (C.int)(id)), nil, nil, nil)
 }
 
 func (this *QWizard) HasVisitedPage(id int) bool {
@@ -242,7 +242,7 @@ func (this *QWizard) StartId() int {
 }
 
 func (this *QWizard) CurrentPage() *QWizardPage {
-	return UnsafeNewQWizardPage(unsafe.Pointer(C.QWizard_CurrentPage(this.h)), nil, nil, nil)
+	return newQWizardPage(C.QWizard_CurrentPage(this.h), nil, nil, nil)
 }
 
 func (this *QWizard) CurrentId() int {
@@ -270,8 +270,7 @@ func (this *QWizard) Field(name string) *QVariant {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	_ret := C.QWizard_Field(this.h, name_ms)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QWizard_Field(this.h, name_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -330,7 +329,7 @@ func (this *QWizard) SetButton(which QWizard__WizardButton, button *QAbstractBut
 }
 
 func (this *QWizard) Button(which QWizard__WizardButton) *QAbstractButton {
-	return UnsafeNewQAbstractButton(unsafe.Pointer(C.QWizard_Button(this.h, (C.int)(which))), nil, nil, nil)
+	return newQAbstractButton(C.QWizard_Button(this.h, (C.int)(which)), nil, nil, nil)
 }
 
 func (this *QWizard) SetTitleFormat(format TextFormat) {
@@ -354,8 +353,7 @@ func (this *QWizard) SetPixmap(which QWizard__WizardPixmap, pixmap *QPixmap) {
 }
 
 func (this *QWizard) Pixmap(which QWizard__WizardPixmap) *QPixmap {
-	_ret := C.QWizard_Pixmap(this.h, (C.int)(which))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QWizard_Pixmap(this.h, (C.int)(which)), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -365,7 +363,7 @@ func (this *QWizard) SetSideWidget(widget *QWidget) {
 }
 
 func (this *QWizard) SideWidget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QWizard_SideWidget(this.h)), nil, nil)
+	return newQWidget(C.QWizard_SideWidget(this.h), nil, nil)
 }
 
 func (this *QWizard) SetDefaultProperty(className string, property string, changedSignal string) {
@@ -383,8 +381,7 @@ func (this *QWizard) SetVisible(visible bool) {
 }
 
 func (this *QWizard) SizeHint() *QSize {
-	_ret := C.QWizard_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QWizard_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -624,8 +621,7 @@ func miqt_exec_callback_QWizard_SetVisible(self *C.QWizard, cb C.intptr_t, visib
 
 func (this *QWizard) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QWizard_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QWizard_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -670,7 +666,7 @@ func miqt_exec_callback_QWizard_Event(self *C.QWizard, cb C.intptr_t, event *C.Q
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QWizard{h: self}).callVirtualBase_Event, slotval1)
 
@@ -698,7 +694,7 @@ func miqt_exec_callback_QWizard_ResizeEvent(self *C.QWizard, cb C.intptr_t, even
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQResizeEvent(event, nil)
 
 	gofunc((&QWizard{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -724,7 +720,7 @@ func miqt_exec_callback_QWizard_PaintEvent(self *C.QWizard, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQPaintEvent(event, nil)
 
 	gofunc((&QWizard{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -810,8 +806,7 @@ func miqt_exec_callback_QWizard_CleanupPage(self *C.QWizard, cb C.intptr_t, id C
 
 func (this *QWizard) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QWizard_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QWizard_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -950,7 +945,7 @@ func miqt_exec_callback_QWizard_KeyPressEvent(self *C.QWizard, cb C.intptr_t, pa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQKeyEvent(param1, nil, nil)
 
 	gofunc((&QWizard{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -976,7 +971,7 @@ func miqt_exec_callback_QWizard_CloseEvent(self *C.QWizard, cb C.intptr_t, param
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQCloseEvent(param1, nil)
 
 	gofunc((&QWizard{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -1002,7 +997,7 @@ func miqt_exec_callback_QWizard_ShowEvent(self *C.QWizard, cb C.intptr_t, param1
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQShowEvent(param1, nil)
 
 	gofunc((&QWizard{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1028,7 +1023,7 @@ func miqt_exec_callback_QWizard_ContextMenuEvent(self *C.QWizard, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQContextMenuEvent(param1, nil, nil)
 
 	gofunc((&QWizard{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -1054,8 +1049,9 @@ func miqt_exec_callback_QWizard_EventFilter(self *C.QWizard, cb C.intptr_t, para
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(param1))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(param2))
+	slotval1 := newQObject(param1)
+
+	slotval2 := newQEvent(param2)
 
 	virtualReturn := gofunc((&QWizard{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -1143,7 +1139,7 @@ func NewQWizardPage2() *QWizardPage {
 }
 
 func (this *QWizardPage) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QWizardPage_MetaObject(this.h)))
+	return newQMetaObject(C.QWizardPage_MetaObject(this.h))
 }
 
 func (this *QWizardPage) Metacast(param1 string) unsafe.Pointer {
@@ -1205,8 +1201,7 @@ func (this *QWizardPage) SetPixmap(which QWizard__WizardPixmap, pixmap *QPixmap)
 }
 
 func (this *QWizardPage) Pixmap(which QWizard__WizardPixmap) *QPixmap {
-	_ret := C.QWizardPage_Pixmap(this.h, (C.int)(which))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QWizardPage_Pixmap(this.h, (C.int)(which)), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1497,8 +1492,7 @@ func miqt_exec_callback_QWizardPage_SetVisible(self *C.QWizardPage, cb C.intptr_
 
 func (this *QWizardPage) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QWizardPage_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QWizardPage_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1525,8 +1519,7 @@ func miqt_exec_callback_QWizardPage_SizeHint(self *C.QWizardPage, cb C.intptr_t)
 
 func (this *QWizardPage) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QWizardPage_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QWizardPage_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1606,7 +1599,8 @@ func miqt_exec_callback_QWizardPage_HasHeightForWidth(self *C.QWizardPage, cb C.
 
 func (this *QWizardPage) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QWizardPage_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return newQPaintEngine(C.QWizardPage_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+
 }
 func (this *QWizardPage) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
 	if !this.isSubclass {
@@ -1648,7 +1642,7 @@ func miqt_exec_callback_QWizardPage_Event(self *C.QWizardPage, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QWizardPage{h: self}).callVirtualBase_Event, slotval1)
 
@@ -1676,7 +1670,7 @@ func miqt_exec_callback_QWizardPage_MousePressEvent(self *C.QWizardPage, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -1702,7 +1696,7 @@ func miqt_exec_callback_QWizardPage_MouseReleaseEvent(self *C.QWizardPage, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -1728,7 +1722,7 @@ func miqt_exec_callback_QWizardPage_MouseDoubleClickEvent(self *C.QWizardPage, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -1754,7 +1748,7 @@ func miqt_exec_callback_QWizardPage_MouseMoveEvent(self *C.QWizardPage, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -1780,7 +1774,7 @@ func miqt_exec_callback_QWizardPage_WheelEvent(self *C.QWizardPage, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQWheelEvent(event, nil, nil)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -1806,7 +1800,7 @@ func miqt_exec_callback_QWizardPage_KeyPressEvent(self *C.QWizardPage, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -1832,7 +1826,7 @@ func miqt_exec_callback_QWizardPage_KeyReleaseEvent(self *C.QWizardPage, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -1858,7 +1852,7 @@ func miqt_exec_callback_QWizardPage_FocusInEvent(self *C.QWizardPage, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -1884,7 +1878,7 @@ func miqt_exec_callback_QWizardPage_FocusOutEvent(self *C.QWizardPage, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -1910,7 +1904,7 @@ func miqt_exec_callback_QWizardPage_EnterEvent(self *C.QWizardPage, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_EnterEvent, slotval1)
 
@@ -1936,7 +1930,7 @@ func miqt_exec_callback_QWizardPage_LeaveEvent(self *C.QWizardPage, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_LeaveEvent, slotval1)
 
@@ -1962,7 +1956,7 @@ func miqt_exec_callback_QWizardPage_PaintEvent(self *C.QWizardPage, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQPaintEvent(event, nil)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -1988,7 +1982,7 @@ func miqt_exec_callback_QWizardPage_MoveEvent(self *C.QWizardPage, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMoveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQMoveEvent(event, nil)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -2014,7 +2008,7 @@ func miqt_exec_callback_QWizardPage_ResizeEvent(self *C.QWizardPage, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQResizeEvent(event, nil)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -2040,7 +2034,7 @@ func miqt_exec_callback_QWizardPage_CloseEvent(self *C.QWizardPage, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQCloseEvent(event, nil)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -2066,7 +2060,7 @@ func miqt_exec_callback_QWizardPage_ContextMenuEvent(self *C.QWizardPage, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQContextMenuEvent(event, nil, nil)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -2092,7 +2086,7 @@ func miqt_exec_callback_QWizardPage_TabletEvent(self *C.QWizardPage, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTabletEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQTabletEvent(event, nil, nil)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -2118,7 +2112,7 @@ func miqt_exec_callback_QWizardPage_ActionEvent(self *C.QWizardPage, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQActionEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQActionEvent(event, nil)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -2144,7 +2138,7 @@ func miqt_exec_callback_QWizardPage_DragEnterEvent(self *C.QWizardPage, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragEnterEvent(unsafe.Pointer(event), nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event, nil, nil, nil)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -2170,7 +2164,7 @@ func miqt_exec_callback_QWizardPage_DragMoveEvent(self *C.QWizardPage, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQDragMoveEvent(event, nil, nil)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -2196,7 +2190,7 @@ func miqt_exec_callback_QWizardPage_DragLeaveEvent(self *C.QWizardPage, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragLeaveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDragLeaveEvent(event, nil)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -2222,7 +2216,7 @@ func miqt_exec_callback_QWizardPage_DropEvent(self *C.QWizardPage, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDropEvent(event, nil)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -2248,7 +2242,7 @@ func miqt_exec_callback_QWizardPage_ShowEvent(self *C.QWizardPage, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQShowEvent(event, nil)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -2274,7 +2268,7 @@ func miqt_exec_callback_QWizardPage_HideEvent(self *C.QWizardPage, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHideEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQHideEvent(event, nil)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -2337,7 +2331,7 @@ func miqt_exec_callback_QWizardPage_ChangeEvent(self *C.QWizardPage, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -2391,7 +2385,7 @@ func miqt_exec_callback_QWizardPage_InitPainter(self *C.QWizardPage, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval1 := newQPainter(painter)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_InitPainter, slotval1)
 
@@ -2399,7 +2393,8 @@ func miqt_exec_callback_QWizardPage_InitPainter(self *C.QWizardPage, cb C.intptr
 
 func (this *QWizardPage) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QWizardPage_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer())))
+	return newQPaintDevice(C.QWizardPage_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+
 }
 func (this *QWizardPage) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
 	if !this.isSubclass {
@@ -2416,7 +2411,7 @@ func miqt_exec_callback_QWizardPage_Redirected(self *C.QWizardPage, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(offset))
+	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QWizardPage{h: self}).callVirtualBase_Redirected, slotval1)
 
@@ -2426,7 +2421,8 @@ func miqt_exec_callback_QWizardPage_Redirected(self *C.QWizardPage, cb C.intptr_
 
 func (this *QWizardPage) callVirtualBase_SharedPainter() *QPainter {
 
-	return UnsafeNewQPainter(unsafe.Pointer(C.QWizardPage_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+	return newQPainter(C.QWizardPage_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+
 }
 func (this *QWizardPage) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
 	if !this.isSubclass {
@@ -2468,7 +2464,7 @@ func miqt_exec_callback_QWizardPage_InputMethodEvent(self *C.QWizardPage, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQInputMethodEvent(param1, nil)
 
 	gofunc((&QWizardPage{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -2476,8 +2472,7 @@ func miqt_exec_callback_QWizardPage_InputMethodEvent(self *C.QWizardPage, cb C.i
 
 func (this *QWizardPage) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_ret := C.QWizardPage_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QWizardPage_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

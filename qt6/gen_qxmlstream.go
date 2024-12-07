@@ -571,7 +571,7 @@ func (this *QXmlStreamReader) SetDevice(device *QIODevice) {
 }
 
 func (this *QXmlStreamReader) Device() *QIODevice {
-	return UnsafeNewQIODevice(unsafe.Pointer(C.QXmlStreamReader_Device(this.h)), nil, nil)
+	return newQIODevice(C.QXmlStreamReader_Device(this.h), nil, nil)
 }
 
 func (this *QXmlStreamReader) AddData(data []byte) {
@@ -706,8 +706,7 @@ func (this *QXmlStreamReader) NamespaceDeclarations() []QXmlStreamNamespaceDecla
 	_ret := make([]QXmlStreamNamespaceDeclaration, int(_ma.len))
 	_outCast := (*[0xffff]*C.QXmlStreamNamespaceDeclaration)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQXmlStreamNamespaceDeclaration(_lv_ret)
+		_lv_goptr := newQXmlStreamNamespaceDeclaration(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -733,8 +732,7 @@ func (this *QXmlStreamReader) NotationDeclarations() []QXmlStreamNotationDeclara
 	_ret := make([]QXmlStreamNotationDeclaration, int(_ma.len))
 	_outCast := (*[0xffff]*C.QXmlStreamNotationDeclaration)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQXmlStreamNotationDeclaration(_lv_ret)
+		_lv_goptr := newQXmlStreamNotationDeclaration(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -746,8 +744,7 @@ func (this *QXmlStreamReader) EntityDeclarations() []QXmlStreamEntityDeclaration
 	_ret := make([]QXmlStreamEntityDeclaration, int(_ma.len))
 	_outCast := (*[0xffff]*C.QXmlStreamEntityDeclaration)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQXmlStreamEntityDeclaration(_lv_ret)
+		_lv_goptr := newQXmlStreamEntityDeclaration(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -786,7 +783,7 @@ func (this *QXmlStreamReader) SetEntityResolver(resolver *QXmlStreamEntityResolv
 }
 
 func (this *QXmlStreamReader) EntityResolver() *QXmlStreamEntityResolver {
-	return UnsafeNewQXmlStreamEntityResolver(unsafe.Pointer(C.QXmlStreamReader_EntityResolver(this.h)))
+	return newQXmlStreamEntityResolver(C.QXmlStreamReader_EntityResolver(this.h))
 }
 
 func (this *QXmlStreamReader) ReadElementText1(behaviour QXmlStreamReader__ReadElementTextBehaviour) string {
@@ -879,7 +876,7 @@ func (this *QXmlStreamWriter) SetDevice(device *QIODevice) {
 }
 
 func (this *QXmlStreamWriter) Device() *QIODevice {
-	return UnsafeNewQIODevice(unsafe.Pointer(C.QXmlStreamWriter_Device(this.h)), nil, nil)
+	return newQIODevice(C.QXmlStreamWriter_Device(this.h), nil, nil)
 }
 
 func (this *QXmlStreamWriter) SetAutoFormatting(autoFormatting bool) {

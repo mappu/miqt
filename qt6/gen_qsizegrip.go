@@ -67,7 +67,7 @@ func NewQSizeGrip(parent *QWidget) *QSizeGrip {
 }
 
 func (this *QSizeGrip) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSizeGrip_MetaObject(this.h)))
+	return newQMetaObject(C.QSizeGrip_MetaObject(this.h))
 }
 
 func (this *QSizeGrip) Metacast(param1 string) unsafe.Pointer {
@@ -86,8 +86,7 @@ func QSizeGrip_Tr(s string) string {
 }
 
 func (this *QSizeGrip) SizeHint() *QSize {
-	_ret := C.QSizeGrip_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSizeGrip_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -120,8 +119,7 @@ func QSizeGrip_Tr3(s string, c string, n int) string {
 
 func (this *QSizeGrip) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QSizeGrip_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSizeGrip_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -192,7 +190,7 @@ func miqt_exec_callback_QSizeGrip_PaintEvent(self *C.QSizeGrip, cb C.intptr_t, p
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQPaintEvent(param1, nil)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -218,7 +216,7 @@ func miqt_exec_callback_QSizeGrip_MousePressEvent(self *C.QSizeGrip, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(param1, nil, nil, nil, nil)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -244,7 +242,7 @@ func miqt_exec_callback_QSizeGrip_MouseMoveEvent(self *C.QSizeGrip, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(param1, nil, nil, nil, nil)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -270,7 +268,7 @@ func miqt_exec_callback_QSizeGrip_MouseReleaseEvent(self *C.QSizeGrip, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(mouseEvent), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(mouseEvent, nil, nil, nil, nil)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -296,7 +294,7 @@ func miqt_exec_callback_QSizeGrip_MoveEvent(self *C.QSizeGrip, cb C.intptr_t, mo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMoveEvent(unsafe.Pointer(moveEvent), nil)
+	slotval1 := newQMoveEvent(moveEvent, nil)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -322,7 +320,7 @@ func miqt_exec_callback_QSizeGrip_ShowEvent(self *C.QSizeGrip, cb C.intptr_t, sh
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(showEvent), nil)
+	slotval1 := newQShowEvent(showEvent, nil)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -348,7 +346,7 @@ func miqt_exec_callback_QSizeGrip_HideEvent(self *C.QSizeGrip, cb C.intptr_t, hi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHideEvent(unsafe.Pointer(hideEvent), nil)
+	slotval1 := newQHideEvent(hideEvent, nil)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -374,8 +372,9 @@ func miqt_exec_callback_QSizeGrip_EventFilter(self *C.QSizeGrip, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(param1))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(param2))
+	slotval1 := newQObject(param1)
+
+	slotval2 := newQEvent(param2)
 
 	virtualReturn := gofunc((&QSizeGrip{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -403,7 +402,7 @@ func miqt_exec_callback_QSizeGrip_Event(self *C.QSizeGrip, cb C.intptr_t, param1
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	virtualReturn := gofunc((&QSizeGrip{h: self}).callVirtualBase_Event, slotval1)
 
@@ -438,8 +437,7 @@ func miqt_exec_callback_QSizeGrip_DevType(self *C.QSizeGrip, cb C.intptr_t) C.in
 
 func (this *QSizeGrip) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QSizeGrip_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSizeGrip_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -519,7 +517,8 @@ func miqt_exec_callback_QSizeGrip_HasHeightForWidth(self *C.QSizeGrip, cb C.intp
 
 func (this *QSizeGrip) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QSizeGrip_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return newQPaintEngine(C.QSizeGrip_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+
 }
 func (this *QSizeGrip) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
 	if !this.isSubclass {
@@ -561,7 +560,7 @@ func miqt_exec_callback_QSizeGrip_MouseDoubleClickEvent(self *C.QSizeGrip, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -587,7 +586,7 @@ func miqt_exec_callback_QSizeGrip_WheelEvent(self *C.QSizeGrip, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -613,7 +612,7 @@ func miqt_exec_callback_QSizeGrip_KeyPressEvent(self *C.QSizeGrip, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -639,7 +638,7 @@ func miqt_exec_callback_QSizeGrip_KeyReleaseEvent(self *C.QSizeGrip, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -665,7 +664,7 @@ func miqt_exec_callback_QSizeGrip_FocusInEvent(self *C.QSizeGrip, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -691,7 +690,7 @@ func miqt_exec_callback_QSizeGrip_FocusOutEvent(self *C.QSizeGrip, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -717,7 +716,7 @@ func miqt_exec_callback_QSizeGrip_EnterEvent(self *C.QSizeGrip, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEnterEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQEnterEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_EnterEvent, slotval1)
 
@@ -743,7 +742,7 @@ func miqt_exec_callback_QSizeGrip_LeaveEvent(self *C.QSizeGrip, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_LeaveEvent, slotval1)
 
@@ -769,7 +768,7 @@ func miqt_exec_callback_QSizeGrip_ResizeEvent(self *C.QSizeGrip, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQResizeEvent(event, nil)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -795,7 +794,7 @@ func miqt_exec_callback_QSizeGrip_CloseEvent(self *C.QSizeGrip, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQCloseEvent(event, nil)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -821,7 +820,7 @@ func miqt_exec_callback_QSizeGrip_ContextMenuEvent(self *C.QSizeGrip, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQContextMenuEvent(event, nil, nil)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -847,7 +846,7 @@ func miqt_exec_callback_QSizeGrip_TabletEvent(self *C.QSizeGrip, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTabletEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQTabletEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -873,7 +872,7 @@ func miqt_exec_callback_QSizeGrip_ActionEvent(self *C.QSizeGrip, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQActionEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQActionEvent(event, nil)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -899,7 +898,7 @@ func miqt_exec_callback_QSizeGrip_DragEnterEvent(self *C.QSizeGrip, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragEnterEvent(unsafe.Pointer(event), nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event, nil, nil, nil)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -925,7 +924,7 @@ func miqt_exec_callback_QSizeGrip_DragMoveEvent(self *C.QSizeGrip, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQDragMoveEvent(event, nil, nil)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -951,7 +950,7 @@ func miqt_exec_callback_QSizeGrip_DragLeaveEvent(self *C.QSizeGrip, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragLeaveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDragLeaveEvent(event, nil)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -977,7 +976,7 @@ func miqt_exec_callback_QSizeGrip_DropEvent(self *C.QSizeGrip, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDropEvent(event, nil)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1040,7 +1039,7 @@ func miqt_exec_callback_QSizeGrip_ChangeEvent(self *C.QSizeGrip, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -1094,7 +1093,7 @@ func miqt_exec_callback_QSizeGrip_InitPainter(self *C.QSizeGrip, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval1 := newQPainter(painter)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_InitPainter, slotval1)
 
@@ -1102,7 +1101,8 @@ func miqt_exec_callback_QSizeGrip_InitPainter(self *C.QSizeGrip, cb C.intptr_t, 
 
 func (this *QSizeGrip) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QSizeGrip_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer())))
+	return newQPaintDevice(C.QSizeGrip_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+
 }
 func (this *QSizeGrip) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
 	if !this.isSubclass {
@@ -1119,7 +1119,7 @@ func miqt_exec_callback_QSizeGrip_Redirected(self *C.QSizeGrip, cb C.intptr_t, o
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(offset))
+	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QSizeGrip{h: self}).callVirtualBase_Redirected, slotval1)
 
@@ -1129,7 +1129,8 @@ func miqt_exec_callback_QSizeGrip_Redirected(self *C.QSizeGrip, cb C.intptr_t, o
 
 func (this *QSizeGrip) callVirtualBase_SharedPainter() *QPainter {
 
-	return UnsafeNewQPainter(unsafe.Pointer(C.QSizeGrip_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+	return newQPainter(C.QSizeGrip_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+
 }
 func (this *QSizeGrip) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
 	if !this.isSubclass {
@@ -1171,7 +1172,7 @@ func miqt_exec_callback_QSizeGrip_InputMethodEvent(self *C.QSizeGrip, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQInputMethodEvent(param1, nil)
 
 	gofunc((&QSizeGrip{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -1179,8 +1180,7 @@ func miqt_exec_callback_QSizeGrip_InputMethodEvent(self *C.QSizeGrip, cb C.intpt
 
 func (this *QSizeGrip) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_ret := C.QSizeGrip_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QSizeGrip_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

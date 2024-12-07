@@ -102,15 +102,13 @@ func (this *QLine) IsNull() bool {
 }
 
 func (this *QLine) P1() *QPoint {
-	_ret := C.QLine_P1(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QLine_P1(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLine) P2() *QPoint {
-	_ret := C.QLine_P2(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QLine_P2(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -148,22 +146,19 @@ func (this *QLine) Translate2(dx int, dy int) {
 }
 
 func (this *QLine) Translated(p *QPoint) *QLine {
-	_ret := C.QLine_Translated(this.h, p.cPointer())
-	_goptr := newQLine(_ret)
+	_goptr := newQLine(C.QLine_Translated(this.h, p.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLine) Translated2(dx int, dy int) *QLine {
-	_ret := C.QLine_Translated2(this.h, (C.int)(dx), (C.int)(dy))
-	_goptr := newQLine(_ret)
+	_goptr := newQLine(C.QLine_Translated2(this.h, (C.int)(dx), (C.int)(dy)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLine) Center() *QPoint {
-	_ret := C.QLine_Center(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QLine_Center(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -193,8 +188,7 @@ func (this *QLine) OperatorNotEqual(d *QLine) bool {
 }
 
 func (this *QLine) ToLineF() *QLineF {
-	_ret := C.QLine_ToLineF(this.h)
-	_goptr := newQLineF(_ret)
+	_goptr := newQLineF(C.QLine_ToLineF(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -300,8 +294,7 @@ func NewQLineF5(param1 *QLineF) *QLineF {
 }
 
 func QLineF_FromPolar(length float64, angle float64) *QLineF {
-	_ret := C.QLineF_FromPolar((C.double)(length), (C.double)(angle))
-	_goptr := newQLineF(_ret)
+	_goptr := newQLineF(C.QLineF_FromPolar((C.double)(length), (C.double)(angle)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -311,15 +304,13 @@ func (this *QLineF) IsNull() bool {
 }
 
 func (this *QLineF) P1() *QPointF {
-	_ret := C.QLineF_P1(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QLineF_P1(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLineF) P2() *QPointF {
-	_ret := C.QLineF_P2(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QLineF_P2(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -369,15 +360,13 @@ func (this *QLineF) AngleTo(l *QLineF) float64 {
 }
 
 func (this *QLineF) UnitVector() *QLineF {
-	_ret := C.QLineF_UnitVector(this.h)
-	_goptr := newQLineF(_ret)
+	_goptr := newQLineF(C.QLineF_UnitVector(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLineF) NormalVector() *QLineF {
-	_ret := C.QLineF_NormalVector(this.h)
-	_goptr := newQLineF(_ret)
+	_goptr := newQLineF(C.QLineF_NormalVector(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -387,8 +376,7 @@ func (this *QLineF) Intersects(l *QLineF) QLineF__IntersectionType {
 }
 
 func (this *QLineF) PointAt(t float64) *QPointF {
-	_ret := C.QLineF_PointAt(this.h, (C.double)(t))
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QLineF_PointAt(this.h, (C.double)(t)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -402,22 +390,19 @@ func (this *QLineF) Translate2(dx float64, dy float64) {
 }
 
 func (this *QLineF) Translated(p *QPointF) *QLineF {
-	_ret := C.QLineF_Translated(this.h, p.cPointer())
-	_goptr := newQLineF(_ret)
+	_goptr := newQLineF(C.QLineF_Translated(this.h, p.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLineF) Translated2(dx float64, dy float64) *QLineF {
-	_ret := C.QLineF_Translated2(this.h, (C.double)(dx), (C.double)(dy))
-	_goptr := newQLineF(_ret)
+	_goptr := newQLineF(C.QLineF_Translated2(this.h, (C.double)(dx), (C.double)(dy)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLineF) Center() *QPointF {
-	_ret := C.QLineF_Center(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QLineF_Center(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -447,8 +432,7 @@ func (this *QLineF) OperatorNotEqual(d *QLineF) bool {
 }
 
 func (this *QLineF) ToLine() *QLine {
-	_ret := C.QLineF_ToLine(this.h)
-	_goptr := newQLine(_ret)
+	_goptr := newQLine(C.QLineF_ToLine(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -51,7 +51,7 @@ func UnsafeNewQItemEditorCreatorBase(h unsafe.Pointer) *QItemEditorCreatorBase {
 }
 
 func (this *QItemEditorCreatorBase) CreateWidget(parent *QWidget) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QItemEditorCreatorBase_CreateWidget(this.h, parent.cPointer())), nil, nil)
+	return newQWidget(C.QItemEditorCreatorBase_CreateWidget(this.h, parent.cPointer()), nil, nil)
 }
 
 func (this *QItemEditorCreatorBase) ValuePropertyName() []byte {
@@ -136,7 +136,7 @@ func NewQItemEditorFactory2(param1 *QItemEditorFactory) *QItemEditorFactory {
 }
 
 func (this *QItemEditorFactory) CreateEditor(userType int, parent *QWidget) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QItemEditorFactory_CreateEditor(this.h, (C.int)(userType), parent.cPointer())), nil, nil)
+	return newQWidget(C.QItemEditorFactory_CreateEditor(this.h, (C.int)(userType), parent.cPointer()), nil, nil)
 }
 
 func (this *QItemEditorFactory) ValuePropertyName(userType int) []byte {
@@ -151,7 +151,7 @@ func (this *QItemEditorFactory) RegisterEditor(userType int, creator *QItemEdito
 }
 
 func QItemEditorFactory_DefaultFactory() *QItemEditorFactory {
-	return UnsafeNewQItemEditorFactory(unsafe.Pointer(C.QItemEditorFactory_DefaultFactory()))
+	return newQItemEditorFactory(C.QItemEditorFactory_DefaultFactory())
 }
 
 func QItemEditorFactory_SetDefaultFactory(factory *QItemEditorFactory) {
@@ -160,7 +160,8 @@ func QItemEditorFactory_SetDefaultFactory(factory *QItemEditorFactory) {
 
 func (this *QItemEditorFactory) callVirtualBase_CreateEditor(userType int, parent *QWidget) *QWidget {
 
-	return UnsafeNewQWidget(unsafe.Pointer(C.QItemEditorFactory_virtualbase_CreateEditor(unsafe.Pointer(this.h), (C.int)(userType), parent.cPointer())), nil, nil)
+	return newQWidget(C.QItemEditorFactory_virtualbase_CreateEditor(unsafe.Pointer(this.h), (C.int)(userType), parent.cPointer()), nil, nil)
+
 }
 func (this *QItemEditorFactory) OnCreateEditor(slot func(super func(userType int, parent *QWidget) *QWidget, userType int, parent *QWidget) *QWidget) {
 	if !this.isSubclass {
@@ -179,7 +180,7 @@ func miqt_exec_callback_QItemEditorFactory_CreateEditor(self *C.QItemEditorFacto
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (int)(userType)
 
-	slotval2 := UnsafeNewQWidget(unsafe.Pointer(parent), nil, nil)
+	slotval2 := newQWidget(parent, nil, nil)
 
 	virtualReturn := gofunc((&QItemEditorFactory{h: self}).callVirtualBase_CreateEditor, slotval1, slotval2)
 

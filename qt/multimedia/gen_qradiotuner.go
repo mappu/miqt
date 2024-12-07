@@ -232,7 +232,7 @@ func (this *QRadioTuner) ErrorString() string {
 }
 
 func (this *QRadioTuner) RadioData() *QRadioData {
-	return UnsafeNewQRadioData(unsafe.Pointer(C.QRadioTuner_RadioData(this.h)), nil, nil)
+	return newQRadioData(C.QRadioTuner_RadioData(this.h), nil, nil)
 }
 
 func (this *QRadioTuner) SearchForward() {
@@ -604,7 +604,8 @@ func miqt_exec_callback_QRadioTuner_IsAvailable(self *C.QRadioTuner, cb C.intptr
 
 func (this *QRadioTuner) callVirtualBase_Service() *QMediaService {
 
-	return UnsafeNewQMediaService(unsafe.Pointer(C.QRadioTuner_virtualbase_Service(unsafe.Pointer(this.h))), nil)
+	return newQMediaService(C.QRadioTuner_virtualbase_Service(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QRadioTuner) OnService(slot func(super func() *QMediaService) *QMediaService) {
 	if !this.isSubclass {

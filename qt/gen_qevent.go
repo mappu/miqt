@@ -244,15 +244,13 @@ func NewQEnterEvent2(param1 *QEnterEvent) *QEnterEvent {
 }
 
 func (this *QEnterEvent) Pos() *QPoint {
-	_ret := C.QEnterEvent_Pos(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QEnterEvent_Pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QEnterEvent) GlobalPos() *QPoint {
-	_ret := C.QEnterEvent_GlobalPos(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QEnterEvent_GlobalPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -274,15 +272,15 @@ func (this *QEnterEvent) GlobalY() int {
 }
 
 func (this *QEnterEvent) LocalPos() *QPointF {
-	return UnsafeNewQPointF(unsafe.Pointer(C.QEnterEvent_LocalPos(this.h)))
+	return newQPointF(C.QEnterEvent_LocalPos(this.h))
 }
 
 func (this *QEnterEvent) WindowPos() *QPointF {
-	return UnsafeNewQPointF(unsafe.Pointer(C.QEnterEvent_WindowPos(this.h)))
+	return newQPointF(C.QEnterEvent_WindowPos(this.h))
 }
 
 func (this *QEnterEvent) ScreenPos() *QPointF {
-	return UnsafeNewQPointF(unsafe.Pointer(C.QEnterEvent_ScreenPos(this.h)))
+	return newQPointF(C.QEnterEvent_ScreenPos(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -399,15 +397,13 @@ func NewQMouseEvent5(param1 *QMouseEvent) *QMouseEvent {
 }
 
 func (this *QMouseEvent) Pos() *QPoint {
-	_ret := C.QMouseEvent_Pos(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QMouseEvent_Pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMouseEvent) GlobalPos() *QPoint {
-	_ret := C.QMouseEvent_GlobalPos(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QMouseEvent_GlobalPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -429,15 +425,15 @@ func (this *QMouseEvent) GlobalY() int {
 }
 
 func (this *QMouseEvent) LocalPos() *QPointF {
-	return UnsafeNewQPointF(unsafe.Pointer(C.QMouseEvent_LocalPos(this.h)))
+	return newQPointF(C.QMouseEvent_LocalPos(this.h))
 }
 
 func (this *QMouseEvent) WindowPos() *QPointF {
-	return UnsafeNewQPointF(unsafe.Pointer(C.QMouseEvent_WindowPos(this.h)))
+	return newQPointF(C.QMouseEvent_WindowPos(this.h))
 }
 
 func (this *QMouseEvent) ScreenPos() *QPointF {
-	return UnsafeNewQPointF(unsafe.Pointer(C.QMouseEvent_ScreenPos(this.h)))
+	return newQPointF(C.QMouseEvent_ScreenPos(this.h))
 }
 
 func (this *QMouseEvent) Button() MouseButton {
@@ -550,25 +546,23 @@ func NewQHoverEvent3(typeVal QEvent__Type, pos *QPointF, oldPos *QPointF, modifi
 }
 
 func (this *QHoverEvent) Pos() *QPoint {
-	_ret := C.QHoverEvent_Pos(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QHoverEvent_Pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QHoverEvent) OldPos() *QPoint {
-	_ret := C.QHoverEvent_OldPos(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QHoverEvent_OldPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QHoverEvent) PosF() *QPointF {
-	return UnsafeNewQPointF(unsafe.Pointer(C.QHoverEvent_PosF(this.h)))
+	return newQPointF(C.QHoverEvent_PosF(this.h))
 }
 
 func (this *QHoverEvent) OldPosF() *QPointF {
-	return UnsafeNewQPointF(unsafe.Pointer(C.QHoverEvent_OldPosF(this.h)))
+	return newQPointF(C.QHoverEvent_OldPosF(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -757,15 +751,13 @@ func NewQWheelEvent11(pos QPointF, globalPos QPointF, pixelDelta QPoint, angleDe
 }
 
 func (this *QWheelEvent) PixelDelta() *QPoint {
-	_ret := C.QWheelEvent_PixelDelta(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QWheelEvent_PixelDelta(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWheelEvent) AngleDelta() *QPoint {
-	_ret := C.QWheelEvent_AngleDelta(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QWheelEvent_AngleDelta(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -779,15 +771,13 @@ func (this *QWheelEvent) Orientation() Orientation {
 }
 
 func (this *QWheelEvent) Pos() *QPoint {
-	_ret := C.QWheelEvent_Pos(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QWheelEvent_Pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWheelEvent) GlobalPos() *QPoint {
-	_ret := C.QWheelEvent_GlobalPos(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QWheelEvent_GlobalPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -809,23 +799,21 @@ func (this *QWheelEvent) GlobalY() int {
 }
 
 func (this *QWheelEvent) PosF() *QPointF {
-	return UnsafeNewQPointF(unsafe.Pointer(C.QWheelEvent_PosF(this.h)))
+	return newQPointF(C.QWheelEvent_PosF(this.h))
 }
 
 func (this *QWheelEvent) GlobalPosF() *QPointF {
-	return UnsafeNewQPointF(unsafe.Pointer(C.QWheelEvent_GlobalPosF(this.h)))
+	return newQPointF(C.QWheelEvent_GlobalPosF(this.h))
 }
 
 func (this *QWheelEvent) Position() *QPointF {
-	_ret := C.QWheelEvent_Position(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QWheelEvent_Position(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWheelEvent) GlobalPosition() *QPointF {
-	_ret := C.QWheelEvent_GlobalPosition(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QWheelEvent_GlobalPosition(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -936,25 +924,23 @@ func NewQTabletEvent3(param1 *QTabletEvent) *QTabletEvent {
 }
 
 func (this *QTabletEvent) Pos() *QPoint {
-	_ret := C.QTabletEvent_Pos(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QTabletEvent_Pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTabletEvent) GlobalPos() *QPoint {
-	_ret := C.QTabletEvent_GlobalPos(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QTabletEvent_GlobalPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTabletEvent) PosF() *QPointF {
-	return UnsafeNewQPointF(unsafe.Pointer(C.QTabletEvent_PosF(this.h)))
+	return newQPointF(C.QTabletEvent_PosF(this.h))
 }
 
 func (this *QTabletEvent) GlobalPosF() *QPointF {
-	return UnsafeNewQPointF(unsafe.Pointer(C.QTabletEvent_GlobalPosF(this.h)))
+	return newQPointF(C.QTabletEvent_GlobalPosF(this.h))
 }
 
 func (this *QTabletEvent) X() int {
@@ -1127,33 +1113,31 @@ func (this *QNativeGestureEvent) Value() float64 {
 }
 
 func (this *QNativeGestureEvent) Pos() *QPoint {
-	_ret := C.QNativeGestureEvent_Pos(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QNativeGestureEvent_Pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNativeGestureEvent) GlobalPos() *QPoint {
-	_ret := C.QNativeGestureEvent_GlobalPos(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QNativeGestureEvent_GlobalPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNativeGestureEvent) LocalPos() *QPointF {
-	return UnsafeNewQPointF(unsafe.Pointer(C.QNativeGestureEvent_LocalPos(this.h)))
+	return newQPointF(C.QNativeGestureEvent_LocalPos(this.h))
 }
 
 func (this *QNativeGestureEvent) WindowPos() *QPointF {
-	return UnsafeNewQPointF(unsafe.Pointer(C.QNativeGestureEvent_WindowPos(this.h)))
+	return newQPointF(C.QNativeGestureEvent_WindowPos(this.h))
 }
 
 func (this *QNativeGestureEvent) ScreenPos() *QPointF {
-	return UnsafeNewQPointF(unsafe.Pointer(C.QNativeGestureEvent_ScreenPos(this.h)))
+	return newQPointF(C.QNativeGestureEvent_ScreenPos(this.h))
 }
 
 func (this *QNativeGestureEvent) Device() *QTouchDevice {
-	return UnsafeNewQTouchDevice(unsafe.Pointer(C.QNativeGestureEvent_Device(this.h)))
+	return newQTouchDevice(C.QNativeGestureEvent_Device(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -1565,11 +1549,11 @@ func NewQPaintEvent3(param1 *QPaintEvent) *QPaintEvent {
 }
 
 func (this *QPaintEvent) Rect() *QRect {
-	return UnsafeNewQRect(unsafe.Pointer(C.QPaintEvent_Rect(this.h)))
+	return newQRect(C.QPaintEvent_Rect(this.h))
 }
 
 func (this *QPaintEvent) Region() *QRegion {
-	return UnsafeNewQRegion(unsafe.Pointer(C.QPaintEvent_Region(this.h)))
+	return newQRegion(C.QPaintEvent_Region(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -1648,11 +1632,11 @@ func NewQMoveEvent2(param1 *QMoveEvent) *QMoveEvent {
 }
 
 func (this *QMoveEvent) Pos() *QPoint {
-	return UnsafeNewQPoint(unsafe.Pointer(C.QMoveEvent_Pos(this.h)))
+	return newQPoint(C.QMoveEvent_Pos(this.h))
 }
 
 func (this *QMoveEvent) OldPos() *QPoint {
-	return UnsafeNewQPoint(unsafe.Pointer(C.QMoveEvent_OldPos(this.h)))
+	return newQPoint(C.QMoveEvent_OldPos(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -1731,7 +1715,7 @@ func NewQExposeEvent2(param1 *QExposeEvent) *QExposeEvent {
 }
 
 func (this *QExposeEvent) Region() *QRegion {
-	return UnsafeNewQRegion(unsafe.Pointer(C.QExposeEvent_Region(this.h)))
+	return newQRegion(C.QExposeEvent_Region(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -1889,11 +1873,11 @@ func NewQResizeEvent2(param1 *QResizeEvent) *QResizeEvent {
 }
 
 func (this *QResizeEvent) Size() *QSize {
-	return UnsafeNewQSize(unsafe.Pointer(C.QResizeEvent_Size(this.h)))
+	return newQSize(C.QResizeEvent_Size(this.h))
 }
 
 func (this *QResizeEvent) OldSize() *QSize {
-	return UnsafeNewQSize(unsafe.Pointer(C.QResizeEvent_OldSize(this.h)))
+	return newQSize(C.QResizeEvent_OldSize(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -2330,11 +2314,11 @@ func (this *QContextMenuEvent) GlobalY() int {
 }
 
 func (this *QContextMenuEvent) Pos() *QPoint {
-	return UnsafeNewQPoint(unsafe.Pointer(C.QContextMenuEvent_Pos(this.h)))
+	return newQPoint(C.QContextMenuEvent_Pos(this.h))
 }
 
 func (this *QContextMenuEvent) GlobalPos() *QPoint {
-	return UnsafeNewQPoint(unsafe.Pointer(C.QContextMenuEvent_GlobalPos(this.h)))
+	return newQPoint(C.QContextMenuEvent_GlobalPos(this.h))
 }
 
 func (this *QContextMenuEvent) Reason() QContextMenuEvent__Reason {
@@ -2450,8 +2434,7 @@ func (this *QInputMethodEvent) Attributes() []QInputMethodEvent__Attribute {
 	_ret := make([]QInputMethodEvent__Attribute, int(_ma.len))
 	_outCast := (*[0xffff]*C.QInputMethodEvent__Attribute)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQInputMethodEvent__Attribute(_lv_ret)
+		_lv_goptr := newQInputMethodEvent__Attribute(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -2580,8 +2563,7 @@ func (this *QInputMethodQueryEvent) SetValue(query InputMethodQuery, value *QVar
 }
 
 func (this *QInputMethodQueryEvent) Value(query InputMethodQuery) *QVariant {
-	_ret := C.QInputMethodQueryEvent_Value(this.h, (C.int)(query))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QInputMethodQueryEvent_Value(this.h, (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -2673,14 +2655,13 @@ func NewQDropEvent3(pos *QPointF, actions DropAction, data *QMimeData, buttons M
 }
 
 func (this *QDropEvent) Pos() *QPoint {
-	_ret := C.QDropEvent_Pos(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QDropEvent_Pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDropEvent) PosF() *QPointF {
-	return UnsafeNewQPointF(unsafe.Pointer(C.QDropEvent_PosF(this.h)))
+	return newQPointF(C.QDropEvent_PosF(this.h))
 }
 
 func (this *QDropEvent) MouseButtons() MouseButton {
@@ -2712,11 +2693,11 @@ func (this *QDropEvent) SetDropAction(action DropAction) {
 }
 
 func (this *QDropEvent) Source() *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QDropEvent_Source(this.h)))
+	return newQObject(C.QDropEvent_Source(this.h))
 }
 
 func (this *QDropEvent) MimeData() *QMimeData {
-	return UnsafeNewQMimeData(unsafe.Pointer(C.QDropEvent_MimeData(this.h)), nil)
+	return newQMimeData(C.QDropEvent_MimeData(this.h), nil)
 }
 
 // Delete this object from C++ memory.
@@ -2809,8 +2790,7 @@ func NewQDragMoveEvent3(pos *QPoint, actions DropAction, data *QMimeData, button
 }
 
 func (this *QDragMoveEvent) AnswerRect() *QRect {
-	_ret := C.QDragMoveEvent_AnswerRect(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QDragMoveEvent_AnswerRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -3085,11 +3065,11 @@ func (this *QHelpEvent) GlobalY() int {
 }
 
 func (this *QHelpEvent) Pos() *QPoint {
-	return UnsafeNewQPoint(unsafe.Pointer(C.QHelpEvent_Pos(this.h)))
+	return newQPoint(C.QHelpEvent_Pos(this.h))
 }
 
 func (this *QHelpEvent) GlobalPos() *QPoint {
-	return UnsafeNewQPoint(unsafe.Pointer(C.QHelpEvent_GlobalPos(this.h)))
+	return newQPoint(C.QHelpEvent_GlobalPos(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -3351,11 +3331,11 @@ func NewQActionEvent3(typeVal int, action *QAction, before *QAction) *QActionEve
 }
 
 func (this *QActionEvent) Action() *QAction {
-	return UnsafeNewQAction(unsafe.Pointer(C.QActionEvent_Action(this.h)), nil)
+	return newQAction(C.QActionEvent_Action(this.h), nil)
 }
 
 func (this *QActionEvent) Before() *QAction {
-	return UnsafeNewQAction(unsafe.Pointer(C.QActionEvent_Before(this.h)), nil)
+	return newQAction(C.QActionEvent_Before(this.h), nil)
 }
 
 func (this *QActionEvent) OperatorAssign(param1 *QActionEvent) {
@@ -3460,8 +3440,7 @@ func (this *QFileOpenEvent) File() string {
 }
 
 func (this *QFileOpenEvent) Url() *QUrl {
-	_ret := C.QFileOpenEvent_Url(this.h)
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QFileOpenEvent_Url(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -3636,7 +3615,7 @@ func NewQShortcutEvent3(key *QKeySequence, id int, ambiguous bool) *QShortcutEve
 }
 
 func (this *QShortcutEvent) Key() *QKeySequence {
-	return UnsafeNewQKeySequence(unsafe.Pointer(C.QShortcutEvent_Key(this.h)))
+	return newQKeySequence(C.QShortcutEvent_Key(this.h))
 }
 
 func (this *QShortcutEvent) ShortcutId() int {
@@ -3812,8 +3791,7 @@ func NewQPointingDeviceUniqueId2(param1 *QPointingDeviceUniqueId) *QPointingDevi
 }
 
 func QPointingDeviceUniqueId_FromNumericId(id int64) *QPointingDeviceUniqueId {
-	_ret := C.QPointingDeviceUniqueId_FromNumericId((C.longlong)(id))
-	_goptr := newQPointingDeviceUniqueId(_ret)
+	_goptr := newQPointingDeviceUniqueId(C.QPointingDeviceUniqueId_FromNumericId((C.longlong)(id)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -3958,11 +3936,11 @@ func NewQTouchEvent6(eventType QEvent__Type, device *QTouchDevice, modifiers Key
 }
 
 func (this *QTouchEvent) Window() *QWindow {
-	return UnsafeNewQWindow(unsafe.Pointer(C.QTouchEvent_Window(this.h)), nil, nil)
+	return newQWindow(C.QTouchEvent_Window(this.h), nil, nil)
 }
 
 func (this *QTouchEvent) Target() *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QTouchEvent_Target(this.h)))
+	return newQObject(C.QTouchEvent_Target(this.h))
 }
 
 func (this *QTouchEvent) TouchPointStates() TouchPointState {
@@ -3974,8 +3952,7 @@ func (this *QTouchEvent) TouchPoints() []QTouchEvent__TouchPoint {
 	_ret := make([]QTouchEvent__TouchPoint, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTouchEvent__TouchPoint)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQTouchEvent__TouchPoint(_lv_ret)
+		_lv_goptr := newQTouchEvent__TouchPoint(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -3983,7 +3960,7 @@ func (this *QTouchEvent) TouchPoints() []QTouchEvent__TouchPoint {
 }
 
 func (this *QTouchEvent) Device() *QTouchDevice {
-	return UnsafeNewQTouchDevice(unsafe.Pointer(C.QTouchEvent_Device(this.h)))
+	return newQTouchDevice(C.QTouchEvent_Device(this.h))
 }
 
 func (this *QTouchEvent) SetWindow(awindow *QWindow) {
@@ -4088,29 +4065,25 @@ func NewQScrollPrepareEvent2(param1 *QScrollPrepareEvent) *QScrollPrepareEvent {
 }
 
 func (this *QScrollPrepareEvent) StartPos() *QPointF {
-	_ret := C.QScrollPrepareEvent_StartPos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QScrollPrepareEvent_StartPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScrollPrepareEvent) ViewportSize() *QSizeF {
-	_ret := C.QScrollPrepareEvent_ViewportSize(this.h)
-	_goptr := newQSizeF(_ret)
+	_goptr := newQSizeF(C.QScrollPrepareEvent_ViewportSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScrollPrepareEvent) ContentPosRange() *QRectF {
-	_ret := C.QScrollPrepareEvent_ContentPosRange(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QScrollPrepareEvent_ContentPosRange(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScrollPrepareEvent) ContentPos() *QPointF {
-	_ret := C.QScrollPrepareEvent_ContentPos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QScrollPrepareEvent_ContentPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -4203,15 +4176,13 @@ func NewQScrollEvent2(param1 *QScrollEvent) *QScrollEvent {
 }
 
 func (this *QScrollEvent) ContentPos() *QPointF {
-	_ret := C.QScrollEvent_ContentPos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QScrollEvent_ContentPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScrollEvent) OvershootDistance() *QPointF {
-	_ret := C.QScrollEvent_OvershootDistance(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QScrollEvent_OvershootDistance(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -4296,7 +4267,7 @@ func NewQScreenOrientationChangeEvent2(param1 *QScreenOrientationChangeEvent) *Q
 }
 
 func (this *QScreenOrientationChangeEvent) Screen() *QScreen {
-	return UnsafeNewQScreen(unsafe.Pointer(C.QScreenOrientationChangeEvent_Screen(this.h)), nil)
+	return newQScreen(C.QScreenOrientationChangeEvent_Screen(this.h), nil)
 }
 
 func (this *QScreenOrientationChangeEvent) Orientation() ScreenOrientation {
@@ -4559,8 +4530,7 @@ func (this *QTouchEvent__TouchPoint) Id() int {
 }
 
 func (this *QTouchEvent__TouchPoint) UniqueId() *QPointingDeviceUniqueId {
-	_ret := C.QTouchEvent__TouchPoint_UniqueId(this.h)
-	_goptr := newQPointingDeviceUniqueId(_ret)
+	_goptr := newQPointingDeviceUniqueId(C.QTouchEvent__TouchPoint_UniqueId(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -4570,106 +4540,91 @@ func (this *QTouchEvent__TouchPoint) State() TouchPointState {
 }
 
 func (this *QTouchEvent__TouchPoint) Pos() *QPointF {
-	_ret := C.QTouchEvent__TouchPoint_Pos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QTouchEvent__TouchPoint_Pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) StartPos() *QPointF {
-	_ret := C.QTouchEvent__TouchPoint_StartPos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QTouchEvent__TouchPoint_StartPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) LastPos() *QPointF {
-	_ret := C.QTouchEvent__TouchPoint_LastPos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QTouchEvent__TouchPoint_LastPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) ScenePos() *QPointF {
-	_ret := C.QTouchEvent__TouchPoint_ScenePos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QTouchEvent__TouchPoint_ScenePos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) StartScenePos() *QPointF {
-	_ret := C.QTouchEvent__TouchPoint_StartScenePos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QTouchEvent__TouchPoint_StartScenePos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) LastScenePos() *QPointF {
-	_ret := C.QTouchEvent__TouchPoint_LastScenePos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QTouchEvent__TouchPoint_LastScenePos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) ScreenPos() *QPointF {
-	_ret := C.QTouchEvent__TouchPoint_ScreenPos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QTouchEvent__TouchPoint_ScreenPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) StartScreenPos() *QPointF {
-	_ret := C.QTouchEvent__TouchPoint_StartScreenPos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QTouchEvent__TouchPoint_StartScreenPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) LastScreenPos() *QPointF {
-	_ret := C.QTouchEvent__TouchPoint_LastScreenPos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QTouchEvent__TouchPoint_LastScreenPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) NormalizedPos() *QPointF {
-	_ret := C.QTouchEvent__TouchPoint_NormalizedPos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QTouchEvent__TouchPoint_NormalizedPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) StartNormalizedPos() *QPointF {
-	_ret := C.QTouchEvent__TouchPoint_StartNormalizedPos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QTouchEvent__TouchPoint_StartNormalizedPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) LastNormalizedPos() *QPointF {
-	_ret := C.QTouchEvent__TouchPoint_LastNormalizedPos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QTouchEvent__TouchPoint_LastNormalizedPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) Rect() *QRectF {
-	_ret := C.QTouchEvent__TouchPoint_Rect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QTouchEvent__TouchPoint_Rect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) SceneRect() *QRectF {
-	_ret := C.QTouchEvent__TouchPoint_SceneRect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QTouchEvent__TouchPoint_SceneRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) ScreenRect() *QRectF {
-	_ret := C.QTouchEvent__TouchPoint_ScreenRect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QTouchEvent__TouchPoint_ScreenRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -4695,15 +4650,13 @@ func (this *QTouchEvent__TouchPoint) Rotation() float64 {
 }
 
 func (this *QTouchEvent__TouchPoint) EllipseDiameters() *QSizeF {
-	_ret := C.QTouchEvent__TouchPoint_EllipseDiameters(this.h)
-	_goptr := newQSizeF(_ret)
+	_goptr := newQSizeF(C.QTouchEvent__TouchPoint_EllipseDiameters(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) Velocity() *QVector2D {
-	_ret := C.QTouchEvent__TouchPoint_Velocity(this.h)
-	_goptr := newQVector2D(_ret)
+	_goptr := newQVector2D(C.QTouchEvent__TouchPoint_Velocity(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -4717,8 +4670,7 @@ func (this *QTouchEvent__TouchPoint) RawScreenPositions() []QPointF {
 	_ret := make([]QPointF, int(_ma.len))
 	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_vv_ret := _outCast[i]
-		_vv_goptr := newQPointF(_vv_ret)
+		_vv_goptr := newQPointF(_outCast[i])
 		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_vv_goptr
 	}

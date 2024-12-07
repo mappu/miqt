@@ -182,11 +182,11 @@ func NewQListWidgetItem10(icon *QIcon, text string, listview *QListWidget, typeV
 }
 
 func (this *QListWidgetItem) Clone() *QListWidgetItem {
-	return UnsafeNewQListWidgetItem(unsafe.Pointer(C.QListWidgetItem_Clone(this.h)))
+	return newQListWidgetItem(C.QListWidgetItem_Clone(this.h))
 }
 
 func (this *QListWidgetItem) ListWidget() *QListWidget {
-	return UnsafeNewQListWidget(unsafe.Pointer(C.QListWidgetItem_ListWidget(this.h)), nil, nil, nil, nil, nil, nil, nil)
+	return newQListWidget(C.QListWidgetItem_ListWidget(this.h), nil, nil, nil, nil, nil, nil, nil)
 }
 
 func (this *QListWidgetItem) SetSelected(selectVal bool) {
@@ -229,8 +229,7 @@ func (this *QListWidgetItem) SetText(text string) {
 }
 
 func (this *QListWidgetItem) Icon() *QIcon {
-	_ret := C.QListWidgetItem_Icon(this.h)
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QListWidgetItem_Icon(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -285,8 +284,7 @@ func (this *QListWidgetItem) SetWhatsThis(whatsThis string) {
 }
 
 func (this *QListWidgetItem) Font() *QFont {
-	_ret := C.QListWidgetItem_Font(this.h)
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QListWidgetItem_Font(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -304,8 +302,7 @@ func (this *QListWidgetItem) SetTextAlignment(alignment int) {
 }
 
 func (this *QListWidgetItem) BackgroundColor() *QColor {
-	_ret := C.QListWidgetItem_BackgroundColor(this.h)
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QListWidgetItem_BackgroundColor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -315,8 +312,7 @@ func (this *QListWidgetItem) SetBackgroundColor(color *QColor) {
 }
 
 func (this *QListWidgetItem) Background() *QBrush {
-	_ret := C.QListWidgetItem_Background(this.h)
-	_goptr := newQBrush(_ret)
+	_goptr := newQBrush(C.QListWidgetItem_Background(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -326,8 +322,7 @@ func (this *QListWidgetItem) SetBackground(brush *QBrush) {
 }
 
 func (this *QListWidgetItem) TextColor() *QColor {
-	_ret := C.QListWidgetItem_TextColor(this.h)
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QListWidgetItem_TextColor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -337,8 +332,7 @@ func (this *QListWidgetItem) SetTextColor(color *QColor) {
 }
 
 func (this *QListWidgetItem) Foreground() *QBrush {
-	_ret := C.QListWidgetItem_Foreground(this.h)
-	_goptr := newQBrush(_ret)
+	_goptr := newQBrush(C.QListWidgetItem_Foreground(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -356,8 +350,7 @@ func (this *QListWidgetItem) SetCheckState(state CheckState) {
 }
 
 func (this *QListWidgetItem) SizeHint() *QSize {
-	_ret := C.QListWidgetItem_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QListWidgetItem_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -367,8 +360,7 @@ func (this *QListWidgetItem) SetSizeHint(size *QSize) {
 }
 
 func (this *QListWidgetItem) Data(role int) *QVariant {
-	_ret := C.QListWidgetItem_Data(this.h, (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QListWidgetItem_Data(this.h, (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -399,7 +391,8 @@ func (this *QListWidgetItem) Type() int {
 
 func (this *QListWidgetItem) callVirtualBase_Clone() *QListWidgetItem {
 
-	return UnsafeNewQListWidgetItem(unsafe.Pointer(C.QListWidgetItem_virtualbase_Clone(unsafe.Pointer(this.h))))
+	return newQListWidgetItem(C.QListWidgetItem_virtualbase_Clone(unsafe.Pointer(this.h)))
+
 }
 func (this *QListWidgetItem) OnClone(slot func(super func() *QListWidgetItem) *QListWidgetItem) {
 	if !this.isSubclass {
@@ -441,7 +434,7 @@ func miqt_exec_callback_QListWidgetItem_SetBackgroundColor(self *C.QListWidgetIt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQColor(unsafe.Pointer(color))
+	slotval1 := newQColor(color)
 
 	gofunc((&QListWidgetItem{h: self}).callVirtualBase_SetBackgroundColor, slotval1)
 
@@ -449,8 +442,7 @@ func miqt_exec_callback_QListWidgetItem_SetBackgroundColor(self *C.QListWidgetIt
 
 func (this *QListWidgetItem) callVirtualBase_Data(role int) *QVariant {
 
-	_ret := C.QListWidgetItem_virtualbase_Data(unsafe.Pointer(this.h), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QListWidgetItem_virtualbase_Data(unsafe.Pointer(this.h), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -500,7 +492,7 @@ func miqt_exec_callback_QListWidgetItem_SetData(self *C.QListWidgetItem, cb C.in
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (int)(role)
 
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval2 := newQVariant(value)
 
 	gofunc((&QListWidgetItem{h: self}).callVirtualBase_SetData, slotval1, slotval2)
 
@@ -526,7 +518,7 @@ func miqt_exec_callback_QListWidgetItem_OperatorLesser(self *C.QListWidgetItem, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQListWidgetItem(unsafe.Pointer(other))
+	slotval1 := newQListWidgetItem(other)
 
 	virtualReturn := gofunc((&QListWidgetItem{h: self}).callVirtualBase_OperatorLesser, slotval1)
 
@@ -554,7 +546,7 @@ func miqt_exec_callback_QListWidgetItem_Read(self *C.QListWidgetItem, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDataStream(unsafe.Pointer(in))
+	slotval1 := newQDataStream(in)
 
 	gofunc((&QListWidgetItem{h: self}).callVirtualBase_Read, slotval1)
 
@@ -580,7 +572,7 @@ func miqt_exec_callback_QListWidgetItem_Write(self *C.QListWidgetItem, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDataStream(unsafe.Pointer(out))
+	slotval1 := newQDataStream(out)
 
 	gofunc((&QListWidgetItem{h: self}).callVirtualBase_Write, slotval1)
 
@@ -674,7 +666,7 @@ func NewQListWidget2() *QListWidget {
 }
 
 func (this *QListWidget) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QListWidget_MetaObject(this.h)))
+	return newQMetaObject(C.QListWidget_MetaObject(this.h))
 }
 
 func (this *QListWidget) Metacast(param1 string) unsafe.Pointer {
@@ -706,7 +698,7 @@ func (this *QListWidget) SetSelectionModel(selectionModel *QItemSelectionModel) 
 }
 
 func (this *QListWidget) Item(row int) *QListWidgetItem {
-	return UnsafeNewQListWidgetItem(unsafe.Pointer(C.QListWidget_Item(this.h, (C.int)(row))))
+	return newQListWidgetItem(C.QListWidget_Item(this.h, (C.int)(row)))
 }
 
 func (this *QListWidget) Row(item *QListWidgetItem) int {
@@ -766,7 +758,7 @@ func (this *QListWidget) AddItems(labels []string) {
 }
 
 func (this *QListWidget) TakeItem(row int) *QListWidgetItem {
-	return UnsafeNewQListWidgetItem(unsafe.Pointer(C.QListWidget_TakeItem(this.h, (C.int)(row))))
+	return newQListWidgetItem(C.QListWidget_TakeItem(this.h, (C.int)(row)))
 }
 
 func (this *QListWidget) Count() int {
@@ -774,7 +766,7 @@ func (this *QListWidget) Count() int {
 }
 
 func (this *QListWidget) CurrentItem() *QListWidgetItem {
-	return UnsafeNewQListWidgetItem(unsafe.Pointer(C.QListWidget_CurrentItem(this.h)))
+	return newQListWidgetItem(C.QListWidget_CurrentItem(this.h))
 }
 
 func (this *QListWidget) SetCurrentItem(item *QListWidgetItem) {
@@ -798,16 +790,15 @@ func (this *QListWidget) SetCurrentRow2(row int, command QItemSelectionModel__Se
 }
 
 func (this *QListWidget) ItemAt(p *QPoint) *QListWidgetItem {
-	return UnsafeNewQListWidgetItem(unsafe.Pointer(C.QListWidget_ItemAt(this.h, p.cPointer())))
+	return newQListWidgetItem(C.QListWidget_ItemAt(this.h, p.cPointer()))
 }
 
 func (this *QListWidget) ItemAt2(x int, y int) *QListWidgetItem {
-	return UnsafeNewQListWidgetItem(unsafe.Pointer(C.QListWidget_ItemAt2(this.h, (C.int)(x), (C.int)(y))))
+	return newQListWidgetItem(C.QListWidget_ItemAt2(this.h, (C.int)(x), (C.int)(y)))
 }
 
 func (this *QListWidget) VisualItemRect(item *QListWidgetItem) *QRect {
-	_ret := C.QListWidget_VisualItemRect(this.h, item.cPointer())
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QListWidget_VisualItemRect(this.h, item.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -841,7 +832,7 @@ func (this *QListWidget) IsPersistentEditorOpen(item *QListWidgetItem) bool {
 }
 
 func (this *QListWidget) ItemWidget(item *QListWidgetItem) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QListWidget_ItemWidget(this.h, item.cPointer())), nil, nil)
+	return newQWidget(C.QListWidget_ItemWidget(this.h, item.cPointer()), nil, nil)
 }
 
 func (this *QListWidget) SetItemWidget(item *QListWidgetItem, widget *QWidget) {
@@ -865,7 +856,7 @@ func (this *QListWidget) SelectedItems() []*QListWidgetItem {
 	_ret := make([]*QListWidgetItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QListWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQListWidgetItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQListWidgetItem(_outCast[i])
 	}
 	return _ret
 }
@@ -879,7 +870,7 @@ func (this *QListWidget) FindItems(text string, flags MatchFlag) []*QListWidgetI
 	_ret := make([]*QListWidgetItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QListWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQListWidgetItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQListWidgetItem(_outCast[i])
 	}
 	return _ret
 }
@@ -919,7 +910,7 @@ func miqt_exec_callback_QListWidget_ItemPressed(cb C.intptr_t, item *C.QListWidg
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQListWidgetItem(unsafe.Pointer(item))
+	slotval1 := newQListWidgetItem(item)
 
 	gofunc(slotval1)
 }
@@ -939,7 +930,7 @@ func miqt_exec_callback_QListWidget_ItemClicked(cb C.intptr_t, item *C.QListWidg
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQListWidgetItem(unsafe.Pointer(item))
+	slotval1 := newQListWidgetItem(item)
 
 	gofunc(slotval1)
 }
@@ -959,7 +950,7 @@ func miqt_exec_callback_QListWidget_ItemDoubleClicked(cb C.intptr_t, item *C.QLi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQListWidgetItem(unsafe.Pointer(item))
+	slotval1 := newQListWidgetItem(item)
 
 	gofunc(slotval1)
 }
@@ -979,7 +970,7 @@ func miqt_exec_callback_QListWidget_ItemActivated(cb C.intptr_t, item *C.QListWi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQListWidgetItem(unsafe.Pointer(item))
+	slotval1 := newQListWidgetItem(item)
 
 	gofunc(slotval1)
 }
@@ -999,7 +990,7 @@ func miqt_exec_callback_QListWidget_ItemEntered(cb C.intptr_t, item *C.QListWidg
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQListWidgetItem(unsafe.Pointer(item))
+	slotval1 := newQListWidgetItem(item)
 
 	gofunc(slotval1)
 }
@@ -1019,7 +1010,7 @@ func miqt_exec_callback_QListWidget_ItemChanged(cb C.intptr_t, item *C.QListWidg
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQListWidgetItem(unsafe.Pointer(item))
+	slotval1 := newQListWidgetItem(item)
 
 	gofunc(slotval1)
 }
@@ -1039,8 +1030,9 @@ func miqt_exec_callback_QListWidget_CurrentItemChanged(cb C.intptr_t, current *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQListWidgetItem(unsafe.Pointer(current))
-	slotval2 := UnsafeNewQListWidgetItem(unsafe.Pointer(previous))
+	slotval1 := newQListWidgetItem(current)
+
+	slotval2 := newQListWidgetItem(previous)
 
 	gofunc(slotval1, slotval2)
 }
@@ -1181,7 +1173,7 @@ func miqt_exec_callback_QListWidget_SetSelectionModel(self *C.QListWidget, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQItemSelectionModel(unsafe.Pointer(selectionModel), nil)
+	slotval1 := newQItemSelectionModel(selectionModel, nil)
 
 	gofunc((&QListWidget{h: self}).callVirtualBase_SetSelectionModel, slotval1)
 
@@ -1207,7 +1199,7 @@ func miqt_exec_callback_QListWidget_DropEvent(self *C.QListWidget, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDropEvent(event, nil)
 
 	gofunc((&QListWidget{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1233,7 +1225,7 @@ func miqt_exec_callback_QListWidget_Event(self *C.QListWidget, cb C.intptr_t, e 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QListWidget{h: self}).callVirtualBase_Event, slotval1)
 
@@ -1293,7 +1285,8 @@ func (this *QListWidget) callVirtualBase_MimeData(items []*QListWidgetItem) *QMi
 	}
 	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 
-	return UnsafeNewQMimeData(unsafe.Pointer(C.QListWidget_virtualbase_MimeData(unsafe.Pointer(this.h), items_ma)), nil)
+	return newQMimeData(C.QListWidget_virtualbase_MimeData(unsafe.Pointer(this.h), items_ma), nil)
+
 }
 func (this *QListWidget) OnMimeData(slot func(super func(items []*QListWidgetItem) *QMimeData, items []*QListWidgetItem) *QMimeData) {
 	if !this.isSubclass {
@@ -1314,7 +1307,7 @@ func miqt_exec_callback_QListWidget_MimeData(self *C.QListWidget, cb C.intptr_t,
 	items_ret := make([]*QListWidgetItem, int(items_ma.len))
 	items_outCast := (*[0xffff]*C.QListWidgetItem)(unsafe.Pointer(items_ma.data)) // hey ya
 	for i := 0; i < int(items_ma.len); i++ {
-		items_ret[i] = UnsafeNewQListWidgetItem(unsafe.Pointer(items_outCast[i]))
+		items_ret[i] = newQListWidgetItem(items_outCast[i])
 	}
 	slotval1 := items_ret
 
@@ -1346,7 +1339,8 @@ func miqt_exec_callback_QListWidget_DropMimeData(self *C.QListWidget, cb C.intpt
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (int)(index)
 
-	slotval2 := UnsafeNewQMimeData(unsafe.Pointer(data), nil)
+	slotval2 := newQMimeData(data, nil)
+
 	slotval3 := (DropAction)(action)
 
 	virtualReturn := gofunc((&QListWidget{h: self}).callVirtualBase_DropMimeData, slotval1, slotval2, slotval3)
@@ -1382,8 +1376,7 @@ func miqt_exec_callback_QListWidget_SupportedDropActions(self *C.QListWidget, cb
 
 func (this *QListWidget) callVirtualBase_VisualRect(index *QModelIndex) *QRect {
 
-	_ret := C.QListWidget_virtualbase_VisualRect(unsafe.Pointer(this.h), index.cPointer())
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QListWidget_virtualbase_VisualRect(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1403,7 +1396,7 @@ func miqt_exec_callback_QListWidget_VisualRect(self *C.QListWidget, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QListWidget{h: self}).callVirtualBase_VisualRect, slotval1)
 
@@ -1431,7 +1424,8 @@ func miqt_exec_callback_QListWidget_ScrollTo(self *C.QListWidget, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
+
 	slotval2 := (QAbstractItemView__ScrollHint)(hint)
 
 	gofunc((&QListWidget{h: self}).callVirtualBase_ScrollTo, slotval1, slotval2)
@@ -1440,8 +1434,7 @@ func miqt_exec_callback_QListWidget_ScrollTo(self *C.QListWidget, cb C.intptr_t,
 
 func (this *QListWidget) callVirtualBase_IndexAt(p *QPoint) *QModelIndex {
 
-	_ret := C.QListWidget_virtualbase_IndexAt(unsafe.Pointer(this.h), p.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QListWidget_virtualbase_IndexAt(unsafe.Pointer(this.h), p.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1461,7 +1454,7 @@ func miqt_exec_callback_QListWidget_IndexAt(self *C.QListWidget, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(p))
+	slotval1 := newQPoint(p)
 
 	virtualReturn := gofunc((&QListWidget{h: self}).callVirtualBase_IndexAt, slotval1)
 
@@ -1535,7 +1528,7 @@ func miqt_exec_callback_QListWidget_SetRootIndex(self *C.QListWidget, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	gofunc((&QListWidget{h: self}).callVirtualBase_SetRootIndex, slotval1)
 
@@ -1595,8 +1588,10 @@ func miqt_exec_callback_QListWidget_DataChanged(self *C.QListWidget, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(topLeft))
-	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(bottomRight))
+	slotval1 := newQModelIndex(topLeft)
+
+	slotval2 := newQModelIndex(bottomRight)
+
 	var roles_ma C.struct_miqt_array = roles
 	roles_ret := make([]int, int(roles_ma.len))
 	roles_outCast := (*[0xffff]C.int)(unsafe.Pointer(roles_ma.data)) // hey ya
@@ -1629,7 +1624,8 @@ func miqt_exec_callback_QListWidget_RowsInserted(self *C.QListWidget, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
+
 	slotval2 := (int)(start)
 
 	slotval3 := (int)(end)
@@ -1658,7 +1654,8 @@ func miqt_exec_callback_QListWidget_RowsAboutToBeRemoved(self *C.QListWidget, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
+
 	slotval2 := (int)(start)
 
 	slotval3 := (int)(end)
@@ -1687,7 +1684,7 @@ func miqt_exec_callback_QListWidget_MouseMoveEvent(self *C.QListWidget, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQMouseEvent(e, nil, nil)
 
 	gofunc((&QListWidget{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -1713,7 +1710,7 @@ func miqt_exec_callback_QListWidget_MouseReleaseEvent(self *C.QListWidget, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQMouseEvent(e, nil, nil)
 
 	gofunc((&QListWidget{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -1739,7 +1736,7 @@ func miqt_exec_callback_QListWidget_WheelEvent(self *C.QListWidget, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQWheelEvent(e, nil, nil)
 
 	gofunc((&QListWidget{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -1765,7 +1762,7 @@ func miqt_exec_callback_QListWidget_TimerEvent(self *C.QListWidget, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQTimerEvent(e, nil)
 
 	gofunc((&QListWidget{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -1791,7 +1788,7 @@ func miqt_exec_callback_QListWidget_ResizeEvent(self *C.QListWidget, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQResizeEvent(e, nil)
 
 	gofunc((&QListWidget{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -1817,7 +1814,7 @@ func miqt_exec_callback_QListWidget_DragMoveEvent(self *C.QListWidget, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragMoveEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQDragMoveEvent(e, nil, nil)
 
 	gofunc((&QListWidget{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1843,7 +1840,7 @@ func miqt_exec_callback_QListWidget_DragLeaveEvent(self *C.QListWidget, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragLeaveEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQDragLeaveEvent(e, nil)
 
 	gofunc((&QListWidget{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1877,8 +1874,7 @@ func miqt_exec_callback_QListWidget_StartDrag(self *C.QListWidget, cb C.intptr_t
 
 func (this *QListWidget) callVirtualBase_ViewOptions() *QStyleOptionViewItem {
 
-	_ret := C.QListWidget_virtualbase_ViewOptions(unsafe.Pointer(this.h))
-	_goptr := newQStyleOptionViewItem(_ret, nil)
+	_goptr := newQStyleOptionViewItem(C.QListWidget_virtualbase_ViewOptions(unsafe.Pointer(this.h)), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1923,7 +1919,7 @@ func miqt_exec_callback_QListWidget_PaintEvent(self *C.QListWidget, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQPaintEvent(e, nil)
 
 	gofunc((&QListWidget{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -1981,8 +1977,7 @@ func miqt_exec_callback_QListWidget_VerticalOffset(self *C.QListWidget, cb C.int
 
 func (this *QListWidget) callVirtualBase_MoveCursor(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex {
 
-	_ret := C.QListWidget_virtualbase_MoveCursor(unsafe.Pointer(this.h), (C.int)(cursorAction), (C.int)(modifiers))
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QListWidget_virtualbase_MoveCursor(unsafe.Pointer(this.h), (C.int)(cursorAction), (C.int)(modifiers)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -2032,7 +2027,8 @@ func miqt_exec_callback_QListWidget_SetSelection(self *C.QListWidget, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRect(unsafe.Pointer(rect))
+	slotval1 := newQRect(rect)
+
 	slotval2 := (QItemSelectionModel__SelectionFlag)(command)
 
 	gofunc((&QListWidget{h: self}).callVirtualBase_SetSelection, slotval1, slotval2)
@@ -2041,8 +2037,7 @@ func miqt_exec_callback_QListWidget_SetSelection(self *C.QListWidget, cb C.intpt
 
 func (this *QListWidget) callVirtualBase_VisualRegionForSelection(selection *QItemSelection) *QRegion {
 
-	_ret := C.QListWidget_virtualbase_VisualRegionForSelection(unsafe.Pointer(this.h), selection.cPointer())
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QListWidget_virtualbase_VisualRegionForSelection(unsafe.Pointer(this.h), selection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -2062,7 +2057,7 @@ func miqt_exec_callback_QListWidget_VisualRegionForSelection(self *C.QListWidget
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selection))
+	slotval1 := newQItemSelection(selection)
 
 	virtualReturn := gofunc((&QListWidget{h: self}).callVirtualBase_VisualRegionForSelection, slotval1)
 
@@ -2076,8 +2071,7 @@ func (this *QListWidget) callVirtualBase_SelectedIndexes() []QModelIndex {
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -2153,7 +2147,7 @@ func miqt_exec_callback_QListWidget_IsIndexHidden(self *C.QListWidget, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QListWidget{h: self}).callVirtualBase_IsIndexHidden, slotval1)
 
@@ -2181,8 +2175,9 @@ func miqt_exec_callback_QListWidget_SelectionChanged(self *C.QListWidget, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selected))
-	slotval2 := UnsafeNewQItemSelection(unsafe.Pointer(deselected))
+	slotval1 := newQItemSelection(selected)
+
+	slotval2 := newQItemSelection(deselected)
 
 	gofunc((&QListWidget{h: self}).callVirtualBase_SelectionChanged, slotval1, slotval2)
 
@@ -2208,8 +2203,9 @@ func miqt_exec_callback_QListWidget_CurrentChanged(self *C.QListWidget, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(current))
-	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(previous))
+	slotval1 := newQModelIndex(current)
+
+	slotval2 := newQModelIndex(previous)
 
 	gofunc((&QListWidget{h: self}).callVirtualBase_CurrentChanged, slotval1, slotval2)
 
@@ -2217,8 +2213,7 @@ func miqt_exec_callback_QListWidget_CurrentChanged(self *C.QListWidget, cb C.int
 
 func (this *QListWidget) callVirtualBase_ViewportSizeHint() *QSize {
 
-	_ret := C.QListWidget_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QListWidget_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

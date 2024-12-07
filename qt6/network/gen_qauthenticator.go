@@ -132,8 +132,7 @@ func (this *QAuthenticator) Option(opt string) *qt6.QVariant {
 	opt_ms.data = C.CString(opt)
 	opt_ms.len = C.size_t(len(opt))
 	defer C.free(unsafe.Pointer(opt_ms.data))
-	_ret := C.QAuthenticator_Option(this.h, opt_ms)
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QAuthenticator_Option(this.h, opt_ms)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -148,8 +147,7 @@ func (this *QAuthenticator) Options() map[string]qt6.QVariant {
 		_hashkey_ret := C.GoStringN(_hashkey_ms.data, C.int(int64(_hashkey_ms.len)))
 		C.free(unsafe.Pointer(_hashkey_ms.data))
 		_entry_Key := _hashkey_ret
-		_hashval_ret := _Values[i]
-		_hashval_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_hashval_ret))
+		_hashval_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_Values[i]))
 		_hashval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_entry_Value := *_hashval_goptr
 

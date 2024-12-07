@@ -137,15 +137,13 @@ func (this *QNetworkDatagram) SetInterfaceIndex(index uint) {
 }
 
 func (this *QNetworkDatagram) SenderAddress() *QHostAddress {
-	_ret := C.QNetworkDatagram_SenderAddress(this.h)
-	_goptr := newQHostAddress(_ret)
+	_goptr := newQHostAddress(C.QNetworkDatagram_SenderAddress(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkDatagram) DestinationAddress() *QHostAddress {
-	_ret := C.QNetworkDatagram_DestinationAddress(this.h)
-	_goptr := newQHostAddress(_ret)
+	_goptr := newQHostAddress(C.QNetworkDatagram_DestinationAddress(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -192,8 +190,7 @@ func (this *QNetworkDatagram) MakeReply(payload []byte) *QNetworkDatagram {
 	payload_alias := C.struct_miqt_string{}
 	payload_alias.data = (*C.char)(unsafe.Pointer(&payload[0]))
 	payload_alias.len = C.size_t(len(payload))
-	_ret := C.QNetworkDatagram_MakeReply(this.h, payload_alias)
-	_goptr := newQNetworkDatagram(_ret)
+	_goptr := newQNetworkDatagram(C.QNetworkDatagram_MakeReply(this.h, payload_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

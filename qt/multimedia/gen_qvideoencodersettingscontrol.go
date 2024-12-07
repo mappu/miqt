@@ -86,8 +86,7 @@ func (this *QVideoEncoderSettingsControl) SupportedResolutions(settings *QVideoE
 	_ret := make([]qt.QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_lv_ret))
+		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -129,8 +128,7 @@ func (this *QVideoEncoderSettingsControl) VideoCodecDescription(codec string) st
 }
 
 func (this *QVideoEncoderSettingsControl) VideoSettings() *QVideoEncoderSettings {
-	_ret := C.QVideoEncoderSettingsControl_VideoSettings(this.h)
-	_goptr := newQVideoEncoderSettings(_ret)
+	_goptr := newQVideoEncoderSettings(C.QVideoEncoderSettingsControl_VideoSettings(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

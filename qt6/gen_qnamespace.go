@@ -1908,8 +1908,7 @@ func (this *QKeyCombination) Key() Key {
 }
 
 func QKeyCombination_FromCombined(combined int) *QKeyCombination {
-	_ret := C.QKeyCombination_FromCombined((C.int)(combined))
-	_goptr := newQKeyCombination(_ret)
+	_goptr := newQKeyCombination(C.QKeyCombination_FromCombined((C.int)(combined)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -296,11 +296,11 @@ func NewQTreeWidgetItem17(parent *QTreeWidgetItem, after *QTreeWidgetItem, typeV
 }
 
 func (this *QTreeWidgetItem) Clone() *QTreeWidgetItem {
-	return UnsafeNewQTreeWidgetItem(unsafe.Pointer(C.QTreeWidgetItem_Clone(this.h)))
+	return newQTreeWidgetItem(C.QTreeWidgetItem_Clone(this.h))
 }
 
 func (this *QTreeWidgetItem) TreeWidget() *QTreeWidget {
-	return UnsafeNewQTreeWidget(unsafe.Pointer(C.QTreeWidgetItem_TreeWidget(this.h)), nil, nil, nil, nil, nil, nil, nil)
+	return newQTreeWidget(C.QTreeWidgetItem_TreeWidget(this.h), nil, nil, nil, nil, nil, nil, nil)
 }
 
 func (this *QTreeWidgetItem) SetSelected(selectVal bool) {
@@ -375,8 +375,7 @@ func (this *QTreeWidgetItem) SetText(column int, text string) {
 }
 
 func (this *QTreeWidgetItem) Icon(column int) *QIcon {
-	_ret := C.QTreeWidgetItem_Icon(this.h, (C.int)(column))
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QTreeWidgetItem_Icon(this.h, (C.int)(column)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -431,8 +430,7 @@ func (this *QTreeWidgetItem) SetWhatsThis(column int, whatsThis string) {
 }
 
 func (this *QTreeWidgetItem) Font(column int) *QFont {
-	_ret := C.QTreeWidgetItem_Font(this.h, (C.int)(column))
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QTreeWidgetItem_Font(this.h, (C.int)(column)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -450,8 +448,7 @@ func (this *QTreeWidgetItem) SetTextAlignment(column int, alignment int) {
 }
 
 func (this *QTreeWidgetItem) BackgroundColor(column int) *QColor {
-	_ret := C.QTreeWidgetItem_BackgroundColor(this.h, (C.int)(column))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QTreeWidgetItem_BackgroundColor(this.h, (C.int)(column)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -461,8 +458,7 @@ func (this *QTreeWidgetItem) SetBackgroundColor(column int, color *QColor) {
 }
 
 func (this *QTreeWidgetItem) Background(column int) *QBrush {
-	_ret := C.QTreeWidgetItem_Background(this.h, (C.int)(column))
-	_goptr := newQBrush(_ret)
+	_goptr := newQBrush(C.QTreeWidgetItem_Background(this.h, (C.int)(column)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -472,8 +468,7 @@ func (this *QTreeWidgetItem) SetBackground(column int, brush *QBrush) {
 }
 
 func (this *QTreeWidgetItem) TextColor(column int) *QColor {
-	_ret := C.QTreeWidgetItem_TextColor(this.h, (C.int)(column))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QTreeWidgetItem_TextColor(this.h, (C.int)(column)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -483,8 +478,7 @@ func (this *QTreeWidgetItem) SetTextColor(column int, color *QColor) {
 }
 
 func (this *QTreeWidgetItem) Foreground(column int) *QBrush {
-	_ret := C.QTreeWidgetItem_Foreground(this.h, (C.int)(column))
-	_goptr := newQBrush(_ret)
+	_goptr := newQBrush(C.QTreeWidgetItem_Foreground(this.h, (C.int)(column)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -502,8 +496,7 @@ func (this *QTreeWidgetItem) SetCheckState(column int, state CheckState) {
 }
 
 func (this *QTreeWidgetItem) SizeHint(column int) *QSize {
-	_ret := C.QTreeWidgetItem_SizeHint(this.h, (C.int)(column))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QTreeWidgetItem_SizeHint(this.h, (C.int)(column)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -513,8 +506,7 @@ func (this *QTreeWidgetItem) SetSizeHint(column int, size *QSize) {
 }
 
 func (this *QTreeWidgetItem) Data(column int, role int) *QVariant {
-	_ret := C.QTreeWidgetItem_Data(this.h, (C.int)(column), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QTreeWidgetItem_Data(this.h, (C.int)(column), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -540,11 +532,11 @@ func (this *QTreeWidgetItem) OperatorAssign(other *QTreeWidgetItem) {
 }
 
 func (this *QTreeWidgetItem) Parent() *QTreeWidgetItem {
-	return UnsafeNewQTreeWidgetItem(unsafe.Pointer(C.QTreeWidgetItem_Parent(this.h)))
+	return newQTreeWidgetItem(C.QTreeWidgetItem_Parent(this.h))
 }
 
 func (this *QTreeWidgetItem) Child(index int) *QTreeWidgetItem {
-	return UnsafeNewQTreeWidgetItem(unsafe.Pointer(C.QTreeWidgetItem_Child(this.h, (C.int)(index))))
+	return newQTreeWidgetItem(C.QTreeWidgetItem_Child(this.h, (C.int)(index)))
 }
 
 func (this *QTreeWidgetItem) ChildCount() int {
@@ -572,7 +564,7 @@ func (this *QTreeWidgetItem) RemoveChild(child *QTreeWidgetItem) {
 }
 
 func (this *QTreeWidgetItem) TakeChild(index int) *QTreeWidgetItem {
-	return UnsafeNewQTreeWidgetItem(unsafe.Pointer(C.QTreeWidgetItem_TakeChild(this.h, (C.int)(index))))
+	return newQTreeWidgetItem(C.QTreeWidgetItem_TakeChild(this.h, (C.int)(index)))
 }
 
 func (this *QTreeWidgetItem) AddChildren(children []*QTreeWidgetItem) {
@@ -600,7 +592,7 @@ func (this *QTreeWidgetItem) TakeChildren() []*QTreeWidgetItem {
 	_ret := make([]*QTreeWidgetItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTreeWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQTreeWidgetItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQTreeWidgetItem(_outCast[i])
 	}
 	return _ret
 }
@@ -615,7 +607,8 @@ func (this *QTreeWidgetItem) SortChildren(column int, order SortOrder) {
 
 func (this *QTreeWidgetItem) callVirtualBase_Clone() *QTreeWidgetItem {
 
-	return UnsafeNewQTreeWidgetItem(unsafe.Pointer(C.QTreeWidgetItem_virtualbase_Clone(unsafe.Pointer(this.h))))
+	return newQTreeWidgetItem(C.QTreeWidgetItem_virtualbase_Clone(unsafe.Pointer(this.h)))
+
 }
 func (this *QTreeWidgetItem) OnClone(slot func(super func() *QTreeWidgetItem) *QTreeWidgetItem) {
 	if !this.isSubclass {
@@ -639,8 +632,7 @@ func miqt_exec_callback_QTreeWidgetItem_Clone(self *C.QTreeWidgetItem, cb C.intp
 
 func (this *QTreeWidgetItem) callVirtualBase_Data(column int, role int) *QVariant {
 
-	_ret := C.QTreeWidgetItem_virtualbase_Data(unsafe.Pointer(this.h), (C.int)(column), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QTreeWidgetItem_virtualbase_Data(unsafe.Pointer(this.h), (C.int)(column), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -694,7 +686,7 @@ func miqt_exec_callback_QTreeWidgetItem_SetData(self *C.QTreeWidgetItem, cb C.in
 
 	slotval2 := (int)(role)
 
-	slotval3 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval3 := newQVariant(value)
 
 	gofunc((&QTreeWidgetItem{h: self}).callVirtualBase_SetData, slotval1, slotval2, slotval3)
 
@@ -720,7 +712,7 @@ func miqt_exec_callback_QTreeWidgetItem_OperatorLesser(self *C.QTreeWidgetItem, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTreeWidgetItem(unsafe.Pointer(other))
+	slotval1 := newQTreeWidgetItem(other)
 
 	virtualReturn := gofunc((&QTreeWidgetItem{h: self}).callVirtualBase_OperatorLesser, slotval1)
 
@@ -748,7 +740,7 @@ func miqt_exec_callback_QTreeWidgetItem_Read(self *C.QTreeWidgetItem, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDataStream(unsafe.Pointer(in))
+	slotval1 := newQDataStream(in)
 
 	gofunc((&QTreeWidgetItem{h: self}).callVirtualBase_Read, slotval1)
 
@@ -774,7 +766,7 @@ func miqt_exec_callback_QTreeWidgetItem_Write(self *C.QTreeWidgetItem, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDataStream(unsafe.Pointer(out))
+	slotval1 := newQDataStream(out)
 
 	gofunc((&QTreeWidgetItem{h: self}).callVirtualBase_Write, slotval1)
 
@@ -868,7 +860,7 @@ func NewQTreeWidget2() *QTreeWidget {
 }
 
 func (this *QTreeWidget) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTreeWidget_MetaObject(this.h)))
+	return newQMetaObject(C.QTreeWidget_MetaObject(this.h))
 }
 
 func (this *QTreeWidget) Metacast(param1 string) unsafe.Pointer {
@@ -904,11 +896,11 @@ func (this *QTreeWidget) SetColumnCount(columns int) {
 }
 
 func (this *QTreeWidget) InvisibleRootItem() *QTreeWidgetItem {
-	return UnsafeNewQTreeWidgetItem(unsafe.Pointer(C.QTreeWidget_InvisibleRootItem(this.h)))
+	return newQTreeWidgetItem(C.QTreeWidget_InvisibleRootItem(this.h))
 }
 
 func (this *QTreeWidget) TopLevelItem(index int) *QTreeWidgetItem {
-	return UnsafeNewQTreeWidgetItem(unsafe.Pointer(C.QTreeWidget_TopLevelItem(this.h, (C.int)(index))))
+	return newQTreeWidgetItem(C.QTreeWidget_TopLevelItem(this.h, (C.int)(index)))
 }
 
 func (this *QTreeWidget) TopLevelItemCount() int {
@@ -924,7 +916,7 @@ func (this *QTreeWidget) AddTopLevelItem(item *QTreeWidgetItem) {
 }
 
 func (this *QTreeWidget) TakeTopLevelItem(index int) *QTreeWidgetItem {
-	return UnsafeNewQTreeWidgetItem(unsafe.Pointer(C.QTreeWidget_TakeTopLevelItem(this.h, (C.int)(index))))
+	return newQTreeWidgetItem(C.QTreeWidget_TakeTopLevelItem(this.h, (C.int)(index)))
 }
 
 func (this *QTreeWidget) IndexOfTopLevelItem(item *QTreeWidgetItem) int {
@@ -952,7 +944,7 @@ func (this *QTreeWidget) AddTopLevelItems(items []*QTreeWidgetItem) {
 }
 
 func (this *QTreeWidget) HeaderItem() *QTreeWidgetItem {
-	return UnsafeNewQTreeWidgetItem(unsafe.Pointer(C.QTreeWidget_HeaderItem(this.h)))
+	return newQTreeWidgetItem(C.QTreeWidget_HeaderItem(this.h))
 }
 
 func (this *QTreeWidget) SetHeaderItem(item *QTreeWidgetItem) {
@@ -982,7 +974,7 @@ func (this *QTreeWidget) SetHeaderLabel(label string) {
 }
 
 func (this *QTreeWidget) CurrentItem() *QTreeWidgetItem {
-	return UnsafeNewQTreeWidgetItem(unsafe.Pointer(C.QTreeWidget_CurrentItem(this.h)))
+	return newQTreeWidgetItem(C.QTreeWidget_CurrentItem(this.h))
 }
 
 func (this *QTreeWidget) CurrentColumn() int {
@@ -1002,16 +994,15 @@ func (this *QTreeWidget) SetCurrentItem3(item *QTreeWidgetItem, column int, comm
 }
 
 func (this *QTreeWidget) ItemAt(p *QPoint) *QTreeWidgetItem {
-	return UnsafeNewQTreeWidgetItem(unsafe.Pointer(C.QTreeWidget_ItemAt(this.h, p.cPointer())))
+	return newQTreeWidgetItem(C.QTreeWidget_ItemAt(this.h, p.cPointer()))
 }
 
 func (this *QTreeWidget) ItemAt2(x int, y int) *QTreeWidgetItem {
-	return UnsafeNewQTreeWidgetItem(unsafe.Pointer(C.QTreeWidget_ItemAt2(this.h, (C.int)(x), (C.int)(y))))
+	return newQTreeWidgetItem(C.QTreeWidget_ItemAt2(this.h, (C.int)(x), (C.int)(y)))
 }
 
 func (this *QTreeWidget) VisualItemRect(item *QTreeWidgetItem) *QRect {
-	_ret := C.QTreeWidget_VisualItemRect(this.h, item.cPointer())
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QTreeWidget_VisualItemRect(this.h, item.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1041,7 +1032,7 @@ func (this *QTreeWidget) IsPersistentEditorOpen(item *QTreeWidgetItem) bool {
 }
 
 func (this *QTreeWidget) ItemWidget(item *QTreeWidgetItem, column int) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QTreeWidget_ItemWidget(this.h, item.cPointer(), (C.int)(column))), nil, nil)
+	return newQWidget(C.QTreeWidget_ItemWidget(this.h, item.cPointer(), (C.int)(column)), nil, nil)
 }
 
 func (this *QTreeWidget) SetItemWidget(item *QTreeWidgetItem, column int, widget *QWidget) {
@@ -1065,7 +1056,7 @@ func (this *QTreeWidget) SelectedItems() []*QTreeWidgetItem {
 	_ret := make([]*QTreeWidgetItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTreeWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQTreeWidgetItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQTreeWidgetItem(_outCast[i])
 	}
 	return _ret
 }
@@ -1079,7 +1070,7 @@ func (this *QTreeWidget) FindItems(text string, flags MatchFlag) []*QTreeWidgetI
 	_ret := make([]*QTreeWidgetItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTreeWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQTreeWidgetItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQTreeWidgetItem(_outCast[i])
 	}
 	return _ret
 }
@@ -1109,11 +1100,11 @@ func (this *QTreeWidget) SetFirstItemColumnSpanned(item *QTreeWidgetItem, span b
 }
 
 func (this *QTreeWidget) ItemAbove(item *QTreeWidgetItem) *QTreeWidgetItem {
-	return UnsafeNewQTreeWidgetItem(unsafe.Pointer(C.QTreeWidget_ItemAbove(this.h, item.cPointer())))
+	return newQTreeWidgetItem(C.QTreeWidget_ItemAbove(this.h, item.cPointer()))
 }
 
 func (this *QTreeWidget) ItemBelow(item *QTreeWidgetItem) *QTreeWidgetItem {
-	return UnsafeNewQTreeWidgetItem(unsafe.Pointer(C.QTreeWidget_ItemBelow(this.h, item.cPointer())))
+	return newQTreeWidgetItem(C.QTreeWidget_ItemBelow(this.h, item.cPointer()))
 }
 
 func (this *QTreeWidget) SetSelectionModel(selectionModel *QItemSelectionModel) {
@@ -1151,7 +1142,8 @@ func miqt_exec_callback_QTreeWidget_ItemPressed(cb C.intptr_t, item *C.QTreeWidg
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTreeWidgetItem(unsafe.Pointer(item))
+	slotval1 := newQTreeWidgetItem(item)
+
 	slotval2 := (int)(column)
 
 	gofunc(slotval1, slotval2)
@@ -1172,7 +1164,8 @@ func miqt_exec_callback_QTreeWidget_ItemClicked(cb C.intptr_t, item *C.QTreeWidg
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTreeWidgetItem(unsafe.Pointer(item))
+	slotval1 := newQTreeWidgetItem(item)
+
 	slotval2 := (int)(column)
 
 	gofunc(slotval1, slotval2)
@@ -1193,7 +1186,8 @@ func miqt_exec_callback_QTreeWidget_ItemDoubleClicked(cb C.intptr_t, item *C.QTr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTreeWidgetItem(unsafe.Pointer(item))
+	slotval1 := newQTreeWidgetItem(item)
+
 	slotval2 := (int)(column)
 
 	gofunc(slotval1, slotval2)
@@ -1214,7 +1208,8 @@ func miqt_exec_callback_QTreeWidget_ItemActivated(cb C.intptr_t, item *C.QTreeWi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTreeWidgetItem(unsafe.Pointer(item))
+	slotval1 := newQTreeWidgetItem(item)
+
 	slotval2 := (int)(column)
 
 	gofunc(slotval1, slotval2)
@@ -1235,7 +1230,8 @@ func miqt_exec_callback_QTreeWidget_ItemEntered(cb C.intptr_t, item *C.QTreeWidg
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTreeWidgetItem(unsafe.Pointer(item))
+	slotval1 := newQTreeWidgetItem(item)
+
 	slotval2 := (int)(column)
 
 	gofunc(slotval1, slotval2)
@@ -1256,7 +1252,8 @@ func miqt_exec_callback_QTreeWidget_ItemChanged(cb C.intptr_t, item *C.QTreeWidg
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTreeWidgetItem(unsafe.Pointer(item))
+	slotval1 := newQTreeWidgetItem(item)
+
 	slotval2 := (int)(column)
 
 	gofunc(slotval1, slotval2)
@@ -1277,7 +1274,7 @@ func miqt_exec_callback_QTreeWidget_ItemExpanded(cb C.intptr_t, item *C.QTreeWid
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTreeWidgetItem(unsafe.Pointer(item))
+	slotval1 := newQTreeWidgetItem(item)
 
 	gofunc(slotval1)
 }
@@ -1297,7 +1294,7 @@ func miqt_exec_callback_QTreeWidget_ItemCollapsed(cb C.intptr_t, item *C.QTreeWi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTreeWidgetItem(unsafe.Pointer(item))
+	slotval1 := newQTreeWidgetItem(item)
 
 	gofunc(slotval1)
 }
@@ -1317,8 +1314,9 @@ func miqt_exec_callback_QTreeWidget_CurrentItemChanged(cb C.intptr_t, current *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTreeWidgetItem(unsafe.Pointer(current))
-	slotval2 := UnsafeNewQTreeWidgetItem(unsafe.Pointer(previous))
+	slotval1 := newQTreeWidgetItem(current)
+
+	slotval2 := newQTreeWidgetItem(previous)
 
 	gofunc(slotval1, slotval2)
 }
@@ -1409,7 +1407,7 @@ func (this *QTreeWidget) FindItems3(text string, flags MatchFlag, column int) []
 	_ret := make([]*QTreeWidgetItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTreeWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQTreeWidgetItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQTreeWidgetItem(_outCast[i])
 	}
 	return _ret
 }
@@ -1438,7 +1436,7 @@ func miqt_exec_callback_QTreeWidget_SetSelectionModel(self *C.QTreeWidget, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQItemSelectionModel(unsafe.Pointer(selectionModel), nil)
+	slotval1 := newQItemSelectionModel(selectionModel, nil)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_SetSelectionModel, slotval1)
 
@@ -1464,7 +1462,7 @@ func miqt_exec_callback_QTreeWidget_Event(self *C.QTreeWidget, cb C.intptr_t, e 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QTreeWidget{h: self}).callVirtualBase_Event, slotval1)
 
@@ -1524,7 +1522,8 @@ func (this *QTreeWidget) callVirtualBase_MimeData(items []*QTreeWidgetItem) *QMi
 	}
 	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 
-	return UnsafeNewQMimeData(unsafe.Pointer(C.QTreeWidget_virtualbase_MimeData(unsafe.Pointer(this.h), items_ma)), nil)
+	return newQMimeData(C.QTreeWidget_virtualbase_MimeData(unsafe.Pointer(this.h), items_ma), nil)
+
 }
 func (this *QTreeWidget) OnMimeData(slot func(super func(items []*QTreeWidgetItem) *QMimeData, items []*QTreeWidgetItem) *QMimeData) {
 	if !this.isSubclass {
@@ -1545,7 +1544,7 @@ func miqt_exec_callback_QTreeWidget_MimeData(self *C.QTreeWidget, cb C.intptr_t,
 	items_ret := make([]*QTreeWidgetItem, int(items_ma.len))
 	items_outCast := (*[0xffff]*C.QTreeWidgetItem)(unsafe.Pointer(items_ma.data)) // hey ya
 	for i := 0; i < int(items_ma.len); i++ {
-		items_ret[i] = UnsafeNewQTreeWidgetItem(unsafe.Pointer(items_outCast[i]))
+		items_ret[i] = newQTreeWidgetItem(items_outCast[i])
 	}
 	slotval1 := items_ret
 
@@ -1575,10 +1574,12 @@ func miqt_exec_callback_QTreeWidget_DropMimeData(self *C.QTreeWidget, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTreeWidgetItem(unsafe.Pointer(parent))
+	slotval1 := newQTreeWidgetItem(parent)
+
 	slotval2 := (int)(index)
 
-	slotval3 := UnsafeNewQMimeData(unsafe.Pointer(data), nil)
+	slotval3 := newQMimeData(data, nil)
+
 	slotval4 := (DropAction)(action)
 
 	virtualReturn := gofunc((&QTreeWidget{h: self}).callVirtualBase_DropMimeData, slotval1, slotval2, slotval3, slotval4)
@@ -1632,7 +1633,7 @@ func miqt_exec_callback_QTreeWidget_DropEvent(self *C.QTreeWidget, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDropEvent(event, nil)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1658,7 +1659,7 @@ func miqt_exec_callback_QTreeWidget_SetRootIndex(self *C.QTreeWidget, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_SetRootIndex, slotval1)
 
@@ -1699,8 +1700,7 @@ func miqt_exec_callback_QTreeWidget_KeyboardSearch(self *C.QTreeWidget, cb C.int
 
 func (this *QTreeWidget) callVirtualBase_VisualRect(index *QModelIndex) *QRect {
 
-	_ret := C.QTreeWidget_virtualbase_VisualRect(unsafe.Pointer(this.h), index.cPointer())
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QTreeWidget_virtualbase_VisualRect(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1720,7 +1720,7 @@ func miqt_exec_callback_QTreeWidget_VisualRect(self *C.QTreeWidget, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QTreeWidget{h: self}).callVirtualBase_VisualRect, slotval1)
 
@@ -1748,7 +1748,8 @@ func miqt_exec_callback_QTreeWidget_ScrollTo(self *C.QTreeWidget, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
+
 	slotval2 := (QAbstractItemView__ScrollHint)(hint)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_ScrollTo, slotval1, slotval2)
@@ -1757,8 +1758,7 @@ func miqt_exec_callback_QTreeWidget_ScrollTo(self *C.QTreeWidget, cb C.intptr_t,
 
 func (this *QTreeWidget) callVirtualBase_IndexAt(p *QPoint) *QModelIndex {
 
-	_ret := C.QTreeWidget_virtualbase_IndexAt(unsafe.Pointer(this.h), p.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QTreeWidget_virtualbase_IndexAt(unsafe.Pointer(this.h), p.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1778,7 +1778,7 @@ func miqt_exec_callback_QTreeWidget_IndexAt(self *C.QTreeWidget, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(p))
+	slotval1 := newQPoint(p)
 
 	virtualReturn := gofunc((&QTreeWidget{h: self}).callVirtualBase_IndexAt, slotval1)
 
@@ -1858,8 +1858,10 @@ func miqt_exec_callback_QTreeWidget_DataChanged(self *C.QTreeWidget, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(topLeft))
-	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(bottomRight))
+	slotval1 := newQModelIndex(topLeft)
+
+	slotval2 := newQModelIndex(bottomRight)
+
 	var roles_ma C.struct_miqt_array = roles
 	roles_ret := make([]int, int(roles_ma.len))
 	roles_outCast := (*[0xffff]C.int)(unsafe.Pointer(roles_ma.data)) // hey ya
@@ -1969,7 +1971,8 @@ func miqt_exec_callback_QTreeWidget_RowsInserted(self *C.QTreeWidget, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
+
 	slotval2 := (int)(start)
 
 	slotval3 := (int)(end)
@@ -1998,7 +2001,8 @@ func miqt_exec_callback_QTreeWidget_RowsAboutToBeRemoved(self *C.QTreeWidget, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
+
 	slotval2 := (int)(start)
 
 	slotval3 := (int)(end)
@@ -2009,8 +2013,7 @@ func miqt_exec_callback_QTreeWidget_RowsAboutToBeRemoved(self *C.QTreeWidget, cb
 
 func (this *QTreeWidget) callVirtualBase_MoveCursor(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex {
 
-	_ret := C.QTreeWidget_virtualbase_MoveCursor(unsafe.Pointer(this.h), (C.int)(cursorAction), (C.int)(modifiers))
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QTreeWidget_virtualbase_MoveCursor(unsafe.Pointer(this.h), (C.int)(cursorAction), (C.int)(modifiers)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -2110,7 +2113,8 @@ func miqt_exec_callback_QTreeWidget_SetSelection(self *C.QTreeWidget, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRect(unsafe.Pointer(rect))
+	slotval1 := newQRect(rect)
+
 	slotval2 := (QItemSelectionModel__SelectionFlag)(command)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_SetSelection, slotval1, slotval2)
@@ -2119,8 +2123,7 @@ func miqt_exec_callback_QTreeWidget_SetSelection(self *C.QTreeWidget, cb C.intpt
 
 func (this *QTreeWidget) callVirtualBase_VisualRegionForSelection(selection *QItemSelection) *QRegion {
 
-	_ret := C.QTreeWidget_virtualbase_VisualRegionForSelection(unsafe.Pointer(this.h), selection.cPointer())
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QTreeWidget_virtualbase_VisualRegionForSelection(unsafe.Pointer(this.h), selection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -2140,7 +2143,7 @@ func miqt_exec_callback_QTreeWidget_VisualRegionForSelection(self *C.QTreeWidget
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selection))
+	slotval1 := newQItemSelection(selection)
 
 	virtualReturn := gofunc((&QTreeWidget{h: self}).callVirtualBase_VisualRegionForSelection, slotval1)
 
@@ -2154,8 +2157,7 @@ func (this *QTreeWidget) callVirtualBase_SelectedIndexes() []QModelIndex {
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -2208,7 +2210,7 @@ func miqt_exec_callback_QTreeWidget_TimerEvent(self *C.QTreeWidget, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -2234,7 +2236,7 @@ func miqt_exec_callback_QTreeWidget_PaintEvent(self *C.QTreeWidget, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQPaintEvent(event, nil)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -2260,9 +2262,11 @@ func miqt_exec_callback_QTreeWidget_DrawRow(self *C.QTreeWidget, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQStyleOptionViewItem(unsafe.Pointer(options), nil)
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQStyleOptionViewItem(options, nil)
+
+	slotval3 := newQModelIndex(index)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_DrawRow, slotval1, slotval2, slotval3)
 
@@ -2288,9 +2292,11 @@ func miqt_exec_callback_QTreeWidget_DrawBranches(self *C.QTreeWidget, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQRect(unsafe.Pointer(rect))
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQRect(rect)
+
+	slotval3 := newQModelIndex(index)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_DrawBranches, slotval1, slotval2, slotval3)
 
@@ -2316,7 +2322,7 @@ func miqt_exec_callback_QTreeWidget_MousePressEvent(self *C.QTreeWidget, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -2342,7 +2348,7 @@ func miqt_exec_callback_QTreeWidget_MouseReleaseEvent(self *C.QTreeWidget, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -2368,7 +2374,7 @@ func miqt_exec_callback_QTreeWidget_MouseDoubleClickEvent(self *C.QTreeWidget, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -2394,7 +2400,7 @@ func miqt_exec_callback_QTreeWidget_MouseMoveEvent(self *C.QTreeWidget, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -2420,7 +2426,7 @@ func miqt_exec_callback_QTreeWidget_KeyPressEvent(self *C.QTreeWidget, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -2446,7 +2452,7 @@ func miqt_exec_callback_QTreeWidget_DragMoveEvent(self *C.QTreeWidget, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQDragMoveEvent(event, nil, nil)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -2472,7 +2478,7 @@ func miqt_exec_callback_QTreeWidget_ViewportEvent(self *C.QTreeWidget, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QTreeWidget{h: self}).callVirtualBase_ViewportEvent, slotval1)
 
@@ -2505,8 +2511,7 @@ func miqt_exec_callback_QTreeWidget_UpdateGeometries(self *C.QTreeWidget, cb C.i
 
 func (this *QTreeWidget) callVirtualBase_ViewportSizeHint() *QSize {
 
-	_ret := C.QTreeWidget_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QTreeWidget_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -2605,7 +2610,7 @@ func miqt_exec_callback_QTreeWidget_IsIndexHidden(self *C.QTreeWidget, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QTreeWidget{h: self}).callVirtualBase_IsIndexHidden, slotval1)
 
@@ -2633,8 +2638,9 @@ func miqt_exec_callback_QTreeWidget_SelectionChanged(self *C.QTreeWidget, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selected))
-	slotval2 := UnsafeNewQItemSelection(unsafe.Pointer(deselected))
+	slotval1 := newQItemSelection(selected)
+
+	slotval2 := newQItemSelection(deselected)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_SelectionChanged, slotval1, slotval2)
 
@@ -2660,8 +2666,9 @@ func miqt_exec_callback_QTreeWidget_CurrentChanged(self *C.QTreeWidget, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(current))
-	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(previous))
+	slotval1 := newQModelIndex(current)
+
+	slotval2 := newQModelIndex(previous)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_CurrentChanged, slotval1, slotval2)
 

@@ -83,15 +83,15 @@ func (this *QLoggingCategory) CategoryName() string {
 }
 
 func (this *QLoggingCategory) OperatorCall() *QLoggingCategory {
-	return UnsafeNewQLoggingCategory(unsafe.Pointer(C.QLoggingCategory_OperatorCall(this.h)))
+	return newQLoggingCategory(C.QLoggingCategory_OperatorCall(this.h))
 }
 
 func (this *QLoggingCategory) OperatorCall2() *QLoggingCategory {
-	return UnsafeNewQLoggingCategory(unsafe.Pointer(C.QLoggingCategory_OperatorCall2(this.h)))
+	return newQLoggingCategory(C.QLoggingCategory_OperatorCall2(this.h))
 }
 
 func QLoggingCategory_DefaultCategory() *QLoggingCategory {
-	return UnsafeNewQLoggingCategory(unsafe.Pointer(C.QLoggingCategory_DefaultCategory()))
+	return newQLoggingCategory(C.QLoggingCategory_DefaultCategory())
 }
 
 func QLoggingCategory_SetFilterRules(rules string) {

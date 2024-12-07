@@ -259,8 +259,7 @@ func (this *QTimeZone) IsDaylightTime(atDateTime *QDateTime) bool {
 }
 
 func (this *QTimeZone) OffsetData(forDateTime *QDateTime) *QTimeZone__OffsetData {
-	_ret := C.QTimeZone_OffsetData(this.h, forDateTime.cPointer())
-	_goptr := newQTimeZone__OffsetData(_ret)
+	_goptr := newQTimeZone__OffsetData(C.QTimeZone_OffsetData(this.h, forDateTime.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -270,15 +269,13 @@ func (this *QTimeZone) HasTransitions() bool {
 }
 
 func (this *QTimeZone) NextTransition(afterDateTime *QDateTime) *QTimeZone__OffsetData {
-	_ret := C.QTimeZone_NextTransition(this.h, afterDateTime.cPointer())
-	_goptr := newQTimeZone__OffsetData(_ret)
+	_goptr := newQTimeZone__OffsetData(C.QTimeZone_NextTransition(this.h, afterDateTime.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTimeZone) PreviousTransition(beforeDateTime *QDateTime) *QTimeZone__OffsetData {
-	_ret := C.QTimeZone_PreviousTransition(this.h, beforeDateTime.cPointer())
-	_goptr := newQTimeZone__OffsetData(_ret)
+	_goptr := newQTimeZone__OffsetData(C.QTimeZone_PreviousTransition(this.h, beforeDateTime.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -288,8 +285,7 @@ func (this *QTimeZone) Transitions(fromDateTime *QDateTime, toDateTime *QDateTim
 	_ret := make([]QTimeZone__OffsetData, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTimeZone__OffsetData)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQTimeZone__OffsetData(_lv_ret)
+		_lv_goptr := newQTimeZone__OffsetData(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -304,15 +300,13 @@ func QTimeZone_SystemTimeZoneId() []byte {
 }
 
 func QTimeZone_SystemTimeZone() *QTimeZone {
-	_ret := C.QTimeZone_SystemTimeZone()
-	_goptr := newQTimeZone(_ret)
+	_goptr := newQTimeZone(C.QTimeZone_SystemTimeZone())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QTimeZone_Utc() *QTimeZone {
-	_ret := C.QTimeZone_Utc()
-	_goptr := newQTimeZone(_ret)
+	_goptr := newQTimeZone(C.QTimeZone_Utc())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

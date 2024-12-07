@@ -180,8 +180,7 @@ func (this *QVector3D) LengthSquared() float32 {
 }
 
 func (this *QVector3D) Normalized() *QVector3D {
-	_ret := C.QVector3D_Normalized(this.h)
-	_goptr := newQVector3D(_ret)
+	_goptr := newQVector3D(C.QVector3D_Normalized(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -191,27 +190,27 @@ func (this *QVector3D) Normalize() {
 }
 
 func (this *QVector3D) OperatorPlusAssign(vector *QVector3D) *QVector3D {
-	return UnsafeNewQVector3D(unsafe.Pointer(C.QVector3D_OperatorPlusAssign(this.h, vector.cPointer())))
+	return newQVector3D(C.QVector3D_OperatorPlusAssign(this.h, vector.cPointer()))
 }
 
 func (this *QVector3D) OperatorMinusAssign(vector *QVector3D) *QVector3D {
-	return UnsafeNewQVector3D(unsafe.Pointer(C.QVector3D_OperatorMinusAssign(this.h, vector.cPointer())))
+	return newQVector3D(C.QVector3D_OperatorMinusAssign(this.h, vector.cPointer()))
 }
 
 func (this *QVector3D) OperatorMultiplyAssign(factor float32) *QVector3D {
-	return UnsafeNewQVector3D(unsafe.Pointer(C.QVector3D_OperatorMultiplyAssign(this.h, (C.float)(factor))))
+	return newQVector3D(C.QVector3D_OperatorMultiplyAssign(this.h, (C.float)(factor)))
 }
 
 func (this *QVector3D) OperatorMultiplyAssignWithVector(vector *QVector3D) *QVector3D {
-	return UnsafeNewQVector3D(unsafe.Pointer(C.QVector3D_OperatorMultiplyAssignWithVector(this.h, vector.cPointer())))
+	return newQVector3D(C.QVector3D_OperatorMultiplyAssignWithVector(this.h, vector.cPointer()))
 }
 
 func (this *QVector3D) OperatorDivideAssign(divisor float32) *QVector3D {
-	return UnsafeNewQVector3D(unsafe.Pointer(C.QVector3D_OperatorDivideAssign(this.h, (C.float)(divisor))))
+	return newQVector3D(C.QVector3D_OperatorDivideAssign(this.h, (C.float)(divisor)))
 }
 
 func (this *QVector3D) OperatorDivideAssignWithVector(vector *QVector3D) *QVector3D {
-	return UnsafeNewQVector3D(unsafe.Pointer(C.QVector3D_OperatorDivideAssignWithVector(this.h, vector.cPointer())))
+	return newQVector3D(C.QVector3D_OperatorDivideAssignWithVector(this.h, vector.cPointer()))
 }
 
 func QVector3D_DotProduct(v1 *QVector3D, v2 *QVector3D) float32 {
@@ -219,36 +218,31 @@ func QVector3D_DotProduct(v1 *QVector3D, v2 *QVector3D) float32 {
 }
 
 func QVector3D_CrossProduct(v1 *QVector3D, v2 *QVector3D) *QVector3D {
-	_ret := C.QVector3D_CrossProduct(v1.cPointer(), v2.cPointer())
-	_goptr := newQVector3D(_ret)
+	_goptr := newQVector3D(C.QVector3D_CrossProduct(v1.cPointer(), v2.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QVector3D_Normal(v1 *QVector3D, v2 *QVector3D) *QVector3D {
-	_ret := C.QVector3D_Normal(v1.cPointer(), v2.cPointer())
-	_goptr := newQVector3D(_ret)
+	_goptr := newQVector3D(C.QVector3D_Normal(v1.cPointer(), v2.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QVector3D_Normal2(v1 *QVector3D, v2 *QVector3D, v3 *QVector3D) *QVector3D {
-	_ret := C.QVector3D_Normal2(v1.cPointer(), v2.cPointer(), v3.cPointer())
-	_goptr := newQVector3D(_ret)
+	_goptr := newQVector3D(C.QVector3D_Normal2(v1.cPointer(), v2.cPointer(), v3.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVector3D) Project(modelView *QMatrix4x4, projection *QMatrix4x4, viewport *QRect) *QVector3D {
-	_ret := C.QVector3D_Project(this.h, modelView.cPointer(), projection.cPointer(), viewport.cPointer())
-	_goptr := newQVector3D(_ret)
+	_goptr := newQVector3D(C.QVector3D_Project(this.h, modelView.cPointer(), projection.cPointer(), viewport.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVector3D) Unproject(modelView *QMatrix4x4, projection *QMatrix4x4, viewport *QRect) *QVector3D {
-	_ret := C.QVector3D_Unproject(this.h, modelView.cPointer(), projection.cPointer(), viewport.cPointer())
-	_goptr := newQVector3D(_ret)
+	_goptr := newQVector3D(C.QVector3D_Unproject(this.h, modelView.cPointer(), projection.cPointer(), viewport.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -270,29 +264,25 @@ func (this *QVector3D) DistanceToLine(point *QVector3D, direction *QVector3D) fl
 }
 
 func (this *QVector3D) ToVector2D() *QVector2D {
-	_ret := C.QVector3D_ToVector2D(this.h)
-	_goptr := newQVector2D(_ret)
+	_goptr := newQVector2D(C.QVector3D_ToVector2D(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVector3D) ToVector4D() *QVector4D {
-	_ret := C.QVector3D_ToVector4D(this.h)
-	_goptr := newQVector4D(_ret)
+	_goptr := newQVector4D(C.QVector3D_ToVector4D(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVector3D) ToPoint() *QPoint {
-	_ret := C.QVector3D_ToPoint(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QVector3D_ToPoint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVector3D) ToPointF() *QPointF {
-	_ret := C.QVector3D_ToPointF(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QVector3D_ToPointF(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

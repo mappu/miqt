@@ -210,7 +210,7 @@ func NewQDialogButtonBox8(buttons QDialogButtonBox__StandardButton, orientation 
 }
 
 func (this *QDialogButtonBox) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QDialogButtonBox_MetaObject(this.h)))
+	return newQMetaObject(C.QDialogButtonBox_MetaObject(this.h))
 }
 
 func (this *QDialogButtonBox) Metacast(param1 string) unsafe.Pointer {
@@ -245,11 +245,11 @@ func (this *QDialogButtonBox) AddButton2(text string, role QDialogButtonBox__But
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return UnsafeNewQPushButton(unsafe.Pointer(C.QDialogButtonBox_AddButton2(this.h, text_ms, (C.int)(role))), nil, nil, nil, nil)
+	return newQPushButton(C.QDialogButtonBox_AddButton2(this.h, text_ms, (C.int)(role)), nil, nil, nil, nil)
 }
 
 func (this *QDialogButtonBox) AddButtonWithButton(button QDialogButtonBox__StandardButton) *QPushButton {
-	return UnsafeNewQPushButton(unsafe.Pointer(C.QDialogButtonBox_AddButtonWithButton(this.h, (C.int)(button))), nil, nil, nil, nil)
+	return newQPushButton(C.QDialogButtonBox_AddButtonWithButton(this.h, (C.int)(button)), nil, nil, nil, nil)
 }
 
 func (this *QDialogButtonBox) RemoveButton(button *QAbstractButton) {
@@ -265,7 +265,7 @@ func (this *QDialogButtonBox) Buttons() []*QAbstractButton {
 	_ret := make([]*QAbstractButton, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractButton)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQAbstractButton(unsafe.Pointer(_outCast[i]), nil, nil, nil)
+		_ret[i] = newQAbstractButton(_outCast[i], nil, nil, nil)
 	}
 	return _ret
 }
@@ -287,7 +287,7 @@ func (this *QDialogButtonBox) StandardButton(button *QAbstractButton) QDialogBut
 }
 
 func (this *QDialogButtonBox) Button(which QDialogButtonBox__StandardButton) *QPushButton {
-	return UnsafeNewQPushButton(unsafe.Pointer(C.QDialogButtonBox_Button(this.h, (C.int)(which))), nil, nil, nil, nil)
+	return newQPushButton(C.QDialogButtonBox_Button(this.h, (C.int)(which)), nil, nil, nil, nil)
 }
 
 func (this *QDialogButtonBox) SetCenterButtons(center bool) {
@@ -313,7 +313,7 @@ func miqt_exec_callback_QDialogButtonBox_Clicked(cb C.intptr_t, button *C.QAbstr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAbstractButton(unsafe.Pointer(button), nil, nil, nil)
+	slotval1 := newQAbstractButton(button, nil, nil, nil)
 
 	gofunc(slotval1)
 }
@@ -411,7 +411,7 @@ func miqt_exec_callback_QDialogButtonBox_ChangeEvent(self *C.QDialogButtonBox, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -437,7 +437,7 @@ func miqt_exec_callback_QDialogButtonBox_Event(self *C.QDialogButtonBox, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QDialogButtonBox{h: self}).callVirtualBase_Event, slotval1)
 
@@ -498,8 +498,7 @@ func miqt_exec_callback_QDialogButtonBox_SetVisible(self *C.QDialogButtonBox, cb
 
 func (this *QDialogButtonBox) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QDialogButtonBox_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QDialogButtonBox_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -526,8 +525,7 @@ func miqt_exec_callback_QDialogButtonBox_SizeHint(self *C.QDialogButtonBox, cb C
 
 func (this *QDialogButtonBox) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QDialogButtonBox_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QDialogButtonBox_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -607,7 +605,8 @@ func miqt_exec_callback_QDialogButtonBox_HasHeightForWidth(self *C.QDialogButton
 
 func (this *QDialogButtonBox) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QDialogButtonBox_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return newQPaintEngine(C.QDialogButtonBox_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+
 }
 func (this *QDialogButtonBox) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
 	if !this.isSubclass {
@@ -649,7 +648,7 @@ func miqt_exec_callback_QDialogButtonBox_MousePressEvent(self *C.QDialogButtonBo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -675,7 +674,7 @@ func miqt_exec_callback_QDialogButtonBox_MouseReleaseEvent(self *C.QDialogButton
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -701,7 +700,7 @@ func miqt_exec_callback_QDialogButtonBox_MouseDoubleClickEvent(self *C.QDialogBu
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -727,7 +726,7 @@ func miqt_exec_callback_QDialogButtonBox_MouseMoveEvent(self *C.QDialogButtonBox
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -753,7 +752,7 @@ func miqt_exec_callback_QDialogButtonBox_WheelEvent(self *C.QDialogButtonBox, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -779,7 +778,7 @@ func miqt_exec_callback_QDialogButtonBox_KeyPressEvent(self *C.QDialogButtonBox,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -805,7 +804,7 @@ func miqt_exec_callback_QDialogButtonBox_KeyReleaseEvent(self *C.QDialogButtonBo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -831,7 +830,7 @@ func miqt_exec_callback_QDialogButtonBox_FocusInEvent(self *C.QDialogButtonBox, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -857,7 +856,7 @@ func miqt_exec_callback_QDialogButtonBox_FocusOutEvent(self *C.QDialogButtonBox,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -883,7 +882,7 @@ func miqt_exec_callback_QDialogButtonBox_EnterEvent(self *C.QDialogButtonBox, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEnterEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQEnterEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_EnterEvent, slotval1)
 
@@ -909,7 +908,7 @@ func miqt_exec_callback_QDialogButtonBox_LeaveEvent(self *C.QDialogButtonBox, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_LeaveEvent, slotval1)
 
@@ -935,7 +934,7 @@ func miqt_exec_callback_QDialogButtonBox_PaintEvent(self *C.QDialogButtonBox, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQPaintEvent(event, nil)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -961,7 +960,7 @@ func miqt_exec_callback_QDialogButtonBox_MoveEvent(self *C.QDialogButtonBox, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMoveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQMoveEvent(event, nil)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -987,7 +986,7 @@ func miqt_exec_callback_QDialogButtonBox_ResizeEvent(self *C.QDialogButtonBox, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQResizeEvent(event, nil)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -1013,7 +1012,7 @@ func miqt_exec_callback_QDialogButtonBox_CloseEvent(self *C.QDialogButtonBox, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQCloseEvent(event, nil)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -1039,7 +1038,7 @@ func miqt_exec_callback_QDialogButtonBox_ContextMenuEvent(self *C.QDialogButtonB
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQContextMenuEvent(event, nil, nil)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -1065,7 +1064,7 @@ func miqt_exec_callback_QDialogButtonBox_TabletEvent(self *C.QDialogButtonBox, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTabletEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQTabletEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -1091,7 +1090,7 @@ func miqt_exec_callback_QDialogButtonBox_ActionEvent(self *C.QDialogButtonBox, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQActionEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQActionEvent(event, nil)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -1117,7 +1116,7 @@ func miqt_exec_callback_QDialogButtonBox_DragEnterEvent(self *C.QDialogButtonBox
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragEnterEvent(unsafe.Pointer(event), nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event, nil, nil, nil)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -1143,7 +1142,7 @@ func miqt_exec_callback_QDialogButtonBox_DragMoveEvent(self *C.QDialogButtonBox,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQDragMoveEvent(event, nil, nil)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1169,7 +1168,7 @@ func miqt_exec_callback_QDialogButtonBox_DragLeaveEvent(self *C.QDialogButtonBox
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragLeaveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDragLeaveEvent(event, nil)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1195,7 +1194,7 @@ func miqt_exec_callback_QDialogButtonBox_DropEvent(self *C.QDialogButtonBox, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDropEvent(event, nil)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1221,7 +1220,7 @@ func miqt_exec_callback_QDialogButtonBox_ShowEvent(self *C.QDialogButtonBox, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQShowEvent(event, nil)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1247,7 +1246,7 @@ func miqt_exec_callback_QDialogButtonBox_HideEvent(self *C.QDialogButtonBox, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHideEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQHideEvent(event, nil)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -1338,7 +1337,7 @@ func miqt_exec_callback_QDialogButtonBox_InitPainter(self *C.QDialogButtonBox, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval1 := newQPainter(painter)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_InitPainter, slotval1)
 
@@ -1346,7 +1345,8 @@ func miqt_exec_callback_QDialogButtonBox_InitPainter(self *C.QDialogButtonBox, c
 
 func (this *QDialogButtonBox) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QDialogButtonBox_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer())))
+	return newQPaintDevice(C.QDialogButtonBox_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+
 }
 func (this *QDialogButtonBox) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
 	if !this.isSubclass {
@@ -1363,7 +1363,7 @@ func miqt_exec_callback_QDialogButtonBox_Redirected(self *C.QDialogButtonBox, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(offset))
+	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QDialogButtonBox{h: self}).callVirtualBase_Redirected, slotval1)
 
@@ -1373,7 +1373,8 @@ func miqt_exec_callback_QDialogButtonBox_Redirected(self *C.QDialogButtonBox, cb
 
 func (this *QDialogButtonBox) callVirtualBase_SharedPainter() *QPainter {
 
-	return UnsafeNewQPainter(unsafe.Pointer(C.QDialogButtonBox_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+	return newQPainter(C.QDialogButtonBox_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+
 }
 func (this *QDialogButtonBox) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
 	if !this.isSubclass {
@@ -1415,7 +1416,7 @@ func miqt_exec_callback_QDialogButtonBox_InputMethodEvent(self *C.QDialogButtonB
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQInputMethodEvent(param1, nil)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -1423,8 +1424,7 @@ func miqt_exec_callback_QDialogButtonBox_InputMethodEvent(self *C.QDialogButtonB
 
 func (this *QDialogButtonBox) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_ret := C.QDialogButtonBox_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QDialogButtonBox_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

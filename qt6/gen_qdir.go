@@ -453,8 +453,7 @@ func (this *QDir) EntryInfoList() []QFileInfo {
 	_ret := make([]QFileInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QFileInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQFileInfo(_lv_ret)
+		_lv_goptr := newQFileInfo(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -476,8 +475,7 @@ func (this *QDir) EntryInfoListWithNameFilters(nameFilters []string) []QFileInfo
 	_ret := make([]QFileInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QFileInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQFileInfo(_lv_ret)
+		_lv_goptr := newQFileInfo(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -609,8 +607,7 @@ func QDir_Drives() []QFileInfo {
 	_ret := make([]QFileInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QFileInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQFileInfo(_lv_ret)
+		_lv_goptr := newQFileInfo(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -618,15 +615,13 @@ func QDir_Drives() []QFileInfo {
 }
 
 func QDir_ListSeparator() *QChar {
-	_ret := C.QDir_ListSeparator()
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QDir_ListSeparator())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QDir_Separator() *QChar {
-	_ret := C.QDir_Separator()
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QDir_Separator())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -640,8 +635,7 @@ func QDir_SetCurrent(path string) bool {
 }
 
 func QDir_Current() *QDir {
-	_ret := C.QDir_Current()
-	_goptr := newQDir(_ret)
+	_goptr := newQDir(C.QDir_Current())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -654,8 +648,7 @@ func QDir_CurrentPath() string {
 }
 
 func QDir_Home() *QDir {
-	_ret := C.QDir_Home()
-	_goptr := newQDir(_ret)
+	_goptr := newQDir(C.QDir_Home())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -668,8 +661,7 @@ func QDir_HomePath() string {
 }
 
 func QDir_Root() *QDir {
-	_ret := C.QDir_Root()
-	_goptr := newQDir(_ret)
+	_goptr := newQDir(C.QDir_Root())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -682,8 +674,7 @@ func QDir_RootPath() string {
 }
 
 func QDir_Temp() *QDir {
-	_ret := C.QDir_Temp()
-	_goptr := newQDir(_ret)
+	_goptr := newQDir(C.QDir_Temp())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -821,8 +812,7 @@ func (this *QDir) EntryInfoList1(filters QDir__Filter) []QFileInfo {
 	_ret := make([]QFileInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QFileInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQFileInfo(_lv_ret)
+		_lv_goptr := newQFileInfo(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -834,8 +824,7 @@ func (this *QDir) EntryInfoList2(filters QDir__Filter, sort QDir__SortFlag) []QF
 	_ret := make([]QFileInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QFileInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQFileInfo(_lv_ret)
+		_lv_goptr := newQFileInfo(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -857,8 +846,7 @@ func (this *QDir) EntryInfoList22(nameFilters []string, filters QDir__Filter) []
 	_ret := make([]QFileInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QFileInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQFileInfo(_lv_ret)
+		_lv_goptr := newQFileInfo(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -880,8 +868,7 @@ func (this *QDir) EntryInfoList3(nameFilters []string, filters QDir__Filter, sor
 	_ret := make([]QFileInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QFileInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQFileInfo(_lv_ret)
+		_lv_goptr := newQFileInfo(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}

@@ -83,7 +83,7 @@ func NewQDataWidgetMapper2(parent *QObject) *QDataWidgetMapper {
 }
 
 func (this *QDataWidgetMapper) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QDataWidgetMapper_MetaObject(this.h)))
+	return newQMetaObject(C.QDataWidgetMapper_MetaObject(this.h))
 }
 
 func (this *QDataWidgetMapper) Metacast(param1 string) unsafe.Pointer {
@@ -115,7 +115,7 @@ func (this *QDataWidgetMapper) SetModel(model *QAbstractItemModel) {
 }
 
 func (this *QDataWidgetMapper) Model() *QAbstractItemModel {
-	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QDataWidgetMapper_Model(this.h)), nil)
+	return newQAbstractItemModel(C.QDataWidgetMapper_Model(this.h), nil)
 }
 
 func (this *QDataWidgetMapper) SetItemDelegate(delegate *QAbstractItemDelegate) {
@@ -123,7 +123,7 @@ func (this *QDataWidgetMapper) SetItemDelegate(delegate *QAbstractItemDelegate) 
 }
 
 func (this *QDataWidgetMapper) ItemDelegate() *QAbstractItemDelegate {
-	return UnsafeNewQAbstractItemDelegate(unsafe.Pointer(C.QDataWidgetMapper_ItemDelegate(this.h)), nil)
+	return newQAbstractItemDelegate(C.QDataWidgetMapper_ItemDelegate(this.h), nil)
 }
 
 func (this *QDataWidgetMapper) SetRootIndex(index *QModelIndex) {
@@ -131,8 +131,7 @@ func (this *QDataWidgetMapper) SetRootIndex(index *QModelIndex) {
 }
 
 func (this *QDataWidgetMapper) RootIndex() *QModelIndex {
-	_ret := C.QDataWidgetMapper_RootIndex(this.h)
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QDataWidgetMapper_RootIndex(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -180,7 +179,7 @@ func (this *QDataWidgetMapper) MappedPropertyName(widget *QWidget) []byte {
 }
 
 func (this *QDataWidgetMapper) MappedWidgetAt(section int) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QDataWidgetMapper_MappedWidgetAt(this.h, (C.int)(section))), nil, nil)
+	return newQWidget(C.QDataWidgetMapper_MappedWidgetAt(this.h, (C.int)(section)), nil, nil)
 }
 
 func (this *QDataWidgetMapper) ClearMapping() {
@@ -333,7 +332,7 @@ func miqt_exec_callback_QDataWidgetMapper_Event(self *C.QDataWidgetMapper, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QDataWidgetMapper{h: self}).callVirtualBase_Event, slotval1)
 
@@ -361,8 +360,9 @@ func miqt_exec_callback_QDataWidgetMapper_EventFilter(self *C.QDataWidgetMapper,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QDataWidgetMapper{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -390,7 +390,7 @@ func miqt_exec_callback_QDataWidgetMapper_TimerEvent(self *C.QDataWidgetMapper, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QDataWidgetMapper{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -416,7 +416,7 @@ func miqt_exec_callback_QDataWidgetMapper_ChildEvent(self *C.QDataWidgetMapper, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QDataWidgetMapper{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -442,7 +442,7 @@ func miqt_exec_callback_QDataWidgetMapper_CustomEvent(self *C.QDataWidgetMapper,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QDataWidgetMapper{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -468,7 +468,7 @@ func miqt_exec_callback_QDataWidgetMapper_ConnectNotify(self *C.QDataWidgetMappe
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QDataWidgetMapper{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -494,7 +494,7 @@ func miqt_exec_callback_QDataWidgetMapper_DisconnectNotify(self *C.QDataWidgetMa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QDataWidgetMapper{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

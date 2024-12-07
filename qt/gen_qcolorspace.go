@@ -184,8 +184,7 @@ func (this *QColorSpace) SetTransferFunction(transferFunction QColorSpace__Trans
 }
 
 func (this *QColorSpace) WithTransferFunction(transferFunction QColorSpace__TransferFunction) *QColorSpace {
-	_ret := C.QColorSpace_WithTransferFunction(this.h, (C.int)(transferFunction))
-	_goptr := newQColorSpace(_ret)
+	_goptr := newQColorSpace(C.QColorSpace_WithTransferFunction(this.h, (C.int)(transferFunction)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -206,8 +205,7 @@ func QColorSpace_FromIccProfile(iccProfile []byte) *QColorSpace {
 	iccProfile_alias := C.struct_miqt_string{}
 	iccProfile_alias.data = (*C.char)(unsafe.Pointer(&iccProfile[0]))
 	iccProfile_alias.len = C.size_t(len(iccProfile))
-	_ret := C.QColorSpace_FromIccProfile(iccProfile_alias)
-	_goptr := newQColorSpace(_ret)
+	_goptr := newQColorSpace(C.QColorSpace_FromIccProfile(iccProfile_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -220,8 +218,7 @@ func (this *QColorSpace) IccProfile() []byte {
 }
 
 func (this *QColorSpace) TransformationToColorSpace(colorspace *QColorSpace) *QColorTransform {
-	_ret := C.QColorSpace_TransformationToColorSpace(this.h, colorspace.cPointer())
-	_goptr := newQColorTransform(_ret)
+	_goptr := newQColorTransform(C.QColorSpace_TransformationToColorSpace(this.h, colorspace.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -231,8 +228,7 @@ func (this *QColorSpace) SetTransferFunction2(transferFunction QColorSpace__Tran
 }
 
 func (this *QColorSpace) WithTransferFunction2(transferFunction QColorSpace__TransferFunction, gamma float32) *QColorSpace {
-	_ret := C.QColorSpace_WithTransferFunction2(this.h, (C.int)(transferFunction), (C.float)(gamma))
-	_goptr := newQColorSpace(_ret)
+	_goptr := newQColorSpace(C.QColorSpace_WithTransferFunction2(this.h, (C.int)(transferFunction), (C.float)(gamma)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

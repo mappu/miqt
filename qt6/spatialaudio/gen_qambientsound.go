@@ -96,8 +96,7 @@ func (this *QAmbientSound) SetSource(url *qt6.QUrl) {
 }
 
 func (this *QAmbientSound) Source() *qt6.QUrl {
-	_ret := C.QAmbientSound_Source(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QAmbientSound_Source(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -127,7 +126,7 @@ func (this *QAmbientSound) Volume() float32 {
 }
 
 func (this *QAmbientSound) Engine() *QAudioEngine {
-	return UnsafeNewQAudioEngine(unsafe.Pointer(C.QAmbientSound_Engine(this.h)), nil)
+	return newQAudioEngine(C.QAmbientSound_Engine(this.h), nil)
 }
 
 func (this *QAmbientSound) SourceChanged() {
@@ -281,6 +280,7 @@ func miqt_exec_callback_QAmbientSound_EventFilter(self *C.QAmbientSound, cb C.in
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QAmbientSound{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

@@ -131,7 +131,7 @@ func NewQPainter2(param1 *QPaintDevice) *QPainter {
 }
 
 func (this *QPainter) Device() *QPaintDevice {
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QPainter_Device(this.h)))
+	return newQPaintDevice(C.QPainter_Device(this.h))
 }
 
 func (this *QPainter) Begin(param1 *QPaintDevice) bool {
@@ -159,7 +159,7 @@ func (this *QPainter) CompositionMode() QPainter__CompositionMode {
 }
 
 func (this *QPainter) Font() *QFont {
-	return UnsafeNewQFont(unsafe.Pointer(C.QPainter_Font(this.h)))
+	return newQFont(C.QPainter_Font(this.h))
 }
 
 func (this *QPainter) SetFont(f *QFont) {
@@ -167,15 +167,13 @@ func (this *QPainter) SetFont(f *QFont) {
 }
 
 func (this *QPainter) FontMetrics() *QFontMetrics {
-	_ret := C.QPainter_FontMetrics(this.h)
-	_goptr := newQFontMetrics(_ret)
+	_goptr := newQFontMetrics(C.QPainter_FontMetrics(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPainter) FontInfo() *QFontInfo {
-	_ret := C.QPainter_FontInfo(this.h)
-	_goptr := newQFontInfo(_ret)
+	_goptr := newQFontInfo(C.QPainter_FontInfo(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -193,7 +191,7 @@ func (this *QPainter) SetPenWithStyle(style PenStyle) {
 }
 
 func (this *QPainter) Pen() *QPen {
-	return UnsafeNewQPen(unsafe.Pointer(C.QPainter_Pen(this.h)))
+	return newQPen(C.QPainter_Pen(this.h))
 }
 
 func (this *QPainter) SetBrush(brush *QBrush) {
@@ -205,7 +203,7 @@ func (this *QPainter) SetBrushWithStyle(style BrushStyle) {
 }
 
 func (this *QPainter) Brush() *QBrush {
-	return UnsafeNewQBrush(unsafe.Pointer(C.QPainter_Brush(this.h)))
+	return newQBrush(C.QPainter_Brush(this.h))
 }
 
 func (this *QPainter) SetBackgroundMode(mode BGMode) {
@@ -217,8 +215,7 @@ func (this *QPainter) BackgroundMode() BGMode {
 }
 
 func (this *QPainter) BrushOrigin() *QPoint {
-	_ret := C.QPainter_BrushOrigin(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QPainter_BrushOrigin(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -240,7 +237,7 @@ func (this *QPainter) SetBackground(bg *QBrush) {
 }
 
 func (this *QPainter) Background() *QBrush {
-	return UnsafeNewQBrush(unsafe.Pointer(C.QPainter_Background(this.h)))
+	return newQBrush(C.QPainter_Background(this.h))
 }
 
 func (this *QPainter) Opacity() float64 {
@@ -252,15 +249,13 @@ func (this *QPainter) SetOpacity(opacity float64) {
 }
 
 func (this *QPainter) ClipRegion() *QRegion {
-	_ret := C.QPainter_ClipRegion(this.h)
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QPainter_ClipRegion(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPainter) ClipPath() *QPainterPath {
-	_ret := C.QPainter_ClipPath(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QPainter_ClipPath(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -294,8 +289,7 @@ func (this *QPainter) HasClipping() bool {
 }
 
 func (this *QPainter) ClipBoundingRect() *QRectF {
-	_ret := C.QPainter_ClipBoundingRect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QPainter_ClipBoundingRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -313,11 +307,11 @@ func (this *QPainter) SetMatrix(matrix *QMatrix) {
 }
 
 func (this *QPainter) Matrix() *QMatrix {
-	return UnsafeNewQMatrix(unsafe.Pointer(C.QPainter_Matrix(this.h)))
+	return newQMatrix(C.QPainter_Matrix(this.h))
 }
 
 func (this *QPainter) DeviceMatrix() *QMatrix {
-	return UnsafeNewQMatrix(unsafe.Pointer(C.QPainter_DeviceMatrix(this.h)))
+	return newQMatrix(C.QPainter_DeviceMatrix(this.h))
 }
 
 func (this *QPainter) ResetMatrix() {
@@ -329,11 +323,11 @@ func (this *QPainter) SetTransform(transform *QTransform) {
 }
 
 func (this *QPainter) Transform() *QTransform {
-	return UnsafeNewQTransform(unsafe.Pointer(C.QPainter_Transform(this.h)))
+	return newQTransform(C.QPainter_Transform(this.h))
 }
 
 func (this *QPainter) DeviceTransform() *QTransform {
-	return UnsafeNewQTransform(unsafe.Pointer(C.QPainter_DeviceTransform(this.h)))
+	return newQTransform(C.QPainter_DeviceTransform(this.h))
 }
 
 func (this *QPainter) ResetTransform() {
@@ -345,12 +339,11 @@ func (this *QPainter) SetWorldMatrix(matrix *QMatrix) {
 }
 
 func (this *QPainter) WorldMatrix() *QMatrix {
-	return UnsafeNewQMatrix(unsafe.Pointer(C.QPainter_WorldMatrix(this.h)))
+	return newQMatrix(C.QPainter_WorldMatrix(this.h))
 }
 
 func (this *QPainter) CombinedMatrix() *QMatrix {
-	_ret := C.QPainter_CombinedMatrix(this.h)
-	_goptr := newQMatrix(_ret)
+	_goptr := newQMatrix(C.QPainter_CombinedMatrix(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -368,12 +361,11 @@ func (this *QPainter) SetWorldTransform(matrix *QTransform) {
 }
 
 func (this *QPainter) WorldTransform() *QTransform {
-	return UnsafeNewQTransform(unsafe.Pointer(C.QPainter_WorldTransform(this.h)))
+	return newQTransform(C.QPainter_WorldTransform(this.h))
 }
 
 func (this *QPainter) CombinedTransform() *QTransform {
-	_ret := C.QPainter_CombinedTransform(this.h)
-	_goptr := newQTransform(_ret)
+	_goptr := newQTransform(C.QPainter_CombinedTransform(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -411,8 +403,7 @@ func (this *QPainter) Translate2(dx float64, dy float64) {
 }
 
 func (this *QPainter) Window() *QRect {
-	_ret := C.QPainter_Window(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QPainter_Window(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -426,8 +417,7 @@ func (this *QPainter) SetWindow2(x int, y int, w int, h int) {
 }
 
 func (this *QPainter) Viewport() *QRect {
-	_ret := C.QPainter_Viewport(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QPainter_Viewport(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -901,8 +891,7 @@ func (this *QPainter) BoundingRect(rect *QRectF, flags int, text string) *QRectF
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	_ret := C.QPainter_BoundingRect(this.h, rect.cPointer(), (C.int)(flags), text_ms)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QPainter_BoundingRect(this.h, rect.cPointer(), (C.int)(flags), text_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -912,8 +901,7 @@ func (this *QPainter) BoundingRect2(rect *QRect, flags int, text string) *QRect 
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	_ret := C.QPainter_BoundingRect2(this.h, rect.cPointer(), (C.int)(flags), text_ms)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QPainter_BoundingRect2(this.h, rect.cPointer(), (C.int)(flags), text_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -923,8 +911,7 @@ func (this *QPainter) BoundingRect3(x int, y int, w int, h int, flags int, text 
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	_ret := C.QPainter_BoundingRect3(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_ms)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QPainter_BoundingRect3(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -934,8 +921,7 @@ func (this *QPainter) BoundingRect4(rect *QRectF, text string) *QRectF {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	_ret := C.QPainter_BoundingRect4(this.h, rect.cPointer(), text_ms)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QPainter_BoundingRect4(this.h, rect.cPointer(), text_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1041,7 +1027,7 @@ func (this *QPainter) TestRenderHint(hint QPainter__RenderHint) bool {
 }
 
 func (this *QPainter) PaintEngine() *QPaintEngine {
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QPainter_PaintEngine(this.h)))
+	return newQPaintEngine(C.QPainter_PaintEngine(this.h))
 }
 
 func QPainter_SetRedirected(device *QPaintDevice, replacement *QPaintDevice) {
@@ -1049,7 +1035,7 @@ func QPainter_SetRedirected(device *QPaintDevice, replacement *QPaintDevice) {
 }
 
 func QPainter_Redirected(device *QPaintDevice) *QPaintDevice {
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QPainter_Redirected(device.cPointer())))
+	return newQPaintDevice(C.QPainter_Redirected(device.cPointer()))
 }
 
 func QPainter_RestoreRedirected(device *QPaintDevice) {
@@ -1237,8 +1223,7 @@ func (this *QPainter) BoundingRect32(rect *QRectF, text string, o *QTextOption) 
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	_ret := C.QPainter_BoundingRect32(this.h, rect.cPointer(), text_ms, o.cPointer())
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QPainter_BoundingRect32(this.h, rect.cPointer(), text_ms, o.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1256,7 +1241,7 @@ func QPainter_SetRedirected3(device *QPaintDevice, replacement *QPaintDevice, of
 }
 
 func QPainter_Redirected2(device *QPaintDevice, offset *QPoint) *QPaintDevice {
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QPainter_Redirected2(device.cPointer(), offset.cPointer())))
+	return newQPaintDevice(C.QPainter_Redirected2(device.cPointer(), offset.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -1310,36 +1295,31 @@ func UnsafeNewQPainter__PixmapFragment(h unsafe.Pointer) *QPainter__PixmapFragme
 }
 
 func QPainter__PixmapFragment_Create(pos *QPointF, sourceRect *QRectF) *QPainter__PixmapFragment {
-	_ret := C.QPainter__PixmapFragment_Create(pos.cPointer(), sourceRect.cPointer())
-	_goptr := newQPainter__PixmapFragment(_ret)
+	_goptr := newQPainter__PixmapFragment(C.QPainter__PixmapFragment_Create(pos.cPointer(), sourceRect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QPainter__PixmapFragment_Create3(pos *QPointF, sourceRect *QRectF, scaleX float64) *QPainter__PixmapFragment {
-	_ret := C.QPainter__PixmapFragment_Create3(pos.cPointer(), sourceRect.cPointer(), (C.double)(scaleX))
-	_goptr := newQPainter__PixmapFragment(_ret)
+	_goptr := newQPainter__PixmapFragment(C.QPainter__PixmapFragment_Create3(pos.cPointer(), sourceRect.cPointer(), (C.double)(scaleX)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QPainter__PixmapFragment_Create4(pos *QPointF, sourceRect *QRectF, scaleX float64, scaleY float64) *QPainter__PixmapFragment {
-	_ret := C.QPainter__PixmapFragment_Create4(pos.cPointer(), sourceRect.cPointer(), (C.double)(scaleX), (C.double)(scaleY))
-	_goptr := newQPainter__PixmapFragment(_ret)
+	_goptr := newQPainter__PixmapFragment(C.QPainter__PixmapFragment_Create4(pos.cPointer(), sourceRect.cPointer(), (C.double)(scaleX), (C.double)(scaleY)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QPainter__PixmapFragment_Create5(pos *QPointF, sourceRect *QRectF, scaleX float64, scaleY float64, rotation float64) *QPainter__PixmapFragment {
-	_ret := C.QPainter__PixmapFragment_Create5(pos.cPointer(), sourceRect.cPointer(), (C.double)(scaleX), (C.double)(scaleY), (C.double)(rotation))
-	_goptr := newQPainter__PixmapFragment(_ret)
+	_goptr := newQPainter__PixmapFragment(C.QPainter__PixmapFragment_Create5(pos.cPointer(), sourceRect.cPointer(), (C.double)(scaleX), (C.double)(scaleY), (C.double)(rotation)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QPainter__PixmapFragment_Create6(pos *QPointF, sourceRect *QRectF, scaleX float64, scaleY float64, rotation float64, opacity float64) *QPainter__PixmapFragment {
-	_ret := C.QPainter__PixmapFragment_Create6(pos.cPointer(), sourceRect.cPointer(), (C.double)(scaleX), (C.double)(scaleY), (C.double)(rotation), (C.double)(opacity))
-	_goptr := newQPainter__PixmapFragment(_ret)
+	_goptr := newQPainter__PixmapFragment(C.QPainter__PixmapFragment_Create6(pos.cPointer(), sourceRect.cPointer(), (C.double)(scaleX), (C.double)(scaleY), (C.double)(rotation), (C.double)(opacity)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -50,8 +50,7 @@ func UnsafeNewQScriptClassPropertyIterator(h unsafe.Pointer) *QScriptClassProper
 }
 
 func (this *QScriptClassPropertyIterator) Object() *QScriptValue {
-	_ret := C.QScriptClassPropertyIterator_Object(this.h)
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptClassPropertyIterator_Object(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -81,8 +80,7 @@ func (this *QScriptClassPropertyIterator) ToBack() {
 }
 
 func (this *QScriptClassPropertyIterator) Name() *QScriptString {
-	_ret := C.QScriptClassPropertyIterator_Name(this.h)
-	_goptr := newQScriptString(_ret)
+	_goptr := newQScriptString(C.QScriptClassPropertyIterator_Name(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

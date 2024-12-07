@@ -113,12 +113,11 @@ func (this *QWebInspector) SetPage(page *QWebPage) {
 }
 
 func (this *QWebInspector) Page() *QWebPage {
-	return UnsafeNewQWebPage(unsafe.Pointer(C.QWebInspector_Page(this.h)), nil)
+	return newQWebPage(C.QWebInspector_Page(this.h), nil)
 }
 
 func (this *QWebInspector) SizeHint() *qt.QSize {
-	_ret := C.QWebInspector_SizeHint(this.h)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebInspector_SizeHint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -173,8 +172,7 @@ func QWebInspector_TrUtf83(s string, c string, n int) string {
 
 func (this *QWebInspector) callVirtualBase_SizeHint() *qt.QSize {
 
-	_ret := C.QWebInspector_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebInspector_virtualbase_SizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -384,8 +382,7 @@ func miqt_exec_callback_QWebInspector_SetVisible(self *C.QWebInspector, cb C.int
 
 func (this *QWebInspector) callVirtualBase_MinimumSizeHint() *qt.QSize {
 
-	_ret := C.QWebInspector_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebInspector_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -466,6 +463,7 @@ func miqt_exec_callback_QWebInspector_HasHeightForWidth(self *C.QWebInspector, c
 func (this *QWebInspector) callVirtualBase_PaintEngine() *qt.QPaintEngine {
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QWebInspector_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+
 }
 func (this *QWebInspector) OnPaintEngine(slot func(super func() *qt.QPaintEngine) *qt.QPaintEngine) {
 	if !this.isSubclass {
@@ -1127,6 +1125,7 @@ func miqt_exec_callback_QWebInspector_InitPainter(self *C.QWebInspector, cb C.in
 func (this *QWebInspector) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QWebInspector_virtualbase_Redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
+
 }
 func (this *QWebInspector) OnRedirected(slot func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice) {
 	if !this.isSubclass {
@@ -1154,6 +1153,7 @@ func miqt_exec_callback_QWebInspector_Redirected(self *C.QWebInspector, cb C.int
 func (this *QWebInspector) callVirtualBase_SharedPainter() *qt.QPainter {
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QWebInspector_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+
 }
 func (this *QWebInspector) OnSharedPainter(slot func(super func() *qt.QPainter) *qt.QPainter) {
 	if !this.isSubclass {
@@ -1203,8 +1203,7 @@ func miqt_exec_callback_QWebInspector_InputMethodEvent(self *C.QWebInspector, cb
 
 func (this *QWebInspector) callVirtualBase_InputMethodQuery(param1 qt.InputMethodQuery) *qt.QVariant {
 
-	_ret := C.QWebInspector_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QWebInspector_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

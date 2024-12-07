@@ -91,7 +91,7 @@ func NewQBoxLayout2(param1 QBoxLayout__Direction, parent *QWidget) *QBoxLayout {
 }
 
 func (this *QBoxLayout) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QBoxLayout_MetaObject(this.h)))
+	return newQMetaObject(C.QBoxLayout_MetaObject(this.h))
 }
 
 func (this *QBoxLayout) Metacast(param1 string) unsafe.Pointer {
@@ -194,22 +194,19 @@ func (this *QBoxLayout) Stretch(index int) int {
 }
 
 func (this *QBoxLayout) SizeHint() *QSize {
-	_ret := C.QBoxLayout_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QBoxLayout_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBoxLayout) MinimumSize() *QSize {
-	_ret := C.QBoxLayout_MinimumSize(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QBoxLayout_MinimumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBoxLayout) MaximumSize() *QSize {
-	_ret := C.QBoxLayout_MaximumSize(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QBoxLayout_MaximumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -235,11 +232,11 @@ func (this *QBoxLayout) Invalidate() {
 }
 
 func (this *QBoxLayout) ItemAt(param1 int) *QLayoutItem {
-	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QBoxLayout_ItemAt(this.h, (C.int)(param1))))
+	return newQLayoutItem(C.QBoxLayout_ItemAt(this.h, (C.int)(param1)))
 }
 
 func (this *QBoxLayout) TakeAt(param1 int) *QLayoutItem {
-	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QBoxLayout_TakeAt(this.h, (C.int)(param1))))
+	return newQLayoutItem(C.QBoxLayout_TakeAt(this.h, (C.int)(param1)))
 }
 
 func (this *QBoxLayout) Count() int {
@@ -324,7 +321,7 @@ func miqt_exec_callback_QBoxLayout_AddItem(self *C.QBoxLayout, cb C.intptr_t, pa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQLayoutItem(unsafe.Pointer(param1))
+	slotval1 := newQLayoutItem(param1)
 
 	gofunc((&QBoxLayout{h: self}).callVirtualBase_AddItem, slotval1)
 
@@ -383,8 +380,7 @@ func miqt_exec_callback_QBoxLayout_SetSpacing(self *C.QBoxLayout, cb C.intptr_t,
 
 func (this *QBoxLayout) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QBoxLayout_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QBoxLayout_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -411,8 +407,7 @@ func miqt_exec_callback_QBoxLayout_SizeHint(self *C.QBoxLayout, cb C.intptr_t) *
 
 func (this *QBoxLayout) callVirtualBase_MinimumSize() *QSize {
 
-	_ret := C.QBoxLayout_virtualbase_MinimumSize(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QBoxLayout_virtualbase_MinimumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -439,8 +434,7 @@ func miqt_exec_callback_QBoxLayout_MinimumSize(self *C.QBoxLayout, cb C.intptr_t
 
 func (this *QBoxLayout) callVirtualBase_MaximumSize() *QSize {
 
-	_ret := C.QBoxLayout_virtualbase_MaximumSize(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QBoxLayout_virtualbase_MaximumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -596,7 +590,8 @@ func miqt_exec_callback_QBoxLayout_Invalidate(self *C.QBoxLayout, cb C.intptr_t)
 
 func (this *QBoxLayout) callVirtualBase_ItemAt(param1 int) *QLayoutItem {
 
-	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QBoxLayout_virtualbase_ItemAt(unsafe.Pointer(this.h), (C.int)(param1))))
+	return newQLayoutItem(C.QBoxLayout_virtualbase_ItemAt(unsafe.Pointer(this.h), (C.int)(param1)))
+
 }
 func (this *QBoxLayout) OnItemAt(slot func(super func(param1 int) *QLayoutItem, param1 int) *QLayoutItem) {
 	if !this.isSubclass {
@@ -623,7 +618,8 @@ func miqt_exec_callback_QBoxLayout_ItemAt(self *C.QBoxLayout, cb C.intptr_t, par
 
 func (this *QBoxLayout) callVirtualBase_TakeAt(param1 int) *QLayoutItem {
 
-	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QBoxLayout_virtualbase_TakeAt(unsafe.Pointer(this.h), (C.int)(param1))))
+	return newQLayoutItem(C.QBoxLayout_virtualbase_TakeAt(unsafe.Pointer(this.h), (C.int)(param1)))
+
 }
 func (this *QBoxLayout) OnTakeAt(slot func(super func(param1 int) *QLayoutItem, param1 int) *QLayoutItem) {
 	if !this.isSubclass {
@@ -693,7 +689,7 @@ func miqt_exec_callback_QBoxLayout_SetGeometry(self *C.QBoxLayout, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRect(unsafe.Pointer(geometry))
+	slotval1 := newQRect(geometry)
 
 	gofunc((&QBoxLayout{h: self}).callVirtualBase_SetGeometry, slotval1)
 
@@ -701,8 +697,7 @@ func miqt_exec_callback_QBoxLayout_SetGeometry(self *C.QBoxLayout, cb C.intptr_t
 
 func (this *QBoxLayout) callVirtualBase_Geometry() *QRect {
 
-	_ret := C.QBoxLayout_virtualbase_Geometry(unsafe.Pointer(this.h))
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QBoxLayout_virtualbase_Geometry(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -747,7 +742,7 @@ func miqt_exec_callback_QBoxLayout_IndexOf(self *C.QBoxLayout, cb C.intptr_t, pa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQWidget(param1, nil, nil)
 
 	virtualReturn := gofunc((&QBoxLayout{h: self}).callVirtualBase_IndexOf, slotval1)
 
@@ -807,7 +802,8 @@ func miqt_exec_callback_QBoxLayout_ControlTypes(self *C.QBoxLayout, cb C.intptr_
 
 func (this *QBoxLayout) callVirtualBase_ReplaceWidget(from *QWidget, to *QWidget, options FindChildOption) *QLayoutItem {
 
-	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QBoxLayout_virtualbase_ReplaceWidget(unsafe.Pointer(this.h), from.cPointer(), to.cPointer(), (C.int)(options))))
+	return newQLayoutItem(C.QBoxLayout_virtualbase_ReplaceWidget(unsafe.Pointer(this.h), from.cPointer(), to.cPointer(), (C.int)(options)))
+
 }
 func (this *QBoxLayout) OnReplaceWidget(slot func(super func(from *QWidget, to *QWidget, options FindChildOption) *QLayoutItem, from *QWidget, to *QWidget, options FindChildOption) *QLayoutItem) {
 	if !this.isSubclass {
@@ -824,8 +820,10 @@ func miqt_exec_callback_QBoxLayout_ReplaceWidget(self *C.QBoxLayout, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(from), nil, nil)
-	slotval2 := UnsafeNewQWidget(unsafe.Pointer(to), nil, nil)
+	slotval1 := newQWidget(from, nil, nil)
+
+	slotval2 := newQWidget(to, nil, nil)
+
 	slotval3 := (FindChildOption)(options)
 
 	virtualReturn := gofunc((&QBoxLayout{h: self}).callVirtualBase_ReplaceWidget, slotval1, slotval2, slotval3)
@@ -836,7 +834,8 @@ func miqt_exec_callback_QBoxLayout_ReplaceWidget(self *C.QBoxLayout, cb C.intptr
 
 func (this *QBoxLayout) callVirtualBase_Layout() *QLayout {
 
-	return UnsafeNewQLayout(unsafe.Pointer(C.QBoxLayout_virtualbase_Layout(unsafe.Pointer(this.h))), nil, nil)
+	return newQLayout(C.QBoxLayout_virtualbase_Layout(unsafe.Pointer(this.h)), nil, nil)
+
 }
 func (this *QBoxLayout) OnLayout(slot func(super func() *QLayout) *QLayout) {
 	if !this.isSubclass {
@@ -878,7 +877,7 @@ func miqt_exec_callback_QBoxLayout_ChildEvent(self *C.QBoxLayout, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQChildEvent(e, nil)
 
 	gofunc((&QBoxLayout{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -966,7 +965,7 @@ func NewQHBoxLayout2() *QHBoxLayout {
 }
 
 func (this *QHBoxLayout) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QHBoxLayout_MetaObject(this.h)))
+	return newQMetaObject(C.QHBoxLayout_MetaObject(this.h))
 }
 
 func (this *QHBoxLayout) Metacast(param1 string) unsafe.Pointer {
@@ -1026,7 +1025,7 @@ func miqt_exec_callback_QHBoxLayout_AddItem(self *C.QHBoxLayout, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQLayoutItem(unsafe.Pointer(param1))
+	slotval1 := newQLayoutItem(param1)
 
 	gofunc((&QHBoxLayout{h: self}).callVirtualBase_AddItem, slotval1)
 
@@ -1085,8 +1084,7 @@ func miqt_exec_callback_QHBoxLayout_SetSpacing(self *C.QHBoxLayout, cb C.intptr_
 
 func (this *QHBoxLayout) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QHBoxLayout_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QHBoxLayout_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1113,8 +1111,7 @@ func miqt_exec_callback_QHBoxLayout_SizeHint(self *C.QHBoxLayout, cb C.intptr_t)
 
 func (this *QHBoxLayout) callVirtualBase_MinimumSize() *QSize {
 
-	_ret := C.QHBoxLayout_virtualbase_MinimumSize(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QHBoxLayout_virtualbase_MinimumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1141,8 +1138,7 @@ func miqt_exec_callback_QHBoxLayout_MinimumSize(self *C.QHBoxLayout, cb C.intptr
 
 func (this *QHBoxLayout) callVirtualBase_MaximumSize() *QSize {
 
-	_ret := C.QHBoxLayout_virtualbase_MaximumSize(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QHBoxLayout_virtualbase_MaximumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1298,7 +1294,8 @@ func miqt_exec_callback_QHBoxLayout_Invalidate(self *C.QHBoxLayout, cb C.intptr_
 
 func (this *QHBoxLayout) callVirtualBase_ItemAt(param1 int) *QLayoutItem {
 
-	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QHBoxLayout_virtualbase_ItemAt(unsafe.Pointer(this.h), (C.int)(param1))))
+	return newQLayoutItem(C.QHBoxLayout_virtualbase_ItemAt(unsafe.Pointer(this.h), (C.int)(param1)))
+
 }
 func (this *QHBoxLayout) OnItemAt(slot func(super func(param1 int) *QLayoutItem, param1 int) *QLayoutItem) {
 	if !this.isSubclass {
@@ -1325,7 +1322,8 @@ func miqt_exec_callback_QHBoxLayout_ItemAt(self *C.QHBoxLayout, cb C.intptr_t, p
 
 func (this *QHBoxLayout) callVirtualBase_TakeAt(param1 int) *QLayoutItem {
 
-	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QHBoxLayout_virtualbase_TakeAt(unsafe.Pointer(this.h), (C.int)(param1))))
+	return newQLayoutItem(C.QHBoxLayout_virtualbase_TakeAt(unsafe.Pointer(this.h), (C.int)(param1)))
+
 }
 func (this *QHBoxLayout) OnTakeAt(slot func(super func(param1 int) *QLayoutItem, param1 int) *QLayoutItem) {
 	if !this.isSubclass {
@@ -1395,7 +1393,7 @@ func miqt_exec_callback_QHBoxLayout_SetGeometry(self *C.QHBoxLayout, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRect(unsafe.Pointer(geometry))
+	slotval1 := newQRect(geometry)
 
 	gofunc((&QHBoxLayout{h: self}).callVirtualBase_SetGeometry, slotval1)
 
@@ -1483,7 +1481,7 @@ func NewQVBoxLayout2() *QVBoxLayout {
 }
 
 func (this *QVBoxLayout) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QVBoxLayout_MetaObject(this.h)))
+	return newQMetaObject(C.QVBoxLayout_MetaObject(this.h))
 }
 
 func (this *QVBoxLayout) Metacast(param1 string) unsafe.Pointer {
@@ -1543,7 +1541,7 @@ func miqt_exec_callback_QVBoxLayout_AddItem(self *C.QVBoxLayout, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQLayoutItem(unsafe.Pointer(param1))
+	slotval1 := newQLayoutItem(param1)
 
 	gofunc((&QVBoxLayout{h: self}).callVirtualBase_AddItem, slotval1)
 
@@ -1602,8 +1600,7 @@ func miqt_exec_callback_QVBoxLayout_SetSpacing(self *C.QVBoxLayout, cb C.intptr_
 
 func (this *QVBoxLayout) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QVBoxLayout_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QVBoxLayout_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1630,8 +1627,7 @@ func miqt_exec_callback_QVBoxLayout_SizeHint(self *C.QVBoxLayout, cb C.intptr_t)
 
 func (this *QVBoxLayout) callVirtualBase_MinimumSize() *QSize {
 
-	_ret := C.QVBoxLayout_virtualbase_MinimumSize(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QVBoxLayout_virtualbase_MinimumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1658,8 +1654,7 @@ func miqt_exec_callback_QVBoxLayout_MinimumSize(self *C.QVBoxLayout, cb C.intptr
 
 func (this *QVBoxLayout) callVirtualBase_MaximumSize() *QSize {
 
-	_ret := C.QVBoxLayout_virtualbase_MaximumSize(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QVBoxLayout_virtualbase_MaximumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1815,7 +1810,8 @@ func miqt_exec_callback_QVBoxLayout_Invalidate(self *C.QVBoxLayout, cb C.intptr_
 
 func (this *QVBoxLayout) callVirtualBase_ItemAt(param1 int) *QLayoutItem {
 
-	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QVBoxLayout_virtualbase_ItemAt(unsafe.Pointer(this.h), (C.int)(param1))))
+	return newQLayoutItem(C.QVBoxLayout_virtualbase_ItemAt(unsafe.Pointer(this.h), (C.int)(param1)))
+
 }
 func (this *QVBoxLayout) OnItemAt(slot func(super func(param1 int) *QLayoutItem, param1 int) *QLayoutItem) {
 	if !this.isSubclass {
@@ -1842,7 +1838,8 @@ func miqt_exec_callback_QVBoxLayout_ItemAt(self *C.QVBoxLayout, cb C.intptr_t, p
 
 func (this *QVBoxLayout) callVirtualBase_TakeAt(param1 int) *QLayoutItem {
 
-	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QVBoxLayout_virtualbase_TakeAt(unsafe.Pointer(this.h), (C.int)(param1))))
+	return newQLayoutItem(C.QVBoxLayout_virtualbase_TakeAt(unsafe.Pointer(this.h), (C.int)(param1)))
+
 }
 func (this *QVBoxLayout) OnTakeAt(slot func(super func(param1 int) *QLayoutItem, param1 int) *QLayoutItem) {
 	if !this.isSubclass {
@@ -1912,7 +1909,7 @@ func miqt_exec_callback_QVBoxLayout_SetGeometry(self *C.QVBoxLayout, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRect(unsafe.Pointer(geometry))
+	slotval1 := newQRect(geometry)
 
 	gofunc((&QVBoxLayout{h: self}).callVirtualBase_SetGeometry, slotval1)
 

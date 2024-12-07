@@ -256,7 +256,7 @@ func (this *QMediaServiceProviderFactoryInterface) Create(key string) *QMediaSer
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	return UnsafeNewQMediaService(unsafe.Pointer(C.QMediaServiceProviderFactoryInterface_Create(this.h, key_ms)), nil)
+	return newQMediaService(C.QMediaServiceProviderFactoryInterface_Create(this.h, key_ms), nil)
 }
 
 func (this *QMediaServiceProviderFactoryInterface) Release(service *QMediaService) {
@@ -717,7 +717,7 @@ func (this *QMediaServiceProviderPlugin) Create(key string) *QMediaService {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	return UnsafeNewQMediaService(unsafe.Pointer(C.QMediaServiceProviderPlugin_Create(this.h, key_ms)), nil)
+	return newQMediaService(C.QMediaServiceProviderPlugin_Create(this.h, key_ms), nil)
 }
 
 func (this *QMediaServiceProviderPlugin) Release(service *QMediaService) {

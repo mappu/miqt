@@ -150,7 +150,7 @@ func NewQLabel6(text string, parent *QWidget, f WindowType) *QLabel {
 }
 
 func (this *QLabel) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QLabel_MetaObject(this.h)))
+	return newQMetaObject(C.QLabel_MetaObject(this.h))
 }
 
 func (this *QLabel) Metacast(param1 string) unsafe.Pointer {
@@ -176,35 +176,31 @@ func (this *QLabel) Text() string {
 }
 
 func (this *QLabel) Pixmap(param1 ReturnByValueConstant) *QPixmap {
-	_ret := C.QLabel_Pixmap(this.h, (C.int)(param1))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QLabel_Pixmap(this.h, (C.int)(param1)), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLabel) Pixmap2() *QPixmap {
-	_ret := C.QLabel_Pixmap2(this.h)
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QLabel_Pixmap2(this.h), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLabel) Picture(param1 ReturnByValueConstant) *QPicture {
-	_ret := C.QLabel_Picture(this.h, (C.int)(param1))
-	_goptr := newQPicture(_ret, nil)
+	_goptr := newQPicture(C.QLabel_Picture(this.h, (C.int)(param1)), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLabel) Picture2() *QPicture {
-	_ret := C.QLabel_Picture2(this.h)
-	_goptr := newQPicture(_ret, nil)
+	_goptr := newQPicture(C.QLabel_Picture2(this.h), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLabel) Movie() *QMovie {
-	return UnsafeNewQMovie(unsafe.Pointer(C.QLabel_Movie(this.h)), nil)
+	return newQMovie(C.QLabel_Movie(this.h), nil)
 }
 
 func (this *QLabel) TextFormat() TextFormat {
@@ -256,15 +252,13 @@ func (this *QLabel) SetScaledContents(scaledContents bool) {
 }
 
 func (this *QLabel) SizeHint() *QSize {
-	_ret := C.QLabel_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QLabel_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLabel) MinimumSizeHint() *QSize {
-	_ret := C.QLabel_MinimumSizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QLabel_MinimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -274,7 +268,7 @@ func (this *QLabel) SetBuddy(buddy *QWidget) {
 }
 
 func (this *QLabel) Buddy() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QLabel_Buddy(this.h)), nil, nil)
+	return newQWidget(C.QLabel_Buddy(this.h), nil, nil)
 }
 
 func (this *QLabel) HeightForWidth(param1 int) int {
@@ -426,8 +420,7 @@ func QLabel_Tr3(s string, c string, n int) string {
 
 func (this *QLabel) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QLabel_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QLabel_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -454,8 +447,7 @@ func miqt_exec_callback_QLabel_SizeHint(self *C.QLabel, cb C.intptr_t) *C.QSize 
 
 func (this *QLabel) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QLabel_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QLabel_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -528,7 +520,7 @@ func miqt_exec_callback_QLabel_Event(self *C.QLabel, cb C.intptr_t, e *C.QEvent)
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QLabel{h: self}).callVirtualBase_Event, slotval1)
 
@@ -556,7 +548,7 @@ func miqt_exec_callback_QLabel_KeyPressEvent(self *C.QLabel, cb C.intptr_t, ev *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(ev), nil, nil)
+	slotval1 := newQKeyEvent(ev, nil, nil)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -582,7 +574,7 @@ func miqt_exec_callback_QLabel_PaintEvent(self *C.QLabel, cb C.intptr_t, param1 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQPaintEvent(param1, nil)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -608,7 +600,7 @@ func miqt_exec_callback_QLabel_ChangeEvent(self *C.QLabel, cb C.intptr_t, param1
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -634,7 +626,7 @@ func miqt_exec_callback_QLabel_MousePressEvent(self *C.QLabel, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(ev), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(ev, nil, nil, nil, nil)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -660,7 +652,7 @@ func miqt_exec_callback_QLabel_MouseMoveEvent(self *C.QLabel, cb C.intptr_t, ev 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(ev), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(ev, nil, nil, nil, nil)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -686,7 +678,7 @@ func miqt_exec_callback_QLabel_MouseReleaseEvent(self *C.QLabel, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(ev), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(ev, nil, nil, nil, nil)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -712,7 +704,7 @@ func miqt_exec_callback_QLabel_ContextMenuEvent(self *C.QLabel, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(ev), nil, nil)
+	slotval1 := newQContextMenuEvent(ev, nil, nil)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -738,7 +730,7 @@ func miqt_exec_callback_QLabel_FocusInEvent(self *C.QLabel, cb C.intptr_t, ev *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(ev), nil)
+	slotval1 := newQFocusEvent(ev, nil)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -764,7 +756,7 @@ func miqt_exec_callback_QLabel_FocusOutEvent(self *C.QLabel, cb C.intptr_t, ev *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(ev), nil)
+	slotval1 := newQFocusEvent(ev, nil)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -818,7 +810,7 @@ func miqt_exec_callback_QLabel_InitStyleOption(self *C.QLabel, cb C.intptr_t, op
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStyleOptionFrame(unsafe.Pointer(option), nil)
+	slotval1 := newQStyleOptionFrame(option, nil)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_InitStyleOption, slotval1)
 

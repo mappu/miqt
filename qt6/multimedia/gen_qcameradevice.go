@@ -87,8 +87,7 @@ func (this *QCameraFormat) PixelFormat() QVideoFrameFormat__PixelFormat {
 }
 
 func (this *QCameraFormat) Resolution() *qt6.QSize {
-	_ret := C.QCameraFormat_Resolution(this.h)
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QCameraFormat_Resolution(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -226,8 +225,7 @@ func (this *QCameraDevice) PhotoResolutions() []qt6.QSize {
 	_ret := make([]qt6.QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(_lv_ret))
+		_lv_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -239,8 +237,7 @@ func (this *QCameraDevice) VideoFormats() []QCameraFormat {
 	_ret := make([]QCameraFormat, int(_ma.len))
 	_outCast := (*[0xffff]*C.QCameraFormat)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQCameraFormat(_lv_ret)
+		_lv_goptr := newQCameraFormat(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}

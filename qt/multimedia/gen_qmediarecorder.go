@@ -140,7 +140,7 @@ func QMediaRecorder_TrUtf8(s string) string {
 }
 
 func (this *QMediaRecorder) MediaObject() *QMediaObject {
-	return UnsafeNewQMediaObject(unsafe.Pointer(C.QMediaRecorder_MediaObject(this.h)), nil)
+	return newQMediaObject(C.QMediaRecorder_MediaObject(this.h), nil)
 }
 
 func (this *QMediaRecorder) IsAvailable() bool {
@@ -152,8 +152,7 @@ func (this *QMediaRecorder) Availability() QMultimedia__AvailabilityStatus {
 }
 
 func (this *QMediaRecorder) OutputLocation() *qt.QUrl {
-	_ret := C.QMediaRecorder_OutputLocation(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QMediaRecorder_OutputLocation(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -163,8 +162,7 @@ func (this *QMediaRecorder) SetOutputLocation(location *qt.QUrl) bool {
 }
 
 func (this *QMediaRecorder) ActualLocation() *qt.QUrl {
-	_ret := C.QMediaRecorder_ActualLocation(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QMediaRecorder_ActualLocation(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -287,8 +285,7 @@ func (this *QMediaRecorder) SupportedResolutions() []qt.QSize {
 	_ret := make([]qt.QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_lv_ret))
+		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -306,15 +303,13 @@ func (this *QMediaRecorder) SupportedFrameRates() []float64 {
 }
 
 func (this *QMediaRecorder) AudioSettings() *QAudioEncoderSettings {
-	_ret := C.QMediaRecorder_AudioSettings(this.h)
-	_goptr := newQAudioEncoderSettings(_ret)
+	_goptr := newQAudioEncoderSettings(C.QMediaRecorder_AudioSettings(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaRecorder) VideoSettings() *QVideoEncoderSettings {
-	_ret := C.QMediaRecorder_VideoSettings(this.h)
-	_goptr := newQVideoEncoderSettings(_ret)
+	_goptr := newQVideoEncoderSettings(C.QMediaRecorder_VideoSettings(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -359,8 +354,7 @@ func (this *QMediaRecorder) MetaData(key string) *qt.QVariant {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	_ret := C.QMediaRecorder_MetaData(this.h, key_ms)
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QMediaRecorder_MetaData(this.h, key_ms)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -740,8 +734,7 @@ func (this *QMediaRecorder) SupportedResolutions1(settings *QVideoEncoderSetting
 	_ret := make([]qt.QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_lv_ret))
+		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -753,8 +746,7 @@ func (this *QMediaRecorder) SupportedResolutions2(settings *QVideoEncoderSetting
 	_ret := make([]qt.QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_lv_ret))
+		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -795,7 +787,8 @@ func (this *QMediaRecorder) SetEncodingSettings3(audioSettings *QAudioEncoderSet
 
 func (this *QMediaRecorder) callVirtualBase_MediaObject() *QMediaObject {
 
-	return UnsafeNewQMediaObject(unsafe.Pointer(C.QMediaRecorder_virtualbase_MediaObject(unsafe.Pointer(this.h))), nil)
+	return newQMediaObject(C.QMediaRecorder_virtualbase_MediaObject(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QMediaRecorder) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
 	if !this.isSubclass {
@@ -837,7 +830,7 @@ func miqt_exec_callback_QMediaRecorder_SetMediaObject(self *C.QMediaRecorder, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMediaObject(unsafe.Pointer(object), nil)
+	slotval1 := newQMediaObject(object, nil)
 
 	virtualReturn := gofunc((&QMediaRecorder{h: self}).callVirtualBase_SetMediaObject, slotval1)
 
@@ -894,6 +887,7 @@ func miqt_exec_callback_QMediaRecorder_EventFilter(self *C.QMediaRecorder, cb C.
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QMediaRecorder{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

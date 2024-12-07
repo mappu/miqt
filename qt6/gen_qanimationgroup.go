@@ -78,7 +78,7 @@ func NewQAnimationGroup2(parent *QObject) *QAnimationGroup {
 }
 
 func (this *QAnimationGroup) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAnimationGroup_MetaObject(this.h)))
+	return newQMetaObject(C.QAnimationGroup_MetaObject(this.h))
 }
 
 func (this *QAnimationGroup) Metacast(param1 string) unsafe.Pointer {
@@ -97,7 +97,7 @@ func QAnimationGroup_Tr(s string) string {
 }
 
 func (this *QAnimationGroup) AnimationAt(index int) *QAbstractAnimation {
-	return UnsafeNewQAbstractAnimation(unsafe.Pointer(C.QAnimationGroup_AnimationAt(this.h, (C.int)(index))), nil)
+	return newQAbstractAnimation(C.QAnimationGroup_AnimationAt(this.h, (C.int)(index)), nil)
 }
 
 func (this *QAnimationGroup) AnimationCount() int {
@@ -121,7 +121,7 @@ func (this *QAnimationGroup) RemoveAnimation(animation *QAbstractAnimation) {
 }
 
 func (this *QAnimationGroup) TakeAnimation(index int) *QAbstractAnimation {
-	return UnsafeNewQAbstractAnimation(unsafe.Pointer(C.QAnimationGroup_TakeAnimation(this.h, (C.int)(index))), nil)
+	return newQAbstractAnimation(C.QAnimationGroup_TakeAnimation(this.h, (C.int)(index)), nil)
 }
 
 func (this *QAnimationGroup) Clear() {
@@ -170,7 +170,7 @@ func miqt_exec_callback_QAnimationGroup_Event(self *C.QAnimationGroup, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QAnimationGroup{h: self}).callVirtualBase_Event, slotval1)
 

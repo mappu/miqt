@@ -83,8 +83,7 @@ func QMediaRecorderControl_TrUtf8(s string) string {
 }
 
 func (this *QMediaRecorderControl) OutputLocation() *qt.QUrl {
-	_ret := C.QMediaRecorderControl_OutputLocation(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QMediaRecorderControl_OutputLocation(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

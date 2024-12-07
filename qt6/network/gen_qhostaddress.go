@@ -245,8 +245,7 @@ func (this *QHostAddress) ToIPv4Address() uint {
 }
 
 func (this *QHostAddress) ToIPv6Address() *QIPv6Address {
-	_ret := C.QHostAddress_ToIPv6Address(this.h)
-	_goptr := newQIPv6Address(_ret)
+	_goptr := newQIPv6Address(C.QHostAddress_ToIPv6Address(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -362,8 +361,7 @@ func QHostAddress_ParseSubnet(subnet string) struct {
 	var _mm C.struct_miqt_map = C.QHostAddress_ParseSubnet(subnet_ms)
 	_First_CArray := (*[0xffff]*C.QHostAddress)(unsafe.Pointer(_mm.keys))
 	_Second_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.values))
-	_first_ret := _First_CArray[0]
-	_first_goptr := newQHostAddress(_first_ret)
+	_first_goptr := newQHostAddress(_First_CArray[0])
 	_first_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	_entry_First := *_first_goptr
 

@@ -131,7 +131,7 @@ func miqt_exec_callback_QVideoProbe_VideoFrameProbed(cb C.intptr_t, frame *C.QVi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVideoFrame(unsafe.Pointer(frame))
+	slotval1 := newQVideoFrame(frame)
 
 	gofunc(slotval1)
 }
@@ -246,6 +246,7 @@ func miqt_exec_callback_QVideoProbe_EventFilter(self *C.QVideoProbe, cb C.intptr
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QVideoProbe{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

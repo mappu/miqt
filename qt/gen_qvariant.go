@@ -702,8 +702,7 @@ func (this *QVariant) ToByteArray() []byte {
 }
 
 func (this *QVariant) ToBitArray() *QBitArray {
-	_ret := C.QVariant_ToBitArray(this.h)
-	_goptr := newQBitArray(_ret)
+	_goptr := newQBitArray(C.QVariant_ToBitArray(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -729,29 +728,25 @@ func (this *QVariant) ToStringList() []string {
 }
 
 func (this *QVariant) ToChar() *QChar {
-	_ret := C.QVariant_ToChar(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QVariant_ToChar(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToDate() *QDate {
-	_ret := C.QVariant_ToDate(this.h)
-	_goptr := newQDate(_ret)
+	_goptr := newQDate(C.QVariant_ToDate(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToTime() *QTime {
-	_ret := C.QVariant_ToTime(this.h)
-	_goptr := newQTime(_ret)
+	_goptr := newQTime(C.QVariant_ToTime(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToDateTime() *QDateTime {
-	_ret := C.QVariant_ToDateTime(this.h)
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QVariant_ToDateTime(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -766,8 +761,7 @@ func (this *QVariant) ToMap() map[string]QVariant {
 		_mapkey_ret := C.GoStringN(_mapkey_ms.data, C.int(int64(_mapkey_ms.len)))
 		C.free(unsafe.Pointer(_mapkey_ms.data))
 		_entry_Key := _mapkey_ret
-		_mapval_ret := _Values[i]
-		_mapval_goptr := newQVariant(_mapval_ret)
+		_mapval_goptr := newQVariant(_Values[i])
 		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_entry_Value := *_mapval_goptr
 
@@ -786,8 +780,7 @@ func (this *QVariant) ToHash() map[string]QVariant {
 		_hashkey_ret := C.GoStringN(_hashkey_ms.data, C.int(int64(_hashkey_ms.len)))
 		C.free(unsafe.Pointer(_hashkey_ms.data))
 		_entry_Key := _hashkey_ret
-		_hashval_ret := _Values[i]
-		_hashval_goptr := newQVariant(_hashval_ret)
+		_hashval_goptr := newQVariant(_Values[i])
 		_hashval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_entry_Value := *_hashval_goptr
 
@@ -797,141 +790,121 @@ func (this *QVariant) ToHash() map[string]QVariant {
 }
 
 func (this *QVariant) ToPoint() *QPoint {
-	_ret := C.QVariant_ToPoint(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QVariant_ToPoint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToPointF() *QPointF {
-	_ret := C.QVariant_ToPointF(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QVariant_ToPointF(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToRect() *QRect {
-	_ret := C.QVariant_ToRect(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QVariant_ToRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToSize() *QSize {
-	_ret := C.QVariant_ToSize(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QVariant_ToSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToSizeF() *QSizeF {
-	_ret := C.QVariant_ToSizeF(this.h)
-	_goptr := newQSizeF(_ret)
+	_goptr := newQSizeF(C.QVariant_ToSizeF(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToLine() *QLine {
-	_ret := C.QVariant_ToLine(this.h)
-	_goptr := newQLine(_ret)
+	_goptr := newQLine(C.QVariant_ToLine(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToLineF() *QLineF {
-	_ret := C.QVariant_ToLineF(this.h)
-	_goptr := newQLineF(_ret)
+	_goptr := newQLineF(C.QVariant_ToLineF(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToRectF() *QRectF {
-	_ret := C.QVariant_ToRectF(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QVariant_ToRectF(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToLocale() *QLocale {
-	_ret := C.QVariant_ToLocale(this.h)
-	_goptr := newQLocale(_ret)
+	_goptr := newQLocale(C.QVariant_ToLocale(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToRegExp() *QRegExp {
-	_ret := C.QVariant_ToRegExp(this.h)
-	_goptr := newQRegExp(_ret)
+	_goptr := newQRegExp(C.QVariant_ToRegExp(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToRegularExpression() *QRegularExpression {
-	_ret := C.QVariant_ToRegularExpression(this.h)
-	_goptr := newQRegularExpression(_ret)
+	_goptr := newQRegularExpression(C.QVariant_ToRegularExpression(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToEasingCurve() *QEasingCurve {
-	_ret := C.QVariant_ToEasingCurve(this.h)
-	_goptr := newQEasingCurve(_ret)
+	_goptr := newQEasingCurve(C.QVariant_ToEasingCurve(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToUuid() *QUuid {
-	_ret := C.QVariant_ToUuid(this.h)
-	_goptr := newQUuid(_ret)
+	_goptr := newQUuid(C.QVariant_ToUuid(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToUrl() *QUrl {
-	_ret := C.QVariant_ToUrl(this.h)
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QVariant_ToUrl(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToJsonValue() *QJsonValue {
-	_ret := C.QVariant_ToJsonValue(this.h)
-	_goptr := newQJsonValue(_ret)
+	_goptr := newQJsonValue(C.QVariant_ToJsonValue(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToJsonObject() *QJsonObject {
-	_ret := C.QVariant_ToJsonObject(this.h)
-	_goptr := newQJsonObject(_ret)
+	_goptr := newQJsonObject(C.QVariant_ToJsonObject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToJsonArray() *QJsonArray {
-	_ret := C.QVariant_ToJsonArray(this.h)
-	_goptr := newQJsonArray(_ret)
+	_goptr := newQJsonArray(C.QVariant_ToJsonArray(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToJsonDocument() *QJsonDocument {
-	_ret := C.QVariant_ToJsonDocument(this.h)
-	_goptr := newQJsonDocument(_ret)
+	_goptr := newQJsonDocument(C.QVariant_ToJsonDocument(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToModelIndex() *QModelIndex {
-	_ret := C.QVariant_ToModelIndex(this.h)
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QVariant_ToModelIndex(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVariant) ToPersistentModelIndex() *QPersistentModelIndex {
-	_ret := C.QVariant_ToPersistentModelIndex(this.h)
-	_goptr := newQPersistentModelIndex(_ret)
+	_goptr := newQPersistentModelIndex(C.QVariant_ToPersistentModelIndex(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1204,8 +1177,7 @@ func (this *QSequentialIterable__const_iterator) OperatorAssign(other *QSequenti
 }
 
 func (this *QSequentialIterable__const_iterator) OperatorMultiply() *QVariant {
-	_ret := C.QSequentialIterable__const_iterator_OperatorMultiply(this.h)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QSequentialIterable__const_iterator_OperatorMultiply(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1219,45 +1191,41 @@ func (this *QSequentialIterable__const_iterator) OperatorNotEqual(o *QSequential
 }
 
 func (this *QSequentialIterable__const_iterator) OperatorPlusPlus() *QSequentialIterable__const_iterator {
-	return UnsafeNewQSequentialIterable__const_iterator(unsafe.Pointer(C.QSequentialIterable__const_iterator_OperatorPlusPlus(this.h)))
+	return newQSequentialIterable__const_iterator(C.QSequentialIterable__const_iterator_OperatorPlusPlus(this.h))
 }
 
 func (this *QSequentialIterable__const_iterator) OperatorPlusPlusWithInt(param1 int) *QSequentialIterable__const_iterator {
-	_ret := C.QSequentialIterable__const_iterator_OperatorPlusPlusWithInt(this.h, (C.int)(param1))
-	_goptr := newQSequentialIterable__const_iterator(_ret)
+	_goptr := newQSequentialIterable__const_iterator(C.QSequentialIterable__const_iterator_OperatorPlusPlusWithInt(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSequentialIterable__const_iterator) OperatorMinusMinus() *QSequentialIterable__const_iterator {
-	return UnsafeNewQSequentialIterable__const_iterator(unsafe.Pointer(C.QSequentialIterable__const_iterator_OperatorMinusMinus(this.h)))
+	return newQSequentialIterable__const_iterator(C.QSequentialIterable__const_iterator_OperatorMinusMinus(this.h))
 }
 
 func (this *QSequentialIterable__const_iterator) OperatorMinusMinusWithInt(param1 int) *QSequentialIterable__const_iterator {
-	_ret := C.QSequentialIterable__const_iterator_OperatorMinusMinusWithInt(this.h, (C.int)(param1))
-	_goptr := newQSequentialIterable__const_iterator(_ret)
+	_goptr := newQSequentialIterable__const_iterator(C.QSequentialIterable__const_iterator_OperatorMinusMinusWithInt(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSequentialIterable__const_iterator) OperatorPlusAssign(j int) *QSequentialIterable__const_iterator {
-	return UnsafeNewQSequentialIterable__const_iterator(unsafe.Pointer(C.QSequentialIterable__const_iterator_OperatorPlusAssign(this.h, (C.int)(j))))
+	return newQSequentialIterable__const_iterator(C.QSequentialIterable__const_iterator_OperatorPlusAssign(this.h, (C.int)(j)))
 }
 
 func (this *QSequentialIterable__const_iterator) OperatorMinusAssign(j int) *QSequentialIterable__const_iterator {
-	return UnsafeNewQSequentialIterable__const_iterator(unsafe.Pointer(C.QSequentialIterable__const_iterator_OperatorMinusAssign(this.h, (C.int)(j))))
+	return newQSequentialIterable__const_iterator(C.QSequentialIterable__const_iterator_OperatorMinusAssign(this.h, (C.int)(j)))
 }
 
 func (this *QSequentialIterable__const_iterator) OperatorPlus(j int) *QSequentialIterable__const_iterator {
-	_ret := C.QSequentialIterable__const_iterator_OperatorPlus(this.h, (C.int)(j))
-	_goptr := newQSequentialIterable__const_iterator(_ret)
+	_goptr := newQSequentialIterable__const_iterator(C.QSequentialIterable__const_iterator_OperatorPlus(this.h, (C.int)(j)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSequentialIterable__const_iterator) OperatorMinus(j int) *QSequentialIterable__const_iterator {
-	_ret := C.QSequentialIterable__const_iterator_OperatorMinus(this.h, (C.int)(j))
-	_goptr := newQSequentialIterable__const_iterator(_ret)
+	_goptr := newQSequentialIterable__const_iterator(C.QSequentialIterable__const_iterator_OperatorMinus(this.h, (C.int)(j)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1327,22 +1295,19 @@ func (this *QAssociativeIterable__const_iterator) OperatorAssign(other *QAssocia
 }
 
 func (this *QAssociativeIterable__const_iterator) Key() *QVariant {
-	_ret := C.QAssociativeIterable__const_iterator_Key(this.h)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QAssociativeIterable__const_iterator_Key(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAssociativeIterable__const_iterator) Value() *QVariant {
-	_ret := C.QAssociativeIterable__const_iterator_Value(this.h)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QAssociativeIterable__const_iterator_Value(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAssociativeIterable__const_iterator) OperatorMultiply() *QVariant {
-	_ret := C.QAssociativeIterable__const_iterator_OperatorMultiply(this.h)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QAssociativeIterable__const_iterator_OperatorMultiply(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1356,45 +1321,41 @@ func (this *QAssociativeIterable__const_iterator) OperatorNotEqual(o *QAssociati
 }
 
 func (this *QAssociativeIterable__const_iterator) OperatorPlusPlus() *QAssociativeIterable__const_iterator {
-	return UnsafeNewQAssociativeIterable__const_iterator(unsafe.Pointer(C.QAssociativeIterable__const_iterator_OperatorPlusPlus(this.h)))
+	return newQAssociativeIterable__const_iterator(C.QAssociativeIterable__const_iterator_OperatorPlusPlus(this.h))
 }
 
 func (this *QAssociativeIterable__const_iterator) OperatorPlusPlusWithInt(param1 int) *QAssociativeIterable__const_iterator {
-	_ret := C.QAssociativeIterable__const_iterator_OperatorPlusPlusWithInt(this.h, (C.int)(param1))
-	_goptr := newQAssociativeIterable__const_iterator(_ret)
+	_goptr := newQAssociativeIterable__const_iterator(C.QAssociativeIterable__const_iterator_OperatorPlusPlusWithInt(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAssociativeIterable__const_iterator) OperatorMinusMinus() *QAssociativeIterable__const_iterator {
-	return UnsafeNewQAssociativeIterable__const_iterator(unsafe.Pointer(C.QAssociativeIterable__const_iterator_OperatorMinusMinus(this.h)))
+	return newQAssociativeIterable__const_iterator(C.QAssociativeIterable__const_iterator_OperatorMinusMinus(this.h))
 }
 
 func (this *QAssociativeIterable__const_iterator) OperatorMinusMinusWithInt(param1 int) *QAssociativeIterable__const_iterator {
-	_ret := C.QAssociativeIterable__const_iterator_OperatorMinusMinusWithInt(this.h, (C.int)(param1))
-	_goptr := newQAssociativeIterable__const_iterator(_ret)
+	_goptr := newQAssociativeIterable__const_iterator(C.QAssociativeIterable__const_iterator_OperatorMinusMinusWithInt(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAssociativeIterable__const_iterator) OperatorPlusAssign(j int) *QAssociativeIterable__const_iterator {
-	return UnsafeNewQAssociativeIterable__const_iterator(unsafe.Pointer(C.QAssociativeIterable__const_iterator_OperatorPlusAssign(this.h, (C.int)(j))))
+	return newQAssociativeIterable__const_iterator(C.QAssociativeIterable__const_iterator_OperatorPlusAssign(this.h, (C.int)(j)))
 }
 
 func (this *QAssociativeIterable__const_iterator) OperatorMinusAssign(j int) *QAssociativeIterable__const_iterator {
-	return UnsafeNewQAssociativeIterable__const_iterator(unsafe.Pointer(C.QAssociativeIterable__const_iterator_OperatorMinusAssign(this.h, (C.int)(j))))
+	return newQAssociativeIterable__const_iterator(C.QAssociativeIterable__const_iterator_OperatorMinusAssign(this.h, (C.int)(j)))
 }
 
 func (this *QAssociativeIterable__const_iterator) OperatorPlus(j int) *QAssociativeIterable__const_iterator {
-	_ret := C.QAssociativeIterable__const_iterator_OperatorPlus(this.h, (C.int)(j))
-	_goptr := newQAssociativeIterable__const_iterator(_ret)
+	_goptr := newQAssociativeIterable__const_iterator(C.QAssociativeIterable__const_iterator_OperatorPlus(this.h, (C.int)(j)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAssociativeIterable__const_iterator) OperatorMinus(j int) *QAssociativeIterable__const_iterator {
-	_ret := C.QAssociativeIterable__const_iterator_OperatorMinus(this.h, (C.int)(j))
-	_goptr := newQAssociativeIterable__const_iterator(_ret)
+	_goptr := newQAssociativeIterable__const_iterator(C.QAssociativeIterable__const_iterator_OperatorMinus(this.h, (C.int)(j)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

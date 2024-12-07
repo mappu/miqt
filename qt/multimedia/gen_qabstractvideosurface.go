@@ -129,22 +129,19 @@ func (this *QAbstractVideoSurface) IsFormatSupported(format *QVideoSurfaceFormat
 }
 
 func (this *QAbstractVideoSurface) NearestFormat(format *QVideoSurfaceFormat) *QVideoSurfaceFormat {
-	_ret := C.QAbstractVideoSurface_NearestFormat(this.h, format.cPointer())
-	_goptr := newQVideoSurfaceFormat(_ret)
+	_goptr := newQVideoSurfaceFormat(C.QAbstractVideoSurface_NearestFormat(this.h, format.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractVideoSurface) SurfaceFormat() *QVideoSurfaceFormat {
-	_ret := C.QAbstractVideoSurface_SurfaceFormat(this.h)
-	_goptr := newQVideoSurfaceFormat(_ret)
+	_goptr := newQVideoSurfaceFormat(C.QAbstractVideoSurface_SurfaceFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractVideoSurface) NativeResolution() *qt.QSize {
-	_ret := C.QAbstractVideoSurface_NativeResolution(this.h)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QAbstractVideoSurface_NativeResolution(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -204,7 +201,7 @@ func miqt_exec_callback_QAbstractVideoSurface_SurfaceFormatChanged(cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVideoSurfaceFormat(unsafe.Pointer(format))
+	slotval1 := newQVideoSurfaceFormat(format)
 
 	gofunc(slotval1)
 }
@@ -338,7 +335,7 @@ func miqt_exec_callback_QAbstractVideoSurface_IsFormatSupported(self *C.QAbstrac
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVideoSurfaceFormat(unsafe.Pointer(format))
+	slotval1 := newQVideoSurfaceFormat(format)
 
 	virtualReturn := gofunc((&QAbstractVideoSurface{h: self}).callVirtualBase_IsFormatSupported, slotval1)
 
@@ -348,8 +345,7 @@ func miqt_exec_callback_QAbstractVideoSurface_IsFormatSupported(self *C.QAbstrac
 
 func (this *QAbstractVideoSurface) callVirtualBase_NearestFormat(format *QVideoSurfaceFormat) *QVideoSurfaceFormat {
 
-	_ret := C.QAbstractVideoSurface_virtualbase_NearestFormat(unsafe.Pointer(this.h), format.cPointer())
-	_goptr := newQVideoSurfaceFormat(_ret)
+	_goptr := newQVideoSurfaceFormat(C.QAbstractVideoSurface_virtualbase_NearestFormat(unsafe.Pointer(this.h), format.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -369,7 +365,7 @@ func miqt_exec_callback_QAbstractVideoSurface_NearestFormat(self *C.QAbstractVid
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVideoSurfaceFormat(unsafe.Pointer(format))
+	slotval1 := newQVideoSurfaceFormat(format)
 
 	virtualReturn := gofunc((&QAbstractVideoSurface{h: self}).callVirtualBase_NearestFormat, slotval1)
 
@@ -397,7 +393,7 @@ func miqt_exec_callback_QAbstractVideoSurface_Start(self *C.QAbstractVideoSurfac
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVideoSurfaceFormat(unsafe.Pointer(format))
+	slotval1 := newQVideoSurfaceFormat(format)
 
 	virtualReturn := gofunc((&QAbstractVideoSurface{h: self}).callVirtualBase_Start, slotval1)
 
@@ -442,7 +438,7 @@ func miqt_exec_callback_QAbstractVideoSurface_Present(self *C.QAbstractVideoSurf
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVideoFrame(unsafe.Pointer(frame))
+	slotval1 := newQVideoFrame(frame)
 
 	virtualReturn := gofunc(slotval1)
 
@@ -499,6 +495,7 @@ func miqt_exec_callback_QAbstractVideoSurface_EventFilter(self *C.QAbstractVideo
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QAbstractVideoSurface{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

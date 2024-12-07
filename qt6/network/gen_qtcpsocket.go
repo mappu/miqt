@@ -178,7 +178,8 @@ func miqt_exec_callback_QTcpSocket_Bind(self *C.QTcpSocket, cb C.intptr_t, addre
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHostAddress(unsafe.Pointer(address))
+	slotval1 := newQHostAddress(address)
+
 	slotval2 := (uint16)(port)
 
 	slotval3 := (QAbstractSocket__BindFlag)(mode)
@@ -413,8 +414,7 @@ func miqt_exec_callback_QTcpSocket_SetSocketOption(self *C.QTcpSocket, cb C.intp
 
 func (this *QTcpSocket) callVirtualBase_SocketOption(option QAbstractSocket__SocketOption) *qt6.QVariant {
 
-	_ret := C.QTcpSocket_virtualbase_SocketOption(unsafe.Pointer(this.h), (C.int)(option))
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QTcpSocket_virtualbase_SocketOption(unsafe.Pointer(this.h), (C.int)(option))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

@@ -160,16 +160,15 @@ func QRandomGenerator_Max() uint {
 }
 
 func QRandomGenerator_System() *QRandomGenerator {
-	return UnsafeNewQRandomGenerator(unsafe.Pointer(C.QRandomGenerator_System()))
+	return newQRandomGenerator(C.QRandomGenerator_System())
 }
 
 func QRandomGenerator_Global() *QRandomGenerator {
-	return UnsafeNewQRandomGenerator(unsafe.Pointer(C.QRandomGenerator_Global()))
+	return newQRandomGenerator(C.QRandomGenerator_Global())
 }
 
 func QRandomGenerator_SecurelySeeded() *QRandomGenerator {
-	_ret := C.QRandomGenerator_SecurelySeeded()
-	_goptr := newQRandomGenerator(_ret)
+	_goptr := newQRandomGenerator(C.QRandomGenerator_SecurelySeeded())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -318,16 +317,15 @@ func QRandomGenerator64_Max() uint64 {
 }
 
 func QRandomGenerator64_System() *QRandomGenerator64 {
-	return UnsafeNewQRandomGenerator64(unsafe.Pointer(C.QRandomGenerator64_System()), nil)
+	return newQRandomGenerator64(C.QRandomGenerator64_System(), nil)
 }
 
 func QRandomGenerator64_Global() *QRandomGenerator64 {
-	return UnsafeNewQRandomGenerator64(unsafe.Pointer(C.QRandomGenerator64_Global()), nil)
+	return newQRandomGenerator64(C.QRandomGenerator64_Global(), nil)
 }
 
 func QRandomGenerator64_SecurelySeeded() *QRandomGenerator64 {
-	_ret := C.QRandomGenerator64_SecurelySeeded()
-	_goptr := newQRandomGenerator64(_ret, nil)
+	_goptr := newQRandomGenerator64(C.QRandomGenerator64_SecurelySeeded(), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

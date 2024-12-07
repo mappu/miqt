@@ -244,15 +244,13 @@ func (this *QFileInfo) CanonicalPath() string {
 }
 
 func (this *QFileInfo) Dir() *QDir {
-	_ret := C.QFileInfo_Dir(this.h)
-	_goptr := newQDir(_ret)
+	_goptr := newQDir(C.QFileInfo_Dir(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileInfo) AbsoluteDir() *QDir {
-	_ret := C.QFileInfo_AbsoluteDir(this.h)
-	_goptr := newQDir(_ret)
+	_goptr := newQDir(C.QFileInfo_AbsoluteDir(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -370,43 +368,37 @@ func (this *QFileInfo) Size() int64 {
 }
 
 func (this *QFileInfo) Created() *QDateTime {
-	_ret := C.QFileInfo_Created(this.h)
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QFileInfo_Created(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileInfo) BirthTime() *QDateTime {
-	_ret := C.QFileInfo_BirthTime(this.h)
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QFileInfo_BirthTime(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileInfo) MetadataChangeTime() *QDateTime {
-	_ret := C.QFileInfo_MetadataChangeTime(this.h)
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QFileInfo_MetadataChangeTime(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileInfo) LastModified() *QDateTime {
-	_ret := C.QFileInfo_LastModified(this.h)
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QFileInfo_LastModified(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileInfo) LastRead() *QDateTime {
-	_ret := C.QFileInfo_LastRead(this.h)
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QFileInfo_LastRead(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileInfo) FileTime(time QFileDevice__FileTime) *QDateTime {
-	_ret := C.QFileInfo_FileTime(this.h, (C.int)(time))
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QFileInfo_FileTime(this.h, (C.int)(time)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

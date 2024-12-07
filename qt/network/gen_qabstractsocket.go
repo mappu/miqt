@@ -239,8 +239,7 @@ func (this *QAbstractSocket) LocalPort() uint16 {
 }
 
 func (this *QAbstractSocket) LocalAddress() *QHostAddress {
-	_ret := C.QAbstractSocket_LocalAddress(this.h)
-	_goptr := newQHostAddress(_ret)
+	_goptr := newQHostAddress(C.QAbstractSocket_LocalAddress(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -250,8 +249,7 @@ func (this *QAbstractSocket) PeerPort() uint16 {
 }
 
 func (this *QAbstractSocket) PeerAddress() *QHostAddress {
-	_ret := C.QAbstractSocket_PeerAddress(this.h)
-	_goptr := newQHostAddress(_ret)
+	_goptr := newQHostAddress(C.QAbstractSocket_PeerAddress(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -288,8 +286,7 @@ func (this *QAbstractSocket) SetSocketOption(option QAbstractSocket__SocketOptio
 }
 
 func (this *QAbstractSocket) SocketOption(option QAbstractSocket__SocketOption) *qt.QVariant {
-	_ret := C.QAbstractSocket_SocketOption(this.h, (C.int)(option))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QAbstractSocket_SocketOption(this.h, (C.int)(option))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -343,8 +340,7 @@ func (this *QAbstractSocket) SetProxy(networkProxy *QNetworkProxy) {
 }
 
 func (this *QAbstractSocket) Proxy() *QNetworkProxy {
-	_ret := C.QAbstractSocket_Proxy(this.h)
-	_goptr := newQNetworkProxy(_ret)
+	_goptr := newQNetworkProxy(C.QAbstractSocket_Proxy(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -490,8 +486,9 @@ func miqt_exec_callback_QAbstractSocket_ProxyAuthenticationRequired(cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQNetworkProxy(unsafe.Pointer(proxy))
-	slotval2 := UnsafeNewQAuthenticator(unsafe.Pointer(authenticator))
+	slotval1 := newQNetworkProxy(proxy)
+
+	slotval2 := newQAuthenticator(authenticator)
 
 	gofunc(slotval1, slotval2)
 }
@@ -637,7 +634,8 @@ func miqt_exec_callback_QAbstractSocket_ConnectToHost2(self *C.QAbstractSocket, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHostAddress(unsafe.Pointer(address))
+	slotval1 := newQHostAddress(address)
+
 	slotval2 := (uint16)(port)
 
 	slotval3 := (qt.QIODevice__OpenModeFlag)(mode)
@@ -857,8 +855,7 @@ func miqt_exec_callback_QAbstractSocket_SetSocketOption(self *C.QAbstractSocket,
 
 func (this *QAbstractSocket) callVirtualBase_SocketOption(option QAbstractSocket__SocketOption) *qt.QVariant {
 
-	_ret := C.QAbstractSocket_virtualbase_SocketOption(unsafe.Pointer(this.h), (C.int)(option))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QAbstractSocket_virtualbase_SocketOption(unsafe.Pointer(this.h), (C.int)(option))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

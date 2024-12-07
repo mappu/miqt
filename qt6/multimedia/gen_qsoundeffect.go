@@ -146,8 +146,7 @@ func QSoundEffect_SupportedMimeTypes() []string {
 }
 
 func (this *QSoundEffect) Source() *qt6.QUrl {
-	_ret := C.QSoundEffect_Source(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QSoundEffect_Source(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -169,8 +168,7 @@ func (this *QSoundEffect) SetLoopCount(loopCount int) {
 }
 
 func (this *QSoundEffect) AudioDevice() *QAudioDevice {
-	_ret := C.QSoundEffect_AudioDevice(this.h)
-	_goptr := newQAudioDevice(_ret)
+	_goptr := newQAudioDevice(C.QSoundEffect_AudioDevice(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -439,6 +437,7 @@ func miqt_exec_callback_QSoundEffect_EventFilter(self *C.QSoundEffect, cb C.intp
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QSoundEffect{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

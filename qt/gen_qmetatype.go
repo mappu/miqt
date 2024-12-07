@@ -247,7 +247,7 @@ func QMetaType_TypeFlags(typeVal int) QMetaType__TypeFlag {
 }
 
 func QMetaType_MetaObjectForType(typeVal int) *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaType_MetaObjectForType((C.int)(typeVal))))
+	return newQMetaObject(C.QMetaType_MetaObjectForType((C.int)(typeVal)))
 }
 
 func QMetaType_IsRegistered(typeVal int) bool {
@@ -299,7 +299,7 @@ func (this *QMetaType) Flags() QMetaType__TypeFlag {
 }
 
 func (this *QMetaType) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaType_MetaObject(this.h)))
+	return newQMetaObject(C.QMetaType_MetaObject(this.h))
 }
 
 func (this *QMetaType) Name() []byte {

@@ -255,7 +255,7 @@ func QWebEnginePage_Tr(s string) string {
 }
 
 func (this *QWebEnginePage) History() *QWebEngineHistory {
-	return UnsafeNewQWebEngineHistory(unsafe.Pointer(C.QWebEnginePage_History(this.h)), nil)
+	return newQWebEngineHistory(C.QWebEnginePage_History(this.h), nil)
 }
 
 func (this *QWebEnginePage) HasSelection() bool {
@@ -270,7 +270,7 @@ func (this *QWebEnginePage) SelectedText() string {
 }
 
 func (this *QWebEnginePage) Profile() *QWebEngineProfile {
-	return UnsafeNewQWebEngineProfile(unsafe.Pointer(C.QWebEnginePage_Profile(this.h)), nil)
+	return newQWebEngineProfile(C.QWebEnginePage_Profile(this.h), nil)
 }
 
 func (this *QWebEnginePage) Action(action QWebEnginePage__WebAction) *qt6.QAction {
@@ -340,29 +340,25 @@ func (this *QWebEnginePage) SetUrl(url *qt6.QUrl) {
 }
 
 func (this *QWebEnginePage) Url() *qt6.QUrl {
-	_ret := C.QWebEnginePage_Url(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEnginePage_Url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEnginePage) RequestedUrl() *qt6.QUrl {
-	_ret := C.QWebEnginePage_RequestedUrl(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEnginePage_RequestedUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEnginePage) IconUrl() *qt6.QUrl {
-	_ret := C.QWebEnginePage_IconUrl(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEnginePage_IconUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEnginePage) Icon() *qt6.QIcon {
-	_ret := C.QWebEnginePage_Icon(this.h)
-	_goptr := qt6.UnsafeNewQIcon(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQIcon(unsafe.Pointer(C.QWebEnginePage_Icon(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -376,25 +372,23 @@ func (this *QWebEnginePage) SetZoomFactor(factor float64) {
 }
 
 func (this *QWebEnginePage) ScrollPosition() *qt6.QPointF {
-	_ret := C.QWebEnginePage_ScrollPosition(this.h)
-	_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(C.QWebEnginePage_ScrollPosition(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEnginePage) ContentsSize() *qt6.QSizeF {
-	_ret := C.QWebEnginePage_ContentsSize(this.h)
-	_goptr := qt6.UnsafeNewQSizeF(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQSizeF(unsafe.Pointer(C.QWebEnginePage_ContentsSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEnginePage) Scripts() *QWebEngineScriptCollection {
-	return UnsafeNewQWebEngineScriptCollection(unsafe.Pointer(C.QWebEnginePage_Scripts(this.h)))
+	return newQWebEngineScriptCollection(C.QWebEnginePage_Scripts(this.h))
 }
 
 func (this *QWebEnginePage) Settings() *QWebEngineSettings {
-	return UnsafeNewQWebEngineSettings(unsafe.Pointer(C.QWebEnginePage_Settings(this.h)))
+	return newQWebEngineSettings(C.QWebEnginePage_Settings(this.h))
 }
 
 func (this *QWebEnginePage) WebChannel() *webchannel.QWebChannel {
@@ -406,8 +400,7 @@ func (this *QWebEnginePage) SetWebChannel(param1 *webchannel.QWebChannel) {
 }
 
 func (this *QWebEnginePage) BackgroundColor() *qt6.QColor {
-	_ret := C.QWebEnginePage_BackgroundColor(this.h)
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QWebEnginePage_BackgroundColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -453,7 +446,7 @@ func (this *QWebEnginePage) SetInspectedPage(page *QWebEnginePage) {
 }
 
 func (this *QWebEnginePage) InspectedPage() *QWebEnginePage {
-	return UnsafeNewQWebEnginePage(unsafe.Pointer(C.QWebEnginePage_InspectedPage(this.h)), nil)
+	return newQWebEnginePage(C.QWebEnginePage_InspectedPage(this.h), nil)
 }
 
 func (this *QWebEnginePage) SetDevToolsPage(page *QWebEnginePage) {
@@ -461,7 +454,7 @@ func (this *QWebEnginePage) SetDevToolsPage(page *QWebEnginePage) {
 }
 
 func (this *QWebEnginePage) DevToolsPage() *QWebEnginePage {
-	return UnsafeNewQWebEnginePage(unsafe.Pointer(C.QWebEnginePage_DevToolsPage(this.h)), nil)
+	return newQWebEnginePage(C.QWebEnginePage_DevToolsPage(this.h), nil)
 }
 
 func (this *QWebEnginePage) SetUrlRequestInterceptor(interceptor *QWebEngineUrlRequestInterceptor) {
@@ -564,7 +557,7 @@ func miqt_exec_callback_QWebEnginePage_LoadingChanged(cb C.intptr_t, loadingInfo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebEngineLoadingInfo(unsafe.Pointer(loadingInfo))
+	slotval1 := newQWebEngineLoadingInfo(loadingInfo)
 
 	gofunc(slotval1)
 }
@@ -666,6 +659,7 @@ func miqt_exec_callback_QWebEnginePage_FeaturePermissionRequested(cb C.intptr_t,
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQUrl(unsafe.Pointer(securityOrigin))
+
 	slotval2 := (QWebEnginePage__Feature)(feature)
 
 	gofunc(slotval1, slotval2)
@@ -687,6 +681,7 @@ func miqt_exec_callback_QWebEnginePage_FeaturePermissionRequestCanceled(cb C.int
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQUrl(unsafe.Pointer(securityOrigin))
+
 	slotval2 := (QWebEnginePage__Feature)(feature)
 
 	gofunc(slotval1, slotval2)
@@ -707,8 +702,7 @@ func miqt_exec_callback_QWebEnginePage_FullScreenRequested(cb C.intptr_t, fullSc
 	}
 
 	// Convert all CABI parameters to Go parameters
-	fullScreenRequest_ret := fullScreenRequest
-	fullScreenRequest_goptr := newQWebEngineFullScreenRequest(fullScreenRequest_ret)
+	fullScreenRequest_goptr := newQWebEngineFullScreenRequest(fullScreenRequest)
 	fullScreenRequest_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *fullScreenRequest_goptr
 
@@ -730,8 +724,7 @@ func miqt_exec_callback_QWebEnginePage_QuotaRequested(cb C.intptr_t, quotaReques
 	}
 
 	// Convert all CABI parameters to Go parameters
-	quotaRequest_ret := quotaRequest
-	quotaRequest_goptr := newQWebEngineQuotaRequest(quotaRequest_ret)
+	quotaRequest_goptr := newQWebEngineQuotaRequest(quotaRequest)
 	quotaRequest_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *quotaRequest_goptr
 
@@ -753,8 +746,7 @@ func miqt_exec_callback_QWebEnginePage_RegisterProtocolHandlerRequested(cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	request_ret := request
-	request_goptr := newQWebEngineRegisterProtocolHandlerRequest(request_ret)
+	request_goptr := newQWebEngineRegisterProtocolHandlerRequest(request)
 	request_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *request_goptr
 
@@ -776,8 +768,7 @@ func miqt_exec_callback_QWebEnginePage_FileSystemAccessRequested(cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	request_ret := request
-	request_goptr := newQWebEngineFileSystemAccessRequest(request_ret)
+	request_goptr := newQWebEngineFileSystemAccessRequest(request)
 	request_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *request_goptr
 
@@ -799,8 +790,7 @@ func miqt_exec_callback_QWebEnginePage_SelectClientCertificate(cb C.intptr_t, cl
 	}
 
 	// Convert all CABI parameters to Go parameters
-	clientCertSelection_ret := clientCertSelection
-	clientCertSelection_goptr := newQWebEngineClientCertificateSelection(clientCertSelection_ret)
+	clientCertSelection_goptr := newQWebEngineClientCertificateSelection(clientCertSelection)
 	clientCertSelection_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *clientCertSelection_goptr
 
@@ -823,6 +813,7 @@ func miqt_exec_callback_QWebEnginePage_AuthenticationRequired(cb C.intptr_t, req
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQUrl(unsafe.Pointer(requestUrl))
+
 	slotval2 := network.UnsafeNewQAuthenticator(unsafe.Pointer(authenticator))
 
 	gofunc(slotval1, slotval2)
@@ -848,7 +839,9 @@ func miqt_exec_callback_QWebEnginePage_ProxyAuthenticationRequired(cb C.intptr_t
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQUrl(unsafe.Pointer(requestUrl))
+
 	slotval2 := network.UnsafeNewQAuthenticator(unsafe.Pointer(authenticator))
+
 	var proxyHost_ms C.struct_miqt_string = proxyHost
 	proxyHost_ret := C.GoStringN(proxyHost_ms.data, C.int(int64(proxyHost_ms.len)))
 	C.free(unsafe.Pointer(proxyHost_ms.data))
@@ -894,7 +887,7 @@ func miqt_exec_callback_QWebEnginePage_CertificateError(cb C.intptr_t, certifica
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebEngineCertificateError(unsafe.Pointer(certificateError))
+	slotval1 := newQWebEngineCertificateError(certificateError)
 
 	gofunc(slotval1)
 }
@@ -914,7 +907,7 @@ func miqt_exec_callback_QWebEnginePage_NavigationRequested(cb C.intptr_t, reques
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebEngineNavigationRequest(unsafe.Pointer(request), nil)
+	slotval1 := newQWebEngineNavigationRequest(request, nil)
 
 	gofunc(slotval1)
 }
@@ -934,7 +927,7 @@ func miqt_exec_callback_QWebEnginePage_NewWindowRequested(cb C.intptr_t, request
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebEngineNewWindowRequest(unsafe.Pointer(request), nil)
+	slotval1 := newQWebEngineNewWindowRequest(request, nil)
 
 	gofunc(slotval1)
 }
@@ -1246,7 +1239,7 @@ func miqt_exec_callback_QWebEnginePage_FindTextFinished(cb C.intptr_t, result *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebEngineFindTextResult(unsafe.Pointer(result))
+	slotval1 := newQWebEngineFindTextResult(result)
 
 	gofunc(slotval1)
 }
@@ -1414,7 +1407,8 @@ func miqt_exec_callback_QWebEnginePage_Event(self *C.QWebEnginePage, cb C.intptr
 
 func (this *QWebEnginePage) callVirtualBase_CreateWindow(typeVal QWebEnginePage__WebWindowType) *QWebEnginePage {
 
-	return UnsafeNewQWebEnginePage(unsafe.Pointer(C.QWebEnginePage_virtualbase_CreateWindow(unsafe.Pointer(this.h), (C.int)(typeVal))), nil)
+	return newQWebEnginePage(C.QWebEnginePage_virtualbase_CreateWindow(unsafe.Pointer(this.h), (C.int)(typeVal)), nil)
+
 }
 func (this *QWebEnginePage) OnCreateWindow(slot func(super func(typeVal QWebEnginePage__WebWindowType) *QWebEnginePage, typeVal QWebEnginePage__WebWindowType) *QWebEnginePage) {
 	if !this.isSubclass {
@@ -1553,6 +1547,7 @@ func miqt_exec_callback_QWebEnginePage_JavaScriptAlert(self *C.QWebEnginePage, c
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQUrl(unsafe.Pointer(securityOrigin))
+
 	var msg_ms C.struct_miqt_string = msg
 	msg_ret := C.GoStringN(msg_ms.data, C.int(int64(msg_ms.len)))
 	C.free(unsafe.Pointer(msg_ms.data))
@@ -1587,6 +1582,7 @@ func miqt_exec_callback_QWebEnginePage_JavaScriptConfirm(self *C.QWebEnginePage,
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQUrl(unsafe.Pointer(securityOrigin))
+
 	var msg_ms C.struct_miqt_string = msg
 	msg_ret := C.GoStringN(msg_ms.data, C.int(int64(msg_ms.len)))
 	C.free(unsafe.Pointer(msg_ms.data))
@@ -1664,6 +1660,7 @@ func miqt_exec_callback_QWebEnginePage_AcceptNavigationRequest(self *C.QWebEngin
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQUrl(unsafe.Pointer(url))
+
 	slotval2 := (QWebEnginePage__NavigationType)(typeVal)
 
 	slotval3 := (bool)(isMainFrame)
@@ -1695,6 +1692,7 @@ func miqt_exec_callback_QWebEnginePage_EventFilter(self *C.QWebEnginePage, cb C.
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QWebEnginePage{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

@@ -117,8 +117,7 @@ func (this *QCryptographicHash) Result() []byte {
 }
 
 func (this *QCryptographicHash) ResultView() *QByteArrayView {
-	_ret := C.QCryptographicHash_ResultView(this.h)
-	_goptr := newQByteArrayView(_ret)
+	_goptr := newQByteArrayView(C.QCryptographicHash_ResultView(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

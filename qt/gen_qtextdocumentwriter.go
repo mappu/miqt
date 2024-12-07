@@ -122,7 +122,7 @@ func (this *QTextDocumentWriter) SetDevice(device *QIODevice) {
 }
 
 func (this *QTextDocumentWriter) Device() *QIODevice {
-	return UnsafeNewQIODevice(unsafe.Pointer(C.QTextDocumentWriter_Device(this.h)), nil)
+	return newQIODevice(C.QTextDocumentWriter_Device(this.h), nil)
 }
 
 func (this *QTextDocumentWriter) SetFileName(fileName string) {
@@ -153,7 +153,7 @@ func (this *QTextDocumentWriter) SetCodec(codec *QTextCodec) {
 }
 
 func (this *QTextDocumentWriter) Codec() *QTextCodec {
-	return UnsafeNewQTextCodec(unsafe.Pointer(C.QTextDocumentWriter_Codec(this.h)))
+	return newQTextCodec(C.QTextDocumentWriter_Codec(this.h))
 }
 
 func QTextDocumentWriter_SupportedDocumentFormats() [][]byte {

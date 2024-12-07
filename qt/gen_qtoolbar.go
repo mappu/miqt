@@ -114,7 +114,7 @@ func NewQToolBar4(title string, parent *QWidget) *QToolBar {
 }
 
 func (this *QToolBar) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QToolBar_MetaObject(this.h)))
+	return newQMetaObject(C.QToolBar_MetaObject(this.h))
 }
 
 func (this *QToolBar) Metacast(param1 string) unsafe.Pointer {
@@ -178,7 +178,7 @@ func (this *QToolBar) AddAction(text string) *QAction {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return UnsafeNewQAction(unsafe.Pointer(C.QToolBar_AddAction(this.h, text_ms)), nil)
+	return newQAction(C.QToolBar_AddAction(this.h, text_ms), nil)
 }
 
 func (this *QToolBar) AddAction2(icon *QIcon, text string) *QAction {
@@ -186,47 +186,45 @@ func (this *QToolBar) AddAction2(icon *QIcon, text string) *QAction {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return UnsafeNewQAction(unsafe.Pointer(C.QToolBar_AddAction2(this.h, icon.cPointer(), text_ms)), nil)
+	return newQAction(C.QToolBar_AddAction2(this.h, icon.cPointer(), text_ms), nil)
 }
 
 func (this *QToolBar) AddSeparator() *QAction {
-	return UnsafeNewQAction(unsafe.Pointer(C.QToolBar_AddSeparator(this.h)), nil)
+	return newQAction(C.QToolBar_AddSeparator(this.h), nil)
 }
 
 func (this *QToolBar) InsertSeparator(before *QAction) *QAction {
-	return UnsafeNewQAction(unsafe.Pointer(C.QToolBar_InsertSeparator(this.h, before.cPointer())), nil)
+	return newQAction(C.QToolBar_InsertSeparator(this.h, before.cPointer()), nil)
 }
 
 func (this *QToolBar) AddWidget(widget *QWidget) *QAction {
-	return UnsafeNewQAction(unsafe.Pointer(C.QToolBar_AddWidget(this.h, widget.cPointer())), nil)
+	return newQAction(C.QToolBar_AddWidget(this.h, widget.cPointer()), nil)
 }
 
 func (this *QToolBar) InsertWidget(before *QAction, widget *QWidget) *QAction {
-	return UnsafeNewQAction(unsafe.Pointer(C.QToolBar_InsertWidget(this.h, before.cPointer(), widget.cPointer())), nil)
+	return newQAction(C.QToolBar_InsertWidget(this.h, before.cPointer(), widget.cPointer()), nil)
 }
 
 func (this *QToolBar) ActionGeometry(action *QAction) *QRect {
-	_ret := C.QToolBar_ActionGeometry(this.h, action.cPointer())
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QToolBar_ActionGeometry(this.h, action.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QToolBar) ActionAt(p *QPoint) *QAction {
-	return UnsafeNewQAction(unsafe.Pointer(C.QToolBar_ActionAt(this.h, p.cPointer())), nil)
+	return newQAction(C.QToolBar_ActionAt(this.h, p.cPointer()), nil)
 }
 
 func (this *QToolBar) ActionAt2(x int, y int) *QAction {
-	return UnsafeNewQAction(unsafe.Pointer(C.QToolBar_ActionAt2(this.h, (C.int)(x), (C.int)(y))), nil)
+	return newQAction(C.QToolBar_ActionAt2(this.h, (C.int)(x), (C.int)(y)), nil)
 }
 
 func (this *QToolBar) ToggleViewAction() *QAction {
-	return UnsafeNewQAction(unsafe.Pointer(C.QToolBar_ToggleViewAction(this.h)), nil)
+	return newQAction(C.QToolBar_ToggleViewAction(this.h), nil)
 }
 
 func (this *QToolBar) IconSize() *QSize {
-	_ret := C.QToolBar_IconSize(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QToolBar_IconSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -236,7 +234,7 @@ func (this *QToolBar) ToolButtonStyle() ToolButtonStyle {
 }
 
 func (this *QToolBar) WidgetForAction(action *QAction) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QToolBar_WidgetForAction(this.h, action.cPointer())), nil, nil)
+	return newQWidget(C.QToolBar_WidgetForAction(this.h, action.cPointer()), nil, nil)
 }
 
 func (this *QToolBar) IsFloatable() bool {
@@ -274,7 +272,7 @@ func miqt_exec_callback_QToolBar_ActionTriggered(cb C.intptr_t, action *C.QActio
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAction(unsafe.Pointer(action), nil)
+	slotval1 := newQAction(action, nil)
 
 	gofunc(slotval1)
 }
@@ -354,7 +352,7 @@ func miqt_exec_callback_QToolBar_IconSizeChanged(cb C.intptr_t, iconSize *C.QSiz
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQSize(unsafe.Pointer(iconSize))
+	slotval1 := newQSize(iconSize)
 
 	gofunc(slotval1)
 }
@@ -483,7 +481,7 @@ func miqt_exec_callback_QToolBar_ActionEvent(self *C.QToolBar, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQActionEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQActionEvent(event, nil)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -509,7 +507,7 @@ func miqt_exec_callback_QToolBar_ChangeEvent(self *C.QToolBar, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -535,7 +533,7 @@ func miqt_exec_callback_QToolBar_PaintEvent(self *C.QToolBar, cb C.intptr_t, eve
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQPaintEvent(event, nil)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -561,7 +559,7 @@ func miqt_exec_callback_QToolBar_Event(self *C.QToolBar, cb C.intptr_t, event *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QToolBar{h: self}).callVirtualBase_Event, slotval1)
 
@@ -622,8 +620,7 @@ func miqt_exec_callback_QToolBar_SetVisible(self *C.QToolBar, cb C.intptr_t, vis
 
 func (this *QToolBar) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QToolBar_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QToolBar_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -650,8 +647,7 @@ func miqt_exec_callback_QToolBar_SizeHint(self *C.QToolBar, cb C.intptr_t) *C.QS
 
 func (this *QToolBar) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QToolBar_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QToolBar_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -731,7 +727,8 @@ func miqt_exec_callback_QToolBar_HasHeightForWidth(self *C.QToolBar, cb C.intptr
 
 func (this *QToolBar) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QToolBar_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return newQPaintEngine(C.QToolBar_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+
 }
 func (this *QToolBar) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
 	if !this.isSubclass {
@@ -773,7 +770,7 @@ func miqt_exec_callback_QToolBar_MousePressEvent(self *C.QToolBar, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -799,7 +796,7 @@ func miqt_exec_callback_QToolBar_MouseReleaseEvent(self *C.QToolBar, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -825,7 +822,7 @@ func miqt_exec_callback_QToolBar_MouseDoubleClickEvent(self *C.QToolBar, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -851,7 +848,7 @@ func miqt_exec_callback_QToolBar_MouseMoveEvent(self *C.QToolBar, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -877,7 +874,7 @@ func miqt_exec_callback_QToolBar_WheelEvent(self *C.QToolBar, cb C.intptr_t, eve
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQWheelEvent(event, nil, nil)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -903,7 +900,7 @@ func miqt_exec_callback_QToolBar_KeyPressEvent(self *C.QToolBar, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -929,7 +926,7 @@ func miqt_exec_callback_QToolBar_KeyReleaseEvent(self *C.QToolBar, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -955,7 +952,7 @@ func miqt_exec_callback_QToolBar_FocusInEvent(self *C.QToolBar, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -981,7 +978,7 @@ func miqt_exec_callback_QToolBar_FocusOutEvent(self *C.QToolBar, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -1007,7 +1004,7 @@ func miqt_exec_callback_QToolBar_EnterEvent(self *C.QToolBar, cb C.intptr_t, eve
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_EnterEvent, slotval1)
 
@@ -1033,7 +1030,7 @@ func miqt_exec_callback_QToolBar_LeaveEvent(self *C.QToolBar, cb C.intptr_t, eve
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_LeaveEvent, slotval1)
 
@@ -1059,7 +1056,7 @@ func miqt_exec_callback_QToolBar_MoveEvent(self *C.QToolBar, cb C.intptr_t, even
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMoveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQMoveEvent(event, nil)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -1085,7 +1082,7 @@ func miqt_exec_callback_QToolBar_ResizeEvent(self *C.QToolBar, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQResizeEvent(event, nil)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -1111,7 +1108,7 @@ func miqt_exec_callback_QToolBar_CloseEvent(self *C.QToolBar, cb C.intptr_t, eve
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQCloseEvent(event, nil)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -1137,7 +1134,7 @@ func miqt_exec_callback_QToolBar_ContextMenuEvent(self *C.QToolBar, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQContextMenuEvent(event, nil, nil)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -1163,7 +1160,7 @@ func miqt_exec_callback_QToolBar_TabletEvent(self *C.QToolBar, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTabletEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQTabletEvent(event, nil, nil)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -1189,7 +1186,7 @@ func miqt_exec_callback_QToolBar_DragEnterEvent(self *C.QToolBar, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragEnterEvent(unsafe.Pointer(event), nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event, nil, nil, nil)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -1215,7 +1212,7 @@ func miqt_exec_callback_QToolBar_DragMoveEvent(self *C.QToolBar, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQDragMoveEvent(event, nil, nil)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1241,7 +1238,7 @@ func miqt_exec_callback_QToolBar_DragLeaveEvent(self *C.QToolBar, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragLeaveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDragLeaveEvent(event, nil)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1267,7 +1264,7 @@ func miqt_exec_callback_QToolBar_DropEvent(self *C.QToolBar, cb C.intptr_t, even
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDropEvent(event, nil)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1293,7 +1290,7 @@ func miqt_exec_callback_QToolBar_ShowEvent(self *C.QToolBar, cb C.intptr_t, even
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQShowEvent(event, nil)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1319,7 +1316,7 @@ func miqt_exec_callback_QToolBar_HideEvent(self *C.QToolBar, cb C.intptr_t, even
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHideEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQHideEvent(event, nil)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -1410,7 +1407,7 @@ func miqt_exec_callback_QToolBar_InitPainter(self *C.QToolBar, cb C.intptr_t, pa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval1 := newQPainter(painter)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_InitPainter, slotval1)
 
@@ -1418,7 +1415,8 @@ func miqt_exec_callback_QToolBar_InitPainter(self *C.QToolBar, cb C.intptr_t, pa
 
 func (this *QToolBar) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QToolBar_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer())))
+	return newQPaintDevice(C.QToolBar_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+
 }
 func (this *QToolBar) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
 	if !this.isSubclass {
@@ -1435,7 +1433,7 @@ func miqt_exec_callback_QToolBar_Redirected(self *C.QToolBar, cb C.intptr_t, off
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(offset))
+	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QToolBar{h: self}).callVirtualBase_Redirected, slotval1)
 
@@ -1445,7 +1443,8 @@ func miqt_exec_callback_QToolBar_Redirected(self *C.QToolBar, cb C.intptr_t, off
 
 func (this *QToolBar) callVirtualBase_SharedPainter() *QPainter {
 
-	return UnsafeNewQPainter(unsafe.Pointer(C.QToolBar_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+	return newQPainter(C.QToolBar_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+
 }
 func (this *QToolBar) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
 	if !this.isSubclass {
@@ -1487,7 +1486,7 @@ func miqt_exec_callback_QToolBar_InputMethodEvent(self *C.QToolBar, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQInputMethodEvent(param1, nil)
 
 	gofunc((&QToolBar{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -1495,8 +1494,7 @@ func miqt_exec_callback_QToolBar_InputMethodEvent(self *C.QToolBar, cb C.intptr_
 
 func (this *QToolBar) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_ret := C.QToolBar_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QToolBar_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

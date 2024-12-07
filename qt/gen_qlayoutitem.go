@@ -81,22 +81,19 @@ func NewQLayoutItem3(alignment AlignmentFlag) *QLayoutItem {
 }
 
 func (this *QLayoutItem) SizeHint() *QSize {
-	_ret := C.QLayoutItem_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QLayoutItem_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLayoutItem) MinimumSize() *QSize {
-	_ret := C.QLayoutItem_MinimumSize(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QLayoutItem_MinimumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLayoutItem) MaximumSize() *QSize {
-	_ret := C.QLayoutItem_MaximumSize(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QLayoutItem_MaximumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -110,8 +107,7 @@ func (this *QLayoutItem) SetGeometry(geometry *QRect) {
 }
 
 func (this *QLayoutItem) Geometry() *QRect {
-	_ret := C.QLayoutItem_Geometry(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QLayoutItem_Geometry(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -137,15 +133,15 @@ func (this *QLayoutItem) Invalidate() {
 }
 
 func (this *QLayoutItem) Widget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QLayoutItem_Widget(this.h)), nil, nil)
+	return newQWidget(C.QLayoutItem_Widget(this.h), nil, nil)
 }
 
 func (this *QLayoutItem) Layout() *QLayout {
-	return UnsafeNewQLayout(unsafe.Pointer(C.QLayoutItem_Layout(this.h)), nil, nil)
+	return newQLayout(C.QLayoutItem_Layout(this.h), nil, nil)
 }
 
 func (this *QLayoutItem) SpacerItem() *QSpacerItem {
-	return UnsafeNewQSpacerItem(unsafe.Pointer(C.QLayoutItem_SpacerItem(this.h)), nil)
+	return newQSpacerItem(C.QLayoutItem_SpacerItem(this.h), nil)
 }
 
 func (this *QLayoutItem) Alignment() AlignmentFlag {
@@ -250,7 +246,7 @@ func miqt_exec_callback_QLayoutItem_SetGeometry(self *C.QLayoutItem, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRect(unsafe.Pointer(geometry))
+	slotval1 := newQRect(geometry)
 
 	gofunc(slotval1)
 
@@ -400,7 +396,8 @@ func miqt_exec_callback_QLayoutItem_Invalidate(self *C.QLayoutItem, cb C.intptr_
 
 func (this *QLayoutItem) callVirtualBase_Widget() *QWidget {
 
-	return UnsafeNewQWidget(unsafe.Pointer(C.QLayoutItem_virtualbase_Widget(unsafe.Pointer(this.h))), nil, nil)
+	return newQWidget(C.QLayoutItem_virtualbase_Widget(unsafe.Pointer(this.h)), nil, nil)
+
 }
 func (this *QLayoutItem) OnWidget(slot func(super func() *QWidget) *QWidget) {
 	if !this.isSubclass {
@@ -424,7 +421,8 @@ func miqt_exec_callback_QLayoutItem_Widget(self *C.QLayoutItem, cb C.intptr_t) *
 
 func (this *QLayoutItem) callVirtualBase_Layout() *QLayout {
 
-	return UnsafeNewQLayout(unsafe.Pointer(C.QLayoutItem_virtualbase_Layout(unsafe.Pointer(this.h))), nil, nil)
+	return newQLayout(C.QLayoutItem_virtualbase_Layout(unsafe.Pointer(this.h)), nil, nil)
+
 }
 func (this *QLayoutItem) OnLayout(slot func(super func() *QLayout) *QLayout) {
 	if !this.isSubclass {
@@ -448,7 +446,8 @@ func miqt_exec_callback_QLayoutItem_Layout(self *C.QLayoutItem, cb C.intptr_t) *
 
 func (this *QLayoutItem) callVirtualBase_SpacerItem() *QSpacerItem {
 
-	return UnsafeNewQSpacerItem(unsafe.Pointer(C.QLayoutItem_virtualbase_SpacerItem(unsafe.Pointer(this.h))), nil)
+	return newQSpacerItem(C.QLayoutItem_virtualbase_SpacerItem(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QLayoutItem) OnSpacerItem(slot func(super func() *QSpacerItem) *QSpacerItem) {
 	if !this.isSubclass {
@@ -597,22 +596,19 @@ func (this *QSpacerItem) ChangeSize(w int, h int) {
 }
 
 func (this *QSpacerItem) SizeHint() *QSize {
-	_ret := C.QSpacerItem_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSpacerItem_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSpacerItem) MinimumSize() *QSize {
-	_ret := C.QSpacerItem_MinimumSize(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSpacerItem_MinimumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSpacerItem) MaximumSize() *QSize {
-	_ret := C.QSpacerItem_MaximumSize(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSpacerItem_MaximumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -630,19 +626,17 @@ func (this *QSpacerItem) SetGeometry(geometry *QRect) {
 }
 
 func (this *QSpacerItem) Geometry() *QRect {
-	_ret := C.QSpacerItem_Geometry(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QSpacerItem_Geometry(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSpacerItem) SpacerItem() *QSpacerItem {
-	return UnsafeNewQSpacerItem(unsafe.Pointer(C.QSpacerItem_SpacerItem(this.h)), nil)
+	return newQSpacerItem(C.QSpacerItem_SpacerItem(this.h), nil)
 }
 
 func (this *QSpacerItem) SizePolicy() *QSizePolicy {
-	_ret := C.QSpacerItem_SizePolicy(this.h)
-	_goptr := newQSizePolicy(_ret)
+	_goptr := newQSizePolicy(C.QSpacerItem_SizePolicy(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -657,8 +651,7 @@ func (this *QSpacerItem) ChangeSize4(w int, h int, hData QSizePolicy__Policy, vD
 
 func (this *QSpacerItem) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QSpacerItem_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSpacerItem_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -685,8 +678,7 @@ func miqt_exec_callback_QSpacerItem_SizeHint(self *C.QSpacerItem, cb C.intptr_t)
 
 func (this *QSpacerItem) callVirtualBase_MinimumSize() *QSize {
 
-	_ret := C.QSpacerItem_virtualbase_MinimumSize(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSpacerItem_virtualbase_MinimumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -713,8 +705,7 @@ func miqt_exec_callback_QSpacerItem_MinimumSize(self *C.QSpacerItem, cb C.intptr
 
 func (this *QSpacerItem) callVirtualBase_MaximumSize() *QSize {
 
-	_ret := C.QSpacerItem_virtualbase_MaximumSize(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSpacerItem_virtualbase_MaximumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -809,7 +800,7 @@ func miqt_exec_callback_QSpacerItem_SetGeometry(self *C.QSpacerItem, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRect(unsafe.Pointer(geometry))
+	slotval1 := newQRect(geometry)
 
 	gofunc((&QSpacerItem{h: self}).callVirtualBase_SetGeometry, slotval1)
 
@@ -817,8 +808,7 @@ func miqt_exec_callback_QSpacerItem_SetGeometry(self *C.QSpacerItem, cb C.intptr
 
 func (this *QSpacerItem) callVirtualBase_Geometry() *QRect {
 
-	_ret := C.QSpacerItem_virtualbase_Geometry(unsafe.Pointer(this.h))
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QSpacerItem_virtualbase_Geometry(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -845,7 +835,8 @@ func miqt_exec_callback_QSpacerItem_Geometry(self *C.QSpacerItem, cb C.intptr_t)
 
 func (this *QSpacerItem) callVirtualBase_SpacerItem() *QSpacerItem {
 
-	return UnsafeNewQSpacerItem(unsafe.Pointer(C.QSpacerItem_virtualbase_SpacerItem(unsafe.Pointer(this.h))), nil)
+	return newQSpacerItem(C.QSpacerItem_virtualbase_SpacerItem(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QSpacerItem) OnSpacerItem(slot func(super func() *QSpacerItem) *QSpacerItem) {
 	if !this.isSubclass {
@@ -973,7 +964,8 @@ func miqt_exec_callback_QSpacerItem_Invalidate(self *C.QSpacerItem, cb C.intptr_
 
 func (this *QSpacerItem) callVirtualBase_Widget() *QWidget {
 
-	return UnsafeNewQWidget(unsafe.Pointer(C.QSpacerItem_virtualbase_Widget(unsafe.Pointer(this.h))), nil, nil)
+	return newQWidget(C.QSpacerItem_virtualbase_Widget(unsafe.Pointer(this.h)), nil, nil)
+
 }
 func (this *QSpacerItem) OnWidget(slot func(super func() *QWidget) *QWidget) {
 	if !this.isSubclass {
@@ -997,7 +989,8 @@ func miqt_exec_callback_QSpacerItem_Widget(self *C.QSpacerItem, cb C.intptr_t) *
 
 func (this *QSpacerItem) callVirtualBase_Layout() *QLayout {
 
-	return UnsafeNewQLayout(unsafe.Pointer(C.QSpacerItem_virtualbase_Layout(unsafe.Pointer(this.h))), nil, nil)
+	return newQLayout(C.QSpacerItem_virtualbase_Layout(unsafe.Pointer(this.h)), nil, nil)
+
 }
 func (this *QSpacerItem) OnLayout(slot func(super func() *QLayout) *QLayout) {
 	if !this.isSubclass {
@@ -1109,22 +1102,19 @@ func NewQWidgetItem(w *QWidget) *QWidgetItem {
 }
 
 func (this *QWidgetItem) SizeHint() *QSize {
-	_ret := C.QWidgetItem_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QWidgetItem_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidgetItem) MinimumSize() *QSize {
-	_ret := C.QWidgetItem_MinimumSize(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QWidgetItem_MinimumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidgetItem) MaximumSize() *QSize {
-	_ret := C.QWidgetItem_MaximumSize(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QWidgetItem_MaximumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1142,14 +1132,13 @@ func (this *QWidgetItem) SetGeometry(geometry *QRect) {
 }
 
 func (this *QWidgetItem) Geometry() *QRect {
-	_ret := C.QWidgetItem_Geometry(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QWidgetItem_Geometry(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidgetItem) Widget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QWidgetItem_Widget(this.h)), nil, nil)
+	return newQWidget(C.QWidgetItem_Widget(this.h), nil, nil)
 }
 
 func (this *QWidgetItem) HasHeightForWidth() bool {
@@ -1166,8 +1155,7 @@ func (this *QWidgetItem) ControlTypes() QSizePolicy__ControlType {
 
 func (this *QWidgetItem) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QWidgetItem_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QWidgetItem_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1194,8 +1182,7 @@ func miqt_exec_callback_QWidgetItem_SizeHint(self *C.QWidgetItem, cb C.intptr_t)
 
 func (this *QWidgetItem) callVirtualBase_MinimumSize() *QSize {
 
-	_ret := C.QWidgetItem_virtualbase_MinimumSize(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QWidgetItem_virtualbase_MinimumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1222,8 +1209,7 @@ func miqt_exec_callback_QWidgetItem_MinimumSize(self *C.QWidgetItem, cb C.intptr
 
 func (this *QWidgetItem) callVirtualBase_MaximumSize() *QSize {
 
-	_ret := C.QWidgetItem_virtualbase_MaximumSize(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QWidgetItem_virtualbase_MaximumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1318,7 +1304,7 @@ func miqt_exec_callback_QWidgetItem_SetGeometry(self *C.QWidgetItem, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRect(unsafe.Pointer(geometry))
+	slotval1 := newQRect(geometry)
 
 	gofunc((&QWidgetItem{h: self}).callVirtualBase_SetGeometry, slotval1)
 
@@ -1326,8 +1312,7 @@ func miqt_exec_callback_QWidgetItem_SetGeometry(self *C.QWidgetItem, cb C.intptr
 
 func (this *QWidgetItem) callVirtualBase_Geometry() *QRect {
 
-	_ret := C.QWidgetItem_virtualbase_Geometry(unsafe.Pointer(this.h))
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QWidgetItem_virtualbase_Geometry(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1354,7 +1339,8 @@ func miqt_exec_callback_QWidgetItem_Geometry(self *C.QWidgetItem, cb C.intptr_t)
 
 func (this *QWidgetItem) callVirtualBase_Widget() *QWidget {
 
-	return UnsafeNewQWidget(unsafe.Pointer(C.QWidgetItem_virtualbase_Widget(unsafe.Pointer(this.h))), nil, nil)
+	return newQWidget(C.QWidgetItem_virtualbase_Widget(unsafe.Pointer(this.h)), nil, nil)
+
 }
 func (this *QWidgetItem) OnWidget(slot func(super func() *QWidget) *QWidget) {
 	if !this.isSubclass {
@@ -1507,7 +1493,8 @@ func miqt_exec_callback_QWidgetItem_Invalidate(self *C.QWidgetItem, cb C.intptr_
 
 func (this *QWidgetItem) callVirtualBase_Layout() *QLayout {
 
-	return UnsafeNewQLayout(unsafe.Pointer(C.QWidgetItem_virtualbase_Layout(unsafe.Pointer(this.h))), nil, nil)
+	return newQLayout(C.QWidgetItem_virtualbase_Layout(unsafe.Pointer(this.h)), nil, nil)
+
 }
 func (this *QWidgetItem) OnLayout(slot func(super func() *QLayout) *QLayout) {
 	if !this.isSubclass {
@@ -1531,7 +1518,8 @@ func miqt_exec_callback_QWidgetItem_Layout(self *C.QWidgetItem, cb C.intptr_t) *
 
 func (this *QWidgetItem) callVirtualBase_SpacerItem() *QSpacerItem {
 
-	return UnsafeNewQSpacerItem(unsafe.Pointer(C.QWidgetItem_virtualbase_SpacerItem(unsafe.Pointer(this.h))), nil)
+	return newQSpacerItem(C.QWidgetItem_virtualbase_SpacerItem(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QWidgetItem) OnSpacerItem(slot func(super func() *QSpacerItem) *QSpacerItem) {
 	if !this.isSubclass {
@@ -1619,22 +1607,19 @@ func NewQWidgetItemV2(widget *QWidget) *QWidgetItemV2 {
 }
 
 func (this *QWidgetItemV2) SizeHint() *QSize {
-	_ret := C.QWidgetItemV2_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QWidgetItemV2_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidgetItemV2) MinimumSize() *QSize {
-	_ret := C.QWidgetItemV2_MinimumSize(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QWidgetItemV2_MinimumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidgetItemV2) MaximumSize() *QSize {
-	_ret := C.QWidgetItemV2_MaximumSize(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QWidgetItemV2_MaximumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1645,8 +1630,7 @@ func (this *QWidgetItemV2) HeightForWidth(width int) int {
 
 func (this *QWidgetItemV2) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QWidgetItemV2_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QWidgetItemV2_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1673,8 +1657,7 @@ func miqt_exec_callback_QWidgetItemV2_SizeHint(self *C.QWidgetItemV2, cb C.intpt
 
 func (this *QWidgetItemV2) callVirtualBase_MinimumSize() *QSize {
 
-	_ret := C.QWidgetItemV2_virtualbase_MinimumSize(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QWidgetItemV2_virtualbase_MinimumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1701,8 +1684,7 @@ func miqt_exec_callback_QWidgetItemV2_MinimumSize(self *C.QWidgetItemV2, cb C.in
 
 func (this *QWidgetItemV2) callVirtualBase_MaximumSize() *QSize {
 
-	_ret := C.QWidgetItemV2_virtualbase_MaximumSize(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QWidgetItemV2_virtualbase_MaximumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1825,7 +1807,7 @@ func miqt_exec_callback_QWidgetItemV2_SetGeometry(self *C.QWidgetItemV2, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRect(unsafe.Pointer(geometry))
+	slotval1 := newQRect(geometry)
 
 	gofunc((&QWidgetItemV2{h: self}).callVirtualBase_SetGeometry, slotval1)
 
@@ -1833,8 +1815,7 @@ func miqt_exec_callback_QWidgetItemV2_SetGeometry(self *C.QWidgetItemV2, cb C.in
 
 func (this *QWidgetItemV2) callVirtualBase_Geometry() *QRect {
 
-	_ret := C.QWidgetItemV2_virtualbase_Geometry(unsafe.Pointer(this.h))
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QWidgetItemV2_virtualbase_Geometry(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1861,7 +1842,8 @@ func miqt_exec_callback_QWidgetItemV2_Geometry(self *C.QWidgetItemV2, cb C.intpt
 
 func (this *QWidgetItemV2) callVirtualBase_Widget() *QWidget {
 
-	return UnsafeNewQWidget(unsafe.Pointer(C.QWidgetItemV2_virtualbase_Widget(unsafe.Pointer(this.h))), nil, nil)
+	return newQWidget(C.QWidgetItemV2_virtualbase_Widget(unsafe.Pointer(this.h)), nil, nil)
+
 }
 func (this *QWidgetItemV2) OnWidget(slot func(super func() *QWidget) *QWidget) {
 	if !this.isSubclass {

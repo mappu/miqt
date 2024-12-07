@@ -86,15 +86,13 @@ func (this *QWebEngineNewWindowRequest) Destination() QWebEngineNewWindowRequest
 }
 
 func (this *QWebEngineNewWindowRequest) RequestedUrl() *qt6.QUrl {
-	_ret := C.QWebEngineNewWindowRequest_RequestedUrl(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineNewWindowRequest_RequestedUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineNewWindowRequest) RequestedGeometry() *qt6.QRect {
-	_ret := C.QWebEngineNewWindowRequest_RequestedGeometry(this.h)
-	_goptr := qt6.UnsafeNewQRect(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQRect(unsafe.Pointer(C.QWebEngineNewWindowRequest_RequestedGeometry(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

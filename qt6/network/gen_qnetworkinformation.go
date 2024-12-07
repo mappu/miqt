@@ -158,7 +158,7 @@ func QNetworkInformation_AvailableBackends() []string {
 }
 
 func QNetworkInformation_Instance() *QNetworkInformation {
-	return UnsafeNewQNetworkInformation(unsafe.Pointer(C.QNetworkInformation_Instance()), nil)
+	return newQNetworkInformation(C.QNetworkInformation_Instance(), nil)
 }
 
 func (this *QNetworkInformation) ReachabilityChanged(newReachability QNetworkInformation__Reachability) {

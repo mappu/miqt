@@ -138,8 +138,7 @@ func (this *QPicture) SaveWithFileName(fileName string) bool {
 }
 
 func (this *QPicture) BoundingRect() *QRect {
-	_ret := C.QPicture_BoundingRect(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QPicture_BoundingRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -165,7 +164,7 @@ func (this *QPicture) IsDetached() bool {
 }
 
 func (this *QPicture) PaintEngine() *QPaintEngine {
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QPicture_PaintEngine(this.h)))
+	return newQPaintEngine(C.QPicture_PaintEngine(this.h))
 }
 
 func (this *QPicture) callVirtualBase_DevType() int {
@@ -226,7 +225,8 @@ func miqt_exec_callback_QPicture_SetData(self *C.QPicture, cb C.intptr_t, data *
 
 func (this *QPicture) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QPicture_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return newQPaintEngine(C.QPicture_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+
 }
 func (this *QPicture) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
 	if !this.isSubclass {
@@ -296,7 +296,7 @@ func miqt_exec_callback_QPicture_InitPainter(self *C.QPicture, cb C.intptr_t, pa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval1 := newQPainter(painter)
 
 	gofunc((&QPicture{h: self}).callVirtualBase_InitPainter, slotval1)
 
@@ -304,7 +304,8 @@ func miqt_exec_callback_QPicture_InitPainter(self *C.QPicture, cb C.intptr_t, pa
 
 func (this *QPicture) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QPicture_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer())))
+	return newQPaintDevice(C.QPicture_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+
 }
 func (this *QPicture) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
 	if !this.isSubclass {
@@ -321,7 +322,7 @@ func miqt_exec_callback_QPicture_Redirected(self *C.QPicture, cb C.intptr_t, off
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(offset))
+	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QPicture{h: self}).callVirtualBase_Redirected, slotval1)
 
@@ -331,7 +332,8 @@ func miqt_exec_callback_QPicture_Redirected(self *C.QPicture, cb C.intptr_t, off
 
 func (this *QPicture) callVirtualBase_SharedPainter() *QPainter {
 
-	return UnsafeNewQPainter(unsafe.Pointer(C.QPicture_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+	return newQPainter(C.QPicture_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+
 }
 func (this *QPicture) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
 	if !this.isSubclass {

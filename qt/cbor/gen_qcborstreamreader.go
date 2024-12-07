@@ -171,8 +171,7 @@ func (this *QCborStreamReader) Reset() {
 }
 
 func (this *QCborStreamReader) LastError() *QCborError {
-	_ret := C.QCborStreamReader_LastError(this.h)
-	_goptr := newQCborError(_ret)
+	_goptr := newQCborError(C.QCborStreamReader_LastError(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

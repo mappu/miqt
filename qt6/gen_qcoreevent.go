@@ -279,7 +279,7 @@ func QEvent_RegisterEventType() int {
 }
 
 func (this *QEvent) Clone() *QEvent {
-	return UnsafeNewQEvent(unsafe.Pointer(C.QEvent_Clone(this.h)))
+	return newQEvent(C.QEvent_Clone(this.h))
 }
 
 func QEvent_RegisterEventType1(hint int) int {
@@ -314,7 +314,8 @@ func miqt_exec_callback_QEvent_SetAccepted(self *C.QEvent, cb C.intptr_t, accept
 
 func (this *QEvent) callVirtualBase_Clone() *QEvent {
 
-	return UnsafeNewQEvent(unsafe.Pointer(C.QEvent_virtualbase_Clone(unsafe.Pointer(this.h))))
+	return newQEvent(C.QEvent_virtualbase_Clone(unsafe.Pointer(this.h)))
+
 }
 func (this *QEvent) OnClone(slot func(super func() *QEvent) *QEvent) {
 	if !this.isSubclass {
@@ -401,7 +402,7 @@ func NewQTimerEvent(timerId int) *QTimerEvent {
 }
 
 func (this *QTimerEvent) Clone() *QTimerEvent {
-	return UnsafeNewQTimerEvent(unsafe.Pointer(C.QTimerEvent_Clone(this.h)), nil)
+	return newQTimerEvent(C.QTimerEvent_Clone(this.h), nil)
 }
 
 func (this *QTimerEvent) TimerId() int {
@@ -410,7 +411,8 @@ func (this *QTimerEvent) TimerId() int {
 
 func (this *QTimerEvent) callVirtualBase_Clone() *QTimerEvent {
 
-	return UnsafeNewQTimerEvent(unsafe.Pointer(C.QTimerEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQTimerEvent(C.QTimerEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QTimerEvent) OnClone(slot func(super func() *QTimerEvent) *QTimerEvent) {
 	if !this.isSubclass {
@@ -523,11 +525,11 @@ func NewQChildEvent(typeVal QEvent__Type, child *QObject) *QChildEvent {
 }
 
 func (this *QChildEvent) Clone() *QChildEvent {
-	return UnsafeNewQChildEvent(unsafe.Pointer(C.QChildEvent_Clone(this.h)), nil)
+	return newQChildEvent(C.QChildEvent_Clone(this.h), nil)
 }
 
 func (this *QChildEvent) Child() *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QChildEvent_Child(this.h)))
+	return newQObject(C.QChildEvent_Child(this.h))
 }
 
 func (this *QChildEvent) Added() bool {
@@ -544,7 +546,8 @@ func (this *QChildEvent) Removed() bool {
 
 func (this *QChildEvent) callVirtualBase_Clone() *QChildEvent {
 
-	return UnsafeNewQChildEvent(unsafe.Pointer(C.QChildEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQChildEvent(C.QChildEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QChildEvent) OnClone(slot func(super func() *QChildEvent) *QChildEvent) {
 	if !this.isSubclass {
@@ -660,7 +663,7 @@ func NewQDynamicPropertyChangeEvent(name []byte) *QDynamicPropertyChangeEvent {
 }
 
 func (this *QDynamicPropertyChangeEvent) Clone() *QDynamicPropertyChangeEvent {
-	return UnsafeNewQDynamicPropertyChangeEvent(unsafe.Pointer(C.QDynamicPropertyChangeEvent_Clone(this.h)), nil)
+	return newQDynamicPropertyChangeEvent(C.QDynamicPropertyChangeEvent_Clone(this.h), nil)
 }
 
 func (this *QDynamicPropertyChangeEvent) PropertyName() []byte {
@@ -672,7 +675,8 @@ func (this *QDynamicPropertyChangeEvent) PropertyName() []byte {
 
 func (this *QDynamicPropertyChangeEvent) callVirtualBase_Clone() *QDynamicPropertyChangeEvent {
 
-	return UnsafeNewQDynamicPropertyChangeEvent(unsafe.Pointer(C.QDynamicPropertyChangeEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQDynamicPropertyChangeEvent(C.QDynamicPropertyChangeEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QDynamicPropertyChangeEvent) OnClone(slot func(super func() *QDynamicPropertyChangeEvent) *QDynamicPropertyChangeEvent) {
 	if !this.isSubclass {

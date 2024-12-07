@@ -144,7 +144,7 @@ func (this *QGraphicsSvgItem) SetSharedRenderer(renderer *QSvgRenderer) {
 }
 
 func (this *QGraphicsSvgItem) Renderer() *QSvgRenderer {
-	return UnsafeNewQSvgRenderer(unsafe.Pointer(C.QGraphicsSvgItem_Renderer(this.h)), nil)
+	return newQSvgRenderer(C.QGraphicsSvgItem_Renderer(this.h), nil)
 }
 
 func (this *QGraphicsSvgItem) SetElementId(id string) {
@@ -175,15 +175,13 @@ func (this *QGraphicsSvgItem) SetMaximumCacheSize(size *qt6.QSize) {
 }
 
 func (this *QGraphicsSvgItem) MaximumCacheSize() *qt6.QSize {
-	_ret := C.QGraphicsSvgItem_MaximumCacheSize(this.h)
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QGraphicsSvgItem_MaximumCacheSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsSvgItem) BoundingRect() *qt6.QRectF {
-	_ret := C.QGraphicsSvgItem_BoundingRect(this.h)
-	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(C.QGraphicsSvgItem_BoundingRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -220,8 +218,7 @@ func QGraphicsSvgItem_Tr3(s string, c string, n int) string {
 
 func (this *QGraphicsSvgItem) callVirtualBase_BoundingRect() *qt6.QRectF {
 
-	_ret := C.QGraphicsSvgItem_virtualbase_BoundingRect(unsafe.Pointer(this.h))
-	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(C.QGraphicsSvgItem_virtualbase_BoundingRect(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -267,7 +264,9 @@ func miqt_exec_callback_QGraphicsSvgItem_Paint(self *C.QGraphicsSvgItem, cb C.in
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQPainter(unsafe.Pointer(painter))
+
 	slotval2 := qt6.UnsafeNewQStyleOptionGraphicsItem(unsafe.Pointer(option), nil)
+
 	slotval3 := qt6.UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
 
 	gofunc((&QGraphicsSvgItem{h: self}).callVirtualBase_Paint, slotval1, slotval2, slotval3)

@@ -76,7 +76,7 @@ func NewQFileSelector2(parent *QObject) *QFileSelector {
 }
 
 func (this *QFileSelector) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QFileSelector_MetaObject(this.h)))
+	return newQMetaObject(C.QFileSelector_MetaObject(this.h))
 }
 
 func (this *QFileSelector) Metacast(param1 string) unsafe.Pointer {
@@ -106,8 +106,7 @@ func (this *QFileSelector) Select(filePath string) string {
 }
 
 func (this *QFileSelector) SelectWithFilePath(filePath *QUrl) *QUrl {
-	_ret := C.QFileSelector_SelectWithFilePath(this.h, filePath.cPointer())
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QFileSelector_SelectWithFilePath(this.h, filePath.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -194,7 +193,7 @@ func miqt_exec_callback_QFileSelector_Event(self *C.QFileSelector, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QFileSelector{h: self}).callVirtualBase_Event, slotval1)
 
@@ -222,8 +221,9 @@ func miqt_exec_callback_QFileSelector_EventFilter(self *C.QFileSelector, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QFileSelector{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -251,7 +251,7 @@ func miqt_exec_callback_QFileSelector_TimerEvent(self *C.QFileSelector, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QFileSelector{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -277,7 +277,7 @@ func miqt_exec_callback_QFileSelector_ChildEvent(self *C.QFileSelector, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QFileSelector{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -303,7 +303,7 @@ func miqt_exec_callback_QFileSelector_CustomEvent(self *C.QFileSelector, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QFileSelector{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -329,7 +329,7 @@ func miqt_exec_callback_QFileSelector_ConnectNotify(self *C.QFileSelector, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QFileSelector{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -355,7 +355,7 @@ func miqt_exec_callback_QFileSelector_DisconnectNotify(self *C.QFileSelector, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QFileSelector{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

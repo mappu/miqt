@@ -97,7 +97,7 @@ func miqt_exec_callback_QMediaVideoProbeControl_VideoFrameProbed(cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVideoFrame(unsafe.Pointer(frame))
+	slotval1 := newQVideoFrame(frame)
 
 	gofunc(slotval1)
 }

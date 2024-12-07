@@ -79,7 +79,7 @@ func UnsafeNewQScroller(h unsafe.Pointer, h_QObject unsafe.Pointer) *QScroller {
 }
 
 func (this *QScroller) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QScroller_MetaObject(this.h)))
+	return newQMetaObject(C.QScroller_MetaObject(this.h))
 }
 
 func (this *QScroller) Metacast(param1 string) unsafe.Pointer {
@@ -111,11 +111,11 @@ func QScroller_HasScroller(target *QObject) bool {
 }
 
 func QScroller_Scroller(target *QObject) *QScroller {
-	return UnsafeNewQScroller(unsafe.Pointer(C.QScroller_Scroller(target.cPointer())), nil)
+	return newQScroller(C.QScroller_Scroller(target.cPointer()), nil)
 }
 
 func QScroller_ScrollerWithTarget(target *QObject) *QScroller {
-	return UnsafeNewQScroller(unsafe.Pointer(C.QScroller_ScrollerWithTarget(target.cPointer())), nil)
+	return newQScroller(C.QScroller_ScrollerWithTarget(target.cPointer()), nil)
 }
 
 func QScroller_GrabGesture(target *QObject) GestureType {
@@ -135,13 +135,13 @@ func QScroller_ActiveScrollers() []*QScroller {
 	_ret := make([]*QScroller, int(_ma.len))
 	_outCast := (*[0xffff]*C.QScroller)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQScroller(unsafe.Pointer(_outCast[i]), nil)
+		_ret[i] = newQScroller(_outCast[i], nil)
 	}
 	return _ret
 }
 
 func (this *QScroller) Target() *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QScroller_Target(this.h)))
+	return newQObject(C.QScroller_Target(this.h))
 }
 
 func (this *QScroller) State() QScroller__State {
@@ -157,29 +157,25 @@ func (this *QScroller) Stop() {
 }
 
 func (this *QScroller) Velocity() *QPointF {
-	_ret := C.QScroller_Velocity(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QScroller_Velocity(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScroller) FinalPosition() *QPointF {
-	_ret := C.QScroller_FinalPosition(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QScroller_FinalPosition(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScroller) PixelPerMeter() *QPointF {
-	_ret := C.QScroller_PixelPerMeter(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QScroller_PixelPerMeter(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScroller) ScrollerProperties() *QScrollerProperties {
-	_ret := C.QScroller_ScrollerProperties(this.h)
-	_goptr := newQScrollerProperties(_ret)
+	_goptr := newQScrollerProperties(C.QScroller_ScrollerProperties(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -271,7 +267,7 @@ func miqt_exec_callback_QScroller_ScrollerPropertiesChanged(cb C.intptr_t, param
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQScrollerProperties(unsafe.Pointer(param1))
+	slotval1 := newQScrollerProperties(param1)
 
 	gofunc(slotval1)
 }

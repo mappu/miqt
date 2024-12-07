@@ -174,7 +174,7 @@ func (this *QGraphicsLinearLayout) Count() int {
 }
 
 func (this *QGraphicsLinearLayout) ItemAt(index int) *QGraphicsLayoutItem {
-	return UnsafeNewQGraphicsLayoutItem(unsafe.Pointer(C.QGraphicsLinearLayout_ItemAt(this.h, (C.int)(index))))
+	return newQGraphicsLayoutItem(C.QGraphicsLinearLayout_ItemAt(this.h, (C.int)(index)))
 }
 
 func (this *QGraphicsLinearLayout) Invalidate() {
@@ -182,8 +182,7 @@ func (this *QGraphicsLinearLayout) Invalidate() {
 }
 
 func (this *QGraphicsLinearLayout) SizeHint(which SizeHint, constraint *QSizeF) *QSizeF {
-	_ret := C.QGraphicsLinearLayout_SizeHint(this.h, (C.int)(which), constraint.cPointer())
-	_goptr := newQSizeF(_ret)
+	_goptr := newQSizeF(C.QGraphicsLinearLayout_SizeHint(this.h, (C.int)(which), constraint.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -250,7 +249,7 @@ func miqt_exec_callback_QGraphicsLinearLayout_SetGeometry(self *C.QGraphicsLinea
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRectF(unsafe.Pointer(rect))
+	slotval1 := newQRectF(rect)
 
 	gofunc((&QGraphicsLinearLayout{h: self}).callVirtualBase_SetGeometry, slotval1)
 
@@ -283,7 +282,8 @@ func miqt_exec_callback_QGraphicsLinearLayout_Count(self *C.QGraphicsLinearLayou
 
 func (this *QGraphicsLinearLayout) callVirtualBase_ItemAt(index int) *QGraphicsLayoutItem {
 
-	return UnsafeNewQGraphicsLayoutItem(unsafe.Pointer(C.QGraphicsLinearLayout_virtualbase_ItemAt(unsafe.Pointer(this.h), (C.int)(index))))
+	return newQGraphicsLayoutItem(C.QGraphicsLinearLayout_virtualbase_ItemAt(unsafe.Pointer(this.h), (C.int)(index)))
+
 }
 func (this *QGraphicsLinearLayout) OnItemAt(slot func(super func(index int) *QGraphicsLayoutItem, index int) *QGraphicsLayoutItem) {
 	if !this.isSubclass {
@@ -333,8 +333,7 @@ func miqt_exec_callback_QGraphicsLinearLayout_Invalidate(self *C.QGraphicsLinear
 
 func (this *QGraphicsLinearLayout) callVirtualBase_SizeHint(which SizeHint, constraint *QSizeF) *QSizeF {
 
-	_ret := C.QGraphicsLinearLayout_virtualbase_SizeHint(unsafe.Pointer(this.h), (C.int)(which), constraint.cPointer())
-	_goptr := newQSizeF(_ret)
+	_goptr := newQSizeF(C.QGraphicsLinearLayout_virtualbase_SizeHint(unsafe.Pointer(this.h), (C.int)(which), constraint.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -356,7 +355,7 @@ func miqt_exec_callback_QGraphicsLinearLayout_SizeHint(self *C.QGraphicsLinearLa
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (SizeHint)(which)
 
-	slotval2 := UnsafeNewQSizeF(unsafe.Pointer(constraint))
+	slotval2 := newQSizeF(constraint)
 
 	virtualReturn := gofunc((&QGraphicsLinearLayout{h: self}).callVirtualBase_SizeHint, slotval1, slotval2)
 
@@ -439,7 +438,7 @@ func miqt_exec_callback_QGraphicsLinearLayout_WidgetEvent(self *C.QGraphicsLinea
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	gofunc((&QGraphicsLinearLayout{h: self}).callVirtualBase_WidgetEvent, slotval1)
 

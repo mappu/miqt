@@ -78,7 +78,7 @@ func NewQFinalState2(parent *QState) *QFinalState {
 }
 
 func (this *QFinalState) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QFinalState_MetaObject(this.h)))
+	return newQMetaObject(C.QFinalState_MetaObject(this.h))
 }
 
 func (this *QFinalState) Metacast(param1 string) unsafe.Pointer {
@@ -169,7 +169,7 @@ func miqt_exec_callback_QFinalState_OnEntry(self *C.QFinalState, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QFinalState{h: self}).callVirtualBase_OnEntry, slotval1)
 
@@ -195,7 +195,7 @@ func miqt_exec_callback_QFinalState_OnExit(self *C.QFinalState, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QFinalState{h: self}).callVirtualBase_OnExit, slotval1)
 
@@ -221,7 +221,7 @@ func miqt_exec_callback_QFinalState_Event(self *C.QFinalState, cb C.intptr_t, e 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QFinalState{h: self}).callVirtualBase_Event, slotval1)
 

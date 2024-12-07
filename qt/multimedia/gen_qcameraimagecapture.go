@@ -142,7 +142,7 @@ func (this *QCameraImageCapture) Availability() QMultimedia__AvailabilityStatus 
 }
 
 func (this *QCameraImageCapture) MediaObject() *QMediaObject {
-	return UnsafeNewQMediaObject(unsafe.Pointer(C.QCameraImageCapture_MediaObject(this.h)), nil)
+	return newQMediaObject(C.QCameraImageCapture_MediaObject(this.h), nil)
 }
 
 func (this *QCameraImageCapture) Error() QCameraImageCapture__Error {
@@ -189,8 +189,7 @@ func (this *QCameraImageCapture) SupportedResolutions() []qt.QSize {
 	_ret := make([]qt.QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_lv_ret))
+		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -198,8 +197,7 @@ func (this *QCameraImageCapture) SupportedResolutions() []qt.QSize {
 }
 
 func (this *QCameraImageCapture) EncodingSettings() *QImageEncoderSettings {
-	_ret := C.QCameraImageCapture_EncodingSettings(this.h)
-	_goptr := newQImageEncoderSettings(_ret)
+	_goptr := newQImageEncoderSettings(C.QCameraImageCapture_EncodingSettings(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -426,7 +424,7 @@ func miqt_exec_callback_QCameraImageCapture_ImageAvailable(cb C.intptr_t, id C.i
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (int)(id)
 
-	slotval2 := UnsafeNewQVideoFrame(unsafe.Pointer(frame))
+	slotval2 := newQVideoFrame(frame)
 
 	gofunc(slotval1, slotval2)
 }
@@ -509,8 +507,7 @@ func (this *QCameraImageCapture) SupportedResolutions1(settings *QImageEncoderSe
 	_ret := make([]qt.QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_lv_ret))
+		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -522,8 +519,7 @@ func (this *QCameraImageCapture) SupportedResolutions2(settings *QImageEncoderSe
 	_ret := make([]qt.QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_lv_ret))
+		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -540,7 +536,8 @@ func (this *QCameraImageCapture) Capture1(location string) int {
 
 func (this *QCameraImageCapture) callVirtualBase_MediaObject() *QMediaObject {
 
-	return UnsafeNewQMediaObject(unsafe.Pointer(C.QCameraImageCapture_virtualbase_MediaObject(unsafe.Pointer(this.h))), nil)
+	return newQMediaObject(C.QCameraImageCapture_virtualbase_MediaObject(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QCameraImageCapture) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
 	if !this.isSubclass {
@@ -582,7 +579,7 @@ func miqt_exec_callback_QCameraImageCapture_SetMediaObject(self *C.QCameraImageC
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMediaObject(unsafe.Pointer(mediaObject), nil)
+	slotval1 := newQMediaObject(mediaObject, nil)
 
 	virtualReturn := gofunc((&QCameraImageCapture{h: self}).callVirtualBase_SetMediaObject, slotval1)
 
@@ -639,6 +636,7 @@ func miqt_exec_callback_QCameraImageCapture_EventFilter(self *C.QCameraImageCapt
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QCameraImageCapture{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

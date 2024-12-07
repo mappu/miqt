@@ -68,21 +68,21 @@ func (this *QAudioSystemFactoryInterface) CreateInput(device []byte) *QAbstractA
 	device_alias := C.struct_miqt_string{}
 	device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
 	device_alias.len = C.size_t(len(device))
-	return UnsafeNewQAbstractAudioInput(unsafe.Pointer(C.QAudioSystemFactoryInterface_CreateInput(this.h, device_alias)), nil)
+	return newQAbstractAudioInput(C.QAudioSystemFactoryInterface_CreateInput(this.h, device_alias), nil)
 }
 
 func (this *QAudioSystemFactoryInterface) CreateOutput(device []byte) *QAbstractAudioOutput {
 	device_alias := C.struct_miqt_string{}
 	device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
 	device_alias.len = C.size_t(len(device))
-	return UnsafeNewQAbstractAudioOutput(unsafe.Pointer(C.QAudioSystemFactoryInterface_CreateOutput(this.h, device_alias)), nil)
+	return newQAbstractAudioOutput(C.QAudioSystemFactoryInterface_CreateOutput(this.h, device_alias), nil)
 }
 
 func (this *QAudioSystemFactoryInterface) CreateDeviceInfo(device []byte, mode QAudio__Mode) *QAbstractAudioDeviceInfo {
 	device_alias := C.struct_miqt_string{}
 	device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
 	device_alias.len = C.size_t(len(device))
-	return UnsafeNewQAbstractAudioDeviceInfo(unsafe.Pointer(C.QAudioSystemFactoryInterface_CreateDeviceInfo(this.h, device_alias, (C.int)(mode))), nil)
+	return newQAbstractAudioDeviceInfo(C.QAudioSystemFactoryInterface_CreateDeviceInfo(this.h, device_alias, (C.int)(mode)), nil)
 }
 
 func (this *QAudioSystemFactoryInterface) OperatorAssign(param1 *QAudioSystemFactoryInterface) {
@@ -214,21 +214,21 @@ func (this *QAudioSystemPlugin) CreateInput(device []byte) *QAbstractAudioInput 
 	device_alias := C.struct_miqt_string{}
 	device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
 	device_alias.len = C.size_t(len(device))
-	return UnsafeNewQAbstractAudioInput(unsafe.Pointer(C.QAudioSystemPlugin_CreateInput(this.h, device_alias)), nil)
+	return newQAbstractAudioInput(C.QAudioSystemPlugin_CreateInput(this.h, device_alias), nil)
 }
 
 func (this *QAudioSystemPlugin) CreateOutput(device []byte) *QAbstractAudioOutput {
 	device_alias := C.struct_miqt_string{}
 	device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
 	device_alias.len = C.size_t(len(device))
-	return UnsafeNewQAbstractAudioOutput(unsafe.Pointer(C.QAudioSystemPlugin_CreateOutput(this.h, device_alias)), nil)
+	return newQAbstractAudioOutput(C.QAudioSystemPlugin_CreateOutput(this.h, device_alias), nil)
 }
 
 func (this *QAudioSystemPlugin) CreateDeviceInfo(device []byte, mode QAudio__Mode) *QAbstractAudioDeviceInfo {
 	device_alias := C.struct_miqt_string{}
 	device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
 	device_alias.len = C.size_t(len(device))
-	return UnsafeNewQAbstractAudioDeviceInfo(unsafe.Pointer(C.QAudioSystemPlugin_CreateDeviceInfo(this.h, device_alias, (C.int)(mode))), nil)
+	return newQAbstractAudioDeviceInfo(C.QAudioSystemPlugin_CreateDeviceInfo(this.h, device_alias, (C.int)(mode)), nil)
 }
 
 func QAudioSystemPlugin_Tr2(s string, c string) string {
@@ -431,6 +431,7 @@ func miqt_exec_callback_QAudioSystemPlugin_EventFilter(self *C.QAudioSystemPlugi
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QAudioSystemPlugin{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

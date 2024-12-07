@@ -229,12 +229,11 @@ func (this *QCamera) IsActive() bool {
 }
 
 func (this *QCamera) CaptureSession() *QMediaCaptureSession {
-	return UnsafeNewQMediaCaptureSession(unsafe.Pointer(C.QCamera_CaptureSession(this.h)), nil)
+	return newQMediaCaptureSession(C.QCamera_CaptureSession(this.h), nil)
 }
 
 func (this *QCamera) CameraDevice() *QCameraDevice {
-	_ret := C.QCamera_CameraDevice(this.h)
-	_goptr := newQCameraDevice(_ret)
+	_goptr := newQCameraDevice(C.QCamera_CameraDevice(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -244,8 +243,7 @@ func (this *QCamera) SetCameraDevice(cameraDevice *QCameraDevice) {
 }
 
 func (this *QCamera) CameraFormat() *QCameraFormat {
-	_ret := C.QCamera_CameraFormat(this.h)
-	_goptr := newQCameraFormat(_ret)
+	_goptr := newQCameraFormat(C.QCamera_CameraFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -282,15 +280,13 @@ func (this *QCamera) IsFocusModeSupported(mode QCamera__FocusMode) bool {
 }
 
 func (this *QCamera) FocusPoint() *qt6.QPointF {
-	_ret := C.QCamera_FocusPoint(this.h)
-	_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(C.QCamera_FocusPoint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCamera) CustomFocusPoint() *qt6.QPointF {
-	_ret := C.QCamera_CustomFocusPoint(this.h)
-	_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(C.QCamera_CustomFocusPoint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1047,6 +1043,7 @@ func miqt_exec_callback_QCamera_EventFilter(self *C.QCamera, cb C.intptr_t, watc
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QCamera{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

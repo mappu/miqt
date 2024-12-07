@@ -97,15 +97,13 @@ func (this *QAudioDeviceInfo) IsFormatSupported(format *QAudioFormat) bool {
 }
 
 func (this *QAudioDeviceInfo) PreferredFormat() *QAudioFormat {
-	_ret := C.QAudioDeviceInfo_PreferredFormat(this.h)
-	_goptr := newQAudioFormat(_ret)
+	_goptr := newQAudioFormat(C.QAudioDeviceInfo_PreferredFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAudioDeviceInfo) NearestFormat(format *QAudioFormat) *QAudioFormat {
-	_ret := C.QAudioDeviceInfo_NearestFormat(this.h, format.cPointer())
-	_goptr := newQAudioFormat(_ret)
+	_goptr := newQAudioFormat(C.QAudioDeviceInfo_NearestFormat(this.h, format.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -181,15 +179,13 @@ func (this *QAudioDeviceInfo) Realm() string {
 }
 
 func QAudioDeviceInfo_DefaultInputDevice() *QAudioDeviceInfo {
-	_ret := C.QAudioDeviceInfo_DefaultInputDevice()
-	_goptr := newQAudioDeviceInfo(_ret)
+	_goptr := newQAudioDeviceInfo(C.QAudioDeviceInfo_DefaultInputDevice())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QAudioDeviceInfo_DefaultOutputDevice() *QAudioDeviceInfo {
-	_ret := C.QAudioDeviceInfo_DefaultOutputDevice()
-	_goptr := newQAudioDeviceInfo(_ret)
+	_goptr := newQAudioDeviceInfo(C.QAudioDeviceInfo_DefaultOutputDevice())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -199,8 +195,7 @@ func QAudioDeviceInfo_AvailableDevices(mode QAudio__Mode) []QAudioDeviceInfo {
 	_ret := make([]QAudioDeviceInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAudioDeviceInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQAudioDeviceInfo(_lv_ret)
+		_lv_goptr := newQAudioDeviceInfo(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}

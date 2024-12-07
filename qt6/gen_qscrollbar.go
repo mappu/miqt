@@ -110,7 +110,7 @@ func NewQScrollBar4(param1 Orientation, parent *QWidget) *QScrollBar {
 }
 
 func (this *QScrollBar) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QScrollBar_MetaObject(this.h)))
+	return newQMetaObject(C.QScrollBar_MetaObject(this.h))
 }
 
 func (this *QScrollBar) Metacast(param1 string) unsafe.Pointer {
@@ -129,8 +129,7 @@ func QScrollBar_Tr(s string) string {
 }
 
 func (this *QScrollBar) SizeHint() *QSize {
-	_ret := C.QScrollBar_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QScrollBar_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -163,8 +162,7 @@ func QScrollBar_Tr3(s string, c string, n int) string {
 
 func (this *QScrollBar) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QScrollBar_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QScrollBar_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -209,7 +207,7 @@ func miqt_exec_callback_QScrollBar_Event(self *C.QScrollBar, cb C.intptr_t, even
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QScrollBar{h: self}).callVirtualBase_Event, slotval1)
 
@@ -237,7 +235,7 @@ func miqt_exec_callback_QScrollBar_WheelEvent(self *C.QScrollBar, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(param1, nil, nil, nil, nil)
 
 	gofunc((&QScrollBar{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -263,7 +261,7 @@ func miqt_exec_callback_QScrollBar_PaintEvent(self *C.QScrollBar, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQPaintEvent(param1, nil)
 
 	gofunc((&QScrollBar{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -289,7 +287,7 @@ func miqt_exec_callback_QScrollBar_MousePressEvent(self *C.QScrollBar, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(param1, nil, nil, nil, nil)
 
 	gofunc((&QScrollBar{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -315,7 +313,7 @@ func miqt_exec_callback_QScrollBar_MouseReleaseEvent(self *C.QScrollBar, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(param1, nil, nil, nil, nil)
 
 	gofunc((&QScrollBar{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -341,7 +339,7 @@ func miqt_exec_callback_QScrollBar_MouseMoveEvent(self *C.QScrollBar, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(param1, nil, nil, nil, nil)
 
 	gofunc((&QScrollBar{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -367,7 +365,7 @@ func miqt_exec_callback_QScrollBar_HideEvent(self *C.QScrollBar, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHideEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQHideEvent(param1, nil)
 
 	gofunc((&QScrollBar{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -419,7 +417,7 @@ func miqt_exec_callback_QScrollBar_ContextMenuEvent(self *C.QScrollBar, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQContextMenuEvent(param1, nil, nil)
 
 	gofunc((&QScrollBar{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -445,7 +443,7 @@ func miqt_exec_callback_QScrollBar_InitStyleOption(self *C.QScrollBar, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStyleOptionSlider(unsafe.Pointer(option), nil, nil)
+	slotval1 := newQStyleOptionSlider(option, nil, nil)
 
 	gofunc((&QScrollBar{h: self}).callVirtualBase_InitStyleOption, slotval1)
 
@@ -471,7 +469,7 @@ func miqt_exec_callback_QScrollBar_KeyPressEvent(self *C.QScrollBar, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(ev), nil, nil)
+	slotval1 := newQKeyEvent(ev, nil, nil)
 
 	gofunc((&QScrollBar{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -497,7 +495,7 @@ func miqt_exec_callback_QScrollBar_TimerEvent(self *C.QScrollBar, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQTimerEvent(param1, nil)
 
 	gofunc((&QScrollBar{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -523,7 +521,7 @@ func miqt_exec_callback_QScrollBar_ChangeEvent(self *C.QScrollBar, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	gofunc((&QScrollBar{h: self}).callVirtualBase_ChangeEvent, slotval1)
 

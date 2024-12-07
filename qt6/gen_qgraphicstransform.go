@@ -76,7 +76,7 @@ func NewQGraphicsTransform2(parent *QObject) *QGraphicsTransform {
 }
 
 func (this *QGraphicsTransform) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsTransform_MetaObject(this.h)))
+	return newQMetaObject(C.QGraphicsTransform_MetaObject(this.h))
 }
 
 func (this *QGraphicsTransform) Metacast(param1 string) unsafe.Pointer {
@@ -134,7 +134,7 @@ func miqt_exec_callback_QGraphicsTransform_ApplyTo(self *C.QGraphicsTransform, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMatrix4x4(unsafe.Pointer(matrix))
+	slotval1 := newQMatrix4x4(matrix)
 
 	gofunc(slotval1)
 
@@ -160,7 +160,7 @@ func miqt_exec_callback_QGraphicsTransform_Event(self *C.QGraphicsTransform, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGraphicsTransform{h: self}).callVirtualBase_Event, slotval1)
 
@@ -188,8 +188,9 @@ func miqt_exec_callback_QGraphicsTransform_EventFilter(self *C.QGraphicsTransfor
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGraphicsTransform{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -217,7 +218,7 @@ func miqt_exec_callback_QGraphicsTransform_TimerEvent(self *C.QGraphicsTransform
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QGraphicsTransform{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -243,7 +244,7 @@ func miqt_exec_callback_QGraphicsTransform_ChildEvent(self *C.QGraphicsTransform
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QGraphicsTransform{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -269,7 +270,7 @@ func miqt_exec_callback_QGraphicsTransform_CustomEvent(self *C.QGraphicsTransfor
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QGraphicsTransform{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -295,7 +296,7 @@ func miqt_exec_callback_QGraphicsTransform_ConnectNotify(self *C.QGraphicsTransf
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QGraphicsTransform{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -321,7 +322,7 @@ func miqt_exec_callback_QGraphicsTransform_DisconnectNotify(self *C.QGraphicsTra
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QGraphicsTransform{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
@@ -405,7 +406,7 @@ func NewQGraphicsScale2(parent *QObject) *QGraphicsScale {
 }
 
 func (this *QGraphicsScale) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsScale_MetaObject(this.h)))
+	return newQMetaObject(C.QGraphicsScale_MetaObject(this.h))
 }
 
 func (this *QGraphicsScale) Metacast(param1 string) unsafe.Pointer {
@@ -424,8 +425,7 @@ func QGraphicsScale_Tr(s string) string {
 }
 
 func (this *QGraphicsScale) Origin() *QVector3D {
-	_ret := C.QGraphicsScale_Origin(this.h)
-	_goptr := newQVector3D(_ret)
+	_goptr := newQVector3D(C.QGraphicsScale_Origin(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -589,7 +589,7 @@ func miqt_exec_callback_QGraphicsScale_ApplyTo(self *C.QGraphicsScale, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMatrix4x4(unsafe.Pointer(matrix))
+	slotval1 := newQMatrix4x4(matrix)
 
 	gofunc((&QGraphicsScale{h: self}).callVirtualBase_ApplyTo, slotval1)
 
@@ -673,7 +673,7 @@ func NewQGraphicsRotation2(parent *QObject) *QGraphicsRotation {
 }
 
 func (this *QGraphicsRotation) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsRotation_MetaObject(this.h)))
+	return newQMetaObject(C.QGraphicsRotation_MetaObject(this.h))
 }
 
 func (this *QGraphicsRotation) Metacast(param1 string) unsafe.Pointer {
@@ -692,8 +692,7 @@ func QGraphicsRotation_Tr(s string) string {
 }
 
 func (this *QGraphicsRotation) Origin() *QVector3D {
-	_ret := C.QGraphicsRotation_Origin(this.h)
-	_goptr := newQVector3D(_ret)
+	_goptr := newQVector3D(C.QGraphicsRotation_Origin(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -711,8 +710,7 @@ func (this *QGraphicsRotation) SetAngle(angle float64) {
 }
 
 func (this *QGraphicsRotation) Axis() *QVector3D {
-	_ret := C.QGraphicsRotation_Axis(this.h)
-	_goptr := newQVector3D(_ret)
+	_goptr := newQVector3D(C.QGraphicsRotation_Axis(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -822,7 +820,7 @@ func miqt_exec_callback_QGraphicsRotation_ApplyTo(self *C.QGraphicsRotation, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMatrix4x4(unsafe.Pointer(matrix))
+	slotval1 := newQMatrix4x4(matrix)
 
 	gofunc((&QGraphicsRotation{h: self}).callVirtualBase_ApplyTo, slotval1)
 

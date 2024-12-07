@@ -113,7 +113,7 @@ func QCameraViewfinder_TrUtf8(s string) string {
 }
 
 func (this *QCameraViewfinder) MediaObject() *QMediaObject {
-	return UnsafeNewQMediaObject(unsafe.Pointer(C.QCameraViewfinder_MediaObject(this.h)), nil)
+	return newQMediaObject(C.QCameraViewfinder_MediaObject(this.h), nil)
 }
 
 func QCameraViewfinder_Tr2(s string, c string) string {
@@ -162,7 +162,8 @@ func QCameraViewfinder_TrUtf83(s string, c string, n int) string {
 
 func (this *QCameraViewfinder) callVirtualBase_MediaObject() *QMediaObject {
 
-	return UnsafeNewQMediaObject(unsafe.Pointer(C.QCameraViewfinder_virtualbase_MediaObject(unsafe.Pointer(this.h))), nil)
+	return newQMediaObject(C.QCameraViewfinder_virtualbase_MediaObject(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QCameraViewfinder) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
 	if !this.isSubclass {
@@ -204,7 +205,7 @@ func miqt_exec_callback_QCameraViewfinder_SetMediaObject(self *C.QCameraViewfind
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMediaObject(unsafe.Pointer(object), nil)
+	slotval1 := newQMediaObject(object, nil)
 
 	virtualReturn := gofunc((&QCameraViewfinder{h: self}).callVirtualBase_SetMediaObject, slotval1)
 
@@ -214,8 +215,7 @@ func miqt_exec_callback_QCameraViewfinder_SetMediaObject(self *C.QCameraViewfind
 
 func (this *QCameraViewfinder) callVirtualBase_SizeHint() *qt.QSize {
 
-	_ret := C.QCameraViewfinder_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QCameraViewfinder_virtualbase_SizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

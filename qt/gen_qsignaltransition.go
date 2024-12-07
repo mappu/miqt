@@ -106,7 +106,7 @@ func NewQSignalTransition4(sender *QObject, signal string, sourceState *QState) 
 }
 
 func (this *QSignalTransition) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSignalTransition_MetaObject(this.h)))
+	return newQMetaObject(C.QSignalTransition_MetaObject(this.h))
 }
 
 func (this *QSignalTransition) Metacast(param1 string) unsafe.Pointer {
@@ -134,7 +134,7 @@ func QSignalTransition_TrUtf8(s string) string {
 }
 
 func (this *QSignalTransition) SenderObject() *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QSignalTransition_SenderObject(this.h)))
+	return newQObject(C.QSignalTransition_SenderObject(this.h))
 }
 
 func (this *QSignalTransition) SetSenderObject(sender *QObject) {
@@ -219,7 +219,7 @@ func miqt_exec_callback_QSignalTransition_EventTest(self *C.QSignalTransition, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QSignalTransition{h: self}).callVirtualBase_EventTest, slotval1)
 
@@ -247,7 +247,7 @@ func miqt_exec_callback_QSignalTransition_OnTransition(self *C.QSignalTransition
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QSignalTransition{h: self}).callVirtualBase_OnTransition, slotval1)
 
@@ -273,7 +273,7 @@ func miqt_exec_callback_QSignalTransition_Event(self *C.QSignalTransition, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QSignalTransition{h: self}).callVirtualBase_Event, slotval1)
 

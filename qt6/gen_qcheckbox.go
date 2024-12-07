@@ -118,7 +118,7 @@ func NewQCheckBox4(text string, parent *QWidget) *QCheckBox {
 }
 
 func (this *QCheckBox) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QCheckBox_MetaObject(this.h)))
+	return newQMetaObject(C.QCheckBox_MetaObject(this.h))
 }
 
 func (this *QCheckBox) Metacast(param1 string) unsafe.Pointer {
@@ -137,15 +137,13 @@ func QCheckBox_Tr(s string) string {
 }
 
 func (this *QCheckBox) SizeHint() *QSize {
-	_ret := C.QCheckBox_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QCheckBox_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCheckBox) MinimumSizeHint() *QSize {
-	_ret := C.QCheckBox_MinimumSizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QCheckBox_MinimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -214,8 +212,7 @@ func (this *QCheckBox) SetTristate1(y bool) {
 
 func (this *QCheckBox) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QCheckBox_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QCheckBox_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -242,8 +239,7 @@ func miqt_exec_callback_QCheckBox_SizeHint(self *C.QCheckBox, cb C.intptr_t) *C.
 
 func (this *QCheckBox) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QCheckBox_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QCheckBox_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -288,7 +284,7 @@ func miqt_exec_callback_QCheckBox_Event(self *C.QCheckBox, cb C.intptr_t, e *C.Q
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QCheckBox{h: self}).callVirtualBase_Event, slotval1)
 
@@ -316,7 +312,7 @@ func miqt_exec_callback_QCheckBox_HitButton(self *C.QCheckBox, cb C.intptr_t, po
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(pos))
+	slotval1 := newQPoint(pos)
 
 	virtualReturn := gofunc((&QCheckBox{h: self}).callVirtualBase_HitButton, slotval1)
 
@@ -390,7 +386,7 @@ func miqt_exec_callback_QCheckBox_PaintEvent(self *C.QCheckBox, cb C.intptr_t, p
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQPaintEvent(param1, nil)
 
 	gofunc((&QCheckBox{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -416,7 +412,7 @@ func miqt_exec_callback_QCheckBox_MouseMoveEvent(self *C.QCheckBox, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(param1, nil, nil, nil, nil)
 
 	gofunc((&QCheckBox{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -442,7 +438,7 @@ func miqt_exec_callback_QCheckBox_InitStyleOption(self *C.QCheckBox, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStyleOptionButton(unsafe.Pointer(option), nil)
+	slotval1 := newQStyleOptionButton(option, nil)
 
 	gofunc((&QCheckBox{h: self}).callVirtualBase_InitStyleOption, slotval1)
 
@@ -468,7 +464,7 @@ func miqt_exec_callback_QCheckBox_KeyPressEvent(self *C.QCheckBox, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQKeyEvent(e, nil, nil)
 
 	gofunc((&QCheckBox{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -494,7 +490,7 @@ func miqt_exec_callback_QCheckBox_KeyReleaseEvent(self *C.QCheckBox, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQKeyEvent(e, nil, nil)
 
 	gofunc((&QCheckBox{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -520,7 +516,7 @@ func miqt_exec_callback_QCheckBox_MousePressEvent(self *C.QCheckBox, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(e, nil, nil, nil, nil)
 
 	gofunc((&QCheckBox{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -546,7 +542,7 @@ func miqt_exec_callback_QCheckBox_MouseReleaseEvent(self *C.QCheckBox, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(e, nil, nil, nil, nil)
 
 	gofunc((&QCheckBox{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -572,7 +568,7 @@ func miqt_exec_callback_QCheckBox_FocusInEvent(self *C.QCheckBox, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQFocusEvent(e, nil)
 
 	gofunc((&QCheckBox{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -598,7 +594,7 @@ func miqt_exec_callback_QCheckBox_FocusOutEvent(self *C.QCheckBox, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQFocusEvent(e, nil)
 
 	gofunc((&QCheckBox{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -624,7 +620,7 @@ func miqt_exec_callback_QCheckBox_ChangeEvent(self *C.QCheckBox, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	gofunc((&QCheckBox{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -650,7 +646,7 @@ func miqt_exec_callback_QCheckBox_TimerEvent(self *C.QCheckBox, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQTimerEvent(e, nil)
 
 	gofunc((&QCheckBox{h: self}).callVirtualBase_TimerEvent, slotval1)
 

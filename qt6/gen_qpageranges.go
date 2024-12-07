@@ -90,8 +90,7 @@ func (this *QPageRanges) ToRangeList() []QPageRanges__Range {
 	_ret := make([]QPageRanges__Range, int(_ma.len))
 	_outCast := (*[0xffff]*C.QPageRanges__Range)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQPageRanges__Range(_lv_ret)
+		_lv_goptr := newQPageRanges__Range(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -114,8 +113,7 @@ func QPageRanges_FromString(ranges string) *QPageRanges {
 	ranges_ms.data = C.CString(ranges)
 	ranges_ms.len = C.size_t(len(ranges))
 	defer C.free(unsafe.Pointer(ranges_ms.data))
-	_ret := C.QPageRanges_FromString(ranges_ms)
-	_goptr := newQPageRanges(_ret)
+	_goptr := newQPageRanges(C.QPageRanges_FromString(ranges_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

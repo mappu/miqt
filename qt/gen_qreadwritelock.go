@@ -173,7 +173,7 @@ func (this *QReadLocker) Relock() {
 }
 
 func (this *QReadLocker) ReadWriteLock() *QReadWriteLock {
-	return UnsafeNewQReadWriteLock(unsafe.Pointer(C.QReadLocker_ReadWriteLock(this.h)))
+	return newQReadWriteLock(C.QReadLocker_ReadWriteLock(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -245,7 +245,7 @@ func (this *QWriteLocker) Relock() {
 }
 
 func (this *QWriteLocker) ReadWriteLock() *QReadWriteLock {
-	return UnsafeNewQReadWriteLock(unsafe.Pointer(C.QWriteLocker_ReadWriteLock(this.h)))
+	return newQReadWriteLock(C.QWriteLocker_ReadWriteLock(this.h))
 }
 
 // Delete this object from C++ memory.

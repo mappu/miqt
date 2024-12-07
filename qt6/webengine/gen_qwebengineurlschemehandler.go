@@ -135,7 +135,7 @@ func miqt_exec_callback_QWebEngineUrlSchemeHandler_RequestStarted(self *C.QWebEn
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebEngineUrlRequestJob(unsafe.Pointer(param1), nil)
+	slotval1 := newQWebEngineUrlRequestJob(param1, nil)
 
 	gofunc(slotval1)
 
@@ -190,6 +190,7 @@ func miqt_exec_callback_QWebEngineUrlSchemeHandler_EventFilter(self *C.QWebEngin
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QWebEngineUrlSchemeHandler{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

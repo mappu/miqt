@@ -79,8 +79,7 @@ func (this *QWebEngineQuotaRequest) Reject() {
 }
 
 func (this *QWebEngineQuotaRequest) Origin() *qt.QUrl {
-	_ret := C.QWebEngineQuotaRequest_Origin(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineQuotaRequest_Origin(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

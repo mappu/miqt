@@ -178,25 +178,23 @@ func (this *QDeadlineTimer) SetPreciseDeadline(secs int64) {
 }
 
 func QDeadlineTimer_AddNSecs(dt QDeadlineTimer, nsecs int64) *QDeadlineTimer {
-	_ret := C.QDeadlineTimer_AddNSecs(dt.cPointer(), (C.longlong)(nsecs))
-	_goptr := newQDeadlineTimer(_ret)
+	_goptr := newQDeadlineTimer(C.QDeadlineTimer_AddNSecs(dt.cPointer(), (C.longlong)(nsecs)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QDeadlineTimer_Current() *QDeadlineTimer {
-	_ret := C.QDeadlineTimer_Current()
-	_goptr := newQDeadlineTimer(_ret)
+	_goptr := newQDeadlineTimer(C.QDeadlineTimer_Current())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDeadlineTimer) OperatorPlusAssign(msecs int64) *QDeadlineTimer {
-	return UnsafeNewQDeadlineTimer(unsafe.Pointer(C.QDeadlineTimer_OperatorPlusAssign(this.h, (C.longlong)(msecs))))
+	return newQDeadlineTimer(C.QDeadlineTimer_OperatorPlusAssign(this.h, (C.longlong)(msecs)))
 }
 
 func (this *QDeadlineTimer) OperatorMinusAssign(msecs int64) *QDeadlineTimer {
-	return UnsafeNewQDeadlineTimer(unsafe.Pointer(C.QDeadlineTimer_OperatorMinusAssign(this.h, (C.longlong)(msecs))))
+	return newQDeadlineTimer(C.QDeadlineTimer_OperatorMinusAssign(this.h, (C.longlong)(msecs)))
 }
 
 func (this *QDeadlineTimer) OperatorAssign(param1 *QDeadlineTimer) {
@@ -228,8 +226,7 @@ func (this *QDeadlineTimer) SetPreciseDeadline3(secs int64, nsecs int64, typeVal
 }
 
 func QDeadlineTimer_Current1(timerType TimerType) *QDeadlineTimer {
-	_ret := C.QDeadlineTimer_Current1((C.int)(timerType))
-	_goptr := newQDeadlineTimer(_ret)
+	_goptr := newQDeadlineTimer(C.QDeadlineTimer_Current1((C.int)(timerType)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -54,7 +54,7 @@ func UnsafeNewQAbstractState(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstr
 }
 
 func (this *QAbstractState) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractState_MetaObject(this.h)))
+	return newQMetaObject(C.QAbstractState_MetaObject(this.h))
 }
 
 func (this *QAbstractState) Metacast(param1 string) unsafe.Pointer {
@@ -82,11 +82,11 @@ func QAbstractState_TrUtf8(s string) string {
 }
 
 func (this *QAbstractState) ParentState() *QState {
-	return UnsafeNewQState(unsafe.Pointer(C.QAbstractState_ParentState(this.h)), nil, nil)
+	return newQState(C.QAbstractState_ParentState(this.h), nil, nil)
 }
 
 func (this *QAbstractState) Machine() *QStateMachine {
-	return UnsafeNewQStateMachine(unsafe.Pointer(C.QAbstractState_Machine(this.h)), nil, nil, nil)
+	return newQStateMachine(C.QAbstractState_Machine(this.h), nil, nil, nil)
 }
 
 func (this *QAbstractState) Active() bool {

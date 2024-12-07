@@ -136,8 +136,7 @@ func (this *QVideoFrame) PixelFormat() QVideoFrameFormat__PixelFormat {
 }
 
 func (this *QVideoFrame) SurfaceFormat() *QVideoFrameFormat {
-	_ret := C.QVideoFrame_SurfaceFormat(this.h)
-	_goptr := newQVideoFrameFormat(_ret)
+	_goptr := newQVideoFrameFormat(C.QVideoFrame_SurfaceFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -147,8 +146,7 @@ func (this *QVideoFrame) HandleType() QVideoFrame__HandleType {
 }
 
 func (this *QVideoFrame) Size() *qt6.QSize {
-	_ret := C.QVideoFrame_Size(this.h)
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QVideoFrame_Size(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -238,8 +236,7 @@ func (this *QVideoFrame) Mirrored() bool {
 }
 
 func (this *QVideoFrame) ToImage() *qt6.QImage {
-	_ret := C.QVideoFrame_ToImage(this.h)
-	_goptr := qt6.UnsafeNewQImage(unsafe.Pointer(_ret), nil)
+	_goptr := qt6.UnsafeNewQImage(unsafe.Pointer(C.QVideoFrame_ToImage(this.h)), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

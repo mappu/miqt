@@ -83,8 +83,7 @@ func QAbstractAudioDeviceInfo_TrUtf8(s string) string {
 }
 
 func (this *QAbstractAudioDeviceInfo) PreferredFormat() *QAudioFormat {
-	_ret := C.QAbstractAudioDeviceInfo_PreferredFormat(this.h)
-	_goptr := newQAudioFormat(_ret)
+	_goptr := newQAudioFormat(C.QAbstractAudioDeviceInfo_PreferredFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -357,8 +356,7 @@ func (this *QAbstractAudioOutput) SetFormat(fmt *QAudioFormat) {
 }
 
 func (this *QAbstractAudioOutput) Format() *QAudioFormat {
-	_ret := C.QAbstractAudioOutput_Format(this.h)
-	_goptr := newQAudioFormat(_ret)
+	_goptr := newQAudioFormat(C.QAbstractAudioOutput_Format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -637,8 +635,7 @@ func (this *QAbstractAudioInput) SetFormat(fmt *QAudioFormat) {
 }
 
 func (this *QAbstractAudioInput) Format() *QAudioFormat {
-	_ret := C.QAbstractAudioInput_Format(this.h)
-	_goptr := newQAudioFormat(_ret)
+	_goptr := newQAudioFormat(C.QAbstractAudioInput_Format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

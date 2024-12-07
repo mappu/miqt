@@ -136,8 +136,7 @@ func (this *QVersionNumber) MicroVersion() int {
 }
 
 func (this *QVersionNumber) Normalized() *QVersionNumber {
-	_ret := C.QVersionNumber_Normalized(this.h)
-	_goptr := newQVersionNumber(_ret)
+	_goptr := newQVersionNumber(C.QVersionNumber_Normalized(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -169,8 +168,7 @@ func QVersionNumber_Compare(v1 *QVersionNumber, v2 *QVersionNumber) int {
 }
 
 func QVersionNumber_CommonPrefix(v1 *QVersionNumber, v2 *QVersionNumber) *QVersionNumber {
-	_ret := C.QVersionNumber_CommonPrefix(v1.cPointer(), v2.cPointer())
-	_goptr := newQVersionNumber(_ret)
+	_goptr := newQVersionNumber(C.QVersionNumber_CommonPrefix(v1.cPointer(), v2.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -183,15 +181,13 @@ func (this *QVersionNumber) ToString() string {
 }
 
 func QVersionNumber_FromString(stringVal QAnyStringView) *QVersionNumber {
-	_ret := C.QVersionNumber_FromString(stringVal.cPointer())
-	_goptr := newQVersionNumber(_ret)
+	_goptr := newQVersionNumber(C.QVersionNumber_FromString(stringVal.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QVersionNumber_FromString2(stringVal QAnyStringView, suffixIndex *int64) *QVersionNumber {
-	_ret := C.QVersionNumber_FromString2(stringVal.cPointer(), (*C.ptrdiff_t)(unsafe.Pointer(suffixIndex)))
-	_goptr := newQVersionNumber(_ret)
+	_goptr := newQVersionNumber(C.QVersionNumber_FromString2(stringVal.cPointer(), (*C.ptrdiff_t)(unsafe.Pointer(suffixIndex))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -267,8 +263,7 @@ func NewQTypeRevision2(param1 *QTypeRevision) *QTypeRevision {
 }
 
 func QTypeRevision_Zero() *QTypeRevision {
-	_ret := C.QTypeRevision_Zero()
-	_goptr := newQTypeRevision(_ret)
+	_goptr := newQTypeRevision(C.QTypeRevision_Zero())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

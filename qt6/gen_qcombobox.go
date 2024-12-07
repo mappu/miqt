@@ -100,7 +100,7 @@ func NewQComboBox2() *QComboBox {
 }
 
 func (this *QComboBox) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QComboBox_MetaObject(this.h)))
+	return newQMetaObject(C.QComboBox_MetaObject(this.h))
 }
 
 func (this *QComboBox) Metacast(param1 string) unsafe.Pointer {
@@ -191,8 +191,7 @@ func (this *QComboBox) SetMinimumContentsLength(characters int) {
 }
 
 func (this *QComboBox) IconSize() *QSize {
-	_ret := C.QComboBox_IconSize(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QComboBox_IconSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -229,7 +228,7 @@ func (this *QComboBox) SetLineEdit(edit *QLineEdit) {
 }
 
 func (this *QComboBox) LineEdit() *QLineEdit {
-	return UnsafeNewQLineEdit(unsafe.Pointer(C.QComboBox_LineEdit(this.h)), nil, nil, nil)
+	return newQLineEdit(C.QComboBox_LineEdit(this.h), nil, nil, nil)
 }
 
 func (this *QComboBox) SetValidator(v *QValidator) {
@@ -237,7 +236,7 @@ func (this *QComboBox) SetValidator(v *QValidator) {
 }
 
 func (this *QComboBox) Validator() *QValidator {
-	return UnsafeNewQValidator(unsafe.Pointer(C.QComboBox_Validator(this.h)), nil)
+	return newQValidator(C.QComboBox_Validator(this.h), nil)
 }
 
 func (this *QComboBox) SetCompleter(c *QCompleter) {
@@ -245,11 +244,11 @@ func (this *QComboBox) SetCompleter(c *QCompleter) {
 }
 
 func (this *QComboBox) Completer() *QCompleter {
-	return UnsafeNewQCompleter(unsafe.Pointer(C.QComboBox_Completer(this.h)), nil)
+	return newQCompleter(C.QComboBox_Completer(this.h), nil)
 }
 
 func (this *QComboBox) ItemDelegate() *QAbstractItemDelegate {
-	return UnsafeNewQAbstractItemDelegate(unsafe.Pointer(C.QComboBox_ItemDelegate(this.h)), nil)
+	return newQAbstractItemDelegate(C.QComboBox_ItemDelegate(this.h), nil)
 }
 
 func (this *QComboBox) SetItemDelegate(delegate *QAbstractItemDelegate) {
@@ -257,7 +256,7 @@ func (this *QComboBox) SetItemDelegate(delegate *QAbstractItemDelegate) {
 }
 
 func (this *QComboBox) Model() *QAbstractItemModel {
-	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QComboBox_Model(this.h)), nil)
+	return newQAbstractItemModel(C.QComboBox_Model(this.h), nil)
 }
 
 func (this *QComboBox) SetModel(model *QAbstractItemModel) {
@@ -265,8 +264,7 @@ func (this *QComboBox) SetModel(model *QAbstractItemModel) {
 }
 
 func (this *QComboBox) RootModelIndex() *QModelIndex {
-	_ret := C.QComboBox_RootModelIndex(this.h)
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QComboBox_RootModelIndex(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -295,8 +293,7 @@ func (this *QComboBox) CurrentText() string {
 }
 
 func (this *QComboBox) CurrentData() *QVariant {
-	_ret := C.QComboBox_CurrentData(this.h)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QComboBox_CurrentData(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -309,15 +306,13 @@ func (this *QComboBox) ItemText(index int) string {
 }
 
 func (this *QComboBox) ItemIcon(index int) *QIcon {
-	_ret := C.QComboBox_ItemIcon(this.h, (C.int)(index))
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QComboBox_ItemIcon(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QComboBox) ItemData(index int) *QVariant {
-	_ret := C.QComboBox_ItemData(this.h, (C.int)(index))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QComboBox_ItemData(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -407,7 +402,7 @@ func (this *QComboBox) SetItemData(index int, value *QVariant) {
 }
 
 func (this *QComboBox) View() *QAbstractItemView {
-	return UnsafeNewQAbstractItemView(unsafe.Pointer(C.QComboBox_View(this.h)), nil, nil, nil, nil, nil)
+	return newQAbstractItemView(C.QComboBox_View(this.h), nil, nil, nil, nil, nil)
 }
 
 func (this *QComboBox) SetView(itemView *QAbstractItemView) {
@@ -415,15 +410,13 @@ func (this *QComboBox) SetView(itemView *QAbstractItemView) {
 }
 
 func (this *QComboBox) SizeHint() *QSize {
-	_ret := C.QComboBox_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QComboBox_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QComboBox) MinimumSizeHint() *QSize {
-	_ret := C.QComboBox_MinimumSizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QComboBox_MinimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -441,15 +434,13 @@ func (this *QComboBox) Event(event *QEvent) bool {
 }
 
 func (this *QComboBox) InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	_ret := C.QComboBox_InputMethodQuery(this.h, (C.int)(param1))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QComboBox_InputMethodQuery(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QComboBox) InputMethodQuery2(query InputMethodQuery, argument *QVariant) *QVariant {
-	_ret := C.QComboBox_InputMethodQuery2(this.h, (C.int)(query), argument.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QComboBox_InputMethodQuery2(this.h, (C.int)(query), argument.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -689,15 +680,13 @@ func (this *QComboBox) FindData3(data *QVariant, role int, flags MatchFlag) int 
 }
 
 func (this *QComboBox) CurrentData1(role int) *QVariant {
-	_ret := C.QComboBox_CurrentData1(this.h, (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QComboBox_CurrentData1(this.h, (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QComboBox) ItemData2(index int, role int) *QVariant {
-	_ret := C.QComboBox_ItemData2(this.h, (C.int)(index), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QComboBox_ItemData2(this.h, (C.int)(index), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -758,7 +747,7 @@ func miqt_exec_callback_QComboBox_SetModel(self *C.QComboBox, cb C.intptr_t, mod
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAbstractItemModel(unsafe.Pointer(model), nil)
+	slotval1 := newQAbstractItemModel(model, nil)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_SetModel, slotval1)
 
@@ -766,8 +755,7 @@ func miqt_exec_callback_QComboBox_SetModel(self *C.QComboBox, cb C.intptr_t, mod
 
 func (this *QComboBox) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QComboBox_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QComboBox_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -794,8 +782,7 @@ func miqt_exec_callback_QComboBox_SizeHint(self *C.QComboBox, cb C.intptr_t) *C.
 
 func (this *QComboBox) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QComboBox_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QComboBox_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -886,7 +873,7 @@ func miqt_exec_callback_QComboBox_Event(self *C.QComboBox, cb C.intptr_t, event 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QComboBox{h: self}).callVirtualBase_Event, slotval1)
 
@@ -896,8 +883,7 @@ func miqt_exec_callback_QComboBox_Event(self *C.QComboBox, cb C.intptr_t, event 
 
 func (this *QComboBox) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_ret := C.QComboBox_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QComboBox_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -945,7 +931,7 @@ func miqt_exec_callback_QComboBox_FocusInEvent(self *C.QComboBox, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQFocusEvent(e, nil)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -971,7 +957,7 @@ func miqt_exec_callback_QComboBox_FocusOutEvent(self *C.QComboBox, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQFocusEvent(e, nil)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -997,7 +983,7 @@ func miqt_exec_callback_QComboBox_ChangeEvent(self *C.QComboBox, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -1023,7 +1009,7 @@ func miqt_exec_callback_QComboBox_ResizeEvent(self *C.QComboBox, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQResizeEvent(e, nil)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -1049,7 +1035,7 @@ func miqt_exec_callback_QComboBox_PaintEvent(self *C.QComboBox, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQPaintEvent(e, nil)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -1075,7 +1061,7 @@ func miqt_exec_callback_QComboBox_ShowEvent(self *C.QComboBox, cb C.intptr_t, e 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQShowEvent(e, nil)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1101,7 +1087,7 @@ func miqt_exec_callback_QComboBox_HideEvent(self *C.QComboBox, cb C.intptr_t, e 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHideEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQHideEvent(e, nil)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -1127,7 +1113,7 @@ func miqt_exec_callback_QComboBox_MousePressEvent(self *C.QComboBox, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(e, nil, nil, nil, nil)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -1153,7 +1139,7 @@ func miqt_exec_callback_QComboBox_MouseReleaseEvent(self *C.QComboBox, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(e, nil, nil, nil, nil)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -1179,7 +1165,7 @@ func miqt_exec_callback_QComboBox_KeyPressEvent(self *C.QComboBox, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQKeyEvent(e, nil, nil)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -1205,7 +1191,7 @@ func miqt_exec_callback_QComboBox_KeyReleaseEvent(self *C.QComboBox, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQKeyEvent(e, nil, nil)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -1231,7 +1217,7 @@ func miqt_exec_callback_QComboBox_WheelEvent(self *C.QComboBox, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(e), nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(e, nil, nil, nil, nil)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -1257,7 +1243,7 @@ func miqt_exec_callback_QComboBox_ContextMenuEvent(self *C.QComboBox, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQContextMenuEvent(e, nil, nil)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -1283,7 +1269,7 @@ func miqt_exec_callback_QComboBox_InputMethodEvent(self *C.QComboBox, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQInputMethodEvent(param1, nil)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -1309,7 +1295,7 @@ func miqt_exec_callback_QComboBox_InitStyleOption(self *C.QComboBox, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStyleOptionComboBox(unsafe.Pointer(option), nil, nil)
+	slotval1 := newQStyleOptionComboBox(option, nil, nil)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_InitStyleOption, slotval1)
 
@@ -1421,7 +1407,8 @@ func miqt_exec_callback_QComboBox_HasHeightForWidth(self *C.QComboBox, cb C.intp
 
 func (this *QComboBox) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QComboBox_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return newQPaintEngine(C.QComboBox_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+
 }
 func (this *QComboBox) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
 	if !this.isSubclass {
@@ -1463,7 +1450,7 @@ func miqt_exec_callback_QComboBox_MouseDoubleClickEvent(self *C.QComboBox, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -1489,7 +1476,7 @@ func miqt_exec_callback_QComboBox_MouseMoveEvent(self *C.QComboBox, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -1515,7 +1502,7 @@ func miqt_exec_callback_QComboBox_EnterEvent(self *C.QComboBox, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEnterEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQEnterEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_EnterEvent, slotval1)
 
@@ -1541,7 +1528,7 @@ func miqt_exec_callback_QComboBox_LeaveEvent(self *C.QComboBox, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_LeaveEvent, slotval1)
 
@@ -1567,7 +1554,7 @@ func miqt_exec_callback_QComboBox_MoveEvent(self *C.QComboBox, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMoveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQMoveEvent(event, nil)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -1593,7 +1580,7 @@ func miqt_exec_callback_QComboBox_CloseEvent(self *C.QComboBox, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQCloseEvent(event, nil)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -1619,7 +1606,7 @@ func miqt_exec_callback_QComboBox_TabletEvent(self *C.QComboBox, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTabletEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQTabletEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -1645,7 +1632,7 @@ func miqt_exec_callback_QComboBox_ActionEvent(self *C.QComboBox, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQActionEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQActionEvent(event, nil)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -1671,7 +1658,7 @@ func miqt_exec_callback_QComboBox_DragEnterEvent(self *C.QComboBox, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragEnterEvent(unsafe.Pointer(event), nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event, nil, nil, nil)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -1697,7 +1684,7 @@ func miqt_exec_callback_QComboBox_DragMoveEvent(self *C.QComboBox, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQDragMoveEvent(event, nil, nil)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1723,7 +1710,7 @@ func miqt_exec_callback_QComboBox_DragLeaveEvent(self *C.QComboBox, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragLeaveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDragLeaveEvent(event, nil)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1749,7 +1736,7 @@ func miqt_exec_callback_QComboBox_DropEvent(self *C.QComboBox, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDropEvent(event, nil)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1840,7 +1827,7 @@ func miqt_exec_callback_QComboBox_InitPainter(self *C.QComboBox, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval1 := newQPainter(painter)
 
 	gofunc((&QComboBox{h: self}).callVirtualBase_InitPainter, slotval1)
 
@@ -1848,7 +1835,8 @@ func miqt_exec_callback_QComboBox_InitPainter(self *C.QComboBox, cb C.intptr_t, 
 
 func (this *QComboBox) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QComboBox_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer())))
+	return newQPaintDevice(C.QComboBox_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+
 }
 func (this *QComboBox) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
 	if !this.isSubclass {
@@ -1865,7 +1853,7 @@ func miqt_exec_callback_QComboBox_Redirected(self *C.QComboBox, cb C.intptr_t, o
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(offset))
+	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QComboBox{h: self}).callVirtualBase_Redirected, slotval1)
 
@@ -1875,7 +1863,8 @@ func miqt_exec_callback_QComboBox_Redirected(self *C.QComboBox, cb C.intptr_t, o
 
 func (this *QComboBox) callVirtualBase_SharedPainter() *QPainter {
 
-	return UnsafeNewQPainter(unsafe.Pointer(C.QComboBox_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+	return newQPainter(C.QComboBox_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+
 }
 func (this *QComboBox) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
 	if !this.isSubclass {

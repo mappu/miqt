@@ -133,8 +133,7 @@ func (this *QPrinterInfo) SupportedPageSizes() []qt6.QPageSize {
 	_ret := make([]qt6.QPageSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QPageSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := qt6.UnsafeNewQPageSize(unsafe.Pointer(_lv_ret))
+		_lv_goptr := qt6.UnsafeNewQPageSize(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -142,8 +141,7 @@ func (this *QPrinterInfo) SupportedPageSizes() []qt6.QPageSize {
 }
 
 func (this *QPrinterInfo) DefaultPageSize() *qt6.QPageSize {
-	_ret := C.QPrinterInfo_DefaultPageSize(this.h)
-	_goptr := qt6.UnsafeNewQPageSize(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQPageSize(unsafe.Pointer(C.QPrinterInfo_DefaultPageSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -153,15 +151,13 @@ func (this *QPrinterInfo) SupportsCustomPageSizes() bool {
 }
 
 func (this *QPrinterInfo) MinimumPhysicalPageSize() *qt6.QPageSize {
-	_ret := C.QPrinterInfo_MinimumPhysicalPageSize(this.h)
-	_goptr := qt6.UnsafeNewQPageSize(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQPageSize(unsafe.Pointer(C.QPrinterInfo_MinimumPhysicalPageSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPrinterInfo) MaximumPhysicalPageSize() *qt6.QPageSize {
-	_ret := C.QPrinterInfo_MaximumPhysicalPageSize(this.h)
-	_goptr := qt6.UnsafeNewQPageSize(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQPageSize(unsafe.Pointer(C.QPrinterInfo_MaximumPhysicalPageSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -222,8 +218,7 @@ func QPrinterInfo_AvailablePrinters() []QPrinterInfo {
 	_ret := make([]QPrinterInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QPrinterInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQPrinterInfo(_lv_ret)
+		_lv_goptr := newQPrinterInfo(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -238,8 +233,7 @@ func QPrinterInfo_DefaultPrinterName() string {
 }
 
 func QPrinterInfo_DefaultPrinter() *QPrinterInfo {
-	_ret := C.QPrinterInfo_DefaultPrinter()
-	_goptr := newQPrinterInfo(_ret)
+	_goptr := newQPrinterInfo(C.QPrinterInfo_DefaultPrinter())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -249,8 +243,7 @@ func QPrinterInfo_PrinterInfo(printerName string) *QPrinterInfo {
 	printerName_ms.data = C.CString(printerName)
 	printerName_ms.len = C.size_t(len(printerName))
 	defer C.free(unsafe.Pointer(printerName_ms.data))
-	_ret := C.QPrinterInfo_PrinterInfo(printerName_ms)
-	_goptr := newQPrinterInfo(_ret)
+	_goptr := newQPrinterInfo(C.QPrinterInfo_PrinterInfo(printerName_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

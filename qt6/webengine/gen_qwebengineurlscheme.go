@@ -168,8 +168,7 @@ func QWebEngineUrlScheme_SchemeByName(name []byte) *QWebEngineUrlScheme {
 	name_alias := C.struct_miqt_string{}
 	name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
 	name_alias.len = C.size_t(len(name))
-	_ret := C.QWebEngineUrlScheme_SchemeByName(name_alias)
-	_goptr := newQWebEngineUrlScheme(_ret)
+	_goptr := newQWebEngineUrlScheme(C.QWebEngineUrlScheme_SchemeByName(name_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

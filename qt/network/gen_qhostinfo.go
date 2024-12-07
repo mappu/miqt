@@ -115,8 +115,7 @@ func (this *QHostInfo) Addresses() []QHostAddress {
 	_ret := make([]QHostAddress, int(_ma.len))
 	_outCast := (*[0xffff]*C.QHostAddress)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQHostAddress(_lv_ret)
+		_lv_goptr := newQHostAddress(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -173,8 +172,7 @@ func QHostInfo_FromName(name string) *QHostInfo {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	_ret := C.QHostInfo_FromName(name_ms)
-	_goptr := newQHostInfo(_ret)
+	_goptr := newQHostInfo(C.QHostInfo_FromName(name_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

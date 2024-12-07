@@ -134,15 +134,13 @@ func (this *QStaticText) SetTextOption(textOption *QTextOption) {
 }
 
 func (this *QStaticText) TextOption() *QTextOption {
-	_ret := C.QStaticText_TextOption(this.h)
-	_goptr := newQTextOption(_ret)
+	_goptr := newQTextOption(C.QStaticText_TextOption(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStaticText) Size() *QSizeF {
-	_ret := C.QStaticText_Size(this.h)
-	_goptr := newQSizeF(_ret)
+	_goptr := newQSizeF(C.QStaticText_Size(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -106,7 +106,7 @@ func NewQPluginLoader4(fileName string, parent *QObject) *QPluginLoader {
 }
 
 func (this *QPluginLoader) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QPluginLoader_MetaObject(this.h)))
+	return newQMetaObject(C.QPluginLoader_MetaObject(this.h))
 }
 
 func (this *QPluginLoader) Metacast(param1 string) unsafe.Pointer {
@@ -134,12 +134,11 @@ func QPluginLoader_TrUtf8(s string) string {
 }
 
 func (this *QPluginLoader) Instance() *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QPluginLoader_Instance(this.h)))
+	return newQObject(C.QPluginLoader_Instance(this.h))
 }
 
 func (this *QPluginLoader) MetaData() *QJsonObject {
-	_ret := C.QPluginLoader_MetaData(this.h)
-	_goptr := newQJsonObject(_ret)
+	_goptr := newQJsonObject(C.QPluginLoader_MetaData(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -149,7 +148,7 @@ func QPluginLoader_StaticInstances() []*QObject {
 	_ret := make([]*QObject, int(_ma.len))
 	_outCast := (*[0xffff]*C.QObject)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQObject(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQObject(_outCast[i])
 	}
 	return _ret
 }
@@ -159,8 +158,7 @@ func QPluginLoader_StaticPlugins() []QStaticPlugin {
 	_ret := make([]QStaticPlugin, int(_ma.len))
 	_outCast := (*[0xffff]*C.QStaticPlugin)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_vv_ret := _outCast[i]
-		_vv_goptr := newQStaticPlugin(_vv_ret)
+		_vv_goptr := newQStaticPlugin(_outCast[i])
 		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_vv_goptr
 	}
@@ -273,7 +271,7 @@ func miqt_exec_callback_QPluginLoader_Event(self *C.QPluginLoader, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QPluginLoader{h: self}).callVirtualBase_Event, slotval1)
 
@@ -301,8 +299,9 @@ func miqt_exec_callback_QPluginLoader_EventFilter(self *C.QPluginLoader, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QPluginLoader{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -330,7 +329,7 @@ func miqt_exec_callback_QPluginLoader_TimerEvent(self *C.QPluginLoader, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QPluginLoader{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -356,7 +355,7 @@ func miqt_exec_callback_QPluginLoader_ChildEvent(self *C.QPluginLoader, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QPluginLoader{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -382,7 +381,7 @@ func miqt_exec_callback_QPluginLoader_CustomEvent(self *C.QPluginLoader, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QPluginLoader{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -408,7 +407,7 @@ func miqt_exec_callback_QPluginLoader_ConnectNotify(self *C.QPluginLoader, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QPluginLoader{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -434,7 +433,7 @@ func miqt_exec_callback_QPluginLoader_DisconnectNotify(self *C.QPluginLoader, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QPluginLoader{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

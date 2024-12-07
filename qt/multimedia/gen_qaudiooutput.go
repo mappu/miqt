@@ -149,8 +149,7 @@ func QAudioOutput_TrUtf8(s string) string {
 }
 
 func (this *QAudioOutput) Format() *QAudioFormat {
-	_ret := C.QAudioOutput_Format(this.h)
-	_goptr := newQAudioFormat(_ret)
+	_goptr := newQAudioFormat(C.QAudioOutput_Format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -372,6 +371,7 @@ func miqt_exec_callback_QAudioOutput_EventFilter(self *C.QAudioOutput, cb C.intp
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QAudioOutput{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

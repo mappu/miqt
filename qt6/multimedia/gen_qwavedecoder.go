@@ -126,8 +126,7 @@ func QWaveDecoder_Tr(s string) string {
 }
 
 func (this *QWaveDecoder) AudioFormat() *QAudioFormat {
-	_ret := C.QWaveDecoder_AudioFormat(this.h)
-	_goptr := newQAudioFormat(_ret)
+	_goptr := newQAudioFormat(C.QWaveDecoder_AudioFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

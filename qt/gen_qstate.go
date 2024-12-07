@@ -116,7 +116,7 @@ func NewQState4(childMode QState__ChildMode, parent *QState) *QState {
 }
 
 func (this *QState) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QState_MetaObject(this.h)))
+	return newQMetaObject(C.QState_MetaObject(this.h))
 }
 
 func (this *QState) Metacast(param1 string) unsafe.Pointer {
@@ -144,7 +144,7 @@ func QState_TrUtf8(s string) string {
 }
 
 func (this *QState) ErrorState() *QAbstractState {
-	return UnsafeNewQAbstractState(unsafe.Pointer(C.QState_ErrorState(this.h)), nil)
+	return newQAbstractState(C.QState_ErrorState(this.h), nil)
 }
 
 func (this *QState) SetErrorState(state *QAbstractState) {
@@ -158,11 +158,11 @@ func (this *QState) AddTransition(transition *QAbstractTransition) {
 func (this *QState) AddTransition2(sender *QObject, signal string, target *QAbstractState) *QSignalTransition {
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
-	return UnsafeNewQSignalTransition(unsafe.Pointer(C.QState_AddTransition2(this.h, sender.cPointer(), signal_Cstring, target.cPointer())), nil, nil)
+	return newQSignalTransition(C.QState_AddTransition2(this.h, sender.cPointer(), signal_Cstring, target.cPointer()), nil, nil)
 }
 
 func (this *QState) AddTransitionWithTarget(target *QAbstractState) *QAbstractTransition {
-	return UnsafeNewQAbstractTransition(unsafe.Pointer(C.QState_AddTransitionWithTarget(this.h, target.cPointer())), nil)
+	return newQAbstractTransition(C.QState_AddTransitionWithTarget(this.h, target.cPointer()), nil)
 }
 
 func (this *QState) RemoveTransition(transition *QAbstractTransition) {
@@ -174,13 +174,13 @@ func (this *QState) Transitions() []*QAbstractTransition {
 	_ret := make([]*QAbstractTransition, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractTransition)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQAbstractTransition(unsafe.Pointer(_outCast[i]), nil)
+		_ret[i] = newQAbstractTransition(_outCast[i], nil)
 	}
 	return _ret
 }
 
 func (this *QState) InitialState() *QAbstractState {
-	return UnsafeNewQAbstractState(unsafe.Pointer(C.QState_InitialState(this.h)), nil)
+	return newQAbstractState(C.QState_InitialState(this.h), nil)
 }
 
 func (this *QState) SetInitialState(state *QAbstractState) {
@@ -265,7 +265,7 @@ func miqt_exec_callback_QState_OnEntry(self *C.QState, cb C.intptr_t, event *C.Q
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QState{h: self}).callVirtualBase_OnEntry, slotval1)
 
@@ -291,7 +291,7 @@ func miqt_exec_callback_QState_OnExit(self *C.QState, cb C.intptr_t, event *C.QE
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QState{h: self}).callVirtualBase_OnExit, slotval1)
 
@@ -317,7 +317,7 @@ func miqt_exec_callback_QState_Event(self *C.QState, cb C.intptr_t, e *C.QEvent)
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QState{h: self}).callVirtualBase_Event, slotval1)
 

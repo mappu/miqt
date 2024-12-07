@@ -101,7 +101,7 @@ func NewQGesture2(parent *QObject) *QGesture {
 }
 
 func (this *QGesture) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGesture_MetaObject(this.h)))
+	return newQMetaObject(C.QGesture_MetaObject(this.h))
 }
 
 func (this *QGesture) Metacast(param1 string) unsafe.Pointer {
@@ -137,8 +137,7 @@ func (this *QGesture) State() GestureState {
 }
 
 func (this *QGesture) HotSpot() *QPointF {
-	_ret := C.QGesture_HotSpot(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QGesture_HotSpot(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -227,7 +226,7 @@ func miqt_exec_callback_QGesture_Event(self *C.QGesture, cb C.intptr_t, event *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGesture{h: self}).callVirtualBase_Event, slotval1)
 
@@ -255,8 +254,9 @@ func miqt_exec_callback_QGesture_EventFilter(self *C.QGesture, cb C.intptr_t, wa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGesture{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -284,7 +284,7 @@ func miqt_exec_callback_QGesture_TimerEvent(self *C.QGesture, cb C.intptr_t, eve
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QGesture{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -310,7 +310,7 @@ func miqt_exec_callback_QGesture_ChildEvent(self *C.QGesture, cb C.intptr_t, eve
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QGesture{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -336,7 +336,7 @@ func miqt_exec_callback_QGesture_CustomEvent(self *C.QGesture, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QGesture{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -362,7 +362,7 @@ func miqt_exec_callback_QGesture_ConnectNotify(self *C.QGesture, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QGesture{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -388,7 +388,7 @@ func miqt_exec_callback_QGesture_DisconnectNotify(self *C.QGesture, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QGesture{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
@@ -472,7 +472,7 @@ func NewQPanGesture2(parent *QObject) *QPanGesture {
 }
 
 func (this *QPanGesture) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QPanGesture_MetaObject(this.h)))
+	return newQMetaObject(C.QPanGesture_MetaObject(this.h))
 }
 
 func (this *QPanGesture) Metacast(param1 string) unsafe.Pointer {
@@ -500,22 +500,19 @@ func QPanGesture_TrUtf8(s string) string {
 }
 
 func (this *QPanGesture) LastOffset() *QPointF {
-	_ret := C.QPanGesture_LastOffset(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QPanGesture_LastOffset(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPanGesture) Offset() *QPointF {
-	_ret := C.QPanGesture_Offset(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QPanGesture_Offset(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPanGesture) Delta() *QPointF {
-	_ret := C.QPanGesture_Delta(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QPanGesture_Delta(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -658,7 +655,7 @@ func NewQPinchGesture2(parent *QObject) *QPinchGesture {
 }
 
 func (this *QPinchGesture) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QPinchGesture_MetaObject(this.h)))
+	return newQMetaObject(C.QPinchGesture_MetaObject(this.h))
 }
 
 func (this *QPinchGesture) Metacast(param1 string) unsafe.Pointer {
@@ -702,22 +699,19 @@ func (this *QPinchGesture) SetChangeFlags(value QPinchGesture__ChangeFlag) {
 }
 
 func (this *QPinchGesture) StartCenterPoint() *QPointF {
-	_ret := C.QPinchGesture_StartCenterPoint(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QPinchGesture_StartCenterPoint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPinchGesture) LastCenterPoint() *QPointF {
-	_ret := C.QPinchGesture_LastCenterPoint(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QPinchGesture_LastCenterPoint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPinchGesture) CenterPoint() *QPointF {
-	_ret := C.QPinchGesture_CenterPoint(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QPinchGesture_CenterPoint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -904,7 +898,7 @@ func NewQSwipeGesture2(parent *QObject) *QSwipeGesture {
 }
 
 func (this *QSwipeGesture) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSwipeGesture_MetaObject(this.h)))
+	return newQMetaObject(C.QSwipeGesture_MetaObject(this.h))
 }
 
 func (this *QSwipeGesture) Metacast(param1 string) unsafe.Pointer {
@@ -1069,7 +1063,7 @@ func NewQTapGesture2(parent *QObject) *QTapGesture {
 }
 
 func (this *QTapGesture) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTapGesture_MetaObject(this.h)))
+	return newQMetaObject(C.QTapGesture_MetaObject(this.h))
 }
 
 func (this *QTapGesture) Metacast(param1 string) unsafe.Pointer {
@@ -1097,8 +1091,7 @@ func QTapGesture_TrUtf8(s string) string {
 }
 
 func (this *QTapGesture) Position() *QPointF {
-	_ret := C.QTapGesture_Position(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QTapGesture_Position(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1229,7 +1222,7 @@ func NewQTapAndHoldGesture2(parent *QObject) *QTapAndHoldGesture {
 }
 
 func (this *QTapAndHoldGesture) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTapAndHoldGesture_MetaObject(this.h)))
+	return newQMetaObject(C.QTapAndHoldGesture_MetaObject(this.h))
 }
 
 func (this *QTapAndHoldGesture) Metacast(param1 string) unsafe.Pointer {
@@ -1257,8 +1250,7 @@ func QTapAndHoldGesture_TrUtf8(s string) string {
 }
 
 func (this *QTapAndHoldGesture) Position() *QPointF {
-	_ret := C.QTapAndHoldGesture_Position(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QTapAndHoldGesture_Position(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1405,13 +1397,13 @@ func (this *QGestureEvent) Gestures() []*QGesture {
 	_ret := make([]*QGesture, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGesture(unsafe.Pointer(_outCast[i]), nil)
+		_ret[i] = newQGesture(_outCast[i], nil)
 	}
 	return _ret
 }
 
 func (this *QGestureEvent) Gesture(typeVal GestureType) *QGesture {
-	return UnsafeNewQGesture(unsafe.Pointer(C.QGestureEvent_Gesture(this.h, (C.int)(typeVal))), nil)
+	return newQGesture(C.QGestureEvent_Gesture(this.h, (C.int)(typeVal)), nil)
 }
 
 func (this *QGestureEvent) ActiveGestures() []*QGesture {
@@ -1419,7 +1411,7 @@ func (this *QGestureEvent) ActiveGestures() []*QGesture {
 	_ret := make([]*QGesture, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGesture(unsafe.Pointer(_outCast[i]), nil)
+		_ret[i] = newQGesture(_outCast[i], nil)
 	}
 	return _ret
 }
@@ -1429,7 +1421,7 @@ func (this *QGestureEvent) CanceledGestures() []*QGesture {
 	_ret := make([]*QGesture, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGesture(unsafe.Pointer(_outCast[i]), nil)
+		_ret[i] = newQGesture(_outCast[i], nil)
 	}
 	return _ret
 }
@@ -1471,12 +1463,11 @@ func (this *QGestureEvent) SetWidget(widget *QWidget) {
 }
 
 func (this *QGestureEvent) Widget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QGestureEvent_Widget(this.h)), nil, nil)
+	return newQWidget(C.QGestureEvent_Widget(this.h), nil, nil)
 }
 
 func (this *QGestureEvent) MapToGraphicsScene(gesturePoint *QPointF) *QPointF {
-	_ret := C.QGestureEvent_MapToGraphicsScene(this.h, gesturePoint.cPointer())
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QGestureEvent_MapToGraphicsScene(this.h, gesturePoint.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

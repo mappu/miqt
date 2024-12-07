@@ -96,8 +96,7 @@ func (this *QSvgGenerator) SetDescription(description string) {
 }
 
 func (this *QSvgGenerator) Size() *qt.QSize {
-	_ret := C.QSvgGenerator_Size(this.h)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QSvgGenerator_Size(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -107,15 +106,13 @@ func (this *QSvgGenerator) SetSize(size *qt.QSize) {
 }
 
 func (this *QSvgGenerator) ViewBox() *qt.QRect {
-	_ret := C.QSvgGenerator_ViewBox(this.h)
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QSvgGenerator_ViewBox(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSvgGenerator) ViewBoxF() *qt.QRectF {
-	_ret := C.QSvgGenerator_ViewBoxF(this.h)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QSvgGenerator_ViewBoxF(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -162,6 +159,7 @@ func (this *QSvgGenerator) Resolution() int {
 func (this *QSvgGenerator) callVirtualBase_PaintEngine() *qt.QPaintEngine {
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QSvgGenerator_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+
 }
 func (this *QSvgGenerator) OnPaintEngine(slot func(super func() *qt.QPaintEngine) *qt.QPaintEngine) {
 	if !this.isSubclass {
@@ -265,6 +263,7 @@ func miqt_exec_callback_QSvgGenerator_InitPainter(self *C.QSvgGenerator, cb C.in
 func (this *QSvgGenerator) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QSvgGenerator_virtualbase_Redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
+
 }
 func (this *QSvgGenerator) OnRedirected(slot func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice) {
 	if !this.isSubclass {
@@ -292,6 +291,7 @@ func miqt_exec_callback_QSvgGenerator_Redirected(self *C.QSvgGenerator, cb C.int
 func (this *QSvgGenerator) callVirtualBase_SharedPainter() *qt.QPainter {
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QSvgGenerator_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+
 }
 func (this *QSvgGenerator) OnSharedPainter(slot func(super func() *qt.QPainter) *qt.QPainter) {
 	if !this.isSubclass {

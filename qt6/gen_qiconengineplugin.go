@@ -76,7 +76,7 @@ func NewQIconEnginePlugin2(parent *QObject) *QIconEnginePlugin {
 }
 
 func (this *QIconEnginePlugin) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QIconEnginePlugin_MetaObject(this.h)))
+	return newQMetaObject(C.QIconEnginePlugin_MetaObject(this.h))
 }
 
 func (this *QIconEnginePlugin) Metacast(param1 string) unsafe.Pointer {
@@ -99,7 +99,7 @@ func (this *QIconEnginePlugin) Create(filename string) *QIconEngine {
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
 	defer C.free(unsafe.Pointer(filename_ms.data))
-	return UnsafeNewQIconEngine(unsafe.Pointer(C.QIconEnginePlugin_Create(this.h, filename_ms)))
+	return newQIconEngine(C.QIconEnginePlugin_Create(this.h, filename_ms))
 }
 
 func QIconEnginePlugin_Tr2(s string, c string) string {
@@ -169,7 +169,7 @@ func miqt_exec_callback_QIconEnginePlugin_Event(self *C.QIconEnginePlugin, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QIconEnginePlugin{h: self}).callVirtualBase_Event, slotval1)
 
@@ -197,8 +197,9 @@ func miqt_exec_callback_QIconEnginePlugin_EventFilter(self *C.QIconEnginePlugin,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QIconEnginePlugin{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -226,7 +227,7 @@ func miqt_exec_callback_QIconEnginePlugin_TimerEvent(self *C.QIconEnginePlugin, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QIconEnginePlugin{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -252,7 +253,7 @@ func miqt_exec_callback_QIconEnginePlugin_ChildEvent(self *C.QIconEnginePlugin, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QIconEnginePlugin{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -278,7 +279,7 @@ func miqt_exec_callback_QIconEnginePlugin_CustomEvent(self *C.QIconEnginePlugin,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QIconEnginePlugin{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -304,7 +305,7 @@ func miqt_exec_callback_QIconEnginePlugin_ConnectNotify(self *C.QIconEnginePlugi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QIconEnginePlugin{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -330,7 +331,7 @@ func miqt_exec_callback_QIconEnginePlugin_DisconnectNotify(self *C.QIconEnginePl
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QIconEnginePlugin{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

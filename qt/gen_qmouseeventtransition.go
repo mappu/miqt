@@ -106,7 +106,7 @@ func NewQMouseEventTransition4(object *QObject, typeVal QEvent__Type, button Mou
 }
 
 func (this *QMouseEventTransition) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMouseEventTransition_MetaObject(this.h)))
+	return newQMetaObject(C.QMouseEventTransition_MetaObject(this.h))
 }
 
 func (this *QMouseEventTransition) Metacast(param1 string) unsafe.Pointer {
@@ -150,8 +150,7 @@ func (this *QMouseEventTransition) SetModifierMask(modifiers KeyboardModifier) {
 }
 
 func (this *QMouseEventTransition) HitTestPath() *QPainterPath {
-	_ret := C.QMouseEventTransition_HitTestPath(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QMouseEventTransition_HitTestPath(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -224,7 +223,7 @@ func miqt_exec_callback_QMouseEventTransition_OnTransition(self *C.QMouseEventTr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QMouseEventTransition{h: self}).callVirtualBase_OnTransition, slotval1)
 
@@ -250,7 +249,7 @@ func miqt_exec_callback_QMouseEventTransition_EventTest(self *C.QMouseEventTrans
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QMouseEventTransition{h: self}).callVirtualBase_EventTest, slotval1)
 
@@ -278,7 +277,7 @@ func miqt_exec_callback_QMouseEventTransition_Event(self *C.QMouseEventTransitio
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QMouseEventTransition{h: self}).callVirtualBase_Event, slotval1)
 

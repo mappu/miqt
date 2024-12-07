@@ -234,8 +234,7 @@ func (this *QProcessEnvironment) InsertWithQProcessEnvironment(e *QProcessEnviro
 }
 
 func QProcessEnvironment_SystemEnvironment() *QProcessEnvironment {
-	_ret := C.QProcessEnvironment_SystemEnvironment()
-	_goptr := newQProcessEnvironment(_ret)
+	_goptr := newQProcessEnvironment(C.QProcessEnvironment_SystemEnvironment())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -335,7 +334,7 @@ func NewQProcess2(parent *QObject) *QProcess {
 }
 
 func (this *QProcess) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QProcess_MetaObject(this.h)))
+	return newQMetaObject(C.QProcess_MetaObject(this.h))
 }
 
 func (this *QProcess) Metacast(param1 string) unsafe.Pointer {
@@ -530,8 +529,7 @@ func (this *QProcess) SetProcessEnvironment(environment *QProcessEnvironment) {
 }
 
 func (this *QProcess) ProcessEnvironment() *QProcessEnvironment {
-	_ret := C.QProcess_ProcessEnvironment(this.h)
-	_goptr := newQProcessEnvironment(_ret)
+	_goptr := newQProcessEnvironment(C.QProcess_ProcessEnvironment(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

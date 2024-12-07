@@ -180,22 +180,19 @@ func (this *QSvgRenderer) IsValid() bool {
 }
 
 func (this *QSvgRenderer) DefaultSize() *qt6.QSize {
-	_ret := C.QSvgRenderer_DefaultSize(this.h)
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QSvgRenderer_DefaultSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSvgRenderer) ViewBox() *qt6.QRect {
-	_ret := C.QSvgRenderer_ViewBox(this.h)
-	_goptr := qt6.UnsafeNewQRect(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQRect(unsafe.Pointer(C.QSvgRenderer_ViewBox(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSvgRenderer) ViewBoxF() *qt6.QRectF {
-	_ret := C.QSvgRenderer_ViewBoxF(this.h)
-	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(C.QSvgRenderer_ViewBoxF(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -245,8 +242,7 @@ func (this *QSvgRenderer) BoundsOnElement(id string) *qt6.QRectF {
 	id_ms.data = C.CString(id)
 	id_ms.len = C.size_t(len(id))
 	defer C.free(unsafe.Pointer(id_ms.data))
-	_ret := C.QSvgRenderer_BoundsOnElement(this.h, id_ms)
-	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(C.QSvgRenderer_BoundsOnElement(this.h, id_ms)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -264,8 +260,7 @@ func (this *QSvgRenderer) TransformForElement(id string) *qt6.QTransform {
 	id_ms.data = C.CString(id)
 	id_ms.len = C.size_t(len(id))
 	defer C.free(unsafe.Pointer(id_ms.data))
-	_ret := C.QSvgRenderer_TransformForElement(this.h, id_ms)
-	_goptr := qt6.UnsafeNewQTransform(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQTransform(unsafe.Pointer(C.QSvgRenderer_TransformForElement(this.h, id_ms)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -401,6 +396,7 @@ func miqt_exec_callback_QSvgRenderer_EventFilter(self *C.QSvgRenderer, cb C.intp
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QSvgRenderer{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

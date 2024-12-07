@@ -74,7 +74,7 @@ func NewQGestureRecognizer() *QGestureRecognizer {
 }
 
 func (this *QGestureRecognizer) Create(target *QObject) *QGesture {
-	return UnsafeNewQGesture(unsafe.Pointer(C.QGestureRecognizer_Create(this.h, target.cPointer())), nil)
+	return newQGesture(C.QGestureRecognizer_Create(this.h, target.cPointer()), nil)
 }
 
 func (this *QGestureRecognizer) Recognize(state *QGesture, watched *QObject, event *QEvent) QGestureRecognizer__ResultFlag {
@@ -99,7 +99,8 @@ func (this *QGestureRecognizer) OperatorAssign(param1 *QGestureRecognizer) {
 
 func (this *QGestureRecognizer) callVirtualBase_Create(target *QObject) *QGesture {
 
-	return UnsafeNewQGesture(unsafe.Pointer(C.QGestureRecognizer_virtualbase_Create(unsafe.Pointer(this.h), target.cPointer())), nil)
+	return newQGesture(C.QGestureRecognizer_virtualbase_Create(unsafe.Pointer(this.h), target.cPointer()), nil)
+
 }
 func (this *QGestureRecognizer) OnCreate(slot func(super func(target *QObject) *QGesture, target *QObject) *QGesture) {
 	if !this.isSubclass {
@@ -116,7 +117,7 @@ func miqt_exec_callback_QGestureRecognizer_Create(self *C.QGestureRecognizer, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(target))
+	slotval1 := newQObject(target)
 
 	virtualReturn := gofunc((&QGestureRecognizer{h: self}).callVirtualBase_Create, slotval1)
 
@@ -138,9 +139,11 @@ func miqt_exec_callback_QGestureRecognizer_Recognize(self *C.QGestureRecognizer,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGesture(unsafe.Pointer(state), nil)
-	slotval2 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval3 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQGesture(state, nil)
+
+	slotval2 := newQObject(watched)
+
+	slotval3 := newQEvent(event)
 
 	virtualReturn := gofunc(slotval1, slotval2, slotval3)
 
@@ -168,7 +171,7 @@ func miqt_exec_callback_QGestureRecognizer_Reset(self *C.QGestureRecognizer, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGesture(unsafe.Pointer(state), nil)
+	slotval1 := newQGesture(state, nil)
 
 	gofunc((&QGestureRecognizer{h: self}).callVirtualBase_Reset, slotval1)
 

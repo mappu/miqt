@@ -65,15 +65,13 @@ func (this *QWebHistoryItem) OperatorAssign(other *QWebHistoryItem) {
 }
 
 func (this *QWebHistoryItem) OriginalUrl() *qt.QUrl {
-	_ret := C.QWebHistoryItem_OriginalUrl(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebHistoryItem_OriginalUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHistoryItem) Url() *qt.QUrl {
-	_ret := C.QWebHistoryItem_Url(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebHistoryItem_Url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -86,22 +84,19 @@ func (this *QWebHistoryItem) Title() string {
 }
 
 func (this *QWebHistoryItem) LastVisited() *qt.QDateTime {
-	_ret := C.QWebHistoryItem_LastVisited(this.h)
-	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(C.QWebHistoryItem_LastVisited(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHistoryItem) Icon() *qt.QIcon {
-	_ret := C.QWebHistoryItem_Icon(this.h)
-	_goptr := qt.UnsafeNewQIcon(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQIcon(unsafe.Pointer(C.QWebHistoryItem_Icon(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHistoryItem) UserData() *qt.QVariant {
-	_ret := C.QWebHistoryItem_UserData(this.h)
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QWebHistoryItem_UserData(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -124,8 +119,7 @@ func (this *QWebHistoryItem) ToMap() map[string]qt.QVariant {
 		_mapkey_ret := C.GoStringN(_mapkey_ms.data, C.int(int64(_mapkey_ms.len)))
 		C.free(unsafe.Pointer(_mapkey_ms.data))
 		_entry_Key := _mapkey_ret
-		_mapval_ret := _Values[i]
-		_mapval_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_mapval_ret))
+		_mapval_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_Values[i]))
 		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_entry_Value := *_mapval_goptr
 
@@ -216,8 +210,7 @@ func (this *QWebHistory) Items() []QWebHistoryItem {
 	_ret := make([]QWebHistoryItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWebHistoryItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQWebHistoryItem(_lv_ret)
+		_lv_goptr := newQWebHistoryItem(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -229,8 +222,7 @@ func (this *QWebHistory) BackItems(maxItems int) []QWebHistoryItem {
 	_ret := make([]QWebHistoryItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWebHistoryItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQWebHistoryItem(_lv_ret)
+		_lv_goptr := newQWebHistoryItem(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -242,8 +234,7 @@ func (this *QWebHistory) ForwardItems(maxItems int) []QWebHistoryItem {
 	_ret := make([]QWebHistoryItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWebHistoryItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQWebHistoryItem(_lv_ret)
+		_lv_goptr := newQWebHistoryItem(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -271,29 +262,25 @@ func (this *QWebHistory) GoToItem(item *QWebHistoryItem) {
 }
 
 func (this *QWebHistory) BackItem() *QWebHistoryItem {
-	_ret := C.QWebHistory_BackItem(this.h)
-	_goptr := newQWebHistoryItem(_ret)
+	_goptr := newQWebHistoryItem(C.QWebHistory_BackItem(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHistory) CurrentItem() *QWebHistoryItem {
-	_ret := C.QWebHistory_CurrentItem(this.h)
-	_goptr := newQWebHistoryItem(_ret)
+	_goptr := newQWebHistoryItem(C.QWebHistory_CurrentItem(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHistory) ForwardItem() *QWebHistoryItem {
-	_ret := C.QWebHistory_ForwardItem(this.h)
-	_goptr := newQWebHistoryItem(_ret)
+	_goptr := newQWebHistoryItem(C.QWebHistory_ForwardItem(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHistory) ItemAt(i int) *QWebHistoryItem {
-	_ret := C.QWebHistory_ItemAt(this.h, (C.int)(i))
-	_goptr := newQWebHistoryItem(_ret)
+	_goptr := newQWebHistoryItem(C.QWebHistory_ItemAt(this.h, (C.int)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -324,8 +311,7 @@ func (this *QWebHistory) ToMap() map[string]qt.QVariant {
 		_mapkey_ret := C.GoStringN(_mapkey_ms.data, C.int(int64(_mapkey_ms.len)))
 		C.free(unsafe.Pointer(_mapkey_ms.data))
 		_entry_Key := _mapkey_ret
-		_mapval_ret := _Values[i]
-		_mapval_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_mapval_ret))
+		_mapval_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_Values[i]))
 		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_entry_Value := *_mapval_goptr
 

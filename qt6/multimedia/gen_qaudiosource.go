@@ -144,8 +144,7 @@ func (this *QAudioSource) IsNull() bool {
 }
 
 func (this *QAudioSource) Format() *QAudioFormat {
-	_ret := C.QAudioSource_Format(this.h)
-	_goptr := newQAudioFormat(_ret)
+	_goptr := newQAudioFormat(C.QAudioSource_Format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -301,6 +300,7 @@ func miqt_exec_callback_QAudioSource_EventFilter(self *C.QAudioSource, cb C.intp
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QAudioSource{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

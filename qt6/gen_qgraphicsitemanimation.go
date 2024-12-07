@@ -76,7 +76,7 @@ func NewQGraphicsItemAnimation2(parent *QObject) *QGraphicsItemAnimation {
 }
 
 func (this *QGraphicsItemAnimation) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsItemAnimation_MetaObject(this.h)))
+	return newQMetaObject(C.QGraphicsItemAnimation_MetaObject(this.h))
 }
 
 func (this *QGraphicsItemAnimation) Metacast(param1 string) unsafe.Pointer {
@@ -95,7 +95,7 @@ func QGraphicsItemAnimation_Tr(s string) string {
 }
 
 func (this *QGraphicsItemAnimation) Item() *QGraphicsItem {
-	return UnsafeNewQGraphicsItem(unsafe.Pointer(C.QGraphicsItemAnimation_Item(this.h)))
+	return newQGraphicsItem(C.QGraphicsItemAnimation_Item(this.h))
 }
 
 func (this *QGraphicsItemAnimation) SetItem(item *QGraphicsItem) {
@@ -103,7 +103,7 @@ func (this *QGraphicsItemAnimation) SetItem(item *QGraphicsItem) {
 }
 
 func (this *QGraphicsItemAnimation) TimeLine() *QTimeLine {
-	return UnsafeNewQTimeLine(unsafe.Pointer(C.QGraphicsItemAnimation_TimeLine(this.h)), nil)
+	return newQTimeLine(C.QGraphicsItemAnimation_TimeLine(this.h), nil)
 }
 
 func (this *QGraphicsItemAnimation) SetTimeLine(timeLine *QTimeLine) {
@@ -111,8 +111,7 @@ func (this *QGraphicsItemAnimation) SetTimeLine(timeLine *QTimeLine) {
 }
 
 func (this *QGraphicsItemAnimation) PosAt(step float64) *QPointF {
-	_ret := C.QGraphicsItemAnimation_PosAt(this.h, (C.double)(step))
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QGraphicsItemAnimation_PosAt(this.h, (C.double)(step)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -133,8 +132,7 @@ func (this *QGraphicsItemAnimation) PosList() []struct {
 		_lv_Second_CArray := (*[0xffff]*C.QPointF)(unsafe.Pointer(_lv_mm.values))
 		_lv_entry_First := (float64)(_lv_First_CArray[0])
 
-		_lv_second_ret := _lv_Second_CArray[0]
-		_lv_second_goptr := newQPointF(_lv_second_ret)
+		_lv_second_goptr := newQPointF(_lv_Second_CArray[0])
 		_lv_second_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_lv_entry_Second := *_lv_second_goptr
 
@@ -151,8 +149,7 @@ func (this *QGraphicsItemAnimation) SetPosAt(step float64, pos *QPointF) {
 }
 
 func (this *QGraphicsItemAnimation) TransformAt(step float64) *QTransform {
-	_ret := C.QGraphicsItemAnimation_TransformAt(this.h, (C.double)(step))
-	_goptr := newQTransform(_ret)
+	_goptr := newQTransform(C.QGraphicsItemAnimation_TransformAt(this.h, (C.double)(step)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -215,8 +212,7 @@ func (this *QGraphicsItemAnimation) TranslationList() []struct {
 		_lv_Second_CArray := (*[0xffff]*C.QPointF)(unsafe.Pointer(_lv_mm.values))
 		_lv_entry_First := (float64)(_lv_First_CArray[0])
 
-		_lv_second_ret := _lv_Second_CArray[0]
-		_lv_second_goptr := newQPointF(_lv_second_ret)
+		_lv_second_goptr := newQPointF(_lv_Second_CArray[0])
 		_lv_second_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_lv_entry_Second := *_lv_second_goptr
 
@@ -256,8 +252,7 @@ func (this *QGraphicsItemAnimation) ScaleList() []struct {
 		_lv_Second_CArray := (*[0xffff]*C.QPointF)(unsafe.Pointer(_lv_mm.values))
 		_lv_entry_First := (float64)(_lv_First_CArray[0])
 
-		_lv_second_ret := _lv_Second_CArray[0]
-		_lv_second_goptr := newQPointF(_lv_second_ret)
+		_lv_second_goptr := newQPointF(_lv_Second_CArray[0])
 		_lv_second_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_lv_entry_Second := *_lv_second_goptr
 
@@ -297,8 +292,7 @@ func (this *QGraphicsItemAnimation) ShearList() []struct {
 		_lv_Second_CArray := (*[0xffff]*C.QPointF)(unsafe.Pointer(_lv_mm.values))
 		_lv_entry_First := (float64)(_lv_First_CArray[0])
 
-		_lv_second_ret := _lv_Second_CArray[0]
-		_lv_second_goptr := newQPointF(_lv_second_ret)
+		_lv_second_goptr := newQPointF(_lv_Second_CArray[0])
 		_lv_second_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_lv_entry_Second := *_lv_second_goptr
 
@@ -416,7 +410,7 @@ func miqt_exec_callback_QGraphicsItemAnimation_Event(self *C.QGraphicsItemAnimat
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGraphicsItemAnimation{h: self}).callVirtualBase_Event, slotval1)
 
@@ -444,8 +438,9 @@ func miqt_exec_callback_QGraphicsItemAnimation_EventFilter(self *C.QGraphicsItem
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGraphicsItemAnimation{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -473,7 +468,7 @@ func miqt_exec_callback_QGraphicsItemAnimation_TimerEvent(self *C.QGraphicsItemA
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QGraphicsItemAnimation{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -499,7 +494,7 @@ func miqt_exec_callback_QGraphicsItemAnimation_ChildEvent(self *C.QGraphicsItemA
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QGraphicsItemAnimation{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -525,7 +520,7 @@ func miqt_exec_callback_QGraphicsItemAnimation_CustomEvent(self *C.QGraphicsItem
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QGraphicsItemAnimation{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -551,7 +546,7 @@ func miqt_exec_callback_QGraphicsItemAnimation_ConnectNotify(self *C.QGraphicsIt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QGraphicsItemAnimation{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -577,7 +572,7 @@ func miqt_exec_callback_QGraphicsItemAnimation_DisconnectNotify(self *C.QGraphic
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QGraphicsItemAnimation{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

@@ -54,7 +54,7 @@ func UnsafeNewQStyleHints(h unsafe.Pointer, h_QObject unsafe.Pointer) *QStyleHin
 }
 
 func (this *QStyleHints) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QStyleHints_MetaObject(this.h)))
+	return newQMetaObject(C.QStyleHints_MetaObject(this.h))
 }
 
 func (this *QStyleHints) Metacast(param1 string) unsafe.Pointer {
@@ -157,8 +157,7 @@ func (this *QStyleHints) PasswordMaskDelay() int {
 }
 
 func (this *QStyleHints) PasswordMaskCharacter() *QChar {
-	_ret := C.QStyleHints_PasswordMaskCharacter(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QStyleHints_PasswordMaskCharacter(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

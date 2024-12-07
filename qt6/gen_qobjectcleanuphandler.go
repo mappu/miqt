@@ -65,7 +65,7 @@ func NewQObjectCleanupHandler() *QObjectCleanupHandler {
 }
 
 func (this *QObjectCleanupHandler) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QObjectCleanupHandler_MetaObject(this.h)))
+	return newQMetaObject(C.QObjectCleanupHandler_MetaObject(this.h))
 }
 
 func (this *QObjectCleanupHandler) Metacast(param1 string) unsafe.Pointer {
@@ -84,7 +84,7 @@ func QObjectCleanupHandler_Tr(s string) string {
 }
 
 func (this *QObjectCleanupHandler) Add(object *QObject) *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QObjectCleanupHandler_Add(this.h, object.cPointer())))
+	return newQObject(C.QObjectCleanupHandler_Add(this.h, object.cPointer()))
 }
 
 func (this *QObjectCleanupHandler) Remove(object *QObject) {
@@ -141,7 +141,7 @@ func miqt_exec_callback_QObjectCleanupHandler_Event(self *C.QObjectCleanupHandle
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QObjectCleanupHandler{h: self}).callVirtualBase_Event, slotval1)
 
@@ -169,8 +169,9 @@ func miqt_exec_callback_QObjectCleanupHandler_EventFilter(self *C.QObjectCleanup
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QObjectCleanupHandler{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -198,7 +199,7 @@ func miqt_exec_callback_QObjectCleanupHandler_TimerEvent(self *C.QObjectCleanupH
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QObjectCleanupHandler{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -224,7 +225,7 @@ func miqt_exec_callback_QObjectCleanupHandler_ChildEvent(self *C.QObjectCleanupH
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QObjectCleanupHandler{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -250,7 +251,7 @@ func miqt_exec_callback_QObjectCleanupHandler_CustomEvent(self *C.QObjectCleanup
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QObjectCleanupHandler{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -276,7 +277,7 @@ func miqt_exec_callback_QObjectCleanupHandler_ConnectNotify(self *C.QObjectClean
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QObjectCleanupHandler{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -302,7 +303,7 @@ func miqt_exec_callback_QObjectCleanupHandler_DisconnectNotify(self *C.QObjectCl
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QObjectCleanupHandler{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

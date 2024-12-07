@@ -143,19 +143,19 @@ func (this *QRegion) IsNull() bool {
 }
 
 func (this *QRegion) Begin() *QRect {
-	return UnsafeNewQRect(unsafe.Pointer(C.QRegion_Begin(this.h)))
+	return newQRect(C.QRegion_Begin(this.h))
 }
 
 func (this *QRegion) Cbegin() *QRect {
-	return UnsafeNewQRect(unsafe.Pointer(C.QRegion_Cbegin(this.h)))
+	return newQRect(C.QRegion_Cbegin(this.h))
 }
 
 func (this *QRegion) End() *QRect {
-	return UnsafeNewQRect(unsafe.Pointer(C.QRegion_End(this.h)))
+	return newQRect(C.QRegion_End(this.h))
 }
 
 func (this *QRegion) Cend() *QRect {
-	return UnsafeNewQRect(unsafe.Pointer(C.QRegion_Cend(this.h)))
+	return newQRect(C.QRegion_Cend(this.h))
 }
 
 func (this *QRegion) Contains(p *QPoint) bool {
@@ -175,57 +175,49 @@ func (this *QRegion) TranslateWithQPoint(p *QPoint) {
 }
 
 func (this *QRegion) Translated(dx int, dy int) *QRegion {
-	_ret := C.QRegion_Translated(this.h, (C.int)(dx), (C.int)(dy))
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QRegion_Translated(this.h, (C.int)(dx), (C.int)(dy)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRegion) TranslatedWithQPoint(p *QPoint) *QRegion {
-	_ret := C.QRegion_TranslatedWithQPoint(this.h, p.cPointer())
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QRegion_TranslatedWithQPoint(this.h, p.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRegion) United(r *QRegion) *QRegion {
-	_ret := C.QRegion_United(this.h, r.cPointer())
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QRegion_United(this.h, r.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRegion) UnitedWithQRect(r *QRect) *QRegion {
-	_ret := C.QRegion_UnitedWithQRect(this.h, r.cPointer())
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QRegion_UnitedWithQRect(this.h, r.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRegion) Intersected(r *QRegion) *QRegion {
-	_ret := C.QRegion_Intersected(this.h, r.cPointer())
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QRegion_Intersected(this.h, r.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRegion) IntersectedWithQRect(r *QRect) *QRegion {
-	_ret := C.QRegion_IntersectedWithQRect(this.h, r.cPointer())
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QRegion_IntersectedWithQRect(this.h, r.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRegion) Subtracted(r *QRegion) *QRegion {
-	_ret := C.QRegion_Subtracted(this.h, r.cPointer())
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QRegion_Subtracted(this.h, r.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRegion) Xored(r *QRegion) *QRegion {
-	_ret := C.QRegion_Xored(this.h, r.cPointer())
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QRegion_Xored(this.h, r.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -239,8 +231,7 @@ func (this *QRegion) IntersectsWithQRect(r *QRect) bool {
 }
 
 func (this *QRegion) BoundingRect() *QRect {
-	_ret := C.QRegion_BoundingRect(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QRegion_BoundingRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -254,50 +245,43 @@ func (this *QRegion) RectCount() int {
 }
 
 func (this *QRegion) OperatorBitwiseOr(r *QRegion) *QRegion {
-	_ret := C.QRegion_OperatorBitwiseOr(this.h, r.cPointer())
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QRegion_OperatorBitwiseOr(this.h, r.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRegion) OperatorPlus(r *QRegion) *QRegion {
-	_ret := C.QRegion_OperatorPlus(this.h, r.cPointer())
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QRegion_OperatorPlus(this.h, r.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRegion) OperatorPlusWithQRect(r *QRect) *QRegion {
-	_ret := C.QRegion_OperatorPlusWithQRect(this.h, r.cPointer())
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QRegion_OperatorPlusWithQRect(this.h, r.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRegion) OperatorBitwiseAnd(r *QRegion) *QRegion {
-	_ret := C.QRegion_OperatorBitwiseAnd(this.h, r.cPointer())
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QRegion_OperatorBitwiseAnd(this.h, r.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRegion) OperatorBitwiseAndWithQRect(r *QRect) *QRegion {
-	_ret := C.QRegion_OperatorBitwiseAndWithQRect(this.h, r.cPointer())
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QRegion_OperatorBitwiseAndWithQRect(this.h, r.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRegion) OperatorMinus(r *QRegion) *QRegion {
-	_ret := C.QRegion_OperatorMinus(this.h, r.cPointer())
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QRegion_OperatorMinus(this.h, r.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRegion) OperatorBitwiseNot(r *QRegion) *QRegion {
-	_ret := C.QRegion_OperatorBitwiseNot(this.h, r.cPointer())
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QRegion_OperatorBitwiseNot(this.h, r.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -307,11 +291,11 @@ func (this *QRegion) OperatorBitwiseOrAssign(r *QRegion) {
 }
 
 func (this *QRegion) OperatorPlusAssign(r *QRegion) *QRegion {
-	return UnsafeNewQRegion(unsafe.Pointer(C.QRegion_OperatorPlusAssign(this.h, r.cPointer())))
+	return newQRegion(C.QRegion_OperatorPlusAssign(this.h, r.cPointer()))
 }
 
 func (this *QRegion) OperatorPlusAssignWithQRect(r *QRect) *QRegion {
-	return UnsafeNewQRegion(unsafe.Pointer(C.QRegion_OperatorPlusAssignWithQRect(this.h, r.cPointer())))
+	return newQRegion(C.QRegion_OperatorPlusAssignWithQRect(this.h, r.cPointer()))
 }
 
 func (this *QRegion) OperatorBitwiseAndAssign(r *QRegion) {
@@ -323,7 +307,7 @@ func (this *QRegion) OperatorBitwiseAndAssignWithQRect(r *QRect) {
 }
 
 func (this *QRegion) OperatorMinusAssign(r *QRegion) *QRegion {
-	return UnsafeNewQRegion(unsafe.Pointer(C.QRegion_OperatorMinusAssign(this.h, r.cPointer())))
+	return newQRegion(C.QRegion_OperatorMinusAssign(this.h, r.cPointer()))
 }
 
 func (this *QRegion) OperatorBitwiseNotAssign(r *QRegion) {

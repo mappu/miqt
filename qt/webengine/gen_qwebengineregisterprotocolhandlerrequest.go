@@ -79,8 +79,7 @@ func (this *QWebEngineRegisterProtocolHandlerRequest) Reject() {
 }
 
 func (this *QWebEngineRegisterProtocolHandlerRequest) Origin() *qt.QUrl {
-	_ret := C.QWebEngineRegisterProtocolHandlerRequest_Origin(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineRegisterProtocolHandlerRequest_Origin(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

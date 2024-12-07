@@ -189,7 +189,7 @@ func miqt_exec_callback_QPrintDialog_Accepted(cb C.intptr_t, printer *C.QPrinter
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPrinter(unsafe.Pointer(printer), nil, nil)
+	slotval1 := newQPrinter(printer, nil, nil)
 
 	gofunc(slotval1)
 }

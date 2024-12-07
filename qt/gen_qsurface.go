@@ -72,8 +72,7 @@ func (this *QSurface) SurfaceClass() QSurface__SurfaceClass {
 }
 
 func (this *QSurface) Format() *QSurfaceFormat {
-	_ret := C.QSurface_Format(this.h)
-	_goptr := newQSurfaceFormat(_ret)
+	_goptr := newQSurfaceFormat(C.QSurface_Format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -87,8 +86,7 @@ func (this *QSurface) SupportsOpenGL() bool {
 }
 
 func (this *QSurface) Size() *QSize {
-	_ret := C.QSurface_Size(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSurface_Size(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

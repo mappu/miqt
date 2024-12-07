@@ -123,7 +123,7 @@ func NewQStateMachine4(childMode QState__ChildMode, parent *QObject) *QStateMach
 }
 
 func (this *QStateMachine) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QStateMachine_MetaObject(this.h)))
+	return newQMetaObject(C.QStateMachine_MetaObject(this.h))
 }
 
 func (this *QStateMachine) Metacast(param1 string) unsafe.Pointer {
@@ -194,7 +194,7 @@ func (this *QStateMachine) DefaultAnimations() []*QAbstractAnimation {
 	_ret := make([]*QAbstractAnimation, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractAnimation)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQAbstractAnimation(unsafe.Pointer(_outCast[i]), nil)
+		_ret[i] = newQAbstractAnimation(_outCast[i], nil)
 	}
 	return _ret
 }
@@ -228,7 +228,8 @@ func (this *QStateMachine) Configuration() map[*QAbstractState]struct{} {
 	_ret := make(map[*QAbstractState]struct{}, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractState)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_element := UnsafeNewQAbstractState(unsafe.Pointer(_outCast[i]), nil)
+		_element := newQAbstractState(_outCast[i], nil)
+
 		_ret[_element] = struct{}{}
 	}
 	return _ret
@@ -338,8 +339,9 @@ func miqt_exec_callback_QStateMachine_EventFilter(self *C.QStateMachine, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QStateMachine{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -367,7 +369,7 @@ func miqt_exec_callback_QStateMachine_OnEntry(self *C.QStateMachine, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QStateMachine{h: self}).callVirtualBase_OnEntry, slotval1)
 
@@ -393,7 +395,7 @@ func miqt_exec_callback_QStateMachine_OnExit(self *C.QStateMachine, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QStateMachine{h: self}).callVirtualBase_OnExit, slotval1)
 
@@ -419,7 +421,7 @@ func miqt_exec_callback_QStateMachine_BeginSelectTransitions(self *C.QStateMachi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QStateMachine{h: self}).callVirtualBase_BeginSelectTransitions, slotval1)
 
@@ -445,7 +447,7 @@ func miqt_exec_callback_QStateMachine_EndSelectTransitions(self *C.QStateMachine
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QStateMachine{h: self}).callVirtualBase_EndSelectTransitions, slotval1)
 
@@ -471,7 +473,7 @@ func miqt_exec_callback_QStateMachine_BeginMicrostep(self *C.QStateMachine, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QStateMachine{h: self}).callVirtualBase_BeginMicrostep, slotval1)
 
@@ -497,7 +499,7 @@ func miqt_exec_callback_QStateMachine_EndMicrostep(self *C.QStateMachine, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QStateMachine{h: self}).callVirtualBase_EndMicrostep, slotval1)
 
@@ -523,7 +525,7 @@ func miqt_exec_callback_QStateMachine_Event(self *C.QStateMachine, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QStateMachine{h: self}).callVirtualBase_Event, slotval1)
 
@@ -596,7 +598,7 @@ func NewQStateMachine__SignalEvent(param1 *QStateMachine__SignalEvent) *QStateMa
 }
 
 func (this *QStateMachine__SignalEvent) Sender() *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QStateMachine__SignalEvent_Sender(this.h)))
+	return newQObject(C.QStateMachine__SignalEvent_Sender(this.h))
 }
 
 func (this *QStateMachine__SignalEvent) SignalIndex() int {
@@ -679,11 +681,11 @@ func NewQStateMachine__WrappedEvent2(param1 *QStateMachine__WrappedEvent) *QStat
 }
 
 func (this *QStateMachine__WrappedEvent) Object() *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QStateMachine__WrappedEvent_Object(this.h)))
+	return newQObject(C.QStateMachine__WrappedEvent_Object(this.h))
 }
 
 func (this *QStateMachine__WrappedEvent) Event() *QEvent {
-	return UnsafeNewQEvent(unsafe.Pointer(C.QStateMachine__WrappedEvent_Event(this.h)))
+	return newQEvent(C.QStateMachine__WrappedEvent_Event(this.h))
 }
 
 // Delete this object from C++ memory.

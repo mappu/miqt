@@ -125,8 +125,7 @@ func (this *QNetworkDiskCache) CacheSize() int64 {
 }
 
 func (this *QNetworkDiskCache) MetaData(url *qt6.QUrl) *QNetworkCacheMetaData {
-	_ret := C.QNetworkDiskCache_MetaData(this.h, (*C.QUrl)(url.UnsafePointer()))
-	_goptr := newQNetworkCacheMetaData(_ret)
+	_goptr := newQNetworkCacheMetaData(C.QNetworkDiskCache_MetaData(this.h, (*C.QUrl)(url.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -156,8 +155,7 @@ func (this *QNetworkDiskCache) FileMetaData(fileName string) *QNetworkCacheMetaD
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	_ret := C.QNetworkDiskCache_FileMetaData(this.h, fileName_ms)
-	_goptr := newQNetworkCacheMetaData(_ret)
+	_goptr := newQNetworkCacheMetaData(C.QNetworkDiskCache_FileMetaData(this.h, fileName_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -215,8 +213,7 @@ func miqt_exec_callback_QNetworkDiskCache_CacheSize(self *C.QNetworkDiskCache, c
 
 func (this *QNetworkDiskCache) callVirtualBase_MetaData(url *qt6.QUrl) *QNetworkCacheMetaData {
 
-	_ret := C.QNetworkDiskCache_virtualbase_MetaData(unsafe.Pointer(this.h), (*C.QUrl)(url.UnsafePointer()))
-	_goptr := newQNetworkCacheMetaData(_ret)
+	_goptr := newQNetworkCacheMetaData(C.QNetworkDiskCache_virtualbase_MetaData(unsafe.Pointer(this.h), (*C.QUrl)(url.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -264,7 +261,7 @@ func miqt_exec_callback_QNetworkDiskCache_UpdateMetaData(self *C.QNetworkDiskCac
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQNetworkCacheMetaData(unsafe.Pointer(metaData))
+	slotval1 := newQNetworkCacheMetaData(metaData)
 
 	gofunc((&QNetworkDiskCache{h: self}).callVirtualBase_UpdateMetaData, slotval1)
 
@@ -273,6 +270,7 @@ func miqt_exec_callback_QNetworkDiskCache_UpdateMetaData(self *C.QNetworkDiskCac
 func (this *QNetworkDiskCache) callVirtualBase_Data(url *qt6.QUrl) *qt6.QIODevice {
 
 	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QNetworkDiskCache_virtualbase_Data(unsafe.Pointer(this.h), (*C.QUrl)(url.UnsafePointer()))), nil, nil)
+
 }
 func (this *QNetworkDiskCache) OnData(slot func(super func(url *qt6.QUrl) *qt6.QIODevice, url *qt6.QUrl) *qt6.QIODevice) {
 	if !this.isSubclass {
@@ -328,6 +326,7 @@ func miqt_exec_callback_QNetworkDiskCache_Remove(self *C.QNetworkDiskCache, cb C
 func (this *QNetworkDiskCache) callVirtualBase_Prepare(metaData *QNetworkCacheMetaData) *qt6.QIODevice {
 
 	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QNetworkDiskCache_virtualbase_Prepare(unsafe.Pointer(this.h), metaData.cPointer())), nil, nil)
+
 }
 func (this *QNetworkDiskCache) OnPrepare(slot func(super func(metaData *QNetworkCacheMetaData) *qt6.QIODevice, metaData *QNetworkCacheMetaData) *qt6.QIODevice) {
 	if !this.isSubclass {
@@ -344,7 +343,7 @@ func miqt_exec_callback_QNetworkDiskCache_Prepare(self *C.QNetworkDiskCache, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQNetworkCacheMetaData(unsafe.Pointer(metaData))
+	slotval1 := newQNetworkCacheMetaData(metaData)
 
 	virtualReturn := gofunc((&QNetworkDiskCache{h: self}).callVirtualBase_Prepare, slotval1)
 

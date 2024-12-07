@@ -147,7 +147,7 @@ func (this *QPageSetupDialog) Done(result int) {
 }
 
 func (this *QPageSetupDialog) Printer() *QPrinter {
-	return UnsafeNewQPrinter(unsafe.Pointer(C.QPageSetupDialog_Printer(this.h)), nil, nil)
+	return newQPrinter(C.QPageSetupDialog_Printer(this.h), nil, nil)
 }
 
 func QPageSetupDialog_Tr2(s string, c string) string {
@@ -273,8 +273,7 @@ func miqt_exec_callback_QPageSetupDialog_SetVisible(self *C.QPageSetupDialog, cb
 
 func (this *QPageSetupDialog) callVirtualBase_SizeHint() *qt.QSize {
 
-	_ret := C.QPageSetupDialog_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QPageSetupDialog_virtualbase_SizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -301,8 +300,7 @@ func miqt_exec_callback_QPageSetupDialog_SizeHint(self *C.QPageSetupDialog, cb C
 
 func (this *QPageSetupDialog) callVirtualBase_MinimumSizeHint() *qt.QSize {
 
-	_ret := C.QPageSetupDialog_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QPageSetupDialog_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -547,6 +545,7 @@ func miqt_exec_callback_QPageSetupDialog_EventFilter(self *C.QPageSetupDialog, c
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(param1))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(param2))
 
 	virtualReturn := gofunc((&QPageSetupDialog{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

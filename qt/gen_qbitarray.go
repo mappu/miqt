@@ -158,8 +158,7 @@ func (this *QBitArray) At(i int) bool {
 }
 
 func (this *QBitArray) OperatorSubscript(i int) *QBitRef {
-	_ret := C.QBitArray_OperatorSubscript(this.h, (C.int)(i))
-	_goptr := newQBitRef(_ret)
+	_goptr := newQBitRef(C.QBitArray_OperatorSubscript(this.h, (C.int)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -169,8 +168,7 @@ func (this *QBitArray) OperatorSubscriptWithInt(i int) bool {
 }
 
 func (this *QBitArray) OperatorSubscriptWithUint(i uint) *QBitRef {
-	_ret := C.QBitArray_OperatorSubscriptWithUint(this.h, (C.uint)(i))
-	_goptr := newQBitRef(_ret)
+	_goptr := newQBitRef(C.QBitArray_OperatorSubscriptWithUint(this.h, (C.uint)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -219,8 +217,7 @@ func (this *QBitArray) Bits() string {
 func QBitArray_FromBits(data string, lenVal int64) *QBitArray {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	_ret := C.QBitArray_FromBits(data_Cstring, (C.ptrdiff_t)(lenVal))
-	_goptr := newQBitArray(_ret)
+	_goptr := newQBitArray(C.QBitArray_FromBits(data_Cstring, (C.ptrdiff_t)(lenVal)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

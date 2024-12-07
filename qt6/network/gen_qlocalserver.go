@@ -159,7 +159,7 @@ func (this *QLocalServer) MaxPendingConnections() int {
 }
 
 func (this *QLocalServer) NextPendingConnection() *QLocalSocket {
-	return UnsafeNewQLocalSocket(unsafe.Pointer(C.QLocalServer_NextPendingConnection(this.h)), nil, nil, nil)
+	return newQLocalSocket(C.QLocalServer_NextPendingConnection(this.h), nil, nil, nil)
 }
 
 func (this *QLocalServer) ServerName() string {
@@ -273,7 +273,8 @@ func miqt_exec_callback_QLocalServer_HasPendingConnections(self *C.QLocalServer,
 
 func (this *QLocalServer) callVirtualBase_NextPendingConnection() *QLocalSocket {
 
-	return UnsafeNewQLocalSocket(unsafe.Pointer(C.QLocalServer_virtualbase_NextPendingConnection(unsafe.Pointer(this.h))), nil, nil, nil)
+	return newQLocalSocket(C.QLocalServer_virtualbase_NextPendingConnection(unsafe.Pointer(this.h)), nil, nil, nil)
+
 }
 func (this *QLocalServer) OnNextPendingConnection(slot func(super func() *QLocalSocket) *QLocalSocket) {
 	if !this.isSubclass {
@@ -370,6 +371,7 @@ func miqt_exec_callback_QLocalServer_EventFilter(self *C.QLocalServer, cb C.intp
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QLocalServer{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

@@ -331,8 +331,7 @@ func (this *QPrinter) SetPaperSize2(paperSize *qt.QSizeF, unit QPrinter__Unit) {
 }
 
 func (this *QPrinter) PaperSizeWithUnit(unit QPrinter__Unit) *qt.QSizeF {
-	_ret := C.QPrinter_PaperSizeWithUnit(this.h, (C.int)(unit))
-	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QPrinter_PaperSizeWithUnit(this.h, (C.int)(unit))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -467,29 +466,25 @@ func (this *QPrinter) WinPageSize() int {
 }
 
 func (this *QPrinter) PaperRect() *qt.QRect {
-	_ret := C.QPrinter_PaperRect(this.h)
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QPrinter_PaperRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPrinter) PageRect() *qt.QRect {
-	_ret := C.QPrinter_PageRect(this.h)
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QPrinter_PageRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPrinter) PaperRectWithQPrinterUnit(param1 QPrinter__Unit) *qt.QRectF {
-	_ret := C.QPrinter_PaperRectWithQPrinterUnit(this.h, (C.int)(param1))
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QPrinter_PaperRectWithQPrinterUnit(this.h, (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPrinter) PageRectWithQPrinterUnit(param1 QPrinter__Unit) *qt.QRectF {
-	_ret := C.QPrinter_PageRectWithQPrinterUnit(this.h, (C.int)(param1))
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QPrinter_PageRectWithQPrinterUnit(this.h, (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -526,7 +521,7 @@ func (this *QPrinter) PaintEngine() *qt.QPaintEngine {
 }
 
 func (this *QPrinter) PrintEngine() *QPrintEngine {
-	return UnsafeNewQPrintEngine(unsafe.Pointer(C.QPrinter_PrintEngine(this.h)))
+	return newQPrintEngine(C.QPrinter_PrintEngine(this.h))
 }
 
 func (this *QPrinter) SetFromTo(fromPage int, toPage int) {
@@ -666,6 +661,7 @@ func miqt_exec_callback_QPrinter_NewPage(self *C.QPrinter, cb C.intptr_t) C.bool
 func (this *QPrinter) callVirtualBase_PaintEngine() *qt.QPaintEngine {
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QPrinter_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+
 }
 func (this *QPrinter) OnPaintEngine(slot func(super func() *qt.QPaintEngine) *qt.QPaintEngine) {
 	if !this.isSubclass {

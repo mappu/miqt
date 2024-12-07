@@ -246,7 +246,7 @@ func (this *QWebEngineProfile) SetHttpCacheMaximumSize(maxSize int) {
 }
 
 func (this *QWebEngineProfile) CookieStore() *QWebEngineCookieStore {
-	return UnsafeNewQWebEngineCookieStore(unsafe.Pointer(C.QWebEngineProfile_CookieStore(this.h)), nil)
+	return newQWebEngineCookieStore(C.QWebEngineProfile_CookieStore(this.h), nil)
 }
 
 func (this *QWebEngineProfile) SetRequestInterceptor(interceptor *QWebEngineUrlRequestInterceptor) {
@@ -276,18 +276,18 @@ func (this *QWebEngineProfile) VisitedLinksContainsUrl(url *qt.QUrl) bool {
 }
 
 func (this *QWebEngineProfile) Settings() *QWebEngineSettings {
-	return UnsafeNewQWebEngineSettings(unsafe.Pointer(C.QWebEngineProfile_Settings(this.h)))
+	return newQWebEngineSettings(C.QWebEngineProfile_Settings(this.h))
 }
 
 func (this *QWebEngineProfile) Scripts() *QWebEngineScriptCollection {
-	return UnsafeNewQWebEngineScriptCollection(unsafe.Pointer(C.QWebEngineProfile_Scripts(this.h)))
+	return newQWebEngineScriptCollection(C.QWebEngineProfile_Scripts(this.h))
 }
 
 func (this *QWebEngineProfile) UrlSchemeHandler(param1 []byte) *QWebEngineUrlSchemeHandler {
 	param1_alias := C.struct_miqt_string{}
 	param1_alias.data = (*C.char)(unsafe.Pointer(&param1[0]))
 	param1_alias.len = C.size_t(len(param1))
-	return UnsafeNewQWebEngineUrlSchemeHandler(unsafe.Pointer(C.QWebEngineProfile_UrlSchemeHandler(this.h, param1_alias)), nil)
+	return newQWebEngineUrlSchemeHandler(C.QWebEngineProfile_UrlSchemeHandler(this.h, param1_alias), nil)
 }
 
 func (this *QWebEngineProfile) InstallUrlSchemeHandler(scheme []byte, param2 *QWebEngineUrlSchemeHandler) {
@@ -375,11 +375,11 @@ func (this *QWebEngineProfile) SetDownloadPath(path string) {
 }
 
 func (this *QWebEngineProfile) ClientCertificateStore() *QWebEngineClientCertificateStore {
-	return UnsafeNewQWebEngineClientCertificateStore(unsafe.Pointer(C.QWebEngineProfile_ClientCertificateStore(this.h)))
+	return newQWebEngineClientCertificateStore(C.QWebEngineProfile_ClientCertificateStore(this.h))
 }
 
 func QWebEngineProfile_DefaultProfile() *QWebEngineProfile {
-	return UnsafeNewQWebEngineProfile(unsafe.Pointer(C.QWebEngineProfile_DefaultProfile()), nil)
+	return newQWebEngineProfile(C.QWebEngineProfile_DefaultProfile(), nil)
 }
 
 func (this *QWebEngineProfile) DownloadRequested(download *QWebEngineDownloadItem) {
@@ -397,7 +397,7 @@ func miqt_exec_callback_QWebEngineProfile_DownloadRequested(cb C.intptr_t, downl
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebEngineDownloadItem(unsafe.Pointer(download), nil)
+	slotval1 := newQWebEngineDownloadItem(download, nil)
 
 	gofunc(slotval1)
 }
@@ -499,6 +499,7 @@ func miqt_exec_callback_QWebEngineProfile_EventFilter(self *C.QWebEngineProfile,
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QWebEngineProfile{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

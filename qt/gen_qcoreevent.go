@@ -437,7 +437,7 @@ func NewQChildEvent2(param1 *QChildEvent) *QChildEvent {
 }
 
 func (this *QChildEvent) Child() *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QChildEvent_Child(this.h)))
+	return newQObject(C.QChildEvent_Child(this.h))
 }
 
 func (this *QChildEvent) Added() bool {

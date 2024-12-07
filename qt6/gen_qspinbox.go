@@ -82,7 +82,7 @@ func NewQSpinBox2() *QSpinBox {
 }
 
 func (this *QSpinBox) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSpinBox_MetaObject(this.h)))
+	return newQMetaObject(C.QSpinBox_MetaObject(this.h))
 }
 
 func (this *QSpinBox) Metacast(param1 string) unsafe.Pointer {
@@ -278,7 +278,7 @@ func miqt_exec_callback_QSpinBox_Event(self *C.QSpinBox, cb C.intptr_t, event *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QSpinBox{h: self}).callVirtualBase_Event, slotval1)
 
@@ -426,8 +426,7 @@ func miqt_exec_callback_QSpinBox_Fixup(self *C.QSpinBox, cb C.intptr_t, str C.st
 
 func (this *QSpinBox) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QSpinBox_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSpinBox_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -454,8 +453,7 @@ func miqt_exec_callback_QSpinBox_SizeHint(self *C.QSpinBox, cb C.intptr_t) *C.QS
 
 func (this *QSpinBox) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QSpinBox_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSpinBox_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -482,8 +480,7 @@ func miqt_exec_callback_QSpinBox_MinimumSizeHint(self *C.QSpinBox, cb C.intptr_t
 
 func (this *QSpinBox) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_ret := C.QSpinBox_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QSpinBox_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -580,7 +577,7 @@ func miqt_exec_callback_QSpinBox_ResizeEvent(self *C.QSpinBox, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQResizeEvent(event, nil)
 
 	gofunc((&QSpinBox{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -606,7 +603,7 @@ func miqt_exec_callback_QSpinBox_KeyPressEvent(self *C.QSpinBox, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QSpinBox{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -632,7 +629,7 @@ func miqt_exec_callback_QSpinBox_KeyReleaseEvent(self *C.QSpinBox, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QSpinBox{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -658,7 +655,7 @@ func miqt_exec_callback_QSpinBox_WheelEvent(self *C.QSpinBox, cb C.intptr_t, eve
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QSpinBox{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -684,7 +681,7 @@ func miqt_exec_callback_QSpinBox_FocusInEvent(self *C.QSpinBox, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QSpinBox{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -710,7 +707,7 @@ func miqt_exec_callback_QSpinBox_FocusOutEvent(self *C.QSpinBox, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QSpinBox{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -736,7 +733,7 @@ func miqt_exec_callback_QSpinBox_ContextMenuEvent(self *C.QSpinBox, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQContextMenuEvent(event, nil, nil)
 
 	gofunc((&QSpinBox{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -762,7 +759,7 @@ func miqt_exec_callback_QSpinBox_ChangeEvent(self *C.QSpinBox, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QSpinBox{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -788,7 +785,7 @@ func miqt_exec_callback_QSpinBox_CloseEvent(self *C.QSpinBox, cb C.intptr_t, eve
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQCloseEvent(event, nil)
 
 	gofunc((&QSpinBox{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -814,7 +811,7 @@ func miqt_exec_callback_QSpinBox_HideEvent(self *C.QSpinBox, cb C.intptr_t, even
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHideEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQHideEvent(event, nil)
 
 	gofunc((&QSpinBox{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -840,7 +837,7 @@ func miqt_exec_callback_QSpinBox_MousePressEvent(self *C.QSpinBox, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QSpinBox{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -866,7 +863,7 @@ func miqt_exec_callback_QSpinBox_MouseReleaseEvent(self *C.QSpinBox, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QSpinBox{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -892,7 +889,7 @@ func miqt_exec_callback_QSpinBox_MouseMoveEvent(self *C.QSpinBox, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QSpinBox{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -918,7 +915,7 @@ func miqt_exec_callback_QSpinBox_TimerEvent(self *C.QSpinBox, cb C.intptr_t, eve
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QSpinBox{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -944,7 +941,7 @@ func miqt_exec_callback_QSpinBox_PaintEvent(self *C.QSpinBox, cb C.intptr_t, eve
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQPaintEvent(event, nil)
 
 	gofunc((&QSpinBox{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -970,7 +967,7 @@ func miqt_exec_callback_QSpinBox_ShowEvent(self *C.QSpinBox, cb C.intptr_t, even
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQShowEvent(event, nil)
 
 	gofunc((&QSpinBox{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -996,7 +993,7 @@ func miqt_exec_callback_QSpinBox_InitStyleOption(self *C.QSpinBox, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStyleOptionSpinBox(unsafe.Pointer(option), nil, nil)
+	slotval1 := newQStyleOptionSpinBox(option, nil, nil)
 
 	gofunc((&QSpinBox{h: self}).callVirtualBase_InitStyleOption, slotval1)
 
@@ -1109,7 +1106,7 @@ func NewQDoubleSpinBox2() *QDoubleSpinBox {
 }
 
 func (this *QDoubleSpinBox) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QDoubleSpinBox_MetaObject(this.h)))
+	return newQMetaObject(C.QDoubleSpinBox_MetaObject(this.h))
 }
 
 func (this *QDoubleSpinBox) Metacast(param1 string) unsafe.Pointer {
@@ -1456,8 +1453,7 @@ func miqt_exec_callback_QDoubleSpinBox_Fixup(self *C.QDoubleSpinBox, cb C.intptr
 
 func (this *QDoubleSpinBox) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QDoubleSpinBox_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QDoubleSpinBox_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1484,8 +1480,7 @@ func miqt_exec_callback_QDoubleSpinBox_SizeHint(self *C.QDoubleSpinBox, cb C.int
 
 func (this *QDoubleSpinBox) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QDoubleSpinBox_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QDoubleSpinBox_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1530,7 +1525,7 @@ func miqt_exec_callback_QDoubleSpinBox_Event(self *C.QDoubleSpinBox, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QDoubleSpinBox{h: self}).callVirtualBase_Event, slotval1)
 
@@ -1540,8 +1535,7 @@ func miqt_exec_callback_QDoubleSpinBox_Event(self *C.QDoubleSpinBox, cb C.intptr
 
 func (this *QDoubleSpinBox) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_ret := C.QDoubleSpinBox_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QDoubleSpinBox_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1638,7 +1632,7 @@ func miqt_exec_callback_QDoubleSpinBox_ResizeEvent(self *C.QDoubleSpinBox, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQResizeEvent(event, nil)
 
 	gofunc((&QDoubleSpinBox{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -1664,7 +1658,7 @@ func miqt_exec_callback_QDoubleSpinBox_KeyPressEvent(self *C.QDoubleSpinBox, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QDoubleSpinBox{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -1690,7 +1684,7 @@ func miqt_exec_callback_QDoubleSpinBox_KeyReleaseEvent(self *C.QDoubleSpinBox, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QDoubleSpinBox{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -1716,7 +1710,7 @@ func miqt_exec_callback_QDoubleSpinBox_WheelEvent(self *C.QDoubleSpinBox, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QDoubleSpinBox{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -1742,7 +1736,7 @@ func miqt_exec_callback_QDoubleSpinBox_FocusInEvent(self *C.QDoubleSpinBox, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QDoubleSpinBox{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -1768,7 +1762,7 @@ func miqt_exec_callback_QDoubleSpinBox_FocusOutEvent(self *C.QDoubleSpinBox, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QDoubleSpinBox{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -1794,7 +1788,7 @@ func miqt_exec_callback_QDoubleSpinBox_ContextMenuEvent(self *C.QDoubleSpinBox, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQContextMenuEvent(event, nil, nil)
 
 	gofunc((&QDoubleSpinBox{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -1820,7 +1814,7 @@ func miqt_exec_callback_QDoubleSpinBox_ChangeEvent(self *C.QDoubleSpinBox, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QDoubleSpinBox{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -1846,7 +1840,7 @@ func miqt_exec_callback_QDoubleSpinBox_CloseEvent(self *C.QDoubleSpinBox, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQCloseEvent(event, nil)
 
 	gofunc((&QDoubleSpinBox{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -1872,7 +1866,7 @@ func miqt_exec_callback_QDoubleSpinBox_HideEvent(self *C.QDoubleSpinBox, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHideEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQHideEvent(event, nil)
 
 	gofunc((&QDoubleSpinBox{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -1898,7 +1892,7 @@ func miqt_exec_callback_QDoubleSpinBox_MousePressEvent(self *C.QDoubleSpinBox, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QDoubleSpinBox{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -1924,7 +1918,7 @@ func miqt_exec_callback_QDoubleSpinBox_MouseReleaseEvent(self *C.QDoubleSpinBox,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QDoubleSpinBox{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -1950,7 +1944,7 @@ func miqt_exec_callback_QDoubleSpinBox_MouseMoveEvent(self *C.QDoubleSpinBox, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QDoubleSpinBox{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -1976,7 +1970,7 @@ func miqt_exec_callback_QDoubleSpinBox_TimerEvent(self *C.QDoubleSpinBox, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QDoubleSpinBox{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -2002,7 +1996,7 @@ func miqt_exec_callback_QDoubleSpinBox_PaintEvent(self *C.QDoubleSpinBox, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQPaintEvent(event, nil)
 
 	gofunc((&QDoubleSpinBox{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -2028,7 +2022,7 @@ func miqt_exec_callback_QDoubleSpinBox_ShowEvent(self *C.QDoubleSpinBox, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQShowEvent(event, nil)
 
 	gofunc((&QDoubleSpinBox{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -2054,7 +2048,7 @@ func miqt_exec_callback_QDoubleSpinBox_InitStyleOption(self *C.QDoubleSpinBox, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStyleOptionSpinBox(unsafe.Pointer(option), nil, nil)
+	slotval1 := newQStyleOptionSpinBox(option, nil, nil)
 
 	gofunc((&QDoubleSpinBox{h: self}).callVirtualBase_InitStyleOption, slotval1)
 

@@ -82,8 +82,7 @@ func QWebSecurityOrigin_AllOrigins() []QWebSecurityOrigin {
 	_ret := make([]QWebSecurityOrigin, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWebSecurityOrigin)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQWebSecurityOrigin(_lv_ret)
+		_lv_goptr := newQWebSecurityOrigin(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -182,8 +181,7 @@ func (this *QWebSecurityOrigin) Databases() []QWebDatabase {
 	_ret := make([]QWebDatabase, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWebDatabase)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQWebDatabase(_lv_ret)
+		_lv_goptr := newQWebDatabase(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}

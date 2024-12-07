@@ -119,7 +119,7 @@ func NewQShortcut5(key *QKeySequence, parent *QWidget, member string, ambiguousM
 }
 
 func (this *QShortcut) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QShortcut_MetaObject(this.h)))
+	return newQMetaObject(C.QShortcut_MetaObject(this.h))
 }
 
 func (this *QShortcut) Metacast(param1 string) unsafe.Pointer {
@@ -151,8 +151,7 @@ func (this *QShortcut) SetKey(key *QKeySequence) {
 }
 
 func (this *QShortcut) Key() *QKeySequence {
-	_ret := C.QShortcut_Key(this.h)
-	_goptr := newQKeySequence(_ret)
+	_goptr := newQKeySequence(C.QShortcut_Key(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -201,7 +200,7 @@ func (this *QShortcut) Id() int {
 }
 
 func (this *QShortcut) ParentWidget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QShortcut_ParentWidget(this.h)), nil, nil)
+	return newQWidget(C.QShortcut_ParentWidget(this.h), nil, nil)
 }
 
 func (this *QShortcut) Activated() {
@@ -302,7 +301,7 @@ func miqt_exec_callback_QShortcut_Event(self *C.QShortcut, cb C.intptr_t, e *C.Q
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QShortcut{h: self}).callVirtualBase_Event, slotval1)
 
@@ -330,8 +329,9 @@ func miqt_exec_callback_QShortcut_EventFilter(self *C.QShortcut, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QShortcut{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -359,7 +359,7 @@ func miqt_exec_callback_QShortcut_TimerEvent(self *C.QShortcut, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QShortcut{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -385,7 +385,7 @@ func miqt_exec_callback_QShortcut_ChildEvent(self *C.QShortcut, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QShortcut{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -411,7 +411,7 @@ func miqt_exec_callback_QShortcut_CustomEvent(self *C.QShortcut, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QShortcut{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -437,7 +437,7 @@ func miqt_exec_callback_QShortcut_ConnectNotify(self *C.QShortcut, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QShortcut{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -463,7 +463,7 @@ func miqt_exec_callback_QShortcut_DisconnectNotify(self *C.QShortcut, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QShortcut{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

@@ -93,8 +93,7 @@ func (this *QWebDatabase) FileName() string {
 }
 
 func (this *QWebDatabase) Origin() *QWebSecurityOrigin {
-	_ret := C.QWebDatabase_Origin(this.h)
-	_goptr := newQWebSecurityOrigin(_ret)
+	_goptr := newQWebSecurityOrigin(C.QWebDatabase_Origin(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

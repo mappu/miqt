@@ -70,8 +70,7 @@ func (this *QAudioListener) SetPosition(pos qt6.QVector3D) {
 }
 
 func (this *QAudioListener) Position() *qt6.QVector3D {
-	_ret := C.QAudioListener_Position(this.h)
-	_goptr := qt6.UnsafeNewQVector3D(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQVector3D(unsafe.Pointer(C.QAudioListener_Position(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -81,14 +80,13 @@ func (this *QAudioListener) SetRotation(q *qt6.QQuaternion) {
 }
 
 func (this *QAudioListener) Rotation() *qt6.QQuaternion {
-	_ret := C.QAudioListener_Rotation(this.h)
-	_goptr := qt6.UnsafeNewQQuaternion(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQQuaternion(unsafe.Pointer(C.QAudioListener_Rotation(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAudioListener) Engine() *QAudioEngine {
-	return UnsafeNewQAudioEngine(unsafe.Pointer(C.QAudioListener_Engine(this.h)), nil)
+	return newQAudioEngine(C.QAudioListener_Engine(this.h), nil)
 }
 
 func (this *QAudioListener) callVirtualBase_Event(event *qt6.QEvent) bool {
@@ -140,6 +138,7 @@ func miqt_exec_callback_QAudioListener_EventFilter(self *C.QAudioListener, cb C.
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QAudioListener{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

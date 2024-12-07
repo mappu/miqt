@@ -92,7 +92,7 @@ func NewQFontComboBox2() *QFontComboBox {
 }
 
 func (this *QFontComboBox) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QFontComboBox_MetaObject(this.h)))
+	return newQMetaObject(C.QFontComboBox_MetaObject(this.h))
 }
 
 func (this *QFontComboBox) Metacast(param1 string) unsafe.Pointer {
@@ -136,15 +136,13 @@ func (this *QFontComboBox) FontFilters() QFontComboBox__FontFilter {
 }
 
 func (this *QFontComboBox) CurrentFont() *QFont {
-	_ret := C.QFontComboBox_CurrentFont(this.h)
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QFontComboBox_CurrentFont(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFontComboBox) SizeHint() *QSize {
-	_ret := C.QFontComboBox_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QFontComboBox_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -168,7 +166,7 @@ func miqt_exec_callback_QFontComboBox_CurrentFontChanged(cb C.intptr_t, f *C.QFo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFont(unsafe.Pointer(f))
+	slotval1 := newQFont(f)
 
 	gofunc(slotval1)
 }
@@ -219,8 +217,7 @@ func QFontComboBox_TrUtf83(s string, c string, n int) string {
 
 func (this *QFontComboBox) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QFontComboBox_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QFontComboBox_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -265,7 +262,7 @@ func miqt_exec_callback_QFontComboBox_Event(self *C.QFontComboBox, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QFontComboBox{h: self}).callVirtualBase_Event, slotval1)
 
@@ -275,8 +272,7 @@ func miqt_exec_callback_QFontComboBox_Event(self *C.QFontComboBox, cb C.intptr_t
 
 func (this *QFontComboBox) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QFontComboBox_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QFontComboBox_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -349,8 +345,7 @@ func miqt_exec_callback_QFontComboBox_HidePopup(self *C.QFontComboBox, cb C.intp
 
 func (this *QFontComboBox) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_ret := C.QFontComboBox_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QFontComboBox_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -398,7 +393,7 @@ func miqt_exec_callback_QFontComboBox_FocusInEvent(self *C.QFontComboBox, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQFocusEvent(e, nil)
 
 	gofunc((&QFontComboBox{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -424,7 +419,7 @@ func miqt_exec_callback_QFontComboBox_FocusOutEvent(self *C.QFontComboBox, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQFocusEvent(e, nil)
 
 	gofunc((&QFontComboBox{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -450,7 +445,7 @@ func miqt_exec_callback_QFontComboBox_ChangeEvent(self *C.QFontComboBox, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	gofunc((&QFontComboBox{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -476,7 +471,7 @@ func miqt_exec_callback_QFontComboBox_ResizeEvent(self *C.QFontComboBox, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQResizeEvent(e, nil)
 
 	gofunc((&QFontComboBox{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -502,7 +497,7 @@ func miqt_exec_callback_QFontComboBox_PaintEvent(self *C.QFontComboBox, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQPaintEvent(e, nil)
 
 	gofunc((&QFontComboBox{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -528,7 +523,7 @@ func miqt_exec_callback_QFontComboBox_ShowEvent(self *C.QFontComboBox, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQShowEvent(e, nil)
 
 	gofunc((&QFontComboBox{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -554,7 +549,7 @@ func miqt_exec_callback_QFontComboBox_HideEvent(self *C.QFontComboBox, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHideEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQHideEvent(e, nil)
 
 	gofunc((&QFontComboBox{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -580,7 +575,7 @@ func miqt_exec_callback_QFontComboBox_MousePressEvent(self *C.QFontComboBox, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQMouseEvent(e, nil, nil)
 
 	gofunc((&QFontComboBox{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -606,7 +601,7 @@ func miqt_exec_callback_QFontComboBox_MouseReleaseEvent(self *C.QFontComboBox, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQMouseEvent(e, nil, nil)
 
 	gofunc((&QFontComboBox{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -632,7 +627,7 @@ func miqt_exec_callback_QFontComboBox_KeyPressEvent(self *C.QFontComboBox, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQKeyEvent(e, nil, nil)
 
 	gofunc((&QFontComboBox{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -658,7 +653,7 @@ func miqt_exec_callback_QFontComboBox_KeyReleaseEvent(self *C.QFontComboBox, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQKeyEvent(e, nil, nil)
 
 	gofunc((&QFontComboBox{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -684,7 +679,7 @@ func miqt_exec_callback_QFontComboBox_WheelEvent(self *C.QFontComboBox, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQWheelEvent(e, nil, nil)
 
 	gofunc((&QFontComboBox{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -710,7 +705,7 @@ func miqt_exec_callback_QFontComboBox_ContextMenuEvent(self *C.QFontComboBox, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQContextMenuEvent(e, nil, nil)
 
 	gofunc((&QFontComboBox{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -736,7 +731,7 @@ func miqt_exec_callback_QFontComboBox_InputMethodEvent(self *C.QFontComboBox, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQInputMethodEvent(param1, nil)
 
 	gofunc((&QFontComboBox{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 

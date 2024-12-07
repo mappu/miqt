@@ -109,7 +109,7 @@ func QWebHistoryInterface_SetDefaultInterface(defaultInterface *QWebHistoryInter
 }
 
 func QWebHistoryInterface_DefaultInterface() *QWebHistoryInterface {
-	return UnsafeNewQWebHistoryInterface(unsafe.Pointer(C.QWebHistoryInterface_DefaultInterface()), nil)
+	return newQWebHistoryInterface(C.QWebHistoryInterface_DefaultInterface(), nil)
 }
 
 func (this *QWebHistoryInterface) HistoryContains(url string) bool {
@@ -269,6 +269,7 @@ func miqt_exec_callback_QWebHistoryInterface_EventFilter(self *C.QWebHistoryInte
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QWebHistoryInterface{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

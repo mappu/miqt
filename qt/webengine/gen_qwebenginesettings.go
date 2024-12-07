@@ -114,11 +114,11 @@ func UnsafeNewQWebEngineSettings(h unsafe.Pointer) *QWebEngineSettings {
 }
 
 func QWebEngineSettings_GlobalSettings() *QWebEngineSettings {
-	return UnsafeNewQWebEngineSettings(unsafe.Pointer(C.QWebEngineSettings_GlobalSettings()))
+	return newQWebEngineSettings(C.QWebEngineSettings_GlobalSettings())
 }
 
 func QWebEngineSettings_DefaultSettings() *QWebEngineSettings {
-	return UnsafeNewQWebEngineSettings(unsafe.Pointer(C.QWebEngineSettings_DefaultSettings()))
+	return newQWebEngineSettings(C.QWebEngineSettings_DefaultSettings())
 }
 
 func (this *QWebEngineSettings) SetFontFamily(which QWebEngineSettings__FontFamily, family string) {

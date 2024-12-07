@@ -100,15 +100,13 @@ func (this *QMediaTimeInterval) IsNormal() bool {
 }
 
 func (this *QMediaTimeInterval) Normalized() *QMediaTimeInterval {
-	_ret := C.QMediaTimeInterval_Normalized(this.h)
-	_goptr := newQMediaTimeInterval(_ret)
+	_goptr := newQMediaTimeInterval(C.QMediaTimeInterval_Normalized(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaTimeInterval) Translated(offset int64) *QMediaTimeInterval {
-	_ret := C.QMediaTimeInterval_Translated(this.h, (C.longlong)(offset))
-	_goptr := newQMediaTimeInterval(_ret)
+	_goptr := newQMediaTimeInterval(C.QMediaTimeInterval_Translated(this.h, (C.longlong)(offset)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -224,8 +222,7 @@ func (this *QMediaTimeRange) Intervals() []QMediaTimeInterval {
 	_ret := make([]QMediaTimeInterval, int(_ma.len))
 	_outCast := (*[0xffff]*C.QMediaTimeInterval)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQMediaTimeInterval(_lv_ret)
+		_lv_goptr := newQMediaTimeInterval(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -269,19 +266,19 @@ func (this *QMediaTimeRange) RemoveTimeRange(param1 *QMediaTimeRange) {
 }
 
 func (this *QMediaTimeRange) OperatorPlusAssign(param1 *QMediaTimeRange) *QMediaTimeRange {
-	return UnsafeNewQMediaTimeRange(unsafe.Pointer(C.QMediaTimeRange_OperatorPlusAssign(this.h, param1.cPointer())))
+	return newQMediaTimeRange(C.QMediaTimeRange_OperatorPlusAssign(this.h, param1.cPointer()))
 }
 
 func (this *QMediaTimeRange) OperatorPlusAssignWithQMediaTimeInterval(param1 *QMediaTimeInterval) *QMediaTimeRange {
-	return UnsafeNewQMediaTimeRange(unsafe.Pointer(C.QMediaTimeRange_OperatorPlusAssignWithQMediaTimeInterval(this.h, param1.cPointer())))
+	return newQMediaTimeRange(C.QMediaTimeRange_OperatorPlusAssignWithQMediaTimeInterval(this.h, param1.cPointer()))
 }
 
 func (this *QMediaTimeRange) OperatorMinusAssign(param1 *QMediaTimeRange) *QMediaTimeRange {
-	return UnsafeNewQMediaTimeRange(unsafe.Pointer(C.QMediaTimeRange_OperatorMinusAssign(this.h, param1.cPointer())))
+	return newQMediaTimeRange(C.QMediaTimeRange_OperatorMinusAssign(this.h, param1.cPointer()))
 }
 
 func (this *QMediaTimeRange) OperatorMinusAssignWithQMediaTimeInterval(param1 *QMediaTimeInterval) *QMediaTimeRange {
-	return UnsafeNewQMediaTimeRange(unsafe.Pointer(C.QMediaTimeRange_OperatorMinusAssignWithQMediaTimeInterval(this.h, param1.cPointer())))
+	return newQMediaTimeRange(C.QMediaTimeRange_OperatorMinusAssignWithQMediaTimeInterval(this.h, param1.cPointer()))
 }
 
 func (this *QMediaTimeRange) Clear() {

@@ -97,8 +97,7 @@ func (this *QCameraViewfinderSettingsControl) IsViewfinderParameterSupported(par
 }
 
 func (this *QCameraViewfinderSettingsControl) ViewfinderParameter(parameter QCameraViewfinderSettingsControl__ViewfinderParameter) *qt.QVariant {
-	_ret := C.QCameraViewfinderSettingsControl_ViewfinderParameter(this.h, (C.int)(parameter))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QCameraViewfinderSettingsControl_ViewfinderParameter(this.h, (C.int)(parameter))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -237,8 +236,7 @@ func (this *QCameraViewfinderSettingsControl2) SupportedViewfinderSettings() []Q
 	_ret := make([]QCameraViewfinderSettings, int(_ma.len))
 	_outCast := (*[0xffff]*C.QCameraViewfinderSettings)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQCameraViewfinderSettings(_lv_ret)
+		_lv_goptr := newQCameraViewfinderSettings(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -246,8 +244,7 @@ func (this *QCameraViewfinderSettingsControl2) SupportedViewfinderSettings() []Q
 }
 
 func (this *QCameraViewfinderSettingsControl2) ViewfinderSettings() *QCameraViewfinderSettings {
-	_ret := C.QCameraViewfinderSettingsControl2_ViewfinderSettings(this.h)
-	_goptr := newQCameraViewfinderSettings(_ret)
+	_goptr := newQCameraViewfinderSettings(C.QCameraViewfinderSettingsControl2_ViewfinderSettings(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

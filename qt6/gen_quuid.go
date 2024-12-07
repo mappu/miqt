@@ -120,8 +120,7 @@ func NewQUuid4(param1 *QUuid) *QUuid {
 }
 
 func QUuid_FromString(stringVal QAnyStringView) *QUuid {
-	_ret := C.QUuid_FromString(stringVal.cPointer())
-	_goptr := newQUuid(_ret)
+	_goptr := newQUuid(C.QUuid_FromString(stringVal.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -148,8 +147,7 @@ func (this *QUuid) ToRfc4122() []byte {
 }
 
 func QUuid_FromRfc4122(param1 QByteArrayView) *QUuid {
-	_ret := C.QUuid_FromRfc4122(param1.cPointer())
-	_goptr := newQUuid(_ret)
+	_goptr := newQUuid(C.QUuid_FromRfc4122(param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -175,8 +173,7 @@ func (this *QUuid) OperatorGreater(other *QUuid) bool {
 }
 
 func QUuid_CreateUuid() *QUuid {
-	_ret := C.QUuid_CreateUuid()
-	_goptr := newQUuid(_ret)
+	_goptr := newQUuid(C.QUuid_CreateUuid())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -185,8 +182,7 @@ func QUuid_CreateUuidV3(ns *QUuid, baseData []byte) *QUuid {
 	baseData_alias := C.struct_miqt_string{}
 	baseData_alias.data = (*C.char)(unsafe.Pointer(&baseData[0]))
 	baseData_alias.len = C.size_t(len(baseData))
-	_ret := C.QUuid_CreateUuidV3(ns.cPointer(), baseData_alias)
-	_goptr := newQUuid(_ret)
+	_goptr := newQUuid(C.QUuid_CreateUuidV3(ns.cPointer(), baseData_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -195,8 +191,7 @@ func QUuid_CreateUuidV5(ns *QUuid, baseData []byte) *QUuid {
 	baseData_alias := C.struct_miqt_string{}
 	baseData_alias.data = (*C.char)(unsafe.Pointer(&baseData[0]))
 	baseData_alias.len = C.size_t(len(baseData))
-	_ret := C.QUuid_CreateUuidV5(ns.cPointer(), baseData_alias)
-	_goptr := newQUuid(_ret)
+	_goptr := newQUuid(C.QUuid_CreateUuidV5(ns.cPointer(), baseData_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -206,8 +201,7 @@ func QUuid_CreateUuidV32(ns *QUuid, baseData string) *QUuid {
 	baseData_ms.data = C.CString(baseData)
 	baseData_ms.len = C.size_t(len(baseData))
 	defer C.free(unsafe.Pointer(baseData_ms.data))
-	_ret := C.QUuid_CreateUuidV32(ns.cPointer(), baseData_ms)
-	_goptr := newQUuid(_ret)
+	_goptr := newQUuid(C.QUuid_CreateUuidV32(ns.cPointer(), baseData_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -217,8 +211,7 @@ func QUuid_CreateUuidV52(ns *QUuid, baseData string) *QUuid {
 	baseData_ms.data = C.CString(baseData)
 	baseData_ms.len = C.size_t(len(baseData))
 	defer C.free(unsafe.Pointer(baseData_ms.data))
-	_ret := C.QUuid_CreateUuidV52(ns.cPointer(), baseData_ms)
-	_goptr := newQUuid(_ret)
+	_goptr := newQUuid(C.QUuid_CreateUuidV52(ns.cPointer(), baseData_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

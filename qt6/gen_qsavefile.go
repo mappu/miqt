@@ -118,7 +118,7 @@ func NewQSaveFile4(parent *QObject) *QSaveFile {
 }
 
 func (this *QSaveFile) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSaveFile_MetaObject(this.h)))
+	return newQMetaObject(C.QSaveFile_MetaObject(this.h))
 }
 
 func (this *QSaveFile) Metacast(param1 string) unsafe.Pointer {

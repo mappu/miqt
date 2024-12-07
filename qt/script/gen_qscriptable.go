@@ -60,16 +60,15 @@ func NewQScriptable() *QScriptable {
 }
 
 func (this *QScriptable) Engine() *QScriptEngine {
-	return UnsafeNewQScriptEngine(unsafe.Pointer(C.QScriptable_Engine(this.h)), nil)
+	return newQScriptEngine(C.QScriptable_Engine(this.h), nil)
 }
 
 func (this *QScriptable) Context() *QScriptContext {
-	return UnsafeNewQScriptContext(unsafe.Pointer(C.QScriptable_Context(this.h)))
+	return newQScriptContext(C.QScriptable_Context(this.h))
 }
 
 func (this *QScriptable) ThisObject() *QScriptValue {
-	_ret := C.QScriptable_ThisObject(this.h)
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptable_ThisObject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -79,8 +78,7 @@ func (this *QScriptable) ArgumentCount() int {
 }
 
 func (this *QScriptable) Argument(index int) *QScriptValue {
-	_ret := C.QScriptable_Argument(this.h, (C.int)(index))
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptable_Argument(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

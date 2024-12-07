@@ -132,8 +132,7 @@ func (this *QAudioBuffer) Detach() {
 }
 
 func (this *QAudioBuffer) Format() *QAudioFormat {
-	_ret := C.QAudioBuffer_Format(this.h)
-	_goptr := newQAudioFormat(_ret)
+	_goptr := newQAudioFormat(C.QAudioBuffer_Format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -121,7 +121,7 @@ func NewQFontDialog4(initial *QFont, parent *QWidget) *QFontDialog {
 }
 
 func (this *QFontDialog) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QFontDialog_MetaObject(this.h)))
+	return newQMetaObject(C.QFontDialog_MetaObject(this.h))
 }
 
 func (this *QFontDialog) Metacast(param1 string) unsafe.Pointer {
@@ -144,15 +144,13 @@ func (this *QFontDialog) SetCurrentFont(font *QFont) {
 }
 
 func (this *QFontDialog) CurrentFont() *QFont {
-	_ret := C.QFontDialog_CurrentFont(this.h)
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QFontDialog_CurrentFont(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFontDialog) SelectedFont() *QFont {
-	_ret := C.QFontDialog_SelectedFont(this.h)
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QFontDialog_SelectedFont(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -178,15 +176,13 @@ func (this *QFontDialog) SetVisible(visible bool) {
 }
 
 func QFontDialog_GetFont(ok *bool) *QFont {
-	_ret := C.QFontDialog_GetFont((*C.bool)(unsafe.Pointer(ok)))
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QFontDialog_GetFont((*C.bool)(unsafe.Pointer(ok))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QFontDialog_GetFont2(ok *bool, initial *QFont) *QFont {
-	_ret := C.QFontDialog_GetFont2((*C.bool)(unsafe.Pointer(ok)), initial.cPointer())
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QFontDialog_GetFont2((*C.bool)(unsafe.Pointer(ok)), initial.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -206,7 +202,7 @@ func miqt_exec_callback_QFontDialog_CurrentFontChanged(cb C.intptr_t, font *C.QF
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFont(unsafe.Pointer(font))
+	slotval1 := newQFont(font)
 
 	gofunc(slotval1)
 }
@@ -226,7 +222,7 @@ func miqt_exec_callback_QFontDialog_FontSelected(cb C.intptr_t, font *C.QFont) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFont(unsafe.Pointer(font))
+	slotval1 := newQFont(font)
 
 	gofunc(slotval1)
 }
@@ -258,15 +254,13 @@ func (this *QFontDialog) SetOption2(option QFontDialog__FontDialogOption, on boo
 }
 
 func QFontDialog_GetFont22(ok *bool, parent *QWidget) *QFont {
-	_ret := C.QFontDialog_GetFont22((*C.bool)(unsafe.Pointer(ok)), parent.cPointer())
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QFontDialog_GetFont22((*C.bool)(unsafe.Pointer(ok)), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QFontDialog_GetFont3(ok *bool, initial *QFont, parent *QWidget) *QFont {
-	_ret := C.QFontDialog_GetFont3((*C.bool)(unsafe.Pointer(ok)), initial.cPointer(), parent.cPointer())
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QFontDialog_GetFont3((*C.bool)(unsafe.Pointer(ok)), initial.cPointer(), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -276,8 +270,7 @@ func QFontDialog_GetFont4(ok *bool, initial *QFont, parent *QWidget, title strin
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
 	defer C.free(unsafe.Pointer(title_ms.data))
-	_ret := C.QFontDialog_GetFont4((*C.bool)(unsafe.Pointer(ok)), initial.cPointer(), parent.cPointer(), title_ms)
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QFontDialog_GetFont4((*C.bool)(unsafe.Pointer(ok)), initial.cPointer(), parent.cPointer(), title_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -287,8 +280,7 @@ func QFontDialog_GetFont5(ok *bool, initial *QFont, parent *QWidget, title strin
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
 	defer C.free(unsafe.Pointer(title_ms.data))
-	_ret := C.QFontDialog_GetFont5((*C.bool)(unsafe.Pointer(ok)), initial.cPointer(), parent.cPointer(), title_ms, (C.int)(options))
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QFontDialog_GetFont5((*C.bool)(unsafe.Pointer(ok)), initial.cPointer(), parent.cPointer(), title_ms, (C.int)(options)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -339,7 +331,7 @@ func miqt_exec_callback_QFontDialog_ChangeEvent(self *C.QFontDialog, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QFontDialog{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -391,8 +383,9 @@ func miqt_exec_callback_QFontDialog_EventFilter(self *C.QFontDialog, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(object))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(object)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QFontDialog{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -402,8 +395,7 @@ func miqt_exec_callback_QFontDialog_EventFilter(self *C.QFontDialog, cb C.intptr
 
 func (this *QFontDialog) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QFontDialog_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QFontDialog_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -430,8 +422,7 @@ func miqt_exec_callback_QFontDialog_SizeHint(self *C.QFontDialog, cb C.intptr_t)
 
 func (this *QFontDialog) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QFontDialog_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QFontDialog_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -570,7 +561,7 @@ func miqt_exec_callback_QFontDialog_KeyPressEvent(self *C.QFontDialog, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQKeyEvent(param1, nil, nil)
 
 	gofunc((&QFontDialog{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -596,7 +587,7 @@ func miqt_exec_callback_QFontDialog_CloseEvent(self *C.QFontDialog, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQCloseEvent(param1, nil)
 
 	gofunc((&QFontDialog{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -622,7 +613,7 @@ func miqt_exec_callback_QFontDialog_ShowEvent(self *C.QFontDialog, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQShowEvent(param1, nil)
 
 	gofunc((&QFontDialog{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -648,7 +639,7 @@ func miqt_exec_callback_QFontDialog_ResizeEvent(self *C.QFontDialog, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQResizeEvent(param1, nil)
 
 	gofunc((&QFontDialog{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -674,7 +665,7 @@ func miqt_exec_callback_QFontDialog_ContextMenuEvent(self *C.QFontDialog, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQContextMenuEvent(param1, nil, nil)
 
 	gofunc((&QFontDialog{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 

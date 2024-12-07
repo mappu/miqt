@@ -146,8 +146,7 @@ func (this *QAudioEncoderSettings) EncodingOption(option string) *qt.QVariant {
 	option_ms.data = C.CString(option)
 	option_ms.len = C.size_t(len(option))
 	defer C.free(unsafe.Pointer(option_ms.data))
-	_ret := C.QAudioEncoderSettings_EncodingOption(this.h, option_ms)
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QAudioEncoderSettings_EncodingOption(this.h, option_ms)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -162,8 +161,7 @@ func (this *QAudioEncoderSettings) EncodingOptions() map[string]qt.QVariant {
 		_mapkey_ret := C.GoStringN(_mapkey_ms.data, C.int(int64(_mapkey_ms.len)))
 		C.free(unsafe.Pointer(_mapkey_ms.data))
 		_entry_Key := _mapkey_ret
-		_mapval_ret := _Values[i]
-		_mapval_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_mapval_ret))
+		_mapval_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_Values[i]))
 		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_entry_Value := *_mapval_goptr
 
@@ -313,8 +311,7 @@ func (this *QVideoEncoderSettings) SetCodec(codec string) {
 }
 
 func (this *QVideoEncoderSettings) Resolution() *qt.QSize {
-	_ret := C.QVideoEncoderSettings_Resolution(this.h)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoEncoderSettings_Resolution(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -356,8 +353,7 @@ func (this *QVideoEncoderSettings) EncodingOption(option string) *qt.QVariant {
 	option_ms.data = C.CString(option)
 	option_ms.len = C.size_t(len(option))
 	defer C.free(unsafe.Pointer(option_ms.data))
-	_ret := C.QVideoEncoderSettings_EncodingOption(this.h, option_ms)
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QVideoEncoderSettings_EncodingOption(this.h, option_ms)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -372,8 +368,7 @@ func (this *QVideoEncoderSettings) EncodingOptions() map[string]qt.QVariant {
 		_mapkey_ret := C.GoStringN(_mapkey_ms.data, C.int(int64(_mapkey_ms.len)))
 		C.free(unsafe.Pointer(_mapkey_ms.data))
 		_entry_Key := _mapkey_ret
-		_mapval_ret := _Values[i]
-		_mapval_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_mapval_ret))
+		_mapval_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_Values[i]))
 		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_entry_Value := *_mapval_goptr
 
@@ -515,8 +510,7 @@ func (this *QImageEncoderSettings) SetCodec(codec string) {
 }
 
 func (this *QImageEncoderSettings) Resolution() *qt.QSize {
-	_ret := C.QImageEncoderSettings_Resolution(this.h)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QImageEncoderSettings_Resolution(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -542,8 +536,7 @@ func (this *QImageEncoderSettings) EncodingOption(option string) *qt.QVariant {
 	option_ms.data = C.CString(option)
 	option_ms.len = C.size_t(len(option))
 	defer C.free(unsafe.Pointer(option_ms.data))
-	_ret := C.QImageEncoderSettings_EncodingOption(this.h, option_ms)
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QImageEncoderSettings_EncodingOption(this.h, option_ms)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -558,8 +551,7 @@ func (this *QImageEncoderSettings) EncodingOptions() map[string]qt.QVariant {
 		_mapkey_ret := C.GoStringN(_mapkey_ms.data, C.int(int64(_mapkey_ms.len)))
 		C.free(unsafe.Pointer(_mapkey_ms.data))
 		_entry_Key := _mapkey_ret
-		_mapval_ret := _Values[i]
-		_mapval_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_mapval_ret))
+		_mapval_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_Values[i]))
 		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_entry_Value := *_mapval_goptr
 

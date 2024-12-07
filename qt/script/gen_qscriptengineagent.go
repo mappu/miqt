@@ -116,14 +116,13 @@ func (this *QScriptEngineAgent) SupportsExtension(extension QScriptEngineAgent__
 }
 
 func (this *QScriptEngineAgent) Extension(extension QScriptEngineAgent__Extension, argument *qt.QVariant) *qt.QVariant {
-	_ret := C.QScriptEngineAgent_Extension(this.h, (C.int)(extension), (*C.QVariant)(argument.UnsafePointer()))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QScriptEngineAgent_Extension(this.h, (C.int)(extension), (*C.QVariant)(argument.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngineAgent) Engine() *QScriptEngine {
-	return UnsafeNewQScriptEngine(unsafe.Pointer(C.QScriptEngineAgent_Engine(this.h)), nil)
+	return newQScriptEngine(C.QScriptEngineAgent_Engine(this.h), nil)
 }
 
 func (this *QScriptEngineAgent) callVirtualBase_ScriptLoad(id int64, program string, fileName string, baseLineNumber int) {
@@ -290,7 +289,7 @@ func miqt_exec_callback_QScriptEngineAgent_FunctionExit(self *C.QScriptEngineAge
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (int64)(scriptId)
 
-	slotval2 := UnsafeNewQScriptValue(unsafe.Pointer(returnValue))
+	slotval2 := newQScriptValue(returnValue)
 
 	gofunc((&QScriptEngineAgent{h: self}).callVirtualBase_FunctionExit, slotval1, slotval2)
 
@@ -348,7 +347,8 @@ func miqt_exec_callback_QScriptEngineAgent_ExceptionThrow(self *C.QScriptEngineA
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (int64)(scriptId)
 
-	slotval2 := UnsafeNewQScriptValue(unsafe.Pointer(exception))
+	slotval2 := newQScriptValue(exception)
+
 	slotval3 := (bool)(hasHandler)
 
 	gofunc((&QScriptEngineAgent{h: self}).callVirtualBase_ExceptionThrow, slotval1, slotval2, slotval3)
@@ -377,7 +377,7 @@ func miqt_exec_callback_QScriptEngineAgent_ExceptionCatch(self *C.QScriptEngineA
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (int64)(scriptId)
 
-	slotval2 := UnsafeNewQScriptValue(unsafe.Pointer(exception))
+	slotval2 := newQScriptValue(exception)
 
 	gofunc((&QScriptEngineAgent{h: self}).callVirtualBase_ExceptionCatch, slotval1, slotval2)
 
@@ -413,8 +413,7 @@ func miqt_exec_callback_QScriptEngineAgent_SupportsExtension(self *C.QScriptEngi
 
 func (this *QScriptEngineAgent) callVirtualBase_Extension(extension QScriptEngineAgent__Extension, argument *qt.QVariant) *qt.QVariant {
 
-	_ret := C.QScriptEngineAgent_virtualbase_Extension(unsafe.Pointer(this.h), (C.int)(extension), (*C.QVariant)(argument.UnsafePointer()))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QScriptEngineAgent_virtualbase_Extension(unsafe.Pointer(this.h), (C.int)(extension), (*C.QVariant)(argument.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

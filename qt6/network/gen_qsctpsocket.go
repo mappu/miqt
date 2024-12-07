@@ -124,8 +124,7 @@ func (this *QSctpSocket) IsInDatagramMode() bool {
 }
 
 func (this *QSctpSocket) ReadDatagram() *QNetworkDatagram {
-	_ret := C.QSctpSocket_ReadDatagram(this.h)
-	_goptr := newQNetworkDatagram(_ret)
+	_goptr := newQNetworkDatagram(C.QSctpSocket_ReadDatagram(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

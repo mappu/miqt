@@ -122,7 +122,7 @@ func (this *QTextDocumentWriter) SetDevice(device *QIODevice) {
 }
 
 func (this *QTextDocumentWriter) Device() *QIODevice {
-	return UnsafeNewQIODevice(unsafe.Pointer(C.QTextDocumentWriter_Device(this.h)), nil, nil)
+	return newQIODevice(C.QTextDocumentWriter_Device(this.h), nil, nil)
 }
 
 func (this *QTextDocumentWriter) SetFileName(fileName string) {

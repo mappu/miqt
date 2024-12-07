@@ -78,7 +78,7 @@ func NewQVariantAnimation2(parent *QObject) *QVariantAnimation {
 }
 
 func (this *QVariantAnimation) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QVariantAnimation_MetaObject(this.h)))
+	return newQMetaObject(C.QVariantAnimation_MetaObject(this.h))
 }
 
 func (this *QVariantAnimation) Metacast(param1 string) unsafe.Pointer {
@@ -97,8 +97,7 @@ func QVariantAnimation_Tr(s string) string {
 }
 
 func (this *QVariantAnimation) StartValue() *QVariant {
-	_ret := C.QVariantAnimation_StartValue(this.h)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QVariantAnimation_StartValue(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -108,8 +107,7 @@ func (this *QVariantAnimation) SetStartValue(value *QVariant) {
 }
 
 func (this *QVariantAnimation) EndValue() *QVariant {
-	_ret := C.QVariantAnimation_EndValue(this.h)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QVariantAnimation_EndValue(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -119,8 +117,7 @@ func (this *QVariantAnimation) SetEndValue(value *QVariant) {
 }
 
 func (this *QVariantAnimation) KeyValueAt(step float64) *QVariant {
-	_ret := C.QVariantAnimation_KeyValueAt(this.h, (C.double)(step))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QVariantAnimation_KeyValueAt(this.h, (C.double)(step)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -145,8 +142,7 @@ func (this *QVariantAnimation) KeyValues() []struct {
 		_lv_Second_CArray := (*[0xffff]*C.QVariant)(unsafe.Pointer(_lv_mm.values))
 		_lv_entry_First := (float64)(_lv_First_CArray[0])
 
-		_lv_second_ret := _lv_Second_CArray[0]
-		_lv_second_goptr := newQVariant(_lv_second_ret)
+		_lv_second_goptr := newQVariant(_lv_Second_CArray[0])
 		_lv_second_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_lv_entry_Second := *_lv_second_goptr
 
@@ -183,8 +179,7 @@ func (this *QVariantAnimation) SetKeyValues(values []struct {
 }
 
 func (this *QVariantAnimation) CurrentValue() *QVariant {
-	_ret := C.QVariantAnimation_CurrentValue(this.h)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QVariantAnimation_CurrentValue(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -198,8 +193,7 @@ func (this *QVariantAnimation) SetDuration(msecs int) {
 }
 
 func (this *QVariantAnimation) EasingCurve() *QEasingCurve {
-	_ret := C.QVariantAnimation_EasingCurve(this.h)
-	_goptr := newQEasingCurve(_ret)
+	_goptr := newQEasingCurve(C.QVariantAnimation_EasingCurve(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -223,7 +217,7 @@ func miqt_exec_callback_QVariantAnimation_ValueChanged(cb C.intptr_t, value *C.Q
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval1 := newQVariant(value)
 
 	gofunc(slotval1)
 }
@@ -295,7 +289,7 @@ func miqt_exec_callback_QVariantAnimation_Event(self *C.QVariantAnimation, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QVariantAnimation{h: self}).callVirtualBase_Event, slotval1)
 
@@ -377,7 +371,7 @@ func miqt_exec_callback_QVariantAnimation_UpdateCurrentValue(self *C.QVariantAni
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval1 := newQVariant(value)
 
 	gofunc((&QVariantAnimation{h: self}).callVirtualBase_UpdateCurrentValue, slotval1)
 
@@ -385,8 +379,7 @@ func miqt_exec_callback_QVariantAnimation_UpdateCurrentValue(self *C.QVariantAni
 
 func (this *QVariantAnimation) callVirtualBase_Interpolated(from *QVariant, to *QVariant, progress float64) *QVariant {
 
-	_ret := C.QVariantAnimation_virtualbase_Interpolated(unsafe.Pointer(this.h), from.cPointer(), to.cPointer(), (C.double)(progress))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QVariantAnimation_virtualbase_Interpolated(unsafe.Pointer(this.h), from.cPointer(), to.cPointer(), (C.double)(progress)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -406,8 +399,10 @@ func miqt_exec_callback_QVariantAnimation_Interpolated(self *C.QVariantAnimation
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVariant(unsafe.Pointer(from))
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(to))
+	slotval1 := newQVariant(from)
+
+	slotval2 := newQVariant(to)
+
 	slotval3 := (float64)(progress)
 
 	virtualReturn := gofunc((&QVariantAnimation{h: self}).callVirtualBase_Interpolated, slotval1, slotval2, slotval3)

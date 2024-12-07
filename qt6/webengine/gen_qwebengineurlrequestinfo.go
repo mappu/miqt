@@ -98,22 +98,19 @@ func (this *QWebEngineUrlRequestInfo) NavigationType() QWebEngineUrlRequestInfo_
 }
 
 func (this *QWebEngineUrlRequestInfo) RequestUrl() *qt6.QUrl {
-	_ret := C.QWebEngineUrlRequestInfo_RequestUrl(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineUrlRequestInfo_RequestUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineUrlRequestInfo) FirstPartyUrl() *qt6.QUrl {
-	_ret := C.QWebEngineUrlRequestInfo_FirstPartyUrl(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineUrlRequestInfo_FirstPartyUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineUrlRequestInfo) Initiator() *qt6.QUrl {
-	_ret := C.QWebEngineUrlRequestInfo_Initiator(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineUrlRequestInfo_Initiator(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

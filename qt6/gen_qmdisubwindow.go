@@ -102,7 +102,7 @@ func NewQMdiSubWindow3(parent *QWidget, flags WindowType) *QMdiSubWindow {
 }
 
 func (this *QMdiSubWindow) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMdiSubWindow_MetaObject(this.h)))
+	return newQMetaObject(C.QMdiSubWindow_MetaObject(this.h))
 }
 
 func (this *QMdiSubWindow) Metacast(param1 string) unsafe.Pointer {
@@ -121,15 +121,13 @@ func QMdiSubWindow_Tr(s string) string {
 }
 
 func (this *QMdiSubWindow) SizeHint() *QSize {
-	_ret := C.QMdiSubWindow_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QMdiSubWindow_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMdiSubWindow) MinimumSizeHint() *QSize {
-	_ret := C.QMdiSubWindow_MinimumSizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QMdiSubWindow_MinimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -139,15 +137,15 @@ func (this *QMdiSubWindow) SetWidget(widget *QWidget) {
 }
 
 func (this *QMdiSubWindow) Widget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QMdiSubWindow_Widget(this.h)), nil, nil)
+	return newQWidget(C.QMdiSubWindow_Widget(this.h), nil, nil)
 }
 
 func (this *QMdiSubWindow) MaximizedButtonsWidget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QMdiSubWindow_MaximizedButtonsWidget(this.h)), nil, nil)
+	return newQWidget(C.QMdiSubWindow_MaximizedButtonsWidget(this.h), nil, nil)
 }
 
 func (this *QMdiSubWindow) MaximizedSystemMenuIconWidget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QMdiSubWindow_MaximizedSystemMenuIconWidget(this.h)), nil, nil)
+	return newQWidget(C.QMdiSubWindow_MaximizedSystemMenuIconWidget(this.h), nil, nil)
 }
 
 func (this *QMdiSubWindow) IsShaded() bool {
@@ -183,11 +181,11 @@ func (this *QMdiSubWindow) SetSystemMenu(systemMenu *QMenu) {
 }
 
 func (this *QMdiSubWindow) SystemMenu() *QMenu {
-	return UnsafeNewQMenu(unsafe.Pointer(C.QMdiSubWindow_SystemMenu(this.h)), nil, nil, nil)
+	return newQMenu(C.QMdiSubWindow_SystemMenu(this.h), nil, nil, nil)
 }
 
 func (this *QMdiSubWindow) MdiArea() *QMdiArea {
-	return UnsafeNewQMdiArea(unsafe.Pointer(C.QMdiSubWindow_MdiArea(this.h)), nil, nil, nil, nil, nil)
+	return newQMdiArea(C.QMdiSubWindow_MdiArea(this.h), nil, nil, nil, nil, nil)
 }
 
 func (this *QMdiSubWindow) WindowStateChanged(oldState WindowState, newState WindowState) {
@@ -265,8 +263,7 @@ func (this *QMdiSubWindow) SetOption2(option QMdiSubWindow__SubWindowOption, on 
 
 func (this *QMdiSubWindow) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QMdiSubWindow_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QMdiSubWindow_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -293,8 +290,7 @@ func miqt_exec_callback_QMdiSubWindow_SizeHint(self *C.QMdiSubWindow, cb C.intpt
 
 func (this *QMdiSubWindow) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QMdiSubWindow_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QMdiSubWindow_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -339,8 +335,9 @@ func miqt_exec_callback_QMdiSubWindow_EventFilter(self *C.QMdiSubWindow, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(object))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(object)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QMdiSubWindow{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -368,7 +365,7 @@ func miqt_exec_callback_QMdiSubWindow_Event(self *C.QMdiSubWindow, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QMdiSubWindow{h: self}).callVirtualBase_Event, slotval1)
 
@@ -396,7 +393,7 @@ func miqt_exec_callback_QMdiSubWindow_ShowEvent(self *C.QMdiSubWindow, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(showEvent), nil)
+	slotval1 := newQShowEvent(showEvent, nil)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -422,7 +419,7 @@ func miqt_exec_callback_QMdiSubWindow_HideEvent(self *C.QMdiSubWindow, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHideEvent(unsafe.Pointer(hideEvent), nil)
+	slotval1 := newQHideEvent(hideEvent, nil)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -448,7 +445,7 @@ func miqt_exec_callback_QMdiSubWindow_ChangeEvent(self *C.QMdiSubWindow, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(changeEvent))
+	slotval1 := newQEvent(changeEvent)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -474,7 +471,7 @@ func miqt_exec_callback_QMdiSubWindow_CloseEvent(self *C.QMdiSubWindow, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(closeEvent), nil)
+	slotval1 := newQCloseEvent(closeEvent, nil)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -500,7 +497,7 @@ func miqt_exec_callback_QMdiSubWindow_LeaveEvent(self *C.QMdiSubWindow, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(leaveEvent))
+	slotval1 := newQEvent(leaveEvent)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_LeaveEvent, slotval1)
 
@@ -526,7 +523,7 @@ func miqt_exec_callback_QMdiSubWindow_ResizeEvent(self *C.QMdiSubWindow, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(resizeEvent), nil)
+	slotval1 := newQResizeEvent(resizeEvent, nil)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -552,7 +549,7 @@ func miqt_exec_callback_QMdiSubWindow_TimerEvent(self *C.QMdiSubWindow, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(timerEvent), nil)
+	slotval1 := newQTimerEvent(timerEvent, nil)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -578,7 +575,7 @@ func miqt_exec_callback_QMdiSubWindow_MoveEvent(self *C.QMdiSubWindow, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMoveEvent(unsafe.Pointer(moveEvent), nil)
+	slotval1 := newQMoveEvent(moveEvent, nil)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -604,7 +601,7 @@ func miqt_exec_callback_QMdiSubWindow_PaintEvent(self *C.QMdiSubWindow, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(paintEvent), nil)
+	slotval1 := newQPaintEvent(paintEvent, nil)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -630,7 +627,7 @@ func miqt_exec_callback_QMdiSubWindow_MousePressEvent(self *C.QMdiSubWindow, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(mouseEvent), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(mouseEvent, nil, nil, nil, nil)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -656,7 +653,7 @@ func miqt_exec_callback_QMdiSubWindow_MouseDoubleClickEvent(self *C.QMdiSubWindo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(mouseEvent), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(mouseEvent, nil, nil, nil, nil)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -682,7 +679,7 @@ func miqt_exec_callback_QMdiSubWindow_MouseReleaseEvent(self *C.QMdiSubWindow, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(mouseEvent), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(mouseEvent, nil, nil, nil, nil)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -708,7 +705,7 @@ func miqt_exec_callback_QMdiSubWindow_MouseMoveEvent(self *C.QMdiSubWindow, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(mouseEvent), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(mouseEvent, nil, nil, nil, nil)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -734,7 +731,7 @@ func miqt_exec_callback_QMdiSubWindow_KeyPressEvent(self *C.QMdiSubWindow, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(keyEvent), nil, nil)
+	slotval1 := newQKeyEvent(keyEvent, nil, nil)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -760,7 +757,7 @@ func miqt_exec_callback_QMdiSubWindow_ContextMenuEvent(self *C.QMdiSubWindow, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(contextMenuEvent), nil, nil)
+	slotval1 := newQContextMenuEvent(contextMenuEvent, nil, nil)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -786,7 +783,7 @@ func miqt_exec_callback_QMdiSubWindow_FocusInEvent(self *C.QMdiSubWindow, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(focusInEvent), nil)
+	slotval1 := newQFocusEvent(focusInEvent, nil)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -812,7 +809,7 @@ func miqt_exec_callback_QMdiSubWindow_FocusOutEvent(self *C.QMdiSubWindow, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(focusOutEvent), nil)
+	slotval1 := newQFocusEvent(focusOutEvent, nil)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -838,7 +835,7 @@ func miqt_exec_callback_QMdiSubWindow_ChildEvent(self *C.QMdiSubWindow, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(childEvent), nil)
+	slotval1 := newQChildEvent(childEvent, nil)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -950,7 +947,8 @@ func miqt_exec_callback_QMdiSubWindow_HasHeightForWidth(self *C.QMdiSubWindow, c
 
 func (this *QMdiSubWindow) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QMdiSubWindow_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return newQPaintEngine(C.QMdiSubWindow_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+
 }
 func (this *QMdiSubWindow) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
 	if !this.isSubclass {
@@ -992,7 +990,7 @@ func miqt_exec_callback_QMdiSubWindow_WheelEvent(self *C.QMdiSubWindow, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -1018,7 +1016,7 @@ func miqt_exec_callback_QMdiSubWindow_KeyReleaseEvent(self *C.QMdiSubWindow, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -1044,7 +1042,7 @@ func miqt_exec_callback_QMdiSubWindow_EnterEvent(self *C.QMdiSubWindow, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEnterEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQEnterEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_EnterEvent, slotval1)
 
@@ -1070,7 +1068,7 @@ func miqt_exec_callback_QMdiSubWindow_TabletEvent(self *C.QMdiSubWindow, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTabletEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQTabletEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -1096,7 +1094,7 @@ func miqt_exec_callback_QMdiSubWindow_ActionEvent(self *C.QMdiSubWindow, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQActionEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQActionEvent(event, nil)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -1122,7 +1120,7 @@ func miqt_exec_callback_QMdiSubWindow_DragEnterEvent(self *C.QMdiSubWindow, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragEnterEvent(unsafe.Pointer(event), nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event, nil, nil, nil)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -1148,7 +1146,7 @@ func miqt_exec_callback_QMdiSubWindow_DragMoveEvent(self *C.QMdiSubWindow, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQDragMoveEvent(event, nil, nil)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1174,7 +1172,7 @@ func miqt_exec_callback_QMdiSubWindow_DragLeaveEvent(self *C.QMdiSubWindow, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragLeaveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDragLeaveEvent(event, nil)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1200,7 +1198,7 @@ func miqt_exec_callback_QMdiSubWindow_DropEvent(self *C.QMdiSubWindow, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDropEvent(event, nil)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1291,7 +1289,7 @@ func miqt_exec_callback_QMdiSubWindow_InitPainter(self *C.QMdiSubWindow, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval1 := newQPainter(painter)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_InitPainter, slotval1)
 
@@ -1299,7 +1297,8 @@ func miqt_exec_callback_QMdiSubWindow_InitPainter(self *C.QMdiSubWindow, cb C.in
 
 func (this *QMdiSubWindow) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QMdiSubWindow_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer())))
+	return newQPaintDevice(C.QMdiSubWindow_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+
 }
 func (this *QMdiSubWindow) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
 	if !this.isSubclass {
@@ -1316,7 +1315,7 @@ func miqt_exec_callback_QMdiSubWindow_Redirected(self *C.QMdiSubWindow, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(offset))
+	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QMdiSubWindow{h: self}).callVirtualBase_Redirected, slotval1)
 
@@ -1326,7 +1325,8 @@ func miqt_exec_callback_QMdiSubWindow_Redirected(self *C.QMdiSubWindow, cb C.int
 
 func (this *QMdiSubWindow) callVirtualBase_SharedPainter() *QPainter {
 
-	return UnsafeNewQPainter(unsafe.Pointer(C.QMdiSubWindow_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+	return newQPainter(C.QMdiSubWindow_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+
 }
 func (this *QMdiSubWindow) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
 	if !this.isSubclass {
@@ -1368,7 +1368,7 @@ func miqt_exec_callback_QMdiSubWindow_InputMethodEvent(self *C.QMdiSubWindow, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQInputMethodEvent(param1, nil)
 
 	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -1376,8 +1376,7 @@ func miqt_exec_callback_QMdiSubWindow_InputMethodEvent(self *C.QMdiSubWindow, cb
 
 func (this *QMdiSubWindow) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_ret := C.QMdiSubWindow_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QMdiSubWindow_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

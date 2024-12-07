@@ -143,8 +143,7 @@ func (this *QNetworkCookie) IsSessionCookie() bool {
 }
 
 func (this *QNetworkCookie) ExpirationDate() *qt.QDateTime {
-	_ret := C.QNetworkCookie_ExpirationDate(this.h)
-	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(C.QNetworkCookie_ExpirationDate(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -234,8 +233,7 @@ func QNetworkCookie_ParseCookies(cookieString []byte) []QNetworkCookie {
 	_ret := make([]QNetworkCookie, int(_ma.len))
 	_outCast := (*[0xffff]*C.QNetworkCookie)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQNetworkCookie(_lv_ret)
+		_lv_goptr := newQNetworkCookie(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}

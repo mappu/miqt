@@ -287,15 +287,13 @@ func (this *QUntypedPropertyBinding) IsNull() bool {
 }
 
 func (this *QUntypedPropertyBinding) Error() *QPropertyBindingError {
-	_ret := C.QUntypedPropertyBinding_Error(this.h)
-	_goptr := newQPropertyBindingError(_ret)
+	_goptr := newQPropertyBindingError(C.QUntypedPropertyBinding_Error(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QUntypedPropertyBinding) ValueMetaType() *QMetaType {
-	_ret := C.QUntypedPropertyBinding_ValueMetaType(this.h)
-	_goptr := newQMetaType(_ret)
+	_goptr := newQMetaType(C.QUntypedPropertyBinding_ValueMetaType(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -582,15 +580,13 @@ func (this *QUntypedBindable) IsReadOnly() bool {
 }
 
 func (this *QUntypedBindable) MakeBinding() *QUntypedPropertyBinding {
-	_ret := C.QUntypedBindable_MakeBinding(this.h)
-	_goptr := newQUntypedPropertyBinding(_ret)
+	_goptr := newQUntypedPropertyBinding(C.QUntypedBindable_MakeBinding(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QUntypedBindable) TakeBinding() *QUntypedPropertyBinding {
-	_ret := C.QUntypedBindable_TakeBinding(this.h)
-	_goptr := newQUntypedPropertyBinding(_ret)
+	_goptr := newQUntypedPropertyBinding(C.QUntypedBindable_TakeBinding(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -600,8 +596,7 @@ func (this *QUntypedBindable) Observe(observer *QPropertyObserver) {
 }
 
 func (this *QUntypedBindable) Binding() *QUntypedPropertyBinding {
-	_ret := C.QUntypedBindable_Binding(this.h)
-	_goptr := newQUntypedPropertyBinding(_ret)
+	_goptr := newQUntypedPropertyBinding(C.QUntypedBindable_Binding(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -615,15 +610,13 @@ func (this *QUntypedBindable) HasBinding() bool {
 }
 
 func (this *QUntypedBindable) MetaType() *QMetaType {
-	_ret := C.QUntypedBindable_MetaType(this.h)
-	_goptr := newQMetaType(_ret)
+	_goptr := newQMetaType(C.QUntypedBindable_MetaType(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QUntypedBindable) MakeBinding1(location *QPropertyBindingSourceLocation) *QUntypedPropertyBinding {
-	_ret := C.QUntypedBindable_MakeBinding1(this.h, location.cPointer())
-	_goptr := newQUntypedPropertyBinding(_ret)
+	_goptr := newQUntypedPropertyBinding(C.QUntypedBindable_MakeBinding1(this.h, location.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

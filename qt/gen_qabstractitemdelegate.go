@@ -86,7 +86,7 @@ func NewQAbstractItemDelegate2(parent *QObject) *QAbstractItemDelegate {
 }
 
 func (this *QAbstractItemDelegate) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractItemDelegate_MetaObject(this.h)))
+	return newQMetaObject(C.QAbstractItemDelegate_MetaObject(this.h))
 }
 
 func (this *QAbstractItemDelegate) Metacast(param1 string) unsafe.Pointer {
@@ -118,14 +118,13 @@ func (this *QAbstractItemDelegate) Paint(painter *QPainter, option *QStyleOption
 }
 
 func (this *QAbstractItemDelegate) SizeHint(option *QStyleOptionViewItem, index *QModelIndex) *QSize {
-	_ret := C.QAbstractItemDelegate_SizeHint(this.h, option.cPointer(), index.cPointer())
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QAbstractItemDelegate_SizeHint(this.h, option.cPointer(), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractItemDelegate) CreateEditor(parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QAbstractItemDelegate_CreateEditor(this.h, parent.cPointer(), option.cPointer(), index.cPointer())), nil, nil)
+	return newQWidget(C.QAbstractItemDelegate_CreateEditor(this.h, parent.cPointer(), option.cPointer(), index.cPointer()), nil, nil)
 }
 
 func (this *QAbstractItemDelegate) DestroyEditor(editor *QWidget, index *QModelIndex) {
@@ -188,7 +187,7 @@ func miqt_exec_callback_QAbstractItemDelegate_CommitData(cb C.intptr_t, editor *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(editor), nil, nil)
+	slotval1 := newQWidget(editor, nil, nil)
 
 	gofunc(slotval1)
 }
@@ -208,7 +207,7 @@ func miqt_exec_callback_QAbstractItemDelegate_CloseEditor(cb C.intptr_t, editor 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(editor), nil, nil)
+	slotval1 := newQWidget(editor, nil, nil)
 
 	gofunc(slotval1)
 }
@@ -228,7 +227,7 @@ func miqt_exec_callback_QAbstractItemDelegate_SizeHintChanged(cb C.intptr_t, par
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(param1))
+	slotval1 := newQModelIndex(param1)
 
 	gofunc(slotval1)
 }
@@ -292,7 +291,8 @@ func miqt_exec_callback_QAbstractItemDelegate_CloseEditor2(cb C.intptr_t, editor
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(editor), nil, nil)
+	slotval1 := newQWidget(editor, nil, nil)
+
 	slotval2 := (QAbstractItemDelegate__EndEditHint)(hint)
 
 	gofunc(slotval1, slotval2)
@@ -313,9 +313,11 @@ func miqt_exec_callback_QAbstractItemDelegate_Paint(self *C.QAbstractItemDelegat
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQStyleOptionViewItem(unsafe.Pointer(option), nil)
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQStyleOptionViewItem(option, nil)
+
+	slotval3 := newQModelIndex(index)
 
 	gofunc(slotval1, slotval2, slotval3)
 
@@ -335,8 +337,9 @@ func miqt_exec_callback_QAbstractItemDelegate_SizeHint(self *C.QAbstractItemDele
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStyleOptionViewItem(unsafe.Pointer(option), nil)
-	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQStyleOptionViewItem(option, nil)
+
+	slotval2 := newQModelIndex(index)
 
 	virtualReturn := gofunc(slotval1, slotval2)
 
@@ -346,7 +349,8 @@ func miqt_exec_callback_QAbstractItemDelegate_SizeHint(self *C.QAbstractItemDele
 
 func (this *QAbstractItemDelegate) callVirtualBase_CreateEditor(parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget {
 
-	return UnsafeNewQWidget(unsafe.Pointer(C.QAbstractItemDelegate_virtualbase_CreateEditor(unsafe.Pointer(this.h), parent.cPointer(), option.cPointer(), index.cPointer())), nil, nil)
+	return newQWidget(C.QAbstractItemDelegate_virtualbase_CreateEditor(unsafe.Pointer(this.h), parent.cPointer(), option.cPointer(), index.cPointer()), nil, nil)
+
 }
 func (this *QAbstractItemDelegate) OnCreateEditor(slot func(super func(parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget, parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget) {
 	if !this.isSubclass {
@@ -363,9 +367,11 @@ func miqt_exec_callback_QAbstractItemDelegate_CreateEditor(self *C.QAbstractItem
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(parent), nil, nil)
-	slotval2 := UnsafeNewQStyleOptionViewItem(unsafe.Pointer(option), nil)
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQWidget(parent, nil, nil)
+
+	slotval2 := newQStyleOptionViewItem(option, nil)
+
+	slotval3 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QAbstractItemDelegate{h: self}).callVirtualBase_CreateEditor, slotval1, slotval2, slotval3)
 
@@ -393,8 +399,9 @@ func miqt_exec_callback_QAbstractItemDelegate_DestroyEditor(self *C.QAbstractIte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(editor), nil, nil)
-	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQWidget(editor, nil, nil)
+
+	slotval2 := newQModelIndex(index)
 
 	gofunc((&QAbstractItemDelegate{h: self}).callVirtualBase_DestroyEditor, slotval1, slotval2)
 
@@ -420,8 +427,9 @@ func miqt_exec_callback_QAbstractItemDelegate_SetEditorData(self *C.QAbstractIte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(editor), nil, nil)
-	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQWidget(editor, nil, nil)
+
+	slotval2 := newQModelIndex(index)
 
 	gofunc((&QAbstractItemDelegate{h: self}).callVirtualBase_SetEditorData, slotval1, slotval2)
 
@@ -447,9 +455,11 @@ func miqt_exec_callback_QAbstractItemDelegate_SetModelData(self *C.QAbstractItem
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(editor), nil, nil)
-	slotval2 := UnsafeNewQAbstractItemModel(unsafe.Pointer(model), nil)
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQWidget(editor, nil, nil)
+
+	slotval2 := newQAbstractItemModel(model, nil)
+
+	slotval3 := newQModelIndex(index)
 
 	gofunc((&QAbstractItemDelegate{h: self}).callVirtualBase_SetModelData, slotval1, slotval2, slotval3)
 
@@ -475,9 +485,11 @@ func miqt_exec_callback_QAbstractItemDelegate_UpdateEditorGeometry(self *C.QAbst
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(editor), nil, nil)
-	slotval2 := UnsafeNewQStyleOptionViewItem(unsafe.Pointer(option), nil)
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQWidget(editor, nil, nil)
+
+	slotval2 := newQStyleOptionViewItem(option, nil)
+
+	slotval3 := newQModelIndex(index)
 
 	gofunc((&QAbstractItemDelegate{h: self}).callVirtualBase_UpdateEditorGeometry, slotval1, slotval2, slotval3)
 
@@ -503,10 +515,13 @@ func miqt_exec_callback_QAbstractItemDelegate_EditorEvent(self *C.QAbstractItemD
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
-	slotval2 := UnsafeNewQAbstractItemModel(unsafe.Pointer(model), nil)
-	slotval3 := UnsafeNewQStyleOptionViewItem(unsafe.Pointer(option), nil)
-	slotval4 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQEvent(event)
+
+	slotval2 := newQAbstractItemModel(model, nil)
+
+	slotval3 := newQStyleOptionViewItem(option, nil)
+
+	slotval4 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QAbstractItemDelegate{h: self}).callVirtualBase_EditorEvent, slotval1, slotval2, slotval3, slotval4)
 
@@ -534,10 +549,13 @@ func miqt_exec_callback_QAbstractItemDelegate_HelpEvent(self *C.QAbstractItemDel
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHelpEvent(unsafe.Pointer(event), nil)
-	slotval2 := UnsafeNewQAbstractItemView(unsafe.Pointer(view), nil, nil, nil, nil, nil)
-	slotval3 := UnsafeNewQStyleOptionViewItem(unsafe.Pointer(option), nil)
-	slotval4 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQHelpEvent(event, nil)
+
+	slotval2 := newQAbstractItemView(view, nil, nil, nil, nil, nil)
+
+	slotval3 := newQStyleOptionViewItem(option, nil)
+
+	slotval4 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QAbstractItemDelegate{h: self}).callVirtualBase_HelpEvent, slotval1, slotval2, slotval3, slotval4)
 
@@ -602,7 +620,7 @@ func miqt_exec_callback_QAbstractItemDelegate_Event(self *C.QAbstractItemDelegat
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QAbstractItemDelegate{h: self}).callVirtualBase_Event, slotval1)
 
@@ -630,8 +648,9 @@ func miqt_exec_callback_QAbstractItemDelegate_EventFilter(self *C.QAbstractItemD
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QAbstractItemDelegate{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -659,7 +678,7 @@ func miqt_exec_callback_QAbstractItemDelegate_TimerEvent(self *C.QAbstractItemDe
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QAbstractItemDelegate{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -685,7 +704,7 @@ func miqt_exec_callback_QAbstractItemDelegate_ChildEvent(self *C.QAbstractItemDe
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QAbstractItemDelegate{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -711,7 +730,7 @@ func miqt_exec_callback_QAbstractItemDelegate_CustomEvent(self *C.QAbstractItemD
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QAbstractItemDelegate{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -737,7 +756,7 @@ func miqt_exec_callback_QAbstractItemDelegate_ConnectNotify(self *C.QAbstractIte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QAbstractItemDelegate{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -763,7 +782,7 @@ func miqt_exec_callback_QAbstractItemDelegate_DisconnectNotify(self *C.QAbstract
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QAbstractItemDelegate{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

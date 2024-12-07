@@ -84,7 +84,7 @@ func QMediaService_TrUtf8(s string) string {
 func (this *QMediaService) RequestControl(name string) *QMediaControl {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	return UnsafeNewQMediaControl(unsafe.Pointer(C.QMediaService_RequestControl(this.h, name_Cstring)), nil)
+	return newQMediaControl(C.QMediaService_RequestControl(this.h, name_Cstring), nil)
 }
 
 func (this *QMediaService) ReleaseControl(control *QMediaControl) {

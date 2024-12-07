@@ -134,8 +134,7 @@ func (this *QNetworkAddressEntry) SetDnsEligibility(status QNetworkAddressEntry_
 }
 
 func (this *QNetworkAddressEntry) Ip() *QHostAddress {
-	_ret := C.QNetworkAddressEntry_Ip(this.h)
-	_goptr := newQHostAddress(_ret)
+	_goptr := newQHostAddress(C.QNetworkAddressEntry_Ip(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -145,8 +144,7 @@ func (this *QNetworkAddressEntry) SetIp(newIp *QHostAddress) {
 }
 
 func (this *QNetworkAddressEntry) Netmask() *QHostAddress {
-	_ret := C.QNetworkAddressEntry_Netmask(this.h)
-	_goptr := newQHostAddress(_ret)
+	_goptr := newQHostAddress(C.QNetworkAddressEntry_Netmask(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -164,8 +162,7 @@ func (this *QNetworkAddressEntry) SetPrefixLength(length int) {
 }
 
 func (this *QNetworkAddressEntry) Broadcast() *QHostAddress {
-	_ret := C.QNetworkAddressEntry_Broadcast(this.h)
-	_goptr := newQHostAddress(_ret)
+	_goptr := newQHostAddress(C.QNetworkAddressEntry_Broadcast(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -179,15 +176,13 @@ func (this *QNetworkAddressEntry) IsLifetimeKnown() bool {
 }
 
 func (this *QNetworkAddressEntry) PreferredLifetime() *qt6.QDeadlineTimer {
-	_ret := C.QNetworkAddressEntry_PreferredLifetime(this.h)
-	_goptr := qt6.UnsafeNewQDeadlineTimer(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQDeadlineTimer(unsafe.Pointer(C.QNetworkAddressEntry_PreferredLifetime(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkAddressEntry) ValidityLifetime() *qt6.QDeadlineTimer {
-	_ret := C.QNetworkAddressEntry_ValidityLifetime(this.h)
-	_goptr := qt6.UnsafeNewQDeadlineTimer(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQDeadlineTimer(unsafe.Pointer(C.QNetworkAddressEntry_ValidityLifetime(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -332,8 +327,7 @@ func (this *QNetworkInterface) AddressEntries() []QNetworkAddressEntry {
 	_ret := make([]QNetworkAddressEntry, int(_ma.len))
 	_outCast := (*[0xffff]*C.QNetworkAddressEntry)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQNetworkAddressEntry(_lv_ret)
+		_lv_goptr := newQNetworkAddressEntry(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -353,15 +347,13 @@ func QNetworkInterface_InterfaceFromName(name string) *QNetworkInterface {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	_ret := C.QNetworkInterface_InterfaceFromName(name_ms)
-	_goptr := newQNetworkInterface(_ret)
+	_goptr := newQNetworkInterface(C.QNetworkInterface_InterfaceFromName(name_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QNetworkInterface_InterfaceFromIndex(index int) *QNetworkInterface {
-	_ret := C.QNetworkInterface_InterfaceFromIndex((C.int)(index))
-	_goptr := newQNetworkInterface(_ret)
+	_goptr := newQNetworkInterface(C.QNetworkInterface_InterfaceFromIndex((C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -378,8 +370,7 @@ func QNetworkInterface_AllInterfaces() []QNetworkInterface {
 	_ret := make([]QNetworkInterface, int(_ma.len))
 	_outCast := (*[0xffff]*C.QNetworkInterface)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQNetworkInterface(_lv_ret)
+		_lv_goptr := newQNetworkInterface(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -391,8 +382,7 @@ func QNetworkInterface_AllAddresses() []QHostAddress {
 	_ret := make([]QHostAddress, int(_ma.len))
 	_outCast := (*[0xffff]*C.QHostAddress)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQHostAddress(_lv_ret)
+		_lv_goptr := newQHostAddress(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}

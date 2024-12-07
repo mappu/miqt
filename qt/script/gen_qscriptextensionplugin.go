@@ -137,8 +137,7 @@ func (this *QScriptExtensionPlugin) SetupPackage(key string, engine *QScriptEngi
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	_ret := C.QScriptExtensionPlugin_SetupPackage(this.h, key_ms, engine.cPointer())
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptExtensionPlugin_SetupPackage(this.h, key_ms, engine.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -234,7 +233,7 @@ func miqt_exec_callback_QScriptExtensionPlugin_Initialize(self *C.QScriptExtensi
 	key_ret := C.GoStringN(key_ms.data, C.int(int64(key_ms.len)))
 	C.free(unsafe.Pointer(key_ms.data))
 	slotval1 := key_ret
-	slotval2 := UnsafeNewQScriptEngine(unsafe.Pointer(engine), nil)
+	slotval2 := newQScriptEngine(engine, nil)
 
 	gofunc(slotval1, slotval2)
 
@@ -289,6 +288,7 @@ func miqt_exec_callback_QScriptExtensionPlugin_EventFilter(self *C.QScriptExtens
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QScriptExtensionPlugin{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

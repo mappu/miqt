@@ -97,7 +97,7 @@ func miqt_exec_callback_QMediaAudioProbeControl_AudioBufferProbed(cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAudioBuffer(unsafe.Pointer(buffer))
+	slotval1 := newQAudioBuffer(buffer)
 
 	gofunc(slotval1)
 }

@@ -160,29 +160,25 @@ func (this *QBitmap) Clear() {
 }
 
 func QBitmap_FromImage(image *QImage) *QBitmap {
-	_ret := C.QBitmap_FromImage(image.cPointer())
-	_goptr := newQBitmap(_ret, nil, nil)
+	_goptr := newQBitmap(C.QBitmap_FromImage(image.cPointer()), nil, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QBitmap_FromData(size *QSize, bits *byte) *QBitmap {
-	_ret := C.QBitmap_FromData(size.cPointer(), (*C.uchar)(unsafe.Pointer(bits)))
-	_goptr := newQBitmap(_ret, nil, nil)
+	_goptr := newQBitmap(C.QBitmap_FromData(size.cPointer(), (*C.uchar)(unsafe.Pointer(bits))), nil, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QBitmap_FromPixmap(pixmap *QPixmap) *QBitmap {
-	_ret := C.QBitmap_FromPixmap(pixmap.cPointer())
-	_goptr := newQBitmap(_ret, nil, nil)
+	_goptr := newQBitmap(C.QBitmap_FromPixmap(pixmap.cPointer()), nil, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBitmap) Transformed(matrix *QTransform) *QBitmap {
-	_ret := C.QBitmap_Transformed(this.h, matrix.cPointer())
-	_goptr := newQBitmap(_ret, nil, nil)
+	_goptr := newQBitmap(C.QBitmap_Transformed(this.h, matrix.cPointer()), nil, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -192,15 +188,13 @@ func (this *QBitmap) OperatorAssignWithQBitmap(param1 *QBitmap) {
 }
 
 func QBitmap_FromImage2(image *QImage, flags ImageConversionFlag) *QBitmap {
-	_ret := C.QBitmap_FromImage2(image.cPointer(), (C.int)(flags))
-	_goptr := newQBitmap(_ret, nil, nil)
+	_goptr := newQBitmap(C.QBitmap_FromImage2(image.cPointer(), (C.int)(flags)), nil, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QBitmap_FromData3(size *QSize, bits *byte, monoFormat QImage__Format) *QBitmap {
-	_ret := C.QBitmap_FromData3(size.cPointer(), (*C.uchar)(unsafe.Pointer(bits)), (C.int)(monoFormat))
-	_goptr := newQBitmap(_ret, nil, nil)
+	_goptr := newQBitmap(C.QBitmap_FromData3(size.cPointer(), (*C.uchar)(unsafe.Pointer(bits)), (C.int)(monoFormat)), nil, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -232,7 +226,8 @@ func miqt_exec_callback_QBitmap_DevType(self *C.QBitmap, cb C.intptr_t) C.int {
 
 func (this *QBitmap) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QBitmap_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return newQPaintEngine(C.QBitmap_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+
 }
 func (this *QBitmap) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
 	if !this.isSubclass {

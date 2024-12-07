@@ -226,35 +226,35 @@ func NewQGraphicsItem2(parent *QGraphicsItem) *QGraphicsItem {
 }
 
 func (this *QGraphicsItem) Scene() *QGraphicsScene {
-	return UnsafeNewQGraphicsScene(unsafe.Pointer(C.QGraphicsItem_Scene(this.h)), nil)
+	return newQGraphicsScene(C.QGraphicsItem_Scene(this.h), nil)
 }
 
 func (this *QGraphicsItem) ParentItem() *QGraphicsItem {
-	return UnsafeNewQGraphicsItem(unsafe.Pointer(C.QGraphicsItem_ParentItem(this.h)))
+	return newQGraphicsItem(C.QGraphicsItem_ParentItem(this.h))
 }
 
 func (this *QGraphicsItem) TopLevelItem() *QGraphicsItem {
-	return UnsafeNewQGraphicsItem(unsafe.Pointer(C.QGraphicsItem_TopLevelItem(this.h)))
+	return newQGraphicsItem(C.QGraphicsItem_TopLevelItem(this.h))
 }
 
 func (this *QGraphicsItem) ParentObject() *QGraphicsObject {
-	return UnsafeNewQGraphicsObject(unsafe.Pointer(C.QGraphicsItem_ParentObject(this.h)), nil, nil)
+	return newQGraphicsObject(C.QGraphicsItem_ParentObject(this.h), nil, nil)
 }
 
 func (this *QGraphicsItem) ParentWidget() *QGraphicsWidget {
-	return UnsafeNewQGraphicsWidget(unsafe.Pointer(C.QGraphicsItem_ParentWidget(this.h)), nil, nil, nil, nil)
+	return newQGraphicsWidget(C.QGraphicsItem_ParentWidget(this.h), nil, nil, nil, nil)
 }
 
 func (this *QGraphicsItem) TopLevelWidget() *QGraphicsWidget {
-	return UnsafeNewQGraphicsWidget(unsafe.Pointer(C.QGraphicsItem_TopLevelWidget(this.h)), nil, nil, nil, nil)
+	return newQGraphicsWidget(C.QGraphicsItem_TopLevelWidget(this.h), nil, nil, nil, nil)
 }
 
 func (this *QGraphicsItem) Window() *QGraphicsWidget {
-	return UnsafeNewQGraphicsWidget(unsafe.Pointer(C.QGraphicsItem_Window(this.h)), nil, nil, nil, nil)
+	return newQGraphicsWidget(C.QGraphicsItem_Window(this.h), nil, nil, nil, nil)
 }
 
 func (this *QGraphicsItem) Panel() *QGraphicsItem {
-	return UnsafeNewQGraphicsItem(unsafe.Pointer(C.QGraphicsItem_Panel(this.h)))
+	return newQGraphicsItem(C.QGraphicsItem_Panel(this.h))
 }
 
 func (this *QGraphicsItem) SetParentItem(parent *QGraphicsItem) {
@@ -266,7 +266,7 @@ func (this *QGraphicsItem) ChildItems() []*QGraphicsItem {
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
 	return _ret
 }
@@ -284,15 +284,15 @@ func (this *QGraphicsItem) IsPanel() bool {
 }
 
 func (this *QGraphicsItem) ToGraphicsObject() *QGraphicsObject {
-	return UnsafeNewQGraphicsObject(unsafe.Pointer(C.QGraphicsItem_ToGraphicsObject(this.h)), nil, nil)
+	return newQGraphicsObject(C.QGraphicsItem_ToGraphicsObject(this.h), nil, nil)
 }
 
 func (this *QGraphicsItem) ToGraphicsObject2() *QGraphicsObject {
-	return UnsafeNewQGraphicsObject(unsafe.Pointer(C.QGraphicsItem_ToGraphicsObject2(this.h)), nil, nil)
+	return newQGraphicsObject(C.QGraphicsItem_ToGraphicsObject2(this.h), nil, nil)
 }
 
 func (this *QGraphicsItem) Group() *QGraphicsItemGroup {
-	return UnsafeNewQGraphicsItemGroup(unsafe.Pointer(C.QGraphicsItem_Group(this.h)), nil)
+	return newQGraphicsItemGroup(C.QGraphicsItem_Group(this.h), nil)
 }
 
 func (this *QGraphicsItem) SetGroup(group *QGraphicsItemGroup) {
@@ -347,8 +347,7 @@ func (this *QGraphicsItem) SetToolTip(toolTip string) {
 }
 
 func (this *QGraphicsItem) Cursor() *QCursor {
-	_ret := C.QGraphicsItem_Cursor(this.h)
-	_goptr := newQCursor(_ret)
+	_goptr := newQCursor(C.QGraphicsItem_Cursor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -422,7 +421,7 @@ func (this *QGraphicsItem) SetOpacity(opacity float64) {
 }
 
 func (this *QGraphicsItem) GraphicsEffect() *QGraphicsEffect {
-	return UnsafeNewQGraphicsEffect(unsafe.Pointer(C.QGraphicsItem_GraphicsEffect(this.h)), nil)
+	return newQGraphicsEffect(C.QGraphicsItem_GraphicsEffect(this.h), nil)
 }
 
 func (this *QGraphicsItem) SetGraphicsEffect(effect *QGraphicsEffect) {
@@ -490,7 +489,7 @@ func (this *QGraphicsItem) ClearFocus() {
 }
 
 func (this *QGraphicsItem) FocusProxy() *QGraphicsItem {
-	return UnsafeNewQGraphicsItem(unsafe.Pointer(C.QGraphicsItem_FocusProxy(this.h)))
+	return newQGraphicsItem(C.QGraphicsItem_FocusProxy(this.h))
 }
 
 func (this *QGraphicsItem) SetFocusProxy(item *QGraphicsItem) {
@@ -498,11 +497,11 @@ func (this *QGraphicsItem) SetFocusProxy(item *QGraphicsItem) {
 }
 
 func (this *QGraphicsItem) FocusItem() *QGraphicsItem {
-	return UnsafeNewQGraphicsItem(unsafe.Pointer(C.QGraphicsItem_FocusItem(this.h)))
+	return newQGraphicsItem(C.QGraphicsItem_FocusItem(this.h))
 }
 
 func (this *QGraphicsItem) FocusScopeItem() *QGraphicsItem {
-	return UnsafeNewQGraphicsItem(unsafe.Pointer(C.QGraphicsItem_FocusScopeItem(this.h)))
+	return newQGraphicsItem(C.QGraphicsItem_FocusScopeItem(this.h))
 }
 
 func (this *QGraphicsItem) GrabMouse() {
@@ -522,8 +521,7 @@ func (this *QGraphicsItem) UngrabKeyboard() {
 }
 
 func (this *QGraphicsItem) Pos() *QPointF {
-	_ret := C.QGraphicsItem_Pos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QGraphicsItem_Pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -545,8 +543,7 @@ func (this *QGraphicsItem) SetY(y float64) {
 }
 
 func (this *QGraphicsItem) ScenePos() *QPointF {
-	_ret := C.QGraphicsItem_ScenePos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QGraphicsItem_ScenePos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -572,15 +569,13 @@ func (this *QGraphicsItem) EnsureVisible2(x float64, y float64, w float64, h flo
 }
 
 func (this *QGraphicsItem) Matrix() *QMatrix {
-	_ret := C.QGraphicsItem_Matrix(this.h)
-	_goptr := newQMatrix(_ret)
+	_goptr := newQMatrix(C.QGraphicsItem_Matrix(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) SceneMatrix() *QMatrix {
-	_ret := C.QGraphicsItem_SceneMatrix(this.h)
-	_goptr := newQMatrix(_ret)
+	_goptr := newQMatrix(C.QGraphicsItem_SceneMatrix(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -594,29 +589,25 @@ func (this *QGraphicsItem) ResetMatrix() {
 }
 
 func (this *QGraphicsItem) Transform() *QTransform {
-	_ret := C.QGraphicsItem_Transform(this.h)
-	_goptr := newQTransform(_ret)
+	_goptr := newQTransform(C.QGraphicsItem_Transform(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) SceneTransform() *QTransform {
-	_ret := C.QGraphicsItem_SceneTransform(this.h)
-	_goptr := newQTransform(_ret)
+	_goptr := newQTransform(C.QGraphicsItem_SceneTransform(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) DeviceTransform(viewportTransform *QTransform) *QTransform {
-	_ret := C.QGraphicsItem_DeviceTransform(this.h, viewportTransform.cPointer())
-	_goptr := newQTransform(_ret)
+	_goptr := newQTransform(C.QGraphicsItem_DeviceTransform(this.h, viewportTransform.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) ItemTransform(other *QGraphicsItem) *QTransform {
-	_ret := C.QGraphicsItem_ItemTransform(this.h, other.cPointer())
-	_goptr := newQTransform(_ret)
+	_goptr := newQTransform(C.QGraphicsItem_ItemTransform(this.h, other.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -650,7 +641,7 @@ func (this *QGraphicsItem) Transformations() []*QGraphicsTransform {
 	_ret := make([]*QGraphicsTransform, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsTransform)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGraphicsTransform(unsafe.Pointer(_outCast[i]), nil)
+		_ret[i] = newQGraphicsTransform(_outCast[i], nil)
 	}
 	return _ret
 }
@@ -666,8 +657,7 @@ func (this *QGraphicsItem) SetTransformations(transformations []*QGraphicsTransf
 }
 
 func (this *QGraphicsItem) TransformOriginPoint() *QPointF {
-	_ret := C.QGraphicsItem_TransformOriginPoint(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QGraphicsItem_TransformOriginPoint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -697,29 +687,25 @@ func (this *QGraphicsItem) StackBefore(sibling *QGraphicsItem) {
 }
 
 func (this *QGraphicsItem) BoundingRect() *QRectF {
-	_ret := C.QGraphicsItem_BoundingRect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsItem_BoundingRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) ChildrenBoundingRect() *QRectF {
-	_ret := C.QGraphicsItem_ChildrenBoundingRect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsItem_ChildrenBoundingRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) SceneBoundingRect() *QRectF {
-	_ret := C.QGraphicsItem_SceneBoundingRect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsItem_SceneBoundingRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) Shape() *QPainterPath {
-	_ret := C.QGraphicsItem_Shape(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsItem_Shape(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -729,8 +715,7 @@ func (this *QGraphicsItem) IsClipped() bool {
 }
 
 func (this *QGraphicsItem) ClipPath() *QPainterPath {
-	_ret := C.QGraphicsItem_ClipPath(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsItem_ClipPath(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -752,7 +737,7 @@ func (this *QGraphicsItem) CollidingItems() []*QGraphicsItem {
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
 	return _ret
 }
@@ -770,15 +755,13 @@ func (this *QGraphicsItem) IsObscuredBy(item *QGraphicsItem) bool {
 }
 
 func (this *QGraphicsItem) OpaqueArea() *QPainterPath {
-	_ret := C.QGraphicsItem_OpaqueArea(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsItem_OpaqueArea(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) BoundingRegion(itemToDeviceTransform *QTransform) *QRegion {
-	_ret := C.QGraphicsItem_BoundingRegion(this.h, itemToDeviceTransform.cPointer())
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QGraphicsItem_BoundingRegion(this.h, itemToDeviceTransform.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -808,211 +791,181 @@ func (this *QGraphicsItem) Scroll(dx float64, dy float64) {
 }
 
 func (this *QGraphicsItem) MapToItem(item *QGraphicsItem, point *QPointF) *QPointF {
-	_ret := C.QGraphicsItem_MapToItem(this.h, item.cPointer(), point.cPointer())
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QGraphicsItem_MapToItem(this.h, item.cPointer(), point.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapToParent(point *QPointF) *QPointF {
-	_ret := C.QGraphicsItem_MapToParent(this.h, point.cPointer())
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QGraphicsItem_MapToParent(this.h, point.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapToScene(point *QPointF) *QPointF {
-	_ret := C.QGraphicsItem_MapToScene(this.h, point.cPointer())
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QGraphicsItem_MapToScene(this.h, point.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapRectToItem(item *QGraphicsItem, rect *QRectF) *QRectF {
-	_ret := C.QGraphicsItem_MapRectToItem(this.h, item.cPointer(), rect.cPointer())
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsItem_MapRectToItem(this.h, item.cPointer(), rect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapRectToParent(rect *QRectF) *QRectF {
-	_ret := C.QGraphicsItem_MapRectToParent(this.h, rect.cPointer())
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsItem_MapRectToParent(this.h, rect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapRectToScene(rect *QRectF) *QRectF {
-	_ret := C.QGraphicsItem_MapRectToScene(this.h, rect.cPointer())
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsItem_MapRectToScene(this.h, rect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapToItem4(item *QGraphicsItem, path *QPainterPath) *QPainterPath {
-	_ret := C.QGraphicsItem_MapToItem4(this.h, item.cPointer(), path.cPointer())
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsItem_MapToItem4(this.h, item.cPointer(), path.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapToParentWithPath(path *QPainterPath) *QPainterPath {
-	_ret := C.QGraphicsItem_MapToParentWithPath(this.h, path.cPointer())
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsItem_MapToParentWithPath(this.h, path.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapToSceneWithPath(path *QPainterPath) *QPainterPath {
-	_ret := C.QGraphicsItem_MapToSceneWithPath(this.h, path.cPointer())
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsItem_MapToSceneWithPath(this.h, path.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapFromItem(item *QGraphicsItem, point *QPointF) *QPointF {
-	_ret := C.QGraphicsItem_MapFromItem(this.h, item.cPointer(), point.cPointer())
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QGraphicsItem_MapFromItem(this.h, item.cPointer(), point.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapFromParent(point *QPointF) *QPointF {
-	_ret := C.QGraphicsItem_MapFromParent(this.h, point.cPointer())
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QGraphicsItem_MapFromParent(this.h, point.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapFromScene(point *QPointF) *QPointF {
-	_ret := C.QGraphicsItem_MapFromScene(this.h, point.cPointer())
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QGraphicsItem_MapFromScene(this.h, point.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapRectFromItem(item *QGraphicsItem, rect *QRectF) *QRectF {
-	_ret := C.QGraphicsItem_MapRectFromItem(this.h, item.cPointer(), rect.cPointer())
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsItem_MapRectFromItem(this.h, item.cPointer(), rect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapRectFromParent(rect *QRectF) *QRectF {
-	_ret := C.QGraphicsItem_MapRectFromParent(this.h, rect.cPointer())
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsItem_MapRectFromParent(this.h, rect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapRectFromScene(rect *QRectF) *QRectF {
-	_ret := C.QGraphicsItem_MapRectFromScene(this.h, rect.cPointer())
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsItem_MapRectFromScene(this.h, rect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapFromItem4(item *QGraphicsItem, path *QPainterPath) *QPainterPath {
-	_ret := C.QGraphicsItem_MapFromItem4(this.h, item.cPointer(), path.cPointer())
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsItem_MapFromItem4(this.h, item.cPointer(), path.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapFromParentWithPath(path *QPainterPath) *QPainterPath {
-	_ret := C.QGraphicsItem_MapFromParentWithPath(this.h, path.cPointer())
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsItem_MapFromParentWithPath(this.h, path.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapFromSceneWithPath(path *QPainterPath) *QPainterPath {
-	_ret := C.QGraphicsItem_MapFromSceneWithPath(this.h, path.cPointer())
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsItem_MapFromSceneWithPath(this.h, path.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapToItem5(item *QGraphicsItem, x float64, y float64) *QPointF {
-	_ret := C.QGraphicsItem_MapToItem5(this.h, item.cPointer(), (C.double)(x), (C.double)(y))
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QGraphicsItem_MapToItem5(this.h, item.cPointer(), (C.double)(x), (C.double)(y)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapToParent2(x float64, y float64) *QPointF {
-	_ret := C.QGraphicsItem_MapToParent2(this.h, (C.double)(x), (C.double)(y))
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QGraphicsItem_MapToParent2(this.h, (C.double)(x), (C.double)(y)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapToScene2(x float64, y float64) *QPointF {
-	_ret := C.QGraphicsItem_MapToScene2(this.h, (C.double)(x), (C.double)(y))
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QGraphicsItem_MapToScene2(this.h, (C.double)(x), (C.double)(y)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapRectToItem2(item *QGraphicsItem, x float64, y float64, w float64, h float64) *QRectF {
-	_ret := C.QGraphicsItem_MapRectToItem2(this.h, item.cPointer(), (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h))
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsItem_MapRectToItem2(this.h, item.cPointer(), (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapRectToParent2(x float64, y float64, w float64, h float64) *QRectF {
-	_ret := C.QGraphicsItem_MapRectToParent2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h))
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsItem_MapRectToParent2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapRectToScene2(x float64, y float64, w float64, h float64) *QRectF {
-	_ret := C.QGraphicsItem_MapRectToScene2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h))
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsItem_MapRectToScene2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapFromItem5(item *QGraphicsItem, x float64, y float64) *QPointF {
-	_ret := C.QGraphicsItem_MapFromItem5(this.h, item.cPointer(), (C.double)(x), (C.double)(y))
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QGraphicsItem_MapFromItem5(this.h, item.cPointer(), (C.double)(x), (C.double)(y)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapFromParent2(x float64, y float64) *QPointF {
-	_ret := C.QGraphicsItem_MapFromParent2(this.h, (C.double)(x), (C.double)(y))
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QGraphicsItem_MapFromParent2(this.h, (C.double)(x), (C.double)(y)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapFromScene2(x float64, y float64) *QPointF {
-	_ret := C.QGraphicsItem_MapFromScene2(this.h, (C.double)(x), (C.double)(y))
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QGraphicsItem_MapFromScene2(this.h, (C.double)(x), (C.double)(y)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapRectFromItem2(item *QGraphicsItem, x float64, y float64, w float64, h float64) *QRectF {
-	_ret := C.QGraphicsItem_MapRectFromItem2(this.h, item.cPointer(), (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h))
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsItem_MapRectFromItem2(this.h, item.cPointer(), (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapRectFromParent2(x float64, y float64, w float64, h float64) *QRectF {
-	_ret := C.QGraphicsItem_MapRectFromParent2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h))
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsItem_MapRectFromParent2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsItem) MapRectFromScene2(x float64, y float64, w float64, h float64) *QRectF {
-	_ret := C.QGraphicsItem_MapRectFromScene2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h))
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsItem_MapRectFromScene2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1022,7 +975,7 @@ func (this *QGraphicsItem) IsAncestorOf(child *QGraphicsItem) bool {
 }
 
 func (this *QGraphicsItem) CommonAncestorItem(other *QGraphicsItem) *QGraphicsItem {
-	return UnsafeNewQGraphicsItem(unsafe.Pointer(C.QGraphicsItem_CommonAncestorItem(this.h, other.cPointer())))
+	return newQGraphicsItem(C.QGraphicsItem_CommonAncestorItem(this.h, other.cPointer()))
 }
 
 func (this *QGraphicsItem) IsUnderMouse() bool {
@@ -1030,8 +983,7 @@ func (this *QGraphicsItem) IsUnderMouse() bool {
 }
 
 func (this *QGraphicsItem) Data(key int) *QVariant {
-	_ret := C.QGraphicsItem_Data(this.h, (C.int)(key))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsItem_Data(this.h, (C.int)(key)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1097,8 +1049,7 @@ func (this *QGraphicsItem) SetMatrix2(matrix *QMatrix, combine bool) {
 }
 
 func (this *QGraphicsItem) ItemTransform2(other *QGraphicsItem, ok *bool) *QTransform {
-	_ret := C.QGraphicsItem_ItemTransform2(this.h, other.cPointer(), (*C.bool)(unsafe.Pointer(ok)))
-	_goptr := newQTransform(_ret)
+	_goptr := newQTransform(C.QGraphicsItem_ItemTransform2(this.h, other.cPointer(), (*C.bool)(unsafe.Pointer(ok))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1112,7 +1063,7 @@ func (this *QGraphicsItem) CollidingItems1(mode ItemSelectionMode) []*QGraphicsI
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
 	return _ret
 }
@@ -1176,8 +1127,7 @@ func miqt_exec_callback_QGraphicsItem_BoundingRect(self *C.QGraphicsItem, cb C.i
 
 func (this *QGraphicsItem) callVirtualBase_Shape() *QPainterPath {
 
-	_ret := C.QGraphicsItem_virtualbase_Shape(unsafe.Pointer(this.h))
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsItem_virtualbase_Shape(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1222,7 +1172,7 @@ func miqt_exec_callback_QGraphicsItem_Contains(self *C.QGraphicsItem, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := newQPointF(point)
 
 	virtualReturn := gofunc((&QGraphicsItem{h: self}).callVirtualBase_Contains, slotval1)
 
@@ -1250,7 +1200,8 @@ func miqt_exec_callback_QGraphicsItem_CollidesWithItem(self *C.QGraphicsItem, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsItem(unsafe.Pointer(other))
+	slotval1 := newQGraphicsItem(other)
+
 	slotval2 := (ItemSelectionMode)(mode)
 
 	virtualReturn := gofunc((&QGraphicsItem{h: self}).callVirtualBase_CollidesWithItem, slotval1, slotval2)
@@ -1279,7 +1230,8 @@ func miqt_exec_callback_QGraphicsItem_CollidesWithPath(self *C.QGraphicsItem, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainterPath(unsafe.Pointer(path))
+	slotval1 := newQPainterPath(path)
+
 	slotval2 := (ItemSelectionMode)(mode)
 
 	virtualReturn := gofunc((&QGraphicsItem{h: self}).callVirtualBase_CollidesWithPath, slotval1, slotval2)
@@ -1308,7 +1260,7 @@ func miqt_exec_callback_QGraphicsItem_IsObscuredBy(self *C.QGraphicsItem, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsItem(unsafe.Pointer(item))
+	slotval1 := newQGraphicsItem(item)
 
 	virtualReturn := gofunc((&QGraphicsItem{h: self}).callVirtualBase_IsObscuredBy, slotval1)
 
@@ -1318,8 +1270,7 @@ func miqt_exec_callback_QGraphicsItem_IsObscuredBy(self *C.QGraphicsItem, cb C.i
 
 func (this *QGraphicsItem) callVirtualBase_OpaqueArea() *QPainterPath {
 
-	_ret := C.QGraphicsItem_virtualbase_OpaqueArea(unsafe.Pointer(this.h))
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsItem_virtualbase_OpaqueArea(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1358,9 +1309,11 @@ func miqt_exec_callback_QGraphicsItem_Paint(self *C.QGraphicsItem, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQStyleOptionGraphicsItem(unsafe.Pointer(option), nil)
-	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQStyleOptionGraphicsItem(option, nil)
+
+	slotval3 := newQWidget(widget, nil, nil)
 
 	gofunc(slotval1, slotval2, slotval3)
 
@@ -1411,8 +1364,9 @@ func miqt_exec_callback_QGraphicsItem_SceneEventFilter(self *C.QGraphicsItem, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsItem(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQGraphicsItem(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGraphicsItem{h: self}).callVirtualBase_SceneEventFilter, slotval1, slotval2)
 
@@ -1440,7 +1394,7 @@ func miqt_exec_callback_QGraphicsItem_SceneEvent(self *C.QGraphicsItem, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGraphicsItem{h: self}).callVirtualBase_SceneEvent, slotval1)
 
@@ -1468,7 +1422,7 @@ func miqt_exec_callback_QGraphicsItem_ContextMenuEvent(self *C.QGraphicsItem, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneContextMenuEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItem{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -1494,7 +1448,7 @@ func miqt_exec_callback_QGraphicsItem_DragEnterEvent(self *C.QGraphicsItem, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItem{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -1520,7 +1474,7 @@ func miqt_exec_callback_QGraphicsItem_DragLeaveEvent(self *C.QGraphicsItem, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItem{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1546,7 +1500,7 @@ func miqt_exec_callback_QGraphicsItem_DragMoveEvent(self *C.QGraphicsItem, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItem{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1572,7 +1526,7 @@ func miqt_exec_callback_QGraphicsItem_DropEvent(self *C.QGraphicsItem, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItem{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1598,7 +1552,7 @@ func miqt_exec_callback_QGraphicsItem_FocusInEvent(self *C.QGraphicsItem, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QGraphicsItem{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -1624,7 +1578,7 @@ func miqt_exec_callback_QGraphicsItem_FocusOutEvent(self *C.QGraphicsItem, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QGraphicsItem{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -1650,7 +1604,7 @@ func miqt_exec_callback_QGraphicsItem_HoverEnterEvent(self *C.QGraphicsItem, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItem{h: self}).callVirtualBase_HoverEnterEvent, slotval1)
 
@@ -1676,7 +1630,7 @@ func miqt_exec_callback_QGraphicsItem_HoverMoveEvent(self *C.QGraphicsItem, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItem{h: self}).callVirtualBase_HoverMoveEvent, slotval1)
 
@@ -1702,7 +1656,7 @@ func miqt_exec_callback_QGraphicsItem_HoverLeaveEvent(self *C.QGraphicsItem, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItem{h: self}).callVirtualBase_HoverLeaveEvent, slotval1)
 
@@ -1728,7 +1682,7 @@ func miqt_exec_callback_QGraphicsItem_KeyPressEvent(self *C.QGraphicsItem, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItem{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -1754,7 +1708,7 @@ func miqt_exec_callback_QGraphicsItem_KeyReleaseEvent(self *C.QGraphicsItem, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItem{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -1780,7 +1734,7 @@ func miqt_exec_callback_QGraphicsItem_MousePressEvent(self *C.QGraphicsItem, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItem{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -1806,7 +1760,7 @@ func miqt_exec_callback_QGraphicsItem_MouseMoveEvent(self *C.QGraphicsItem, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItem{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -1832,7 +1786,7 @@ func miqt_exec_callback_QGraphicsItem_MouseReleaseEvent(self *C.QGraphicsItem, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItem{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -1858,7 +1812,7 @@ func miqt_exec_callback_QGraphicsItem_MouseDoubleClickEvent(self *C.QGraphicsIte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItem{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -1884,7 +1838,7 @@ func miqt_exec_callback_QGraphicsItem_WheelEvent(self *C.QGraphicsItem, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneWheelEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneWheelEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItem{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -1910,7 +1864,7 @@ func miqt_exec_callback_QGraphicsItem_InputMethodEvent(self *C.QGraphicsItem, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQInputMethodEvent(event, nil)
 
 	gofunc((&QGraphicsItem{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -1918,8 +1872,7 @@ func miqt_exec_callback_QGraphicsItem_InputMethodEvent(self *C.QGraphicsItem, cb
 
 func (this *QGraphicsItem) callVirtualBase_InputMethodQuery(query InputMethodQuery) *QVariant {
 
-	_ret := C.QGraphicsItem_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsItem_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1949,8 +1902,7 @@ func miqt_exec_callback_QGraphicsItem_InputMethodQuery(self *C.QGraphicsItem, cb
 
 func (this *QGraphicsItem) callVirtualBase_ItemChange(change QGraphicsItem__GraphicsItemChange, value *QVariant) *QVariant {
 
-	_ret := C.QGraphicsItem_virtualbase_ItemChange(unsafe.Pointer(this.h), (C.int)(change), value.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsItem_virtualbase_ItemChange(unsafe.Pointer(this.h), (C.int)(change), value.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1972,7 +1924,7 @@ func miqt_exec_callback_QGraphicsItem_ItemChange(self *C.QGraphicsItem, cb C.int
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QGraphicsItem__GraphicsItemChange)(change)
 
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval2 := newQVariant(value)
 
 	virtualReturn := gofunc((&QGraphicsItem{h: self}).callVirtualBase_ItemChange, slotval1, slotval2)
 
@@ -2030,7 +1982,7 @@ func miqt_exec_callback_QGraphicsItem_SetExtension(self *C.QGraphicsItem, cb C.i
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QGraphicsItem__Extension)(extension)
 
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(variant))
+	slotval2 := newQVariant(variant)
 
 	gofunc((&QGraphicsItem{h: self}).callVirtualBase_SetExtension, slotval1, slotval2)
 
@@ -2038,8 +1990,7 @@ func miqt_exec_callback_QGraphicsItem_SetExtension(self *C.QGraphicsItem, cb C.i
 
 func (this *QGraphicsItem) callVirtualBase_Extension(variant *QVariant) *QVariant {
 
-	_ret := C.QGraphicsItem_virtualbase_Extension(unsafe.Pointer(this.h), variant.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsItem_virtualbase_Extension(unsafe.Pointer(this.h), variant.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -2059,7 +2010,7 @@ func miqt_exec_callback_QGraphicsItem_Extension(self *C.QGraphicsItem, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVariant(unsafe.Pointer(variant))
+	slotval1 := newQVariant(variant)
 
 	virtualReturn := gofunc((&QGraphicsItem{h: self}).callVirtualBase_Extension, slotval1)
 
@@ -2148,7 +2099,7 @@ func NewQGraphicsObject2(parent *QGraphicsItem) *QGraphicsObject {
 }
 
 func (this *QGraphicsObject) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsObject_MetaObject(this.h)))
+	return newQMetaObject(C.QGraphicsObject_MetaObject(this.h))
 }
 
 func (this *QGraphicsObject) Metacast(param1 string) unsafe.Pointer {
@@ -2455,7 +2406,7 @@ func miqt_exec_callback_QGraphicsObject_Event(self *C.QGraphicsObject, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(ev))
+	slotval1 := newQEvent(ev)
 
 	virtualReturn := gofunc((&QGraphicsObject{h: self}).callVirtualBase_Event, slotval1)
 
@@ -2483,8 +2434,9 @@ func miqt_exec_callback_QGraphicsObject_EventFilter(self *C.QGraphicsObject, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGraphicsObject{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -2512,7 +2464,7 @@ func miqt_exec_callback_QGraphicsObject_TimerEvent(self *C.QGraphicsObject, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QGraphicsObject{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -2538,7 +2490,7 @@ func miqt_exec_callback_QGraphicsObject_ChildEvent(self *C.QGraphicsObject, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QGraphicsObject{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -2564,7 +2516,7 @@ func miqt_exec_callback_QGraphicsObject_CustomEvent(self *C.QGraphicsObject, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QGraphicsObject{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -2590,7 +2542,7 @@ func miqt_exec_callback_QGraphicsObject_ConnectNotify(self *C.QGraphicsObject, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QGraphicsObject{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -2616,7 +2568,7 @@ func miqt_exec_callback_QGraphicsObject_DisconnectNotify(self *C.QGraphicsObject
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QGraphicsObject{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
@@ -2669,8 +2621,7 @@ func miqt_exec_callback_QGraphicsObject_BoundingRect(self *C.QGraphicsObject, cb
 
 func (this *QGraphicsObject) callVirtualBase_Shape() *QPainterPath {
 
-	_ret := C.QGraphicsObject_virtualbase_Shape(unsafe.Pointer(this.h))
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsObject_virtualbase_Shape(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -2715,7 +2666,7 @@ func miqt_exec_callback_QGraphicsObject_Contains(self *C.QGraphicsObject, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := newQPointF(point)
 
 	virtualReturn := gofunc((&QGraphicsObject{h: self}).callVirtualBase_Contains, slotval1)
 
@@ -2743,7 +2694,8 @@ func miqt_exec_callback_QGraphicsObject_CollidesWithItem(self *C.QGraphicsObject
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsItem(unsafe.Pointer(other))
+	slotval1 := newQGraphicsItem(other)
+
 	slotval2 := (ItemSelectionMode)(mode)
 
 	virtualReturn := gofunc((&QGraphicsObject{h: self}).callVirtualBase_CollidesWithItem, slotval1, slotval2)
@@ -2772,7 +2724,8 @@ func miqt_exec_callback_QGraphicsObject_CollidesWithPath(self *C.QGraphicsObject
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainterPath(unsafe.Pointer(path))
+	slotval1 := newQPainterPath(path)
+
 	slotval2 := (ItemSelectionMode)(mode)
 
 	virtualReturn := gofunc((&QGraphicsObject{h: self}).callVirtualBase_CollidesWithPath, slotval1, slotval2)
@@ -2801,7 +2754,7 @@ func miqt_exec_callback_QGraphicsObject_IsObscuredBy(self *C.QGraphicsObject, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsItem(unsafe.Pointer(item))
+	slotval1 := newQGraphicsItem(item)
 
 	virtualReturn := gofunc((&QGraphicsObject{h: self}).callVirtualBase_IsObscuredBy, slotval1)
 
@@ -2811,8 +2764,7 @@ func miqt_exec_callback_QGraphicsObject_IsObscuredBy(self *C.QGraphicsObject, cb
 
 func (this *QGraphicsObject) callVirtualBase_OpaqueArea() *QPainterPath {
 
-	_ret := C.QGraphicsObject_virtualbase_OpaqueArea(unsafe.Pointer(this.h))
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsObject_virtualbase_OpaqueArea(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -2851,9 +2803,11 @@ func miqt_exec_callback_QGraphicsObject_Paint(self *C.QGraphicsObject, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQStyleOptionGraphicsItem(unsafe.Pointer(option), nil)
-	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQStyleOptionGraphicsItem(option, nil)
+
+	slotval3 := newQWidget(widget, nil, nil)
 
 	gofunc(slotval1, slotval2, slotval3)
 
@@ -2904,8 +2858,9 @@ func miqt_exec_callback_QGraphicsObject_SceneEventFilter(self *C.QGraphicsObject
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsItem(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQGraphicsItem(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGraphicsObject{h: self}).callVirtualBase_SceneEventFilter, slotval1, slotval2)
 
@@ -2933,7 +2888,7 @@ func miqt_exec_callback_QGraphicsObject_SceneEvent(self *C.QGraphicsObject, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGraphicsObject{h: self}).callVirtualBase_SceneEvent, slotval1)
 
@@ -2961,7 +2916,7 @@ func miqt_exec_callback_QGraphicsObject_ContextMenuEvent(self *C.QGraphicsObject
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneContextMenuEvent(event, nil, nil)
 
 	gofunc((&QGraphicsObject{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -2987,7 +2942,7 @@ func miqt_exec_callback_QGraphicsObject_DragEnterEvent(self *C.QGraphicsObject, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsObject{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -3013,7 +2968,7 @@ func miqt_exec_callback_QGraphicsObject_DragLeaveEvent(self *C.QGraphicsObject, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsObject{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -3039,7 +2994,7 @@ func miqt_exec_callback_QGraphicsObject_DragMoveEvent(self *C.QGraphicsObject, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsObject{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -3065,7 +3020,7 @@ func miqt_exec_callback_QGraphicsObject_DropEvent(self *C.QGraphicsObject, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsObject{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -3091,7 +3046,7 @@ func miqt_exec_callback_QGraphicsObject_FocusInEvent(self *C.QGraphicsObject, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QGraphicsObject{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -3117,7 +3072,7 @@ func miqt_exec_callback_QGraphicsObject_FocusOutEvent(self *C.QGraphicsObject, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QGraphicsObject{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -3143,7 +3098,7 @@ func miqt_exec_callback_QGraphicsObject_HoverEnterEvent(self *C.QGraphicsObject,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
 
 	gofunc((&QGraphicsObject{h: self}).callVirtualBase_HoverEnterEvent, slotval1)
 
@@ -3169,7 +3124,7 @@ func miqt_exec_callback_QGraphicsObject_HoverMoveEvent(self *C.QGraphicsObject, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
 
 	gofunc((&QGraphicsObject{h: self}).callVirtualBase_HoverMoveEvent, slotval1)
 
@@ -3195,7 +3150,7 @@ func miqt_exec_callback_QGraphicsObject_HoverLeaveEvent(self *C.QGraphicsObject,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
 
 	gofunc((&QGraphicsObject{h: self}).callVirtualBase_HoverLeaveEvent, slotval1)
 
@@ -3221,7 +3176,7 @@ func miqt_exec_callback_QGraphicsObject_KeyPressEvent(self *C.QGraphicsObject, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QGraphicsObject{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -3247,7 +3202,7 @@ func miqt_exec_callback_QGraphicsObject_KeyReleaseEvent(self *C.QGraphicsObject,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QGraphicsObject{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -3273,7 +3228,7 @@ func miqt_exec_callback_QGraphicsObject_MousePressEvent(self *C.QGraphicsObject,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsObject{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -3299,7 +3254,7 @@ func miqt_exec_callback_QGraphicsObject_MouseMoveEvent(self *C.QGraphicsObject, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsObject{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -3325,7 +3280,7 @@ func miqt_exec_callback_QGraphicsObject_MouseReleaseEvent(self *C.QGraphicsObjec
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsObject{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -3351,7 +3306,7 @@ func miqt_exec_callback_QGraphicsObject_MouseDoubleClickEvent(self *C.QGraphicsO
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsObject{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -3377,7 +3332,7 @@ func miqt_exec_callback_QGraphicsObject_WheelEvent(self *C.QGraphicsObject, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneWheelEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneWheelEvent(event, nil, nil)
 
 	gofunc((&QGraphicsObject{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -3403,7 +3358,7 @@ func miqt_exec_callback_QGraphicsObject_InputMethodEvent(self *C.QGraphicsObject
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQInputMethodEvent(event, nil)
 
 	gofunc((&QGraphicsObject{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -3411,8 +3366,7 @@ func miqt_exec_callback_QGraphicsObject_InputMethodEvent(self *C.QGraphicsObject
 
 func (this *QGraphicsObject) callVirtualBase_InputMethodQuery(query InputMethodQuery) *QVariant {
 
-	_ret := C.QGraphicsObject_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsObject_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -3442,8 +3396,7 @@ func miqt_exec_callback_QGraphicsObject_InputMethodQuery(self *C.QGraphicsObject
 
 func (this *QGraphicsObject) callVirtualBase_ItemChange(change QGraphicsItem__GraphicsItemChange, value *QVariant) *QVariant {
 
-	_ret := C.QGraphicsObject_virtualbase_ItemChange(unsafe.Pointer(this.h), (C.int)(change), value.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsObject_virtualbase_ItemChange(unsafe.Pointer(this.h), (C.int)(change), value.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -3465,7 +3418,7 @@ func miqt_exec_callback_QGraphicsObject_ItemChange(self *C.QGraphicsObject, cb C
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QGraphicsItem__GraphicsItemChange)(change)
 
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval2 := newQVariant(value)
 
 	virtualReturn := gofunc((&QGraphicsObject{h: self}).callVirtualBase_ItemChange, slotval1, slotval2)
 
@@ -3523,7 +3476,7 @@ func miqt_exec_callback_QGraphicsObject_SetExtension(self *C.QGraphicsObject, cb
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QGraphicsItem__Extension)(extension)
 
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(variant))
+	slotval2 := newQVariant(variant)
 
 	gofunc((&QGraphicsObject{h: self}).callVirtualBase_SetExtension, slotval1, slotval2)
 
@@ -3531,8 +3484,7 @@ func miqt_exec_callback_QGraphicsObject_SetExtension(self *C.QGraphicsObject, cb
 
 func (this *QGraphicsObject) callVirtualBase_Extension(variant *QVariant) *QVariant {
 
-	_ret := C.QGraphicsObject_virtualbase_Extension(unsafe.Pointer(this.h), variant.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsObject_virtualbase_Extension(unsafe.Pointer(this.h), variant.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -3552,7 +3504,7 @@ func miqt_exec_callback_QGraphicsObject_Extension(self *C.QGraphicsObject, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVariant(unsafe.Pointer(variant))
+	slotval1 := newQVariant(variant)
 
 	virtualReturn := gofunc((&QGraphicsObject{h: self}).callVirtualBase_Extension, slotval1)
 
@@ -3636,8 +3588,7 @@ func NewQAbstractGraphicsShapeItem2(parent *QGraphicsItem) *QAbstractGraphicsSha
 }
 
 func (this *QAbstractGraphicsShapeItem) Pen() *QPen {
-	_ret := C.QAbstractGraphicsShapeItem_Pen(this.h)
-	_goptr := newQPen(_ret)
+	_goptr := newQPen(C.QAbstractGraphicsShapeItem_Pen(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -3647,8 +3598,7 @@ func (this *QAbstractGraphicsShapeItem) SetPen(pen *QPen) {
 }
 
 func (this *QAbstractGraphicsShapeItem) Brush() *QBrush {
-	_ret := C.QAbstractGraphicsShapeItem_Brush(this.h)
-	_goptr := newQBrush(_ret)
+	_goptr := newQBrush(C.QAbstractGraphicsShapeItem_Brush(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -3662,8 +3612,7 @@ func (this *QAbstractGraphicsShapeItem) IsObscuredBy(item *QGraphicsItem) bool {
 }
 
 func (this *QAbstractGraphicsShapeItem) OpaqueArea() *QPainterPath {
-	_ret := C.QAbstractGraphicsShapeItem_OpaqueArea(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QAbstractGraphicsShapeItem_OpaqueArea(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -3688,7 +3637,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_IsObscuredBy(self *C.QAbstrac
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsItem(unsafe.Pointer(item))
+	slotval1 := newQGraphicsItem(item)
 
 	virtualReturn := gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_IsObscuredBy, slotval1)
 
@@ -3698,8 +3647,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_IsObscuredBy(self *C.QAbstrac
 
 func (this *QAbstractGraphicsShapeItem) callVirtualBase_OpaqueArea() *QPainterPath {
 
-	_ret := C.QAbstractGraphicsShapeItem_virtualbase_OpaqueArea(unsafe.Pointer(this.h))
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QAbstractGraphicsShapeItem_virtualbase_OpaqueArea(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -3771,8 +3719,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_BoundingRect(self *C.QAbstrac
 
 func (this *QAbstractGraphicsShapeItem) callVirtualBase_Shape() *QPainterPath {
 
-	_ret := C.QAbstractGraphicsShapeItem_virtualbase_Shape(unsafe.Pointer(this.h))
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QAbstractGraphicsShapeItem_virtualbase_Shape(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -3817,7 +3764,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_Contains(self *C.QAbstractGra
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := newQPointF(point)
 
 	virtualReturn := gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_Contains, slotval1)
 
@@ -3845,7 +3792,8 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_CollidesWithItem(self *C.QAbs
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsItem(unsafe.Pointer(other))
+	slotval1 := newQGraphicsItem(other)
+
 	slotval2 := (ItemSelectionMode)(mode)
 
 	virtualReturn := gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_CollidesWithItem, slotval1, slotval2)
@@ -3874,7 +3822,8 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_CollidesWithPath(self *C.QAbs
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainterPath(unsafe.Pointer(path))
+	slotval1 := newQPainterPath(path)
+
 	slotval2 := (ItemSelectionMode)(mode)
 
 	virtualReturn := gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_CollidesWithPath, slotval1, slotval2)
@@ -3897,9 +3846,11 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_Paint(self *C.QAbstractGraphi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQStyleOptionGraphicsItem(unsafe.Pointer(option), nil)
-	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQStyleOptionGraphicsItem(option, nil)
+
+	slotval3 := newQWidget(widget, nil, nil)
 
 	gofunc(slotval1, slotval2, slotval3)
 
@@ -3950,8 +3901,9 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_SceneEventFilter(self *C.QAbs
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsItem(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQGraphicsItem(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_SceneEventFilter, slotval1, slotval2)
 
@@ -3979,7 +3931,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_SceneEvent(self *C.QAbstractG
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_SceneEvent, slotval1)
 
@@ -4007,7 +3959,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_ContextMenuEvent(self *C.QAbs
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneContextMenuEvent(event, nil, nil)
 
 	gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -4033,7 +3985,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_DragEnterEvent(self *C.QAbstr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -4059,7 +4011,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_DragLeaveEvent(self *C.QAbstr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -4085,7 +4037,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_DragMoveEvent(self *C.QAbstra
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -4111,7 +4063,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_DropEvent(self *C.QAbstractGr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -4137,7 +4089,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_FocusInEvent(self *C.QAbstrac
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -4163,7 +4115,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_FocusOutEvent(self *C.QAbstra
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -4189,7 +4141,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_HoverEnterEvent(self *C.QAbst
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
 
 	gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_HoverEnterEvent, slotval1)
 
@@ -4215,7 +4167,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_HoverMoveEvent(self *C.QAbstr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
 
 	gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_HoverMoveEvent, slotval1)
 
@@ -4241,7 +4193,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_HoverLeaveEvent(self *C.QAbst
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
 
 	gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_HoverLeaveEvent, slotval1)
 
@@ -4267,7 +4219,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_KeyPressEvent(self *C.QAbstra
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -4293,7 +4245,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_KeyReleaseEvent(self *C.QAbst
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -4319,7 +4271,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_MousePressEvent(self *C.QAbst
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -4345,7 +4297,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_MouseMoveEvent(self *C.QAbstr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -4371,7 +4323,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_MouseReleaseEvent(self *C.QAb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -4397,7 +4349,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_MouseDoubleClickEvent(self *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -4423,7 +4375,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_WheelEvent(self *C.QAbstractG
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneWheelEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneWheelEvent(event, nil, nil)
 
 	gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -4449,7 +4401,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_InputMethodEvent(self *C.QAbs
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQInputMethodEvent(event, nil)
 
 	gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -4457,8 +4409,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_InputMethodEvent(self *C.QAbs
 
 func (this *QAbstractGraphicsShapeItem) callVirtualBase_InputMethodQuery(query InputMethodQuery) *QVariant {
 
-	_ret := C.QAbstractGraphicsShapeItem_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QAbstractGraphicsShapeItem_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -4488,8 +4439,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_InputMethodQuery(self *C.QAbs
 
 func (this *QAbstractGraphicsShapeItem) callVirtualBase_ItemChange(change QGraphicsItem__GraphicsItemChange, value *QVariant) *QVariant {
 
-	_ret := C.QAbstractGraphicsShapeItem_virtualbase_ItemChange(unsafe.Pointer(this.h), (C.int)(change), value.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QAbstractGraphicsShapeItem_virtualbase_ItemChange(unsafe.Pointer(this.h), (C.int)(change), value.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -4511,7 +4461,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_ItemChange(self *C.QAbstractG
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QGraphicsItem__GraphicsItemChange)(change)
 
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval2 := newQVariant(value)
 
 	virtualReturn := gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_ItemChange, slotval1, slotval2)
 
@@ -4569,7 +4519,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_SetExtension(self *C.QAbstrac
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QGraphicsItem__Extension)(extension)
 
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(variant))
+	slotval2 := newQVariant(variant)
 
 	gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_SetExtension, slotval1, slotval2)
 
@@ -4577,8 +4527,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_SetExtension(self *C.QAbstrac
 
 func (this *QAbstractGraphicsShapeItem) callVirtualBase_Extension(variant *QVariant) *QVariant {
 
-	_ret := C.QAbstractGraphicsShapeItem_virtualbase_Extension(unsafe.Pointer(this.h), variant.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QAbstractGraphicsShapeItem_virtualbase_Extension(unsafe.Pointer(this.h), variant.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -4598,7 +4547,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_Extension(self *C.QAbstractGr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVariant(unsafe.Pointer(variant))
+	slotval1 := newQVariant(variant)
 
 	virtualReturn := gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_Extension, slotval1)
 
@@ -4708,8 +4657,7 @@ func NewQGraphicsPathItem4(path *QPainterPath, parent *QGraphicsItem) *QGraphics
 }
 
 func (this *QGraphicsPathItem) Path() *QPainterPath {
-	_ret := C.QGraphicsPathItem_Path(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsPathItem_Path(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -4719,15 +4667,13 @@ func (this *QGraphicsPathItem) SetPath(path *QPainterPath) {
 }
 
 func (this *QGraphicsPathItem) BoundingRect() *QRectF {
-	_ret := C.QGraphicsPathItem_BoundingRect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsPathItem_BoundingRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsPathItem) Shape() *QPainterPath {
-	_ret := C.QGraphicsPathItem_Shape(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsPathItem_Shape(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -4745,8 +4691,7 @@ func (this *QGraphicsPathItem) IsObscuredBy(item *QGraphicsItem) bool {
 }
 
 func (this *QGraphicsPathItem) OpaqueArea() *QPainterPath {
-	_ret := C.QGraphicsPathItem_OpaqueArea(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsPathItem_OpaqueArea(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -4757,8 +4702,7 @@ func (this *QGraphicsPathItem) Type() int {
 
 func (this *QGraphicsPathItem) callVirtualBase_BoundingRect() *QRectF {
 
-	_ret := C.QGraphicsPathItem_virtualbase_BoundingRect(unsafe.Pointer(this.h))
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsPathItem_virtualbase_BoundingRect(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -4785,8 +4729,7 @@ func miqt_exec_callback_QGraphicsPathItem_BoundingRect(self *C.QGraphicsPathItem
 
 func (this *QGraphicsPathItem) callVirtualBase_Shape() *QPainterPath {
 
-	_ret := C.QGraphicsPathItem_virtualbase_Shape(unsafe.Pointer(this.h))
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsPathItem_virtualbase_Shape(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -4831,7 +4774,7 @@ func miqt_exec_callback_QGraphicsPathItem_Contains(self *C.QGraphicsPathItem, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := newQPointF(point)
 
 	virtualReturn := gofunc((&QGraphicsPathItem{h: self}).callVirtualBase_Contains, slotval1)
 
@@ -4859,9 +4802,11 @@ func miqt_exec_callback_QGraphicsPathItem_Paint(self *C.QGraphicsPathItem, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQStyleOptionGraphicsItem(unsafe.Pointer(option), nil)
-	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQStyleOptionGraphicsItem(option, nil)
+
+	slotval3 := newQWidget(widget, nil, nil)
 
 	gofunc((&QGraphicsPathItem{h: self}).callVirtualBase_Paint, slotval1, slotval2, slotval3)
 
@@ -4887,7 +4832,7 @@ func miqt_exec_callback_QGraphicsPathItem_IsObscuredBy(self *C.QGraphicsPathItem
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsItem(unsafe.Pointer(item))
+	slotval1 := newQGraphicsItem(item)
 
 	virtualReturn := gofunc((&QGraphicsPathItem{h: self}).callVirtualBase_IsObscuredBy, slotval1)
 
@@ -4897,8 +4842,7 @@ func miqt_exec_callback_QGraphicsPathItem_IsObscuredBy(self *C.QGraphicsPathItem
 
 func (this *QGraphicsPathItem) callVirtualBase_OpaqueArea() *QPainterPath {
 
-	_ret := C.QGraphicsPathItem_virtualbase_OpaqueArea(unsafe.Pointer(this.h))
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsPathItem_virtualbase_OpaqueArea(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -4998,7 +4942,7 @@ func miqt_exec_callback_QGraphicsPathItem_SetExtension(self *C.QGraphicsPathItem
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QGraphicsItem__Extension)(extension)
 
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(variant))
+	slotval2 := newQVariant(variant)
 
 	gofunc((&QGraphicsPathItem{h: self}).callVirtualBase_SetExtension, slotval1, slotval2)
 
@@ -5006,8 +4950,7 @@ func miqt_exec_callback_QGraphicsPathItem_SetExtension(self *C.QGraphicsPathItem
 
 func (this *QGraphicsPathItem) callVirtualBase_Extension(variant *QVariant) *QVariant {
 
-	_ret := C.QGraphicsPathItem_virtualbase_Extension(unsafe.Pointer(this.h), variant.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsPathItem_virtualbase_Extension(unsafe.Pointer(this.h), variant.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -5027,7 +4970,7 @@ func miqt_exec_callback_QGraphicsPathItem_Extension(self *C.QGraphicsPathItem, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVariant(unsafe.Pointer(variant))
+	slotval1 := newQVariant(variant)
 
 	virtualReturn := gofunc((&QGraphicsPathItem{h: self}).callVirtualBase_Extension, slotval1)
 
@@ -5161,8 +5104,7 @@ func NewQGraphicsRectItem6(x float64, y float64, w float64, h float64, parent *Q
 }
 
 func (this *QGraphicsRectItem) Rect() *QRectF {
-	_ret := C.QGraphicsRectItem_Rect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsRectItem_Rect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -5176,15 +5118,13 @@ func (this *QGraphicsRectItem) SetRect2(x float64, y float64, w float64, h float
 }
 
 func (this *QGraphicsRectItem) BoundingRect() *QRectF {
-	_ret := C.QGraphicsRectItem_BoundingRect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsRectItem_BoundingRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsRectItem) Shape() *QPainterPath {
-	_ret := C.QGraphicsRectItem_Shape(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsRectItem_Shape(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -5202,8 +5142,7 @@ func (this *QGraphicsRectItem) IsObscuredBy(item *QGraphicsItem) bool {
 }
 
 func (this *QGraphicsRectItem) OpaqueArea() *QPainterPath {
-	_ret := C.QGraphicsRectItem_OpaqueArea(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsRectItem_OpaqueArea(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -5214,8 +5153,7 @@ func (this *QGraphicsRectItem) Type() int {
 
 func (this *QGraphicsRectItem) callVirtualBase_BoundingRect() *QRectF {
 
-	_ret := C.QGraphicsRectItem_virtualbase_BoundingRect(unsafe.Pointer(this.h))
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsRectItem_virtualbase_BoundingRect(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -5242,8 +5180,7 @@ func miqt_exec_callback_QGraphicsRectItem_BoundingRect(self *C.QGraphicsRectItem
 
 func (this *QGraphicsRectItem) callVirtualBase_Shape() *QPainterPath {
 
-	_ret := C.QGraphicsRectItem_virtualbase_Shape(unsafe.Pointer(this.h))
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsRectItem_virtualbase_Shape(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -5288,7 +5225,7 @@ func miqt_exec_callback_QGraphicsRectItem_Contains(self *C.QGraphicsRectItem, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := newQPointF(point)
 
 	virtualReturn := gofunc((&QGraphicsRectItem{h: self}).callVirtualBase_Contains, slotval1)
 
@@ -5316,9 +5253,11 @@ func miqt_exec_callback_QGraphicsRectItem_Paint(self *C.QGraphicsRectItem, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQStyleOptionGraphicsItem(unsafe.Pointer(option), nil)
-	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQStyleOptionGraphicsItem(option, nil)
+
+	slotval3 := newQWidget(widget, nil, nil)
 
 	gofunc((&QGraphicsRectItem{h: self}).callVirtualBase_Paint, slotval1, slotval2, slotval3)
 
@@ -5344,7 +5283,7 @@ func miqt_exec_callback_QGraphicsRectItem_IsObscuredBy(self *C.QGraphicsRectItem
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsItem(unsafe.Pointer(item))
+	slotval1 := newQGraphicsItem(item)
 
 	virtualReturn := gofunc((&QGraphicsRectItem{h: self}).callVirtualBase_IsObscuredBy, slotval1)
 
@@ -5354,8 +5293,7 @@ func miqt_exec_callback_QGraphicsRectItem_IsObscuredBy(self *C.QGraphicsRectItem
 
 func (this *QGraphicsRectItem) callVirtualBase_OpaqueArea() *QPainterPath {
 
-	_ret := C.QGraphicsRectItem_virtualbase_OpaqueArea(unsafe.Pointer(this.h))
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsRectItem_virtualbase_OpaqueArea(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -5455,7 +5393,7 @@ func miqt_exec_callback_QGraphicsRectItem_SetExtension(self *C.QGraphicsRectItem
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QGraphicsItem__Extension)(extension)
 
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(variant))
+	slotval2 := newQVariant(variant)
 
 	gofunc((&QGraphicsRectItem{h: self}).callVirtualBase_SetExtension, slotval1, slotval2)
 
@@ -5463,8 +5401,7 @@ func miqt_exec_callback_QGraphicsRectItem_SetExtension(self *C.QGraphicsRectItem
 
 func (this *QGraphicsRectItem) callVirtualBase_Extension(variant *QVariant) *QVariant {
 
-	_ret := C.QGraphicsRectItem_virtualbase_Extension(unsafe.Pointer(this.h), variant.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsRectItem_virtualbase_Extension(unsafe.Pointer(this.h), variant.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -5484,7 +5421,7 @@ func miqt_exec_callback_QGraphicsRectItem_Extension(self *C.QGraphicsRectItem, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVariant(unsafe.Pointer(variant))
+	slotval1 := newQVariant(variant)
 
 	virtualReturn := gofunc((&QGraphicsRectItem{h: self}).callVirtualBase_Extension, slotval1)
 
@@ -5618,8 +5555,7 @@ func NewQGraphicsEllipseItem6(x float64, y float64, w float64, h float64, parent
 }
 
 func (this *QGraphicsEllipseItem) Rect() *QRectF {
-	_ret := C.QGraphicsEllipseItem_Rect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsEllipseItem_Rect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -5649,15 +5585,13 @@ func (this *QGraphicsEllipseItem) SetSpanAngle(angle int) {
 }
 
 func (this *QGraphicsEllipseItem) BoundingRect() *QRectF {
-	_ret := C.QGraphicsEllipseItem_BoundingRect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsEllipseItem_BoundingRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsEllipseItem) Shape() *QPainterPath {
-	_ret := C.QGraphicsEllipseItem_Shape(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsEllipseItem_Shape(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -5675,8 +5609,7 @@ func (this *QGraphicsEllipseItem) IsObscuredBy(item *QGraphicsItem) bool {
 }
 
 func (this *QGraphicsEllipseItem) OpaqueArea() *QPainterPath {
-	_ret := C.QGraphicsEllipseItem_OpaqueArea(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsEllipseItem_OpaqueArea(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -5687,8 +5620,7 @@ func (this *QGraphicsEllipseItem) Type() int {
 
 func (this *QGraphicsEllipseItem) callVirtualBase_BoundingRect() *QRectF {
 
-	_ret := C.QGraphicsEllipseItem_virtualbase_BoundingRect(unsafe.Pointer(this.h))
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsEllipseItem_virtualbase_BoundingRect(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -5715,8 +5647,7 @@ func miqt_exec_callback_QGraphicsEllipseItem_BoundingRect(self *C.QGraphicsEllip
 
 func (this *QGraphicsEllipseItem) callVirtualBase_Shape() *QPainterPath {
 
-	_ret := C.QGraphicsEllipseItem_virtualbase_Shape(unsafe.Pointer(this.h))
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsEllipseItem_virtualbase_Shape(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -5761,7 +5692,7 @@ func miqt_exec_callback_QGraphicsEllipseItem_Contains(self *C.QGraphicsEllipseIt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := newQPointF(point)
 
 	virtualReturn := gofunc((&QGraphicsEllipseItem{h: self}).callVirtualBase_Contains, slotval1)
 
@@ -5789,9 +5720,11 @@ func miqt_exec_callback_QGraphicsEllipseItem_Paint(self *C.QGraphicsEllipseItem,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQStyleOptionGraphicsItem(unsafe.Pointer(option), nil)
-	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQStyleOptionGraphicsItem(option, nil)
+
+	slotval3 := newQWidget(widget, nil, nil)
 
 	gofunc((&QGraphicsEllipseItem{h: self}).callVirtualBase_Paint, slotval1, slotval2, slotval3)
 
@@ -5817,7 +5750,7 @@ func miqt_exec_callback_QGraphicsEllipseItem_IsObscuredBy(self *C.QGraphicsEllip
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsItem(unsafe.Pointer(item))
+	slotval1 := newQGraphicsItem(item)
 
 	virtualReturn := gofunc((&QGraphicsEllipseItem{h: self}).callVirtualBase_IsObscuredBy, slotval1)
 
@@ -5827,8 +5760,7 @@ func miqt_exec_callback_QGraphicsEllipseItem_IsObscuredBy(self *C.QGraphicsEllip
 
 func (this *QGraphicsEllipseItem) callVirtualBase_OpaqueArea() *QPainterPath {
 
-	_ret := C.QGraphicsEllipseItem_virtualbase_OpaqueArea(unsafe.Pointer(this.h))
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsEllipseItem_virtualbase_OpaqueArea(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -5928,7 +5860,7 @@ func miqt_exec_callback_QGraphicsEllipseItem_SetExtension(self *C.QGraphicsEllip
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QGraphicsItem__Extension)(extension)
 
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(variant))
+	slotval2 := newQVariant(variant)
 
 	gofunc((&QGraphicsEllipseItem{h: self}).callVirtualBase_SetExtension, slotval1, slotval2)
 
@@ -5936,8 +5868,7 @@ func miqt_exec_callback_QGraphicsEllipseItem_SetExtension(self *C.QGraphicsEllip
 
 func (this *QGraphicsEllipseItem) callVirtualBase_Extension(variant *QVariant) *QVariant {
 
-	_ret := C.QGraphicsEllipseItem_virtualbase_Extension(unsafe.Pointer(this.h), variant.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsEllipseItem_virtualbase_Extension(unsafe.Pointer(this.h), variant.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -5957,7 +5888,7 @@ func miqt_exec_callback_QGraphicsEllipseItem_Extension(self *C.QGraphicsEllipseI
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVariant(unsafe.Pointer(variant))
+	slotval1 := newQVariant(variant)
 
 	virtualReturn := gofunc((&QGraphicsEllipseItem{h: self}).callVirtualBase_Extension, slotval1)
 
@@ -6051,15 +5982,13 @@ func (this *QGraphicsPolygonItem) SetFillRule(rule FillRule) {
 }
 
 func (this *QGraphicsPolygonItem) BoundingRect() *QRectF {
-	_ret := C.QGraphicsPolygonItem_BoundingRect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsPolygonItem_BoundingRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsPolygonItem) Shape() *QPainterPath {
-	_ret := C.QGraphicsPolygonItem_Shape(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsPolygonItem_Shape(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -6077,8 +6006,7 @@ func (this *QGraphicsPolygonItem) IsObscuredBy(item *QGraphicsItem) bool {
 }
 
 func (this *QGraphicsPolygonItem) OpaqueArea() *QPainterPath {
-	_ret := C.QGraphicsPolygonItem_OpaqueArea(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsPolygonItem_OpaqueArea(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -6089,8 +6017,7 @@ func (this *QGraphicsPolygonItem) Type() int {
 
 func (this *QGraphicsPolygonItem) callVirtualBase_BoundingRect() *QRectF {
 
-	_ret := C.QGraphicsPolygonItem_virtualbase_BoundingRect(unsafe.Pointer(this.h))
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsPolygonItem_virtualbase_BoundingRect(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -6117,8 +6044,7 @@ func miqt_exec_callback_QGraphicsPolygonItem_BoundingRect(self *C.QGraphicsPolyg
 
 func (this *QGraphicsPolygonItem) callVirtualBase_Shape() *QPainterPath {
 
-	_ret := C.QGraphicsPolygonItem_virtualbase_Shape(unsafe.Pointer(this.h))
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsPolygonItem_virtualbase_Shape(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -6163,7 +6089,7 @@ func miqt_exec_callback_QGraphicsPolygonItem_Contains(self *C.QGraphicsPolygonIt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := newQPointF(point)
 
 	virtualReturn := gofunc((&QGraphicsPolygonItem{h: self}).callVirtualBase_Contains, slotval1)
 
@@ -6191,9 +6117,11 @@ func miqt_exec_callback_QGraphicsPolygonItem_Paint(self *C.QGraphicsPolygonItem,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQStyleOptionGraphicsItem(unsafe.Pointer(option), nil)
-	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQStyleOptionGraphicsItem(option, nil)
+
+	slotval3 := newQWidget(widget, nil, nil)
 
 	gofunc((&QGraphicsPolygonItem{h: self}).callVirtualBase_Paint, slotval1, slotval2, slotval3)
 
@@ -6219,7 +6147,7 @@ func miqt_exec_callback_QGraphicsPolygonItem_IsObscuredBy(self *C.QGraphicsPolyg
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsItem(unsafe.Pointer(item))
+	slotval1 := newQGraphicsItem(item)
 
 	virtualReturn := gofunc((&QGraphicsPolygonItem{h: self}).callVirtualBase_IsObscuredBy, slotval1)
 
@@ -6229,8 +6157,7 @@ func miqt_exec_callback_QGraphicsPolygonItem_IsObscuredBy(self *C.QGraphicsPolyg
 
 func (this *QGraphicsPolygonItem) callVirtualBase_OpaqueArea() *QPainterPath {
 
-	_ret := C.QGraphicsPolygonItem_virtualbase_OpaqueArea(unsafe.Pointer(this.h))
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsPolygonItem_virtualbase_OpaqueArea(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -6330,7 +6257,7 @@ func miqt_exec_callback_QGraphicsPolygonItem_SetExtension(self *C.QGraphicsPolyg
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QGraphicsItem__Extension)(extension)
 
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(variant))
+	slotval2 := newQVariant(variant)
 
 	gofunc((&QGraphicsPolygonItem{h: self}).callVirtualBase_SetExtension, slotval1, slotval2)
 
@@ -6338,8 +6265,7 @@ func miqt_exec_callback_QGraphicsPolygonItem_SetExtension(self *C.QGraphicsPolyg
 
 func (this *QGraphicsPolygonItem) callVirtualBase_Extension(variant *QVariant) *QVariant {
 
-	_ret := C.QGraphicsPolygonItem_virtualbase_Extension(unsafe.Pointer(this.h), variant.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsPolygonItem_virtualbase_Extension(unsafe.Pointer(this.h), variant.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -6359,7 +6285,7 @@ func miqt_exec_callback_QGraphicsPolygonItem_Extension(self *C.QGraphicsPolygonI
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVariant(unsafe.Pointer(variant))
+	slotval1 := newQVariant(variant)
 
 	virtualReturn := gofunc((&QGraphicsPolygonItem{h: self}).callVirtualBase_Extension, slotval1)
 
@@ -6487,8 +6413,7 @@ func NewQGraphicsLineItem6(x1 float64, y1 float64, x2 float64, y2 float64, paren
 }
 
 func (this *QGraphicsLineItem) Pen() *QPen {
-	_ret := C.QGraphicsLineItem_Pen(this.h)
-	_goptr := newQPen(_ret)
+	_goptr := newQPen(C.QGraphicsLineItem_Pen(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -6498,8 +6423,7 @@ func (this *QGraphicsLineItem) SetPen(pen *QPen) {
 }
 
 func (this *QGraphicsLineItem) Line() *QLineF {
-	_ret := C.QGraphicsLineItem_Line(this.h)
-	_goptr := newQLineF(_ret)
+	_goptr := newQLineF(C.QGraphicsLineItem_Line(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -6513,15 +6437,13 @@ func (this *QGraphicsLineItem) SetLine2(x1 float64, y1 float64, x2 float64, y2 f
 }
 
 func (this *QGraphicsLineItem) BoundingRect() *QRectF {
-	_ret := C.QGraphicsLineItem_BoundingRect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsLineItem_BoundingRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsLineItem) Shape() *QPainterPath {
-	_ret := C.QGraphicsLineItem_Shape(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsLineItem_Shape(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -6539,8 +6461,7 @@ func (this *QGraphicsLineItem) IsObscuredBy(item *QGraphicsItem) bool {
 }
 
 func (this *QGraphicsLineItem) OpaqueArea() *QPainterPath {
-	_ret := C.QGraphicsLineItem_OpaqueArea(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsLineItem_OpaqueArea(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -6551,8 +6472,7 @@ func (this *QGraphicsLineItem) Type() int {
 
 func (this *QGraphicsLineItem) callVirtualBase_BoundingRect() *QRectF {
 
-	_ret := C.QGraphicsLineItem_virtualbase_BoundingRect(unsafe.Pointer(this.h))
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsLineItem_virtualbase_BoundingRect(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -6579,8 +6499,7 @@ func miqt_exec_callback_QGraphicsLineItem_BoundingRect(self *C.QGraphicsLineItem
 
 func (this *QGraphicsLineItem) callVirtualBase_Shape() *QPainterPath {
 
-	_ret := C.QGraphicsLineItem_virtualbase_Shape(unsafe.Pointer(this.h))
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsLineItem_virtualbase_Shape(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -6625,7 +6544,7 @@ func miqt_exec_callback_QGraphicsLineItem_Contains(self *C.QGraphicsLineItem, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := newQPointF(point)
 
 	virtualReturn := gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_Contains, slotval1)
 
@@ -6653,9 +6572,11 @@ func miqt_exec_callback_QGraphicsLineItem_Paint(self *C.QGraphicsLineItem, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQStyleOptionGraphicsItem(unsafe.Pointer(option), nil)
-	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQStyleOptionGraphicsItem(option, nil)
+
+	slotval3 := newQWidget(widget, nil, nil)
 
 	gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_Paint, slotval1, slotval2, slotval3)
 
@@ -6681,7 +6602,7 @@ func miqt_exec_callback_QGraphicsLineItem_IsObscuredBy(self *C.QGraphicsLineItem
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsItem(unsafe.Pointer(item))
+	slotval1 := newQGraphicsItem(item)
 
 	virtualReturn := gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_IsObscuredBy, slotval1)
 
@@ -6691,8 +6612,7 @@ func miqt_exec_callback_QGraphicsLineItem_IsObscuredBy(self *C.QGraphicsLineItem
 
 func (this *QGraphicsLineItem) callVirtualBase_OpaqueArea() *QPainterPath {
 
-	_ret := C.QGraphicsLineItem_virtualbase_OpaqueArea(unsafe.Pointer(this.h))
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsLineItem_virtualbase_OpaqueArea(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -6792,7 +6712,7 @@ func miqt_exec_callback_QGraphicsLineItem_SetExtension(self *C.QGraphicsLineItem
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QGraphicsItem__Extension)(extension)
 
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(variant))
+	slotval2 := newQVariant(variant)
 
 	gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_SetExtension, slotval1, slotval2)
 
@@ -6800,8 +6720,7 @@ func miqt_exec_callback_QGraphicsLineItem_SetExtension(self *C.QGraphicsLineItem
 
 func (this *QGraphicsLineItem) callVirtualBase_Extension(variant *QVariant) *QVariant {
 
-	_ret := C.QGraphicsLineItem_virtualbase_Extension(unsafe.Pointer(this.h), variant.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsLineItem_virtualbase_Extension(unsafe.Pointer(this.h), variant.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -6821,7 +6740,7 @@ func miqt_exec_callback_QGraphicsLineItem_Extension(self *C.QGraphicsLineItem, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVariant(unsafe.Pointer(variant))
+	slotval1 := newQVariant(variant)
 
 	virtualReturn := gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_Extension, slotval1)
 
@@ -6875,7 +6794,8 @@ func miqt_exec_callback_QGraphicsLineItem_CollidesWithItem(self *C.QGraphicsLine
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsItem(unsafe.Pointer(other))
+	slotval1 := newQGraphicsItem(other)
+
 	slotval2 := (ItemSelectionMode)(mode)
 
 	virtualReturn := gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_CollidesWithItem, slotval1, slotval2)
@@ -6904,7 +6824,8 @@ func miqt_exec_callback_QGraphicsLineItem_CollidesWithPath(self *C.QGraphicsLine
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainterPath(unsafe.Pointer(path))
+	slotval1 := newQPainterPath(path)
+
 	slotval2 := (ItemSelectionMode)(mode)
 
 	virtualReturn := gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_CollidesWithPath, slotval1, slotval2)
@@ -6933,8 +6854,9 @@ func miqt_exec_callback_QGraphicsLineItem_SceneEventFilter(self *C.QGraphicsLine
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsItem(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQGraphicsItem(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_SceneEventFilter, slotval1, slotval2)
 
@@ -6962,7 +6884,7 @@ func miqt_exec_callback_QGraphicsLineItem_SceneEvent(self *C.QGraphicsLineItem, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_SceneEvent, slotval1)
 
@@ -6990,7 +6912,7 @@ func miqt_exec_callback_QGraphicsLineItem_ContextMenuEvent(self *C.QGraphicsLine
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneContextMenuEvent(event, nil, nil)
 
 	gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -7016,7 +6938,7 @@ func miqt_exec_callback_QGraphicsLineItem_DragEnterEvent(self *C.QGraphicsLineIt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -7042,7 +6964,7 @@ func miqt_exec_callback_QGraphicsLineItem_DragLeaveEvent(self *C.QGraphicsLineIt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -7068,7 +6990,7 @@ func miqt_exec_callback_QGraphicsLineItem_DragMoveEvent(self *C.QGraphicsLineIte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -7094,7 +7016,7 @@ func miqt_exec_callback_QGraphicsLineItem_DropEvent(self *C.QGraphicsLineItem, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -7120,7 +7042,7 @@ func miqt_exec_callback_QGraphicsLineItem_FocusInEvent(self *C.QGraphicsLineItem
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -7146,7 +7068,7 @@ func miqt_exec_callback_QGraphicsLineItem_FocusOutEvent(self *C.QGraphicsLineIte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -7172,7 +7094,7 @@ func miqt_exec_callback_QGraphicsLineItem_HoverEnterEvent(self *C.QGraphicsLineI
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
 
 	gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_HoverEnterEvent, slotval1)
 
@@ -7198,7 +7120,7 @@ func miqt_exec_callback_QGraphicsLineItem_HoverMoveEvent(self *C.QGraphicsLineIt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
 
 	gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_HoverMoveEvent, slotval1)
 
@@ -7224,7 +7146,7 @@ func miqt_exec_callback_QGraphicsLineItem_HoverLeaveEvent(self *C.QGraphicsLineI
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
 
 	gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_HoverLeaveEvent, slotval1)
 
@@ -7250,7 +7172,7 @@ func miqt_exec_callback_QGraphicsLineItem_KeyPressEvent(self *C.QGraphicsLineIte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -7276,7 +7198,7 @@ func miqt_exec_callback_QGraphicsLineItem_KeyReleaseEvent(self *C.QGraphicsLineI
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -7302,7 +7224,7 @@ func miqt_exec_callback_QGraphicsLineItem_MousePressEvent(self *C.QGraphicsLineI
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -7328,7 +7250,7 @@ func miqt_exec_callback_QGraphicsLineItem_MouseMoveEvent(self *C.QGraphicsLineIt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -7354,7 +7276,7 @@ func miqt_exec_callback_QGraphicsLineItem_MouseReleaseEvent(self *C.QGraphicsLin
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -7380,7 +7302,7 @@ func miqt_exec_callback_QGraphicsLineItem_MouseDoubleClickEvent(self *C.QGraphic
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -7406,7 +7328,7 @@ func miqt_exec_callback_QGraphicsLineItem_WheelEvent(self *C.QGraphicsLineItem, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneWheelEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneWheelEvent(event, nil, nil)
 
 	gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -7432,7 +7354,7 @@ func miqt_exec_callback_QGraphicsLineItem_InputMethodEvent(self *C.QGraphicsLine
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQInputMethodEvent(event, nil)
 
 	gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -7440,8 +7362,7 @@ func miqt_exec_callback_QGraphicsLineItem_InputMethodEvent(self *C.QGraphicsLine
 
 func (this *QGraphicsLineItem) callVirtualBase_InputMethodQuery(query InputMethodQuery) *QVariant {
 
-	_ret := C.QGraphicsLineItem_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsLineItem_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -7471,8 +7392,7 @@ func miqt_exec_callback_QGraphicsLineItem_InputMethodQuery(self *C.QGraphicsLine
 
 func (this *QGraphicsLineItem) callVirtualBase_ItemChange(change QGraphicsItem__GraphicsItemChange, value *QVariant) *QVariant {
 
-	_ret := C.QGraphicsLineItem_virtualbase_ItemChange(unsafe.Pointer(this.h), (C.int)(change), value.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsLineItem_virtualbase_ItemChange(unsafe.Pointer(this.h), (C.int)(change), value.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -7494,7 +7414,7 @@ func miqt_exec_callback_QGraphicsLineItem_ItemChange(self *C.QGraphicsLineItem, 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QGraphicsItem__GraphicsItemChange)(change)
 
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval2 := newQVariant(value)
 
 	virtualReturn := gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_ItemChange, slotval1, slotval2)
 
@@ -7600,8 +7520,7 @@ func NewQGraphicsPixmapItem4(pixmap *QPixmap, parent *QGraphicsItem) *QGraphicsP
 }
 
 func (this *QGraphicsPixmapItem) Pixmap() *QPixmap {
-	_ret := C.QGraphicsPixmapItem_Pixmap(this.h)
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QGraphicsPixmapItem_Pixmap(this.h), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -7619,8 +7538,7 @@ func (this *QGraphicsPixmapItem) SetTransformationMode(mode TransformationMode) 
 }
 
 func (this *QGraphicsPixmapItem) Offset() *QPointF {
-	_ret := C.QGraphicsPixmapItem_Offset(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QGraphicsPixmapItem_Offset(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -7634,15 +7552,13 @@ func (this *QGraphicsPixmapItem) SetOffset2(x float64, y float64) {
 }
 
 func (this *QGraphicsPixmapItem) BoundingRect() *QRectF {
-	_ret := C.QGraphicsPixmapItem_BoundingRect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsPixmapItem_BoundingRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsPixmapItem) Shape() *QPainterPath {
-	_ret := C.QGraphicsPixmapItem_Shape(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsPixmapItem_Shape(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -7660,8 +7576,7 @@ func (this *QGraphicsPixmapItem) IsObscuredBy(item *QGraphicsItem) bool {
 }
 
 func (this *QGraphicsPixmapItem) OpaqueArea() *QPainterPath {
-	_ret := C.QGraphicsPixmapItem_OpaqueArea(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsPixmapItem_OpaqueArea(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -7680,8 +7595,7 @@ func (this *QGraphicsPixmapItem) SetShapeMode(mode QGraphicsPixmapItem__ShapeMod
 
 func (this *QGraphicsPixmapItem) callVirtualBase_BoundingRect() *QRectF {
 
-	_ret := C.QGraphicsPixmapItem_virtualbase_BoundingRect(unsafe.Pointer(this.h))
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsPixmapItem_virtualbase_BoundingRect(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -7708,8 +7622,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_BoundingRect(self *C.QGraphicsPixmap
 
 func (this *QGraphicsPixmapItem) callVirtualBase_Shape() *QPainterPath {
 
-	_ret := C.QGraphicsPixmapItem_virtualbase_Shape(unsafe.Pointer(this.h))
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsPixmapItem_virtualbase_Shape(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -7754,7 +7667,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_Contains(self *C.QGraphicsPixmapItem
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := newQPointF(point)
 
 	virtualReturn := gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_Contains, slotval1)
 
@@ -7782,9 +7695,11 @@ func miqt_exec_callback_QGraphicsPixmapItem_Paint(self *C.QGraphicsPixmapItem, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQStyleOptionGraphicsItem(unsafe.Pointer(option), nil)
-	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQStyleOptionGraphicsItem(option, nil)
+
+	slotval3 := newQWidget(widget, nil, nil)
 
 	gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_Paint, slotval1, slotval2, slotval3)
 
@@ -7810,7 +7725,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_IsObscuredBy(self *C.QGraphicsPixmap
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsItem(unsafe.Pointer(item))
+	slotval1 := newQGraphicsItem(item)
 
 	virtualReturn := gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_IsObscuredBy, slotval1)
 
@@ -7820,8 +7735,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_IsObscuredBy(self *C.QGraphicsPixmap
 
 func (this *QGraphicsPixmapItem) callVirtualBase_OpaqueArea() *QPainterPath {
 
-	_ret := C.QGraphicsPixmapItem_virtualbase_OpaqueArea(unsafe.Pointer(this.h))
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsPixmapItem_virtualbase_OpaqueArea(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -7921,7 +7835,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_SetExtension(self *C.QGraphicsPixmap
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QGraphicsItem__Extension)(extension)
 
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(variant))
+	slotval2 := newQVariant(variant)
 
 	gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_SetExtension, slotval1, slotval2)
 
@@ -7929,8 +7843,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_SetExtension(self *C.QGraphicsPixmap
 
 func (this *QGraphicsPixmapItem) callVirtualBase_Extension(variant *QVariant) *QVariant {
 
-	_ret := C.QGraphicsPixmapItem_virtualbase_Extension(unsafe.Pointer(this.h), variant.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsPixmapItem_virtualbase_Extension(unsafe.Pointer(this.h), variant.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -7950,7 +7863,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_Extension(self *C.QGraphicsPixmapIte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVariant(unsafe.Pointer(variant))
+	slotval1 := newQVariant(variant)
 
 	virtualReturn := gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_Extension, slotval1)
 
@@ -8004,7 +7917,8 @@ func miqt_exec_callback_QGraphicsPixmapItem_CollidesWithItem(self *C.QGraphicsPi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsItem(unsafe.Pointer(other))
+	slotval1 := newQGraphicsItem(other)
+
 	slotval2 := (ItemSelectionMode)(mode)
 
 	virtualReturn := gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_CollidesWithItem, slotval1, slotval2)
@@ -8033,7 +7947,8 @@ func miqt_exec_callback_QGraphicsPixmapItem_CollidesWithPath(self *C.QGraphicsPi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainterPath(unsafe.Pointer(path))
+	slotval1 := newQPainterPath(path)
+
 	slotval2 := (ItemSelectionMode)(mode)
 
 	virtualReturn := gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_CollidesWithPath, slotval1, slotval2)
@@ -8062,8 +7977,9 @@ func miqt_exec_callback_QGraphicsPixmapItem_SceneEventFilter(self *C.QGraphicsPi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsItem(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQGraphicsItem(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_SceneEventFilter, slotval1, slotval2)
 
@@ -8091,7 +8007,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_SceneEvent(self *C.QGraphicsPixmapIt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_SceneEvent, slotval1)
 
@@ -8119,7 +8035,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_ContextMenuEvent(self *C.QGraphicsPi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneContextMenuEvent(event, nil, nil)
 
 	gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -8145,7 +8061,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_DragEnterEvent(self *C.QGraphicsPixm
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -8171,7 +8087,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_DragLeaveEvent(self *C.QGraphicsPixm
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -8197,7 +8113,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_DragMoveEvent(self *C.QGraphicsPixma
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -8223,7 +8139,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_DropEvent(self *C.QGraphicsPixmapIte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -8249,7 +8165,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_FocusInEvent(self *C.QGraphicsPixmap
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -8275,7 +8191,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_FocusOutEvent(self *C.QGraphicsPixma
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -8301,7 +8217,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_HoverEnterEvent(self *C.QGraphicsPix
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
 
 	gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_HoverEnterEvent, slotval1)
 
@@ -8327,7 +8243,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_HoverMoveEvent(self *C.QGraphicsPixm
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
 
 	gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_HoverMoveEvent, slotval1)
 
@@ -8353,7 +8269,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_HoverLeaveEvent(self *C.QGraphicsPix
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
 
 	gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_HoverLeaveEvent, slotval1)
 
@@ -8379,7 +8295,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_KeyPressEvent(self *C.QGraphicsPixma
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -8405,7 +8321,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_KeyReleaseEvent(self *C.QGraphicsPix
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -8431,7 +8347,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_MousePressEvent(self *C.QGraphicsPix
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -8457,7 +8373,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_MouseMoveEvent(self *C.QGraphicsPixm
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -8483,7 +8399,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_MouseReleaseEvent(self *C.QGraphicsP
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -8509,7 +8425,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_MouseDoubleClickEvent(self *C.QGraph
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -8535,7 +8451,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_WheelEvent(self *C.QGraphicsPixmapIt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneWheelEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneWheelEvent(event, nil, nil)
 
 	gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -8561,7 +8477,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_InputMethodEvent(self *C.QGraphicsPi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQInputMethodEvent(event, nil)
 
 	gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -8569,8 +8485,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_InputMethodEvent(self *C.QGraphicsPi
 
 func (this *QGraphicsPixmapItem) callVirtualBase_InputMethodQuery(query InputMethodQuery) *QVariant {
 
-	_ret := C.QGraphicsPixmapItem_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsPixmapItem_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -8600,8 +8515,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_InputMethodQuery(self *C.QGraphicsPi
 
 func (this *QGraphicsPixmapItem) callVirtualBase_ItemChange(change QGraphicsItem__GraphicsItemChange, value *QVariant) *QVariant {
 
-	_ret := C.QGraphicsPixmapItem_virtualbase_ItemChange(unsafe.Pointer(this.h), (C.int)(change), value.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsPixmapItem_virtualbase_ItemChange(unsafe.Pointer(this.h), (C.int)(change), value.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -8623,7 +8537,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_ItemChange(self *C.QGraphicsPixmapIt
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QGraphicsItem__GraphicsItemChange)(change)
 
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval2 := newQVariant(value)
 
 	virtualReturn := gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_ItemChange, slotval1, slotval2)
 
@@ -8745,7 +8659,7 @@ func NewQGraphicsTextItem4(text string, parent *QGraphicsItem) *QGraphicsTextIte
 }
 
 func (this *QGraphicsTextItem) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsTextItem_MetaObject(this.h)))
+	return newQMetaObject(C.QGraphicsTextItem_MetaObject(this.h))
 }
 
 func (this *QGraphicsTextItem) Metacast(param1 string) unsafe.Pointer {
@@ -8803,8 +8717,7 @@ func (this *QGraphicsTextItem) SetPlainText(text string) {
 }
 
 func (this *QGraphicsTextItem) Font() *QFont {
-	_ret := C.QGraphicsTextItem_Font(this.h)
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QGraphicsTextItem_Font(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -8818,22 +8731,19 @@ func (this *QGraphicsTextItem) SetDefaultTextColor(c *QColor) {
 }
 
 func (this *QGraphicsTextItem) DefaultTextColor() *QColor {
-	_ret := C.QGraphicsTextItem_DefaultTextColor(this.h)
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QGraphicsTextItem_DefaultTextColor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsTextItem) BoundingRect() *QRectF {
-	_ret := C.QGraphicsTextItem_BoundingRect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsTextItem_BoundingRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsTextItem) Shape() *QPainterPath {
-	_ret := C.QGraphicsTextItem_Shape(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsTextItem_Shape(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -8851,8 +8761,7 @@ func (this *QGraphicsTextItem) IsObscuredBy(item *QGraphicsItem) bool {
 }
 
 func (this *QGraphicsTextItem) OpaqueArea() *QPainterPath {
-	_ret := C.QGraphicsTextItem_OpaqueArea(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsTextItem_OpaqueArea(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -8878,7 +8787,7 @@ func (this *QGraphicsTextItem) SetDocument(document *QTextDocument) {
 }
 
 func (this *QGraphicsTextItem) Document() *QTextDocument {
-	return UnsafeNewQTextDocument(unsafe.Pointer(C.QGraphicsTextItem_Document(this.h)), nil)
+	return newQTextDocument(C.QGraphicsTextItem_Document(this.h), nil)
 }
 
 func (this *QGraphicsTextItem) SetTextInteractionFlags(flags TextInteractionFlag) {
@@ -8910,8 +8819,7 @@ func (this *QGraphicsTextItem) SetTextCursor(cursor *QTextCursor) {
 }
 
 func (this *QGraphicsTextItem) TextCursor() *QTextCursor {
-	_ret := C.QGraphicsTextItem_TextCursor(this.h)
-	_goptr := newQTextCursor(_ret)
+	_goptr := newQTextCursor(C.QGraphicsTextItem_TextCursor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -9016,8 +8924,7 @@ func QGraphicsTextItem_TrUtf83(s string, c string, n int) string {
 
 func (this *QGraphicsTextItem) callVirtualBase_BoundingRect() *QRectF {
 
-	_ret := C.QGraphicsTextItem_virtualbase_BoundingRect(unsafe.Pointer(this.h))
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsTextItem_virtualbase_BoundingRect(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -9044,8 +8951,7 @@ func miqt_exec_callback_QGraphicsTextItem_BoundingRect(self *C.QGraphicsTextItem
 
 func (this *QGraphicsTextItem) callVirtualBase_Shape() *QPainterPath {
 
-	_ret := C.QGraphicsTextItem_virtualbase_Shape(unsafe.Pointer(this.h))
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsTextItem_virtualbase_Shape(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -9090,7 +8996,7 @@ func miqt_exec_callback_QGraphicsTextItem_Contains(self *C.QGraphicsTextItem, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := newQPointF(point)
 
 	virtualReturn := gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_Contains, slotval1)
 
@@ -9118,9 +9024,11 @@ func miqt_exec_callback_QGraphicsTextItem_Paint(self *C.QGraphicsTextItem, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQStyleOptionGraphicsItem(unsafe.Pointer(option), nil)
-	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQStyleOptionGraphicsItem(option, nil)
+
+	slotval3 := newQWidget(widget, nil, nil)
 
 	gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_Paint, slotval1, slotval2, slotval3)
 
@@ -9146,7 +9054,7 @@ func miqt_exec_callback_QGraphicsTextItem_IsObscuredBy(self *C.QGraphicsTextItem
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsItem(unsafe.Pointer(item))
+	slotval1 := newQGraphicsItem(item)
 
 	virtualReturn := gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_IsObscuredBy, slotval1)
 
@@ -9156,8 +9064,7 @@ func miqt_exec_callback_QGraphicsTextItem_IsObscuredBy(self *C.QGraphicsTextItem
 
 func (this *QGraphicsTextItem) callVirtualBase_OpaqueArea() *QPainterPath {
 
-	_ret := C.QGraphicsTextItem_virtualbase_OpaqueArea(unsafe.Pointer(this.h))
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsTextItem_virtualbase_OpaqueArea(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -9227,7 +9134,7 @@ func miqt_exec_callback_QGraphicsTextItem_SceneEvent(self *C.QGraphicsTextItem, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_SceneEvent, slotval1)
 
@@ -9255,7 +9162,7 @@ func miqt_exec_callback_QGraphicsTextItem_MousePressEvent(self *C.QGraphicsTextI
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -9281,7 +9188,7 @@ func miqt_exec_callback_QGraphicsTextItem_MouseMoveEvent(self *C.QGraphicsTextIt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -9307,7 +9214,7 @@ func miqt_exec_callback_QGraphicsTextItem_MouseReleaseEvent(self *C.QGraphicsTex
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -9333,7 +9240,7 @@ func miqt_exec_callback_QGraphicsTextItem_MouseDoubleClickEvent(self *C.QGraphic
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -9359,7 +9266,7 @@ func miqt_exec_callback_QGraphicsTextItem_ContextMenuEvent(self *C.QGraphicsText
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneContextMenuEvent(event, nil, nil)
 
 	gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -9385,7 +9292,7 @@ func miqt_exec_callback_QGraphicsTextItem_KeyPressEvent(self *C.QGraphicsTextIte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -9411,7 +9318,7 @@ func miqt_exec_callback_QGraphicsTextItem_KeyReleaseEvent(self *C.QGraphicsTextI
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -9437,7 +9344,7 @@ func miqt_exec_callback_QGraphicsTextItem_FocusInEvent(self *C.QGraphicsTextItem
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -9463,7 +9370,7 @@ func miqt_exec_callback_QGraphicsTextItem_FocusOutEvent(self *C.QGraphicsTextIte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -9489,7 +9396,7 @@ func miqt_exec_callback_QGraphicsTextItem_DragEnterEvent(self *C.QGraphicsTextIt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -9515,7 +9422,7 @@ func miqt_exec_callback_QGraphicsTextItem_DragLeaveEvent(self *C.QGraphicsTextIt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -9541,7 +9448,7 @@ func miqt_exec_callback_QGraphicsTextItem_DragMoveEvent(self *C.QGraphicsTextIte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -9567,7 +9474,7 @@ func miqt_exec_callback_QGraphicsTextItem_DropEvent(self *C.QGraphicsTextItem, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -9593,7 +9500,7 @@ func miqt_exec_callback_QGraphicsTextItem_InputMethodEvent(self *C.QGraphicsText
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQInputMethodEvent(event, nil)
 
 	gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -9619,7 +9526,7 @@ func miqt_exec_callback_QGraphicsTextItem_HoverEnterEvent(self *C.QGraphicsTextI
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
 
 	gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_HoverEnterEvent, slotval1)
 
@@ -9645,7 +9552,7 @@ func miqt_exec_callback_QGraphicsTextItem_HoverMoveEvent(self *C.QGraphicsTextIt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
 
 	gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_HoverMoveEvent, slotval1)
 
@@ -9671,7 +9578,7 @@ func miqt_exec_callback_QGraphicsTextItem_HoverLeaveEvent(self *C.QGraphicsTextI
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
 
 	gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_HoverLeaveEvent, slotval1)
 
@@ -9679,8 +9586,7 @@ func miqt_exec_callback_QGraphicsTextItem_HoverLeaveEvent(self *C.QGraphicsTextI
 
 func (this *QGraphicsTextItem) callVirtualBase_InputMethodQuery(query InputMethodQuery) *QVariant {
 
-	_ret := C.QGraphicsTextItem_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsTextItem_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -9758,7 +9664,7 @@ func miqt_exec_callback_QGraphicsTextItem_SetExtension(self *C.QGraphicsTextItem
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QGraphicsItem__Extension)(extension)
 
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(variant))
+	slotval2 := newQVariant(variant)
 
 	gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_SetExtension, slotval1, slotval2)
 
@@ -9766,8 +9672,7 @@ func miqt_exec_callback_QGraphicsTextItem_SetExtension(self *C.QGraphicsTextItem
 
 func (this *QGraphicsTextItem) callVirtualBase_Extension(variant *QVariant) *QVariant {
 
-	_ret := C.QGraphicsTextItem_virtualbase_Extension(unsafe.Pointer(this.h), variant.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsTextItem_virtualbase_Extension(unsafe.Pointer(this.h), variant.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -9787,7 +9692,7 @@ func miqt_exec_callback_QGraphicsTextItem_Extension(self *C.QGraphicsTextItem, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVariant(unsafe.Pointer(variant))
+	slotval1 := newQVariant(variant)
 
 	virtualReturn := gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_Extension, slotval1)
 
@@ -9815,7 +9720,7 @@ func miqt_exec_callback_QGraphicsTextItem_Event(self *C.QGraphicsTextItem, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(ev))
+	slotval1 := newQEvent(ev)
 
 	virtualReturn := gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_Event, slotval1)
 
@@ -9952,22 +9857,19 @@ func (this *QGraphicsSimpleTextItem) SetFont(font *QFont) {
 }
 
 func (this *QGraphicsSimpleTextItem) Font() *QFont {
-	_ret := C.QGraphicsSimpleTextItem_Font(this.h)
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QGraphicsSimpleTextItem_Font(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsSimpleTextItem) BoundingRect() *QRectF {
-	_ret := C.QGraphicsSimpleTextItem_BoundingRect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsSimpleTextItem_BoundingRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsSimpleTextItem) Shape() *QPainterPath {
-	_ret := C.QGraphicsSimpleTextItem_Shape(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsSimpleTextItem_Shape(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -9985,8 +9887,7 @@ func (this *QGraphicsSimpleTextItem) IsObscuredBy(item *QGraphicsItem) bool {
 }
 
 func (this *QGraphicsSimpleTextItem) OpaqueArea() *QPainterPath {
-	_ret := C.QGraphicsSimpleTextItem_OpaqueArea(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsSimpleTextItem_OpaqueArea(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -9997,8 +9898,7 @@ func (this *QGraphicsSimpleTextItem) Type() int {
 
 func (this *QGraphicsSimpleTextItem) callVirtualBase_BoundingRect() *QRectF {
 
-	_ret := C.QGraphicsSimpleTextItem_virtualbase_BoundingRect(unsafe.Pointer(this.h))
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsSimpleTextItem_virtualbase_BoundingRect(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -10025,8 +9925,7 @@ func miqt_exec_callback_QGraphicsSimpleTextItem_BoundingRect(self *C.QGraphicsSi
 
 func (this *QGraphicsSimpleTextItem) callVirtualBase_Shape() *QPainterPath {
 
-	_ret := C.QGraphicsSimpleTextItem_virtualbase_Shape(unsafe.Pointer(this.h))
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsSimpleTextItem_virtualbase_Shape(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -10071,7 +9970,7 @@ func miqt_exec_callback_QGraphicsSimpleTextItem_Contains(self *C.QGraphicsSimple
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := newQPointF(point)
 
 	virtualReturn := gofunc((&QGraphicsSimpleTextItem{h: self}).callVirtualBase_Contains, slotval1)
 
@@ -10099,9 +9998,11 @@ func miqt_exec_callback_QGraphicsSimpleTextItem_Paint(self *C.QGraphicsSimpleTex
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQStyleOptionGraphicsItem(unsafe.Pointer(option), nil)
-	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQStyleOptionGraphicsItem(option, nil)
+
+	slotval3 := newQWidget(widget, nil, nil)
 
 	gofunc((&QGraphicsSimpleTextItem{h: self}).callVirtualBase_Paint, slotval1, slotval2, slotval3)
 
@@ -10127,7 +10028,7 @@ func miqt_exec_callback_QGraphicsSimpleTextItem_IsObscuredBy(self *C.QGraphicsSi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsItem(unsafe.Pointer(item))
+	slotval1 := newQGraphicsItem(item)
 
 	virtualReturn := gofunc((&QGraphicsSimpleTextItem{h: self}).callVirtualBase_IsObscuredBy, slotval1)
 
@@ -10137,8 +10038,7 @@ func miqt_exec_callback_QGraphicsSimpleTextItem_IsObscuredBy(self *C.QGraphicsSi
 
 func (this *QGraphicsSimpleTextItem) callVirtualBase_OpaqueArea() *QPainterPath {
 
-	_ret := C.QGraphicsSimpleTextItem_virtualbase_OpaqueArea(unsafe.Pointer(this.h))
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsSimpleTextItem_virtualbase_OpaqueArea(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -10238,7 +10138,7 @@ func miqt_exec_callback_QGraphicsSimpleTextItem_SetExtension(self *C.QGraphicsSi
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QGraphicsItem__Extension)(extension)
 
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(variant))
+	slotval2 := newQVariant(variant)
 
 	gofunc((&QGraphicsSimpleTextItem{h: self}).callVirtualBase_SetExtension, slotval1, slotval2)
 
@@ -10246,8 +10146,7 @@ func miqt_exec_callback_QGraphicsSimpleTextItem_SetExtension(self *C.QGraphicsSi
 
 func (this *QGraphicsSimpleTextItem) callVirtualBase_Extension(variant *QVariant) *QVariant {
 
-	_ret := C.QGraphicsSimpleTextItem_virtualbase_Extension(unsafe.Pointer(this.h), variant.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsSimpleTextItem_virtualbase_Extension(unsafe.Pointer(this.h), variant.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -10267,7 +10166,7 @@ func miqt_exec_callback_QGraphicsSimpleTextItem_Extension(self *C.QGraphicsSimpl
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVariant(unsafe.Pointer(variant))
+	slotval1 := newQVariant(variant)
 
 	virtualReturn := gofunc((&QGraphicsSimpleTextItem{h: self}).callVirtualBase_Extension, slotval1)
 
@@ -10359,8 +10258,7 @@ func (this *QGraphicsItemGroup) RemoveFromGroup(item *QGraphicsItem) {
 }
 
 func (this *QGraphicsItemGroup) BoundingRect() *QRectF {
-	_ret := C.QGraphicsItemGroup_BoundingRect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsItemGroup_BoundingRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -10374,8 +10272,7 @@ func (this *QGraphicsItemGroup) IsObscuredBy(item *QGraphicsItem) bool {
 }
 
 func (this *QGraphicsItemGroup) OpaqueArea() *QPainterPath {
-	_ret := C.QGraphicsItemGroup_OpaqueArea(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsItemGroup_OpaqueArea(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -10386,8 +10283,7 @@ func (this *QGraphicsItemGroup) Type() int {
 
 func (this *QGraphicsItemGroup) callVirtualBase_BoundingRect() *QRectF {
 
-	_ret := C.QGraphicsItemGroup_virtualbase_BoundingRect(unsafe.Pointer(this.h))
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsItemGroup_virtualbase_BoundingRect(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -10432,9 +10328,11 @@ func miqt_exec_callback_QGraphicsItemGroup_Paint(self *C.QGraphicsItemGroup, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQStyleOptionGraphicsItem(unsafe.Pointer(option), nil)
-	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQStyleOptionGraphicsItem(option, nil)
+
+	slotval3 := newQWidget(widget, nil, nil)
 
 	gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_Paint, slotval1, slotval2, slotval3)
 
@@ -10460,7 +10358,7 @@ func miqt_exec_callback_QGraphicsItemGroup_IsObscuredBy(self *C.QGraphicsItemGro
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsItem(unsafe.Pointer(item))
+	slotval1 := newQGraphicsItem(item)
 
 	virtualReturn := gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_IsObscuredBy, slotval1)
 
@@ -10470,8 +10368,7 @@ func miqt_exec_callback_QGraphicsItemGroup_IsObscuredBy(self *C.QGraphicsItemGro
 
 func (this *QGraphicsItemGroup) callVirtualBase_OpaqueArea() *QPainterPath {
 
-	_ret := C.QGraphicsItemGroup_virtualbase_OpaqueArea(unsafe.Pointer(this.h))
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsItemGroup_virtualbase_OpaqueArea(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -10549,8 +10446,7 @@ func miqt_exec_callback_QGraphicsItemGroup_Advance(self *C.QGraphicsItemGroup, c
 
 func (this *QGraphicsItemGroup) callVirtualBase_Shape() *QPainterPath {
 
-	_ret := C.QGraphicsItemGroup_virtualbase_Shape(unsafe.Pointer(this.h))
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsItemGroup_virtualbase_Shape(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -10595,7 +10491,7 @@ func miqt_exec_callback_QGraphicsItemGroup_Contains(self *C.QGraphicsItemGroup, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := newQPointF(point)
 
 	virtualReturn := gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_Contains, slotval1)
 
@@ -10623,7 +10519,8 @@ func miqt_exec_callback_QGraphicsItemGroup_CollidesWithItem(self *C.QGraphicsIte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsItem(unsafe.Pointer(other))
+	slotval1 := newQGraphicsItem(other)
+
 	slotval2 := (ItemSelectionMode)(mode)
 
 	virtualReturn := gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_CollidesWithItem, slotval1, slotval2)
@@ -10652,7 +10549,8 @@ func miqt_exec_callback_QGraphicsItemGroup_CollidesWithPath(self *C.QGraphicsIte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainterPath(unsafe.Pointer(path))
+	slotval1 := newQPainterPath(path)
+
 	slotval2 := (ItemSelectionMode)(mode)
 
 	virtualReturn := gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_CollidesWithPath, slotval1, slotval2)
@@ -10681,8 +10579,9 @@ func miqt_exec_callback_QGraphicsItemGroup_SceneEventFilter(self *C.QGraphicsIte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsItem(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQGraphicsItem(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_SceneEventFilter, slotval1, slotval2)
 
@@ -10710,7 +10609,7 @@ func miqt_exec_callback_QGraphicsItemGroup_SceneEvent(self *C.QGraphicsItemGroup
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_SceneEvent, slotval1)
 
@@ -10738,7 +10637,7 @@ func miqt_exec_callback_QGraphicsItemGroup_ContextMenuEvent(self *C.QGraphicsIte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneContextMenuEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -10764,7 +10663,7 @@ func miqt_exec_callback_QGraphicsItemGroup_DragEnterEvent(self *C.QGraphicsItemG
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -10790,7 +10689,7 @@ func miqt_exec_callback_QGraphicsItemGroup_DragLeaveEvent(self *C.QGraphicsItemG
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -10816,7 +10715,7 @@ func miqt_exec_callback_QGraphicsItemGroup_DragMoveEvent(self *C.QGraphicsItemGr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -10842,7 +10741,7 @@ func miqt_exec_callback_QGraphicsItemGroup_DropEvent(self *C.QGraphicsItemGroup,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -10868,7 +10767,7 @@ func miqt_exec_callback_QGraphicsItemGroup_FocusInEvent(self *C.QGraphicsItemGro
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -10894,7 +10793,7 @@ func miqt_exec_callback_QGraphicsItemGroup_FocusOutEvent(self *C.QGraphicsItemGr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -10920,7 +10819,7 @@ func miqt_exec_callback_QGraphicsItemGroup_HoverEnterEvent(self *C.QGraphicsItem
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_HoverEnterEvent, slotval1)
 
@@ -10946,7 +10845,7 @@ func miqt_exec_callback_QGraphicsItemGroup_HoverMoveEvent(self *C.QGraphicsItemG
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_HoverMoveEvent, slotval1)
 
@@ -10972,7 +10871,7 @@ func miqt_exec_callback_QGraphicsItemGroup_HoverLeaveEvent(self *C.QGraphicsItem
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_HoverLeaveEvent, slotval1)
 
@@ -10998,7 +10897,7 @@ func miqt_exec_callback_QGraphicsItemGroup_KeyPressEvent(self *C.QGraphicsItemGr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -11024,7 +10923,7 @@ func miqt_exec_callback_QGraphicsItemGroup_KeyReleaseEvent(self *C.QGraphicsItem
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -11050,7 +10949,7 @@ func miqt_exec_callback_QGraphicsItemGroup_MousePressEvent(self *C.QGraphicsItem
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -11076,7 +10975,7 @@ func miqt_exec_callback_QGraphicsItemGroup_MouseMoveEvent(self *C.QGraphicsItemG
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -11102,7 +11001,7 @@ func miqt_exec_callback_QGraphicsItemGroup_MouseReleaseEvent(self *C.QGraphicsIt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -11128,7 +11027,7 @@ func miqt_exec_callback_QGraphicsItemGroup_MouseDoubleClickEvent(self *C.QGraphi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -11154,7 +11053,7 @@ func miqt_exec_callback_QGraphicsItemGroup_WheelEvent(self *C.QGraphicsItemGroup
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneWheelEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneWheelEvent(event, nil, nil)
 
 	gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -11180,7 +11079,7 @@ func miqt_exec_callback_QGraphicsItemGroup_InputMethodEvent(self *C.QGraphicsIte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQInputMethodEvent(event, nil)
 
 	gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -11188,8 +11087,7 @@ func miqt_exec_callback_QGraphicsItemGroup_InputMethodEvent(self *C.QGraphicsIte
 
 func (this *QGraphicsItemGroup) callVirtualBase_InputMethodQuery(query InputMethodQuery) *QVariant {
 
-	_ret := C.QGraphicsItemGroup_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsItemGroup_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -11219,8 +11117,7 @@ func miqt_exec_callback_QGraphicsItemGroup_InputMethodQuery(self *C.QGraphicsIte
 
 func (this *QGraphicsItemGroup) callVirtualBase_ItemChange(change QGraphicsItem__GraphicsItemChange, value *QVariant) *QVariant {
 
-	_ret := C.QGraphicsItemGroup_virtualbase_ItemChange(unsafe.Pointer(this.h), (C.int)(change), value.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsItemGroup_virtualbase_ItemChange(unsafe.Pointer(this.h), (C.int)(change), value.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -11242,7 +11139,7 @@ func miqt_exec_callback_QGraphicsItemGroup_ItemChange(self *C.QGraphicsItemGroup
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QGraphicsItem__GraphicsItemChange)(change)
 
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval2 := newQVariant(value)
 
 	virtualReturn := gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_ItemChange, slotval1, slotval2)
 
@@ -11300,7 +11197,7 @@ func miqt_exec_callback_QGraphicsItemGroup_SetExtension(self *C.QGraphicsItemGro
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QGraphicsItem__Extension)(extension)
 
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(variant))
+	slotval2 := newQVariant(variant)
 
 	gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_SetExtension, slotval1, slotval2)
 
@@ -11308,8 +11205,7 @@ func miqt_exec_callback_QGraphicsItemGroup_SetExtension(self *C.QGraphicsItemGro
 
 func (this *QGraphicsItemGroup) callVirtualBase_Extension(variant *QVariant) *QVariant {
 
-	_ret := C.QGraphicsItemGroup_virtualbase_Extension(unsafe.Pointer(this.h), variant.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsItemGroup_virtualbase_Extension(unsafe.Pointer(this.h), variant.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -11329,7 +11225,7 @@ func miqt_exec_callback_QGraphicsItemGroup_Extension(self *C.QGraphicsItemGroup,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVariant(unsafe.Pointer(variant))
+	slotval1 := newQVariant(variant)
 
 	virtualReturn := gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_Extension, slotval1)
 

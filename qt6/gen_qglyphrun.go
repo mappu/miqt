@@ -88,8 +88,7 @@ func (this *QGlyphRun) Swap(other *QGlyphRun) {
 }
 
 func (this *QGlyphRun) RawFont() *QRawFont {
-	_ret := C.QGlyphRun_RawFont(this.h)
-	_goptr := newQRawFont(_ret)
+	_goptr := newQRawFont(C.QGlyphRun_RawFont(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -127,8 +126,7 @@ func (this *QGlyphRun) Positions() []QPointF {
 	_ret := make([]QPointF, int(_ma.len))
 	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQPointF(_lv_ret)
+		_lv_goptr := newQPointF(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -206,8 +204,7 @@ func (this *QGlyphRun) SetBoundingRect(boundingRect *QRectF) {
 }
 
 func (this *QGlyphRun) BoundingRect() *QRectF {
-	_ret := C.QGlyphRun_BoundingRect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGlyphRun_BoundingRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

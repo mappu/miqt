@@ -96,7 +96,7 @@ func NewQHeaderView2(orientation Orientation, parent *QWidget) *QHeaderView {
 }
 
 func (this *QHeaderView) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QHeaderView_MetaObject(this.h)))
+	return newQMetaObject(C.QHeaderView_MetaObject(this.h))
 }
 
 func (this *QHeaderView) Metacast(param1 string) unsafe.Pointer {
@@ -140,8 +140,7 @@ func (this *QHeaderView) Length() int {
 }
 
 func (this *QHeaderView) SizeHint() *QSize {
-	_ret := C.QHeaderView_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QHeaderView_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -677,7 +676,7 @@ func miqt_exec_callback_QHeaderView_SetModel(self *C.QHeaderView, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAbstractItemModel(unsafe.Pointer(model), nil)
+	slotval1 := newQAbstractItemModel(model, nil)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_SetModel, slotval1)
 
@@ -685,8 +684,7 @@ func miqt_exec_callback_QHeaderView_SetModel(self *C.QHeaderView, cb C.intptr_t,
 
 func (this *QHeaderView) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QHeaderView_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QHeaderView_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -803,8 +801,9 @@ func miqt_exec_callback_QHeaderView_CurrentChanged(self *C.QHeaderView, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(current))
-	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(old))
+	slotval1 := newQModelIndex(current)
+
+	slotval2 := newQModelIndex(old)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_CurrentChanged, slotval1, slotval2)
 
@@ -830,7 +829,7 @@ func miqt_exec_callback_QHeaderView_Event(self *C.QHeaderView, cb C.intptr_t, e 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QHeaderView{h: self}).callVirtualBase_Event, slotval1)
 
@@ -858,7 +857,7 @@ func miqt_exec_callback_QHeaderView_PaintEvent(self *C.QHeaderView, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQPaintEvent(e, nil)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -884,7 +883,7 @@ func miqt_exec_callback_QHeaderView_MousePressEvent(self *C.QHeaderView, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQMouseEvent(e, nil, nil)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -910,7 +909,7 @@ func miqt_exec_callback_QHeaderView_MouseMoveEvent(self *C.QHeaderView, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQMouseEvent(e, nil, nil)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -936,7 +935,7 @@ func miqt_exec_callback_QHeaderView_MouseReleaseEvent(self *C.QHeaderView, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQMouseEvent(e, nil, nil)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -962,7 +961,7 @@ func miqt_exec_callback_QHeaderView_MouseDoubleClickEvent(self *C.QHeaderView, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQMouseEvent(e, nil, nil)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -988,7 +987,7 @@ func miqt_exec_callback_QHeaderView_ViewportEvent(self *C.QHeaderView, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QHeaderView{h: self}).callVirtualBase_ViewportEvent, slotval1)
 
@@ -1016,8 +1015,10 @@ func miqt_exec_callback_QHeaderView_PaintSection(self *C.QHeaderView, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQRect(unsafe.Pointer(rect))
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQRect(rect)
+
 	slotval3 := (int)(logicalIndex)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_PaintSection, slotval1, slotval2, slotval3)
@@ -1026,8 +1027,7 @@ func miqt_exec_callback_QHeaderView_PaintSection(self *C.QHeaderView, cb C.intpt
 
 func (this *QHeaderView) callVirtualBase_SectionSizeFromContents(logicalIndex int) *QSize {
 
-	_ret := C.QHeaderView_virtualbase_SectionSizeFromContents(unsafe.Pointer(this.h), (C.int)(logicalIndex))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QHeaderView_virtualbase_SectionSizeFromContents(unsafe.Pointer(this.h), (C.int)(logicalIndex)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1182,8 +1182,10 @@ func miqt_exec_callback_QHeaderView_DataChanged(self *C.QHeaderView, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(topLeft))
-	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(bottomRight))
+	slotval1 := newQModelIndex(topLeft)
+
+	slotval2 := newQModelIndex(bottomRight)
+
 	var roles_ma C.struct_miqt_array = roles
 	roles_ret := make([]int, int(roles_ma.len))
 	roles_outCast := (*[0xffff]C.int)(unsafe.Pointer(roles_ma.data)) // hey ya
@@ -1216,7 +1218,8 @@ func miqt_exec_callback_QHeaderView_RowsInserted(self *C.QHeaderView, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
+
 	slotval2 := (int)(start)
 
 	slotval3 := (int)(end)
@@ -1227,8 +1230,7 @@ func miqt_exec_callback_QHeaderView_RowsInserted(self *C.QHeaderView, cb C.intpt
 
 func (this *QHeaderView) callVirtualBase_VisualRect(index *QModelIndex) *QRect {
 
-	_ret := C.QHeaderView_virtualbase_VisualRect(unsafe.Pointer(this.h), index.cPointer())
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QHeaderView_virtualbase_VisualRect(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1248,7 +1250,7 @@ func miqt_exec_callback_QHeaderView_VisualRect(self *C.QHeaderView, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QHeaderView{h: self}).callVirtualBase_VisualRect, slotval1)
 
@@ -1276,7 +1278,8 @@ func miqt_exec_callback_QHeaderView_ScrollTo(self *C.QHeaderView, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
+
 	slotval2 := (QAbstractItemView__ScrollHint)(hint)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_ScrollTo, slotval1, slotval2)
@@ -1285,8 +1288,7 @@ func miqt_exec_callback_QHeaderView_ScrollTo(self *C.QHeaderView, cb C.intptr_t,
 
 func (this *QHeaderView) callVirtualBase_IndexAt(p *QPoint) *QModelIndex {
 
-	_ret := C.QHeaderView_virtualbase_IndexAt(unsafe.Pointer(this.h), p.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QHeaderView_virtualbase_IndexAt(unsafe.Pointer(this.h), p.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1306,7 +1308,7 @@ func miqt_exec_callback_QHeaderView_IndexAt(self *C.QHeaderView, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(p))
+	slotval1 := newQPoint(p)
 
 	virtualReturn := gofunc((&QHeaderView{h: self}).callVirtualBase_IndexAt, slotval1)
 
@@ -1334,7 +1336,7 @@ func miqt_exec_callback_QHeaderView_IsIndexHidden(self *C.QHeaderView, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QHeaderView{h: self}).callVirtualBase_IsIndexHidden, slotval1)
 
@@ -1344,8 +1346,7 @@ func miqt_exec_callback_QHeaderView_IsIndexHidden(self *C.QHeaderView, cb C.intp
 
 func (this *QHeaderView) callVirtualBase_MoveCursor(param1 QAbstractItemView__CursorAction, param2 KeyboardModifier) *QModelIndex {
 
-	_ret := C.QHeaderView_virtualbase_MoveCursor(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2))
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QHeaderView_virtualbase_MoveCursor(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1395,7 +1396,8 @@ func miqt_exec_callback_QHeaderView_SetSelection(self *C.QHeaderView, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRect(unsafe.Pointer(rect))
+	slotval1 := newQRect(rect)
+
 	slotval2 := (QItemSelectionModel__SelectionFlag)(flags)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_SetSelection, slotval1, slotval2)
@@ -1404,8 +1406,7 @@ func miqt_exec_callback_QHeaderView_SetSelection(self *C.QHeaderView, cb C.intpt
 
 func (this *QHeaderView) callVirtualBase_VisualRegionForSelection(selection *QItemSelection) *QRegion {
 
-	_ret := C.QHeaderView_virtualbase_VisualRegionForSelection(unsafe.Pointer(this.h), selection.cPointer())
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QHeaderView_virtualbase_VisualRegionForSelection(unsafe.Pointer(this.h), selection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1425,7 +1426,7 @@ func miqt_exec_callback_QHeaderView_VisualRegionForSelection(self *C.QHeaderView
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selection))
+	slotval1 := newQItemSelection(selection)
 
 	virtualReturn := gofunc((&QHeaderView{h: self}).callVirtualBase_VisualRegionForSelection, slotval1)
 
@@ -1453,7 +1454,7 @@ func miqt_exec_callback_QHeaderView_SetSelectionModel(self *C.QHeaderView, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQItemSelectionModel(unsafe.Pointer(selectionModel), nil)
+	slotval1 := newQItemSelectionModel(selectionModel, nil)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_SetSelectionModel, slotval1)
 
@@ -1550,8 +1551,7 @@ func miqt_exec_callback_QHeaderView_SizeHintForColumn(self *C.QHeaderView, cb C.
 
 func (this *QHeaderView) callVirtualBase_InputMethodQuery(query InputMethodQuery) *QVariant {
 
-	_ret := C.QHeaderView_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QHeaderView_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1599,7 +1599,7 @@ func miqt_exec_callback_QHeaderView_SetRootIndex(self *C.QHeaderView, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_SetRootIndex, slotval1)
 
@@ -1648,7 +1648,8 @@ func miqt_exec_callback_QHeaderView_RowsAboutToBeRemoved(self *C.QHeaderView, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
+
 	slotval2 := (int)(start)
 
 	slotval3 := (int)(end)
@@ -1677,8 +1678,9 @@ func miqt_exec_callback_QHeaderView_SelectionChanged(self *C.QHeaderView, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selected))
-	slotval2 := UnsafeNewQItemSelection(unsafe.Pointer(deselected))
+	slotval1 := newQItemSelection(selected)
+
+	slotval2 := newQItemSelection(deselected)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_SelectionChanged, slotval1, slotval2)
 
@@ -1854,7 +1856,8 @@ func miqt_exec_callback_QHeaderView_CloseEditor(self *C.QHeaderView, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(editor), nil, nil)
+	slotval1 := newQWidget(editor, nil, nil)
+
 	slotval2 := (QAbstractItemDelegate__EndEditHint)(hint)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_CloseEditor, slotval1, slotval2)
@@ -1881,7 +1884,7 @@ func miqt_exec_callback_QHeaderView_CommitData(self *C.QHeaderView, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(editor), nil, nil)
+	slotval1 := newQWidget(editor, nil, nil)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_CommitData, slotval1)
 
@@ -1907,7 +1910,7 @@ func miqt_exec_callback_QHeaderView_EditorDestroyed(self *C.QHeaderView, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(editor))
+	slotval1 := newQObject(editor)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_EditorDestroyed, slotval1)
 
@@ -1919,8 +1922,7 @@ func (this *QHeaderView) callVirtualBase_SelectedIndexes() []QModelIndex {
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -1973,10 +1975,11 @@ func miqt_exec_callback_QHeaderView_Edit2(self *C.QHeaderView, cb C.intptr_t, in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
+
 	slotval2 := (QAbstractItemView__EditTrigger)(trigger)
 
-	slotval3 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval3 := newQEvent(event)
 
 	virtualReturn := gofunc((&QHeaderView{h: self}).callVirtualBase_Edit2, slotval1, slotval2, slotval3)
 
@@ -2004,8 +2007,9 @@ func miqt_exec_callback_QHeaderView_SelectionCommand(self *C.QHeaderView, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQModelIndex(index)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QHeaderView{h: self}).callVirtualBase_SelectionCommand, slotval1, slotval2)
 
@@ -2041,8 +2045,7 @@ func miqt_exec_callback_QHeaderView_StartDrag(self *C.QHeaderView, cb C.intptr_t
 
 func (this *QHeaderView) callVirtualBase_ViewOptions() *QStyleOptionViewItem {
 
-	_ret := C.QHeaderView_virtualbase_ViewOptions(unsafe.Pointer(this.h))
-	_goptr := newQStyleOptionViewItem(_ret, nil)
+	_goptr := newQStyleOptionViewItem(C.QHeaderView_virtualbase_ViewOptions(unsafe.Pointer(this.h)), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -2115,7 +2118,7 @@ func miqt_exec_callback_QHeaderView_DragEnterEvent(self *C.QHeaderView, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragEnterEvent(unsafe.Pointer(event), nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event, nil, nil, nil)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -2141,7 +2144,7 @@ func miqt_exec_callback_QHeaderView_DragMoveEvent(self *C.QHeaderView, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQDragMoveEvent(event, nil, nil)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -2167,7 +2170,7 @@ func miqt_exec_callback_QHeaderView_DragLeaveEvent(self *C.QHeaderView, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragLeaveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDragLeaveEvent(event, nil)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -2193,7 +2196,7 @@ func miqt_exec_callback_QHeaderView_DropEvent(self *C.QHeaderView, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDropEvent(event, nil)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -2219,7 +2222,7 @@ func miqt_exec_callback_QHeaderView_FocusInEvent(self *C.QHeaderView, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -2245,7 +2248,7 @@ func miqt_exec_callback_QHeaderView_FocusOutEvent(self *C.QHeaderView, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -2271,7 +2274,7 @@ func miqt_exec_callback_QHeaderView_KeyPressEvent(self *C.QHeaderView, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -2297,7 +2300,7 @@ func miqt_exec_callback_QHeaderView_ResizeEvent(self *C.QHeaderView, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQResizeEvent(event, nil)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -2323,7 +2326,7 @@ func miqt_exec_callback_QHeaderView_TimerEvent(self *C.QHeaderView, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -2349,7 +2352,7 @@ func miqt_exec_callback_QHeaderView_InputMethodEvent(self *C.QHeaderView, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQInputMethodEvent(event, nil)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -2375,8 +2378,9 @@ func miqt_exec_callback_QHeaderView_EventFilter(self *C.QHeaderView, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(object))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(object)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QHeaderView{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -2386,8 +2390,7 @@ func miqt_exec_callback_QHeaderView_EventFilter(self *C.QHeaderView, cb C.intptr
 
 func (this *QHeaderView) callVirtualBase_ViewportSizeHint() *QSize {
 
-	_ret := C.QHeaderView_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QHeaderView_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

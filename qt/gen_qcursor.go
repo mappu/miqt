@@ -156,51 +156,45 @@ func (this *QCursor) SetShape(newShape CursorShape) {
 }
 
 func (this *QCursor) Bitmap() *QBitmap {
-	return UnsafeNewQBitmap(unsafe.Pointer(C.QCursor_Bitmap(this.h)), nil, nil)
+	return newQBitmap(C.QCursor_Bitmap(this.h), nil, nil)
 }
 
 func (this *QCursor) Mask() *QBitmap {
-	return UnsafeNewQBitmap(unsafe.Pointer(C.QCursor_Mask(this.h)), nil, nil)
+	return newQBitmap(C.QCursor_Mask(this.h), nil, nil)
 }
 
 func (this *QCursor) BitmapWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QBitmap {
-	_ret := C.QCursor_BitmapWithQtReturnByValueConstant(this.h, (C.int)(param1))
-	_goptr := newQBitmap(_ret, nil, nil)
+	_goptr := newQBitmap(C.QCursor_BitmapWithQtReturnByValueConstant(this.h, (C.int)(param1)), nil, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCursor) MaskWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QBitmap {
-	_ret := C.QCursor_MaskWithQtReturnByValueConstant(this.h, (C.int)(param1))
-	_goptr := newQBitmap(_ret, nil, nil)
+	_goptr := newQBitmap(C.QCursor_MaskWithQtReturnByValueConstant(this.h, (C.int)(param1)), nil, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCursor) Pixmap() *QPixmap {
-	_ret := C.QCursor_Pixmap(this.h)
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QCursor_Pixmap(this.h), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCursor) HotSpot() *QPoint {
-	_ret := C.QCursor_HotSpot(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QCursor_HotSpot(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QCursor_Pos() *QPoint {
-	_ret := C.QCursor_Pos()
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QCursor_Pos())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QCursor_PosWithScreen(screen *QScreen) *QPoint {
-	_ret := C.QCursor_PosWithScreen(screen.cPointer())
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QCursor_PosWithScreen(screen.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

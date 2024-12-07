@@ -284,8 +284,7 @@ func (this *QNetworkProxyQuery) SetProtocolTag(protocolTag string) {
 }
 
 func (this *QNetworkProxyQuery) Url() *qt6.QUrl {
-	_ret := C.QNetworkProxyQuery_Url(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QNetworkProxyQuery_Url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -540,15 +539,13 @@ func QNetworkProxy_SetApplicationProxy(proxy *QNetworkProxy) {
 }
 
 func QNetworkProxy_ApplicationProxy() *QNetworkProxy {
-	_ret := C.QNetworkProxy_ApplicationProxy()
-	_goptr := newQNetworkProxy(_ret)
+	_goptr := newQNetworkProxy(C.QNetworkProxy_ApplicationProxy())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkProxy) Header(header QNetworkRequest__KnownHeaders) *qt6.QVariant {
-	_ret := C.QNetworkProxy_Header(this.h, (C.int)(header))
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QNetworkProxy_Header(this.h, (C.int)(header))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -662,8 +659,7 @@ func (this *QNetworkProxyFactory) QueryProxy(query *QNetworkProxyQuery) []QNetwo
 	_ret := make([]QNetworkProxy, int(_ma.len))
 	_outCast := (*[0xffff]*C.QNetworkProxy)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQNetworkProxy(_lv_ret)
+		_lv_goptr := newQNetworkProxy(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -687,8 +683,7 @@ func QNetworkProxyFactory_ProxyForQuery(query *QNetworkProxyQuery) []QNetworkPro
 	_ret := make([]QNetworkProxy, int(_ma.len))
 	_outCast := (*[0xffff]*C.QNetworkProxy)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQNetworkProxy(_lv_ret)
+		_lv_goptr := newQNetworkProxy(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -700,8 +695,7 @@ func QNetworkProxyFactory_SystemProxyForQuery() []QNetworkProxy {
 	_ret := make([]QNetworkProxy, int(_ma.len))
 	_outCast := (*[0xffff]*C.QNetworkProxy)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQNetworkProxy(_lv_ret)
+		_lv_goptr := newQNetworkProxy(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -717,8 +711,7 @@ func QNetworkProxyFactory_SystemProxyForQuery1(query *QNetworkProxyQuery) []QNet
 	_ret := make([]QNetworkProxy, int(_ma.len))
 	_outCast := (*[0xffff]*C.QNetworkProxy)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQNetworkProxy(_lv_ret)
+		_lv_goptr := newQNetworkProxy(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -739,7 +732,7 @@ func miqt_exec_callback_QNetworkProxyFactory_QueryProxy(self *C.QNetworkProxyFac
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQNetworkProxyQuery(unsafe.Pointer(query))
+	slotval1 := newQNetworkProxyQuery(query)
 
 	virtualReturn := gofunc(slotval1)
 	virtualReturn_CArray := (*[0xffff]*C.QNetworkProxy)(C.malloc(C.size_t(8 * len(virtualReturn))))

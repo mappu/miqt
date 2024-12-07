@@ -136,15 +136,13 @@ func (this *QMediaResource) OperatorNotEqual(other *QMediaResource) bool {
 }
 
 func (this *QMediaResource) Url() *qt.QUrl {
-	_ret := C.QMediaResource_Url(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QMediaResource_Url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaResource) Request() *network.QNetworkRequest {
-	_ret := C.QMediaResource_Request(this.h)
-	_goptr := network.UnsafeNewQNetworkRequest(unsafe.Pointer(_ret))
+	_goptr := network.UnsafeNewQNetworkRequest(unsafe.Pointer(C.QMediaResource_Request(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -242,8 +240,7 @@ func (this *QMediaResource) SetVideoBitRate(rate int) {
 }
 
 func (this *QMediaResource) Resolution() *qt.QSize {
-	_ret := C.QMediaResource_Resolution(this.h)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QMediaResource_Resolution(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

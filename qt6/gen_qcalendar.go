@@ -175,22 +175,19 @@ func (this *QCalendar) Name() string {
 }
 
 func (this *QCalendar) DateFromParts(year int, month int, day int) *QDate {
-	_ret := C.QCalendar_DateFromParts(this.h, (C.int)(year), (C.int)(month), (C.int)(day))
-	_goptr := newQDate(_ret)
+	_goptr := newQDate(C.QCalendar_DateFromParts(this.h, (C.int)(year), (C.int)(month), (C.int)(day)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCalendar) DateFromPartsWithParts(parts *QCalendar__YearMonthDay) *QDate {
-	_ret := C.QCalendar_DateFromPartsWithParts(this.h, parts.cPointer())
-	_goptr := newQDate(_ret)
+	_goptr := newQDate(C.QCalendar_DateFromPartsWithParts(this.h, parts.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCalendar) PartsFromDate(date QDate) *QCalendar__YearMonthDay {
-	_ret := C.QCalendar_PartsFromDate(this.h, date.cPointer())
-	_goptr := newQCalendar__YearMonthDay(_ret)
+	_goptr := newQCalendar__YearMonthDay(C.QCalendar_PartsFromDate(this.h, date.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

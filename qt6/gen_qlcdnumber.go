@@ -127,7 +127,7 @@ func NewQLCDNumber4(numDigits uint, parent *QWidget) *QLCDNumber {
 }
 
 func (this *QLCDNumber) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QLCDNumber_MetaObject(this.h)))
+	return newQMetaObject(C.QLCDNumber_MetaObject(this.h))
 }
 
 func (this *QLCDNumber) Metacast(param1 string) unsafe.Pointer {
@@ -190,8 +190,7 @@ func (this *QLCDNumber) IntValue() int {
 }
 
 func (this *QLCDNumber) SizeHint() *QSize {
-	_ret := C.QLCDNumber_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QLCDNumber_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -273,8 +272,7 @@ func QLCDNumber_Tr3(s string, c string, n int) string {
 
 func (this *QLCDNumber) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QLCDNumber_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QLCDNumber_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -319,7 +317,7 @@ func miqt_exec_callback_QLCDNumber_Event(self *C.QLCDNumber, cb C.intptr_t, e *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QLCDNumber{h: self}).callVirtualBase_Event, slotval1)
 
@@ -347,7 +345,7 @@ func miqt_exec_callback_QLCDNumber_PaintEvent(self *C.QLCDNumber, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQPaintEvent(param1, nil)
 
 	gofunc((&QLCDNumber{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -373,7 +371,7 @@ func miqt_exec_callback_QLCDNumber_ChangeEvent(self *C.QLCDNumber, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	gofunc((&QLCDNumber{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -399,7 +397,7 @@ func miqt_exec_callback_QLCDNumber_InitStyleOption(self *C.QLCDNumber, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStyleOptionFrame(unsafe.Pointer(option), nil)
+	slotval1 := newQStyleOptionFrame(option, nil)
 
 	gofunc((&QLCDNumber{h: self}).callVirtualBase_InitStyleOption, slotval1)
 

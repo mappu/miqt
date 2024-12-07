@@ -118,8 +118,7 @@ func (this *QAudioDecoderControl) Stop() {
 }
 
 func (this *QAudioDecoderControl) AudioFormat() *QAudioFormat {
-	_ret := C.QAudioDecoderControl_AudioFormat(this.h)
-	_goptr := newQAudioFormat(_ret)
+	_goptr := newQAudioFormat(C.QAudioDecoderControl_AudioFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -129,8 +128,7 @@ func (this *QAudioDecoderControl) SetAudioFormat(format *QAudioFormat) {
 }
 
 func (this *QAudioDecoderControl) Read() *QAudioBuffer {
-	_ret := C.QAudioDecoderControl_Read(this.h)
-	_goptr := newQAudioBuffer(_ret)
+	_goptr := newQAudioBuffer(C.QAudioDecoderControl_Read(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -182,7 +180,7 @@ func miqt_exec_callback_QAudioDecoderControl_FormatChanged(cb C.intptr_t, format
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAudioFormat(unsafe.Pointer(format))
+	slotval1 := newQAudioFormat(format)
 
 	gofunc(slotval1)
 }

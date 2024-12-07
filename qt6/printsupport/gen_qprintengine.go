@@ -92,8 +92,7 @@ func (this *QPrintEngine) SetProperty(key QPrintEngine__PrintEnginePropertyKey, 
 }
 
 func (this *QPrintEngine) Property(key QPrintEngine__PrintEnginePropertyKey) *qt6.QVariant {
-	_ret := C.QPrintEngine_Property(this.h, (C.int)(key))
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QPrintEngine_Property(this.h, (C.int)(key))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

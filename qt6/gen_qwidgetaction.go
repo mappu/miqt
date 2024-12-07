@@ -66,7 +66,7 @@ func NewQWidgetAction(parent *QObject) *QWidgetAction {
 }
 
 func (this *QWidgetAction) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QWidgetAction_MetaObject(this.h)))
+	return newQMetaObject(C.QWidgetAction_MetaObject(this.h))
 }
 
 func (this *QWidgetAction) Metacast(param1 string) unsafe.Pointer {
@@ -89,11 +89,11 @@ func (this *QWidgetAction) SetDefaultWidget(w *QWidget) {
 }
 
 func (this *QWidgetAction) DefaultWidget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QWidgetAction_DefaultWidget(this.h)), nil, nil)
+	return newQWidget(C.QWidgetAction_DefaultWidget(this.h), nil, nil)
 }
 
 func (this *QWidgetAction) RequestWidget(parent *QWidget) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QWidgetAction_RequestWidget(this.h, parent.cPointer())), nil, nil)
+	return newQWidget(C.QWidgetAction_RequestWidget(this.h, parent.cPointer()), nil, nil)
 }
 
 func (this *QWidgetAction) ReleaseWidget(widget *QWidget) {
@@ -142,7 +142,7 @@ func miqt_exec_callback_QWidgetAction_Event(self *C.QWidgetAction, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	virtualReturn := gofunc((&QWidgetAction{h: self}).callVirtualBase_Event, slotval1)
 
@@ -170,8 +170,9 @@ func miqt_exec_callback_QWidgetAction_EventFilter(self *C.QWidgetAction, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(param1))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(param2))
+	slotval1 := newQObject(param1)
+
+	slotval2 := newQEvent(param2)
 
 	virtualReturn := gofunc((&QWidgetAction{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -181,7 +182,8 @@ func miqt_exec_callback_QWidgetAction_EventFilter(self *C.QWidgetAction, cb C.in
 
 func (this *QWidgetAction) callVirtualBase_CreateWidget(parent *QWidget) *QWidget {
 
-	return UnsafeNewQWidget(unsafe.Pointer(C.QWidgetAction_virtualbase_CreateWidget(unsafe.Pointer(this.h), parent.cPointer())), nil, nil)
+	return newQWidget(C.QWidgetAction_virtualbase_CreateWidget(unsafe.Pointer(this.h), parent.cPointer()), nil, nil)
+
 }
 func (this *QWidgetAction) OnCreateWidget(slot func(super func(parent *QWidget) *QWidget, parent *QWidget) *QWidget) {
 	if !this.isSubclass {
@@ -198,7 +200,7 @@ func miqt_exec_callback_QWidgetAction_CreateWidget(self *C.QWidgetAction, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(parent), nil, nil)
+	slotval1 := newQWidget(parent, nil, nil)
 
 	virtualReturn := gofunc((&QWidgetAction{h: self}).callVirtualBase_CreateWidget, slotval1)
 
@@ -226,7 +228,7 @@ func miqt_exec_callback_QWidgetAction_DeleteWidget(self *C.QWidgetAction, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval1 := newQWidget(widget, nil, nil)
 
 	gofunc((&QWidgetAction{h: self}).callVirtualBase_DeleteWidget, slotval1)
 

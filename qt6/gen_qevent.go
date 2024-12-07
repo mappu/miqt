@@ -115,11 +115,11 @@ func NewQInputEvent2(typeVal QEvent__Type, m_dev *QInputDevice, modifiers Keyboa
 }
 
 func (this *QInputEvent) Clone() *QInputEvent {
-	return UnsafeNewQInputEvent(unsafe.Pointer(C.QInputEvent_Clone(this.h)), nil)
+	return newQInputEvent(C.QInputEvent_Clone(this.h), nil)
 }
 
 func (this *QInputEvent) Device() *QInputDevice {
-	return UnsafeNewQInputDevice(unsafe.Pointer(C.QInputEvent_Device(this.h)), nil)
+	return newQInputDevice(C.QInputEvent_Device(this.h), nil)
 }
 
 func (this *QInputEvent) DeviceType() QInputDevice__DeviceType {
@@ -144,7 +144,8 @@ func (this *QInputEvent) SetTimestamp(timestamp uint64) {
 
 func (this *QInputEvent) callVirtualBase_Clone() *QInputEvent {
 
-	return UnsafeNewQInputEvent(unsafe.Pointer(C.QInputEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQInputEvent(C.QInputEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QInputEvent) OnClone(slot func(super func() *QInputEvent) *QInputEvent) {
 	if !this.isSubclass {
@@ -314,11 +315,11 @@ func NewQPointerEvent3(typeVal QEvent__Type, dev *QPointingDevice, modifiers Key
 }
 
 func (this *QPointerEvent) Clone() *QPointerEvent {
-	return UnsafeNewQPointerEvent(unsafe.Pointer(C.QPointerEvent_Clone(this.h)), nil, nil)
+	return newQPointerEvent(C.QPointerEvent_Clone(this.h), nil, nil)
 }
 
 func (this *QPointerEvent) PointingDevice() *QPointingDevice {
-	return UnsafeNewQPointingDevice(unsafe.Pointer(C.QPointerEvent_PointingDevice(this.h)), nil, nil)
+	return newQPointingDevice(C.QPointerEvent_PointingDevice(this.h), nil, nil)
 }
 
 func (this *QPointerEvent) PointerType() QPointingDevice__PointerType {
@@ -334,7 +335,7 @@ func (this *QPointerEvent) PointCount() int64 {
 }
 
 func (this *QPointerEvent) Point(i int64) *QEventPoint {
-	return UnsafeNewQEventPoint(unsafe.Pointer(C.QPointerEvent_Point(this.h, (C.ptrdiff_t)(i))))
+	return newQEventPoint(C.QPointerEvent_Point(this.h, (C.ptrdiff_t)(i)))
 }
 
 func (this *QPointerEvent) Points() []QEventPoint {
@@ -342,8 +343,7 @@ func (this *QPointerEvent) Points() []QEventPoint {
 	_ret := make([]QEventPoint, int(_ma.len))
 	_outCast := (*[0xffff]*C.QEventPoint)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQEventPoint(_lv_ret)
+		_lv_goptr := newQEventPoint(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -351,7 +351,7 @@ func (this *QPointerEvent) Points() []QEventPoint {
 }
 
 func (this *QPointerEvent) PointById(id int) *QEventPoint {
-	return UnsafeNewQEventPoint(unsafe.Pointer(C.QPointerEvent_PointById(this.h, (C.int)(id))))
+	return newQEventPoint(C.QPointerEvent_PointById(this.h, (C.int)(id)))
 }
 
 func (this *QPointerEvent) AllPointsGrabbed() bool {
@@ -379,7 +379,7 @@ func (this *QPointerEvent) SetAccepted(accepted bool) {
 }
 
 func (this *QPointerEvent) ExclusiveGrabber(point *QEventPoint) *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QPointerEvent_ExclusiveGrabber(this.h, point.cPointer())))
+	return newQObject(C.QPointerEvent_ExclusiveGrabber(this.h, point.cPointer()))
 }
 
 func (this *QPointerEvent) SetExclusiveGrabber(point *QEventPoint, exclusiveGrabber *QObject) {
@@ -400,7 +400,8 @@ func (this *QPointerEvent) RemovePassiveGrabber(point *QEventPoint, grabber *QOb
 
 func (this *QPointerEvent) callVirtualBase_Clone() *QPointerEvent {
 
-	return UnsafeNewQPointerEvent(unsafe.Pointer(C.QPointerEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil, nil)
+	return newQPointerEvent(C.QPointerEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil, nil)
+
 }
 func (this *QPointerEvent) OnClone(slot func(super func() *QPointerEvent) *QPointerEvent) {
 	if !this.isSubclass {
@@ -603,7 +604,7 @@ func UnsafeNewQSinglePointEvent(h unsafe.Pointer, h_QPointerEvent unsafe.Pointer
 }
 
 func (this *QSinglePointEvent) Clone() *QSinglePointEvent {
-	return UnsafeNewQSinglePointEvent(unsafe.Pointer(C.QSinglePointEvent_Clone(this.h)), nil, nil, nil)
+	return newQSinglePointEvent(C.QSinglePointEvent_Clone(this.h), nil, nil, nil)
 }
 
 func (this *QSinglePointEvent) Button() MouseButton {
@@ -615,22 +616,19 @@ func (this *QSinglePointEvent) Buttons() MouseButton {
 }
 
 func (this *QSinglePointEvent) Position() *QPointF {
-	_ret := C.QSinglePointEvent_Position(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QSinglePointEvent_Position(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSinglePointEvent) ScenePosition() *QPointF {
-	_ret := C.QSinglePointEvent_ScenePosition(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QSinglePointEvent_ScenePosition(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSinglePointEvent) GlobalPosition() *QPointF {
-	_ret := C.QSinglePointEvent_GlobalPosition(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QSinglePointEvent_GlobalPosition(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -648,7 +646,7 @@ func (this *QSinglePointEvent) IsEndEvent() bool {
 }
 
 func (this *QSinglePointEvent) ExclusivePointGrabber() *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QSinglePointEvent_ExclusivePointGrabber(this.h)))
+	return newQObject(C.QSinglePointEvent_ExclusivePointGrabber(this.h))
 }
 
 func (this *QSinglePointEvent) SetExclusivePointGrabber(exclusiveGrabber *QObject) {
@@ -737,19 +735,17 @@ func NewQEnterEvent2(localPos *QPointF, scenePos *QPointF, globalPos *QPointF, d
 }
 
 func (this *QEnterEvent) Clone() *QEnterEvent {
-	return UnsafeNewQEnterEvent(unsafe.Pointer(C.QEnterEvent_Clone(this.h)), nil, nil, nil, nil)
+	return newQEnterEvent(C.QEnterEvent_Clone(this.h), nil, nil, nil, nil)
 }
 
 func (this *QEnterEvent) Pos() *QPoint {
-	_ret := C.QEnterEvent_Pos(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QEnterEvent_Pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QEnterEvent) GlobalPos() *QPoint {
-	_ret := C.QEnterEvent_GlobalPos(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QEnterEvent_GlobalPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -771,29 +767,27 @@ func (this *QEnterEvent) GlobalY() int {
 }
 
 func (this *QEnterEvent) LocalPos() *QPointF {
-	_ret := C.QEnterEvent_LocalPos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QEnterEvent_LocalPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QEnterEvent) WindowPos() *QPointF {
-	_ret := C.QEnterEvent_WindowPos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QEnterEvent_WindowPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QEnterEvent) ScreenPos() *QPointF {
-	_ret := C.QEnterEvent_ScreenPos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QEnterEvent_ScreenPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QEnterEvent) callVirtualBase_Clone() *QEnterEvent {
 
-	return UnsafeNewQEnterEvent(unsafe.Pointer(C.QEnterEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil, nil, nil, nil)
+	return newQEnterEvent(C.QEnterEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil, nil, nil, nil)
+
 }
 func (this *QEnterEvent) OnClone(slot func(super func() *QEnterEvent) *QEnterEvent) {
 	if !this.isSubclass {
@@ -1056,19 +1050,17 @@ func NewQMouseEvent8(typeVal QEvent__Type, localPos *QPointF, scenePos *QPointF,
 }
 
 func (this *QMouseEvent) Clone() *QMouseEvent {
-	return UnsafeNewQMouseEvent(unsafe.Pointer(C.QMouseEvent_Clone(this.h)), nil, nil, nil, nil)
+	return newQMouseEvent(C.QMouseEvent_Clone(this.h), nil, nil, nil, nil)
 }
 
 func (this *QMouseEvent) Pos() *QPoint {
-	_ret := C.QMouseEvent_Pos(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QMouseEvent_Pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMouseEvent) GlobalPos() *QPoint {
-	_ret := C.QMouseEvent_GlobalPos(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QMouseEvent_GlobalPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1090,22 +1082,19 @@ func (this *QMouseEvent) GlobalY() int {
 }
 
 func (this *QMouseEvent) LocalPos() *QPointF {
-	_ret := C.QMouseEvent_LocalPos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QMouseEvent_LocalPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMouseEvent) WindowPos() *QPointF {
-	_ret := C.QMouseEvent_WindowPos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QMouseEvent_WindowPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMouseEvent) ScreenPos() *QPointF {
-	_ret := C.QMouseEvent_ScreenPos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QMouseEvent_ScreenPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1120,7 +1109,8 @@ func (this *QMouseEvent) Flags() MouseEventFlag {
 
 func (this *QMouseEvent) callVirtualBase_Clone() *QMouseEvent {
 
-	return UnsafeNewQMouseEvent(unsafe.Pointer(C.QMouseEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil, nil, nil, nil)
+	return newQMouseEvent(C.QMouseEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil, nil, nil, nil)
+
 }
 func (this *QMouseEvent) OnClone(slot func(super func() *QMouseEvent) *QMouseEvent) {
 	if !this.isSubclass {
@@ -1355,19 +1345,17 @@ func NewQHoverEvent6(typeVal QEvent__Type, pos *QPointF, oldPos *QPointF, modifi
 }
 
 func (this *QHoverEvent) Clone() *QHoverEvent {
-	return UnsafeNewQHoverEvent(unsafe.Pointer(C.QHoverEvent_Clone(this.h)), nil, nil, nil, nil)
+	return newQHoverEvent(C.QHoverEvent_Clone(this.h), nil, nil, nil, nil)
 }
 
 func (this *QHoverEvent) Pos() *QPoint {
-	_ret := C.QHoverEvent_Pos(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QHoverEvent_Pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QHoverEvent) PosF() *QPointF {
-	_ret := C.QHoverEvent_PosF(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QHoverEvent_PosF(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1377,22 +1365,21 @@ func (this *QHoverEvent) IsUpdateEvent() bool {
 }
 
 func (this *QHoverEvent) OldPos() *QPoint {
-	_ret := C.QHoverEvent_OldPos(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QHoverEvent_OldPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QHoverEvent) OldPosF() *QPointF {
-	_ret := C.QHoverEvent_OldPosF(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QHoverEvent_OldPosF(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QHoverEvent) callVirtualBase_Clone() *QHoverEvent {
 
-	return UnsafeNewQHoverEvent(unsafe.Pointer(C.QHoverEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil, nil, nil, nil)
+	return newQHoverEvent(C.QHoverEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil, nil, nil, nil)
+
 }
 func (this *QHoverEvent) OnClone(slot func(super func() *QHoverEvent) *QHoverEvent) {
 	if !this.isSubclass {
@@ -1585,19 +1572,17 @@ func NewQWheelEvent3(pos *QPointF, globalPos *QPointF, pixelDelta QPoint, angleD
 }
 
 func (this *QWheelEvent) Clone() *QWheelEvent {
-	return UnsafeNewQWheelEvent(unsafe.Pointer(C.QWheelEvent_Clone(this.h)), nil, nil, nil, nil)
+	return newQWheelEvent(C.QWheelEvent_Clone(this.h), nil, nil, nil, nil)
 }
 
 func (this *QWheelEvent) PixelDelta() *QPoint {
-	_ret := C.QWheelEvent_PixelDelta(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QWheelEvent_PixelDelta(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWheelEvent) AngleDelta() *QPoint {
-	_ret := C.QWheelEvent_AngleDelta(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QWheelEvent_AngleDelta(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1636,7 +1621,8 @@ func (this *QWheelEvent) Source() MouseEventSource {
 
 func (this *QWheelEvent) callVirtualBase_Clone() *QWheelEvent {
 
-	return UnsafeNewQWheelEvent(unsafe.Pointer(C.QWheelEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil, nil, nil, nil)
+	return newQWheelEvent(C.QWheelEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil, nil, nil, nil)
+
 }
 func (this *QWheelEvent) OnClone(slot func(super func() *QWheelEvent) *QWheelEvent) {
 	if !this.isSubclass {
@@ -1801,33 +1787,29 @@ func NewQTabletEvent(t QEvent__Type, device *QPointingDevice, pos *QPointF, glob
 }
 
 func (this *QTabletEvent) Clone() *QTabletEvent {
-	return UnsafeNewQTabletEvent(unsafe.Pointer(C.QTabletEvent_Clone(this.h)), nil, nil, nil, nil)
+	return newQTabletEvent(C.QTabletEvent_Clone(this.h), nil, nil, nil, nil)
 }
 
 func (this *QTabletEvent) Pos() *QPoint {
-	_ret := C.QTabletEvent_Pos(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QTabletEvent_Pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTabletEvent) GlobalPos() *QPoint {
-	_ret := C.QTabletEvent_GlobalPos(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QTabletEvent_GlobalPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTabletEvent) PosF() *QPointF {
-	_ret := C.QTabletEvent_PosF(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QTabletEvent_PosF(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTabletEvent) GlobalPosF() *QPointF {
-	_ret := C.QTabletEvent_GlobalPosF(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QTabletEvent_GlobalPosF(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1886,7 +1868,8 @@ func (this *QTabletEvent) YTilt() float64 {
 
 func (this *QTabletEvent) callVirtualBase_Clone() *QTabletEvent {
 
-	return UnsafeNewQTabletEvent(unsafe.Pointer(C.QTabletEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil, nil, nil, nil)
+	return newQTabletEvent(C.QTabletEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil, nil, nil, nil)
+
 }
 func (this *QTabletEvent) OnClone(slot func(super func() *QTabletEvent) *QTabletEvent) {
 	if !this.isSubclass {
@@ -2079,7 +2062,7 @@ func NewQNativeGestureEvent3(typeVal NativeGestureType, dev *QPointingDevice, fi
 }
 
 func (this *QNativeGestureEvent) Clone() *QNativeGestureEvent {
-	return UnsafeNewQNativeGestureEvent(unsafe.Pointer(C.QNativeGestureEvent_Clone(this.h)), nil, nil, nil, nil)
+	return newQNativeGestureEvent(C.QNativeGestureEvent_Clone(this.h), nil, nil, nil, nil)
 }
 
 func (this *QNativeGestureEvent) GestureType() NativeGestureType {
@@ -2095,50 +2078,45 @@ func (this *QNativeGestureEvent) Value() float64 {
 }
 
 func (this *QNativeGestureEvent) Delta() *QPointF {
-	_ret := C.QNativeGestureEvent_Delta(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QNativeGestureEvent_Delta(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNativeGestureEvent) Pos() *QPoint {
-	_ret := C.QNativeGestureEvent_Pos(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QNativeGestureEvent_Pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNativeGestureEvent) GlobalPos() *QPoint {
-	_ret := C.QNativeGestureEvent_GlobalPos(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QNativeGestureEvent_GlobalPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNativeGestureEvent) LocalPos() *QPointF {
-	_ret := C.QNativeGestureEvent_LocalPos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QNativeGestureEvent_LocalPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNativeGestureEvent) WindowPos() *QPointF {
-	_ret := C.QNativeGestureEvent_WindowPos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QNativeGestureEvent_WindowPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNativeGestureEvent) ScreenPos() *QPointF {
-	_ret := C.QNativeGestureEvent_ScreenPos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QNativeGestureEvent_ScreenPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNativeGestureEvent) callVirtualBase_Clone() *QNativeGestureEvent {
 
-	return UnsafeNewQNativeGestureEvent(unsafe.Pointer(C.QNativeGestureEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil, nil, nil, nil)
+	return newQNativeGestureEvent(C.QNativeGestureEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil, nil, nil, nil)
+
 }
 func (this *QNativeGestureEvent) OnClone(slot func(super func() *QNativeGestureEvent) *QNativeGestureEvent) {
 	if !this.isSubclass {
@@ -2425,7 +2403,7 @@ func NewQKeyEvent9(typeVal QEvent__Type, key int, modifiers KeyboardModifier, na
 }
 
 func (this *QKeyEvent) Clone() *QKeyEvent {
-	return UnsafeNewQKeyEvent(unsafe.Pointer(C.QKeyEvent_Clone(this.h)), nil, nil)
+	return newQKeyEvent(C.QKeyEvent_Clone(this.h), nil, nil)
 }
 
 func (this *QKeyEvent) Key() int {
@@ -2441,8 +2419,7 @@ func (this *QKeyEvent) Modifiers() KeyboardModifier {
 }
 
 func (this *QKeyEvent) KeyCombination() *QKeyCombination {
-	_ret := C.QKeyEvent_KeyCombination(this.h)
-	_goptr := newQKeyCombination(_ret)
+	_goptr := newQKeyCombination(C.QKeyEvent_KeyCombination(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -2476,7 +2453,8 @@ func (this *QKeyEvent) NativeModifiers() uint {
 
 func (this *QKeyEvent) callVirtualBase_Clone() *QKeyEvent {
 
-	return UnsafeNewQKeyEvent(unsafe.Pointer(C.QKeyEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil, nil)
+	return newQKeyEvent(C.QKeyEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil, nil)
+
 }
 func (this *QKeyEvent) OnClone(slot func(super func() *QKeyEvent) *QKeyEvent) {
 	if !this.isSubclass {
@@ -2600,7 +2578,7 @@ func NewQFocusEvent2(typeVal QEvent__Type, reason FocusReason) *QFocusEvent {
 }
 
 func (this *QFocusEvent) Clone() *QFocusEvent {
-	return UnsafeNewQFocusEvent(unsafe.Pointer(C.QFocusEvent_Clone(this.h)), nil)
+	return newQFocusEvent(C.QFocusEvent_Clone(this.h), nil)
 }
 
 func (this *QFocusEvent) GotFocus() bool {
@@ -2617,7 +2595,8 @@ func (this *QFocusEvent) Reason() FocusReason {
 
 func (this *QFocusEvent) callVirtualBase_Clone() *QFocusEvent {
 
-	return UnsafeNewQFocusEvent(unsafe.Pointer(C.QFocusEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQFocusEvent(C.QFocusEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QFocusEvent) OnClone(slot func(super func() *QFocusEvent) *QFocusEvent) {
 	if !this.isSubclass {
@@ -2741,20 +2720,21 @@ func NewQPaintEvent2(paintRect *QRect) *QPaintEvent {
 }
 
 func (this *QPaintEvent) Clone() *QPaintEvent {
-	return UnsafeNewQPaintEvent(unsafe.Pointer(C.QPaintEvent_Clone(this.h)), nil)
+	return newQPaintEvent(C.QPaintEvent_Clone(this.h), nil)
 }
 
 func (this *QPaintEvent) Rect() *QRect {
-	return UnsafeNewQRect(unsafe.Pointer(C.QPaintEvent_Rect(this.h)))
+	return newQRect(C.QPaintEvent_Rect(this.h))
 }
 
 func (this *QPaintEvent) Region() *QRegion {
-	return UnsafeNewQRegion(unsafe.Pointer(C.QPaintEvent_Region(this.h)))
+	return newQRegion(C.QPaintEvent_Region(this.h))
 }
 
 func (this *QPaintEvent) callVirtualBase_Clone() *QPaintEvent {
 
-	return UnsafeNewQPaintEvent(unsafe.Pointer(C.QPaintEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQPaintEvent(C.QPaintEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QPaintEvent) OnClone(slot func(super func() *QPaintEvent) *QPaintEvent) {
 	if !this.isSubclass {
@@ -2867,20 +2847,21 @@ func NewQMoveEvent(pos *QPoint, oldPos *QPoint) *QMoveEvent {
 }
 
 func (this *QMoveEvent) Clone() *QMoveEvent {
-	return UnsafeNewQMoveEvent(unsafe.Pointer(C.QMoveEvent_Clone(this.h)), nil)
+	return newQMoveEvent(C.QMoveEvent_Clone(this.h), nil)
 }
 
 func (this *QMoveEvent) Pos() *QPoint {
-	return UnsafeNewQPoint(unsafe.Pointer(C.QMoveEvent_Pos(this.h)))
+	return newQPoint(C.QMoveEvent_Pos(this.h))
 }
 
 func (this *QMoveEvent) OldPos() *QPoint {
-	return UnsafeNewQPoint(unsafe.Pointer(C.QMoveEvent_OldPos(this.h)))
+	return newQPoint(C.QMoveEvent_OldPos(this.h))
 }
 
 func (this *QMoveEvent) callVirtualBase_Clone() *QMoveEvent {
 
-	return UnsafeNewQMoveEvent(unsafe.Pointer(C.QMoveEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQMoveEvent(C.QMoveEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QMoveEvent) OnClone(slot func(super func() *QMoveEvent) *QMoveEvent) {
 	if !this.isSubclass {
@@ -2993,16 +2974,17 @@ func NewQExposeEvent(m_region *QRegion) *QExposeEvent {
 }
 
 func (this *QExposeEvent) Clone() *QExposeEvent {
-	return UnsafeNewQExposeEvent(unsafe.Pointer(C.QExposeEvent_Clone(this.h)), nil)
+	return newQExposeEvent(C.QExposeEvent_Clone(this.h), nil)
 }
 
 func (this *QExposeEvent) Region() *QRegion {
-	return UnsafeNewQRegion(unsafe.Pointer(C.QExposeEvent_Region(this.h)))
+	return newQRegion(C.QExposeEvent_Region(this.h))
 }
 
 func (this *QExposeEvent) callVirtualBase_Clone() *QExposeEvent {
 
-	return UnsafeNewQExposeEvent(unsafe.Pointer(C.QExposeEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQExposeEvent(C.QExposeEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QExposeEvent) OnClone(slot func(super func() *QExposeEvent) *QExposeEvent) {
 	if !this.isSubclass {
@@ -3115,7 +3097,7 @@ func NewQPlatformSurfaceEvent(surfaceEventType QPlatformSurfaceEvent__SurfaceEve
 }
 
 func (this *QPlatformSurfaceEvent) Clone() *QPlatformSurfaceEvent {
-	return UnsafeNewQPlatformSurfaceEvent(unsafe.Pointer(C.QPlatformSurfaceEvent_Clone(this.h)), nil)
+	return newQPlatformSurfaceEvent(C.QPlatformSurfaceEvent_Clone(this.h), nil)
 }
 
 func (this *QPlatformSurfaceEvent) SurfaceEventType() QPlatformSurfaceEvent__SurfaceEventType {
@@ -3124,7 +3106,8 @@ func (this *QPlatformSurfaceEvent) SurfaceEventType() QPlatformSurfaceEvent__Sur
 
 func (this *QPlatformSurfaceEvent) callVirtualBase_Clone() *QPlatformSurfaceEvent {
 
-	return UnsafeNewQPlatformSurfaceEvent(unsafe.Pointer(C.QPlatformSurfaceEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQPlatformSurfaceEvent(C.QPlatformSurfaceEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QPlatformSurfaceEvent) OnClone(slot func(super func() *QPlatformSurfaceEvent) *QPlatformSurfaceEvent) {
 	if !this.isSubclass {
@@ -3237,20 +3220,21 @@ func NewQResizeEvent(size *QSize, oldSize *QSize) *QResizeEvent {
 }
 
 func (this *QResizeEvent) Clone() *QResizeEvent {
-	return UnsafeNewQResizeEvent(unsafe.Pointer(C.QResizeEvent_Clone(this.h)), nil)
+	return newQResizeEvent(C.QResizeEvent_Clone(this.h), nil)
 }
 
 func (this *QResizeEvent) Size() *QSize {
-	return UnsafeNewQSize(unsafe.Pointer(C.QResizeEvent_Size(this.h)))
+	return newQSize(C.QResizeEvent_Size(this.h))
 }
 
 func (this *QResizeEvent) OldSize() *QSize {
-	return UnsafeNewQSize(unsafe.Pointer(C.QResizeEvent_OldSize(this.h)))
+	return newQSize(C.QResizeEvent_OldSize(this.h))
 }
 
 func (this *QResizeEvent) callVirtualBase_Clone() *QResizeEvent {
 
-	return UnsafeNewQResizeEvent(unsafe.Pointer(C.QResizeEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQResizeEvent(C.QResizeEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QResizeEvent) OnClone(slot func(super func() *QResizeEvent) *QResizeEvent) {
 	if !this.isSubclass {
@@ -3363,12 +3347,13 @@ func NewQCloseEvent() *QCloseEvent {
 }
 
 func (this *QCloseEvent) Clone() *QCloseEvent {
-	return UnsafeNewQCloseEvent(unsafe.Pointer(C.QCloseEvent_Clone(this.h)), nil)
+	return newQCloseEvent(C.QCloseEvent_Clone(this.h), nil)
 }
 
 func (this *QCloseEvent) callVirtualBase_Clone() *QCloseEvent {
 
-	return UnsafeNewQCloseEvent(unsafe.Pointer(C.QCloseEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQCloseEvent(C.QCloseEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QCloseEvent) OnClone(slot func(super func() *QCloseEvent) *QCloseEvent) {
 	if !this.isSubclass {
@@ -3481,12 +3466,13 @@ func NewQIconDragEvent() *QIconDragEvent {
 }
 
 func (this *QIconDragEvent) Clone() *QIconDragEvent {
-	return UnsafeNewQIconDragEvent(unsafe.Pointer(C.QIconDragEvent_Clone(this.h)), nil)
+	return newQIconDragEvent(C.QIconDragEvent_Clone(this.h), nil)
 }
 
 func (this *QIconDragEvent) callVirtualBase_Clone() *QIconDragEvent {
 
-	return UnsafeNewQIconDragEvent(unsafe.Pointer(C.QIconDragEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQIconDragEvent(C.QIconDragEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QIconDragEvent) OnClone(slot func(super func() *QIconDragEvent) *QIconDragEvent) {
 	if !this.isSubclass {
@@ -3599,12 +3585,13 @@ func NewQShowEvent() *QShowEvent {
 }
 
 func (this *QShowEvent) Clone() *QShowEvent {
-	return UnsafeNewQShowEvent(unsafe.Pointer(C.QShowEvent_Clone(this.h)), nil)
+	return newQShowEvent(C.QShowEvent_Clone(this.h), nil)
 }
 
 func (this *QShowEvent) callVirtualBase_Clone() *QShowEvent {
 
-	return UnsafeNewQShowEvent(unsafe.Pointer(C.QShowEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQShowEvent(C.QShowEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QShowEvent) OnClone(slot func(super func() *QShowEvent) *QShowEvent) {
 	if !this.isSubclass {
@@ -3717,12 +3704,13 @@ func NewQHideEvent() *QHideEvent {
 }
 
 func (this *QHideEvent) Clone() *QHideEvent {
-	return UnsafeNewQHideEvent(unsafe.Pointer(C.QHideEvent_Clone(this.h)), nil)
+	return newQHideEvent(C.QHideEvent_Clone(this.h), nil)
 }
 
 func (this *QHideEvent) callVirtualBase_Clone() *QHideEvent {
 
-	return UnsafeNewQHideEvent(unsafe.Pointer(C.QHideEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQHideEvent(C.QHideEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QHideEvent) OnClone(slot func(super func() *QHideEvent) *QHideEvent) {
 	if !this.isSubclass {
@@ -3860,7 +3848,7 @@ func NewQContextMenuEvent3(reason QContextMenuEvent__Reason, pos *QPoint, global
 }
 
 func (this *QContextMenuEvent) Clone() *QContextMenuEvent {
-	return UnsafeNewQContextMenuEvent(unsafe.Pointer(C.QContextMenuEvent_Clone(this.h)), nil, nil)
+	return newQContextMenuEvent(C.QContextMenuEvent_Clone(this.h), nil, nil)
 }
 
 func (this *QContextMenuEvent) X() int {
@@ -3880,11 +3868,11 @@ func (this *QContextMenuEvent) GlobalY() int {
 }
 
 func (this *QContextMenuEvent) Pos() *QPoint {
-	return UnsafeNewQPoint(unsafe.Pointer(C.QContextMenuEvent_Pos(this.h)))
+	return newQPoint(C.QContextMenuEvent_Pos(this.h))
 }
 
 func (this *QContextMenuEvent) GlobalPos() *QPoint {
-	return UnsafeNewQPoint(unsafe.Pointer(C.QContextMenuEvent_GlobalPos(this.h)))
+	return newQPoint(C.QContextMenuEvent_GlobalPos(this.h))
 }
 
 func (this *QContextMenuEvent) Reason() QContextMenuEvent__Reason {
@@ -3893,7 +3881,8 @@ func (this *QContextMenuEvent) Reason() QContextMenuEvent__Reason {
 
 func (this *QContextMenuEvent) callVirtualBase_Clone() *QContextMenuEvent {
 
-	return UnsafeNewQContextMenuEvent(unsafe.Pointer(C.QContextMenuEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil, nil)
+	return newQContextMenuEvent(C.QContextMenuEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil, nil)
+
 }
 func (this *QContextMenuEvent) OnClone(slot func(super func() *QContextMenuEvent) *QContextMenuEvent) {
 	if !this.isSubclass {
@@ -4027,7 +4016,7 @@ func NewQInputMethodEvent2(preeditText string, attributes []QInputMethodEvent__A
 }
 
 func (this *QInputMethodEvent) Clone() *QInputMethodEvent {
-	return UnsafeNewQInputMethodEvent(unsafe.Pointer(C.QInputMethodEvent_Clone(this.h)), nil)
+	return newQInputMethodEvent(C.QInputMethodEvent_Clone(this.h), nil)
 }
 
 func (this *QInputMethodEvent) SetCommitString(commitString string) {
@@ -4043,8 +4032,7 @@ func (this *QInputMethodEvent) Attributes() []QInputMethodEvent__Attribute {
 	_ret := make([]QInputMethodEvent__Attribute, int(_ma.len))
 	_outCast := (*[0xffff]*C.QInputMethodEvent__Attribute)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQInputMethodEvent__Attribute(_lv_ret)
+		_lv_goptr := newQInputMethodEvent__Attribute(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -4091,7 +4079,8 @@ func (this *QInputMethodEvent) SetCommitString3(commitString string, replaceFrom
 
 func (this *QInputMethodEvent) callVirtualBase_Clone() *QInputMethodEvent {
 
-	return UnsafeNewQInputMethodEvent(unsafe.Pointer(C.QInputMethodEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQInputMethodEvent(C.QInputMethodEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QInputMethodEvent) OnClone(slot func(super func() *QInputMethodEvent) *QInputMethodEvent) {
 	if !this.isSubclass {
@@ -4204,7 +4193,7 @@ func NewQInputMethodQueryEvent(queries InputMethodQuery) *QInputMethodQueryEvent
 }
 
 func (this *QInputMethodQueryEvent) Clone() *QInputMethodQueryEvent {
-	return UnsafeNewQInputMethodQueryEvent(unsafe.Pointer(C.QInputMethodQueryEvent_Clone(this.h)), nil)
+	return newQInputMethodQueryEvent(C.QInputMethodQueryEvent_Clone(this.h), nil)
 }
 
 func (this *QInputMethodQueryEvent) Queries() InputMethodQuery {
@@ -4216,15 +4205,15 @@ func (this *QInputMethodQueryEvent) SetValue(query InputMethodQuery, value *QVar
 }
 
 func (this *QInputMethodQueryEvent) Value(query InputMethodQuery) *QVariant {
-	_ret := C.QInputMethodQueryEvent_Value(this.h, (C.int)(query))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QInputMethodQueryEvent_Value(this.h, (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QInputMethodQueryEvent) callVirtualBase_Clone() *QInputMethodQueryEvent {
 
-	return UnsafeNewQInputMethodQueryEvent(unsafe.Pointer(C.QInputMethodQueryEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQInputMethodQueryEvent(C.QInputMethodQueryEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QInputMethodQueryEvent) OnClone(slot func(super func() *QInputMethodQueryEvent) *QInputMethodQueryEvent) {
 	if !this.isSubclass {
@@ -4348,19 +4337,17 @@ func NewQDropEvent2(pos *QPointF, actions DropAction, data *QMimeData, buttons M
 }
 
 func (this *QDropEvent) Clone() *QDropEvent {
-	return UnsafeNewQDropEvent(unsafe.Pointer(C.QDropEvent_Clone(this.h)), nil)
+	return newQDropEvent(C.QDropEvent_Clone(this.h), nil)
 }
 
 func (this *QDropEvent) Pos() *QPoint {
-	_ret := C.QDropEvent_Pos(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QDropEvent_Pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDropEvent) PosF() *QPointF {
-	_ret := C.QDropEvent_PosF(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QDropEvent_PosF(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -4374,8 +4361,7 @@ func (this *QDropEvent) KeyboardModifiers() KeyboardModifier {
 }
 
 func (this *QDropEvent) Position() *QPointF {
-	_ret := C.QDropEvent_Position(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QDropEvent_Position(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -4409,16 +4395,17 @@ func (this *QDropEvent) SetDropAction(action DropAction) {
 }
 
 func (this *QDropEvent) Source() *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QDropEvent_Source(this.h)))
+	return newQObject(C.QDropEvent_Source(this.h))
 }
 
 func (this *QDropEvent) MimeData() *QMimeData {
-	return UnsafeNewQMimeData(unsafe.Pointer(C.QDropEvent_MimeData(this.h)), nil)
+	return newQMimeData(C.QDropEvent_MimeData(this.h), nil)
 }
 
 func (this *QDropEvent) callVirtualBase_Clone() *QDropEvent {
 
-	return UnsafeNewQDropEvent(unsafe.Pointer(C.QDropEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQDropEvent(C.QDropEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QDropEvent) OnClone(slot func(super func() *QDropEvent) *QDropEvent) {
 	if !this.isSubclass {
@@ -4544,12 +4531,11 @@ func NewQDragMoveEvent2(pos *QPoint, actions DropAction, data *QMimeData, button
 }
 
 func (this *QDragMoveEvent) Clone() *QDragMoveEvent {
-	return UnsafeNewQDragMoveEvent(unsafe.Pointer(C.QDragMoveEvent_Clone(this.h)), nil, nil)
+	return newQDragMoveEvent(C.QDragMoveEvent_Clone(this.h), nil, nil)
 }
 
 func (this *QDragMoveEvent) AnswerRect() *QRect {
-	_ret := C.QDragMoveEvent_AnswerRect(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QDragMoveEvent_AnswerRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -4572,7 +4558,8 @@ func (this *QDragMoveEvent) IgnoreWithQRect(r *QRect) {
 
 func (this *QDragMoveEvent) callVirtualBase_Clone() *QDragMoveEvent {
 
-	return UnsafeNewQDragMoveEvent(unsafe.Pointer(C.QDragMoveEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil, nil)
+	return newQDragMoveEvent(C.QDragMoveEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil, nil)
+
 }
 func (this *QDragMoveEvent) OnClone(slot func(super func() *QDragMoveEvent) *QDragMoveEvent) {
 	if !this.isSubclass {
@@ -4661,12 +4648,13 @@ func NewQDragEnterEvent(pos *QPoint, actions DropAction, data *QMimeData, button
 }
 
 func (this *QDragEnterEvent) Clone() *QDragEnterEvent {
-	return UnsafeNewQDragEnterEvent(unsafe.Pointer(C.QDragEnterEvent_Clone(this.h)), nil, nil, nil)
+	return newQDragEnterEvent(C.QDragEnterEvent_Clone(this.h), nil, nil, nil)
 }
 
 func (this *QDragEnterEvent) callVirtualBase_Clone() *QDragEnterEvent {
 
-	return UnsafeNewQDragEnterEvent(unsafe.Pointer(C.QDragEnterEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil, nil, nil)
+	return newQDragEnterEvent(C.QDragEnterEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil, nil, nil)
+
 }
 func (this *QDragEnterEvent) OnClone(slot func(super func() *QDragEnterEvent) *QDragEnterEvent) {
 	if !this.isSubclass {
@@ -4753,12 +4741,13 @@ func NewQDragLeaveEvent() *QDragLeaveEvent {
 }
 
 func (this *QDragLeaveEvent) Clone() *QDragLeaveEvent {
-	return UnsafeNewQDragLeaveEvent(unsafe.Pointer(C.QDragLeaveEvent_Clone(this.h)), nil)
+	return newQDragLeaveEvent(C.QDragLeaveEvent_Clone(this.h), nil)
 }
 
 func (this *QDragLeaveEvent) callVirtualBase_Clone() *QDragLeaveEvent {
 
-	return UnsafeNewQDragLeaveEvent(unsafe.Pointer(C.QDragLeaveEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQDragLeaveEvent(C.QDragLeaveEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QDragLeaveEvent) OnClone(slot func(super func() *QDragLeaveEvent) *QDragLeaveEvent) {
 	if !this.isSubclass {
@@ -4871,7 +4860,7 @@ func NewQHelpEvent(typeVal QEvent__Type, pos *QPoint, globalPos *QPoint) *QHelpE
 }
 
 func (this *QHelpEvent) Clone() *QHelpEvent {
-	return UnsafeNewQHelpEvent(unsafe.Pointer(C.QHelpEvent_Clone(this.h)), nil)
+	return newQHelpEvent(C.QHelpEvent_Clone(this.h), nil)
 }
 
 func (this *QHelpEvent) X() int {
@@ -4891,16 +4880,17 @@ func (this *QHelpEvent) GlobalY() int {
 }
 
 func (this *QHelpEvent) Pos() *QPoint {
-	return UnsafeNewQPoint(unsafe.Pointer(C.QHelpEvent_Pos(this.h)))
+	return newQPoint(C.QHelpEvent_Pos(this.h))
 }
 
 func (this *QHelpEvent) GlobalPos() *QPoint {
-	return UnsafeNewQPoint(unsafe.Pointer(C.QHelpEvent_GlobalPos(this.h)))
+	return newQPoint(C.QHelpEvent_GlobalPos(this.h))
 }
 
 func (this *QHelpEvent) callVirtualBase_Clone() *QHelpEvent {
 
-	return UnsafeNewQHelpEvent(unsafe.Pointer(C.QHelpEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQHelpEvent(C.QHelpEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QHelpEvent) OnClone(slot func(super func() *QHelpEvent) *QHelpEvent) {
 	if !this.isSubclass {
@@ -5017,7 +5007,7 @@ func NewQStatusTipEvent(tip string) *QStatusTipEvent {
 }
 
 func (this *QStatusTipEvent) Clone() *QStatusTipEvent {
-	return UnsafeNewQStatusTipEvent(unsafe.Pointer(C.QStatusTipEvent_Clone(this.h)), nil)
+	return newQStatusTipEvent(C.QStatusTipEvent_Clone(this.h), nil)
 }
 
 func (this *QStatusTipEvent) Tip() string {
@@ -5029,7 +5019,8 @@ func (this *QStatusTipEvent) Tip() string {
 
 func (this *QStatusTipEvent) callVirtualBase_Clone() *QStatusTipEvent {
 
-	return UnsafeNewQStatusTipEvent(unsafe.Pointer(C.QStatusTipEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQStatusTipEvent(C.QStatusTipEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QStatusTipEvent) OnClone(slot func(super func() *QStatusTipEvent) *QStatusTipEvent) {
 	if !this.isSubclass {
@@ -5146,7 +5137,7 @@ func NewQWhatsThisClickedEvent(href string) *QWhatsThisClickedEvent {
 }
 
 func (this *QWhatsThisClickedEvent) Clone() *QWhatsThisClickedEvent {
-	return UnsafeNewQWhatsThisClickedEvent(unsafe.Pointer(C.QWhatsThisClickedEvent_Clone(this.h)), nil)
+	return newQWhatsThisClickedEvent(C.QWhatsThisClickedEvent_Clone(this.h), nil)
 }
 
 func (this *QWhatsThisClickedEvent) Href() string {
@@ -5158,7 +5149,8 @@ func (this *QWhatsThisClickedEvent) Href() string {
 
 func (this *QWhatsThisClickedEvent) callVirtualBase_Clone() *QWhatsThisClickedEvent {
 
-	return UnsafeNewQWhatsThisClickedEvent(unsafe.Pointer(C.QWhatsThisClickedEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQWhatsThisClickedEvent(C.QWhatsThisClickedEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QWhatsThisClickedEvent) OnClone(slot func(super func() *QWhatsThisClickedEvent) *QWhatsThisClickedEvent) {
 	if !this.isSubclass {
@@ -5282,20 +5274,21 @@ func NewQActionEvent2(typeVal int, action *QAction, before *QAction) *QActionEve
 }
 
 func (this *QActionEvent) Clone() *QActionEvent {
-	return UnsafeNewQActionEvent(unsafe.Pointer(C.QActionEvent_Clone(this.h)), nil)
+	return newQActionEvent(C.QActionEvent_Clone(this.h), nil)
 }
 
 func (this *QActionEvent) Action() *QAction {
-	return UnsafeNewQAction(unsafe.Pointer(C.QActionEvent_Action(this.h)), nil)
+	return newQAction(C.QActionEvent_Action(this.h), nil)
 }
 
 func (this *QActionEvent) Before() *QAction {
-	return UnsafeNewQAction(unsafe.Pointer(C.QActionEvent_Before(this.h)), nil)
+	return newQAction(C.QActionEvent_Before(this.h), nil)
 }
 
 func (this *QActionEvent) callVirtualBase_Clone() *QActionEvent {
 
-	return UnsafeNewQActionEvent(unsafe.Pointer(C.QActionEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQActionEvent(C.QActionEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QActionEvent) OnClone(slot func(super func() *QActionEvent) *QActionEvent) {
 	if !this.isSubclass {
@@ -5423,7 +5416,7 @@ func NewQFileOpenEvent2(url *QUrl) *QFileOpenEvent {
 }
 
 func (this *QFileOpenEvent) Clone() *QFileOpenEvent {
-	return UnsafeNewQFileOpenEvent(unsafe.Pointer(C.QFileOpenEvent_Clone(this.h)), nil)
+	return newQFileOpenEvent(C.QFileOpenEvent_Clone(this.h), nil)
 }
 
 func (this *QFileOpenEvent) File() string {
@@ -5434,8 +5427,7 @@ func (this *QFileOpenEvent) File() string {
 }
 
 func (this *QFileOpenEvent) Url() *QUrl {
-	_ret := C.QFileOpenEvent_Url(this.h)
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QFileOpenEvent_Url(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -5446,7 +5438,8 @@ func (this *QFileOpenEvent) OpenFile(file *QFile, flags QIODeviceBase__OpenModeF
 
 func (this *QFileOpenEvent) callVirtualBase_Clone() *QFileOpenEvent {
 
-	return UnsafeNewQFileOpenEvent(unsafe.Pointer(C.QFileOpenEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQFileOpenEvent(C.QFileOpenEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QFileOpenEvent) OnClone(slot func(super func() *QFileOpenEvent) *QFileOpenEvent) {
 	if !this.isSubclass {
@@ -5559,7 +5552,7 @@ func NewQToolBarChangeEvent(t bool) *QToolBarChangeEvent {
 }
 
 func (this *QToolBarChangeEvent) Clone() *QToolBarChangeEvent {
-	return UnsafeNewQToolBarChangeEvent(unsafe.Pointer(C.QToolBarChangeEvent_Clone(this.h)), nil)
+	return newQToolBarChangeEvent(C.QToolBarChangeEvent_Clone(this.h), nil)
 }
 
 func (this *QToolBarChangeEvent) Toggle() bool {
@@ -5568,7 +5561,8 @@ func (this *QToolBarChangeEvent) Toggle() bool {
 
 func (this *QToolBarChangeEvent) callVirtualBase_Clone() *QToolBarChangeEvent {
 
-	return UnsafeNewQToolBarChangeEvent(unsafe.Pointer(C.QToolBarChangeEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQToolBarChangeEvent(C.QToolBarChangeEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QToolBarChangeEvent) OnClone(slot func(super func() *QToolBarChangeEvent) *QToolBarChangeEvent) {
 	if !this.isSubclass {
@@ -5692,11 +5686,11 @@ func NewQShortcutEvent2(key *QKeySequence, id int, ambiguous bool) *QShortcutEve
 }
 
 func (this *QShortcutEvent) Clone() *QShortcutEvent {
-	return UnsafeNewQShortcutEvent(unsafe.Pointer(C.QShortcutEvent_Clone(this.h)), nil)
+	return newQShortcutEvent(C.QShortcutEvent_Clone(this.h), nil)
 }
 
 func (this *QShortcutEvent) Key() *QKeySequence {
-	return UnsafeNewQKeySequence(unsafe.Pointer(C.QShortcutEvent_Key(this.h)))
+	return newQKeySequence(C.QShortcutEvent_Key(this.h))
 }
 
 func (this *QShortcutEvent) ShortcutId() int {
@@ -5709,7 +5703,8 @@ func (this *QShortcutEvent) IsAmbiguous() bool {
 
 func (this *QShortcutEvent) callVirtualBase_Clone() *QShortcutEvent {
 
-	return UnsafeNewQShortcutEvent(unsafe.Pointer(C.QShortcutEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQShortcutEvent(C.QShortcutEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QShortcutEvent) OnClone(slot func(super func() *QShortcutEvent) *QShortcutEvent) {
 	if !this.isSubclass {
@@ -5833,7 +5828,7 @@ func NewQWindowStateChangeEvent2(oldState WindowState, isOverride bool) *QWindow
 }
 
 func (this *QWindowStateChangeEvent) Clone() *QWindowStateChangeEvent {
-	return UnsafeNewQWindowStateChangeEvent(unsafe.Pointer(C.QWindowStateChangeEvent_Clone(this.h)), nil)
+	return newQWindowStateChangeEvent(C.QWindowStateChangeEvent_Clone(this.h), nil)
 }
 
 func (this *QWindowStateChangeEvent) OldState() WindowState {
@@ -5846,7 +5841,8 @@ func (this *QWindowStateChangeEvent) IsOverride() bool {
 
 func (this *QWindowStateChangeEvent) callVirtualBase_Clone() *QWindowStateChangeEvent {
 
-	return UnsafeNewQWindowStateChangeEvent(unsafe.Pointer(C.QWindowStateChangeEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQWindowStateChangeEvent(C.QWindowStateChangeEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QWindowStateChangeEvent) OnClone(slot func(super func() *QWindowStateChangeEvent) *QWindowStateChangeEvent) {
 	if !this.isSubclass {
@@ -6038,11 +6034,11 @@ func NewQTouchEvent6(eventType QEvent__Type, device *QPointingDevice, modifiers 
 }
 
 func (this *QTouchEvent) Clone() *QTouchEvent {
-	return UnsafeNewQTouchEvent(unsafe.Pointer(C.QTouchEvent_Clone(this.h)), nil, nil, nil)
+	return newQTouchEvent(C.QTouchEvent_Clone(this.h), nil, nil, nil)
 }
 
 func (this *QTouchEvent) Target() *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QTouchEvent_Target(this.h)))
+	return newQObject(C.QTouchEvent_Target(this.h))
 }
 
 func (this *QTouchEvent) TouchPointStates() QEventPoint__State {
@@ -6054,8 +6050,7 @@ func (this *QTouchEvent) TouchPoints() []QEventPoint {
 	_ret := make([]QEventPoint, int(_ma.len))
 	_outCast := (*[0xffff]*C.QEventPoint)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQEventPoint(_lv_ret)
+		_lv_goptr := newQEventPoint(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -6076,7 +6071,8 @@ func (this *QTouchEvent) IsEndEvent() bool {
 
 func (this *QTouchEvent) callVirtualBase_Clone() *QTouchEvent {
 
-	return UnsafeNewQTouchEvent(unsafe.Pointer(C.QTouchEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil, nil, nil)
+	return newQTouchEvent(C.QTouchEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil, nil, nil)
+
 }
 func (this *QTouchEvent) OnClone(slot func(super func() *QTouchEvent) *QTouchEvent) {
 	if !this.isSubclass {
@@ -6290,33 +6286,29 @@ func NewQScrollPrepareEvent(startPos *QPointF) *QScrollPrepareEvent {
 }
 
 func (this *QScrollPrepareEvent) Clone() *QScrollPrepareEvent {
-	return UnsafeNewQScrollPrepareEvent(unsafe.Pointer(C.QScrollPrepareEvent_Clone(this.h)), nil)
+	return newQScrollPrepareEvent(C.QScrollPrepareEvent_Clone(this.h), nil)
 }
 
 func (this *QScrollPrepareEvent) StartPos() *QPointF {
-	_ret := C.QScrollPrepareEvent_StartPos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QScrollPrepareEvent_StartPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScrollPrepareEvent) ViewportSize() *QSizeF {
-	_ret := C.QScrollPrepareEvent_ViewportSize(this.h)
-	_goptr := newQSizeF(_ret)
+	_goptr := newQSizeF(C.QScrollPrepareEvent_ViewportSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScrollPrepareEvent) ContentPosRange() *QRectF {
-	_ret := C.QScrollPrepareEvent_ContentPosRange(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QScrollPrepareEvent_ContentPosRange(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScrollPrepareEvent) ContentPos() *QPointF {
-	_ret := C.QScrollPrepareEvent_ContentPos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QScrollPrepareEvent_ContentPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -6335,7 +6327,8 @@ func (this *QScrollPrepareEvent) SetContentPos(pos *QPointF) {
 
 func (this *QScrollPrepareEvent) callVirtualBase_Clone() *QScrollPrepareEvent {
 
-	return UnsafeNewQScrollPrepareEvent(unsafe.Pointer(C.QScrollPrepareEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQScrollPrepareEvent(C.QScrollPrepareEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QScrollPrepareEvent) OnClone(slot func(super func() *QScrollPrepareEvent) *QScrollPrepareEvent) {
 	if !this.isSubclass {
@@ -6448,19 +6441,17 @@ func NewQScrollEvent(contentPos *QPointF, overshoot *QPointF, scrollState QScrol
 }
 
 func (this *QScrollEvent) Clone() *QScrollEvent {
-	return UnsafeNewQScrollEvent(unsafe.Pointer(C.QScrollEvent_Clone(this.h)), nil)
+	return newQScrollEvent(C.QScrollEvent_Clone(this.h), nil)
 }
 
 func (this *QScrollEvent) ContentPos() *QPointF {
-	_ret := C.QScrollEvent_ContentPos(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QScrollEvent_ContentPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScrollEvent) OvershootDistance() *QPointF {
-	_ret := C.QScrollEvent_OvershootDistance(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QScrollEvent_OvershootDistance(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -6471,7 +6462,8 @@ func (this *QScrollEvent) ScrollState() QScrollEvent__ScrollState {
 
 func (this *QScrollEvent) callVirtualBase_Clone() *QScrollEvent {
 
-	return UnsafeNewQScrollEvent(unsafe.Pointer(C.QScrollEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQScrollEvent(C.QScrollEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QScrollEvent) OnClone(slot func(super func() *QScrollEvent) *QScrollEvent) {
 	if !this.isSubclass {
@@ -6584,11 +6576,11 @@ func NewQScreenOrientationChangeEvent(screen *QScreen, orientation ScreenOrienta
 }
 
 func (this *QScreenOrientationChangeEvent) Clone() *QScreenOrientationChangeEvent {
-	return UnsafeNewQScreenOrientationChangeEvent(unsafe.Pointer(C.QScreenOrientationChangeEvent_Clone(this.h)), nil)
+	return newQScreenOrientationChangeEvent(C.QScreenOrientationChangeEvent_Clone(this.h), nil)
 }
 
 func (this *QScreenOrientationChangeEvent) Screen() *QScreen {
-	return UnsafeNewQScreen(unsafe.Pointer(C.QScreenOrientationChangeEvent_Screen(this.h)), nil)
+	return newQScreen(C.QScreenOrientationChangeEvent_Screen(this.h), nil)
 }
 
 func (this *QScreenOrientationChangeEvent) Orientation() ScreenOrientation {
@@ -6597,7 +6589,8 @@ func (this *QScreenOrientationChangeEvent) Orientation() ScreenOrientation {
 
 func (this *QScreenOrientationChangeEvent) callVirtualBase_Clone() *QScreenOrientationChangeEvent {
 
-	return UnsafeNewQScreenOrientationChangeEvent(unsafe.Pointer(C.QScreenOrientationChangeEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQScreenOrientationChangeEvent(C.QScreenOrientationChangeEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QScreenOrientationChangeEvent) OnClone(slot func(super func() *QScreenOrientationChangeEvent) *QScreenOrientationChangeEvent) {
 	if !this.isSubclass {
@@ -6710,7 +6703,7 @@ func NewQApplicationStateChangeEvent(state ApplicationState) *QApplicationStateC
 }
 
 func (this *QApplicationStateChangeEvent) Clone() *QApplicationStateChangeEvent {
-	return UnsafeNewQApplicationStateChangeEvent(unsafe.Pointer(C.QApplicationStateChangeEvent_Clone(this.h)), nil)
+	return newQApplicationStateChangeEvent(C.QApplicationStateChangeEvent_Clone(this.h), nil)
 }
 
 func (this *QApplicationStateChangeEvent) ApplicationState() ApplicationState {
@@ -6719,7 +6712,8 @@ func (this *QApplicationStateChangeEvent) ApplicationState() ApplicationState {
 
 func (this *QApplicationStateChangeEvent) callVirtualBase_Clone() *QApplicationStateChangeEvent {
 
-	return UnsafeNewQApplicationStateChangeEvent(unsafe.Pointer(C.QApplicationStateChangeEvent_virtualbase_Clone(unsafe.Pointer(this.h))), nil)
+	return newQApplicationStateChangeEvent(C.QApplicationStateChangeEvent_virtualbase_Clone(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QApplicationStateChangeEvent) OnClone(slot func(super func() *QApplicationStateChangeEvent) *QApplicationStateChangeEvent) {
 	if !this.isSubclass {

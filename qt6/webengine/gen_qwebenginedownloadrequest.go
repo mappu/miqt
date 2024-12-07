@@ -138,8 +138,7 @@ func (this *QWebEngineDownloadRequest) ReceivedBytes() int64 {
 }
 
 func (this *QWebEngineDownloadRequest) Url() *qt6.QUrl {
-	_ret := C.QWebEngineDownloadRequest_Url(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineDownloadRequest_Url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -220,7 +219,7 @@ func (this *QWebEngineDownloadRequest) SetDownloadFileName(fileName string) {
 }
 
 func (this *QWebEngineDownloadRequest) Page() *QWebEnginePage {
-	return UnsafeNewQWebEnginePage(unsafe.Pointer(C.QWebEngineDownloadRequest_Page(this.h)), nil)
+	return newQWebEnginePage(C.QWebEngineDownloadRequest_Page(this.h), nil)
 }
 
 func (this *QWebEngineDownloadRequest) Accept() {

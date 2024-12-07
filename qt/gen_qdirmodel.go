@@ -130,7 +130,7 @@ func NewQDirModel4(parent *QObject) *QDirModel {
 }
 
 func (this *QDirModel) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QDirModel_MetaObject(this.h)))
+	return newQMetaObject(C.QDirModel_MetaObject(this.h))
 }
 
 func (this *QDirModel) Metacast(param1 string) unsafe.Pointer {
@@ -158,15 +158,13 @@ func QDirModel_TrUtf8(s string) string {
 }
 
 func (this *QDirModel) Index(row int, column int, parent *QModelIndex) *QModelIndex {
-	_ret := C.QDirModel_Index(this.h, (C.int)(row), (C.int)(column), parent.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QDirModel_Index(this.h, (C.int)(row), (C.int)(column), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDirModel) Parent(child *QModelIndex) *QModelIndex {
-	_ret := C.QDirModel_Parent(this.h, child.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QDirModel_Parent(this.h, child.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -180,8 +178,7 @@ func (this *QDirModel) ColumnCount(parent *QModelIndex) int {
 }
 
 func (this *QDirModel) Data(index *QModelIndex, role int) *QVariant {
-	_ret := C.QDirModel_Data(this.h, index.cPointer(), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QDirModel_Data(this.h, index.cPointer(), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -191,8 +188,7 @@ func (this *QDirModel) SetData(index *QModelIndex, value *QVariant, role int) bo
 }
 
 func (this *QDirModel) HeaderData(section int, orientation Orientation, role int) *QVariant {
-	_ret := C.QDirModel_HeaderData(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QDirModel_HeaderData(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -229,7 +225,7 @@ func (this *QDirModel) MimeData(indexes []QModelIndex) *QMimeData {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
-	return UnsafeNewQMimeData(unsafe.Pointer(C.QDirModel_MimeData(this.h, indexes_ma)), nil)
+	return newQMimeData(C.QDirModel_MimeData(this.h, indexes_ma), nil)
 }
 
 func (this *QDirModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
@@ -245,7 +241,7 @@ func (this *QDirModel) SetIconProvider(provider *QFileIconProvider) {
 }
 
 func (this *QDirModel) IconProvider() *QFileIconProvider {
-	return UnsafeNewQFileIconProvider(unsafe.Pointer(C.QDirModel_IconProvider(this.h)))
+	return newQFileIconProvider(C.QDirModel_IconProvider(this.h))
 }
 
 func (this *QDirModel) SetNameFilters(filters []string) {
@@ -320,8 +316,7 @@ func (this *QDirModel) IndexWithPath(path string) *QModelIndex {
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	_ret := C.QDirModel_IndexWithPath(this.h, path_ms)
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QDirModel_IndexWithPath(this.h, path_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -335,8 +330,7 @@ func (this *QDirModel) Mkdir(parent *QModelIndex, name string) *QModelIndex {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	_ret := C.QDirModel_Mkdir(this.h, parent.cPointer(), name_ms)
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QDirModel_Mkdir(this.h, parent.cPointer(), name_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -364,15 +358,13 @@ func (this *QDirModel) FileName(index *QModelIndex) string {
 }
 
 func (this *QDirModel) FileIcon(index *QModelIndex) *QIcon {
-	_ret := C.QDirModel_FileIcon(this.h, index.cPointer())
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QDirModel_FileIcon(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDirModel) FileInfo(index *QModelIndex) *QFileInfo {
-	_ret := C.QDirModel_FileInfo(this.h, index.cPointer())
-	_goptr := newQFileInfo(_ret)
+	_goptr := newQFileInfo(C.QDirModel_FileInfo(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -430,8 +422,7 @@ func (this *QDirModel) Index2(path string, column int) *QModelIndex {
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	_ret := C.QDirModel_Index2(this.h, path_ms, (C.int)(column))
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QDirModel_Index2(this.h, path_ms, (C.int)(column)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -442,8 +433,7 @@ func (this *QDirModel) Refresh1(parent *QModelIndex) {
 
 func (this *QDirModel) callVirtualBase_Index(row int, column int, parent *QModelIndex) *QModelIndex {
 
-	_ret := C.QDirModel_virtualbase_Index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), parent.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QDirModel_virtualbase_Index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -467,7 +457,7 @@ func miqt_exec_callback_QDirModel_Index(self *C.QDirModel, cb C.intptr_t, row C.
 
 	slotval2 := (int)(column)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QDirModel{h: self}).callVirtualBase_Index, slotval1, slotval2, slotval3)
 
@@ -477,8 +467,7 @@ func miqt_exec_callback_QDirModel_Index(self *C.QDirModel, cb C.intptr_t, row C.
 
 func (this *QDirModel) callVirtualBase_Parent(child *QModelIndex) *QModelIndex {
 
-	_ret := C.QDirModel_virtualbase_Parent(unsafe.Pointer(this.h), child.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QDirModel_virtualbase_Parent(unsafe.Pointer(this.h), child.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -498,7 +487,7 @@ func miqt_exec_callback_QDirModel_Parent(self *C.QDirModel, cb C.intptr_t, child
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(child))
+	slotval1 := newQModelIndex(child)
 
 	virtualReturn := gofunc((&QDirModel{h: self}).callVirtualBase_Parent, slotval1)
 
@@ -526,7 +515,7 @@ func miqt_exec_callback_QDirModel_RowCount(self *C.QDirModel, cb C.intptr_t, par
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QDirModel{h: self}).callVirtualBase_RowCount, slotval1)
 
@@ -554,7 +543,7 @@ func miqt_exec_callback_QDirModel_ColumnCount(self *C.QDirModel, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QDirModel{h: self}).callVirtualBase_ColumnCount, slotval1)
 
@@ -564,8 +553,7 @@ func miqt_exec_callback_QDirModel_ColumnCount(self *C.QDirModel, cb C.intptr_t, 
 
 func (this *QDirModel) callVirtualBase_Data(index *QModelIndex, role int) *QVariant {
 
-	_ret := C.QDirModel_virtualbase_Data(unsafe.Pointer(this.h), index.cPointer(), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QDirModel_virtualbase_Data(unsafe.Pointer(this.h), index.cPointer(), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -585,7 +573,8 @@ func miqt_exec_callback_QDirModel_Data(self *C.QDirModel, cb C.intptr_t, index *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
+
 	slotval2 := (int)(role)
 
 	virtualReturn := gofunc((&QDirModel{h: self}).callVirtualBase_Data, slotval1, slotval2)
@@ -614,8 +603,10 @@ func miqt_exec_callback_QDirModel_SetData(self *C.QDirModel, cb C.intptr_t, inde
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval1 := newQModelIndex(index)
+
+	slotval2 := newQVariant(value)
+
 	slotval3 := (int)(role)
 
 	virtualReturn := gofunc((&QDirModel{h: self}).callVirtualBase_SetData, slotval1, slotval2, slotval3)
@@ -626,8 +617,7 @@ func miqt_exec_callback_QDirModel_SetData(self *C.QDirModel, cb C.intptr_t, inde
 
 func (this *QDirModel) callVirtualBase_HeaderData(section int, orientation Orientation, role int) *QVariant {
 
-	_ret := C.QDirModel_virtualbase_HeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QDirModel_virtualbase_HeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -679,7 +669,7 @@ func miqt_exec_callback_QDirModel_HasChildren(self *C.QDirModel, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QDirModel{h: self}).callVirtualBase_HasChildren, slotval1)
 
@@ -707,7 +697,7 @@ func miqt_exec_callback_QDirModel_Flags(self *C.QDirModel, cb C.intptr_t, index 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QDirModel{h: self}).callVirtualBase_Flags, slotval1)
 
@@ -795,7 +785,8 @@ func (this *QDirModel) callVirtualBase_MimeData(indexes []QModelIndex) *QMimeDat
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 
-	return UnsafeNewQMimeData(unsafe.Pointer(C.QDirModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma)), nil)
+	return newQMimeData(C.QDirModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma), nil)
+
 }
 func (this *QDirModel) OnMimeData(slot func(super func(indexes []QModelIndex) *QMimeData, indexes []QModelIndex) *QMimeData) {
 	if !this.isSubclass {
@@ -816,8 +807,7 @@ func miqt_exec_callback_QDirModel_MimeData(self *C.QDirModel, cb C.intptr_t, ind
 	indexes_ret := make([]QModelIndex, int(indexes_ma.len))
 	indexes_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(indexes_ma.data)) // hey ya
 	for i := 0; i < int(indexes_ma.len); i++ {
-		indexes_lv_ret := indexes_outCast[i]
-		indexes_lv_goptr := newQModelIndex(indexes_lv_ret)
+		indexes_lv_goptr := newQModelIndex(indexes_outCast[i])
 		indexes_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		indexes_ret[i] = *indexes_lv_goptr
 	}
@@ -849,14 +839,15 @@ func miqt_exec_callback_QDirModel_DropMimeData(self *C.QDirModel, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMimeData(unsafe.Pointer(data), nil)
+	slotval1 := newQMimeData(data, nil)
+
 	slotval2 := (DropAction)(action)
 
 	slotval3 := (int)(row)
 
 	slotval4 := (int)(column)
 
-	slotval5 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval5 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QDirModel{h: self}).callVirtualBase_DropMimeData, slotval1, slotval2, slotval3, slotval4, slotval5)
 
@@ -891,8 +882,7 @@ func miqt_exec_callback_QDirModel_SupportedDropActions(self *C.QDirModel, cb C.i
 
 func (this *QDirModel) callVirtualBase_Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
 
-	_ret := C.QDirModel_virtualbase_Sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), idx.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QDirModel_virtualbase_Sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), idx.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -916,7 +906,7 @@ func miqt_exec_callback_QDirModel_Sibling(self *C.QDirModel, cb C.intptr_t, row 
 
 	slotval2 := (int)(column)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(idx))
+	slotval3 := newQModelIndex(idx)
 
 	virtualReturn := gofunc((&QDirModel{h: self}).callVirtualBase_Sibling, slotval1, slotval2, slotval3)
 
@@ -948,7 +938,8 @@ func miqt_exec_callback_QDirModel_SetHeaderData(self *C.QDirModel, cb C.intptr_t
 
 	slotval2 := (Orientation)(orientation)
 
-	slotval3 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval3 := newQVariant(value)
+
 	slotval4 := (int)(role)
 
 	virtualReturn := gofunc((&QDirModel{h: self}).callVirtualBase_SetHeaderData, slotval1, slotval2, slotval3, slotval4)
@@ -966,8 +957,7 @@ func (this *QDirModel) callVirtualBase_ItemData(index *QModelIndex) map[int]QVar
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
-		_mapval_ret := _Values[i]
-		_mapval_goptr := newQVariant(_mapval_ret)
+		_mapval_goptr := newQVariant(_Values[i])
 		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_entry_Value := *_mapval_goptr
 
@@ -991,7 +981,7 @@ func miqt_exec_callback_QDirModel_ItemData(self *C.QDirModel, cb C.intptr_t, ind
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QDirModel{h: self}).callVirtualBase_ItemData, slotval1)
 	virtualReturn_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
@@ -1049,7 +1039,8 @@ func miqt_exec_callback_QDirModel_SetItemData(self *C.QDirModel, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
+
 	var roles_mm C.struct_miqt_map = roles
 	roles_ret := make(map[int]QVariant, int(roles_mm.len))
 	roles_Keys := (*[0xffff]C.int)(unsafe.Pointer(roles_mm.keys))
@@ -1057,8 +1048,7 @@ func miqt_exec_callback_QDirModel_SetItemData(self *C.QDirModel, cb C.intptr_t, 
 	for i := 0; i < int(roles_mm.len); i++ {
 		roles_entry_Key := (int)(roles_Keys[i])
 
-		roles_mapval_ret := roles_Values[i]
-		roles_mapval_goptr := newQVariant(roles_mapval_ret)
+		roles_mapval_goptr := newQVariant(roles_Values[i])
 		roles_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		roles_entry_Value := *roles_mapval_goptr
 
@@ -1092,14 +1082,15 @@ func miqt_exec_callback_QDirModel_CanDropMimeData(self *C.QDirModel, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMimeData(unsafe.Pointer(data), nil)
+	slotval1 := newQMimeData(data, nil)
+
 	slotval2 := (DropAction)(action)
 
 	slotval3 := (int)(row)
 
 	slotval4 := (int)(column)
 
-	slotval5 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval5 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QDirModel{h: self}).callVirtualBase_CanDropMimeData, slotval1, slotval2, slotval3, slotval4, slotval5)
 
@@ -1156,7 +1147,7 @@ func miqt_exec_callback_QDirModel_InsertRows(self *C.QDirModel, cb C.intptr_t, r
 
 	slotval2 := (int)(count)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QDirModel{h: self}).callVirtualBase_InsertRows, slotval1, slotval2, slotval3)
 
@@ -1188,7 +1179,7 @@ func miqt_exec_callback_QDirModel_InsertColumns(self *C.QDirModel, cb C.intptr_t
 
 	slotval2 := (int)(count)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QDirModel{h: self}).callVirtualBase_InsertColumns, slotval1, slotval2, slotval3)
 
@@ -1220,7 +1211,7 @@ func miqt_exec_callback_QDirModel_RemoveRows(self *C.QDirModel, cb C.intptr_t, r
 
 	slotval2 := (int)(count)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QDirModel{h: self}).callVirtualBase_RemoveRows, slotval1, slotval2, slotval3)
 
@@ -1252,7 +1243,7 @@ func miqt_exec_callback_QDirModel_RemoveColumns(self *C.QDirModel, cb C.intptr_t
 
 	slotval2 := (int)(count)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QDirModel{h: self}).callVirtualBase_RemoveColumns, slotval1, slotval2, slotval3)
 
@@ -1280,12 +1271,14 @@ func miqt_exec_callback_QDirModel_MoveRows(self *C.QDirModel, cb C.intptr_t, sou
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(sourceParent))
+	slotval1 := newQModelIndex(sourceParent)
+
 	slotval2 := (int)(sourceRow)
 
 	slotval3 := (int)(count)
 
-	slotval4 := UnsafeNewQModelIndex(unsafe.Pointer(destinationParent))
+	slotval4 := newQModelIndex(destinationParent)
+
 	slotval5 := (int)(destinationChild)
 
 	virtualReturn := gofunc((&QDirModel{h: self}).callVirtualBase_MoveRows, slotval1, slotval2, slotval3, slotval4, slotval5)
@@ -1314,12 +1307,14 @@ func miqt_exec_callback_QDirModel_MoveColumns(self *C.QDirModel, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(sourceParent))
+	slotval1 := newQModelIndex(sourceParent)
+
 	slotval2 := (int)(sourceColumn)
 
 	slotval3 := (int)(count)
 
-	slotval4 := UnsafeNewQModelIndex(unsafe.Pointer(destinationParent))
+	slotval4 := newQModelIndex(destinationParent)
+
 	slotval5 := (int)(destinationChild)
 
 	virtualReturn := gofunc((&QDirModel{h: self}).callVirtualBase_MoveColumns, slotval1, slotval2, slotval3, slotval4, slotval5)
@@ -1348,7 +1343,7 @@ func miqt_exec_callback_QDirModel_FetchMore(self *C.QDirModel, cb C.intptr_t, pa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	gofunc((&QDirModel{h: self}).callVirtualBase_FetchMore, slotval1)
 
@@ -1374,7 +1369,7 @@ func miqt_exec_callback_QDirModel_CanFetchMore(self *C.QDirModel, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QDirModel{h: self}).callVirtualBase_CanFetchMore, slotval1)
 
@@ -1384,8 +1379,7 @@ func miqt_exec_callback_QDirModel_CanFetchMore(self *C.QDirModel, cb C.intptr_t,
 
 func (this *QDirModel) callVirtualBase_Buddy(index *QModelIndex) *QModelIndex {
 
-	_ret := C.QDirModel_virtualbase_Buddy(unsafe.Pointer(this.h), index.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QDirModel_virtualbase_Buddy(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1405,7 +1399,7 @@ func miqt_exec_callback_QDirModel_Buddy(self *C.QDirModel, cb C.intptr_t, index 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QDirModel{h: self}).callVirtualBase_Buddy, slotval1)
 
@@ -1419,8 +1413,7 @@ func (this *QDirModel) callVirtualBase_Match(start *QModelIndex, role int, value
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -1442,10 +1435,12 @@ func miqt_exec_callback_QDirModel_Match(self *C.QDirModel, cb C.intptr_t, start 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(start))
+	slotval1 := newQModelIndex(start)
+
 	slotval2 := (int)(role)
 
-	slotval3 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval3 := newQVariant(value)
+
 	slotval4 := (int)(hits)
 
 	slotval5 := (MatchFlag)(flags)
@@ -1464,8 +1459,7 @@ func miqt_exec_callback_QDirModel_Match(self *C.QDirModel, cb C.intptr_t, start 
 
 func (this *QDirModel) callVirtualBase_Span(index *QModelIndex) *QSize {
 
-	_ret := C.QDirModel_virtualbase_Span(unsafe.Pointer(this.h), index.cPointer())
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QDirModel_virtualbase_Span(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1485,7 +1479,7 @@ func miqt_exec_callback_QDirModel_Span(self *C.QDirModel, cb C.intptr_t, index *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QDirModel{h: self}).callVirtualBase_Span, slotval1)
 

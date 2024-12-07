@@ -89,7 +89,7 @@ func NewQThread2(parent *QObject) *QThread {
 }
 
 func (this *QThread) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QThread_MetaObject(this.h)))
+	return newQMetaObject(C.QThread_MetaObject(this.h))
 }
 
 func (this *QThread) Metacast(param1 string) unsafe.Pointer {
@@ -121,7 +121,7 @@ func QThread_CurrentThreadId() unsafe.Pointer {
 }
 
 func QThread_CurrentThread() *QThread {
-	return UnsafeNewQThread(unsafe.Pointer(C.QThread_CurrentThread()), nil)
+	return newQThread(C.QThread_CurrentThread(), nil)
 }
 
 func QThread_IdealThreadCount() int {
@@ -169,7 +169,7 @@ func (this *QThread) Exit() {
 }
 
 func (this *QThread) EventDispatcher() *QAbstractEventDispatcher {
-	return UnsafeNewQAbstractEventDispatcher(unsafe.Pointer(C.QThread_EventDispatcher(this.h)), nil)
+	return newQAbstractEventDispatcher(C.QThread_EventDispatcher(this.h), nil)
 }
 
 func (this *QThread) SetEventDispatcher(eventDispatcher *QAbstractEventDispatcher) {
@@ -292,7 +292,7 @@ func miqt_exec_callback_QThread_Event(self *C.QThread, cb C.intptr_t, event *C.Q
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QThread{h: self}).callVirtualBase_Event, slotval1)
 
@@ -343,8 +343,9 @@ func miqt_exec_callback_QThread_EventFilter(self *C.QThread, cb C.intptr_t, watc
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QThread{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -372,7 +373,7 @@ func miqt_exec_callback_QThread_TimerEvent(self *C.QThread, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QThread{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -398,7 +399,7 @@ func miqt_exec_callback_QThread_ChildEvent(self *C.QThread, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QThread{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -424,7 +425,7 @@ func miqt_exec_callback_QThread_CustomEvent(self *C.QThread, cb C.intptr_t, even
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QThread{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -450,7 +451,7 @@ func miqt_exec_callback_QThread_ConnectNotify(self *C.QThread, cb C.intptr_t, si
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QThread{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -476,7 +477,7 @@ func miqt_exec_callback_QThread_DisconnectNotify(self *C.QThread, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QThread{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

@@ -70,29 +70,25 @@ func NewQRgba642(param1 *QRgba64) *QRgba64 {
 }
 
 func QRgba64_FromRgba64(c uint64) *QRgba64 {
-	_ret := C.QRgba64_FromRgba64((C.ulonglong)(c))
-	_goptr := newQRgba64(_ret)
+	_goptr := newQRgba64(C.QRgba64_FromRgba64((C.ulonglong)(c)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QRgba64_FromRgba642(red uint16, green uint16, blue uint16, alpha uint16) *QRgba64 {
-	_ret := C.QRgba64_FromRgba642((C.uint16_t)(red), (C.uint16_t)(green), (C.uint16_t)(blue), (C.uint16_t)(alpha))
-	_goptr := newQRgba64(_ret)
+	_goptr := newQRgba64(C.QRgba64_FromRgba642((C.uint16_t)(red), (C.uint16_t)(green), (C.uint16_t)(blue), (C.uint16_t)(alpha)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QRgba64_FromRgba(red byte, green byte, blue byte, alpha byte) *QRgba64 {
-	_ret := C.QRgba64_FromRgba((C.uchar)(red), (C.uchar)(green), (C.uchar)(blue), (C.uchar)(alpha))
-	_goptr := newQRgba64(_ret)
+	_goptr := newQRgba64(C.QRgba64_FromRgba((C.uchar)(red), (C.uchar)(green), (C.uchar)(blue), (C.uchar)(alpha)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QRgba64_FromArgb32(rgb uint) *QRgba64 {
-	_ret := C.QRgba64_FromArgb32((C.uint)(rgb))
-	_goptr := newQRgba64(_ret)
+	_goptr := newQRgba64(C.QRgba64_FromArgb32((C.uint)(rgb)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -162,15 +158,13 @@ func (this *QRgba64) ToRgb16() uint16 {
 }
 
 func (this *QRgba64) Premultiplied() *QRgba64 {
-	_ret := C.QRgba64_Premultiplied(this.h)
-	_goptr := newQRgba64(_ret)
+	_goptr := newQRgba64(C.QRgba64_Premultiplied(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRgba64) Unpremultiplied() *QRgba64 {
-	_ret := C.QRgba64_Unpremultiplied(this.h)
-	_goptr := newQRgba64(_ret)
+	_goptr := newQRgba64(C.QRgba64_Unpremultiplied(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

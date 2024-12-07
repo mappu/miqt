@@ -176,7 +176,7 @@ func (this *QRadioData) Availability() QMultimedia__AvailabilityStatus {
 }
 
 func (this *QRadioData) MediaObject() *QMediaObject {
-	return UnsafeNewQMediaObject(unsafe.Pointer(C.QRadioData_MediaObject(this.h)), nil)
+	return newQMediaObject(C.QRadioData_MediaObject(this.h), nil)
 }
 
 func (this *QRadioData) StationId() string {
@@ -444,7 +444,8 @@ func QRadioData_TrUtf83(s string, c string, n int) string {
 
 func (this *QRadioData) callVirtualBase_MediaObject() *QMediaObject {
 
-	return UnsafeNewQMediaObject(unsafe.Pointer(C.QRadioData_virtualbase_MediaObject(unsafe.Pointer(this.h))), nil)
+	return newQMediaObject(C.QRadioData_virtualbase_MediaObject(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QRadioData) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
 	if !this.isSubclass {
@@ -486,7 +487,7 @@ func miqt_exec_callback_QRadioData_SetMediaObject(self *C.QRadioData, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMediaObject(unsafe.Pointer(mediaObject), nil)
+	slotval1 := newQMediaObject(mediaObject, nil)
 
 	virtualReturn := gofunc((&QRadioData{h: self}).callVirtualBase_SetMediaObject, slotval1)
 
@@ -543,6 +544,7 @@ func miqt_exec_callback_QRadioData_EventFilter(self *C.QRadioData, cb C.intptr_t
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QRadioData{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

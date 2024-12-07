@@ -70,8 +70,7 @@ func NewQHashSeed2(d uint64) *QHashSeed {
 }
 
 func QHashSeed_GlobalSeed() *QHashSeed {
-	_ret := C.QHashSeed_GlobalSeed()
-	_goptr := newQHashSeed(_ret)
+	_goptr := newQHashSeed(C.QHashSeed_GlobalSeed())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

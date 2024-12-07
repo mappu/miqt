@@ -131,7 +131,7 @@ func QMediaPlaylist_TrUtf8(s string) string {
 }
 
 func (this *QMediaPlaylist) MediaObject() *QMediaObject {
-	return UnsafeNewQMediaObject(unsafe.Pointer(C.QMediaPlaylist_MediaObject(this.h)), nil)
+	return newQMediaObject(C.QMediaPlaylist_MediaObject(this.h), nil)
 }
 
 func (this *QMediaPlaylist) PlaybackMode() QMediaPlaylist__PlaybackMode {
@@ -147,8 +147,7 @@ func (this *QMediaPlaylist) CurrentIndex() int {
 }
 
 func (this *QMediaPlaylist) CurrentMedia() *QMediaContent {
-	_ret := C.QMediaPlaylist_CurrentMedia(this.h)
-	_goptr := newQMediaContent(_ret)
+	_goptr := newQMediaContent(C.QMediaPlaylist_CurrentMedia(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -162,8 +161,7 @@ func (this *QMediaPlaylist) PreviousIndex() int {
 }
 
 func (this *QMediaPlaylist) Media(index int) *QMediaContent {
-	_ret := C.QMediaPlaylist_Media(this.h, (C.int)(index))
-	_goptr := newQMediaContent(_ret)
+	_goptr := newQMediaContent(C.QMediaPlaylist_Media(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -328,7 +326,7 @@ func miqt_exec_callback_QMediaPlaylist_CurrentMediaChanged(cb C.intptr_t, param1
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMediaContent(unsafe.Pointer(param1))
+	slotval1 := newQMediaContent(param1)
 
 	gofunc(slotval1)
 }
@@ -555,7 +553,8 @@ func (this *QMediaPlaylist) Save22(location *qt.QUrl, format string) bool {
 
 func (this *QMediaPlaylist) callVirtualBase_MediaObject() *QMediaObject {
 
-	return UnsafeNewQMediaObject(unsafe.Pointer(C.QMediaPlaylist_virtualbase_MediaObject(unsafe.Pointer(this.h))), nil)
+	return newQMediaObject(C.QMediaPlaylist_virtualbase_MediaObject(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QMediaPlaylist) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
 	if !this.isSubclass {
@@ -597,7 +596,7 @@ func miqt_exec_callback_QMediaPlaylist_SetMediaObject(self *C.QMediaPlaylist, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMediaObject(unsafe.Pointer(object), nil)
+	slotval1 := newQMediaObject(object, nil)
 
 	virtualReturn := gofunc((&QMediaPlaylist{h: self}).callVirtualBase_SetMediaObject, slotval1)
 
@@ -654,6 +653,7 @@ func miqt_exec_callback_QMediaPlaylist_EventFilter(self *C.QMediaPlaylist, cb C.
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QMediaPlaylist{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

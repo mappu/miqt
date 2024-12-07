@@ -93,8 +93,7 @@ func (this *QSslCertificateExtension) Name() string {
 }
 
 func (this *QSslCertificateExtension) Value() *qt6.QVariant {
-	_ret := C.QSslCertificateExtension_Value(this.h)
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QSslCertificateExtension_Value(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

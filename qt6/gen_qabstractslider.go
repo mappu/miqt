@@ -102,7 +102,7 @@ func NewQAbstractSlider2() *QAbstractSlider {
 }
 
 func (this *QAbstractSlider) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractSlider_MetaObject(this.h)))
+	return newQMetaObject(C.QAbstractSlider_MetaObject(this.h))
 }
 
 func (this *QAbstractSlider) Metacast(param1 string) unsafe.Pointer {
@@ -374,7 +374,7 @@ func miqt_exec_callback_QAbstractSlider_Event(self *C.QAbstractSlider, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QAbstractSlider{h: self}).callVirtualBase_Event, slotval1)
 
@@ -428,7 +428,7 @@ func miqt_exec_callback_QAbstractSlider_KeyPressEvent(self *C.QAbstractSlider, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(ev), nil, nil)
+	slotval1 := newQKeyEvent(ev, nil, nil)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -454,7 +454,7 @@ func miqt_exec_callback_QAbstractSlider_TimerEvent(self *C.QAbstractSlider, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQTimerEvent(param1, nil)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -480,7 +480,7 @@ func miqt_exec_callback_QAbstractSlider_WheelEvent(self *C.QAbstractSlider, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(e), nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(e, nil, nil, nil, nil)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -506,7 +506,7 @@ func miqt_exec_callback_QAbstractSlider_ChangeEvent(self *C.QAbstractSlider, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -565,8 +565,7 @@ func miqt_exec_callback_QAbstractSlider_SetVisible(self *C.QAbstractSlider, cb C
 
 func (this *QAbstractSlider) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QAbstractSlider_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QAbstractSlider_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -593,8 +592,7 @@ func miqt_exec_callback_QAbstractSlider_SizeHint(self *C.QAbstractSlider, cb C.i
 
 func (this *QAbstractSlider) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QAbstractSlider_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QAbstractSlider_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -674,7 +672,8 @@ func miqt_exec_callback_QAbstractSlider_HasHeightForWidth(self *C.QAbstractSlide
 
 func (this *QAbstractSlider) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QAbstractSlider_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return newQPaintEngine(C.QAbstractSlider_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+
 }
 func (this *QAbstractSlider) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
 	if !this.isSubclass {
@@ -716,7 +715,7 @@ func miqt_exec_callback_QAbstractSlider_MousePressEvent(self *C.QAbstractSlider,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -742,7 +741,7 @@ func miqt_exec_callback_QAbstractSlider_MouseReleaseEvent(self *C.QAbstractSlide
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -768,7 +767,7 @@ func miqt_exec_callback_QAbstractSlider_MouseDoubleClickEvent(self *C.QAbstractS
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -794,7 +793,7 @@ func miqt_exec_callback_QAbstractSlider_MouseMoveEvent(self *C.QAbstractSlider, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -820,7 +819,7 @@ func miqt_exec_callback_QAbstractSlider_KeyReleaseEvent(self *C.QAbstractSlider,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -846,7 +845,7 @@ func miqt_exec_callback_QAbstractSlider_FocusInEvent(self *C.QAbstractSlider, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -872,7 +871,7 @@ func miqt_exec_callback_QAbstractSlider_FocusOutEvent(self *C.QAbstractSlider, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -898,7 +897,7 @@ func miqt_exec_callback_QAbstractSlider_EnterEvent(self *C.QAbstractSlider, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEnterEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQEnterEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_EnterEvent, slotval1)
 
@@ -924,7 +923,7 @@ func miqt_exec_callback_QAbstractSlider_LeaveEvent(self *C.QAbstractSlider, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_LeaveEvent, slotval1)
 
@@ -950,7 +949,7 @@ func miqt_exec_callback_QAbstractSlider_PaintEvent(self *C.QAbstractSlider, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQPaintEvent(event, nil)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -976,7 +975,7 @@ func miqt_exec_callback_QAbstractSlider_MoveEvent(self *C.QAbstractSlider, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMoveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQMoveEvent(event, nil)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -1002,7 +1001,7 @@ func miqt_exec_callback_QAbstractSlider_ResizeEvent(self *C.QAbstractSlider, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQResizeEvent(event, nil)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -1028,7 +1027,7 @@ func miqt_exec_callback_QAbstractSlider_CloseEvent(self *C.QAbstractSlider, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQCloseEvent(event, nil)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -1054,7 +1053,7 @@ func miqt_exec_callback_QAbstractSlider_ContextMenuEvent(self *C.QAbstractSlider
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQContextMenuEvent(event, nil, nil)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -1080,7 +1079,7 @@ func miqt_exec_callback_QAbstractSlider_TabletEvent(self *C.QAbstractSlider, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTabletEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQTabletEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -1106,7 +1105,7 @@ func miqt_exec_callback_QAbstractSlider_ActionEvent(self *C.QAbstractSlider, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQActionEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQActionEvent(event, nil)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -1132,7 +1131,7 @@ func miqt_exec_callback_QAbstractSlider_DragEnterEvent(self *C.QAbstractSlider, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragEnterEvent(unsafe.Pointer(event), nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event, nil, nil, nil)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -1158,7 +1157,7 @@ func miqt_exec_callback_QAbstractSlider_DragMoveEvent(self *C.QAbstractSlider, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQDragMoveEvent(event, nil, nil)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1184,7 +1183,7 @@ func miqt_exec_callback_QAbstractSlider_DragLeaveEvent(self *C.QAbstractSlider, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragLeaveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDragLeaveEvent(event, nil)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1210,7 +1209,7 @@ func miqt_exec_callback_QAbstractSlider_DropEvent(self *C.QAbstractSlider, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDropEvent(event, nil)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1236,7 +1235,7 @@ func miqt_exec_callback_QAbstractSlider_ShowEvent(self *C.QAbstractSlider, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQShowEvent(event, nil)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1262,7 +1261,7 @@ func miqt_exec_callback_QAbstractSlider_HideEvent(self *C.QAbstractSlider, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHideEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQHideEvent(event, nil)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -1353,7 +1352,7 @@ func miqt_exec_callback_QAbstractSlider_InitPainter(self *C.QAbstractSlider, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval1 := newQPainter(painter)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_InitPainter, slotval1)
 
@@ -1361,7 +1360,8 @@ func miqt_exec_callback_QAbstractSlider_InitPainter(self *C.QAbstractSlider, cb 
 
 func (this *QAbstractSlider) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QAbstractSlider_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer())))
+	return newQPaintDevice(C.QAbstractSlider_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+
 }
 func (this *QAbstractSlider) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
 	if !this.isSubclass {
@@ -1378,7 +1378,7 @@ func miqt_exec_callback_QAbstractSlider_Redirected(self *C.QAbstractSlider, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(offset))
+	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QAbstractSlider{h: self}).callVirtualBase_Redirected, slotval1)
 
@@ -1388,7 +1388,8 @@ func miqt_exec_callback_QAbstractSlider_Redirected(self *C.QAbstractSlider, cb C
 
 func (this *QAbstractSlider) callVirtualBase_SharedPainter() *QPainter {
 
-	return UnsafeNewQPainter(unsafe.Pointer(C.QAbstractSlider_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+	return newQPainter(C.QAbstractSlider_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+
 }
 func (this *QAbstractSlider) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
 	if !this.isSubclass {
@@ -1430,7 +1431,7 @@ func miqt_exec_callback_QAbstractSlider_InputMethodEvent(self *C.QAbstractSlider
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQInputMethodEvent(param1, nil)
 
 	gofunc((&QAbstractSlider{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -1438,8 +1439,7 @@ func miqt_exec_callback_QAbstractSlider_InputMethodEvent(self *C.QAbstractSlider
 
 func (this *QAbstractSlider) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_ret := C.QAbstractSlider_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QAbstractSlider_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

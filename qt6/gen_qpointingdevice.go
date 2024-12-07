@@ -95,8 +95,7 @@ func NewQPointingDeviceUniqueId2(param1 *QPointingDeviceUniqueId) *QPointingDevi
 }
 
 func QPointingDeviceUniqueId_FromNumericId(id int64) *QPointingDeviceUniqueId {
-	_ret := C.QPointingDeviceUniqueId_FromNumericId((C.longlong)(id))
-	_goptr := newQPointingDeviceUniqueId(_ret)
+	_goptr := newQPointingDeviceUniqueId(C.QPointingDeviceUniqueId_FromNumericId((C.longlong)(id)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -263,7 +262,7 @@ func NewQPointingDevice6(name string, systemId int64, devType QInputDevice__Devi
 }
 
 func (this *QPointingDevice) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QPointingDevice_MetaObject(this.h)))
+	return newQMetaObject(C.QPointingDevice_MetaObject(this.h))
 }
 
 func (this *QPointingDevice) Metacast(param1 string) unsafe.Pointer {
@@ -306,14 +305,13 @@ func (this *QPointingDevice) ButtonCount() int {
 }
 
 func (this *QPointingDevice) UniqueId() *QPointingDeviceUniqueId {
-	_ret := C.QPointingDevice_UniqueId(this.h)
-	_goptr := newQPointingDeviceUniqueId(_ret)
+	_goptr := newQPointingDeviceUniqueId(C.QPointingDevice_UniqueId(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QPointingDevice_PrimaryPointingDevice() *QPointingDevice {
-	return UnsafeNewQPointingDevice(unsafe.Pointer(C.QPointingDevice_PrimaryPointingDevice()), nil, nil)
+	return newQPointingDevice(C.QPointingDevice_PrimaryPointingDevice(), nil, nil)
 }
 
 func (this *QPointingDevice) OperatorEqual(other *QPointingDevice) bool {
@@ -335,11 +333,13 @@ func miqt_exec_callback_QPointingDevice_GrabChanged(cb C.intptr_t, grabber *C.QO
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(grabber))
+	slotval1 := newQObject(grabber)
+
 	slotval2 := (QPointingDevice__GrabTransition)(transition)
 
-	slotval3 := UnsafeNewQPointerEvent(unsafe.Pointer(event), nil, nil)
-	slotval4 := UnsafeNewQEventPoint(unsafe.Pointer(point))
+	slotval3 := newQPointerEvent(event, nil, nil)
+
+	slotval4 := newQEventPoint(point)
 
 	gofunc(slotval1, slotval2, slotval3, slotval4)
 }
@@ -371,7 +371,7 @@ func QPointingDevice_PrimaryPointingDevice1(seatName string) *QPointingDevice {
 	seatName_ms.data = C.CString(seatName)
 	seatName_ms.len = C.size_t(len(seatName))
 	defer C.free(unsafe.Pointer(seatName_ms.data))
-	return UnsafeNewQPointingDevice(unsafe.Pointer(C.QPointingDevice_PrimaryPointingDevice1(seatName_ms)), nil, nil)
+	return newQPointingDevice(C.QPointingDevice_PrimaryPointingDevice1(seatName_ms), nil, nil)
 }
 
 // Delete this object from C++ memory.

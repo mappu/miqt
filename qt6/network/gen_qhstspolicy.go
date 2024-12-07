@@ -132,8 +132,7 @@ func (this *QHstsPolicy) SetExpiry(expiry *qt6.QDateTime) {
 }
 
 func (this *QHstsPolicy) Expiry() *qt6.QDateTime {
-	_ret := C.QHstsPolicy_Expiry(this.h)
-	_goptr := qt6.UnsafeNewQDateTime(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQDateTime(unsafe.Pointer(C.QHstsPolicy_Expiry(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

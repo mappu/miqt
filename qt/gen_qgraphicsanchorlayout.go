@@ -54,7 +54,7 @@ func UnsafeNewQGraphicsAnchor(h unsafe.Pointer, h_QObject unsafe.Pointer) *QGrap
 }
 
 func (this *QGraphicsAnchor) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsAnchor_MetaObject(this.h)))
+	return newQMetaObject(C.QGraphicsAnchor_MetaObject(this.h))
 }
 
 func (this *QGraphicsAnchor) Metacast(param1 string) unsafe.Pointer {
@@ -223,11 +223,11 @@ func NewQGraphicsAnchorLayout2(parent *QGraphicsLayoutItem) *QGraphicsAnchorLayo
 }
 
 func (this *QGraphicsAnchorLayout) AddAnchor(firstItem *QGraphicsLayoutItem, firstEdge AnchorPoint, secondItem *QGraphicsLayoutItem, secondEdge AnchorPoint) *QGraphicsAnchor {
-	return UnsafeNewQGraphicsAnchor(unsafe.Pointer(C.QGraphicsAnchorLayout_AddAnchor(this.h, firstItem.cPointer(), (C.int)(firstEdge), secondItem.cPointer(), (C.int)(secondEdge))), nil)
+	return newQGraphicsAnchor(C.QGraphicsAnchorLayout_AddAnchor(this.h, firstItem.cPointer(), (C.int)(firstEdge), secondItem.cPointer(), (C.int)(secondEdge)), nil)
 }
 
 func (this *QGraphicsAnchorLayout) Anchor(firstItem *QGraphicsLayoutItem, firstEdge AnchorPoint, secondItem *QGraphicsLayoutItem, secondEdge AnchorPoint) *QGraphicsAnchor {
-	return UnsafeNewQGraphicsAnchor(unsafe.Pointer(C.QGraphicsAnchorLayout_Anchor(this.h, firstItem.cPointer(), (C.int)(firstEdge), secondItem.cPointer(), (C.int)(secondEdge))), nil)
+	return newQGraphicsAnchor(C.QGraphicsAnchorLayout_Anchor(this.h, firstItem.cPointer(), (C.int)(firstEdge), secondItem.cPointer(), (C.int)(secondEdge)), nil)
 }
 
 func (this *QGraphicsAnchorLayout) AddCornerAnchors(firstItem *QGraphicsLayoutItem, firstCorner Corner, secondItem *QGraphicsLayoutItem, secondCorner Corner) {
@@ -271,7 +271,7 @@ func (this *QGraphicsAnchorLayout) Count() int {
 }
 
 func (this *QGraphicsAnchorLayout) ItemAt(index int) *QGraphicsLayoutItem {
-	return UnsafeNewQGraphicsLayoutItem(unsafe.Pointer(C.QGraphicsAnchorLayout_ItemAt(this.h, (C.int)(index))))
+	return newQGraphicsLayoutItem(C.QGraphicsAnchorLayout_ItemAt(this.h, (C.int)(index)))
 }
 
 func (this *QGraphicsAnchorLayout) Invalidate() {
@@ -328,7 +328,7 @@ func miqt_exec_callback_QGraphicsAnchorLayout_SetGeometry(self *C.QGraphicsAncho
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRectF(unsafe.Pointer(rect))
+	slotval1 := newQRectF(rect)
 
 	gofunc((&QGraphicsAnchorLayout{h: self}).callVirtualBase_SetGeometry, slotval1)
 
@@ -361,7 +361,8 @@ func miqt_exec_callback_QGraphicsAnchorLayout_Count(self *C.QGraphicsAnchorLayou
 
 func (this *QGraphicsAnchorLayout) callVirtualBase_ItemAt(index int) *QGraphicsLayoutItem {
 
-	return UnsafeNewQGraphicsLayoutItem(unsafe.Pointer(C.QGraphicsAnchorLayout_virtualbase_ItemAt(unsafe.Pointer(this.h), (C.int)(index))))
+	return newQGraphicsLayoutItem(C.QGraphicsAnchorLayout_virtualbase_ItemAt(unsafe.Pointer(this.h), (C.int)(index)))
+
 }
 func (this *QGraphicsAnchorLayout) OnItemAt(slot func(super func(index int) *QGraphicsLayoutItem, index int) *QGraphicsLayoutItem) {
 	if !this.isSubclass {
@@ -411,8 +412,7 @@ func miqt_exec_callback_QGraphicsAnchorLayout_Invalidate(self *C.QGraphicsAnchor
 
 func (this *QGraphicsAnchorLayout) callVirtualBase_SizeHint(which SizeHint, constraint *QSizeF) *QSizeF {
 
-	_ret := C.QGraphicsAnchorLayout_virtualbase_SizeHint(unsafe.Pointer(this.h), (C.int)(which), constraint.cPointer())
-	_goptr := newQSizeF(_ret)
+	_goptr := newQSizeF(C.QGraphicsAnchorLayout_virtualbase_SizeHint(unsafe.Pointer(this.h), (C.int)(which), constraint.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -434,7 +434,7 @@ func miqt_exec_callback_QGraphicsAnchorLayout_SizeHint(self *C.QGraphicsAnchorLa
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (SizeHint)(which)
 
-	slotval2 := UnsafeNewQSizeF(unsafe.Pointer(constraint))
+	slotval2 := newQSizeF(constraint)
 
 	virtualReturn := gofunc((&QGraphicsAnchorLayout{h: self}).callVirtualBase_SizeHint, slotval1, slotval2)
 
@@ -517,7 +517,7 @@ func miqt_exec_callback_QGraphicsAnchorLayout_WidgetEvent(self *C.QGraphicsAncho
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	gofunc((&QGraphicsAnchorLayout{h: self}).callVirtualBase_WidgetEvent, slotval1)
 

@@ -78,7 +78,7 @@ func NewQAbstractProxyModel2(parent *QObject) *QAbstractProxyModel {
 }
 
 func (this *QAbstractProxyModel) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractProxyModel_MetaObject(this.h)))
+	return newQMetaObject(C.QAbstractProxyModel_MetaObject(this.h))
 }
 
 func (this *QAbstractProxyModel) Metacast(param1 string) unsafe.Pointer {
@@ -101,33 +101,29 @@ func (this *QAbstractProxyModel) SetSourceModel(sourceModel *QAbstractItemModel)
 }
 
 func (this *QAbstractProxyModel) SourceModel() *QAbstractItemModel {
-	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QAbstractProxyModel_SourceModel(this.h)), nil)
+	return newQAbstractItemModel(C.QAbstractProxyModel_SourceModel(this.h), nil)
 }
 
 func (this *QAbstractProxyModel) MapToSource(proxyIndex *QModelIndex) *QModelIndex {
-	_ret := C.QAbstractProxyModel_MapToSource(this.h, proxyIndex.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QAbstractProxyModel_MapToSource(this.h, proxyIndex.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractProxyModel) MapFromSource(sourceIndex *QModelIndex) *QModelIndex {
-	_ret := C.QAbstractProxyModel_MapFromSource(this.h, sourceIndex.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QAbstractProxyModel_MapFromSource(this.h, sourceIndex.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractProxyModel) MapSelectionToSource(selection *QItemSelection) *QItemSelection {
-	_ret := C.QAbstractProxyModel_MapSelectionToSource(this.h, selection.cPointer())
-	_goptr := newQItemSelection(_ret)
+	_goptr := newQItemSelection(C.QAbstractProxyModel_MapSelectionToSource(this.h, selection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractProxyModel) MapSelectionFromSource(selection *QItemSelection) *QItemSelection {
-	_ret := C.QAbstractProxyModel_MapSelectionFromSource(this.h, selection.cPointer())
-	_goptr := newQItemSelection(_ret)
+	_goptr := newQItemSelection(C.QAbstractProxyModel_MapSelectionFromSource(this.h, selection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -141,15 +137,13 @@ func (this *QAbstractProxyModel) Revert() {
 }
 
 func (this *QAbstractProxyModel) Data(proxyIndex *QModelIndex, role int) *QVariant {
-	_ret := C.QAbstractProxyModel_Data(this.h, proxyIndex.cPointer(), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QAbstractProxyModel_Data(this.h, proxyIndex.cPointer(), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractProxyModel) HeaderData(section int, orientation Orientation, role int) *QVariant {
-	_ret := C.QAbstractProxyModel_HeaderData(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QAbstractProxyModel_HeaderData(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -162,8 +156,7 @@ func (this *QAbstractProxyModel) ItemData(index *QModelIndex) map[int]QVariant {
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
-		_mapval_ret := _Values[i]
-		_mapval_goptr := newQVariant(_mapval_ret)
+		_mapval_goptr := newQVariant(_Values[i])
 		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_entry_Value := *_mapval_goptr
 
@@ -208,8 +201,7 @@ func (this *QAbstractProxyModel) ClearItemData(index *QModelIndex) bool {
 }
 
 func (this *QAbstractProxyModel) Buddy(index *QModelIndex) *QModelIndex {
-	_ret := C.QAbstractProxyModel_Buddy(this.h, index.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QAbstractProxyModel_Buddy(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -227,8 +219,7 @@ func (this *QAbstractProxyModel) Sort(column int, order SortOrder) {
 }
 
 func (this *QAbstractProxyModel) Span(index *QModelIndex) *QSize {
-	_ret := C.QAbstractProxyModel_Span(this.h, index.cPointer())
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QAbstractProxyModel_Span(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -238,8 +229,7 @@ func (this *QAbstractProxyModel) HasChildren(parent *QModelIndex) bool {
 }
 
 func (this *QAbstractProxyModel) Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
-	_ret := C.QAbstractProxyModel_Sibling(this.h, (C.int)(row), (C.int)(column), idx.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QAbstractProxyModel_Sibling(this.h, (C.int)(row), (C.int)(column), idx.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -251,7 +241,7 @@ func (this *QAbstractProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
-	return UnsafeNewQMimeData(unsafe.Pointer(C.QAbstractProxyModel_MimeData(this.h, indexes_ma)), nil)
+	return newQMimeData(C.QAbstractProxyModel_MimeData(this.h, indexes_ma), nil)
 }
 
 func (this *QAbstractProxyModel) CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
@@ -342,7 +332,7 @@ func miqt_exec_callback_QAbstractProxyModel_SetSourceModel(self *C.QAbstractProx
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAbstractItemModel(unsafe.Pointer(sourceModel), nil)
+	slotval1 := newQAbstractItemModel(sourceModel, nil)
 
 	gofunc((&QAbstractProxyModel{h: self}).callVirtualBase_SetSourceModel, slotval1)
 
@@ -362,7 +352,7 @@ func miqt_exec_callback_QAbstractProxyModel_MapToSource(self *C.QAbstractProxyMo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(proxyIndex))
+	slotval1 := newQModelIndex(proxyIndex)
 
 	virtualReturn := gofunc(slotval1)
 
@@ -384,7 +374,7 @@ func miqt_exec_callback_QAbstractProxyModel_MapFromSource(self *C.QAbstractProxy
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(sourceIndex))
+	slotval1 := newQModelIndex(sourceIndex)
 
 	virtualReturn := gofunc(slotval1)
 
@@ -394,8 +384,7 @@ func miqt_exec_callback_QAbstractProxyModel_MapFromSource(self *C.QAbstractProxy
 
 func (this *QAbstractProxyModel) callVirtualBase_MapSelectionToSource(selection *QItemSelection) *QItemSelection {
 
-	_ret := C.QAbstractProxyModel_virtualbase_MapSelectionToSource(unsafe.Pointer(this.h), selection.cPointer())
-	_goptr := newQItemSelection(_ret)
+	_goptr := newQItemSelection(C.QAbstractProxyModel_virtualbase_MapSelectionToSource(unsafe.Pointer(this.h), selection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -415,7 +404,7 @@ func miqt_exec_callback_QAbstractProxyModel_MapSelectionToSource(self *C.QAbstra
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selection))
+	slotval1 := newQItemSelection(selection)
 
 	virtualReturn := gofunc((&QAbstractProxyModel{h: self}).callVirtualBase_MapSelectionToSource, slotval1)
 
@@ -425,8 +414,7 @@ func miqt_exec_callback_QAbstractProxyModel_MapSelectionToSource(self *C.QAbstra
 
 func (this *QAbstractProxyModel) callVirtualBase_MapSelectionFromSource(selection *QItemSelection) *QItemSelection {
 
-	_ret := C.QAbstractProxyModel_virtualbase_MapSelectionFromSource(unsafe.Pointer(this.h), selection.cPointer())
-	_goptr := newQItemSelection(_ret)
+	_goptr := newQItemSelection(C.QAbstractProxyModel_virtualbase_MapSelectionFromSource(unsafe.Pointer(this.h), selection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -446,7 +434,7 @@ func miqt_exec_callback_QAbstractProxyModel_MapSelectionFromSource(self *C.QAbst
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selection))
+	slotval1 := newQItemSelection(selection)
 
 	virtualReturn := gofunc((&QAbstractProxyModel{h: self}).callVirtualBase_MapSelectionFromSource, slotval1)
 
@@ -504,8 +492,7 @@ func miqt_exec_callback_QAbstractProxyModel_Revert(self *C.QAbstractProxyModel, 
 
 func (this *QAbstractProxyModel) callVirtualBase_Data(proxyIndex *QModelIndex, role int) *QVariant {
 
-	_ret := C.QAbstractProxyModel_virtualbase_Data(unsafe.Pointer(this.h), proxyIndex.cPointer(), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QAbstractProxyModel_virtualbase_Data(unsafe.Pointer(this.h), proxyIndex.cPointer(), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -525,7 +512,8 @@ func miqt_exec_callback_QAbstractProxyModel_Data(self *C.QAbstractProxyModel, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(proxyIndex))
+	slotval1 := newQModelIndex(proxyIndex)
+
 	slotval2 := (int)(role)
 
 	virtualReturn := gofunc((&QAbstractProxyModel{h: self}).callVirtualBase_Data, slotval1, slotval2)
@@ -536,8 +524,7 @@ func miqt_exec_callback_QAbstractProxyModel_Data(self *C.QAbstractProxyModel, cb
 
 func (this *QAbstractProxyModel) callVirtualBase_HeaderData(section int, orientation Orientation, role int) *QVariant {
 
-	_ret := C.QAbstractProxyModel_virtualbase_HeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QAbstractProxyModel_virtualbase_HeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -578,8 +565,7 @@ func (this *QAbstractProxyModel) callVirtualBase_ItemData(index *QModelIndex) ma
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
-		_mapval_ret := _Values[i]
-		_mapval_goptr := newQVariant(_mapval_ret)
+		_mapval_goptr := newQVariant(_Values[i])
 		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_entry_Value := *_mapval_goptr
 
@@ -603,7 +589,7 @@ func miqt_exec_callback_QAbstractProxyModel_ItemData(self *C.QAbstractProxyModel
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QAbstractProxyModel{h: self}).callVirtualBase_ItemData, slotval1)
 	virtualReturn_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
@@ -646,7 +632,7 @@ func miqt_exec_callback_QAbstractProxyModel_Flags(self *C.QAbstractProxyModel, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QAbstractProxyModel{h: self}).callVirtualBase_Flags, slotval1)
 
@@ -674,8 +660,10 @@ func miqt_exec_callback_QAbstractProxyModel_SetData(self *C.QAbstractProxyModel,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval1 := newQModelIndex(index)
+
+	slotval2 := newQVariant(value)
+
 	slotval3 := (int)(role)
 
 	virtualReturn := gofunc((&QAbstractProxyModel{h: self}).callVirtualBase_SetData, slotval1, slotval2, slotval3)
@@ -719,7 +707,8 @@ func miqt_exec_callback_QAbstractProxyModel_SetItemData(self *C.QAbstractProxyMo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
+
 	var roles_mm C.struct_miqt_map = roles
 	roles_ret := make(map[int]QVariant, int(roles_mm.len))
 	roles_Keys := (*[0xffff]C.int)(unsafe.Pointer(roles_mm.keys))
@@ -727,8 +716,7 @@ func miqt_exec_callback_QAbstractProxyModel_SetItemData(self *C.QAbstractProxyMo
 	for i := 0; i < int(roles_mm.len); i++ {
 		roles_entry_Key := (int)(roles_Keys[i])
 
-		roles_mapval_ret := roles_Values[i]
-		roles_mapval_goptr := newQVariant(roles_mapval_ret)
+		roles_mapval_goptr := newQVariant(roles_Values[i])
 		roles_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		roles_entry_Value := *roles_mapval_goptr
 
@@ -766,7 +754,8 @@ func miqt_exec_callback_QAbstractProxyModel_SetHeaderData(self *C.QAbstractProxy
 
 	slotval2 := (Orientation)(orientation)
 
-	slotval3 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval3 := newQVariant(value)
+
 	slotval4 := (int)(role)
 
 	virtualReturn := gofunc((&QAbstractProxyModel{h: self}).callVirtualBase_SetHeaderData, slotval1, slotval2, slotval3, slotval4)
@@ -795,7 +784,7 @@ func miqt_exec_callback_QAbstractProxyModel_ClearItemData(self *C.QAbstractProxy
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QAbstractProxyModel{h: self}).callVirtualBase_ClearItemData, slotval1)
 
@@ -805,8 +794,7 @@ func miqt_exec_callback_QAbstractProxyModel_ClearItemData(self *C.QAbstractProxy
 
 func (this *QAbstractProxyModel) callVirtualBase_Buddy(index *QModelIndex) *QModelIndex {
 
-	_ret := C.QAbstractProxyModel_virtualbase_Buddy(unsafe.Pointer(this.h), index.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QAbstractProxyModel_virtualbase_Buddy(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -826,7 +814,7 @@ func miqt_exec_callback_QAbstractProxyModel_Buddy(self *C.QAbstractProxyModel, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QAbstractProxyModel{h: self}).callVirtualBase_Buddy, slotval1)
 
@@ -854,7 +842,7 @@ func miqt_exec_callback_QAbstractProxyModel_CanFetchMore(self *C.QAbstractProxyM
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QAbstractProxyModel{h: self}).callVirtualBase_CanFetchMore, slotval1)
 
@@ -882,7 +870,7 @@ func miqt_exec_callback_QAbstractProxyModel_FetchMore(self *C.QAbstractProxyMode
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	gofunc((&QAbstractProxyModel{h: self}).callVirtualBase_FetchMore, slotval1)
 
@@ -918,8 +906,7 @@ func miqt_exec_callback_QAbstractProxyModel_Sort(self *C.QAbstractProxyModel, cb
 
 func (this *QAbstractProxyModel) callVirtualBase_Span(index *QModelIndex) *QSize {
 
-	_ret := C.QAbstractProxyModel_virtualbase_Span(unsafe.Pointer(this.h), index.cPointer())
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QAbstractProxyModel_virtualbase_Span(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -939,7 +926,7 @@ func miqt_exec_callback_QAbstractProxyModel_Span(self *C.QAbstractProxyModel, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QAbstractProxyModel{h: self}).callVirtualBase_Span, slotval1)
 
@@ -967,7 +954,7 @@ func miqt_exec_callback_QAbstractProxyModel_HasChildren(self *C.QAbstractProxyMo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QAbstractProxyModel{h: self}).callVirtualBase_HasChildren, slotval1)
 
@@ -977,8 +964,7 @@ func miqt_exec_callback_QAbstractProxyModel_HasChildren(self *C.QAbstractProxyMo
 
 func (this *QAbstractProxyModel) callVirtualBase_Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
 
-	_ret := C.QAbstractProxyModel_virtualbase_Sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), idx.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QAbstractProxyModel_virtualbase_Sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), idx.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1002,7 +988,7 @@ func miqt_exec_callback_QAbstractProxyModel_Sibling(self *C.QAbstractProxyModel,
 
 	slotval2 := (int)(column)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(idx))
+	slotval3 := newQModelIndex(idx)
 
 	virtualReturn := gofunc((&QAbstractProxyModel{h: self}).callVirtualBase_Sibling, slotval1, slotval2, slotval3)
 
@@ -1018,7 +1004,8 @@ func (this *QAbstractProxyModel) callVirtualBase_MimeData(indexes []QModelIndex)
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 
-	return UnsafeNewQMimeData(unsafe.Pointer(C.QAbstractProxyModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma)), nil)
+	return newQMimeData(C.QAbstractProxyModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma), nil)
+
 }
 func (this *QAbstractProxyModel) OnMimeData(slot func(super func(indexes []QModelIndex) *QMimeData, indexes []QModelIndex) *QMimeData) {
 	if !this.isSubclass {
@@ -1039,8 +1026,7 @@ func miqt_exec_callback_QAbstractProxyModel_MimeData(self *C.QAbstractProxyModel
 	indexes_ret := make([]QModelIndex, int(indexes_ma.len))
 	indexes_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(indexes_ma.data)) // hey ya
 	for i := 0; i < int(indexes_ma.len); i++ {
-		indexes_lv_ret := indexes_outCast[i]
-		indexes_lv_goptr := newQModelIndex(indexes_lv_ret)
+		indexes_lv_goptr := newQModelIndex(indexes_outCast[i])
 		indexes_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		indexes_ret[i] = *indexes_lv_goptr
 	}
@@ -1072,14 +1058,15 @@ func miqt_exec_callback_QAbstractProxyModel_CanDropMimeData(self *C.QAbstractPro
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMimeData(unsafe.Pointer(data), nil)
+	slotval1 := newQMimeData(data, nil)
+
 	slotval2 := (DropAction)(action)
 
 	slotval3 := (int)(row)
 
 	slotval4 := (int)(column)
 
-	slotval5 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval5 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QAbstractProxyModel{h: self}).callVirtualBase_CanDropMimeData, slotval1, slotval2, slotval3, slotval4, slotval5)
 
@@ -1107,14 +1094,15 @@ func miqt_exec_callback_QAbstractProxyModel_DropMimeData(self *C.QAbstractProxyM
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMimeData(unsafe.Pointer(data), nil)
+	slotval1 := newQMimeData(data, nil)
+
 	slotval2 := (DropAction)(action)
 
 	slotval3 := (int)(row)
 
 	slotval4 := (int)(column)
 
-	slotval5 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval5 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QAbstractProxyModel{h: self}).callVirtualBase_DropMimeData, slotval1, slotval2, slotval3, slotval4, slotval5)
 
@@ -1290,7 +1278,7 @@ func miqt_exec_callback_QAbstractProxyModel_Index(self *C.QAbstractProxyModel, c
 
 	slotval2 := (int)(column)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc(slotval1, slotval2, slotval3)
 
@@ -1312,7 +1300,7 @@ func miqt_exec_callback_QAbstractProxyModel_Parent(self *C.QAbstractProxyModel, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(child))
+	slotval1 := newQModelIndex(child)
 
 	virtualReturn := gofunc(slotval1)
 
@@ -1334,7 +1322,7 @@ func miqt_exec_callback_QAbstractProxyModel_RowCount(self *C.QAbstractProxyModel
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	virtualReturn := gofunc(slotval1)
 
@@ -1356,7 +1344,7 @@ func miqt_exec_callback_QAbstractProxyModel_ColumnCount(self *C.QAbstractProxyMo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	virtualReturn := gofunc(slotval1)
 
@@ -1388,7 +1376,7 @@ func miqt_exec_callback_QAbstractProxyModel_InsertRows(self *C.QAbstractProxyMod
 
 	slotval2 := (int)(count)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QAbstractProxyModel{h: self}).callVirtualBase_InsertRows, slotval1, slotval2, slotval3)
 
@@ -1420,7 +1408,7 @@ func miqt_exec_callback_QAbstractProxyModel_InsertColumns(self *C.QAbstractProxy
 
 	slotval2 := (int)(count)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QAbstractProxyModel{h: self}).callVirtualBase_InsertColumns, slotval1, slotval2, slotval3)
 
@@ -1452,7 +1440,7 @@ func miqt_exec_callback_QAbstractProxyModel_RemoveRows(self *C.QAbstractProxyMod
 
 	slotval2 := (int)(count)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QAbstractProxyModel{h: self}).callVirtualBase_RemoveRows, slotval1, slotval2, slotval3)
 
@@ -1484,7 +1472,7 @@ func miqt_exec_callback_QAbstractProxyModel_RemoveColumns(self *C.QAbstractProxy
 
 	slotval2 := (int)(count)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QAbstractProxyModel{h: self}).callVirtualBase_RemoveColumns, slotval1, slotval2, slotval3)
 
@@ -1512,12 +1500,14 @@ func miqt_exec_callback_QAbstractProxyModel_MoveRows(self *C.QAbstractProxyModel
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(sourceParent))
+	slotval1 := newQModelIndex(sourceParent)
+
 	slotval2 := (int)(sourceRow)
 
 	slotval3 := (int)(count)
 
-	slotval4 := UnsafeNewQModelIndex(unsafe.Pointer(destinationParent))
+	slotval4 := newQModelIndex(destinationParent)
+
 	slotval5 := (int)(destinationChild)
 
 	virtualReturn := gofunc((&QAbstractProxyModel{h: self}).callVirtualBase_MoveRows, slotval1, slotval2, slotval3, slotval4, slotval5)
@@ -1546,12 +1536,14 @@ func miqt_exec_callback_QAbstractProxyModel_MoveColumns(self *C.QAbstractProxyMo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(sourceParent))
+	slotval1 := newQModelIndex(sourceParent)
+
 	slotval2 := (int)(sourceColumn)
 
 	slotval3 := (int)(count)
 
-	slotval4 := UnsafeNewQModelIndex(unsafe.Pointer(destinationParent))
+	slotval4 := newQModelIndex(destinationParent)
+
 	slotval5 := (int)(destinationChild)
 
 	virtualReturn := gofunc((&QAbstractProxyModel{h: self}).callVirtualBase_MoveColumns, slotval1, slotval2, slotval3, slotval4, slotval5)
@@ -1566,8 +1558,7 @@ func (this *QAbstractProxyModel) callVirtualBase_Match(start *QModelIndex, role 
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -1589,10 +1580,12 @@ func miqt_exec_callback_QAbstractProxyModel_Match(self *C.QAbstractProxyModel, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(start))
+	slotval1 := newQModelIndex(start)
+
 	slotval2 := (int)(role)
 
-	slotval3 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval3 := newQVariant(value)
+
 	slotval4 := (int)(hits)
 
 	slotval5 := (MatchFlag)(flags)
@@ -1629,9 +1622,9 @@ func miqt_exec_callback_QAbstractProxyModel_MultiData(self *C.QAbstractProxyMode
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
-	roleDataSpan_ret := roleDataSpan
-	roleDataSpan_goptr := newQModelRoleDataSpan(roleDataSpan_ret)
+	slotval1 := newQModelIndex(index)
+
+	roleDataSpan_goptr := newQModelRoleDataSpan(roleDataSpan)
 	roleDataSpan_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval2 := *roleDataSpan_goptr
 

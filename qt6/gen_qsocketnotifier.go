@@ -106,7 +106,7 @@ func NewQSocketNotifier4(socket uintptr, param2 QSocketNotifier__Type, parent *Q
 }
 
 func (this *QSocketNotifier) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSocketNotifier_MetaObject(this.h)))
+	return newQMetaObject(C.QSocketNotifier_MetaObject(this.h))
 }
 
 func (this *QSocketNotifier) Metacast(param1 string) unsafe.Pointer {
@@ -190,7 +190,7 @@ func miqt_exec_callback_QSocketNotifier_Event(self *C.QSocketNotifier, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	virtualReturn := gofunc((&QSocketNotifier{h: self}).callVirtualBase_Event, slotval1)
 
@@ -218,8 +218,9 @@ func miqt_exec_callback_QSocketNotifier_EventFilter(self *C.QSocketNotifier, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QSocketNotifier{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -247,7 +248,7 @@ func miqt_exec_callback_QSocketNotifier_TimerEvent(self *C.QSocketNotifier, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QSocketNotifier{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -273,7 +274,7 @@ func miqt_exec_callback_QSocketNotifier_ChildEvent(self *C.QSocketNotifier, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QSocketNotifier{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -299,7 +300,7 @@ func miqt_exec_callback_QSocketNotifier_CustomEvent(self *C.QSocketNotifier, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QSocketNotifier{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -325,7 +326,7 @@ func miqt_exec_callback_QSocketNotifier_ConnectNotify(self *C.QSocketNotifier, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QSocketNotifier{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -351,7 +352,7 @@ func miqt_exec_callback_QSocketNotifier_DisconnectNotify(self *C.QSocketNotifier
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QSocketNotifier{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

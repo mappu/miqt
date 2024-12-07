@@ -102,7 +102,7 @@ func NewQPauseAnimation4(msecs int, parent *QObject) *QPauseAnimation {
 }
 
 func (this *QPauseAnimation) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QPauseAnimation_MetaObject(this.h)))
+	return newQMetaObject(C.QPauseAnimation_MetaObject(this.h))
 }
 
 func (this *QPauseAnimation) Metacast(param1 string) unsafe.Pointer {
@@ -226,7 +226,7 @@ func miqt_exec_callback_QPauseAnimation_Event(self *C.QPauseAnimation, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QPauseAnimation{h: self}).callVirtualBase_Event, slotval1)
 

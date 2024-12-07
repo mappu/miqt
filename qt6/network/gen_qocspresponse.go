@@ -104,15 +104,13 @@ func (this *QOcspResponse) RevocationReason() QOcspRevocationReason {
 }
 
 func (this *QOcspResponse) Responder() *QSslCertificate {
-	_ret := C.QOcspResponse_Responder(this.h)
-	_goptr := newQSslCertificate(_ret)
+	_goptr := newQSslCertificate(C.QOcspResponse_Responder(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QOcspResponse) Subject() *QSslCertificate {
-	_ret := C.QOcspResponse_Subject(this.h)
-	_goptr := newQSslCertificate(_ret)
+	_goptr := newQSslCertificate(C.QOcspResponse_Subject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

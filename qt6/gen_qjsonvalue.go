@@ -186,15 +186,13 @@ func (this *QJsonValue) Swap(other *QJsonValue) {
 }
 
 func QJsonValue_FromVariant(variant *QVariant) *QJsonValue {
-	_ret := C.QJsonValue_FromVariant(variant.cPointer())
-	_goptr := newQJsonValue(_ret)
+	_goptr := newQJsonValue(C.QJsonValue_FromVariant(variant.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValue) ToVariant() *QVariant {
-	_ret := C.QJsonValue_ToVariant(this.h)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QJsonValue_ToVariant(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -266,29 +264,25 @@ func (this *QJsonValue) ToStringWithDefaultValue(defaultValue string) string {
 }
 
 func (this *QJsonValue) ToArray() *QJsonArray {
-	_ret := C.QJsonValue_ToArray(this.h)
-	_goptr := newQJsonArray(_ret)
+	_goptr := newQJsonArray(C.QJsonValue_ToArray(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValue) ToArrayWithDefaultValue(defaultValue *QJsonArray) *QJsonArray {
-	_ret := C.QJsonValue_ToArrayWithDefaultValue(this.h, defaultValue.cPointer())
-	_goptr := newQJsonArray(_ret)
+	_goptr := newQJsonArray(C.QJsonValue_ToArrayWithDefaultValue(this.h, defaultValue.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValue) ToObject() *QJsonObject {
-	_ret := C.QJsonValue_ToObject(this.h)
-	_goptr := newQJsonObject(_ret)
+	_goptr := newQJsonObject(C.QJsonValue_ToObject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValue) ToObjectWithDefaultValue(defaultValue *QJsonObject) *QJsonObject {
-	_ret := C.QJsonValue_ToObjectWithDefaultValue(this.h, defaultValue.cPointer())
-	_goptr := newQJsonObject(_ret)
+	_goptr := newQJsonObject(C.QJsonValue_ToObjectWithDefaultValue(this.h, defaultValue.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -298,15 +292,13 @@ func (this *QJsonValue) OperatorSubscript(key string) *QJsonValue {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	_ret := C.QJsonValue_OperatorSubscript(this.h, key_ms)
-	_goptr := newQJsonValue(_ret)
+	_goptr := newQJsonValue(C.QJsonValue_OperatorSubscript(this.h, key_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValue) OperatorSubscriptWithQsizetype(i int64) *QJsonValue {
-	_ret := C.QJsonValue_OperatorSubscriptWithQsizetype(this.h, (C.ptrdiff_t)(i))
-	_goptr := newQJsonValue(_ret)
+	_goptr := newQJsonValue(C.QJsonValue_OperatorSubscriptWithQsizetype(this.h, (C.ptrdiff_t)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -396,8 +388,7 @@ func NewQJsonValueConstRef(param1 *QJsonValueConstRef) *QJsonValueConstRef {
 }
 
 func (this *QJsonValueConstRef) ToVariant() *QVariant {
-	_ret := C.QJsonValueConstRef_ToVariant(this.h)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QJsonValueConstRef_ToVariant(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -458,22 +449,19 @@ func (this *QJsonValueConstRef) ToString() string {
 }
 
 func (this *QJsonValueConstRef) ToArray() *QJsonArray {
-	_ret := C.QJsonValueConstRef_ToArray(this.h)
-	_goptr := newQJsonArray(_ret)
+	_goptr := newQJsonArray(C.QJsonValueConstRef_ToArray(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValueConstRef) ToObject() *QJsonObject {
-	_ret := C.QJsonValueConstRef_ToObject(this.h)
-	_goptr := newQJsonObject(_ret)
+	_goptr := newQJsonObject(C.QJsonValueConstRef_ToObject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValueConstRef) OperatorSubscriptWithQsizetype(i int64) *QJsonValue {
-	_ret := C.QJsonValueConstRef_OperatorSubscriptWithQsizetype(this.h, (C.ptrdiff_t)(i))
-	_goptr := newQJsonValue(_ret)
+	_goptr := newQJsonValue(C.QJsonValueConstRef_OperatorSubscriptWithQsizetype(this.h, (C.ptrdiff_t)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -608,8 +596,7 @@ func (this *QJsonValueRef) OperatorAssignWithVal(val *QJsonValueRef) {
 }
 
 func (this *QJsonValueRef) ToVariant() *QVariant {
-	_ret := C.QJsonValueRef_ToVariant(this.h)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QJsonValueRef_ToVariant(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -670,22 +657,19 @@ func (this *QJsonValueRef) ToString() string {
 }
 
 func (this *QJsonValueRef) ToArray() *QJsonArray {
-	_ret := C.QJsonValueRef_ToArray(this.h)
-	_goptr := newQJsonArray(_ret)
+	_goptr := newQJsonArray(C.QJsonValueRef_ToArray(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValueRef) ToObject() *QJsonObject {
-	_ret := C.QJsonValueRef_ToObject(this.h)
-	_goptr := newQJsonObject(_ret)
+	_goptr := newQJsonObject(C.QJsonValueRef_ToObject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValueRef) OperatorSubscriptWithQsizetype(i int64) *QJsonValue {
-	_ret := C.QJsonValueRef_OperatorSubscriptWithQsizetype(this.h, (C.ptrdiff_t)(i))
-	_goptr := newQJsonValue(_ret)
+	_goptr := newQJsonValue(C.QJsonValueRef_OperatorSubscriptWithQsizetype(this.h, (C.ptrdiff_t)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

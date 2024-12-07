@@ -76,7 +76,7 @@ func NewQSyntaxHighlighter2(parent *QTextDocument) *QSyntaxHighlighter {
 }
 
 func (this *QSyntaxHighlighter) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSyntaxHighlighter_MetaObject(this.h)))
+	return newQMetaObject(C.QSyntaxHighlighter_MetaObject(this.h))
 }
 
 func (this *QSyntaxHighlighter) Metacast(param1 string) unsafe.Pointer {
@@ -108,7 +108,7 @@ func (this *QSyntaxHighlighter) SetDocument(doc *QTextDocument) {
 }
 
 func (this *QSyntaxHighlighter) Document() *QTextDocument {
-	return UnsafeNewQTextDocument(unsafe.Pointer(C.QSyntaxHighlighter_Document(this.h)), nil)
+	return newQTextDocument(C.QSyntaxHighlighter_Document(this.h), nil)
 }
 
 func (this *QSyntaxHighlighter) Rehighlight() {
@@ -206,7 +206,7 @@ func miqt_exec_callback_QSyntaxHighlighter_Event(self *C.QSyntaxHighlighter, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QSyntaxHighlighter{h: self}).callVirtualBase_Event, slotval1)
 
@@ -234,8 +234,9 @@ func miqt_exec_callback_QSyntaxHighlighter_EventFilter(self *C.QSyntaxHighlighte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QSyntaxHighlighter{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -263,7 +264,7 @@ func miqt_exec_callback_QSyntaxHighlighter_TimerEvent(self *C.QSyntaxHighlighter
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QSyntaxHighlighter{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -289,7 +290,7 @@ func miqt_exec_callback_QSyntaxHighlighter_ChildEvent(self *C.QSyntaxHighlighter
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QSyntaxHighlighter{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -315,7 +316,7 @@ func miqt_exec_callback_QSyntaxHighlighter_CustomEvent(self *C.QSyntaxHighlighte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QSyntaxHighlighter{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -341,7 +342,7 @@ func miqt_exec_callback_QSyntaxHighlighter_ConnectNotify(self *C.QSyntaxHighligh
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QSyntaxHighlighter{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -367,7 +368,7 @@ func miqt_exec_callback_QSyntaxHighlighter_DisconnectNotify(self *C.QSyntaxHighl
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QSyntaxHighlighter{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

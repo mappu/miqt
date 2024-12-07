@@ -214,8 +214,7 @@ func (this *QDnsHostAddressRecord) TimeToLive() uint {
 }
 
 func (this *QDnsHostAddressRecord) Value() *QHostAddress {
-	_ret := C.QDnsHostAddressRecord_Value(this.h)
-	_goptr := newQHostAddress(_ret)
+	_goptr := newQHostAddress(C.QDnsHostAddressRecord_Value(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -723,8 +722,7 @@ func (this *QDnsLookup) SetType(typeVal QDnsLookup__Type) {
 }
 
 func (this *QDnsLookup) Nameserver() *QHostAddress {
-	_ret := C.QDnsLookup_Nameserver(this.h)
-	_goptr := newQHostAddress(_ret)
+	_goptr := newQHostAddress(C.QDnsLookup_Nameserver(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -738,8 +736,7 @@ func (this *QDnsLookup) CanonicalNameRecords() []QDnsDomainNameRecord {
 	_ret := make([]QDnsDomainNameRecord, int(_ma.len))
 	_outCast := (*[0xffff]*C.QDnsDomainNameRecord)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQDnsDomainNameRecord(_lv_ret)
+		_lv_goptr := newQDnsDomainNameRecord(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -751,8 +748,7 @@ func (this *QDnsLookup) HostAddressRecords() []QDnsHostAddressRecord {
 	_ret := make([]QDnsHostAddressRecord, int(_ma.len))
 	_outCast := (*[0xffff]*C.QDnsHostAddressRecord)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQDnsHostAddressRecord(_lv_ret)
+		_lv_goptr := newQDnsHostAddressRecord(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -764,8 +760,7 @@ func (this *QDnsLookup) MailExchangeRecords() []QDnsMailExchangeRecord {
 	_ret := make([]QDnsMailExchangeRecord, int(_ma.len))
 	_outCast := (*[0xffff]*C.QDnsMailExchangeRecord)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQDnsMailExchangeRecord(_lv_ret)
+		_lv_goptr := newQDnsMailExchangeRecord(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -777,8 +772,7 @@ func (this *QDnsLookup) NameServerRecords() []QDnsDomainNameRecord {
 	_ret := make([]QDnsDomainNameRecord, int(_ma.len))
 	_outCast := (*[0xffff]*C.QDnsDomainNameRecord)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQDnsDomainNameRecord(_lv_ret)
+		_lv_goptr := newQDnsDomainNameRecord(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -790,8 +784,7 @@ func (this *QDnsLookup) PointerRecords() []QDnsDomainNameRecord {
 	_ret := make([]QDnsDomainNameRecord, int(_ma.len))
 	_outCast := (*[0xffff]*C.QDnsDomainNameRecord)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQDnsDomainNameRecord(_lv_ret)
+		_lv_goptr := newQDnsDomainNameRecord(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -803,8 +796,7 @@ func (this *QDnsLookup) ServiceRecords() []QDnsServiceRecord {
 	_ret := make([]QDnsServiceRecord, int(_ma.len))
 	_outCast := (*[0xffff]*C.QDnsServiceRecord)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQDnsServiceRecord(_lv_ret)
+		_lv_goptr := newQDnsServiceRecord(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -816,8 +808,7 @@ func (this *QDnsLookup) TextRecords() []QDnsTextRecord {
 	_ret := make([]QDnsTextRecord, int(_ma.len))
 	_outCast := (*[0xffff]*C.QDnsTextRecord)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQDnsTextRecord(_lv_ret)
+		_lv_goptr := newQDnsTextRecord(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -911,7 +902,7 @@ func miqt_exec_callback_QDnsLookup_NameserverChanged(cb C.intptr_t, nameserver *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHostAddress(unsafe.Pointer(nameserver))
+	slotval1 := newQHostAddress(nameserver)
 
 	gofunc(slotval1)
 }
@@ -987,6 +978,7 @@ func miqt_exec_callback_QDnsLookup_EventFilter(self *C.QDnsLookup, cb C.intptr_t
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QDnsLookup{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

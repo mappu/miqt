@@ -76,7 +76,7 @@ func NewQThreadPool2(parent *QObject) *QThreadPool {
 }
 
 func (this *QThreadPool) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QThreadPool_MetaObject(this.h)))
+	return newQMetaObject(C.QThreadPool_MetaObject(this.h))
 }
 
 func (this *QThreadPool) Metacast(param1 string) unsafe.Pointer {
@@ -104,7 +104,7 @@ func QThreadPool_TrUtf8(s string) string {
 }
 
 func QThreadPool_GlobalInstance() *QThreadPool {
-	return UnsafeNewQThreadPool(unsafe.Pointer(C.QThreadPool_GlobalInstance()), nil)
+	return newQThreadPool(C.QThreadPool_GlobalInstance(), nil)
 }
 
 func (this *QThreadPool) Start(runnable *QRunnable) {
@@ -243,7 +243,7 @@ func miqt_exec_callback_QThreadPool_Event(self *C.QThreadPool, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QThreadPool{h: self}).callVirtualBase_Event, slotval1)
 
@@ -271,8 +271,9 @@ func miqt_exec_callback_QThreadPool_EventFilter(self *C.QThreadPool, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QThreadPool{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -300,7 +301,7 @@ func miqt_exec_callback_QThreadPool_TimerEvent(self *C.QThreadPool, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QThreadPool{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -326,7 +327,7 @@ func miqt_exec_callback_QThreadPool_ChildEvent(self *C.QThreadPool, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QThreadPool{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -352,7 +353,7 @@ func miqt_exec_callback_QThreadPool_CustomEvent(self *C.QThreadPool, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QThreadPool{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -378,7 +379,7 @@ func miqt_exec_callback_QThreadPool_ConnectNotify(self *C.QThreadPool, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QThreadPool{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -404,7 +405,7 @@ func miqt_exec_callback_QThreadPool_DisconnectNotify(self *C.QThreadPool, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QThreadPool{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

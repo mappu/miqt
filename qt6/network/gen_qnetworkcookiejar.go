@@ -100,8 +100,7 @@ func (this *QNetworkCookieJar) CookiesForUrl(url *qt6.QUrl) []QNetworkCookie {
 	_ret := make([]QNetworkCookie, int(_ma.len))
 	_outCast := (*[0xffff]*C.QNetworkCookie)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQNetworkCookie(_lv_ret)
+		_lv_goptr := newQNetworkCookie(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -158,8 +157,7 @@ func (this *QNetworkCookieJar) callVirtualBase_CookiesForUrl(url *qt6.QUrl) []QN
 	_ret := make([]QNetworkCookie, int(_ma.len))
 	_outCast := (*[0xffff]*C.QNetworkCookie)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQNetworkCookie(_lv_ret)
+		_lv_goptr := newQNetworkCookie(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -225,8 +223,7 @@ func miqt_exec_callback_QNetworkCookieJar_SetCookiesFromUrl(self *C.QNetworkCook
 	cookieList_ret := make([]QNetworkCookie, int(cookieList_ma.len))
 	cookieList_outCast := (*[0xffff]*C.QNetworkCookie)(unsafe.Pointer(cookieList_ma.data)) // hey ya
 	for i := 0; i < int(cookieList_ma.len); i++ {
-		cookieList_lv_ret := cookieList_outCast[i]
-		cookieList_lv_goptr := newQNetworkCookie(cookieList_lv_ret)
+		cookieList_lv_goptr := newQNetworkCookie(cookieList_outCast[i])
 		cookieList_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		cookieList_ret[i] = *cookieList_lv_goptr
 	}
@@ -260,7 +257,7 @@ func miqt_exec_callback_QNetworkCookieJar_InsertCookie(self *C.QNetworkCookieJar
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQNetworkCookie(unsafe.Pointer(cookie))
+	slotval1 := newQNetworkCookie(cookie)
 
 	virtualReturn := gofunc((&QNetworkCookieJar{h: self}).callVirtualBase_InsertCookie, slotval1)
 
@@ -288,7 +285,7 @@ func miqt_exec_callback_QNetworkCookieJar_UpdateCookie(self *C.QNetworkCookieJar
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQNetworkCookie(unsafe.Pointer(cookie))
+	slotval1 := newQNetworkCookie(cookie)
 
 	virtualReturn := gofunc((&QNetworkCookieJar{h: self}).callVirtualBase_UpdateCookie, slotval1)
 
@@ -316,7 +313,7 @@ func miqt_exec_callback_QNetworkCookieJar_DeleteCookie(self *C.QNetworkCookieJar
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQNetworkCookie(unsafe.Pointer(cookie))
+	slotval1 := newQNetworkCookie(cookie)
 
 	virtualReturn := gofunc((&QNetworkCookieJar{h: self}).callVirtualBase_DeleteCookie, slotval1)
 
@@ -344,7 +341,8 @@ func miqt_exec_callback_QNetworkCookieJar_ValidateCookie(self *C.QNetworkCookieJ
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQNetworkCookie(unsafe.Pointer(cookie))
+	slotval1 := newQNetworkCookie(cookie)
+
 	slotval2 := qt6.UnsafeNewQUrl(unsafe.Pointer(url))
 
 	virtualReturn := gofunc((&QNetworkCookieJar{h: self}).callVirtualBase_ValidateCookie, slotval1, slotval2)
@@ -402,6 +400,7 @@ func miqt_exec_callback_QNetworkCookieJar_EventFilter(self *C.QNetworkCookieJar,
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QNetworkCookieJar{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

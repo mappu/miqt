@@ -112,7 +112,7 @@ func NewQInputDialog3(parent *QWidget, flags WindowType) *QInputDialog {
 }
 
 func (this *QInputDialog) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QInputDialog_MetaObject(this.h)))
+	return newQMetaObject(C.QInputDialog_MetaObject(this.h))
 }
 
 func (this *QInputDialog) Metacast(param1 string) unsafe.Pointer {
@@ -339,15 +339,13 @@ func (this *QInputDialog) CancelButtonText() string {
 }
 
 func (this *QInputDialog) MinimumSizeHint() *QSize {
-	_ret := C.QInputDialog_MinimumSizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QInputDialog_MinimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QInputDialog) SizeHint() *QSize {
-	_ret := C.QInputDialog_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QInputDialog_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1079,8 +1077,7 @@ func QInputDialog_GetDouble9(parent *QWidget, title string, label string, value 
 
 func (this *QInputDialog) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QInputDialog_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QInputDialog_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1107,8 +1104,7 @@ func miqt_exec_callback_QInputDialog_MinimumSizeHint(self *C.QInputDialog, cb C.
 
 func (this *QInputDialog) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QInputDialog_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QInputDialog_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1299,7 +1295,7 @@ func miqt_exec_callback_QInputDialog_KeyPressEvent(self *C.QInputDialog, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQKeyEvent(param1, nil, nil)
 
 	gofunc((&QInputDialog{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -1325,7 +1321,7 @@ func miqt_exec_callback_QInputDialog_CloseEvent(self *C.QInputDialog, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQCloseEvent(param1, nil)
 
 	gofunc((&QInputDialog{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -1351,7 +1347,7 @@ func miqt_exec_callback_QInputDialog_ShowEvent(self *C.QInputDialog, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQShowEvent(param1, nil)
 
 	gofunc((&QInputDialog{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1377,7 +1373,7 @@ func miqt_exec_callback_QInputDialog_ResizeEvent(self *C.QInputDialog, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQResizeEvent(param1, nil)
 
 	gofunc((&QInputDialog{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -1403,7 +1399,7 @@ func miqt_exec_callback_QInputDialog_ContextMenuEvent(self *C.QInputDialog, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQContextMenuEvent(param1, nil, nil)
 
 	gofunc((&QInputDialog{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -1429,8 +1425,9 @@ func miqt_exec_callback_QInputDialog_EventFilter(self *C.QInputDialog, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(param1))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(param2))
+	slotval1 := newQObject(param1)
+
+	slotval2 := newQEvent(param2)
 
 	virtualReturn := gofunc((&QInputDialog{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 

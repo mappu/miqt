@@ -274,7 +274,7 @@ func miqt_exec_callback_QPrintPreviewWidget_PaintRequested(cb C.intptr_t, printe
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPrinter(unsafe.Pointer(printer), nil, nil)
+	slotval1 := newQPrinter(printer, nil, nil)
 
 	gofunc(slotval1)
 }
@@ -379,8 +379,7 @@ func miqt_exec_callback_QPrintPreviewWidget_DevType(self *C.QPrintPreviewWidget,
 
 func (this *QPrintPreviewWidget) callVirtualBase_SizeHint() *qt6.QSize {
 
-	_ret := C.QPrintPreviewWidget_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QPrintPreviewWidget_virtualbase_SizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -407,8 +406,7 @@ func miqt_exec_callback_QPrintPreviewWidget_SizeHint(self *C.QPrintPreviewWidget
 
 func (this *QPrintPreviewWidget) callVirtualBase_MinimumSizeHint() *qt6.QSize {
 
-	_ret := C.QPrintPreviewWidget_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QPrintPreviewWidget_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -489,6 +487,7 @@ func miqt_exec_callback_QPrintPreviewWidget_HasHeightForWidth(self *C.QPrintPrev
 func (this *QPrintPreviewWidget) callVirtualBase_PaintEngine() *qt6.QPaintEngine {
 
 	return qt6.UnsafeNewQPaintEngine(unsafe.Pointer(C.QPrintPreviewWidget_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+
 }
 func (this *QPrintPreviewWidget) OnPaintEngine(slot func(super func() *qt6.QPaintEngine) *qt6.QPaintEngine) {
 	if !this.isSubclass {
@@ -1282,6 +1281,7 @@ func miqt_exec_callback_QPrintPreviewWidget_InitPainter(self *C.QPrintPreviewWid
 func (this *QPrintPreviewWidget) callVirtualBase_Redirected(offset *qt6.QPoint) *qt6.QPaintDevice {
 
 	return qt6.UnsafeNewQPaintDevice(unsafe.Pointer(C.QPrintPreviewWidget_virtualbase_Redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
+
 }
 func (this *QPrintPreviewWidget) OnRedirected(slot func(super func(offset *qt6.QPoint) *qt6.QPaintDevice, offset *qt6.QPoint) *qt6.QPaintDevice) {
 	if !this.isSubclass {
@@ -1309,6 +1309,7 @@ func miqt_exec_callback_QPrintPreviewWidget_Redirected(self *C.QPrintPreviewWidg
 func (this *QPrintPreviewWidget) callVirtualBase_SharedPainter() *qt6.QPainter {
 
 	return qt6.UnsafeNewQPainter(unsafe.Pointer(C.QPrintPreviewWidget_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+
 }
 func (this *QPrintPreviewWidget) OnSharedPainter(slot func(super func() *qt6.QPainter) *qt6.QPainter) {
 	if !this.isSubclass {
@@ -1358,8 +1359,7 @@ func miqt_exec_callback_QPrintPreviewWidget_InputMethodEvent(self *C.QPrintPrevi
 
 func (this *QPrintPreviewWidget) callVirtualBase_InputMethodQuery(param1 qt6.InputMethodQuery) *qt6.QVariant {
 
-	_ret := C.QPrintPreviewWidget_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QPrintPreviewWidget_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

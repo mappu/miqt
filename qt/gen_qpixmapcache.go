@@ -62,7 +62,7 @@ func QPixmapCache_Find(key string) *QPixmap {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	return UnsafeNewQPixmap(unsafe.Pointer(C.QPixmapCache_Find(key_ms)), nil)
+	return newQPixmap(C.QPixmapCache_Find(key_ms), nil)
 }
 
 func QPixmapCache_Find2(key string, pixmap *QPixmap) bool {
@@ -94,8 +94,7 @@ func QPixmapCache_Insert(key string, pixmap *QPixmap) bool {
 }
 
 func QPixmapCache_InsertWithPixmap(pixmap *QPixmap) *QPixmapCache__Key {
-	_ret := C.QPixmapCache_InsertWithPixmap(pixmap.cPointer())
-	_goptr := newQPixmapCache__Key(_ret)
+	_goptr := newQPixmapCache__Key(C.QPixmapCache_InsertWithPixmap(pixmap.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

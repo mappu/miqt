@@ -101,7 +101,7 @@ func NewQGraphicsEffect2(parent *QObject) *QGraphicsEffect {
 }
 
 func (this *QGraphicsEffect) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsEffect_MetaObject(this.h)))
+	return newQMetaObject(C.QGraphicsEffect_MetaObject(this.h))
 }
 
 func (this *QGraphicsEffect) Metacast(param1 string) unsafe.Pointer {
@@ -120,15 +120,13 @@ func QGraphicsEffect_Tr(s string) string {
 }
 
 func (this *QGraphicsEffect) BoundingRectFor(sourceRect *QRectF) *QRectF {
-	_ret := C.QGraphicsEffect_BoundingRectFor(this.h, sourceRect.cPointer())
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsEffect_BoundingRectFor(this.h, sourceRect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsEffect) BoundingRect() *QRectF {
-	_ret := C.QGraphicsEffect_BoundingRect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsEffect_BoundingRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -189,8 +187,7 @@ func QGraphicsEffect_Tr3(s string, c string, n int) string {
 
 func (this *QGraphicsEffect) callVirtualBase_BoundingRectFor(sourceRect *QRectF) *QRectF {
 
-	_ret := C.QGraphicsEffect_virtualbase_BoundingRectFor(unsafe.Pointer(this.h), sourceRect.cPointer())
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsEffect_virtualbase_BoundingRectFor(unsafe.Pointer(this.h), sourceRect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -210,7 +207,7 @@ func miqt_exec_callback_QGraphicsEffect_BoundingRectFor(self *C.QGraphicsEffect,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRectF(unsafe.Pointer(sourceRect))
+	slotval1 := newQRectF(sourceRect)
 
 	virtualReturn := gofunc((&QGraphicsEffect{h: self}).callVirtualBase_BoundingRectFor, slotval1)
 
@@ -232,7 +229,7 @@ func miqt_exec_callback_QGraphicsEffect_Draw(self *C.QGraphicsEffect, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval1 := newQPainter(painter)
 
 	gofunc(slotval1)
 
@@ -284,7 +281,7 @@ func miqt_exec_callback_QGraphicsEffect_Event(self *C.QGraphicsEffect, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGraphicsEffect{h: self}).callVirtualBase_Event, slotval1)
 
@@ -312,8 +309,9 @@ func miqt_exec_callback_QGraphicsEffect_EventFilter(self *C.QGraphicsEffect, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGraphicsEffect{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -341,7 +339,7 @@ func miqt_exec_callback_QGraphicsEffect_TimerEvent(self *C.QGraphicsEffect, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QGraphicsEffect{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -367,7 +365,7 @@ func miqt_exec_callback_QGraphicsEffect_ChildEvent(self *C.QGraphicsEffect, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QGraphicsEffect{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -393,7 +391,7 @@ func miqt_exec_callback_QGraphicsEffect_CustomEvent(self *C.QGraphicsEffect, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QGraphicsEffect{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -419,7 +417,7 @@ func miqt_exec_callback_QGraphicsEffect_ConnectNotify(self *C.QGraphicsEffect, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QGraphicsEffect{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -445,7 +443,7 @@ func miqt_exec_callback_QGraphicsEffect_DisconnectNotify(self *C.QGraphicsEffect
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QGraphicsEffect{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
@@ -529,7 +527,7 @@ func NewQGraphicsColorizeEffect2(parent *QObject) *QGraphicsColorizeEffect {
 }
 
 func (this *QGraphicsColorizeEffect) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsColorizeEffect_MetaObject(this.h)))
+	return newQMetaObject(C.QGraphicsColorizeEffect_MetaObject(this.h))
 }
 
 func (this *QGraphicsColorizeEffect) Metacast(param1 string) unsafe.Pointer {
@@ -548,8 +546,7 @@ func QGraphicsColorizeEffect_Tr(s string) string {
 }
 
 func (this *QGraphicsColorizeEffect) Color() *QColor {
-	_ret := C.QGraphicsColorizeEffect_Color(this.h)
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QGraphicsColorizeEffect_Color(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -581,7 +578,7 @@ func miqt_exec_callback_QGraphicsColorizeEffect_ColorChanged(cb C.intptr_t, colo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQColor(unsafe.Pointer(color))
+	slotval1 := newQColor(color)
 
 	gofunc(slotval1)
 }
@@ -648,7 +645,7 @@ func miqt_exec_callback_QGraphicsColorizeEffect_Draw(self *C.QGraphicsColorizeEf
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval1 := newQPainter(painter)
 
 	gofunc((&QGraphicsColorizeEffect{h: self}).callVirtualBase_Draw, slotval1)
 
@@ -656,8 +653,7 @@ func miqt_exec_callback_QGraphicsColorizeEffect_Draw(self *C.QGraphicsColorizeEf
 
 func (this *QGraphicsColorizeEffect) callVirtualBase_BoundingRectFor(sourceRect *QRectF) *QRectF {
 
-	_ret := C.QGraphicsColorizeEffect_virtualbase_BoundingRectFor(unsafe.Pointer(this.h), sourceRect.cPointer())
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsColorizeEffect_virtualbase_BoundingRectFor(unsafe.Pointer(this.h), sourceRect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -677,7 +673,7 @@ func miqt_exec_callback_QGraphicsColorizeEffect_BoundingRectFor(self *C.QGraphic
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRectF(unsafe.Pointer(sourceRect))
+	slotval1 := newQRectF(sourceRect)
 
 	virtualReturn := gofunc((&QGraphicsColorizeEffect{h: self}).callVirtualBase_BoundingRectFor, slotval1)
 
@@ -789,7 +785,7 @@ func NewQGraphicsBlurEffect2(parent *QObject) *QGraphicsBlurEffect {
 }
 
 func (this *QGraphicsBlurEffect) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsBlurEffect_MetaObject(this.h)))
+	return newQMetaObject(C.QGraphicsBlurEffect_MetaObject(this.h))
 }
 
 func (this *QGraphicsBlurEffect) Metacast(param1 string) unsafe.Pointer {
@@ -808,8 +804,7 @@ func QGraphicsBlurEffect_Tr(s string) string {
 }
 
 func (this *QGraphicsBlurEffect) BoundingRectFor(rect *QRectF) *QRectF {
-	_ret := C.QGraphicsBlurEffect_BoundingRectFor(this.h, rect.cPointer())
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsBlurEffect_BoundingRectFor(this.h, rect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -894,8 +889,7 @@ func QGraphicsBlurEffect_Tr3(s string, c string, n int) string {
 
 func (this *QGraphicsBlurEffect) callVirtualBase_BoundingRectFor(rect *QRectF) *QRectF {
 
-	_ret := C.QGraphicsBlurEffect_virtualbase_BoundingRectFor(unsafe.Pointer(this.h), rect.cPointer())
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsBlurEffect_virtualbase_BoundingRectFor(unsafe.Pointer(this.h), rect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -915,7 +909,7 @@ func miqt_exec_callback_QGraphicsBlurEffect_BoundingRectFor(self *C.QGraphicsBlu
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRectF(unsafe.Pointer(rect))
+	slotval1 := newQRectF(rect)
 
 	virtualReturn := gofunc((&QGraphicsBlurEffect{h: self}).callVirtualBase_BoundingRectFor, slotval1)
 
@@ -943,7 +937,7 @@ func miqt_exec_callback_QGraphicsBlurEffect_Draw(self *C.QGraphicsBlurEffect, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval1 := newQPainter(painter)
 
 	gofunc((&QGraphicsBlurEffect{h: self}).callVirtualBase_Draw, slotval1)
 
@@ -1053,7 +1047,7 @@ func NewQGraphicsDropShadowEffect2(parent *QObject) *QGraphicsDropShadowEffect {
 }
 
 func (this *QGraphicsDropShadowEffect) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsDropShadowEffect_MetaObject(this.h)))
+	return newQMetaObject(C.QGraphicsDropShadowEffect_MetaObject(this.h))
 }
 
 func (this *QGraphicsDropShadowEffect) Metacast(param1 string) unsafe.Pointer {
@@ -1072,15 +1066,13 @@ func QGraphicsDropShadowEffect_Tr(s string) string {
 }
 
 func (this *QGraphicsDropShadowEffect) BoundingRectFor(rect *QRectF) *QRectF {
-	_ret := C.QGraphicsDropShadowEffect_BoundingRectFor(this.h, rect.cPointer())
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsDropShadowEffect_BoundingRectFor(this.h, rect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsDropShadowEffect) Offset() *QPointF {
-	_ret := C.QGraphicsDropShadowEffect_Offset(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QGraphicsDropShadowEffect_Offset(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1098,8 +1090,7 @@ func (this *QGraphicsDropShadowEffect) BlurRadius() float64 {
 }
 
 func (this *QGraphicsDropShadowEffect) Color() *QColor {
-	_ret := C.QGraphicsDropShadowEffect_Color(this.h)
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QGraphicsDropShadowEffect_Color(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1147,7 +1138,7 @@ func miqt_exec_callback_QGraphicsDropShadowEffect_OffsetChanged(cb C.intptr_t, o
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPointF(unsafe.Pointer(offset))
+	slotval1 := newQPointF(offset)
 
 	gofunc(slotval1)
 }
@@ -1187,7 +1178,7 @@ func miqt_exec_callback_QGraphicsDropShadowEffect_ColorChanged(cb C.intptr_t, co
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQColor(unsafe.Pointer(color))
+	slotval1 := newQColor(color)
 
 	gofunc(slotval1)
 }
@@ -1216,8 +1207,7 @@ func QGraphicsDropShadowEffect_Tr3(s string, c string, n int) string {
 
 func (this *QGraphicsDropShadowEffect) callVirtualBase_BoundingRectFor(rect *QRectF) *QRectF {
 
-	_ret := C.QGraphicsDropShadowEffect_virtualbase_BoundingRectFor(unsafe.Pointer(this.h), rect.cPointer())
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsDropShadowEffect_virtualbase_BoundingRectFor(unsafe.Pointer(this.h), rect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1237,7 +1227,7 @@ func miqt_exec_callback_QGraphicsDropShadowEffect_BoundingRectFor(self *C.QGraph
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRectF(unsafe.Pointer(rect))
+	slotval1 := newQRectF(rect)
 
 	virtualReturn := gofunc((&QGraphicsDropShadowEffect{h: self}).callVirtualBase_BoundingRectFor, slotval1)
 
@@ -1265,7 +1255,7 @@ func miqt_exec_callback_QGraphicsDropShadowEffect_Draw(self *C.QGraphicsDropShad
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval1 := newQPainter(painter)
 
 	gofunc((&QGraphicsDropShadowEffect{h: self}).callVirtualBase_Draw, slotval1)
 
@@ -1375,7 +1365,7 @@ func NewQGraphicsOpacityEffect2(parent *QObject) *QGraphicsOpacityEffect {
 }
 
 func (this *QGraphicsOpacityEffect) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsOpacityEffect_MetaObject(this.h)))
+	return newQMetaObject(C.QGraphicsOpacityEffect_MetaObject(this.h))
 }
 
 func (this *QGraphicsOpacityEffect) Metacast(param1 string) unsafe.Pointer {
@@ -1398,8 +1388,7 @@ func (this *QGraphicsOpacityEffect) Opacity() float64 {
 }
 
 func (this *QGraphicsOpacityEffect) OpacityMask() *QBrush {
-	_ret := C.QGraphicsOpacityEffect_OpacityMask(this.h)
-	_goptr := newQBrush(_ret)
+	_goptr := newQBrush(C.QGraphicsOpacityEffect_OpacityMask(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1447,7 +1436,7 @@ func miqt_exec_callback_QGraphicsOpacityEffect_OpacityMaskChanged(cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQBrush(unsafe.Pointer(mask))
+	slotval1 := newQBrush(mask)
 
 	gofunc(slotval1)
 }
@@ -1494,7 +1483,7 @@ func miqt_exec_callback_QGraphicsOpacityEffect_Draw(self *C.QGraphicsOpacityEffe
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval1 := newQPainter(painter)
 
 	gofunc((&QGraphicsOpacityEffect{h: self}).callVirtualBase_Draw, slotval1)
 
@@ -1502,8 +1491,7 @@ func miqt_exec_callback_QGraphicsOpacityEffect_Draw(self *C.QGraphicsOpacityEffe
 
 func (this *QGraphicsOpacityEffect) callVirtualBase_BoundingRectFor(sourceRect *QRectF) *QRectF {
 
-	_ret := C.QGraphicsOpacityEffect_virtualbase_BoundingRectFor(unsafe.Pointer(this.h), sourceRect.cPointer())
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsOpacityEffect_virtualbase_BoundingRectFor(unsafe.Pointer(this.h), sourceRect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1523,7 +1511,7 @@ func miqt_exec_callback_QGraphicsOpacityEffect_BoundingRectFor(self *C.QGraphics
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRectF(unsafe.Pointer(sourceRect))
+	slotval1 := newQRectF(sourceRect)
 
 	virtualReturn := gofunc((&QGraphicsOpacityEffect{h: self}).callVirtualBase_BoundingRectFor, slotval1)
 

@@ -114,8 +114,7 @@ func (this *QAudioDecoder) IsDecoding() bool {
 }
 
 func (this *QAudioDecoder) Source() *qt6.QUrl {
-	_ret := C.QAudioDecoder_Source(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QAudioDecoder_Source(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -133,8 +132,7 @@ func (this *QAudioDecoder) SetSourceDevice(device *qt6.QIODevice) {
 }
 
 func (this *QAudioDecoder) AudioFormat() *QAudioFormat {
-	_ret := C.QAudioDecoder_AudioFormat(this.h)
-	_goptr := newQAudioFormat(_ret)
+	_goptr := newQAudioFormat(C.QAudioDecoder_AudioFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -155,8 +153,7 @@ func (this *QAudioDecoder) ErrorString() string {
 }
 
 func (this *QAudioDecoder) Read() *QAudioBuffer {
-	_ret := C.QAudioDecoder_Read(this.h)
-	_goptr := newQAudioBuffer(_ret)
+	_goptr := newQAudioBuffer(C.QAudioDecoder_Read(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -270,7 +267,7 @@ func miqt_exec_callback_QAudioDecoder_FormatChanged(cb C.intptr_t, format *C.QAu
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAudioFormat(unsafe.Pointer(format))
+	slotval1 := newQAudioFormat(format)
 
 	gofunc(slotval1)
 }
@@ -423,6 +420,7 @@ func miqt_exec_callback_QAudioDecoder_EventFilter(self *C.QAudioDecoder, cb C.in
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QAudioDecoder{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

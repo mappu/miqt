@@ -100,8 +100,7 @@ func QMediaDevices_AudioInputs() []QAudioDevice {
 	_ret := make([]QAudioDevice, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAudioDevice)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQAudioDevice(_lv_ret)
+		_lv_goptr := newQAudioDevice(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -113,8 +112,7 @@ func QMediaDevices_AudioOutputs() []QAudioDevice {
 	_ret := make([]QAudioDevice, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAudioDevice)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQAudioDevice(_lv_ret)
+		_lv_goptr := newQAudioDevice(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -126,8 +124,7 @@ func QMediaDevices_VideoInputs() []QCameraDevice {
 	_ret := make([]QCameraDevice, int(_ma.len))
 	_outCast := (*[0xffff]*C.QCameraDevice)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQCameraDevice(_lv_ret)
+		_lv_goptr := newQCameraDevice(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -135,22 +132,19 @@ func QMediaDevices_VideoInputs() []QCameraDevice {
 }
 
 func QMediaDevices_DefaultAudioInput() *QAudioDevice {
-	_ret := C.QMediaDevices_DefaultAudioInput()
-	_goptr := newQAudioDevice(_ret)
+	_goptr := newQAudioDevice(C.QMediaDevices_DefaultAudioInput())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QMediaDevices_DefaultAudioOutput() *QAudioDevice {
-	_ret := C.QMediaDevices_DefaultAudioOutput()
-	_goptr := newQAudioDevice(_ret)
+	_goptr := newQAudioDevice(C.QMediaDevices_DefaultAudioOutput())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QMediaDevices_DefaultVideoInput() *QCameraDevice {
-	_ret := C.QMediaDevices_DefaultVideoInput()
-	_goptr := newQCameraDevice(_ret)
+	_goptr := newQCameraDevice(C.QMediaDevices_DefaultVideoInput())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -277,6 +271,7 @@ func miqt_exec_callback_QMediaDevices_EventFilter(self *C.QMediaDevices, cb C.in
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QMediaDevices{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

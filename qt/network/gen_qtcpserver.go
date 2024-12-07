@@ -129,8 +129,7 @@ func (this *QTcpServer) ServerPort() uint16 {
 }
 
 func (this *QTcpServer) ServerAddress() *QHostAddress {
-	_ret := C.QTcpServer_ServerAddress(this.h)
-	_goptr := newQHostAddress(_ret)
+	_goptr := newQHostAddress(C.QTcpServer_ServerAddress(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -152,7 +151,7 @@ func (this *QTcpServer) HasPendingConnections() bool {
 }
 
 func (this *QTcpServer) NextPendingConnection() *QTcpSocket {
-	return UnsafeNewQTcpSocket(unsafe.Pointer(C.QTcpServer_NextPendingConnection(this.h)), nil, nil, nil)
+	return newQTcpSocket(C.QTcpServer_NextPendingConnection(this.h), nil, nil, nil)
 }
 
 func (this *QTcpServer) ServerError() QAbstractSocket__SocketError {
@@ -179,8 +178,7 @@ func (this *QTcpServer) SetProxy(networkProxy *QNetworkProxy) {
 }
 
 func (this *QTcpServer) Proxy() *QNetworkProxy {
-	_ret := C.QTcpServer_Proxy(this.h)
-	_goptr := newQNetworkProxy(_ret)
+	_goptr := newQNetworkProxy(C.QTcpServer_Proxy(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -309,7 +307,8 @@ func miqt_exec_callback_QTcpServer_HasPendingConnections(self *C.QTcpServer, cb 
 
 func (this *QTcpServer) callVirtualBase_NextPendingConnection() *QTcpSocket {
 
-	return UnsafeNewQTcpSocket(unsafe.Pointer(C.QTcpServer_virtualbase_NextPendingConnection(unsafe.Pointer(this.h))), nil, nil, nil)
+	return newQTcpSocket(C.QTcpServer_virtualbase_NextPendingConnection(unsafe.Pointer(this.h)), nil, nil, nil)
+
 }
 func (this *QTcpServer) OnNextPendingConnection(slot func(super func() *QTcpSocket) *QTcpSocket) {
 	if !this.isSubclass {
@@ -406,6 +405,7 @@ func miqt_exec_callback_QTcpServer_EventFilter(self *C.QTcpServer, cb C.intptr_t
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QTcpServer{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

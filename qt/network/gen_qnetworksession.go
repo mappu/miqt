@@ -138,15 +138,13 @@ func (this *QNetworkSession) IsOpen() bool {
 }
 
 func (this *QNetworkSession) Configuration() *QNetworkConfiguration {
-	_ret := C.QNetworkSession_Configuration(this.h)
-	_goptr := newQNetworkConfiguration(_ret)
+	_goptr := newQNetworkConfiguration(C.QNetworkSession_Configuration(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkSession) Interface() *QNetworkInterface {
-	_ret := C.QNetworkSession_Interface(this.h)
-	_goptr := newQNetworkInterface(_ret)
+	_goptr := newQNetworkInterface(C.QNetworkSession_Interface(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -171,8 +169,7 @@ func (this *QNetworkSession) SessionProperty(key string) *qt.QVariant {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	_ret := C.QNetworkSession_SessionProperty(this.h, key_ms)
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QNetworkSession_SessionProperty(this.h, key_ms)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -322,7 +319,8 @@ func miqt_exec_callback_QNetworkSession_PreferredConfigurationChanged(cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQNetworkConfiguration(unsafe.Pointer(config))
+	slotval1 := newQNetworkConfiguration(config)
+
 	slotval2 := (bool)(isSeamless)
 
 	gofunc(slotval1, slotval2)
@@ -514,6 +512,7 @@ func miqt_exec_callback_QNetworkSession_EventFilter(self *C.QNetworkSession, cb 
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QNetworkSession{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

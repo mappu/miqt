@@ -182,7 +182,7 @@ func NewQDateTimeEdit8(t QTime, parent *QWidget) *QDateTimeEdit {
 }
 
 func (this *QDateTimeEdit) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QDateTimeEdit_MetaObject(this.h)))
+	return newQMetaObject(C.QDateTimeEdit_MetaObject(this.h))
 }
 
 func (this *QDateTimeEdit) Metacast(param1 string) unsafe.Pointer {
@@ -201,29 +201,25 @@ func QDateTimeEdit_Tr(s string) string {
 }
 
 func (this *QDateTimeEdit) DateTime() *QDateTime {
-	_ret := C.QDateTimeEdit_DateTime(this.h)
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QDateTimeEdit_DateTime(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDateTimeEdit) Date() *QDate {
-	_ret := C.QDateTimeEdit_Date(this.h)
-	_goptr := newQDate(_ret)
+	_goptr := newQDate(C.QDateTimeEdit_Date(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDateTimeEdit) Time() *QTime {
-	_ret := C.QDateTimeEdit_Time(this.h)
-	_goptr := newQTime(_ret)
+	_goptr := newQTime(C.QDateTimeEdit_Time(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDateTimeEdit) Calendar() *QCalendar {
-	_ret := C.QDateTimeEdit_Calendar(this.h)
-	_goptr := newQCalendar(_ret)
+	_goptr := newQCalendar(C.QDateTimeEdit_Calendar(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -233,8 +229,7 @@ func (this *QDateTimeEdit) SetCalendar(calendar QCalendar) {
 }
 
 func (this *QDateTimeEdit) MinimumDateTime() *QDateTime {
-	_ret := C.QDateTimeEdit_MinimumDateTime(this.h)
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QDateTimeEdit_MinimumDateTime(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -248,8 +243,7 @@ func (this *QDateTimeEdit) SetMinimumDateTime(dt *QDateTime) {
 }
 
 func (this *QDateTimeEdit) MaximumDateTime() *QDateTime {
-	_ret := C.QDateTimeEdit_MaximumDateTime(this.h)
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QDateTimeEdit_MaximumDateTime(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -267,8 +261,7 @@ func (this *QDateTimeEdit) SetDateTimeRange(min *QDateTime, max *QDateTime) {
 }
 
 func (this *QDateTimeEdit) MinimumDate() *QDate {
-	_ret := C.QDateTimeEdit_MinimumDate(this.h)
-	_goptr := newQDate(_ret)
+	_goptr := newQDate(C.QDateTimeEdit_MinimumDate(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -282,8 +275,7 @@ func (this *QDateTimeEdit) ClearMinimumDate() {
 }
 
 func (this *QDateTimeEdit) MaximumDate() *QDate {
-	_ret := C.QDateTimeEdit_MaximumDate(this.h)
-	_goptr := newQDate(_ret)
+	_goptr := newQDate(C.QDateTimeEdit_MaximumDate(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -301,8 +293,7 @@ func (this *QDateTimeEdit) SetDateRange(min QDate, max QDate) {
 }
 
 func (this *QDateTimeEdit) MinimumTime() *QTime {
-	_ret := C.QDateTimeEdit_MinimumTime(this.h)
-	_goptr := newQTime(_ret)
+	_goptr := newQTime(C.QDateTimeEdit_MinimumTime(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -316,8 +307,7 @@ func (this *QDateTimeEdit) ClearMinimumTime() {
 }
 
 func (this *QDateTimeEdit) MaximumTime() *QTime {
-	_ret := C.QDateTimeEdit_MaximumTime(this.h)
-	_goptr := newQTime(_ret)
+	_goptr := newQTime(C.QDateTimeEdit_MaximumTime(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -359,7 +349,7 @@ func (this *QDateTimeEdit) SetCurrentSectionIndex(index int) {
 }
 
 func (this *QDateTimeEdit) CalendarWidget() *QCalendarWidget {
-	return UnsafeNewQCalendarWidget(unsafe.Pointer(C.QDateTimeEdit_CalendarWidget(this.h)), nil, nil, nil)
+	return newQCalendarWidget(C.QDateTimeEdit_CalendarWidget(this.h), nil, nil, nil)
 }
 
 func (this *QDateTimeEdit) SetCalendarWidget(calendarWidget *QCalendarWidget) {
@@ -413,8 +403,7 @@ func (this *QDateTimeEdit) SetTimeSpec(spec TimeSpec) {
 }
 
 func (this *QDateTimeEdit) SizeHint() *QSize {
-	_ret := C.QDateTimeEdit_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QDateTimeEdit_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -446,7 +435,7 @@ func miqt_exec_callback_QDateTimeEdit_DateTimeChanged(cb C.intptr_t, dateTime *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDateTime(unsafe.Pointer(dateTime))
+	slotval1 := newQDateTime(dateTime)
 
 	gofunc(slotval1)
 }
@@ -466,8 +455,7 @@ func miqt_exec_callback_QDateTimeEdit_TimeChanged(cb C.intptr_t, time *C.QTime) 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	time_ret := time
-	time_goptr := newQTime(time_ret)
+	time_goptr := newQTime(time)
 	time_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *time_goptr
 
@@ -489,8 +477,7 @@ func miqt_exec_callback_QDateTimeEdit_DateChanged(cb C.intptr_t, date *C.QDate) 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	date_ret := date
-	date_goptr := newQDate(date_ret)
+	date_goptr := newQDate(date)
 	date_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *date_goptr
 
@@ -533,8 +520,7 @@ func QDateTimeEdit_Tr3(s string, c string, n int) string {
 
 func (this *QDateTimeEdit) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QDateTimeEdit_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QDateTimeEdit_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -628,7 +614,7 @@ func miqt_exec_callback_QDateTimeEdit_Event(self *C.QDateTimeEdit, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QDateTimeEdit{h: self}).callVirtualBase_Event, slotval1)
 
@@ -656,7 +642,7 @@ func miqt_exec_callback_QDateTimeEdit_KeyPressEvent(self *C.QDateTimeEdit, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -682,7 +668,7 @@ func miqt_exec_callback_QDateTimeEdit_WheelEvent(self *C.QDateTimeEdit, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -708,7 +694,7 @@ func miqt_exec_callback_QDateTimeEdit_FocusInEvent(self *C.QDateTimeEdit, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -817,8 +803,7 @@ func (this *QDateTimeEdit) callVirtualBase_DateTimeFromText(text string) *QDateT
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	_ret := C.QDateTimeEdit_virtualbase_DateTimeFromText(unsafe.Pointer(this.h), text_ms)
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QDateTimeEdit_virtualbase_DateTimeFromText(unsafe.Pointer(this.h), text_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -871,7 +856,7 @@ func miqt_exec_callback_QDateTimeEdit_TextFromDateTime(self *C.QDateTimeEdit, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDateTime(unsafe.Pointer(dt))
+	slotval1 := newQDateTime(dt)
 
 	virtualReturn := gofunc((&QDateTimeEdit{h: self}).callVirtualBase_TextFromDateTime, slotval1)
 	virtualReturn_ms := C.struct_miqt_string{}
@@ -928,7 +913,7 @@ func miqt_exec_callback_QDateTimeEdit_MousePressEvent(self *C.QDateTimeEdit, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -954,7 +939,7 @@ func miqt_exec_callback_QDateTimeEdit_PaintEvent(self *C.QDateTimeEdit, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQPaintEvent(event, nil)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -980,7 +965,7 @@ func miqt_exec_callback_QDateTimeEdit_InitStyleOption(self *C.QDateTimeEdit, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStyleOptionSpinBox(unsafe.Pointer(option), nil, nil)
+	slotval1 := newQStyleOptionSpinBox(option, nil, nil)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_InitStyleOption, slotval1)
 
@@ -988,8 +973,7 @@ func miqt_exec_callback_QDateTimeEdit_InitStyleOption(self *C.QDateTimeEdit, cb 
 
 func (this *QDateTimeEdit) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QDateTimeEdit_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QDateTimeEdit_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1016,8 +1000,7 @@ func miqt_exec_callback_QDateTimeEdit_MinimumSizeHint(self *C.QDateTimeEdit, cb 
 
 func (this *QDateTimeEdit) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_ret := C.QDateTimeEdit_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QDateTimeEdit_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1065,7 +1048,7 @@ func miqt_exec_callback_QDateTimeEdit_ResizeEvent(self *C.QDateTimeEdit, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQResizeEvent(event, nil)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -1091,7 +1074,7 @@ func miqt_exec_callback_QDateTimeEdit_KeyReleaseEvent(self *C.QDateTimeEdit, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -1117,7 +1100,7 @@ func miqt_exec_callback_QDateTimeEdit_FocusOutEvent(self *C.QDateTimeEdit, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -1143,7 +1126,7 @@ func miqt_exec_callback_QDateTimeEdit_ContextMenuEvent(self *C.QDateTimeEdit, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQContextMenuEvent(event, nil, nil)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -1169,7 +1152,7 @@ func miqt_exec_callback_QDateTimeEdit_ChangeEvent(self *C.QDateTimeEdit, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -1195,7 +1178,7 @@ func miqt_exec_callback_QDateTimeEdit_CloseEvent(self *C.QDateTimeEdit, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQCloseEvent(event, nil)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -1221,7 +1204,7 @@ func miqt_exec_callback_QDateTimeEdit_HideEvent(self *C.QDateTimeEdit, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHideEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQHideEvent(event, nil)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -1247,7 +1230,7 @@ func miqt_exec_callback_QDateTimeEdit_MouseReleaseEvent(self *C.QDateTimeEdit, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -1273,7 +1256,7 @@ func miqt_exec_callback_QDateTimeEdit_MouseMoveEvent(self *C.QDateTimeEdit, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -1299,7 +1282,7 @@ func miqt_exec_callback_QDateTimeEdit_TimerEvent(self *C.QDateTimeEdit, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -1325,7 +1308,7 @@ func miqt_exec_callback_QDateTimeEdit_ShowEvent(self *C.QDateTimeEdit, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQShowEvent(event, nil)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1445,7 +1428,7 @@ func NewQTimeEdit4(time QTime, parent *QWidget) *QTimeEdit {
 }
 
 func (this *QTimeEdit) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTimeEdit_MetaObject(this.h)))
+	return newQMetaObject(C.QTimeEdit_MetaObject(this.h))
 }
 
 func (this *QTimeEdit) Metacast(param1 string) unsafe.Pointer {
@@ -1478,8 +1461,7 @@ func miqt_exec_callback_QTimeEdit_UserTimeChanged(cb C.intptr_t, time *C.QTime) 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	time_ret := time
-	time_goptr := newQTime(time_ret)
+	time_goptr := newQTime(time)
 	time_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *time_goptr
 
@@ -1510,8 +1492,7 @@ func QTimeEdit_Tr3(s string, c string, n int) string {
 
 func (this *QTimeEdit) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QTimeEdit_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QTimeEdit_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1605,7 +1586,7 @@ func miqt_exec_callback_QTimeEdit_Event(self *C.QTimeEdit, cb C.intptr_t, event 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QTimeEdit{h: self}).callVirtualBase_Event, slotval1)
 
@@ -1633,7 +1614,7 @@ func miqt_exec_callback_QTimeEdit_KeyPressEvent(self *C.QTimeEdit, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QTimeEdit{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -1659,7 +1640,7 @@ func miqt_exec_callback_QTimeEdit_WheelEvent(self *C.QTimeEdit, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QTimeEdit{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -1685,7 +1666,7 @@ func miqt_exec_callback_QTimeEdit_FocusInEvent(self *C.QTimeEdit, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QTimeEdit{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -1794,8 +1775,7 @@ func (this *QTimeEdit) callVirtualBase_DateTimeFromText(text string) *QDateTime 
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	_ret := C.QTimeEdit_virtualbase_DateTimeFromText(unsafe.Pointer(this.h), text_ms)
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QTimeEdit_virtualbase_DateTimeFromText(unsafe.Pointer(this.h), text_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1848,7 +1828,7 @@ func miqt_exec_callback_QTimeEdit_TextFromDateTime(self *C.QTimeEdit, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDateTime(unsafe.Pointer(dt))
+	slotval1 := newQDateTime(dt)
 
 	virtualReturn := gofunc((&QTimeEdit{h: self}).callVirtualBase_TextFromDateTime, slotval1)
 	virtualReturn_ms := C.struct_miqt_string{}
@@ -1905,7 +1885,7 @@ func miqt_exec_callback_QTimeEdit_MousePressEvent(self *C.QTimeEdit, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QTimeEdit{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -1931,7 +1911,7 @@ func miqt_exec_callback_QTimeEdit_PaintEvent(self *C.QTimeEdit, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQPaintEvent(event, nil)
 
 	gofunc((&QTimeEdit{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -1957,7 +1937,7 @@ func miqt_exec_callback_QTimeEdit_InitStyleOption(self *C.QTimeEdit, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStyleOptionSpinBox(unsafe.Pointer(option), nil, nil)
+	slotval1 := newQStyleOptionSpinBox(option, nil, nil)
 
 	gofunc((&QTimeEdit{h: self}).callVirtualBase_InitStyleOption, slotval1)
 
@@ -2077,7 +2057,7 @@ func NewQDateEdit4(date QDate, parent *QWidget) *QDateEdit {
 }
 
 func (this *QDateEdit) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QDateEdit_MetaObject(this.h)))
+	return newQMetaObject(C.QDateEdit_MetaObject(this.h))
 }
 
 func (this *QDateEdit) Metacast(param1 string) unsafe.Pointer {
@@ -2110,8 +2090,7 @@ func miqt_exec_callback_QDateEdit_UserDateChanged(cb C.intptr_t, date *C.QDate) 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	date_ret := date
-	date_goptr := newQDate(date_ret)
+	date_goptr := newQDate(date)
 	date_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *date_goptr
 
@@ -2142,8 +2121,7 @@ func QDateEdit_Tr3(s string, c string, n int) string {
 
 func (this *QDateEdit) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QDateEdit_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QDateEdit_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -2237,7 +2215,7 @@ func miqt_exec_callback_QDateEdit_Event(self *C.QDateEdit, cb C.intptr_t, event 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QDateEdit{h: self}).callVirtualBase_Event, slotval1)
 
@@ -2265,7 +2243,7 @@ func miqt_exec_callback_QDateEdit_KeyPressEvent(self *C.QDateEdit, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QDateEdit{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -2291,7 +2269,7 @@ func miqt_exec_callback_QDateEdit_WheelEvent(self *C.QDateEdit, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QDateEdit{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -2317,7 +2295,7 @@ func miqt_exec_callback_QDateEdit_FocusInEvent(self *C.QDateEdit, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QDateEdit{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -2426,8 +2404,7 @@ func (this *QDateEdit) callVirtualBase_DateTimeFromText(text string) *QDateTime 
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	_ret := C.QDateEdit_virtualbase_DateTimeFromText(unsafe.Pointer(this.h), text_ms)
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QDateEdit_virtualbase_DateTimeFromText(unsafe.Pointer(this.h), text_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -2480,7 +2457,7 @@ func miqt_exec_callback_QDateEdit_TextFromDateTime(self *C.QDateEdit, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDateTime(unsafe.Pointer(dt))
+	slotval1 := newQDateTime(dt)
 
 	virtualReturn := gofunc((&QDateEdit{h: self}).callVirtualBase_TextFromDateTime, slotval1)
 	virtualReturn_ms := C.struct_miqt_string{}
@@ -2537,7 +2514,7 @@ func miqt_exec_callback_QDateEdit_MousePressEvent(self *C.QDateEdit, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QDateEdit{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -2563,7 +2540,7 @@ func miqt_exec_callback_QDateEdit_PaintEvent(self *C.QDateEdit, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQPaintEvent(event, nil)
 
 	gofunc((&QDateEdit{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -2589,7 +2566,7 @@ func miqt_exec_callback_QDateEdit_InitStyleOption(self *C.QDateEdit, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStyleOptionSpinBox(unsafe.Pointer(option), nil, nil)
+	slotval1 := newQStyleOptionSpinBox(option, nil, nil)
 
 	gofunc((&QDateEdit{h: self}).callVirtualBase_InitStyleOption, slotval1)
 

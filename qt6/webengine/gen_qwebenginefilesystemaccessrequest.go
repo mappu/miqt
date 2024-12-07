@@ -91,15 +91,13 @@ func (this *QWebEngineFileSystemAccessRequest) Reject() {
 }
 
 func (this *QWebEngineFileSystemAccessRequest) Origin() *qt6.QUrl {
-	_ret := C.QWebEngineFileSystemAccessRequest_Origin(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineFileSystemAccessRequest_Origin(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineFileSystemAccessRequest) FilePath() *qt6.QUrl {
-	_ret := C.QWebEngineFileSystemAccessRequest_FilePath(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineFileSystemAccessRequest_FilePath(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

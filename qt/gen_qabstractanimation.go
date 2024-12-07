@@ -98,7 +98,7 @@ func NewQAbstractAnimation2(parent *QObject) *QAbstractAnimation {
 }
 
 func (this *QAbstractAnimation) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractAnimation_MetaObject(this.h)))
+	return newQMetaObject(C.QAbstractAnimation_MetaObject(this.h))
 }
 
 func (this *QAbstractAnimation) Metacast(param1 string) unsafe.Pointer {
@@ -130,7 +130,7 @@ func (this *QAbstractAnimation) State() QAbstractAnimation__State {
 }
 
 func (this *QAbstractAnimation) Group() *QAnimationGroup {
-	return UnsafeNewQAnimationGroup(unsafe.Pointer(C.QAbstractAnimation_Group(this.h)), nil, nil)
+	return newQAnimationGroup(C.QAbstractAnimation_Group(this.h), nil, nil)
 }
 
 func (this *QAbstractAnimation) Direction() QAbstractAnimation__Direction {
@@ -359,7 +359,7 @@ func miqt_exec_callback_QAbstractAnimation_Event(self *C.QAbstractAnimation, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QAbstractAnimation{h: self}).callVirtualBase_Event, slotval1)
 
@@ -461,8 +461,9 @@ func miqt_exec_callback_QAbstractAnimation_EventFilter(self *C.QAbstractAnimatio
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QAbstractAnimation{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -490,7 +491,7 @@ func miqt_exec_callback_QAbstractAnimation_TimerEvent(self *C.QAbstractAnimation
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QAbstractAnimation{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -516,7 +517,7 @@ func miqt_exec_callback_QAbstractAnimation_ChildEvent(self *C.QAbstractAnimation
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QAbstractAnimation{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -542,7 +543,7 @@ func miqt_exec_callback_QAbstractAnimation_CustomEvent(self *C.QAbstractAnimatio
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QAbstractAnimation{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -568,7 +569,7 @@ func miqt_exec_callback_QAbstractAnimation_ConnectNotify(self *C.QAbstractAnimat
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QAbstractAnimation{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -594,7 +595,7 @@ func miqt_exec_callback_QAbstractAnimation_DisconnectNotify(self *C.QAbstractAni
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QAbstractAnimation{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
@@ -676,7 +677,7 @@ func NewQAnimationDriver2(parent *QObject) *QAnimationDriver {
 }
 
 func (this *QAnimationDriver) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAnimationDriver_MetaObject(this.h)))
+	return newQMetaObject(C.QAnimationDriver_MetaObject(this.h))
 }
 
 func (this *QAnimationDriver) Metacast(param1 string) unsafe.Pointer {
@@ -923,7 +924,7 @@ func miqt_exec_callback_QAnimationDriver_Event(self *C.QAnimationDriver, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QAnimationDriver{h: self}).callVirtualBase_Event, slotval1)
 
@@ -951,8 +952,9 @@ func miqt_exec_callback_QAnimationDriver_EventFilter(self *C.QAnimationDriver, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QAnimationDriver{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -980,7 +982,7 @@ func miqt_exec_callback_QAnimationDriver_TimerEvent(self *C.QAnimationDriver, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QAnimationDriver{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -1006,7 +1008,7 @@ func miqt_exec_callback_QAnimationDriver_ChildEvent(self *C.QAnimationDriver, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QAnimationDriver{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -1032,7 +1034,7 @@ func miqt_exec_callback_QAnimationDriver_CustomEvent(self *C.QAnimationDriver, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QAnimationDriver{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -1058,7 +1060,7 @@ func miqt_exec_callback_QAnimationDriver_ConnectNotify(self *C.QAnimationDriver,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QAnimationDriver{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -1084,7 +1086,7 @@ func miqt_exec_callback_QAnimationDriver_DisconnectNotify(self *C.QAnimationDriv
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QAnimationDriver{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

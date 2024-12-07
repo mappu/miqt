@@ -118,7 +118,7 @@ func (this *QStylePainter) DrawItemPixmap(r *QRect, flags int, pixmap *QPixmap) 
 }
 
 func (this *QStylePainter) Style() *QStyle {
-	return UnsafeNewQStyle(unsafe.Pointer(C.QStylePainter_Style(this.h)), nil)
+	return newQStyle(C.QStylePainter_Style(this.h), nil)
 }
 
 func (this *QStylePainter) DrawItemText6(r *QRect, flags int, pal *QPalette, enabled bool, text string, textRole QPalette__ColorRole) {

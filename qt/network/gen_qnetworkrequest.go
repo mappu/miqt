@@ -192,8 +192,7 @@ func (this *QNetworkRequest) OperatorNotEqual(other *QNetworkRequest) bool {
 }
 
 func (this *QNetworkRequest) Url() *qt.QUrl {
-	_ret := C.QNetworkRequest_Url(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QNetworkRequest_Url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -203,8 +202,7 @@ func (this *QNetworkRequest) SetUrl(url *qt.QUrl) {
 }
 
 func (this *QNetworkRequest) Header(header QNetworkRequest__KnownHeaders) *qt.QVariant {
-	_ret := C.QNetworkRequest_Header(this.h, (C.int)(header))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QNetworkRequest_Header(this.h, (C.int)(header))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -254,8 +252,7 @@ func (this *QNetworkRequest) SetRawHeader(headerName []byte, value []byte) {
 }
 
 func (this *QNetworkRequest) Attribute(code QNetworkRequest__Attribute) *qt.QVariant {
-	_ret := C.QNetworkRequest_Attribute(this.h, (C.int)(code))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QNetworkRequest_Attribute(this.h, (C.int)(code))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -265,8 +262,7 @@ func (this *QNetworkRequest) SetAttribute(code QNetworkRequest__Attribute, value
 }
 
 func (this *QNetworkRequest) SslConfiguration() *QSslConfiguration {
-	_ret := C.QNetworkRequest_SslConfiguration(this.h)
-	_goptr := newQSslConfiguration(_ret)
+	_goptr := newQSslConfiguration(C.QNetworkRequest_SslConfiguration(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -315,8 +311,7 @@ func (this *QNetworkRequest) SetPeerVerifyName(peerName string) {
 }
 
 func (this *QNetworkRequest) Http2Configuration() *QHttp2Configuration {
-	_ret := C.QNetworkRequest_Http2Configuration(this.h)
-	_goptr := newQHttp2Configuration(_ret)
+	_goptr := newQHttp2Configuration(C.QNetworkRequest_Http2Configuration(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -334,8 +329,7 @@ func (this *QNetworkRequest) SetTransferTimeout() {
 }
 
 func (this *QNetworkRequest) Attribute2(code QNetworkRequest__Attribute, defaultValue *qt.QVariant) *qt.QVariant {
-	_ret := C.QNetworkRequest_Attribute2(this.h, (C.int)(code), (*C.QVariant)(defaultValue.UnsafePointer()))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QNetworkRequest_Attribute2(this.h, (C.int)(code), (*C.QVariant)(defaultValue.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

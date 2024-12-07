@@ -242,12 +242,11 @@ func (this *QStringDecoder) RequiredSpace(inputLength int64) int64 {
 }
 
 func (this *QStringDecoder) AppendToBuffer(out *QChar, ba QByteArrayView) *QChar {
-	return UnsafeNewQChar(unsafe.Pointer(C.QStringDecoder_AppendToBuffer(this.h, out.cPointer(), ba.cPointer())))
+	return newQChar(C.QStringDecoder_AppendToBuffer(this.h, out.cPointer(), ba.cPointer()))
 }
 
 func QStringDecoder_DecoderForHtml(data QByteArrayView) *QStringDecoder {
-	_ret := C.QStringDecoder_DecoderForHtml(data.cPointer())
-	_goptr := newQStringDecoder(_ret, nil, nil)
+	_goptr := newQStringDecoder(C.QStringDecoder_DecoderForHtml(data.cPointer()), nil, nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

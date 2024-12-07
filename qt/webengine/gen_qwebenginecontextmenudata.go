@@ -120,8 +120,7 @@ func (this *QWebEngineContextMenuData) IsValid() bool {
 }
 
 func (this *QWebEngineContextMenuData) Position() *qt.QPoint {
-	_ret := C.QWebEngineContextMenuData_Position(this.h)
-	_goptr := qt.UnsafeNewQPoint(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQPoint(unsafe.Pointer(C.QWebEngineContextMenuData_Position(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -141,15 +140,13 @@ func (this *QWebEngineContextMenuData) LinkText() string {
 }
 
 func (this *QWebEngineContextMenuData) LinkUrl() *qt.QUrl {
-	_ret := C.QWebEngineContextMenuData_LinkUrl(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineContextMenuData_LinkUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineContextMenuData) MediaUrl() *qt.QUrl {
-	_ret := C.QWebEngineContextMenuData_MediaUrl(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineContextMenuData_MediaUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

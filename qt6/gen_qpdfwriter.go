@@ -87,7 +87,7 @@ func NewQPdfWriter2(device *QIODevice) *QPdfWriter {
 }
 
 func (this *QPdfWriter) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QPdfWriter_MetaObject(this.h)))
+	return newQMetaObject(C.QPdfWriter_MetaObject(this.h))
 }
 
 func (this *QPdfWriter) Metacast(param1 string) unsafe.Pointer {
@@ -244,7 +244,8 @@ func miqt_exec_callback_QPdfWriter_NewPage(self *C.QPdfWriter, cb C.intptr_t) C.
 
 func (this *QPdfWriter) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QPdfWriter_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return newQPaintEngine(C.QPdfWriter_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+
 }
 func (this *QPdfWriter) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
 	if !this.isSubclass {
@@ -314,7 +315,7 @@ func miqt_exec_callback_QPdfWriter_Event(self *C.QPdfWriter, cb C.intptr_t, even
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QPdfWriter{h: self}).callVirtualBase_Event, slotval1)
 
@@ -342,8 +343,9 @@ func miqt_exec_callback_QPdfWriter_EventFilter(self *C.QPdfWriter, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QPdfWriter{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -371,7 +373,7 @@ func miqt_exec_callback_QPdfWriter_TimerEvent(self *C.QPdfWriter, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QPdfWriter{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -397,7 +399,7 @@ func miqt_exec_callback_QPdfWriter_ChildEvent(self *C.QPdfWriter, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QPdfWriter{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -423,7 +425,7 @@ func miqt_exec_callback_QPdfWriter_CustomEvent(self *C.QPdfWriter, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QPdfWriter{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -449,7 +451,7 @@ func miqt_exec_callback_QPdfWriter_ConnectNotify(self *C.QPdfWriter, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QPdfWriter{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -475,7 +477,7 @@ func miqt_exec_callback_QPdfWriter_DisconnectNotify(self *C.QPdfWriter, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QPdfWriter{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
@@ -501,7 +503,7 @@ func miqt_exec_callback_QPdfWriter_SetPageLayout(self *C.QPdfWriter, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPageLayout(unsafe.Pointer(pageLayout))
+	slotval1 := newQPageLayout(pageLayout)
 
 	virtualReturn := gofunc((&QPdfWriter{h: self}).callVirtualBase_SetPageLayout, slotval1)
 
@@ -529,7 +531,7 @@ func miqt_exec_callback_QPdfWriter_SetPageSize(self *C.QPdfWriter, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPageSize(unsafe.Pointer(pageSize))
+	slotval1 := newQPageSize(pageSize)
 
 	virtualReturn := gofunc((&QPdfWriter{h: self}).callVirtualBase_SetPageSize, slotval1)
 
@@ -585,7 +587,8 @@ func miqt_exec_callback_QPdfWriter_SetPageMargins(self *C.QPdfWriter, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMarginsF(unsafe.Pointer(margins))
+	slotval1 := newQMarginsF(margins)
+
 	slotval2 := (QPageLayout__Unit)(units)
 
 	virtualReturn := gofunc((&QPdfWriter{h: self}).callVirtualBase_SetPageMargins, slotval1, slotval2)
@@ -614,7 +617,7 @@ func miqt_exec_callback_QPdfWriter_SetPageRanges(self *C.QPdfWriter, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPageRanges(unsafe.Pointer(ranges))
+	slotval1 := newQPageRanges(ranges)
 
 	gofunc((&QPdfWriter{h: self}).callVirtualBase_SetPageRanges, slotval1)
 

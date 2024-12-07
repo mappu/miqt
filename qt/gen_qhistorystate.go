@@ -109,7 +109,7 @@ func NewQHistoryState4(typeVal QHistoryState__HistoryType, parent *QState) *QHis
 }
 
 func (this *QHistoryState) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QHistoryState_MetaObject(this.h)))
+	return newQMetaObject(C.QHistoryState_MetaObject(this.h))
 }
 
 func (this *QHistoryState) Metacast(param1 string) unsafe.Pointer {
@@ -137,7 +137,7 @@ func QHistoryState_TrUtf8(s string) string {
 }
 
 func (this *QHistoryState) DefaultTransition() *QAbstractTransition {
-	return UnsafeNewQAbstractTransition(unsafe.Pointer(C.QHistoryState_DefaultTransition(this.h)), nil)
+	return newQAbstractTransition(C.QHistoryState_DefaultTransition(this.h), nil)
 }
 
 func (this *QHistoryState) SetDefaultTransition(transition *QAbstractTransition) {
@@ -145,7 +145,7 @@ func (this *QHistoryState) SetDefaultTransition(transition *QAbstractTransition)
 }
 
 func (this *QHistoryState) DefaultState() *QAbstractState {
-	return UnsafeNewQAbstractState(unsafe.Pointer(C.QHistoryState_DefaultState(this.h)), nil)
+	return newQAbstractState(C.QHistoryState_DefaultState(this.h), nil)
 }
 
 func (this *QHistoryState) SetDefaultState(state *QAbstractState) {
@@ -224,7 +224,7 @@ func miqt_exec_callback_QHistoryState_OnEntry(self *C.QHistoryState, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QHistoryState{h: self}).callVirtualBase_OnEntry, slotval1)
 
@@ -250,7 +250,7 @@ func miqt_exec_callback_QHistoryState_OnExit(self *C.QHistoryState, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QHistoryState{h: self}).callVirtualBase_OnExit, slotval1)
 
@@ -276,7 +276,7 @@ func miqt_exec_callback_QHistoryState_Event(self *C.QHistoryState, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QHistoryState{h: self}).callVirtualBase_Event, slotval1)
 

@@ -192,8 +192,7 @@ func QStorageInfo_MountedVolumes() []QStorageInfo {
 	_ret := make([]QStorageInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QStorageInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQStorageInfo(_lv_ret)
+		_lv_goptr := newQStorageInfo(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -201,8 +200,7 @@ func QStorageInfo_MountedVolumes() []QStorageInfo {
 }
 
 func QStorageInfo_Root() *QStorageInfo {
-	_ret := C.QStorageInfo_Root()
-	_goptr := newQStorageInfo(_ret)
+	_goptr := newQStorageInfo(C.QStorageInfo_Root())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

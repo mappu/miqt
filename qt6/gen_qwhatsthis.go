@@ -74,7 +74,7 @@ func QWhatsThis_HideText() {
 }
 
 func QWhatsThis_CreateAction() *QAction {
-	return UnsafeNewQAction(unsafe.Pointer(C.QWhatsThis_CreateAction()), nil)
+	return newQAction(C.QWhatsThis_CreateAction(), nil)
 }
 
 func QWhatsThis_ShowText3(pos *QPoint, text string, w *QWidget) {
@@ -86,7 +86,7 @@ func QWhatsThis_ShowText3(pos *QPoint, text string, w *QWidget) {
 }
 
 func QWhatsThis_CreateAction1(parent *QObject) *QAction {
-	return UnsafeNewQAction(unsafe.Pointer(C.QWhatsThis_CreateAction1(parent.cPointer())), nil)
+	return newQAction(C.QWhatsThis_CreateAction1(parent.cPointer()), nil)
 }
 
 // Delete this object from C++ memory.

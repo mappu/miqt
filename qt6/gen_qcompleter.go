@@ -156,7 +156,7 @@ func NewQCompleter6(completions []string, parent *QObject) *QCompleter {
 }
 
 func (this *QCompleter) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QCompleter_MetaObject(this.h)))
+	return newQMetaObject(C.QCompleter_MetaObject(this.h))
 }
 
 func (this *QCompleter) Metacast(param1 string) unsafe.Pointer {
@@ -179,7 +179,7 @@ func (this *QCompleter) SetWidget(widget *QWidget) {
 }
 
 func (this *QCompleter) Widget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QCompleter_Widget(this.h)), nil, nil)
+	return newQWidget(C.QCompleter_Widget(this.h), nil, nil)
 }
 
 func (this *QCompleter) SetModel(c *QAbstractItemModel) {
@@ -187,7 +187,7 @@ func (this *QCompleter) SetModel(c *QAbstractItemModel) {
 }
 
 func (this *QCompleter) Model() *QAbstractItemModel {
-	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QCompleter_Model(this.h)), nil)
+	return newQAbstractItemModel(C.QCompleter_Model(this.h), nil)
 }
 
 func (this *QCompleter) SetCompletionMode(mode QCompleter__CompletionMode) {
@@ -207,7 +207,7 @@ func (this *QCompleter) FilterMode() MatchFlag {
 }
 
 func (this *QCompleter) Popup() *QAbstractItemView {
-	return UnsafeNewQAbstractItemView(unsafe.Pointer(C.QCompleter_Popup(this.h)), nil, nil, nil, nil, nil)
+	return newQAbstractItemView(C.QCompleter_Popup(this.h), nil, nil, nil, nil, nil)
 }
 
 func (this *QCompleter) SetPopup(popup *QAbstractItemView) {
@@ -271,8 +271,7 @@ func (this *QCompleter) CurrentRow() int {
 }
 
 func (this *QCompleter) CurrentIndex() *QModelIndex {
-	_ret := C.QCompleter_CurrentIndex(this.h)
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QCompleter_CurrentIndex(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -285,7 +284,7 @@ func (this *QCompleter) CurrentCompletion() string {
 }
 
 func (this *QCompleter) CompletionModel() *QAbstractItemModel {
-	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QCompleter_CompletionModel(this.h)), nil)
+	return newQAbstractItemModel(C.QCompleter_CompletionModel(this.h), nil)
 }
 
 func (this *QCompleter) CompletionPrefix() string {
@@ -377,7 +376,7 @@ func miqt_exec_callback_QCompleter_ActivatedWithIndex(cb C.intptr_t, index *C.QM
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	gofunc(slotval1)
 }
@@ -424,7 +423,7 @@ func miqt_exec_callback_QCompleter_HighlightedWithIndex(cb C.intptr_t, index *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	gofunc(slotval1)
 }
@@ -477,7 +476,7 @@ func miqt_exec_callback_QCompleter_PathFromIndex(self *C.QCompleter, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QCompleter{h: self}).callVirtualBase_PathFromIndex, slotval1)
 	virtualReturn_ms := C.struct_miqt_string{}
@@ -563,8 +562,9 @@ func miqt_exec_callback_QCompleter_EventFilter(self *C.QCompleter, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(o))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQObject(o)
+
+	slotval2 := newQEvent(e)
 
 	virtualReturn := gofunc((&QCompleter{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -592,7 +592,7 @@ func miqt_exec_callback_QCompleter_Event(self *C.QCompleter, cb C.intptr_t, para
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	virtualReturn := gofunc((&QCompleter{h: self}).callVirtualBase_Event, slotval1)
 
@@ -620,7 +620,7 @@ func miqt_exec_callback_QCompleter_TimerEvent(self *C.QCompleter, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QCompleter{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -646,7 +646,7 @@ func miqt_exec_callback_QCompleter_ChildEvent(self *C.QCompleter, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QCompleter{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -672,7 +672,7 @@ func miqt_exec_callback_QCompleter_CustomEvent(self *C.QCompleter, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QCompleter{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -698,7 +698,7 @@ func miqt_exec_callback_QCompleter_ConnectNotify(self *C.QCompleter, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QCompleter{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -724,7 +724,7 @@ func miqt_exec_callback_QCompleter_DisconnectNotify(self *C.QCompleter, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QCompleter{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

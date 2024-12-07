@@ -105,7 +105,7 @@ func NewQGraphicsWidget3(parent *QGraphicsItem, wFlags WindowType) *QGraphicsWid
 }
 
 func (this *QGraphicsWidget) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsWidget_MetaObject(this.h)))
+	return newQMetaObject(C.QGraphicsWidget_MetaObject(this.h))
 }
 
 func (this *QGraphicsWidget) Metacast(param1 string) unsafe.Pointer {
@@ -133,7 +133,7 @@ func QGraphicsWidget_TrUtf8(s string) string {
 }
 
 func (this *QGraphicsWidget) Layout() *QGraphicsLayout {
-	return UnsafeNewQGraphicsLayout(unsafe.Pointer(C.QGraphicsWidget_Layout(this.h)), nil)
+	return newQGraphicsLayout(C.QGraphicsWidget_Layout(this.h), nil)
 }
 
 func (this *QGraphicsWidget) SetLayout(layout *QGraphicsLayout) {
@@ -157,7 +157,7 @@ func (this *QGraphicsWidget) UnsetLayoutDirection() {
 }
 
 func (this *QGraphicsWidget) Style() *QStyle {
-	return UnsafeNewQStyle(unsafe.Pointer(C.QGraphicsWidget_Style(this.h)), nil)
+	return newQStyle(C.QGraphicsWidget_Style(this.h), nil)
 }
 
 func (this *QGraphicsWidget) SetStyle(style *QStyle) {
@@ -165,8 +165,7 @@ func (this *QGraphicsWidget) SetStyle(style *QStyle) {
 }
 
 func (this *QGraphicsWidget) Font() *QFont {
-	_ret := C.QGraphicsWidget_Font(this.h)
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QGraphicsWidget_Font(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -176,8 +175,7 @@ func (this *QGraphicsWidget) SetFont(font *QFont) {
 }
 
 func (this *QGraphicsWidget) Palette() *QPalette {
-	_ret := C.QGraphicsWidget_Palette(this.h)
-	_goptr := newQPalette(_ret)
+	_goptr := newQPalette(C.QGraphicsWidget_Palette(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -203,8 +201,7 @@ func (this *QGraphicsWidget) Resize2(w float64, h float64) {
 }
 
 func (this *QGraphicsWidget) Size() *QSizeF {
-	_ret := C.QGraphicsWidget_Size(this.h)
-	_goptr := newQSizeF(_ret)
+	_goptr := newQSizeF(C.QGraphicsWidget_Size(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -218,8 +215,7 @@ func (this *QGraphicsWidget) SetGeometry2(x float64, y float64, w float64, h flo
 }
 
 func (this *QGraphicsWidget) Rect() *QRectF {
-	_ret := C.QGraphicsWidget_Rect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsWidget_Rect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -253,15 +249,13 @@ func (this *QGraphicsWidget) UnsetWindowFrameMargins() {
 }
 
 func (this *QGraphicsWidget) WindowFrameGeometry() *QRectF {
-	_ret := C.QGraphicsWidget_WindowFrameGeometry(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsWidget_WindowFrameGeometry(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsWidget) WindowFrameRect() *QRectF {
-	_ret := C.QGraphicsWidget_WindowFrameRect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsWidget_WindowFrameRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -310,7 +304,7 @@ func QGraphicsWidget_SetTabOrder(first *QGraphicsWidget, second *QGraphicsWidget
 }
 
 func (this *QGraphicsWidget) FocusWidget() *QGraphicsWidget {
-	return UnsafeNewQGraphicsWidget(unsafe.Pointer(C.QGraphicsWidget_FocusWidget(this.h)), nil, nil, nil, nil)
+	return newQGraphicsWidget(C.QGraphicsWidget_FocusWidget(this.h), nil, nil, nil, nil)
 }
 
 func (this *QGraphicsWidget) GrabShortcut(sequence *QKeySequence) int {
@@ -366,7 +360,7 @@ func (this *QGraphicsWidget) Actions() []*QAction {
 	_ret := make([]*QAction, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQAction(unsafe.Pointer(_outCast[i]), nil)
+		_ret[i] = newQAction(_outCast[i], nil)
 	}
 	return _ret
 }
@@ -392,15 +386,13 @@ func (this *QGraphicsWidget) PaintWindowFrame(painter *QPainter, option *QStyleO
 }
 
 func (this *QGraphicsWidget) BoundingRect() *QRectF {
-	_ret := C.QGraphicsWidget_BoundingRect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsWidget_BoundingRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsWidget) Shape() *QPainterPath {
-	_ret := C.QGraphicsWidget_Shape(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsWidget_Shape(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -523,7 +515,7 @@ func miqt_exec_callback_QGraphicsWidget_SetGeometry(self *C.QGraphicsWidget, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRectF(unsafe.Pointer(rect))
+	slotval1 := newQRectF(rect)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_SetGeometry, slotval1)
 
@@ -606,9 +598,11 @@ func miqt_exec_callback_QGraphicsWidget_Paint(self *C.QGraphicsWidget, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQStyleOptionGraphicsItem(unsafe.Pointer(option), nil)
-	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQStyleOptionGraphicsItem(option, nil)
+
+	slotval3 := newQWidget(widget, nil, nil)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_Paint, slotval1, slotval2, slotval3)
 
@@ -634,9 +628,11 @@ func miqt_exec_callback_QGraphicsWidget_PaintWindowFrame(self *C.QGraphicsWidget
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQStyleOptionGraphicsItem(unsafe.Pointer(option), nil)
-	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQStyleOptionGraphicsItem(option, nil)
+
+	slotval3 := newQWidget(widget, nil, nil)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_PaintWindowFrame, slotval1, slotval2, slotval3)
 
@@ -644,8 +640,7 @@ func miqt_exec_callback_QGraphicsWidget_PaintWindowFrame(self *C.QGraphicsWidget
 
 func (this *QGraphicsWidget) callVirtualBase_BoundingRect() *QRectF {
 
-	_ret := C.QGraphicsWidget_virtualbase_BoundingRect(unsafe.Pointer(this.h))
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QGraphicsWidget_virtualbase_BoundingRect(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -672,8 +667,7 @@ func miqt_exec_callback_QGraphicsWidget_BoundingRect(self *C.QGraphicsWidget, cb
 
 func (this *QGraphicsWidget) callVirtualBase_Shape() *QPainterPath {
 
-	_ret := C.QGraphicsWidget_virtualbase_Shape(unsafe.Pointer(this.h))
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QGraphicsWidget_virtualbase_Shape(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -718,7 +712,7 @@ func miqt_exec_callback_QGraphicsWidget_InitStyleOption(self *C.QGraphicsWidget,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStyleOption(unsafe.Pointer(option))
+	slotval1 := newQStyleOption(option)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_InitStyleOption, slotval1)
 
@@ -726,8 +720,7 @@ func miqt_exec_callback_QGraphicsWidget_InitStyleOption(self *C.QGraphicsWidget,
 
 func (this *QGraphicsWidget) callVirtualBase_SizeHint(which SizeHint, constraint *QSizeF) *QSizeF {
 
-	_ret := C.QGraphicsWidget_virtualbase_SizeHint(unsafe.Pointer(this.h), (C.int)(which), constraint.cPointer())
-	_goptr := newQSizeF(_ret)
+	_goptr := newQSizeF(C.QGraphicsWidget_virtualbase_SizeHint(unsafe.Pointer(this.h), (C.int)(which), constraint.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -749,7 +742,7 @@ func miqt_exec_callback_QGraphicsWidget_SizeHint(self *C.QGraphicsWidget, cb C.i
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (SizeHint)(which)
 
-	slotval2 := UnsafeNewQSizeF(unsafe.Pointer(constraint))
+	slotval2 := newQSizeF(constraint)
 
 	virtualReturn := gofunc((&QGraphicsWidget{h: self}).callVirtualBase_SizeHint, slotval1, slotval2)
 
@@ -782,8 +775,7 @@ func miqt_exec_callback_QGraphicsWidget_UpdateGeometry(self *C.QGraphicsWidget, 
 
 func (this *QGraphicsWidget) callVirtualBase_ItemChange(change QGraphicsItem__GraphicsItemChange, value *QVariant) *QVariant {
 
-	_ret := C.QGraphicsWidget_virtualbase_ItemChange(unsafe.Pointer(this.h), (C.int)(change), value.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsWidget_virtualbase_ItemChange(unsafe.Pointer(this.h), (C.int)(change), value.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -805,7 +797,7 @@ func miqt_exec_callback_QGraphicsWidget_ItemChange(self *C.QGraphicsWidget, cb C
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QGraphicsItem__GraphicsItemChange)(change)
 
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval2 := newQVariant(value)
 
 	virtualReturn := gofunc((&QGraphicsWidget{h: self}).callVirtualBase_ItemChange, slotval1, slotval2)
 
@@ -819,8 +811,7 @@ func (this *QGraphicsWidget) callVirtualBase_PropertyChange(propertyName string,
 	propertyName_ms.len = C.size_t(len(propertyName))
 	defer C.free(unsafe.Pointer(propertyName_ms.data))
 
-	_ret := C.QGraphicsWidget_virtualbase_PropertyChange(unsafe.Pointer(this.h), propertyName_ms, value.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGraphicsWidget_virtualbase_PropertyChange(unsafe.Pointer(this.h), propertyName_ms, value.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -844,7 +835,7 @@ func miqt_exec_callback_QGraphicsWidget_PropertyChange(self *C.QGraphicsWidget, 
 	propertyName_ret := C.GoStringN(propertyName_ms.data, C.int(int64(propertyName_ms.len)))
 	C.free(unsafe.Pointer(propertyName_ms.data))
 	slotval1 := propertyName_ret
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval2 := newQVariant(value)
 
 	virtualReturn := gofunc((&QGraphicsWidget{h: self}).callVirtualBase_PropertyChange, slotval1, slotval2)
 
@@ -872,7 +863,7 @@ func miqt_exec_callback_QGraphicsWidget_SceneEvent(self *C.QGraphicsWidget, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGraphicsWidget{h: self}).callVirtualBase_SceneEvent, slotval1)
 
@@ -900,7 +891,7 @@ func miqt_exec_callback_QGraphicsWidget_WindowFrameEvent(self *C.QGraphicsWidget
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QGraphicsWidget{h: self}).callVirtualBase_WindowFrameEvent, slotval1)
 
@@ -928,7 +919,7 @@ func miqt_exec_callback_QGraphicsWidget_WindowFrameSectionAt(self *C.QGraphicsWi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPointF(unsafe.Pointer(pos))
+	slotval1 := newQPointF(pos)
 
 	virtualReturn := gofunc((&QGraphicsWidget{h: self}).callVirtualBase_WindowFrameSectionAt, slotval1)
 
@@ -956,7 +947,7 @@ func miqt_exec_callback_QGraphicsWidget_Event(self *C.QGraphicsWidget, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGraphicsWidget{h: self}).callVirtualBase_Event, slotval1)
 
@@ -984,7 +975,7 @@ func miqt_exec_callback_QGraphicsWidget_ChangeEvent(self *C.QGraphicsWidget, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -1010,7 +1001,7 @@ func miqt_exec_callback_QGraphicsWidget_CloseEvent(self *C.QGraphicsWidget, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQCloseEvent(event, nil)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -1036,7 +1027,7 @@ func miqt_exec_callback_QGraphicsWidget_FocusInEvent(self *C.QGraphicsWidget, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -1090,7 +1081,7 @@ func miqt_exec_callback_QGraphicsWidget_FocusOutEvent(self *C.QGraphicsWidget, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -1116,7 +1107,7 @@ func miqt_exec_callback_QGraphicsWidget_HideEvent(self *C.QGraphicsWidget, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHideEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQHideEvent(event, nil)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -1142,7 +1133,7 @@ func miqt_exec_callback_QGraphicsWidget_MoveEvent(self *C.QGraphicsWidget, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneMoveEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneMoveEvent(event, nil, nil)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -1191,7 +1182,7 @@ func miqt_exec_callback_QGraphicsWidget_ResizeEvent(self *C.QGraphicsWidget, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneResizeEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneResizeEvent(event, nil, nil)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -1217,7 +1208,7 @@ func miqt_exec_callback_QGraphicsWidget_ShowEvent(self *C.QGraphicsWidget, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQShowEvent(event, nil)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1243,7 +1234,7 @@ func miqt_exec_callback_QGraphicsWidget_HoverMoveEvent(self *C.QGraphicsWidget, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_HoverMoveEvent, slotval1)
 
@@ -1269,7 +1260,7 @@ func miqt_exec_callback_QGraphicsWidget_HoverLeaveEvent(self *C.QGraphicsWidget,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_HoverLeaveEvent, slotval1)
 
@@ -1295,7 +1286,7 @@ func miqt_exec_callback_QGraphicsWidget_GrabMouseEvent(self *C.QGraphicsWidget, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_GrabMouseEvent, slotval1)
 
@@ -1321,7 +1312,7 @@ func miqt_exec_callback_QGraphicsWidget_UngrabMouseEvent(self *C.QGraphicsWidget
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_UngrabMouseEvent, slotval1)
 
@@ -1347,7 +1338,7 @@ func miqt_exec_callback_QGraphicsWidget_GrabKeyboardEvent(self *C.QGraphicsWidge
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_GrabKeyboardEvent, slotval1)
 
@@ -1373,7 +1364,7 @@ func miqt_exec_callback_QGraphicsWidget_UngrabKeyboardEvent(self *C.QGraphicsWid
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_UngrabKeyboardEvent, slotval1)
 

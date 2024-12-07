@@ -226,7 +226,7 @@ func (this *QGraphicsGridLayout) ColumnCount() int {
 }
 
 func (this *QGraphicsGridLayout) ItemAt(row int, column int) *QGraphicsLayoutItem {
-	return UnsafeNewQGraphicsLayoutItem(unsafe.Pointer(C.QGraphicsGridLayout_ItemAt(this.h, (C.int)(row), (C.int)(column))))
+	return newQGraphicsLayoutItem(C.QGraphicsGridLayout_ItemAt(this.h, (C.int)(row), (C.int)(column)))
 }
 
 func (this *QGraphicsGridLayout) Count() int {
@@ -234,7 +234,7 @@ func (this *QGraphicsGridLayout) Count() int {
 }
 
 func (this *QGraphicsGridLayout) ItemAtWithIndex(index int) *QGraphicsLayoutItem {
-	return UnsafeNewQGraphicsLayoutItem(unsafe.Pointer(C.QGraphicsGridLayout_ItemAtWithIndex(this.h, (C.int)(index))))
+	return newQGraphicsLayoutItem(C.QGraphicsGridLayout_ItemAtWithIndex(this.h, (C.int)(index)))
 }
 
 func (this *QGraphicsGridLayout) RemoveAt(index int) {
@@ -254,8 +254,7 @@ func (this *QGraphicsGridLayout) SetGeometry(rect *QRectF) {
 }
 
 func (this *QGraphicsGridLayout) SizeHint(which SizeHint, constraint *QSizeF) *QSizeF {
-	_ret := C.QGraphicsGridLayout_SizeHint(this.h, (C.int)(which), constraint.cPointer())
-	_goptr := newQSizeF(_ret)
+	_goptr := newQSizeF(C.QGraphicsGridLayout_SizeHint(this.h, (C.int)(which), constraint.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -295,7 +294,8 @@ func miqt_exec_callback_QGraphicsGridLayout_Count(self *C.QGraphicsGridLayout, c
 
 func (this *QGraphicsGridLayout) callVirtualBase_ItemAtWithIndex(index int) *QGraphicsLayoutItem {
 
-	return UnsafeNewQGraphicsLayoutItem(unsafe.Pointer(C.QGraphicsGridLayout_virtualbase_ItemAtWithIndex(unsafe.Pointer(this.h), (C.int)(index))))
+	return newQGraphicsLayoutItem(C.QGraphicsGridLayout_virtualbase_ItemAtWithIndex(unsafe.Pointer(this.h), (C.int)(index)))
+
 }
 func (this *QGraphicsGridLayout) OnItemAtWithIndex(slot func(super func(index int) *QGraphicsLayoutItem, index int) *QGraphicsLayoutItem) {
 	if !this.isSubclass {
@@ -389,7 +389,7 @@ func miqt_exec_callback_QGraphicsGridLayout_SetGeometry(self *C.QGraphicsGridLay
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRectF(unsafe.Pointer(rect))
+	slotval1 := newQRectF(rect)
 
 	gofunc((&QGraphicsGridLayout{h: self}).callVirtualBase_SetGeometry, slotval1)
 
@@ -397,8 +397,7 @@ func miqt_exec_callback_QGraphicsGridLayout_SetGeometry(self *C.QGraphicsGridLay
 
 func (this *QGraphicsGridLayout) callVirtualBase_SizeHint(which SizeHint, constraint *QSizeF) *QSizeF {
 
-	_ret := C.QGraphicsGridLayout_virtualbase_SizeHint(unsafe.Pointer(this.h), (C.int)(which), constraint.cPointer())
-	_goptr := newQSizeF(_ret)
+	_goptr := newQSizeF(C.QGraphicsGridLayout_virtualbase_SizeHint(unsafe.Pointer(this.h), (C.int)(which), constraint.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -420,7 +419,7 @@ func miqt_exec_callback_QGraphicsGridLayout_SizeHint(self *C.QGraphicsGridLayout
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (SizeHint)(which)
 
-	slotval2 := UnsafeNewQSizeF(unsafe.Pointer(constraint))
+	slotval2 := newQSizeF(constraint)
 
 	virtualReturn := gofunc((&QGraphicsGridLayout{h: self}).callVirtualBase_SizeHint, slotval1, slotval2)
 
@@ -503,7 +502,7 @@ func miqt_exec_callback_QGraphicsGridLayout_WidgetEvent(self *C.QGraphicsGridLay
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	gofunc((&QGraphicsGridLayout{h: self}).callVirtualBase_WidgetEvent, slotval1)
 

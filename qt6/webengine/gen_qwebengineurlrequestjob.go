@@ -84,8 +84,7 @@ func QWebEngineUrlRequestJob_Tr(s string) string {
 }
 
 func (this *QWebEngineUrlRequestJob) RequestUrl() *qt6.QUrl {
-	_ret := C.QWebEngineUrlRequestJob_RequestUrl(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineUrlRequestJob_RequestUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -98,8 +97,7 @@ func (this *QWebEngineUrlRequestJob) RequestMethod() []byte {
 }
 
 func (this *QWebEngineUrlRequestJob) Initiator() *qt6.QUrl {
-	_ret := C.QWebEngineUrlRequestJob_Initiator(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineUrlRequestJob_Initiator(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

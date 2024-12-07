@@ -91,8 +91,7 @@ func (this *QNetworkCacheMetaData) IsValid() bool {
 }
 
 func (this *QNetworkCacheMetaData) Url() *qt.QUrl {
-	_ret := C.QNetworkCacheMetaData_Url(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QNetworkCacheMetaData_Url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -162,8 +161,7 @@ func (this *QNetworkCacheMetaData) SetRawHeaders(headers []struct {
 }
 
 func (this *QNetworkCacheMetaData) LastModified() *qt.QDateTime {
-	_ret := C.QNetworkCacheMetaData_LastModified(this.h)
-	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(C.QNetworkCacheMetaData_LastModified(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -173,8 +171,7 @@ func (this *QNetworkCacheMetaData) SetLastModified(dateTime *qt.QDateTime) {
 }
 
 func (this *QNetworkCacheMetaData) ExpirationDate() *qt.QDateTime {
-	_ret := C.QNetworkCacheMetaData_ExpirationDate(this.h)
-	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(C.QNetworkCacheMetaData_ExpirationDate(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -199,8 +196,7 @@ func (this *QNetworkCacheMetaData) Attributes() map[QNetworkRequest__Attribute]q
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (QNetworkRequest__Attribute)(_Keys[i])
 
-		_hashval_ret := _Values[i]
-		_hashval_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_hashval_ret))
+		_hashval_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_Values[i]))
 		_hashval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_entry_Value := *_hashval_goptr
 
@@ -310,8 +306,7 @@ func QAbstractNetworkCache_TrUtf8(s string) string {
 }
 
 func (this *QAbstractNetworkCache) MetaData(url *qt.QUrl) *QNetworkCacheMetaData {
-	_ret := C.QAbstractNetworkCache_MetaData(this.h, (*C.QUrl)(url.UnsafePointer()))
-	_goptr := newQNetworkCacheMetaData(_ret)
+	_goptr := newQNetworkCacheMetaData(C.QAbstractNetworkCache_MetaData(this.h, (*C.QUrl)(url.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

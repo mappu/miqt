@@ -89,8 +89,7 @@ func QToolTip_Text() string {
 }
 
 func QToolTip_Palette() *QPalette {
-	_ret := C.QToolTip_Palette()
-	_goptr := newQPalette(_ret)
+	_goptr := newQPalette(C.QToolTip_Palette())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -100,8 +99,7 @@ func QToolTip_SetPalette(palette *QPalette) {
 }
 
 func QToolTip_Font() *QFont {
-	_ret := C.QToolTip_Font()
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QToolTip_Font())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

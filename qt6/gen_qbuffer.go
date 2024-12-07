@@ -80,7 +80,7 @@ func NewQBuffer2(parent *QObject) *QBuffer {
 }
 
 func (this *QBuffer) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QBuffer_MetaObject(this.h)))
+	return newQMetaObject(C.QBuffer_MetaObject(this.h))
 }
 
 func (this *QBuffer) Metacast(param1 string) unsafe.Pointer {
@@ -381,7 +381,7 @@ func miqt_exec_callback_QBuffer_ConnectNotify(self *C.QBuffer, cb C.intptr_t, pa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(param1))
+	slotval1 := newQMetaMethod(param1)
 
 	gofunc((&QBuffer{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -407,7 +407,7 @@ func miqt_exec_callback_QBuffer_DisconnectNotify(self *C.QBuffer, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(param1))
+	slotval1 := newQMetaMethod(param1)
 
 	gofunc((&QBuffer{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

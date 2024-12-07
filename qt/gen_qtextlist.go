@@ -67,7 +67,7 @@ func NewQTextList(doc *QTextDocument) *QTextList {
 }
 
 func (this *QTextList) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTextList_MetaObject(this.h)))
+	return newQMetaObject(C.QTextList_MetaObject(this.h))
 }
 
 func (this *QTextList) Metacast(param1 string) unsafe.Pointer {
@@ -103,8 +103,7 @@ func (this *QTextList) IsEmpty() bool {
 }
 
 func (this *QTextList) Item(i int) *QTextBlock {
-	_ret := C.QTextList_Item(this.h, (C.int)(i))
-	_goptr := newQTextBlock(_ret)
+	_goptr := newQTextBlock(C.QTextList_Item(this.h, (C.int)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -137,8 +136,7 @@ func (this *QTextList) SetFormat(format *QTextListFormat) {
 }
 
 func (this *QTextList) Format() *QTextListFormat {
-	_ret := C.QTextList_Format(this.h)
-	_goptr := newQTextListFormat(_ret, nil)
+	_goptr := newQTextListFormat(C.QTextList_Format(this.h), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -207,7 +205,7 @@ func miqt_exec_callback_QTextList_BlockInserted(self *C.QTextList, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTextBlock(unsafe.Pointer(block))
+	slotval1 := newQTextBlock(block)
 
 	gofunc((&QTextList{h: self}).callVirtualBase_BlockInserted, slotval1)
 
@@ -233,7 +231,7 @@ func miqt_exec_callback_QTextList_BlockRemoved(self *C.QTextList, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTextBlock(unsafe.Pointer(block))
+	slotval1 := newQTextBlock(block)
 
 	gofunc((&QTextList{h: self}).callVirtualBase_BlockRemoved, slotval1)
 
@@ -259,7 +257,7 @@ func miqt_exec_callback_QTextList_BlockFormatChanged(self *C.QTextList, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTextBlock(unsafe.Pointer(block))
+	slotval1 := newQTextBlock(block)
 
 	gofunc((&QTextList{h: self}).callVirtualBase_BlockFormatChanged, slotval1)
 

@@ -138,8 +138,7 @@ func (this *QMediaPlayer) AudioTracks() []QMediaMetaData {
 	_ret := make([]QMediaMetaData, int(_ma.len))
 	_outCast := (*[0xffff]*C.QMediaMetaData)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQMediaMetaData(_lv_ret)
+		_lv_goptr := newQMediaMetaData(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -151,8 +150,7 @@ func (this *QMediaPlayer) VideoTracks() []QMediaMetaData {
 	_ret := make([]QMediaMetaData, int(_ma.len))
 	_outCast := (*[0xffff]*C.QMediaMetaData)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQMediaMetaData(_lv_ret)
+		_lv_goptr := newQMediaMetaData(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -164,8 +162,7 @@ func (this *QMediaPlayer) SubtitleTracks() []QMediaMetaData {
 	_ret := make([]QMediaMetaData, int(_ma.len))
 	_outCast := (*[0xffff]*C.QMediaMetaData)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQMediaMetaData(_lv_ret)
+		_lv_goptr := newQMediaMetaData(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -201,7 +198,7 @@ func (this *QMediaPlayer) SetAudioOutput(output *QAudioOutput) {
 }
 
 func (this *QMediaPlayer) AudioOutput() *QAudioOutput {
-	return UnsafeNewQAudioOutput(unsafe.Pointer(C.QMediaPlayer_AudioOutput(this.h)), nil)
+	return newQAudioOutput(C.QMediaPlayer_AudioOutput(this.h), nil)
 }
 
 func (this *QMediaPlayer) SetVideoOutput(videoOutput *qt6.QObject) {
@@ -217,12 +214,11 @@ func (this *QMediaPlayer) SetVideoSink(sink *QVideoSink) {
 }
 
 func (this *QMediaPlayer) VideoSink() *QVideoSink {
-	return UnsafeNewQVideoSink(unsafe.Pointer(C.QMediaPlayer_VideoSink(this.h)), nil)
+	return newQVideoSink(C.QMediaPlayer_VideoSink(this.h), nil)
 }
 
 func (this *QMediaPlayer) Source() *qt6.QUrl {
-	_ret := C.QMediaPlayer_Source(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QMediaPlayer_Source(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -260,8 +256,7 @@ func (this *QMediaPlayer) BufferProgress() float32 {
 }
 
 func (this *QMediaPlayer) BufferedTimeRange() *QMediaTimeRange {
-	_ret := C.QMediaPlayer_BufferedTimeRange(this.h)
-	_goptr := newQMediaTimeRange(_ret)
+	_goptr := newQMediaTimeRange(C.QMediaPlayer_BufferedTimeRange(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -298,8 +293,7 @@ func (this *QMediaPlayer) IsAvailable() bool {
 }
 
 func (this *QMediaPlayer) MetaData() *QMediaMetaData {
-	_ret := C.QMediaPlayer_MetaData(this.h)
-	_goptr := newQMediaMetaData(_ret)
+	_goptr := newQMediaMetaData(C.QMediaPlayer_MetaData(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -755,6 +749,7 @@ func miqt_exec_callback_QMediaPlayer_EventFilter(self *C.QMediaPlayer, cb C.intp
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QMediaPlayer{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

@@ -83,8 +83,7 @@ func QMediaGaplessPlaybackControl_TrUtf8(s string) string {
 }
 
 func (this *QMediaGaplessPlaybackControl) NextMedia() *QMediaContent {
-	_ret := C.QMediaGaplessPlaybackControl_NextMedia(this.h)
-	_goptr := newQMediaContent(_ret)
+	_goptr := newQMediaContent(C.QMediaGaplessPlaybackControl_NextMedia(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -140,7 +139,7 @@ func miqt_exec_callback_QMediaGaplessPlaybackControl_NextMediaChanged(cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMediaContent(unsafe.Pointer(media))
+	slotval1 := newQMediaContent(media)
 
 	gofunc(slotval1)
 }

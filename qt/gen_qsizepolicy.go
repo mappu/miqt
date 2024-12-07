@@ -211,8 +211,7 @@ func (this *QSizePolicy) Transpose() {
 }
 
 func (this *QSizePolicy) Transposed() *QSizePolicy {
-	_ret := C.QSizePolicy_Transposed(this.h)
-	_goptr := newQSizePolicy(_ret)
+	_goptr := newQSizePolicy(C.QSizePolicy_Transposed(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

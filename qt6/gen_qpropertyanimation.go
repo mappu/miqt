@@ -112,7 +112,7 @@ func NewQPropertyAnimation4(target *QObject, propertyName []byte, parent *QObjec
 }
 
 func (this *QPropertyAnimation) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QPropertyAnimation_MetaObject(this.h)))
+	return newQMetaObject(C.QPropertyAnimation_MetaObject(this.h))
 }
 
 func (this *QPropertyAnimation) Metacast(param1 string) unsafe.Pointer {
@@ -131,7 +131,7 @@ func QPropertyAnimation_Tr(s string) string {
 }
 
 func (this *QPropertyAnimation) TargetObject() *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QPropertyAnimation_TargetObject(this.h)))
+	return newQObject(C.QPropertyAnimation_TargetObject(this.h))
 }
 
 func (this *QPropertyAnimation) SetTargetObject(target *QObject) {
@@ -194,7 +194,7 @@ func miqt_exec_callback_QPropertyAnimation_Event(self *C.QPropertyAnimation, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QPropertyAnimation{h: self}).callVirtualBase_Event, slotval1)
 
@@ -222,7 +222,7 @@ func miqt_exec_callback_QPropertyAnimation_UpdateCurrentValue(self *C.QPropertyA
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval1 := newQVariant(value)
 
 	gofunc((&QPropertyAnimation{h: self}).callVirtualBase_UpdateCurrentValue, slotval1)
 
@@ -309,8 +309,7 @@ func miqt_exec_callback_QPropertyAnimation_UpdateCurrentTime(self *C.QPropertyAn
 
 func (this *QPropertyAnimation) callVirtualBase_Interpolated(from *QVariant, to *QVariant, progress float64) *QVariant {
 
-	_ret := C.QPropertyAnimation_virtualbase_Interpolated(unsafe.Pointer(this.h), from.cPointer(), to.cPointer(), (C.double)(progress))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QPropertyAnimation_virtualbase_Interpolated(unsafe.Pointer(this.h), from.cPointer(), to.cPointer(), (C.double)(progress)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -330,8 +329,10 @@ func miqt_exec_callback_QPropertyAnimation_Interpolated(self *C.QPropertyAnimati
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVariant(unsafe.Pointer(from))
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(to))
+	slotval1 := newQVariant(from)
+
+	slotval2 := newQVariant(to)
+
 	slotval3 := (float64)(progress)
 
 	virtualReturn := gofunc((&QPropertyAnimation{h: self}).callVirtualBase_Interpolated, slotval1, slotval2, slotval3)

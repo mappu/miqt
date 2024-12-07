@@ -125,8 +125,7 @@ func QWebEngineHttpRequest_PostRequest(url *qt.QUrl, postData map[string]string)
 		keys:   unsafe.Pointer(postData_Keys_CArray),
 		values: unsafe.Pointer(postData_Values_CArray),
 	}
-	_ret := C.QWebEngineHttpRequest_PostRequest((*C.QUrl)(url.UnsafePointer()), postData_mm)
-	_goptr := newQWebEngineHttpRequest(_ret)
+	_goptr := newQWebEngineHttpRequest(C.QWebEngineHttpRequest_PostRequest((*C.QUrl)(url.UnsafePointer()), postData_mm))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -152,8 +151,7 @@ func (this *QWebEngineHttpRequest) SetMethod(method QWebEngineHttpRequest__Metho
 }
 
 func (this *QWebEngineHttpRequest) Url() *qt.QUrl {
-	_ret := C.QWebEngineHttpRequest_Url(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineHttpRequest_Url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

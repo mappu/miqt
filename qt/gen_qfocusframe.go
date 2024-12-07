@@ -80,7 +80,7 @@ func NewQFocusFrame2() *QFocusFrame {
 }
 
 func (this *QFocusFrame) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QFocusFrame_MetaObject(this.h)))
+	return newQMetaObject(C.QFocusFrame_MetaObject(this.h))
 }
 
 func (this *QFocusFrame) Metacast(param1 string) unsafe.Pointer {
@@ -112,7 +112,7 @@ func (this *QFocusFrame) SetWidget(widget *QWidget) {
 }
 
 func (this *QFocusFrame) Widget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QFocusFrame_Widget(this.h)), nil, nil)
+	return newQWidget(C.QFocusFrame_Widget(this.h), nil, nil)
 }
 
 func QFocusFrame_Tr2(s string, c string) string {
@@ -179,7 +179,7 @@ func miqt_exec_callback_QFocusFrame_Event(self *C.QFocusFrame, cb C.intptr_t, e 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QFocusFrame{h: self}).callVirtualBase_Event, slotval1)
 
@@ -207,8 +207,9 @@ func miqt_exec_callback_QFocusFrame_EventFilter(self *C.QFocusFrame, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(param1))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(param2))
+	slotval1 := newQObject(param1)
+
+	slotval2 := newQEvent(param2)
 
 	virtualReturn := gofunc((&QFocusFrame{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -236,7 +237,7 @@ func miqt_exec_callback_QFocusFrame_PaintEvent(self *C.QFocusFrame, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQPaintEvent(param1, nil)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -295,8 +296,7 @@ func miqt_exec_callback_QFocusFrame_SetVisible(self *C.QFocusFrame, cb C.intptr_
 
 func (this *QFocusFrame) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QFocusFrame_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QFocusFrame_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -323,8 +323,7 @@ func miqt_exec_callback_QFocusFrame_SizeHint(self *C.QFocusFrame, cb C.intptr_t)
 
 func (this *QFocusFrame) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QFocusFrame_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QFocusFrame_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -404,7 +403,8 @@ func miqt_exec_callback_QFocusFrame_HasHeightForWidth(self *C.QFocusFrame, cb C.
 
 func (this *QFocusFrame) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QFocusFrame_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return newQPaintEngine(C.QFocusFrame_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+
 }
 func (this *QFocusFrame) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
 	if !this.isSubclass {
@@ -446,7 +446,7 @@ func miqt_exec_callback_QFocusFrame_MousePressEvent(self *C.QFocusFrame, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -472,7 +472,7 @@ func miqt_exec_callback_QFocusFrame_MouseReleaseEvent(self *C.QFocusFrame, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -498,7 +498,7 @@ func miqt_exec_callback_QFocusFrame_MouseDoubleClickEvent(self *C.QFocusFrame, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -524,7 +524,7 @@ func miqt_exec_callback_QFocusFrame_MouseMoveEvent(self *C.QFocusFrame, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -550,7 +550,7 @@ func miqt_exec_callback_QFocusFrame_WheelEvent(self *C.QFocusFrame, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQWheelEvent(event, nil, nil)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -576,7 +576,7 @@ func miqt_exec_callback_QFocusFrame_KeyPressEvent(self *C.QFocusFrame, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -602,7 +602,7 @@ func miqt_exec_callback_QFocusFrame_KeyReleaseEvent(self *C.QFocusFrame, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -628,7 +628,7 @@ func miqt_exec_callback_QFocusFrame_FocusInEvent(self *C.QFocusFrame, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -654,7 +654,7 @@ func miqt_exec_callback_QFocusFrame_FocusOutEvent(self *C.QFocusFrame, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -680,7 +680,7 @@ func miqt_exec_callback_QFocusFrame_EnterEvent(self *C.QFocusFrame, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_EnterEvent, slotval1)
 
@@ -706,7 +706,7 @@ func miqt_exec_callback_QFocusFrame_LeaveEvent(self *C.QFocusFrame, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_LeaveEvent, slotval1)
 
@@ -732,7 +732,7 @@ func miqt_exec_callback_QFocusFrame_MoveEvent(self *C.QFocusFrame, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMoveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQMoveEvent(event, nil)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -758,7 +758,7 @@ func miqt_exec_callback_QFocusFrame_ResizeEvent(self *C.QFocusFrame, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQResizeEvent(event, nil)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -784,7 +784,7 @@ func miqt_exec_callback_QFocusFrame_CloseEvent(self *C.QFocusFrame, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQCloseEvent(event, nil)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -810,7 +810,7 @@ func miqt_exec_callback_QFocusFrame_ContextMenuEvent(self *C.QFocusFrame, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQContextMenuEvent(event, nil, nil)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -836,7 +836,7 @@ func miqt_exec_callback_QFocusFrame_TabletEvent(self *C.QFocusFrame, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTabletEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQTabletEvent(event, nil, nil)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -862,7 +862,7 @@ func miqt_exec_callback_QFocusFrame_ActionEvent(self *C.QFocusFrame, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQActionEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQActionEvent(event, nil)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -888,7 +888,7 @@ func miqt_exec_callback_QFocusFrame_DragEnterEvent(self *C.QFocusFrame, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragEnterEvent(unsafe.Pointer(event), nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event, nil, nil, nil)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -914,7 +914,7 @@ func miqt_exec_callback_QFocusFrame_DragMoveEvent(self *C.QFocusFrame, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQDragMoveEvent(event, nil, nil)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -940,7 +940,7 @@ func miqt_exec_callback_QFocusFrame_DragLeaveEvent(self *C.QFocusFrame, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragLeaveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDragLeaveEvent(event, nil)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -966,7 +966,7 @@ func miqt_exec_callback_QFocusFrame_DropEvent(self *C.QFocusFrame, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDropEvent(event, nil)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -992,7 +992,7 @@ func miqt_exec_callback_QFocusFrame_ShowEvent(self *C.QFocusFrame, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQShowEvent(event, nil)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1018,7 +1018,7 @@ func miqt_exec_callback_QFocusFrame_HideEvent(self *C.QFocusFrame, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHideEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQHideEvent(event, nil)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -1081,7 +1081,7 @@ func miqt_exec_callback_QFocusFrame_ChangeEvent(self *C.QFocusFrame, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -1135,7 +1135,7 @@ func miqt_exec_callback_QFocusFrame_InitPainter(self *C.QFocusFrame, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval1 := newQPainter(painter)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_InitPainter, slotval1)
 
@@ -1143,7 +1143,8 @@ func miqt_exec_callback_QFocusFrame_InitPainter(self *C.QFocusFrame, cb C.intptr
 
 func (this *QFocusFrame) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QFocusFrame_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer())))
+	return newQPaintDevice(C.QFocusFrame_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+
 }
 func (this *QFocusFrame) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
 	if !this.isSubclass {
@@ -1160,7 +1161,7 @@ func miqt_exec_callback_QFocusFrame_Redirected(self *C.QFocusFrame, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(offset))
+	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QFocusFrame{h: self}).callVirtualBase_Redirected, slotval1)
 
@@ -1170,7 +1171,8 @@ func miqt_exec_callback_QFocusFrame_Redirected(self *C.QFocusFrame, cb C.intptr_
 
 func (this *QFocusFrame) callVirtualBase_SharedPainter() *QPainter {
 
-	return UnsafeNewQPainter(unsafe.Pointer(C.QFocusFrame_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+	return newQPainter(C.QFocusFrame_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+
 }
 func (this *QFocusFrame) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
 	if !this.isSubclass {
@@ -1212,7 +1214,7 @@ func miqt_exec_callback_QFocusFrame_InputMethodEvent(self *C.QFocusFrame, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQInputMethodEvent(param1, nil)
 
 	gofunc((&QFocusFrame{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -1220,8 +1222,7 @@ func miqt_exec_callback_QFocusFrame_InputMethodEvent(self *C.QFocusFrame, cb C.i
 
 func (this *QFocusFrame) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_ret := C.QFocusFrame_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QFocusFrame_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

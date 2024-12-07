@@ -93,8 +93,7 @@ func QWebEngineNavigationRequest_Tr(s string) string {
 }
 
 func (this *QWebEngineNavigationRequest) Url() *qt6.QUrl {
-	_ret := C.QWebEngineNavigationRequest_Url(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineNavigationRequest_Url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -74,8 +74,7 @@ func QSslEllipticCurve_FromShortName(name string) *QSslEllipticCurve {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	_ret := C.QSslEllipticCurve_FromShortName(name_ms)
-	_goptr := newQSslEllipticCurve(_ret)
+	_goptr := newQSslEllipticCurve(C.QSslEllipticCurve_FromShortName(name_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -85,8 +84,7 @@ func QSslEllipticCurve_FromLongName(name string) *QSslEllipticCurve {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	_ret := C.QSslEllipticCurve_FromLongName(name_ms)
-	_goptr := newQSslEllipticCurve(_ret)
+	_goptr := newQSslEllipticCurve(C.QSslEllipticCurve_FromLongName(name_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -82,7 +82,7 @@ func QVideoRendererControl_TrUtf8(s string) string {
 }
 
 func (this *QVideoRendererControl) Surface() *QAbstractVideoSurface {
-	return UnsafeNewQAbstractVideoSurface(unsafe.Pointer(C.QVideoRendererControl_Surface(this.h)), nil)
+	return newQAbstractVideoSurface(C.QVideoRendererControl_Surface(this.h), nil)
 }
 
 func (this *QVideoRendererControl) SetSurface(surface *QAbstractVideoSurface) {

@@ -109,8 +109,7 @@ func (this *QWebPluginFactory) Plugins() []QWebPluginFactory__Plugin {
 	_ret := make([]QWebPluginFactory__Plugin, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWebPluginFactory__Plugin)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQWebPluginFactory__Plugin(_lv_ret)
+		_lv_goptr := newQWebPluginFactory__Plugin(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -268,6 +267,7 @@ func miqt_exec_callback_QWebPluginFactory_Create(self *C.QWebPluginFactory, cb C
 	C.free(unsafe.Pointer(mimeType_ms.data))
 	slotval1 := mimeType_ret
 	slotval2 := qt.UnsafeNewQUrl(unsafe.Pointer(param2))
+
 	var argumentNames_ma C.struct_miqt_array = argumentNames
 	argumentNames_ret := make([]string, int(argumentNames_ma.len))
 	argumentNames_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(argumentNames_ma.data)) // hey ya
@@ -318,8 +318,9 @@ func miqt_exec_callback_QWebPluginFactory_Extension(self *C.QWebPluginFactory, c
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QWebPluginFactory__Extension)(extension)
 
-	slotval2 := UnsafeNewQWebPluginFactory__ExtensionOption(unsafe.Pointer(option))
-	slotval3 := UnsafeNewQWebPluginFactory__ExtensionReturn(unsafe.Pointer(output))
+	slotval2 := newQWebPluginFactory__ExtensionOption(option)
+
+	slotval3 := newQWebPluginFactory__ExtensionReturn(output)
 
 	virtualReturn := gofunc((&QWebPluginFactory{h: self}).callVirtualBase_Extension, slotval1, slotval2, slotval3)
 
@@ -404,6 +405,7 @@ func miqt_exec_callback_QWebPluginFactory_EventFilter(self *C.QWebPluginFactory,
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QWebPluginFactory{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

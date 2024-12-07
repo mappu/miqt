@@ -72,15 +72,13 @@ func (this *QIconEngine) Paint(painter *QPainter, rect *QRect, mode QIcon__Mode,
 }
 
 func (this *QIconEngine) ActualSize(size *QSize, mode QIcon__Mode, state QIcon__State) *QSize {
-	_ret := C.QIconEngine_ActualSize(this.h, size.cPointer(), (C.int)(mode), (C.int)(state))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QIconEngine_ActualSize(this.h, size.cPointer(), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIconEngine) Pixmap(size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
-	_ret := C.QIconEngine_Pixmap(this.h, size.cPointer(), (C.int)(mode), (C.int)(state))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QIconEngine_Pixmap(this.h, size.cPointer(), (C.int)(mode), (C.int)(state)), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -105,7 +103,7 @@ func (this *QIconEngine) Key() string {
 }
 
 func (this *QIconEngine) Clone() *QIconEngine {
-	return UnsafeNewQIconEngine(unsafe.Pointer(C.QIconEngine_Clone(this.h)))
+	return newQIconEngine(C.QIconEngine_Clone(this.h))
 }
 
 func (this *QIconEngine) Read(in *QDataStream) bool {
@@ -121,8 +119,7 @@ func (this *QIconEngine) AvailableSizes(mode QIcon__Mode, state QIcon__State) []
 	_ret := make([]QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQSize(_lv_ret)
+		_lv_goptr := newQSize(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -141,8 +138,7 @@ func (this *QIconEngine) IsNull() bool {
 }
 
 func (this *QIconEngine) ScaledPixmap(size *QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap {
-	_ret := C.QIconEngine_ScaledPixmap(this.h, size.cPointer(), (C.int)(mode), (C.int)(state), (C.double)(scale))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QIconEngine_ScaledPixmap(this.h, size.cPointer(), (C.int)(mode), (C.int)(state), (C.double)(scale)), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -165,8 +161,10 @@ func miqt_exec_callback_QIconEngine_Paint(self *C.QIconEngine, cb C.intptr_t, pa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQRect(unsafe.Pointer(rect))
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQRect(rect)
+
 	slotval3 := (QIcon__Mode)(mode)
 
 	slotval4 := (QIcon__State)(state)
@@ -177,8 +175,7 @@ func miqt_exec_callback_QIconEngine_Paint(self *C.QIconEngine, cb C.intptr_t, pa
 
 func (this *QIconEngine) callVirtualBase_ActualSize(size *QSize, mode QIcon__Mode, state QIcon__State) *QSize {
 
-	_ret := C.QIconEngine_virtualbase_ActualSize(unsafe.Pointer(this.h), size.cPointer(), (C.int)(mode), (C.int)(state))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QIconEngine_virtualbase_ActualSize(unsafe.Pointer(this.h), size.cPointer(), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -198,7 +195,8 @@ func miqt_exec_callback_QIconEngine_ActualSize(self *C.QIconEngine, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQSize(unsafe.Pointer(size))
+	slotval1 := newQSize(size)
+
 	slotval2 := (QIcon__Mode)(mode)
 
 	slotval3 := (QIcon__State)(state)
@@ -211,8 +209,7 @@ func miqt_exec_callback_QIconEngine_ActualSize(self *C.QIconEngine, cb C.intptr_
 
 func (this *QIconEngine) callVirtualBase_Pixmap(size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
 
-	_ret := C.QIconEngine_virtualbase_Pixmap(unsafe.Pointer(this.h), size.cPointer(), (C.int)(mode), (C.int)(state))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QIconEngine_virtualbase_Pixmap(unsafe.Pointer(this.h), size.cPointer(), (C.int)(mode), (C.int)(state)), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -232,7 +229,8 @@ func miqt_exec_callback_QIconEngine_Pixmap(self *C.QIconEngine, cb C.intptr_t, s
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQSize(unsafe.Pointer(size))
+	slotval1 := newQSize(size)
+
 	slotval2 := (QIcon__Mode)(mode)
 
 	slotval3 := (QIcon__State)(state)
@@ -263,7 +261,8 @@ func miqt_exec_callback_QIconEngine_AddPixmap(self *C.QIconEngine, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPixmap(unsafe.Pointer(pixmap), nil)
+	slotval1 := newQPixmap(pixmap, nil)
+
 	slotval2 := (QIcon__Mode)(mode)
 
 	slotval3 := (QIcon__State)(state)
@@ -300,7 +299,8 @@ func miqt_exec_callback_QIconEngine_AddFile(self *C.QIconEngine, cb C.intptr_t, 
 	fileName_ret := C.GoStringN(fileName_ms.data, C.int(int64(fileName_ms.len)))
 	C.free(unsafe.Pointer(fileName_ms.data))
 	slotval1 := fileName_ret
-	slotval2 := UnsafeNewQSize(unsafe.Pointer(size))
+	slotval2 := newQSize(size)
+
 	slotval3 := (QIcon__Mode)(mode)
 
 	slotval4 := (QIcon__State)(state)
@@ -379,7 +379,7 @@ func miqt_exec_callback_QIconEngine_Read(self *C.QIconEngine, cb C.intptr_t, in 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDataStream(unsafe.Pointer(in), nil)
+	slotval1 := newQDataStream(in, nil)
 
 	virtualReturn := gofunc((&QIconEngine{h: self}).callVirtualBase_Read, slotval1)
 
@@ -407,7 +407,7 @@ func miqt_exec_callback_QIconEngine_Write(self *C.QIconEngine, cb C.intptr_t, ou
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDataStream(unsafe.Pointer(out), nil)
+	slotval1 := newQDataStream(out, nil)
 
 	virtualReturn := gofunc((&QIconEngine{h: self}).callVirtualBase_Write, slotval1)
 
@@ -421,8 +421,7 @@ func (this *QIconEngine) callVirtualBase_AvailableSizes(mode QIcon__Mode, state 
 	_ret := make([]QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQSize(_lv_ret)
+		_lv_goptr := newQSize(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -518,8 +517,7 @@ func miqt_exec_callback_QIconEngine_IsNull(self *C.QIconEngine, cb C.intptr_t) C
 
 func (this *QIconEngine) callVirtualBase_ScaledPixmap(size *QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap {
 
-	_ret := C.QIconEngine_virtualbase_ScaledPixmap(unsafe.Pointer(this.h), size.cPointer(), (C.int)(mode), (C.int)(state), (C.double)(scale))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QIconEngine_virtualbase_ScaledPixmap(unsafe.Pointer(this.h), size.cPointer(), (C.int)(mode), (C.int)(state), (C.double)(scale)), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -539,7 +537,8 @@ func miqt_exec_callback_QIconEngine_ScaledPixmap(self *C.QIconEngine, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQSize(unsafe.Pointer(size))
+	slotval1 := newQSize(size)
+
 	slotval2 := (QIcon__Mode)(mode)
 
 	slotval3 := (QIcon__State)(state)

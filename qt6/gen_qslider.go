@@ -121,7 +121,7 @@ func NewQSlider4(orientation Orientation, parent *QWidget) *QSlider {
 }
 
 func (this *QSlider) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSlider_MetaObject(this.h)))
+	return newQMetaObject(C.QSlider_MetaObject(this.h))
 }
 
 func (this *QSlider) Metacast(param1 string) unsafe.Pointer {
@@ -140,15 +140,13 @@ func QSlider_Tr(s string) string {
 }
 
 func (this *QSlider) SizeHint() *QSize {
-	_ret := C.QSlider_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSlider_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSlider) MinimumSizeHint() *QSize {
-	_ret := C.QSlider_MinimumSizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSlider_MinimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -197,8 +195,7 @@ func QSlider_Tr3(s string, c string, n int) string {
 
 func (this *QSlider) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QSlider_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSlider_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -225,8 +222,7 @@ func miqt_exec_callback_QSlider_SizeHint(self *C.QSlider, cb C.intptr_t) *C.QSiz
 
 func (this *QSlider) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QSlider_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSlider_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -271,7 +267,7 @@ func miqt_exec_callback_QSlider_Event(self *C.QSlider, cb C.intptr_t, event *C.Q
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QSlider{h: self}).callVirtualBase_Event, slotval1)
 
@@ -299,7 +295,7 @@ func miqt_exec_callback_QSlider_PaintEvent(self *C.QSlider, cb C.intptr_t, ev *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(ev), nil)
+	slotval1 := newQPaintEvent(ev, nil)
 
 	gofunc((&QSlider{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -325,7 +321,7 @@ func miqt_exec_callback_QSlider_MousePressEvent(self *C.QSlider, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(ev), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(ev, nil, nil, nil, nil)
 
 	gofunc((&QSlider{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -351,7 +347,7 @@ func miqt_exec_callback_QSlider_MouseReleaseEvent(self *C.QSlider, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(ev), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(ev, nil, nil, nil, nil)
 
 	gofunc((&QSlider{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -377,7 +373,7 @@ func miqt_exec_callback_QSlider_MouseMoveEvent(self *C.QSlider, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(ev), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(ev, nil, nil, nil, nil)
 
 	gofunc((&QSlider{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -403,7 +399,7 @@ func miqt_exec_callback_QSlider_InitStyleOption(self *C.QSlider, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStyleOptionSlider(unsafe.Pointer(option), nil, nil)
+	slotval1 := newQStyleOptionSlider(option, nil, nil)
 
 	gofunc((&QSlider{h: self}).callVirtualBase_InitStyleOption, slotval1)
 
@@ -455,7 +451,7 @@ func miqt_exec_callback_QSlider_KeyPressEvent(self *C.QSlider, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(ev), nil, nil)
+	slotval1 := newQKeyEvent(ev, nil, nil)
 
 	gofunc((&QSlider{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -481,7 +477,7 @@ func miqt_exec_callback_QSlider_TimerEvent(self *C.QSlider, cb C.intptr_t, param
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQTimerEvent(param1, nil)
 
 	gofunc((&QSlider{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -507,7 +503,7 @@ func miqt_exec_callback_QSlider_WheelEvent(self *C.QSlider, cb C.intptr_t, e *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(e), nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(e, nil, nil, nil, nil)
 
 	gofunc((&QSlider{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -533,7 +529,7 @@ func miqt_exec_callback_QSlider_ChangeEvent(self *C.QSlider, cb C.intptr_t, e *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	gofunc((&QSlider{h: self}).callVirtualBase_ChangeEvent, slotval1)
 

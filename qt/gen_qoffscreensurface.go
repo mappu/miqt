@@ -93,7 +93,7 @@ func NewQOffscreenSurface3(screen *QScreen) *QOffscreenSurface {
 }
 
 func (this *QOffscreenSurface) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QOffscreenSurface_MetaObject(this.h)))
+	return newQMetaObject(C.QOffscreenSurface_MetaObject(this.h))
 }
 
 func (this *QOffscreenSurface) Metacast(param1 string) unsafe.Pointer {
@@ -141,28 +141,25 @@ func (this *QOffscreenSurface) SetFormat(format *QSurfaceFormat) {
 }
 
 func (this *QOffscreenSurface) Format() *QSurfaceFormat {
-	_ret := C.QOffscreenSurface_Format(this.h)
-	_goptr := newQSurfaceFormat(_ret)
+	_goptr := newQSurfaceFormat(C.QOffscreenSurface_Format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QOffscreenSurface) RequestedFormat() *QSurfaceFormat {
-	_ret := C.QOffscreenSurface_RequestedFormat(this.h)
-	_goptr := newQSurfaceFormat(_ret)
+	_goptr := newQSurfaceFormat(C.QOffscreenSurface_RequestedFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QOffscreenSurface) Size() *QSize {
-	_ret := C.QOffscreenSurface_Size(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QOffscreenSurface_Size(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QOffscreenSurface) Screen() *QScreen {
-	return UnsafeNewQScreen(unsafe.Pointer(C.QOffscreenSurface_Screen(this.h)), nil)
+	return newQScreen(C.QOffscreenSurface_Screen(this.h), nil)
 }
 
 func (this *QOffscreenSurface) SetScreen(screen *QScreen) {
@@ -192,7 +189,7 @@ func miqt_exec_callback_QOffscreenSurface_ScreenChanged(cb C.intptr_t, screen *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQScreen(unsafe.Pointer(screen), nil)
+	slotval1 := newQScreen(screen, nil)
 
 	gofunc(slotval1)
 }
@@ -268,8 +265,7 @@ func miqt_exec_callback_QOffscreenSurface_SurfaceType(self *C.QOffscreenSurface,
 
 func (this *QOffscreenSurface) callVirtualBase_Format() *QSurfaceFormat {
 
-	_ret := C.QOffscreenSurface_virtualbase_Format(unsafe.Pointer(this.h))
-	_goptr := newQSurfaceFormat(_ret)
+	_goptr := newQSurfaceFormat(C.QOffscreenSurface_virtualbase_Format(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -296,8 +292,7 @@ func miqt_exec_callback_QOffscreenSurface_Format(self *C.QOffscreenSurface, cb C
 
 func (this *QOffscreenSurface) callVirtualBase_Size() *QSize {
 
-	_ret := C.QOffscreenSurface_virtualbase_Size(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QOffscreenSurface_virtualbase_Size(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -342,7 +337,7 @@ func miqt_exec_callback_QOffscreenSurface_Event(self *C.QOffscreenSurface, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QOffscreenSurface{h: self}).callVirtualBase_Event, slotval1)
 
@@ -370,8 +365,9 @@ func miqt_exec_callback_QOffscreenSurface_EventFilter(self *C.QOffscreenSurface,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QOffscreenSurface{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -399,7 +395,7 @@ func miqt_exec_callback_QOffscreenSurface_TimerEvent(self *C.QOffscreenSurface, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QOffscreenSurface{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -425,7 +421,7 @@ func miqt_exec_callback_QOffscreenSurface_ChildEvent(self *C.QOffscreenSurface, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QOffscreenSurface{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -451,7 +447,7 @@ func miqt_exec_callback_QOffscreenSurface_CustomEvent(self *C.QOffscreenSurface,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QOffscreenSurface{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -477,7 +473,7 @@ func miqt_exec_callback_QOffscreenSurface_ConnectNotify(self *C.QOffscreenSurfac
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QOffscreenSurface{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -503,7 +499,7 @@ func miqt_exec_callback_QOffscreenSurface_DisconnectNotify(self *C.QOffscreenSur
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QOffscreenSurface{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

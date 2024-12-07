@@ -129,7 +129,7 @@ func (this *QNetworkReply) SetReadBufferSize(size int64) {
 }
 
 func (this *QNetworkReply) Manager() *QNetworkAccessManager {
-	return UnsafeNewQNetworkAccessManager(unsafe.Pointer(C.QNetworkReply_Manager(this.h)), nil)
+	return newQNetworkAccessManager(C.QNetworkReply_Manager(this.h), nil)
 }
 
 func (this *QNetworkReply) Operation() QNetworkAccessManager__Operation {
@@ -137,8 +137,7 @@ func (this *QNetworkReply) Operation() QNetworkAccessManager__Operation {
 }
 
 func (this *QNetworkReply) Request() *QNetworkRequest {
-	_ret := C.QNetworkReply_Request(this.h)
-	_goptr := newQNetworkRequest(_ret)
+	_goptr := newQNetworkRequest(C.QNetworkReply_Request(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -156,15 +155,13 @@ func (this *QNetworkReply) IsRunning() bool {
 }
 
 func (this *QNetworkReply) Url() *qt6.QUrl {
-	_ret := C.QNetworkReply_Url(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QNetworkReply_Url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkReply) Header(header QNetworkRequest__KnownHeaders) *qt6.QVariant {
-	_ret := C.QNetworkReply_Header(this.h, (C.int)(header))
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QNetworkReply_Header(this.h, (C.int)(header))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -230,15 +227,13 @@ func (this *QNetworkReply) RawHeaderPairs() []struct {
 }
 
 func (this *QNetworkReply) Attribute(code QNetworkRequest__Attribute) *qt6.QVariant {
-	_ret := C.QNetworkReply_Attribute(this.h, (C.int)(code))
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QNetworkReply_Attribute(this.h, (C.int)(code))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkReply) SslConfiguration() *QSslConfiguration {
-	_ret := C.QNetworkReply_SslConfiguration(this.h)
-	_goptr := newQSslConfiguration(_ret)
+	_goptr := newQSslConfiguration(C.QNetworkReply_SslConfiguration(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -395,8 +390,7 @@ func miqt_exec_callback_QNetworkReply_SslErrors(cb C.intptr_t, errors C.struct_m
 	errors_ret := make([]QSslError, int(errors_ma.len))
 	errors_outCast := (*[0xffff]*C.QSslError)(unsafe.Pointer(errors_ma.data)) // hey ya
 	for i := 0; i < int(errors_ma.len); i++ {
-		errors_lv_ret := errors_outCast[i]
-		errors_lv_goptr := newQSslError(errors_lv_ret)
+		errors_lv_goptr := newQSslError(errors_outCast[i])
 		errors_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		errors_ret[i] = *errors_lv_goptr
 	}
@@ -420,7 +414,7 @@ func miqt_exec_callback_QNetworkReply_PreSharedKeyAuthenticationRequired(cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQSslPreSharedKeyAuthenticator(unsafe.Pointer(authenticator))
+	slotval1 := newQSslPreSharedKeyAuthenticator(authenticator)
 
 	gofunc(slotval1)
 }

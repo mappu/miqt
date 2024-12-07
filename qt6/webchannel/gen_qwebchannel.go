@@ -129,6 +129,7 @@ func (this *QWebChannel) RegisteredObjects() map[string]*qt6.QObject {
 		C.free(unsafe.Pointer(_hashkey_ms.data))
 		_entry_Key := _hashkey_ret
 		_entry_Value := qt6.UnsafeNewQObject(unsafe.Pointer(_Values[i]))
+
 		_ret[_entry_Key] = _entry_Value
 	}
 	return _ret
@@ -261,6 +262,7 @@ func miqt_exec_callback_QWebChannel_EventFilter(self *C.QWebChannel, cb C.intptr
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QWebChannel{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

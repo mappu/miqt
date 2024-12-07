@@ -148,15 +148,13 @@ func (this *QUrlQuery) SetQueryDelimiters(valueDelimiter QChar, pairDelimiter QC
 }
 
 func (this *QUrlQuery) QueryValueDelimiter() *QChar {
-	_ret := C.QUrlQuery_QueryValueDelimiter(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QUrlQuery_QueryValueDelimiter(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QUrlQuery) QueryPairDelimiter() *QChar {
-	_ret := C.QUrlQuery_QueryPairDelimiter(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QUrlQuery_QueryPairDelimiter(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -288,15 +286,13 @@ func (this *QUrlQuery) RemoveAllQueryItems(key string) {
 }
 
 func QUrlQuery_DefaultQueryValueDelimiter() *QChar {
-	_ret := C.QUrlQuery_DefaultQueryValueDelimiter()
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QUrlQuery_DefaultQueryValueDelimiter())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QUrlQuery_DefaultQueryPairDelimiter() *QChar {
-	_ret := C.QUrlQuery_DefaultQueryPairDelimiter()
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QUrlQuery_DefaultQueryPairDelimiter())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

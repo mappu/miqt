@@ -235,11 +235,11 @@ func (this *QFutureInterfaceBase) WaitForResume() {
 }
 
 func (this *QFutureInterfaceBase) Mutex() *QMutex {
-	return UnsafeNewQMutex(unsafe.Pointer(C.QFutureInterfaceBase_Mutex(this.h)), nil)
+	return newQMutex(C.QFutureInterfaceBase_Mutex(this.h), nil)
 }
 
 func (this *QFutureInterfaceBase) MutexWithInt(param1 int) *QMutex {
-	return UnsafeNewQMutex(unsafe.Pointer(C.QFutureInterfaceBase_MutexWithInt(this.h, (C.int)(param1))), nil)
+	return newQMutex(C.QFutureInterfaceBase_MutexWithInt(this.h, (C.int)(param1)), nil)
 }
 
 func (this *QFutureInterfaceBase) OperatorEqual(other *QFutureInterfaceBase) bool {

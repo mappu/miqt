@@ -393,8 +393,7 @@ func (this *QBrush) SetStyle(style BrushStyle) {
 }
 
 func (this *QBrush) Transform() *QTransform {
-	_ret := C.QBrush_Transform(this.h)
-	_goptr := newQTransform(_ret)
+	_goptr := newQTransform(C.QBrush_Transform(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -404,8 +403,7 @@ func (this *QBrush) SetTransform(transform *QTransform) {
 }
 
 func (this *QBrush) Texture() *QPixmap {
-	_ret := C.QBrush_Texture(this.h)
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QBrush_Texture(this.h), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -415,8 +413,7 @@ func (this *QBrush) SetTexture(pixmap *QPixmap) {
 }
 
 func (this *QBrush) TextureImage() *QImage {
-	_ret := C.QBrush_TextureImage(this.h)
-	_goptr := newQImage(_ret, nil)
+	_goptr := newQImage(C.QBrush_TextureImage(this.h), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -426,7 +423,7 @@ func (this *QBrush) SetTextureImage(image *QImage) {
 }
 
 func (this *QBrush) Color() *QColor {
-	return UnsafeNewQColor(unsafe.Pointer(C.QBrush_Color(this.h)))
+	return newQColor(C.QBrush_Color(this.h))
 }
 
 func (this *QBrush) SetColor(color *QColor) {
@@ -438,7 +435,7 @@ func (this *QBrush) SetColorWithColor(color GlobalColor) {
 }
 
 func (this *QBrush) Gradient() *QGradient {
-	return UnsafeNewQGradient(unsafe.Pointer(C.QBrush_Gradient(this.h)))
+	return newQGradient(C.QBrush_Gradient(this.h))
 }
 
 func (this *QBrush) IsOpaque() bool {
@@ -657,8 +654,7 @@ func (this *QGradient) Stops() []struct {
 		_lv_Second_CArray := (*[0xffff]*C.QColor)(unsafe.Pointer(_lv_mm.values))
 		_lv_entry_First := (float64)(_lv_First_CArray[0])
 
-		_lv_second_ret := _lv_Second_CArray[0]
-		_lv_second_goptr := newQColor(_lv_second_ret)
+		_lv_second_goptr := newQColor(_lv_Second_CArray[0])
 		_lv_second_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_lv_entry_Second := *_lv_second_goptr
 
@@ -792,8 +788,7 @@ func NewQLinearGradient4(param1 *QLinearGradient) *QLinearGradient {
 }
 
 func (this *QLinearGradient) Start() *QPointF {
-	_ret := C.QLinearGradient_Start(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QLinearGradient_Start(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -807,8 +802,7 @@ func (this *QLinearGradient) SetStart2(x float64, y float64) {
 }
 
 func (this *QLinearGradient) FinalStop() *QPointF {
-	_ret := C.QLinearGradient_FinalStop(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QLinearGradient_FinalStop(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -963,8 +957,7 @@ func NewQRadialGradient8(param1 *QRadialGradient) *QRadialGradient {
 }
 
 func (this *QRadialGradient) Center() *QPointF {
-	_ret := C.QRadialGradient_Center(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QRadialGradient_Center(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -978,8 +971,7 @@ func (this *QRadialGradient) SetCenter2(x float64, y float64) {
 }
 
 func (this *QRadialGradient) FocalPoint() *QPointF {
-	_ret := C.QRadialGradient_FocalPoint(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QRadialGradient_FocalPoint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1114,8 +1106,7 @@ func NewQConicalGradient4(param1 *QConicalGradient) *QConicalGradient {
 }
 
 func (this *QConicalGradient) Center() *QPointF {
-	_ret := C.QConicalGradient_Center(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QConicalGradient_Center(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

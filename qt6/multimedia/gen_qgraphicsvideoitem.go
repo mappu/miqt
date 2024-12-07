@@ -106,7 +106,7 @@ func QGraphicsVideoItem_Tr(s string) string {
 }
 
 func (this *QGraphicsVideoItem) VideoSink() *QVideoSink {
-	return UnsafeNewQVideoSink(unsafe.Pointer(C.QGraphicsVideoItem_VideoSink(this.h)), nil)
+	return newQVideoSink(C.QGraphicsVideoItem_VideoSink(this.h), nil)
 }
 
 func (this *QGraphicsVideoItem) AspectRatioMode() qt6.AspectRatioMode {
@@ -118,8 +118,7 @@ func (this *QGraphicsVideoItem) SetAspectRatioMode(mode qt6.AspectRatioMode) {
 }
 
 func (this *QGraphicsVideoItem) Offset() *qt6.QPointF {
-	_ret := C.QGraphicsVideoItem_Offset(this.h)
-	_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(C.QGraphicsVideoItem_Offset(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -129,8 +128,7 @@ func (this *QGraphicsVideoItem) SetOffset(offset *qt6.QPointF) {
 }
 
 func (this *QGraphicsVideoItem) Size() *qt6.QSizeF {
-	_ret := C.QGraphicsVideoItem_Size(this.h)
-	_goptr := qt6.UnsafeNewQSizeF(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQSizeF(unsafe.Pointer(C.QGraphicsVideoItem_Size(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -140,15 +138,13 @@ func (this *QGraphicsVideoItem) SetSize(size *qt6.QSizeF) {
 }
 
 func (this *QGraphicsVideoItem) NativeSize() *qt6.QSizeF {
-	_ret := C.QGraphicsVideoItem_NativeSize(this.h)
-	_goptr := qt6.UnsafeNewQSizeF(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQSizeF(unsafe.Pointer(C.QGraphicsVideoItem_NativeSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsVideoItem) BoundingRect() *qt6.QRectF {
-	_ret := C.QGraphicsVideoItem_BoundingRect(this.h)
-	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(C.QGraphicsVideoItem_BoundingRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -205,8 +201,7 @@ func QGraphicsVideoItem_Tr3(s string, c string, n int) string {
 
 func (this *QGraphicsVideoItem) callVirtualBase_BoundingRect() *qt6.QRectF {
 
-	_ret := C.QGraphicsVideoItem_virtualbase_BoundingRect(unsafe.Pointer(this.h))
-	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(C.QGraphicsVideoItem_virtualbase_BoundingRect(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -252,7 +247,9 @@ func miqt_exec_callback_QGraphicsVideoItem_Paint(self *C.QGraphicsVideoItem, cb 
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQPainter(unsafe.Pointer(painter))
+
 	slotval2 := qt6.UnsafeNewQStyleOptionGraphicsItem(unsafe.Pointer(option), nil)
+
 	slotval3 := qt6.UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
 
 	gofunc((&QGraphicsVideoItem{h: self}).callVirtualBase_Paint, slotval1, slotval2, slotval3)
@@ -312,8 +309,7 @@ func miqt_exec_callback_QGraphicsVideoItem_TimerEvent(self *C.QGraphicsVideoItem
 
 func (this *QGraphicsVideoItem) callVirtualBase_ItemChange(change qt6.QGraphicsItem__GraphicsItemChange, value *qt6.QVariant) *qt6.QVariant {
 
-	_ret := C.QGraphicsVideoItem_virtualbase_ItemChange(unsafe.Pointer(this.h), (C.int)(change), (*C.QVariant)(value.UnsafePointer()))
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QGraphicsVideoItem_virtualbase_ItemChange(unsafe.Pointer(this.h), (C.int)(change), (*C.QVariant)(value.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

@@ -1283,8 +1283,7 @@ func (this *QLocale) ToDate(stringVal string) *QDate {
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
 	defer C.free(unsafe.Pointer(stringVal_ms.data))
-	_ret := C.QLocale_ToDate(this.h, stringVal_ms)
-	_goptr := newQDate(_ret)
+	_goptr := newQDate(C.QLocale_ToDate(this.h, stringVal_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1294,8 +1293,7 @@ func (this *QLocale) ToTime(stringVal string) *QTime {
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
 	defer C.free(unsafe.Pointer(stringVal_ms.data))
-	_ret := C.QLocale_ToTime(this.h, stringVal_ms)
-	_goptr := newQTime(_ret)
+	_goptr := newQTime(C.QLocale_ToTime(this.h, stringVal_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1305,8 +1303,7 @@ func (this *QLocale) ToDateTime(stringVal string) *QDateTime {
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
 	defer C.free(unsafe.Pointer(stringVal_ms.data))
-	_ret := C.QLocale_ToDateTime(this.h, stringVal_ms)
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QLocale_ToDateTime(this.h, stringVal_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1320,8 +1317,7 @@ func (this *QLocale) ToDate2(stringVal string, format string) *QDate {
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
 	defer C.free(unsafe.Pointer(format_ms.data))
-	_ret := C.QLocale_ToDate2(this.h, stringVal_ms, format_ms)
-	_goptr := newQDate(_ret)
+	_goptr := newQDate(C.QLocale_ToDate2(this.h, stringVal_ms, format_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1335,8 +1331,7 @@ func (this *QLocale) ToTime2(stringVal string, format string) *QTime {
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
 	defer C.free(unsafe.Pointer(format_ms.data))
-	_ret := C.QLocale_ToTime2(this.h, stringVal_ms, format_ms)
-	_goptr := newQTime(_ret)
+	_goptr := newQTime(C.QLocale_ToTime2(this.h, stringVal_ms, format_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1350,8 +1345,7 @@ func (this *QLocale) ToDateTime2(stringVal string, format string) *QDateTime {
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
 	defer C.free(unsafe.Pointer(format_ms.data))
-	_ret := C.QLocale_ToDateTime2(this.h, stringVal_ms, format_ms)
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QLocale_ToDateTime2(this.h, stringVal_ms, format_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1361,8 +1355,7 @@ func (this *QLocale) ToDate3(stringVal string, format QLocale__FormatType, cal Q
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
 	defer C.free(unsafe.Pointer(stringVal_ms.data))
-	_ret := C.QLocale_ToDate3(this.h, stringVal_ms, (C.int)(format), cal.cPointer())
-	_goptr := newQDate(_ret)
+	_goptr := newQDate(C.QLocale_ToDate3(this.h, stringVal_ms, (C.int)(format), cal.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1372,8 +1365,7 @@ func (this *QLocale) ToDateTime3(stringVal string, format QLocale__FormatType, c
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
 	defer C.free(unsafe.Pointer(stringVal_ms.data))
-	_ret := C.QLocale_ToDateTime3(this.h, stringVal_ms, (C.int)(format), cal.cPointer())
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QLocale_ToDateTime3(this.h, stringVal_ms, (C.int)(format), cal.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1387,8 +1379,7 @@ func (this *QLocale) ToDate4(stringVal string, format string, cal QCalendar) *QD
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
 	defer C.free(unsafe.Pointer(format_ms.data))
-	_ret := C.QLocale_ToDate4(this.h, stringVal_ms, format_ms, cal.cPointer())
-	_goptr := newQDate(_ret)
+	_goptr := newQDate(C.QLocale_ToDate4(this.h, stringVal_ms, format_ms, cal.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1402,8 +1393,7 @@ func (this *QLocale) ToDateTime4(stringVal string, format string, cal QCalendar)
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
 	defer C.free(unsafe.Pointer(format_ms.data))
-	_ret := C.QLocale_ToDateTime4(this.h, stringVal_ms, format_ms, cal.cPointer())
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QLocale_ToDateTime4(this.h, stringVal_ms, format_ms, cal.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1413,8 +1403,7 @@ func (this *QLocale) ToTime3(stringVal string, format QLocale__FormatType, cal Q
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
 	defer C.free(unsafe.Pointer(stringVal_ms.data))
-	_ret := C.QLocale_ToTime3(this.h, stringVal_ms, (C.int)(format), cal.cPointer())
-	_goptr := newQTime(_ret)
+	_goptr := newQTime(C.QLocale_ToTime3(this.h, stringVal_ms, (C.int)(format), cal.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1428,57 +1417,49 @@ func (this *QLocale) ToTime4(stringVal string, format string, cal QCalendar) *QT
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
 	defer C.free(unsafe.Pointer(format_ms.data))
-	_ret := C.QLocale_ToTime4(this.h, stringVal_ms, format_ms, cal.cPointer())
-	_goptr := newQTime(_ret)
+	_goptr := newQTime(C.QLocale_ToTime4(this.h, stringVal_ms, format_ms, cal.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLocale) DecimalPoint() *QChar {
-	_ret := C.QLocale_DecimalPoint(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QLocale_DecimalPoint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLocale) GroupSeparator() *QChar {
-	_ret := C.QLocale_GroupSeparator(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QLocale_GroupSeparator(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLocale) Percent() *QChar {
-	_ret := C.QLocale_Percent(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QLocale_Percent(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLocale) ZeroDigit() *QChar {
-	_ret := C.QLocale_ZeroDigit(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QLocale_ZeroDigit(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLocale) NegativeSign() *QChar {
-	_ret := C.QLocale_NegativeSign(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QLocale_NegativeSign(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLocale) PositiveSign() *QChar {
-	_ret := C.QLocale_PositiveSign(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QLocale_PositiveSign(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLocale) Exponential() *QChar {
-	_ret := C.QLocale_Exponential(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QLocale_Exponential(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1544,8 +1525,7 @@ func (this *QLocale) MeasurementSystem() QLocale__MeasurementSystem {
 }
 
 func (this *QLocale) Collation() *QLocale {
-	_ret := C.QLocale_Collation(this.h)
-	_goptr := newQLocale(_ret)
+	_goptr := newQLocale(C.QLocale_Collation(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1722,15 +1702,13 @@ func QLocale_SetDefault(locale *QLocale) {
 }
 
 func QLocale_C() *QLocale {
-	_ret := C.QLocale_C()
-	_goptr := newQLocale(_ret)
+	_goptr := newQLocale(C.QLocale_C())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QLocale_System() *QLocale {
-	_ret := C.QLocale_System()
-	_goptr := newQLocale(_ret)
+	_goptr := newQLocale(C.QLocale_System())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1740,8 +1718,7 @@ func QLocale_MatchingLocales(language QLocale__Language, script QLocale__Script,
 	_ret := make([]QLocale, int(_ma.len))
 	_outCast := (*[0xffff]*C.QLocale)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQLocale(_lv_ret)
+		_lv_goptr := newQLocale(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -1949,8 +1926,7 @@ func (this *QLocale) ToDate22(stringVal string, param2 QLocale__FormatType) *QDa
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
 	defer C.free(unsafe.Pointer(stringVal_ms.data))
-	_ret := C.QLocale_ToDate22(this.h, stringVal_ms, (C.int)(param2))
-	_goptr := newQDate(_ret)
+	_goptr := newQDate(C.QLocale_ToDate22(this.h, stringVal_ms, (C.int)(param2)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1960,8 +1936,7 @@ func (this *QLocale) ToTime22(stringVal string, param2 QLocale__FormatType) *QTi
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
 	defer C.free(unsafe.Pointer(stringVal_ms.data))
-	_ret := C.QLocale_ToTime22(this.h, stringVal_ms, (C.int)(param2))
-	_goptr := newQTime(_ret)
+	_goptr := newQTime(C.QLocale_ToTime22(this.h, stringVal_ms, (C.int)(param2)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1971,8 +1946,7 @@ func (this *QLocale) ToDateTime22(stringVal string, format QLocale__FormatType) 
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
 	defer C.free(unsafe.Pointer(stringVal_ms.data))
-	_ret := C.QLocale_ToDateTime22(this.h, stringVal_ms, (C.int)(format))
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QLocale_ToDateTime22(this.h, stringVal_ms, (C.int)(format)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -148,8 +148,7 @@ func (this *QsciStyle) SetColor(color *qt.QColor) {
 }
 
 func (this *QsciStyle) Color() *qt.QColor {
-	_ret := C.QsciStyle_Color(this.h)
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciStyle_Color(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -159,8 +158,7 @@ func (this *QsciStyle) SetPaper(paper *qt.QColor) {
 }
 
 func (this *QsciStyle) Paper() *qt.QColor {
-	_ret := C.QsciStyle_Paper(this.h)
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciStyle_Paper(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -170,8 +168,7 @@ func (this *QsciStyle) SetFont(font *qt.QFont) {
 }
 
 func (this *QsciStyle) Font() *qt.QFont {
-	_ret := C.QsciStyle_Font(this.h)
-	_goptr := qt.UnsafeNewQFont(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQFont(unsafe.Pointer(C.QsciStyle_Font(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -122,7 +122,7 @@ func NewQTemporaryFile4(templateName string, parent *QObject) *QTemporaryFile {
 }
 
 func (this *QTemporaryFile) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTemporaryFile_MetaObject(this.h)))
+	return newQMetaObject(C.QTemporaryFile_MetaObject(this.h))
 }
 
 func (this *QTemporaryFile) Metacast(param1 string) unsafe.Pointer {
@@ -187,11 +187,11 @@ func QTemporaryFile_CreateNativeFile(fileName string) *QTemporaryFile {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	return UnsafeNewQTemporaryFile(unsafe.Pointer(C.QTemporaryFile_CreateNativeFile(fileName_ms)), nil, nil, nil, nil, nil)
+	return newQTemporaryFile(C.QTemporaryFile_CreateNativeFile(fileName_ms), nil, nil, nil, nil, nil)
 }
 
 func QTemporaryFile_CreateNativeFileWithFile(file *QFile) *QTemporaryFile {
-	return UnsafeNewQTemporaryFile(unsafe.Pointer(C.QTemporaryFile_CreateNativeFileWithFile(file.cPointer())), nil, nil, nil, nil, nil)
+	return newQTemporaryFile(C.QTemporaryFile_CreateNativeFileWithFile(file.cPointer()), nil, nil, nil, nil, nil)
 }
 
 func QTemporaryFile_Tr2(s string, c string) string {

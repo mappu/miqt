@@ -121,8 +121,7 @@ func (this *QNetworkConfigurationManager) Capabilities() QNetworkConfigurationMa
 }
 
 func (this *QNetworkConfigurationManager) DefaultConfiguration() *QNetworkConfiguration {
-	_ret := C.QNetworkConfigurationManager_DefaultConfiguration(this.h)
-	_goptr := newQNetworkConfiguration(_ret)
+	_goptr := newQNetworkConfiguration(C.QNetworkConfigurationManager_DefaultConfiguration(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -132,8 +131,7 @@ func (this *QNetworkConfigurationManager) AllConfigurations() []QNetworkConfigur
 	_ret := make([]QNetworkConfiguration, int(_ma.len))
 	_outCast := (*[0xffff]*C.QNetworkConfiguration)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQNetworkConfiguration(_lv_ret)
+		_lv_goptr := newQNetworkConfiguration(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -145,8 +143,7 @@ func (this *QNetworkConfigurationManager) ConfigurationFromIdentifier(identifier
 	identifier_ms.data = C.CString(identifier)
 	identifier_ms.len = C.size_t(len(identifier))
 	defer C.free(unsafe.Pointer(identifier_ms.data))
-	_ret := C.QNetworkConfigurationManager_ConfigurationFromIdentifier(this.h, identifier_ms)
-	_goptr := newQNetworkConfiguration(_ret)
+	_goptr := newQNetworkConfiguration(C.QNetworkConfigurationManager_ConfigurationFromIdentifier(this.h, identifier_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -174,7 +171,7 @@ func miqt_exec_callback_QNetworkConfigurationManager_ConfigurationAdded(cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQNetworkConfiguration(unsafe.Pointer(config))
+	slotval1 := newQNetworkConfiguration(config)
 
 	gofunc(slotval1)
 }
@@ -194,7 +191,7 @@ func miqt_exec_callback_QNetworkConfigurationManager_ConfigurationRemoved(cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQNetworkConfiguration(unsafe.Pointer(config))
+	slotval1 := newQNetworkConfiguration(config)
 
 	gofunc(slotval1)
 }
@@ -214,7 +211,7 @@ func miqt_exec_callback_QNetworkConfigurationManager_ConfigurationChanged(cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQNetworkConfiguration(unsafe.Pointer(config))
+	slotval1 := newQNetworkConfiguration(config)
 
 	gofunc(slotval1)
 }
@@ -305,8 +302,7 @@ func (this *QNetworkConfigurationManager) AllConfigurations1(flags QNetworkConfi
 	_ret := make([]QNetworkConfiguration, int(_ma.len))
 	_outCast := (*[0xffff]*C.QNetworkConfiguration)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQNetworkConfiguration(_lv_ret)
+		_lv_goptr := newQNetworkConfiguration(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -362,6 +358,7 @@ func miqt_exec_callback_QNetworkConfigurationManager_EventFilter(self *C.QNetwor
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QNetworkConfigurationManager{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

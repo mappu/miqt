@@ -87,15 +87,13 @@ func (this *QWebEngineNotification) Matches(other *QWebEngineNotification) bool 
 }
 
 func (this *QWebEngineNotification) Origin() *qt.QUrl {
-	_ret := C.QWebEngineNotification_Origin(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineNotification_Origin(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineNotification) Icon() *qt.QImage {
-	_ret := C.QWebEngineNotification_Icon(this.h)
-	_goptr := qt.UnsafeNewQImage(unsafe.Pointer(_ret), nil)
+	_goptr := qt.UnsafeNewQImage(unsafe.Pointer(C.QWebEngineNotification_Icon(this.h)), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

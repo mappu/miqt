@@ -50,19 +50,19 @@ func UnsafeNewQTest__QTouchEventSequence(h unsafe.Pointer) *QTest__QTouchEventSe
 }
 
 func (this *QTest__QTouchEventSequence) Press(touchId int, pt *QPoint) *QTest__QTouchEventSequence {
-	return UnsafeNewQTest__QTouchEventSequence(unsafe.Pointer(C.QTest__QTouchEventSequence_Press(this.h, (C.int)(touchId), pt.cPointer())))
+	return newQTest__QTouchEventSequence(C.QTest__QTouchEventSequence_Press(this.h, (C.int)(touchId), pt.cPointer()))
 }
 
 func (this *QTest__QTouchEventSequence) Move(touchId int, pt *QPoint) *QTest__QTouchEventSequence {
-	return UnsafeNewQTest__QTouchEventSequence(unsafe.Pointer(C.QTest__QTouchEventSequence_Move(this.h, (C.int)(touchId), pt.cPointer())))
+	return newQTest__QTouchEventSequence(C.QTest__QTouchEventSequence_Move(this.h, (C.int)(touchId), pt.cPointer()))
 }
 
 func (this *QTest__QTouchEventSequence) Release(touchId int, pt *QPoint) *QTest__QTouchEventSequence {
-	return UnsafeNewQTest__QTouchEventSequence(unsafe.Pointer(C.QTest__QTouchEventSequence_Release(this.h, (C.int)(touchId), pt.cPointer())))
+	return newQTest__QTouchEventSequence(C.QTest__QTouchEventSequence_Release(this.h, (C.int)(touchId), pt.cPointer()))
 }
 
 func (this *QTest__QTouchEventSequence) Stationary(touchId int) *QTest__QTouchEventSequence {
-	return UnsafeNewQTest__QTouchEventSequence(unsafe.Pointer(C.QTest__QTouchEventSequence_Stationary(this.h, (C.int)(touchId))))
+	return newQTest__QTouchEventSequence(C.QTest__QTouchEventSequence_Stationary(this.h, (C.int)(touchId)))
 }
 
 func (this *QTest__QTouchEventSequence) Commit(processEvents bool) bool {
@@ -70,15 +70,15 @@ func (this *QTest__QTouchEventSequence) Commit(processEvents bool) bool {
 }
 
 func (this *QTest__QTouchEventSequence) Press3(touchId int, pt *QPoint, window *QWindow) *QTest__QTouchEventSequence {
-	return UnsafeNewQTest__QTouchEventSequence(unsafe.Pointer(C.QTest__QTouchEventSequence_Press3(this.h, (C.int)(touchId), pt.cPointer(), window.cPointer())))
+	return newQTest__QTouchEventSequence(C.QTest__QTouchEventSequence_Press3(this.h, (C.int)(touchId), pt.cPointer(), window.cPointer()))
 }
 
 func (this *QTest__QTouchEventSequence) Move3(touchId int, pt *QPoint, window *QWindow) *QTest__QTouchEventSequence {
-	return UnsafeNewQTest__QTouchEventSequence(unsafe.Pointer(C.QTest__QTouchEventSequence_Move3(this.h, (C.int)(touchId), pt.cPointer(), window.cPointer())))
+	return newQTest__QTouchEventSequence(C.QTest__QTouchEventSequence_Move3(this.h, (C.int)(touchId), pt.cPointer(), window.cPointer()))
 }
 
 func (this *QTest__QTouchEventSequence) Release3(touchId int, pt *QPoint, window *QWindow) *QTest__QTouchEventSequence {
-	return UnsafeNewQTest__QTouchEventSequence(unsafe.Pointer(C.QTest__QTouchEventSequence_Release3(this.h, (C.int)(touchId), pt.cPointer(), window.cPointer())))
+	return newQTest__QTouchEventSequence(C.QTest__QTouchEventSequence_Release3(this.h, (C.int)(touchId), pt.cPointer(), window.cPointer()))
 }
 
 // Delete this object from C++ memory.

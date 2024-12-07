@@ -97,7 +97,7 @@ func NewQProxyStyle3(style *QStyle) *QProxyStyle {
 }
 
 func (this *QProxyStyle) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QProxyStyle_MetaObject(this.h)))
+	return newQMetaObject(C.QProxyStyle_MetaObject(this.h))
 }
 
 func (this *QProxyStyle) Metacast(param1 string) unsafe.Pointer {
@@ -116,7 +116,7 @@ func QProxyStyle_Tr(s string) string {
 }
 
 func (this *QProxyStyle) BaseStyle() *QStyle {
-	return UnsafeNewQStyle(unsafe.Pointer(C.QProxyStyle_BaseStyle(this.h)), nil)
+	return newQStyle(C.QProxyStyle_BaseStyle(this.h), nil)
 }
 
 func (this *QProxyStyle) SetBaseStyle(style *QStyle) {
@@ -148,22 +148,19 @@ func (this *QProxyStyle) DrawItemPixmap(painter *QPainter, rect *QRect, alignmen
 }
 
 func (this *QProxyStyle) SizeFromContents(typeVal QStyle__ContentsType, option *QStyleOption, size *QSize, widget *QWidget) *QSize {
-	_ret := C.QProxyStyle_SizeFromContents(this.h, (C.int)(typeVal), option.cPointer(), size.cPointer(), widget.cPointer())
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QProxyStyle_SizeFromContents(this.h, (C.int)(typeVal), option.cPointer(), size.cPointer(), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QProxyStyle) SubElementRect(element QStyle__SubElement, option *QStyleOption, widget *QWidget) *QRect {
-	_ret := C.QProxyStyle_SubElementRect(this.h, (C.int)(element), option.cPointer(), widget.cPointer())
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QProxyStyle_SubElementRect(this.h, (C.int)(element), option.cPointer(), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QProxyStyle) SubControlRect(cc QStyle__ComplexControl, opt *QStyleOptionComplex, sc QStyle__SubControl, widget *QWidget) *QRect {
-	_ret := C.QProxyStyle_SubControlRect(this.h, (C.int)(cc), opt.cPointer(), (C.int)(sc), widget.cPointer())
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QProxyStyle_SubControlRect(this.h, (C.int)(cc), opt.cPointer(), (C.int)(sc), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -173,15 +170,13 @@ func (this *QProxyStyle) ItemTextRect(fm *QFontMetrics, r *QRect, flags int, ena
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	_ret := C.QProxyStyle_ItemTextRect(this.h, fm.cPointer(), r.cPointer(), (C.int)(flags), (C.bool)(enabled), text_ms)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QProxyStyle_ItemTextRect(this.h, fm.cPointer(), r.cPointer(), (C.int)(flags), (C.bool)(enabled), text_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QProxyStyle) ItemPixmapRect(r *QRect, flags int, pixmap *QPixmap) *QRect {
-	_ret := C.QProxyStyle_ItemPixmapRect(this.h, r.cPointer(), (C.int)(flags), pixmap.cPointer())
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QProxyStyle_ItemPixmapRect(this.h, r.cPointer(), (C.int)(flags), pixmap.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -203,29 +198,25 @@ func (this *QProxyStyle) LayoutSpacing(control1 QSizePolicy__ControlType, contro
 }
 
 func (this *QProxyStyle) StandardIcon(standardIcon QStyle__StandardPixmap, option *QStyleOption, widget *QWidget) *QIcon {
-	_ret := C.QProxyStyle_StandardIcon(this.h, (C.int)(standardIcon), option.cPointer(), widget.cPointer())
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QProxyStyle_StandardIcon(this.h, (C.int)(standardIcon), option.cPointer(), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QProxyStyle) StandardPixmap(standardPixmap QStyle__StandardPixmap, opt *QStyleOption, widget *QWidget) *QPixmap {
-	_ret := C.QProxyStyle_StandardPixmap(this.h, (C.int)(standardPixmap), opt.cPointer(), widget.cPointer())
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QProxyStyle_StandardPixmap(this.h, (C.int)(standardPixmap), opt.cPointer(), widget.cPointer()), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QProxyStyle) GeneratedIconPixmap(iconMode QIcon__Mode, pixmap *QPixmap, opt *QStyleOption) *QPixmap {
-	_ret := C.QProxyStyle_GeneratedIconPixmap(this.h, (C.int)(iconMode), pixmap.cPointer(), opt.cPointer())
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QProxyStyle_GeneratedIconPixmap(this.h, (C.int)(iconMode), pixmap.cPointer(), opt.cPointer()), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QProxyStyle) StandardPalette() *QPalette {
-	_ret := C.QProxyStyle_StandardPalette(this.h)
-	_goptr := newQPalette(_ret)
+	_goptr := newQPalette(C.QProxyStyle_StandardPalette(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -294,9 +285,11 @@ func miqt_exec_callback_QProxyStyle_DrawPrimitive(self *C.QProxyStyle, cb C.intp
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QStyle__PrimitiveElement)(element)
 
-	slotval2 := UnsafeNewQStyleOption(unsafe.Pointer(option))
-	slotval3 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval4 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval2 := newQStyleOption(option)
+
+	slotval3 := newQPainter(painter)
+
+	slotval4 := newQWidget(widget, nil, nil)
 
 	gofunc((&QProxyStyle{h: self}).callVirtualBase_DrawPrimitive, slotval1, slotval2, slotval3, slotval4)
 
@@ -324,9 +317,11 @@ func miqt_exec_callback_QProxyStyle_DrawControl(self *C.QProxyStyle, cb C.intptr
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QStyle__ControlElement)(element)
 
-	slotval2 := UnsafeNewQStyleOption(unsafe.Pointer(option))
-	slotval3 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval4 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval2 := newQStyleOption(option)
+
+	slotval3 := newQPainter(painter)
+
+	slotval4 := newQWidget(widget, nil, nil)
 
 	gofunc((&QProxyStyle{h: self}).callVirtualBase_DrawControl, slotval1, slotval2, slotval3, slotval4)
 
@@ -354,9 +349,11 @@ func miqt_exec_callback_QProxyStyle_DrawComplexControl(self *C.QProxyStyle, cb C
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QStyle__ComplexControl)(control)
 
-	slotval2 := UnsafeNewQStyleOptionComplex(unsafe.Pointer(option), nil)
-	slotval3 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval4 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval2 := newQStyleOptionComplex(option, nil)
+
+	slotval3 := newQPainter(painter)
+
+	slotval4 := newQWidget(widget, nil, nil)
 
 	gofunc((&QProxyStyle{h: self}).callVirtualBase_DrawComplexControl, slotval1, slotval2, slotval3, slotval4)
 
@@ -386,11 +383,14 @@ func miqt_exec_callback_QProxyStyle_DrawItemText(self *C.QProxyStyle, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQRect(unsafe.Pointer(rect))
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQRect(rect)
+
 	slotval3 := (int)(flags)
 
-	slotval4 := UnsafeNewQPalette(unsafe.Pointer(pal))
+	slotval4 := newQPalette(pal)
+
 	slotval5 := (bool)(enabled)
 
 	var text_ms C.struct_miqt_string = text
@@ -423,11 +423,13 @@ func miqt_exec_callback_QProxyStyle_DrawItemPixmap(self *C.QProxyStyle, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQRect(unsafe.Pointer(rect))
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQRect(rect)
+
 	slotval3 := (int)(alignment)
 
-	slotval4 := UnsafeNewQPixmap(unsafe.Pointer(pixmap), nil)
+	slotval4 := newQPixmap(pixmap, nil)
 
 	gofunc((&QProxyStyle{h: self}).callVirtualBase_DrawItemPixmap, slotval1, slotval2, slotval3, slotval4)
 
@@ -435,8 +437,7 @@ func miqt_exec_callback_QProxyStyle_DrawItemPixmap(self *C.QProxyStyle, cb C.int
 
 func (this *QProxyStyle) callVirtualBase_SizeFromContents(typeVal QStyle__ContentsType, option *QStyleOption, size *QSize, widget *QWidget) *QSize {
 
-	_ret := C.QProxyStyle_virtualbase_SizeFromContents(unsafe.Pointer(this.h), (C.int)(typeVal), option.cPointer(), size.cPointer(), widget.cPointer())
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QProxyStyle_virtualbase_SizeFromContents(unsafe.Pointer(this.h), (C.int)(typeVal), option.cPointer(), size.cPointer(), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -458,9 +459,11 @@ func miqt_exec_callback_QProxyStyle_SizeFromContents(self *C.QProxyStyle, cb C.i
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QStyle__ContentsType)(typeVal)
 
-	slotval2 := UnsafeNewQStyleOption(unsafe.Pointer(option))
-	slotval3 := UnsafeNewQSize(unsafe.Pointer(size))
-	slotval4 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval2 := newQStyleOption(option)
+
+	slotval3 := newQSize(size)
+
+	slotval4 := newQWidget(widget, nil, nil)
 
 	virtualReturn := gofunc((&QProxyStyle{h: self}).callVirtualBase_SizeFromContents, slotval1, slotval2, slotval3, slotval4)
 
@@ -470,8 +473,7 @@ func miqt_exec_callback_QProxyStyle_SizeFromContents(self *C.QProxyStyle, cb C.i
 
 func (this *QProxyStyle) callVirtualBase_SubElementRect(element QStyle__SubElement, option *QStyleOption, widget *QWidget) *QRect {
 
-	_ret := C.QProxyStyle_virtualbase_SubElementRect(unsafe.Pointer(this.h), (C.int)(element), option.cPointer(), widget.cPointer())
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QProxyStyle_virtualbase_SubElementRect(unsafe.Pointer(this.h), (C.int)(element), option.cPointer(), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -493,8 +495,9 @@ func miqt_exec_callback_QProxyStyle_SubElementRect(self *C.QProxyStyle, cb C.int
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QStyle__SubElement)(element)
 
-	slotval2 := UnsafeNewQStyleOption(unsafe.Pointer(option))
-	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval2 := newQStyleOption(option)
+
+	slotval3 := newQWidget(widget, nil, nil)
 
 	virtualReturn := gofunc((&QProxyStyle{h: self}).callVirtualBase_SubElementRect, slotval1, slotval2, slotval3)
 
@@ -504,8 +507,7 @@ func miqt_exec_callback_QProxyStyle_SubElementRect(self *C.QProxyStyle, cb C.int
 
 func (this *QProxyStyle) callVirtualBase_SubControlRect(cc QStyle__ComplexControl, opt *QStyleOptionComplex, sc QStyle__SubControl, widget *QWidget) *QRect {
 
-	_ret := C.QProxyStyle_virtualbase_SubControlRect(unsafe.Pointer(this.h), (C.int)(cc), opt.cPointer(), (C.int)(sc), widget.cPointer())
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QProxyStyle_virtualbase_SubControlRect(unsafe.Pointer(this.h), (C.int)(cc), opt.cPointer(), (C.int)(sc), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -527,10 +529,11 @@ func miqt_exec_callback_QProxyStyle_SubControlRect(self *C.QProxyStyle, cb C.int
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QStyle__ComplexControl)(cc)
 
-	slotval2 := UnsafeNewQStyleOptionComplex(unsafe.Pointer(opt), nil)
+	slotval2 := newQStyleOptionComplex(opt, nil)
+
 	slotval3 := (QStyle__SubControl)(sc)
 
-	slotval4 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval4 := newQWidget(widget, nil, nil)
 
 	virtualReturn := gofunc((&QProxyStyle{h: self}).callVirtualBase_SubControlRect, slotval1, slotval2, slotval3, slotval4)
 
@@ -544,8 +547,7 @@ func (this *QProxyStyle) callVirtualBase_ItemTextRect(fm *QFontMetrics, r *QRect
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	_ret := C.QProxyStyle_virtualbase_ItemTextRect(unsafe.Pointer(this.h), fm.cPointer(), r.cPointer(), (C.int)(flags), (C.bool)(enabled), text_ms)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QProxyStyle_virtualbase_ItemTextRect(unsafe.Pointer(this.h), fm.cPointer(), r.cPointer(), (C.int)(flags), (C.bool)(enabled), text_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -565,8 +567,10 @@ func miqt_exec_callback_QProxyStyle_ItemTextRect(self *C.QProxyStyle, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFontMetrics(unsafe.Pointer(fm))
-	slotval2 := UnsafeNewQRect(unsafe.Pointer(r))
+	slotval1 := newQFontMetrics(fm)
+
+	slotval2 := newQRect(r)
+
 	slotval3 := (int)(flags)
 
 	slotval4 := (bool)(enabled)
@@ -584,8 +588,7 @@ func miqt_exec_callback_QProxyStyle_ItemTextRect(self *C.QProxyStyle, cb C.intpt
 
 func (this *QProxyStyle) callVirtualBase_ItemPixmapRect(r *QRect, flags int, pixmap *QPixmap) *QRect {
 
-	_ret := C.QProxyStyle_virtualbase_ItemPixmapRect(unsafe.Pointer(this.h), r.cPointer(), (C.int)(flags), pixmap.cPointer())
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QProxyStyle_virtualbase_ItemPixmapRect(unsafe.Pointer(this.h), r.cPointer(), (C.int)(flags), pixmap.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -605,10 +608,11 @@ func miqt_exec_callback_QProxyStyle_ItemPixmapRect(self *C.QProxyStyle, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRect(unsafe.Pointer(r))
+	slotval1 := newQRect(r)
+
 	slotval2 := (int)(flags)
 
-	slotval3 := UnsafeNewQPixmap(unsafe.Pointer(pixmap), nil)
+	slotval3 := newQPixmap(pixmap, nil)
 
 	virtualReturn := gofunc((&QProxyStyle{h: self}).callVirtualBase_ItemPixmapRect, slotval1, slotval2, slotval3)
 
@@ -638,9 +642,11 @@ func miqt_exec_callback_QProxyStyle_HitTestComplexControl(self *C.QProxyStyle, c
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QStyle__ComplexControl)(control)
 
-	slotval2 := UnsafeNewQStyleOptionComplex(unsafe.Pointer(option), nil)
-	slotval3 := UnsafeNewQPoint(unsafe.Pointer(pos))
-	slotval4 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval2 := newQStyleOptionComplex(option, nil)
+
+	slotval3 := newQPoint(pos)
+
+	slotval4 := newQWidget(widget, nil, nil)
 
 	virtualReturn := gofunc((&QProxyStyle{h: self}).callVirtualBase_HitTestComplexControl, slotval1, slotval2, slotval3, slotval4)
 
@@ -670,9 +676,11 @@ func miqt_exec_callback_QProxyStyle_StyleHint(self *C.QProxyStyle, cb C.intptr_t
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QStyle__StyleHint)(hint)
 
-	slotval2 := UnsafeNewQStyleOption(unsafe.Pointer(option))
-	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
-	slotval4 := UnsafeNewQStyleHintReturn(unsafe.Pointer(returnData))
+	slotval2 := newQStyleOption(option)
+
+	slotval3 := newQWidget(widget, nil, nil)
+
+	slotval4 := newQStyleHintReturn(returnData)
 
 	virtualReturn := gofunc((&QProxyStyle{h: self}).callVirtualBase_StyleHint, slotval1, slotval2, slotval3, slotval4)
 
@@ -702,8 +710,9 @@ func miqt_exec_callback_QProxyStyle_PixelMetric(self *C.QProxyStyle, cb C.intptr
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QStyle__PixelMetric)(metric)
 
-	slotval2 := UnsafeNewQStyleOption(unsafe.Pointer(option))
-	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval2 := newQStyleOption(option)
+
+	slotval3 := newQWidget(widget, nil, nil)
 
 	virtualReturn := gofunc((&QProxyStyle{h: self}).callVirtualBase_PixelMetric, slotval1, slotval2, slotval3)
 
@@ -737,8 +746,9 @@ func miqt_exec_callback_QProxyStyle_LayoutSpacing(self *C.QProxyStyle, cb C.intp
 
 	slotval3 := (Orientation)(orientation)
 
-	slotval4 := UnsafeNewQStyleOption(unsafe.Pointer(option))
-	slotval5 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval4 := newQStyleOption(option)
+
+	slotval5 := newQWidget(widget, nil, nil)
 
 	virtualReturn := gofunc((&QProxyStyle{h: self}).callVirtualBase_LayoutSpacing, slotval1, slotval2, slotval3, slotval4, slotval5)
 
@@ -748,8 +758,7 @@ func miqt_exec_callback_QProxyStyle_LayoutSpacing(self *C.QProxyStyle, cb C.intp
 
 func (this *QProxyStyle) callVirtualBase_StandardIcon(standardIcon QStyle__StandardPixmap, option *QStyleOption, widget *QWidget) *QIcon {
 
-	_ret := C.QProxyStyle_virtualbase_StandardIcon(unsafe.Pointer(this.h), (C.int)(standardIcon), option.cPointer(), widget.cPointer())
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QProxyStyle_virtualbase_StandardIcon(unsafe.Pointer(this.h), (C.int)(standardIcon), option.cPointer(), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -771,8 +780,9 @@ func miqt_exec_callback_QProxyStyle_StandardIcon(self *C.QProxyStyle, cb C.intpt
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QStyle__StandardPixmap)(standardIcon)
 
-	slotval2 := UnsafeNewQStyleOption(unsafe.Pointer(option))
-	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval2 := newQStyleOption(option)
+
+	slotval3 := newQWidget(widget, nil, nil)
 
 	virtualReturn := gofunc((&QProxyStyle{h: self}).callVirtualBase_StandardIcon, slotval1, slotval2, slotval3)
 
@@ -782,8 +792,7 @@ func miqt_exec_callback_QProxyStyle_StandardIcon(self *C.QProxyStyle, cb C.intpt
 
 func (this *QProxyStyle) callVirtualBase_StandardPixmap(standardPixmap QStyle__StandardPixmap, opt *QStyleOption, widget *QWidget) *QPixmap {
 
-	_ret := C.QProxyStyle_virtualbase_StandardPixmap(unsafe.Pointer(this.h), (C.int)(standardPixmap), opt.cPointer(), widget.cPointer())
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QProxyStyle_virtualbase_StandardPixmap(unsafe.Pointer(this.h), (C.int)(standardPixmap), opt.cPointer(), widget.cPointer()), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -805,8 +814,9 @@ func miqt_exec_callback_QProxyStyle_StandardPixmap(self *C.QProxyStyle, cb C.int
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QStyle__StandardPixmap)(standardPixmap)
 
-	slotval2 := UnsafeNewQStyleOption(unsafe.Pointer(opt))
-	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval2 := newQStyleOption(opt)
+
+	slotval3 := newQWidget(widget, nil, nil)
 
 	virtualReturn := gofunc((&QProxyStyle{h: self}).callVirtualBase_StandardPixmap, slotval1, slotval2, slotval3)
 
@@ -816,8 +826,7 @@ func miqt_exec_callback_QProxyStyle_StandardPixmap(self *C.QProxyStyle, cb C.int
 
 func (this *QProxyStyle) callVirtualBase_GeneratedIconPixmap(iconMode QIcon__Mode, pixmap *QPixmap, opt *QStyleOption) *QPixmap {
 
-	_ret := C.QProxyStyle_virtualbase_GeneratedIconPixmap(unsafe.Pointer(this.h), (C.int)(iconMode), pixmap.cPointer(), opt.cPointer())
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QProxyStyle_virtualbase_GeneratedIconPixmap(unsafe.Pointer(this.h), (C.int)(iconMode), pixmap.cPointer(), opt.cPointer()), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -839,8 +848,9 @@ func miqt_exec_callback_QProxyStyle_GeneratedIconPixmap(self *C.QProxyStyle, cb 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QIcon__Mode)(iconMode)
 
-	slotval2 := UnsafeNewQPixmap(unsafe.Pointer(pixmap), nil)
-	slotval3 := UnsafeNewQStyleOption(unsafe.Pointer(opt))
+	slotval2 := newQPixmap(pixmap, nil)
+
+	slotval3 := newQStyleOption(opt)
 
 	virtualReturn := gofunc((&QProxyStyle{h: self}).callVirtualBase_GeneratedIconPixmap, slotval1, slotval2, slotval3)
 
@@ -850,8 +860,7 @@ func miqt_exec_callback_QProxyStyle_GeneratedIconPixmap(self *C.QProxyStyle, cb 
 
 func (this *QProxyStyle) callVirtualBase_StandardPalette() *QPalette {
 
-	_ret := C.QProxyStyle_virtualbase_StandardPalette(unsafe.Pointer(this.h))
-	_goptr := newQPalette(_ret)
+	_goptr := newQPalette(C.QProxyStyle_virtualbase_StandardPalette(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -896,7 +905,7 @@ func miqt_exec_callback_QProxyStyle_Polish(self *C.QProxyStyle, cb C.intptr_t, w
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval1 := newQWidget(widget, nil, nil)
 
 	gofunc((&QProxyStyle{h: self}).callVirtualBase_Polish, slotval1)
 
@@ -922,7 +931,7 @@ func miqt_exec_callback_QProxyStyle_PolishWithPal(self *C.QProxyStyle, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPalette(unsafe.Pointer(pal))
+	slotval1 := newQPalette(pal)
 
 	gofunc((&QProxyStyle{h: self}).callVirtualBase_PolishWithPal, slotval1)
 
@@ -948,7 +957,7 @@ func miqt_exec_callback_QProxyStyle_PolishWithApp(self *C.QProxyStyle, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQApplication(unsafe.Pointer(app), nil, nil, nil)
+	slotval1 := newQApplication(app, nil, nil, nil)
 
 	gofunc((&QProxyStyle{h: self}).callVirtualBase_PolishWithApp, slotval1)
 
@@ -974,7 +983,7 @@ func miqt_exec_callback_QProxyStyle_Unpolish(self *C.QProxyStyle, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval1 := newQWidget(widget, nil, nil)
 
 	gofunc((&QProxyStyle{h: self}).callVirtualBase_Unpolish, slotval1)
 
@@ -1000,7 +1009,7 @@ func miqt_exec_callback_QProxyStyle_UnpolishWithApp(self *C.QProxyStyle, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQApplication(unsafe.Pointer(app), nil, nil, nil)
+	slotval1 := newQApplication(app, nil, nil, nil)
 
 	gofunc((&QProxyStyle{h: self}).callVirtualBase_UnpolishWithApp, slotval1)
 
@@ -1026,7 +1035,7 @@ func miqt_exec_callback_QProxyStyle_Event(self *C.QProxyStyle, cb C.intptr_t, e 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QProxyStyle{h: self}).callVirtualBase_Event, slotval1)
 

@@ -60,7 +60,7 @@ func UnsafeNewQInputMethod(h unsafe.Pointer, h_QObject unsafe.Pointer) *QInputMe
 }
 
 func (this *QInputMethod) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QInputMethod_MetaObject(this.h)))
+	return newQMetaObject(C.QInputMethod_MetaObject(this.h))
 }
 
 func (this *QInputMethod) Metacast(param1 string) unsafe.Pointer {
@@ -79,8 +79,7 @@ func QInputMethod_Tr(s string) string {
 }
 
 func (this *QInputMethod) InputItemTransform() *QTransform {
-	_ret := C.QInputMethod_InputItemTransform(this.h)
-	_goptr := newQTransform(_ret)
+	_goptr := newQTransform(C.QInputMethod_InputItemTransform(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -90,8 +89,7 @@ func (this *QInputMethod) SetInputItemTransform(transform *QTransform) {
 }
 
 func (this *QInputMethod) InputItemRectangle() *QRectF {
-	_ret := C.QInputMethod_InputItemRectangle(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QInputMethod_InputItemRectangle(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -101,29 +99,25 @@ func (this *QInputMethod) SetInputItemRectangle(rect *QRectF) {
 }
 
 func (this *QInputMethod) CursorRectangle() *QRectF {
-	_ret := C.QInputMethod_CursorRectangle(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QInputMethod_CursorRectangle(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QInputMethod) AnchorRectangle() *QRectF {
-	_ret := C.QInputMethod_AnchorRectangle(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QInputMethod_AnchorRectangle(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QInputMethod) KeyboardRectangle() *QRectF {
-	_ret := C.QInputMethod_KeyboardRectangle(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QInputMethod_KeyboardRectangle(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QInputMethod) InputItemClipRectangle() *QRectF {
-	_ret := C.QInputMethod_InputItemClipRectangle(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QInputMethod_InputItemClipRectangle(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -141,8 +135,7 @@ func (this *QInputMethod) IsAnimating() bool {
 }
 
 func (this *QInputMethod) Locale() *QLocale {
-	_ret := C.QInputMethod_Locale(this.h)
-	_goptr := newQLocale(_ret)
+	_goptr := newQLocale(C.QInputMethod_Locale(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -152,8 +145,7 @@ func (this *QInputMethod) InputDirection() LayoutDirection {
 }
 
 func QInputMethod_QueryFocusObject(query InputMethodQuery, argument *QVariant) *QVariant {
-	_ret := C.QInputMethod_QueryFocusObject((C.int)(query), argument.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QInputMethod_QueryFocusObject((C.int)(query), argument.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

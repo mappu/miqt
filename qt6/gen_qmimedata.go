@@ -65,7 +65,7 @@ func NewQMimeData() *QMimeData {
 }
 
 func (this *QMimeData) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMimeData_MetaObject(this.h)))
+	return newQMetaObject(C.QMimeData_MetaObject(this.h))
 }
 
 func (this *QMimeData) Metacast(param1 string) unsafe.Pointer {
@@ -88,8 +88,7 @@ func (this *QMimeData) Urls() []QUrl {
 	_ret := make([]QUrl, int(_ma.len))
 	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQUrl(_lv_ret)
+		_lv_goptr := newQUrl(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -149,8 +148,7 @@ func (this *QMimeData) HasHtml() bool {
 }
 
 func (this *QMimeData) ImageData() *QVariant {
-	_ret := C.QMimeData_ImageData(this.h)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QMimeData_ImageData(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -164,8 +162,7 @@ func (this *QMimeData) HasImage() bool {
 }
 
 func (this *QMimeData) ColorData() *QVariant {
-	_ret := C.QMimeData_ColorData(this.h)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QMimeData_ColorData(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -340,8 +337,7 @@ func (this *QMimeData) callVirtualBase_RetrieveData(mimetype string, preferredTy
 	mimetype_ms.len = C.size_t(len(mimetype))
 	defer C.free(unsafe.Pointer(mimetype_ms.data))
 
-	_ret := C.QMimeData_virtualbase_RetrieveData(unsafe.Pointer(this.h), mimetype_ms, preferredType.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QMimeData_virtualbase_RetrieveData(unsafe.Pointer(this.h), mimetype_ms, preferredType.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -365,8 +361,7 @@ func miqt_exec_callback_QMimeData_RetrieveData(self *C.QMimeData, cb C.intptr_t,
 	mimetype_ret := C.GoStringN(mimetype_ms.data, C.int(int64(mimetype_ms.len)))
 	C.free(unsafe.Pointer(mimetype_ms.data))
 	slotval1 := mimetype_ret
-	preferredType_ret := preferredType
-	preferredType_goptr := newQMetaType(preferredType_ret)
+	preferredType_goptr := newQMetaType(preferredType)
 	preferredType_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval2 := *preferredType_goptr
 
@@ -396,7 +391,7 @@ func miqt_exec_callback_QMimeData_Event(self *C.QMimeData, cb C.intptr_t, event 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QMimeData{h: self}).callVirtualBase_Event, slotval1)
 
@@ -424,8 +419,9 @@ func miqt_exec_callback_QMimeData_EventFilter(self *C.QMimeData, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QMimeData{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -453,7 +449,7 @@ func miqt_exec_callback_QMimeData_TimerEvent(self *C.QMimeData, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QMimeData{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -479,7 +475,7 @@ func miqt_exec_callback_QMimeData_ChildEvent(self *C.QMimeData, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QMimeData{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -505,7 +501,7 @@ func miqt_exec_callback_QMimeData_CustomEvent(self *C.QMimeData, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QMimeData{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -531,7 +527,7 @@ func miqt_exec_callback_QMimeData_ConnectNotify(self *C.QMimeData, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QMimeData{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -557,7 +553,7 @@ func miqt_exec_callback_QMimeData_DisconnectNotify(self *C.QMimeData, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QMimeData{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

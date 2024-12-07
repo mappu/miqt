@@ -130,29 +130,25 @@ func (this *QWebSelectData) Multiple() bool {
 }
 
 func (this *QWebSelectData) BackgroundColor() *qt.QColor {
-	_ret := C.QWebSelectData_BackgroundColor(this.h)
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QWebSelectData_BackgroundColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebSelectData) ForegroundColor() *qt.QColor {
-	_ret := C.QWebSelectData_ForegroundColor(this.h)
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QWebSelectData_ForegroundColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebSelectData) ItemBackgroundColor(index int) *qt.QColor {
-	_ret := C.QWebSelectData_ItemBackgroundColor(this.h, (C.int)(index))
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QWebSelectData_ItemBackgroundColor(this.h, (C.int)(index))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebSelectData) ItemForegroundColor(index int) *qt.QColor {
-	_ret := C.QWebSelectData_ItemForegroundColor(this.h, (C.int)(index))
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QWebSelectData_ItemForegroundColor(this.h, (C.int)(index))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -408,15 +404,13 @@ func (this *QWebNotificationData) Message() string {
 }
 
 func (this *QWebNotificationData) IconUrl() *qt.QUrl {
-	_ret := C.QWebNotificationData_IconUrl(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebNotificationData_IconUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebNotificationData) OpenerPageUrl() *qt.QUrl {
-	_ret := C.QWebNotificationData_OpenerPageUrl(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebNotificationData_OpenerPageUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

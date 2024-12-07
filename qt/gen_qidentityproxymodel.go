@@ -80,7 +80,7 @@ func NewQIdentityProxyModel2(parent *QObject) *QIdentityProxyModel {
 }
 
 func (this *QIdentityProxyModel) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QIdentityProxyModel_MetaObject(this.h)))
+	return newQMetaObject(C.QIdentityProxyModel_MetaObject(this.h))
 }
 
 func (this *QIdentityProxyModel) Metacast(param1 string) unsafe.Pointer {
@@ -112,29 +112,25 @@ func (this *QIdentityProxyModel) ColumnCount(parent *QModelIndex) int {
 }
 
 func (this *QIdentityProxyModel) Index(row int, column int, parent *QModelIndex) *QModelIndex {
-	_ret := C.QIdentityProxyModel_Index(this.h, (C.int)(row), (C.int)(column), parent.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QIdentityProxyModel_Index(this.h, (C.int)(row), (C.int)(column), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIdentityProxyModel) MapFromSource(sourceIndex *QModelIndex) *QModelIndex {
-	_ret := C.QIdentityProxyModel_MapFromSource(this.h, sourceIndex.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QIdentityProxyModel_MapFromSource(this.h, sourceIndex.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIdentityProxyModel) MapToSource(proxyIndex *QModelIndex) *QModelIndex {
-	_ret := C.QIdentityProxyModel_MapToSource(this.h, proxyIndex.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QIdentityProxyModel_MapToSource(this.h, proxyIndex.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIdentityProxyModel) Parent(child *QModelIndex) *QModelIndex {
-	_ret := C.QIdentityProxyModel_Parent(this.h, child.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QIdentityProxyModel_Parent(this.h, child.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -144,8 +140,7 @@ func (this *QIdentityProxyModel) RowCount(parent *QModelIndex) int {
 }
 
 func (this *QIdentityProxyModel) HeaderData(section int, orientation Orientation, role int) *QVariant {
-	_ret := C.QIdentityProxyModel_HeaderData(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QIdentityProxyModel_HeaderData(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -155,22 +150,19 @@ func (this *QIdentityProxyModel) DropMimeData(data *QMimeData, action DropAction
 }
 
 func (this *QIdentityProxyModel) Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
-	_ret := C.QIdentityProxyModel_Sibling(this.h, (C.int)(row), (C.int)(column), idx.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QIdentityProxyModel_Sibling(this.h, (C.int)(row), (C.int)(column), idx.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIdentityProxyModel) MapSelectionFromSource(selection *QItemSelection) *QItemSelection {
-	_ret := C.QIdentityProxyModel_MapSelectionFromSource(this.h, selection.cPointer())
-	_goptr := newQItemSelection(_ret)
+	_goptr := newQItemSelection(C.QIdentityProxyModel_MapSelectionFromSource(this.h, selection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIdentityProxyModel) MapSelectionToSource(selection *QItemSelection) *QItemSelection {
-	_ret := C.QIdentityProxyModel_MapSelectionToSource(this.h, selection.cPointer())
-	_goptr := newQItemSelection(_ret)
+	_goptr := newQItemSelection(C.QIdentityProxyModel_MapSelectionToSource(this.h, selection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -180,8 +172,7 @@ func (this *QIdentityProxyModel) Match(start *QModelIndex, role int, value *QVar
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -280,7 +271,7 @@ func miqt_exec_callback_QIdentityProxyModel_ColumnCount(self *C.QIdentityProxyMo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_ColumnCount, slotval1)
 
@@ -290,8 +281,7 @@ func miqt_exec_callback_QIdentityProxyModel_ColumnCount(self *C.QIdentityProxyMo
 
 func (this *QIdentityProxyModel) callVirtualBase_Index(row int, column int, parent *QModelIndex) *QModelIndex {
 
-	_ret := C.QIdentityProxyModel_virtualbase_Index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), parent.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QIdentityProxyModel_virtualbase_Index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -315,7 +305,7 @@ func miqt_exec_callback_QIdentityProxyModel_Index(self *C.QIdentityProxyModel, c
 
 	slotval2 := (int)(column)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_Index, slotval1, slotval2, slotval3)
 
@@ -325,8 +315,7 @@ func miqt_exec_callback_QIdentityProxyModel_Index(self *C.QIdentityProxyModel, c
 
 func (this *QIdentityProxyModel) callVirtualBase_MapFromSource(sourceIndex *QModelIndex) *QModelIndex {
 
-	_ret := C.QIdentityProxyModel_virtualbase_MapFromSource(unsafe.Pointer(this.h), sourceIndex.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QIdentityProxyModel_virtualbase_MapFromSource(unsafe.Pointer(this.h), sourceIndex.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -346,7 +335,7 @@ func miqt_exec_callback_QIdentityProxyModel_MapFromSource(self *C.QIdentityProxy
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(sourceIndex))
+	slotval1 := newQModelIndex(sourceIndex)
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_MapFromSource, slotval1)
 
@@ -356,8 +345,7 @@ func miqt_exec_callback_QIdentityProxyModel_MapFromSource(self *C.QIdentityProxy
 
 func (this *QIdentityProxyModel) callVirtualBase_MapToSource(proxyIndex *QModelIndex) *QModelIndex {
 
-	_ret := C.QIdentityProxyModel_virtualbase_MapToSource(unsafe.Pointer(this.h), proxyIndex.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QIdentityProxyModel_virtualbase_MapToSource(unsafe.Pointer(this.h), proxyIndex.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -377,7 +365,7 @@ func miqt_exec_callback_QIdentityProxyModel_MapToSource(self *C.QIdentityProxyMo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(proxyIndex))
+	slotval1 := newQModelIndex(proxyIndex)
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_MapToSource, slotval1)
 
@@ -387,8 +375,7 @@ func miqt_exec_callback_QIdentityProxyModel_MapToSource(self *C.QIdentityProxyMo
 
 func (this *QIdentityProxyModel) callVirtualBase_Parent(child *QModelIndex) *QModelIndex {
 
-	_ret := C.QIdentityProxyModel_virtualbase_Parent(unsafe.Pointer(this.h), child.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QIdentityProxyModel_virtualbase_Parent(unsafe.Pointer(this.h), child.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -408,7 +395,7 @@ func miqt_exec_callback_QIdentityProxyModel_Parent(self *C.QIdentityProxyModel, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(child))
+	slotval1 := newQModelIndex(child)
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_Parent, slotval1)
 
@@ -436,7 +423,7 @@ func miqt_exec_callback_QIdentityProxyModel_RowCount(self *C.QIdentityProxyModel
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_RowCount, slotval1)
 
@@ -446,8 +433,7 @@ func miqt_exec_callback_QIdentityProxyModel_RowCount(self *C.QIdentityProxyModel
 
 func (this *QIdentityProxyModel) callVirtualBase_HeaderData(section int, orientation Orientation, role int) *QVariant {
 
-	_ret := C.QIdentityProxyModel_virtualbase_HeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QIdentityProxyModel_virtualbase_HeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -499,14 +485,15 @@ func miqt_exec_callback_QIdentityProxyModel_DropMimeData(self *C.QIdentityProxyM
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMimeData(unsafe.Pointer(data), nil)
+	slotval1 := newQMimeData(data, nil)
+
 	slotval2 := (DropAction)(action)
 
 	slotval3 := (int)(row)
 
 	slotval4 := (int)(column)
 
-	slotval5 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval5 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_DropMimeData, slotval1, slotval2, slotval3, slotval4, slotval5)
 
@@ -516,8 +503,7 @@ func miqt_exec_callback_QIdentityProxyModel_DropMimeData(self *C.QIdentityProxyM
 
 func (this *QIdentityProxyModel) callVirtualBase_Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
 
-	_ret := C.QIdentityProxyModel_virtualbase_Sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), idx.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QIdentityProxyModel_virtualbase_Sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), idx.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -541,7 +527,7 @@ func miqt_exec_callback_QIdentityProxyModel_Sibling(self *C.QIdentityProxyModel,
 
 	slotval2 := (int)(column)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(idx))
+	slotval3 := newQModelIndex(idx)
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_Sibling, slotval1, slotval2, slotval3)
 
@@ -551,8 +537,7 @@ func miqt_exec_callback_QIdentityProxyModel_Sibling(self *C.QIdentityProxyModel,
 
 func (this *QIdentityProxyModel) callVirtualBase_MapSelectionFromSource(selection *QItemSelection) *QItemSelection {
 
-	_ret := C.QIdentityProxyModel_virtualbase_MapSelectionFromSource(unsafe.Pointer(this.h), selection.cPointer())
-	_goptr := newQItemSelection(_ret)
+	_goptr := newQItemSelection(C.QIdentityProxyModel_virtualbase_MapSelectionFromSource(unsafe.Pointer(this.h), selection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -572,7 +557,7 @@ func miqt_exec_callback_QIdentityProxyModel_MapSelectionFromSource(self *C.QIden
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selection))
+	slotval1 := newQItemSelection(selection)
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_MapSelectionFromSource, slotval1)
 
@@ -582,8 +567,7 @@ func miqt_exec_callback_QIdentityProxyModel_MapSelectionFromSource(self *C.QIden
 
 func (this *QIdentityProxyModel) callVirtualBase_MapSelectionToSource(selection *QItemSelection) *QItemSelection {
 
-	_ret := C.QIdentityProxyModel_virtualbase_MapSelectionToSource(unsafe.Pointer(this.h), selection.cPointer())
-	_goptr := newQItemSelection(_ret)
+	_goptr := newQItemSelection(C.QIdentityProxyModel_virtualbase_MapSelectionToSource(unsafe.Pointer(this.h), selection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -603,7 +587,7 @@ func miqt_exec_callback_QIdentityProxyModel_MapSelectionToSource(self *C.QIdenti
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selection))
+	slotval1 := newQItemSelection(selection)
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_MapSelectionToSource, slotval1)
 
@@ -617,8 +601,7 @@ func (this *QIdentityProxyModel) callVirtualBase_Match(start *QModelIndex, role 
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -640,10 +623,12 @@ func miqt_exec_callback_QIdentityProxyModel_Match(self *C.QIdentityProxyModel, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(start))
+	slotval1 := newQModelIndex(start)
+
 	slotval2 := (int)(role)
 
-	slotval3 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval3 := newQVariant(value)
+
 	slotval4 := (int)(hits)
 
 	slotval5 := (MatchFlag)(flags)
@@ -680,7 +665,7 @@ func miqt_exec_callback_QIdentityProxyModel_SetSourceModel(self *C.QIdentityProx
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAbstractItemModel(unsafe.Pointer(sourceModel), nil)
+	slotval1 := newQAbstractItemModel(sourceModel, nil)
 
 	gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_SetSourceModel, slotval1)
 
@@ -710,7 +695,7 @@ func miqt_exec_callback_QIdentityProxyModel_InsertColumns(self *C.QIdentityProxy
 
 	slotval2 := (int)(count)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_InsertColumns, slotval1, slotval2, slotval3)
 
@@ -742,7 +727,7 @@ func miqt_exec_callback_QIdentityProxyModel_InsertRows(self *C.QIdentityProxyMod
 
 	slotval2 := (int)(count)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_InsertRows, slotval1, slotval2, slotval3)
 
@@ -774,7 +759,7 @@ func miqt_exec_callback_QIdentityProxyModel_RemoveColumns(self *C.QIdentityProxy
 
 	slotval2 := (int)(count)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_RemoveColumns, slotval1, slotval2, slotval3)
 
@@ -806,7 +791,7 @@ func miqt_exec_callback_QIdentityProxyModel_RemoveRows(self *C.QIdentityProxyMod
 
 	slotval2 := (int)(count)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_RemoveRows, slotval1, slotval2, slotval3)
 
@@ -834,12 +819,14 @@ func miqt_exec_callback_QIdentityProxyModel_MoveRows(self *C.QIdentityProxyModel
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(sourceParent))
+	slotval1 := newQModelIndex(sourceParent)
+
 	slotval2 := (int)(sourceRow)
 
 	slotval3 := (int)(count)
 
-	slotval4 := UnsafeNewQModelIndex(unsafe.Pointer(destinationParent))
+	slotval4 := newQModelIndex(destinationParent)
+
 	slotval5 := (int)(destinationChild)
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_MoveRows, slotval1, slotval2, slotval3, slotval4, slotval5)
@@ -868,12 +855,14 @@ func miqt_exec_callback_QIdentityProxyModel_MoveColumns(self *C.QIdentityProxyMo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(sourceParent))
+	slotval1 := newQModelIndex(sourceParent)
+
 	slotval2 := (int)(sourceColumn)
 
 	slotval3 := (int)(count)
 
-	slotval4 := UnsafeNewQModelIndex(unsafe.Pointer(destinationParent))
+	slotval4 := newQModelIndex(destinationParent)
+
 	slotval5 := (int)(destinationChild)
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_MoveColumns, slotval1, slotval2, slotval3, slotval4, slotval5)
@@ -932,8 +921,7 @@ func miqt_exec_callback_QIdentityProxyModel_Revert(self *C.QIdentityProxyModel, 
 
 func (this *QIdentityProxyModel) callVirtualBase_Data(proxyIndex *QModelIndex, role int) *QVariant {
 
-	_ret := C.QIdentityProxyModel_virtualbase_Data(unsafe.Pointer(this.h), proxyIndex.cPointer(), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QIdentityProxyModel_virtualbase_Data(unsafe.Pointer(this.h), proxyIndex.cPointer(), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -953,7 +941,8 @@ func miqt_exec_callback_QIdentityProxyModel_Data(self *C.QIdentityProxyModel, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(proxyIndex))
+	slotval1 := newQModelIndex(proxyIndex)
+
 	slotval2 := (int)(role)
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_Data, slotval1, slotval2)
@@ -971,8 +960,7 @@ func (this *QIdentityProxyModel) callVirtualBase_ItemData(index *QModelIndex) ma
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
-		_mapval_ret := _Values[i]
-		_mapval_goptr := newQVariant(_mapval_ret)
+		_mapval_goptr := newQVariant(_Values[i])
 		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_entry_Value := *_mapval_goptr
 
@@ -996,7 +984,7 @@ func miqt_exec_callback_QIdentityProxyModel_ItemData(self *C.QIdentityProxyModel
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_ItemData, slotval1)
 	virtualReturn_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
@@ -1039,7 +1027,7 @@ func miqt_exec_callback_QIdentityProxyModel_Flags(self *C.QIdentityProxyModel, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_Flags, slotval1)
 
@@ -1067,8 +1055,10 @@ func miqt_exec_callback_QIdentityProxyModel_SetData(self *C.QIdentityProxyModel,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval1 := newQModelIndex(index)
+
+	slotval2 := newQVariant(value)
+
 	slotval3 := (int)(role)
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_SetData, slotval1, slotval2, slotval3)
@@ -1112,7 +1102,8 @@ func miqt_exec_callback_QIdentityProxyModel_SetItemData(self *C.QIdentityProxyMo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
+
 	var roles_mm C.struct_miqt_map = roles
 	roles_ret := make(map[int]QVariant, int(roles_mm.len))
 	roles_Keys := (*[0xffff]C.int)(unsafe.Pointer(roles_mm.keys))
@@ -1120,8 +1111,7 @@ func miqt_exec_callback_QIdentityProxyModel_SetItemData(self *C.QIdentityProxyMo
 	for i := 0; i < int(roles_mm.len); i++ {
 		roles_entry_Key := (int)(roles_Keys[i])
 
-		roles_mapval_ret := roles_Values[i]
-		roles_mapval_goptr := newQVariant(roles_mapval_ret)
+		roles_mapval_goptr := newQVariant(roles_Values[i])
 		roles_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		roles_entry_Value := *roles_mapval_goptr
 
@@ -1159,7 +1149,8 @@ func miqt_exec_callback_QIdentityProxyModel_SetHeaderData(self *C.QIdentityProxy
 
 	slotval2 := (Orientation)(orientation)
 
-	slotval3 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval3 := newQVariant(value)
+
 	slotval4 := (int)(role)
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_SetHeaderData, slotval1, slotval2, slotval3, slotval4)
@@ -1170,8 +1161,7 @@ func miqt_exec_callback_QIdentityProxyModel_SetHeaderData(self *C.QIdentityProxy
 
 func (this *QIdentityProxyModel) callVirtualBase_Buddy(index *QModelIndex) *QModelIndex {
 
-	_ret := C.QIdentityProxyModel_virtualbase_Buddy(unsafe.Pointer(this.h), index.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QIdentityProxyModel_virtualbase_Buddy(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1191,7 +1181,7 @@ func miqt_exec_callback_QIdentityProxyModel_Buddy(self *C.QIdentityProxyModel, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_Buddy, slotval1)
 
@@ -1219,7 +1209,7 @@ func miqt_exec_callback_QIdentityProxyModel_CanFetchMore(self *C.QIdentityProxyM
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_CanFetchMore, slotval1)
 
@@ -1247,7 +1237,7 @@ func miqt_exec_callback_QIdentityProxyModel_FetchMore(self *C.QIdentityProxyMode
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_FetchMore, slotval1)
 
@@ -1283,8 +1273,7 @@ func miqt_exec_callback_QIdentityProxyModel_Sort(self *C.QIdentityProxyModel, cb
 
 func (this *QIdentityProxyModel) callVirtualBase_Span(index *QModelIndex) *QSize {
 
-	_ret := C.QIdentityProxyModel_virtualbase_Span(unsafe.Pointer(this.h), index.cPointer())
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QIdentityProxyModel_virtualbase_Span(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1304,7 +1293,7 @@ func miqt_exec_callback_QIdentityProxyModel_Span(self *C.QIdentityProxyModel, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_Span, slotval1)
 
@@ -1332,7 +1321,7 @@ func miqt_exec_callback_QIdentityProxyModel_HasChildren(self *C.QIdentityProxyMo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_HasChildren, slotval1)
 
@@ -1348,7 +1337,8 @@ func (this *QIdentityProxyModel) callVirtualBase_MimeData(indexes []QModelIndex)
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 
-	return UnsafeNewQMimeData(unsafe.Pointer(C.QIdentityProxyModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma)), nil)
+	return newQMimeData(C.QIdentityProxyModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma), nil)
+
 }
 func (this *QIdentityProxyModel) OnMimeData(slot func(super func(indexes []QModelIndex) *QMimeData, indexes []QModelIndex) *QMimeData) {
 	if !this.isSubclass {
@@ -1369,8 +1359,7 @@ func miqt_exec_callback_QIdentityProxyModel_MimeData(self *C.QIdentityProxyModel
 	indexes_ret := make([]QModelIndex, int(indexes_ma.len))
 	indexes_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(indexes_ma.data)) // hey ya
 	for i := 0; i < int(indexes_ma.len); i++ {
-		indexes_lv_ret := indexes_outCast[i]
-		indexes_lv_goptr := newQModelIndex(indexes_lv_ret)
+		indexes_lv_goptr := newQModelIndex(indexes_outCast[i])
 		indexes_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		indexes_ret[i] = *indexes_lv_goptr
 	}
@@ -1402,14 +1391,15 @@ func miqt_exec_callback_QIdentityProxyModel_CanDropMimeData(self *C.QIdentityPro
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMimeData(unsafe.Pointer(data), nil)
+	slotval1 := newQMimeData(data, nil)
+
 	slotval2 := (DropAction)(action)
 
 	slotval3 := (int)(row)
 
 	slotval4 := (int)(column)
 
-	slotval5 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval5 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_CanDropMimeData, slotval1, slotval2, slotval3, slotval4, slotval5)
 

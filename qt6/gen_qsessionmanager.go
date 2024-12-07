@@ -61,7 +61,7 @@ func UnsafeNewQSessionManager(h unsafe.Pointer, h_QObject unsafe.Pointer) *QSess
 }
 
 func (this *QSessionManager) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSessionManager_MetaObject(this.h)))
+	return newQMetaObject(C.QSessionManager_MetaObject(this.h))
 }
 
 func (this *QSessionManager) Metacast(param1 string) unsafe.Pointer {

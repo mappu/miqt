@@ -116,8 +116,7 @@ func NewQStandardItem5(rows int, columns int) *QStandardItem {
 }
 
 func (this *QStandardItem) Data(role int) *QVariant {
-	_ret := C.QStandardItem_Data(this.h, (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QStandardItem_Data(this.h, (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -146,8 +145,7 @@ func (this *QStandardItem) SetText(text string) {
 }
 
 func (this *QStandardItem) Icon() *QIcon {
-	_ret := C.QStandardItem_Icon(this.h)
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QStandardItem_Icon(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -202,8 +200,7 @@ func (this *QStandardItem) SetWhatsThis(whatsThis string) {
 }
 
 func (this *QStandardItem) SizeHint() *QSize {
-	_ret := C.QStandardItem_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QStandardItem_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -213,8 +210,7 @@ func (this *QStandardItem) SetSizeHint(sizeHint *QSize) {
 }
 
 func (this *QStandardItem) Font() *QFont {
-	_ret := C.QStandardItem_Font(this.h)
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QStandardItem_Font(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -232,8 +228,7 @@ func (this *QStandardItem) SetTextAlignment(textAlignment AlignmentFlag) {
 }
 
 func (this *QStandardItem) Background() *QBrush {
-	_ret := C.QStandardItem_Background(this.h)
-	_goptr := newQBrush(_ret)
+	_goptr := newQBrush(C.QStandardItem_Background(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -243,8 +238,7 @@ func (this *QStandardItem) SetBackground(brush *QBrush) {
 }
 
 func (this *QStandardItem) Foreground() *QBrush {
-	_ret := C.QStandardItem_Foreground(this.h)
-	_goptr := newQBrush(_ret)
+	_goptr := newQBrush(C.QStandardItem_Foreground(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -372,7 +366,7 @@ func (this *QStandardItem) SetDropEnabled(dropEnabled bool) {
 }
 
 func (this *QStandardItem) Parent() *QStandardItem {
-	return UnsafeNewQStandardItem(unsafe.Pointer(C.QStandardItem_Parent(this.h)))
+	return newQStandardItem(C.QStandardItem_Parent(this.h))
 }
 
 func (this *QStandardItem) Row() int {
@@ -384,14 +378,13 @@ func (this *QStandardItem) Column() int {
 }
 
 func (this *QStandardItem) Index() *QModelIndex {
-	_ret := C.QStandardItem_Index(this.h)
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QStandardItem_Index(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStandardItem) Model() *QStandardItemModel {
-	return UnsafeNewQStandardItemModel(unsafe.Pointer(C.QStandardItem_Model(this.h)), nil, nil)
+	return newQStandardItemModel(C.QStandardItem_Model(this.h), nil, nil)
 }
 
 func (this *QStandardItem) RowCount() int {
@@ -415,7 +408,7 @@ func (this *QStandardItem) HasChildren() bool {
 }
 
 func (this *QStandardItem) Child(row int) *QStandardItem {
-	return UnsafeNewQStandardItem(unsafe.Pointer(C.QStandardItem_Child(this.h, (C.int)(row))))
+	return newQStandardItem(C.QStandardItem_Child(this.h, (C.int)(row)))
 }
 
 func (this *QStandardItem) SetChild(row int, column int, item *QStandardItem) {
@@ -519,7 +512,7 @@ func (this *QStandardItem) AppendRowWithItem(item *QStandardItem) {
 }
 
 func (this *QStandardItem) TakeChild(row int) *QStandardItem {
-	return UnsafeNewQStandardItem(unsafe.Pointer(C.QStandardItem_TakeChild(this.h, (C.int)(row))))
+	return newQStandardItem(C.QStandardItem_TakeChild(this.h, (C.int)(row)))
 }
 
 func (this *QStandardItem) TakeRow(row int) []*QStandardItem {
@@ -527,7 +520,7 @@ func (this *QStandardItem) TakeRow(row int) []*QStandardItem {
 	_ret := make([]*QStandardItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQStandardItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQStandardItem(_outCast[i])
 	}
 	return _ret
 }
@@ -537,7 +530,7 @@ func (this *QStandardItem) TakeColumn(column int) []*QStandardItem {
 	_ret := make([]*QStandardItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQStandardItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQStandardItem(_outCast[i])
 	}
 	return _ret
 }
@@ -547,7 +540,7 @@ func (this *QStandardItem) SortChildren(column int) {
 }
 
 func (this *QStandardItem) Clone() *QStandardItem {
-	return UnsafeNewQStandardItem(unsafe.Pointer(C.QStandardItem_Clone(this.h)))
+	return newQStandardItem(C.QStandardItem_Clone(this.h))
 }
 
 func (this *QStandardItem) Type() int {
@@ -567,11 +560,11 @@ func (this *QStandardItem) OperatorLesser(other *QStandardItem) bool {
 }
 
 func (this *QStandardItem) Child2(row int, column int) *QStandardItem {
-	return UnsafeNewQStandardItem(unsafe.Pointer(C.QStandardItem_Child2(this.h, (C.int)(row), (C.int)(column))))
+	return newQStandardItem(C.QStandardItem_Child2(this.h, (C.int)(row), (C.int)(column)))
 }
 
 func (this *QStandardItem) TakeChild2(row int, column int) *QStandardItem {
-	return UnsafeNewQStandardItem(unsafe.Pointer(C.QStandardItem_TakeChild2(this.h, (C.int)(row), (C.int)(column))))
+	return newQStandardItem(C.QStandardItem_TakeChild2(this.h, (C.int)(row), (C.int)(column)))
 }
 
 func (this *QStandardItem) SortChildren2(column int, order SortOrder) {
@@ -580,8 +573,7 @@ func (this *QStandardItem) SortChildren2(column int, order SortOrder) {
 
 func (this *QStandardItem) callVirtualBase_Data(role int) *QVariant {
 
-	_ret := C.QStandardItem_virtualbase_Data(unsafe.Pointer(this.h), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QStandardItem_virtualbase_Data(unsafe.Pointer(this.h), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -629,7 +621,8 @@ func miqt_exec_callback_QStandardItem_SetData(self *C.QStandardItem, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval1 := newQVariant(value)
+
 	slotval2 := (int)(role)
 
 	gofunc((&QStandardItem{h: self}).callVirtualBase_SetData, slotval1, slotval2)
@@ -638,7 +631,8 @@ func miqt_exec_callback_QStandardItem_SetData(self *C.QStandardItem, cb C.intptr
 
 func (this *QStandardItem) callVirtualBase_Clone() *QStandardItem {
 
-	return UnsafeNewQStandardItem(unsafe.Pointer(C.QStandardItem_virtualbase_Clone(unsafe.Pointer(this.h))))
+	return newQStandardItem(C.QStandardItem_virtualbase_Clone(unsafe.Pointer(this.h)))
+
 }
 func (this *QStandardItem) OnClone(slot func(super func() *QStandardItem) *QStandardItem) {
 	if !this.isSubclass {
@@ -705,7 +699,7 @@ func miqt_exec_callback_QStandardItem_Read(self *C.QStandardItem, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDataStream(unsafe.Pointer(in))
+	slotval1 := newQDataStream(in)
 
 	gofunc((&QStandardItem{h: self}).callVirtualBase_Read, slotval1)
 
@@ -731,7 +725,7 @@ func miqt_exec_callback_QStandardItem_Write(self *C.QStandardItem, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDataStream(unsafe.Pointer(out))
+	slotval1 := newQDataStream(out)
 
 	gofunc((&QStandardItem{h: self}).callVirtualBase_Write, slotval1)
 
@@ -757,7 +751,7 @@ func miqt_exec_callback_QStandardItem_OperatorLesser(self *C.QStandardItem, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStandardItem(unsafe.Pointer(other))
+	slotval1 := newQStandardItem(other)
 
 	virtualReturn := gofunc((&QStandardItem{h: self}).callVirtualBase_OperatorLesser, slotval1)
 
@@ -867,7 +861,7 @@ func NewQStandardItemModel4(rows int, columns int, parent *QObject) *QStandardIt
 }
 
 func (this *QStandardItemModel) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QStandardItemModel_MetaObject(this.h)))
+	return newQMetaObject(C.QStandardItemModel_MetaObject(this.h))
 }
 
 func (this *QStandardItemModel) Metacast(param1 string) unsafe.Pointer {
@@ -917,15 +911,13 @@ func (this *QStandardItemModel) SetItemRoleNames(roleNames map[int][]byte) {
 }
 
 func (this *QStandardItemModel) Index(row int, column int, parent *QModelIndex) *QModelIndex {
-	_ret := C.QStandardItemModel_Index(this.h, (C.int)(row), (C.int)(column), parent.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QStandardItemModel_Index(this.h, (C.int)(row), (C.int)(column), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStandardItemModel) Parent(child *QModelIndex) *QModelIndex {
-	_ret := C.QStandardItemModel_Parent(this.h, child.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QStandardItemModel_Parent(this.h, child.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -943,15 +935,13 @@ func (this *QStandardItemModel) HasChildren(parent *QModelIndex) bool {
 }
 
 func (this *QStandardItemModel) Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
-	_ret := C.QStandardItemModel_Sibling(this.h, (C.int)(row), (C.int)(column), idx.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QStandardItemModel_Sibling(this.h, (C.int)(row), (C.int)(column), idx.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStandardItemModel) Data(index *QModelIndex, role int) *QVariant {
-	_ret := C.QStandardItemModel_Data(this.h, index.cPointer(), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QStandardItemModel_Data(this.h, index.cPointer(), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -965,8 +955,7 @@ func (this *QStandardItemModel) ClearItemData(index *QModelIndex) bool {
 }
 
 func (this *QStandardItemModel) HeaderData(section int, orientation Orientation, role int) *QVariant {
-	_ret := C.QStandardItemModel_HeaderData(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QStandardItemModel_HeaderData(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1007,8 +996,7 @@ func (this *QStandardItemModel) ItemData(index *QModelIndex) map[int]QVariant {
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
-		_mapval_ret := _Values[i]
-		_mapval_goptr := newQVariant(_mapval_ret)
+		_mapval_goptr := newQVariant(_Values[i])
 		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_entry_Value := *_mapval_goptr
 
@@ -1045,18 +1033,17 @@ func (this *QStandardItemModel) Sort(column int, order SortOrder) {
 }
 
 func (this *QStandardItemModel) ItemFromIndex(index *QModelIndex) *QStandardItem {
-	return UnsafeNewQStandardItem(unsafe.Pointer(C.QStandardItemModel_ItemFromIndex(this.h, index.cPointer())))
+	return newQStandardItem(C.QStandardItemModel_ItemFromIndex(this.h, index.cPointer()))
 }
 
 func (this *QStandardItemModel) IndexFromItem(item *QStandardItem) *QModelIndex {
-	_ret := C.QStandardItemModel_IndexFromItem(this.h, item.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QStandardItemModel_IndexFromItem(this.h, item.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStandardItemModel) Item(row int) *QStandardItem {
-	return UnsafeNewQStandardItem(unsafe.Pointer(C.QStandardItemModel_Item(this.h, (C.int)(row))))
+	return newQStandardItem(C.QStandardItemModel_Item(this.h, (C.int)(row)))
 }
 
 func (this *QStandardItemModel) SetItem(row int, column int, item *QStandardItem) {
@@ -1068,11 +1055,11 @@ func (this *QStandardItemModel) SetItem2(row int, item *QStandardItem) {
 }
 
 func (this *QStandardItemModel) InvisibleRootItem() *QStandardItem {
-	return UnsafeNewQStandardItem(unsafe.Pointer(C.QStandardItemModel_InvisibleRootItem(this.h)))
+	return newQStandardItem(C.QStandardItemModel_InvisibleRootItem(this.h))
 }
 
 func (this *QStandardItemModel) HorizontalHeaderItem(column int) *QStandardItem {
-	return UnsafeNewQStandardItem(unsafe.Pointer(C.QStandardItemModel_HorizontalHeaderItem(this.h, (C.int)(column))))
+	return newQStandardItem(C.QStandardItemModel_HorizontalHeaderItem(this.h, (C.int)(column)))
 }
 
 func (this *QStandardItemModel) SetHorizontalHeaderItem(column int, item *QStandardItem) {
@@ -1080,7 +1067,7 @@ func (this *QStandardItemModel) SetHorizontalHeaderItem(column int, item *QStand
 }
 
 func (this *QStandardItemModel) VerticalHeaderItem(row int) *QStandardItem {
-	return UnsafeNewQStandardItem(unsafe.Pointer(C.QStandardItemModel_VerticalHeaderItem(this.h, (C.int)(row))))
+	return newQStandardItem(C.QStandardItemModel_VerticalHeaderItem(this.h, (C.int)(row)))
 }
 
 func (this *QStandardItemModel) SetVerticalHeaderItem(row int, item *QStandardItem) {
@@ -1180,7 +1167,7 @@ func (this *QStandardItemModel) InsertColumnWithColumn(column int) bool {
 }
 
 func (this *QStandardItemModel) TakeItem(row int) *QStandardItem {
-	return UnsafeNewQStandardItem(unsafe.Pointer(C.QStandardItemModel_TakeItem(this.h, (C.int)(row))))
+	return newQStandardItem(C.QStandardItemModel_TakeItem(this.h, (C.int)(row)))
 }
 
 func (this *QStandardItemModel) TakeRow(row int) []*QStandardItem {
@@ -1188,7 +1175,7 @@ func (this *QStandardItemModel) TakeRow(row int) []*QStandardItem {
 	_ret := make([]*QStandardItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQStandardItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQStandardItem(_outCast[i])
 	}
 	return _ret
 }
@@ -1198,21 +1185,21 @@ func (this *QStandardItemModel) TakeColumn(column int) []*QStandardItem {
 	_ret := make([]*QStandardItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQStandardItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQStandardItem(_outCast[i])
 	}
 	return _ret
 }
 
 func (this *QStandardItemModel) TakeHorizontalHeaderItem(column int) *QStandardItem {
-	return UnsafeNewQStandardItem(unsafe.Pointer(C.QStandardItemModel_TakeHorizontalHeaderItem(this.h, (C.int)(column))))
+	return newQStandardItem(C.QStandardItemModel_TakeHorizontalHeaderItem(this.h, (C.int)(column)))
 }
 
 func (this *QStandardItemModel) TakeVerticalHeaderItem(row int) *QStandardItem {
-	return UnsafeNewQStandardItem(unsafe.Pointer(C.QStandardItemModel_TakeVerticalHeaderItem(this.h, (C.int)(row))))
+	return newQStandardItem(C.QStandardItemModel_TakeVerticalHeaderItem(this.h, (C.int)(row)))
 }
 
 func (this *QStandardItemModel) ItemPrototype() *QStandardItem {
-	return UnsafeNewQStandardItem(unsafe.Pointer(C.QStandardItemModel_ItemPrototype(this.h)))
+	return newQStandardItem(C.QStandardItemModel_ItemPrototype(this.h))
 }
 
 func (this *QStandardItemModel) SetItemPrototype(item *QStandardItem) {
@@ -1228,7 +1215,7 @@ func (this *QStandardItemModel) FindItems(text string) []*QStandardItem {
 	_ret := make([]*QStandardItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQStandardItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQStandardItem(_outCast[i])
 	}
 	return _ret
 }
@@ -1261,7 +1248,7 @@ func (this *QStandardItemModel) MimeData(indexes []QModelIndex) *QMimeData {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
-	return UnsafeNewQMimeData(unsafe.Pointer(C.QStandardItemModel_MimeData(this.h, indexes_ma)), nil)
+	return newQMimeData(C.QStandardItemModel_MimeData(this.h, indexes_ma), nil)
 }
 
 func (this *QStandardItemModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
@@ -1283,7 +1270,7 @@ func miqt_exec_callback_QStandardItemModel_ItemChanged(cb C.intptr_t, item *C.QS
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStandardItem(unsafe.Pointer(item))
+	slotval1 := newQStandardItem(item)
 
 	gofunc(slotval1)
 }
@@ -1333,7 +1320,7 @@ func QStandardItemModel_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QStandardItemModel) Item2(row int, column int) *QStandardItem {
-	return UnsafeNewQStandardItem(unsafe.Pointer(C.QStandardItemModel_Item2(this.h, (C.int)(row), (C.int)(column))))
+	return newQStandardItem(C.QStandardItemModel_Item2(this.h, (C.int)(row), (C.int)(column)))
 }
 
 func (this *QStandardItemModel) InsertRow22(row int, parent *QModelIndex) bool {
@@ -1345,7 +1332,7 @@ func (this *QStandardItemModel) InsertColumn2(column int, parent *QModelIndex) b
 }
 
 func (this *QStandardItemModel) TakeItem2(row int, column int) *QStandardItem {
-	return UnsafeNewQStandardItem(unsafe.Pointer(C.QStandardItemModel_TakeItem2(this.h, (C.int)(row), (C.int)(column))))
+	return newQStandardItem(C.QStandardItemModel_TakeItem2(this.h, (C.int)(row), (C.int)(column)))
 }
 
 func (this *QStandardItemModel) FindItems2(text string, flags MatchFlag) []*QStandardItem {
@@ -1357,7 +1344,7 @@ func (this *QStandardItemModel) FindItems2(text string, flags MatchFlag) []*QSta
 	_ret := make([]*QStandardItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQStandardItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQStandardItem(_outCast[i])
 	}
 	return _ret
 }
@@ -1371,15 +1358,14 @@ func (this *QStandardItemModel) FindItems3(text string, flags MatchFlag, column 
 	_ret := make([]*QStandardItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQStandardItem(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQStandardItem(_outCast[i])
 	}
 	return _ret
 }
 
 func (this *QStandardItemModel) callVirtualBase_Index(row int, column int, parent *QModelIndex) *QModelIndex {
 
-	_ret := C.QStandardItemModel_virtualbase_Index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), parent.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QStandardItemModel_virtualbase_Index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1403,7 +1389,7 @@ func miqt_exec_callback_QStandardItemModel_Index(self *C.QStandardItemModel, cb 
 
 	slotval2 := (int)(column)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_Index, slotval1, slotval2, slotval3)
 
@@ -1413,8 +1399,7 @@ func miqt_exec_callback_QStandardItemModel_Index(self *C.QStandardItemModel, cb 
 
 func (this *QStandardItemModel) callVirtualBase_Parent(child *QModelIndex) *QModelIndex {
 
-	_ret := C.QStandardItemModel_virtualbase_Parent(unsafe.Pointer(this.h), child.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QStandardItemModel_virtualbase_Parent(unsafe.Pointer(this.h), child.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1434,7 +1419,7 @@ func miqt_exec_callback_QStandardItemModel_Parent(self *C.QStandardItemModel, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(child))
+	slotval1 := newQModelIndex(child)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_Parent, slotval1)
 
@@ -1462,7 +1447,7 @@ func miqt_exec_callback_QStandardItemModel_RowCount(self *C.QStandardItemModel, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_RowCount, slotval1)
 
@@ -1490,7 +1475,7 @@ func miqt_exec_callback_QStandardItemModel_ColumnCount(self *C.QStandardItemMode
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_ColumnCount, slotval1)
 
@@ -1518,7 +1503,7 @@ func miqt_exec_callback_QStandardItemModel_HasChildren(self *C.QStandardItemMode
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_HasChildren, slotval1)
 
@@ -1528,8 +1513,7 @@ func miqt_exec_callback_QStandardItemModel_HasChildren(self *C.QStandardItemMode
 
 func (this *QStandardItemModel) callVirtualBase_Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
 
-	_ret := C.QStandardItemModel_virtualbase_Sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), idx.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QStandardItemModel_virtualbase_Sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), idx.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1553,7 +1537,7 @@ func miqt_exec_callback_QStandardItemModel_Sibling(self *C.QStandardItemModel, c
 
 	slotval2 := (int)(column)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(idx))
+	slotval3 := newQModelIndex(idx)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_Sibling, slotval1, slotval2, slotval3)
 
@@ -1563,8 +1547,7 @@ func miqt_exec_callback_QStandardItemModel_Sibling(self *C.QStandardItemModel, c
 
 func (this *QStandardItemModel) callVirtualBase_Data(index *QModelIndex, role int) *QVariant {
 
-	_ret := C.QStandardItemModel_virtualbase_Data(unsafe.Pointer(this.h), index.cPointer(), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QStandardItemModel_virtualbase_Data(unsafe.Pointer(this.h), index.cPointer(), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1584,7 +1567,8 @@ func miqt_exec_callback_QStandardItemModel_Data(self *C.QStandardItemModel, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
+
 	slotval2 := (int)(role)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_Data, slotval1, slotval2)
@@ -1613,8 +1597,10 @@ func miqt_exec_callback_QStandardItemModel_SetData(self *C.QStandardItemModel, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval1 := newQModelIndex(index)
+
+	slotval2 := newQVariant(value)
+
 	slotval3 := (int)(role)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_SetData, slotval1, slotval2, slotval3)
@@ -1625,8 +1611,7 @@ func miqt_exec_callback_QStandardItemModel_SetData(self *C.QStandardItemModel, c
 
 func (this *QStandardItemModel) callVirtualBase_HeaderData(section int, orientation Orientation, role int) *QVariant {
 
-	_ret := C.QStandardItemModel_virtualbase_HeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QStandardItemModel_virtualbase_HeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1682,7 +1667,8 @@ func miqt_exec_callback_QStandardItemModel_SetHeaderData(self *C.QStandardItemMo
 
 	slotval2 := (Orientation)(orientation)
 
-	slotval3 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval3 := newQVariant(value)
+
 	slotval4 := (int)(role)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_SetHeaderData, slotval1, slotval2, slotval3, slotval4)
@@ -1715,7 +1701,7 @@ func miqt_exec_callback_QStandardItemModel_InsertRows(self *C.QStandardItemModel
 
 	slotval2 := (int)(count)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_InsertRows, slotval1, slotval2, slotval3)
 
@@ -1747,7 +1733,7 @@ func miqt_exec_callback_QStandardItemModel_InsertColumns(self *C.QStandardItemMo
 
 	slotval2 := (int)(count)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_InsertColumns, slotval1, slotval2, slotval3)
 
@@ -1779,7 +1765,7 @@ func miqt_exec_callback_QStandardItemModel_RemoveRows(self *C.QStandardItemModel
 
 	slotval2 := (int)(count)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_RemoveRows, slotval1, slotval2, slotval3)
 
@@ -1811,7 +1797,7 @@ func miqt_exec_callback_QStandardItemModel_RemoveColumns(self *C.QStandardItemMo
 
 	slotval2 := (int)(count)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_RemoveColumns, slotval1, slotval2, slotval3)
 
@@ -1839,7 +1825,7 @@ func miqt_exec_callback_QStandardItemModel_Flags(self *C.QStandardItemModel, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_Flags, slotval1)
 
@@ -1881,8 +1867,7 @@ func (this *QStandardItemModel) callVirtualBase_ItemData(index *QModelIndex) map
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
-		_mapval_ret := _Values[i]
-		_mapval_goptr := newQVariant(_mapval_ret)
+		_mapval_goptr := newQVariant(_Values[i])
 		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_entry_Value := *_mapval_goptr
 
@@ -1906,7 +1891,7 @@ func miqt_exec_callback_QStandardItemModel_ItemData(self *C.QStandardItemModel, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_ItemData, slotval1)
 	virtualReturn_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
@@ -1964,7 +1949,8 @@ func miqt_exec_callback_QStandardItemModel_SetItemData(self *C.QStandardItemMode
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
+
 	var roles_mm C.struct_miqt_map = roles
 	roles_ret := make(map[int]QVariant, int(roles_mm.len))
 	roles_Keys := (*[0xffff]C.int)(unsafe.Pointer(roles_mm.keys))
@@ -1972,8 +1958,7 @@ func miqt_exec_callback_QStandardItemModel_SetItemData(self *C.QStandardItemMode
 	for i := 0; i < int(roles_mm.len); i++ {
 		roles_entry_Key := (int)(roles_Keys[i])
 
-		roles_mapval_ret := roles_Values[i]
-		roles_mapval_goptr := newQVariant(roles_mapval_ret)
+		roles_mapval_goptr := newQVariant(roles_Values[i])
 		roles_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		roles_entry_Value := *roles_mapval_goptr
 
@@ -2067,7 +2052,8 @@ func (this *QStandardItemModel) callVirtualBase_MimeData(indexes []QModelIndex) 
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 
-	return UnsafeNewQMimeData(unsafe.Pointer(C.QStandardItemModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma)), nil)
+	return newQMimeData(C.QStandardItemModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma), nil)
+
 }
 func (this *QStandardItemModel) OnMimeData(slot func(super func(indexes []QModelIndex) *QMimeData, indexes []QModelIndex) *QMimeData) {
 	if !this.isSubclass {
@@ -2088,8 +2074,7 @@ func miqt_exec_callback_QStandardItemModel_MimeData(self *C.QStandardItemModel, 
 	indexes_ret := make([]QModelIndex, int(indexes_ma.len))
 	indexes_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(indexes_ma.data)) // hey ya
 	for i := 0; i < int(indexes_ma.len); i++ {
-		indexes_lv_ret := indexes_outCast[i]
-		indexes_lv_goptr := newQModelIndex(indexes_lv_ret)
+		indexes_lv_goptr := newQModelIndex(indexes_outCast[i])
 		indexes_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		indexes_ret[i] = *indexes_lv_goptr
 	}
@@ -2121,14 +2106,15 @@ func miqt_exec_callback_QStandardItemModel_DropMimeData(self *C.QStandardItemMod
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMimeData(unsafe.Pointer(data), nil)
+	slotval1 := newQMimeData(data, nil)
+
 	slotval2 := (DropAction)(action)
 
 	slotval3 := (int)(row)
 
 	slotval4 := (int)(column)
 
-	slotval5 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval5 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_DropMimeData, slotval1, slotval2, slotval3, slotval4, slotval5)
 
@@ -2156,14 +2142,15 @@ func miqt_exec_callback_QStandardItemModel_CanDropMimeData(self *C.QStandardItem
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMimeData(unsafe.Pointer(data), nil)
+	slotval1 := newQMimeData(data, nil)
+
 	slotval2 := (DropAction)(action)
 
 	slotval3 := (int)(row)
 
 	slotval4 := (int)(column)
 
-	slotval5 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval5 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_CanDropMimeData, slotval1, slotval2, slotval3, slotval4, slotval5)
 
@@ -2216,12 +2203,14 @@ func miqt_exec_callback_QStandardItemModel_MoveRows(self *C.QStandardItemModel, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(sourceParent))
+	slotval1 := newQModelIndex(sourceParent)
+
 	slotval2 := (int)(sourceRow)
 
 	slotval3 := (int)(count)
 
-	slotval4 := UnsafeNewQModelIndex(unsafe.Pointer(destinationParent))
+	slotval4 := newQModelIndex(destinationParent)
+
 	slotval5 := (int)(destinationChild)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_MoveRows, slotval1, slotval2, slotval3, slotval4, slotval5)
@@ -2250,12 +2239,14 @@ func miqt_exec_callback_QStandardItemModel_MoveColumns(self *C.QStandardItemMode
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(sourceParent))
+	slotval1 := newQModelIndex(sourceParent)
+
 	slotval2 := (int)(sourceColumn)
 
 	slotval3 := (int)(count)
 
-	slotval4 := UnsafeNewQModelIndex(unsafe.Pointer(destinationParent))
+	slotval4 := newQModelIndex(destinationParent)
+
 	slotval5 := (int)(destinationChild)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_MoveColumns, slotval1, slotval2, slotval3, slotval4, slotval5)
@@ -2284,7 +2275,7 @@ func miqt_exec_callback_QStandardItemModel_FetchMore(self *C.QStandardItemModel,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	gofunc((&QStandardItemModel{h: self}).callVirtualBase_FetchMore, slotval1)
 
@@ -2310,7 +2301,7 @@ func miqt_exec_callback_QStandardItemModel_CanFetchMore(self *C.QStandardItemMod
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_CanFetchMore, slotval1)
 
@@ -2320,8 +2311,7 @@ func miqt_exec_callback_QStandardItemModel_CanFetchMore(self *C.QStandardItemMod
 
 func (this *QStandardItemModel) callVirtualBase_Buddy(index *QModelIndex) *QModelIndex {
 
-	_ret := C.QStandardItemModel_virtualbase_Buddy(unsafe.Pointer(this.h), index.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QStandardItemModel_virtualbase_Buddy(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -2341,7 +2331,7 @@ func miqt_exec_callback_QStandardItemModel_Buddy(self *C.QStandardItemModel, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_Buddy, slotval1)
 
@@ -2355,8 +2345,7 @@ func (this *QStandardItemModel) callVirtualBase_Match(start *QModelIndex, role i
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -2378,10 +2367,12 @@ func miqt_exec_callback_QStandardItemModel_Match(self *C.QStandardItemModel, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(start))
+	slotval1 := newQModelIndex(start)
+
 	slotval2 := (int)(role)
 
-	slotval3 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval3 := newQVariant(value)
+
 	slotval4 := (int)(hits)
 
 	slotval5 := (MatchFlag)(flags)
@@ -2400,8 +2391,7 @@ func miqt_exec_callback_QStandardItemModel_Match(self *C.QStandardItemModel, cb 
 
 func (this *QStandardItemModel) callVirtualBase_Span(index *QModelIndex) *QSize {
 
-	_ret := C.QStandardItemModel_virtualbase_Span(unsafe.Pointer(this.h), index.cPointer())
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QStandardItemModel_virtualbase_Span(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -2421,7 +2411,7 @@ func miqt_exec_callback_QStandardItemModel_Span(self *C.QStandardItemModel, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_Span, slotval1)
 

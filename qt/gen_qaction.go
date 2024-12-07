@@ -163,7 +163,7 @@ func NewQAction6(icon *QIcon, text string, parent *QObject) *QAction {
 }
 
 func (this *QAction) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAction_MetaObject(this.h)))
+	return newQMetaObject(C.QAction_MetaObject(this.h))
 }
 
 func (this *QAction) Metacast(param1 string) unsafe.Pointer {
@@ -195,7 +195,7 @@ func (this *QAction) SetActionGroup(group *QActionGroup) {
 }
 
 func (this *QAction) ActionGroup() *QActionGroup {
-	return UnsafeNewQActionGroup(unsafe.Pointer(C.QAction_ActionGroup(this.h)), nil)
+	return newQActionGroup(C.QAction_ActionGroup(this.h), nil)
 }
 
 func (this *QAction) SetIcon(icon *QIcon) {
@@ -203,8 +203,7 @@ func (this *QAction) SetIcon(icon *QIcon) {
 }
 
 func (this *QAction) Icon() *QIcon {
-	_ret := C.QAction_Icon(this.h)
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QAction_Icon(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -293,7 +292,7 @@ func (this *QAction) Priority() QAction__Priority {
 }
 
 func (this *QAction) Menu() *QMenu {
-	return UnsafeNewQMenu(unsafe.Pointer(C.QAction_Menu(this.h)), nil, nil, nil)
+	return newQMenu(C.QAction_Menu(this.h), nil, nil, nil)
 }
 
 func (this *QAction) SetMenu(menu *QMenu) {
@@ -313,8 +312,7 @@ func (this *QAction) SetShortcut(shortcut *QKeySequence) {
 }
 
 func (this *QAction) Shortcut() *QKeySequence {
-	_ret := C.QAction_Shortcut(this.h)
-	_goptr := newQKeySequence(_ret)
+	_goptr := newQKeySequence(C.QAction_Shortcut(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -338,8 +336,7 @@ func (this *QAction) Shortcuts() []QKeySequence {
 	_ret := make([]QKeySequence, int(_ma.len))
 	_outCast := (*[0xffff]*C.QKeySequence)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQKeySequence(_lv_ret)
+		_lv_goptr := newQKeySequence(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -367,8 +364,7 @@ func (this *QAction) SetFont(font *QFont) {
 }
 
 func (this *QAction) Font() *QFont {
-	_ret := C.QAction_Font(this.h)
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QAction_Font(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -382,8 +378,7 @@ func (this *QAction) IsCheckable() bool {
 }
 
 func (this *QAction) Data() *QVariant {
-	_ret := C.QAction_Data(this.h)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QAction_Data(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -437,7 +432,7 @@ func (this *QAction) IsShortcutVisibleInContextMenu() bool {
 }
 
 func (this *QAction) ParentWidget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QAction_ParentWidget(this.h)), nil, nil)
+	return newQWidget(C.QAction_ParentWidget(this.h), nil, nil)
 }
 
 func (this *QAction) AssociatedWidgets() []*QWidget {
@@ -445,7 +440,7 @@ func (this *QAction) AssociatedWidgets() []*QWidget {
 	_ret := make([]*QWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQWidget(unsafe.Pointer(_outCast[i]), nil, nil)
+		_ret[i] = newQWidget(_outCast[i], nil, nil)
 	}
 	return _ret
 }
@@ -455,7 +450,7 @@ func (this *QAction) AssociatedGraphicsWidgets() []*QGraphicsWidget {
 	_ret := make([]*QGraphicsWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQGraphicsWidget(unsafe.Pointer(_outCast[i]), nil, nil, nil, nil)
+		_ret[i] = newQGraphicsWidget(_outCast[i], nil, nil, nil, nil)
 	}
 	return _ret
 }
@@ -647,7 +642,7 @@ func miqt_exec_callback_QAction_Event(self *C.QAction, cb C.intptr_t, param1 *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	virtualReturn := gofunc((&QAction{h: self}).callVirtualBase_Event, slotval1)
 
@@ -675,8 +670,9 @@ func miqt_exec_callback_QAction_EventFilter(self *C.QAction, cb C.intptr_t, watc
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QAction{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -704,7 +700,7 @@ func miqt_exec_callback_QAction_TimerEvent(self *C.QAction, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QAction{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -730,7 +726,7 @@ func miqt_exec_callback_QAction_ChildEvent(self *C.QAction, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QAction{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -756,7 +752,7 @@ func miqt_exec_callback_QAction_CustomEvent(self *C.QAction, cb C.intptr_t, even
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QAction{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -782,7 +778,7 @@ func miqt_exec_callback_QAction_ConnectNotify(self *C.QAction, cb C.intptr_t, si
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QAction{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -808,7 +804,7 @@ func miqt_exec_callback_QAction_DisconnectNotify(self *C.QAction, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QAction{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

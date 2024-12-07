@@ -114,8 +114,7 @@ func (this *QsciLexerIDL) Language() string {
 }
 
 func (this *QsciLexerIDL) DefaultColor(style int) *qt.QColor {
-	_ret := C.QsciLexerIDL_DefaultColor(this.h, (C.int)(style))
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerIDL_DefaultColor(this.h, (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

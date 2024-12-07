@@ -102,7 +102,7 @@ func NewQEventTransition4(object *QObject, typeVal QEvent__Type, sourceState *QS
 }
 
 func (this *QEventTransition) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QEventTransition_MetaObject(this.h)))
+	return newQMetaObject(C.QEventTransition_MetaObject(this.h))
 }
 
 func (this *QEventTransition) Metacast(param1 string) unsafe.Pointer {
@@ -130,7 +130,7 @@ func QEventTransition_TrUtf8(s string) string {
 }
 
 func (this *QEventTransition) EventSource() *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QEventTransition_EventSource(this.h)))
+	return newQObject(C.QEventTransition_EventSource(this.h))
 }
 
 func (this *QEventTransition) SetEventSource(object *QObject) {
@@ -209,7 +209,7 @@ func miqt_exec_callback_QEventTransition_EventTest(self *C.QEventTransition, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QEventTransition{h: self}).callVirtualBase_EventTest, slotval1)
 
@@ -237,7 +237,7 @@ func miqt_exec_callback_QEventTransition_OnTransition(self *C.QEventTransition, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QEventTransition{h: self}).callVirtualBase_OnTransition, slotval1)
 
@@ -263,7 +263,7 @@ func miqt_exec_callback_QEventTransition_Event(self *C.QEventTransition, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QEventTransition{h: self}).callVirtualBase_Event, slotval1)
 

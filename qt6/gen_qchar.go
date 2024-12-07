@@ -590,8 +590,7 @@ func (this *QChar) CombiningClass() byte {
 }
 
 func (this *QChar) MirroredChar() *QChar {
-	_ret := C.QChar_MirroredChar(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QChar_MirroredChar(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -616,29 +615,25 @@ func (this *QChar) DigitValue() int {
 }
 
 func (this *QChar) ToLower() *QChar {
-	_ret := C.QChar_ToLower(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QChar_ToLower(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QChar) ToUpper() *QChar {
-	_ret := C.QChar_ToUpper(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QChar_ToUpper(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QChar) ToTitleCase() *QChar {
-	_ret := C.QChar_ToTitleCase(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QChar_ToTitleCase(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QChar) ToCaseFolded() *QChar {
-	_ret := C.QChar_ToCaseFolded(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QChar_ToCaseFolded(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -656,8 +651,7 @@ func (this *QChar) ToLatin1() int8 {
 }
 
 func QChar_FromLatin1(c int8) *QChar {
-	_ret := C.QChar_FromLatin1((C.char)(c))
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QChar_FromLatin1((C.char)(c)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

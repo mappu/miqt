@@ -84,7 +84,7 @@ func NewQScrollArea2() *QScrollArea {
 }
 
 func (this *QScrollArea) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QScrollArea_MetaObject(this.h)))
+	return newQMetaObject(C.QScrollArea_MetaObject(this.h))
 }
 
 func (this *QScrollArea) Metacast(param1 string) unsafe.Pointer {
@@ -103,7 +103,7 @@ func QScrollArea_Tr(s string) string {
 }
 
 func (this *QScrollArea) Widget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QScrollArea_Widget(this.h)), nil, nil)
+	return newQWidget(C.QScrollArea_Widget(this.h), nil, nil)
 }
 
 func (this *QScrollArea) SetWidget(widget *QWidget) {
@@ -111,7 +111,7 @@ func (this *QScrollArea) SetWidget(widget *QWidget) {
 }
 
 func (this *QScrollArea) TakeWidget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QScrollArea_TakeWidget(this.h)), nil, nil)
+	return newQWidget(C.QScrollArea_TakeWidget(this.h), nil, nil)
 }
 
 func (this *QScrollArea) WidgetResizable() bool {
@@ -123,8 +123,7 @@ func (this *QScrollArea) SetWidgetResizable(resizable bool) {
 }
 
 func (this *QScrollArea) SizeHint() *QSize {
-	_ret := C.QScrollArea_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QScrollArea_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -189,8 +188,7 @@ func (this *QScrollArea) EnsureWidgetVisible3(childWidget *QWidget, xmargin int,
 
 func (this *QScrollArea) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QScrollArea_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QScrollArea_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -263,7 +261,7 @@ func miqt_exec_callback_QScrollArea_Event(self *C.QScrollArea, cb C.intptr_t, pa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	virtualReturn := gofunc((&QScrollArea{h: self}).callVirtualBase_Event, slotval1)
 
@@ -291,8 +289,9 @@ func miqt_exec_callback_QScrollArea_EventFilter(self *C.QScrollArea, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(param1))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(param2))
+	slotval1 := newQObject(param1)
+
+	slotval2 := newQEvent(param2)
 
 	virtualReturn := gofunc((&QScrollArea{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -320,7 +319,7 @@ func miqt_exec_callback_QScrollArea_ResizeEvent(self *C.QScrollArea, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQResizeEvent(param1, nil)
 
 	gofunc((&QScrollArea{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -356,8 +355,7 @@ func miqt_exec_callback_QScrollArea_ScrollContentsBy(self *C.QScrollArea, cb C.i
 
 func (this *QScrollArea) callVirtualBase_ViewportSizeHint() *QSize {
 
-	_ret := C.QScrollArea_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QScrollArea_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -384,8 +382,7 @@ func miqt_exec_callback_QScrollArea_ViewportSizeHint(self *C.QScrollArea, cb C.i
 
 func (this *QScrollArea) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QScrollArea_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QScrollArea_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -430,7 +427,7 @@ func miqt_exec_callback_QScrollArea_SetupViewport(self *C.QScrollArea, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(viewport), nil, nil)
+	slotval1 := newQWidget(viewport, nil, nil)
 
 	gofunc((&QScrollArea{h: self}).callVirtualBase_SetupViewport, slotval1)
 
@@ -456,7 +453,7 @@ func miqt_exec_callback_QScrollArea_ViewportEvent(self *C.QScrollArea, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	virtualReturn := gofunc((&QScrollArea{h: self}).callVirtualBase_ViewportEvent, slotval1)
 
@@ -484,7 +481,7 @@ func miqt_exec_callback_QScrollArea_PaintEvent(self *C.QScrollArea, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQPaintEvent(param1, nil)
 
 	gofunc((&QScrollArea{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -510,7 +507,7 @@ func miqt_exec_callback_QScrollArea_MousePressEvent(self *C.QScrollArea, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(param1, nil, nil, nil, nil)
 
 	gofunc((&QScrollArea{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -536,7 +533,7 @@ func miqt_exec_callback_QScrollArea_MouseReleaseEvent(self *C.QScrollArea, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(param1, nil, nil, nil, nil)
 
 	gofunc((&QScrollArea{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -562,7 +559,7 @@ func miqt_exec_callback_QScrollArea_MouseDoubleClickEvent(self *C.QScrollArea, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(param1, nil, nil, nil, nil)
 
 	gofunc((&QScrollArea{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -588,7 +585,7 @@ func miqt_exec_callback_QScrollArea_MouseMoveEvent(self *C.QScrollArea, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(param1, nil, nil, nil, nil)
 
 	gofunc((&QScrollArea{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -614,7 +611,7 @@ func miqt_exec_callback_QScrollArea_WheelEvent(self *C.QScrollArea, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(param1, nil, nil, nil, nil)
 
 	gofunc((&QScrollArea{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -640,7 +637,7 @@ func miqt_exec_callback_QScrollArea_ContextMenuEvent(self *C.QScrollArea, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQContextMenuEvent(param1, nil, nil)
 
 	gofunc((&QScrollArea{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -666,7 +663,7 @@ func miqt_exec_callback_QScrollArea_DragEnterEvent(self *C.QScrollArea, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragEnterEvent(unsafe.Pointer(param1), nil, nil, nil)
+	slotval1 := newQDragEnterEvent(param1, nil, nil, nil)
 
 	gofunc((&QScrollArea{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -692,7 +689,7 @@ func miqt_exec_callback_QScrollArea_DragMoveEvent(self *C.QScrollArea, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragMoveEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQDragMoveEvent(param1, nil, nil)
 
 	gofunc((&QScrollArea{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -718,7 +715,7 @@ func miqt_exec_callback_QScrollArea_DragLeaveEvent(self *C.QScrollArea, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragLeaveEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQDragLeaveEvent(param1, nil)
 
 	gofunc((&QScrollArea{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -744,7 +741,7 @@ func miqt_exec_callback_QScrollArea_DropEvent(self *C.QScrollArea, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDropEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQDropEvent(param1, nil)
 
 	gofunc((&QScrollArea{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -770,7 +767,7 @@ func miqt_exec_callback_QScrollArea_KeyPressEvent(self *C.QScrollArea, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQKeyEvent(param1, nil, nil)
 
 	gofunc((&QScrollArea{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 

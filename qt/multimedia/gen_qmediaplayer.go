@@ -205,8 +205,7 @@ func (this *QMediaPlayer) SetVideoOutputWithSurfaces(surfaces []*QAbstractVideoS
 }
 
 func (this *QMediaPlayer) Media() *QMediaContent {
-	_ret := C.QMediaPlayer_Media(this.h)
-	_goptr := newQMediaContent(_ret)
+	_goptr := newQMediaContent(C.QMediaPlayer_Media(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -216,12 +215,11 @@ func (this *QMediaPlayer) MediaStream() *qt.QIODevice {
 }
 
 func (this *QMediaPlayer) Playlist() *QMediaPlaylist {
-	return UnsafeNewQMediaPlaylist(unsafe.Pointer(C.QMediaPlayer_Playlist(this.h)), nil, nil)
+	return newQMediaPlaylist(C.QMediaPlayer_Playlist(this.h), nil, nil)
 }
 
 func (this *QMediaPlayer) CurrentMedia() *QMediaContent {
-	_ret := C.QMediaPlayer_CurrentMedia(this.h)
-	_goptr := newQMediaContent(_ret)
+	_goptr := newQMediaContent(C.QMediaPlayer_CurrentMedia(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -282,8 +280,7 @@ func (this *QMediaPlayer) ErrorString() string {
 }
 
 func (this *QMediaPlayer) CurrentNetworkConfiguration() *network.QNetworkConfiguration {
-	_ret := C.QMediaPlayer_CurrentNetworkConfiguration(this.h)
-	_goptr := network.UnsafeNewQNetworkConfiguration(unsafe.Pointer(_ret))
+	_goptr := network.UnsafeNewQNetworkConfiguration(unsafe.Pointer(C.QMediaPlayer_CurrentNetworkConfiguration(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -399,7 +396,7 @@ func miqt_exec_callback_QMediaPlayer_MediaChanged(cb C.intptr_t, media *C.QMedia
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMediaContent(unsafe.Pointer(media))
+	slotval1 := newQMediaContent(media)
 
 	gofunc(slotval1)
 }
@@ -419,7 +416,7 @@ func miqt_exec_callback_QMediaPlayer_CurrentMediaChanged(cb C.intptr_t, media *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMediaContent(unsafe.Pointer(media))
+	slotval1 := newQMediaContent(media)
 
 	gofunc(slotval1)
 }
@@ -942,7 +939,8 @@ func miqt_exec_callback_QMediaPlayer_IsAvailable(self *C.QMediaPlayer, cb C.intp
 
 func (this *QMediaPlayer) callVirtualBase_Service() *QMediaService {
 
-	return UnsafeNewQMediaService(unsafe.Pointer(C.QMediaPlayer_virtualbase_Service(unsafe.Pointer(this.h))), nil)
+	return newQMediaService(C.QMediaPlayer_virtualbase_Service(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QMediaPlayer) OnService(slot func(super func() *QMediaService) *QMediaService) {
 	if !this.isSubclass {

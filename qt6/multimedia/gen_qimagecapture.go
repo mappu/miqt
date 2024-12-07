@@ -132,7 +132,7 @@ func (this *QImageCapture) IsAvailable() bool {
 }
 
 func (this *QImageCapture) CaptureSession() *QMediaCaptureSession {
-	return UnsafeNewQMediaCaptureSession(unsafe.Pointer(C.QImageCapture_CaptureSession(this.h)), nil)
+	return newQMediaCaptureSession(C.QImageCapture_CaptureSession(this.h), nil)
 }
 
 func (this *QImageCapture) Error() QImageCapture__Error {
@@ -183,8 +183,7 @@ func QImageCapture_FileFormatDescription(c QImageCapture__FileFormat) string {
 }
 
 func (this *QImageCapture) Resolution() *qt6.QSize {
-	_ret := C.QImageCapture_Resolution(this.h)
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QImageCapture_Resolution(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -206,8 +205,7 @@ func (this *QImageCapture) SetQuality(quality QImageCapture__Quality) {
 }
 
 func (this *QImageCapture) MetaData() *QMediaMetaData {
-	_ret := C.QImageCapture_MetaData(this.h)
-	_goptr := newQMediaMetaData(_ret)
+	_goptr := newQMediaMetaData(C.QImageCapture_MetaData(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -423,7 +421,7 @@ func miqt_exec_callback_QImageCapture_ImageMetadataAvailable(cb C.intptr_t, id C
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (int)(id)
 
-	slotval2 := UnsafeNewQMediaMetaData(unsafe.Pointer(metaData))
+	slotval2 := newQMediaMetaData(metaData)
 
 	gofunc(slotval1, slotval2)
 }
@@ -445,7 +443,7 @@ func miqt_exec_callback_QImageCapture_ImageAvailable(cb C.intptr_t, id C.int, fr
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (int)(id)
 
-	slotval2 := UnsafeNewQVideoFrame(unsafe.Pointer(frame))
+	slotval2 := newQVideoFrame(frame)
 
 	gofunc(slotval1, slotval2)
 }
@@ -558,6 +556,7 @@ func miqt_exec_callback_QImageCapture_EventFilter(self *C.QImageCapture, cb C.in
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QImageCapture{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

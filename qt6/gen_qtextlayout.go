@@ -85,8 +85,7 @@ func (this *QTextInlineObject) IsValid() bool {
 }
 
 func (this *QTextInlineObject) Rect() *QRectF {
-	_ret := C.QTextInlineObject_Rect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QTextInlineObject_Rect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -132,8 +131,7 @@ func (this *QTextInlineObject) FormatIndex() int {
 }
 
 func (this *QTextInlineObject) Format() *QTextFormat {
-	_ret := C.QTextInlineObject_Format(this.h)
-	_goptr := newQTextFormat(_ret)
+	_goptr := newQTextFormat(C.QTextInlineObject_Format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -255,8 +253,7 @@ func (this *QTextLayout) SetFont(f *QFont) {
 }
 
 func (this *QTextLayout) Font() *QFont {
-	_ret := C.QTextLayout_Font(this.h)
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QTextLayout_Font(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -285,7 +282,7 @@ func (this *QTextLayout) SetTextOption(option *QTextOption) {
 }
 
 func (this *QTextLayout) TextOption() *QTextOption {
-	return UnsafeNewQTextOption(unsafe.Pointer(C.QTextLayout_TextOption(this.h)))
+	return newQTextOption(C.QTextLayout_TextOption(this.h))
 }
 
 func (this *QTextLayout) SetPreeditArea(position int, text string) {
@@ -322,8 +319,7 @@ func (this *QTextLayout) Formats() []QTextLayout__FormatRange {
 	_ret := make([]QTextLayout__FormatRange, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTextLayout__FormatRange)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQTextLayout__FormatRange(_lv_ret)
+		_lv_goptr := newQTextLayout__FormatRange(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -363,8 +359,7 @@ func (this *QTextLayout) ClearLayout() {
 }
 
 func (this *QTextLayout) CreateLine() *QTextLine {
-	_ret := C.QTextLayout_CreateLine(this.h)
-	_goptr := newQTextLine(_ret)
+	_goptr := newQTextLine(C.QTextLayout_CreateLine(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -374,15 +369,13 @@ func (this *QTextLayout) LineCount() int {
 }
 
 func (this *QTextLayout) LineAt(i int) *QTextLine {
-	_ret := C.QTextLayout_LineAt(this.h, (C.int)(i))
-	_goptr := newQTextLine(_ret)
+	_goptr := newQTextLine(C.QTextLayout_LineAt(this.h, (C.int)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextLayout) LineForTextPosition(pos int) *QTextLine {
-	_ret := C.QTextLayout_LineForTextPosition(this.h, (C.int)(pos))
-	_goptr := newQTextLine(_ret)
+	_goptr := newQTextLine(C.QTextLayout_LineForTextPosition(this.h, (C.int)(pos)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -420,8 +413,7 @@ func (this *QTextLayout) DrawCursor2(p *QPainter, pos *QPointF, cursorPosition i
 }
 
 func (this *QTextLayout) Position() *QPointF {
-	_ret := C.QTextLayout_Position(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QTextLayout_Position(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -431,8 +423,7 @@ func (this *QTextLayout) SetPosition(p *QPointF) {
 }
 
 func (this *QTextLayout) BoundingRect() *QRectF {
-	_ret := C.QTextLayout_BoundingRect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QTextLayout_BoundingRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -450,8 +441,7 @@ func (this *QTextLayout) GlyphRuns() []QGlyphRun {
 	_ret := make([]QGlyphRun, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQGlyphRun(_lv_ret)
+		_lv_goptr := newQGlyphRun(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -495,8 +485,7 @@ func (this *QTextLayout) GlyphRuns1(from int) []QGlyphRun {
 	_ret := make([]QGlyphRun, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQGlyphRun(_lv_ret)
+		_lv_goptr := newQGlyphRun(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -508,8 +497,7 @@ func (this *QTextLayout) GlyphRuns2(from int, length int) []QGlyphRun {
 	_ret := make([]QGlyphRun, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQGlyphRun(_lv_ret)
+		_lv_goptr := newQGlyphRun(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -581,8 +569,7 @@ func (this *QTextLine) IsValid() bool {
 }
 
 func (this *QTextLine) Rect() *QRectF {
-	_ret := C.QTextLine_Rect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QTextLine_Rect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -632,8 +619,7 @@ func (this *QTextLine) HorizontalAdvance() float64 {
 }
 
 func (this *QTextLine) NaturalTextRect() *QRectF {
-	_ret := C.QTextLine_NaturalTextRect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QTextLine_NaturalTextRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -667,8 +653,7 @@ func (this *QTextLine) SetPosition(pos *QPointF) {
 }
 
 func (this *QTextLine) Position() *QPointF {
-	_ret := C.QTextLine_Position(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QTextLine_Position(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -694,8 +679,7 @@ func (this *QTextLine) GlyphRuns() []QGlyphRun {
 	_ret := make([]QGlyphRun, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQGlyphRun(_lv_ret)
+		_lv_goptr := newQGlyphRun(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -719,8 +703,7 @@ func (this *QTextLine) GlyphRuns1(from int) []QGlyphRun {
 	_ret := make([]QGlyphRun, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQGlyphRun(_lv_ret)
+		_lv_goptr := newQGlyphRun(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -732,8 +715,7 @@ func (this *QTextLine) GlyphRuns2(from int, length int) []QGlyphRun {
 	_ret := make([]QGlyphRun, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQGlyphRun(_lv_ret)
+		_lv_goptr := newQGlyphRun(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}

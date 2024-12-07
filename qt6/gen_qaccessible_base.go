@@ -260,7 +260,7 @@ func QAccessible_RemoveActivationObserver(param1 *QAccessible__ActivationObserve
 }
 
 func QAccessible_QueryAccessibleInterface(param1 *QObject) *QAccessibleInterface {
-	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessible_QueryAccessibleInterface(param1.cPointer())))
+	return newQAccessibleInterface(C.QAccessible_QueryAccessibleInterface(param1.cPointer()))
 }
 
 func QAccessible_UniqueId(iface *QAccessibleInterface) uint {
@@ -268,7 +268,7 @@ func QAccessible_UniqueId(iface *QAccessibleInterface) uint {
 }
 
 func QAccessible_AccessibleInterface(uniqueId uint) *QAccessibleInterface {
-	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessible_AccessibleInterface((C.uint)(uniqueId))))
+	return newQAccessibleInterface(C.QAccessible_AccessibleInterface((C.uint)(uniqueId)))
 }
 
 func QAccessible_RegisterAccessibleInterface(iface *QAccessibleInterface) uint {

@@ -106,7 +106,7 @@ func (this *QSctpServer) MaximumChannelCount() int {
 }
 
 func (this *QSctpServer) NextPendingDatagramConnection() *QSctpSocket {
-	return UnsafeNewQSctpSocket(unsafe.Pointer(C.QSctpServer_NextPendingDatagramConnection(this.h)), nil, nil, nil, nil, nil)
+	return newQSctpSocket(C.QSctpServer_NextPendingDatagramConnection(this.h), nil, nil, nil, nil, nil)
 }
 
 func QSctpServer_Tr2(s string, c string) string {
@@ -184,7 +184,8 @@ func miqt_exec_callback_QSctpServer_HasPendingConnections(self *C.QSctpServer, c
 
 func (this *QSctpServer) callVirtualBase_NextPendingConnection() *QTcpSocket {
 
-	return UnsafeNewQTcpSocket(unsafe.Pointer(C.QSctpServer_virtualbase_NextPendingConnection(unsafe.Pointer(this.h))), nil, nil, nil, nil)
+	return newQTcpSocket(C.QSctpServer_virtualbase_NextPendingConnection(unsafe.Pointer(this.h)), nil, nil, nil, nil)
+
 }
 func (this *QSctpServer) OnNextPendingConnection(slot func(super func() *QTcpSocket) *QTcpSocket) {
 	if !this.isSubclass {

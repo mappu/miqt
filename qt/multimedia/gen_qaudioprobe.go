@@ -131,7 +131,7 @@ func miqt_exec_callback_QAudioProbe_AudioBufferProbed(cb C.intptr_t, buffer *C.Q
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAudioBuffer(unsafe.Pointer(buffer))
+	slotval1 := newQAudioBuffer(buffer)
 
 	gofunc(slotval1)
 }
@@ -246,6 +246,7 @@ func miqt_exec_callback_QAudioProbe_EventFilter(self *C.QAudioProbe, cb C.intptr
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QAudioProbe{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

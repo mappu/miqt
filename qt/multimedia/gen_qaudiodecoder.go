@@ -159,8 +159,7 @@ func (this *QAudioDecoder) SetSourceDevice(device *qt.QIODevice) {
 }
 
 func (this *QAudioDecoder) AudioFormat() *QAudioFormat {
-	_ret := C.QAudioDecoder_AudioFormat(this.h)
-	_goptr := newQAudioFormat(_ret)
+	_goptr := newQAudioFormat(C.QAudioDecoder_AudioFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -181,8 +180,7 @@ func (this *QAudioDecoder) ErrorString() string {
 }
 
 func (this *QAudioDecoder) Read() *QAudioBuffer {
-	_ret := C.QAudioDecoder_Read(this.h)
-	_goptr := newQAudioBuffer(_ret)
+	_goptr := newQAudioBuffer(C.QAudioDecoder_Read(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -296,7 +294,7 @@ func miqt_exec_callback_QAudioDecoder_FormatChanged(cb C.intptr_t, format *C.QAu
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAudioFormat(unsafe.Pointer(format))
+	slotval1 := newQAudioFormat(format)
 
 	gofunc(slotval1)
 }
@@ -554,7 +552,8 @@ func miqt_exec_callback_QAudioDecoder_Availability(self *C.QAudioDecoder, cb C.i
 
 func (this *QAudioDecoder) callVirtualBase_Service() *QMediaService {
 
-	return UnsafeNewQMediaService(unsafe.Pointer(C.QAudioDecoder_virtualbase_Service(unsafe.Pointer(this.h))), nil)
+	return newQMediaService(C.QAudioDecoder_virtualbase_Service(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QAudioDecoder) OnService(slot func(super func() *QMediaService) *QMediaService) {
 	if !this.isSubclass {

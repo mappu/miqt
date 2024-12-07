@@ -76,7 +76,7 @@ func NewQSignalMapper2(parent *QObject) *QSignalMapper {
 }
 
 func (this *QSignalMapper) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSignalMapper_MetaObject(this.h)))
+	return newQMetaObject(C.QSignalMapper_MetaObject(this.h))
 }
 
 func (this *QSignalMapper) Metacast(param1 string) unsafe.Pointer {
@@ -128,7 +128,7 @@ func (this *QSignalMapper) RemoveMappings(sender *QObject) {
 }
 
 func (this *QSignalMapper) Mapping(id int) *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QSignalMapper_Mapping(this.h, (C.int)(id))))
+	return newQObject(C.QSignalMapper_Mapping(this.h, (C.int)(id)))
 }
 
 func (this *QSignalMapper) MappingWithText(text string) *QObject {
@@ -136,15 +136,15 @@ func (this *QSignalMapper) MappingWithText(text string) *QObject {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return UnsafeNewQObject(unsafe.Pointer(C.QSignalMapper_MappingWithText(this.h, text_ms)))
+	return newQObject(C.QSignalMapper_MappingWithText(this.h, text_ms))
 }
 
 func (this *QSignalMapper) MappingWithWidget(widget *QWidget) *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QSignalMapper_MappingWithWidget(this.h, widget.cPointer())))
+	return newQObject(C.QSignalMapper_MappingWithWidget(this.h, widget.cPointer()))
 }
 
 func (this *QSignalMapper) MappingWithObject(object *QObject) *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QSignalMapper_MappingWithObject(this.h, object.cPointer())))
+	return newQObject(C.QSignalMapper_MappingWithObject(this.h, object.cPointer()))
 }
 
 func (this *QSignalMapper) Mapped(param1 int) {
@@ -209,7 +209,7 @@ func miqt_exec_callback_QSignalMapper_MappedWithQWidget(cb C.intptr_t, param1 *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQWidget(param1, nil, nil)
 
 	gofunc(slotval1)
 }
@@ -229,7 +229,7 @@ func miqt_exec_callback_QSignalMapper_MappedWithQObject(cb C.intptr_t, param1 *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(param1))
+	slotval1 := newQObject(param1)
 
 	gofunc(slotval1)
 }
@@ -296,7 +296,7 @@ func miqt_exec_callback_QSignalMapper_MappedWidget(cb C.intptr_t, param1 *C.QWid
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQWidget(param1, nil, nil)
 
 	gofunc(slotval1)
 }
@@ -316,7 +316,7 @@ func miqt_exec_callback_QSignalMapper_MappedObject(cb C.intptr_t, param1 *C.QObj
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(param1))
+	slotval1 := newQObject(param1)
 
 	gofunc(slotval1)
 }
@@ -393,7 +393,7 @@ func miqt_exec_callback_QSignalMapper_Event(self *C.QSignalMapper, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QSignalMapper{h: self}).callVirtualBase_Event, slotval1)
 
@@ -421,8 +421,9 @@ func miqt_exec_callback_QSignalMapper_EventFilter(self *C.QSignalMapper, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QSignalMapper{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -450,7 +451,7 @@ func miqt_exec_callback_QSignalMapper_TimerEvent(self *C.QSignalMapper, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QSignalMapper{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -476,7 +477,7 @@ func miqt_exec_callback_QSignalMapper_ChildEvent(self *C.QSignalMapper, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QSignalMapper{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -502,7 +503,7 @@ func miqt_exec_callback_QSignalMapper_CustomEvent(self *C.QSignalMapper, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QSignalMapper{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -528,7 +529,7 @@ func miqt_exec_callback_QSignalMapper_ConnectNotify(self *C.QSignalMapper, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QSignalMapper{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -554,7 +555,7 @@ func miqt_exec_callback_QSignalMapper_DisconnectNotify(self *C.QSignalMapper, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QSignalMapper{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

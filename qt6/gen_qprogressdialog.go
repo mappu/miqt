@@ -162,7 +162,7 @@ func NewQProgressDialog6(labelText string, cancelButtonText string, minimum int,
 }
 
 func (this *QProgressDialog) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QProgressDialog_MetaObject(this.h)))
+	return newQMetaObject(C.QProgressDialog_MetaObject(this.h))
 }
 
 func (this *QProgressDialog) Metacast(param1 string) unsafe.Pointer {
@@ -209,8 +209,7 @@ func (this *QProgressDialog) Value() int {
 }
 
 func (this *QProgressDialog) SizeHint() *QSize {
-	_ret := C.QProgressDialog_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QProgressDialog_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -327,8 +326,7 @@ func QProgressDialog_Tr3(s string, c string, n int) string {
 
 func (this *QProgressDialog) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QProgressDialog_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QProgressDialog_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -373,7 +371,7 @@ func miqt_exec_callback_QProgressDialog_ResizeEvent(self *C.QProgressDialog, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQResizeEvent(event, nil)
 
 	gofunc((&QProgressDialog{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -399,7 +397,7 @@ func miqt_exec_callback_QProgressDialog_CloseEvent(self *C.QProgressDialog, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQCloseEvent(event, nil)
 
 	gofunc((&QProgressDialog{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -425,7 +423,7 @@ func miqt_exec_callback_QProgressDialog_ChangeEvent(self *C.QProgressDialog, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QProgressDialog{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -451,7 +449,7 @@ func miqt_exec_callback_QProgressDialog_ShowEvent(self *C.QProgressDialog, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQShowEvent(event, nil)
 
 	gofunc((&QProgressDialog{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -485,8 +483,7 @@ func miqt_exec_callback_QProgressDialog_SetVisible(self *C.QProgressDialog, cb C
 
 func (this *QProgressDialog) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QProgressDialog_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QProgressDialog_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -651,7 +648,7 @@ func miqt_exec_callback_QProgressDialog_KeyPressEvent(self *C.QProgressDialog, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQKeyEvent(param1, nil, nil)
 
 	gofunc((&QProgressDialog{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -677,7 +674,7 @@ func miqt_exec_callback_QProgressDialog_ContextMenuEvent(self *C.QProgressDialog
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQContextMenuEvent(param1, nil, nil)
 
 	gofunc((&QProgressDialog{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -703,8 +700,9 @@ func miqt_exec_callback_QProgressDialog_EventFilter(self *C.QProgressDialog, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(param1))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(param2))
+	slotval1 := newQObject(param1)
+
+	slotval2 := newQEvent(param2)
 
 	virtualReturn := gofunc((&QProgressDialog{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 

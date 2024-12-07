@@ -102,7 +102,7 @@ func (this *QAccessibleWidget) IsValid() bool {
 }
 
 func (this *QAccessibleWidget) Window() *QWindow {
-	return UnsafeNewQWindow(unsafe.Pointer(C.QAccessibleWidget_Window(this.h)), nil, nil)
+	return newQWindow(C.QAccessibleWidget_Window(this.h), nil, nil)
 }
 
 func (this *QAccessibleWidget) ChildCount() int {
@@ -127,7 +127,8 @@ func (this *QAccessibleWidget) Relations(match QAccessible__RelationFlag) []stru
 		var _vv_mm C.struct_miqt_map = _outCast[i]
 		_vv_First_CArray := (*[0xffff]*C.QAccessibleInterface)(unsafe.Pointer(_vv_mm.keys))
 		_vv_Second_CArray := (*[0xffff]C.int)(unsafe.Pointer(_vv_mm.values))
-		_vv_entry_First := UnsafeNewQAccessibleInterface(unsafe.Pointer(_vv_First_CArray[0]))
+		_vv_entry_First := newQAccessibleInterface(_vv_First_CArray[0])
+
 		_vv_entry_Second := (QAccessible__RelationFlag)(_vv_Second_CArray[0])
 
 		_ret[i] = struct {
@@ -139,22 +140,21 @@ func (this *QAccessibleWidget) Relations(match QAccessible__RelationFlag) []stru
 }
 
 func (this *QAccessibleWidget) FocusChild() *QAccessibleInterface {
-	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleWidget_FocusChild(this.h)))
+	return newQAccessibleInterface(C.QAccessibleWidget_FocusChild(this.h))
 }
 
 func (this *QAccessibleWidget) Rect() *QRect {
-	_ret := C.QAccessibleWidget_Rect(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QAccessibleWidget_Rect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAccessibleWidget) Parent() *QAccessibleInterface {
-	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleWidget_Parent(this.h)))
+	return newQAccessibleInterface(C.QAccessibleWidget_Parent(this.h))
 }
 
 func (this *QAccessibleWidget) Child(index int) *QAccessibleInterface {
-	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleWidget_Child(this.h, (C.int)(index))))
+	return newQAccessibleInterface(C.QAccessibleWidget_Child(this.h, (C.int)(index)))
 }
 
 func (this *QAccessibleWidget) Text(t QAccessible__Text) string {
@@ -169,22 +169,19 @@ func (this *QAccessibleWidget) Role() QAccessible__Role {
 }
 
 func (this *QAccessibleWidget) State() *QAccessible__State {
-	_ret := C.QAccessibleWidget_State(this.h)
-	_goptr := newQAccessible__State(_ret)
+	_goptr := newQAccessible__State(C.QAccessibleWidget_State(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAccessibleWidget) ForegroundColor() *QColor {
-	_ret := C.QAccessibleWidget_ForegroundColor(this.h)
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QAccessibleWidget_ForegroundColor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAccessibleWidget) BackgroundColor() *QColor {
-	_ret := C.QAccessibleWidget_BackgroundColor(this.h)
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QAccessibleWidget_BackgroundColor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

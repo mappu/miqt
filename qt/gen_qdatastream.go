@@ -144,7 +144,7 @@ func NewQDataStream3(param1 []byte) *QDataStream {
 }
 
 func (this *QDataStream) Device() *QIODevice {
-	return UnsafeNewQIODevice(unsafe.Pointer(C.QDataStream_Device(this.h)), nil)
+	return newQIODevice(C.QDataStream_Device(this.h), nil)
 }
 
 func (this *QDataStream) SetDevice(device *QIODevice) {
@@ -298,7 +298,7 @@ func (this *QDataStream) OperatorShiftLeftWithStr(str string) {
 func (this *QDataStream) ReadBytes(param1 string, lenVal *uint) *QDataStream {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return UnsafeNewQDataStream(unsafe.Pointer(C.QDataStream_ReadBytes(this.h, param1_Cstring, (*C.uint)(unsafe.Pointer(lenVal)))))
+	return newQDataStream(C.QDataStream_ReadBytes(this.h, param1_Cstring, (*C.uint)(unsafe.Pointer(lenVal))))
 }
 
 func (this *QDataStream) ReadRawData(param1 string, lenVal int) int {

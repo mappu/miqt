@@ -110,7 +110,7 @@ func (this *QImageIOHandler) SetDevice(device *QIODevice) {
 }
 
 func (this *QImageIOHandler) Device() *QIODevice {
-	return UnsafeNewQIODevice(unsafe.Pointer(C.QImageIOHandler_Device(this.h)), nil, nil)
+	return newQIODevice(C.QImageIOHandler_Device(this.h), nil, nil)
 }
 
 func (this *QImageIOHandler) SetFormat(format []byte) {
@@ -147,8 +147,7 @@ func (this *QImageIOHandler) Write(image *QImage) bool {
 }
 
 func (this *QImageIOHandler) Option(option QImageIOHandler__ImageOption) *QVariant {
-	_ret := C.QImageIOHandler_Option(this.h, (C.int)(option))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QImageIOHandler_Option(this.h, (C.int)(option)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -186,8 +185,7 @@ func (this *QImageIOHandler) CurrentImageNumber() int {
 }
 
 func (this *QImageIOHandler) CurrentImageRect() *QRect {
-	_ret := C.QImageIOHandler_CurrentImageRect(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QImageIOHandler_CurrentImageRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -229,7 +227,7 @@ func miqt_exec_callback_QImageIOHandler_Read(self *C.QImageIOHandler, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQImage(unsafe.Pointer(image), nil)
+	slotval1 := newQImage(image, nil)
 
 	virtualReturn := gofunc(slotval1)
 
@@ -257,7 +255,7 @@ func miqt_exec_callback_QImageIOHandler_Write(self *C.QImageIOHandler, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQImage(unsafe.Pointer(image), nil)
+	slotval1 := newQImage(image, nil)
 
 	virtualReturn := gofunc((&QImageIOHandler{h: self}).callVirtualBase_Write, slotval1)
 
@@ -267,8 +265,7 @@ func miqt_exec_callback_QImageIOHandler_Write(self *C.QImageIOHandler, cb C.intp
 
 func (this *QImageIOHandler) callVirtualBase_Option(option QImageIOHandler__ImageOption) *QVariant {
 
-	_ret := C.QImageIOHandler_virtualbase_Option(unsafe.Pointer(this.h), (C.int)(option))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QImageIOHandler_virtualbase_Option(unsafe.Pointer(this.h), (C.int)(option)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -318,7 +315,7 @@ func miqt_exec_callback_QImageIOHandler_SetOption(self *C.QImageIOHandler, cb C.
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QImageIOHandler__ImageOption)(option)
 
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval2 := newQVariant(value)
 
 	gofunc((&QImageIOHandler{h: self}).callVirtualBase_SetOption, slotval1, slotval2)
 
@@ -507,8 +504,7 @@ func miqt_exec_callback_QImageIOHandler_CurrentImageNumber(self *C.QImageIOHandl
 
 func (this *QImageIOHandler) callVirtualBase_CurrentImageRect() *QRect {
 
-	_ret := C.QImageIOHandler_virtualbase_CurrentImageRect(unsafe.Pointer(this.h))
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QImageIOHandler_virtualbase_CurrentImageRect(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -609,7 +605,7 @@ func NewQImageIOPlugin2(parent *QObject) *QImageIOPlugin {
 }
 
 func (this *QImageIOPlugin) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QImageIOPlugin_MetaObject(this.h)))
+	return newQMetaObject(C.QImageIOPlugin_MetaObject(this.h))
 }
 
 func (this *QImageIOPlugin) Metacast(param1 string) unsafe.Pointer {
@@ -638,7 +634,7 @@ func (this *QImageIOPlugin) Create(device *QIODevice, format []byte) *QImageIOHa
 	format_alias := C.struct_miqt_string{}
 	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
 	format_alias.len = C.size_t(len(format))
-	return UnsafeNewQImageIOHandler(unsafe.Pointer(C.QImageIOPlugin_Create(this.h, device.cPointer(), format_alias)))
+	return newQImageIOHandler(C.QImageIOPlugin_Create(this.h, device.cPointer(), format_alias))
 }
 
 func QImageIOPlugin_Tr2(s string, c string) string {
@@ -677,7 +673,8 @@ func miqt_exec_callback_QImageIOPlugin_Capabilities(self *C.QImageIOPlugin, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQIODevice(unsafe.Pointer(device), nil, nil)
+	slotval1 := newQIODevice(device, nil, nil)
+
 	var format_bytearray C.struct_miqt_string = format
 	format_ret := C.GoBytes(unsafe.Pointer(format_bytearray.data), C.int(int64(format_bytearray.len)))
 	C.free(unsafe.Pointer(format_bytearray.data))
@@ -703,7 +700,8 @@ func miqt_exec_callback_QImageIOPlugin_Create(self *C.QImageIOPlugin, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQIODevice(unsafe.Pointer(device), nil, nil)
+	slotval1 := newQIODevice(device, nil, nil)
+
 	var format_bytearray C.struct_miqt_string = format
 	format_ret := C.GoBytes(unsafe.Pointer(format_bytearray.data), C.int(int64(format_bytearray.len)))
 	C.free(unsafe.Pointer(format_bytearray.data))
@@ -735,7 +733,7 @@ func miqt_exec_callback_QImageIOPlugin_Event(self *C.QImageIOPlugin, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QImageIOPlugin{h: self}).callVirtualBase_Event, slotval1)
 
@@ -763,8 +761,9 @@ func miqt_exec_callback_QImageIOPlugin_EventFilter(self *C.QImageIOPlugin, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QImageIOPlugin{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -792,7 +791,7 @@ func miqt_exec_callback_QImageIOPlugin_TimerEvent(self *C.QImageIOPlugin, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QImageIOPlugin{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -818,7 +817,7 @@ func miqt_exec_callback_QImageIOPlugin_ChildEvent(self *C.QImageIOPlugin, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QImageIOPlugin{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -844,7 +843,7 @@ func miqt_exec_callback_QImageIOPlugin_CustomEvent(self *C.QImageIOPlugin, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QImageIOPlugin{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -870,7 +869,7 @@ func miqt_exec_callback_QImageIOPlugin_ConnectNotify(self *C.QImageIOPlugin, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QImageIOPlugin{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -896,7 +895,7 @@ func miqt_exec_callback_QImageIOPlugin_DisconnectNotify(self *C.QImageIOPlugin, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QImageIOPlugin{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

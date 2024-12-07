@@ -96,7 +96,7 @@ func NewQToolBox3(parent *QWidget, f WindowType) *QToolBox {
 }
 
 func (this *QToolBox) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QToolBox_MetaObject(this.h)))
+	return newQMetaObject(C.QToolBox_MetaObject(this.h))
 }
 
 func (this *QToolBox) Metacast(param1 string) unsafe.Pointer {
@@ -178,8 +178,7 @@ func (this *QToolBox) SetItemIcon(index int, icon *QIcon) {
 }
 
 func (this *QToolBox) ItemIcon(index int) *QIcon {
-	_ret := C.QToolBox_ItemIcon(this.h, (C.int)(index))
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QToolBox_ItemIcon(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -204,11 +203,11 @@ func (this *QToolBox) CurrentIndex() int {
 }
 
 func (this *QToolBox) CurrentWidget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QToolBox_CurrentWidget(this.h)), nil, nil)
+	return newQWidget(C.QToolBox_CurrentWidget(this.h), nil, nil)
 }
 
 func (this *QToolBox) Widget(index int) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QToolBox_Widget(this.h, (C.int)(index))), nil, nil)
+	return newQWidget(C.QToolBox_Widget(this.h, (C.int)(index)), nil, nil)
 }
 
 func (this *QToolBox) IndexOf(widget *QWidget) int {
@@ -289,7 +288,7 @@ func miqt_exec_callback_QToolBox_Event(self *C.QToolBox, cb C.intptr_t, e *C.QEv
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QToolBox{h: self}).callVirtualBase_Event, slotval1)
 
@@ -369,7 +368,7 @@ func miqt_exec_callback_QToolBox_ShowEvent(self *C.QToolBox, cb C.intptr_t, e *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQShowEvent(e, nil)
 
 	gofunc((&QToolBox{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -395,7 +394,7 @@ func miqt_exec_callback_QToolBox_ChangeEvent(self *C.QToolBox, cb C.intptr_t, pa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	gofunc((&QToolBox{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -403,8 +402,7 @@ func miqt_exec_callback_QToolBox_ChangeEvent(self *C.QToolBox, cb C.intptr_t, pa
 
 func (this *QToolBox) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QToolBox_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QToolBox_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -449,7 +447,7 @@ func miqt_exec_callback_QToolBox_PaintEvent(self *C.QToolBox, cb C.intptr_t, par
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQPaintEvent(param1, nil)
 
 	gofunc((&QToolBox{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -475,7 +473,7 @@ func miqt_exec_callback_QToolBox_InitStyleOption(self *C.QToolBox, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStyleOptionFrame(unsafe.Pointer(option), nil)
+	slotval1 := newQStyleOptionFrame(option, nil)
 
 	gofunc((&QToolBox{h: self}).callVirtualBase_InitStyleOption, slotval1)
 

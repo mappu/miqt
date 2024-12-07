@@ -138,7 +138,7 @@ func NewQAccessibleBridgePlugin2(parent *QObject) *QAccessibleBridgePlugin {
 }
 
 func (this *QAccessibleBridgePlugin) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAccessibleBridgePlugin_MetaObject(this.h)))
+	return newQMetaObject(C.QAccessibleBridgePlugin_MetaObject(this.h))
 }
 
 func (this *QAccessibleBridgePlugin) Metacast(param1 string) unsafe.Pointer {
@@ -161,7 +161,7 @@ func (this *QAccessibleBridgePlugin) Create(key string) *QAccessibleBridge {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	return UnsafeNewQAccessibleBridge(unsafe.Pointer(C.QAccessibleBridgePlugin_Create(this.h, key_ms)))
+	return newQAccessibleBridge(C.QAccessibleBridgePlugin_Create(this.h, key_ms))
 }
 
 func QAccessibleBridgePlugin_Tr2(s string, c string) string {
@@ -231,7 +231,7 @@ func miqt_exec_callback_QAccessibleBridgePlugin_Event(self *C.QAccessibleBridgeP
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QAccessibleBridgePlugin{h: self}).callVirtualBase_Event, slotval1)
 
@@ -259,8 +259,9 @@ func miqt_exec_callback_QAccessibleBridgePlugin_EventFilter(self *C.QAccessibleB
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QAccessibleBridgePlugin{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -288,7 +289,7 @@ func miqt_exec_callback_QAccessibleBridgePlugin_TimerEvent(self *C.QAccessibleBr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QAccessibleBridgePlugin{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -314,7 +315,7 @@ func miqt_exec_callback_QAccessibleBridgePlugin_ChildEvent(self *C.QAccessibleBr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QAccessibleBridgePlugin{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -340,7 +341,7 @@ func miqt_exec_callback_QAccessibleBridgePlugin_CustomEvent(self *C.QAccessibleB
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QAccessibleBridgePlugin{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -366,7 +367,7 @@ func miqt_exec_callback_QAccessibleBridgePlugin_ConnectNotify(self *C.QAccessibl
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QAccessibleBridgePlugin{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -392,7 +393,7 @@ func miqt_exec_callback_QAccessibleBridgePlugin_DisconnectNotify(self *C.QAccess
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QAccessibleBridgePlugin{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

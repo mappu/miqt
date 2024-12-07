@@ -158,7 +158,7 @@ func QPrintPreviewDialog_Tr(s string) string {
 }
 
 func (this *QPrintPreviewDialog) Printer() *QPrinter {
-	return UnsafeNewQPrinter(unsafe.Pointer(C.QPrintPreviewDialog_Printer(this.h)), nil, nil)
+	return newQPrinter(C.QPrintPreviewDialog_Printer(this.h), nil, nil)
 }
 
 func (this *QPrintPreviewDialog) SetVisible(visible bool) {
@@ -184,7 +184,7 @@ func miqt_exec_callback_QPrintPreviewDialog_PaintRequested(cb C.intptr_t, printe
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPrinter(unsafe.Pointer(printer), nil, nil)
+	slotval1 := newQPrinter(printer, nil, nil)
 
 	gofunc(slotval1)
 }
@@ -265,8 +265,7 @@ func miqt_exec_callback_QPrintPreviewDialog_Done(self *C.QPrintPreviewDialog, cb
 
 func (this *QPrintPreviewDialog) callVirtualBase_SizeHint() *qt6.QSize {
 
-	_ret := C.QPrintPreviewDialog_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QPrintPreviewDialog_virtualbase_SizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -293,8 +292,7 @@ func miqt_exec_callback_QPrintPreviewDialog_SizeHint(self *C.QPrintPreviewDialog
 
 func (this *QPrintPreviewDialog) callVirtualBase_MinimumSizeHint() *qt6.QSize {
 
-	_ret := C.QPrintPreviewDialog_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QPrintPreviewDialog_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -564,6 +562,7 @@ func miqt_exec_callback_QPrintPreviewDialog_EventFilter(self *C.QPrintPreviewDia
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(param1))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(param2))
 
 	virtualReturn := gofunc((&QPrintPreviewDialog{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

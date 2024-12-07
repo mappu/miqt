@@ -130,9 +130,11 @@ func miqt_exec_callback_QsciPrinter_FormatPage(self *C.QsciPrinter, cb C.intptr_
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQPainter(unsafe.Pointer(painter))
+
 	slotval2 := (bool)(drawing)
 
 	slotval3 := qt6.UnsafeNewQRect(unsafe.Pointer(area))
+
 	slotval4 := (int)(pagenr)
 
 	gofunc((&QsciPrinter{h: self}).callVirtualBase_FormatPage, slotval1, slotval2, slotval3, slotval4)
@@ -185,8 +187,10 @@ func miqt_exec_callback_QsciPrinter_PrintRange(self *C.QsciPrinter, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQsciScintillaBase(unsafe.Pointer(qsb), nil, nil, nil, nil, nil)
+	slotval1 := newQsciScintillaBase(qsb, nil, nil, nil, nil, nil)
+
 	slotval2 := qt6.UnsafeNewQPainter(unsafe.Pointer(painter))
+
 	slotval3 := (int)(from)
 
 	slotval4 := (int)(to)
@@ -217,7 +221,8 @@ func miqt_exec_callback_QsciPrinter_PrintRange2(self *C.QsciPrinter, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQsciScintillaBase(unsafe.Pointer(qsb), nil, nil, nil, nil, nil)
+	slotval1 := newQsciScintillaBase(qsb, nil, nil, nil, nil, nil)
+
 	slotval2 := (int)(from)
 
 	slotval3 := (int)(to)
@@ -307,6 +312,7 @@ func miqt_exec_callback_QsciPrinter_NewPage(self *C.QsciPrinter, cb C.intptr_t) 
 func (this *QsciPrinter) callVirtualBase_PaintEngine() *qt6.QPaintEngine {
 
 	return qt6.UnsafeNewQPaintEngine(unsafe.Pointer(C.QsciPrinter_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+
 }
 func (this *QsciPrinter) OnPaintEngine(slot func(super func() *qt6.QPaintEngine) *qt6.QPaintEngine) {
 	if !this.isSubclass {

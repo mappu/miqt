@@ -168,8 +168,7 @@ func (this *QCameraExposure) IsMeteringModeSupported(mode QCameraExposure__Meter
 }
 
 func (this *QCameraExposure) SpotMeteringPoint() *qt.QPointF {
-	_ret := C.QCameraExposure_SpotMeteringPoint(this.h)
-	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QCameraExposure_SpotMeteringPoint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

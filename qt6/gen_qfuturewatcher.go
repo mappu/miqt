@@ -54,7 +54,7 @@ func UnsafeNewQFutureWatcherBase(h unsafe.Pointer, h_QObject unsafe.Pointer) *QF
 }
 
 func (this *QFutureWatcherBase) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QFutureWatcherBase_MetaObject(this.h)))
+	return newQMetaObject(C.QFutureWatcherBase_MetaObject(this.h))
 }
 
 func (this *QFutureWatcherBase) Metacast(param1 string) unsafe.Pointer {

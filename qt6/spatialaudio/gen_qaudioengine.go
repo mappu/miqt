@@ -143,8 +143,7 @@ func (this *QAudioEngine) SetOutputDevice(device *multimedia.QAudioDevice) {
 }
 
 func (this *QAudioEngine) OutputDevice() *multimedia.QAudioDevice {
-	_ret := C.QAudioEngine_OutputDevice(this.h)
-	_goptr := multimedia.UnsafeNewQAudioDevice(unsafe.Pointer(_ret))
+	_goptr := multimedia.UnsafeNewQAudioDevice(unsafe.Pointer(C.QAudioEngine_OutputDevice(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -353,6 +352,7 @@ func miqt_exec_callback_QAudioEngine_EventFilter(self *C.QAudioEngine, cb C.intp
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QAudioEngine{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

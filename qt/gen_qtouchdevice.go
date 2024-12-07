@@ -83,7 +83,7 @@ func QTouchDevice_Devices() []*QTouchDevice {
 	_ret := make([]*QTouchDevice, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTouchDevice)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQTouchDevice(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQTouchDevice(_outCast[i])
 	}
 	return _ret
 }

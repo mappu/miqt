@@ -114,7 +114,7 @@ func QGraphicsWebView_TrUtf8(s string) string {
 }
 
 func (this *QGraphicsWebView) Page() *QWebPage {
-	return UnsafeNewQWebPage(unsafe.Pointer(C.QGraphicsWebView_Page(this.h)), nil)
+	return newQWebPage(C.QGraphicsWebView_Page(this.h), nil)
 }
 
 func (this *QGraphicsWebView) SetPage(page *QWebPage) {
@@ -122,8 +122,7 @@ func (this *QGraphicsWebView) SetPage(page *QWebPage) {
 }
 
 func (this *QGraphicsWebView) Url() *qt.QUrl {
-	_ret := C.QGraphicsWebView_Url(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QGraphicsWebView_Url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -140,8 +139,7 @@ func (this *QGraphicsWebView) Title() string {
 }
 
 func (this *QGraphicsWebView) Icon() *qt.QIcon {
-	_ret := C.QGraphicsWebView_Icon(this.h)
-	_goptr := qt.UnsafeNewQIcon(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQIcon(unsafe.Pointer(C.QGraphicsWebView_Icon(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -182,11 +180,11 @@ func (this *QGraphicsWebView) SetContent(data []byte) {
 }
 
 func (this *QGraphicsWebView) History() *QWebHistory {
-	return UnsafeNewQWebHistory(unsafe.Pointer(C.QGraphicsWebView_History(this.h)))
+	return newQWebHistory(C.QGraphicsWebView_History(this.h))
 }
 
 func (this *QGraphicsWebView) Settings() *QWebSettings {
-	return UnsafeNewQWebSettings(unsafe.Pointer(C.QGraphicsWebView_Settings(this.h)))
+	return newQWebSettings(C.QGraphicsWebView_Settings(this.h))
 }
 
 func (this *QGraphicsWebView) PageAction(action QWebPage__WebAction) *qt.QAction {
@@ -234,8 +232,7 @@ func (this *QGraphicsWebView) Paint(param1 *qt.QPainter, options *qt.QStyleOptio
 }
 
 func (this *QGraphicsWebView) ItemChange(change qt.QGraphicsItem__GraphicsItemChange, value *qt.QVariant) *qt.QVariant {
-	_ret := C.QGraphicsWebView_ItemChange(this.h, (C.int)(change), (*C.QVariant)(value.UnsafePointer()))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QGraphicsWebView_ItemChange(this.h, (C.int)(change), (*C.QVariant)(value.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -245,15 +242,13 @@ func (this *QGraphicsWebView) Event(param1 *qt.QEvent) bool {
 }
 
 func (this *QGraphicsWebView) SizeHint(which qt.SizeHint, constraint *qt.QSizeF) *qt.QSizeF {
-	_ret := C.QGraphicsWebView_SizeHint(this.h, (C.int)(which), (*C.QSizeF)(constraint.UnsafePointer()))
-	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QGraphicsWebView_SizeHint(this.h, (C.int)(which), (*C.QSizeF)(constraint.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsWebView) InputMethodQuery(query qt.InputMethodQuery) *qt.QVariant {
-	_ret := C.QGraphicsWebView_InputMethodQuery(this.h, (C.int)(query))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QGraphicsWebView_InputMethodQuery(this.h, (C.int)(query))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -625,7 +620,9 @@ func miqt_exec_callback_QGraphicsWebView_Paint(self *C.QGraphicsWebView, cb C.in
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(param1))
+
 	slotval2 := qt.UnsafeNewQStyleOptionGraphicsItem(unsafe.Pointer(options), nil)
+
 	slotval3 := qt.UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_Paint, slotval1, slotval2, slotval3)
@@ -634,8 +631,7 @@ func miqt_exec_callback_QGraphicsWebView_Paint(self *C.QGraphicsWebView, cb C.in
 
 func (this *QGraphicsWebView) callVirtualBase_ItemChange(change qt.QGraphicsItem__GraphicsItemChange, value *qt.QVariant) *qt.QVariant {
 
-	_ret := C.QGraphicsWebView_virtualbase_ItemChange(unsafe.Pointer(this.h), (C.int)(change), (*C.QVariant)(value.UnsafePointer()))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QGraphicsWebView_virtualbase_ItemChange(unsafe.Pointer(this.h), (C.int)(change), (*C.QVariant)(value.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -695,8 +691,7 @@ func miqt_exec_callback_QGraphicsWebView_Event(self *C.QGraphicsWebView, cb C.in
 
 func (this *QGraphicsWebView) callVirtualBase_SizeHint(which qt.SizeHint, constraint *qt.QSizeF) *qt.QSizeF {
 
-	_ret := C.QGraphicsWebView_virtualbase_SizeHint(unsafe.Pointer(this.h), (C.int)(which), (*C.QSizeF)(constraint.UnsafePointer()))
-	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QGraphicsWebView_virtualbase_SizeHint(unsafe.Pointer(this.h), (C.int)(which), (*C.QSizeF)(constraint.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -728,8 +723,7 @@ func miqt_exec_callback_QGraphicsWebView_SizeHint(self *C.QGraphicsWebView, cb C
 
 func (this *QGraphicsWebView) callVirtualBase_InputMethodQuery(query qt.InputMethodQuery) *qt.QVariant {
 
-	_ret := C.QGraphicsWebView_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QGraphicsWebView_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1333,7 +1327,9 @@ func miqt_exec_callback_QGraphicsWebView_PaintWindowFrame(self *C.QGraphicsWebVi
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(painter))
+
 	slotval2 := qt.UnsafeNewQStyleOptionGraphicsItem(unsafe.Pointer(option), nil)
+
 	slotval3 := qt.UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_PaintWindowFrame, slotval1, slotval2, slotval3)
@@ -1342,8 +1338,7 @@ func miqt_exec_callback_QGraphicsWebView_PaintWindowFrame(self *C.QGraphicsWebVi
 
 func (this *QGraphicsWebView) callVirtualBase_BoundingRect() *qt.QRectF {
 
-	_ret := C.QGraphicsWebView_virtualbase_BoundingRect(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QGraphicsWebView_virtualbase_BoundingRect(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1370,8 +1365,7 @@ func miqt_exec_callback_QGraphicsWebView_BoundingRect(self *C.QGraphicsWebView, 
 
 func (this *QGraphicsWebView) callVirtualBase_Shape() *qt.QPainterPath {
 
-	_ret := C.QGraphicsWebView_virtualbase_Shape(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQPainterPath(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQPainterPath(unsafe.Pointer(C.QGraphicsWebView_virtualbase_Shape(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1428,8 +1422,7 @@ func (this *QGraphicsWebView) callVirtualBase_PropertyChange(propertyName string
 	propertyName_ms.len = C.size_t(len(propertyName))
 	defer C.free(unsafe.Pointer(propertyName_ms.data))
 
-	_ret := C.QGraphicsWebView_virtualbase_PropertyChange(unsafe.Pointer(this.h), propertyName_ms, (*C.QVariant)(value.UnsafePointer()))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QGraphicsWebView_virtualbase_PropertyChange(unsafe.Pointer(this.h), propertyName_ms, (*C.QVariant)(value.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

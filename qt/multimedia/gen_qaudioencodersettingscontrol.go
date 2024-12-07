@@ -116,8 +116,7 @@ func (this *QAudioEncoderSettingsControl) SupportedSampleRates(settings *QAudioE
 }
 
 func (this *QAudioEncoderSettingsControl) AudioSettings() *QAudioEncoderSettings {
-	_ret := C.QAudioEncoderSettingsControl_AudioSettings(this.h)
-	_goptr := newQAudioEncoderSettings(_ret)
+	_goptr := newQAudioEncoderSettings(C.QAudioEncoderSettingsControl_AudioSettings(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

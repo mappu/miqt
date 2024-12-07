@@ -135,22 +135,21 @@ func (this *QItemSelectionRange) Height() int {
 }
 
 func (this *QItemSelectionRange) TopLeft() *QPersistentModelIndex {
-	return UnsafeNewQPersistentModelIndex(unsafe.Pointer(C.QItemSelectionRange_TopLeft(this.h)))
+	return newQPersistentModelIndex(C.QItemSelectionRange_TopLeft(this.h))
 }
 
 func (this *QItemSelectionRange) BottomRight() *QPersistentModelIndex {
-	return UnsafeNewQPersistentModelIndex(unsafe.Pointer(C.QItemSelectionRange_BottomRight(this.h)))
+	return newQPersistentModelIndex(C.QItemSelectionRange_BottomRight(this.h))
 }
 
 func (this *QItemSelectionRange) Parent() *QModelIndex {
-	_ret := C.QItemSelectionRange_Parent(this.h)
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QItemSelectionRange_Parent(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QItemSelectionRange) Model() *QAbstractItemModel {
-	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QItemSelectionRange_Model(this.h)), nil)
+	return newQAbstractItemModel(C.QItemSelectionRange_Model(this.h), nil)
 }
 
 func (this *QItemSelectionRange) Contains(index *QModelIndex) bool {
@@ -166,8 +165,7 @@ func (this *QItemSelectionRange) Intersects(other *QItemSelectionRange) bool {
 }
 
 func (this *QItemSelectionRange) Intersected(other *QItemSelectionRange) *QItemSelectionRange {
-	_ret := C.QItemSelectionRange_Intersected(this.h, other.cPointer())
-	_goptr := newQItemSelectionRange(_ret)
+	_goptr := newQItemSelectionRange(C.QItemSelectionRange_Intersected(this.h, other.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -193,8 +191,7 @@ func (this *QItemSelectionRange) Indexes() []QModelIndex {
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -288,7 +285,7 @@ func NewQItemSelectionModel3(model *QAbstractItemModel) *QItemSelectionModel {
 }
 
 func (this *QItemSelectionModel) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QItemSelectionModel_MetaObject(this.h)))
+	return newQMetaObject(C.QItemSelectionModel_MetaObject(this.h))
 }
 
 func (this *QItemSelectionModel) Metacast(param1 string) unsafe.Pointer {
@@ -307,8 +304,7 @@ func QItemSelectionModel_Tr(s string) string {
 }
 
 func (this *QItemSelectionModel) CurrentIndex() *QModelIndex {
-	_ret := C.QItemSelectionModel_CurrentIndex(this.h)
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QItemSelectionModel_CurrentIndex(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -342,8 +338,7 @@ func (this *QItemSelectionModel) SelectedIndexes() []QModelIndex {
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -355,8 +350,7 @@ func (this *QItemSelectionModel) SelectedRows() []QModelIndex {
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -368,8 +362,7 @@ func (this *QItemSelectionModel) SelectedColumns() []QModelIndex {
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -377,18 +370,17 @@ func (this *QItemSelectionModel) SelectedColumns() []QModelIndex {
 }
 
 func (this *QItemSelectionModel) Selection() *QItemSelection {
-	_ret := C.QItemSelectionModel_Selection(this.h)
-	_goptr := newQItemSelection(_ret)
+	_goptr := newQItemSelection(C.QItemSelectionModel_Selection(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QItemSelectionModel) Model() *QAbstractItemModel {
-	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QItemSelectionModel_Model(this.h)), nil)
+	return newQAbstractItemModel(C.QItemSelectionModel_Model(this.h), nil)
 }
 
 func (this *QItemSelectionModel) Model2() *QAbstractItemModel {
-	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QItemSelectionModel_Model2(this.h)), nil)
+	return newQAbstractItemModel(C.QItemSelectionModel_Model2(this.h), nil)
 }
 
 func (this *QItemSelectionModel) SetModel(model *QAbstractItemModel) {
@@ -438,8 +430,9 @@ func miqt_exec_callback_QItemSelectionModel_SelectionChanged(cb C.intptr_t, sele
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selected))
-	slotval2 := UnsafeNewQItemSelection(unsafe.Pointer(deselected))
+	slotval1 := newQItemSelection(selected)
+
+	slotval2 := newQItemSelection(deselected)
 
 	gofunc(slotval1, slotval2)
 }
@@ -459,8 +452,9 @@ func miqt_exec_callback_QItemSelectionModel_CurrentChanged(cb C.intptr_t, curren
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(current))
-	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(previous))
+	slotval1 := newQModelIndex(current)
+
+	slotval2 := newQModelIndex(previous)
 
 	gofunc(slotval1, slotval2)
 }
@@ -480,8 +474,9 @@ func miqt_exec_callback_QItemSelectionModel_CurrentRowChanged(cb C.intptr_t, cur
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(current))
-	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(previous))
+	slotval1 := newQModelIndex(current)
+
+	slotval2 := newQModelIndex(previous)
 
 	gofunc(slotval1, slotval2)
 }
@@ -501,8 +496,9 @@ func miqt_exec_callback_QItemSelectionModel_CurrentColumnChanged(cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(current))
-	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(previous))
+	slotval1 := newQModelIndex(current)
+
+	slotval2 := newQModelIndex(previous)
 
 	gofunc(slotval1, slotval2)
 }
@@ -522,7 +518,7 @@ func miqt_exec_callback_QItemSelectionModel_ModelChanged(cb C.intptr_t, model *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAbstractItemModel(unsafe.Pointer(model), nil)
+	slotval1 := newQAbstractItemModel(model, nil)
 
 	gofunc(slotval1)
 }
@@ -570,8 +566,7 @@ func (this *QItemSelectionModel) SelectedRows1(column int) []QModelIndex {
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -583,8 +578,7 @@ func (this *QItemSelectionModel) SelectedColumns1(row int) []QModelIndex {
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -611,7 +605,8 @@ func miqt_exec_callback_QItemSelectionModel_SetCurrentIndex(self *C.QItemSelecti
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
+
 	slotval2 := (QItemSelectionModel__SelectionFlag)(command)
 
 	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_SetCurrentIndex, slotval1, slotval2)
@@ -638,7 +633,8 @@ func miqt_exec_callback_QItemSelectionModel_Select(self *C.QItemSelectionModel, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
+
 	slotval2 := (QItemSelectionModel__SelectionFlag)(command)
 
 	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_Select, slotval1, slotval2)
@@ -665,7 +661,8 @@ func miqt_exec_callback_QItemSelectionModel_Select2(self *C.QItemSelectionModel,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selection))
+	slotval1 := newQItemSelection(selection)
+
 	slotval2 := (QItemSelectionModel__SelectionFlag)(command)
 
 	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_Select2, slotval1, slotval2)
@@ -761,7 +758,7 @@ func miqt_exec_callback_QItemSelectionModel_Event(self *C.QItemSelectionModel, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QItemSelectionModel{h: self}).callVirtualBase_Event, slotval1)
 
@@ -789,8 +786,9 @@ func miqt_exec_callback_QItemSelectionModel_EventFilter(self *C.QItemSelectionMo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QItemSelectionModel{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -818,7 +816,7 @@ func miqt_exec_callback_QItemSelectionModel_TimerEvent(self *C.QItemSelectionMod
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -844,7 +842,7 @@ func miqt_exec_callback_QItemSelectionModel_ChildEvent(self *C.QItemSelectionMod
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -870,7 +868,7 @@ func miqt_exec_callback_QItemSelectionModel_CustomEvent(self *C.QItemSelectionMo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -896,7 +894,7 @@ func miqt_exec_callback_QItemSelectionModel_ConnectNotify(self *C.QItemSelection
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -922,7 +920,7 @@ func miqt_exec_callback_QItemSelectionModel_DisconnectNotify(self *C.QItemSelect
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
@@ -1023,8 +1021,7 @@ func (this *QItemSelection) Indexes() []QModelIndex {
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}

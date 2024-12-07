@@ -126,8 +126,7 @@ func (this *QVersionNumber) MicroVersion() int {
 }
 
 func (this *QVersionNumber) Normalized() *QVersionNumber {
-	_ret := C.QVersionNumber_Normalized(this.h)
-	_goptr := newQVersionNumber(_ret)
+	_goptr := newQVersionNumber(C.QVersionNumber_Normalized(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -159,8 +158,7 @@ func QVersionNumber_Compare(v1 *QVersionNumber, v2 *QVersionNumber) int {
 }
 
 func QVersionNumber_CommonPrefix(v1 *QVersionNumber, v2 *QVersionNumber) *QVersionNumber {
-	_ret := C.QVersionNumber_CommonPrefix(v1.cPointer(), v2.cPointer())
-	_goptr := newQVersionNumber(_ret)
+	_goptr := newQVersionNumber(C.QVersionNumber_CommonPrefix(v1.cPointer(), v2.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -177,8 +175,7 @@ func QVersionNumber_FromString(stringVal string) *QVersionNumber {
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
 	defer C.free(unsafe.Pointer(stringVal_ms.data))
-	_ret := C.QVersionNumber_FromString(stringVal_ms)
-	_goptr := newQVersionNumber(_ret)
+	_goptr := newQVersionNumber(C.QVersionNumber_FromString(stringVal_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -188,8 +185,7 @@ func QVersionNumber_FromString22(stringVal string, suffixIndex *int) *QVersionNu
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
 	defer C.free(unsafe.Pointer(stringVal_ms.data))
-	_ret := C.QVersionNumber_FromString22(stringVal_ms, (*C.int)(unsafe.Pointer(suffixIndex)))
-	_goptr := newQVersionNumber(_ret)
+	_goptr := newQVersionNumber(C.QVersionNumber_FromString22(stringVal_ms, (*C.int)(unsafe.Pointer(suffixIndex))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

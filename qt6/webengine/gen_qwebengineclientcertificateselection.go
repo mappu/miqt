@@ -66,8 +66,7 @@ func (this *QWebEngineClientCertificateSelection) OperatorAssign(param1 *QWebEng
 }
 
 func (this *QWebEngineClientCertificateSelection) Host() *qt6.QUrl {
-	_ret := C.QWebEngineClientCertificateSelection_Host(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineClientCertificateSelection_Host(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -85,8 +84,7 @@ func (this *QWebEngineClientCertificateSelection) Certificates() []network.QSslC
 	_ret := make([]network.QSslCertificate, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSslCertificate)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := network.UnsafeNewQSslCertificate(unsafe.Pointer(_lv_ret))
+		_lv_goptr := network.UnsafeNewQSslCertificate(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}

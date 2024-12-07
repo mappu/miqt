@@ -244,7 +244,8 @@ func QAudioRecorder_TrUtf83(s string, c string, n int) string {
 
 func (this *QAudioRecorder) callVirtualBase_MediaObject() *QMediaObject {
 
-	return UnsafeNewQMediaObject(unsafe.Pointer(C.QAudioRecorder_virtualbase_MediaObject(unsafe.Pointer(this.h))), nil)
+	return newQMediaObject(C.QAudioRecorder_virtualbase_MediaObject(unsafe.Pointer(this.h)), nil)
+
 }
 func (this *QAudioRecorder) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
 	if !this.isSubclass {
@@ -286,7 +287,7 @@ func miqt_exec_callback_QAudioRecorder_SetMediaObject(self *C.QAudioRecorder, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMediaObject(unsafe.Pointer(object), nil)
+	slotval1 := newQMediaObject(object, nil)
 
 	virtualReturn := gofunc((&QAudioRecorder{h: self}).callVirtualBase_SetMediaObject, slotval1)
 

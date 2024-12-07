@@ -137,8 +137,7 @@ func (this *QCameraFocusZone) IsValid() bool {
 }
 
 func (this *QCameraFocusZone) Area() *qt.QRectF {
-	_ret := C.QCameraFocusZone_Area(this.h)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QCameraFocusZone_Area(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -261,8 +260,7 @@ func (this *QCameraFocus) IsFocusPointModeSupported(param1 QCameraFocus__FocusPo
 }
 
 func (this *QCameraFocus) CustomFocusPoint() *qt.QPointF {
-	_ret := C.QCameraFocus_CustomFocusPoint(this.h)
-	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QCameraFocus_CustomFocusPoint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -276,8 +274,7 @@ func (this *QCameraFocus) FocusZones() []QCameraFocusZone {
 	_ret := make([]QCameraFocusZone, int(_ma.len))
 	_outCast := (*[0xffff]*C.QCameraFocusZone)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQCameraFocusZone(_lv_ret)
+		_lv_goptr := newQCameraFocusZone(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}

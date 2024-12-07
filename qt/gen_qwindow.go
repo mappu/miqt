@@ -111,7 +111,7 @@ func NewQWindow3(screen *QScreen) *QWindow {
 }
 
 func (this *QWindow) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QWindow_MetaObject(this.h)))
+	return newQMetaObject(C.QWindow_MetaObject(this.h))
 }
 
 func (this *QWindow) Metacast(param1 string) unsafe.Pointer {
@@ -167,11 +167,11 @@ func (this *QWindow) WinId() uintptr {
 }
 
 func (this *QWindow) Parent(mode QWindow__AncestorMode) *QWindow {
-	return UnsafeNewQWindow(unsafe.Pointer(C.QWindow_Parent(this.h, (C.int)(mode))), nil, nil)
+	return newQWindow(C.QWindow_Parent(this.h, (C.int)(mode)), nil, nil)
 }
 
 func (this *QWindow) Parent2() *QWindow {
-	return UnsafeNewQWindow(unsafe.Pointer(C.QWindow_Parent2(this.h)), nil, nil)
+	return newQWindow(C.QWindow_Parent2(this.h), nil, nil)
 }
 
 func (this *QWindow) SetParent(parent *QWindow) {
@@ -199,15 +199,13 @@ func (this *QWindow) SetFormat(format *QSurfaceFormat) {
 }
 
 func (this *QWindow) Format() *QSurfaceFormat {
-	_ret := C.QWindow_Format(this.h)
-	_goptr := newQSurfaceFormat(_ret)
+	_goptr := newQSurfaceFormat(C.QWindow_Format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWindow) RequestedFormat() *QSurfaceFormat {
-	_ret := C.QWindow_RequestedFormat(this.h)
-	_goptr := newQSurfaceFormat(_ret)
+	_goptr := newQSurfaceFormat(C.QWindow_RequestedFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -248,8 +246,7 @@ func (this *QWindow) SetMask(region *QRegion) {
 }
 
 func (this *QWindow) Mask() *QRegion {
-	_ret := C.QWindow_Mask(this.h)
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QWindow_Mask(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -291,7 +288,7 @@ func (this *QWindow) SetTransientParent(parent *QWindow) {
 }
 
 func (this *QWindow) TransientParent() *QWindow {
-	return UnsafeNewQWindow(unsafe.Pointer(C.QWindow_TransientParent(this.h)), nil, nil)
+	return newQWindow(C.QWindow_TransientParent(this.h), nil, nil)
 }
 
 func (this *QWindow) IsAncestorOf(child *QWindow) bool {
@@ -319,29 +316,25 @@ func (this *QWindow) MaximumHeight() int {
 }
 
 func (this *QWindow) MinimumSize() *QSize {
-	_ret := C.QWindow_MinimumSize(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QWindow_MinimumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWindow) MaximumSize() *QSize {
-	_ret := C.QWindow_MaximumSize(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QWindow_MaximumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWindow) BaseSize() *QSize {
-	_ret := C.QWindow_BaseSize(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QWindow_BaseSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWindow) SizeIncrement() *QSize {
-	_ret := C.QWindow_SizeIncrement(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QWindow_SizeIncrement(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -363,29 +356,25 @@ func (this *QWindow) SetSizeIncrement(size *QSize) {
 }
 
 func (this *QWindow) Geometry() *QRect {
-	_ret := C.QWindow_Geometry(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QWindow_Geometry(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWindow) FrameMargins() *QMargins {
-	_ret := C.QWindow_FrameMargins(this.h)
-	_goptr := newQMargins(_ret)
+	_goptr := newQMargins(C.QWindow_FrameMargins(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWindow) FrameGeometry() *QRect {
-	_ret := C.QWindow_FrameGeometry(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QWindow_FrameGeometry(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWindow) FramePosition() *QPoint {
-	_ret := C.QWindow_FramePosition(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QWindow_FramePosition(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -411,15 +400,13 @@ func (this *QWindow) Y() int {
 }
 
 func (this *QWindow) Size() *QSize {
-	_ret := C.QWindow_Size(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QWindow_Size(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWindow) Position() *QPoint {
-	_ret := C.QWindow_Position(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QWindow_Position(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -460,8 +447,7 @@ func (this *QWindow) SetIcon(icon *QIcon) {
 }
 
 func (this *QWindow) Icon() *QIcon {
-	_ret := C.QWindow_Icon(this.h)
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QWindow_Icon(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -479,7 +465,7 @@ func (this *QWindow) SetMouseGrabEnabled(grab bool) bool {
 }
 
 func (this *QWindow) Screen() *QScreen {
-	return UnsafeNewQScreen(unsafe.Pointer(C.QWindow_Screen(this.h)), nil)
+	return newQScreen(C.QWindow_Screen(this.h), nil)
 }
 
 func (this *QWindow) SetScreen(screen *QScreen) {
@@ -487,30 +473,27 @@ func (this *QWindow) SetScreen(screen *QScreen) {
 }
 
 func (this *QWindow) AccessibleRoot() *QAccessibleInterface {
-	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QWindow_AccessibleRoot(this.h)))
+	return newQAccessibleInterface(C.QWindow_AccessibleRoot(this.h))
 }
 
 func (this *QWindow) FocusObject() *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QWindow_FocusObject(this.h)))
+	return newQObject(C.QWindow_FocusObject(this.h))
 }
 
 func (this *QWindow) MapToGlobal(pos *QPoint) *QPoint {
-	_ret := C.QWindow_MapToGlobal(this.h, pos.cPointer())
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QWindow_MapToGlobal(this.h, pos.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWindow) MapFromGlobal(pos *QPoint) *QPoint {
-	_ret := C.QWindow_MapFromGlobal(this.h, pos.cPointer())
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QWindow_MapFromGlobal(this.h, pos.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWindow) Cursor() *QCursor {
-	_ret := C.QWindow_Cursor(this.h)
-	_goptr := newQCursor(_ret)
+	_goptr := newQCursor(C.QWindow_Cursor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -524,7 +507,7 @@ func (this *QWindow) UnsetCursor() {
 }
 
 func QWindow_FromWinId(id uintptr) *QWindow {
-	return UnsafeNewQWindow(unsafe.Pointer(C.QWindow_FromWinId((C.uintptr_t)(id))), nil, nil)
+	return newQWindow(C.QWindow_FromWinId((C.uintptr_t)(id)), nil, nil)
 }
 
 func (this *QWindow) RequestActivate() {
@@ -650,7 +633,7 @@ func miqt_exec_callback_QWindow_ScreenChanged(cb C.intptr_t, screen *C.QScreen) 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQScreen(unsafe.Pointer(screen), nil)
+	slotval1 := newQScreen(screen, nil)
 
 	gofunc(slotval1)
 }
@@ -974,7 +957,7 @@ func miqt_exec_callback_QWindow_FocusObjectChanged(cb C.intptr_t, object *C.QObj
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(object))
+	slotval1 := newQObject(object)
 
 	gofunc(slotval1)
 }
@@ -1014,7 +997,7 @@ func miqt_exec_callback_QWindow_TransientParentChanged(cb C.intptr_t, transientP
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWindow(unsafe.Pointer(transientParent), nil, nil)
+	slotval1 := newQWindow(transientParent, nil, nil)
 
 	gofunc(slotval1)
 }
@@ -1098,8 +1081,7 @@ func miqt_exec_callback_QWindow_SurfaceType(self *C.QWindow, cb C.intptr_t) C.in
 
 func (this *QWindow) callVirtualBase_Format() *QSurfaceFormat {
 
-	_ret := C.QWindow_virtualbase_Format(unsafe.Pointer(this.h))
-	_goptr := newQSurfaceFormat(_ret)
+	_goptr := newQSurfaceFormat(C.QWindow_virtualbase_Format(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1126,8 +1108,7 @@ func miqt_exec_callback_QWindow_Format(self *C.QWindow, cb C.intptr_t) *C.QSurfa
 
 func (this *QWindow) callVirtualBase_Size() *QSize {
 
-	_ret := C.QWindow_virtualbase_Size(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QWindow_virtualbase_Size(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1154,7 +1135,8 @@ func miqt_exec_callback_QWindow_Size(self *C.QWindow, cb C.intptr_t) *C.QSize {
 
 func (this *QWindow) callVirtualBase_AccessibleRoot() *QAccessibleInterface {
 
-	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QWindow_virtualbase_AccessibleRoot(unsafe.Pointer(this.h))))
+	return newQAccessibleInterface(C.QWindow_virtualbase_AccessibleRoot(unsafe.Pointer(this.h)))
+
 }
 func (this *QWindow) OnAccessibleRoot(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
 	if !this.isSubclass {
@@ -1178,7 +1160,8 @@ func miqt_exec_callback_QWindow_AccessibleRoot(self *C.QWindow, cb C.intptr_t) *
 
 func (this *QWindow) callVirtualBase_FocusObject() *QObject {
 
-	return UnsafeNewQObject(unsafe.Pointer(C.QWindow_virtualbase_FocusObject(unsafe.Pointer(this.h))))
+	return newQObject(C.QWindow_virtualbase_FocusObject(unsafe.Pointer(this.h)))
+
 }
 func (this *QWindow) OnFocusObject(slot func(super func() *QObject) *QObject) {
 	if !this.isSubclass {
@@ -1220,7 +1203,7 @@ func miqt_exec_callback_QWindow_ExposeEvent(self *C.QWindow, cb C.intptr_t, para
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQExposeEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQExposeEvent(param1, nil)
 
 	gofunc((&QWindow{h: self}).callVirtualBase_ExposeEvent, slotval1)
 
@@ -1246,7 +1229,7 @@ func miqt_exec_callback_QWindow_ResizeEvent(self *C.QWindow, cb C.intptr_t, para
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQResizeEvent(param1, nil)
 
 	gofunc((&QWindow{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -1272,7 +1255,7 @@ func miqt_exec_callback_QWindow_MoveEvent(self *C.QWindow, cb C.intptr_t, param1
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMoveEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQMoveEvent(param1, nil)
 
 	gofunc((&QWindow{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -1298,7 +1281,7 @@ func miqt_exec_callback_QWindow_FocusInEvent(self *C.QWindow, cb C.intptr_t, par
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQFocusEvent(param1, nil)
 
 	gofunc((&QWindow{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -1324,7 +1307,7 @@ func miqt_exec_callback_QWindow_FocusOutEvent(self *C.QWindow, cb C.intptr_t, pa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQFocusEvent(param1, nil)
 
 	gofunc((&QWindow{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -1350,7 +1333,7 @@ func miqt_exec_callback_QWindow_ShowEvent(self *C.QWindow, cb C.intptr_t, param1
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQShowEvent(param1, nil)
 
 	gofunc((&QWindow{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1376,7 +1359,7 @@ func miqt_exec_callback_QWindow_HideEvent(self *C.QWindow, cb C.intptr_t, param1
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHideEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQHideEvent(param1, nil)
 
 	gofunc((&QWindow{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -1402,7 +1385,7 @@ func miqt_exec_callback_QWindow_Event(self *C.QWindow, cb C.intptr_t, param1 *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	virtualReturn := gofunc((&QWindow{h: self}).callVirtualBase_Event, slotval1)
 
@@ -1430,7 +1413,7 @@ func miqt_exec_callback_QWindow_KeyPressEvent(self *C.QWindow, cb C.intptr_t, pa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQKeyEvent(param1, nil, nil)
 
 	gofunc((&QWindow{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -1456,7 +1439,7 @@ func miqt_exec_callback_QWindow_KeyReleaseEvent(self *C.QWindow, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQKeyEvent(param1, nil, nil)
 
 	gofunc((&QWindow{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -1482,7 +1465,7 @@ func miqt_exec_callback_QWindow_MousePressEvent(self *C.QWindow, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQMouseEvent(param1, nil, nil)
 
 	gofunc((&QWindow{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -1508,7 +1491,7 @@ func miqt_exec_callback_QWindow_MouseReleaseEvent(self *C.QWindow, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQMouseEvent(param1, nil, nil)
 
 	gofunc((&QWindow{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -1534,7 +1517,7 @@ func miqt_exec_callback_QWindow_MouseDoubleClickEvent(self *C.QWindow, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQMouseEvent(param1, nil, nil)
 
 	gofunc((&QWindow{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -1560,7 +1543,7 @@ func miqt_exec_callback_QWindow_MouseMoveEvent(self *C.QWindow, cb C.intptr_t, p
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQMouseEvent(param1, nil, nil)
 
 	gofunc((&QWindow{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -1586,7 +1569,7 @@ func miqt_exec_callback_QWindow_WheelEvent(self *C.QWindow, cb C.intptr_t, param
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQWheelEvent(param1, nil, nil)
 
 	gofunc((&QWindow{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -1612,7 +1595,7 @@ func miqt_exec_callback_QWindow_TouchEvent(self *C.QWindow, cb C.intptr_t, param
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTouchEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQTouchEvent(param1, nil, nil)
 
 	gofunc((&QWindow{h: self}).callVirtualBase_TouchEvent, slotval1)
 
@@ -1638,7 +1621,7 @@ func miqt_exec_callback_QWindow_TabletEvent(self *C.QWindow, cb C.intptr_t, para
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTabletEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQTabletEvent(param1, nil, nil)
 
 	gofunc((&QWindow{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -1701,8 +1684,9 @@ func miqt_exec_callback_QWindow_EventFilter(self *C.QWindow, cb C.intptr_t, watc
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QWindow{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -1730,7 +1714,7 @@ func miqt_exec_callback_QWindow_TimerEvent(self *C.QWindow, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QWindow{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -1756,7 +1740,7 @@ func miqt_exec_callback_QWindow_ChildEvent(self *C.QWindow, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QWindow{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -1782,7 +1766,7 @@ func miqt_exec_callback_QWindow_CustomEvent(self *C.QWindow, cb C.intptr_t, even
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QWindow{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -1808,7 +1792,7 @@ func miqt_exec_callback_QWindow_ConnectNotify(self *C.QWindow, cb C.intptr_t, si
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QWindow{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -1834,7 +1818,7 @@ func miqt_exec_callback_QWindow_DisconnectNotify(self *C.QWindow, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QWindow{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

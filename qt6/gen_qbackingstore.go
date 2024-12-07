@@ -60,11 +60,11 @@ func NewQBackingStore(window *QWindow) *QBackingStore {
 }
 
 func (this *QBackingStore) Window() *QWindow {
-	return UnsafeNewQWindow(unsafe.Pointer(C.QBackingStore_Window(this.h)), nil, nil)
+	return newQWindow(C.QBackingStore_Window(this.h), nil, nil)
 }
 
 func (this *QBackingStore) PaintDevice() *QPaintDevice {
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QBackingStore_PaintDevice(this.h)))
+	return newQPaintDevice(C.QBackingStore_PaintDevice(this.h))
 }
 
 func (this *QBackingStore) Flush(region *QRegion) {
@@ -76,8 +76,7 @@ func (this *QBackingStore) Resize(size *QSize) {
 }
 
 func (this *QBackingStore) Size() *QSize {
-	_ret := C.QBackingStore_Size(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QBackingStore_Size(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -99,8 +98,7 @@ func (this *QBackingStore) SetStaticContents(region *QRegion) {
 }
 
 func (this *QBackingStore) StaticContents() *QRegion {
-	_ret := C.QBackingStore_StaticContents(this.h)
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QBackingStore_StaticContents(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -215,7 +215,7 @@ func miqt_exec_callback_QCameraImageCaptureControl_ImageAvailable(cb C.intptr_t,
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (int)(requestId)
 
-	slotval2 := UnsafeNewQVideoFrame(unsafe.Pointer(buffer))
+	slotval2 := newQVideoFrame(buffer)
 
 	gofunc(slotval1, slotval2)
 }

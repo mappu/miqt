@@ -191,7 +191,7 @@ func (this *QAbstractPrintDialog) ToPage() int {
 }
 
 func (this *QAbstractPrintDialog) Printer() *QPrinter {
-	return UnsafeNewQPrinter(unsafe.Pointer(C.QAbstractPrintDialog_Printer(this.h)), nil, nil)
+	return newQPrinter(C.QAbstractPrintDialog_Printer(this.h), nil, nil)
 }
 
 func QAbstractPrintDialog_Tr2(s string, c string) string {
@@ -266,8 +266,7 @@ func miqt_exec_callback_QAbstractPrintDialog_SetVisible(self *C.QAbstractPrintDi
 
 func (this *QAbstractPrintDialog) callVirtualBase_SizeHint() *qt.QSize {
 
-	_ret := C.QAbstractPrintDialog_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QAbstractPrintDialog_virtualbase_SizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -294,8 +293,7 @@ func miqt_exec_callback_QAbstractPrintDialog_SizeHint(self *C.QAbstractPrintDial
 
 func (this *QAbstractPrintDialog) callVirtualBase_MinimumSizeHint() *qt.QSize {
 
-	_ret := C.QAbstractPrintDialog_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QAbstractPrintDialog_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -591,6 +589,7 @@ func miqt_exec_callback_QAbstractPrintDialog_EventFilter(self *C.QAbstractPrintD
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(param1))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(param2))
 
 	virtualReturn := gofunc((&QAbstractPrintDialog{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

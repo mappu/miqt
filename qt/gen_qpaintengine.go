@@ -162,8 +162,7 @@ func (this *QTextItem) Text() string {
 }
 
 func (this *QTextItem) Font() *QFont {
-	_ret := C.QTextItem_Font(this.h)
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QTextItem_Font(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -323,7 +322,7 @@ func (this *QPaintEngine) SetPaintDevice(device *QPaintDevice) {
 }
 
 func (this *QPaintEngine) PaintDevice() *QPaintDevice {
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QPaintEngine_PaintDevice(this.h)))
+	return newQPaintDevice(C.QPaintEngine_PaintDevice(this.h))
 }
 
 func (this *QPaintEngine) SetSystemClip(baseClip *QRegion) {
@@ -331,8 +330,7 @@ func (this *QPaintEngine) SetSystemClip(baseClip *QRegion) {
 }
 
 func (this *QPaintEngine) SystemClip() *QRegion {
-	_ret := C.QPaintEngine_SystemClip(this.h)
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QPaintEngine_SystemClip(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -342,15 +340,13 @@ func (this *QPaintEngine) SetSystemRect(rect *QRect) {
 }
 
 func (this *QPaintEngine) SystemRect() *QRect {
-	_ret := C.QPaintEngine_SystemRect(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QPaintEngine_SystemRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPaintEngine) CoordinateOffset() *QPoint {
-	_ret := C.QPaintEngine_CoordinateOffset(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QPaintEngine_CoordinateOffset(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -380,7 +376,7 @@ func (this *QPaintEngine) HasFeature(feature QPaintEngine__PaintEngineFeature) b
 }
 
 func (this *QPaintEngine) Painter() *QPainter {
-	return UnsafeNewQPainter(unsafe.Pointer(C.QPaintEngine_Painter(this.h)))
+	return newQPainter(C.QPaintEngine_Painter(this.h))
 }
 
 func (this *QPaintEngine) SyncState() {
@@ -405,7 +401,7 @@ func miqt_exec_callback_QPaintEngine_Begin(self *C.QPaintEngine, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintDevice(unsafe.Pointer(pdev))
+	slotval1 := newQPaintDevice(pdev)
 
 	virtualReturn := gofunc(slotval1)
 
@@ -446,7 +442,7 @@ func miqt_exec_callback_QPaintEngine_UpdateState(self *C.QPaintEngine, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEngineState(unsafe.Pointer(state))
+	slotval1 := newQPaintEngineState(state)
 
 	gofunc(slotval1)
 
@@ -472,7 +468,8 @@ func miqt_exec_callback_QPaintEngine_DrawRects(self *C.QPaintEngine, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRect(unsafe.Pointer(rects))
+	slotval1 := newQRect(rects)
+
 	slotval2 := (int)(rectCount)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawRects, slotval1, slotval2)
@@ -499,7 +496,8 @@ func miqt_exec_callback_QPaintEngine_DrawRects2(self *C.QPaintEngine, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRectF(unsafe.Pointer(rects))
+	slotval1 := newQRectF(rects)
+
 	slotval2 := (int)(rectCount)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawRects2, slotval1, slotval2)
@@ -526,7 +524,8 @@ func miqt_exec_callback_QPaintEngine_DrawLines(self *C.QPaintEngine, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQLine(unsafe.Pointer(lines))
+	slotval1 := newQLine(lines)
+
 	slotval2 := (int)(lineCount)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawLines, slotval1, slotval2)
@@ -553,7 +552,8 @@ func miqt_exec_callback_QPaintEngine_DrawLines2(self *C.QPaintEngine, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQLineF(unsafe.Pointer(lines))
+	slotval1 := newQLineF(lines)
+
 	slotval2 := (int)(lineCount)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawLines2, slotval1, slotval2)
@@ -580,7 +580,7 @@ func miqt_exec_callback_QPaintEngine_DrawEllipse(self *C.QPaintEngine, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRectF(unsafe.Pointer(r))
+	slotval1 := newQRectF(r)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawEllipse, slotval1)
 
@@ -606,7 +606,7 @@ func miqt_exec_callback_QPaintEngine_DrawEllipseWithQRect(self *C.QPaintEngine, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRect(unsafe.Pointer(r))
+	slotval1 := newQRect(r)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawEllipseWithQRect, slotval1)
 
@@ -632,7 +632,7 @@ func miqt_exec_callback_QPaintEngine_DrawPath(self *C.QPaintEngine, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainterPath(unsafe.Pointer(path))
+	slotval1 := newQPainterPath(path)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawPath, slotval1)
 
@@ -658,7 +658,8 @@ func miqt_exec_callback_QPaintEngine_DrawPoints(self *C.QPaintEngine, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPointF(unsafe.Pointer(points))
+	slotval1 := newQPointF(points)
+
 	slotval2 := (int)(pointCount)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawPoints, slotval1, slotval2)
@@ -685,7 +686,8 @@ func miqt_exec_callback_QPaintEngine_DrawPoints2(self *C.QPaintEngine, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(points))
+	slotval1 := newQPoint(points)
+
 	slotval2 := (int)(pointCount)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawPoints2, slotval1, slotval2)
@@ -712,7 +714,8 @@ func miqt_exec_callback_QPaintEngine_DrawPolygon(self *C.QPaintEngine, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPointF(unsafe.Pointer(points))
+	slotval1 := newQPointF(points)
+
 	slotval2 := (int)(pointCount)
 
 	slotval3 := (QPaintEngine__PolygonDrawMode)(mode)
@@ -741,7 +744,8 @@ func miqt_exec_callback_QPaintEngine_DrawPolygon2(self *C.QPaintEngine, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(points))
+	slotval1 := newQPoint(points)
+
 	slotval2 := (int)(pointCount)
 
 	slotval3 := (QPaintEngine__PolygonDrawMode)(mode)
@@ -764,9 +768,11 @@ func miqt_exec_callback_QPaintEngine_DrawPixmap(self *C.QPaintEngine, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRectF(unsafe.Pointer(r))
-	slotval2 := UnsafeNewQPixmap(unsafe.Pointer(pm), nil)
-	slotval3 := UnsafeNewQRectF(unsafe.Pointer(sr))
+	slotval1 := newQRectF(r)
+
+	slotval2 := newQPixmap(pm, nil)
+
+	slotval3 := newQRectF(sr)
 
 	gofunc(slotval1, slotval2, slotval3)
 
@@ -792,8 +798,9 @@ func miqt_exec_callback_QPaintEngine_DrawTextItem(self *C.QPaintEngine, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPointF(unsafe.Pointer(p))
-	slotval2 := UnsafeNewQTextItem(unsafe.Pointer(textItem))
+	slotval1 := newQPointF(p)
+
+	slotval2 := newQTextItem(textItem)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawTextItem, slotval1, slotval2)
 
@@ -819,9 +826,11 @@ func miqt_exec_callback_QPaintEngine_DrawTiledPixmap(self *C.QPaintEngine, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRectF(unsafe.Pointer(r))
-	slotval2 := UnsafeNewQPixmap(unsafe.Pointer(pixmap), nil)
-	slotval3 := UnsafeNewQPointF(unsafe.Pointer(s))
+	slotval1 := newQRectF(r)
+
+	slotval2 := newQPixmap(pixmap, nil)
+
+	slotval3 := newQPointF(s)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawTiledPixmap, slotval1, slotval2, slotval3)
 
@@ -847,9 +856,12 @@ func miqt_exec_callback_QPaintEngine_DrawImage(self *C.QPaintEngine, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRectF(unsafe.Pointer(r))
-	slotval2 := UnsafeNewQImage(unsafe.Pointer(pm), nil)
-	slotval3 := UnsafeNewQRectF(unsafe.Pointer(sr))
+	slotval1 := newQRectF(r)
+
+	slotval2 := newQImage(pm, nil)
+
+	slotval3 := newQRectF(sr)
+
 	slotval4 := (ImageConversionFlag)(flags)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawImage, slotval1, slotval2, slotval3, slotval4)
@@ -858,8 +870,7 @@ func miqt_exec_callback_QPaintEngine_DrawImage(self *C.QPaintEngine, cb C.intptr
 
 func (this *QPaintEngine) callVirtualBase_CoordinateOffset() *QPoint {
 
-	_ret := C.QPaintEngine_virtualbase_CoordinateOffset(unsafe.Pointer(this.h))
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QPaintEngine_virtualbase_CoordinateOffset(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -958,29 +969,25 @@ func (this *QPaintEngineState) State() QPaintEngine__DirtyFlag {
 }
 
 func (this *QPaintEngineState) Pen() *QPen {
-	_ret := C.QPaintEngineState_Pen(this.h)
-	_goptr := newQPen(_ret)
+	_goptr := newQPen(C.QPaintEngineState_Pen(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPaintEngineState) Brush() *QBrush {
-	_ret := C.QPaintEngineState_Brush(this.h)
-	_goptr := newQBrush(_ret)
+	_goptr := newQBrush(C.QPaintEngineState_Brush(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPaintEngineState) BrushOrigin() *QPointF {
-	_ret := C.QPaintEngineState_BrushOrigin(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QPaintEngineState_BrushOrigin(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPaintEngineState) BackgroundBrush() *QBrush {
-	_ret := C.QPaintEngineState_BackgroundBrush(this.h)
-	_goptr := newQBrush(_ret)
+	_goptr := newQBrush(C.QPaintEngineState_BackgroundBrush(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -990,22 +997,19 @@ func (this *QPaintEngineState) BackgroundMode() BGMode {
 }
 
 func (this *QPaintEngineState) Font() *QFont {
-	_ret := C.QPaintEngineState_Font(this.h)
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QPaintEngineState_Font(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPaintEngineState) Matrix() *QMatrix {
-	_ret := C.QPaintEngineState_Matrix(this.h)
-	_goptr := newQMatrix(_ret)
+	_goptr := newQMatrix(C.QPaintEngineState_Matrix(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPaintEngineState) Transform() *QTransform {
-	_ret := C.QPaintEngineState_Transform(this.h)
-	_goptr := newQTransform(_ret)
+	_goptr := newQTransform(C.QPaintEngineState_Transform(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1015,15 +1019,13 @@ func (this *QPaintEngineState) ClipOperation() ClipOperation {
 }
 
 func (this *QPaintEngineState) ClipRegion() *QRegion {
-	_ret := C.QPaintEngineState_ClipRegion(this.h)
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QPaintEngineState_ClipRegion(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPaintEngineState) ClipPath() *QPainterPath {
-	_ret := C.QPaintEngineState_ClipPath(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QPaintEngineState_ClipPath(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1045,7 +1047,7 @@ func (this *QPaintEngineState) Opacity() float64 {
 }
 
 func (this *QPaintEngineState) Painter() *QPainter {
-	return UnsafeNewQPainter(unsafe.Pointer(C.QPaintEngineState_Painter(this.h)))
+	return newQPainter(C.QPaintEngineState_Painter(this.h))
 }
 
 func (this *QPaintEngineState) BrushNeedsResolving() bool {

@@ -203,8 +203,7 @@ func (this *QRegularExpression) Match(subject string) *QRegularExpressionMatch {
 	subject_ms.data = C.CString(subject)
 	subject_ms.len = C.size_t(len(subject))
 	defer C.free(unsafe.Pointer(subject_ms.data))
-	_ret := C.QRegularExpression_Match(this.h, subject_ms)
-	_goptr := newQRegularExpressionMatch(_ret)
+	_goptr := newQRegularExpressionMatch(C.QRegularExpression_Match(this.h, subject_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -214,8 +213,7 @@ func (this *QRegularExpression) GlobalMatch(subject string) *QRegularExpressionM
 	subject_ms.data = C.CString(subject)
 	subject_ms.len = C.size_t(len(subject))
 	defer C.free(unsafe.Pointer(subject_ms.data))
-	_ret := C.QRegularExpression_GlobalMatch(this.h, subject_ms)
-	_goptr := newQRegularExpressionMatchIterator(_ret)
+	_goptr := newQRegularExpressionMatchIterator(C.QRegularExpression_GlobalMatch(this.h, subject_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -270,8 +268,7 @@ func (this *QRegularExpression) Match2(subject string, offset int64) *QRegularEx
 	subject_ms.data = C.CString(subject)
 	subject_ms.len = C.size_t(len(subject))
 	defer C.free(unsafe.Pointer(subject_ms.data))
-	_ret := C.QRegularExpression_Match2(this.h, subject_ms, (C.ptrdiff_t)(offset))
-	_goptr := newQRegularExpressionMatch(_ret)
+	_goptr := newQRegularExpressionMatch(C.QRegularExpression_Match2(this.h, subject_ms, (C.ptrdiff_t)(offset)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -281,8 +278,7 @@ func (this *QRegularExpression) Match3(subject string, offset int64, matchType Q
 	subject_ms.data = C.CString(subject)
 	subject_ms.len = C.size_t(len(subject))
 	defer C.free(unsafe.Pointer(subject_ms.data))
-	_ret := C.QRegularExpression_Match3(this.h, subject_ms, (C.ptrdiff_t)(offset), (C.int)(matchType))
-	_goptr := newQRegularExpressionMatch(_ret)
+	_goptr := newQRegularExpressionMatch(C.QRegularExpression_Match3(this.h, subject_ms, (C.ptrdiff_t)(offset), (C.int)(matchType)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -292,8 +288,7 @@ func (this *QRegularExpression) Match4(subject string, offset int64, matchType Q
 	subject_ms.data = C.CString(subject)
 	subject_ms.len = C.size_t(len(subject))
 	defer C.free(unsafe.Pointer(subject_ms.data))
-	_ret := C.QRegularExpression_Match4(this.h, subject_ms, (C.ptrdiff_t)(offset), (C.int)(matchType), (C.int)(matchOptions))
-	_goptr := newQRegularExpressionMatch(_ret)
+	_goptr := newQRegularExpressionMatch(C.QRegularExpression_Match4(this.h, subject_ms, (C.ptrdiff_t)(offset), (C.int)(matchType), (C.int)(matchOptions)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -303,8 +298,7 @@ func (this *QRegularExpression) GlobalMatch2(subject string, offset int64) *QReg
 	subject_ms.data = C.CString(subject)
 	subject_ms.len = C.size_t(len(subject))
 	defer C.free(unsafe.Pointer(subject_ms.data))
-	_ret := C.QRegularExpression_GlobalMatch2(this.h, subject_ms, (C.ptrdiff_t)(offset))
-	_goptr := newQRegularExpressionMatchIterator(_ret)
+	_goptr := newQRegularExpressionMatchIterator(C.QRegularExpression_GlobalMatch2(this.h, subject_ms, (C.ptrdiff_t)(offset)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -314,8 +308,7 @@ func (this *QRegularExpression) GlobalMatch3(subject string, offset int64, match
 	subject_ms.data = C.CString(subject)
 	subject_ms.len = C.size_t(len(subject))
 	defer C.free(unsafe.Pointer(subject_ms.data))
-	_ret := C.QRegularExpression_GlobalMatch3(this.h, subject_ms, (C.ptrdiff_t)(offset), (C.int)(matchType))
-	_goptr := newQRegularExpressionMatchIterator(_ret)
+	_goptr := newQRegularExpressionMatchIterator(C.QRegularExpression_GlobalMatch3(this.h, subject_ms, (C.ptrdiff_t)(offset), (C.int)(matchType)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -325,8 +318,7 @@ func (this *QRegularExpression) GlobalMatch4(subject string, offset int64, match
 	subject_ms.data = C.CString(subject)
 	subject_ms.len = C.size_t(len(subject))
 	defer C.free(unsafe.Pointer(subject_ms.data))
-	_ret := C.QRegularExpression_GlobalMatch4(this.h, subject_ms, (C.ptrdiff_t)(offset), (C.int)(matchType), (C.int)(matchOptions))
-	_goptr := newQRegularExpressionMatchIterator(_ret)
+	_goptr := newQRegularExpressionMatchIterator(C.QRegularExpression_GlobalMatch4(this.h, subject_ms, (C.ptrdiff_t)(offset), (C.int)(matchType), (C.int)(matchOptions)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -421,8 +413,7 @@ func (this *QRegularExpressionMatch) Swap(other *QRegularExpressionMatch) {
 }
 
 func (this *QRegularExpressionMatch) RegularExpression() *QRegularExpression {
-	_ret := C.QRegularExpressionMatch_RegularExpression(this.h)
-	_goptr := newQRegularExpression(_ret)
+	_goptr := newQRegularExpression(C.QRegularExpressionMatch_RegularExpression(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -636,22 +627,19 @@ func (this *QRegularExpressionMatchIterator) HasNext() bool {
 }
 
 func (this *QRegularExpressionMatchIterator) Next() *QRegularExpressionMatch {
-	_ret := C.QRegularExpressionMatchIterator_Next(this.h)
-	_goptr := newQRegularExpressionMatch(_ret)
+	_goptr := newQRegularExpressionMatch(C.QRegularExpressionMatchIterator_Next(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRegularExpressionMatchIterator) PeekNext() *QRegularExpressionMatch {
-	_ret := C.QRegularExpressionMatchIterator_PeekNext(this.h)
-	_goptr := newQRegularExpressionMatch(_ret)
+	_goptr := newQRegularExpressionMatch(C.QRegularExpressionMatchIterator_PeekNext(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRegularExpressionMatchIterator) RegularExpression() *QRegularExpression {
-	_ret := C.QRegularExpressionMatchIterator_RegularExpression(this.h)
-	_goptr := newQRegularExpression(_ret)
+	_goptr := newQRegularExpression(C.QRegularExpressionMatchIterator_RegularExpression(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

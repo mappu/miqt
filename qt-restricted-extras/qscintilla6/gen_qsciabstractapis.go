@@ -85,7 +85,7 @@ func QsciAbstractAPIs_Tr(s string) string {
 }
 
 func (this *QsciAbstractAPIs) Lexer() *QsciLexer {
-	return UnsafeNewQsciLexer(unsafe.Pointer(C.QsciAbstractAPIs_Lexer(this.h)), nil)
+	return newQsciLexer(C.QsciAbstractAPIs_Lexer(this.h), nil)
 }
 
 func (this *QsciAbstractAPIs) UpdateAutoCompletionList(context []string, list []string) {
@@ -346,6 +346,7 @@ func miqt_exec_callback_QsciAbstractAPIs_EventFilter(self *C.QsciAbstractAPIs, c
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QsciAbstractAPIs{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

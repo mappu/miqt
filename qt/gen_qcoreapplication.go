@@ -102,7 +102,7 @@ func NewQCoreApplication2(args []string, param3 int) *QCoreApplication {
 }
 
 func (this *QCoreApplication) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QCoreApplication_MetaObject(this.h)))
+	return newQMetaObject(C.QCoreApplication_MetaObject(this.h))
 }
 
 func (this *QCoreApplication) Metacast(param1 string) unsafe.Pointer {
@@ -219,7 +219,7 @@ func QCoreApplication_IsSetuidAllowed() bool {
 }
 
 func QCoreApplication_Instance() *QCoreApplication {
-	return UnsafeNewQCoreApplication(unsafe.Pointer(C.QCoreApplication_Instance()), nil)
+	return newQCoreApplication(C.QCoreApplication_Instance(), nil)
 }
 
 func QCoreApplication_Exec() int {
@@ -259,7 +259,7 @@ func QCoreApplication_HasPendingEvents() bool {
 }
 
 func QCoreApplication_EventDispatcher() *QAbstractEventDispatcher {
-	return UnsafeNewQAbstractEventDispatcher(unsafe.Pointer(C.QCoreApplication_EventDispatcher()), nil)
+	return newQAbstractEventDispatcher(C.QCoreApplication_EventDispatcher(), nil)
 }
 
 func QCoreApplication_SetEventDispatcher(eventDispatcher *QAbstractEventDispatcher) {
@@ -568,8 +568,9 @@ func miqt_exec_callback_QCoreApplication_Notify(self *C.QCoreApplication, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(param1))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(param2))
+	slotval1 := newQObject(param1)
+
+	slotval2 := newQEvent(param2)
 
 	virtualReturn := gofunc((&QCoreApplication{h: self}).callVirtualBase_Notify, slotval1, slotval2)
 
@@ -597,7 +598,7 @@ func miqt_exec_callback_QCoreApplication_Event(self *C.QCoreApplication, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	virtualReturn := gofunc((&QCoreApplication{h: self}).callVirtualBase_Event, slotval1)
 
@@ -625,8 +626,9 @@ func miqt_exec_callback_QCoreApplication_EventFilter(self *C.QCoreApplication, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QCoreApplication{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -654,7 +656,7 @@ func miqt_exec_callback_QCoreApplication_TimerEvent(self *C.QCoreApplication, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QCoreApplication{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -680,7 +682,7 @@ func miqt_exec_callback_QCoreApplication_ChildEvent(self *C.QCoreApplication, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QCoreApplication{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -706,7 +708,7 @@ func miqt_exec_callback_QCoreApplication_CustomEvent(self *C.QCoreApplication, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QCoreApplication{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -732,7 +734,7 @@ func miqt_exec_callback_QCoreApplication_ConnectNotify(self *C.QCoreApplication,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QCoreApplication{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -758,7 +760,7 @@ func miqt_exec_callback_QCoreApplication_DisconnectNotify(self *C.QCoreApplicati
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QCoreApplication{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

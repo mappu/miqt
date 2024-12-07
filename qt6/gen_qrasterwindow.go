@@ -84,7 +84,7 @@ func NewQRasterWindow2(parent *QWindow) *QRasterWindow {
 }
 
 func (this *QRasterWindow) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QRasterWindow_MetaObject(this.h)))
+	return newQMetaObject(C.QRasterWindow_MetaObject(this.h))
 }
 
 func (this *QRasterWindow) Metacast(param1 string) unsafe.Pointer {
@@ -154,7 +154,8 @@ func miqt_exec_callback_QRasterWindow_Metric(self *C.QRasterWindow, cb C.intptr_
 
 func (this *QRasterWindow) callVirtualBase_Redirected(param1 *QPoint) *QPaintDevice {
 
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QRasterWindow_virtualbase_Redirected(unsafe.Pointer(this.h), param1.cPointer())))
+	return newQPaintDevice(C.QRasterWindow_virtualbase_Redirected(unsafe.Pointer(this.h), param1.cPointer()))
+
 }
 func (this *QRasterWindow) OnRedirected(slot func(super func(param1 *QPoint) *QPaintDevice, param1 *QPoint) *QPaintDevice) {
 	if !this.isSubclass {
@@ -171,7 +172,7 @@ func miqt_exec_callback_QRasterWindow_Redirected(self *C.QRasterWindow, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(param1))
+	slotval1 := newQPoint(param1)
 
 	virtualReturn := gofunc((&QRasterWindow{h: self}).callVirtualBase_Redirected, slotval1)
 
@@ -199,7 +200,7 @@ func miqt_exec_callback_QRasterWindow_ExposeEvent(self *C.QRasterWindow, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQExposeEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQExposeEvent(param1, nil)
 
 	gofunc((&QRasterWindow{h: self}).callVirtualBase_ExposeEvent, slotval1)
 
@@ -225,7 +226,7 @@ func miqt_exec_callback_QRasterWindow_PaintEvent(self *C.QRasterWindow, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQPaintEvent(event, nil)
 
 	gofunc((&QRasterWindow{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -251,7 +252,7 @@ func miqt_exec_callback_QRasterWindow_Event(self *C.QRasterWindow, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QRasterWindow{h: self}).callVirtualBase_Event, slotval1)
 

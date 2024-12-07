@@ -258,8 +258,7 @@ func QKeySequence_FromString(str string) *QKeySequence {
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
 	defer C.free(unsafe.Pointer(str_ms.data))
-	_ret := C.QKeySequence_FromString(str_ms)
-	_goptr := newQKeySequence(_ret)
+	_goptr := newQKeySequence(C.QKeySequence_FromString(str_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -273,8 +272,7 @@ func QKeySequence_ListFromString(str string) []QKeySequence {
 	_ret := make([]QKeySequence, int(_ma.len))
 	_outCast := (*[0xffff]*C.QKeySequence)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQKeySequence(_lv_ret)
+		_lv_goptr := newQKeySequence(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -303,8 +301,7 @@ func QKeySequence_Mnemonic(text string) *QKeySequence {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	_ret := C.QKeySequence_Mnemonic(text_ms)
-	_goptr := newQKeySequence(_ret)
+	_goptr := newQKeySequence(C.QKeySequence_Mnemonic(text_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -314,8 +311,7 @@ func QKeySequence_KeyBindings(key QKeySequence__StandardKey) []QKeySequence {
 	_ret := make([]QKeySequence, int(_ma.len))
 	_outCast := (*[0xffff]*C.QKeySequence)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQKeySequence(_lv_ret)
+		_lv_goptr := newQKeySequence(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -374,8 +370,7 @@ func QKeySequence_FromString2(str string, format QKeySequence__SequenceFormat) *
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
 	defer C.free(unsafe.Pointer(str_ms.data))
-	_ret := C.QKeySequence_FromString2(str_ms, (C.int)(format))
-	_goptr := newQKeySequence(_ret)
+	_goptr := newQKeySequence(C.QKeySequence_FromString2(str_ms, (C.int)(format)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -389,8 +384,7 @@ func QKeySequence_ListFromString2(str string, format QKeySequence__SequenceForma
 	_ret := make([]QKeySequence, int(_ma.len))
 	_outCast := (*[0xffff]*C.QKeySequence)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQKeySequence(_lv_ret)
+		_lv_goptr := newQKeySequence(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}

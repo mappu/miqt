@@ -79,8 +79,7 @@ func QLibraryInfo_IsDebugBuild() bool {
 }
 
 func QLibraryInfo_Version() *QVersionNumber {
-	_ret := C.QLibraryInfo_Version()
-	_goptr := newQVersionNumber(_ret)
+	_goptr := newQVersionNumber(C.QLibraryInfo_Version())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

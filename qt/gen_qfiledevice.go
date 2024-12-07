@@ -113,7 +113,7 @@ func UnsafeNewQFileDevice(h unsafe.Pointer, h_QIODevice unsafe.Pointer, h_QObjec
 }
 
 func (this *QFileDevice) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QFileDevice_MetaObject(this.h)))
+	return newQMetaObject(C.QFileDevice_MetaObject(this.h))
 }
 
 func (this *QFileDevice) Metacast(param1 string) unsafe.Pointer {
@@ -208,8 +208,7 @@ func (this *QFileDevice) Unmap(address *byte) bool {
 }
 
 func (this *QFileDevice) FileTime(time QFileDevice__FileTime) *QDateTime {
-	_ret := C.QFileDevice_FileTime(this.h, (C.int)(time))
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QFileDevice_FileTime(this.h, (C.int)(time)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -164,7 +164,7 @@ func NewQInputDevice5(name string, systemId int64, typeVal QInputDevice__DeviceT
 }
 
 func (this *QInputDevice) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QInputDevice_MetaObject(this.h)))
+	return newQMetaObject(C.QInputDevice_MetaObject(this.h))
 }
 
 func (this *QInputDevice) Metacast(param1 string) unsafe.Pointer {
@@ -213,8 +213,7 @@ func (this *QInputDevice) SeatName() string {
 }
 
 func (this *QInputDevice) AvailableVirtualGeometry() *QRect {
-	_ret := C.QInputDevice_AvailableVirtualGeometry(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QInputDevice_AvailableVirtualGeometry(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -237,13 +236,13 @@ func QInputDevice_Devices() []*QInputDevice {
 	_ret := make([]*QInputDevice, int(_ma.len))
 	_outCast := (*[0xffff]*C.QInputDevice)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQInputDevice(unsafe.Pointer(_outCast[i]), nil)
+		_ret[i] = newQInputDevice(_outCast[i], nil)
 	}
 	return _ret
 }
 
 func QInputDevice_PrimaryKeyboard() *QInputDevice {
-	return UnsafeNewQInputDevice(unsafe.Pointer(C.QInputDevice_PrimaryKeyboard()), nil)
+	return newQInputDevice(C.QInputDevice_PrimaryKeyboard(), nil)
 }
 
 func (this *QInputDevice) OperatorEqual(other *QInputDevice) bool {
@@ -265,8 +264,7 @@ func miqt_exec_callback_QInputDevice_AvailableVirtualGeometryChanged(cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	area_ret := area
-	area_goptr := newQRect(area_ret)
+	area_goptr := newQRect(area)
 	area_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *area_goptr
 
@@ -300,7 +298,7 @@ func QInputDevice_PrimaryKeyboard1(seatName string) *QInputDevice {
 	seatName_ms.data = C.CString(seatName)
 	seatName_ms.len = C.size_t(len(seatName))
 	defer C.free(unsafe.Pointer(seatName_ms.data))
-	return UnsafeNewQInputDevice(unsafe.Pointer(C.QInputDevice_PrimaryKeyboard1(seatName_ms)), nil)
+	return newQInputDevice(C.QInputDevice_PrimaryKeyboard1(seatName_ms), nil)
 }
 
 func (this *QInputDevice) callVirtualBase_Event(event *QEvent) bool {
@@ -323,7 +321,7 @@ func miqt_exec_callback_QInputDevice_Event(self *C.QInputDevice, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QInputDevice{h: self}).callVirtualBase_Event, slotval1)
 
@@ -351,8 +349,9 @@ func miqt_exec_callback_QInputDevice_EventFilter(self *C.QInputDevice, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QInputDevice{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -380,7 +379,7 @@ func miqt_exec_callback_QInputDevice_TimerEvent(self *C.QInputDevice, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QInputDevice{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -406,7 +405,7 @@ func miqt_exec_callback_QInputDevice_ChildEvent(self *C.QInputDevice, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QInputDevice{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -432,7 +431,7 @@ func miqt_exec_callback_QInputDevice_CustomEvent(self *C.QInputDevice, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QInputDevice{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -458,7 +457,7 @@ func miqt_exec_callback_QInputDevice_ConnectNotify(self *C.QInputDevice, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QInputDevice{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -484,7 +483,7 @@ func miqt_exec_callback_QInputDevice_DisconnectNotify(self *C.QInputDevice, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QInputDevice{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

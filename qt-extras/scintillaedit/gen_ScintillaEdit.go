@@ -1783,8 +1783,7 @@ func NewScintilla__Internal__Point4(x_ float64, y_ float64) *Scintilla__Internal
 }
 
 func Scintilla__Internal__Point_FromInts(x_ int, y_ int) *Scintilla__Internal__Point {
-	_ret := C.Scintilla__Internal__Point_FromInts((C.int)(x_), (C.int)(y_))
-	_goptr := newScintilla__Internal__Point(_ret)
+	_goptr := newScintilla__Internal__Point(C.Scintilla__Internal__Point_FromInts((C.int)(x_), (C.int)(y_)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1798,15 +1797,13 @@ func (this *Scintilla__Internal__Point) OperatorNotEqual(other Scintilla__Intern
 }
 
 func (this *Scintilla__Internal__Point) OperatorPlus(other Scintilla__Internal__Point) *Scintilla__Internal__Point {
-	_ret := C.Scintilla__Internal__Point_OperatorPlus(this.h, other.cPointer())
-	_goptr := newScintilla__Internal__Point(_ret)
+	_goptr := newScintilla__Internal__Point(C.Scintilla__Internal__Point_OperatorPlus(this.h, other.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *Scintilla__Internal__Point) OperatorMinus(other Scintilla__Internal__Point) *Scintilla__Internal__Point {
-	_ret := C.Scintilla__Internal__Point_OperatorMinus(this.h, other.cPointer())
-	_goptr := newScintilla__Internal__Point(_ret)
+	_goptr := newScintilla__Internal__Point(C.Scintilla__Internal__Point_OperatorMinus(this.h, other.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1878,8 +1875,7 @@ func (this *Scintilla__Internal__Interval) Intersects(other Scintilla__Internal_
 }
 
 func (this *Scintilla__Internal__Interval) Offset(offset float64) *Scintilla__Internal__Interval {
-	_ret := C.Scintilla__Internal__Interval_Offset(this.h, (C.double)(offset))
-	_goptr := newScintilla__Internal__Interval(_ret)
+	_goptr := newScintilla__Internal__Interval(C.Scintilla__Internal__Interval_Offset(this.h, (C.double)(offset)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1995,8 +1991,7 @@ func NewScintilla__Internal__PRectangle6(left_ float64, top_ float64, right_ flo
 }
 
 func Scintilla__Internal__PRectangle_FromInts(left_ int, top_ int, right_ int, bottom_ int) *Scintilla__Internal__PRectangle {
-	_ret := C.Scintilla__Internal__PRectangle_FromInts((C.int)(left_), (C.int)(top_), (C.int)(right_), (C.int)(bottom_))
-	_goptr := newScintilla__Internal__PRectangle(_ret)
+	_goptr := newScintilla__Internal__PRectangle(C.Scintilla__Internal__PRectangle_FromInts((C.int)(left_), (C.int)(top_), (C.int)(right_), (C.int)(bottom_)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -2030,29 +2025,25 @@ func (this *Scintilla__Internal__PRectangle) Move(xDelta float64, yDelta float64
 }
 
 func (this *Scintilla__Internal__PRectangle) WithHorizontalBounds(horizontal Scintilla__Internal__Interval) *Scintilla__Internal__PRectangle {
-	_ret := C.Scintilla__Internal__PRectangle_WithHorizontalBounds(this.h, horizontal.cPointer())
-	_goptr := newScintilla__Internal__PRectangle(_ret)
+	_goptr := newScintilla__Internal__PRectangle(C.Scintilla__Internal__PRectangle_WithHorizontalBounds(this.h, horizontal.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *Scintilla__Internal__PRectangle) Inset(delta float64) *Scintilla__Internal__PRectangle {
-	_ret := C.Scintilla__Internal__PRectangle_Inset(this.h, (C.double)(delta))
-	_goptr := newScintilla__Internal__PRectangle(_ret)
+	_goptr := newScintilla__Internal__PRectangle(C.Scintilla__Internal__PRectangle_Inset(this.h, (C.double)(delta)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *Scintilla__Internal__PRectangle) InsetWithDelta(delta Scintilla__Internal__Point) *Scintilla__Internal__PRectangle {
-	_ret := C.Scintilla__Internal__PRectangle_InsetWithDelta(this.h, delta.cPointer())
-	_goptr := newScintilla__Internal__PRectangle(_ret)
+	_goptr := newScintilla__Internal__PRectangle(C.Scintilla__Internal__PRectangle_InsetWithDelta(this.h, delta.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *Scintilla__Internal__PRectangle) Centre() *Scintilla__Internal__Point {
-	_ret := C.Scintilla__Internal__PRectangle_Centre(this.h)
-	_goptr := newScintilla__Internal__Point(_ret)
+	_goptr := newScintilla__Internal__Point(C.Scintilla__Internal__PRectangle_Centre(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -2180,36 +2171,31 @@ func NewScintilla__Internal__ColourRGBA6(red uint, green uint, blue uint, alpha 
 }
 
 func Scintilla__Internal__ColourRGBA_FromRGB(co_ int) *Scintilla__Internal__ColourRGBA {
-	_ret := C.Scintilla__Internal__ColourRGBA_FromRGB((C.int)(co_))
-	_goptr := newScintilla__Internal__ColourRGBA(_ret)
+	_goptr := newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_FromRGB((C.int)(co_)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func Scintilla__Internal__ColourRGBA_Grey(grey uint) *Scintilla__Internal__ColourRGBA {
-	_ret := C.Scintilla__Internal__ColourRGBA_Grey((C.uint)(grey))
-	_goptr := newScintilla__Internal__ColourRGBA(_ret)
+	_goptr := newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_Grey((C.uint)(grey)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func Scintilla__Internal__ColourRGBA_FromIpRGB(co_ uintptr) *Scintilla__Internal__ColourRGBA {
-	_ret := C.Scintilla__Internal__ColourRGBA_FromIpRGB((C.intptr_t)(co_))
-	_goptr := newScintilla__Internal__ColourRGBA(_ret)
+	_goptr := newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_FromIpRGB((C.intptr_t)(co_)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *Scintilla__Internal__ColourRGBA) WithoutAlpha() *Scintilla__Internal__ColourRGBA {
-	_ret := C.Scintilla__Internal__ColourRGBA_WithoutAlpha(this.h)
-	_goptr := newScintilla__Internal__ColourRGBA(_ret)
+	_goptr := newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_WithoutAlpha(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *Scintilla__Internal__ColourRGBA) Opaque() *Scintilla__Internal__ColourRGBA {
-	_ret := C.Scintilla__Internal__ColourRGBA_Opaque(this.h)
-	_goptr := newScintilla__Internal__ColourRGBA(_ret)
+	_goptr := newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_Opaque(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -2263,15 +2249,13 @@ func (this *Scintilla__Internal__ColourRGBA) IsOpaque() bool {
 }
 
 func (this *Scintilla__Internal__ColourRGBA) MixedWith(other Scintilla__Internal__ColourRGBA) *Scintilla__Internal__ColourRGBA {
-	_ret := C.Scintilla__Internal__ColourRGBA_MixedWith(this.h, other.cPointer())
-	_goptr := newScintilla__Internal__ColourRGBA(_ret)
+	_goptr := newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_MixedWith(this.h, other.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *Scintilla__Internal__ColourRGBA) MixedWith2(other Scintilla__Internal__ColourRGBA, proportion float64) *Scintilla__Internal__ColourRGBA {
-	_ret := C.Scintilla__Internal__ColourRGBA_MixedWith2(this.h, other.cPointer(), (C.double)(proportion))
-	_goptr := newScintilla__Internal__ColourRGBA(_ret)
+	_goptr := newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_MixedWith2(this.h, other.cPointer(), (C.double)(proportion)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -2281,8 +2265,7 @@ func (this *Scintilla__Internal__ColourRGBA) OperatorAssign(param1 *Scintilla__I
 }
 
 func Scintilla__Internal__ColourRGBA_Grey2(grey uint, alpha uint) *Scintilla__Internal__ColourRGBA {
-	_ret := C.Scintilla__Internal__ColourRGBA_Grey2((C.uint)(grey), (C.uint)(alpha))
-	_goptr := newScintilla__Internal__ColourRGBA(_ret)
+	_goptr := newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_Grey2((C.uint)(grey), (C.uint)(alpha)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -3438,7 +3421,7 @@ func (this *Scintilla__Internal__IScreenLine) TabWidthMinimumPixels() float64 {
 }
 
 func (this *Scintilla__Internal__IScreenLine) FontOfPosition(position uint64) *Scintilla__Internal__Font {
-	return UnsafeNewScintilla__Internal__Font(unsafe.Pointer(C.Scintilla__Internal__IScreenLine_FontOfPosition(this.h, (C.size_t)(position))))
+	return newScintilla__Internal__Font(C.Scintilla__Internal__IScreenLine_FontOfPosition(this.h, (C.size_t)(position)))
 }
 
 func (this *Scintilla__Internal__IScreenLine) RepresentationWidth(position uint64) float64 {
@@ -3829,8 +3812,7 @@ func miqt_exec_callback_Scintilla__Internal__Surface_SetMode(self *C.Scintilla__
 	}
 
 	// Convert all CABI parameters to Go parameters
-	mode_ret := mode
-	mode_goptr := newScintilla__Internal__SurfaceMode(mode_ret)
+	mode_goptr := newScintilla__Internal__SurfaceMode(mode)
 	mode_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *mode_goptr
 
@@ -3970,18 +3952,15 @@ func miqt_exec_callback_Scintilla__Internal__Surface_LineDraw(self *C.Scintilla_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	start_ret := start
-	start_goptr := newScintilla__Internal__Point(start_ret)
+	start_goptr := newScintilla__Internal__Point(start)
 	start_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *start_goptr
 
-	end_ret := end
-	end_goptr := newScintilla__Internal__Point(end_ret)
+	end_goptr := newScintilla__Internal__Point(end)
 	end_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval2 := *end_goptr
 
-	stroke_ret := stroke
-	stroke_goptr := newScintilla__Internal__Stroke(stroke_ret)
+	stroke_goptr := newScintilla__Internal__Stroke(stroke)
 	stroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval3 := *stroke_goptr
 
@@ -4003,11 +3982,11 @@ func miqt_exec_callback_Scintilla__Internal__Surface_PolyLine(self *C.Scintilla_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewScintilla__Internal__Point(unsafe.Pointer(pts))
+	slotval1 := newScintilla__Internal__Point(pts)
+
 	slotval2 := (uint64)(npts)
 
-	stroke_ret := stroke
-	stroke_goptr := newScintilla__Internal__Stroke(stroke_ret)
+	stroke_goptr := newScintilla__Internal__Stroke(stroke)
 	stroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval3 := *stroke_goptr
 
@@ -4029,11 +4008,11 @@ func miqt_exec_callback_Scintilla__Internal__Surface_Polygon(self *C.Scintilla__
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewScintilla__Internal__Point(unsafe.Pointer(pts))
+	slotval1 := newScintilla__Internal__Point(pts)
+
 	slotval2 := (uint64)(npts)
 
-	fillStroke_ret := fillStroke
-	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke_ret)
+	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke)
 	fillStroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval3 := *fillStroke_goptr
 
@@ -4055,13 +4034,11 @@ func miqt_exec_callback_Scintilla__Internal__Surface_RectangleDraw(self *C.Scint
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rc_ret := rc
-	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr := newScintilla__Internal__PRectangle(rc)
 	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *rc_goptr
 
-	fillStroke_ret := fillStroke
-	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke_ret)
+	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke)
 	fillStroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval2 := *fillStroke_goptr
 
@@ -4083,13 +4060,11 @@ func miqt_exec_callback_Scintilla__Internal__Surface_RectangleFrame(self *C.Scin
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rc_ret := rc
-	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr := newScintilla__Internal__PRectangle(rc)
 	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *rc_goptr
 
-	stroke_ret := stroke
-	stroke_goptr := newScintilla__Internal__Stroke(stroke_ret)
+	stroke_goptr := newScintilla__Internal__Stroke(stroke)
 	stroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval2 := *stroke_goptr
 
@@ -4111,13 +4086,11 @@ func miqt_exec_callback_Scintilla__Internal__Surface_FillRectangle(self *C.Scint
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rc_ret := rc
-	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr := newScintilla__Internal__PRectangle(rc)
 	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *rc_goptr
 
-	fill_ret := fill
-	fill_goptr := newScintilla__Internal__Fill(fill_ret)
+	fill_goptr := newScintilla__Internal__Fill(fill)
 	fill_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval2 := *fill_goptr
 
@@ -4139,13 +4112,11 @@ func miqt_exec_callback_Scintilla__Internal__Surface_FillRectangleAligned(self *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rc_ret := rc
-	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr := newScintilla__Internal__PRectangle(rc)
 	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *rc_goptr
 
-	fill_ret := fill
-	fill_goptr := newScintilla__Internal__Fill(fill_ret)
+	fill_goptr := newScintilla__Internal__Fill(fill)
 	fill_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval2 := *fill_goptr
 
@@ -4167,12 +4138,11 @@ func miqt_exec_callback_Scintilla__Internal__Surface_FillRectangle2(self *C.Scin
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rc_ret := rc
-	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr := newScintilla__Internal__PRectangle(rc)
 	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *rc_goptr
 
-	slotval2 := UnsafeNewScintilla__Internal__Surface(unsafe.Pointer(surfacePattern))
+	slotval2 := newScintilla__Internal__Surface(surfacePattern)
 
 	gofunc(slotval1, slotval2)
 
@@ -4192,13 +4162,11 @@ func miqt_exec_callback_Scintilla__Internal__Surface_RoundedRectangle(self *C.Sc
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rc_ret := rc
-	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr := newScintilla__Internal__PRectangle(rc)
 	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *rc_goptr
 
-	fillStroke_ret := fillStroke
-	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke_ret)
+	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke)
 	fillStroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval2 := *fillStroke_goptr
 
@@ -4220,15 +4188,13 @@ func miqt_exec_callback_Scintilla__Internal__Surface_AlphaRectangle(self *C.Scin
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rc_ret := rc
-	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr := newScintilla__Internal__PRectangle(rc)
 	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *rc_goptr
 
 	slotval2 := (float64)(cornerSize)
 
-	fillStroke_ret := fillStroke
-	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke_ret)
+	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke)
 	fillStroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval3 := *fillStroke_goptr
 
@@ -4250,8 +4216,7 @@ func miqt_exec_callback_Scintilla__Internal__Surface_DrawRGBAImage(self *C.Scint
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rc_ret := rc
-	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr := newScintilla__Internal__PRectangle(rc)
 	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *rc_goptr
 
@@ -4279,13 +4244,11 @@ func miqt_exec_callback_Scintilla__Internal__Surface_Ellipse(self *C.Scintilla__
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rc_ret := rc
-	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr := newScintilla__Internal__PRectangle(rc)
 	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *rc_goptr
 
-	fillStroke_ret := fillStroke
-	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke_ret)
+	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke)
 	fillStroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval2 := *fillStroke_goptr
 
@@ -4307,13 +4270,11 @@ func miqt_exec_callback_Scintilla__Internal__Surface_Stadium(self *C.Scintilla__
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rc_ret := rc
-	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr := newScintilla__Internal__PRectangle(rc)
 	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *rc_goptr
 
-	fillStroke_ret := fillStroke
-	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke_ret)
+	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke)
 	fillStroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval2 := *fillStroke_goptr
 
@@ -4337,17 +4298,15 @@ func miqt_exec_callback_Scintilla__Internal__Surface_Copy(self *C.Scintilla__Int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rc_ret := rc
-	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr := newScintilla__Internal__PRectangle(rc)
 	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *rc_goptr
 
-	from_ret := from
-	from_goptr := newScintilla__Internal__Point(from_ret)
+	from_goptr := newScintilla__Internal__Point(from)
 	from_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval2 := *from_goptr
 
-	slotval3 := UnsafeNewScintilla__Internal__Surface(unsafe.Pointer(surfaceSource))
+	slotval3 := newScintilla__Internal__Surface(surfaceSource)
 
 	gofunc(slotval1, slotval2, slotval3)
 
@@ -4367,7 +4326,7 @@ func miqt_exec_callback_Scintilla__Internal__Surface_Ascent(self *C.Scintilla__I
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewScintilla__Internal__Font(unsafe.Pointer(font_))
+	slotval1 := newScintilla__Internal__Font(font_)
 
 	virtualReturn := gofunc(slotval1)
 
@@ -4389,7 +4348,7 @@ func miqt_exec_callback_Scintilla__Internal__Surface_Descent(self *C.Scintilla__
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewScintilla__Internal__Font(unsafe.Pointer(font_))
+	slotval1 := newScintilla__Internal__Font(font_)
 
 	virtualReturn := gofunc(slotval1)
 
@@ -4411,7 +4370,7 @@ func miqt_exec_callback_Scintilla__Internal__Surface_InternalLeading(self *C.Sci
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewScintilla__Internal__Font(unsafe.Pointer(font_))
+	slotval1 := newScintilla__Internal__Font(font_)
 
 	virtualReturn := gofunc(slotval1)
 
@@ -4433,7 +4392,7 @@ func miqt_exec_callback_Scintilla__Internal__Surface_Height(self *C.Scintilla__I
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewScintilla__Internal__Font(unsafe.Pointer(font_))
+	slotval1 := newScintilla__Internal__Font(font_)
 
 	virtualReturn := gofunc(slotval1)
 
@@ -4455,7 +4414,7 @@ func miqt_exec_callback_Scintilla__Internal__Surface_AverageCharWidth(self *C.Sc
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewScintilla__Internal__Font(unsafe.Pointer(font_))
+	slotval1 := newScintilla__Internal__Font(font_)
 
 	virtualReturn := gofunc(slotval1)
 
@@ -4477,8 +4436,7 @@ func miqt_exec_callback_Scintilla__Internal__Surface_SetClip(self *C.Scintilla__
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rc_ret := rc
-	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr := newScintilla__Internal__PRectangle(rc)
 	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *rc_goptr
 
@@ -4614,8 +4572,7 @@ func (this *Scintilla__Internal__Window) Destroy() {
 }
 
 func (this *Scintilla__Internal__Window) GetPosition() *Scintilla__Internal__PRectangle {
-	_ret := C.Scintilla__Internal__Window_GetPosition(this.h)
-	_goptr := newScintilla__Internal__PRectangle(_ret)
+	_goptr := newScintilla__Internal__PRectangle(C.Scintilla__Internal__Window_GetPosition(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -4629,8 +4586,7 @@ func (this *Scintilla__Internal__Window) SetPositionRelative(rc Scintilla__Inter
 }
 
 func (this *Scintilla__Internal__Window) GetClientPosition() *Scintilla__Internal__PRectangle {
-	_ret := C.Scintilla__Internal__Window_GetClientPosition(this.h)
-	_goptr := newScintilla__Internal__PRectangle(_ret)
+	_goptr := newScintilla__Internal__PRectangle(C.Scintilla__Internal__Window_GetClientPosition(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -4652,8 +4608,7 @@ func (this *Scintilla__Internal__Window) SetCursor(curs Scintilla__Internal__Win
 }
 
 func (this *Scintilla__Internal__Window) GetMonitorRect(pt Scintilla__Internal__Point) *Scintilla__Internal__PRectangle {
-	_ret := C.Scintilla__Internal__Window_GetMonitorRect(this.h, pt.cPointer())
-	_goptr := newScintilla__Internal__PRectangle(_ret)
+	_goptr := newScintilla__Internal__PRectangle(C.Scintilla__Internal__Window_GetMonitorRect(this.h, pt.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -4915,8 +4870,7 @@ func (this *Scintilla__Internal__ListBox) GetVisibleRows() int {
 }
 
 func (this *Scintilla__Internal__ListBox) GetDesiredRect() *Scintilla__Internal__PRectangle {
-	_ret := C.Scintilla__Internal__ListBox_GetDesiredRect(this.h)
-	_goptr := newScintilla__Internal__PRectangle(_ret)
+	_goptr := newScintilla__Internal__PRectangle(C.Scintilla__Internal__ListBox_GetDesiredRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -4995,7 +4949,7 @@ func miqt_exec_callback_Scintilla__Internal__ListBox_SetFont(self *C.Scintilla__
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewScintilla__Internal__Font(unsafe.Pointer(font))
+	slotval1 := newScintilla__Internal__Font(font)
 
 	gofunc(slotval1)
 
@@ -5015,11 +4969,11 @@ func miqt_exec_callback_Scintilla__Internal__ListBox_Create(self *C.Scintilla__I
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewScintilla__Internal__Window(unsafe.Pointer(parent))
+	slotval1 := newScintilla__Internal__Window(parent)
+
 	slotval2 := (int)(ctrlID)
 
-	location_ret := location
-	location_goptr := newScintilla__Internal__Point(location_ret)
+	location_goptr := newScintilla__Internal__Point(location)
 	location_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval3 := *location_goptr
 
@@ -5331,7 +5285,7 @@ func miqt_exec_callback_Scintilla__Internal__ListBox_SetDelegate(self *C.Scintil
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewScintilla__Internal__IListBoxDelegate(unsafe.Pointer(lbDelegate))
+	slotval1 := newScintilla__Internal__IListBoxDelegate(lbDelegate)
 
 	gofunc(slotval1)
 
@@ -5376,8 +5330,7 @@ func miqt_exec_callback_Scintilla__Internal__ListBox_SetOptions(self *C.Scintill
 	}
 
 	// Convert all CABI parameters to Go parameters
-	options__ret := options_
-	options__goptr := newScintilla__Internal__ListOptions(options__ret)
+	options__goptr := newScintilla__Internal__ListOptions(options_)
 	options__goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *options__goptr
 
@@ -6826,7 +6779,7 @@ func miqt_exec_callback_ScintillaEditBase_Notify(cb C.intptr_t, pscn *C.Scintill
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewScintilla__NotificationData(unsafe.Pointer(pscn))
+	slotval1 := newScintilla__NotificationData(pscn)
 
 	gofunc(slotval1)
 }
@@ -7487,8 +7440,7 @@ func miqt_exec_callback_ScintillaEditBase_InputMethodEvent(self *C.ScintillaEdit
 
 func (this *ScintillaEditBase) callVirtualBase_InputMethodQuery(query qt.InputMethodQuery) *qt.QVariant {
 
-	_ret := C.ScintillaEditBase_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.ScintillaEditBase_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -7546,8 +7498,7 @@ func miqt_exec_callback_ScintillaEditBase_ScrollContentsBy(self *C.ScintillaEdit
 
 func (this *ScintillaEditBase) callVirtualBase_MinimumSizeHint() *qt.QSize {
 
-	_ret := C.ScintillaEditBase_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEditBase_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -7574,8 +7525,7 @@ func miqt_exec_callback_ScintillaEditBase_MinimumSizeHint(self *C.ScintillaEditB
 
 func (this *ScintillaEditBase) callVirtualBase_SizeHint() *qt.QSize {
 
-	_ret := C.ScintillaEditBase_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEditBase_virtualbase_SizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -7647,6 +7597,7 @@ func miqt_exec_callback_ScintillaEditBase_EventFilter(self *C.ScintillaEditBase,
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(param1))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(param2))
 
 	virtualReturn := gofunc((&ScintillaEditBase{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
@@ -7685,8 +7636,7 @@ func miqt_exec_callback_ScintillaEditBase_ViewportEvent(self *C.ScintillaEditBas
 
 func (this *ScintillaEditBase) callVirtualBase_ViewportSizeHint() *qt.QSize {
 
-	_ret := C.ScintillaEditBase_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEditBase_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -8204,6 +8154,7 @@ func miqt_exec_callback_ScintillaDocument_EventFilter(self *C.ScintillaDocument,
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&ScintillaDocument{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
@@ -8489,7 +8440,7 @@ func (this *ScintillaEdit) GetTextRange(start int, end int) []byte {
 }
 
 func (this *ScintillaEdit) GetDoc() *ScintillaDocument {
-	return UnsafeNewScintillaDocument(unsafe.Pointer(C.ScintillaEdit_GetDoc(this.h)), nil)
+	return newScintillaDocument(C.ScintillaEdit_GetDoc(this.h), nil)
 }
 
 func (this *ScintillaEdit) SetDoc(pdoc_ *ScintillaDocument) {
@@ -12509,8 +12460,7 @@ func miqt_exec_callback_ScintillaEdit_InputMethodEvent(self *C.ScintillaEdit, cb
 
 func (this *ScintillaEdit) callVirtualBase_InputMethodQuery(query qt.InputMethodQuery) *qt.QVariant {
 
-	_ret := C.ScintillaEdit_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.ScintillaEdit_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

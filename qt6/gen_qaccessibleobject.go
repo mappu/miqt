@@ -57,12 +57,11 @@ func (this *QAccessibleObject) IsValid() bool {
 }
 
 func (this *QAccessibleObject) Object() *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QAccessibleObject_Object(this.h)))
+	return newQObject(C.QAccessibleObject_Object(this.h))
 }
 
 func (this *QAccessibleObject) Rect() *QRect {
-	_ret := C.QAccessibleObject_Rect(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QAccessibleObject_Rect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -76,7 +75,7 @@ func (this *QAccessibleObject) SetText(t QAccessible__Text, text string) {
 }
 
 func (this *QAccessibleObject) ChildAt(x int, y int) *QAccessibleInterface {
-	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleObject_ChildAt(this.h, (C.int)(x), (C.int)(y))))
+	return newQAccessibleInterface(C.QAccessibleObject_ChildAt(this.h, (C.int)(x), (C.int)(y)))
 }
 
 type QAccessibleApplication struct {
@@ -131,7 +130,7 @@ func NewQAccessibleApplication() *QAccessibleApplication {
 }
 
 func (this *QAccessibleApplication) Window() *QWindow {
-	return UnsafeNewQWindow(unsafe.Pointer(C.QAccessibleApplication_Window(this.h)), nil, nil)
+	return newQWindow(C.QAccessibleApplication_Window(this.h), nil, nil)
 }
 
 func (this *QAccessibleApplication) ChildCount() int {
@@ -143,15 +142,15 @@ func (this *QAccessibleApplication) IndexOfChild(param1 *QAccessibleInterface) i
 }
 
 func (this *QAccessibleApplication) FocusChild() *QAccessibleInterface {
-	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleApplication_FocusChild(this.h)))
+	return newQAccessibleInterface(C.QAccessibleApplication_FocusChild(this.h))
 }
 
 func (this *QAccessibleApplication) Parent() *QAccessibleInterface {
-	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleApplication_Parent(this.h)))
+	return newQAccessibleInterface(C.QAccessibleApplication_Parent(this.h))
 }
 
 func (this *QAccessibleApplication) Child(index int) *QAccessibleInterface {
-	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleApplication_Child(this.h, (C.int)(index))))
+	return newQAccessibleInterface(C.QAccessibleApplication_Child(this.h, (C.int)(index)))
 }
 
 func (this *QAccessibleApplication) Text(t QAccessible__Text) string {
@@ -166,8 +165,7 @@ func (this *QAccessibleApplication) Role() QAccessible__Role {
 }
 
 func (this *QAccessibleApplication) State() *QAccessible__State {
-	_ret := C.QAccessibleApplication_State(this.h)
-	_goptr := newQAccessible__State(_ret)
+	_goptr := newQAccessible__State(C.QAccessibleApplication_State(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

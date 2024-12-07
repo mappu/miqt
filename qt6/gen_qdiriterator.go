@@ -213,8 +213,7 @@ func (this *QDirIterator) Next() string {
 }
 
 func (this *QDirIterator) NextFileInfo() *QFileInfo {
-	_ret := C.QDirIterator_NextFileInfo(this.h)
-	_goptr := newQFileInfo(_ret)
+	_goptr := newQFileInfo(C.QDirIterator_NextFileInfo(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -238,8 +237,7 @@ func (this *QDirIterator) FilePath() string {
 }
 
 func (this *QDirIterator) FileInfo() *QFileInfo {
-	_ret := C.QDirIterator_FileInfo(this.h)
-	_goptr := newQFileInfo(_ret)
+	_goptr := newQFileInfo(C.QDirIterator_FileInfo(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

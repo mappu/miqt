@@ -81,8 +81,7 @@ func (this *QPagedPaintDevice) SetPageMargins(margins *QMarginsF, units QPageLay
 }
 
 func (this *QPagedPaintDevice) PageLayout() *QPageLayout {
-	_ret := C.QPagedPaintDevice_PageLayout(this.h)
-	_goptr := newQPageLayout(_ret)
+	_goptr := newQPageLayout(C.QPagedPaintDevice_PageLayout(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -92,8 +91,7 @@ func (this *QPagedPaintDevice) SetPageRanges(ranges *QPageRanges) {
 }
 
 func (this *QPagedPaintDevice) PageRanges() *QPageRanges {
-	_ret := C.QPagedPaintDevice_PageRanges(this.h)
-	_goptr := newQPageRanges(_ret)
+	_goptr := newQPageRanges(C.QPagedPaintDevice_PageRanges(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

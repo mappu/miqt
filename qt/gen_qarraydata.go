@@ -93,11 +93,11 @@ func (this *QArrayData) CloneFlags() QArrayData__AllocationOption {
 }
 
 func QArrayData_Allocate(objectSize uint64, alignment uint64, capacity uint64) *QArrayData {
-	return UnsafeNewQArrayData(unsafe.Pointer(C.QArrayData_Allocate((C.size_t)(objectSize), (C.size_t)(alignment), (C.size_t)(capacity))))
+	return newQArrayData(C.QArrayData_Allocate((C.size_t)(objectSize), (C.size_t)(alignment), (C.size_t)(capacity)))
 }
 
 func QArrayData_ReallocateUnaligned(data *QArrayData, objectSize uint64, newCapacity uint64) *QArrayData {
-	return UnsafeNewQArrayData(unsafe.Pointer(C.QArrayData_ReallocateUnaligned(data.cPointer(), (C.size_t)(objectSize), (C.size_t)(newCapacity))))
+	return newQArrayData(C.QArrayData_ReallocateUnaligned(data.cPointer(), (C.size_t)(objectSize), (C.size_t)(newCapacity)))
 }
 
 func QArrayData_Deallocate(data *QArrayData, objectSize uint64, alignment uint64) {
@@ -105,15 +105,15 @@ func QArrayData_Deallocate(data *QArrayData, objectSize uint64, alignment uint64
 }
 
 func QArrayData_SharedNull() *QArrayData {
-	return UnsafeNewQArrayData(unsafe.Pointer(C.QArrayData_SharedNull()))
+	return newQArrayData(C.QArrayData_SharedNull())
 }
 
 func QArrayData_Allocate4(objectSize uint64, alignment uint64, capacity uint64, options QArrayData__AllocationOption) *QArrayData {
-	return UnsafeNewQArrayData(unsafe.Pointer(C.QArrayData_Allocate4((C.size_t)(objectSize), (C.size_t)(alignment), (C.size_t)(capacity), (C.int)(options))))
+	return newQArrayData(C.QArrayData_Allocate4((C.size_t)(objectSize), (C.size_t)(alignment), (C.size_t)(capacity), (C.int)(options)))
 }
 
 func QArrayData_ReallocateUnaligned4(data *QArrayData, objectSize uint64, newCapacity uint64, newOptions QArrayData__AllocationOption) *QArrayData {
-	return UnsafeNewQArrayData(unsafe.Pointer(C.QArrayData_ReallocateUnaligned4(data.cPointer(), (C.size_t)(objectSize), (C.size_t)(newCapacity), (C.int)(newOptions))))
+	return newQArrayData(C.QArrayData_ReallocateUnaligned4(data.cPointer(), (C.size_t)(objectSize), (C.size_t)(newCapacity), (C.int)(newOptions)))
 }
 
 // Delete this object from C++ memory.

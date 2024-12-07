@@ -118,7 +118,7 @@ func NewQRadioButton4(text string, parent *QWidget) *QRadioButton {
 }
 
 func (this *QRadioButton) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QRadioButton_MetaObject(this.h)))
+	return newQMetaObject(C.QRadioButton_MetaObject(this.h))
 }
 
 func (this *QRadioButton) Metacast(param1 string) unsafe.Pointer {
@@ -137,15 +137,13 @@ func QRadioButton_Tr(s string) string {
 }
 
 func (this *QRadioButton) SizeHint() *QSize {
-	_ret := C.QRadioButton_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QRadioButton_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRadioButton) MinimumSizeHint() *QSize {
-	_ret := C.QRadioButton_MinimumSizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QRadioButton_MinimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -174,8 +172,7 @@ func QRadioButton_Tr3(s string, c string, n int) string {
 
 func (this *QRadioButton) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QRadioButton_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QRadioButton_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -202,8 +199,7 @@ func miqt_exec_callback_QRadioButton_SizeHint(self *C.QRadioButton, cb C.intptr_
 
 func (this *QRadioButton) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QRadioButton_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QRadioButton_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -248,7 +244,7 @@ func miqt_exec_callback_QRadioButton_Event(self *C.QRadioButton, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QRadioButton{h: self}).callVirtualBase_Event, slotval1)
 
@@ -276,7 +272,7 @@ func miqt_exec_callback_QRadioButton_HitButton(self *C.QRadioButton, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(param1))
+	slotval1 := newQPoint(param1)
 
 	virtualReturn := gofunc((&QRadioButton{h: self}).callVirtualBase_HitButton, slotval1)
 
@@ -304,7 +300,7 @@ func miqt_exec_callback_QRadioButton_PaintEvent(self *C.QRadioButton, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQPaintEvent(param1, nil)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -330,7 +326,7 @@ func miqt_exec_callback_QRadioButton_MouseMoveEvent(self *C.QRadioButton, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(param1, nil, nil, nil, nil)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -356,7 +352,7 @@ func miqt_exec_callback_QRadioButton_InitStyleOption(self *C.QRadioButton, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStyleOptionButton(unsafe.Pointer(button), nil)
+	slotval1 := newQStyleOptionButton(button, nil)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_InitStyleOption, slotval1)
 
@@ -428,7 +424,7 @@ func miqt_exec_callback_QRadioButton_KeyPressEvent(self *C.QRadioButton, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQKeyEvent(e, nil, nil)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -454,7 +450,7 @@ func miqt_exec_callback_QRadioButton_KeyReleaseEvent(self *C.QRadioButton, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQKeyEvent(e, nil, nil)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -480,7 +476,7 @@ func miqt_exec_callback_QRadioButton_MousePressEvent(self *C.QRadioButton, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(e, nil, nil, nil, nil)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -506,7 +502,7 @@ func miqt_exec_callback_QRadioButton_MouseReleaseEvent(self *C.QRadioButton, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(e, nil, nil, nil, nil)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -532,7 +528,7 @@ func miqt_exec_callback_QRadioButton_FocusInEvent(self *C.QRadioButton, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQFocusEvent(e, nil)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -558,7 +554,7 @@ func miqt_exec_callback_QRadioButton_FocusOutEvent(self *C.QRadioButton, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQFocusEvent(e, nil)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -584,7 +580,7 @@ func miqt_exec_callback_QRadioButton_ChangeEvent(self *C.QRadioButton, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -610,7 +606,7 @@ func miqt_exec_callback_QRadioButton_TimerEvent(self *C.QRadioButton, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQTimerEvent(e, nil)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_TimerEvent, slotval1)
 

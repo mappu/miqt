@@ -424,8 +424,7 @@ func miqt_exec_callback_QTcpSocket_SetSocketOption(self *C.QTcpSocket, cb C.intp
 
 func (this *QTcpSocket) callVirtualBase_SocketOption(option QAbstractSocket__SocketOption) *qt.QVariant {
 
-	_ret := C.QTcpSocket_virtualbase_SocketOption(unsafe.Pointer(this.h), (C.int)(option))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QTcpSocket_virtualbase_SocketOption(unsafe.Pointer(this.h), (C.int)(option))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

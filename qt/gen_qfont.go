@@ -669,8 +669,7 @@ func (this *QFont) LastResortFont() string {
 }
 
 func (this *QFont) Resolve(param1 *QFont) *QFont {
-	_ret := C.QFont_Resolve(this.h, param1.cPointer())
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QFont_Resolve(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -454,8 +454,7 @@ func (this *QsciScintilla) ClearRegisteredImages() {
 }
 
 func (this *QsciScintilla) Color() *qt.QColor {
-	_ret := C.QsciScintilla_Color(this.h)
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciScintilla_Color(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -479,8 +478,7 @@ func (this *QsciScintilla) CreateStandardContextMenu() *qt.QMenu {
 }
 
 func (this *QsciScintilla) Document() *QsciDocument {
-	_ret := C.QsciScintilla_Document(this.h)
-	_goptr := newQsciDocument(_ret)
+	_goptr := newQsciDocument(C.QsciScintilla_Document(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -490,8 +488,7 @@ func (this *QsciScintilla) EndUndoAction() {
 }
 
 func (this *QsciScintilla) EdgeColor() *qt.QColor {
-	_ret := C.QsciScintilla_EdgeColor(this.h)
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciScintilla_EdgeColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -649,12 +646,11 @@ func (this *QsciScintilla) Length() int {
 }
 
 func (this *QsciScintilla) Lexer() *QsciLexer {
-	return UnsafeNewQsciLexer(unsafe.Pointer(C.QsciScintilla_Lexer(this.h)), nil)
+	return newQsciLexer(C.QsciScintilla_Lexer(this.h), nil)
 }
 
 func (this *QsciScintilla) MarginBackgroundColor(margin int) *qt.QColor {
-	_ret := C.QsciScintilla_MarginBackgroundColor(this.h, (C.int)(margin))
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciScintilla_MarginBackgroundColor(this.h, (C.int)(margin))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -740,8 +736,7 @@ func (this *QsciScintilla) OverwriteMode() bool {
 }
 
 func (this *QsciScintilla) Paper() *qt.QColor {
-	_ret := C.QsciScintilla_Paper(this.h)
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciScintilla_Paper(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1078,7 +1073,7 @@ func (this *QsciScintilla) ShowUserList(id int, list []string) {
 }
 
 func (this *QsciScintilla) StandardCommands() *QsciCommandSet {
-	return UnsafeNewQsciCommandSet(unsafe.Pointer(C.QsciScintilla_StandardCommands(this.h)))
+	return newQsciCommandSet(C.QsciScintilla_StandardCommands(this.h))
 }
 
 func (this *QsciScintilla) TabDrawMode() QsciScintilla__TabDrawMode {
@@ -3385,7 +3380,7 @@ func miqt_exec_callback_QsciScintilla_SetLexer(self *C.QsciScintilla, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQsciLexer(unsafe.Pointer(lexer), nil)
+	slotval1 := newQsciLexer(lexer, nil)
 
 	gofunc((&QsciScintilla{h: self}).callVirtualBase_SetLexer, slotval1)
 
@@ -4271,6 +4266,7 @@ func miqt_exec_callback_QsciScintilla_FromMimeData(self *C.QsciScintilla, cb C.i
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQMimeData(unsafe.Pointer(source), nil)
+
 	slotval2 := (*bool)(unsafe.Pointer(rectangular))
 
 	virtualReturn := gofunc((&QsciScintilla{h: self}).callVirtualBase_FromMimeData, slotval1, slotval2)
@@ -4288,6 +4284,7 @@ func (this *QsciScintilla) callVirtualBase_ToMimeData(text []byte, rectangular b
 	text_alias.len = C.size_t(len(text))
 
 	return qt.UnsafeNewQMimeData(unsafe.Pointer(C.QsciScintilla_virtualbase_ToMimeData(unsafe.Pointer(this.h), text_alias, (C.bool)(rectangular))), nil)
+
 }
 func (this *QsciScintilla) OnToMimeData(slot func(super func(text []byte, rectangular bool) *qt.QMimeData, text []byte, rectangular bool) *qt.QMimeData) {
 	if !this.isSubclass {
@@ -4554,8 +4551,7 @@ func miqt_exec_callback_QsciScintilla_InputMethodEvent(self *C.QsciScintilla, cb
 
 func (this *QsciScintilla) callVirtualBase_InputMethodQuery(query qt.InputMethodQuery) *qt.QVariant {
 
-	_ret := C.QsciScintilla_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QsciScintilla_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

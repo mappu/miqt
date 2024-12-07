@@ -80,7 +80,7 @@ func NewQSequentialAnimationGroup2(parent *QObject) *QSequentialAnimationGroup {
 }
 
 func (this *QSequentialAnimationGroup) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSequentialAnimationGroup_MetaObject(this.h)))
+	return newQMetaObject(C.QSequentialAnimationGroup_MetaObject(this.h))
 }
 
 func (this *QSequentialAnimationGroup) Metacast(param1 string) unsafe.Pointer {
@@ -99,15 +99,15 @@ func QSequentialAnimationGroup_Tr(s string) string {
 }
 
 func (this *QSequentialAnimationGroup) AddPause(msecs int) *QPauseAnimation {
-	return UnsafeNewQPauseAnimation(unsafe.Pointer(C.QSequentialAnimationGroup_AddPause(this.h, (C.int)(msecs))), nil, nil)
+	return newQPauseAnimation(C.QSequentialAnimationGroup_AddPause(this.h, (C.int)(msecs)), nil, nil)
 }
 
 func (this *QSequentialAnimationGroup) InsertPause(index int, msecs int) *QPauseAnimation {
-	return UnsafeNewQPauseAnimation(unsafe.Pointer(C.QSequentialAnimationGroup_InsertPause(this.h, (C.int)(index), (C.int)(msecs))), nil, nil)
+	return newQPauseAnimation(C.QSequentialAnimationGroup_InsertPause(this.h, (C.int)(index), (C.int)(msecs)), nil, nil)
 }
 
 func (this *QSequentialAnimationGroup) CurrentAnimation() *QAbstractAnimation {
-	return UnsafeNewQAbstractAnimation(unsafe.Pointer(C.QSequentialAnimationGroup_CurrentAnimation(this.h)), nil)
+	return newQAbstractAnimation(C.QSequentialAnimationGroup_CurrentAnimation(this.h), nil)
 }
 
 func (this *QSequentialAnimationGroup) Duration() int {
@@ -129,7 +129,7 @@ func miqt_exec_callback_QSequentialAnimationGroup_CurrentAnimationChanged(cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAbstractAnimation(unsafe.Pointer(current), nil)
+	slotval1 := newQAbstractAnimation(current, nil)
 
 	gofunc(slotval1)
 }
@@ -201,7 +201,7 @@ func miqt_exec_callback_QSequentialAnimationGroup_Event(self *C.QSequentialAnima
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QSequentialAnimationGroup{h: self}).callVirtualBase_Event, slotval1)
 

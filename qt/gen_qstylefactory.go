@@ -67,7 +67,7 @@ func QStyleFactory_Create(param1 string) *QStyle {
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
 	defer C.free(unsafe.Pointer(param1_ms.data))
-	return UnsafeNewQStyle(unsafe.Pointer(C.QStyleFactory_Create(param1_ms)), nil)
+	return newQStyle(C.QStyleFactory_Create(param1_ms), nil)
 }
 
 // Delete this object from C++ memory.

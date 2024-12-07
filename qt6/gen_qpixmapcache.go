@@ -78,8 +78,7 @@ func QPixmapCache_Insert(key string, pixmap *QPixmap) bool {
 }
 
 func QPixmapCache_InsertWithPixmap(pixmap *QPixmap) *QPixmapCache__Key {
-	_ret := C.QPixmapCache_InsertWithPixmap(pixmap.cPointer())
-	_goptr := newQPixmapCache__Key(_ret)
+	_goptr := newQPixmapCache__Key(C.QPixmapCache_InsertWithPixmap(pixmap.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -378,15 +378,13 @@ func (this *QPrinter) FontEmbeddingEnabled() bool {
 }
 
 func (this *QPrinter) PaperRect(param1 QPrinter__Unit) *qt6.QRectF {
-	_ret := C.QPrinter_PaperRect(this.h, (C.int)(param1))
-	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(C.QPrinter_PaperRect(this.h, (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPrinter) PageRect(param1 QPrinter__Unit) *qt6.QRectF {
-	_ret := C.QPrinter_PageRect(this.h, (C.int)(param1))
-	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(C.QPrinter_PageRect(this.h, (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -423,7 +421,7 @@ func (this *QPrinter) PaintEngine() *qt6.QPaintEngine {
 }
 
 func (this *QPrinter) PrintEngine() *QPrintEngine {
-	return UnsafeNewQPrintEngine(unsafe.Pointer(C.QPrinter_PrintEngine(this.h)))
+	return newQPrintEngine(C.QPrinter_PrintEngine(this.h))
 }
 
 func (this *QPrinter) SetFromTo(fromPage int, toPage int) {
@@ -499,6 +497,7 @@ func miqt_exec_callback_QPrinter_NewPage(self *C.QPrinter, cb C.intptr_t) C.bool
 func (this *QPrinter) callVirtualBase_PaintEngine() *qt6.QPaintEngine {
 
 	return qt6.UnsafeNewQPaintEngine(unsafe.Pointer(C.QPrinter_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+
 }
 func (this *QPrinter) OnPaintEngine(slot func(super func() *qt6.QPaintEngine) *qt6.QPaintEngine) {
 	if !this.isSubclass {
@@ -653,6 +652,7 @@ func miqt_exec_callback_QPrinter_SetPageMargins(self *C.QPrinter, cb C.intptr_t,
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQMarginsF(unsafe.Pointer(margins))
+
 	slotval2 := (qt6.QPageLayout__Unit)(units)
 
 	virtualReturn := gofunc((&QPrinter{h: self}).callVirtualBase_SetPageMargins, slotval1, slotval2)

@@ -82,7 +82,7 @@ func NewQDial2() *QDial {
 }
 
 func (this *QDial) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QDial_MetaObject(this.h)))
+	return newQMetaObject(C.QDial_MetaObject(this.h))
 }
 
 func (this *QDial) Metacast(param1 string) unsafe.Pointer {
@@ -121,15 +121,13 @@ func (this *QDial) NotchesVisible() bool {
 }
 
 func (this *QDial) SizeHint() *QSize {
-	_ret := C.QDial_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QDial_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDial) MinimumSizeHint() *QSize {
-	_ret := C.QDial_MinimumSizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QDial_MinimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -166,8 +164,7 @@ func QDial_Tr3(s string, c string, n int) string {
 
 func (this *QDial) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QDial_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QDial_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -194,8 +191,7 @@ func miqt_exec_callback_QDial_SizeHint(self *C.QDial, cb C.intptr_t) *C.QSize {
 
 func (this *QDial) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QDial_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QDial_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -240,7 +236,7 @@ func miqt_exec_callback_QDial_Event(self *C.QDial, cb C.intptr_t, e *C.QEvent) C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QDial{h: self}).callVirtualBase_Event, slotval1)
 
@@ -268,7 +264,7 @@ func miqt_exec_callback_QDial_ResizeEvent(self *C.QDial, cb C.intptr_t, re *C.QR
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(re), nil)
+	slotval1 := newQResizeEvent(re, nil)
 
 	gofunc((&QDial{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -294,7 +290,7 @@ func miqt_exec_callback_QDial_PaintEvent(self *C.QDial, cb C.intptr_t, pe *C.QPa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(pe), nil)
+	slotval1 := newQPaintEvent(pe, nil)
 
 	gofunc((&QDial{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -320,7 +316,7 @@ func miqt_exec_callback_QDial_MousePressEvent(self *C.QDial, cb C.intptr_t, me *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(me), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(me, nil, nil, nil, nil)
 
 	gofunc((&QDial{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -346,7 +342,7 @@ func miqt_exec_callback_QDial_MouseReleaseEvent(self *C.QDial, cb C.intptr_t, me
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(me), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(me, nil, nil, nil, nil)
 
 	gofunc((&QDial{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -372,7 +368,7 @@ func miqt_exec_callback_QDial_MouseMoveEvent(self *C.QDial, cb C.intptr_t, me *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(me), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(me, nil, nil, nil, nil)
 
 	gofunc((&QDial{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -424,7 +420,7 @@ func miqt_exec_callback_QDial_InitStyleOption(self *C.QDial, cb C.intptr_t, opti
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStyleOptionSlider(unsafe.Pointer(option), nil, nil)
+	slotval1 := newQStyleOptionSlider(option, nil, nil)
 
 	gofunc((&QDial{h: self}).callVirtualBase_InitStyleOption, slotval1)
 
@@ -450,7 +446,7 @@ func miqt_exec_callback_QDial_KeyPressEvent(self *C.QDial, cb C.intptr_t, ev *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(ev), nil, nil)
+	slotval1 := newQKeyEvent(ev, nil, nil)
 
 	gofunc((&QDial{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -476,7 +472,7 @@ func miqt_exec_callback_QDial_TimerEvent(self *C.QDial, cb C.intptr_t, param1 *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQTimerEvent(param1, nil)
 
 	gofunc((&QDial{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -502,7 +498,7 @@ func miqt_exec_callback_QDial_WheelEvent(self *C.QDial, cb C.intptr_t, e *C.QWhe
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(e), nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(e, nil, nil, nil, nil)
 
 	gofunc((&QDial{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -528,7 +524,7 @@ func miqt_exec_callback_QDial_ChangeEvent(self *C.QDial, cb C.intptr_t, e *C.QEv
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	gofunc((&QDial{h: self}).callVirtualBase_ChangeEvent, slotval1)
 

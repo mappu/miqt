@@ -80,7 +80,7 @@ func NewQParallelAnimationGroup2(parent *QObject) *QParallelAnimationGroup {
 }
 
 func (this *QParallelAnimationGroup) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QParallelAnimationGroup_MetaObject(this.h)))
+	return newQMetaObject(C.QParallelAnimationGroup_MetaObject(this.h))
 }
 
 func (this *QParallelAnimationGroup) Metacast(param1 string) unsafe.Pointer {
@@ -169,7 +169,7 @@ func miqt_exec_callback_QParallelAnimationGroup_Event(self *C.QParallelAnimation
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QParallelAnimationGroup{h: self}).callVirtualBase_Event, slotval1)
 

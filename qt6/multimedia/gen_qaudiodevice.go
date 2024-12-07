@@ -124,8 +124,7 @@ func (this *QAudioDevice) IsFormatSupported(format *QAudioFormat) bool {
 }
 
 func (this *QAudioDevice) PreferredFormat() *QAudioFormat {
-	_ret := C.QAudioDevice_PreferredFormat(this.h)
-	_goptr := newQAudioFormat(_ret)
+	_goptr := newQAudioFormat(C.QAudioDevice_PreferredFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

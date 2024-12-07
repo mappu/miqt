@@ -104,8 +104,7 @@ func (this *QAbstractVideoBuffer) Unmap() {
 }
 
 func (this *QAbstractVideoBuffer) Handle() *qt.QVariant {
-	_ret := C.QAbstractVideoBuffer_Handle(this.h)
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QAbstractVideoBuffer_Handle(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -197,8 +196,7 @@ func miqt_exec_callback_QAbstractVideoBuffer_Unmap(self *C.QAbstractVideoBuffer,
 
 func (this *QAbstractVideoBuffer) callVirtualBase_Handle() *qt.QVariant {
 
-	_ret := C.QAbstractVideoBuffer_virtualbase_Handle(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QAbstractVideoBuffer_virtualbase_Handle(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -384,8 +382,7 @@ func miqt_exec_callback_QAbstractPlanarVideoBuffer_Unmap(self *C.QAbstractPlanar
 
 func (this *QAbstractPlanarVideoBuffer) callVirtualBase_Handle() *qt.QVariant {
 
-	_ret := C.QAbstractPlanarVideoBuffer_virtualbase_Handle(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QAbstractPlanarVideoBuffer_virtualbase_Handle(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

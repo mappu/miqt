@@ -104,8 +104,7 @@ func (this *QSpatialSound) SetSource(url *qt6.QUrl) {
 }
 
 func (this *QSpatialSound) Source() *qt6.QUrl {
-	_ret := C.QSpatialSound_Source(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QSpatialSound_Source(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -131,8 +130,7 @@ func (this *QSpatialSound) SetPosition(pos qt6.QVector3D) {
 }
 
 func (this *QSpatialSound) Position() *qt6.QVector3D {
-	_ret := C.QSpatialSound_Position(this.h)
-	_goptr := qt6.UnsafeNewQVector3D(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQVector3D(unsafe.Pointer(C.QSpatialSound_Position(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -142,8 +140,7 @@ func (this *QSpatialSound) SetRotation(q *qt6.QQuaternion) {
 }
 
 func (this *QSpatialSound) Rotation() *qt6.QQuaternion {
-	_ret := C.QSpatialSound_Rotation(this.h)
-	_goptr := qt6.UnsafeNewQQuaternion(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQQuaternion(unsafe.Pointer(C.QSpatialSound_Rotation(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -221,7 +218,7 @@ func (this *QSpatialSound) NearFieldGain() float32 {
 }
 
 func (this *QSpatialSound) Engine() *QAudioEngine {
-	return UnsafeNewQAudioEngine(unsafe.Pointer(C.QSpatialSound_Engine(this.h)), nil)
+	return newQAudioEngine(C.QSpatialSound_Engine(this.h), nil)
 }
 
 func (this *QSpatialSound) SourceChanged() {
@@ -545,6 +542,7 @@ func miqt_exec_callback_QSpatialSound_EventFilter(self *C.QSpatialSound, cb C.in
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QSpatialSound{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

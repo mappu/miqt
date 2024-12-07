@@ -114,8 +114,7 @@ func NewQOperatingSystemVersionBase4(osType QOperatingSystemVersionBase__OSType,
 }
 
 func QOperatingSystemVersionBase_Current() *QOperatingSystemVersionBase {
-	_ret := C.QOperatingSystemVersionBase_Current()
-	_goptr := newQOperatingSystemVersionBase(_ret)
+	_goptr := newQOperatingSystemVersionBase(C.QOperatingSystemVersionBase_Current())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -132,8 +131,7 @@ func QOperatingSystemVersionBase_CurrentType() QOperatingSystemVersionBase__OSTy
 }
 
 func (this *QOperatingSystemVersionBase) Version() *QVersionNumber {
-	_ret := C.QOperatingSystemVersionBase_Version(this.h)
-	_goptr := newQVersionNumber(_ret)
+	_goptr := newQVersionNumber(C.QOperatingSystemVersionBase_Version(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -274,8 +272,7 @@ func NewQOperatingSystemVersion5(osType QOperatingSystemVersion__OSType, vmajor 
 }
 
 func QOperatingSystemVersion_Current() *QOperatingSystemVersion {
-	_ret := C.QOperatingSystemVersion_Current()
-	_goptr := newQOperatingSystemVersion(_ret, nil)
+	_goptr := newQOperatingSystemVersion(C.QOperatingSystemVersion_Current(), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -285,8 +282,7 @@ func QOperatingSystemVersion_CurrentType() QOperatingSystemVersion__OSType {
 }
 
 func (this *QOperatingSystemVersion) Version() *QVersionNumber {
-	_ret := C.QOperatingSystemVersion_Version(this.h)
-	_goptr := newQVersionNumber(_ret)
+	_goptr := newQVersionNumber(C.QOperatingSystemVersion_Version(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

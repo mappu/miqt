@@ -106,8 +106,7 @@ func (this *QWebEngineScript) SetName(name string) {
 }
 
 func (this *QWebEngineScript) SourceUrl() *qt6.QUrl {
-	_ret := C.QWebEngineScript_SourceUrl(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineScript_SourceUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

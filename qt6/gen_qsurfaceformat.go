@@ -280,7 +280,7 @@ func (this *QSurfaceFormat) SetSwapInterval(interval int) {
 }
 
 func (this *QSurfaceFormat) ColorSpace() *QColorSpace {
-	return UnsafeNewQColorSpace(unsafe.Pointer(C.QSurfaceFormat_ColorSpace(this.h)))
+	return newQColorSpace(C.QSurfaceFormat_ColorSpace(this.h))
 }
 
 func (this *QSurfaceFormat) SetColorSpace(colorSpace *QColorSpace) {
@@ -296,8 +296,7 @@ func QSurfaceFormat_SetDefaultFormat(format *QSurfaceFormat) {
 }
 
 func QSurfaceFormat_DefaultFormat() *QSurfaceFormat {
-	_ret := C.QSurfaceFormat_DefaultFormat()
-	_goptr := newQSurfaceFormat(_ret)
+	_goptr := newQSurfaceFormat(C.QSurfaceFormat_DefaultFormat())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -256,8 +256,7 @@ func NewQMetaSequence() *QMetaSequence {
 }
 
 func (this *QMetaSequence) ValueMetaType() *QMetaType {
-	_ret := C.QMetaSequence_ValueMetaType(this.h)
-	_goptr := newQMetaType(_ret)
+	_goptr := newQMetaType(C.QMetaSequence_ValueMetaType(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -443,15 +442,13 @@ func NewQMetaAssociation() *QMetaAssociation {
 }
 
 func (this *QMetaAssociation) KeyMetaType() *QMetaType {
-	_ret := C.QMetaAssociation_KeyMetaType(this.h)
-	_goptr := newQMetaType(_ret)
+	_goptr := newQMetaType(C.QMetaAssociation_KeyMetaType(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMetaAssociation) MappedMetaType() *QMetaType {
-	_ret := C.QMetaAssociation_MappedMetaType(this.h)
-	_goptr := newQMetaType(_ret)
+	_goptr := newQMetaType(C.QMetaAssociation_MappedMetaType(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

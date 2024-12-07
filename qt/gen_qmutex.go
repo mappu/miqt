@@ -328,7 +328,7 @@ func (this *QMutexLocker) Relock() {
 }
 
 func (this *QMutexLocker) Mutex() *QMutex {
-	return UnsafeNewQMutex(unsafe.Pointer(C.QMutexLocker_Mutex(this.h)), nil)
+	return newQMutex(C.QMutexLocker_Mutex(this.h), nil)
 }
 
 // Delete this object from C++ memory.

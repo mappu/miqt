@@ -54,7 +54,7 @@ func UnsafeNewQAbstractEventDispatcher(h unsafe.Pointer, h_QObject unsafe.Pointe
 }
 
 func (this *QAbstractEventDispatcher) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractEventDispatcher_MetaObject(this.h)))
+	return newQMetaObject(C.QAbstractEventDispatcher_MetaObject(this.h))
 }
 
 func (this *QAbstractEventDispatcher) Metacast(param1 string) unsafe.Pointer {
@@ -82,7 +82,7 @@ func QAbstractEventDispatcher_TrUtf8(s string) string {
 }
 
 func QAbstractEventDispatcher_Instance() *QAbstractEventDispatcher {
-	return UnsafeNewQAbstractEventDispatcher(unsafe.Pointer(C.QAbstractEventDispatcher_Instance()), nil)
+	return newQAbstractEventDispatcher(C.QAbstractEventDispatcher_Instance(), nil)
 }
 
 func (this *QAbstractEventDispatcher) ProcessEvents(flags QEventLoop__ProcessEventsFlag) bool {
@@ -122,8 +122,7 @@ func (this *QAbstractEventDispatcher) RegisteredTimers(object *QObject) []QAbstr
 	_ret := make([]QAbstractEventDispatcher__TimerInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractEventDispatcher__TimerInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQAbstractEventDispatcher__TimerInfo(_lv_ret)
+		_lv_goptr := newQAbstractEventDispatcher__TimerInfo(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -248,7 +247,7 @@ func QAbstractEventDispatcher_TrUtf83(s string, c string, n int) string {
 }
 
 func QAbstractEventDispatcher_Instance1(thread *QThread) *QAbstractEventDispatcher {
-	return UnsafeNewQAbstractEventDispatcher(unsafe.Pointer(C.QAbstractEventDispatcher_Instance1(thread.cPointer())), nil)
+	return newQAbstractEventDispatcher(C.QAbstractEventDispatcher_Instance1(thread.cPointer()), nil)
 }
 
 // Delete this object from C++ memory.

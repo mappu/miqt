@@ -87,7 +87,7 @@ func NewQProgressBar2() *QProgressBar {
 }
 
 func (this *QProgressBar) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QProgressBar_MetaObject(this.h)))
+	return newQMetaObject(C.QProgressBar_MetaObject(this.h))
 }
 
 func (this *QProgressBar) Metacast(param1 string) unsafe.Pointer {
@@ -150,15 +150,13 @@ func (this *QProgressBar) SetAlignment(alignment AlignmentFlag) {
 }
 
 func (this *QProgressBar) SizeHint() *QSize {
-	_ret := C.QProgressBar_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QProgressBar_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QProgressBar) MinimumSizeHint() *QSize {
-	_ret := C.QProgressBar_MinimumSizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QProgressBar_MinimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -323,8 +321,7 @@ func miqt_exec_callback_QProgressBar_Text(self *C.QProgressBar, cb C.intptr_t) C
 
 func (this *QProgressBar) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QProgressBar_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QProgressBar_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -351,8 +348,7 @@ func miqt_exec_callback_QProgressBar_SizeHint(self *C.QProgressBar, cb C.intptr_
 
 func (this *QProgressBar) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QProgressBar_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QProgressBar_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -397,7 +393,7 @@ func miqt_exec_callback_QProgressBar_Event(self *C.QProgressBar, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QProgressBar{h: self}).callVirtualBase_Event, slotval1)
 
@@ -425,7 +421,7 @@ func miqt_exec_callback_QProgressBar_PaintEvent(self *C.QProgressBar, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQPaintEvent(param1, nil)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -537,7 +533,8 @@ func miqt_exec_callback_QProgressBar_HasHeightForWidth(self *C.QProgressBar, cb 
 
 func (this *QProgressBar) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QProgressBar_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return newQPaintEngine(C.QProgressBar_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+
 }
 func (this *QProgressBar) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
 	if !this.isSubclass {
@@ -579,7 +576,7 @@ func miqt_exec_callback_QProgressBar_MousePressEvent(self *C.QProgressBar, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -605,7 +602,7 @@ func miqt_exec_callback_QProgressBar_MouseReleaseEvent(self *C.QProgressBar, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -631,7 +628,7 @@ func miqt_exec_callback_QProgressBar_MouseDoubleClickEvent(self *C.QProgressBar,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -657,7 +654,7 @@ func miqt_exec_callback_QProgressBar_MouseMoveEvent(self *C.QProgressBar, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -683,7 +680,7 @@ func miqt_exec_callback_QProgressBar_WheelEvent(self *C.QProgressBar, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQWheelEvent(event, nil, nil)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -709,7 +706,7 @@ func miqt_exec_callback_QProgressBar_KeyPressEvent(self *C.QProgressBar, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -735,7 +732,7 @@ func miqt_exec_callback_QProgressBar_KeyReleaseEvent(self *C.QProgressBar, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -761,7 +758,7 @@ func miqt_exec_callback_QProgressBar_FocusInEvent(self *C.QProgressBar, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -787,7 +784,7 @@ func miqt_exec_callback_QProgressBar_FocusOutEvent(self *C.QProgressBar, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -813,7 +810,7 @@ func miqt_exec_callback_QProgressBar_EnterEvent(self *C.QProgressBar, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_EnterEvent, slotval1)
 
@@ -839,7 +836,7 @@ func miqt_exec_callback_QProgressBar_LeaveEvent(self *C.QProgressBar, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_LeaveEvent, slotval1)
 
@@ -865,7 +862,7 @@ func miqt_exec_callback_QProgressBar_MoveEvent(self *C.QProgressBar, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMoveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQMoveEvent(event, nil)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -891,7 +888,7 @@ func miqt_exec_callback_QProgressBar_ResizeEvent(self *C.QProgressBar, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQResizeEvent(event, nil)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -917,7 +914,7 @@ func miqt_exec_callback_QProgressBar_CloseEvent(self *C.QProgressBar, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQCloseEvent(event, nil)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -943,7 +940,7 @@ func miqt_exec_callback_QProgressBar_ContextMenuEvent(self *C.QProgressBar, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQContextMenuEvent(event, nil, nil)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -969,7 +966,7 @@ func miqt_exec_callback_QProgressBar_TabletEvent(self *C.QProgressBar, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTabletEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQTabletEvent(event, nil, nil)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -995,7 +992,7 @@ func miqt_exec_callback_QProgressBar_ActionEvent(self *C.QProgressBar, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQActionEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQActionEvent(event, nil)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -1021,7 +1018,7 @@ func miqt_exec_callback_QProgressBar_DragEnterEvent(self *C.QProgressBar, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragEnterEvent(unsafe.Pointer(event), nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event, nil, nil, nil)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -1047,7 +1044,7 @@ func miqt_exec_callback_QProgressBar_DragMoveEvent(self *C.QProgressBar, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQDragMoveEvent(event, nil, nil)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1073,7 +1070,7 @@ func miqt_exec_callback_QProgressBar_DragLeaveEvent(self *C.QProgressBar, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragLeaveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDragLeaveEvent(event, nil)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1099,7 +1096,7 @@ func miqt_exec_callback_QProgressBar_DropEvent(self *C.QProgressBar, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDropEvent(event, nil)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1125,7 +1122,7 @@ func miqt_exec_callback_QProgressBar_ShowEvent(self *C.QProgressBar, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQShowEvent(event, nil)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1151,7 +1148,7 @@ func miqt_exec_callback_QProgressBar_HideEvent(self *C.QProgressBar, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHideEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQHideEvent(event, nil)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -1214,7 +1211,7 @@ func miqt_exec_callback_QProgressBar_ChangeEvent(self *C.QProgressBar, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -1268,7 +1265,7 @@ func miqt_exec_callback_QProgressBar_InitPainter(self *C.QProgressBar, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval1 := newQPainter(painter)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_InitPainter, slotval1)
 
@@ -1276,7 +1273,8 @@ func miqt_exec_callback_QProgressBar_InitPainter(self *C.QProgressBar, cb C.intp
 
 func (this *QProgressBar) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QProgressBar_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer())))
+	return newQPaintDevice(C.QProgressBar_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+
 }
 func (this *QProgressBar) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
 	if !this.isSubclass {
@@ -1293,7 +1291,7 @@ func miqt_exec_callback_QProgressBar_Redirected(self *C.QProgressBar, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(offset))
+	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QProgressBar{h: self}).callVirtualBase_Redirected, slotval1)
 
@@ -1303,7 +1301,8 @@ func miqt_exec_callback_QProgressBar_Redirected(self *C.QProgressBar, cb C.intpt
 
 func (this *QProgressBar) callVirtualBase_SharedPainter() *QPainter {
 
-	return UnsafeNewQPainter(unsafe.Pointer(C.QProgressBar_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+	return newQPainter(C.QProgressBar_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+
 }
 func (this *QProgressBar) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
 	if !this.isSubclass {
@@ -1345,7 +1344,7 @@ func miqt_exec_callback_QProgressBar_InputMethodEvent(self *C.QProgressBar, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQInputMethodEvent(param1, nil)
 
 	gofunc((&QProgressBar{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -1353,8 +1352,7 @@ func miqt_exec_callback_QProgressBar_InputMethodEvent(self *C.QProgressBar, cb C
 
 func (this *QProgressBar) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_ret := C.QProgressBar_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QProgressBar_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

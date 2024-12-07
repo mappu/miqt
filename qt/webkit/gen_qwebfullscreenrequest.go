@@ -83,14 +83,13 @@ func (this *QWebFullScreenRequest) ToggleOn() bool {
 }
 
 func (this *QWebFullScreenRequest) Origin() *qt.QUrl {
-	_ret := C.QWebFullScreenRequest_Origin(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebFullScreenRequest_Origin(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebFullScreenRequest) Element() *QWebElement {
-	return UnsafeNewQWebElement(unsafe.Pointer(C.QWebFullScreenRequest_Element(this.h)))
+	return newQWebElement(C.QWebFullScreenRequest_Element(this.h))
 }
 
 // Delete this object from C++ memory.

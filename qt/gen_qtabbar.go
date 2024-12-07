@@ -108,7 +108,7 @@ func NewQTabBar2() *QTabBar {
 }
 
 func (this *QTabBar) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTabBar_MetaObject(this.h)))
+	return newQMetaObject(C.QTabBar_MetaObject(this.h))
 }
 
 func (this *QTabBar) Metacast(param1 string) unsafe.Pointer {
@@ -215,8 +215,7 @@ func (this *QTabBar) SetTabText(index int, text string) {
 }
 
 func (this *QTabBar) TabTextColor(index int) *QColor {
-	_ret := C.QTabBar_TabTextColor(this.h, (C.int)(index))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QTabBar_TabTextColor(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -226,8 +225,7 @@ func (this *QTabBar) SetTabTextColor(index int, color *QColor) {
 }
 
 func (this *QTabBar) TabIcon(index int) *QIcon {
-	_ret := C.QTabBar_TabIcon(this.h, (C.int)(index))
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QTabBar_TabIcon(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -279,15 +277,13 @@ func (this *QTabBar) SetTabData(index int, data *QVariant) {
 }
 
 func (this *QTabBar) TabData(index int) *QVariant {
-	_ret := C.QTabBar_TabData(this.h, (C.int)(index))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QTabBar_TabData(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTabBar) TabRect(index int) *QRect {
-	_ret := C.QTabBar_TabRect(this.h, (C.int)(index))
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QTabBar_TabRect(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -305,15 +301,13 @@ func (this *QTabBar) Count() int {
 }
 
 func (this *QTabBar) SizeHint() *QSize {
-	_ret := C.QTabBar_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QTabBar_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTabBar) MinimumSizeHint() *QSize {
-	_ret := C.QTabBar_MinimumSizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QTabBar_MinimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -327,8 +321,7 @@ func (this *QTabBar) DrawBase() bool {
 }
 
 func (this *QTabBar) IconSize() *QSize {
-	_ret := C.QTabBar_IconSize(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QTabBar_IconSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -358,7 +351,7 @@ func (this *QTabBar) SetTabButton(index int, position QTabBar__ButtonPosition, w
 }
 
 func (this *QTabBar) TabButton(index int, position QTabBar__ButtonPosition) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QTabBar_TabButton(this.h, (C.int)(index), (C.int)(position))), nil, nil)
+	return newQWidget(C.QTabBar_TabButton(this.h, (C.int)(index), (C.int)(position)), nil, nil)
 }
 
 func (this *QTabBar) SelectionBehaviorOnRemove() QTabBar__SelectionBehavior {
@@ -576,8 +569,7 @@ func QTabBar_TrUtf83(s string, c string, n int) string {
 
 func (this *QTabBar) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QTabBar_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QTabBar_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -604,8 +596,7 @@ func miqt_exec_callback_QTabBar_SizeHint(self *C.QTabBar, cb C.intptr_t) *C.QSiz
 
 func (this *QTabBar) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QTabBar_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QTabBar_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -632,8 +623,7 @@ func miqt_exec_callback_QTabBar_MinimumSizeHint(self *C.QTabBar, cb C.intptr_t) 
 
 func (this *QTabBar) callVirtualBase_TabSizeHint(index int) *QSize {
 
-	_ret := C.QTabBar_virtualbase_TabSizeHint(unsafe.Pointer(this.h), (C.int)(index))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QTabBar_virtualbase_TabSizeHint(unsafe.Pointer(this.h), (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -663,8 +653,7 @@ func miqt_exec_callback_QTabBar_TabSizeHint(self *C.QTabBar, cb C.intptr_t, inde
 
 func (this *QTabBar) callVirtualBase_MinimumTabSizeHint(index int) *QSize {
 
-	_ret := C.QTabBar_virtualbase_MinimumTabSizeHint(unsafe.Pointer(this.h), (C.int)(index))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QTabBar_virtualbase_MinimumTabSizeHint(unsafe.Pointer(this.h), (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -787,7 +776,7 @@ func miqt_exec_callback_QTabBar_Event(self *C.QTabBar, cb C.intptr_t, param1 *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	virtualReturn := gofunc((&QTabBar{h: self}).callVirtualBase_Event, slotval1)
 
@@ -815,7 +804,7 @@ func miqt_exec_callback_QTabBar_ResizeEvent(self *C.QTabBar, cb C.intptr_t, para
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQResizeEvent(param1, nil)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -841,7 +830,7 @@ func miqt_exec_callback_QTabBar_ShowEvent(self *C.QTabBar, cb C.intptr_t, param1
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQShowEvent(param1, nil)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -867,7 +856,7 @@ func miqt_exec_callback_QTabBar_HideEvent(self *C.QTabBar, cb C.intptr_t, param1
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHideEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQHideEvent(param1, nil)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -893,7 +882,7 @@ func miqt_exec_callback_QTabBar_PaintEvent(self *C.QTabBar, cb C.intptr_t, param
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQPaintEvent(param1, nil)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -919,7 +908,7 @@ func miqt_exec_callback_QTabBar_MousePressEvent(self *C.QTabBar, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQMouseEvent(param1, nil, nil)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -945,7 +934,7 @@ func miqt_exec_callback_QTabBar_MouseMoveEvent(self *C.QTabBar, cb C.intptr_t, p
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQMouseEvent(param1, nil, nil)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -971,7 +960,7 @@ func miqt_exec_callback_QTabBar_MouseReleaseEvent(self *C.QTabBar, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQMouseEvent(param1, nil, nil)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -997,7 +986,7 @@ func miqt_exec_callback_QTabBar_WheelEvent(self *C.QTabBar, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQWheelEvent(event, nil, nil)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -1023,7 +1012,7 @@ func miqt_exec_callback_QTabBar_KeyPressEvent(self *C.QTabBar, cb C.intptr_t, pa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQKeyEvent(param1, nil, nil)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -1049,7 +1038,7 @@ func miqt_exec_callback_QTabBar_ChangeEvent(self *C.QTabBar, cb C.intptr_t, para
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -1075,7 +1064,7 @@ func miqt_exec_callback_QTabBar_TimerEvent(self *C.QTabBar, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -1187,7 +1176,8 @@ func miqt_exec_callback_QTabBar_HasHeightForWidth(self *C.QTabBar, cb C.intptr_t
 
 func (this *QTabBar) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QTabBar_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return newQPaintEngine(C.QTabBar_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+
 }
 func (this *QTabBar) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
 	if !this.isSubclass {
@@ -1229,7 +1219,7 @@ func miqt_exec_callback_QTabBar_MouseDoubleClickEvent(self *C.QTabBar, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -1255,7 +1245,7 @@ func miqt_exec_callback_QTabBar_KeyReleaseEvent(self *C.QTabBar, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -1281,7 +1271,7 @@ func miqt_exec_callback_QTabBar_FocusInEvent(self *C.QTabBar, cb C.intptr_t, eve
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -1307,7 +1297,7 @@ func miqt_exec_callback_QTabBar_FocusOutEvent(self *C.QTabBar, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -1333,7 +1323,7 @@ func miqt_exec_callback_QTabBar_EnterEvent(self *C.QTabBar, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_EnterEvent, slotval1)
 
@@ -1359,7 +1349,7 @@ func miqt_exec_callback_QTabBar_LeaveEvent(self *C.QTabBar, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_LeaveEvent, slotval1)
 
@@ -1385,7 +1375,7 @@ func miqt_exec_callback_QTabBar_MoveEvent(self *C.QTabBar, cb C.intptr_t, event 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMoveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQMoveEvent(event, nil)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -1411,7 +1401,7 @@ func miqt_exec_callback_QTabBar_CloseEvent(self *C.QTabBar, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQCloseEvent(event, nil)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -1437,7 +1427,7 @@ func miqt_exec_callback_QTabBar_ContextMenuEvent(self *C.QTabBar, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQContextMenuEvent(event, nil, nil)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -1463,7 +1453,7 @@ func miqt_exec_callback_QTabBar_TabletEvent(self *C.QTabBar, cb C.intptr_t, even
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTabletEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQTabletEvent(event, nil, nil)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -1489,7 +1479,7 @@ func miqt_exec_callback_QTabBar_ActionEvent(self *C.QTabBar, cb C.intptr_t, even
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQActionEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQActionEvent(event, nil)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -1515,7 +1505,7 @@ func miqt_exec_callback_QTabBar_DragEnterEvent(self *C.QTabBar, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragEnterEvent(unsafe.Pointer(event), nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event, nil, nil, nil)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -1541,7 +1531,7 @@ func miqt_exec_callback_QTabBar_DragMoveEvent(self *C.QTabBar, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQDragMoveEvent(event, nil, nil)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1567,7 +1557,7 @@ func miqt_exec_callback_QTabBar_DragLeaveEvent(self *C.QTabBar, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragLeaveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDragLeaveEvent(event, nil)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1593,7 +1583,7 @@ func miqt_exec_callback_QTabBar_DropEvent(self *C.QTabBar, cb C.intptr_t, event 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDropEvent(event, nil)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1684,7 +1674,7 @@ func miqt_exec_callback_QTabBar_InitPainter(self *C.QTabBar, cb C.intptr_t, pain
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval1 := newQPainter(painter)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_InitPainter, slotval1)
 
@@ -1692,7 +1682,8 @@ func miqt_exec_callback_QTabBar_InitPainter(self *C.QTabBar, cb C.intptr_t, pain
 
 func (this *QTabBar) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QTabBar_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer())))
+	return newQPaintDevice(C.QTabBar_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+
 }
 func (this *QTabBar) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
 	if !this.isSubclass {
@@ -1709,7 +1700,7 @@ func miqt_exec_callback_QTabBar_Redirected(self *C.QTabBar, cb C.intptr_t, offse
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(offset))
+	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QTabBar{h: self}).callVirtualBase_Redirected, slotval1)
 
@@ -1719,7 +1710,8 @@ func miqt_exec_callback_QTabBar_Redirected(self *C.QTabBar, cb C.intptr_t, offse
 
 func (this *QTabBar) callVirtualBase_SharedPainter() *QPainter {
 
-	return UnsafeNewQPainter(unsafe.Pointer(C.QTabBar_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+	return newQPainter(C.QTabBar_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+
 }
 func (this *QTabBar) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
 	if !this.isSubclass {
@@ -1761,7 +1753,7 @@ func miqt_exec_callback_QTabBar_InputMethodEvent(self *C.QTabBar, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQInputMethodEvent(param1, nil)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -1769,8 +1761,7 @@ func miqt_exec_callback_QTabBar_InputMethodEvent(self *C.QTabBar, cb C.intptr_t,
 
 func (this *QTabBar) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_ret := C.QTabBar_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QTabBar_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

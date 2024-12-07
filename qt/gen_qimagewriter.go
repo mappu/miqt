@@ -149,7 +149,7 @@ func (this *QImageWriter) SetDevice(device *QIODevice) {
 }
 
 func (this *QImageWriter) Device() *QIODevice {
-	return UnsafeNewQIODevice(unsafe.Pointer(C.QImageWriter_Device(this.h)), nil)
+	return newQIODevice(C.QImageWriter_Device(this.h), nil)
 }
 
 func (this *QImageWriter) SetFileName(fileName string) {

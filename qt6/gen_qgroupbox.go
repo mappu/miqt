@@ -114,7 +114,7 @@ func NewQGroupBox4(title string, parent *QWidget) *QGroupBox {
 }
 
 func (this *QGroupBox) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGroupBox_MetaObject(this.h)))
+	return newQMetaObject(C.QGroupBox_MetaObject(this.h))
 }
 
 func (this *QGroupBox) Metacast(param1 string) unsafe.Pointer {
@@ -156,8 +156,7 @@ func (this *QGroupBox) SetAlignment(alignment int) {
 }
 
 func (this *QGroupBox) MinimumSizeHint() *QSize {
-	_ret := C.QGroupBox_MinimumSizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QGroupBox_MinimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -267,8 +266,7 @@ func miqt_exec_callback_QGroupBox_Clicked1(cb C.intptr_t, checked C.bool) {
 
 func (this *QGroupBox) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QGroupBox_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QGroupBox_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -313,7 +311,7 @@ func miqt_exec_callback_QGroupBox_Event(self *C.QGroupBox, cb C.intptr_t, event 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGroupBox{h: self}).callVirtualBase_Event, slotval1)
 
@@ -341,7 +339,7 @@ func miqt_exec_callback_QGroupBox_ChildEvent(self *C.QGroupBox, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -367,7 +365,7 @@ func miqt_exec_callback_QGroupBox_ResizeEvent(self *C.QGroupBox, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQResizeEvent(event, nil)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -393,7 +391,7 @@ func miqt_exec_callback_QGroupBox_PaintEvent(self *C.QGroupBox, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQPaintEvent(event, nil)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -419,7 +417,7 @@ func miqt_exec_callback_QGroupBox_FocusInEvent(self *C.QGroupBox, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -445,7 +443,7 @@ func miqt_exec_callback_QGroupBox_ChangeEvent(self *C.QGroupBox, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -471,7 +469,7 @@ func miqt_exec_callback_QGroupBox_MousePressEvent(self *C.QGroupBox, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -497,7 +495,7 @@ func miqt_exec_callback_QGroupBox_MouseMoveEvent(self *C.QGroupBox, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -523,7 +521,7 @@ func miqt_exec_callback_QGroupBox_MouseReleaseEvent(self *C.QGroupBox, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -549,7 +547,7 @@ func miqt_exec_callback_QGroupBox_InitStyleOption(self *C.QGroupBox, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStyleOptionGroupBox(unsafe.Pointer(option), nil, nil)
+	slotval1 := newQStyleOptionGroupBox(option, nil, nil)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_InitStyleOption, slotval1)
 
@@ -608,8 +606,7 @@ func miqt_exec_callback_QGroupBox_SetVisible(self *C.QGroupBox, cb C.intptr_t, v
 
 func (this *QGroupBox) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QGroupBox_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QGroupBox_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -689,7 +686,8 @@ func miqt_exec_callback_QGroupBox_HasHeightForWidth(self *C.QGroupBox, cb C.intp
 
 func (this *QGroupBox) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QGroupBox_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return newQPaintEngine(C.QGroupBox_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+
 }
 func (this *QGroupBox) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
 	if !this.isSubclass {
@@ -731,7 +729,7 @@ func miqt_exec_callback_QGroupBox_MouseDoubleClickEvent(self *C.QGroupBox, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -757,7 +755,7 @@ func miqt_exec_callback_QGroupBox_WheelEvent(self *C.QGroupBox, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -783,7 +781,7 @@ func miqt_exec_callback_QGroupBox_KeyPressEvent(self *C.QGroupBox, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -809,7 +807,7 @@ func miqt_exec_callback_QGroupBox_KeyReleaseEvent(self *C.QGroupBox, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -835,7 +833,7 @@ func miqt_exec_callback_QGroupBox_FocusOutEvent(self *C.QGroupBox, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -861,7 +859,7 @@ func miqt_exec_callback_QGroupBox_EnterEvent(self *C.QGroupBox, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEnterEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQEnterEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_EnterEvent, slotval1)
 
@@ -887,7 +885,7 @@ func miqt_exec_callback_QGroupBox_LeaveEvent(self *C.QGroupBox, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_LeaveEvent, slotval1)
 
@@ -913,7 +911,7 @@ func miqt_exec_callback_QGroupBox_MoveEvent(self *C.QGroupBox, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMoveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQMoveEvent(event, nil)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -939,7 +937,7 @@ func miqt_exec_callback_QGroupBox_CloseEvent(self *C.QGroupBox, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQCloseEvent(event, nil)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -965,7 +963,7 @@ func miqt_exec_callback_QGroupBox_ContextMenuEvent(self *C.QGroupBox, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQContextMenuEvent(event, nil, nil)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -991,7 +989,7 @@ func miqt_exec_callback_QGroupBox_TabletEvent(self *C.QGroupBox, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTabletEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQTabletEvent(event, nil, nil, nil, nil)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -1017,7 +1015,7 @@ func miqt_exec_callback_QGroupBox_ActionEvent(self *C.QGroupBox, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQActionEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQActionEvent(event, nil)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -1043,7 +1041,7 @@ func miqt_exec_callback_QGroupBox_DragEnterEvent(self *C.QGroupBox, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragEnterEvent(unsafe.Pointer(event), nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event, nil, nil, nil)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -1069,7 +1067,7 @@ func miqt_exec_callback_QGroupBox_DragMoveEvent(self *C.QGroupBox, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQDragMoveEvent(event, nil, nil)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1095,7 +1093,7 @@ func miqt_exec_callback_QGroupBox_DragLeaveEvent(self *C.QGroupBox, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragLeaveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDragLeaveEvent(event, nil)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1121,7 +1119,7 @@ func miqt_exec_callback_QGroupBox_DropEvent(self *C.QGroupBox, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDropEvent(event, nil)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1147,7 +1145,7 @@ func miqt_exec_callback_QGroupBox_ShowEvent(self *C.QGroupBox, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQShowEvent(event, nil)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1173,7 +1171,7 @@ func miqt_exec_callback_QGroupBox_HideEvent(self *C.QGroupBox, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHideEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQHideEvent(event, nil)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -1264,7 +1262,7 @@ func miqt_exec_callback_QGroupBox_InitPainter(self *C.QGroupBox, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval1 := newQPainter(painter)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_InitPainter, slotval1)
 
@@ -1272,7 +1270,8 @@ func miqt_exec_callback_QGroupBox_InitPainter(self *C.QGroupBox, cb C.intptr_t, 
 
 func (this *QGroupBox) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QGroupBox_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer())))
+	return newQPaintDevice(C.QGroupBox_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+
 }
 func (this *QGroupBox) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
 	if !this.isSubclass {
@@ -1289,7 +1288,7 @@ func miqt_exec_callback_QGroupBox_Redirected(self *C.QGroupBox, cb C.intptr_t, o
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(offset))
+	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QGroupBox{h: self}).callVirtualBase_Redirected, slotval1)
 
@@ -1299,7 +1298,8 @@ func miqt_exec_callback_QGroupBox_Redirected(self *C.QGroupBox, cb C.intptr_t, o
 
 func (this *QGroupBox) callVirtualBase_SharedPainter() *QPainter {
 
-	return UnsafeNewQPainter(unsafe.Pointer(C.QGroupBox_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+	return newQPainter(C.QGroupBox_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+
 }
 func (this *QGroupBox) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
 	if !this.isSubclass {
@@ -1341,7 +1341,7 @@ func miqt_exec_callback_QGroupBox_InputMethodEvent(self *C.QGroupBox, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQInputMethodEvent(param1, nil)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -1349,8 +1349,7 @@ func miqt_exec_callback_QGroupBox_InputMethodEvent(self *C.QGroupBox, cb C.intpt
 
 func (this *QGroupBox) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_ret := C.QGroupBox_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QGroupBox_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

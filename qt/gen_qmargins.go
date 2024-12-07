@@ -116,35 +116,35 @@ func (this *QMargins) SetBottom(bottom int) {
 }
 
 func (this *QMargins) OperatorPlusAssign(margins *QMargins) *QMargins {
-	return UnsafeNewQMargins(unsafe.Pointer(C.QMargins_OperatorPlusAssign(this.h, margins.cPointer())))
+	return newQMargins(C.QMargins_OperatorPlusAssign(this.h, margins.cPointer()))
 }
 
 func (this *QMargins) OperatorMinusAssign(margins *QMargins) *QMargins {
-	return UnsafeNewQMargins(unsafe.Pointer(C.QMargins_OperatorMinusAssign(this.h, margins.cPointer())))
+	return newQMargins(C.QMargins_OperatorMinusAssign(this.h, margins.cPointer()))
 }
 
 func (this *QMargins) OperatorPlusAssignWithInt(param1 int) *QMargins {
-	return UnsafeNewQMargins(unsafe.Pointer(C.QMargins_OperatorPlusAssignWithInt(this.h, (C.int)(param1))))
+	return newQMargins(C.QMargins_OperatorPlusAssignWithInt(this.h, (C.int)(param1)))
 }
 
 func (this *QMargins) OperatorMinusAssignWithInt(param1 int) *QMargins {
-	return UnsafeNewQMargins(unsafe.Pointer(C.QMargins_OperatorMinusAssignWithInt(this.h, (C.int)(param1))))
+	return newQMargins(C.QMargins_OperatorMinusAssignWithInt(this.h, (C.int)(param1)))
 }
 
 func (this *QMargins) OperatorMultiplyAssign(param1 int) *QMargins {
-	return UnsafeNewQMargins(unsafe.Pointer(C.QMargins_OperatorMultiplyAssign(this.h, (C.int)(param1))))
+	return newQMargins(C.QMargins_OperatorMultiplyAssign(this.h, (C.int)(param1)))
 }
 
 func (this *QMargins) OperatorDivideAssign(param1 int) *QMargins {
-	return UnsafeNewQMargins(unsafe.Pointer(C.QMargins_OperatorDivideAssign(this.h, (C.int)(param1))))
+	return newQMargins(C.QMargins_OperatorDivideAssign(this.h, (C.int)(param1)))
 }
 
 func (this *QMargins) OperatorMultiplyAssignWithQreal(param1 float64) *QMargins {
-	return UnsafeNewQMargins(unsafe.Pointer(C.QMargins_OperatorMultiplyAssignWithQreal(this.h, (C.double)(param1))))
+	return newQMargins(C.QMargins_OperatorMultiplyAssignWithQreal(this.h, (C.double)(param1)))
 }
 
 func (this *QMargins) OperatorDivideAssignWithQreal(param1 float64) *QMargins {
-	return UnsafeNewQMargins(unsafe.Pointer(C.QMargins_OperatorDivideAssignWithQreal(this.h, (C.double)(param1))))
+	return newQMargins(C.QMargins_OperatorDivideAssignWithQreal(this.h, (C.double)(param1)))
 }
 
 // Delete this object from C++ memory.
@@ -274,32 +274,31 @@ func (this *QMarginsF) SetBottom(bottom float64) {
 }
 
 func (this *QMarginsF) OperatorPlusAssign(margins *QMarginsF) *QMarginsF {
-	return UnsafeNewQMarginsF(unsafe.Pointer(C.QMarginsF_OperatorPlusAssign(this.h, margins.cPointer())))
+	return newQMarginsF(C.QMarginsF_OperatorPlusAssign(this.h, margins.cPointer()))
 }
 
 func (this *QMarginsF) OperatorMinusAssign(margins *QMarginsF) *QMarginsF {
-	return UnsafeNewQMarginsF(unsafe.Pointer(C.QMarginsF_OperatorMinusAssign(this.h, margins.cPointer())))
+	return newQMarginsF(C.QMarginsF_OperatorMinusAssign(this.h, margins.cPointer()))
 }
 
 func (this *QMarginsF) OperatorPlusAssignWithAddend(addend float64) *QMarginsF {
-	return UnsafeNewQMarginsF(unsafe.Pointer(C.QMarginsF_OperatorPlusAssignWithAddend(this.h, (C.double)(addend))))
+	return newQMarginsF(C.QMarginsF_OperatorPlusAssignWithAddend(this.h, (C.double)(addend)))
 }
 
 func (this *QMarginsF) OperatorMinusAssignWithSubtrahend(subtrahend float64) *QMarginsF {
-	return UnsafeNewQMarginsF(unsafe.Pointer(C.QMarginsF_OperatorMinusAssignWithSubtrahend(this.h, (C.double)(subtrahend))))
+	return newQMarginsF(C.QMarginsF_OperatorMinusAssignWithSubtrahend(this.h, (C.double)(subtrahend)))
 }
 
 func (this *QMarginsF) OperatorMultiplyAssign(factor float64) *QMarginsF {
-	return UnsafeNewQMarginsF(unsafe.Pointer(C.QMarginsF_OperatorMultiplyAssign(this.h, (C.double)(factor))))
+	return newQMarginsF(C.QMarginsF_OperatorMultiplyAssign(this.h, (C.double)(factor)))
 }
 
 func (this *QMarginsF) OperatorDivideAssign(divisor float64) *QMarginsF {
-	return UnsafeNewQMarginsF(unsafe.Pointer(C.QMarginsF_OperatorDivideAssign(this.h, (C.double)(divisor))))
+	return newQMarginsF(C.QMarginsF_OperatorDivideAssign(this.h, (C.double)(divisor)))
 }
 
 func (this *QMarginsF) ToMargins() *QMargins {
-	_ret := C.QMarginsF_ToMargins(this.h)
-	_goptr := newQMargins(_ret)
+	_goptr := newQMargins(C.QMarginsF_ToMargins(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

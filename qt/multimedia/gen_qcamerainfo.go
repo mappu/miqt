@@ -131,8 +131,7 @@ func (this *QCameraInfo) Orientation() int {
 }
 
 func QCameraInfo_DefaultCamera() *QCameraInfo {
-	_ret := C.QCameraInfo_DefaultCamera()
-	_goptr := newQCameraInfo(_ret)
+	_goptr := newQCameraInfo(C.QCameraInfo_DefaultCamera())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -142,8 +141,7 @@ func QCameraInfo_AvailableCameras() []QCameraInfo {
 	_ret := make([]QCameraInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QCameraInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQCameraInfo(_lv_ret)
+		_lv_goptr := newQCameraInfo(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -155,8 +153,7 @@ func QCameraInfo_AvailableCameras1(position QCamera__Position) []QCameraInfo {
 	_ret := make([]QCameraInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QCameraInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQCameraInfo(_lv_ret)
+		_lv_goptr := newQCameraInfo(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}

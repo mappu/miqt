@@ -143,12 +143,11 @@ func QSvgWidget_TrUtf8(s string) string {
 }
 
 func (this *QSvgWidget) Renderer() *QSvgRenderer {
-	return UnsafeNewQSvgRenderer(unsafe.Pointer(C.QSvgWidget_Renderer(this.h)), nil)
+	return newQSvgRenderer(C.QSvgWidget_Renderer(this.h), nil)
 }
 
 func (this *QSvgWidget) SizeHint() *qt.QSize {
-	_ret := C.QSvgWidget_SizeHint(this.h)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QSvgWidget_SizeHint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -214,8 +213,7 @@ func QSvgWidget_TrUtf83(s string, c string, n int) string {
 
 func (this *QSvgWidget) callVirtualBase_SizeHint() *qt.QSize {
 
-	_ret := C.QSvgWidget_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QSvgWidget_virtualbase_SizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -319,8 +317,7 @@ func miqt_exec_callback_QSvgWidget_SetVisible(self *C.QSvgWidget, cb C.intptr_t,
 
 func (this *QSvgWidget) callVirtualBase_MinimumSizeHint() *qt.QSize {
 
-	_ret := C.QSvgWidget_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QSvgWidget_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -401,6 +398,7 @@ func miqt_exec_callback_QSvgWidget_HasHeightForWidth(self *C.QSvgWidget, cb C.in
 func (this *QSvgWidget) callVirtualBase_PaintEngine() *qt.QPaintEngine {
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QSvgWidget_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+
 }
 func (this *QSvgWidget) OnPaintEngine(slot func(super func() *qt.QPaintEngine) *qt.QPaintEngine) {
 	if !this.isSubclass {
@@ -1168,6 +1166,7 @@ func miqt_exec_callback_QSvgWidget_InitPainter(self *C.QSvgWidget, cb C.intptr_t
 func (this *QSvgWidget) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QSvgWidget_virtualbase_Redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
+
 }
 func (this *QSvgWidget) OnRedirected(slot func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice) {
 	if !this.isSubclass {
@@ -1195,6 +1194,7 @@ func miqt_exec_callback_QSvgWidget_Redirected(self *C.QSvgWidget, cb C.intptr_t,
 func (this *QSvgWidget) callVirtualBase_SharedPainter() *qt.QPainter {
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QSvgWidget_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+
 }
 func (this *QSvgWidget) OnSharedPainter(slot func(super func() *qt.QPainter) *qt.QPainter) {
 	if !this.isSubclass {
@@ -1244,8 +1244,7 @@ func miqt_exec_callback_QSvgWidget_InputMethodEvent(self *C.QSvgWidget, cb C.int
 
 func (this *QSvgWidget) callVirtualBase_InputMethodQuery(param1 qt.InputMethodQuery) *qt.QVariant {
 
-	_ret := C.QSvgWidget_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QSvgWidget_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

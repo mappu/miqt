@@ -129,7 +129,7 @@ func (this *QFutureInterfaceBase) SetThreadPool(pool *QThreadPool) {
 }
 
 func (this *QFutureInterfaceBase) ThreadPool() *QThreadPool {
-	return UnsafeNewQThreadPool(unsafe.Pointer(C.QFutureInterfaceBase_ThreadPool(this.h)), nil)
+	return newQThreadPool(C.QFutureInterfaceBase_ThreadPool(this.h), nil)
 }
 
 func (this *QFutureInterfaceBase) SetFilterMode(enable bool) {
@@ -288,7 +288,7 @@ func (this *QFutureInterfaceBase) SuspendIfRequested() {
 }
 
 func (this *QFutureInterfaceBase) Mutex() *QMutex {
-	return UnsafeNewQMutex(unsafe.Pointer(C.QFutureInterfaceBase_Mutex(this.h)), nil)
+	return newQMutex(C.QFutureInterfaceBase_Mutex(this.h), nil)
 }
 
 func (this *QFutureInterfaceBase) HasException() bool {

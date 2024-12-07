@@ -76,7 +76,7 @@ func NewQGenericPlugin2(parent *QObject) *QGenericPlugin {
 }
 
 func (this *QGenericPlugin) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGenericPlugin_MetaObject(this.h)))
+	return newQMetaObject(C.QGenericPlugin_MetaObject(this.h))
 }
 
 func (this *QGenericPlugin) Metacast(param1 string) unsafe.Pointer {
@@ -112,7 +112,7 @@ func (this *QGenericPlugin) Create(name string, spec string) *QObject {
 	spec_ms.data = C.CString(spec)
 	spec_ms.len = C.size_t(len(spec))
 	defer C.free(unsafe.Pointer(spec_ms.data))
-	return UnsafeNewQObject(unsafe.Pointer(C.QGenericPlugin_Create(this.h, name_ms, spec_ms)))
+	return newQObject(C.QGenericPlugin_Create(this.h, name_ms, spec_ms))
 }
 
 func QGenericPlugin_Tr2(s string, c string) string {
@@ -208,7 +208,7 @@ func miqt_exec_callback_QGenericPlugin_Event(self *C.QGenericPlugin, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGenericPlugin{h: self}).callVirtualBase_Event, slotval1)
 
@@ -236,8 +236,9 @@ func miqt_exec_callback_QGenericPlugin_EventFilter(self *C.QGenericPlugin, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGenericPlugin{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -265,7 +266,7 @@ func miqt_exec_callback_QGenericPlugin_TimerEvent(self *C.QGenericPlugin, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QGenericPlugin{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -291,7 +292,7 @@ func miqt_exec_callback_QGenericPlugin_ChildEvent(self *C.QGenericPlugin, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QGenericPlugin{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -317,7 +318,7 @@ func miqt_exec_callback_QGenericPlugin_CustomEvent(self *C.QGenericPlugin, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QGenericPlugin{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -343,7 +344,7 @@ func miqt_exec_callback_QGenericPlugin_ConnectNotify(self *C.QGenericPlugin, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QGenericPlugin{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -369,7 +370,7 @@ func miqt_exec_callback_QGenericPlugin_DisconnectNotify(self *C.QGenericPlugin, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QGenericPlugin{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

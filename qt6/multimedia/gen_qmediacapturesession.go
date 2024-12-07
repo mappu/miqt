@@ -96,7 +96,7 @@ func QMediaCaptureSession_Tr(s string) string {
 }
 
 func (this *QMediaCaptureSession) AudioInput() *QAudioInput {
-	return UnsafeNewQAudioInput(unsafe.Pointer(C.QMediaCaptureSession_AudioInput(this.h)), nil)
+	return newQAudioInput(C.QMediaCaptureSession_AudioInput(this.h), nil)
 }
 
 func (this *QMediaCaptureSession) SetAudioInput(input *QAudioInput) {
@@ -104,7 +104,7 @@ func (this *QMediaCaptureSession) SetAudioInput(input *QAudioInput) {
 }
 
 func (this *QMediaCaptureSession) Camera() *QCamera {
-	return UnsafeNewQCamera(unsafe.Pointer(C.QMediaCaptureSession_Camera(this.h)), nil)
+	return newQCamera(C.QMediaCaptureSession_Camera(this.h), nil)
 }
 
 func (this *QMediaCaptureSession) SetCamera(camera *QCamera) {
@@ -112,7 +112,7 @@ func (this *QMediaCaptureSession) SetCamera(camera *QCamera) {
 }
 
 func (this *QMediaCaptureSession) ImageCapture() *QImageCapture {
-	return UnsafeNewQImageCapture(unsafe.Pointer(C.QMediaCaptureSession_ImageCapture(this.h)), nil)
+	return newQImageCapture(C.QMediaCaptureSession_ImageCapture(this.h), nil)
 }
 
 func (this *QMediaCaptureSession) SetImageCapture(imageCapture *QImageCapture) {
@@ -120,7 +120,7 @@ func (this *QMediaCaptureSession) SetImageCapture(imageCapture *QImageCapture) {
 }
 
 func (this *QMediaCaptureSession) Recorder() *QMediaRecorder {
-	return UnsafeNewQMediaRecorder(unsafe.Pointer(C.QMediaCaptureSession_Recorder(this.h)), nil)
+	return newQMediaRecorder(C.QMediaCaptureSession_Recorder(this.h), nil)
 }
 
 func (this *QMediaCaptureSession) SetRecorder(recorder *QMediaRecorder) {
@@ -140,7 +140,7 @@ func (this *QMediaCaptureSession) SetVideoSink(sink *QVideoSink) {
 }
 
 func (this *QMediaCaptureSession) VideoSink() *QVideoSink {
-	return UnsafeNewQVideoSink(unsafe.Pointer(C.QMediaCaptureSession_VideoSink(this.h)), nil)
+	return newQVideoSink(C.QMediaCaptureSession_VideoSink(this.h), nil)
 }
 
 func (this *QMediaCaptureSession) SetAudioOutput(output *QAudioOutput) {
@@ -148,7 +148,7 @@ func (this *QMediaCaptureSession) SetAudioOutput(output *QAudioOutput) {
 }
 
 func (this *QMediaCaptureSession) AudioOutput() *QAudioOutput {
-	return UnsafeNewQAudioOutput(unsafe.Pointer(C.QMediaCaptureSession_AudioOutput(this.h)), nil)
+	return newQAudioOutput(C.QMediaCaptureSession_AudioOutput(this.h), nil)
 }
 
 func (this *QMediaCaptureSession) AudioInputChanged() {
@@ -324,6 +324,7 @@ func miqt_exec_callback_QMediaCaptureSession_EventFilter(self *C.QMediaCaptureSe
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QMediaCaptureSession{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

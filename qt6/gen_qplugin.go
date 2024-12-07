@@ -104,8 +104,7 @@ func UnsafeNewQStaticPlugin(h unsafe.Pointer) *QStaticPlugin {
 }
 
 func (this *QStaticPlugin) MetaData() *QJsonObject {
-	_ret := C.QStaticPlugin_MetaData(this.h)
-	_goptr := newQJsonObject(_ret)
+	_goptr := newQJsonObject(C.QStaticPlugin_MetaData(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

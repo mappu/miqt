@@ -74,15 +74,13 @@ func (this *QWebEngineHistoryItem) OperatorAssign(other *QWebEngineHistoryItem) 
 }
 
 func (this *QWebEngineHistoryItem) OriginalUrl() *qt6.QUrl {
-	_ret := C.QWebEngineHistoryItem_OriginalUrl(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineHistoryItem_OriginalUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineHistoryItem) Url() *qt6.QUrl {
-	_ret := C.QWebEngineHistoryItem_Url(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineHistoryItem_Url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -95,15 +93,13 @@ func (this *QWebEngineHistoryItem) Title() string {
 }
 
 func (this *QWebEngineHistoryItem) LastVisited() *qt6.QDateTime {
-	_ret := C.QWebEngineHistoryItem_LastVisited(this.h)
-	_goptr := qt6.UnsafeNewQDateTime(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQDateTime(unsafe.Pointer(C.QWebEngineHistoryItem_LastVisited(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineHistoryItem) IconUrl() *qt6.QUrl {
-	_ret := C.QWebEngineHistoryItem_IconUrl(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineHistoryItem_IconUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -193,8 +189,7 @@ func (this *QWebEngineHistoryModel) RowCount(parent *qt6.QModelIndex) int {
 }
 
 func (this *QWebEngineHistoryModel) Data(index *qt6.QModelIndex, role int) *qt6.QVariant {
-	_ret := C.QWebEngineHistoryModel_Data(this.h, (*C.QModelIndex)(index.UnsafePointer()), (C.int)(role))
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QWebEngineHistoryModel_Data(this.h, (*C.QModelIndex)(index.UnsafePointer()), (C.int)(role))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -309,8 +304,7 @@ func (this *QWebEngineHistory) Items() []QWebEngineHistoryItem {
 	_ret := make([]QWebEngineHistoryItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWebEngineHistoryItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQWebEngineHistoryItem(_lv_ret)
+		_lv_goptr := newQWebEngineHistoryItem(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -322,8 +316,7 @@ func (this *QWebEngineHistory) BackItems(maxItems int) []QWebEngineHistoryItem {
 	_ret := make([]QWebEngineHistoryItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWebEngineHistoryItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQWebEngineHistoryItem(_lv_ret)
+		_lv_goptr := newQWebEngineHistoryItem(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -335,8 +328,7 @@ func (this *QWebEngineHistory) ForwardItems(maxItems int) []QWebEngineHistoryIte
 	_ret := make([]QWebEngineHistoryItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWebEngineHistoryItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQWebEngineHistoryItem(_lv_ret)
+		_lv_goptr := newQWebEngineHistoryItem(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -364,29 +356,25 @@ func (this *QWebEngineHistory) GoToItem(item *QWebEngineHistoryItem) {
 }
 
 func (this *QWebEngineHistory) BackItem() *QWebEngineHistoryItem {
-	_ret := C.QWebEngineHistory_BackItem(this.h)
-	_goptr := newQWebEngineHistoryItem(_ret)
+	_goptr := newQWebEngineHistoryItem(C.QWebEngineHistory_BackItem(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineHistory) CurrentItem() *QWebEngineHistoryItem {
-	_ret := C.QWebEngineHistory_CurrentItem(this.h)
-	_goptr := newQWebEngineHistoryItem(_ret)
+	_goptr := newQWebEngineHistoryItem(C.QWebEngineHistory_CurrentItem(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineHistory) ForwardItem() *QWebEngineHistoryItem {
-	_ret := C.QWebEngineHistory_ForwardItem(this.h)
-	_goptr := newQWebEngineHistoryItem(_ret)
+	_goptr := newQWebEngineHistoryItem(C.QWebEngineHistory_ForwardItem(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineHistory) ItemAt(i int) *QWebEngineHistoryItem {
-	_ret := C.QWebEngineHistory_ItemAt(this.h, (C.int)(i))
-	_goptr := newQWebEngineHistoryItem(_ret)
+	_goptr := newQWebEngineHistoryItem(C.QWebEngineHistory_ItemAt(this.h, (C.int)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -400,15 +388,15 @@ func (this *QWebEngineHistory) Count() int {
 }
 
 func (this *QWebEngineHistory) ItemsModel() *QWebEngineHistoryModel {
-	return UnsafeNewQWebEngineHistoryModel(unsafe.Pointer(C.QWebEngineHistory_ItemsModel(this.h)), nil, nil, nil)
+	return newQWebEngineHistoryModel(C.QWebEngineHistory_ItemsModel(this.h), nil, nil, nil)
 }
 
 func (this *QWebEngineHistory) BackItemsModel() *QWebEngineHistoryModel {
-	return UnsafeNewQWebEngineHistoryModel(unsafe.Pointer(C.QWebEngineHistory_BackItemsModel(this.h)), nil, nil, nil)
+	return newQWebEngineHistoryModel(C.QWebEngineHistory_BackItemsModel(this.h), nil, nil, nil)
 }
 
 func (this *QWebEngineHistory) ForwardItemsModel() *QWebEngineHistoryModel {
-	return UnsafeNewQWebEngineHistoryModel(unsafe.Pointer(C.QWebEngineHistory_ForwardItemsModel(this.h)), nil, nil, nil)
+	return newQWebEngineHistoryModel(C.QWebEngineHistory_ForwardItemsModel(this.h), nil, nil, nil)
 }
 
 func QWebEngineHistory_Tr2(s string, c string) string {

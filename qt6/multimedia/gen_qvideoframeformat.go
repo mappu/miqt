@@ -196,8 +196,7 @@ func (this *QVideoFrameFormat) PixelFormat() QVideoFrameFormat__PixelFormat {
 }
 
 func (this *QVideoFrameFormat) FrameSize() *qt6.QSize {
-	_ret := C.QVideoFrameFormat_FrameSize(this.h)
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QVideoFrameFormat_FrameSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -223,8 +222,7 @@ func (this *QVideoFrameFormat) PlaneCount() int {
 }
 
 func (this *QVideoFrameFormat) Viewport() *qt6.QRect {
-	_ret := C.QVideoFrameFormat_Viewport(this.h)
-	_goptr := qt6.UnsafeNewQRect(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQRect(unsafe.Pointer(C.QVideoFrameFormat_Viewport(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

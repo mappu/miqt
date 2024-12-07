@@ -92,8 +92,7 @@ func NewQOperatingSystemVersion3(osType QOperatingSystemVersion__OSType, vmajor 
 }
 
 func QOperatingSystemVersion_Current() *QOperatingSystemVersion {
-	_ret := C.QOperatingSystemVersion_Current()
-	_goptr := newQOperatingSystemVersion(_ret)
+	_goptr := newQOperatingSystemVersion(C.QOperatingSystemVersion_Current())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

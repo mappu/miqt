@@ -294,7 +294,7 @@ func NewQMessageBox9(title string, text string, icon QMessageBox__Icon, button0 
 }
 
 func (this *QMessageBox) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMessageBox_MetaObject(this.h)))
+	return newQMetaObject(C.QMessageBox_MetaObject(this.h))
 }
 
 func (this *QMessageBox) Metacast(param1 string) unsafe.Pointer {
@@ -321,11 +321,11 @@ func (this *QMessageBox) AddButton2(text string, role QMessageBox__ButtonRole) *
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return UnsafeNewQPushButton(unsafe.Pointer(C.QMessageBox_AddButton2(this.h, text_ms, (C.int)(role))), nil, nil, nil, nil)
+	return newQPushButton(C.QMessageBox_AddButton2(this.h, text_ms, (C.int)(role)), nil, nil, nil, nil)
 }
 
 func (this *QMessageBox) AddButtonWithButton(button QMessageBox__StandardButton) *QPushButton {
-	return UnsafeNewQPushButton(unsafe.Pointer(C.QMessageBox_AddButtonWithButton(this.h, (C.int)(button))), nil, nil, nil, nil)
+	return newQPushButton(C.QMessageBox_AddButtonWithButton(this.h, (C.int)(button)), nil, nil, nil, nil)
 }
 
 func (this *QMessageBox) RemoveButton(button *QAbstractButton) {
@@ -337,7 +337,7 @@ func (this *QMessageBox) Buttons() []*QAbstractButton {
 	_ret := make([]*QAbstractButton, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractButton)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQAbstractButton(unsafe.Pointer(_outCast[i]), nil, nil, nil)
+		_ret[i] = newQAbstractButton(_outCast[i], nil, nil, nil)
 	}
 	return _ret
 }
@@ -359,11 +359,11 @@ func (this *QMessageBox) StandardButton(button *QAbstractButton) QMessageBox__St
 }
 
 func (this *QMessageBox) Button(which QMessageBox__StandardButton) *QAbstractButton {
-	return UnsafeNewQAbstractButton(unsafe.Pointer(C.QMessageBox_Button(this.h, (C.int)(which))), nil, nil, nil)
+	return newQAbstractButton(C.QMessageBox_Button(this.h, (C.int)(which)), nil, nil, nil)
 }
 
 func (this *QMessageBox) DefaultButton() *QPushButton {
-	return UnsafeNewQPushButton(unsafe.Pointer(C.QMessageBox_DefaultButton(this.h)), nil, nil, nil, nil)
+	return newQPushButton(C.QMessageBox_DefaultButton(this.h), nil, nil, nil, nil)
 }
 
 func (this *QMessageBox) SetDefaultButton(button *QPushButton) {
@@ -375,7 +375,7 @@ func (this *QMessageBox) SetDefaultButtonWithButton(button QMessageBox__Standard
 }
 
 func (this *QMessageBox) EscapeButton() *QAbstractButton {
-	return UnsafeNewQAbstractButton(unsafe.Pointer(C.QMessageBox_EscapeButton(this.h)), nil, nil, nil)
+	return newQAbstractButton(C.QMessageBox_EscapeButton(this.h), nil, nil, nil)
 }
 
 func (this *QMessageBox) SetEscapeButton(button *QAbstractButton) {
@@ -387,7 +387,7 @@ func (this *QMessageBox) SetEscapeButtonWithButton(button QMessageBox__StandardB
 }
 
 func (this *QMessageBox) ClickedButton() *QAbstractButton {
-	return UnsafeNewQAbstractButton(unsafe.Pointer(C.QMessageBox_ClickedButton(this.h)), nil, nil, nil)
+	return newQAbstractButton(C.QMessageBox_ClickedButton(this.h), nil, nil, nil)
 }
 
 func (this *QMessageBox) Text() string {
@@ -414,8 +414,7 @@ func (this *QMessageBox) SetIcon(icon QMessageBox__Icon) {
 }
 
 func (this *QMessageBox) IconPixmap() *QPixmap {
-	_ret := C.QMessageBox_IconPixmap(this.h)
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QMessageBox_IconPixmap(this.h), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -445,7 +444,7 @@ func (this *QMessageBox) SetCheckBox(cb *QCheckBox) {
 }
 
 func (this *QMessageBox) CheckBox() *QCheckBox {
-	return UnsafeNewQCheckBox(unsafe.Pointer(C.QMessageBox_CheckBox(this.h)), nil, nil, nil, nil)
+	return newQCheckBox(C.QMessageBox_CheckBox(this.h), nil, nil, nil, nil)
 }
 
 func QMessageBox_Information(parent *QWidget, title string, text string) QMessageBox__StandardButton {
@@ -730,8 +729,7 @@ func (this *QMessageBox) SetWindowModality(windowModality WindowModality) {
 }
 
 func QMessageBox_StandardIcon(icon QMessageBox__Icon) *QPixmap {
-	_ret := C.QMessageBox_StandardIcon((C.int)(icon))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QMessageBox_StandardIcon((C.int)(icon)), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -751,7 +749,7 @@ func miqt_exec_callback_QMessageBox_ButtonClicked(cb C.intptr_t, button *C.QAbst
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAbstractButton(unsafe.Pointer(button), nil, nil, nil)
+	slotval1 := newQAbstractButton(button, nil, nil, nil)
 
 	gofunc(slotval1)
 }
@@ -1354,7 +1352,7 @@ func miqt_exec_callback_QMessageBox_Event(self *C.QMessageBox, cb C.intptr_t, e 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QMessageBox{h: self}).callVirtualBase_Event, slotval1)
 
@@ -1382,7 +1380,7 @@ func miqt_exec_callback_QMessageBox_ResizeEvent(self *C.QMessageBox, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQResizeEvent(event, nil)
 
 	gofunc((&QMessageBox{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -1408,7 +1406,7 @@ func miqt_exec_callback_QMessageBox_ShowEvent(self *C.QMessageBox, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQShowEvent(event, nil)
 
 	gofunc((&QMessageBox{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1434,7 +1432,7 @@ func miqt_exec_callback_QMessageBox_CloseEvent(self *C.QMessageBox, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQCloseEvent(event, nil)
 
 	gofunc((&QMessageBox{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -1460,7 +1458,7 @@ func miqt_exec_callback_QMessageBox_KeyPressEvent(self *C.QMessageBox, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QMessageBox{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -1486,7 +1484,7 @@ func miqt_exec_callback_QMessageBox_ChangeEvent(self *C.QMessageBox, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QMessageBox{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -1520,8 +1518,7 @@ func miqt_exec_callback_QMessageBox_SetVisible(self *C.QMessageBox, cb C.intptr_
 
 func (this *QMessageBox) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QMessageBox_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QMessageBox_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1548,8 +1545,7 @@ func miqt_exec_callback_QMessageBox_SizeHint(self *C.QMessageBox, cb C.intptr_t)
 
 func (this *QMessageBox) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QMessageBox_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QMessageBox_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1714,7 +1710,7 @@ func miqt_exec_callback_QMessageBox_ContextMenuEvent(self *C.QMessageBox, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQContextMenuEvent(param1, nil, nil)
 
 	gofunc((&QMessageBox{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -1740,8 +1736,9 @@ func miqt_exec_callback_QMessageBox_EventFilter(self *C.QMessageBox, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(param1))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(param2))
+	slotval1 := newQObject(param1)
+
+	slotval2 := newQEvent(param2)
 
 	virtualReturn := gofunc((&QMessageBox{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 

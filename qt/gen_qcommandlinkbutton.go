@@ -168,7 +168,7 @@ func NewQCommandLinkButton6(text string, description string, parent *QWidget) *Q
 }
 
 func (this *QCommandLinkButton) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QCommandLinkButton_MetaObject(this.h)))
+	return newQMetaObject(C.QCommandLinkButton_MetaObject(this.h))
 }
 
 func (this *QCommandLinkButton) Metacast(param1 string) unsafe.Pointer {
@@ -256,8 +256,7 @@ func QCommandLinkButton_TrUtf83(s string, c string, n int) string {
 
 func (this *QCommandLinkButton) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QCommandLinkButton_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QCommandLinkButton_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -312,8 +311,7 @@ func miqt_exec_callback_QCommandLinkButton_HeightForWidth(self *C.QCommandLinkBu
 
 func (this *QCommandLinkButton) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QCommandLinkButton_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QCommandLinkButton_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -358,7 +356,7 @@ func miqt_exec_callback_QCommandLinkButton_Event(self *C.QCommandLinkButton, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QCommandLinkButton{h: self}).callVirtualBase_Event, slotval1)
 
@@ -386,7 +384,7 @@ func miqt_exec_callback_QCommandLinkButton_PaintEvent(self *C.QCommandLinkButton
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQPaintEvent(param1, nil)
 
 	gofunc((&QCommandLinkButton{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -412,7 +410,7 @@ func miqt_exec_callback_QCommandLinkButton_KeyPressEvent(self *C.QCommandLinkBut
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQKeyEvent(param1, nil, nil)
 
 	gofunc((&QCommandLinkButton{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -438,7 +436,7 @@ func miqt_exec_callback_QCommandLinkButton_FocusInEvent(self *C.QCommandLinkButt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQFocusEvent(param1, nil)
 
 	gofunc((&QCommandLinkButton{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -464,7 +462,7 @@ func miqt_exec_callback_QCommandLinkButton_FocusOutEvent(self *C.QCommandLinkBut
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQFocusEvent(param1, nil)
 
 	gofunc((&QCommandLinkButton{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -490,7 +488,7 @@ func miqt_exec_callback_QCommandLinkButton_HitButton(self *C.QCommandLinkButton,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(pos))
+	slotval1 := newQPoint(pos)
 
 	virtualReturn := gofunc((&QCommandLinkButton{h: self}).callVirtualBase_HitButton, slotval1)
 

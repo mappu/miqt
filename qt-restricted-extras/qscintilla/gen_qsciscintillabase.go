@@ -1284,7 +1284,7 @@ func QsciScintillaBase_TrUtf8(s string) string {
 }
 
 func QsciScintillaBase_Pool() *QsciScintillaBase {
-	return UnsafeNewQsciScintillaBase(unsafe.Pointer(C.QsciScintillaBase_Pool()), nil, nil, nil, nil, nil)
+	return newQsciScintillaBase(C.QsciScintillaBase_Pool(), nil, nil, nil, nil, nil)
 }
 
 func (this *QsciScintillaBase) ReplaceHorizontalScrollBar(scrollBar *qt.QScrollBar) {
@@ -2270,6 +2270,7 @@ func miqt_exec_callback_QsciScintillaBase_FromMimeData(self *C.QsciScintillaBase
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQMimeData(unsafe.Pointer(source), nil)
+
 	slotval2 := (*bool)(unsafe.Pointer(rectangular))
 
 	virtualReturn := gofunc((&QsciScintillaBase{h: self}).callVirtualBase_FromMimeData, slotval1, slotval2)
@@ -2287,6 +2288,7 @@ func (this *QsciScintillaBase) callVirtualBase_ToMimeData(text []byte, rectangul
 	text_alias.len = C.size_t(len(text))
 
 	return qt.UnsafeNewQMimeData(unsafe.Pointer(C.QsciScintillaBase_virtualbase_ToMimeData(unsafe.Pointer(this.h), text_alias, (C.bool)(rectangular))), nil)
+
 }
 func (this *QsciScintillaBase) OnToMimeData(slot func(super func(text []byte, rectangular bool) *qt.QMimeData, text []byte, rectangular bool) *qt.QMimeData) {
 	if !this.isSubclass {
@@ -2605,8 +2607,7 @@ func miqt_exec_callback_QsciScintillaBase_InputMethodEvent(self *C.QsciScintilla
 
 func (this *QsciScintillaBase) callVirtualBase_InputMethodQuery(query qt.InputMethodQuery) *qt.QVariant {
 
-	_ret := C.QsciScintillaBase_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QsciScintillaBase_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -2820,8 +2821,7 @@ func miqt_exec_callback_QsciScintillaBase_ScrollContentsBy(self *C.QsciScintilla
 
 func (this *QsciScintillaBase) callVirtualBase_MinimumSizeHint() *qt.QSize {
 
-	_ret := C.QsciScintillaBase_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QsciScintillaBase_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -2848,8 +2848,7 @@ func miqt_exec_callback_QsciScintillaBase_MinimumSizeHint(self *C.QsciScintillaB
 
 func (this *QsciScintillaBase) callVirtualBase_SizeHint() *qt.QSize {
 
-	_ret := C.QsciScintillaBase_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QsciScintillaBase_virtualbase_SizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -2921,6 +2920,7 @@ func miqt_exec_callback_QsciScintillaBase_EventFilter(self *C.QsciScintillaBase,
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(param1))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(param2))
 
 	virtualReturn := gofunc((&QsciScintillaBase{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
@@ -3013,8 +3013,7 @@ func miqt_exec_callback_QsciScintillaBase_WheelEvent(self *C.QsciScintillaBase, 
 
 func (this *QsciScintillaBase) callVirtualBase_ViewportSizeHint() *qt.QSize {
 
-	_ret := C.QsciScintillaBase_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QsciScintillaBase_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

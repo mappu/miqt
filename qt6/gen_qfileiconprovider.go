@@ -65,23 +65,20 @@ func NewQFileIconProvider() *QFileIconProvider {
 }
 
 func (this *QFileIconProvider) Icon(typeVal QAbstractFileIconProvider__IconType) *QIcon {
-	_ret := C.QFileIconProvider_Icon(this.h, (C.int)(typeVal))
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QFileIconProvider_Icon(this.h, (C.int)(typeVal)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileIconProvider) IconWithInfo(info *QFileInfo) *QIcon {
-	_ret := C.QFileIconProvider_IconWithInfo(this.h, info.cPointer())
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QFileIconProvider_IconWithInfo(this.h, info.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileIconProvider) callVirtualBase_Icon(typeVal QAbstractFileIconProvider__IconType) *QIcon {
 
-	_ret := C.QFileIconProvider_virtualbase_Icon(unsafe.Pointer(this.h), (C.int)(typeVal))
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QFileIconProvider_virtualbase_Icon(unsafe.Pointer(this.h), (C.int)(typeVal)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -111,8 +108,7 @@ func miqt_exec_callback_QFileIconProvider_Icon(self *C.QFileIconProvider, cb C.i
 
 func (this *QFileIconProvider) callVirtualBase_IconWithInfo(info *QFileInfo) *QIcon {
 
-	_ret := C.QFileIconProvider_virtualbase_IconWithInfo(unsafe.Pointer(this.h), info.cPointer())
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QFileIconProvider_virtualbase_IconWithInfo(unsafe.Pointer(this.h), info.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -132,7 +128,7 @@ func miqt_exec_callback_QFileIconProvider_IconWithInfo(self *C.QFileIconProvider
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFileInfo(unsafe.Pointer(info))
+	slotval1 := newQFileInfo(info)
 
 	virtualReturn := gofunc((&QFileIconProvider{h: self}).callVirtualBase_IconWithInfo, slotval1)
 
@@ -162,7 +158,7 @@ func miqt_exec_callback_QFileIconProvider_Type(self *C.QFileIconProvider, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFileInfo(unsafe.Pointer(param1))
+	slotval1 := newQFileInfo(param1)
 
 	virtualReturn := gofunc((&QFileIconProvider{h: self}).callVirtualBase_Type, slotval1)
 	virtualReturn_ms := C.struct_miqt_string{}

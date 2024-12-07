@@ -70,8 +70,7 @@ func (this *QWebEngineScriptCollection) Find(name string) []QWebEngineScript {
 	_ret := make([]QWebEngineScript, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWebEngineScript)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQWebEngineScript(_lv_ret)
+		_lv_goptr := newQWebEngineScript(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -105,8 +104,7 @@ func (this *QWebEngineScriptCollection) ToList() []QWebEngineScript {
 	_ret := make([]QWebEngineScript, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWebEngineScript)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQWebEngineScript(_lv_ret)
+		_lv_goptr := newQWebEngineScript(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}

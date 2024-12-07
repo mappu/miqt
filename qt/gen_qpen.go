@@ -198,8 +198,7 @@ func (this *QPen) SetWidth(width int) {
 }
 
 func (this *QPen) Color() *QColor {
-	_ret := C.QPen_Color(this.h)
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QPen_Color(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -209,8 +208,7 @@ func (this *QPen) SetColor(color *QColor) {
 }
 
 func (this *QPen) Brush() *QBrush {
-	_ret := C.QPen_Brush(this.h)
-	_goptr := newQBrush(_ret)
+	_goptr := newQBrush(C.QPen_Brush(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

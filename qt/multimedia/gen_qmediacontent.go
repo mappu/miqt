@@ -164,29 +164,25 @@ func (this *QMediaContent) IsNull() bool {
 }
 
 func (this *QMediaContent) Request() *network.QNetworkRequest {
-	_ret := C.QMediaContent_Request(this.h)
-	_goptr := network.UnsafeNewQNetworkRequest(unsafe.Pointer(_ret))
+	_goptr := network.UnsafeNewQNetworkRequest(unsafe.Pointer(C.QMediaContent_Request(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaContent) CanonicalUrl() *qt.QUrl {
-	_ret := C.QMediaContent_CanonicalUrl(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QMediaContent_CanonicalUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaContent) CanonicalRequest() *network.QNetworkRequest {
-	_ret := C.QMediaContent_CanonicalRequest(this.h)
-	_goptr := network.UnsafeNewQNetworkRequest(unsafe.Pointer(_ret))
+	_goptr := network.UnsafeNewQNetworkRequest(unsafe.Pointer(C.QMediaContent_CanonicalRequest(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaContent) CanonicalResource() *QMediaResource {
-	_ret := C.QMediaContent_CanonicalResource(this.h)
-	_goptr := newQMediaResource(_ret)
+	_goptr := newQMediaResource(C.QMediaContent_CanonicalResource(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -196,8 +192,7 @@ func (this *QMediaContent) Resources() []QMediaResource {
 	_ret := make([]QMediaResource, int(_ma.len))
 	_outCast := (*[0xffff]*C.QMediaResource)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQMediaResource(_lv_ret)
+		_lv_goptr := newQMediaResource(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -205,7 +200,7 @@ func (this *QMediaContent) Resources() []QMediaResource {
 }
 
 func (this *QMediaContent) Playlist() *QMediaPlaylist {
-	return UnsafeNewQMediaPlaylist(unsafe.Pointer(C.QMediaContent_Playlist(this.h)), nil, nil)
+	return newQMediaPlaylist(C.QMediaContent_Playlist(this.h), nil, nil)
 }
 
 // Delete this object from C++ memory.

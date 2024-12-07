@@ -103,7 +103,7 @@ func NewQCalendarWidget2() *QCalendarWidget {
 }
 
 func (this *QCalendarWidget) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QCalendarWidget_MetaObject(this.h)))
+	return newQMetaObject(C.QCalendarWidget_MetaObject(this.h))
 }
 
 func (this *QCalendarWidget) Metacast(param1 string) unsafe.Pointer {
@@ -131,22 +131,19 @@ func QCalendarWidget_TrUtf8(s string) string {
 }
 
 func (this *QCalendarWidget) SizeHint() *QSize {
-	_ret := C.QCalendarWidget_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QCalendarWidget_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCalendarWidget) MinimumSizeHint() *QSize {
-	_ret := C.QCalendarWidget_MinimumSizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QCalendarWidget_MinimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCalendarWidget) SelectedDate() *QDate {
-	_ret := C.QCalendarWidget_SelectedDate(this.h)
-	_goptr := newQDate(_ret)
+	_goptr := newQDate(C.QCalendarWidget_SelectedDate(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -160,8 +157,7 @@ func (this *QCalendarWidget) MonthShown() int {
 }
 
 func (this *QCalendarWidget) MinimumDate() *QDate {
-	_ret := C.QCalendarWidget_MinimumDate(this.h)
-	_goptr := newQDate(_ret)
+	_goptr := newQDate(C.QCalendarWidget_MinimumDate(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -171,8 +167,7 @@ func (this *QCalendarWidget) SetMinimumDate(date *QDate) {
 }
 
 func (this *QCalendarWidget) MaximumDate() *QDate {
-	_ret := C.QCalendarWidget_MaximumDate(this.h)
-	_goptr := newQDate(_ret)
+	_goptr := newQDate(C.QCalendarWidget_MaximumDate(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -198,8 +193,7 @@ func (this *QCalendarWidget) IsGridVisible() bool {
 }
 
 func (this *QCalendarWidget) Calendar() *QCalendar {
-	_ret := C.QCalendarWidget_Calendar(this.h)
-	_goptr := newQCalendar(_ret)
+	_goptr := newQCalendar(C.QCalendarWidget_Calendar(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -233,8 +227,7 @@ func (this *QCalendarWidget) SetVerticalHeaderFormat(format QCalendarWidget__Ver
 }
 
 func (this *QCalendarWidget) HeaderTextFormat() *QTextCharFormat {
-	_ret := C.QCalendarWidget_HeaderTextFormat(this.h)
-	_goptr := newQTextCharFormat(_ret, nil)
+	_goptr := newQTextCharFormat(C.QCalendarWidget_HeaderTextFormat(this.h), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -244,8 +237,7 @@ func (this *QCalendarWidget) SetHeaderTextFormat(format *QTextCharFormat) {
 }
 
 func (this *QCalendarWidget) WeekdayTextFormat(dayOfWeek DayOfWeek) *QTextCharFormat {
-	_ret := C.QCalendarWidget_WeekdayTextFormat(this.h, (C.int)(dayOfWeek))
-	_goptr := newQTextCharFormat(_ret, nil)
+	_goptr := newQTextCharFormat(C.QCalendarWidget_WeekdayTextFormat(this.h, (C.int)(dayOfWeek)), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -260,13 +252,11 @@ func (this *QCalendarWidget) DateTextFormat() map[QDate]QTextCharFormat {
 	_Keys := (*[0xffff]*C.QDate)(unsafe.Pointer(_mm.keys))
 	_Values := (*[0xffff]*C.QTextCharFormat)(unsafe.Pointer(_mm.values))
 	for i := 0; i < int(_mm.len); i++ {
-		_mapkey_ret := _Keys[i]
-		_mapkey_goptr := newQDate(_mapkey_ret)
+		_mapkey_goptr := newQDate(_Keys[i])
 		_mapkey_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_entry_Key := *_mapkey_goptr
 
-		_mapval_ret := _Values[i]
-		_mapval_goptr := newQTextCharFormat(_mapval_ret, nil)
+		_mapval_goptr := newQTextCharFormat(_Values[i], nil)
 		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_entry_Value := *_mapval_goptr
 
@@ -276,8 +266,7 @@ func (this *QCalendarWidget) DateTextFormat() map[QDate]QTextCharFormat {
 }
 
 func (this *QCalendarWidget) DateTextFormatWithDate(date *QDate) *QTextCharFormat {
-	_ret := C.QCalendarWidget_DateTextFormatWithDate(this.h, date.cPointer())
-	_goptr := newQTextCharFormat(_ret, nil)
+	_goptr := newQTextCharFormat(C.QCalendarWidget_DateTextFormatWithDate(this.h, date.cPointer()), nil)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -378,7 +367,7 @@ func miqt_exec_callback_QCalendarWidget_Clicked(cb C.intptr_t, date *C.QDate) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDate(unsafe.Pointer(date))
+	slotval1 := newQDate(date)
 
 	gofunc(slotval1)
 }
@@ -398,7 +387,7 @@ func miqt_exec_callback_QCalendarWidget_Activated(cb C.intptr_t, date *C.QDate) 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDate(unsafe.Pointer(date))
+	slotval1 := newQDate(date)
 
 	gofunc(slotval1)
 }
@@ -471,8 +460,7 @@ func QCalendarWidget_TrUtf83(s string, c string, n int) string {
 
 func (this *QCalendarWidget) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QCalendarWidget_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QCalendarWidget_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -499,8 +487,7 @@ func miqt_exec_callback_QCalendarWidget_SizeHint(self *C.QCalendarWidget, cb C.i
 
 func (this *QCalendarWidget) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QCalendarWidget_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QCalendarWidget_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -545,7 +532,7 @@ func miqt_exec_callback_QCalendarWidget_Event(self *C.QCalendarWidget, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QCalendarWidget{h: self}).callVirtualBase_Event, slotval1)
 
@@ -573,8 +560,9 @@ func miqt_exec_callback_QCalendarWidget_EventFilter(self *C.QCalendarWidget, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QCalendarWidget{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -602,7 +590,7 @@ func miqt_exec_callback_QCalendarWidget_MousePressEvent(self *C.QCalendarWidget,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -628,7 +616,7 @@ func miqt_exec_callback_QCalendarWidget_ResizeEvent(self *C.QCalendarWidget, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQResizeEvent(event, nil)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -654,7 +642,7 @@ func miqt_exec_callback_QCalendarWidget_KeyPressEvent(self *C.QCalendarWidget, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -680,9 +668,11 @@ func miqt_exec_callback_QCalendarWidget_PaintCell(self *C.QCalendarWidget, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQRect(unsafe.Pointer(rect))
-	slotval3 := UnsafeNewQDate(unsafe.Pointer(date))
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQRect(rect)
+
+	slotval3 := newQDate(date)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_PaintCell, slotval1, slotval2, slotval3)
 
@@ -794,7 +784,8 @@ func miqt_exec_callback_QCalendarWidget_HasHeightForWidth(self *C.QCalendarWidge
 
 func (this *QCalendarWidget) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QCalendarWidget_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return newQPaintEngine(C.QCalendarWidget_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+
 }
 func (this *QCalendarWidget) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
 	if !this.isSubclass {
@@ -836,7 +827,7 @@ func miqt_exec_callback_QCalendarWidget_MouseReleaseEvent(self *C.QCalendarWidge
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -862,7 +853,7 @@ func miqt_exec_callback_QCalendarWidget_MouseDoubleClickEvent(self *C.QCalendarW
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -888,7 +879,7 @@ func miqt_exec_callback_QCalendarWidget_MouseMoveEvent(self *C.QCalendarWidget, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event, nil, nil)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -914,7 +905,7 @@ func miqt_exec_callback_QCalendarWidget_WheelEvent(self *C.QCalendarWidget, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQWheelEvent(event, nil, nil)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -940,7 +931,7 @@ func miqt_exec_callback_QCalendarWidget_KeyReleaseEvent(self *C.QCalendarWidget,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event, nil, nil)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -966,7 +957,7 @@ func miqt_exec_callback_QCalendarWidget_FocusInEvent(self *C.QCalendarWidget, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -992,7 +983,7 @@ func miqt_exec_callback_QCalendarWidget_FocusOutEvent(self *C.QCalendarWidget, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event, nil)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -1018,7 +1009,7 @@ func miqt_exec_callback_QCalendarWidget_EnterEvent(self *C.QCalendarWidget, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_EnterEvent, slotval1)
 
@@ -1044,7 +1035,7 @@ func miqt_exec_callback_QCalendarWidget_LeaveEvent(self *C.QCalendarWidget, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_LeaveEvent, slotval1)
 
@@ -1070,7 +1061,7 @@ func miqt_exec_callback_QCalendarWidget_PaintEvent(self *C.QCalendarWidget, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQPaintEvent(event, nil)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -1096,7 +1087,7 @@ func miqt_exec_callback_QCalendarWidget_MoveEvent(self *C.QCalendarWidget, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMoveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQMoveEvent(event, nil)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -1122,7 +1113,7 @@ func miqt_exec_callback_QCalendarWidget_CloseEvent(self *C.QCalendarWidget, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQCloseEvent(event, nil)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -1148,7 +1139,7 @@ func miqt_exec_callback_QCalendarWidget_ContextMenuEvent(self *C.QCalendarWidget
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQContextMenuEvent(event, nil, nil)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -1174,7 +1165,7 @@ func miqt_exec_callback_QCalendarWidget_TabletEvent(self *C.QCalendarWidget, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTabletEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQTabletEvent(event, nil, nil)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -1200,7 +1191,7 @@ func miqt_exec_callback_QCalendarWidget_ActionEvent(self *C.QCalendarWidget, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQActionEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQActionEvent(event, nil)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -1226,7 +1217,7 @@ func miqt_exec_callback_QCalendarWidget_DragEnterEvent(self *C.QCalendarWidget, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragEnterEvent(unsafe.Pointer(event), nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event, nil, nil, nil)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -1252,7 +1243,7 @@ func miqt_exec_callback_QCalendarWidget_DragMoveEvent(self *C.QCalendarWidget, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQDragMoveEvent(event, nil, nil)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1278,7 +1269,7 @@ func miqt_exec_callback_QCalendarWidget_DragLeaveEvent(self *C.QCalendarWidget, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragLeaveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDragLeaveEvent(event, nil)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1304,7 +1295,7 @@ func miqt_exec_callback_QCalendarWidget_DropEvent(self *C.QCalendarWidget, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDropEvent(event, nil)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1330,7 +1321,7 @@ func miqt_exec_callback_QCalendarWidget_ShowEvent(self *C.QCalendarWidget, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQShowEvent(event, nil)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1356,7 +1347,7 @@ func miqt_exec_callback_QCalendarWidget_HideEvent(self *C.QCalendarWidget, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHideEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQHideEvent(event, nil)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -1419,7 +1410,7 @@ func miqt_exec_callback_QCalendarWidget_ChangeEvent(self *C.QCalendarWidget, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -1473,7 +1464,7 @@ func miqt_exec_callback_QCalendarWidget_InitPainter(self *C.QCalendarWidget, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval1 := newQPainter(painter)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_InitPainter, slotval1)
 
@@ -1481,7 +1472,8 @@ func miqt_exec_callback_QCalendarWidget_InitPainter(self *C.QCalendarWidget, cb 
 
 func (this *QCalendarWidget) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QCalendarWidget_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer())))
+	return newQPaintDevice(C.QCalendarWidget_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+
 }
 func (this *QCalendarWidget) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
 	if !this.isSubclass {
@@ -1498,7 +1490,7 @@ func miqt_exec_callback_QCalendarWidget_Redirected(self *C.QCalendarWidget, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(offset))
+	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QCalendarWidget{h: self}).callVirtualBase_Redirected, slotval1)
 
@@ -1508,7 +1500,8 @@ func miqt_exec_callback_QCalendarWidget_Redirected(self *C.QCalendarWidget, cb C
 
 func (this *QCalendarWidget) callVirtualBase_SharedPainter() *QPainter {
 
-	return UnsafeNewQPainter(unsafe.Pointer(C.QCalendarWidget_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+	return newQPainter(C.QCalendarWidget_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+
 }
 func (this *QCalendarWidget) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
 	if !this.isSubclass {
@@ -1550,7 +1543,7 @@ func miqt_exec_callback_QCalendarWidget_InputMethodEvent(self *C.QCalendarWidget
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQInputMethodEvent(param1, nil)
 
 	gofunc((&QCalendarWidget{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -1558,8 +1551,7 @@ func miqt_exec_callback_QCalendarWidget_InputMethodEvent(self *C.QCalendarWidget
 
 func (this *QCalendarWidget) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_ret := C.QCalendarWidget_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QCalendarWidget_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 

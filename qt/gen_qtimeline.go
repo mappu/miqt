@@ -113,7 +113,7 @@ func NewQTimeLine3(duration int, parent *QObject) *QTimeLine {
 }
 
 func (this *QTimeLine) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTimeLine_MetaObject(this.h)))
+	return newQMetaObject(C.QTimeLine_MetaObject(this.h))
 }
 
 func (this *QTimeLine) Metacast(param1 string) unsafe.Pointer {
@@ -205,8 +205,7 @@ func (this *QTimeLine) SetCurveShape(shape QTimeLine__CurveShape) {
 }
 
 func (this *QTimeLine) EasingCurve() *QEasingCurve {
-	_ret := C.QTimeLine_EasingCurve(this.h)
-	_goptr := newQEasingCurve(_ret)
+	_goptr := newQEasingCurve(C.QTimeLine_EasingCurve(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -351,7 +350,7 @@ func miqt_exec_callback_QTimeLine_TimerEvent(self *C.QTimeLine, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QTimeLine{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -377,7 +376,7 @@ func miqt_exec_callback_QTimeLine_Event(self *C.QTimeLine, cb C.intptr_t, event 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QTimeLine{h: self}).callVirtualBase_Event, slotval1)
 
@@ -405,8 +404,9 @@ func miqt_exec_callback_QTimeLine_EventFilter(self *C.QTimeLine, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QTimeLine{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -434,7 +434,7 @@ func miqt_exec_callback_QTimeLine_ChildEvent(self *C.QTimeLine, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QTimeLine{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -460,7 +460,7 @@ func miqt_exec_callback_QTimeLine_CustomEvent(self *C.QTimeLine, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QTimeLine{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -486,7 +486,7 @@ func miqt_exec_callback_QTimeLine_ConnectNotify(self *C.QTimeLine, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QTimeLine{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -512,7 +512,7 @@ func miqt_exec_callback_QTimeLine_DisconnectNotify(self *C.QTimeLine, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QTimeLine{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

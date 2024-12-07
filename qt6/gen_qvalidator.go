@@ -91,7 +91,7 @@ func NewQValidator2(parent *QObject) *QValidator {
 }
 
 func (this *QValidator) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QValidator_MetaObject(this.h)))
+	return newQMetaObject(C.QValidator_MetaObject(this.h))
 }
 
 func (this *QValidator) Metacast(param1 string) unsafe.Pointer {
@@ -114,8 +114,7 @@ func (this *QValidator) SetLocale(locale *QLocale) {
 }
 
 func (this *QValidator) Locale() *QLocale {
-	_ret := C.QValidator_Locale(this.h)
-	_goptr := newQLocale(_ret)
+	_goptr := newQLocale(C.QValidator_Locale(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -254,7 +253,7 @@ func miqt_exec_callback_QValidator_Event(self *C.QValidator, cb C.intptr_t, even
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QValidator{h: self}).callVirtualBase_Event, slotval1)
 
@@ -282,8 +281,9 @@ func miqt_exec_callback_QValidator_EventFilter(self *C.QValidator, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QValidator{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -311,7 +311,7 @@ func miqt_exec_callback_QValidator_TimerEvent(self *C.QValidator, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event, nil)
 
 	gofunc((&QValidator{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -337,7 +337,7 @@ func miqt_exec_callback_QValidator_ChildEvent(self *C.QValidator, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event, nil)
 
 	gofunc((&QValidator{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -363,7 +363,7 @@ func miqt_exec_callback_QValidator_CustomEvent(self *C.QValidator, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QValidator{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -389,7 +389,7 @@ func miqt_exec_callback_QValidator_ConnectNotify(self *C.QValidator, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QValidator{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -415,7 +415,7 @@ func miqt_exec_callback_QValidator_DisconnectNotify(self *C.QValidator, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QValidator{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
@@ -523,7 +523,7 @@ func NewQIntValidator4(bottom int, top int, parent *QObject) *QIntValidator {
 }
 
 func (this *QIntValidator) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QIntValidator_MetaObject(this.h)))
+	return newQMetaObject(C.QIntValidator_MetaObject(this.h))
 }
 
 func (this *QIntValidator) Metacast(param1 string) unsafe.Pointer {
@@ -810,7 +810,7 @@ func NewQDoubleValidator4(bottom float64, top float64, decimals int, parent *QOb
 }
 
 func (this *QDoubleValidator) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QDoubleValidator_MetaObject(this.h)))
+	return newQMetaObject(C.QDoubleValidator_MetaObject(this.h))
 }
 
 func (this *QDoubleValidator) Metacast(param1 string) unsafe.Pointer {
@@ -1157,7 +1157,7 @@ func NewQRegularExpressionValidator4(re *QRegularExpression, parent *QObject) *Q
 }
 
 func (this *QRegularExpressionValidator) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QRegularExpressionValidator_MetaObject(this.h)))
+	return newQMetaObject(C.QRegularExpressionValidator_MetaObject(this.h))
 }
 
 func (this *QRegularExpressionValidator) Metacast(param1 string) unsafe.Pointer {
@@ -1184,8 +1184,7 @@ func (this *QRegularExpressionValidator) Validate(input string, pos *int) QValid
 }
 
 func (this *QRegularExpressionValidator) RegularExpression() *QRegularExpression {
-	_ret := C.QRegularExpressionValidator_RegularExpression(this.h)
-	_goptr := newQRegularExpression(_ret)
+	_goptr := newQRegularExpression(C.QRegularExpressionValidator_RegularExpression(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1209,7 +1208,7 @@ func miqt_exec_callback_QRegularExpressionValidator_RegularExpressionChanged(cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRegularExpression(unsafe.Pointer(re))
+	slotval1 := newQRegularExpression(re)
 
 	gofunc(slotval1)
 }
