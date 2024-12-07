@@ -9,6 +9,10 @@
 #include "gen_qcamerazoomcontrol.h"
 #include "_cgo_export.h"
 
+void QCameraZoomControl_virtbase(QCameraZoomControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
+
 QMetaObject* QCameraZoomControl_MetaObject(const QCameraZoomControl* self) {
 	return (QMetaObject*) self->metaObject();
 }

@@ -5,34 +5,28 @@
 #include "gen_qquaternion.h"
 #include "_cgo_export.h"
 
-void QQuaternion_new(QQuaternion** outptr_QQuaternion) {
-	QQuaternion* ret = new QQuaternion();
-	*outptr_QQuaternion = ret;
+QQuaternion* QQuaternion_new() {
+	return new QQuaternion();
 }
 
-void QQuaternion_new2(int param1, QQuaternion** outptr_QQuaternion) {
-	QQuaternion* ret = new QQuaternion(static_cast<Qt::Initialization>(param1));
-	*outptr_QQuaternion = ret;
+QQuaternion* QQuaternion_new2(int param1) {
+	return new QQuaternion(static_cast<Qt::Initialization>(param1));
 }
 
-void QQuaternion_new3(float scalar, float xpos, float ypos, float zpos, QQuaternion** outptr_QQuaternion) {
-	QQuaternion* ret = new QQuaternion(static_cast<float>(scalar), static_cast<float>(xpos), static_cast<float>(ypos), static_cast<float>(zpos));
-	*outptr_QQuaternion = ret;
+QQuaternion* QQuaternion_new3(float scalar, float xpos, float ypos, float zpos) {
+	return new QQuaternion(static_cast<float>(scalar), static_cast<float>(xpos), static_cast<float>(ypos), static_cast<float>(zpos));
 }
 
-void QQuaternion_new4(float scalar, QVector3D* vector, QQuaternion** outptr_QQuaternion) {
-	QQuaternion* ret = new QQuaternion(static_cast<float>(scalar), *vector);
-	*outptr_QQuaternion = ret;
+QQuaternion* QQuaternion_new4(float scalar, QVector3D* vector) {
+	return new QQuaternion(static_cast<float>(scalar), *vector);
 }
 
-void QQuaternion_new5(QVector4D* vector, QQuaternion** outptr_QQuaternion) {
-	QQuaternion* ret = new QQuaternion(*vector);
-	*outptr_QQuaternion = ret;
+QQuaternion* QQuaternion_new5(QVector4D* vector) {
+	return new QQuaternion(*vector);
 }
 
-void QQuaternion_new6(QQuaternion* param1, QQuaternion** outptr_QQuaternion) {
-	QQuaternion* ret = new QQuaternion(*param1);
-	*outptr_QQuaternion = ret;
+QQuaternion* QQuaternion_new6(QQuaternion* param1) {
+	return new QQuaternion(*param1);
 }
 
 bool QQuaternion_IsNull(const QQuaternion* self) {

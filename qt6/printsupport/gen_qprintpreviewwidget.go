@@ -52,98 +52,66 @@ func (this *QPrintPreviewWidget) UnsafePointer() unsafe.Pointer {
 }
 
 // newQPrintPreviewWidget constructs the type using only CGO pointers.
-func newQPrintPreviewWidget(h *C.QPrintPreviewWidget, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QPrintPreviewWidget {
+func newQPrintPreviewWidget(h *C.QPrintPreviewWidget) *QPrintPreviewWidget {
 	if h == nil {
 		return nil
 	}
+	var outptr_QWidget *C.QWidget = nil
+	C.QPrintPreviewWidget_virtbase(h, &outptr_QWidget)
+
 	return &QPrintPreviewWidget{h: h,
-		QWidget: qt6.UnsafeNewQWidget(unsafe.Pointer(h_QWidget), unsafe.Pointer(h_QObject), unsafe.Pointer(h_QPaintDevice))}
+		QWidget: qt6.UnsafeNewQWidget(unsafe.Pointer(outptr_QWidget))}
 }
 
 // UnsafeNewQPrintPreviewWidget constructs the type using only unsafe pointers.
-func UnsafeNewQPrintPreviewWidget(h unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QPrintPreviewWidget {
-	if h == nil {
-		return nil
-	}
-
-	return &QPrintPreviewWidget{h: (*C.QPrintPreviewWidget)(h),
-		QWidget: qt6.UnsafeNewQWidget(h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQPrintPreviewWidget(h unsafe.Pointer) *QPrintPreviewWidget {
+	return newQPrintPreviewWidget((*C.QPrintPreviewWidget)(h))
 }
 
 // NewQPrintPreviewWidget constructs a new QPrintPreviewWidget object.
 func NewQPrintPreviewWidget(parent *qt6.QWidget) *QPrintPreviewWidget {
-	var outptr_QPrintPreviewWidget *C.QPrintPreviewWidget = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPrintPreviewWidget_new((*C.QWidget)(parent.UnsafePointer()), &outptr_QPrintPreviewWidget, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPrintPreviewWidget(outptr_QPrintPreviewWidget, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPrintPreviewWidget(C.QPrintPreviewWidget_new((*C.QWidget)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPrintPreviewWidget2 constructs a new QPrintPreviewWidget object.
 func NewQPrintPreviewWidget2(printer *QPrinter) *QPrintPreviewWidget {
-	var outptr_QPrintPreviewWidget *C.QPrintPreviewWidget = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPrintPreviewWidget_new2(printer.cPointer(), &outptr_QPrintPreviewWidget, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPrintPreviewWidget(outptr_QPrintPreviewWidget, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPrintPreviewWidget(C.QPrintPreviewWidget_new2(printer.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPrintPreviewWidget3 constructs a new QPrintPreviewWidget object.
 func NewQPrintPreviewWidget3() *QPrintPreviewWidget {
-	var outptr_QPrintPreviewWidget *C.QPrintPreviewWidget = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPrintPreviewWidget_new3(&outptr_QPrintPreviewWidget, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPrintPreviewWidget(outptr_QPrintPreviewWidget, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPrintPreviewWidget(C.QPrintPreviewWidget_new3())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPrintPreviewWidget4 constructs a new QPrintPreviewWidget object.
 func NewQPrintPreviewWidget4(printer *QPrinter, parent *qt6.QWidget) *QPrintPreviewWidget {
-	var outptr_QPrintPreviewWidget *C.QPrintPreviewWidget = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPrintPreviewWidget_new4(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer()), &outptr_QPrintPreviewWidget, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPrintPreviewWidget(outptr_QPrintPreviewWidget, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPrintPreviewWidget(C.QPrintPreviewWidget_new4(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPrintPreviewWidget5 constructs a new QPrintPreviewWidget object.
 func NewQPrintPreviewWidget5(printer *QPrinter, parent *qt6.QWidget, flags qt6.WindowType) *QPrintPreviewWidget {
-	var outptr_QPrintPreviewWidget *C.QPrintPreviewWidget = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPrintPreviewWidget_new5(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer()), (C.int)(flags), &outptr_QPrintPreviewWidget, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPrintPreviewWidget(outptr_QPrintPreviewWidget, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPrintPreviewWidget(C.QPrintPreviewWidget_new5(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer()), (C.int)(flags)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPrintPreviewWidget6 constructs a new QPrintPreviewWidget object.
 func NewQPrintPreviewWidget6(parent *qt6.QWidget, flags qt6.WindowType) *QPrintPreviewWidget {
-	var outptr_QPrintPreviewWidget *C.QPrintPreviewWidget = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPrintPreviewWidget_new6((*C.QWidget)(parent.UnsafePointer()), (C.int)(flags), &outptr_QPrintPreviewWidget, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPrintPreviewWidget(outptr_QPrintPreviewWidget, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPrintPreviewWidget(C.QPrintPreviewWidget_new6((*C.QWidget)(parent.UnsafePointer()), (C.int)(flags)))
 	ret.isSubclass = true
 	return ret
 }
@@ -274,7 +242,7 @@ func miqt_exec_callback_QPrintPreviewWidget_PaintRequested(cb C.intptr_t, printe
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPrinter(printer, nil, nil)
+	slotval1 := newQPrinter(printer)
 
 	gofunc(slotval1)
 }
@@ -557,7 +525,7 @@ func miqt_exec_callback_QPrintPreviewWidget_MousePressEvent(self *C.QPrintPrevie
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := qt6.UnsafeNewQMouseEvent(unsafe.Pointer(event))
 
 	gofunc((&QPrintPreviewWidget{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -583,7 +551,7 @@ func miqt_exec_callback_QPrintPreviewWidget_MouseReleaseEvent(self *C.QPrintPrev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := qt6.UnsafeNewQMouseEvent(unsafe.Pointer(event))
 
 	gofunc((&QPrintPreviewWidget{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -609,7 +577,7 @@ func miqt_exec_callback_QPrintPreviewWidget_MouseDoubleClickEvent(self *C.QPrint
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := qt6.UnsafeNewQMouseEvent(unsafe.Pointer(event))
 
 	gofunc((&QPrintPreviewWidget{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -635,7 +603,7 @@ func miqt_exec_callback_QPrintPreviewWidget_MouseMoveEvent(self *C.QPrintPreview
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := qt6.UnsafeNewQMouseEvent(unsafe.Pointer(event))
 
 	gofunc((&QPrintPreviewWidget{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -661,7 +629,7 @@ func miqt_exec_callback_QPrintPreviewWidget_WheelEvent(self *C.QPrintPreviewWidg
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := qt6.UnsafeNewQWheelEvent(unsafe.Pointer(event))
 
 	gofunc((&QPrintPreviewWidget{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -687,7 +655,7 @@ func miqt_exec_callback_QPrintPreviewWidget_KeyPressEvent(self *C.QPrintPreviewW
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt6.UnsafeNewQKeyEvent(unsafe.Pointer(event))
 
 	gofunc((&QPrintPreviewWidget{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -713,7 +681,7 @@ func miqt_exec_callback_QPrintPreviewWidget_KeyReleaseEvent(self *C.QPrintPrevie
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt6.UnsafeNewQKeyEvent(unsafe.Pointer(event))
 
 	gofunc((&QPrintPreviewWidget{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -739,7 +707,7 @@ func miqt_exec_callback_QPrintPreviewWidget_FocusInEvent(self *C.QPrintPreviewWi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQFocusEvent(unsafe.Pointer(event))
 
 	gofunc((&QPrintPreviewWidget{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -765,7 +733,7 @@ func miqt_exec_callback_QPrintPreviewWidget_FocusOutEvent(self *C.QPrintPreviewW
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQFocusEvent(unsafe.Pointer(event))
 
 	gofunc((&QPrintPreviewWidget{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -791,7 +759,7 @@ func miqt_exec_callback_QPrintPreviewWidget_EnterEvent(self *C.QPrintPreviewWidg
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQEnterEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := qt6.UnsafeNewQEnterEvent(unsafe.Pointer(event))
 
 	gofunc((&QPrintPreviewWidget{h: self}).callVirtualBase_EnterEvent, slotval1)
 
@@ -843,7 +811,7 @@ func miqt_exec_callback_QPrintPreviewWidget_PaintEvent(self *C.QPrintPreviewWidg
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQPaintEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQPaintEvent(unsafe.Pointer(event))
 
 	gofunc((&QPrintPreviewWidget{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -869,7 +837,7 @@ func miqt_exec_callback_QPrintPreviewWidget_MoveEvent(self *C.QPrintPreviewWidge
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQMoveEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQMoveEvent(unsafe.Pointer(event))
 
 	gofunc((&QPrintPreviewWidget{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -895,7 +863,7 @@ func miqt_exec_callback_QPrintPreviewWidget_ResizeEvent(self *C.QPrintPreviewWid
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQResizeEvent(unsafe.Pointer(event))
 
 	gofunc((&QPrintPreviewWidget{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -921,7 +889,7 @@ func miqt_exec_callback_QPrintPreviewWidget_CloseEvent(self *C.QPrintPreviewWidg
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQCloseEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQCloseEvent(unsafe.Pointer(event))
 
 	gofunc((&QPrintPreviewWidget{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -947,7 +915,7 @@ func miqt_exec_callback_QPrintPreviewWidget_ContextMenuEvent(self *C.QPrintPrevi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt6.UnsafeNewQContextMenuEvent(unsafe.Pointer(event))
 
 	gofunc((&QPrintPreviewWidget{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -973,7 +941,7 @@ func miqt_exec_callback_QPrintPreviewWidget_TabletEvent(self *C.QPrintPreviewWid
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTabletEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := qt6.UnsafeNewQTabletEvent(unsafe.Pointer(event))
 
 	gofunc((&QPrintPreviewWidget{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -999,7 +967,7 @@ func miqt_exec_callback_QPrintPreviewWidget_ActionEvent(self *C.QPrintPreviewWid
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQActionEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQActionEvent(unsafe.Pointer(event))
 
 	gofunc((&QPrintPreviewWidget{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -1025,7 +993,7 @@ func miqt_exec_callback_QPrintPreviewWidget_DragEnterEvent(self *C.QPrintPreview
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQDragEnterEvent(unsafe.Pointer(event), nil, nil, nil)
+	slotval1 := qt6.UnsafeNewQDragEnterEvent(unsafe.Pointer(event))
 
 	gofunc((&QPrintPreviewWidget{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -1051,7 +1019,7 @@ func miqt_exec_callback_QPrintPreviewWidget_DragMoveEvent(self *C.QPrintPreviewW
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt6.UnsafeNewQDragMoveEvent(unsafe.Pointer(event))
 
 	gofunc((&QPrintPreviewWidget{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1077,7 +1045,7 @@ func miqt_exec_callback_QPrintPreviewWidget_DragLeaveEvent(self *C.QPrintPreview
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQDragLeaveEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQDragLeaveEvent(unsafe.Pointer(event))
 
 	gofunc((&QPrintPreviewWidget{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1103,7 +1071,7 @@ func miqt_exec_callback_QPrintPreviewWidget_DropEvent(self *C.QPrintPreviewWidge
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQDropEvent(unsafe.Pointer(event))
 
 	gofunc((&QPrintPreviewWidget{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1129,7 +1097,7 @@ func miqt_exec_callback_QPrintPreviewWidget_ShowEvent(self *C.QPrintPreviewWidge
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQShowEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQShowEvent(unsafe.Pointer(event))
 
 	gofunc((&QPrintPreviewWidget{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1155,7 +1123,7 @@ func miqt_exec_callback_QPrintPreviewWidget_HideEvent(self *C.QPrintPreviewWidge
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQHideEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQHideEvent(unsafe.Pointer(event))
 
 	gofunc((&QPrintPreviewWidget{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -1351,7 +1319,7 @@ func miqt_exec_callback_QPrintPreviewWidget_InputMethodEvent(self *C.QPrintPrevi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQInputMethodEvent(unsafe.Pointer(param1), nil)
+	slotval1 := qt6.UnsafeNewQInputMethodEvent(unsafe.Pointer(param1))
 
 	gofunc((&QPrintPreviewWidget{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 

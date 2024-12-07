@@ -1073,20 +1073,16 @@ public:
 
 };
 
-void QMenuBar_new(QWidget* parent, QMenuBar** outptr_QMenuBar, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQMenuBar* ret = new MiqtVirtualQMenuBar(parent);
-	*outptr_QMenuBar = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QMenuBar* QMenuBar_new(QWidget* parent) {
+	return new MiqtVirtualQMenuBar(parent);
 }
 
-void QMenuBar_new2(QMenuBar** outptr_QMenuBar, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQMenuBar* ret = new MiqtVirtualQMenuBar();
-	*outptr_QMenuBar = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QMenuBar* QMenuBar_new2() {
+	return new MiqtVirtualQMenuBar();
+}
+
+void QMenuBar_virtbase(QMenuBar* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QMenuBar_MetaObject(const QMenuBar* self) {

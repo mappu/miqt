@@ -36,42 +36,34 @@ func (this *QMediaDevices) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMediaDevices constructs the type using only CGO pointers.
-func newQMediaDevices(h *C.QMediaDevices, h_QObject *C.QObject) *QMediaDevices {
+func newQMediaDevices(h *C.QMediaDevices) *QMediaDevices {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QMediaDevices_virtbase(h, &outptr_QObject)
+
 	return &QMediaDevices{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQMediaDevices constructs the type using only unsafe pointers.
-func UnsafeNewQMediaDevices(h unsafe.Pointer, h_QObject unsafe.Pointer) *QMediaDevices {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaDevices{h: (*C.QMediaDevices)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQMediaDevices(h unsafe.Pointer) *QMediaDevices {
+	return newQMediaDevices((*C.QMediaDevices)(h))
 }
 
 // NewQMediaDevices constructs a new QMediaDevices object.
 func NewQMediaDevices() *QMediaDevices {
-	var outptr_QMediaDevices *C.QMediaDevices = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMediaDevices_new(&outptr_QMediaDevices, &outptr_QObject)
-	ret := newQMediaDevices(outptr_QMediaDevices, outptr_QObject)
+	ret := newQMediaDevices(C.QMediaDevices_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaDevices2 constructs a new QMediaDevices object.
 func NewQMediaDevices2(parent *qt6.QObject) *QMediaDevices {
-	var outptr_QMediaDevices *C.QMediaDevices = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMediaDevices_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QMediaDevices, &outptr_QObject)
-	ret := newQMediaDevices(outptr_QMediaDevices, outptr_QObject)
+	ret := newQMediaDevices(C.QMediaDevices_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -300,7 +292,7 @@ func miqt_exec_callback_QMediaDevices_TimerEvent(self *C.QMediaDevices, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QMediaDevices{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -326,7 +318,7 @@ func miqt_exec_callback_QMediaDevices_ChildEvent(self *C.QMediaDevices, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QMediaDevices{h: self}).callVirtualBase_ChildEvent, slotval1)
 

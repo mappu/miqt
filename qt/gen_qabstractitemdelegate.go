@@ -45,42 +45,34 @@ func (this *QAbstractItemDelegate) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAbstractItemDelegate constructs the type using only CGO pointers.
-func newQAbstractItemDelegate(h *C.QAbstractItemDelegate, h_QObject *C.QObject) *QAbstractItemDelegate {
+func newQAbstractItemDelegate(h *C.QAbstractItemDelegate) *QAbstractItemDelegate {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QAbstractItemDelegate_virtbase(h, &outptr_QObject)
+
 	return &QAbstractItemDelegate{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQAbstractItemDelegate constructs the type using only unsafe pointers.
-func UnsafeNewQAbstractItemDelegate(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractItemDelegate {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractItemDelegate{h: (*C.QAbstractItemDelegate)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQAbstractItemDelegate(h unsafe.Pointer) *QAbstractItemDelegate {
+	return newQAbstractItemDelegate((*C.QAbstractItemDelegate)(h))
 }
 
 // NewQAbstractItemDelegate constructs a new QAbstractItemDelegate object.
 func NewQAbstractItemDelegate() *QAbstractItemDelegate {
-	var outptr_QAbstractItemDelegate *C.QAbstractItemDelegate = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAbstractItemDelegate_new(&outptr_QAbstractItemDelegate, &outptr_QObject)
-	ret := newQAbstractItemDelegate(outptr_QAbstractItemDelegate, outptr_QObject)
+	ret := newQAbstractItemDelegate(C.QAbstractItemDelegate_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAbstractItemDelegate2 constructs a new QAbstractItemDelegate object.
 func NewQAbstractItemDelegate2(parent *QObject) *QAbstractItemDelegate {
-	var outptr_QAbstractItemDelegate *C.QAbstractItemDelegate = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAbstractItemDelegate_new2(parent.cPointer(), &outptr_QAbstractItemDelegate, &outptr_QObject)
-	ret := newQAbstractItemDelegate(outptr_QAbstractItemDelegate, outptr_QObject)
+	ret := newQAbstractItemDelegate(C.QAbstractItemDelegate_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -124,7 +116,7 @@ func (this *QAbstractItemDelegate) SizeHint(option *QStyleOptionViewItem, index 
 }
 
 func (this *QAbstractItemDelegate) CreateEditor(parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget {
-	return newQWidget(C.QAbstractItemDelegate_CreateEditor(this.h, parent.cPointer(), option.cPointer(), index.cPointer()), nil, nil)
+	return newQWidget(C.QAbstractItemDelegate_CreateEditor(this.h, parent.cPointer(), option.cPointer(), index.cPointer()))
 }
 
 func (this *QAbstractItemDelegate) DestroyEditor(editor *QWidget, index *QModelIndex) {
@@ -187,7 +179,7 @@ func miqt_exec_callback_QAbstractItemDelegate_CommitData(cb C.intptr_t, editor *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(editor, nil, nil)
+	slotval1 := newQWidget(editor)
 
 	gofunc(slotval1)
 }
@@ -207,7 +199,7 @@ func miqt_exec_callback_QAbstractItemDelegate_CloseEditor(cb C.intptr_t, editor 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(editor, nil, nil)
+	slotval1 := newQWidget(editor)
 
 	gofunc(slotval1)
 }
@@ -291,7 +283,7 @@ func miqt_exec_callback_QAbstractItemDelegate_CloseEditor2(cb C.intptr_t, editor
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(editor, nil, nil)
+	slotval1 := newQWidget(editor)
 
 	slotval2 := (QAbstractItemDelegate__EndEditHint)(hint)
 
@@ -315,7 +307,7 @@ func miqt_exec_callback_QAbstractItemDelegate_Paint(self *C.QAbstractItemDelegat
 	// Convert all CABI parameters to Go parameters
 	slotval1 := newQPainter(painter)
 
-	slotval2 := newQStyleOptionViewItem(option, nil)
+	slotval2 := newQStyleOptionViewItem(option)
 
 	slotval3 := newQModelIndex(index)
 
@@ -337,7 +329,7 @@ func miqt_exec_callback_QAbstractItemDelegate_SizeHint(self *C.QAbstractItemDele
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQStyleOptionViewItem(option, nil)
+	slotval1 := newQStyleOptionViewItem(option)
 
 	slotval2 := newQModelIndex(index)
 
@@ -349,7 +341,7 @@ func miqt_exec_callback_QAbstractItemDelegate_SizeHint(self *C.QAbstractItemDele
 
 func (this *QAbstractItemDelegate) callVirtualBase_CreateEditor(parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget {
 
-	return newQWidget(C.QAbstractItemDelegate_virtualbase_CreateEditor(unsafe.Pointer(this.h), parent.cPointer(), option.cPointer(), index.cPointer()), nil, nil)
+	return newQWidget(C.QAbstractItemDelegate_virtualbase_CreateEditor(unsafe.Pointer(this.h), parent.cPointer(), option.cPointer(), index.cPointer()))
 
 }
 func (this *QAbstractItemDelegate) OnCreateEditor(slot func(super func(parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget, parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget) {
@@ -367,9 +359,9 @@ func miqt_exec_callback_QAbstractItemDelegate_CreateEditor(self *C.QAbstractItem
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(parent, nil, nil)
+	slotval1 := newQWidget(parent)
 
-	slotval2 := newQStyleOptionViewItem(option, nil)
+	slotval2 := newQStyleOptionViewItem(option)
 
 	slotval3 := newQModelIndex(index)
 
@@ -399,7 +391,7 @@ func miqt_exec_callback_QAbstractItemDelegate_DestroyEditor(self *C.QAbstractIte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(editor, nil, nil)
+	slotval1 := newQWidget(editor)
 
 	slotval2 := newQModelIndex(index)
 
@@ -427,7 +419,7 @@ func miqt_exec_callback_QAbstractItemDelegate_SetEditorData(self *C.QAbstractIte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(editor, nil, nil)
+	slotval1 := newQWidget(editor)
 
 	slotval2 := newQModelIndex(index)
 
@@ -455,9 +447,9 @@ func miqt_exec_callback_QAbstractItemDelegate_SetModelData(self *C.QAbstractItem
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(editor, nil, nil)
+	slotval1 := newQWidget(editor)
 
-	slotval2 := newQAbstractItemModel(model, nil)
+	slotval2 := newQAbstractItemModel(model)
 
 	slotval3 := newQModelIndex(index)
 
@@ -485,9 +477,9 @@ func miqt_exec_callback_QAbstractItemDelegate_UpdateEditorGeometry(self *C.QAbst
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(editor, nil, nil)
+	slotval1 := newQWidget(editor)
 
-	slotval2 := newQStyleOptionViewItem(option, nil)
+	slotval2 := newQStyleOptionViewItem(option)
 
 	slotval3 := newQModelIndex(index)
 
@@ -517,9 +509,9 @@ func miqt_exec_callback_QAbstractItemDelegate_EditorEvent(self *C.QAbstractItemD
 	// Convert all CABI parameters to Go parameters
 	slotval1 := newQEvent(event)
 
-	slotval2 := newQAbstractItemModel(model, nil)
+	slotval2 := newQAbstractItemModel(model)
 
-	slotval3 := newQStyleOptionViewItem(option, nil)
+	slotval3 := newQStyleOptionViewItem(option)
 
 	slotval4 := newQModelIndex(index)
 
@@ -549,11 +541,11 @@ func miqt_exec_callback_QAbstractItemDelegate_HelpEvent(self *C.QAbstractItemDel
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQHelpEvent(event, nil)
+	slotval1 := newQHelpEvent(event)
 
-	slotval2 := newQAbstractItemView(view, nil, nil, nil, nil, nil)
+	slotval2 := newQAbstractItemView(view)
 
-	slotval3 := newQStyleOptionViewItem(option, nil)
+	slotval3 := newQStyleOptionViewItem(option)
 
 	slotval4 := newQModelIndex(index)
 
@@ -678,7 +670,7 @@ func miqt_exec_callback_QAbstractItemDelegate_TimerEvent(self *C.QAbstractItemDe
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QAbstractItemDelegate{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -704,7 +696,7 @@ func miqt_exec_callback_QAbstractItemDelegate_ChildEvent(self *C.QAbstractItemDe
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QAbstractItemDelegate{h: self}).callVirtualBase_ChildEvent, slotval1)
 

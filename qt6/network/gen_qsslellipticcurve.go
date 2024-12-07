@@ -37,34 +37,27 @@ func newQSslEllipticCurve(h *C.QSslEllipticCurve) *QSslEllipticCurve {
 	if h == nil {
 		return nil
 	}
+
 	return &QSslEllipticCurve{h: h}
 }
 
 // UnsafeNewQSslEllipticCurve constructs the type using only unsafe pointers.
 func UnsafeNewQSslEllipticCurve(h unsafe.Pointer) *QSslEllipticCurve {
-	if h == nil {
-		return nil
-	}
-
-	return &QSslEllipticCurve{h: (*C.QSslEllipticCurve)(h)}
+	return newQSslEllipticCurve((*C.QSslEllipticCurve)(h))
 }
 
 // NewQSslEllipticCurve constructs a new QSslEllipticCurve object.
 func NewQSslEllipticCurve() *QSslEllipticCurve {
-	var outptr_QSslEllipticCurve *C.QSslEllipticCurve = nil
 
-	C.QSslEllipticCurve_new(&outptr_QSslEllipticCurve)
-	ret := newQSslEllipticCurve(outptr_QSslEllipticCurve)
+	ret := newQSslEllipticCurve(C.QSslEllipticCurve_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSslEllipticCurve2 constructs a new QSslEllipticCurve object.
 func NewQSslEllipticCurve2(param1 *QSslEllipticCurve) *QSslEllipticCurve {
-	var outptr_QSslEllipticCurve *C.QSslEllipticCurve = nil
 
-	C.QSslEllipticCurve_new2(param1.cPointer(), &outptr_QSslEllipticCurve)
-	ret := newQSslEllipticCurve(outptr_QSslEllipticCurve)
+	ret := newQSslEllipticCurve(C.QSslEllipticCurve_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

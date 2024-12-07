@@ -82,8 +82,9 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QAbstractSpinBox_new(QWidget* parent, QAbstractSpinBox** outptr_QAbstractSpinBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QAbstractSpinBox_new2(QAbstractSpinBox** outptr_QAbstractSpinBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QAbstractSpinBox* QAbstractSpinBox_new(QWidget* parent);
+QAbstractSpinBox* QAbstractSpinBox_new2();
+void QAbstractSpinBox_virtbase(QAbstractSpinBox* src, QWidget** outptr_QWidget);
 QMetaObject* QAbstractSpinBox_MetaObject(const QAbstractSpinBox* self);
 void* QAbstractSpinBox_Metacast(QAbstractSpinBox* self, const char* param1);
 struct miqt_string QAbstractSpinBox_Tr(const char* s);

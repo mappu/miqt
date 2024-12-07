@@ -38,34 +38,27 @@ func newQAuthenticator(h *C.QAuthenticator) *QAuthenticator {
 	if h == nil {
 		return nil
 	}
+
 	return &QAuthenticator{h: h}
 }
 
 // UnsafeNewQAuthenticator constructs the type using only unsafe pointers.
 func UnsafeNewQAuthenticator(h unsafe.Pointer) *QAuthenticator {
-	if h == nil {
-		return nil
-	}
-
-	return &QAuthenticator{h: (*C.QAuthenticator)(h)}
+	return newQAuthenticator((*C.QAuthenticator)(h))
 }
 
 // NewQAuthenticator constructs a new QAuthenticator object.
 func NewQAuthenticator() *QAuthenticator {
-	var outptr_QAuthenticator *C.QAuthenticator = nil
 
-	C.QAuthenticator_new(&outptr_QAuthenticator)
-	ret := newQAuthenticator(outptr_QAuthenticator)
+	ret := newQAuthenticator(C.QAuthenticator_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAuthenticator2 constructs a new QAuthenticator object.
 func NewQAuthenticator2(other *QAuthenticator) *QAuthenticator {
-	var outptr_QAuthenticator *C.QAuthenticator = nil
 
-	C.QAuthenticator_new2(other.cPointer(), &outptr_QAuthenticator)
-	ret := newQAuthenticator(outptr_QAuthenticator)
+	ret := newQAuthenticator(C.QAuthenticator_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

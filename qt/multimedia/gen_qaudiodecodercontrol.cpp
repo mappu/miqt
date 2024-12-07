@@ -12,6 +12,10 @@
 #include "gen_qaudiodecodercontrol.h"
 #include "_cgo_export.h"
 
+void QAudioDecoderControl_virtbase(QAudioDecoderControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
+
 QMetaObject* QAudioDecoderControl_MetaObject(const QAudioDecoderControl* self) {
 	return (QMetaObject*) self->metaObject();
 }

@@ -35,42 +35,34 @@ func (this *QIconEnginePlugin) UnsafePointer() unsafe.Pointer {
 }
 
 // newQIconEnginePlugin constructs the type using only CGO pointers.
-func newQIconEnginePlugin(h *C.QIconEnginePlugin, h_QObject *C.QObject) *QIconEnginePlugin {
+func newQIconEnginePlugin(h *C.QIconEnginePlugin) *QIconEnginePlugin {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QIconEnginePlugin_virtbase(h, &outptr_QObject)
+
 	return &QIconEnginePlugin{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQIconEnginePlugin constructs the type using only unsafe pointers.
-func UnsafeNewQIconEnginePlugin(h unsafe.Pointer, h_QObject unsafe.Pointer) *QIconEnginePlugin {
-	if h == nil {
-		return nil
-	}
-
-	return &QIconEnginePlugin{h: (*C.QIconEnginePlugin)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQIconEnginePlugin(h unsafe.Pointer) *QIconEnginePlugin {
+	return newQIconEnginePlugin((*C.QIconEnginePlugin)(h))
 }
 
 // NewQIconEnginePlugin constructs a new QIconEnginePlugin object.
 func NewQIconEnginePlugin() *QIconEnginePlugin {
-	var outptr_QIconEnginePlugin *C.QIconEnginePlugin = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QIconEnginePlugin_new(&outptr_QIconEnginePlugin, &outptr_QObject)
-	ret := newQIconEnginePlugin(outptr_QIconEnginePlugin, outptr_QObject)
+	ret := newQIconEnginePlugin(C.QIconEnginePlugin_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQIconEnginePlugin2 constructs a new QIconEnginePlugin object.
 func NewQIconEnginePlugin2(parent *QObject) *QIconEnginePlugin {
-	var outptr_QIconEnginePlugin *C.QIconEnginePlugin = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QIconEnginePlugin_new2(parent.cPointer(), &outptr_QIconEnginePlugin, &outptr_QObject)
-	ret := newQIconEnginePlugin(outptr_QIconEnginePlugin, outptr_QObject)
+	ret := newQIconEnginePlugin(C.QIconEnginePlugin_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -258,7 +250,7 @@ func miqt_exec_callback_QIconEnginePlugin_TimerEvent(self *C.QIconEnginePlugin, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QIconEnginePlugin{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -284,7 +276,7 @@ func miqt_exec_callback_QIconEnginePlugin_ChildEvent(self *C.QIconEnginePlugin, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QIconEnginePlugin{h: self}).callVirtualBase_ChildEvent, slotval1)
 

@@ -7,14 +7,12 @@
 #include "gen_qwebenginescript.h"
 #include "_cgo_export.h"
 
-void QWebEngineScript_new(QWebEngineScript** outptr_QWebEngineScript) {
-	QWebEngineScript* ret = new QWebEngineScript();
-	*outptr_QWebEngineScript = ret;
+QWebEngineScript* QWebEngineScript_new() {
+	return new QWebEngineScript();
 }
 
-void QWebEngineScript_new2(QWebEngineScript* other, QWebEngineScript** outptr_QWebEngineScript) {
-	QWebEngineScript* ret = new QWebEngineScript(*other);
-	*outptr_QWebEngineScript = ret;
+QWebEngineScript* QWebEngineScript_new2(QWebEngineScript* other) {
+	return new QWebEngineScript(*other);
 }
 
 void QWebEngineScript_OperatorAssign(QWebEngineScript* self, QWebEngineScript* other) {

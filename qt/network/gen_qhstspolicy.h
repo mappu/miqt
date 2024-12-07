@@ -22,10 +22,10 @@ typedef struct QDateTime QDateTime;
 typedef struct QHstsPolicy QHstsPolicy;
 #endif
 
-void QHstsPolicy_new(QHstsPolicy** outptr_QHstsPolicy);
-void QHstsPolicy_new2(QDateTime* expiry, int flags, struct miqt_string host, QHstsPolicy** outptr_QHstsPolicy);
-void QHstsPolicy_new3(QHstsPolicy* rhs, QHstsPolicy** outptr_QHstsPolicy);
-void QHstsPolicy_new4(QDateTime* expiry, int flags, struct miqt_string host, int mode, QHstsPolicy** outptr_QHstsPolicy);
+QHstsPolicy* QHstsPolicy_new();
+QHstsPolicy* QHstsPolicy_new2(QDateTime* expiry, int flags, struct miqt_string host);
+QHstsPolicy* QHstsPolicy_new3(QHstsPolicy* rhs);
+QHstsPolicy* QHstsPolicy_new4(QDateTime* expiry, int flags, struct miqt_string host, int mode);
 void QHstsPolicy_OperatorAssign(QHstsPolicy* self, QHstsPolicy* rhs);
 void QHstsPolicy_Swap(QHstsPolicy* self, QHstsPolicy* other);
 void QHstsPolicy_SetHost(QHstsPolicy* self, struct miqt_string host);

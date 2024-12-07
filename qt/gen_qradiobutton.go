@@ -35,48 +35,34 @@ func (this *QRadioButton) UnsafePointer() unsafe.Pointer {
 }
 
 // newQRadioButton constructs the type using only CGO pointers.
-func newQRadioButton(h *C.QRadioButton, h_QAbstractButton *C.QAbstractButton, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QRadioButton {
+func newQRadioButton(h *C.QRadioButton) *QRadioButton {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractButton *C.QAbstractButton = nil
+	C.QRadioButton_virtbase(h, &outptr_QAbstractButton)
+
 	return &QRadioButton{h: h,
-		QAbstractButton: newQAbstractButton(h_QAbstractButton, h_QWidget, h_QObject, h_QPaintDevice)}
+		QAbstractButton: newQAbstractButton(outptr_QAbstractButton)}
 }
 
 // UnsafeNewQRadioButton constructs the type using only unsafe pointers.
-func UnsafeNewQRadioButton(h unsafe.Pointer, h_QAbstractButton unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QRadioButton {
-	if h == nil {
-		return nil
-	}
-
-	return &QRadioButton{h: (*C.QRadioButton)(h),
-		QAbstractButton: UnsafeNewQAbstractButton(h_QAbstractButton, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQRadioButton(h unsafe.Pointer) *QRadioButton {
+	return newQRadioButton((*C.QRadioButton)(h))
 }
 
 // NewQRadioButton constructs a new QRadioButton object.
 func NewQRadioButton(parent *QWidget) *QRadioButton {
-	var outptr_QRadioButton *C.QRadioButton = nil
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QRadioButton_new(parent.cPointer(), &outptr_QRadioButton, &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQRadioButton(outptr_QRadioButton, outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQRadioButton(C.QRadioButton_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQRadioButton2 constructs a new QRadioButton object.
 func NewQRadioButton2() *QRadioButton {
-	var outptr_QRadioButton *C.QRadioButton = nil
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QRadioButton_new2(&outptr_QRadioButton, &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQRadioButton(outptr_QRadioButton, outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQRadioButton(C.QRadioButton_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -87,14 +73,8 @@ func NewQRadioButton3(text string) *QRadioButton {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QRadioButton *C.QRadioButton = nil
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QRadioButton_new3(text_ms, &outptr_QRadioButton, &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQRadioButton(outptr_QRadioButton, outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQRadioButton(C.QRadioButton_new3(text_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -105,14 +85,8 @@ func NewQRadioButton4(text string, parent *QWidget) *QRadioButton {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QRadioButton *C.QRadioButton = nil
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QRadioButton_new4(text_ms, parent.cPointer(), &outptr_QRadioButton, &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQRadioButton(outptr_QRadioButton, outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQRadioButton(C.QRadioButton_new4(text_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -331,7 +305,7 @@ func miqt_exec_callback_QRadioButton_PaintEvent(self *C.QRadioButton, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(param1, nil)
+	slotval1 := newQPaintEvent(param1)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -357,7 +331,7 @@ func miqt_exec_callback_QRadioButton_MouseMoveEvent(self *C.QRadioButton, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(param1, nil, nil)
+	slotval1 := newQMouseEvent(param1)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -429,7 +403,7 @@ func miqt_exec_callback_QRadioButton_KeyPressEvent(self *C.QRadioButton, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(e, nil, nil)
+	slotval1 := newQKeyEvent(e)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -455,7 +429,7 @@ func miqt_exec_callback_QRadioButton_KeyReleaseEvent(self *C.QRadioButton, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(e, nil, nil)
+	slotval1 := newQKeyEvent(e)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -481,7 +455,7 @@ func miqt_exec_callback_QRadioButton_MousePressEvent(self *C.QRadioButton, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -507,7 +481,7 @@ func miqt_exec_callback_QRadioButton_MouseReleaseEvent(self *C.QRadioButton, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -533,7 +507,7 @@ func miqt_exec_callback_QRadioButton_FocusInEvent(self *C.QRadioButton, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(e, nil)
+	slotval1 := newQFocusEvent(e)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -559,7 +533,7 @@ func miqt_exec_callback_QRadioButton_FocusOutEvent(self *C.QRadioButton, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(e, nil)
+	slotval1 := newQFocusEvent(e)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -611,7 +585,7 @@ func miqt_exec_callback_QRadioButton_TimerEvent(self *C.QRadioButton, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(e, nil)
+	slotval1 := newQTimerEvent(e)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_TimerEvent, slotval1)
 

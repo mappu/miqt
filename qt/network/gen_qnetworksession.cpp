@@ -196,16 +196,16 @@ public:
 
 };
 
-void QNetworkSession_new(QNetworkConfiguration* connConfig, QNetworkSession** outptr_QNetworkSession, QObject** outptr_QObject) {
-	MiqtVirtualQNetworkSession* ret = new MiqtVirtualQNetworkSession(*connConfig);
-	*outptr_QNetworkSession = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QNetworkSession* QNetworkSession_new(QNetworkConfiguration* connConfig) {
+	return new MiqtVirtualQNetworkSession(*connConfig);
 }
 
-void QNetworkSession_new2(QNetworkConfiguration* connConfig, QObject* parent, QNetworkSession** outptr_QNetworkSession, QObject** outptr_QObject) {
-	MiqtVirtualQNetworkSession* ret = new MiqtVirtualQNetworkSession(*connConfig, parent);
-	*outptr_QNetworkSession = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QNetworkSession* QNetworkSession_new2(QNetworkConfiguration* connConfig, QObject* parent) {
+	return new MiqtVirtualQNetworkSession(*connConfig, parent);
+}
+
+void QNetworkSession_virtbase(QNetworkSession* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QNetworkSession_MetaObject(const QNetworkSession* self) {

@@ -35,42 +35,34 @@ func (this *QPictureFormatPlugin) UnsafePointer() unsafe.Pointer {
 }
 
 // newQPictureFormatPlugin constructs the type using only CGO pointers.
-func newQPictureFormatPlugin(h *C.QPictureFormatPlugin, h_QObject *C.QObject) *QPictureFormatPlugin {
+func newQPictureFormatPlugin(h *C.QPictureFormatPlugin) *QPictureFormatPlugin {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QPictureFormatPlugin_virtbase(h, &outptr_QObject)
+
 	return &QPictureFormatPlugin{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQPictureFormatPlugin constructs the type using only unsafe pointers.
-func UnsafeNewQPictureFormatPlugin(h unsafe.Pointer, h_QObject unsafe.Pointer) *QPictureFormatPlugin {
-	if h == nil {
-		return nil
-	}
-
-	return &QPictureFormatPlugin{h: (*C.QPictureFormatPlugin)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQPictureFormatPlugin(h unsafe.Pointer) *QPictureFormatPlugin {
+	return newQPictureFormatPlugin((*C.QPictureFormatPlugin)(h))
 }
 
 // NewQPictureFormatPlugin constructs a new QPictureFormatPlugin object.
 func NewQPictureFormatPlugin() *QPictureFormatPlugin {
-	var outptr_QPictureFormatPlugin *C.QPictureFormatPlugin = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPictureFormatPlugin_new(&outptr_QPictureFormatPlugin, &outptr_QObject)
-	ret := newQPictureFormatPlugin(outptr_QPictureFormatPlugin, outptr_QObject)
+	ret := newQPictureFormatPlugin(C.QPictureFormatPlugin_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPictureFormatPlugin2 constructs a new QPictureFormatPlugin object.
 func NewQPictureFormatPlugin2(parent *QObject) *QPictureFormatPlugin {
-	var outptr_QPictureFormatPlugin *C.QPictureFormatPlugin = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPictureFormatPlugin_new2(parent.cPointer(), &outptr_QPictureFormatPlugin, &outptr_QObject)
-	ret := newQPictureFormatPlugin(outptr_QPictureFormatPlugin, outptr_QObject)
+	ret := newQPictureFormatPlugin(C.QPictureFormatPlugin_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -215,7 +207,7 @@ func miqt_exec_callback_QPictureFormatPlugin_LoadPicture(self *C.QPictureFormatP
 	filename_ret := C.GoStringN(filename_ms.data, C.int(int64(filename_ms.len)))
 	C.free(unsafe.Pointer(filename_ms.data))
 	slotval2 := filename_ret
-	slotval3 := newQPicture(pic, nil)
+	slotval3 := newQPicture(pic)
 
 	virtualReturn := gofunc((&QPictureFormatPlugin{h: self}).callVirtualBase_LoadPicture, slotval1, slotval2, slotval3)
 
@@ -259,7 +251,7 @@ func miqt_exec_callback_QPictureFormatPlugin_SavePicture(self *C.QPictureFormatP
 	filename_ret := C.GoStringN(filename_ms.data, C.int(int64(filename_ms.len)))
 	C.free(unsafe.Pointer(filename_ms.data))
 	slotval2 := filename_ret
-	slotval3 := newQPicture(pic, nil)
+	slotval3 := newQPicture(pic)
 
 	virtualReturn := gofunc((&QPictureFormatPlugin{h: self}).callVirtualBase_SavePicture, slotval1, slotval2, slotval3)
 
@@ -370,7 +362,7 @@ func miqt_exec_callback_QPictureFormatPlugin_TimerEvent(self *C.QPictureFormatPl
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QPictureFormatPlugin{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -396,7 +388,7 @@ func miqt_exec_callback_QPictureFormatPlugin_ChildEvent(self *C.QPictureFormatPl
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QPictureFormatPlugin{h: self}).callVirtualBase_ChildEvent, slotval1)
 

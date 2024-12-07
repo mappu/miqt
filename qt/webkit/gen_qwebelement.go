@@ -46,34 +46,27 @@ func newQWebElement(h *C.QWebElement) *QWebElement {
 	if h == nil {
 		return nil
 	}
+
 	return &QWebElement{h: h}
 }
 
 // UnsafeNewQWebElement constructs the type using only unsafe pointers.
 func UnsafeNewQWebElement(h unsafe.Pointer) *QWebElement {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebElement{h: (*C.QWebElement)(h)}
+	return newQWebElement((*C.QWebElement)(h))
 }
 
 // NewQWebElement constructs a new QWebElement object.
 func NewQWebElement() *QWebElement {
-	var outptr_QWebElement *C.QWebElement = nil
 
-	C.QWebElement_new(&outptr_QWebElement)
-	ret := newQWebElement(outptr_QWebElement)
+	ret := newQWebElement(C.QWebElement_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebElement2 constructs a new QWebElement object.
 func NewQWebElement2(param1 *QWebElement) *QWebElement {
-	var outptr_QWebElement *C.QWebElement = nil
 
-	C.QWebElement_new2(param1.cPointer(), &outptr_QWebElement)
-	ret := newQWebElement(outptr_QWebElement)
+	ret := newQWebElement(C.QWebElement_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -394,7 +387,7 @@ func (this *QWebElement) Document() *QWebElement {
 }
 
 func (this *QWebElement) WebFrame() *QWebFrame {
-	return newQWebFrame(C.QWebElement_WebFrame(this.h), nil)
+	return newQWebFrame(C.QWebElement_WebFrame(this.h))
 }
 
 func (this *QWebElement) AppendInside(markup string) {
@@ -629,24 +622,19 @@ func newQWebElementCollection(h *C.QWebElementCollection) *QWebElementCollection
 	if h == nil {
 		return nil
 	}
+
 	return &QWebElementCollection{h: h}
 }
 
 // UnsafeNewQWebElementCollection constructs the type using only unsafe pointers.
 func UnsafeNewQWebElementCollection(h unsafe.Pointer) *QWebElementCollection {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebElementCollection{h: (*C.QWebElementCollection)(h)}
+	return newQWebElementCollection((*C.QWebElementCollection)(h))
 }
 
 // NewQWebElementCollection constructs a new QWebElementCollection object.
 func NewQWebElementCollection() *QWebElementCollection {
-	var outptr_QWebElementCollection *C.QWebElementCollection = nil
 
-	C.QWebElementCollection_new(&outptr_QWebElementCollection)
-	ret := newQWebElementCollection(outptr_QWebElementCollection)
+	ret := newQWebElementCollection(C.QWebElementCollection_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -657,20 +645,16 @@ func NewQWebElementCollection2(contextElement *QWebElement, query string) *QWebE
 	query_ms.data = C.CString(query)
 	query_ms.len = C.size_t(len(query))
 	defer C.free(unsafe.Pointer(query_ms.data))
-	var outptr_QWebElementCollection *C.QWebElementCollection = nil
 
-	C.QWebElementCollection_new2(contextElement.cPointer(), query_ms, &outptr_QWebElementCollection)
-	ret := newQWebElementCollection(outptr_QWebElementCollection)
+	ret := newQWebElementCollection(C.QWebElementCollection_new2(contextElement.cPointer(), query_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebElementCollection3 constructs a new QWebElementCollection object.
 func NewQWebElementCollection3(param1 *QWebElementCollection) *QWebElementCollection {
-	var outptr_QWebElementCollection *C.QWebElementCollection = nil
 
-	C.QWebElementCollection_new3(param1.cPointer(), &outptr_QWebElementCollection)
-	ret := newQWebElementCollection(outptr_QWebElementCollection)
+	ret := newQWebElementCollection(C.QWebElementCollection_new3(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -807,34 +791,27 @@ func newQWebElementCollection__const_iterator(h *C.QWebElementCollection__const_
 	if h == nil {
 		return nil
 	}
+
 	return &QWebElementCollection__const_iterator{h: h}
 }
 
 // UnsafeNewQWebElementCollection__const_iterator constructs the type using only unsafe pointers.
 func UnsafeNewQWebElementCollection__const_iterator(h unsafe.Pointer) *QWebElementCollection__const_iterator {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebElementCollection__const_iterator{h: (*C.QWebElementCollection__const_iterator)(h)}
+	return newQWebElementCollection__const_iterator((*C.QWebElementCollection__const_iterator)(h))
 }
 
 // NewQWebElementCollection__const_iterator constructs a new QWebElementCollection::const_iterator object.
 func NewQWebElementCollection__const_iterator(collection_ *QWebElementCollection, index int) *QWebElementCollection__const_iterator {
-	var outptr_QWebElementCollection__const_iterator *C.QWebElementCollection__const_iterator = nil
 
-	C.QWebElementCollection__const_iterator_new(collection_.cPointer(), (C.int)(index), &outptr_QWebElementCollection__const_iterator)
-	ret := newQWebElementCollection__const_iterator(outptr_QWebElementCollection__const_iterator)
+	ret := newQWebElementCollection__const_iterator(C.QWebElementCollection__const_iterator_new(collection_.cPointer(), (C.int)(index)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebElementCollection__const_iterator2 constructs a new QWebElementCollection::const_iterator object.
 func NewQWebElementCollection__const_iterator2(o *QWebElementCollection__const_iterator) *QWebElementCollection__const_iterator {
-	var outptr_QWebElementCollection__const_iterator *C.QWebElementCollection__const_iterator = nil
 
-	C.QWebElementCollection__const_iterator_new2(o.cPointer(), &outptr_QWebElementCollection__const_iterator)
-	ret := newQWebElementCollection__const_iterator(outptr_QWebElementCollection__const_iterator)
+	ret := newQWebElementCollection__const_iterator(C.QWebElementCollection__const_iterator_new2(o.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -951,34 +928,27 @@ func newQWebElementCollection__iterator(h *C.QWebElementCollection__iterator) *Q
 	if h == nil {
 		return nil
 	}
+
 	return &QWebElementCollection__iterator{h: h}
 }
 
 // UnsafeNewQWebElementCollection__iterator constructs the type using only unsafe pointers.
 func UnsafeNewQWebElementCollection__iterator(h unsafe.Pointer) *QWebElementCollection__iterator {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebElementCollection__iterator{h: (*C.QWebElementCollection__iterator)(h)}
+	return newQWebElementCollection__iterator((*C.QWebElementCollection__iterator)(h))
 }
 
 // NewQWebElementCollection__iterator constructs a new QWebElementCollection::iterator object.
 func NewQWebElementCollection__iterator(collection_ *QWebElementCollection, index int) *QWebElementCollection__iterator {
-	var outptr_QWebElementCollection__iterator *C.QWebElementCollection__iterator = nil
 
-	C.QWebElementCollection__iterator_new(collection_.cPointer(), (C.int)(index), &outptr_QWebElementCollection__iterator)
-	ret := newQWebElementCollection__iterator(outptr_QWebElementCollection__iterator)
+	ret := newQWebElementCollection__iterator(C.QWebElementCollection__iterator_new(collection_.cPointer(), (C.int)(index)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebElementCollection__iterator2 constructs a new QWebElementCollection::iterator object.
 func NewQWebElementCollection__iterator2(o *QWebElementCollection__iterator) *QWebElementCollection__iterator {
-	var outptr_QWebElementCollection__iterator *C.QWebElementCollection__iterator = nil
 
-	C.QWebElementCollection__iterator_new2(o.cPointer(), &outptr_QWebElementCollection__iterator)
-	ret := newQWebElementCollection__iterator(outptr_QWebElementCollection__iterator)
+	ret := newQWebElementCollection__iterator(C.QWebElementCollection__iterator_new2(o.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

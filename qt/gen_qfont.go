@@ -162,24 +162,19 @@ func newQFont(h *C.QFont) *QFont {
 	if h == nil {
 		return nil
 	}
+
 	return &QFont{h: h}
 }
 
 // UnsafeNewQFont constructs the type using only unsafe pointers.
 func UnsafeNewQFont(h unsafe.Pointer) *QFont {
-	if h == nil {
-		return nil
-	}
-
-	return &QFont{h: (*C.QFont)(h)}
+	return newQFont((*C.QFont)(h))
 }
 
 // NewQFont constructs a new QFont object.
 func NewQFont() *QFont {
-	var outptr_QFont *C.QFont = nil
 
-	C.QFont_new(&outptr_QFont)
-	ret := newQFont(outptr_QFont)
+	ret := newQFont(C.QFont_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -190,40 +185,32 @@ func NewQFont2(family string) *QFont {
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
 	defer C.free(unsafe.Pointer(family_ms.data))
-	var outptr_QFont *C.QFont = nil
 
-	C.QFont_new2(family_ms, &outptr_QFont)
-	ret := newQFont(outptr_QFont)
+	ret := newQFont(C.QFont_new2(family_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFont3 constructs a new QFont object.
 func NewQFont3(font *QFont, pd *QPaintDevice) *QFont {
-	var outptr_QFont *C.QFont = nil
 
-	C.QFont_new3(font.cPointer(), pd.cPointer(), &outptr_QFont)
-	ret := newQFont(outptr_QFont)
+	ret := newQFont(C.QFont_new3(font.cPointer(), pd.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFont4 constructs a new QFont object.
 func NewQFont4(font *QFont, pd *QPaintDevice) *QFont {
-	var outptr_QFont *C.QFont = nil
 
-	C.QFont_new4(font.cPointer(), pd.cPointer(), &outptr_QFont)
-	ret := newQFont(outptr_QFont)
+	ret := newQFont(C.QFont_new4(font.cPointer(), pd.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFont5 constructs a new QFont object.
 func NewQFont5(font *QFont) *QFont {
-	var outptr_QFont *C.QFont = nil
 
-	C.QFont_new5(font.cPointer(), &outptr_QFont)
-	ret := newQFont(outptr_QFont)
+	ret := newQFont(C.QFont_new5(font.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -234,10 +221,8 @@ func NewQFont6(family string, pointSize int) *QFont {
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
 	defer C.free(unsafe.Pointer(family_ms.data))
-	var outptr_QFont *C.QFont = nil
 
-	C.QFont_new6(family_ms, (C.int)(pointSize), &outptr_QFont)
-	ret := newQFont(outptr_QFont)
+	ret := newQFont(C.QFont_new6(family_ms, (C.int)(pointSize)))
 	ret.isSubclass = true
 	return ret
 }
@@ -248,10 +233,8 @@ func NewQFont7(family string, pointSize int, weight int) *QFont {
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
 	defer C.free(unsafe.Pointer(family_ms.data))
-	var outptr_QFont *C.QFont = nil
 
-	C.QFont_new7(family_ms, (C.int)(pointSize), (C.int)(weight), &outptr_QFont)
-	ret := newQFont(outptr_QFont)
+	ret := newQFont(C.QFont_new7(family_ms, (C.int)(pointSize), (C.int)(weight)))
 	ret.isSubclass = true
 	return ret
 }
@@ -262,10 +245,8 @@ func NewQFont8(family string, pointSize int, weight int, italic bool) *QFont {
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
 	defer C.free(unsafe.Pointer(family_ms.data))
-	var outptr_QFont *C.QFont = nil
 
-	C.QFont_new8(family_ms, (C.int)(pointSize), (C.int)(weight), (C.bool)(italic), &outptr_QFont)
-	ret := newQFont(outptr_QFont)
+	ret := newQFont(C.QFont_new8(family_ms, (C.int)(pointSize), (C.int)(weight), (C.bool)(italic)))
 	ret.isSubclass = true
 	return ret
 }

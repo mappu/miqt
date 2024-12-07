@@ -124,16 +124,13 @@ func newQWebSettings(h *C.QWebSettings) *QWebSettings {
 	if h == nil {
 		return nil
 	}
+
 	return &QWebSettings{h: h}
 }
 
 // UnsafeNewQWebSettings constructs the type using only unsafe pointers.
 func UnsafeNewQWebSettings(h unsafe.Pointer) *QWebSettings {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebSettings{h: (*C.QWebSettings)(h)}
+	return newQWebSettings((*C.QWebSettings)(h))
 }
 
 func QWebSettings_GlobalSettings() *QWebSettings {
@@ -265,7 +262,7 @@ func QWebSettings_SetWebGraphic(typeVal QWebSettings__WebGraphic, graphic *qt.QP
 }
 
 func QWebSettings_WebGraphic(typeVal QWebSettings__WebGraphic) *qt.QPixmap {
-	_goptr := qt.UnsafeNewQPixmap(unsafe.Pointer(C.QWebSettings_WebGraphic((C.int)(typeVal))), nil)
+	_goptr := qt.UnsafeNewQPixmap(unsafe.Pointer(C.QWebSettings_WebGraphic((C.int)(typeVal))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

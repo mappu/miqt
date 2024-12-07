@@ -99,9 +99,8 @@ public:
 
 };
 
-void QFileIconProvider_new(QFileIconProvider** outptr_QFileIconProvider) {
-	MiqtVirtualQFileIconProvider* ret = new MiqtVirtualQFileIconProvider();
-	*outptr_QFileIconProvider = ret;
+QFileIconProvider* QFileIconProvider_new() {
+	return new MiqtVirtualQFileIconProvider();
 }
 
 QIcon* QFileIconProvider_Icon(const QFileIconProvider* self, int typeVal) {

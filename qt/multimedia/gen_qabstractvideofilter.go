@@ -45,16 +45,13 @@ func newQVideoFilterRunnable(h *C.QVideoFilterRunnable) *QVideoFilterRunnable {
 	if h == nil {
 		return nil
 	}
+
 	return &QVideoFilterRunnable{h: h}
 }
 
 // UnsafeNewQVideoFilterRunnable constructs the type using only unsafe pointers.
 func UnsafeNewQVideoFilterRunnable(h unsafe.Pointer) *QVideoFilterRunnable {
-	if h == nil {
-		return nil
-	}
-
-	return &QVideoFilterRunnable{h: (*C.QVideoFilterRunnable)(h)}
+	return newQVideoFilterRunnable((*C.QVideoFilterRunnable)(h))
 }
 
 func (this *QVideoFilterRunnable) Run(input *QVideoFrame, surfaceFormat *QVideoSurfaceFormat, flags QVideoFilterRunnable__RunFlag) *QVideoFrame {
@@ -102,42 +99,34 @@ func (this *QAbstractVideoFilter) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAbstractVideoFilter constructs the type using only CGO pointers.
-func newQAbstractVideoFilter(h *C.QAbstractVideoFilter, h_QObject *C.QObject) *QAbstractVideoFilter {
+func newQAbstractVideoFilter(h *C.QAbstractVideoFilter) *QAbstractVideoFilter {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QAbstractVideoFilter_virtbase(h, &outptr_QObject)
+
 	return &QAbstractVideoFilter{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQAbstractVideoFilter constructs the type using only unsafe pointers.
-func UnsafeNewQAbstractVideoFilter(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractVideoFilter {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractVideoFilter{h: (*C.QAbstractVideoFilter)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQAbstractVideoFilter(h unsafe.Pointer) *QAbstractVideoFilter {
+	return newQAbstractVideoFilter((*C.QAbstractVideoFilter)(h))
 }
 
 // NewQAbstractVideoFilter constructs a new QAbstractVideoFilter object.
 func NewQAbstractVideoFilter() *QAbstractVideoFilter {
-	var outptr_QAbstractVideoFilter *C.QAbstractVideoFilter = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAbstractVideoFilter_new(&outptr_QAbstractVideoFilter, &outptr_QObject)
-	ret := newQAbstractVideoFilter(outptr_QAbstractVideoFilter, outptr_QObject)
+	ret := newQAbstractVideoFilter(C.QAbstractVideoFilter_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAbstractVideoFilter2 constructs a new QAbstractVideoFilter object.
 func NewQAbstractVideoFilter2(parent *qt.QObject) *QAbstractVideoFilter {
-	var outptr_QAbstractVideoFilter *C.QAbstractVideoFilter = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAbstractVideoFilter_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QAbstractVideoFilter, &outptr_QObject)
-	ret := newQAbstractVideoFilter(outptr_QAbstractVideoFilter, outptr_QObject)
+	ret := newQAbstractVideoFilter(C.QAbstractVideoFilter_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -340,7 +329,7 @@ func miqt_exec_callback_QAbstractVideoFilter_TimerEvent(self *C.QAbstractVideoFi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QAbstractVideoFilter{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -366,7 +355,7 @@ func miqt_exec_callback_QAbstractVideoFilter_ChildEvent(self *C.QAbstractVideoFi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QAbstractVideoFilter{h: self}).callVirtualBase_ChildEvent, slotval1)
 

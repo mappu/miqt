@@ -42,22 +42,20 @@ func (this *QSessionManager) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSessionManager constructs the type using only CGO pointers.
-func newQSessionManager(h *C.QSessionManager, h_QObject *C.QObject) *QSessionManager {
+func newQSessionManager(h *C.QSessionManager) *QSessionManager {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QSessionManager_virtbase(h, &outptr_QObject)
+
 	return &QSessionManager{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQSessionManager constructs the type using only unsafe pointers.
-func UnsafeNewQSessionManager(h unsafe.Pointer, h_QObject unsafe.Pointer) *QSessionManager {
-	if h == nil {
-		return nil
-	}
-
-	return &QSessionManager{h: (*C.QSessionManager)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQSessionManager(h unsafe.Pointer) *QSessionManager {
+	return newQSessionManager((*C.QSessionManager)(h))
 }
 
 func (this *QSessionManager) MetaObject() *QMetaObject {

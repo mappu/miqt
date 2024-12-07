@@ -37,34 +37,27 @@ func newQRgba64(h *C.QRgba64) *QRgba64 {
 	if h == nil {
 		return nil
 	}
+
 	return &QRgba64{h: h}
 }
 
 // UnsafeNewQRgba64 constructs the type using only unsafe pointers.
 func UnsafeNewQRgba64(h unsafe.Pointer) *QRgba64 {
-	if h == nil {
-		return nil
-	}
-
-	return &QRgba64{h: (*C.QRgba64)(h)}
+	return newQRgba64((*C.QRgba64)(h))
 }
 
 // NewQRgba64 constructs a new QRgba64 object.
 func NewQRgba64() *QRgba64 {
-	var outptr_QRgba64 *C.QRgba64 = nil
 
-	C.QRgba64_new(&outptr_QRgba64)
-	ret := newQRgba64(outptr_QRgba64)
+	ret := newQRgba64(C.QRgba64_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQRgba642 constructs a new QRgba64 object.
 func NewQRgba642(param1 *QRgba64) *QRgba64 {
-	var outptr_QRgba64 *C.QRgba64 = nil
 
-	C.QRgba64_new2(param1.cPointer(), &outptr_QRgba64)
-	ret := newQRgba64(outptr_QRgba64)
+	ret := newQRgba64(C.QRgba64_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

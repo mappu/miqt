@@ -365,14 +365,12 @@ public:
 
 };
 
-void QIconEngine_new(QIconEngine** outptr_QIconEngine) {
-	MiqtVirtualQIconEngine* ret = new MiqtVirtualQIconEngine();
-	*outptr_QIconEngine = ret;
+QIconEngine* QIconEngine_new() {
+	return new MiqtVirtualQIconEngine();
 }
 
-void QIconEngine_new2(QIconEngine* other, QIconEngine** outptr_QIconEngine) {
-	MiqtVirtualQIconEngine* ret = new MiqtVirtualQIconEngine(*other);
-	*outptr_QIconEngine = ret;
+QIconEngine* QIconEngine_new2(QIconEngine* other) {
+	return new MiqtVirtualQIconEngine(*other);
 }
 
 void QIconEngine_Paint(QIconEngine* self, QPainter* painter, QRect* rect, int mode, int state) {
@@ -551,9 +549,8 @@ void QIconEngine_Delete(QIconEngine* self, bool isSubclass) {
 	}
 }
 
-void QIconEngine__AvailableSizesArgument_new(QIconEngine__AvailableSizesArgument* param1, QIconEngine__AvailableSizesArgument** outptr_QIconEngine__AvailableSizesArgument) {
-	QIconEngine::AvailableSizesArgument* ret = new QIconEngine::AvailableSizesArgument(*param1);
-	*outptr_QIconEngine__AvailableSizesArgument = ret;
+QIconEngine__AvailableSizesArgument* QIconEngine__AvailableSizesArgument_new(QIconEngine__AvailableSizesArgument* param1) {
+	return new QIconEngine::AvailableSizesArgument(*param1);
 }
 
 void QIconEngine__AvailableSizesArgument_OperatorAssign(QIconEngine__AvailableSizesArgument* self, QIconEngine__AvailableSizesArgument* param1) {
@@ -568,9 +565,8 @@ void QIconEngine__AvailableSizesArgument_Delete(QIconEngine__AvailableSizesArgum
 	}
 }
 
-void QIconEngine__ScaledPixmapArgument_new(QIconEngine__ScaledPixmapArgument* param1, QIconEngine__ScaledPixmapArgument** outptr_QIconEngine__ScaledPixmapArgument) {
-	QIconEngine::ScaledPixmapArgument* ret = new QIconEngine::ScaledPixmapArgument(*param1);
-	*outptr_QIconEngine__ScaledPixmapArgument = ret;
+QIconEngine__ScaledPixmapArgument* QIconEngine__ScaledPixmapArgument_new(QIconEngine__ScaledPixmapArgument* param1) {
+	return new QIconEngine::ScaledPixmapArgument(*param1);
 }
 
 void QIconEngine__ScaledPixmapArgument_OperatorAssign(QIconEngine__ScaledPixmapArgument* self, QIconEngine__ScaledPixmapArgument* param1) {

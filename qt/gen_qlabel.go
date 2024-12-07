@@ -35,48 +35,34 @@ func (this *QLabel) UnsafePointer() unsafe.Pointer {
 }
 
 // newQLabel constructs the type using only CGO pointers.
-func newQLabel(h *C.QLabel, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QLabel {
+func newQLabel(h *C.QLabel) *QLabel {
 	if h == nil {
 		return nil
 	}
+	var outptr_QFrame *C.QFrame = nil
+	C.QLabel_virtbase(h, &outptr_QFrame)
+
 	return &QLabel{h: h,
-		QFrame: newQFrame(h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+		QFrame: newQFrame(outptr_QFrame)}
 }
 
 // UnsafeNewQLabel constructs the type using only unsafe pointers.
-func UnsafeNewQLabel(h unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QLabel {
-	if h == nil {
-		return nil
-	}
-
-	return &QLabel{h: (*C.QLabel)(h),
-		QFrame: UnsafeNewQFrame(h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQLabel(h unsafe.Pointer) *QLabel {
+	return newQLabel((*C.QLabel)(h))
 }
 
 // NewQLabel constructs a new QLabel object.
 func NewQLabel(parent *QWidget) *QLabel {
-	var outptr_QLabel *C.QLabel = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QLabel_new(parent.cPointer(), &outptr_QLabel, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQLabel(outptr_QLabel, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQLabel(C.QLabel_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQLabel2 constructs a new QLabel object.
 func NewQLabel2() *QLabel {
-	var outptr_QLabel *C.QLabel = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QLabel_new2(&outptr_QLabel, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQLabel(outptr_QLabel, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQLabel(C.QLabel_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -87,28 +73,16 @@ func NewQLabel3(text string) *QLabel {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QLabel *C.QLabel = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QLabel_new3(text_ms, &outptr_QLabel, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQLabel(outptr_QLabel, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQLabel(C.QLabel_new3(text_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQLabel4 constructs a new QLabel object.
 func NewQLabel4(parent *QWidget, f WindowType) *QLabel {
-	var outptr_QLabel *C.QLabel = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QLabel_new4(parent.cPointer(), (C.int)(f), &outptr_QLabel, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQLabel(outptr_QLabel, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQLabel(C.QLabel_new4(parent.cPointer(), (C.int)(f)))
 	ret.isSubclass = true
 	return ret
 }
@@ -119,14 +93,8 @@ func NewQLabel5(text string, parent *QWidget) *QLabel {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QLabel *C.QLabel = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QLabel_new5(text_ms, parent.cPointer(), &outptr_QLabel, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQLabel(outptr_QLabel, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQLabel(C.QLabel_new5(text_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -137,14 +105,8 @@ func NewQLabel6(text string, parent *QWidget, f WindowType) *QLabel {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QLabel *C.QLabel = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QLabel_new6(text_ms, parent.cPointer(), (C.int)(f), &outptr_QLabel, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQLabel(outptr_QLabel, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQLabel(C.QLabel_new6(text_ms, parent.cPointer(), (C.int)(f)))
 	ret.isSubclass = true
 	return ret
 }
@@ -185,27 +147,27 @@ func (this *QLabel) Text() string {
 }
 
 func (this *QLabel) Pixmap() *QPixmap {
-	return newQPixmap(C.QLabel_Pixmap(this.h), nil)
+	return newQPixmap(C.QLabel_Pixmap(this.h))
 }
 
 func (this *QLabel) PixmapWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QPixmap {
-	_goptr := newQPixmap(C.QLabel_PixmapWithQtReturnByValueConstant(this.h, (C.int)(param1)), nil)
+	_goptr := newQPixmap(C.QLabel_PixmapWithQtReturnByValueConstant(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLabel) Picture() *QPicture {
-	return newQPicture(C.QLabel_Picture(this.h), nil)
+	return newQPicture(C.QLabel_Picture(this.h))
 }
 
 func (this *QLabel) PictureWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QPicture {
-	_goptr := newQPicture(C.QLabel_PictureWithQtReturnByValueConstant(this.h, (C.int)(param1)), nil)
+	_goptr := newQPicture(C.QLabel_PictureWithQtReturnByValueConstant(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLabel) Movie() *QMovie {
-	return newQMovie(C.QLabel_Movie(this.h), nil)
+	return newQMovie(C.QLabel_Movie(this.h))
 }
 
 func (this *QLabel) TextFormat() TextFormat {
@@ -273,7 +235,7 @@ func (this *QLabel) SetBuddy(buddy *QWidget) {
 }
 
 func (this *QLabel) Buddy() *QWidget {
-	return newQWidget(C.QLabel_Buddy(this.h), nil, nil)
+	return newQWidget(C.QLabel_Buddy(this.h))
 }
 
 func (this *QLabel) HeightForWidth(param1 int) int {
@@ -575,7 +537,7 @@ func miqt_exec_callback_QLabel_KeyPressEvent(self *C.QLabel, cb C.intptr_t, ev *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(ev, nil, nil)
+	slotval1 := newQKeyEvent(ev)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -601,7 +563,7 @@ func miqt_exec_callback_QLabel_PaintEvent(self *C.QLabel, cb C.intptr_t, param1 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(param1, nil)
+	slotval1 := newQPaintEvent(param1)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -653,7 +615,7 @@ func miqt_exec_callback_QLabel_MousePressEvent(self *C.QLabel, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(ev, nil, nil)
+	slotval1 := newQMouseEvent(ev)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -679,7 +641,7 @@ func miqt_exec_callback_QLabel_MouseMoveEvent(self *C.QLabel, cb C.intptr_t, ev 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(ev, nil, nil)
+	slotval1 := newQMouseEvent(ev)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -705,7 +667,7 @@ func miqt_exec_callback_QLabel_MouseReleaseEvent(self *C.QLabel, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(ev, nil, nil)
+	slotval1 := newQMouseEvent(ev)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -731,7 +693,7 @@ func miqt_exec_callback_QLabel_ContextMenuEvent(self *C.QLabel, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQContextMenuEvent(ev, nil, nil)
+	slotval1 := newQContextMenuEvent(ev)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -757,7 +719,7 @@ func miqt_exec_callback_QLabel_FocusInEvent(self *C.QLabel, cb C.intptr_t, ev *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(ev, nil)
+	slotval1 := newQFocusEvent(ev)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -783,7 +745,7 @@ func miqt_exec_callback_QLabel_FocusOutEvent(self *C.QLabel, cb C.intptr_t, ev *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(ev, nil)
+	slotval1 := newQFocusEvent(ev)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 

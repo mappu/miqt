@@ -82,8 +82,9 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QAbstractItemView_new(QWidget* parent, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QAbstractItemView_new2(QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QAbstractItemView* QAbstractItemView_new(QWidget* parent);
+QAbstractItemView* QAbstractItemView_new2();
+void QAbstractItemView_virtbase(QAbstractItemView* src, QAbstractScrollArea** outptr_QAbstractScrollArea);
 QMetaObject* QAbstractItemView_MetaObject(const QAbstractItemView* self);
 void* QAbstractItemView_Metacast(QAbstractItemView* self, const char* param1);
 struct miqt_string QAbstractItemView_Tr(const char* s);

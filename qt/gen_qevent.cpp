@@ -65,22 +65,20 @@
 #include "gen_qevent.h"
 #include "_cgo_export.h"
 
-void QInputEvent_new(int typeVal, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QInputEvent* ret = new QInputEvent(static_cast<QEvent::Type>(typeVal));
-	*outptr_QInputEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QInputEvent* QInputEvent_new(int typeVal) {
+	return new QInputEvent(static_cast<QEvent::Type>(typeVal));
 }
 
-void QInputEvent_new2(QInputEvent* param1, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QInputEvent* ret = new QInputEvent(*param1);
-	*outptr_QInputEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QInputEvent* QInputEvent_new2(QInputEvent* param1) {
+	return new QInputEvent(*param1);
 }
 
-void QInputEvent_new3(int typeVal, int modifiers, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QInputEvent* ret = new QInputEvent(static_cast<QEvent::Type>(typeVal), static_cast<Qt::KeyboardModifiers>(modifiers));
-	*outptr_QInputEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QInputEvent* QInputEvent_new3(int typeVal, int modifiers) {
+	return new QInputEvent(static_cast<QEvent::Type>(typeVal), static_cast<Qt::KeyboardModifiers>(modifiers));
+}
+
+void QInputEvent_virtbase(QInputEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 int QInputEvent_Modifiers(const QInputEvent* self) {
@@ -109,16 +107,16 @@ void QInputEvent_Delete(QInputEvent* self, bool isSubclass) {
 	}
 }
 
-void QEnterEvent_new(QPointF* localPos, QPointF* windowPos, QPointF* screenPos, QEnterEvent** outptr_QEnterEvent, QEvent** outptr_QEvent) {
-	QEnterEvent* ret = new QEnterEvent(*localPos, *windowPos, *screenPos);
-	*outptr_QEnterEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QEnterEvent* QEnterEvent_new(QPointF* localPos, QPointF* windowPos, QPointF* screenPos) {
+	return new QEnterEvent(*localPos, *windowPos, *screenPos);
 }
 
-void QEnterEvent_new2(QEnterEvent* param1, QEnterEvent** outptr_QEnterEvent, QEvent** outptr_QEvent) {
-	QEnterEvent* ret = new QEnterEvent(*param1);
-	*outptr_QEnterEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QEnterEvent* QEnterEvent_new2(QEnterEvent* param1) {
+	return new QEnterEvent(*param1);
+}
+
+void QEnterEvent_virtbase(QEnterEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 QPoint* QEnterEvent_Pos(const QEnterEvent* self) {
@@ -171,39 +169,28 @@ void QEnterEvent_Delete(QEnterEvent* self, bool isSubclass) {
 	}
 }
 
-void QMouseEvent_new(int typeVal, QPointF* localPos, int button, int buttons, int modifiers, QMouseEvent** outptr_QMouseEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QMouseEvent* ret = new QMouseEvent(static_cast<QEvent::Type>(typeVal), *localPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
-	*outptr_QMouseEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QMouseEvent* QMouseEvent_new(int typeVal, QPointF* localPos, int button, int buttons, int modifiers) {
+	return new QMouseEvent(static_cast<QEvent::Type>(typeVal), *localPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-void QMouseEvent_new2(int typeVal, QPointF* localPos, QPointF* screenPos, int button, int buttons, int modifiers, QMouseEvent** outptr_QMouseEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QMouseEvent* ret = new QMouseEvent(static_cast<QEvent::Type>(typeVal), *localPos, *screenPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
-	*outptr_QMouseEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QMouseEvent* QMouseEvent_new2(int typeVal, QPointF* localPos, QPointF* screenPos, int button, int buttons, int modifiers) {
+	return new QMouseEvent(static_cast<QEvent::Type>(typeVal), *localPos, *screenPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-void QMouseEvent_new3(int typeVal, QPointF* localPos, QPointF* windowPos, QPointF* screenPos, int button, int buttons, int modifiers, QMouseEvent** outptr_QMouseEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QMouseEvent* ret = new QMouseEvent(static_cast<QEvent::Type>(typeVal), *localPos, *windowPos, *screenPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
-	*outptr_QMouseEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QMouseEvent* QMouseEvent_new3(int typeVal, QPointF* localPos, QPointF* windowPos, QPointF* screenPos, int button, int buttons, int modifiers) {
+	return new QMouseEvent(static_cast<QEvent::Type>(typeVal), *localPos, *windowPos, *screenPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-void QMouseEvent_new4(int typeVal, QPointF* localPos, QPointF* windowPos, QPointF* screenPos, int button, int buttons, int modifiers, int source, QMouseEvent** outptr_QMouseEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QMouseEvent* ret = new QMouseEvent(static_cast<QEvent::Type>(typeVal), *localPos, *windowPos, *screenPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::MouseEventSource>(source));
-	*outptr_QMouseEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QMouseEvent* QMouseEvent_new4(int typeVal, QPointF* localPos, QPointF* windowPos, QPointF* screenPos, int button, int buttons, int modifiers, int source) {
+	return new QMouseEvent(static_cast<QEvent::Type>(typeVal), *localPos, *windowPos, *screenPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::MouseEventSource>(source));
 }
 
-void QMouseEvent_new5(QMouseEvent* param1, QMouseEvent** outptr_QMouseEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QMouseEvent* ret = new QMouseEvent(*param1);
-	*outptr_QMouseEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QMouseEvent* QMouseEvent_new5(QMouseEvent* param1) {
+	return new QMouseEvent(*param1);
+}
+
+void QMouseEvent_virtbase(QMouseEvent* src, QInputEvent** outptr_QInputEvent) {
+	*outptr_QInputEvent = static_cast<QInputEvent*>(src);
 }
 
 QPoint* QMouseEvent_Pos(const QMouseEvent* self) {
@@ -280,25 +267,20 @@ void QMouseEvent_Delete(QMouseEvent* self, bool isSubclass) {
 	}
 }
 
-void QHoverEvent_new(int typeVal, QPointF* pos, QPointF* oldPos, QHoverEvent** outptr_QHoverEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QHoverEvent* ret = new QHoverEvent(static_cast<QEvent::Type>(typeVal), *pos, *oldPos);
-	*outptr_QHoverEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QHoverEvent* QHoverEvent_new(int typeVal, QPointF* pos, QPointF* oldPos) {
+	return new QHoverEvent(static_cast<QEvent::Type>(typeVal), *pos, *oldPos);
 }
 
-void QHoverEvent_new2(QHoverEvent* param1, QHoverEvent** outptr_QHoverEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QHoverEvent* ret = new QHoverEvent(*param1);
-	*outptr_QHoverEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QHoverEvent* QHoverEvent_new2(QHoverEvent* param1) {
+	return new QHoverEvent(*param1);
 }
 
-void QHoverEvent_new3(int typeVal, QPointF* pos, QPointF* oldPos, int modifiers, QHoverEvent** outptr_QHoverEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QHoverEvent* ret = new QHoverEvent(static_cast<QEvent::Type>(typeVal), *pos, *oldPos, static_cast<Qt::KeyboardModifiers>(modifiers));
-	*outptr_QHoverEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QHoverEvent* QHoverEvent_new3(int typeVal, QPointF* pos, QPointF* oldPos, int modifiers) {
+	return new QHoverEvent(static_cast<QEvent::Type>(typeVal), *pos, *oldPos, static_cast<Qt::KeyboardModifiers>(modifiers));
+}
+
+void QHoverEvent_virtbase(QHoverEvent* src, QInputEvent** outptr_QInputEvent) {
+	*outptr_QInputEvent = static_cast<QInputEvent*>(src);
 }
 
 QPoint* QHoverEvent_Pos(const QHoverEvent* self) {
@@ -329,81 +311,52 @@ void QHoverEvent_Delete(QHoverEvent* self, bool isSubclass) {
 	}
 }
 
-void QWheelEvent_new(QPointF* pos, int delta, int buttons, int modifiers, QWheelEvent** outptr_QWheelEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QWheelEvent* ret = new QWheelEvent(*pos, static_cast<int>(delta), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
-	*outptr_QWheelEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QWheelEvent* QWheelEvent_new(QPointF* pos, int delta, int buttons, int modifiers) {
+	return new QWheelEvent(*pos, static_cast<int>(delta), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-void QWheelEvent_new2(QPointF* pos, QPointF* globalPos, int delta, int buttons, int modifiers, QWheelEvent** outptr_QWheelEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QWheelEvent* ret = new QWheelEvent(*pos, *globalPos, static_cast<int>(delta), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
-	*outptr_QWheelEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QWheelEvent* QWheelEvent_new2(QPointF* pos, QPointF* globalPos, int delta, int buttons, int modifiers) {
+	return new QWheelEvent(*pos, *globalPos, static_cast<int>(delta), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-void QWheelEvent_new3(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int qt4Delta, int qt4Orientation, int buttons, int modifiers, QWheelEvent** outptr_QWheelEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QWheelEvent* ret = new QWheelEvent(*pos, *globalPos, *pixelDelta, *angleDelta, static_cast<int>(qt4Delta), static_cast<Qt::Orientation>(qt4Orientation), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
-	*outptr_QWheelEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QWheelEvent* QWheelEvent_new3(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int qt4Delta, int qt4Orientation, int buttons, int modifiers) {
+	return new QWheelEvent(*pos, *globalPos, *pixelDelta, *angleDelta, static_cast<int>(qt4Delta), static_cast<Qt::Orientation>(qt4Orientation), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-void QWheelEvent_new4(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int qt4Delta, int qt4Orientation, int buttons, int modifiers, int phase, QWheelEvent** outptr_QWheelEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QWheelEvent* ret = new QWheelEvent(*pos, *globalPos, *pixelDelta, *angleDelta, static_cast<int>(qt4Delta), static_cast<Qt::Orientation>(qt4Orientation), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::ScrollPhase>(phase));
-	*outptr_QWheelEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QWheelEvent* QWheelEvent_new4(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int qt4Delta, int qt4Orientation, int buttons, int modifiers, int phase) {
+	return new QWheelEvent(*pos, *globalPos, *pixelDelta, *angleDelta, static_cast<int>(qt4Delta), static_cast<Qt::Orientation>(qt4Orientation), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::ScrollPhase>(phase));
 }
 
-void QWheelEvent_new5(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int qt4Delta, int qt4Orientation, int buttons, int modifiers, int phase, int source, QWheelEvent** outptr_QWheelEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QWheelEvent* ret = new QWheelEvent(*pos, *globalPos, *pixelDelta, *angleDelta, static_cast<int>(qt4Delta), static_cast<Qt::Orientation>(qt4Orientation), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::ScrollPhase>(phase), static_cast<Qt::MouseEventSource>(source));
-	*outptr_QWheelEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QWheelEvent* QWheelEvent_new5(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int qt4Delta, int qt4Orientation, int buttons, int modifiers, int phase, int source) {
+	return new QWheelEvent(*pos, *globalPos, *pixelDelta, *angleDelta, static_cast<int>(qt4Delta), static_cast<Qt::Orientation>(qt4Orientation), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::ScrollPhase>(phase), static_cast<Qt::MouseEventSource>(source));
 }
 
-void QWheelEvent_new6(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int qt4Delta, int qt4Orientation, int buttons, int modifiers, int phase, int source, bool inverted, QWheelEvent** outptr_QWheelEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QWheelEvent* ret = new QWheelEvent(*pos, *globalPos, *pixelDelta, *angleDelta, static_cast<int>(qt4Delta), static_cast<Qt::Orientation>(qt4Orientation), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::ScrollPhase>(phase), static_cast<Qt::MouseEventSource>(source), inverted);
-	*outptr_QWheelEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QWheelEvent* QWheelEvent_new6(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int qt4Delta, int qt4Orientation, int buttons, int modifiers, int phase, int source, bool inverted) {
+	return new QWheelEvent(*pos, *globalPos, *pixelDelta, *angleDelta, static_cast<int>(qt4Delta), static_cast<Qt::Orientation>(qt4Orientation), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::ScrollPhase>(phase), static_cast<Qt::MouseEventSource>(source), inverted);
 }
 
-void QWheelEvent_new7(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int buttons, int modifiers, int phase, bool inverted, QWheelEvent** outptr_QWheelEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QWheelEvent* ret = new QWheelEvent(*pos, *globalPos, *pixelDelta, *angleDelta, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::ScrollPhase>(phase), inverted);
-	*outptr_QWheelEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QWheelEvent* QWheelEvent_new7(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int buttons, int modifiers, int phase, bool inverted) {
+	return new QWheelEvent(*pos, *globalPos, *pixelDelta, *angleDelta, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::ScrollPhase>(phase), inverted);
 }
 
-void QWheelEvent_new8(QWheelEvent* param1, QWheelEvent** outptr_QWheelEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QWheelEvent* ret = new QWheelEvent(*param1);
-	*outptr_QWheelEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QWheelEvent* QWheelEvent_new8(QWheelEvent* param1) {
+	return new QWheelEvent(*param1);
 }
 
-void QWheelEvent_new9(QPointF* pos, int delta, int buttons, int modifiers, int orient, QWheelEvent** outptr_QWheelEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QWheelEvent* ret = new QWheelEvent(*pos, static_cast<int>(delta), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::Orientation>(orient));
-	*outptr_QWheelEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QWheelEvent* QWheelEvent_new9(QPointF* pos, int delta, int buttons, int modifiers, int orient) {
+	return new QWheelEvent(*pos, static_cast<int>(delta), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::Orientation>(orient));
 }
 
-void QWheelEvent_new10(QPointF* pos, QPointF* globalPos, int delta, int buttons, int modifiers, int orient, QWheelEvent** outptr_QWheelEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QWheelEvent* ret = new QWheelEvent(*pos, *globalPos, static_cast<int>(delta), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::Orientation>(orient));
-	*outptr_QWheelEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QWheelEvent* QWheelEvent_new10(QPointF* pos, QPointF* globalPos, int delta, int buttons, int modifiers, int orient) {
+	return new QWheelEvent(*pos, *globalPos, static_cast<int>(delta), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::Orientation>(orient));
 }
 
-void QWheelEvent_new11(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int buttons, int modifiers, int phase, bool inverted, int source, QWheelEvent** outptr_QWheelEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QWheelEvent* ret = new QWheelEvent(*pos, *globalPos, *pixelDelta, *angleDelta, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::ScrollPhase>(phase), inverted, static_cast<Qt::MouseEventSource>(source));
-	*outptr_QWheelEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QWheelEvent* QWheelEvent_new11(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int buttons, int modifiers, int phase, bool inverted, int source) {
+	return new QWheelEvent(*pos, *globalPos, *pixelDelta, *angleDelta, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::ScrollPhase>(phase), inverted, static_cast<Qt::MouseEventSource>(source));
+}
+
+void QWheelEvent_virtbase(QWheelEvent* src, QInputEvent** outptr_QInputEvent) {
+	*outptr_QInputEvent = static_cast<QInputEvent*>(src);
 }
 
 QPoint* QWheelEvent_PixelDelta(const QWheelEvent* self) {
@@ -494,25 +447,20 @@ void QWheelEvent_Delete(QWheelEvent* self, bool isSubclass) {
 	}
 }
 
-void QTabletEvent_new(int t, QPointF* pos, QPointF* globalPos, int device, int pointerType, double pressure, int xTilt, int yTilt, double tangentialPressure, double rotation, int z, int keyState, long long uniqueID, QTabletEvent** outptr_QTabletEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QTabletEvent* ret = new QTabletEvent(static_cast<QEvent::Type>(t), *pos, *globalPos, static_cast<int>(device), static_cast<int>(pointerType), static_cast<qreal>(pressure), static_cast<int>(xTilt), static_cast<int>(yTilt), static_cast<qreal>(tangentialPressure), static_cast<qreal>(rotation), static_cast<int>(z), static_cast<Qt::KeyboardModifiers>(keyState), static_cast<qint64>(uniqueID));
-	*outptr_QTabletEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QTabletEvent* QTabletEvent_new(int t, QPointF* pos, QPointF* globalPos, int device, int pointerType, double pressure, int xTilt, int yTilt, double tangentialPressure, double rotation, int z, int keyState, long long uniqueID) {
+	return new QTabletEvent(static_cast<QEvent::Type>(t), *pos, *globalPos, static_cast<int>(device), static_cast<int>(pointerType), static_cast<qreal>(pressure), static_cast<int>(xTilt), static_cast<int>(yTilt), static_cast<qreal>(tangentialPressure), static_cast<qreal>(rotation), static_cast<int>(z), static_cast<Qt::KeyboardModifiers>(keyState), static_cast<qint64>(uniqueID));
 }
 
-void QTabletEvent_new2(int t, QPointF* pos, QPointF* globalPos, int device, int pointerType, double pressure, int xTilt, int yTilt, double tangentialPressure, double rotation, int z, int keyState, long long uniqueID, int button, int buttons, QTabletEvent** outptr_QTabletEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QTabletEvent* ret = new QTabletEvent(static_cast<QEvent::Type>(t), *pos, *globalPos, static_cast<int>(device), static_cast<int>(pointerType), static_cast<qreal>(pressure), static_cast<int>(xTilt), static_cast<int>(yTilt), static_cast<qreal>(tangentialPressure), static_cast<qreal>(rotation), static_cast<int>(z), static_cast<Qt::KeyboardModifiers>(keyState), static_cast<qint64>(uniqueID), static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons));
-	*outptr_QTabletEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QTabletEvent* QTabletEvent_new2(int t, QPointF* pos, QPointF* globalPos, int device, int pointerType, double pressure, int xTilt, int yTilt, double tangentialPressure, double rotation, int z, int keyState, long long uniqueID, int button, int buttons) {
+	return new QTabletEvent(static_cast<QEvent::Type>(t), *pos, *globalPos, static_cast<int>(device), static_cast<int>(pointerType), static_cast<qreal>(pressure), static_cast<int>(xTilt), static_cast<int>(yTilt), static_cast<qreal>(tangentialPressure), static_cast<qreal>(rotation), static_cast<int>(z), static_cast<Qt::KeyboardModifiers>(keyState), static_cast<qint64>(uniqueID), static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons));
 }
 
-void QTabletEvent_new3(QTabletEvent* param1, QTabletEvent** outptr_QTabletEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QTabletEvent* ret = new QTabletEvent(*param1);
-	*outptr_QTabletEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QTabletEvent* QTabletEvent_new3(QTabletEvent* param1) {
+	return new QTabletEvent(*param1);
+}
+
+void QTabletEvent_virtbase(QTabletEvent* src, QInputEvent** outptr_QInputEvent) {
+	*outptr_QInputEvent = static_cast<QInputEvent*>(src);
 }
 
 QPoint* QTabletEvent_Pos(const QTabletEvent* self) {
@@ -626,25 +574,20 @@ void QTabletEvent_Delete(QTabletEvent* self, bool isSubclass) {
 	}
 }
 
-void QNativeGestureEvent_new(int typeVal, QPointF* localPos, QPointF* windowPos, QPointF* screenPos, double value, unsigned long sequenceId, unsigned long long intArgument, QNativeGestureEvent** outptr_QNativeGestureEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QNativeGestureEvent* ret = new QNativeGestureEvent(static_cast<Qt::NativeGestureType>(typeVal), *localPos, *windowPos, *screenPos, static_cast<qreal>(value), static_cast<ulong>(sequenceId), static_cast<quint64>(intArgument));
-	*outptr_QNativeGestureEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QNativeGestureEvent* QNativeGestureEvent_new(int typeVal, QPointF* localPos, QPointF* windowPos, QPointF* screenPos, double value, unsigned long sequenceId, unsigned long long intArgument) {
+	return new QNativeGestureEvent(static_cast<Qt::NativeGestureType>(typeVal), *localPos, *windowPos, *screenPos, static_cast<qreal>(value), static_cast<ulong>(sequenceId), static_cast<quint64>(intArgument));
 }
 
-void QNativeGestureEvent_new2(int typeVal, QTouchDevice* dev, QPointF* localPos, QPointF* windowPos, QPointF* screenPos, double value, unsigned long sequenceId, unsigned long long intArgument, QNativeGestureEvent** outptr_QNativeGestureEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QNativeGestureEvent* ret = new QNativeGestureEvent(static_cast<Qt::NativeGestureType>(typeVal), dev, *localPos, *windowPos, *screenPos, static_cast<qreal>(value), static_cast<ulong>(sequenceId), static_cast<quint64>(intArgument));
-	*outptr_QNativeGestureEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QNativeGestureEvent* QNativeGestureEvent_new2(int typeVal, QTouchDevice* dev, QPointF* localPos, QPointF* windowPos, QPointF* screenPos, double value, unsigned long sequenceId, unsigned long long intArgument) {
+	return new QNativeGestureEvent(static_cast<Qt::NativeGestureType>(typeVal), dev, *localPos, *windowPos, *screenPos, static_cast<qreal>(value), static_cast<ulong>(sequenceId), static_cast<quint64>(intArgument));
 }
 
-void QNativeGestureEvent_new3(QNativeGestureEvent* param1, QNativeGestureEvent** outptr_QNativeGestureEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QNativeGestureEvent* ret = new QNativeGestureEvent(*param1);
-	*outptr_QNativeGestureEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QNativeGestureEvent* QNativeGestureEvent_new3(QNativeGestureEvent* param1) {
+	return new QNativeGestureEvent(*param1);
+}
+
+void QNativeGestureEvent_virtbase(QNativeGestureEvent* src, QInputEvent** outptr_QInputEvent) {
+	*outptr_QInputEvent = static_cast<QInputEvent*>(src);
 }
 
 int QNativeGestureEvent_GestureType(const QNativeGestureEvent* self) {
@@ -695,73 +638,50 @@ void QNativeGestureEvent_Delete(QNativeGestureEvent* self, bool isSubclass) {
 	}
 }
 
-void QKeyEvent_new(int typeVal, int key, int modifiers, QKeyEvent** outptr_QKeyEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QKeyEvent* ret = new QKeyEvent(static_cast<QEvent::Type>(typeVal), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers));
-	*outptr_QKeyEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QKeyEvent* QKeyEvent_new(int typeVal, int key, int modifiers) {
+	return new QKeyEvent(static_cast<QEvent::Type>(typeVal), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-void QKeyEvent_new2(int typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, QKeyEvent** outptr_QKeyEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QKeyEvent* ret = new QKeyEvent(static_cast<QEvent::Type>(typeVal), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<quint32>(nativeScanCode), static_cast<quint32>(nativeVirtualKey), static_cast<quint32>(nativeModifiers));
-	*outptr_QKeyEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QKeyEvent* QKeyEvent_new2(int typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers) {
+	return new QKeyEvent(static_cast<QEvent::Type>(typeVal), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<quint32>(nativeScanCode), static_cast<quint32>(nativeVirtualKey), static_cast<quint32>(nativeModifiers));
 }
 
-void QKeyEvent_new3(QKeyEvent* param1, QKeyEvent** outptr_QKeyEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QKeyEvent* ret = new QKeyEvent(*param1);
-	*outptr_QKeyEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QKeyEvent* QKeyEvent_new3(QKeyEvent* param1) {
+	return new QKeyEvent(*param1);
 }
 
-void QKeyEvent_new4(int typeVal, int key, int modifiers, struct miqt_string text, QKeyEvent** outptr_QKeyEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
+QKeyEvent* QKeyEvent_new4(int typeVal, int key, int modifiers, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	QKeyEvent* ret = new QKeyEvent(static_cast<QEvent::Type>(typeVal), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), text_QString);
-	*outptr_QKeyEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+	return new QKeyEvent(static_cast<QEvent::Type>(typeVal), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), text_QString);
 }
 
-void QKeyEvent_new5(int typeVal, int key, int modifiers, struct miqt_string text, bool autorep, QKeyEvent** outptr_QKeyEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
+QKeyEvent* QKeyEvent_new5(int typeVal, int key, int modifiers, struct miqt_string text, bool autorep) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	QKeyEvent* ret = new QKeyEvent(static_cast<QEvent::Type>(typeVal), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), text_QString, autorep);
-	*outptr_QKeyEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+	return new QKeyEvent(static_cast<QEvent::Type>(typeVal), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), text_QString, autorep);
 }
 
-void QKeyEvent_new6(int typeVal, int key, int modifiers, struct miqt_string text, bool autorep, uint16_t count, QKeyEvent** outptr_QKeyEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
+QKeyEvent* QKeyEvent_new6(int typeVal, int key, int modifiers, struct miqt_string text, bool autorep, uint16_t count) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	QKeyEvent* ret = new QKeyEvent(static_cast<QEvent::Type>(typeVal), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), text_QString, autorep, static_cast<ushort>(count));
-	*outptr_QKeyEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+	return new QKeyEvent(static_cast<QEvent::Type>(typeVal), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), text_QString, autorep, static_cast<ushort>(count));
 }
 
-void QKeyEvent_new7(int typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text, QKeyEvent** outptr_QKeyEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
+QKeyEvent* QKeyEvent_new7(int typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	QKeyEvent* ret = new QKeyEvent(static_cast<QEvent::Type>(typeVal), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<quint32>(nativeScanCode), static_cast<quint32>(nativeVirtualKey), static_cast<quint32>(nativeModifiers), text_QString);
-	*outptr_QKeyEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+	return new QKeyEvent(static_cast<QEvent::Type>(typeVal), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<quint32>(nativeScanCode), static_cast<quint32>(nativeVirtualKey), static_cast<quint32>(nativeModifiers), text_QString);
 }
 
-void QKeyEvent_new8(int typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text, bool autorep, QKeyEvent** outptr_QKeyEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
+QKeyEvent* QKeyEvent_new8(int typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text, bool autorep) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	QKeyEvent* ret = new QKeyEvent(static_cast<QEvent::Type>(typeVal), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<quint32>(nativeScanCode), static_cast<quint32>(nativeVirtualKey), static_cast<quint32>(nativeModifiers), text_QString, autorep);
-	*outptr_QKeyEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+	return new QKeyEvent(static_cast<QEvent::Type>(typeVal), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<quint32>(nativeScanCode), static_cast<quint32>(nativeVirtualKey), static_cast<quint32>(nativeModifiers), text_QString, autorep);
 }
 
-void QKeyEvent_new9(int typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text, bool autorep, uint16_t count, QKeyEvent** outptr_QKeyEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
+QKeyEvent* QKeyEvent_new9(int typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text, bool autorep, uint16_t count) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	QKeyEvent* ret = new QKeyEvent(static_cast<QEvent::Type>(typeVal), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<quint32>(nativeScanCode), static_cast<quint32>(nativeVirtualKey), static_cast<quint32>(nativeModifiers), text_QString, autorep, static_cast<ushort>(count));
-	*outptr_QKeyEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+	return new QKeyEvent(static_cast<QEvent::Type>(typeVal), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<quint32>(nativeScanCode), static_cast<quint32>(nativeVirtualKey), static_cast<quint32>(nativeModifiers), text_QString, autorep, static_cast<ushort>(count));
+}
+
+void QKeyEvent_virtbase(QKeyEvent* src, QInputEvent** outptr_QInputEvent) {
+	*outptr_QInputEvent = static_cast<QInputEvent*>(src);
 }
 
 int QKeyEvent_Key(const QKeyEvent* self) {
@@ -819,22 +739,20 @@ void QKeyEvent_Delete(QKeyEvent* self, bool isSubclass) {
 	}
 }
 
-void QFocusEvent_new(int typeVal, QFocusEvent** outptr_QFocusEvent, QEvent** outptr_QEvent) {
-	QFocusEvent* ret = new QFocusEvent(static_cast<QEvent::Type>(typeVal));
-	*outptr_QFocusEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QFocusEvent* QFocusEvent_new(int typeVal) {
+	return new QFocusEvent(static_cast<QEvent::Type>(typeVal));
 }
 
-void QFocusEvent_new2(QFocusEvent* param1, QFocusEvent** outptr_QFocusEvent, QEvent** outptr_QEvent) {
-	QFocusEvent* ret = new QFocusEvent(*param1);
-	*outptr_QFocusEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QFocusEvent* QFocusEvent_new2(QFocusEvent* param1) {
+	return new QFocusEvent(*param1);
 }
 
-void QFocusEvent_new3(int typeVal, int reason, QFocusEvent** outptr_QFocusEvent, QEvent** outptr_QEvent) {
-	QFocusEvent* ret = new QFocusEvent(static_cast<QEvent::Type>(typeVal), static_cast<Qt::FocusReason>(reason));
-	*outptr_QFocusEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QFocusEvent* QFocusEvent_new3(int typeVal, int reason) {
+	return new QFocusEvent(static_cast<QEvent::Type>(typeVal), static_cast<Qt::FocusReason>(reason));
+}
+
+void QFocusEvent_virtbase(QFocusEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 bool QFocusEvent_GotFocus(const QFocusEvent* self) {
@@ -858,22 +776,20 @@ void QFocusEvent_Delete(QFocusEvent* self, bool isSubclass) {
 	}
 }
 
-void QPaintEvent_new(QRegion* paintRegion, QPaintEvent** outptr_QPaintEvent, QEvent** outptr_QEvent) {
-	QPaintEvent* ret = new QPaintEvent(*paintRegion);
-	*outptr_QPaintEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QPaintEvent* QPaintEvent_new(QRegion* paintRegion) {
+	return new QPaintEvent(*paintRegion);
 }
 
-void QPaintEvent_new2(QRect* paintRect, QPaintEvent** outptr_QPaintEvent, QEvent** outptr_QEvent) {
-	QPaintEvent* ret = new QPaintEvent(*paintRect);
-	*outptr_QPaintEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QPaintEvent* QPaintEvent_new2(QRect* paintRect) {
+	return new QPaintEvent(*paintRect);
 }
 
-void QPaintEvent_new3(QPaintEvent* param1, QPaintEvent** outptr_QPaintEvent, QEvent** outptr_QEvent) {
-	QPaintEvent* ret = new QPaintEvent(*param1);
-	*outptr_QPaintEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QPaintEvent* QPaintEvent_new3(QPaintEvent* param1) {
+	return new QPaintEvent(*param1);
+}
+
+void QPaintEvent_virtbase(QPaintEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 QRect* QPaintEvent_Rect(const QPaintEvent* self) {
@@ -896,16 +812,16 @@ void QPaintEvent_Delete(QPaintEvent* self, bool isSubclass) {
 	}
 }
 
-void QMoveEvent_new(QPoint* pos, QPoint* oldPos, QMoveEvent** outptr_QMoveEvent, QEvent** outptr_QEvent) {
-	QMoveEvent* ret = new QMoveEvent(*pos, *oldPos);
-	*outptr_QMoveEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QMoveEvent* QMoveEvent_new(QPoint* pos, QPoint* oldPos) {
+	return new QMoveEvent(*pos, *oldPos);
 }
 
-void QMoveEvent_new2(QMoveEvent* param1, QMoveEvent** outptr_QMoveEvent, QEvent** outptr_QEvent) {
-	QMoveEvent* ret = new QMoveEvent(*param1);
-	*outptr_QMoveEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QMoveEvent* QMoveEvent_new2(QMoveEvent* param1) {
+	return new QMoveEvent(*param1);
+}
+
+void QMoveEvent_virtbase(QMoveEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 QPoint* QMoveEvent_Pos(const QMoveEvent* self) {
@@ -928,16 +844,16 @@ void QMoveEvent_Delete(QMoveEvent* self, bool isSubclass) {
 	}
 }
 
-void QExposeEvent_new(QRegion* rgn, QExposeEvent** outptr_QExposeEvent, QEvent** outptr_QEvent) {
-	QExposeEvent* ret = new QExposeEvent(*rgn);
-	*outptr_QExposeEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QExposeEvent* QExposeEvent_new(QRegion* rgn) {
+	return new QExposeEvent(*rgn);
 }
 
-void QExposeEvent_new2(QExposeEvent* param1, QExposeEvent** outptr_QExposeEvent, QEvent** outptr_QEvent) {
-	QExposeEvent* ret = new QExposeEvent(*param1);
-	*outptr_QExposeEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QExposeEvent* QExposeEvent_new2(QExposeEvent* param1) {
+	return new QExposeEvent(*param1);
+}
+
+void QExposeEvent_virtbase(QExposeEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 QRegion* QExposeEvent_Region(const QExposeEvent* self) {
@@ -954,16 +870,16 @@ void QExposeEvent_Delete(QExposeEvent* self, bool isSubclass) {
 	}
 }
 
-void QPlatformSurfaceEvent_new(int surfaceEventType, QPlatformSurfaceEvent** outptr_QPlatformSurfaceEvent, QEvent** outptr_QEvent) {
-	QPlatformSurfaceEvent* ret = new QPlatformSurfaceEvent(static_cast<QPlatformSurfaceEvent::SurfaceEventType>(surfaceEventType));
-	*outptr_QPlatformSurfaceEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QPlatformSurfaceEvent* QPlatformSurfaceEvent_new(int surfaceEventType) {
+	return new QPlatformSurfaceEvent(static_cast<QPlatformSurfaceEvent::SurfaceEventType>(surfaceEventType));
 }
 
-void QPlatformSurfaceEvent_new2(QPlatformSurfaceEvent* param1, QPlatformSurfaceEvent** outptr_QPlatformSurfaceEvent, QEvent** outptr_QEvent) {
-	QPlatformSurfaceEvent* ret = new QPlatformSurfaceEvent(*param1);
-	*outptr_QPlatformSurfaceEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QPlatformSurfaceEvent* QPlatformSurfaceEvent_new2(QPlatformSurfaceEvent* param1) {
+	return new QPlatformSurfaceEvent(*param1);
+}
+
+void QPlatformSurfaceEvent_virtbase(QPlatformSurfaceEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 int QPlatformSurfaceEvent_SurfaceEventType(const QPlatformSurfaceEvent* self) {
@@ -979,16 +895,16 @@ void QPlatformSurfaceEvent_Delete(QPlatformSurfaceEvent* self, bool isSubclass) 
 	}
 }
 
-void QResizeEvent_new(QSize* size, QSize* oldSize, QResizeEvent** outptr_QResizeEvent, QEvent** outptr_QEvent) {
-	QResizeEvent* ret = new QResizeEvent(*size, *oldSize);
-	*outptr_QResizeEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QResizeEvent* QResizeEvent_new(QSize* size, QSize* oldSize) {
+	return new QResizeEvent(*size, *oldSize);
 }
 
-void QResizeEvent_new2(QResizeEvent* param1, QResizeEvent** outptr_QResizeEvent, QEvent** outptr_QEvent) {
-	QResizeEvent* ret = new QResizeEvent(*param1);
-	*outptr_QResizeEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QResizeEvent* QResizeEvent_new2(QResizeEvent* param1) {
+	return new QResizeEvent(*param1);
+}
+
+void QResizeEvent_virtbase(QResizeEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 QSize* QResizeEvent_Size(const QResizeEvent* self) {
@@ -1011,16 +927,16 @@ void QResizeEvent_Delete(QResizeEvent* self, bool isSubclass) {
 	}
 }
 
-void QCloseEvent_new(QCloseEvent** outptr_QCloseEvent, QEvent** outptr_QEvent) {
-	QCloseEvent* ret = new QCloseEvent();
-	*outptr_QCloseEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QCloseEvent* QCloseEvent_new() {
+	return new QCloseEvent();
 }
 
-void QCloseEvent_new2(QCloseEvent* param1, QCloseEvent** outptr_QCloseEvent, QEvent** outptr_QEvent) {
-	QCloseEvent* ret = new QCloseEvent(*param1);
-	*outptr_QCloseEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QCloseEvent* QCloseEvent_new2(QCloseEvent* param1) {
+	return new QCloseEvent(*param1);
+}
+
+void QCloseEvent_virtbase(QCloseEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 void QCloseEvent_OperatorAssign(QCloseEvent* self, QCloseEvent* param1) {
@@ -1035,16 +951,16 @@ void QCloseEvent_Delete(QCloseEvent* self, bool isSubclass) {
 	}
 }
 
-void QIconDragEvent_new(QIconDragEvent** outptr_QIconDragEvent, QEvent** outptr_QEvent) {
-	QIconDragEvent* ret = new QIconDragEvent();
-	*outptr_QIconDragEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QIconDragEvent* QIconDragEvent_new() {
+	return new QIconDragEvent();
 }
 
-void QIconDragEvent_new2(QIconDragEvent* param1, QIconDragEvent** outptr_QIconDragEvent, QEvent** outptr_QEvent) {
-	QIconDragEvent* ret = new QIconDragEvent(*param1);
-	*outptr_QIconDragEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QIconDragEvent* QIconDragEvent_new2(QIconDragEvent* param1) {
+	return new QIconDragEvent(*param1);
+}
+
+void QIconDragEvent_virtbase(QIconDragEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 void QIconDragEvent_OperatorAssign(QIconDragEvent* self, QIconDragEvent* param1) {
@@ -1059,16 +975,16 @@ void QIconDragEvent_Delete(QIconDragEvent* self, bool isSubclass) {
 	}
 }
 
-void QShowEvent_new(QShowEvent** outptr_QShowEvent, QEvent** outptr_QEvent) {
-	QShowEvent* ret = new QShowEvent();
-	*outptr_QShowEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QShowEvent* QShowEvent_new() {
+	return new QShowEvent();
 }
 
-void QShowEvent_new2(QShowEvent* param1, QShowEvent** outptr_QShowEvent, QEvent** outptr_QEvent) {
-	QShowEvent* ret = new QShowEvent(*param1);
-	*outptr_QShowEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QShowEvent* QShowEvent_new2(QShowEvent* param1) {
+	return new QShowEvent(*param1);
+}
+
+void QShowEvent_virtbase(QShowEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 void QShowEvent_OperatorAssign(QShowEvent* self, QShowEvent* param1) {
@@ -1083,16 +999,16 @@ void QShowEvent_Delete(QShowEvent* self, bool isSubclass) {
 	}
 }
 
-void QHideEvent_new(QHideEvent** outptr_QHideEvent, QEvent** outptr_QEvent) {
-	QHideEvent* ret = new QHideEvent();
-	*outptr_QHideEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QHideEvent* QHideEvent_new() {
+	return new QHideEvent();
 }
 
-void QHideEvent_new2(QHideEvent* param1, QHideEvent** outptr_QHideEvent, QEvent** outptr_QEvent) {
-	QHideEvent* ret = new QHideEvent(*param1);
-	*outptr_QHideEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QHideEvent* QHideEvent_new2(QHideEvent* param1) {
+	return new QHideEvent(*param1);
+}
+
+void QHideEvent_virtbase(QHideEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 void QHideEvent_OperatorAssign(QHideEvent* self, QHideEvent* param1) {
@@ -1107,32 +1023,24 @@ void QHideEvent_Delete(QHideEvent* self, bool isSubclass) {
 	}
 }
 
-void QContextMenuEvent_new(int reason, QPoint* pos, QPoint* globalPos, int modifiers, QContextMenuEvent** outptr_QContextMenuEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QContextMenuEvent* ret = new QContextMenuEvent(static_cast<QContextMenuEvent::Reason>(reason), *pos, *globalPos, static_cast<Qt::KeyboardModifiers>(modifiers));
-	*outptr_QContextMenuEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QContextMenuEvent* QContextMenuEvent_new(int reason, QPoint* pos, QPoint* globalPos, int modifiers) {
+	return new QContextMenuEvent(static_cast<QContextMenuEvent::Reason>(reason), *pos, *globalPos, static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-void QContextMenuEvent_new2(int reason, QPoint* pos, QPoint* globalPos, QContextMenuEvent** outptr_QContextMenuEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QContextMenuEvent* ret = new QContextMenuEvent(static_cast<QContextMenuEvent::Reason>(reason), *pos, *globalPos);
-	*outptr_QContextMenuEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QContextMenuEvent* QContextMenuEvent_new2(int reason, QPoint* pos, QPoint* globalPos) {
+	return new QContextMenuEvent(static_cast<QContextMenuEvent::Reason>(reason), *pos, *globalPos);
 }
 
-void QContextMenuEvent_new3(int reason, QPoint* pos, QContextMenuEvent** outptr_QContextMenuEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QContextMenuEvent* ret = new QContextMenuEvent(static_cast<QContextMenuEvent::Reason>(reason), *pos);
-	*outptr_QContextMenuEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QContextMenuEvent* QContextMenuEvent_new3(int reason, QPoint* pos) {
+	return new QContextMenuEvent(static_cast<QContextMenuEvent::Reason>(reason), *pos);
 }
 
-void QContextMenuEvent_new4(QContextMenuEvent* param1, QContextMenuEvent** outptr_QContextMenuEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QContextMenuEvent* ret = new QContextMenuEvent(*param1);
-	*outptr_QContextMenuEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QContextMenuEvent* QContextMenuEvent_new4(QContextMenuEvent* param1) {
+	return new QContextMenuEvent(*param1);
+}
+
+void QContextMenuEvent_virtbase(QContextMenuEvent* src, QInputEvent** outptr_QInputEvent) {
+	*outptr_QInputEvent = static_cast<QInputEvent*>(src);
 }
 
 int QContextMenuEvent_X(const QContextMenuEvent* self) {
@@ -1176,13 +1084,11 @@ void QContextMenuEvent_Delete(QContextMenuEvent* self, bool isSubclass) {
 	}
 }
 
-void QInputMethodEvent_new(QInputMethodEvent** outptr_QInputMethodEvent, QEvent** outptr_QEvent) {
-	QInputMethodEvent* ret = new QInputMethodEvent();
-	*outptr_QInputMethodEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QInputMethodEvent* QInputMethodEvent_new() {
+	return new QInputMethodEvent();
 }
 
-void QInputMethodEvent_new2(struct miqt_string preeditText, struct miqt_array /* of QInputMethodEvent__Attribute* */  attributes, QInputMethodEvent** outptr_QInputMethodEvent, QEvent** outptr_QEvent) {
+QInputMethodEvent* QInputMethodEvent_new2(struct miqt_string preeditText, struct miqt_array /* of QInputMethodEvent__Attribute* */  attributes) {
 	QString preeditText_QString = QString::fromUtf8(preeditText.data, preeditText.len);
 	QList<QInputMethodEvent::Attribute> attributes_QList;
 	attributes_QList.reserve(attributes.len);
@@ -1190,15 +1096,15 @@ void QInputMethodEvent_new2(struct miqt_string preeditText, struct miqt_array /*
 	for(size_t i = 0; i < attributes.len; ++i) {
 		attributes_QList.push_back(*(attributes_arr[i]));
 	}
-	QInputMethodEvent* ret = new QInputMethodEvent(preeditText_QString, attributes_QList);
-	*outptr_QInputMethodEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+	return new QInputMethodEvent(preeditText_QString, attributes_QList);
 }
 
-void QInputMethodEvent_new3(QInputMethodEvent* other, QInputMethodEvent** outptr_QInputMethodEvent, QEvent** outptr_QEvent) {
-	QInputMethodEvent* ret = new QInputMethodEvent(*other);
-	*outptr_QInputMethodEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QInputMethodEvent* QInputMethodEvent_new3(QInputMethodEvent* other) {
+	return new QInputMethodEvent(*other);
+}
+
+void QInputMethodEvent_virtbase(QInputMethodEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 void QInputMethodEvent_SetCommitString(QInputMethodEvent* self, struct miqt_string commitString) {
@@ -1267,16 +1173,16 @@ void QInputMethodEvent_Delete(QInputMethodEvent* self, bool isSubclass) {
 	}
 }
 
-void QInputMethodQueryEvent_new(int queries, QInputMethodQueryEvent** outptr_QInputMethodQueryEvent, QEvent** outptr_QEvent) {
-	QInputMethodQueryEvent* ret = new QInputMethodQueryEvent(static_cast<Qt::InputMethodQueries>(queries));
-	*outptr_QInputMethodQueryEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QInputMethodQueryEvent* QInputMethodQueryEvent_new(int queries) {
+	return new QInputMethodQueryEvent(static_cast<Qt::InputMethodQueries>(queries));
 }
 
-void QInputMethodQueryEvent_new2(QInputMethodQueryEvent* param1, QInputMethodQueryEvent** outptr_QInputMethodQueryEvent, QEvent** outptr_QEvent) {
-	QInputMethodQueryEvent* ret = new QInputMethodQueryEvent(*param1);
-	*outptr_QInputMethodQueryEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QInputMethodQueryEvent* QInputMethodQueryEvent_new2(QInputMethodQueryEvent* param1) {
+	return new QInputMethodQueryEvent(*param1);
+}
+
+void QInputMethodQueryEvent_virtbase(QInputMethodQueryEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 int QInputMethodQueryEvent_Queries(const QInputMethodQueryEvent* self) {
@@ -1300,22 +1206,20 @@ void QInputMethodQueryEvent_Delete(QInputMethodQueryEvent* self, bool isSubclass
 	}
 }
 
-void QDropEvent_new(QPointF* pos, int actions, QMimeData* data, int buttons, int modifiers, QDropEvent** outptr_QDropEvent, QEvent** outptr_QEvent) {
-	QDropEvent* ret = new QDropEvent(*pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
-	*outptr_QDropEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QDropEvent* QDropEvent_new(QPointF* pos, int actions, QMimeData* data, int buttons, int modifiers) {
+	return new QDropEvent(*pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-void QDropEvent_new2(QDropEvent* param1, QDropEvent** outptr_QDropEvent, QEvent** outptr_QEvent) {
-	QDropEvent* ret = new QDropEvent(*param1);
-	*outptr_QDropEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QDropEvent* QDropEvent_new2(QDropEvent* param1) {
+	return new QDropEvent(*param1);
 }
 
-void QDropEvent_new3(QPointF* pos, int actions, QMimeData* data, int buttons, int modifiers, int typeVal, QDropEvent** outptr_QDropEvent, QEvent** outptr_QEvent) {
-	QDropEvent* ret = new QDropEvent(*pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<QEvent::Type>(typeVal));
-	*outptr_QDropEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QDropEvent* QDropEvent_new3(QPointF* pos, int actions, QMimeData* data, int buttons, int modifiers, int typeVal) {
+	return new QDropEvent(*pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<QEvent::Type>(typeVal));
+}
+
+void QDropEvent_virtbase(QDropEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 QPoint* QDropEvent_Pos(const QDropEvent* self) {
@@ -1377,25 +1281,20 @@ void QDropEvent_Delete(QDropEvent* self, bool isSubclass) {
 	}
 }
 
-void QDragMoveEvent_new(QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers, QDragMoveEvent** outptr_QDragMoveEvent, QDropEvent** outptr_QDropEvent, QEvent** outptr_QEvent) {
-	QDragMoveEvent* ret = new QDragMoveEvent(*pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
-	*outptr_QDragMoveEvent = ret;
-	*outptr_QDropEvent = static_cast<QDropEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QDragMoveEvent* QDragMoveEvent_new(QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers) {
+	return new QDragMoveEvent(*pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-void QDragMoveEvent_new2(QDragMoveEvent* param1, QDragMoveEvent** outptr_QDragMoveEvent, QDropEvent** outptr_QDropEvent, QEvent** outptr_QEvent) {
-	QDragMoveEvent* ret = new QDragMoveEvent(*param1);
-	*outptr_QDragMoveEvent = ret;
-	*outptr_QDropEvent = static_cast<QDropEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QDragMoveEvent* QDragMoveEvent_new2(QDragMoveEvent* param1) {
+	return new QDragMoveEvent(*param1);
 }
 
-void QDragMoveEvent_new3(QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers, int typeVal, QDragMoveEvent** outptr_QDragMoveEvent, QDropEvent** outptr_QDropEvent, QEvent** outptr_QEvent) {
-	QDragMoveEvent* ret = new QDragMoveEvent(*pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<QEvent::Type>(typeVal));
-	*outptr_QDragMoveEvent = ret;
-	*outptr_QDropEvent = static_cast<QDropEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QDragMoveEvent* QDragMoveEvent_new3(QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers, int typeVal) {
+	return new QDragMoveEvent(*pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<QEvent::Type>(typeVal));
+}
+
+void QDragMoveEvent_virtbase(QDragMoveEvent* src, QDropEvent** outptr_QDropEvent) {
+	*outptr_QDropEvent = static_cast<QDropEvent*>(src);
 }
 
 QRect* QDragMoveEvent_AnswerRect(const QDragMoveEvent* self) {
@@ -1426,20 +1325,16 @@ void QDragMoveEvent_Delete(QDragMoveEvent* self, bool isSubclass) {
 	}
 }
 
-void QDragEnterEvent_new(QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers, QDragEnterEvent** outptr_QDragEnterEvent, QDragMoveEvent** outptr_QDragMoveEvent, QDropEvent** outptr_QDropEvent, QEvent** outptr_QEvent) {
-	QDragEnterEvent* ret = new QDragEnterEvent(*pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
-	*outptr_QDragEnterEvent = ret;
-	*outptr_QDragMoveEvent = static_cast<QDragMoveEvent*>(ret);
-	*outptr_QDropEvent = static_cast<QDropEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QDragEnterEvent* QDragEnterEvent_new(QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers) {
+	return new QDragEnterEvent(*pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-void QDragEnterEvent_new2(QDragEnterEvent* param1, QDragEnterEvent** outptr_QDragEnterEvent, QDragMoveEvent** outptr_QDragMoveEvent, QDropEvent** outptr_QDropEvent, QEvent** outptr_QEvent) {
-	QDragEnterEvent* ret = new QDragEnterEvent(*param1);
-	*outptr_QDragEnterEvent = ret;
-	*outptr_QDragMoveEvent = static_cast<QDragMoveEvent*>(ret);
-	*outptr_QDropEvent = static_cast<QDropEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QDragEnterEvent* QDragEnterEvent_new2(QDragEnterEvent* param1) {
+	return new QDragEnterEvent(*param1);
+}
+
+void QDragEnterEvent_virtbase(QDragEnterEvent* src, QDragMoveEvent** outptr_QDragMoveEvent) {
+	*outptr_QDragMoveEvent = static_cast<QDragMoveEvent*>(src);
 }
 
 void QDragEnterEvent_OperatorAssign(QDragEnterEvent* self, QDragEnterEvent* param1) {
@@ -1454,16 +1349,16 @@ void QDragEnterEvent_Delete(QDragEnterEvent* self, bool isSubclass) {
 	}
 }
 
-void QDragLeaveEvent_new(QDragLeaveEvent** outptr_QDragLeaveEvent, QEvent** outptr_QEvent) {
-	QDragLeaveEvent* ret = new QDragLeaveEvent();
-	*outptr_QDragLeaveEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QDragLeaveEvent* QDragLeaveEvent_new() {
+	return new QDragLeaveEvent();
 }
 
-void QDragLeaveEvent_new2(QDragLeaveEvent* param1, QDragLeaveEvent** outptr_QDragLeaveEvent, QEvent** outptr_QEvent) {
-	QDragLeaveEvent* ret = new QDragLeaveEvent(*param1);
-	*outptr_QDragLeaveEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QDragLeaveEvent* QDragLeaveEvent_new2(QDragLeaveEvent* param1) {
+	return new QDragLeaveEvent(*param1);
+}
+
+void QDragLeaveEvent_virtbase(QDragLeaveEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 void QDragLeaveEvent_OperatorAssign(QDragLeaveEvent* self, QDragLeaveEvent* param1) {
@@ -1478,16 +1373,16 @@ void QDragLeaveEvent_Delete(QDragLeaveEvent* self, bool isSubclass) {
 	}
 }
 
-void QHelpEvent_new(int typeVal, QPoint* pos, QPoint* globalPos, QHelpEvent** outptr_QHelpEvent, QEvent** outptr_QEvent) {
-	QHelpEvent* ret = new QHelpEvent(static_cast<QEvent::Type>(typeVal), *pos, *globalPos);
-	*outptr_QHelpEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QHelpEvent* QHelpEvent_new(int typeVal, QPoint* pos, QPoint* globalPos) {
+	return new QHelpEvent(static_cast<QEvent::Type>(typeVal), *pos, *globalPos);
 }
 
-void QHelpEvent_new2(QHelpEvent* param1, QHelpEvent** outptr_QHelpEvent, QEvent** outptr_QEvent) {
-	QHelpEvent* ret = new QHelpEvent(*param1);
-	*outptr_QHelpEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QHelpEvent* QHelpEvent_new2(QHelpEvent* param1) {
+	return new QHelpEvent(*param1);
+}
+
+void QHelpEvent_virtbase(QHelpEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 int QHelpEvent_X(const QHelpEvent* self) {
@@ -1526,17 +1421,17 @@ void QHelpEvent_Delete(QHelpEvent* self, bool isSubclass) {
 	}
 }
 
-void QStatusTipEvent_new(struct miqt_string tip, QStatusTipEvent** outptr_QStatusTipEvent, QEvent** outptr_QEvent) {
+QStatusTipEvent* QStatusTipEvent_new(struct miqt_string tip) {
 	QString tip_QString = QString::fromUtf8(tip.data, tip.len);
-	QStatusTipEvent* ret = new QStatusTipEvent(tip_QString);
-	*outptr_QStatusTipEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+	return new QStatusTipEvent(tip_QString);
 }
 
-void QStatusTipEvent_new2(QStatusTipEvent* param1, QStatusTipEvent** outptr_QStatusTipEvent, QEvent** outptr_QEvent) {
-	QStatusTipEvent* ret = new QStatusTipEvent(*param1);
-	*outptr_QStatusTipEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QStatusTipEvent* QStatusTipEvent_new2(QStatusTipEvent* param1) {
+	return new QStatusTipEvent(*param1);
+}
+
+void QStatusTipEvent_virtbase(QStatusTipEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 struct miqt_string QStatusTipEvent_Tip(const QStatusTipEvent* self) {
@@ -1558,17 +1453,17 @@ void QStatusTipEvent_Delete(QStatusTipEvent* self, bool isSubclass) {
 	}
 }
 
-void QWhatsThisClickedEvent_new(struct miqt_string href, QWhatsThisClickedEvent** outptr_QWhatsThisClickedEvent, QEvent** outptr_QEvent) {
+QWhatsThisClickedEvent* QWhatsThisClickedEvent_new(struct miqt_string href) {
 	QString href_QString = QString::fromUtf8(href.data, href.len);
-	QWhatsThisClickedEvent* ret = new QWhatsThisClickedEvent(href_QString);
-	*outptr_QWhatsThisClickedEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+	return new QWhatsThisClickedEvent(href_QString);
 }
 
-void QWhatsThisClickedEvent_new2(QWhatsThisClickedEvent* param1, QWhatsThisClickedEvent** outptr_QWhatsThisClickedEvent, QEvent** outptr_QEvent) {
-	QWhatsThisClickedEvent* ret = new QWhatsThisClickedEvent(*param1);
-	*outptr_QWhatsThisClickedEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QWhatsThisClickedEvent* QWhatsThisClickedEvent_new2(QWhatsThisClickedEvent* param1) {
+	return new QWhatsThisClickedEvent(*param1);
+}
+
+void QWhatsThisClickedEvent_virtbase(QWhatsThisClickedEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 struct miqt_string QWhatsThisClickedEvent_Href(const QWhatsThisClickedEvent* self) {
@@ -1590,22 +1485,20 @@ void QWhatsThisClickedEvent_Delete(QWhatsThisClickedEvent* self, bool isSubclass
 	}
 }
 
-void QActionEvent_new(int typeVal, QAction* action, QActionEvent** outptr_QActionEvent, QEvent** outptr_QEvent) {
-	QActionEvent* ret = new QActionEvent(static_cast<int>(typeVal), action);
-	*outptr_QActionEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QActionEvent* QActionEvent_new(int typeVal, QAction* action) {
+	return new QActionEvent(static_cast<int>(typeVal), action);
 }
 
-void QActionEvent_new2(QActionEvent* param1, QActionEvent** outptr_QActionEvent, QEvent** outptr_QEvent) {
-	QActionEvent* ret = new QActionEvent(*param1);
-	*outptr_QActionEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QActionEvent* QActionEvent_new2(QActionEvent* param1) {
+	return new QActionEvent(*param1);
 }
 
-void QActionEvent_new3(int typeVal, QAction* action, QAction* before, QActionEvent** outptr_QActionEvent, QEvent** outptr_QEvent) {
-	QActionEvent* ret = new QActionEvent(static_cast<int>(typeVal), action, before);
-	*outptr_QActionEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QActionEvent* QActionEvent_new3(int typeVal, QAction* action, QAction* before) {
+	return new QActionEvent(static_cast<int>(typeVal), action, before);
+}
+
+void QActionEvent_virtbase(QActionEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 QAction* QActionEvent_Action(const QActionEvent* self) {
@@ -1628,23 +1521,21 @@ void QActionEvent_Delete(QActionEvent* self, bool isSubclass) {
 	}
 }
 
-void QFileOpenEvent_new(struct miqt_string file, QFileOpenEvent** outptr_QFileOpenEvent, QEvent** outptr_QEvent) {
+QFileOpenEvent* QFileOpenEvent_new(struct miqt_string file) {
 	QString file_QString = QString::fromUtf8(file.data, file.len);
-	QFileOpenEvent* ret = new QFileOpenEvent(file_QString);
-	*outptr_QFileOpenEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+	return new QFileOpenEvent(file_QString);
 }
 
-void QFileOpenEvent_new2(QUrl* url, QFileOpenEvent** outptr_QFileOpenEvent, QEvent** outptr_QEvent) {
-	QFileOpenEvent* ret = new QFileOpenEvent(*url);
-	*outptr_QFileOpenEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QFileOpenEvent* QFileOpenEvent_new2(QUrl* url) {
+	return new QFileOpenEvent(*url);
 }
 
-void QFileOpenEvent_new3(QFileOpenEvent* param1, QFileOpenEvent** outptr_QFileOpenEvent, QEvent** outptr_QEvent) {
-	QFileOpenEvent* ret = new QFileOpenEvent(*param1);
-	*outptr_QFileOpenEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QFileOpenEvent* QFileOpenEvent_new3(QFileOpenEvent* param1) {
+	return new QFileOpenEvent(*param1);
+}
+
+void QFileOpenEvent_virtbase(QFileOpenEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 struct miqt_string QFileOpenEvent_File(const QFileOpenEvent* self) {
@@ -1674,16 +1565,16 @@ void QFileOpenEvent_Delete(QFileOpenEvent* self, bool isSubclass) {
 	}
 }
 
-void QToolBarChangeEvent_new(bool t, QToolBarChangeEvent** outptr_QToolBarChangeEvent, QEvent** outptr_QEvent) {
-	QToolBarChangeEvent* ret = new QToolBarChangeEvent(t);
-	*outptr_QToolBarChangeEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QToolBarChangeEvent* QToolBarChangeEvent_new(bool t) {
+	return new QToolBarChangeEvent(t);
 }
 
-void QToolBarChangeEvent_new2(QToolBarChangeEvent* param1, QToolBarChangeEvent** outptr_QToolBarChangeEvent, QEvent** outptr_QEvent) {
-	QToolBarChangeEvent* ret = new QToolBarChangeEvent(*param1);
-	*outptr_QToolBarChangeEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QToolBarChangeEvent* QToolBarChangeEvent_new2(QToolBarChangeEvent* param1) {
+	return new QToolBarChangeEvent(*param1);
+}
+
+void QToolBarChangeEvent_virtbase(QToolBarChangeEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 bool QToolBarChangeEvent_Toggle(const QToolBarChangeEvent* self) {
@@ -1698,22 +1589,20 @@ void QToolBarChangeEvent_Delete(QToolBarChangeEvent* self, bool isSubclass) {
 	}
 }
 
-void QShortcutEvent_new(QKeySequence* key, int id, QShortcutEvent** outptr_QShortcutEvent, QEvent** outptr_QEvent) {
-	QShortcutEvent* ret = new QShortcutEvent(*key, static_cast<int>(id));
-	*outptr_QShortcutEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QShortcutEvent* QShortcutEvent_new(QKeySequence* key, int id) {
+	return new QShortcutEvent(*key, static_cast<int>(id));
 }
 
-void QShortcutEvent_new2(QShortcutEvent* param1, QShortcutEvent** outptr_QShortcutEvent, QEvent** outptr_QEvent) {
-	QShortcutEvent* ret = new QShortcutEvent(*param1);
-	*outptr_QShortcutEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QShortcutEvent* QShortcutEvent_new2(QShortcutEvent* param1) {
+	return new QShortcutEvent(*param1);
 }
 
-void QShortcutEvent_new3(QKeySequence* key, int id, bool ambiguous, QShortcutEvent** outptr_QShortcutEvent, QEvent** outptr_QEvent) {
-	QShortcutEvent* ret = new QShortcutEvent(*key, static_cast<int>(id), ambiguous);
-	*outptr_QShortcutEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QShortcutEvent* QShortcutEvent_new3(QKeySequence* key, int id, bool ambiguous) {
+	return new QShortcutEvent(*key, static_cast<int>(id), ambiguous);
+}
+
+void QShortcutEvent_virtbase(QShortcutEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 QKeySequence* QShortcutEvent_Key(const QShortcutEvent* self) {
@@ -1738,22 +1627,20 @@ void QShortcutEvent_Delete(QShortcutEvent* self, bool isSubclass) {
 	}
 }
 
-void QWindowStateChangeEvent_new(int aOldState, QWindowStateChangeEvent** outptr_QWindowStateChangeEvent, QEvent** outptr_QEvent) {
-	QWindowStateChangeEvent* ret = new QWindowStateChangeEvent(static_cast<Qt::WindowStates>(aOldState));
-	*outptr_QWindowStateChangeEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QWindowStateChangeEvent* QWindowStateChangeEvent_new(int aOldState) {
+	return new QWindowStateChangeEvent(static_cast<Qt::WindowStates>(aOldState));
 }
 
-void QWindowStateChangeEvent_new2(QWindowStateChangeEvent* param1, QWindowStateChangeEvent** outptr_QWindowStateChangeEvent, QEvent** outptr_QEvent) {
-	QWindowStateChangeEvent* ret = new QWindowStateChangeEvent(*param1);
-	*outptr_QWindowStateChangeEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QWindowStateChangeEvent* QWindowStateChangeEvent_new2(QWindowStateChangeEvent* param1) {
+	return new QWindowStateChangeEvent(*param1);
 }
 
-void QWindowStateChangeEvent_new3(int aOldState, bool isOverride, QWindowStateChangeEvent** outptr_QWindowStateChangeEvent, QEvent** outptr_QEvent) {
-	QWindowStateChangeEvent* ret = new QWindowStateChangeEvent(static_cast<Qt::WindowStates>(aOldState), isOverride);
-	*outptr_QWindowStateChangeEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QWindowStateChangeEvent* QWindowStateChangeEvent_new3(int aOldState, bool isOverride) {
+	return new QWindowStateChangeEvent(static_cast<Qt::WindowStates>(aOldState), isOverride);
+}
+
+void QWindowStateChangeEvent_virtbase(QWindowStateChangeEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 int QWindowStateChangeEvent_OldState(const QWindowStateChangeEvent* self) {
@@ -1773,14 +1660,12 @@ void QWindowStateChangeEvent_Delete(QWindowStateChangeEvent* self, bool isSubcla
 	}
 }
 
-void QPointingDeviceUniqueId_new(QPointingDeviceUniqueId** outptr_QPointingDeviceUniqueId) {
-	QPointingDeviceUniqueId* ret = new QPointingDeviceUniqueId();
-	*outptr_QPointingDeviceUniqueId = ret;
+QPointingDeviceUniqueId* QPointingDeviceUniqueId_new() {
+	return new QPointingDeviceUniqueId();
 }
 
-void QPointingDeviceUniqueId_new2(QPointingDeviceUniqueId* param1, QPointingDeviceUniqueId** outptr_QPointingDeviceUniqueId) {
-	QPointingDeviceUniqueId* ret = new QPointingDeviceUniqueId(*param1);
-	*outptr_QPointingDeviceUniqueId = ret;
+QPointingDeviceUniqueId* QPointingDeviceUniqueId_new2(QPointingDeviceUniqueId* param1) {
+	return new QPointingDeviceUniqueId(*param1);
 }
 
 QPointingDeviceUniqueId* QPointingDeviceUniqueId_FromNumericId(long long id) {
@@ -1804,52 +1689,38 @@ void QPointingDeviceUniqueId_Delete(QPointingDeviceUniqueId* self, bool isSubcla
 	}
 }
 
-void QTouchEvent_new(int eventType, QTouchEvent** outptr_QTouchEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QTouchEvent* ret = new QTouchEvent(static_cast<QEvent::Type>(eventType));
-	*outptr_QTouchEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QTouchEvent* QTouchEvent_new(int eventType) {
+	return new QTouchEvent(static_cast<QEvent::Type>(eventType));
 }
 
-void QTouchEvent_new2(QTouchEvent* param1, QTouchEvent** outptr_QTouchEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QTouchEvent* ret = new QTouchEvent(*param1);
-	*outptr_QTouchEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QTouchEvent* QTouchEvent_new2(QTouchEvent* param1) {
+	return new QTouchEvent(*param1);
 }
 
-void QTouchEvent_new3(int eventType, QTouchDevice* device, QTouchEvent** outptr_QTouchEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QTouchEvent* ret = new QTouchEvent(static_cast<QEvent::Type>(eventType), device);
-	*outptr_QTouchEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QTouchEvent* QTouchEvent_new3(int eventType, QTouchDevice* device) {
+	return new QTouchEvent(static_cast<QEvent::Type>(eventType), device);
 }
 
-void QTouchEvent_new4(int eventType, QTouchDevice* device, int modifiers, QTouchEvent** outptr_QTouchEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QTouchEvent* ret = new QTouchEvent(static_cast<QEvent::Type>(eventType), device, static_cast<Qt::KeyboardModifiers>(modifiers));
-	*outptr_QTouchEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QTouchEvent* QTouchEvent_new4(int eventType, QTouchDevice* device, int modifiers) {
+	return new QTouchEvent(static_cast<QEvent::Type>(eventType), device, static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-void QTouchEvent_new5(int eventType, QTouchDevice* device, int modifiers, int touchPointStates, QTouchEvent** outptr_QTouchEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
-	QTouchEvent* ret = new QTouchEvent(static_cast<QEvent::Type>(eventType), device, static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::TouchPointStates>(touchPointStates));
-	*outptr_QTouchEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QTouchEvent* QTouchEvent_new5(int eventType, QTouchDevice* device, int modifiers, int touchPointStates) {
+	return new QTouchEvent(static_cast<QEvent::Type>(eventType), device, static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::TouchPointStates>(touchPointStates));
 }
 
-void QTouchEvent_new6(int eventType, QTouchDevice* device, int modifiers, int touchPointStates, struct miqt_array /* of QTouchEvent__TouchPoint* */  touchPoints, QTouchEvent** outptr_QTouchEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent) {
+QTouchEvent* QTouchEvent_new6(int eventType, QTouchDevice* device, int modifiers, int touchPointStates, struct miqt_array /* of QTouchEvent__TouchPoint* */  touchPoints) {
 	QList<QTouchEvent::TouchPoint> touchPoints_QList;
 	touchPoints_QList.reserve(touchPoints.len);
 	QTouchEvent__TouchPoint** touchPoints_arr = static_cast<QTouchEvent__TouchPoint**>(touchPoints.data);
 	for(size_t i = 0; i < touchPoints.len; ++i) {
 		touchPoints_QList.push_back(*(touchPoints_arr[i]));
 	}
-	QTouchEvent* ret = new QTouchEvent(static_cast<QEvent::Type>(eventType), device, static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::TouchPointStates>(touchPointStates), touchPoints_QList);
-	*outptr_QTouchEvent = ret;
-	*outptr_QInputEvent = static_cast<QInputEvent*>(ret);
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+	return new QTouchEvent(static_cast<QEvent::Type>(eventType), device, static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::TouchPointStates>(touchPointStates), touchPoints_QList);
+}
+
+void QTouchEvent_virtbase(QTouchEvent* src, QInputEvent** outptr_QInputEvent) {
+	*outptr_QInputEvent = static_cast<QInputEvent*>(src);
 }
 
 QWindow* QTouchEvent_Window(const QTouchEvent* self) {
@@ -1916,16 +1787,16 @@ void QTouchEvent_Delete(QTouchEvent* self, bool isSubclass) {
 	}
 }
 
-void QScrollPrepareEvent_new(QPointF* startPos, QScrollPrepareEvent** outptr_QScrollPrepareEvent, QEvent** outptr_QEvent) {
-	QScrollPrepareEvent* ret = new QScrollPrepareEvent(*startPos);
-	*outptr_QScrollPrepareEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QScrollPrepareEvent* QScrollPrepareEvent_new(QPointF* startPos) {
+	return new QScrollPrepareEvent(*startPos);
 }
 
-void QScrollPrepareEvent_new2(QScrollPrepareEvent* param1, QScrollPrepareEvent** outptr_QScrollPrepareEvent, QEvent** outptr_QEvent) {
-	QScrollPrepareEvent* ret = new QScrollPrepareEvent(*param1);
-	*outptr_QScrollPrepareEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QScrollPrepareEvent* QScrollPrepareEvent_new2(QScrollPrepareEvent* param1) {
+	return new QScrollPrepareEvent(*param1);
+}
+
+void QScrollPrepareEvent_virtbase(QScrollPrepareEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 QPointF* QScrollPrepareEvent_StartPos(const QScrollPrepareEvent* self) {
@@ -1964,16 +1835,16 @@ void QScrollPrepareEvent_Delete(QScrollPrepareEvent* self, bool isSubclass) {
 	}
 }
 
-void QScrollEvent_new(QPointF* contentPos, QPointF* overshoot, int scrollState, QScrollEvent** outptr_QScrollEvent, QEvent** outptr_QEvent) {
-	QScrollEvent* ret = new QScrollEvent(*contentPos, *overshoot, static_cast<QScrollEvent::ScrollState>(scrollState));
-	*outptr_QScrollEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QScrollEvent* QScrollEvent_new(QPointF* contentPos, QPointF* overshoot, int scrollState) {
+	return new QScrollEvent(*contentPos, *overshoot, static_cast<QScrollEvent::ScrollState>(scrollState));
 }
 
-void QScrollEvent_new2(QScrollEvent* param1, QScrollEvent** outptr_QScrollEvent, QEvent** outptr_QEvent) {
-	QScrollEvent* ret = new QScrollEvent(*param1);
-	*outptr_QScrollEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QScrollEvent* QScrollEvent_new2(QScrollEvent* param1) {
+	return new QScrollEvent(*param1);
+}
+
+void QScrollEvent_virtbase(QScrollEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 QPointF* QScrollEvent_ContentPos(const QScrollEvent* self) {
@@ -1997,16 +1868,16 @@ void QScrollEvent_Delete(QScrollEvent* self, bool isSubclass) {
 	}
 }
 
-void QScreenOrientationChangeEvent_new(QScreen* screen, int orientation, QScreenOrientationChangeEvent** outptr_QScreenOrientationChangeEvent, QEvent** outptr_QEvent) {
-	QScreenOrientationChangeEvent* ret = new QScreenOrientationChangeEvent(screen, static_cast<Qt::ScreenOrientation>(orientation));
-	*outptr_QScreenOrientationChangeEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QScreenOrientationChangeEvent* QScreenOrientationChangeEvent_new(QScreen* screen, int orientation) {
+	return new QScreenOrientationChangeEvent(screen, static_cast<Qt::ScreenOrientation>(orientation));
 }
 
-void QScreenOrientationChangeEvent_new2(QScreenOrientationChangeEvent* param1, QScreenOrientationChangeEvent** outptr_QScreenOrientationChangeEvent, QEvent** outptr_QEvent) {
-	QScreenOrientationChangeEvent* ret = new QScreenOrientationChangeEvent(*param1);
-	*outptr_QScreenOrientationChangeEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QScreenOrientationChangeEvent* QScreenOrientationChangeEvent_new2(QScreenOrientationChangeEvent* param1) {
+	return new QScreenOrientationChangeEvent(*param1);
+}
+
+void QScreenOrientationChangeEvent_virtbase(QScreenOrientationChangeEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 QScreen* QScreenOrientationChangeEvent_Screen(const QScreenOrientationChangeEvent* self) {
@@ -2026,16 +1897,16 @@ void QScreenOrientationChangeEvent_Delete(QScreenOrientationChangeEvent* self, b
 	}
 }
 
-void QApplicationStateChangeEvent_new(int state, QApplicationStateChangeEvent** outptr_QApplicationStateChangeEvent, QEvent** outptr_QEvent) {
-	QApplicationStateChangeEvent* ret = new QApplicationStateChangeEvent(static_cast<Qt::ApplicationState>(state));
-	*outptr_QApplicationStateChangeEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QApplicationStateChangeEvent* QApplicationStateChangeEvent_new(int state) {
+	return new QApplicationStateChangeEvent(static_cast<Qt::ApplicationState>(state));
 }
 
-void QApplicationStateChangeEvent_new2(QApplicationStateChangeEvent* param1, QApplicationStateChangeEvent** outptr_QApplicationStateChangeEvent, QEvent** outptr_QEvent) {
-	QApplicationStateChangeEvent* ret = new QApplicationStateChangeEvent(*param1);
-	*outptr_QApplicationStateChangeEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QApplicationStateChangeEvent* QApplicationStateChangeEvent_new2(QApplicationStateChangeEvent* param1) {
+	return new QApplicationStateChangeEvent(*param1);
+}
+
+void QApplicationStateChangeEvent_virtbase(QApplicationStateChangeEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 int QApplicationStateChangeEvent_ApplicationState(const QApplicationStateChangeEvent* self) {
@@ -2051,19 +1922,16 @@ void QApplicationStateChangeEvent_Delete(QApplicationStateChangeEvent* self, boo
 	}
 }
 
-void QInputMethodEvent__Attribute_new(int typ, int s, int l, QVariant* val, QInputMethodEvent__Attribute** outptr_QInputMethodEvent__Attribute) {
-	QInputMethodEvent::Attribute* ret = new QInputMethodEvent::Attribute(static_cast<QInputMethodEvent::AttributeType>(typ), static_cast<int>(s), static_cast<int>(l), *val);
-	*outptr_QInputMethodEvent__Attribute = ret;
+QInputMethodEvent__Attribute* QInputMethodEvent__Attribute_new(int typ, int s, int l, QVariant* val) {
+	return new QInputMethodEvent::Attribute(static_cast<QInputMethodEvent::AttributeType>(typ), static_cast<int>(s), static_cast<int>(l), *val);
 }
 
-void QInputMethodEvent__Attribute_new2(int typ, int s, int l, QInputMethodEvent__Attribute** outptr_QInputMethodEvent__Attribute) {
-	QInputMethodEvent::Attribute* ret = new QInputMethodEvent::Attribute(static_cast<QInputMethodEvent::AttributeType>(typ), static_cast<int>(s), static_cast<int>(l));
-	*outptr_QInputMethodEvent__Attribute = ret;
+QInputMethodEvent__Attribute* QInputMethodEvent__Attribute_new2(int typ, int s, int l) {
+	return new QInputMethodEvent::Attribute(static_cast<QInputMethodEvent::AttributeType>(typ), static_cast<int>(s), static_cast<int>(l));
 }
 
-void QInputMethodEvent__Attribute_new3(QInputMethodEvent__Attribute* param1, QInputMethodEvent__Attribute** outptr_QInputMethodEvent__Attribute) {
-	QInputMethodEvent::Attribute* ret = new QInputMethodEvent::Attribute(*param1);
-	*outptr_QInputMethodEvent__Attribute = ret;
+QInputMethodEvent__Attribute* QInputMethodEvent__Attribute_new3(QInputMethodEvent__Attribute* param1) {
+	return new QInputMethodEvent::Attribute(*param1);
 }
 
 void QInputMethodEvent__Attribute_OperatorAssign(QInputMethodEvent__Attribute* self, QInputMethodEvent__Attribute* param1) {
@@ -2078,19 +1946,16 @@ void QInputMethodEvent__Attribute_Delete(QInputMethodEvent__Attribute* self, boo
 	}
 }
 
-void QTouchEvent__TouchPoint_new(QTouchEvent__TouchPoint** outptr_QTouchEvent__TouchPoint) {
-	QTouchEvent::TouchPoint* ret = new QTouchEvent::TouchPoint();
-	*outptr_QTouchEvent__TouchPoint = ret;
+QTouchEvent__TouchPoint* QTouchEvent__TouchPoint_new() {
+	return new QTouchEvent::TouchPoint();
 }
 
-void QTouchEvent__TouchPoint_new2(QTouchEvent__TouchPoint* other, QTouchEvent__TouchPoint** outptr_QTouchEvent__TouchPoint) {
-	QTouchEvent::TouchPoint* ret = new QTouchEvent::TouchPoint(*other);
-	*outptr_QTouchEvent__TouchPoint = ret;
+QTouchEvent__TouchPoint* QTouchEvent__TouchPoint_new2(QTouchEvent__TouchPoint* other) {
+	return new QTouchEvent::TouchPoint(*other);
 }
 
-void QTouchEvent__TouchPoint_new3(int id, QTouchEvent__TouchPoint** outptr_QTouchEvent__TouchPoint) {
-	QTouchEvent::TouchPoint* ret = new QTouchEvent::TouchPoint(static_cast<int>(id));
-	*outptr_QTouchEvent__TouchPoint = ret;
+QTouchEvent__TouchPoint* QTouchEvent__TouchPoint_new3(int id) {
+	return new QTouchEvent::TouchPoint(static_cast<int>(id));
 }
 
 void QTouchEvent__TouchPoint_OperatorAssign(QTouchEvent__TouchPoint* self, QTouchEvent__TouchPoint* other) {

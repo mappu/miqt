@@ -3,9 +3,8 @@
 #include "gen_qlinkedlist.h"
 #include "_cgo_export.h"
 
-void QLinkedListData_new(QLinkedListData** outptr_QLinkedListData) {
-	QLinkedListData* ret = new QLinkedListData();
-	*outptr_QLinkedListData = ret;
+QLinkedListData* QLinkedListData_new() {
+	return new QLinkedListData();
 }
 
 void QLinkedListData_Delete(QLinkedListData* self, bool isSubclass) {

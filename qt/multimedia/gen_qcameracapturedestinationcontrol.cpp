@@ -9,6 +9,10 @@
 #include "gen_qcameracapturedestinationcontrol.h"
 #include "_cgo_export.h"
 
+void QCameraCaptureDestinationControl_virtbase(QCameraCaptureDestinationControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
+
 QMetaObject* QCameraCaptureDestinationControl_MetaObject(const QCameraCaptureDestinationControl* self) {
 	return (QMetaObject*) self->metaObject();
 }

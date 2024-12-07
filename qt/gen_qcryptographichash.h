@@ -22,7 +22,7 @@ typedef struct QCryptographicHash QCryptographicHash;
 typedef struct QIODevice QIODevice;
 #endif
 
-void QCryptographicHash_new(int method, QCryptographicHash** outptr_QCryptographicHash);
+QCryptographicHash* QCryptographicHash_new(int method);
 void QCryptographicHash_Reset(QCryptographicHash* self);
 void QCryptographicHash_AddData(QCryptographicHash* self, const char* data, int length);
 void QCryptographicHash_AddDataWithData(QCryptographicHash* self, struct miqt_string data);

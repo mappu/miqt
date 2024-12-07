@@ -55,34 +55,27 @@ func newQModelIndex(h *C.QModelIndex) *QModelIndex {
 	if h == nil {
 		return nil
 	}
+
 	return &QModelIndex{h: h}
 }
 
 // UnsafeNewQModelIndex constructs the type using only unsafe pointers.
 func UnsafeNewQModelIndex(h unsafe.Pointer) *QModelIndex {
-	if h == nil {
-		return nil
-	}
-
-	return &QModelIndex{h: (*C.QModelIndex)(h)}
+	return newQModelIndex((*C.QModelIndex)(h))
 }
 
 // NewQModelIndex constructs a new QModelIndex object.
 func NewQModelIndex() *QModelIndex {
-	var outptr_QModelIndex *C.QModelIndex = nil
 
-	C.QModelIndex_new(&outptr_QModelIndex)
-	ret := newQModelIndex(outptr_QModelIndex)
+	ret := newQModelIndex(C.QModelIndex_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQModelIndex2 constructs a new QModelIndex object.
 func NewQModelIndex2(param1 *QModelIndex) *QModelIndex {
-	var outptr_QModelIndex *C.QModelIndex = nil
 
-	C.QModelIndex_new2(param1.cPointer(), &outptr_QModelIndex)
-	ret := newQModelIndex(outptr_QModelIndex)
+	ret := newQModelIndex(C.QModelIndex_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -144,7 +137,7 @@ func (this *QModelIndex) Flags() ItemFlag {
 }
 
 func (this *QModelIndex) Model() *QAbstractItemModel {
-	return newQAbstractItemModel(C.QModelIndex_Model(this.h), nil)
+	return newQAbstractItemModel(C.QModelIndex_Model(this.h))
 }
 
 func (this *QModelIndex) IsValid() bool {
@@ -207,44 +200,35 @@ func newQPersistentModelIndex(h *C.QPersistentModelIndex) *QPersistentModelIndex
 	if h == nil {
 		return nil
 	}
+
 	return &QPersistentModelIndex{h: h}
 }
 
 // UnsafeNewQPersistentModelIndex constructs the type using only unsafe pointers.
 func UnsafeNewQPersistentModelIndex(h unsafe.Pointer) *QPersistentModelIndex {
-	if h == nil {
-		return nil
-	}
-
-	return &QPersistentModelIndex{h: (*C.QPersistentModelIndex)(h)}
+	return newQPersistentModelIndex((*C.QPersistentModelIndex)(h))
 }
 
 // NewQPersistentModelIndex constructs a new QPersistentModelIndex object.
 func NewQPersistentModelIndex() *QPersistentModelIndex {
-	var outptr_QPersistentModelIndex *C.QPersistentModelIndex = nil
 
-	C.QPersistentModelIndex_new(&outptr_QPersistentModelIndex)
-	ret := newQPersistentModelIndex(outptr_QPersistentModelIndex)
+	ret := newQPersistentModelIndex(C.QPersistentModelIndex_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPersistentModelIndex2 constructs a new QPersistentModelIndex object.
 func NewQPersistentModelIndex2(index *QModelIndex) *QPersistentModelIndex {
-	var outptr_QPersistentModelIndex *C.QPersistentModelIndex = nil
 
-	C.QPersistentModelIndex_new2(index.cPointer(), &outptr_QPersistentModelIndex)
-	ret := newQPersistentModelIndex(outptr_QPersistentModelIndex)
+	ret := newQPersistentModelIndex(C.QPersistentModelIndex_new2(index.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPersistentModelIndex3 constructs a new QPersistentModelIndex object.
 func NewQPersistentModelIndex3(other *QPersistentModelIndex) *QPersistentModelIndex {
-	var outptr_QPersistentModelIndex *C.QPersistentModelIndex = nil
 
-	C.QPersistentModelIndex_new3(other.cPointer(), &outptr_QPersistentModelIndex)
-	ret := newQPersistentModelIndex(outptr_QPersistentModelIndex)
+	ret := newQPersistentModelIndex(C.QPersistentModelIndex_new3(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -326,7 +310,7 @@ func (this *QPersistentModelIndex) Flags() ItemFlag {
 }
 
 func (this *QPersistentModelIndex) Model() *QAbstractItemModel {
-	return newQAbstractItemModel(C.QPersistentModelIndex_Model(this.h), nil)
+	return newQAbstractItemModel(C.QPersistentModelIndex_Model(this.h))
 }
 
 func (this *QPersistentModelIndex) IsValid() bool {
@@ -374,42 +358,34 @@ func (this *QAbstractItemModel) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAbstractItemModel constructs the type using only CGO pointers.
-func newQAbstractItemModel(h *C.QAbstractItemModel, h_QObject *C.QObject) *QAbstractItemModel {
+func newQAbstractItemModel(h *C.QAbstractItemModel) *QAbstractItemModel {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QAbstractItemModel_virtbase(h, &outptr_QObject)
+
 	return &QAbstractItemModel{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQAbstractItemModel constructs the type using only unsafe pointers.
-func UnsafeNewQAbstractItemModel(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractItemModel {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractItemModel{h: (*C.QAbstractItemModel)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQAbstractItemModel(h unsafe.Pointer) *QAbstractItemModel {
+	return newQAbstractItemModel((*C.QAbstractItemModel)(h))
 }
 
 // NewQAbstractItemModel constructs a new QAbstractItemModel object.
 func NewQAbstractItemModel() *QAbstractItemModel {
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAbstractItemModel_new(&outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQAbstractItemModel(outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQAbstractItemModel(C.QAbstractItemModel_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAbstractItemModel2 constructs a new QAbstractItemModel object.
 func NewQAbstractItemModel2(parent *QObject) *QAbstractItemModel {
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAbstractItemModel_new2(parent.cPointer(), &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQAbstractItemModel(outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQAbstractItemModel(C.QAbstractItemModel_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -552,7 +528,7 @@ func (this *QAbstractItemModel) MimeData(indexes []QModelIndex) *QMimeData {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
-	return newQMimeData(C.QAbstractItemModel_MimeData(this.h, indexes_ma), nil)
+	return newQMimeData(C.QAbstractItemModel_MimeData(this.h, indexes_ma))
 }
 
 func (this *QAbstractItemModel) CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
@@ -1457,7 +1433,7 @@ func (this *QAbstractItemModel) callVirtualBase_MimeData(indexes []QModelIndex) 
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 
-	return newQMimeData(C.QAbstractItemModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma), nil)
+	return newQMimeData(C.QAbstractItemModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma))
 
 }
 func (this *QAbstractItemModel) OnMimeData(slot func(super func(indexes []QModelIndex) *QMimeData, indexes []QModelIndex) *QMimeData) {
@@ -1511,7 +1487,7 @@ func miqt_exec_callback_QAbstractItemModel_CanDropMimeData(self *C.QAbstractItem
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(data, nil)
+	slotval1 := newQMimeData(data)
 
 	slotval2 := (DropAction)(action)
 
@@ -1547,7 +1523,7 @@ func miqt_exec_callback_QAbstractItemModel_DropMimeData(self *C.QAbstractItemMod
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(data, nil)
+	slotval1 := newQMimeData(data)
 
 	slotval2 := (DropAction)(action)
 
@@ -2215,7 +2191,7 @@ func miqt_exec_callback_QAbstractItemModel_TimerEvent(self *C.QAbstractItemModel
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QAbstractItemModel{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -2241,7 +2217,7 @@ func miqt_exec_callback_QAbstractItemModel_ChildEvent(self *C.QAbstractItemModel
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QAbstractItemModel{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -2360,44 +2336,34 @@ func (this *QAbstractTableModel) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAbstractTableModel constructs the type using only CGO pointers.
-func newQAbstractTableModel(h *C.QAbstractTableModel, h_QAbstractItemModel *C.QAbstractItemModel, h_QObject *C.QObject) *QAbstractTableModel {
+func newQAbstractTableModel(h *C.QAbstractTableModel) *QAbstractTableModel {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
+	C.QAbstractTableModel_virtbase(h, &outptr_QAbstractItemModel)
+
 	return &QAbstractTableModel{h: h,
-		QAbstractItemModel: newQAbstractItemModel(h_QAbstractItemModel, h_QObject)}
+		QAbstractItemModel: newQAbstractItemModel(outptr_QAbstractItemModel)}
 }
 
 // UnsafeNewQAbstractTableModel constructs the type using only unsafe pointers.
-func UnsafeNewQAbstractTableModel(h unsafe.Pointer, h_QAbstractItemModel unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractTableModel {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractTableModel{h: (*C.QAbstractTableModel)(h),
-		QAbstractItemModel: UnsafeNewQAbstractItemModel(h_QAbstractItemModel, h_QObject)}
+func UnsafeNewQAbstractTableModel(h unsafe.Pointer) *QAbstractTableModel {
+	return newQAbstractTableModel((*C.QAbstractTableModel)(h))
 }
 
 // NewQAbstractTableModel constructs a new QAbstractTableModel object.
 func NewQAbstractTableModel() *QAbstractTableModel {
-	var outptr_QAbstractTableModel *C.QAbstractTableModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAbstractTableModel_new(&outptr_QAbstractTableModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQAbstractTableModel(outptr_QAbstractTableModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQAbstractTableModel(C.QAbstractTableModel_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAbstractTableModel2 constructs a new QAbstractTableModel object.
 func NewQAbstractTableModel2(parent *QObject) *QAbstractTableModel {
-	var outptr_QAbstractTableModel *C.QAbstractTableModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAbstractTableModel_new2(parent.cPointer(), &outptr_QAbstractTableModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQAbstractTableModel(outptr_QAbstractTableModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQAbstractTableModel(C.QAbstractTableModel_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -2582,7 +2548,7 @@ func miqt_exec_callback_QAbstractTableModel_DropMimeData(self *C.QAbstractTableM
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(data, nil)
+	slotval1 := newQMimeData(data)
 
 	slotval2 := (DropAction)(action)
 
@@ -2960,7 +2926,7 @@ func (this *QAbstractTableModel) callVirtualBase_MimeData(indexes []QModelIndex)
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 
-	return newQMimeData(C.QAbstractTableModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma), nil)
+	return newQMimeData(C.QAbstractTableModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma))
 
 }
 func (this *QAbstractTableModel) OnMimeData(slot func(super func(indexes []QModelIndex) *QMimeData, indexes []QModelIndex) *QMimeData) {
@@ -3014,7 +2980,7 @@ func miqt_exec_callback_QAbstractTableModel_CanDropMimeData(self *C.QAbstractTab
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(data, nil)
+	slotval1 := newQMimeData(data)
 
 	slotval2 := (DropAction)(action)
 
@@ -3611,44 +3577,34 @@ func (this *QAbstractListModel) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAbstractListModel constructs the type using only CGO pointers.
-func newQAbstractListModel(h *C.QAbstractListModel, h_QAbstractItemModel *C.QAbstractItemModel, h_QObject *C.QObject) *QAbstractListModel {
+func newQAbstractListModel(h *C.QAbstractListModel) *QAbstractListModel {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
+	C.QAbstractListModel_virtbase(h, &outptr_QAbstractItemModel)
+
 	return &QAbstractListModel{h: h,
-		QAbstractItemModel: newQAbstractItemModel(h_QAbstractItemModel, h_QObject)}
+		QAbstractItemModel: newQAbstractItemModel(outptr_QAbstractItemModel)}
 }
 
 // UnsafeNewQAbstractListModel constructs the type using only unsafe pointers.
-func UnsafeNewQAbstractListModel(h unsafe.Pointer, h_QAbstractItemModel unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractListModel {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractListModel{h: (*C.QAbstractListModel)(h),
-		QAbstractItemModel: UnsafeNewQAbstractItemModel(h_QAbstractItemModel, h_QObject)}
+func UnsafeNewQAbstractListModel(h unsafe.Pointer) *QAbstractListModel {
+	return newQAbstractListModel((*C.QAbstractListModel)(h))
 }
 
 // NewQAbstractListModel constructs a new QAbstractListModel object.
 func NewQAbstractListModel() *QAbstractListModel {
-	var outptr_QAbstractListModel *C.QAbstractListModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAbstractListModel_new(&outptr_QAbstractListModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQAbstractListModel(outptr_QAbstractListModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQAbstractListModel(C.QAbstractListModel_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAbstractListModel2 constructs a new QAbstractListModel object.
 func NewQAbstractListModel2(parent *QObject) *QAbstractListModel {
-	var outptr_QAbstractListModel *C.QAbstractListModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAbstractListModel_new2(parent.cPointer(), &outptr_QAbstractListModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQAbstractListModel(outptr_QAbstractListModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQAbstractListModel(C.QAbstractListModel_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -3833,7 +3789,7 @@ func miqt_exec_callback_QAbstractListModel_DropMimeData(self *C.QAbstractListMod
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(data, nil)
+	slotval1 := newQMimeData(data)
 
 	slotval2 := (DropAction)(action)
 
@@ -4189,7 +4145,7 @@ func (this *QAbstractListModel) callVirtualBase_MimeData(indexes []QModelIndex) 
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 
-	return newQMimeData(C.QAbstractListModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma), nil)
+	return newQMimeData(C.QAbstractListModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma))
 
 }
 func (this *QAbstractListModel) OnMimeData(slot func(super func(indexes []QModelIndex) *QMimeData, indexes []QModelIndex) *QMimeData) {
@@ -4243,7 +4199,7 @@ func miqt_exec_callback_QAbstractListModel_CanDropMimeData(self *C.QAbstractList
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(data, nil)
+	slotval1 := newQMimeData(data)
 
 	slotval2 := (DropAction)(action)
 

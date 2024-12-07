@@ -839,18 +839,16 @@ public:
 
 };
 
-void QsciLexerMakefile_new(QsciLexerMakefile** outptr_QsciLexerMakefile, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerMakefile* ret = new MiqtVirtualQsciLexerMakefile();
-	*outptr_QsciLexerMakefile = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerMakefile* QsciLexerMakefile_new() {
+	return new MiqtVirtualQsciLexerMakefile();
 }
 
-void QsciLexerMakefile_new2(QObject* parent, QsciLexerMakefile** outptr_QsciLexerMakefile, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerMakefile* ret = new MiqtVirtualQsciLexerMakefile(parent);
-	*outptr_QsciLexerMakefile = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerMakefile* QsciLexerMakefile_new2(QObject* parent) {
+	return new MiqtVirtualQsciLexerMakefile(parent);
+}
+
+void QsciLexerMakefile_virtbase(QsciLexerMakefile* src, QsciLexer** outptr_QsciLexer) {
+	*outptr_QsciLexer = static_cast<QsciLexer*>(src);
 }
 
 QMetaObject* QsciLexerMakefile_MetaObject(const QsciLexerMakefile* self) {

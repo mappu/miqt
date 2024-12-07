@@ -37,64 +37,51 @@ func newQRect(h *C.QRect) *QRect {
 	if h == nil {
 		return nil
 	}
+
 	return &QRect{h: h}
 }
 
 // UnsafeNewQRect constructs the type using only unsafe pointers.
 func UnsafeNewQRect(h unsafe.Pointer) *QRect {
-	if h == nil {
-		return nil
-	}
-
-	return &QRect{h: (*C.QRect)(h)}
+	return newQRect((*C.QRect)(h))
 }
 
 // NewQRect constructs a new QRect object.
 func NewQRect() *QRect {
-	var outptr_QRect *C.QRect = nil
 
-	C.QRect_new(&outptr_QRect)
-	ret := newQRect(outptr_QRect)
+	ret := newQRect(C.QRect_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQRect2 constructs a new QRect object.
 func NewQRect2(topleft *QPoint, bottomright *QPoint) *QRect {
-	var outptr_QRect *C.QRect = nil
 
-	C.QRect_new2(topleft.cPointer(), bottomright.cPointer(), &outptr_QRect)
-	ret := newQRect(outptr_QRect)
+	ret := newQRect(C.QRect_new2(topleft.cPointer(), bottomright.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQRect3 constructs a new QRect object.
 func NewQRect3(topleft *QPoint, size *QSize) *QRect {
-	var outptr_QRect *C.QRect = nil
 
-	C.QRect_new3(topleft.cPointer(), size.cPointer(), &outptr_QRect)
-	ret := newQRect(outptr_QRect)
+	ret := newQRect(C.QRect_new3(topleft.cPointer(), size.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQRect4 constructs a new QRect object.
 func NewQRect4(left int, top int, width int, height int) *QRect {
-	var outptr_QRect *C.QRect = nil
 
-	C.QRect_new4((C.int)(left), (C.int)(top), (C.int)(width), (C.int)(height), &outptr_QRect)
-	ret := newQRect(outptr_QRect)
+	ret := newQRect(C.QRect_new4((C.int)(left), (C.int)(top), (C.int)(width), (C.int)(height)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQRect5 constructs a new QRect object.
 func NewQRect5(param1 *QRect) *QRect {
-	var outptr_QRect *C.QRect = nil
 
-	C.QRect_new5(param1.cPointer(), &outptr_QRect)
-	ret := newQRect(outptr_QRect)
+	ret := newQRect(C.QRect_new5(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -451,74 +438,59 @@ func newQRectF(h *C.QRectF) *QRectF {
 	if h == nil {
 		return nil
 	}
+
 	return &QRectF{h: h}
 }
 
 // UnsafeNewQRectF constructs the type using only unsafe pointers.
 func UnsafeNewQRectF(h unsafe.Pointer) *QRectF {
-	if h == nil {
-		return nil
-	}
-
-	return &QRectF{h: (*C.QRectF)(h)}
+	return newQRectF((*C.QRectF)(h))
 }
 
 // NewQRectF constructs a new QRectF object.
 func NewQRectF() *QRectF {
-	var outptr_QRectF *C.QRectF = nil
 
-	C.QRectF_new(&outptr_QRectF)
-	ret := newQRectF(outptr_QRectF)
+	ret := newQRectF(C.QRectF_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQRectF2 constructs a new QRectF object.
 func NewQRectF2(topleft *QPointF, size *QSizeF) *QRectF {
-	var outptr_QRectF *C.QRectF = nil
 
-	C.QRectF_new2(topleft.cPointer(), size.cPointer(), &outptr_QRectF)
-	ret := newQRectF(outptr_QRectF)
+	ret := newQRectF(C.QRectF_new2(topleft.cPointer(), size.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQRectF3 constructs a new QRectF object.
 func NewQRectF3(topleft *QPointF, bottomRight *QPointF) *QRectF {
-	var outptr_QRectF *C.QRectF = nil
 
-	C.QRectF_new3(topleft.cPointer(), bottomRight.cPointer(), &outptr_QRectF)
-	ret := newQRectF(outptr_QRectF)
+	ret := newQRectF(C.QRectF_new3(topleft.cPointer(), bottomRight.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQRectF4 constructs a new QRectF object.
 func NewQRectF4(left float64, top float64, width float64, height float64) *QRectF {
-	var outptr_QRectF *C.QRectF = nil
 
-	C.QRectF_new4((C.double)(left), (C.double)(top), (C.double)(width), (C.double)(height), &outptr_QRectF)
-	ret := newQRectF(outptr_QRectF)
+	ret := newQRectF(C.QRectF_new4((C.double)(left), (C.double)(top), (C.double)(width), (C.double)(height)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQRectF5 constructs a new QRectF object.
 func NewQRectF5(rect *QRect) *QRectF {
-	var outptr_QRectF *C.QRectF = nil
 
-	C.QRectF_new5(rect.cPointer(), &outptr_QRectF)
-	ret := newQRectF(outptr_QRectF)
+	ret := newQRectF(C.QRectF_new5(rect.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQRectF6 constructs a new QRectF object.
 func NewQRectF6(param1 *QRectF) *QRectF {
-	var outptr_QRectF *C.QRectF = nil
 
-	C.QRectF_new6(param1.cPointer(), &outptr_QRectF)
-	ret := newQRectF(outptr_QRectF)
+	ret := newQRectF(C.QRectF_new6(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

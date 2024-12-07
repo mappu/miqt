@@ -35,52 +35,34 @@ func (this *QTreeView) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTreeView constructs the type using only CGO pointers.
-func newQTreeView(h *C.QTreeView, h_QAbstractItemView *C.QAbstractItemView, h_QAbstractScrollArea *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QTreeView {
+func newQTreeView(h *C.QTreeView) *QTreeView {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractItemView *C.QAbstractItemView = nil
+	C.QTreeView_virtbase(h, &outptr_QAbstractItemView)
+
 	return &QTreeView{h: h,
-		QAbstractItemView: newQAbstractItemView(h_QAbstractItemView, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+		QAbstractItemView: newQAbstractItemView(outptr_QAbstractItemView)}
 }
 
 // UnsafeNewQTreeView constructs the type using only unsafe pointers.
-func UnsafeNewQTreeView(h unsafe.Pointer, h_QAbstractItemView unsafe.Pointer, h_QAbstractScrollArea unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QTreeView {
-	if h == nil {
-		return nil
-	}
-
-	return &QTreeView{h: (*C.QTreeView)(h),
-		QAbstractItemView: UnsafeNewQAbstractItemView(h_QAbstractItemView, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQTreeView(h unsafe.Pointer) *QTreeView {
+	return newQTreeView((*C.QTreeView)(h))
 }
 
 // NewQTreeView constructs a new QTreeView object.
 func NewQTreeView(parent *QWidget) *QTreeView {
-	var outptr_QTreeView *C.QTreeView = nil
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QTreeView_new(parent.cPointer(), &outptr_QTreeView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQTreeView(outptr_QTreeView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQTreeView(C.QTreeView_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTreeView2 constructs a new QTreeView object.
 func NewQTreeView2() *QTreeView {
-	var outptr_QTreeView *C.QTreeView = nil
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QTreeView_new2(&outptr_QTreeView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQTreeView(outptr_QTreeView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQTreeView(C.QTreeView_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -126,7 +108,7 @@ func (this *QTreeView) SetSelectionModel(selectionModel *QItemSelectionModel) {
 }
 
 func (this *QTreeView) Header() *QHeaderView {
-	return newQHeaderView(C.QTreeView_Header(this.h), nil, nil, nil, nil, nil, nil)
+	return newQHeaderView(C.QTreeView_Header(this.h))
 }
 
 func (this *QTreeView) SetHeader(header *QHeaderView) {
@@ -491,7 +473,7 @@ func miqt_exec_callback_QTreeView_SetModel(self *C.QTreeView, cb C.intptr_t, mod
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQAbstractItemModel(model, nil)
+	slotval1 := newQAbstractItemModel(model)
 
 	gofunc((&QTreeView{h: self}).callVirtualBase_SetModel, slotval1)
 
@@ -543,7 +525,7 @@ func miqt_exec_callback_QTreeView_SetSelectionModel(self *C.QTreeView, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQItemSelectionModel(selectionModel, nil)
+	slotval1 := newQItemSelectionModel(selectionModel)
 
 	gofunc((&QTreeView{h: self}).callVirtualBase_SetSelectionModel, slotval1)
 
@@ -1094,7 +1076,7 @@ func miqt_exec_callback_QTreeView_TimerEvent(self *C.QTreeView, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QTreeView{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -1120,7 +1102,7 @@ func miqt_exec_callback_QTreeView_PaintEvent(self *C.QTreeView, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(event, nil)
+	slotval1 := newQPaintEvent(event)
 
 	gofunc((&QTreeView{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -1148,7 +1130,7 @@ func miqt_exec_callback_QTreeView_DrawRow(self *C.QTreeView, cb C.intptr_t, pain
 	// Convert all CABI parameters to Go parameters
 	slotval1 := newQPainter(painter)
 
-	slotval2 := newQStyleOptionViewItem(options, nil)
+	slotval2 := newQStyleOptionViewItem(options)
 
 	slotval3 := newQModelIndex(index)
 
@@ -1206,7 +1188,7 @@ func miqt_exec_callback_QTreeView_MousePressEvent(self *C.QTreeView, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QTreeView{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -1232,7 +1214,7 @@ func miqt_exec_callback_QTreeView_MouseReleaseEvent(self *C.QTreeView, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QTreeView{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -1258,7 +1240,7 @@ func miqt_exec_callback_QTreeView_MouseDoubleClickEvent(self *C.QTreeView, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QTreeView{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -1284,7 +1266,7 @@ func miqt_exec_callback_QTreeView_MouseMoveEvent(self *C.QTreeView, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QTreeView{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -1310,7 +1292,7 @@ func miqt_exec_callback_QTreeView_KeyPressEvent(self *C.QTreeView, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(event, nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QTreeView{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -1336,7 +1318,7 @@ func miqt_exec_callback_QTreeView_DragMoveEvent(self *C.QTreeView, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragMoveEvent(event, nil, nil)
+	slotval1 := newQDragMoveEvent(event)
 
 	gofunc((&QTreeView{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1734,7 +1716,7 @@ func miqt_exec_callback_QTreeView_CloseEditor(self *C.QTreeView, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(editor, nil, nil)
+	slotval1 := newQWidget(editor)
 
 	slotval2 := (QAbstractItemDelegate__EndEditHint)(hint)
 
@@ -1762,7 +1744,7 @@ func miqt_exec_callback_QTreeView_CommitData(self *C.QTreeView, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(editor, nil, nil)
+	slotval1 := newQWidget(editor)
 
 	gofunc((&QTreeView{h: self}).callVirtualBase_CommitData, slotval1)
 
@@ -1884,7 +1866,7 @@ func miqt_exec_callback_QTreeView_StartDrag(self *C.QTreeView, cb C.intptr_t, su
 
 func (this *QTreeView) callVirtualBase_ViewOptions() *QStyleOptionViewItem {
 
-	_goptr := newQStyleOptionViewItem(C.QTreeView_virtualbase_ViewOptions(unsafe.Pointer(this.h)), nil)
+	_goptr := newQStyleOptionViewItem(C.QTreeView_virtualbase_ViewOptions(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1985,7 +1967,7 @@ func miqt_exec_callback_QTreeView_DragEnterEvent(self *C.QTreeView, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragEnterEvent(event, nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event)
 
 	gofunc((&QTreeView{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -2011,7 +1993,7 @@ func miqt_exec_callback_QTreeView_DragLeaveEvent(self *C.QTreeView, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragLeaveEvent(event, nil)
+	slotval1 := newQDragLeaveEvent(event)
 
 	gofunc((&QTreeView{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -2037,7 +2019,7 @@ func miqt_exec_callback_QTreeView_DropEvent(self *C.QTreeView, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDropEvent(event, nil)
+	slotval1 := newQDropEvent(event)
 
 	gofunc((&QTreeView{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -2063,7 +2045,7 @@ func miqt_exec_callback_QTreeView_FocusInEvent(self *C.QTreeView, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QTreeView{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -2089,7 +2071,7 @@ func miqt_exec_callback_QTreeView_FocusOutEvent(self *C.QTreeView, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QTreeView{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -2115,7 +2097,7 @@ func miqt_exec_callback_QTreeView_ResizeEvent(self *C.QTreeView, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(event, nil)
+	slotval1 := newQResizeEvent(event)
 
 	gofunc((&QTreeView{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -2141,7 +2123,7 @@ func miqt_exec_callback_QTreeView_InputMethodEvent(self *C.QTreeView, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQInputMethodEvent(event, nil)
+	slotval1 := newQInputMethodEvent(event)
 
 	gofunc((&QTreeView{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 

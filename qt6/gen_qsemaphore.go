@@ -37,34 +37,27 @@ func newQSemaphore(h *C.QSemaphore) *QSemaphore {
 	if h == nil {
 		return nil
 	}
+
 	return &QSemaphore{h: h}
 }
 
 // UnsafeNewQSemaphore constructs the type using only unsafe pointers.
 func UnsafeNewQSemaphore(h unsafe.Pointer) *QSemaphore {
-	if h == nil {
-		return nil
-	}
-
-	return &QSemaphore{h: (*C.QSemaphore)(h)}
+	return newQSemaphore((*C.QSemaphore)(h))
 }
 
 // NewQSemaphore constructs a new QSemaphore object.
 func NewQSemaphore() *QSemaphore {
-	var outptr_QSemaphore *C.QSemaphore = nil
 
-	C.QSemaphore_new(&outptr_QSemaphore)
-	ret := newQSemaphore(outptr_QSemaphore)
+	ret := newQSemaphore(C.QSemaphore_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSemaphore2 constructs a new QSemaphore object.
 func NewQSemaphore2(n int) *QSemaphore {
-	var outptr_QSemaphore *C.QSemaphore = nil
 
-	C.QSemaphore_new2((C.int)(n), &outptr_QSemaphore)
-	ret := newQSemaphore(outptr_QSemaphore)
+	ret := newQSemaphore(C.QSemaphore_new2((C.int)(n)))
 	ret.isSubclass = true
 	return ret
 }
@@ -143,64 +136,51 @@ func newQSemaphoreReleaser(h *C.QSemaphoreReleaser) *QSemaphoreReleaser {
 	if h == nil {
 		return nil
 	}
+
 	return &QSemaphoreReleaser{h: h}
 }
 
 // UnsafeNewQSemaphoreReleaser constructs the type using only unsafe pointers.
 func UnsafeNewQSemaphoreReleaser(h unsafe.Pointer) *QSemaphoreReleaser {
-	if h == nil {
-		return nil
-	}
-
-	return &QSemaphoreReleaser{h: (*C.QSemaphoreReleaser)(h)}
+	return newQSemaphoreReleaser((*C.QSemaphoreReleaser)(h))
 }
 
 // NewQSemaphoreReleaser constructs a new QSemaphoreReleaser object.
 func NewQSemaphoreReleaser() *QSemaphoreReleaser {
-	var outptr_QSemaphoreReleaser *C.QSemaphoreReleaser = nil
 
-	C.QSemaphoreReleaser_new(&outptr_QSemaphoreReleaser)
-	ret := newQSemaphoreReleaser(outptr_QSemaphoreReleaser)
+	ret := newQSemaphoreReleaser(C.QSemaphoreReleaser_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSemaphoreReleaser2 constructs a new QSemaphoreReleaser object.
 func NewQSemaphoreReleaser2(sem *QSemaphore) *QSemaphoreReleaser {
-	var outptr_QSemaphoreReleaser *C.QSemaphoreReleaser = nil
 
-	C.QSemaphoreReleaser_new2(sem.cPointer(), &outptr_QSemaphoreReleaser)
-	ret := newQSemaphoreReleaser(outptr_QSemaphoreReleaser)
+	ret := newQSemaphoreReleaser(C.QSemaphoreReleaser_new2(sem.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSemaphoreReleaser3 constructs a new QSemaphoreReleaser object.
 func NewQSemaphoreReleaser3(sem *QSemaphore) *QSemaphoreReleaser {
-	var outptr_QSemaphoreReleaser *C.QSemaphoreReleaser = nil
 
-	C.QSemaphoreReleaser_new3(sem.cPointer(), &outptr_QSemaphoreReleaser)
-	ret := newQSemaphoreReleaser(outptr_QSemaphoreReleaser)
+	ret := newQSemaphoreReleaser(C.QSemaphoreReleaser_new3(sem.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSemaphoreReleaser4 constructs a new QSemaphoreReleaser object.
 func NewQSemaphoreReleaser4(sem *QSemaphore, n int) *QSemaphoreReleaser {
-	var outptr_QSemaphoreReleaser *C.QSemaphoreReleaser = nil
 
-	C.QSemaphoreReleaser_new4(sem.cPointer(), (C.int)(n), &outptr_QSemaphoreReleaser)
-	ret := newQSemaphoreReleaser(outptr_QSemaphoreReleaser)
+	ret := newQSemaphoreReleaser(C.QSemaphoreReleaser_new4(sem.cPointer(), (C.int)(n)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSemaphoreReleaser5 constructs a new QSemaphoreReleaser object.
 func NewQSemaphoreReleaser5(sem *QSemaphore, n int) *QSemaphoreReleaser {
-	var outptr_QSemaphoreReleaser *C.QSemaphoreReleaser = nil
 
-	C.QSemaphoreReleaser_new5(sem.cPointer(), (C.int)(n), &outptr_QSemaphoreReleaser)
-	ret := newQSemaphoreReleaser(outptr_QSemaphoreReleaser)
+	ret := newQSemaphoreReleaser(C.QSemaphoreReleaser_new5(sem.cPointer(), (C.int)(n)))
 	ret.isSubclass = true
 	return ret
 }

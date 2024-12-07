@@ -46,10 +46,11 @@ typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-void QPageSetupDialog_new(QWidget* parent, QPageSetupDialog** outptr_QPageSetupDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QPageSetupDialog_new2(QPrinter* printer, QPageSetupDialog** outptr_QPageSetupDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QPageSetupDialog_new3(QPageSetupDialog** outptr_QPageSetupDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QPageSetupDialog_new4(QPrinter* printer, QWidget* parent, QPageSetupDialog** outptr_QPageSetupDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QPageSetupDialog* QPageSetupDialog_new(QWidget* parent);
+QPageSetupDialog* QPageSetupDialog_new2(QPrinter* printer);
+QPageSetupDialog* QPageSetupDialog_new3();
+QPageSetupDialog* QPageSetupDialog_new4(QPrinter* printer, QWidget* parent);
+void QPageSetupDialog_virtbase(QPageSetupDialog* src, QDialog** outptr_QDialog);
 QMetaObject* QPageSetupDialog_MetaObject(const QPageSetupDialog* self);
 void* QPageSetupDialog_Metacast(QPageSetupDialog* self, const char* param1);
 struct miqt_string QPageSetupDialog_Tr(const char* s);

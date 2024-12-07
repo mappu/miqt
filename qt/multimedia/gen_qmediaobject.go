@@ -36,22 +36,20 @@ func (this *QMediaObject) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMediaObject constructs the type using only CGO pointers.
-func newQMediaObject(h *C.QMediaObject, h_QObject *C.QObject) *QMediaObject {
+func newQMediaObject(h *C.QMediaObject) *QMediaObject {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QMediaObject_virtbase(h, &outptr_QObject)
+
 	return &QMediaObject{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQMediaObject constructs the type using only unsafe pointers.
-func UnsafeNewQMediaObject(h unsafe.Pointer, h_QObject unsafe.Pointer) *QMediaObject {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaObject{h: (*C.QMediaObject)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQMediaObject(h unsafe.Pointer) *QMediaObject {
+	return newQMediaObject((*C.QMediaObject)(h))
 }
 
 func (this *QMediaObject) MetaObject() *qt.QMetaObject {
@@ -91,7 +89,7 @@ func (this *QMediaObject) Availability() QMultimedia__AvailabilityStatus {
 }
 
 func (this *QMediaObject) Service() *QMediaService {
-	return newQMediaService(C.QMediaObject_Service(this.h), nil)
+	return newQMediaService(C.QMediaObject_Service(this.h))
 }
 
 func (this *QMediaObject) NotifyInterval() int {

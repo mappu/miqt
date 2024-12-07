@@ -32,10 +32,11 @@ typedef struct QObject QObject;
 typedef struct QState QState;
 #endif
 
-void QKeyEventTransition_new(QKeyEventTransition** outptr_QKeyEventTransition, QEventTransition** outptr_QEventTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject);
-void QKeyEventTransition_new2(QObject* object, int typeVal, int key, QKeyEventTransition** outptr_QKeyEventTransition, QEventTransition** outptr_QEventTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject);
-void QKeyEventTransition_new3(QState* sourceState, QKeyEventTransition** outptr_QKeyEventTransition, QEventTransition** outptr_QEventTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject);
-void QKeyEventTransition_new4(QObject* object, int typeVal, int key, QState* sourceState, QKeyEventTransition** outptr_QKeyEventTransition, QEventTransition** outptr_QEventTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject);
+QKeyEventTransition* QKeyEventTransition_new();
+QKeyEventTransition* QKeyEventTransition_new2(QObject* object, int typeVal, int key);
+QKeyEventTransition* QKeyEventTransition_new3(QState* sourceState);
+QKeyEventTransition* QKeyEventTransition_new4(QObject* object, int typeVal, int key, QState* sourceState);
+void QKeyEventTransition_virtbase(QKeyEventTransition* src, QEventTransition** outptr_QEventTransition);
 QMetaObject* QKeyEventTransition_MetaObject(const QKeyEventTransition* self);
 void* QKeyEventTransition_Metacast(QKeyEventTransition* self, const char* param1);
 struct miqt_string QKeyEventTransition_Tr(const char* s);

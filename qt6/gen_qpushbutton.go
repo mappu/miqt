@@ -35,48 +35,34 @@ func (this *QPushButton) UnsafePointer() unsafe.Pointer {
 }
 
 // newQPushButton constructs the type using only CGO pointers.
-func newQPushButton(h *C.QPushButton, h_QAbstractButton *C.QAbstractButton, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QPushButton {
+func newQPushButton(h *C.QPushButton) *QPushButton {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractButton *C.QAbstractButton = nil
+	C.QPushButton_virtbase(h, &outptr_QAbstractButton)
+
 	return &QPushButton{h: h,
-		QAbstractButton: newQAbstractButton(h_QAbstractButton, h_QWidget, h_QObject, h_QPaintDevice)}
+		QAbstractButton: newQAbstractButton(outptr_QAbstractButton)}
 }
 
 // UnsafeNewQPushButton constructs the type using only unsafe pointers.
-func UnsafeNewQPushButton(h unsafe.Pointer, h_QAbstractButton unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QPushButton {
-	if h == nil {
-		return nil
-	}
-
-	return &QPushButton{h: (*C.QPushButton)(h),
-		QAbstractButton: UnsafeNewQAbstractButton(h_QAbstractButton, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQPushButton(h unsafe.Pointer) *QPushButton {
+	return newQPushButton((*C.QPushButton)(h))
 }
 
 // NewQPushButton constructs a new QPushButton object.
 func NewQPushButton(parent *QWidget) *QPushButton {
-	var outptr_QPushButton *C.QPushButton = nil
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPushButton_new(parent.cPointer(), &outptr_QPushButton, &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPushButton(outptr_QPushButton, outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPushButton(C.QPushButton_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPushButton2 constructs a new QPushButton object.
 func NewQPushButton2() *QPushButton {
-	var outptr_QPushButton *C.QPushButton = nil
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPushButton_new2(&outptr_QPushButton, &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPushButton(outptr_QPushButton, outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPushButton(C.QPushButton_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -87,14 +73,8 @@ func NewQPushButton3(text string) *QPushButton {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QPushButton *C.QPushButton = nil
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPushButton_new3(text_ms, &outptr_QPushButton, &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPushButton(outptr_QPushButton, outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPushButton(C.QPushButton_new3(text_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -105,14 +85,8 @@ func NewQPushButton4(icon *QIcon, text string) *QPushButton {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QPushButton *C.QPushButton = nil
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPushButton_new4(icon.cPointer(), text_ms, &outptr_QPushButton, &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPushButton(outptr_QPushButton, outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPushButton(C.QPushButton_new4(icon.cPointer(), text_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -123,14 +97,8 @@ func NewQPushButton5(text string, parent *QWidget) *QPushButton {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QPushButton *C.QPushButton = nil
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPushButton_new5(text_ms, parent.cPointer(), &outptr_QPushButton, &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPushButton(outptr_QPushButton, outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPushButton(C.QPushButton_new5(text_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -141,14 +109,8 @@ func NewQPushButton6(icon *QIcon, text string, parent *QWidget) *QPushButton {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QPushButton *C.QPushButton = nil
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPushButton_new6(icon.cPointer(), text_ms, parent.cPointer(), &outptr_QPushButton, &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPushButton(outptr_QPushButton, outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPushButton(C.QPushButton_new6(icon.cPointer(), text_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -205,7 +167,7 @@ func (this *QPushButton) SetMenu(menu *QMenu) {
 }
 
 func (this *QPushButton) Menu() *QMenu {
-	return newQMenu(C.QPushButton_Menu(this.h), nil, nil, nil)
+	return newQMenu(C.QPushButton_Menu(this.h))
 }
 
 func (this *QPushButton) SetFlat(flat bool) {
@@ -344,7 +306,7 @@ func miqt_exec_callback_QPushButton_PaintEvent(self *C.QPushButton, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(param1, nil)
+	slotval1 := newQPaintEvent(param1)
 
 	gofunc((&QPushButton{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -370,7 +332,7 @@ func miqt_exec_callback_QPushButton_KeyPressEvent(self *C.QPushButton, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(param1, nil, nil)
+	slotval1 := newQKeyEvent(param1)
 
 	gofunc((&QPushButton{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -396,7 +358,7 @@ func miqt_exec_callback_QPushButton_FocusInEvent(self *C.QPushButton, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(param1, nil)
+	slotval1 := newQFocusEvent(param1)
 
 	gofunc((&QPushButton{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -422,7 +384,7 @@ func miqt_exec_callback_QPushButton_FocusOutEvent(self *C.QPushButton, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(param1, nil)
+	slotval1 := newQFocusEvent(param1)
 
 	gofunc((&QPushButton{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -448,7 +410,7 @@ func miqt_exec_callback_QPushButton_MouseMoveEvent(self *C.QPushButton, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(param1, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(param1)
 
 	gofunc((&QPushButton{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -474,7 +436,7 @@ func miqt_exec_callback_QPushButton_InitStyleOption(self *C.QPushButton, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQStyleOptionButton(option, nil)
+	slotval1 := newQStyleOptionButton(option)
 
 	gofunc((&QPushButton{h: self}).callVirtualBase_InitStyleOption, slotval1)
 
@@ -574,7 +536,7 @@ func miqt_exec_callback_QPushButton_KeyReleaseEvent(self *C.QPushButton, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(e, nil, nil)
+	slotval1 := newQKeyEvent(e)
 
 	gofunc((&QPushButton{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -600,7 +562,7 @@ func miqt_exec_callback_QPushButton_MousePressEvent(self *C.QPushButton, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QPushButton{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -626,7 +588,7 @@ func miqt_exec_callback_QPushButton_MouseReleaseEvent(self *C.QPushButton, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QPushButton{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -678,7 +640,7 @@ func miqt_exec_callback_QPushButton_TimerEvent(self *C.QPushButton, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(e, nil)
+	slotval1 := newQTimerEvent(e)
 
 	gofunc((&QPushButton{h: self}).callVirtualBase_TimerEvent, slotval1)
 

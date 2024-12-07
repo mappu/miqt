@@ -46,76 +46,50 @@ func (this *QSlider) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSlider constructs the type using only CGO pointers.
-func newQSlider(h *C.QSlider, h_QAbstractSlider *C.QAbstractSlider, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QSlider {
+func newQSlider(h *C.QSlider) *QSlider {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractSlider *C.QAbstractSlider = nil
+	C.QSlider_virtbase(h, &outptr_QAbstractSlider)
+
 	return &QSlider{h: h,
-		QAbstractSlider: newQAbstractSlider(h_QAbstractSlider, h_QWidget, h_QObject, h_QPaintDevice)}
+		QAbstractSlider: newQAbstractSlider(outptr_QAbstractSlider)}
 }
 
 // UnsafeNewQSlider constructs the type using only unsafe pointers.
-func UnsafeNewQSlider(h unsafe.Pointer, h_QAbstractSlider unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QSlider {
-	if h == nil {
-		return nil
-	}
-
-	return &QSlider{h: (*C.QSlider)(h),
-		QAbstractSlider: UnsafeNewQAbstractSlider(h_QAbstractSlider, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQSlider(h unsafe.Pointer) *QSlider {
+	return newQSlider((*C.QSlider)(h))
 }
 
 // NewQSlider constructs a new QSlider object.
 func NewQSlider(parent *QWidget) *QSlider {
-	var outptr_QSlider *C.QSlider = nil
-	var outptr_QAbstractSlider *C.QAbstractSlider = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QSlider_new(parent.cPointer(), &outptr_QSlider, &outptr_QAbstractSlider, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQSlider(outptr_QSlider, outptr_QAbstractSlider, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQSlider(C.QSlider_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSlider2 constructs a new QSlider object.
 func NewQSlider2() *QSlider {
-	var outptr_QSlider *C.QSlider = nil
-	var outptr_QAbstractSlider *C.QAbstractSlider = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QSlider_new2(&outptr_QSlider, &outptr_QAbstractSlider, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQSlider(outptr_QSlider, outptr_QAbstractSlider, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQSlider(C.QSlider_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSlider3 constructs a new QSlider object.
 func NewQSlider3(orientation Orientation) *QSlider {
-	var outptr_QSlider *C.QSlider = nil
-	var outptr_QAbstractSlider *C.QAbstractSlider = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QSlider_new3((C.int)(orientation), &outptr_QSlider, &outptr_QAbstractSlider, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQSlider(outptr_QSlider, outptr_QAbstractSlider, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQSlider(C.QSlider_new3((C.int)(orientation)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSlider4 constructs a new QSlider object.
 func NewQSlider4(orientation Orientation, parent *QWidget) *QSlider {
-	var outptr_QSlider *C.QSlider = nil
-	var outptr_QAbstractSlider *C.QAbstractSlider = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QSlider_new4((C.int)(orientation), parent.cPointer(), &outptr_QSlider, &outptr_QAbstractSlider, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQSlider(outptr_QSlider, outptr_QAbstractSlider, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQSlider(C.QSlider_new4((C.int)(orientation), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -295,7 +269,7 @@ func miqt_exec_callback_QSlider_PaintEvent(self *C.QSlider, cb C.intptr_t, ev *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(ev, nil)
+	slotval1 := newQPaintEvent(ev)
 
 	gofunc((&QSlider{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -321,7 +295,7 @@ func miqt_exec_callback_QSlider_MousePressEvent(self *C.QSlider, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(ev, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(ev)
 
 	gofunc((&QSlider{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -347,7 +321,7 @@ func miqt_exec_callback_QSlider_MouseReleaseEvent(self *C.QSlider, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(ev, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(ev)
 
 	gofunc((&QSlider{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -373,7 +347,7 @@ func miqt_exec_callback_QSlider_MouseMoveEvent(self *C.QSlider, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(ev, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(ev)
 
 	gofunc((&QSlider{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -399,7 +373,7 @@ func miqt_exec_callback_QSlider_InitStyleOption(self *C.QSlider, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQStyleOptionSlider(option, nil, nil)
+	slotval1 := newQStyleOptionSlider(option)
 
 	gofunc((&QSlider{h: self}).callVirtualBase_InitStyleOption, slotval1)
 
@@ -451,7 +425,7 @@ func miqt_exec_callback_QSlider_KeyPressEvent(self *C.QSlider, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(ev, nil, nil)
+	slotval1 := newQKeyEvent(ev)
 
 	gofunc((&QSlider{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -477,7 +451,7 @@ func miqt_exec_callback_QSlider_TimerEvent(self *C.QSlider, cb C.intptr_t, param
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(param1, nil)
+	slotval1 := newQTimerEvent(param1)
 
 	gofunc((&QSlider{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -503,7 +477,7 @@ func miqt_exec_callback_QSlider_WheelEvent(self *C.QSlider, cb C.intptr_t, e *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWheelEvent(e, nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(e)
 
 	gofunc((&QSlider{h: self}).callVirtualBase_WheelEvent, slotval1)
 

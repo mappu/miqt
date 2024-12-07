@@ -47,64 +47,51 @@ func newQEventPoint(h *C.QEventPoint) *QEventPoint {
 	if h == nil {
 		return nil
 	}
+
 	return &QEventPoint{h: h}
 }
 
 // UnsafeNewQEventPoint constructs the type using only unsafe pointers.
 func UnsafeNewQEventPoint(h unsafe.Pointer) *QEventPoint {
-	if h == nil {
-		return nil
-	}
-
-	return &QEventPoint{h: (*C.QEventPoint)(h)}
+	return newQEventPoint((*C.QEventPoint)(h))
 }
 
 // NewQEventPoint constructs a new QEventPoint object.
 func NewQEventPoint() *QEventPoint {
-	var outptr_QEventPoint *C.QEventPoint = nil
 
-	C.QEventPoint_new(&outptr_QEventPoint)
-	ret := newQEventPoint(outptr_QEventPoint)
+	ret := newQEventPoint(C.QEventPoint_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQEventPoint2 constructs a new QEventPoint object.
 func NewQEventPoint2(pointId int, state QEventPoint__State, scenePosition *QPointF, globalPosition *QPointF) *QEventPoint {
-	var outptr_QEventPoint *C.QEventPoint = nil
 
-	C.QEventPoint_new2((C.int)(pointId), (C.uint8_t)(state), scenePosition.cPointer(), globalPosition.cPointer(), &outptr_QEventPoint)
-	ret := newQEventPoint(outptr_QEventPoint)
+	ret := newQEventPoint(C.QEventPoint_new2((C.int)(pointId), (C.uint8_t)(state), scenePosition.cPointer(), globalPosition.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQEventPoint3 constructs a new QEventPoint object.
 func NewQEventPoint3(other *QEventPoint) *QEventPoint {
-	var outptr_QEventPoint *C.QEventPoint = nil
 
-	C.QEventPoint_new3(other.cPointer(), &outptr_QEventPoint)
-	ret := newQEventPoint(outptr_QEventPoint)
+	ret := newQEventPoint(C.QEventPoint_new3(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQEventPoint4 constructs a new QEventPoint object.
 func NewQEventPoint4(id int) *QEventPoint {
-	var outptr_QEventPoint *C.QEventPoint = nil
 
-	C.QEventPoint_new4((C.int)(id), &outptr_QEventPoint)
-	ret := newQEventPoint(outptr_QEventPoint)
+	ret := newQEventPoint(C.QEventPoint_new4((C.int)(id)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQEventPoint5 constructs a new QEventPoint object.
 func NewQEventPoint5(id int, device *QPointingDevice) *QEventPoint {
-	var outptr_QEventPoint *C.QEventPoint = nil
 
-	C.QEventPoint_new5((C.int)(id), device.cPointer(), &outptr_QEventPoint)
-	ret := newQEventPoint(outptr_QEventPoint)
+	ret := newQEventPoint(C.QEventPoint_new5((C.int)(id), device.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -286,7 +273,7 @@ func (this *QEventPoint) State() QEventPoint__State {
 }
 
 func (this *QEventPoint) Device() *QPointingDevice {
-	return newQPointingDevice(C.QEventPoint_Device(this.h), nil, nil)
+	return newQPointingDevice(C.QEventPoint_Device(this.h))
 }
 
 func (this *QEventPoint) Id() int {

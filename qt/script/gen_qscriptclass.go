@@ -53,30 +53,25 @@ func newQScriptClass(h *C.QScriptClass) *QScriptClass {
 	if h == nil {
 		return nil
 	}
+
 	return &QScriptClass{h: h}
 }
 
 // UnsafeNewQScriptClass constructs the type using only unsafe pointers.
 func UnsafeNewQScriptClass(h unsafe.Pointer) *QScriptClass {
-	if h == nil {
-		return nil
-	}
-
-	return &QScriptClass{h: (*C.QScriptClass)(h)}
+	return newQScriptClass((*C.QScriptClass)(h))
 }
 
 // NewQScriptClass constructs a new QScriptClass object.
 func NewQScriptClass(engine *QScriptEngine) *QScriptClass {
-	var outptr_QScriptClass *C.QScriptClass = nil
 
-	C.QScriptClass_new(engine.cPointer(), &outptr_QScriptClass)
-	ret := newQScriptClass(outptr_QScriptClass)
+	ret := newQScriptClass(C.QScriptClass_new(engine.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QScriptClass) Engine() *QScriptEngine {
-	return newQScriptEngine(C.QScriptClass_Engine(this.h), nil)
+	return newQScriptEngine(C.QScriptClass_Engine(this.h))
 }
 
 func (this *QScriptClass) QueryProperty(object *QScriptValue, name *QScriptString, flags QScriptClass__QueryFlag, id *uint) QScriptClass__QueryFlag {

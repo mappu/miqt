@@ -196,16 +196,16 @@ public:
 
 };
 
-void QAudioProbe_new(QAudioProbe** outptr_QAudioProbe, QObject** outptr_QObject) {
-	MiqtVirtualQAudioProbe* ret = new MiqtVirtualQAudioProbe();
-	*outptr_QAudioProbe = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAudioProbe* QAudioProbe_new() {
+	return new MiqtVirtualQAudioProbe();
 }
 
-void QAudioProbe_new2(QObject* parent, QAudioProbe** outptr_QAudioProbe, QObject** outptr_QObject) {
-	MiqtVirtualQAudioProbe* ret = new MiqtVirtualQAudioProbe(parent);
-	*outptr_QAudioProbe = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAudioProbe* QAudioProbe_new2(QObject* parent) {
+	return new MiqtVirtualQAudioProbe(parent);
+}
+
+void QAudioProbe_virtbase(QAudioProbe* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QAudioProbe_MetaObject(const QAudioProbe* self) {

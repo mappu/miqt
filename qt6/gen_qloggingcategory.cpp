@@ -6,9 +6,8 @@
 #include "gen_qloggingcategory.h"
 #include "_cgo_export.h"
 
-void QLoggingCategory_new(const char* category, QLoggingCategory** outptr_QLoggingCategory) {
-	QLoggingCategory* ret = new QLoggingCategory(category);
-	*outptr_QLoggingCategory = ret;
+QLoggingCategory* QLoggingCategory_new(const char* category) {
+	return new QLoggingCategory(category);
 }
 
 bool QLoggingCategory_IsDebugEnabled(const QLoggingCategory* self) {

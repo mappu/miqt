@@ -35,32 +35,26 @@ func (this *QCommonStyle) UnsafePointer() unsafe.Pointer {
 }
 
 // newQCommonStyle constructs the type using only CGO pointers.
-func newQCommonStyle(h *C.QCommonStyle, h_QStyle *C.QStyle, h_QObject *C.QObject) *QCommonStyle {
+func newQCommonStyle(h *C.QCommonStyle) *QCommonStyle {
 	if h == nil {
 		return nil
 	}
+	var outptr_QStyle *C.QStyle = nil
+	C.QCommonStyle_virtbase(h, &outptr_QStyle)
+
 	return &QCommonStyle{h: h,
-		QStyle: newQStyle(h_QStyle, h_QObject)}
+		QStyle: newQStyle(outptr_QStyle)}
 }
 
 // UnsafeNewQCommonStyle constructs the type using only unsafe pointers.
-func UnsafeNewQCommonStyle(h unsafe.Pointer, h_QStyle unsafe.Pointer, h_QObject unsafe.Pointer) *QCommonStyle {
-	if h == nil {
-		return nil
-	}
-
-	return &QCommonStyle{h: (*C.QCommonStyle)(h),
-		QStyle: UnsafeNewQStyle(h_QStyle, h_QObject)}
+func UnsafeNewQCommonStyle(h unsafe.Pointer) *QCommonStyle {
+	return newQCommonStyle((*C.QCommonStyle)(h))
 }
 
 // NewQCommonStyle constructs a new QCommonStyle object.
 func NewQCommonStyle() *QCommonStyle {
-	var outptr_QCommonStyle *C.QCommonStyle = nil
-	var outptr_QStyle *C.QStyle = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QCommonStyle_new(&outptr_QCommonStyle, &outptr_QStyle, &outptr_QObject)
-	ret := newQCommonStyle(outptr_QCommonStyle, outptr_QStyle, outptr_QObject)
+	ret := newQCommonStyle(C.QCommonStyle_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -133,13 +127,13 @@ func (this *QCommonStyle) StandardIcon(standardIcon QStyle__StandardPixmap, opt 
 }
 
 func (this *QCommonStyle) StandardPixmap(sp QStyle__StandardPixmap, opt *QStyleOption, widget *QWidget) *QPixmap {
-	_goptr := newQPixmap(C.QCommonStyle_StandardPixmap(this.h, (C.int)(sp), opt.cPointer(), widget.cPointer()), nil)
+	_goptr := newQPixmap(C.QCommonStyle_StandardPixmap(this.h, (C.int)(sp), opt.cPointer(), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCommonStyle) GeneratedIconPixmap(iconMode QIcon__Mode, pixmap *QPixmap, opt *QStyleOption) *QPixmap {
-	_goptr := newQPixmap(C.QCommonStyle_GeneratedIconPixmap(this.h, (C.int)(iconMode), pixmap.cPointer(), opt.cPointer()), nil)
+	_goptr := newQPixmap(C.QCommonStyle_GeneratedIconPixmap(this.h, (C.int)(iconMode), pixmap.cPointer(), opt.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -216,7 +210,7 @@ func miqt_exec_callback_QCommonStyle_DrawPrimitive(self *C.QCommonStyle, cb C.in
 
 	slotval3 := newQPainter(p)
 
-	slotval4 := newQWidget(w, nil, nil)
+	slotval4 := newQWidget(w)
 
 	gofunc((&QCommonStyle{h: self}).callVirtualBase_DrawPrimitive, slotval1, slotval2, slotval3, slotval4)
 
@@ -248,7 +242,7 @@ func miqt_exec_callback_QCommonStyle_DrawControl(self *C.QCommonStyle, cb C.intp
 
 	slotval3 := newQPainter(p)
 
-	slotval4 := newQWidget(w, nil, nil)
+	slotval4 := newQWidget(w)
 
 	gofunc((&QCommonStyle{h: self}).callVirtualBase_DrawControl, slotval1, slotval2, slotval3, slotval4)
 
@@ -280,7 +274,7 @@ func miqt_exec_callback_QCommonStyle_SubElementRect(self *C.QCommonStyle, cb C.i
 
 	slotval2 := newQStyleOption(opt)
 
-	slotval3 := newQWidget(widget, nil, nil)
+	slotval3 := newQWidget(widget)
 
 	virtualReturn := gofunc((&QCommonStyle{h: self}).callVirtualBase_SubElementRect, slotval1, slotval2, slotval3)
 
@@ -310,11 +304,11 @@ func miqt_exec_callback_QCommonStyle_DrawComplexControl(self *C.QCommonStyle, cb
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QStyle__ComplexControl)(cc)
 
-	slotval2 := newQStyleOptionComplex(opt, nil)
+	slotval2 := newQStyleOptionComplex(opt)
 
 	slotval3 := newQPainter(p)
 
-	slotval4 := newQWidget(w, nil, nil)
+	slotval4 := newQWidget(w)
 
 	gofunc((&QCommonStyle{h: self}).callVirtualBase_DrawComplexControl, slotval1, slotval2, slotval3, slotval4)
 
@@ -342,11 +336,11 @@ func miqt_exec_callback_QCommonStyle_HitTestComplexControl(self *C.QCommonStyle,
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QStyle__ComplexControl)(cc)
 
-	slotval2 := newQStyleOptionComplex(opt, nil)
+	slotval2 := newQStyleOptionComplex(opt)
 
 	slotval3 := newQPoint(pt)
 
-	slotval4 := newQWidget(w, nil, nil)
+	slotval4 := newQWidget(w)
 
 	virtualReturn := gofunc((&QCommonStyle{h: self}).callVirtualBase_HitTestComplexControl, slotval1, slotval2, slotval3, slotval4)
 
@@ -378,11 +372,11 @@ func miqt_exec_callback_QCommonStyle_SubControlRect(self *C.QCommonStyle, cb C.i
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QStyle__ComplexControl)(cc)
 
-	slotval2 := newQStyleOptionComplex(opt, nil)
+	slotval2 := newQStyleOptionComplex(opt)
 
 	slotval3 := (QStyle__SubControl)(sc)
 
-	slotval4 := newQWidget(w, nil, nil)
+	slotval4 := newQWidget(w)
 
 	virtualReturn := gofunc((&QCommonStyle{h: self}).callVirtualBase_SubControlRect, slotval1, slotval2, slotval3, slotval4)
 
@@ -418,7 +412,7 @@ func miqt_exec_callback_QCommonStyle_SizeFromContents(self *C.QCommonStyle, cb C
 
 	slotval3 := newQSize(contentsSize)
 
-	slotval4 := newQWidget(widget, nil, nil)
+	slotval4 := newQWidget(widget)
 
 	virtualReturn := gofunc((&QCommonStyle{h: self}).callVirtualBase_SizeFromContents, slotval1, slotval2, slotval3, slotval4)
 
@@ -450,7 +444,7 @@ func miqt_exec_callback_QCommonStyle_PixelMetric(self *C.QCommonStyle, cb C.intp
 
 	slotval2 := newQStyleOption(opt)
 
-	slotval3 := newQWidget(widget, nil, nil)
+	slotval3 := newQWidget(widget)
 
 	virtualReturn := gofunc((&QCommonStyle{h: self}).callVirtualBase_PixelMetric, slotval1, slotval2, slotval3)
 
@@ -482,7 +476,7 @@ func miqt_exec_callback_QCommonStyle_StyleHint(self *C.QCommonStyle, cb C.intptr
 
 	slotval2 := newQStyleOption(opt)
 
-	slotval3 := newQWidget(w, nil, nil)
+	slotval3 := newQWidget(w)
 
 	slotval4 := newQStyleHintReturn(shret)
 
@@ -518,7 +512,7 @@ func miqt_exec_callback_QCommonStyle_StandardIcon(self *C.QCommonStyle, cb C.int
 
 	slotval2 := newQStyleOption(opt)
 
-	slotval3 := newQWidget(widget, nil, nil)
+	slotval3 := newQWidget(widget)
 
 	virtualReturn := gofunc((&QCommonStyle{h: self}).callVirtualBase_StandardIcon, slotval1, slotval2, slotval3)
 
@@ -528,7 +522,7 @@ func miqt_exec_callback_QCommonStyle_StandardIcon(self *C.QCommonStyle, cb C.int
 
 func (this *QCommonStyle) callVirtualBase_StandardPixmap(sp QStyle__StandardPixmap, opt *QStyleOption, widget *QWidget) *QPixmap {
 
-	_goptr := newQPixmap(C.QCommonStyle_virtualbase_StandardPixmap(unsafe.Pointer(this.h), (C.int)(sp), opt.cPointer(), widget.cPointer()), nil)
+	_goptr := newQPixmap(C.QCommonStyle_virtualbase_StandardPixmap(unsafe.Pointer(this.h), (C.int)(sp), opt.cPointer(), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -552,7 +546,7 @@ func miqt_exec_callback_QCommonStyle_StandardPixmap(self *C.QCommonStyle, cb C.i
 
 	slotval2 := newQStyleOption(opt)
 
-	slotval3 := newQWidget(widget, nil, nil)
+	slotval3 := newQWidget(widget)
 
 	virtualReturn := gofunc((&QCommonStyle{h: self}).callVirtualBase_StandardPixmap, slotval1, slotval2, slotval3)
 
@@ -562,7 +556,7 @@ func miqt_exec_callback_QCommonStyle_StandardPixmap(self *C.QCommonStyle, cb C.i
 
 func (this *QCommonStyle) callVirtualBase_GeneratedIconPixmap(iconMode QIcon__Mode, pixmap *QPixmap, opt *QStyleOption) *QPixmap {
 
-	_goptr := newQPixmap(C.QCommonStyle_virtualbase_GeneratedIconPixmap(unsafe.Pointer(this.h), (C.int)(iconMode), pixmap.cPointer(), opt.cPointer()), nil)
+	_goptr := newQPixmap(C.QCommonStyle_virtualbase_GeneratedIconPixmap(unsafe.Pointer(this.h), (C.int)(iconMode), pixmap.cPointer(), opt.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -584,7 +578,7 @@ func miqt_exec_callback_QCommonStyle_GeneratedIconPixmap(self *C.QCommonStyle, c
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QIcon__Mode)(iconMode)
 
-	slotval2 := newQPixmap(pixmap, nil)
+	slotval2 := newQPixmap(pixmap)
 
 	slotval3 := newQStyleOption(opt)
 
@@ -622,7 +616,7 @@ func miqt_exec_callback_QCommonStyle_LayoutSpacing(self *C.QCommonStyle, cb C.in
 
 	slotval4 := newQStyleOption(option)
 
-	slotval5 := newQWidget(widget, nil, nil)
+	slotval5 := newQWidget(widget)
 
 	virtualReturn := gofunc((&QCommonStyle{h: self}).callVirtualBase_LayoutSpacing, slotval1, slotval2, slotval3, slotval4, slotval5)
 
@@ -676,7 +670,7 @@ func miqt_exec_callback_QCommonStyle_PolishWithApp(self *C.QCommonStyle, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQApplication(app, nil, nil, nil)
+	slotval1 := newQApplication(app)
 
 	gofunc((&QCommonStyle{h: self}).callVirtualBase_PolishWithApp, slotval1)
 
@@ -702,7 +696,7 @@ func miqt_exec_callback_QCommonStyle_PolishWithWidget(self *C.QCommonStyle, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(widget, nil, nil)
+	slotval1 := newQWidget(widget)
 
 	gofunc((&QCommonStyle{h: self}).callVirtualBase_PolishWithWidget, slotval1)
 
@@ -728,7 +722,7 @@ func miqt_exec_callback_QCommonStyle_Unpolish(self *C.QCommonStyle, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(widget, nil, nil)
+	slotval1 := newQWidget(widget)
 
 	gofunc((&QCommonStyle{h: self}).callVirtualBase_Unpolish, slotval1)
 
@@ -754,7 +748,7 @@ func miqt_exec_callback_QCommonStyle_UnpolishWithApplication(self *C.QCommonStyl
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQApplication(application, nil, nil, nil)
+	slotval1 := newQApplication(application)
 
 	gofunc((&QCommonStyle{h: self}).callVirtualBase_UnpolishWithApplication, slotval1)
 
@@ -831,7 +825,7 @@ func miqt_exec_callback_QCommonStyle_ItemPixmapRect(self *C.QCommonStyle, cb C.i
 
 	slotval2 := (int)(flags)
 
-	slotval3 := newQPixmap(pixmap, nil)
+	slotval3 := newQPixmap(pixmap)
 
 	virtualReturn := gofunc((&QCommonStyle{h: self}).callVirtualBase_ItemPixmapRect, slotval1, slotval2, slotval3)
 
@@ -909,7 +903,7 @@ func miqt_exec_callback_QCommonStyle_DrawItemPixmap(self *C.QCommonStyle, cb C.i
 
 	slotval3 := (int)(alignment)
 
-	slotval4 := newQPixmap(pixmap, nil)
+	slotval4 := newQPixmap(pixmap)
 
 	gofunc((&QCommonStyle{h: self}).callVirtualBase_DrawItemPixmap, slotval1, slotval2, slotval3, slotval4)
 

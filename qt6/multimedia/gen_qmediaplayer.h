@@ -44,8 +44,9 @@ typedef struct QUrl QUrl;
 typedef struct QVideoSink QVideoSink;
 #endif
 
-void QMediaPlayer_new(QMediaPlayer** outptr_QMediaPlayer, QObject** outptr_QObject);
-void QMediaPlayer_new2(QObject* parent, QMediaPlayer** outptr_QMediaPlayer, QObject** outptr_QObject);
+QMediaPlayer* QMediaPlayer_new();
+QMediaPlayer* QMediaPlayer_new2(QObject* parent);
+void QMediaPlayer_virtbase(QMediaPlayer* src, QObject** outptr_QObject);
 QMetaObject* QMediaPlayer_MetaObject(const QMediaPlayer* self);
 void* QMediaPlayer_Metacast(QMediaPlayer* self, const char* param1);
 struct miqt_string QMediaPlayer_Tr(const char* s);

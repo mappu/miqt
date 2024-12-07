@@ -35,46 +35,34 @@ func (this *QIdentityProxyModel) UnsafePointer() unsafe.Pointer {
 }
 
 // newQIdentityProxyModel constructs the type using only CGO pointers.
-func newQIdentityProxyModel(h *C.QIdentityProxyModel, h_QAbstractProxyModel *C.QAbstractProxyModel, h_QAbstractItemModel *C.QAbstractItemModel, h_QObject *C.QObject) *QIdentityProxyModel {
+func newQIdentityProxyModel(h *C.QIdentityProxyModel) *QIdentityProxyModel {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractProxyModel *C.QAbstractProxyModel = nil
+	C.QIdentityProxyModel_virtbase(h, &outptr_QAbstractProxyModel)
+
 	return &QIdentityProxyModel{h: h,
-		QAbstractProxyModel: newQAbstractProxyModel(h_QAbstractProxyModel, h_QAbstractItemModel, h_QObject)}
+		QAbstractProxyModel: newQAbstractProxyModel(outptr_QAbstractProxyModel)}
 }
 
 // UnsafeNewQIdentityProxyModel constructs the type using only unsafe pointers.
-func UnsafeNewQIdentityProxyModel(h unsafe.Pointer, h_QAbstractProxyModel unsafe.Pointer, h_QAbstractItemModel unsafe.Pointer, h_QObject unsafe.Pointer) *QIdentityProxyModel {
-	if h == nil {
-		return nil
-	}
-
-	return &QIdentityProxyModel{h: (*C.QIdentityProxyModel)(h),
-		QAbstractProxyModel: UnsafeNewQAbstractProxyModel(h_QAbstractProxyModel, h_QAbstractItemModel, h_QObject)}
+func UnsafeNewQIdentityProxyModel(h unsafe.Pointer) *QIdentityProxyModel {
+	return newQIdentityProxyModel((*C.QIdentityProxyModel)(h))
 }
 
 // NewQIdentityProxyModel constructs a new QIdentityProxyModel object.
 func NewQIdentityProxyModel() *QIdentityProxyModel {
-	var outptr_QIdentityProxyModel *C.QIdentityProxyModel = nil
-	var outptr_QAbstractProxyModel *C.QAbstractProxyModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QIdentityProxyModel_new(&outptr_QIdentityProxyModel, &outptr_QAbstractProxyModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQIdentityProxyModel(outptr_QIdentityProxyModel, outptr_QAbstractProxyModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQIdentityProxyModel(C.QIdentityProxyModel_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQIdentityProxyModel2 constructs a new QIdentityProxyModel object.
 func NewQIdentityProxyModel2(parent *QObject) *QIdentityProxyModel {
-	var outptr_QIdentityProxyModel *C.QIdentityProxyModel = nil
-	var outptr_QAbstractProxyModel *C.QAbstractProxyModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QIdentityProxyModel_new2(parent.cPointer(), &outptr_QIdentityProxyModel, &outptr_QAbstractProxyModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQIdentityProxyModel(outptr_QIdentityProxyModel, outptr_QAbstractProxyModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQIdentityProxyModel(C.QIdentityProxyModel_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -485,7 +473,7 @@ func miqt_exec_callback_QIdentityProxyModel_DropMimeData(self *C.QIdentityProxyM
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(data, nil)
+	slotval1 := newQMimeData(data)
 
 	slotval2 := (DropAction)(action)
 
@@ -665,7 +653,7 @@ func miqt_exec_callback_QIdentityProxyModel_SetSourceModel(self *C.QIdentityProx
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQAbstractItemModel(sourceModel, nil)
+	slotval1 := newQAbstractItemModel(sourceModel)
 
 	gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_SetSourceModel, slotval1)
 
@@ -1337,7 +1325,7 @@ func (this *QIdentityProxyModel) callVirtualBase_MimeData(indexes []QModelIndex)
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 
-	return newQMimeData(C.QIdentityProxyModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma), nil)
+	return newQMimeData(C.QIdentityProxyModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma))
 
 }
 func (this *QIdentityProxyModel) OnMimeData(slot func(super func(indexes []QModelIndex) *QMimeData, indexes []QModelIndex) *QMimeData) {
@@ -1391,7 +1379,7 @@ func miqt_exec_callback_QIdentityProxyModel_CanDropMimeData(self *C.QIdentityPro
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(data, nil)
+	slotval1 := newQMimeData(data)
 
 	slotval2 := (DropAction)(action)
 

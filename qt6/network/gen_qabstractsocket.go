@@ -124,33 +124,26 @@ func (this *QAbstractSocket) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAbstractSocket constructs the type using only CGO pointers.
-func newQAbstractSocket(h *C.QAbstractSocket, h_QIODevice *C.QIODevice, h_QObject *C.QObject, h_QIODeviceBase *C.QIODeviceBase) *QAbstractSocket {
+func newQAbstractSocket(h *C.QAbstractSocket) *QAbstractSocket {
 	if h == nil {
 		return nil
 	}
+	var outptr_QIODevice *C.QIODevice = nil
+	C.QAbstractSocket_virtbase(h, &outptr_QIODevice)
+
 	return &QAbstractSocket{h: h,
-		QIODevice: qt6.UnsafeNewQIODevice(unsafe.Pointer(h_QIODevice), unsafe.Pointer(h_QObject), unsafe.Pointer(h_QIODeviceBase))}
+		QIODevice: qt6.UnsafeNewQIODevice(unsafe.Pointer(outptr_QIODevice))}
 }
 
 // UnsafeNewQAbstractSocket constructs the type using only unsafe pointers.
-func UnsafeNewQAbstractSocket(h unsafe.Pointer, h_QIODevice unsafe.Pointer, h_QObject unsafe.Pointer, h_QIODeviceBase unsafe.Pointer) *QAbstractSocket {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractSocket{h: (*C.QAbstractSocket)(h),
-		QIODevice: qt6.UnsafeNewQIODevice(h_QIODevice, h_QObject, h_QIODeviceBase)}
+func UnsafeNewQAbstractSocket(h unsafe.Pointer) *QAbstractSocket {
+	return newQAbstractSocket((*C.QAbstractSocket)(h))
 }
 
 // NewQAbstractSocket constructs a new QAbstractSocket object.
 func NewQAbstractSocket(socketType QAbstractSocket__SocketType, parent *qt6.QObject) *QAbstractSocket {
-	var outptr_QAbstractSocket *C.QAbstractSocket = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QIODeviceBase *C.QIODeviceBase = nil
 
-	C.QAbstractSocket_new((C.int)(socketType), (*C.QObject)(parent.UnsafePointer()), &outptr_QAbstractSocket, &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
-	ret := newQAbstractSocket(outptr_QAbstractSocket, outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret := newQAbstractSocket(C.QAbstractSocket_new((C.int)(socketType), (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }

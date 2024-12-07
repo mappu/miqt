@@ -18,24 +18,20 @@
 #include "gen_qitemselectionmodel.h"
 #include "_cgo_export.h"
 
-void QItemSelectionRange_new(QItemSelectionRange** outptr_QItemSelectionRange) {
-	QItemSelectionRange* ret = new QItemSelectionRange();
-	*outptr_QItemSelectionRange = ret;
+QItemSelectionRange* QItemSelectionRange_new() {
+	return new QItemSelectionRange();
 }
 
-void QItemSelectionRange_new2(QModelIndex* topL, QModelIndex* bottomR, QItemSelectionRange** outptr_QItemSelectionRange) {
-	QItemSelectionRange* ret = new QItemSelectionRange(*topL, *bottomR);
-	*outptr_QItemSelectionRange = ret;
+QItemSelectionRange* QItemSelectionRange_new2(QModelIndex* topL, QModelIndex* bottomR) {
+	return new QItemSelectionRange(*topL, *bottomR);
 }
 
-void QItemSelectionRange_new3(QModelIndex* index, QItemSelectionRange** outptr_QItemSelectionRange) {
-	QItemSelectionRange* ret = new QItemSelectionRange(*index);
-	*outptr_QItemSelectionRange = ret;
+QItemSelectionRange* QItemSelectionRange_new3(QModelIndex* index) {
+	return new QItemSelectionRange(*index);
 }
 
-void QItemSelectionRange_new4(QItemSelectionRange* param1, QItemSelectionRange** outptr_QItemSelectionRange) {
-	QItemSelectionRange* ret = new QItemSelectionRange(*param1);
-	*outptr_QItemSelectionRange = ret;
+QItemSelectionRange* QItemSelectionRange_new4(QItemSelectionRange* param1) {
+	return new QItemSelectionRange(*param1);
 }
 
 void QItemSelectionRange_Swap(QItemSelectionRange* self, QItemSelectionRange* other) {
@@ -474,22 +470,20 @@ public:
 
 };
 
-void QItemSelectionModel_new(QItemSelectionModel** outptr_QItemSelectionModel, QObject** outptr_QObject) {
-	MiqtVirtualQItemSelectionModel* ret = new MiqtVirtualQItemSelectionModel();
-	*outptr_QItemSelectionModel = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QItemSelectionModel* QItemSelectionModel_new() {
+	return new MiqtVirtualQItemSelectionModel();
 }
 
-void QItemSelectionModel_new2(QAbstractItemModel* model, QObject* parent, QItemSelectionModel** outptr_QItemSelectionModel, QObject** outptr_QObject) {
-	MiqtVirtualQItemSelectionModel* ret = new MiqtVirtualQItemSelectionModel(model, parent);
-	*outptr_QItemSelectionModel = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QItemSelectionModel* QItemSelectionModel_new2(QAbstractItemModel* model, QObject* parent) {
+	return new MiqtVirtualQItemSelectionModel(model, parent);
 }
 
-void QItemSelectionModel_new3(QAbstractItemModel* model, QItemSelectionModel** outptr_QItemSelectionModel, QObject** outptr_QObject) {
-	MiqtVirtualQItemSelectionModel* ret = new MiqtVirtualQItemSelectionModel(model);
-	*outptr_QItemSelectionModel = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QItemSelectionModel* QItemSelectionModel_new3(QAbstractItemModel* model) {
+	return new MiqtVirtualQItemSelectionModel(model);
+}
+
+void QItemSelectionModel_virtbase(QItemSelectionModel* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QItemSelectionModel_MetaObject(const QItemSelectionModel* self) {
@@ -873,19 +867,16 @@ void QItemSelectionModel_Delete(QItemSelectionModel* self, bool isSubclass) {
 	}
 }
 
-void QItemSelection_new(QModelIndex* topLeft, QModelIndex* bottomRight, QItemSelection** outptr_QItemSelection) {
-	QItemSelection* ret = new QItemSelection(*topLeft, *bottomRight);
-	*outptr_QItemSelection = ret;
+QItemSelection* QItemSelection_new(QModelIndex* topLeft, QModelIndex* bottomRight) {
+	return new QItemSelection(*topLeft, *bottomRight);
 }
 
-void QItemSelection_new2(QItemSelection** outptr_QItemSelection) {
-	QItemSelection* ret = new QItemSelection();
-	*outptr_QItemSelection = ret;
+QItemSelection* QItemSelection_new2() {
+	return new QItemSelection();
 }
 
-void QItemSelection_new3(QItemSelection* param1, QItemSelection** outptr_QItemSelection) {
-	QItemSelection* ret = new QItemSelection(*param1);
-	*outptr_QItemSelection = ret;
+QItemSelection* QItemSelection_new3(QItemSelection* param1) {
+	return new QItemSelection(*param1);
 }
 
 void QItemSelection_Select(QItemSelection* self, QModelIndex* topLeft, QModelIndex* bottomRight) {

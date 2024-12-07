@@ -36,42 +36,34 @@ func (this *QWebPluginFactory) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebPluginFactory constructs the type using only CGO pointers.
-func newQWebPluginFactory(h *C.QWebPluginFactory, h_QObject *C.QObject) *QWebPluginFactory {
+func newQWebPluginFactory(h *C.QWebPluginFactory) *QWebPluginFactory {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebPluginFactory_virtbase(h, &outptr_QObject)
+
 	return &QWebPluginFactory{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebPluginFactory constructs the type using only unsafe pointers.
-func UnsafeNewQWebPluginFactory(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebPluginFactory {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebPluginFactory{h: (*C.QWebPluginFactory)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebPluginFactory(h unsafe.Pointer) *QWebPluginFactory {
+	return newQWebPluginFactory((*C.QWebPluginFactory)(h))
 }
 
 // NewQWebPluginFactory constructs a new QWebPluginFactory object.
 func NewQWebPluginFactory() *QWebPluginFactory {
-	var outptr_QWebPluginFactory *C.QWebPluginFactory = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebPluginFactory_new(&outptr_QWebPluginFactory, &outptr_QObject)
-	ret := newQWebPluginFactory(outptr_QWebPluginFactory, outptr_QObject)
+	ret := newQWebPluginFactory(C.QWebPluginFactory_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebPluginFactory2 constructs a new QWebPluginFactory object.
 func NewQWebPluginFactory2(parent *qt.QObject) *QWebPluginFactory {
-	var outptr_QWebPluginFactory *C.QWebPluginFactory = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebPluginFactory_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QWebPluginFactory, &outptr_QObject)
-	ret := newQWebPluginFactory(outptr_QWebPluginFactory, outptr_QObject)
+	ret := newQWebPluginFactory(C.QWebPluginFactory_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -434,7 +426,7 @@ func miqt_exec_callback_QWebPluginFactory_TimerEvent(self *C.QWebPluginFactory, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebPluginFactory{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -460,7 +452,7 @@ func miqt_exec_callback_QWebPluginFactory_ChildEvent(self *C.QWebPluginFactory, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebPluginFactory{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -582,24 +574,19 @@ func newQWebPluginFactory__MimeType(h *C.QWebPluginFactory__MimeType) *QWebPlugi
 	if h == nil {
 		return nil
 	}
+
 	return &QWebPluginFactory__MimeType{h: h}
 }
 
 // UnsafeNewQWebPluginFactory__MimeType constructs the type using only unsafe pointers.
 func UnsafeNewQWebPluginFactory__MimeType(h unsafe.Pointer) *QWebPluginFactory__MimeType {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebPluginFactory__MimeType{h: (*C.QWebPluginFactory__MimeType)(h)}
+	return newQWebPluginFactory__MimeType((*C.QWebPluginFactory__MimeType)(h))
 }
 
 // NewQWebPluginFactory__MimeType constructs a new QWebPluginFactory::MimeType object.
 func NewQWebPluginFactory__MimeType(param1 *QWebPluginFactory__MimeType) *QWebPluginFactory__MimeType {
-	var outptr_QWebPluginFactory__MimeType *C.QWebPluginFactory__MimeType = nil
 
-	C.QWebPluginFactory__MimeType_new(param1.cPointer(), &outptr_QWebPluginFactory__MimeType)
-	ret := newQWebPluginFactory__MimeType(outptr_QWebPluginFactory__MimeType)
+	ret := newQWebPluginFactory__MimeType(C.QWebPluginFactory__MimeType_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -654,24 +641,19 @@ func newQWebPluginFactory__Plugin(h *C.QWebPluginFactory__Plugin) *QWebPluginFac
 	if h == nil {
 		return nil
 	}
+
 	return &QWebPluginFactory__Plugin{h: h}
 }
 
 // UnsafeNewQWebPluginFactory__Plugin constructs the type using only unsafe pointers.
 func UnsafeNewQWebPluginFactory__Plugin(h unsafe.Pointer) *QWebPluginFactory__Plugin {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebPluginFactory__Plugin{h: (*C.QWebPluginFactory__Plugin)(h)}
+	return newQWebPluginFactory__Plugin((*C.QWebPluginFactory__Plugin)(h))
 }
 
 // NewQWebPluginFactory__Plugin constructs a new QWebPluginFactory::Plugin object.
 func NewQWebPluginFactory__Plugin(param1 *QWebPluginFactory__Plugin) *QWebPluginFactory__Plugin {
-	var outptr_QWebPluginFactory__Plugin *C.QWebPluginFactory__Plugin = nil
 
-	C.QWebPluginFactory__Plugin_new(param1.cPointer(), &outptr_QWebPluginFactory__Plugin)
-	ret := newQWebPluginFactory__Plugin(outptr_QWebPluginFactory__Plugin)
+	ret := newQWebPluginFactory__Plugin(C.QWebPluginFactory__Plugin_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -718,16 +700,13 @@ func newQWebPluginFactory__ExtensionOption(h *C.QWebPluginFactory__ExtensionOpti
 	if h == nil {
 		return nil
 	}
+
 	return &QWebPluginFactory__ExtensionOption{h: h}
 }
 
 // UnsafeNewQWebPluginFactory__ExtensionOption constructs the type using only unsafe pointers.
 func UnsafeNewQWebPluginFactory__ExtensionOption(h unsafe.Pointer) *QWebPluginFactory__ExtensionOption {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebPluginFactory__ExtensionOption{h: (*C.QWebPluginFactory__ExtensionOption)(h)}
+	return newQWebPluginFactory__ExtensionOption((*C.QWebPluginFactory__ExtensionOption)(h))
 }
 
 // Delete this object from C++ memory.
@@ -768,16 +747,13 @@ func newQWebPluginFactory__ExtensionReturn(h *C.QWebPluginFactory__ExtensionRetu
 	if h == nil {
 		return nil
 	}
+
 	return &QWebPluginFactory__ExtensionReturn{h: h}
 }
 
 // UnsafeNewQWebPluginFactory__ExtensionReturn constructs the type using only unsafe pointers.
 func UnsafeNewQWebPluginFactory__ExtensionReturn(h unsafe.Pointer) *QWebPluginFactory__ExtensionReturn {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebPluginFactory__ExtensionReturn{h: (*C.QWebPluginFactory__ExtensionReturn)(h)}
+	return newQWebPluginFactory__ExtensionReturn((*C.QWebPluginFactory__ExtensionReturn)(h))
 }
 
 // Delete this object from C++ memory.

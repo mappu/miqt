@@ -56,44 +56,34 @@ func (this *QsciLexerPO) UnsafePointer() unsafe.Pointer {
 }
 
 // newQsciLexerPO constructs the type using only CGO pointers.
-func newQsciLexerPO(h *C.QsciLexerPO, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerPO {
+func newQsciLexerPO(h *C.QsciLexerPO) *QsciLexerPO {
 	if h == nil {
 		return nil
 	}
+	var outptr_QsciLexer *C.QsciLexer = nil
+	C.QsciLexerPO_virtbase(h, &outptr_QsciLexer)
+
 	return &QsciLexerPO{h: h,
-		QsciLexer: newQsciLexer(h_QsciLexer, h_QObject)}
+		QsciLexer: newQsciLexer(outptr_QsciLexer)}
 }
 
 // UnsafeNewQsciLexerPO constructs the type using only unsafe pointers.
-func UnsafeNewQsciLexerPO(h unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerPO {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciLexerPO{h: (*C.QsciLexerPO)(h),
-		QsciLexer: UnsafeNewQsciLexer(h_QsciLexer, h_QObject)}
+func UnsafeNewQsciLexerPO(h unsafe.Pointer) *QsciLexerPO {
+	return newQsciLexerPO((*C.QsciLexerPO)(h))
 }
 
 // NewQsciLexerPO constructs a new QsciLexerPO object.
 func NewQsciLexerPO() *QsciLexerPO {
-	var outptr_QsciLexerPO *C.QsciLexerPO = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerPO_new(&outptr_QsciLexerPO, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerPO(outptr_QsciLexerPO, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerPO(C.QsciLexerPO_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQsciLexerPO2 constructs a new QsciLexerPO object.
 func NewQsciLexerPO2(parent *qt6.QObject) *QsciLexerPO {
-	var outptr_QsciLexerPO *C.QsciLexerPO = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerPO_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QsciLexerPO, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerPO(outptr_QsciLexerPO, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerPO(C.QsciLexerPO_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -917,7 +907,7 @@ func miqt_exec_callback_QsciLexerPO_SetEditor(self *C.QsciLexerPO, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQsciScintilla(editor, nil, nil, nil, nil, nil, nil)
+	slotval1 := newQsciScintilla(editor)
 
 	gofunc((&QsciLexerPO{h: self}).callVirtualBase_SetEditor, slotval1)
 
@@ -1161,7 +1151,7 @@ func miqt_exec_callback_QsciLexerPO_ReadProperties(self *C.QsciLexerPO, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQSettings(unsafe.Pointer(qs), nil)
+	slotval1 := qt6.UnsafeNewQSettings(unsafe.Pointer(qs))
 
 	var prefix_ms C.struct_miqt_string = prefix
 	prefix_ret := C.GoStringN(prefix_ms.data, C.int(int64(prefix_ms.len)))
@@ -1198,7 +1188,7 @@ func miqt_exec_callback_QsciLexerPO_WriteProperties(self *C.QsciLexerPO, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQSettings(unsafe.Pointer(qs), nil)
+	slotval1 := qt6.UnsafeNewQSettings(unsafe.Pointer(qs))
 
 	var prefix_ms C.struct_miqt_string = prefix
 	prefix_ret := C.GoStringN(prefix_ms.data, C.int(int64(prefix_ms.len)))

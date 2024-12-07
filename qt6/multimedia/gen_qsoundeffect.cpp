@@ -198,28 +198,24 @@ public:
 
 };
 
-void QSoundEffect_new(QSoundEffect** outptr_QSoundEffect, QObject** outptr_QObject) {
-	MiqtVirtualQSoundEffect* ret = new MiqtVirtualQSoundEffect();
-	*outptr_QSoundEffect = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSoundEffect* QSoundEffect_new() {
+	return new MiqtVirtualQSoundEffect();
 }
 
-void QSoundEffect_new2(QAudioDevice* audioDevice, QSoundEffect** outptr_QSoundEffect, QObject** outptr_QObject) {
-	MiqtVirtualQSoundEffect* ret = new MiqtVirtualQSoundEffect(*audioDevice);
-	*outptr_QSoundEffect = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSoundEffect* QSoundEffect_new2(QAudioDevice* audioDevice) {
+	return new MiqtVirtualQSoundEffect(*audioDevice);
 }
 
-void QSoundEffect_new3(QObject* parent, QSoundEffect** outptr_QSoundEffect, QObject** outptr_QObject) {
-	MiqtVirtualQSoundEffect* ret = new MiqtVirtualQSoundEffect(parent);
-	*outptr_QSoundEffect = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSoundEffect* QSoundEffect_new3(QObject* parent) {
+	return new MiqtVirtualQSoundEffect(parent);
 }
 
-void QSoundEffect_new4(QAudioDevice* audioDevice, QObject* parent, QSoundEffect** outptr_QSoundEffect, QObject** outptr_QObject) {
-	MiqtVirtualQSoundEffect* ret = new MiqtVirtualQSoundEffect(*audioDevice, parent);
-	*outptr_QSoundEffect = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSoundEffect* QSoundEffect_new4(QAudioDevice* audioDevice, QObject* parent) {
+	return new MiqtVirtualQSoundEffect(*audioDevice, parent);
+}
+
+void QSoundEffect_virtbase(QSoundEffect* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QSoundEffect_MetaObject(const QSoundEffect* self) {

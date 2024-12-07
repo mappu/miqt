@@ -35,44 +35,34 @@ func (this *QVariantAnimation) UnsafePointer() unsafe.Pointer {
 }
 
 // newQVariantAnimation constructs the type using only CGO pointers.
-func newQVariantAnimation(h *C.QVariantAnimation, h_QAbstractAnimation *C.QAbstractAnimation, h_QObject *C.QObject) *QVariantAnimation {
+func newQVariantAnimation(h *C.QVariantAnimation) *QVariantAnimation {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
+	C.QVariantAnimation_virtbase(h, &outptr_QAbstractAnimation)
+
 	return &QVariantAnimation{h: h,
-		QAbstractAnimation: newQAbstractAnimation(h_QAbstractAnimation, h_QObject)}
+		QAbstractAnimation: newQAbstractAnimation(outptr_QAbstractAnimation)}
 }
 
 // UnsafeNewQVariantAnimation constructs the type using only unsafe pointers.
-func UnsafeNewQVariantAnimation(h unsafe.Pointer, h_QAbstractAnimation unsafe.Pointer, h_QObject unsafe.Pointer) *QVariantAnimation {
-	if h == nil {
-		return nil
-	}
-
-	return &QVariantAnimation{h: (*C.QVariantAnimation)(h),
-		QAbstractAnimation: UnsafeNewQAbstractAnimation(h_QAbstractAnimation, h_QObject)}
+func UnsafeNewQVariantAnimation(h unsafe.Pointer) *QVariantAnimation {
+	return newQVariantAnimation((*C.QVariantAnimation)(h))
 }
 
 // NewQVariantAnimation constructs a new QVariantAnimation object.
 func NewQVariantAnimation() *QVariantAnimation {
-	var outptr_QVariantAnimation *C.QVariantAnimation = nil
-	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QVariantAnimation_new(&outptr_QVariantAnimation, &outptr_QAbstractAnimation, &outptr_QObject)
-	ret := newQVariantAnimation(outptr_QVariantAnimation, outptr_QAbstractAnimation, outptr_QObject)
+	ret := newQVariantAnimation(C.QVariantAnimation_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVariantAnimation2 constructs a new QVariantAnimation object.
 func NewQVariantAnimation2(parent *QObject) *QVariantAnimation {
-	var outptr_QVariantAnimation *C.QVariantAnimation = nil
-	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QVariantAnimation_new2(parent.cPointer(), &outptr_QVariantAnimation, &outptr_QAbstractAnimation, &outptr_QObject)
-	ret := newQVariantAnimation(outptr_QVariantAnimation, outptr_QAbstractAnimation, outptr_QObject)
+	ret := newQVariantAnimation(C.QVariantAnimation_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

@@ -20,8 +20,8 @@ class QNetworkConfiguration;
 typedef struct QNetworkConfiguration QNetworkConfiguration;
 #endif
 
-void QNetworkConfiguration_new(QNetworkConfiguration** outptr_QNetworkConfiguration);
-void QNetworkConfiguration_new2(QNetworkConfiguration* other, QNetworkConfiguration** outptr_QNetworkConfiguration);
+QNetworkConfiguration* QNetworkConfiguration_new();
+QNetworkConfiguration* QNetworkConfiguration_new2(QNetworkConfiguration* other);
 void QNetworkConfiguration_OperatorAssign(QNetworkConfiguration* self, QNetworkConfiguration* other);
 void QNetworkConfiguration_Swap(QNetworkConfiguration* self, QNetworkConfiguration* other);
 bool QNetworkConfiguration_OperatorEqual(const QNetworkConfiguration* self, QNetworkConfiguration* other);

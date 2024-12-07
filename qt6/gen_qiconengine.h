@@ -36,7 +36,7 @@ typedef struct QRect QRect;
 typedef struct QSize QSize;
 #endif
 
-void QIconEngine_new(QIconEngine** outptr_QIconEngine);
+QIconEngine* QIconEngine_new();
 void QIconEngine_Paint(QIconEngine* self, QPainter* painter, QRect* rect, int mode, int state);
 QSize* QIconEngine_ActualSize(QIconEngine* self, QSize* size, int mode, int state);
 QPixmap* QIconEngine_Pixmap(QIconEngine* self, QSize* size, int mode, int state);
@@ -81,7 +81,7 @@ void QIconEngine_override_virtual_VirtualHook(void* self, intptr_t slot);
 void QIconEngine_virtualbase_VirtualHook(void* self, int id, void* data);
 void QIconEngine_Delete(QIconEngine* self, bool isSubclass);
 
-void QIconEngine__ScaledPixmapArgument_new(QIconEngine__ScaledPixmapArgument* param1, QIconEngine__ScaledPixmapArgument** outptr_QIconEngine__ScaledPixmapArgument);
+QIconEngine__ScaledPixmapArgument* QIconEngine__ScaledPixmapArgument_new(QIconEngine__ScaledPixmapArgument* param1);
 void QIconEngine__ScaledPixmapArgument_OperatorAssign(QIconEngine__ScaledPixmapArgument* self, QIconEngine__ScaledPixmapArgument* param1);
 void QIconEngine__ScaledPixmapArgument_Delete(QIconEngine__ScaledPixmapArgument* self, bool isSubclass);
 

@@ -12,6 +12,10 @@
 #include "gen_qaccessibleobject.h"
 #include "_cgo_export.h"
 
+void QAccessibleObject_virtbase(QAccessibleObject* src, QAccessibleInterface** outptr_QAccessibleInterface) {
+	*outptr_QAccessibleInterface = static_cast<QAccessibleInterface*>(src);
+}
+
 bool QAccessibleObject_IsValid(const QAccessibleObject* self) {
 	return self->isValid();
 }
@@ -33,11 +37,12 @@ QAccessibleInterface* QAccessibleObject_ChildAt(const QAccessibleObject* self, i
 	return self->childAt(static_cast<int>(x), static_cast<int>(y));
 }
 
-void QAccessibleApplication_new(QAccessibleApplication** outptr_QAccessibleApplication, QAccessibleObject** outptr_QAccessibleObject, QAccessibleInterface** outptr_QAccessibleInterface) {
-	QAccessibleApplication* ret = new QAccessibleApplication();
-	*outptr_QAccessibleApplication = ret;
-	*outptr_QAccessibleObject = static_cast<QAccessibleObject*>(ret);
-	*outptr_QAccessibleInterface = static_cast<QAccessibleInterface*>(ret);
+QAccessibleApplication* QAccessibleApplication_new() {
+	return new QAccessibleApplication();
+}
+
+void QAccessibleApplication_virtbase(QAccessibleApplication* src, QAccessibleObject** outptr_QAccessibleObject) {
+	*outptr_QAccessibleObject = static_cast<QAccessibleObject*>(src);
 }
 
 QWindow* QAccessibleApplication_Window(const QAccessibleApplication* self) {

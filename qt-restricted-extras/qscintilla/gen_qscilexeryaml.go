@@ -51,44 +51,34 @@ func (this *QsciLexerYAML) UnsafePointer() unsafe.Pointer {
 }
 
 // newQsciLexerYAML constructs the type using only CGO pointers.
-func newQsciLexerYAML(h *C.QsciLexerYAML, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerYAML {
+func newQsciLexerYAML(h *C.QsciLexerYAML) *QsciLexerYAML {
 	if h == nil {
 		return nil
 	}
+	var outptr_QsciLexer *C.QsciLexer = nil
+	C.QsciLexerYAML_virtbase(h, &outptr_QsciLexer)
+
 	return &QsciLexerYAML{h: h,
-		QsciLexer: newQsciLexer(h_QsciLexer, h_QObject)}
+		QsciLexer: newQsciLexer(outptr_QsciLexer)}
 }
 
 // UnsafeNewQsciLexerYAML constructs the type using only unsafe pointers.
-func UnsafeNewQsciLexerYAML(h unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerYAML {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciLexerYAML{h: (*C.QsciLexerYAML)(h),
-		QsciLexer: UnsafeNewQsciLexer(h_QsciLexer, h_QObject)}
+func UnsafeNewQsciLexerYAML(h unsafe.Pointer) *QsciLexerYAML {
+	return newQsciLexerYAML((*C.QsciLexerYAML)(h))
 }
 
 // NewQsciLexerYAML constructs a new QsciLexerYAML object.
 func NewQsciLexerYAML() *QsciLexerYAML {
-	var outptr_QsciLexerYAML *C.QsciLexerYAML = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerYAML_new(&outptr_QsciLexerYAML, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerYAML(outptr_QsciLexerYAML, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerYAML(C.QsciLexerYAML_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQsciLexerYAML2 constructs a new QsciLexerYAML object.
 func NewQsciLexerYAML2(parent *qt.QObject) *QsciLexerYAML {
-	var outptr_QsciLexerYAML *C.QsciLexerYAML = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerYAML_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QsciLexerYAML, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerYAML(outptr_QsciLexerYAML, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerYAML(C.QsciLexerYAML_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -924,7 +914,7 @@ func miqt_exec_callback_QsciLexerYAML_SetEditor(self *C.QsciLexerYAML, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQsciScintilla(editor, nil, nil, nil, nil, nil, nil)
+	slotval1 := newQsciScintilla(editor)
 
 	gofunc((&QsciLexerYAML{h: self}).callVirtualBase_SetEditor, slotval1)
 
@@ -1168,7 +1158,7 @@ func miqt_exec_callback_QsciLexerYAML_ReadProperties(self *C.QsciLexerYAML, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQSettings(unsafe.Pointer(qs), nil)
+	slotval1 := qt.UnsafeNewQSettings(unsafe.Pointer(qs))
 
 	var prefix_ms C.struct_miqt_string = prefix
 	prefix_ret := C.GoStringN(prefix_ms.data, C.int(int64(prefix_ms.len)))
@@ -1205,7 +1195,7 @@ func miqt_exec_callback_QsciLexerYAML_WriteProperties(self *C.QsciLexerYAML, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQSettings(unsafe.Pointer(qs), nil)
+	slotval1 := qt.UnsafeNewQSettings(unsafe.Pointer(qs))
 
 	var prefix_ms C.struct_miqt_string = prefix
 	prefix_ret := C.GoStringN(prefix_ms.data, C.int(int64(prefix_ms.len)))

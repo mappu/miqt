@@ -155,44 +155,35 @@ func newQMetaType(h *C.QMetaType) *QMetaType {
 	if h == nil {
 		return nil
 	}
+
 	return &QMetaType{h: h}
 }
 
 // UnsafeNewQMetaType constructs the type using only unsafe pointers.
 func UnsafeNewQMetaType(h unsafe.Pointer) *QMetaType {
-	if h == nil {
-		return nil
-	}
-
-	return &QMetaType{h: (*C.QMetaType)(h)}
+	return newQMetaType((*C.QMetaType)(h))
 }
 
 // NewQMetaType constructs a new QMetaType object.
 func NewQMetaType(typeVal int) *QMetaType {
-	var outptr_QMetaType *C.QMetaType = nil
 
-	C.QMetaType_new((C.int)(typeVal), &outptr_QMetaType)
-	ret := newQMetaType(outptr_QMetaType)
+	ret := newQMetaType(C.QMetaType_new((C.int)(typeVal)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMetaType2 constructs a new QMetaType object.
 func NewQMetaType2() *QMetaType {
-	var outptr_QMetaType *C.QMetaType = nil
 
-	C.QMetaType_new2(&outptr_QMetaType)
-	ret := newQMetaType(outptr_QMetaType)
+	ret := newQMetaType(C.QMetaType_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMetaType3 constructs a new QMetaType object.
 func NewQMetaType3(param1 *QMetaType) *QMetaType {
-	var outptr_QMetaType *C.QMetaType = nil
 
-	C.QMetaType_new3(param1.cPointer(), &outptr_QMetaType)
-	ret := newQMetaType(outptr_QMetaType)
+	ret := newQMetaType(C.QMetaType_new3(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

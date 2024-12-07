@@ -382,40 +382,24 @@ public:
 
 };
 
-void QColorDialog_new(QWidget* parent, QColorDialog** outptr_QColorDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQColorDialog* ret = new MiqtVirtualQColorDialog(parent);
-	*outptr_QColorDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QColorDialog* QColorDialog_new(QWidget* parent) {
+	return new MiqtVirtualQColorDialog(parent);
 }
 
-void QColorDialog_new2(QColorDialog** outptr_QColorDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQColorDialog* ret = new MiqtVirtualQColorDialog();
-	*outptr_QColorDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QColorDialog* QColorDialog_new2() {
+	return new MiqtVirtualQColorDialog();
 }
 
-void QColorDialog_new3(QColor* initial, QColorDialog** outptr_QColorDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQColorDialog* ret = new MiqtVirtualQColorDialog(*initial);
-	*outptr_QColorDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QColorDialog* QColorDialog_new3(QColor* initial) {
+	return new MiqtVirtualQColorDialog(*initial);
 }
 
-void QColorDialog_new4(QColor* initial, QWidget* parent, QColorDialog** outptr_QColorDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQColorDialog* ret = new MiqtVirtualQColorDialog(*initial, parent);
-	*outptr_QColorDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QColorDialog* QColorDialog_new4(QColor* initial, QWidget* parent) {
+	return new MiqtVirtualQColorDialog(*initial, parent);
+}
+
+void QColorDialog_virtbase(QColorDialog* src, QDialog** outptr_QDialog) {
+	*outptr_QDialog = static_cast<QDialog*>(src);
 }
 
 QMetaObject* QColorDialog_MetaObject(const QColorDialog* self) {

@@ -42,64 +42,44 @@ func (this *QGraphicsWidget) UnsafePointer() unsafe.Pointer {
 }
 
 // newQGraphicsWidget constructs the type using only CGO pointers.
-func newQGraphicsWidget(h *C.QGraphicsWidget, h_QGraphicsObject *C.QGraphicsObject, h_QObject *C.QObject, h_QGraphicsItem *C.QGraphicsItem, h_QGraphicsLayoutItem *C.QGraphicsLayoutItem) *QGraphicsWidget {
+func newQGraphicsWidget(h *C.QGraphicsWidget) *QGraphicsWidget {
 	if h == nil {
 		return nil
 	}
+	var outptr_QGraphicsObject *C.QGraphicsObject = nil
+	var outptr_QGraphicsLayoutItem *C.QGraphicsLayoutItem = nil
+	C.QGraphicsWidget_virtbase(h, &outptr_QGraphicsObject, &outptr_QGraphicsLayoutItem)
+
 	return &QGraphicsWidget{h: h,
-		QGraphicsObject:     newQGraphicsObject(h_QGraphicsObject, h_QObject, h_QGraphicsItem),
-		QGraphicsLayoutItem: newQGraphicsLayoutItem(h_QGraphicsLayoutItem)}
+		QGraphicsObject:     newQGraphicsObject(outptr_QGraphicsObject),
+		QGraphicsLayoutItem: newQGraphicsLayoutItem(outptr_QGraphicsLayoutItem)}
 }
 
 // UnsafeNewQGraphicsWidget constructs the type using only unsafe pointers.
-func UnsafeNewQGraphicsWidget(h unsafe.Pointer, h_QGraphicsObject unsafe.Pointer, h_QObject unsafe.Pointer, h_QGraphicsItem unsafe.Pointer, h_QGraphicsLayoutItem unsafe.Pointer) *QGraphicsWidget {
-	if h == nil {
-		return nil
-	}
-
-	return &QGraphicsWidget{h: (*C.QGraphicsWidget)(h),
-		QGraphicsObject:     UnsafeNewQGraphicsObject(h_QGraphicsObject, h_QObject, h_QGraphicsItem),
-		QGraphicsLayoutItem: UnsafeNewQGraphicsLayoutItem(h_QGraphicsLayoutItem)}
+func UnsafeNewQGraphicsWidget(h unsafe.Pointer) *QGraphicsWidget {
+	return newQGraphicsWidget((*C.QGraphicsWidget)(h))
 }
 
 // NewQGraphicsWidget constructs a new QGraphicsWidget object.
 func NewQGraphicsWidget() *QGraphicsWidget {
-	var outptr_QGraphicsWidget *C.QGraphicsWidget = nil
-	var outptr_QGraphicsObject *C.QGraphicsObject = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QGraphicsItem *C.QGraphicsItem = nil
-	var outptr_QGraphicsLayoutItem *C.QGraphicsLayoutItem = nil
 
-	C.QGraphicsWidget_new(&outptr_QGraphicsWidget, &outptr_QGraphicsObject, &outptr_QObject, &outptr_QGraphicsItem, &outptr_QGraphicsLayoutItem)
-	ret := newQGraphicsWidget(outptr_QGraphicsWidget, outptr_QGraphicsObject, outptr_QObject, outptr_QGraphicsItem, outptr_QGraphicsLayoutItem)
+	ret := newQGraphicsWidget(C.QGraphicsWidget_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsWidget2 constructs a new QGraphicsWidget object.
 func NewQGraphicsWidget2(parent *QGraphicsItem) *QGraphicsWidget {
-	var outptr_QGraphicsWidget *C.QGraphicsWidget = nil
-	var outptr_QGraphicsObject *C.QGraphicsObject = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QGraphicsItem *C.QGraphicsItem = nil
-	var outptr_QGraphicsLayoutItem *C.QGraphicsLayoutItem = nil
 
-	C.QGraphicsWidget_new2(parent.cPointer(), &outptr_QGraphicsWidget, &outptr_QGraphicsObject, &outptr_QObject, &outptr_QGraphicsItem, &outptr_QGraphicsLayoutItem)
-	ret := newQGraphicsWidget(outptr_QGraphicsWidget, outptr_QGraphicsObject, outptr_QObject, outptr_QGraphicsItem, outptr_QGraphicsLayoutItem)
+	ret := newQGraphicsWidget(C.QGraphicsWidget_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsWidget3 constructs a new QGraphicsWidget object.
 func NewQGraphicsWidget3(parent *QGraphicsItem, wFlags WindowType) *QGraphicsWidget {
-	var outptr_QGraphicsWidget *C.QGraphicsWidget = nil
-	var outptr_QGraphicsObject *C.QGraphicsObject = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QGraphicsItem *C.QGraphicsItem = nil
-	var outptr_QGraphicsLayoutItem *C.QGraphicsLayoutItem = nil
 
-	C.QGraphicsWidget_new3(parent.cPointer(), (C.int)(wFlags), &outptr_QGraphicsWidget, &outptr_QGraphicsObject, &outptr_QObject, &outptr_QGraphicsItem, &outptr_QGraphicsLayoutItem)
-	ret := newQGraphicsWidget(outptr_QGraphicsWidget, outptr_QGraphicsObject, outptr_QObject, outptr_QGraphicsItem, outptr_QGraphicsLayoutItem)
+	ret := newQGraphicsWidget(C.QGraphicsWidget_new3(parent.cPointer(), (C.int)(wFlags)))
 	ret.isSubclass = true
 	return ret
 }
@@ -124,7 +104,7 @@ func QGraphicsWidget_Tr(s string) string {
 }
 
 func (this *QGraphicsWidget) Layout() *QGraphicsLayout {
-	return newQGraphicsLayout(C.QGraphicsWidget_Layout(this.h), nil)
+	return newQGraphicsLayout(C.QGraphicsWidget_Layout(this.h))
 }
 
 func (this *QGraphicsWidget) SetLayout(layout *QGraphicsLayout) {
@@ -148,7 +128,7 @@ func (this *QGraphicsWidget) UnsetLayoutDirection() {
 }
 
 func (this *QGraphicsWidget) Style() *QStyle {
-	return newQStyle(C.QGraphicsWidget_Style(this.h), nil)
+	return newQStyle(C.QGraphicsWidget_Style(this.h))
 }
 
 func (this *QGraphicsWidget) SetStyle(style *QStyle) {
@@ -295,7 +275,7 @@ func QGraphicsWidget_SetTabOrder(first *QGraphicsWidget, second *QGraphicsWidget
 }
 
 func (this *QGraphicsWidget) FocusWidget() *QGraphicsWidget {
-	return newQGraphicsWidget(C.QGraphicsWidget_FocusWidget(this.h), nil, nil, nil, nil)
+	return newQGraphicsWidget(C.QGraphicsWidget_FocusWidget(this.h))
 }
 
 func (this *QGraphicsWidget) GrabShortcut(sequence *QKeySequence) int {
@@ -351,7 +331,7 @@ func (this *QGraphicsWidget) Actions() []*QAction {
 	_ret := make([]*QAction, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAction(_outCast[i], nil)
+		_ret[i] = newQAction(_outCast[i])
 	}
 	return _ret
 }
@@ -569,9 +549,9 @@ func miqt_exec_callback_QGraphicsWidget_Paint(self *C.QGraphicsWidget, cb C.intp
 	// Convert all CABI parameters to Go parameters
 	slotval1 := newQPainter(painter)
 
-	slotval2 := newQStyleOptionGraphicsItem(option, nil)
+	slotval2 := newQStyleOptionGraphicsItem(option)
 
-	slotval3 := newQWidget(widget, nil, nil)
+	slotval3 := newQWidget(widget)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_Paint, slotval1, slotval2, slotval3)
 
@@ -599,9 +579,9 @@ func miqt_exec_callback_QGraphicsWidget_PaintWindowFrame(self *C.QGraphicsWidget
 	// Convert all CABI parameters to Go parameters
 	slotval1 := newQPainter(painter)
 
-	slotval2 := newQStyleOptionGraphicsItem(option, nil)
+	slotval2 := newQStyleOptionGraphicsItem(option)
 
-	slotval3 := newQWidget(widget, nil, nil)
+	slotval3 := newQWidget(widget)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_PaintWindowFrame, slotval1, slotval2, slotval3)
 
@@ -970,7 +950,7 @@ func miqt_exec_callback_QGraphicsWidget_CloseEvent(self *C.QGraphicsWidget, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQCloseEvent(event, nil)
+	slotval1 := newQCloseEvent(event)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -996,7 +976,7 @@ func miqt_exec_callback_QGraphicsWidget_FocusInEvent(self *C.QGraphicsWidget, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -1050,7 +1030,7 @@ func miqt_exec_callback_QGraphicsWidget_FocusOutEvent(self *C.QGraphicsWidget, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -1076,7 +1056,7 @@ func miqt_exec_callback_QGraphicsWidget_HideEvent(self *C.QGraphicsWidget, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQHideEvent(event, nil)
+	slotval1 := newQHideEvent(event)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -1102,7 +1082,7 @@ func miqt_exec_callback_QGraphicsWidget_MoveEvent(self *C.QGraphicsWidget, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQGraphicsSceneMoveEvent(event, nil, nil)
+	slotval1 := newQGraphicsSceneMoveEvent(event)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -1151,7 +1131,7 @@ func miqt_exec_callback_QGraphicsWidget_ResizeEvent(self *C.QGraphicsWidget, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQGraphicsSceneResizeEvent(event, nil, nil)
+	slotval1 := newQGraphicsSceneResizeEvent(event)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -1177,7 +1157,7 @@ func miqt_exec_callback_QGraphicsWidget_ShowEvent(self *C.QGraphicsWidget, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQShowEvent(event, nil)
+	slotval1 := newQShowEvent(event)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1203,7 +1183,7 @@ func miqt_exec_callback_QGraphicsWidget_HoverMoveEvent(self *C.QGraphicsWidget, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_HoverMoveEvent, slotval1)
 
@@ -1229,7 +1209,7 @@ func miqt_exec_callback_QGraphicsWidget_HoverLeaveEvent(self *C.QGraphicsWidget,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_HoverLeaveEvent, slotval1)
 

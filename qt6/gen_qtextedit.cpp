@@ -888,46 +888,26 @@ public:
 
 };
 
-void QTextEdit_new(QWidget* parent, QTextEdit** outptr_QTextEdit, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQTextEdit* ret = new MiqtVirtualQTextEdit(parent);
-	*outptr_QTextEdit = ret;
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QTextEdit* QTextEdit_new(QWidget* parent) {
+	return new MiqtVirtualQTextEdit(parent);
 }
 
-void QTextEdit_new2(QTextEdit** outptr_QTextEdit, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQTextEdit* ret = new MiqtVirtualQTextEdit();
-	*outptr_QTextEdit = ret;
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QTextEdit* QTextEdit_new2() {
+	return new MiqtVirtualQTextEdit();
 }
 
-void QTextEdit_new3(struct miqt_string text, QTextEdit** outptr_QTextEdit, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QTextEdit* QTextEdit_new3(struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQTextEdit* ret = new MiqtVirtualQTextEdit(text_QString);
-	*outptr_QTextEdit = ret;
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQTextEdit(text_QString);
 }
 
-void QTextEdit_new4(struct miqt_string text, QWidget* parent, QTextEdit** outptr_QTextEdit, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QTextEdit* QTextEdit_new4(struct miqt_string text, QWidget* parent) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQTextEdit* ret = new MiqtVirtualQTextEdit(text_QString, parent);
-	*outptr_QTextEdit = ret;
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQTextEdit(text_QString, parent);
+}
+
+void QTextEdit_virtbase(QTextEdit* src, QAbstractScrollArea** outptr_QAbstractScrollArea) {
+	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(src);
 }
 
 QMetaObject* QTextEdit_MetaObject(const QTextEdit* self) {
@@ -1810,9 +1790,8 @@ void QTextEdit_Delete(QTextEdit* self, bool isSubclass) {
 	}
 }
 
-void QTextEdit__ExtraSelection_new(QTextEdit__ExtraSelection* param1, QTextEdit__ExtraSelection** outptr_QTextEdit__ExtraSelection) {
-	QTextEdit::ExtraSelection* ret = new QTextEdit::ExtraSelection(*param1);
-	*outptr_QTextEdit__ExtraSelection = ret;
+QTextEdit__ExtraSelection* QTextEdit__ExtraSelection_new(QTextEdit__ExtraSelection* param1) {
+	return new QTextEdit::ExtraSelection(*param1);
 }
 
 void QTextEdit__ExtraSelection_OperatorAssign(QTextEdit__ExtraSelection* self, QTextEdit__ExtraSelection* param1) {

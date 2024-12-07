@@ -64,24 +64,20 @@
 #include "gen_ScintillaEdit.h"
 #include "_cgo_export.h"
 
-void Scintilla__Internal__Point_new(Scintilla__Internal__Point** outptr_Scintilla__Internal__Point) {
-	Scintilla::Internal::Point* ret = new Scintilla::Internal::Point();
-	*outptr_Scintilla__Internal__Point = ret;
+Scintilla__Internal__Point* Scintilla__Internal__Point_new() {
+	return new Scintilla::Internal::Point();
 }
 
-void Scintilla__Internal__Point_new2(Scintilla__Internal__Point* param1, Scintilla__Internal__Point** outptr_Scintilla__Internal__Point) {
-	Scintilla::Internal::Point* ret = new Scintilla::Internal::Point(*param1);
-	*outptr_Scintilla__Internal__Point = ret;
+Scintilla__Internal__Point* Scintilla__Internal__Point_new2(Scintilla__Internal__Point* param1) {
+	return new Scintilla::Internal::Point(*param1);
 }
 
-void Scintilla__Internal__Point_new3(double x_, Scintilla__Internal__Point** outptr_Scintilla__Internal__Point) {
-	Scintilla::Internal::Point* ret = new Scintilla::Internal::Point(static_cast<Scintilla::Internal::XYPOSITION>(x_));
-	*outptr_Scintilla__Internal__Point = ret;
+Scintilla__Internal__Point* Scintilla__Internal__Point_new3(double x_) {
+	return new Scintilla::Internal::Point(static_cast<Scintilla::Internal::XYPOSITION>(x_));
 }
 
-void Scintilla__Internal__Point_new4(double x_, double y_, Scintilla__Internal__Point** outptr_Scintilla__Internal__Point) {
-	Scintilla::Internal::Point* ret = new Scintilla::Internal::Point(static_cast<Scintilla::Internal::XYPOSITION>(x_), static_cast<Scintilla::Internal::XYPOSITION>(y_));
-	*outptr_Scintilla__Internal__Point = ret;
+Scintilla__Internal__Point* Scintilla__Internal__Point_new4(double x_, double y_) {
+	return new Scintilla::Internal::Point(static_cast<Scintilla::Internal::XYPOSITION>(x_), static_cast<Scintilla::Internal::XYPOSITION>(y_));
 }
 
 Scintilla__Internal__Point* Scintilla__Internal__Point_FromInts(int x_, int y_) {
@@ -141,34 +137,28 @@ void Scintilla__Internal__Interval_Delete(Scintilla__Internal__Interval* self, b
 	}
 }
 
-void Scintilla__Internal__PRectangle_new(Scintilla__Internal__PRectangle** outptr_Scintilla__Internal__PRectangle) {
-	Scintilla::Internal::PRectangle* ret = new Scintilla::Internal::PRectangle();
-	*outptr_Scintilla__Internal__PRectangle = ret;
+Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_new() {
+	return new Scintilla::Internal::PRectangle();
 }
 
-void Scintilla__Internal__PRectangle_new2(Scintilla__Internal__PRectangle* param1, Scintilla__Internal__PRectangle** outptr_Scintilla__Internal__PRectangle) {
-	Scintilla::Internal::PRectangle* ret = new Scintilla::Internal::PRectangle(*param1);
-	*outptr_Scintilla__Internal__PRectangle = ret;
+Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_new2(Scintilla__Internal__PRectangle* param1) {
+	return new Scintilla::Internal::PRectangle(*param1);
 }
 
-void Scintilla__Internal__PRectangle_new3(double left_, Scintilla__Internal__PRectangle** outptr_Scintilla__Internal__PRectangle) {
-	Scintilla::Internal::PRectangle* ret = new Scintilla::Internal::PRectangle(static_cast<Scintilla::Internal::XYPOSITION>(left_));
-	*outptr_Scintilla__Internal__PRectangle = ret;
+Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_new3(double left_) {
+	return new Scintilla::Internal::PRectangle(static_cast<Scintilla::Internal::XYPOSITION>(left_));
 }
 
-void Scintilla__Internal__PRectangle_new4(double left_, double top_, Scintilla__Internal__PRectangle** outptr_Scintilla__Internal__PRectangle) {
-	Scintilla::Internal::PRectangle* ret = new Scintilla::Internal::PRectangle(static_cast<Scintilla::Internal::XYPOSITION>(left_), static_cast<Scintilla::Internal::XYPOSITION>(top_));
-	*outptr_Scintilla__Internal__PRectangle = ret;
+Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_new4(double left_, double top_) {
+	return new Scintilla::Internal::PRectangle(static_cast<Scintilla::Internal::XYPOSITION>(left_), static_cast<Scintilla::Internal::XYPOSITION>(top_));
 }
 
-void Scintilla__Internal__PRectangle_new5(double left_, double top_, double right_, Scintilla__Internal__PRectangle** outptr_Scintilla__Internal__PRectangle) {
-	Scintilla::Internal::PRectangle* ret = new Scintilla::Internal::PRectangle(static_cast<Scintilla::Internal::XYPOSITION>(left_), static_cast<Scintilla::Internal::XYPOSITION>(top_), static_cast<Scintilla::Internal::XYPOSITION>(right_));
-	*outptr_Scintilla__Internal__PRectangle = ret;
+Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_new5(double left_, double top_, double right_) {
+	return new Scintilla::Internal::PRectangle(static_cast<Scintilla::Internal::XYPOSITION>(left_), static_cast<Scintilla::Internal::XYPOSITION>(top_), static_cast<Scintilla::Internal::XYPOSITION>(right_));
 }
 
-void Scintilla__Internal__PRectangle_new6(double left_, double top_, double right_, double bottom_, Scintilla__Internal__PRectangle** outptr_Scintilla__Internal__PRectangle) {
-	Scintilla::Internal::PRectangle* ret = new Scintilla::Internal::PRectangle(static_cast<Scintilla::Internal::XYPOSITION>(left_), static_cast<Scintilla::Internal::XYPOSITION>(top_), static_cast<Scintilla::Internal::XYPOSITION>(right_), static_cast<Scintilla::Internal::XYPOSITION>(bottom_));
-	*outptr_Scintilla__Internal__PRectangle = ret;
+Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_new6(double left_, double top_, double right_, double bottom_) {
+	return new Scintilla::Internal::PRectangle(static_cast<Scintilla::Internal::XYPOSITION>(left_), static_cast<Scintilla::Internal::XYPOSITION>(top_), static_cast<Scintilla::Internal::XYPOSITION>(right_), static_cast<Scintilla::Internal::XYPOSITION>(bottom_));
 }
 
 Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_FromInts(int left_, int top_, int right_, int bottom_) {
@@ -241,34 +231,28 @@ void Scintilla__Internal__PRectangle_Delete(Scintilla__Internal__PRectangle* sel
 	}
 }
 
-void Scintilla__Internal__ColourRGBA_new(Scintilla__Internal__ColourRGBA** outptr_Scintilla__Internal__ColourRGBA) {
-	Scintilla::Internal::ColourRGBA* ret = new Scintilla::Internal::ColourRGBA();
-	*outptr_Scintilla__Internal__ColourRGBA = ret;
+Scintilla__Internal__ColourRGBA* Scintilla__Internal__ColourRGBA_new() {
+	return new Scintilla::Internal::ColourRGBA();
 }
 
-void Scintilla__Internal__ColourRGBA_new2(unsigned int red, unsigned int green, unsigned int blue, Scintilla__Internal__ColourRGBA** outptr_Scintilla__Internal__ColourRGBA) {
-	Scintilla::Internal::ColourRGBA* ret = new Scintilla::Internal::ColourRGBA(static_cast<unsigned int>(red), static_cast<unsigned int>(green), static_cast<unsigned int>(blue));
-	*outptr_Scintilla__Internal__ColourRGBA = ret;
+Scintilla__Internal__ColourRGBA* Scintilla__Internal__ColourRGBA_new2(unsigned int red, unsigned int green, unsigned int blue) {
+	return new Scintilla::Internal::ColourRGBA(static_cast<unsigned int>(red), static_cast<unsigned int>(green), static_cast<unsigned int>(blue));
 }
 
-void Scintilla__Internal__ColourRGBA_new3(Scintilla__Internal__ColourRGBA* cd, unsigned int alpha, Scintilla__Internal__ColourRGBA** outptr_Scintilla__Internal__ColourRGBA) {
-	Scintilla::Internal::ColourRGBA* ret = new Scintilla::Internal::ColourRGBA(*cd, static_cast<unsigned int>(alpha));
-	*outptr_Scintilla__Internal__ColourRGBA = ret;
+Scintilla__Internal__ColourRGBA* Scintilla__Internal__ColourRGBA_new3(Scintilla__Internal__ColourRGBA* cd, unsigned int alpha) {
+	return new Scintilla::Internal::ColourRGBA(*cd, static_cast<unsigned int>(alpha));
 }
 
-void Scintilla__Internal__ColourRGBA_new4(Scintilla__Internal__ColourRGBA* param1, Scintilla__Internal__ColourRGBA** outptr_Scintilla__Internal__ColourRGBA) {
-	Scintilla::Internal::ColourRGBA* ret = new Scintilla::Internal::ColourRGBA(*param1);
-	*outptr_Scintilla__Internal__ColourRGBA = ret;
+Scintilla__Internal__ColourRGBA* Scintilla__Internal__ColourRGBA_new4(Scintilla__Internal__ColourRGBA* param1) {
+	return new Scintilla::Internal::ColourRGBA(*param1);
 }
 
-void Scintilla__Internal__ColourRGBA_new5(int co_, Scintilla__Internal__ColourRGBA** outptr_Scintilla__Internal__ColourRGBA) {
-	Scintilla::Internal::ColourRGBA* ret = new Scintilla::Internal::ColourRGBA(static_cast<int>(co_));
-	*outptr_Scintilla__Internal__ColourRGBA = ret;
+Scintilla__Internal__ColourRGBA* Scintilla__Internal__ColourRGBA_new5(int co_) {
+	return new Scintilla::Internal::ColourRGBA(static_cast<int>(co_));
 }
 
-void Scintilla__Internal__ColourRGBA_new6(unsigned int red, unsigned int green, unsigned int blue, unsigned int alpha, Scintilla__Internal__ColourRGBA** outptr_Scintilla__Internal__ColourRGBA) {
-	Scintilla::Internal::ColourRGBA* ret = new Scintilla::Internal::ColourRGBA(static_cast<unsigned int>(red), static_cast<unsigned int>(green), static_cast<unsigned int>(blue), static_cast<unsigned int>(alpha));
-	*outptr_Scintilla__Internal__ColourRGBA = ret;
+Scintilla__Internal__ColourRGBA* Scintilla__Internal__ColourRGBA_new6(unsigned int red, unsigned int green, unsigned int blue, unsigned int alpha) {
+	return new Scintilla::Internal::ColourRGBA(static_cast<unsigned int>(red), static_cast<unsigned int>(green), static_cast<unsigned int>(blue), static_cast<unsigned int>(alpha));
 }
 
 Scintilla__Internal__ColourRGBA* Scintilla__Internal__ColourRGBA_FromRGB(int co_) {
@@ -363,19 +347,16 @@ void Scintilla__Internal__ColourRGBA_Delete(Scintilla__Internal__ColourRGBA* sel
 	}
 }
 
-void Scintilla__Internal__Stroke_new(Scintilla__Internal__ColourRGBA* colour_, Scintilla__Internal__Stroke** outptr_Scintilla__Internal__Stroke) {
-	Scintilla::Internal::Stroke* ret = new Scintilla::Internal::Stroke(*colour_);
-	*outptr_Scintilla__Internal__Stroke = ret;
+Scintilla__Internal__Stroke* Scintilla__Internal__Stroke_new(Scintilla__Internal__ColourRGBA* colour_) {
+	return new Scintilla::Internal::Stroke(*colour_);
 }
 
-void Scintilla__Internal__Stroke_new2(Scintilla__Internal__Stroke* param1, Scintilla__Internal__Stroke** outptr_Scintilla__Internal__Stroke) {
-	Scintilla::Internal::Stroke* ret = new Scintilla::Internal::Stroke(*param1);
-	*outptr_Scintilla__Internal__Stroke = ret;
+Scintilla__Internal__Stroke* Scintilla__Internal__Stroke_new2(Scintilla__Internal__Stroke* param1) {
+	return new Scintilla::Internal::Stroke(*param1);
 }
 
-void Scintilla__Internal__Stroke_new3(Scintilla__Internal__ColourRGBA* colour_, double width_, Scintilla__Internal__Stroke** outptr_Scintilla__Internal__Stroke) {
-	Scintilla::Internal::Stroke* ret = new Scintilla::Internal::Stroke(*colour_, static_cast<Scintilla::Internal::XYPOSITION>(width_));
-	*outptr_Scintilla__Internal__Stroke = ret;
+Scintilla__Internal__Stroke* Scintilla__Internal__Stroke_new3(Scintilla__Internal__ColourRGBA* colour_, double width_) {
+	return new Scintilla::Internal::Stroke(*colour_, static_cast<Scintilla::Internal::XYPOSITION>(width_));
 }
 
 float Scintilla__Internal__Stroke_WidthF(const Scintilla__Internal__Stroke* self) {
@@ -390,14 +371,12 @@ void Scintilla__Internal__Stroke_Delete(Scintilla__Internal__Stroke* self, bool 
 	}
 }
 
-void Scintilla__Internal__Fill_new(Scintilla__Internal__ColourRGBA* colour_, Scintilla__Internal__Fill** outptr_Scintilla__Internal__Fill) {
-	Scintilla::Internal::Fill* ret = new Scintilla::Internal::Fill(*colour_);
-	*outptr_Scintilla__Internal__Fill = ret;
+Scintilla__Internal__Fill* Scintilla__Internal__Fill_new(Scintilla__Internal__ColourRGBA* colour_) {
+	return new Scintilla::Internal::Fill(*colour_);
 }
 
-void Scintilla__Internal__Fill_new2(Scintilla__Internal__Fill* param1, Scintilla__Internal__Fill** outptr_Scintilla__Internal__Fill) {
-	Scintilla::Internal::Fill* ret = new Scintilla::Internal::Fill(*param1);
-	*outptr_Scintilla__Internal__Fill = ret;
+Scintilla__Internal__Fill* Scintilla__Internal__Fill_new2(Scintilla__Internal__Fill* param1) {
+	return new Scintilla::Internal::Fill(*param1);
 }
 
 void Scintilla__Internal__Fill_Delete(Scintilla__Internal__Fill* self, bool isSubclass) {
@@ -408,24 +387,20 @@ void Scintilla__Internal__Fill_Delete(Scintilla__Internal__Fill* self, bool isSu
 	}
 }
 
-void Scintilla__Internal__FillStroke_new(Scintilla__Internal__ColourRGBA* colourFill_, Scintilla__Internal__ColourRGBA* colourStroke_, Scintilla__Internal__FillStroke** outptr_Scintilla__Internal__FillStroke) {
-	Scintilla::Internal::FillStroke* ret = new Scintilla::Internal::FillStroke(*colourFill_, *colourStroke_);
-	*outptr_Scintilla__Internal__FillStroke = ret;
+Scintilla__Internal__FillStroke* Scintilla__Internal__FillStroke_new(Scintilla__Internal__ColourRGBA* colourFill_, Scintilla__Internal__ColourRGBA* colourStroke_) {
+	return new Scintilla::Internal::FillStroke(*colourFill_, *colourStroke_);
 }
 
-void Scintilla__Internal__FillStroke_new2(Scintilla__Internal__ColourRGBA* colourBoth, Scintilla__Internal__FillStroke** outptr_Scintilla__Internal__FillStroke) {
-	Scintilla::Internal::FillStroke* ret = new Scintilla::Internal::FillStroke(*colourBoth);
-	*outptr_Scintilla__Internal__FillStroke = ret;
+Scintilla__Internal__FillStroke* Scintilla__Internal__FillStroke_new2(Scintilla__Internal__ColourRGBA* colourBoth) {
+	return new Scintilla::Internal::FillStroke(*colourBoth);
 }
 
-void Scintilla__Internal__FillStroke_new3(Scintilla__Internal__ColourRGBA* colourFill_, Scintilla__Internal__ColourRGBA* colourStroke_, double widthStroke_, Scintilla__Internal__FillStroke** outptr_Scintilla__Internal__FillStroke) {
-	Scintilla::Internal::FillStroke* ret = new Scintilla::Internal::FillStroke(*colourFill_, *colourStroke_, static_cast<Scintilla::Internal::XYPOSITION>(widthStroke_));
-	*outptr_Scintilla__Internal__FillStroke = ret;
+Scintilla__Internal__FillStroke* Scintilla__Internal__FillStroke_new3(Scintilla__Internal__ColourRGBA* colourFill_, Scintilla__Internal__ColourRGBA* colourStroke_, double widthStroke_) {
+	return new Scintilla::Internal::FillStroke(*colourFill_, *colourStroke_, static_cast<Scintilla::Internal::XYPOSITION>(widthStroke_));
 }
 
-void Scintilla__Internal__FillStroke_new4(Scintilla__Internal__ColourRGBA* colourBoth, double widthStroke_, Scintilla__Internal__FillStroke** outptr_Scintilla__Internal__FillStroke) {
-	Scintilla::Internal::FillStroke* ret = new Scintilla::Internal::FillStroke(*colourBoth, static_cast<Scintilla::Internal::XYPOSITION>(widthStroke_));
-	*outptr_Scintilla__Internal__FillStroke = ret;
+Scintilla__Internal__FillStroke* Scintilla__Internal__FillStroke_new4(Scintilla__Internal__ColourRGBA* colourBoth, double widthStroke_) {
+	return new Scintilla::Internal::FillStroke(*colourBoth, static_cast<Scintilla::Internal::XYPOSITION>(widthStroke_));
 }
 
 void Scintilla__Internal__FillStroke_Delete(Scintilla__Internal__FillStroke* self, bool isSubclass) {
@@ -436,9 +411,8 @@ void Scintilla__Internal__FillStroke_Delete(Scintilla__Internal__FillStroke* sel
 	}
 }
 
-void Scintilla__Internal__ColourStop_new(double position_, Scintilla__Internal__ColourRGBA* colour_, Scintilla__Internal__ColourStop** outptr_Scintilla__Internal__ColourStop) {
-	Scintilla::Internal::ColourStop* ret = new Scintilla::Internal::ColourStop(static_cast<Scintilla::Internal::XYPOSITION>(position_), *colour_);
-	*outptr_Scintilla__Internal__ColourStop = ret;
+Scintilla__Internal__ColourStop* Scintilla__Internal__ColourStop_new(double position_, Scintilla__Internal__ColourRGBA* colour_) {
+	return new Scintilla::Internal::ColourStop(static_cast<Scintilla::Internal::XYPOSITION>(position_), *colour_);
 }
 
 void Scintilla__Internal__ColourStop_Delete(Scintilla__Internal__ColourStop* self, bool isSubclass) {
@@ -537,49 +511,40 @@ void Scintilla__NotificationData_Delete(Scintilla__NotificationData* self, bool 
 	}
 }
 
-void Scintilla__Internal__FontParameters_new(const char* faceName_, Scintilla__Internal__FontParameters** outptr_Scintilla__Internal__FontParameters) {
-	Scintilla::Internal::FontParameters* ret = new Scintilla::Internal::FontParameters(faceName_);
-	*outptr_Scintilla__Internal__FontParameters = ret;
+Scintilla__Internal__FontParameters* Scintilla__Internal__FontParameters_new(const char* faceName_) {
+	return new Scintilla::Internal::FontParameters(faceName_);
 }
 
-void Scintilla__Internal__FontParameters_new2(const char* faceName_, double size_, Scintilla__Internal__FontParameters** outptr_Scintilla__Internal__FontParameters) {
-	Scintilla::Internal::FontParameters* ret = new Scintilla::Internal::FontParameters(faceName_, static_cast<Scintilla::Internal::XYPOSITION>(size_));
-	*outptr_Scintilla__Internal__FontParameters = ret;
+Scintilla__Internal__FontParameters* Scintilla__Internal__FontParameters_new2(const char* faceName_, double size_) {
+	return new Scintilla::Internal::FontParameters(faceName_, static_cast<Scintilla::Internal::XYPOSITION>(size_));
 }
 
-void Scintilla__Internal__FontParameters_new3(const char* faceName_, double size_, int weight_, Scintilla__Internal__FontParameters** outptr_Scintilla__Internal__FontParameters) {
-	Scintilla::Internal::FontParameters* ret = new Scintilla::Internal::FontParameters(faceName_, static_cast<Scintilla::Internal::XYPOSITION>(size_), static_cast<Scintilla::FontWeight>(weight_));
-	*outptr_Scintilla__Internal__FontParameters = ret;
+Scintilla__Internal__FontParameters* Scintilla__Internal__FontParameters_new3(const char* faceName_, double size_, int weight_) {
+	return new Scintilla::Internal::FontParameters(faceName_, static_cast<Scintilla::Internal::XYPOSITION>(size_), static_cast<Scintilla::FontWeight>(weight_));
 }
 
-void Scintilla__Internal__FontParameters_new4(const char* faceName_, double size_, int weight_, bool italic_, Scintilla__Internal__FontParameters** outptr_Scintilla__Internal__FontParameters) {
-	Scintilla::Internal::FontParameters* ret = new Scintilla::Internal::FontParameters(faceName_, static_cast<Scintilla::Internal::XYPOSITION>(size_), static_cast<Scintilla::FontWeight>(weight_), italic_);
-	*outptr_Scintilla__Internal__FontParameters = ret;
+Scintilla__Internal__FontParameters* Scintilla__Internal__FontParameters_new4(const char* faceName_, double size_, int weight_, bool italic_) {
+	return new Scintilla::Internal::FontParameters(faceName_, static_cast<Scintilla::Internal::XYPOSITION>(size_), static_cast<Scintilla::FontWeight>(weight_), italic_);
 }
 
-void Scintilla__Internal__FontParameters_new5(const char* faceName_, double size_, int weight_, bool italic_, int extraFontFlag_, Scintilla__Internal__FontParameters** outptr_Scintilla__Internal__FontParameters) {
-	Scintilla::Internal::FontParameters* ret = new Scintilla::Internal::FontParameters(faceName_, static_cast<Scintilla::Internal::XYPOSITION>(size_), static_cast<Scintilla::FontWeight>(weight_), italic_, static_cast<Scintilla::FontQuality>(extraFontFlag_));
-	*outptr_Scintilla__Internal__FontParameters = ret;
+Scintilla__Internal__FontParameters* Scintilla__Internal__FontParameters_new5(const char* faceName_, double size_, int weight_, bool italic_, int extraFontFlag_) {
+	return new Scintilla::Internal::FontParameters(faceName_, static_cast<Scintilla::Internal::XYPOSITION>(size_), static_cast<Scintilla::FontWeight>(weight_), italic_, static_cast<Scintilla::FontQuality>(extraFontFlag_));
 }
 
-void Scintilla__Internal__FontParameters_new6(const char* faceName_, double size_, int weight_, bool italic_, int extraFontFlag_, int technology_, Scintilla__Internal__FontParameters** outptr_Scintilla__Internal__FontParameters) {
-	Scintilla::Internal::FontParameters* ret = new Scintilla::Internal::FontParameters(faceName_, static_cast<Scintilla::Internal::XYPOSITION>(size_), static_cast<Scintilla::FontWeight>(weight_), italic_, static_cast<Scintilla::FontQuality>(extraFontFlag_), static_cast<Scintilla::Technology>(technology_));
-	*outptr_Scintilla__Internal__FontParameters = ret;
+Scintilla__Internal__FontParameters* Scintilla__Internal__FontParameters_new6(const char* faceName_, double size_, int weight_, bool italic_, int extraFontFlag_, int technology_) {
+	return new Scintilla::Internal::FontParameters(faceName_, static_cast<Scintilla::Internal::XYPOSITION>(size_), static_cast<Scintilla::FontWeight>(weight_), italic_, static_cast<Scintilla::FontQuality>(extraFontFlag_), static_cast<Scintilla::Technology>(technology_));
 }
 
-void Scintilla__Internal__FontParameters_new7(const char* faceName_, double size_, int weight_, bool italic_, int extraFontFlag_, int technology_, int characterSet_, Scintilla__Internal__FontParameters** outptr_Scintilla__Internal__FontParameters) {
-	Scintilla::Internal::FontParameters* ret = new Scintilla::Internal::FontParameters(faceName_, static_cast<Scintilla::Internal::XYPOSITION>(size_), static_cast<Scintilla::FontWeight>(weight_), italic_, static_cast<Scintilla::FontQuality>(extraFontFlag_), static_cast<Scintilla::Technology>(technology_), static_cast<Scintilla::CharacterSet>(characterSet_));
-	*outptr_Scintilla__Internal__FontParameters = ret;
+Scintilla__Internal__FontParameters* Scintilla__Internal__FontParameters_new7(const char* faceName_, double size_, int weight_, bool italic_, int extraFontFlag_, int technology_, int characterSet_) {
+	return new Scintilla::Internal::FontParameters(faceName_, static_cast<Scintilla::Internal::XYPOSITION>(size_), static_cast<Scintilla::FontWeight>(weight_), italic_, static_cast<Scintilla::FontQuality>(extraFontFlag_), static_cast<Scintilla::Technology>(technology_), static_cast<Scintilla::CharacterSet>(characterSet_));
 }
 
-void Scintilla__Internal__FontParameters_new8(const char* faceName_, double size_, int weight_, bool italic_, int extraFontFlag_, int technology_, int characterSet_, const char* localeName_, Scintilla__Internal__FontParameters** outptr_Scintilla__Internal__FontParameters) {
-	Scintilla::Internal::FontParameters* ret = new Scintilla::Internal::FontParameters(faceName_, static_cast<Scintilla::Internal::XYPOSITION>(size_), static_cast<Scintilla::FontWeight>(weight_), italic_, static_cast<Scintilla::FontQuality>(extraFontFlag_), static_cast<Scintilla::Technology>(technology_), static_cast<Scintilla::CharacterSet>(characterSet_), localeName_);
-	*outptr_Scintilla__Internal__FontParameters = ret;
+Scintilla__Internal__FontParameters* Scintilla__Internal__FontParameters_new8(const char* faceName_, double size_, int weight_, bool italic_, int extraFontFlag_, int technology_, int characterSet_, const char* localeName_) {
+	return new Scintilla::Internal::FontParameters(faceName_, static_cast<Scintilla::Internal::XYPOSITION>(size_), static_cast<Scintilla::FontWeight>(weight_), italic_, static_cast<Scintilla::FontQuality>(extraFontFlag_), static_cast<Scintilla::Technology>(technology_), static_cast<Scintilla::CharacterSet>(characterSet_), localeName_);
 }
 
-void Scintilla__Internal__FontParameters_new9(const char* faceName_, double size_, int weight_, bool italic_, int extraFontFlag_, int technology_, int characterSet_, const char* localeName_, int stretch_, Scintilla__Internal__FontParameters** outptr_Scintilla__Internal__FontParameters) {
-	Scintilla::Internal::FontParameters* ret = new Scintilla::Internal::FontParameters(faceName_, static_cast<Scintilla::Internal::XYPOSITION>(size_), static_cast<Scintilla::FontWeight>(weight_), italic_, static_cast<Scintilla::FontQuality>(extraFontFlag_), static_cast<Scintilla::Technology>(technology_), static_cast<Scintilla::CharacterSet>(characterSet_), localeName_, static_cast<Scintilla::FontStretch>(stretch_));
-	*outptr_Scintilla__Internal__FontParameters = ret;
+Scintilla__Internal__FontParameters* Scintilla__Internal__FontParameters_new9(const char* faceName_, double size_, int weight_, bool italic_, int extraFontFlag_, int technology_, int characterSet_, const char* localeName_, int stretch_) {
+	return new Scintilla::Internal::FontParameters(faceName_, static_cast<Scintilla::Internal::XYPOSITION>(size_), static_cast<Scintilla::FontWeight>(weight_), italic_, static_cast<Scintilla::FontQuality>(extraFontFlag_), static_cast<Scintilla::Technology>(technology_), static_cast<Scintilla::CharacterSet>(characterSet_), localeName_, static_cast<Scintilla::FontStretch>(stretch_));
 }
 
 void Scintilla__Internal__FontParameters_Delete(Scintilla__Internal__FontParameters* self, bool isSubclass) {
@@ -590,9 +555,8 @@ void Scintilla__Internal__FontParameters_Delete(Scintilla__Internal__FontParamet
 	}
 }
 
-void Scintilla__Internal__Font_new(Scintilla__Internal__Font** outptr_Scintilla__Internal__Font) {
-	Scintilla::Internal::Font* ret = new Scintilla::Internal::Font();
-	*outptr_Scintilla__Internal__Font = ret;
+Scintilla__Internal__Font* Scintilla__Internal__Font_new() {
+	return new Scintilla::Internal::Font();
 }
 
 void Scintilla__Internal__Font_Delete(Scintilla__Internal__Font* self, bool isSubclass) {
@@ -678,14 +642,12 @@ void Scintilla__Internal__IScreenLineLayout_Delete(Scintilla__Internal__IScreenL
 	}
 }
 
-void Scintilla__Internal__SurfaceMode_new(Scintilla__Internal__SurfaceMode** outptr_Scintilla__Internal__SurfaceMode) {
-	Scintilla::Internal::SurfaceMode* ret = new Scintilla::Internal::SurfaceMode();
-	*outptr_Scintilla__Internal__SurfaceMode = ret;
+Scintilla__Internal__SurfaceMode* Scintilla__Internal__SurfaceMode_new() {
+	return new Scintilla::Internal::SurfaceMode();
 }
 
-void Scintilla__Internal__SurfaceMode_new2(int codePage_, bool bidiR2L_, Scintilla__Internal__SurfaceMode** outptr_Scintilla__Internal__SurfaceMode) {
-	Scintilla::Internal::SurfaceMode* ret = new Scintilla::Internal::SurfaceMode(static_cast<int>(codePage_), bidiR2L_);
-	*outptr_Scintilla__Internal__SurfaceMode = ret;
+Scintilla__Internal__SurfaceMode* Scintilla__Internal__SurfaceMode_new2(int codePage_, bool bidiR2L_) {
+	return new Scintilla::Internal::SurfaceMode(static_cast<int>(codePage_), bidiR2L_);
 }
 
 void Scintilla__Internal__SurfaceMode_Delete(Scintilla__Internal__SurfaceMode* self, bool isSubclass) {
@@ -1243,9 +1205,8 @@ public:
 
 };
 
-void Scintilla__Internal__Surface_new(Scintilla__Internal__Surface** outptr_Scintilla__Internal__Surface) {
-	MiqtVirtualScintillaInternalSurface* ret = new MiqtVirtualScintillaInternalSurface();
-	*outptr_Scintilla__Internal__Surface = ret;
+Scintilla__Internal__Surface* Scintilla__Internal__Surface_new() {
+	return new MiqtVirtualScintillaInternalSurface();
 }
 
 void Scintilla__Internal__Surface_Init(Scintilla__Internal__Surface* self, void* wid) {
@@ -1517,9 +1478,8 @@ void Scintilla__Internal__Surface_Delete(Scintilla__Internal__Surface* self, boo
 	}
 }
 
-void Scintilla__Internal__Window_new(Scintilla__Internal__Window** outptr_Scintilla__Internal__Window) {
-	Scintilla::Internal::Window* ret = new Scintilla::Internal::Window();
-	*outptr_Scintilla__Internal__Window = ret;
+Scintilla__Internal__Window* Scintilla__Internal__Window_new() {
+	return new Scintilla::Internal::Window();
 }
 
 void Scintilla__Internal__Window_OperatorAssign(Scintilla__Internal__Window* self, void* wid_) {
@@ -1587,9 +1547,8 @@ void Scintilla__Internal__Window_Delete(Scintilla__Internal__Window* self, bool 
 	}
 }
 
-void Scintilla__Internal__ListBoxEvent_new(int event_, Scintilla__Internal__ListBoxEvent** outptr_Scintilla__Internal__ListBoxEvent) {
-	Scintilla::Internal::ListBoxEvent* ret = new Scintilla::Internal::ListBoxEvent(static_cast<Scintilla::Internal::ListBoxEvent::EventType>(event_));
-	*outptr_Scintilla__Internal__ListBoxEvent = ret;
+Scintilla__Internal__ListBoxEvent* Scintilla__Internal__ListBoxEvent_new(int event_) {
+	return new Scintilla::Internal::ListBoxEvent(static_cast<Scintilla::Internal::ListBoxEvent::EventType>(event_));
 }
 
 void Scintilla__Internal__ListBoxEvent_Delete(Scintilla__Internal__ListBoxEvent* self, bool isSubclass) {
@@ -1945,10 +1904,12 @@ public:
 
 };
 
-void Scintilla__Internal__ListBox_new(Scintilla__Internal__ListBox** outptr_Scintilla__Internal__ListBox, Scintilla__Internal__Window** outptr_Scintilla__Internal__Window) {
-	MiqtVirtualScintillaInternalListBox* ret = new MiqtVirtualScintillaInternalListBox();
-	*outptr_Scintilla__Internal__ListBox = ret;
-	*outptr_Scintilla__Internal__Window = static_cast<Scintilla::Internal::Window*>(ret);
+Scintilla__Internal__ListBox* Scintilla__Internal__ListBox_new() {
+	return new MiqtVirtualScintillaInternalListBox();
+}
+
+void Scintilla__Internal__ListBox_virtbase(Scintilla__Internal__ListBox* src, Scintilla::Internal::Window** outptr_Scintilla__Internal__Window) {
+	*outptr_Scintilla__Internal__Window = static_cast<Scintilla::Internal::Window*>(src);
 }
 
 void Scintilla__Internal__ListBox_SetFont(Scintilla__Internal__ListBox* self, Scintilla__Internal__Font* font) {
@@ -2111,9 +2072,8 @@ void Scintilla__Internal__ListBox_Delete(Scintilla__Internal__ListBox* self, boo
 	}
 }
 
-void Scintilla__Internal__Menu_new(Scintilla__Internal__Menu** outptr_Scintilla__Internal__Menu) {
-	Scintilla::Internal::Menu* ret = new Scintilla::Internal::Menu();
-	*outptr_Scintilla__Internal__Menu = ret;
+Scintilla__Internal__Menu* Scintilla__Internal__Menu_new() {
+	return new Scintilla::Internal::Menu();
 }
 
 void* Scintilla__Internal__Menu_GetID(const Scintilla__Internal__Menu* self) {
@@ -2887,24 +2847,16 @@ public:
 
 };
 
-void ScintillaEditBase_new(QWidget* parent, ScintillaEditBase** outptr_ScintillaEditBase, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualScintillaEditBase* ret = new MiqtVirtualScintillaEditBase(parent);
-	*outptr_ScintillaEditBase = ret;
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+ScintillaEditBase* ScintillaEditBase_new(QWidget* parent) {
+	return new MiqtVirtualScintillaEditBase(parent);
 }
 
-void ScintillaEditBase_new2(ScintillaEditBase** outptr_ScintillaEditBase, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualScintillaEditBase* ret = new MiqtVirtualScintillaEditBase();
-	*outptr_ScintillaEditBase = ret;
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+ScintillaEditBase* ScintillaEditBase_new2() {
+	return new MiqtVirtualScintillaEditBase();
+}
+
+void ScintillaEditBase_virtbase(ScintillaEditBase* src, QAbstractScrollArea** outptr_QAbstractScrollArea) {
+	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(src);
 }
 
 QMetaObject* ScintillaEditBase_MetaObject(const ScintillaEditBase* self) {
@@ -3884,22 +3836,20 @@ public:
 
 };
 
-void ScintillaDocument_new(ScintillaDocument** outptr_ScintillaDocument, QObject** outptr_QObject) {
-	MiqtVirtualScintillaDocument* ret = new MiqtVirtualScintillaDocument();
-	*outptr_ScintillaDocument = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+ScintillaDocument* ScintillaDocument_new() {
+	return new MiqtVirtualScintillaDocument();
 }
 
-void ScintillaDocument_new2(QObject* parent, ScintillaDocument** outptr_ScintillaDocument, QObject** outptr_QObject) {
-	MiqtVirtualScintillaDocument* ret = new MiqtVirtualScintillaDocument(parent);
-	*outptr_ScintillaDocument = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+ScintillaDocument* ScintillaDocument_new2(QObject* parent) {
+	return new MiqtVirtualScintillaDocument(parent);
 }
 
-void ScintillaDocument_new3(QObject* parent, void* pdoc_, ScintillaDocument** outptr_ScintillaDocument, QObject** outptr_QObject) {
-	MiqtVirtualScintillaDocument* ret = new MiqtVirtualScintillaDocument(parent, pdoc_);
-	*outptr_ScintillaDocument = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+ScintillaDocument* ScintillaDocument_new3(QObject* parent, void* pdoc_) {
+	return new MiqtVirtualScintillaDocument(parent, pdoc_);
+}
+
+void ScintillaDocument_virtbase(ScintillaDocument* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* ScintillaDocument_MetaObject(const ScintillaDocument* self) {
@@ -4798,26 +4748,16 @@ public:
 
 };
 
-void ScintillaEdit_new(QWidget* parent, ScintillaEdit** outptr_ScintillaEdit, ScintillaEditBase** outptr_ScintillaEditBase, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualScintillaEdit* ret = new MiqtVirtualScintillaEdit(parent);
-	*outptr_ScintillaEdit = ret;
-	*outptr_ScintillaEditBase = static_cast<ScintillaEditBase*>(ret);
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+ScintillaEdit* ScintillaEdit_new(QWidget* parent) {
+	return new MiqtVirtualScintillaEdit(parent);
 }
 
-void ScintillaEdit_new2(ScintillaEdit** outptr_ScintillaEdit, ScintillaEditBase** outptr_ScintillaEditBase, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualScintillaEdit* ret = new MiqtVirtualScintillaEdit();
-	*outptr_ScintillaEdit = ret;
-	*outptr_ScintillaEditBase = static_cast<ScintillaEditBase*>(ret);
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+ScintillaEdit* ScintillaEdit_new2() {
+	return new MiqtVirtualScintillaEdit();
+}
+
+void ScintillaEdit_virtbase(ScintillaEdit* src, ScintillaEditBase** outptr_ScintillaEditBase) {
+	*outptr_ScintillaEditBase = static_cast<ScintillaEditBase*>(src);
 }
 
 QMetaObject* ScintillaEdit_MetaObject(const ScintillaEdit* self) {

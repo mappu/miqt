@@ -201,18 +201,16 @@ public:
 
 };
 
-void QVariantAnimation_new(QVariantAnimation** outptr_QVariantAnimation, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject) {
-	MiqtVirtualQVariantAnimation* ret = new MiqtVirtualQVariantAnimation();
-	*outptr_QVariantAnimation = ret;
-	*outptr_QAbstractAnimation = static_cast<QAbstractAnimation*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QVariantAnimation* QVariantAnimation_new() {
+	return new MiqtVirtualQVariantAnimation();
 }
 
-void QVariantAnimation_new2(QObject* parent, QVariantAnimation** outptr_QVariantAnimation, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject) {
-	MiqtVirtualQVariantAnimation* ret = new MiqtVirtualQVariantAnimation(parent);
-	*outptr_QVariantAnimation = ret;
-	*outptr_QAbstractAnimation = static_cast<QAbstractAnimation*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QVariantAnimation* QVariantAnimation_new2(QObject* parent) {
+	return new MiqtVirtualQVariantAnimation(parent);
+}
+
+void QVariantAnimation_virtbase(QVariantAnimation* src, QAbstractAnimation** outptr_QAbstractAnimation) {
+	*outptr_QAbstractAnimation = static_cast<QAbstractAnimation*>(src);
 }
 
 QMetaObject* QVariantAnimation_MetaObject(const QVariantAnimation* self) {

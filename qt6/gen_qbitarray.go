@@ -37,54 +37,43 @@ func newQBitArray(h *C.QBitArray) *QBitArray {
 	if h == nil {
 		return nil
 	}
+
 	return &QBitArray{h: h}
 }
 
 // UnsafeNewQBitArray constructs the type using only unsafe pointers.
 func UnsafeNewQBitArray(h unsafe.Pointer) *QBitArray {
-	if h == nil {
-		return nil
-	}
-
-	return &QBitArray{h: (*C.QBitArray)(h)}
+	return newQBitArray((*C.QBitArray)(h))
 }
 
 // NewQBitArray constructs a new QBitArray object.
 func NewQBitArray() *QBitArray {
-	var outptr_QBitArray *C.QBitArray = nil
 
-	C.QBitArray_new(&outptr_QBitArray)
-	ret := newQBitArray(outptr_QBitArray)
+	ret := newQBitArray(C.QBitArray_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQBitArray2 constructs a new QBitArray object.
 func NewQBitArray2(size int64) *QBitArray {
-	var outptr_QBitArray *C.QBitArray = nil
 
-	C.QBitArray_new2((C.ptrdiff_t)(size), &outptr_QBitArray)
-	ret := newQBitArray(outptr_QBitArray)
+	ret := newQBitArray(C.QBitArray_new2((C.ptrdiff_t)(size)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQBitArray3 constructs a new QBitArray object.
 func NewQBitArray3(other *QBitArray) *QBitArray {
-	var outptr_QBitArray *C.QBitArray = nil
 
-	C.QBitArray_new3(other.cPointer(), &outptr_QBitArray)
-	ret := newQBitArray(outptr_QBitArray)
+	ret := newQBitArray(C.QBitArray_new3(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQBitArray4 constructs a new QBitArray object.
 func NewQBitArray4(size int64, val bool) *QBitArray {
-	var outptr_QBitArray *C.QBitArray = nil
 
-	C.QBitArray_new4((C.ptrdiff_t)(size), (C.bool)(val), &outptr_QBitArray)
-	ret := newQBitArray(outptr_QBitArray)
+	ret := newQBitArray(C.QBitArray_new4((C.ptrdiff_t)(size), (C.bool)(val)))
 	ret.isSubclass = true
 	return ret
 }
@@ -262,24 +251,19 @@ func newQBitRef(h *C.QBitRef) *QBitRef {
 	if h == nil {
 		return nil
 	}
+
 	return &QBitRef{h: h}
 }
 
 // UnsafeNewQBitRef constructs the type using only unsafe pointers.
 func UnsafeNewQBitRef(h unsafe.Pointer) *QBitRef {
-	if h == nil {
-		return nil
-	}
-
-	return &QBitRef{h: (*C.QBitRef)(h)}
+	return newQBitRef((*C.QBitRef)(h))
 }
 
 // NewQBitRef constructs a new QBitRef object.
 func NewQBitRef(param1 *QBitRef) *QBitRef {
-	var outptr_QBitRef *C.QBitRef = nil
 
-	C.QBitRef_new(param1.cPointer(), &outptr_QBitRef)
-	ret := newQBitRef(outptr_QBitRef)
+	ret := newQBitRef(C.QBitRef_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

@@ -193,18 +193,18 @@ public:
 
 };
 
-void QSound_new(struct miqt_string filename, QSound** outptr_QSound, QObject** outptr_QObject) {
+QSound* QSound_new(struct miqt_string filename) {
 	QString filename_QString = QString::fromUtf8(filename.data, filename.len);
-	MiqtVirtualQSound* ret = new MiqtVirtualQSound(filename_QString);
-	*outptr_QSound = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQSound(filename_QString);
 }
 
-void QSound_new2(struct miqt_string filename, QObject* parent, QSound** outptr_QSound, QObject** outptr_QObject) {
+QSound* QSound_new2(struct miqt_string filename, QObject* parent) {
 	QString filename_QString = QString::fromUtf8(filename.data, filename.len);
-	MiqtVirtualQSound* ret = new MiqtVirtualQSound(filename_QString, parent);
-	*outptr_QSound = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQSound(filename_QString, parent);
+}
+
+void QSound_virtbase(QSound* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QSound_MetaObject(const QSound* self) {

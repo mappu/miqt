@@ -44,24 +44,19 @@ func newQHstsPolicy(h *C.QHstsPolicy) *QHstsPolicy {
 	if h == nil {
 		return nil
 	}
+
 	return &QHstsPolicy{h: h}
 }
 
 // UnsafeNewQHstsPolicy constructs the type using only unsafe pointers.
 func UnsafeNewQHstsPolicy(h unsafe.Pointer) *QHstsPolicy {
-	if h == nil {
-		return nil
-	}
-
-	return &QHstsPolicy{h: (*C.QHstsPolicy)(h)}
+	return newQHstsPolicy((*C.QHstsPolicy)(h))
 }
 
 // NewQHstsPolicy constructs a new QHstsPolicy object.
 func NewQHstsPolicy() *QHstsPolicy {
-	var outptr_QHstsPolicy *C.QHstsPolicy = nil
 
-	C.QHstsPolicy_new(&outptr_QHstsPolicy)
-	ret := newQHstsPolicy(outptr_QHstsPolicy)
+	ret := newQHstsPolicy(C.QHstsPolicy_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -72,20 +67,16 @@ func NewQHstsPolicy2(expiry *qt6.QDateTime, flags QHstsPolicy__PolicyFlag, host 
 	host_ms.data = C.CString(host)
 	host_ms.len = C.size_t(len(host))
 	defer C.free(unsafe.Pointer(host_ms.data))
-	var outptr_QHstsPolicy *C.QHstsPolicy = nil
 
-	C.QHstsPolicy_new2((*C.QDateTime)(expiry.UnsafePointer()), (C.int)(flags), host_ms, &outptr_QHstsPolicy)
-	ret := newQHstsPolicy(outptr_QHstsPolicy)
+	ret := newQHstsPolicy(C.QHstsPolicy_new2((*C.QDateTime)(expiry.UnsafePointer()), (C.int)(flags), host_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQHstsPolicy3 constructs a new QHstsPolicy object.
 func NewQHstsPolicy3(rhs *QHstsPolicy) *QHstsPolicy {
-	var outptr_QHstsPolicy *C.QHstsPolicy = nil
 
-	C.QHstsPolicy_new3(rhs.cPointer(), &outptr_QHstsPolicy)
-	ret := newQHstsPolicy(outptr_QHstsPolicy)
+	ret := newQHstsPolicy(C.QHstsPolicy_new3(rhs.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -96,10 +87,8 @@ func NewQHstsPolicy4(expiry *qt6.QDateTime, flags QHstsPolicy__PolicyFlag, host 
 	host_ms.data = C.CString(host)
 	host_ms.len = C.size_t(len(host))
 	defer C.free(unsafe.Pointer(host_ms.data))
-	var outptr_QHstsPolicy *C.QHstsPolicy = nil
 
-	C.QHstsPolicy_new4((*C.QDateTime)(expiry.UnsafePointer()), (C.int)(flags), host_ms, (C.int)(mode), &outptr_QHstsPolicy)
-	ret := newQHstsPolicy(outptr_QHstsPolicy)
+	ret := newQHstsPolicy(C.QHstsPolicy_new4((*C.QDateTime)(expiry.UnsafePointer()), (C.int)(flags), host_ms, (C.int)(mode)))
 	ret.isSubclass = true
 	return ret
 }

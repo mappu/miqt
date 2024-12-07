@@ -50,8 +50,9 @@ typedef struct QVariant QVariant;
 typedef struct QWidget QWidget;
 #endif
 
-void QStyledItemDelegate_new(QStyledItemDelegate** outptr_QStyledItemDelegate, QAbstractItemDelegate** outptr_QAbstractItemDelegate, QObject** outptr_QObject);
-void QStyledItemDelegate_new2(QObject* parent, QStyledItemDelegate** outptr_QStyledItemDelegate, QAbstractItemDelegate** outptr_QAbstractItemDelegate, QObject** outptr_QObject);
+QStyledItemDelegate* QStyledItemDelegate_new();
+QStyledItemDelegate* QStyledItemDelegate_new2(QObject* parent);
+void QStyledItemDelegate_virtbase(QStyledItemDelegate* src, QAbstractItemDelegate** outptr_QAbstractItemDelegate);
 QMetaObject* QStyledItemDelegate_MetaObject(const QStyledItemDelegate* self);
 void* QStyledItemDelegate_Metacast(QStyledItemDelegate* self, const char* param1);
 struct miqt_string QStyledItemDelegate_Tr(const char* s);

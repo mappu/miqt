@@ -44,22 +44,20 @@ func (this *QWebEngineNewWindowRequest) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebEngineNewWindowRequest constructs the type using only CGO pointers.
-func newQWebEngineNewWindowRequest(h *C.QWebEngineNewWindowRequest, h_QObject *C.QObject) *QWebEngineNewWindowRequest {
+func newQWebEngineNewWindowRequest(h *C.QWebEngineNewWindowRequest) *QWebEngineNewWindowRequest {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebEngineNewWindowRequest_virtbase(h, &outptr_QObject)
+
 	return &QWebEngineNewWindowRequest{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebEngineNewWindowRequest constructs the type using only unsafe pointers.
-func UnsafeNewQWebEngineNewWindowRequest(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebEngineNewWindowRequest {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineNewWindowRequest{h: (*C.QWebEngineNewWindowRequest)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebEngineNewWindowRequest(h unsafe.Pointer) *QWebEngineNewWindowRequest {
+	return newQWebEngineNewWindowRequest((*C.QWebEngineNewWindowRequest)(h))
 }
 
 func (this *QWebEngineNewWindowRequest) MetaObject() *qt6.QMetaObject {

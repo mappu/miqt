@@ -52,76 +52,50 @@ func (this *QLCDNumber) UnsafePointer() unsafe.Pointer {
 }
 
 // newQLCDNumber constructs the type using only CGO pointers.
-func newQLCDNumber(h *C.QLCDNumber, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QLCDNumber {
+func newQLCDNumber(h *C.QLCDNumber) *QLCDNumber {
 	if h == nil {
 		return nil
 	}
+	var outptr_QFrame *C.QFrame = nil
+	C.QLCDNumber_virtbase(h, &outptr_QFrame)
+
 	return &QLCDNumber{h: h,
-		QFrame: newQFrame(h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+		QFrame: newQFrame(outptr_QFrame)}
 }
 
 // UnsafeNewQLCDNumber constructs the type using only unsafe pointers.
-func UnsafeNewQLCDNumber(h unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QLCDNumber {
-	if h == nil {
-		return nil
-	}
-
-	return &QLCDNumber{h: (*C.QLCDNumber)(h),
-		QFrame: UnsafeNewQFrame(h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQLCDNumber(h unsafe.Pointer) *QLCDNumber {
+	return newQLCDNumber((*C.QLCDNumber)(h))
 }
 
 // NewQLCDNumber constructs a new QLCDNumber object.
 func NewQLCDNumber(parent *QWidget) *QLCDNumber {
-	var outptr_QLCDNumber *C.QLCDNumber = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QLCDNumber_new(parent.cPointer(), &outptr_QLCDNumber, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQLCDNumber(outptr_QLCDNumber, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQLCDNumber(C.QLCDNumber_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQLCDNumber2 constructs a new QLCDNumber object.
 func NewQLCDNumber2() *QLCDNumber {
-	var outptr_QLCDNumber *C.QLCDNumber = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QLCDNumber_new2(&outptr_QLCDNumber, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQLCDNumber(outptr_QLCDNumber, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQLCDNumber(C.QLCDNumber_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQLCDNumber3 constructs a new QLCDNumber object.
 func NewQLCDNumber3(numDigits uint) *QLCDNumber {
-	var outptr_QLCDNumber *C.QLCDNumber = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QLCDNumber_new3((C.uint)(numDigits), &outptr_QLCDNumber, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQLCDNumber(outptr_QLCDNumber, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQLCDNumber(C.QLCDNumber_new3((C.uint)(numDigits)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQLCDNumber4 constructs a new QLCDNumber object.
 func NewQLCDNumber4(numDigits uint, parent *QWidget) *QLCDNumber {
-	var outptr_QLCDNumber *C.QLCDNumber = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QLCDNumber_new4((C.uint)(numDigits), parent.cPointer(), &outptr_QLCDNumber, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQLCDNumber(outptr_QLCDNumber, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQLCDNumber(C.QLCDNumber_new4((C.uint)(numDigits), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -376,7 +350,7 @@ func miqt_exec_callback_QLCDNumber_PaintEvent(self *C.QLCDNumber, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(param1, nil)
+	slotval1 := newQPaintEvent(param1)
 
 	gofunc((&QLCDNumber{h: self}).callVirtualBase_PaintEvent, slotval1)
 

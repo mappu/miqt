@@ -22,8 +22,8 @@ typedef struct QFont QFont;
 typedef struct QFontInfo QFontInfo;
 #endif
 
-void QFontInfo_new(QFont* param1, QFontInfo** outptr_QFontInfo);
-void QFontInfo_new2(QFontInfo* param1, QFontInfo** outptr_QFontInfo);
+QFontInfo* QFontInfo_new(QFont* param1);
+QFontInfo* QFontInfo_new2(QFontInfo* param1);
 void QFontInfo_OperatorAssign(QFontInfo* self, QFontInfo* param1);
 void QFontInfo_Swap(QFontInfo* self, QFontInfo* other);
 struct miqt_string QFontInfo_Family(const QFontInfo* self);

@@ -10,6 +10,10 @@
 #include "gen_qaudioinputselectorcontrol.h"
 #include "_cgo_export.h"
 
+void QAudioInputSelectorControl_virtbase(QAudioInputSelectorControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
+
 QMetaObject* QAudioInputSelectorControl_MetaObject(const QAudioInputSelectorControl* self) {
 	return (QMetaObject*) self->metaObject();
 }

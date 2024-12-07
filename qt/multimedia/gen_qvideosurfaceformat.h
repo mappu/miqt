@@ -26,10 +26,10 @@ typedef struct QVariant QVariant;
 typedef struct QVideoSurfaceFormat QVideoSurfaceFormat;
 #endif
 
-void QVideoSurfaceFormat_new(QVideoSurfaceFormat** outptr_QVideoSurfaceFormat);
-void QVideoSurfaceFormat_new2(QSize* size, int pixelFormat, QVideoSurfaceFormat** outptr_QVideoSurfaceFormat);
-void QVideoSurfaceFormat_new3(QVideoSurfaceFormat* format, QVideoSurfaceFormat** outptr_QVideoSurfaceFormat);
-void QVideoSurfaceFormat_new4(QSize* size, int pixelFormat, int handleType, QVideoSurfaceFormat** outptr_QVideoSurfaceFormat);
+QVideoSurfaceFormat* QVideoSurfaceFormat_new();
+QVideoSurfaceFormat* QVideoSurfaceFormat_new2(QSize* size, int pixelFormat);
+QVideoSurfaceFormat* QVideoSurfaceFormat_new3(QVideoSurfaceFormat* format);
+QVideoSurfaceFormat* QVideoSurfaceFormat_new4(QSize* size, int pixelFormat, int handleType);
 void QVideoSurfaceFormat_OperatorAssign(QVideoSurfaceFormat* self, QVideoSurfaceFormat* format);
 bool QVideoSurfaceFormat_OperatorEqual(const QVideoSurfaceFormat* self, QVideoSurfaceFormat* format);
 bool QVideoSurfaceFormat_OperatorNotEqual(const QVideoSurfaceFormat* self, QVideoSurfaceFormat* format);

@@ -80,10 +80,11 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QKeySequenceEdit_new(QWidget* parent, QKeySequenceEdit** outptr_QKeySequenceEdit, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QKeySequenceEdit_new2(QKeySequenceEdit** outptr_QKeySequenceEdit, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QKeySequenceEdit_new3(QKeySequence* keySequence, QKeySequenceEdit** outptr_QKeySequenceEdit, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QKeySequenceEdit_new4(QKeySequence* keySequence, QWidget* parent, QKeySequenceEdit** outptr_QKeySequenceEdit, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QKeySequenceEdit* QKeySequenceEdit_new(QWidget* parent);
+QKeySequenceEdit* QKeySequenceEdit_new2();
+QKeySequenceEdit* QKeySequenceEdit_new3(QKeySequence* keySequence);
+QKeySequenceEdit* QKeySequenceEdit_new4(QKeySequence* keySequence, QWidget* parent);
+void QKeySequenceEdit_virtbase(QKeySequenceEdit* src, QWidget** outptr_QWidget);
 QMetaObject* QKeySequenceEdit_MetaObject(const QKeySequenceEdit* self);
 void* QKeySequenceEdit_Metacast(QKeySequenceEdit* self, const char* param1);
 struct miqt_string QKeySequenceEdit_Tr(const char* s);

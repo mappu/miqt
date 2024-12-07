@@ -10,6 +10,10 @@
 #include "gen_qmediavideoprobecontrol.h"
 #include "_cgo_export.h"
 
+void QMediaVideoProbeControl_virtbase(QMediaVideoProbeControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
+
 QMetaObject* QMediaVideoProbeControl_MetaObject(const QMediaVideoProbeControl* self) {
 	return (QMetaObject*) self->metaObject();
 }

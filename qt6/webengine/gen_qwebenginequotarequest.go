@@ -38,34 +38,27 @@ func newQWebEngineQuotaRequest(h *C.QWebEngineQuotaRequest) *QWebEngineQuotaRequ
 	if h == nil {
 		return nil
 	}
+
 	return &QWebEngineQuotaRequest{h: h}
 }
 
 // UnsafeNewQWebEngineQuotaRequest constructs the type using only unsafe pointers.
 func UnsafeNewQWebEngineQuotaRequest(h unsafe.Pointer) *QWebEngineQuotaRequest {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineQuotaRequest{h: (*C.QWebEngineQuotaRequest)(h)}
+	return newQWebEngineQuotaRequest((*C.QWebEngineQuotaRequest)(h))
 }
 
 // NewQWebEngineQuotaRequest constructs a new QWebEngineQuotaRequest object.
 func NewQWebEngineQuotaRequest() *QWebEngineQuotaRequest {
-	var outptr_QWebEngineQuotaRequest *C.QWebEngineQuotaRequest = nil
 
-	C.QWebEngineQuotaRequest_new(&outptr_QWebEngineQuotaRequest)
-	ret := newQWebEngineQuotaRequest(outptr_QWebEngineQuotaRequest)
+	ret := newQWebEngineQuotaRequest(C.QWebEngineQuotaRequest_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebEngineQuotaRequest2 constructs a new QWebEngineQuotaRequest object.
 func NewQWebEngineQuotaRequest2(param1 *QWebEngineQuotaRequest) *QWebEngineQuotaRequest {
-	var outptr_QWebEngineQuotaRequest *C.QWebEngineQuotaRequest = nil
 
-	C.QWebEngineQuotaRequest_new2(param1.cPointer(), &outptr_QWebEngineQuotaRequest)
-	ret := newQWebEngineQuotaRequest(outptr_QWebEngineQuotaRequest)
+	ret := newQWebEngineQuotaRequest(C.QWebEngineQuotaRequest_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

@@ -36,46 +36,34 @@ func (this *QsciLexerIDL) UnsafePointer() unsafe.Pointer {
 }
 
 // newQsciLexerIDL constructs the type using only CGO pointers.
-func newQsciLexerIDL(h *C.QsciLexerIDL, h_QsciLexerCPP *C.QsciLexerCPP, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerIDL {
+func newQsciLexerIDL(h *C.QsciLexerIDL) *QsciLexerIDL {
 	if h == nil {
 		return nil
 	}
+	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
+	C.QsciLexerIDL_virtbase(h, &outptr_QsciLexerCPP)
+
 	return &QsciLexerIDL{h: h,
-		QsciLexerCPP: newQsciLexerCPP(h_QsciLexerCPP, h_QsciLexer, h_QObject)}
+		QsciLexerCPP: newQsciLexerCPP(outptr_QsciLexerCPP)}
 }
 
 // UnsafeNewQsciLexerIDL constructs the type using only unsafe pointers.
-func UnsafeNewQsciLexerIDL(h unsafe.Pointer, h_QsciLexerCPP unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerIDL {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciLexerIDL{h: (*C.QsciLexerIDL)(h),
-		QsciLexerCPP: UnsafeNewQsciLexerCPP(h_QsciLexerCPP, h_QsciLexer, h_QObject)}
+func UnsafeNewQsciLexerIDL(h unsafe.Pointer) *QsciLexerIDL {
+	return newQsciLexerIDL((*C.QsciLexerIDL)(h))
 }
 
 // NewQsciLexerIDL constructs a new QsciLexerIDL object.
 func NewQsciLexerIDL() *QsciLexerIDL {
-	var outptr_QsciLexerIDL *C.QsciLexerIDL = nil
-	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerIDL_new(&outptr_QsciLexerIDL, &outptr_QsciLexerCPP, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerIDL(outptr_QsciLexerIDL, outptr_QsciLexerCPP, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerIDL(C.QsciLexerIDL_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQsciLexerIDL2 constructs a new QsciLexerIDL object.
 func NewQsciLexerIDL2(parent *qt.QObject) *QsciLexerIDL {
-	var outptr_QsciLexerIDL *C.QsciLexerIDL = nil
-	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerIDL_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QsciLexerIDL, &outptr_QsciLexerCPP, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerIDL(outptr_QsciLexerIDL, outptr_QsciLexerCPP, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerIDL(C.QsciLexerIDL_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }

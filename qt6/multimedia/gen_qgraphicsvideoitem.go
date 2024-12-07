@@ -42,46 +42,34 @@ func (this *QGraphicsVideoItem) UnsafePointer() unsafe.Pointer {
 }
 
 // newQGraphicsVideoItem constructs the type using only CGO pointers.
-func newQGraphicsVideoItem(h *C.QGraphicsVideoItem, h_QGraphicsObject *C.QGraphicsObject, h_QObject *C.QObject, h_QGraphicsItem *C.QGraphicsItem) *QGraphicsVideoItem {
+func newQGraphicsVideoItem(h *C.QGraphicsVideoItem) *QGraphicsVideoItem {
 	if h == nil {
 		return nil
 	}
+	var outptr_QGraphicsObject *C.QGraphicsObject = nil
+	C.QGraphicsVideoItem_virtbase(h, &outptr_QGraphicsObject)
+
 	return &QGraphicsVideoItem{h: h,
-		QGraphicsObject: qt6.UnsafeNewQGraphicsObject(unsafe.Pointer(h_QGraphicsObject), unsafe.Pointer(h_QObject), unsafe.Pointer(h_QGraphicsItem))}
+		QGraphicsObject: qt6.UnsafeNewQGraphicsObject(unsafe.Pointer(outptr_QGraphicsObject))}
 }
 
 // UnsafeNewQGraphicsVideoItem constructs the type using only unsafe pointers.
-func UnsafeNewQGraphicsVideoItem(h unsafe.Pointer, h_QGraphicsObject unsafe.Pointer, h_QObject unsafe.Pointer, h_QGraphicsItem unsafe.Pointer) *QGraphicsVideoItem {
-	if h == nil {
-		return nil
-	}
-
-	return &QGraphicsVideoItem{h: (*C.QGraphicsVideoItem)(h),
-		QGraphicsObject: qt6.UnsafeNewQGraphicsObject(h_QGraphicsObject, h_QObject, h_QGraphicsItem)}
+func UnsafeNewQGraphicsVideoItem(h unsafe.Pointer) *QGraphicsVideoItem {
+	return newQGraphicsVideoItem((*C.QGraphicsVideoItem)(h))
 }
 
 // NewQGraphicsVideoItem constructs a new QGraphicsVideoItem object.
 func NewQGraphicsVideoItem() *QGraphicsVideoItem {
-	var outptr_QGraphicsVideoItem *C.QGraphicsVideoItem = nil
-	var outptr_QGraphicsObject *C.QGraphicsObject = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QGraphicsItem *C.QGraphicsItem = nil
 
-	C.QGraphicsVideoItem_new(&outptr_QGraphicsVideoItem, &outptr_QGraphicsObject, &outptr_QObject, &outptr_QGraphicsItem)
-	ret := newQGraphicsVideoItem(outptr_QGraphicsVideoItem, outptr_QGraphicsObject, outptr_QObject, outptr_QGraphicsItem)
+	ret := newQGraphicsVideoItem(C.QGraphicsVideoItem_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsVideoItem2 constructs a new QGraphicsVideoItem object.
 func NewQGraphicsVideoItem2(parent *qt6.QGraphicsItem) *QGraphicsVideoItem {
-	var outptr_QGraphicsVideoItem *C.QGraphicsVideoItem = nil
-	var outptr_QGraphicsObject *C.QGraphicsObject = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QGraphicsItem *C.QGraphicsItem = nil
 
-	C.QGraphicsVideoItem_new2((*C.QGraphicsItem)(parent.UnsafePointer()), &outptr_QGraphicsVideoItem, &outptr_QGraphicsObject, &outptr_QObject, &outptr_QGraphicsItem)
-	ret := newQGraphicsVideoItem(outptr_QGraphicsVideoItem, outptr_QGraphicsObject, outptr_QObject, outptr_QGraphicsItem)
+	ret := newQGraphicsVideoItem(C.QGraphicsVideoItem_new2((*C.QGraphicsItem)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -106,7 +94,7 @@ func QGraphicsVideoItem_Tr(s string) string {
 }
 
 func (this *QGraphicsVideoItem) VideoSink() *QVideoSink {
-	return newQVideoSink(C.QGraphicsVideoItem_VideoSink(this.h), nil)
+	return newQVideoSink(C.QGraphicsVideoItem_VideoSink(this.h))
 }
 
 func (this *QGraphicsVideoItem) AspectRatioMode() qt6.AspectRatioMode {
@@ -248,9 +236,9 @@ func miqt_exec_callback_QGraphicsVideoItem_Paint(self *C.QGraphicsVideoItem, cb 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQPainter(unsafe.Pointer(painter))
 
-	slotval2 := qt6.UnsafeNewQStyleOptionGraphicsItem(unsafe.Pointer(option), nil)
+	slotval2 := qt6.UnsafeNewQStyleOptionGraphicsItem(unsafe.Pointer(option))
 
-	slotval3 := qt6.UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval3 := qt6.UnsafeNewQWidget(unsafe.Pointer(widget))
 
 	gofunc((&QGraphicsVideoItem{h: self}).callVirtualBase_Paint, slotval1, slotval2, slotval3)
 
@@ -301,7 +289,7 @@ func miqt_exec_callback_QGraphicsVideoItem_TimerEvent(self *C.QGraphicsVideoItem
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QGraphicsVideoItem{h: self}).callVirtualBase_TimerEvent, slotval1)
 

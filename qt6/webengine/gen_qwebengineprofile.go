@@ -52,31 +52,26 @@ func (this *QWebEngineProfile) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebEngineProfile constructs the type using only CGO pointers.
-func newQWebEngineProfile(h *C.QWebEngineProfile, h_QObject *C.QObject) *QWebEngineProfile {
+func newQWebEngineProfile(h *C.QWebEngineProfile) *QWebEngineProfile {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebEngineProfile_virtbase(h, &outptr_QObject)
+
 	return &QWebEngineProfile{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebEngineProfile constructs the type using only unsafe pointers.
-func UnsafeNewQWebEngineProfile(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebEngineProfile {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineProfile{h: (*C.QWebEngineProfile)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebEngineProfile(h unsafe.Pointer) *QWebEngineProfile {
+	return newQWebEngineProfile((*C.QWebEngineProfile)(h))
 }
 
 // NewQWebEngineProfile constructs a new QWebEngineProfile object.
 func NewQWebEngineProfile() *QWebEngineProfile {
-	var outptr_QWebEngineProfile *C.QWebEngineProfile = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebEngineProfile_new(&outptr_QWebEngineProfile, &outptr_QObject)
-	ret := newQWebEngineProfile(outptr_QWebEngineProfile, outptr_QObject)
+	ret := newQWebEngineProfile(C.QWebEngineProfile_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -87,22 +82,16 @@ func NewQWebEngineProfile2(name string) *QWebEngineProfile {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	var outptr_QWebEngineProfile *C.QWebEngineProfile = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebEngineProfile_new2(name_ms, &outptr_QWebEngineProfile, &outptr_QObject)
-	ret := newQWebEngineProfile(outptr_QWebEngineProfile, outptr_QObject)
+	ret := newQWebEngineProfile(C.QWebEngineProfile_new2(name_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebEngineProfile3 constructs a new QWebEngineProfile object.
 func NewQWebEngineProfile3(parent *qt6.QObject) *QWebEngineProfile {
-	var outptr_QWebEngineProfile *C.QWebEngineProfile = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebEngineProfile_new3((*C.QObject)(parent.UnsafePointer()), &outptr_QWebEngineProfile, &outptr_QObject)
-	ret := newQWebEngineProfile(outptr_QWebEngineProfile, outptr_QObject)
+	ret := newQWebEngineProfile(C.QWebEngineProfile_new3((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -113,11 +102,8 @@ func NewQWebEngineProfile4(name string, parent *qt6.QObject) *QWebEngineProfile 
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	var outptr_QWebEngineProfile *C.QWebEngineProfile = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebEngineProfile_new4(name_ms, (*C.QObject)(parent.UnsafePointer()), &outptr_QWebEngineProfile, &outptr_QObject)
-	ret := newQWebEngineProfile(outptr_QWebEngineProfile, outptr_QObject)
+	ret := newQWebEngineProfile(C.QWebEngineProfile_new4(name_ms, (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -237,7 +223,7 @@ func (this *QWebEngineProfile) SetHttpCacheMaximumSize(maxSize int) {
 }
 
 func (this *QWebEngineProfile) CookieStore() *QWebEngineCookieStore {
-	return newQWebEngineCookieStore(C.QWebEngineProfile_CookieStore(this.h), nil)
+	return newQWebEngineCookieStore(C.QWebEngineProfile_CookieStore(this.h))
 }
 
 func (this *QWebEngineProfile) SetUrlRequestInterceptor(interceptor *QWebEngineUrlRequestInterceptor) {
@@ -274,7 +260,7 @@ func (this *QWebEngineProfile) UrlSchemeHandler(param1 []byte) *QWebEngineUrlSch
 	param1_alias := C.struct_miqt_string{}
 	param1_alias.data = (*C.char)(unsafe.Pointer(&param1[0]))
 	param1_alias.len = C.size_t(len(param1))
-	return newQWebEngineUrlSchemeHandler(C.QWebEngineProfile_UrlSchemeHandler(this.h, param1_alias), nil)
+	return newQWebEngineUrlSchemeHandler(C.QWebEngineProfile_UrlSchemeHandler(this.h, param1_alias))
 }
 
 func (this *QWebEngineProfile) InstallUrlSchemeHandler(scheme []byte, param2 *QWebEngineUrlSchemeHandler) {
@@ -358,7 +344,7 @@ func (this *QWebEngineProfile) ClientCertificateStore() *QWebEngineClientCertifi
 }
 
 func QWebEngineProfile_DefaultProfile() *QWebEngineProfile {
-	return newQWebEngineProfile(C.QWebEngineProfile_DefaultProfile(), nil)
+	return newQWebEngineProfile(C.QWebEngineProfile_DefaultProfile())
 }
 
 func (this *QWebEngineProfile) DownloadRequested(download *QWebEngineDownloadRequest) {
@@ -376,7 +362,7 @@ func miqt_exec_callback_QWebEngineProfile_DownloadRequested(cb C.intptr_t, downl
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWebEngineDownloadRequest(download, nil)
+	slotval1 := newQWebEngineDownloadRequest(download)
 
 	gofunc(slotval1)
 }
@@ -481,7 +467,7 @@ func miqt_exec_callback_QWebEngineProfile_TimerEvent(self *C.QWebEngineProfile, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebEngineProfile{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -507,7 +493,7 @@ func miqt_exec_callback_QWebEngineProfile_ChildEvent(self *C.QWebEngineProfile, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebEngineProfile{h: self}).callVirtualBase_ChildEvent, slotval1)
 

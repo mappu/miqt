@@ -45,24 +45,19 @@ func newQIconEngine(h *C.QIconEngine) *QIconEngine {
 	if h == nil {
 		return nil
 	}
+
 	return &QIconEngine{h: h}
 }
 
 // UnsafeNewQIconEngine constructs the type using only unsafe pointers.
 func UnsafeNewQIconEngine(h unsafe.Pointer) *QIconEngine {
-	if h == nil {
-		return nil
-	}
-
-	return &QIconEngine{h: (*C.QIconEngine)(h)}
+	return newQIconEngine((*C.QIconEngine)(h))
 }
 
 // NewQIconEngine constructs a new QIconEngine object.
 func NewQIconEngine() *QIconEngine {
-	var outptr_QIconEngine *C.QIconEngine = nil
 
-	C.QIconEngine_new(&outptr_QIconEngine)
-	ret := newQIconEngine(outptr_QIconEngine)
+	ret := newQIconEngine(C.QIconEngine_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -78,7 +73,7 @@ func (this *QIconEngine) ActualSize(size *QSize, mode QIcon__Mode, state QIcon__
 }
 
 func (this *QIconEngine) Pixmap(size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
-	_goptr := newQPixmap(C.QIconEngine_Pixmap(this.h, size.cPointer(), (C.int)(mode), (C.int)(state)), nil)
+	_goptr := newQPixmap(C.QIconEngine_Pixmap(this.h, size.cPointer(), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -138,7 +133,7 @@ func (this *QIconEngine) IsNull() bool {
 }
 
 func (this *QIconEngine) ScaledPixmap(size *QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap {
-	_goptr := newQPixmap(C.QIconEngine_ScaledPixmap(this.h, size.cPointer(), (C.int)(mode), (C.int)(state), (C.double)(scale)), nil)
+	_goptr := newQPixmap(C.QIconEngine_ScaledPixmap(this.h, size.cPointer(), (C.int)(mode), (C.int)(state), (C.double)(scale)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -209,7 +204,7 @@ func miqt_exec_callback_QIconEngine_ActualSize(self *C.QIconEngine, cb C.intptr_
 
 func (this *QIconEngine) callVirtualBase_Pixmap(size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
 
-	_goptr := newQPixmap(C.QIconEngine_virtualbase_Pixmap(unsafe.Pointer(this.h), size.cPointer(), (C.int)(mode), (C.int)(state)), nil)
+	_goptr := newQPixmap(C.QIconEngine_virtualbase_Pixmap(unsafe.Pointer(this.h), size.cPointer(), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -261,7 +256,7 @@ func miqt_exec_callback_QIconEngine_AddPixmap(self *C.QIconEngine, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPixmap(pixmap, nil)
+	slotval1 := newQPixmap(pixmap)
 
 	slotval2 := (QIcon__Mode)(mode)
 
@@ -379,7 +374,7 @@ func miqt_exec_callback_QIconEngine_Read(self *C.QIconEngine, cb C.intptr_t, in 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDataStream(in, nil)
+	slotval1 := newQDataStream(in)
 
 	virtualReturn := gofunc((&QIconEngine{h: self}).callVirtualBase_Read, slotval1)
 
@@ -407,7 +402,7 @@ func miqt_exec_callback_QIconEngine_Write(self *C.QIconEngine, cb C.intptr_t, ou
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDataStream(out, nil)
+	slotval1 := newQDataStream(out)
 
 	virtualReturn := gofunc((&QIconEngine{h: self}).callVirtualBase_Write, slotval1)
 
@@ -517,7 +512,7 @@ func miqt_exec_callback_QIconEngine_IsNull(self *C.QIconEngine, cb C.intptr_t) C
 
 func (this *QIconEngine) callVirtualBase_ScaledPixmap(size *QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap {
 
-	_goptr := newQPixmap(C.QIconEngine_virtualbase_ScaledPixmap(unsafe.Pointer(this.h), size.cPointer(), (C.int)(mode), (C.int)(state), (C.double)(scale)), nil)
+	_goptr := newQPixmap(C.QIconEngine_virtualbase_ScaledPixmap(unsafe.Pointer(this.h), size.cPointer(), (C.int)(mode), (C.int)(state), (C.double)(scale)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -617,24 +612,19 @@ func newQIconEngine__ScaledPixmapArgument(h *C.QIconEngine__ScaledPixmapArgument
 	if h == nil {
 		return nil
 	}
+
 	return &QIconEngine__ScaledPixmapArgument{h: h}
 }
 
 // UnsafeNewQIconEngine__ScaledPixmapArgument constructs the type using only unsafe pointers.
 func UnsafeNewQIconEngine__ScaledPixmapArgument(h unsafe.Pointer) *QIconEngine__ScaledPixmapArgument {
-	if h == nil {
-		return nil
-	}
-
-	return &QIconEngine__ScaledPixmapArgument{h: (*C.QIconEngine__ScaledPixmapArgument)(h)}
+	return newQIconEngine__ScaledPixmapArgument((*C.QIconEngine__ScaledPixmapArgument)(h))
 }
 
 // NewQIconEngine__ScaledPixmapArgument constructs a new QIconEngine::ScaledPixmapArgument object.
 func NewQIconEngine__ScaledPixmapArgument(param1 *QIconEngine__ScaledPixmapArgument) *QIconEngine__ScaledPixmapArgument {
-	var outptr_QIconEngine__ScaledPixmapArgument *C.QIconEngine__ScaledPixmapArgument = nil
 
-	C.QIconEngine__ScaledPixmapArgument_new(param1.cPointer(), &outptr_QIconEngine__ScaledPixmapArgument)
-	ret := newQIconEngine__ScaledPixmapArgument(outptr_QIconEngine__ScaledPixmapArgument)
+	ret := newQIconEngine__ScaledPixmapArgument(C.QIconEngine__ScaledPixmapArgument_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

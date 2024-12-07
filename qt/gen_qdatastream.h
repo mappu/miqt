@@ -22,9 +22,9 @@ typedef struct QDataStream QDataStream;
 typedef struct QIODevice QIODevice;
 #endif
 
-void QDataStream_new(QDataStream** outptr_QDataStream);
-void QDataStream_new2(QIODevice* param1, QDataStream** outptr_QDataStream);
-void QDataStream_new3(struct miqt_string param1, QDataStream** outptr_QDataStream);
+QDataStream* QDataStream_new();
+QDataStream* QDataStream_new2(QIODevice* param1);
+QDataStream* QDataStream_new3(struct miqt_string param1);
 QIODevice* QDataStream_Device(const QDataStream* self);
 void QDataStream_SetDevice(QDataStream* self, QIODevice* device);
 void QDataStream_UnsetDevice(QDataStream* self);

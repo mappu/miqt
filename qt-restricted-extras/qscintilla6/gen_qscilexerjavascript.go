@@ -36,46 +36,34 @@ func (this *QsciLexerJavaScript) UnsafePointer() unsafe.Pointer {
 }
 
 // newQsciLexerJavaScript constructs the type using only CGO pointers.
-func newQsciLexerJavaScript(h *C.QsciLexerJavaScript, h_QsciLexerCPP *C.QsciLexerCPP, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerJavaScript {
+func newQsciLexerJavaScript(h *C.QsciLexerJavaScript) *QsciLexerJavaScript {
 	if h == nil {
 		return nil
 	}
+	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
+	C.QsciLexerJavaScript_virtbase(h, &outptr_QsciLexerCPP)
+
 	return &QsciLexerJavaScript{h: h,
-		QsciLexerCPP: newQsciLexerCPP(h_QsciLexerCPP, h_QsciLexer, h_QObject)}
+		QsciLexerCPP: newQsciLexerCPP(outptr_QsciLexerCPP)}
 }
 
 // UnsafeNewQsciLexerJavaScript constructs the type using only unsafe pointers.
-func UnsafeNewQsciLexerJavaScript(h unsafe.Pointer, h_QsciLexerCPP unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerJavaScript {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciLexerJavaScript{h: (*C.QsciLexerJavaScript)(h),
-		QsciLexerCPP: UnsafeNewQsciLexerCPP(h_QsciLexerCPP, h_QsciLexer, h_QObject)}
+func UnsafeNewQsciLexerJavaScript(h unsafe.Pointer) *QsciLexerJavaScript {
+	return newQsciLexerJavaScript((*C.QsciLexerJavaScript)(h))
 }
 
 // NewQsciLexerJavaScript constructs a new QsciLexerJavaScript object.
 func NewQsciLexerJavaScript() *QsciLexerJavaScript {
-	var outptr_QsciLexerJavaScript *C.QsciLexerJavaScript = nil
-	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerJavaScript_new(&outptr_QsciLexerJavaScript, &outptr_QsciLexerCPP, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerJavaScript(outptr_QsciLexerJavaScript, outptr_QsciLexerCPP, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerJavaScript(C.QsciLexerJavaScript_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQsciLexerJavaScript2 constructs a new QsciLexerJavaScript object.
 func NewQsciLexerJavaScript2(parent *qt6.QObject) *QsciLexerJavaScript {
-	var outptr_QsciLexerJavaScript *C.QsciLexerJavaScript = nil
-	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerJavaScript_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QsciLexerJavaScript, &outptr_QsciLexerCPP, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerJavaScript(outptr_QsciLexerJavaScript, outptr_QsciLexerCPP, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerJavaScript(C.QsciLexerJavaScript_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }

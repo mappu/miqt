@@ -45,24 +45,19 @@ func newQStandardItem(h *C.QStandardItem) *QStandardItem {
 	if h == nil {
 		return nil
 	}
+
 	return &QStandardItem{h: h}
 }
 
 // UnsafeNewQStandardItem constructs the type using only unsafe pointers.
 func UnsafeNewQStandardItem(h unsafe.Pointer) *QStandardItem {
-	if h == nil {
-		return nil
-	}
-
-	return &QStandardItem{h: (*C.QStandardItem)(h)}
+	return newQStandardItem((*C.QStandardItem)(h))
 }
 
 // NewQStandardItem constructs a new QStandardItem object.
 func NewQStandardItem() *QStandardItem {
-	var outptr_QStandardItem *C.QStandardItem = nil
 
-	C.QStandardItem_new(&outptr_QStandardItem)
-	ret := newQStandardItem(outptr_QStandardItem)
+	ret := newQStandardItem(C.QStandardItem_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -73,10 +68,8 @@ func NewQStandardItem2(text string) *QStandardItem {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QStandardItem *C.QStandardItem = nil
 
-	C.QStandardItem_new2(text_ms, &outptr_QStandardItem)
-	ret := newQStandardItem(outptr_QStandardItem)
+	ret := newQStandardItem(C.QStandardItem_new2(text_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -87,30 +80,24 @@ func NewQStandardItem3(icon *QIcon, text string) *QStandardItem {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QStandardItem *C.QStandardItem = nil
 
-	C.QStandardItem_new3(icon.cPointer(), text_ms, &outptr_QStandardItem)
-	ret := newQStandardItem(outptr_QStandardItem)
+	ret := newQStandardItem(C.QStandardItem_new3(icon.cPointer(), text_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQStandardItem4 constructs a new QStandardItem object.
 func NewQStandardItem4(rows int) *QStandardItem {
-	var outptr_QStandardItem *C.QStandardItem = nil
 
-	C.QStandardItem_new4((C.int)(rows), &outptr_QStandardItem)
-	ret := newQStandardItem(outptr_QStandardItem)
+	ret := newQStandardItem(C.QStandardItem_new4((C.int)(rows)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQStandardItem5 constructs a new QStandardItem object.
 func NewQStandardItem5(rows int, columns int) *QStandardItem {
-	var outptr_QStandardItem *C.QStandardItem = nil
 
-	C.QStandardItem_new5((C.int)(rows), (C.int)(columns), &outptr_QStandardItem)
-	ret := newQStandardItem(outptr_QStandardItem)
+	ret := newQStandardItem(C.QStandardItem_new5((C.int)(rows), (C.int)(columns)))
 	ret.isSubclass = true
 	return ret
 }
@@ -384,7 +371,7 @@ func (this *QStandardItem) Index() *QModelIndex {
 }
 
 func (this *QStandardItem) Model() *QStandardItemModel {
-	return newQStandardItemModel(C.QStandardItem_Model(this.h), nil, nil)
+	return newQStandardItemModel(C.QStandardItem_Model(this.h))
 }
 
 func (this *QStandardItem) RowCount() int {
@@ -794,68 +781,50 @@ func (this *QStandardItemModel) UnsafePointer() unsafe.Pointer {
 }
 
 // newQStandardItemModel constructs the type using only CGO pointers.
-func newQStandardItemModel(h *C.QStandardItemModel, h_QAbstractItemModel *C.QAbstractItemModel, h_QObject *C.QObject) *QStandardItemModel {
+func newQStandardItemModel(h *C.QStandardItemModel) *QStandardItemModel {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
+	C.QStandardItemModel_virtbase(h, &outptr_QAbstractItemModel)
+
 	return &QStandardItemModel{h: h,
-		QAbstractItemModel: newQAbstractItemModel(h_QAbstractItemModel, h_QObject)}
+		QAbstractItemModel: newQAbstractItemModel(outptr_QAbstractItemModel)}
 }
 
 // UnsafeNewQStandardItemModel constructs the type using only unsafe pointers.
-func UnsafeNewQStandardItemModel(h unsafe.Pointer, h_QAbstractItemModel unsafe.Pointer, h_QObject unsafe.Pointer) *QStandardItemModel {
-	if h == nil {
-		return nil
-	}
-
-	return &QStandardItemModel{h: (*C.QStandardItemModel)(h),
-		QAbstractItemModel: UnsafeNewQAbstractItemModel(h_QAbstractItemModel, h_QObject)}
+func UnsafeNewQStandardItemModel(h unsafe.Pointer) *QStandardItemModel {
+	return newQStandardItemModel((*C.QStandardItemModel)(h))
 }
 
 // NewQStandardItemModel constructs a new QStandardItemModel object.
 func NewQStandardItemModel() *QStandardItemModel {
-	var outptr_QStandardItemModel *C.QStandardItemModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QStandardItemModel_new(&outptr_QStandardItemModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQStandardItemModel(outptr_QStandardItemModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQStandardItemModel(C.QStandardItemModel_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQStandardItemModel2 constructs a new QStandardItemModel object.
 func NewQStandardItemModel2(rows int, columns int) *QStandardItemModel {
-	var outptr_QStandardItemModel *C.QStandardItemModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QStandardItemModel_new2((C.int)(rows), (C.int)(columns), &outptr_QStandardItemModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQStandardItemModel(outptr_QStandardItemModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQStandardItemModel(C.QStandardItemModel_new2((C.int)(rows), (C.int)(columns)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQStandardItemModel3 constructs a new QStandardItemModel object.
 func NewQStandardItemModel3(parent *QObject) *QStandardItemModel {
-	var outptr_QStandardItemModel *C.QStandardItemModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QStandardItemModel_new3(parent.cPointer(), &outptr_QStandardItemModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQStandardItemModel(outptr_QStandardItemModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQStandardItemModel(C.QStandardItemModel_new3(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQStandardItemModel4 constructs a new QStandardItemModel object.
 func NewQStandardItemModel4(rows int, columns int, parent *QObject) *QStandardItemModel {
-	var outptr_QStandardItemModel *C.QStandardItemModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QStandardItemModel_new4((C.int)(rows), (C.int)(columns), parent.cPointer(), &outptr_QStandardItemModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQStandardItemModel(outptr_QStandardItemModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQStandardItemModel(C.QStandardItemModel_new4((C.int)(rows), (C.int)(columns), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -1248,7 +1217,7 @@ func (this *QStandardItemModel) MimeData(indexes []QModelIndex) *QMimeData {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
-	return newQMimeData(C.QStandardItemModel_MimeData(this.h, indexes_ma), nil)
+	return newQMimeData(C.QStandardItemModel_MimeData(this.h, indexes_ma))
 }
 
 func (this *QStandardItemModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
@@ -2052,7 +2021,7 @@ func (this *QStandardItemModel) callVirtualBase_MimeData(indexes []QModelIndex) 
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 
-	return newQMimeData(C.QStandardItemModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma), nil)
+	return newQMimeData(C.QStandardItemModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma))
 
 }
 func (this *QStandardItemModel) OnMimeData(slot func(super func(indexes []QModelIndex) *QMimeData, indexes []QModelIndex) *QMimeData) {
@@ -2106,7 +2075,7 @@ func miqt_exec_callback_QStandardItemModel_DropMimeData(self *C.QStandardItemMod
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(data, nil)
+	slotval1 := newQMimeData(data)
 
 	slotval2 := (DropAction)(action)
 
@@ -2142,7 +2111,7 @@ func miqt_exec_callback_QStandardItemModel_CanDropMimeData(self *C.QStandardItem
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(data, nil)
+	slotval1 := newQMimeData(data)
 
 	slotval2 := (DropAction)(action)
 

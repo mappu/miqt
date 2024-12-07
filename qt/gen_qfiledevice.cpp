@@ -10,6 +10,10 @@
 #include "gen_qfiledevice.h"
 #include "_cgo_export.h"
 
+void QFileDevice_virtbase(QFileDevice* src, QIODevice** outptr_QIODevice) {
+	*outptr_QIODevice = static_cast<QIODevice*>(src);
+}
+
 QMetaObject* QFileDevice_MetaObject(const QFileDevice* self) {
 	return (QMetaObject*) self->metaObject();
 }

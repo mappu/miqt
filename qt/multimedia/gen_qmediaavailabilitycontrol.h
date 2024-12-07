@@ -26,6 +26,7 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif
 
+void QMediaAvailabilityControl_virtbase(QMediaAvailabilityControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QMediaAvailabilityControl_MetaObject(const QMediaAvailabilityControl* self);
 void* QMediaAvailabilityControl_Metacast(QMediaAvailabilityControl* self, const char* param1);
 struct miqt_string QMediaAvailabilityControl_Tr(const char* s);

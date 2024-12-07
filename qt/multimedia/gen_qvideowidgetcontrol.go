@@ -36,22 +36,20 @@ func (this *QVideoWidgetControl) UnsafePointer() unsafe.Pointer {
 }
 
 // newQVideoWidgetControl constructs the type using only CGO pointers.
-func newQVideoWidgetControl(h *C.QVideoWidgetControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QVideoWidgetControl {
+func newQVideoWidgetControl(h *C.QVideoWidgetControl) *QVideoWidgetControl {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaControl *C.QMediaControl = nil
+	C.QVideoWidgetControl_virtbase(h, &outptr_QMediaControl)
+
 	return &QVideoWidgetControl{h: h,
-		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
+		QMediaControl: newQMediaControl(outptr_QMediaControl)}
 }
 
 // UnsafeNewQVideoWidgetControl constructs the type using only unsafe pointers.
-func UnsafeNewQVideoWidgetControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QVideoWidgetControl {
-	if h == nil {
-		return nil
-	}
-
-	return &QVideoWidgetControl{h: (*C.QVideoWidgetControl)(h),
-		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
+func UnsafeNewQVideoWidgetControl(h unsafe.Pointer) *QVideoWidgetControl {
+	return newQVideoWidgetControl((*C.QVideoWidgetControl)(h))
 }
 
 func (this *QVideoWidgetControl) MetaObject() *qt.QMetaObject {
@@ -83,7 +81,7 @@ func QVideoWidgetControl_TrUtf8(s string) string {
 }
 
 func (this *QVideoWidgetControl) VideoWidget() *qt.QWidget {
-	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QVideoWidgetControl_VideoWidget(this.h)), nil, nil)
+	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QVideoWidgetControl_VideoWidget(this.h)))
 }
 
 func (this *QVideoWidgetControl) AspectRatioMode() qt.AspectRatioMode {

@@ -35,68 +35,50 @@ func (this *QBitmap) UnsafePointer() unsafe.Pointer {
 }
 
 // newQBitmap constructs the type using only CGO pointers.
-func newQBitmap(h *C.QBitmap, h_QPixmap *C.QPixmap, h_QPaintDevice *C.QPaintDevice) *QBitmap {
+func newQBitmap(h *C.QBitmap) *QBitmap {
 	if h == nil {
 		return nil
 	}
+	var outptr_QPixmap *C.QPixmap = nil
+	C.QBitmap_virtbase(h, &outptr_QPixmap)
+
 	return &QBitmap{h: h,
-		QPixmap: newQPixmap(h_QPixmap, h_QPaintDevice)}
+		QPixmap: newQPixmap(outptr_QPixmap)}
 }
 
 // UnsafeNewQBitmap constructs the type using only unsafe pointers.
-func UnsafeNewQBitmap(h unsafe.Pointer, h_QPixmap unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QBitmap {
-	if h == nil {
-		return nil
-	}
-
-	return &QBitmap{h: (*C.QBitmap)(h),
-		QPixmap: UnsafeNewQPixmap(h_QPixmap, h_QPaintDevice)}
+func UnsafeNewQBitmap(h unsafe.Pointer) *QBitmap {
+	return newQBitmap((*C.QBitmap)(h))
 }
 
 // NewQBitmap constructs a new QBitmap object.
 func NewQBitmap() *QBitmap {
-	var outptr_QBitmap *C.QBitmap = nil
-	var outptr_QPixmap *C.QPixmap = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QBitmap_new(&outptr_QBitmap, &outptr_QPixmap, &outptr_QPaintDevice)
-	ret := newQBitmap(outptr_QBitmap, outptr_QPixmap, outptr_QPaintDevice)
+	ret := newQBitmap(C.QBitmap_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQBitmap2 constructs a new QBitmap object.
 func NewQBitmap2(param1 *QPixmap) *QBitmap {
-	var outptr_QBitmap *C.QBitmap = nil
-	var outptr_QPixmap *C.QPixmap = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QBitmap_new2(param1.cPointer(), &outptr_QBitmap, &outptr_QPixmap, &outptr_QPaintDevice)
-	ret := newQBitmap(outptr_QBitmap, outptr_QPixmap, outptr_QPaintDevice)
+	ret := newQBitmap(C.QBitmap_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQBitmap3 constructs a new QBitmap object.
 func NewQBitmap3(w int, h int) *QBitmap {
-	var outptr_QBitmap *C.QBitmap = nil
-	var outptr_QPixmap *C.QPixmap = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QBitmap_new3((C.int)(w), (C.int)(h), &outptr_QBitmap, &outptr_QPixmap, &outptr_QPaintDevice)
-	ret := newQBitmap(outptr_QBitmap, outptr_QPixmap, outptr_QPaintDevice)
+	ret := newQBitmap(C.QBitmap_new3((C.int)(w), (C.int)(h)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQBitmap4 constructs a new QBitmap object.
 func NewQBitmap4(param1 *QSize) *QBitmap {
-	var outptr_QBitmap *C.QBitmap = nil
-	var outptr_QPixmap *C.QPixmap = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QBitmap_new4(param1.cPointer(), &outptr_QBitmap, &outptr_QPixmap, &outptr_QPaintDevice)
-	ret := newQBitmap(outptr_QBitmap, outptr_QPixmap, outptr_QPaintDevice)
+	ret := newQBitmap(C.QBitmap_new4(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -107,24 +89,16 @@ func NewQBitmap5(fileName string) *QBitmap {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QBitmap *C.QBitmap = nil
-	var outptr_QPixmap *C.QPixmap = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QBitmap_new5(fileName_ms, &outptr_QBitmap, &outptr_QPixmap, &outptr_QPaintDevice)
-	ret := newQBitmap(outptr_QBitmap, outptr_QPixmap, outptr_QPaintDevice)
+	ret := newQBitmap(C.QBitmap_new5(fileName_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQBitmap6 constructs a new QBitmap object.
 func NewQBitmap6(other *QBitmap) *QBitmap {
-	var outptr_QBitmap *C.QBitmap = nil
-	var outptr_QPixmap *C.QPixmap = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QBitmap_new6(other.cPointer(), &outptr_QBitmap, &outptr_QPixmap, &outptr_QPaintDevice)
-	ret := newQBitmap(outptr_QBitmap, outptr_QPixmap, outptr_QPaintDevice)
+	ret := newQBitmap(C.QBitmap_new6(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -137,12 +111,8 @@ func NewQBitmap7(fileName string, format string) *QBitmap {
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	var outptr_QBitmap *C.QBitmap = nil
-	var outptr_QPixmap *C.QPixmap = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QBitmap_new7(fileName_ms, format_Cstring, &outptr_QBitmap, &outptr_QPixmap, &outptr_QPaintDevice)
-	ret := newQBitmap(outptr_QBitmap, outptr_QPixmap, outptr_QPaintDevice)
+	ret := newQBitmap(C.QBitmap_new7(fileName_ms, format_Cstring))
 	ret.isSubclass = true
 	return ret
 }
@@ -164,37 +134,37 @@ func (this *QBitmap) Clear() {
 }
 
 func QBitmap_FromImage(image *QImage) *QBitmap {
-	_goptr := newQBitmap(C.QBitmap_FromImage(image.cPointer()), nil, nil)
+	_goptr := newQBitmap(C.QBitmap_FromImage(image.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QBitmap_FromData(size *QSize, bits *byte) *QBitmap {
-	_goptr := newQBitmap(C.QBitmap_FromData(size.cPointer(), (*C.uchar)(unsafe.Pointer(bits))), nil, nil)
+	_goptr := newQBitmap(C.QBitmap_FromData(size.cPointer(), (*C.uchar)(unsafe.Pointer(bits))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBitmap) Transformed(param1 *QMatrix) *QBitmap {
-	_goptr := newQBitmap(C.QBitmap_Transformed(this.h, param1.cPointer()), nil, nil)
+	_goptr := newQBitmap(C.QBitmap_Transformed(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBitmap) TransformedWithMatrix(matrix *QTransform) *QBitmap {
-	_goptr := newQBitmap(C.QBitmap_TransformedWithMatrix(this.h, matrix.cPointer()), nil, nil)
+	_goptr := newQBitmap(C.QBitmap_TransformedWithMatrix(this.h, matrix.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QBitmap_FromImage2(image *QImage, flags ImageConversionFlag) *QBitmap {
-	_goptr := newQBitmap(C.QBitmap_FromImage2(image.cPointer(), (C.int)(flags)), nil, nil)
+	_goptr := newQBitmap(C.QBitmap_FromImage2(image.cPointer(), (C.int)(flags)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QBitmap_FromData3(size *QSize, bits *byte, monoFormat QImage__Format) *QBitmap {
-	_goptr := newQBitmap(C.QBitmap_FromData3(size.cPointer(), (*C.uchar)(unsafe.Pointer(bits)), (C.int)(monoFormat)), nil, nil)
+	_goptr := newQBitmap(C.QBitmap_FromData3(size.cPointer(), (*C.uchar)(unsafe.Pointer(bits)), (C.int)(monoFormat)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

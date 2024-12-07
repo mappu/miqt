@@ -51,64 +51,50 @@ func (this *QSoundEffect) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSoundEffect constructs the type using only CGO pointers.
-func newQSoundEffect(h *C.QSoundEffect, h_QObject *C.QObject) *QSoundEffect {
+func newQSoundEffect(h *C.QSoundEffect) *QSoundEffect {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QSoundEffect_virtbase(h, &outptr_QObject)
+
 	return &QSoundEffect{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQSoundEffect constructs the type using only unsafe pointers.
-func UnsafeNewQSoundEffect(h unsafe.Pointer, h_QObject unsafe.Pointer) *QSoundEffect {
-	if h == nil {
-		return nil
-	}
-
-	return &QSoundEffect{h: (*C.QSoundEffect)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQSoundEffect(h unsafe.Pointer) *QSoundEffect {
+	return newQSoundEffect((*C.QSoundEffect)(h))
 }
 
 // NewQSoundEffect constructs a new QSoundEffect object.
 func NewQSoundEffect() *QSoundEffect {
-	var outptr_QSoundEffect *C.QSoundEffect = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSoundEffect_new(&outptr_QSoundEffect, &outptr_QObject)
-	ret := newQSoundEffect(outptr_QSoundEffect, outptr_QObject)
+	ret := newQSoundEffect(C.QSoundEffect_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSoundEffect2 constructs a new QSoundEffect object.
 func NewQSoundEffect2(audioDevice *QAudioDevice) *QSoundEffect {
-	var outptr_QSoundEffect *C.QSoundEffect = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSoundEffect_new2(audioDevice.cPointer(), &outptr_QSoundEffect, &outptr_QObject)
-	ret := newQSoundEffect(outptr_QSoundEffect, outptr_QObject)
+	ret := newQSoundEffect(C.QSoundEffect_new2(audioDevice.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSoundEffect3 constructs a new QSoundEffect object.
 func NewQSoundEffect3(parent *qt6.QObject) *QSoundEffect {
-	var outptr_QSoundEffect *C.QSoundEffect = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSoundEffect_new3((*C.QObject)(parent.UnsafePointer()), &outptr_QSoundEffect, &outptr_QObject)
-	ret := newQSoundEffect(outptr_QSoundEffect, outptr_QObject)
+	ret := newQSoundEffect(C.QSoundEffect_new3((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSoundEffect4 constructs a new QSoundEffect object.
 func NewQSoundEffect4(audioDevice *QAudioDevice, parent *qt6.QObject) *QSoundEffect {
-	var outptr_QSoundEffect *C.QSoundEffect = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSoundEffect_new4(audioDevice.cPointer(), (*C.QObject)(parent.UnsafePointer()), &outptr_QSoundEffect, &outptr_QObject)
-	ret := newQSoundEffect(outptr_QSoundEffect, outptr_QObject)
+	ret := newQSoundEffect(C.QSoundEffect_new4(audioDevice.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -466,7 +452,7 @@ func miqt_exec_callback_QSoundEffect_TimerEvent(self *C.QSoundEffect, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QSoundEffect{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -492,7 +478,7 @@ func miqt_exec_callback_QSoundEffect_ChildEvent(self *C.QSoundEffect, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QSoundEffect{h: self}).callVirtualBase_ChildEvent, slotval1)
 

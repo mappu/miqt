@@ -34,40 +34,42 @@ typedef struct QUntypedBindable QUntypedBindable;
 typedef struct QUntypedPropertyBinding QUntypedPropertyBinding;
 #endif
 
-void QPropertyBindingSourceLocation_new(QPropertyBindingSourceLocation** outptr_QPropertyBindingSourceLocation);
-void QPropertyBindingSourceLocation_new2(QPropertyBindingSourceLocation* param1, QPropertyBindingSourceLocation** outptr_QPropertyBindingSourceLocation);
+QPropertyBindingSourceLocation* QPropertyBindingSourceLocation_new();
+QPropertyBindingSourceLocation* QPropertyBindingSourceLocation_new2(QPropertyBindingSourceLocation* param1);
 void QPropertyBindingSourceLocation_Delete(QPropertyBindingSourceLocation* self, bool isSubclass);
 
-void QPropertyBindingError_new(QPropertyBindingError** outptr_QPropertyBindingError);
-void QPropertyBindingError_new2(int typeVal, QPropertyBindingError** outptr_QPropertyBindingError);
-void QPropertyBindingError_new3(QPropertyBindingError* other, QPropertyBindingError** outptr_QPropertyBindingError);
-void QPropertyBindingError_new4(int typeVal, struct miqt_string description, QPropertyBindingError** outptr_QPropertyBindingError);
+QPropertyBindingError* QPropertyBindingError_new();
+QPropertyBindingError* QPropertyBindingError_new2(int typeVal);
+QPropertyBindingError* QPropertyBindingError_new3(QPropertyBindingError* other);
+QPropertyBindingError* QPropertyBindingError_new4(int typeVal, struct miqt_string description);
 void QPropertyBindingError_OperatorAssign(QPropertyBindingError* self, QPropertyBindingError* other);
 bool QPropertyBindingError_HasError(const QPropertyBindingError* self);
 int QPropertyBindingError_Type(const QPropertyBindingError* self);
 struct miqt_string QPropertyBindingError_Description(const QPropertyBindingError* self);
 void QPropertyBindingError_Delete(QPropertyBindingError* self, bool isSubclass);
 
-void QUntypedPropertyBinding_new(QUntypedPropertyBinding** outptr_QUntypedPropertyBinding);
-void QUntypedPropertyBinding_new2(QUntypedPropertyBinding* other, QUntypedPropertyBinding** outptr_QUntypedPropertyBinding);
+QUntypedPropertyBinding* QUntypedPropertyBinding_new();
+QUntypedPropertyBinding* QUntypedPropertyBinding_new2(QUntypedPropertyBinding* other);
 void QUntypedPropertyBinding_OperatorAssign(QUntypedPropertyBinding* self, QUntypedPropertyBinding* other);
 bool QUntypedPropertyBinding_IsNull(const QUntypedPropertyBinding* self);
 QPropertyBindingError* QUntypedPropertyBinding_Error(const QUntypedPropertyBinding* self);
 QMetaType* QUntypedPropertyBinding_ValueMetaType(const QUntypedPropertyBinding* self);
 void QUntypedPropertyBinding_Delete(QUntypedPropertyBinding* self, bool isSubclass);
 
-void QPropertyObserverBase_new(QPropertyObserverBase** outptr_QPropertyObserverBase);
-void QPropertyObserverBase_new2(QPropertyObserverBase* param1, QPropertyObserverBase** outptr_QPropertyObserverBase);
+QPropertyObserverBase* QPropertyObserverBase_new();
+QPropertyObserverBase* QPropertyObserverBase_new2(QPropertyObserverBase* param1);
 void QPropertyObserverBase_Delete(QPropertyObserverBase* self, bool isSubclass);
 
-void QPropertyObserver_new(QPropertyObserver** outptr_QPropertyObserver, QPropertyObserverBase** outptr_QPropertyObserverBase);
+QPropertyObserver* QPropertyObserver_new();
+void QPropertyObserver_virtbase(QPropertyObserver* src, QPropertyObserverBase** outptr_QPropertyObserverBase);
 void QPropertyObserver_Delete(QPropertyObserver* self, bool isSubclass);
 
-void QPropertyNotifier_new(QPropertyNotifier** outptr_QPropertyNotifier, QPropertyObserver** outptr_QPropertyObserver, QPropertyObserverBase** outptr_QPropertyObserverBase);
+QPropertyNotifier* QPropertyNotifier_new();
+void QPropertyNotifier_virtbase(QPropertyNotifier* src, QPropertyObserver** outptr_QPropertyObserver);
 void QPropertyNotifier_Delete(QPropertyNotifier* self, bool isSubclass);
 
-void QUntypedBindable_new(QUntypedBindable** outptr_QUntypedBindable);
-void QUntypedBindable_new2(QUntypedBindable* param1, QUntypedBindable** outptr_QUntypedBindable);
+QUntypedBindable* QUntypedBindable_new();
+QUntypedBindable* QUntypedBindable_new2(QUntypedBindable* param1);
 bool QUntypedBindable_IsValid(const QUntypedBindable* self);
 bool QUntypedBindable_IsBindable(const QUntypedBindable* self);
 bool QUntypedBindable_IsReadOnly(const QUntypedBindable* self);

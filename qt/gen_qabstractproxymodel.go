@@ -35,44 +35,34 @@ func (this *QAbstractProxyModel) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAbstractProxyModel constructs the type using only CGO pointers.
-func newQAbstractProxyModel(h *C.QAbstractProxyModel, h_QAbstractItemModel *C.QAbstractItemModel, h_QObject *C.QObject) *QAbstractProxyModel {
+func newQAbstractProxyModel(h *C.QAbstractProxyModel) *QAbstractProxyModel {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
+	C.QAbstractProxyModel_virtbase(h, &outptr_QAbstractItemModel)
+
 	return &QAbstractProxyModel{h: h,
-		QAbstractItemModel: newQAbstractItemModel(h_QAbstractItemModel, h_QObject)}
+		QAbstractItemModel: newQAbstractItemModel(outptr_QAbstractItemModel)}
 }
 
 // UnsafeNewQAbstractProxyModel constructs the type using only unsafe pointers.
-func UnsafeNewQAbstractProxyModel(h unsafe.Pointer, h_QAbstractItemModel unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractProxyModel {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractProxyModel{h: (*C.QAbstractProxyModel)(h),
-		QAbstractItemModel: UnsafeNewQAbstractItemModel(h_QAbstractItemModel, h_QObject)}
+func UnsafeNewQAbstractProxyModel(h unsafe.Pointer) *QAbstractProxyModel {
+	return newQAbstractProxyModel((*C.QAbstractProxyModel)(h))
 }
 
 // NewQAbstractProxyModel constructs a new QAbstractProxyModel object.
 func NewQAbstractProxyModel() *QAbstractProxyModel {
-	var outptr_QAbstractProxyModel *C.QAbstractProxyModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAbstractProxyModel_new(&outptr_QAbstractProxyModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQAbstractProxyModel(outptr_QAbstractProxyModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQAbstractProxyModel(C.QAbstractProxyModel_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAbstractProxyModel2 constructs a new QAbstractProxyModel object.
 func NewQAbstractProxyModel2(parent *QObject) *QAbstractProxyModel {
-	var outptr_QAbstractProxyModel *C.QAbstractProxyModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAbstractProxyModel_new2(parent.cPointer(), &outptr_QAbstractProxyModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQAbstractProxyModel(outptr_QAbstractProxyModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQAbstractProxyModel(C.QAbstractProxyModel_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -110,7 +100,7 @@ func (this *QAbstractProxyModel) SetSourceModel(sourceModel *QAbstractItemModel)
 }
 
 func (this *QAbstractProxyModel) SourceModel() *QAbstractItemModel {
-	return newQAbstractItemModel(C.QAbstractProxyModel_SourceModel(this.h), nil)
+	return newQAbstractItemModel(C.QAbstractProxyModel_SourceModel(this.h))
 }
 
 func (this *QAbstractProxyModel) MapToSource(proxyIndex *QModelIndex) *QModelIndex {
@@ -246,7 +236,7 @@ func (this *QAbstractProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
-	return newQMimeData(C.QAbstractProxyModel_MimeData(this.h, indexes_ma), nil)
+	return newQMimeData(C.QAbstractProxyModel_MimeData(this.h, indexes_ma))
 }
 
 func (this *QAbstractProxyModel) CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
@@ -342,7 +332,7 @@ func miqt_exec_callback_QAbstractProxyModel_SetSourceModel(self *C.QAbstractProx
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQAbstractItemModel(sourceModel, nil)
+	slotval1 := newQAbstractItemModel(sourceModel)
 
 	gofunc((&QAbstractProxyModel{h: self}).callVirtualBase_SetSourceModel, slotval1)
 
@@ -986,7 +976,7 @@ func (this *QAbstractProxyModel) callVirtualBase_MimeData(indexes []QModelIndex)
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 
-	return newQMimeData(C.QAbstractProxyModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma), nil)
+	return newQMimeData(C.QAbstractProxyModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma))
 
 }
 func (this *QAbstractProxyModel) OnMimeData(slot func(super func(indexes []QModelIndex) *QMimeData, indexes []QModelIndex) *QMimeData) {
@@ -1040,7 +1030,7 @@ func miqt_exec_callback_QAbstractProxyModel_CanDropMimeData(self *C.QAbstractPro
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(data, nil)
+	slotval1 := newQMimeData(data)
 
 	slotval2 := (DropAction)(action)
 
@@ -1076,7 +1066,7 @@ func miqt_exec_callback_QAbstractProxyModel_DropMimeData(self *C.QAbstractProxyM
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(data, nil)
+	slotval1 := newQMimeData(data)
 
 	slotval2 := (DropAction)(action)
 

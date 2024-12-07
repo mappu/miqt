@@ -35,22 +35,20 @@ func (this *QApplication) UnsafePointer() unsafe.Pointer {
 }
 
 // newQApplication constructs the type using only CGO pointers.
-func newQApplication(h *C.QApplication, h_QGuiApplication *C.QGuiApplication, h_QCoreApplication *C.QCoreApplication, h_QObject *C.QObject) *QApplication {
+func newQApplication(h *C.QApplication) *QApplication {
 	if h == nil {
 		return nil
 	}
+	var outptr_QGuiApplication *C.QGuiApplication = nil
+	C.QApplication_virtbase(h, &outptr_QGuiApplication)
+
 	return &QApplication{h: h,
-		QGuiApplication: newQGuiApplication(h_QGuiApplication, h_QCoreApplication, h_QObject)}
+		QGuiApplication: newQGuiApplication(outptr_QGuiApplication)}
 }
 
 // UnsafeNewQApplication constructs the type using only unsafe pointers.
-func UnsafeNewQApplication(h unsafe.Pointer, h_QGuiApplication unsafe.Pointer, h_QCoreApplication unsafe.Pointer, h_QObject unsafe.Pointer) *QApplication {
-	if h == nil {
-		return nil
-	}
-
-	return &QApplication{h: (*C.QApplication)(h),
-		QGuiApplication: UnsafeNewQGuiApplication(h_QGuiApplication, h_QCoreApplication, h_QObject)}
+func UnsafeNewQApplication(h unsafe.Pointer) *QApplication {
+	return newQApplication((*C.QApplication)(h))
 }
 
 // NewQApplication constructs a new QApplication object.
@@ -65,13 +63,7 @@ func NewQApplication(args []string) *QApplication {
 
 	runtime.LockOSThread() // Prevent Go from migrating the main Qt thread
 
-	var outptr_QApplication *C.QApplication = nil
-	var outptr_QGuiApplication *C.QGuiApplication = nil
-	var outptr_QCoreApplication *C.QCoreApplication = nil
-	var outptr_QObject *C.QObject = nil
-
-	C.QApplication_new(argc, &argv[0], &outptr_QApplication, &outptr_QGuiApplication, &outptr_QCoreApplication, &outptr_QObject)
-	ret := newQApplication(outptr_QApplication, outptr_QGuiApplication, outptr_QCoreApplication, outptr_QObject)
+	ret := newQApplication(C.QApplication_new(argc, &argv[0]))
 	ret.isSubclass = true
 	return ret
 }
@@ -88,13 +80,7 @@ func NewQApplication2(args []string, param3 int) *QApplication {
 
 	runtime.LockOSThread() // Prevent Go from migrating the main Qt thread
 
-	var outptr_QApplication *C.QApplication = nil
-	var outptr_QGuiApplication *C.QGuiApplication = nil
-	var outptr_QCoreApplication *C.QCoreApplication = nil
-	var outptr_QObject *C.QObject = nil
-
-	C.QApplication_new2(argc, &argv[0], (C.int)(param3), &outptr_QApplication, &outptr_QGuiApplication, &outptr_QCoreApplication, &outptr_QObject)
-	ret := newQApplication(outptr_QApplication, outptr_QGuiApplication, outptr_QCoreApplication, outptr_QObject)
+	ret := newQApplication(C.QApplication_new2(argc, &argv[0], (C.int)(param3)))
 	ret.isSubclass = true
 	return ret
 }
@@ -119,7 +105,7 @@ func QApplication_Tr(s string) string {
 }
 
 func QApplication_Style() *QStyle {
-	return newQStyle(C.QApplication_Style(), nil)
+	return newQStyle(C.QApplication_Style())
 }
 
 func QApplication_SetStyle(style *QStyle) {
@@ -131,7 +117,7 @@ func QApplication_SetStyleWithStyle(style string) *QStyle {
 	style_ms.data = C.CString(style)
 	style_ms.len = C.size_t(len(style))
 	defer C.free(unsafe.Pointer(style_ms.data))
-	return newQStyle(C.QApplication_SetStyleWithStyle(style_ms), nil)
+	return newQStyle(C.QApplication_SetStyleWithStyle(style_ms))
 }
 
 func QApplication_Palette(param1 *QWidget) *QPalette {
@@ -187,7 +173,7 @@ func QApplication_AllWidgets() []*QWidget {
 	_ret := make([]*QWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQWidget(_outCast[i], nil, nil)
+		_ret[i] = newQWidget(_outCast[i])
 	}
 	return _ret
 }
@@ -197,25 +183,25 @@ func QApplication_TopLevelWidgets() []*QWidget {
 	_ret := make([]*QWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQWidget(_outCast[i], nil, nil)
+		_ret[i] = newQWidget(_outCast[i])
 	}
 	return _ret
 }
 
 func QApplication_ActivePopupWidget() *QWidget {
-	return newQWidget(C.QApplication_ActivePopupWidget(), nil, nil)
+	return newQWidget(C.QApplication_ActivePopupWidget())
 }
 
 func QApplication_ActiveModalWidget() *QWidget {
-	return newQWidget(C.QApplication_ActiveModalWidget(), nil, nil)
+	return newQWidget(C.QApplication_ActiveModalWidget())
 }
 
 func QApplication_FocusWidget() *QWidget {
-	return newQWidget(C.QApplication_FocusWidget(), nil, nil)
+	return newQWidget(C.QApplication_FocusWidget())
 }
 
 func QApplication_ActiveWindow() *QWidget {
-	return newQWidget(C.QApplication_ActiveWindow(), nil, nil)
+	return newQWidget(C.QApplication_ActiveWindow())
 }
 
 func QApplication_SetActiveWindow(act *QWidget) {
@@ -223,19 +209,19 @@ func QApplication_SetActiveWindow(act *QWidget) {
 }
 
 func QApplication_WidgetAt(p *QPoint) *QWidget {
-	return newQWidget(C.QApplication_WidgetAt(p.cPointer()), nil, nil)
+	return newQWidget(C.QApplication_WidgetAt(p.cPointer()))
 }
 
 func QApplication_WidgetAt2(x int, y int) *QWidget {
-	return newQWidget(C.QApplication_WidgetAt2((C.int)(x), (C.int)(y)), nil, nil)
+	return newQWidget(C.QApplication_WidgetAt2((C.int)(x), (C.int)(y)))
 }
 
 func QApplication_TopLevelAt(p *QPoint) *QWidget {
-	return newQWidget(C.QApplication_TopLevelAt(p.cPointer()), nil, nil)
+	return newQWidget(C.QApplication_TopLevelAt(p.cPointer()))
 }
 
 func QApplication_TopLevelAt2(x int, y int) *QWidget {
-	return newQWidget(C.QApplication_TopLevelAt2((C.int)(x), (C.int)(y)), nil, nil)
+	return newQWidget(C.QApplication_TopLevelAt2((C.int)(x), (C.int)(y)))
 }
 
 func QApplication_Beep() {
@@ -325,9 +311,9 @@ func miqt_exec_callback_QApplication_FocusChanged(cb C.intptr_t, old *C.QWidget,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(old, nil, nil)
+	slotval1 := newQWidget(old)
 
-	slotval2 := newQWidget(now, nil, nil)
+	slotval2 := newQWidget(now)
 
 	gofunc(slotval1, slotval2)
 }

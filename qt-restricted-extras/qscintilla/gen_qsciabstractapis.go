@@ -36,31 +36,26 @@ func (this *QsciAbstractAPIs) UnsafePointer() unsafe.Pointer {
 }
 
 // newQsciAbstractAPIs constructs the type using only CGO pointers.
-func newQsciAbstractAPIs(h *C.QsciAbstractAPIs, h_QObject *C.QObject) *QsciAbstractAPIs {
+func newQsciAbstractAPIs(h *C.QsciAbstractAPIs) *QsciAbstractAPIs {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QsciAbstractAPIs_virtbase(h, &outptr_QObject)
+
 	return &QsciAbstractAPIs{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQsciAbstractAPIs constructs the type using only unsafe pointers.
-func UnsafeNewQsciAbstractAPIs(h unsafe.Pointer, h_QObject unsafe.Pointer) *QsciAbstractAPIs {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciAbstractAPIs{h: (*C.QsciAbstractAPIs)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQsciAbstractAPIs(h unsafe.Pointer) *QsciAbstractAPIs {
+	return newQsciAbstractAPIs((*C.QsciAbstractAPIs)(h))
 }
 
 // NewQsciAbstractAPIs constructs a new QsciAbstractAPIs object.
 func NewQsciAbstractAPIs(lexer *QsciLexer) *QsciAbstractAPIs {
-	var outptr_QsciAbstractAPIs *C.QsciAbstractAPIs = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciAbstractAPIs_new(lexer.cPointer(), &outptr_QsciAbstractAPIs, &outptr_QObject)
-	ret := newQsciAbstractAPIs(outptr_QsciAbstractAPIs, outptr_QObject)
+	ret := newQsciAbstractAPIs(C.QsciAbstractAPIs_new(lexer.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -94,7 +89,7 @@ func QsciAbstractAPIs_TrUtf8(s string) string {
 }
 
 func (this *QsciAbstractAPIs) Lexer() *QsciLexer {
-	return newQsciLexer(C.QsciAbstractAPIs_Lexer(this.h), nil)
+	return newQsciLexer(C.QsciAbstractAPIs_Lexer(this.h))
 }
 
 func (this *QsciAbstractAPIs) UpdateAutoCompletionList(context []string, list []string) {
@@ -406,7 +401,7 @@ func miqt_exec_callback_QsciAbstractAPIs_TimerEvent(self *C.QsciAbstractAPIs, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QsciAbstractAPIs{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -432,7 +427,7 @@ func miqt_exec_callback_QsciAbstractAPIs_ChildEvent(self *C.QsciAbstractAPIs, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QsciAbstractAPIs{h: self}).callVirtualBase_ChildEvent, slotval1)
 

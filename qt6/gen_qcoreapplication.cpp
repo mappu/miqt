@@ -221,16 +221,16 @@ public:
 
 };
 
-void QCoreApplication_new(int* argc, char** argv, QCoreApplication** outptr_QCoreApplication, QObject** outptr_QObject) {
-	MiqtVirtualQCoreApplication* ret = new MiqtVirtualQCoreApplication(static_cast<int&>(*argc), argv);
-	*outptr_QCoreApplication = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QCoreApplication* QCoreApplication_new(int* argc, char** argv) {
+	return new MiqtVirtualQCoreApplication(static_cast<int&>(*argc), argv);
 }
 
-void QCoreApplication_new2(int* argc, char** argv, int param3, QCoreApplication** outptr_QCoreApplication, QObject** outptr_QObject) {
-	MiqtVirtualQCoreApplication* ret = new MiqtVirtualQCoreApplication(static_cast<int&>(*argc), argv, static_cast<int>(param3));
-	*outptr_QCoreApplication = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QCoreApplication* QCoreApplication_new2(int* argc, char** argv, int param3) {
+	return new MiqtVirtualQCoreApplication(static_cast<int&>(*argc), argv, static_cast<int>(param3));
+}
+
+void QCoreApplication_virtbase(QCoreApplication* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QCoreApplication_MetaObject(const QCoreApplication* self) {

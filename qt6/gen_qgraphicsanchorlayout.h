@@ -36,6 +36,7 @@ typedef struct QRectF QRectF;
 typedef struct QSizeF QSizeF;
 #endif
 
+void QGraphicsAnchor_virtbase(QGraphicsAnchor* src, QObject** outptr_QObject);
 QMetaObject* QGraphicsAnchor_MetaObject(const QGraphicsAnchor* self);
 void* QGraphicsAnchor_Metacast(QGraphicsAnchor* self, const char* param1);
 struct miqt_string QGraphicsAnchor_Tr(const char* s);
@@ -48,8 +49,9 @@ struct miqt_string QGraphicsAnchor_Tr2(const char* s, const char* c);
 struct miqt_string QGraphicsAnchor_Tr3(const char* s, const char* c, int n);
 void QGraphicsAnchor_Delete(QGraphicsAnchor* self, bool isSubclass);
 
-void QGraphicsAnchorLayout_new(QGraphicsAnchorLayout** outptr_QGraphicsAnchorLayout, QGraphicsLayout** outptr_QGraphicsLayout, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
-void QGraphicsAnchorLayout_new2(QGraphicsLayoutItem* parent, QGraphicsAnchorLayout** outptr_QGraphicsAnchorLayout, QGraphicsLayout** outptr_QGraphicsLayout, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
+QGraphicsAnchorLayout* QGraphicsAnchorLayout_new();
+QGraphicsAnchorLayout* QGraphicsAnchorLayout_new2(QGraphicsLayoutItem* parent);
+void QGraphicsAnchorLayout_virtbase(QGraphicsAnchorLayout* src, QGraphicsLayout** outptr_QGraphicsLayout);
 QGraphicsAnchor* QGraphicsAnchorLayout_AddAnchor(QGraphicsAnchorLayout* self, QGraphicsLayoutItem* firstItem, int firstEdge, QGraphicsLayoutItem* secondItem, int secondEdge);
 QGraphicsAnchor* QGraphicsAnchorLayout_Anchor(QGraphicsAnchorLayout* self, QGraphicsLayoutItem* firstItem, int firstEdge, QGraphicsLayoutItem* secondItem, int secondEdge);
 void QGraphicsAnchorLayout_AddCornerAnchors(QGraphicsAnchorLayout* self, QGraphicsLayoutItem* firstItem, int firstCorner, QGraphicsLayoutItem* secondItem, int secondCorner);

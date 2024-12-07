@@ -52,12 +52,13 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QPushButton_new(QWidget* parent, QPushButton** outptr_QPushButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QPushButton_new2(QPushButton** outptr_QPushButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QPushButton_new3(struct miqt_string text, QPushButton** outptr_QPushButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QPushButton_new4(QIcon* icon, struct miqt_string text, QPushButton** outptr_QPushButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QPushButton_new5(struct miqt_string text, QWidget* parent, QPushButton** outptr_QPushButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QPushButton_new6(QIcon* icon, struct miqt_string text, QWidget* parent, QPushButton** outptr_QPushButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QPushButton* QPushButton_new(QWidget* parent);
+QPushButton* QPushButton_new2();
+QPushButton* QPushButton_new3(struct miqt_string text);
+QPushButton* QPushButton_new4(QIcon* icon, struct miqt_string text);
+QPushButton* QPushButton_new5(struct miqt_string text, QWidget* parent);
+QPushButton* QPushButton_new6(QIcon* icon, struct miqt_string text, QWidget* parent);
+void QPushButton_virtbase(QPushButton* src, QAbstractButton** outptr_QAbstractButton);
 QMetaObject* QPushButton_MetaObject(const QPushButton* self);
 void* QPushButton_Metacast(QPushButton* self, const char* param1);
 struct miqt_string QPushButton_Tr(const char* s);

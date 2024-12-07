@@ -35,46 +35,34 @@ func (this *QSortFilterProxyModel) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSortFilterProxyModel constructs the type using only CGO pointers.
-func newQSortFilterProxyModel(h *C.QSortFilterProxyModel, h_QAbstractProxyModel *C.QAbstractProxyModel, h_QAbstractItemModel *C.QAbstractItemModel, h_QObject *C.QObject) *QSortFilterProxyModel {
+func newQSortFilterProxyModel(h *C.QSortFilterProxyModel) *QSortFilterProxyModel {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractProxyModel *C.QAbstractProxyModel = nil
+	C.QSortFilterProxyModel_virtbase(h, &outptr_QAbstractProxyModel)
+
 	return &QSortFilterProxyModel{h: h,
-		QAbstractProxyModel: newQAbstractProxyModel(h_QAbstractProxyModel, h_QAbstractItemModel, h_QObject)}
+		QAbstractProxyModel: newQAbstractProxyModel(outptr_QAbstractProxyModel)}
 }
 
 // UnsafeNewQSortFilterProxyModel constructs the type using only unsafe pointers.
-func UnsafeNewQSortFilterProxyModel(h unsafe.Pointer, h_QAbstractProxyModel unsafe.Pointer, h_QAbstractItemModel unsafe.Pointer, h_QObject unsafe.Pointer) *QSortFilterProxyModel {
-	if h == nil {
-		return nil
-	}
-
-	return &QSortFilterProxyModel{h: (*C.QSortFilterProxyModel)(h),
-		QAbstractProxyModel: UnsafeNewQAbstractProxyModel(h_QAbstractProxyModel, h_QAbstractItemModel, h_QObject)}
+func UnsafeNewQSortFilterProxyModel(h unsafe.Pointer) *QSortFilterProxyModel {
+	return newQSortFilterProxyModel((*C.QSortFilterProxyModel)(h))
 }
 
 // NewQSortFilterProxyModel constructs a new QSortFilterProxyModel object.
 func NewQSortFilterProxyModel() *QSortFilterProxyModel {
-	var outptr_QSortFilterProxyModel *C.QSortFilterProxyModel = nil
-	var outptr_QAbstractProxyModel *C.QAbstractProxyModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSortFilterProxyModel_new(&outptr_QSortFilterProxyModel, &outptr_QAbstractProxyModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQSortFilterProxyModel(outptr_QSortFilterProxyModel, outptr_QAbstractProxyModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQSortFilterProxyModel(C.QSortFilterProxyModel_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSortFilterProxyModel2 constructs a new QSortFilterProxyModel object.
 func NewQSortFilterProxyModel2(parent *QObject) *QSortFilterProxyModel {
-	var outptr_QSortFilterProxyModel *C.QSortFilterProxyModel = nil
-	var outptr_QAbstractProxyModel *C.QAbstractProxyModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSortFilterProxyModel_new2(parent.cPointer(), &outptr_QSortFilterProxyModel, &outptr_QAbstractProxyModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQSortFilterProxyModel(outptr_QSortFilterProxyModel, outptr_QAbstractProxyModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQSortFilterProxyModel(C.QSortFilterProxyModel_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -324,7 +312,7 @@ func (this *QSortFilterProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
-	return newQMimeData(C.QSortFilterProxyModel_MimeData(this.h, indexes_ma), nil)
+	return newQMimeData(C.QSortFilterProxyModel_MimeData(this.h, indexes_ma))
 }
 
 func (this *QSortFilterProxyModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
@@ -608,7 +596,7 @@ func miqt_exec_callback_QSortFilterProxyModel_SetSourceModel(self *C.QSortFilter
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQAbstractItemModel(sourceModel, nil)
+	slotval1 := newQAbstractItemModel(sourceModel)
 
 	gofunc((&QSortFilterProxyModel{h: self}).callVirtualBase_SetSourceModel, slotval1)
 
@@ -1146,7 +1134,7 @@ func (this *QSortFilterProxyModel) callVirtualBase_MimeData(indexes []QModelInde
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 
-	return newQMimeData(C.QSortFilterProxyModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma), nil)
+	return newQMimeData(C.QSortFilterProxyModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma))
 
 }
 func (this *QSortFilterProxyModel) OnMimeData(slot func(super func(indexes []QModelIndex) *QMimeData, indexes []QModelIndex) *QMimeData) {
@@ -1200,7 +1188,7 @@ func miqt_exec_callback_QSortFilterProxyModel_DropMimeData(self *C.QSortFilterPr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(data, nil)
+	slotval1 := newQMimeData(data)
 
 	slotval2 := (DropAction)(action)
 
@@ -1815,7 +1803,7 @@ func miqt_exec_callback_QSortFilterProxyModel_CanDropMimeData(self *C.QSortFilte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(data, nil)
+	slotval1 := newQMimeData(data)
 
 	slotval2 := (DropAction)(action)
 

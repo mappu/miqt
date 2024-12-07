@@ -37,34 +37,27 @@ func newqfloat16(h *C.qfloat16) *qfloat16 {
 	if h == nil {
 		return nil
 	}
+
 	return &qfloat16{h: h}
 }
 
 // UnsafeNewqfloat16 constructs the type using only unsafe pointers.
 func UnsafeNewqfloat16(h unsafe.Pointer) *qfloat16 {
-	if h == nil {
-		return nil
-	}
-
-	return &qfloat16{h: (*C.qfloat16)(h)}
+	return newqfloat16((*C.qfloat16)(h))
 }
 
 // Newqfloat16 constructs a new qfloat16 object.
 func Newqfloat16() *qfloat16 {
-	var outptr_qfloat16 *C.qfloat16 = nil
 
-	C.qfloat16_new(&outptr_qfloat16)
-	ret := newqfloat16(outptr_qfloat16)
+	ret := newqfloat16(C.qfloat16_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // Newqfloat162 constructs a new qfloat16 object.
 func Newqfloat162(f float32) *qfloat16 {
-	var outptr_qfloat16 *C.qfloat16 = nil
 
-	C.qfloat16_new2((C.float)(f), &outptr_qfloat16)
-	ret := newqfloat16(outptr_qfloat16)
+	ret := newqfloat16(C.qfloat16_new2((C.float)(f)))
 	ret.isSubclass = true
 	return ret
 }

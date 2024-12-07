@@ -35,22 +35,20 @@ func (this *QMediaControl) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMediaControl constructs the type using only CGO pointers.
-func newQMediaControl(h *C.QMediaControl, h_QObject *C.QObject) *QMediaControl {
+func newQMediaControl(h *C.QMediaControl) *QMediaControl {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QMediaControl_virtbase(h, &outptr_QObject)
+
 	return &QMediaControl{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQMediaControl constructs the type using only unsafe pointers.
-func UnsafeNewQMediaControl(h unsafe.Pointer, h_QObject unsafe.Pointer) *QMediaControl {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaControl{h: (*C.QMediaControl)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQMediaControl(h unsafe.Pointer) *QMediaControl {
+	return newQMediaControl((*C.QMediaControl)(h))
 }
 
 func (this *QMediaControl) MetaObject() *qt.QMetaObject {

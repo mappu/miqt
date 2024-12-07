@@ -48,13 +48,14 @@ typedef struct QSizeF QSizeF;
 typedef struct QTransform QTransform;
 #endif
 
-void QPixmap_new(QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice);
-void QPixmap_new2(int w, int h, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice);
-void QPixmap_new3(QSize* param1, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice);
-void QPixmap_new4(struct miqt_string fileName, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice);
-void QPixmap_new5(QPixmap* param1, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice);
-void QPixmap_new6(struct miqt_string fileName, const char* format, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice);
-void QPixmap_new7(struct miqt_string fileName, const char* format, int flags, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice);
+QPixmap* QPixmap_new();
+QPixmap* QPixmap_new2(int w, int h);
+QPixmap* QPixmap_new3(QSize* param1);
+QPixmap* QPixmap_new4(struct miqt_string fileName);
+QPixmap* QPixmap_new5(QPixmap* param1);
+QPixmap* QPixmap_new6(struct miqt_string fileName, const char* format);
+QPixmap* QPixmap_new7(struct miqt_string fileName, const char* format, int flags);
+void QPixmap_virtbase(QPixmap* src, QPaintDevice** outptr_QPaintDevice);
 void QPixmap_OperatorAssign(QPixmap* self, QPixmap* param1);
 void QPixmap_Swap(QPixmap* self, QPixmap* other);
 bool QPixmap_IsNull(const QPixmap* self);

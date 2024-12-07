@@ -36,22 +36,20 @@ func (this *QAudioDecoderControl) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAudioDecoderControl constructs the type using only CGO pointers.
-func newQAudioDecoderControl(h *C.QAudioDecoderControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QAudioDecoderControl {
+func newQAudioDecoderControl(h *C.QAudioDecoderControl) *QAudioDecoderControl {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaControl *C.QMediaControl = nil
+	C.QAudioDecoderControl_virtbase(h, &outptr_QMediaControl)
+
 	return &QAudioDecoderControl{h: h,
-		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
+		QMediaControl: newQMediaControl(outptr_QMediaControl)}
 }
 
 // UnsafeNewQAudioDecoderControl constructs the type using only unsafe pointers.
-func UnsafeNewQAudioDecoderControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QAudioDecoderControl {
-	if h == nil {
-		return nil
-	}
-
-	return &QAudioDecoderControl{h: (*C.QAudioDecoderControl)(h),
-		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
+func UnsafeNewQAudioDecoderControl(h unsafe.Pointer) *QAudioDecoderControl {
+	return newQAudioDecoderControl((*C.QAudioDecoderControl)(h))
 }
 
 func (this *QAudioDecoderControl) MetaObject() *qt.QMetaObject {
@@ -102,7 +100,7 @@ func (this *QAudioDecoderControl) SetSourceFilename(fileName string) {
 }
 
 func (this *QAudioDecoderControl) SourceDevice() *qt.QIODevice {
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAudioDecoderControl_SourceDevice(this.h)), nil)
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAudioDecoderControl_SourceDevice(this.h)))
 }
 
 func (this *QAudioDecoderControl) SetSourceDevice(device *qt.QIODevice) {

@@ -91,22 +91,20 @@ func (this *QWebEngineContextMenuRequest) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebEngineContextMenuRequest constructs the type using only CGO pointers.
-func newQWebEngineContextMenuRequest(h *C.QWebEngineContextMenuRequest, h_QObject *C.QObject) *QWebEngineContextMenuRequest {
+func newQWebEngineContextMenuRequest(h *C.QWebEngineContextMenuRequest) *QWebEngineContextMenuRequest {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebEngineContextMenuRequest_virtbase(h, &outptr_QObject)
+
 	return &QWebEngineContextMenuRequest{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebEngineContextMenuRequest constructs the type using only unsafe pointers.
-func UnsafeNewQWebEngineContextMenuRequest(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebEngineContextMenuRequest {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineContextMenuRequest{h: (*C.QWebEngineContextMenuRequest)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebEngineContextMenuRequest(h unsafe.Pointer) *QWebEngineContextMenuRequest {
+	return newQWebEngineContextMenuRequest((*C.QWebEngineContextMenuRequest)(h))
 }
 
 func (this *QWebEngineContextMenuRequest) MetaObject() *qt6.QMetaObject {

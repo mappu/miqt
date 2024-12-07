@@ -9,6 +9,10 @@
 #include "gen_qmediaservice.h"
 #include "_cgo_export.h"
 
+void QMediaService_virtbase(QMediaService* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
+
 QMetaObject* QMediaService_MetaObject(const QMediaService* self) {
 	return (QMetaObject*) self->metaObject();
 }

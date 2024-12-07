@@ -84,16 +84,16 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QListWidgetItem_new(QListWidgetItem** outptr_QListWidgetItem);
-void QListWidgetItem_new2(struct miqt_string text, QListWidgetItem** outptr_QListWidgetItem);
-void QListWidgetItem_new3(QIcon* icon, struct miqt_string text, QListWidgetItem** outptr_QListWidgetItem);
-void QListWidgetItem_new4(QListWidgetItem* other, QListWidgetItem** outptr_QListWidgetItem);
-void QListWidgetItem_new5(QListWidget* listview, QListWidgetItem** outptr_QListWidgetItem);
-void QListWidgetItem_new6(QListWidget* listview, int typeVal, QListWidgetItem** outptr_QListWidgetItem);
-void QListWidgetItem_new7(struct miqt_string text, QListWidget* listview, QListWidgetItem** outptr_QListWidgetItem);
-void QListWidgetItem_new8(struct miqt_string text, QListWidget* listview, int typeVal, QListWidgetItem** outptr_QListWidgetItem);
-void QListWidgetItem_new9(QIcon* icon, struct miqt_string text, QListWidget* listview, QListWidgetItem** outptr_QListWidgetItem);
-void QListWidgetItem_new10(QIcon* icon, struct miqt_string text, QListWidget* listview, int typeVal, QListWidgetItem** outptr_QListWidgetItem);
+QListWidgetItem* QListWidgetItem_new();
+QListWidgetItem* QListWidgetItem_new2(struct miqt_string text);
+QListWidgetItem* QListWidgetItem_new3(QIcon* icon, struct miqt_string text);
+QListWidgetItem* QListWidgetItem_new4(QListWidgetItem* other);
+QListWidgetItem* QListWidgetItem_new5(QListWidget* listview);
+QListWidgetItem* QListWidgetItem_new6(QListWidget* listview, int typeVal);
+QListWidgetItem* QListWidgetItem_new7(struct miqt_string text, QListWidget* listview);
+QListWidgetItem* QListWidgetItem_new8(struct miqt_string text, QListWidget* listview, int typeVal);
+QListWidgetItem* QListWidgetItem_new9(QIcon* icon, struct miqt_string text, QListWidget* listview);
+QListWidgetItem* QListWidgetItem_new10(QIcon* icon, struct miqt_string text, QListWidget* listview, int typeVal);
 QListWidgetItem* QListWidgetItem_Clone(const QListWidgetItem* self);
 QListWidget* QListWidgetItem_ListWidget(const QListWidgetItem* self);
 void QListWidgetItem_SetSelected(QListWidgetItem* self, bool selectVal);
@@ -147,8 +147,9 @@ void QListWidgetItem_override_virtual_Write(void* self, intptr_t slot);
 void QListWidgetItem_virtualbase_Write(const void* self, QDataStream* out);
 void QListWidgetItem_Delete(QListWidgetItem* self, bool isSubclass);
 
-void QListWidget_new(QWidget* parent, QListWidget** outptr_QListWidget, QListView** outptr_QListView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QListWidget_new2(QListWidget** outptr_QListWidget, QListView** outptr_QListView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QListWidget* QListWidget_new(QWidget* parent);
+QListWidget* QListWidget_new2();
+void QListWidget_virtbase(QListWidget* src, QListView** outptr_QListView);
 QMetaObject* QListWidget_MetaObject(const QListWidget* self);
 void* QListWidget_Metacast(QListWidget* self, const char* param1);
 struct miqt_string QListWidget_Tr(const char* s);

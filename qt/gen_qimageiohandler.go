@@ -84,24 +84,19 @@ func newQImageIOHandler(h *C.QImageIOHandler) *QImageIOHandler {
 	if h == nil {
 		return nil
 	}
+
 	return &QImageIOHandler{h: h}
 }
 
 // UnsafeNewQImageIOHandler constructs the type using only unsafe pointers.
 func UnsafeNewQImageIOHandler(h unsafe.Pointer) *QImageIOHandler {
-	if h == nil {
-		return nil
-	}
-
-	return &QImageIOHandler{h: (*C.QImageIOHandler)(h)}
+	return newQImageIOHandler((*C.QImageIOHandler)(h))
 }
 
 // NewQImageIOHandler constructs a new QImageIOHandler object.
 func NewQImageIOHandler() *QImageIOHandler {
-	var outptr_QImageIOHandler *C.QImageIOHandler = nil
 
-	C.QImageIOHandler_new(&outptr_QImageIOHandler)
-	ret := newQImageIOHandler(outptr_QImageIOHandler)
+	ret := newQImageIOHandler(C.QImageIOHandler_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -111,7 +106,7 @@ func (this *QImageIOHandler) SetDevice(device *QIODevice) {
 }
 
 func (this *QImageIOHandler) Device() *QIODevice {
-	return newQIODevice(C.QImageIOHandler_Device(this.h), nil)
+	return newQIODevice(C.QImageIOHandler_Device(this.h))
 }
 
 func (this *QImageIOHandler) SetFormat(format []byte) {
@@ -261,7 +256,7 @@ func miqt_exec_callback_QImageIOHandler_Read(self *C.QImageIOHandler, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQImage(image, nil)
+	slotval1 := newQImage(image)
 
 	virtualReturn := gofunc(slotval1)
 
@@ -289,7 +284,7 @@ func miqt_exec_callback_QImageIOHandler_Write(self *C.QImageIOHandler, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQImage(image, nil)
+	slotval1 := newQImage(image)
 
 	virtualReturn := gofunc((&QImageIOHandler{h: self}).callVirtualBase_Write, slotval1)
 
@@ -598,42 +593,34 @@ func (this *QImageIOPlugin) UnsafePointer() unsafe.Pointer {
 }
 
 // newQImageIOPlugin constructs the type using only CGO pointers.
-func newQImageIOPlugin(h *C.QImageIOPlugin, h_QObject *C.QObject) *QImageIOPlugin {
+func newQImageIOPlugin(h *C.QImageIOPlugin) *QImageIOPlugin {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QImageIOPlugin_virtbase(h, &outptr_QObject)
+
 	return &QImageIOPlugin{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQImageIOPlugin constructs the type using only unsafe pointers.
-func UnsafeNewQImageIOPlugin(h unsafe.Pointer, h_QObject unsafe.Pointer) *QImageIOPlugin {
-	if h == nil {
-		return nil
-	}
-
-	return &QImageIOPlugin{h: (*C.QImageIOPlugin)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQImageIOPlugin(h unsafe.Pointer) *QImageIOPlugin {
+	return newQImageIOPlugin((*C.QImageIOPlugin)(h))
 }
 
 // NewQImageIOPlugin constructs a new QImageIOPlugin object.
 func NewQImageIOPlugin() *QImageIOPlugin {
-	var outptr_QImageIOPlugin *C.QImageIOPlugin = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QImageIOPlugin_new(&outptr_QImageIOPlugin, &outptr_QObject)
-	ret := newQImageIOPlugin(outptr_QImageIOPlugin, outptr_QObject)
+	ret := newQImageIOPlugin(C.QImageIOPlugin_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQImageIOPlugin2 constructs a new QImageIOPlugin object.
 func NewQImageIOPlugin2(parent *QObject) *QImageIOPlugin {
-	var outptr_QImageIOPlugin *C.QImageIOPlugin = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QImageIOPlugin_new2(parent.cPointer(), &outptr_QImageIOPlugin, &outptr_QObject)
-	ret := newQImageIOPlugin(outptr_QImageIOPlugin, outptr_QObject)
+	ret := newQImageIOPlugin(C.QImageIOPlugin_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -738,7 +725,7 @@ func miqt_exec_callback_QImageIOPlugin_Capabilities(self *C.QImageIOPlugin, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQIODevice(device, nil)
+	slotval1 := newQIODevice(device)
 
 	var format_bytearray C.struct_miqt_string = format
 	format_ret := C.GoBytes(unsafe.Pointer(format_bytearray.data), C.int(int64(format_bytearray.len)))
@@ -765,7 +752,7 @@ func miqt_exec_callback_QImageIOPlugin_Create(self *C.QImageIOPlugin, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQIODevice(device, nil)
+	slotval1 := newQIODevice(device)
 
 	var format_bytearray C.struct_miqt_string = format
 	format_ret := C.GoBytes(unsafe.Pointer(format_bytearray.data), C.int(int64(format_bytearray.len)))
@@ -856,7 +843,7 @@ func miqt_exec_callback_QImageIOPlugin_TimerEvent(self *C.QImageIOPlugin, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QImageIOPlugin{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -882,7 +869,7 @@ func miqt_exec_callback_QImageIOPlugin_ChildEvent(self *C.QImageIOPlugin, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QImageIOPlugin{h: self}).callVirtualBase_ChildEvent, slotval1)
 

@@ -59,34 +59,27 @@ func newQOcspResponse(h *C.QOcspResponse) *QOcspResponse {
 	if h == nil {
 		return nil
 	}
+
 	return &QOcspResponse{h: h}
 }
 
 // UnsafeNewQOcspResponse constructs the type using only unsafe pointers.
 func UnsafeNewQOcspResponse(h unsafe.Pointer) *QOcspResponse {
-	if h == nil {
-		return nil
-	}
-
-	return &QOcspResponse{h: (*C.QOcspResponse)(h)}
+	return newQOcspResponse((*C.QOcspResponse)(h))
 }
 
 // NewQOcspResponse constructs a new QOcspResponse object.
 func NewQOcspResponse() *QOcspResponse {
-	var outptr_QOcspResponse *C.QOcspResponse = nil
 
-	C.QOcspResponse_new(&outptr_QOcspResponse)
-	ret := newQOcspResponse(outptr_QOcspResponse)
+	ret := newQOcspResponse(C.QOcspResponse_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQOcspResponse2 constructs a new QOcspResponse object.
 func NewQOcspResponse2(other *QOcspResponse) *QOcspResponse {
-	var outptr_QOcspResponse *C.QOcspResponse = nil
 
-	C.QOcspResponse_new2(other.cPointer(), &outptr_QOcspResponse)
-	ret := newQOcspResponse(outptr_QOcspResponse)
+	ret := newQOcspResponse(C.QOcspResponse_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

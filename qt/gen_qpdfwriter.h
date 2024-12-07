@@ -48,8 +48,9 @@ typedef struct QSizeF QSizeF;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QPdfWriter_new(struct miqt_string filename, QPdfWriter** outptr_QPdfWriter, QObject** outptr_QObject, QPagedPaintDevice** outptr_QPagedPaintDevice, QPaintDevice** outptr_QPaintDevice);
-void QPdfWriter_new2(QIODevice* device, QPdfWriter** outptr_QPdfWriter, QObject** outptr_QObject, QPagedPaintDevice** outptr_QPagedPaintDevice, QPaintDevice** outptr_QPaintDevice);
+QPdfWriter* QPdfWriter_new(struct miqt_string filename);
+QPdfWriter* QPdfWriter_new2(QIODevice* device);
+void QPdfWriter_virtbase(QPdfWriter* src, QObject** outptr_QObject, QPagedPaintDevice** outptr_QPagedPaintDevice);
 QMetaObject* QPdfWriter_MetaObject(const QPdfWriter* self);
 void* QPdfWriter_Metacast(QPdfWriter* self, const char* param1);
 struct miqt_string QPdfWriter_Tr(const char* s);

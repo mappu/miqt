@@ -46,44 +46,35 @@ func newQPainterPath(h *C.QPainterPath) *QPainterPath {
 	if h == nil {
 		return nil
 	}
+
 	return &QPainterPath{h: h}
 }
 
 // UnsafeNewQPainterPath constructs the type using only unsafe pointers.
 func UnsafeNewQPainterPath(h unsafe.Pointer) *QPainterPath {
-	if h == nil {
-		return nil
-	}
-
-	return &QPainterPath{h: (*C.QPainterPath)(h)}
+	return newQPainterPath((*C.QPainterPath)(h))
 }
 
 // NewQPainterPath constructs a new QPainterPath object.
 func NewQPainterPath() *QPainterPath {
-	var outptr_QPainterPath *C.QPainterPath = nil
 
-	C.QPainterPath_new(&outptr_QPainterPath)
-	ret := newQPainterPath(outptr_QPainterPath)
+	ret := newQPainterPath(C.QPainterPath_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPainterPath2 constructs a new QPainterPath object.
 func NewQPainterPath2(startPoint *QPointF) *QPainterPath {
-	var outptr_QPainterPath *C.QPainterPath = nil
 
-	C.QPainterPath_new2(startPoint.cPointer(), &outptr_QPainterPath)
-	ret := newQPainterPath(outptr_QPainterPath)
+	ret := newQPainterPath(C.QPainterPath_new2(startPoint.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPainterPath3 constructs a new QPainterPath object.
 func NewQPainterPath3(other *QPainterPath) *QPainterPath {
-	var outptr_QPainterPath *C.QPainterPath = nil
 
-	C.QPainterPath_new3(other.cPointer(), &outptr_QPainterPath)
-	ret := newQPainterPath(outptr_QPainterPath)
+	ret := newQPainterPath(C.QPainterPath_new3(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -446,34 +437,27 @@ func newQPainterPathStroker(h *C.QPainterPathStroker) *QPainterPathStroker {
 	if h == nil {
 		return nil
 	}
+
 	return &QPainterPathStroker{h: h}
 }
 
 // UnsafeNewQPainterPathStroker constructs the type using only unsafe pointers.
 func UnsafeNewQPainterPathStroker(h unsafe.Pointer) *QPainterPathStroker {
-	if h == nil {
-		return nil
-	}
-
-	return &QPainterPathStroker{h: (*C.QPainterPathStroker)(h)}
+	return newQPainterPathStroker((*C.QPainterPathStroker)(h))
 }
 
 // NewQPainterPathStroker constructs a new QPainterPathStroker object.
 func NewQPainterPathStroker() *QPainterPathStroker {
-	var outptr_QPainterPathStroker *C.QPainterPathStroker = nil
 
-	C.QPainterPathStroker_new(&outptr_QPainterPathStroker)
-	ret := newQPainterPathStroker(outptr_QPainterPathStroker)
+	ret := newQPainterPathStroker(C.QPainterPathStroker_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPainterPathStroker2 constructs a new QPainterPathStroker object.
 func NewQPainterPathStroker2(pen *QPen) *QPainterPathStroker {
-	var outptr_QPainterPathStroker *C.QPainterPathStroker = nil
 
-	C.QPainterPathStroker_new2(pen.cPointer(), &outptr_QPainterPathStroker)
-	ret := newQPainterPathStroker(outptr_QPainterPathStroker)
+	ret := newQPainterPathStroker(C.QPainterPathStroker_new2(pen.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -594,16 +578,13 @@ func newQPainterPath__Element(h *C.QPainterPath__Element) *QPainterPath__Element
 	if h == nil {
 		return nil
 	}
+
 	return &QPainterPath__Element{h: h}
 }
 
 // UnsafeNewQPainterPath__Element constructs the type using only unsafe pointers.
 func UnsafeNewQPainterPath__Element(h unsafe.Pointer) *QPainterPath__Element {
-	if h == nil {
-		return nil
-	}
-
-	return &QPainterPath__Element{h: (*C.QPainterPath__Element)(h)}
+	return newQPainterPath__Element((*C.QPainterPath__Element)(h))
 }
 
 func (this *QPainterPath__Element) IsMoveTo() bool {

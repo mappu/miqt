@@ -47,42 +47,34 @@ func (this *QEventLoop) UnsafePointer() unsafe.Pointer {
 }
 
 // newQEventLoop constructs the type using only CGO pointers.
-func newQEventLoop(h *C.QEventLoop, h_QObject *C.QObject) *QEventLoop {
+func newQEventLoop(h *C.QEventLoop) *QEventLoop {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QEventLoop_virtbase(h, &outptr_QObject)
+
 	return &QEventLoop{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQEventLoop constructs the type using only unsafe pointers.
-func UnsafeNewQEventLoop(h unsafe.Pointer, h_QObject unsafe.Pointer) *QEventLoop {
-	if h == nil {
-		return nil
-	}
-
-	return &QEventLoop{h: (*C.QEventLoop)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQEventLoop(h unsafe.Pointer) *QEventLoop {
+	return newQEventLoop((*C.QEventLoop)(h))
 }
 
 // NewQEventLoop constructs a new QEventLoop object.
 func NewQEventLoop() *QEventLoop {
-	var outptr_QEventLoop *C.QEventLoop = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QEventLoop_new(&outptr_QEventLoop, &outptr_QObject)
-	ret := newQEventLoop(outptr_QEventLoop, outptr_QObject)
+	ret := newQEventLoop(C.QEventLoop_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQEventLoop2 constructs a new QEventLoop object.
 func NewQEventLoop2(parent *QObject) *QEventLoop {
-	var outptr_QEventLoop *C.QEventLoop = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QEventLoop_new2(parent.cPointer(), &outptr_QEventLoop, &outptr_QObject)
-	ret := newQEventLoop(outptr_QEventLoop, outptr_QObject)
+	ret := newQEventLoop(C.QEventLoop_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -281,7 +273,7 @@ func miqt_exec_callback_QEventLoop_TimerEvent(self *C.QEventLoop, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QEventLoop{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -307,7 +299,7 @@ func miqt_exec_callback_QEventLoop_ChildEvent(self *C.QEventLoop, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QEventLoop{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -429,44 +421,35 @@ func newQEventLoopLocker(h *C.QEventLoopLocker) *QEventLoopLocker {
 	if h == nil {
 		return nil
 	}
+
 	return &QEventLoopLocker{h: h}
 }
 
 // UnsafeNewQEventLoopLocker constructs the type using only unsafe pointers.
 func UnsafeNewQEventLoopLocker(h unsafe.Pointer) *QEventLoopLocker {
-	if h == nil {
-		return nil
-	}
-
-	return &QEventLoopLocker{h: (*C.QEventLoopLocker)(h)}
+	return newQEventLoopLocker((*C.QEventLoopLocker)(h))
 }
 
 // NewQEventLoopLocker constructs a new QEventLoopLocker object.
 func NewQEventLoopLocker() *QEventLoopLocker {
-	var outptr_QEventLoopLocker *C.QEventLoopLocker = nil
 
-	C.QEventLoopLocker_new(&outptr_QEventLoopLocker)
-	ret := newQEventLoopLocker(outptr_QEventLoopLocker)
+	ret := newQEventLoopLocker(C.QEventLoopLocker_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQEventLoopLocker2 constructs a new QEventLoopLocker object.
 func NewQEventLoopLocker2(loop *QEventLoop) *QEventLoopLocker {
-	var outptr_QEventLoopLocker *C.QEventLoopLocker = nil
 
-	C.QEventLoopLocker_new2(loop.cPointer(), &outptr_QEventLoopLocker)
-	ret := newQEventLoopLocker(outptr_QEventLoopLocker)
+	ret := newQEventLoopLocker(C.QEventLoopLocker_new2(loop.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQEventLoopLocker3 constructs a new QEventLoopLocker object.
 func NewQEventLoopLocker3(thread *QThread) *QEventLoopLocker {
-	var outptr_QEventLoopLocker *C.QEventLoopLocker = nil
 
-	C.QEventLoopLocker_new3(thread.cPointer(), &outptr_QEventLoopLocker)
-	ret := newQEventLoopLocker(outptr_QEventLoopLocker)
+	ret := newQEventLoopLocker(C.QEventLoopLocker_new3(thread.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

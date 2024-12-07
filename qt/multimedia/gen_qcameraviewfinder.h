@@ -48,8 +48,9 @@ typedef struct QVideoWidget QVideoWidget;
 typedef struct QWidget QWidget;
 #endif
 
-void QCameraViewfinder_new(QWidget* parent, QCameraViewfinder** outptr_QCameraViewfinder, QVideoWidget** outptr_QVideoWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice, QMediaBindableInterface** outptr_QMediaBindableInterface);
-void QCameraViewfinder_new2(QCameraViewfinder** outptr_QCameraViewfinder, QVideoWidget** outptr_QVideoWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice, QMediaBindableInterface** outptr_QMediaBindableInterface);
+QCameraViewfinder* QCameraViewfinder_new(QWidget* parent);
+QCameraViewfinder* QCameraViewfinder_new2();
+void QCameraViewfinder_virtbase(QCameraViewfinder* src, QVideoWidget** outptr_QVideoWidget);
 QMetaObject* QCameraViewfinder_MetaObject(const QCameraViewfinder* self);
 void* QCameraViewfinder_Metacast(QCameraViewfinder* self, const char* param1);
 struct miqt_string QCameraViewfinder_Tr(const char* s);

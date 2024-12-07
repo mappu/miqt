@@ -7,24 +7,20 @@
 #include "gen_qsslerror.h"
 #include "_cgo_export.h"
 
-void QSslError_new(QSslError** outptr_QSslError) {
-	QSslError* ret = new QSslError();
-	*outptr_QSslError = ret;
+QSslError* QSslError_new() {
+	return new QSslError();
 }
 
-void QSslError_new2(int error, QSslError** outptr_QSslError) {
-	QSslError* ret = new QSslError(static_cast<QSslError::SslError>(error));
-	*outptr_QSslError = ret;
+QSslError* QSslError_new2(int error) {
+	return new QSslError(static_cast<QSslError::SslError>(error));
 }
 
-void QSslError_new3(int error, QSslCertificate* certificate, QSslError** outptr_QSslError) {
-	QSslError* ret = new QSslError(static_cast<QSslError::SslError>(error), *certificate);
-	*outptr_QSslError = ret;
+QSslError* QSslError_new3(int error, QSslCertificate* certificate) {
+	return new QSslError(static_cast<QSslError::SslError>(error), *certificate);
 }
 
-void QSslError_new4(QSslError* other, QSslError** outptr_QSslError) {
-	QSslError* ret = new QSslError(*other);
-	*outptr_QSslError = ret;
+QSslError* QSslError_new4(QSslError* other) {
+	return new QSslError(*other);
 }
 
 void QSslError_Swap(QSslError* self, QSslError* other) {

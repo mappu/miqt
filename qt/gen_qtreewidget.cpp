@@ -215,12 +215,11 @@ public:
 
 };
 
-void QTreeWidgetItem_new(QTreeWidgetItem** outptr_QTreeWidgetItem) {
-	MiqtVirtualQTreeWidgetItem* ret = new MiqtVirtualQTreeWidgetItem();
-	*outptr_QTreeWidgetItem = ret;
+QTreeWidgetItem* QTreeWidgetItem_new() {
+	return new MiqtVirtualQTreeWidgetItem();
 }
 
-void QTreeWidgetItem_new2(struct miqt_array /* of struct miqt_string */  strings, QTreeWidgetItem** outptr_QTreeWidgetItem) {
+QTreeWidgetItem* QTreeWidgetItem_new2(struct miqt_array /* of struct miqt_string */  strings) {
 	QStringList strings_QList;
 	strings_QList.reserve(strings.len);
 	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings.data);
@@ -228,16 +227,14 @@ void QTreeWidgetItem_new2(struct miqt_array /* of struct miqt_string */  strings
 		QString strings_arr_i_QString = QString::fromUtf8(strings_arr[i].data, strings_arr[i].len);
 		strings_QList.push_back(strings_arr_i_QString);
 	}
-	MiqtVirtualQTreeWidgetItem* ret = new MiqtVirtualQTreeWidgetItem(strings_QList);
-	*outptr_QTreeWidgetItem = ret;
+	return new MiqtVirtualQTreeWidgetItem(strings_QList);
 }
 
-void QTreeWidgetItem_new3(QTreeWidget* treeview, QTreeWidgetItem** outptr_QTreeWidgetItem) {
-	MiqtVirtualQTreeWidgetItem* ret = new MiqtVirtualQTreeWidgetItem(treeview);
-	*outptr_QTreeWidgetItem = ret;
+QTreeWidgetItem* QTreeWidgetItem_new3(QTreeWidget* treeview) {
+	return new MiqtVirtualQTreeWidgetItem(treeview);
 }
 
-void QTreeWidgetItem_new4(QTreeWidget* treeview, struct miqt_array /* of struct miqt_string */  strings, QTreeWidgetItem** outptr_QTreeWidgetItem) {
+QTreeWidgetItem* QTreeWidgetItem_new4(QTreeWidget* treeview, struct miqt_array /* of struct miqt_string */  strings) {
 	QStringList strings_QList;
 	strings_QList.reserve(strings.len);
 	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings.data);
@@ -245,21 +242,18 @@ void QTreeWidgetItem_new4(QTreeWidget* treeview, struct miqt_array /* of struct 
 		QString strings_arr_i_QString = QString::fromUtf8(strings_arr[i].data, strings_arr[i].len);
 		strings_QList.push_back(strings_arr_i_QString);
 	}
-	MiqtVirtualQTreeWidgetItem* ret = new MiqtVirtualQTreeWidgetItem(treeview, strings_QList);
-	*outptr_QTreeWidgetItem = ret;
+	return new MiqtVirtualQTreeWidgetItem(treeview, strings_QList);
 }
 
-void QTreeWidgetItem_new5(QTreeWidget* treeview, QTreeWidgetItem* after, QTreeWidgetItem** outptr_QTreeWidgetItem) {
-	MiqtVirtualQTreeWidgetItem* ret = new MiqtVirtualQTreeWidgetItem(treeview, after);
-	*outptr_QTreeWidgetItem = ret;
+QTreeWidgetItem* QTreeWidgetItem_new5(QTreeWidget* treeview, QTreeWidgetItem* after) {
+	return new MiqtVirtualQTreeWidgetItem(treeview, after);
 }
 
-void QTreeWidgetItem_new6(QTreeWidgetItem* parent, QTreeWidgetItem** outptr_QTreeWidgetItem) {
-	MiqtVirtualQTreeWidgetItem* ret = new MiqtVirtualQTreeWidgetItem(parent);
-	*outptr_QTreeWidgetItem = ret;
+QTreeWidgetItem* QTreeWidgetItem_new6(QTreeWidgetItem* parent) {
+	return new MiqtVirtualQTreeWidgetItem(parent);
 }
 
-void QTreeWidgetItem_new7(QTreeWidgetItem* parent, struct miqt_array /* of struct miqt_string */  strings, QTreeWidgetItem** outptr_QTreeWidgetItem) {
+QTreeWidgetItem* QTreeWidgetItem_new7(QTreeWidgetItem* parent, struct miqt_array /* of struct miqt_string */  strings) {
 	QStringList strings_QList;
 	strings_QList.reserve(strings.len);
 	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings.data);
@@ -267,26 +261,22 @@ void QTreeWidgetItem_new7(QTreeWidgetItem* parent, struct miqt_array /* of struc
 		QString strings_arr_i_QString = QString::fromUtf8(strings_arr[i].data, strings_arr[i].len);
 		strings_QList.push_back(strings_arr_i_QString);
 	}
-	MiqtVirtualQTreeWidgetItem* ret = new MiqtVirtualQTreeWidgetItem(parent, strings_QList);
-	*outptr_QTreeWidgetItem = ret;
+	return new MiqtVirtualQTreeWidgetItem(parent, strings_QList);
 }
 
-void QTreeWidgetItem_new8(QTreeWidgetItem* parent, QTreeWidgetItem* after, QTreeWidgetItem** outptr_QTreeWidgetItem) {
-	MiqtVirtualQTreeWidgetItem* ret = new MiqtVirtualQTreeWidgetItem(parent, after);
-	*outptr_QTreeWidgetItem = ret;
+QTreeWidgetItem* QTreeWidgetItem_new8(QTreeWidgetItem* parent, QTreeWidgetItem* after) {
+	return new MiqtVirtualQTreeWidgetItem(parent, after);
 }
 
-void QTreeWidgetItem_new9(QTreeWidgetItem* other, QTreeWidgetItem** outptr_QTreeWidgetItem) {
-	MiqtVirtualQTreeWidgetItem* ret = new MiqtVirtualQTreeWidgetItem(*other);
-	*outptr_QTreeWidgetItem = ret;
+QTreeWidgetItem* QTreeWidgetItem_new9(QTreeWidgetItem* other) {
+	return new MiqtVirtualQTreeWidgetItem(*other);
 }
 
-void QTreeWidgetItem_new10(int typeVal, QTreeWidgetItem** outptr_QTreeWidgetItem) {
-	MiqtVirtualQTreeWidgetItem* ret = new MiqtVirtualQTreeWidgetItem(static_cast<int>(typeVal));
-	*outptr_QTreeWidgetItem = ret;
+QTreeWidgetItem* QTreeWidgetItem_new10(int typeVal) {
+	return new MiqtVirtualQTreeWidgetItem(static_cast<int>(typeVal));
 }
 
-void QTreeWidgetItem_new11(struct miqt_array /* of struct miqt_string */  strings, int typeVal, QTreeWidgetItem** outptr_QTreeWidgetItem) {
+QTreeWidgetItem* QTreeWidgetItem_new11(struct miqt_array /* of struct miqt_string */  strings, int typeVal) {
 	QStringList strings_QList;
 	strings_QList.reserve(strings.len);
 	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings.data);
@@ -294,16 +284,14 @@ void QTreeWidgetItem_new11(struct miqt_array /* of struct miqt_string */  string
 		QString strings_arr_i_QString = QString::fromUtf8(strings_arr[i].data, strings_arr[i].len);
 		strings_QList.push_back(strings_arr_i_QString);
 	}
-	MiqtVirtualQTreeWidgetItem* ret = new MiqtVirtualQTreeWidgetItem(strings_QList, static_cast<int>(typeVal));
-	*outptr_QTreeWidgetItem = ret;
+	return new MiqtVirtualQTreeWidgetItem(strings_QList, static_cast<int>(typeVal));
 }
 
-void QTreeWidgetItem_new12(QTreeWidget* treeview, int typeVal, QTreeWidgetItem** outptr_QTreeWidgetItem) {
-	MiqtVirtualQTreeWidgetItem* ret = new MiqtVirtualQTreeWidgetItem(treeview, static_cast<int>(typeVal));
-	*outptr_QTreeWidgetItem = ret;
+QTreeWidgetItem* QTreeWidgetItem_new12(QTreeWidget* treeview, int typeVal) {
+	return new MiqtVirtualQTreeWidgetItem(treeview, static_cast<int>(typeVal));
 }
 
-void QTreeWidgetItem_new13(QTreeWidget* treeview, struct miqt_array /* of struct miqt_string */  strings, int typeVal, QTreeWidgetItem** outptr_QTreeWidgetItem) {
+QTreeWidgetItem* QTreeWidgetItem_new13(QTreeWidget* treeview, struct miqt_array /* of struct miqt_string */  strings, int typeVal) {
 	QStringList strings_QList;
 	strings_QList.reserve(strings.len);
 	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings.data);
@@ -311,21 +299,18 @@ void QTreeWidgetItem_new13(QTreeWidget* treeview, struct miqt_array /* of struct
 		QString strings_arr_i_QString = QString::fromUtf8(strings_arr[i].data, strings_arr[i].len);
 		strings_QList.push_back(strings_arr_i_QString);
 	}
-	MiqtVirtualQTreeWidgetItem* ret = new MiqtVirtualQTreeWidgetItem(treeview, strings_QList, static_cast<int>(typeVal));
-	*outptr_QTreeWidgetItem = ret;
+	return new MiqtVirtualQTreeWidgetItem(treeview, strings_QList, static_cast<int>(typeVal));
 }
 
-void QTreeWidgetItem_new14(QTreeWidget* treeview, QTreeWidgetItem* after, int typeVal, QTreeWidgetItem** outptr_QTreeWidgetItem) {
-	MiqtVirtualQTreeWidgetItem* ret = new MiqtVirtualQTreeWidgetItem(treeview, after, static_cast<int>(typeVal));
-	*outptr_QTreeWidgetItem = ret;
+QTreeWidgetItem* QTreeWidgetItem_new14(QTreeWidget* treeview, QTreeWidgetItem* after, int typeVal) {
+	return new MiqtVirtualQTreeWidgetItem(treeview, after, static_cast<int>(typeVal));
 }
 
-void QTreeWidgetItem_new15(QTreeWidgetItem* parent, int typeVal, QTreeWidgetItem** outptr_QTreeWidgetItem) {
-	MiqtVirtualQTreeWidgetItem* ret = new MiqtVirtualQTreeWidgetItem(parent, static_cast<int>(typeVal));
-	*outptr_QTreeWidgetItem = ret;
+QTreeWidgetItem* QTreeWidgetItem_new15(QTreeWidgetItem* parent, int typeVal) {
+	return new MiqtVirtualQTreeWidgetItem(parent, static_cast<int>(typeVal));
 }
 
-void QTreeWidgetItem_new16(QTreeWidgetItem* parent, struct miqt_array /* of struct miqt_string */  strings, int typeVal, QTreeWidgetItem** outptr_QTreeWidgetItem) {
+QTreeWidgetItem* QTreeWidgetItem_new16(QTreeWidgetItem* parent, struct miqt_array /* of struct miqt_string */  strings, int typeVal) {
 	QStringList strings_QList;
 	strings_QList.reserve(strings.len);
 	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings.data);
@@ -333,13 +318,11 @@ void QTreeWidgetItem_new16(QTreeWidgetItem* parent, struct miqt_array /* of stru
 		QString strings_arr_i_QString = QString::fromUtf8(strings_arr[i].data, strings_arr[i].len);
 		strings_QList.push_back(strings_arr_i_QString);
 	}
-	MiqtVirtualQTreeWidgetItem* ret = new MiqtVirtualQTreeWidgetItem(parent, strings_QList, static_cast<int>(typeVal));
-	*outptr_QTreeWidgetItem = ret;
+	return new MiqtVirtualQTreeWidgetItem(parent, strings_QList, static_cast<int>(typeVal));
 }
 
-void QTreeWidgetItem_new17(QTreeWidgetItem* parent, QTreeWidgetItem* after, int typeVal, QTreeWidgetItem** outptr_QTreeWidgetItem) {
-	MiqtVirtualQTreeWidgetItem* ret = new MiqtVirtualQTreeWidgetItem(parent, after, static_cast<int>(typeVal));
-	*outptr_QTreeWidgetItem = ret;
+QTreeWidgetItem* QTreeWidgetItem_new17(QTreeWidgetItem* parent, QTreeWidgetItem* after, int typeVal) {
+	return new MiqtVirtualQTreeWidgetItem(parent, after, static_cast<int>(typeVal));
 }
 
 QTreeWidgetItem* QTreeWidgetItem_Clone(const QTreeWidgetItem* self) {
@@ -1881,28 +1864,16 @@ public:
 
 };
 
-void QTreeWidget_new(QWidget* parent, QTreeWidget** outptr_QTreeWidget, QTreeView** outptr_QTreeView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQTreeWidget* ret = new MiqtVirtualQTreeWidget(parent);
-	*outptr_QTreeWidget = ret;
-	*outptr_QTreeView = static_cast<QTreeView*>(ret);
-	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(ret);
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QTreeWidget* QTreeWidget_new(QWidget* parent) {
+	return new MiqtVirtualQTreeWidget(parent);
 }
 
-void QTreeWidget_new2(QTreeWidget** outptr_QTreeWidget, QTreeView** outptr_QTreeView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQTreeWidget* ret = new MiqtVirtualQTreeWidget();
-	*outptr_QTreeWidget = ret;
-	*outptr_QTreeView = static_cast<QTreeView*>(ret);
-	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(ret);
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QTreeWidget* QTreeWidget_new2() {
+	return new MiqtVirtualQTreeWidget();
+}
+
+void QTreeWidget_virtbase(QTreeWidget* src, QTreeView** outptr_QTreeView) {
+	*outptr_QTreeView = static_cast<QTreeView*>(src);
 }
 
 QMetaObject* QTreeWidget_MetaObject(const QTreeWidget* self) {

@@ -71,24 +71,19 @@ func newQXmlStreamStringRef(h *C.QXmlStreamStringRef) *QXmlStreamStringRef {
 	if h == nil {
 		return nil
 	}
+
 	return &QXmlStreamStringRef{h: h}
 }
 
 // UnsafeNewQXmlStreamStringRef constructs the type using only unsafe pointers.
 func UnsafeNewQXmlStreamStringRef(h unsafe.Pointer) *QXmlStreamStringRef {
-	if h == nil {
-		return nil
-	}
-
-	return &QXmlStreamStringRef{h: (*C.QXmlStreamStringRef)(h)}
+	return newQXmlStreamStringRef((*C.QXmlStreamStringRef)(h))
 }
 
 // NewQXmlStreamStringRef constructs a new QXmlStreamStringRef object.
 func NewQXmlStreamStringRef() *QXmlStreamStringRef {
-	var outptr_QXmlStreamStringRef *C.QXmlStreamStringRef = nil
 
-	C.QXmlStreamStringRef_new(&outptr_QXmlStreamStringRef)
-	ret := newQXmlStreamStringRef(outptr_QXmlStreamStringRef)
+	ret := newQXmlStreamStringRef(C.QXmlStreamStringRef_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -99,20 +94,16 @@ func NewQXmlStreamStringRef2(aString string) *QXmlStreamStringRef {
 	aString_ms.data = C.CString(aString)
 	aString_ms.len = C.size_t(len(aString))
 	defer C.free(unsafe.Pointer(aString_ms.data))
-	var outptr_QXmlStreamStringRef *C.QXmlStreamStringRef = nil
 
-	C.QXmlStreamStringRef_new2(aString_ms, &outptr_QXmlStreamStringRef)
-	ret := newQXmlStreamStringRef(outptr_QXmlStreamStringRef)
+	ret := newQXmlStreamStringRef(C.QXmlStreamStringRef_new2(aString_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQXmlStreamStringRef3 constructs a new QXmlStreamStringRef object.
 func NewQXmlStreamStringRef3(other *QXmlStreamStringRef) *QXmlStreamStringRef {
-	var outptr_QXmlStreamStringRef *C.QXmlStreamStringRef = nil
 
-	C.QXmlStreamStringRef_new3(other.cPointer(), &outptr_QXmlStreamStringRef)
-	ret := newQXmlStreamStringRef(outptr_QXmlStreamStringRef)
+	ret := newQXmlStreamStringRef(C.QXmlStreamStringRef_new3(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -182,24 +173,19 @@ func newQXmlStreamAttribute(h *C.QXmlStreamAttribute) *QXmlStreamAttribute {
 	if h == nil {
 		return nil
 	}
+
 	return &QXmlStreamAttribute{h: h}
 }
 
 // UnsafeNewQXmlStreamAttribute constructs the type using only unsafe pointers.
 func UnsafeNewQXmlStreamAttribute(h unsafe.Pointer) *QXmlStreamAttribute {
-	if h == nil {
-		return nil
-	}
-
-	return &QXmlStreamAttribute{h: (*C.QXmlStreamAttribute)(h)}
+	return newQXmlStreamAttribute((*C.QXmlStreamAttribute)(h))
 }
 
 // NewQXmlStreamAttribute constructs a new QXmlStreamAttribute object.
 func NewQXmlStreamAttribute() *QXmlStreamAttribute {
-	var outptr_QXmlStreamAttribute *C.QXmlStreamAttribute = nil
 
-	C.QXmlStreamAttribute_new(&outptr_QXmlStreamAttribute)
-	ret := newQXmlStreamAttribute(outptr_QXmlStreamAttribute)
+	ret := newQXmlStreamAttribute(C.QXmlStreamAttribute_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -214,10 +200,8 @@ func NewQXmlStreamAttribute2(qualifiedName string, value string) *QXmlStreamAttr
 	value_ms.data = C.CString(value)
 	value_ms.len = C.size_t(len(value))
 	defer C.free(unsafe.Pointer(value_ms.data))
-	var outptr_QXmlStreamAttribute *C.QXmlStreamAttribute = nil
 
-	C.QXmlStreamAttribute_new2(qualifiedName_ms, value_ms, &outptr_QXmlStreamAttribute)
-	ret := newQXmlStreamAttribute(outptr_QXmlStreamAttribute)
+	ret := newQXmlStreamAttribute(C.QXmlStreamAttribute_new2(qualifiedName_ms, value_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -236,20 +220,16 @@ func NewQXmlStreamAttribute3(namespaceUri string, name string, value string) *QX
 	value_ms.data = C.CString(value)
 	value_ms.len = C.size_t(len(value))
 	defer C.free(unsafe.Pointer(value_ms.data))
-	var outptr_QXmlStreamAttribute *C.QXmlStreamAttribute = nil
 
-	C.QXmlStreamAttribute_new3(namespaceUri_ms, name_ms, value_ms, &outptr_QXmlStreamAttribute)
-	ret := newQXmlStreamAttribute(outptr_QXmlStreamAttribute)
+	ret := newQXmlStreamAttribute(C.QXmlStreamAttribute_new3(namespaceUri_ms, name_ms, value_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQXmlStreamAttribute4 constructs a new QXmlStreamAttribute object.
 func NewQXmlStreamAttribute4(param1 *QXmlStreamAttribute) *QXmlStreamAttribute {
-	var outptr_QXmlStreamAttribute *C.QXmlStreamAttribute = nil
 
-	C.QXmlStreamAttribute_new4(param1.cPointer(), &outptr_QXmlStreamAttribute)
-	ret := newQXmlStreamAttribute(outptr_QXmlStreamAttribute)
+	ret := newQXmlStreamAttribute(C.QXmlStreamAttribute_new4(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -308,24 +288,19 @@ func newQXmlStreamNamespaceDeclaration(h *C.QXmlStreamNamespaceDeclaration) *QXm
 	if h == nil {
 		return nil
 	}
+
 	return &QXmlStreamNamespaceDeclaration{h: h}
 }
 
 // UnsafeNewQXmlStreamNamespaceDeclaration constructs the type using only unsafe pointers.
 func UnsafeNewQXmlStreamNamespaceDeclaration(h unsafe.Pointer) *QXmlStreamNamespaceDeclaration {
-	if h == nil {
-		return nil
-	}
-
-	return &QXmlStreamNamespaceDeclaration{h: (*C.QXmlStreamNamespaceDeclaration)(h)}
+	return newQXmlStreamNamespaceDeclaration((*C.QXmlStreamNamespaceDeclaration)(h))
 }
 
 // NewQXmlStreamNamespaceDeclaration constructs a new QXmlStreamNamespaceDeclaration object.
 func NewQXmlStreamNamespaceDeclaration() *QXmlStreamNamespaceDeclaration {
-	var outptr_QXmlStreamNamespaceDeclaration *C.QXmlStreamNamespaceDeclaration = nil
 
-	C.QXmlStreamNamespaceDeclaration_new(&outptr_QXmlStreamNamespaceDeclaration)
-	ret := newQXmlStreamNamespaceDeclaration(outptr_QXmlStreamNamespaceDeclaration)
+	ret := newQXmlStreamNamespaceDeclaration(C.QXmlStreamNamespaceDeclaration_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -340,20 +315,16 @@ func NewQXmlStreamNamespaceDeclaration2(prefix string, namespaceUri string) *QXm
 	namespaceUri_ms.data = C.CString(namespaceUri)
 	namespaceUri_ms.len = C.size_t(len(namespaceUri))
 	defer C.free(unsafe.Pointer(namespaceUri_ms.data))
-	var outptr_QXmlStreamNamespaceDeclaration *C.QXmlStreamNamespaceDeclaration = nil
 
-	C.QXmlStreamNamespaceDeclaration_new2(prefix_ms, namespaceUri_ms, &outptr_QXmlStreamNamespaceDeclaration)
-	ret := newQXmlStreamNamespaceDeclaration(outptr_QXmlStreamNamespaceDeclaration)
+	ret := newQXmlStreamNamespaceDeclaration(C.QXmlStreamNamespaceDeclaration_new2(prefix_ms, namespaceUri_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQXmlStreamNamespaceDeclaration3 constructs a new QXmlStreamNamespaceDeclaration object.
 func NewQXmlStreamNamespaceDeclaration3(param1 *QXmlStreamNamespaceDeclaration) *QXmlStreamNamespaceDeclaration {
-	var outptr_QXmlStreamNamespaceDeclaration *C.QXmlStreamNamespaceDeclaration = nil
 
-	C.QXmlStreamNamespaceDeclaration_new3(param1.cPointer(), &outptr_QXmlStreamNamespaceDeclaration)
-	ret := newQXmlStreamNamespaceDeclaration(outptr_QXmlStreamNamespaceDeclaration)
+	ret := newQXmlStreamNamespaceDeclaration(C.QXmlStreamNamespaceDeclaration_new3(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -408,34 +379,27 @@ func newQXmlStreamNotationDeclaration(h *C.QXmlStreamNotationDeclaration) *QXmlS
 	if h == nil {
 		return nil
 	}
+
 	return &QXmlStreamNotationDeclaration{h: h}
 }
 
 // UnsafeNewQXmlStreamNotationDeclaration constructs the type using only unsafe pointers.
 func UnsafeNewQXmlStreamNotationDeclaration(h unsafe.Pointer) *QXmlStreamNotationDeclaration {
-	if h == nil {
-		return nil
-	}
-
-	return &QXmlStreamNotationDeclaration{h: (*C.QXmlStreamNotationDeclaration)(h)}
+	return newQXmlStreamNotationDeclaration((*C.QXmlStreamNotationDeclaration)(h))
 }
 
 // NewQXmlStreamNotationDeclaration constructs a new QXmlStreamNotationDeclaration object.
 func NewQXmlStreamNotationDeclaration() *QXmlStreamNotationDeclaration {
-	var outptr_QXmlStreamNotationDeclaration *C.QXmlStreamNotationDeclaration = nil
 
-	C.QXmlStreamNotationDeclaration_new(&outptr_QXmlStreamNotationDeclaration)
-	ret := newQXmlStreamNotationDeclaration(outptr_QXmlStreamNotationDeclaration)
+	ret := newQXmlStreamNotationDeclaration(C.QXmlStreamNotationDeclaration_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQXmlStreamNotationDeclaration2 constructs a new QXmlStreamNotationDeclaration object.
 func NewQXmlStreamNotationDeclaration2(param1 *QXmlStreamNotationDeclaration) *QXmlStreamNotationDeclaration {
-	var outptr_QXmlStreamNotationDeclaration *C.QXmlStreamNotationDeclaration = nil
 
-	C.QXmlStreamNotationDeclaration_new2(param1.cPointer(), &outptr_QXmlStreamNotationDeclaration)
-	ret := newQXmlStreamNotationDeclaration(outptr_QXmlStreamNotationDeclaration)
+	ret := newQXmlStreamNotationDeclaration(C.QXmlStreamNotationDeclaration_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -490,34 +454,27 @@ func newQXmlStreamEntityDeclaration(h *C.QXmlStreamEntityDeclaration) *QXmlStrea
 	if h == nil {
 		return nil
 	}
+
 	return &QXmlStreamEntityDeclaration{h: h}
 }
 
 // UnsafeNewQXmlStreamEntityDeclaration constructs the type using only unsafe pointers.
 func UnsafeNewQXmlStreamEntityDeclaration(h unsafe.Pointer) *QXmlStreamEntityDeclaration {
-	if h == nil {
-		return nil
-	}
-
-	return &QXmlStreamEntityDeclaration{h: (*C.QXmlStreamEntityDeclaration)(h)}
+	return newQXmlStreamEntityDeclaration((*C.QXmlStreamEntityDeclaration)(h))
 }
 
 // NewQXmlStreamEntityDeclaration constructs a new QXmlStreamEntityDeclaration object.
 func NewQXmlStreamEntityDeclaration() *QXmlStreamEntityDeclaration {
-	var outptr_QXmlStreamEntityDeclaration *C.QXmlStreamEntityDeclaration = nil
 
-	C.QXmlStreamEntityDeclaration_new(&outptr_QXmlStreamEntityDeclaration)
-	ret := newQXmlStreamEntityDeclaration(outptr_QXmlStreamEntityDeclaration)
+	ret := newQXmlStreamEntityDeclaration(C.QXmlStreamEntityDeclaration_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQXmlStreamEntityDeclaration2 constructs a new QXmlStreamEntityDeclaration object.
 func NewQXmlStreamEntityDeclaration2(param1 *QXmlStreamEntityDeclaration) *QXmlStreamEntityDeclaration {
-	var outptr_QXmlStreamEntityDeclaration *C.QXmlStreamEntityDeclaration = nil
 
-	C.QXmlStreamEntityDeclaration_new2(param1.cPointer(), &outptr_QXmlStreamEntityDeclaration)
-	ret := newQXmlStreamEntityDeclaration(outptr_QXmlStreamEntityDeclaration)
+	ret := newQXmlStreamEntityDeclaration(C.QXmlStreamEntityDeclaration_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -572,16 +529,13 @@ func newQXmlStreamEntityResolver(h *C.QXmlStreamEntityResolver) *QXmlStreamEntit
 	if h == nil {
 		return nil
 	}
+
 	return &QXmlStreamEntityResolver{h: h}
 }
 
 // UnsafeNewQXmlStreamEntityResolver constructs the type using only unsafe pointers.
 func UnsafeNewQXmlStreamEntityResolver(h unsafe.Pointer) *QXmlStreamEntityResolver {
-	if h == nil {
-		return nil
-	}
-
-	return &QXmlStreamEntityResolver{h: (*C.QXmlStreamEntityResolver)(h)}
+	return newQXmlStreamEntityResolver((*C.QXmlStreamEntityResolver)(h))
 }
 
 func (this *QXmlStreamEntityResolver) ResolveEntity(publicId string, systemId string) string {
@@ -648,34 +602,27 @@ func newQXmlStreamReader(h *C.QXmlStreamReader) *QXmlStreamReader {
 	if h == nil {
 		return nil
 	}
+
 	return &QXmlStreamReader{h: h}
 }
 
 // UnsafeNewQXmlStreamReader constructs the type using only unsafe pointers.
 func UnsafeNewQXmlStreamReader(h unsafe.Pointer) *QXmlStreamReader {
-	if h == nil {
-		return nil
-	}
-
-	return &QXmlStreamReader{h: (*C.QXmlStreamReader)(h)}
+	return newQXmlStreamReader((*C.QXmlStreamReader)(h))
 }
 
 // NewQXmlStreamReader constructs a new QXmlStreamReader object.
 func NewQXmlStreamReader() *QXmlStreamReader {
-	var outptr_QXmlStreamReader *C.QXmlStreamReader = nil
 
-	C.QXmlStreamReader_new(&outptr_QXmlStreamReader)
-	ret := newQXmlStreamReader(outptr_QXmlStreamReader)
+	ret := newQXmlStreamReader(C.QXmlStreamReader_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQXmlStreamReader2 constructs a new QXmlStreamReader object.
 func NewQXmlStreamReader2(device *QIODevice) *QXmlStreamReader {
-	var outptr_QXmlStreamReader *C.QXmlStreamReader = nil
 
-	C.QXmlStreamReader_new2(device.cPointer(), &outptr_QXmlStreamReader)
-	ret := newQXmlStreamReader(outptr_QXmlStreamReader)
+	ret := newQXmlStreamReader(C.QXmlStreamReader_new2(device.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -685,10 +632,8 @@ func NewQXmlStreamReader3(data []byte) *QXmlStreamReader {
 	data_alias := C.struct_miqt_string{}
 	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
 	data_alias.len = C.size_t(len(data))
-	var outptr_QXmlStreamReader *C.QXmlStreamReader = nil
 
-	C.QXmlStreamReader_new3(data_alias, &outptr_QXmlStreamReader)
-	ret := newQXmlStreamReader(outptr_QXmlStreamReader)
+	ret := newQXmlStreamReader(C.QXmlStreamReader_new3(data_alias))
 	ret.isSubclass = true
 	return ret
 }
@@ -699,10 +644,8 @@ func NewQXmlStreamReader4(data string) *QXmlStreamReader {
 	data_ms.data = C.CString(data)
 	data_ms.len = C.size_t(len(data))
 	defer C.free(unsafe.Pointer(data_ms.data))
-	var outptr_QXmlStreamReader *C.QXmlStreamReader = nil
 
-	C.QXmlStreamReader_new4(data_ms, &outptr_QXmlStreamReader)
-	ret := newQXmlStreamReader(outptr_QXmlStreamReader)
+	ret := newQXmlStreamReader(C.QXmlStreamReader_new4(data_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -711,10 +654,8 @@ func NewQXmlStreamReader4(data string) *QXmlStreamReader {
 func NewQXmlStreamReader5(data string) *QXmlStreamReader {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	var outptr_QXmlStreamReader *C.QXmlStreamReader = nil
 
-	C.QXmlStreamReader_new5(data_Cstring, &outptr_QXmlStreamReader)
-	ret := newQXmlStreamReader(outptr_QXmlStreamReader)
+	ret := newQXmlStreamReader(C.QXmlStreamReader_new5(data_Cstring))
 	ret.isSubclass = true
 	return ret
 }
@@ -724,7 +665,7 @@ func (this *QXmlStreamReader) SetDevice(device *QIODevice) {
 }
 
 func (this *QXmlStreamReader) Device() *QIODevice {
-	return newQIODevice(C.QXmlStreamReader_Device(this.h), nil)
+	return newQIODevice(C.QXmlStreamReader_Device(this.h))
 }
 
 func (this *QXmlStreamReader) AddData(data []byte) {
@@ -992,34 +933,27 @@ func newQXmlStreamWriter(h *C.QXmlStreamWriter) *QXmlStreamWriter {
 	if h == nil {
 		return nil
 	}
+
 	return &QXmlStreamWriter{h: h}
 }
 
 // UnsafeNewQXmlStreamWriter constructs the type using only unsafe pointers.
 func UnsafeNewQXmlStreamWriter(h unsafe.Pointer) *QXmlStreamWriter {
-	if h == nil {
-		return nil
-	}
-
-	return &QXmlStreamWriter{h: (*C.QXmlStreamWriter)(h)}
+	return newQXmlStreamWriter((*C.QXmlStreamWriter)(h))
 }
 
 // NewQXmlStreamWriter constructs a new QXmlStreamWriter object.
 func NewQXmlStreamWriter() *QXmlStreamWriter {
-	var outptr_QXmlStreamWriter *C.QXmlStreamWriter = nil
 
-	C.QXmlStreamWriter_new(&outptr_QXmlStreamWriter)
-	ret := newQXmlStreamWriter(outptr_QXmlStreamWriter)
+	ret := newQXmlStreamWriter(C.QXmlStreamWriter_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQXmlStreamWriter2 constructs a new QXmlStreamWriter object.
 func NewQXmlStreamWriter2(device *QIODevice) *QXmlStreamWriter {
-	var outptr_QXmlStreamWriter *C.QXmlStreamWriter = nil
 
-	C.QXmlStreamWriter_new2(device.cPointer(), &outptr_QXmlStreamWriter)
-	ret := newQXmlStreamWriter(outptr_QXmlStreamWriter)
+	ret := newQXmlStreamWriter(C.QXmlStreamWriter_new2(device.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -1029,7 +963,7 @@ func (this *QXmlStreamWriter) SetDevice(device *QIODevice) {
 }
 
 func (this *QXmlStreamWriter) Device() *QIODevice {
-	return newQIODevice(C.QXmlStreamWriter_Device(this.h), nil)
+	return newQIODevice(C.QXmlStreamWriter_Device(this.h))
 }
 
 func (this *QXmlStreamWriter) SetCodec(codec *QTextCodec) {

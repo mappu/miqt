@@ -36,8 +36,9 @@ typedef struct QSize QSize;
 typedef struct QVariant QVariant;
 #endif
 
-void QConcatenateTablesProxyModel_new(QConcatenateTablesProxyModel** outptr_QConcatenateTablesProxyModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject);
-void QConcatenateTablesProxyModel_new2(QObject* parent, QConcatenateTablesProxyModel** outptr_QConcatenateTablesProxyModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject);
+QConcatenateTablesProxyModel* QConcatenateTablesProxyModel_new();
+QConcatenateTablesProxyModel* QConcatenateTablesProxyModel_new2(QObject* parent);
+void QConcatenateTablesProxyModel_virtbase(QConcatenateTablesProxyModel* src, QAbstractItemModel** outptr_QAbstractItemModel);
 QMetaObject* QConcatenateTablesProxyModel_MetaObject(const QConcatenateTablesProxyModel* self);
 void* QConcatenateTablesProxyModel_Metacast(QConcatenateTablesProxyModel* self, const char* param1);
 struct miqt_string QConcatenateTablesProxyModel_Tr(const char* s);

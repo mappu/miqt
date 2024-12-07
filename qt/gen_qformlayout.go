@@ -59,46 +59,34 @@ func (this *QFormLayout) UnsafePointer() unsafe.Pointer {
 }
 
 // newQFormLayout constructs the type using only CGO pointers.
-func newQFormLayout(h *C.QFormLayout, h_QLayout *C.QLayout, h_QObject *C.QObject, h_QLayoutItem *C.QLayoutItem) *QFormLayout {
+func newQFormLayout(h *C.QFormLayout) *QFormLayout {
 	if h == nil {
 		return nil
 	}
+	var outptr_QLayout *C.QLayout = nil
+	C.QFormLayout_virtbase(h, &outptr_QLayout)
+
 	return &QFormLayout{h: h,
-		QLayout: newQLayout(h_QLayout, h_QObject, h_QLayoutItem)}
+		QLayout: newQLayout(outptr_QLayout)}
 }
 
 // UnsafeNewQFormLayout constructs the type using only unsafe pointers.
-func UnsafeNewQFormLayout(h unsafe.Pointer, h_QLayout unsafe.Pointer, h_QObject unsafe.Pointer, h_QLayoutItem unsafe.Pointer) *QFormLayout {
-	if h == nil {
-		return nil
-	}
-
-	return &QFormLayout{h: (*C.QFormLayout)(h),
-		QLayout: UnsafeNewQLayout(h_QLayout, h_QObject, h_QLayoutItem)}
+func UnsafeNewQFormLayout(h unsafe.Pointer) *QFormLayout {
+	return newQFormLayout((*C.QFormLayout)(h))
 }
 
 // NewQFormLayout constructs a new QFormLayout object.
 func NewQFormLayout(parent *QWidget) *QFormLayout {
-	var outptr_QFormLayout *C.QFormLayout = nil
-	var outptr_QLayout *C.QLayout = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QLayoutItem *C.QLayoutItem = nil
 
-	C.QFormLayout_new(parent.cPointer(), &outptr_QFormLayout, &outptr_QLayout, &outptr_QObject, &outptr_QLayoutItem)
-	ret := newQFormLayout(outptr_QFormLayout, outptr_QLayout, outptr_QObject, outptr_QLayoutItem)
+	ret := newQFormLayout(C.QFormLayout_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFormLayout2 constructs a new QFormLayout object.
 func NewQFormLayout2() *QFormLayout {
-	var outptr_QFormLayout *C.QFormLayout = nil
-	var outptr_QLayout *C.QLayout = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QLayoutItem *C.QLayoutItem = nil
 
-	C.QFormLayout_new2(&outptr_QFormLayout, &outptr_QLayout, &outptr_QObject, &outptr_QLayoutItem)
-	ret := newQFormLayout(outptr_QFormLayout, outptr_QLayout, outptr_QObject, outptr_QLayoutItem)
+	ret := newQFormLayout(C.QFormLayout_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -298,11 +286,11 @@ func (this *QFormLayout) ItemAt(row int, role QFormLayout__ItemRole) *QLayoutIte
 }
 
 func (this *QFormLayout) LabelForField(field *QWidget) *QWidget {
-	return newQWidget(C.QFormLayout_LabelForField(this.h, field.cPointer()), nil, nil)
+	return newQWidget(C.QFormLayout_LabelForField(this.h, field.cPointer()))
 }
 
 func (this *QFormLayout) LabelForFieldWithField(field *QLayout) *QWidget {
-	return newQWidget(C.QFormLayout_LabelForFieldWithField(this.h, field.cPointer()), nil, nil)
+	return newQWidget(C.QFormLayout_LabelForFieldWithField(this.h, field.cPointer()))
 }
 
 func (this *QFormLayout) AddItem(item *QLayoutItem) {
@@ -763,7 +751,7 @@ func miqt_exec_callback_QFormLayout_IndexOf(self *C.QFormLayout, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(param1, nil, nil)
+	slotval1 := newQWidget(param1)
 
 	virtualReturn := gofunc((&QFormLayout{h: self}).callVirtualBase_IndexOf, slotval1)
 
@@ -823,7 +811,7 @@ func miqt_exec_callback_QFormLayout_ControlTypes(self *C.QFormLayout, cb C.intpt
 
 func (this *QFormLayout) callVirtualBase_Layout() *QLayout {
 
-	return newQLayout(C.QFormLayout_virtualbase_Layout(unsafe.Pointer(this.h)), nil, nil)
+	return newQLayout(C.QFormLayout_virtualbase_Layout(unsafe.Pointer(this.h)))
 
 }
 func (this *QFormLayout) OnLayout(slot func(super func() *QLayout) *QLayout) {
@@ -866,7 +854,7 @@ func miqt_exec_callback_QFormLayout_ChildEvent(self *C.QFormLayout, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(e, nil)
+	slotval1 := newQChildEvent(e)
 
 	gofunc((&QFormLayout{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -910,16 +898,13 @@ func newQFormLayout__TakeRowResult(h *C.QFormLayout__TakeRowResult) *QFormLayout
 	if h == nil {
 		return nil
 	}
+
 	return &QFormLayout__TakeRowResult{h: h}
 }
 
 // UnsafeNewQFormLayout__TakeRowResult constructs the type using only unsafe pointers.
 func UnsafeNewQFormLayout__TakeRowResult(h unsafe.Pointer) *QFormLayout__TakeRowResult {
-	if h == nil {
-		return nil
-	}
-
-	return &QFormLayout__TakeRowResult{h: (*C.QFormLayout__TakeRowResult)(h)}
+	return newQFormLayout__TakeRowResult((*C.QFormLayout__TakeRowResult)(h))
 }
 
 // Delete this object from C++ memory.

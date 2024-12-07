@@ -46,8 +46,8 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 #endif
 
-void QModelIndex_new(QModelIndex** outptr_QModelIndex);
-void QModelIndex_new2(QModelIndex* param1, QModelIndex** outptr_QModelIndex);
+QModelIndex* QModelIndex_new();
+QModelIndex* QModelIndex_new2(QModelIndex* param1);
 int QModelIndex_Row(const QModelIndex* self);
 int QModelIndex_Column(const QModelIndex* self);
 uintptr_t QModelIndex_InternalId(const QModelIndex* self);
@@ -67,9 +67,9 @@ bool QModelIndex_OperatorLesser(const QModelIndex* self, QModelIndex* other);
 QVariant* QModelIndex_Data1(const QModelIndex* self, int role);
 void QModelIndex_Delete(QModelIndex* self, bool isSubclass);
 
-void QPersistentModelIndex_new(QPersistentModelIndex** outptr_QPersistentModelIndex);
-void QPersistentModelIndex_new2(QModelIndex* index, QPersistentModelIndex** outptr_QPersistentModelIndex);
-void QPersistentModelIndex_new3(QPersistentModelIndex* other, QPersistentModelIndex** outptr_QPersistentModelIndex);
+QPersistentModelIndex* QPersistentModelIndex_new();
+QPersistentModelIndex* QPersistentModelIndex_new2(QModelIndex* index);
+QPersistentModelIndex* QPersistentModelIndex_new3(QPersistentModelIndex* other);
 bool QPersistentModelIndex_OperatorLesser(const QPersistentModelIndex* self, QPersistentModelIndex* other);
 bool QPersistentModelIndex_OperatorEqual(const QPersistentModelIndex* self, QPersistentModelIndex* other);
 bool QPersistentModelIndex_OperatorNotEqual(const QPersistentModelIndex* self, QPersistentModelIndex* other);
@@ -92,8 +92,9 @@ bool QPersistentModelIndex_IsValid(const QPersistentModelIndex* self);
 QVariant* QPersistentModelIndex_Data1(const QPersistentModelIndex* self, int role);
 void QPersistentModelIndex_Delete(QPersistentModelIndex* self, bool isSubclass);
 
-void QAbstractItemModel_new(QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject);
-void QAbstractItemModel_new2(QObject* parent, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject);
+QAbstractItemModel* QAbstractItemModel_new();
+QAbstractItemModel* QAbstractItemModel_new2(QObject* parent);
+void QAbstractItemModel_virtbase(QAbstractItemModel* src, QObject** outptr_QObject);
 QMetaObject* QAbstractItemModel_MetaObject(const QAbstractItemModel* self);
 void* QAbstractItemModel_Metacast(QAbstractItemModel* self, const char* param1);
 struct miqt_string QAbstractItemModel_Tr(const char* s);
@@ -252,8 +253,9 @@ void QAbstractItemModel_override_virtual_DisconnectNotify(void* self, intptr_t s
 void QAbstractItemModel_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QAbstractItemModel_Delete(QAbstractItemModel* self, bool isSubclass);
 
-void QAbstractTableModel_new(QAbstractTableModel** outptr_QAbstractTableModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject);
-void QAbstractTableModel_new2(QObject* parent, QAbstractTableModel** outptr_QAbstractTableModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject);
+QAbstractTableModel* QAbstractTableModel_new();
+QAbstractTableModel* QAbstractTableModel_new2(QObject* parent);
+void QAbstractTableModel_virtbase(QAbstractTableModel* src, QAbstractItemModel** outptr_QAbstractItemModel);
 QMetaObject* QAbstractTableModel_MetaObject(const QAbstractTableModel* self);
 void* QAbstractTableModel_Metacast(QAbstractTableModel* self, const char* param1);
 struct miqt_string QAbstractTableModel_Tr(const char* s);
@@ -332,8 +334,9 @@ void QAbstractTableModel_override_virtual_Revert(void* self, intptr_t slot);
 void QAbstractTableModel_virtualbase_Revert(void* self);
 void QAbstractTableModel_Delete(QAbstractTableModel* self, bool isSubclass);
 
-void QAbstractListModel_new(QAbstractListModel** outptr_QAbstractListModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject);
-void QAbstractListModel_new2(QObject* parent, QAbstractListModel** outptr_QAbstractListModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject);
+QAbstractListModel* QAbstractListModel_new();
+QAbstractListModel* QAbstractListModel_new2(QObject* parent);
+void QAbstractListModel_virtbase(QAbstractListModel* src, QAbstractItemModel** outptr_QAbstractItemModel);
 QMetaObject* QAbstractListModel_MetaObject(const QAbstractListModel* self);
 void* QAbstractListModel_Metacast(QAbstractListModel* self, const char* param1);
 struct miqt_string QAbstractListModel_Tr(const char* s);

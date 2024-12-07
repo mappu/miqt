@@ -35,42 +35,34 @@ func (this *QThreadPool) UnsafePointer() unsafe.Pointer {
 }
 
 // newQThreadPool constructs the type using only CGO pointers.
-func newQThreadPool(h *C.QThreadPool, h_QObject *C.QObject) *QThreadPool {
+func newQThreadPool(h *C.QThreadPool) *QThreadPool {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QThreadPool_virtbase(h, &outptr_QObject)
+
 	return &QThreadPool{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQThreadPool constructs the type using only unsafe pointers.
-func UnsafeNewQThreadPool(h unsafe.Pointer, h_QObject unsafe.Pointer) *QThreadPool {
-	if h == nil {
-		return nil
-	}
-
-	return &QThreadPool{h: (*C.QThreadPool)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQThreadPool(h unsafe.Pointer) *QThreadPool {
+	return newQThreadPool((*C.QThreadPool)(h))
 }
 
 // NewQThreadPool constructs a new QThreadPool object.
 func NewQThreadPool() *QThreadPool {
-	var outptr_QThreadPool *C.QThreadPool = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QThreadPool_new(&outptr_QThreadPool, &outptr_QObject)
-	ret := newQThreadPool(outptr_QThreadPool, outptr_QObject)
+	ret := newQThreadPool(C.QThreadPool_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQThreadPool2 constructs a new QThreadPool object.
 func NewQThreadPool2(parent *QObject) *QThreadPool {
-	var outptr_QThreadPool *C.QThreadPool = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QThreadPool_new2(parent.cPointer(), &outptr_QThreadPool, &outptr_QObject)
-	ret := newQThreadPool(outptr_QThreadPool, outptr_QObject)
+	ret := newQThreadPool(C.QThreadPool_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -104,7 +96,7 @@ func QThreadPool_TrUtf8(s string) string {
 }
 
 func QThreadPool_GlobalInstance() *QThreadPool {
-	return newQThreadPool(C.QThreadPool_GlobalInstance(), nil)
+	return newQThreadPool(C.QThreadPool_GlobalInstance())
 }
 
 func (this *QThreadPool) Start(runnable *QRunnable) {
@@ -301,7 +293,7 @@ func miqt_exec_callback_QThreadPool_TimerEvent(self *C.QThreadPool, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QThreadPool{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -327,7 +319,7 @@ func miqt_exec_callback_QThreadPool_ChildEvent(self *C.QThreadPool, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QThreadPool{h: self}).callVirtualBase_ChildEvent, slotval1)
 

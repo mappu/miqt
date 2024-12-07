@@ -36,76 +36,50 @@ func (this *QPageSetupDialog) UnsafePointer() unsafe.Pointer {
 }
 
 // newQPageSetupDialog constructs the type using only CGO pointers.
-func newQPageSetupDialog(h *C.QPageSetupDialog, h_QDialog *C.QDialog, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QPageSetupDialog {
+func newQPageSetupDialog(h *C.QPageSetupDialog) *QPageSetupDialog {
 	if h == nil {
 		return nil
 	}
+	var outptr_QDialog *C.QDialog = nil
+	C.QPageSetupDialog_virtbase(h, &outptr_QDialog)
+
 	return &QPageSetupDialog{h: h,
-		QDialog: qt.UnsafeNewQDialog(unsafe.Pointer(h_QDialog), unsafe.Pointer(h_QWidget), unsafe.Pointer(h_QObject), unsafe.Pointer(h_QPaintDevice))}
+		QDialog: qt.UnsafeNewQDialog(unsafe.Pointer(outptr_QDialog))}
 }
 
 // UnsafeNewQPageSetupDialog constructs the type using only unsafe pointers.
-func UnsafeNewQPageSetupDialog(h unsafe.Pointer, h_QDialog unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QPageSetupDialog {
-	if h == nil {
-		return nil
-	}
-
-	return &QPageSetupDialog{h: (*C.QPageSetupDialog)(h),
-		QDialog: qt.UnsafeNewQDialog(h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQPageSetupDialog(h unsafe.Pointer) *QPageSetupDialog {
+	return newQPageSetupDialog((*C.QPageSetupDialog)(h))
 }
 
 // NewQPageSetupDialog constructs a new QPageSetupDialog object.
 func NewQPageSetupDialog(parent *qt.QWidget) *QPageSetupDialog {
-	var outptr_QPageSetupDialog *C.QPageSetupDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPageSetupDialog_new((*C.QWidget)(parent.UnsafePointer()), &outptr_QPageSetupDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPageSetupDialog(outptr_QPageSetupDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPageSetupDialog(C.QPageSetupDialog_new((*C.QWidget)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPageSetupDialog2 constructs a new QPageSetupDialog object.
 func NewQPageSetupDialog2(printer *QPrinter) *QPageSetupDialog {
-	var outptr_QPageSetupDialog *C.QPageSetupDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPageSetupDialog_new2(printer.cPointer(), &outptr_QPageSetupDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPageSetupDialog(outptr_QPageSetupDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPageSetupDialog(C.QPageSetupDialog_new2(printer.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPageSetupDialog3 constructs a new QPageSetupDialog object.
 func NewQPageSetupDialog3() *QPageSetupDialog {
-	var outptr_QPageSetupDialog *C.QPageSetupDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPageSetupDialog_new3(&outptr_QPageSetupDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPageSetupDialog(outptr_QPageSetupDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPageSetupDialog(C.QPageSetupDialog_new3())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPageSetupDialog4 constructs a new QPageSetupDialog object.
 func NewQPageSetupDialog4(printer *QPrinter, parent *qt.QWidget) *QPageSetupDialog {
-	var outptr_QPageSetupDialog *C.QPageSetupDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPageSetupDialog_new4(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer()), &outptr_QPageSetupDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPageSetupDialog(outptr_QPageSetupDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPageSetupDialog(C.QPageSetupDialog_new4(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -147,7 +121,7 @@ func (this *QPageSetupDialog) Done(result int) {
 }
 
 func (this *QPageSetupDialog) Printer() *QPrinter {
-	return newQPrinter(C.QPageSetupDialog_Printer(this.h), nil, nil)
+	return newQPrinter(C.QPageSetupDialog_Printer(this.h))
 }
 
 func QPageSetupDialog_Tr2(s string, c string) string {
@@ -414,7 +388,7 @@ func miqt_exec_callback_QPageSetupDialog_KeyPressEvent(self *C.QPageSetupDialog,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(param1))
 
 	gofunc((&QPageSetupDialog{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -440,7 +414,7 @@ func miqt_exec_callback_QPageSetupDialog_CloseEvent(self *C.QPageSetupDialog, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQCloseEvent(unsafe.Pointer(param1), nil)
+	slotval1 := qt.UnsafeNewQCloseEvent(unsafe.Pointer(param1))
 
 	gofunc((&QPageSetupDialog{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -466,7 +440,7 @@ func miqt_exec_callback_QPageSetupDialog_ShowEvent(self *C.QPageSetupDialog, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQShowEvent(unsafe.Pointer(param1), nil)
+	slotval1 := qt.UnsafeNewQShowEvent(unsafe.Pointer(param1))
 
 	gofunc((&QPageSetupDialog{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -492,7 +466,7 @@ func miqt_exec_callback_QPageSetupDialog_ResizeEvent(self *C.QPageSetupDialog, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQResizeEvent(unsafe.Pointer(param1), nil)
+	slotval1 := qt.UnsafeNewQResizeEvent(unsafe.Pointer(param1))
 
 	gofunc((&QPageSetupDialog{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -518,7 +492,7 @@ func miqt_exec_callback_QPageSetupDialog_ContextMenuEvent(self *C.QPageSetupDial
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQContextMenuEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQContextMenuEvent(unsafe.Pointer(param1))
 
 	gofunc((&QPageSetupDialog{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 

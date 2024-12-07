@@ -73,42 +73,34 @@ func (this *QMediaRecorder) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMediaRecorder constructs the type using only CGO pointers.
-func newQMediaRecorder(h *C.QMediaRecorder, h_QObject *C.QObject) *QMediaRecorder {
+func newQMediaRecorder(h *C.QMediaRecorder) *QMediaRecorder {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QMediaRecorder_virtbase(h, &outptr_QObject)
+
 	return &QMediaRecorder{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQMediaRecorder constructs the type using only unsafe pointers.
-func UnsafeNewQMediaRecorder(h unsafe.Pointer, h_QObject unsafe.Pointer) *QMediaRecorder {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaRecorder{h: (*C.QMediaRecorder)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQMediaRecorder(h unsafe.Pointer) *QMediaRecorder {
+	return newQMediaRecorder((*C.QMediaRecorder)(h))
 }
 
 // NewQMediaRecorder constructs a new QMediaRecorder object.
 func NewQMediaRecorder() *QMediaRecorder {
-	var outptr_QMediaRecorder *C.QMediaRecorder = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMediaRecorder_new(&outptr_QMediaRecorder, &outptr_QObject)
-	ret := newQMediaRecorder(outptr_QMediaRecorder, outptr_QObject)
+	ret := newQMediaRecorder(C.QMediaRecorder_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaRecorder2 constructs a new QMediaRecorder object.
 func NewQMediaRecorder2(parent *qt6.QObject) *QMediaRecorder {
-	var outptr_QMediaRecorder *C.QMediaRecorder = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMediaRecorder_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QMediaRecorder, &outptr_QObject)
-	ret := newQMediaRecorder(outptr_QMediaRecorder, outptr_QObject)
+	ret := newQMediaRecorder(C.QMediaRecorder_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -266,7 +258,7 @@ func (this *QMediaRecorder) AddMetaData(metaData *QMediaMetaData) {
 }
 
 func (this *QMediaRecorder) CaptureSession() *QMediaCaptureSession {
-	return newQMediaCaptureSession(C.QMediaRecorder_CaptureSession(this.h), nil)
+	return newQMediaCaptureSession(C.QMediaRecorder_CaptureSession(this.h))
 }
 
 func (this *QMediaRecorder) Record() {
@@ -674,7 +666,7 @@ func miqt_exec_callback_QMediaRecorder_TimerEvent(self *C.QMediaRecorder, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QMediaRecorder{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -700,7 +692,7 @@ func miqt_exec_callback_QMediaRecorder_ChildEvent(self *C.QMediaRecorder, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QMediaRecorder{h: self}).callVirtualBase_ChildEvent, slotval1)
 

@@ -74,22 +74,20 @@ func (this *QSettings) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSettings constructs the type using only CGO pointers.
-func newQSettings(h *C.QSettings, h_QObject *C.QObject) *QSettings {
+func newQSettings(h *C.QSettings) *QSettings {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QSettings_virtbase(h, &outptr_QObject)
+
 	return &QSettings{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQSettings constructs the type using only unsafe pointers.
-func UnsafeNewQSettings(h unsafe.Pointer, h_QObject unsafe.Pointer) *QSettings {
-	if h == nil {
-		return nil
-	}
-
-	return &QSettings{h: (*C.QSettings)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQSettings(h unsafe.Pointer) *QSettings {
+	return newQSettings((*C.QSettings)(h))
 }
 
 // NewQSettings constructs a new QSettings object.
@@ -98,11 +96,8 @@ func NewQSettings(organization string) *QSettings {
 	organization_ms.data = C.CString(organization)
 	organization_ms.len = C.size_t(len(organization))
 	defer C.free(unsafe.Pointer(organization_ms.data))
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new(organization_ms, &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new(organization_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -113,11 +108,8 @@ func NewQSettings2(scope QSettings__Scope, organization string) *QSettings {
 	organization_ms.data = C.CString(organization)
 	organization_ms.len = C.size_t(len(organization))
 	defer C.free(unsafe.Pointer(organization_ms.data))
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new2((C.int)(scope), organization_ms, &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new2((C.int)(scope), organization_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -128,11 +120,8 @@ func NewQSettings3(format QSettings__Format, scope QSettings__Scope, organizatio
 	organization_ms.data = C.CString(organization)
 	organization_ms.len = C.size_t(len(organization))
 	defer C.free(unsafe.Pointer(organization_ms.data))
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new3((C.int)(format), (C.int)(scope), organization_ms, &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new3((C.int)(format), (C.int)(scope), organization_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -143,33 +132,24 @@ func NewQSettings4(fileName string, format QSettings__Format) *QSettings {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new4(fileName_ms, (C.int)(format), &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new4(fileName_ms, (C.int)(format)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSettings5 constructs a new QSettings object.
 func NewQSettings5() *QSettings {
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new5(&outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new5())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSettings6 constructs a new QSettings object.
 func NewQSettings6(scope QSettings__Scope) *QSettings {
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new6((C.int)(scope), &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new6((C.int)(scope)))
 	ret.isSubclass = true
 	return ret
 }
@@ -184,11 +164,8 @@ func NewQSettings7(organization string, application string) *QSettings {
 	application_ms.data = C.CString(application)
 	application_ms.len = C.size_t(len(application))
 	defer C.free(unsafe.Pointer(application_ms.data))
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new7(organization_ms, application_ms, &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new7(organization_ms, application_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -203,11 +180,8 @@ func NewQSettings8(organization string, application string, parent *QObject) *QS
 	application_ms.data = C.CString(application)
 	application_ms.len = C.size_t(len(application))
 	defer C.free(unsafe.Pointer(application_ms.data))
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new8(organization_ms, application_ms, parent.cPointer(), &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new8(organization_ms, application_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -222,11 +196,8 @@ func NewQSettings9(scope QSettings__Scope, organization string, application stri
 	application_ms.data = C.CString(application)
 	application_ms.len = C.size_t(len(application))
 	defer C.free(unsafe.Pointer(application_ms.data))
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new9((C.int)(scope), organization_ms, application_ms, &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new9((C.int)(scope), organization_ms, application_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -241,11 +212,8 @@ func NewQSettings10(scope QSettings__Scope, organization string, application str
 	application_ms.data = C.CString(application)
 	application_ms.len = C.size_t(len(application))
 	defer C.free(unsafe.Pointer(application_ms.data))
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new10((C.int)(scope), organization_ms, application_ms, parent.cPointer(), &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new10((C.int)(scope), organization_ms, application_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -260,11 +228,8 @@ func NewQSettings11(format QSettings__Format, scope QSettings__Scope, organizati
 	application_ms.data = C.CString(application)
 	application_ms.len = C.size_t(len(application))
 	defer C.free(unsafe.Pointer(application_ms.data))
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new11((C.int)(format), (C.int)(scope), organization_ms, application_ms, &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new11((C.int)(format), (C.int)(scope), organization_ms, application_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -279,11 +244,8 @@ func NewQSettings12(format QSettings__Format, scope QSettings__Scope, organizati
 	application_ms.data = C.CString(application)
 	application_ms.len = C.size_t(len(application))
 	defer C.free(unsafe.Pointer(application_ms.data))
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new12((C.int)(format), (C.int)(scope), organization_ms, application_ms, parent.cPointer(), &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new12((C.int)(format), (C.int)(scope), organization_ms, application_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -294,33 +256,24 @@ func NewQSettings13(fileName string, format QSettings__Format, parent *QObject) 
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new13(fileName_ms, (C.int)(format), parent.cPointer(), &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new13(fileName_ms, (C.int)(format), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSettings14 constructs a new QSettings object.
 func NewQSettings14(parent *QObject) *QSettings {
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new14(parent.cPointer(), &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new14(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSettings15 constructs a new QSettings object.
 func NewQSettings15(scope QSettings__Scope, parent *QObject) *QSettings {
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new15((C.int)(scope), parent.cPointer(), &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new15((C.int)(scope), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -619,7 +572,7 @@ func miqt_exec_callback_QSettings_TimerEvent(self *C.QSettings, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QSettings{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -645,7 +598,7 @@ func miqt_exec_callback_QSettings_ChildEvent(self *C.QSettings, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QSettings{h: self}).callVirtualBase_ChildEvent, slotval1)
 

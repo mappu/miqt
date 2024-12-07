@@ -9,6 +9,10 @@
 #include "gen_qnetworkinformation.h"
 #include "_cgo_export.h"
 
+void QNetworkInformation_virtbase(QNetworkInformation* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
+
 QMetaObject* QNetworkInformation_MetaObject(const QNetworkInformation* self) {
 	return (QMetaObject*) self->metaObject();
 }

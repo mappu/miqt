@@ -14,14 +14,12 @@
 #include "gen_qsslconfiguration.h"
 #include "_cgo_export.h"
 
-void QSslConfiguration_new(QSslConfiguration** outptr_QSslConfiguration) {
-	QSslConfiguration* ret = new QSslConfiguration();
-	*outptr_QSslConfiguration = ret;
+QSslConfiguration* QSslConfiguration_new() {
+	return new QSslConfiguration();
 }
 
-void QSslConfiguration_new2(QSslConfiguration* other, QSslConfiguration** outptr_QSslConfiguration) {
-	QSslConfiguration* ret = new QSslConfiguration(*other);
-	*outptr_QSslConfiguration = ret;
+QSslConfiguration* QSslConfiguration_new2(QSslConfiguration* other) {
+	return new QSslConfiguration(*other);
 }
 
 void QSslConfiguration_OperatorAssign(QSslConfiguration* self, QSslConfiguration* other) {

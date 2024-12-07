@@ -36,46 +36,34 @@ func (this *QUdpSocket) UnsafePointer() unsafe.Pointer {
 }
 
 // newQUdpSocket constructs the type using only CGO pointers.
-func newQUdpSocket(h *C.QUdpSocket, h_QAbstractSocket *C.QAbstractSocket, h_QIODevice *C.QIODevice, h_QObject *C.QObject) *QUdpSocket {
+func newQUdpSocket(h *C.QUdpSocket) *QUdpSocket {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractSocket *C.QAbstractSocket = nil
+	C.QUdpSocket_virtbase(h, &outptr_QAbstractSocket)
+
 	return &QUdpSocket{h: h,
-		QAbstractSocket: newQAbstractSocket(h_QAbstractSocket, h_QIODevice, h_QObject)}
+		QAbstractSocket: newQAbstractSocket(outptr_QAbstractSocket)}
 }
 
 // UnsafeNewQUdpSocket constructs the type using only unsafe pointers.
-func UnsafeNewQUdpSocket(h unsafe.Pointer, h_QAbstractSocket unsafe.Pointer, h_QIODevice unsafe.Pointer, h_QObject unsafe.Pointer) *QUdpSocket {
-	if h == nil {
-		return nil
-	}
-
-	return &QUdpSocket{h: (*C.QUdpSocket)(h),
-		QAbstractSocket: UnsafeNewQAbstractSocket(h_QAbstractSocket, h_QIODevice, h_QObject)}
+func UnsafeNewQUdpSocket(h unsafe.Pointer) *QUdpSocket {
+	return newQUdpSocket((*C.QUdpSocket)(h))
 }
 
 // NewQUdpSocket constructs a new QUdpSocket object.
 func NewQUdpSocket() *QUdpSocket {
-	var outptr_QUdpSocket *C.QUdpSocket = nil
-	var outptr_QAbstractSocket *C.QAbstractSocket = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QUdpSocket_new(&outptr_QUdpSocket, &outptr_QAbstractSocket, &outptr_QIODevice, &outptr_QObject)
-	ret := newQUdpSocket(outptr_QUdpSocket, outptr_QAbstractSocket, outptr_QIODevice, outptr_QObject)
+	ret := newQUdpSocket(C.QUdpSocket_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQUdpSocket2 constructs a new QUdpSocket object.
 func NewQUdpSocket2(parent *qt.QObject) *QUdpSocket {
-	var outptr_QUdpSocket *C.QUdpSocket = nil
-	var outptr_QAbstractSocket *C.QAbstractSocket = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QUdpSocket_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QUdpSocket, &outptr_QAbstractSocket, &outptr_QIODevice, &outptr_QObject)
-	ret := newQUdpSocket(outptr_QUdpSocket, outptr_QAbstractSocket, outptr_QIODevice, outptr_QObject)
+	ret := newQUdpSocket(C.QUdpSocket_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }

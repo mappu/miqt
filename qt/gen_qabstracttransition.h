@@ -40,8 +40,9 @@ typedef struct QStateMachine QStateMachine;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QAbstractTransition_new(QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject);
-void QAbstractTransition_new2(QState* sourceState, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject);
+QAbstractTransition* QAbstractTransition_new();
+QAbstractTransition* QAbstractTransition_new2(QState* sourceState);
+void QAbstractTransition_virtbase(QAbstractTransition* src, QObject** outptr_QObject);
 QMetaObject* QAbstractTransition_MetaObject(const QAbstractTransition* self);
 void* QAbstractTransition_Metacast(QAbstractTransition* self, const char* param1);
 struct miqt_string QAbstractTransition_Tr(const char* s);

@@ -37,44 +37,35 @@ func newQFontMetrics(h *C.QFontMetrics) *QFontMetrics {
 	if h == nil {
 		return nil
 	}
+
 	return &QFontMetrics{h: h}
 }
 
 // UnsafeNewQFontMetrics constructs the type using only unsafe pointers.
 func UnsafeNewQFontMetrics(h unsafe.Pointer) *QFontMetrics {
-	if h == nil {
-		return nil
-	}
-
-	return &QFontMetrics{h: (*C.QFontMetrics)(h)}
+	return newQFontMetrics((*C.QFontMetrics)(h))
 }
 
 // NewQFontMetrics constructs a new QFontMetrics object.
 func NewQFontMetrics(param1 *QFont) *QFontMetrics {
-	var outptr_QFontMetrics *C.QFontMetrics = nil
 
-	C.QFontMetrics_new(param1.cPointer(), &outptr_QFontMetrics)
-	ret := newQFontMetrics(outptr_QFontMetrics)
+	ret := newQFontMetrics(C.QFontMetrics_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFontMetrics2 constructs a new QFontMetrics object.
 func NewQFontMetrics2(font *QFont, pd *QPaintDevice) *QFontMetrics {
-	var outptr_QFontMetrics *C.QFontMetrics = nil
 
-	C.QFontMetrics_new2(font.cPointer(), pd.cPointer(), &outptr_QFontMetrics)
-	ret := newQFontMetrics(outptr_QFontMetrics)
+	ret := newQFontMetrics(C.QFontMetrics_new2(font.cPointer(), pd.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFontMetrics3 constructs a new QFontMetrics object.
 func NewQFontMetrics3(param1 *QFontMetrics) *QFontMetrics {
-	var outptr_QFontMetrics *C.QFontMetrics = nil
 
-	C.QFontMetrics_new3(param1.cPointer(), &outptr_QFontMetrics)
-	ret := newQFontMetrics(outptr_QFontMetrics)
+	ret := newQFontMetrics(C.QFontMetrics_new3(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -407,54 +398,43 @@ func newQFontMetricsF(h *C.QFontMetricsF) *QFontMetricsF {
 	if h == nil {
 		return nil
 	}
+
 	return &QFontMetricsF{h: h}
 }
 
 // UnsafeNewQFontMetricsF constructs the type using only unsafe pointers.
 func UnsafeNewQFontMetricsF(h unsafe.Pointer) *QFontMetricsF {
-	if h == nil {
-		return nil
-	}
-
-	return &QFontMetricsF{h: (*C.QFontMetricsF)(h)}
+	return newQFontMetricsF((*C.QFontMetricsF)(h))
 }
 
 // NewQFontMetricsF constructs a new QFontMetricsF object.
 func NewQFontMetricsF(font *QFont) *QFontMetricsF {
-	var outptr_QFontMetricsF *C.QFontMetricsF = nil
 
-	C.QFontMetricsF_new(font.cPointer(), &outptr_QFontMetricsF)
-	ret := newQFontMetricsF(outptr_QFontMetricsF)
+	ret := newQFontMetricsF(C.QFontMetricsF_new(font.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFontMetricsF2 constructs a new QFontMetricsF object.
 func NewQFontMetricsF2(font *QFont, pd *QPaintDevice) *QFontMetricsF {
-	var outptr_QFontMetricsF *C.QFontMetricsF = nil
 
-	C.QFontMetricsF_new2(font.cPointer(), pd.cPointer(), &outptr_QFontMetricsF)
-	ret := newQFontMetricsF(outptr_QFontMetricsF)
+	ret := newQFontMetricsF(C.QFontMetricsF_new2(font.cPointer(), pd.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFontMetricsF3 constructs a new QFontMetricsF object.
 func NewQFontMetricsF3(param1 *QFontMetrics) *QFontMetricsF {
-	var outptr_QFontMetricsF *C.QFontMetricsF = nil
 
-	C.QFontMetricsF_new3(param1.cPointer(), &outptr_QFontMetricsF)
-	ret := newQFontMetricsF(outptr_QFontMetricsF)
+	ret := newQFontMetricsF(C.QFontMetricsF_new3(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFontMetricsF4 constructs a new QFontMetricsF object.
 func NewQFontMetricsF4(param1 *QFontMetricsF) *QFontMetricsF {
-	var outptr_QFontMetricsF *C.QFontMetricsF = nil
 
-	C.QFontMetricsF_new4(param1.cPointer(), &outptr_QFontMetricsF)
-	ret := newQFontMetricsF(outptr_QFontMetricsF)
+	ret := newQFontMetricsF(C.QFontMetricsF_new4(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

@@ -48,16 +48,17 @@ typedef struct QSizeF QSizeF;
 typedef struct QTransform QTransform;
 #endif
 
-void QImage_new(QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice);
-void QImage_new2(QSize* size, int format, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice);
-void QImage_new3(int width, int height, int format, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice);
-void QImage_new4(unsigned char* data, int width, int height, int format, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice);
-void QImage_new5(const unsigned char* data, int width, int height, int format, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice);
-void QImage_new6(unsigned char* data, int width, int height, ptrdiff_t bytesPerLine, int format, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice);
-void QImage_new7(const unsigned char* data, int width, int height, ptrdiff_t bytesPerLine, int format, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice);
-void QImage_new8(struct miqt_string fileName, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice);
-void QImage_new9(QImage* param1, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice);
-void QImage_new10(struct miqt_string fileName, const char* format, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice);
+QImage* QImage_new();
+QImage* QImage_new2(QSize* size, int format);
+QImage* QImage_new3(int width, int height, int format);
+QImage* QImage_new4(unsigned char* data, int width, int height, int format);
+QImage* QImage_new5(const unsigned char* data, int width, int height, int format);
+QImage* QImage_new6(unsigned char* data, int width, int height, ptrdiff_t bytesPerLine, int format);
+QImage* QImage_new7(const unsigned char* data, int width, int height, ptrdiff_t bytesPerLine, int format);
+QImage* QImage_new8(struct miqt_string fileName);
+QImage* QImage_new9(QImage* param1);
+QImage* QImage_new10(struct miqt_string fileName, const char* format);
+void QImage_virtbase(QImage* src, QPaintDevice** outptr_QPaintDevice);
 void QImage_OperatorAssign(QImage* self, QImage* param1);
 void QImage_Swap(QImage* self, QImage* other);
 bool QImage_IsNull(const QImage* self);

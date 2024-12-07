@@ -77,34 +77,27 @@ func newQNetworkAddressEntry(h *C.QNetworkAddressEntry) *QNetworkAddressEntry {
 	if h == nil {
 		return nil
 	}
+
 	return &QNetworkAddressEntry{h: h}
 }
 
 // UnsafeNewQNetworkAddressEntry constructs the type using only unsafe pointers.
 func UnsafeNewQNetworkAddressEntry(h unsafe.Pointer) *QNetworkAddressEntry {
-	if h == nil {
-		return nil
-	}
-
-	return &QNetworkAddressEntry{h: (*C.QNetworkAddressEntry)(h)}
+	return newQNetworkAddressEntry((*C.QNetworkAddressEntry)(h))
 }
 
 // NewQNetworkAddressEntry constructs a new QNetworkAddressEntry object.
 func NewQNetworkAddressEntry() *QNetworkAddressEntry {
-	var outptr_QNetworkAddressEntry *C.QNetworkAddressEntry = nil
 
-	C.QNetworkAddressEntry_new(&outptr_QNetworkAddressEntry)
-	ret := newQNetworkAddressEntry(outptr_QNetworkAddressEntry)
+	ret := newQNetworkAddressEntry(C.QNetworkAddressEntry_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQNetworkAddressEntry2 constructs a new QNetworkAddressEntry object.
 func NewQNetworkAddressEntry2(other *QNetworkAddressEntry) *QNetworkAddressEntry {
-	var outptr_QNetworkAddressEntry *C.QNetworkAddressEntry = nil
 
-	C.QNetworkAddressEntry_new2(other.cPointer(), &outptr_QNetworkAddressEntry)
-	ret := newQNetworkAddressEntry(outptr_QNetworkAddressEntry)
+	ret := newQNetworkAddressEntry(C.QNetworkAddressEntry_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -241,34 +234,27 @@ func newQNetworkInterface(h *C.QNetworkInterface) *QNetworkInterface {
 	if h == nil {
 		return nil
 	}
+
 	return &QNetworkInterface{h: h}
 }
 
 // UnsafeNewQNetworkInterface constructs the type using only unsafe pointers.
 func UnsafeNewQNetworkInterface(h unsafe.Pointer) *QNetworkInterface {
-	if h == nil {
-		return nil
-	}
-
-	return &QNetworkInterface{h: (*C.QNetworkInterface)(h)}
+	return newQNetworkInterface((*C.QNetworkInterface)(h))
 }
 
 // NewQNetworkInterface constructs a new QNetworkInterface object.
 func NewQNetworkInterface() *QNetworkInterface {
-	var outptr_QNetworkInterface *C.QNetworkInterface = nil
 
-	C.QNetworkInterface_new(&outptr_QNetworkInterface)
-	ret := newQNetworkInterface(outptr_QNetworkInterface)
+	ret := newQNetworkInterface(C.QNetworkInterface_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQNetworkInterface2 constructs a new QNetworkInterface object.
 func NewQNetworkInterface2(other *QNetworkInterface) *QNetworkInterface {
-	var outptr_QNetworkInterface *C.QNetworkInterface = nil
 
-	C.QNetworkInterface_new2(other.cPointer(), &outptr_QNetworkInterface)
-	ret := newQNetworkInterface(outptr_QNetworkInterface)
+	ret := newQNetworkInterface(C.QNetworkInterface_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

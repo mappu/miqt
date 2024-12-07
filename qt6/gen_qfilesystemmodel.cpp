@@ -1164,18 +1164,16 @@ public:
 
 };
 
-void QFileSystemModel_new(QFileSystemModel** outptr_QFileSystemModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQFileSystemModel* ret = new MiqtVirtualQFileSystemModel();
-	*outptr_QFileSystemModel = ret;
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QFileSystemModel* QFileSystemModel_new() {
+	return new MiqtVirtualQFileSystemModel();
 }
 
-void QFileSystemModel_new2(QObject* parent, QFileSystemModel** outptr_QFileSystemModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQFileSystemModel* ret = new MiqtVirtualQFileSystemModel(parent);
-	*outptr_QFileSystemModel = ret;
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QFileSystemModel* QFileSystemModel_new2(QObject* parent) {
+	return new MiqtVirtualQFileSystemModel(parent);
+}
+
+void QFileSystemModel_virtbase(QFileSystemModel* src, QAbstractItemModel** outptr_QAbstractItemModel) {
+	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(src);
 }
 
 QMetaObject* QFileSystemModel_MetaObject(const QFileSystemModel* self) {

@@ -42,7 +42,8 @@ typedef struct QPoint QPoint;
 typedef struct QSizeF QSizeF;
 #endif
 
-void QPagedPaintDevice_new(QPagedPaintDevice** outptr_QPagedPaintDevice, QPaintDevice** outptr_QPaintDevice);
+QPagedPaintDevice* QPagedPaintDevice_new();
+void QPagedPaintDevice_virtbase(QPagedPaintDevice* src, QPaintDevice** outptr_QPaintDevice);
 bool QPagedPaintDevice_NewPage(QPagedPaintDevice* self);
 bool QPagedPaintDevice_SetPageLayout(QPagedPaintDevice* self, QPageLayout* pageLayout);
 bool QPagedPaintDevice_SetPageSize(QPagedPaintDevice* self, QPageSize* pageSize);

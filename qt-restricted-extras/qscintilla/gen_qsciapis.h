@@ -30,7 +30,8 @@ typedef struct QsciAbstractAPIs QsciAbstractAPIs;
 typedef struct QsciLexer QsciLexer;
 #endif
 
-void QsciAPIs_new(QsciLexer* lexer, QsciAPIs** outptr_QsciAPIs, QsciAbstractAPIs** outptr_QsciAbstractAPIs, QObject** outptr_QObject);
+QsciAPIs* QsciAPIs_new(QsciLexer* lexer);
+void QsciAPIs_virtbase(QsciAPIs* src, QsciAbstractAPIs** outptr_QsciAbstractAPIs);
 QMetaObject* QsciAPIs_MetaObject(const QsciAPIs* self);
 void* QsciAPIs_Metacast(QsciAPIs* self, const char* param1);
 struct miqt_string QsciAPIs_Tr(const char* s);

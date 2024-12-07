@@ -28,8 +28,9 @@ typedef struct QVariant QVariant;
 typedef struct QWebChannel QWebChannel;
 #endif
 
-void QQmlWebChannel_new(QQmlWebChannel** outptr_QQmlWebChannel, QWebChannel** outptr_QWebChannel, QObject** outptr_QObject);
-void QQmlWebChannel_new2(QObject* parent, QQmlWebChannel** outptr_QQmlWebChannel, QWebChannel** outptr_QWebChannel, QObject** outptr_QObject);
+QQmlWebChannel* QQmlWebChannel_new();
+QQmlWebChannel* QQmlWebChannel_new2(QObject* parent);
+void QQmlWebChannel_virtbase(QQmlWebChannel* src, QWebChannel** outptr_QWebChannel);
 QMetaObject* QQmlWebChannel_MetaObject(const QQmlWebChannel* self);
 void* QQmlWebChannel_Metacast(QQmlWebChannel* self, const char* param1);
 struct miqt_string QQmlWebChannel_Tr(const char* s);

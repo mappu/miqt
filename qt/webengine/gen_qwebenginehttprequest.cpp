@@ -10,24 +10,20 @@
 #include "gen_qwebenginehttprequest.h"
 #include "_cgo_export.h"
 
-void QWebEngineHttpRequest_new(QWebEngineHttpRequest** outptr_QWebEngineHttpRequest) {
-	QWebEngineHttpRequest* ret = new QWebEngineHttpRequest();
-	*outptr_QWebEngineHttpRequest = ret;
+QWebEngineHttpRequest* QWebEngineHttpRequest_new() {
+	return new QWebEngineHttpRequest();
 }
 
-void QWebEngineHttpRequest_new2(QWebEngineHttpRequest* other, QWebEngineHttpRequest** outptr_QWebEngineHttpRequest) {
-	QWebEngineHttpRequest* ret = new QWebEngineHttpRequest(*other);
-	*outptr_QWebEngineHttpRequest = ret;
+QWebEngineHttpRequest* QWebEngineHttpRequest_new2(QWebEngineHttpRequest* other) {
+	return new QWebEngineHttpRequest(*other);
 }
 
-void QWebEngineHttpRequest_new3(QUrl* url, QWebEngineHttpRequest** outptr_QWebEngineHttpRequest) {
-	QWebEngineHttpRequest* ret = new QWebEngineHttpRequest(*url);
-	*outptr_QWebEngineHttpRequest = ret;
+QWebEngineHttpRequest* QWebEngineHttpRequest_new3(QUrl* url) {
+	return new QWebEngineHttpRequest(*url);
 }
 
-void QWebEngineHttpRequest_new4(QUrl* url, int* method, QWebEngineHttpRequest** outptr_QWebEngineHttpRequest) {
-	QWebEngineHttpRequest* ret = new QWebEngineHttpRequest(*url, (const QWebEngineHttpRequest::Method&)(*method));
-	*outptr_QWebEngineHttpRequest = ret;
+QWebEngineHttpRequest* QWebEngineHttpRequest_new4(QUrl* url, int* method) {
+	return new QWebEngineHttpRequest(*url, (const QWebEngineHttpRequest::Method&)(*method));
 }
 
 void QWebEngineHttpRequest_OperatorAssign(QWebEngineHttpRequest* self, QWebEngineHttpRequest* other) {

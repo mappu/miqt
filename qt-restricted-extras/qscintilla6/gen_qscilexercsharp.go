@@ -36,46 +36,34 @@ func (this *QsciLexerCSharp) UnsafePointer() unsafe.Pointer {
 }
 
 // newQsciLexerCSharp constructs the type using only CGO pointers.
-func newQsciLexerCSharp(h *C.QsciLexerCSharp, h_QsciLexerCPP *C.QsciLexerCPP, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerCSharp {
+func newQsciLexerCSharp(h *C.QsciLexerCSharp) *QsciLexerCSharp {
 	if h == nil {
 		return nil
 	}
+	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
+	C.QsciLexerCSharp_virtbase(h, &outptr_QsciLexerCPP)
+
 	return &QsciLexerCSharp{h: h,
-		QsciLexerCPP: newQsciLexerCPP(h_QsciLexerCPP, h_QsciLexer, h_QObject)}
+		QsciLexerCPP: newQsciLexerCPP(outptr_QsciLexerCPP)}
 }
 
 // UnsafeNewQsciLexerCSharp constructs the type using only unsafe pointers.
-func UnsafeNewQsciLexerCSharp(h unsafe.Pointer, h_QsciLexerCPP unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerCSharp {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciLexerCSharp{h: (*C.QsciLexerCSharp)(h),
-		QsciLexerCPP: UnsafeNewQsciLexerCPP(h_QsciLexerCPP, h_QsciLexer, h_QObject)}
+func UnsafeNewQsciLexerCSharp(h unsafe.Pointer) *QsciLexerCSharp {
+	return newQsciLexerCSharp((*C.QsciLexerCSharp)(h))
 }
 
 // NewQsciLexerCSharp constructs a new QsciLexerCSharp object.
 func NewQsciLexerCSharp() *QsciLexerCSharp {
-	var outptr_QsciLexerCSharp *C.QsciLexerCSharp = nil
-	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerCSharp_new(&outptr_QsciLexerCSharp, &outptr_QsciLexerCPP, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerCSharp(outptr_QsciLexerCSharp, outptr_QsciLexerCPP, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerCSharp(C.QsciLexerCSharp_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQsciLexerCSharp2 constructs a new QsciLexerCSharp object.
 func NewQsciLexerCSharp2(parent *qt6.QObject) *QsciLexerCSharp {
-	var outptr_QsciLexerCSharp *C.QsciLexerCSharp = nil
-	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerCSharp_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QsciLexerCSharp, &outptr_QsciLexerCPP, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerCSharp(outptr_QsciLexerCSharp, outptr_QsciLexerCPP, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerCSharp(C.QsciLexerCSharp_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }

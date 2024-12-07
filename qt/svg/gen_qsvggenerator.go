@@ -36,31 +36,26 @@ func (this *QSvgGenerator) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSvgGenerator constructs the type using only CGO pointers.
-func newQSvgGenerator(h *C.QSvgGenerator, h_QPaintDevice *C.QPaintDevice) *QSvgGenerator {
+func newQSvgGenerator(h *C.QSvgGenerator) *QSvgGenerator {
 	if h == nil {
 		return nil
 	}
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+	C.QSvgGenerator_virtbase(h, &outptr_QPaintDevice)
+
 	return &QSvgGenerator{h: h,
-		QPaintDevice: qt.UnsafeNewQPaintDevice(unsafe.Pointer(h_QPaintDevice))}
+		QPaintDevice: qt.UnsafeNewQPaintDevice(unsafe.Pointer(outptr_QPaintDevice))}
 }
 
 // UnsafeNewQSvgGenerator constructs the type using only unsafe pointers.
-func UnsafeNewQSvgGenerator(h unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QSvgGenerator {
-	if h == nil {
-		return nil
-	}
-
-	return &QSvgGenerator{h: (*C.QSvgGenerator)(h),
-		QPaintDevice: qt.UnsafeNewQPaintDevice(h_QPaintDevice)}
+func UnsafeNewQSvgGenerator(h unsafe.Pointer) *QSvgGenerator {
+	return newQSvgGenerator((*C.QSvgGenerator)(h))
 }
 
 // NewQSvgGenerator constructs a new QSvgGenerator object.
 func NewQSvgGenerator() *QSvgGenerator {
-	var outptr_QSvgGenerator *C.QSvgGenerator = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QSvgGenerator_new(&outptr_QSvgGenerator, &outptr_QPaintDevice)
-	ret := newQSvgGenerator(outptr_QSvgGenerator, outptr_QPaintDevice)
+	ret := newQSvgGenerator(C.QSvgGenerator_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -141,7 +136,7 @@ func (this *QSvgGenerator) SetFileName(fileName string) {
 }
 
 func (this *QSvgGenerator) OutputDevice() *qt.QIODevice {
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QSvgGenerator_OutputDevice(this.h)), nil)
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QSvgGenerator_OutputDevice(this.h)))
 }
 
 func (this *QSvgGenerator) SetOutputDevice(outputDevice *qt.QIODevice) {

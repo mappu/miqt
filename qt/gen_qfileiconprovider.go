@@ -56,24 +56,19 @@ func newQFileIconProvider(h *C.QFileIconProvider) *QFileIconProvider {
 	if h == nil {
 		return nil
 	}
+
 	return &QFileIconProvider{h: h}
 }
 
 // UnsafeNewQFileIconProvider constructs the type using only unsafe pointers.
 func UnsafeNewQFileIconProvider(h unsafe.Pointer) *QFileIconProvider {
-	if h == nil {
-		return nil
-	}
-
-	return &QFileIconProvider{h: (*C.QFileIconProvider)(h)}
+	return newQFileIconProvider((*C.QFileIconProvider)(h))
 }
 
 // NewQFileIconProvider constructs a new QFileIconProvider object.
 func NewQFileIconProvider() *QFileIconProvider {
-	var outptr_QFileIconProvider *C.QFileIconProvider = nil
 
-	C.QFileIconProvider_new(&outptr_QFileIconProvider)
-	ret := newQFileIconProvider(outptr_QFileIconProvider)
+	ret := newQFileIconProvider(C.QFileIconProvider_new())
 	ret.isSubclass = true
 	return ret
 }

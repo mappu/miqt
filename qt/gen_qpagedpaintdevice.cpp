@@ -243,10 +243,12 @@ public:
 
 };
 
-void QPagedPaintDevice_new(QPagedPaintDevice** outptr_QPagedPaintDevice, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPagedPaintDevice* ret = new MiqtVirtualQPagedPaintDevice();
-	*outptr_QPagedPaintDevice = ret;
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPagedPaintDevice* QPagedPaintDevice_new() {
+	return new MiqtVirtualQPagedPaintDevice();
+}
+
+void QPagedPaintDevice_virtbase(QPagedPaintDevice* src, QPaintDevice** outptr_QPaintDevice) {
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(src);
 }
 
 bool QPagedPaintDevice_NewPage(QPagedPaintDevice* self) {

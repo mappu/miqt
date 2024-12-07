@@ -36,42 +36,34 @@ func (this *QVideoProbe) UnsafePointer() unsafe.Pointer {
 }
 
 // newQVideoProbe constructs the type using only CGO pointers.
-func newQVideoProbe(h *C.QVideoProbe, h_QObject *C.QObject) *QVideoProbe {
+func newQVideoProbe(h *C.QVideoProbe) *QVideoProbe {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QVideoProbe_virtbase(h, &outptr_QObject)
+
 	return &QVideoProbe{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQVideoProbe constructs the type using only unsafe pointers.
-func UnsafeNewQVideoProbe(h unsafe.Pointer, h_QObject unsafe.Pointer) *QVideoProbe {
-	if h == nil {
-		return nil
-	}
-
-	return &QVideoProbe{h: (*C.QVideoProbe)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQVideoProbe(h unsafe.Pointer) *QVideoProbe {
+	return newQVideoProbe((*C.QVideoProbe)(h))
 }
 
 // NewQVideoProbe constructs a new QVideoProbe object.
 func NewQVideoProbe() *QVideoProbe {
-	var outptr_QVideoProbe *C.QVideoProbe = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QVideoProbe_new(&outptr_QVideoProbe, &outptr_QObject)
-	ret := newQVideoProbe(outptr_QVideoProbe, outptr_QObject)
+	ret := newQVideoProbe(C.QVideoProbe_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVideoProbe2 constructs a new QVideoProbe object.
 func NewQVideoProbe2(parent *qt.QObject) *QVideoProbe {
-	var outptr_QVideoProbe *C.QVideoProbe = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QVideoProbe_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QVideoProbe, &outptr_QObject)
-	ret := newQVideoProbe(outptr_QVideoProbe, outptr_QObject)
+	ret := newQVideoProbe(C.QVideoProbe_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -275,7 +267,7 @@ func miqt_exec_callback_QVideoProbe_TimerEvent(self *C.QVideoProbe, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoProbe{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -301,7 +293,7 @@ func miqt_exec_callback_QVideoProbe_ChildEvent(self *C.QVideoProbe, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoProbe{h: self}).callVirtualBase_ChildEvent, slotval1)
 

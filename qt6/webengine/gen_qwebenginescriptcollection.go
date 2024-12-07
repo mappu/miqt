@@ -37,16 +37,13 @@ func newQWebEngineScriptCollection(h *C.QWebEngineScriptCollection) *QWebEngineS
 	if h == nil {
 		return nil
 	}
+
 	return &QWebEngineScriptCollection{h: h}
 }
 
 // UnsafeNewQWebEngineScriptCollection constructs the type using only unsafe pointers.
 func UnsafeNewQWebEngineScriptCollection(h unsafe.Pointer) *QWebEngineScriptCollection {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineScriptCollection{h: (*C.QWebEngineScriptCollection)(h)}
+	return newQWebEngineScriptCollection((*C.QWebEngineScriptCollection)(h))
 }
 
 func (this *QWebEngineScriptCollection) IsEmpty() bool {

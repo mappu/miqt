@@ -36,22 +36,20 @@ func (this *QMetaDataReaderControl) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMetaDataReaderControl constructs the type using only CGO pointers.
-func newQMetaDataReaderControl(h *C.QMetaDataReaderControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QMetaDataReaderControl {
+func newQMetaDataReaderControl(h *C.QMetaDataReaderControl) *QMetaDataReaderControl {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaControl *C.QMediaControl = nil
+	C.QMetaDataReaderControl_virtbase(h, &outptr_QMediaControl)
+
 	return &QMetaDataReaderControl{h: h,
-		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
+		QMediaControl: newQMediaControl(outptr_QMediaControl)}
 }
 
 // UnsafeNewQMetaDataReaderControl constructs the type using only unsafe pointers.
-func UnsafeNewQMetaDataReaderControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QMetaDataReaderControl {
-	if h == nil {
-		return nil
-	}
-
-	return &QMetaDataReaderControl{h: (*C.QMetaDataReaderControl)(h),
-		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
+func UnsafeNewQMetaDataReaderControl(h unsafe.Pointer) *QMetaDataReaderControl {
+	return newQMetaDataReaderControl((*C.QMetaDataReaderControl)(h))
 }
 
 func (this *QMetaDataReaderControl) MetaObject() *qt.QMetaObject {

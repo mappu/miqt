@@ -36,46 +36,36 @@ func (this *QIODevice) UnsafePointer() unsafe.Pointer {
 }
 
 // newQIODevice constructs the type using only CGO pointers.
-func newQIODevice(h *C.QIODevice, h_QObject *C.QObject, h_QIODeviceBase *C.QIODeviceBase) *QIODevice {
+func newQIODevice(h *C.QIODevice) *QIODevice {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	var outptr_QIODeviceBase *C.QIODeviceBase = nil
+	C.QIODevice_virtbase(h, &outptr_QObject, &outptr_QIODeviceBase)
+
 	return &QIODevice{h: h,
-		QObject:       newQObject(h_QObject),
-		QIODeviceBase: newQIODeviceBase(h_QIODeviceBase)}
+		QObject:       newQObject(outptr_QObject),
+		QIODeviceBase: newQIODeviceBase(outptr_QIODeviceBase)}
 }
 
 // UnsafeNewQIODevice constructs the type using only unsafe pointers.
-func UnsafeNewQIODevice(h unsafe.Pointer, h_QObject unsafe.Pointer, h_QIODeviceBase unsafe.Pointer) *QIODevice {
-	if h == nil {
-		return nil
-	}
-
-	return &QIODevice{h: (*C.QIODevice)(h),
-		QObject:       UnsafeNewQObject(h_QObject),
-		QIODeviceBase: UnsafeNewQIODeviceBase(h_QIODeviceBase)}
+func UnsafeNewQIODevice(h unsafe.Pointer) *QIODevice {
+	return newQIODevice((*C.QIODevice)(h))
 }
 
 // NewQIODevice constructs a new QIODevice object.
 func NewQIODevice() *QIODevice {
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QIODeviceBase *C.QIODeviceBase = nil
 
-	C.QIODevice_new(&outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
-	ret := newQIODevice(outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret := newQIODevice(C.QIODevice_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQIODevice2 constructs a new QIODevice object.
 func NewQIODevice2(parent *QObject) *QIODevice {
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QIODeviceBase *C.QIODeviceBase = nil
 
-	C.QIODevice_new2(parent.cPointer(), &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
-	ret := newQIODevice(outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret := newQIODevice(C.QIODevice_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -971,7 +961,7 @@ func miqt_exec_callback_QIODevice_TimerEvent(self *C.QIODevice, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QIODevice{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -997,7 +987,7 @@ func miqt_exec_callback_QIODevice_ChildEvent(self *C.QIODevice, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QIODevice{h: self}).callVirtualBase_ChildEvent, slotval1)
 

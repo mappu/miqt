@@ -1080,38 +1080,26 @@ public:
 
 };
 
-void QLineEdit_new(QWidget* parent, QLineEdit** outptr_QLineEdit, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQLineEdit* ret = new MiqtVirtualQLineEdit(parent);
-	*outptr_QLineEdit = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QLineEdit* QLineEdit_new(QWidget* parent) {
+	return new MiqtVirtualQLineEdit(parent);
 }
 
-void QLineEdit_new2(QLineEdit** outptr_QLineEdit, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQLineEdit* ret = new MiqtVirtualQLineEdit();
-	*outptr_QLineEdit = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QLineEdit* QLineEdit_new2() {
+	return new MiqtVirtualQLineEdit();
 }
 
-void QLineEdit_new3(struct miqt_string param1, QLineEdit** outptr_QLineEdit, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QLineEdit* QLineEdit_new3(struct miqt_string param1) {
 	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
-	MiqtVirtualQLineEdit* ret = new MiqtVirtualQLineEdit(param1_QString);
-	*outptr_QLineEdit = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQLineEdit(param1_QString);
 }
 
-void QLineEdit_new4(struct miqt_string param1, QWidget* parent, QLineEdit** outptr_QLineEdit, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QLineEdit* QLineEdit_new4(struct miqt_string param1, QWidget* parent) {
 	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
-	MiqtVirtualQLineEdit* ret = new MiqtVirtualQLineEdit(param1_QString, parent);
-	*outptr_QLineEdit = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQLineEdit(param1_QString, parent);
+}
+
+void QLineEdit_virtbase(QLineEdit* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QLineEdit_MetaObject(const QLineEdit* self) {

@@ -30,6 +30,7 @@ typedef struct QScroller QScroller;
 typedef struct QScrollerProperties QScrollerProperties;
 #endif
 
+void QScroller_virtbase(QScroller* src, QObject** outptr_QObject);
 QMetaObject* QScroller_MetaObject(const QScroller* self);
 void* QScroller_Metacast(QScroller* self, const char* param1);
 struct miqt_string QScroller_Tr(const char* s);

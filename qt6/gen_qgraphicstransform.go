@@ -35,42 +35,34 @@ func (this *QGraphicsTransform) UnsafePointer() unsafe.Pointer {
 }
 
 // newQGraphicsTransform constructs the type using only CGO pointers.
-func newQGraphicsTransform(h *C.QGraphicsTransform, h_QObject *C.QObject) *QGraphicsTransform {
+func newQGraphicsTransform(h *C.QGraphicsTransform) *QGraphicsTransform {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QGraphicsTransform_virtbase(h, &outptr_QObject)
+
 	return &QGraphicsTransform{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQGraphicsTransform constructs the type using only unsafe pointers.
-func UnsafeNewQGraphicsTransform(h unsafe.Pointer, h_QObject unsafe.Pointer) *QGraphicsTransform {
-	if h == nil {
-		return nil
-	}
-
-	return &QGraphicsTransform{h: (*C.QGraphicsTransform)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQGraphicsTransform(h unsafe.Pointer) *QGraphicsTransform {
+	return newQGraphicsTransform((*C.QGraphicsTransform)(h))
 }
 
 // NewQGraphicsTransform constructs a new QGraphicsTransform object.
 func NewQGraphicsTransform() *QGraphicsTransform {
-	var outptr_QGraphicsTransform *C.QGraphicsTransform = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QGraphicsTransform_new(&outptr_QGraphicsTransform, &outptr_QObject)
-	ret := newQGraphicsTransform(outptr_QGraphicsTransform, outptr_QObject)
+	ret := newQGraphicsTransform(C.QGraphicsTransform_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsTransform2 constructs a new QGraphicsTransform object.
 func NewQGraphicsTransform2(parent *QObject) *QGraphicsTransform {
-	var outptr_QGraphicsTransform *C.QGraphicsTransform = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QGraphicsTransform_new2(parent.cPointer(), &outptr_QGraphicsTransform, &outptr_QObject)
-	ret := newQGraphicsTransform(outptr_QGraphicsTransform, outptr_QObject)
+	ret := newQGraphicsTransform(C.QGraphicsTransform_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -218,7 +210,7 @@ func miqt_exec_callback_QGraphicsTransform_TimerEvent(self *C.QGraphicsTransform
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QGraphicsTransform{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -244,7 +236,7 @@ func miqt_exec_callback_QGraphicsTransform_ChildEvent(self *C.QGraphicsTransform
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QGraphicsTransform{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -363,44 +355,34 @@ func (this *QGraphicsScale) UnsafePointer() unsafe.Pointer {
 }
 
 // newQGraphicsScale constructs the type using only CGO pointers.
-func newQGraphicsScale(h *C.QGraphicsScale, h_QGraphicsTransform *C.QGraphicsTransform, h_QObject *C.QObject) *QGraphicsScale {
+func newQGraphicsScale(h *C.QGraphicsScale) *QGraphicsScale {
 	if h == nil {
 		return nil
 	}
+	var outptr_QGraphicsTransform *C.QGraphicsTransform = nil
+	C.QGraphicsScale_virtbase(h, &outptr_QGraphicsTransform)
+
 	return &QGraphicsScale{h: h,
-		QGraphicsTransform: newQGraphicsTransform(h_QGraphicsTransform, h_QObject)}
+		QGraphicsTransform: newQGraphicsTransform(outptr_QGraphicsTransform)}
 }
 
 // UnsafeNewQGraphicsScale constructs the type using only unsafe pointers.
-func UnsafeNewQGraphicsScale(h unsafe.Pointer, h_QGraphicsTransform unsafe.Pointer, h_QObject unsafe.Pointer) *QGraphicsScale {
-	if h == nil {
-		return nil
-	}
-
-	return &QGraphicsScale{h: (*C.QGraphicsScale)(h),
-		QGraphicsTransform: UnsafeNewQGraphicsTransform(h_QGraphicsTransform, h_QObject)}
+func UnsafeNewQGraphicsScale(h unsafe.Pointer) *QGraphicsScale {
+	return newQGraphicsScale((*C.QGraphicsScale)(h))
 }
 
 // NewQGraphicsScale constructs a new QGraphicsScale object.
 func NewQGraphicsScale() *QGraphicsScale {
-	var outptr_QGraphicsScale *C.QGraphicsScale = nil
-	var outptr_QGraphicsTransform *C.QGraphicsTransform = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QGraphicsScale_new(&outptr_QGraphicsScale, &outptr_QGraphicsTransform, &outptr_QObject)
-	ret := newQGraphicsScale(outptr_QGraphicsScale, outptr_QGraphicsTransform, outptr_QObject)
+	ret := newQGraphicsScale(C.QGraphicsScale_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsScale2 constructs a new QGraphicsScale object.
 func NewQGraphicsScale2(parent *QObject) *QGraphicsScale {
-	var outptr_QGraphicsScale *C.QGraphicsScale = nil
-	var outptr_QGraphicsTransform *C.QGraphicsTransform = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QGraphicsScale_new2(parent.cPointer(), &outptr_QGraphicsScale, &outptr_QGraphicsTransform, &outptr_QObject)
-	ret := newQGraphicsScale(outptr_QGraphicsScale, outptr_QGraphicsTransform, outptr_QObject)
+	ret := newQGraphicsScale(C.QGraphicsScale_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -630,44 +612,34 @@ func (this *QGraphicsRotation) UnsafePointer() unsafe.Pointer {
 }
 
 // newQGraphicsRotation constructs the type using only CGO pointers.
-func newQGraphicsRotation(h *C.QGraphicsRotation, h_QGraphicsTransform *C.QGraphicsTransform, h_QObject *C.QObject) *QGraphicsRotation {
+func newQGraphicsRotation(h *C.QGraphicsRotation) *QGraphicsRotation {
 	if h == nil {
 		return nil
 	}
+	var outptr_QGraphicsTransform *C.QGraphicsTransform = nil
+	C.QGraphicsRotation_virtbase(h, &outptr_QGraphicsTransform)
+
 	return &QGraphicsRotation{h: h,
-		QGraphicsTransform: newQGraphicsTransform(h_QGraphicsTransform, h_QObject)}
+		QGraphicsTransform: newQGraphicsTransform(outptr_QGraphicsTransform)}
 }
 
 // UnsafeNewQGraphicsRotation constructs the type using only unsafe pointers.
-func UnsafeNewQGraphicsRotation(h unsafe.Pointer, h_QGraphicsTransform unsafe.Pointer, h_QObject unsafe.Pointer) *QGraphicsRotation {
-	if h == nil {
-		return nil
-	}
-
-	return &QGraphicsRotation{h: (*C.QGraphicsRotation)(h),
-		QGraphicsTransform: UnsafeNewQGraphicsTransform(h_QGraphicsTransform, h_QObject)}
+func UnsafeNewQGraphicsRotation(h unsafe.Pointer) *QGraphicsRotation {
+	return newQGraphicsRotation((*C.QGraphicsRotation)(h))
 }
 
 // NewQGraphicsRotation constructs a new QGraphicsRotation object.
 func NewQGraphicsRotation() *QGraphicsRotation {
-	var outptr_QGraphicsRotation *C.QGraphicsRotation = nil
-	var outptr_QGraphicsTransform *C.QGraphicsTransform = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QGraphicsRotation_new(&outptr_QGraphicsRotation, &outptr_QGraphicsTransform, &outptr_QObject)
-	ret := newQGraphicsRotation(outptr_QGraphicsRotation, outptr_QGraphicsTransform, outptr_QObject)
+	ret := newQGraphicsRotation(C.QGraphicsRotation_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsRotation2 constructs a new QGraphicsRotation object.
 func NewQGraphicsRotation2(parent *QObject) *QGraphicsRotation {
-	var outptr_QGraphicsRotation *C.QGraphicsRotation = nil
-	var outptr_QGraphicsTransform *C.QGraphicsTransform = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QGraphicsRotation_new2(parent.cPointer(), &outptr_QGraphicsRotation, &outptr_QGraphicsTransform, &outptr_QObject)
-	ret := newQGraphicsRotation(outptr_QGraphicsRotation, outptr_QGraphicsTransform, outptr_QObject)
+	ret := newQGraphicsRotation(C.QGraphicsRotation_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

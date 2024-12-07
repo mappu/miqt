@@ -35,53 +35,42 @@ func (this *QPicture) UnsafePointer() unsafe.Pointer {
 }
 
 // newQPicture constructs the type using only CGO pointers.
-func newQPicture(h *C.QPicture, h_QPaintDevice *C.QPaintDevice) *QPicture {
+func newQPicture(h *C.QPicture) *QPicture {
 	if h == nil {
 		return nil
 	}
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+	C.QPicture_virtbase(h, &outptr_QPaintDevice)
+
 	return &QPicture{h: h,
-		QPaintDevice: newQPaintDevice(h_QPaintDevice)}
+		QPaintDevice: newQPaintDevice(outptr_QPaintDevice)}
 }
 
 // UnsafeNewQPicture constructs the type using only unsafe pointers.
-func UnsafeNewQPicture(h unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QPicture {
-	if h == nil {
-		return nil
-	}
-
-	return &QPicture{h: (*C.QPicture)(h),
-		QPaintDevice: UnsafeNewQPaintDevice(h_QPaintDevice)}
+func UnsafeNewQPicture(h unsafe.Pointer) *QPicture {
+	return newQPicture((*C.QPicture)(h))
 }
 
 // NewQPicture constructs a new QPicture object.
 func NewQPicture() *QPicture {
-	var outptr_QPicture *C.QPicture = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPicture_new(&outptr_QPicture, &outptr_QPaintDevice)
-	ret := newQPicture(outptr_QPicture, outptr_QPaintDevice)
+	ret := newQPicture(C.QPicture_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPicture2 constructs a new QPicture object.
 func NewQPicture2(param1 *QPicture) *QPicture {
-	var outptr_QPicture *C.QPicture = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPicture_new2(param1.cPointer(), &outptr_QPicture, &outptr_QPaintDevice)
-	ret := newQPicture(outptr_QPicture, outptr_QPaintDevice)
+	ret := newQPicture(C.QPicture_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPicture3 constructs a new QPicture object.
 func NewQPicture3(formatVersion int) *QPicture {
-	var outptr_QPicture *C.QPicture = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPicture_new3((C.int)(formatVersion), &outptr_QPicture, &outptr_QPaintDevice)
-	ret := newQPicture(outptr_QPicture, outptr_QPaintDevice)
+	ret := newQPicture(C.QPicture_new3((C.int)(formatVersion)))
 	ret.isSubclass = true
 	return ret
 }

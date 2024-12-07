@@ -36,44 +36,34 @@ func (this *QsciLexerCustom) UnsafePointer() unsafe.Pointer {
 }
 
 // newQsciLexerCustom constructs the type using only CGO pointers.
-func newQsciLexerCustom(h *C.QsciLexerCustom, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerCustom {
+func newQsciLexerCustom(h *C.QsciLexerCustom) *QsciLexerCustom {
 	if h == nil {
 		return nil
 	}
+	var outptr_QsciLexer *C.QsciLexer = nil
+	C.QsciLexerCustom_virtbase(h, &outptr_QsciLexer)
+
 	return &QsciLexerCustom{h: h,
-		QsciLexer: newQsciLexer(h_QsciLexer, h_QObject)}
+		QsciLexer: newQsciLexer(outptr_QsciLexer)}
 }
 
 // UnsafeNewQsciLexerCustom constructs the type using only unsafe pointers.
-func UnsafeNewQsciLexerCustom(h unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerCustom {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciLexerCustom{h: (*C.QsciLexerCustom)(h),
-		QsciLexer: UnsafeNewQsciLexer(h_QsciLexer, h_QObject)}
+func UnsafeNewQsciLexerCustom(h unsafe.Pointer) *QsciLexerCustom {
+	return newQsciLexerCustom((*C.QsciLexerCustom)(h))
 }
 
 // NewQsciLexerCustom constructs a new QsciLexerCustom object.
 func NewQsciLexerCustom() *QsciLexerCustom {
-	var outptr_QsciLexerCustom *C.QsciLexerCustom = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerCustom_new(&outptr_QsciLexerCustom, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerCustom(outptr_QsciLexerCustom, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerCustom(C.QsciLexerCustom_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQsciLexerCustom2 constructs a new QsciLexerCustom object.
 func NewQsciLexerCustom2(parent *qt6.QObject) *QsciLexerCustom {
-	var outptr_QsciLexerCustom *C.QsciLexerCustom = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerCustom_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QsciLexerCustom, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerCustom(outptr_QsciLexerCustom, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerCustom(C.QsciLexerCustom_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -189,7 +179,7 @@ func miqt_exec_callback_QsciLexerCustom_SetEditor(self *C.QsciLexerCustom, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQsciScintilla(editor, nil, nil, nil, nil, nil, nil)
+	slotval1 := newQsciScintilla(editor)
 
 	gofunc((&QsciLexerCustom{h: self}).callVirtualBase_SetEditor, slotval1)
 
@@ -1090,7 +1080,7 @@ func miqt_exec_callback_QsciLexerCustom_ReadProperties(self *C.QsciLexerCustom, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQSettings(unsafe.Pointer(qs), nil)
+	slotval1 := qt6.UnsafeNewQSettings(unsafe.Pointer(qs))
 
 	var prefix_ms C.struct_miqt_string = prefix
 	prefix_ret := C.GoStringN(prefix_ms.data, C.int(int64(prefix_ms.len)))
@@ -1127,7 +1117,7 @@ func miqt_exec_callback_QsciLexerCustom_WriteProperties(self *C.QsciLexerCustom,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQSettings(unsafe.Pointer(qs), nil)
+	slotval1 := qt6.UnsafeNewQSettings(unsafe.Pointer(qs))
 
 	var prefix_ms C.struct_miqt_string = prefix
 	prefix_ret := C.GoStringN(prefix_ms.data, C.int(int64(prefix_ms.len)))

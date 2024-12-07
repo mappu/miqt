@@ -133,44 +133,35 @@ func newQNetworkRequest(h *C.QNetworkRequest) *QNetworkRequest {
 	if h == nil {
 		return nil
 	}
+
 	return &QNetworkRequest{h: h}
 }
 
 // UnsafeNewQNetworkRequest constructs the type using only unsafe pointers.
 func UnsafeNewQNetworkRequest(h unsafe.Pointer) *QNetworkRequest {
-	if h == nil {
-		return nil
-	}
-
-	return &QNetworkRequest{h: (*C.QNetworkRequest)(h)}
+	return newQNetworkRequest((*C.QNetworkRequest)(h))
 }
 
 // NewQNetworkRequest constructs a new QNetworkRequest object.
 func NewQNetworkRequest() *QNetworkRequest {
-	var outptr_QNetworkRequest *C.QNetworkRequest = nil
 
-	C.QNetworkRequest_new(&outptr_QNetworkRequest)
-	ret := newQNetworkRequest(outptr_QNetworkRequest)
+	ret := newQNetworkRequest(C.QNetworkRequest_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQNetworkRequest2 constructs a new QNetworkRequest object.
 func NewQNetworkRequest2(url *qt.QUrl) *QNetworkRequest {
-	var outptr_QNetworkRequest *C.QNetworkRequest = nil
 
-	C.QNetworkRequest_new2((*C.QUrl)(url.UnsafePointer()), &outptr_QNetworkRequest)
-	ret := newQNetworkRequest(outptr_QNetworkRequest)
+	ret := newQNetworkRequest(C.QNetworkRequest_new2((*C.QUrl)(url.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQNetworkRequest3 constructs a new QNetworkRequest object.
 func NewQNetworkRequest3(other *QNetworkRequest) *QNetworkRequest {
-	var outptr_QNetworkRequest *C.QNetworkRequest = nil
 
-	C.QNetworkRequest_new3(other.cPointer(), &outptr_QNetworkRequest)
-	ret := newQNetworkRequest(outptr_QNetworkRequest)
+	ret := newQNetworkRequest(C.QNetworkRequest_new3(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

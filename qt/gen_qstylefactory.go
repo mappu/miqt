@@ -37,16 +37,13 @@ func newQStyleFactory(h *C.QStyleFactory) *QStyleFactory {
 	if h == nil {
 		return nil
 	}
+
 	return &QStyleFactory{h: h}
 }
 
 // UnsafeNewQStyleFactory constructs the type using only unsafe pointers.
 func UnsafeNewQStyleFactory(h unsafe.Pointer) *QStyleFactory {
-	if h == nil {
-		return nil
-	}
-
-	return &QStyleFactory{h: (*C.QStyleFactory)(h)}
+	return newQStyleFactory((*C.QStyleFactory)(h))
 }
 
 func QStyleFactory_Keys() []string {
@@ -67,7 +64,7 @@ func QStyleFactory_Create(param1 string) *QStyle {
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
 	defer C.free(unsafe.Pointer(param1_ms.data))
-	return newQStyle(C.QStyleFactory_Create(param1_ms), nil)
+	return newQStyle(C.QStyleFactory_Create(param1_ms))
 }
 
 // Delete this object from C++ memory.

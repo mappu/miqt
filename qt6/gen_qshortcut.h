@@ -34,15 +34,16 @@ typedef struct QShortcut QShortcut;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QShortcut_new(QObject* parent, QShortcut** outptr_QShortcut, QObject** outptr_QObject);
-void QShortcut_new2(QKeySequence* key, QObject* parent, QShortcut** outptr_QShortcut, QObject** outptr_QObject);
-void QShortcut_new3(int key, QObject* parent, QShortcut** outptr_QShortcut, QObject** outptr_QObject);
-void QShortcut_new4(QKeySequence* key, QObject* parent, const char* member, QShortcut** outptr_QShortcut, QObject** outptr_QObject);
-void QShortcut_new5(QKeySequence* key, QObject* parent, const char* member, const char* ambiguousMember, QShortcut** outptr_QShortcut, QObject** outptr_QObject);
-void QShortcut_new6(QKeySequence* key, QObject* parent, const char* member, const char* ambiguousMember, int context, QShortcut** outptr_QShortcut, QObject** outptr_QObject);
-void QShortcut_new7(int key, QObject* parent, const char* member, QShortcut** outptr_QShortcut, QObject** outptr_QObject);
-void QShortcut_new8(int key, QObject* parent, const char* member, const char* ambiguousMember, QShortcut** outptr_QShortcut, QObject** outptr_QObject);
-void QShortcut_new9(int key, QObject* parent, const char* member, const char* ambiguousMember, int context, QShortcut** outptr_QShortcut, QObject** outptr_QObject);
+QShortcut* QShortcut_new(QObject* parent);
+QShortcut* QShortcut_new2(QKeySequence* key, QObject* parent);
+QShortcut* QShortcut_new3(int key, QObject* parent);
+QShortcut* QShortcut_new4(QKeySequence* key, QObject* parent, const char* member);
+QShortcut* QShortcut_new5(QKeySequence* key, QObject* parent, const char* member, const char* ambiguousMember);
+QShortcut* QShortcut_new6(QKeySequence* key, QObject* parent, const char* member, const char* ambiguousMember, int context);
+QShortcut* QShortcut_new7(int key, QObject* parent, const char* member);
+QShortcut* QShortcut_new8(int key, QObject* parent, const char* member, const char* ambiguousMember);
+QShortcut* QShortcut_new9(int key, QObject* parent, const char* member, const char* ambiguousMember, int context);
+void QShortcut_virtbase(QShortcut* src, QObject** outptr_QObject);
 QMetaObject* QShortcut_MetaObject(const QShortcut* self);
 void* QShortcut_Metacast(QShortcut* self, const char* param1);
 struct miqt_string QShortcut_Tr(const char* s);

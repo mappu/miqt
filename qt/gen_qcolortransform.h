@@ -24,8 +24,8 @@ typedef struct QColorTransform QColorTransform;
 typedef struct QRgba64 QRgba64;
 #endif
 
-void QColorTransform_new(QColorTransform** outptr_QColorTransform);
-void QColorTransform_new2(QColorTransform* colorTransform, QColorTransform** outptr_QColorTransform);
+QColorTransform* QColorTransform_new();
+QColorTransform* QColorTransform_new2(QColorTransform* colorTransform);
 void QColorTransform_OperatorAssign(QColorTransform* self, QColorTransform* other);
 void QColorTransform_Swap(QColorTransform* self, QColorTransform* other);
 unsigned int QColorTransform_Map(const QColorTransform* self, unsigned int argb);

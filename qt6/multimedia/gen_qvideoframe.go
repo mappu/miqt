@@ -69,44 +69,35 @@ func newQVideoFrame(h *C.QVideoFrame) *QVideoFrame {
 	if h == nil {
 		return nil
 	}
+
 	return &QVideoFrame{h: h}
 }
 
 // UnsafeNewQVideoFrame constructs the type using only unsafe pointers.
 func UnsafeNewQVideoFrame(h unsafe.Pointer) *QVideoFrame {
-	if h == nil {
-		return nil
-	}
-
-	return &QVideoFrame{h: (*C.QVideoFrame)(h)}
+	return newQVideoFrame((*C.QVideoFrame)(h))
 }
 
 // NewQVideoFrame constructs a new QVideoFrame object.
 func NewQVideoFrame() *QVideoFrame {
-	var outptr_QVideoFrame *C.QVideoFrame = nil
 
-	C.QVideoFrame_new(&outptr_QVideoFrame)
-	ret := newQVideoFrame(outptr_QVideoFrame)
+	ret := newQVideoFrame(C.QVideoFrame_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVideoFrame2 constructs a new QVideoFrame object.
 func NewQVideoFrame2(format *QVideoFrameFormat) *QVideoFrame {
-	var outptr_QVideoFrame *C.QVideoFrame = nil
 
-	C.QVideoFrame_new2(format.cPointer(), &outptr_QVideoFrame)
-	ret := newQVideoFrame(outptr_QVideoFrame)
+	ret := newQVideoFrame(C.QVideoFrame_new2(format.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVideoFrame3 constructs a new QVideoFrame object.
 func NewQVideoFrame3(other *QVideoFrame) *QVideoFrame {
-	var outptr_QVideoFrame *C.QVideoFrame = nil
 
-	C.QVideoFrame_new3(other.cPointer(), &outptr_QVideoFrame)
-	ret := newQVideoFrame(outptr_QVideoFrame)
+	ret := newQVideoFrame(C.QVideoFrame_new3(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -236,7 +227,7 @@ func (this *QVideoFrame) Mirrored() bool {
 }
 
 func (this *QVideoFrame) ToImage() *qt6.QImage {
-	_goptr := qt6.UnsafeNewQImage(unsafe.Pointer(C.QVideoFrame_ToImage(this.h)), nil)
+	_goptr := qt6.UnsafeNewQImage(unsafe.Pointer(C.QVideoFrame_ToImage(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -298,16 +289,13 @@ func newQVideoFrame__PaintOptions(h *C.QVideoFrame__PaintOptions) *QVideoFrame__
 	if h == nil {
 		return nil
 	}
+
 	return &QVideoFrame__PaintOptions{h: h}
 }
 
 // UnsafeNewQVideoFrame__PaintOptions constructs the type using only unsafe pointers.
 func UnsafeNewQVideoFrame__PaintOptions(h unsafe.Pointer) *QVideoFrame__PaintOptions {
-	if h == nil {
-		return nil
-	}
-
-	return &QVideoFrame__PaintOptions{h: (*C.QVideoFrame__PaintOptions)(h)}
+	return newQVideoFrame__PaintOptions((*C.QVideoFrame__PaintOptions)(h))
 }
 
 // Delete this object from C++ memory.

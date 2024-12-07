@@ -46,8 +46,9 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QDial_new(QWidget* parent, QDial** outptr_QDial, QAbstractSlider** outptr_QAbstractSlider, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QDial_new2(QDial** outptr_QDial, QAbstractSlider** outptr_QAbstractSlider, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QDial* QDial_new(QWidget* parent);
+QDial* QDial_new2();
+void QDial_virtbase(QDial* src, QAbstractSlider** outptr_QAbstractSlider);
 QMetaObject* QDial_MetaObject(const QDial* self);
 void* QDial_Metacast(QDial* self, const char* param1);
 struct miqt_string QDial_Tr(const char* s);

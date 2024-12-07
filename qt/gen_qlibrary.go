@@ -45,31 +45,26 @@ func (this *QLibrary) UnsafePointer() unsafe.Pointer {
 }
 
 // newQLibrary constructs the type using only CGO pointers.
-func newQLibrary(h *C.QLibrary, h_QObject *C.QObject) *QLibrary {
+func newQLibrary(h *C.QLibrary) *QLibrary {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QLibrary_virtbase(h, &outptr_QObject)
+
 	return &QLibrary{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQLibrary constructs the type using only unsafe pointers.
-func UnsafeNewQLibrary(h unsafe.Pointer, h_QObject unsafe.Pointer) *QLibrary {
-	if h == nil {
-		return nil
-	}
-
-	return &QLibrary{h: (*C.QLibrary)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQLibrary(h unsafe.Pointer) *QLibrary {
+	return newQLibrary((*C.QLibrary)(h))
 }
 
 // NewQLibrary constructs a new QLibrary object.
 func NewQLibrary() *QLibrary {
-	var outptr_QLibrary *C.QLibrary = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QLibrary_new(&outptr_QLibrary, &outptr_QObject)
-	ret := newQLibrary(outptr_QLibrary, outptr_QObject)
+	ret := newQLibrary(C.QLibrary_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -80,11 +75,8 @@ func NewQLibrary2(fileName string) *QLibrary {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QLibrary *C.QLibrary = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QLibrary_new2(fileName_ms, &outptr_QLibrary, &outptr_QObject)
-	ret := newQLibrary(outptr_QLibrary, outptr_QObject)
+	ret := newQLibrary(C.QLibrary_new2(fileName_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -95,11 +87,8 @@ func NewQLibrary3(fileName string, verNum int) *QLibrary {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QLibrary *C.QLibrary = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QLibrary_new3(fileName_ms, (C.int)(verNum), &outptr_QLibrary, &outptr_QObject)
-	ret := newQLibrary(outptr_QLibrary, outptr_QObject)
+	ret := newQLibrary(C.QLibrary_new3(fileName_ms, (C.int)(verNum)))
 	ret.isSubclass = true
 	return ret
 }
@@ -114,22 +103,16 @@ func NewQLibrary4(fileName string, version string) *QLibrary {
 	version_ms.data = C.CString(version)
 	version_ms.len = C.size_t(len(version))
 	defer C.free(unsafe.Pointer(version_ms.data))
-	var outptr_QLibrary *C.QLibrary = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QLibrary_new4(fileName_ms, version_ms, &outptr_QLibrary, &outptr_QObject)
-	ret := newQLibrary(outptr_QLibrary, outptr_QObject)
+	ret := newQLibrary(C.QLibrary_new4(fileName_ms, version_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQLibrary5 constructs a new QLibrary object.
 func NewQLibrary5(parent *QObject) *QLibrary {
-	var outptr_QLibrary *C.QLibrary = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QLibrary_new5(parent.cPointer(), &outptr_QLibrary, &outptr_QObject)
-	ret := newQLibrary(outptr_QLibrary, outptr_QObject)
+	ret := newQLibrary(C.QLibrary_new5(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -140,11 +123,8 @@ func NewQLibrary6(fileName string, parent *QObject) *QLibrary {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QLibrary *C.QLibrary = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QLibrary_new6(fileName_ms, parent.cPointer(), &outptr_QLibrary, &outptr_QObject)
-	ret := newQLibrary(outptr_QLibrary, outptr_QObject)
+	ret := newQLibrary(C.QLibrary_new6(fileName_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -155,11 +135,8 @@ func NewQLibrary7(fileName string, verNum int, parent *QObject) *QLibrary {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QLibrary *C.QLibrary = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QLibrary_new7(fileName_ms, (C.int)(verNum), parent.cPointer(), &outptr_QLibrary, &outptr_QObject)
-	ret := newQLibrary(outptr_QLibrary, outptr_QObject)
+	ret := newQLibrary(C.QLibrary_new7(fileName_ms, (C.int)(verNum), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -174,11 +151,8 @@ func NewQLibrary8(fileName string, version string, parent *QObject) *QLibrary {
 	version_ms.data = C.CString(version)
 	version_ms.len = C.size_t(len(version))
 	defer C.free(unsafe.Pointer(version_ms.data))
-	var outptr_QLibrary *C.QLibrary = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QLibrary_new8(fileName_ms, version_ms, parent.cPointer(), &outptr_QLibrary, &outptr_QObject)
-	ret := newQLibrary(outptr_QLibrary, outptr_QObject)
+	ret := newQLibrary(C.QLibrary_new8(fileName_ms, version_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -403,7 +377,7 @@ func miqt_exec_callback_QLibrary_TimerEvent(self *C.QLibrary, cb C.intptr_t, eve
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QLibrary{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -429,7 +403,7 @@ func miqt_exec_callback_QLibrary_ChildEvent(self *C.QLibrary, cb C.intptr_t, eve
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QLibrary{h: self}).callVirtualBase_ChildEvent, slotval1)
 

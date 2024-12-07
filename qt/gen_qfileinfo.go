@@ -37,24 +37,19 @@ func newQFileInfo(h *C.QFileInfo) *QFileInfo {
 	if h == nil {
 		return nil
 	}
+
 	return &QFileInfo{h: h}
 }
 
 // UnsafeNewQFileInfo constructs the type using only unsafe pointers.
 func UnsafeNewQFileInfo(h unsafe.Pointer) *QFileInfo {
-	if h == nil {
-		return nil
-	}
-
-	return &QFileInfo{h: (*C.QFileInfo)(h)}
+	return newQFileInfo((*C.QFileInfo)(h))
 }
 
 // NewQFileInfo constructs a new QFileInfo object.
 func NewQFileInfo() *QFileInfo {
-	var outptr_QFileInfo *C.QFileInfo = nil
 
-	C.QFileInfo_new(&outptr_QFileInfo)
-	ret := newQFileInfo(outptr_QFileInfo)
+	ret := newQFileInfo(C.QFileInfo_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -65,20 +60,16 @@ func NewQFileInfo2(file string) *QFileInfo {
 	file_ms.data = C.CString(file)
 	file_ms.len = C.size_t(len(file))
 	defer C.free(unsafe.Pointer(file_ms.data))
-	var outptr_QFileInfo *C.QFileInfo = nil
 
-	C.QFileInfo_new2(file_ms, &outptr_QFileInfo)
-	ret := newQFileInfo(outptr_QFileInfo)
+	ret := newQFileInfo(C.QFileInfo_new2(file_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFileInfo3 constructs a new QFileInfo object.
 func NewQFileInfo3(file *QFile) *QFileInfo {
-	var outptr_QFileInfo *C.QFileInfo = nil
 
-	C.QFileInfo_new3(file.cPointer(), &outptr_QFileInfo)
-	ret := newQFileInfo(outptr_QFileInfo)
+	ret := newQFileInfo(C.QFileInfo_new3(file.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -89,20 +80,16 @@ func NewQFileInfo4(dir *QDir, file string) *QFileInfo {
 	file_ms.data = C.CString(file)
 	file_ms.len = C.size_t(len(file))
 	defer C.free(unsafe.Pointer(file_ms.data))
-	var outptr_QFileInfo *C.QFileInfo = nil
 
-	C.QFileInfo_new4(dir.cPointer(), file_ms, &outptr_QFileInfo)
-	ret := newQFileInfo(outptr_QFileInfo)
+	ret := newQFileInfo(C.QFileInfo_new4(dir.cPointer(), file_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFileInfo5 constructs a new QFileInfo object.
 func NewQFileInfo5(fileinfo *QFileInfo) *QFileInfo {
-	var outptr_QFileInfo *C.QFileInfo = nil
 
-	C.QFileInfo_new5(fileinfo.cPointer(), &outptr_QFileInfo)
-	ret := newQFileInfo(outptr_QFileInfo)
+	ret := newQFileInfo(C.QFileInfo_new5(fileinfo.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

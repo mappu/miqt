@@ -35,33 +35,26 @@ func (this *QPropertyAnimation) UnsafePointer() unsafe.Pointer {
 }
 
 // newQPropertyAnimation constructs the type using only CGO pointers.
-func newQPropertyAnimation(h *C.QPropertyAnimation, h_QVariantAnimation *C.QVariantAnimation, h_QAbstractAnimation *C.QAbstractAnimation, h_QObject *C.QObject) *QPropertyAnimation {
+func newQPropertyAnimation(h *C.QPropertyAnimation) *QPropertyAnimation {
 	if h == nil {
 		return nil
 	}
+	var outptr_QVariantAnimation *C.QVariantAnimation = nil
+	C.QPropertyAnimation_virtbase(h, &outptr_QVariantAnimation)
+
 	return &QPropertyAnimation{h: h,
-		QVariantAnimation: newQVariantAnimation(h_QVariantAnimation, h_QAbstractAnimation, h_QObject)}
+		QVariantAnimation: newQVariantAnimation(outptr_QVariantAnimation)}
 }
 
 // UnsafeNewQPropertyAnimation constructs the type using only unsafe pointers.
-func UnsafeNewQPropertyAnimation(h unsafe.Pointer, h_QVariantAnimation unsafe.Pointer, h_QAbstractAnimation unsafe.Pointer, h_QObject unsafe.Pointer) *QPropertyAnimation {
-	if h == nil {
-		return nil
-	}
-
-	return &QPropertyAnimation{h: (*C.QPropertyAnimation)(h),
-		QVariantAnimation: UnsafeNewQVariantAnimation(h_QVariantAnimation, h_QAbstractAnimation, h_QObject)}
+func UnsafeNewQPropertyAnimation(h unsafe.Pointer) *QPropertyAnimation {
+	return newQPropertyAnimation((*C.QPropertyAnimation)(h))
 }
 
 // NewQPropertyAnimation constructs a new QPropertyAnimation object.
 func NewQPropertyAnimation() *QPropertyAnimation {
-	var outptr_QPropertyAnimation *C.QPropertyAnimation = nil
-	var outptr_QVariantAnimation *C.QVariantAnimation = nil
-	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPropertyAnimation_new(&outptr_QPropertyAnimation, &outptr_QVariantAnimation, &outptr_QAbstractAnimation, &outptr_QObject)
-	ret := newQPropertyAnimation(outptr_QPropertyAnimation, outptr_QVariantAnimation, outptr_QAbstractAnimation, outptr_QObject)
+	ret := newQPropertyAnimation(C.QPropertyAnimation_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -71,26 +64,16 @@ func NewQPropertyAnimation2(target *QObject, propertyName []byte) *QPropertyAnim
 	propertyName_alias := C.struct_miqt_string{}
 	propertyName_alias.data = (*C.char)(unsafe.Pointer(&propertyName[0]))
 	propertyName_alias.len = C.size_t(len(propertyName))
-	var outptr_QPropertyAnimation *C.QPropertyAnimation = nil
-	var outptr_QVariantAnimation *C.QVariantAnimation = nil
-	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPropertyAnimation_new2(target.cPointer(), propertyName_alias, &outptr_QPropertyAnimation, &outptr_QVariantAnimation, &outptr_QAbstractAnimation, &outptr_QObject)
-	ret := newQPropertyAnimation(outptr_QPropertyAnimation, outptr_QVariantAnimation, outptr_QAbstractAnimation, outptr_QObject)
+	ret := newQPropertyAnimation(C.QPropertyAnimation_new2(target.cPointer(), propertyName_alias))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPropertyAnimation3 constructs a new QPropertyAnimation object.
 func NewQPropertyAnimation3(parent *QObject) *QPropertyAnimation {
-	var outptr_QPropertyAnimation *C.QPropertyAnimation = nil
-	var outptr_QVariantAnimation *C.QVariantAnimation = nil
-	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPropertyAnimation_new3(parent.cPointer(), &outptr_QPropertyAnimation, &outptr_QVariantAnimation, &outptr_QAbstractAnimation, &outptr_QObject)
-	ret := newQPropertyAnimation(outptr_QPropertyAnimation, outptr_QVariantAnimation, outptr_QAbstractAnimation, outptr_QObject)
+	ret := newQPropertyAnimation(C.QPropertyAnimation_new3(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -100,13 +83,8 @@ func NewQPropertyAnimation4(target *QObject, propertyName []byte, parent *QObjec
 	propertyName_alias := C.struct_miqt_string{}
 	propertyName_alias.data = (*C.char)(unsafe.Pointer(&propertyName[0]))
 	propertyName_alias.len = C.size_t(len(propertyName))
-	var outptr_QPropertyAnimation *C.QPropertyAnimation = nil
-	var outptr_QVariantAnimation *C.QVariantAnimation = nil
-	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPropertyAnimation_new4(target.cPointer(), propertyName_alias, parent.cPointer(), &outptr_QPropertyAnimation, &outptr_QVariantAnimation, &outptr_QAbstractAnimation, &outptr_QObject)
-	ret := newQPropertyAnimation(outptr_QPropertyAnimation, outptr_QVariantAnimation, outptr_QAbstractAnimation, outptr_QObject)
+	ret := newQPropertyAnimation(C.QPropertyAnimation_new4(target.cPointer(), propertyName_alias, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

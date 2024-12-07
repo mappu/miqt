@@ -77,44 +77,34 @@ func (this *QRadioTuner) UnsafePointer() unsafe.Pointer {
 }
 
 // newQRadioTuner constructs the type using only CGO pointers.
-func newQRadioTuner(h *C.QRadioTuner, h_QMediaObject *C.QMediaObject, h_QObject *C.QObject) *QRadioTuner {
+func newQRadioTuner(h *C.QRadioTuner) *QRadioTuner {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaObject *C.QMediaObject = nil
+	C.QRadioTuner_virtbase(h, &outptr_QMediaObject)
+
 	return &QRadioTuner{h: h,
-		QMediaObject: newQMediaObject(h_QMediaObject, h_QObject)}
+		QMediaObject: newQMediaObject(outptr_QMediaObject)}
 }
 
 // UnsafeNewQRadioTuner constructs the type using only unsafe pointers.
-func UnsafeNewQRadioTuner(h unsafe.Pointer, h_QMediaObject unsafe.Pointer, h_QObject unsafe.Pointer) *QRadioTuner {
-	if h == nil {
-		return nil
-	}
-
-	return &QRadioTuner{h: (*C.QRadioTuner)(h),
-		QMediaObject: UnsafeNewQMediaObject(h_QMediaObject, h_QObject)}
+func UnsafeNewQRadioTuner(h unsafe.Pointer) *QRadioTuner {
+	return newQRadioTuner((*C.QRadioTuner)(h))
 }
 
 // NewQRadioTuner constructs a new QRadioTuner object.
 func NewQRadioTuner() *QRadioTuner {
-	var outptr_QRadioTuner *C.QRadioTuner = nil
-	var outptr_QMediaObject *C.QMediaObject = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QRadioTuner_new(&outptr_QRadioTuner, &outptr_QMediaObject, &outptr_QObject)
-	ret := newQRadioTuner(outptr_QRadioTuner, outptr_QMediaObject, outptr_QObject)
+	ret := newQRadioTuner(C.QRadioTuner_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQRadioTuner2 constructs a new QRadioTuner object.
 func NewQRadioTuner2(parent *qt.QObject) *QRadioTuner {
-	var outptr_QRadioTuner *C.QRadioTuner = nil
-	var outptr_QMediaObject *C.QMediaObject = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QRadioTuner_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QRadioTuner, &outptr_QMediaObject, &outptr_QObject)
-	ret := newQRadioTuner(outptr_QRadioTuner, outptr_QMediaObject, outptr_QObject)
+	ret := newQRadioTuner(C.QRadioTuner_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -232,7 +222,7 @@ func (this *QRadioTuner) ErrorString() string {
 }
 
 func (this *QRadioTuner) RadioData() *QRadioData {
-	return newQRadioData(C.QRadioTuner_RadioData(this.h), nil, nil)
+	return newQRadioData(C.QRadioTuner_RadioData(this.h))
 }
 
 func (this *QRadioTuner) SearchForward() {
@@ -604,7 +594,7 @@ func miqt_exec_callback_QRadioTuner_IsAvailable(self *C.QRadioTuner, cb C.intptr
 
 func (this *QRadioTuner) callVirtualBase_Service() *QMediaService {
 
-	return newQMediaService(C.QRadioTuner_virtualbase_Service(unsafe.Pointer(this.h)), nil)
+	return newQMediaService(C.QRadioTuner_virtualbase_Service(unsafe.Pointer(this.h)))
 
 }
 func (this *QRadioTuner) OnService(slot func(super func() *QMediaService) *QMediaService) {

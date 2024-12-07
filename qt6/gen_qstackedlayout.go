@@ -42,59 +42,42 @@ func (this *QStackedLayout) UnsafePointer() unsafe.Pointer {
 }
 
 // newQStackedLayout constructs the type using only CGO pointers.
-func newQStackedLayout(h *C.QStackedLayout, h_QLayout *C.QLayout, h_QObject *C.QObject, h_QLayoutItem *C.QLayoutItem) *QStackedLayout {
+func newQStackedLayout(h *C.QStackedLayout) *QStackedLayout {
 	if h == nil {
 		return nil
 	}
+	var outptr_QLayout *C.QLayout = nil
+	C.QStackedLayout_virtbase(h, &outptr_QLayout)
+
 	return &QStackedLayout{h: h,
-		QLayout: newQLayout(h_QLayout, h_QObject, h_QLayoutItem)}
+		QLayout: newQLayout(outptr_QLayout)}
 }
 
 // UnsafeNewQStackedLayout constructs the type using only unsafe pointers.
-func UnsafeNewQStackedLayout(h unsafe.Pointer, h_QLayout unsafe.Pointer, h_QObject unsafe.Pointer, h_QLayoutItem unsafe.Pointer) *QStackedLayout {
-	if h == nil {
-		return nil
-	}
-
-	return &QStackedLayout{h: (*C.QStackedLayout)(h),
-		QLayout: UnsafeNewQLayout(h_QLayout, h_QObject, h_QLayoutItem)}
+func UnsafeNewQStackedLayout(h unsafe.Pointer) *QStackedLayout {
+	return newQStackedLayout((*C.QStackedLayout)(h))
 }
 
 // NewQStackedLayout constructs a new QStackedLayout object.
 func NewQStackedLayout(parent *QWidget) *QStackedLayout {
-	var outptr_QStackedLayout *C.QStackedLayout = nil
-	var outptr_QLayout *C.QLayout = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QLayoutItem *C.QLayoutItem = nil
 
-	C.QStackedLayout_new(parent.cPointer(), &outptr_QStackedLayout, &outptr_QLayout, &outptr_QObject, &outptr_QLayoutItem)
-	ret := newQStackedLayout(outptr_QStackedLayout, outptr_QLayout, outptr_QObject, outptr_QLayoutItem)
+	ret := newQStackedLayout(C.QStackedLayout_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQStackedLayout2 constructs a new QStackedLayout object.
 func NewQStackedLayout2() *QStackedLayout {
-	var outptr_QStackedLayout *C.QStackedLayout = nil
-	var outptr_QLayout *C.QLayout = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QLayoutItem *C.QLayoutItem = nil
 
-	C.QStackedLayout_new2(&outptr_QStackedLayout, &outptr_QLayout, &outptr_QObject, &outptr_QLayoutItem)
-	ret := newQStackedLayout(outptr_QStackedLayout, outptr_QLayout, outptr_QObject, outptr_QLayoutItem)
+	ret := newQStackedLayout(C.QStackedLayout_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQStackedLayout3 constructs a new QStackedLayout object.
 func NewQStackedLayout3(parentLayout *QLayout) *QStackedLayout {
-	var outptr_QStackedLayout *C.QStackedLayout = nil
-	var outptr_QLayout *C.QLayout = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QLayoutItem *C.QLayoutItem = nil
 
-	C.QStackedLayout_new3(parentLayout.cPointer(), &outptr_QStackedLayout, &outptr_QLayout, &outptr_QObject, &outptr_QLayoutItem)
-	ret := newQStackedLayout(outptr_QStackedLayout, outptr_QLayout, outptr_QObject, outptr_QLayoutItem)
+	ret := newQStackedLayout(C.QStackedLayout_new3(parentLayout.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -127,7 +110,7 @@ func (this *QStackedLayout) InsertWidget(index int, w *QWidget) int {
 }
 
 func (this *QStackedLayout) CurrentWidget() *QWidget {
-	return newQWidget(C.QStackedLayout_CurrentWidget(this.h), nil, nil)
+	return newQWidget(C.QStackedLayout_CurrentWidget(this.h))
 }
 
 func (this *QStackedLayout) CurrentIndex() int {
@@ -135,7 +118,7 @@ func (this *QStackedLayout) CurrentIndex() int {
 }
 
 func (this *QStackedLayout) Widget(param1 int) *QWidget {
-	return newQWidget(C.QStackedLayout_Widget(this.h, (C.int)(param1)), nil, nil)
+	return newQWidget(C.QStackedLayout_Widget(this.h, (C.int)(param1)))
 }
 
 func (this *QStackedLayout) Count() int {
@@ -669,7 +652,7 @@ func miqt_exec_callback_QStackedLayout_IndexOf(self *C.QStackedLayout, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(param1, nil, nil)
+	slotval1 := newQWidget(param1)
 
 	virtualReturn := gofunc((&QStackedLayout{h: self}).callVirtualBase_IndexOf, slotval1)
 
@@ -747,9 +730,9 @@ func miqt_exec_callback_QStackedLayout_ReplaceWidget(self *C.QStackedLayout, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(from, nil, nil)
+	slotval1 := newQWidget(from)
 
-	slotval2 := newQWidget(to, nil, nil)
+	slotval2 := newQWidget(to)
 
 	slotval3 := (FindChildOption)(options)
 
@@ -761,7 +744,7 @@ func miqt_exec_callback_QStackedLayout_ReplaceWidget(self *C.QStackedLayout, cb 
 
 func (this *QStackedLayout) callVirtualBase_Layout() *QLayout {
 
-	return newQLayout(C.QStackedLayout_virtualbase_Layout(unsafe.Pointer(this.h)), nil, nil)
+	return newQLayout(C.QStackedLayout_virtualbase_Layout(unsafe.Pointer(this.h)))
 
 }
 func (this *QStackedLayout) OnLayout(slot func(super func() *QLayout) *QLayout) {
@@ -804,7 +787,7 @@ func miqt_exec_callback_QStackedLayout_ChildEvent(self *C.QStackedLayout, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(e, nil)
+	slotval1 := newQChildEvent(e)
 
 	gofunc((&QStackedLayout{h: self}).callVirtualBase_ChildEvent, slotval1)
 

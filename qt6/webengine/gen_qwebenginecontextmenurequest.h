@@ -28,6 +28,7 @@ typedef struct QUrl QUrl;
 typedef struct QWebEngineContextMenuRequest QWebEngineContextMenuRequest;
 #endif
 
+void QWebEngineContextMenuRequest_virtbase(QWebEngineContextMenuRequest* src, QObject** outptr_QObject);
 QMetaObject* QWebEngineContextMenuRequest_MetaObject(const QWebEngineContextMenuRequest* self);
 void* QWebEngineContextMenuRequest_Metacast(QWebEngineContextMenuRequest* self, const char* param1);
 struct miqt_string QWebEngineContextMenuRequest_Tr(const char* s);

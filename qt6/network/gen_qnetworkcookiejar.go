@@ -36,42 +36,34 @@ func (this *QNetworkCookieJar) UnsafePointer() unsafe.Pointer {
 }
 
 // newQNetworkCookieJar constructs the type using only CGO pointers.
-func newQNetworkCookieJar(h *C.QNetworkCookieJar, h_QObject *C.QObject) *QNetworkCookieJar {
+func newQNetworkCookieJar(h *C.QNetworkCookieJar) *QNetworkCookieJar {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QNetworkCookieJar_virtbase(h, &outptr_QObject)
+
 	return &QNetworkCookieJar{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQNetworkCookieJar constructs the type using only unsafe pointers.
-func UnsafeNewQNetworkCookieJar(h unsafe.Pointer, h_QObject unsafe.Pointer) *QNetworkCookieJar {
-	if h == nil {
-		return nil
-	}
-
-	return &QNetworkCookieJar{h: (*C.QNetworkCookieJar)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQNetworkCookieJar(h unsafe.Pointer) *QNetworkCookieJar {
+	return newQNetworkCookieJar((*C.QNetworkCookieJar)(h))
 }
 
 // NewQNetworkCookieJar constructs a new QNetworkCookieJar object.
 func NewQNetworkCookieJar() *QNetworkCookieJar {
-	var outptr_QNetworkCookieJar *C.QNetworkCookieJar = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QNetworkCookieJar_new(&outptr_QNetworkCookieJar, &outptr_QObject)
-	ret := newQNetworkCookieJar(outptr_QNetworkCookieJar, outptr_QObject)
+	ret := newQNetworkCookieJar(C.QNetworkCookieJar_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQNetworkCookieJar2 constructs a new QNetworkCookieJar object.
 func NewQNetworkCookieJar2(parent *qt6.QObject) *QNetworkCookieJar {
-	var outptr_QNetworkCookieJar *C.QNetworkCookieJar = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QNetworkCookieJar_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QNetworkCookieJar, &outptr_QObject)
-	ret := newQNetworkCookieJar(outptr_QNetworkCookieJar, outptr_QObject)
+	ret := newQNetworkCookieJar(C.QNetworkCookieJar_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -429,7 +421,7 @@ func miqt_exec_callback_QNetworkCookieJar_TimerEvent(self *C.QNetworkCookieJar, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QNetworkCookieJar{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -455,7 +447,7 @@ func miqt_exec_callback_QNetworkCookieJar_ChildEvent(self *C.QNetworkCookieJar, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QNetworkCookieJar{h: self}).callVirtualBase_ChildEvent, slotval1)
 

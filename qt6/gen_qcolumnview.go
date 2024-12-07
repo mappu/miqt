@@ -35,52 +35,34 @@ func (this *QColumnView) UnsafePointer() unsafe.Pointer {
 }
 
 // newQColumnView constructs the type using only CGO pointers.
-func newQColumnView(h *C.QColumnView, h_QAbstractItemView *C.QAbstractItemView, h_QAbstractScrollArea *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QColumnView {
+func newQColumnView(h *C.QColumnView) *QColumnView {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractItemView *C.QAbstractItemView = nil
+	C.QColumnView_virtbase(h, &outptr_QAbstractItemView)
+
 	return &QColumnView{h: h,
-		QAbstractItemView: newQAbstractItemView(h_QAbstractItemView, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+		QAbstractItemView: newQAbstractItemView(outptr_QAbstractItemView)}
 }
 
 // UnsafeNewQColumnView constructs the type using only unsafe pointers.
-func UnsafeNewQColumnView(h unsafe.Pointer, h_QAbstractItemView unsafe.Pointer, h_QAbstractScrollArea unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QColumnView {
-	if h == nil {
-		return nil
-	}
-
-	return &QColumnView{h: (*C.QColumnView)(h),
-		QAbstractItemView: UnsafeNewQAbstractItemView(h_QAbstractItemView, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQColumnView(h unsafe.Pointer) *QColumnView {
+	return newQColumnView((*C.QColumnView)(h))
 }
 
 // NewQColumnView constructs a new QColumnView object.
 func NewQColumnView(parent *QWidget) *QColumnView {
-	var outptr_QColumnView *C.QColumnView = nil
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QColumnView_new(parent.cPointer(), &outptr_QColumnView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQColumnView(outptr_QColumnView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQColumnView(C.QColumnView_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQColumnView2 constructs a new QColumnView object.
 func NewQColumnView2() *QColumnView {
-	var outptr_QColumnView *C.QColumnView = nil
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QColumnView_new2(&outptr_QColumnView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQColumnView(outptr_QColumnView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQColumnView(C.QColumnView_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -171,7 +153,7 @@ func (this *QColumnView) ResizeGripsVisible() bool {
 }
 
 func (this *QColumnView) PreviewWidget() *QWidget {
-	return newQWidget(C.QColumnView_PreviewWidget(this.h), nil, nil)
+	return newQWidget(C.QColumnView_PreviewWidget(this.h))
 }
 
 func (this *QColumnView) SetPreviewWidget(widget *QWidget) {
@@ -355,7 +337,7 @@ func miqt_exec_callback_QColumnView_SetModel(self *C.QColumnView, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQAbstractItemModel(model, nil)
+	slotval1 := newQAbstractItemModel(model)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_SetModel, slotval1)
 
@@ -381,7 +363,7 @@ func miqt_exec_callback_QColumnView_SetSelectionModel(self *C.QColumnView, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQItemSelectionModel(selectionModel, nil)
+	slotval1 := newQItemSelectionModel(selectionModel)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_SetSelectionModel, slotval1)
 
@@ -516,7 +498,7 @@ func miqt_exec_callback_QColumnView_ResizeEvent(self *C.QColumnView, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(event, nil)
+	slotval1 := newQResizeEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -718,7 +700,7 @@ func miqt_exec_callback_QColumnView_ScrollContentsBy(self *C.QColumnView, cb C.i
 
 func (this *QColumnView) callVirtualBase_CreateColumn(rootIndex *QModelIndex) *QAbstractItemView {
 
-	return newQAbstractItemView(C.QColumnView_virtualbase_CreateColumn(unsafe.Pointer(this.h), rootIndex.cPointer()), nil, nil, nil, nil, nil)
+	return newQAbstractItemView(C.QColumnView_virtualbase_CreateColumn(unsafe.Pointer(this.h), rootIndex.cPointer()))
 
 }
 func (this *QColumnView) OnCreateColumn(slot func(super func(rootIndex *QModelIndex) *QAbstractItemView, rootIndex *QModelIndex) *QAbstractItemView) {
@@ -835,7 +817,7 @@ func miqt_exec_callback_QColumnView_SizeHintForColumn(self *C.QColumnView, cb C.
 
 func (this *QColumnView) callVirtualBase_ItemDelegateForIndex(index *QModelIndex) *QAbstractItemDelegate {
 
-	return newQAbstractItemDelegate(C.QColumnView_virtualbase_ItemDelegateForIndex(unsafe.Pointer(this.h), index.cPointer()), nil)
+	return newQAbstractItemDelegate(C.QColumnView_virtualbase_ItemDelegateForIndex(unsafe.Pointer(this.h), index.cPointer()))
 
 }
 func (this *QColumnView) OnItemDelegateForIndex(slot func(super func(index *QModelIndex) *QAbstractItemDelegate, index *QModelIndex) *QAbstractItemDelegate) {
@@ -1230,7 +1212,7 @@ func miqt_exec_callback_QColumnView_CloseEditor(self *C.QColumnView, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(editor, nil, nil)
+	slotval1 := newQWidget(editor)
 
 	slotval2 := (QAbstractItemDelegate__EndEditHint)(hint)
 
@@ -1258,7 +1240,7 @@ func miqt_exec_callback_QColumnView_CommitData(self *C.QColumnView, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(editor, nil, nil)
+	slotval1 := newQWidget(editor)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_CommitData, slotval1)
 
@@ -1437,7 +1419,7 @@ func miqt_exec_callback_QColumnView_InitViewItemOption(self *C.QColumnView, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQStyleOptionViewItem(option, nil)
+	slotval1 := newQStyleOptionViewItem(option)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_InitViewItemOption, slotval1)
 
@@ -1547,7 +1529,7 @@ func miqt_exec_callback_QColumnView_MousePressEvent(self *C.QColumnView, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -1573,7 +1555,7 @@ func miqt_exec_callback_QColumnView_MouseMoveEvent(self *C.QColumnView, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -1599,7 +1581,7 @@ func miqt_exec_callback_QColumnView_MouseReleaseEvent(self *C.QColumnView, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -1625,7 +1607,7 @@ func miqt_exec_callback_QColumnView_MouseDoubleClickEvent(self *C.QColumnView, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -1651,7 +1633,7 @@ func miqt_exec_callback_QColumnView_DragEnterEvent(self *C.QColumnView, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragEnterEvent(event, nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -1677,7 +1659,7 @@ func miqt_exec_callback_QColumnView_DragMoveEvent(self *C.QColumnView, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragMoveEvent(event, nil, nil)
+	slotval1 := newQDragMoveEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1703,7 +1685,7 @@ func miqt_exec_callback_QColumnView_DragLeaveEvent(self *C.QColumnView, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragLeaveEvent(event, nil)
+	slotval1 := newQDragLeaveEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1729,7 +1711,7 @@ func miqt_exec_callback_QColumnView_DropEvent(self *C.QColumnView, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDropEvent(event, nil)
+	slotval1 := newQDropEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1755,7 +1737,7 @@ func miqt_exec_callback_QColumnView_FocusInEvent(self *C.QColumnView, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -1781,7 +1763,7 @@ func miqt_exec_callback_QColumnView_FocusOutEvent(self *C.QColumnView, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -1807,7 +1789,7 @@ func miqt_exec_callback_QColumnView_KeyPressEvent(self *C.QColumnView, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(event, nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -1833,7 +1815,7 @@ func miqt_exec_callback_QColumnView_TimerEvent(self *C.QColumnView, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -1859,7 +1841,7 @@ func miqt_exec_callback_QColumnView_InputMethodEvent(self *C.QColumnView, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQInputMethodEvent(event, nil)
+	slotval1 := newQInputMethodEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 

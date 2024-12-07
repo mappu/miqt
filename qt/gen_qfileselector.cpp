@@ -195,16 +195,16 @@ public:
 
 };
 
-void QFileSelector_new(QFileSelector** outptr_QFileSelector, QObject** outptr_QObject) {
-	MiqtVirtualQFileSelector* ret = new MiqtVirtualQFileSelector();
-	*outptr_QFileSelector = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QFileSelector* QFileSelector_new() {
+	return new MiqtVirtualQFileSelector();
 }
 
-void QFileSelector_new2(QObject* parent, QFileSelector** outptr_QFileSelector, QObject** outptr_QObject) {
-	MiqtVirtualQFileSelector* ret = new MiqtVirtualQFileSelector(parent);
-	*outptr_QFileSelector = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QFileSelector* QFileSelector_new2(QObject* parent) {
+	return new MiqtVirtualQFileSelector(parent);
+}
+
+void QFileSelector_virtbase(QFileSelector* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QFileSelector_MetaObject(const QFileSelector* self) {

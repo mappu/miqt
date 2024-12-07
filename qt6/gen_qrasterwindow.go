@@ -35,50 +35,34 @@ func (this *QRasterWindow) UnsafePointer() unsafe.Pointer {
 }
 
 // newQRasterWindow constructs the type using only CGO pointers.
-func newQRasterWindow(h *C.QRasterWindow, h_QPaintDeviceWindow *C.QPaintDeviceWindow, h_QWindow *C.QWindow, h_QObject *C.QObject, h_QSurface *C.QSurface, h_QPaintDevice *C.QPaintDevice) *QRasterWindow {
+func newQRasterWindow(h *C.QRasterWindow) *QRasterWindow {
 	if h == nil {
 		return nil
 	}
+	var outptr_QPaintDeviceWindow *C.QPaintDeviceWindow = nil
+	C.QRasterWindow_virtbase(h, &outptr_QPaintDeviceWindow)
+
 	return &QRasterWindow{h: h,
-		QPaintDeviceWindow: newQPaintDeviceWindow(h_QPaintDeviceWindow, h_QWindow, h_QObject, h_QSurface, h_QPaintDevice)}
+		QPaintDeviceWindow: newQPaintDeviceWindow(outptr_QPaintDeviceWindow)}
 }
 
 // UnsafeNewQRasterWindow constructs the type using only unsafe pointers.
-func UnsafeNewQRasterWindow(h unsafe.Pointer, h_QPaintDeviceWindow unsafe.Pointer, h_QWindow unsafe.Pointer, h_QObject unsafe.Pointer, h_QSurface unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QRasterWindow {
-	if h == nil {
-		return nil
-	}
-
-	return &QRasterWindow{h: (*C.QRasterWindow)(h),
-		QPaintDeviceWindow: UnsafeNewQPaintDeviceWindow(h_QPaintDeviceWindow, h_QWindow, h_QObject, h_QSurface, h_QPaintDevice)}
+func UnsafeNewQRasterWindow(h unsafe.Pointer) *QRasterWindow {
+	return newQRasterWindow((*C.QRasterWindow)(h))
 }
 
 // NewQRasterWindow constructs a new QRasterWindow object.
 func NewQRasterWindow() *QRasterWindow {
-	var outptr_QRasterWindow *C.QRasterWindow = nil
-	var outptr_QPaintDeviceWindow *C.QPaintDeviceWindow = nil
-	var outptr_QWindow *C.QWindow = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QSurface *C.QSurface = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QRasterWindow_new(&outptr_QRasterWindow, &outptr_QPaintDeviceWindow, &outptr_QWindow, &outptr_QObject, &outptr_QSurface, &outptr_QPaintDevice)
-	ret := newQRasterWindow(outptr_QRasterWindow, outptr_QPaintDeviceWindow, outptr_QWindow, outptr_QObject, outptr_QSurface, outptr_QPaintDevice)
+	ret := newQRasterWindow(C.QRasterWindow_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQRasterWindow2 constructs a new QRasterWindow object.
 func NewQRasterWindow2(parent *QWindow) *QRasterWindow {
-	var outptr_QRasterWindow *C.QRasterWindow = nil
-	var outptr_QPaintDeviceWindow *C.QPaintDeviceWindow = nil
-	var outptr_QWindow *C.QWindow = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QSurface *C.QSurface = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QRasterWindow_new2(parent.cPointer(), &outptr_QRasterWindow, &outptr_QPaintDeviceWindow, &outptr_QWindow, &outptr_QObject, &outptr_QSurface, &outptr_QPaintDevice)
-	ret := newQRasterWindow(outptr_QRasterWindow, outptr_QPaintDeviceWindow, outptr_QWindow, outptr_QObject, outptr_QSurface, outptr_QPaintDevice)
+	ret := newQRasterWindow(C.QRasterWindow_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -200,7 +184,7 @@ func miqt_exec_callback_QRasterWindow_ExposeEvent(self *C.QRasterWindow, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQExposeEvent(param1, nil)
+	slotval1 := newQExposeEvent(param1)
 
 	gofunc((&QRasterWindow{h: self}).callVirtualBase_ExposeEvent, slotval1)
 
@@ -226,7 +210,7 @@ func miqt_exec_callback_QRasterWindow_PaintEvent(self *C.QRasterWindow, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(event, nil)
+	slotval1 := newQPaintEvent(event)
 
 	gofunc((&QRasterWindow{h: self}).callVirtualBase_PaintEvent, slotval1)
 

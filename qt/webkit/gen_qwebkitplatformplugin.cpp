@@ -92,6 +92,10 @@ void QWebSelectData_Delete(QWebSelectData* self, bool isSubclass) {
 	}
 }
 
+void QWebSelectMethod_virtbase(QWebSelectMethod* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
+
 QMetaObject* QWebSelectMethod_MetaObject(const QWebSelectMethod* self) {
 	return (QMetaObject*) self->metaObject();
 }
@@ -255,6 +259,10 @@ void QWebNotificationData_Delete(QWebNotificationData* self, bool isSubclass) {
 	}
 }
 
+void QWebNotificationPresenter_virtbase(QWebNotificationPresenter* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
+
 QMetaObject* QWebNotificationPresenter_MetaObject(const QWebNotificationPresenter* self) {
 	return (QMetaObject*) self->metaObject();
 }
@@ -361,6 +369,10 @@ void QWebNotificationPresenter_Delete(QWebNotificationPresenter* self, bool isSu
 	}
 }
 
+void QWebHapticFeedbackPlayer_virtbase(QWebHapticFeedbackPlayer* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
+
 QMetaObject* QWebHapticFeedbackPlayer_MetaObject(const QWebHapticFeedbackPlayer* self) {
 	return (QMetaObject*) self->metaObject();
 }
@@ -448,6 +460,10 @@ void QWebHapticFeedbackPlayer_Delete(QWebHapticFeedbackPlayer* self, bool isSubc
 	}
 }
 
+void QWebTouchModifier_virtbase(QWebTouchModifier* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
+
 QMetaObject* QWebTouchModifier_MetaObject(const QWebTouchModifier* self) {
 	return (QMetaObject*) self->metaObject();
 }
@@ -532,6 +548,10 @@ void QWebTouchModifier_Delete(QWebTouchModifier* self, bool isSubclass) {
 	} else {
 		delete self;
 	}
+}
+
+void QWebSpellChecker_virtbase(QWebSpellChecker* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QWebSpellChecker_MetaObject(const QWebSpellChecker* self) {
@@ -703,9 +723,8 @@ void QWebKitPlatformPlugin_Delete(QWebKitPlatformPlugin* self, bool isSubclass) 
 	}
 }
 
-void QWebSpellChecker__GrammarDetail_new(QWebSpellChecker__GrammarDetail* param1, QWebSpellChecker__GrammarDetail** outptr_QWebSpellChecker__GrammarDetail) {
-	QWebSpellChecker::GrammarDetail* ret = new QWebSpellChecker::GrammarDetail(*param1);
-	*outptr_QWebSpellChecker__GrammarDetail = ret;
+QWebSpellChecker__GrammarDetail* QWebSpellChecker__GrammarDetail_new(QWebSpellChecker__GrammarDetail* param1) {
+	return new QWebSpellChecker::GrammarDetail(*param1);
 }
 
 void QWebSpellChecker__GrammarDetail_OperatorAssign(QWebSpellChecker__GrammarDetail* self, QWebSpellChecker__GrammarDetail* param1) {

@@ -51,31 +51,26 @@ func (this *QSpatialSound) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSpatialSound constructs the type using only CGO pointers.
-func newQSpatialSound(h *C.QSpatialSound, h_QObject *C.QObject) *QSpatialSound {
+func newQSpatialSound(h *C.QSpatialSound) *QSpatialSound {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QSpatialSound_virtbase(h, &outptr_QObject)
+
 	return &QSpatialSound{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQSpatialSound constructs the type using only unsafe pointers.
-func UnsafeNewQSpatialSound(h unsafe.Pointer, h_QObject unsafe.Pointer) *QSpatialSound {
-	if h == nil {
-		return nil
-	}
-
-	return &QSpatialSound{h: (*C.QSpatialSound)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQSpatialSound(h unsafe.Pointer) *QSpatialSound {
+	return newQSpatialSound((*C.QSpatialSound)(h))
 }
 
 // NewQSpatialSound constructs a new QSpatialSound object.
 func NewQSpatialSound(engine *QAudioEngine) *QSpatialSound {
-	var outptr_QSpatialSound *C.QSpatialSound = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSpatialSound_new(engine.cPointer(), &outptr_QSpatialSound, &outptr_QObject)
-	ret := newQSpatialSound(outptr_QSpatialSound, outptr_QObject)
+	ret := newQSpatialSound(C.QSpatialSound_new(engine.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -218,7 +213,7 @@ func (this *QSpatialSound) NearFieldGain() float32 {
 }
 
 func (this *QSpatialSound) Engine() *QAudioEngine {
-	return newQAudioEngine(C.QSpatialSound_Engine(this.h), nil)
+	return newQAudioEngine(C.QSpatialSound_Engine(this.h))
 }
 
 func (this *QSpatialSound) SourceChanged() {
@@ -571,7 +566,7 @@ func miqt_exec_callback_QSpatialSound_TimerEvent(self *C.QSpatialSound, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QSpatialSound{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -597,7 +592,7 @@ func miqt_exec_callback_QSpatialSound_ChildEvent(self *C.QSpatialSound, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QSpatialSound{h: self}).callVirtualBase_ChildEvent, slotval1)
 

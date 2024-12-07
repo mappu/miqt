@@ -960,25 +960,20 @@ public:
 
 };
 
-void QsciLexerCPP_new(QsciLexerCPP** outptr_QsciLexerCPP, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerCPP* ret = new MiqtVirtualQsciLexerCPP();
-	*outptr_QsciLexerCPP = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerCPP* QsciLexerCPP_new() {
+	return new MiqtVirtualQsciLexerCPP();
 }
 
-void QsciLexerCPP_new2(QObject* parent, QsciLexerCPP** outptr_QsciLexerCPP, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerCPP* ret = new MiqtVirtualQsciLexerCPP(parent);
-	*outptr_QsciLexerCPP = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerCPP* QsciLexerCPP_new2(QObject* parent) {
+	return new MiqtVirtualQsciLexerCPP(parent);
 }
 
-void QsciLexerCPP_new3(QObject* parent, bool caseInsensitiveKeywords, QsciLexerCPP** outptr_QsciLexerCPP, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerCPP* ret = new MiqtVirtualQsciLexerCPP(parent, caseInsensitiveKeywords);
-	*outptr_QsciLexerCPP = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerCPP* QsciLexerCPP_new3(QObject* parent, bool caseInsensitiveKeywords) {
+	return new MiqtVirtualQsciLexerCPP(parent, caseInsensitiveKeywords);
+}
+
+void QsciLexerCPP_virtbase(QsciLexerCPP* src, QsciLexer** outptr_QsciLexer) {
+	*outptr_QsciLexer = static_cast<QsciLexer*>(src);
 }
 
 QMetaObject* QsciLexerCPP_MetaObject(const QsciLexerCPP* self) {

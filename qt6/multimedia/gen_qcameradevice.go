@@ -46,34 +46,27 @@ func newQCameraFormat(h *C.QCameraFormat) *QCameraFormat {
 	if h == nil {
 		return nil
 	}
+
 	return &QCameraFormat{h: h}
 }
 
 // UnsafeNewQCameraFormat constructs the type using only unsafe pointers.
 func UnsafeNewQCameraFormat(h unsafe.Pointer) *QCameraFormat {
-	if h == nil {
-		return nil
-	}
-
-	return &QCameraFormat{h: (*C.QCameraFormat)(h)}
+	return newQCameraFormat((*C.QCameraFormat)(h))
 }
 
 // NewQCameraFormat constructs a new QCameraFormat object.
 func NewQCameraFormat() *QCameraFormat {
-	var outptr_QCameraFormat *C.QCameraFormat = nil
 
-	C.QCameraFormat_new(&outptr_QCameraFormat)
-	ret := newQCameraFormat(outptr_QCameraFormat)
+	ret := newQCameraFormat(C.QCameraFormat_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCameraFormat2 constructs a new QCameraFormat object.
 func NewQCameraFormat2(other *QCameraFormat) *QCameraFormat {
-	var outptr_QCameraFormat *C.QCameraFormat = nil
 
-	C.QCameraFormat_new2(other.cPointer(), &outptr_QCameraFormat)
-	ret := newQCameraFormat(outptr_QCameraFormat)
+	ret := newQCameraFormat(C.QCameraFormat_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -150,34 +143,27 @@ func newQCameraDevice(h *C.QCameraDevice) *QCameraDevice {
 	if h == nil {
 		return nil
 	}
+
 	return &QCameraDevice{h: h}
 }
 
 // UnsafeNewQCameraDevice constructs the type using only unsafe pointers.
 func UnsafeNewQCameraDevice(h unsafe.Pointer) *QCameraDevice {
-	if h == nil {
-		return nil
-	}
-
-	return &QCameraDevice{h: (*C.QCameraDevice)(h)}
+	return newQCameraDevice((*C.QCameraDevice)(h))
 }
 
 // NewQCameraDevice constructs a new QCameraDevice object.
 func NewQCameraDevice() *QCameraDevice {
-	var outptr_QCameraDevice *C.QCameraDevice = nil
 
-	C.QCameraDevice_new(&outptr_QCameraDevice)
-	ret := newQCameraDevice(outptr_QCameraDevice)
+	ret := newQCameraDevice(C.QCameraDevice_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCameraDevice2 constructs a new QCameraDevice object.
 func NewQCameraDevice2(other *QCameraDevice) *QCameraDevice {
-	var outptr_QCameraDevice *C.QCameraDevice = nil
 
-	C.QCameraDevice_new2(other.cPointer(), &outptr_QCameraDevice)
-	ret := newQCameraDevice(outptr_QCameraDevice)
+	ret := newQCameraDevice(C.QCameraDevice_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

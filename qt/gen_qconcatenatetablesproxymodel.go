@@ -35,44 +35,34 @@ func (this *QConcatenateTablesProxyModel) UnsafePointer() unsafe.Pointer {
 }
 
 // newQConcatenateTablesProxyModel constructs the type using only CGO pointers.
-func newQConcatenateTablesProxyModel(h *C.QConcatenateTablesProxyModel, h_QAbstractItemModel *C.QAbstractItemModel, h_QObject *C.QObject) *QConcatenateTablesProxyModel {
+func newQConcatenateTablesProxyModel(h *C.QConcatenateTablesProxyModel) *QConcatenateTablesProxyModel {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
+	C.QConcatenateTablesProxyModel_virtbase(h, &outptr_QAbstractItemModel)
+
 	return &QConcatenateTablesProxyModel{h: h,
-		QAbstractItemModel: newQAbstractItemModel(h_QAbstractItemModel, h_QObject)}
+		QAbstractItemModel: newQAbstractItemModel(outptr_QAbstractItemModel)}
 }
 
 // UnsafeNewQConcatenateTablesProxyModel constructs the type using only unsafe pointers.
-func UnsafeNewQConcatenateTablesProxyModel(h unsafe.Pointer, h_QAbstractItemModel unsafe.Pointer, h_QObject unsafe.Pointer) *QConcatenateTablesProxyModel {
-	if h == nil {
-		return nil
-	}
-
-	return &QConcatenateTablesProxyModel{h: (*C.QConcatenateTablesProxyModel)(h),
-		QAbstractItemModel: UnsafeNewQAbstractItemModel(h_QAbstractItemModel, h_QObject)}
+func UnsafeNewQConcatenateTablesProxyModel(h unsafe.Pointer) *QConcatenateTablesProxyModel {
+	return newQConcatenateTablesProxyModel((*C.QConcatenateTablesProxyModel)(h))
 }
 
 // NewQConcatenateTablesProxyModel constructs a new QConcatenateTablesProxyModel object.
 func NewQConcatenateTablesProxyModel() *QConcatenateTablesProxyModel {
-	var outptr_QConcatenateTablesProxyModel *C.QConcatenateTablesProxyModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QConcatenateTablesProxyModel_new(&outptr_QConcatenateTablesProxyModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQConcatenateTablesProxyModel(outptr_QConcatenateTablesProxyModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQConcatenateTablesProxyModel(C.QConcatenateTablesProxyModel_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQConcatenateTablesProxyModel2 constructs a new QConcatenateTablesProxyModel object.
 func NewQConcatenateTablesProxyModel2(parent *QObject) *QConcatenateTablesProxyModel {
-	var outptr_QConcatenateTablesProxyModel *C.QConcatenateTablesProxyModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QConcatenateTablesProxyModel_new2(parent.cPointer(), &outptr_QConcatenateTablesProxyModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQConcatenateTablesProxyModel(outptr_QConcatenateTablesProxyModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQConcatenateTablesProxyModel(C.QConcatenateTablesProxyModel_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -110,7 +100,7 @@ func (this *QConcatenateTablesProxyModel) SourceModels() []*QAbstractItemModel {
 	_ret := make([]*QAbstractItemModel, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractItemModel)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAbstractItemModel(_outCast[i], nil)
+		_ret[i] = newQAbstractItemModel(_outCast[i])
 	}
 	return _ret
 }
@@ -231,7 +221,7 @@ func (this *QConcatenateTablesProxyModel) MimeData(indexes []QModelIndex) *QMime
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
-	return newQMimeData(C.QConcatenateTablesProxyModel_MimeData(this.h, indexes_ma), nil)
+	return newQMimeData(C.QConcatenateTablesProxyModel_MimeData(this.h, indexes_ma))
 }
 
 func (this *QConcatenateTablesProxyModel) CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
@@ -704,7 +694,7 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_MimeData(indexes []QMo
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 
-	return newQMimeData(C.QConcatenateTablesProxyModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma), nil)
+	return newQMimeData(C.QConcatenateTablesProxyModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma))
 
 }
 func (this *QConcatenateTablesProxyModel) OnMimeData(slot func(super func(indexes []QModelIndex) *QMimeData, indexes []QModelIndex) *QMimeData) {
@@ -758,7 +748,7 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_CanDropMimeData(self *C.QCo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(data, nil)
+	slotval1 := newQMimeData(data)
 
 	slotval2 := (DropAction)(action)
 
@@ -794,7 +784,7 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_DropMimeData(self *C.QConca
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(data, nil)
+	slotval1 := newQMimeData(data)
 
 	slotval2 := (DropAction)(action)
 

@@ -63,44 +63,34 @@ func (this *QsciLexerMarkdown) UnsafePointer() unsafe.Pointer {
 }
 
 // newQsciLexerMarkdown constructs the type using only CGO pointers.
-func newQsciLexerMarkdown(h *C.QsciLexerMarkdown, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerMarkdown {
+func newQsciLexerMarkdown(h *C.QsciLexerMarkdown) *QsciLexerMarkdown {
 	if h == nil {
 		return nil
 	}
+	var outptr_QsciLexer *C.QsciLexer = nil
+	C.QsciLexerMarkdown_virtbase(h, &outptr_QsciLexer)
+
 	return &QsciLexerMarkdown{h: h,
-		QsciLexer: newQsciLexer(h_QsciLexer, h_QObject)}
+		QsciLexer: newQsciLexer(outptr_QsciLexer)}
 }
 
 // UnsafeNewQsciLexerMarkdown constructs the type using only unsafe pointers.
-func UnsafeNewQsciLexerMarkdown(h unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerMarkdown {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciLexerMarkdown{h: (*C.QsciLexerMarkdown)(h),
-		QsciLexer: UnsafeNewQsciLexer(h_QsciLexer, h_QObject)}
+func UnsafeNewQsciLexerMarkdown(h unsafe.Pointer) *QsciLexerMarkdown {
+	return newQsciLexerMarkdown((*C.QsciLexerMarkdown)(h))
 }
 
 // NewQsciLexerMarkdown constructs a new QsciLexerMarkdown object.
 func NewQsciLexerMarkdown() *QsciLexerMarkdown {
-	var outptr_QsciLexerMarkdown *C.QsciLexerMarkdown = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerMarkdown_new(&outptr_QsciLexerMarkdown, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerMarkdown(outptr_QsciLexerMarkdown, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerMarkdown(C.QsciLexerMarkdown_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQsciLexerMarkdown2 constructs a new QsciLexerMarkdown object.
 func NewQsciLexerMarkdown2(parent *qt.QObject) *QsciLexerMarkdown {
-	var outptr_QsciLexerMarkdown *C.QsciLexerMarkdown = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerMarkdown_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QsciLexerMarkdown, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerMarkdown(outptr_QsciLexerMarkdown, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerMarkdown(C.QsciLexerMarkdown_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -889,7 +879,7 @@ func miqt_exec_callback_QsciLexerMarkdown_SetEditor(self *C.QsciLexerMarkdown, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQsciScintilla(editor, nil, nil, nil, nil, nil, nil)
+	slotval1 := newQsciScintilla(editor)
 
 	gofunc((&QsciLexerMarkdown{h: self}).callVirtualBase_SetEditor, slotval1)
 
@@ -1133,7 +1123,7 @@ func miqt_exec_callback_QsciLexerMarkdown_ReadProperties(self *C.QsciLexerMarkdo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQSettings(unsafe.Pointer(qs), nil)
+	slotval1 := qt.UnsafeNewQSettings(unsafe.Pointer(qs))
 
 	var prefix_ms C.struct_miqt_string = prefix
 	prefix_ret := C.GoStringN(prefix_ms.data, C.int(int64(prefix_ms.len)))
@@ -1170,7 +1160,7 @@ func miqt_exec_callback_QsciLexerMarkdown_WriteProperties(self *C.QsciLexerMarkd
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQSettings(unsafe.Pointer(qs), nil)
+	slotval1 := qt.UnsafeNewQSettings(unsafe.Pointer(qs))
 
 	var prefix_ms C.struct_miqt_string = prefix
 	prefix_ret := C.GoStringN(prefix_ms.data, C.int(int64(prefix_ms.len)))

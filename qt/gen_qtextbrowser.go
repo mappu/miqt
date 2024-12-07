@@ -35,52 +35,34 @@ func (this *QTextBrowser) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTextBrowser constructs the type using only CGO pointers.
-func newQTextBrowser(h *C.QTextBrowser, h_QTextEdit *C.QTextEdit, h_QAbstractScrollArea *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QTextBrowser {
+func newQTextBrowser(h *C.QTextBrowser) *QTextBrowser {
 	if h == nil {
 		return nil
 	}
+	var outptr_QTextEdit *C.QTextEdit = nil
+	C.QTextBrowser_virtbase(h, &outptr_QTextEdit)
+
 	return &QTextBrowser{h: h,
-		QTextEdit: newQTextEdit(h_QTextEdit, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+		QTextEdit: newQTextEdit(outptr_QTextEdit)}
 }
 
 // UnsafeNewQTextBrowser constructs the type using only unsafe pointers.
-func UnsafeNewQTextBrowser(h unsafe.Pointer, h_QTextEdit unsafe.Pointer, h_QAbstractScrollArea unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QTextBrowser {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextBrowser{h: (*C.QTextBrowser)(h),
-		QTextEdit: UnsafeNewQTextEdit(h_QTextEdit, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQTextBrowser(h unsafe.Pointer) *QTextBrowser {
+	return newQTextBrowser((*C.QTextBrowser)(h))
 }
 
 // NewQTextBrowser constructs a new QTextBrowser object.
 func NewQTextBrowser(parent *QWidget) *QTextBrowser {
-	var outptr_QTextBrowser *C.QTextBrowser = nil
-	var outptr_QTextEdit *C.QTextEdit = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QTextBrowser_new(parent.cPointer(), &outptr_QTextBrowser, &outptr_QTextEdit, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQTextBrowser(outptr_QTextBrowser, outptr_QTextEdit, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQTextBrowser(C.QTextBrowser_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextBrowser2 constructs a new QTextBrowser object.
 func NewQTextBrowser2() *QTextBrowser {
-	var outptr_QTextBrowser *C.QTextBrowser = nil
-	var outptr_QTextEdit *C.QTextEdit = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QTextBrowser_new2(&outptr_QTextBrowser, &outptr_QTextEdit, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQTextBrowser(outptr_QTextBrowser, outptr_QTextEdit, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQTextBrowser(C.QTextBrowser_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -615,7 +597,7 @@ func miqt_exec_callback_QTextBrowser_KeyPressEvent(self *C.QTextBrowser, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(ev, nil, nil)
+	slotval1 := newQKeyEvent(ev)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -641,7 +623,7 @@ func miqt_exec_callback_QTextBrowser_MouseMoveEvent(self *C.QTextBrowser, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(ev, nil, nil)
+	slotval1 := newQMouseEvent(ev)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -667,7 +649,7 @@ func miqt_exec_callback_QTextBrowser_MousePressEvent(self *C.QTextBrowser, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(ev, nil, nil)
+	slotval1 := newQMouseEvent(ev)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -693,7 +675,7 @@ func miqt_exec_callback_QTextBrowser_MouseReleaseEvent(self *C.QTextBrowser, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(ev, nil, nil)
+	slotval1 := newQMouseEvent(ev)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -719,7 +701,7 @@ func miqt_exec_callback_QTextBrowser_FocusOutEvent(self *C.QTextBrowser, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(ev, nil)
+	slotval1 := newQFocusEvent(ev)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -773,7 +755,7 @@ func miqt_exec_callback_QTextBrowser_PaintEvent(self *C.QTextBrowser, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(e, nil)
+	slotval1 := newQPaintEvent(e)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -829,7 +811,7 @@ func miqt_exec_callback_QTextBrowser_TimerEvent(self *C.QTextBrowser, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(e, nil)
+	slotval1 := newQTimerEvent(e)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -855,7 +837,7 @@ func miqt_exec_callback_QTextBrowser_KeyReleaseEvent(self *C.QTextBrowser, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(e, nil, nil)
+	slotval1 := newQKeyEvent(e)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -881,7 +863,7 @@ func miqt_exec_callback_QTextBrowser_ResizeEvent(self *C.QTextBrowser, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(e, nil)
+	slotval1 := newQResizeEvent(e)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -907,7 +889,7 @@ func miqt_exec_callback_QTextBrowser_MouseDoubleClickEvent(self *C.QTextBrowser,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -933,7 +915,7 @@ func miqt_exec_callback_QTextBrowser_ContextMenuEvent(self *C.QTextBrowser, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQContextMenuEvent(e, nil, nil)
+	slotval1 := newQContextMenuEvent(e)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -959,7 +941,7 @@ func miqt_exec_callback_QTextBrowser_DragEnterEvent(self *C.QTextBrowser, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragEnterEvent(e, nil, nil, nil)
+	slotval1 := newQDragEnterEvent(e)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -985,7 +967,7 @@ func miqt_exec_callback_QTextBrowser_DragLeaveEvent(self *C.QTextBrowser, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragLeaveEvent(e, nil)
+	slotval1 := newQDragLeaveEvent(e)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1011,7 +993,7 @@ func miqt_exec_callback_QTextBrowser_DragMoveEvent(self *C.QTextBrowser, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragMoveEvent(e, nil, nil)
+	slotval1 := newQDragMoveEvent(e)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1037,7 +1019,7 @@ func miqt_exec_callback_QTextBrowser_DropEvent(self *C.QTextBrowser, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDropEvent(e, nil)
+	slotval1 := newQDropEvent(e)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1063,7 +1045,7 @@ func miqt_exec_callback_QTextBrowser_FocusInEvent(self *C.QTextBrowser, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(e, nil)
+	slotval1 := newQFocusEvent(e)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -1089,7 +1071,7 @@ func miqt_exec_callback_QTextBrowser_ShowEvent(self *C.QTextBrowser, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQShowEvent(param1, nil)
+	slotval1 := newQShowEvent(param1)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1141,7 +1123,7 @@ func miqt_exec_callback_QTextBrowser_WheelEvent(self *C.QTextBrowser, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWheelEvent(e, nil, nil)
+	slotval1 := newQWheelEvent(e)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -1149,7 +1131,7 @@ func miqt_exec_callback_QTextBrowser_WheelEvent(self *C.QTextBrowser, cb C.intpt
 
 func (this *QTextBrowser) callVirtualBase_CreateMimeDataFromSelection() *QMimeData {
 
-	return newQMimeData(C.QTextBrowser_virtualbase_CreateMimeDataFromSelection(unsafe.Pointer(this.h)), nil)
+	return newQMimeData(C.QTextBrowser_virtualbase_CreateMimeDataFromSelection(unsafe.Pointer(this.h)))
 
 }
 func (this *QTextBrowser) OnCreateMimeDataFromSelection(slot func(super func() *QMimeData) *QMimeData) {
@@ -1192,7 +1174,7 @@ func miqt_exec_callback_QTextBrowser_CanInsertFromMimeData(self *C.QTextBrowser,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(source, nil)
+	slotval1 := newQMimeData(source)
 
 	virtualReturn := gofunc((&QTextBrowser{h: self}).callVirtualBase_CanInsertFromMimeData, slotval1)
 
@@ -1220,7 +1202,7 @@ func miqt_exec_callback_QTextBrowser_InsertFromMimeData(self *C.QTextBrowser, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(source, nil)
+	slotval1 := newQMimeData(source)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_InsertFromMimeData, slotval1)
 
@@ -1246,7 +1228,7 @@ func miqt_exec_callback_QTextBrowser_InputMethodEvent(self *C.QTextBrowser, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQInputMethodEvent(param1, nil)
+	slotval1 := newQInputMethodEvent(param1)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 

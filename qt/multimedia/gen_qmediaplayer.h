@@ -42,9 +42,10 @@ typedef struct QObject QObject;
 typedef struct QVideoWidget QVideoWidget;
 #endif
 
-void QMediaPlayer_new(QMediaPlayer** outptr_QMediaPlayer, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject);
-void QMediaPlayer_new2(QObject* parent, QMediaPlayer** outptr_QMediaPlayer, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject);
-void QMediaPlayer_new3(QObject* parent, int flags, QMediaPlayer** outptr_QMediaPlayer, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject);
+QMediaPlayer* QMediaPlayer_new();
+QMediaPlayer* QMediaPlayer_new2(QObject* parent);
+QMediaPlayer* QMediaPlayer_new3(QObject* parent, int flags);
+void QMediaPlayer_virtbase(QMediaPlayer* src, QMediaObject** outptr_QMediaObject);
 QMetaObject* QMediaPlayer_MetaObject(const QMediaPlayer* self);
 void* QMediaPlayer_Metacast(QMediaPlayer* self, const char* param1);
 struct miqt_string QMediaPlayer_Tr(const char* s);

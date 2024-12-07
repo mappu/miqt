@@ -193,16 +193,16 @@ public:
 
 };
 
-void QTimer_new(QTimer** outptr_QTimer, QObject** outptr_QObject) {
-	MiqtVirtualQTimer* ret = new MiqtVirtualQTimer();
-	*outptr_QTimer = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QTimer* QTimer_new() {
+	return new MiqtVirtualQTimer();
 }
 
-void QTimer_new2(QObject* parent, QTimer** outptr_QTimer, QObject** outptr_QObject) {
-	MiqtVirtualQTimer* ret = new MiqtVirtualQTimer(parent);
-	*outptr_QTimer = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QTimer* QTimer_new2(QObject* parent) {
+	return new MiqtVirtualQTimer(parent);
+}
+
+void QTimer_virtbase(QTimer* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QTimer_MetaObject(const QTimer* self) {

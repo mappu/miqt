@@ -45,34 +45,27 @@ func newQDebug(h *C.QDebug) *QDebug {
 	if h == nil {
 		return nil
 	}
+
 	return &QDebug{h: h}
 }
 
 // UnsafeNewQDebug constructs the type using only unsafe pointers.
 func UnsafeNewQDebug(h unsafe.Pointer) *QDebug {
-	if h == nil {
-		return nil
-	}
-
-	return &QDebug{h: (*C.QDebug)(h)}
+	return newQDebug((*C.QDebug)(h))
 }
 
 // NewQDebug constructs a new QDebug object.
 func NewQDebug(device *QIODevice) *QDebug {
-	var outptr_QDebug *C.QDebug = nil
 
-	C.QDebug_new(device.cPointer(), &outptr_QDebug)
-	ret := newQDebug(outptr_QDebug)
+	ret := newQDebug(C.QDebug_new(device.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDebug2 constructs a new QDebug object.
 func NewQDebug2(o *QDebug) *QDebug {
-	var outptr_QDebug *C.QDebug = nil
 
-	C.QDebug_new2(o.cPointer(), &outptr_QDebug)
-	ret := newQDebug(outptr_QDebug)
+	ret := newQDebug(C.QDebug_new2(o.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -252,24 +245,19 @@ func newQDebugStateSaver(h *C.QDebugStateSaver) *QDebugStateSaver {
 	if h == nil {
 		return nil
 	}
+
 	return &QDebugStateSaver{h: h}
 }
 
 // UnsafeNewQDebugStateSaver constructs the type using only unsafe pointers.
 func UnsafeNewQDebugStateSaver(h unsafe.Pointer) *QDebugStateSaver {
-	if h == nil {
-		return nil
-	}
-
-	return &QDebugStateSaver{h: (*C.QDebugStateSaver)(h)}
+	return newQDebugStateSaver((*C.QDebugStateSaver)(h))
 }
 
 // NewQDebugStateSaver constructs a new QDebugStateSaver object.
 func NewQDebugStateSaver(dbg *QDebug) *QDebugStateSaver {
-	var outptr_QDebugStateSaver *C.QDebugStateSaver = nil
 
-	C.QDebugStateSaver_new(dbg.cPointer(), &outptr_QDebugStateSaver)
-	ret := newQDebugStateSaver(outptr_QDebugStateSaver)
+	ret := newQDebugStateSaver(C.QDebugStateSaver_new(dbg.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -312,16 +300,13 @@ func newQNoDebug(h *C.QNoDebug) *QNoDebug {
 	if h == nil {
 		return nil
 	}
+
 	return &QNoDebug{h: h}
 }
 
 // UnsafeNewQNoDebug constructs the type using only unsafe pointers.
 func UnsafeNewQNoDebug(h unsafe.Pointer) *QNoDebug {
-	if h == nil {
-		return nil
-	}
-
-	return &QNoDebug{h: (*C.QNoDebug)(h)}
+	return newQNoDebug((*C.QNoDebug)(h))
 }
 
 func (this *QNoDebug) Space() *QNoDebug {

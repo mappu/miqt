@@ -26,8 +26,8 @@ typedef struct QPageRanges QPageRanges;
 typedef struct QPageRanges__Range QPageRanges__Range;
 #endif
 
-void QPageRanges_new(QPageRanges** outptr_QPageRanges);
-void QPageRanges_new2(QPageRanges* other, QPageRanges** outptr_QPageRanges);
+QPageRanges* QPageRanges_new();
+QPageRanges* QPageRanges_new2(QPageRanges* other);
 void QPageRanges_OperatorAssign(QPageRanges* self, QPageRanges* other);
 void QPageRanges_Swap(QPageRanges* self, QPageRanges* other);
 void QPageRanges_AddPage(QPageRanges* self, int pageNumber);
@@ -43,8 +43,8 @@ int QPageRanges_LastPage(const QPageRanges* self);
 void QPageRanges_Detach(QPageRanges* self);
 void QPageRanges_Delete(QPageRanges* self, bool isSubclass);
 
-void QPageRanges__Range_new(QPageRanges__Range** outptr_QPageRanges__Range);
-void QPageRanges__Range_new2(QPageRanges__Range* param1, QPageRanges__Range** outptr_QPageRanges__Range);
+QPageRanges__Range* QPageRanges__Range_new();
+QPageRanges__Range* QPageRanges__Range_new2(QPageRanges__Range* param1);
 bool QPageRanges__Range_Contains(const QPageRanges__Range* self, int pageNumber);
 void QPageRanges__Range_Delete(QPageRanges__Range* self, bool isSubclass);
 

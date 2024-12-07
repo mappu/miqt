@@ -10,6 +10,10 @@
 #include "gen_qmediastreamscontrol.h"
 #include "_cgo_export.h"
 
+void QMediaStreamsControl_virtbase(QMediaStreamsControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
+
 QMetaObject* QMediaStreamsControl_MetaObject(const QMediaStreamsControl* self) {
 	return (QMetaObject*) self->metaObject();
 }

@@ -45,24 +45,19 @@ func newQListWidgetItem(h *C.QListWidgetItem) *QListWidgetItem {
 	if h == nil {
 		return nil
 	}
+
 	return &QListWidgetItem{h: h}
 }
 
 // UnsafeNewQListWidgetItem constructs the type using only unsafe pointers.
 func UnsafeNewQListWidgetItem(h unsafe.Pointer) *QListWidgetItem {
-	if h == nil {
-		return nil
-	}
-
-	return &QListWidgetItem{h: (*C.QListWidgetItem)(h)}
+	return newQListWidgetItem((*C.QListWidgetItem)(h))
 }
 
 // NewQListWidgetItem constructs a new QListWidgetItem object.
 func NewQListWidgetItem() *QListWidgetItem {
-	var outptr_QListWidgetItem *C.QListWidgetItem = nil
 
-	C.QListWidgetItem_new(&outptr_QListWidgetItem)
-	ret := newQListWidgetItem(outptr_QListWidgetItem)
+	ret := newQListWidgetItem(C.QListWidgetItem_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -73,10 +68,8 @@ func NewQListWidgetItem2(text string) *QListWidgetItem {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QListWidgetItem *C.QListWidgetItem = nil
 
-	C.QListWidgetItem_new2(text_ms, &outptr_QListWidgetItem)
-	ret := newQListWidgetItem(outptr_QListWidgetItem)
+	ret := newQListWidgetItem(C.QListWidgetItem_new2(text_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -87,40 +80,32 @@ func NewQListWidgetItem3(icon *QIcon, text string) *QListWidgetItem {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QListWidgetItem *C.QListWidgetItem = nil
 
-	C.QListWidgetItem_new3(icon.cPointer(), text_ms, &outptr_QListWidgetItem)
-	ret := newQListWidgetItem(outptr_QListWidgetItem)
+	ret := newQListWidgetItem(C.QListWidgetItem_new3(icon.cPointer(), text_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQListWidgetItem4 constructs a new QListWidgetItem object.
 func NewQListWidgetItem4(other *QListWidgetItem) *QListWidgetItem {
-	var outptr_QListWidgetItem *C.QListWidgetItem = nil
 
-	C.QListWidgetItem_new4(other.cPointer(), &outptr_QListWidgetItem)
-	ret := newQListWidgetItem(outptr_QListWidgetItem)
+	ret := newQListWidgetItem(C.QListWidgetItem_new4(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQListWidgetItem5 constructs a new QListWidgetItem object.
 func NewQListWidgetItem5(listview *QListWidget) *QListWidgetItem {
-	var outptr_QListWidgetItem *C.QListWidgetItem = nil
 
-	C.QListWidgetItem_new5(listview.cPointer(), &outptr_QListWidgetItem)
-	ret := newQListWidgetItem(outptr_QListWidgetItem)
+	ret := newQListWidgetItem(C.QListWidgetItem_new5(listview.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQListWidgetItem6 constructs a new QListWidgetItem object.
 func NewQListWidgetItem6(listview *QListWidget, typeVal int) *QListWidgetItem {
-	var outptr_QListWidgetItem *C.QListWidgetItem = nil
 
-	C.QListWidgetItem_new6(listview.cPointer(), (C.int)(typeVal), &outptr_QListWidgetItem)
-	ret := newQListWidgetItem(outptr_QListWidgetItem)
+	ret := newQListWidgetItem(C.QListWidgetItem_new6(listview.cPointer(), (C.int)(typeVal)))
 	ret.isSubclass = true
 	return ret
 }
@@ -131,10 +116,8 @@ func NewQListWidgetItem7(text string, listview *QListWidget) *QListWidgetItem {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QListWidgetItem *C.QListWidgetItem = nil
 
-	C.QListWidgetItem_new7(text_ms, listview.cPointer(), &outptr_QListWidgetItem)
-	ret := newQListWidgetItem(outptr_QListWidgetItem)
+	ret := newQListWidgetItem(C.QListWidgetItem_new7(text_ms, listview.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -145,10 +128,8 @@ func NewQListWidgetItem8(text string, listview *QListWidget, typeVal int) *QList
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QListWidgetItem *C.QListWidgetItem = nil
 
-	C.QListWidgetItem_new8(text_ms, listview.cPointer(), (C.int)(typeVal), &outptr_QListWidgetItem)
-	ret := newQListWidgetItem(outptr_QListWidgetItem)
+	ret := newQListWidgetItem(C.QListWidgetItem_new8(text_ms, listview.cPointer(), (C.int)(typeVal)))
 	ret.isSubclass = true
 	return ret
 }
@@ -159,10 +140,8 @@ func NewQListWidgetItem9(icon *QIcon, text string, listview *QListWidget) *QList
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QListWidgetItem *C.QListWidgetItem = nil
 
-	C.QListWidgetItem_new9(icon.cPointer(), text_ms, listview.cPointer(), &outptr_QListWidgetItem)
-	ret := newQListWidgetItem(outptr_QListWidgetItem)
+	ret := newQListWidgetItem(C.QListWidgetItem_new9(icon.cPointer(), text_ms, listview.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -173,10 +152,8 @@ func NewQListWidgetItem10(icon *QIcon, text string, listview *QListWidget, typeV
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QListWidgetItem *C.QListWidgetItem = nil
 
-	C.QListWidgetItem_new10(icon.cPointer(), text_ms, listview.cPointer(), (C.int)(typeVal), &outptr_QListWidgetItem)
-	ret := newQListWidgetItem(outptr_QListWidgetItem)
+	ret := newQListWidgetItem(C.QListWidgetItem_new10(icon.cPointer(), text_ms, listview.cPointer(), (C.int)(typeVal)))
 	ret.isSubclass = true
 	return ret
 }
@@ -186,7 +163,7 @@ func (this *QListWidgetItem) Clone() *QListWidgetItem {
 }
 
 func (this *QListWidgetItem) ListWidget() *QListWidget {
-	return newQListWidget(C.QListWidgetItem_ListWidget(this.h), nil, nil, nil, nil, nil, nil, nil)
+	return newQListWidget(C.QListWidgetItem_ListWidget(this.h))
 }
 
 func (this *QListWidgetItem) SetSelected(selectVal bool) {
@@ -613,54 +590,34 @@ func (this *QListWidget) UnsafePointer() unsafe.Pointer {
 }
 
 // newQListWidget constructs the type using only CGO pointers.
-func newQListWidget(h *C.QListWidget, h_QListView *C.QListView, h_QAbstractItemView *C.QAbstractItemView, h_QAbstractScrollArea *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QListWidget {
+func newQListWidget(h *C.QListWidget) *QListWidget {
 	if h == nil {
 		return nil
 	}
+	var outptr_QListView *C.QListView = nil
+	C.QListWidget_virtbase(h, &outptr_QListView)
+
 	return &QListWidget{h: h,
-		QListView: newQListView(h_QListView, h_QAbstractItemView, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+		QListView: newQListView(outptr_QListView)}
 }
 
 // UnsafeNewQListWidget constructs the type using only unsafe pointers.
-func UnsafeNewQListWidget(h unsafe.Pointer, h_QListView unsafe.Pointer, h_QAbstractItemView unsafe.Pointer, h_QAbstractScrollArea unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QListWidget {
-	if h == nil {
-		return nil
-	}
-
-	return &QListWidget{h: (*C.QListWidget)(h),
-		QListView: UnsafeNewQListView(h_QListView, h_QAbstractItemView, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQListWidget(h unsafe.Pointer) *QListWidget {
+	return newQListWidget((*C.QListWidget)(h))
 }
 
 // NewQListWidget constructs a new QListWidget object.
 func NewQListWidget(parent *QWidget) *QListWidget {
-	var outptr_QListWidget *C.QListWidget = nil
-	var outptr_QListView *C.QListView = nil
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QListWidget_new(parent.cPointer(), &outptr_QListWidget, &outptr_QListView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQListWidget(outptr_QListWidget, outptr_QListView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQListWidget(C.QListWidget_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQListWidget2 constructs a new QListWidget object.
 func NewQListWidget2() *QListWidget {
-	var outptr_QListWidget *C.QListWidget = nil
-	var outptr_QListView *C.QListView = nil
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QListWidget_new2(&outptr_QListWidget, &outptr_QListView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQListWidget(outptr_QListWidget, outptr_QListView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQListWidget(C.QListWidget_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -832,7 +789,7 @@ func (this *QListWidget) IsPersistentEditorOpen(item *QListWidgetItem) bool {
 }
 
 func (this *QListWidget) ItemWidget(item *QListWidgetItem) *QWidget {
-	return newQWidget(C.QListWidget_ItemWidget(this.h, item.cPointer()), nil, nil)
+	return newQWidget(C.QListWidget_ItemWidget(this.h, item.cPointer()))
 }
 
 func (this *QListWidget) SetItemWidget(item *QListWidgetItem, widget *QWidget) {
@@ -1173,7 +1130,7 @@ func miqt_exec_callback_QListWidget_SetSelectionModel(self *C.QListWidget, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQItemSelectionModel(selectionModel, nil)
+	slotval1 := newQItemSelectionModel(selectionModel)
 
 	gofunc((&QListWidget{h: self}).callVirtualBase_SetSelectionModel, slotval1)
 
@@ -1199,7 +1156,7 @@ func miqt_exec_callback_QListWidget_DropEvent(self *C.QListWidget, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDropEvent(event, nil)
+	slotval1 := newQDropEvent(event)
 
 	gofunc((&QListWidget{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1285,7 +1242,7 @@ func (this *QListWidget) callVirtualBase_MimeData(items []*QListWidgetItem) *QMi
 	}
 	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 
-	return newQMimeData(C.QListWidget_virtualbase_MimeData(unsafe.Pointer(this.h), items_ma), nil)
+	return newQMimeData(C.QListWidget_virtualbase_MimeData(unsafe.Pointer(this.h), items_ma))
 
 }
 func (this *QListWidget) OnMimeData(slot func(super func(items []*QListWidgetItem) *QMimeData, items []*QListWidgetItem) *QMimeData) {
@@ -1339,7 +1296,7 @@ func miqt_exec_callback_QListWidget_DropMimeData(self *C.QListWidget, cb C.intpt
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (int)(index)
 
-	slotval2 := newQMimeData(data, nil)
+	slotval2 := newQMimeData(data)
 
 	slotval3 := (DropAction)(action)
 
@@ -1684,7 +1641,7 @@ func miqt_exec_callback_QListWidget_MouseMoveEvent(self *C.QListWidget, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QListWidget{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -1710,7 +1667,7 @@ func miqt_exec_callback_QListWidget_MouseReleaseEvent(self *C.QListWidget, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QListWidget{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -1736,7 +1693,7 @@ func miqt_exec_callback_QListWidget_WheelEvent(self *C.QListWidget, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWheelEvent(e, nil, nil)
+	slotval1 := newQWheelEvent(e)
 
 	gofunc((&QListWidget{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -1762,7 +1719,7 @@ func miqt_exec_callback_QListWidget_TimerEvent(self *C.QListWidget, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(e, nil)
+	slotval1 := newQTimerEvent(e)
 
 	gofunc((&QListWidget{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -1788,7 +1745,7 @@ func miqt_exec_callback_QListWidget_ResizeEvent(self *C.QListWidget, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(e, nil)
+	slotval1 := newQResizeEvent(e)
 
 	gofunc((&QListWidget{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -1814,7 +1771,7 @@ func miqt_exec_callback_QListWidget_DragMoveEvent(self *C.QListWidget, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragMoveEvent(e, nil, nil)
+	slotval1 := newQDragMoveEvent(e)
 
 	gofunc((&QListWidget{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1840,7 +1797,7 @@ func miqt_exec_callback_QListWidget_DragLeaveEvent(self *C.QListWidget, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragLeaveEvent(e, nil)
+	slotval1 := newQDragLeaveEvent(e)
 
 	gofunc((&QListWidget{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1874,7 +1831,7 @@ func miqt_exec_callback_QListWidget_StartDrag(self *C.QListWidget, cb C.intptr_t
 
 func (this *QListWidget) callVirtualBase_ViewOptions() *QStyleOptionViewItem {
 
-	_goptr := newQStyleOptionViewItem(C.QListWidget_virtualbase_ViewOptions(unsafe.Pointer(this.h)), nil)
+	_goptr := newQStyleOptionViewItem(C.QListWidget_virtualbase_ViewOptions(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1919,7 +1876,7 @@ func miqt_exec_callback_QListWidget_PaintEvent(self *C.QListWidget, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(e, nil)
+	slotval1 := newQPaintEvent(e)
 
 	gofunc((&QListWidget{h: self}).callVirtualBase_PaintEvent, slotval1)
 

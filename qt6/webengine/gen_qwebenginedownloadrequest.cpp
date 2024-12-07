@@ -10,6 +10,10 @@
 #include "gen_qwebenginedownloadrequest.h"
 #include "_cgo_export.h"
 
+void QWebEngineDownloadRequest_virtbase(QWebEngineDownloadRequest* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
+
 QMetaObject* QWebEngineDownloadRequest_MetaObject(const QWebEngineDownloadRequest* self) {
 	return (QMetaObject*) self->metaObject();
 }

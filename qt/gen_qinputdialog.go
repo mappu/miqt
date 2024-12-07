@@ -51,62 +51,42 @@ func (this *QInputDialog) UnsafePointer() unsafe.Pointer {
 }
 
 // newQInputDialog constructs the type using only CGO pointers.
-func newQInputDialog(h *C.QInputDialog, h_QDialog *C.QDialog, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QInputDialog {
+func newQInputDialog(h *C.QInputDialog) *QInputDialog {
 	if h == nil {
 		return nil
 	}
+	var outptr_QDialog *C.QDialog = nil
+	C.QInputDialog_virtbase(h, &outptr_QDialog)
+
 	return &QInputDialog{h: h,
-		QDialog: newQDialog(h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
+		QDialog: newQDialog(outptr_QDialog)}
 }
 
 // UnsafeNewQInputDialog constructs the type using only unsafe pointers.
-func UnsafeNewQInputDialog(h unsafe.Pointer, h_QDialog unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QInputDialog {
-	if h == nil {
-		return nil
-	}
-
-	return &QInputDialog{h: (*C.QInputDialog)(h),
-		QDialog: UnsafeNewQDialog(h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQInputDialog(h unsafe.Pointer) *QInputDialog {
+	return newQInputDialog((*C.QInputDialog)(h))
 }
 
 // NewQInputDialog constructs a new QInputDialog object.
 func NewQInputDialog(parent *QWidget) *QInputDialog {
-	var outptr_QInputDialog *C.QInputDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QInputDialog_new(parent.cPointer(), &outptr_QInputDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQInputDialog(outptr_QInputDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQInputDialog(C.QInputDialog_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQInputDialog2 constructs a new QInputDialog object.
 func NewQInputDialog2() *QInputDialog {
-	var outptr_QInputDialog *C.QInputDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QInputDialog_new2(&outptr_QInputDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQInputDialog(outptr_QInputDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQInputDialog(C.QInputDialog_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQInputDialog3 constructs a new QInputDialog object.
 func NewQInputDialog3(parent *QWidget, flags WindowType) *QInputDialog {
-	var outptr_QInputDialog *C.QInputDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QInputDialog_new3(parent.cPointer(), (C.int)(flags), &outptr_QInputDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQInputDialog(outptr_QInputDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQInputDialog(C.QInputDialog_new3(parent.cPointer(), (C.int)(flags)))
 	ret.isSubclass = true
 	return ret
 }
@@ -1295,7 +1275,7 @@ func miqt_exec_callback_QInputDialog_KeyPressEvent(self *C.QInputDialog, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(param1, nil, nil)
+	slotval1 := newQKeyEvent(param1)
 
 	gofunc((&QInputDialog{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -1321,7 +1301,7 @@ func miqt_exec_callback_QInputDialog_CloseEvent(self *C.QInputDialog, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQCloseEvent(param1, nil)
+	slotval1 := newQCloseEvent(param1)
 
 	gofunc((&QInputDialog{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -1347,7 +1327,7 @@ func miqt_exec_callback_QInputDialog_ShowEvent(self *C.QInputDialog, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQShowEvent(param1, nil)
+	slotval1 := newQShowEvent(param1)
 
 	gofunc((&QInputDialog{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1373,7 +1353,7 @@ func miqt_exec_callback_QInputDialog_ResizeEvent(self *C.QInputDialog, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(param1, nil)
+	slotval1 := newQResizeEvent(param1)
 
 	gofunc((&QInputDialog{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -1399,7 +1379,7 @@ func miqt_exec_callback_QInputDialog_ContextMenuEvent(self *C.QInputDialog, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQContextMenuEvent(param1, nil, nil)
+	slotval1 := newQContextMenuEvent(param1)
 
 	gofunc((&QInputDialog{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 

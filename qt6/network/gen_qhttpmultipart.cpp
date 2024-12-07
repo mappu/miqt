@@ -16,14 +16,12 @@
 #include "gen_qhttpmultipart.h"
 #include "_cgo_export.h"
 
-void QHttpPart_new(QHttpPart** outptr_QHttpPart) {
-	QHttpPart* ret = new QHttpPart();
-	*outptr_QHttpPart = ret;
+QHttpPart* QHttpPart_new() {
+	return new QHttpPart();
 }
 
-void QHttpPart_new2(QHttpPart* other, QHttpPart** outptr_QHttpPart) {
-	QHttpPart* ret = new QHttpPart(*other);
-	*outptr_QHttpPart = ret;
+QHttpPart* QHttpPart_new2(QHttpPart* other) {
+	return new QHttpPart(*other);
 }
 
 void QHttpPart_OperatorAssign(QHttpPart* self, QHttpPart* other) {
@@ -252,28 +250,24 @@ public:
 
 };
 
-void QHttpMultiPart_new(QHttpMultiPart** outptr_QHttpMultiPart, QObject** outptr_QObject) {
-	MiqtVirtualQHttpMultiPart* ret = new MiqtVirtualQHttpMultiPart();
-	*outptr_QHttpMultiPart = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QHttpMultiPart* QHttpMultiPart_new() {
+	return new MiqtVirtualQHttpMultiPart();
 }
 
-void QHttpMultiPart_new2(int contentType, QHttpMultiPart** outptr_QHttpMultiPart, QObject** outptr_QObject) {
-	MiqtVirtualQHttpMultiPart* ret = new MiqtVirtualQHttpMultiPart(static_cast<QHttpMultiPart::ContentType>(contentType));
-	*outptr_QHttpMultiPart = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QHttpMultiPart* QHttpMultiPart_new2(int contentType) {
+	return new MiqtVirtualQHttpMultiPart(static_cast<QHttpMultiPart::ContentType>(contentType));
 }
 
-void QHttpMultiPart_new3(QObject* parent, QHttpMultiPart** outptr_QHttpMultiPart, QObject** outptr_QObject) {
-	MiqtVirtualQHttpMultiPart* ret = new MiqtVirtualQHttpMultiPart(parent);
-	*outptr_QHttpMultiPart = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QHttpMultiPart* QHttpMultiPart_new3(QObject* parent) {
+	return new MiqtVirtualQHttpMultiPart(parent);
 }
 
-void QHttpMultiPart_new4(int contentType, QObject* parent, QHttpMultiPart** outptr_QHttpMultiPart, QObject** outptr_QObject) {
-	MiqtVirtualQHttpMultiPart* ret = new MiqtVirtualQHttpMultiPart(static_cast<QHttpMultiPart::ContentType>(contentType), parent);
-	*outptr_QHttpMultiPart = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QHttpMultiPart* QHttpMultiPart_new4(int contentType, QObject* parent) {
+	return new MiqtVirtualQHttpMultiPart(static_cast<QHttpMultiPart::ContentType>(contentType), parent);
+}
+
+void QHttpMultiPart_virtbase(QHttpMultiPart* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QHttpMultiPart_MetaObject(const QHttpMultiPart* self) {

@@ -117,86 +117,66 @@ func (this *QCamera) UnsafePointer() unsafe.Pointer {
 }
 
 // newQCamera constructs the type using only CGO pointers.
-func newQCamera(h *C.QCamera, h_QObject *C.QObject) *QCamera {
+func newQCamera(h *C.QCamera) *QCamera {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QCamera_virtbase(h, &outptr_QObject)
+
 	return &QCamera{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQCamera constructs the type using only unsafe pointers.
-func UnsafeNewQCamera(h unsafe.Pointer, h_QObject unsafe.Pointer) *QCamera {
-	if h == nil {
-		return nil
-	}
-
-	return &QCamera{h: (*C.QCamera)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQCamera(h unsafe.Pointer) *QCamera {
+	return newQCamera((*C.QCamera)(h))
 }
 
 // NewQCamera constructs a new QCamera object.
 func NewQCamera() *QCamera {
-	var outptr_QCamera *C.QCamera = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QCamera_new(&outptr_QCamera, &outptr_QObject)
-	ret := newQCamera(outptr_QCamera, outptr_QObject)
+	ret := newQCamera(C.QCamera_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCamera2 constructs a new QCamera object.
 func NewQCamera2(cameraDevice *QCameraDevice) *QCamera {
-	var outptr_QCamera *C.QCamera = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QCamera_new2(cameraDevice.cPointer(), &outptr_QCamera, &outptr_QObject)
-	ret := newQCamera(outptr_QCamera, outptr_QObject)
+	ret := newQCamera(C.QCamera_new2(cameraDevice.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCamera3 constructs a new QCamera object.
 func NewQCamera3(position QCameraDevice__Position) *QCamera {
-	var outptr_QCamera *C.QCamera = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QCamera_new3((C.int)(position), &outptr_QCamera, &outptr_QObject)
-	ret := newQCamera(outptr_QCamera, outptr_QObject)
+	ret := newQCamera(C.QCamera_new3((C.int)(position)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCamera4 constructs a new QCamera object.
 func NewQCamera4(parent *qt6.QObject) *QCamera {
-	var outptr_QCamera *C.QCamera = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QCamera_new4((*C.QObject)(parent.UnsafePointer()), &outptr_QCamera, &outptr_QObject)
-	ret := newQCamera(outptr_QCamera, outptr_QObject)
+	ret := newQCamera(C.QCamera_new4((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCamera5 constructs a new QCamera object.
 func NewQCamera5(cameraDevice *QCameraDevice, parent *qt6.QObject) *QCamera {
-	var outptr_QCamera *C.QCamera = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QCamera_new5(cameraDevice.cPointer(), (*C.QObject)(parent.UnsafePointer()), &outptr_QCamera, &outptr_QObject)
-	ret := newQCamera(outptr_QCamera, outptr_QObject)
+	ret := newQCamera(C.QCamera_new5(cameraDevice.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCamera6 constructs a new QCamera object.
 func NewQCamera6(position QCameraDevice__Position, parent *qt6.QObject) *QCamera {
-	var outptr_QCamera *C.QCamera = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QCamera_new6((C.int)(position), (*C.QObject)(parent.UnsafePointer()), &outptr_QCamera, &outptr_QObject)
-	ret := newQCamera(outptr_QCamera, outptr_QObject)
+	ret := newQCamera(C.QCamera_new6((C.int)(position), (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -229,7 +209,7 @@ func (this *QCamera) IsActive() bool {
 }
 
 func (this *QCamera) CaptureSession() *QMediaCaptureSession {
-	return newQMediaCaptureSession(C.QCamera_CaptureSession(this.h), nil)
+	return newQMediaCaptureSession(C.QCamera_CaptureSession(this.h))
 }
 
 func (this *QCamera) CameraDevice() *QCameraDevice {
@@ -1072,7 +1052,7 @@ func miqt_exec_callback_QCamera_TimerEvent(self *C.QCamera, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QCamera{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -1098,7 +1078,7 @@ func miqt_exec_callback_QCamera_ChildEvent(self *C.QCamera, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QCamera{h: self}).callVirtualBase_ChildEvent, slotval1)
 

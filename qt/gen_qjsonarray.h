@@ -40,8 +40,8 @@ typedef struct QJsonValueRef QJsonValueRef;
 typedef struct QJsonValueRefPtr QJsonValueRefPtr;
 #endif
 
-void QJsonArray_new(QJsonArray** outptr_QJsonArray);
-void QJsonArray_new2(QJsonArray* other, QJsonArray** outptr_QJsonArray);
+QJsonArray* QJsonArray_new();
+QJsonArray* QJsonArray_new2(QJsonArray* other);
 void QJsonArray_OperatorAssign(QJsonArray* self, QJsonArray* other);
 QJsonArray* QJsonArray_FromStringList(struct miqt_array /* of struct miqt_string */  list);
 int QJsonArray_Size(const QJsonArray* self);
@@ -84,9 +84,9 @@ void QJsonArray_PopBack(QJsonArray* self);
 bool QJsonArray_Empty(const QJsonArray* self);
 void QJsonArray_Delete(QJsonArray* self, bool isSubclass);
 
-void QJsonArray__iterator_new(QJsonArray__iterator** outptr_QJsonArray__iterator);
-void QJsonArray__iterator_new2(QJsonArray* array, int index, QJsonArray__iterator** outptr_QJsonArray__iterator);
-void QJsonArray__iterator_new3(QJsonArray__iterator* param1, QJsonArray__iterator** outptr_QJsonArray__iterator);
+QJsonArray__iterator* QJsonArray__iterator_new();
+QJsonArray__iterator* QJsonArray__iterator_new2(QJsonArray* array, int index);
+QJsonArray__iterator* QJsonArray__iterator_new3(QJsonArray__iterator* param1);
 QJsonValueRef* QJsonArray__iterator_OperatorMultiply(const QJsonArray__iterator* self);
 QJsonValueRefPtr* QJsonArray__iterator_OperatorMinusGreater(const QJsonArray__iterator* self);
 QJsonValueRef* QJsonArray__iterator_OperatorSubscript(const QJsonArray__iterator* self, int j);
@@ -113,10 +113,10 @@ QJsonArray__iterator* QJsonArray__iterator_OperatorMinus(const QJsonArray__itera
 int QJsonArray__iterator_OperatorMinusWithQJsonArrayiterator(const QJsonArray__iterator* self, QJsonArray__iterator* j);
 void QJsonArray__iterator_Delete(QJsonArray__iterator* self, bool isSubclass);
 
-void QJsonArray__const_iterator_new(QJsonArray__const_iterator** outptr_QJsonArray__const_iterator);
-void QJsonArray__const_iterator_new2(QJsonArray* array, int index, QJsonArray__const_iterator** outptr_QJsonArray__const_iterator);
-void QJsonArray__const_iterator_new3(QJsonArray__const_iterator* o, QJsonArray__const_iterator** outptr_QJsonArray__const_iterator);
-void QJsonArray__const_iterator_new4(QJsonArray__iterator* o, QJsonArray__const_iterator** outptr_QJsonArray__const_iterator);
+QJsonArray__const_iterator* QJsonArray__const_iterator_new();
+QJsonArray__const_iterator* QJsonArray__const_iterator_new2(QJsonArray* array, int index);
+QJsonArray__const_iterator* QJsonArray__const_iterator_new3(QJsonArray__const_iterator* o);
+QJsonArray__const_iterator* QJsonArray__const_iterator_new4(QJsonArray__iterator* o);
 QJsonValue* QJsonArray__const_iterator_OperatorMultiply(const QJsonArray__const_iterator* self);
 QJsonValuePtr* QJsonArray__const_iterator_OperatorMinusGreater(const QJsonArray__const_iterator* self);
 QJsonValue* QJsonArray__const_iterator_OperatorSubscript(const QJsonArray__const_iterator* self, int j);

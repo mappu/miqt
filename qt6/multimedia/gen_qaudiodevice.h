@@ -22,8 +22,8 @@ typedef struct QAudioDevice QAudioDevice;
 typedef struct QAudioFormat QAudioFormat;
 #endif
 
-void QAudioDevice_new(QAudioDevice** outptr_QAudioDevice);
-void QAudioDevice_new2(QAudioDevice* other, QAudioDevice** outptr_QAudioDevice);
+QAudioDevice* QAudioDevice_new();
+QAudioDevice* QAudioDevice_new2(QAudioDevice* other);
 void QAudioDevice_Swap(QAudioDevice* self, QAudioDevice* other);
 void QAudioDevice_OperatorAssign(QAudioDevice* self, QAudioDevice* other);
 bool QAudioDevice_OperatorEqual(const QAudioDevice* self, QAudioDevice* other);

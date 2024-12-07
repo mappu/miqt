@@ -38,24 +38,19 @@ func newQAbstractNativeEventFilter(h *C.QAbstractNativeEventFilter) *QAbstractNa
 	if h == nil {
 		return nil
 	}
+
 	return &QAbstractNativeEventFilter{h: h}
 }
 
 // UnsafeNewQAbstractNativeEventFilter constructs the type using only unsafe pointers.
 func UnsafeNewQAbstractNativeEventFilter(h unsafe.Pointer) *QAbstractNativeEventFilter {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractNativeEventFilter{h: (*C.QAbstractNativeEventFilter)(h)}
+	return newQAbstractNativeEventFilter((*C.QAbstractNativeEventFilter)(h))
 }
 
 // NewQAbstractNativeEventFilter constructs a new QAbstractNativeEventFilter object.
 func NewQAbstractNativeEventFilter() *QAbstractNativeEventFilter {
-	var outptr_QAbstractNativeEventFilter *C.QAbstractNativeEventFilter = nil
 
-	C.QAbstractNativeEventFilter_new(&outptr_QAbstractNativeEventFilter)
-	ret := newQAbstractNativeEventFilter(outptr_QAbstractNativeEventFilter)
+	ret := newQAbstractNativeEventFilter(C.QAbstractNativeEventFilter_new())
 	ret.isSubclass = true
 	return ret
 }

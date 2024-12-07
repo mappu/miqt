@@ -35,42 +35,34 @@ func (this *QFileSelector) UnsafePointer() unsafe.Pointer {
 }
 
 // newQFileSelector constructs the type using only CGO pointers.
-func newQFileSelector(h *C.QFileSelector, h_QObject *C.QObject) *QFileSelector {
+func newQFileSelector(h *C.QFileSelector) *QFileSelector {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QFileSelector_virtbase(h, &outptr_QObject)
+
 	return &QFileSelector{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQFileSelector constructs the type using only unsafe pointers.
-func UnsafeNewQFileSelector(h unsafe.Pointer, h_QObject unsafe.Pointer) *QFileSelector {
-	if h == nil {
-		return nil
-	}
-
-	return &QFileSelector{h: (*C.QFileSelector)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQFileSelector(h unsafe.Pointer) *QFileSelector {
+	return newQFileSelector((*C.QFileSelector)(h))
 }
 
 // NewQFileSelector constructs a new QFileSelector object.
 func NewQFileSelector() *QFileSelector {
-	var outptr_QFileSelector *C.QFileSelector = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QFileSelector_new(&outptr_QFileSelector, &outptr_QObject)
-	ret := newQFileSelector(outptr_QFileSelector, outptr_QObject)
+	ret := newQFileSelector(C.QFileSelector_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFileSelector2 constructs a new QFileSelector object.
 func NewQFileSelector2(parent *QObject) *QFileSelector {
-	var outptr_QFileSelector *C.QFileSelector = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QFileSelector_new2(parent.cPointer(), &outptr_QFileSelector, &outptr_QObject)
-	ret := newQFileSelector(outptr_QFileSelector, outptr_QObject)
+	ret := newQFileSelector(C.QFileSelector_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -251,7 +243,7 @@ func miqt_exec_callback_QFileSelector_TimerEvent(self *C.QFileSelector, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QFileSelector{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -277,7 +269,7 @@ func miqt_exec_callback_QFileSelector_ChildEvent(self *C.QFileSelector, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QFileSelector{h: self}).callVirtualBase_ChildEvent, slotval1)
 

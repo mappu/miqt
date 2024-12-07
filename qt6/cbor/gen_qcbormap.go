@@ -38,34 +38,27 @@ func newQCborMap(h *C.QCborMap) *QCborMap {
 	if h == nil {
 		return nil
 	}
+
 	return &QCborMap{h: h}
 }
 
 // UnsafeNewQCborMap constructs the type using only unsafe pointers.
 func UnsafeNewQCborMap(h unsafe.Pointer) *QCborMap {
-	if h == nil {
-		return nil
-	}
-
-	return &QCborMap{h: (*C.QCborMap)(h)}
+	return newQCborMap((*C.QCborMap)(h))
 }
 
 // NewQCborMap constructs a new QCborMap object.
 func NewQCborMap() *QCborMap {
-	var outptr_QCborMap *C.QCborMap = nil
 
-	C.QCborMap_new(&outptr_QCborMap)
-	ret := newQCborMap(outptr_QCborMap)
+	ret := newQCborMap(C.QCborMap_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCborMap2 constructs a new QCborMap object.
 func NewQCborMap2(other *QCborMap) *QCborMap {
-	var outptr_QCborMap *C.QCborMap = nil
 
-	C.QCborMap_new2(other.cPointer(), &outptr_QCborMap)
-	ret := newQCborMap(outptr_QCborMap)
+	ret := newQCborMap(C.QCborMap_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -153,7 +146,7 @@ func (this *QCborMap) OperatorSubscript3(key *QCborValue) *QCborValue {
 }
 
 func (this *QCborMap) OperatorSubscript4(key int64) *QCborValueRef {
-	_goptr := newQCborValueRef(C.QCborMap_OperatorSubscript4(this.h, (C.longlong)(key)), nil)
+	_goptr := newQCborValueRef(C.QCborMap_OperatorSubscript4(this.h, (C.longlong)(key)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -163,13 +156,13 @@ func (this *QCborMap) OperatorSubscript6(key string) *QCborValueRef {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	_goptr := newQCborValueRef(C.QCborMap_OperatorSubscript6(this.h, key_ms), nil)
+	_goptr := newQCborValueRef(C.QCborMap_OperatorSubscript6(this.h, key_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborMap) OperatorSubscript7(key *QCborValue) *QCborValueRef {
-	_goptr := newQCborValueRef(C.QCborMap_OperatorSubscript7(this.h, key.cPointer()), nil)
+	_goptr := newQCborValueRef(C.QCborMap_OperatorSubscript7(this.h, key.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -566,34 +559,27 @@ func newQCborMap__Iterator(h *C.QCborMap__Iterator) *QCborMap__Iterator {
 	if h == nil {
 		return nil
 	}
+
 	return &QCborMap__Iterator{h: h}
 }
 
 // UnsafeNewQCborMap__Iterator constructs the type using only unsafe pointers.
 func UnsafeNewQCborMap__Iterator(h unsafe.Pointer) *QCborMap__Iterator {
-	if h == nil {
-		return nil
-	}
-
-	return &QCborMap__Iterator{h: (*C.QCborMap__Iterator)(h)}
+	return newQCborMap__Iterator((*C.QCborMap__Iterator)(h))
 }
 
 // NewQCborMap__Iterator constructs a new QCborMap::Iterator object.
 func NewQCborMap__Iterator() *QCborMap__Iterator {
-	var outptr_QCborMap__Iterator *C.QCborMap__Iterator = nil
 
-	C.QCborMap__Iterator_new(&outptr_QCborMap__Iterator)
-	ret := newQCborMap__Iterator(outptr_QCborMap__Iterator)
+	ret := newQCborMap__Iterator(C.QCborMap__Iterator_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCborMap__Iterator2 constructs a new QCborMap::Iterator object.
 func NewQCborMap__Iterator2(param1 *QCborMap__Iterator) *QCborMap__Iterator {
-	var outptr_QCborMap__Iterator *C.QCborMap__Iterator = nil
 
-	C.QCborMap__Iterator_new2(param1.cPointer(), &outptr_QCborMap__Iterator)
-	ret := newQCborMap__Iterator(outptr_QCborMap__Iterator)
+	ret := newQCborMap__Iterator(C.QCborMap__Iterator_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -613,7 +599,7 @@ func (this *QCborMap__Iterator) OperatorMultiply() struct {
 	_first_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	_entry_First := *_first_goptr
 
-	_second_goptr := newQCborValueRef(_Second_CArray[0], nil)
+	_second_goptr := newQCborValueRef(_Second_CArray[0])
 	_second_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	_entry_Second := *_second_goptr
 
@@ -634,7 +620,7 @@ func (this *QCborMap__Iterator) OperatorSubscript(j int64) struct {
 	_first_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	_entry_First := *_first_goptr
 
-	_second_goptr := newQCborValueRef(_Second_CArray[0], nil)
+	_second_goptr := newQCborValueRef(_Second_CArray[0])
 	_second_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	_entry_Second := *_second_goptr
 
@@ -645,7 +631,7 @@ func (this *QCborMap__Iterator) OperatorSubscript(j int64) struct {
 }
 
 func (this *QCborMap__Iterator) OperatorMinusGreater() *QCborValueRef {
-	return newQCborValueRef(C.QCborMap__Iterator_OperatorMinusGreater(this.h), nil)
+	return newQCborValueRef(C.QCborMap__Iterator_OperatorMinusGreater(this.h))
 }
 
 func (this *QCborMap__Iterator) OperatorMinusGreater2() *QCborValueConstRef {
@@ -659,7 +645,7 @@ func (this *QCborMap__Iterator) Key() *QCborValue {
 }
 
 func (this *QCborMap__Iterator) Value() *QCborValueRef {
-	_goptr := newQCborValueRef(C.QCborMap__Iterator_Value(this.h), nil)
+	_goptr := newQCborValueRef(C.QCborMap__Iterator_Value(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -794,34 +780,27 @@ func newQCborMap__ConstIterator(h *C.QCborMap__ConstIterator) *QCborMap__ConstIt
 	if h == nil {
 		return nil
 	}
+
 	return &QCborMap__ConstIterator{h: h}
 }
 
 // UnsafeNewQCborMap__ConstIterator constructs the type using only unsafe pointers.
 func UnsafeNewQCborMap__ConstIterator(h unsafe.Pointer) *QCborMap__ConstIterator {
-	if h == nil {
-		return nil
-	}
-
-	return &QCborMap__ConstIterator{h: (*C.QCborMap__ConstIterator)(h)}
+	return newQCborMap__ConstIterator((*C.QCborMap__ConstIterator)(h))
 }
 
 // NewQCborMap__ConstIterator constructs a new QCborMap::ConstIterator object.
 func NewQCborMap__ConstIterator() *QCborMap__ConstIterator {
-	var outptr_QCborMap__ConstIterator *C.QCborMap__ConstIterator = nil
 
-	C.QCborMap__ConstIterator_new(&outptr_QCborMap__ConstIterator)
-	ret := newQCborMap__ConstIterator(outptr_QCborMap__ConstIterator)
+	ret := newQCborMap__ConstIterator(C.QCborMap__ConstIterator_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCborMap__ConstIterator2 constructs a new QCborMap::ConstIterator object.
 func NewQCborMap__ConstIterator2(param1 *QCborMap__ConstIterator) *QCborMap__ConstIterator {
-	var outptr_QCborMap__ConstIterator *C.QCborMap__ConstIterator = nil
 
-	C.QCborMap__ConstIterator_new2(param1.cPointer(), &outptr_QCborMap__ConstIterator)
-	ret := newQCborMap__ConstIterator(outptr_QCborMap__ConstIterator)
+	ret := newQCborMap__ConstIterator(C.QCborMap__ConstIterator_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

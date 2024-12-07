@@ -51,42 +51,34 @@ func (this *QCompleter) UnsafePointer() unsafe.Pointer {
 }
 
 // newQCompleter constructs the type using only CGO pointers.
-func newQCompleter(h *C.QCompleter, h_QObject *C.QObject) *QCompleter {
+func newQCompleter(h *C.QCompleter) *QCompleter {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QCompleter_virtbase(h, &outptr_QObject)
+
 	return &QCompleter{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQCompleter constructs the type using only unsafe pointers.
-func UnsafeNewQCompleter(h unsafe.Pointer, h_QObject unsafe.Pointer) *QCompleter {
-	if h == nil {
-		return nil
-	}
-
-	return &QCompleter{h: (*C.QCompleter)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQCompleter(h unsafe.Pointer) *QCompleter {
+	return newQCompleter((*C.QCompleter)(h))
 }
 
 // NewQCompleter constructs a new QCompleter object.
 func NewQCompleter() *QCompleter {
-	var outptr_QCompleter *C.QCompleter = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QCompleter_new(&outptr_QCompleter, &outptr_QObject)
-	ret := newQCompleter(outptr_QCompleter, outptr_QObject)
+	ret := newQCompleter(C.QCompleter_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCompleter2 constructs a new QCompleter object.
 func NewQCompleter2(model *QAbstractItemModel) *QCompleter {
-	var outptr_QCompleter *C.QCompleter = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QCompleter_new2(model.cPointer(), &outptr_QCompleter, &outptr_QObject)
-	ret := newQCompleter(outptr_QCompleter, outptr_QObject)
+	ret := newQCompleter(C.QCompleter_new2(model.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -103,33 +95,24 @@ func NewQCompleter3(completions []string) *QCompleter {
 		completions_CArray[i] = completions_i_ms
 	}
 	completions_ma := C.struct_miqt_array{len: C.size_t(len(completions)), data: unsafe.Pointer(completions_CArray)}
-	var outptr_QCompleter *C.QCompleter = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QCompleter_new3(completions_ma, &outptr_QCompleter, &outptr_QObject)
-	ret := newQCompleter(outptr_QCompleter, outptr_QObject)
+	ret := newQCompleter(C.QCompleter_new3(completions_ma))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCompleter4 constructs a new QCompleter object.
 func NewQCompleter4(parent *QObject) *QCompleter {
-	var outptr_QCompleter *C.QCompleter = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QCompleter_new4(parent.cPointer(), &outptr_QCompleter, &outptr_QObject)
-	ret := newQCompleter(outptr_QCompleter, outptr_QObject)
+	ret := newQCompleter(C.QCompleter_new4(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCompleter5 constructs a new QCompleter object.
 func NewQCompleter5(model *QAbstractItemModel, parent *QObject) *QCompleter {
-	var outptr_QCompleter *C.QCompleter = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QCompleter_new5(model.cPointer(), parent.cPointer(), &outptr_QCompleter, &outptr_QObject)
-	ret := newQCompleter(outptr_QCompleter, outptr_QObject)
+	ret := newQCompleter(C.QCompleter_new5(model.cPointer(), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -146,11 +129,8 @@ func NewQCompleter6(completions []string, parent *QObject) *QCompleter {
 		completions_CArray[i] = completions_i_ms
 	}
 	completions_ma := C.struct_miqt_array{len: C.size_t(len(completions)), data: unsafe.Pointer(completions_CArray)}
-	var outptr_QCompleter *C.QCompleter = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QCompleter_new6(completions_ma, parent.cPointer(), &outptr_QCompleter, &outptr_QObject)
-	ret := newQCompleter(outptr_QCompleter, outptr_QObject)
+	ret := newQCompleter(C.QCompleter_new6(completions_ma, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -179,7 +159,7 @@ func (this *QCompleter) SetWidget(widget *QWidget) {
 }
 
 func (this *QCompleter) Widget() *QWidget {
-	return newQWidget(C.QCompleter_Widget(this.h), nil, nil)
+	return newQWidget(C.QCompleter_Widget(this.h))
 }
 
 func (this *QCompleter) SetModel(c *QAbstractItemModel) {
@@ -187,7 +167,7 @@ func (this *QCompleter) SetModel(c *QAbstractItemModel) {
 }
 
 func (this *QCompleter) Model() *QAbstractItemModel {
-	return newQAbstractItemModel(C.QCompleter_Model(this.h), nil)
+	return newQAbstractItemModel(C.QCompleter_Model(this.h))
 }
 
 func (this *QCompleter) SetCompletionMode(mode QCompleter__CompletionMode) {
@@ -207,7 +187,7 @@ func (this *QCompleter) FilterMode() MatchFlag {
 }
 
 func (this *QCompleter) Popup() *QAbstractItemView {
-	return newQAbstractItemView(C.QCompleter_Popup(this.h), nil, nil, nil, nil, nil)
+	return newQAbstractItemView(C.QCompleter_Popup(this.h))
 }
 
 func (this *QCompleter) SetPopup(popup *QAbstractItemView) {
@@ -284,7 +264,7 @@ func (this *QCompleter) CurrentCompletion() string {
 }
 
 func (this *QCompleter) CompletionModel() *QAbstractItemModel {
-	return newQAbstractItemModel(C.QCompleter_CompletionModel(this.h), nil)
+	return newQAbstractItemModel(C.QCompleter_CompletionModel(this.h))
 }
 
 func (this *QCompleter) CompletionPrefix() string {
@@ -620,7 +600,7 @@ func miqt_exec_callback_QCompleter_TimerEvent(self *C.QCompleter, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QCompleter{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -646,7 +626,7 @@ func miqt_exec_callback_QCompleter_ChildEvent(self *C.QCompleter, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QCompleter{h: self}).callVirtualBase_ChildEvent, slotval1)
 

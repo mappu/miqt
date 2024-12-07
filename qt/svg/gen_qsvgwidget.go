@@ -36,46 +36,34 @@ func (this *QSvgWidget) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSvgWidget constructs the type using only CGO pointers.
-func newQSvgWidget(h *C.QSvgWidget, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QSvgWidget {
+func newQSvgWidget(h *C.QSvgWidget) *QSvgWidget {
 	if h == nil {
 		return nil
 	}
+	var outptr_QWidget *C.QWidget = nil
+	C.QSvgWidget_virtbase(h, &outptr_QWidget)
+
 	return &QSvgWidget{h: h,
-		QWidget: qt.UnsafeNewQWidget(unsafe.Pointer(h_QWidget), unsafe.Pointer(h_QObject), unsafe.Pointer(h_QPaintDevice))}
+		QWidget: qt.UnsafeNewQWidget(unsafe.Pointer(outptr_QWidget))}
 }
 
 // UnsafeNewQSvgWidget constructs the type using only unsafe pointers.
-func UnsafeNewQSvgWidget(h unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QSvgWidget {
-	if h == nil {
-		return nil
-	}
-
-	return &QSvgWidget{h: (*C.QSvgWidget)(h),
-		QWidget: qt.UnsafeNewQWidget(h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQSvgWidget(h unsafe.Pointer) *QSvgWidget {
+	return newQSvgWidget((*C.QSvgWidget)(h))
 }
 
 // NewQSvgWidget constructs a new QSvgWidget object.
 func NewQSvgWidget(parent *qt.QWidget) *QSvgWidget {
-	var outptr_QSvgWidget *C.QSvgWidget = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QSvgWidget_new((*C.QWidget)(parent.UnsafePointer()), &outptr_QSvgWidget, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQSvgWidget(outptr_QSvgWidget, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQSvgWidget(C.QSvgWidget_new((*C.QWidget)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSvgWidget2 constructs a new QSvgWidget object.
 func NewQSvgWidget2() *QSvgWidget {
-	var outptr_QSvgWidget *C.QSvgWidget = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QSvgWidget_new2(&outptr_QSvgWidget, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQSvgWidget(outptr_QSvgWidget, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQSvgWidget(C.QSvgWidget_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -86,13 +74,8 @@ func NewQSvgWidget3(file string) *QSvgWidget {
 	file_ms.data = C.CString(file)
 	file_ms.len = C.size_t(len(file))
 	defer C.free(unsafe.Pointer(file_ms.data))
-	var outptr_QSvgWidget *C.QSvgWidget = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QSvgWidget_new3(file_ms, &outptr_QSvgWidget, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQSvgWidget(outptr_QSvgWidget, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQSvgWidget(C.QSvgWidget_new3(file_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -103,13 +86,8 @@ func NewQSvgWidget4(file string, parent *qt.QWidget) *QSvgWidget {
 	file_ms.data = C.CString(file)
 	file_ms.len = C.size_t(len(file))
 	defer C.free(unsafe.Pointer(file_ms.data))
-	var outptr_QSvgWidget *C.QSvgWidget = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QSvgWidget_new4(file_ms, (*C.QWidget)(parent.UnsafePointer()), &outptr_QSvgWidget, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQSvgWidget(outptr_QSvgWidget, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQSvgWidget(C.QSvgWidget_new4(file_ms, (*C.QWidget)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -143,7 +121,7 @@ func QSvgWidget_TrUtf8(s string) string {
 }
 
 func (this *QSvgWidget) Renderer() *QSvgRenderer {
-	return newQSvgRenderer(C.QSvgWidget_Renderer(this.h), nil)
+	return newQSvgRenderer(C.QSvgWidget_Renderer(this.h))
 }
 
 func (this *QSvgWidget) SizeHint() *qt.QSize {
@@ -258,7 +236,7 @@ func miqt_exec_callback_QSvgWidget_PaintEvent(self *C.QSvgWidget, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPaintEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQPaintEvent(unsafe.Pointer(event))
 
 	gofunc((&QSvgWidget{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -468,7 +446,7 @@ func miqt_exec_callback_QSvgWidget_MousePressEvent(self *C.QSvgWidget, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event))
 
 	gofunc((&QSvgWidget{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -494,7 +472,7 @@ func miqt_exec_callback_QSvgWidget_MouseReleaseEvent(self *C.QSvgWidget, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event))
 
 	gofunc((&QSvgWidget{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -520,7 +498,7 @@ func miqt_exec_callback_QSvgWidget_MouseDoubleClickEvent(self *C.QSvgWidget, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event))
 
 	gofunc((&QSvgWidget{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -546,7 +524,7 @@ func miqt_exec_callback_QSvgWidget_MouseMoveEvent(self *C.QSvgWidget, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event))
 
 	gofunc((&QSvgWidget{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -572,7 +550,7 @@ func miqt_exec_callback_QSvgWidget_WheelEvent(self *C.QSvgWidget, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQWheelEvent(unsafe.Pointer(event))
 
 	gofunc((&QSvgWidget{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -598,7 +576,7 @@ func miqt_exec_callback_QSvgWidget_KeyPressEvent(self *C.QSvgWidget, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(event))
 
 	gofunc((&QSvgWidget{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -624,7 +602,7 @@ func miqt_exec_callback_QSvgWidget_KeyReleaseEvent(self *C.QSvgWidget, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(event))
 
 	gofunc((&QSvgWidget{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -650,7 +628,7 @@ func miqt_exec_callback_QSvgWidget_FocusInEvent(self *C.QSvgWidget, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(event))
 
 	gofunc((&QSvgWidget{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -676,7 +654,7 @@ func miqt_exec_callback_QSvgWidget_FocusOutEvent(self *C.QSvgWidget, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(event))
 
 	gofunc((&QSvgWidget{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -754,7 +732,7 @@ func miqt_exec_callback_QSvgWidget_MoveEvent(self *C.QSvgWidget, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMoveEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQMoveEvent(unsafe.Pointer(event))
 
 	gofunc((&QSvgWidget{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -780,7 +758,7 @@ func miqt_exec_callback_QSvgWidget_ResizeEvent(self *C.QSvgWidget, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQResizeEvent(unsafe.Pointer(event))
 
 	gofunc((&QSvgWidget{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -806,7 +784,7 @@ func miqt_exec_callback_QSvgWidget_CloseEvent(self *C.QSvgWidget, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQCloseEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQCloseEvent(unsafe.Pointer(event))
 
 	gofunc((&QSvgWidget{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -832,7 +810,7 @@ func miqt_exec_callback_QSvgWidget_ContextMenuEvent(self *C.QSvgWidget, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQContextMenuEvent(unsafe.Pointer(event))
 
 	gofunc((&QSvgWidget{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -858,7 +836,7 @@ func miqt_exec_callback_QSvgWidget_TabletEvent(self *C.QSvgWidget, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTabletEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQTabletEvent(unsafe.Pointer(event))
 
 	gofunc((&QSvgWidget{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -884,7 +862,7 @@ func miqt_exec_callback_QSvgWidget_ActionEvent(self *C.QSvgWidget, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQActionEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQActionEvent(unsafe.Pointer(event))
 
 	gofunc((&QSvgWidget{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -910,7 +888,7 @@ func miqt_exec_callback_QSvgWidget_DragEnterEvent(self *C.QSvgWidget, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQDragEnterEvent(unsafe.Pointer(event), nil, nil, nil)
+	slotval1 := qt.UnsafeNewQDragEnterEvent(unsafe.Pointer(event))
 
 	gofunc((&QSvgWidget{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -936,7 +914,7 @@ func miqt_exec_callback_QSvgWidget_DragMoveEvent(self *C.QSvgWidget, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQDragMoveEvent(unsafe.Pointer(event))
 
 	gofunc((&QSvgWidget{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -962,7 +940,7 @@ func miqt_exec_callback_QSvgWidget_DragLeaveEvent(self *C.QSvgWidget, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQDragLeaveEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQDragLeaveEvent(unsafe.Pointer(event))
 
 	gofunc((&QSvgWidget{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -988,7 +966,7 @@ func miqt_exec_callback_QSvgWidget_DropEvent(self *C.QSvgWidget, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQDropEvent(unsafe.Pointer(event))
 
 	gofunc((&QSvgWidget{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1014,7 +992,7 @@ func miqt_exec_callback_QSvgWidget_ShowEvent(self *C.QSvgWidget, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQShowEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQShowEvent(unsafe.Pointer(event))
 
 	gofunc((&QSvgWidget{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1040,7 +1018,7 @@ func miqt_exec_callback_QSvgWidget_HideEvent(self *C.QSvgWidget, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQHideEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQHideEvent(unsafe.Pointer(event))
 
 	gofunc((&QSvgWidget{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -1236,7 +1214,7 @@ func miqt_exec_callback_QSvgWidget_InputMethodEvent(self *C.QSvgWidget, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQInputMethodEvent(unsafe.Pointer(param1), nil)
+	slotval1 := qt.UnsafeNewQInputMethodEvent(unsafe.Pointer(param1))
 
 	gofunc((&QSvgWidget{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 

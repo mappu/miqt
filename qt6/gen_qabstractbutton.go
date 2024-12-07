@@ -35,46 +35,34 @@ func (this *QAbstractButton) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAbstractButton constructs the type using only CGO pointers.
-func newQAbstractButton(h *C.QAbstractButton, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QAbstractButton {
+func newQAbstractButton(h *C.QAbstractButton) *QAbstractButton {
 	if h == nil {
 		return nil
 	}
+	var outptr_QWidget *C.QWidget = nil
+	C.QAbstractButton_virtbase(h, &outptr_QWidget)
+
 	return &QAbstractButton{h: h,
-		QWidget: newQWidget(h_QWidget, h_QObject, h_QPaintDevice)}
+		QWidget: newQWidget(outptr_QWidget)}
 }
 
 // UnsafeNewQAbstractButton constructs the type using only unsafe pointers.
-func UnsafeNewQAbstractButton(h unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QAbstractButton {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractButton{h: (*C.QAbstractButton)(h),
-		QWidget: UnsafeNewQWidget(h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQAbstractButton(h unsafe.Pointer) *QAbstractButton {
+	return newQAbstractButton((*C.QAbstractButton)(h))
 }
 
 // NewQAbstractButton constructs a new QAbstractButton object.
 func NewQAbstractButton(parent *QWidget) *QAbstractButton {
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QAbstractButton_new(parent.cPointer(), &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQAbstractButton(outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQAbstractButton(C.QAbstractButton_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAbstractButton2 constructs a new QAbstractButton object.
 func NewQAbstractButton2() *QAbstractButton {
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QAbstractButton_new2(&outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQAbstractButton(outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQAbstractButton(C.QAbstractButton_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -192,7 +180,7 @@ func (this *QAbstractButton) AutoExclusive() bool {
 }
 
 func (this *QAbstractButton) Group() *QButtonGroup {
-	return newQButtonGroup(C.QAbstractButton_Group(this.h), nil)
+	return newQButtonGroup(C.QAbstractButton_Group(this.h))
 }
 
 func (this *QAbstractButton) SetIconSize(size *QSize) {
@@ -343,7 +331,7 @@ func miqt_exec_callback_QAbstractButton_PaintEvent(self *C.QAbstractButton, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(e, nil)
+	slotval1 := newQPaintEvent(e)
 
 	gofunc(slotval1)
 
@@ -471,7 +459,7 @@ func miqt_exec_callback_QAbstractButton_KeyPressEvent(self *C.QAbstractButton, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(e, nil, nil)
+	slotval1 := newQKeyEvent(e)
 
 	gofunc((&QAbstractButton{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -497,7 +485,7 @@ func miqt_exec_callback_QAbstractButton_KeyReleaseEvent(self *C.QAbstractButton,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(e, nil, nil)
+	slotval1 := newQKeyEvent(e)
 
 	gofunc((&QAbstractButton{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -523,7 +511,7 @@ func miqt_exec_callback_QAbstractButton_MousePressEvent(self *C.QAbstractButton,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QAbstractButton{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -549,7 +537,7 @@ func miqt_exec_callback_QAbstractButton_MouseReleaseEvent(self *C.QAbstractButto
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QAbstractButton{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -575,7 +563,7 @@ func miqt_exec_callback_QAbstractButton_MouseMoveEvent(self *C.QAbstractButton, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QAbstractButton{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -601,7 +589,7 @@ func miqt_exec_callback_QAbstractButton_FocusInEvent(self *C.QAbstractButton, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(e, nil)
+	slotval1 := newQFocusEvent(e)
 
 	gofunc((&QAbstractButton{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -627,7 +615,7 @@ func miqt_exec_callback_QAbstractButton_FocusOutEvent(self *C.QAbstractButton, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(e, nil)
+	slotval1 := newQFocusEvent(e)
 
 	gofunc((&QAbstractButton{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -679,7 +667,7 @@ func miqt_exec_callback_QAbstractButton_TimerEvent(self *C.QAbstractButton, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(e, nil)
+	slotval1 := newQTimerEvent(e)
 
 	gofunc((&QAbstractButton{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -888,7 +876,7 @@ func miqt_exec_callback_QAbstractButton_MouseDoubleClickEvent(self *C.QAbstractB
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QAbstractButton{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -914,7 +902,7 @@ func miqt_exec_callback_QAbstractButton_WheelEvent(self *C.QAbstractButton, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWheelEvent(event, nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(event)
 
 	gofunc((&QAbstractButton{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -940,7 +928,7 @@ func miqt_exec_callback_QAbstractButton_EnterEvent(self *C.QAbstractButton, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQEnterEvent(event, nil, nil, nil, nil)
+	slotval1 := newQEnterEvent(event)
 
 	gofunc((&QAbstractButton{h: self}).callVirtualBase_EnterEvent, slotval1)
 
@@ -992,7 +980,7 @@ func miqt_exec_callback_QAbstractButton_MoveEvent(self *C.QAbstractButton, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMoveEvent(event, nil)
+	slotval1 := newQMoveEvent(event)
 
 	gofunc((&QAbstractButton{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -1018,7 +1006,7 @@ func miqt_exec_callback_QAbstractButton_ResizeEvent(self *C.QAbstractButton, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(event, nil)
+	slotval1 := newQResizeEvent(event)
 
 	gofunc((&QAbstractButton{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -1044,7 +1032,7 @@ func miqt_exec_callback_QAbstractButton_CloseEvent(self *C.QAbstractButton, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQCloseEvent(event, nil)
+	slotval1 := newQCloseEvent(event)
 
 	gofunc((&QAbstractButton{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -1070,7 +1058,7 @@ func miqt_exec_callback_QAbstractButton_ContextMenuEvent(self *C.QAbstractButton
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQContextMenuEvent(event, nil, nil)
+	slotval1 := newQContextMenuEvent(event)
 
 	gofunc((&QAbstractButton{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -1096,7 +1084,7 @@ func miqt_exec_callback_QAbstractButton_TabletEvent(self *C.QAbstractButton, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTabletEvent(event, nil, nil, nil, nil)
+	slotval1 := newQTabletEvent(event)
 
 	gofunc((&QAbstractButton{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -1122,7 +1110,7 @@ func miqt_exec_callback_QAbstractButton_ActionEvent(self *C.QAbstractButton, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQActionEvent(event, nil)
+	slotval1 := newQActionEvent(event)
 
 	gofunc((&QAbstractButton{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -1148,7 +1136,7 @@ func miqt_exec_callback_QAbstractButton_DragEnterEvent(self *C.QAbstractButton, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragEnterEvent(event, nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event)
 
 	gofunc((&QAbstractButton{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -1174,7 +1162,7 @@ func miqt_exec_callback_QAbstractButton_DragMoveEvent(self *C.QAbstractButton, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragMoveEvent(event, nil, nil)
+	slotval1 := newQDragMoveEvent(event)
 
 	gofunc((&QAbstractButton{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1200,7 +1188,7 @@ func miqt_exec_callback_QAbstractButton_DragLeaveEvent(self *C.QAbstractButton, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragLeaveEvent(event, nil)
+	slotval1 := newQDragLeaveEvent(event)
 
 	gofunc((&QAbstractButton{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1226,7 +1214,7 @@ func miqt_exec_callback_QAbstractButton_DropEvent(self *C.QAbstractButton, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDropEvent(event, nil)
+	slotval1 := newQDropEvent(event)
 
 	gofunc((&QAbstractButton{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1252,7 +1240,7 @@ func miqt_exec_callback_QAbstractButton_ShowEvent(self *C.QAbstractButton, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQShowEvent(event, nil)
+	slotval1 := newQShowEvent(event)
 
 	gofunc((&QAbstractButton{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1278,7 +1266,7 @@ func miqt_exec_callback_QAbstractButton_HideEvent(self *C.QAbstractButton, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQHideEvent(event, nil)
+	slotval1 := newQHideEvent(event)
 
 	gofunc((&QAbstractButton{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -1448,7 +1436,7 @@ func miqt_exec_callback_QAbstractButton_InputMethodEvent(self *C.QAbstractButton
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQInputMethodEvent(param1, nil)
+	slotval1 := newQInputMethodEvent(param1)
 
 	gofunc((&QAbstractButton{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 

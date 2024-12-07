@@ -20,9 +20,8 @@
 #include "gen_qtextlayout.h"
 #include "_cgo_export.h"
 
-void QTextInlineObject_new(QTextInlineObject** outptr_QTextInlineObject) {
-	QTextInlineObject* ret = new QTextInlineObject();
-	*outptr_QTextInlineObject = ret;
+QTextInlineObject* QTextInlineObject_new() {
+	return new QTextInlineObject();
 }
 
 bool QTextInlineObject_IsValid(const QTextInlineObject* self) {
@@ -90,32 +89,27 @@ void QTextInlineObject_Delete(QTextInlineObject* self, bool isSubclass) {
 	}
 }
 
-void QTextLayout_new(QTextLayout** outptr_QTextLayout) {
-	QTextLayout* ret = new QTextLayout();
-	*outptr_QTextLayout = ret;
+QTextLayout* QTextLayout_new() {
+	return new QTextLayout();
 }
 
-void QTextLayout_new2(struct miqt_string text, QTextLayout** outptr_QTextLayout) {
+QTextLayout* QTextLayout_new2(struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	QTextLayout* ret = new QTextLayout(text_QString);
-	*outptr_QTextLayout = ret;
+	return new QTextLayout(text_QString);
 }
 
-void QTextLayout_new3(struct miqt_string text, QFont* font, QTextLayout** outptr_QTextLayout) {
+QTextLayout* QTextLayout_new3(struct miqt_string text, QFont* font) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	QTextLayout* ret = new QTextLayout(text_QString, *font);
-	*outptr_QTextLayout = ret;
+	return new QTextLayout(text_QString, *font);
 }
 
-void QTextLayout_new4(QTextBlock* b, QTextLayout** outptr_QTextLayout) {
-	QTextLayout* ret = new QTextLayout(*b);
-	*outptr_QTextLayout = ret;
+QTextLayout* QTextLayout_new4(QTextBlock* b) {
+	return new QTextLayout(*b);
 }
 
-void QTextLayout_new5(struct miqt_string text, QFont* font, QPaintDevice* paintdevice, QTextLayout** outptr_QTextLayout) {
+QTextLayout* QTextLayout_new5(struct miqt_string text, QFont* font, QPaintDevice* paintdevice) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	QTextLayout* ret = new QTextLayout(text_QString, *font, paintdevice);
-	*outptr_QTextLayout = ret;
+	return new QTextLayout(text_QString, *font, paintdevice);
 }
 
 void QTextLayout_SetFont(QTextLayout* self, QFont* f) {
@@ -408,9 +402,8 @@ void QTextLayout_Delete(QTextLayout* self, bool isSubclass) {
 	}
 }
 
-void QTextLine_new(QTextLine** outptr_QTextLine) {
-	QTextLine* ret = new QTextLine();
-	*outptr_QTextLine = ret;
+QTextLine* QTextLine_new() {
+	return new QTextLine();
 }
 
 bool QTextLine_IsValid(const QTextLine* self) {

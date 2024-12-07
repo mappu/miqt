@@ -30,6 +30,7 @@ typedef struct QObject QObject;
 typedef struct QPixmap QPixmap;
 #endif
 
+void QClipboard_virtbase(QClipboard* src, QObject** outptr_QObject);
 QMetaObject* QClipboard_MetaObject(const QClipboard* self);
 void* QClipboard_Metacast(QClipboard* self, const char* param1);
 struct miqt_string QClipboard_Tr(const char* s);

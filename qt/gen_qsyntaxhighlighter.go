@@ -35,42 +35,34 @@ func (this *QSyntaxHighlighter) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSyntaxHighlighter constructs the type using only CGO pointers.
-func newQSyntaxHighlighter(h *C.QSyntaxHighlighter, h_QObject *C.QObject) *QSyntaxHighlighter {
+func newQSyntaxHighlighter(h *C.QSyntaxHighlighter) *QSyntaxHighlighter {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QSyntaxHighlighter_virtbase(h, &outptr_QObject)
+
 	return &QSyntaxHighlighter{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQSyntaxHighlighter constructs the type using only unsafe pointers.
-func UnsafeNewQSyntaxHighlighter(h unsafe.Pointer, h_QObject unsafe.Pointer) *QSyntaxHighlighter {
-	if h == nil {
-		return nil
-	}
-
-	return &QSyntaxHighlighter{h: (*C.QSyntaxHighlighter)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQSyntaxHighlighter(h unsafe.Pointer) *QSyntaxHighlighter {
+	return newQSyntaxHighlighter((*C.QSyntaxHighlighter)(h))
 }
 
 // NewQSyntaxHighlighter constructs a new QSyntaxHighlighter object.
 func NewQSyntaxHighlighter(parent *QObject) *QSyntaxHighlighter {
-	var outptr_QSyntaxHighlighter *C.QSyntaxHighlighter = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSyntaxHighlighter_new(parent.cPointer(), &outptr_QSyntaxHighlighter, &outptr_QObject)
-	ret := newQSyntaxHighlighter(outptr_QSyntaxHighlighter, outptr_QObject)
+	ret := newQSyntaxHighlighter(C.QSyntaxHighlighter_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSyntaxHighlighter2 constructs a new QSyntaxHighlighter object.
 func NewQSyntaxHighlighter2(parent *QTextDocument) *QSyntaxHighlighter {
-	var outptr_QSyntaxHighlighter *C.QSyntaxHighlighter = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSyntaxHighlighter_new2(parent.cPointer(), &outptr_QSyntaxHighlighter, &outptr_QObject)
-	ret := newQSyntaxHighlighter(outptr_QSyntaxHighlighter, outptr_QObject)
+	ret := newQSyntaxHighlighter(C.QSyntaxHighlighter_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -108,7 +100,7 @@ func (this *QSyntaxHighlighter) SetDocument(doc *QTextDocument) {
 }
 
 func (this *QSyntaxHighlighter) Document() *QTextDocument {
-	return newQTextDocument(C.QSyntaxHighlighter_Document(this.h), nil)
+	return newQTextDocument(C.QSyntaxHighlighter_Document(this.h))
 }
 
 func (this *QSyntaxHighlighter) Rehighlight() {
@@ -264,7 +256,7 @@ func miqt_exec_callback_QSyntaxHighlighter_TimerEvent(self *C.QSyntaxHighlighter
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QSyntaxHighlighter{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -290,7 +282,7 @@ func miqt_exec_callback_QSyntaxHighlighter_ChildEvent(self *C.QSyntaxHighlighter
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QSyntaxHighlighter{h: self}).callVirtualBase_ChildEvent, slotval1)
 

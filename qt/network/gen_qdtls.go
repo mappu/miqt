@@ -59,42 +59,34 @@ func (this *QDtlsClientVerifier) UnsafePointer() unsafe.Pointer {
 }
 
 // newQDtlsClientVerifier constructs the type using only CGO pointers.
-func newQDtlsClientVerifier(h *C.QDtlsClientVerifier, h_QObject *C.QObject) *QDtlsClientVerifier {
+func newQDtlsClientVerifier(h *C.QDtlsClientVerifier) *QDtlsClientVerifier {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QDtlsClientVerifier_virtbase(h, &outptr_QObject)
+
 	return &QDtlsClientVerifier{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQDtlsClientVerifier constructs the type using only unsafe pointers.
-func UnsafeNewQDtlsClientVerifier(h unsafe.Pointer, h_QObject unsafe.Pointer) *QDtlsClientVerifier {
-	if h == nil {
-		return nil
-	}
-
-	return &QDtlsClientVerifier{h: (*C.QDtlsClientVerifier)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQDtlsClientVerifier(h unsafe.Pointer) *QDtlsClientVerifier {
+	return newQDtlsClientVerifier((*C.QDtlsClientVerifier)(h))
 }
 
 // NewQDtlsClientVerifier constructs a new QDtlsClientVerifier object.
 func NewQDtlsClientVerifier() *QDtlsClientVerifier {
-	var outptr_QDtlsClientVerifier *C.QDtlsClientVerifier = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QDtlsClientVerifier_new(&outptr_QDtlsClientVerifier, &outptr_QObject)
-	ret := newQDtlsClientVerifier(outptr_QDtlsClientVerifier, outptr_QObject)
+	ret := newQDtlsClientVerifier(C.QDtlsClientVerifier_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDtlsClientVerifier2 constructs a new QDtlsClientVerifier object.
 func NewQDtlsClientVerifier2(parent *qt.QObject) *QDtlsClientVerifier {
-	var outptr_QDtlsClientVerifier *C.QDtlsClientVerifier = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QDtlsClientVerifier_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QDtlsClientVerifier, &outptr_QObject)
-	ret := newQDtlsClientVerifier(outptr_QDtlsClientVerifier, outptr_QObject)
+	ret := newQDtlsClientVerifier(C.QDtlsClientVerifier_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -284,7 +276,7 @@ func miqt_exec_callback_QDtlsClientVerifier_TimerEvent(self *C.QDtlsClientVerifi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QDtlsClientVerifier{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -310,7 +302,7 @@ func miqt_exec_callback_QDtlsClientVerifier_ChildEvent(self *C.QDtlsClientVerifi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QDtlsClientVerifier{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -429,42 +421,34 @@ func (this *QDtls) UnsafePointer() unsafe.Pointer {
 }
 
 // newQDtls constructs the type using only CGO pointers.
-func newQDtls(h *C.QDtls, h_QObject *C.QObject) *QDtls {
+func newQDtls(h *C.QDtls) *QDtls {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QDtls_virtbase(h, &outptr_QObject)
+
 	return &QDtls{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQDtls constructs the type using only unsafe pointers.
-func UnsafeNewQDtls(h unsafe.Pointer, h_QObject unsafe.Pointer) *QDtls {
-	if h == nil {
-		return nil
-	}
-
-	return &QDtls{h: (*C.QDtls)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQDtls(h unsafe.Pointer) *QDtls {
+	return newQDtls((*C.QDtls)(h))
 }
 
 // NewQDtls constructs a new QDtls object.
 func NewQDtls(mode QSslSocket__SslMode) *QDtls {
-	var outptr_QDtls *C.QDtls = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QDtls_new((C.int)(mode), &outptr_QDtls, &outptr_QObject)
-	ret := newQDtls(outptr_QDtls, outptr_QObject)
+	ret := newQDtls(C.QDtls_new((C.int)(mode)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDtls2 constructs a new QDtls object.
 func NewQDtls2(mode QSslSocket__SslMode, parent *qt.QObject) *QDtls {
-	var outptr_QDtls *C.QDtls = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QDtls_new2((C.int)(mode), (*C.QObject)(parent.UnsafePointer()), &outptr_QDtls, &outptr_QObject)
-	ret := newQDtls(outptr_QDtls, outptr_QObject)
+	ret := newQDtls(C.QDtls_new2((C.int)(mode), (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -820,7 +804,7 @@ func miqt_exec_callback_QDtls_TimerEvent(self *C.QDtls, cb C.intptr_t, event *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QDtls{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -846,7 +830,7 @@ func miqt_exec_callback_QDtls_ChildEvent(self *C.QDtls, cb C.intptr_t, event *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QDtls{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -968,24 +952,19 @@ func newQDtlsClientVerifier__GeneratorParameters(h *C.QDtlsClientVerifier__Gener
 	if h == nil {
 		return nil
 	}
+
 	return &QDtlsClientVerifier__GeneratorParameters{h: h}
 }
 
 // UnsafeNewQDtlsClientVerifier__GeneratorParameters constructs the type using only unsafe pointers.
 func UnsafeNewQDtlsClientVerifier__GeneratorParameters(h unsafe.Pointer) *QDtlsClientVerifier__GeneratorParameters {
-	if h == nil {
-		return nil
-	}
-
-	return &QDtlsClientVerifier__GeneratorParameters{h: (*C.QDtlsClientVerifier__GeneratorParameters)(h)}
+	return newQDtlsClientVerifier__GeneratorParameters((*C.QDtlsClientVerifier__GeneratorParameters)(h))
 }
 
 // NewQDtlsClientVerifier__GeneratorParameters constructs a new QDtlsClientVerifier::GeneratorParameters object.
 func NewQDtlsClientVerifier__GeneratorParameters() *QDtlsClientVerifier__GeneratorParameters {
-	var outptr_QDtlsClientVerifier__GeneratorParameters *C.QDtlsClientVerifier__GeneratorParameters = nil
 
-	C.QDtlsClientVerifier__GeneratorParameters_new(&outptr_QDtlsClientVerifier__GeneratorParameters)
-	ret := newQDtlsClientVerifier__GeneratorParameters(outptr_QDtlsClientVerifier__GeneratorParameters)
+	ret := newQDtlsClientVerifier__GeneratorParameters(C.QDtlsClientVerifier__GeneratorParameters_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -995,20 +974,16 @@ func NewQDtlsClientVerifier__GeneratorParameters2(a qt.QCryptographicHash__Algor
 	s_alias := C.struct_miqt_string{}
 	s_alias.data = (*C.char)(unsafe.Pointer(&s[0]))
 	s_alias.len = C.size_t(len(s))
-	var outptr_QDtlsClientVerifier__GeneratorParameters *C.QDtlsClientVerifier__GeneratorParameters = nil
 
-	C.QDtlsClientVerifier__GeneratorParameters_new2((C.int)(a), s_alias, &outptr_QDtlsClientVerifier__GeneratorParameters)
-	ret := newQDtlsClientVerifier__GeneratorParameters(outptr_QDtlsClientVerifier__GeneratorParameters)
+	ret := newQDtlsClientVerifier__GeneratorParameters(C.QDtlsClientVerifier__GeneratorParameters_new2((C.int)(a), s_alias))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDtlsClientVerifier__GeneratorParameters3 constructs a new QDtlsClientVerifier::GeneratorParameters object.
 func NewQDtlsClientVerifier__GeneratorParameters3(param1 *QDtlsClientVerifier__GeneratorParameters) *QDtlsClientVerifier__GeneratorParameters {
-	var outptr_QDtlsClientVerifier__GeneratorParameters *C.QDtlsClientVerifier__GeneratorParameters = nil
 
-	C.QDtlsClientVerifier__GeneratorParameters_new3(param1.cPointer(), &outptr_QDtlsClientVerifier__GeneratorParameters)
-	ret := newQDtlsClientVerifier__GeneratorParameters(outptr_QDtlsClientVerifier__GeneratorParameters)
+	ret := newQDtlsClientVerifier__GeneratorParameters(C.QDtlsClientVerifier__GeneratorParameters_new3(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

@@ -36,42 +36,34 @@ func (this *QWebEngineUrlSchemeHandler) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebEngineUrlSchemeHandler constructs the type using only CGO pointers.
-func newQWebEngineUrlSchemeHandler(h *C.QWebEngineUrlSchemeHandler, h_QObject *C.QObject) *QWebEngineUrlSchemeHandler {
+func newQWebEngineUrlSchemeHandler(h *C.QWebEngineUrlSchemeHandler) *QWebEngineUrlSchemeHandler {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebEngineUrlSchemeHandler_virtbase(h, &outptr_QObject)
+
 	return &QWebEngineUrlSchemeHandler{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebEngineUrlSchemeHandler constructs the type using only unsafe pointers.
-func UnsafeNewQWebEngineUrlSchemeHandler(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebEngineUrlSchemeHandler {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineUrlSchemeHandler{h: (*C.QWebEngineUrlSchemeHandler)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebEngineUrlSchemeHandler(h unsafe.Pointer) *QWebEngineUrlSchemeHandler {
+	return newQWebEngineUrlSchemeHandler((*C.QWebEngineUrlSchemeHandler)(h))
 }
 
 // NewQWebEngineUrlSchemeHandler constructs a new QWebEngineUrlSchemeHandler object.
 func NewQWebEngineUrlSchemeHandler() *QWebEngineUrlSchemeHandler {
-	var outptr_QWebEngineUrlSchemeHandler *C.QWebEngineUrlSchemeHandler = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebEngineUrlSchemeHandler_new(&outptr_QWebEngineUrlSchemeHandler, &outptr_QObject)
-	ret := newQWebEngineUrlSchemeHandler(outptr_QWebEngineUrlSchemeHandler, outptr_QObject)
+	ret := newQWebEngineUrlSchemeHandler(C.QWebEngineUrlSchemeHandler_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebEngineUrlSchemeHandler2 constructs a new QWebEngineUrlSchemeHandler object.
 func NewQWebEngineUrlSchemeHandler2(parent *qt6.QObject) *QWebEngineUrlSchemeHandler {
-	var outptr_QWebEngineUrlSchemeHandler *C.QWebEngineUrlSchemeHandler = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebEngineUrlSchemeHandler_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QWebEngineUrlSchemeHandler, &outptr_QObject)
-	ret := newQWebEngineUrlSchemeHandler(outptr_QWebEngineUrlSchemeHandler, outptr_QObject)
+	ret := newQWebEngineUrlSchemeHandler(C.QWebEngineUrlSchemeHandler_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -135,7 +127,7 @@ func miqt_exec_callback_QWebEngineUrlSchemeHandler_RequestStarted(self *C.QWebEn
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWebEngineUrlRequestJob(param1, nil)
+	slotval1 := newQWebEngineUrlRequestJob(param1)
 
 	gofunc(slotval1)
 
@@ -219,7 +211,7 @@ func miqt_exec_callback_QWebEngineUrlSchemeHandler_TimerEvent(self *C.QWebEngine
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebEngineUrlSchemeHandler{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -245,7 +237,7 @@ func miqt_exec_callback_QWebEngineUrlSchemeHandler_ChildEvent(self *C.QWebEngine
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebEngineUrlSchemeHandler{h: self}).callVirtualBase_ChildEvent, slotval1)
 

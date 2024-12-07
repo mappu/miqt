@@ -61,24 +61,19 @@ func newQAbstractVideoBuffer(h *C.QAbstractVideoBuffer) *QAbstractVideoBuffer {
 	if h == nil {
 		return nil
 	}
+
 	return &QAbstractVideoBuffer{h: h}
 }
 
 // UnsafeNewQAbstractVideoBuffer constructs the type using only unsafe pointers.
 func UnsafeNewQAbstractVideoBuffer(h unsafe.Pointer) *QAbstractVideoBuffer {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractVideoBuffer{h: (*C.QAbstractVideoBuffer)(h)}
+	return newQAbstractVideoBuffer((*C.QAbstractVideoBuffer)(h))
 }
 
 // NewQAbstractVideoBuffer constructs a new QAbstractVideoBuffer object.
 func NewQAbstractVideoBuffer(typeVal QAbstractVideoBuffer__HandleType) *QAbstractVideoBuffer {
-	var outptr_QAbstractVideoBuffer *C.QAbstractVideoBuffer = nil
 
-	C.QAbstractVideoBuffer_new((C.int)(typeVal), &outptr_QAbstractVideoBuffer)
-	ret := newQAbstractVideoBuffer(outptr_QAbstractVideoBuffer)
+	ret := newQAbstractVideoBuffer(C.QAbstractVideoBuffer_new((C.int)(typeVal)))
 	ret.isSubclass = true
 	return ret
 }
@@ -256,31 +251,26 @@ func (this *QAbstractPlanarVideoBuffer) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAbstractPlanarVideoBuffer constructs the type using only CGO pointers.
-func newQAbstractPlanarVideoBuffer(h *C.QAbstractPlanarVideoBuffer, h_QAbstractVideoBuffer *C.QAbstractVideoBuffer) *QAbstractPlanarVideoBuffer {
+func newQAbstractPlanarVideoBuffer(h *C.QAbstractPlanarVideoBuffer) *QAbstractPlanarVideoBuffer {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractVideoBuffer *C.QAbstractVideoBuffer = nil
+	C.QAbstractPlanarVideoBuffer_virtbase(h, &outptr_QAbstractVideoBuffer)
+
 	return &QAbstractPlanarVideoBuffer{h: h,
-		QAbstractVideoBuffer: newQAbstractVideoBuffer(h_QAbstractVideoBuffer)}
+		QAbstractVideoBuffer: newQAbstractVideoBuffer(outptr_QAbstractVideoBuffer)}
 }
 
 // UnsafeNewQAbstractPlanarVideoBuffer constructs the type using only unsafe pointers.
-func UnsafeNewQAbstractPlanarVideoBuffer(h unsafe.Pointer, h_QAbstractVideoBuffer unsafe.Pointer) *QAbstractPlanarVideoBuffer {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractPlanarVideoBuffer{h: (*C.QAbstractPlanarVideoBuffer)(h),
-		QAbstractVideoBuffer: UnsafeNewQAbstractVideoBuffer(h_QAbstractVideoBuffer)}
+func UnsafeNewQAbstractPlanarVideoBuffer(h unsafe.Pointer) *QAbstractPlanarVideoBuffer {
+	return newQAbstractPlanarVideoBuffer((*C.QAbstractPlanarVideoBuffer)(h))
 }
 
 // NewQAbstractPlanarVideoBuffer constructs a new QAbstractPlanarVideoBuffer object.
 func NewQAbstractPlanarVideoBuffer(typeVal QAbstractVideoBuffer__HandleType) *QAbstractPlanarVideoBuffer {
-	var outptr_QAbstractPlanarVideoBuffer *C.QAbstractPlanarVideoBuffer = nil
-	var outptr_QAbstractVideoBuffer *C.QAbstractVideoBuffer = nil
 
-	C.QAbstractPlanarVideoBuffer_new((C.int)(typeVal), &outptr_QAbstractPlanarVideoBuffer, &outptr_QAbstractVideoBuffer)
-	ret := newQAbstractPlanarVideoBuffer(outptr_QAbstractPlanarVideoBuffer, outptr_QAbstractVideoBuffer)
+	ret := newQAbstractPlanarVideoBuffer(C.QAbstractPlanarVideoBuffer_new((C.int)(typeVal)))
 	ret.isSubclass = true
 	return ret
 }

@@ -10,6 +10,10 @@
 #include "gen_qmediacontainercontrol.h"
 #include "_cgo_export.h"
 
+void QMediaContainerControl_virtbase(QMediaContainerControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
+
 QMetaObject* QMediaContainerControl_MetaObject(const QMediaContainerControl* self) {
 	return (QMetaObject*) self->metaObject();
 }

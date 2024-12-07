@@ -82,12 +82,13 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QDockWidget_new(QWidget* parent, QDockWidget** outptr_QDockWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QDockWidget_new2(struct miqt_string title, QDockWidget** outptr_QDockWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QDockWidget_new3(QDockWidget** outptr_QDockWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QDockWidget_new4(struct miqt_string title, QWidget* parent, QDockWidget** outptr_QDockWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QDockWidget_new5(struct miqt_string title, QWidget* parent, int flags, QDockWidget** outptr_QDockWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QDockWidget_new6(QWidget* parent, int flags, QDockWidget** outptr_QDockWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QDockWidget* QDockWidget_new(QWidget* parent);
+QDockWidget* QDockWidget_new2(struct miqt_string title);
+QDockWidget* QDockWidget_new3();
+QDockWidget* QDockWidget_new4(struct miqt_string title, QWidget* parent);
+QDockWidget* QDockWidget_new5(struct miqt_string title, QWidget* parent, int flags);
+QDockWidget* QDockWidget_new6(QWidget* parent, int flags);
+void QDockWidget_virtbase(QDockWidget* src, QWidget** outptr_QWidget);
 QMetaObject* QDockWidget_MetaObject(const QDockWidget* self);
 void* QDockWidget_Metacast(QDockWidget* self, const char* param1);
 struct miqt_string QDockWidget_Tr(const char* s);

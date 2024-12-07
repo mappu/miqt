@@ -37,16 +37,13 @@ func newQWebEngineClientCertificateStore(h *C.QWebEngineClientCertificateStore) 
 	if h == nil {
 		return nil
 	}
+
 	return &QWebEngineClientCertificateStore{h: h}
 }
 
 // UnsafeNewQWebEngineClientCertificateStore constructs the type using only unsafe pointers.
 func UnsafeNewQWebEngineClientCertificateStore(h unsafe.Pointer) *QWebEngineClientCertificateStore {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineClientCertificateStore{h: (*C.QWebEngineClientCertificateStore)(h)}
+	return newQWebEngineClientCertificateStore((*C.QWebEngineClientCertificateStore)(h))
 }
 
 func (this *QWebEngineClientCertificateStore) Add(certificate *network.QSslCertificate, privateKey *network.QSslKey) {

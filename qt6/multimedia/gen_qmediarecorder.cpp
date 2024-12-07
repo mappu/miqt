@@ -198,16 +198,16 @@ public:
 
 };
 
-void QMediaRecorder_new(QMediaRecorder** outptr_QMediaRecorder, QObject** outptr_QObject) {
-	MiqtVirtualQMediaRecorder* ret = new MiqtVirtualQMediaRecorder();
-	*outptr_QMediaRecorder = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QMediaRecorder* QMediaRecorder_new() {
+	return new MiqtVirtualQMediaRecorder();
 }
 
-void QMediaRecorder_new2(QObject* parent, QMediaRecorder** outptr_QMediaRecorder, QObject** outptr_QObject) {
-	MiqtVirtualQMediaRecorder* ret = new MiqtVirtualQMediaRecorder(parent);
-	*outptr_QMediaRecorder = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QMediaRecorder* QMediaRecorder_new2(QObject* parent) {
+	return new MiqtVirtualQMediaRecorder(parent);
+}
+
+void QMediaRecorder_virtbase(QMediaRecorder* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QMediaRecorder_MetaObject(const QMediaRecorder* self) {

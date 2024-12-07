@@ -52,44 +52,34 @@ func (this *QFileSystemModel) UnsafePointer() unsafe.Pointer {
 }
 
 // newQFileSystemModel constructs the type using only CGO pointers.
-func newQFileSystemModel(h *C.QFileSystemModel, h_QAbstractItemModel *C.QAbstractItemModel, h_QObject *C.QObject) *QFileSystemModel {
+func newQFileSystemModel(h *C.QFileSystemModel) *QFileSystemModel {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
+	C.QFileSystemModel_virtbase(h, &outptr_QAbstractItemModel)
+
 	return &QFileSystemModel{h: h,
-		QAbstractItemModel: newQAbstractItemModel(h_QAbstractItemModel, h_QObject)}
+		QAbstractItemModel: newQAbstractItemModel(outptr_QAbstractItemModel)}
 }
 
 // UnsafeNewQFileSystemModel constructs the type using only unsafe pointers.
-func UnsafeNewQFileSystemModel(h unsafe.Pointer, h_QAbstractItemModel unsafe.Pointer, h_QObject unsafe.Pointer) *QFileSystemModel {
-	if h == nil {
-		return nil
-	}
-
-	return &QFileSystemModel{h: (*C.QFileSystemModel)(h),
-		QAbstractItemModel: UnsafeNewQAbstractItemModel(h_QAbstractItemModel, h_QObject)}
+func UnsafeNewQFileSystemModel(h unsafe.Pointer) *QFileSystemModel {
+	return newQFileSystemModel((*C.QFileSystemModel)(h))
 }
 
 // NewQFileSystemModel constructs a new QFileSystemModel object.
 func NewQFileSystemModel() *QFileSystemModel {
-	var outptr_QFileSystemModel *C.QFileSystemModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QFileSystemModel_new(&outptr_QFileSystemModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQFileSystemModel(outptr_QFileSystemModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQFileSystemModel(C.QFileSystemModel_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFileSystemModel2 constructs a new QFileSystemModel object.
 func NewQFileSystemModel2(parent *QObject) *QFileSystemModel {
-	var outptr_QFileSystemModel *C.QFileSystemModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QFileSystemModel_new2(parent.cPointer(), &outptr_QFileSystemModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQFileSystemModel(outptr_QFileSystemModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQFileSystemModel(C.QFileSystemModel_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -317,7 +307,7 @@ func (this *QFileSystemModel) MimeData(indexes []QModelIndex) *QMimeData {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
-	return newQMimeData(C.QFileSystemModel_MimeData(this.h, indexes_ma), nil)
+	return newQMimeData(C.QFileSystemModel_MimeData(this.h, indexes_ma))
 }
 
 func (this *QFileSystemModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
@@ -1009,7 +999,7 @@ func (this *QFileSystemModel) callVirtualBase_MimeData(indexes []QModelIndex) *Q
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 
-	return newQMimeData(C.QFileSystemModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma), nil)
+	return newQMimeData(C.QFileSystemModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma))
 
 }
 func (this *QFileSystemModel) OnMimeData(slot func(super func(indexes []QModelIndex) *QMimeData, indexes []QModelIndex) *QMimeData) {
@@ -1063,7 +1053,7 @@ func miqt_exec_callback_QFileSystemModel_DropMimeData(self *C.QFileSystemModel, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(data, nil)
+	slotval1 := newQMimeData(data)
 
 	slotval2 := (DropAction)(action)
 
@@ -1124,7 +1114,7 @@ func miqt_exec_callback_QFileSystemModel_TimerEvent(self *C.QFileSystemModel, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QFileSystemModel{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -1326,7 +1316,7 @@ func miqt_exec_callback_QFileSystemModel_CanDropMimeData(self *C.QFileSystemMode
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(data, nil)
+	slotval1 := newQMimeData(data)
 
 	slotval2 := (DropAction)(action)
 

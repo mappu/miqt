@@ -35,72 +35,50 @@ func (this *QMouseEventTransition) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMouseEventTransition constructs the type using only CGO pointers.
-func newQMouseEventTransition(h *C.QMouseEventTransition, h_QEventTransition *C.QEventTransition, h_QAbstractTransition *C.QAbstractTransition, h_QObject *C.QObject) *QMouseEventTransition {
+func newQMouseEventTransition(h *C.QMouseEventTransition) *QMouseEventTransition {
 	if h == nil {
 		return nil
 	}
+	var outptr_QEventTransition *C.QEventTransition = nil
+	C.QMouseEventTransition_virtbase(h, &outptr_QEventTransition)
+
 	return &QMouseEventTransition{h: h,
-		QEventTransition: newQEventTransition(h_QEventTransition, h_QAbstractTransition, h_QObject)}
+		QEventTransition: newQEventTransition(outptr_QEventTransition)}
 }
 
 // UnsafeNewQMouseEventTransition constructs the type using only unsafe pointers.
-func UnsafeNewQMouseEventTransition(h unsafe.Pointer, h_QEventTransition unsafe.Pointer, h_QAbstractTransition unsafe.Pointer, h_QObject unsafe.Pointer) *QMouseEventTransition {
-	if h == nil {
-		return nil
-	}
-
-	return &QMouseEventTransition{h: (*C.QMouseEventTransition)(h),
-		QEventTransition: UnsafeNewQEventTransition(h_QEventTransition, h_QAbstractTransition, h_QObject)}
+func UnsafeNewQMouseEventTransition(h unsafe.Pointer) *QMouseEventTransition {
+	return newQMouseEventTransition((*C.QMouseEventTransition)(h))
 }
 
 // NewQMouseEventTransition constructs a new QMouseEventTransition object.
 func NewQMouseEventTransition() *QMouseEventTransition {
-	var outptr_QMouseEventTransition *C.QMouseEventTransition = nil
-	var outptr_QEventTransition *C.QEventTransition = nil
-	var outptr_QAbstractTransition *C.QAbstractTransition = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMouseEventTransition_new(&outptr_QMouseEventTransition, &outptr_QEventTransition, &outptr_QAbstractTransition, &outptr_QObject)
-	ret := newQMouseEventTransition(outptr_QMouseEventTransition, outptr_QEventTransition, outptr_QAbstractTransition, outptr_QObject)
+	ret := newQMouseEventTransition(C.QMouseEventTransition_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMouseEventTransition2 constructs a new QMouseEventTransition object.
 func NewQMouseEventTransition2(object *QObject, typeVal QEvent__Type, button MouseButton) *QMouseEventTransition {
-	var outptr_QMouseEventTransition *C.QMouseEventTransition = nil
-	var outptr_QEventTransition *C.QEventTransition = nil
-	var outptr_QAbstractTransition *C.QAbstractTransition = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMouseEventTransition_new2(object.cPointer(), (C.int)(typeVal), (C.int)(button), &outptr_QMouseEventTransition, &outptr_QEventTransition, &outptr_QAbstractTransition, &outptr_QObject)
-	ret := newQMouseEventTransition(outptr_QMouseEventTransition, outptr_QEventTransition, outptr_QAbstractTransition, outptr_QObject)
+	ret := newQMouseEventTransition(C.QMouseEventTransition_new2(object.cPointer(), (C.int)(typeVal), (C.int)(button)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMouseEventTransition3 constructs a new QMouseEventTransition object.
 func NewQMouseEventTransition3(sourceState *QState) *QMouseEventTransition {
-	var outptr_QMouseEventTransition *C.QMouseEventTransition = nil
-	var outptr_QEventTransition *C.QEventTransition = nil
-	var outptr_QAbstractTransition *C.QAbstractTransition = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMouseEventTransition_new3(sourceState.cPointer(), &outptr_QMouseEventTransition, &outptr_QEventTransition, &outptr_QAbstractTransition, &outptr_QObject)
-	ret := newQMouseEventTransition(outptr_QMouseEventTransition, outptr_QEventTransition, outptr_QAbstractTransition, outptr_QObject)
+	ret := newQMouseEventTransition(C.QMouseEventTransition_new3(sourceState.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMouseEventTransition4 constructs a new QMouseEventTransition object.
 func NewQMouseEventTransition4(object *QObject, typeVal QEvent__Type, button MouseButton, sourceState *QState) *QMouseEventTransition {
-	var outptr_QMouseEventTransition *C.QMouseEventTransition = nil
-	var outptr_QEventTransition *C.QEventTransition = nil
-	var outptr_QAbstractTransition *C.QAbstractTransition = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMouseEventTransition_new4(object.cPointer(), (C.int)(typeVal), (C.int)(button), sourceState.cPointer(), &outptr_QMouseEventTransition, &outptr_QEventTransition, &outptr_QAbstractTransition, &outptr_QObject)
-	ret := newQMouseEventTransition(outptr_QMouseEventTransition, outptr_QEventTransition, outptr_QAbstractTransition, outptr_QObject)
+	ret := newQMouseEventTransition(C.QMouseEventTransition_new4(object.cPointer(), (C.int)(typeVal), (C.int)(button), sourceState.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

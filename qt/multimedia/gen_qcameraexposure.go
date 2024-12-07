@@ -85,22 +85,20 @@ func (this *QCameraExposure) UnsafePointer() unsafe.Pointer {
 }
 
 // newQCameraExposure constructs the type using only CGO pointers.
-func newQCameraExposure(h *C.QCameraExposure, h_QObject *C.QObject) *QCameraExposure {
+func newQCameraExposure(h *C.QCameraExposure) *QCameraExposure {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QCameraExposure_virtbase(h, &outptr_QObject)
+
 	return &QCameraExposure{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQCameraExposure constructs the type using only unsafe pointers.
-func UnsafeNewQCameraExposure(h unsafe.Pointer, h_QObject unsafe.Pointer) *QCameraExposure {
-	if h == nil {
-		return nil
-	}
-
-	return &QCameraExposure{h: (*C.QCameraExposure)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQCameraExposure(h unsafe.Pointer) *QCameraExposure {
+	return newQCameraExposure((*C.QCameraExposure)(h))
 }
 
 func (this *QCameraExposure) MetaObject() *qt.QMetaObject {

@@ -87,24 +87,19 @@ func newQFontDatabase(h *C.QFontDatabase) *QFontDatabase {
 	if h == nil {
 		return nil
 	}
+
 	return &QFontDatabase{h: h}
 }
 
 // UnsafeNewQFontDatabase constructs the type using only unsafe pointers.
 func UnsafeNewQFontDatabase(h unsafe.Pointer) *QFontDatabase {
-	if h == nil {
-		return nil
-	}
-
-	return &QFontDatabase{h: (*C.QFontDatabase)(h)}
+	return newQFontDatabase((*C.QFontDatabase)(h))
 }
 
 // NewQFontDatabase constructs a new QFontDatabase object.
 func NewQFontDatabase() *QFontDatabase {
-	var outptr_QFontDatabase *C.QFontDatabase = nil
 
-	C.QFontDatabase_new(&outptr_QFontDatabase)
-	ret := newQFontDatabase(outptr_QFontDatabase)
+	ret := newQFontDatabase(C.QFontDatabase_new())
 	ret.isSubclass = true
 	return ret
 }

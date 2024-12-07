@@ -24,6 +24,7 @@ typedef struct QNetworkInformation QNetworkInformation;
 typedef struct QObject QObject;
 #endif
 
+void QNetworkInformation_virtbase(QNetworkInformation* src, QObject** outptr_QObject);
 QMetaObject* QNetworkInformation_MetaObject(const QNetworkInformation* self);
 void* QNetworkInformation_Metacast(QNetworkInformation* self, const char* param1);
 struct miqt_string QNetworkInformation_Tr(const char* s);

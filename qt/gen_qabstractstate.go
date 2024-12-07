@@ -35,22 +35,20 @@ func (this *QAbstractState) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAbstractState constructs the type using only CGO pointers.
-func newQAbstractState(h *C.QAbstractState, h_QObject *C.QObject) *QAbstractState {
+func newQAbstractState(h *C.QAbstractState) *QAbstractState {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QAbstractState_virtbase(h, &outptr_QObject)
+
 	return &QAbstractState{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQAbstractState constructs the type using only unsafe pointers.
-func UnsafeNewQAbstractState(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractState {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractState{h: (*C.QAbstractState)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQAbstractState(h unsafe.Pointer) *QAbstractState {
+	return newQAbstractState((*C.QAbstractState)(h))
 }
 
 func (this *QAbstractState) MetaObject() *QMetaObject {
@@ -82,11 +80,11 @@ func QAbstractState_TrUtf8(s string) string {
 }
 
 func (this *QAbstractState) ParentState() *QState {
-	return newQState(C.QAbstractState_ParentState(this.h), nil, nil)
+	return newQState(C.QAbstractState_ParentState(this.h))
 }
 
 func (this *QAbstractState) Machine() *QStateMachine {
-	return newQStateMachine(C.QAbstractState_Machine(this.h), nil, nil, nil)
+	return newQStateMachine(C.QAbstractState_Machine(this.h))
 }
 
 func (this *QAbstractState) Active() bool {

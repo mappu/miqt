@@ -839,18 +839,16 @@ public:
 
 };
 
-void QsciLexerMarkdown_new(QsciLexerMarkdown** outptr_QsciLexerMarkdown, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerMarkdown* ret = new MiqtVirtualQsciLexerMarkdown();
-	*outptr_QsciLexerMarkdown = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerMarkdown* QsciLexerMarkdown_new() {
+	return new MiqtVirtualQsciLexerMarkdown();
 }
 
-void QsciLexerMarkdown_new2(QObject* parent, QsciLexerMarkdown** outptr_QsciLexerMarkdown, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerMarkdown* ret = new MiqtVirtualQsciLexerMarkdown(parent);
-	*outptr_QsciLexerMarkdown = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerMarkdown* QsciLexerMarkdown_new2(QObject* parent) {
+	return new MiqtVirtualQsciLexerMarkdown(parent);
+}
+
+void QsciLexerMarkdown_virtbase(QsciLexerMarkdown* src, QsciLexer** outptr_QsciLexer) {
+	*outptr_QsciLexer = static_cast<QsciLexer*>(src);
 }
 
 QMetaObject* QsciLexerMarkdown_MetaObject(const QsciLexerMarkdown* self) {

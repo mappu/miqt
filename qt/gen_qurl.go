@@ -83,34 +83,27 @@ func newQUrl(h *C.QUrl) *QUrl {
 	if h == nil {
 		return nil
 	}
+
 	return &QUrl{h: h}
 }
 
 // UnsafeNewQUrl constructs the type using only unsafe pointers.
 func UnsafeNewQUrl(h unsafe.Pointer) *QUrl {
-	if h == nil {
-		return nil
-	}
-
-	return &QUrl{h: (*C.QUrl)(h)}
+	return newQUrl((*C.QUrl)(h))
 }
 
 // NewQUrl constructs a new QUrl object.
 func NewQUrl() *QUrl {
-	var outptr_QUrl *C.QUrl = nil
 
-	C.QUrl_new(&outptr_QUrl)
-	ret := newQUrl(outptr_QUrl)
+	ret := newQUrl(C.QUrl_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQUrl2 constructs a new QUrl object.
 func NewQUrl2(copyVal *QUrl) *QUrl {
-	var outptr_QUrl *C.QUrl = nil
 
-	C.QUrl_new2(copyVal.cPointer(), &outptr_QUrl)
-	ret := newQUrl(outptr_QUrl)
+	ret := newQUrl(C.QUrl_new2(copyVal.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -121,10 +114,8 @@ func NewQUrl3(url string) *QUrl {
 	url_ms.data = C.CString(url)
 	url_ms.len = C.size_t(len(url))
 	defer C.free(unsafe.Pointer(url_ms.data))
-	var outptr_QUrl *C.QUrl = nil
 
-	C.QUrl_new3(url_ms, &outptr_QUrl)
-	ret := newQUrl(outptr_QUrl)
+	ret := newQUrl(C.QUrl_new3(url_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -135,10 +126,8 @@ func NewQUrl4(url string, mode QUrl__ParsingMode) *QUrl {
 	url_ms.data = C.CString(url)
 	url_ms.len = C.size_t(len(url))
 	defer C.free(unsafe.Pointer(url_ms.data))
-	var outptr_QUrl *C.QUrl = nil
 
-	C.QUrl_new4(url_ms, (C.int)(mode), &outptr_QUrl)
-	ret := newQUrl(outptr_QUrl)
+	ret := newQUrl(C.QUrl_new4(url_ms, (C.int)(mode)))
 	ret.isSubclass = true
 	return ret
 }

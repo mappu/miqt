@@ -38,34 +38,27 @@ func newQAudioEncoderSettings(h *C.QAudioEncoderSettings) *QAudioEncoderSettings
 	if h == nil {
 		return nil
 	}
+
 	return &QAudioEncoderSettings{h: h}
 }
 
 // UnsafeNewQAudioEncoderSettings constructs the type using only unsafe pointers.
 func UnsafeNewQAudioEncoderSettings(h unsafe.Pointer) *QAudioEncoderSettings {
-	if h == nil {
-		return nil
-	}
-
-	return &QAudioEncoderSettings{h: (*C.QAudioEncoderSettings)(h)}
+	return newQAudioEncoderSettings((*C.QAudioEncoderSettings)(h))
 }
 
 // NewQAudioEncoderSettings constructs a new QAudioEncoderSettings object.
 func NewQAudioEncoderSettings() *QAudioEncoderSettings {
-	var outptr_QAudioEncoderSettings *C.QAudioEncoderSettings = nil
 
-	C.QAudioEncoderSettings_new(&outptr_QAudioEncoderSettings)
-	ret := newQAudioEncoderSettings(outptr_QAudioEncoderSettings)
+	ret := newQAudioEncoderSettings(C.QAudioEncoderSettings_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAudioEncoderSettings2 constructs a new QAudioEncoderSettings object.
 func NewQAudioEncoderSettings2(other *QAudioEncoderSettings) *QAudioEncoderSettings {
-	var outptr_QAudioEncoderSettings *C.QAudioEncoderSettings = nil
 
-	C.QAudioEncoderSettings_new2(other.cPointer(), &outptr_QAudioEncoderSettings)
-	ret := newQAudioEncoderSettings(outptr_QAudioEncoderSettings)
+	ret := newQAudioEncoderSettings(C.QAudioEncoderSettings_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -239,34 +232,27 @@ func newQVideoEncoderSettings(h *C.QVideoEncoderSettings) *QVideoEncoderSettings
 	if h == nil {
 		return nil
 	}
+
 	return &QVideoEncoderSettings{h: h}
 }
 
 // UnsafeNewQVideoEncoderSettings constructs the type using only unsafe pointers.
 func UnsafeNewQVideoEncoderSettings(h unsafe.Pointer) *QVideoEncoderSettings {
-	if h == nil {
-		return nil
-	}
-
-	return &QVideoEncoderSettings{h: (*C.QVideoEncoderSettings)(h)}
+	return newQVideoEncoderSettings((*C.QVideoEncoderSettings)(h))
 }
 
 // NewQVideoEncoderSettings constructs a new QVideoEncoderSettings object.
 func NewQVideoEncoderSettings() *QVideoEncoderSettings {
-	var outptr_QVideoEncoderSettings *C.QVideoEncoderSettings = nil
 
-	C.QVideoEncoderSettings_new(&outptr_QVideoEncoderSettings)
-	ret := newQVideoEncoderSettings(outptr_QVideoEncoderSettings)
+	ret := newQVideoEncoderSettings(C.QVideoEncoderSettings_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVideoEncoderSettings2 constructs a new QVideoEncoderSettings object.
 func NewQVideoEncoderSettings2(other *QVideoEncoderSettings) *QVideoEncoderSettings {
-	var outptr_QVideoEncoderSettings *C.QVideoEncoderSettings = nil
 
-	C.QVideoEncoderSettings_new2(other.cPointer(), &outptr_QVideoEncoderSettings)
-	ret := newQVideoEncoderSettings(outptr_QVideoEncoderSettings)
+	ret := newQVideoEncoderSettings(C.QVideoEncoderSettings_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -446,34 +432,27 @@ func newQImageEncoderSettings(h *C.QImageEncoderSettings) *QImageEncoderSettings
 	if h == nil {
 		return nil
 	}
+
 	return &QImageEncoderSettings{h: h}
 }
 
 // UnsafeNewQImageEncoderSettings constructs the type using only unsafe pointers.
 func UnsafeNewQImageEncoderSettings(h unsafe.Pointer) *QImageEncoderSettings {
-	if h == nil {
-		return nil
-	}
-
-	return &QImageEncoderSettings{h: (*C.QImageEncoderSettings)(h)}
+	return newQImageEncoderSettings((*C.QImageEncoderSettings)(h))
 }
 
 // NewQImageEncoderSettings constructs a new QImageEncoderSettings object.
 func NewQImageEncoderSettings() *QImageEncoderSettings {
-	var outptr_QImageEncoderSettings *C.QImageEncoderSettings = nil
 
-	C.QImageEncoderSettings_new(&outptr_QImageEncoderSettings)
-	ret := newQImageEncoderSettings(outptr_QImageEncoderSettings)
+	ret := newQImageEncoderSettings(C.QImageEncoderSettings_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQImageEncoderSettings2 constructs a new QImageEncoderSettings object.
 func NewQImageEncoderSettings2(other *QImageEncoderSettings) *QImageEncoderSettings {
-	var outptr_QImageEncoderSettings *C.QImageEncoderSettings = nil
 
-	C.QImageEncoderSettings_new2(other.cPointer(), &outptr_QImageEncoderSettings)
-	ret := newQImageEncoderSettings(outptr_QImageEncoderSettings)
+	ret := newQImageEncoderSettings(C.QImageEncoderSettings_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

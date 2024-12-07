@@ -36,22 +36,20 @@ func (this *QWebEngineNotification) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebEngineNotification constructs the type using only CGO pointers.
-func newQWebEngineNotification(h *C.QWebEngineNotification, h_QObject *C.QObject) *QWebEngineNotification {
+func newQWebEngineNotification(h *C.QWebEngineNotification) *QWebEngineNotification {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebEngineNotification_virtbase(h, &outptr_QObject)
+
 	return &QWebEngineNotification{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebEngineNotification constructs the type using only unsafe pointers.
-func UnsafeNewQWebEngineNotification(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebEngineNotification {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineNotification{h: (*C.QWebEngineNotification)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebEngineNotification(h unsafe.Pointer) *QWebEngineNotification {
+	return newQWebEngineNotification((*C.QWebEngineNotification)(h))
 }
 
 func (this *QWebEngineNotification) MetaObject() *qt6.QMetaObject {
@@ -84,7 +82,7 @@ func (this *QWebEngineNotification) Origin() *qt6.QUrl {
 }
 
 func (this *QWebEngineNotification) Icon() *qt6.QImage {
-	_goptr := qt6.UnsafeNewQImage(unsafe.Pointer(C.QWebEngineNotification_Icon(this.h)), nil)
+	_goptr := qt6.UnsafeNewQImage(unsafe.Pointer(C.QWebEngineNotification_Icon(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

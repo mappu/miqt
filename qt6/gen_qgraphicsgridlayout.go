@@ -35,44 +35,34 @@ func (this *QGraphicsGridLayout) UnsafePointer() unsafe.Pointer {
 }
 
 // newQGraphicsGridLayout constructs the type using only CGO pointers.
-func newQGraphicsGridLayout(h *C.QGraphicsGridLayout, h_QGraphicsLayout *C.QGraphicsLayout, h_QGraphicsLayoutItem *C.QGraphicsLayoutItem) *QGraphicsGridLayout {
+func newQGraphicsGridLayout(h *C.QGraphicsGridLayout) *QGraphicsGridLayout {
 	if h == nil {
 		return nil
 	}
+	var outptr_QGraphicsLayout *C.QGraphicsLayout = nil
+	C.QGraphicsGridLayout_virtbase(h, &outptr_QGraphicsLayout)
+
 	return &QGraphicsGridLayout{h: h,
-		QGraphicsLayout: newQGraphicsLayout(h_QGraphicsLayout, h_QGraphicsLayoutItem)}
+		QGraphicsLayout: newQGraphicsLayout(outptr_QGraphicsLayout)}
 }
 
 // UnsafeNewQGraphicsGridLayout constructs the type using only unsafe pointers.
-func UnsafeNewQGraphicsGridLayout(h unsafe.Pointer, h_QGraphicsLayout unsafe.Pointer, h_QGraphicsLayoutItem unsafe.Pointer) *QGraphicsGridLayout {
-	if h == nil {
-		return nil
-	}
-
-	return &QGraphicsGridLayout{h: (*C.QGraphicsGridLayout)(h),
-		QGraphicsLayout: UnsafeNewQGraphicsLayout(h_QGraphicsLayout, h_QGraphicsLayoutItem)}
+func UnsafeNewQGraphicsGridLayout(h unsafe.Pointer) *QGraphicsGridLayout {
+	return newQGraphicsGridLayout((*C.QGraphicsGridLayout)(h))
 }
 
 // NewQGraphicsGridLayout constructs a new QGraphicsGridLayout object.
 func NewQGraphicsGridLayout() *QGraphicsGridLayout {
-	var outptr_QGraphicsGridLayout *C.QGraphicsGridLayout = nil
-	var outptr_QGraphicsLayout *C.QGraphicsLayout = nil
-	var outptr_QGraphicsLayoutItem *C.QGraphicsLayoutItem = nil
 
-	C.QGraphicsGridLayout_new(&outptr_QGraphicsGridLayout, &outptr_QGraphicsLayout, &outptr_QGraphicsLayoutItem)
-	ret := newQGraphicsGridLayout(outptr_QGraphicsGridLayout, outptr_QGraphicsLayout, outptr_QGraphicsLayoutItem)
+	ret := newQGraphicsGridLayout(C.QGraphicsGridLayout_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsGridLayout2 constructs a new QGraphicsGridLayout object.
 func NewQGraphicsGridLayout2(parent *QGraphicsLayoutItem) *QGraphicsGridLayout {
-	var outptr_QGraphicsGridLayout *C.QGraphicsGridLayout = nil
-	var outptr_QGraphicsLayout *C.QGraphicsLayout = nil
-	var outptr_QGraphicsLayoutItem *C.QGraphicsLayoutItem = nil
 
-	C.QGraphicsGridLayout_new2(parent.cPointer(), &outptr_QGraphicsGridLayout, &outptr_QGraphicsLayout, &outptr_QGraphicsLayoutItem)
-	ret := newQGraphicsGridLayout(outptr_QGraphicsGridLayout, outptr_QGraphicsLayout, outptr_QGraphicsLayoutItem)
+	ret := newQGraphicsGridLayout(C.QGraphicsGridLayout_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

@@ -82,9 +82,8 @@ void QAccessible_Delete(QAccessible* self, bool isSubclass) {
 	}
 }
 
-void QAccessible__State_new(QAccessible__State** outptr_QAccessible__State) {
-	QAccessible::State* ret = new QAccessible::State();
-	*outptr_QAccessible__State = ret;
+QAccessible__State* QAccessible__State_new() {
+	return new QAccessible::State();
 }
 
 void QAccessible__State_Delete(QAccessible__State* self, bool isSubclass) {

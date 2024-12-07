@@ -34,22 +34,20 @@ func (this *QAccessibleObject) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAccessibleObject constructs the type using only CGO pointers.
-func newQAccessibleObject(h *C.QAccessibleObject, h_QAccessibleInterface *C.QAccessibleInterface) *QAccessibleObject {
+func newQAccessibleObject(h *C.QAccessibleObject) *QAccessibleObject {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAccessibleInterface *C.QAccessibleInterface = nil
+	C.QAccessibleObject_virtbase(h, &outptr_QAccessibleInterface)
+
 	return &QAccessibleObject{h: h,
-		QAccessibleInterface: newQAccessibleInterface(h_QAccessibleInterface)}
+		QAccessibleInterface: newQAccessibleInterface(outptr_QAccessibleInterface)}
 }
 
 // UnsafeNewQAccessibleObject constructs the type using only unsafe pointers.
-func UnsafeNewQAccessibleObject(h unsafe.Pointer, h_QAccessibleInterface unsafe.Pointer) *QAccessibleObject {
-	if h == nil {
-		return nil
-	}
-
-	return &QAccessibleObject{h: (*C.QAccessibleObject)(h),
-		QAccessibleInterface: UnsafeNewQAccessibleInterface(h_QAccessibleInterface)}
+func UnsafeNewQAccessibleObject(h unsafe.Pointer) *QAccessibleObject {
+	return newQAccessibleObject((*C.QAccessibleObject)(h))
 }
 
 func (this *QAccessibleObject) IsValid() bool {
@@ -99,38 +97,32 @@ func (this *QAccessibleApplication) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAccessibleApplication constructs the type using only CGO pointers.
-func newQAccessibleApplication(h *C.QAccessibleApplication, h_QAccessibleObject *C.QAccessibleObject, h_QAccessibleInterface *C.QAccessibleInterface) *QAccessibleApplication {
+func newQAccessibleApplication(h *C.QAccessibleApplication) *QAccessibleApplication {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAccessibleObject *C.QAccessibleObject = nil
+	C.QAccessibleApplication_virtbase(h, &outptr_QAccessibleObject)
+
 	return &QAccessibleApplication{h: h,
-		QAccessibleObject: newQAccessibleObject(h_QAccessibleObject, h_QAccessibleInterface)}
+		QAccessibleObject: newQAccessibleObject(outptr_QAccessibleObject)}
 }
 
 // UnsafeNewQAccessibleApplication constructs the type using only unsafe pointers.
-func UnsafeNewQAccessibleApplication(h unsafe.Pointer, h_QAccessibleObject unsafe.Pointer, h_QAccessibleInterface unsafe.Pointer) *QAccessibleApplication {
-	if h == nil {
-		return nil
-	}
-
-	return &QAccessibleApplication{h: (*C.QAccessibleApplication)(h),
-		QAccessibleObject: UnsafeNewQAccessibleObject(h_QAccessibleObject, h_QAccessibleInterface)}
+func UnsafeNewQAccessibleApplication(h unsafe.Pointer) *QAccessibleApplication {
+	return newQAccessibleApplication((*C.QAccessibleApplication)(h))
 }
 
 // NewQAccessibleApplication constructs a new QAccessibleApplication object.
 func NewQAccessibleApplication() *QAccessibleApplication {
-	var outptr_QAccessibleApplication *C.QAccessibleApplication = nil
-	var outptr_QAccessibleObject *C.QAccessibleObject = nil
-	var outptr_QAccessibleInterface *C.QAccessibleInterface = nil
 
-	C.QAccessibleApplication_new(&outptr_QAccessibleApplication, &outptr_QAccessibleObject, &outptr_QAccessibleInterface)
-	ret := newQAccessibleApplication(outptr_QAccessibleApplication, outptr_QAccessibleObject, outptr_QAccessibleInterface)
+	ret := newQAccessibleApplication(C.QAccessibleApplication_new())
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QAccessibleApplication) Window() *QWindow {
-	return newQWindow(C.QAccessibleApplication_Window(this.h), nil, nil)
+	return newQWindow(C.QAccessibleApplication_Window(this.h))
 }
 
 func (this *QAccessibleApplication) ChildCount() int {

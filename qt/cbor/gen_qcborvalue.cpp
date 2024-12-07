@@ -38,116 +38,94 @@ void QCborParserError_Delete(QCborParserError* self, bool isSubclass) {
 	}
 }
 
-void QCborValue_new(QCborValue** outptr_QCborValue) {
-	QCborValue* ret = new QCborValue();
-	*outptr_QCborValue = ret;
+QCborValue* QCborValue_new() {
+	return new QCborValue();
 }
 
-void QCborValue_new2(int t_, QCborValue** outptr_QCborValue) {
-	QCborValue* ret = new QCborValue(static_cast<QCborValue::Type>(t_));
-	*outptr_QCborValue = ret;
+QCborValue* QCborValue_new2(int t_) {
+	return new QCborValue(static_cast<QCborValue::Type>(t_));
 }
 
-void QCborValue_new3(bool b_, QCborValue** outptr_QCborValue) {
-	QCborValue* ret = new QCborValue(b_);
-	*outptr_QCborValue = ret;
+QCborValue* QCborValue_new3(bool b_) {
+	return new QCborValue(b_);
 }
 
-void QCborValue_new4(int i, QCborValue** outptr_QCborValue) {
-	QCborValue* ret = new QCborValue(static_cast<int>(i));
-	*outptr_QCborValue = ret;
+QCborValue* QCborValue_new4(int i) {
+	return new QCborValue(static_cast<int>(i));
 }
 
-void QCborValue_new5(unsigned int u, QCborValue** outptr_QCborValue) {
-	QCborValue* ret = new QCborValue(static_cast<unsigned int>(u));
-	*outptr_QCborValue = ret;
+QCborValue* QCborValue_new5(unsigned int u) {
+	return new QCborValue(static_cast<unsigned int>(u));
 }
 
-void QCborValue_new6(long long i, QCborValue** outptr_QCborValue) {
-	QCborValue* ret = new QCborValue(static_cast<qint64>(i));
-	*outptr_QCborValue = ret;
+QCborValue* QCborValue_new6(long long i) {
+	return new QCborValue(static_cast<qint64>(i));
 }
 
-void QCborValue_new7(double v, QCborValue** outptr_QCborValue) {
-	QCborValue* ret = new QCborValue(static_cast<double>(v));
-	*outptr_QCborValue = ret;
+QCborValue* QCborValue_new7(double v) {
+	return new QCborValue(static_cast<double>(v));
 }
 
-void QCborValue_new8(uint8_t st, QCborValue** outptr_QCborValue) {
-	QCborValue* ret = new QCborValue(static_cast<QCborSimpleType>(st));
-	*outptr_QCborValue = ret;
+QCborValue* QCborValue_new8(uint8_t st) {
+	return new QCborValue(static_cast<QCborSimpleType>(st));
 }
 
-void QCborValue_new9(struct miqt_string ba, QCborValue** outptr_QCborValue) {
+QCborValue* QCborValue_new9(struct miqt_string ba) {
 	QByteArray ba_QByteArray(ba.data, ba.len);
-	QCborValue* ret = new QCborValue(ba_QByteArray);
-	*outptr_QCborValue = ret;
+	return new QCborValue(ba_QByteArray);
 }
 
-void QCborValue_new10(struct miqt_string s, QCborValue** outptr_QCborValue) {
+QCborValue* QCborValue_new10(struct miqt_string s) {
 	QString s_QString = QString::fromUtf8(s.data, s.len);
-	QCborValue* ret = new QCborValue(s_QString);
-	*outptr_QCborValue = ret;
+	return new QCborValue(s_QString);
 }
 
-void QCborValue_new11(const char* s, QCborValue** outptr_QCborValue) {
-	QCborValue* ret = new QCborValue(s);
-	*outptr_QCborValue = ret;
+QCborValue* QCborValue_new11(const char* s) {
+	return new QCborValue(s);
 }
 
-void QCborValue_new12(QCborArray* a, QCborValue** outptr_QCborValue) {
-	QCborValue* ret = new QCborValue(*a);
-	*outptr_QCborValue = ret;
+QCborValue* QCborValue_new12(QCborArray* a) {
+	return new QCborValue(*a);
 }
 
-void QCborValue_new13(QCborMap* m, QCborValue** outptr_QCborValue) {
-	QCborValue* ret = new QCborValue(*m);
-	*outptr_QCborValue = ret;
+QCborValue* QCborValue_new13(QCborMap* m) {
+	return new QCborValue(*m);
 }
 
-void QCborValue_new14(uint64_t tag, QCborValue** outptr_QCborValue) {
-	QCborValue* ret = new QCborValue(static_cast<QCborTag>(tag));
-	*outptr_QCborValue = ret;
+QCborValue* QCborValue_new14(uint64_t tag) {
+	return new QCborValue(static_cast<QCborTag>(tag));
 }
 
-void QCborValue_new15(int t_, QCborValue** outptr_QCborValue) {
-	QCborValue* ret = new QCborValue(static_cast<QCborKnownTags>(t_));
-	*outptr_QCborValue = ret;
+QCborValue* QCborValue_new15(int t_) {
+	return new QCborValue(static_cast<QCborKnownTags>(t_));
 }
 
-void QCborValue_new16(QDateTime* dt, QCborValue** outptr_QCborValue) {
-	QCborValue* ret = new QCborValue(*dt);
-	*outptr_QCborValue = ret;
+QCborValue* QCborValue_new16(QDateTime* dt) {
+	return new QCborValue(*dt);
 }
 
-void QCborValue_new17(QUrl* url, QCborValue** outptr_QCborValue) {
-	QCborValue* ret = new QCborValue(*url);
-	*outptr_QCborValue = ret;
+QCborValue* QCborValue_new17(QUrl* url) {
+	return new QCborValue(*url);
 }
 
-void QCborValue_new18(QRegularExpression* rx, QCborValue** outptr_QCborValue) {
-	QCborValue* ret = new QCborValue(*rx);
-	*outptr_QCborValue = ret;
+QCborValue* QCborValue_new18(QRegularExpression* rx) {
+	return new QCborValue(*rx);
 }
 
-void QCborValue_new19(QUuid* uuid, QCborValue** outptr_QCborValue) {
-	QCborValue* ret = new QCborValue(*uuid);
-	*outptr_QCborValue = ret;
+QCborValue* QCborValue_new19(QUuid* uuid) {
+	return new QCborValue(*uuid);
 }
 
-void QCborValue_new20(QCborValue* other, QCborValue** outptr_QCborValue) {
-	QCborValue* ret = new QCborValue(*other);
-	*outptr_QCborValue = ret;
+QCborValue* QCborValue_new20(QCborValue* other) {
+	return new QCborValue(*other);
 }
 
-void QCborValue_new21(uint64_t tag, QCborValue* taggedValue, QCborValue** outptr_QCborValue) {
-	QCborValue* ret = new QCborValue(static_cast<QCborTag>(tag), *taggedValue);
-	*outptr_QCborValue = ret;
+QCborValue* QCborValue_new21(uint64_t tag, QCborValue* taggedValue) {
+	return new QCborValue(static_cast<QCborTag>(tag), *taggedValue);
 }
 
-void QCborValue_new22(int t_, QCborValue* tv, QCborValue** outptr_QCborValue) {
-	QCborValue* ret = new QCborValue(static_cast<QCborKnownTags>(t_), *tv);
-	*outptr_QCborValue = ret;
+QCborValue* QCborValue_new22(int t_, QCborValue* tv) {
+	return new QCborValue(static_cast<QCborKnownTags>(t_), *tv);
 }
 
 void QCborValue_OperatorAssign(QCborValue* self, QCborValue* other) {
@@ -523,9 +501,8 @@ void QCborValue_Delete(QCborValue* self, bool isSubclass) {
 	}
 }
 
-void QCborValueRef_new(QCborValueRef* param1, QCborValueRef** outptr_QCborValueRef) {
-	QCborValueRef* ret = new QCborValueRef(*param1);
-	*outptr_QCborValueRef = ret;
+QCborValueRef* QCborValueRef_new(QCborValueRef* param1) {
+	return new QCborValueRef(*param1);
 }
 
 void QCborValueRef_OperatorAssign(QCborValueRef* self, QCborValue* other) {

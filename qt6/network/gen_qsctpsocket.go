@@ -36,50 +36,34 @@ func (this *QSctpSocket) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSctpSocket constructs the type using only CGO pointers.
-func newQSctpSocket(h *C.QSctpSocket, h_QTcpSocket *C.QTcpSocket, h_QAbstractSocket *C.QAbstractSocket, h_QIODevice *C.QIODevice, h_QObject *C.QObject, h_QIODeviceBase *C.QIODeviceBase) *QSctpSocket {
+func newQSctpSocket(h *C.QSctpSocket) *QSctpSocket {
 	if h == nil {
 		return nil
 	}
+	var outptr_QTcpSocket *C.QTcpSocket = nil
+	C.QSctpSocket_virtbase(h, &outptr_QTcpSocket)
+
 	return &QSctpSocket{h: h,
-		QTcpSocket: newQTcpSocket(h_QTcpSocket, h_QAbstractSocket, h_QIODevice, h_QObject, h_QIODeviceBase)}
+		QTcpSocket: newQTcpSocket(outptr_QTcpSocket)}
 }
 
 // UnsafeNewQSctpSocket constructs the type using only unsafe pointers.
-func UnsafeNewQSctpSocket(h unsafe.Pointer, h_QTcpSocket unsafe.Pointer, h_QAbstractSocket unsafe.Pointer, h_QIODevice unsafe.Pointer, h_QObject unsafe.Pointer, h_QIODeviceBase unsafe.Pointer) *QSctpSocket {
-	if h == nil {
-		return nil
-	}
-
-	return &QSctpSocket{h: (*C.QSctpSocket)(h),
-		QTcpSocket: UnsafeNewQTcpSocket(h_QTcpSocket, h_QAbstractSocket, h_QIODevice, h_QObject, h_QIODeviceBase)}
+func UnsafeNewQSctpSocket(h unsafe.Pointer) *QSctpSocket {
+	return newQSctpSocket((*C.QSctpSocket)(h))
 }
 
 // NewQSctpSocket constructs a new QSctpSocket object.
 func NewQSctpSocket() *QSctpSocket {
-	var outptr_QSctpSocket *C.QSctpSocket = nil
-	var outptr_QTcpSocket *C.QTcpSocket = nil
-	var outptr_QAbstractSocket *C.QAbstractSocket = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QIODeviceBase *C.QIODeviceBase = nil
 
-	C.QSctpSocket_new(&outptr_QSctpSocket, &outptr_QTcpSocket, &outptr_QAbstractSocket, &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
-	ret := newQSctpSocket(outptr_QSctpSocket, outptr_QTcpSocket, outptr_QAbstractSocket, outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret := newQSctpSocket(C.QSctpSocket_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSctpSocket2 constructs a new QSctpSocket object.
 func NewQSctpSocket2(parent *qt6.QObject) *QSctpSocket {
-	var outptr_QSctpSocket *C.QSctpSocket = nil
-	var outptr_QTcpSocket *C.QTcpSocket = nil
-	var outptr_QAbstractSocket *C.QAbstractSocket = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QIODeviceBase *C.QIODeviceBase = nil
 
-	C.QSctpSocket_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QSctpSocket, &outptr_QTcpSocket, &outptr_QAbstractSocket, &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
-	ret := newQSctpSocket(outptr_QSctpSocket, outptr_QTcpSocket, outptr_QAbstractSocket, outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret := newQSctpSocket(C.QSctpSocket_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }

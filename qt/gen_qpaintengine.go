@@ -126,16 +126,13 @@ func newQTextItem(h *C.QTextItem) *QTextItem {
 	if h == nil {
 		return nil
 	}
+
 	return &QTextItem{h: h}
 }
 
 // UnsafeNewQTextItem constructs the type using only unsafe pointers.
 func UnsafeNewQTextItem(h unsafe.Pointer) *QTextItem {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextItem{h: (*C.QTextItem)(h)}
+	return newQTextItem((*C.QTextItem)(h))
 }
 
 func (this *QTextItem) Descent() float64 {
@@ -205,34 +202,27 @@ func newQPaintEngine(h *C.QPaintEngine) *QPaintEngine {
 	if h == nil {
 		return nil
 	}
+
 	return &QPaintEngine{h: h}
 }
 
 // UnsafeNewQPaintEngine constructs the type using only unsafe pointers.
 func UnsafeNewQPaintEngine(h unsafe.Pointer) *QPaintEngine {
-	if h == nil {
-		return nil
-	}
-
-	return &QPaintEngine{h: (*C.QPaintEngine)(h)}
+	return newQPaintEngine((*C.QPaintEngine)(h))
 }
 
 // NewQPaintEngine constructs a new QPaintEngine object.
 func NewQPaintEngine() *QPaintEngine {
-	var outptr_QPaintEngine *C.QPaintEngine = nil
 
-	C.QPaintEngine_new(&outptr_QPaintEngine)
-	ret := newQPaintEngine(outptr_QPaintEngine)
+	ret := newQPaintEngine(C.QPaintEngine_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPaintEngine2 constructs a new QPaintEngine object.
 func NewQPaintEngine2(features QPaintEngine__PaintEngineFeature) *QPaintEngine {
-	var outptr_QPaintEngine *C.QPaintEngine = nil
 
-	C.QPaintEngine_new2((C.int)(features), &outptr_QPaintEngine)
-	ret := newQPaintEngine(outptr_QPaintEngine)
+	ret := newQPaintEngine(C.QPaintEngine_new2((C.int)(features)))
 	ret.isSubclass = true
 	return ret
 }
@@ -770,7 +760,7 @@ func miqt_exec_callback_QPaintEngine_DrawPixmap(self *C.QPaintEngine, cb C.intpt
 	// Convert all CABI parameters to Go parameters
 	slotval1 := newQRectF(r)
 
-	slotval2 := newQPixmap(pm, nil)
+	slotval2 := newQPixmap(pm)
 
 	slotval3 := newQRectF(sr)
 
@@ -828,7 +818,7 @@ func miqt_exec_callback_QPaintEngine_DrawTiledPixmap(self *C.QPaintEngine, cb C.
 	// Convert all CABI parameters to Go parameters
 	slotval1 := newQRectF(r)
 
-	slotval2 := newQPixmap(pixmap, nil)
+	slotval2 := newQPixmap(pixmap)
 
 	slotval3 := newQPointF(s)
 
@@ -858,7 +848,7 @@ func miqt_exec_callback_QPaintEngine_DrawImage(self *C.QPaintEngine, cb C.intptr
 	// Convert all CABI parameters to Go parameters
 	slotval1 := newQRectF(r)
 
-	slotval2 := newQImage(pm, nil)
+	slotval2 := newQImage(pm)
 
 	slotval3 := newQRectF(sr)
 
@@ -952,16 +942,13 @@ func newQPaintEngineState(h *C.QPaintEngineState) *QPaintEngineState {
 	if h == nil {
 		return nil
 	}
+
 	return &QPaintEngineState{h: h}
 }
 
 // UnsafeNewQPaintEngineState constructs the type using only unsafe pointers.
 func UnsafeNewQPaintEngineState(h unsafe.Pointer) *QPaintEngineState {
-	if h == nil {
-		return nil
-	}
-
-	return &QPaintEngineState{h: (*C.QPaintEngineState)(h)}
+	return newQPaintEngineState((*C.QPaintEngineState)(h))
 }
 
 func (this *QPaintEngineState) State() QPaintEngine__DirtyFlag {

@@ -26,6 +26,7 @@ typedef struct QObject QObject;
 typedef struct QRadioTunerControl QRadioTunerControl;
 #endif
 
+void QRadioTunerControl_virtbase(QRadioTunerControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QRadioTunerControl_MetaObject(const QRadioTunerControl* self);
 void* QRadioTunerControl_Metacast(QRadioTunerControl* self, const char* param1);
 struct miqt_string QRadioTunerControl_Tr(const char* s);

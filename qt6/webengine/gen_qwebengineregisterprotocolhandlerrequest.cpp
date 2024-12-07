@@ -7,14 +7,12 @@
 #include "gen_qwebengineregisterprotocolhandlerrequest.h"
 #include "_cgo_export.h"
 
-void QWebEngineRegisterProtocolHandlerRequest_new(QWebEngineRegisterProtocolHandlerRequest** outptr_QWebEngineRegisterProtocolHandlerRequest) {
-	QWebEngineRegisterProtocolHandlerRequest* ret = new QWebEngineRegisterProtocolHandlerRequest();
-	*outptr_QWebEngineRegisterProtocolHandlerRequest = ret;
+QWebEngineRegisterProtocolHandlerRequest* QWebEngineRegisterProtocolHandlerRequest_new() {
+	return new QWebEngineRegisterProtocolHandlerRequest();
 }
 
-void QWebEngineRegisterProtocolHandlerRequest_new2(QWebEngineRegisterProtocolHandlerRequest* param1, QWebEngineRegisterProtocolHandlerRequest** outptr_QWebEngineRegisterProtocolHandlerRequest) {
-	QWebEngineRegisterProtocolHandlerRequest* ret = new QWebEngineRegisterProtocolHandlerRequest(*param1);
-	*outptr_QWebEngineRegisterProtocolHandlerRequest = ret;
+QWebEngineRegisterProtocolHandlerRequest* QWebEngineRegisterProtocolHandlerRequest_new2(QWebEngineRegisterProtocolHandlerRequest* param1) {
+	return new QWebEngineRegisterProtocolHandlerRequest(*param1);
 }
 
 void QWebEngineRegisterProtocolHandlerRequest_Accept(QWebEngineRegisterProtocolHandlerRequest* self) {

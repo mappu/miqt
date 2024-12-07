@@ -46,76 +46,50 @@ func (this *QFontDialog) UnsafePointer() unsafe.Pointer {
 }
 
 // newQFontDialog constructs the type using only CGO pointers.
-func newQFontDialog(h *C.QFontDialog, h_QDialog *C.QDialog, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QFontDialog {
+func newQFontDialog(h *C.QFontDialog) *QFontDialog {
 	if h == nil {
 		return nil
 	}
+	var outptr_QDialog *C.QDialog = nil
+	C.QFontDialog_virtbase(h, &outptr_QDialog)
+
 	return &QFontDialog{h: h,
-		QDialog: newQDialog(h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
+		QDialog: newQDialog(outptr_QDialog)}
 }
 
 // UnsafeNewQFontDialog constructs the type using only unsafe pointers.
-func UnsafeNewQFontDialog(h unsafe.Pointer, h_QDialog unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QFontDialog {
-	if h == nil {
-		return nil
-	}
-
-	return &QFontDialog{h: (*C.QFontDialog)(h),
-		QDialog: UnsafeNewQDialog(h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQFontDialog(h unsafe.Pointer) *QFontDialog {
+	return newQFontDialog((*C.QFontDialog)(h))
 }
 
 // NewQFontDialog constructs a new QFontDialog object.
 func NewQFontDialog(parent *QWidget) *QFontDialog {
-	var outptr_QFontDialog *C.QFontDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QFontDialog_new(parent.cPointer(), &outptr_QFontDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQFontDialog(outptr_QFontDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQFontDialog(C.QFontDialog_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFontDialog2 constructs a new QFontDialog object.
 func NewQFontDialog2() *QFontDialog {
-	var outptr_QFontDialog *C.QFontDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QFontDialog_new2(&outptr_QFontDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQFontDialog(outptr_QFontDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQFontDialog(C.QFontDialog_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFontDialog3 constructs a new QFontDialog object.
 func NewQFontDialog3(initial *QFont) *QFontDialog {
-	var outptr_QFontDialog *C.QFontDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QFontDialog_new3(initial.cPointer(), &outptr_QFontDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQFontDialog(outptr_QFontDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQFontDialog(C.QFontDialog_new3(initial.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFontDialog4 constructs a new QFontDialog object.
 func NewQFontDialog4(initial *QFont, parent *QWidget) *QFontDialog {
-	var outptr_QFontDialog *C.QFontDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QFontDialog_new4(initial.cPointer(), parent.cPointer(), &outptr_QFontDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQFontDialog(outptr_QFontDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQFontDialog(C.QFontDialog_new4(initial.cPointer(), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -561,7 +535,7 @@ func miqt_exec_callback_QFontDialog_KeyPressEvent(self *C.QFontDialog, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(param1, nil, nil)
+	slotval1 := newQKeyEvent(param1)
 
 	gofunc((&QFontDialog{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -587,7 +561,7 @@ func miqt_exec_callback_QFontDialog_CloseEvent(self *C.QFontDialog, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQCloseEvent(param1, nil)
+	slotval1 := newQCloseEvent(param1)
 
 	gofunc((&QFontDialog{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -613,7 +587,7 @@ func miqt_exec_callback_QFontDialog_ShowEvent(self *C.QFontDialog, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQShowEvent(param1, nil)
+	slotval1 := newQShowEvent(param1)
 
 	gofunc((&QFontDialog{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -639,7 +613,7 @@ func miqt_exec_callback_QFontDialog_ResizeEvent(self *C.QFontDialog, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(param1, nil)
+	slotval1 := newQResizeEvent(param1)
 
 	gofunc((&QFontDialog{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -665,7 +639,7 @@ func miqt_exec_callback_QFontDialog_ContextMenuEvent(self *C.QFontDialog, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQContextMenuEvent(param1, nil, nil)
+	slotval1 := newQContextMenuEvent(param1)
 
 	gofunc((&QFontDialog{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 

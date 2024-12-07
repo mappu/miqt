@@ -28,8 +28,8 @@ typedef struct QProcess QProcess;
 typedef struct QProcessEnvironment QProcessEnvironment;
 #endif
 
-void QProcessEnvironment_new(QProcessEnvironment** outptr_QProcessEnvironment);
-void QProcessEnvironment_new2(QProcessEnvironment* other, QProcessEnvironment** outptr_QProcessEnvironment);
+QProcessEnvironment* QProcessEnvironment_new();
+QProcessEnvironment* QProcessEnvironment_new2(QProcessEnvironment* other);
 void QProcessEnvironment_OperatorAssign(QProcessEnvironment* self, QProcessEnvironment* other);
 void QProcessEnvironment_Swap(QProcessEnvironment* self, QProcessEnvironment* other);
 bool QProcessEnvironment_OperatorEqual(const QProcessEnvironment* self, QProcessEnvironment* other);
@@ -47,8 +47,9 @@ QProcessEnvironment* QProcessEnvironment_SystemEnvironment();
 struct miqt_string QProcessEnvironment_Value2(const QProcessEnvironment* self, struct miqt_string name, struct miqt_string defaultValue);
 void QProcessEnvironment_Delete(QProcessEnvironment* self, bool isSubclass);
 
-void QProcess_new(QProcess** outptr_QProcess, QIODevice** outptr_QIODevice, QObject** outptr_QObject);
-void QProcess_new2(QObject* parent, QProcess** outptr_QProcess, QIODevice** outptr_QIODevice, QObject** outptr_QObject);
+QProcess* QProcess_new();
+QProcess* QProcess_new2(QObject* parent);
+void QProcess_virtbase(QProcess* src, QIODevice** outptr_QIODevice);
 QMetaObject* QProcess_MetaObject(const QProcess* self);
 void* QProcess_Metacast(QProcess* self, const char* param1);
 struct miqt_string QProcess_Tr(const char* s);

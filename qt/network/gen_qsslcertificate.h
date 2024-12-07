@@ -30,12 +30,12 @@ typedef struct QSslError QSslError;
 typedef struct QSslKey QSslKey;
 #endif
 
-void QSslCertificate_new(QIODevice* device, QSslCertificate** outptr_QSslCertificate);
-void QSslCertificate_new2(QSslCertificate** outptr_QSslCertificate);
-void QSslCertificate_new3(QSslCertificate* other, QSslCertificate** outptr_QSslCertificate);
-void QSslCertificate_new4(QIODevice* device, int format, QSslCertificate** outptr_QSslCertificate);
-void QSslCertificate_new5(struct miqt_string data, QSslCertificate** outptr_QSslCertificate);
-void QSslCertificate_new6(struct miqt_string data, int format, QSslCertificate** outptr_QSslCertificate);
+QSslCertificate* QSslCertificate_new(QIODevice* device);
+QSslCertificate* QSslCertificate_new2();
+QSslCertificate* QSslCertificate_new3(QSslCertificate* other);
+QSslCertificate* QSslCertificate_new4(QIODevice* device, int format);
+QSslCertificate* QSslCertificate_new5(struct miqt_string data);
+QSslCertificate* QSslCertificate_new6(struct miqt_string data, int format);
 void QSslCertificate_OperatorAssign(QSslCertificate* self, QSslCertificate* other);
 void QSslCertificate_Swap(QSslCertificate* self, QSslCertificate* other);
 bool QSslCertificate_OperatorEqual(const QSslCertificate* self, QSslCertificate* other);

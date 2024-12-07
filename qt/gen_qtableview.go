@@ -35,52 +35,34 @@ func (this *QTableView) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTableView constructs the type using only CGO pointers.
-func newQTableView(h *C.QTableView, h_QAbstractItemView *C.QAbstractItemView, h_QAbstractScrollArea *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QTableView {
+func newQTableView(h *C.QTableView) *QTableView {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractItemView *C.QAbstractItemView = nil
+	C.QTableView_virtbase(h, &outptr_QAbstractItemView)
+
 	return &QTableView{h: h,
-		QAbstractItemView: newQAbstractItemView(h_QAbstractItemView, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+		QAbstractItemView: newQAbstractItemView(outptr_QAbstractItemView)}
 }
 
 // UnsafeNewQTableView constructs the type using only unsafe pointers.
-func UnsafeNewQTableView(h unsafe.Pointer, h_QAbstractItemView unsafe.Pointer, h_QAbstractScrollArea unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QTableView {
-	if h == nil {
-		return nil
-	}
-
-	return &QTableView{h: (*C.QTableView)(h),
-		QAbstractItemView: UnsafeNewQAbstractItemView(h_QAbstractItemView, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQTableView(h unsafe.Pointer) *QTableView {
+	return newQTableView((*C.QTableView)(h))
 }
 
 // NewQTableView constructs a new QTableView object.
 func NewQTableView(parent *QWidget) *QTableView {
-	var outptr_QTableView *C.QTableView = nil
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QTableView_new(parent.cPointer(), &outptr_QTableView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQTableView(outptr_QTableView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQTableView(C.QTableView_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTableView2 constructs a new QTableView object.
 func NewQTableView2() *QTableView {
-	var outptr_QTableView *C.QTableView = nil
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QTableView_new2(&outptr_QTableView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQTableView(outptr_QTableView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQTableView(C.QTableView_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -130,11 +112,11 @@ func (this *QTableView) DoItemsLayout() {
 }
 
 func (this *QTableView) HorizontalHeader() *QHeaderView {
-	return newQHeaderView(C.QTableView_HorizontalHeader(this.h), nil, nil, nil, nil, nil, nil)
+	return newQHeaderView(C.QTableView_HorizontalHeader(this.h))
 }
 
 func (this *QTableView) VerticalHeader() *QHeaderView {
-	return newQHeaderView(C.QTableView_VerticalHeader(this.h), nil, nil, nil, nil, nil, nil)
+	return newQHeaderView(C.QTableView_VerticalHeader(this.h))
 }
 
 func (this *QTableView) SetHorizontalHeader(header *QHeaderView) {
@@ -377,7 +359,7 @@ func miqt_exec_callback_QTableView_SetModel(self *C.QTableView, cb C.intptr_t, m
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQAbstractItemModel(model, nil)
+	slotval1 := newQAbstractItemModel(model)
 
 	gofunc((&QTableView{h: self}).callVirtualBase_SetModel, slotval1)
 
@@ -429,7 +411,7 @@ func miqt_exec_callback_QTableView_SetSelectionModel(self *C.QTableView, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQItemSelectionModel(selectionModel, nil)
+	slotval1 := newQItemSelectionModel(selectionModel)
 
 	gofunc((&QTableView{h: self}).callVirtualBase_SetSelectionModel, slotval1)
 
@@ -576,7 +558,7 @@ func miqt_exec_callback_QTableView_ScrollContentsBy(self *C.QTableView, cb C.int
 
 func (this *QTableView) callVirtualBase_ViewOptions() *QStyleOptionViewItem {
 
-	_goptr := newQStyleOptionViewItem(C.QTableView_virtualbase_ViewOptions(unsafe.Pointer(this.h)), nil)
+	_goptr := newQStyleOptionViewItem(C.QTableView_virtualbase_ViewOptions(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -621,7 +603,7 @@ func miqt_exec_callback_QTableView_PaintEvent(self *C.QTableView, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(e, nil)
+	slotval1 := newQPaintEvent(e)
 
 	gofunc((&QTableView{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -647,7 +629,7 @@ func miqt_exec_callback_QTableView_TimerEvent(self *C.QTableView, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QTableView{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -1403,7 +1385,7 @@ func miqt_exec_callback_QTableView_CloseEditor(self *C.QTableView, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(editor, nil, nil)
+	slotval1 := newQWidget(editor)
 
 	slotval2 := (QAbstractItemDelegate__EndEditHint)(hint)
 
@@ -1431,7 +1413,7 @@ func miqt_exec_callback_QTableView_CommitData(self *C.QTableView, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(editor, nil, nil)
+	slotval1 := newQWidget(editor)
 
 	gofunc((&QTableView{h: self}).callVirtualBase_CommitData, slotval1)
 
@@ -1655,7 +1637,7 @@ func miqt_exec_callback_QTableView_MousePressEvent(self *C.QTableView, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QTableView{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -1681,7 +1663,7 @@ func miqt_exec_callback_QTableView_MouseMoveEvent(self *C.QTableView, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QTableView{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -1707,7 +1689,7 @@ func miqt_exec_callback_QTableView_MouseReleaseEvent(self *C.QTableView, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QTableView{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -1733,7 +1715,7 @@ func miqt_exec_callback_QTableView_MouseDoubleClickEvent(self *C.QTableView, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QTableView{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -1759,7 +1741,7 @@ func miqt_exec_callback_QTableView_DragEnterEvent(self *C.QTableView, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragEnterEvent(event, nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event)
 
 	gofunc((&QTableView{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -1785,7 +1767,7 @@ func miqt_exec_callback_QTableView_DragMoveEvent(self *C.QTableView, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragMoveEvent(event, nil, nil)
+	slotval1 := newQDragMoveEvent(event)
 
 	gofunc((&QTableView{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1811,7 +1793,7 @@ func miqt_exec_callback_QTableView_DragLeaveEvent(self *C.QTableView, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragLeaveEvent(event, nil)
+	slotval1 := newQDragLeaveEvent(event)
 
 	gofunc((&QTableView{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1837,7 +1819,7 @@ func miqt_exec_callback_QTableView_DropEvent(self *C.QTableView, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDropEvent(event, nil)
+	slotval1 := newQDropEvent(event)
 
 	gofunc((&QTableView{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1863,7 +1845,7 @@ func miqt_exec_callback_QTableView_FocusInEvent(self *C.QTableView, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QTableView{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -1889,7 +1871,7 @@ func miqt_exec_callback_QTableView_FocusOutEvent(self *C.QTableView, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QTableView{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -1915,7 +1897,7 @@ func miqt_exec_callback_QTableView_KeyPressEvent(self *C.QTableView, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(event, nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QTableView{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -1941,7 +1923,7 @@ func miqt_exec_callback_QTableView_ResizeEvent(self *C.QTableView, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(event, nil)
+	slotval1 := newQResizeEvent(event)
 
 	gofunc((&QTableView{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -1967,7 +1949,7 @@ func miqt_exec_callback_QTableView_InputMethodEvent(self *C.QTableView, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQInputMethodEvent(event, nil)
+	slotval1 := newQInputMethodEvent(event)
 
 	gofunc((&QTableView{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 

@@ -30,8 +30,9 @@ typedef struct QObject QObject;
 typedef struct QParallelAnimationGroup QParallelAnimationGroup;
 #endif
 
-void QParallelAnimationGroup_new(QParallelAnimationGroup** outptr_QParallelAnimationGroup, QAnimationGroup** outptr_QAnimationGroup, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject);
-void QParallelAnimationGroup_new2(QObject* parent, QParallelAnimationGroup** outptr_QParallelAnimationGroup, QAnimationGroup** outptr_QAnimationGroup, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject);
+QParallelAnimationGroup* QParallelAnimationGroup_new();
+QParallelAnimationGroup* QParallelAnimationGroup_new2(QObject* parent);
+void QParallelAnimationGroup_virtbase(QParallelAnimationGroup* src, QAnimationGroup** outptr_QAnimationGroup);
 QMetaObject* QParallelAnimationGroup_MetaObject(const QParallelAnimationGroup* self);
 void* QParallelAnimationGroup_Metacast(QParallelAnimationGroup* self, const char* param1);
 struct miqt_string QParallelAnimationGroup_Tr(const char* s);

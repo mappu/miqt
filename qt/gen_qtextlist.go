@@ -35,33 +35,26 @@ func (this *QTextList) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTextList constructs the type using only CGO pointers.
-func newQTextList(h *C.QTextList, h_QTextBlockGroup *C.QTextBlockGroup, h_QTextObject *C.QTextObject, h_QObject *C.QObject) *QTextList {
+func newQTextList(h *C.QTextList) *QTextList {
 	if h == nil {
 		return nil
 	}
+	var outptr_QTextBlockGroup *C.QTextBlockGroup = nil
+	C.QTextList_virtbase(h, &outptr_QTextBlockGroup)
+
 	return &QTextList{h: h,
-		QTextBlockGroup: newQTextBlockGroup(h_QTextBlockGroup, h_QTextObject, h_QObject)}
+		QTextBlockGroup: newQTextBlockGroup(outptr_QTextBlockGroup)}
 }
 
 // UnsafeNewQTextList constructs the type using only unsafe pointers.
-func UnsafeNewQTextList(h unsafe.Pointer, h_QTextBlockGroup unsafe.Pointer, h_QTextObject unsafe.Pointer, h_QObject unsafe.Pointer) *QTextList {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextList{h: (*C.QTextList)(h),
-		QTextBlockGroup: UnsafeNewQTextBlockGroup(h_QTextBlockGroup, h_QTextObject, h_QObject)}
+func UnsafeNewQTextList(h unsafe.Pointer) *QTextList {
+	return newQTextList((*C.QTextList)(h))
 }
 
 // NewQTextList constructs a new QTextList object.
 func NewQTextList(doc *QTextDocument) *QTextList {
-	var outptr_QTextList *C.QTextList = nil
-	var outptr_QTextBlockGroup *C.QTextBlockGroup = nil
-	var outptr_QTextObject *C.QTextObject = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTextList_new(doc.cPointer(), &outptr_QTextList, &outptr_QTextBlockGroup, &outptr_QTextObject, &outptr_QObject)
-	ret := newQTextList(outptr_QTextList, outptr_QTextBlockGroup, outptr_QTextObject, outptr_QObject)
+	ret := newQTextList(C.QTextList_new(doc.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -136,7 +129,7 @@ func (this *QTextList) SetFormat(format *QTextListFormat) {
 }
 
 func (this *QTextList) Format() *QTextListFormat {
-	_goptr := newQTextListFormat(C.QTextList_Format(this.h), nil)
+	_goptr := newQTextListFormat(C.QTextList_Format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

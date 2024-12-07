@@ -100,12 +100,13 @@ typedef struct QVariant QVariant;
 typedef struct QWidget QWidget;
 #endif
 
-void QGraphicsScene_new(QGraphicsScene** outptr_QGraphicsScene, QObject** outptr_QObject);
-void QGraphicsScene_new2(QRectF* sceneRect, QGraphicsScene** outptr_QGraphicsScene, QObject** outptr_QObject);
-void QGraphicsScene_new3(double x, double y, double width, double height, QGraphicsScene** outptr_QGraphicsScene, QObject** outptr_QObject);
-void QGraphicsScene_new4(QObject* parent, QGraphicsScene** outptr_QGraphicsScene, QObject** outptr_QObject);
-void QGraphicsScene_new5(QRectF* sceneRect, QObject* parent, QGraphicsScene** outptr_QGraphicsScene, QObject** outptr_QObject);
-void QGraphicsScene_new6(double x, double y, double width, double height, QObject* parent, QGraphicsScene** outptr_QGraphicsScene, QObject** outptr_QObject);
+QGraphicsScene* QGraphicsScene_new();
+QGraphicsScene* QGraphicsScene_new2(QRectF* sceneRect);
+QGraphicsScene* QGraphicsScene_new3(double x, double y, double width, double height);
+QGraphicsScene* QGraphicsScene_new4(QObject* parent);
+QGraphicsScene* QGraphicsScene_new5(QRectF* sceneRect, QObject* parent);
+QGraphicsScene* QGraphicsScene_new6(double x, double y, double width, double height, QObject* parent);
+void QGraphicsScene_virtbase(QGraphicsScene* src, QObject** outptr_QObject);
 QMetaObject* QGraphicsScene_MetaObject(const QGraphicsScene* self);
 void* QGraphicsScene_Metacast(QGraphicsScene* self, const char* param1);
 struct miqt_string QGraphicsScene_Tr(const char* s);

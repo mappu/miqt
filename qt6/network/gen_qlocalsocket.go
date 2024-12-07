@@ -68,46 +68,34 @@ func (this *QLocalSocket) UnsafePointer() unsafe.Pointer {
 }
 
 // newQLocalSocket constructs the type using only CGO pointers.
-func newQLocalSocket(h *C.QLocalSocket, h_QIODevice *C.QIODevice, h_QObject *C.QObject, h_QIODeviceBase *C.QIODeviceBase) *QLocalSocket {
+func newQLocalSocket(h *C.QLocalSocket) *QLocalSocket {
 	if h == nil {
 		return nil
 	}
+	var outptr_QIODevice *C.QIODevice = nil
+	C.QLocalSocket_virtbase(h, &outptr_QIODevice)
+
 	return &QLocalSocket{h: h,
-		QIODevice: qt6.UnsafeNewQIODevice(unsafe.Pointer(h_QIODevice), unsafe.Pointer(h_QObject), unsafe.Pointer(h_QIODeviceBase))}
+		QIODevice: qt6.UnsafeNewQIODevice(unsafe.Pointer(outptr_QIODevice))}
 }
 
 // UnsafeNewQLocalSocket constructs the type using only unsafe pointers.
-func UnsafeNewQLocalSocket(h unsafe.Pointer, h_QIODevice unsafe.Pointer, h_QObject unsafe.Pointer, h_QIODeviceBase unsafe.Pointer) *QLocalSocket {
-	if h == nil {
-		return nil
-	}
-
-	return &QLocalSocket{h: (*C.QLocalSocket)(h),
-		QIODevice: qt6.UnsafeNewQIODevice(h_QIODevice, h_QObject, h_QIODeviceBase)}
+func UnsafeNewQLocalSocket(h unsafe.Pointer) *QLocalSocket {
+	return newQLocalSocket((*C.QLocalSocket)(h))
 }
 
 // NewQLocalSocket constructs a new QLocalSocket object.
 func NewQLocalSocket() *QLocalSocket {
-	var outptr_QLocalSocket *C.QLocalSocket = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QIODeviceBase *C.QIODeviceBase = nil
 
-	C.QLocalSocket_new(&outptr_QLocalSocket, &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
-	ret := newQLocalSocket(outptr_QLocalSocket, outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret := newQLocalSocket(C.QLocalSocket_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQLocalSocket2 constructs a new QLocalSocket object.
 func NewQLocalSocket2(parent *qt6.QObject) *QLocalSocket {
-	var outptr_QLocalSocket *C.QLocalSocket = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QIODeviceBase *C.QIODeviceBase = nil
 
-	C.QLocalSocket_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QLocalSocket, &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
-	ret := newQLocalSocket(outptr_QLocalSocket, outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret := newQLocalSocket(C.QLocalSocket_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }

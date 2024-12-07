@@ -38,34 +38,27 @@ func newQCborArray(h *C.QCborArray) *QCborArray {
 	if h == nil {
 		return nil
 	}
+
 	return &QCborArray{h: h}
 }
 
 // UnsafeNewQCborArray constructs the type using only unsafe pointers.
 func UnsafeNewQCborArray(h unsafe.Pointer) *QCborArray {
-	if h == nil {
-		return nil
-	}
-
-	return &QCborArray{h: (*C.QCborArray)(h)}
+	return newQCborArray((*C.QCborArray)(h))
 }
 
 // NewQCborArray constructs a new QCborArray object.
 func NewQCborArray() *QCborArray {
-	var outptr_QCborArray *C.QCborArray = nil
 
-	C.QCborArray_new(&outptr_QCborArray)
-	ret := newQCborArray(outptr_QCborArray)
+	ret := newQCborArray(C.QCborArray_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCborArray2 constructs a new QCborArray object.
 func NewQCborArray2(other *QCborArray) *QCborArray {
-	var outptr_QCborArray *C.QCborArray = nil
 
-	C.QCborArray_new2(other.cPointer(), &outptr_QCborArray)
-	ret := newQCborArray(outptr_QCborArray)
+	ret := newQCborArray(C.QCborArray_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -384,34 +377,27 @@ func newQCborArray__Iterator(h *C.QCborArray__Iterator) *QCborArray__Iterator {
 	if h == nil {
 		return nil
 	}
+
 	return &QCborArray__Iterator{h: h}
 }
 
 // UnsafeNewQCborArray__Iterator constructs the type using only unsafe pointers.
 func UnsafeNewQCborArray__Iterator(h unsafe.Pointer) *QCborArray__Iterator {
-	if h == nil {
-		return nil
-	}
-
-	return &QCborArray__Iterator{h: (*C.QCborArray__Iterator)(h)}
+	return newQCborArray__Iterator((*C.QCborArray__Iterator)(h))
 }
 
 // NewQCborArray__Iterator constructs a new QCborArray::Iterator object.
 func NewQCborArray__Iterator() *QCborArray__Iterator {
-	var outptr_QCborArray__Iterator *C.QCborArray__Iterator = nil
 
-	C.QCborArray__Iterator_new(&outptr_QCborArray__Iterator)
-	ret := newQCborArray__Iterator(outptr_QCborArray__Iterator)
+	ret := newQCborArray__Iterator(C.QCborArray__Iterator_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCborArray__Iterator2 constructs a new QCborArray::Iterator object.
 func NewQCborArray__Iterator2(param1 *QCborArray__Iterator) *QCborArray__Iterator {
-	var outptr_QCborArray__Iterator *C.QCborArray__Iterator = nil
 
-	C.QCborArray__Iterator_new2(param1.cPointer(), &outptr_QCborArray__Iterator)
-	ret := newQCborArray__Iterator(outptr_QCborArray__Iterator)
+	ret := newQCborArray__Iterator(C.QCborArray__Iterator_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -566,34 +552,27 @@ func newQCborArray__ConstIterator(h *C.QCborArray__ConstIterator) *QCborArray__C
 	if h == nil {
 		return nil
 	}
+
 	return &QCborArray__ConstIterator{h: h}
 }
 
 // UnsafeNewQCborArray__ConstIterator constructs the type using only unsafe pointers.
 func UnsafeNewQCborArray__ConstIterator(h unsafe.Pointer) *QCborArray__ConstIterator {
-	if h == nil {
-		return nil
-	}
-
-	return &QCborArray__ConstIterator{h: (*C.QCborArray__ConstIterator)(h)}
+	return newQCborArray__ConstIterator((*C.QCborArray__ConstIterator)(h))
 }
 
 // NewQCborArray__ConstIterator constructs a new QCborArray::ConstIterator object.
 func NewQCborArray__ConstIterator() *QCborArray__ConstIterator {
-	var outptr_QCborArray__ConstIterator *C.QCborArray__ConstIterator = nil
 
-	C.QCborArray__ConstIterator_new(&outptr_QCborArray__ConstIterator)
-	ret := newQCborArray__ConstIterator(outptr_QCborArray__ConstIterator)
+	ret := newQCborArray__ConstIterator(C.QCborArray__ConstIterator_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCborArray__ConstIterator2 constructs a new QCborArray::ConstIterator object.
 func NewQCborArray__ConstIterator2(param1 *QCborArray__ConstIterator) *QCborArray__ConstIterator {
-	var outptr_QCborArray__ConstIterator *C.QCborArray__ConstIterator = nil
 
-	C.QCborArray__ConstIterator_new2(param1.cPointer(), &outptr_QCborArray__ConstIterator)
-	ret := newQCborArray__ConstIterator(outptr_QCborArray__ConstIterator)
+	ret := newQCborArray__ConstIterator(C.QCborArray__ConstIterator_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

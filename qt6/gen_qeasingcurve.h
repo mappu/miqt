@@ -22,9 +22,9 @@ typedef struct QEasingCurve QEasingCurve;
 typedef struct QPointF QPointF;
 #endif
 
-void QEasingCurve_new(QEasingCurve** outptr_QEasingCurve);
-void QEasingCurve_new2(QEasingCurve* other, QEasingCurve** outptr_QEasingCurve);
-void QEasingCurve_new3(int typeVal, QEasingCurve** outptr_QEasingCurve);
+QEasingCurve* QEasingCurve_new();
+QEasingCurve* QEasingCurve_new2(QEasingCurve* other);
+QEasingCurve* QEasingCurve_new3(int typeVal);
 void QEasingCurve_OperatorAssign(QEasingCurve* self, QEasingCurve* other);
 void QEasingCurve_Swap(QEasingCurve* self, QEasingCurve* other);
 bool QEasingCurve_OperatorEqual(const QEasingCurve* self, QEasingCurve* other);

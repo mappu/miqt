@@ -36,42 +36,34 @@ func (this *QTcpServer) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTcpServer constructs the type using only CGO pointers.
-func newQTcpServer(h *C.QTcpServer, h_QObject *C.QObject) *QTcpServer {
+func newQTcpServer(h *C.QTcpServer) *QTcpServer {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QTcpServer_virtbase(h, &outptr_QObject)
+
 	return &QTcpServer{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQTcpServer constructs the type using only unsafe pointers.
-func UnsafeNewQTcpServer(h unsafe.Pointer, h_QObject unsafe.Pointer) *QTcpServer {
-	if h == nil {
-		return nil
-	}
-
-	return &QTcpServer{h: (*C.QTcpServer)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQTcpServer(h unsafe.Pointer) *QTcpServer {
+	return newQTcpServer((*C.QTcpServer)(h))
 }
 
 // NewQTcpServer constructs a new QTcpServer object.
 func NewQTcpServer() *QTcpServer {
-	var outptr_QTcpServer *C.QTcpServer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTcpServer_new(&outptr_QTcpServer, &outptr_QObject)
-	ret := newQTcpServer(outptr_QTcpServer, outptr_QObject)
+	ret := newQTcpServer(C.QTcpServer_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTcpServer2 constructs a new QTcpServer object.
 func NewQTcpServer2(parent *qt6.QObject) *QTcpServer {
-	var outptr_QTcpServer *C.QTcpServer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTcpServer_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QTcpServer, &outptr_QObject)
-	ret := newQTcpServer(outptr_QTcpServer, outptr_QObject)
+	ret := newQTcpServer(C.QTcpServer_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -150,7 +142,7 @@ func (this *QTcpServer) HasPendingConnections() bool {
 }
 
 func (this *QTcpServer) NextPendingConnection() *QTcpSocket {
-	return newQTcpSocket(C.QTcpServer_NextPendingConnection(this.h), nil, nil, nil, nil)
+	return newQTcpSocket(C.QTcpServer_NextPendingConnection(this.h))
 }
 
 func (this *QTcpServer) ServerError() QAbstractSocket__SocketError {
@@ -284,7 +276,7 @@ func miqt_exec_callback_QTcpServer_HasPendingConnections(self *C.QTcpServer, cb 
 
 func (this *QTcpServer) callVirtualBase_NextPendingConnection() *QTcpSocket {
 
-	return newQTcpSocket(C.QTcpServer_virtualbase_NextPendingConnection(unsafe.Pointer(this.h)), nil, nil, nil, nil)
+	return newQTcpSocket(C.QTcpServer_virtualbase_NextPendingConnection(unsafe.Pointer(this.h)))
 
 }
 func (this *QTcpServer) OnNextPendingConnection(slot func(super func() *QTcpSocket) *QTcpSocket) {
@@ -411,7 +403,7 @@ func miqt_exec_callback_QTcpServer_TimerEvent(self *C.QTcpServer, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QTcpServer{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -437,7 +429,7 @@ func miqt_exec_callback_QTcpServer_ChildEvent(self *C.QTcpServer, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QTcpServer{h: self}).callVirtualBase_ChildEvent, slotval1)
 

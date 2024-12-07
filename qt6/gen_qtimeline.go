@@ -50,53 +50,42 @@ func (this *QTimeLine) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTimeLine constructs the type using only CGO pointers.
-func newQTimeLine(h *C.QTimeLine, h_QObject *C.QObject) *QTimeLine {
+func newQTimeLine(h *C.QTimeLine) *QTimeLine {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QTimeLine_virtbase(h, &outptr_QObject)
+
 	return &QTimeLine{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQTimeLine constructs the type using only unsafe pointers.
-func UnsafeNewQTimeLine(h unsafe.Pointer, h_QObject unsafe.Pointer) *QTimeLine {
-	if h == nil {
-		return nil
-	}
-
-	return &QTimeLine{h: (*C.QTimeLine)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQTimeLine(h unsafe.Pointer) *QTimeLine {
+	return newQTimeLine((*C.QTimeLine)(h))
 }
 
 // NewQTimeLine constructs a new QTimeLine object.
 func NewQTimeLine() *QTimeLine {
-	var outptr_QTimeLine *C.QTimeLine = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTimeLine_new(&outptr_QTimeLine, &outptr_QObject)
-	ret := newQTimeLine(outptr_QTimeLine, outptr_QObject)
+	ret := newQTimeLine(C.QTimeLine_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTimeLine2 constructs a new QTimeLine object.
 func NewQTimeLine2(duration int) *QTimeLine {
-	var outptr_QTimeLine *C.QTimeLine = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTimeLine_new2((C.int)(duration), &outptr_QTimeLine, &outptr_QObject)
-	ret := newQTimeLine(outptr_QTimeLine, outptr_QObject)
+	ret := newQTimeLine(C.QTimeLine_new2((C.int)(duration)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTimeLine3 constructs a new QTimeLine object.
 func NewQTimeLine3(duration int, parent *QObject) *QTimeLine {
-	var outptr_QTimeLine *C.QTimeLine = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTimeLine_new3((C.int)(duration), parent.cPointer(), &outptr_QTimeLine, &outptr_QObject)
-	ret := newQTimeLine(outptr_QTimeLine, outptr_QObject)
+	ret := newQTimeLine(C.QTimeLine_new3((C.int)(duration), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -300,7 +289,7 @@ func miqt_exec_callback_QTimeLine_TimerEvent(self *C.QTimeLine, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QTimeLine{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -384,7 +373,7 @@ func miqt_exec_callback_QTimeLine_ChildEvent(self *C.QTimeLine, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QTimeLine{h: self}).callVirtualBase_ChildEvent, slotval1)
 

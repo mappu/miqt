@@ -8,55 +8,46 @@
 #include "gen_qmediacontent.h"
 #include "_cgo_export.h"
 
-void QMediaContent_new(QMediaContent** outptr_QMediaContent) {
-	QMediaContent* ret = new QMediaContent();
-	*outptr_QMediaContent = ret;
+QMediaContent* QMediaContent_new() {
+	return new QMediaContent();
 }
 
-void QMediaContent_new2(QUrl* contentUrl, QMediaContent** outptr_QMediaContent) {
-	QMediaContent* ret = new QMediaContent(*contentUrl);
-	*outptr_QMediaContent = ret;
+QMediaContent* QMediaContent_new2(QUrl* contentUrl) {
+	return new QMediaContent(*contentUrl);
 }
 
-void QMediaContent_new3(QNetworkRequest* contentRequest, QMediaContent** outptr_QMediaContent) {
-	QMediaContent* ret = new QMediaContent(*contentRequest);
-	*outptr_QMediaContent = ret;
+QMediaContent* QMediaContent_new3(QNetworkRequest* contentRequest) {
+	return new QMediaContent(*contentRequest);
 }
 
-void QMediaContent_new4(QMediaResource* contentResource, QMediaContent** outptr_QMediaContent) {
-	QMediaContent* ret = new QMediaContent(*contentResource);
-	*outptr_QMediaContent = ret;
+QMediaContent* QMediaContent_new4(QMediaResource* contentResource) {
+	return new QMediaContent(*contentResource);
 }
 
-void QMediaContent_new5(struct miqt_array /* of QMediaResource* */  resources, QMediaContent** outptr_QMediaContent) {
+QMediaContent* QMediaContent_new5(struct miqt_array /* of QMediaResource* */  resources) {
 	QMediaResourceList resources_QList;
 	resources_QList.reserve(resources.len);
 	QMediaResource** resources_arr = static_cast<QMediaResource**>(resources.data);
 	for(size_t i = 0; i < resources.len; ++i) {
 		resources_QList.push_back(*(resources_arr[i]));
 	}
-	QMediaContent* ret = new QMediaContent(resources_QList);
-	*outptr_QMediaContent = ret;
+	return new QMediaContent(resources_QList);
 }
 
-void QMediaContent_new6(QMediaContent* other, QMediaContent** outptr_QMediaContent) {
-	QMediaContent* ret = new QMediaContent(*other);
-	*outptr_QMediaContent = ret;
+QMediaContent* QMediaContent_new6(QMediaContent* other) {
+	return new QMediaContent(*other);
 }
 
-void QMediaContent_new7(QMediaPlaylist* playlist, QMediaContent** outptr_QMediaContent) {
-	QMediaContent* ret = new QMediaContent(playlist);
-	*outptr_QMediaContent = ret;
+QMediaContent* QMediaContent_new7(QMediaPlaylist* playlist) {
+	return new QMediaContent(playlist);
 }
 
-void QMediaContent_new8(QMediaPlaylist* playlist, QUrl* contentUrl, QMediaContent** outptr_QMediaContent) {
-	QMediaContent* ret = new QMediaContent(playlist, *contentUrl);
-	*outptr_QMediaContent = ret;
+QMediaContent* QMediaContent_new8(QMediaPlaylist* playlist, QUrl* contentUrl) {
+	return new QMediaContent(playlist, *contentUrl);
 }
 
-void QMediaContent_new9(QMediaPlaylist* playlist, QUrl* contentUrl, bool takeOwnership, QMediaContent** outptr_QMediaContent) {
-	QMediaContent* ret = new QMediaContent(playlist, *contentUrl, takeOwnership);
-	*outptr_QMediaContent = ret;
+QMediaContent* QMediaContent_new9(QMediaPlaylist* playlist, QUrl* contentUrl, bool takeOwnership) {
+	return new QMediaContent(playlist, *contentUrl, takeOwnership);
 }
 
 void QMediaContent_OperatorAssign(QMediaContent* self, QMediaContent* other) {

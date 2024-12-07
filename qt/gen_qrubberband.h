@@ -78,8 +78,9 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QRubberBand_new(int param1, QRubberBand** outptr_QRubberBand, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QRubberBand_new2(int param1, QWidget* param2, QRubberBand** outptr_QRubberBand, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QRubberBand* QRubberBand_new(int param1);
+QRubberBand* QRubberBand_new2(int param1, QWidget* param2);
+void QRubberBand_virtbase(QRubberBand* src, QWidget** outptr_QWidget);
 QMetaObject* QRubberBand_MetaObject(const QRubberBand* self);
 void* QRubberBand_Metacast(QRubberBand* self, const char* param1);
 struct miqt_string QRubberBand_Tr(const char* s);

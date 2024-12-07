@@ -22,8 +22,8 @@ typedef struct QIODevice QIODevice;
 typedef struct QSslDiffieHellmanParameters QSslDiffieHellmanParameters;
 #endif
 
-void QSslDiffieHellmanParameters_new(QSslDiffieHellmanParameters** outptr_QSslDiffieHellmanParameters);
-void QSslDiffieHellmanParameters_new2(QSslDiffieHellmanParameters* other, QSslDiffieHellmanParameters** outptr_QSslDiffieHellmanParameters);
+QSslDiffieHellmanParameters* QSslDiffieHellmanParameters_new();
+QSslDiffieHellmanParameters* QSslDiffieHellmanParameters_new2(QSslDiffieHellmanParameters* other);
 QSslDiffieHellmanParameters* QSslDiffieHellmanParameters_DefaultParameters();
 void QSslDiffieHellmanParameters_OperatorAssign(QSslDiffieHellmanParameters* self, QSslDiffieHellmanParameters* other);
 void QSslDiffieHellmanParameters_Swap(QSslDiffieHellmanParameters* self, QSslDiffieHellmanParameters* other);

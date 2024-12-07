@@ -9,6 +9,10 @@
 #include "gen_qcameralockscontrol.h"
 #include "_cgo_export.h"
 
+void QCameraLocksControl_virtbase(QCameraLocksControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
+
 QMetaObject* QCameraLocksControl_MetaObject(const QCameraLocksControl* self) {
 	return (QMetaObject*) self->metaObject();
 }

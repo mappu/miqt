@@ -37,24 +37,19 @@ func newQWebDatabase(h *C.QWebDatabase) *QWebDatabase {
 	if h == nil {
 		return nil
 	}
+
 	return &QWebDatabase{h: h}
 }
 
 // UnsafeNewQWebDatabase constructs the type using only unsafe pointers.
 func UnsafeNewQWebDatabase(h unsafe.Pointer) *QWebDatabase {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebDatabase{h: (*C.QWebDatabase)(h)}
+	return newQWebDatabase((*C.QWebDatabase)(h))
 }
 
 // NewQWebDatabase constructs a new QWebDatabase object.
 func NewQWebDatabase(other *QWebDatabase) *QWebDatabase {
-	var outptr_QWebDatabase *C.QWebDatabase = nil
 
-	C.QWebDatabase_new(other.cPointer(), &outptr_QWebDatabase)
-	ret := newQWebDatabase(outptr_QWebDatabase)
+	ret := newQWebDatabase(C.QWebDatabase_new(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

@@ -4,24 +4,20 @@
 #include "gen_qbitarray.h"
 #include "_cgo_export.h"
 
-void QBitArray_new(QBitArray** outptr_QBitArray) {
-	QBitArray* ret = new QBitArray();
-	*outptr_QBitArray = ret;
+QBitArray* QBitArray_new() {
+	return new QBitArray();
 }
 
-void QBitArray_new2(ptrdiff_t size, QBitArray** outptr_QBitArray) {
-	QBitArray* ret = new QBitArray((qsizetype)(size));
-	*outptr_QBitArray = ret;
+QBitArray* QBitArray_new2(ptrdiff_t size) {
+	return new QBitArray((qsizetype)(size));
 }
 
-void QBitArray_new3(QBitArray* other, QBitArray** outptr_QBitArray) {
-	QBitArray* ret = new QBitArray(*other);
-	*outptr_QBitArray = ret;
+QBitArray* QBitArray_new3(QBitArray* other) {
+	return new QBitArray(*other);
 }
 
-void QBitArray_new4(ptrdiff_t size, bool val, QBitArray** outptr_QBitArray) {
-	QBitArray* ret = new QBitArray((qsizetype)(size), val);
-	*outptr_QBitArray = ret;
+QBitArray* QBitArray_new4(ptrdiff_t size, bool val) {
+	return new QBitArray((qsizetype)(size), val);
 }
 
 void QBitArray_OperatorAssign(QBitArray* self, QBitArray* other) {
@@ -165,9 +161,8 @@ void QBitArray_Delete(QBitArray* self, bool isSubclass) {
 	}
 }
 
-void QBitRef_new(QBitRef* param1, QBitRef** outptr_QBitRef) {
-	QBitRef* ret = new QBitRef(*param1);
-	*outptr_QBitRef = ret;
+QBitRef* QBitRef_new(QBitRef* param1) {
+	return new QBitRef(*param1);
 }
 
 bool QBitRef_OperatorNot(const QBitRef* self) {

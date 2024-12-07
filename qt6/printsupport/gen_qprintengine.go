@@ -75,16 +75,13 @@ func newQPrintEngine(h *C.QPrintEngine) *QPrintEngine {
 	if h == nil {
 		return nil
 	}
+
 	return &QPrintEngine{h: h}
 }
 
 // UnsafeNewQPrintEngine constructs the type using only unsafe pointers.
 func UnsafeNewQPrintEngine(h unsafe.Pointer) *QPrintEngine {
-	if h == nil {
-		return nil
-	}
-
-	return &QPrintEngine{h: (*C.QPrintEngine)(h)}
+	return newQPrintEngine((*C.QPrintEngine)(h))
 }
 
 func (this *QPrintEngine) SetProperty(key QPrintEngine__PrintEnginePropertyKey, value *qt6.QVariant) {

@@ -62,8 +62,9 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QSpinBox_new(QWidget* parent, QSpinBox** outptr_QSpinBox, QAbstractSpinBox** outptr_QAbstractSpinBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QSpinBox_new2(QSpinBox** outptr_QSpinBox, QAbstractSpinBox** outptr_QAbstractSpinBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QSpinBox* QSpinBox_new(QWidget* parent);
+QSpinBox* QSpinBox_new2();
+void QSpinBox_virtbase(QSpinBox* src, QAbstractSpinBox** outptr_QAbstractSpinBox);
 QMetaObject* QSpinBox_MetaObject(const QSpinBox* self);
 void* QSpinBox_Metacast(QSpinBox* self, const char* param1);
 struct miqt_string QSpinBox_Tr(const char* s);
@@ -154,8 +155,9 @@ void QSpinBox_override_virtual_StepEnabled(void* self, intptr_t slot);
 int QSpinBox_virtualbase_StepEnabled(const void* self);
 void QSpinBox_Delete(QSpinBox* self, bool isSubclass);
 
-void QDoubleSpinBox_new(QWidget* parent, QDoubleSpinBox** outptr_QDoubleSpinBox, QAbstractSpinBox** outptr_QAbstractSpinBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QDoubleSpinBox_new2(QDoubleSpinBox** outptr_QDoubleSpinBox, QAbstractSpinBox** outptr_QAbstractSpinBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QDoubleSpinBox* QDoubleSpinBox_new(QWidget* parent);
+QDoubleSpinBox* QDoubleSpinBox_new2();
+void QDoubleSpinBox_virtbase(QDoubleSpinBox* src, QAbstractSpinBox** outptr_QAbstractSpinBox);
 QMetaObject* QDoubleSpinBox_MetaObject(const QDoubleSpinBox* self);
 void* QDoubleSpinBox_Metacast(QDoubleSpinBox* self, const char* param1);
 struct miqt_string QDoubleSpinBox_Tr(const char* s);

@@ -63,34 +63,27 @@ func newQPropertyBindingSourceLocation(h *C.QPropertyBindingSourceLocation) *QPr
 	if h == nil {
 		return nil
 	}
+
 	return &QPropertyBindingSourceLocation{h: h}
 }
 
 // UnsafeNewQPropertyBindingSourceLocation constructs the type using only unsafe pointers.
 func UnsafeNewQPropertyBindingSourceLocation(h unsafe.Pointer) *QPropertyBindingSourceLocation {
-	if h == nil {
-		return nil
-	}
-
-	return &QPropertyBindingSourceLocation{h: (*C.QPropertyBindingSourceLocation)(h)}
+	return newQPropertyBindingSourceLocation((*C.QPropertyBindingSourceLocation)(h))
 }
 
 // NewQPropertyBindingSourceLocation constructs a new QPropertyBindingSourceLocation object.
 func NewQPropertyBindingSourceLocation() *QPropertyBindingSourceLocation {
-	var outptr_QPropertyBindingSourceLocation *C.QPropertyBindingSourceLocation = nil
 
-	C.QPropertyBindingSourceLocation_new(&outptr_QPropertyBindingSourceLocation)
-	ret := newQPropertyBindingSourceLocation(outptr_QPropertyBindingSourceLocation)
+	ret := newQPropertyBindingSourceLocation(C.QPropertyBindingSourceLocation_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPropertyBindingSourceLocation2 constructs a new QPropertyBindingSourceLocation object.
 func NewQPropertyBindingSourceLocation2(param1 *QPropertyBindingSourceLocation) *QPropertyBindingSourceLocation {
-	var outptr_QPropertyBindingSourceLocation *C.QPropertyBindingSourceLocation = nil
 
-	C.QPropertyBindingSourceLocation_new2(param1.cPointer(), &outptr_QPropertyBindingSourceLocation)
-	ret := newQPropertyBindingSourceLocation(outptr_QPropertyBindingSourceLocation)
+	ret := newQPropertyBindingSourceLocation(C.QPropertyBindingSourceLocation_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -133,44 +126,35 @@ func newQPropertyBindingError(h *C.QPropertyBindingError) *QPropertyBindingError
 	if h == nil {
 		return nil
 	}
+
 	return &QPropertyBindingError{h: h}
 }
 
 // UnsafeNewQPropertyBindingError constructs the type using only unsafe pointers.
 func UnsafeNewQPropertyBindingError(h unsafe.Pointer) *QPropertyBindingError {
-	if h == nil {
-		return nil
-	}
-
-	return &QPropertyBindingError{h: (*C.QPropertyBindingError)(h)}
+	return newQPropertyBindingError((*C.QPropertyBindingError)(h))
 }
 
 // NewQPropertyBindingError constructs a new QPropertyBindingError object.
 func NewQPropertyBindingError() *QPropertyBindingError {
-	var outptr_QPropertyBindingError *C.QPropertyBindingError = nil
 
-	C.QPropertyBindingError_new(&outptr_QPropertyBindingError)
-	ret := newQPropertyBindingError(outptr_QPropertyBindingError)
+	ret := newQPropertyBindingError(C.QPropertyBindingError_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPropertyBindingError2 constructs a new QPropertyBindingError object.
 func NewQPropertyBindingError2(typeVal QPropertyBindingError__Type) *QPropertyBindingError {
-	var outptr_QPropertyBindingError *C.QPropertyBindingError = nil
 
-	C.QPropertyBindingError_new2((C.int)(typeVal), &outptr_QPropertyBindingError)
-	ret := newQPropertyBindingError(outptr_QPropertyBindingError)
+	ret := newQPropertyBindingError(C.QPropertyBindingError_new2((C.int)(typeVal)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPropertyBindingError3 constructs a new QPropertyBindingError object.
 func NewQPropertyBindingError3(other *QPropertyBindingError) *QPropertyBindingError {
-	var outptr_QPropertyBindingError *C.QPropertyBindingError = nil
 
-	C.QPropertyBindingError_new3(other.cPointer(), &outptr_QPropertyBindingError)
-	ret := newQPropertyBindingError(outptr_QPropertyBindingError)
+	ret := newQPropertyBindingError(C.QPropertyBindingError_new3(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -181,10 +165,8 @@ func NewQPropertyBindingError4(typeVal QPropertyBindingError__Type, description 
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
 	defer C.free(unsafe.Pointer(description_ms.data))
-	var outptr_QPropertyBindingError *C.QPropertyBindingError = nil
 
-	C.QPropertyBindingError_new4((C.int)(typeVal), description_ms, &outptr_QPropertyBindingError)
-	ret := newQPropertyBindingError(outptr_QPropertyBindingError)
+	ret := newQPropertyBindingError(C.QPropertyBindingError_new4((C.int)(typeVal), description_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -246,34 +228,27 @@ func newQUntypedPropertyBinding(h *C.QUntypedPropertyBinding) *QUntypedPropertyB
 	if h == nil {
 		return nil
 	}
+
 	return &QUntypedPropertyBinding{h: h}
 }
 
 // UnsafeNewQUntypedPropertyBinding constructs the type using only unsafe pointers.
 func UnsafeNewQUntypedPropertyBinding(h unsafe.Pointer) *QUntypedPropertyBinding {
-	if h == nil {
-		return nil
-	}
-
-	return &QUntypedPropertyBinding{h: (*C.QUntypedPropertyBinding)(h)}
+	return newQUntypedPropertyBinding((*C.QUntypedPropertyBinding)(h))
 }
 
 // NewQUntypedPropertyBinding constructs a new QUntypedPropertyBinding object.
 func NewQUntypedPropertyBinding() *QUntypedPropertyBinding {
-	var outptr_QUntypedPropertyBinding *C.QUntypedPropertyBinding = nil
 
-	C.QUntypedPropertyBinding_new(&outptr_QUntypedPropertyBinding)
-	ret := newQUntypedPropertyBinding(outptr_QUntypedPropertyBinding)
+	ret := newQUntypedPropertyBinding(C.QUntypedPropertyBinding_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQUntypedPropertyBinding2 constructs a new QUntypedPropertyBinding object.
 func NewQUntypedPropertyBinding2(other *QUntypedPropertyBinding) *QUntypedPropertyBinding {
-	var outptr_QUntypedPropertyBinding *C.QUntypedPropertyBinding = nil
 
-	C.QUntypedPropertyBinding_new2(other.cPointer(), &outptr_QUntypedPropertyBinding)
-	ret := newQUntypedPropertyBinding(outptr_QUntypedPropertyBinding)
+	ret := newQUntypedPropertyBinding(C.QUntypedPropertyBinding_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -336,34 +311,27 @@ func newQPropertyObserverBase(h *C.QPropertyObserverBase) *QPropertyObserverBase
 	if h == nil {
 		return nil
 	}
+
 	return &QPropertyObserverBase{h: h}
 }
 
 // UnsafeNewQPropertyObserverBase constructs the type using only unsafe pointers.
 func UnsafeNewQPropertyObserverBase(h unsafe.Pointer) *QPropertyObserverBase {
-	if h == nil {
-		return nil
-	}
-
-	return &QPropertyObserverBase{h: (*C.QPropertyObserverBase)(h)}
+	return newQPropertyObserverBase((*C.QPropertyObserverBase)(h))
 }
 
 // NewQPropertyObserverBase constructs a new QPropertyObserverBase object.
 func NewQPropertyObserverBase() *QPropertyObserverBase {
-	var outptr_QPropertyObserverBase *C.QPropertyObserverBase = nil
 
-	C.QPropertyObserverBase_new(&outptr_QPropertyObserverBase)
-	ret := newQPropertyObserverBase(outptr_QPropertyObserverBase)
+	ret := newQPropertyObserverBase(C.QPropertyObserverBase_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPropertyObserverBase2 constructs a new QPropertyObserverBase object.
 func NewQPropertyObserverBase2(param1 *QPropertyObserverBase) *QPropertyObserverBase {
-	var outptr_QPropertyObserverBase *C.QPropertyObserverBase = nil
 
-	C.QPropertyObserverBase_new2(param1.cPointer(), &outptr_QPropertyObserverBase)
-	ret := newQPropertyObserverBase(outptr_QPropertyObserverBase)
+	ret := newQPropertyObserverBase(C.QPropertyObserverBase_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -403,31 +371,26 @@ func (this *QPropertyObserver) UnsafePointer() unsafe.Pointer {
 }
 
 // newQPropertyObserver constructs the type using only CGO pointers.
-func newQPropertyObserver(h *C.QPropertyObserver, h_QPropertyObserverBase *C.QPropertyObserverBase) *QPropertyObserver {
+func newQPropertyObserver(h *C.QPropertyObserver) *QPropertyObserver {
 	if h == nil {
 		return nil
 	}
+	var outptr_QPropertyObserverBase *C.QPropertyObserverBase = nil
+	C.QPropertyObserver_virtbase(h, &outptr_QPropertyObserverBase)
+
 	return &QPropertyObserver{h: h,
-		QPropertyObserverBase: newQPropertyObserverBase(h_QPropertyObserverBase)}
+		QPropertyObserverBase: newQPropertyObserverBase(outptr_QPropertyObserverBase)}
 }
 
 // UnsafeNewQPropertyObserver constructs the type using only unsafe pointers.
-func UnsafeNewQPropertyObserver(h unsafe.Pointer, h_QPropertyObserverBase unsafe.Pointer) *QPropertyObserver {
-	if h == nil {
-		return nil
-	}
-
-	return &QPropertyObserver{h: (*C.QPropertyObserver)(h),
-		QPropertyObserverBase: UnsafeNewQPropertyObserverBase(h_QPropertyObserverBase)}
+func UnsafeNewQPropertyObserver(h unsafe.Pointer) *QPropertyObserver {
+	return newQPropertyObserver((*C.QPropertyObserver)(h))
 }
 
 // NewQPropertyObserver constructs a new QPropertyObserver object.
 func NewQPropertyObserver() *QPropertyObserver {
-	var outptr_QPropertyObserver *C.QPropertyObserver = nil
-	var outptr_QPropertyObserverBase *C.QPropertyObserverBase = nil
 
-	C.QPropertyObserver_new(&outptr_QPropertyObserver, &outptr_QPropertyObserverBase)
-	ret := newQPropertyObserver(outptr_QPropertyObserver, outptr_QPropertyObserverBase)
+	ret := newQPropertyObserver(C.QPropertyObserver_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -467,32 +430,26 @@ func (this *QPropertyNotifier) UnsafePointer() unsafe.Pointer {
 }
 
 // newQPropertyNotifier constructs the type using only CGO pointers.
-func newQPropertyNotifier(h *C.QPropertyNotifier, h_QPropertyObserver *C.QPropertyObserver, h_QPropertyObserverBase *C.QPropertyObserverBase) *QPropertyNotifier {
+func newQPropertyNotifier(h *C.QPropertyNotifier) *QPropertyNotifier {
 	if h == nil {
 		return nil
 	}
+	var outptr_QPropertyObserver *C.QPropertyObserver = nil
+	C.QPropertyNotifier_virtbase(h, &outptr_QPropertyObserver)
+
 	return &QPropertyNotifier{h: h,
-		QPropertyObserver: newQPropertyObserver(h_QPropertyObserver, h_QPropertyObserverBase)}
+		QPropertyObserver: newQPropertyObserver(outptr_QPropertyObserver)}
 }
 
 // UnsafeNewQPropertyNotifier constructs the type using only unsafe pointers.
-func UnsafeNewQPropertyNotifier(h unsafe.Pointer, h_QPropertyObserver unsafe.Pointer, h_QPropertyObserverBase unsafe.Pointer) *QPropertyNotifier {
-	if h == nil {
-		return nil
-	}
-
-	return &QPropertyNotifier{h: (*C.QPropertyNotifier)(h),
-		QPropertyObserver: UnsafeNewQPropertyObserver(h_QPropertyObserver, h_QPropertyObserverBase)}
+func UnsafeNewQPropertyNotifier(h unsafe.Pointer) *QPropertyNotifier {
+	return newQPropertyNotifier((*C.QPropertyNotifier)(h))
 }
 
 // NewQPropertyNotifier constructs a new QPropertyNotifier object.
 func NewQPropertyNotifier() *QPropertyNotifier {
-	var outptr_QPropertyNotifier *C.QPropertyNotifier = nil
-	var outptr_QPropertyObserver *C.QPropertyObserver = nil
-	var outptr_QPropertyObserverBase *C.QPropertyObserverBase = nil
 
-	C.QPropertyNotifier_new(&outptr_QPropertyNotifier, &outptr_QPropertyObserver, &outptr_QPropertyObserverBase)
-	ret := newQPropertyNotifier(outptr_QPropertyNotifier, outptr_QPropertyObserver, outptr_QPropertyObserverBase)
+	ret := newQPropertyNotifier(C.QPropertyNotifier_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -535,34 +492,27 @@ func newQUntypedBindable(h *C.QUntypedBindable) *QUntypedBindable {
 	if h == nil {
 		return nil
 	}
+
 	return &QUntypedBindable{h: h}
 }
 
 // UnsafeNewQUntypedBindable constructs the type using only unsafe pointers.
 func UnsafeNewQUntypedBindable(h unsafe.Pointer) *QUntypedBindable {
-	if h == nil {
-		return nil
-	}
-
-	return &QUntypedBindable{h: (*C.QUntypedBindable)(h)}
+	return newQUntypedBindable((*C.QUntypedBindable)(h))
 }
 
 // NewQUntypedBindable constructs a new QUntypedBindable object.
 func NewQUntypedBindable() *QUntypedBindable {
-	var outptr_QUntypedBindable *C.QUntypedBindable = nil
 
-	C.QUntypedBindable_new(&outptr_QUntypedBindable)
-	ret := newQUntypedBindable(outptr_QUntypedBindable)
+	ret := newQUntypedBindable(C.QUntypedBindable_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQUntypedBindable2 constructs a new QUntypedBindable object.
 func NewQUntypedBindable2(param1 *QUntypedBindable) *QUntypedBindable {
-	var outptr_QUntypedBindable *C.QUntypedBindable = nil
 
-	C.QUntypedBindable_new2(param1.cPointer(), &outptr_QUntypedBindable)
-	ret := newQUntypedBindable(outptr_QUntypedBindable)
+	ret := newQUntypedBindable(C.QUntypedBindable_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

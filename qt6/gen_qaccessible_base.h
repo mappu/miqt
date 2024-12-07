@@ -55,7 +55,7 @@ void QAccessible_Cleanup();
 struct miqt_map /* tuple of int and int */  QAccessible_QAccessibleTextBoundaryHelper(QTextCursor* cursor, int boundaryType);
 void QAccessible_Delete(QAccessible* self, bool isSubclass);
 
-void QAccessible__State_new(QAccessible__State** outptr_QAccessible__State);
+QAccessible__State* QAccessible__State_new();
 void QAccessible__State_Delete(QAccessible__State* self, bool isSubclass);
 
 void QAccessible__ActivationObserver_AccessibilityActiveChanged(QAccessible__ActivationObserver* self, bool active);

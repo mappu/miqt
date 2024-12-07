@@ -49,44 +49,35 @@ func newQOperatingSystemVersion(h *C.QOperatingSystemVersion) *QOperatingSystemV
 	if h == nil {
 		return nil
 	}
+
 	return &QOperatingSystemVersion{h: h}
 }
 
 // UnsafeNewQOperatingSystemVersion constructs the type using only unsafe pointers.
 func UnsafeNewQOperatingSystemVersion(h unsafe.Pointer) *QOperatingSystemVersion {
-	if h == nil {
-		return nil
-	}
-
-	return &QOperatingSystemVersion{h: (*C.QOperatingSystemVersion)(h)}
+	return newQOperatingSystemVersion((*C.QOperatingSystemVersion)(h))
 }
 
 // NewQOperatingSystemVersion constructs a new QOperatingSystemVersion object.
 func NewQOperatingSystemVersion(osType QOperatingSystemVersion__OSType, vmajor int) *QOperatingSystemVersion {
-	var outptr_QOperatingSystemVersion *C.QOperatingSystemVersion = nil
 
-	C.QOperatingSystemVersion_new((C.int)(osType), (C.int)(vmajor), &outptr_QOperatingSystemVersion)
-	ret := newQOperatingSystemVersion(outptr_QOperatingSystemVersion)
+	ret := newQOperatingSystemVersion(C.QOperatingSystemVersion_new((C.int)(osType), (C.int)(vmajor)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQOperatingSystemVersion2 constructs a new QOperatingSystemVersion object.
 func NewQOperatingSystemVersion2(osType QOperatingSystemVersion__OSType, vmajor int, vminor int) *QOperatingSystemVersion {
-	var outptr_QOperatingSystemVersion *C.QOperatingSystemVersion = nil
 
-	C.QOperatingSystemVersion_new2((C.int)(osType), (C.int)(vmajor), (C.int)(vminor), &outptr_QOperatingSystemVersion)
-	ret := newQOperatingSystemVersion(outptr_QOperatingSystemVersion)
+	ret := newQOperatingSystemVersion(C.QOperatingSystemVersion_new2((C.int)(osType), (C.int)(vmajor), (C.int)(vminor)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQOperatingSystemVersion3 constructs a new QOperatingSystemVersion object.
 func NewQOperatingSystemVersion3(osType QOperatingSystemVersion__OSType, vmajor int, vminor int, vmicro int) *QOperatingSystemVersion {
-	var outptr_QOperatingSystemVersion *C.QOperatingSystemVersion = nil
 
-	C.QOperatingSystemVersion_new3((C.int)(osType), (C.int)(vmajor), (C.int)(vminor), (C.int)(vmicro), &outptr_QOperatingSystemVersion)
-	ret := newQOperatingSystemVersion(outptr_QOperatingSystemVersion)
+	ret := newQOperatingSystemVersion(C.QOperatingSystemVersion_new3((C.int)(osType), (C.int)(vmajor), (C.int)(vminor), (C.int)(vmicro)))
 	ret.isSubclass = true
 	return ret
 }

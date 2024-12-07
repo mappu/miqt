@@ -28,8 +28,9 @@ typedef struct QsciLexerMatlab QsciLexerMatlab;
 typedef struct QsciLexerOctave QsciLexerOctave;
 #endif
 
-void QsciLexerOctave_new(QsciLexerOctave** outptr_QsciLexerOctave, QsciLexerMatlab** outptr_QsciLexerMatlab, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerOctave_new2(QObject* parent, QsciLexerOctave** outptr_QsciLexerOctave, QsciLexerMatlab** outptr_QsciLexerMatlab, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerOctave* QsciLexerOctave_new();
+QsciLexerOctave* QsciLexerOctave_new2(QObject* parent);
+void QsciLexerOctave_virtbase(QsciLexerOctave* src, QsciLexerMatlab** outptr_QsciLexerMatlab);
 QMetaObject* QsciLexerOctave_MetaObject(const QsciLexerOctave* self);
 void* QsciLexerOctave_Metacast(QsciLexerOctave* self, const char* param1);
 struct miqt_string QsciLexerOctave_Tr(const char* s);

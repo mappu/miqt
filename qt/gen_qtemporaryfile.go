@@ -35,34 +35,26 @@ func (this *QTemporaryFile) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTemporaryFile constructs the type using only CGO pointers.
-func newQTemporaryFile(h *C.QTemporaryFile, h_QFile *C.QFile, h_QFileDevice *C.QFileDevice, h_QIODevice *C.QIODevice, h_QObject *C.QObject) *QTemporaryFile {
+func newQTemporaryFile(h *C.QTemporaryFile) *QTemporaryFile {
 	if h == nil {
 		return nil
 	}
+	var outptr_QFile *C.QFile = nil
+	C.QTemporaryFile_virtbase(h, &outptr_QFile)
+
 	return &QTemporaryFile{h: h,
-		QFile: newQFile(h_QFile, h_QFileDevice, h_QIODevice, h_QObject)}
+		QFile: newQFile(outptr_QFile)}
 }
 
 // UnsafeNewQTemporaryFile constructs the type using only unsafe pointers.
-func UnsafeNewQTemporaryFile(h unsafe.Pointer, h_QFile unsafe.Pointer, h_QFileDevice unsafe.Pointer, h_QIODevice unsafe.Pointer, h_QObject unsafe.Pointer) *QTemporaryFile {
-	if h == nil {
-		return nil
-	}
-
-	return &QTemporaryFile{h: (*C.QTemporaryFile)(h),
-		QFile: UnsafeNewQFile(h_QFile, h_QFileDevice, h_QIODevice, h_QObject)}
+func UnsafeNewQTemporaryFile(h unsafe.Pointer) *QTemporaryFile {
+	return newQTemporaryFile((*C.QTemporaryFile)(h))
 }
 
 // NewQTemporaryFile constructs a new QTemporaryFile object.
 func NewQTemporaryFile() *QTemporaryFile {
-	var outptr_QTemporaryFile *C.QTemporaryFile = nil
-	var outptr_QFile *C.QFile = nil
-	var outptr_QFileDevice *C.QFileDevice = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTemporaryFile_new(&outptr_QTemporaryFile, &outptr_QFile, &outptr_QFileDevice, &outptr_QIODevice, &outptr_QObject)
-	ret := newQTemporaryFile(outptr_QTemporaryFile, outptr_QFile, outptr_QFileDevice, outptr_QIODevice, outptr_QObject)
+	ret := newQTemporaryFile(C.QTemporaryFile_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -73,28 +65,16 @@ func NewQTemporaryFile2(templateName string) *QTemporaryFile {
 	templateName_ms.data = C.CString(templateName)
 	templateName_ms.len = C.size_t(len(templateName))
 	defer C.free(unsafe.Pointer(templateName_ms.data))
-	var outptr_QTemporaryFile *C.QTemporaryFile = nil
-	var outptr_QFile *C.QFile = nil
-	var outptr_QFileDevice *C.QFileDevice = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTemporaryFile_new2(templateName_ms, &outptr_QTemporaryFile, &outptr_QFile, &outptr_QFileDevice, &outptr_QIODevice, &outptr_QObject)
-	ret := newQTemporaryFile(outptr_QTemporaryFile, outptr_QFile, outptr_QFileDevice, outptr_QIODevice, outptr_QObject)
+	ret := newQTemporaryFile(C.QTemporaryFile_new2(templateName_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTemporaryFile3 constructs a new QTemporaryFile object.
 func NewQTemporaryFile3(parent *QObject) *QTemporaryFile {
-	var outptr_QTemporaryFile *C.QTemporaryFile = nil
-	var outptr_QFile *C.QFile = nil
-	var outptr_QFileDevice *C.QFileDevice = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTemporaryFile_new3(parent.cPointer(), &outptr_QTemporaryFile, &outptr_QFile, &outptr_QFileDevice, &outptr_QIODevice, &outptr_QObject)
-	ret := newQTemporaryFile(outptr_QTemporaryFile, outptr_QFile, outptr_QFileDevice, outptr_QIODevice, outptr_QObject)
+	ret := newQTemporaryFile(C.QTemporaryFile_new3(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -105,14 +85,8 @@ func NewQTemporaryFile4(templateName string, parent *QObject) *QTemporaryFile {
 	templateName_ms.data = C.CString(templateName)
 	templateName_ms.len = C.size_t(len(templateName))
 	defer C.free(unsafe.Pointer(templateName_ms.data))
-	var outptr_QTemporaryFile *C.QTemporaryFile = nil
-	var outptr_QFile *C.QFile = nil
-	var outptr_QFileDevice *C.QFileDevice = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTemporaryFile_new4(templateName_ms, parent.cPointer(), &outptr_QTemporaryFile, &outptr_QFile, &outptr_QFileDevice, &outptr_QIODevice, &outptr_QObject)
-	ret := newQTemporaryFile(outptr_QTemporaryFile, outptr_QFile, outptr_QFileDevice, outptr_QIODevice, outptr_QObject)
+	ret := newQTemporaryFile(C.QTemporaryFile_new4(templateName_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -192,11 +166,11 @@ func QTemporaryFile_CreateLocalFile(fileName string) *QTemporaryFile {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	return newQTemporaryFile(C.QTemporaryFile_CreateLocalFile(fileName_ms), nil, nil, nil, nil)
+	return newQTemporaryFile(C.QTemporaryFile_CreateLocalFile(fileName_ms))
 }
 
 func QTemporaryFile_CreateLocalFileWithFile(file *QFile) *QTemporaryFile {
-	return newQTemporaryFile(C.QTemporaryFile_CreateLocalFileWithFile(file.cPointer()), nil, nil, nil, nil)
+	return newQTemporaryFile(C.QTemporaryFile_CreateLocalFileWithFile(file.cPointer()))
 }
 
 func QTemporaryFile_CreateNativeFile(fileName string) *QTemporaryFile {
@@ -204,11 +178,11 @@ func QTemporaryFile_CreateNativeFile(fileName string) *QTemporaryFile {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	return newQTemporaryFile(C.QTemporaryFile_CreateNativeFile(fileName_ms), nil, nil, nil, nil)
+	return newQTemporaryFile(C.QTemporaryFile_CreateNativeFile(fileName_ms))
 }
 
 func QTemporaryFile_CreateNativeFileWithFile(file *QFile) *QTemporaryFile {
-	return newQTemporaryFile(C.QTemporaryFile_CreateNativeFileWithFile(file.cPointer()), nil, nil, nil, nil)
+	return newQTemporaryFile(C.QTemporaryFile_CreateNativeFileWithFile(file.cPointer()))
 }
 
 func QTemporaryFile_Tr2(s string, c string) string {

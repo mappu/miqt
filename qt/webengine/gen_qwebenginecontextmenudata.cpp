@@ -9,14 +9,12 @@
 #include "gen_qwebenginecontextmenudata.h"
 #include "_cgo_export.h"
 
-void QWebEngineContextMenuData_new(QWebEngineContextMenuData** outptr_QWebEngineContextMenuData) {
-	QWebEngineContextMenuData* ret = new QWebEngineContextMenuData();
-	*outptr_QWebEngineContextMenuData = ret;
+QWebEngineContextMenuData* QWebEngineContextMenuData_new() {
+	return new QWebEngineContextMenuData();
 }
 
-void QWebEngineContextMenuData_new2(QWebEngineContextMenuData* other, QWebEngineContextMenuData** outptr_QWebEngineContextMenuData) {
-	QWebEngineContextMenuData* ret = new QWebEngineContextMenuData(*other);
-	*outptr_QWebEngineContextMenuData = ret;
+QWebEngineContextMenuData* QWebEngineContextMenuData_new2(QWebEngineContextMenuData* other) {
+	return new QWebEngineContextMenuData(*other);
 }
 
 void QWebEngineContextMenuData_OperatorAssign(QWebEngineContextMenuData* self, QWebEngineContextMenuData* other) {

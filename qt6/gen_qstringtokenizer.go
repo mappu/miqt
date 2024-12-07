@@ -36,24 +36,19 @@ func newQStringTokenizerBaseBase(h *C.QStringTokenizerBaseBase) *QStringTokenize
 	if h == nil {
 		return nil
 	}
+
 	return &QStringTokenizerBaseBase{h: h}
 }
 
 // UnsafeNewQStringTokenizerBaseBase constructs the type using only unsafe pointers.
 func UnsafeNewQStringTokenizerBaseBase(h unsafe.Pointer) *QStringTokenizerBaseBase {
-	if h == nil {
-		return nil
-	}
-
-	return &QStringTokenizerBaseBase{h: (*C.QStringTokenizerBaseBase)(h)}
+	return newQStringTokenizerBaseBase((*C.QStringTokenizerBaseBase)(h))
 }
 
 // NewQStringTokenizerBaseBase constructs a new QStringTokenizerBaseBase object.
 func NewQStringTokenizerBaseBase(param1 *QStringTokenizerBaseBase) *QStringTokenizerBaseBase {
-	var outptr_QStringTokenizerBaseBase *C.QStringTokenizerBaseBase = nil
 
-	C.QStringTokenizerBaseBase_new(param1.cPointer(), &outptr_QStringTokenizerBaseBase)
-	ret := newQStringTokenizerBaseBase(outptr_QStringTokenizerBaseBase)
+	ret := newQStringTokenizerBaseBase(C.QStringTokenizerBaseBase_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

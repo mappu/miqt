@@ -415,18 +415,16 @@ public:
 
 };
 
-void QStyledItemDelegate_new(QStyledItemDelegate** outptr_QStyledItemDelegate, QAbstractItemDelegate** outptr_QAbstractItemDelegate, QObject** outptr_QObject) {
-	MiqtVirtualQStyledItemDelegate* ret = new MiqtVirtualQStyledItemDelegate();
-	*outptr_QStyledItemDelegate = ret;
-	*outptr_QAbstractItemDelegate = static_cast<QAbstractItemDelegate*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QStyledItemDelegate* QStyledItemDelegate_new() {
+	return new MiqtVirtualQStyledItemDelegate();
 }
 
-void QStyledItemDelegate_new2(QObject* parent, QStyledItemDelegate** outptr_QStyledItemDelegate, QAbstractItemDelegate** outptr_QAbstractItemDelegate, QObject** outptr_QObject) {
-	MiqtVirtualQStyledItemDelegate* ret = new MiqtVirtualQStyledItemDelegate(parent);
-	*outptr_QStyledItemDelegate = ret;
-	*outptr_QAbstractItemDelegate = static_cast<QAbstractItemDelegate*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QStyledItemDelegate* QStyledItemDelegate_new2(QObject* parent) {
+	return new MiqtVirtualQStyledItemDelegate(parent);
+}
+
+void QStyledItemDelegate_virtbase(QStyledItemDelegate* src, QAbstractItemDelegate** outptr_QAbstractItemDelegate) {
+	*outptr_QAbstractItemDelegate = static_cast<QAbstractItemDelegate*>(src);
 }
 
 QMetaObject* QStyledItemDelegate_MetaObject(const QStyledItemDelegate* self) {

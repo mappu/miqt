@@ -35,46 +35,34 @@ func (this *QTransposeProxyModel) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTransposeProxyModel constructs the type using only CGO pointers.
-func newQTransposeProxyModel(h *C.QTransposeProxyModel, h_QAbstractProxyModel *C.QAbstractProxyModel, h_QAbstractItemModel *C.QAbstractItemModel, h_QObject *C.QObject) *QTransposeProxyModel {
+func newQTransposeProxyModel(h *C.QTransposeProxyModel) *QTransposeProxyModel {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractProxyModel *C.QAbstractProxyModel = nil
+	C.QTransposeProxyModel_virtbase(h, &outptr_QAbstractProxyModel)
+
 	return &QTransposeProxyModel{h: h,
-		QAbstractProxyModel: newQAbstractProxyModel(h_QAbstractProxyModel, h_QAbstractItemModel, h_QObject)}
+		QAbstractProxyModel: newQAbstractProxyModel(outptr_QAbstractProxyModel)}
 }
 
 // UnsafeNewQTransposeProxyModel constructs the type using only unsafe pointers.
-func UnsafeNewQTransposeProxyModel(h unsafe.Pointer, h_QAbstractProxyModel unsafe.Pointer, h_QAbstractItemModel unsafe.Pointer, h_QObject unsafe.Pointer) *QTransposeProxyModel {
-	if h == nil {
-		return nil
-	}
-
-	return &QTransposeProxyModel{h: (*C.QTransposeProxyModel)(h),
-		QAbstractProxyModel: UnsafeNewQAbstractProxyModel(h_QAbstractProxyModel, h_QAbstractItemModel, h_QObject)}
+func UnsafeNewQTransposeProxyModel(h unsafe.Pointer) *QTransposeProxyModel {
+	return newQTransposeProxyModel((*C.QTransposeProxyModel)(h))
 }
 
 // NewQTransposeProxyModel constructs a new QTransposeProxyModel object.
 func NewQTransposeProxyModel() *QTransposeProxyModel {
-	var outptr_QTransposeProxyModel *C.QTransposeProxyModel = nil
-	var outptr_QAbstractProxyModel *C.QAbstractProxyModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTransposeProxyModel_new(&outptr_QTransposeProxyModel, &outptr_QAbstractProxyModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQTransposeProxyModel(outptr_QTransposeProxyModel, outptr_QAbstractProxyModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQTransposeProxyModel(C.QTransposeProxyModel_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTransposeProxyModel2 constructs a new QTransposeProxyModel object.
 func NewQTransposeProxyModel2(parent *QObject) *QTransposeProxyModel {
-	var outptr_QTransposeProxyModel *C.QTransposeProxyModel = nil
-	var outptr_QAbstractProxyModel *C.QAbstractProxyModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTransposeProxyModel_new2(parent.cPointer(), &outptr_QTransposeProxyModel, &outptr_QAbstractProxyModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQTransposeProxyModel(outptr_QTransposeProxyModel, outptr_QAbstractProxyModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQTransposeProxyModel(C.QTransposeProxyModel_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -256,7 +244,7 @@ func miqt_exec_callback_QTransposeProxyModel_SetSourceModel(self *C.QTransposePr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQAbstractItemModel(newSourceModel, nil)
+	slotval1 := newQAbstractItemModel(newSourceModel)
 
 	gofunc((&QTransposeProxyModel{h: self}).callVirtualBase_SetSourceModel, slotval1)
 
@@ -1264,7 +1252,7 @@ func (this *QTransposeProxyModel) callVirtualBase_MimeData(indexes []QModelIndex
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 
-	return newQMimeData(C.QTransposeProxyModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma), nil)
+	return newQMimeData(C.QTransposeProxyModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma))
 
 }
 func (this *QTransposeProxyModel) OnMimeData(slot func(super func(indexes []QModelIndex) *QMimeData, indexes []QModelIndex) *QMimeData) {
@@ -1318,7 +1306,7 @@ func miqt_exec_callback_QTransposeProxyModel_CanDropMimeData(self *C.QTransposeP
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(data, nil)
+	slotval1 := newQMimeData(data)
 
 	slotval2 := (DropAction)(action)
 
@@ -1354,7 +1342,7 @@ func miqt_exec_callback_QTransposeProxyModel_DropMimeData(self *C.QTransposeProx
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(data, nil)
+	slotval1 := newQMimeData(data)
 
 	slotval2 := (DropAction)(action)
 

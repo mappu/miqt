@@ -26,7 +26,7 @@ typedef struct QWebEngineHistory QWebEngineHistory;
 typedef struct QWebEngineHistoryItem QWebEngineHistoryItem;
 #endif
 
-void QWebEngineHistoryItem_new(QWebEngineHistoryItem* other, QWebEngineHistoryItem** outptr_QWebEngineHistoryItem);
+QWebEngineHistoryItem* QWebEngineHistoryItem_new(QWebEngineHistoryItem* other);
 void QWebEngineHistoryItem_OperatorAssign(QWebEngineHistoryItem* self, QWebEngineHistoryItem* other);
 QUrl* QWebEngineHistoryItem_OriginalUrl(const QWebEngineHistoryItem* self);
 QUrl* QWebEngineHistoryItem_Url(const QWebEngineHistoryItem* self);

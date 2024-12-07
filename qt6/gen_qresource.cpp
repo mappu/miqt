@@ -9,21 +9,18 @@
 #include "gen_qresource.h"
 #include "_cgo_export.h"
 
-void QResource_new(QResource** outptr_QResource) {
-	QResource* ret = new QResource();
-	*outptr_QResource = ret;
+QResource* QResource_new() {
+	return new QResource();
 }
 
-void QResource_new2(struct miqt_string file, QResource** outptr_QResource) {
+QResource* QResource_new2(struct miqt_string file) {
 	QString file_QString = QString::fromUtf8(file.data, file.len);
-	QResource* ret = new QResource(file_QString);
-	*outptr_QResource = ret;
+	return new QResource(file_QString);
 }
 
-void QResource_new3(struct miqt_string file, QLocale* locale, QResource** outptr_QResource) {
+QResource* QResource_new3(struct miqt_string file, QLocale* locale) {
 	QString file_QString = QString::fromUtf8(file.data, file.len);
-	QResource* ret = new QResource(file_QString, *locale);
-	*outptr_QResource = ret;
+	return new QResource(file_QString, *locale);
 }
 
 void QResource_SetFileName(QResource* self, struct miqt_string file) {

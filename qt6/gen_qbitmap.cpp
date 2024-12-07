@@ -95,55 +95,38 @@ public:
 
 };
 
-void QBitmap_new(QBitmap** outptr_QBitmap, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQBitmap* ret = new MiqtVirtualQBitmap();
-	*outptr_QBitmap = ret;
-	*outptr_QPixmap = static_cast<QPixmap*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QBitmap* QBitmap_new() {
+	return new MiqtVirtualQBitmap();
 }
 
-void QBitmap_new2(QPixmap* param1, QBitmap** outptr_QBitmap, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQBitmap* ret = new MiqtVirtualQBitmap(*param1);
-	*outptr_QBitmap = ret;
-	*outptr_QPixmap = static_cast<QPixmap*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QBitmap* QBitmap_new2(QPixmap* param1) {
+	return new MiqtVirtualQBitmap(*param1);
 }
 
-void QBitmap_new3(int w, int h, QBitmap** outptr_QBitmap, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQBitmap* ret = new MiqtVirtualQBitmap(static_cast<int>(w), static_cast<int>(h));
-	*outptr_QBitmap = ret;
-	*outptr_QPixmap = static_cast<QPixmap*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QBitmap* QBitmap_new3(int w, int h) {
+	return new MiqtVirtualQBitmap(static_cast<int>(w), static_cast<int>(h));
 }
 
-void QBitmap_new4(QSize* param1, QBitmap** outptr_QBitmap, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQBitmap* ret = new MiqtVirtualQBitmap(*param1);
-	*outptr_QBitmap = ret;
-	*outptr_QPixmap = static_cast<QPixmap*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QBitmap* QBitmap_new4(QSize* param1) {
+	return new MiqtVirtualQBitmap(*param1);
 }
 
-void QBitmap_new5(struct miqt_string fileName, QBitmap** outptr_QBitmap, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice) {
+QBitmap* QBitmap_new5(struct miqt_string fileName) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	MiqtVirtualQBitmap* ret = new MiqtVirtualQBitmap(fileName_QString);
-	*outptr_QBitmap = ret;
-	*outptr_QPixmap = static_cast<QPixmap*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQBitmap(fileName_QString);
 }
 
-void QBitmap_new6(QBitmap* param1, QBitmap** outptr_QBitmap, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQBitmap* ret = new MiqtVirtualQBitmap(*param1);
-	*outptr_QBitmap = ret;
-	*outptr_QPixmap = static_cast<QPixmap*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QBitmap* QBitmap_new6(QBitmap* param1) {
+	return new MiqtVirtualQBitmap(*param1);
 }
 
-void QBitmap_new7(struct miqt_string fileName, const char* format, QBitmap** outptr_QBitmap, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice) {
+QBitmap* QBitmap_new7(struct miqt_string fileName, const char* format) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	MiqtVirtualQBitmap* ret = new MiqtVirtualQBitmap(fileName_QString, format);
-	*outptr_QBitmap = ret;
-	*outptr_QPixmap = static_cast<QPixmap*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQBitmap(fileName_QString, format);
+}
+
+void QBitmap_virtbase(QBitmap* src, QPixmap** outptr_QPixmap) {
+	*outptr_QPixmap = static_cast<QPixmap*>(src);
 }
 
 void QBitmap_OperatorAssign(QBitmap* self, QPixmap* param1) {

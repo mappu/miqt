@@ -45,52 +45,34 @@ func (this *QHeaderView) UnsafePointer() unsafe.Pointer {
 }
 
 // newQHeaderView constructs the type using only CGO pointers.
-func newQHeaderView(h *C.QHeaderView, h_QAbstractItemView *C.QAbstractItemView, h_QAbstractScrollArea *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QHeaderView {
+func newQHeaderView(h *C.QHeaderView) *QHeaderView {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractItemView *C.QAbstractItemView = nil
+	C.QHeaderView_virtbase(h, &outptr_QAbstractItemView)
+
 	return &QHeaderView{h: h,
-		QAbstractItemView: newQAbstractItemView(h_QAbstractItemView, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+		QAbstractItemView: newQAbstractItemView(outptr_QAbstractItemView)}
 }
 
 // UnsafeNewQHeaderView constructs the type using only unsafe pointers.
-func UnsafeNewQHeaderView(h unsafe.Pointer, h_QAbstractItemView unsafe.Pointer, h_QAbstractScrollArea unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QHeaderView {
-	if h == nil {
-		return nil
-	}
-
-	return &QHeaderView{h: (*C.QHeaderView)(h),
-		QAbstractItemView: UnsafeNewQAbstractItemView(h_QAbstractItemView, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQHeaderView(h unsafe.Pointer) *QHeaderView {
+	return newQHeaderView((*C.QHeaderView)(h))
 }
 
 // NewQHeaderView constructs a new QHeaderView object.
 func NewQHeaderView(orientation Orientation) *QHeaderView {
-	var outptr_QHeaderView *C.QHeaderView = nil
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QHeaderView_new((C.int)(orientation), &outptr_QHeaderView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQHeaderView(outptr_QHeaderView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQHeaderView(C.QHeaderView_new((C.int)(orientation)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQHeaderView2 constructs a new QHeaderView object.
 func NewQHeaderView2(orientation Orientation, parent *QWidget) *QHeaderView {
-	var outptr_QHeaderView *C.QHeaderView = nil
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QHeaderView_new2((C.int)(orientation), parent.cPointer(), &outptr_QHeaderView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQHeaderView(outptr_QHeaderView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQHeaderView(C.QHeaderView_new2((C.int)(orientation), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -676,7 +658,7 @@ func miqt_exec_callback_QHeaderView_SetModel(self *C.QHeaderView, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQAbstractItemModel(model, nil)
+	slotval1 := newQAbstractItemModel(model)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_SetModel, slotval1)
 
@@ -857,7 +839,7 @@ func miqt_exec_callback_QHeaderView_PaintEvent(self *C.QHeaderView, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(e, nil)
+	slotval1 := newQPaintEvent(e)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -883,7 +865,7 @@ func miqt_exec_callback_QHeaderView_MousePressEvent(self *C.QHeaderView, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -909,7 +891,7 @@ func miqt_exec_callback_QHeaderView_MouseMoveEvent(self *C.QHeaderView, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -935,7 +917,7 @@ func miqt_exec_callback_QHeaderView_MouseReleaseEvent(self *C.QHeaderView, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -961,7 +943,7 @@ func miqt_exec_callback_QHeaderView_MouseDoubleClickEvent(self *C.QHeaderView, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -1454,7 +1436,7 @@ func miqt_exec_callback_QHeaderView_SetSelectionModel(self *C.QHeaderView, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQItemSelectionModel(selectionModel, nil)
+	slotval1 := newQItemSelectionModel(selectionModel)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_SetSelectionModel, slotval1)
 
@@ -1856,7 +1838,7 @@ func miqt_exec_callback_QHeaderView_CloseEditor(self *C.QHeaderView, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(editor, nil, nil)
+	slotval1 := newQWidget(editor)
 
 	slotval2 := (QAbstractItemDelegate__EndEditHint)(hint)
 
@@ -1884,7 +1866,7 @@ func miqt_exec_callback_QHeaderView_CommitData(self *C.QHeaderView, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(editor, nil, nil)
+	slotval1 := newQWidget(editor)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_CommitData, slotval1)
 
@@ -2045,7 +2027,7 @@ func miqt_exec_callback_QHeaderView_StartDrag(self *C.QHeaderView, cb C.intptr_t
 
 func (this *QHeaderView) callVirtualBase_ViewOptions() *QStyleOptionViewItem {
 
-	_goptr := newQStyleOptionViewItem(C.QHeaderView_virtualbase_ViewOptions(unsafe.Pointer(this.h)), nil)
+	_goptr := newQStyleOptionViewItem(C.QHeaderView_virtualbase_ViewOptions(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -2118,7 +2100,7 @@ func miqt_exec_callback_QHeaderView_DragEnterEvent(self *C.QHeaderView, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragEnterEvent(event, nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -2144,7 +2126,7 @@ func miqt_exec_callback_QHeaderView_DragMoveEvent(self *C.QHeaderView, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragMoveEvent(event, nil, nil)
+	slotval1 := newQDragMoveEvent(event)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -2170,7 +2152,7 @@ func miqt_exec_callback_QHeaderView_DragLeaveEvent(self *C.QHeaderView, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragLeaveEvent(event, nil)
+	slotval1 := newQDragLeaveEvent(event)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -2196,7 +2178,7 @@ func miqt_exec_callback_QHeaderView_DropEvent(self *C.QHeaderView, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDropEvent(event, nil)
+	slotval1 := newQDropEvent(event)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -2222,7 +2204,7 @@ func miqt_exec_callback_QHeaderView_FocusInEvent(self *C.QHeaderView, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -2248,7 +2230,7 @@ func miqt_exec_callback_QHeaderView_FocusOutEvent(self *C.QHeaderView, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -2274,7 +2256,7 @@ func miqt_exec_callback_QHeaderView_KeyPressEvent(self *C.QHeaderView, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(event, nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -2300,7 +2282,7 @@ func miqt_exec_callback_QHeaderView_ResizeEvent(self *C.QHeaderView, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(event, nil)
+	slotval1 := newQResizeEvent(event)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -2326,7 +2308,7 @@ func miqt_exec_callback_QHeaderView_TimerEvent(self *C.QHeaderView, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -2352,7 +2334,7 @@ func miqt_exec_callback_QHeaderView_InputMethodEvent(self *C.QHeaderView, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQInputMethodEvent(event, nil)
+	slotval1 := newQInputMethodEvent(event)
 
 	gofunc((&QHeaderView{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 

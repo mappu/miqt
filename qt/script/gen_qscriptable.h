@@ -26,7 +26,7 @@ typedef struct QScriptValue QScriptValue;
 typedef struct QScriptable QScriptable;
 #endif
 
-void QScriptable_new(QScriptable** outptr_QScriptable);
+QScriptable* QScriptable_new();
 QScriptEngine* QScriptable_Engine(const QScriptable* self);
 QScriptContext* QScriptable_Context(const QScriptable* self);
 QScriptValue* QScriptable_ThisObject(const QScriptable* self);

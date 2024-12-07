@@ -7,14 +7,12 @@
 #include "gen_qfontinfo.h"
 #include "_cgo_export.h"
 
-void QFontInfo_new(QFont* param1, QFontInfo** outptr_QFontInfo) {
-	QFontInfo* ret = new QFontInfo(*param1);
-	*outptr_QFontInfo = ret;
+QFontInfo* QFontInfo_new(QFont* param1) {
+	return new QFontInfo(*param1);
 }
 
-void QFontInfo_new2(QFontInfo* param1, QFontInfo** outptr_QFontInfo) {
-	QFontInfo* ret = new QFontInfo(*param1);
-	*outptr_QFontInfo = ret;
+QFontInfo* QFontInfo_new2(QFontInfo* param1) {
+	return new QFontInfo(*param1);
 }
 
 void QFontInfo_OperatorAssign(QFontInfo* self, QFontInfo* param1) {

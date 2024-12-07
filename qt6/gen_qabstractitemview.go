@@ -127,50 +127,34 @@ func (this *QAbstractItemView) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAbstractItemView constructs the type using only CGO pointers.
-func newQAbstractItemView(h *C.QAbstractItemView, h_QAbstractScrollArea *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QAbstractItemView {
+func newQAbstractItemView(h *C.QAbstractItemView) *QAbstractItemView {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
+	C.QAbstractItemView_virtbase(h, &outptr_QAbstractScrollArea)
+
 	return &QAbstractItemView{h: h,
-		QAbstractScrollArea: newQAbstractScrollArea(h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+		QAbstractScrollArea: newQAbstractScrollArea(outptr_QAbstractScrollArea)}
 }
 
 // UnsafeNewQAbstractItemView constructs the type using only unsafe pointers.
-func UnsafeNewQAbstractItemView(h unsafe.Pointer, h_QAbstractScrollArea unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QAbstractItemView {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractItemView{h: (*C.QAbstractItemView)(h),
-		QAbstractScrollArea: UnsafeNewQAbstractScrollArea(h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQAbstractItemView(h unsafe.Pointer) *QAbstractItemView {
+	return newQAbstractItemView((*C.QAbstractItemView)(h))
 }
 
 // NewQAbstractItemView constructs a new QAbstractItemView object.
 func NewQAbstractItemView(parent *QWidget) *QAbstractItemView {
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QAbstractItemView_new(parent.cPointer(), &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQAbstractItemView(outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQAbstractItemView(C.QAbstractItemView_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAbstractItemView2 constructs a new QAbstractItemView object.
 func NewQAbstractItemView2() *QAbstractItemView {
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QAbstractItemView_new2(&outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQAbstractItemView(outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQAbstractItemView(C.QAbstractItemView_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -199,7 +183,7 @@ func (this *QAbstractItemView) SetModel(model *QAbstractItemModel) {
 }
 
 func (this *QAbstractItemView) Model() *QAbstractItemModel {
-	return newQAbstractItemModel(C.QAbstractItemView_Model(this.h), nil)
+	return newQAbstractItemModel(C.QAbstractItemView_Model(this.h))
 }
 
 func (this *QAbstractItemView) SetSelectionModel(selectionModel *QItemSelectionModel) {
@@ -207,7 +191,7 @@ func (this *QAbstractItemView) SetSelectionModel(selectionModel *QItemSelectionM
 }
 
 func (this *QAbstractItemView) SelectionModel() *QItemSelectionModel {
-	return newQItemSelectionModel(C.QAbstractItemView_SelectionModel(this.h), nil)
+	return newQItemSelectionModel(C.QAbstractItemView_SelectionModel(this.h))
 }
 
 func (this *QAbstractItemView) SetItemDelegate(delegate *QAbstractItemDelegate) {
@@ -215,7 +199,7 @@ func (this *QAbstractItemView) SetItemDelegate(delegate *QAbstractItemDelegate) 
 }
 
 func (this *QAbstractItemView) ItemDelegate() *QAbstractItemDelegate {
-	return newQAbstractItemDelegate(C.QAbstractItemView_ItemDelegate(this.h), nil)
+	return newQAbstractItemDelegate(C.QAbstractItemView_ItemDelegate(this.h))
 }
 
 func (this *QAbstractItemView) SetSelectionMode(mode QAbstractItemView__SelectionMode) {
@@ -423,7 +407,7 @@ func (this *QAbstractItemView) SetIndexWidget(index *QModelIndex, widget *QWidge
 }
 
 func (this *QAbstractItemView) IndexWidget(index *QModelIndex) *QWidget {
-	return newQWidget(C.QAbstractItemView_IndexWidget(this.h, index.cPointer()), nil, nil)
+	return newQWidget(C.QAbstractItemView_IndexWidget(this.h, index.cPointer()))
 }
 
 func (this *QAbstractItemView) SetItemDelegateForRow(row int, delegate *QAbstractItemDelegate) {
@@ -431,7 +415,7 @@ func (this *QAbstractItemView) SetItemDelegateForRow(row int, delegate *QAbstrac
 }
 
 func (this *QAbstractItemView) ItemDelegateForRow(row int) *QAbstractItemDelegate {
-	return newQAbstractItemDelegate(C.QAbstractItemView_ItemDelegateForRow(this.h, (C.int)(row)), nil)
+	return newQAbstractItemDelegate(C.QAbstractItemView_ItemDelegateForRow(this.h, (C.int)(row)))
 }
 
 func (this *QAbstractItemView) SetItemDelegateForColumn(column int, delegate *QAbstractItemDelegate) {
@@ -439,15 +423,15 @@ func (this *QAbstractItemView) SetItemDelegateForColumn(column int, delegate *QA
 }
 
 func (this *QAbstractItemView) ItemDelegateForColumn(column int) *QAbstractItemDelegate {
-	return newQAbstractItemDelegate(C.QAbstractItemView_ItemDelegateForColumn(this.h, (C.int)(column)), nil)
+	return newQAbstractItemDelegate(C.QAbstractItemView_ItemDelegateForColumn(this.h, (C.int)(column)))
 }
 
 func (this *QAbstractItemView) ItemDelegateWithIndex(index *QModelIndex) *QAbstractItemDelegate {
-	return newQAbstractItemDelegate(C.QAbstractItemView_ItemDelegateWithIndex(this.h, index.cPointer()), nil)
+	return newQAbstractItemDelegate(C.QAbstractItemView_ItemDelegateWithIndex(this.h, index.cPointer()))
 }
 
 func (this *QAbstractItemView) ItemDelegateForIndex(index *QModelIndex) *QAbstractItemDelegate {
-	return newQAbstractItemDelegate(C.QAbstractItemView_ItemDelegateForIndex(this.h, index.cPointer()), nil)
+	return newQAbstractItemDelegate(C.QAbstractItemView_ItemDelegateForIndex(this.h, index.cPointer()))
 }
 
 func (this *QAbstractItemView) InputMethodQuery(query InputMethodQuery) *QVariant {
@@ -675,7 +659,7 @@ func miqt_exec_callback_QAbstractItemView_SetModel(self *C.QAbstractItemView, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQAbstractItemModel(model, nil)
+	slotval1 := newQAbstractItemModel(model)
 
 	gofunc((&QAbstractItemView{h: self}).callVirtualBase_SetModel, slotval1)
 
@@ -701,7 +685,7 @@ func miqt_exec_callback_QAbstractItemView_SetSelectionModel(self *C.QAbstractIte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQItemSelectionModel(selectionModel, nil)
+	slotval1 := newQItemSelectionModel(selectionModel)
 
 	gofunc((&QAbstractItemView{h: self}).callVirtualBase_SetSelectionModel, slotval1)
 
@@ -864,7 +848,7 @@ func miqt_exec_callback_QAbstractItemView_SizeHintForColumn(self *C.QAbstractIte
 
 func (this *QAbstractItemView) callVirtualBase_ItemDelegateForIndex(index *QModelIndex) *QAbstractItemDelegate {
 
-	return newQAbstractItemDelegate(C.QAbstractItemView_virtualbase_ItemDelegateForIndex(unsafe.Pointer(this.h), index.cPointer()), nil)
+	return newQAbstractItemDelegate(C.QAbstractItemView_virtualbase_ItemDelegateForIndex(unsafe.Pointer(this.h), index.cPointer()))
 
 }
 func (this *QAbstractItemView) OnItemDelegateForIndex(slot func(super func(index *QModelIndex) *QAbstractItemDelegate, index *QModelIndex) *QAbstractItemDelegate) {
@@ -1366,7 +1350,7 @@ func miqt_exec_callback_QAbstractItemView_CloseEditor(self *C.QAbstractItemView,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(editor, nil, nil)
+	slotval1 := newQWidget(editor)
 
 	slotval2 := (QAbstractItemDelegate__EndEditHint)(hint)
 
@@ -1394,7 +1378,7 @@ func miqt_exec_callback_QAbstractItemView_CommitData(self *C.QAbstractItemView, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(editor, nil, nil)
+	slotval1 := newQWidget(editor)
 
 	gofunc((&QAbstractItemView{h: self}).callVirtualBase_CommitData, slotval1)
 
@@ -1701,7 +1685,7 @@ func miqt_exec_callback_QAbstractItemView_InitViewItemOption(self *C.QAbstractIt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQStyleOptionViewItem(option, nil)
+	slotval1 := newQStyleOptionViewItem(option)
 
 	gofunc((&QAbstractItemView{h: self}).callVirtualBase_InitViewItemOption, slotval1)
 
@@ -1811,7 +1795,7 @@ func miqt_exec_callback_QAbstractItemView_MousePressEvent(self *C.QAbstractItemV
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QAbstractItemView{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -1837,7 +1821,7 @@ func miqt_exec_callback_QAbstractItemView_MouseMoveEvent(self *C.QAbstractItemVi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QAbstractItemView{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -1863,7 +1847,7 @@ func miqt_exec_callback_QAbstractItemView_MouseReleaseEvent(self *C.QAbstractIte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QAbstractItemView{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -1889,7 +1873,7 @@ func miqt_exec_callback_QAbstractItemView_MouseDoubleClickEvent(self *C.QAbstrac
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QAbstractItemView{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -1915,7 +1899,7 @@ func miqt_exec_callback_QAbstractItemView_DragEnterEvent(self *C.QAbstractItemVi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragEnterEvent(event, nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event)
 
 	gofunc((&QAbstractItemView{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -1941,7 +1925,7 @@ func miqt_exec_callback_QAbstractItemView_DragMoveEvent(self *C.QAbstractItemVie
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragMoveEvent(event, nil, nil)
+	slotval1 := newQDragMoveEvent(event)
 
 	gofunc((&QAbstractItemView{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1967,7 +1951,7 @@ func miqt_exec_callback_QAbstractItemView_DragLeaveEvent(self *C.QAbstractItemVi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragLeaveEvent(event, nil)
+	slotval1 := newQDragLeaveEvent(event)
 
 	gofunc((&QAbstractItemView{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1993,7 +1977,7 @@ func miqt_exec_callback_QAbstractItemView_DropEvent(self *C.QAbstractItemView, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDropEvent(event, nil)
+	slotval1 := newQDropEvent(event)
 
 	gofunc((&QAbstractItemView{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -2019,7 +2003,7 @@ func miqt_exec_callback_QAbstractItemView_FocusInEvent(self *C.QAbstractItemView
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QAbstractItemView{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -2045,7 +2029,7 @@ func miqt_exec_callback_QAbstractItemView_FocusOutEvent(self *C.QAbstractItemVie
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QAbstractItemView{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -2071,7 +2055,7 @@ func miqt_exec_callback_QAbstractItemView_KeyPressEvent(self *C.QAbstractItemVie
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(event, nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QAbstractItemView{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -2097,7 +2081,7 @@ func miqt_exec_callback_QAbstractItemView_ResizeEvent(self *C.QAbstractItemView,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(event, nil)
+	slotval1 := newQResizeEvent(event)
 
 	gofunc((&QAbstractItemView{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -2123,7 +2107,7 @@ func miqt_exec_callback_QAbstractItemView_TimerEvent(self *C.QAbstractItemView, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QAbstractItemView{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -2149,7 +2133,7 @@ func miqt_exec_callback_QAbstractItemView_InputMethodEvent(self *C.QAbstractItem
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQInputMethodEvent(event, nil)
+	slotval1 := newQInputMethodEvent(event)
 
 	gofunc((&QAbstractItemView{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -2286,7 +2270,7 @@ func miqt_exec_callback_QAbstractItemView_SetupViewport(self *C.QAbstractItemVie
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(viewport, nil, nil)
+	slotval1 := newQWidget(viewport)
 
 	gofunc((&QAbstractItemView{h: self}).callVirtualBase_SetupViewport, slotval1)
 
@@ -2312,7 +2296,7 @@ func miqt_exec_callback_QAbstractItemView_PaintEvent(self *C.QAbstractItemView, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(param1, nil)
+	slotval1 := newQPaintEvent(param1)
 
 	gofunc((&QAbstractItemView{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -2338,7 +2322,7 @@ func miqt_exec_callback_QAbstractItemView_WheelEvent(self *C.QAbstractItemView, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWheelEvent(param1, nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(param1)
 
 	gofunc((&QAbstractItemView{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -2364,7 +2348,7 @@ func miqt_exec_callback_QAbstractItemView_ContextMenuEvent(self *C.QAbstractItem
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQContextMenuEvent(param1, nil, nil)
+	slotval1 := newQContextMenuEvent(param1)
 
 	gofunc((&QAbstractItemView{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 

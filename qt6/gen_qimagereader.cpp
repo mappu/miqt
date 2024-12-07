@@ -13,33 +13,28 @@
 #include "gen_qimagereader.h"
 #include "_cgo_export.h"
 
-void QImageReader_new(QImageReader** outptr_QImageReader) {
-	QImageReader* ret = new QImageReader();
-	*outptr_QImageReader = ret;
+QImageReader* QImageReader_new() {
+	return new QImageReader();
 }
 
-void QImageReader_new2(QIODevice* device, QImageReader** outptr_QImageReader) {
-	QImageReader* ret = new QImageReader(device);
-	*outptr_QImageReader = ret;
+QImageReader* QImageReader_new2(QIODevice* device) {
+	return new QImageReader(device);
 }
 
-void QImageReader_new3(struct miqt_string fileName, QImageReader** outptr_QImageReader) {
+QImageReader* QImageReader_new3(struct miqt_string fileName) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	QImageReader* ret = new QImageReader(fileName_QString);
-	*outptr_QImageReader = ret;
+	return new QImageReader(fileName_QString);
 }
 
-void QImageReader_new4(QIODevice* device, struct miqt_string format, QImageReader** outptr_QImageReader) {
+QImageReader* QImageReader_new4(QIODevice* device, struct miqt_string format) {
 	QByteArray format_QByteArray(format.data, format.len);
-	QImageReader* ret = new QImageReader(device, format_QByteArray);
-	*outptr_QImageReader = ret;
+	return new QImageReader(device, format_QByteArray);
 }
 
-void QImageReader_new5(struct miqt_string fileName, struct miqt_string format, QImageReader** outptr_QImageReader) {
+QImageReader* QImageReader_new5(struct miqt_string fileName, struct miqt_string format) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QByteArray format_QByteArray(format.data, format.len);
-	QImageReader* ret = new QImageReader(fileName_QString, format_QByteArray);
-	*outptr_QImageReader = ret;
+	return new QImageReader(fileName_QString, format_QByteArray);
 }
 
 struct miqt_string QImageReader_Tr(const char* sourceText) {

@@ -34,8 +34,9 @@ typedef struct QObject QObject;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QIconEnginePlugin_new(QIconEnginePlugin** outptr_QIconEnginePlugin, QObject** outptr_QObject);
-void QIconEnginePlugin_new2(QObject* parent, QIconEnginePlugin** outptr_QIconEnginePlugin, QObject** outptr_QObject);
+QIconEnginePlugin* QIconEnginePlugin_new();
+QIconEnginePlugin* QIconEnginePlugin_new2(QObject* parent);
+void QIconEnginePlugin_virtbase(QIconEnginePlugin* src, QObject** outptr_QObject);
 QMetaObject* QIconEnginePlugin_MetaObject(const QIconEnginePlugin* self);
 void* QIconEnginePlugin_Metacast(QIconEnginePlugin* self, const char* param1);
 struct miqt_string QIconEnginePlugin_Tr(const char* s);

@@ -38,34 +38,27 @@ func newQNetworkCacheMetaData(h *C.QNetworkCacheMetaData) *QNetworkCacheMetaData
 	if h == nil {
 		return nil
 	}
+
 	return &QNetworkCacheMetaData{h: h}
 }
 
 // UnsafeNewQNetworkCacheMetaData constructs the type using only unsafe pointers.
 func UnsafeNewQNetworkCacheMetaData(h unsafe.Pointer) *QNetworkCacheMetaData {
-	if h == nil {
-		return nil
-	}
-
-	return &QNetworkCacheMetaData{h: (*C.QNetworkCacheMetaData)(h)}
+	return newQNetworkCacheMetaData((*C.QNetworkCacheMetaData)(h))
 }
 
 // NewQNetworkCacheMetaData constructs a new QNetworkCacheMetaData object.
 func NewQNetworkCacheMetaData() *QNetworkCacheMetaData {
-	var outptr_QNetworkCacheMetaData *C.QNetworkCacheMetaData = nil
 
-	C.QNetworkCacheMetaData_new(&outptr_QNetworkCacheMetaData)
-	ret := newQNetworkCacheMetaData(outptr_QNetworkCacheMetaData)
+	ret := newQNetworkCacheMetaData(C.QNetworkCacheMetaData_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQNetworkCacheMetaData2 constructs a new QNetworkCacheMetaData object.
 func NewQNetworkCacheMetaData2(other *QNetworkCacheMetaData) *QNetworkCacheMetaData {
-	var outptr_QNetworkCacheMetaData *C.QNetworkCacheMetaData = nil
 
-	C.QNetworkCacheMetaData_new2(other.cPointer(), &outptr_QNetworkCacheMetaData)
-	ret := newQNetworkCacheMetaData(outptr_QNetworkCacheMetaData)
+	ret := newQNetworkCacheMetaData(C.QNetworkCacheMetaData_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -259,22 +252,20 @@ func (this *QAbstractNetworkCache) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAbstractNetworkCache constructs the type using only CGO pointers.
-func newQAbstractNetworkCache(h *C.QAbstractNetworkCache, h_QObject *C.QObject) *QAbstractNetworkCache {
+func newQAbstractNetworkCache(h *C.QAbstractNetworkCache) *QAbstractNetworkCache {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QAbstractNetworkCache_virtbase(h, &outptr_QObject)
+
 	return &QAbstractNetworkCache{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQAbstractNetworkCache constructs the type using only unsafe pointers.
-func UnsafeNewQAbstractNetworkCache(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractNetworkCache {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractNetworkCache{h: (*C.QAbstractNetworkCache)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQAbstractNetworkCache(h unsafe.Pointer) *QAbstractNetworkCache {
+	return newQAbstractNetworkCache((*C.QAbstractNetworkCache)(h))
 }
 
 func (this *QAbstractNetworkCache) MetaObject() *qt.QMetaObject {
@@ -316,7 +307,7 @@ func (this *QAbstractNetworkCache) UpdateMetaData(metaData *QNetworkCacheMetaDat
 }
 
 func (this *QAbstractNetworkCache) Data(url *qt.QUrl) *qt.QIODevice {
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractNetworkCache_Data(this.h, (*C.QUrl)(url.UnsafePointer()))), nil)
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractNetworkCache_Data(this.h, (*C.QUrl)(url.UnsafePointer()))))
 }
 
 func (this *QAbstractNetworkCache) Remove(url *qt.QUrl) bool {
@@ -328,7 +319,7 @@ func (this *QAbstractNetworkCache) CacheSize() int64 {
 }
 
 func (this *QAbstractNetworkCache) Prepare(metaData *QNetworkCacheMetaData) *qt.QIODevice {
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractNetworkCache_Prepare(this.h, metaData.cPointer())), nil)
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractNetworkCache_Prepare(this.h, metaData.cPointer())))
 }
 
 func (this *QAbstractNetworkCache) Insert(device *qt.QIODevice) {

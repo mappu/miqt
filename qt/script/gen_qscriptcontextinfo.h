@@ -22,9 +22,9 @@ typedef struct QScriptContext QScriptContext;
 typedef struct QScriptContextInfo QScriptContextInfo;
 #endif
 
-void QScriptContextInfo_new(QScriptContext* context, QScriptContextInfo** outptr_QScriptContextInfo);
-void QScriptContextInfo_new2(QScriptContextInfo* other, QScriptContextInfo** outptr_QScriptContextInfo);
-void QScriptContextInfo_new3(QScriptContextInfo** outptr_QScriptContextInfo);
+QScriptContextInfo* QScriptContextInfo_new(QScriptContext* context);
+QScriptContextInfo* QScriptContextInfo_new2(QScriptContextInfo* other);
+QScriptContextInfo* QScriptContextInfo_new3();
 void QScriptContextInfo_OperatorAssign(QScriptContextInfo* self, QScriptContextInfo* other);
 bool QScriptContextInfo_IsNull(const QScriptContextInfo* self);
 long long QScriptContextInfo_ScriptId(const QScriptContextInfo* self);

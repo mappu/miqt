@@ -54,54 +54,43 @@ func newQItemSelectionRange(h *C.QItemSelectionRange) *QItemSelectionRange {
 	if h == nil {
 		return nil
 	}
+
 	return &QItemSelectionRange{h: h}
 }
 
 // UnsafeNewQItemSelectionRange constructs the type using only unsafe pointers.
 func UnsafeNewQItemSelectionRange(h unsafe.Pointer) *QItemSelectionRange {
-	if h == nil {
-		return nil
-	}
-
-	return &QItemSelectionRange{h: (*C.QItemSelectionRange)(h)}
+	return newQItemSelectionRange((*C.QItemSelectionRange)(h))
 }
 
 // NewQItemSelectionRange constructs a new QItemSelectionRange object.
 func NewQItemSelectionRange() *QItemSelectionRange {
-	var outptr_QItemSelectionRange *C.QItemSelectionRange = nil
 
-	C.QItemSelectionRange_new(&outptr_QItemSelectionRange)
-	ret := newQItemSelectionRange(outptr_QItemSelectionRange)
+	ret := newQItemSelectionRange(C.QItemSelectionRange_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQItemSelectionRange2 constructs a new QItemSelectionRange object.
 func NewQItemSelectionRange2(other *QItemSelectionRange) *QItemSelectionRange {
-	var outptr_QItemSelectionRange *C.QItemSelectionRange = nil
 
-	C.QItemSelectionRange_new2(other.cPointer(), &outptr_QItemSelectionRange)
-	ret := newQItemSelectionRange(outptr_QItemSelectionRange)
+	ret := newQItemSelectionRange(C.QItemSelectionRange_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQItemSelectionRange3 constructs a new QItemSelectionRange object.
 func NewQItemSelectionRange3(topL *QModelIndex, bottomR *QModelIndex) *QItemSelectionRange {
-	var outptr_QItemSelectionRange *C.QItemSelectionRange = nil
 
-	C.QItemSelectionRange_new3(topL.cPointer(), bottomR.cPointer(), &outptr_QItemSelectionRange)
-	ret := newQItemSelectionRange(outptr_QItemSelectionRange)
+	ret := newQItemSelectionRange(C.QItemSelectionRange_new3(topL.cPointer(), bottomR.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQItemSelectionRange4 constructs a new QItemSelectionRange object.
 func NewQItemSelectionRange4(index *QModelIndex) *QItemSelectionRange {
-	var outptr_QItemSelectionRange *C.QItemSelectionRange = nil
 
-	C.QItemSelectionRange_new4(index.cPointer(), &outptr_QItemSelectionRange)
-	ret := newQItemSelectionRange(outptr_QItemSelectionRange)
+	ret := newQItemSelectionRange(C.QItemSelectionRange_new4(index.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -153,7 +142,7 @@ func (this *QItemSelectionRange) Parent() *QModelIndex {
 }
 
 func (this *QItemSelectionRange) Model() *QAbstractItemModel {
-	return newQAbstractItemModel(C.QItemSelectionRange_Model(this.h), nil)
+	return newQAbstractItemModel(C.QItemSelectionRange_Model(this.h))
 }
 
 func (this *QItemSelectionRange) Contains(index *QModelIndex) bool {
@@ -241,53 +230,42 @@ func (this *QItemSelectionModel) UnsafePointer() unsafe.Pointer {
 }
 
 // newQItemSelectionModel constructs the type using only CGO pointers.
-func newQItemSelectionModel(h *C.QItemSelectionModel, h_QObject *C.QObject) *QItemSelectionModel {
+func newQItemSelectionModel(h *C.QItemSelectionModel) *QItemSelectionModel {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QItemSelectionModel_virtbase(h, &outptr_QObject)
+
 	return &QItemSelectionModel{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQItemSelectionModel constructs the type using only unsafe pointers.
-func UnsafeNewQItemSelectionModel(h unsafe.Pointer, h_QObject unsafe.Pointer) *QItemSelectionModel {
-	if h == nil {
-		return nil
-	}
-
-	return &QItemSelectionModel{h: (*C.QItemSelectionModel)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQItemSelectionModel(h unsafe.Pointer) *QItemSelectionModel {
+	return newQItemSelectionModel((*C.QItemSelectionModel)(h))
 }
 
 // NewQItemSelectionModel constructs a new QItemSelectionModel object.
 func NewQItemSelectionModel() *QItemSelectionModel {
-	var outptr_QItemSelectionModel *C.QItemSelectionModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QItemSelectionModel_new(&outptr_QItemSelectionModel, &outptr_QObject)
-	ret := newQItemSelectionModel(outptr_QItemSelectionModel, outptr_QObject)
+	ret := newQItemSelectionModel(C.QItemSelectionModel_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQItemSelectionModel2 constructs a new QItemSelectionModel object.
 func NewQItemSelectionModel2(model *QAbstractItemModel, parent *QObject) *QItemSelectionModel {
-	var outptr_QItemSelectionModel *C.QItemSelectionModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QItemSelectionModel_new2(model.cPointer(), parent.cPointer(), &outptr_QItemSelectionModel, &outptr_QObject)
-	ret := newQItemSelectionModel(outptr_QItemSelectionModel, outptr_QObject)
+	ret := newQItemSelectionModel(C.QItemSelectionModel_new2(model.cPointer(), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQItemSelectionModel3 constructs a new QItemSelectionModel object.
 func NewQItemSelectionModel3(model *QAbstractItemModel) *QItemSelectionModel {
-	var outptr_QItemSelectionModel *C.QItemSelectionModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QItemSelectionModel_new3(model.cPointer(), &outptr_QItemSelectionModel, &outptr_QObject)
-	ret := newQItemSelectionModel(outptr_QItemSelectionModel, outptr_QObject)
+	ret := newQItemSelectionModel(C.QItemSelectionModel_new3(model.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -393,11 +371,11 @@ func (this *QItemSelectionModel) Selection() *QItemSelection {
 }
 
 func (this *QItemSelectionModel) Model() *QAbstractItemModel {
-	return newQAbstractItemModel(C.QItemSelectionModel_Model(this.h), nil)
+	return newQAbstractItemModel(C.QItemSelectionModel_Model(this.h))
 }
 
 func (this *QItemSelectionModel) Model2() *QAbstractItemModel {
-	return newQAbstractItemModel(C.QItemSelectionModel_Model2(this.h), nil)
+	return newQAbstractItemModel(C.QItemSelectionModel_Model2(this.h))
 }
 
 func (this *QItemSelectionModel) SetModel(model *QAbstractItemModel) {
@@ -535,7 +513,7 @@ func miqt_exec_callback_QItemSelectionModel_ModelChanged(cb C.intptr_t, model *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQAbstractItemModel(model, nil)
+	slotval1 := newQAbstractItemModel(model)
 
 	gofunc(slotval1)
 }
@@ -855,7 +833,7 @@ func miqt_exec_callback_QItemSelectionModel_TimerEvent(self *C.QItemSelectionMod
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -881,7 +859,7 @@ func miqt_exec_callback_QItemSelectionModel_ChildEvent(self *C.QItemSelectionMod
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -1005,34 +983,27 @@ func newQItemSelection(h *C.QItemSelection) *QItemSelection {
 	if h == nil {
 		return nil
 	}
+
 	return &QItemSelection{h: h}
 }
 
 // UnsafeNewQItemSelection constructs the type using only unsafe pointers.
 func UnsafeNewQItemSelection(h unsafe.Pointer) *QItemSelection {
-	if h == nil {
-		return nil
-	}
-
-	return &QItemSelection{h: (*C.QItemSelection)(h)}
+	return newQItemSelection((*C.QItemSelection)(h))
 }
 
 // NewQItemSelection constructs a new QItemSelection object.
 func NewQItemSelection() *QItemSelection {
-	var outptr_QItemSelection *C.QItemSelection = nil
 
-	C.QItemSelection_new(&outptr_QItemSelection)
-	ret := newQItemSelection(outptr_QItemSelection)
+	ret := newQItemSelection(C.QItemSelection_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQItemSelection2 constructs a new QItemSelection object.
 func NewQItemSelection2(topLeft *QModelIndex, bottomRight *QModelIndex) *QItemSelection {
-	var outptr_QItemSelection *C.QItemSelection = nil
 
-	C.QItemSelection_new2(topLeft.cPointer(), bottomRight.cPointer(), &outptr_QItemSelection)
-	ret := newQItemSelection(outptr_QItemSelection)
+	ret := newQItemSelection(C.QItemSelection_new2(topLeft.cPointer(), bottomRight.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

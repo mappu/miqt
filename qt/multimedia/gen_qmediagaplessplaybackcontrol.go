@@ -36,22 +36,20 @@ func (this *QMediaGaplessPlaybackControl) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMediaGaplessPlaybackControl constructs the type using only CGO pointers.
-func newQMediaGaplessPlaybackControl(h *C.QMediaGaplessPlaybackControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QMediaGaplessPlaybackControl {
+func newQMediaGaplessPlaybackControl(h *C.QMediaGaplessPlaybackControl) *QMediaGaplessPlaybackControl {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaControl *C.QMediaControl = nil
+	C.QMediaGaplessPlaybackControl_virtbase(h, &outptr_QMediaControl)
+
 	return &QMediaGaplessPlaybackControl{h: h,
-		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
+		QMediaControl: newQMediaControl(outptr_QMediaControl)}
 }
 
 // UnsafeNewQMediaGaplessPlaybackControl constructs the type using only unsafe pointers.
-func UnsafeNewQMediaGaplessPlaybackControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QMediaGaplessPlaybackControl {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaGaplessPlaybackControl{h: (*C.QMediaGaplessPlaybackControl)(h),
-		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
+func UnsafeNewQMediaGaplessPlaybackControl(h unsafe.Pointer) *QMediaGaplessPlaybackControl {
+	return newQMediaGaplessPlaybackControl((*C.QMediaGaplessPlaybackControl)(h))
 }
 
 func (this *QMediaGaplessPlaybackControl) MetaObject() *qt.QMetaObject {

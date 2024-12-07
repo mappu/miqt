@@ -47,46 +47,36 @@ func (this *QLayout) UnsafePointer() unsafe.Pointer {
 }
 
 // newQLayout constructs the type using only CGO pointers.
-func newQLayout(h *C.QLayout, h_QObject *C.QObject, h_QLayoutItem *C.QLayoutItem) *QLayout {
+func newQLayout(h *C.QLayout) *QLayout {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	var outptr_QLayoutItem *C.QLayoutItem = nil
+	C.QLayout_virtbase(h, &outptr_QObject, &outptr_QLayoutItem)
+
 	return &QLayout{h: h,
-		QObject:     newQObject(h_QObject),
-		QLayoutItem: newQLayoutItem(h_QLayoutItem)}
+		QObject:     newQObject(outptr_QObject),
+		QLayoutItem: newQLayoutItem(outptr_QLayoutItem)}
 }
 
 // UnsafeNewQLayout constructs the type using only unsafe pointers.
-func UnsafeNewQLayout(h unsafe.Pointer, h_QObject unsafe.Pointer, h_QLayoutItem unsafe.Pointer) *QLayout {
-	if h == nil {
-		return nil
-	}
-
-	return &QLayout{h: (*C.QLayout)(h),
-		QObject:     UnsafeNewQObject(h_QObject),
-		QLayoutItem: UnsafeNewQLayoutItem(h_QLayoutItem)}
+func UnsafeNewQLayout(h unsafe.Pointer) *QLayout {
+	return newQLayout((*C.QLayout)(h))
 }
 
 // NewQLayout constructs a new QLayout object.
 func NewQLayout(parent *QWidget) *QLayout {
-	var outptr_QLayout *C.QLayout = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QLayoutItem *C.QLayoutItem = nil
 
-	C.QLayout_new(parent.cPointer(), &outptr_QLayout, &outptr_QObject, &outptr_QLayoutItem)
-	ret := newQLayout(outptr_QLayout, outptr_QObject, outptr_QLayoutItem)
+	ret := newQLayout(C.QLayout_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQLayout2 constructs a new QLayout object.
 func NewQLayout2() *QLayout {
-	var outptr_QLayout *C.QLayout = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QLayoutItem *C.QLayoutItem = nil
 
-	C.QLayout_new2(&outptr_QLayout, &outptr_QObject, &outptr_QLayoutItem)
-	ret := newQLayout(outptr_QLayout, outptr_QObject, outptr_QLayoutItem)
+	ret := newQLayout(C.QLayout_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -167,11 +157,11 @@ func (this *QLayout) SetMenuBar(w *QWidget) {
 }
 
 func (this *QLayout) MenuBar() *QWidget {
-	return newQWidget(C.QLayout_MenuBar(this.h), nil, nil)
+	return newQWidget(C.QLayout_MenuBar(this.h))
 }
 
 func (this *QLayout) ParentWidget() *QWidget {
-	return newQWidget(C.QLayout_ParentWidget(this.h), nil, nil)
+	return newQWidget(C.QLayout_ParentWidget(this.h))
 }
 
 func (this *QLayout) Invalidate() {
@@ -287,7 +277,7 @@ func (this *QLayout) TotalSizeHint() *QSize {
 }
 
 func (this *QLayout) Layout() *QLayout {
-	return newQLayout(C.QLayout_Layout(this.h), nil, nil)
+	return newQLayout(C.QLayout_Layout(this.h))
 }
 
 func (this *QLayout) SetEnabled(enabled bool) {
@@ -616,7 +606,7 @@ func miqt_exec_callback_QLayout_IndexOf(self *C.QLayout, cb C.intptr_t, param1 *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(param1, nil, nil)
+	slotval1 := newQWidget(param1)
 
 	virtualReturn := gofunc((&QLayout{h: self}).callVirtualBase_IndexOf, slotval1)
 
@@ -741,9 +731,9 @@ func miqt_exec_callback_QLayout_ReplaceWidget(self *C.QLayout, cb C.intptr_t, fr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(from, nil, nil)
+	slotval1 := newQWidget(from)
 
-	slotval2 := newQWidget(to, nil, nil)
+	slotval2 := newQWidget(to)
 
 	slotval3 := (FindChildOption)(options)
 
@@ -755,7 +745,7 @@ func miqt_exec_callback_QLayout_ReplaceWidget(self *C.QLayout, cb C.intptr_t, fr
 
 func (this *QLayout) callVirtualBase_Layout() *QLayout {
 
-	return newQLayout(C.QLayout_virtualbase_Layout(unsafe.Pointer(this.h)), nil, nil)
+	return newQLayout(C.QLayout_virtualbase_Layout(unsafe.Pointer(this.h)))
 
 }
 func (this *QLayout) OnLayout(slot func(super func() *QLayout) *QLayout) {
@@ -798,7 +788,7 @@ func miqt_exec_callback_QLayout_ChildEvent(self *C.QLayout, cb C.intptr_t, e *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(e, nil)
+	slotval1 := newQChildEvent(e)
 
 	gofunc((&QLayout{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -882,7 +872,7 @@ func miqt_exec_callback_QLayout_TimerEvent(self *C.QLayout, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QLayout{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -1068,7 +1058,7 @@ func miqt_exec_callback_QLayout_MinimumHeightForWidth(self *C.QLayout, cb C.intp
 
 func (this *QLayout) callVirtualBase_Widget() *QWidget {
 
-	return newQWidget(C.QLayout_virtualbase_Widget(unsafe.Pointer(this.h)), nil, nil)
+	return newQWidget(C.QLayout_virtualbase_Widget(unsafe.Pointer(this.h)))
 
 }
 func (this *QLayout) OnWidget(slot func(super func() *QWidget) *QWidget) {
@@ -1093,7 +1083,7 @@ func miqt_exec_callback_QLayout_Widget(self *C.QLayout, cb C.intptr_t) *C.QWidge
 
 func (this *QLayout) callVirtualBase_SpacerItem() *QSpacerItem {
 
-	return newQSpacerItem(C.QLayout_virtualbase_SpacerItem(unsafe.Pointer(this.h)), nil)
+	return newQSpacerItem(C.QLayout_virtualbase_SpacerItem(unsafe.Pointer(this.h)))
 
 }
 func (this *QLayout) OnSpacerItem(slot func(super func() *QSpacerItem) *QSpacerItem) {

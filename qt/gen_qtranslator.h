@@ -34,8 +34,9 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QTranslator QTranslator;
 #endif
 
-void QTranslator_new(QTranslator** outptr_QTranslator, QObject** outptr_QObject);
-void QTranslator_new2(QObject* parent, QTranslator** outptr_QTranslator, QObject** outptr_QObject);
+QTranslator* QTranslator_new();
+QTranslator* QTranslator_new2(QObject* parent);
+void QTranslator_virtbase(QTranslator* src, QObject** outptr_QObject);
 QMetaObject* QTranslator_MetaObject(const QTranslator* self);
 void* QTranslator_Metacast(QTranslator* self, const char* param1);
 struct miqt_string QTranslator_Tr(const char* s);

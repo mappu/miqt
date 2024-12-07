@@ -22,8 +22,8 @@ typedef struct QUrl QUrl;
 typedef struct QWebEngineScript QWebEngineScript;
 #endif
 
-void QWebEngineScript_new(QWebEngineScript** outptr_QWebEngineScript);
-void QWebEngineScript_new2(QWebEngineScript* other, QWebEngineScript** outptr_QWebEngineScript);
+QWebEngineScript* QWebEngineScript_new();
+QWebEngineScript* QWebEngineScript_new2(QWebEngineScript* other);
 void QWebEngineScript_OperatorAssign(QWebEngineScript* self, QWebEngineScript* other);
 struct miqt_string QWebEngineScript_Name(const QWebEngineScript* self);
 void QWebEngineScript_SetName(QWebEngineScript* self, struct miqt_string name);

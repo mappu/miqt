@@ -37,24 +37,19 @@ func newQCollatorSortKey(h *C.QCollatorSortKey) *QCollatorSortKey {
 	if h == nil {
 		return nil
 	}
+
 	return &QCollatorSortKey{h: h}
 }
 
 // UnsafeNewQCollatorSortKey constructs the type using only unsafe pointers.
 func UnsafeNewQCollatorSortKey(h unsafe.Pointer) *QCollatorSortKey {
-	if h == nil {
-		return nil
-	}
-
-	return &QCollatorSortKey{h: (*C.QCollatorSortKey)(h)}
+	return newQCollatorSortKey((*C.QCollatorSortKey)(h))
 }
 
 // NewQCollatorSortKey constructs a new QCollatorSortKey object.
 func NewQCollatorSortKey(other *QCollatorSortKey) *QCollatorSortKey {
-	var outptr_QCollatorSortKey *C.QCollatorSortKey = nil
 
-	C.QCollatorSortKey_new(other.cPointer(), &outptr_QCollatorSortKey)
-	ret := newQCollatorSortKey(outptr_QCollatorSortKey)
+	ret := newQCollatorSortKey(C.QCollatorSortKey_new(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -109,44 +104,35 @@ func newQCollator(h *C.QCollator) *QCollator {
 	if h == nil {
 		return nil
 	}
+
 	return &QCollator{h: h}
 }
 
 // UnsafeNewQCollator constructs the type using only unsafe pointers.
 func UnsafeNewQCollator(h unsafe.Pointer) *QCollator {
-	if h == nil {
-		return nil
-	}
-
-	return &QCollator{h: (*C.QCollator)(h)}
+	return newQCollator((*C.QCollator)(h))
 }
 
 // NewQCollator constructs a new QCollator object.
 func NewQCollator() *QCollator {
-	var outptr_QCollator *C.QCollator = nil
 
-	C.QCollator_new(&outptr_QCollator)
-	ret := newQCollator(outptr_QCollator)
+	ret := newQCollator(C.QCollator_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCollator2 constructs a new QCollator object.
 func NewQCollator2(locale *QLocale) *QCollator {
-	var outptr_QCollator *C.QCollator = nil
 
-	C.QCollator_new2(locale.cPointer(), &outptr_QCollator)
-	ret := newQCollator(outptr_QCollator)
+	ret := newQCollator(C.QCollator_new2(locale.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCollator3 constructs a new QCollator object.
 func NewQCollator3(param1 *QCollator) *QCollator {
-	var outptr_QCollator *C.QCollator = nil
 
-	C.QCollator_new3(param1.cPointer(), &outptr_QCollator)
-	ret := newQCollator(outptr_QCollator)
+	ret := newQCollator(C.QCollator_new3(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

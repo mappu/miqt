@@ -35,42 +35,34 @@ func (this *QAccessiblePlugin) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAccessiblePlugin constructs the type using only CGO pointers.
-func newQAccessiblePlugin(h *C.QAccessiblePlugin, h_QObject *C.QObject) *QAccessiblePlugin {
+func newQAccessiblePlugin(h *C.QAccessiblePlugin) *QAccessiblePlugin {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QAccessiblePlugin_virtbase(h, &outptr_QObject)
+
 	return &QAccessiblePlugin{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQAccessiblePlugin constructs the type using only unsafe pointers.
-func UnsafeNewQAccessiblePlugin(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAccessiblePlugin {
-	if h == nil {
-		return nil
-	}
-
-	return &QAccessiblePlugin{h: (*C.QAccessiblePlugin)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQAccessiblePlugin(h unsafe.Pointer) *QAccessiblePlugin {
+	return newQAccessiblePlugin((*C.QAccessiblePlugin)(h))
 }
 
 // NewQAccessiblePlugin constructs a new QAccessiblePlugin object.
 func NewQAccessiblePlugin() *QAccessiblePlugin {
-	var outptr_QAccessiblePlugin *C.QAccessiblePlugin = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAccessiblePlugin_new(&outptr_QAccessiblePlugin, &outptr_QObject)
-	ret := newQAccessiblePlugin(outptr_QAccessiblePlugin, outptr_QObject)
+	ret := newQAccessiblePlugin(C.QAccessiblePlugin_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAccessiblePlugin2 constructs a new QAccessiblePlugin object.
 func NewQAccessiblePlugin2(parent *QObject) *QAccessiblePlugin {
-	var outptr_QAccessiblePlugin *C.QAccessiblePlugin = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAccessiblePlugin_new2(parent.cPointer(), &outptr_QAccessiblePlugin, &outptr_QObject)
-	ret := newQAccessiblePlugin(outptr_QAccessiblePlugin, outptr_QObject)
+	ret := newQAccessiblePlugin(C.QAccessiblePlugin_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -228,7 +220,7 @@ func miqt_exec_callback_QAccessiblePlugin_TimerEvent(self *C.QAccessiblePlugin, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QAccessiblePlugin{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -254,7 +246,7 @@ func miqt_exec_callback_QAccessiblePlugin_ChildEvent(self *C.QAccessiblePlugin, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QAccessiblePlugin{h: self}).callVirtualBase_ChildEvent, slotval1)
 

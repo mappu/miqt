@@ -37,24 +37,19 @@ func newQVersionNumber(h *C.QVersionNumber) *QVersionNumber {
 	if h == nil {
 		return nil
 	}
+
 	return &QVersionNumber{h: h}
 }
 
 // UnsafeNewQVersionNumber constructs the type using only unsafe pointers.
 func UnsafeNewQVersionNumber(h unsafe.Pointer) *QVersionNumber {
-	if h == nil {
-		return nil
-	}
-
-	return &QVersionNumber{h: (*C.QVersionNumber)(h)}
+	return newQVersionNumber((*C.QVersionNumber)(h))
 }
 
 // NewQVersionNumber constructs a new QVersionNumber object.
 func NewQVersionNumber() *QVersionNumber {
-	var outptr_QVersionNumber *C.QVersionNumber = nil
 
-	C.QVersionNumber_new(&outptr_QVersionNumber)
-	ret := newQVersionNumber(outptr_QVersionNumber)
+	ret := newQVersionNumber(C.QVersionNumber_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -67,40 +62,32 @@ func NewQVersionNumber2(seg []int) *QVersionNumber {
 		seg_CArray[i] = (C.int)(seg[i])
 	}
 	seg_ma := C.struct_miqt_array{len: C.size_t(len(seg)), data: unsafe.Pointer(seg_CArray)}
-	var outptr_QVersionNumber *C.QVersionNumber = nil
 
-	C.QVersionNumber_new2(seg_ma, &outptr_QVersionNumber)
-	ret := newQVersionNumber(outptr_QVersionNumber)
+	ret := newQVersionNumber(C.QVersionNumber_new2(seg_ma))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVersionNumber3 constructs a new QVersionNumber object.
 func NewQVersionNumber3(maj int) *QVersionNumber {
-	var outptr_QVersionNumber *C.QVersionNumber = nil
 
-	C.QVersionNumber_new3((C.int)(maj), &outptr_QVersionNumber)
-	ret := newQVersionNumber(outptr_QVersionNumber)
+	ret := newQVersionNumber(C.QVersionNumber_new3((C.int)(maj)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVersionNumber4 constructs a new QVersionNumber object.
 func NewQVersionNumber4(maj int, min int) *QVersionNumber {
-	var outptr_QVersionNumber *C.QVersionNumber = nil
 
-	C.QVersionNumber_new4((C.int)(maj), (C.int)(min), &outptr_QVersionNumber)
-	ret := newQVersionNumber(outptr_QVersionNumber)
+	ret := newQVersionNumber(C.QVersionNumber_new4((C.int)(maj), (C.int)(min)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVersionNumber5 constructs a new QVersionNumber object.
 func NewQVersionNumber5(maj int, min int, mic int) *QVersionNumber {
-	var outptr_QVersionNumber *C.QVersionNumber = nil
 
-	C.QVersionNumber_new5((C.int)(maj), (C.int)(min), (C.int)(mic), &outptr_QVersionNumber)
-	ret := newQVersionNumber(outptr_QVersionNumber)
+	ret := newQVersionNumber(C.QVersionNumber_new5((C.int)(maj), (C.int)(min), (C.int)(mic)))
 	ret.isSubclass = true
 	return ret
 }

@@ -55,16 +55,13 @@ func newQSurface(h *C.QSurface) *QSurface {
 	if h == nil {
 		return nil
 	}
+
 	return &QSurface{h: h}
 }
 
 // UnsafeNewQSurface constructs the type using only unsafe pointers.
 func UnsafeNewQSurface(h unsafe.Pointer) *QSurface {
-	if h == nil {
-		return nil
-	}
-
-	return &QSurface{h: (*C.QSurface)(h)}
+	return newQSurface((*C.QSurface)(h))
 }
 
 func (this *QSurface) SurfaceClass() QSurface__SurfaceClass {

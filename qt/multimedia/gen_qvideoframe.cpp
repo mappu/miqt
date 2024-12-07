@@ -10,24 +10,20 @@
 #include "gen_qvideoframe.h"
 #include "_cgo_export.h"
 
-void QVideoFrame_new(QVideoFrame** outptr_QVideoFrame) {
-	QVideoFrame* ret = new QVideoFrame();
-	*outptr_QVideoFrame = ret;
+QVideoFrame* QVideoFrame_new() {
+	return new QVideoFrame();
 }
 
-void QVideoFrame_new2(int bytes, QSize* size, int bytesPerLine, int format, QVideoFrame** outptr_QVideoFrame) {
-	QVideoFrame* ret = new QVideoFrame(static_cast<int>(bytes), *size, static_cast<int>(bytesPerLine), static_cast<QVideoFrame::PixelFormat>(format));
-	*outptr_QVideoFrame = ret;
+QVideoFrame* QVideoFrame_new2(int bytes, QSize* size, int bytesPerLine, int format) {
+	return new QVideoFrame(static_cast<int>(bytes), *size, static_cast<int>(bytesPerLine), static_cast<QVideoFrame::PixelFormat>(format));
 }
 
-void QVideoFrame_new3(QImage* image, QVideoFrame** outptr_QVideoFrame) {
-	QVideoFrame* ret = new QVideoFrame(*image);
-	*outptr_QVideoFrame = ret;
+QVideoFrame* QVideoFrame_new3(QImage* image) {
+	return new QVideoFrame(*image);
 }
 
-void QVideoFrame_new4(QVideoFrame* other, QVideoFrame** outptr_QVideoFrame) {
-	QVideoFrame* ret = new QVideoFrame(*other);
-	*outptr_QVideoFrame = ret;
+QVideoFrame* QVideoFrame_new4(QVideoFrame* other) {
+	return new QVideoFrame(*other);
 }
 
 void QVideoFrame_OperatorAssign(QVideoFrame* self, QVideoFrame* other) {

@@ -9,6 +9,10 @@
 #include "gen_qvideodeviceselectorcontrol.h"
 #include "_cgo_export.h"
 
+void QVideoDeviceSelectorControl_virtbase(QVideoDeviceSelectorControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
+
 QMetaObject* QVideoDeviceSelectorControl_MetaObject(const QVideoDeviceSelectorControl* self) {
 	return (QMetaObject*) self->metaObject();
 }

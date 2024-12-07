@@ -11,30 +11,26 @@
 #include "gen_qtextstream.h"
 #include "_cgo_export.h"
 
-void QTextStream_new(QTextStream** outptr_QTextStream, QIODeviceBase** outptr_QIODeviceBase) {
-	QTextStream* ret = new QTextStream();
-	*outptr_QTextStream = ret;
-	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(ret);
+QTextStream* QTextStream_new() {
+	return new QTextStream();
 }
 
-void QTextStream_new2(QIODevice* device, QTextStream** outptr_QTextStream, QIODeviceBase** outptr_QIODeviceBase) {
-	QTextStream* ret = new QTextStream(device);
-	*outptr_QTextStream = ret;
-	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(ret);
+QTextStream* QTextStream_new2(QIODevice* device) {
+	return new QTextStream(device);
 }
 
-void QTextStream_new3(struct miqt_string array, QTextStream** outptr_QTextStream, QIODeviceBase** outptr_QIODeviceBase) {
+QTextStream* QTextStream_new3(struct miqt_string array) {
 	QByteArray array_QByteArray(array.data, array.len);
-	QTextStream* ret = new QTextStream(array_QByteArray);
-	*outptr_QTextStream = ret;
-	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(ret);
+	return new QTextStream(array_QByteArray);
 }
 
-void QTextStream_new4(struct miqt_string array, int openMode, QTextStream** outptr_QTextStream, QIODeviceBase** outptr_QIODeviceBase) {
+QTextStream* QTextStream_new4(struct miqt_string array, int openMode) {
 	QByteArray array_QByteArray(array.data, array.len);
-	QTextStream* ret = new QTextStream(array_QByteArray, static_cast<QIODeviceBase::OpenMode>(openMode));
-	*outptr_QTextStream = ret;
-	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(ret);
+	return new QTextStream(array_QByteArray, static_cast<QIODeviceBase::OpenMode>(openMode));
+}
+
+void QTextStream_virtbase(QTextStream* src, QIODeviceBase** outptr_QIODeviceBase) {
+	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(src);
 }
 
 void QTextStream_SetEncoding(QTextStream* self, int encoding) {

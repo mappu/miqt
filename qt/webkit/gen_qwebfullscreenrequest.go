@@ -38,34 +38,27 @@ func newQWebFullScreenRequest(h *C.QWebFullScreenRequest) *QWebFullScreenRequest
 	if h == nil {
 		return nil
 	}
+
 	return &QWebFullScreenRequest{h: h}
 }
 
 // UnsafeNewQWebFullScreenRequest constructs the type using only unsafe pointers.
 func UnsafeNewQWebFullScreenRequest(h unsafe.Pointer) *QWebFullScreenRequest {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebFullScreenRequest{h: (*C.QWebFullScreenRequest)(h)}
+	return newQWebFullScreenRequest((*C.QWebFullScreenRequest)(h))
 }
 
 // NewQWebFullScreenRequest constructs a new QWebFullScreenRequest object.
 func NewQWebFullScreenRequest() *QWebFullScreenRequest {
-	var outptr_QWebFullScreenRequest *C.QWebFullScreenRequest = nil
 
-	C.QWebFullScreenRequest_new(&outptr_QWebFullScreenRequest)
-	ret := newQWebFullScreenRequest(outptr_QWebFullScreenRequest)
+	ret := newQWebFullScreenRequest(C.QWebFullScreenRequest_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebFullScreenRequest2 constructs a new QWebFullScreenRequest object.
 func NewQWebFullScreenRequest2(param1 *QWebFullScreenRequest) *QWebFullScreenRequest {
-	var outptr_QWebFullScreenRequest *C.QWebFullScreenRequest = nil
 
-	C.QWebFullScreenRequest_new2(param1.cPointer(), &outptr_QWebFullScreenRequest)
-	ret := newQWebFullScreenRequest(outptr_QWebFullScreenRequest)
+	ret := newQWebFullScreenRequest(C.QWebFullScreenRequest_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

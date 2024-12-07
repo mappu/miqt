@@ -36,16 +36,13 @@ func newQVLABaseBase(h *C.QVLABaseBase) *QVLABaseBase {
 	if h == nil {
 		return nil
 	}
+
 	return &QVLABaseBase{h: h}
 }
 
 // UnsafeNewQVLABaseBase constructs the type using only unsafe pointers.
 func UnsafeNewQVLABaseBase(h unsafe.Pointer) *QVLABaseBase {
-	if h == nil {
-		return nil
-	}
-
-	return &QVLABaseBase{h: (*C.QVLABaseBase)(h)}
+	return newQVLABaseBase((*C.QVLABaseBase)(h))
 }
 
 func (this *QVLABaseBase) Capacity() int64 {

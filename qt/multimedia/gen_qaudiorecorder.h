@@ -30,8 +30,9 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif
 
-void QAudioRecorder_new(QAudioRecorder** outptr_QAudioRecorder, QMediaRecorder** outptr_QMediaRecorder, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface);
-void QAudioRecorder_new2(QObject* parent, QAudioRecorder** outptr_QAudioRecorder, QMediaRecorder** outptr_QMediaRecorder, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface);
+QAudioRecorder* QAudioRecorder_new();
+QAudioRecorder* QAudioRecorder_new2(QObject* parent);
+void QAudioRecorder_virtbase(QAudioRecorder* src, QMediaRecorder** outptr_QMediaRecorder);
 QMetaObject* QAudioRecorder_MetaObject(const QAudioRecorder* self);
 void* QAudioRecorder_Metacast(QAudioRecorder* self, const char* param1);
 struct miqt_string QAudioRecorder_Tr(const char* s);

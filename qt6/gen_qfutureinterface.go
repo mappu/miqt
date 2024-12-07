@@ -58,44 +58,35 @@ func newQFutureInterfaceBase(h *C.QFutureInterfaceBase) *QFutureInterfaceBase {
 	if h == nil {
 		return nil
 	}
+
 	return &QFutureInterfaceBase{h: h}
 }
 
 // UnsafeNewQFutureInterfaceBase constructs the type using only unsafe pointers.
 func UnsafeNewQFutureInterfaceBase(h unsafe.Pointer) *QFutureInterfaceBase {
-	if h == nil {
-		return nil
-	}
-
-	return &QFutureInterfaceBase{h: (*C.QFutureInterfaceBase)(h)}
+	return newQFutureInterfaceBase((*C.QFutureInterfaceBase)(h))
 }
 
 // NewQFutureInterfaceBase constructs a new QFutureInterfaceBase object.
 func NewQFutureInterfaceBase() *QFutureInterfaceBase {
-	var outptr_QFutureInterfaceBase *C.QFutureInterfaceBase = nil
 
-	C.QFutureInterfaceBase_new(&outptr_QFutureInterfaceBase)
-	ret := newQFutureInterfaceBase(outptr_QFutureInterfaceBase)
+	ret := newQFutureInterfaceBase(C.QFutureInterfaceBase_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFutureInterfaceBase2 constructs a new QFutureInterfaceBase object.
 func NewQFutureInterfaceBase2(other *QFutureInterfaceBase) *QFutureInterfaceBase {
-	var outptr_QFutureInterfaceBase *C.QFutureInterfaceBase = nil
 
-	C.QFutureInterfaceBase_new2(other.cPointer(), &outptr_QFutureInterfaceBase)
-	ret := newQFutureInterfaceBase(outptr_QFutureInterfaceBase)
+	ret := newQFutureInterfaceBase(C.QFutureInterfaceBase_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFutureInterfaceBase3 constructs a new QFutureInterfaceBase object.
 func NewQFutureInterfaceBase3(initialState QFutureInterfaceBase__State) *QFutureInterfaceBase {
-	var outptr_QFutureInterfaceBase *C.QFutureInterfaceBase = nil
 
-	C.QFutureInterfaceBase_new3((C.int)(initialState), &outptr_QFutureInterfaceBase)
-	ret := newQFutureInterfaceBase(outptr_QFutureInterfaceBase)
+	ret := newQFutureInterfaceBase(C.QFutureInterfaceBase_new3((C.int)(initialState)))
 	ret.isSubclass = true
 	return ret
 }
@@ -129,7 +120,7 @@ func (this *QFutureInterfaceBase) SetThreadPool(pool *QThreadPool) {
 }
 
 func (this *QFutureInterfaceBase) ThreadPool() *QThreadPool {
-	return newQThreadPool(C.QFutureInterfaceBase_ThreadPool(this.h), nil)
+	return newQThreadPool(C.QFutureInterfaceBase_ThreadPool(this.h))
 }
 
 func (this *QFutureInterfaceBase) SetFilterMode(enable bool) {
@@ -288,7 +279,7 @@ func (this *QFutureInterfaceBase) SuspendIfRequested() {
 }
 
 func (this *QFutureInterfaceBase) Mutex() *QMutex {
-	return newQMutex(C.QFutureInterfaceBase_Mutex(this.h), nil)
+	return newQMutex(C.QFutureInterfaceBase_Mutex(this.h))
 }
 
 func (this *QFutureInterfaceBase) HasException() bool {

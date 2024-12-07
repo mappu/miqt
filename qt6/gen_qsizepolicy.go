@@ -78,54 +78,43 @@ func newQSizePolicy(h *C.QSizePolicy) *QSizePolicy {
 	if h == nil {
 		return nil
 	}
+
 	return &QSizePolicy{h: h}
 }
 
 // UnsafeNewQSizePolicy constructs the type using only unsafe pointers.
 func UnsafeNewQSizePolicy(h unsafe.Pointer) *QSizePolicy {
-	if h == nil {
-		return nil
-	}
-
-	return &QSizePolicy{h: (*C.QSizePolicy)(h)}
+	return newQSizePolicy((*C.QSizePolicy)(h))
 }
 
 // NewQSizePolicy constructs a new QSizePolicy object.
 func NewQSizePolicy() *QSizePolicy {
-	var outptr_QSizePolicy *C.QSizePolicy = nil
 
-	C.QSizePolicy_new(&outptr_QSizePolicy)
-	ret := newQSizePolicy(outptr_QSizePolicy)
+	ret := newQSizePolicy(C.QSizePolicy_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSizePolicy2 constructs a new QSizePolicy object.
 func NewQSizePolicy2(horizontal QSizePolicy__Policy, vertical QSizePolicy__Policy) *QSizePolicy {
-	var outptr_QSizePolicy *C.QSizePolicy = nil
 
-	C.QSizePolicy_new2((C.int)(horizontal), (C.int)(vertical), &outptr_QSizePolicy)
-	ret := newQSizePolicy(outptr_QSizePolicy)
+	ret := newQSizePolicy(C.QSizePolicy_new2((C.int)(horizontal), (C.int)(vertical)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSizePolicy3 constructs a new QSizePolicy object.
 func NewQSizePolicy3(param1 *QSizePolicy) *QSizePolicy {
-	var outptr_QSizePolicy *C.QSizePolicy = nil
 
-	C.QSizePolicy_new3(param1.cPointer(), &outptr_QSizePolicy)
-	ret := newQSizePolicy(outptr_QSizePolicy)
+	ret := newQSizePolicy(C.QSizePolicy_new3(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSizePolicy4 constructs a new QSizePolicy object.
 func NewQSizePolicy4(horizontal QSizePolicy__Policy, vertical QSizePolicy__Policy, typeVal QSizePolicy__ControlType) *QSizePolicy {
-	var outptr_QSizePolicy *C.QSizePolicy = nil
 
-	C.QSizePolicy_new4((C.int)(horizontal), (C.int)(vertical), (C.int)(typeVal), &outptr_QSizePolicy)
-	ret := newQSizePolicy(outptr_QSizePolicy)
+	ret := newQSizePolicy(C.QSizePolicy_new4((C.int)(horizontal), (C.int)(vertical), (C.int)(typeVal)))
 	ret.isSubclass = true
 	return ret
 }

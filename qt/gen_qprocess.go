@@ -88,34 +88,27 @@ func newQProcessEnvironment(h *C.QProcessEnvironment) *QProcessEnvironment {
 	if h == nil {
 		return nil
 	}
+
 	return &QProcessEnvironment{h: h}
 }
 
 // UnsafeNewQProcessEnvironment constructs the type using only unsafe pointers.
 func UnsafeNewQProcessEnvironment(h unsafe.Pointer) *QProcessEnvironment {
-	if h == nil {
-		return nil
-	}
-
-	return &QProcessEnvironment{h: (*C.QProcessEnvironment)(h)}
+	return newQProcessEnvironment((*C.QProcessEnvironment)(h))
 }
 
 // NewQProcessEnvironment constructs a new QProcessEnvironment object.
 func NewQProcessEnvironment() *QProcessEnvironment {
-	var outptr_QProcessEnvironment *C.QProcessEnvironment = nil
 
-	C.QProcessEnvironment_new(&outptr_QProcessEnvironment)
-	ret := newQProcessEnvironment(outptr_QProcessEnvironment)
+	ret := newQProcessEnvironment(C.QProcessEnvironment_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQProcessEnvironment2 constructs a new QProcessEnvironment object.
 func NewQProcessEnvironment2(other *QProcessEnvironment) *QProcessEnvironment {
-	var outptr_QProcessEnvironment *C.QProcessEnvironment = nil
 
-	C.QProcessEnvironment_new2(other.cPointer(), &outptr_QProcessEnvironment)
-	ret := newQProcessEnvironment(outptr_QProcessEnvironment)
+	ret := newQProcessEnvironment(C.QProcessEnvironment_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -269,44 +262,34 @@ func (this *QProcess) UnsafePointer() unsafe.Pointer {
 }
 
 // newQProcess constructs the type using only CGO pointers.
-func newQProcess(h *C.QProcess, h_QIODevice *C.QIODevice, h_QObject *C.QObject) *QProcess {
+func newQProcess(h *C.QProcess) *QProcess {
 	if h == nil {
 		return nil
 	}
+	var outptr_QIODevice *C.QIODevice = nil
+	C.QProcess_virtbase(h, &outptr_QIODevice)
+
 	return &QProcess{h: h,
-		QIODevice: newQIODevice(h_QIODevice, h_QObject)}
+		QIODevice: newQIODevice(outptr_QIODevice)}
 }
 
 // UnsafeNewQProcess constructs the type using only unsafe pointers.
-func UnsafeNewQProcess(h unsafe.Pointer, h_QIODevice unsafe.Pointer, h_QObject unsafe.Pointer) *QProcess {
-	if h == nil {
-		return nil
-	}
-
-	return &QProcess{h: (*C.QProcess)(h),
-		QIODevice: UnsafeNewQIODevice(h_QIODevice, h_QObject)}
+func UnsafeNewQProcess(h unsafe.Pointer) *QProcess {
+	return newQProcess((*C.QProcess)(h))
 }
 
 // NewQProcess constructs a new QProcess object.
 func NewQProcess() *QProcess {
-	var outptr_QProcess *C.QProcess = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QProcess_new(&outptr_QProcess, &outptr_QIODevice, &outptr_QObject)
-	ret := newQProcess(outptr_QProcess, outptr_QIODevice, outptr_QObject)
+	ret := newQProcess(C.QProcess_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQProcess2 constructs a new QProcess object.
 func NewQProcess2(parent *QObject) *QProcess {
-	var outptr_QProcess *C.QProcess = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QProcess_new2(parent.cPointer(), &outptr_QProcess, &outptr_QIODevice, &outptr_QObject)
-	ret := newQProcess(outptr_QProcess, outptr_QIODevice, outptr_QObject)
+	ret := newQProcess(C.QProcess_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

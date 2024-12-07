@@ -32,8 +32,9 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QWebHistoryInterface QWebHistoryInterface;
 #endif
 
-void QWebHistoryInterface_new(QWebHistoryInterface** outptr_QWebHistoryInterface, QObject** outptr_QObject);
-void QWebHistoryInterface_new2(QObject* parent, QWebHistoryInterface** outptr_QWebHistoryInterface, QObject** outptr_QObject);
+QWebHistoryInterface* QWebHistoryInterface_new();
+QWebHistoryInterface* QWebHistoryInterface_new2(QObject* parent);
+void QWebHistoryInterface_virtbase(QWebHistoryInterface* src, QObject** outptr_QObject);
 QMetaObject* QWebHistoryInterface_MetaObject(const QWebHistoryInterface* self);
 void* QWebHistoryInterface_Metacast(QWebHistoryInterface* self, const char* param1);
 struct miqt_string QWebHistoryInterface_Tr(const char* s);

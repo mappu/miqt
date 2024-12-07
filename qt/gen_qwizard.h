@@ -84,9 +84,10 @@ typedef struct QWizard QWizard;
 typedef struct QWizardPage QWizardPage;
 #endif
 
-void QWizard_new(QWidget* parent, QWizard** outptr_QWizard, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QWizard_new2(QWizard** outptr_QWizard, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QWizard_new3(QWidget* parent, int flags, QWizard** outptr_QWizard, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QWizard* QWizard_new(QWidget* parent);
+QWizard* QWizard_new2();
+QWizard* QWizard_new3(QWidget* parent, int flags);
+void QWizard_virtbase(QWizard* src, QDialog** outptr_QDialog);
 QMetaObject* QWizard_MetaObject(const QWizard* self);
 void* QWizard_Metacast(QWizard* self, const char* param1);
 struct miqt_string QWizard_Tr(const char* s);
@@ -195,8 +196,9 @@ void QWizard_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QWizard_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2);
 void QWizard_Delete(QWizard* self, bool isSubclass);
 
-void QWizardPage_new(QWidget* parent, QWizardPage** outptr_QWizardPage, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QWizardPage_new2(QWizardPage** outptr_QWizardPage, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QWizardPage* QWizardPage_new(QWidget* parent);
+QWizardPage* QWizardPage_new2();
+void QWizardPage_virtbase(QWizardPage* src, QWidget** outptr_QWidget);
 QMetaObject* QWizardPage_MetaObject(const QWizardPage* self);
 void* QWizardPage_Metacast(QWizardPage* self, const char* param1);
 struct miqt_string QWizardPage_Tr(const char* s);

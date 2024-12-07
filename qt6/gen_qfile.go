@@ -35,34 +35,26 @@ func (this *QFile) UnsafePointer() unsafe.Pointer {
 }
 
 // newQFile constructs the type using only CGO pointers.
-func newQFile(h *C.QFile, h_QFileDevice *C.QFileDevice, h_QIODevice *C.QIODevice, h_QObject *C.QObject, h_QIODeviceBase *C.QIODeviceBase) *QFile {
+func newQFile(h *C.QFile) *QFile {
 	if h == nil {
 		return nil
 	}
+	var outptr_QFileDevice *C.QFileDevice = nil
+	C.QFile_virtbase(h, &outptr_QFileDevice)
+
 	return &QFile{h: h,
-		QFileDevice: newQFileDevice(h_QFileDevice, h_QIODevice, h_QObject, h_QIODeviceBase)}
+		QFileDevice: newQFileDevice(outptr_QFileDevice)}
 }
 
 // UnsafeNewQFile constructs the type using only unsafe pointers.
-func UnsafeNewQFile(h unsafe.Pointer, h_QFileDevice unsafe.Pointer, h_QIODevice unsafe.Pointer, h_QObject unsafe.Pointer, h_QIODeviceBase unsafe.Pointer) *QFile {
-	if h == nil {
-		return nil
-	}
-
-	return &QFile{h: (*C.QFile)(h),
-		QFileDevice: UnsafeNewQFileDevice(h_QFileDevice, h_QIODevice, h_QObject, h_QIODeviceBase)}
+func UnsafeNewQFile(h unsafe.Pointer) *QFile {
+	return newQFile((*C.QFile)(h))
 }
 
 // NewQFile constructs a new QFile object.
 func NewQFile() *QFile {
-	var outptr_QFile *C.QFile = nil
-	var outptr_QFileDevice *C.QFileDevice = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QIODeviceBase *C.QIODeviceBase = nil
 
-	C.QFile_new(&outptr_QFile, &outptr_QFileDevice, &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
-	ret := newQFile(outptr_QFile, outptr_QFileDevice, outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret := newQFile(C.QFile_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -73,28 +65,16 @@ func NewQFile2(name string) *QFile {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	var outptr_QFile *C.QFile = nil
-	var outptr_QFileDevice *C.QFileDevice = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QIODeviceBase *C.QIODeviceBase = nil
 
-	C.QFile_new2(name_ms, &outptr_QFile, &outptr_QFileDevice, &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
-	ret := newQFile(outptr_QFile, outptr_QFileDevice, outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret := newQFile(C.QFile_new2(name_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFile3 constructs a new QFile object.
 func NewQFile3(parent *QObject) *QFile {
-	var outptr_QFile *C.QFile = nil
-	var outptr_QFileDevice *C.QFileDevice = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QIODeviceBase *C.QIODeviceBase = nil
 
-	C.QFile_new3(parent.cPointer(), &outptr_QFile, &outptr_QFileDevice, &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
-	ret := newQFile(outptr_QFile, outptr_QFileDevice, outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret := newQFile(C.QFile_new3(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -105,14 +85,8 @@ func NewQFile4(name string, parent *QObject) *QFile {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	var outptr_QFile *C.QFile = nil
-	var outptr_QFileDevice *C.QFileDevice = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QIODeviceBase *C.QIODeviceBase = nil
 
-	C.QFile_new4(name_ms, parent.cPointer(), &outptr_QFile, &outptr_QFileDevice, &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
-	ret := newQFile(outptr_QFile, outptr_QFileDevice, outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret := newQFile(C.QFile_new4(name_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

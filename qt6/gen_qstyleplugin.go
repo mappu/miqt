@@ -35,42 +35,34 @@ func (this *QStylePlugin) UnsafePointer() unsafe.Pointer {
 }
 
 // newQStylePlugin constructs the type using only CGO pointers.
-func newQStylePlugin(h *C.QStylePlugin, h_QObject *C.QObject) *QStylePlugin {
+func newQStylePlugin(h *C.QStylePlugin) *QStylePlugin {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QStylePlugin_virtbase(h, &outptr_QObject)
+
 	return &QStylePlugin{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQStylePlugin constructs the type using only unsafe pointers.
-func UnsafeNewQStylePlugin(h unsafe.Pointer, h_QObject unsafe.Pointer) *QStylePlugin {
-	if h == nil {
-		return nil
-	}
-
-	return &QStylePlugin{h: (*C.QStylePlugin)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQStylePlugin(h unsafe.Pointer) *QStylePlugin {
+	return newQStylePlugin((*C.QStylePlugin)(h))
 }
 
 // NewQStylePlugin constructs a new QStylePlugin object.
 func NewQStylePlugin() *QStylePlugin {
-	var outptr_QStylePlugin *C.QStylePlugin = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QStylePlugin_new(&outptr_QStylePlugin, &outptr_QObject)
-	ret := newQStylePlugin(outptr_QStylePlugin, outptr_QObject)
+	ret := newQStylePlugin(C.QStylePlugin_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQStylePlugin2 constructs a new QStylePlugin object.
 func NewQStylePlugin2(parent *QObject) *QStylePlugin {
-	var outptr_QStylePlugin *C.QStylePlugin = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QStylePlugin_new2(parent.cPointer(), &outptr_QStylePlugin, &outptr_QObject)
-	ret := newQStylePlugin(outptr_QStylePlugin, outptr_QObject)
+	ret := newQStylePlugin(C.QStylePlugin_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -99,7 +91,7 @@ func (this *QStylePlugin) Create(key string) *QStyle {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	return newQStyle(C.QStylePlugin_Create(this.h, key_ms), nil)
+	return newQStyle(C.QStylePlugin_Create(this.h, key_ms))
 }
 
 func QStylePlugin_Tr2(s string, c string) string {
@@ -227,7 +219,7 @@ func miqt_exec_callback_QStylePlugin_TimerEvent(self *C.QStylePlugin, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QStylePlugin{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -253,7 +245,7 @@ func miqt_exec_callback_QStylePlugin_ChildEvent(self *C.QStylePlugin, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QStylePlugin{h: self}).callVirtualBase_ChildEvent, slotval1)
 

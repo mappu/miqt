@@ -56,31 +56,26 @@ func (this *QSharedMemory) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSharedMemory constructs the type using only CGO pointers.
-func newQSharedMemory(h *C.QSharedMemory, h_QObject *C.QObject) *QSharedMemory {
+func newQSharedMemory(h *C.QSharedMemory) *QSharedMemory {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QSharedMemory_virtbase(h, &outptr_QObject)
+
 	return &QSharedMemory{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQSharedMemory constructs the type using only unsafe pointers.
-func UnsafeNewQSharedMemory(h unsafe.Pointer, h_QObject unsafe.Pointer) *QSharedMemory {
-	if h == nil {
-		return nil
-	}
-
-	return &QSharedMemory{h: (*C.QSharedMemory)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQSharedMemory(h unsafe.Pointer) *QSharedMemory {
+	return newQSharedMemory((*C.QSharedMemory)(h))
 }
 
 // NewQSharedMemory constructs a new QSharedMemory object.
 func NewQSharedMemory() *QSharedMemory {
-	var outptr_QSharedMemory *C.QSharedMemory = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSharedMemory_new(&outptr_QSharedMemory, &outptr_QObject)
-	ret := newQSharedMemory(outptr_QSharedMemory, outptr_QObject)
+	ret := newQSharedMemory(C.QSharedMemory_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -91,22 +86,16 @@ func NewQSharedMemory2(key string) *QSharedMemory {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	var outptr_QSharedMemory *C.QSharedMemory = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSharedMemory_new2(key_ms, &outptr_QSharedMemory, &outptr_QObject)
-	ret := newQSharedMemory(outptr_QSharedMemory, outptr_QObject)
+	ret := newQSharedMemory(C.QSharedMemory_new2(key_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSharedMemory3 constructs a new QSharedMemory object.
 func NewQSharedMemory3(parent *QObject) *QSharedMemory {
-	var outptr_QSharedMemory *C.QSharedMemory = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSharedMemory_new3(parent.cPointer(), &outptr_QSharedMemory, &outptr_QObject)
-	ret := newQSharedMemory(outptr_QSharedMemory, outptr_QObject)
+	ret := newQSharedMemory(C.QSharedMemory_new3(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -117,11 +106,8 @@ func NewQSharedMemory4(key string, parent *QObject) *QSharedMemory {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	var outptr_QSharedMemory *C.QSharedMemory = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSharedMemory_new4(key_ms, parent.cPointer(), &outptr_QSharedMemory, &outptr_QObject)
-	ret := newQSharedMemory(outptr_QSharedMemory, outptr_QObject)
+	ret := newQSharedMemory(C.QSharedMemory_new4(key_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -365,7 +351,7 @@ func miqt_exec_callback_QSharedMemory_TimerEvent(self *C.QSharedMemory, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QSharedMemory{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -391,7 +377,7 @@ func miqt_exec_callback_QSharedMemory_ChildEvent(self *C.QSharedMemory, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QSharedMemory{h: self}).callVirtualBase_ChildEvent, slotval1)
 

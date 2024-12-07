@@ -34,8 +34,9 @@ typedef struct QsciLexerJSON QsciLexerJSON;
 typedef struct QsciScintilla QsciScintilla;
 #endif
 
-void QsciLexerJSON_new(QsciLexerJSON** outptr_QsciLexerJSON, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerJSON_new2(QObject* parent, QsciLexerJSON** outptr_QsciLexerJSON, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerJSON* QsciLexerJSON_new();
+QsciLexerJSON* QsciLexerJSON_new2(QObject* parent);
+void QsciLexerJSON_virtbase(QsciLexerJSON* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerJSON_MetaObject(const QsciLexerJSON* self);
 void* QsciLexerJSON_Metacast(QsciLexerJSON* self, const char* param1);
 struct miqt_string QsciLexerJSON_Tr(const char* s);

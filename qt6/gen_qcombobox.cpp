@@ -1126,20 +1126,16 @@ public:
 
 };
 
-void QComboBox_new(QWidget* parent, QComboBox** outptr_QComboBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQComboBox* ret = new MiqtVirtualQComboBox(parent);
-	*outptr_QComboBox = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QComboBox* QComboBox_new(QWidget* parent) {
+	return new MiqtVirtualQComboBox(parent);
 }
 
-void QComboBox_new2(QComboBox** outptr_QComboBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQComboBox* ret = new MiqtVirtualQComboBox();
-	*outptr_QComboBox = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QComboBox* QComboBox_new2() {
+	return new MiqtVirtualQComboBox();
+}
+
+void QComboBox_virtbase(QComboBox* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QComboBox_MetaObject(const QComboBox* self) {

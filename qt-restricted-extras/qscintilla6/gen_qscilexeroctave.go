@@ -35,46 +35,34 @@ func (this *QsciLexerOctave) UnsafePointer() unsafe.Pointer {
 }
 
 // newQsciLexerOctave constructs the type using only CGO pointers.
-func newQsciLexerOctave(h *C.QsciLexerOctave, h_QsciLexerMatlab *C.QsciLexerMatlab, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerOctave {
+func newQsciLexerOctave(h *C.QsciLexerOctave) *QsciLexerOctave {
 	if h == nil {
 		return nil
 	}
+	var outptr_QsciLexerMatlab *C.QsciLexerMatlab = nil
+	C.QsciLexerOctave_virtbase(h, &outptr_QsciLexerMatlab)
+
 	return &QsciLexerOctave{h: h,
-		QsciLexerMatlab: newQsciLexerMatlab(h_QsciLexerMatlab, h_QsciLexer, h_QObject)}
+		QsciLexerMatlab: newQsciLexerMatlab(outptr_QsciLexerMatlab)}
 }
 
 // UnsafeNewQsciLexerOctave constructs the type using only unsafe pointers.
-func UnsafeNewQsciLexerOctave(h unsafe.Pointer, h_QsciLexerMatlab unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerOctave {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciLexerOctave{h: (*C.QsciLexerOctave)(h),
-		QsciLexerMatlab: UnsafeNewQsciLexerMatlab(h_QsciLexerMatlab, h_QsciLexer, h_QObject)}
+func UnsafeNewQsciLexerOctave(h unsafe.Pointer) *QsciLexerOctave {
+	return newQsciLexerOctave((*C.QsciLexerOctave)(h))
 }
 
 // NewQsciLexerOctave constructs a new QsciLexerOctave object.
 func NewQsciLexerOctave() *QsciLexerOctave {
-	var outptr_QsciLexerOctave *C.QsciLexerOctave = nil
-	var outptr_QsciLexerMatlab *C.QsciLexerMatlab = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerOctave_new(&outptr_QsciLexerOctave, &outptr_QsciLexerMatlab, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerOctave(outptr_QsciLexerOctave, outptr_QsciLexerMatlab, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerOctave(C.QsciLexerOctave_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQsciLexerOctave2 constructs a new QsciLexerOctave object.
 func NewQsciLexerOctave2(parent *qt6.QObject) *QsciLexerOctave {
-	var outptr_QsciLexerOctave *C.QsciLexerOctave = nil
-	var outptr_QsciLexerMatlab *C.QsciLexerMatlab = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerOctave_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QsciLexerOctave, &outptr_QsciLexerMatlab, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerOctave(outptr_QsciLexerOctave, outptr_QsciLexerMatlab, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerOctave(C.QsciLexerOctave_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }

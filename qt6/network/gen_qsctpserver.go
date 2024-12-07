@@ -36,44 +36,34 @@ func (this *QSctpServer) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSctpServer constructs the type using only CGO pointers.
-func newQSctpServer(h *C.QSctpServer, h_QTcpServer *C.QTcpServer, h_QObject *C.QObject) *QSctpServer {
+func newQSctpServer(h *C.QSctpServer) *QSctpServer {
 	if h == nil {
 		return nil
 	}
+	var outptr_QTcpServer *C.QTcpServer = nil
+	C.QSctpServer_virtbase(h, &outptr_QTcpServer)
+
 	return &QSctpServer{h: h,
-		QTcpServer: newQTcpServer(h_QTcpServer, h_QObject)}
+		QTcpServer: newQTcpServer(outptr_QTcpServer)}
 }
 
 // UnsafeNewQSctpServer constructs the type using only unsafe pointers.
-func UnsafeNewQSctpServer(h unsafe.Pointer, h_QTcpServer unsafe.Pointer, h_QObject unsafe.Pointer) *QSctpServer {
-	if h == nil {
-		return nil
-	}
-
-	return &QSctpServer{h: (*C.QSctpServer)(h),
-		QTcpServer: UnsafeNewQTcpServer(h_QTcpServer, h_QObject)}
+func UnsafeNewQSctpServer(h unsafe.Pointer) *QSctpServer {
+	return newQSctpServer((*C.QSctpServer)(h))
 }
 
 // NewQSctpServer constructs a new QSctpServer object.
 func NewQSctpServer() *QSctpServer {
-	var outptr_QSctpServer *C.QSctpServer = nil
-	var outptr_QTcpServer *C.QTcpServer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSctpServer_new(&outptr_QSctpServer, &outptr_QTcpServer, &outptr_QObject)
-	ret := newQSctpServer(outptr_QSctpServer, outptr_QTcpServer, outptr_QObject)
+	ret := newQSctpServer(C.QSctpServer_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSctpServer2 constructs a new QSctpServer object.
 func NewQSctpServer2(parent *qt6.QObject) *QSctpServer {
-	var outptr_QSctpServer *C.QSctpServer = nil
-	var outptr_QTcpServer *C.QTcpServer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSctpServer_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QSctpServer, &outptr_QTcpServer, &outptr_QObject)
-	ret := newQSctpServer(outptr_QSctpServer, outptr_QTcpServer, outptr_QObject)
+	ret := newQSctpServer(C.QSctpServer_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -106,7 +96,7 @@ func (this *QSctpServer) MaximumChannelCount() int {
 }
 
 func (this *QSctpServer) NextPendingDatagramConnection() *QSctpSocket {
-	return newQSctpSocket(C.QSctpServer_NextPendingDatagramConnection(this.h), nil, nil, nil, nil, nil)
+	return newQSctpSocket(C.QSctpServer_NextPendingDatagramConnection(this.h))
 }
 
 func QSctpServer_Tr2(s string, c string) string {
@@ -184,7 +174,7 @@ func miqt_exec_callback_QSctpServer_HasPendingConnections(self *C.QSctpServer, c
 
 func (this *QSctpServer) callVirtualBase_NextPendingConnection() *QTcpSocket {
 
-	return newQTcpSocket(C.QSctpServer_virtualbase_NextPendingConnection(unsafe.Pointer(this.h)), nil, nil, nil, nil)
+	return newQTcpSocket(C.QSctpServer_virtualbase_NextPendingConnection(unsafe.Pointer(this.h)))
 
 }
 func (this *QSctpServer) OnNextPendingConnection(slot func(super func() *QTcpSocket) *QTcpSocket) {

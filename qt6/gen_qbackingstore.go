@@ -37,30 +37,25 @@ func newQBackingStore(h *C.QBackingStore) *QBackingStore {
 	if h == nil {
 		return nil
 	}
+
 	return &QBackingStore{h: h}
 }
 
 // UnsafeNewQBackingStore constructs the type using only unsafe pointers.
 func UnsafeNewQBackingStore(h unsafe.Pointer) *QBackingStore {
-	if h == nil {
-		return nil
-	}
-
-	return &QBackingStore{h: (*C.QBackingStore)(h)}
+	return newQBackingStore((*C.QBackingStore)(h))
 }
 
 // NewQBackingStore constructs a new QBackingStore object.
 func NewQBackingStore(window *QWindow) *QBackingStore {
-	var outptr_QBackingStore *C.QBackingStore = nil
 
-	C.QBackingStore_new(window.cPointer(), &outptr_QBackingStore)
-	ret := newQBackingStore(outptr_QBackingStore)
+	ret := newQBackingStore(C.QBackingStore_new(window.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QBackingStore) Window() *QWindow {
-	return newQWindow(C.QBackingStore_Window(this.h), nil, nil)
+	return newQWindow(C.QBackingStore_Window(this.h))
 }
 
 func (this *QBackingStore) PaintDevice() *QPaintDevice {

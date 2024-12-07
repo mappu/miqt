@@ -37,24 +37,19 @@ func newQStringView(h *C.QStringView) *QStringView {
 	if h == nil {
 		return nil
 	}
+
 	return &QStringView{h: h}
 }
 
 // UnsafeNewQStringView constructs the type using only unsafe pointers.
 func UnsafeNewQStringView(h unsafe.Pointer) *QStringView {
-	if h == nil {
-		return nil
-	}
-
-	return &QStringView{h: (*C.QStringView)(h)}
+	return newQStringView((*C.QStringView)(h))
 }
 
 // NewQStringView constructs a new QStringView object.
 func NewQStringView() *QStringView {
-	var outptr_QStringView *C.QStringView = nil
 
-	C.QStringView_new(&outptr_QStringView)
-	ret := newQStringView(outptr_QStringView)
+	ret := newQStringView(C.QStringView_new())
 	ret.isSubclass = true
 	return ret
 }

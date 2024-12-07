@@ -45,34 +45,27 @@ func newQAudioDevice(h *C.QAudioDevice) *QAudioDevice {
 	if h == nil {
 		return nil
 	}
+
 	return &QAudioDevice{h: h}
 }
 
 // UnsafeNewQAudioDevice constructs the type using only unsafe pointers.
 func UnsafeNewQAudioDevice(h unsafe.Pointer) *QAudioDevice {
-	if h == nil {
-		return nil
-	}
-
-	return &QAudioDevice{h: (*C.QAudioDevice)(h)}
+	return newQAudioDevice((*C.QAudioDevice)(h))
 }
 
 // NewQAudioDevice constructs a new QAudioDevice object.
 func NewQAudioDevice() *QAudioDevice {
-	var outptr_QAudioDevice *C.QAudioDevice = nil
 
-	C.QAudioDevice_new(&outptr_QAudioDevice)
-	ret := newQAudioDevice(outptr_QAudioDevice)
+	ret := newQAudioDevice(C.QAudioDevice_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAudioDevice2 constructs a new QAudioDevice object.
 func NewQAudioDevice2(other *QAudioDevice) *QAudioDevice {
-	var outptr_QAudioDevice *C.QAudioDevice = nil
 
-	C.QAudioDevice_new2(other.cPointer(), &outptr_QAudioDevice)
-	ret := newQAudioDevice(outptr_QAudioDevice)
+	ret := newQAudioDevice(C.QAudioDevice_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

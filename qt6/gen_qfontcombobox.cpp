@@ -558,22 +558,16 @@ public:
 
 };
 
-void QFontComboBox_new(QWidget* parent, QFontComboBox** outptr_QFontComboBox, QComboBox** outptr_QComboBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQFontComboBox* ret = new MiqtVirtualQFontComboBox(parent);
-	*outptr_QFontComboBox = ret;
-	*outptr_QComboBox = static_cast<QComboBox*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QFontComboBox* QFontComboBox_new(QWidget* parent) {
+	return new MiqtVirtualQFontComboBox(parent);
 }
 
-void QFontComboBox_new2(QFontComboBox** outptr_QFontComboBox, QComboBox** outptr_QComboBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQFontComboBox* ret = new MiqtVirtualQFontComboBox();
-	*outptr_QFontComboBox = ret;
-	*outptr_QComboBox = static_cast<QComboBox*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QFontComboBox* QFontComboBox_new2() {
+	return new MiqtVirtualQFontComboBox();
+}
+
+void QFontComboBox_virtbase(QFontComboBox* src, QComboBox** outptr_QComboBox) {
+	*outptr_QComboBox = static_cast<QComboBox*>(src);
 }
 
 QMetaObject* QFontComboBox_MetaObject(const QFontComboBox* self) {

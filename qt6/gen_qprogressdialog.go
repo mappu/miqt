@@ -35,48 +35,34 @@ func (this *QProgressDialog) UnsafePointer() unsafe.Pointer {
 }
 
 // newQProgressDialog constructs the type using only CGO pointers.
-func newQProgressDialog(h *C.QProgressDialog, h_QDialog *C.QDialog, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QProgressDialog {
+func newQProgressDialog(h *C.QProgressDialog) *QProgressDialog {
 	if h == nil {
 		return nil
 	}
+	var outptr_QDialog *C.QDialog = nil
+	C.QProgressDialog_virtbase(h, &outptr_QDialog)
+
 	return &QProgressDialog{h: h,
-		QDialog: newQDialog(h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
+		QDialog: newQDialog(outptr_QDialog)}
 }
 
 // UnsafeNewQProgressDialog constructs the type using only unsafe pointers.
-func UnsafeNewQProgressDialog(h unsafe.Pointer, h_QDialog unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QProgressDialog {
-	if h == nil {
-		return nil
-	}
-
-	return &QProgressDialog{h: (*C.QProgressDialog)(h),
-		QDialog: UnsafeNewQDialog(h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQProgressDialog(h unsafe.Pointer) *QProgressDialog {
+	return newQProgressDialog((*C.QProgressDialog)(h))
 }
 
 // NewQProgressDialog constructs a new QProgressDialog object.
 func NewQProgressDialog(parent *QWidget) *QProgressDialog {
-	var outptr_QProgressDialog *C.QProgressDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QProgressDialog_new(parent.cPointer(), &outptr_QProgressDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQProgressDialog(outptr_QProgressDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQProgressDialog(C.QProgressDialog_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQProgressDialog2 constructs a new QProgressDialog object.
 func NewQProgressDialog2() *QProgressDialog {
-	var outptr_QProgressDialog *C.QProgressDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QProgressDialog_new2(&outptr_QProgressDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQProgressDialog(outptr_QProgressDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQProgressDialog(C.QProgressDialog_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -91,28 +77,16 @@ func NewQProgressDialog3(labelText string, cancelButtonText string, minimum int,
 	cancelButtonText_ms.data = C.CString(cancelButtonText)
 	cancelButtonText_ms.len = C.size_t(len(cancelButtonText))
 	defer C.free(unsafe.Pointer(cancelButtonText_ms.data))
-	var outptr_QProgressDialog *C.QProgressDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QProgressDialog_new3(labelText_ms, cancelButtonText_ms, (C.int)(minimum), (C.int)(maximum), &outptr_QProgressDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQProgressDialog(outptr_QProgressDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQProgressDialog(C.QProgressDialog_new3(labelText_ms, cancelButtonText_ms, (C.int)(minimum), (C.int)(maximum)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQProgressDialog4 constructs a new QProgressDialog object.
 func NewQProgressDialog4(parent *QWidget, flags WindowType) *QProgressDialog {
-	var outptr_QProgressDialog *C.QProgressDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QProgressDialog_new4(parent.cPointer(), (C.int)(flags), &outptr_QProgressDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQProgressDialog(outptr_QProgressDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQProgressDialog(C.QProgressDialog_new4(parent.cPointer(), (C.int)(flags)))
 	ret.isSubclass = true
 	return ret
 }
@@ -127,14 +101,8 @@ func NewQProgressDialog5(labelText string, cancelButtonText string, minimum int,
 	cancelButtonText_ms.data = C.CString(cancelButtonText)
 	cancelButtonText_ms.len = C.size_t(len(cancelButtonText))
 	defer C.free(unsafe.Pointer(cancelButtonText_ms.data))
-	var outptr_QProgressDialog *C.QProgressDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QProgressDialog_new5(labelText_ms, cancelButtonText_ms, (C.int)(minimum), (C.int)(maximum), parent.cPointer(), &outptr_QProgressDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQProgressDialog(outptr_QProgressDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQProgressDialog(C.QProgressDialog_new5(labelText_ms, cancelButtonText_ms, (C.int)(minimum), (C.int)(maximum), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -149,14 +117,8 @@ func NewQProgressDialog6(labelText string, cancelButtonText string, minimum int,
 	cancelButtonText_ms.data = C.CString(cancelButtonText)
 	cancelButtonText_ms.len = C.size_t(len(cancelButtonText))
 	defer C.free(unsafe.Pointer(cancelButtonText_ms.data))
-	var outptr_QProgressDialog *C.QProgressDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QProgressDialog_new6(labelText_ms, cancelButtonText_ms, (C.int)(minimum), (C.int)(maximum), parent.cPointer(), (C.int)(flags), &outptr_QProgressDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQProgressDialog(outptr_QProgressDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQProgressDialog(C.QProgressDialog_new6(labelText_ms, cancelButtonText_ms, (C.int)(minimum), (C.int)(maximum), parent.cPointer(), (C.int)(flags)))
 	ret.isSubclass = true
 	return ret
 }
@@ -371,7 +333,7 @@ func miqt_exec_callback_QProgressDialog_ResizeEvent(self *C.QProgressDialog, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(event, nil)
+	slotval1 := newQResizeEvent(event)
 
 	gofunc((&QProgressDialog{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -397,7 +359,7 @@ func miqt_exec_callback_QProgressDialog_CloseEvent(self *C.QProgressDialog, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQCloseEvent(event, nil)
+	slotval1 := newQCloseEvent(event)
 
 	gofunc((&QProgressDialog{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -449,7 +411,7 @@ func miqt_exec_callback_QProgressDialog_ShowEvent(self *C.QProgressDialog, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQShowEvent(event, nil)
+	slotval1 := newQShowEvent(event)
 
 	gofunc((&QProgressDialog{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -648,7 +610,7 @@ func miqt_exec_callback_QProgressDialog_KeyPressEvent(self *C.QProgressDialog, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(param1, nil, nil)
+	slotval1 := newQKeyEvent(param1)
 
 	gofunc((&QProgressDialog{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -674,7 +636,7 @@ func miqt_exec_callback_QProgressDialog_ContextMenuEvent(self *C.QProgressDialog
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQContextMenuEvent(param1, nil, nil)
+	slotval1 := newQContextMenuEvent(param1)
 
 	gofunc((&QProgressDialog{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 

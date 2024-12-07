@@ -199,16 +199,16 @@ public:
 
 };
 
-void QMediaCaptureSession_new(QMediaCaptureSession** outptr_QMediaCaptureSession, QObject** outptr_QObject) {
-	MiqtVirtualQMediaCaptureSession* ret = new MiqtVirtualQMediaCaptureSession();
-	*outptr_QMediaCaptureSession = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QMediaCaptureSession* QMediaCaptureSession_new() {
+	return new MiqtVirtualQMediaCaptureSession();
 }
 
-void QMediaCaptureSession_new2(QObject* parent, QMediaCaptureSession** outptr_QMediaCaptureSession, QObject** outptr_QObject) {
-	MiqtVirtualQMediaCaptureSession* ret = new MiqtVirtualQMediaCaptureSession(parent);
-	*outptr_QMediaCaptureSession = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QMediaCaptureSession* QMediaCaptureSession_new2(QObject* parent) {
+	return new MiqtVirtualQMediaCaptureSession(parent);
+}
+
+void QMediaCaptureSession_virtbase(QMediaCaptureSession* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QMediaCaptureSession_MetaObject(const QMediaCaptureSession* self) {

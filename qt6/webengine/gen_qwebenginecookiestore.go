@@ -37,22 +37,20 @@ func (this *QWebEngineCookieStore) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebEngineCookieStore constructs the type using only CGO pointers.
-func newQWebEngineCookieStore(h *C.QWebEngineCookieStore, h_QObject *C.QObject) *QWebEngineCookieStore {
+func newQWebEngineCookieStore(h *C.QWebEngineCookieStore) *QWebEngineCookieStore {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebEngineCookieStore_virtbase(h, &outptr_QObject)
+
 	return &QWebEngineCookieStore{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebEngineCookieStore constructs the type using only unsafe pointers.
-func UnsafeNewQWebEngineCookieStore(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebEngineCookieStore {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineCookieStore{h: (*C.QWebEngineCookieStore)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebEngineCookieStore(h unsafe.Pointer) *QWebEngineCookieStore {
+	return newQWebEngineCookieStore((*C.QWebEngineCookieStore)(h))
 }
 
 func (this *QWebEngineCookieStore) MetaObject() *qt6.QMetaObject {
@@ -202,24 +200,19 @@ func newQWebEngineCookieStore__FilterRequest(h *C.QWebEngineCookieStore__FilterR
 	if h == nil {
 		return nil
 	}
+
 	return &QWebEngineCookieStore__FilterRequest{h: h}
 }
 
 // UnsafeNewQWebEngineCookieStore__FilterRequest constructs the type using only unsafe pointers.
 func UnsafeNewQWebEngineCookieStore__FilterRequest(h unsafe.Pointer) *QWebEngineCookieStore__FilterRequest {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineCookieStore__FilterRequest{h: (*C.QWebEngineCookieStore__FilterRequest)(h)}
+	return newQWebEngineCookieStore__FilterRequest((*C.QWebEngineCookieStore__FilterRequest)(h))
 }
 
 // NewQWebEngineCookieStore__FilterRequest constructs a new QWebEngineCookieStore::FilterRequest object.
 func NewQWebEngineCookieStore__FilterRequest(param1 *QWebEngineCookieStore__FilterRequest) *QWebEngineCookieStore__FilterRequest {
-	var outptr_QWebEngineCookieStore__FilterRequest *C.QWebEngineCookieStore__FilterRequest = nil
 
-	C.QWebEngineCookieStore__FilterRequest_new(param1.cPointer(), &outptr_QWebEngineCookieStore__FilterRequest)
-	ret := newQWebEngineCookieStore__FilterRequest(outptr_QWebEngineCookieStore__FilterRequest)
+	ret := newQWebEngineCookieStore__FilterRequest(C.QWebEngineCookieStore__FilterRequest_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

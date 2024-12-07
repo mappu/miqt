@@ -35,42 +35,34 @@ func (this *QGraphicsLayout) UnsafePointer() unsafe.Pointer {
 }
 
 // newQGraphicsLayout constructs the type using only CGO pointers.
-func newQGraphicsLayout(h *C.QGraphicsLayout, h_QGraphicsLayoutItem *C.QGraphicsLayoutItem) *QGraphicsLayout {
+func newQGraphicsLayout(h *C.QGraphicsLayout) *QGraphicsLayout {
 	if h == nil {
 		return nil
 	}
+	var outptr_QGraphicsLayoutItem *C.QGraphicsLayoutItem = nil
+	C.QGraphicsLayout_virtbase(h, &outptr_QGraphicsLayoutItem)
+
 	return &QGraphicsLayout{h: h,
-		QGraphicsLayoutItem: newQGraphicsLayoutItem(h_QGraphicsLayoutItem)}
+		QGraphicsLayoutItem: newQGraphicsLayoutItem(outptr_QGraphicsLayoutItem)}
 }
 
 // UnsafeNewQGraphicsLayout constructs the type using only unsafe pointers.
-func UnsafeNewQGraphicsLayout(h unsafe.Pointer, h_QGraphicsLayoutItem unsafe.Pointer) *QGraphicsLayout {
-	if h == nil {
-		return nil
-	}
-
-	return &QGraphicsLayout{h: (*C.QGraphicsLayout)(h),
-		QGraphicsLayoutItem: UnsafeNewQGraphicsLayoutItem(h_QGraphicsLayoutItem)}
+func UnsafeNewQGraphicsLayout(h unsafe.Pointer) *QGraphicsLayout {
+	return newQGraphicsLayout((*C.QGraphicsLayout)(h))
 }
 
 // NewQGraphicsLayout constructs a new QGraphicsLayout object.
 func NewQGraphicsLayout() *QGraphicsLayout {
-	var outptr_QGraphicsLayout *C.QGraphicsLayout = nil
-	var outptr_QGraphicsLayoutItem *C.QGraphicsLayoutItem = nil
 
-	C.QGraphicsLayout_new(&outptr_QGraphicsLayout, &outptr_QGraphicsLayoutItem)
-	ret := newQGraphicsLayout(outptr_QGraphicsLayout, outptr_QGraphicsLayoutItem)
+	ret := newQGraphicsLayout(C.QGraphicsLayout_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsLayout2 constructs a new QGraphicsLayout object.
 func NewQGraphicsLayout2(parent *QGraphicsLayoutItem) *QGraphicsLayout {
-	var outptr_QGraphicsLayout *C.QGraphicsLayout = nil
-	var outptr_QGraphicsLayoutItem *C.QGraphicsLayoutItem = nil
 
-	C.QGraphicsLayout_new2(parent.cPointer(), &outptr_QGraphicsLayout, &outptr_QGraphicsLayoutItem)
-	ret := newQGraphicsLayout(outptr_QGraphicsLayout, outptr_QGraphicsLayoutItem)
+	ret := newQGraphicsLayout(C.QGraphicsLayout_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

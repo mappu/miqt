@@ -11,6 +11,10 @@
 #include "gen_qclipboard.h"
 #include "_cgo_export.h"
 
+void QClipboard_virtbase(QClipboard* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
+
 QMetaObject* QClipboard_MetaObject(const QClipboard* self) {
 	return (QMetaObject*) self->metaObject();
 }

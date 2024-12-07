@@ -46,46 +46,34 @@ func (this *QBoxLayout) UnsafePointer() unsafe.Pointer {
 }
 
 // newQBoxLayout constructs the type using only CGO pointers.
-func newQBoxLayout(h *C.QBoxLayout, h_QLayout *C.QLayout, h_QObject *C.QObject, h_QLayoutItem *C.QLayoutItem) *QBoxLayout {
+func newQBoxLayout(h *C.QBoxLayout) *QBoxLayout {
 	if h == nil {
 		return nil
 	}
+	var outptr_QLayout *C.QLayout = nil
+	C.QBoxLayout_virtbase(h, &outptr_QLayout)
+
 	return &QBoxLayout{h: h,
-		QLayout: newQLayout(h_QLayout, h_QObject, h_QLayoutItem)}
+		QLayout: newQLayout(outptr_QLayout)}
 }
 
 // UnsafeNewQBoxLayout constructs the type using only unsafe pointers.
-func UnsafeNewQBoxLayout(h unsafe.Pointer, h_QLayout unsafe.Pointer, h_QObject unsafe.Pointer, h_QLayoutItem unsafe.Pointer) *QBoxLayout {
-	if h == nil {
-		return nil
-	}
-
-	return &QBoxLayout{h: (*C.QBoxLayout)(h),
-		QLayout: UnsafeNewQLayout(h_QLayout, h_QObject, h_QLayoutItem)}
+func UnsafeNewQBoxLayout(h unsafe.Pointer) *QBoxLayout {
+	return newQBoxLayout((*C.QBoxLayout)(h))
 }
 
 // NewQBoxLayout constructs a new QBoxLayout object.
 func NewQBoxLayout(param1 QBoxLayout__Direction) *QBoxLayout {
-	var outptr_QBoxLayout *C.QBoxLayout = nil
-	var outptr_QLayout *C.QLayout = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QLayoutItem *C.QLayoutItem = nil
 
-	C.QBoxLayout_new((C.int)(param1), &outptr_QBoxLayout, &outptr_QLayout, &outptr_QObject, &outptr_QLayoutItem)
-	ret := newQBoxLayout(outptr_QBoxLayout, outptr_QLayout, outptr_QObject, outptr_QLayoutItem)
+	ret := newQBoxLayout(C.QBoxLayout_new((C.int)(param1)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQBoxLayout2 constructs a new QBoxLayout object.
 func NewQBoxLayout2(param1 QBoxLayout__Direction, parent *QWidget) *QBoxLayout {
-	var outptr_QBoxLayout *C.QBoxLayout = nil
-	var outptr_QLayout *C.QLayout = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QLayoutItem *C.QLayoutItem = nil
 
-	C.QBoxLayout_new2((C.int)(param1), parent.cPointer(), &outptr_QBoxLayout, &outptr_QLayout, &outptr_QObject, &outptr_QLayoutItem)
-	ret := newQBoxLayout(outptr_QBoxLayout, outptr_QLayout, outptr_QObject, outptr_QLayoutItem)
+	ret := newQBoxLayout(C.QBoxLayout_new2((C.int)(param1), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -742,7 +730,7 @@ func miqt_exec_callback_QBoxLayout_IndexOf(self *C.QBoxLayout, cb C.intptr_t, pa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(param1, nil, nil)
+	slotval1 := newQWidget(param1)
 
 	virtualReturn := gofunc((&QBoxLayout{h: self}).callVirtualBase_IndexOf, slotval1)
 
@@ -820,9 +808,9 @@ func miqt_exec_callback_QBoxLayout_ReplaceWidget(self *C.QBoxLayout, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(from, nil, nil)
+	slotval1 := newQWidget(from)
 
-	slotval2 := newQWidget(to, nil, nil)
+	slotval2 := newQWidget(to)
 
 	slotval3 := (FindChildOption)(options)
 
@@ -834,7 +822,7 @@ func miqt_exec_callback_QBoxLayout_ReplaceWidget(self *C.QBoxLayout, cb C.intptr
 
 func (this *QBoxLayout) callVirtualBase_Layout() *QLayout {
 
-	return newQLayout(C.QBoxLayout_virtualbase_Layout(unsafe.Pointer(this.h)), nil, nil)
+	return newQLayout(C.QBoxLayout_virtualbase_Layout(unsafe.Pointer(this.h)))
 
 }
 func (this *QBoxLayout) OnLayout(slot func(super func() *QLayout) *QLayout) {
@@ -877,7 +865,7 @@ func miqt_exec_callback_QBoxLayout_ChildEvent(self *C.QBoxLayout, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(e, nil)
+	slotval1 := newQChildEvent(e)
 
 	gofunc((&QBoxLayout{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -918,48 +906,34 @@ func (this *QHBoxLayout) UnsafePointer() unsafe.Pointer {
 }
 
 // newQHBoxLayout constructs the type using only CGO pointers.
-func newQHBoxLayout(h *C.QHBoxLayout, h_QBoxLayout *C.QBoxLayout, h_QLayout *C.QLayout, h_QObject *C.QObject, h_QLayoutItem *C.QLayoutItem) *QHBoxLayout {
+func newQHBoxLayout(h *C.QHBoxLayout) *QHBoxLayout {
 	if h == nil {
 		return nil
 	}
+	var outptr_QBoxLayout *C.QBoxLayout = nil
+	C.QHBoxLayout_virtbase(h, &outptr_QBoxLayout)
+
 	return &QHBoxLayout{h: h,
-		QBoxLayout: newQBoxLayout(h_QBoxLayout, h_QLayout, h_QObject, h_QLayoutItem)}
+		QBoxLayout: newQBoxLayout(outptr_QBoxLayout)}
 }
 
 // UnsafeNewQHBoxLayout constructs the type using only unsafe pointers.
-func UnsafeNewQHBoxLayout(h unsafe.Pointer, h_QBoxLayout unsafe.Pointer, h_QLayout unsafe.Pointer, h_QObject unsafe.Pointer, h_QLayoutItem unsafe.Pointer) *QHBoxLayout {
-	if h == nil {
-		return nil
-	}
-
-	return &QHBoxLayout{h: (*C.QHBoxLayout)(h),
-		QBoxLayout: UnsafeNewQBoxLayout(h_QBoxLayout, h_QLayout, h_QObject, h_QLayoutItem)}
+func UnsafeNewQHBoxLayout(h unsafe.Pointer) *QHBoxLayout {
+	return newQHBoxLayout((*C.QHBoxLayout)(h))
 }
 
 // NewQHBoxLayout constructs a new QHBoxLayout object.
 func NewQHBoxLayout(parent *QWidget) *QHBoxLayout {
-	var outptr_QHBoxLayout *C.QHBoxLayout = nil
-	var outptr_QBoxLayout *C.QBoxLayout = nil
-	var outptr_QLayout *C.QLayout = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QLayoutItem *C.QLayoutItem = nil
 
-	C.QHBoxLayout_new(parent.cPointer(), &outptr_QHBoxLayout, &outptr_QBoxLayout, &outptr_QLayout, &outptr_QObject, &outptr_QLayoutItem)
-	ret := newQHBoxLayout(outptr_QHBoxLayout, outptr_QBoxLayout, outptr_QLayout, outptr_QObject, outptr_QLayoutItem)
+	ret := newQHBoxLayout(C.QHBoxLayout_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQHBoxLayout2 constructs a new QHBoxLayout object.
 func NewQHBoxLayout2() *QHBoxLayout {
-	var outptr_QHBoxLayout *C.QHBoxLayout = nil
-	var outptr_QBoxLayout *C.QBoxLayout = nil
-	var outptr_QLayout *C.QLayout = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QLayoutItem *C.QLayoutItem = nil
 
-	C.QHBoxLayout_new2(&outptr_QHBoxLayout, &outptr_QBoxLayout, &outptr_QLayout, &outptr_QObject, &outptr_QLayoutItem)
-	ret := newQHBoxLayout(outptr_QHBoxLayout, outptr_QBoxLayout, outptr_QLayout, outptr_QObject, outptr_QLayoutItem)
+	ret := newQHBoxLayout(C.QHBoxLayout_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -1434,48 +1408,34 @@ func (this *QVBoxLayout) UnsafePointer() unsafe.Pointer {
 }
 
 // newQVBoxLayout constructs the type using only CGO pointers.
-func newQVBoxLayout(h *C.QVBoxLayout, h_QBoxLayout *C.QBoxLayout, h_QLayout *C.QLayout, h_QObject *C.QObject, h_QLayoutItem *C.QLayoutItem) *QVBoxLayout {
+func newQVBoxLayout(h *C.QVBoxLayout) *QVBoxLayout {
 	if h == nil {
 		return nil
 	}
+	var outptr_QBoxLayout *C.QBoxLayout = nil
+	C.QVBoxLayout_virtbase(h, &outptr_QBoxLayout)
+
 	return &QVBoxLayout{h: h,
-		QBoxLayout: newQBoxLayout(h_QBoxLayout, h_QLayout, h_QObject, h_QLayoutItem)}
+		QBoxLayout: newQBoxLayout(outptr_QBoxLayout)}
 }
 
 // UnsafeNewQVBoxLayout constructs the type using only unsafe pointers.
-func UnsafeNewQVBoxLayout(h unsafe.Pointer, h_QBoxLayout unsafe.Pointer, h_QLayout unsafe.Pointer, h_QObject unsafe.Pointer, h_QLayoutItem unsafe.Pointer) *QVBoxLayout {
-	if h == nil {
-		return nil
-	}
-
-	return &QVBoxLayout{h: (*C.QVBoxLayout)(h),
-		QBoxLayout: UnsafeNewQBoxLayout(h_QBoxLayout, h_QLayout, h_QObject, h_QLayoutItem)}
+func UnsafeNewQVBoxLayout(h unsafe.Pointer) *QVBoxLayout {
+	return newQVBoxLayout((*C.QVBoxLayout)(h))
 }
 
 // NewQVBoxLayout constructs a new QVBoxLayout object.
 func NewQVBoxLayout(parent *QWidget) *QVBoxLayout {
-	var outptr_QVBoxLayout *C.QVBoxLayout = nil
-	var outptr_QBoxLayout *C.QBoxLayout = nil
-	var outptr_QLayout *C.QLayout = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QLayoutItem *C.QLayoutItem = nil
 
-	C.QVBoxLayout_new(parent.cPointer(), &outptr_QVBoxLayout, &outptr_QBoxLayout, &outptr_QLayout, &outptr_QObject, &outptr_QLayoutItem)
-	ret := newQVBoxLayout(outptr_QVBoxLayout, outptr_QBoxLayout, outptr_QLayout, outptr_QObject, outptr_QLayoutItem)
+	ret := newQVBoxLayout(C.QVBoxLayout_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVBoxLayout2 constructs a new QVBoxLayout object.
 func NewQVBoxLayout2() *QVBoxLayout {
-	var outptr_QVBoxLayout *C.QVBoxLayout = nil
-	var outptr_QBoxLayout *C.QBoxLayout = nil
-	var outptr_QLayout *C.QLayout = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QLayoutItem *C.QLayoutItem = nil
 
-	C.QVBoxLayout_new2(&outptr_QVBoxLayout, &outptr_QBoxLayout, &outptr_QLayout, &outptr_QObject, &outptr_QLayoutItem)
-	ret := newQVBoxLayout(outptr_QVBoxLayout, outptr_QBoxLayout, outptr_QLayout, outptr_QObject, outptr_QLayoutItem)
+	ret := newQVBoxLayout(C.QVBoxLayout_new2())
 	ret.isSubclass = true
 	return ret
 }

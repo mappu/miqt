@@ -46,34 +46,27 @@ func newQSslConfiguration(h *C.QSslConfiguration) *QSslConfiguration {
 	if h == nil {
 		return nil
 	}
+
 	return &QSslConfiguration{h: h}
 }
 
 // UnsafeNewQSslConfiguration constructs the type using only unsafe pointers.
 func UnsafeNewQSslConfiguration(h unsafe.Pointer) *QSslConfiguration {
-	if h == nil {
-		return nil
-	}
-
-	return &QSslConfiguration{h: (*C.QSslConfiguration)(h)}
+	return newQSslConfiguration((*C.QSslConfiguration)(h))
 }
 
 // NewQSslConfiguration constructs a new QSslConfiguration object.
 func NewQSslConfiguration() *QSslConfiguration {
-	var outptr_QSslConfiguration *C.QSslConfiguration = nil
 
-	C.QSslConfiguration_new(&outptr_QSslConfiguration)
-	ret := newQSslConfiguration(outptr_QSslConfiguration)
+	ret := newQSslConfiguration(C.QSslConfiguration_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSslConfiguration2 constructs a new QSslConfiguration object.
 func NewQSslConfiguration2(other *QSslConfiguration) *QSslConfiguration {
-	var outptr_QSslConfiguration *C.QSslConfiguration = nil
 
-	C.QSslConfiguration_new2(other.cPointer(), &outptr_QSslConfiguration)
-	ret := newQSslConfiguration(outptr_QSslConfiguration)
+	ret := newQSslConfiguration(C.QSslConfiguration_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

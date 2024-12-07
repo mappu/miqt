@@ -35,68 +35,50 @@ func (this *QGraphicsLinearLayout) UnsafePointer() unsafe.Pointer {
 }
 
 // newQGraphicsLinearLayout constructs the type using only CGO pointers.
-func newQGraphicsLinearLayout(h *C.QGraphicsLinearLayout, h_QGraphicsLayout *C.QGraphicsLayout, h_QGraphicsLayoutItem *C.QGraphicsLayoutItem) *QGraphicsLinearLayout {
+func newQGraphicsLinearLayout(h *C.QGraphicsLinearLayout) *QGraphicsLinearLayout {
 	if h == nil {
 		return nil
 	}
+	var outptr_QGraphicsLayout *C.QGraphicsLayout = nil
+	C.QGraphicsLinearLayout_virtbase(h, &outptr_QGraphicsLayout)
+
 	return &QGraphicsLinearLayout{h: h,
-		QGraphicsLayout: newQGraphicsLayout(h_QGraphicsLayout, h_QGraphicsLayoutItem)}
+		QGraphicsLayout: newQGraphicsLayout(outptr_QGraphicsLayout)}
 }
 
 // UnsafeNewQGraphicsLinearLayout constructs the type using only unsafe pointers.
-func UnsafeNewQGraphicsLinearLayout(h unsafe.Pointer, h_QGraphicsLayout unsafe.Pointer, h_QGraphicsLayoutItem unsafe.Pointer) *QGraphicsLinearLayout {
-	if h == nil {
-		return nil
-	}
-
-	return &QGraphicsLinearLayout{h: (*C.QGraphicsLinearLayout)(h),
-		QGraphicsLayout: UnsafeNewQGraphicsLayout(h_QGraphicsLayout, h_QGraphicsLayoutItem)}
+func UnsafeNewQGraphicsLinearLayout(h unsafe.Pointer) *QGraphicsLinearLayout {
+	return newQGraphicsLinearLayout((*C.QGraphicsLinearLayout)(h))
 }
 
 // NewQGraphicsLinearLayout constructs a new QGraphicsLinearLayout object.
 func NewQGraphicsLinearLayout() *QGraphicsLinearLayout {
-	var outptr_QGraphicsLinearLayout *C.QGraphicsLinearLayout = nil
-	var outptr_QGraphicsLayout *C.QGraphicsLayout = nil
-	var outptr_QGraphicsLayoutItem *C.QGraphicsLayoutItem = nil
 
-	C.QGraphicsLinearLayout_new(&outptr_QGraphicsLinearLayout, &outptr_QGraphicsLayout, &outptr_QGraphicsLayoutItem)
-	ret := newQGraphicsLinearLayout(outptr_QGraphicsLinearLayout, outptr_QGraphicsLayout, outptr_QGraphicsLayoutItem)
+	ret := newQGraphicsLinearLayout(C.QGraphicsLinearLayout_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsLinearLayout2 constructs a new QGraphicsLinearLayout object.
 func NewQGraphicsLinearLayout2(orientation Orientation) *QGraphicsLinearLayout {
-	var outptr_QGraphicsLinearLayout *C.QGraphicsLinearLayout = nil
-	var outptr_QGraphicsLayout *C.QGraphicsLayout = nil
-	var outptr_QGraphicsLayoutItem *C.QGraphicsLayoutItem = nil
 
-	C.QGraphicsLinearLayout_new2((C.int)(orientation), &outptr_QGraphicsLinearLayout, &outptr_QGraphicsLayout, &outptr_QGraphicsLayoutItem)
-	ret := newQGraphicsLinearLayout(outptr_QGraphicsLinearLayout, outptr_QGraphicsLayout, outptr_QGraphicsLayoutItem)
+	ret := newQGraphicsLinearLayout(C.QGraphicsLinearLayout_new2((C.int)(orientation)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsLinearLayout3 constructs a new QGraphicsLinearLayout object.
 func NewQGraphicsLinearLayout3(parent *QGraphicsLayoutItem) *QGraphicsLinearLayout {
-	var outptr_QGraphicsLinearLayout *C.QGraphicsLinearLayout = nil
-	var outptr_QGraphicsLayout *C.QGraphicsLayout = nil
-	var outptr_QGraphicsLayoutItem *C.QGraphicsLayoutItem = nil
 
-	C.QGraphicsLinearLayout_new3(parent.cPointer(), &outptr_QGraphicsLinearLayout, &outptr_QGraphicsLayout, &outptr_QGraphicsLayoutItem)
-	ret := newQGraphicsLinearLayout(outptr_QGraphicsLinearLayout, outptr_QGraphicsLayout, outptr_QGraphicsLayoutItem)
+	ret := newQGraphicsLinearLayout(C.QGraphicsLinearLayout_new3(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsLinearLayout4 constructs a new QGraphicsLinearLayout object.
 func NewQGraphicsLinearLayout4(orientation Orientation, parent *QGraphicsLayoutItem) *QGraphicsLinearLayout {
-	var outptr_QGraphicsLinearLayout *C.QGraphicsLinearLayout = nil
-	var outptr_QGraphicsLayout *C.QGraphicsLayout = nil
-	var outptr_QGraphicsLayoutItem *C.QGraphicsLayoutItem = nil
 
-	C.QGraphicsLinearLayout_new4((C.int)(orientation), parent.cPointer(), &outptr_QGraphicsLinearLayout, &outptr_QGraphicsLayout, &outptr_QGraphicsLayoutItem)
-	ret := newQGraphicsLinearLayout(outptr_QGraphicsLinearLayout, outptr_QGraphicsLayout, outptr_QGraphicsLayoutItem)
+	ret := newQGraphicsLinearLayout(C.QGraphicsLinearLayout_new4((C.int)(orientation), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

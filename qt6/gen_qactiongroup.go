@@ -43,31 +43,26 @@ func (this *QActionGroup) UnsafePointer() unsafe.Pointer {
 }
 
 // newQActionGroup constructs the type using only CGO pointers.
-func newQActionGroup(h *C.QActionGroup, h_QObject *C.QObject) *QActionGroup {
+func newQActionGroup(h *C.QActionGroup) *QActionGroup {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QActionGroup_virtbase(h, &outptr_QObject)
+
 	return &QActionGroup{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQActionGroup constructs the type using only unsafe pointers.
-func UnsafeNewQActionGroup(h unsafe.Pointer, h_QObject unsafe.Pointer) *QActionGroup {
-	if h == nil {
-		return nil
-	}
-
-	return &QActionGroup{h: (*C.QActionGroup)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQActionGroup(h unsafe.Pointer) *QActionGroup {
+	return newQActionGroup((*C.QActionGroup)(h))
 }
 
 // NewQActionGroup constructs a new QActionGroup object.
 func NewQActionGroup(parent *QObject) *QActionGroup {
-	var outptr_QActionGroup *C.QActionGroup = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QActionGroup_new(parent.cPointer(), &outptr_QActionGroup, &outptr_QObject)
-	ret := newQActionGroup(outptr_QActionGroup, outptr_QObject)
+	ret := newQActionGroup(C.QActionGroup_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -92,7 +87,7 @@ func QActionGroup_Tr(s string) string {
 }
 
 func (this *QActionGroup) AddAction(a *QAction) *QAction {
-	return newQAction(C.QActionGroup_AddAction(this.h, a.cPointer()), nil)
+	return newQAction(C.QActionGroup_AddAction(this.h, a.cPointer()))
 }
 
 func (this *QActionGroup) AddActionWithText(text string) *QAction {
@@ -100,7 +95,7 @@ func (this *QActionGroup) AddActionWithText(text string) *QAction {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return newQAction(C.QActionGroup_AddActionWithText(this.h, text_ms), nil)
+	return newQAction(C.QActionGroup_AddActionWithText(this.h, text_ms))
 }
 
 func (this *QActionGroup) AddAction2(icon *QIcon, text string) *QAction {
@@ -108,7 +103,7 @@ func (this *QActionGroup) AddAction2(icon *QIcon, text string) *QAction {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return newQAction(C.QActionGroup_AddAction2(this.h, icon.cPointer(), text_ms), nil)
+	return newQAction(C.QActionGroup_AddAction2(this.h, icon.cPointer(), text_ms))
 }
 
 func (this *QActionGroup) RemoveAction(a *QAction) {
@@ -120,13 +115,13 @@ func (this *QActionGroup) Actions() []*QAction {
 	_ret := make([]*QAction, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAction(_outCast[i], nil)
+		_ret[i] = newQAction(_outCast[i])
 	}
 	return _ret
 }
 
 func (this *QActionGroup) CheckedAction() *QAction {
-	return newQAction(C.QActionGroup_CheckedAction(this.h), nil)
+	return newQAction(C.QActionGroup_CheckedAction(this.h))
 }
 
 func (this *QActionGroup) IsExclusive() bool {
@@ -180,7 +175,7 @@ func miqt_exec_callback_QActionGroup_Triggered(cb C.intptr_t, param1 *C.QAction)
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQAction(param1, nil)
+	slotval1 := newQAction(param1)
 
 	gofunc(slotval1)
 }
@@ -200,7 +195,7 @@ func miqt_exec_callback_QActionGroup_Hovered(cb C.intptr_t, param1 *C.QAction) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQAction(param1, nil)
+	slotval1 := newQAction(param1)
 
 	gofunc(slotval1)
 }
@@ -305,7 +300,7 @@ func miqt_exec_callback_QActionGroup_TimerEvent(self *C.QActionGroup, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QActionGroup{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -331,7 +326,7 @@ func miqt_exec_callback_QActionGroup_ChildEvent(self *C.QActionGroup, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QActionGroup{h: self}).callVirtualBase_ChildEvent, slotval1)
 

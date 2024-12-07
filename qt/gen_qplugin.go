@@ -37,16 +37,13 @@ func newQStaticPlugin(h *C.QStaticPlugin) *QStaticPlugin {
 	if h == nil {
 		return nil
 	}
+
 	return &QStaticPlugin{h: h}
 }
 
 // UnsafeNewQStaticPlugin constructs the type using only unsafe pointers.
 func UnsafeNewQStaticPlugin(h unsafe.Pointer) *QStaticPlugin {
-	if h == nil {
-		return nil
-	}
-
-	return &QStaticPlugin{h: (*C.QStaticPlugin)(h)}
+	return newQStaticPlugin((*C.QStaticPlugin)(h))
 }
 
 func (this *QStaticPlugin) MetaData() *QJsonObject {

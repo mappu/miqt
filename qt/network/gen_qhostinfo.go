@@ -45,44 +45,35 @@ func newQHostInfo(h *C.QHostInfo) *QHostInfo {
 	if h == nil {
 		return nil
 	}
+
 	return &QHostInfo{h: h}
 }
 
 // UnsafeNewQHostInfo constructs the type using only unsafe pointers.
 func UnsafeNewQHostInfo(h unsafe.Pointer) *QHostInfo {
-	if h == nil {
-		return nil
-	}
-
-	return &QHostInfo{h: (*C.QHostInfo)(h)}
+	return newQHostInfo((*C.QHostInfo)(h))
 }
 
 // NewQHostInfo constructs a new QHostInfo object.
 func NewQHostInfo() *QHostInfo {
-	var outptr_QHostInfo *C.QHostInfo = nil
 
-	C.QHostInfo_new(&outptr_QHostInfo)
-	ret := newQHostInfo(outptr_QHostInfo)
+	ret := newQHostInfo(C.QHostInfo_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQHostInfo2 constructs a new QHostInfo object.
 func NewQHostInfo2(d *QHostInfo) *QHostInfo {
-	var outptr_QHostInfo *C.QHostInfo = nil
 
-	C.QHostInfo_new2(d.cPointer(), &outptr_QHostInfo)
-	ret := newQHostInfo(outptr_QHostInfo)
+	ret := newQHostInfo(C.QHostInfo_new2(d.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQHostInfo3 constructs a new QHostInfo object.
 func NewQHostInfo3(lookupId int) *QHostInfo {
-	var outptr_QHostInfo *C.QHostInfo = nil
 
-	C.QHostInfo_new3((C.int)(lookupId), &outptr_QHostInfo)
-	ret := newQHostInfo(outptr_QHostInfo)
+	ret := newQHostInfo(C.QHostInfo_new3((C.int)(lookupId)))
 	ret.isSubclass = true
 	return ret
 }

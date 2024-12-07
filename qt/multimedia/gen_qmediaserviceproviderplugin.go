@@ -57,24 +57,19 @@ func newQMediaServiceProviderHint(h *C.QMediaServiceProviderHint) *QMediaService
 	if h == nil {
 		return nil
 	}
+
 	return &QMediaServiceProviderHint{h: h}
 }
 
 // UnsafeNewQMediaServiceProviderHint constructs the type using only unsafe pointers.
 func UnsafeNewQMediaServiceProviderHint(h unsafe.Pointer) *QMediaServiceProviderHint {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaServiceProviderHint{h: (*C.QMediaServiceProviderHint)(h)}
+	return newQMediaServiceProviderHint((*C.QMediaServiceProviderHint)(h))
 }
 
 // NewQMediaServiceProviderHint constructs a new QMediaServiceProviderHint object.
 func NewQMediaServiceProviderHint() *QMediaServiceProviderHint {
-	var outptr_QMediaServiceProviderHint *C.QMediaServiceProviderHint = nil
 
-	C.QMediaServiceProviderHint_new(&outptr_QMediaServiceProviderHint)
-	ret := newQMediaServiceProviderHint(outptr_QMediaServiceProviderHint)
+	ret := newQMediaServiceProviderHint(C.QMediaServiceProviderHint_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -95,10 +90,8 @@ func NewQMediaServiceProviderHint2(mimeType string, codecs []string) *QMediaServ
 		codecs_CArray[i] = codecs_i_ms
 	}
 	codecs_ma := C.struct_miqt_array{len: C.size_t(len(codecs)), data: unsafe.Pointer(codecs_CArray)}
-	var outptr_QMediaServiceProviderHint *C.QMediaServiceProviderHint = nil
 
-	C.QMediaServiceProviderHint_new2(mimeType_ms, codecs_ma, &outptr_QMediaServiceProviderHint)
-	ret := newQMediaServiceProviderHint(outptr_QMediaServiceProviderHint)
+	ret := newQMediaServiceProviderHint(C.QMediaServiceProviderHint_new2(mimeType_ms, codecs_ma))
 	ret.isSubclass = true
 	return ret
 }
@@ -108,40 +101,32 @@ func NewQMediaServiceProviderHint3(device []byte) *QMediaServiceProviderHint {
 	device_alias := C.struct_miqt_string{}
 	device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
 	device_alias.len = C.size_t(len(device))
-	var outptr_QMediaServiceProviderHint *C.QMediaServiceProviderHint = nil
 
-	C.QMediaServiceProviderHint_new3(device_alias, &outptr_QMediaServiceProviderHint)
-	ret := newQMediaServiceProviderHint(outptr_QMediaServiceProviderHint)
+	ret := newQMediaServiceProviderHint(C.QMediaServiceProviderHint_new3(device_alias))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaServiceProviderHint4 constructs a new QMediaServiceProviderHint object.
 func NewQMediaServiceProviderHint4(position QCamera__Position) *QMediaServiceProviderHint {
-	var outptr_QMediaServiceProviderHint *C.QMediaServiceProviderHint = nil
 
-	C.QMediaServiceProviderHint_new4((C.int)(position), &outptr_QMediaServiceProviderHint)
-	ret := newQMediaServiceProviderHint(outptr_QMediaServiceProviderHint)
+	ret := newQMediaServiceProviderHint(C.QMediaServiceProviderHint_new4((C.int)(position)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaServiceProviderHint5 constructs a new QMediaServiceProviderHint object.
 func NewQMediaServiceProviderHint5(features QMediaServiceProviderHint__Feature) *QMediaServiceProviderHint {
-	var outptr_QMediaServiceProviderHint *C.QMediaServiceProviderHint = nil
 
-	C.QMediaServiceProviderHint_new5((C.int)(features), &outptr_QMediaServiceProviderHint)
-	ret := newQMediaServiceProviderHint(outptr_QMediaServiceProviderHint)
+	ret := newQMediaServiceProviderHint(C.QMediaServiceProviderHint_new5((C.int)(features)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaServiceProviderHint6 constructs a new QMediaServiceProviderHint object.
 func NewQMediaServiceProviderHint6(other *QMediaServiceProviderHint) *QMediaServiceProviderHint {
-	var outptr_QMediaServiceProviderHint *C.QMediaServiceProviderHint = nil
 
-	C.QMediaServiceProviderHint_new6(other.cPointer(), &outptr_QMediaServiceProviderHint)
-	ret := newQMediaServiceProviderHint(outptr_QMediaServiceProviderHint)
+	ret := newQMediaServiceProviderHint(C.QMediaServiceProviderHint_new6(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -239,16 +224,13 @@ func newQMediaServiceProviderFactoryInterface(h *C.QMediaServiceProviderFactoryI
 	if h == nil {
 		return nil
 	}
+
 	return &QMediaServiceProviderFactoryInterface{h: h}
 }
 
 // UnsafeNewQMediaServiceProviderFactoryInterface constructs the type using only unsafe pointers.
 func UnsafeNewQMediaServiceProviderFactoryInterface(h unsafe.Pointer) *QMediaServiceProviderFactoryInterface {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaServiceProviderFactoryInterface{h: (*C.QMediaServiceProviderFactoryInterface)(h)}
+	return newQMediaServiceProviderFactoryInterface((*C.QMediaServiceProviderFactoryInterface)(h))
 }
 
 func (this *QMediaServiceProviderFactoryInterface) Create(key string) *QMediaService {
@@ -256,7 +238,7 @@ func (this *QMediaServiceProviderFactoryInterface) Create(key string) *QMediaSer
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	return newQMediaService(C.QMediaServiceProviderFactoryInterface_Create(this.h, key_ms), nil)
+	return newQMediaService(C.QMediaServiceProviderFactoryInterface_Create(this.h, key_ms))
 }
 
 func (this *QMediaServiceProviderFactoryInterface) Release(service *QMediaService) {
@@ -305,16 +287,13 @@ func newQMediaServiceSupportedFormatsInterface(h *C.QMediaServiceSupportedFormat
 	if h == nil {
 		return nil
 	}
+
 	return &QMediaServiceSupportedFormatsInterface{h: h}
 }
 
 // UnsafeNewQMediaServiceSupportedFormatsInterface constructs the type using only unsafe pointers.
 func UnsafeNewQMediaServiceSupportedFormatsInterface(h unsafe.Pointer) *QMediaServiceSupportedFormatsInterface {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaServiceSupportedFormatsInterface{h: (*C.QMediaServiceSupportedFormatsInterface)(h)}
+	return newQMediaServiceSupportedFormatsInterface((*C.QMediaServiceSupportedFormatsInterface)(h))
 }
 
 func (this *QMediaServiceSupportedFormatsInterface) HasSupport(mimeType string, codecs []string) QMultimedia__SupportEstimate {
@@ -390,16 +369,13 @@ func newQMediaServiceSupportedDevicesInterface(h *C.QMediaServiceSupportedDevice
 	if h == nil {
 		return nil
 	}
+
 	return &QMediaServiceSupportedDevicesInterface{h: h}
 }
 
 // UnsafeNewQMediaServiceSupportedDevicesInterface constructs the type using only unsafe pointers.
 func UnsafeNewQMediaServiceSupportedDevicesInterface(h unsafe.Pointer) *QMediaServiceSupportedDevicesInterface {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaServiceSupportedDevicesInterface{h: (*C.QMediaServiceSupportedDevicesInterface)(h)}
+	return newQMediaServiceSupportedDevicesInterface((*C.QMediaServiceSupportedDevicesInterface)(h))
 }
 
 func (this *QMediaServiceSupportedDevicesInterface) Devices(service []byte) [][]byte {
@@ -473,16 +449,13 @@ func newQMediaServiceDefaultDeviceInterface(h *C.QMediaServiceDefaultDeviceInter
 	if h == nil {
 		return nil
 	}
+
 	return &QMediaServiceDefaultDeviceInterface{h: h}
 }
 
 // UnsafeNewQMediaServiceDefaultDeviceInterface constructs the type using only unsafe pointers.
 func UnsafeNewQMediaServiceDefaultDeviceInterface(h unsafe.Pointer) *QMediaServiceDefaultDeviceInterface {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaServiceDefaultDeviceInterface{h: (*C.QMediaServiceDefaultDeviceInterface)(h)}
+	return newQMediaServiceDefaultDeviceInterface((*C.QMediaServiceDefaultDeviceInterface)(h))
 }
 
 func (this *QMediaServiceDefaultDeviceInterface) DefaultDevice(service []byte) []byte {
@@ -537,16 +510,13 @@ func newQMediaServiceCameraInfoInterface(h *C.QMediaServiceCameraInfoInterface) 
 	if h == nil {
 		return nil
 	}
+
 	return &QMediaServiceCameraInfoInterface{h: h}
 }
 
 // UnsafeNewQMediaServiceCameraInfoInterface constructs the type using only unsafe pointers.
 func UnsafeNewQMediaServiceCameraInfoInterface(h unsafe.Pointer) *QMediaServiceCameraInfoInterface {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaServiceCameraInfoInterface{h: (*C.QMediaServiceCameraInfoInterface)(h)}
+	return newQMediaServiceCameraInfoInterface((*C.QMediaServiceCameraInfoInterface)(h))
 }
 
 func (this *QMediaServiceCameraInfoInterface) CameraPosition(device []byte) QCamera__Position {
@@ -605,16 +575,13 @@ func newQMediaServiceFeaturesInterface(h *C.QMediaServiceFeaturesInterface) *QMe
 	if h == nil {
 		return nil
 	}
+
 	return &QMediaServiceFeaturesInterface{h: h}
 }
 
 // UnsafeNewQMediaServiceFeaturesInterface constructs the type using only unsafe pointers.
 func UnsafeNewQMediaServiceFeaturesInterface(h unsafe.Pointer) *QMediaServiceFeaturesInterface {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaServiceFeaturesInterface{h: (*C.QMediaServiceFeaturesInterface)(h)}
+	return newQMediaServiceFeaturesInterface((*C.QMediaServiceFeaturesInterface)(h))
 }
 
 func (this *QMediaServiceFeaturesInterface) SupportedFeatures(service []byte) QMediaServiceProviderHint__Feature {
@@ -664,24 +631,22 @@ func (this *QMediaServiceProviderPlugin) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMediaServiceProviderPlugin constructs the type using only CGO pointers.
-func newQMediaServiceProviderPlugin(h *C.QMediaServiceProviderPlugin, h_QObject *C.QObject, h_QMediaServiceProviderFactoryInterface *C.QMediaServiceProviderFactoryInterface) *QMediaServiceProviderPlugin {
+func newQMediaServiceProviderPlugin(h *C.QMediaServiceProviderPlugin) *QMediaServiceProviderPlugin {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	var outptr_QMediaServiceProviderFactoryInterface *C.QMediaServiceProviderFactoryInterface = nil
+	C.QMediaServiceProviderPlugin_virtbase(h, &outptr_QObject, &outptr_QMediaServiceProviderFactoryInterface)
+
 	return &QMediaServiceProviderPlugin{h: h,
-		QObject:                               qt.UnsafeNewQObject(unsafe.Pointer(h_QObject)),
-		QMediaServiceProviderFactoryInterface: newQMediaServiceProviderFactoryInterface(h_QMediaServiceProviderFactoryInterface)}
+		QObject:                               qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject)),
+		QMediaServiceProviderFactoryInterface: newQMediaServiceProviderFactoryInterface(outptr_QMediaServiceProviderFactoryInterface)}
 }
 
 // UnsafeNewQMediaServiceProviderPlugin constructs the type using only unsafe pointers.
-func UnsafeNewQMediaServiceProviderPlugin(h unsafe.Pointer, h_QObject unsafe.Pointer, h_QMediaServiceProviderFactoryInterface unsafe.Pointer) *QMediaServiceProviderPlugin {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaServiceProviderPlugin{h: (*C.QMediaServiceProviderPlugin)(h),
-		QObject:                               qt.UnsafeNewQObject(h_QObject),
-		QMediaServiceProviderFactoryInterface: UnsafeNewQMediaServiceProviderFactoryInterface(h_QMediaServiceProviderFactoryInterface)}
+func UnsafeNewQMediaServiceProviderPlugin(h unsafe.Pointer) *QMediaServiceProviderPlugin {
+	return newQMediaServiceProviderPlugin((*C.QMediaServiceProviderPlugin)(h))
 }
 
 func (this *QMediaServiceProviderPlugin) MetaObject() *qt.QMetaObject {
@@ -717,7 +682,7 @@ func (this *QMediaServiceProviderPlugin) Create(key string) *QMediaService {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	return newQMediaService(C.QMediaServiceProviderPlugin_Create(this.h, key_ms), nil)
+	return newQMediaService(C.QMediaServiceProviderPlugin_Create(this.h, key_ms))
 }
 
 func (this *QMediaServiceProviderPlugin) Release(service *QMediaService) {

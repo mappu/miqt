@@ -12,9 +12,8 @@
 #include "gen_qmimedatabase.h"
 #include "_cgo_export.h"
 
-void QMimeDatabase_new(QMimeDatabase** outptr_QMimeDatabase) {
-	QMimeDatabase* ret = new QMimeDatabase();
-	*outptr_QMimeDatabase = ret;
+QMimeDatabase* QMimeDatabase_new() {
+	return new QMimeDatabase();
 }
 
 QMimeType* QMimeDatabase_MimeTypeForName(const QMimeDatabase* self, struct miqt_string nameOrAlias) {

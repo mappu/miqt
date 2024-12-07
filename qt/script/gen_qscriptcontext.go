@@ -55,16 +55,13 @@ func newQScriptContext(h *C.QScriptContext) *QScriptContext {
 	if h == nil {
 		return nil
 	}
+
 	return &QScriptContext{h: h}
 }
 
 // UnsafeNewQScriptContext constructs the type using only unsafe pointers.
 func UnsafeNewQScriptContext(h unsafe.Pointer) *QScriptContext {
-	if h == nil {
-		return nil
-	}
-
-	return &QScriptContext{h: (*C.QScriptContext)(h)}
+	return newQScriptContext((*C.QScriptContext)(h))
 }
 
 func (this *QScriptContext) ParentContext() *QScriptContext {
@@ -72,7 +69,7 @@ func (this *QScriptContext) ParentContext() *QScriptContext {
 }
 
 func (this *QScriptContext) Engine() *QScriptEngine {
-	return newQScriptEngine(C.QScriptContext_Engine(this.h), nil)
+	return newQScriptEngine(C.QScriptContext_Engine(this.h))
 }
 
 func (this *QScriptContext) State() QScriptContext__ExecutionState {

@@ -32,10 +32,11 @@ typedef struct QVariant QVariant;
 typedef struct QVariantAnimation QVariantAnimation;
 #endif
 
-void QPropertyAnimation_new(QPropertyAnimation** outptr_QPropertyAnimation, QVariantAnimation** outptr_QVariantAnimation, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject);
-void QPropertyAnimation_new2(QObject* target, struct miqt_string propertyName, QPropertyAnimation** outptr_QPropertyAnimation, QVariantAnimation** outptr_QVariantAnimation, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject);
-void QPropertyAnimation_new3(QObject* parent, QPropertyAnimation** outptr_QPropertyAnimation, QVariantAnimation** outptr_QVariantAnimation, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject);
-void QPropertyAnimation_new4(QObject* target, struct miqt_string propertyName, QObject* parent, QPropertyAnimation** outptr_QPropertyAnimation, QVariantAnimation** outptr_QVariantAnimation, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject);
+QPropertyAnimation* QPropertyAnimation_new();
+QPropertyAnimation* QPropertyAnimation_new2(QObject* target, struct miqt_string propertyName);
+QPropertyAnimation* QPropertyAnimation_new3(QObject* parent);
+QPropertyAnimation* QPropertyAnimation_new4(QObject* target, struct miqt_string propertyName, QObject* parent);
+void QPropertyAnimation_virtbase(QPropertyAnimation* src, QVariantAnimation** outptr_QVariantAnimation);
 QMetaObject* QPropertyAnimation_MetaObject(const QPropertyAnimation* self);
 void* QPropertyAnimation_Metacast(QPropertyAnimation* self, const char* param1);
 struct miqt_string QPropertyAnimation_Tr(const char* s);

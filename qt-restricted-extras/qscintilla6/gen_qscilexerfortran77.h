@@ -34,8 +34,9 @@ typedef struct QsciLexerFortran77 QsciLexerFortran77;
 typedef struct QsciScintilla QsciScintilla;
 #endif
 
-void QsciLexerFortran77_new(QsciLexerFortran77** outptr_QsciLexerFortran77, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerFortran77_new2(QObject* parent, QsciLexerFortran77** outptr_QsciLexerFortran77, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerFortran77* QsciLexerFortran77_new();
+QsciLexerFortran77* QsciLexerFortran77_new2(QObject* parent);
+void QsciLexerFortran77_virtbase(QsciLexerFortran77* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerFortran77_MetaObject(const QsciLexerFortran77* self);
 void* QsciLexerFortran77_Metacast(QsciLexerFortran77* self, const char* param1);
 struct miqt_string QsciLexerFortran77_Tr(const char* s);

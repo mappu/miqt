@@ -36,86 +36,66 @@ func (this *QAudioOutput) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAudioOutput constructs the type using only CGO pointers.
-func newQAudioOutput(h *C.QAudioOutput, h_QObject *C.QObject) *QAudioOutput {
+func newQAudioOutput(h *C.QAudioOutput) *QAudioOutput {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QAudioOutput_virtbase(h, &outptr_QObject)
+
 	return &QAudioOutput{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQAudioOutput constructs the type using only unsafe pointers.
-func UnsafeNewQAudioOutput(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAudioOutput {
-	if h == nil {
-		return nil
-	}
-
-	return &QAudioOutput{h: (*C.QAudioOutput)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQAudioOutput(h unsafe.Pointer) *QAudioOutput {
+	return newQAudioOutput((*C.QAudioOutput)(h))
 }
 
 // NewQAudioOutput constructs a new QAudioOutput object.
 func NewQAudioOutput() *QAudioOutput {
-	var outptr_QAudioOutput *C.QAudioOutput = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAudioOutput_new(&outptr_QAudioOutput, &outptr_QObject)
-	ret := newQAudioOutput(outptr_QAudioOutput, outptr_QObject)
+	ret := newQAudioOutput(C.QAudioOutput_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAudioOutput2 constructs a new QAudioOutput object.
 func NewQAudioOutput2(audioDeviceInfo *QAudioDeviceInfo) *QAudioOutput {
-	var outptr_QAudioOutput *C.QAudioOutput = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAudioOutput_new2(audioDeviceInfo.cPointer(), &outptr_QAudioOutput, &outptr_QObject)
-	ret := newQAudioOutput(outptr_QAudioOutput, outptr_QObject)
+	ret := newQAudioOutput(C.QAudioOutput_new2(audioDeviceInfo.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAudioOutput3 constructs a new QAudioOutput object.
 func NewQAudioOutput3(format *QAudioFormat) *QAudioOutput {
-	var outptr_QAudioOutput *C.QAudioOutput = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAudioOutput_new3(format.cPointer(), &outptr_QAudioOutput, &outptr_QObject)
-	ret := newQAudioOutput(outptr_QAudioOutput, outptr_QObject)
+	ret := newQAudioOutput(C.QAudioOutput_new3(format.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAudioOutput4 constructs a new QAudioOutput object.
 func NewQAudioOutput4(format *QAudioFormat, parent *qt.QObject) *QAudioOutput {
-	var outptr_QAudioOutput *C.QAudioOutput = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAudioOutput_new4(format.cPointer(), (*C.QObject)(parent.UnsafePointer()), &outptr_QAudioOutput, &outptr_QObject)
-	ret := newQAudioOutput(outptr_QAudioOutput, outptr_QObject)
+	ret := newQAudioOutput(C.QAudioOutput_new4(format.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAudioOutput5 constructs a new QAudioOutput object.
 func NewQAudioOutput5(audioDeviceInfo *QAudioDeviceInfo, format *QAudioFormat) *QAudioOutput {
-	var outptr_QAudioOutput *C.QAudioOutput = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAudioOutput_new5(audioDeviceInfo.cPointer(), format.cPointer(), &outptr_QAudioOutput, &outptr_QObject)
-	ret := newQAudioOutput(outptr_QAudioOutput, outptr_QObject)
+	ret := newQAudioOutput(C.QAudioOutput_new5(audioDeviceInfo.cPointer(), format.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAudioOutput6 constructs a new QAudioOutput object.
 func NewQAudioOutput6(audioDeviceInfo *QAudioDeviceInfo, format *QAudioFormat, parent *qt.QObject) *QAudioOutput {
-	var outptr_QAudioOutput *C.QAudioOutput = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAudioOutput_new6(audioDeviceInfo.cPointer(), format.cPointer(), (*C.QObject)(parent.UnsafePointer()), &outptr_QAudioOutput, &outptr_QObject)
-	ret := newQAudioOutput(outptr_QAudioOutput, outptr_QObject)
+	ret := newQAudioOutput(C.QAudioOutput_new6(audioDeviceInfo.cPointer(), format.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -159,7 +139,7 @@ func (this *QAudioOutput) Start(device *qt.QIODevice) {
 }
 
 func (this *QAudioOutput) Start2() *qt.QIODevice {
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAudioOutput_Start2(this.h)), nil)
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAudioOutput_Start2(this.h)))
 }
 
 func (this *QAudioOutput) Stop() {
@@ -400,7 +380,7 @@ func miqt_exec_callback_QAudioOutput_TimerEvent(self *C.QAudioOutput, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QAudioOutput{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -426,7 +406,7 @@ func miqt_exec_callback_QAudioOutput_ChildEvent(self *C.QAudioOutput, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QAudioOutput{h: self}).callVirtualBase_ChildEvent, slotval1)
 

@@ -8,14 +8,12 @@
 #include "gen_qaudiodeviceinfo.h"
 #include "_cgo_export.h"
 
-void QAudioDeviceInfo_new(QAudioDeviceInfo** outptr_QAudioDeviceInfo) {
-	QAudioDeviceInfo* ret = new QAudioDeviceInfo();
-	*outptr_QAudioDeviceInfo = ret;
+QAudioDeviceInfo* QAudioDeviceInfo_new() {
+	return new QAudioDeviceInfo();
 }
 
-void QAudioDeviceInfo_new2(QAudioDeviceInfo* other, QAudioDeviceInfo** outptr_QAudioDeviceInfo) {
-	QAudioDeviceInfo* ret = new QAudioDeviceInfo(*other);
-	*outptr_QAudioDeviceInfo = ret;
+QAudioDeviceInfo* QAudioDeviceInfo_new2(QAudioDeviceInfo* other) {
+	return new QAudioDeviceInfo(*other);
 }
 
 void QAudioDeviceInfo_OperatorAssign(QAudioDeviceInfo* self, QAudioDeviceInfo* other) {

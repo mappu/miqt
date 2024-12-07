@@ -265,16 +265,16 @@ public:
 
 };
 
-void QTcpServer_new(QTcpServer** outptr_QTcpServer, QObject** outptr_QObject) {
-	MiqtVirtualQTcpServer* ret = new MiqtVirtualQTcpServer();
-	*outptr_QTcpServer = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QTcpServer* QTcpServer_new() {
+	return new MiqtVirtualQTcpServer();
 }
 
-void QTcpServer_new2(QObject* parent, QTcpServer** outptr_QTcpServer, QObject** outptr_QObject) {
-	MiqtVirtualQTcpServer* ret = new MiqtVirtualQTcpServer(parent);
-	*outptr_QTcpServer = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QTcpServer* QTcpServer_new2(QObject* parent) {
+	return new MiqtVirtualQTcpServer(parent);
+}
+
+void QTcpServer_virtbase(QTcpServer* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QTcpServer_MetaObject(const QTcpServer* self) {

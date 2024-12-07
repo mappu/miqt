@@ -76,80 +76,50 @@ func (this *QGraphicsView) UnsafePointer() unsafe.Pointer {
 }
 
 // newQGraphicsView constructs the type using only CGO pointers.
-func newQGraphicsView(h *C.QGraphicsView, h_QAbstractScrollArea *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QGraphicsView {
+func newQGraphicsView(h *C.QGraphicsView) *QGraphicsView {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
+	C.QGraphicsView_virtbase(h, &outptr_QAbstractScrollArea)
+
 	return &QGraphicsView{h: h,
-		QAbstractScrollArea: newQAbstractScrollArea(h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+		QAbstractScrollArea: newQAbstractScrollArea(outptr_QAbstractScrollArea)}
 }
 
 // UnsafeNewQGraphicsView constructs the type using only unsafe pointers.
-func UnsafeNewQGraphicsView(h unsafe.Pointer, h_QAbstractScrollArea unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QGraphicsView {
-	if h == nil {
-		return nil
-	}
-
-	return &QGraphicsView{h: (*C.QGraphicsView)(h),
-		QAbstractScrollArea: UnsafeNewQAbstractScrollArea(h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQGraphicsView(h unsafe.Pointer) *QGraphicsView {
+	return newQGraphicsView((*C.QGraphicsView)(h))
 }
 
 // NewQGraphicsView constructs a new QGraphicsView object.
 func NewQGraphicsView(parent *QWidget) *QGraphicsView {
-	var outptr_QGraphicsView *C.QGraphicsView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QGraphicsView_new(parent.cPointer(), &outptr_QGraphicsView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQGraphicsView(outptr_QGraphicsView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQGraphicsView(C.QGraphicsView_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsView2 constructs a new QGraphicsView object.
 func NewQGraphicsView2() *QGraphicsView {
-	var outptr_QGraphicsView *C.QGraphicsView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QGraphicsView_new2(&outptr_QGraphicsView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQGraphicsView(outptr_QGraphicsView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQGraphicsView(C.QGraphicsView_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsView3 constructs a new QGraphicsView object.
 func NewQGraphicsView3(scene *QGraphicsScene) *QGraphicsView {
-	var outptr_QGraphicsView *C.QGraphicsView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QGraphicsView_new3(scene.cPointer(), &outptr_QGraphicsView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQGraphicsView(outptr_QGraphicsView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQGraphicsView(C.QGraphicsView_new3(scene.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsView4 constructs a new QGraphicsView object.
 func NewQGraphicsView4(scene *QGraphicsScene, parent *QWidget) *QGraphicsView {
-	var outptr_QGraphicsView *C.QGraphicsView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QGraphicsView_new4(scene.cPointer(), parent.cPointer(), &outptr_QGraphicsView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQGraphicsView(outptr_QGraphicsView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQGraphicsView(C.QGraphicsView_new4(scene.cPointer(), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -278,7 +248,7 @@ func (this *QGraphicsView) SetInteractive(allowed bool) {
 }
 
 func (this *QGraphicsView) Scene() *QGraphicsScene {
-	return newQGraphicsScene(C.QGraphicsView_Scene(this.h), nil)
+	return newQGraphicsScene(C.QGraphicsView_Scene(this.h))
 }
 
 func (this *QGraphicsView) SetScene(scene *QGraphicsScene) {
@@ -754,7 +724,7 @@ func miqt_exec_callback_QGraphicsView_SetupViewport(self *C.QGraphicsView, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(widget, nil, nil)
+	slotval1 := newQWidget(widget)
 
 	gofunc((&QGraphicsView{h: self}).callVirtualBase_SetupViewport, slotval1)
 
@@ -836,7 +806,7 @@ func miqt_exec_callback_QGraphicsView_ContextMenuEvent(self *C.QGraphicsView, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQContextMenuEvent(event, nil, nil)
+	slotval1 := newQContextMenuEvent(event)
 
 	gofunc((&QGraphicsView{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -862,7 +832,7 @@ func miqt_exec_callback_QGraphicsView_DragEnterEvent(self *C.QGraphicsView, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragEnterEvent(event, nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event)
 
 	gofunc((&QGraphicsView{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -888,7 +858,7 @@ func miqt_exec_callback_QGraphicsView_DragLeaveEvent(self *C.QGraphicsView, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragLeaveEvent(event, nil)
+	slotval1 := newQDragLeaveEvent(event)
 
 	gofunc((&QGraphicsView{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -914,7 +884,7 @@ func miqt_exec_callback_QGraphicsView_DragMoveEvent(self *C.QGraphicsView, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragMoveEvent(event, nil, nil)
+	slotval1 := newQDragMoveEvent(event)
 
 	gofunc((&QGraphicsView{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -940,7 +910,7 @@ func miqt_exec_callback_QGraphicsView_DropEvent(self *C.QGraphicsView, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDropEvent(event, nil)
+	slotval1 := newQDropEvent(event)
 
 	gofunc((&QGraphicsView{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -966,7 +936,7 @@ func miqt_exec_callback_QGraphicsView_FocusInEvent(self *C.QGraphicsView, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QGraphicsView{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -1020,7 +990,7 @@ func miqt_exec_callback_QGraphicsView_FocusOutEvent(self *C.QGraphicsView, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QGraphicsView{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -1046,7 +1016,7 @@ func miqt_exec_callback_QGraphicsView_KeyPressEvent(self *C.QGraphicsView, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(event, nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QGraphicsView{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -1072,7 +1042,7 @@ func miqt_exec_callback_QGraphicsView_KeyReleaseEvent(self *C.QGraphicsView, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(event, nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QGraphicsView{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -1098,7 +1068,7 @@ func miqt_exec_callback_QGraphicsView_MouseDoubleClickEvent(self *C.QGraphicsVie
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QGraphicsView{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -1124,7 +1094,7 @@ func miqt_exec_callback_QGraphicsView_MousePressEvent(self *C.QGraphicsView, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QGraphicsView{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -1150,7 +1120,7 @@ func miqt_exec_callback_QGraphicsView_MouseMoveEvent(self *C.QGraphicsView, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QGraphicsView{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -1176,7 +1146,7 @@ func miqt_exec_callback_QGraphicsView_MouseReleaseEvent(self *C.QGraphicsView, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QGraphicsView{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -1202,7 +1172,7 @@ func miqt_exec_callback_QGraphicsView_WheelEvent(self *C.QGraphicsView, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWheelEvent(event, nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(event)
 
 	gofunc((&QGraphicsView{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -1228,7 +1198,7 @@ func miqt_exec_callback_QGraphicsView_PaintEvent(self *C.QGraphicsView, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(event, nil)
+	slotval1 := newQPaintEvent(event)
 
 	gofunc((&QGraphicsView{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -1254,7 +1224,7 @@ func miqt_exec_callback_QGraphicsView_ResizeEvent(self *C.QGraphicsView, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(event, nil)
+	slotval1 := newQResizeEvent(event)
 
 	gofunc((&QGraphicsView{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -1308,7 +1278,7 @@ func miqt_exec_callback_QGraphicsView_ShowEvent(self *C.QGraphicsView, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQShowEvent(event, nil)
+	slotval1 := newQShowEvent(event)
 
 	gofunc((&QGraphicsView{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1334,7 +1304,7 @@ func miqt_exec_callback_QGraphicsView_InputMethodEvent(self *C.QGraphicsView, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQInputMethodEvent(event, nil)
+	slotval1 := newQInputMethodEvent(event)
 
 	gofunc((&QGraphicsView{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 

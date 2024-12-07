@@ -6,30 +6,25 @@
 #include "gen_qcborstreamreader.h"
 #include "_cgo_export.h"
 
-void QCborStreamReader_new(QCborStreamReader** outptr_QCborStreamReader) {
-	QCborStreamReader* ret = new QCborStreamReader();
-	*outptr_QCborStreamReader = ret;
+QCborStreamReader* QCborStreamReader_new() {
+	return new QCborStreamReader();
 }
 
-void QCborStreamReader_new2(const char* data, ptrdiff_t lenVal, QCborStreamReader** outptr_QCborStreamReader) {
-	QCborStreamReader* ret = new QCborStreamReader(data, (qsizetype)(lenVal));
-	*outptr_QCborStreamReader = ret;
+QCborStreamReader* QCborStreamReader_new2(const char* data, ptrdiff_t lenVal) {
+	return new QCborStreamReader(data, (qsizetype)(lenVal));
 }
 
-void QCborStreamReader_new3(const unsigned char* data, ptrdiff_t lenVal, QCborStreamReader** outptr_QCborStreamReader) {
-	QCborStreamReader* ret = new QCborStreamReader(static_cast<const quint8*>(data), (qsizetype)(lenVal));
-	*outptr_QCborStreamReader = ret;
+QCborStreamReader* QCborStreamReader_new3(const unsigned char* data, ptrdiff_t lenVal) {
+	return new QCborStreamReader(static_cast<const quint8*>(data), (qsizetype)(lenVal));
 }
 
-void QCborStreamReader_new4(struct miqt_string data, QCborStreamReader** outptr_QCborStreamReader) {
+QCborStreamReader* QCborStreamReader_new4(struct miqt_string data) {
 	QByteArray data_QByteArray(data.data, data.len);
-	QCborStreamReader* ret = new QCborStreamReader(data_QByteArray);
-	*outptr_QCborStreamReader = ret;
+	return new QCborStreamReader(data_QByteArray);
 }
 
-void QCborStreamReader_new5(QIODevice* device, QCborStreamReader** outptr_QCborStreamReader) {
-	QCborStreamReader* ret = new QCborStreamReader(device);
-	*outptr_QCborStreamReader = ret;
+QCborStreamReader* QCborStreamReader_new5(QIODevice* device) {
+	return new QCborStreamReader(device);
 }
 
 void QCborStreamReader_SetDevice(QCborStreamReader* self, QIODevice* device) {

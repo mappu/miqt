@@ -34,8 +34,9 @@ typedef struct QTcpSocket QTcpSocket;
 typedef struct QVariant QVariant;
 #endif
 
-void QTcpSocket_new(QTcpSocket** outptr_QTcpSocket, QAbstractSocket** outptr_QAbstractSocket, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
-void QTcpSocket_new2(QObject* parent, QTcpSocket** outptr_QTcpSocket, QAbstractSocket** outptr_QAbstractSocket, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
+QTcpSocket* QTcpSocket_new();
+QTcpSocket* QTcpSocket_new2(QObject* parent);
+void QTcpSocket_virtbase(QTcpSocket* src, QAbstractSocket** outptr_QAbstractSocket);
 QMetaObject* QTcpSocket_MetaObject(const QTcpSocket* self);
 void* QTcpSocket_Metacast(QTcpSocket* self, const char* param1);
 struct miqt_string QTcpSocket_Tr(const char* s);

@@ -51,30 +51,25 @@ func newQGestureRecognizer(h *C.QGestureRecognizer) *QGestureRecognizer {
 	if h == nil {
 		return nil
 	}
+
 	return &QGestureRecognizer{h: h}
 }
 
 // UnsafeNewQGestureRecognizer constructs the type using only unsafe pointers.
 func UnsafeNewQGestureRecognizer(h unsafe.Pointer) *QGestureRecognizer {
-	if h == nil {
-		return nil
-	}
-
-	return &QGestureRecognizer{h: (*C.QGestureRecognizer)(h)}
+	return newQGestureRecognizer((*C.QGestureRecognizer)(h))
 }
 
 // NewQGestureRecognizer constructs a new QGestureRecognizer object.
 func NewQGestureRecognizer() *QGestureRecognizer {
-	var outptr_QGestureRecognizer *C.QGestureRecognizer = nil
 
-	C.QGestureRecognizer_new(&outptr_QGestureRecognizer)
-	ret := newQGestureRecognizer(outptr_QGestureRecognizer)
+	ret := newQGestureRecognizer(C.QGestureRecognizer_new())
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QGestureRecognizer) Create(target *QObject) *QGesture {
-	return newQGesture(C.QGestureRecognizer_Create(this.h, target.cPointer()), nil)
+	return newQGesture(C.QGestureRecognizer_Create(this.h, target.cPointer()))
 }
 
 func (this *QGestureRecognizer) Recognize(state *QGesture, watched *QObject, event *QEvent) QGestureRecognizer__ResultFlag {
@@ -99,7 +94,7 @@ func (this *QGestureRecognizer) OperatorAssign(param1 *QGestureRecognizer) {
 
 func (this *QGestureRecognizer) callVirtualBase_Create(target *QObject) *QGesture {
 
-	return newQGesture(C.QGestureRecognizer_virtualbase_Create(unsafe.Pointer(this.h), target.cPointer()), nil)
+	return newQGesture(C.QGestureRecognizer_virtualbase_Create(unsafe.Pointer(this.h), target.cPointer()))
 
 }
 func (this *QGestureRecognizer) OnCreate(slot func(super func(target *QObject) *QGesture, target *QObject) *QGesture) {
@@ -139,7 +134,7 @@ func miqt_exec_callback_QGestureRecognizer_Recognize(self *C.QGestureRecognizer,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQGesture(state, nil)
+	slotval1 := newQGesture(state)
 
 	slotval2 := newQObject(watched)
 
@@ -171,7 +166,7 @@ func miqt_exec_callback_QGestureRecognizer_Reset(self *C.QGestureRecognizer, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQGesture(state, nil)
+	slotval1 := newQGesture(state)
 
 	gofunc((&QGestureRecognizer{h: self}).callVirtualBase_Reset, slotval1)
 

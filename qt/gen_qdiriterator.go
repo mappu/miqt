@@ -45,24 +45,19 @@ func newQDirIterator(h *C.QDirIterator) *QDirIterator {
 	if h == nil {
 		return nil
 	}
+
 	return &QDirIterator{h: h}
 }
 
 // UnsafeNewQDirIterator constructs the type using only unsafe pointers.
 func UnsafeNewQDirIterator(h unsafe.Pointer) *QDirIterator {
-	if h == nil {
-		return nil
-	}
-
-	return &QDirIterator{h: (*C.QDirIterator)(h)}
+	return newQDirIterator((*C.QDirIterator)(h))
 }
 
 // NewQDirIterator constructs a new QDirIterator object.
 func NewQDirIterator(dir *QDir) *QDirIterator {
-	var outptr_QDirIterator *C.QDirIterator = nil
 
-	C.QDirIterator_new(dir.cPointer(), &outptr_QDirIterator)
-	ret := newQDirIterator(outptr_QDirIterator)
+	ret := newQDirIterator(C.QDirIterator_new(dir.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -73,10 +68,8 @@ func NewQDirIterator2(path string) *QDirIterator {
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	var outptr_QDirIterator *C.QDirIterator = nil
 
-	C.QDirIterator_new2(path_ms, &outptr_QDirIterator)
-	ret := newQDirIterator(outptr_QDirIterator)
+	ret := newQDirIterator(C.QDirIterator_new2(path_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -87,10 +80,8 @@ func NewQDirIterator3(path string, filter QDir__Filter) *QDirIterator {
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	var outptr_QDirIterator *C.QDirIterator = nil
 
-	C.QDirIterator_new3(path_ms, (C.int)(filter), &outptr_QDirIterator)
-	ret := newQDirIterator(outptr_QDirIterator)
+	ret := newQDirIterator(C.QDirIterator_new3(path_ms, (C.int)(filter)))
 	ret.isSubclass = true
 	return ret
 }
@@ -111,20 +102,16 @@ func NewQDirIterator4(path string, nameFilters []string) *QDirIterator {
 		nameFilters_CArray[i] = nameFilters_i_ms
 	}
 	nameFilters_ma := C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
-	var outptr_QDirIterator *C.QDirIterator = nil
 
-	C.QDirIterator_new4(path_ms, nameFilters_ma, &outptr_QDirIterator)
-	ret := newQDirIterator(outptr_QDirIterator)
+	ret := newQDirIterator(C.QDirIterator_new4(path_ms, nameFilters_ma))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDirIterator5 constructs a new QDirIterator object.
 func NewQDirIterator5(dir *QDir, flags QDirIterator__IteratorFlag) *QDirIterator {
-	var outptr_QDirIterator *C.QDirIterator = nil
 
-	C.QDirIterator_new5(dir.cPointer(), (C.int)(flags), &outptr_QDirIterator)
-	ret := newQDirIterator(outptr_QDirIterator)
+	ret := newQDirIterator(C.QDirIterator_new5(dir.cPointer(), (C.int)(flags)))
 	ret.isSubclass = true
 	return ret
 }
@@ -135,10 +122,8 @@ func NewQDirIterator6(path string, flags QDirIterator__IteratorFlag) *QDirIterat
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	var outptr_QDirIterator *C.QDirIterator = nil
 
-	C.QDirIterator_new6(path_ms, (C.int)(flags), &outptr_QDirIterator)
-	ret := newQDirIterator(outptr_QDirIterator)
+	ret := newQDirIterator(C.QDirIterator_new6(path_ms, (C.int)(flags)))
 	ret.isSubclass = true
 	return ret
 }
@@ -149,10 +134,8 @@ func NewQDirIterator7(path string, filter QDir__Filter, flags QDirIterator__Iter
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	var outptr_QDirIterator *C.QDirIterator = nil
 
-	C.QDirIterator_new7(path_ms, (C.int)(filter), (C.int)(flags), &outptr_QDirIterator)
-	ret := newQDirIterator(outptr_QDirIterator)
+	ret := newQDirIterator(C.QDirIterator_new7(path_ms, (C.int)(filter), (C.int)(flags)))
 	ret.isSubclass = true
 	return ret
 }
@@ -173,10 +156,8 @@ func NewQDirIterator8(path string, nameFilters []string, filters QDir__Filter) *
 		nameFilters_CArray[i] = nameFilters_i_ms
 	}
 	nameFilters_ma := C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
-	var outptr_QDirIterator *C.QDirIterator = nil
 
-	C.QDirIterator_new8(path_ms, nameFilters_ma, (C.int)(filters), &outptr_QDirIterator)
-	ret := newQDirIterator(outptr_QDirIterator)
+	ret := newQDirIterator(C.QDirIterator_new8(path_ms, nameFilters_ma, (C.int)(filters)))
 	ret.isSubclass = true
 	return ret
 }
@@ -197,10 +178,8 @@ func NewQDirIterator9(path string, nameFilters []string, filters QDir__Filter, f
 		nameFilters_CArray[i] = nameFilters_i_ms
 	}
 	nameFilters_ma := C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
-	var outptr_QDirIterator *C.QDirIterator = nil
 
-	C.QDirIterator_new9(path_ms, nameFilters_ma, (C.int)(filters), (C.int)(flags), &outptr_QDirIterator)
-	ret := newQDirIterator(outptr_QDirIterator)
+	ret := newQDirIterator(C.QDirIterator_new9(path_ms, nameFilters_ma, (C.int)(filters), (C.int)(flags)))
 	ret.isSubclass = true
 	return ret
 }

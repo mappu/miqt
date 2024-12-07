@@ -56,44 +56,34 @@ func (this *QsciLexerFortran77) UnsafePointer() unsafe.Pointer {
 }
 
 // newQsciLexerFortran77 constructs the type using only CGO pointers.
-func newQsciLexerFortran77(h *C.QsciLexerFortran77, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerFortran77 {
+func newQsciLexerFortran77(h *C.QsciLexerFortran77) *QsciLexerFortran77 {
 	if h == nil {
 		return nil
 	}
+	var outptr_QsciLexer *C.QsciLexer = nil
+	C.QsciLexerFortran77_virtbase(h, &outptr_QsciLexer)
+
 	return &QsciLexerFortran77{h: h,
-		QsciLexer: newQsciLexer(h_QsciLexer, h_QObject)}
+		QsciLexer: newQsciLexer(outptr_QsciLexer)}
 }
 
 // UnsafeNewQsciLexerFortran77 constructs the type using only unsafe pointers.
-func UnsafeNewQsciLexerFortran77(h unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerFortran77 {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciLexerFortran77{h: (*C.QsciLexerFortran77)(h),
-		QsciLexer: UnsafeNewQsciLexer(h_QsciLexer, h_QObject)}
+func UnsafeNewQsciLexerFortran77(h unsafe.Pointer) *QsciLexerFortran77 {
+	return newQsciLexerFortran77((*C.QsciLexerFortran77)(h))
 }
 
 // NewQsciLexerFortran77 constructs a new QsciLexerFortran77 object.
 func NewQsciLexerFortran77() *QsciLexerFortran77 {
-	var outptr_QsciLexerFortran77 *C.QsciLexerFortran77 = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerFortran77_new(&outptr_QsciLexerFortran77, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerFortran77(outptr_QsciLexerFortran77, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerFortran77(C.QsciLexerFortran77_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQsciLexerFortran772 constructs a new QsciLexerFortran77 object.
 func NewQsciLexerFortran772(parent *qt.QObject) *QsciLexerFortran77 {
-	var outptr_QsciLexerFortran77 *C.QsciLexerFortran77 = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerFortran77_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QsciLexerFortran77, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerFortran77(outptr_QsciLexerFortran77, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerFortran77(C.QsciLexerFortran77_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -933,7 +923,7 @@ func miqt_exec_callback_QsciLexerFortran77_SetEditor(self *C.QsciLexerFortran77,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQsciScintilla(editor, nil, nil, nil, nil, nil, nil)
+	slotval1 := newQsciScintilla(editor)
 
 	gofunc((&QsciLexerFortran77{h: self}).callVirtualBase_SetEditor, slotval1)
 
@@ -1177,7 +1167,7 @@ func miqt_exec_callback_QsciLexerFortran77_ReadProperties(self *C.QsciLexerFortr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQSettings(unsafe.Pointer(qs), nil)
+	slotval1 := qt.UnsafeNewQSettings(unsafe.Pointer(qs))
 
 	var prefix_ms C.struct_miqt_string = prefix
 	prefix_ret := C.GoStringN(prefix_ms.data, C.int(int64(prefix_ms.len)))
@@ -1214,7 +1204,7 @@ func miqt_exec_callback_QsciLexerFortran77_WriteProperties(self *C.QsciLexerFort
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQSettings(unsafe.Pointer(qs), nil)
+	slotval1 := qt.UnsafeNewQSettings(unsafe.Pointer(qs))
 
 	var prefix_ms C.struct_miqt_string = prefix
 	prefix_ret := C.GoStringN(prefix_ms.data, C.int(int64(prefix_ms.len)))

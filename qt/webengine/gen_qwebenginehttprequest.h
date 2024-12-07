@@ -22,10 +22,10 @@ typedef struct QUrl QUrl;
 typedef struct QWebEngineHttpRequest QWebEngineHttpRequest;
 #endif
 
-void QWebEngineHttpRequest_new(QWebEngineHttpRequest** outptr_QWebEngineHttpRequest);
-void QWebEngineHttpRequest_new2(QWebEngineHttpRequest* other, QWebEngineHttpRequest** outptr_QWebEngineHttpRequest);
-void QWebEngineHttpRequest_new3(QUrl* url, QWebEngineHttpRequest** outptr_QWebEngineHttpRequest);
-void QWebEngineHttpRequest_new4(QUrl* url, int* method, QWebEngineHttpRequest** outptr_QWebEngineHttpRequest);
+QWebEngineHttpRequest* QWebEngineHttpRequest_new();
+QWebEngineHttpRequest* QWebEngineHttpRequest_new2(QWebEngineHttpRequest* other);
+QWebEngineHttpRequest* QWebEngineHttpRequest_new3(QUrl* url);
+QWebEngineHttpRequest* QWebEngineHttpRequest_new4(QUrl* url, int* method);
 void QWebEngineHttpRequest_OperatorAssign(QWebEngineHttpRequest* self, QWebEngineHttpRequest* other);
 QWebEngineHttpRequest* QWebEngineHttpRequest_PostRequest(QUrl* url, struct miqt_map /* of struct miqt_string to struct miqt_string */  postData);
 void QWebEngineHttpRequest_Swap(QWebEngineHttpRequest* self, QWebEngineHttpRequest* other);

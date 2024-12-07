@@ -57,42 +57,34 @@ func (this *QAbstractAnimation) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAbstractAnimation constructs the type using only CGO pointers.
-func newQAbstractAnimation(h *C.QAbstractAnimation, h_QObject *C.QObject) *QAbstractAnimation {
+func newQAbstractAnimation(h *C.QAbstractAnimation) *QAbstractAnimation {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QAbstractAnimation_virtbase(h, &outptr_QObject)
+
 	return &QAbstractAnimation{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQAbstractAnimation constructs the type using only unsafe pointers.
-func UnsafeNewQAbstractAnimation(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractAnimation {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractAnimation{h: (*C.QAbstractAnimation)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQAbstractAnimation(h unsafe.Pointer) *QAbstractAnimation {
+	return newQAbstractAnimation((*C.QAbstractAnimation)(h))
 }
 
 // NewQAbstractAnimation constructs a new QAbstractAnimation object.
 func NewQAbstractAnimation() *QAbstractAnimation {
-	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAbstractAnimation_new(&outptr_QAbstractAnimation, &outptr_QObject)
-	ret := newQAbstractAnimation(outptr_QAbstractAnimation, outptr_QObject)
+	ret := newQAbstractAnimation(C.QAbstractAnimation_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAbstractAnimation2 constructs a new QAbstractAnimation object.
 func NewQAbstractAnimation2(parent *QObject) *QAbstractAnimation {
-	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAbstractAnimation_new2(parent.cPointer(), &outptr_QAbstractAnimation, &outptr_QObject)
-	ret := newQAbstractAnimation(outptr_QAbstractAnimation, outptr_QObject)
+	ret := newQAbstractAnimation(C.QAbstractAnimation_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -121,7 +113,7 @@ func (this *QAbstractAnimation) State() QAbstractAnimation__State {
 }
 
 func (this *QAbstractAnimation) Group() *QAnimationGroup {
-	return newQAnimationGroup(C.QAbstractAnimation_Group(this.h), nil, nil)
+	return newQAnimationGroup(C.QAbstractAnimation_Group(this.h))
 }
 
 func (this *QAbstractAnimation) Direction() QAbstractAnimation__Direction {
@@ -460,7 +452,7 @@ func miqt_exec_callback_QAbstractAnimation_TimerEvent(self *C.QAbstractAnimation
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QAbstractAnimation{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -486,7 +478,7 @@ func miqt_exec_callback_QAbstractAnimation_ChildEvent(self *C.QAbstractAnimation
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QAbstractAnimation{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -605,42 +597,34 @@ func (this *QAnimationDriver) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAnimationDriver constructs the type using only CGO pointers.
-func newQAnimationDriver(h *C.QAnimationDriver, h_QObject *C.QObject) *QAnimationDriver {
+func newQAnimationDriver(h *C.QAnimationDriver) *QAnimationDriver {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QAnimationDriver_virtbase(h, &outptr_QObject)
+
 	return &QAnimationDriver{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQAnimationDriver constructs the type using only unsafe pointers.
-func UnsafeNewQAnimationDriver(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAnimationDriver {
-	if h == nil {
-		return nil
-	}
-
-	return &QAnimationDriver{h: (*C.QAnimationDriver)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQAnimationDriver(h unsafe.Pointer) *QAnimationDriver {
+	return newQAnimationDriver((*C.QAnimationDriver)(h))
 }
 
 // NewQAnimationDriver constructs a new QAnimationDriver object.
 func NewQAnimationDriver() *QAnimationDriver {
-	var outptr_QAnimationDriver *C.QAnimationDriver = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAnimationDriver_new(&outptr_QAnimationDriver, &outptr_QObject)
-	ret := newQAnimationDriver(outptr_QAnimationDriver, outptr_QObject)
+	ret := newQAnimationDriver(C.QAnimationDriver_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAnimationDriver2 constructs a new QAnimationDriver object.
 func NewQAnimationDriver2(parent *QObject) *QAnimationDriver {
-	var outptr_QAnimationDriver *C.QAnimationDriver = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAnimationDriver_new2(parent.cPointer(), &outptr_QAnimationDriver, &outptr_QObject)
-	ret := newQAnimationDriver(outptr_QAnimationDriver, outptr_QObject)
+	ret := newQAnimationDriver(C.QAnimationDriver_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -912,7 +896,7 @@ func miqt_exec_callback_QAnimationDriver_TimerEvent(self *C.QAnimationDriver, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QAnimationDriver{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -938,7 +922,7 @@ func miqt_exec_callback_QAnimationDriver_ChildEvent(self *C.QAnimationDriver, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QAnimationDriver{h: self}).callVirtualBase_ChildEvent, slotval1)
 

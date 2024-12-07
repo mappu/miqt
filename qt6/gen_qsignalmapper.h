@@ -32,8 +32,9 @@ typedef struct QSignalMapper QSignalMapper;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QSignalMapper_new(QSignalMapper** outptr_QSignalMapper, QObject** outptr_QObject);
-void QSignalMapper_new2(QObject* parent, QSignalMapper** outptr_QSignalMapper, QObject** outptr_QObject);
+QSignalMapper* QSignalMapper_new();
+QSignalMapper* QSignalMapper_new2(QObject* parent);
+void QSignalMapper_virtbase(QSignalMapper* src, QObject** outptr_QObject);
 QMetaObject* QSignalMapper_MetaObject(const QSignalMapper* self);
 void* QSignalMapper_Metacast(QSignalMapper* self, const char* param1);
 struct miqt_string QSignalMapper_Tr(const char* s);

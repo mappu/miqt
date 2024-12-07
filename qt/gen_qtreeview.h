@@ -82,8 +82,9 @@ typedef struct QVariant QVariant;
 typedef struct QWidget QWidget;
 #endif
 
-void QTreeView_new(QWidget* parent, QTreeView** outptr_QTreeView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QTreeView_new2(QTreeView** outptr_QTreeView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QTreeView* QTreeView_new(QWidget* parent);
+QTreeView* QTreeView_new2();
+void QTreeView_virtbase(QTreeView* src, QAbstractItemView** outptr_QAbstractItemView);
 QMetaObject* QTreeView_MetaObject(const QTreeView* self);
 void* QTreeView_Metacast(QTreeView* self, const char* param1);
 struct miqt_string QTreeView_Tr(const char* s);

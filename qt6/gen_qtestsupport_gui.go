@@ -37,16 +37,13 @@ func newQTest__QTouchEventSequence(h *C.QTest__QTouchEventSequence) *QTest__QTou
 	if h == nil {
 		return nil
 	}
+
 	return &QTest__QTouchEventSequence{h: h}
 }
 
 // UnsafeNewQTest__QTouchEventSequence constructs the type using only unsafe pointers.
 func UnsafeNewQTest__QTouchEventSequence(h unsafe.Pointer) *QTest__QTouchEventSequence {
-	if h == nil {
-		return nil
-	}
-
-	return &QTest__QTouchEventSequence{h: (*C.QTest__QTouchEventSequence)(h)}
+	return newQTest__QTouchEventSequence((*C.QTest__QTouchEventSequence)(h))
 }
 
 func (this *QTest__QTouchEventSequence) Press(touchId int, pt *QPoint) *QTest__QTouchEventSequence {

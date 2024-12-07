@@ -35,31 +35,26 @@ func (this *QPluginLoader) UnsafePointer() unsafe.Pointer {
 }
 
 // newQPluginLoader constructs the type using only CGO pointers.
-func newQPluginLoader(h *C.QPluginLoader, h_QObject *C.QObject) *QPluginLoader {
+func newQPluginLoader(h *C.QPluginLoader) *QPluginLoader {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QPluginLoader_virtbase(h, &outptr_QObject)
+
 	return &QPluginLoader{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQPluginLoader constructs the type using only unsafe pointers.
-func UnsafeNewQPluginLoader(h unsafe.Pointer, h_QObject unsafe.Pointer) *QPluginLoader {
-	if h == nil {
-		return nil
-	}
-
-	return &QPluginLoader{h: (*C.QPluginLoader)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQPluginLoader(h unsafe.Pointer) *QPluginLoader {
+	return newQPluginLoader((*C.QPluginLoader)(h))
 }
 
 // NewQPluginLoader constructs a new QPluginLoader object.
 func NewQPluginLoader() *QPluginLoader {
-	var outptr_QPluginLoader *C.QPluginLoader = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPluginLoader_new(&outptr_QPluginLoader, &outptr_QObject)
-	ret := newQPluginLoader(outptr_QPluginLoader, outptr_QObject)
+	ret := newQPluginLoader(C.QPluginLoader_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -70,22 +65,16 @@ func NewQPluginLoader2(fileName string) *QPluginLoader {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QPluginLoader *C.QPluginLoader = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPluginLoader_new2(fileName_ms, &outptr_QPluginLoader, &outptr_QObject)
-	ret := newQPluginLoader(outptr_QPluginLoader, outptr_QObject)
+	ret := newQPluginLoader(C.QPluginLoader_new2(fileName_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPluginLoader3 constructs a new QPluginLoader object.
 func NewQPluginLoader3(parent *QObject) *QPluginLoader {
-	var outptr_QPluginLoader *C.QPluginLoader = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPluginLoader_new3(parent.cPointer(), &outptr_QPluginLoader, &outptr_QObject)
-	ret := newQPluginLoader(outptr_QPluginLoader, outptr_QObject)
+	ret := newQPluginLoader(C.QPluginLoader_new3(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -96,11 +85,8 @@ func NewQPluginLoader4(fileName string, parent *QObject) *QPluginLoader {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QPluginLoader *C.QPluginLoader = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPluginLoader_new4(fileName_ms, parent.cPointer(), &outptr_QPluginLoader, &outptr_QObject)
-	ret := newQPluginLoader(outptr_QPluginLoader, outptr_QObject)
+	ret := newQPluginLoader(C.QPluginLoader_new4(fileName_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -329,7 +315,7 @@ func miqt_exec_callback_QPluginLoader_TimerEvent(self *C.QPluginLoader, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QPluginLoader{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -355,7 +341,7 @@ func miqt_exec_callback_QPluginLoader_ChildEvent(self *C.QPluginLoader, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QPluginLoader{h: self}).callVirtualBase_ChildEvent, slotval1)
 

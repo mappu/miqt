@@ -9,6 +9,10 @@
 #include "gen_qsessionmanager.h"
 #include "_cgo_export.h"
 
+void QSessionManager_virtbase(QSessionManager* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
+
 QMetaObject* QSessionManager_MetaObject(const QSessionManager* self) {
 	return (QMetaObject*) self->metaObject();
 }

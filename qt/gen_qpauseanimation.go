@@ -35,68 +35,50 @@ func (this *QPauseAnimation) UnsafePointer() unsafe.Pointer {
 }
 
 // newQPauseAnimation constructs the type using only CGO pointers.
-func newQPauseAnimation(h *C.QPauseAnimation, h_QAbstractAnimation *C.QAbstractAnimation, h_QObject *C.QObject) *QPauseAnimation {
+func newQPauseAnimation(h *C.QPauseAnimation) *QPauseAnimation {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
+	C.QPauseAnimation_virtbase(h, &outptr_QAbstractAnimation)
+
 	return &QPauseAnimation{h: h,
-		QAbstractAnimation: newQAbstractAnimation(h_QAbstractAnimation, h_QObject)}
+		QAbstractAnimation: newQAbstractAnimation(outptr_QAbstractAnimation)}
 }
 
 // UnsafeNewQPauseAnimation constructs the type using only unsafe pointers.
-func UnsafeNewQPauseAnimation(h unsafe.Pointer, h_QAbstractAnimation unsafe.Pointer, h_QObject unsafe.Pointer) *QPauseAnimation {
-	if h == nil {
-		return nil
-	}
-
-	return &QPauseAnimation{h: (*C.QPauseAnimation)(h),
-		QAbstractAnimation: UnsafeNewQAbstractAnimation(h_QAbstractAnimation, h_QObject)}
+func UnsafeNewQPauseAnimation(h unsafe.Pointer) *QPauseAnimation {
+	return newQPauseAnimation((*C.QPauseAnimation)(h))
 }
 
 // NewQPauseAnimation constructs a new QPauseAnimation object.
 func NewQPauseAnimation() *QPauseAnimation {
-	var outptr_QPauseAnimation *C.QPauseAnimation = nil
-	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPauseAnimation_new(&outptr_QPauseAnimation, &outptr_QAbstractAnimation, &outptr_QObject)
-	ret := newQPauseAnimation(outptr_QPauseAnimation, outptr_QAbstractAnimation, outptr_QObject)
+	ret := newQPauseAnimation(C.QPauseAnimation_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPauseAnimation2 constructs a new QPauseAnimation object.
 func NewQPauseAnimation2(msecs int) *QPauseAnimation {
-	var outptr_QPauseAnimation *C.QPauseAnimation = nil
-	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPauseAnimation_new2((C.int)(msecs), &outptr_QPauseAnimation, &outptr_QAbstractAnimation, &outptr_QObject)
-	ret := newQPauseAnimation(outptr_QPauseAnimation, outptr_QAbstractAnimation, outptr_QObject)
+	ret := newQPauseAnimation(C.QPauseAnimation_new2((C.int)(msecs)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPauseAnimation3 constructs a new QPauseAnimation object.
 func NewQPauseAnimation3(parent *QObject) *QPauseAnimation {
-	var outptr_QPauseAnimation *C.QPauseAnimation = nil
-	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPauseAnimation_new3(parent.cPointer(), &outptr_QPauseAnimation, &outptr_QAbstractAnimation, &outptr_QObject)
-	ret := newQPauseAnimation(outptr_QPauseAnimation, outptr_QAbstractAnimation, outptr_QObject)
+	ret := newQPauseAnimation(C.QPauseAnimation_new3(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPauseAnimation4 constructs a new QPauseAnimation object.
 func NewQPauseAnimation4(msecs int, parent *QObject) *QPauseAnimation {
-	var outptr_QPauseAnimation *C.QPauseAnimation = nil
-	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPauseAnimation_new4((C.int)(msecs), parent.cPointer(), &outptr_QPauseAnimation, &outptr_QAbstractAnimation, &outptr_QObject)
-	ret := newQPauseAnimation(outptr_QPauseAnimation, outptr_QAbstractAnimation, outptr_QObject)
+	ret := newQPauseAnimation(C.QPauseAnimation_new4((C.int)(msecs), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

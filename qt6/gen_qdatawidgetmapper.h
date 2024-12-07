@@ -40,8 +40,9 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QDataWidgetMapper_new(QDataWidgetMapper** outptr_QDataWidgetMapper, QObject** outptr_QObject);
-void QDataWidgetMapper_new2(QObject* parent, QDataWidgetMapper** outptr_QDataWidgetMapper, QObject** outptr_QObject);
+QDataWidgetMapper* QDataWidgetMapper_new();
+QDataWidgetMapper* QDataWidgetMapper_new2(QObject* parent);
+void QDataWidgetMapper_virtbase(QDataWidgetMapper* src, QObject** outptr_QObject);
 QMetaObject* QDataWidgetMapper_MetaObject(const QDataWidgetMapper* self);
 void* QDataWidgetMapper_Metacast(QDataWidgetMapper* self, const char* param1);
 struct miqt_string QDataWidgetMapper_Tr(const char* s);

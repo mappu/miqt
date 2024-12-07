@@ -46,34 +46,27 @@ func newQSslDiffieHellmanParameters(h *C.QSslDiffieHellmanParameters) *QSslDiffi
 	if h == nil {
 		return nil
 	}
+
 	return &QSslDiffieHellmanParameters{h: h}
 }
 
 // UnsafeNewQSslDiffieHellmanParameters constructs the type using only unsafe pointers.
 func UnsafeNewQSslDiffieHellmanParameters(h unsafe.Pointer) *QSslDiffieHellmanParameters {
-	if h == nil {
-		return nil
-	}
-
-	return &QSslDiffieHellmanParameters{h: (*C.QSslDiffieHellmanParameters)(h)}
+	return newQSslDiffieHellmanParameters((*C.QSslDiffieHellmanParameters)(h))
 }
 
 // NewQSslDiffieHellmanParameters constructs a new QSslDiffieHellmanParameters object.
 func NewQSslDiffieHellmanParameters() *QSslDiffieHellmanParameters {
-	var outptr_QSslDiffieHellmanParameters *C.QSslDiffieHellmanParameters = nil
 
-	C.QSslDiffieHellmanParameters_new(&outptr_QSslDiffieHellmanParameters)
-	ret := newQSslDiffieHellmanParameters(outptr_QSslDiffieHellmanParameters)
+	ret := newQSslDiffieHellmanParameters(C.QSslDiffieHellmanParameters_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSslDiffieHellmanParameters2 constructs a new QSslDiffieHellmanParameters object.
 func NewQSslDiffieHellmanParameters2(other *QSslDiffieHellmanParameters) *QSslDiffieHellmanParameters {
-	var outptr_QSslDiffieHellmanParameters *C.QSslDiffieHellmanParameters = nil
 
-	C.QSslDiffieHellmanParameters_new2(other.cPointer(), &outptr_QSslDiffieHellmanParameters)
-	ret := newQSslDiffieHellmanParameters(outptr_QSslDiffieHellmanParameters)
+	ret := newQSslDiffieHellmanParameters(C.QSslDiffieHellmanParameters_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

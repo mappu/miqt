@@ -80,54 +80,43 @@ func newQSslError(h *C.QSslError) *QSslError {
 	if h == nil {
 		return nil
 	}
+
 	return &QSslError{h: h}
 }
 
 // UnsafeNewQSslError constructs the type using only unsafe pointers.
 func UnsafeNewQSslError(h unsafe.Pointer) *QSslError {
-	if h == nil {
-		return nil
-	}
-
-	return &QSslError{h: (*C.QSslError)(h)}
+	return newQSslError((*C.QSslError)(h))
 }
 
 // NewQSslError constructs a new QSslError object.
 func NewQSslError() *QSslError {
-	var outptr_QSslError *C.QSslError = nil
 
-	C.QSslError_new(&outptr_QSslError)
-	ret := newQSslError(outptr_QSslError)
+	ret := newQSslError(C.QSslError_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSslError2 constructs a new QSslError object.
 func NewQSslError2(error QSslError__SslError) *QSslError {
-	var outptr_QSslError *C.QSslError = nil
 
-	C.QSslError_new2((C.int)(error), &outptr_QSslError)
-	ret := newQSslError(outptr_QSslError)
+	ret := newQSslError(C.QSslError_new2((C.int)(error)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSslError3 constructs a new QSslError object.
 func NewQSslError3(error QSslError__SslError, certificate *QSslCertificate) *QSslError {
-	var outptr_QSslError *C.QSslError = nil
 
-	C.QSslError_new3((C.int)(error), certificate.cPointer(), &outptr_QSslError)
-	ret := newQSslError(outptr_QSslError)
+	ret := newQSslError(C.QSslError_new3((C.int)(error), certificate.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSslError4 constructs a new QSslError object.
 func NewQSslError4(other *QSslError) *QSslError {
-	var outptr_QSslError *C.QSslError = nil
 
-	C.QSslError_new4(other.cPointer(), &outptr_QSslError)
-	ret := newQSslError(outptr_QSslError)
+	ret := newQSslError(C.QSslError_new4(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

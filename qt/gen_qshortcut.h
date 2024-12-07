@@ -36,11 +36,12 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QShortcut_new(QWidget* parent, QShortcut** outptr_QShortcut, QObject** outptr_QObject);
-void QShortcut_new2(QKeySequence* key, QWidget* parent, QShortcut** outptr_QShortcut, QObject** outptr_QObject);
-void QShortcut_new3(QKeySequence* key, QWidget* parent, const char* member, QShortcut** outptr_QShortcut, QObject** outptr_QObject);
-void QShortcut_new4(QKeySequence* key, QWidget* parent, const char* member, const char* ambiguousMember, QShortcut** outptr_QShortcut, QObject** outptr_QObject);
-void QShortcut_new5(QKeySequence* key, QWidget* parent, const char* member, const char* ambiguousMember, int shortcutContext, QShortcut** outptr_QShortcut, QObject** outptr_QObject);
+QShortcut* QShortcut_new(QWidget* parent);
+QShortcut* QShortcut_new2(QKeySequence* key, QWidget* parent);
+QShortcut* QShortcut_new3(QKeySequence* key, QWidget* parent, const char* member);
+QShortcut* QShortcut_new4(QKeySequence* key, QWidget* parent, const char* member, const char* ambiguousMember);
+QShortcut* QShortcut_new5(QKeySequence* key, QWidget* parent, const char* member, const char* ambiguousMember, int shortcutContext);
+void QShortcut_virtbase(QShortcut* src, QObject** outptr_QObject);
 QMetaObject* QShortcut_MetaObject(const QShortcut* self);
 void* QShortcut_Metacast(QShortcut* self, const char* param1);
 struct miqt_string QShortcut_Tr(const char* s);

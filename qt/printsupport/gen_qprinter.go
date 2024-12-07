@@ -133,68 +133,50 @@ func (this *QPrinter) UnsafePointer() unsafe.Pointer {
 }
 
 // newQPrinter constructs the type using only CGO pointers.
-func newQPrinter(h *C.QPrinter, h_QPagedPaintDevice *C.QPagedPaintDevice, h_QPaintDevice *C.QPaintDevice) *QPrinter {
+func newQPrinter(h *C.QPrinter) *QPrinter {
 	if h == nil {
 		return nil
 	}
+	var outptr_QPagedPaintDevice *C.QPagedPaintDevice = nil
+	C.QPrinter_virtbase(h, &outptr_QPagedPaintDevice)
+
 	return &QPrinter{h: h,
-		QPagedPaintDevice: qt.UnsafeNewQPagedPaintDevice(unsafe.Pointer(h_QPagedPaintDevice), unsafe.Pointer(h_QPaintDevice))}
+		QPagedPaintDevice: qt.UnsafeNewQPagedPaintDevice(unsafe.Pointer(outptr_QPagedPaintDevice))}
 }
 
 // UnsafeNewQPrinter constructs the type using only unsafe pointers.
-func UnsafeNewQPrinter(h unsafe.Pointer, h_QPagedPaintDevice unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QPrinter {
-	if h == nil {
-		return nil
-	}
-
-	return &QPrinter{h: (*C.QPrinter)(h),
-		QPagedPaintDevice: qt.UnsafeNewQPagedPaintDevice(h_QPagedPaintDevice, h_QPaintDevice)}
+func UnsafeNewQPrinter(h unsafe.Pointer) *QPrinter {
+	return newQPrinter((*C.QPrinter)(h))
 }
 
 // NewQPrinter constructs a new QPrinter object.
 func NewQPrinter() *QPrinter {
-	var outptr_QPrinter *C.QPrinter = nil
-	var outptr_QPagedPaintDevice *C.QPagedPaintDevice = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPrinter_new(&outptr_QPrinter, &outptr_QPagedPaintDevice, &outptr_QPaintDevice)
-	ret := newQPrinter(outptr_QPrinter, outptr_QPagedPaintDevice, outptr_QPaintDevice)
+	ret := newQPrinter(C.QPrinter_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPrinter2 constructs a new QPrinter object.
 func NewQPrinter2(printer *QPrinterInfo) *QPrinter {
-	var outptr_QPrinter *C.QPrinter = nil
-	var outptr_QPagedPaintDevice *C.QPagedPaintDevice = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPrinter_new2(printer.cPointer(), &outptr_QPrinter, &outptr_QPagedPaintDevice, &outptr_QPaintDevice)
-	ret := newQPrinter(outptr_QPrinter, outptr_QPagedPaintDevice, outptr_QPaintDevice)
+	ret := newQPrinter(C.QPrinter_new2(printer.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPrinter3 constructs a new QPrinter object.
 func NewQPrinter3(mode QPrinter__PrinterMode) *QPrinter {
-	var outptr_QPrinter *C.QPrinter = nil
-	var outptr_QPagedPaintDevice *C.QPagedPaintDevice = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPrinter_new3((C.int)(mode), &outptr_QPrinter, &outptr_QPagedPaintDevice, &outptr_QPaintDevice)
-	ret := newQPrinter(outptr_QPrinter, outptr_QPagedPaintDevice, outptr_QPaintDevice)
+	ret := newQPrinter(C.QPrinter_new3((C.int)(mode)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPrinter4 constructs a new QPrinter object.
 func NewQPrinter4(printer *QPrinterInfo, mode QPrinter__PrinterMode) *QPrinter {
-	var outptr_QPrinter *C.QPrinter = nil
-	var outptr_QPagedPaintDevice *C.QPagedPaintDevice = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPrinter_new4(printer.cPointer(), (C.int)(mode), &outptr_QPrinter, &outptr_QPagedPaintDevice, &outptr_QPaintDevice)
-	ret := newQPrinter(outptr_QPrinter, outptr_QPagedPaintDevice, outptr_QPaintDevice)
+	ret := newQPrinter(C.QPrinter_new4(printer.cPointer(), (C.int)(mode)))
 	ret.isSubclass = true
 	return ret
 }

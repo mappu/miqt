@@ -9,24 +9,20 @@
 #include "gen_qtextdocumentfragment.h"
 #include "_cgo_export.h"
 
-void QTextDocumentFragment_new(QTextDocumentFragment** outptr_QTextDocumentFragment) {
-	QTextDocumentFragment* ret = new QTextDocumentFragment();
-	*outptr_QTextDocumentFragment = ret;
+QTextDocumentFragment* QTextDocumentFragment_new() {
+	return new QTextDocumentFragment();
 }
 
-void QTextDocumentFragment_new2(QTextDocument* document, QTextDocumentFragment** outptr_QTextDocumentFragment) {
-	QTextDocumentFragment* ret = new QTextDocumentFragment(document);
-	*outptr_QTextDocumentFragment = ret;
+QTextDocumentFragment* QTextDocumentFragment_new2(QTextDocument* document) {
+	return new QTextDocumentFragment(document);
 }
 
-void QTextDocumentFragment_new3(QTextCursor* rangeVal, QTextDocumentFragment** outptr_QTextDocumentFragment) {
-	QTextDocumentFragment* ret = new QTextDocumentFragment(*rangeVal);
-	*outptr_QTextDocumentFragment = ret;
+QTextDocumentFragment* QTextDocumentFragment_new3(QTextCursor* rangeVal) {
+	return new QTextDocumentFragment(*rangeVal);
 }
 
-void QTextDocumentFragment_new4(QTextDocumentFragment* rhs, QTextDocumentFragment** outptr_QTextDocumentFragment) {
-	QTextDocumentFragment* ret = new QTextDocumentFragment(*rhs);
-	*outptr_QTextDocumentFragment = ret;
+QTextDocumentFragment* QTextDocumentFragment_new4(QTextDocumentFragment* rhs) {
+	return new QTextDocumentFragment(*rhs);
 }
 
 void QTextDocumentFragment_OperatorAssign(QTextDocumentFragment* self, QTextDocumentFragment* rhs) {

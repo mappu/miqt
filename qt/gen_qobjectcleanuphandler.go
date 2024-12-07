@@ -35,31 +35,26 @@ func (this *QObjectCleanupHandler) UnsafePointer() unsafe.Pointer {
 }
 
 // newQObjectCleanupHandler constructs the type using only CGO pointers.
-func newQObjectCleanupHandler(h *C.QObjectCleanupHandler, h_QObject *C.QObject) *QObjectCleanupHandler {
+func newQObjectCleanupHandler(h *C.QObjectCleanupHandler) *QObjectCleanupHandler {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QObjectCleanupHandler_virtbase(h, &outptr_QObject)
+
 	return &QObjectCleanupHandler{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQObjectCleanupHandler constructs the type using only unsafe pointers.
-func UnsafeNewQObjectCleanupHandler(h unsafe.Pointer, h_QObject unsafe.Pointer) *QObjectCleanupHandler {
-	if h == nil {
-		return nil
-	}
-
-	return &QObjectCleanupHandler{h: (*C.QObjectCleanupHandler)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQObjectCleanupHandler(h unsafe.Pointer) *QObjectCleanupHandler {
+	return newQObjectCleanupHandler((*C.QObjectCleanupHandler)(h))
 }
 
 // NewQObjectCleanupHandler constructs a new QObjectCleanupHandler object.
 func NewQObjectCleanupHandler() *QObjectCleanupHandler {
-	var outptr_QObjectCleanupHandler *C.QObjectCleanupHandler = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QObjectCleanupHandler_new(&outptr_QObjectCleanupHandler, &outptr_QObject)
-	ret := newQObjectCleanupHandler(outptr_QObjectCleanupHandler, outptr_QObject)
+	ret := newQObjectCleanupHandler(C.QObjectCleanupHandler_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -230,7 +225,7 @@ func miqt_exec_callback_QObjectCleanupHandler_TimerEvent(self *C.QObjectCleanupH
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QObjectCleanupHandler{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -256,7 +251,7 @@ func miqt_exec_callback_QObjectCleanupHandler_ChildEvent(self *C.QObjectCleanupH
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QObjectCleanupHandler{h: self}).callVirtualBase_ChildEvent, slotval1)
 

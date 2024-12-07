@@ -32,13 +32,14 @@ typedef struct QSize QSize;
 typedef struct QTransform QTransform;
 #endif
 
-void QBitmap_new(QBitmap** outptr_QBitmap, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice);
-void QBitmap_new2(QPixmap* param1, QBitmap** outptr_QBitmap, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice);
-void QBitmap_new3(int w, int h, QBitmap** outptr_QBitmap, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice);
-void QBitmap_new4(QSize* param1, QBitmap** outptr_QBitmap, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice);
-void QBitmap_new5(struct miqt_string fileName, QBitmap** outptr_QBitmap, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice);
-void QBitmap_new6(QBitmap* param1, QBitmap** outptr_QBitmap, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice);
-void QBitmap_new7(struct miqt_string fileName, const char* format, QBitmap** outptr_QBitmap, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice);
+QBitmap* QBitmap_new();
+QBitmap* QBitmap_new2(QPixmap* param1);
+QBitmap* QBitmap_new3(int w, int h);
+QBitmap* QBitmap_new4(QSize* param1);
+QBitmap* QBitmap_new5(struct miqt_string fileName);
+QBitmap* QBitmap_new6(QBitmap* param1);
+QBitmap* QBitmap_new7(struct miqt_string fileName, const char* format);
+void QBitmap_virtbase(QBitmap* src, QPixmap** outptr_QPixmap);
 void QBitmap_OperatorAssign(QBitmap* self, QPixmap* param1);
 void QBitmap_Swap(QBitmap* self, QBitmap* other);
 void QBitmap_Clear(QBitmap* self);

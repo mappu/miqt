@@ -217,16 +217,16 @@ public:
 
 };
 
-void QStylePlugin_new(QStylePlugin** outptr_QStylePlugin, QObject** outptr_QObject) {
-	MiqtVirtualQStylePlugin* ret = new MiqtVirtualQStylePlugin();
-	*outptr_QStylePlugin = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QStylePlugin* QStylePlugin_new() {
+	return new MiqtVirtualQStylePlugin();
 }
 
-void QStylePlugin_new2(QObject* parent, QStylePlugin** outptr_QStylePlugin, QObject** outptr_QObject) {
-	MiqtVirtualQStylePlugin* ret = new MiqtVirtualQStylePlugin(parent);
-	*outptr_QStylePlugin = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QStylePlugin* QStylePlugin_new2(QObject* parent) {
+	return new MiqtVirtualQStylePlugin(parent);
+}
+
+void QStylePlugin_virtbase(QStylePlugin* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QStylePlugin_MetaObject(const QStylePlugin* self) {

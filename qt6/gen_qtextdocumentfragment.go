@@ -37,54 +37,43 @@ func newQTextDocumentFragment(h *C.QTextDocumentFragment) *QTextDocumentFragment
 	if h == nil {
 		return nil
 	}
+
 	return &QTextDocumentFragment{h: h}
 }
 
 // UnsafeNewQTextDocumentFragment constructs the type using only unsafe pointers.
 func UnsafeNewQTextDocumentFragment(h unsafe.Pointer) *QTextDocumentFragment {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextDocumentFragment{h: (*C.QTextDocumentFragment)(h)}
+	return newQTextDocumentFragment((*C.QTextDocumentFragment)(h))
 }
 
 // NewQTextDocumentFragment constructs a new QTextDocumentFragment object.
 func NewQTextDocumentFragment() *QTextDocumentFragment {
-	var outptr_QTextDocumentFragment *C.QTextDocumentFragment = nil
 
-	C.QTextDocumentFragment_new(&outptr_QTextDocumentFragment)
-	ret := newQTextDocumentFragment(outptr_QTextDocumentFragment)
+	ret := newQTextDocumentFragment(C.QTextDocumentFragment_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextDocumentFragment2 constructs a new QTextDocumentFragment object.
 func NewQTextDocumentFragment2(document *QTextDocument) *QTextDocumentFragment {
-	var outptr_QTextDocumentFragment *C.QTextDocumentFragment = nil
 
-	C.QTextDocumentFragment_new2(document.cPointer(), &outptr_QTextDocumentFragment)
-	ret := newQTextDocumentFragment(outptr_QTextDocumentFragment)
+	ret := newQTextDocumentFragment(C.QTextDocumentFragment_new2(document.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextDocumentFragment3 constructs a new QTextDocumentFragment object.
 func NewQTextDocumentFragment3(rangeVal *QTextCursor) *QTextDocumentFragment {
-	var outptr_QTextDocumentFragment *C.QTextDocumentFragment = nil
 
-	C.QTextDocumentFragment_new3(rangeVal.cPointer(), &outptr_QTextDocumentFragment)
-	ret := newQTextDocumentFragment(outptr_QTextDocumentFragment)
+	ret := newQTextDocumentFragment(C.QTextDocumentFragment_new3(rangeVal.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextDocumentFragment4 constructs a new QTextDocumentFragment object.
 func NewQTextDocumentFragment4(rhs *QTextDocumentFragment) *QTextDocumentFragment {
-	var outptr_QTextDocumentFragment *C.QTextDocumentFragment = nil
 
-	C.QTextDocumentFragment_new4(rhs.cPointer(), &outptr_QTextDocumentFragment)
-	ret := newQTextDocumentFragment(outptr_QTextDocumentFragment)
+	ret := newQTextDocumentFragment(C.QTextDocumentFragment_new4(rhs.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

@@ -45,24 +45,19 @@ func newQScriptEngineAgent(h *C.QScriptEngineAgent) *QScriptEngineAgent {
 	if h == nil {
 		return nil
 	}
+
 	return &QScriptEngineAgent{h: h}
 }
 
 // UnsafeNewQScriptEngineAgent constructs the type using only unsafe pointers.
 func UnsafeNewQScriptEngineAgent(h unsafe.Pointer) *QScriptEngineAgent {
-	if h == nil {
-		return nil
-	}
-
-	return &QScriptEngineAgent{h: (*C.QScriptEngineAgent)(h)}
+	return newQScriptEngineAgent((*C.QScriptEngineAgent)(h))
 }
 
 // NewQScriptEngineAgent constructs a new QScriptEngineAgent object.
 func NewQScriptEngineAgent(engine *QScriptEngine) *QScriptEngineAgent {
-	var outptr_QScriptEngineAgent *C.QScriptEngineAgent = nil
 
-	C.QScriptEngineAgent_new(engine.cPointer(), &outptr_QScriptEngineAgent)
-	ret := newQScriptEngineAgent(outptr_QScriptEngineAgent)
+	ret := newQScriptEngineAgent(C.QScriptEngineAgent_new(engine.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -122,7 +117,7 @@ func (this *QScriptEngineAgent) Extension(extension QScriptEngineAgent__Extensio
 }
 
 func (this *QScriptEngineAgent) Engine() *QScriptEngine {
-	return newQScriptEngine(C.QScriptEngineAgent_Engine(this.h), nil)
+	return newQScriptEngine(C.QScriptEngineAgent_Engine(this.h))
 }
 
 func (this *QScriptEngineAgent) callVirtualBase_ScriptLoad(id int64, program string, fileName string, baseLineNumber int) {

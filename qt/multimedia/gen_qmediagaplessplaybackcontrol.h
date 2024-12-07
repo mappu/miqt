@@ -28,6 +28,7 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif
 
+void QMediaGaplessPlaybackControl_virtbase(QMediaGaplessPlaybackControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QMediaGaplessPlaybackControl_MetaObject(const QMediaGaplessPlaybackControl* self);
 void* QMediaGaplessPlaybackControl_Metacast(QMediaGaplessPlaybackControl* self, const char* param1);
 struct miqt_string QMediaGaplessPlaybackControl_Tr(const char* s);

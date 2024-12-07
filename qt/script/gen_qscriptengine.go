@@ -69,24 +69,19 @@ func newQScriptSyntaxCheckResult(h *C.QScriptSyntaxCheckResult) *QScriptSyntaxCh
 	if h == nil {
 		return nil
 	}
+
 	return &QScriptSyntaxCheckResult{h: h}
 }
 
 // UnsafeNewQScriptSyntaxCheckResult constructs the type using only unsafe pointers.
 func UnsafeNewQScriptSyntaxCheckResult(h unsafe.Pointer) *QScriptSyntaxCheckResult {
-	if h == nil {
-		return nil
-	}
-
-	return &QScriptSyntaxCheckResult{h: (*C.QScriptSyntaxCheckResult)(h)}
+	return newQScriptSyntaxCheckResult((*C.QScriptSyntaxCheckResult)(h))
 }
 
 // NewQScriptSyntaxCheckResult constructs a new QScriptSyntaxCheckResult object.
 func NewQScriptSyntaxCheckResult(other *QScriptSyntaxCheckResult) *QScriptSyntaxCheckResult {
-	var outptr_QScriptSyntaxCheckResult *C.QScriptSyntaxCheckResult = nil
 
-	C.QScriptSyntaxCheckResult_new(other.cPointer(), &outptr_QScriptSyntaxCheckResult)
-	ret := newQScriptSyntaxCheckResult(outptr_QScriptSyntaxCheckResult)
+	ret := newQScriptSyntaxCheckResult(C.QScriptSyntaxCheckResult_new(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -149,42 +144,34 @@ func (this *QScriptEngine) UnsafePointer() unsafe.Pointer {
 }
 
 // newQScriptEngine constructs the type using only CGO pointers.
-func newQScriptEngine(h *C.QScriptEngine, h_QObject *C.QObject) *QScriptEngine {
+func newQScriptEngine(h *C.QScriptEngine) *QScriptEngine {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QScriptEngine_virtbase(h, &outptr_QObject)
+
 	return &QScriptEngine{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQScriptEngine constructs the type using only unsafe pointers.
-func UnsafeNewQScriptEngine(h unsafe.Pointer, h_QObject unsafe.Pointer) *QScriptEngine {
-	if h == nil {
-		return nil
-	}
-
-	return &QScriptEngine{h: (*C.QScriptEngine)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQScriptEngine(h unsafe.Pointer) *QScriptEngine {
+	return newQScriptEngine((*C.QScriptEngine)(h))
 }
 
 // NewQScriptEngine constructs a new QScriptEngine object.
 func NewQScriptEngine() *QScriptEngine {
-	var outptr_QScriptEngine *C.QScriptEngine = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QScriptEngine_new(&outptr_QScriptEngine, &outptr_QObject)
-	ret := newQScriptEngine(outptr_QScriptEngine, outptr_QObject)
+	ret := newQScriptEngine(C.QScriptEngine_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptEngine2 constructs a new QScriptEngine object.
 func NewQScriptEngine2(parent *qt.QObject) *QScriptEngine {
-	var outptr_QScriptEngine *C.QScriptEngine = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QScriptEngine_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QScriptEngine, &outptr_QObject)
-	ret := newQScriptEngine(outptr_QScriptEngine, outptr_QObject)
+	ret := newQScriptEngine(C.QScriptEngine_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -726,7 +713,7 @@ func miqt_exec_callback_QScriptEngine_TimerEvent(self *C.QScriptEngine, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QScriptEngine{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -752,7 +739,7 @@ func miqt_exec_callback_QScriptEngine_ChildEvent(self *C.QScriptEngine, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QScriptEngine{h: self}).callVirtualBase_ChildEvent, slotval1)
 

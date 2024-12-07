@@ -6,14 +6,12 @@
 #include "gen_qscriptstring.h"
 #include "_cgo_export.h"
 
-void QScriptString_new(QScriptString** outptr_QScriptString) {
-	QScriptString* ret = new QScriptString();
-	*outptr_QScriptString = ret;
+QScriptString* QScriptString_new() {
+	return new QScriptString();
 }
 
-void QScriptString_new2(QScriptString* other, QScriptString** outptr_QScriptString) {
-	QScriptString* ret = new QScriptString(*other);
-	*outptr_QScriptString = ret;
+QScriptString* QScriptString_new2(QScriptString* other) {
+	return new QScriptString(*other);
 }
 
 void QScriptString_OperatorAssign(QScriptString* self, QScriptString* other) {

@@ -20,13 +20,13 @@ class QDeadlineTimer;
 typedef struct QDeadlineTimer QDeadlineTimer;
 #endif
 
-void QDeadlineTimer_new(QDeadlineTimer** outptr_QDeadlineTimer);
-void QDeadlineTimer_new2(int param1, QDeadlineTimer** outptr_QDeadlineTimer);
-void QDeadlineTimer_new3(long long msecs, QDeadlineTimer** outptr_QDeadlineTimer);
-void QDeadlineTimer_new4(QDeadlineTimer* param1, QDeadlineTimer** outptr_QDeadlineTimer);
-void QDeadlineTimer_new5(int type_, QDeadlineTimer** outptr_QDeadlineTimer);
-void QDeadlineTimer_new6(int param1, int type_, QDeadlineTimer** outptr_QDeadlineTimer);
-void QDeadlineTimer_new7(long long msecs, int typeVal, QDeadlineTimer** outptr_QDeadlineTimer);
+QDeadlineTimer* QDeadlineTimer_new();
+QDeadlineTimer* QDeadlineTimer_new2(int param1);
+QDeadlineTimer* QDeadlineTimer_new3(long long msecs);
+QDeadlineTimer* QDeadlineTimer_new4(QDeadlineTimer* param1);
+QDeadlineTimer* QDeadlineTimer_new5(int type_);
+QDeadlineTimer* QDeadlineTimer_new6(int param1, int type_);
+QDeadlineTimer* QDeadlineTimer_new7(long long msecs, int typeVal);
 void QDeadlineTimer_Swap(QDeadlineTimer* self, QDeadlineTimer* other);
 bool QDeadlineTimer_IsForever(const QDeadlineTimer* self);
 bool QDeadlineTimer_HasExpired(const QDeadlineTimer* self);

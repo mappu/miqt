@@ -5,9 +5,8 @@
 #include "gen_qmutex.h"
 #include "_cgo_export.h"
 
-void QBasicMutex_new(QBasicMutex** outptr_QBasicMutex) {
-	QBasicMutex* ret = new QBasicMutex();
-	*outptr_QBasicMutex = ret;
+QBasicMutex* QBasicMutex_new() {
+	return new QBasicMutex();
 }
 
 void QBasicMutex_Lock(QBasicMutex* self) {
@@ -34,10 +33,12 @@ void QBasicMutex_Delete(QBasicMutex* self, bool isSubclass) {
 	}
 }
 
-void QMutex_new(QMutex** outptr_QMutex, QBasicMutex** outptr_QBasicMutex) {
-	QMutex* ret = new QMutex();
-	*outptr_QMutex = ret;
-	*outptr_QBasicMutex = static_cast<QBasicMutex*>(ret);
+QMutex* QMutex_new() {
+	return new QMutex();
+}
+
+void QMutex_virtbase(QMutex* src, QBasicMutex** outptr_QBasicMutex) {
+	*outptr_QBasicMutex = static_cast<QBasicMutex*>(src);
 }
 
 bool QMutex_TryLock(QMutex* self) {
@@ -56,9 +57,8 @@ void QMutex_Delete(QMutex* self, bool isSubclass) {
 	}
 }
 
-void QRecursiveMutex_new(QRecursiveMutex** outptr_QRecursiveMutex) {
-	QRecursiveMutex* ret = new QRecursiveMutex();
-	*outptr_QRecursiveMutex = ret;
+QRecursiveMutex* QRecursiveMutex_new() {
+	return new QRecursiveMutex();
 }
 
 void QRecursiveMutex_Lock(QRecursiveMutex* self) {

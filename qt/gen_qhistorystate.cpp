@@ -95,32 +95,24 @@ public:
 
 };
 
-void QHistoryState_new(QHistoryState** outptr_QHistoryState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject) {
-	MiqtVirtualQHistoryState* ret = new MiqtVirtualQHistoryState();
-	*outptr_QHistoryState = ret;
-	*outptr_QAbstractState = static_cast<QAbstractState*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QHistoryState* QHistoryState_new() {
+	return new MiqtVirtualQHistoryState();
 }
 
-void QHistoryState_new2(int typeVal, QHistoryState** outptr_QHistoryState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject) {
-	MiqtVirtualQHistoryState* ret = new MiqtVirtualQHistoryState(static_cast<QHistoryState::HistoryType>(typeVal));
-	*outptr_QHistoryState = ret;
-	*outptr_QAbstractState = static_cast<QAbstractState*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QHistoryState* QHistoryState_new2(int typeVal) {
+	return new MiqtVirtualQHistoryState(static_cast<QHistoryState::HistoryType>(typeVal));
 }
 
-void QHistoryState_new3(QState* parent, QHistoryState** outptr_QHistoryState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject) {
-	MiqtVirtualQHistoryState* ret = new MiqtVirtualQHistoryState(parent);
-	*outptr_QHistoryState = ret;
-	*outptr_QAbstractState = static_cast<QAbstractState*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QHistoryState* QHistoryState_new3(QState* parent) {
+	return new MiqtVirtualQHistoryState(parent);
 }
 
-void QHistoryState_new4(int typeVal, QState* parent, QHistoryState** outptr_QHistoryState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject) {
-	MiqtVirtualQHistoryState* ret = new MiqtVirtualQHistoryState(static_cast<QHistoryState::HistoryType>(typeVal), parent);
-	*outptr_QHistoryState = ret;
-	*outptr_QAbstractState = static_cast<QAbstractState*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QHistoryState* QHistoryState_new4(int typeVal, QState* parent) {
+	return new MiqtVirtualQHistoryState(static_cast<QHistoryState::HistoryType>(typeVal), parent);
+}
+
+void QHistoryState_virtbase(QHistoryState* src, QAbstractState** outptr_QAbstractState) {
+	*outptr_QAbstractState = static_cast<QAbstractState*>(src);
 }
 
 QMetaObject* QHistoryState_MetaObject(const QHistoryState* self) {

@@ -60,42 +60,34 @@ func (this *QGraphicsEffect) UnsafePointer() unsafe.Pointer {
 }
 
 // newQGraphicsEffect constructs the type using only CGO pointers.
-func newQGraphicsEffect(h *C.QGraphicsEffect, h_QObject *C.QObject) *QGraphicsEffect {
+func newQGraphicsEffect(h *C.QGraphicsEffect) *QGraphicsEffect {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QGraphicsEffect_virtbase(h, &outptr_QObject)
+
 	return &QGraphicsEffect{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQGraphicsEffect constructs the type using only unsafe pointers.
-func UnsafeNewQGraphicsEffect(h unsafe.Pointer, h_QObject unsafe.Pointer) *QGraphicsEffect {
-	if h == nil {
-		return nil
-	}
-
-	return &QGraphicsEffect{h: (*C.QGraphicsEffect)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQGraphicsEffect(h unsafe.Pointer) *QGraphicsEffect {
+	return newQGraphicsEffect((*C.QGraphicsEffect)(h))
 }
 
 // NewQGraphicsEffect constructs a new QGraphicsEffect object.
 func NewQGraphicsEffect() *QGraphicsEffect {
-	var outptr_QGraphicsEffect *C.QGraphicsEffect = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QGraphicsEffect_new(&outptr_QGraphicsEffect, &outptr_QObject)
-	ret := newQGraphicsEffect(outptr_QGraphicsEffect, outptr_QObject)
+	ret := newQGraphicsEffect(C.QGraphicsEffect_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsEffect2 constructs a new QGraphicsEffect object.
 func NewQGraphicsEffect2(parent *QObject) *QGraphicsEffect {
-	var outptr_QGraphicsEffect *C.QGraphicsEffect = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QGraphicsEffect_new2(parent.cPointer(), &outptr_QGraphicsEffect, &outptr_QObject)
-	ret := newQGraphicsEffect(outptr_QGraphicsEffect, outptr_QObject)
+	ret := newQGraphicsEffect(C.QGraphicsEffect_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -339,7 +331,7 @@ func miqt_exec_callback_QGraphicsEffect_TimerEvent(self *C.QGraphicsEffect, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QGraphicsEffect{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -365,7 +357,7 @@ func miqt_exec_callback_QGraphicsEffect_ChildEvent(self *C.QGraphicsEffect, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QGraphicsEffect{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -484,44 +476,34 @@ func (this *QGraphicsColorizeEffect) UnsafePointer() unsafe.Pointer {
 }
 
 // newQGraphicsColorizeEffect constructs the type using only CGO pointers.
-func newQGraphicsColorizeEffect(h *C.QGraphicsColorizeEffect, h_QGraphicsEffect *C.QGraphicsEffect, h_QObject *C.QObject) *QGraphicsColorizeEffect {
+func newQGraphicsColorizeEffect(h *C.QGraphicsColorizeEffect) *QGraphicsColorizeEffect {
 	if h == nil {
 		return nil
 	}
+	var outptr_QGraphicsEffect *C.QGraphicsEffect = nil
+	C.QGraphicsColorizeEffect_virtbase(h, &outptr_QGraphicsEffect)
+
 	return &QGraphicsColorizeEffect{h: h,
-		QGraphicsEffect: newQGraphicsEffect(h_QGraphicsEffect, h_QObject)}
+		QGraphicsEffect: newQGraphicsEffect(outptr_QGraphicsEffect)}
 }
 
 // UnsafeNewQGraphicsColorizeEffect constructs the type using only unsafe pointers.
-func UnsafeNewQGraphicsColorizeEffect(h unsafe.Pointer, h_QGraphicsEffect unsafe.Pointer, h_QObject unsafe.Pointer) *QGraphicsColorizeEffect {
-	if h == nil {
-		return nil
-	}
-
-	return &QGraphicsColorizeEffect{h: (*C.QGraphicsColorizeEffect)(h),
-		QGraphicsEffect: UnsafeNewQGraphicsEffect(h_QGraphicsEffect, h_QObject)}
+func UnsafeNewQGraphicsColorizeEffect(h unsafe.Pointer) *QGraphicsColorizeEffect {
+	return newQGraphicsColorizeEffect((*C.QGraphicsColorizeEffect)(h))
 }
 
 // NewQGraphicsColorizeEffect constructs a new QGraphicsColorizeEffect object.
 func NewQGraphicsColorizeEffect() *QGraphicsColorizeEffect {
-	var outptr_QGraphicsColorizeEffect *C.QGraphicsColorizeEffect = nil
-	var outptr_QGraphicsEffect *C.QGraphicsEffect = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QGraphicsColorizeEffect_new(&outptr_QGraphicsColorizeEffect, &outptr_QGraphicsEffect, &outptr_QObject)
-	ret := newQGraphicsColorizeEffect(outptr_QGraphicsColorizeEffect, outptr_QGraphicsEffect, outptr_QObject)
+	ret := newQGraphicsColorizeEffect(C.QGraphicsColorizeEffect_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsColorizeEffect2 constructs a new QGraphicsColorizeEffect object.
 func NewQGraphicsColorizeEffect2(parent *QObject) *QGraphicsColorizeEffect {
-	var outptr_QGraphicsColorizeEffect *C.QGraphicsColorizeEffect = nil
-	var outptr_QGraphicsEffect *C.QGraphicsEffect = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QGraphicsColorizeEffect_new2(parent.cPointer(), &outptr_QGraphicsColorizeEffect, &outptr_QGraphicsEffect, &outptr_QObject)
-	ret := newQGraphicsColorizeEffect(outptr_QGraphicsColorizeEffect, outptr_QGraphicsEffect, outptr_QObject)
+	ret := newQGraphicsColorizeEffect(C.QGraphicsColorizeEffect_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -742,44 +724,34 @@ func (this *QGraphicsBlurEffect) UnsafePointer() unsafe.Pointer {
 }
 
 // newQGraphicsBlurEffect constructs the type using only CGO pointers.
-func newQGraphicsBlurEffect(h *C.QGraphicsBlurEffect, h_QGraphicsEffect *C.QGraphicsEffect, h_QObject *C.QObject) *QGraphicsBlurEffect {
+func newQGraphicsBlurEffect(h *C.QGraphicsBlurEffect) *QGraphicsBlurEffect {
 	if h == nil {
 		return nil
 	}
+	var outptr_QGraphicsEffect *C.QGraphicsEffect = nil
+	C.QGraphicsBlurEffect_virtbase(h, &outptr_QGraphicsEffect)
+
 	return &QGraphicsBlurEffect{h: h,
-		QGraphicsEffect: newQGraphicsEffect(h_QGraphicsEffect, h_QObject)}
+		QGraphicsEffect: newQGraphicsEffect(outptr_QGraphicsEffect)}
 }
 
 // UnsafeNewQGraphicsBlurEffect constructs the type using only unsafe pointers.
-func UnsafeNewQGraphicsBlurEffect(h unsafe.Pointer, h_QGraphicsEffect unsafe.Pointer, h_QObject unsafe.Pointer) *QGraphicsBlurEffect {
-	if h == nil {
-		return nil
-	}
-
-	return &QGraphicsBlurEffect{h: (*C.QGraphicsBlurEffect)(h),
-		QGraphicsEffect: UnsafeNewQGraphicsEffect(h_QGraphicsEffect, h_QObject)}
+func UnsafeNewQGraphicsBlurEffect(h unsafe.Pointer) *QGraphicsBlurEffect {
+	return newQGraphicsBlurEffect((*C.QGraphicsBlurEffect)(h))
 }
 
 // NewQGraphicsBlurEffect constructs a new QGraphicsBlurEffect object.
 func NewQGraphicsBlurEffect() *QGraphicsBlurEffect {
-	var outptr_QGraphicsBlurEffect *C.QGraphicsBlurEffect = nil
-	var outptr_QGraphicsEffect *C.QGraphicsEffect = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QGraphicsBlurEffect_new(&outptr_QGraphicsBlurEffect, &outptr_QGraphicsEffect, &outptr_QObject)
-	ret := newQGraphicsBlurEffect(outptr_QGraphicsBlurEffect, outptr_QGraphicsEffect, outptr_QObject)
+	ret := newQGraphicsBlurEffect(C.QGraphicsBlurEffect_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsBlurEffect2 constructs a new QGraphicsBlurEffect object.
 func NewQGraphicsBlurEffect2(parent *QObject) *QGraphicsBlurEffect {
-	var outptr_QGraphicsBlurEffect *C.QGraphicsBlurEffect = nil
-	var outptr_QGraphicsEffect *C.QGraphicsEffect = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QGraphicsBlurEffect_new2(parent.cPointer(), &outptr_QGraphicsBlurEffect, &outptr_QGraphicsEffect, &outptr_QObject)
-	ret := newQGraphicsBlurEffect(outptr_QGraphicsBlurEffect, outptr_QGraphicsEffect, outptr_QObject)
+	ret := newQGraphicsBlurEffect(C.QGraphicsBlurEffect_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -1004,44 +976,34 @@ func (this *QGraphicsDropShadowEffect) UnsafePointer() unsafe.Pointer {
 }
 
 // newQGraphicsDropShadowEffect constructs the type using only CGO pointers.
-func newQGraphicsDropShadowEffect(h *C.QGraphicsDropShadowEffect, h_QGraphicsEffect *C.QGraphicsEffect, h_QObject *C.QObject) *QGraphicsDropShadowEffect {
+func newQGraphicsDropShadowEffect(h *C.QGraphicsDropShadowEffect) *QGraphicsDropShadowEffect {
 	if h == nil {
 		return nil
 	}
+	var outptr_QGraphicsEffect *C.QGraphicsEffect = nil
+	C.QGraphicsDropShadowEffect_virtbase(h, &outptr_QGraphicsEffect)
+
 	return &QGraphicsDropShadowEffect{h: h,
-		QGraphicsEffect: newQGraphicsEffect(h_QGraphicsEffect, h_QObject)}
+		QGraphicsEffect: newQGraphicsEffect(outptr_QGraphicsEffect)}
 }
 
 // UnsafeNewQGraphicsDropShadowEffect constructs the type using only unsafe pointers.
-func UnsafeNewQGraphicsDropShadowEffect(h unsafe.Pointer, h_QGraphicsEffect unsafe.Pointer, h_QObject unsafe.Pointer) *QGraphicsDropShadowEffect {
-	if h == nil {
-		return nil
-	}
-
-	return &QGraphicsDropShadowEffect{h: (*C.QGraphicsDropShadowEffect)(h),
-		QGraphicsEffect: UnsafeNewQGraphicsEffect(h_QGraphicsEffect, h_QObject)}
+func UnsafeNewQGraphicsDropShadowEffect(h unsafe.Pointer) *QGraphicsDropShadowEffect {
+	return newQGraphicsDropShadowEffect((*C.QGraphicsDropShadowEffect)(h))
 }
 
 // NewQGraphicsDropShadowEffect constructs a new QGraphicsDropShadowEffect object.
 func NewQGraphicsDropShadowEffect() *QGraphicsDropShadowEffect {
-	var outptr_QGraphicsDropShadowEffect *C.QGraphicsDropShadowEffect = nil
-	var outptr_QGraphicsEffect *C.QGraphicsEffect = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QGraphicsDropShadowEffect_new(&outptr_QGraphicsDropShadowEffect, &outptr_QGraphicsEffect, &outptr_QObject)
-	ret := newQGraphicsDropShadowEffect(outptr_QGraphicsDropShadowEffect, outptr_QGraphicsEffect, outptr_QObject)
+	ret := newQGraphicsDropShadowEffect(C.QGraphicsDropShadowEffect_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsDropShadowEffect2 constructs a new QGraphicsDropShadowEffect object.
 func NewQGraphicsDropShadowEffect2(parent *QObject) *QGraphicsDropShadowEffect {
-	var outptr_QGraphicsDropShadowEffect *C.QGraphicsDropShadowEffect = nil
-	var outptr_QGraphicsEffect *C.QGraphicsEffect = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QGraphicsDropShadowEffect_new2(parent.cPointer(), &outptr_QGraphicsDropShadowEffect, &outptr_QGraphicsEffect, &outptr_QObject)
-	ret := newQGraphicsDropShadowEffect(outptr_QGraphicsDropShadowEffect, outptr_QGraphicsEffect, outptr_QObject)
+	ret := newQGraphicsDropShadowEffect(C.QGraphicsDropShadowEffect_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -1322,44 +1284,34 @@ func (this *QGraphicsOpacityEffect) UnsafePointer() unsafe.Pointer {
 }
 
 // newQGraphicsOpacityEffect constructs the type using only CGO pointers.
-func newQGraphicsOpacityEffect(h *C.QGraphicsOpacityEffect, h_QGraphicsEffect *C.QGraphicsEffect, h_QObject *C.QObject) *QGraphicsOpacityEffect {
+func newQGraphicsOpacityEffect(h *C.QGraphicsOpacityEffect) *QGraphicsOpacityEffect {
 	if h == nil {
 		return nil
 	}
+	var outptr_QGraphicsEffect *C.QGraphicsEffect = nil
+	C.QGraphicsOpacityEffect_virtbase(h, &outptr_QGraphicsEffect)
+
 	return &QGraphicsOpacityEffect{h: h,
-		QGraphicsEffect: newQGraphicsEffect(h_QGraphicsEffect, h_QObject)}
+		QGraphicsEffect: newQGraphicsEffect(outptr_QGraphicsEffect)}
 }
 
 // UnsafeNewQGraphicsOpacityEffect constructs the type using only unsafe pointers.
-func UnsafeNewQGraphicsOpacityEffect(h unsafe.Pointer, h_QGraphicsEffect unsafe.Pointer, h_QObject unsafe.Pointer) *QGraphicsOpacityEffect {
-	if h == nil {
-		return nil
-	}
-
-	return &QGraphicsOpacityEffect{h: (*C.QGraphicsOpacityEffect)(h),
-		QGraphicsEffect: UnsafeNewQGraphicsEffect(h_QGraphicsEffect, h_QObject)}
+func UnsafeNewQGraphicsOpacityEffect(h unsafe.Pointer) *QGraphicsOpacityEffect {
+	return newQGraphicsOpacityEffect((*C.QGraphicsOpacityEffect)(h))
 }
 
 // NewQGraphicsOpacityEffect constructs a new QGraphicsOpacityEffect object.
 func NewQGraphicsOpacityEffect() *QGraphicsOpacityEffect {
-	var outptr_QGraphicsOpacityEffect *C.QGraphicsOpacityEffect = nil
-	var outptr_QGraphicsEffect *C.QGraphicsEffect = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QGraphicsOpacityEffect_new(&outptr_QGraphicsOpacityEffect, &outptr_QGraphicsEffect, &outptr_QObject)
-	ret := newQGraphicsOpacityEffect(outptr_QGraphicsOpacityEffect, outptr_QGraphicsEffect, outptr_QObject)
+	ret := newQGraphicsOpacityEffect(C.QGraphicsOpacityEffect_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsOpacityEffect2 constructs a new QGraphicsOpacityEffect object.
 func NewQGraphicsOpacityEffect2(parent *QObject) *QGraphicsOpacityEffect {
-	var outptr_QGraphicsOpacityEffect *C.QGraphicsOpacityEffect = nil
-	var outptr_QGraphicsEffect *C.QGraphicsEffect = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QGraphicsOpacityEffect_new2(parent.cPointer(), &outptr_QGraphicsOpacityEffect, &outptr_QGraphicsEffect, &outptr_QObject)
-	ret := newQGraphicsOpacityEffect(outptr_QGraphicsOpacityEffect, outptr_QGraphicsEffect, outptr_QObject)
+	ret := newQGraphicsOpacityEffect(C.QGraphicsOpacityEffect_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

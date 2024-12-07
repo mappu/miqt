@@ -82,34 +82,27 @@ func newQNetworkConfiguration(h *C.QNetworkConfiguration) *QNetworkConfiguration
 	if h == nil {
 		return nil
 	}
+
 	return &QNetworkConfiguration{h: h}
 }
 
 // UnsafeNewQNetworkConfiguration constructs the type using only unsafe pointers.
 func UnsafeNewQNetworkConfiguration(h unsafe.Pointer) *QNetworkConfiguration {
-	if h == nil {
-		return nil
-	}
-
-	return &QNetworkConfiguration{h: (*C.QNetworkConfiguration)(h)}
+	return newQNetworkConfiguration((*C.QNetworkConfiguration)(h))
 }
 
 // NewQNetworkConfiguration constructs a new QNetworkConfiguration object.
 func NewQNetworkConfiguration() *QNetworkConfiguration {
-	var outptr_QNetworkConfiguration *C.QNetworkConfiguration = nil
 
-	C.QNetworkConfiguration_new(&outptr_QNetworkConfiguration)
-	ret := newQNetworkConfiguration(outptr_QNetworkConfiguration)
+	ret := newQNetworkConfiguration(C.QNetworkConfiguration_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQNetworkConfiguration2 constructs a new QNetworkConfiguration object.
 func NewQNetworkConfiguration2(other *QNetworkConfiguration) *QNetworkConfiguration {
-	var outptr_QNetworkConfiguration *C.QNetworkConfiguration = nil
 
-	C.QNetworkConfiguration_new2(other.cPointer(), &outptr_QNetworkConfiguration)
-	ret := newQNetworkConfiguration(outptr_QNetworkConfiguration)
+	ret := newQNetworkConfiguration(C.QNetworkConfiguration_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

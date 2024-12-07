@@ -48,42 +48,34 @@ func (this *QThread) UnsafePointer() unsafe.Pointer {
 }
 
 // newQThread constructs the type using only CGO pointers.
-func newQThread(h *C.QThread, h_QObject *C.QObject) *QThread {
+func newQThread(h *C.QThread) *QThread {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QThread_virtbase(h, &outptr_QObject)
+
 	return &QThread{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQThread constructs the type using only unsafe pointers.
-func UnsafeNewQThread(h unsafe.Pointer, h_QObject unsafe.Pointer) *QThread {
-	if h == nil {
-		return nil
-	}
-
-	return &QThread{h: (*C.QThread)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQThread(h unsafe.Pointer) *QThread {
+	return newQThread((*C.QThread)(h))
 }
 
 // NewQThread constructs a new QThread object.
 func NewQThread() *QThread {
-	var outptr_QThread *C.QThread = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QThread_new(&outptr_QThread, &outptr_QObject)
-	ret := newQThread(outptr_QThread, outptr_QObject)
+	ret := newQThread(C.QThread_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQThread2 constructs a new QThread object.
 func NewQThread2(parent *QObject) *QThread {
-	var outptr_QThread *C.QThread = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QThread_new2(parent.cPointer(), &outptr_QThread, &outptr_QObject)
-	ret := newQThread(outptr_QThread, outptr_QObject)
+	ret := newQThread(C.QThread_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -121,7 +113,7 @@ func QThread_CurrentThreadId() unsafe.Pointer {
 }
 
 func QThread_CurrentThread() *QThread {
-	return newQThread(C.QThread_CurrentThread(), nil)
+	return newQThread(C.QThread_CurrentThread())
 }
 
 func QThread_IdealThreadCount() int {
@@ -169,7 +161,7 @@ func (this *QThread) Exit() {
 }
 
 func (this *QThread) EventDispatcher() *QAbstractEventDispatcher {
-	return newQAbstractEventDispatcher(C.QThread_EventDispatcher(this.h), nil)
+	return newQAbstractEventDispatcher(C.QThread_EventDispatcher(this.h))
 }
 
 func (this *QThread) SetEventDispatcher(eventDispatcher *QAbstractEventDispatcher) {
@@ -373,7 +365,7 @@ func miqt_exec_callback_QThread_TimerEvent(self *C.QThread, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QThread{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -399,7 +391,7 @@ func miqt_exec_callback_QThread_ChildEvent(self *C.QThread, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QThread{h: self}).callVirtualBase_ChildEvent, slotval1)
 

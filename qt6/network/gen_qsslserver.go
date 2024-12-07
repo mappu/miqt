@@ -36,44 +36,34 @@ func (this *QSslServer) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSslServer constructs the type using only CGO pointers.
-func newQSslServer(h *C.QSslServer, h_QTcpServer *C.QTcpServer, h_QObject *C.QObject) *QSslServer {
+func newQSslServer(h *C.QSslServer) *QSslServer {
 	if h == nil {
 		return nil
 	}
+	var outptr_QTcpServer *C.QTcpServer = nil
+	C.QSslServer_virtbase(h, &outptr_QTcpServer)
+
 	return &QSslServer{h: h,
-		QTcpServer: newQTcpServer(h_QTcpServer, h_QObject)}
+		QTcpServer: newQTcpServer(outptr_QTcpServer)}
 }
 
 // UnsafeNewQSslServer constructs the type using only unsafe pointers.
-func UnsafeNewQSslServer(h unsafe.Pointer, h_QTcpServer unsafe.Pointer, h_QObject unsafe.Pointer) *QSslServer {
-	if h == nil {
-		return nil
-	}
-
-	return &QSslServer{h: (*C.QSslServer)(h),
-		QTcpServer: UnsafeNewQTcpServer(h_QTcpServer, h_QObject)}
+func UnsafeNewQSslServer(h unsafe.Pointer) *QSslServer {
+	return newQSslServer((*C.QSslServer)(h))
 }
 
 // NewQSslServer constructs a new QSslServer object.
 func NewQSslServer() *QSslServer {
-	var outptr_QSslServer *C.QSslServer = nil
-	var outptr_QTcpServer *C.QTcpServer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSslServer_new(&outptr_QSslServer, &outptr_QTcpServer, &outptr_QObject)
-	ret := newQSslServer(outptr_QSslServer, outptr_QTcpServer, outptr_QObject)
+	ret := newQSslServer(C.QSslServer_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSslServer2 constructs a new QSslServer object.
 func NewQSslServer2(parent *qt6.QObject) *QSslServer {
-	var outptr_QSslServer *C.QSslServer = nil
-	var outptr_QTcpServer *C.QTcpServer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSslServer_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QSslServer, &outptr_QTcpServer, &outptr_QObject)
-	ret := newQSslServer(outptr_QSslServer, outptr_QTcpServer, outptr_QObject)
+	ret := newQSslServer(C.QSslServer_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -136,7 +126,7 @@ func miqt_exec_callback_QSslServer_SslErrors(cb C.intptr_t, socket *C.QSslSocket
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQSslSocket(socket, nil, nil, nil, nil, nil)
+	slotval1 := newQSslSocket(socket)
 
 	var errors_ma C.struct_miqt_array = errors
 	errors_ret := make([]QSslError, int(errors_ma.len))
@@ -166,7 +156,7 @@ func miqt_exec_callback_QSslServer_PeerVerifyError(cb C.intptr_t, socket *C.QSsl
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQSslSocket(socket, nil, nil, nil, nil, nil)
+	slotval1 := newQSslSocket(socket)
 
 	slotval2 := newQSslError(error)
 
@@ -188,7 +178,7 @@ func miqt_exec_callback_QSslServer_ErrorOccurred(cb C.intptr_t, socket *C.QSslSo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQSslSocket(socket, nil, nil, nil, nil, nil)
+	slotval1 := newQSslSocket(socket)
 
 	slotval2 := (QAbstractSocket__SocketError)(error)
 
@@ -210,7 +200,7 @@ func miqt_exec_callback_QSslServer_PreSharedKeyAuthenticationRequired(cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQSslSocket(socket, nil, nil, nil, nil, nil)
+	slotval1 := newQSslSocket(socket)
 
 	slotval2 := newQSslPreSharedKeyAuthenticator(authenticator)
 
@@ -236,7 +226,7 @@ func miqt_exec_callback_QSslServer_AlertSent(cb C.intptr_t, socket *C.QSslSocket
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQSslSocket(socket, nil, nil, nil, nil, nil)
+	slotval1 := newQSslSocket(socket)
 
 	slotval2 := (QSsl__AlertLevel)(level)
 
@@ -269,7 +259,7 @@ func miqt_exec_callback_QSslServer_AlertReceived(cb C.intptr_t, socket *C.QSslSo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQSslSocket(socket, nil, nil, nil, nil, nil)
+	slotval1 := newQSslSocket(socket)
 
 	slotval2 := (QSsl__AlertLevel)(level)
 
@@ -298,7 +288,7 @@ func miqt_exec_callback_QSslServer_HandshakeInterruptedOnError(cb C.intptr_t, so
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQSslSocket(socket, nil, nil, nil, nil, nil)
+	slotval1 := newQSslSocket(socket)
 
 	slotval2 := newQSslError(error)
 
@@ -320,7 +310,7 @@ func miqt_exec_callback_QSslServer_StartedEncryptionHandshake(cb C.intptr_t, soc
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQSslSocket(socket, nil, nil, nil, nil, nil)
+	slotval1 := newQSslSocket(socket)
 
 	gofunc(slotval1)
 }
@@ -400,7 +390,7 @@ func miqt_exec_callback_QSslServer_HasPendingConnections(self *C.QSslServer, cb 
 
 func (this *QSslServer) callVirtualBase_NextPendingConnection() *QTcpSocket {
 
-	return newQTcpSocket(C.QSslServer_virtualbase_NextPendingConnection(unsafe.Pointer(this.h)), nil, nil, nil, nil)
+	return newQTcpSocket(C.QSslServer_virtualbase_NextPendingConnection(unsafe.Pointer(this.h)))
 
 }
 func (this *QSslServer) OnNextPendingConnection(slot func(super func() *QTcpSocket) *QTcpSocket) {

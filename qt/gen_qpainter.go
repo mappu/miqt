@@ -98,34 +98,27 @@ func newQPainter(h *C.QPainter) *QPainter {
 	if h == nil {
 		return nil
 	}
+
 	return &QPainter{h: h}
 }
 
 // UnsafeNewQPainter constructs the type using only unsafe pointers.
 func UnsafeNewQPainter(h unsafe.Pointer) *QPainter {
-	if h == nil {
-		return nil
-	}
-
-	return &QPainter{h: (*C.QPainter)(h)}
+	return newQPainter((*C.QPainter)(h))
 }
 
 // NewQPainter constructs a new QPainter object.
 func NewQPainter() *QPainter {
-	var outptr_QPainter *C.QPainter = nil
 
-	C.QPainter_new(&outptr_QPainter)
-	ret := newQPainter(outptr_QPainter)
+	ret := newQPainter(C.QPainter_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPainter2 constructs a new QPainter object.
 func NewQPainter2(param1 *QPaintDevice) *QPainter {
-	var outptr_QPainter *C.QPainter = nil
 
-	C.QPainter_new2(param1.cPointer(), &outptr_QPainter)
-	ret := newQPainter(outptr_QPainter)
+	ret := newQPainter(C.QPainter_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -1282,16 +1275,13 @@ func newQPainter__PixmapFragment(h *C.QPainter__PixmapFragment) *QPainter__Pixma
 	if h == nil {
 		return nil
 	}
+
 	return &QPainter__PixmapFragment{h: h}
 }
 
 // UnsafeNewQPainter__PixmapFragment constructs the type using only unsafe pointers.
 func UnsafeNewQPainter__PixmapFragment(h unsafe.Pointer) *QPainter__PixmapFragment {
-	if h == nil {
-		return nil
-	}
-
-	return &QPainter__PixmapFragment{h: (*C.QPainter__PixmapFragment)(h)}
+	return newQPainter__PixmapFragment((*C.QPainter__PixmapFragment)(h))
 }
 
 func QPainter__PixmapFragment_Create(pos *QPointF, sourceRect *QRectF) *QPainter__PixmapFragment {

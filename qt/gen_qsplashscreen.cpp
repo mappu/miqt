@@ -1054,76 +1054,44 @@ public:
 
 };
 
-void QSplashScreen_new(QWidget* parent, QSplashScreen** outptr_QSplashScreen, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQSplashScreen* ret = new MiqtVirtualQSplashScreen(parent);
-	*outptr_QSplashScreen = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QSplashScreen* QSplashScreen_new(QWidget* parent) {
+	return new MiqtVirtualQSplashScreen(parent);
 }
 
-void QSplashScreen_new2(QSplashScreen** outptr_QSplashScreen, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQSplashScreen* ret = new MiqtVirtualQSplashScreen();
-	*outptr_QSplashScreen = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QSplashScreen* QSplashScreen_new2() {
+	return new MiqtVirtualQSplashScreen();
 }
 
-void QSplashScreen_new3(QScreen* screen, QSplashScreen** outptr_QSplashScreen, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQSplashScreen* ret = new MiqtVirtualQSplashScreen(screen);
-	*outptr_QSplashScreen = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QSplashScreen* QSplashScreen_new3(QScreen* screen) {
+	return new MiqtVirtualQSplashScreen(screen);
 }
 
-void QSplashScreen_new4(QPixmap* pixmap, QSplashScreen** outptr_QSplashScreen, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQSplashScreen* ret = new MiqtVirtualQSplashScreen(*pixmap);
-	*outptr_QSplashScreen = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QSplashScreen* QSplashScreen_new4(QPixmap* pixmap) {
+	return new MiqtVirtualQSplashScreen(*pixmap);
 }
 
-void QSplashScreen_new5(QPixmap* pixmap, int f, QSplashScreen** outptr_QSplashScreen, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQSplashScreen* ret = new MiqtVirtualQSplashScreen(*pixmap, static_cast<Qt::WindowFlags>(f));
-	*outptr_QSplashScreen = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QSplashScreen* QSplashScreen_new5(QPixmap* pixmap, int f) {
+	return new MiqtVirtualQSplashScreen(*pixmap, static_cast<Qt::WindowFlags>(f));
 }
 
-void QSplashScreen_new6(QScreen* screen, QPixmap* pixmap, QSplashScreen** outptr_QSplashScreen, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQSplashScreen* ret = new MiqtVirtualQSplashScreen(screen, *pixmap);
-	*outptr_QSplashScreen = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QSplashScreen* QSplashScreen_new6(QScreen* screen, QPixmap* pixmap) {
+	return new MiqtVirtualQSplashScreen(screen, *pixmap);
 }
 
-void QSplashScreen_new7(QScreen* screen, QPixmap* pixmap, int f, QSplashScreen** outptr_QSplashScreen, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQSplashScreen* ret = new MiqtVirtualQSplashScreen(screen, *pixmap, static_cast<Qt::WindowFlags>(f));
-	*outptr_QSplashScreen = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QSplashScreen* QSplashScreen_new7(QScreen* screen, QPixmap* pixmap, int f) {
+	return new MiqtVirtualQSplashScreen(screen, *pixmap, static_cast<Qt::WindowFlags>(f));
 }
 
-void QSplashScreen_new8(QWidget* parent, QPixmap* pixmap, QSplashScreen** outptr_QSplashScreen, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQSplashScreen* ret = new MiqtVirtualQSplashScreen(parent, *pixmap);
-	*outptr_QSplashScreen = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QSplashScreen* QSplashScreen_new8(QWidget* parent, QPixmap* pixmap) {
+	return new MiqtVirtualQSplashScreen(parent, *pixmap);
 }
 
-void QSplashScreen_new9(QWidget* parent, QPixmap* pixmap, int f, QSplashScreen** outptr_QSplashScreen, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQSplashScreen* ret = new MiqtVirtualQSplashScreen(parent, *pixmap, static_cast<Qt::WindowFlags>(f));
-	*outptr_QSplashScreen = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QSplashScreen* QSplashScreen_new9(QWidget* parent, QPixmap* pixmap, int f) {
+	return new MiqtVirtualQSplashScreen(parent, *pixmap, static_cast<Qt::WindowFlags>(f));
+}
+
+void QSplashScreen_virtbase(QSplashScreen* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QSplashScreen_MetaObject(const QSplashScreen* self) {

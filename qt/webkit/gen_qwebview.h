@@ -92,8 +92,9 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QWebView_new(QWidget* parent, QWebView** outptr_QWebView, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QWebView_new2(QWebView** outptr_QWebView, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QWebView* QWebView_new(QWidget* parent);
+QWebView* QWebView_new2();
+void QWebView_virtbase(QWebView* src, QWidget** outptr_QWidget);
 QMetaObject* QWebView_MetaObject(const QWebView* self);
 void* QWebView_Metacast(QWebView* self, const char* param1);
 struct miqt_string QWebView_Tr(const char* s);

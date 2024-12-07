@@ -35,46 +35,34 @@ func (this *QSequentialAnimationGroup) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSequentialAnimationGroup constructs the type using only CGO pointers.
-func newQSequentialAnimationGroup(h *C.QSequentialAnimationGroup, h_QAnimationGroup *C.QAnimationGroup, h_QAbstractAnimation *C.QAbstractAnimation, h_QObject *C.QObject) *QSequentialAnimationGroup {
+func newQSequentialAnimationGroup(h *C.QSequentialAnimationGroup) *QSequentialAnimationGroup {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAnimationGroup *C.QAnimationGroup = nil
+	C.QSequentialAnimationGroup_virtbase(h, &outptr_QAnimationGroup)
+
 	return &QSequentialAnimationGroup{h: h,
-		QAnimationGroup: newQAnimationGroup(h_QAnimationGroup, h_QAbstractAnimation, h_QObject)}
+		QAnimationGroup: newQAnimationGroup(outptr_QAnimationGroup)}
 }
 
 // UnsafeNewQSequentialAnimationGroup constructs the type using only unsafe pointers.
-func UnsafeNewQSequentialAnimationGroup(h unsafe.Pointer, h_QAnimationGroup unsafe.Pointer, h_QAbstractAnimation unsafe.Pointer, h_QObject unsafe.Pointer) *QSequentialAnimationGroup {
-	if h == nil {
-		return nil
-	}
-
-	return &QSequentialAnimationGroup{h: (*C.QSequentialAnimationGroup)(h),
-		QAnimationGroup: UnsafeNewQAnimationGroup(h_QAnimationGroup, h_QAbstractAnimation, h_QObject)}
+func UnsafeNewQSequentialAnimationGroup(h unsafe.Pointer) *QSequentialAnimationGroup {
+	return newQSequentialAnimationGroup((*C.QSequentialAnimationGroup)(h))
 }
 
 // NewQSequentialAnimationGroup constructs a new QSequentialAnimationGroup object.
 func NewQSequentialAnimationGroup() *QSequentialAnimationGroup {
-	var outptr_QSequentialAnimationGroup *C.QSequentialAnimationGroup = nil
-	var outptr_QAnimationGroup *C.QAnimationGroup = nil
-	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSequentialAnimationGroup_new(&outptr_QSequentialAnimationGroup, &outptr_QAnimationGroup, &outptr_QAbstractAnimation, &outptr_QObject)
-	ret := newQSequentialAnimationGroup(outptr_QSequentialAnimationGroup, outptr_QAnimationGroup, outptr_QAbstractAnimation, outptr_QObject)
+	ret := newQSequentialAnimationGroup(C.QSequentialAnimationGroup_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSequentialAnimationGroup2 constructs a new QSequentialAnimationGroup object.
 func NewQSequentialAnimationGroup2(parent *QObject) *QSequentialAnimationGroup {
-	var outptr_QSequentialAnimationGroup *C.QSequentialAnimationGroup = nil
-	var outptr_QAnimationGroup *C.QAnimationGroup = nil
-	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSequentialAnimationGroup_new2(parent.cPointer(), &outptr_QSequentialAnimationGroup, &outptr_QAnimationGroup, &outptr_QAbstractAnimation, &outptr_QObject)
-	ret := newQSequentialAnimationGroup(outptr_QSequentialAnimationGroup, outptr_QAnimationGroup, outptr_QAbstractAnimation, outptr_QObject)
+	ret := newQSequentialAnimationGroup(C.QSequentialAnimationGroup_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -108,15 +96,15 @@ func QSequentialAnimationGroup_TrUtf8(s string) string {
 }
 
 func (this *QSequentialAnimationGroup) AddPause(msecs int) *QPauseAnimation {
-	return newQPauseAnimation(C.QSequentialAnimationGroup_AddPause(this.h, (C.int)(msecs)), nil, nil)
+	return newQPauseAnimation(C.QSequentialAnimationGroup_AddPause(this.h, (C.int)(msecs)))
 }
 
 func (this *QSequentialAnimationGroup) InsertPause(index int, msecs int) *QPauseAnimation {
-	return newQPauseAnimation(C.QSequentialAnimationGroup_InsertPause(this.h, (C.int)(index), (C.int)(msecs)), nil, nil)
+	return newQPauseAnimation(C.QSequentialAnimationGroup_InsertPause(this.h, (C.int)(index), (C.int)(msecs)))
 }
 
 func (this *QSequentialAnimationGroup) CurrentAnimation() *QAbstractAnimation {
-	return newQAbstractAnimation(C.QSequentialAnimationGroup_CurrentAnimation(this.h), nil)
+	return newQAbstractAnimation(C.QSequentialAnimationGroup_CurrentAnimation(this.h))
 }
 
 func (this *QSequentialAnimationGroup) Duration() int {
@@ -138,7 +126,7 @@ func miqt_exec_callback_QSequentialAnimationGroup_CurrentAnimationChanged(cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQAbstractAnimation(current, nil)
+	slotval1 := newQAbstractAnimation(current)
 
 	gofunc(slotval1)
 }

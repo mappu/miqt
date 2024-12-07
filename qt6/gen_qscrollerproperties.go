@@ -80,34 +80,27 @@ func newQScrollerProperties(h *C.QScrollerProperties) *QScrollerProperties {
 	if h == nil {
 		return nil
 	}
+
 	return &QScrollerProperties{h: h}
 }
 
 // UnsafeNewQScrollerProperties constructs the type using only unsafe pointers.
 func UnsafeNewQScrollerProperties(h unsafe.Pointer) *QScrollerProperties {
-	if h == nil {
-		return nil
-	}
-
-	return &QScrollerProperties{h: (*C.QScrollerProperties)(h)}
+	return newQScrollerProperties((*C.QScrollerProperties)(h))
 }
 
 // NewQScrollerProperties constructs a new QScrollerProperties object.
 func NewQScrollerProperties() *QScrollerProperties {
-	var outptr_QScrollerProperties *C.QScrollerProperties = nil
 
-	C.QScrollerProperties_new(&outptr_QScrollerProperties)
-	ret := newQScrollerProperties(outptr_QScrollerProperties)
+	ret := newQScrollerProperties(C.QScrollerProperties_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScrollerProperties2 constructs a new QScrollerProperties object.
 func NewQScrollerProperties2(sp *QScrollerProperties) *QScrollerProperties {
-	var outptr_QScrollerProperties *C.QScrollerProperties = nil
 
-	C.QScrollerProperties_new2(sp.cPointer(), &outptr_QScrollerProperties)
-	ret := newQScrollerProperties(outptr_QScrollerProperties)
+	ret := newQScrollerProperties(C.QScrollerProperties_new2(sp.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

@@ -118,44 +118,24 @@ public:
 
 };
 
-void QPrintDialog_new(QWidget* parent, QPrintDialog** outptr_QPrintDialog, QAbstractPrintDialog** outptr_QAbstractPrintDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPrintDialog* ret = new MiqtVirtualQPrintDialog(parent);
-	*outptr_QPrintDialog = ret;
-	*outptr_QAbstractPrintDialog = static_cast<QAbstractPrintDialog*>(ret);
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPrintDialog* QPrintDialog_new(QWidget* parent) {
+	return new MiqtVirtualQPrintDialog(parent);
 }
 
-void QPrintDialog_new2(QPrinter* printer, QPrintDialog** outptr_QPrintDialog, QAbstractPrintDialog** outptr_QAbstractPrintDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPrintDialog* ret = new MiqtVirtualQPrintDialog(printer);
-	*outptr_QPrintDialog = ret;
-	*outptr_QAbstractPrintDialog = static_cast<QAbstractPrintDialog*>(ret);
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPrintDialog* QPrintDialog_new2(QPrinter* printer) {
+	return new MiqtVirtualQPrintDialog(printer);
 }
 
-void QPrintDialog_new3(QPrintDialog** outptr_QPrintDialog, QAbstractPrintDialog** outptr_QAbstractPrintDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPrintDialog* ret = new MiqtVirtualQPrintDialog();
-	*outptr_QPrintDialog = ret;
-	*outptr_QAbstractPrintDialog = static_cast<QAbstractPrintDialog*>(ret);
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPrintDialog* QPrintDialog_new3() {
+	return new MiqtVirtualQPrintDialog();
 }
 
-void QPrintDialog_new4(QPrinter* printer, QWidget* parent, QPrintDialog** outptr_QPrintDialog, QAbstractPrintDialog** outptr_QAbstractPrintDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPrintDialog* ret = new MiqtVirtualQPrintDialog(printer, parent);
-	*outptr_QPrintDialog = ret;
-	*outptr_QAbstractPrintDialog = static_cast<QAbstractPrintDialog*>(ret);
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPrintDialog* QPrintDialog_new4(QPrinter* printer, QWidget* parent) {
+	return new MiqtVirtualQPrintDialog(printer, parent);
+}
+
+void QPrintDialog_virtbase(QPrintDialog* src, QAbstractPrintDialog** outptr_QAbstractPrintDialog) {
+	*outptr_QAbstractPrintDialog = static_cast<QAbstractPrintDialog*>(src);
 }
 
 QMetaObject* QPrintDialog_MetaObject(const QPrintDialog* self) {

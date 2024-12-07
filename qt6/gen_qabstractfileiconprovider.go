@@ -56,24 +56,19 @@ func newQAbstractFileIconProvider(h *C.QAbstractFileIconProvider) *QAbstractFile
 	if h == nil {
 		return nil
 	}
+
 	return &QAbstractFileIconProvider{h: h}
 }
 
 // UnsafeNewQAbstractFileIconProvider constructs the type using only unsafe pointers.
 func UnsafeNewQAbstractFileIconProvider(h unsafe.Pointer) *QAbstractFileIconProvider {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractFileIconProvider{h: (*C.QAbstractFileIconProvider)(h)}
+	return newQAbstractFileIconProvider((*C.QAbstractFileIconProvider)(h))
 }
 
 // NewQAbstractFileIconProvider constructs a new QAbstractFileIconProvider object.
 func NewQAbstractFileIconProvider() *QAbstractFileIconProvider {
-	var outptr_QAbstractFileIconProvider *C.QAbstractFileIconProvider = nil
 
-	C.QAbstractFileIconProvider_new(&outptr_QAbstractFileIconProvider)
-	ret := newQAbstractFileIconProvider(outptr_QAbstractFileIconProvider)
+	ret := newQAbstractFileIconProvider(C.QAbstractFileIconProvider_new())
 	ret.isSubclass = true
 	return ret
 }

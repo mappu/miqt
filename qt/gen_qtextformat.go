@@ -273,44 +273,35 @@ func newQTextLength(h *C.QTextLength) *QTextLength {
 	if h == nil {
 		return nil
 	}
+
 	return &QTextLength{h: h}
 }
 
 // UnsafeNewQTextLength constructs the type using only unsafe pointers.
 func UnsafeNewQTextLength(h unsafe.Pointer) *QTextLength {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextLength{h: (*C.QTextLength)(h)}
+	return newQTextLength((*C.QTextLength)(h))
 }
 
 // NewQTextLength constructs a new QTextLength object.
 func NewQTextLength() *QTextLength {
-	var outptr_QTextLength *C.QTextLength = nil
 
-	C.QTextLength_new(&outptr_QTextLength)
-	ret := newQTextLength(outptr_QTextLength)
+	ret := newQTextLength(C.QTextLength_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextLength2 constructs a new QTextLength object.
 func NewQTextLength2(typeVal QTextLength__Type, value float64) *QTextLength {
-	var outptr_QTextLength *C.QTextLength = nil
 
-	C.QTextLength_new2((C.int)(typeVal), (C.double)(value), &outptr_QTextLength)
-	ret := newQTextLength(outptr_QTextLength)
+	ret := newQTextLength(C.QTextLength_new2((C.int)(typeVal), (C.double)(value)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextLength3 constructs a new QTextLength object.
 func NewQTextLength3(param1 *QTextLength) *QTextLength {
-	var outptr_QTextLength *C.QTextLength = nil
 
-	C.QTextLength_new3(param1.cPointer(), &outptr_QTextLength)
-	ret := newQTextLength(outptr_QTextLength)
+	ret := newQTextLength(C.QTextLength_new3(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -373,44 +364,35 @@ func newQTextFormat(h *C.QTextFormat) *QTextFormat {
 	if h == nil {
 		return nil
 	}
+
 	return &QTextFormat{h: h}
 }
 
 // UnsafeNewQTextFormat constructs the type using only unsafe pointers.
 func UnsafeNewQTextFormat(h unsafe.Pointer) *QTextFormat {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextFormat{h: (*C.QTextFormat)(h)}
+	return newQTextFormat((*C.QTextFormat)(h))
 }
 
 // NewQTextFormat constructs a new QTextFormat object.
 func NewQTextFormat() *QTextFormat {
-	var outptr_QTextFormat *C.QTextFormat = nil
 
-	C.QTextFormat_new(&outptr_QTextFormat)
-	ret := newQTextFormat(outptr_QTextFormat)
+	ret := newQTextFormat(C.QTextFormat_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextFormat2 constructs a new QTextFormat object.
 func NewQTextFormat2(typeVal int) *QTextFormat {
-	var outptr_QTextFormat *C.QTextFormat = nil
 
-	C.QTextFormat_new2((C.int)(typeVal), &outptr_QTextFormat)
-	ret := newQTextFormat(outptr_QTextFormat)
+	ret := newQTextFormat(C.QTextFormat_new2((C.int)(typeVal)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextFormat3 constructs a new QTextFormat object.
 func NewQTextFormat3(rhs *QTextFormat) *QTextFormat {
-	var outptr_QTextFormat *C.QTextFormat = nil
 
-	C.QTextFormat_new3(rhs.cPointer(), &outptr_QTextFormat)
-	ret := newQTextFormat(outptr_QTextFormat)
+	ret := newQTextFormat(C.QTextFormat_new3(rhs.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -588,43 +570,43 @@ func (this *QTextFormat) IsTableCellFormat() bool {
 }
 
 func (this *QTextFormat) ToBlockFormat() *QTextBlockFormat {
-	_goptr := newQTextBlockFormat(C.QTextFormat_ToBlockFormat(this.h), nil)
+	_goptr := newQTextBlockFormat(C.QTextFormat_ToBlockFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) ToCharFormat() *QTextCharFormat {
-	_goptr := newQTextCharFormat(C.QTextFormat_ToCharFormat(this.h), nil)
+	_goptr := newQTextCharFormat(C.QTextFormat_ToCharFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) ToListFormat() *QTextListFormat {
-	_goptr := newQTextListFormat(C.QTextFormat_ToListFormat(this.h), nil)
+	_goptr := newQTextListFormat(C.QTextFormat_ToListFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) ToTableFormat() *QTextTableFormat {
-	_goptr := newQTextTableFormat(C.QTextFormat_ToTableFormat(this.h), nil, nil)
+	_goptr := newQTextTableFormat(C.QTextFormat_ToTableFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) ToFrameFormat() *QTextFrameFormat {
-	_goptr := newQTextFrameFormat(C.QTextFormat_ToFrameFormat(this.h), nil)
+	_goptr := newQTextFrameFormat(C.QTextFormat_ToFrameFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) ToImageFormat() *QTextImageFormat {
-	_goptr := newQTextImageFormat(C.QTextFormat_ToImageFormat(this.h), nil, nil)
+	_goptr := newQTextImageFormat(C.QTextFormat_ToImageFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) ToTableCellFormat() *QTextTableCellFormat {
-	_goptr := newQTextTableCellFormat(C.QTextFormat_ToTableCellFormat(this.h), nil, nil)
+	_goptr := newQTextTableCellFormat(C.QTextFormat_ToTableCellFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -708,42 +690,34 @@ func (this *QTextCharFormat) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTextCharFormat constructs the type using only CGO pointers.
-func newQTextCharFormat(h *C.QTextCharFormat, h_QTextFormat *C.QTextFormat) *QTextCharFormat {
+func newQTextCharFormat(h *C.QTextCharFormat) *QTextCharFormat {
 	if h == nil {
 		return nil
 	}
+	var outptr_QTextFormat *C.QTextFormat = nil
+	C.QTextCharFormat_virtbase(h, &outptr_QTextFormat)
+
 	return &QTextCharFormat{h: h,
-		QTextFormat: newQTextFormat(h_QTextFormat)}
+		QTextFormat: newQTextFormat(outptr_QTextFormat)}
 }
 
 // UnsafeNewQTextCharFormat constructs the type using only unsafe pointers.
-func UnsafeNewQTextCharFormat(h unsafe.Pointer, h_QTextFormat unsafe.Pointer) *QTextCharFormat {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextCharFormat{h: (*C.QTextCharFormat)(h),
-		QTextFormat: UnsafeNewQTextFormat(h_QTextFormat)}
+func UnsafeNewQTextCharFormat(h unsafe.Pointer) *QTextCharFormat {
+	return newQTextCharFormat((*C.QTextCharFormat)(h))
 }
 
 // NewQTextCharFormat constructs a new QTextCharFormat object.
 func NewQTextCharFormat() *QTextCharFormat {
-	var outptr_QTextCharFormat *C.QTextCharFormat = nil
-	var outptr_QTextFormat *C.QTextFormat = nil
 
-	C.QTextCharFormat_new(&outptr_QTextCharFormat, &outptr_QTextFormat)
-	ret := newQTextCharFormat(outptr_QTextCharFormat, outptr_QTextFormat)
+	ret := newQTextCharFormat(C.QTextCharFormat_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextCharFormat2 constructs a new QTextCharFormat object.
 func NewQTextCharFormat2(param1 *QTextCharFormat) *QTextCharFormat {
-	var outptr_QTextCharFormat *C.QTextCharFormat = nil
-	var outptr_QTextFormat *C.QTextFormat = nil
 
-	C.QTextCharFormat_new2(param1.cPointer(), &outptr_QTextCharFormat, &outptr_QTextFormat)
-	ret := newQTextCharFormat(outptr_QTextCharFormat, outptr_QTextFormat)
+	ret := newQTextCharFormat(C.QTextCharFormat_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -1114,42 +1088,34 @@ func (this *QTextBlockFormat) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTextBlockFormat constructs the type using only CGO pointers.
-func newQTextBlockFormat(h *C.QTextBlockFormat, h_QTextFormat *C.QTextFormat) *QTextBlockFormat {
+func newQTextBlockFormat(h *C.QTextBlockFormat) *QTextBlockFormat {
 	if h == nil {
 		return nil
 	}
+	var outptr_QTextFormat *C.QTextFormat = nil
+	C.QTextBlockFormat_virtbase(h, &outptr_QTextFormat)
+
 	return &QTextBlockFormat{h: h,
-		QTextFormat: newQTextFormat(h_QTextFormat)}
+		QTextFormat: newQTextFormat(outptr_QTextFormat)}
 }
 
 // UnsafeNewQTextBlockFormat constructs the type using only unsafe pointers.
-func UnsafeNewQTextBlockFormat(h unsafe.Pointer, h_QTextFormat unsafe.Pointer) *QTextBlockFormat {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextBlockFormat{h: (*C.QTextBlockFormat)(h),
-		QTextFormat: UnsafeNewQTextFormat(h_QTextFormat)}
+func UnsafeNewQTextBlockFormat(h unsafe.Pointer) *QTextBlockFormat {
+	return newQTextBlockFormat((*C.QTextBlockFormat)(h))
 }
 
 // NewQTextBlockFormat constructs a new QTextBlockFormat object.
 func NewQTextBlockFormat() *QTextBlockFormat {
-	var outptr_QTextBlockFormat *C.QTextBlockFormat = nil
-	var outptr_QTextFormat *C.QTextFormat = nil
 
-	C.QTextBlockFormat_new(&outptr_QTextBlockFormat, &outptr_QTextFormat)
-	ret := newQTextBlockFormat(outptr_QTextBlockFormat, outptr_QTextFormat)
+	ret := newQTextBlockFormat(C.QTextBlockFormat_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextBlockFormat2 constructs a new QTextBlockFormat object.
 func NewQTextBlockFormat2(param1 *QTextBlockFormat) *QTextBlockFormat {
-	var outptr_QTextBlockFormat *C.QTextBlockFormat = nil
-	var outptr_QTextFormat *C.QTextFormat = nil
 
-	C.QTextBlockFormat_new2(param1.cPointer(), &outptr_QTextBlockFormat, &outptr_QTextFormat)
-	ret := newQTextBlockFormat(outptr_QTextBlockFormat, outptr_QTextFormat)
+	ret := newQTextBlockFormat(C.QTextBlockFormat_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -1319,42 +1285,34 @@ func (this *QTextListFormat) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTextListFormat constructs the type using only CGO pointers.
-func newQTextListFormat(h *C.QTextListFormat, h_QTextFormat *C.QTextFormat) *QTextListFormat {
+func newQTextListFormat(h *C.QTextListFormat) *QTextListFormat {
 	if h == nil {
 		return nil
 	}
+	var outptr_QTextFormat *C.QTextFormat = nil
+	C.QTextListFormat_virtbase(h, &outptr_QTextFormat)
+
 	return &QTextListFormat{h: h,
-		QTextFormat: newQTextFormat(h_QTextFormat)}
+		QTextFormat: newQTextFormat(outptr_QTextFormat)}
 }
 
 // UnsafeNewQTextListFormat constructs the type using only unsafe pointers.
-func UnsafeNewQTextListFormat(h unsafe.Pointer, h_QTextFormat unsafe.Pointer) *QTextListFormat {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextListFormat{h: (*C.QTextListFormat)(h),
-		QTextFormat: UnsafeNewQTextFormat(h_QTextFormat)}
+func UnsafeNewQTextListFormat(h unsafe.Pointer) *QTextListFormat {
+	return newQTextListFormat((*C.QTextListFormat)(h))
 }
 
 // NewQTextListFormat constructs a new QTextListFormat object.
 func NewQTextListFormat() *QTextListFormat {
-	var outptr_QTextListFormat *C.QTextListFormat = nil
-	var outptr_QTextFormat *C.QTextFormat = nil
 
-	C.QTextListFormat_new(&outptr_QTextListFormat, &outptr_QTextFormat)
-	ret := newQTextListFormat(outptr_QTextListFormat, outptr_QTextFormat)
+	ret := newQTextListFormat(C.QTextListFormat_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextListFormat2 constructs a new QTextListFormat object.
 func NewQTextListFormat2(param1 *QTextListFormat) *QTextListFormat {
-	var outptr_QTextListFormat *C.QTextListFormat = nil
-	var outptr_QTextFormat *C.QTextFormat = nil
 
-	C.QTextListFormat_new2(param1.cPointer(), &outptr_QTextListFormat, &outptr_QTextFormat)
-	ret := newQTextListFormat(outptr_QTextListFormat, outptr_QTextFormat)
+	ret := newQTextListFormat(C.QTextListFormat_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -1444,32 +1402,26 @@ func (this *QTextImageFormat) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTextImageFormat constructs the type using only CGO pointers.
-func newQTextImageFormat(h *C.QTextImageFormat, h_QTextCharFormat *C.QTextCharFormat, h_QTextFormat *C.QTextFormat) *QTextImageFormat {
+func newQTextImageFormat(h *C.QTextImageFormat) *QTextImageFormat {
 	if h == nil {
 		return nil
 	}
+	var outptr_QTextCharFormat *C.QTextCharFormat = nil
+	C.QTextImageFormat_virtbase(h, &outptr_QTextCharFormat)
+
 	return &QTextImageFormat{h: h,
-		QTextCharFormat: newQTextCharFormat(h_QTextCharFormat, h_QTextFormat)}
+		QTextCharFormat: newQTextCharFormat(outptr_QTextCharFormat)}
 }
 
 // UnsafeNewQTextImageFormat constructs the type using only unsafe pointers.
-func UnsafeNewQTextImageFormat(h unsafe.Pointer, h_QTextCharFormat unsafe.Pointer, h_QTextFormat unsafe.Pointer) *QTextImageFormat {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextImageFormat{h: (*C.QTextImageFormat)(h),
-		QTextCharFormat: UnsafeNewQTextCharFormat(h_QTextCharFormat, h_QTextFormat)}
+func UnsafeNewQTextImageFormat(h unsafe.Pointer) *QTextImageFormat {
+	return newQTextImageFormat((*C.QTextImageFormat)(h))
 }
 
 // NewQTextImageFormat constructs a new QTextImageFormat object.
 func NewQTextImageFormat() *QTextImageFormat {
-	var outptr_QTextImageFormat *C.QTextImageFormat = nil
-	var outptr_QTextCharFormat *C.QTextCharFormat = nil
-	var outptr_QTextFormat *C.QTextFormat = nil
 
-	C.QTextImageFormat_new(&outptr_QTextImageFormat, &outptr_QTextCharFormat, &outptr_QTextFormat)
-	ret := newQTextImageFormat(outptr_QTextImageFormat, outptr_QTextCharFormat, outptr_QTextFormat)
+	ret := newQTextImageFormat(C.QTextImageFormat_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -1556,42 +1508,34 @@ func (this *QTextFrameFormat) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTextFrameFormat constructs the type using only CGO pointers.
-func newQTextFrameFormat(h *C.QTextFrameFormat, h_QTextFormat *C.QTextFormat) *QTextFrameFormat {
+func newQTextFrameFormat(h *C.QTextFrameFormat) *QTextFrameFormat {
 	if h == nil {
 		return nil
 	}
+	var outptr_QTextFormat *C.QTextFormat = nil
+	C.QTextFrameFormat_virtbase(h, &outptr_QTextFormat)
+
 	return &QTextFrameFormat{h: h,
-		QTextFormat: newQTextFormat(h_QTextFormat)}
+		QTextFormat: newQTextFormat(outptr_QTextFormat)}
 }
 
 // UnsafeNewQTextFrameFormat constructs the type using only unsafe pointers.
-func UnsafeNewQTextFrameFormat(h unsafe.Pointer, h_QTextFormat unsafe.Pointer) *QTextFrameFormat {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextFrameFormat{h: (*C.QTextFrameFormat)(h),
-		QTextFormat: UnsafeNewQTextFormat(h_QTextFormat)}
+func UnsafeNewQTextFrameFormat(h unsafe.Pointer) *QTextFrameFormat {
+	return newQTextFrameFormat((*C.QTextFrameFormat)(h))
 }
 
 // NewQTextFrameFormat constructs a new QTextFrameFormat object.
 func NewQTextFrameFormat() *QTextFrameFormat {
-	var outptr_QTextFrameFormat *C.QTextFrameFormat = nil
-	var outptr_QTextFormat *C.QTextFormat = nil
 
-	C.QTextFrameFormat_new(&outptr_QTextFrameFormat, &outptr_QTextFormat)
-	ret := newQTextFrameFormat(outptr_QTextFrameFormat, outptr_QTextFormat)
+	ret := newQTextFrameFormat(C.QTextFrameFormat_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextFrameFormat2 constructs a new QTextFrameFormat object.
 func NewQTextFrameFormat2(param1 *QTextFrameFormat) *QTextFrameFormat {
-	var outptr_QTextFrameFormat *C.QTextFrameFormat = nil
-	var outptr_QTextFormat *C.QTextFormat = nil
 
-	C.QTextFrameFormat_new2(param1.cPointer(), &outptr_QTextFrameFormat, &outptr_QTextFormat)
-	ret := newQTextFrameFormat(outptr_QTextFrameFormat, outptr_QTextFormat)
+	ret := newQTextFrameFormat(C.QTextFrameFormat_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -1753,32 +1697,26 @@ func (this *QTextTableFormat) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTextTableFormat constructs the type using only CGO pointers.
-func newQTextTableFormat(h *C.QTextTableFormat, h_QTextFrameFormat *C.QTextFrameFormat, h_QTextFormat *C.QTextFormat) *QTextTableFormat {
+func newQTextTableFormat(h *C.QTextTableFormat) *QTextTableFormat {
 	if h == nil {
 		return nil
 	}
+	var outptr_QTextFrameFormat *C.QTextFrameFormat = nil
+	C.QTextTableFormat_virtbase(h, &outptr_QTextFrameFormat)
+
 	return &QTextTableFormat{h: h,
-		QTextFrameFormat: newQTextFrameFormat(h_QTextFrameFormat, h_QTextFormat)}
+		QTextFrameFormat: newQTextFrameFormat(outptr_QTextFrameFormat)}
 }
 
 // UnsafeNewQTextTableFormat constructs the type using only unsafe pointers.
-func UnsafeNewQTextTableFormat(h unsafe.Pointer, h_QTextFrameFormat unsafe.Pointer, h_QTextFormat unsafe.Pointer) *QTextTableFormat {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextTableFormat{h: (*C.QTextTableFormat)(h),
-		QTextFrameFormat: UnsafeNewQTextFrameFormat(h_QTextFrameFormat, h_QTextFormat)}
+func UnsafeNewQTextTableFormat(h unsafe.Pointer) *QTextTableFormat {
+	return newQTextTableFormat((*C.QTextTableFormat)(h))
 }
 
 // NewQTextTableFormat constructs a new QTextTableFormat object.
 func NewQTextTableFormat() *QTextTableFormat {
-	var outptr_QTextTableFormat *C.QTextTableFormat = nil
-	var outptr_QTextFrameFormat *C.QTextFrameFormat = nil
-	var outptr_QTextFormat *C.QTextFormat = nil
 
-	C.QTextTableFormat_new(&outptr_QTextTableFormat, &outptr_QTextFrameFormat, &outptr_QTextFormat)
-	ret := newQTextTableFormat(outptr_QTextTableFormat, outptr_QTextFrameFormat, outptr_QTextFormat)
+	ret := newQTextTableFormat(C.QTextTableFormat_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -1896,32 +1834,26 @@ func (this *QTextTableCellFormat) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTextTableCellFormat constructs the type using only CGO pointers.
-func newQTextTableCellFormat(h *C.QTextTableCellFormat, h_QTextCharFormat *C.QTextCharFormat, h_QTextFormat *C.QTextFormat) *QTextTableCellFormat {
+func newQTextTableCellFormat(h *C.QTextTableCellFormat) *QTextTableCellFormat {
 	if h == nil {
 		return nil
 	}
+	var outptr_QTextCharFormat *C.QTextCharFormat = nil
+	C.QTextTableCellFormat_virtbase(h, &outptr_QTextCharFormat)
+
 	return &QTextTableCellFormat{h: h,
-		QTextCharFormat: newQTextCharFormat(h_QTextCharFormat, h_QTextFormat)}
+		QTextCharFormat: newQTextCharFormat(outptr_QTextCharFormat)}
 }
 
 // UnsafeNewQTextTableCellFormat constructs the type using only unsafe pointers.
-func UnsafeNewQTextTableCellFormat(h unsafe.Pointer, h_QTextCharFormat unsafe.Pointer, h_QTextFormat unsafe.Pointer) *QTextTableCellFormat {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextTableCellFormat{h: (*C.QTextTableCellFormat)(h),
-		QTextCharFormat: UnsafeNewQTextCharFormat(h_QTextCharFormat, h_QTextFormat)}
+func UnsafeNewQTextTableCellFormat(h unsafe.Pointer) *QTextTableCellFormat {
+	return newQTextTableCellFormat((*C.QTextTableCellFormat)(h))
 }
 
 // NewQTextTableCellFormat constructs a new QTextTableCellFormat object.
 func NewQTextTableCellFormat() *QTextTableCellFormat {
-	var outptr_QTextTableCellFormat *C.QTextTableCellFormat = nil
-	var outptr_QTextCharFormat *C.QTextCharFormat = nil
-	var outptr_QTextFormat *C.QTextFormat = nil
 
-	C.QTextTableCellFormat_new(&outptr_QTextTableCellFormat, &outptr_QTextCharFormat, &outptr_QTextFormat)
-	ret := newQTextTableCellFormat(outptr_QTextTableCellFormat, outptr_QTextCharFormat, outptr_QTextFormat)
+	ret := newQTextTableCellFormat(C.QTextTableCellFormat_new())
 	ret.isSubclass = true
 	return ret
 }

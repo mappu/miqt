@@ -1113,20 +1113,16 @@ public:
 
 };
 
-void QAbstractButton_new(QWidget* parent, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQAbstractButton* ret = new MiqtVirtualQAbstractButton(parent);
-	*outptr_QAbstractButton = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QAbstractButton* QAbstractButton_new(QWidget* parent) {
+	return new MiqtVirtualQAbstractButton(parent);
 }
 
-void QAbstractButton_new2(QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQAbstractButton* ret = new MiqtVirtualQAbstractButton();
-	*outptr_QAbstractButton = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QAbstractButton* QAbstractButton_new2() {
+	return new MiqtVirtualQAbstractButton();
+}
+
+void QAbstractButton_virtbase(QAbstractButton* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QAbstractButton_MetaObject(const QAbstractButton* self) {

@@ -83,16 +83,13 @@ func newQWebSelectData(h *C.QWebSelectData) *QWebSelectData {
 	if h == nil {
 		return nil
 	}
+
 	return &QWebSelectData{h: h}
 }
 
 // UnsafeNewQWebSelectData constructs the type using only unsafe pointers.
 func UnsafeNewQWebSelectData(h unsafe.Pointer) *QWebSelectData {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebSelectData{h: (*C.QWebSelectData)(h)}
+	return newQWebSelectData((*C.QWebSelectData)(h))
 }
 
 func (this *QWebSelectData) ItemType(param1 int) QWebSelectData__ItemType {
@@ -192,22 +189,20 @@ func (this *QWebSelectMethod) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebSelectMethod constructs the type using only CGO pointers.
-func newQWebSelectMethod(h *C.QWebSelectMethod, h_QObject *C.QObject) *QWebSelectMethod {
+func newQWebSelectMethod(h *C.QWebSelectMethod) *QWebSelectMethod {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebSelectMethod_virtbase(h, &outptr_QObject)
+
 	return &QWebSelectMethod{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebSelectMethod constructs the type using only unsafe pointers.
-func UnsafeNewQWebSelectMethod(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebSelectMethod {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebSelectMethod{h: (*C.QWebSelectMethod)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebSelectMethod(h unsafe.Pointer) *QWebSelectMethod {
+	return newQWebSelectMethod((*C.QWebSelectMethod)(h))
 }
 
 func (this *QWebSelectMethod) MetaObject() *qt.QMetaObject {
@@ -377,16 +372,13 @@ func newQWebNotificationData(h *C.QWebNotificationData) *QWebNotificationData {
 	if h == nil {
 		return nil
 	}
+
 	return &QWebNotificationData{h: h}
 }
 
 // UnsafeNewQWebNotificationData constructs the type using only unsafe pointers.
 func UnsafeNewQWebNotificationData(h unsafe.Pointer) *QWebNotificationData {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebNotificationData{h: (*C.QWebNotificationData)(h)}
+	return newQWebNotificationData((*C.QWebNotificationData)(h))
 }
 
 func (this *QWebNotificationData) Title() string {
@@ -454,22 +446,20 @@ func (this *QWebNotificationPresenter) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebNotificationPresenter constructs the type using only CGO pointers.
-func newQWebNotificationPresenter(h *C.QWebNotificationPresenter, h_QObject *C.QObject) *QWebNotificationPresenter {
+func newQWebNotificationPresenter(h *C.QWebNotificationPresenter) *QWebNotificationPresenter {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebNotificationPresenter_virtbase(h, &outptr_QObject)
+
 	return &QWebNotificationPresenter{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebNotificationPresenter constructs the type using only unsafe pointers.
-func UnsafeNewQWebNotificationPresenter(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebNotificationPresenter {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebNotificationPresenter{h: (*C.QWebNotificationPresenter)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebNotificationPresenter(h unsafe.Pointer) *QWebNotificationPresenter {
+	return newQWebNotificationPresenter((*C.QWebNotificationPresenter)(h))
 }
 
 func (this *QWebNotificationPresenter) MetaObject() *qt.QMetaObject {
@@ -617,22 +607,20 @@ func (this *QWebHapticFeedbackPlayer) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebHapticFeedbackPlayer constructs the type using only CGO pointers.
-func newQWebHapticFeedbackPlayer(h *C.QWebHapticFeedbackPlayer, h_QObject *C.QObject) *QWebHapticFeedbackPlayer {
+func newQWebHapticFeedbackPlayer(h *C.QWebHapticFeedbackPlayer) *QWebHapticFeedbackPlayer {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebHapticFeedbackPlayer_virtbase(h, &outptr_QObject)
+
 	return &QWebHapticFeedbackPlayer{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebHapticFeedbackPlayer constructs the type using only unsafe pointers.
-func UnsafeNewQWebHapticFeedbackPlayer(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebHapticFeedbackPlayer {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebHapticFeedbackPlayer{h: (*C.QWebHapticFeedbackPlayer)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebHapticFeedbackPlayer(h unsafe.Pointer) *QWebHapticFeedbackPlayer {
+	return newQWebHapticFeedbackPlayer((*C.QWebHapticFeedbackPlayer)(h))
 }
 
 func (this *QWebHapticFeedbackPlayer) MetaObject() *qt.QMetaObject {
@@ -750,22 +738,20 @@ func (this *QWebTouchModifier) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebTouchModifier constructs the type using only CGO pointers.
-func newQWebTouchModifier(h *C.QWebTouchModifier, h_QObject *C.QObject) *QWebTouchModifier {
+func newQWebTouchModifier(h *C.QWebTouchModifier) *QWebTouchModifier {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebTouchModifier_virtbase(h, &outptr_QObject)
+
 	return &QWebTouchModifier{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebTouchModifier constructs the type using only unsafe pointers.
-func UnsafeNewQWebTouchModifier(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebTouchModifier {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebTouchModifier{h: (*C.QWebTouchModifier)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebTouchModifier(h unsafe.Pointer) *QWebTouchModifier {
+	return newQWebTouchModifier((*C.QWebTouchModifier)(h))
 }
 
 func (this *QWebTouchModifier) MetaObject() *qt.QMetaObject {
@@ -879,22 +865,20 @@ func (this *QWebSpellChecker) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebSpellChecker constructs the type using only CGO pointers.
-func newQWebSpellChecker(h *C.QWebSpellChecker, h_QObject *C.QObject) *QWebSpellChecker {
+func newQWebSpellChecker(h *C.QWebSpellChecker) *QWebSpellChecker {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebSpellChecker_virtbase(h, &outptr_QObject)
+
 	return &QWebSpellChecker{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebSpellChecker constructs the type using only unsafe pointers.
-func UnsafeNewQWebSpellChecker(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebSpellChecker {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebSpellChecker{h: (*C.QWebSpellChecker)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebSpellChecker(h unsafe.Pointer) *QWebSpellChecker {
+	return newQWebSpellChecker((*C.QWebSpellChecker)(h))
 }
 
 func (this *QWebSpellChecker) MetaObject() *qt.QMetaObject {
@@ -1094,16 +1078,13 @@ func newQWebKitPlatformPlugin(h *C.QWebKitPlatformPlugin) *QWebKitPlatformPlugin
 	if h == nil {
 		return nil
 	}
+
 	return &QWebKitPlatformPlugin{h: h}
 }
 
 // UnsafeNewQWebKitPlatformPlugin constructs the type using only unsafe pointers.
 func UnsafeNewQWebKitPlatformPlugin(h unsafe.Pointer) *QWebKitPlatformPlugin {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebKitPlatformPlugin{h: (*C.QWebKitPlatformPlugin)(h)}
+	return newQWebKitPlatformPlugin((*C.QWebKitPlatformPlugin)(h))
 }
 
 func (this *QWebKitPlatformPlugin) SupportsExtension(param1 QWebKitPlatformPlugin__Extension) bool {
@@ -1156,24 +1137,19 @@ func newQWebSpellChecker__GrammarDetail(h *C.QWebSpellChecker__GrammarDetail) *Q
 	if h == nil {
 		return nil
 	}
+
 	return &QWebSpellChecker__GrammarDetail{h: h}
 }
 
 // UnsafeNewQWebSpellChecker__GrammarDetail constructs the type using only unsafe pointers.
 func UnsafeNewQWebSpellChecker__GrammarDetail(h unsafe.Pointer) *QWebSpellChecker__GrammarDetail {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebSpellChecker__GrammarDetail{h: (*C.QWebSpellChecker__GrammarDetail)(h)}
+	return newQWebSpellChecker__GrammarDetail((*C.QWebSpellChecker__GrammarDetail)(h))
 }
 
 // NewQWebSpellChecker__GrammarDetail constructs a new QWebSpellChecker::GrammarDetail object.
 func NewQWebSpellChecker__GrammarDetail(param1 *QWebSpellChecker__GrammarDetail) *QWebSpellChecker__GrammarDetail {
-	var outptr_QWebSpellChecker__GrammarDetail *C.QWebSpellChecker__GrammarDetail = nil
 
-	C.QWebSpellChecker__GrammarDetail_new(param1.cPointer(), &outptr_QWebSpellChecker__GrammarDetail)
-	ret := newQWebSpellChecker__GrammarDetail(outptr_QWebSpellChecker__GrammarDetail)
+	ret := newQWebSpellChecker__GrammarDetail(C.QWebSpellChecker__GrammarDetail_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

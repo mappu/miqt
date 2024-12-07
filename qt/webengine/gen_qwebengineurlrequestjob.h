@@ -28,6 +28,7 @@ typedef struct QUrl QUrl;
 typedef struct QWebEngineUrlRequestJob QWebEngineUrlRequestJob;
 #endif
 
+void QWebEngineUrlRequestJob_virtbase(QWebEngineUrlRequestJob* src, QObject** outptr_QObject);
 QMetaObject* QWebEngineUrlRequestJob_MetaObject(const QWebEngineUrlRequestJob* self);
 void* QWebEngineUrlRequestJob_Metacast(QWebEngineUrlRequestJob* self, const char* param1);
 struct miqt_string QWebEngineUrlRequestJob_Tr(const char* s);

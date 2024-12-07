@@ -30,6 +30,7 @@ typedef struct QState QState;
 typedef struct QStateMachine QStateMachine;
 #endif
 
+void QAbstractState_virtbase(QAbstractState* src, QObject** outptr_QObject);
 QMetaObject* QAbstractState_MetaObject(const QAbstractState* self);
 void* QAbstractState_Metacast(QAbstractState* self, const char* param1);
 struct miqt_string QAbstractState_Tr(const char* s);

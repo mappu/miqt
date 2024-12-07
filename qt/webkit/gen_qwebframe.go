@@ -58,34 +58,27 @@ func newQWebHitTestResult(h *C.QWebHitTestResult) *QWebHitTestResult {
 	if h == nil {
 		return nil
 	}
+
 	return &QWebHitTestResult{h: h}
 }
 
 // UnsafeNewQWebHitTestResult constructs the type using only unsafe pointers.
 func UnsafeNewQWebHitTestResult(h unsafe.Pointer) *QWebHitTestResult {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebHitTestResult{h: (*C.QWebHitTestResult)(h)}
+	return newQWebHitTestResult((*C.QWebHitTestResult)(h))
 }
 
 // NewQWebHitTestResult constructs a new QWebHitTestResult object.
 func NewQWebHitTestResult() *QWebHitTestResult {
-	var outptr_QWebHitTestResult *C.QWebHitTestResult = nil
 
-	C.QWebHitTestResult_new(&outptr_QWebHitTestResult)
-	ret := newQWebHitTestResult(outptr_QWebHitTestResult)
+	ret := newQWebHitTestResult(C.QWebHitTestResult_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebHitTestResult2 constructs a new QWebHitTestResult object.
 func NewQWebHitTestResult2(other *QWebHitTestResult) *QWebHitTestResult {
-	var outptr_QWebHitTestResult *C.QWebHitTestResult = nil
 
-	C.QWebHitTestResult_new2(other.cPointer(), &outptr_QWebHitTestResult)
-	ret := newQWebHitTestResult(outptr_QWebHitTestResult)
+	ret := newQWebHitTestResult(C.QWebHitTestResult_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -150,7 +143,7 @@ func (this *QWebHitTestResult) LinkTitleString() string {
 }
 
 func (this *QWebHitTestResult) LinkTargetFrame() *QWebFrame {
-	return newQWebFrame(C.QWebHitTestResult_LinkTargetFrame(this.h), nil)
+	return newQWebFrame(C.QWebHitTestResult_LinkTargetFrame(this.h))
 }
 
 func (this *QWebHitTestResult) LinkElement() *QWebElement {
@@ -173,7 +166,7 @@ func (this *QWebHitTestResult) ImageUrl() *qt.QUrl {
 }
 
 func (this *QWebHitTestResult) Pixmap() *qt.QPixmap {
-	_goptr := qt.UnsafeNewQPixmap(unsafe.Pointer(C.QWebHitTestResult_Pixmap(this.h)), nil)
+	_goptr := qt.UnsafeNewQPixmap(unsafe.Pointer(C.QWebHitTestResult_Pixmap(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -199,7 +192,7 @@ func (this *QWebHitTestResult) Element() *QWebElement {
 }
 
 func (this *QWebHitTestResult) Frame() *QWebFrame {
-	return newQWebFrame(C.QWebHitTestResult_Frame(this.h), nil)
+	return newQWebFrame(C.QWebHitTestResult_Frame(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -237,22 +230,20 @@ func (this *QWebFrame) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebFrame constructs the type using only CGO pointers.
-func newQWebFrame(h *C.QWebFrame, h_QObject *C.QObject) *QWebFrame {
+func newQWebFrame(h *C.QWebFrame) *QWebFrame {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebFrame_virtbase(h, &outptr_QObject)
+
 	return &QWebFrame{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebFrame constructs the type using only unsafe pointers.
-func UnsafeNewQWebFrame(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebFrame {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebFrame{h: (*C.QWebFrame)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebFrame(h unsafe.Pointer) *QWebFrame {
+	return newQWebFrame((*C.QWebFrame)(h))
 }
 
 func (this *QWebFrame) MetaObject() *qt.QMetaObject {
@@ -284,7 +275,7 @@ func QWebFrame_TrUtf8(s string) string {
 }
 
 func (this *QWebFrame) Page() *QWebPage {
-	return newQWebPage(C.QWebFrame_Page(this.h), nil)
+	return newQWebPage(C.QWebFrame_Page(this.h))
 }
 
 func (this *QWebFrame) Load(url *qt.QUrl) {
@@ -375,7 +366,7 @@ func (this *QWebFrame) FrameName() string {
 }
 
 func (this *QWebFrame) ParentFrame() *QWebFrame {
-	return newQWebFrame(C.QWebFrame_ParentFrame(this.h), nil)
+	return newQWebFrame(C.QWebFrame_ParentFrame(this.h))
 }
 
 func (this *QWebFrame) ChildFrames() []*QWebFrame {
@@ -383,7 +374,7 @@ func (this *QWebFrame) ChildFrames() []*QWebFrame {
 	_ret := make([]*QWebFrame, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWebFrame)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQWebFrame(_outCast[i], nil)
+		_ret[i] = newQWebFrame(_outCast[i])
 	}
 	return _ret
 }

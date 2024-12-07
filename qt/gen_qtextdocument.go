@@ -80,16 +80,13 @@ func newQAbstractUndoItem(h *C.QAbstractUndoItem) *QAbstractUndoItem {
 	if h == nil {
 		return nil
 	}
+
 	return &QAbstractUndoItem{h: h}
 }
 
 // UnsafeNewQAbstractUndoItem constructs the type using only unsafe pointers.
 func UnsafeNewQAbstractUndoItem(h unsafe.Pointer) *QAbstractUndoItem {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractUndoItem{h: (*C.QAbstractUndoItem)(h)}
+	return newQAbstractUndoItem((*C.QAbstractUndoItem)(h))
 }
 
 func (this *QAbstractUndoItem) Undo() {
@@ -139,31 +136,26 @@ func (this *QTextDocument) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTextDocument constructs the type using only CGO pointers.
-func newQTextDocument(h *C.QTextDocument, h_QObject *C.QObject) *QTextDocument {
+func newQTextDocument(h *C.QTextDocument) *QTextDocument {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QTextDocument_virtbase(h, &outptr_QObject)
+
 	return &QTextDocument{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQTextDocument constructs the type using only unsafe pointers.
-func UnsafeNewQTextDocument(h unsafe.Pointer, h_QObject unsafe.Pointer) *QTextDocument {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextDocument{h: (*C.QTextDocument)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQTextDocument(h unsafe.Pointer) *QTextDocument {
+	return newQTextDocument((*C.QTextDocument)(h))
 }
 
 // NewQTextDocument constructs a new QTextDocument object.
 func NewQTextDocument() *QTextDocument {
-	var outptr_QTextDocument *C.QTextDocument = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTextDocument_new(&outptr_QTextDocument, &outptr_QObject)
-	ret := newQTextDocument(outptr_QTextDocument, outptr_QObject)
+	ret := newQTextDocument(C.QTextDocument_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -174,22 +166,16 @@ func NewQTextDocument2(text string) *QTextDocument {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QTextDocument *C.QTextDocument = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTextDocument_new2(text_ms, &outptr_QTextDocument, &outptr_QObject)
-	ret := newQTextDocument(outptr_QTextDocument, outptr_QObject)
+	ret := newQTextDocument(C.QTextDocument_new2(text_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextDocument3 constructs a new QTextDocument object.
 func NewQTextDocument3(parent *QObject) *QTextDocument {
-	var outptr_QTextDocument *C.QTextDocument = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTextDocument_new3(parent.cPointer(), &outptr_QTextDocument, &outptr_QObject)
-	ret := newQTextDocument(outptr_QTextDocument, outptr_QObject)
+	ret := newQTextDocument(C.QTextDocument_new3(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -200,11 +186,8 @@ func NewQTextDocument4(text string, parent *QObject) *QTextDocument {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QTextDocument *C.QTextDocument = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTextDocument_new4(text_ms, parent.cPointer(), &outptr_QTextDocument, &outptr_QObject)
-	ret := newQTextDocument(outptr_QTextDocument, outptr_QObject)
+	ret := newQTextDocument(C.QTextDocument_new4(text_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -238,7 +221,7 @@ func QTextDocument_TrUtf8(s string) string {
 }
 
 func (this *QTextDocument) Clone() *QTextDocument {
-	return newQTextDocument(C.QTextDocument_Clone(this.h), nil)
+	return newQTextDocument(C.QTextDocument_Clone(this.h))
 }
 
 func (this *QTextDocument) IsEmpty() bool {
@@ -282,7 +265,7 @@ func (this *QTextDocument) SetDocumentLayout(layout *QAbstractTextDocumentLayout
 }
 
 func (this *QTextDocument) DocumentLayout() *QAbstractTextDocumentLayout {
-	return newQAbstractTextDocumentLayout(C.QTextDocument_DocumentLayout(this.h), nil)
+	return newQAbstractTextDocumentLayout(C.QTextDocument_DocumentLayout(this.h))
 }
 
 func (this *QTextDocument) SetMetaInformation(info QTextDocument__MetaInformation, param2 string) {
@@ -403,19 +386,19 @@ func (this *QTextDocument) Find5(expr *QRegularExpression, cursor *QTextCursor) 
 }
 
 func (this *QTextDocument) FrameAt(pos int) *QTextFrame {
-	return newQTextFrame(C.QTextDocument_FrameAt(this.h, (C.int)(pos)), nil, nil)
+	return newQTextFrame(C.QTextDocument_FrameAt(this.h, (C.int)(pos)))
 }
 
 func (this *QTextDocument) RootFrame() *QTextFrame {
-	return newQTextFrame(C.QTextDocument_RootFrame(this.h), nil, nil)
+	return newQTextFrame(C.QTextDocument_RootFrame(this.h))
 }
 
 func (this *QTextDocument) Object(objectIndex int) *QTextObject {
-	return newQTextObject(C.QTextDocument_Object(this.h, (C.int)(objectIndex)), nil)
+	return newQTextObject(C.QTextDocument_Object(this.h, (C.int)(objectIndex)))
 }
 
 func (this *QTextDocument) ObjectForFormat(param1 *QTextFormat) *QTextObject {
-	return newQTextObject(C.QTextDocument_ObjectForFormat(this.h, param1.cPointer()), nil)
+	return newQTextObject(C.QTextDocument_ObjectForFormat(this.h, param1.cPointer()))
 }
 
 func (this *QTextDocument) FindBlock(pos int) *QTextBlock {
@@ -899,7 +882,7 @@ func QTextDocument_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QTextDocument) Clone1(parent *QObject) *QTextDocument {
-	return newQTextDocument(C.QTextDocument_Clone1(this.h, parent.cPointer()), nil)
+	return newQTextDocument(C.QTextDocument_Clone1(this.h, parent.cPointer()))
 }
 
 func (this *QTextDocument) ToHtml1(encoding []byte) string {
@@ -1030,7 +1013,7 @@ func miqt_exec_callback_QTextDocument_Clear(self *C.QTextDocument, cb C.intptr_t
 
 func (this *QTextDocument) callVirtualBase_CreateObject(f *QTextFormat) *QTextObject {
 
-	return newQTextObject(C.QTextDocument_virtualbase_CreateObject(unsafe.Pointer(this.h), f.cPointer()), nil)
+	return newQTextObject(C.QTextDocument_virtualbase_CreateObject(unsafe.Pointer(this.h), f.cPointer()))
 
 }
 func (this *QTextDocument) OnCreateObject(slot func(super func(f *QTextFormat) *QTextObject, f *QTextFormat) *QTextObject) {
@@ -1166,7 +1149,7 @@ func miqt_exec_callback_QTextDocument_TimerEvent(self *C.QTextDocument, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QTextDocument{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -1192,7 +1175,7 @@ func miqt_exec_callback_QTextDocument_ChildEvent(self *C.QTextDocument, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QTextDocument{h: self}).callVirtualBase_ChildEvent, slotval1)
 

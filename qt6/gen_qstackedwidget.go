@@ -35,48 +35,34 @@ func (this *QStackedWidget) UnsafePointer() unsafe.Pointer {
 }
 
 // newQStackedWidget constructs the type using only CGO pointers.
-func newQStackedWidget(h *C.QStackedWidget, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QStackedWidget {
+func newQStackedWidget(h *C.QStackedWidget) *QStackedWidget {
 	if h == nil {
 		return nil
 	}
+	var outptr_QFrame *C.QFrame = nil
+	C.QStackedWidget_virtbase(h, &outptr_QFrame)
+
 	return &QStackedWidget{h: h,
-		QFrame: newQFrame(h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+		QFrame: newQFrame(outptr_QFrame)}
 }
 
 // UnsafeNewQStackedWidget constructs the type using only unsafe pointers.
-func UnsafeNewQStackedWidget(h unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QStackedWidget {
-	if h == nil {
-		return nil
-	}
-
-	return &QStackedWidget{h: (*C.QStackedWidget)(h),
-		QFrame: UnsafeNewQFrame(h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQStackedWidget(h unsafe.Pointer) *QStackedWidget {
+	return newQStackedWidget((*C.QStackedWidget)(h))
 }
 
 // NewQStackedWidget constructs a new QStackedWidget object.
 func NewQStackedWidget(parent *QWidget) *QStackedWidget {
-	var outptr_QStackedWidget *C.QStackedWidget = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QStackedWidget_new(parent.cPointer(), &outptr_QStackedWidget, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQStackedWidget(outptr_QStackedWidget, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQStackedWidget(C.QStackedWidget_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQStackedWidget2 constructs a new QStackedWidget object.
 func NewQStackedWidget2() *QStackedWidget {
-	var outptr_QStackedWidget *C.QStackedWidget = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QStackedWidget_new2(&outptr_QStackedWidget, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQStackedWidget(outptr_QStackedWidget, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQStackedWidget(C.QStackedWidget_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -113,7 +99,7 @@ func (this *QStackedWidget) RemoveWidget(w *QWidget) {
 }
 
 func (this *QStackedWidget) CurrentWidget() *QWidget {
-	return newQWidget(C.QStackedWidget_CurrentWidget(this.h), nil, nil)
+	return newQWidget(C.QStackedWidget_CurrentWidget(this.h))
 }
 
 func (this *QStackedWidget) CurrentIndex() int {
@@ -125,7 +111,7 @@ func (this *QStackedWidget) IndexOf(param1 *QWidget) int {
 }
 
 func (this *QStackedWidget) Widget(param1 int) *QWidget {
-	return newQWidget(C.QStackedWidget_Widget(this.h, (C.int)(param1)), nil, nil)
+	return newQWidget(C.QStackedWidget_Widget(this.h, (C.int)(param1)))
 }
 
 func (this *QStackedWidget) Count() int {
@@ -277,7 +263,7 @@ func miqt_exec_callback_QStackedWidget_PaintEvent(self *C.QStackedWidget, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(param1, nil)
+	slotval1 := newQPaintEvent(param1)
 
 	gofunc((&QStackedWidget{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -329,7 +315,7 @@ func miqt_exec_callback_QStackedWidget_InitStyleOption(self *C.QStackedWidget, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQStyleOptionFrame(option, nil)
+	slotval1 := newQStyleOptionFrame(option)
 
 	gofunc((&QStackedWidget{h: self}).callVirtualBase_InitStyleOption, slotval1)
 

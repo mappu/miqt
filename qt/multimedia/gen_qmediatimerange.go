@@ -37,44 +37,35 @@ func newQMediaTimeInterval(h *C.QMediaTimeInterval) *QMediaTimeInterval {
 	if h == nil {
 		return nil
 	}
+
 	return &QMediaTimeInterval{h: h}
 }
 
 // UnsafeNewQMediaTimeInterval constructs the type using only unsafe pointers.
 func UnsafeNewQMediaTimeInterval(h unsafe.Pointer) *QMediaTimeInterval {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaTimeInterval{h: (*C.QMediaTimeInterval)(h)}
+	return newQMediaTimeInterval((*C.QMediaTimeInterval)(h))
 }
 
 // NewQMediaTimeInterval constructs a new QMediaTimeInterval object.
 func NewQMediaTimeInterval() *QMediaTimeInterval {
-	var outptr_QMediaTimeInterval *C.QMediaTimeInterval = nil
 
-	C.QMediaTimeInterval_new(&outptr_QMediaTimeInterval)
-	ret := newQMediaTimeInterval(outptr_QMediaTimeInterval)
+	ret := newQMediaTimeInterval(C.QMediaTimeInterval_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaTimeInterval2 constructs a new QMediaTimeInterval object.
 func NewQMediaTimeInterval2(start int64, end int64) *QMediaTimeInterval {
-	var outptr_QMediaTimeInterval *C.QMediaTimeInterval = nil
 
-	C.QMediaTimeInterval_new2((C.longlong)(start), (C.longlong)(end), &outptr_QMediaTimeInterval)
-	ret := newQMediaTimeInterval(outptr_QMediaTimeInterval)
+	ret := newQMediaTimeInterval(C.QMediaTimeInterval_new2((C.longlong)(start), (C.longlong)(end)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaTimeInterval3 constructs a new QMediaTimeInterval object.
 func NewQMediaTimeInterval3(param1 *QMediaTimeInterval) *QMediaTimeInterval {
-	var outptr_QMediaTimeInterval *C.QMediaTimeInterval = nil
 
-	C.QMediaTimeInterval_new3(param1.cPointer(), &outptr_QMediaTimeInterval)
-	ret := newQMediaTimeInterval(outptr_QMediaTimeInterval)
+	ret := newQMediaTimeInterval(C.QMediaTimeInterval_new3(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -149,54 +140,43 @@ func newQMediaTimeRange(h *C.QMediaTimeRange) *QMediaTimeRange {
 	if h == nil {
 		return nil
 	}
+
 	return &QMediaTimeRange{h: h}
 }
 
 // UnsafeNewQMediaTimeRange constructs the type using only unsafe pointers.
 func UnsafeNewQMediaTimeRange(h unsafe.Pointer) *QMediaTimeRange {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaTimeRange{h: (*C.QMediaTimeRange)(h)}
+	return newQMediaTimeRange((*C.QMediaTimeRange)(h))
 }
 
 // NewQMediaTimeRange constructs a new QMediaTimeRange object.
 func NewQMediaTimeRange() *QMediaTimeRange {
-	var outptr_QMediaTimeRange *C.QMediaTimeRange = nil
 
-	C.QMediaTimeRange_new(&outptr_QMediaTimeRange)
-	ret := newQMediaTimeRange(outptr_QMediaTimeRange)
+	ret := newQMediaTimeRange(C.QMediaTimeRange_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaTimeRange2 constructs a new QMediaTimeRange object.
 func NewQMediaTimeRange2(start int64, end int64) *QMediaTimeRange {
-	var outptr_QMediaTimeRange *C.QMediaTimeRange = nil
 
-	C.QMediaTimeRange_new2((C.longlong)(start), (C.longlong)(end), &outptr_QMediaTimeRange)
-	ret := newQMediaTimeRange(outptr_QMediaTimeRange)
+	ret := newQMediaTimeRange(C.QMediaTimeRange_new2((C.longlong)(start), (C.longlong)(end)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaTimeRange3 constructs a new QMediaTimeRange object.
 func NewQMediaTimeRange3(param1 *QMediaTimeInterval) *QMediaTimeRange {
-	var outptr_QMediaTimeRange *C.QMediaTimeRange = nil
 
-	C.QMediaTimeRange_new3(param1.cPointer(), &outptr_QMediaTimeRange)
-	ret := newQMediaTimeRange(outptr_QMediaTimeRange)
+	ret := newQMediaTimeRange(C.QMediaTimeRange_new3(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaTimeRange4 constructs a new QMediaTimeRange object.
 func NewQMediaTimeRange4(rangeVal *QMediaTimeRange) *QMediaTimeRange {
-	var outptr_QMediaTimeRange *C.QMediaTimeRange = nil
 
-	C.QMediaTimeRange_new4(rangeVal.cPointer(), &outptr_QMediaTimeRange)
-	ret := newQMediaTimeRange(outptr_QMediaTimeRange)
+	ret := newQMediaTimeRange(C.QMediaTimeRange_new4(rangeVal.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

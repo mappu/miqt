@@ -20,11 +20,11 @@ class QRegExp;
 typedef struct QRegExp QRegExp;
 #endif
 
-void QRegExp_new(QRegExp** outptr_QRegExp);
-void QRegExp_new2(struct miqt_string pattern, QRegExp** outptr_QRegExp);
-void QRegExp_new3(QRegExp* rx, QRegExp** outptr_QRegExp);
-void QRegExp_new4(struct miqt_string pattern, int cs, QRegExp** outptr_QRegExp);
-void QRegExp_new5(struct miqt_string pattern, int cs, int syntax, QRegExp** outptr_QRegExp);
+QRegExp* QRegExp_new();
+QRegExp* QRegExp_new2(struct miqt_string pattern);
+QRegExp* QRegExp_new3(QRegExp* rx);
+QRegExp* QRegExp_new4(struct miqt_string pattern, int cs);
+QRegExp* QRegExp_new5(struct miqt_string pattern, int cs, int syntax);
 void QRegExp_OperatorAssign(QRegExp* self, QRegExp* rx);
 void QRegExp_Swap(QRegExp* self, QRegExp* other);
 bool QRegExp_OperatorEqual(const QRegExp* self, QRegExp* rx);

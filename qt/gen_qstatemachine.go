@@ -52,72 +52,50 @@ func (this *QStateMachine) UnsafePointer() unsafe.Pointer {
 }
 
 // newQStateMachine constructs the type using only CGO pointers.
-func newQStateMachine(h *C.QStateMachine, h_QState *C.QState, h_QAbstractState *C.QAbstractState, h_QObject *C.QObject) *QStateMachine {
+func newQStateMachine(h *C.QStateMachine) *QStateMachine {
 	if h == nil {
 		return nil
 	}
+	var outptr_QState *C.QState = nil
+	C.QStateMachine_virtbase(h, &outptr_QState)
+
 	return &QStateMachine{h: h,
-		QState: newQState(h_QState, h_QAbstractState, h_QObject)}
+		QState: newQState(outptr_QState)}
 }
 
 // UnsafeNewQStateMachine constructs the type using only unsafe pointers.
-func UnsafeNewQStateMachine(h unsafe.Pointer, h_QState unsafe.Pointer, h_QAbstractState unsafe.Pointer, h_QObject unsafe.Pointer) *QStateMachine {
-	if h == nil {
-		return nil
-	}
-
-	return &QStateMachine{h: (*C.QStateMachine)(h),
-		QState: UnsafeNewQState(h_QState, h_QAbstractState, h_QObject)}
+func UnsafeNewQStateMachine(h unsafe.Pointer) *QStateMachine {
+	return newQStateMachine((*C.QStateMachine)(h))
 }
 
 // NewQStateMachine constructs a new QStateMachine object.
 func NewQStateMachine() *QStateMachine {
-	var outptr_QStateMachine *C.QStateMachine = nil
-	var outptr_QState *C.QState = nil
-	var outptr_QAbstractState *C.QAbstractState = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QStateMachine_new(&outptr_QStateMachine, &outptr_QState, &outptr_QAbstractState, &outptr_QObject)
-	ret := newQStateMachine(outptr_QStateMachine, outptr_QState, outptr_QAbstractState, outptr_QObject)
+	ret := newQStateMachine(C.QStateMachine_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQStateMachine2 constructs a new QStateMachine object.
 func NewQStateMachine2(childMode QState__ChildMode) *QStateMachine {
-	var outptr_QStateMachine *C.QStateMachine = nil
-	var outptr_QState *C.QState = nil
-	var outptr_QAbstractState *C.QAbstractState = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QStateMachine_new2((C.int)(childMode), &outptr_QStateMachine, &outptr_QState, &outptr_QAbstractState, &outptr_QObject)
-	ret := newQStateMachine(outptr_QStateMachine, outptr_QState, outptr_QAbstractState, outptr_QObject)
+	ret := newQStateMachine(C.QStateMachine_new2((C.int)(childMode)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQStateMachine3 constructs a new QStateMachine object.
 func NewQStateMachine3(parent *QObject) *QStateMachine {
-	var outptr_QStateMachine *C.QStateMachine = nil
-	var outptr_QState *C.QState = nil
-	var outptr_QAbstractState *C.QAbstractState = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QStateMachine_new3(parent.cPointer(), &outptr_QStateMachine, &outptr_QState, &outptr_QAbstractState, &outptr_QObject)
-	ret := newQStateMachine(outptr_QStateMachine, outptr_QState, outptr_QAbstractState, outptr_QObject)
+	ret := newQStateMachine(C.QStateMachine_new3(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQStateMachine4 constructs a new QStateMachine object.
 func NewQStateMachine4(childMode QState__ChildMode, parent *QObject) *QStateMachine {
-	var outptr_QStateMachine *C.QStateMachine = nil
-	var outptr_QState *C.QState = nil
-	var outptr_QAbstractState *C.QAbstractState = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QStateMachine_new4((C.int)(childMode), parent.cPointer(), &outptr_QStateMachine, &outptr_QState, &outptr_QAbstractState, &outptr_QObject)
-	ret := newQStateMachine(outptr_QStateMachine, outptr_QState, outptr_QAbstractState, outptr_QObject)
+	ret := newQStateMachine(C.QStateMachine_new4((C.int)(childMode), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -194,7 +172,7 @@ func (this *QStateMachine) DefaultAnimations() []*QAbstractAnimation {
 	_ret := make([]*QAbstractAnimation, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractAnimation)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAbstractAnimation(_outCast[i], nil)
+		_ret[i] = newQAbstractAnimation(_outCast[i])
 	}
 	return _ret
 }
@@ -228,7 +206,7 @@ func (this *QStateMachine) Configuration() map[*QAbstractState]struct{} {
 	_ret := make(map[*QAbstractState]struct{}, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractState)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_element := newQAbstractState(_outCast[i], nil)
+		_element := newQAbstractState(_outCast[i])
 
 		_ret[_element] = struct{}{}
 	}
@@ -568,31 +546,26 @@ func (this *QStateMachine__SignalEvent) UnsafePointer() unsafe.Pointer {
 }
 
 // newQStateMachine__SignalEvent constructs the type using only CGO pointers.
-func newQStateMachine__SignalEvent(h *C.QStateMachine__SignalEvent, h_QEvent *C.QEvent) *QStateMachine__SignalEvent {
+func newQStateMachine__SignalEvent(h *C.QStateMachine__SignalEvent) *QStateMachine__SignalEvent {
 	if h == nil {
 		return nil
 	}
+	var outptr_QEvent *C.QEvent = nil
+	C.QStateMachine__SignalEvent_virtbase(h, &outptr_QEvent)
+
 	return &QStateMachine__SignalEvent{h: h,
-		QEvent: newQEvent(h_QEvent)}
+		QEvent: newQEvent(outptr_QEvent)}
 }
 
 // UnsafeNewQStateMachine__SignalEvent constructs the type using only unsafe pointers.
-func UnsafeNewQStateMachine__SignalEvent(h unsafe.Pointer, h_QEvent unsafe.Pointer) *QStateMachine__SignalEvent {
-	if h == nil {
-		return nil
-	}
-
-	return &QStateMachine__SignalEvent{h: (*C.QStateMachine__SignalEvent)(h),
-		QEvent: UnsafeNewQEvent(h_QEvent)}
+func UnsafeNewQStateMachine__SignalEvent(h unsafe.Pointer) *QStateMachine__SignalEvent {
+	return newQStateMachine__SignalEvent((*C.QStateMachine__SignalEvent)(h))
 }
 
 // NewQStateMachine__SignalEvent constructs a new QStateMachine::SignalEvent object.
 func NewQStateMachine__SignalEvent(param1 *QStateMachine__SignalEvent) *QStateMachine__SignalEvent {
-	var outptr_QStateMachine__SignalEvent *C.QStateMachine__SignalEvent = nil
-	var outptr_QEvent *C.QEvent = nil
 
-	C.QStateMachine__SignalEvent_new(param1.cPointer(), &outptr_QStateMachine__SignalEvent, &outptr_QEvent)
-	ret := newQStateMachine__SignalEvent(outptr_QStateMachine__SignalEvent, outptr_QEvent)
+	ret := newQStateMachine__SignalEvent(C.QStateMachine__SignalEvent_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -640,42 +613,34 @@ func (this *QStateMachine__WrappedEvent) UnsafePointer() unsafe.Pointer {
 }
 
 // newQStateMachine__WrappedEvent constructs the type using only CGO pointers.
-func newQStateMachine__WrappedEvent(h *C.QStateMachine__WrappedEvent, h_QEvent *C.QEvent) *QStateMachine__WrappedEvent {
+func newQStateMachine__WrappedEvent(h *C.QStateMachine__WrappedEvent) *QStateMachine__WrappedEvent {
 	if h == nil {
 		return nil
 	}
+	var outptr_QEvent *C.QEvent = nil
+	C.QStateMachine__WrappedEvent_virtbase(h, &outptr_QEvent)
+
 	return &QStateMachine__WrappedEvent{h: h,
-		QEvent: newQEvent(h_QEvent)}
+		QEvent: newQEvent(outptr_QEvent)}
 }
 
 // UnsafeNewQStateMachine__WrappedEvent constructs the type using only unsafe pointers.
-func UnsafeNewQStateMachine__WrappedEvent(h unsafe.Pointer, h_QEvent unsafe.Pointer) *QStateMachine__WrappedEvent {
-	if h == nil {
-		return nil
-	}
-
-	return &QStateMachine__WrappedEvent{h: (*C.QStateMachine__WrappedEvent)(h),
-		QEvent: UnsafeNewQEvent(h_QEvent)}
+func UnsafeNewQStateMachine__WrappedEvent(h unsafe.Pointer) *QStateMachine__WrappedEvent {
+	return newQStateMachine__WrappedEvent((*C.QStateMachine__WrappedEvent)(h))
 }
 
 // NewQStateMachine__WrappedEvent constructs a new QStateMachine::WrappedEvent object.
 func NewQStateMachine__WrappedEvent(object *QObject, event *QEvent) *QStateMachine__WrappedEvent {
-	var outptr_QStateMachine__WrappedEvent *C.QStateMachine__WrappedEvent = nil
-	var outptr_QEvent *C.QEvent = nil
 
-	C.QStateMachine__WrappedEvent_new(object.cPointer(), event.cPointer(), &outptr_QStateMachine__WrappedEvent, &outptr_QEvent)
-	ret := newQStateMachine__WrappedEvent(outptr_QStateMachine__WrappedEvent, outptr_QEvent)
+	ret := newQStateMachine__WrappedEvent(C.QStateMachine__WrappedEvent_new(object.cPointer(), event.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQStateMachine__WrappedEvent2 constructs a new QStateMachine::WrappedEvent object.
 func NewQStateMachine__WrappedEvent2(param1 *QStateMachine__WrappedEvent) *QStateMachine__WrappedEvent {
-	var outptr_QStateMachine__WrappedEvent *C.QStateMachine__WrappedEvent = nil
-	var outptr_QEvent *C.QEvent = nil
 
-	C.QStateMachine__WrappedEvent_new2(param1.cPointer(), &outptr_QStateMachine__WrappedEvent, &outptr_QEvent)
-	ret := newQStateMachine__WrappedEvent(outptr_QStateMachine__WrappedEvent, outptr_QEvent)
+	ret := newQStateMachine__WrappedEvent(C.QStateMachine__WrappedEvent_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

@@ -34,8 +34,9 @@ typedef struct QStylePlugin QStylePlugin;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QStylePlugin_new(QStylePlugin** outptr_QStylePlugin, QObject** outptr_QObject);
-void QStylePlugin_new2(QObject* parent, QStylePlugin** outptr_QStylePlugin, QObject** outptr_QObject);
+QStylePlugin* QStylePlugin_new();
+QStylePlugin* QStylePlugin_new2(QObject* parent);
+void QStylePlugin_virtbase(QStylePlugin* src, QObject** outptr_QObject);
 QMetaObject* QStylePlugin_MetaObject(const QStylePlugin* self);
 void* QStylePlugin_Metacast(QStylePlugin* self, const char* param1);
 struct miqt_string QStylePlugin_Tr(const char* s);

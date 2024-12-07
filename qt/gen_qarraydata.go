@@ -56,16 +56,13 @@ func newQArrayData(h *C.QArrayData) *QArrayData {
 	if h == nil {
 		return nil
 	}
+
 	return &QArrayData{h: h}
 }
 
 // UnsafeNewQArrayData constructs the type using only unsafe pointers.
 func UnsafeNewQArrayData(h unsafe.Pointer) *QArrayData {
-	if h == nil {
-		return nil
-	}
-
-	return &QArrayData{h: (*C.QArrayData)(h)}
+	return newQArrayData((*C.QArrayData)(h))
 }
 
 func (this *QArrayData) Data() unsafe.Pointer {

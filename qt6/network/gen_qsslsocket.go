@@ -53,50 +53,34 @@ func (this *QSslSocket) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSslSocket constructs the type using only CGO pointers.
-func newQSslSocket(h *C.QSslSocket, h_QTcpSocket *C.QTcpSocket, h_QAbstractSocket *C.QAbstractSocket, h_QIODevice *C.QIODevice, h_QObject *C.QObject, h_QIODeviceBase *C.QIODeviceBase) *QSslSocket {
+func newQSslSocket(h *C.QSslSocket) *QSslSocket {
 	if h == nil {
 		return nil
 	}
+	var outptr_QTcpSocket *C.QTcpSocket = nil
+	C.QSslSocket_virtbase(h, &outptr_QTcpSocket)
+
 	return &QSslSocket{h: h,
-		QTcpSocket: newQTcpSocket(h_QTcpSocket, h_QAbstractSocket, h_QIODevice, h_QObject, h_QIODeviceBase)}
+		QTcpSocket: newQTcpSocket(outptr_QTcpSocket)}
 }
 
 // UnsafeNewQSslSocket constructs the type using only unsafe pointers.
-func UnsafeNewQSslSocket(h unsafe.Pointer, h_QTcpSocket unsafe.Pointer, h_QAbstractSocket unsafe.Pointer, h_QIODevice unsafe.Pointer, h_QObject unsafe.Pointer, h_QIODeviceBase unsafe.Pointer) *QSslSocket {
-	if h == nil {
-		return nil
-	}
-
-	return &QSslSocket{h: (*C.QSslSocket)(h),
-		QTcpSocket: UnsafeNewQTcpSocket(h_QTcpSocket, h_QAbstractSocket, h_QIODevice, h_QObject, h_QIODeviceBase)}
+func UnsafeNewQSslSocket(h unsafe.Pointer) *QSslSocket {
+	return newQSslSocket((*C.QSslSocket)(h))
 }
 
 // NewQSslSocket constructs a new QSslSocket object.
 func NewQSslSocket() *QSslSocket {
-	var outptr_QSslSocket *C.QSslSocket = nil
-	var outptr_QTcpSocket *C.QTcpSocket = nil
-	var outptr_QAbstractSocket *C.QAbstractSocket = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QIODeviceBase *C.QIODeviceBase = nil
 
-	C.QSslSocket_new(&outptr_QSslSocket, &outptr_QTcpSocket, &outptr_QAbstractSocket, &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
-	ret := newQSslSocket(outptr_QSslSocket, outptr_QTcpSocket, outptr_QAbstractSocket, outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret := newQSslSocket(C.QSslSocket_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSslSocket2 constructs a new QSslSocket object.
 func NewQSslSocket2(parent *qt6.QObject) *QSslSocket {
-	var outptr_QSslSocket *C.QSslSocket = nil
-	var outptr_QTcpSocket *C.QTcpSocket = nil
-	var outptr_QAbstractSocket *C.QAbstractSocket = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QIODeviceBase *C.QIODeviceBase = nil
 
-	C.QSslSocket_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QSslSocket, &outptr_QTcpSocket, &outptr_QAbstractSocket, &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
-	ret := newQSslSocket(outptr_QSslSocket, outptr_QTcpSocket, outptr_QAbstractSocket, outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret := newQSslSocket(C.QSslSocket_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }

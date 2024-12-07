@@ -46,42 +46,34 @@ func (this *QAudioDecoder) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAudioDecoder constructs the type using only CGO pointers.
-func newQAudioDecoder(h *C.QAudioDecoder, h_QObject *C.QObject) *QAudioDecoder {
+func newQAudioDecoder(h *C.QAudioDecoder) *QAudioDecoder {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QAudioDecoder_virtbase(h, &outptr_QObject)
+
 	return &QAudioDecoder{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQAudioDecoder constructs the type using only unsafe pointers.
-func UnsafeNewQAudioDecoder(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAudioDecoder {
-	if h == nil {
-		return nil
-	}
-
-	return &QAudioDecoder{h: (*C.QAudioDecoder)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQAudioDecoder(h unsafe.Pointer) *QAudioDecoder {
+	return newQAudioDecoder((*C.QAudioDecoder)(h))
 }
 
 // NewQAudioDecoder constructs a new QAudioDecoder object.
 func NewQAudioDecoder() *QAudioDecoder {
-	var outptr_QAudioDecoder *C.QAudioDecoder = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAudioDecoder_new(&outptr_QAudioDecoder, &outptr_QObject)
-	ret := newQAudioDecoder(outptr_QAudioDecoder, outptr_QObject)
+	ret := newQAudioDecoder(C.QAudioDecoder_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAudioDecoder2 constructs a new QAudioDecoder object.
 func NewQAudioDecoder2(parent *qt6.QObject) *QAudioDecoder {
-	var outptr_QAudioDecoder *C.QAudioDecoder = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAudioDecoder_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QAudioDecoder, &outptr_QObject)
-	ret := newQAudioDecoder(outptr_QAudioDecoder, outptr_QObject)
+	ret := newQAudioDecoder(C.QAudioDecoder_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -124,7 +116,7 @@ func (this *QAudioDecoder) SetSource(fileName *qt6.QUrl) {
 }
 
 func (this *QAudioDecoder) SourceDevice() *qt6.QIODevice {
-	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QAudioDecoder_SourceDevice(this.h)), nil, nil)
+	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QAudioDecoder_SourceDevice(this.h)))
 }
 
 func (this *QAudioDecoder) SetSourceDevice(device *qt6.QIODevice) {
@@ -449,7 +441,7 @@ func miqt_exec_callback_QAudioDecoder_TimerEvent(self *C.QAudioDecoder, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QAudioDecoder{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -475,7 +467,7 @@ func miqt_exec_callback_QAudioDecoder_ChildEvent(self *C.QAudioDecoder, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QAudioDecoder{h: self}).callVirtualBase_ChildEvent, slotval1)
 

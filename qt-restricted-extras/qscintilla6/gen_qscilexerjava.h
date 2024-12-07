@@ -28,8 +28,9 @@ typedef struct QsciLexerCPP QsciLexerCPP;
 typedef struct QsciLexerJava QsciLexerJava;
 #endif
 
-void QsciLexerJava_new(QsciLexerJava** outptr_QsciLexerJava, QsciLexerCPP** outptr_QsciLexerCPP, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerJava_new2(QObject* parent, QsciLexerJava** outptr_QsciLexerJava, QsciLexerCPP** outptr_QsciLexerCPP, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerJava* QsciLexerJava_new();
+QsciLexerJava* QsciLexerJava_new2(QObject* parent);
+void QsciLexerJava_virtbase(QsciLexerJava* src, QsciLexerCPP** outptr_QsciLexerCPP);
 QMetaObject* QsciLexerJava_MetaObject(const QsciLexerJava* self);
 void* QsciLexerJava_Metacast(QsciLexerJava* self, const char* param1);
 struct miqt_string QsciLexerJava_Tr(const char* s);

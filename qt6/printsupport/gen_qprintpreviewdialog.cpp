@@ -360,58 +360,32 @@ public:
 
 };
 
-void QPrintPreviewDialog_new(QWidget* parent, QPrintPreviewDialog** outptr_QPrintPreviewDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPrintPreviewDialog* ret = new MiqtVirtualQPrintPreviewDialog(parent);
-	*outptr_QPrintPreviewDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPrintPreviewDialog* QPrintPreviewDialog_new(QWidget* parent) {
+	return new MiqtVirtualQPrintPreviewDialog(parent);
 }
 
-void QPrintPreviewDialog_new2(QPrintPreviewDialog** outptr_QPrintPreviewDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPrintPreviewDialog* ret = new MiqtVirtualQPrintPreviewDialog();
-	*outptr_QPrintPreviewDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPrintPreviewDialog* QPrintPreviewDialog_new2() {
+	return new MiqtVirtualQPrintPreviewDialog();
 }
 
-void QPrintPreviewDialog_new3(QPrinter* printer, QPrintPreviewDialog** outptr_QPrintPreviewDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPrintPreviewDialog* ret = new MiqtVirtualQPrintPreviewDialog(printer);
-	*outptr_QPrintPreviewDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPrintPreviewDialog* QPrintPreviewDialog_new3(QPrinter* printer) {
+	return new MiqtVirtualQPrintPreviewDialog(printer);
 }
 
-void QPrintPreviewDialog_new4(QWidget* parent, int flags, QPrintPreviewDialog** outptr_QPrintPreviewDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPrintPreviewDialog* ret = new MiqtVirtualQPrintPreviewDialog(parent, static_cast<Qt::WindowFlags>(flags));
-	*outptr_QPrintPreviewDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPrintPreviewDialog* QPrintPreviewDialog_new4(QWidget* parent, int flags) {
+	return new MiqtVirtualQPrintPreviewDialog(parent, static_cast<Qt::WindowFlags>(flags));
 }
 
-void QPrintPreviewDialog_new5(QPrinter* printer, QWidget* parent, QPrintPreviewDialog** outptr_QPrintPreviewDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPrintPreviewDialog* ret = new MiqtVirtualQPrintPreviewDialog(printer, parent);
-	*outptr_QPrintPreviewDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPrintPreviewDialog* QPrintPreviewDialog_new5(QPrinter* printer, QWidget* parent) {
+	return new MiqtVirtualQPrintPreviewDialog(printer, parent);
 }
 
-void QPrintPreviewDialog_new6(QPrinter* printer, QWidget* parent, int flags, QPrintPreviewDialog** outptr_QPrintPreviewDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPrintPreviewDialog* ret = new MiqtVirtualQPrintPreviewDialog(printer, parent, static_cast<Qt::WindowFlags>(flags));
-	*outptr_QPrintPreviewDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPrintPreviewDialog* QPrintPreviewDialog_new6(QPrinter* printer, QWidget* parent, int flags) {
+	return new MiqtVirtualQPrintPreviewDialog(printer, parent, static_cast<Qt::WindowFlags>(flags));
+}
+
+void QPrintPreviewDialog_virtbase(QPrintPreviewDialog* src, QDialog** outptr_QDialog) {
+	*outptr_QDialog = static_cast<QDialog*>(src);
 }
 
 QMetaObject* QPrintPreviewDialog_MetaObject(const QPrintPreviewDialog* self) {

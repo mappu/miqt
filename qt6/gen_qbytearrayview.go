@@ -37,34 +37,27 @@ func newQByteArrayView(h *C.QByteArrayView) *QByteArrayView {
 	if h == nil {
 		return nil
 	}
+
 	return &QByteArrayView{h: h}
 }
 
 // UnsafeNewQByteArrayView constructs the type using only unsafe pointers.
 func UnsafeNewQByteArrayView(h unsafe.Pointer) *QByteArrayView {
-	if h == nil {
-		return nil
-	}
-
-	return &QByteArrayView{h: (*C.QByteArrayView)(h)}
+	return newQByteArrayView((*C.QByteArrayView)(h))
 }
 
 // NewQByteArrayView constructs a new QByteArrayView object.
 func NewQByteArrayView() *QByteArrayView {
-	var outptr_QByteArrayView *C.QByteArrayView = nil
 
-	C.QByteArrayView_new(&outptr_QByteArrayView)
-	ret := newQByteArrayView(outptr_QByteArrayView)
+	ret := newQByteArrayView(C.QByteArrayView_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQByteArrayView2 constructs a new QByteArrayView object.
 func NewQByteArrayView2(param1 *QByteArrayView) *QByteArrayView {
-	var outptr_QByteArrayView *C.QByteArrayView = nil
 
-	C.QByteArrayView_new2(param1.cPointer(), &outptr_QByteArrayView)
-	ret := newQByteArrayView(outptr_QByteArrayView)
+	ret := newQByteArrayView(C.QByteArrayView_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

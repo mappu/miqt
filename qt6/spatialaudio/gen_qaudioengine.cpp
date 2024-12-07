@@ -196,28 +196,24 @@ public:
 
 };
 
-void QAudioEngine_new(QAudioEngine** outptr_QAudioEngine, QObject** outptr_QObject) {
-	MiqtVirtualQAudioEngine* ret = new MiqtVirtualQAudioEngine();
-	*outptr_QAudioEngine = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAudioEngine* QAudioEngine_new() {
+	return new MiqtVirtualQAudioEngine();
 }
 
-void QAudioEngine_new2(QObject* parent, QAudioEngine** outptr_QAudioEngine, QObject** outptr_QObject) {
-	MiqtVirtualQAudioEngine* ret = new MiqtVirtualQAudioEngine(parent);
-	*outptr_QAudioEngine = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAudioEngine* QAudioEngine_new2(QObject* parent) {
+	return new MiqtVirtualQAudioEngine(parent);
 }
 
-void QAudioEngine_new3(int sampleRate, QAudioEngine** outptr_QAudioEngine, QObject** outptr_QObject) {
-	MiqtVirtualQAudioEngine* ret = new MiqtVirtualQAudioEngine(static_cast<int>(sampleRate));
-	*outptr_QAudioEngine = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAudioEngine* QAudioEngine_new3(int sampleRate) {
+	return new MiqtVirtualQAudioEngine(static_cast<int>(sampleRate));
 }
 
-void QAudioEngine_new4(int sampleRate, QObject* parent, QAudioEngine** outptr_QAudioEngine, QObject** outptr_QObject) {
-	MiqtVirtualQAudioEngine* ret = new MiqtVirtualQAudioEngine(static_cast<int>(sampleRate), parent);
-	*outptr_QAudioEngine = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAudioEngine* QAudioEngine_new4(int sampleRate, QObject* parent) {
+	return new MiqtVirtualQAudioEngine(static_cast<int>(sampleRate), parent);
+}
+
+void QAudioEngine_virtbase(QAudioEngine* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QAudioEngine_MetaObject(const QAudioEngine* self) {

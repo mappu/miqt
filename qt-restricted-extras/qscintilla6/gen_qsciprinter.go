@@ -37,46 +37,34 @@ func (this *QsciPrinter) UnsafePointer() unsafe.Pointer {
 }
 
 // newQsciPrinter constructs the type using only CGO pointers.
-func newQsciPrinter(h *C.QsciPrinter, h_QPrinter *C.QPrinter, h_QPagedPaintDevice *C.QPagedPaintDevice, h_QPaintDevice *C.QPaintDevice) *QsciPrinter {
+func newQsciPrinter(h *C.QsciPrinter) *QsciPrinter {
 	if h == nil {
 		return nil
 	}
+	var outptr_QPrinter *C.QPrinter = nil
+	C.QsciPrinter_virtbase(h, &outptr_QPrinter)
+
 	return &QsciPrinter{h: h,
-		QPrinter: printsupport.UnsafeNewQPrinter(unsafe.Pointer(h_QPrinter), unsafe.Pointer(h_QPagedPaintDevice), unsafe.Pointer(h_QPaintDevice))}
+		QPrinter: printsupport.UnsafeNewQPrinter(unsafe.Pointer(outptr_QPrinter))}
 }
 
 // UnsafeNewQsciPrinter constructs the type using only unsafe pointers.
-func UnsafeNewQsciPrinter(h unsafe.Pointer, h_QPrinter unsafe.Pointer, h_QPagedPaintDevice unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QsciPrinter {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciPrinter{h: (*C.QsciPrinter)(h),
-		QPrinter: printsupport.UnsafeNewQPrinter(h_QPrinter, h_QPagedPaintDevice, h_QPaintDevice)}
+func UnsafeNewQsciPrinter(h unsafe.Pointer) *QsciPrinter {
+	return newQsciPrinter((*C.QsciPrinter)(h))
 }
 
 // NewQsciPrinter constructs a new QsciPrinter object.
 func NewQsciPrinter() *QsciPrinter {
-	var outptr_QsciPrinter *C.QsciPrinter = nil
-	var outptr_QPrinter *C.QPrinter = nil
-	var outptr_QPagedPaintDevice *C.QPagedPaintDevice = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QsciPrinter_new(&outptr_QsciPrinter, &outptr_QPrinter, &outptr_QPagedPaintDevice, &outptr_QPaintDevice)
-	ret := newQsciPrinter(outptr_QsciPrinter, outptr_QPrinter, outptr_QPagedPaintDevice, outptr_QPaintDevice)
+	ret := newQsciPrinter(C.QsciPrinter_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQsciPrinter2 constructs a new QsciPrinter object.
 func NewQsciPrinter2(mode printsupport.QPrinter__PrinterMode) *QsciPrinter {
-	var outptr_QsciPrinter *C.QsciPrinter = nil
-	var outptr_QPrinter *C.QPrinter = nil
-	var outptr_QPagedPaintDevice *C.QPagedPaintDevice = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QsciPrinter_new2((C.int)(mode), &outptr_QsciPrinter, &outptr_QPrinter, &outptr_QPagedPaintDevice, &outptr_QPaintDevice)
-	ret := newQsciPrinter(outptr_QsciPrinter, outptr_QPrinter, outptr_QPagedPaintDevice, outptr_QPaintDevice)
+	ret := newQsciPrinter(C.QsciPrinter_new2((C.int)(mode)))
 	ret.isSubclass = true
 	return ret
 }
@@ -187,7 +175,7 @@ func miqt_exec_callback_QsciPrinter_PrintRange(self *C.QsciPrinter, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQsciScintillaBase(qsb, nil, nil, nil, nil, nil)
+	slotval1 := newQsciScintillaBase(qsb)
 
 	slotval2 := qt6.UnsafeNewQPainter(unsafe.Pointer(painter))
 
@@ -221,7 +209,7 @@ func miqt_exec_callback_QsciPrinter_PrintRange2(self *C.QsciPrinter, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQsciScintillaBase(qsb, nil, nil, nil, nil, nil)
+	slotval1 := newQsciScintillaBase(qsb)
 
 	slotval2 := (int)(from)
 

@@ -38,7 +38,8 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QVector3D QVector3D;
 #endif
 
-void QAudioRoom_new(QAudioEngine* engine, QAudioRoom** outptr_QAudioRoom, QObject** outptr_QObject);
+QAudioRoom* QAudioRoom_new(QAudioEngine* engine);
+void QAudioRoom_virtbase(QAudioRoom* src, QObject** outptr_QObject);
 QMetaObject* QAudioRoom_MetaObject(const QAudioRoom* self);
 void* QAudioRoom_Metacast(QAudioRoom* self, const char* param1);
 struct miqt_string QAudioRoom_Tr(const char* s);

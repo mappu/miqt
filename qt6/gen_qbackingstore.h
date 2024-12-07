@@ -30,7 +30,7 @@ typedef struct QSize QSize;
 typedef struct QWindow QWindow;
 #endif
 
-void QBackingStore_new(QWindow* window, QBackingStore** outptr_QBackingStore);
+QBackingStore* QBackingStore_new(QWindow* window);
 QWindow* QBackingStore_Window(const QBackingStore* self);
 QPaintDevice* QBackingStore_PaintDevice(QBackingStore* self);
 void QBackingStore_Flush(QBackingStore* self, QRegion* region);

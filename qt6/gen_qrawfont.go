@@ -52,24 +52,19 @@ func newQRawFont(h *C.QRawFont) *QRawFont {
 	if h == nil {
 		return nil
 	}
+
 	return &QRawFont{h: h}
 }
 
 // UnsafeNewQRawFont constructs the type using only unsafe pointers.
 func UnsafeNewQRawFont(h unsafe.Pointer) *QRawFont {
-	if h == nil {
-		return nil
-	}
-
-	return &QRawFont{h: (*C.QRawFont)(h)}
+	return newQRawFont((*C.QRawFont)(h))
 }
 
 // NewQRawFont constructs a new QRawFont object.
 func NewQRawFont() *QRawFont {
-	var outptr_QRawFont *C.QRawFont = nil
 
-	C.QRawFont_new(&outptr_QRawFont)
-	ret := newQRawFont(outptr_QRawFont)
+	ret := newQRawFont(C.QRawFont_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -80,10 +75,8 @@ func NewQRawFont2(fileName string, pixelSize float64) *QRawFont {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QRawFont *C.QRawFont = nil
 
-	C.QRawFont_new2(fileName_ms, (C.double)(pixelSize), &outptr_QRawFont)
-	ret := newQRawFont(outptr_QRawFont)
+	ret := newQRawFont(C.QRawFont_new2(fileName_ms, (C.double)(pixelSize)))
 	ret.isSubclass = true
 	return ret
 }
@@ -93,20 +86,16 @@ func NewQRawFont3(fontData []byte, pixelSize float64) *QRawFont {
 	fontData_alias := C.struct_miqt_string{}
 	fontData_alias.data = (*C.char)(unsafe.Pointer(&fontData[0]))
 	fontData_alias.len = C.size_t(len(fontData))
-	var outptr_QRawFont *C.QRawFont = nil
 
-	C.QRawFont_new3(fontData_alias, (C.double)(pixelSize), &outptr_QRawFont)
-	ret := newQRawFont(outptr_QRawFont)
+	ret := newQRawFont(C.QRawFont_new3(fontData_alias, (C.double)(pixelSize)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQRawFont4 constructs a new QRawFont object.
 func NewQRawFont4(other *QRawFont) *QRawFont {
-	var outptr_QRawFont *C.QRawFont = nil
 
-	C.QRawFont_new4(other.cPointer(), &outptr_QRawFont)
-	ret := newQRawFont(outptr_QRawFont)
+	ret := newQRawFont(C.QRawFont_new4(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -117,10 +106,8 @@ func NewQRawFont5(fileName string, pixelSize float64, hintingPreference QFont__H
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QRawFont *C.QRawFont = nil
 
-	C.QRawFont_new5(fileName_ms, (C.double)(pixelSize), (C.int)(hintingPreference), &outptr_QRawFont)
-	ret := newQRawFont(outptr_QRawFont)
+	ret := newQRawFont(C.QRawFont_new5(fileName_ms, (C.double)(pixelSize), (C.int)(hintingPreference)))
 	ret.isSubclass = true
 	return ret
 }
@@ -130,10 +117,8 @@ func NewQRawFont6(fontData []byte, pixelSize float64, hintingPreference QFont__H
 	fontData_alias := C.struct_miqt_string{}
 	fontData_alias.data = (*C.char)(unsafe.Pointer(&fontData[0]))
 	fontData_alias.len = C.size_t(len(fontData))
-	var outptr_QRawFont *C.QRawFont = nil
 
-	C.QRawFont_new6(fontData_alias, (C.double)(pixelSize), (C.int)(hintingPreference), &outptr_QRawFont)
-	ret := newQRawFont(outptr_QRawFont)
+	ret := newQRawFont(C.QRawFont_new6(fontData_alias, (C.double)(pixelSize), (C.int)(hintingPreference)))
 	ret.isSubclass = true
 	return ret
 }
@@ -243,7 +228,7 @@ func (this *QRawFont) AdvancesForGlyphIndexes4(glyphIndexes *uint, advances *QPo
 }
 
 func (this *QRawFont) AlphaMapForGlyph(glyphIndex uint) *QImage {
-	_goptr := newQImage(C.QRawFont_AlphaMapForGlyph(this.h, (C.uint)(glyphIndex)), nil)
+	_goptr := newQImage(C.QRawFont_AlphaMapForGlyph(this.h, (C.uint)(glyphIndex)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -361,13 +346,13 @@ func QRawFont_FromFont(font *QFont) *QRawFont {
 }
 
 func (this *QRawFont) AlphaMapForGlyph2(glyphIndex uint, antialiasingType QRawFont__AntialiasingType) *QImage {
-	_goptr := newQImage(C.QRawFont_AlphaMapForGlyph2(this.h, (C.uint)(glyphIndex), (C.int)(antialiasingType)), nil)
+	_goptr := newQImage(C.QRawFont_AlphaMapForGlyph2(this.h, (C.uint)(glyphIndex), (C.int)(antialiasingType)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRawFont) AlphaMapForGlyph3(glyphIndex uint, antialiasingType QRawFont__AntialiasingType, transform *QTransform) *QImage {
-	_goptr := newQImage(C.QRawFont_AlphaMapForGlyph3(this.h, (C.uint)(glyphIndex), (C.int)(antialiasingType), transform.cPointer()), nil)
+	_goptr := newQImage(C.QRawFont_AlphaMapForGlyph3(this.h, (C.uint)(glyphIndex), (C.int)(antialiasingType), transform.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

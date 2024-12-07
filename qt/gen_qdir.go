@@ -79,34 +79,27 @@ func newQDir(h *C.QDir) *QDir {
 	if h == nil {
 		return nil
 	}
+
 	return &QDir{h: h}
 }
 
 // UnsafeNewQDir constructs the type using only unsafe pointers.
 func UnsafeNewQDir(h unsafe.Pointer) *QDir {
-	if h == nil {
-		return nil
-	}
-
-	return &QDir{h: (*C.QDir)(h)}
+	return newQDir((*C.QDir)(h))
 }
 
 // NewQDir constructs a new QDir object.
 func NewQDir(param1 *QDir) *QDir {
-	var outptr_QDir *C.QDir = nil
 
-	C.QDir_new(param1.cPointer(), &outptr_QDir)
-	ret := newQDir(outptr_QDir)
+	ret := newQDir(C.QDir_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDir2 constructs a new QDir object.
 func NewQDir2() *QDir {
-	var outptr_QDir *C.QDir = nil
 
-	C.QDir_new2(&outptr_QDir)
-	ret := newQDir(outptr_QDir)
+	ret := newQDir(C.QDir_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -121,10 +114,8 @@ func NewQDir3(path string, nameFilter string) *QDir {
 	nameFilter_ms.data = C.CString(nameFilter)
 	nameFilter_ms.len = C.size_t(len(nameFilter))
 	defer C.free(unsafe.Pointer(nameFilter_ms.data))
-	var outptr_QDir *C.QDir = nil
 
-	C.QDir_new3(path_ms, nameFilter_ms, &outptr_QDir)
-	ret := newQDir(outptr_QDir)
+	ret := newQDir(C.QDir_new3(path_ms, nameFilter_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -135,10 +126,8 @@ func NewQDir4(path string) *QDir {
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	var outptr_QDir *C.QDir = nil
 
-	C.QDir_new4(path_ms, &outptr_QDir)
-	ret := newQDir(outptr_QDir)
+	ret := newQDir(C.QDir_new4(path_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -153,10 +142,8 @@ func NewQDir5(path string, nameFilter string, sort QDir__SortFlag) *QDir {
 	nameFilter_ms.data = C.CString(nameFilter)
 	nameFilter_ms.len = C.size_t(len(nameFilter))
 	defer C.free(unsafe.Pointer(nameFilter_ms.data))
-	var outptr_QDir *C.QDir = nil
 
-	C.QDir_new5(path_ms, nameFilter_ms, (C.int)(sort), &outptr_QDir)
-	ret := newQDir(outptr_QDir)
+	ret := newQDir(C.QDir_new5(path_ms, nameFilter_ms, (C.int)(sort)))
 	ret.isSubclass = true
 	return ret
 }
@@ -171,10 +158,8 @@ func NewQDir6(path string, nameFilter string, sort QDir__SortFlag, filter QDir__
 	nameFilter_ms.data = C.CString(nameFilter)
 	nameFilter_ms.len = C.size_t(len(nameFilter))
 	defer C.free(unsafe.Pointer(nameFilter_ms.data))
-	var outptr_QDir *C.QDir = nil
 
-	C.QDir_new6(path_ms, nameFilter_ms, (C.int)(sort), (C.int)(filter), &outptr_QDir)
-	ret := newQDir(outptr_QDir)
+	ret := newQDir(C.QDir_new6(path_ms, nameFilter_ms, (C.int)(sort), (C.int)(filter)))
 	ret.isSubclass = true
 	return ret
 }

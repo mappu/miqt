@@ -58,24 +58,19 @@ func newQTextInlineObject(h *C.QTextInlineObject) *QTextInlineObject {
 	if h == nil {
 		return nil
 	}
+
 	return &QTextInlineObject{h: h}
 }
 
 // UnsafeNewQTextInlineObject constructs the type using only unsafe pointers.
 func UnsafeNewQTextInlineObject(h unsafe.Pointer) *QTextInlineObject {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextInlineObject{h: (*C.QTextInlineObject)(h)}
+	return newQTextInlineObject((*C.QTextInlineObject)(h))
 }
 
 // NewQTextInlineObject constructs a new QTextInlineObject object.
 func NewQTextInlineObject() *QTextInlineObject {
-	var outptr_QTextInlineObject *C.QTextInlineObject = nil
 
-	C.QTextInlineObject_new(&outptr_QTextInlineObject)
-	ret := newQTextInlineObject(outptr_QTextInlineObject)
+	ret := newQTextInlineObject(C.QTextInlineObject_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -174,24 +169,19 @@ func newQTextLayout(h *C.QTextLayout) *QTextLayout {
 	if h == nil {
 		return nil
 	}
+
 	return &QTextLayout{h: h}
 }
 
 // UnsafeNewQTextLayout constructs the type using only unsafe pointers.
 func UnsafeNewQTextLayout(h unsafe.Pointer) *QTextLayout {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextLayout{h: (*C.QTextLayout)(h)}
+	return newQTextLayout((*C.QTextLayout)(h))
 }
 
 // NewQTextLayout constructs a new QTextLayout object.
 func NewQTextLayout() *QTextLayout {
-	var outptr_QTextLayout *C.QTextLayout = nil
 
-	C.QTextLayout_new(&outptr_QTextLayout)
-	ret := newQTextLayout(outptr_QTextLayout)
+	ret := newQTextLayout(C.QTextLayout_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -202,10 +192,8 @@ func NewQTextLayout2(text string) *QTextLayout {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QTextLayout *C.QTextLayout = nil
 
-	C.QTextLayout_new2(text_ms, &outptr_QTextLayout)
-	ret := newQTextLayout(outptr_QTextLayout)
+	ret := newQTextLayout(C.QTextLayout_new2(text_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -216,20 +204,16 @@ func NewQTextLayout3(text string, font *QFont) *QTextLayout {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QTextLayout *C.QTextLayout = nil
 
-	C.QTextLayout_new3(text_ms, font.cPointer(), &outptr_QTextLayout)
-	ret := newQTextLayout(outptr_QTextLayout)
+	ret := newQTextLayout(C.QTextLayout_new3(text_ms, font.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextLayout4 constructs a new QTextLayout object.
 func NewQTextLayout4(b *QTextBlock) *QTextLayout {
-	var outptr_QTextLayout *C.QTextLayout = nil
 
-	C.QTextLayout_new4(b.cPointer(), &outptr_QTextLayout)
-	ret := newQTextLayout(outptr_QTextLayout)
+	ret := newQTextLayout(C.QTextLayout_new4(b.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -240,10 +224,8 @@ func NewQTextLayout5(text string, font *QFont, paintdevice *QPaintDevice) *QText
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QTextLayout *C.QTextLayout = nil
 
-	C.QTextLayout_new5(text_ms, font.cPointer(), paintdevice.cPointer(), &outptr_QTextLayout)
-	ret := newQTextLayout(outptr_QTextLayout)
+	ret := newQTextLayout(C.QTextLayout_new5(text_ms, font.cPointer(), paintdevice.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -568,24 +550,19 @@ func newQTextLine(h *C.QTextLine) *QTextLine {
 	if h == nil {
 		return nil
 	}
+
 	return &QTextLine{h: h}
 }
 
 // UnsafeNewQTextLine constructs the type using only unsafe pointers.
 func UnsafeNewQTextLine(h unsafe.Pointer) *QTextLine {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextLine{h: (*C.QTextLine)(h)}
+	return newQTextLine((*C.QTextLine)(h))
 }
 
 // NewQTextLine constructs a new QTextLine object.
 func NewQTextLine() *QTextLine {
-	var outptr_QTextLine *C.QTextLine = nil
 
-	C.QTextLine_new(&outptr_QTextLine)
-	ret := newQTextLine(outptr_QTextLine)
+	ret := newQTextLine(C.QTextLine_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -790,16 +767,13 @@ func newQTextLayout__FormatRange(h *C.QTextLayout__FormatRange) *QTextLayout__Fo
 	if h == nil {
 		return nil
 	}
+
 	return &QTextLayout__FormatRange{h: h}
 }
 
 // UnsafeNewQTextLayout__FormatRange constructs the type using only unsafe pointers.
 func UnsafeNewQTextLayout__FormatRange(h unsafe.Pointer) *QTextLayout__FormatRange {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextLayout__FormatRange{h: (*C.QTextLayout__FormatRange)(h)}
+	return newQTextLayout__FormatRange((*C.QTextLayout__FormatRange)(h))
 }
 
 // Delete this object from C++ memory.

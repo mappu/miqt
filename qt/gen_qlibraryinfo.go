@@ -57,16 +57,13 @@ func newQLibraryInfo(h *C.QLibraryInfo) *QLibraryInfo {
 	if h == nil {
 		return nil
 	}
+
 	return &QLibraryInfo{h: h}
 }
 
 // UnsafeNewQLibraryInfo constructs the type using only unsafe pointers.
 func UnsafeNewQLibraryInfo(h unsafe.Pointer) *QLibraryInfo {
-	if h == nil {
-		return nil
-	}
-
-	return &QLibraryInfo{h: (*C.QLibraryInfo)(h)}
+	return newQLibraryInfo((*C.QLibraryInfo)(h))
 }
 
 func QLibraryInfo_Licensee() string {

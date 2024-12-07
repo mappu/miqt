@@ -48,8 +48,9 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QAbstractItemDelegate_new(QAbstractItemDelegate** outptr_QAbstractItemDelegate, QObject** outptr_QObject);
-void QAbstractItemDelegate_new2(QObject* parent, QAbstractItemDelegate** outptr_QAbstractItemDelegate, QObject** outptr_QObject);
+QAbstractItemDelegate* QAbstractItemDelegate_new();
+QAbstractItemDelegate* QAbstractItemDelegate_new2(QObject* parent);
+void QAbstractItemDelegate_virtbase(QAbstractItemDelegate* src, QObject** outptr_QObject);
 QMetaObject* QAbstractItemDelegate_MetaObject(const QAbstractItemDelegate* self);
 void* QAbstractItemDelegate_Metacast(QAbstractItemDelegate* self, const char* param1);
 struct miqt_string QAbstractItemDelegate_Tr(const char* s);

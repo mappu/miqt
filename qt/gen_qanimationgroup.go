@@ -35,44 +35,34 @@ func (this *QAnimationGroup) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAnimationGroup constructs the type using only CGO pointers.
-func newQAnimationGroup(h *C.QAnimationGroup, h_QAbstractAnimation *C.QAbstractAnimation, h_QObject *C.QObject) *QAnimationGroup {
+func newQAnimationGroup(h *C.QAnimationGroup) *QAnimationGroup {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
+	C.QAnimationGroup_virtbase(h, &outptr_QAbstractAnimation)
+
 	return &QAnimationGroup{h: h,
-		QAbstractAnimation: newQAbstractAnimation(h_QAbstractAnimation, h_QObject)}
+		QAbstractAnimation: newQAbstractAnimation(outptr_QAbstractAnimation)}
 }
 
 // UnsafeNewQAnimationGroup constructs the type using only unsafe pointers.
-func UnsafeNewQAnimationGroup(h unsafe.Pointer, h_QAbstractAnimation unsafe.Pointer, h_QObject unsafe.Pointer) *QAnimationGroup {
-	if h == nil {
-		return nil
-	}
-
-	return &QAnimationGroup{h: (*C.QAnimationGroup)(h),
-		QAbstractAnimation: UnsafeNewQAbstractAnimation(h_QAbstractAnimation, h_QObject)}
+func UnsafeNewQAnimationGroup(h unsafe.Pointer) *QAnimationGroup {
+	return newQAnimationGroup((*C.QAnimationGroup)(h))
 }
 
 // NewQAnimationGroup constructs a new QAnimationGroup object.
 func NewQAnimationGroup() *QAnimationGroup {
-	var outptr_QAnimationGroup *C.QAnimationGroup = nil
-	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAnimationGroup_new(&outptr_QAnimationGroup, &outptr_QAbstractAnimation, &outptr_QObject)
-	ret := newQAnimationGroup(outptr_QAnimationGroup, outptr_QAbstractAnimation, outptr_QObject)
+	ret := newQAnimationGroup(C.QAnimationGroup_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAnimationGroup2 constructs a new QAnimationGroup object.
 func NewQAnimationGroup2(parent *QObject) *QAnimationGroup {
-	var outptr_QAnimationGroup *C.QAnimationGroup = nil
-	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAnimationGroup_new2(parent.cPointer(), &outptr_QAnimationGroup, &outptr_QAbstractAnimation, &outptr_QObject)
-	ret := newQAnimationGroup(outptr_QAnimationGroup, outptr_QAbstractAnimation, outptr_QObject)
+	ret := newQAnimationGroup(C.QAnimationGroup_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -106,7 +96,7 @@ func QAnimationGroup_TrUtf8(s string) string {
 }
 
 func (this *QAnimationGroup) AnimationAt(index int) *QAbstractAnimation {
-	return newQAbstractAnimation(C.QAnimationGroup_AnimationAt(this.h, (C.int)(index)), nil)
+	return newQAbstractAnimation(C.QAnimationGroup_AnimationAt(this.h, (C.int)(index)))
 }
 
 func (this *QAnimationGroup) AnimationCount() int {
@@ -130,7 +120,7 @@ func (this *QAnimationGroup) RemoveAnimation(animation *QAbstractAnimation) {
 }
 
 func (this *QAnimationGroup) TakeAnimation(index int) *QAbstractAnimation {
-	return newQAbstractAnimation(C.QAnimationGroup_TakeAnimation(this.h, (C.int)(index)), nil)
+	return newQAbstractAnimation(C.QAnimationGroup_TakeAnimation(this.h, (C.int)(index)))
 }
 
 func (this *QAnimationGroup) Clear() {

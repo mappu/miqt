@@ -218,16 +218,16 @@ public:
 
 };
 
-void QAccessiblePlugin_new(QAccessiblePlugin** outptr_QAccessiblePlugin, QObject** outptr_QObject) {
-	MiqtVirtualQAccessiblePlugin* ret = new MiqtVirtualQAccessiblePlugin();
-	*outptr_QAccessiblePlugin = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAccessiblePlugin* QAccessiblePlugin_new() {
+	return new MiqtVirtualQAccessiblePlugin();
 }
 
-void QAccessiblePlugin_new2(QObject* parent, QAccessiblePlugin** outptr_QAccessiblePlugin, QObject** outptr_QObject) {
-	MiqtVirtualQAccessiblePlugin* ret = new MiqtVirtualQAccessiblePlugin(parent);
-	*outptr_QAccessiblePlugin = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAccessiblePlugin* QAccessiblePlugin_new2(QObject* parent) {
+	return new MiqtVirtualQAccessiblePlugin(parent);
+}
+
+void QAccessiblePlugin_virtbase(QAccessiblePlugin* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QAccessiblePlugin_MetaObject(const QAccessiblePlugin* self) {

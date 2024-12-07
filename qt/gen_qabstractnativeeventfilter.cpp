@@ -36,9 +36,8 @@ public:
 
 };
 
-void QAbstractNativeEventFilter_new(QAbstractNativeEventFilter** outptr_QAbstractNativeEventFilter) {
-	MiqtVirtualQAbstractNativeEventFilter* ret = new MiqtVirtualQAbstractNativeEventFilter();
-	*outptr_QAbstractNativeEventFilter = ret;
+QAbstractNativeEventFilter* QAbstractNativeEventFilter_new() {
+	return new MiqtVirtualQAbstractNativeEventFilter();
 }
 
 bool QAbstractNativeEventFilter_NativeEventFilter(QAbstractNativeEventFilter* self, struct miqt_string eventType, void* message, long* result) {

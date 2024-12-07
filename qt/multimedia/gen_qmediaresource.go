@@ -39,54 +39,43 @@ func newQMediaResource(h *C.QMediaResource) *QMediaResource {
 	if h == nil {
 		return nil
 	}
+
 	return &QMediaResource{h: h}
 }
 
 // UnsafeNewQMediaResource constructs the type using only unsafe pointers.
 func UnsafeNewQMediaResource(h unsafe.Pointer) *QMediaResource {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaResource{h: (*C.QMediaResource)(h)}
+	return newQMediaResource((*C.QMediaResource)(h))
 }
 
 // NewQMediaResource constructs a new QMediaResource object.
 func NewQMediaResource() *QMediaResource {
-	var outptr_QMediaResource *C.QMediaResource = nil
 
-	C.QMediaResource_new(&outptr_QMediaResource)
-	ret := newQMediaResource(outptr_QMediaResource)
+	ret := newQMediaResource(C.QMediaResource_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaResource2 constructs a new QMediaResource object.
 func NewQMediaResource2(url *qt.QUrl) *QMediaResource {
-	var outptr_QMediaResource *C.QMediaResource = nil
 
-	C.QMediaResource_new2((*C.QUrl)(url.UnsafePointer()), &outptr_QMediaResource)
-	ret := newQMediaResource(outptr_QMediaResource)
+	ret := newQMediaResource(C.QMediaResource_new2((*C.QUrl)(url.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaResource3 constructs a new QMediaResource object.
 func NewQMediaResource3(request *network.QNetworkRequest) *QMediaResource {
-	var outptr_QMediaResource *C.QMediaResource = nil
 
-	C.QMediaResource_new3((*C.QNetworkRequest)(request.UnsafePointer()), &outptr_QMediaResource)
-	ret := newQMediaResource(outptr_QMediaResource)
+	ret := newQMediaResource(C.QMediaResource_new3((*C.QNetworkRequest)(request.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaResource4 constructs a new QMediaResource object.
 func NewQMediaResource4(other *QMediaResource) *QMediaResource {
-	var outptr_QMediaResource *C.QMediaResource = nil
 
-	C.QMediaResource_new4(other.cPointer(), &outptr_QMediaResource)
-	ret := newQMediaResource(outptr_QMediaResource)
+	ret := newQMediaResource(C.QMediaResource_new4(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -97,10 +86,8 @@ func NewQMediaResource5(url *qt.QUrl, mimeType string) *QMediaResource {
 	mimeType_ms.data = C.CString(mimeType)
 	mimeType_ms.len = C.size_t(len(mimeType))
 	defer C.free(unsafe.Pointer(mimeType_ms.data))
-	var outptr_QMediaResource *C.QMediaResource = nil
 
-	C.QMediaResource_new5((*C.QUrl)(url.UnsafePointer()), mimeType_ms, &outptr_QMediaResource)
-	ret := newQMediaResource(outptr_QMediaResource)
+	ret := newQMediaResource(C.QMediaResource_new5((*C.QUrl)(url.UnsafePointer()), mimeType_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -111,10 +98,8 @@ func NewQMediaResource6(request *network.QNetworkRequest, mimeType string) *QMed
 	mimeType_ms.data = C.CString(mimeType)
 	mimeType_ms.len = C.size_t(len(mimeType))
 	defer C.free(unsafe.Pointer(mimeType_ms.data))
-	var outptr_QMediaResource *C.QMediaResource = nil
 
-	C.QMediaResource_new6((*C.QNetworkRequest)(request.UnsafePointer()), mimeType_ms, &outptr_QMediaResource)
-	ret := newQMediaResource(outptr_QMediaResource)
+	ret := newQMediaResource(C.QMediaResource_new6((*C.QNetworkRequest)(request.UnsafePointer()), mimeType_ms))
 	ret.isSubclass = true
 	return ret
 }

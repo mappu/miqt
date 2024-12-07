@@ -36,46 +36,34 @@ func (this *QsciLexerJava) UnsafePointer() unsafe.Pointer {
 }
 
 // newQsciLexerJava constructs the type using only CGO pointers.
-func newQsciLexerJava(h *C.QsciLexerJava, h_QsciLexerCPP *C.QsciLexerCPP, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerJava {
+func newQsciLexerJava(h *C.QsciLexerJava) *QsciLexerJava {
 	if h == nil {
 		return nil
 	}
+	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
+	C.QsciLexerJava_virtbase(h, &outptr_QsciLexerCPP)
+
 	return &QsciLexerJava{h: h,
-		QsciLexerCPP: newQsciLexerCPP(h_QsciLexerCPP, h_QsciLexer, h_QObject)}
+		QsciLexerCPP: newQsciLexerCPP(outptr_QsciLexerCPP)}
 }
 
 // UnsafeNewQsciLexerJava constructs the type using only unsafe pointers.
-func UnsafeNewQsciLexerJava(h unsafe.Pointer, h_QsciLexerCPP unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerJava {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciLexerJava{h: (*C.QsciLexerJava)(h),
-		QsciLexerCPP: UnsafeNewQsciLexerCPP(h_QsciLexerCPP, h_QsciLexer, h_QObject)}
+func UnsafeNewQsciLexerJava(h unsafe.Pointer) *QsciLexerJava {
+	return newQsciLexerJava((*C.QsciLexerJava)(h))
 }
 
 // NewQsciLexerJava constructs a new QsciLexerJava object.
 func NewQsciLexerJava() *QsciLexerJava {
-	var outptr_QsciLexerJava *C.QsciLexerJava = nil
-	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerJava_new(&outptr_QsciLexerJava, &outptr_QsciLexerCPP, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerJava(outptr_QsciLexerJava, outptr_QsciLexerCPP, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerJava(C.QsciLexerJava_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQsciLexerJava2 constructs a new QsciLexerJava object.
 func NewQsciLexerJava2(parent *qt6.QObject) *QsciLexerJava {
-	var outptr_QsciLexerJava *C.QsciLexerJava = nil
-	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerJava_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QsciLexerJava, &outptr_QsciLexerCPP, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerJava(outptr_QsciLexerJava, outptr_QsciLexerCPP, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerJava(C.QsciLexerJava_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }

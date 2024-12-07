@@ -42,33 +42,26 @@ func (this *QGraphicsSvgItem) UnsafePointer() unsafe.Pointer {
 }
 
 // newQGraphicsSvgItem constructs the type using only CGO pointers.
-func newQGraphicsSvgItem(h *C.QGraphicsSvgItem, h_QGraphicsObject *C.QGraphicsObject, h_QObject *C.QObject, h_QGraphicsItem *C.QGraphicsItem) *QGraphicsSvgItem {
+func newQGraphicsSvgItem(h *C.QGraphicsSvgItem) *QGraphicsSvgItem {
 	if h == nil {
 		return nil
 	}
+	var outptr_QGraphicsObject *C.QGraphicsObject = nil
+	C.QGraphicsSvgItem_virtbase(h, &outptr_QGraphicsObject)
+
 	return &QGraphicsSvgItem{h: h,
-		QGraphicsObject: qt.UnsafeNewQGraphicsObject(unsafe.Pointer(h_QGraphicsObject), unsafe.Pointer(h_QObject), unsafe.Pointer(h_QGraphicsItem))}
+		QGraphicsObject: qt.UnsafeNewQGraphicsObject(unsafe.Pointer(outptr_QGraphicsObject))}
 }
 
 // UnsafeNewQGraphicsSvgItem constructs the type using only unsafe pointers.
-func UnsafeNewQGraphicsSvgItem(h unsafe.Pointer, h_QGraphicsObject unsafe.Pointer, h_QObject unsafe.Pointer, h_QGraphicsItem unsafe.Pointer) *QGraphicsSvgItem {
-	if h == nil {
-		return nil
-	}
-
-	return &QGraphicsSvgItem{h: (*C.QGraphicsSvgItem)(h),
-		QGraphicsObject: qt.UnsafeNewQGraphicsObject(h_QGraphicsObject, h_QObject, h_QGraphicsItem)}
+func UnsafeNewQGraphicsSvgItem(h unsafe.Pointer) *QGraphicsSvgItem {
+	return newQGraphicsSvgItem((*C.QGraphicsSvgItem)(h))
 }
 
 // NewQGraphicsSvgItem constructs a new QGraphicsSvgItem object.
 func NewQGraphicsSvgItem() *QGraphicsSvgItem {
-	var outptr_QGraphicsSvgItem *C.QGraphicsSvgItem = nil
-	var outptr_QGraphicsObject *C.QGraphicsObject = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QGraphicsItem *C.QGraphicsItem = nil
 
-	C.QGraphicsSvgItem_new(&outptr_QGraphicsSvgItem, &outptr_QGraphicsObject, &outptr_QObject, &outptr_QGraphicsItem)
-	ret := newQGraphicsSvgItem(outptr_QGraphicsSvgItem, outptr_QGraphicsObject, outptr_QObject, outptr_QGraphicsItem)
+	ret := newQGraphicsSvgItem(C.QGraphicsSvgItem_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -79,26 +72,16 @@ func NewQGraphicsSvgItem2(fileName string) *QGraphicsSvgItem {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QGraphicsSvgItem *C.QGraphicsSvgItem = nil
-	var outptr_QGraphicsObject *C.QGraphicsObject = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QGraphicsItem *C.QGraphicsItem = nil
 
-	C.QGraphicsSvgItem_new2(fileName_ms, &outptr_QGraphicsSvgItem, &outptr_QGraphicsObject, &outptr_QObject, &outptr_QGraphicsItem)
-	ret := newQGraphicsSvgItem(outptr_QGraphicsSvgItem, outptr_QGraphicsObject, outptr_QObject, outptr_QGraphicsItem)
+	ret := newQGraphicsSvgItem(C.QGraphicsSvgItem_new2(fileName_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsSvgItem3 constructs a new QGraphicsSvgItem object.
 func NewQGraphicsSvgItem3(parentItem *qt.QGraphicsItem) *QGraphicsSvgItem {
-	var outptr_QGraphicsSvgItem *C.QGraphicsSvgItem = nil
-	var outptr_QGraphicsObject *C.QGraphicsObject = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QGraphicsItem *C.QGraphicsItem = nil
 
-	C.QGraphicsSvgItem_new3((*C.QGraphicsItem)(parentItem.UnsafePointer()), &outptr_QGraphicsSvgItem, &outptr_QGraphicsObject, &outptr_QObject, &outptr_QGraphicsItem)
-	ret := newQGraphicsSvgItem(outptr_QGraphicsSvgItem, outptr_QGraphicsObject, outptr_QObject, outptr_QGraphicsItem)
+	ret := newQGraphicsSvgItem(C.QGraphicsSvgItem_new3((*C.QGraphicsItem)(parentItem.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -109,13 +92,8 @@ func NewQGraphicsSvgItem4(fileName string, parentItem *qt.QGraphicsItem) *QGraph
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QGraphicsSvgItem *C.QGraphicsSvgItem = nil
-	var outptr_QGraphicsObject *C.QGraphicsObject = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QGraphicsItem *C.QGraphicsItem = nil
 
-	C.QGraphicsSvgItem_new4(fileName_ms, (*C.QGraphicsItem)(parentItem.UnsafePointer()), &outptr_QGraphicsSvgItem, &outptr_QGraphicsObject, &outptr_QObject, &outptr_QGraphicsItem)
-	ret := newQGraphicsSvgItem(outptr_QGraphicsSvgItem, outptr_QGraphicsObject, outptr_QObject, outptr_QGraphicsItem)
+	ret := newQGraphicsSvgItem(C.QGraphicsSvgItem_new4(fileName_ms, (*C.QGraphicsItem)(parentItem.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -153,7 +131,7 @@ func (this *QGraphicsSvgItem) SetSharedRenderer(renderer *QSvgRenderer) {
 }
 
 func (this *QGraphicsSvgItem) Renderer() *QSvgRenderer {
-	return newQSvgRenderer(C.QGraphicsSvgItem_Renderer(this.h), nil)
+	return newQSvgRenderer(C.QGraphicsSvgItem_Renderer(this.h))
 }
 
 func (this *QGraphicsSvgItem) SetElementId(id string) {
@@ -296,9 +274,9 @@ func miqt_exec_callback_QGraphicsSvgItem_Paint(self *C.QGraphicsSvgItem, cb C.in
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(painter))
 
-	slotval2 := qt.UnsafeNewQStyleOptionGraphicsItem(unsafe.Pointer(option), nil)
+	slotval2 := qt.UnsafeNewQStyleOptionGraphicsItem(unsafe.Pointer(option))
 
-	slotval3 := qt.UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval3 := qt.UnsafeNewQWidget(unsafe.Pointer(widget))
 
 	gofunc((&QGraphicsSvgItem{h: self}).callVirtualBase_Paint, slotval1, slotval2, slotval3)
 

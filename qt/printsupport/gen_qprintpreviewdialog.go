@@ -36,104 +36,66 @@ func (this *QPrintPreviewDialog) UnsafePointer() unsafe.Pointer {
 }
 
 // newQPrintPreviewDialog constructs the type using only CGO pointers.
-func newQPrintPreviewDialog(h *C.QPrintPreviewDialog, h_QDialog *C.QDialog, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QPrintPreviewDialog {
+func newQPrintPreviewDialog(h *C.QPrintPreviewDialog) *QPrintPreviewDialog {
 	if h == nil {
 		return nil
 	}
+	var outptr_QDialog *C.QDialog = nil
+	C.QPrintPreviewDialog_virtbase(h, &outptr_QDialog)
+
 	return &QPrintPreviewDialog{h: h,
-		QDialog: qt.UnsafeNewQDialog(unsafe.Pointer(h_QDialog), unsafe.Pointer(h_QWidget), unsafe.Pointer(h_QObject), unsafe.Pointer(h_QPaintDevice))}
+		QDialog: qt.UnsafeNewQDialog(unsafe.Pointer(outptr_QDialog))}
 }
 
 // UnsafeNewQPrintPreviewDialog constructs the type using only unsafe pointers.
-func UnsafeNewQPrintPreviewDialog(h unsafe.Pointer, h_QDialog unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QPrintPreviewDialog {
-	if h == nil {
-		return nil
-	}
-
-	return &QPrintPreviewDialog{h: (*C.QPrintPreviewDialog)(h),
-		QDialog: qt.UnsafeNewQDialog(h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQPrintPreviewDialog(h unsafe.Pointer) *QPrintPreviewDialog {
+	return newQPrintPreviewDialog((*C.QPrintPreviewDialog)(h))
 }
 
 // NewQPrintPreviewDialog constructs a new QPrintPreviewDialog object.
 func NewQPrintPreviewDialog(parent *qt.QWidget) *QPrintPreviewDialog {
-	var outptr_QPrintPreviewDialog *C.QPrintPreviewDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPrintPreviewDialog_new((*C.QWidget)(parent.UnsafePointer()), &outptr_QPrintPreviewDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPrintPreviewDialog(outptr_QPrintPreviewDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPrintPreviewDialog(C.QPrintPreviewDialog_new((*C.QWidget)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPrintPreviewDialog2 constructs a new QPrintPreviewDialog object.
 func NewQPrintPreviewDialog2() *QPrintPreviewDialog {
-	var outptr_QPrintPreviewDialog *C.QPrintPreviewDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPrintPreviewDialog_new2(&outptr_QPrintPreviewDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPrintPreviewDialog(outptr_QPrintPreviewDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPrintPreviewDialog(C.QPrintPreviewDialog_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPrintPreviewDialog3 constructs a new QPrintPreviewDialog object.
 func NewQPrintPreviewDialog3(printer *QPrinter) *QPrintPreviewDialog {
-	var outptr_QPrintPreviewDialog *C.QPrintPreviewDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPrintPreviewDialog_new3(printer.cPointer(), &outptr_QPrintPreviewDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPrintPreviewDialog(outptr_QPrintPreviewDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPrintPreviewDialog(C.QPrintPreviewDialog_new3(printer.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPrintPreviewDialog4 constructs a new QPrintPreviewDialog object.
 func NewQPrintPreviewDialog4(parent *qt.QWidget, flags qt.WindowType) *QPrintPreviewDialog {
-	var outptr_QPrintPreviewDialog *C.QPrintPreviewDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPrintPreviewDialog_new4((*C.QWidget)(parent.UnsafePointer()), (C.int)(flags), &outptr_QPrintPreviewDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPrintPreviewDialog(outptr_QPrintPreviewDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPrintPreviewDialog(C.QPrintPreviewDialog_new4((*C.QWidget)(parent.UnsafePointer()), (C.int)(flags)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPrintPreviewDialog5 constructs a new QPrintPreviewDialog object.
 func NewQPrintPreviewDialog5(printer *QPrinter, parent *qt.QWidget) *QPrintPreviewDialog {
-	var outptr_QPrintPreviewDialog *C.QPrintPreviewDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPrintPreviewDialog_new5(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer()), &outptr_QPrintPreviewDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPrintPreviewDialog(outptr_QPrintPreviewDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPrintPreviewDialog(C.QPrintPreviewDialog_new5(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPrintPreviewDialog6 constructs a new QPrintPreviewDialog object.
 func NewQPrintPreviewDialog6(printer *QPrinter, parent *qt.QWidget, flags qt.WindowType) *QPrintPreviewDialog {
-	var outptr_QPrintPreviewDialog *C.QPrintPreviewDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPrintPreviewDialog_new6(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer()), (C.int)(flags), &outptr_QPrintPreviewDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPrintPreviewDialog(outptr_QPrintPreviewDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPrintPreviewDialog(C.QPrintPreviewDialog_new6(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer()), (C.int)(flags)))
 	ret.isSubclass = true
 	return ret
 }
@@ -167,7 +129,7 @@ func QPrintPreviewDialog_TrUtf8(s string) string {
 }
 
 func (this *QPrintPreviewDialog) Printer() *QPrinter {
-	return newQPrinter(C.QPrintPreviewDialog_Printer(this.h), nil, nil)
+	return newQPrinter(C.QPrintPreviewDialog_Printer(this.h))
 }
 
 func (this *QPrintPreviewDialog) SetVisible(visible bool) {
@@ -193,7 +155,7 @@ func miqt_exec_callback_QPrintPreviewDialog_PaintRequested(cb C.intptr_t, printe
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPrinter(printer, nil, nil)
+	slotval1 := newQPrinter(printer)
 
 	gofunc(slotval1)
 }
@@ -462,7 +424,7 @@ func miqt_exec_callback_QPrintPreviewDialog_KeyPressEvent(self *C.QPrintPreviewD
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(param1))
 
 	gofunc((&QPrintPreviewDialog{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -488,7 +450,7 @@ func miqt_exec_callback_QPrintPreviewDialog_CloseEvent(self *C.QPrintPreviewDial
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQCloseEvent(unsafe.Pointer(param1), nil)
+	slotval1 := qt.UnsafeNewQCloseEvent(unsafe.Pointer(param1))
 
 	gofunc((&QPrintPreviewDialog{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -514,7 +476,7 @@ func miqt_exec_callback_QPrintPreviewDialog_ShowEvent(self *C.QPrintPreviewDialo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQShowEvent(unsafe.Pointer(param1), nil)
+	slotval1 := qt.UnsafeNewQShowEvent(unsafe.Pointer(param1))
 
 	gofunc((&QPrintPreviewDialog{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -540,7 +502,7 @@ func miqt_exec_callback_QPrintPreviewDialog_ResizeEvent(self *C.QPrintPreviewDia
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQResizeEvent(unsafe.Pointer(param1), nil)
+	slotval1 := qt.UnsafeNewQResizeEvent(unsafe.Pointer(param1))
 
 	gofunc((&QPrintPreviewDialog{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -566,7 +528,7 @@ func miqt_exec_callback_QPrintPreviewDialog_ContextMenuEvent(self *C.QPrintPrevi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQContextMenuEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQContextMenuEvent(unsafe.Pointer(param1))
 
 	gofunc((&QPrintPreviewDialog{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 

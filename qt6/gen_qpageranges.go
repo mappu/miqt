@@ -37,34 +37,27 @@ func newQPageRanges(h *C.QPageRanges) *QPageRanges {
 	if h == nil {
 		return nil
 	}
+
 	return &QPageRanges{h: h}
 }
 
 // UnsafeNewQPageRanges constructs the type using only unsafe pointers.
 func UnsafeNewQPageRanges(h unsafe.Pointer) *QPageRanges {
-	if h == nil {
-		return nil
-	}
-
-	return &QPageRanges{h: (*C.QPageRanges)(h)}
+	return newQPageRanges((*C.QPageRanges)(h))
 }
 
 // NewQPageRanges constructs a new QPageRanges object.
 func NewQPageRanges() *QPageRanges {
-	var outptr_QPageRanges *C.QPageRanges = nil
 
-	C.QPageRanges_new(&outptr_QPageRanges)
-	ret := newQPageRanges(outptr_QPageRanges)
+	ret := newQPageRanges(C.QPageRanges_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPageRanges2 constructs a new QPageRanges object.
 func NewQPageRanges2(other *QPageRanges) *QPageRanges {
-	var outptr_QPageRanges *C.QPageRanges = nil
 
-	C.QPageRanges_new2(other.cPointer(), &outptr_QPageRanges)
-	ret := newQPageRanges(outptr_QPageRanges)
+	ret := newQPageRanges(C.QPageRanges_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -176,34 +169,27 @@ func newQPageRanges__Range(h *C.QPageRanges__Range) *QPageRanges__Range {
 	if h == nil {
 		return nil
 	}
+
 	return &QPageRanges__Range{h: h}
 }
 
 // UnsafeNewQPageRanges__Range constructs the type using only unsafe pointers.
 func UnsafeNewQPageRanges__Range(h unsafe.Pointer) *QPageRanges__Range {
-	if h == nil {
-		return nil
-	}
-
-	return &QPageRanges__Range{h: (*C.QPageRanges__Range)(h)}
+	return newQPageRanges__Range((*C.QPageRanges__Range)(h))
 }
 
 // NewQPageRanges__Range constructs a new QPageRanges::Range object.
 func NewQPageRanges__Range() *QPageRanges__Range {
-	var outptr_QPageRanges__Range *C.QPageRanges__Range = nil
 
-	C.QPageRanges__Range_new(&outptr_QPageRanges__Range)
-	ret := newQPageRanges__Range(outptr_QPageRanges__Range)
+	ret := newQPageRanges__Range(C.QPageRanges__Range_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPageRanges__Range2 constructs a new QPageRanges::Range object.
 func NewQPageRanges__Range2(param1 *QPageRanges__Range) *QPageRanges__Range {
-	var outptr_QPageRanges__Range *C.QPageRanges__Range = nil
 
-	C.QPageRanges__Range_new2(param1.cPointer(), &outptr_QPageRanges__Range)
-	ret := newQPageRanges__Range(outptr_QPageRanges__Range)
+	ret := newQPageRanges__Range(C.QPageRanges__Range_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

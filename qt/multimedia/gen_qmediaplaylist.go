@@ -58,46 +58,36 @@ func (this *QMediaPlaylist) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMediaPlaylist constructs the type using only CGO pointers.
-func newQMediaPlaylist(h *C.QMediaPlaylist, h_QObject *C.QObject, h_QMediaBindableInterface *C.QMediaBindableInterface) *QMediaPlaylist {
+func newQMediaPlaylist(h *C.QMediaPlaylist) *QMediaPlaylist {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	var outptr_QMediaBindableInterface *C.QMediaBindableInterface = nil
+	C.QMediaPlaylist_virtbase(h, &outptr_QObject, &outptr_QMediaBindableInterface)
+
 	return &QMediaPlaylist{h: h,
-		QObject:                 qt.UnsafeNewQObject(unsafe.Pointer(h_QObject)),
-		QMediaBindableInterface: newQMediaBindableInterface(h_QMediaBindableInterface)}
+		QObject:                 qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject)),
+		QMediaBindableInterface: newQMediaBindableInterface(outptr_QMediaBindableInterface)}
 }
 
 // UnsafeNewQMediaPlaylist constructs the type using only unsafe pointers.
-func UnsafeNewQMediaPlaylist(h unsafe.Pointer, h_QObject unsafe.Pointer, h_QMediaBindableInterface unsafe.Pointer) *QMediaPlaylist {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaPlaylist{h: (*C.QMediaPlaylist)(h),
-		QObject:                 qt.UnsafeNewQObject(h_QObject),
-		QMediaBindableInterface: UnsafeNewQMediaBindableInterface(h_QMediaBindableInterface)}
+func UnsafeNewQMediaPlaylist(h unsafe.Pointer) *QMediaPlaylist {
+	return newQMediaPlaylist((*C.QMediaPlaylist)(h))
 }
 
 // NewQMediaPlaylist constructs a new QMediaPlaylist object.
 func NewQMediaPlaylist() *QMediaPlaylist {
-	var outptr_QMediaPlaylist *C.QMediaPlaylist = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QMediaBindableInterface *C.QMediaBindableInterface = nil
 
-	C.QMediaPlaylist_new(&outptr_QMediaPlaylist, &outptr_QObject, &outptr_QMediaBindableInterface)
-	ret := newQMediaPlaylist(outptr_QMediaPlaylist, outptr_QObject, outptr_QMediaBindableInterface)
+	ret := newQMediaPlaylist(C.QMediaPlaylist_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaPlaylist2 constructs a new QMediaPlaylist object.
 func NewQMediaPlaylist2(parent *qt.QObject) *QMediaPlaylist {
-	var outptr_QMediaPlaylist *C.QMediaPlaylist = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QMediaBindableInterface *C.QMediaBindableInterface = nil
 
-	C.QMediaPlaylist_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QMediaPlaylist, &outptr_QObject, &outptr_QMediaBindableInterface)
-	ret := newQMediaPlaylist(outptr_QMediaPlaylist, outptr_QObject, outptr_QMediaBindableInterface)
+	ret := newQMediaPlaylist(C.QMediaPlaylist_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -131,7 +121,7 @@ func QMediaPlaylist_TrUtf8(s string) string {
 }
 
 func (this *QMediaPlaylist) MediaObject() *QMediaObject {
-	return newQMediaObject(C.QMediaPlaylist_MediaObject(this.h), nil)
+	return newQMediaObject(C.QMediaPlaylist_MediaObject(this.h))
 }
 
 func (this *QMediaPlaylist) PlaybackMode() QMediaPlaylist__PlaybackMode {
@@ -553,7 +543,7 @@ func (this *QMediaPlaylist) Save22(location *qt.QUrl, format string) bool {
 
 func (this *QMediaPlaylist) callVirtualBase_MediaObject() *QMediaObject {
 
-	return newQMediaObject(C.QMediaPlaylist_virtualbase_MediaObject(unsafe.Pointer(this.h)), nil)
+	return newQMediaObject(C.QMediaPlaylist_virtualbase_MediaObject(unsafe.Pointer(this.h)))
 
 }
 func (this *QMediaPlaylist) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
@@ -596,7 +586,7 @@ func miqt_exec_callback_QMediaPlaylist_SetMediaObject(self *C.QMediaPlaylist, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMediaObject(object, nil)
+	slotval1 := newQMediaObject(object)
 
 	virtualReturn := gofunc((&QMediaPlaylist{h: self}).callVirtualBase_SetMediaObject, slotval1)
 
@@ -682,7 +672,7 @@ func miqt_exec_callback_QMediaPlaylist_TimerEvent(self *C.QMediaPlaylist, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QMediaPlaylist{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -708,7 +698,7 @@ func miqt_exec_callback_QMediaPlaylist_ChildEvent(self *C.QMediaPlaylist, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QMediaPlaylist{h: self}).callVirtualBase_ChildEvent, slotval1)
 

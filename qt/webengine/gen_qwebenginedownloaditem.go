@@ -93,22 +93,20 @@ func (this *QWebEngineDownloadItem) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebEngineDownloadItem constructs the type using only CGO pointers.
-func newQWebEngineDownloadItem(h *C.QWebEngineDownloadItem, h_QObject *C.QObject) *QWebEngineDownloadItem {
+func newQWebEngineDownloadItem(h *C.QWebEngineDownloadItem) *QWebEngineDownloadItem {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebEngineDownloadItem_virtbase(h, &outptr_QObject)
+
 	return &QWebEngineDownloadItem{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebEngineDownloadItem constructs the type using only unsafe pointers.
-func UnsafeNewQWebEngineDownloadItem(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebEngineDownloadItem {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineDownloadItem{h: (*C.QWebEngineDownloadItem)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebEngineDownloadItem(h unsafe.Pointer) *QWebEngineDownloadItem {
+	return newQWebEngineDownloadItem((*C.QWebEngineDownloadItem)(h))
 }
 
 func (this *QWebEngineDownloadItem) MetaObject() *qt.QMetaObject {
@@ -256,7 +254,7 @@ func (this *QWebEngineDownloadItem) SetDownloadFileName(fileName string) {
 }
 
 func (this *QWebEngineDownloadItem) Page() *QWebEnginePage {
-	return newQWebEnginePage(C.QWebEngineDownloadItem_Page(this.h), nil)
+	return newQWebEnginePage(C.QWebEngineDownloadItem_Page(this.h))
 }
 
 func (this *QWebEngineDownloadItem) Accept() {

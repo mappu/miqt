@@ -26,10 +26,10 @@ typedef struct QPoint QPoint;
 typedef struct QPointF QPointF;
 #endif
 
-void QLine_new(QLine** outptr_QLine);
-void QLine_new2(QPoint* pt1, QPoint* pt2, QLine** outptr_QLine);
-void QLine_new3(int x1, int y1, int x2, int y2, QLine** outptr_QLine);
-void QLine_new4(QLine* param1, QLine** outptr_QLine);
+QLine* QLine_new();
+QLine* QLine_new2(QPoint* pt1, QPoint* pt2);
+QLine* QLine_new3(int x1, int y1, int x2, int y2);
+QLine* QLine_new4(QLine* param1);
 bool QLine_IsNull(const QLine* self);
 QPoint* QLine_P1(const QLine* self);
 QPoint* QLine_P2(const QLine* self);
@@ -53,11 +53,11 @@ bool QLine_OperatorNotEqual(const QLine* self, QLine* d);
 QLineF* QLine_ToLineF(const QLine* self);
 void QLine_Delete(QLine* self, bool isSubclass);
 
-void QLineF_new(QLineF** outptr_QLineF);
-void QLineF_new2(QPointF* pt1, QPointF* pt2, QLineF** outptr_QLineF);
-void QLineF_new3(double x1, double y1, double x2, double y2, QLineF** outptr_QLineF);
-void QLineF_new4(QLine* line, QLineF** outptr_QLineF);
-void QLineF_new5(QLineF* param1, QLineF** outptr_QLineF);
+QLineF* QLineF_new();
+QLineF* QLineF_new2(QPointF* pt1, QPointF* pt2);
+QLineF* QLineF_new3(double x1, double y1, double x2, double y2);
+QLineF* QLineF_new4(QLine* line);
+QLineF* QLineF_new5(QLineF* param1);
 QLineF* QLineF_FromPolar(double length, double angle);
 bool QLineF_IsNull(const QLineF* self);
 QPointF* QLineF_P1(const QLineF* self);

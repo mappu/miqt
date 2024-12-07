@@ -38,24 +38,19 @@ func newQWebHistoryItem(h *C.QWebHistoryItem) *QWebHistoryItem {
 	if h == nil {
 		return nil
 	}
+
 	return &QWebHistoryItem{h: h}
 }
 
 // UnsafeNewQWebHistoryItem constructs the type using only unsafe pointers.
 func UnsafeNewQWebHistoryItem(h unsafe.Pointer) *QWebHistoryItem {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebHistoryItem{h: (*C.QWebHistoryItem)(h)}
+	return newQWebHistoryItem((*C.QWebHistoryItem)(h))
 }
 
 // NewQWebHistoryItem constructs a new QWebHistoryItem object.
 func NewQWebHistoryItem(other *QWebHistoryItem) *QWebHistoryItem {
-	var outptr_QWebHistoryItem *C.QWebHistoryItem = nil
 
-	C.QWebHistoryItem_new(other.cPointer(), &outptr_QWebHistoryItem)
-	ret := newQWebHistoryItem(outptr_QWebHistoryItem)
+	ret := newQWebHistoryItem(C.QWebHistoryItem_new(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -189,16 +184,13 @@ func newQWebHistory(h *C.QWebHistory) *QWebHistory {
 	if h == nil {
 		return nil
 	}
+
 	return &QWebHistory{h: h}
 }
 
 // UnsafeNewQWebHistory constructs the type using only unsafe pointers.
 func UnsafeNewQWebHistory(h unsafe.Pointer) *QWebHistory {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebHistory{h: (*C.QWebHistory)(h)}
+	return newQWebHistory((*C.QWebHistory)(h))
 }
 
 func (this *QWebHistory) Clear() {

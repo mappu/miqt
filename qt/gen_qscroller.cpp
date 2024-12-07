@@ -12,6 +12,10 @@
 #include "gen_qscroller.h"
 #include "_cgo_export.h"
 
+void QScroller_virtbase(QScroller* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
+
 QMetaObject* QScroller_MetaObject(const QScroller* self) {
 	return (QMetaObject*) self->metaObject();
 }

@@ -685,11 +685,12 @@ public:
 
 };
 
-void QAbstractSocket_new(int socketType, QObject* parent, QAbstractSocket** outptr_QAbstractSocket, QIODevice** outptr_QIODevice, QObject** outptr_QObject) {
-	MiqtVirtualQAbstractSocket* ret = new MiqtVirtualQAbstractSocket(static_cast<QAbstractSocket::SocketType>(socketType), parent);
-	*outptr_QAbstractSocket = ret;
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAbstractSocket* QAbstractSocket_new(int socketType, QObject* parent) {
+	return new MiqtVirtualQAbstractSocket(static_cast<QAbstractSocket::SocketType>(socketType), parent);
+}
+
+void QAbstractSocket_virtbase(QAbstractSocket* src, QIODevice** outptr_QIODevice) {
+	*outptr_QIODevice = static_cast<QIODevice*>(src);
 }
 
 QMetaObject* QAbstractSocket_MetaObject(const QAbstractSocket* self) {

@@ -55,22 +55,20 @@ func (this *QWebEngineNavigationRequest) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebEngineNavigationRequest constructs the type using only CGO pointers.
-func newQWebEngineNavigationRequest(h *C.QWebEngineNavigationRequest, h_QObject *C.QObject) *QWebEngineNavigationRequest {
+func newQWebEngineNavigationRequest(h *C.QWebEngineNavigationRequest) *QWebEngineNavigationRequest {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebEngineNavigationRequest_virtbase(h, &outptr_QObject)
+
 	return &QWebEngineNavigationRequest{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebEngineNavigationRequest constructs the type using only unsafe pointers.
-func UnsafeNewQWebEngineNavigationRequest(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebEngineNavigationRequest {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineNavigationRequest{h: (*C.QWebEngineNavigationRequest)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebEngineNavigationRequest(h unsafe.Pointer) *QWebEngineNavigationRequest {
+	return newQWebEngineNavigationRequest((*C.QWebEngineNavigationRequest)(h))
 }
 
 func (this *QWebEngineNavigationRequest) MetaObject() *qt6.QMetaObject {

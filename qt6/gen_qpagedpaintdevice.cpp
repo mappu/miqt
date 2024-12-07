@@ -8,6 +8,10 @@
 #include "gen_qpagedpaintdevice.h"
 #include "_cgo_export.h"
 
+void QPagedPaintDevice_virtbase(QPagedPaintDevice* src, QPaintDevice** outptr_QPaintDevice) {
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(src);
+}
+
 bool QPagedPaintDevice_NewPage(QPagedPaintDevice* self) {
 	return self->newPage();
 }

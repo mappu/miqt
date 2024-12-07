@@ -1052,20 +1052,16 @@ public:
 
 };
 
-void QWebView_new(QWidget* parent, QWebView** outptr_QWebView, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQWebView* ret = new MiqtVirtualQWebView(parent);
-	*outptr_QWebView = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QWebView* QWebView_new(QWidget* parent) {
+	return new MiqtVirtualQWebView(parent);
 }
 
-void QWebView_new2(QWebView** outptr_QWebView, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQWebView* ret = new MiqtVirtualQWebView();
-	*outptr_QWebView = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QWebView* QWebView_new2() {
+	return new MiqtVirtualQWebView();
+}
+
+void QWebView_virtbase(QWebView* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QWebView_MetaObject(const QWebView* self) {

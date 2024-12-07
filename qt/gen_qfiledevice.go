@@ -94,22 +94,20 @@ func (this *QFileDevice) UnsafePointer() unsafe.Pointer {
 }
 
 // newQFileDevice constructs the type using only CGO pointers.
-func newQFileDevice(h *C.QFileDevice, h_QIODevice *C.QIODevice, h_QObject *C.QObject) *QFileDevice {
+func newQFileDevice(h *C.QFileDevice) *QFileDevice {
 	if h == nil {
 		return nil
 	}
+	var outptr_QIODevice *C.QIODevice = nil
+	C.QFileDevice_virtbase(h, &outptr_QIODevice)
+
 	return &QFileDevice{h: h,
-		QIODevice: newQIODevice(h_QIODevice, h_QObject)}
+		QIODevice: newQIODevice(outptr_QIODevice)}
 }
 
 // UnsafeNewQFileDevice constructs the type using only unsafe pointers.
-func UnsafeNewQFileDevice(h unsafe.Pointer, h_QIODevice unsafe.Pointer, h_QObject unsafe.Pointer) *QFileDevice {
-	if h == nil {
-		return nil
-	}
-
-	return &QFileDevice{h: (*C.QFileDevice)(h),
-		QIODevice: UnsafeNewQIODevice(h_QIODevice, h_QObject)}
+func UnsafeNewQFileDevice(h unsafe.Pointer) *QFileDevice {
+	return newQFileDevice((*C.QFileDevice)(h))
 }
 
 func (this *QFileDevice) MetaObject() *QMetaObject {

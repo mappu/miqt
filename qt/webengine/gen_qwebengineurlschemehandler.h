@@ -34,8 +34,9 @@ typedef struct QWebEngineUrlRequestJob QWebEngineUrlRequestJob;
 typedef struct QWebEngineUrlSchemeHandler QWebEngineUrlSchemeHandler;
 #endif
 
-void QWebEngineUrlSchemeHandler_new(QWebEngineUrlSchemeHandler** outptr_QWebEngineUrlSchemeHandler, QObject** outptr_QObject);
-void QWebEngineUrlSchemeHandler_new2(QObject* parent, QWebEngineUrlSchemeHandler** outptr_QWebEngineUrlSchemeHandler, QObject** outptr_QObject);
+QWebEngineUrlSchemeHandler* QWebEngineUrlSchemeHandler_new();
+QWebEngineUrlSchemeHandler* QWebEngineUrlSchemeHandler_new2(QObject* parent);
+void QWebEngineUrlSchemeHandler_virtbase(QWebEngineUrlSchemeHandler* src, QObject** outptr_QObject);
 QMetaObject* QWebEngineUrlSchemeHandler_MetaObject(const QWebEngineUrlSchemeHandler* self);
 void* QWebEngineUrlSchemeHandler_Metacast(QWebEngineUrlSchemeHandler* self, const char* param1);
 struct miqt_string QWebEngineUrlSchemeHandler_Tr(const char* s);

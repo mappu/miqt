@@ -37,74 +37,59 @@ func newQQuaternion(h *C.QQuaternion) *QQuaternion {
 	if h == nil {
 		return nil
 	}
+
 	return &QQuaternion{h: h}
 }
 
 // UnsafeNewQQuaternion constructs the type using only unsafe pointers.
 func UnsafeNewQQuaternion(h unsafe.Pointer) *QQuaternion {
-	if h == nil {
-		return nil
-	}
-
-	return &QQuaternion{h: (*C.QQuaternion)(h)}
+	return newQQuaternion((*C.QQuaternion)(h))
 }
 
 // NewQQuaternion constructs a new QQuaternion object.
 func NewQQuaternion() *QQuaternion {
-	var outptr_QQuaternion *C.QQuaternion = nil
 
-	C.QQuaternion_new(&outptr_QQuaternion)
-	ret := newQQuaternion(outptr_QQuaternion)
+	ret := newQQuaternion(C.QQuaternion_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQQuaternion2 constructs a new QQuaternion object.
 func NewQQuaternion2(param1 Initialization) *QQuaternion {
-	var outptr_QQuaternion *C.QQuaternion = nil
 
-	C.QQuaternion_new2((C.int)(param1), &outptr_QQuaternion)
-	ret := newQQuaternion(outptr_QQuaternion)
+	ret := newQQuaternion(C.QQuaternion_new2((C.int)(param1)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQQuaternion3 constructs a new QQuaternion object.
 func NewQQuaternion3(scalar float32, xpos float32, ypos float32, zpos float32) *QQuaternion {
-	var outptr_QQuaternion *C.QQuaternion = nil
 
-	C.QQuaternion_new3((C.float)(scalar), (C.float)(xpos), (C.float)(ypos), (C.float)(zpos), &outptr_QQuaternion)
-	ret := newQQuaternion(outptr_QQuaternion)
+	ret := newQQuaternion(C.QQuaternion_new3((C.float)(scalar), (C.float)(xpos), (C.float)(ypos), (C.float)(zpos)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQQuaternion4 constructs a new QQuaternion object.
 func NewQQuaternion4(scalar float32, vector *QVector3D) *QQuaternion {
-	var outptr_QQuaternion *C.QQuaternion = nil
 
-	C.QQuaternion_new4((C.float)(scalar), vector.cPointer(), &outptr_QQuaternion)
-	ret := newQQuaternion(outptr_QQuaternion)
+	ret := newQQuaternion(C.QQuaternion_new4((C.float)(scalar), vector.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQQuaternion5 constructs a new QQuaternion object.
 func NewQQuaternion5(vector *QVector4D) *QQuaternion {
-	var outptr_QQuaternion *C.QQuaternion = nil
 
-	C.QQuaternion_new5(vector.cPointer(), &outptr_QQuaternion)
-	ret := newQQuaternion(outptr_QQuaternion)
+	ret := newQQuaternion(C.QQuaternion_new5(vector.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQQuaternion6 constructs a new QQuaternion object.
 func NewQQuaternion6(param1 *QQuaternion) *QQuaternion {
-	var outptr_QQuaternion *C.QQuaternion = nil
 
-	C.QQuaternion_new6(param1.cPointer(), &outptr_QQuaternion)
-	ret := newQQuaternion(outptr_QQuaternion)
+	ret := newQQuaternion(C.QQuaternion_new6(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

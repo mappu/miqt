@@ -42,68 +42,50 @@ func (this *QHistoryState) UnsafePointer() unsafe.Pointer {
 }
 
 // newQHistoryState constructs the type using only CGO pointers.
-func newQHistoryState(h *C.QHistoryState, h_QAbstractState *C.QAbstractState, h_QObject *C.QObject) *QHistoryState {
+func newQHistoryState(h *C.QHistoryState) *QHistoryState {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractState *C.QAbstractState = nil
+	C.QHistoryState_virtbase(h, &outptr_QAbstractState)
+
 	return &QHistoryState{h: h,
-		QAbstractState: newQAbstractState(h_QAbstractState, h_QObject)}
+		QAbstractState: newQAbstractState(outptr_QAbstractState)}
 }
 
 // UnsafeNewQHistoryState constructs the type using only unsafe pointers.
-func UnsafeNewQHistoryState(h unsafe.Pointer, h_QAbstractState unsafe.Pointer, h_QObject unsafe.Pointer) *QHistoryState {
-	if h == nil {
-		return nil
-	}
-
-	return &QHistoryState{h: (*C.QHistoryState)(h),
-		QAbstractState: UnsafeNewQAbstractState(h_QAbstractState, h_QObject)}
+func UnsafeNewQHistoryState(h unsafe.Pointer) *QHistoryState {
+	return newQHistoryState((*C.QHistoryState)(h))
 }
 
 // NewQHistoryState constructs a new QHistoryState object.
 func NewQHistoryState() *QHistoryState {
-	var outptr_QHistoryState *C.QHistoryState = nil
-	var outptr_QAbstractState *C.QAbstractState = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QHistoryState_new(&outptr_QHistoryState, &outptr_QAbstractState, &outptr_QObject)
-	ret := newQHistoryState(outptr_QHistoryState, outptr_QAbstractState, outptr_QObject)
+	ret := newQHistoryState(C.QHistoryState_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQHistoryState2 constructs a new QHistoryState object.
 func NewQHistoryState2(typeVal QHistoryState__HistoryType) *QHistoryState {
-	var outptr_QHistoryState *C.QHistoryState = nil
-	var outptr_QAbstractState *C.QAbstractState = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QHistoryState_new2((C.int)(typeVal), &outptr_QHistoryState, &outptr_QAbstractState, &outptr_QObject)
-	ret := newQHistoryState(outptr_QHistoryState, outptr_QAbstractState, outptr_QObject)
+	ret := newQHistoryState(C.QHistoryState_new2((C.int)(typeVal)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQHistoryState3 constructs a new QHistoryState object.
 func NewQHistoryState3(parent *QState) *QHistoryState {
-	var outptr_QHistoryState *C.QHistoryState = nil
-	var outptr_QAbstractState *C.QAbstractState = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QHistoryState_new3(parent.cPointer(), &outptr_QHistoryState, &outptr_QAbstractState, &outptr_QObject)
-	ret := newQHistoryState(outptr_QHistoryState, outptr_QAbstractState, outptr_QObject)
+	ret := newQHistoryState(C.QHistoryState_new3(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQHistoryState4 constructs a new QHistoryState object.
 func NewQHistoryState4(typeVal QHistoryState__HistoryType, parent *QState) *QHistoryState {
-	var outptr_QHistoryState *C.QHistoryState = nil
-	var outptr_QAbstractState *C.QAbstractState = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QHistoryState_new4((C.int)(typeVal), parent.cPointer(), &outptr_QHistoryState, &outptr_QAbstractState, &outptr_QObject)
-	ret := newQHistoryState(outptr_QHistoryState, outptr_QAbstractState, outptr_QObject)
+	ret := newQHistoryState(C.QHistoryState_new4((C.int)(typeVal), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -137,7 +119,7 @@ func QHistoryState_TrUtf8(s string) string {
 }
 
 func (this *QHistoryState) DefaultTransition() *QAbstractTransition {
-	return newQAbstractTransition(C.QHistoryState_DefaultTransition(this.h), nil)
+	return newQAbstractTransition(C.QHistoryState_DefaultTransition(this.h))
 }
 
 func (this *QHistoryState) SetDefaultTransition(transition *QAbstractTransition) {
@@ -145,7 +127,7 @@ func (this *QHistoryState) SetDefaultTransition(transition *QAbstractTransition)
 }
 
 func (this *QHistoryState) DefaultState() *QAbstractState {
-	return newQAbstractState(C.QHistoryState_DefaultState(this.h), nil)
+	return newQAbstractState(C.QHistoryState_DefaultState(this.h))
 }
 
 func (this *QHistoryState) SetDefaultState(state *QAbstractState) {

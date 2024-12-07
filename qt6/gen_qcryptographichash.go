@@ -69,24 +69,19 @@ func newQCryptographicHash(h *C.QCryptographicHash) *QCryptographicHash {
 	if h == nil {
 		return nil
 	}
+
 	return &QCryptographicHash{h: h}
 }
 
 // UnsafeNewQCryptographicHash constructs the type using only unsafe pointers.
 func UnsafeNewQCryptographicHash(h unsafe.Pointer) *QCryptographicHash {
-	if h == nil {
-		return nil
-	}
-
-	return &QCryptographicHash{h: (*C.QCryptographicHash)(h)}
+	return newQCryptographicHash((*C.QCryptographicHash)(h))
 }
 
 // NewQCryptographicHash constructs a new QCryptographicHash object.
 func NewQCryptographicHash(method QCryptographicHash__Algorithm) *QCryptographicHash {
-	var outptr_QCryptographicHash *C.QCryptographicHash = nil
 
-	C.QCryptographicHash_new((C.int)(method), &outptr_QCryptographicHash)
-	ret := newQCryptographicHash(outptr_QCryptographicHash)
+	ret := newQCryptographicHash(C.QCryptographicHash_new((C.int)(method)))
 	ret.isSubclass = true
 	return ret
 }

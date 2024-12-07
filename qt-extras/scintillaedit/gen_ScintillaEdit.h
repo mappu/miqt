@@ -284,10 +284,10 @@ typedef struct ScintillaEdit ScintillaEdit;
 typedef struct ScintillaEditBase ScintillaEditBase;
 #endif
 
-void Scintilla__Internal__Point_new(Scintilla__Internal__Point** outptr_Scintilla__Internal__Point);
-void Scintilla__Internal__Point_new2(Scintilla__Internal__Point* param1, Scintilla__Internal__Point** outptr_Scintilla__Internal__Point);
-void Scintilla__Internal__Point_new3(double x_, Scintilla__Internal__Point** outptr_Scintilla__Internal__Point);
-void Scintilla__Internal__Point_new4(double x_, double y_, Scintilla__Internal__Point** outptr_Scintilla__Internal__Point);
+Scintilla__Internal__Point* Scintilla__Internal__Point_new();
+Scintilla__Internal__Point* Scintilla__Internal__Point_new2(Scintilla__Internal__Point* param1);
+Scintilla__Internal__Point* Scintilla__Internal__Point_new3(double x_);
+Scintilla__Internal__Point* Scintilla__Internal__Point_new4(double x_, double y_);
 Scintilla__Internal__Point* Scintilla__Internal__Point_FromInts(int x_, int y_);
 bool Scintilla__Internal__Point_OperatorEqual(const Scintilla__Internal__Point* self, Scintilla__Internal__Point* other);
 bool Scintilla__Internal__Point_OperatorNotEqual(const Scintilla__Internal__Point* self, Scintilla__Internal__Point* other);
@@ -302,12 +302,12 @@ bool Scintilla__Internal__Interval_Intersects(const Scintilla__Internal__Interva
 Scintilla__Internal__Interval* Scintilla__Internal__Interval_Offset(const Scintilla__Internal__Interval* self, double offset);
 void Scintilla__Internal__Interval_Delete(Scintilla__Internal__Interval* self, bool isSubclass);
 
-void Scintilla__Internal__PRectangle_new(Scintilla__Internal__PRectangle** outptr_Scintilla__Internal__PRectangle);
-void Scintilla__Internal__PRectangle_new2(Scintilla__Internal__PRectangle* param1, Scintilla__Internal__PRectangle** outptr_Scintilla__Internal__PRectangle);
-void Scintilla__Internal__PRectangle_new3(double left_, Scintilla__Internal__PRectangle** outptr_Scintilla__Internal__PRectangle);
-void Scintilla__Internal__PRectangle_new4(double left_, double top_, Scintilla__Internal__PRectangle** outptr_Scintilla__Internal__PRectangle);
-void Scintilla__Internal__PRectangle_new5(double left_, double top_, double right_, Scintilla__Internal__PRectangle** outptr_Scintilla__Internal__PRectangle);
-void Scintilla__Internal__PRectangle_new6(double left_, double top_, double right_, double bottom_, Scintilla__Internal__PRectangle** outptr_Scintilla__Internal__PRectangle);
+Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_new();
+Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_new2(Scintilla__Internal__PRectangle* param1);
+Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_new3(double left_);
+Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_new4(double left_, double top_);
+Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_new5(double left_, double top_, double right_);
+Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_new6(double left_, double top_, double right_, double bottom_);
 Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_FromInts(int left_, int top_, int right_, int bottom_);
 bool Scintilla__Internal__PRectangle_OperatorEqual(const Scintilla__Internal__PRectangle* self, Scintilla__Internal__PRectangle* rc);
 bool Scintilla__Internal__PRectangle_Contains(const Scintilla__Internal__PRectangle* self, Scintilla__Internal__Point* pt);
@@ -325,12 +325,12 @@ double Scintilla__Internal__PRectangle_Height(const Scintilla__Internal__PRectan
 bool Scintilla__Internal__PRectangle_Empty(const Scintilla__Internal__PRectangle* self);
 void Scintilla__Internal__PRectangle_Delete(Scintilla__Internal__PRectangle* self, bool isSubclass);
 
-void Scintilla__Internal__ColourRGBA_new(Scintilla__Internal__ColourRGBA** outptr_Scintilla__Internal__ColourRGBA);
-void Scintilla__Internal__ColourRGBA_new2(unsigned int red, unsigned int green, unsigned int blue, Scintilla__Internal__ColourRGBA** outptr_Scintilla__Internal__ColourRGBA);
-void Scintilla__Internal__ColourRGBA_new3(Scintilla__Internal__ColourRGBA* cd, unsigned int alpha, Scintilla__Internal__ColourRGBA** outptr_Scintilla__Internal__ColourRGBA);
-void Scintilla__Internal__ColourRGBA_new4(Scintilla__Internal__ColourRGBA* param1, Scintilla__Internal__ColourRGBA** outptr_Scintilla__Internal__ColourRGBA);
-void Scintilla__Internal__ColourRGBA_new5(int co_, Scintilla__Internal__ColourRGBA** outptr_Scintilla__Internal__ColourRGBA);
-void Scintilla__Internal__ColourRGBA_new6(unsigned int red, unsigned int green, unsigned int blue, unsigned int alpha, Scintilla__Internal__ColourRGBA** outptr_Scintilla__Internal__ColourRGBA);
+Scintilla__Internal__ColourRGBA* Scintilla__Internal__ColourRGBA_new();
+Scintilla__Internal__ColourRGBA* Scintilla__Internal__ColourRGBA_new2(unsigned int red, unsigned int green, unsigned int blue);
+Scintilla__Internal__ColourRGBA* Scintilla__Internal__ColourRGBA_new3(Scintilla__Internal__ColourRGBA* cd, unsigned int alpha);
+Scintilla__Internal__ColourRGBA* Scintilla__Internal__ColourRGBA_new4(Scintilla__Internal__ColourRGBA* param1);
+Scintilla__Internal__ColourRGBA* Scintilla__Internal__ColourRGBA_new5(int co_);
+Scintilla__Internal__ColourRGBA* Scintilla__Internal__ColourRGBA_new6(unsigned int red, unsigned int green, unsigned int blue, unsigned int alpha);
 Scintilla__Internal__ColourRGBA* Scintilla__Internal__ColourRGBA_FromRGB(int co_);
 Scintilla__Internal__ColourRGBA* Scintilla__Internal__ColourRGBA_Grey(unsigned int grey);
 Scintilla__Internal__ColourRGBA* Scintilla__Internal__ColourRGBA_FromIpRGB(intptr_t co_);
@@ -354,23 +354,23 @@ void Scintilla__Internal__ColourRGBA_OperatorAssign(Scintilla__Internal__ColourR
 Scintilla__Internal__ColourRGBA* Scintilla__Internal__ColourRGBA_Grey2(unsigned int grey, unsigned int alpha);
 void Scintilla__Internal__ColourRGBA_Delete(Scintilla__Internal__ColourRGBA* self, bool isSubclass);
 
-void Scintilla__Internal__Stroke_new(Scintilla__Internal__ColourRGBA* colour_, Scintilla__Internal__Stroke** outptr_Scintilla__Internal__Stroke);
-void Scintilla__Internal__Stroke_new2(Scintilla__Internal__Stroke* param1, Scintilla__Internal__Stroke** outptr_Scintilla__Internal__Stroke);
-void Scintilla__Internal__Stroke_new3(Scintilla__Internal__ColourRGBA* colour_, double width_, Scintilla__Internal__Stroke** outptr_Scintilla__Internal__Stroke);
+Scintilla__Internal__Stroke* Scintilla__Internal__Stroke_new(Scintilla__Internal__ColourRGBA* colour_);
+Scintilla__Internal__Stroke* Scintilla__Internal__Stroke_new2(Scintilla__Internal__Stroke* param1);
+Scintilla__Internal__Stroke* Scintilla__Internal__Stroke_new3(Scintilla__Internal__ColourRGBA* colour_, double width_);
 float Scintilla__Internal__Stroke_WidthF(const Scintilla__Internal__Stroke* self);
 void Scintilla__Internal__Stroke_Delete(Scintilla__Internal__Stroke* self, bool isSubclass);
 
-void Scintilla__Internal__Fill_new(Scintilla__Internal__ColourRGBA* colour_, Scintilla__Internal__Fill** outptr_Scintilla__Internal__Fill);
-void Scintilla__Internal__Fill_new2(Scintilla__Internal__Fill* param1, Scintilla__Internal__Fill** outptr_Scintilla__Internal__Fill);
+Scintilla__Internal__Fill* Scintilla__Internal__Fill_new(Scintilla__Internal__ColourRGBA* colour_);
+Scintilla__Internal__Fill* Scintilla__Internal__Fill_new2(Scintilla__Internal__Fill* param1);
 void Scintilla__Internal__Fill_Delete(Scintilla__Internal__Fill* self, bool isSubclass);
 
-void Scintilla__Internal__FillStroke_new(Scintilla__Internal__ColourRGBA* colourFill_, Scintilla__Internal__ColourRGBA* colourStroke_, Scintilla__Internal__FillStroke** outptr_Scintilla__Internal__FillStroke);
-void Scintilla__Internal__FillStroke_new2(Scintilla__Internal__ColourRGBA* colourBoth, Scintilla__Internal__FillStroke** outptr_Scintilla__Internal__FillStroke);
-void Scintilla__Internal__FillStroke_new3(Scintilla__Internal__ColourRGBA* colourFill_, Scintilla__Internal__ColourRGBA* colourStroke_, double widthStroke_, Scintilla__Internal__FillStroke** outptr_Scintilla__Internal__FillStroke);
-void Scintilla__Internal__FillStroke_new4(Scintilla__Internal__ColourRGBA* colourBoth, double widthStroke_, Scintilla__Internal__FillStroke** outptr_Scintilla__Internal__FillStroke);
+Scintilla__Internal__FillStroke* Scintilla__Internal__FillStroke_new(Scintilla__Internal__ColourRGBA* colourFill_, Scintilla__Internal__ColourRGBA* colourStroke_);
+Scintilla__Internal__FillStroke* Scintilla__Internal__FillStroke_new2(Scintilla__Internal__ColourRGBA* colourBoth);
+Scintilla__Internal__FillStroke* Scintilla__Internal__FillStroke_new3(Scintilla__Internal__ColourRGBA* colourFill_, Scintilla__Internal__ColourRGBA* colourStroke_, double widthStroke_);
+Scintilla__Internal__FillStroke* Scintilla__Internal__FillStroke_new4(Scintilla__Internal__ColourRGBA* colourBoth, double widthStroke_);
 void Scintilla__Internal__FillStroke_Delete(Scintilla__Internal__FillStroke* self, bool isSubclass);
 
-void Scintilla__Internal__ColourStop_new(double position_, Scintilla__Internal__ColourRGBA* colour_, Scintilla__Internal__ColourStop** outptr_Scintilla__Internal__ColourStop);
+Scintilla__Internal__ColourStop* Scintilla__Internal__ColourStop_new(double position_, Scintilla__Internal__ColourRGBA* colour_);
 void Scintilla__Internal__ColourStop_Delete(Scintilla__Internal__ColourStop* self, bool isSubclass);
 
 void Scintilla__CharacterRange_Delete(Scintilla__CharacterRange* self, bool isSubclass);
@@ -395,18 +395,18 @@ void Scintilla__NotifyHeader_Delete(Scintilla__NotifyHeader* self, bool isSubcla
 
 void Scintilla__NotificationData_Delete(Scintilla__NotificationData* self, bool isSubclass);
 
-void Scintilla__Internal__FontParameters_new(const char* faceName_, Scintilla__Internal__FontParameters** outptr_Scintilla__Internal__FontParameters);
-void Scintilla__Internal__FontParameters_new2(const char* faceName_, double size_, Scintilla__Internal__FontParameters** outptr_Scintilla__Internal__FontParameters);
-void Scintilla__Internal__FontParameters_new3(const char* faceName_, double size_, int weight_, Scintilla__Internal__FontParameters** outptr_Scintilla__Internal__FontParameters);
-void Scintilla__Internal__FontParameters_new4(const char* faceName_, double size_, int weight_, bool italic_, Scintilla__Internal__FontParameters** outptr_Scintilla__Internal__FontParameters);
-void Scintilla__Internal__FontParameters_new5(const char* faceName_, double size_, int weight_, bool italic_, int extraFontFlag_, Scintilla__Internal__FontParameters** outptr_Scintilla__Internal__FontParameters);
-void Scintilla__Internal__FontParameters_new6(const char* faceName_, double size_, int weight_, bool italic_, int extraFontFlag_, int technology_, Scintilla__Internal__FontParameters** outptr_Scintilla__Internal__FontParameters);
-void Scintilla__Internal__FontParameters_new7(const char* faceName_, double size_, int weight_, bool italic_, int extraFontFlag_, int technology_, int characterSet_, Scintilla__Internal__FontParameters** outptr_Scintilla__Internal__FontParameters);
-void Scintilla__Internal__FontParameters_new8(const char* faceName_, double size_, int weight_, bool italic_, int extraFontFlag_, int technology_, int characterSet_, const char* localeName_, Scintilla__Internal__FontParameters** outptr_Scintilla__Internal__FontParameters);
-void Scintilla__Internal__FontParameters_new9(const char* faceName_, double size_, int weight_, bool italic_, int extraFontFlag_, int technology_, int characterSet_, const char* localeName_, int stretch_, Scintilla__Internal__FontParameters** outptr_Scintilla__Internal__FontParameters);
+Scintilla__Internal__FontParameters* Scintilla__Internal__FontParameters_new(const char* faceName_);
+Scintilla__Internal__FontParameters* Scintilla__Internal__FontParameters_new2(const char* faceName_, double size_);
+Scintilla__Internal__FontParameters* Scintilla__Internal__FontParameters_new3(const char* faceName_, double size_, int weight_);
+Scintilla__Internal__FontParameters* Scintilla__Internal__FontParameters_new4(const char* faceName_, double size_, int weight_, bool italic_);
+Scintilla__Internal__FontParameters* Scintilla__Internal__FontParameters_new5(const char* faceName_, double size_, int weight_, bool italic_, int extraFontFlag_);
+Scintilla__Internal__FontParameters* Scintilla__Internal__FontParameters_new6(const char* faceName_, double size_, int weight_, bool italic_, int extraFontFlag_, int technology_);
+Scintilla__Internal__FontParameters* Scintilla__Internal__FontParameters_new7(const char* faceName_, double size_, int weight_, bool italic_, int extraFontFlag_, int technology_, int characterSet_);
+Scintilla__Internal__FontParameters* Scintilla__Internal__FontParameters_new8(const char* faceName_, double size_, int weight_, bool italic_, int extraFontFlag_, int technology_, int characterSet_, const char* localeName_);
+Scintilla__Internal__FontParameters* Scintilla__Internal__FontParameters_new9(const char* faceName_, double size_, int weight_, bool italic_, int extraFontFlag_, int technology_, int characterSet_, const char* localeName_, int stretch_);
 void Scintilla__Internal__FontParameters_Delete(Scintilla__Internal__FontParameters* self, bool isSubclass);
 
-void Scintilla__Internal__Font_new(Scintilla__Internal__Font** outptr_Scintilla__Internal__Font);
+Scintilla__Internal__Font* Scintilla__Internal__Font_new();
 void Scintilla__Internal__Font_Delete(Scintilla__Internal__Font* self, bool isSubclass);
 
 size_t Scintilla__Internal__IScreenLine_Length(const Scintilla__Internal__IScreenLine* self);
@@ -426,11 +426,11 @@ double Scintilla__Internal__IScreenLineLayout_XFromPosition(Scintilla__Internal_
 void Scintilla__Internal__IScreenLineLayout_OperatorAssign(Scintilla__Internal__IScreenLineLayout* self, Scintilla__Internal__IScreenLineLayout* param1);
 void Scintilla__Internal__IScreenLineLayout_Delete(Scintilla__Internal__IScreenLineLayout* self, bool isSubclass);
 
-void Scintilla__Internal__SurfaceMode_new(Scintilla__Internal__SurfaceMode** outptr_Scintilla__Internal__SurfaceMode);
-void Scintilla__Internal__SurfaceMode_new2(int codePage_, bool bidiR2L_, Scintilla__Internal__SurfaceMode** outptr_Scintilla__Internal__SurfaceMode);
+Scintilla__Internal__SurfaceMode* Scintilla__Internal__SurfaceMode_new();
+Scintilla__Internal__SurfaceMode* Scintilla__Internal__SurfaceMode_new2(int codePage_, bool bidiR2L_);
 void Scintilla__Internal__SurfaceMode_Delete(Scintilla__Internal__SurfaceMode* self, bool isSubclass);
 
-void Scintilla__Internal__Surface_new(Scintilla__Internal__Surface** outptr_Scintilla__Internal__Surface);
+Scintilla__Internal__Surface* Scintilla__Internal__Surface_new();
 void Scintilla__Internal__Surface_Init(Scintilla__Internal__Surface* self, void* wid);
 void Scintilla__Internal__Surface_Init2(Scintilla__Internal__Surface* self, void* sid, void* wid);
 void Scintilla__Internal__Surface_SetMode(Scintilla__Internal__Surface* self, Scintilla__Internal__SurfaceMode* mode);
@@ -529,7 +529,7 @@ void Scintilla__Internal__Surface_override_virtual_FlushDrawing(void* self, intp
 void Scintilla__Internal__Surface_virtualbase_FlushDrawing(void* self);
 void Scintilla__Internal__Surface_Delete(Scintilla__Internal__Surface* self, bool isSubclass);
 
-void Scintilla__Internal__Window_new(Scintilla__Internal__Window** outptr_Scintilla__Internal__Window);
+Scintilla__Internal__Window* Scintilla__Internal__Window_new();
 void Scintilla__Internal__Window_OperatorAssign(Scintilla__Internal__Window* self, void* wid_);
 void* Scintilla__Internal__Window_GetID(const Scintilla__Internal__Window* self);
 bool Scintilla__Internal__Window_Created(const Scintilla__Internal__Window* self);
@@ -546,7 +546,7 @@ Scintilla__Internal__PRectangle* Scintilla__Internal__Window_GetMonitorRect(Scin
 void Scintilla__Internal__Window_Show1(Scintilla__Internal__Window* self, bool show);
 void Scintilla__Internal__Window_Delete(Scintilla__Internal__Window* self, bool isSubclass);
 
-void Scintilla__Internal__ListBoxEvent_new(int event_, Scintilla__Internal__ListBoxEvent** outptr_Scintilla__Internal__ListBoxEvent);
+Scintilla__Internal__ListBoxEvent* Scintilla__Internal__ListBoxEvent_new(int event_);
 void Scintilla__Internal__ListBoxEvent_Delete(Scintilla__Internal__ListBoxEvent* self, bool isSubclass);
 
 void Scintilla__Internal__IListBoxDelegate_ListNotify(Scintilla__Internal__IListBoxDelegate* self, Scintilla__Internal__ListBoxEvent* plbe);
@@ -555,7 +555,8 @@ void Scintilla__Internal__IListBoxDelegate_Delete(Scintilla__Internal__IListBoxD
 
 void Scintilla__Internal__ListOptions_Delete(Scintilla__Internal__ListOptions* self, bool isSubclass);
 
-void Scintilla__Internal__ListBox_new(Scintilla__Internal__ListBox** outptr_Scintilla__Internal__ListBox, Scintilla__Internal__Window** outptr_Scintilla__Internal__Window);
+Scintilla__Internal__ListBox* Scintilla__Internal__ListBox_new();
+void Scintilla__Internal__ListBox_virtbase(Scintilla__Internal__ListBox* src, Scintilla__Internal__Window** outptr_Scintilla__Internal__Window);
 void Scintilla__Internal__ListBox_SetFont(Scintilla__Internal__ListBox* self, Scintilla__Internal__Font* font);
 void Scintilla__Internal__ListBox_Create(Scintilla__Internal__ListBox* self, Scintilla__Internal__Window* parent, int ctrlID, Scintilla__Internal__Point* location, int lineHeight_, bool unicodeMode_, int technology_);
 void Scintilla__Internal__ListBox_SetAverageCharWidth(Scintilla__Internal__ListBox* self, int width);
@@ -615,7 +616,7 @@ void Scintilla__Internal__ListBox_override_virtual_SetOptions(void* self, intptr
 void Scintilla__Internal__ListBox_virtualbase_SetOptions(void* self, Scintilla__Internal__ListOptions* options_);
 void Scintilla__Internal__ListBox_Delete(Scintilla__Internal__ListBox* self, bool isSubclass);
 
-void Scintilla__Internal__Menu_new(Scintilla__Internal__Menu** outptr_Scintilla__Internal__Menu);
+Scintilla__Internal__Menu* Scintilla__Internal__Menu_new();
 void* Scintilla__Internal__Menu_GetID(const Scintilla__Internal__Menu* self);
 void Scintilla__Internal__Menu_CreatePopUp(Scintilla__Internal__Menu* self);
 void Scintilla__Internal__Menu_Destroy(Scintilla__Internal__Menu* self);
@@ -644,8 +645,9 @@ void Sci_NotifyHeader_Delete(Sci_NotifyHeader* self, bool isSubclass);
 
 void SCNotification_Delete(SCNotification* self, bool isSubclass);
 
-void ScintillaEditBase_new(QWidget* parent, ScintillaEditBase** outptr_ScintillaEditBase, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void ScintillaEditBase_new2(ScintillaEditBase** outptr_ScintillaEditBase, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+ScintillaEditBase* ScintillaEditBase_new(QWidget* parent);
+ScintillaEditBase* ScintillaEditBase_new2();
+void ScintillaEditBase_virtbase(ScintillaEditBase* src, QAbstractScrollArea** outptr_QAbstractScrollArea);
 QMetaObject* ScintillaEditBase_MetaObject(const ScintillaEditBase* self);
 void* ScintillaEditBase_Metacast(ScintillaEditBase* self, const char* param1);
 struct miqt_string ScintillaEditBase_Tr(const char* s);
@@ -809,9 +811,10 @@ void ScintillaEditBase_override_virtual_ViewportSizeHint(void* self, intptr_t sl
 QSize* ScintillaEditBase_virtualbase_ViewportSizeHint(const void* self);
 void ScintillaEditBase_Delete(ScintillaEditBase* self, bool isSubclass);
 
-void ScintillaDocument_new(ScintillaDocument** outptr_ScintillaDocument, QObject** outptr_QObject);
-void ScintillaDocument_new2(QObject* parent, ScintillaDocument** outptr_ScintillaDocument, QObject** outptr_QObject);
-void ScintillaDocument_new3(QObject* parent, void* pdoc_, ScintillaDocument** outptr_ScintillaDocument, QObject** outptr_QObject);
+ScintillaDocument* ScintillaDocument_new();
+ScintillaDocument* ScintillaDocument_new2(QObject* parent);
+ScintillaDocument* ScintillaDocument_new3(QObject* parent, void* pdoc_);
+void ScintillaDocument_virtbase(ScintillaDocument* src, QObject** outptr_QObject);
 QMetaObject* ScintillaDocument_MetaObject(const ScintillaDocument* self);
 void* ScintillaDocument_Metacast(ScintillaDocument* self, const char* param1);
 struct miqt_string ScintillaDocument_Tr(const char* s);
@@ -887,8 +890,9 @@ void ScintillaDocument_override_virtual_DisconnectNotify(void* self, intptr_t sl
 void ScintillaDocument_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void ScintillaDocument_Delete(ScintillaDocument* self, bool isSubclass);
 
-void ScintillaEdit_new(QWidget* parent, ScintillaEdit** outptr_ScintillaEdit, ScintillaEditBase** outptr_ScintillaEditBase, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void ScintillaEdit_new2(ScintillaEdit** outptr_ScintillaEdit, ScintillaEditBase** outptr_ScintillaEditBase, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+ScintillaEdit* ScintillaEdit_new(QWidget* parent);
+ScintillaEdit* ScintillaEdit_new2();
+void ScintillaEdit_virtbase(ScintillaEdit* src, ScintillaEditBase** outptr_ScintillaEditBase);
 QMetaObject* ScintillaEdit_MetaObject(const ScintillaEdit* self);
 void* ScintillaEdit_Metacast(ScintillaEdit* self, const char* param1);
 struct miqt_string ScintillaEdit_Tr(const char* s);

@@ -20,8 +20,8 @@ class QScriptString;
 typedef struct QScriptString QScriptString;
 #endif
 
-void QScriptString_new(QScriptString** outptr_QScriptString);
-void QScriptString_new2(QScriptString* other, QScriptString** outptr_QScriptString);
+QScriptString* QScriptString_new();
+QScriptString* QScriptString_new2(QScriptString* other);
 void QScriptString_OperatorAssign(QScriptString* self, QScriptString* other);
 bool QScriptString_IsValid(const QScriptString* self);
 bool QScriptString_OperatorEqual(const QScriptString* self, QScriptString* other);

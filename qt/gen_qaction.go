@@ -62,31 +62,26 @@ func (this *QAction) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAction constructs the type using only CGO pointers.
-func newQAction(h *C.QAction, h_QObject *C.QObject) *QAction {
+func newQAction(h *C.QAction) *QAction {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QAction_virtbase(h, &outptr_QObject)
+
 	return &QAction{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQAction constructs the type using only unsafe pointers.
-func UnsafeNewQAction(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAction {
-	if h == nil {
-		return nil
-	}
-
-	return &QAction{h: (*C.QAction)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQAction(h unsafe.Pointer) *QAction {
+	return newQAction((*C.QAction)(h))
 }
 
 // NewQAction constructs a new QAction object.
 func NewQAction() *QAction {
-	var outptr_QAction *C.QAction = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAction_new(&outptr_QAction, &outptr_QObject)
-	ret := newQAction(outptr_QAction, outptr_QObject)
+	ret := newQAction(C.QAction_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -97,11 +92,8 @@ func NewQAction2(text string) *QAction {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QAction *C.QAction = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAction_new2(text_ms, &outptr_QAction, &outptr_QObject)
-	ret := newQAction(outptr_QAction, outptr_QObject)
+	ret := newQAction(C.QAction_new2(text_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -112,22 +104,16 @@ func NewQAction3(icon *QIcon, text string) *QAction {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QAction *C.QAction = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAction_new3(icon.cPointer(), text_ms, &outptr_QAction, &outptr_QObject)
-	ret := newQAction(outptr_QAction, outptr_QObject)
+	ret := newQAction(C.QAction_new3(icon.cPointer(), text_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAction4 constructs a new QAction object.
 func NewQAction4(parent *QObject) *QAction {
-	var outptr_QAction *C.QAction = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAction_new4(parent.cPointer(), &outptr_QAction, &outptr_QObject)
-	ret := newQAction(outptr_QAction, outptr_QObject)
+	ret := newQAction(C.QAction_new4(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -138,11 +124,8 @@ func NewQAction5(text string, parent *QObject) *QAction {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QAction *C.QAction = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAction_new5(text_ms, parent.cPointer(), &outptr_QAction, &outptr_QObject)
-	ret := newQAction(outptr_QAction, outptr_QObject)
+	ret := newQAction(C.QAction_new5(text_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -153,11 +136,8 @@ func NewQAction6(icon *QIcon, text string, parent *QObject) *QAction {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QAction *C.QAction = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAction_new6(icon.cPointer(), text_ms, parent.cPointer(), &outptr_QAction, &outptr_QObject)
-	ret := newQAction(outptr_QAction, outptr_QObject)
+	ret := newQAction(C.QAction_new6(icon.cPointer(), text_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -195,7 +175,7 @@ func (this *QAction) SetActionGroup(group *QActionGroup) {
 }
 
 func (this *QAction) ActionGroup() *QActionGroup {
-	return newQActionGroup(C.QAction_ActionGroup(this.h), nil)
+	return newQActionGroup(C.QAction_ActionGroup(this.h))
 }
 
 func (this *QAction) SetIcon(icon *QIcon) {
@@ -292,7 +272,7 @@ func (this *QAction) Priority() QAction__Priority {
 }
 
 func (this *QAction) Menu() *QMenu {
-	return newQMenu(C.QAction_Menu(this.h), nil, nil, nil)
+	return newQMenu(C.QAction_Menu(this.h))
 }
 
 func (this *QAction) SetMenu(menu *QMenu) {
@@ -432,7 +412,7 @@ func (this *QAction) IsShortcutVisibleInContextMenu() bool {
 }
 
 func (this *QAction) ParentWidget() *QWidget {
-	return newQWidget(C.QAction_ParentWidget(this.h), nil, nil)
+	return newQWidget(C.QAction_ParentWidget(this.h))
 }
 
 func (this *QAction) AssociatedWidgets() []*QWidget {
@@ -440,7 +420,7 @@ func (this *QAction) AssociatedWidgets() []*QWidget {
 	_ret := make([]*QWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQWidget(_outCast[i], nil, nil)
+		_ret[i] = newQWidget(_outCast[i])
 	}
 	return _ret
 }
@@ -450,7 +430,7 @@ func (this *QAction) AssociatedGraphicsWidgets() []*QGraphicsWidget {
 	_ret := make([]*QGraphicsWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsWidget(_outCast[i], nil, nil, nil, nil)
+		_ret[i] = newQGraphicsWidget(_outCast[i])
 	}
 	return _ret
 }
@@ -700,7 +680,7 @@ func miqt_exec_callback_QAction_TimerEvent(self *C.QAction, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QAction{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -726,7 +706,7 @@ func miqt_exec_callback_QAction_ChildEvent(self *C.QAction, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QAction{h: self}).callVirtualBase_ChildEvent, slotval1)
 

@@ -61,46 +61,36 @@ func (this *QCameraImageCapture) UnsafePointer() unsafe.Pointer {
 }
 
 // newQCameraImageCapture constructs the type using only CGO pointers.
-func newQCameraImageCapture(h *C.QCameraImageCapture, h_QObject *C.QObject, h_QMediaBindableInterface *C.QMediaBindableInterface) *QCameraImageCapture {
+func newQCameraImageCapture(h *C.QCameraImageCapture) *QCameraImageCapture {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	var outptr_QMediaBindableInterface *C.QMediaBindableInterface = nil
+	C.QCameraImageCapture_virtbase(h, &outptr_QObject, &outptr_QMediaBindableInterface)
+
 	return &QCameraImageCapture{h: h,
-		QObject:                 qt.UnsafeNewQObject(unsafe.Pointer(h_QObject)),
-		QMediaBindableInterface: newQMediaBindableInterface(h_QMediaBindableInterface)}
+		QObject:                 qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject)),
+		QMediaBindableInterface: newQMediaBindableInterface(outptr_QMediaBindableInterface)}
 }
 
 // UnsafeNewQCameraImageCapture constructs the type using only unsafe pointers.
-func UnsafeNewQCameraImageCapture(h unsafe.Pointer, h_QObject unsafe.Pointer, h_QMediaBindableInterface unsafe.Pointer) *QCameraImageCapture {
-	if h == nil {
-		return nil
-	}
-
-	return &QCameraImageCapture{h: (*C.QCameraImageCapture)(h),
-		QObject:                 qt.UnsafeNewQObject(h_QObject),
-		QMediaBindableInterface: UnsafeNewQMediaBindableInterface(h_QMediaBindableInterface)}
+func UnsafeNewQCameraImageCapture(h unsafe.Pointer) *QCameraImageCapture {
+	return newQCameraImageCapture((*C.QCameraImageCapture)(h))
 }
 
 // NewQCameraImageCapture constructs a new QCameraImageCapture object.
 func NewQCameraImageCapture(mediaObject *QMediaObject) *QCameraImageCapture {
-	var outptr_QCameraImageCapture *C.QCameraImageCapture = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QMediaBindableInterface *C.QMediaBindableInterface = nil
 
-	C.QCameraImageCapture_new(mediaObject.cPointer(), &outptr_QCameraImageCapture, &outptr_QObject, &outptr_QMediaBindableInterface)
-	ret := newQCameraImageCapture(outptr_QCameraImageCapture, outptr_QObject, outptr_QMediaBindableInterface)
+	ret := newQCameraImageCapture(C.QCameraImageCapture_new(mediaObject.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCameraImageCapture2 constructs a new QCameraImageCapture object.
 func NewQCameraImageCapture2(mediaObject *QMediaObject, parent *qt.QObject) *QCameraImageCapture {
-	var outptr_QCameraImageCapture *C.QCameraImageCapture = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QMediaBindableInterface *C.QMediaBindableInterface = nil
 
-	C.QCameraImageCapture_new2(mediaObject.cPointer(), (*C.QObject)(parent.UnsafePointer()), &outptr_QCameraImageCapture, &outptr_QObject, &outptr_QMediaBindableInterface)
-	ret := newQCameraImageCapture(outptr_QCameraImageCapture, outptr_QObject, outptr_QMediaBindableInterface)
+	ret := newQCameraImageCapture(C.QCameraImageCapture_new2(mediaObject.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -142,7 +132,7 @@ func (this *QCameraImageCapture) Availability() QMultimedia__AvailabilityStatus 
 }
 
 func (this *QCameraImageCapture) MediaObject() *QMediaObject {
-	return newQMediaObject(C.QCameraImageCapture_MediaObject(this.h), nil)
+	return newQMediaObject(C.QCameraImageCapture_MediaObject(this.h))
 }
 
 func (this *QCameraImageCapture) Error() QCameraImageCapture__Error {
@@ -372,7 +362,7 @@ func miqt_exec_callback_QCameraImageCapture_ImageCaptured(cb C.intptr_t, id C.in
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (int)(id)
 
-	slotval2 := qt.UnsafeNewQImage(unsafe.Pointer(preview), nil)
+	slotval2 := qt.UnsafeNewQImage(unsafe.Pointer(preview))
 
 	gofunc(slotval1, slotval2)
 }
@@ -536,7 +526,7 @@ func (this *QCameraImageCapture) Capture1(location string) int {
 
 func (this *QCameraImageCapture) callVirtualBase_MediaObject() *QMediaObject {
 
-	return newQMediaObject(C.QCameraImageCapture_virtualbase_MediaObject(unsafe.Pointer(this.h)), nil)
+	return newQMediaObject(C.QCameraImageCapture_virtualbase_MediaObject(unsafe.Pointer(this.h)))
 
 }
 func (this *QCameraImageCapture) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
@@ -579,7 +569,7 @@ func miqt_exec_callback_QCameraImageCapture_SetMediaObject(self *C.QCameraImageC
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMediaObject(mediaObject, nil)
+	slotval1 := newQMediaObject(mediaObject)
 
 	virtualReturn := gofunc((&QCameraImageCapture{h: self}).callVirtualBase_SetMediaObject, slotval1)
 
@@ -665,7 +655,7 @@ func miqt_exec_callback_QCameraImageCapture_TimerEvent(self *C.QCameraImageCaptu
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QCameraImageCapture{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -691,7 +681,7 @@ func miqt_exec_callback_QCameraImageCapture_ChildEvent(self *C.QCameraImageCaptu
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QCameraImageCapture{h: self}).callVirtualBase_ChildEvent, slotval1)
 

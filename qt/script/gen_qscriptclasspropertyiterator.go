@@ -37,16 +37,13 @@ func newQScriptClassPropertyIterator(h *C.QScriptClassPropertyIterator) *QScript
 	if h == nil {
 		return nil
 	}
+
 	return &QScriptClassPropertyIterator{h: h}
 }
 
 // UnsafeNewQScriptClassPropertyIterator constructs the type using only unsafe pointers.
 func UnsafeNewQScriptClassPropertyIterator(h unsafe.Pointer) *QScriptClassPropertyIterator {
-	if h == nil {
-		return nil
-	}
-
-	return &QScriptClassPropertyIterator{h: (*C.QScriptClassPropertyIterator)(h)}
+	return newQScriptClassPropertyIterator((*C.QScriptClassPropertyIterator)(h))
 }
 
 func (this *QScriptClassPropertyIterator) Object() *QScriptValue {

@@ -57,44 +57,34 @@ func (this *QsciLexerVHDL) UnsafePointer() unsafe.Pointer {
 }
 
 // newQsciLexerVHDL constructs the type using only CGO pointers.
-func newQsciLexerVHDL(h *C.QsciLexerVHDL, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerVHDL {
+func newQsciLexerVHDL(h *C.QsciLexerVHDL) *QsciLexerVHDL {
 	if h == nil {
 		return nil
 	}
+	var outptr_QsciLexer *C.QsciLexer = nil
+	C.QsciLexerVHDL_virtbase(h, &outptr_QsciLexer)
+
 	return &QsciLexerVHDL{h: h,
-		QsciLexer: newQsciLexer(h_QsciLexer, h_QObject)}
+		QsciLexer: newQsciLexer(outptr_QsciLexer)}
 }
 
 // UnsafeNewQsciLexerVHDL constructs the type using only unsafe pointers.
-func UnsafeNewQsciLexerVHDL(h unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerVHDL {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciLexerVHDL{h: (*C.QsciLexerVHDL)(h),
-		QsciLexer: UnsafeNewQsciLexer(h_QsciLexer, h_QObject)}
+func UnsafeNewQsciLexerVHDL(h unsafe.Pointer) *QsciLexerVHDL {
+	return newQsciLexerVHDL((*C.QsciLexerVHDL)(h))
 }
 
 // NewQsciLexerVHDL constructs a new QsciLexerVHDL object.
 func NewQsciLexerVHDL() *QsciLexerVHDL {
-	var outptr_QsciLexerVHDL *C.QsciLexerVHDL = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerVHDL_new(&outptr_QsciLexerVHDL, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerVHDL(outptr_QsciLexerVHDL, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerVHDL(C.QsciLexerVHDL_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQsciLexerVHDL2 constructs a new QsciLexerVHDL object.
 func NewQsciLexerVHDL2(parent *qt.QObject) *QsciLexerVHDL {
-	var outptr_QsciLexerVHDL *C.QsciLexerVHDL = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerVHDL_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QsciLexerVHDL, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerVHDL(outptr_QsciLexerVHDL, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerVHDL(C.QsciLexerVHDL_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -1070,7 +1060,7 @@ func miqt_exec_callback_QsciLexerVHDL_SetEditor(self *C.QsciLexerVHDL, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQsciScintilla(editor, nil, nil, nil, nil, nil, nil)
+	slotval1 := newQsciScintilla(editor)
 
 	gofunc((&QsciLexerVHDL{h: self}).callVirtualBase_SetEditor, slotval1)
 
@@ -1314,7 +1304,7 @@ func miqt_exec_callback_QsciLexerVHDL_ReadProperties(self *C.QsciLexerVHDL, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQSettings(unsafe.Pointer(qs), nil)
+	slotval1 := qt.UnsafeNewQSettings(unsafe.Pointer(qs))
 
 	var prefix_ms C.struct_miqt_string = prefix
 	prefix_ret := C.GoStringN(prefix_ms.data, C.int(int64(prefix_ms.len)))
@@ -1351,7 +1341,7 @@ func miqt_exec_callback_QsciLexerVHDL_WriteProperties(self *C.QsciLexerVHDL, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQSettings(unsafe.Pointer(qs), nil)
+	slotval1 := qt.UnsafeNewQSettings(unsafe.Pointer(qs))
 
 	var prefix_ms C.struct_miqt_string = prefix
 	prefix_ret := C.GoStringN(prefix_ms.data, C.int(int64(prefix_ms.len)))

@@ -38,44 +38,35 @@ func newQLayoutItem(h *C.QLayoutItem) *QLayoutItem {
 	if h == nil {
 		return nil
 	}
+
 	return &QLayoutItem{h: h}
 }
 
 // UnsafeNewQLayoutItem constructs the type using only unsafe pointers.
 func UnsafeNewQLayoutItem(h unsafe.Pointer) *QLayoutItem {
-	if h == nil {
-		return nil
-	}
-
-	return &QLayoutItem{h: (*C.QLayoutItem)(h)}
+	return newQLayoutItem((*C.QLayoutItem)(h))
 }
 
 // NewQLayoutItem constructs a new QLayoutItem object.
 func NewQLayoutItem() *QLayoutItem {
-	var outptr_QLayoutItem *C.QLayoutItem = nil
 
-	C.QLayoutItem_new(&outptr_QLayoutItem)
-	ret := newQLayoutItem(outptr_QLayoutItem)
+	ret := newQLayoutItem(C.QLayoutItem_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQLayoutItem2 constructs a new QLayoutItem object.
 func NewQLayoutItem2(param1 *QLayoutItem) *QLayoutItem {
-	var outptr_QLayoutItem *C.QLayoutItem = nil
 
-	C.QLayoutItem_new2(param1.cPointer(), &outptr_QLayoutItem)
-	ret := newQLayoutItem(outptr_QLayoutItem)
+	ret := newQLayoutItem(C.QLayoutItem_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQLayoutItem3 constructs a new QLayoutItem object.
 func NewQLayoutItem3(alignment AlignmentFlag) *QLayoutItem {
-	var outptr_QLayoutItem *C.QLayoutItem = nil
 
-	C.QLayoutItem_new3((C.int)(alignment), &outptr_QLayoutItem)
-	ret := newQLayoutItem(outptr_QLayoutItem)
+	ret := newQLayoutItem(C.QLayoutItem_new3((C.int)(alignment)))
 	ret.isSubclass = true
 	return ret
 }
@@ -133,15 +124,15 @@ func (this *QLayoutItem) Invalidate() {
 }
 
 func (this *QLayoutItem) Widget() *QWidget {
-	return newQWidget(C.QLayoutItem_Widget(this.h), nil, nil)
+	return newQWidget(C.QLayoutItem_Widget(this.h))
 }
 
 func (this *QLayoutItem) Layout() *QLayout {
-	return newQLayout(C.QLayoutItem_Layout(this.h), nil, nil)
+	return newQLayout(C.QLayoutItem_Layout(this.h))
 }
 
 func (this *QLayoutItem) SpacerItem() *QSpacerItem {
-	return newQSpacerItem(C.QLayoutItem_SpacerItem(this.h), nil)
+	return newQSpacerItem(C.QLayoutItem_SpacerItem(this.h))
 }
 
 func (this *QLayoutItem) Alignment() AlignmentFlag {
@@ -396,7 +387,7 @@ func miqt_exec_callback_QLayoutItem_Invalidate(self *C.QLayoutItem, cb C.intptr_
 
 func (this *QLayoutItem) callVirtualBase_Widget() *QWidget {
 
-	return newQWidget(C.QLayoutItem_virtualbase_Widget(unsafe.Pointer(this.h)), nil, nil)
+	return newQWidget(C.QLayoutItem_virtualbase_Widget(unsafe.Pointer(this.h)))
 
 }
 func (this *QLayoutItem) OnWidget(slot func(super func() *QWidget) *QWidget) {
@@ -421,7 +412,7 @@ func miqt_exec_callback_QLayoutItem_Widget(self *C.QLayoutItem, cb C.intptr_t) *
 
 func (this *QLayoutItem) callVirtualBase_Layout() *QLayout {
 
-	return newQLayout(C.QLayoutItem_virtualbase_Layout(unsafe.Pointer(this.h)), nil, nil)
+	return newQLayout(C.QLayoutItem_virtualbase_Layout(unsafe.Pointer(this.h)))
 
 }
 func (this *QLayoutItem) OnLayout(slot func(super func() *QLayout) *QLayout) {
@@ -446,7 +437,7 @@ func miqt_exec_callback_QLayoutItem_Layout(self *C.QLayoutItem, cb C.intptr_t) *
 
 func (this *QLayoutItem) callVirtualBase_SpacerItem() *QSpacerItem {
 
-	return newQSpacerItem(C.QLayoutItem_virtualbase_SpacerItem(unsafe.Pointer(this.h)), nil)
+	return newQSpacerItem(C.QLayoutItem_virtualbase_SpacerItem(unsafe.Pointer(this.h)))
 
 }
 func (this *QLayoutItem) OnSpacerItem(slot func(super func() *QSpacerItem) *QSpacerItem) {
@@ -529,64 +520,50 @@ func (this *QSpacerItem) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSpacerItem constructs the type using only CGO pointers.
-func newQSpacerItem(h *C.QSpacerItem, h_QLayoutItem *C.QLayoutItem) *QSpacerItem {
+func newQSpacerItem(h *C.QSpacerItem) *QSpacerItem {
 	if h == nil {
 		return nil
 	}
+	var outptr_QLayoutItem *C.QLayoutItem = nil
+	C.QSpacerItem_virtbase(h, &outptr_QLayoutItem)
+
 	return &QSpacerItem{h: h,
-		QLayoutItem: newQLayoutItem(h_QLayoutItem)}
+		QLayoutItem: newQLayoutItem(outptr_QLayoutItem)}
 }
 
 // UnsafeNewQSpacerItem constructs the type using only unsafe pointers.
-func UnsafeNewQSpacerItem(h unsafe.Pointer, h_QLayoutItem unsafe.Pointer) *QSpacerItem {
-	if h == nil {
-		return nil
-	}
-
-	return &QSpacerItem{h: (*C.QSpacerItem)(h),
-		QLayoutItem: UnsafeNewQLayoutItem(h_QLayoutItem)}
+func UnsafeNewQSpacerItem(h unsafe.Pointer) *QSpacerItem {
+	return newQSpacerItem((*C.QSpacerItem)(h))
 }
 
 // NewQSpacerItem constructs a new QSpacerItem object.
 func NewQSpacerItem(w int, h int) *QSpacerItem {
-	var outptr_QSpacerItem *C.QSpacerItem = nil
-	var outptr_QLayoutItem *C.QLayoutItem = nil
 
-	C.QSpacerItem_new((C.int)(w), (C.int)(h), &outptr_QSpacerItem, &outptr_QLayoutItem)
-	ret := newQSpacerItem(outptr_QSpacerItem, outptr_QLayoutItem)
+	ret := newQSpacerItem(C.QSpacerItem_new((C.int)(w), (C.int)(h)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSpacerItem2 constructs a new QSpacerItem object.
 func NewQSpacerItem2(param1 *QSpacerItem) *QSpacerItem {
-	var outptr_QSpacerItem *C.QSpacerItem = nil
-	var outptr_QLayoutItem *C.QLayoutItem = nil
 
-	C.QSpacerItem_new2(param1.cPointer(), &outptr_QSpacerItem, &outptr_QLayoutItem)
-	ret := newQSpacerItem(outptr_QSpacerItem, outptr_QLayoutItem)
+	ret := newQSpacerItem(C.QSpacerItem_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSpacerItem3 constructs a new QSpacerItem object.
 func NewQSpacerItem3(w int, h int, hData QSizePolicy__Policy) *QSpacerItem {
-	var outptr_QSpacerItem *C.QSpacerItem = nil
-	var outptr_QLayoutItem *C.QLayoutItem = nil
 
-	C.QSpacerItem_new3((C.int)(w), (C.int)(h), (C.int)(hData), &outptr_QSpacerItem, &outptr_QLayoutItem)
-	ret := newQSpacerItem(outptr_QSpacerItem, outptr_QLayoutItem)
+	ret := newQSpacerItem(C.QSpacerItem_new3((C.int)(w), (C.int)(h), (C.int)(hData)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSpacerItem4 constructs a new QSpacerItem object.
 func NewQSpacerItem4(w int, h int, hData QSizePolicy__Policy, vData QSizePolicy__Policy) *QSpacerItem {
-	var outptr_QSpacerItem *C.QSpacerItem = nil
-	var outptr_QLayoutItem *C.QLayoutItem = nil
 
-	C.QSpacerItem_new4((C.int)(w), (C.int)(h), (C.int)(hData), (C.int)(vData), &outptr_QSpacerItem, &outptr_QLayoutItem)
-	ret := newQSpacerItem(outptr_QSpacerItem, outptr_QLayoutItem)
+	ret := newQSpacerItem(C.QSpacerItem_new4((C.int)(w), (C.int)(h), (C.int)(hData), (C.int)(vData)))
 	ret.isSubclass = true
 	return ret
 }
@@ -632,7 +609,7 @@ func (this *QSpacerItem) Geometry() *QRect {
 }
 
 func (this *QSpacerItem) SpacerItem() *QSpacerItem {
-	return newQSpacerItem(C.QSpacerItem_SpacerItem(this.h), nil)
+	return newQSpacerItem(C.QSpacerItem_SpacerItem(this.h))
 }
 
 func (this *QSpacerItem) SizePolicy() *QSizePolicy {
@@ -835,7 +812,7 @@ func miqt_exec_callback_QSpacerItem_Geometry(self *C.QSpacerItem, cb C.intptr_t)
 
 func (this *QSpacerItem) callVirtualBase_SpacerItem() *QSpacerItem {
 
-	return newQSpacerItem(C.QSpacerItem_virtualbase_SpacerItem(unsafe.Pointer(this.h)), nil)
+	return newQSpacerItem(C.QSpacerItem_virtualbase_SpacerItem(unsafe.Pointer(this.h)))
 
 }
 func (this *QSpacerItem) OnSpacerItem(slot func(super func() *QSpacerItem) *QSpacerItem) {
@@ -964,7 +941,7 @@ func miqt_exec_callback_QSpacerItem_Invalidate(self *C.QSpacerItem, cb C.intptr_
 
 func (this *QSpacerItem) callVirtualBase_Widget() *QWidget {
 
-	return newQWidget(C.QSpacerItem_virtualbase_Widget(unsafe.Pointer(this.h)), nil, nil)
+	return newQWidget(C.QSpacerItem_virtualbase_Widget(unsafe.Pointer(this.h)))
 
 }
 func (this *QSpacerItem) OnWidget(slot func(super func() *QWidget) *QWidget) {
@@ -989,7 +966,7 @@ func miqt_exec_callback_QSpacerItem_Widget(self *C.QSpacerItem, cb C.intptr_t) *
 
 func (this *QSpacerItem) callVirtualBase_Layout() *QLayout {
 
-	return newQLayout(C.QSpacerItem_virtualbase_Layout(unsafe.Pointer(this.h)), nil, nil)
+	return newQLayout(C.QSpacerItem_virtualbase_Layout(unsafe.Pointer(this.h)))
 
 }
 func (this *QSpacerItem) OnLayout(slot func(super func() *QLayout) *QLayout) {
@@ -1072,31 +1049,26 @@ func (this *QWidgetItem) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWidgetItem constructs the type using only CGO pointers.
-func newQWidgetItem(h *C.QWidgetItem, h_QLayoutItem *C.QLayoutItem) *QWidgetItem {
+func newQWidgetItem(h *C.QWidgetItem) *QWidgetItem {
 	if h == nil {
 		return nil
 	}
+	var outptr_QLayoutItem *C.QLayoutItem = nil
+	C.QWidgetItem_virtbase(h, &outptr_QLayoutItem)
+
 	return &QWidgetItem{h: h,
-		QLayoutItem: newQLayoutItem(h_QLayoutItem)}
+		QLayoutItem: newQLayoutItem(outptr_QLayoutItem)}
 }
 
 // UnsafeNewQWidgetItem constructs the type using only unsafe pointers.
-func UnsafeNewQWidgetItem(h unsafe.Pointer, h_QLayoutItem unsafe.Pointer) *QWidgetItem {
-	if h == nil {
-		return nil
-	}
-
-	return &QWidgetItem{h: (*C.QWidgetItem)(h),
-		QLayoutItem: UnsafeNewQLayoutItem(h_QLayoutItem)}
+func UnsafeNewQWidgetItem(h unsafe.Pointer) *QWidgetItem {
+	return newQWidgetItem((*C.QWidgetItem)(h))
 }
 
 // NewQWidgetItem constructs a new QWidgetItem object.
 func NewQWidgetItem(w *QWidget) *QWidgetItem {
-	var outptr_QWidgetItem *C.QWidgetItem = nil
-	var outptr_QLayoutItem *C.QLayoutItem = nil
 
-	C.QWidgetItem_new(w.cPointer(), &outptr_QWidgetItem, &outptr_QLayoutItem)
-	ret := newQWidgetItem(outptr_QWidgetItem, outptr_QLayoutItem)
+	ret := newQWidgetItem(C.QWidgetItem_new(w.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -1138,7 +1110,7 @@ func (this *QWidgetItem) Geometry() *QRect {
 }
 
 func (this *QWidgetItem) Widget() *QWidget {
-	return newQWidget(C.QWidgetItem_Widget(this.h), nil, nil)
+	return newQWidget(C.QWidgetItem_Widget(this.h))
 }
 
 func (this *QWidgetItem) HasHeightForWidth() bool {
@@ -1343,7 +1315,7 @@ func miqt_exec_callback_QWidgetItem_Geometry(self *C.QWidgetItem, cb C.intptr_t)
 
 func (this *QWidgetItem) callVirtualBase_Widget() *QWidget {
 
-	return newQWidget(C.QWidgetItem_virtualbase_Widget(unsafe.Pointer(this.h)), nil, nil)
+	return newQWidget(C.QWidgetItem_virtualbase_Widget(unsafe.Pointer(this.h)))
 
 }
 func (this *QWidgetItem) OnWidget(slot func(super func() *QWidget) *QWidget) {
@@ -1497,7 +1469,7 @@ func miqt_exec_callback_QWidgetItem_Invalidate(self *C.QWidgetItem, cb C.intptr_
 
 func (this *QWidgetItem) callVirtualBase_Layout() *QLayout {
 
-	return newQLayout(C.QWidgetItem_virtualbase_Layout(unsafe.Pointer(this.h)), nil, nil)
+	return newQLayout(C.QWidgetItem_virtualbase_Layout(unsafe.Pointer(this.h)))
 
 }
 func (this *QWidgetItem) OnLayout(slot func(super func() *QLayout) *QLayout) {
@@ -1522,7 +1494,7 @@ func miqt_exec_callback_QWidgetItem_Layout(self *C.QWidgetItem, cb C.intptr_t) *
 
 func (this *QWidgetItem) callVirtualBase_SpacerItem() *QSpacerItem {
 
-	return newQSpacerItem(C.QWidgetItem_virtualbase_SpacerItem(unsafe.Pointer(this.h)), nil)
+	return newQSpacerItem(C.QWidgetItem_virtualbase_SpacerItem(unsafe.Pointer(this.h)))
 
 }
 func (this *QWidgetItem) OnSpacerItem(slot func(super func() *QSpacerItem) *QSpacerItem) {
@@ -1580,32 +1552,26 @@ func (this *QWidgetItemV2) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWidgetItemV2 constructs the type using only CGO pointers.
-func newQWidgetItemV2(h *C.QWidgetItemV2, h_QWidgetItem *C.QWidgetItem, h_QLayoutItem *C.QLayoutItem) *QWidgetItemV2 {
+func newQWidgetItemV2(h *C.QWidgetItemV2) *QWidgetItemV2 {
 	if h == nil {
 		return nil
 	}
+	var outptr_QWidgetItem *C.QWidgetItem = nil
+	C.QWidgetItemV2_virtbase(h, &outptr_QWidgetItem)
+
 	return &QWidgetItemV2{h: h,
-		QWidgetItem: newQWidgetItem(h_QWidgetItem, h_QLayoutItem)}
+		QWidgetItem: newQWidgetItem(outptr_QWidgetItem)}
 }
 
 // UnsafeNewQWidgetItemV2 constructs the type using only unsafe pointers.
-func UnsafeNewQWidgetItemV2(h unsafe.Pointer, h_QWidgetItem unsafe.Pointer, h_QLayoutItem unsafe.Pointer) *QWidgetItemV2 {
-	if h == nil {
-		return nil
-	}
-
-	return &QWidgetItemV2{h: (*C.QWidgetItemV2)(h),
-		QWidgetItem: UnsafeNewQWidgetItem(h_QWidgetItem, h_QLayoutItem)}
+func UnsafeNewQWidgetItemV2(h unsafe.Pointer) *QWidgetItemV2 {
+	return newQWidgetItemV2((*C.QWidgetItemV2)(h))
 }
 
 // NewQWidgetItemV2 constructs a new QWidgetItemV2 object.
 func NewQWidgetItemV2(widget *QWidget) *QWidgetItemV2 {
-	var outptr_QWidgetItemV2 *C.QWidgetItemV2 = nil
-	var outptr_QWidgetItem *C.QWidgetItem = nil
-	var outptr_QLayoutItem *C.QLayoutItem = nil
 
-	C.QWidgetItemV2_new(widget.cPointer(), &outptr_QWidgetItemV2, &outptr_QWidgetItem, &outptr_QLayoutItem)
-	ret := newQWidgetItemV2(outptr_QWidgetItemV2, outptr_QWidgetItem, outptr_QLayoutItem)
+	ret := newQWidgetItemV2(C.QWidgetItemV2_new(widget.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -1846,7 +1812,7 @@ func miqt_exec_callback_QWidgetItemV2_Geometry(self *C.QWidgetItemV2, cb C.intpt
 
 func (this *QWidgetItemV2) callVirtualBase_Widget() *QWidget {
 
-	return newQWidget(C.QWidgetItemV2_virtualbase_Widget(unsafe.Pointer(this.h)), nil, nil)
+	return newQWidget(C.QWidgetItemV2_virtualbase_Widget(unsafe.Pointer(this.h)))
 
 }
 func (this *QWidgetItemV2) OnWidget(slot func(super func() *QWidget) *QWidget) {

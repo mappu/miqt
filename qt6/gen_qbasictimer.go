@@ -37,24 +37,19 @@ func newQBasicTimer(h *C.QBasicTimer) *QBasicTimer {
 	if h == nil {
 		return nil
 	}
+
 	return &QBasicTimer{h: h}
 }
 
 // UnsafeNewQBasicTimer constructs the type using only unsafe pointers.
 func UnsafeNewQBasicTimer(h unsafe.Pointer) *QBasicTimer {
-	if h == nil {
-		return nil
-	}
-
-	return &QBasicTimer{h: (*C.QBasicTimer)(h)}
+	return newQBasicTimer((*C.QBasicTimer)(h))
 }
 
 // NewQBasicTimer constructs a new QBasicTimer object.
 func NewQBasicTimer() *QBasicTimer {
-	var outptr_QBasicTimer *C.QBasicTimer = nil
 
-	C.QBasicTimer_new(&outptr_QBasicTimer)
-	ret := newQBasicTimer(outptr_QBasicTimer)
+	ret := newQBasicTimer(C.QBasicTimer_new())
 	ret.isSubclass = true
 	return ret
 }

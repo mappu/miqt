@@ -40,8 +40,9 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QVector3D QVector3D;
 #endif
 
-void QGraphicsTransform_new(QGraphicsTransform** outptr_QGraphicsTransform, QObject** outptr_QObject);
-void QGraphicsTransform_new2(QObject* parent, QGraphicsTransform** outptr_QGraphicsTransform, QObject** outptr_QObject);
+QGraphicsTransform* QGraphicsTransform_new();
+QGraphicsTransform* QGraphicsTransform_new2(QObject* parent);
+void QGraphicsTransform_virtbase(QGraphicsTransform* src, QObject** outptr_QObject);
 QMetaObject* QGraphicsTransform_MetaObject(const QGraphicsTransform* self);
 void* QGraphicsTransform_Metacast(QGraphicsTransform* self, const char* param1);
 struct miqt_string QGraphicsTransform_Tr(const char* s);
@@ -66,8 +67,9 @@ void QGraphicsTransform_override_virtual_DisconnectNotify(void* self, intptr_t s
 void QGraphicsTransform_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QGraphicsTransform_Delete(QGraphicsTransform* self, bool isSubclass);
 
-void QGraphicsScale_new(QGraphicsScale** outptr_QGraphicsScale, QGraphicsTransform** outptr_QGraphicsTransform, QObject** outptr_QObject);
-void QGraphicsScale_new2(QObject* parent, QGraphicsScale** outptr_QGraphicsScale, QGraphicsTransform** outptr_QGraphicsTransform, QObject** outptr_QObject);
+QGraphicsScale* QGraphicsScale_new();
+QGraphicsScale* QGraphicsScale_new2(QObject* parent);
+void QGraphicsScale_virtbase(QGraphicsScale* src, QGraphicsTransform** outptr_QGraphicsTransform);
 QMetaObject* QGraphicsScale_MetaObject(const QGraphicsScale* self);
 void* QGraphicsScale_Metacast(QGraphicsScale* self, const char* param1);
 struct miqt_string QGraphicsScale_Tr(const char* s);
@@ -96,8 +98,9 @@ void QGraphicsScale_override_virtual_ApplyTo(void* self, intptr_t slot);
 void QGraphicsScale_virtualbase_ApplyTo(const void* self, QMatrix4x4* matrix);
 void QGraphicsScale_Delete(QGraphicsScale* self, bool isSubclass);
 
-void QGraphicsRotation_new(QGraphicsRotation** outptr_QGraphicsRotation, QGraphicsTransform** outptr_QGraphicsTransform, QObject** outptr_QObject);
-void QGraphicsRotation_new2(QObject* parent, QGraphicsRotation** outptr_QGraphicsRotation, QGraphicsTransform** outptr_QGraphicsTransform, QObject** outptr_QObject);
+QGraphicsRotation* QGraphicsRotation_new();
+QGraphicsRotation* QGraphicsRotation_new2(QObject* parent);
+void QGraphicsRotation_virtbase(QGraphicsRotation* src, QGraphicsTransform** outptr_QGraphicsTransform);
 QMetaObject* QGraphicsRotation_MetaObject(const QGraphicsRotation* self);
 void* QGraphicsRotation_Metacast(QGraphicsRotation* self, const char* param1);
 struct miqt_string QGraphicsRotation_Tr(const char* s);

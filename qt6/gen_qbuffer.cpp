@@ -474,20 +474,16 @@ public:
 
 };
 
-void QBuffer_new(QBuffer** outptr_QBuffer, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase) {
-	MiqtVirtualQBuffer* ret = new MiqtVirtualQBuffer();
-	*outptr_QBuffer = ret;
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(ret);
+QBuffer* QBuffer_new() {
+	return new MiqtVirtualQBuffer();
 }
 
-void QBuffer_new2(QObject* parent, QBuffer** outptr_QBuffer, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase) {
-	MiqtVirtualQBuffer* ret = new MiqtVirtualQBuffer(parent);
-	*outptr_QBuffer = ret;
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(ret);
+QBuffer* QBuffer_new2(QObject* parent) {
+	return new MiqtVirtualQBuffer(parent);
+}
+
+void QBuffer_virtbase(QBuffer* src, QIODevice** outptr_QIODevice) {
+	*outptr_QIODevice = static_cast<QIODevice*>(src);
 }
 
 QMetaObject* QBuffer_MetaObject(const QBuffer* self) {

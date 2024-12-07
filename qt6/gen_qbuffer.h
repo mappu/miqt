@@ -30,8 +30,9 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif
 
-void QBuffer_new(QBuffer** outptr_QBuffer, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
-void QBuffer_new2(QObject* parent, QBuffer** outptr_QBuffer, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
+QBuffer* QBuffer_new();
+QBuffer* QBuffer_new2(QObject* parent);
+void QBuffer_virtbase(QBuffer* src, QIODevice** outptr_QIODevice);
 QMetaObject* QBuffer_MetaObject(const QBuffer* self);
 void* QBuffer_Metacast(QBuffer* self, const char* param1);
 struct miqt_string QBuffer_Tr(const char* s);

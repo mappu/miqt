@@ -240,18 +240,17 @@ public:
 
 };
 
-void QRadioData_new(QMediaObject* mediaObject, QRadioData** outptr_QRadioData, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface) {
-	MiqtVirtualQRadioData* ret = new MiqtVirtualQRadioData(mediaObject);
-	*outptr_QRadioData = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QMediaBindableInterface = static_cast<QMediaBindableInterface*>(ret);
+QRadioData* QRadioData_new(QMediaObject* mediaObject) {
+	return new MiqtVirtualQRadioData(mediaObject);
 }
 
-void QRadioData_new2(QMediaObject* mediaObject, QObject* parent, QRadioData** outptr_QRadioData, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface) {
-	MiqtVirtualQRadioData* ret = new MiqtVirtualQRadioData(mediaObject, parent);
-	*outptr_QRadioData = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QMediaBindableInterface = static_cast<QMediaBindableInterface*>(ret);
+QRadioData* QRadioData_new2(QMediaObject* mediaObject, QObject* parent) {
+	return new MiqtVirtualQRadioData(mediaObject, parent);
+}
+
+void QRadioData_virtbase(QRadioData* src, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface) {
+	*outptr_QObject = static_cast<QObject*>(src);
+	*outptr_QMediaBindableInterface = static_cast<QMediaBindableInterface*>(src);
 }
 
 QMetaObject* QRadioData_MetaObject(const QRadioData* self) {

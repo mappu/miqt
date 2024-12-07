@@ -44,16 +44,13 @@ func newQObjectData(h *C.QObjectData) *QObjectData {
 	if h == nil {
 		return nil
 	}
+
 	return &QObjectData{h: h}
 }
 
 // UnsafeNewQObjectData constructs the type using only unsafe pointers.
 func UnsafeNewQObjectData(h unsafe.Pointer) *QObjectData {
-	if h == nil {
-		return nil
-	}
-
-	return &QObjectData{h: (*C.QObjectData)(h)}
+	return newQObjectData((*C.QObjectData)(h))
 }
 
 func (this *QObjectData) DynamicMetaObject() *QMetaObject {
@@ -98,34 +95,27 @@ func newQObject(h *C.QObject) *QObject {
 	if h == nil {
 		return nil
 	}
+
 	return &QObject{h: h}
 }
 
 // UnsafeNewQObject constructs the type using only unsafe pointers.
 func UnsafeNewQObject(h unsafe.Pointer) *QObject {
-	if h == nil {
-		return nil
-	}
-
-	return &QObject{h: (*C.QObject)(h)}
+	return newQObject((*C.QObject)(h))
 }
 
 // NewQObject constructs a new QObject object.
 func NewQObject() *QObject {
-	var outptr_QObject *C.QObject = nil
 
-	C.QObject_new(&outptr_QObject)
-	ret := newQObject(outptr_QObject)
+	ret := newQObject(C.QObject_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQObject2 constructs a new QObject object.
 func NewQObject2(parent *QObject) *QObject {
-	var outptr_QObject *C.QObject = nil
 
-	C.QObject_new2(parent.cPointer(), &outptr_QObject)
-	ret := newQObject(outptr_QObject)
+	ret := newQObject(C.QObject_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -189,7 +179,7 @@ func (this *QObject) BlockSignals(b bool) bool {
 }
 
 func (this *QObject) Thread() *QThread {
-	return newQThread(C.QObject_Thread(this.h), nil)
+	return newQThread(C.QObject_Thread(this.h))
 }
 
 func (this *QObject) MoveToThread(thread *QThread) {
@@ -464,7 +454,7 @@ func miqt_exec_callback_QObject_TimerEvent(self *C.QObject, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QObject{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -490,7 +480,7 @@ func miqt_exec_callback_QObject_ChildEvent(self *C.QObject, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QObject{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -612,34 +602,27 @@ func newQSignalBlocker(h *C.QSignalBlocker) *QSignalBlocker {
 	if h == nil {
 		return nil
 	}
+
 	return &QSignalBlocker{h: h}
 }
 
 // UnsafeNewQSignalBlocker constructs the type using only unsafe pointers.
 func UnsafeNewQSignalBlocker(h unsafe.Pointer) *QSignalBlocker {
-	if h == nil {
-		return nil
-	}
-
-	return &QSignalBlocker{h: (*C.QSignalBlocker)(h)}
+	return newQSignalBlocker((*C.QSignalBlocker)(h))
 }
 
 // NewQSignalBlocker constructs a new QSignalBlocker object.
 func NewQSignalBlocker(o *QObject) *QSignalBlocker {
-	var outptr_QSignalBlocker *C.QSignalBlocker = nil
 
-	C.QSignalBlocker_new(o.cPointer(), &outptr_QSignalBlocker)
-	ret := newQSignalBlocker(outptr_QSignalBlocker)
+	ret := newQSignalBlocker(C.QSignalBlocker_new(o.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSignalBlocker2 constructs a new QSignalBlocker object.
 func NewQSignalBlocker2(o *QObject) *QSignalBlocker {
-	var outptr_QSignalBlocker *C.QSignalBlocker = nil
 
-	C.QSignalBlocker_new2(o.cPointer(), &outptr_QSignalBlocker)
-	ret := newQSignalBlocker(outptr_QSignalBlocker)
+	ret := newQSignalBlocker(C.QSignalBlocker_new2(o.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

@@ -36,42 +36,34 @@ func (this *QWebHistoryInterface) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebHistoryInterface constructs the type using only CGO pointers.
-func newQWebHistoryInterface(h *C.QWebHistoryInterface, h_QObject *C.QObject) *QWebHistoryInterface {
+func newQWebHistoryInterface(h *C.QWebHistoryInterface) *QWebHistoryInterface {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebHistoryInterface_virtbase(h, &outptr_QObject)
+
 	return &QWebHistoryInterface{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebHistoryInterface constructs the type using only unsafe pointers.
-func UnsafeNewQWebHistoryInterface(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebHistoryInterface {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebHistoryInterface{h: (*C.QWebHistoryInterface)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebHistoryInterface(h unsafe.Pointer) *QWebHistoryInterface {
+	return newQWebHistoryInterface((*C.QWebHistoryInterface)(h))
 }
 
 // NewQWebHistoryInterface constructs a new QWebHistoryInterface object.
 func NewQWebHistoryInterface() *QWebHistoryInterface {
-	var outptr_QWebHistoryInterface *C.QWebHistoryInterface = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebHistoryInterface_new(&outptr_QWebHistoryInterface, &outptr_QObject)
-	ret := newQWebHistoryInterface(outptr_QWebHistoryInterface, outptr_QObject)
+	ret := newQWebHistoryInterface(C.QWebHistoryInterface_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebHistoryInterface2 constructs a new QWebHistoryInterface object.
 func NewQWebHistoryInterface2(parent *qt.QObject) *QWebHistoryInterface {
-	var outptr_QWebHistoryInterface *C.QWebHistoryInterface = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebHistoryInterface_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QWebHistoryInterface, &outptr_QObject)
-	ret := newQWebHistoryInterface(outptr_QWebHistoryInterface, outptr_QObject)
+	ret := newQWebHistoryInterface(C.QWebHistoryInterface_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -109,7 +101,7 @@ func QWebHistoryInterface_SetDefaultInterface(defaultInterface *QWebHistoryInter
 }
 
 func QWebHistoryInterface_DefaultInterface() *QWebHistoryInterface {
-	return newQWebHistoryInterface(C.QWebHistoryInterface_DefaultInterface(), nil)
+	return newQWebHistoryInterface(C.QWebHistoryInterface_DefaultInterface())
 }
 
 func (this *QWebHistoryInterface) HistoryContains(url string) bool {
@@ -298,7 +290,7 @@ func miqt_exec_callback_QWebHistoryInterface_TimerEvent(self *C.QWebHistoryInter
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebHistoryInterface{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -324,7 +316,7 @@ func miqt_exec_callback_QWebHistoryInterface_ChildEvent(self *C.QWebHistoryInter
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebHistoryInterface{h: self}).callVirtualBase_ChildEvent, slotval1)
 

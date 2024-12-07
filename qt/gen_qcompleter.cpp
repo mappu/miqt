@@ -290,19 +290,15 @@ public:
 
 };
 
-void QCompleter_new(QCompleter** outptr_QCompleter, QObject** outptr_QObject) {
-	MiqtVirtualQCompleter* ret = new MiqtVirtualQCompleter();
-	*outptr_QCompleter = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QCompleter* QCompleter_new() {
+	return new MiqtVirtualQCompleter();
 }
 
-void QCompleter_new2(QAbstractItemModel* model, QCompleter** outptr_QCompleter, QObject** outptr_QObject) {
-	MiqtVirtualQCompleter* ret = new MiqtVirtualQCompleter(model);
-	*outptr_QCompleter = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QCompleter* QCompleter_new2(QAbstractItemModel* model) {
+	return new MiqtVirtualQCompleter(model);
 }
 
-void QCompleter_new3(struct miqt_array /* of struct miqt_string */  completions, QCompleter** outptr_QCompleter, QObject** outptr_QObject) {
+QCompleter* QCompleter_new3(struct miqt_array /* of struct miqt_string */  completions) {
 	QStringList completions_QList;
 	completions_QList.reserve(completions.len);
 	struct miqt_string* completions_arr = static_cast<struct miqt_string*>(completions.data);
@@ -310,24 +306,18 @@ void QCompleter_new3(struct miqt_array /* of struct miqt_string */  completions,
 		QString completions_arr_i_QString = QString::fromUtf8(completions_arr[i].data, completions_arr[i].len);
 		completions_QList.push_back(completions_arr_i_QString);
 	}
-	MiqtVirtualQCompleter* ret = new MiqtVirtualQCompleter(completions_QList);
-	*outptr_QCompleter = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQCompleter(completions_QList);
 }
 
-void QCompleter_new4(QObject* parent, QCompleter** outptr_QCompleter, QObject** outptr_QObject) {
-	MiqtVirtualQCompleter* ret = new MiqtVirtualQCompleter(parent);
-	*outptr_QCompleter = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QCompleter* QCompleter_new4(QObject* parent) {
+	return new MiqtVirtualQCompleter(parent);
 }
 
-void QCompleter_new5(QAbstractItemModel* model, QObject* parent, QCompleter** outptr_QCompleter, QObject** outptr_QObject) {
-	MiqtVirtualQCompleter* ret = new MiqtVirtualQCompleter(model, parent);
-	*outptr_QCompleter = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QCompleter* QCompleter_new5(QAbstractItemModel* model, QObject* parent) {
+	return new MiqtVirtualQCompleter(model, parent);
 }
 
-void QCompleter_new6(struct miqt_array /* of struct miqt_string */  completions, QObject* parent, QCompleter** outptr_QCompleter, QObject** outptr_QObject) {
+QCompleter* QCompleter_new6(struct miqt_array /* of struct miqt_string */  completions, QObject* parent) {
 	QStringList completions_QList;
 	completions_QList.reserve(completions.len);
 	struct miqt_string* completions_arr = static_cast<struct miqt_string*>(completions.data);
@@ -335,9 +325,11 @@ void QCompleter_new6(struct miqt_array /* of struct miqt_string */  completions,
 		QString completions_arr_i_QString = QString::fromUtf8(completions_arr[i].data, completions_arr[i].len);
 		completions_QList.push_back(completions_arr_i_QString);
 	}
-	MiqtVirtualQCompleter* ret = new MiqtVirtualQCompleter(completions_QList, parent);
-	*outptr_QCompleter = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQCompleter(completions_QList, parent);
+}
+
+void QCompleter_virtbase(QCompleter* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QCompleter_MetaObject(const QCompleter* self) {

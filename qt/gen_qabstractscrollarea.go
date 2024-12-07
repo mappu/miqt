@@ -43,48 +43,34 @@ func (this *QAbstractScrollArea) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAbstractScrollArea constructs the type using only CGO pointers.
-func newQAbstractScrollArea(h *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QAbstractScrollArea {
+func newQAbstractScrollArea(h *C.QAbstractScrollArea) *QAbstractScrollArea {
 	if h == nil {
 		return nil
 	}
+	var outptr_QFrame *C.QFrame = nil
+	C.QAbstractScrollArea_virtbase(h, &outptr_QFrame)
+
 	return &QAbstractScrollArea{h: h,
-		QFrame: newQFrame(h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+		QFrame: newQFrame(outptr_QFrame)}
 }
 
 // UnsafeNewQAbstractScrollArea constructs the type using only unsafe pointers.
-func UnsafeNewQAbstractScrollArea(h unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QAbstractScrollArea {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractScrollArea{h: (*C.QAbstractScrollArea)(h),
-		QFrame: UnsafeNewQFrame(h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQAbstractScrollArea(h unsafe.Pointer) *QAbstractScrollArea {
+	return newQAbstractScrollArea((*C.QAbstractScrollArea)(h))
 }
 
 // NewQAbstractScrollArea constructs a new QAbstractScrollArea object.
 func NewQAbstractScrollArea(parent *QWidget) *QAbstractScrollArea {
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QAbstractScrollArea_new(parent.cPointer(), &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQAbstractScrollArea(outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQAbstractScrollArea(C.QAbstractScrollArea_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAbstractScrollArea2 constructs a new QAbstractScrollArea object.
 func NewQAbstractScrollArea2() *QAbstractScrollArea {
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QAbstractScrollArea_new2(&outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQAbstractScrollArea(outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQAbstractScrollArea(C.QAbstractScrollArea_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -126,7 +112,7 @@ func (this *QAbstractScrollArea) SetVerticalScrollBarPolicy(verticalScrollBarPol
 }
 
 func (this *QAbstractScrollArea) VerticalScrollBar() *QScrollBar {
-	return newQScrollBar(C.QAbstractScrollArea_VerticalScrollBar(this.h), nil, nil, nil, nil)
+	return newQScrollBar(C.QAbstractScrollArea_VerticalScrollBar(this.h))
 }
 
 func (this *QAbstractScrollArea) SetVerticalScrollBar(scrollbar *QScrollBar) {
@@ -142,7 +128,7 @@ func (this *QAbstractScrollArea) SetHorizontalScrollBarPolicy(horizontalScrollBa
 }
 
 func (this *QAbstractScrollArea) HorizontalScrollBar() *QScrollBar {
-	return newQScrollBar(C.QAbstractScrollArea_HorizontalScrollBar(this.h), nil, nil, nil, nil)
+	return newQScrollBar(C.QAbstractScrollArea_HorizontalScrollBar(this.h))
 }
 
 func (this *QAbstractScrollArea) SetHorizontalScrollBar(scrollbar *QScrollBar) {
@@ -150,7 +136,7 @@ func (this *QAbstractScrollArea) SetHorizontalScrollBar(scrollbar *QScrollBar) {
 }
 
 func (this *QAbstractScrollArea) CornerWidget() *QWidget {
-	return newQWidget(C.QAbstractScrollArea_CornerWidget(this.h), nil, nil)
+	return newQWidget(C.QAbstractScrollArea_CornerWidget(this.h))
 }
 
 func (this *QAbstractScrollArea) SetCornerWidget(widget *QWidget) {
@@ -166,13 +152,13 @@ func (this *QAbstractScrollArea) ScrollBarWidgets(alignment AlignmentFlag) []*QW
 	_ret := make([]*QWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQWidget(_outCast[i], nil, nil)
+		_ret[i] = newQWidget(_outCast[i])
 	}
 	return _ret
 }
 
 func (this *QAbstractScrollArea) Viewport() *QWidget {
-	return newQWidget(C.QAbstractScrollArea_Viewport(this.h), nil, nil)
+	return newQWidget(C.QAbstractScrollArea_Viewport(this.h))
 }
 
 func (this *QAbstractScrollArea) SetViewport(widget *QWidget) {
@@ -327,7 +313,7 @@ func miqt_exec_callback_QAbstractScrollArea_SetupViewport(self *C.QAbstractScrol
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(viewport, nil, nil)
+	slotval1 := newQWidget(viewport)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_SetupViewport, slotval1)
 
@@ -439,7 +425,7 @@ func miqt_exec_callback_QAbstractScrollArea_ResizeEvent(self *C.QAbstractScrollA
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(param1, nil)
+	slotval1 := newQResizeEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -465,7 +451,7 @@ func miqt_exec_callback_QAbstractScrollArea_PaintEvent(self *C.QAbstractScrollAr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(param1, nil)
+	slotval1 := newQPaintEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -491,7 +477,7 @@ func miqt_exec_callback_QAbstractScrollArea_MousePressEvent(self *C.QAbstractScr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(param1, nil, nil)
+	slotval1 := newQMouseEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -517,7 +503,7 @@ func miqt_exec_callback_QAbstractScrollArea_MouseReleaseEvent(self *C.QAbstractS
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(param1, nil, nil)
+	slotval1 := newQMouseEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -543,7 +529,7 @@ func miqt_exec_callback_QAbstractScrollArea_MouseDoubleClickEvent(self *C.QAbstr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(param1, nil, nil)
+	slotval1 := newQMouseEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -569,7 +555,7 @@ func miqt_exec_callback_QAbstractScrollArea_MouseMoveEvent(self *C.QAbstractScro
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(param1, nil, nil)
+	slotval1 := newQMouseEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -595,7 +581,7 @@ func miqt_exec_callback_QAbstractScrollArea_WheelEvent(self *C.QAbstractScrollAr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWheelEvent(param1, nil, nil)
+	slotval1 := newQWheelEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -621,7 +607,7 @@ func miqt_exec_callback_QAbstractScrollArea_ContextMenuEvent(self *C.QAbstractSc
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQContextMenuEvent(param1, nil, nil)
+	slotval1 := newQContextMenuEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -647,7 +633,7 @@ func miqt_exec_callback_QAbstractScrollArea_DragEnterEvent(self *C.QAbstractScro
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragEnterEvent(param1, nil, nil, nil)
+	slotval1 := newQDragEnterEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -673,7 +659,7 @@ func miqt_exec_callback_QAbstractScrollArea_DragMoveEvent(self *C.QAbstractScrol
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragMoveEvent(param1, nil, nil)
+	slotval1 := newQDragMoveEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -699,7 +685,7 @@ func miqt_exec_callback_QAbstractScrollArea_DragLeaveEvent(self *C.QAbstractScro
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragLeaveEvent(param1, nil)
+	slotval1 := newQDragLeaveEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -725,7 +711,7 @@ func miqt_exec_callback_QAbstractScrollArea_DropEvent(self *C.QAbstractScrollAre
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDropEvent(param1, nil)
+	slotval1 := newQDropEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -751,7 +737,7 @@ func miqt_exec_callback_QAbstractScrollArea_KeyPressEvent(self *C.QAbstractScrol
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(param1, nil, nil)
+	slotval1 := newQKeyEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 

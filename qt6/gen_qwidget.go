@@ -46,24 +46,19 @@ func newQWidgetData(h *C.QWidgetData) *QWidgetData {
 	if h == nil {
 		return nil
 	}
+
 	return &QWidgetData{h: h}
 }
 
 // UnsafeNewQWidgetData constructs the type using only unsafe pointers.
 func UnsafeNewQWidgetData(h unsafe.Pointer) *QWidgetData {
-	if h == nil {
-		return nil
-	}
-
-	return &QWidgetData{h: (*C.QWidgetData)(h)}
+	return newQWidgetData((*C.QWidgetData)(h))
 }
 
 // NewQWidgetData constructs a new QWidgetData object.
 func NewQWidgetData(param1 *QWidgetData) *QWidgetData {
-	var outptr_QWidgetData *C.QWidgetData = nil
 
-	C.QWidgetData_new(param1.cPointer(), &outptr_QWidgetData)
-	ret := newQWidgetData(outptr_QWidgetData)
+	ret := newQWidgetData(C.QWidgetData_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -108,58 +103,44 @@ func (this *QWidget) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWidget constructs the type using only CGO pointers.
-func newQWidget(h *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QWidget {
+func newQWidget(h *C.QWidget) *QWidget {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+	C.QWidget_virtbase(h, &outptr_QObject, &outptr_QPaintDevice)
+
 	return &QWidget{h: h,
-		QObject:      newQObject(h_QObject),
-		QPaintDevice: newQPaintDevice(h_QPaintDevice)}
+		QObject:      newQObject(outptr_QObject),
+		QPaintDevice: newQPaintDevice(outptr_QPaintDevice)}
 }
 
 // UnsafeNewQWidget constructs the type using only unsafe pointers.
-func UnsafeNewQWidget(h unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QWidget {
-	if h == nil {
-		return nil
-	}
-
-	return &QWidget{h: (*C.QWidget)(h),
-		QObject:      UnsafeNewQObject(h_QObject),
-		QPaintDevice: UnsafeNewQPaintDevice(h_QPaintDevice)}
+func UnsafeNewQWidget(h unsafe.Pointer) *QWidget {
+	return newQWidget((*C.QWidget)(h))
 }
 
 // NewQWidget constructs a new QWidget object.
 func NewQWidget(parent *QWidget) *QWidget {
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QWidget_new(parent.cPointer(), &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQWidget(outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQWidget(C.QWidget_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWidget2 constructs a new QWidget object.
 func NewQWidget2() *QWidget {
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QWidget_new2(&outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQWidget(outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQWidget(C.QWidget_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWidget3 constructs a new QWidget object.
 func NewQWidget3(parent *QWidget, f WindowType) *QWidget {
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QWidget_new3(parent.cPointer(), (C.int)(f), &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQWidget(outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQWidget(C.QWidget_new3(parent.cPointer(), (C.int)(f)))
 	ret.isSubclass = true
 	return ret
 }
@@ -204,7 +185,7 @@ func (this *QWidget) EffectiveWinId() uintptr {
 }
 
 func (this *QWidget) Style() *QStyle {
-	return newQStyle(C.QWidget_Style(this.h), nil)
+	return newQStyle(C.QWidget_Style(this.h))
 }
 
 func (this *QWidget) SetStyle(style *QStyle) {
@@ -496,15 +477,15 @@ func (this *QWidget) MapFrom2(param1 *QWidget, param2 *QPoint) *QPoint {
 }
 
 func (this *QWidget) Window() *QWidget {
-	return newQWidget(C.QWidget_Window(this.h), nil, nil)
+	return newQWidget(C.QWidget_Window(this.h))
 }
 
 func (this *QWidget) NativeParentWidget() *QWidget {
-	return newQWidget(C.QWidget_NativeParentWidget(this.h), nil, nil)
+	return newQWidget(C.QWidget_NativeParentWidget(this.h))
 }
 
 func (this *QWidget) TopLevelWidget() *QWidget {
-	return newQWidget(C.QWidget_TopLevelWidget(this.h), nil, nil)
+	return newQWidget(C.QWidget_TopLevelWidget(this.h))
 }
 
 func (this *QWidget) Palette() *QPalette {
@@ -612,13 +593,13 @@ func (this *QWidget) RenderWithPainter(painter *QPainter) {
 }
 
 func (this *QWidget) Grab() *QPixmap {
-	_goptr := newQPixmap(C.QWidget_Grab(this.h), nil)
+	_goptr := newQPixmap(C.QWidget_Grab(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) GraphicsEffect() *QGraphicsEffect {
-	return newQGraphicsEffect(C.QWidget_GraphicsEffect(this.h), nil)
+	return newQGraphicsEffect(C.QWidget_GraphicsEffect(this.h))
 }
 
 func (this *QWidget) SetGraphicsEffect(effect *QGraphicsEffect) {
@@ -888,7 +869,7 @@ func (this *QWidget) SetFocusProxy(focusProxy *QWidget) {
 }
 
 func (this *QWidget) FocusProxy() *QWidget {
-	return newQWidget(C.QWidget_FocusProxy(this.h), nil, nil)
+	return newQWidget(C.QWidget_FocusProxy(this.h))
 }
 
 func (this *QWidget) ContextMenuPolicy() ContextMenuPolicy {
@@ -936,11 +917,11 @@ func (this *QWidget) SetShortcutAutoRepeat(id int) {
 }
 
 func QWidget_MouseGrabber() *QWidget {
-	return newQWidget(C.QWidget_MouseGrabber(), nil, nil)
+	return newQWidget(C.QWidget_MouseGrabber())
 }
 
 func QWidget_KeyboardGrabber() *QWidget {
-	return newQWidget(C.QWidget_KeyboardGrabber(), nil, nil)
+	return newQWidget(C.QWidget_KeyboardGrabber())
 }
 
 func (this *QWidget) UpdatesEnabled() bool {
@@ -952,7 +933,7 @@ func (this *QWidget) SetUpdatesEnabled(enable bool) {
 }
 
 func (this *QWidget) GraphicsProxyWidget() *QGraphicsProxyWidget {
-	return newQGraphicsProxyWidget(C.QWidget_GraphicsProxyWidget(this.h), nil, nil, nil, nil, nil)
+	return newQGraphicsProxyWidget(C.QWidget_GraphicsProxyWidget(this.h))
 }
 
 func (this *QWidget) Update() {
@@ -1174,7 +1155,7 @@ func (this *QWidget) ContentsRect() *QRect {
 }
 
 func (this *QWidget) Layout() *QLayout {
-	return newQLayout(C.QWidget_Layout(this.h), nil, nil)
+	return newQLayout(C.QWidget_Layout(this.h))
 }
 
 func (this *QWidget) SetLayout(layout *QLayout) {
@@ -1202,15 +1183,15 @@ func (this *QWidget) Scroll2(dx int, dy int, param3 *QRect) {
 }
 
 func (this *QWidget) FocusWidget() *QWidget {
-	return newQWidget(C.QWidget_FocusWidget(this.h), nil, nil)
+	return newQWidget(C.QWidget_FocusWidget(this.h))
 }
 
 func (this *QWidget) NextInFocusChain() *QWidget {
-	return newQWidget(C.QWidget_NextInFocusChain(this.h), nil, nil)
+	return newQWidget(C.QWidget_NextInFocusChain(this.h))
 }
 
 func (this *QWidget) PreviousInFocusChain() *QWidget {
-	return newQWidget(C.QWidget_PreviousInFocusChain(this.h), nil, nil)
+	return newQWidget(C.QWidget_PreviousInFocusChain(this.h))
 }
 
 func (this *QWidget) AcceptDrops() bool {
@@ -1258,7 +1239,7 @@ func (this *QWidget) Actions() []*QAction {
 	_ret := make([]*QAction, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAction(_outCast[i], nil)
+		_ret[i] = newQAction(_outCast[i])
 	}
 	return _ret
 }
@@ -1268,7 +1249,7 @@ func (this *QWidget) AddActionWithText(text string) *QAction {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return newQAction(C.QWidget_AddActionWithText(this.h, text_ms), nil)
+	return newQAction(C.QWidget_AddActionWithText(this.h, text_ms))
 }
 
 func (this *QWidget) AddAction2(icon *QIcon, text string) *QAction {
@@ -1276,7 +1257,7 @@ func (this *QWidget) AddAction2(icon *QIcon, text string) *QAction {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return newQAction(C.QWidget_AddAction2(this.h, icon.cPointer(), text_ms), nil)
+	return newQAction(C.QWidget_AddAction2(this.h, icon.cPointer(), text_ms))
 }
 
 func (this *QWidget) AddAction3(text string, shortcut *QKeySequence) *QAction {
@@ -1284,7 +1265,7 @@ func (this *QWidget) AddAction3(text string, shortcut *QKeySequence) *QAction {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return newQAction(C.QWidget_AddAction3(this.h, text_ms, shortcut.cPointer()), nil)
+	return newQAction(C.QWidget_AddAction3(this.h, text_ms, shortcut.cPointer()))
 }
 
 func (this *QWidget) AddAction4(icon *QIcon, text string, shortcut *QKeySequence) *QAction {
@@ -1292,11 +1273,11 @@ func (this *QWidget) AddAction4(icon *QIcon, text string, shortcut *QKeySequence
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return newQAction(C.QWidget_AddAction4(this.h, icon.cPointer(), text_ms, shortcut.cPointer()), nil)
+	return newQAction(C.QWidget_AddAction4(this.h, icon.cPointer(), text_ms, shortcut.cPointer()))
 }
 
 func (this *QWidget) ParentWidget() *QWidget {
-	return newQWidget(C.QWidget_ParentWidget(this.h), nil, nil)
+	return newQWidget(C.QWidget_ParentWidget(this.h))
 }
 
 func (this *QWidget) SetWindowFlags(typeVal WindowType) {
@@ -1320,15 +1301,15 @@ func (this *QWidget) WindowType() WindowType {
 }
 
 func QWidget_Find(param1 uintptr) *QWidget {
-	return newQWidget(C.QWidget_Find((C.uintptr_t)(param1)), nil, nil)
+	return newQWidget(C.QWidget_Find((C.uintptr_t)(param1)))
 }
 
 func (this *QWidget) ChildAt(x int, y int) *QWidget {
-	return newQWidget(C.QWidget_ChildAt(this.h, (C.int)(x), (C.int)(y)), nil, nil)
+	return newQWidget(C.QWidget_ChildAt(this.h, (C.int)(x), (C.int)(y)))
 }
 
 func (this *QWidget) ChildAtWithQPoint(p *QPoint) *QWidget {
-	return newQWidget(C.QWidget_ChildAtWithQPoint(this.h, p.cPointer()), nil, nil)
+	return newQWidget(C.QWidget_ChildAtWithQPoint(this.h, p.cPointer()))
 }
 
 func (this *QWidget) SetAttribute(param1 WidgetAttribute) {
@@ -1364,11 +1345,11 @@ func (this *QWidget) BackingStore() *QBackingStore {
 }
 
 func (this *QWidget) WindowHandle() *QWindow {
-	return newQWindow(C.QWidget_WindowHandle(this.h), nil, nil)
+	return newQWindow(C.QWidget_WindowHandle(this.h))
 }
 
 func (this *QWidget) Screen() *QScreen {
-	return newQScreen(C.QWidget_Screen(this.h), nil)
+	return newQScreen(C.QWidget_Screen(this.h))
 }
 
 func (this *QWidget) SetScreen(screen *QScreen) {
@@ -1376,7 +1357,7 @@ func (this *QWidget) SetScreen(screen *QScreen) {
 }
 
 func QWidget_CreateWindowContainer(window *QWindow) *QWidget {
-	return newQWidget(C.QWidget_CreateWindowContainer(window.cPointer()), nil, nil)
+	return newQWidget(C.QWidget_CreateWindowContainer(window.cPointer()))
 }
 
 func (this *QWidget) WindowTitleChanged(title string) {
@@ -1534,7 +1515,7 @@ func (this *QWidget) Render42(painter *QPainter, targetOffset *QPoint, sourceReg
 }
 
 func (this *QWidget) Grab1(rectangle *QRect) *QPixmap {
-	_goptr := newQPixmap(C.QWidget_Grab1(this.h, rectangle.cPointer()), nil)
+	_goptr := newQPixmap(C.QWidget_Grab1(this.h, rectangle.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1564,11 +1545,11 @@ func (this *QWidget) SetAttribute2(param1 WidgetAttribute, on bool) {
 }
 
 func QWidget_CreateWindowContainer2(window *QWindow, parent *QWidget) *QWidget {
-	return newQWidget(C.QWidget_CreateWindowContainer2(window.cPointer(), parent.cPointer()), nil, nil)
+	return newQWidget(C.QWidget_CreateWindowContainer2(window.cPointer(), parent.cPointer()))
 }
 
 func QWidget_CreateWindowContainer3(window *QWindow, parent *QWidget, flags WindowType) *QWidget {
-	return newQWidget(C.QWidget_CreateWindowContainer3(window.cPointer(), parent.cPointer(), (C.int)(flags)), nil, nil)
+	return newQWidget(C.QWidget_CreateWindowContainer3(window.cPointer(), parent.cPointer(), (C.int)(flags)))
 }
 
 func (this *QWidget) callVirtualBase_DevType() int {
@@ -1802,7 +1783,7 @@ func miqt_exec_callback_QWidget_MousePressEvent(self *C.QWidget, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QWidget{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -1828,7 +1809,7 @@ func miqt_exec_callback_QWidget_MouseReleaseEvent(self *C.QWidget, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QWidget{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -1854,7 +1835,7 @@ func miqt_exec_callback_QWidget_MouseDoubleClickEvent(self *C.QWidget, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QWidget{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -1880,7 +1861,7 @@ func miqt_exec_callback_QWidget_MouseMoveEvent(self *C.QWidget, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QWidget{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -1906,7 +1887,7 @@ func miqt_exec_callback_QWidget_WheelEvent(self *C.QWidget, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWheelEvent(event, nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(event)
 
 	gofunc((&QWidget{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -1932,7 +1913,7 @@ func miqt_exec_callback_QWidget_KeyPressEvent(self *C.QWidget, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(event, nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QWidget{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -1958,7 +1939,7 @@ func miqt_exec_callback_QWidget_KeyReleaseEvent(self *C.QWidget, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(event, nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QWidget{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -1984,7 +1965,7 @@ func miqt_exec_callback_QWidget_FocusInEvent(self *C.QWidget, cb C.intptr_t, eve
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QWidget{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -2010,7 +1991,7 @@ func miqt_exec_callback_QWidget_FocusOutEvent(self *C.QWidget, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QWidget{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -2036,7 +2017,7 @@ func miqt_exec_callback_QWidget_EnterEvent(self *C.QWidget, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQEnterEvent(event, nil, nil, nil, nil)
+	slotval1 := newQEnterEvent(event)
 
 	gofunc((&QWidget{h: self}).callVirtualBase_EnterEvent, slotval1)
 
@@ -2088,7 +2069,7 @@ func miqt_exec_callback_QWidget_PaintEvent(self *C.QWidget, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(event, nil)
+	slotval1 := newQPaintEvent(event)
 
 	gofunc((&QWidget{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -2114,7 +2095,7 @@ func miqt_exec_callback_QWidget_MoveEvent(self *C.QWidget, cb C.intptr_t, event 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMoveEvent(event, nil)
+	slotval1 := newQMoveEvent(event)
 
 	gofunc((&QWidget{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -2140,7 +2121,7 @@ func miqt_exec_callback_QWidget_ResizeEvent(self *C.QWidget, cb C.intptr_t, even
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(event, nil)
+	slotval1 := newQResizeEvent(event)
 
 	gofunc((&QWidget{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -2166,7 +2147,7 @@ func miqt_exec_callback_QWidget_CloseEvent(self *C.QWidget, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQCloseEvent(event, nil)
+	slotval1 := newQCloseEvent(event)
 
 	gofunc((&QWidget{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -2192,7 +2173,7 @@ func miqt_exec_callback_QWidget_ContextMenuEvent(self *C.QWidget, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQContextMenuEvent(event, nil, nil)
+	slotval1 := newQContextMenuEvent(event)
 
 	gofunc((&QWidget{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -2218,7 +2199,7 @@ func miqt_exec_callback_QWidget_TabletEvent(self *C.QWidget, cb C.intptr_t, even
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTabletEvent(event, nil, nil, nil, nil)
+	slotval1 := newQTabletEvent(event)
 
 	gofunc((&QWidget{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -2244,7 +2225,7 @@ func miqt_exec_callback_QWidget_ActionEvent(self *C.QWidget, cb C.intptr_t, even
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQActionEvent(event, nil)
+	slotval1 := newQActionEvent(event)
 
 	gofunc((&QWidget{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -2270,7 +2251,7 @@ func miqt_exec_callback_QWidget_DragEnterEvent(self *C.QWidget, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragEnterEvent(event, nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event)
 
 	gofunc((&QWidget{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -2296,7 +2277,7 @@ func miqt_exec_callback_QWidget_DragMoveEvent(self *C.QWidget, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragMoveEvent(event, nil, nil)
+	slotval1 := newQDragMoveEvent(event)
 
 	gofunc((&QWidget{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -2322,7 +2303,7 @@ func miqt_exec_callback_QWidget_DragLeaveEvent(self *C.QWidget, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragLeaveEvent(event, nil)
+	slotval1 := newQDragLeaveEvent(event)
 
 	gofunc((&QWidget{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -2348,7 +2329,7 @@ func miqt_exec_callback_QWidget_DropEvent(self *C.QWidget, cb C.intptr_t, event 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDropEvent(event, nil)
+	slotval1 := newQDropEvent(event)
 
 	gofunc((&QWidget{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -2374,7 +2355,7 @@ func miqt_exec_callback_QWidget_ShowEvent(self *C.QWidget, cb C.intptr_t, event 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQShowEvent(event, nil)
+	slotval1 := newQShowEvent(event)
 
 	gofunc((&QWidget{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -2400,7 +2381,7 @@ func miqt_exec_callback_QWidget_HideEvent(self *C.QWidget, cb C.intptr_t, event 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQHideEvent(event, nil)
+	slotval1 := newQHideEvent(event)
 
 	gofunc((&QWidget{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -2596,7 +2577,7 @@ func miqt_exec_callback_QWidget_InputMethodEvent(self *C.QWidget, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQInputMethodEvent(param1, nil)
+	slotval1 := newQInputMethodEvent(param1)
 
 	gofunc((&QWidget{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -2710,7 +2691,7 @@ func miqt_exec_callback_QWidget_TimerEvent(self *C.QWidget, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QWidget{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -2736,7 +2717,7 @@ func miqt_exec_callback_QWidget_ChildEvent(self *C.QWidget, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QWidget{h: self}).callVirtualBase_ChildEvent, slotval1)
 

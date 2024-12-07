@@ -438,62 +438,36 @@ public:
 
 };
 
-void QPushButton_new(QWidget* parent, QPushButton** outptr_QPushButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPushButton* ret = new MiqtVirtualQPushButton(parent);
-	*outptr_QPushButton = ret;
-	*outptr_QAbstractButton = static_cast<QAbstractButton*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPushButton* QPushButton_new(QWidget* parent) {
+	return new MiqtVirtualQPushButton(parent);
 }
 
-void QPushButton_new2(QPushButton** outptr_QPushButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPushButton* ret = new MiqtVirtualQPushButton();
-	*outptr_QPushButton = ret;
-	*outptr_QAbstractButton = static_cast<QAbstractButton*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPushButton* QPushButton_new2() {
+	return new MiqtVirtualQPushButton();
 }
 
-void QPushButton_new3(struct miqt_string text, QPushButton** outptr_QPushButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QPushButton* QPushButton_new3(struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQPushButton* ret = new MiqtVirtualQPushButton(text_QString);
-	*outptr_QPushButton = ret;
-	*outptr_QAbstractButton = static_cast<QAbstractButton*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQPushButton(text_QString);
 }
 
-void QPushButton_new4(QIcon* icon, struct miqt_string text, QPushButton** outptr_QPushButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QPushButton* QPushButton_new4(QIcon* icon, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQPushButton* ret = new MiqtVirtualQPushButton(*icon, text_QString);
-	*outptr_QPushButton = ret;
-	*outptr_QAbstractButton = static_cast<QAbstractButton*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQPushButton(*icon, text_QString);
 }
 
-void QPushButton_new5(struct miqt_string text, QWidget* parent, QPushButton** outptr_QPushButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QPushButton* QPushButton_new5(struct miqt_string text, QWidget* parent) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQPushButton* ret = new MiqtVirtualQPushButton(text_QString, parent);
-	*outptr_QPushButton = ret;
-	*outptr_QAbstractButton = static_cast<QAbstractButton*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQPushButton(text_QString, parent);
 }
 
-void QPushButton_new6(QIcon* icon, struct miqt_string text, QWidget* parent, QPushButton** outptr_QPushButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QPushButton* QPushButton_new6(QIcon* icon, struct miqt_string text, QWidget* parent) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQPushButton* ret = new MiqtVirtualQPushButton(*icon, text_QString, parent);
-	*outptr_QPushButton = ret;
-	*outptr_QAbstractButton = static_cast<QAbstractButton*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQPushButton(*icon, text_QString, parent);
+}
+
+void QPushButton_virtbase(QPushButton* src, QAbstractButton** outptr_QAbstractButton) {
+	*outptr_QAbstractButton = static_cast<QAbstractButton*>(src);
 }
 
 QMetaObject* QPushButton_MetaObject(const QPushButton* self) {

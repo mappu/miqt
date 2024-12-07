@@ -74,42 +74,34 @@ func (this *QMediaPlayer) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMediaPlayer constructs the type using only CGO pointers.
-func newQMediaPlayer(h *C.QMediaPlayer, h_QObject *C.QObject) *QMediaPlayer {
+func newQMediaPlayer(h *C.QMediaPlayer) *QMediaPlayer {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QMediaPlayer_virtbase(h, &outptr_QObject)
+
 	return &QMediaPlayer{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQMediaPlayer constructs the type using only unsafe pointers.
-func UnsafeNewQMediaPlayer(h unsafe.Pointer, h_QObject unsafe.Pointer) *QMediaPlayer {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaPlayer{h: (*C.QMediaPlayer)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQMediaPlayer(h unsafe.Pointer) *QMediaPlayer {
+	return newQMediaPlayer((*C.QMediaPlayer)(h))
 }
 
 // NewQMediaPlayer constructs a new QMediaPlayer object.
 func NewQMediaPlayer() *QMediaPlayer {
-	var outptr_QMediaPlayer *C.QMediaPlayer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMediaPlayer_new(&outptr_QMediaPlayer, &outptr_QObject)
-	ret := newQMediaPlayer(outptr_QMediaPlayer, outptr_QObject)
+	ret := newQMediaPlayer(C.QMediaPlayer_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaPlayer2 constructs a new QMediaPlayer object.
 func NewQMediaPlayer2(parent *qt6.QObject) *QMediaPlayer {
-	var outptr_QMediaPlayer *C.QMediaPlayer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMediaPlayer_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QMediaPlayer, &outptr_QObject)
-	ret := newQMediaPlayer(outptr_QMediaPlayer, outptr_QObject)
+	ret := newQMediaPlayer(C.QMediaPlayer_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -198,7 +190,7 @@ func (this *QMediaPlayer) SetAudioOutput(output *QAudioOutput) {
 }
 
 func (this *QMediaPlayer) AudioOutput() *QAudioOutput {
-	return newQAudioOutput(C.QMediaPlayer_AudioOutput(this.h), nil)
+	return newQAudioOutput(C.QMediaPlayer_AudioOutput(this.h))
 }
 
 func (this *QMediaPlayer) SetVideoOutput(videoOutput *qt6.QObject) {
@@ -214,7 +206,7 @@ func (this *QMediaPlayer) SetVideoSink(sink *QVideoSink) {
 }
 
 func (this *QMediaPlayer) VideoSink() *QVideoSink {
-	return newQVideoSink(C.QMediaPlayer_VideoSink(this.h), nil)
+	return newQVideoSink(C.QMediaPlayer_VideoSink(this.h))
 }
 
 func (this *QMediaPlayer) Source() *qt6.QUrl {
@@ -224,7 +216,7 @@ func (this *QMediaPlayer) Source() *qt6.QUrl {
 }
 
 func (this *QMediaPlayer) SourceDevice() *qt6.QIODevice {
-	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QMediaPlayer_SourceDevice(this.h)), nil, nil)
+	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QMediaPlayer_SourceDevice(this.h)))
 }
 
 func (this *QMediaPlayer) PlaybackState() QMediaPlayer__PlaybackState {
@@ -778,7 +770,7 @@ func miqt_exec_callback_QMediaPlayer_TimerEvent(self *C.QMediaPlayer, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QMediaPlayer{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -804,7 +796,7 @@ func miqt_exec_callback_QMediaPlayer_ChildEvent(self *C.QMediaPlayer, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QMediaPlayer{h: self}).callVirtualBase_ChildEvent, slotval1)
 

@@ -79,34 +79,27 @@ func newQWebEngineContextMenuData(h *C.QWebEngineContextMenuData) *QWebEngineCon
 	if h == nil {
 		return nil
 	}
+
 	return &QWebEngineContextMenuData{h: h}
 }
 
 // UnsafeNewQWebEngineContextMenuData constructs the type using only unsafe pointers.
 func UnsafeNewQWebEngineContextMenuData(h unsafe.Pointer) *QWebEngineContextMenuData {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineContextMenuData{h: (*C.QWebEngineContextMenuData)(h)}
+	return newQWebEngineContextMenuData((*C.QWebEngineContextMenuData)(h))
 }
 
 // NewQWebEngineContextMenuData constructs a new QWebEngineContextMenuData object.
 func NewQWebEngineContextMenuData() *QWebEngineContextMenuData {
-	var outptr_QWebEngineContextMenuData *C.QWebEngineContextMenuData = nil
 
-	C.QWebEngineContextMenuData_new(&outptr_QWebEngineContextMenuData)
-	ret := newQWebEngineContextMenuData(outptr_QWebEngineContextMenuData)
+	ret := newQWebEngineContextMenuData(C.QWebEngineContextMenuData_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebEngineContextMenuData2 constructs a new QWebEngineContextMenuData object.
 func NewQWebEngineContextMenuData2(other *QWebEngineContextMenuData) *QWebEngineContextMenuData {
-	var outptr_QWebEngineContextMenuData *C.QWebEngineContextMenuData = nil
 
-	C.QWebEngineContextMenuData_new2(other.cPointer(), &outptr_QWebEngineContextMenuData)
-	ret := newQWebEngineContextMenuData(outptr_QWebEngineContextMenuData)
+	ret := newQWebEngineContextMenuData(C.QWebEngineContextMenuData_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

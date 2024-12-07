@@ -43,76 +43,50 @@ func (this *QColorDialog) UnsafePointer() unsafe.Pointer {
 }
 
 // newQColorDialog constructs the type using only CGO pointers.
-func newQColorDialog(h *C.QColorDialog, h_QDialog *C.QDialog, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QColorDialog {
+func newQColorDialog(h *C.QColorDialog) *QColorDialog {
 	if h == nil {
 		return nil
 	}
+	var outptr_QDialog *C.QDialog = nil
+	C.QColorDialog_virtbase(h, &outptr_QDialog)
+
 	return &QColorDialog{h: h,
-		QDialog: newQDialog(h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
+		QDialog: newQDialog(outptr_QDialog)}
 }
 
 // UnsafeNewQColorDialog constructs the type using only unsafe pointers.
-func UnsafeNewQColorDialog(h unsafe.Pointer, h_QDialog unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QColorDialog {
-	if h == nil {
-		return nil
-	}
-
-	return &QColorDialog{h: (*C.QColorDialog)(h),
-		QDialog: UnsafeNewQDialog(h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQColorDialog(h unsafe.Pointer) *QColorDialog {
+	return newQColorDialog((*C.QColorDialog)(h))
 }
 
 // NewQColorDialog constructs a new QColorDialog object.
 func NewQColorDialog(parent *QWidget) *QColorDialog {
-	var outptr_QColorDialog *C.QColorDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QColorDialog_new(parent.cPointer(), &outptr_QColorDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQColorDialog(outptr_QColorDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQColorDialog(C.QColorDialog_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQColorDialog2 constructs a new QColorDialog object.
 func NewQColorDialog2() *QColorDialog {
-	var outptr_QColorDialog *C.QColorDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QColorDialog_new2(&outptr_QColorDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQColorDialog(outptr_QColorDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQColorDialog(C.QColorDialog_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQColorDialog3 constructs a new QColorDialog object.
 func NewQColorDialog3(initial *QColor) *QColorDialog {
-	var outptr_QColorDialog *C.QColorDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QColorDialog_new3(initial.cPointer(), &outptr_QColorDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQColorDialog(outptr_QColorDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQColorDialog(C.QColorDialog_new3(initial.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQColorDialog4 constructs a new QColorDialog object.
 func NewQColorDialog4(initial *QColor, parent *QWidget) *QColorDialog {
-	var outptr_QColorDialog *C.QColorDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QColorDialog_new4(initial.cPointer(), parent.cPointer(), &outptr_QColorDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQColorDialog(outptr_QColorDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQColorDialog(C.QColorDialog_new4(initial.cPointer(), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -593,7 +567,7 @@ func miqt_exec_callback_QColorDialog_KeyPressEvent(self *C.QColorDialog, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(param1, nil, nil)
+	slotval1 := newQKeyEvent(param1)
 
 	gofunc((&QColorDialog{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -619,7 +593,7 @@ func miqt_exec_callback_QColorDialog_CloseEvent(self *C.QColorDialog, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQCloseEvent(param1, nil)
+	slotval1 := newQCloseEvent(param1)
 
 	gofunc((&QColorDialog{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -645,7 +619,7 @@ func miqt_exec_callback_QColorDialog_ShowEvent(self *C.QColorDialog, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQShowEvent(param1, nil)
+	slotval1 := newQShowEvent(param1)
 
 	gofunc((&QColorDialog{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -671,7 +645,7 @@ func miqt_exec_callback_QColorDialog_ResizeEvent(self *C.QColorDialog, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(param1, nil)
+	slotval1 := newQResizeEvent(param1)
 
 	gofunc((&QColorDialog{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -697,7 +671,7 @@ func miqt_exec_callback_QColorDialog_ContextMenuEvent(self *C.QColorDialog, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQContextMenuEvent(param1, nil, nil)
+	slotval1 := newQContextMenuEvent(param1)
 
 	gofunc((&QColorDialog{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 

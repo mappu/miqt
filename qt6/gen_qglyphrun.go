@@ -47,34 +47,27 @@ func newQGlyphRun(h *C.QGlyphRun) *QGlyphRun {
 	if h == nil {
 		return nil
 	}
+
 	return &QGlyphRun{h: h}
 }
 
 // UnsafeNewQGlyphRun constructs the type using only unsafe pointers.
 func UnsafeNewQGlyphRun(h unsafe.Pointer) *QGlyphRun {
-	if h == nil {
-		return nil
-	}
-
-	return &QGlyphRun{h: (*C.QGlyphRun)(h)}
+	return newQGlyphRun((*C.QGlyphRun)(h))
 }
 
 // NewQGlyphRun constructs a new QGlyphRun object.
 func NewQGlyphRun() *QGlyphRun {
-	var outptr_QGlyphRun *C.QGlyphRun = nil
 
-	C.QGlyphRun_new(&outptr_QGlyphRun)
-	ret := newQGlyphRun(outptr_QGlyphRun)
+	ret := newQGlyphRun(C.QGlyphRun_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGlyphRun2 constructs a new QGlyphRun object.
 func NewQGlyphRun2(other *QGlyphRun) *QGlyphRun {
-	var outptr_QGlyphRun *C.QGlyphRun = nil
 
-	C.QGlyphRun_new2(other.cPointer(), &outptr_QGlyphRun)
-	ret := newQGlyphRun(outptr_QGlyphRun)
+	ret := newQGlyphRun(C.QGlyphRun_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

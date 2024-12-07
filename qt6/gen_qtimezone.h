@@ -30,13 +30,13 @@ typedef struct QTimeZone QTimeZone;
 typedef struct QTimeZone__OffsetData QTimeZone__OffsetData;
 #endif
 
-void QTimeZone_new(QTimeZone** outptr_QTimeZone);
-void QTimeZone_new2(struct miqt_string ianaId, QTimeZone** outptr_QTimeZone);
-void QTimeZone_new3(int offsetSeconds, QTimeZone** outptr_QTimeZone);
-void QTimeZone_new4(struct miqt_string zoneId, int offsetSeconds, struct miqt_string name, struct miqt_string abbreviation, QTimeZone** outptr_QTimeZone);
-void QTimeZone_new5(QTimeZone* other, QTimeZone** outptr_QTimeZone);
-void QTimeZone_new6(struct miqt_string zoneId, int offsetSeconds, struct miqt_string name, struct miqt_string abbreviation, uint16_t territory, QTimeZone** outptr_QTimeZone);
-void QTimeZone_new7(struct miqt_string zoneId, int offsetSeconds, struct miqt_string name, struct miqt_string abbreviation, uint16_t territory, struct miqt_string comment, QTimeZone** outptr_QTimeZone);
+QTimeZone* QTimeZone_new();
+QTimeZone* QTimeZone_new2(struct miqt_string ianaId);
+QTimeZone* QTimeZone_new3(int offsetSeconds);
+QTimeZone* QTimeZone_new4(struct miqt_string zoneId, int offsetSeconds, struct miqt_string name, struct miqt_string abbreviation);
+QTimeZone* QTimeZone_new5(QTimeZone* other);
+QTimeZone* QTimeZone_new6(struct miqt_string zoneId, int offsetSeconds, struct miqt_string name, struct miqt_string abbreviation, uint16_t territory);
+QTimeZone* QTimeZone_new7(struct miqt_string zoneId, int offsetSeconds, struct miqt_string name, struct miqt_string abbreviation, uint16_t territory, struct miqt_string comment);
 void QTimeZone_OperatorAssign(QTimeZone* self, QTimeZone* other);
 void QTimeZone_Swap(QTimeZone* self, QTimeZone* other);
 bool QTimeZone_IsValid(const QTimeZone* self);
@@ -75,7 +75,7 @@ struct miqt_string QTimeZone_DisplayName22(const QTimeZone* self, int timeType, 
 struct miqt_string QTimeZone_DisplayName32(const QTimeZone* self, int timeType, int nameType, QLocale* locale);
 void QTimeZone_Delete(QTimeZone* self, bool isSubclass);
 
-void QTimeZone__OffsetData_new(QTimeZone__OffsetData* param1, QTimeZone__OffsetData** outptr_QTimeZone__OffsetData);
+QTimeZone__OffsetData* QTimeZone__OffsetData_new(QTimeZone__OffsetData* param1);
 void QTimeZone__OffsetData_OperatorAssign(QTimeZone__OffsetData* self, QTimeZone__OffsetData* param1);
 void QTimeZone__OffsetData_Delete(QTimeZone__OffsetData* self, bool isSubclass);
 

@@ -11,6 +11,10 @@
 #include "gen_qmedianetworkaccesscontrol.h"
 #include "_cgo_export.h"
 
+void QMediaNetworkAccessControl_virtbase(QMediaNetworkAccessControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
+
 QMetaObject* QMediaNetworkAccessControl_MetaObject(const QMediaNetworkAccessControl* self) {
 	return (QMetaObject*) self->metaObject();
 }

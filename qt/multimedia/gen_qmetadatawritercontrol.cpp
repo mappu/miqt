@@ -11,6 +11,10 @@
 #include "gen_qmetadatawritercontrol.h"
 #include "_cgo_export.h"
 
+void QMetaDataWriterControl_virtbase(QMetaDataWriterControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
+
 QMetaObject* QMetaDataWriterControl_MetaObject(const QMetaDataWriterControl* self) {
 	return (QMetaObject*) self->metaObject();
 }

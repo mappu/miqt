@@ -37,24 +37,19 @@ func newQTextDocumentWriter(h *C.QTextDocumentWriter) *QTextDocumentWriter {
 	if h == nil {
 		return nil
 	}
+
 	return &QTextDocumentWriter{h: h}
 }
 
 // UnsafeNewQTextDocumentWriter constructs the type using only unsafe pointers.
 func UnsafeNewQTextDocumentWriter(h unsafe.Pointer) *QTextDocumentWriter {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextDocumentWriter{h: (*C.QTextDocumentWriter)(h)}
+	return newQTextDocumentWriter((*C.QTextDocumentWriter)(h))
 }
 
 // NewQTextDocumentWriter constructs a new QTextDocumentWriter object.
 func NewQTextDocumentWriter() *QTextDocumentWriter {
-	var outptr_QTextDocumentWriter *C.QTextDocumentWriter = nil
 
-	C.QTextDocumentWriter_new(&outptr_QTextDocumentWriter)
-	ret := newQTextDocumentWriter(outptr_QTextDocumentWriter)
+	ret := newQTextDocumentWriter(C.QTextDocumentWriter_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -64,10 +59,8 @@ func NewQTextDocumentWriter2(device *QIODevice, format []byte) *QTextDocumentWri
 	format_alias := C.struct_miqt_string{}
 	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
 	format_alias.len = C.size_t(len(format))
-	var outptr_QTextDocumentWriter *C.QTextDocumentWriter = nil
 
-	C.QTextDocumentWriter_new2(device.cPointer(), format_alias, &outptr_QTextDocumentWriter)
-	ret := newQTextDocumentWriter(outptr_QTextDocumentWriter)
+	ret := newQTextDocumentWriter(C.QTextDocumentWriter_new2(device.cPointer(), format_alias))
 	ret.isSubclass = true
 	return ret
 }
@@ -78,10 +71,8 @@ func NewQTextDocumentWriter3(fileName string) *QTextDocumentWriter {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QTextDocumentWriter *C.QTextDocumentWriter = nil
 
-	C.QTextDocumentWriter_new3(fileName_ms, &outptr_QTextDocumentWriter)
-	ret := newQTextDocumentWriter(outptr_QTextDocumentWriter)
+	ret := newQTextDocumentWriter(C.QTextDocumentWriter_new3(fileName_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -95,10 +86,8 @@ func NewQTextDocumentWriter4(fileName string, format []byte) *QTextDocumentWrite
 	format_alias := C.struct_miqt_string{}
 	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
 	format_alias.len = C.size_t(len(format))
-	var outptr_QTextDocumentWriter *C.QTextDocumentWriter = nil
 
-	C.QTextDocumentWriter_new4(fileName_ms, format_alias, &outptr_QTextDocumentWriter)
-	ret := newQTextDocumentWriter(outptr_QTextDocumentWriter)
+	ret := newQTextDocumentWriter(C.QTextDocumentWriter_new4(fileName_ms, format_alias))
 	ret.isSubclass = true
 	return ret
 }
@@ -122,7 +111,7 @@ func (this *QTextDocumentWriter) SetDevice(device *QIODevice) {
 }
 
 func (this *QTextDocumentWriter) Device() *QIODevice {
-	return newQIODevice(C.QTextDocumentWriter_Device(this.h), nil, nil)
+	return newQIODevice(C.QTextDocumentWriter_Device(this.h))
 }
 
 func (this *QTextDocumentWriter) SetFileName(fileName string) {

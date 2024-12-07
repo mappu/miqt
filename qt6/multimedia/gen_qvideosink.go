@@ -36,42 +36,34 @@ func (this *QVideoSink) UnsafePointer() unsafe.Pointer {
 }
 
 // newQVideoSink constructs the type using only CGO pointers.
-func newQVideoSink(h *C.QVideoSink, h_QObject *C.QObject) *QVideoSink {
+func newQVideoSink(h *C.QVideoSink) *QVideoSink {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QVideoSink_virtbase(h, &outptr_QObject)
+
 	return &QVideoSink{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQVideoSink constructs the type using only unsafe pointers.
-func UnsafeNewQVideoSink(h unsafe.Pointer, h_QObject unsafe.Pointer) *QVideoSink {
-	if h == nil {
-		return nil
-	}
-
-	return &QVideoSink{h: (*C.QVideoSink)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQVideoSink(h unsafe.Pointer) *QVideoSink {
+	return newQVideoSink((*C.QVideoSink)(h))
 }
 
 // NewQVideoSink constructs a new QVideoSink object.
 func NewQVideoSink() *QVideoSink {
-	var outptr_QVideoSink *C.QVideoSink = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QVideoSink_new(&outptr_QVideoSink, &outptr_QObject)
-	ret := newQVideoSink(outptr_QVideoSink, outptr_QObject)
+	ret := newQVideoSink(C.QVideoSink_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVideoSink2 constructs a new QVideoSink object.
 func NewQVideoSink2(parent *qt6.QObject) *QVideoSink {
-	var outptr_QVideoSink *C.QVideoSink = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QVideoSink_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QVideoSink, &outptr_QObject)
-	ret := newQVideoSink(outptr_QVideoSink, outptr_QObject)
+	ret := newQVideoSink(C.QVideoSink_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -290,7 +282,7 @@ func miqt_exec_callback_QVideoSink_TimerEvent(self *C.QVideoSink, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoSink{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -316,7 +308,7 @@ func miqt_exec_callback_QVideoSink_ChildEvent(self *C.QVideoSink, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoSink{h: self}).callVirtualBase_ChildEvent, slotval1)
 

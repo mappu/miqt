@@ -177,38 +177,26 @@ public:
 
 };
 
-void QPropertyAnimation_new(QPropertyAnimation** outptr_QPropertyAnimation, QVariantAnimation** outptr_QVariantAnimation, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject) {
-	MiqtVirtualQPropertyAnimation* ret = new MiqtVirtualQPropertyAnimation();
-	*outptr_QPropertyAnimation = ret;
-	*outptr_QVariantAnimation = static_cast<QVariantAnimation*>(ret);
-	*outptr_QAbstractAnimation = static_cast<QAbstractAnimation*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QPropertyAnimation* QPropertyAnimation_new() {
+	return new MiqtVirtualQPropertyAnimation();
 }
 
-void QPropertyAnimation_new2(QObject* target, struct miqt_string propertyName, QPropertyAnimation** outptr_QPropertyAnimation, QVariantAnimation** outptr_QVariantAnimation, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject) {
+QPropertyAnimation* QPropertyAnimation_new2(QObject* target, struct miqt_string propertyName) {
 	QByteArray propertyName_QByteArray(propertyName.data, propertyName.len);
-	MiqtVirtualQPropertyAnimation* ret = new MiqtVirtualQPropertyAnimation(target, propertyName_QByteArray);
-	*outptr_QPropertyAnimation = ret;
-	*outptr_QVariantAnimation = static_cast<QVariantAnimation*>(ret);
-	*outptr_QAbstractAnimation = static_cast<QAbstractAnimation*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQPropertyAnimation(target, propertyName_QByteArray);
 }
 
-void QPropertyAnimation_new3(QObject* parent, QPropertyAnimation** outptr_QPropertyAnimation, QVariantAnimation** outptr_QVariantAnimation, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject) {
-	MiqtVirtualQPropertyAnimation* ret = new MiqtVirtualQPropertyAnimation(parent);
-	*outptr_QPropertyAnimation = ret;
-	*outptr_QVariantAnimation = static_cast<QVariantAnimation*>(ret);
-	*outptr_QAbstractAnimation = static_cast<QAbstractAnimation*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QPropertyAnimation* QPropertyAnimation_new3(QObject* parent) {
+	return new MiqtVirtualQPropertyAnimation(parent);
 }
 
-void QPropertyAnimation_new4(QObject* target, struct miqt_string propertyName, QObject* parent, QPropertyAnimation** outptr_QPropertyAnimation, QVariantAnimation** outptr_QVariantAnimation, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject) {
+QPropertyAnimation* QPropertyAnimation_new4(QObject* target, struct miqt_string propertyName, QObject* parent) {
 	QByteArray propertyName_QByteArray(propertyName.data, propertyName.len);
-	MiqtVirtualQPropertyAnimation* ret = new MiqtVirtualQPropertyAnimation(target, propertyName_QByteArray, parent);
-	*outptr_QPropertyAnimation = ret;
-	*outptr_QVariantAnimation = static_cast<QVariantAnimation*>(ret);
-	*outptr_QAbstractAnimation = static_cast<QAbstractAnimation*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQPropertyAnimation(target, propertyName_QByteArray, parent);
+}
+
+void QPropertyAnimation_virtbase(QPropertyAnimation* src, QVariantAnimation** outptr_QVariantAnimation) {
+	*outptr_QVariantAnimation = static_cast<QVariantAnimation*>(src);
 }
 
 QMetaObject* QPropertyAnimation_MetaObject(const QPropertyAnimation* self) {

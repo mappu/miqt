@@ -36,46 +36,34 @@ func (this *QAudioRecorder) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAudioRecorder constructs the type using only CGO pointers.
-func newQAudioRecorder(h *C.QAudioRecorder, h_QMediaRecorder *C.QMediaRecorder, h_QObject *C.QObject, h_QMediaBindableInterface *C.QMediaBindableInterface) *QAudioRecorder {
+func newQAudioRecorder(h *C.QAudioRecorder) *QAudioRecorder {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaRecorder *C.QMediaRecorder = nil
+	C.QAudioRecorder_virtbase(h, &outptr_QMediaRecorder)
+
 	return &QAudioRecorder{h: h,
-		QMediaRecorder: newQMediaRecorder(h_QMediaRecorder, h_QObject, h_QMediaBindableInterface)}
+		QMediaRecorder: newQMediaRecorder(outptr_QMediaRecorder)}
 }
 
 // UnsafeNewQAudioRecorder constructs the type using only unsafe pointers.
-func UnsafeNewQAudioRecorder(h unsafe.Pointer, h_QMediaRecorder unsafe.Pointer, h_QObject unsafe.Pointer, h_QMediaBindableInterface unsafe.Pointer) *QAudioRecorder {
-	if h == nil {
-		return nil
-	}
-
-	return &QAudioRecorder{h: (*C.QAudioRecorder)(h),
-		QMediaRecorder: UnsafeNewQMediaRecorder(h_QMediaRecorder, h_QObject, h_QMediaBindableInterface)}
+func UnsafeNewQAudioRecorder(h unsafe.Pointer) *QAudioRecorder {
+	return newQAudioRecorder((*C.QAudioRecorder)(h))
 }
 
 // NewQAudioRecorder constructs a new QAudioRecorder object.
 func NewQAudioRecorder() *QAudioRecorder {
-	var outptr_QAudioRecorder *C.QAudioRecorder = nil
-	var outptr_QMediaRecorder *C.QMediaRecorder = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QMediaBindableInterface *C.QMediaBindableInterface = nil
 
-	C.QAudioRecorder_new(&outptr_QAudioRecorder, &outptr_QMediaRecorder, &outptr_QObject, &outptr_QMediaBindableInterface)
-	ret := newQAudioRecorder(outptr_QAudioRecorder, outptr_QMediaRecorder, outptr_QObject, outptr_QMediaBindableInterface)
+	ret := newQAudioRecorder(C.QAudioRecorder_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAudioRecorder2 constructs a new QAudioRecorder object.
 func NewQAudioRecorder2(parent *qt.QObject) *QAudioRecorder {
-	var outptr_QAudioRecorder *C.QAudioRecorder = nil
-	var outptr_QMediaRecorder *C.QMediaRecorder = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QMediaBindableInterface *C.QMediaBindableInterface = nil
 
-	C.QAudioRecorder_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QAudioRecorder, &outptr_QMediaRecorder, &outptr_QObject, &outptr_QMediaBindableInterface)
-	ret := newQAudioRecorder(outptr_QAudioRecorder, outptr_QMediaRecorder, outptr_QObject, outptr_QMediaBindableInterface)
+	ret := newQAudioRecorder(C.QAudioRecorder_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -244,7 +232,7 @@ func QAudioRecorder_TrUtf83(s string, c string, n int) string {
 
 func (this *QAudioRecorder) callVirtualBase_MediaObject() *QMediaObject {
 
-	return newQMediaObject(C.QAudioRecorder_virtualbase_MediaObject(unsafe.Pointer(this.h)), nil)
+	return newQMediaObject(C.QAudioRecorder_virtualbase_MediaObject(unsafe.Pointer(this.h)))
 
 }
 func (this *QAudioRecorder) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
@@ -287,7 +275,7 @@ func miqt_exec_callback_QAudioRecorder_SetMediaObject(self *C.QAudioRecorder, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMediaObject(object, nil)
+	slotval1 := newQMediaObject(object)
 
 	virtualReturn := gofunc((&QAudioRecorder{h: self}).callVirtualBase_SetMediaObject, slotval1)
 

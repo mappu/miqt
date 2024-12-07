@@ -46,10 +46,11 @@ typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-void QColorDialog_new(QWidget* parent, QColorDialog** outptr_QColorDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QColorDialog_new2(QColorDialog** outptr_QColorDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QColorDialog_new3(QColor* initial, QColorDialog** outptr_QColorDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QColorDialog_new4(QColor* initial, QWidget* parent, QColorDialog** outptr_QColorDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QColorDialog* QColorDialog_new(QWidget* parent);
+QColorDialog* QColorDialog_new2();
+QColorDialog* QColorDialog_new3(QColor* initial);
+QColorDialog* QColorDialog_new4(QColor* initial, QWidget* parent);
+void QColorDialog_virtbase(QColorDialog* src, QDialog** outptr_QDialog);
 QMetaObject* QColorDialog_MetaObject(const QColorDialog* self);
 void* QColorDialog_Metacast(QColorDialog* self, const char* param1);
 struct miqt_string QColorDialog_Tr(const char* s);

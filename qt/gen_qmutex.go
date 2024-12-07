@@ -44,24 +44,19 @@ func newQBasicMutex(h *C.QBasicMutex) *QBasicMutex {
 	if h == nil {
 		return nil
 	}
+
 	return &QBasicMutex{h: h}
 }
 
 // UnsafeNewQBasicMutex constructs the type using only unsafe pointers.
 func UnsafeNewQBasicMutex(h unsafe.Pointer) *QBasicMutex {
-	if h == nil {
-		return nil
-	}
-
-	return &QBasicMutex{h: (*C.QBasicMutex)(h)}
+	return newQBasicMutex((*C.QBasicMutex)(h))
 }
 
 // NewQBasicMutex constructs a new QBasicMutex object.
 func NewQBasicMutex() *QBasicMutex {
-	var outptr_QBasicMutex *C.QBasicMutex = nil
 
-	C.QBasicMutex_new(&outptr_QBasicMutex)
-	ret := newQBasicMutex(outptr_QBasicMutex)
+	ret := newQBasicMutex(C.QBasicMutex_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -125,42 +120,34 @@ func (this *QMutex) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMutex constructs the type using only CGO pointers.
-func newQMutex(h *C.QMutex, h_QBasicMutex *C.QBasicMutex) *QMutex {
+func newQMutex(h *C.QMutex) *QMutex {
 	if h == nil {
 		return nil
 	}
+	var outptr_QBasicMutex *C.QBasicMutex = nil
+	C.QMutex_virtbase(h, &outptr_QBasicMutex)
+
 	return &QMutex{h: h,
-		QBasicMutex: newQBasicMutex(h_QBasicMutex)}
+		QBasicMutex: newQBasicMutex(outptr_QBasicMutex)}
 }
 
 // UnsafeNewQMutex constructs the type using only unsafe pointers.
-func UnsafeNewQMutex(h unsafe.Pointer, h_QBasicMutex unsafe.Pointer) *QMutex {
-	if h == nil {
-		return nil
-	}
-
-	return &QMutex{h: (*C.QMutex)(h),
-		QBasicMutex: UnsafeNewQBasicMutex(h_QBasicMutex)}
+func UnsafeNewQMutex(h unsafe.Pointer) *QMutex {
+	return newQMutex((*C.QMutex)(h))
 }
 
 // NewQMutex constructs a new QMutex object.
 func NewQMutex() *QMutex {
-	var outptr_QMutex *C.QMutex = nil
-	var outptr_QBasicMutex *C.QBasicMutex = nil
 
-	C.QMutex_new(&outptr_QMutex, &outptr_QBasicMutex)
-	ret := newQMutex(outptr_QMutex, outptr_QBasicMutex)
+	ret := newQMutex(C.QMutex_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMutex2 constructs a new QMutex object.
 func NewQMutex2(mode QMutex__RecursionMode) *QMutex {
-	var outptr_QMutex *C.QMutex = nil
-	var outptr_QBasicMutex *C.QBasicMutex = nil
 
-	C.QMutex_new2((C.int)(mode), &outptr_QMutex, &outptr_QBasicMutex)
-	ret := newQMutex(outptr_QMutex, outptr_QBasicMutex)
+	ret := newQMutex(C.QMutex_new2((C.int)(mode)))
 	ret.isSubclass = true
 	return ret
 }
@@ -227,24 +214,19 @@ func newQRecursiveMutex(h *C.QRecursiveMutex) *QRecursiveMutex {
 	if h == nil {
 		return nil
 	}
+
 	return &QRecursiveMutex{h: h}
 }
 
 // UnsafeNewQRecursiveMutex constructs the type using only unsafe pointers.
 func UnsafeNewQRecursiveMutex(h unsafe.Pointer) *QRecursiveMutex {
-	if h == nil {
-		return nil
-	}
-
-	return &QRecursiveMutex{h: (*C.QRecursiveMutex)(h)}
+	return newQRecursiveMutex((*C.QRecursiveMutex)(h))
 }
 
 // NewQRecursiveMutex constructs a new QRecursiveMutex object.
 func NewQRecursiveMutex() *QRecursiveMutex {
-	var outptr_QRecursiveMutex *C.QRecursiveMutex = nil
 
-	C.QRecursiveMutex_new(&outptr_QRecursiveMutex)
-	ret := newQRecursiveMutex(outptr_QRecursiveMutex)
+	ret := newQRecursiveMutex(C.QRecursiveMutex_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -287,34 +269,27 @@ func newQMutexLocker(h *C.QMutexLocker) *QMutexLocker {
 	if h == nil {
 		return nil
 	}
+
 	return &QMutexLocker{h: h}
 }
 
 // UnsafeNewQMutexLocker constructs the type using only unsafe pointers.
 func UnsafeNewQMutexLocker(h unsafe.Pointer) *QMutexLocker {
-	if h == nil {
-		return nil
-	}
-
-	return &QMutexLocker{h: (*C.QMutexLocker)(h)}
+	return newQMutexLocker((*C.QMutexLocker)(h))
 }
 
 // NewQMutexLocker constructs a new QMutexLocker object.
 func NewQMutexLocker(m *QBasicMutex) *QMutexLocker {
-	var outptr_QMutexLocker *C.QMutexLocker = nil
 
-	C.QMutexLocker_new(m.cPointer(), &outptr_QMutexLocker)
-	ret := newQMutexLocker(outptr_QMutexLocker)
+	ret := newQMutexLocker(C.QMutexLocker_new(m.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMutexLocker2 constructs a new QMutexLocker object.
 func NewQMutexLocker2(m *QRecursiveMutex) *QMutexLocker {
-	var outptr_QMutexLocker *C.QMutexLocker = nil
 
-	C.QMutexLocker_new2(m.cPointer(), &outptr_QMutexLocker)
-	ret := newQMutexLocker(outptr_QMutexLocker)
+	ret := newQMutexLocker(C.QMutexLocker_new2(m.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -328,7 +303,7 @@ func (this *QMutexLocker) Relock() {
 }
 
 func (this *QMutexLocker) Mutex() *QMutex {
-	return newQMutex(C.QMutexLocker_Mutex(this.h), nil)
+	return newQMutex(C.QMutexLocker_Mutex(this.h))
 }
 
 // Delete this object from C++ memory.

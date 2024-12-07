@@ -63,34 +63,27 @@ func newQMetaContainer(h *C.QMetaContainer) *QMetaContainer {
 	if h == nil {
 		return nil
 	}
+
 	return &QMetaContainer{h: h}
 }
 
 // UnsafeNewQMetaContainer constructs the type using only unsafe pointers.
 func UnsafeNewQMetaContainer(h unsafe.Pointer) *QMetaContainer {
-	if h == nil {
-		return nil
-	}
-
-	return &QMetaContainer{h: (*C.QMetaContainer)(h)}
+	return newQMetaContainer((*C.QMetaContainer)(h))
 }
 
 // NewQMetaContainer constructs a new QMetaContainer object.
 func NewQMetaContainer() *QMetaContainer {
-	var outptr_QMetaContainer *C.QMetaContainer = nil
 
-	C.QMetaContainer_new(&outptr_QMetaContainer)
-	ret := newQMetaContainer(outptr_QMetaContainer)
+	ret := newQMetaContainer(C.QMetaContainer_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMetaContainer2 constructs a new QMetaContainer object.
 func NewQMetaContainer2(param1 *QMetaContainer) *QMetaContainer {
-	var outptr_QMetaContainer *C.QMetaContainer = nil
 
-	C.QMetaContainer_new2(param1.cPointer(), &outptr_QMetaContainer)
-	ret := newQMetaContainer(outptr_QMetaContainer)
+	ret := newQMetaContainer(C.QMetaContainer_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -226,31 +219,26 @@ func (this *QMetaSequence) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMetaSequence constructs the type using only CGO pointers.
-func newQMetaSequence(h *C.QMetaSequence, h_QMetaContainer *C.QMetaContainer) *QMetaSequence {
+func newQMetaSequence(h *C.QMetaSequence) *QMetaSequence {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMetaContainer *C.QMetaContainer = nil
+	C.QMetaSequence_virtbase(h, &outptr_QMetaContainer)
+
 	return &QMetaSequence{h: h,
-		QMetaContainer: newQMetaContainer(h_QMetaContainer)}
+		QMetaContainer: newQMetaContainer(outptr_QMetaContainer)}
 }
 
 // UnsafeNewQMetaSequence constructs the type using only unsafe pointers.
-func UnsafeNewQMetaSequence(h unsafe.Pointer, h_QMetaContainer unsafe.Pointer) *QMetaSequence {
-	if h == nil {
-		return nil
-	}
-
-	return &QMetaSequence{h: (*C.QMetaSequence)(h),
-		QMetaContainer: UnsafeNewQMetaContainer(h_QMetaContainer)}
+func UnsafeNewQMetaSequence(h unsafe.Pointer) *QMetaSequence {
+	return newQMetaSequence((*C.QMetaSequence)(h))
 }
 
 // NewQMetaSequence constructs a new QMetaSequence object.
 func NewQMetaSequence() *QMetaSequence {
-	var outptr_QMetaSequence *C.QMetaSequence = nil
-	var outptr_QMetaContainer *C.QMetaContainer = nil
 
-	C.QMetaSequence_new(&outptr_QMetaSequence, &outptr_QMetaContainer)
-	ret := newQMetaSequence(outptr_QMetaSequence, outptr_QMetaContainer)
+	ret := newQMetaSequence(C.QMetaSequence_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -412,31 +400,26 @@ func (this *QMetaAssociation) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMetaAssociation constructs the type using only CGO pointers.
-func newQMetaAssociation(h *C.QMetaAssociation, h_QMetaContainer *C.QMetaContainer) *QMetaAssociation {
+func newQMetaAssociation(h *C.QMetaAssociation) *QMetaAssociation {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMetaContainer *C.QMetaContainer = nil
+	C.QMetaAssociation_virtbase(h, &outptr_QMetaContainer)
+
 	return &QMetaAssociation{h: h,
-		QMetaContainer: newQMetaContainer(h_QMetaContainer)}
+		QMetaContainer: newQMetaContainer(outptr_QMetaContainer)}
 }
 
 // UnsafeNewQMetaAssociation constructs the type using only unsafe pointers.
-func UnsafeNewQMetaAssociation(h unsafe.Pointer, h_QMetaContainer unsafe.Pointer) *QMetaAssociation {
-	if h == nil {
-		return nil
-	}
-
-	return &QMetaAssociation{h: (*C.QMetaAssociation)(h),
-		QMetaContainer: UnsafeNewQMetaContainer(h_QMetaContainer)}
+func UnsafeNewQMetaAssociation(h unsafe.Pointer) *QMetaAssociation {
+	return newQMetaAssociation((*C.QMetaAssociation)(h))
 }
 
 // NewQMetaAssociation constructs a new QMetaAssociation object.
 func NewQMetaAssociation() *QMetaAssociation {
-	var outptr_QMetaAssociation *C.QMetaAssociation = nil
-	var outptr_QMetaContainer *C.QMetaContainer = nil
 
-	C.QMetaAssociation_new(&outptr_QMetaAssociation, &outptr_QMetaContainer)
-	ret := newQMetaAssociation(outptr_QMetaAssociation, outptr_QMetaContainer)
+	ret := newQMetaAssociation(C.QMetaAssociation_new())
 	ret.isSubclass = true
 	return ret
 }

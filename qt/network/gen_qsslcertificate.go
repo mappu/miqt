@@ -60,54 +60,43 @@ func newQSslCertificate(h *C.QSslCertificate) *QSslCertificate {
 	if h == nil {
 		return nil
 	}
+
 	return &QSslCertificate{h: h}
 }
 
 // UnsafeNewQSslCertificate constructs the type using only unsafe pointers.
 func UnsafeNewQSslCertificate(h unsafe.Pointer) *QSslCertificate {
-	if h == nil {
-		return nil
-	}
-
-	return &QSslCertificate{h: (*C.QSslCertificate)(h)}
+	return newQSslCertificate((*C.QSslCertificate)(h))
 }
 
 // NewQSslCertificate constructs a new QSslCertificate object.
 func NewQSslCertificate(device *qt.QIODevice) *QSslCertificate {
-	var outptr_QSslCertificate *C.QSslCertificate = nil
 
-	C.QSslCertificate_new((*C.QIODevice)(device.UnsafePointer()), &outptr_QSslCertificate)
-	ret := newQSslCertificate(outptr_QSslCertificate)
+	ret := newQSslCertificate(C.QSslCertificate_new((*C.QIODevice)(device.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSslCertificate2 constructs a new QSslCertificate object.
 func NewQSslCertificate2() *QSslCertificate {
-	var outptr_QSslCertificate *C.QSslCertificate = nil
 
-	C.QSslCertificate_new2(&outptr_QSslCertificate)
-	ret := newQSslCertificate(outptr_QSslCertificate)
+	ret := newQSslCertificate(C.QSslCertificate_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSslCertificate3 constructs a new QSslCertificate object.
 func NewQSslCertificate3(other *QSslCertificate) *QSslCertificate {
-	var outptr_QSslCertificate *C.QSslCertificate = nil
 
-	C.QSslCertificate_new3(other.cPointer(), &outptr_QSslCertificate)
-	ret := newQSslCertificate(outptr_QSslCertificate)
+	ret := newQSslCertificate(C.QSslCertificate_new3(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSslCertificate4 constructs a new QSslCertificate object.
 func NewQSslCertificate4(device *qt.QIODevice, format QSsl__EncodingFormat) *QSslCertificate {
-	var outptr_QSslCertificate *C.QSslCertificate = nil
 
-	C.QSslCertificate_new4((*C.QIODevice)(device.UnsafePointer()), (C.int)(format), &outptr_QSslCertificate)
-	ret := newQSslCertificate(outptr_QSslCertificate)
+	ret := newQSslCertificate(C.QSslCertificate_new4((*C.QIODevice)(device.UnsafePointer()), (C.int)(format)))
 	ret.isSubclass = true
 	return ret
 }
@@ -117,10 +106,8 @@ func NewQSslCertificate5(data []byte) *QSslCertificate {
 	data_alias := C.struct_miqt_string{}
 	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
 	data_alias.len = C.size_t(len(data))
-	var outptr_QSslCertificate *C.QSslCertificate = nil
 
-	C.QSslCertificate_new5(data_alias, &outptr_QSslCertificate)
-	ret := newQSslCertificate(outptr_QSslCertificate)
+	ret := newQSslCertificate(C.QSslCertificate_new5(data_alias))
 	ret.isSubclass = true
 	return ret
 }
@@ -130,10 +117,8 @@ func NewQSslCertificate6(data []byte, format QSsl__EncodingFormat) *QSslCertific
 	data_alias := C.struct_miqt_string{}
 	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
 	data_alias.len = C.size_t(len(data))
-	var outptr_QSslCertificate *C.QSslCertificate = nil
 
-	C.QSslCertificate_new6(data_alias, (C.int)(format), &outptr_QSslCertificate)
-	ret := newQSslCertificate(outptr_QSslCertificate)
+	ret := newQSslCertificate(C.QSslCertificate_new6(data_alias, (C.int)(format)))
 	ret.isSubclass = true
 	return ret
 }

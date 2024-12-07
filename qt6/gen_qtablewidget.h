@@ -76,8 +76,8 @@ typedef struct QVariant QVariant;
 typedef struct QWidget QWidget;
 #endif
 
-void QTableWidgetSelectionRange_new(QTableWidgetSelectionRange** outptr_QTableWidgetSelectionRange);
-void QTableWidgetSelectionRange_new2(int top, int left, int bottom, int right, QTableWidgetSelectionRange** outptr_QTableWidgetSelectionRange);
+QTableWidgetSelectionRange* QTableWidgetSelectionRange_new();
+QTableWidgetSelectionRange* QTableWidgetSelectionRange_new2(int top, int left, int bottom, int right);
 int QTableWidgetSelectionRange_TopRow(const QTableWidgetSelectionRange* self);
 int QTableWidgetSelectionRange_BottomRow(const QTableWidgetSelectionRange* self);
 int QTableWidgetSelectionRange_LeftColumn(const QTableWidgetSelectionRange* self);
@@ -86,13 +86,13 @@ int QTableWidgetSelectionRange_RowCount(const QTableWidgetSelectionRange* self);
 int QTableWidgetSelectionRange_ColumnCount(const QTableWidgetSelectionRange* self);
 void QTableWidgetSelectionRange_Delete(QTableWidgetSelectionRange* self, bool isSubclass);
 
-void QTableWidgetItem_new(QTableWidgetItem** outptr_QTableWidgetItem);
-void QTableWidgetItem_new2(struct miqt_string text, QTableWidgetItem** outptr_QTableWidgetItem);
-void QTableWidgetItem_new3(QIcon* icon, struct miqt_string text, QTableWidgetItem** outptr_QTableWidgetItem);
-void QTableWidgetItem_new4(QTableWidgetItem* other, QTableWidgetItem** outptr_QTableWidgetItem);
-void QTableWidgetItem_new5(int typeVal, QTableWidgetItem** outptr_QTableWidgetItem);
-void QTableWidgetItem_new6(struct miqt_string text, int typeVal, QTableWidgetItem** outptr_QTableWidgetItem);
-void QTableWidgetItem_new7(QIcon* icon, struct miqt_string text, int typeVal, QTableWidgetItem** outptr_QTableWidgetItem);
+QTableWidgetItem* QTableWidgetItem_new();
+QTableWidgetItem* QTableWidgetItem_new2(struct miqt_string text);
+QTableWidgetItem* QTableWidgetItem_new3(QIcon* icon, struct miqt_string text);
+QTableWidgetItem* QTableWidgetItem_new4(QTableWidgetItem* other);
+QTableWidgetItem* QTableWidgetItem_new5(int typeVal);
+QTableWidgetItem* QTableWidgetItem_new6(struct miqt_string text, int typeVal);
+QTableWidgetItem* QTableWidgetItem_new7(QIcon* icon, struct miqt_string text, int typeVal);
 QTableWidgetItem* QTableWidgetItem_Clone(const QTableWidgetItem* self);
 QTableWidget* QTableWidgetItem_TableWidget(const QTableWidgetItem* self);
 int QTableWidgetItem_Row(const QTableWidgetItem* self);
@@ -146,10 +146,11 @@ void QTableWidgetItem_override_virtual_Write(void* self, intptr_t slot);
 void QTableWidgetItem_virtualbase_Write(const void* self, QDataStream* out);
 void QTableWidgetItem_Delete(QTableWidgetItem* self, bool isSubclass);
 
-void QTableWidget_new(QWidget* parent, QTableWidget** outptr_QTableWidget, QTableView** outptr_QTableView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QTableWidget_new2(QTableWidget** outptr_QTableWidget, QTableView** outptr_QTableView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QTableWidget_new3(int rows, int columns, QTableWidget** outptr_QTableWidget, QTableView** outptr_QTableView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QTableWidget_new4(int rows, int columns, QWidget* parent, QTableWidget** outptr_QTableWidget, QTableView** outptr_QTableView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QTableWidget* QTableWidget_new(QWidget* parent);
+QTableWidget* QTableWidget_new2();
+QTableWidget* QTableWidget_new3(int rows, int columns);
+QTableWidget* QTableWidget_new4(int rows, int columns, QWidget* parent);
+void QTableWidget_virtbase(QTableWidget* src, QTableView** outptr_QTableView);
 QMetaObject* QTableWidget_MetaObject(const QTableWidget* self);
 void* QTableWidget_Metacast(QTableWidget* self, const char* param1);
 struct miqt_string QTableWidget_Tr(const char* s);

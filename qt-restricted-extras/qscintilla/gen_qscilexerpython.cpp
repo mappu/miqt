@@ -912,18 +912,16 @@ public:
 
 };
 
-void QsciLexerPython_new(QsciLexerPython** outptr_QsciLexerPython, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerPython* ret = new MiqtVirtualQsciLexerPython();
-	*outptr_QsciLexerPython = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerPython* QsciLexerPython_new() {
+	return new MiqtVirtualQsciLexerPython();
 }
 
-void QsciLexerPython_new2(QObject* parent, QsciLexerPython** outptr_QsciLexerPython, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerPython* ret = new MiqtVirtualQsciLexerPython(parent);
-	*outptr_QsciLexerPython = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerPython* QsciLexerPython_new2(QObject* parent) {
+	return new MiqtVirtualQsciLexerPython(parent);
+}
+
+void QsciLexerPython_virtbase(QsciLexerPython* src, QsciLexer** outptr_QsciLexer) {
+	*outptr_QsciLexer = static_cast<QsciLexer*>(src);
 }
 
 QMetaObject* QsciLexerPython_MetaObject(const QsciLexerPython* self) {

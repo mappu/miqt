@@ -357,31 +357,20 @@ public:
 
 };
 
-void QInputDialog_new(QWidget* parent, QInputDialog** outptr_QInputDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQInputDialog* ret = new MiqtVirtualQInputDialog(parent);
-	*outptr_QInputDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QInputDialog* QInputDialog_new(QWidget* parent) {
+	return new MiqtVirtualQInputDialog(parent);
 }
 
-void QInputDialog_new2(QInputDialog** outptr_QInputDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQInputDialog* ret = new MiqtVirtualQInputDialog();
-	*outptr_QInputDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QInputDialog* QInputDialog_new2() {
+	return new MiqtVirtualQInputDialog();
 }
 
-void QInputDialog_new3(QWidget* parent, int flags, QInputDialog** outptr_QInputDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQInputDialog* ret = new MiqtVirtualQInputDialog(parent, static_cast<Qt::WindowFlags>(flags));
-	*outptr_QInputDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QInputDialog* QInputDialog_new3(QWidget* parent, int flags) {
+	return new MiqtVirtualQInputDialog(parent, static_cast<Qt::WindowFlags>(flags));
+}
+
+void QInputDialog_virtbase(QInputDialog* src, QDialog** outptr_QDialog) {
+	*outptr_QDialog = static_cast<QDialog*>(src);
 }
 
 QMetaObject* QInputDialog_MetaObject(const QInputDialog* self) {

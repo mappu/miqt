@@ -37,34 +37,27 @@ func newQAudioBuffer(h *C.QAudioBuffer) *QAudioBuffer {
 	if h == nil {
 		return nil
 	}
+
 	return &QAudioBuffer{h: h}
 }
 
 // UnsafeNewQAudioBuffer constructs the type using only unsafe pointers.
 func UnsafeNewQAudioBuffer(h unsafe.Pointer) *QAudioBuffer {
-	if h == nil {
-		return nil
-	}
-
-	return &QAudioBuffer{h: (*C.QAudioBuffer)(h)}
+	return newQAudioBuffer((*C.QAudioBuffer)(h))
 }
 
 // NewQAudioBuffer constructs a new QAudioBuffer object.
 func NewQAudioBuffer() *QAudioBuffer {
-	var outptr_QAudioBuffer *C.QAudioBuffer = nil
 
-	C.QAudioBuffer_new(&outptr_QAudioBuffer)
-	ret := newQAudioBuffer(outptr_QAudioBuffer)
+	ret := newQAudioBuffer(C.QAudioBuffer_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAudioBuffer2 constructs a new QAudioBuffer object.
 func NewQAudioBuffer2(other *QAudioBuffer) *QAudioBuffer {
-	var outptr_QAudioBuffer *C.QAudioBuffer = nil
 
-	C.QAudioBuffer_new2(other.cPointer(), &outptr_QAudioBuffer)
-	ret := newQAudioBuffer(outptr_QAudioBuffer)
+	ret := newQAudioBuffer(C.QAudioBuffer_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -74,20 +67,16 @@ func NewQAudioBuffer3(data []byte, format *QAudioFormat) *QAudioBuffer {
 	data_alias := C.struct_miqt_string{}
 	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
 	data_alias.len = C.size_t(len(data))
-	var outptr_QAudioBuffer *C.QAudioBuffer = nil
 
-	C.QAudioBuffer_new3(data_alias, format.cPointer(), &outptr_QAudioBuffer)
-	ret := newQAudioBuffer(outptr_QAudioBuffer)
+	ret := newQAudioBuffer(C.QAudioBuffer_new3(data_alias, format.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAudioBuffer4 constructs a new QAudioBuffer object.
 func NewQAudioBuffer4(numFrames int, format *QAudioFormat) *QAudioBuffer {
-	var outptr_QAudioBuffer *C.QAudioBuffer = nil
 
-	C.QAudioBuffer_new4((C.int)(numFrames), format.cPointer(), &outptr_QAudioBuffer)
-	ret := newQAudioBuffer(outptr_QAudioBuffer)
+	ret := newQAudioBuffer(C.QAudioBuffer_new4((C.int)(numFrames), format.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -97,20 +86,16 @@ func NewQAudioBuffer5(data []byte, format *QAudioFormat, startTime int64) *QAudi
 	data_alias := C.struct_miqt_string{}
 	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
 	data_alias.len = C.size_t(len(data))
-	var outptr_QAudioBuffer *C.QAudioBuffer = nil
 
-	C.QAudioBuffer_new5(data_alias, format.cPointer(), (C.longlong)(startTime), &outptr_QAudioBuffer)
-	ret := newQAudioBuffer(outptr_QAudioBuffer)
+	ret := newQAudioBuffer(C.QAudioBuffer_new5(data_alias, format.cPointer(), (C.longlong)(startTime)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAudioBuffer6 constructs a new QAudioBuffer object.
 func NewQAudioBuffer6(numFrames int, format *QAudioFormat, startTime int64) *QAudioBuffer {
-	var outptr_QAudioBuffer *C.QAudioBuffer = nil
 
-	C.QAudioBuffer_new6((C.int)(numFrames), format.cPointer(), (C.longlong)(startTime), &outptr_QAudioBuffer)
-	ret := newQAudioBuffer(outptr_QAudioBuffer)
+	ret := newQAudioBuffer(C.QAudioBuffer_new6((C.int)(numFrames), format.cPointer(), (C.longlong)(startTime)))
 	ret.isSubclass = true
 	return ret
 }

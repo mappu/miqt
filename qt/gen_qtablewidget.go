@@ -45,44 +45,35 @@ func newQTableWidgetSelectionRange(h *C.QTableWidgetSelectionRange) *QTableWidge
 	if h == nil {
 		return nil
 	}
+
 	return &QTableWidgetSelectionRange{h: h}
 }
 
 // UnsafeNewQTableWidgetSelectionRange constructs the type using only unsafe pointers.
 func UnsafeNewQTableWidgetSelectionRange(h unsafe.Pointer) *QTableWidgetSelectionRange {
-	if h == nil {
-		return nil
-	}
-
-	return &QTableWidgetSelectionRange{h: (*C.QTableWidgetSelectionRange)(h)}
+	return newQTableWidgetSelectionRange((*C.QTableWidgetSelectionRange)(h))
 }
 
 // NewQTableWidgetSelectionRange constructs a new QTableWidgetSelectionRange object.
 func NewQTableWidgetSelectionRange() *QTableWidgetSelectionRange {
-	var outptr_QTableWidgetSelectionRange *C.QTableWidgetSelectionRange = nil
 
-	C.QTableWidgetSelectionRange_new(&outptr_QTableWidgetSelectionRange)
-	ret := newQTableWidgetSelectionRange(outptr_QTableWidgetSelectionRange)
+	ret := newQTableWidgetSelectionRange(C.QTableWidgetSelectionRange_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTableWidgetSelectionRange2 constructs a new QTableWidgetSelectionRange object.
 func NewQTableWidgetSelectionRange2(top int, left int, bottom int, right int) *QTableWidgetSelectionRange {
-	var outptr_QTableWidgetSelectionRange *C.QTableWidgetSelectionRange = nil
 
-	C.QTableWidgetSelectionRange_new2((C.int)(top), (C.int)(left), (C.int)(bottom), (C.int)(right), &outptr_QTableWidgetSelectionRange)
-	ret := newQTableWidgetSelectionRange(outptr_QTableWidgetSelectionRange)
+	ret := newQTableWidgetSelectionRange(C.QTableWidgetSelectionRange_new2((C.int)(top), (C.int)(left), (C.int)(bottom), (C.int)(right)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTableWidgetSelectionRange3 constructs a new QTableWidgetSelectionRange object.
 func NewQTableWidgetSelectionRange3(other *QTableWidgetSelectionRange) *QTableWidgetSelectionRange {
-	var outptr_QTableWidgetSelectionRange *C.QTableWidgetSelectionRange = nil
 
-	C.QTableWidgetSelectionRange_new3(other.cPointer(), &outptr_QTableWidgetSelectionRange)
-	ret := newQTableWidgetSelectionRange(outptr_QTableWidgetSelectionRange)
+	ret := newQTableWidgetSelectionRange(C.QTableWidgetSelectionRange_new3(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -153,24 +144,19 @@ func newQTableWidgetItem(h *C.QTableWidgetItem) *QTableWidgetItem {
 	if h == nil {
 		return nil
 	}
+
 	return &QTableWidgetItem{h: h}
 }
 
 // UnsafeNewQTableWidgetItem constructs the type using only unsafe pointers.
 func UnsafeNewQTableWidgetItem(h unsafe.Pointer) *QTableWidgetItem {
-	if h == nil {
-		return nil
-	}
-
-	return &QTableWidgetItem{h: (*C.QTableWidgetItem)(h)}
+	return newQTableWidgetItem((*C.QTableWidgetItem)(h))
 }
 
 // NewQTableWidgetItem constructs a new QTableWidgetItem object.
 func NewQTableWidgetItem() *QTableWidgetItem {
-	var outptr_QTableWidgetItem *C.QTableWidgetItem = nil
 
-	C.QTableWidgetItem_new(&outptr_QTableWidgetItem)
-	ret := newQTableWidgetItem(outptr_QTableWidgetItem)
+	ret := newQTableWidgetItem(C.QTableWidgetItem_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -181,10 +167,8 @@ func NewQTableWidgetItem2(text string) *QTableWidgetItem {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QTableWidgetItem *C.QTableWidgetItem = nil
 
-	C.QTableWidgetItem_new2(text_ms, &outptr_QTableWidgetItem)
-	ret := newQTableWidgetItem(outptr_QTableWidgetItem)
+	ret := newQTableWidgetItem(C.QTableWidgetItem_new2(text_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -195,30 +179,24 @@ func NewQTableWidgetItem3(icon *QIcon, text string) *QTableWidgetItem {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QTableWidgetItem *C.QTableWidgetItem = nil
 
-	C.QTableWidgetItem_new3(icon.cPointer(), text_ms, &outptr_QTableWidgetItem)
-	ret := newQTableWidgetItem(outptr_QTableWidgetItem)
+	ret := newQTableWidgetItem(C.QTableWidgetItem_new3(icon.cPointer(), text_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTableWidgetItem4 constructs a new QTableWidgetItem object.
 func NewQTableWidgetItem4(other *QTableWidgetItem) *QTableWidgetItem {
-	var outptr_QTableWidgetItem *C.QTableWidgetItem = nil
 
-	C.QTableWidgetItem_new4(other.cPointer(), &outptr_QTableWidgetItem)
-	ret := newQTableWidgetItem(outptr_QTableWidgetItem)
+	ret := newQTableWidgetItem(C.QTableWidgetItem_new4(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTableWidgetItem5 constructs a new QTableWidgetItem object.
 func NewQTableWidgetItem5(typeVal int) *QTableWidgetItem {
-	var outptr_QTableWidgetItem *C.QTableWidgetItem = nil
 
-	C.QTableWidgetItem_new5((C.int)(typeVal), &outptr_QTableWidgetItem)
-	ret := newQTableWidgetItem(outptr_QTableWidgetItem)
+	ret := newQTableWidgetItem(C.QTableWidgetItem_new5((C.int)(typeVal)))
 	ret.isSubclass = true
 	return ret
 }
@@ -229,10 +207,8 @@ func NewQTableWidgetItem6(text string, typeVal int) *QTableWidgetItem {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QTableWidgetItem *C.QTableWidgetItem = nil
 
-	C.QTableWidgetItem_new6(text_ms, (C.int)(typeVal), &outptr_QTableWidgetItem)
-	ret := newQTableWidgetItem(outptr_QTableWidgetItem)
+	ret := newQTableWidgetItem(C.QTableWidgetItem_new6(text_ms, (C.int)(typeVal)))
 	ret.isSubclass = true
 	return ret
 }
@@ -243,10 +219,8 @@ func NewQTableWidgetItem7(icon *QIcon, text string, typeVal int) *QTableWidgetIt
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QTableWidgetItem *C.QTableWidgetItem = nil
 
-	C.QTableWidgetItem_new7(icon.cPointer(), text_ms, (C.int)(typeVal), &outptr_QTableWidgetItem)
-	ret := newQTableWidgetItem(outptr_QTableWidgetItem)
+	ret := newQTableWidgetItem(C.QTableWidgetItem_new7(icon.cPointer(), text_ms, (C.int)(typeVal)))
 	ret.isSubclass = true
 	return ret
 }
@@ -256,7 +230,7 @@ func (this *QTableWidgetItem) Clone() *QTableWidgetItem {
 }
 
 func (this *QTableWidgetItem) TableWidget() *QTableWidget {
-	return newQTableWidget(C.QTableWidgetItem_TableWidget(this.h), nil, nil, nil, nil, nil, nil, nil)
+	return newQTableWidget(C.QTableWidgetItem_TableWidget(this.h))
 }
 
 func (this *QTableWidgetItem) Row() int {
@@ -657,88 +631,50 @@ func (this *QTableWidget) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTableWidget constructs the type using only CGO pointers.
-func newQTableWidget(h *C.QTableWidget, h_QTableView *C.QTableView, h_QAbstractItemView *C.QAbstractItemView, h_QAbstractScrollArea *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QTableWidget {
+func newQTableWidget(h *C.QTableWidget) *QTableWidget {
 	if h == nil {
 		return nil
 	}
+	var outptr_QTableView *C.QTableView = nil
+	C.QTableWidget_virtbase(h, &outptr_QTableView)
+
 	return &QTableWidget{h: h,
-		QTableView: newQTableView(h_QTableView, h_QAbstractItemView, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+		QTableView: newQTableView(outptr_QTableView)}
 }
 
 // UnsafeNewQTableWidget constructs the type using only unsafe pointers.
-func UnsafeNewQTableWidget(h unsafe.Pointer, h_QTableView unsafe.Pointer, h_QAbstractItemView unsafe.Pointer, h_QAbstractScrollArea unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QTableWidget {
-	if h == nil {
-		return nil
-	}
-
-	return &QTableWidget{h: (*C.QTableWidget)(h),
-		QTableView: UnsafeNewQTableView(h_QTableView, h_QAbstractItemView, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQTableWidget(h unsafe.Pointer) *QTableWidget {
+	return newQTableWidget((*C.QTableWidget)(h))
 }
 
 // NewQTableWidget constructs a new QTableWidget object.
 func NewQTableWidget(parent *QWidget) *QTableWidget {
-	var outptr_QTableWidget *C.QTableWidget = nil
-	var outptr_QTableView *C.QTableView = nil
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QTableWidget_new(parent.cPointer(), &outptr_QTableWidget, &outptr_QTableView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQTableWidget(outptr_QTableWidget, outptr_QTableView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQTableWidget(C.QTableWidget_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTableWidget2 constructs a new QTableWidget object.
 func NewQTableWidget2() *QTableWidget {
-	var outptr_QTableWidget *C.QTableWidget = nil
-	var outptr_QTableView *C.QTableView = nil
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QTableWidget_new2(&outptr_QTableWidget, &outptr_QTableView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQTableWidget(outptr_QTableWidget, outptr_QTableView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQTableWidget(C.QTableWidget_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTableWidget3 constructs a new QTableWidget object.
 func NewQTableWidget3(rows int, columns int) *QTableWidget {
-	var outptr_QTableWidget *C.QTableWidget = nil
-	var outptr_QTableView *C.QTableView = nil
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QTableWidget_new3((C.int)(rows), (C.int)(columns), &outptr_QTableWidget, &outptr_QTableView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQTableWidget(outptr_QTableWidget, outptr_QTableView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQTableWidget(C.QTableWidget_new3((C.int)(rows), (C.int)(columns)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTableWidget4 constructs a new QTableWidget object.
 func NewQTableWidget4(rows int, columns int, parent *QWidget) *QTableWidget {
-	var outptr_QTableWidget *C.QTableWidget = nil
-	var outptr_QTableView *C.QTableView = nil
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QTableWidget_new4((C.int)(rows), (C.int)(columns), parent.cPointer(), &outptr_QTableWidget, &outptr_QTableView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQTableWidget(outptr_QTableWidget, outptr_QTableView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQTableWidget(C.QTableWidget_new4((C.int)(rows), (C.int)(columns), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -916,7 +852,7 @@ func (this *QTableWidget) IsPersistentEditorOpen(item *QTableWidgetItem) bool {
 }
 
 func (this *QTableWidget) CellWidget(row int, column int) *QWidget {
-	return newQWidget(C.QTableWidget_CellWidget(this.h, (C.int)(row), (C.int)(column)), nil, nil)
+	return newQWidget(C.QTableWidget_CellWidget(this.h, (C.int)(row), (C.int)(column)))
 }
 
 func (this *QTableWidget) SetCellWidget(row int, column int, widget *QWidget) {
@@ -1482,7 +1418,7 @@ func (this *QTableWidget) callVirtualBase_MimeData(items []*QTableWidgetItem) *Q
 	}
 	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 
-	return newQMimeData(C.QTableWidget_virtualbase_MimeData(unsafe.Pointer(this.h), items_ma), nil)
+	return newQMimeData(C.QTableWidget_virtualbase_MimeData(unsafe.Pointer(this.h), items_ma))
 
 }
 func (this *QTableWidget) OnMimeData(slot func(super func(items []*QTableWidgetItem) *QMimeData, items []*QTableWidgetItem) *QMimeData) {
@@ -1538,7 +1474,7 @@ func miqt_exec_callback_QTableWidget_DropMimeData(self *C.QTableWidget, cb C.int
 
 	slotval2 := (int)(column)
 
-	slotval3 := newQMimeData(data, nil)
+	slotval3 := newQMimeData(data)
 
 	slotval4 := (DropAction)(action)
 
@@ -1593,7 +1529,7 @@ func miqt_exec_callback_QTableWidget_DropEvent(self *C.QTableWidget, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDropEvent(event, nil)
+	slotval1 := newQDropEvent(event)
 
 	gofunc((&QTableWidget{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1645,7 +1581,7 @@ func miqt_exec_callback_QTableWidget_SetSelectionModel(self *C.QTableWidget, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQItemSelectionModel(selectionModel, nil)
+	slotval1 := newQItemSelectionModel(selectionModel)
 
 	gofunc((&QTableWidget{h: self}).callVirtualBase_SetSelectionModel, slotval1)
 
@@ -1792,7 +1728,7 @@ func miqt_exec_callback_QTableWidget_ScrollContentsBy(self *C.QTableWidget, cb C
 
 func (this *QTableWidget) callVirtualBase_ViewOptions() *QStyleOptionViewItem {
 
-	_goptr := newQStyleOptionViewItem(C.QTableWidget_virtualbase_ViewOptions(unsafe.Pointer(this.h)), nil)
+	_goptr := newQStyleOptionViewItem(C.QTableWidget_virtualbase_ViewOptions(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1837,7 +1773,7 @@ func miqt_exec_callback_QTableWidget_PaintEvent(self *C.QTableWidget, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(e, nil)
+	slotval1 := newQPaintEvent(e)
 
 	gofunc((&QTableWidget{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -1863,7 +1799,7 @@ func miqt_exec_callback_QTableWidget_TimerEvent(self *C.QTableWidget, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QTableWidget{h: self}).callVirtualBase_TimerEvent, slotval1)
 

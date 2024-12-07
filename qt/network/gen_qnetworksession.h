@@ -38,8 +38,9 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 #endif
 
-void QNetworkSession_new(QNetworkConfiguration* connConfig, QNetworkSession** outptr_QNetworkSession, QObject** outptr_QObject);
-void QNetworkSession_new2(QNetworkConfiguration* connConfig, QObject* parent, QNetworkSession** outptr_QNetworkSession, QObject** outptr_QObject);
+QNetworkSession* QNetworkSession_new(QNetworkConfiguration* connConfig);
+QNetworkSession* QNetworkSession_new2(QNetworkConfiguration* connConfig, QObject* parent);
+void QNetworkSession_virtbase(QNetworkSession* src, QObject** outptr_QObject);
 QMetaObject* QNetworkSession_MetaObject(const QNetworkSession* self);
 void* QNetworkSession_Metacast(QNetworkSession* self, const char* param1);
 struct miqt_string QNetworkSession_Tr(const char* s);

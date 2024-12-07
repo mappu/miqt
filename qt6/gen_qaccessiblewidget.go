@@ -34,48 +34,36 @@ func (this *QAccessibleWidget) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAccessibleWidget constructs the type using only CGO pointers.
-func newQAccessibleWidget(h *C.QAccessibleWidget, h_QAccessibleObject *C.QAccessibleObject, h_QAccessibleInterface *C.QAccessibleInterface, h_QAccessibleActionInterface *C.QAccessibleActionInterface) *QAccessibleWidget {
+func newQAccessibleWidget(h *C.QAccessibleWidget) *QAccessibleWidget {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAccessibleObject *C.QAccessibleObject = nil
+	var outptr_QAccessibleActionInterface *C.QAccessibleActionInterface = nil
+	C.QAccessibleWidget_virtbase(h, &outptr_QAccessibleObject, &outptr_QAccessibleActionInterface)
+
 	return &QAccessibleWidget{h: h,
-		QAccessibleObject:          newQAccessibleObject(h_QAccessibleObject, h_QAccessibleInterface),
-		QAccessibleActionInterface: newQAccessibleActionInterface(h_QAccessibleActionInterface)}
+		QAccessibleObject:          newQAccessibleObject(outptr_QAccessibleObject),
+		QAccessibleActionInterface: newQAccessibleActionInterface(outptr_QAccessibleActionInterface)}
 }
 
 // UnsafeNewQAccessibleWidget constructs the type using only unsafe pointers.
-func UnsafeNewQAccessibleWidget(h unsafe.Pointer, h_QAccessibleObject unsafe.Pointer, h_QAccessibleInterface unsafe.Pointer, h_QAccessibleActionInterface unsafe.Pointer) *QAccessibleWidget {
-	if h == nil {
-		return nil
-	}
-
-	return &QAccessibleWidget{h: (*C.QAccessibleWidget)(h),
-		QAccessibleObject:          UnsafeNewQAccessibleObject(h_QAccessibleObject, h_QAccessibleInterface),
-		QAccessibleActionInterface: UnsafeNewQAccessibleActionInterface(h_QAccessibleActionInterface)}
+func UnsafeNewQAccessibleWidget(h unsafe.Pointer) *QAccessibleWidget {
+	return newQAccessibleWidget((*C.QAccessibleWidget)(h))
 }
 
 // NewQAccessibleWidget constructs a new QAccessibleWidget object.
 func NewQAccessibleWidget(o *QWidget) *QAccessibleWidget {
-	var outptr_QAccessibleWidget *C.QAccessibleWidget = nil
-	var outptr_QAccessibleObject *C.QAccessibleObject = nil
-	var outptr_QAccessibleInterface *C.QAccessibleInterface = nil
-	var outptr_QAccessibleActionInterface *C.QAccessibleActionInterface = nil
 
-	C.QAccessibleWidget_new(o.cPointer(), &outptr_QAccessibleWidget, &outptr_QAccessibleObject, &outptr_QAccessibleInterface, &outptr_QAccessibleActionInterface)
-	ret := newQAccessibleWidget(outptr_QAccessibleWidget, outptr_QAccessibleObject, outptr_QAccessibleInterface, outptr_QAccessibleActionInterface)
+	ret := newQAccessibleWidget(C.QAccessibleWidget_new(o.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAccessibleWidget2 constructs a new QAccessibleWidget object.
 func NewQAccessibleWidget2(o *QWidget, r QAccessible__Role) *QAccessibleWidget {
-	var outptr_QAccessibleWidget *C.QAccessibleWidget = nil
-	var outptr_QAccessibleObject *C.QAccessibleObject = nil
-	var outptr_QAccessibleInterface *C.QAccessibleInterface = nil
-	var outptr_QAccessibleActionInterface *C.QAccessibleActionInterface = nil
 
-	C.QAccessibleWidget_new2(o.cPointer(), (C.int)(r), &outptr_QAccessibleWidget, &outptr_QAccessibleObject, &outptr_QAccessibleInterface, &outptr_QAccessibleActionInterface)
-	ret := newQAccessibleWidget(outptr_QAccessibleWidget, outptr_QAccessibleObject, outptr_QAccessibleInterface, outptr_QAccessibleActionInterface)
+	ret := newQAccessibleWidget(C.QAccessibleWidget_new2(o.cPointer(), (C.int)(r)))
 	ret.isSubclass = true
 	return ret
 }
@@ -86,13 +74,8 @@ func NewQAccessibleWidget3(o *QWidget, r QAccessible__Role, name string) *QAcces
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	var outptr_QAccessibleWidget *C.QAccessibleWidget = nil
-	var outptr_QAccessibleObject *C.QAccessibleObject = nil
-	var outptr_QAccessibleInterface *C.QAccessibleInterface = nil
-	var outptr_QAccessibleActionInterface *C.QAccessibleActionInterface = nil
 
-	C.QAccessibleWidget_new3(o.cPointer(), (C.int)(r), name_ms, &outptr_QAccessibleWidget, &outptr_QAccessibleObject, &outptr_QAccessibleInterface, &outptr_QAccessibleActionInterface)
-	ret := newQAccessibleWidget(outptr_QAccessibleWidget, outptr_QAccessibleObject, outptr_QAccessibleInterface, outptr_QAccessibleActionInterface)
+	ret := newQAccessibleWidget(C.QAccessibleWidget_new3(o.cPointer(), (C.int)(r), name_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -102,7 +85,7 @@ func (this *QAccessibleWidget) IsValid() bool {
 }
 
 func (this *QAccessibleWidget) Window() *QWindow {
-	return newQWindow(C.QAccessibleWidget_Window(this.h), nil, nil)
+	return newQWindow(C.QAccessibleWidget_Window(this.h))
 }
 
 func (this *QAccessibleWidget) ChildCount() int {

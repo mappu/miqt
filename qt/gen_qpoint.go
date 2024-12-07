@@ -37,44 +37,35 @@ func newQPoint(h *C.QPoint) *QPoint {
 	if h == nil {
 		return nil
 	}
+
 	return &QPoint{h: h}
 }
 
 // UnsafeNewQPoint constructs the type using only unsafe pointers.
 func UnsafeNewQPoint(h unsafe.Pointer) *QPoint {
-	if h == nil {
-		return nil
-	}
-
-	return &QPoint{h: (*C.QPoint)(h)}
+	return newQPoint((*C.QPoint)(h))
 }
 
 // NewQPoint constructs a new QPoint object.
 func NewQPoint() *QPoint {
-	var outptr_QPoint *C.QPoint = nil
 
-	C.QPoint_new(&outptr_QPoint)
-	ret := newQPoint(outptr_QPoint)
+	ret := newQPoint(C.QPoint_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPoint2 constructs a new QPoint object.
 func NewQPoint2(xpos int, ypos int) *QPoint {
-	var outptr_QPoint *C.QPoint = nil
 
-	C.QPoint_new2((C.int)(xpos), (C.int)(ypos), &outptr_QPoint)
-	ret := newQPoint(outptr_QPoint)
+	ret := newQPoint(C.QPoint_new2((C.int)(xpos), (C.int)(ypos)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPoint3 constructs a new QPoint object.
 func NewQPoint3(param1 *QPoint) *QPoint {
-	var outptr_QPoint *C.QPoint = nil
 
-	C.QPoint_new3(param1.cPointer(), &outptr_QPoint)
-	ret := newQPoint(outptr_QPoint)
+	ret := newQPoint(C.QPoint_new3(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -175,54 +166,43 @@ func newQPointF(h *C.QPointF) *QPointF {
 	if h == nil {
 		return nil
 	}
+
 	return &QPointF{h: h}
 }
 
 // UnsafeNewQPointF constructs the type using only unsafe pointers.
 func UnsafeNewQPointF(h unsafe.Pointer) *QPointF {
-	if h == nil {
-		return nil
-	}
-
-	return &QPointF{h: (*C.QPointF)(h)}
+	return newQPointF((*C.QPointF)(h))
 }
 
 // NewQPointF constructs a new QPointF object.
 func NewQPointF() *QPointF {
-	var outptr_QPointF *C.QPointF = nil
 
-	C.QPointF_new(&outptr_QPointF)
-	ret := newQPointF(outptr_QPointF)
+	ret := newQPointF(C.QPointF_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPointF2 constructs a new QPointF object.
 func NewQPointF2(p *QPoint) *QPointF {
-	var outptr_QPointF *C.QPointF = nil
 
-	C.QPointF_new2(p.cPointer(), &outptr_QPointF)
-	ret := newQPointF(outptr_QPointF)
+	ret := newQPointF(C.QPointF_new2(p.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPointF3 constructs a new QPointF object.
 func NewQPointF3(xpos float64, ypos float64) *QPointF {
-	var outptr_QPointF *C.QPointF = nil
 
-	C.QPointF_new3((C.double)(xpos), (C.double)(ypos), &outptr_QPointF)
-	ret := newQPointF(outptr_QPointF)
+	ret := newQPointF(C.QPointF_new3((C.double)(xpos), (C.double)(ypos)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPointF4 constructs a new QPointF object.
 func NewQPointF4(param1 *QPointF) *QPointF {
-	var outptr_QPointF *C.QPointF = nil
 
-	C.QPointF_new4(param1.cPointer(), &outptr_QPointF)
-	ret := newQPointF(outptr_QPointF)
+	ret := newQPointF(C.QPointF_new4(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

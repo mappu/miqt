@@ -34,9 +34,10 @@ typedef struct QsciLexerCPP QsciLexerCPP;
 typedef struct QsciScintilla QsciScintilla;
 #endif
 
-void QsciLexerCPP_new(QsciLexerCPP** outptr_QsciLexerCPP, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerCPP_new2(QObject* parent, QsciLexerCPP** outptr_QsciLexerCPP, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerCPP_new3(QObject* parent, bool caseInsensitiveKeywords, QsciLexerCPP** outptr_QsciLexerCPP, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerCPP* QsciLexerCPP_new();
+QsciLexerCPP* QsciLexerCPP_new2(QObject* parent);
+QsciLexerCPP* QsciLexerCPP_new3(QObject* parent, bool caseInsensitiveKeywords);
+void QsciLexerCPP_virtbase(QsciLexerCPP* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerCPP_MetaObject(const QsciLexerCPP* self);
 void* QsciLexerCPP_Metacast(QsciLexerCPP* self, const char* param1);
 struct miqt_string QsciLexerCPP_Tr(const char* s);

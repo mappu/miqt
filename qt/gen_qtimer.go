@@ -35,42 +35,34 @@ func (this *QTimer) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTimer constructs the type using only CGO pointers.
-func newQTimer(h *C.QTimer, h_QObject *C.QObject) *QTimer {
+func newQTimer(h *C.QTimer) *QTimer {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QTimer_virtbase(h, &outptr_QObject)
+
 	return &QTimer{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQTimer constructs the type using only unsafe pointers.
-func UnsafeNewQTimer(h unsafe.Pointer, h_QObject unsafe.Pointer) *QTimer {
-	if h == nil {
-		return nil
-	}
-
-	return &QTimer{h: (*C.QTimer)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQTimer(h unsafe.Pointer) *QTimer {
+	return newQTimer((*C.QTimer)(h))
 }
 
 // NewQTimer constructs a new QTimer object.
 func NewQTimer() *QTimer {
-	var outptr_QTimer *C.QTimer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTimer_new(&outptr_QTimer, &outptr_QObject)
-	ret := newQTimer(outptr_QTimer, outptr_QObject)
+	ret := newQTimer(C.QTimer_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTimer2 constructs a new QTimer object.
 func NewQTimer2(parent *QObject) *QTimer {
-	var outptr_QTimer *C.QTimer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTimer_new2(parent.cPointer(), &outptr_QTimer, &outptr_QObject)
-	ret := newQTimer(outptr_QTimer, outptr_QObject)
+	ret := newQTimer(C.QTimer_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -215,7 +207,7 @@ func miqt_exec_callback_QTimer_TimerEvent(self *C.QTimer, cb C.intptr_t, param1 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(param1, nil)
+	slotval1 := newQTimerEvent(param1)
 
 	gofunc((&QTimer{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -299,7 +291,7 @@ func miqt_exec_callback_QTimer_ChildEvent(self *C.QTimer, cb C.intptr_t, event *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QTimer{h: self}).callVirtualBase_ChildEvent, slotval1)
 

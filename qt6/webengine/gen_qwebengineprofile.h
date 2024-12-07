@@ -48,10 +48,11 @@ typedef struct QWebEngineUrlRequestInterceptor QWebEngineUrlRequestInterceptor;
 typedef struct QWebEngineUrlSchemeHandler QWebEngineUrlSchemeHandler;
 #endif
 
-void QWebEngineProfile_new(QWebEngineProfile** outptr_QWebEngineProfile, QObject** outptr_QObject);
-void QWebEngineProfile_new2(struct miqt_string name, QWebEngineProfile** outptr_QWebEngineProfile, QObject** outptr_QObject);
-void QWebEngineProfile_new3(QObject* parent, QWebEngineProfile** outptr_QWebEngineProfile, QObject** outptr_QObject);
-void QWebEngineProfile_new4(struct miqt_string name, QObject* parent, QWebEngineProfile** outptr_QWebEngineProfile, QObject** outptr_QObject);
+QWebEngineProfile* QWebEngineProfile_new();
+QWebEngineProfile* QWebEngineProfile_new2(struct miqt_string name);
+QWebEngineProfile* QWebEngineProfile_new3(QObject* parent);
+QWebEngineProfile* QWebEngineProfile_new4(struct miqt_string name, QObject* parent);
+void QWebEngineProfile_virtbase(QWebEngineProfile* src, QObject** outptr_QObject);
 QMetaObject* QWebEngineProfile_MetaObject(const QWebEngineProfile* self);
 void* QWebEngineProfile_Metacast(QWebEngineProfile* self, const char* param1);
 struct miqt_string QWebEngineProfile_Tr(const char* s);

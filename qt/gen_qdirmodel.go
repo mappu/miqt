@@ -43,22 +43,20 @@ func (this *QDirModel) UnsafePointer() unsafe.Pointer {
 }
 
 // newQDirModel constructs the type using only CGO pointers.
-func newQDirModel(h *C.QDirModel, h_QAbstractItemModel *C.QAbstractItemModel, h_QObject *C.QObject) *QDirModel {
+func newQDirModel(h *C.QDirModel) *QDirModel {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
+	C.QDirModel_virtbase(h, &outptr_QAbstractItemModel)
+
 	return &QDirModel{h: h,
-		QAbstractItemModel: newQAbstractItemModel(h_QAbstractItemModel, h_QObject)}
+		QAbstractItemModel: newQAbstractItemModel(outptr_QAbstractItemModel)}
 }
 
 // UnsafeNewQDirModel constructs the type using only unsafe pointers.
-func UnsafeNewQDirModel(h unsafe.Pointer, h_QAbstractItemModel unsafe.Pointer, h_QObject unsafe.Pointer) *QDirModel {
-	if h == nil {
-		return nil
-	}
-
-	return &QDirModel{h: (*C.QDirModel)(h),
-		QAbstractItemModel: UnsafeNewQAbstractItemModel(h_QAbstractItemModel, h_QObject)}
+func UnsafeNewQDirModel(h unsafe.Pointer) *QDirModel {
+	return newQDirModel((*C.QDirModel)(h))
 }
 
 // NewQDirModel constructs a new QDirModel object.
@@ -73,24 +71,16 @@ func NewQDirModel(nameFilters []string, filters QDir__Filter, sort QDir__SortFla
 		nameFilters_CArray[i] = nameFilters_i_ms
 	}
 	nameFilters_ma := C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
-	var outptr_QDirModel *C.QDirModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QDirModel_new(nameFilters_ma, (C.int)(filters), (C.int)(sort), &outptr_QDirModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQDirModel(outptr_QDirModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQDirModel(C.QDirModel_new(nameFilters_ma, (C.int)(filters), (C.int)(sort)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDirModel2 constructs a new QDirModel object.
 func NewQDirModel2() *QDirModel {
-	var outptr_QDirModel *C.QDirModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QDirModel_new2(&outptr_QDirModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQDirModel(outptr_QDirModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQDirModel(C.QDirModel_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -107,24 +97,16 @@ func NewQDirModel3(nameFilters []string, filters QDir__Filter, sort QDir__SortFl
 		nameFilters_CArray[i] = nameFilters_i_ms
 	}
 	nameFilters_ma := C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
-	var outptr_QDirModel *C.QDirModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QDirModel_new3(nameFilters_ma, (C.int)(filters), (C.int)(sort), parent.cPointer(), &outptr_QDirModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQDirModel(outptr_QDirModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQDirModel(C.QDirModel_new3(nameFilters_ma, (C.int)(filters), (C.int)(sort), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDirModel4 constructs a new QDirModel object.
 func NewQDirModel4(parent *QObject) *QDirModel {
-	var outptr_QDirModel *C.QDirModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QDirModel_new4(parent.cPointer(), &outptr_QDirModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQDirModel(outptr_QDirModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQDirModel(C.QDirModel_new4(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -225,7 +207,7 @@ func (this *QDirModel) MimeData(indexes []QModelIndex) *QMimeData {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
-	return newQMimeData(C.QDirModel_MimeData(this.h, indexes_ma), nil)
+	return newQMimeData(C.QDirModel_MimeData(this.h, indexes_ma))
 }
 
 func (this *QDirModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
@@ -785,7 +767,7 @@ func (this *QDirModel) callVirtualBase_MimeData(indexes []QModelIndex) *QMimeDat
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 
-	return newQMimeData(C.QDirModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma), nil)
+	return newQMimeData(C.QDirModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma))
 
 }
 func (this *QDirModel) OnMimeData(slot func(super func(indexes []QModelIndex) *QMimeData, indexes []QModelIndex) *QMimeData) {
@@ -839,7 +821,7 @@ func miqt_exec_callback_QDirModel_DropMimeData(self *C.QDirModel, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(data, nil)
+	slotval1 := newQMimeData(data)
 
 	slotval2 := (DropAction)(action)
 
@@ -1082,7 +1064,7 @@ func miqt_exec_callback_QDirModel_CanDropMimeData(self *C.QDirModel, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(data, nil)
+	slotval1 := newQMimeData(data)
 
 	slotval2 := (DropAction)(action)
 

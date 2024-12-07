@@ -37,34 +37,27 @@ func newQSslPreSharedKeyAuthenticator(h *C.QSslPreSharedKeyAuthenticator) *QSslP
 	if h == nil {
 		return nil
 	}
+
 	return &QSslPreSharedKeyAuthenticator{h: h}
 }
 
 // UnsafeNewQSslPreSharedKeyAuthenticator constructs the type using only unsafe pointers.
 func UnsafeNewQSslPreSharedKeyAuthenticator(h unsafe.Pointer) *QSslPreSharedKeyAuthenticator {
-	if h == nil {
-		return nil
-	}
-
-	return &QSslPreSharedKeyAuthenticator{h: (*C.QSslPreSharedKeyAuthenticator)(h)}
+	return newQSslPreSharedKeyAuthenticator((*C.QSslPreSharedKeyAuthenticator)(h))
 }
 
 // NewQSslPreSharedKeyAuthenticator constructs a new QSslPreSharedKeyAuthenticator object.
 func NewQSslPreSharedKeyAuthenticator() *QSslPreSharedKeyAuthenticator {
-	var outptr_QSslPreSharedKeyAuthenticator *C.QSslPreSharedKeyAuthenticator = nil
 
-	C.QSslPreSharedKeyAuthenticator_new(&outptr_QSslPreSharedKeyAuthenticator)
-	ret := newQSslPreSharedKeyAuthenticator(outptr_QSslPreSharedKeyAuthenticator)
+	ret := newQSslPreSharedKeyAuthenticator(C.QSslPreSharedKeyAuthenticator_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSslPreSharedKeyAuthenticator2 constructs a new QSslPreSharedKeyAuthenticator object.
 func NewQSslPreSharedKeyAuthenticator2(authenticator *QSslPreSharedKeyAuthenticator) *QSslPreSharedKeyAuthenticator {
-	var outptr_QSslPreSharedKeyAuthenticator *C.QSslPreSharedKeyAuthenticator = nil
 
-	C.QSslPreSharedKeyAuthenticator_new2(authenticator.cPointer(), &outptr_QSslPreSharedKeyAuthenticator)
-	ret := newQSslPreSharedKeyAuthenticator(outptr_QSslPreSharedKeyAuthenticator)
+	ret := newQSslPreSharedKeyAuthenticator(C.QSslPreSharedKeyAuthenticator_new2(authenticator.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

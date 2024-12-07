@@ -1217,34 +1217,20 @@ public:
 
 };
 
-void QGraphicsProxyWidget_new(QGraphicsProxyWidget** outptr_QGraphicsProxyWidget, QGraphicsWidget** outptr_QGraphicsWidget, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
-	MiqtVirtualQGraphicsProxyWidget* ret = new MiqtVirtualQGraphicsProxyWidget();
-	*outptr_QGraphicsProxyWidget = ret;
-	*outptr_QGraphicsWidget = static_cast<QGraphicsWidget*>(ret);
-	*outptr_QGraphicsObject = static_cast<QGraphicsObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
-	*outptr_QGraphicsLayoutItem = static_cast<QGraphicsLayoutItem*>(ret);
+QGraphicsProxyWidget* QGraphicsProxyWidget_new() {
+	return new MiqtVirtualQGraphicsProxyWidget();
 }
 
-void QGraphicsProxyWidget_new2(QGraphicsItem* parent, QGraphicsProxyWidget** outptr_QGraphicsProxyWidget, QGraphicsWidget** outptr_QGraphicsWidget, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
-	MiqtVirtualQGraphicsProxyWidget* ret = new MiqtVirtualQGraphicsProxyWidget(parent);
-	*outptr_QGraphicsProxyWidget = ret;
-	*outptr_QGraphicsWidget = static_cast<QGraphicsWidget*>(ret);
-	*outptr_QGraphicsObject = static_cast<QGraphicsObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
-	*outptr_QGraphicsLayoutItem = static_cast<QGraphicsLayoutItem*>(ret);
+QGraphicsProxyWidget* QGraphicsProxyWidget_new2(QGraphicsItem* parent) {
+	return new MiqtVirtualQGraphicsProxyWidget(parent);
 }
 
-void QGraphicsProxyWidget_new3(QGraphicsItem* parent, int wFlags, QGraphicsProxyWidget** outptr_QGraphicsProxyWidget, QGraphicsWidget** outptr_QGraphicsWidget, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
-	MiqtVirtualQGraphicsProxyWidget* ret = new MiqtVirtualQGraphicsProxyWidget(parent, static_cast<Qt::WindowFlags>(wFlags));
-	*outptr_QGraphicsProxyWidget = ret;
-	*outptr_QGraphicsWidget = static_cast<QGraphicsWidget*>(ret);
-	*outptr_QGraphicsObject = static_cast<QGraphicsObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
-	*outptr_QGraphicsLayoutItem = static_cast<QGraphicsLayoutItem*>(ret);
+QGraphicsProxyWidget* QGraphicsProxyWidget_new3(QGraphicsItem* parent, int wFlags) {
+	return new MiqtVirtualQGraphicsProxyWidget(parent, static_cast<Qt::WindowFlags>(wFlags));
+}
+
+void QGraphicsProxyWidget_virtbase(QGraphicsProxyWidget* src, QGraphicsWidget** outptr_QGraphicsWidget) {
+	*outptr_QGraphicsWidget = static_cast<QGraphicsWidget*>(src);
 }
 
 QMetaObject* QGraphicsProxyWidget_MetaObject(const QGraphicsProxyWidget* self) {

@@ -46,42 +46,34 @@ func (this *QAbstractVideoSurface) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAbstractVideoSurface constructs the type using only CGO pointers.
-func newQAbstractVideoSurface(h *C.QAbstractVideoSurface, h_QObject *C.QObject) *QAbstractVideoSurface {
+func newQAbstractVideoSurface(h *C.QAbstractVideoSurface) *QAbstractVideoSurface {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QAbstractVideoSurface_virtbase(h, &outptr_QObject)
+
 	return &QAbstractVideoSurface{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQAbstractVideoSurface constructs the type using only unsafe pointers.
-func UnsafeNewQAbstractVideoSurface(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractVideoSurface {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractVideoSurface{h: (*C.QAbstractVideoSurface)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQAbstractVideoSurface(h unsafe.Pointer) *QAbstractVideoSurface {
+	return newQAbstractVideoSurface((*C.QAbstractVideoSurface)(h))
 }
 
 // NewQAbstractVideoSurface constructs a new QAbstractVideoSurface object.
 func NewQAbstractVideoSurface() *QAbstractVideoSurface {
-	var outptr_QAbstractVideoSurface *C.QAbstractVideoSurface = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAbstractVideoSurface_new(&outptr_QAbstractVideoSurface, &outptr_QObject)
-	ret := newQAbstractVideoSurface(outptr_QAbstractVideoSurface, outptr_QObject)
+	ret := newQAbstractVideoSurface(C.QAbstractVideoSurface_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAbstractVideoSurface2 constructs a new QAbstractVideoSurface object.
 func NewQAbstractVideoSurface2(parent *qt.QObject) *QAbstractVideoSurface {
-	var outptr_QAbstractVideoSurface *C.QAbstractVideoSurface = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAbstractVideoSurface_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QAbstractVideoSurface, &outptr_QObject)
-	ret := newQAbstractVideoSurface(outptr_QAbstractVideoSurface, outptr_QObject)
+	ret := newQAbstractVideoSurface(C.QAbstractVideoSurface_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -524,7 +516,7 @@ func miqt_exec_callback_QAbstractVideoSurface_TimerEvent(self *C.QAbstractVideoS
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QAbstractVideoSurface{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -550,7 +542,7 @@ func miqt_exec_callback_QAbstractVideoSurface_ChildEvent(self *C.QAbstractVideoS
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QAbstractVideoSurface{h: self}).callVirtualBase_ChildEvent, slotval1)
 

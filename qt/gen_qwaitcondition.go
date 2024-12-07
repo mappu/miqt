@@ -37,24 +37,19 @@ func newQWaitCondition(h *C.QWaitCondition) *QWaitCondition {
 	if h == nil {
 		return nil
 	}
+
 	return &QWaitCondition{h: h}
 }
 
 // UnsafeNewQWaitCondition constructs the type using only unsafe pointers.
 func UnsafeNewQWaitCondition(h unsafe.Pointer) *QWaitCondition {
-	if h == nil {
-		return nil
-	}
-
-	return &QWaitCondition{h: (*C.QWaitCondition)(h)}
+	return newQWaitCondition((*C.QWaitCondition)(h))
 }
 
 // NewQWaitCondition constructs a new QWaitCondition object.
 func NewQWaitCondition() *QWaitCondition {
-	var outptr_QWaitCondition *C.QWaitCondition = nil
 
-	C.QWaitCondition_new(&outptr_QWaitCondition)
-	ret := newQWaitCondition(outptr_QWaitCondition)
+	ret := newQWaitCondition(C.QWaitCondition_new())
 	ret.isSubclass = true
 	return ret
 }

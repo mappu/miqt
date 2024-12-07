@@ -37,48 +37,36 @@ func (this *QScriptExtensionPlugin) UnsafePointer() unsafe.Pointer {
 }
 
 // newQScriptExtensionPlugin constructs the type using only CGO pointers.
-func newQScriptExtensionPlugin(h *C.QScriptExtensionPlugin, h_QObject *C.QObject, h_QScriptExtensionInterface *C.QScriptExtensionInterface, h_QFactoryInterface *C.QFactoryInterface) *QScriptExtensionPlugin {
+func newQScriptExtensionPlugin(h *C.QScriptExtensionPlugin) *QScriptExtensionPlugin {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	var outptr_QScriptExtensionInterface *C.QScriptExtensionInterface = nil
+	C.QScriptExtensionPlugin_virtbase(h, &outptr_QObject, &outptr_QScriptExtensionInterface)
+
 	return &QScriptExtensionPlugin{h: h,
-		QObject:                   qt.UnsafeNewQObject(unsafe.Pointer(h_QObject)),
-		QScriptExtensionInterface: newQScriptExtensionInterface(h_QScriptExtensionInterface, h_QFactoryInterface)}
+		QObject:                   qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject)),
+		QScriptExtensionInterface: newQScriptExtensionInterface(outptr_QScriptExtensionInterface)}
 }
 
 // UnsafeNewQScriptExtensionPlugin constructs the type using only unsafe pointers.
-func UnsafeNewQScriptExtensionPlugin(h unsafe.Pointer, h_QObject unsafe.Pointer, h_QScriptExtensionInterface unsafe.Pointer, h_QFactoryInterface unsafe.Pointer) *QScriptExtensionPlugin {
-	if h == nil {
-		return nil
-	}
-
-	return &QScriptExtensionPlugin{h: (*C.QScriptExtensionPlugin)(h),
-		QObject:                   qt.UnsafeNewQObject(h_QObject),
-		QScriptExtensionInterface: UnsafeNewQScriptExtensionInterface(h_QScriptExtensionInterface, h_QFactoryInterface)}
+func UnsafeNewQScriptExtensionPlugin(h unsafe.Pointer) *QScriptExtensionPlugin {
+	return newQScriptExtensionPlugin((*C.QScriptExtensionPlugin)(h))
 }
 
 // NewQScriptExtensionPlugin constructs a new QScriptExtensionPlugin object.
 func NewQScriptExtensionPlugin() *QScriptExtensionPlugin {
-	var outptr_QScriptExtensionPlugin *C.QScriptExtensionPlugin = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QScriptExtensionInterface *C.QScriptExtensionInterface = nil
-	var outptr_QFactoryInterface *C.QFactoryInterface = nil
 
-	C.QScriptExtensionPlugin_new(&outptr_QScriptExtensionPlugin, &outptr_QObject, &outptr_QScriptExtensionInterface, &outptr_QFactoryInterface)
-	ret := newQScriptExtensionPlugin(outptr_QScriptExtensionPlugin, outptr_QObject, outptr_QScriptExtensionInterface, outptr_QFactoryInterface)
+	ret := newQScriptExtensionPlugin(C.QScriptExtensionPlugin_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptExtensionPlugin2 constructs a new QScriptExtensionPlugin object.
 func NewQScriptExtensionPlugin2(parent *qt.QObject) *QScriptExtensionPlugin {
-	var outptr_QScriptExtensionPlugin *C.QScriptExtensionPlugin = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QScriptExtensionInterface *C.QScriptExtensionInterface = nil
-	var outptr_QFactoryInterface *C.QFactoryInterface = nil
 
-	C.QScriptExtensionPlugin_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QScriptExtensionPlugin, &outptr_QObject, &outptr_QScriptExtensionInterface, &outptr_QFactoryInterface)
-	ret := newQScriptExtensionPlugin(outptr_QScriptExtensionPlugin, outptr_QObject, outptr_QScriptExtensionInterface, outptr_QFactoryInterface)
+	ret := newQScriptExtensionPlugin(C.QScriptExtensionPlugin_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -233,7 +221,7 @@ func miqt_exec_callback_QScriptExtensionPlugin_Initialize(self *C.QScriptExtensi
 	key_ret := C.GoStringN(key_ms.data, C.int(int64(key_ms.len)))
 	C.free(unsafe.Pointer(key_ms.data))
 	slotval1 := key_ret
-	slotval2 := newQScriptEngine(engine, nil)
+	slotval2 := newQScriptEngine(engine)
 
 	gofunc(slotval1, slotval2)
 
@@ -317,7 +305,7 @@ func miqt_exec_callback_QScriptExtensionPlugin_TimerEvent(self *C.QScriptExtensi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QScriptExtensionPlugin{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -343,7 +331,7 @@ func miqt_exec_callback_QScriptExtensionPlugin_ChildEvent(self *C.QScriptExtensi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QScriptExtensionPlugin{h: self}).callVirtualBase_ChildEvent, slotval1)
 

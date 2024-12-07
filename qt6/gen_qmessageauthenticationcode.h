@@ -22,8 +22,8 @@ typedef struct QIODevice QIODevice;
 typedef struct QMessageAuthenticationCode QMessageAuthenticationCode;
 #endif
 
-void QMessageAuthenticationCode_new(int method, QMessageAuthenticationCode** outptr_QMessageAuthenticationCode);
-void QMessageAuthenticationCode_new2(int method, struct miqt_string key, QMessageAuthenticationCode** outptr_QMessageAuthenticationCode);
+QMessageAuthenticationCode* QMessageAuthenticationCode_new(int method);
+QMessageAuthenticationCode* QMessageAuthenticationCode_new2(int method, struct miqt_string key);
 void QMessageAuthenticationCode_Reset(QMessageAuthenticationCode* self);
 void QMessageAuthenticationCode_SetKey(QMessageAuthenticationCode* self, struct miqt_string key);
 void QMessageAuthenticationCode_AddData(QMessageAuthenticationCode* self, const char* data, ptrdiff_t length);

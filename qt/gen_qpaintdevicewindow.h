@@ -40,6 +40,7 @@ typedef struct QSurface QSurface;
 typedef struct QWindow QWindow;
 #endif
 
+void QPaintDeviceWindow_virtbase(QPaintDeviceWindow* src, QWindow** outptr_QWindow, QPaintDevice** outptr_QPaintDevice);
 QMetaObject* QPaintDeviceWindow_MetaObject(const QPaintDeviceWindow* self);
 void* QPaintDeviceWindow_Metacast(QPaintDeviceWindow* self, const char* param1);
 struct miqt_string QPaintDeviceWindow_Tr(const char* s);

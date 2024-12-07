@@ -37,16 +37,13 @@ func newQPluginMetaData(h *C.QPluginMetaData) *QPluginMetaData {
 	if h == nil {
 		return nil
 	}
+
 	return &QPluginMetaData{h: h}
 }
 
 // UnsafeNewQPluginMetaData constructs the type using only unsafe pointers.
 func UnsafeNewQPluginMetaData(h unsafe.Pointer) *QPluginMetaData {
-	if h == nil {
-		return nil
-	}
-
-	return &QPluginMetaData{h: (*C.QPluginMetaData)(h)}
+	return newQPluginMetaData((*C.QPluginMetaData)(h))
 }
 
 func QPluginMetaData_ArchRequirements() byte {
@@ -91,16 +88,13 @@ func newQStaticPlugin(h *C.QStaticPlugin) *QStaticPlugin {
 	if h == nil {
 		return nil
 	}
+
 	return &QStaticPlugin{h: h}
 }
 
 // UnsafeNewQStaticPlugin constructs the type using only unsafe pointers.
 func UnsafeNewQStaticPlugin(h unsafe.Pointer) *QStaticPlugin {
-	if h == nil {
-		return nil
-	}
-
-	return &QStaticPlugin{h: (*C.QStaticPlugin)(h)}
+	return newQStaticPlugin((*C.QStaticPlugin)(h))
 }
 
 func (this *QStaticPlugin) MetaData() *QJsonObject {
@@ -147,24 +141,19 @@ func newQPluginMetaData__Header(h *C.QPluginMetaData__Header) *QPluginMetaData__
 	if h == nil {
 		return nil
 	}
+
 	return &QPluginMetaData__Header{h: h}
 }
 
 // UnsafeNewQPluginMetaData__Header constructs the type using only unsafe pointers.
 func UnsafeNewQPluginMetaData__Header(h unsafe.Pointer) *QPluginMetaData__Header {
-	if h == nil {
-		return nil
-	}
-
-	return &QPluginMetaData__Header{h: (*C.QPluginMetaData__Header)(h)}
+	return newQPluginMetaData__Header((*C.QPluginMetaData__Header)(h))
 }
 
 // NewQPluginMetaData__Header constructs a new QPluginMetaData::Header object.
 func NewQPluginMetaData__Header(param1 *QPluginMetaData__Header) *QPluginMetaData__Header {
-	var outptr_QPluginMetaData__Header *C.QPluginMetaData__Header = nil
 
-	C.QPluginMetaData__Header_new(param1.cPointer(), &outptr_QPluginMetaData__Header)
-	ret := newQPluginMetaData__Header(outptr_QPluginMetaData__Header)
+	ret := newQPluginMetaData__Header(C.QPluginMetaData__Header_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -207,24 +196,19 @@ func newQPluginMetaData__MagicHeader(h *C.QPluginMetaData__MagicHeader) *QPlugin
 	if h == nil {
 		return nil
 	}
+
 	return &QPluginMetaData__MagicHeader{h: h}
 }
 
 // UnsafeNewQPluginMetaData__MagicHeader constructs the type using only unsafe pointers.
 func UnsafeNewQPluginMetaData__MagicHeader(h unsafe.Pointer) *QPluginMetaData__MagicHeader {
-	if h == nil {
-		return nil
-	}
-
-	return &QPluginMetaData__MagicHeader{h: (*C.QPluginMetaData__MagicHeader)(h)}
+	return newQPluginMetaData__MagicHeader((*C.QPluginMetaData__MagicHeader)(h))
 }
 
 // NewQPluginMetaData__MagicHeader constructs a new QPluginMetaData::MagicHeader object.
 func NewQPluginMetaData__MagicHeader() *QPluginMetaData__MagicHeader {
-	var outptr_QPluginMetaData__MagicHeader *C.QPluginMetaData__MagicHeader = nil
 
-	C.QPluginMetaData__MagicHeader_new(&outptr_QPluginMetaData__MagicHeader)
-	ret := newQPluginMetaData__MagicHeader(outptr_QPluginMetaData__MagicHeader)
+	ret := newQPluginMetaData__MagicHeader(C.QPluginMetaData__MagicHeader_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -267,34 +251,27 @@ func newQPluginMetaData__ElfNoteHeader(h *C.QPluginMetaData__ElfNoteHeader) *QPl
 	if h == nil {
 		return nil
 	}
+
 	return &QPluginMetaData__ElfNoteHeader{h: h}
 }
 
 // UnsafeNewQPluginMetaData__ElfNoteHeader constructs the type using only unsafe pointers.
 func UnsafeNewQPluginMetaData__ElfNoteHeader(h unsafe.Pointer) *QPluginMetaData__ElfNoteHeader {
-	if h == nil {
-		return nil
-	}
-
-	return &QPluginMetaData__ElfNoteHeader{h: (*C.QPluginMetaData__ElfNoteHeader)(h)}
+	return newQPluginMetaData__ElfNoteHeader((*C.QPluginMetaData__ElfNoteHeader)(h))
 }
 
 // NewQPluginMetaData__ElfNoteHeader constructs a new QPluginMetaData::ElfNoteHeader object.
 func NewQPluginMetaData__ElfNoteHeader(payloadSize uint) *QPluginMetaData__ElfNoteHeader {
-	var outptr_QPluginMetaData__ElfNoteHeader *C.QPluginMetaData__ElfNoteHeader = nil
 
-	C.QPluginMetaData__ElfNoteHeader_new((C.uint)(payloadSize), &outptr_QPluginMetaData__ElfNoteHeader)
-	ret := newQPluginMetaData__ElfNoteHeader(outptr_QPluginMetaData__ElfNoteHeader)
+	ret := newQPluginMetaData__ElfNoteHeader(C.QPluginMetaData__ElfNoteHeader_new((C.uint)(payloadSize)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPluginMetaData__ElfNoteHeader2 constructs a new QPluginMetaData::ElfNoteHeader object.
 func NewQPluginMetaData__ElfNoteHeader2(param1 *QPluginMetaData__ElfNoteHeader) *QPluginMetaData__ElfNoteHeader {
-	var outptr_QPluginMetaData__ElfNoteHeader *C.QPluginMetaData__ElfNoteHeader = nil
 
-	C.QPluginMetaData__ElfNoteHeader_new2(param1.cPointer(), &outptr_QPluginMetaData__ElfNoteHeader)
-	ret := newQPluginMetaData__ElfNoteHeader(outptr_QPluginMetaData__ElfNoteHeader)
+	ret := newQPluginMetaData__ElfNoteHeader(C.QPluginMetaData__ElfNoteHeader_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

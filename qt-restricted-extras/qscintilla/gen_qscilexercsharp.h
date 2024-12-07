@@ -32,8 +32,9 @@ typedef struct QsciLexerCPP QsciLexerCPP;
 typedef struct QsciLexerCSharp QsciLexerCSharp;
 #endif
 
-void QsciLexerCSharp_new(QsciLexerCSharp** outptr_QsciLexerCSharp, QsciLexerCPP** outptr_QsciLexerCPP, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerCSharp_new2(QObject* parent, QsciLexerCSharp** outptr_QsciLexerCSharp, QsciLexerCPP** outptr_QsciLexerCPP, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerCSharp* QsciLexerCSharp_new();
+QsciLexerCSharp* QsciLexerCSharp_new2(QObject* parent);
+void QsciLexerCSharp_virtbase(QsciLexerCSharp* src, QsciLexerCPP** outptr_QsciLexerCPP);
 QMetaObject* QsciLexerCSharp_MetaObject(const QsciLexerCSharp* self);
 void* QsciLexerCSharp_Metacast(QsciLexerCSharp* self, const char* param1);
 struct miqt_string QsciLexerCSharp_Tr(const char* s);

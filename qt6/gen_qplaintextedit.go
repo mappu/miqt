@@ -42,50 +42,34 @@ func (this *QPlainTextEdit) UnsafePointer() unsafe.Pointer {
 }
 
 // newQPlainTextEdit constructs the type using only CGO pointers.
-func newQPlainTextEdit(h *C.QPlainTextEdit, h_QAbstractScrollArea *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QPlainTextEdit {
+func newQPlainTextEdit(h *C.QPlainTextEdit) *QPlainTextEdit {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
+	C.QPlainTextEdit_virtbase(h, &outptr_QAbstractScrollArea)
+
 	return &QPlainTextEdit{h: h,
-		QAbstractScrollArea: newQAbstractScrollArea(h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+		QAbstractScrollArea: newQAbstractScrollArea(outptr_QAbstractScrollArea)}
 }
 
 // UnsafeNewQPlainTextEdit constructs the type using only unsafe pointers.
-func UnsafeNewQPlainTextEdit(h unsafe.Pointer, h_QAbstractScrollArea unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QPlainTextEdit {
-	if h == nil {
-		return nil
-	}
-
-	return &QPlainTextEdit{h: (*C.QPlainTextEdit)(h),
-		QAbstractScrollArea: UnsafeNewQAbstractScrollArea(h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQPlainTextEdit(h unsafe.Pointer) *QPlainTextEdit {
+	return newQPlainTextEdit((*C.QPlainTextEdit)(h))
 }
 
 // NewQPlainTextEdit constructs a new QPlainTextEdit object.
 func NewQPlainTextEdit(parent *QWidget) *QPlainTextEdit {
-	var outptr_QPlainTextEdit *C.QPlainTextEdit = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPlainTextEdit_new(parent.cPointer(), &outptr_QPlainTextEdit, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPlainTextEdit(outptr_QPlainTextEdit, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPlainTextEdit(C.QPlainTextEdit_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPlainTextEdit2 constructs a new QPlainTextEdit object.
 func NewQPlainTextEdit2() *QPlainTextEdit {
-	var outptr_QPlainTextEdit *C.QPlainTextEdit = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPlainTextEdit_new2(&outptr_QPlainTextEdit, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPlainTextEdit(outptr_QPlainTextEdit, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPlainTextEdit(C.QPlainTextEdit_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -96,15 +80,8 @@ func NewQPlainTextEdit3(text string) *QPlainTextEdit {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QPlainTextEdit *C.QPlainTextEdit = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPlainTextEdit_new3(text_ms, &outptr_QPlainTextEdit, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPlainTextEdit(outptr_QPlainTextEdit, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPlainTextEdit(C.QPlainTextEdit_new3(text_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -115,15 +92,8 @@ func NewQPlainTextEdit4(text string, parent *QWidget) *QPlainTextEdit {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QPlainTextEdit *C.QPlainTextEdit = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPlainTextEdit_new4(text_ms, parent.cPointer(), &outptr_QPlainTextEdit, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPlainTextEdit(outptr_QPlainTextEdit, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPlainTextEdit(C.QPlainTextEdit_new4(text_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -152,7 +122,7 @@ func (this *QPlainTextEdit) SetDocument(document *QTextDocument) {
 }
 
 func (this *QPlainTextEdit) Document() *QTextDocument {
-	return newQTextDocument(C.QPlainTextEdit_Document(this.h), nil)
+	return newQTextDocument(C.QPlainTextEdit_Document(this.h))
 }
 
 func (this *QPlainTextEdit) SetPlaceholderText(placeholderText string) {
@@ -205,7 +175,7 @@ func (this *QPlainTextEdit) SetCurrentCharFormat(format *QTextCharFormat) {
 }
 
 func (this *QPlainTextEdit) CurrentCharFormat() *QTextCharFormat {
-	_goptr := newQTextCharFormat(C.QPlainTextEdit_CurrentCharFormat(this.h), nil)
+	_goptr := newQTextCharFormat(C.QPlainTextEdit_CurrentCharFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -311,11 +281,11 @@ func (this *QPlainTextEdit) LoadResource(typeVal int, name *QUrl) *QVariant {
 }
 
 func (this *QPlainTextEdit) CreateStandardContextMenu() *QMenu {
-	return newQMenu(C.QPlainTextEdit_CreateStandardContextMenu(this.h), nil, nil, nil)
+	return newQMenu(C.QPlainTextEdit_CreateStandardContextMenu(this.h))
 }
 
 func (this *QPlainTextEdit) CreateStandardContextMenuWithPosition(position *QPoint) *QMenu {
-	return newQMenu(C.QPlainTextEdit_CreateStandardContextMenuWithPosition(this.h, position.cPointer()), nil, nil, nil)
+	return newQMenu(C.QPlainTextEdit_CreateStandardContextMenuWithPosition(this.h, position.cPointer()))
 }
 
 func (this *QPlainTextEdit) CursorForPosition(pos *QPoint) *QTextCursor {
@@ -818,7 +788,7 @@ func miqt_exec_callback_QPlainTextEdit_TimerEvent(self *C.QPlainTextEdit, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(e, nil)
+	slotval1 := newQTimerEvent(e)
 
 	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -844,7 +814,7 @@ func miqt_exec_callback_QPlainTextEdit_KeyPressEvent(self *C.QPlainTextEdit, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(e, nil, nil)
+	slotval1 := newQKeyEvent(e)
 
 	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -870,7 +840,7 @@ func miqt_exec_callback_QPlainTextEdit_KeyReleaseEvent(self *C.QPlainTextEdit, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(e, nil, nil)
+	slotval1 := newQKeyEvent(e)
 
 	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -896,7 +866,7 @@ func miqt_exec_callback_QPlainTextEdit_ResizeEvent(self *C.QPlainTextEdit, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(e, nil)
+	slotval1 := newQResizeEvent(e)
 
 	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -922,7 +892,7 @@ func miqt_exec_callback_QPlainTextEdit_PaintEvent(self *C.QPlainTextEdit, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(e, nil)
+	slotval1 := newQPaintEvent(e)
 
 	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -948,7 +918,7 @@ func miqt_exec_callback_QPlainTextEdit_MousePressEvent(self *C.QPlainTextEdit, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -974,7 +944,7 @@ func miqt_exec_callback_QPlainTextEdit_MouseMoveEvent(self *C.QPlainTextEdit, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -1000,7 +970,7 @@ func miqt_exec_callback_QPlainTextEdit_MouseReleaseEvent(self *C.QPlainTextEdit,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -1026,7 +996,7 @@ func miqt_exec_callback_QPlainTextEdit_MouseDoubleClickEvent(self *C.QPlainTextE
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -1080,7 +1050,7 @@ func miqt_exec_callback_QPlainTextEdit_ContextMenuEvent(self *C.QPlainTextEdit, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQContextMenuEvent(e, nil, nil)
+	slotval1 := newQContextMenuEvent(e)
 
 	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -1106,7 +1076,7 @@ func miqt_exec_callback_QPlainTextEdit_DragEnterEvent(self *C.QPlainTextEdit, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragEnterEvent(e, nil, nil, nil)
+	slotval1 := newQDragEnterEvent(e)
 
 	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -1132,7 +1102,7 @@ func miqt_exec_callback_QPlainTextEdit_DragLeaveEvent(self *C.QPlainTextEdit, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragLeaveEvent(e, nil)
+	slotval1 := newQDragLeaveEvent(e)
 
 	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1158,7 +1128,7 @@ func miqt_exec_callback_QPlainTextEdit_DragMoveEvent(self *C.QPlainTextEdit, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragMoveEvent(e, nil, nil)
+	slotval1 := newQDragMoveEvent(e)
 
 	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1184,7 +1154,7 @@ func miqt_exec_callback_QPlainTextEdit_DropEvent(self *C.QPlainTextEdit, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDropEvent(e, nil)
+	slotval1 := newQDropEvent(e)
 
 	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1210,7 +1180,7 @@ func miqt_exec_callback_QPlainTextEdit_FocusInEvent(self *C.QPlainTextEdit, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(e, nil)
+	slotval1 := newQFocusEvent(e)
 
 	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -1236,7 +1206,7 @@ func miqt_exec_callback_QPlainTextEdit_FocusOutEvent(self *C.QPlainTextEdit, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(e, nil)
+	slotval1 := newQFocusEvent(e)
 
 	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -1262,7 +1232,7 @@ func miqt_exec_callback_QPlainTextEdit_ShowEvent(self *C.QPlainTextEdit, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQShowEvent(param1, nil)
+	slotval1 := newQShowEvent(param1)
 
 	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1314,7 +1284,7 @@ func miqt_exec_callback_QPlainTextEdit_WheelEvent(self *C.QPlainTextEdit, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWheelEvent(e, nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(e)
 
 	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -1322,7 +1292,7 @@ func miqt_exec_callback_QPlainTextEdit_WheelEvent(self *C.QPlainTextEdit, cb C.i
 
 func (this *QPlainTextEdit) callVirtualBase_CreateMimeDataFromSelection() *QMimeData {
 
-	return newQMimeData(C.QPlainTextEdit_virtualbase_CreateMimeDataFromSelection(unsafe.Pointer(this.h)), nil)
+	return newQMimeData(C.QPlainTextEdit_virtualbase_CreateMimeDataFromSelection(unsafe.Pointer(this.h)))
 
 }
 func (this *QPlainTextEdit) OnCreateMimeDataFromSelection(slot func(super func() *QMimeData) *QMimeData) {
@@ -1365,7 +1335,7 @@ func miqt_exec_callback_QPlainTextEdit_CanInsertFromMimeData(self *C.QPlainTextE
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(source, nil)
+	slotval1 := newQMimeData(source)
 
 	virtualReturn := gofunc((&QPlainTextEdit{h: self}).callVirtualBase_CanInsertFromMimeData, slotval1)
 
@@ -1393,7 +1363,7 @@ func miqt_exec_callback_QPlainTextEdit_InsertFromMimeData(self *C.QPlainTextEdit
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(source, nil)
+	slotval1 := newQMimeData(source)
 
 	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_InsertFromMimeData, slotval1)
 
@@ -1419,7 +1389,7 @@ func miqt_exec_callback_QPlainTextEdit_InputMethodEvent(self *C.QPlainTextEdit, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQInputMethodEvent(param1, nil)
+	slotval1 := newQInputMethodEvent(param1)
 
 	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -1553,7 +1523,7 @@ func miqt_exec_callback_QPlainTextEdit_SetupViewport(self *C.QPlainTextEdit, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(viewport, nil, nil)
+	slotval1 := newQWidget(viewport)
 
 	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_SetupViewport, slotval1)
 
@@ -1679,32 +1649,26 @@ func (this *QPlainTextDocumentLayout) UnsafePointer() unsafe.Pointer {
 }
 
 // newQPlainTextDocumentLayout constructs the type using only CGO pointers.
-func newQPlainTextDocumentLayout(h *C.QPlainTextDocumentLayout, h_QAbstractTextDocumentLayout *C.QAbstractTextDocumentLayout, h_QObject *C.QObject) *QPlainTextDocumentLayout {
+func newQPlainTextDocumentLayout(h *C.QPlainTextDocumentLayout) *QPlainTextDocumentLayout {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractTextDocumentLayout *C.QAbstractTextDocumentLayout = nil
+	C.QPlainTextDocumentLayout_virtbase(h, &outptr_QAbstractTextDocumentLayout)
+
 	return &QPlainTextDocumentLayout{h: h,
-		QAbstractTextDocumentLayout: newQAbstractTextDocumentLayout(h_QAbstractTextDocumentLayout, h_QObject)}
+		QAbstractTextDocumentLayout: newQAbstractTextDocumentLayout(outptr_QAbstractTextDocumentLayout)}
 }
 
 // UnsafeNewQPlainTextDocumentLayout constructs the type using only unsafe pointers.
-func UnsafeNewQPlainTextDocumentLayout(h unsafe.Pointer, h_QAbstractTextDocumentLayout unsafe.Pointer, h_QObject unsafe.Pointer) *QPlainTextDocumentLayout {
-	if h == nil {
-		return nil
-	}
-
-	return &QPlainTextDocumentLayout{h: (*C.QPlainTextDocumentLayout)(h),
-		QAbstractTextDocumentLayout: UnsafeNewQAbstractTextDocumentLayout(h_QAbstractTextDocumentLayout, h_QObject)}
+func UnsafeNewQPlainTextDocumentLayout(h unsafe.Pointer) *QPlainTextDocumentLayout {
+	return newQPlainTextDocumentLayout((*C.QPlainTextDocumentLayout)(h))
 }
 
 // NewQPlainTextDocumentLayout constructs a new QPlainTextDocumentLayout object.
 func NewQPlainTextDocumentLayout(document *QTextDocument) *QPlainTextDocumentLayout {
-	var outptr_QPlainTextDocumentLayout *C.QPlainTextDocumentLayout = nil
-	var outptr_QAbstractTextDocumentLayout *C.QAbstractTextDocumentLayout = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPlainTextDocumentLayout_new(document.cPointer(), &outptr_QPlainTextDocumentLayout, &outptr_QAbstractTextDocumentLayout, &outptr_QObject)
-	ret := newQPlainTextDocumentLayout(outptr_QPlainTextDocumentLayout, outptr_QAbstractTextDocumentLayout, outptr_QObject)
+	ret := newQPlainTextDocumentLayout(C.QPlainTextDocumentLayout_new(document.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -1928,7 +1892,7 @@ func miqt_exec_callback_QPlainTextDocumentLayout_FrameBoundingRect(self *C.QPlai
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTextFrame(param1, nil, nil)
+	slotval1 := newQTextFrame(param1)
 
 	virtualReturn := gofunc((&QPlainTextDocumentLayout{h: self}).callVirtualBase_FrameBoundingRect, slotval1)
 

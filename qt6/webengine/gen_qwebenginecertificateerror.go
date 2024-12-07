@@ -62,24 +62,19 @@ func newQWebEngineCertificateError(h *C.QWebEngineCertificateError) *QWebEngineC
 	if h == nil {
 		return nil
 	}
+
 	return &QWebEngineCertificateError{h: h}
 }
 
 // UnsafeNewQWebEngineCertificateError constructs the type using only unsafe pointers.
 func UnsafeNewQWebEngineCertificateError(h unsafe.Pointer) *QWebEngineCertificateError {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineCertificateError{h: (*C.QWebEngineCertificateError)(h)}
+	return newQWebEngineCertificateError((*C.QWebEngineCertificateError)(h))
 }
 
 // NewQWebEngineCertificateError constructs a new QWebEngineCertificateError object.
 func NewQWebEngineCertificateError(other *QWebEngineCertificateError) *QWebEngineCertificateError {
-	var outptr_QWebEngineCertificateError *C.QWebEngineCertificateError = nil
 
-	C.QWebEngineCertificateError_new(other.cPointer(), &outptr_QWebEngineCertificateError)
-	ret := newQWebEngineCertificateError(outptr_QWebEngineCertificateError)
+	ret := newQWebEngineCertificateError(C.QWebEngineCertificateError_new(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

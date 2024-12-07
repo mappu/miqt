@@ -37,54 +37,43 @@ func newQMatrix(h *C.QMatrix) *QMatrix {
 	if h == nil {
 		return nil
 	}
+
 	return &QMatrix{h: h}
 }
 
 // UnsafeNewQMatrix constructs the type using only unsafe pointers.
 func UnsafeNewQMatrix(h unsafe.Pointer) *QMatrix {
-	if h == nil {
-		return nil
-	}
-
-	return &QMatrix{h: (*C.QMatrix)(h)}
+	return newQMatrix((*C.QMatrix)(h))
 }
 
 // NewQMatrix constructs a new QMatrix object.
 func NewQMatrix(param1 Initialization) *QMatrix {
-	var outptr_QMatrix *C.QMatrix = nil
 
-	C.QMatrix_new((C.int)(param1), &outptr_QMatrix)
-	ret := newQMatrix(outptr_QMatrix)
+	ret := newQMatrix(C.QMatrix_new((C.int)(param1)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMatrix2 constructs a new QMatrix object.
 func NewQMatrix2() *QMatrix {
-	var outptr_QMatrix *C.QMatrix = nil
 
-	C.QMatrix_new2(&outptr_QMatrix)
-	ret := newQMatrix(outptr_QMatrix)
+	ret := newQMatrix(C.QMatrix_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMatrix3 constructs a new QMatrix object.
 func NewQMatrix3(m11 float64, m12 float64, m21 float64, m22 float64, dx float64, dy float64) *QMatrix {
-	var outptr_QMatrix *C.QMatrix = nil
 
-	C.QMatrix_new3((C.double)(m11), (C.double)(m12), (C.double)(m21), (C.double)(m22), (C.double)(dx), (C.double)(dy), &outptr_QMatrix)
-	ret := newQMatrix(outptr_QMatrix)
+	ret := newQMatrix(C.QMatrix_new3((C.double)(m11), (C.double)(m12), (C.double)(m21), (C.double)(m22), (C.double)(dx), (C.double)(dy)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMatrix4 constructs a new QMatrix object.
 func NewQMatrix4(other *QMatrix) *QMatrix {
-	var outptr_QMatrix *C.QMatrix = nil
 
-	C.QMatrix_new4(other.cPointer(), &outptr_QMatrix)
-	ret := newQMatrix(outptr_QMatrix)
+	ret := newQMatrix(C.QMatrix_new4(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

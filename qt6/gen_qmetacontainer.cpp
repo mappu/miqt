@@ -6,14 +6,12 @@
 #include "gen_qmetacontainer.h"
 #include "_cgo_export.h"
 
-void QMetaContainer_new(QMetaContainer** outptr_QMetaContainer) {
-	QMetaContainer* ret = new QMetaContainer();
-	*outptr_QMetaContainer = ret;
+QMetaContainer* QMetaContainer_new() {
+	return new QMetaContainer();
 }
 
-void QMetaContainer_new2(QMetaContainer* param1, QMetaContainer** outptr_QMetaContainer) {
-	QMetaContainer* ret = new QMetaContainer(*param1);
-	*outptr_QMetaContainer = ret;
+QMetaContainer* QMetaContainer_new2(QMetaContainer* param1) {
+	return new QMetaContainer(*param1);
 }
 
 bool QMetaContainer_HasInputIterator(const QMetaContainer* self) {
@@ -123,10 +121,12 @@ void QMetaContainer_Delete(QMetaContainer* self, bool isSubclass) {
 	}
 }
 
-void QMetaSequence_new(QMetaSequence** outptr_QMetaSequence, QMetaContainer** outptr_QMetaContainer) {
-	QMetaSequence* ret = new QMetaSequence();
-	*outptr_QMetaSequence = ret;
-	*outptr_QMetaContainer = static_cast<QMetaContainer*>(ret);
+QMetaSequence* QMetaSequence_new() {
+	return new QMetaSequence();
+}
+
+void QMetaSequence_virtbase(QMetaSequence* src, QMetaContainer** outptr_QMetaContainer) {
+	*outptr_QMetaContainer = static_cast<QMetaContainer*>(src);
 }
 
 QMetaType* QMetaSequence_ValueMetaType(const QMetaSequence* self) {
@@ -257,10 +257,12 @@ void QMetaSequence_Delete(QMetaSequence* self, bool isSubclass) {
 	}
 }
 
-void QMetaAssociation_new(QMetaAssociation** outptr_QMetaAssociation, QMetaContainer** outptr_QMetaContainer) {
-	QMetaAssociation* ret = new QMetaAssociation();
-	*outptr_QMetaAssociation = ret;
-	*outptr_QMetaContainer = static_cast<QMetaContainer*>(ret);
+QMetaAssociation* QMetaAssociation_new() {
+	return new QMetaAssociation();
+}
+
+void QMetaAssociation_virtbase(QMetaAssociation* src, QMetaContainer** outptr_QMetaContainer) {
+	*outptr_QMetaContainer = static_cast<QMetaContainer*>(src);
 }
 
 QMetaType* QMetaAssociation_KeyMetaType(const QMetaAssociation* self) {

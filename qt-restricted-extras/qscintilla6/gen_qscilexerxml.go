@@ -36,46 +36,34 @@ func (this *QsciLexerXML) UnsafePointer() unsafe.Pointer {
 }
 
 // newQsciLexerXML constructs the type using only CGO pointers.
-func newQsciLexerXML(h *C.QsciLexerXML, h_QsciLexerHTML *C.QsciLexerHTML, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerXML {
+func newQsciLexerXML(h *C.QsciLexerXML) *QsciLexerXML {
 	if h == nil {
 		return nil
 	}
+	var outptr_QsciLexerHTML *C.QsciLexerHTML = nil
+	C.QsciLexerXML_virtbase(h, &outptr_QsciLexerHTML)
+
 	return &QsciLexerXML{h: h,
-		QsciLexerHTML: newQsciLexerHTML(h_QsciLexerHTML, h_QsciLexer, h_QObject)}
+		QsciLexerHTML: newQsciLexerHTML(outptr_QsciLexerHTML)}
 }
 
 // UnsafeNewQsciLexerXML constructs the type using only unsafe pointers.
-func UnsafeNewQsciLexerXML(h unsafe.Pointer, h_QsciLexerHTML unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerXML {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciLexerXML{h: (*C.QsciLexerXML)(h),
-		QsciLexerHTML: UnsafeNewQsciLexerHTML(h_QsciLexerHTML, h_QsciLexer, h_QObject)}
+func UnsafeNewQsciLexerXML(h unsafe.Pointer) *QsciLexerXML {
+	return newQsciLexerXML((*C.QsciLexerXML)(h))
 }
 
 // NewQsciLexerXML constructs a new QsciLexerXML object.
 func NewQsciLexerXML() *QsciLexerXML {
-	var outptr_QsciLexerXML *C.QsciLexerXML = nil
-	var outptr_QsciLexerHTML *C.QsciLexerHTML = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerXML_new(&outptr_QsciLexerXML, &outptr_QsciLexerHTML, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerXML(outptr_QsciLexerXML, outptr_QsciLexerHTML, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerXML(C.QsciLexerXML_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQsciLexerXML2 constructs a new QsciLexerXML object.
 func NewQsciLexerXML2(parent *qt6.QObject) *QsciLexerXML {
-	var outptr_QsciLexerXML *C.QsciLexerXML = nil
-	var outptr_QsciLexerHTML *C.QsciLexerHTML = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerXML_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QsciLexerXML, &outptr_QsciLexerHTML, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerXML(outptr_QsciLexerXML, outptr_QsciLexerHTML, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerXML(C.QsciLexerXML_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }

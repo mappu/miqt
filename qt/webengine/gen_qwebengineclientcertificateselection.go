@@ -39,24 +39,19 @@ func newQWebEngineClientCertificateSelection(h *C.QWebEngineClientCertificateSel
 	if h == nil {
 		return nil
 	}
+
 	return &QWebEngineClientCertificateSelection{h: h}
 }
 
 // UnsafeNewQWebEngineClientCertificateSelection constructs the type using only unsafe pointers.
 func UnsafeNewQWebEngineClientCertificateSelection(h unsafe.Pointer) *QWebEngineClientCertificateSelection {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineClientCertificateSelection{h: (*C.QWebEngineClientCertificateSelection)(h)}
+	return newQWebEngineClientCertificateSelection((*C.QWebEngineClientCertificateSelection)(h))
 }
 
 // NewQWebEngineClientCertificateSelection constructs a new QWebEngineClientCertificateSelection object.
 func NewQWebEngineClientCertificateSelection(param1 *QWebEngineClientCertificateSelection) *QWebEngineClientCertificateSelection {
-	var outptr_QWebEngineClientCertificateSelection *C.QWebEngineClientCertificateSelection = nil
 
-	C.QWebEngineClientCertificateSelection_new(param1.cPointer(), &outptr_QWebEngineClientCertificateSelection)
-	ret := newQWebEngineClientCertificateSelection(outptr_QWebEngineClientCertificateSelection)
+	ret := newQWebEngineClientCertificateSelection(C.QWebEngineClientCertificateSelection_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

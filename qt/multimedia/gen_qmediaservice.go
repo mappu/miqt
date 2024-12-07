@@ -35,22 +35,20 @@ func (this *QMediaService) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMediaService constructs the type using only CGO pointers.
-func newQMediaService(h *C.QMediaService, h_QObject *C.QObject) *QMediaService {
+func newQMediaService(h *C.QMediaService) *QMediaService {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QMediaService_virtbase(h, &outptr_QObject)
+
 	return &QMediaService{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQMediaService constructs the type using only unsafe pointers.
-func UnsafeNewQMediaService(h unsafe.Pointer, h_QObject unsafe.Pointer) *QMediaService {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaService{h: (*C.QMediaService)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQMediaService(h unsafe.Pointer) *QMediaService {
+	return newQMediaService((*C.QMediaService)(h))
 }
 
 func (this *QMediaService) MetaObject() *qt.QMetaObject {
@@ -84,7 +82,7 @@ func QMediaService_TrUtf8(s string) string {
 func (this *QMediaService) RequestControl(name string) *QMediaControl {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	return newQMediaControl(C.QMediaService_RequestControl(this.h, name_Cstring), nil)
+	return newQMediaControl(C.QMediaService_RequestControl(this.h, name_Cstring))
 }
 
 func (this *QMediaService) ReleaseControl(control *QMediaControl) {

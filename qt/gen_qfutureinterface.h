@@ -26,9 +26,9 @@ typedef struct QRunnable QRunnable;
 typedef struct QThreadPool QThreadPool;
 #endif
 
-void QFutureInterfaceBase_new(QFutureInterfaceBase** outptr_QFutureInterfaceBase);
-void QFutureInterfaceBase_new2(QFutureInterfaceBase* other, QFutureInterfaceBase** outptr_QFutureInterfaceBase);
-void QFutureInterfaceBase_new3(int initialState, QFutureInterfaceBase** outptr_QFutureInterfaceBase);
+QFutureInterfaceBase* QFutureInterfaceBase_new();
+QFutureInterfaceBase* QFutureInterfaceBase_new2(QFutureInterfaceBase* other);
+QFutureInterfaceBase* QFutureInterfaceBase_new3(int initialState);
 void QFutureInterfaceBase_ReportStarted(QFutureInterfaceBase* self);
 void QFutureInterfaceBase_ReportFinished(QFutureInterfaceBase* self);
 void QFutureInterfaceBase_ReportCanceled(QFutureInterfaceBase* self);

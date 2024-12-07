@@ -36,42 +36,34 @@ func (this *QMediaCaptureSession) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMediaCaptureSession constructs the type using only CGO pointers.
-func newQMediaCaptureSession(h *C.QMediaCaptureSession, h_QObject *C.QObject) *QMediaCaptureSession {
+func newQMediaCaptureSession(h *C.QMediaCaptureSession) *QMediaCaptureSession {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QMediaCaptureSession_virtbase(h, &outptr_QObject)
+
 	return &QMediaCaptureSession{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQMediaCaptureSession constructs the type using only unsafe pointers.
-func UnsafeNewQMediaCaptureSession(h unsafe.Pointer, h_QObject unsafe.Pointer) *QMediaCaptureSession {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaCaptureSession{h: (*C.QMediaCaptureSession)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQMediaCaptureSession(h unsafe.Pointer) *QMediaCaptureSession {
+	return newQMediaCaptureSession((*C.QMediaCaptureSession)(h))
 }
 
 // NewQMediaCaptureSession constructs a new QMediaCaptureSession object.
 func NewQMediaCaptureSession() *QMediaCaptureSession {
-	var outptr_QMediaCaptureSession *C.QMediaCaptureSession = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMediaCaptureSession_new(&outptr_QMediaCaptureSession, &outptr_QObject)
-	ret := newQMediaCaptureSession(outptr_QMediaCaptureSession, outptr_QObject)
+	ret := newQMediaCaptureSession(C.QMediaCaptureSession_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaCaptureSession2 constructs a new QMediaCaptureSession object.
 func NewQMediaCaptureSession2(parent *qt6.QObject) *QMediaCaptureSession {
-	var outptr_QMediaCaptureSession *C.QMediaCaptureSession = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMediaCaptureSession_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QMediaCaptureSession, &outptr_QObject)
-	ret := newQMediaCaptureSession(outptr_QMediaCaptureSession, outptr_QObject)
+	ret := newQMediaCaptureSession(C.QMediaCaptureSession_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -96,7 +88,7 @@ func QMediaCaptureSession_Tr(s string) string {
 }
 
 func (this *QMediaCaptureSession) AudioInput() *QAudioInput {
-	return newQAudioInput(C.QMediaCaptureSession_AudioInput(this.h), nil)
+	return newQAudioInput(C.QMediaCaptureSession_AudioInput(this.h))
 }
 
 func (this *QMediaCaptureSession) SetAudioInput(input *QAudioInput) {
@@ -104,7 +96,7 @@ func (this *QMediaCaptureSession) SetAudioInput(input *QAudioInput) {
 }
 
 func (this *QMediaCaptureSession) Camera() *QCamera {
-	return newQCamera(C.QMediaCaptureSession_Camera(this.h), nil)
+	return newQCamera(C.QMediaCaptureSession_Camera(this.h))
 }
 
 func (this *QMediaCaptureSession) SetCamera(camera *QCamera) {
@@ -112,7 +104,7 @@ func (this *QMediaCaptureSession) SetCamera(camera *QCamera) {
 }
 
 func (this *QMediaCaptureSession) ImageCapture() *QImageCapture {
-	return newQImageCapture(C.QMediaCaptureSession_ImageCapture(this.h), nil)
+	return newQImageCapture(C.QMediaCaptureSession_ImageCapture(this.h))
 }
 
 func (this *QMediaCaptureSession) SetImageCapture(imageCapture *QImageCapture) {
@@ -120,7 +112,7 @@ func (this *QMediaCaptureSession) SetImageCapture(imageCapture *QImageCapture) {
 }
 
 func (this *QMediaCaptureSession) Recorder() *QMediaRecorder {
-	return newQMediaRecorder(C.QMediaCaptureSession_Recorder(this.h), nil)
+	return newQMediaRecorder(C.QMediaCaptureSession_Recorder(this.h))
 }
 
 func (this *QMediaCaptureSession) SetRecorder(recorder *QMediaRecorder) {
@@ -140,7 +132,7 @@ func (this *QMediaCaptureSession) SetVideoSink(sink *QVideoSink) {
 }
 
 func (this *QMediaCaptureSession) VideoSink() *QVideoSink {
-	return newQVideoSink(C.QMediaCaptureSession_VideoSink(this.h), nil)
+	return newQVideoSink(C.QMediaCaptureSession_VideoSink(this.h))
 }
 
 func (this *QMediaCaptureSession) SetAudioOutput(output *QAudioOutput) {
@@ -148,7 +140,7 @@ func (this *QMediaCaptureSession) SetAudioOutput(output *QAudioOutput) {
 }
 
 func (this *QMediaCaptureSession) AudioOutput() *QAudioOutput {
-	return newQAudioOutput(C.QMediaCaptureSession_AudioOutput(this.h), nil)
+	return newQAudioOutput(C.QMediaCaptureSession_AudioOutput(this.h))
 }
 
 func (this *QMediaCaptureSession) AudioInputChanged() {
@@ -353,7 +345,7 @@ func miqt_exec_callback_QMediaCaptureSession_TimerEvent(self *C.QMediaCaptureSes
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QMediaCaptureSession{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -379,7 +371,7 @@ func miqt_exec_callback_QMediaCaptureSession_ChildEvent(self *C.QMediaCaptureSes
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QMediaCaptureSession{h: self}).callVirtualBase_ChildEvent, slotval1)
 

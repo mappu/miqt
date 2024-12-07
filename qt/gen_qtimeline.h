@@ -34,9 +34,10 @@ typedef struct QTimeLine QTimeLine;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QTimeLine_new(QTimeLine** outptr_QTimeLine, QObject** outptr_QObject);
-void QTimeLine_new2(int duration, QTimeLine** outptr_QTimeLine, QObject** outptr_QObject);
-void QTimeLine_new3(int duration, QObject* parent, QTimeLine** outptr_QTimeLine, QObject** outptr_QObject);
+QTimeLine* QTimeLine_new();
+QTimeLine* QTimeLine_new2(int duration);
+QTimeLine* QTimeLine_new3(int duration, QObject* parent);
+void QTimeLine_virtbase(QTimeLine* src, QObject** outptr_QObject);
 QMetaObject* QTimeLine_MetaObject(const QTimeLine* self);
 void* QTimeLine_Metacast(QTimeLine* self, const char* param1);
 struct miqt_string QTimeLine_Tr(const char* s);

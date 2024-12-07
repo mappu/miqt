@@ -50,44 +50,34 @@ func (this *QsciLexerEDIFACT) UnsafePointer() unsafe.Pointer {
 }
 
 // newQsciLexerEDIFACT constructs the type using only CGO pointers.
-func newQsciLexerEDIFACT(h *C.QsciLexerEDIFACT, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerEDIFACT {
+func newQsciLexerEDIFACT(h *C.QsciLexerEDIFACT) *QsciLexerEDIFACT {
 	if h == nil {
 		return nil
 	}
+	var outptr_QsciLexer *C.QsciLexer = nil
+	C.QsciLexerEDIFACT_virtbase(h, &outptr_QsciLexer)
+
 	return &QsciLexerEDIFACT{h: h,
-		QsciLexer: newQsciLexer(h_QsciLexer, h_QObject)}
+		QsciLexer: newQsciLexer(outptr_QsciLexer)}
 }
 
 // UnsafeNewQsciLexerEDIFACT constructs the type using only unsafe pointers.
-func UnsafeNewQsciLexerEDIFACT(h unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerEDIFACT {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciLexerEDIFACT{h: (*C.QsciLexerEDIFACT)(h),
-		QsciLexer: UnsafeNewQsciLexer(h_QsciLexer, h_QObject)}
+func UnsafeNewQsciLexerEDIFACT(h unsafe.Pointer) *QsciLexerEDIFACT {
+	return newQsciLexerEDIFACT((*C.QsciLexerEDIFACT)(h))
 }
 
 // NewQsciLexerEDIFACT constructs a new QsciLexerEDIFACT object.
 func NewQsciLexerEDIFACT() *QsciLexerEDIFACT {
-	var outptr_QsciLexerEDIFACT *C.QsciLexerEDIFACT = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerEDIFACT_new(&outptr_QsciLexerEDIFACT, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerEDIFACT(outptr_QsciLexerEDIFACT, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerEDIFACT(C.QsciLexerEDIFACT_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQsciLexerEDIFACT2 constructs a new QsciLexerEDIFACT object.
 func NewQsciLexerEDIFACT2(parent *qt.QObject) *QsciLexerEDIFACT {
-	var outptr_QsciLexerEDIFACT *C.QsciLexerEDIFACT = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerEDIFACT_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QsciLexerEDIFACT, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerEDIFACT(outptr_QsciLexerEDIFACT, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerEDIFACT(C.QsciLexerEDIFACT_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -864,7 +854,7 @@ func miqt_exec_callback_QsciLexerEDIFACT_SetEditor(self *C.QsciLexerEDIFACT, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQsciScintilla(editor, nil, nil, nil, nil, nil, nil)
+	slotval1 := newQsciScintilla(editor)
 
 	gofunc((&QsciLexerEDIFACT{h: self}).callVirtualBase_SetEditor, slotval1)
 
@@ -1108,7 +1098,7 @@ func miqt_exec_callback_QsciLexerEDIFACT_ReadProperties(self *C.QsciLexerEDIFACT
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQSettings(unsafe.Pointer(qs), nil)
+	slotval1 := qt.UnsafeNewQSettings(unsafe.Pointer(qs))
 
 	var prefix_ms C.struct_miqt_string = prefix
 	prefix_ret := C.GoStringN(prefix_ms.data, C.int(int64(prefix_ms.len)))
@@ -1145,7 +1135,7 @@ func miqt_exec_callback_QsciLexerEDIFACT_WriteProperties(self *C.QsciLexerEDIFAC
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQSettings(unsafe.Pointer(qs), nil)
+	slotval1 := qt.UnsafeNewQSettings(unsafe.Pointer(qs))
 
 	var prefix_ms C.struct_miqt_string = prefix
 	prefix_ret := C.GoStringN(prefix_ms.data, C.int(int64(prefix_ms.len)))

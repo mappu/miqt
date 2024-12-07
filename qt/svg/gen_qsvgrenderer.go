@@ -36,31 +36,26 @@ func (this *QSvgRenderer) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSvgRenderer constructs the type using only CGO pointers.
-func newQSvgRenderer(h *C.QSvgRenderer, h_QObject *C.QObject) *QSvgRenderer {
+func newQSvgRenderer(h *C.QSvgRenderer) *QSvgRenderer {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QSvgRenderer_virtbase(h, &outptr_QObject)
+
 	return &QSvgRenderer{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQSvgRenderer constructs the type using only unsafe pointers.
-func UnsafeNewQSvgRenderer(h unsafe.Pointer, h_QObject unsafe.Pointer) *QSvgRenderer {
-	if h == nil {
-		return nil
-	}
-
-	return &QSvgRenderer{h: (*C.QSvgRenderer)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQSvgRenderer(h unsafe.Pointer) *QSvgRenderer {
+	return newQSvgRenderer((*C.QSvgRenderer)(h))
 }
 
 // NewQSvgRenderer constructs a new QSvgRenderer object.
 func NewQSvgRenderer() *QSvgRenderer {
-	var outptr_QSvgRenderer *C.QSvgRenderer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSvgRenderer_new(&outptr_QSvgRenderer, &outptr_QObject)
-	ret := newQSvgRenderer(outptr_QSvgRenderer, outptr_QObject)
+	ret := newQSvgRenderer(C.QSvgRenderer_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -71,11 +66,8 @@ func NewQSvgRenderer2(filename string) *QSvgRenderer {
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
 	defer C.free(unsafe.Pointer(filename_ms.data))
-	var outptr_QSvgRenderer *C.QSvgRenderer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSvgRenderer_new2(filename_ms, &outptr_QSvgRenderer, &outptr_QObject)
-	ret := newQSvgRenderer(outptr_QSvgRenderer, outptr_QObject)
+	ret := newQSvgRenderer(C.QSvgRenderer_new2(filename_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -85,33 +77,24 @@ func NewQSvgRenderer3(contents []byte) *QSvgRenderer {
 	contents_alias := C.struct_miqt_string{}
 	contents_alias.data = (*C.char)(unsafe.Pointer(&contents[0]))
 	contents_alias.len = C.size_t(len(contents))
-	var outptr_QSvgRenderer *C.QSvgRenderer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSvgRenderer_new3(contents_alias, &outptr_QSvgRenderer, &outptr_QObject)
-	ret := newQSvgRenderer(outptr_QSvgRenderer, outptr_QObject)
+	ret := newQSvgRenderer(C.QSvgRenderer_new3(contents_alias))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSvgRenderer4 constructs a new QSvgRenderer object.
 func NewQSvgRenderer4(contents *qt.QXmlStreamReader) *QSvgRenderer {
-	var outptr_QSvgRenderer *C.QSvgRenderer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSvgRenderer_new4((*C.QXmlStreamReader)(contents.UnsafePointer()), &outptr_QSvgRenderer, &outptr_QObject)
-	ret := newQSvgRenderer(outptr_QSvgRenderer, outptr_QObject)
+	ret := newQSvgRenderer(C.QSvgRenderer_new4((*C.QXmlStreamReader)(contents.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSvgRenderer5 constructs a new QSvgRenderer object.
 func NewQSvgRenderer5(parent *qt.QObject) *QSvgRenderer {
-	var outptr_QSvgRenderer *C.QSvgRenderer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSvgRenderer_new5((*C.QObject)(parent.UnsafePointer()), &outptr_QSvgRenderer, &outptr_QObject)
-	ret := newQSvgRenderer(outptr_QSvgRenderer, outptr_QObject)
+	ret := newQSvgRenderer(C.QSvgRenderer_new5((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -122,11 +105,8 @@ func NewQSvgRenderer6(filename string, parent *qt.QObject) *QSvgRenderer {
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
 	defer C.free(unsafe.Pointer(filename_ms.data))
-	var outptr_QSvgRenderer *C.QSvgRenderer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSvgRenderer_new6(filename_ms, (*C.QObject)(parent.UnsafePointer()), &outptr_QSvgRenderer, &outptr_QObject)
-	ret := newQSvgRenderer(outptr_QSvgRenderer, outptr_QObject)
+	ret := newQSvgRenderer(C.QSvgRenderer_new6(filename_ms, (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -136,22 +116,16 @@ func NewQSvgRenderer7(contents []byte, parent *qt.QObject) *QSvgRenderer {
 	contents_alias := C.struct_miqt_string{}
 	contents_alias.data = (*C.char)(unsafe.Pointer(&contents[0]))
 	contents_alias.len = C.size_t(len(contents))
-	var outptr_QSvgRenderer *C.QSvgRenderer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSvgRenderer_new7(contents_alias, (*C.QObject)(parent.UnsafePointer()), &outptr_QSvgRenderer, &outptr_QObject)
-	ret := newQSvgRenderer(outptr_QSvgRenderer, outptr_QObject)
+	ret := newQSvgRenderer(C.QSvgRenderer_new7(contents_alias, (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSvgRenderer8 constructs a new QSvgRenderer object.
 func NewQSvgRenderer8(contents *qt.QXmlStreamReader, parent *qt.QObject) *QSvgRenderer {
-	var outptr_QSvgRenderer *C.QSvgRenderer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSvgRenderer_new8((*C.QXmlStreamReader)(contents.UnsafePointer()), (*C.QObject)(parent.UnsafePointer()), &outptr_QSvgRenderer, &outptr_QObject)
-	ret := newQSvgRenderer(outptr_QSvgRenderer, outptr_QObject)
+	ret := newQSvgRenderer(C.QSvgRenderer_new8((*C.QXmlStreamReader)(contents.UnsafePointer()), (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -466,7 +440,7 @@ func miqt_exec_callback_QSvgRenderer_TimerEvent(self *C.QSvgRenderer, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QSvgRenderer{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -492,7 +466,7 @@ func miqt_exec_callback_QSvgRenderer_ChildEvent(self *C.QSvgRenderer, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QSvgRenderer{h: self}).callVirtualBase_ChildEvent, slotval1)
 

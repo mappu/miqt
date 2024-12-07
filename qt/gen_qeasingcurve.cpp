@@ -5,19 +5,16 @@
 #include "gen_qeasingcurve.h"
 #include "_cgo_export.h"
 
-void QEasingCurve_new(QEasingCurve** outptr_QEasingCurve) {
-	QEasingCurve* ret = new QEasingCurve();
-	*outptr_QEasingCurve = ret;
+QEasingCurve* QEasingCurve_new() {
+	return new QEasingCurve();
 }
 
-void QEasingCurve_new2(QEasingCurve* other, QEasingCurve** outptr_QEasingCurve) {
-	QEasingCurve* ret = new QEasingCurve(*other);
-	*outptr_QEasingCurve = ret;
+QEasingCurve* QEasingCurve_new2(QEasingCurve* other) {
+	return new QEasingCurve(*other);
 }
 
-void QEasingCurve_new3(int typeVal, QEasingCurve** outptr_QEasingCurve) {
-	QEasingCurve* ret = new QEasingCurve(static_cast<QEasingCurve::Type>(typeVal));
-	*outptr_QEasingCurve = ret;
+QEasingCurve* QEasingCurve_new3(int typeVal) {
+	return new QEasingCurve(static_cast<QEasingCurve::Type>(typeVal));
 }
 
 void QEasingCurve_OperatorAssign(QEasingCurve* self, QEasingCurve* other) {

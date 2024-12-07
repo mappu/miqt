@@ -43,48 +43,34 @@ func (this *QToolButton) UnsafePointer() unsafe.Pointer {
 }
 
 // newQToolButton constructs the type using only CGO pointers.
-func newQToolButton(h *C.QToolButton, h_QAbstractButton *C.QAbstractButton, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QToolButton {
+func newQToolButton(h *C.QToolButton) *QToolButton {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractButton *C.QAbstractButton = nil
+	C.QToolButton_virtbase(h, &outptr_QAbstractButton)
+
 	return &QToolButton{h: h,
-		QAbstractButton: newQAbstractButton(h_QAbstractButton, h_QWidget, h_QObject, h_QPaintDevice)}
+		QAbstractButton: newQAbstractButton(outptr_QAbstractButton)}
 }
 
 // UnsafeNewQToolButton constructs the type using only unsafe pointers.
-func UnsafeNewQToolButton(h unsafe.Pointer, h_QAbstractButton unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QToolButton {
-	if h == nil {
-		return nil
-	}
-
-	return &QToolButton{h: (*C.QToolButton)(h),
-		QAbstractButton: UnsafeNewQAbstractButton(h_QAbstractButton, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQToolButton(h unsafe.Pointer) *QToolButton {
+	return newQToolButton((*C.QToolButton)(h))
 }
 
 // NewQToolButton constructs a new QToolButton object.
 func NewQToolButton(parent *QWidget) *QToolButton {
-	var outptr_QToolButton *C.QToolButton = nil
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QToolButton_new(parent.cPointer(), &outptr_QToolButton, &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQToolButton(outptr_QToolButton, outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQToolButton(C.QToolButton_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQToolButton2 constructs a new QToolButton object.
 func NewQToolButton2() *QToolButton {
-	var outptr_QToolButton *C.QToolButton = nil
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QToolButton_new2(&outptr_QToolButton, &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQToolButton(outptr_QToolButton, outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQToolButton(C.QToolButton_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -146,7 +132,7 @@ func (this *QToolButton) SetMenu(menu *QMenu) {
 }
 
 func (this *QToolButton) Menu() *QMenu {
-	return newQMenu(C.QToolButton_Menu(this.h), nil, nil, nil)
+	return newQMenu(C.QToolButton_Menu(this.h))
 }
 
 func (this *QToolButton) SetPopupMode(mode QToolButton__ToolButtonPopupMode) {
@@ -158,7 +144,7 @@ func (this *QToolButton) PopupMode() QToolButton__ToolButtonPopupMode {
 }
 
 func (this *QToolButton) DefaultAction() *QAction {
-	return newQAction(C.QToolButton_DefaultAction(this.h), nil)
+	return newQAction(C.QToolButton_DefaultAction(this.h))
 }
 
 func (this *QToolButton) SetAutoRaise(enable bool) {
@@ -196,7 +182,7 @@ func miqt_exec_callback_QToolButton_Triggered(cb C.intptr_t, param1 *C.QAction) 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQAction(param1, nil)
+	slotval1 := newQAction(param1)
 
 	gofunc(slotval1)
 }
@@ -347,7 +333,7 @@ func miqt_exec_callback_QToolButton_MousePressEvent(self *C.QToolButton, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(param1, nil, nil)
+	slotval1 := newQMouseEvent(param1)
 
 	gofunc((&QToolButton{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -373,7 +359,7 @@ func miqt_exec_callback_QToolButton_MouseReleaseEvent(self *C.QToolButton, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(param1, nil, nil)
+	slotval1 := newQMouseEvent(param1)
 
 	gofunc((&QToolButton{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -399,7 +385,7 @@ func miqt_exec_callback_QToolButton_PaintEvent(self *C.QToolButton, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(param1, nil)
+	slotval1 := newQPaintEvent(param1)
 
 	gofunc((&QToolButton{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -425,7 +411,7 @@ func miqt_exec_callback_QToolButton_ActionEvent(self *C.QToolButton, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQActionEvent(param1, nil)
+	slotval1 := newQActionEvent(param1)
 
 	gofunc((&QToolButton{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -503,7 +489,7 @@ func miqt_exec_callback_QToolButton_TimerEvent(self *C.QToolButton, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(param1, nil)
+	slotval1 := newQTimerEvent(param1)
 
 	gofunc((&QToolButton{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -629,7 +615,7 @@ func miqt_exec_callback_QToolButton_KeyPressEvent(self *C.QToolButton, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(e, nil, nil)
+	slotval1 := newQKeyEvent(e)
 
 	gofunc((&QToolButton{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -655,7 +641,7 @@ func miqt_exec_callback_QToolButton_KeyReleaseEvent(self *C.QToolButton, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(e, nil, nil)
+	slotval1 := newQKeyEvent(e)
 
 	gofunc((&QToolButton{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -681,7 +667,7 @@ func miqt_exec_callback_QToolButton_MouseMoveEvent(self *C.QToolButton, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QToolButton{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -707,7 +693,7 @@ func miqt_exec_callback_QToolButton_FocusInEvent(self *C.QToolButton, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(e, nil)
+	slotval1 := newQFocusEvent(e)
 
 	gofunc((&QToolButton{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -733,7 +719,7 @@ func miqt_exec_callback_QToolButton_FocusOutEvent(self *C.QToolButton, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(e, nil)
+	slotval1 := newQFocusEvent(e)
 
 	gofunc((&QToolButton{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 

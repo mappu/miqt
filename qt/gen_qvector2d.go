@@ -37,94 +37,75 @@ func newQVector2D(h *C.QVector2D) *QVector2D {
 	if h == nil {
 		return nil
 	}
+
 	return &QVector2D{h: h}
 }
 
 // UnsafeNewQVector2D constructs the type using only unsafe pointers.
 func UnsafeNewQVector2D(h unsafe.Pointer) *QVector2D {
-	if h == nil {
-		return nil
-	}
-
-	return &QVector2D{h: (*C.QVector2D)(h)}
+	return newQVector2D((*C.QVector2D)(h))
 }
 
 // NewQVector2D constructs a new QVector2D object.
 func NewQVector2D() *QVector2D {
-	var outptr_QVector2D *C.QVector2D = nil
 
-	C.QVector2D_new(&outptr_QVector2D)
-	ret := newQVector2D(outptr_QVector2D)
+	ret := newQVector2D(C.QVector2D_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVector2D2 constructs a new QVector2D object.
 func NewQVector2D2(param1 Initialization) *QVector2D {
-	var outptr_QVector2D *C.QVector2D = nil
 
-	C.QVector2D_new2((C.int)(param1), &outptr_QVector2D)
-	ret := newQVector2D(outptr_QVector2D)
+	ret := newQVector2D(C.QVector2D_new2((C.int)(param1)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVector2D3 constructs a new QVector2D object.
 func NewQVector2D3(xpos float32, ypos float32) *QVector2D {
-	var outptr_QVector2D *C.QVector2D = nil
 
-	C.QVector2D_new3((C.float)(xpos), (C.float)(ypos), &outptr_QVector2D)
-	ret := newQVector2D(outptr_QVector2D)
+	ret := newQVector2D(C.QVector2D_new3((C.float)(xpos), (C.float)(ypos)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVector2D4 constructs a new QVector2D object.
 func NewQVector2D4(point *QPoint) *QVector2D {
-	var outptr_QVector2D *C.QVector2D = nil
 
-	C.QVector2D_new4(point.cPointer(), &outptr_QVector2D)
-	ret := newQVector2D(outptr_QVector2D)
+	ret := newQVector2D(C.QVector2D_new4(point.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVector2D5 constructs a new QVector2D object.
 func NewQVector2D5(point *QPointF) *QVector2D {
-	var outptr_QVector2D *C.QVector2D = nil
 
-	C.QVector2D_new5(point.cPointer(), &outptr_QVector2D)
-	ret := newQVector2D(outptr_QVector2D)
+	ret := newQVector2D(C.QVector2D_new5(point.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVector2D6 constructs a new QVector2D object.
 func NewQVector2D6(vector *QVector3D) *QVector2D {
-	var outptr_QVector2D *C.QVector2D = nil
 
-	C.QVector2D_new6(vector.cPointer(), &outptr_QVector2D)
-	ret := newQVector2D(outptr_QVector2D)
+	ret := newQVector2D(C.QVector2D_new6(vector.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVector2D7 constructs a new QVector2D object.
 func NewQVector2D7(vector *QVector4D) *QVector2D {
-	var outptr_QVector2D *C.QVector2D = nil
 
-	C.QVector2D_new7(vector.cPointer(), &outptr_QVector2D)
-	ret := newQVector2D(outptr_QVector2D)
+	ret := newQVector2D(C.QVector2D_new7(vector.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVector2D8 constructs a new QVector2D object.
 func NewQVector2D8(param1 *QVector2D) *QVector2D {
-	var outptr_QVector2D *C.QVector2D = nil
 
-	C.QVector2D_new8(param1.cPointer(), &outptr_QVector2D)
-	ret := newQVector2D(outptr_QVector2D)
+	ret := newQVector2D(C.QVector2D_new8(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

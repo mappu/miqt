@@ -36,80 +36,50 @@ func (this *QPrintDialog) UnsafePointer() unsafe.Pointer {
 }
 
 // newQPrintDialog constructs the type using only CGO pointers.
-func newQPrintDialog(h *C.QPrintDialog, h_QAbstractPrintDialog *C.QAbstractPrintDialog, h_QDialog *C.QDialog, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QPrintDialog {
+func newQPrintDialog(h *C.QPrintDialog) *QPrintDialog {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractPrintDialog *C.QAbstractPrintDialog = nil
+	C.QPrintDialog_virtbase(h, &outptr_QAbstractPrintDialog)
+
 	return &QPrintDialog{h: h,
-		QAbstractPrintDialog: newQAbstractPrintDialog(h_QAbstractPrintDialog, h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
+		QAbstractPrintDialog: newQAbstractPrintDialog(outptr_QAbstractPrintDialog)}
 }
 
 // UnsafeNewQPrintDialog constructs the type using only unsafe pointers.
-func UnsafeNewQPrintDialog(h unsafe.Pointer, h_QAbstractPrintDialog unsafe.Pointer, h_QDialog unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QPrintDialog {
-	if h == nil {
-		return nil
-	}
-
-	return &QPrintDialog{h: (*C.QPrintDialog)(h),
-		QAbstractPrintDialog: UnsafeNewQAbstractPrintDialog(h_QAbstractPrintDialog, h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQPrintDialog(h unsafe.Pointer) *QPrintDialog {
+	return newQPrintDialog((*C.QPrintDialog)(h))
 }
 
 // NewQPrintDialog constructs a new QPrintDialog object.
 func NewQPrintDialog(parent *qt6.QWidget) *QPrintDialog {
-	var outptr_QPrintDialog *C.QPrintDialog = nil
-	var outptr_QAbstractPrintDialog *C.QAbstractPrintDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPrintDialog_new((*C.QWidget)(parent.UnsafePointer()), &outptr_QPrintDialog, &outptr_QAbstractPrintDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPrintDialog(outptr_QPrintDialog, outptr_QAbstractPrintDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPrintDialog(C.QPrintDialog_new((*C.QWidget)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPrintDialog2 constructs a new QPrintDialog object.
 func NewQPrintDialog2(printer *QPrinter) *QPrintDialog {
-	var outptr_QPrintDialog *C.QPrintDialog = nil
-	var outptr_QAbstractPrintDialog *C.QAbstractPrintDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPrintDialog_new2(printer.cPointer(), &outptr_QPrintDialog, &outptr_QAbstractPrintDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPrintDialog(outptr_QPrintDialog, outptr_QAbstractPrintDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPrintDialog(C.QPrintDialog_new2(printer.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPrintDialog3 constructs a new QPrintDialog object.
 func NewQPrintDialog3() *QPrintDialog {
-	var outptr_QPrintDialog *C.QPrintDialog = nil
-	var outptr_QAbstractPrintDialog *C.QAbstractPrintDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPrintDialog_new3(&outptr_QPrintDialog, &outptr_QAbstractPrintDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPrintDialog(outptr_QPrintDialog, outptr_QAbstractPrintDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPrintDialog(C.QPrintDialog_new3())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPrintDialog4 constructs a new QPrintDialog object.
 func NewQPrintDialog4(printer *QPrinter, parent *qt6.QWidget) *QPrintDialog {
-	var outptr_QPrintDialog *C.QPrintDialog = nil
-	var outptr_QAbstractPrintDialog *C.QAbstractPrintDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPrintDialog_new4(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer()), &outptr_QPrintDialog, &outptr_QAbstractPrintDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQPrintDialog(outptr_QPrintDialog, outptr_QAbstractPrintDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQPrintDialog(C.QPrintDialog_new4(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -180,7 +150,7 @@ func miqt_exec_callback_QPrintDialog_Accepted(cb C.intptr_t, printer *C.QPrinter
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPrinter(printer, nil, nil)
+	slotval1 := newQPrinter(printer)
 
 	gofunc(slotval1)
 }

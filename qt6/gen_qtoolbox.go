@@ -35,62 +35,42 @@ func (this *QToolBox) UnsafePointer() unsafe.Pointer {
 }
 
 // newQToolBox constructs the type using only CGO pointers.
-func newQToolBox(h *C.QToolBox, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QToolBox {
+func newQToolBox(h *C.QToolBox) *QToolBox {
 	if h == nil {
 		return nil
 	}
+	var outptr_QFrame *C.QFrame = nil
+	C.QToolBox_virtbase(h, &outptr_QFrame)
+
 	return &QToolBox{h: h,
-		QFrame: newQFrame(h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+		QFrame: newQFrame(outptr_QFrame)}
 }
 
 // UnsafeNewQToolBox constructs the type using only unsafe pointers.
-func UnsafeNewQToolBox(h unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QToolBox {
-	if h == nil {
-		return nil
-	}
-
-	return &QToolBox{h: (*C.QToolBox)(h),
-		QFrame: UnsafeNewQFrame(h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQToolBox(h unsafe.Pointer) *QToolBox {
+	return newQToolBox((*C.QToolBox)(h))
 }
 
 // NewQToolBox constructs a new QToolBox object.
 func NewQToolBox(parent *QWidget) *QToolBox {
-	var outptr_QToolBox *C.QToolBox = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QToolBox_new(parent.cPointer(), &outptr_QToolBox, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQToolBox(outptr_QToolBox, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQToolBox(C.QToolBox_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQToolBox2 constructs a new QToolBox object.
 func NewQToolBox2() *QToolBox {
-	var outptr_QToolBox *C.QToolBox = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QToolBox_new2(&outptr_QToolBox, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQToolBox(outptr_QToolBox, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQToolBox(C.QToolBox_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQToolBox3 constructs a new QToolBox object.
 func NewQToolBox3(parent *QWidget, f WindowType) *QToolBox {
-	var outptr_QToolBox *C.QToolBox = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QToolBox_new3(parent.cPointer(), (C.int)(f), &outptr_QToolBox, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQToolBox(outptr_QToolBox, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQToolBox(C.QToolBox_new3(parent.cPointer(), (C.int)(f)))
 	ret.isSubclass = true
 	return ret
 }
@@ -203,11 +183,11 @@ func (this *QToolBox) CurrentIndex() int {
 }
 
 func (this *QToolBox) CurrentWidget() *QWidget {
-	return newQWidget(C.QToolBox_CurrentWidget(this.h), nil, nil)
+	return newQWidget(C.QToolBox_CurrentWidget(this.h))
 }
 
 func (this *QToolBox) Widget(index int) *QWidget {
-	return newQWidget(C.QToolBox_Widget(this.h, (C.int)(index)), nil, nil)
+	return newQWidget(C.QToolBox_Widget(this.h, (C.int)(index)))
 }
 
 func (this *QToolBox) IndexOf(widget *QWidget) int {
@@ -368,7 +348,7 @@ func miqt_exec_callback_QToolBox_ShowEvent(self *C.QToolBox, cb C.intptr_t, e *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQShowEvent(e, nil)
+	slotval1 := newQShowEvent(e)
 
 	gofunc((&QToolBox{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -447,7 +427,7 @@ func miqt_exec_callback_QToolBox_PaintEvent(self *C.QToolBox, cb C.intptr_t, par
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(param1, nil)
+	slotval1 := newQPaintEvent(param1)
 
 	gofunc((&QToolBox{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -473,7 +453,7 @@ func miqt_exec_callback_QToolBox_InitStyleOption(self *C.QToolBox, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQStyleOptionFrame(option, nil)
+	slotval1 := newQStyleOptionFrame(option)
 
 	gofunc((&QToolBox{h: self}).callVirtualBase_InitStyleOption, slotval1)
 

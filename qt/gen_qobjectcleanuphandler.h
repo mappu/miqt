@@ -32,7 +32,8 @@ typedef struct QObjectCleanupHandler QObjectCleanupHandler;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QObjectCleanupHandler_new(QObjectCleanupHandler** outptr_QObjectCleanupHandler, QObject** outptr_QObject);
+QObjectCleanupHandler* QObjectCleanupHandler_new();
+void QObjectCleanupHandler_virtbase(QObjectCleanupHandler* src, QObject** outptr_QObject);
 QMetaObject* QObjectCleanupHandler_MetaObject(const QObjectCleanupHandler* self);
 void* QObjectCleanupHandler_Metacast(QObjectCleanupHandler* self, const char* param1);
 struct miqt_string QObjectCleanupHandler_Tr(const char* s);

@@ -175,31 +175,26 @@ func (this *QPagedPaintDevice) UnsafePointer() unsafe.Pointer {
 }
 
 // newQPagedPaintDevice constructs the type using only CGO pointers.
-func newQPagedPaintDevice(h *C.QPagedPaintDevice, h_QPaintDevice *C.QPaintDevice) *QPagedPaintDevice {
+func newQPagedPaintDevice(h *C.QPagedPaintDevice) *QPagedPaintDevice {
 	if h == nil {
 		return nil
 	}
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+	C.QPagedPaintDevice_virtbase(h, &outptr_QPaintDevice)
+
 	return &QPagedPaintDevice{h: h,
-		QPaintDevice: newQPaintDevice(h_QPaintDevice)}
+		QPaintDevice: newQPaintDevice(outptr_QPaintDevice)}
 }
 
 // UnsafeNewQPagedPaintDevice constructs the type using only unsafe pointers.
-func UnsafeNewQPagedPaintDevice(h unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QPagedPaintDevice {
-	if h == nil {
-		return nil
-	}
-
-	return &QPagedPaintDevice{h: (*C.QPagedPaintDevice)(h),
-		QPaintDevice: UnsafeNewQPaintDevice(h_QPaintDevice)}
+func UnsafeNewQPagedPaintDevice(h unsafe.Pointer) *QPagedPaintDevice {
+	return newQPagedPaintDevice((*C.QPagedPaintDevice)(h))
 }
 
 // NewQPagedPaintDevice constructs a new QPagedPaintDevice object.
 func NewQPagedPaintDevice() *QPagedPaintDevice {
-	var outptr_QPagedPaintDevice *C.QPagedPaintDevice = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPagedPaintDevice_new(&outptr_QPagedPaintDevice, &outptr_QPaintDevice)
-	ret := newQPagedPaintDevice(outptr_QPagedPaintDevice, outptr_QPaintDevice)
+	ret := newQPagedPaintDevice(C.QPagedPaintDevice_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -548,16 +543,13 @@ func newQPagedPaintDevice__Margins(h *C.QPagedPaintDevice__Margins) *QPagedPaint
 	if h == nil {
 		return nil
 	}
+
 	return &QPagedPaintDevice__Margins{h: h}
 }
 
 // UnsafeNewQPagedPaintDevice__Margins constructs the type using only unsafe pointers.
 func UnsafeNewQPagedPaintDevice__Margins(h unsafe.Pointer) *QPagedPaintDevice__Margins {
-	if h == nil {
-		return nil
-	}
-
-	return &QPagedPaintDevice__Margins{h: (*C.QPagedPaintDevice__Margins)(h)}
+	return newQPagedPaintDevice__Margins((*C.QPagedPaintDevice__Margins)(h))
 }
 
 // Delete this object from C++ memory.

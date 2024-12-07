@@ -24,7 +24,7 @@ typedef struct QAbstractVideoBuffer QAbstractVideoBuffer;
 typedef struct QVariant QVariant;
 #endif
 
-void QAbstractVideoBuffer_new(int typeVal, QAbstractVideoBuffer** outptr_QAbstractVideoBuffer);
+QAbstractVideoBuffer* QAbstractVideoBuffer_new(int typeVal);
 void QAbstractVideoBuffer_Release(QAbstractVideoBuffer* self);
 int QAbstractVideoBuffer_HandleType(const QAbstractVideoBuffer* self);
 int QAbstractVideoBuffer_MapMode(const QAbstractVideoBuffer* self);
@@ -43,7 +43,8 @@ void QAbstractVideoBuffer_override_virtual_Handle(void* self, intptr_t slot);
 QVariant* QAbstractVideoBuffer_virtualbase_Handle(const void* self);
 void QAbstractVideoBuffer_Delete(QAbstractVideoBuffer* self, bool isSubclass);
 
-void QAbstractPlanarVideoBuffer_new(int typeVal, QAbstractPlanarVideoBuffer** outptr_QAbstractPlanarVideoBuffer, QAbstractVideoBuffer** outptr_QAbstractVideoBuffer);
+QAbstractPlanarVideoBuffer* QAbstractPlanarVideoBuffer_new(int typeVal);
+void QAbstractPlanarVideoBuffer_virtbase(QAbstractPlanarVideoBuffer* src, QAbstractVideoBuffer** outptr_QAbstractVideoBuffer);
 unsigned char* QAbstractPlanarVideoBuffer_Map(QAbstractPlanarVideoBuffer* self, int mode, int* numBytes, int* bytesPerLine);
 void QAbstractPlanarVideoBuffer_override_virtual_Map(void* self, intptr_t slot);
 unsigned char* QAbstractPlanarVideoBuffer_virtualbase_Map(void* self, int mode, int* numBytes, int* bytesPerLine);

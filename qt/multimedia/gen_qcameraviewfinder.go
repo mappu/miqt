@@ -36,50 +36,34 @@ func (this *QCameraViewfinder) UnsafePointer() unsafe.Pointer {
 }
 
 // newQCameraViewfinder constructs the type using only CGO pointers.
-func newQCameraViewfinder(h *C.QCameraViewfinder, h_QVideoWidget *C.QVideoWidget, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice, h_QMediaBindableInterface *C.QMediaBindableInterface) *QCameraViewfinder {
+func newQCameraViewfinder(h *C.QCameraViewfinder) *QCameraViewfinder {
 	if h == nil {
 		return nil
 	}
+	var outptr_QVideoWidget *C.QVideoWidget = nil
+	C.QCameraViewfinder_virtbase(h, &outptr_QVideoWidget)
+
 	return &QCameraViewfinder{h: h,
-		QVideoWidget: newQVideoWidget(h_QVideoWidget, h_QWidget, h_QObject, h_QPaintDevice, h_QMediaBindableInterface)}
+		QVideoWidget: newQVideoWidget(outptr_QVideoWidget)}
 }
 
 // UnsafeNewQCameraViewfinder constructs the type using only unsafe pointers.
-func UnsafeNewQCameraViewfinder(h unsafe.Pointer, h_QVideoWidget unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer, h_QMediaBindableInterface unsafe.Pointer) *QCameraViewfinder {
-	if h == nil {
-		return nil
-	}
-
-	return &QCameraViewfinder{h: (*C.QCameraViewfinder)(h),
-		QVideoWidget: UnsafeNewQVideoWidget(h_QVideoWidget, h_QWidget, h_QObject, h_QPaintDevice, h_QMediaBindableInterface)}
+func UnsafeNewQCameraViewfinder(h unsafe.Pointer) *QCameraViewfinder {
+	return newQCameraViewfinder((*C.QCameraViewfinder)(h))
 }
 
 // NewQCameraViewfinder constructs a new QCameraViewfinder object.
 func NewQCameraViewfinder(parent *qt.QWidget) *QCameraViewfinder {
-	var outptr_QCameraViewfinder *C.QCameraViewfinder = nil
-	var outptr_QVideoWidget *C.QVideoWidget = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
-	var outptr_QMediaBindableInterface *C.QMediaBindableInterface = nil
 
-	C.QCameraViewfinder_new((*C.QWidget)(parent.UnsafePointer()), &outptr_QCameraViewfinder, &outptr_QVideoWidget, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice, &outptr_QMediaBindableInterface)
-	ret := newQCameraViewfinder(outptr_QCameraViewfinder, outptr_QVideoWidget, outptr_QWidget, outptr_QObject, outptr_QPaintDevice, outptr_QMediaBindableInterface)
+	ret := newQCameraViewfinder(C.QCameraViewfinder_new((*C.QWidget)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCameraViewfinder2 constructs a new QCameraViewfinder object.
 func NewQCameraViewfinder2() *QCameraViewfinder {
-	var outptr_QCameraViewfinder *C.QCameraViewfinder = nil
-	var outptr_QVideoWidget *C.QVideoWidget = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
-	var outptr_QMediaBindableInterface *C.QMediaBindableInterface = nil
 
-	C.QCameraViewfinder_new2(&outptr_QCameraViewfinder, &outptr_QVideoWidget, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice, &outptr_QMediaBindableInterface)
-	ret := newQCameraViewfinder(outptr_QCameraViewfinder, outptr_QVideoWidget, outptr_QWidget, outptr_QObject, outptr_QPaintDevice, outptr_QMediaBindableInterface)
+	ret := newQCameraViewfinder(C.QCameraViewfinder_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -113,7 +97,7 @@ func QCameraViewfinder_TrUtf8(s string) string {
 }
 
 func (this *QCameraViewfinder) MediaObject() *QMediaObject {
-	return newQMediaObject(C.QCameraViewfinder_MediaObject(this.h), nil)
+	return newQMediaObject(C.QCameraViewfinder_MediaObject(this.h))
 }
 
 func QCameraViewfinder_Tr2(s string, c string) string {
@@ -162,7 +146,7 @@ func QCameraViewfinder_TrUtf83(s string, c string, n int) string {
 
 func (this *QCameraViewfinder) callVirtualBase_MediaObject() *QMediaObject {
 
-	return newQMediaObject(C.QCameraViewfinder_virtualbase_MediaObject(unsafe.Pointer(this.h)), nil)
+	return newQMediaObject(C.QCameraViewfinder_virtualbase_MediaObject(unsafe.Pointer(this.h)))
 
 }
 func (this *QCameraViewfinder) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
@@ -205,7 +189,7 @@ func miqt_exec_callback_QCameraViewfinder_SetMediaObject(self *C.QCameraViewfind
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMediaObject(object, nil)
+	slotval1 := newQMediaObject(object)
 
 	virtualReturn := gofunc((&QCameraViewfinder{h: self}).callVirtualBase_SetMediaObject, slotval1)
 
@@ -288,7 +272,7 @@ func miqt_exec_callback_QCameraViewfinder_ShowEvent(self *C.QCameraViewfinder, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQShowEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQShowEvent(unsafe.Pointer(event))
 
 	gofunc((&QCameraViewfinder{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -314,7 +298,7 @@ func miqt_exec_callback_QCameraViewfinder_HideEvent(self *C.QCameraViewfinder, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQHideEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQHideEvent(unsafe.Pointer(event))
 
 	gofunc((&QCameraViewfinder{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -340,7 +324,7 @@ func miqt_exec_callback_QCameraViewfinder_ResizeEvent(self *C.QCameraViewfinder,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQResizeEvent(unsafe.Pointer(event))
 
 	gofunc((&QCameraViewfinder{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -366,7 +350,7 @@ func miqt_exec_callback_QCameraViewfinder_MoveEvent(self *C.QCameraViewfinder, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMoveEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQMoveEvent(unsafe.Pointer(event))
 
 	gofunc((&QCameraViewfinder{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -392,7 +376,7 @@ func miqt_exec_callback_QCameraViewfinder_PaintEvent(self *C.QCameraViewfinder, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPaintEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQPaintEvent(unsafe.Pointer(event))
 
 	gofunc((&QCameraViewfinder{h: self}).callVirtualBase_PaintEvent, slotval1)
 

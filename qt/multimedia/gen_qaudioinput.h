@@ -38,12 +38,13 @@ typedef struct QObject QObject;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QAudioInput_new(QAudioInput** outptr_QAudioInput, QObject** outptr_QObject);
-void QAudioInput_new2(QAudioDeviceInfo* audioDeviceInfo, QAudioInput** outptr_QAudioInput, QObject** outptr_QObject);
-void QAudioInput_new3(QAudioFormat* format, QAudioInput** outptr_QAudioInput, QObject** outptr_QObject);
-void QAudioInput_new4(QAudioFormat* format, QObject* parent, QAudioInput** outptr_QAudioInput, QObject** outptr_QObject);
-void QAudioInput_new5(QAudioDeviceInfo* audioDeviceInfo, QAudioFormat* format, QAudioInput** outptr_QAudioInput, QObject** outptr_QObject);
-void QAudioInput_new6(QAudioDeviceInfo* audioDeviceInfo, QAudioFormat* format, QObject* parent, QAudioInput** outptr_QAudioInput, QObject** outptr_QObject);
+QAudioInput* QAudioInput_new();
+QAudioInput* QAudioInput_new2(QAudioDeviceInfo* audioDeviceInfo);
+QAudioInput* QAudioInput_new3(QAudioFormat* format);
+QAudioInput* QAudioInput_new4(QAudioFormat* format, QObject* parent);
+QAudioInput* QAudioInput_new5(QAudioDeviceInfo* audioDeviceInfo, QAudioFormat* format);
+QAudioInput* QAudioInput_new6(QAudioDeviceInfo* audioDeviceInfo, QAudioFormat* format, QObject* parent);
+void QAudioInput_virtbase(QAudioInput* src, QObject** outptr_QObject);
 QMetaObject* QAudioInput_MetaObject(const QAudioInput* self);
 void* QAudioInput_Metacast(QAudioInput* self, const char* param1);
 struct miqt_string QAudioInput_Tr(const char* s);

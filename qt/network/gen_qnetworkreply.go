@@ -75,22 +75,20 @@ func (this *QNetworkReply) UnsafePointer() unsafe.Pointer {
 }
 
 // newQNetworkReply constructs the type using only CGO pointers.
-func newQNetworkReply(h *C.QNetworkReply, h_QIODevice *C.QIODevice, h_QObject *C.QObject) *QNetworkReply {
+func newQNetworkReply(h *C.QNetworkReply) *QNetworkReply {
 	if h == nil {
 		return nil
 	}
+	var outptr_QIODevice *C.QIODevice = nil
+	C.QNetworkReply_virtbase(h, &outptr_QIODevice)
+
 	return &QNetworkReply{h: h,
-		QIODevice: qt.UnsafeNewQIODevice(unsafe.Pointer(h_QIODevice), unsafe.Pointer(h_QObject))}
+		QIODevice: qt.UnsafeNewQIODevice(unsafe.Pointer(outptr_QIODevice))}
 }
 
 // UnsafeNewQNetworkReply constructs the type using only unsafe pointers.
-func UnsafeNewQNetworkReply(h unsafe.Pointer, h_QIODevice unsafe.Pointer, h_QObject unsafe.Pointer) *QNetworkReply {
-	if h == nil {
-		return nil
-	}
-
-	return &QNetworkReply{h: (*C.QNetworkReply)(h),
-		QIODevice: qt.UnsafeNewQIODevice(h_QIODevice, h_QObject)}
+func UnsafeNewQNetworkReply(h unsafe.Pointer) *QNetworkReply {
+	return newQNetworkReply((*C.QNetworkReply)(h))
 }
 
 func (this *QNetworkReply) MetaObject() *qt.QMetaObject {
@@ -138,7 +136,7 @@ func (this *QNetworkReply) SetReadBufferSize(size int64) {
 }
 
 func (this *QNetworkReply) Manager() *QNetworkAccessManager {
-	return newQNetworkAccessManager(C.QNetworkReply_Manager(this.h), nil)
+	return newQNetworkAccessManager(C.QNetworkReply_Manager(this.h))
 }
 
 func (this *QNetworkReply) Operation() QNetworkAccessManager__Operation {

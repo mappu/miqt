@@ -44,24 +44,19 @@ func newQStaticText(h *C.QStaticText) *QStaticText {
 	if h == nil {
 		return nil
 	}
+
 	return &QStaticText{h: h}
 }
 
 // UnsafeNewQStaticText constructs the type using only unsafe pointers.
 func UnsafeNewQStaticText(h unsafe.Pointer) *QStaticText {
-	if h == nil {
-		return nil
-	}
-
-	return &QStaticText{h: (*C.QStaticText)(h)}
+	return newQStaticText((*C.QStaticText)(h))
 }
 
 // NewQStaticText constructs a new QStaticText object.
 func NewQStaticText() *QStaticText {
-	var outptr_QStaticText *C.QStaticText = nil
 
-	C.QStaticText_new(&outptr_QStaticText)
-	ret := newQStaticText(outptr_QStaticText)
+	ret := newQStaticText(C.QStaticText_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -72,20 +67,16 @@ func NewQStaticText2(text string) *QStaticText {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QStaticText *C.QStaticText = nil
 
-	C.QStaticText_new2(text_ms, &outptr_QStaticText)
-	ret := newQStaticText(outptr_QStaticText)
+	ret := newQStaticText(C.QStaticText_new2(text_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQStaticText3 constructs a new QStaticText object.
 func NewQStaticText3(other *QStaticText) *QStaticText {
-	var outptr_QStaticText *C.QStaticText = nil
 
-	C.QStaticText_new3(other.cPointer(), &outptr_QStaticText)
-	ret := newQStaticText(outptr_QStaticText)
+	ret := newQStaticText(C.QStaticText_new3(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

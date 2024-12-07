@@ -37,50 +37,34 @@ func (this *QGraphicsWebView) UnsafePointer() unsafe.Pointer {
 }
 
 // newQGraphicsWebView constructs the type using only CGO pointers.
-func newQGraphicsWebView(h *C.QGraphicsWebView, h_QGraphicsWidget *C.QGraphicsWidget, h_QGraphicsObject *C.QGraphicsObject, h_QObject *C.QObject, h_QGraphicsItem *C.QGraphicsItem, h_QGraphicsLayoutItem *C.QGraphicsLayoutItem) *QGraphicsWebView {
+func newQGraphicsWebView(h *C.QGraphicsWebView) *QGraphicsWebView {
 	if h == nil {
 		return nil
 	}
+	var outptr_QGraphicsWidget *C.QGraphicsWidget = nil
+	C.QGraphicsWebView_virtbase(h, &outptr_QGraphicsWidget)
+
 	return &QGraphicsWebView{h: h,
-		QGraphicsWidget: qt.UnsafeNewQGraphicsWidget(unsafe.Pointer(h_QGraphicsWidget), unsafe.Pointer(h_QGraphicsObject), unsafe.Pointer(h_QObject), unsafe.Pointer(h_QGraphicsItem), unsafe.Pointer(h_QGraphicsLayoutItem))}
+		QGraphicsWidget: qt.UnsafeNewQGraphicsWidget(unsafe.Pointer(outptr_QGraphicsWidget))}
 }
 
 // UnsafeNewQGraphicsWebView constructs the type using only unsafe pointers.
-func UnsafeNewQGraphicsWebView(h unsafe.Pointer, h_QGraphicsWidget unsafe.Pointer, h_QGraphicsObject unsafe.Pointer, h_QObject unsafe.Pointer, h_QGraphicsItem unsafe.Pointer, h_QGraphicsLayoutItem unsafe.Pointer) *QGraphicsWebView {
-	if h == nil {
-		return nil
-	}
-
-	return &QGraphicsWebView{h: (*C.QGraphicsWebView)(h),
-		QGraphicsWidget: qt.UnsafeNewQGraphicsWidget(h_QGraphicsWidget, h_QGraphicsObject, h_QObject, h_QGraphicsItem, h_QGraphicsLayoutItem)}
+func UnsafeNewQGraphicsWebView(h unsafe.Pointer) *QGraphicsWebView {
+	return newQGraphicsWebView((*C.QGraphicsWebView)(h))
 }
 
 // NewQGraphicsWebView constructs a new QGraphicsWebView object.
 func NewQGraphicsWebView() *QGraphicsWebView {
-	var outptr_QGraphicsWebView *C.QGraphicsWebView = nil
-	var outptr_QGraphicsWidget *C.QGraphicsWidget = nil
-	var outptr_QGraphicsObject *C.QGraphicsObject = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QGraphicsItem *C.QGraphicsItem = nil
-	var outptr_QGraphicsLayoutItem *C.QGraphicsLayoutItem = nil
 
-	C.QGraphicsWebView_new(&outptr_QGraphicsWebView, &outptr_QGraphicsWidget, &outptr_QGraphicsObject, &outptr_QObject, &outptr_QGraphicsItem, &outptr_QGraphicsLayoutItem)
-	ret := newQGraphicsWebView(outptr_QGraphicsWebView, outptr_QGraphicsWidget, outptr_QGraphicsObject, outptr_QObject, outptr_QGraphicsItem, outptr_QGraphicsLayoutItem)
+	ret := newQGraphicsWebView(C.QGraphicsWebView_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsWebView2 constructs a new QGraphicsWebView object.
 func NewQGraphicsWebView2(parent *qt.QGraphicsItem) *QGraphicsWebView {
-	var outptr_QGraphicsWebView *C.QGraphicsWebView = nil
-	var outptr_QGraphicsWidget *C.QGraphicsWidget = nil
-	var outptr_QGraphicsObject *C.QGraphicsObject = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QGraphicsItem *C.QGraphicsItem = nil
-	var outptr_QGraphicsLayoutItem *C.QGraphicsLayoutItem = nil
 
-	C.QGraphicsWebView_new2((*C.QGraphicsItem)(parent.UnsafePointer()), &outptr_QGraphicsWebView, &outptr_QGraphicsWidget, &outptr_QGraphicsObject, &outptr_QObject, &outptr_QGraphicsItem, &outptr_QGraphicsLayoutItem)
-	ret := newQGraphicsWebView(outptr_QGraphicsWebView, outptr_QGraphicsWidget, outptr_QGraphicsObject, outptr_QObject, outptr_QGraphicsItem, outptr_QGraphicsLayoutItem)
+	ret := newQGraphicsWebView(C.QGraphicsWebView_new2((*C.QGraphicsItem)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -114,7 +98,7 @@ func QGraphicsWebView_TrUtf8(s string) string {
 }
 
 func (this *QGraphicsWebView) Page() *QWebPage {
-	return newQWebPage(C.QGraphicsWebView_Page(this.h), nil)
+	return newQWebPage(C.QGraphicsWebView_Page(this.h))
 }
 
 func (this *QGraphicsWebView) SetPage(page *QWebPage) {
@@ -188,7 +172,7 @@ func (this *QGraphicsWebView) Settings() *QWebSettings {
 }
 
 func (this *QGraphicsWebView) PageAction(action QWebPage__WebAction) *qt.QAction {
-	return qt.UnsafeNewQAction(unsafe.Pointer(C.QGraphicsWebView_PageAction(this.h, (C.int)(action))), nil)
+	return qt.UnsafeNewQAction(unsafe.Pointer(C.QGraphicsWebView_PageAction(this.h, (C.int)(action))))
 }
 
 func (this *QGraphicsWebView) TriggerPageAction(action QWebPage__WebAction) {
@@ -621,9 +605,9 @@ func miqt_exec_callback_QGraphicsWebView_Paint(self *C.QGraphicsWebView, cb C.in
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(param1))
 
-	slotval2 := qt.UnsafeNewQStyleOptionGraphicsItem(unsafe.Pointer(options), nil)
+	slotval2 := qt.UnsafeNewQStyleOptionGraphicsItem(unsafe.Pointer(options))
 
-	slotval3 := qt.UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval3 := qt.UnsafeNewQWidget(unsafe.Pointer(widget))
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_Paint, slotval1, slotval2, slotval3)
 
@@ -771,7 +755,7 @@ func miqt_exec_callback_QGraphicsWebView_MousePressEvent(self *C.QGraphicsWebVie
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(param1))
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -797,7 +781,7 @@ func miqt_exec_callback_QGraphicsWebView_MouseDoubleClickEvent(self *C.QGraphics
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(param1))
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -823,7 +807,7 @@ func miqt_exec_callback_QGraphicsWebView_MouseReleaseEvent(self *C.QGraphicsWebV
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(param1))
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -849,7 +833,7 @@ func miqt_exec_callback_QGraphicsWebView_MouseMoveEvent(self *C.QGraphicsWebView
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQGraphicsSceneMouseEvent(unsafe.Pointer(param1))
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -875,7 +859,7 @@ func miqt_exec_callback_QGraphicsWebView_HoverMoveEvent(self *C.QGraphicsWebView
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(param1))
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_HoverMoveEvent, slotval1)
 
@@ -901,7 +885,7 @@ func miqt_exec_callback_QGraphicsWebView_HoverLeaveEvent(self *C.QGraphicsWebVie
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(param1))
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_HoverLeaveEvent, slotval1)
 
@@ -927,7 +911,7 @@ func miqt_exec_callback_QGraphicsWebView_WheelEvent(self *C.QGraphicsWebView, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQGraphicsSceneWheelEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQGraphicsSceneWheelEvent(unsafe.Pointer(param1))
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -953,7 +937,7 @@ func miqt_exec_callback_QGraphicsWebView_KeyPressEvent(self *C.QGraphicsWebView,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(param1))
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -979,7 +963,7 @@ func miqt_exec_callback_QGraphicsWebView_KeyReleaseEvent(self *C.QGraphicsWebVie
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(param1))
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -1005,7 +989,7 @@ func miqt_exec_callback_QGraphicsWebView_ContextMenuEvent(self *C.QGraphicsWebVi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQGraphicsSceneContextMenuEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQGraphicsSceneContextMenuEvent(unsafe.Pointer(param1))
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -1031,7 +1015,7 @@ func miqt_exec_callback_QGraphicsWebView_DragEnterEvent(self *C.QGraphicsWebView
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(param1))
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -1057,7 +1041,7 @@ func miqt_exec_callback_QGraphicsWebView_DragLeaveEvent(self *C.QGraphicsWebView
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(param1))
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1083,7 +1067,7 @@ func miqt_exec_callback_QGraphicsWebView_DragMoveEvent(self *C.QGraphicsWebView,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(param1))
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1109,7 +1093,7 @@ func miqt_exec_callback_QGraphicsWebView_DropEvent(self *C.QGraphicsWebView, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQGraphicsSceneDragDropEvent(unsafe.Pointer(param1))
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1135,7 +1119,7 @@ func miqt_exec_callback_QGraphicsWebView_FocusInEvent(self *C.QGraphicsWebView, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(param1), nil)
+	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(param1))
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -1161,7 +1145,7 @@ func miqt_exec_callback_QGraphicsWebView_FocusOutEvent(self *C.QGraphicsWebView,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(param1), nil)
+	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(param1))
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -1187,7 +1171,7 @@ func miqt_exec_callback_QGraphicsWebView_InputMethodEvent(self *C.QGraphicsWebVi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQInputMethodEvent(unsafe.Pointer(param1), nil)
+	slotval1 := qt.UnsafeNewQInputMethodEvent(unsafe.Pointer(param1))
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -1328,9 +1312,9 @@ func miqt_exec_callback_QGraphicsWebView_PaintWindowFrame(self *C.QGraphicsWebVi
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(painter))
 
-	slotval2 := qt.UnsafeNewQStyleOptionGraphicsItem(unsafe.Pointer(option), nil)
+	slotval2 := qt.UnsafeNewQStyleOptionGraphicsItem(unsafe.Pointer(option))
 
-	slotval3 := qt.UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval3 := qt.UnsafeNewQWidget(unsafe.Pointer(widget))
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_PaintWindowFrame, slotval1, slotval2, slotval3)
 
@@ -1556,7 +1540,7 @@ func miqt_exec_callback_QGraphicsWebView_CloseEvent(self *C.QGraphicsWebView, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQCloseEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQCloseEvent(unsafe.Pointer(event))
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -1582,7 +1566,7 @@ func miqt_exec_callback_QGraphicsWebView_HideEvent(self *C.QGraphicsWebView, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQHideEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQHideEvent(unsafe.Pointer(event))
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -1608,7 +1592,7 @@ func miqt_exec_callback_QGraphicsWebView_MoveEvent(self *C.QGraphicsWebView, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQGraphicsSceneMoveEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQGraphicsSceneMoveEvent(unsafe.Pointer(event))
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -1657,7 +1641,7 @@ func miqt_exec_callback_QGraphicsWebView_ResizeEvent(self *C.QGraphicsWebView, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQGraphicsSceneResizeEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQGraphicsSceneResizeEvent(unsafe.Pointer(event))
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -1683,7 +1667,7 @@ func miqt_exec_callback_QGraphicsWebView_ShowEvent(self *C.QGraphicsWebView, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQShowEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQShowEvent(unsafe.Pointer(event))
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_ShowEvent, slotval1)
 

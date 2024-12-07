@@ -26,8 +26,8 @@ typedef struct QMetaSequence QMetaSequence;
 typedef struct QMetaType QMetaType;
 #endif
 
-void QMetaContainer_new(QMetaContainer** outptr_QMetaContainer);
-void QMetaContainer_new2(QMetaContainer* param1, QMetaContainer** outptr_QMetaContainer);
+QMetaContainer* QMetaContainer_new();
+QMetaContainer* QMetaContainer_new2(QMetaContainer* param1);
 bool QMetaContainer_HasInputIterator(const QMetaContainer* self);
 bool QMetaContainer_HasForwardIterator(const QMetaContainer* self);
 bool QMetaContainer_HasBidirectionalIterator(const QMetaContainer* self);
@@ -54,7 +54,8 @@ void QMetaContainer_AdvanceConstIterator(const QMetaContainer* self, void* itera
 ptrdiff_t QMetaContainer_DiffConstIterator(const QMetaContainer* self, const void* i, const void* j);
 void QMetaContainer_Delete(QMetaContainer* self, bool isSubclass);
 
-void QMetaSequence_new(QMetaSequence** outptr_QMetaSequence, QMetaContainer** outptr_QMetaContainer);
+QMetaSequence* QMetaSequence_new();
+void QMetaSequence_virtbase(QMetaSequence* src, QMetaContainer** outptr_QMetaContainer);
 QMetaType* QMetaSequence_ValueMetaType(const QMetaSequence* self);
 bool QMetaSequence_IsSortable(const QMetaSequence* self);
 bool QMetaSequence_CanAddValueAtBegin(const QMetaSequence* self);
@@ -87,7 +88,8 @@ bool QMetaSequence_CanGetValueAtConstIterator(const QMetaSequence* self);
 void QMetaSequence_ValueAtConstIterator(const QMetaSequence* self, const void* iterator, void* result);
 void QMetaSequence_Delete(QMetaSequence* self, bool isSubclass);
 
-void QMetaAssociation_new(QMetaAssociation** outptr_QMetaAssociation, QMetaContainer** outptr_QMetaContainer);
+QMetaAssociation* QMetaAssociation_new();
+void QMetaAssociation_virtbase(QMetaAssociation* src, QMetaContainer** outptr_QMetaContainer);
 QMetaType* QMetaAssociation_KeyMetaType(const QMetaAssociation* self);
 QMetaType* QMetaAssociation_MappedMetaType(const QMetaAssociation* self);
 bool QMetaAssociation_CanInsertKey(const QMetaAssociation* self);

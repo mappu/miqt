@@ -61,44 +61,34 @@ func (this *QLocalSocket) UnsafePointer() unsafe.Pointer {
 }
 
 // newQLocalSocket constructs the type using only CGO pointers.
-func newQLocalSocket(h *C.QLocalSocket, h_QIODevice *C.QIODevice, h_QObject *C.QObject) *QLocalSocket {
+func newQLocalSocket(h *C.QLocalSocket) *QLocalSocket {
 	if h == nil {
 		return nil
 	}
+	var outptr_QIODevice *C.QIODevice = nil
+	C.QLocalSocket_virtbase(h, &outptr_QIODevice)
+
 	return &QLocalSocket{h: h,
-		QIODevice: qt.UnsafeNewQIODevice(unsafe.Pointer(h_QIODevice), unsafe.Pointer(h_QObject))}
+		QIODevice: qt.UnsafeNewQIODevice(unsafe.Pointer(outptr_QIODevice))}
 }
 
 // UnsafeNewQLocalSocket constructs the type using only unsafe pointers.
-func UnsafeNewQLocalSocket(h unsafe.Pointer, h_QIODevice unsafe.Pointer, h_QObject unsafe.Pointer) *QLocalSocket {
-	if h == nil {
-		return nil
-	}
-
-	return &QLocalSocket{h: (*C.QLocalSocket)(h),
-		QIODevice: qt.UnsafeNewQIODevice(h_QIODevice, h_QObject)}
+func UnsafeNewQLocalSocket(h unsafe.Pointer) *QLocalSocket {
+	return newQLocalSocket((*C.QLocalSocket)(h))
 }
 
 // NewQLocalSocket constructs a new QLocalSocket object.
 func NewQLocalSocket() *QLocalSocket {
-	var outptr_QLocalSocket *C.QLocalSocket = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QLocalSocket_new(&outptr_QLocalSocket, &outptr_QIODevice, &outptr_QObject)
-	ret := newQLocalSocket(outptr_QLocalSocket, outptr_QIODevice, outptr_QObject)
+	ret := newQLocalSocket(C.QLocalSocket_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQLocalSocket2 constructs a new QLocalSocket object.
 func NewQLocalSocket2(parent *qt.QObject) *QLocalSocket {
-	var outptr_QLocalSocket *C.QLocalSocket = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QLocalSocket_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QLocalSocket, &outptr_QIODevice, &outptr_QObject)
-	ret := newQLocalSocket(outptr_QLocalSocket, outptr_QIODevice, outptr_QObject)
+	ret := newQLocalSocket(C.QLocalSocket_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }

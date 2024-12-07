@@ -22,9 +22,9 @@ typedef struct QMediaTimeInterval QMediaTimeInterval;
 typedef struct QMediaTimeRange QMediaTimeRange;
 #endif
 
-void QMediaTimeInterval_new(QMediaTimeInterval** outptr_QMediaTimeInterval);
-void QMediaTimeInterval_new2(long long start, long long end, QMediaTimeInterval** outptr_QMediaTimeInterval);
-void QMediaTimeInterval_new3(QMediaTimeInterval* param1, QMediaTimeInterval** outptr_QMediaTimeInterval);
+QMediaTimeInterval* QMediaTimeInterval_new();
+QMediaTimeInterval* QMediaTimeInterval_new2(long long start, long long end);
+QMediaTimeInterval* QMediaTimeInterval_new3(QMediaTimeInterval* param1);
 void QMediaTimeInterval_OperatorAssign(QMediaTimeInterval* self, QMediaTimeInterval* param1);
 long long QMediaTimeInterval_Start(const QMediaTimeInterval* self);
 long long QMediaTimeInterval_End(const QMediaTimeInterval* self);
@@ -34,10 +34,10 @@ QMediaTimeInterval* QMediaTimeInterval_Normalized(const QMediaTimeInterval* self
 QMediaTimeInterval* QMediaTimeInterval_Translated(const QMediaTimeInterval* self, long long offset);
 void QMediaTimeInterval_Delete(QMediaTimeInterval* self, bool isSubclass);
 
-void QMediaTimeRange_new(QMediaTimeRange** outptr_QMediaTimeRange);
-void QMediaTimeRange_new2(long long start, long long end, QMediaTimeRange** outptr_QMediaTimeRange);
-void QMediaTimeRange_new3(QMediaTimeInterval* param1, QMediaTimeRange** outptr_QMediaTimeRange);
-void QMediaTimeRange_new4(QMediaTimeRange* rangeVal, QMediaTimeRange** outptr_QMediaTimeRange);
+QMediaTimeRange* QMediaTimeRange_new();
+QMediaTimeRange* QMediaTimeRange_new2(long long start, long long end);
+QMediaTimeRange* QMediaTimeRange_new3(QMediaTimeInterval* param1);
+QMediaTimeRange* QMediaTimeRange_new4(QMediaTimeRange* rangeVal);
 void QMediaTimeRange_OperatorAssign(QMediaTimeRange* self, QMediaTimeRange* param1);
 void QMediaTimeRange_OperatorAssignWithQMediaTimeInterval(QMediaTimeRange* self, QMediaTimeInterval* param1);
 long long QMediaTimeRange_EarliestTime(const QMediaTimeRange* self);

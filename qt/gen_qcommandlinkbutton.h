@@ -44,12 +44,13 @@ typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-void QCommandLinkButton_new(QWidget* parent, QCommandLinkButton** outptr_QCommandLinkButton, QPushButton** outptr_QPushButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QCommandLinkButton_new2(QCommandLinkButton** outptr_QCommandLinkButton, QPushButton** outptr_QPushButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QCommandLinkButton_new3(struct miqt_string text, QCommandLinkButton** outptr_QCommandLinkButton, QPushButton** outptr_QPushButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QCommandLinkButton_new4(struct miqt_string text, struct miqt_string description, QCommandLinkButton** outptr_QCommandLinkButton, QPushButton** outptr_QPushButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QCommandLinkButton_new5(struct miqt_string text, QWidget* parent, QCommandLinkButton** outptr_QCommandLinkButton, QPushButton** outptr_QPushButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QCommandLinkButton_new6(struct miqt_string text, struct miqt_string description, QWidget* parent, QCommandLinkButton** outptr_QCommandLinkButton, QPushButton** outptr_QPushButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QCommandLinkButton* QCommandLinkButton_new(QWidget* parent);
+QCommandLinkButton* QCommandLinkButton_new2();
+QCommandLinkButton* QCommandLinkButton_new3(struct miqt_string text);
+QCommandLinkButton* QCommandLinkButton_new4(struct miqt_string text, struct miqt_string description);
+QCommandLinkButton* QCommandLinkButton_new5(struct miqt_string text, QWidget* parent);
+QCommandLinkButton* QCommandLinkButton_new6(struct miqt_string text, struct miqt_string description, QWidget* parent);
+void QCommandLinkButton_virtbase(QCommandLinkButton* src, QPushButton** outptr_QPushButton);
 QMetaObject* QCommandLinkButton_MetaObject(const QCommandLinkButton* self);
 void* QCommandLinkButton_Metacast(QCommandLinkButton* self, const char* param1);
 struct miqt_string QCommandLinkButton_Tr(const char* s);

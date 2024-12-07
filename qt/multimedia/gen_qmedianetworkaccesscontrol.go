@@ -37,22 +37,20 @@ func (this *QMediaNetworkAccessControl) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMediaNetworkAccessControl constructs the type using only CGO pointers.
-func newQMediaNetworkAccessControl(h *C.QMediaNetworkAccessControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QMediaNetworkAccessControl {
+func newQMediaNetworkAccessControl(h *C.QMediaNetworkAccessControl) *QMediaNetworkAccessControl {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaControl *C.QMediaControl = nil
+	C.QMediaNetworkAccessControl_virtbase(h, &outptr_QMediaControl)
+
 	return &QMediaNetworkAccessControl{h: h,
-		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
+		QMediaControl: newQMediaControl(outptr_QMediaControl)}
 }
 
 // UnsafeNewQMediaNetworkAccessControl constructs the type using only unsafe pointers.
-func UnsafeNewQMediaNetworkAccessControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QMediaNetworkAccessControl {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaNetworkAccessControl{h: (*C.QMediaNetworkAccessControl)(h),
-		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
+func UnsafeNewQMediaNetworkAccessControl(h unsafe.Pointer) *QMediaNetworkAccessControl {
+	return newQMediaNetworkAccessControl((*C.QMediaNetworkAccessControl)(h))
 }
 
 func (this *QMediaNetworkAccessControl) MetaObject() *qt.QMetaObject {

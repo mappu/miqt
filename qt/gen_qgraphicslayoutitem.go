@@ -38,44 +38,35 @@ func newQGraphicsLayoutItem(h *C.QGraphicsLayoutItem) *QGraphicsLayoutItem {
 	if h == nil {
 		return nil
 	}
+
 	return &QGraphicsLayoutItem{h: h}
 }
 
 // UnsafeNewQGraphicsLayoutItem constructs the type using only unsafe pointers.
 func UnsafeNewQGraphicsLayoutItem(h unsafe.Pointer) *QGraphicsLayoutItem {
-	if h == nil {
-		return nil
-	}
-
-	return &QGraphicsLayoutItem{h: (*C.QGraphicsLayoutItem)(h)}
+	return newQGraphicsLayoutItem((*C.QGraphicsLayoutItem)(h))
 }
 
 // NewQGraphicsLayoutItem constructs a new QGraphicsLayoutItem object.
 func NewQGraphicsLayoutItem() *QGraphicsLayoutItem {
-	var outptr_QGraphicsLayoutItem *C.QGraphicsLayoutItem = nil
 
-	C.QGraphicsLayoutItem_new(&outptr_QGraphicsLayoutItem)
-	ret := newQGraphicsLayoutItem(outptr_QGraphicsLayoutItem)
+	ret := newQGraphicsLayoutItem(C.QGraphicsLayoutItem_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsLayoutItem2 constructs a new QGraphicsLayoutItem object.
 func NewQGraphicsLayoutItem2(parent *QGraphicsLayoutItem) *QGraphicsLayoutItem {
-	var outptr_QGraphicsLayoutItem *C.QGraphicsLayoutItem = nil
 
-	C.QGraphicsLayoutItem_new2(parent.cPointer(), &outptr_QGraphicsLayoutItem)
-	ret := newQGraphicsLayoutItem(outptr_QGraphicsLayoutItem)
+	ret := newQGraphicsLayoutItem(C.QGraphicsLayoutItem_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsLayoutItem3 constructs a new QGraphicsLayoutItem object.
 func NewQGraphicsLayoutItem3(parent *QGraphicsLayoutItem, isLayout bool) *QGraphicsLayoutItem {
-	var outptr_QGraphicsLayoutItem *C.QGraphicsLayoutItem = nil
 
-	C.QGraphicsLayoutItem_new3(parent.cPointer(), (C.bool)(isLayout), &outptr_QGraphicsLayoutItem)
-	ret := newQGraphicsLayoutItem(outptr_QGraphicsLayoutItem)
+	ret := newQGraphicsLayoutItem(C.QGraphicsLayoutItem_new3(parent.cPointer(), (C.bool)(isLayout)))
 	ret.isSubclass = true
 	return ret
 }

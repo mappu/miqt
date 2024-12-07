@@ -5,39 +5,32 @@
 #include "gen_qpalette.h"
 #include "_cgo_export.h"
 
-void QPalette_new(QPalette** outptr_QPalette) {
-	QPalette* ret = new QPalette();
-	*outptr_QPalette = ret;
+QPalette* QPalette_new() {
+	return new QPalette();
 }
 
-void QPalette_new2(QColor* button, QPalette** outptr_QPalette) {
-	QPalette* ret = new QPalette(*button);
-	*outptr_QPalette = ret;
+QPalette* QPalette_new2(QColor* button) {
+	return new QPalette(*button);
 }
 
-void QPalette_new3(int button, QPalette** outptr_QPalette) {
-	QPalette* ret = new QPalette(static_cast<Qt::GlobalColor>(button));
-	*outptr_QPalette = ret;
+QPalette* QPalette_new3(int button) {
+	return new QPalette(static_cast<Qt::GlobalColor>(button));
 }
 
-void QPalette_new4(QColor* button, QColor* window, QPalette** outptr_QPalette) {
-	QPalette* ret = new QPalette(*button, *window);
-	*outptr_QPalette = ret;
+QPalette* QPalette_new4(QColor* button, QColor* window) {
+	return new QPalette(*button, *window);
 }
 
-void QPalette_new5(QBrush* windowText, QBrush* button, QBrush* light, QBrush* dark, QBrush* mid, QBrush* text, QBrush* bright_text, QBrush* base, QBrush* window, QPalette** outptr_QPalette) {
-	QPalette* ret = new QPalette(*windowText, *button, *light, *dark, *mid, *text, *bright_text, *base, *window);
-	*outptr_QPalette = ret;
+QPalette* QPalette_new5(QBrush* windowText, QBrush* button, QBrush* light, QBrush* dark, QBrush* mid, QBrush* text, QBrush* bright_text, QBrush* base, QBrush* window) {
+	return new QPalette(*windowText, *button, *light, *dark, *mid, *text, *bright_text, *base, *window);
 }
 
-void QPalette_new6(QColor* windowText, QColor* window, QColor* light, QColor* dark, QColor* mid, QColor* text, QColor* base, QPalette** outptr_QPalette) {
-	QPalette* ret = new QPalette(*windowText, *window, *light, *dark, *mid, *text, *base);
-	*outptr_QPalette = ret;
+QPalette* QPalette_new6(QColor* windowText, QColor* window, QColor* light, QColor* dark, QColor* mid, QColor* text, QColor* base) {
+	return new QPalette(*windowText, *window, *light, *dark, *mid, *text, *base);
 }
 
-void QPalette_new7(QPalette* palette, QPalette** outptr_QPalette) {
-	QPalette* ret = new QPalette(*palette);
-	*outptr_QPalette = ret;
+QPalette* QPalette_new7(QPalette* palette) {
+	return new QPalette(*palette);
 }
 
 void QPalette_OperatorAssign(QPalette* self, QPalette* palette) {

@@ -8,14 +8,12 @@
 #include "gen_qauthenticator.h"
 #include "_cgo_export.h"
 
-void QAuthenticator_new(QAuthenticator** outptr_QAuthenticator) {
-	QAuthenticator* ret = new QAuthenticator();
-	*outptr_QAuthenticator = ret;
+QAuthenticator* QAuthenticator_new() {
+	return new QAuthenticator();
 }
 
-void QAuthenticator_new2(QAuthenticator* other, QAuthenticator** outptr_QAuthenticator) {
-	QAuthenticator* ret = new QAuthenticator(*other);
-	*outptr_QAuthenticator = ret;
+QAuthenticator* QAuthenticator_new2(QAuthenticator* other) {
+	return new QAuthenticator(*other);
 }
 
 void QAuthenticator_OperatorAssign(QAuthenticator* self, QAuthenticator* other) {

@@ -37,16 +37,13 @@ func newQAbstractConcatenable(h *C.QAbstractConcatenable) *QAbstractConcatenable
 	if h == nil {
 		return nil
 	}
+
 	return &QAbstractConcatenable{h: h}
 }
 
 // UnsafeNewQAbstractConcatenable constructs the type using only unsafe pointers.
 func UnsafeNewQAbstractConcatenable(h unsafe.Pointer) *QAbstractConcatenable {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractConcatenable{h: (*C.QAbstractConcatenable)(h)}
+	return newQAbstractConcatenable((*C.QAbstractConcatenable)(h))
 }
 
 // Delete this object from C++ memory.

@@ -36,8 +36,9 @@ typedef struct QObject QObject;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QAbstractAnimation_new(QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject);
-void QAbstractAnimation_new2(QObject* parent, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject);
+QAbstractAnimation* QAbstractAnimation_new();
+QAbstractAnimation* QAbstractAnimation_new2(QObject* parent);
+void QAbstractAnimation_virtbase(QAbstractAnimation* src, QObject** outptr_QObject);
 QMetaObject* QAbstractAnimation_MetaObject(const QAbstractAnimation* self);
 void* QAbstractAnimation_Metacast(QAbstractAnimation* self, const char* param1);
 struct miqt_string QAbstractAnimation_Tr(const char* s);
@@ -97,8 +98,9 @@ void QAbstractAnimation_override_virtual_DisconnectNotify(void* self, intptr_t s
 void QAbstractAnimation_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QAbstractAnimation_Delete(QAbstractAnimation* self, bool isSubclass);
 
-void QAnimationDriver_new(QAnimationDriver** outptr_QAnimationDriver, QObject** outptr_QObject);
-void QAnimationDriver_new2(QObject* parent, QAnimationDriver** outptr_QAnimationDriver, QObject** outptr_QObject);
+QAnimationDriver* QAnimationDriver_new();
+QAnimationDriver* QAnimationDriver_new2(QObject* parent);
+void QAnimationDriver_virtbase(QAnimationDriver* src, QObject** outptr_QObject);
 QMetaObject* QAnimationDriver_MetaObject(const QAnimationDriver* self);
 void* QAnimationDriver_Metacast(QAnimationDriver* self, const char* param1);
 struct miqt_string QAnimationDriver_Tr(const char* s);

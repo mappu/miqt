@@ -28,6 +28,7 @@ typedef struct QUrl QUrl;
 typedef struct QWebEngineNotification QWebEngineNotification;
 #endif
 
+void QWebEngineNotification_virtbase(QWebEngineNotification* src, QObject** outptr_QObject);
 QMetaObject* QWebEngineNotification_MetaObject(const QWebEngineNotification* self);
 void* QWebEngineNotification_Metacast(QWebEngineNotification* self, const char* param1);
 struct miqt_string QWebEngineNotification_Tr(const char* s);

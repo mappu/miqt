@@ -35,32 +35,26 @@ func (this *QSignalTransition) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSignalTransition constructs the type using only CGO pointers.
-func newQSignalTransition(h *C.QSignalTransition, h_QAbstractTransition *C.QAbstractTransition, h_QObject *C.QObject) *QSignalTransition {
+func newQSignalTransition(h *C.QSignalTransition) *QSignalTransition {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractTransition *C.QAbstractTransition = nil
+	C.QSignalTransition_virtbase(h, &outptr_QAbstractTransition)
+
 	return &QSignalTransition{h: h,
-		QAbstractTransition: newQAbstractTransition(h_QAbstractTransition, h_QObject)}
+		QAbstractTransition: newQAbstractTransition(outptr_QAbstractTransition)}
 }
 
 // UnsafeNewQSignalTransition constructs the type using only unsafe pointers.
-func UnsafeNewQSignalTransition(h unsafe.Pointer, h_QAbstractTransition unsafe.Pointer, h_QObject unsafe.Pointer) *QSignalTransition {
-	if h == nil {
-		return nil
-	}
-
-	return &QSignalTransition{h: (*C.QSignalTransition)(h),
-		QAbstractTransition: UnsafeNewQAbstractTransition(h_QAbstractTransition, h_QObject)}
+func UnsafeNewQSignalTransition(h unsafe.Pointer) *QSignalTransition {
+	return newQSignalTransition((*C.QSignalTransition)(h))
 }
 
 // NewQSignalTransition constructs a new QSignalTransition object.
 func NewQSignalTransition() *QSignalTransition {
-	var outptr_QSignalTransition *C.QSignalTransition = nil
-	var outptr_QAbstractTransition *C.QAbstractTransition = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSignalTransition_new(&outptr_QSignalTransition, &outptr_QAbstractTransition, &outptr_QObject)
-	ret := newQSignalTransition(outptr_QSignalTransition, outptr_QAbstractTransition, outptr_QObject)
+	ret := newQSignalTransition(C.QSignalTransition_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -69,24 +63,16 @@ func NewQSignalTransition() *QSignalTransition {
 func NewQSignalTransition2(sender *QObject, signal string) *QSignalTransition {
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
-	var outptr_QSignalTransition *C.QSignalTransition = nil
-	var outptr_QAbstractTransition *C.QAbstractTransition = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSignalTransition_new2(sender.cPointer(), signal_Cstring, &outptr_QSignalTransition, &outptr_QAbstractTransition, &outptr_QObject)
-	ret := newQSignalTransition(outptr_QSignalTransition, outptr_QAbstractTransition, outptr_QObject)
+	ret := newQSignalTransition(C.QSignalTransition_new2(sender.cPointer(), signal_Cstring))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSignalTransition3 constructs a new QSignalTransition object.
 func NewQSignalTransition3(sourceState *QState) *QSignalTransition {
-	var outptr_QSignalTransition *C.QSignalTransition = nil
-	var outptr_QAbstractTransition *C.QAbstractTransition = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSignalTransition_new3(sourceState.cPointer(), &outptr_QSignalTransition, &outptr_QAbstractTransition, &outptr_QObject)
-	ret := newQSignalTransition(outptr_QSignalTransition, outptr_QAbstractTransition, outptr_QObject)
+	ret := newQSignalTransition(C.QSignalTransition_new3(sourceState.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -95,12 +81,8 @@ func NewQSignalTransition3(sourceState *QState) *QSignalTransition {
 func NewQSignalTransition4(sender *QObject, signal string, sourceState *QState) *QSignalTransition {
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
-	var outptr_QSignalTransition *C.QSignalTransition = nil
-	var outptr_QAbstractTransition *C.QAbstractTransition = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSignalTransition_new4(sender.cPointer(), signal_Cstring, sourceState.cPointer(), &outptr_QSignalTransition, &outptr_QAbstractTransition, &outptr_QObject)
-	ret := newQSignalTransition(outptr_QSignalTransition, outptr_QAbstractTransition, outptr_QObject)
+	ret := newQSignalTransition(C.QSignalTransition_new4(sender.cPointer(), signal_Cstring, sourceState.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

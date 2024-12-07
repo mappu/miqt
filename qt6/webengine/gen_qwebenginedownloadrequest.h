@@ -28,6 +28,7 @@ typedef struct QWebEngineDownloadRequest QWebEngineDownloadRequest;
 typedef struct QWebEnginePage QWebEnginePage;
 #endif
 
+void QWebEngineDownloadRequest_virtbase(QWebEngineDownloadRequest* src, QObject** outptr_QObject);
 QMetaObject* QWebEngineDownloadRequest_MetaObject(const QWebEngineDownloadRequest* self);
 void* QWebEngineDownloadRequest_Metacast(QWebEngineDownloadRequest* self, const char* param1);
 struct miqt_string QWebEngineDownloadRequest_Tr(const char* s);

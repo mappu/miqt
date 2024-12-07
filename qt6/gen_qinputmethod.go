@@ -41,22 +41,20 @@ func (this *QInputMethod) UnsafePointer() unsafe.Pointer {
 }
 
 // newQInputMethod constructs the type using only CGO pointers.
-func newQInputMethod(h *C.QInputMethod, h_QObject *C.QObject) *QInputMethod {
+func newQInputMethod(h *C.QInputMethod) *QInputMethod {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QInputMethod_virtbase(h, &outptr_QObject)
+
 	return &QInputMethod{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQInputMethod constructs the type using only unsafe pointers.
-func UnsafeNewQInputMethod(h unsafe.Pointer, h_QObject unsafe.Pointer) *QInputMethod {
-	if h == nil {
-		return nil
-	}
-
-	return &QInputMethod{h: (*C.QInputMethod)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQInputMethod(h unsafe.Pointer) *QInputMethod {
+	return newQInputMethod((*C.QInputMethod)(h))
 }
 
 func (this *QInputMethod) MetaObject() *QMetaObject {

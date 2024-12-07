@@ -10,20 +10,17 @@
 #include "gen_qstatictext.h"
 #include "_cgo_export.h"
 
-void QStaticText_new(QStaticText** outptr_QStaticText) {
-	QStaticText* ret = new QStaticText();
-	*outptr_QStaticText = ret;
+QStaticText* QStaticText_new() {
+	return new QStaticText();
 }
 
-void QStaticText_new2(struct miqt_string text, QStaticText** outptr_QStaticText) {
+QStaticText* QStaticText_new2(struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	QStaticText* ret = new QStaticText(text_QString);
-	*outptr_QStaticText = ret;
+	return new QStaticText(text_QString);
 }
 
-void QStaticText_new3(QStaticText* other, QStaticText** outptr_QStaticText) {
-	QStaticText* ret = new QStaticText(*other);
-	*outptr_QStaticText = ret;
+QStaticText* QStaticText_new3(QStaticText* other) {
+	return new QStaticText(*other);
 }
 
 void QStaticText_OperatorAssign(QStaticText* self, QStaticText* param1) {

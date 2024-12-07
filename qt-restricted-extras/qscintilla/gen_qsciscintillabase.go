@@ -1207,50 +1207,34 @@ func (this *QsciScintillaBase) UnsafePointer() unsafe.Pointer {
 }
 
 // newQsciScintillaBase constructs the type using only CGO pointers.
-func newQsciScintillaBase(h *C.QsciScintillaBase, h_QAbstractScrollArea *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QsciScintillaBase {
+func newQsciScintillaBase(h *C.QsciScintillaBase) *QsciScintillaBase {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
+	C.QsciScintillaBase_virtbase(h, &outptr_QAbstractScrollArea)
+
 	return &QsciScintillaBase{h: h,
-		QAbstractScrollArea: qt.UnsafeNewQAbstractScrollArea(unsafe.Pointer(h_QAbstractScrollArea), unsafe.Pointer(h_QFrame), unsafe.Pointer(h_QWidget), unsafe.Pointer(h_QObject), unsafe.Pointer(h_QPaintDevice))}
+		QAbstractScrollArea: qt.UnsafeNewQAbstractScrollArea(unsafe.Pointer(outptr_QAbstractScrollArea))}
 }
 
 // UnsafeNewQsciScintillaBase constructs the type using only unsafe pointers.
-func UnsafeNewQsciScintillaBase(h unsafe.Pointer, h_QAbstractScrollArea unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QsciScintillaBase {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciScintillaBase{h: (*C.QsciScintillaBase)(h),
-		QAbstractScrollArea: qt.UnsafeNewQAbstractScrollArea(h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQsciScintillaBase(h unsafe.Pointer) *QsciScintillaBase {
+	return newQsciScintillaBase((*C.QsciScintillaBase)(h))
 }
 
 // NewQsciScintillaBase constructs a new QsciScintillaBase object.
 func NewQsciScintillaBase(parent *qt.QWidget) *QsciScintillaBase {
-	var outptr_QsciScintillaBase *C.QsciScintillaBase = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QsciScintillaBase_new((*C.QWidget)(parent.UnsafePointer()), &outptr_QsciScintillaBase, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQsciScintillaBase(outptr_QsciScintillaBase, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQsciScintillaBase(C.QsciScintillaBase_new((*C.QWidget)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQsciScintillaBase2 constructs a new QsciScintillaBase object.
 func NewQsciScintillaBase2() *QsciScintillaBase {
-	var outptr_QsciScintillaBase *C.QsciScintillaBase = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QsciScintillaBase_new2(&outptr_QsciScintillaBase, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQsciScintillaBase(outptr_QsciScintillaBase, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQsciScintillaBase(C.QsciScintillaBase_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -1284,7 +1268,7 @@ func QsciScintillaBase_TrUtf8(s string) string {
 }
 
 func QsciScintillaBase_Pool() *QsciScintillaBase {
-	return newQsciScintillaBase(C.QsciScintillaBase_Pool(), nil, nil, nil, nil, nil)
+	return newQsciScintillaBase(C.QsciScintillaBase_Pool())
 }
 
 func (this *QsciScintillaBase) ReplaceHorizontalScrollBar(scrollBar *qt.QScrollBar) {
@@ -2239,7 +2223,7 @@ func miqt_exec_callback_QsciScintillaBase_CanInsertFromMimeData(self *C.QsciScin
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMimeData(unsafe.Pointer(source), nil)
+	slotval1 := qt.UnsafeNewQMimeData(unsafe.Pointer(source))
 
 	virtualReturn := gofunc((&QsciScintillaBase{h: self}).callVirtualBase_CanInsertFromMimeData, slotval1)
 
@@ -2269,7 +2253,7 @@ func miqt_exec_callback_QsciScintillaBase_FromMimeData(self *C.QsciScintillaBase
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMimeData(unsafe.Pointer(source), nil)
+	slotval1 := qt.UnsafeNewQMimeData(unsafe.Pointer(source))
 
 	slotval2 := (*bool)(unsafe.Pointer(rectangular))
 
@@ -2287,7 +2271,7 @@ func (this *QsciScintillaBase) callVirtualBase_ToMimeData(text []byte, rectangul
 	text_alias.data = (*C.char)(unsafe.Pointer(&text[0]))
 	text_alias.len = C.size_t(len(text))
 
-	return qt.UnsafeNewQMimeData(unsafe.Pointer(C.QsciScintillaBase_virtualbase_ToMimeData(unsafe.Pointer(this.h), text_alias, (C.bool)(rectangular))), nil)
+	return qt.UnsafeNewQMimeData(unsafe.Pointer(C.QsciScintillaBase_virtualbase_ToMimeData(unsafe.Pointer(this.h), text_alias, (C.bool)(rectangular))))
 
 }
 func (this *QsciScintillaBase) OnToMimeData(slot func(super func(text []byte, rectangular bool) *qt.QMimeData, text []byte, rectangular bool) *qt.QMimeData) {
@@ -2363,7 +2347,7 @@ func miqt_exec_callback_QsciScintillaBase_ContextMenuEvent(self *C.QsciScintilla
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQContextMenuEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := qt.UnsafeNewQContextMenuEvent(unsafe.Pointer(e))
 
 	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -2389,7 +2373,7 @@ func miqt_exec_callback_QsciScintillaBase_DragEnterEvent(self *C.QsciScintillaBa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQDragEnterEvent(unsafe.Pointer(e), nil, nil, nil)
+	slotval1 := qt.UnsafeNewQDragEnterEvent(unsafe.Pointer(e))
 
 	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -2415,7 +2399,7 @@ func miqt_exec_callback_QsciScintillaBase_DragLeaveEvent(self *C.QsciScintillaBa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQDragLeaveEvent(unsafe.Pointer(e), nil)
+	slotval1 := qt.UnsafeNewQDragLeaveEvent(unsafe.Pointer(e))
 
 	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -2441,7 +2425,7 @@ func miqt_exec_callback_QsciScintillaBase_DragMoveEvent(self *C.QsciScintillaBas
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQDragMoveEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := qt.UnsafeNewQDragMoveEvent(unsafe.Pointer(e))
 
 	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -2467,7 +2451,7 @@ func miqt_exec_callback_QsciScintillaBase_DropEvent(self *C.QsciScintillaBase, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQDropEvent(unsafe.Pointer(e), nil)
+	slotval1 := qt.UnsafeNewQDropEvent(unsafe.Pointer(e))
 
 	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -2493,7 +2477,7 @@ func miqt_exec_callback_QsciScintillaBase_FocusInEvent(self *C.QsciScintillaBase
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(e), nil)
+	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(e))
 
 	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -2519,7 +2503,7 @@ func miqt_exec_callback_QsciScintillaBase_FocusOutEvent(self *C.QsciScintillaBas
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(e), nil)
+	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(e))
 
 	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -2573,7 +2557,7 @@ func miqt_exec_callback_QsciScintillaBase_KeyPressEvent(self *C.QsciScintillaBas
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(e))
 
 	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -2599,7 +2583,7 @@ func miqt_exec_callback_QsciScintillaBase_InputMethodEvent(self *C.QsciScintilla
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQInputMethodEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQInputMethodEvent(unsafe.Pointer(event))
 
 	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -2655,7 +2639,7 @@ func miqt_exec_callback_QsciScintillaBase_MouseDoubleClickEvent(self *C.QsciScin
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(e))
 
 	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -2681,7 +2665,7 @@ func miqt_exec_callback_QsciScintillaBase_MouseMoveEvent(self *C.QsciScintillaBa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(e))
 
 	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -2707,7 +2691,7 @@ func miqt_exec_callback_QsciScintillaBase_MousePressEvent(self *C.QsciScintillaB
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(e))
 
 	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -2733,7 +2717,7 @@ func miqt_exec_callback_QsciScintillaBase_MouseReleaseEvent(self *C.QsciScintill
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(e))
 
 	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -2759,7 +2743,7 @@ func miqt_exec_callback_QsciScintillaBase_PaintEvent(self *C.QsciScintillaBase, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPaintEvent(unsafe.Pointer(e), nil)
+	slotval1 := qt.UnsafeNewQPaintEvent(unsafe.Pointer(e))
 
 	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -2785,7 +2769,7 @@ func miqt_exec_callback_QsciScintillaBase_ResizeEvent(self *C.QsciScintillaBase,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQResizeEvent(unsafe.Pointer(e), nil)
+	slotval1 := qt.UnsafeNewQResizeEvent(unsafe.Pointer(e))
 
 	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -2893,7 +2877,7 @@ func miqt_exec_callback_QsciScintillaBase_SetupViewport(self *C.QsciScintillaBas
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQWidget(unsafe.Pointer(viewport), nil, nil)
+	slotval1 := qt.UnsafeNewQWidget(unsafe.Pointer(viewport))
 
 	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_SetupViewport, slotval1)
 
@@ -3005,7 +2989,7 @@ func miqt_exec_callback_QsciScintillaBase_WheelEvent(self *C.QsciScintillaBase, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQWheelEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQWheelEvent(unsafe.Pointer(param1))
 
 	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_WheelEvent, slotval1)
 

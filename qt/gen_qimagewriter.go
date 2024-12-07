@@ -46,24 +46,19 @@ func newQImageWriter(h *C.QImageWriter) *QImageWriter {
 	if h == nil {
 		return nil
 	}
+
 	return &QImageWriter{h: h}
 }
 
 // UnsafeNewQImageWriter constructs the type using only unsafe pointers.
 func UnsafeNewQImageWriter(h unsafe.Pointer) *QImageWriter {
-	if h == nil {
-		return nil
-	}
-
-	return &QImageWriter{h: (*C.QImageWriter)(h)}
+	return newQImageWriter((*C.QImageWriter)(h))
 }
 
 // NewQImageWriter constructs a new QImageWriter object.
 func NewQImageWriter() *QImageWriter {
-	var outptr_QImageWriter *C.QImageWriter = nil
 
-	C.QImageWriter_new(&outptr_QImageWriter)
-	ret := newQImageWriter(outptr_QImageWriter)
+	ret := newQImageWriter(C.QImageWriter_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -73,10 +68,8 @@ func NewQImageWriter2(device *QIODevice, format []byte) *QImageWriter {
 	format_alias := C.struct_miqt_string{}
 	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
 	format_alias.len = C.size_t(len(format))
-	var outptr_QImageWriter *C.QImageWriter = nil
 
-	C.QImageWriter_new2(device.cPointer(), format_alias, &outptr_QImageWriter)
-	ret := newQImageWriter(outptr_QImageWriter)
+	ret := newQImageWriter(C.QImageWriter_new2(device.cPointer(), format_alias))
 	ret.isSubclass = true
 	return ret
 }
@@ -87,10 +80,8 @@ func NewQImageWriter3(fileName string) *QImageWriter {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QImageWriter *C.QImageWriter = nil
 
-	C.QImageWriter_new3(fileName_ms, &outptr_QImageWriter)
-	ret := newQImageWriter(outptr_QImageWriter)
+	ret := newQImageWriter(C.QImageWriter_new3(fileName_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -104,10 +95,8 @@ func NewQImageWriter4(fileName string, format []byte) *QImageWriter {
 	format_alias := C.struct_miqt_string{}
 	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
 	format_alias.len = C.size_t(len(format))
-	var outptr_QImageWriter *C.QImageWriter = nil
 
-	C.QImageWriter_new4(fileName_ms, format_alias, &outptr_QImageWriter)
-	ret := newQImageWriter(outptr_QImageWriter)
+	ret := newQImageWriter(C.QImageWriter_new4(fileName_ms, format_alias))
 	ret.isSubclass = true
 	return ret
 }
@@ -149,7 +138,7 @@ func (this *QImageWriter) SetDevice(device *QIODevice) {
 }
 
 func (this *QImageWriter) Device() *QIODevice {
-	return newQIODevice(C.QImageWriter_Device(this.h), nil)
+	return newQIODevice(C.QImageWriter_Device(this.h))
 }
 
 func (this *QImageWriter) SetFileName(fileName string) {

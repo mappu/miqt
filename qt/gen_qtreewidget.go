@@ -53,24 +53,19 @@ func newQTreeWidgetItem(h *C.QTreeWidgetItem) *QTreeWidgetItem {
 	if h == nil {
 		return nil
 	}
+
 	return &QTreeWidgetItem{h: h}
 }
 
 // UnsafeNewQTreeWidgetItem constructs the type using only unsafe pointers.
 func UnsafeNewQTreeWidgetItem(h unsafe.Pointer) *QTreeWidgetItem {
-	if h == nil {
-		return nil
-	}
-
-	return &QTreeWidgetItem{h: (*C.QTreeWidgetItem)(h)}
+	return newQTreeWidgetItem((*C.QTreeWidgetItem)(h))
 }
 
 // NewQTreeWidgetItem constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem() *QTreeWidgetItem {
-	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
 
-	C.QTreeWidgetItem_new(&outptr_QTreeWidgetItem)
-	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(C.QTreeWidgetItem_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -87,20 +82,16 @@ func NewQTreeWidgetItem2(strings []string) *QTreeWidgetItem {
 		strings_CArray[i] = strings_i_ms
 	}
 	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
-	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
 
-	C.QTreeWidgetItem_new2(strings_ma, &outptr_QTreeWidgetItem)
-	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(C.QTreeWidgetItem_new2(strings_ma))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTreeWidgetItem3 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem3(treeview *QTreeWidget) *QTreeWidgetItem {
-	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
 
-	C.QTreeWidgetItem_new3(treeview.cPointer(), &outptr_QTreeWidgetItem)
-	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(C.QTreeWidgetItem_new3(treeview.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -117,30 +108,24 @@ func NewQTreeWidgetItem4(treeview *QTreeWidget, strings []string) *QTreeWidgetIt
 		strings_CArray[i] = strings_i_ms
 	}
 	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
-	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
 
-	C.QTreeWidgetItem_new4(treeview.cPointer(), strings_ma, &outptr_QTreeWidgetItem)
-	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(C.QTreeWidgetItem_new4(treeview.cPointer(), strings_ma))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTreeWidgetItem5 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem5(treeview *QTreeWidget, after *QTreeWidgetItem) *QTreeWidgetItem {
-	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
 
-	C.QTreeWidgetItem_new5(treeview.cPointer(), after.cPointer(), &outptr_QTreeWidgetItem)
-	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(C.QTreeWidgetItem_new5(treeview.cPointer(), after.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTreeWidgetItem6 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem6(parent *QTreeWidgetItem) *QTreeWidgetItem {
-	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
 
-	C.QTreeWidgetItem_new6(parent.cPointer(), &outptr_QTreeWidgetItem)
-	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(C.QTreeWidgetItem_new6(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -157,40 +142,32 @@ func NewQTreeWidgetItem7(parent *QTreeWidgetItem, strings []string) *QTreeWidget
 		strings_CArray[i] = strings_i_ms
 	}
 	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
-	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
 
-	C.QTreeWidgetItem_new7(parent.cPointer(), strings_ma, &outptr_QTreeWidgetItem)
-	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(C.QTreeWidgetItem_new7(parent.cPointer(), strings_ma))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTreeWidgetItem8 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem8(parent *QTreeWidgetItem, after *QTreeWidgetItem) *QTreeWidgetItem {
-	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
 
-	C.QTreeWidgetItem_new8(parent.cPointer(), after.cPointer(), &outptr_QTreeWidgetItem)
-	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(C.QTreeWidgetItem_new8(parent.cPointer(), after.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTreeWidgetItem9 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem9(other *QTreeWidgetItem) *QTreeWidgetItem {
-	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
 
-	C.QTreeWidgetItem_new9(other.cPointer(), &outptr_QTreeWidgetItem)
-	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(C.QTreeWidgetItem_new9(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTreeWidgetItem10 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem10(typeVal int) *QTreeWidgetItem {
-	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
 
-	C.QTreeWidgetItem_new10((C.int)(typeVal), &outptr_QTreeWidgetItem)
-	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(C.QTreeWidgetItem_new10((C.int)(typeVal)))
 	ret.isSubclass = true
 	return ret
 }
@@ -207,20 +184,16 @@ func NewQTreeWidgetItem11(strings []string, typeVal int) *QTreeWidgetItem {
 		strings_CArray[i] = strings_i_ms
 	}
 	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
-	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
 
-	C.QTreeWidgetItem_new11(strings_ma, (C.int)(typeVal), &outptr_QTreeWidgetItem)
-	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(C.QTreeWidgetItem_new11(strings_ma, (C.int)(typeVal)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTreeWidgetItem12 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem12(treeview *QTreeWidget, typeVal int) *QTreeWidgetItem {
-	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
 
-	C.QTreeWidgetItem_new12(treeview.cPointer(), (C.int)(typeVal), &outptr_QTreeWidgetItem)
-	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(C.QTreeWidgetItem_new12(treeview.cPointer(), (C.int)(typeVal)))
 	ret.isSubclass = true
 	return ret
 }
@@ -237,30 +210,24 @@ func NewQTreeWidgetItem13(treeview *QTreeWidget, strings []string, typeVal int) 
 		strings_CArray[i] = strings_i_ms
 	}
 	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
-	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
 
-	C.QTreeWidgetItem_new13(treeview.cPointer(), strings_ma, (C.int)(typeVal), &outptr_QTreeWidgetItem)
-	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(C.QTreeWidgetItem_new13(treeview.cPointer(), strings_ma, (C.int)(typeVal)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTreeWidgetItem14 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem14(treeview *QTreeWidget, after *QTreeWidgetItem, typeVal int) *QTreeWidgetItem {
-	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
 
-	C.QTreeWidgetItem_new14(treeview.cPointer(), after.cPointer(), (C.int)(typeVal), &outptr_QTreeWidgetItem)
-	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(C.QTreeWidgetItem_new14(treeview.cPointer(), after.cPointer(), (C.int)(typeVal)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTreeWidgetItem15 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem15(parent *QTreeWidgetItem, typeVal int) *QTreeWidgetItem {
-	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
 
-	C.QTreeWidgetItem_new15(parent.cPointer(), (C.int)(typeVal), &outptr_QTreeWidgetItem)
-	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(C.QTreeWidgetItem_new15(parent.cPointer(), (C.int)(typeVal)))
 	ret.isSubclass = true
 	return ret
 }
@@ -277,20 +244,16 @@ func NewQTreeWidgetItem16(parent *QTreeWidgetItem, strings []string, typeVal int
 		strings_CArray[i] = strings_i_ms
 	}
 	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
-	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
 
-	C.QTreeWidgetItem_new16(parent.cPointer(), strings_ma, (C.int)(typeVal), &outptr_QTreeWidgetItem)
-	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(C.QTreeWidgetItem_new16(parent.cPointer(), strings_ma, (C.int)(typeVal)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTreeWidgetItem17 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem17(parent *QTreeWidgetItem, after *QTreeWidgetItem, typeVal int) *QTreeWidgetItem {
-	var outptr_QTreeWidgetItem *C.QTreeWidgetItem = nil
 
-	C.QTreeWidgetItem_new17(parent.cPointer(), after.cPointer(), (C.int)(typeVal), &outptr_QTreeWidgetItem)
-	ret := newQTreeWidgetItem(outptr_QTreeWidgetItem)
+	ret := newQTreeWidgetItem(C.QTreeWidgetItem_new17(parent.cPointer(), after.cPointer(), (C.int)(typeVal)))
 	ret.isSubclass = true
 	return ret
 }
@@ -300,7 +263,7 @@ func (this *QTreeWidgetItem) Clone() *QTreeWidgetItem {
 }
 
 func (this *QTreeWidgetItem) TreeWidget() *QTreeWidget {
-	return newQTreeWidget(C.QTreeWidgetItem_TreeWidget(this.h), nil, nil, nil, nil, nil, nil, nil)
+	return newQTreeWidget(C.QTreeWidgetItem_TreeWidget(this.h))
 }
 
 func (this *QTreeWidgetItem) SetSelected(selectVal bool) {
@@ -807,54 +770,34 @@ func (this *QTreeWidget) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTreeWidget constructs the type using only CGO pointers.
-func newQTreeWidget(h *C.QTreeWidget, h_QTreeView *C.QTreeView, h_QAbstractItemView *C.QAbstractItemView, h_QAbstractScrollArea *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QTreeWidget {
+func newQTreeWidget(h *C.QTreeWidget) *QTreeWidget {
 	if h == nil {
 		return nil
 	}
+	var outptr_QTreeView *C.QTreeView = nil
+	C.QTreeWidget_virtbase(h, &outptr_QTreeView)
+
 	return &QTreeWidget{h: h,
-		QTreeView: newQTreeView(h_QTreeView, h_QAbstractItemView, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+		QTreeView: newQTreeView(outptr_QTreeView)}
 }
 
 // UnsafeNewQTreeWidget constructs the type using only unsafe pointers.
-func UnsafeNewQTreeWidget(h unsafe.Pointer, h_QTreeView unsafe.Pointer, h_QAbstractItemView unsafe.Pointer, h_QAbstractScrollArea unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QTreeWidget {
-	if h == nil {
-		return nil
-	}
-
-	return &QTreeWidget{h: (*C.QTreeWidget)(h),
-		QTreeView: UnsafeNewQTreeView(h_QTreeView, h_QAbstractItemView, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQTreeWidget(h unsafe.Pointer) *QTreeWidget {
+	return newQTreeWidget((*C.QTreeWidget)(h))
 }
 
 // NewQTreeWidget constructs a new QTreeWidget object.
 func NewQTreeWidget(parent *QWidget) *QTreeWidget {
-	var outptr_QTreeWidget *C.QTreeWidget = nil
-	var outptr_QTreeView *C.QTreeView = nil
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QTreeWidget_new(parent.cPointer(), &outptr_QTreeWidget, &outptr_QTreeView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQTreeWidget(outptr_QTreeWidget, outptr_QTreeView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQTreeWidget(C.QTreeWidget_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTreeWidget2 constructs a new QTreeWidget object.
 func NewQTreeWidget2() *QTreeWidget {
-	var outptr_QTreeWidget *C.QTreeWidget = nil
-	var outptr_QTreeView *C.QTreeView = nil
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QTreeWidget_new2(&outptr_QTreeWidget, &outptr_QTreeView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQTreeWidget(outptr_QTreeWidget, outptr_QTreeView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQTreeWidget(C.QTreeWidget_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -1032,7 +975,7 @@ func (this *QTreeWidget) IsPersistentEditorOpen(item *QTreeWidgetItem) bool {
 }
 
 func (this *QTreeWidget) ItemWidget(item *QTreeWidgetItem, column int) *QWidget {
-	return newQWidget(C.QTreeWidget_ItemWidget(this.h, item.cPointer(), (C.int)(column)), nil, nil)
+	return newQWidget(C.QTreeWidget_ItemWidget(this.h, item.cPointer(), (C.int)(column)))
 }
 
 func (this *QTreeWidget) SetItemWidget(item *QTreeWidgetItem, column int, widget *QWidget) {
@@ -1436,7 +1379,7 @@ func miqt_exec_callback_QTreeWidget_SetSelectionModel(self *C.QTreeWidget, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQItemSelectionModel(selectionModel, nil)
+	slotval1 := newQItemSelectionModel(selectionModel)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_SetSelectionModel, slotval1)
 
@@ -1522,7 +1465,7 @@ func (this *QTreeWidget) callVirtualBase_MimeData(items []*QTreeWidgetItem) *QMi
 	}
 	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 
-	return newQMimeData(C.QTreeWidget_virtualbase_MimeData(unsafe.Pointer(this.h), items_ma), nil)
+	return newQMimeData(C.QTreeWidget_virtualbase_MimeData(unsafe.Pointer(this.h), items_ma))
 
 }
 func (this *QTreeWidget) OnMimeData(slot func(super func(items []*QTreeWidgetItem) *QMimeData, items []*QTreeWidgetItem) *QMimeData) {
@@ -1578,7 +1521,7 @@ func miqt_exec_callback_QTreeWidget_DropMimeData(self *C.QTreeWidget, cb C.intpt
 
 	slotval2 := (int)(index)
 
-	slotval3 := newQMimeData(data, nil)
+	slotval3 := newQMimeData(data)
 
 	slotval4 := (DropAction)(action)
 
@@ -1633,7 +1576,7 @@ func miqt_exec_callback_QTreeWidget_DropEvent(self *C.QTreeWidget, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDropEvent(event, nil)
+	slotval1 := newQDropEvent(event)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -2210,7 +2153,7 @@ func miqt_exec_callback_QTreeWidget_TimerEvent(self *C.QTreeWidget, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -2236,7 +2179,7 @@ func miqt_exec_callback_QTreeWidget_PaintEvent(self *C.QTreeWidget, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(event, nil)
+	slotval1 := newQPaintEvent(event)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -2264,7 +2207,7 @@ func miqt_exec_callback_QTreeWidget_DrawRow(self *C.QTreeWidget, cb C.intptr_t, 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := newQPainter(painter)
 
-	slotval2 := newQStyleOptionViewItem(options, nil)
+	slotval2 := newQStyleOptionViewItem(options)
 
 	slotval3 := newQModelIndex(index)
 
@@ -2322,7 +2265,7 @@ func miqt_exec_callback_QTreeWidget_MousePressEvent(self *C.QTreeWidget, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -2348,7 +2291,7 @@ func miqt_exec_callback_QTreeWidget_MouseReleaseEvent(self *C.QTreeWidget, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -2374,7 +2317,7 @@ func miqt_exec_callback_QTreeWidget_MouseDoubleClickEvent(self *C.QTreeWidget, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -2400,7 +2343,7 @@ func miqt_exec_callback_QTreeWidget_MouseMoveEvent(self *C.QTreeWidget, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -2426,7 +2369,7 @@ func miqt_exec_callback_QTreeWidget_KeyPressEvent(self *C.QTreeWidget, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(event, nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -2452,7 +2395,7 @@ func miqt_exec_callback_QTreeWidget_DragMoveEvent(self *C.QTreeWidget, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragMoveEvent(event, nil, nil)
+	slotval1 := newQDragMoveEvent(event)
 
 	gofunc((&QTreeWidget{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 

@@ -65,42 +65,34 @@ func (this *QNetworkSession) UnsafePointer() unsafe.Pointer {
 }
 
 // newQNetworkSession constructs the type using only CGO pointers.
-func newQNetworkSession(h *C.QNetworkSession, h_QObject *C.QObject) *QNetworkSession {
+func newQNetworkSession(h *C.QNetworkSession) *QNetworkSession {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QNetworkSession_virtbase(h, &outptr_QObject)
+
 	return &QNetworkSession{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQNetworkSession constructs the type using only unsafe pointers.
-func UnsafeNewQNetworkSession(h unsafe.Pointer, h_QObject unsafe.Pointer) *QNetworkSession {
-	if h == nil {
-		return nil
-	}
-
-	return &QNetworkSession{h: (*C.QNetworkSession)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQNetworkSession(h unsafe.Pointer) *QNetworkSession {
+	return newQNetworkSession((*C.QNetworkSession)(h))
 }
 
 // NewQNetworkSession constructs a new QNetworkSession object.
 func NewQNetworkSession(connConfig *QNetworkConfiguration) *QNetworkSession {
-	var outptr_QNetworkSession *C.QNetworkSession = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QNetworkSession_new(connConfig.cPointer(), &outptr_QNetworkSession, &outptr_QObject)
-	ret := newQNetworkSession(outptr_QNetworkSession, outptr_QObject)
+	ret := newQNetworkSession(C.QNetworkSession_new(connConfig.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQNetworkSession2 constructs a new QNetworkSession object.
 func NewQNetworkSession2(connConfig *QNetworkConfiguration, parent *qt.QObject) *QNetworkSession {
-	var outptr_QNetworkSession *C.QNetworkSession = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QNetworkSession_new2(connConfig.cPointer(), (*C.QObject)(parent.UnsafePointer()), &outptr_QNetworkSession, &outptr_QObject)
-	ret := newQNetworkSession(outptr_QNetworkSession, outptr_QObject)
+	ret := newQNetworkSession(C.QNetworkSession_new2(connConfig.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -541,7 +533,7 @@ func miqt_exec_callback_QNetworkSession_TimerEvent(self *C.QNetworkSession, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QNetworkSession{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -567,7 +559,7 @@ func miqt_exec_callback_QNetworkSession_ChildEvent(self *C.QNetworkSession, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QNetworkSession{h: self}).callVirtualBase_ChildEvent, slotval1)
 

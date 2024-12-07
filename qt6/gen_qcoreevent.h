@@ -28,7 +28,7 @@ typedef struct QObject QObject;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QEvent_new(int typeVal, QEvent** outptr_QEvent);
+QEvent* QEvent_new(int typeVal);
 int QEvent_Type(const QEvent* self);
 bool QEvent_Spontaneous(const QEvent* self);
 void QEvent_SetAccepted(QEvent* self, bool accepted);
@@ -47,7 +47,8 @@ void QEvent_override_virtual_Clone(void* self, intptr_t slot);
 QEvent* QEvent_virtualbase_Clone(const void* self);
 void QEvent_Delete(QEvent* self, bool isSubclass);
 
-void QTimerEvent_new(int timerId, QTimerEvent** outptr_QTimerEvent, QEvent** outptr_QEvent);
+QTimerEvent* QTimerEvent_new(int timerId);
+void QTimerEvent_virtbase(QTimerEvent* src, QEvent** outptr_QEvent);
 QTimerEvent* QTimerEvent_Clone(const QTimerEvent* self);
 int QTimerEvent_TimerId(const QTimerEvent* self);
 void QTimerEvent_override_virtual_Clone(void* self, intptr_t slot);
@@ -56,7 +57,8 @@ void QTimerEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QTimerEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QTimerEvent_Delete(QTimerEvent* self, bool isSubclass);
 
-void QChildEvent_new(int typeVal, QObject* child, QChildEvent** outptr_QChildEvent, QEvent** outptr_QEvent);
+QChildEvent* QChildEvent_new(int typeVal, QObject* child);
+void QChildEvent_virtbase(QChildEvent* src, QEvent** outptr_QEvent);
 QChildEvent* QChildEvent_Clone(const QChildEvent* self);
 QObject* QChildEvent_Child(const QChildEvent* self);
 bool QChildEvent_Added(const QChildEvent* self);
@@ -68,7 +70,8 @@ void QChildEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QChildEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QChildEvent_Delete(QChildEvent* self, bool isSubclass);
 
-void QDynamicPropertyChangeEvent_new(struct miqt_string name, QDynamicPropertyChangeEvent** outptr_QDynamicPropertyChangeEvent, QEvent** outptr_QEvent);
+QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new(struct miqt_string name);
+void QDynamicPropertyChangeEvent_virtbase(QDynamicPropertyChangeEvent* src, QEvent** outptr_QEvent);
 QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_Clone(const QDynamicPropertyChangeEvent* self);
 struct miqt_string QDynamicPropertyChangeEvent_PropertyName(const QDynamicPropertyChangeEvent* self);
 void QDynamicPropertyChangeEvent_override_virtual_Clone(void* self, intptr_t slot);

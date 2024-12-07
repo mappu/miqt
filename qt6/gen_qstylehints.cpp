@@ -9,6 +9,10 @@
 #include "gen_qstylehints.h"
 #include "_cgo_export.h"
 
+void QStyleHints_virtbase(QStyleHints* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
+
 QMetaObject* QStyleHints_MetaObject(const QStyleHints* self) {
 	return (QMetaObject*) self->metaObject();
 }

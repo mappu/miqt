@@ -3,9 +3,8 @@
 #include "gen_qelapsedtimer.h"
 #include "_cgo_export.h"
 
-void QElapsedTimer_new(QElapsedTimer** outptr_QElapsedTimer) {
-	QElapsedTimer* ret = new QElapsedTimer();
-	*outptr_QElapsedTimer = ret;
+QElapsedTimer* QElapsedTimer_new() {
+	return new QElapsedTimer();
 }
 
 int QElapsedTimer_ClockType() {

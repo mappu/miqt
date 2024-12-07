@@ -52,50 +52,34 @@ func (this *QTextEdit) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTextEdit constructs the type using only CGO pointers.
-func newQTextEdit(h *C.QTextEdit, h_QAbstractScrollArea *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QTextEdit {
+func newQTextEdit(h *C.QTextEdit) *QTextEdit {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
+	C.QTextEdit_virtbase(h, &outptr_QAbstractScrollArea)
+
 	return &QTextEdit{h: h,
-		QAbstractScrollArea: newQAbstractScrollArea(h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+		QAbstractScrollArea: newQAbstractScrollArea(outptr_QAbstractScrollArea)}
 }
 
 // UnsafeNewQTextEdit constructs the type using only unsafe pointers.
-func UnsafeNewQTextEdit(h unsafe.Pointer, h_QAbstractScrollArea unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QTextEdit {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextEdit{h: (*C.QTextEdit)(h),
-		QAbstractScrollArea: UnsafeNewQAbstractScrollArea(h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQTextEdit(h unsafe.Pointer) *QTextEdit {
+	return newQTextEdit((*C.QTextEdit)(h))
 }
 
 // NewQTextEdit constructs a new QTextEdit object.
 func NewQTextEdit(parent *QWidget) *QTextEdit {
-	var outptr_QTextEdit *C.QTextEdit = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QTextEdit_new(parent.cPointer(), &outptr_QTextEdit, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQTextEdit(outptr_QTextEdit, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQTextEdit(C.QTextEdit_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextEdit2 constructs a new QTextEdit object.
 func NewQTextEdit2() *QTextEdit {
-	var outptr_QTextEdit *C.QTextEdit = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QTextEdit_new2(&outptr_QTextEdit, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQTextEdit(outptr_QTextEdit, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQTextEdit(C.QTextEdit_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -106,15 +90,8 @@ func NewQTextEdit3(text string) *QTextEdit {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QTextEdit *C.QTextEdit = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QTextEdit_new3(text_ms, &outptr_QTextEdit, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQTextEdit(outptr_QTextEdit, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQTextEdit(C.QTextEdit_new3(text_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -125,15 +102,8 @@ func NewQTextEdit4(text string, parent *QWidget) *QTextEdit {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QTextEdit *C.QTextEdit = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QTextEdit_new4(text_ms, parent.cPointer(), &outptr_QTextEdit, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQTextEdit(outptr_QTextEdit, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQTextEdit(C.QTextEdit_new4(text_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -162,7 +132,7 @@ func (this *QTextEdit) SetDocument(document *QTextDocument) {
 }
 
 func (this *QTextEdit) Document() *QTextDocument {
-	return newQTextDocument(C.QTextEdit_Document(this.h), nil)
+	return newQTextDocument(C.QTextEdit_Document(this.h))
 }
 
 func (this *QTextEdit) SetPlaceholderText(placeholderText string) {
@@ -260,7 +230,7 @@ func (this *QTextEdit) SetCurrentCharFormat(format *QTextCharFormat) {
 }
 
 func (this *QTextEdit) CurrentCharFormat() *QTextCharFormat {
-	_goptr := newQTextCharFormat(C.QTextEdit_CurrentCharFormat(this.h), nil)
+	_goptr := newQTextCharFormat(C.QTextEdit_CurrentCharFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -372,11 +342,11 @@ func (this *QTextEdit) LoadResource(typeVal int, name *QUrl) *QVariant {
 }
 
 func (this *QTextEdit) CreateStandardContextMenu() *QMenu {
-	return newQMenu(C.QTextEdit_CreateStandardContextMenu(this.h), nil, nil, nil)
+	return newQMenu(C.QTextEdit_CreateStandardContextMenu(this.h))
 }
 
 func (this *QTextEdit) CreateStandardContextMenuWithPosition(position *QPoint) *QMenu {
-	return newQMenu(C.QTextEdit_CreateStandardContextMenuWithPosition(this.h, position.cPointer()), nil, nil, nil)
+	return newQMenu(C.QTextEdit_CreateStandardContextMenuWithPosition(this.h, position.cPointer()))
 }
 
 func (this *QTextEdit) CursorForPosition(pos *QPoint) *QTextCursor {
@@ -694,7 +664,7 @@ func miqt_exec_callback_QTextEdit_CurrentCharFormatChanged(cb C.intptr_t, format
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTextCharFormat(format, nil)
+	slotval1 := newQTextCharFormat(format)
 
 	gofunc(slotval1)
 }
@@ -916,7 +886,7 @@ func miqt_exec_callback_QTextEdit_TimerEvent(self *C.QTextEdit, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(e, nil)
+	slotval1 := newQTimerEvent(e)
 
 	gofunc((&QTextEdit{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -942,7 +912,7 @@ func miqt_exec_callback_QTextEdit_KeyPressEvent(self *C.QTextEdit, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(e, nil, nil)
+	slotval1 := newQKeyEvent(e)
 
 	gofunc((&QTextEdit{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -968,7 +938,7 @@ func miqt_exec_callback_QTextEdit_KeyReleaseEvent(self *C.QTextEdit, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(e, nil, nil)
+	slotval1 := newQKeyEvent(e)
 
 	gofunc((&QTextEdit{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -994,7 +964,7 @@ func miqt_exec_callback_QTextEdit_ResizeEvent(self *C.QTextEdit, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(e, nil)
+	slotval1 := newQResizeEvent(e)
 
 	gofunc((&QTextEdit{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -1020,7 +990,7 @@ func miqt_exec_callback_QTextEdit_PaintEvent(self *C.QTextEdit, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(e, nil)
+	slotval1 := newQPaintEvent(e)
 
 	gofunc((&QTextEdit{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -1046,7 +1016,7 @@ func miqt_exec_callback_QTextEdit_MousePressEvent(self *C.QTextEdit, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QTextEdit{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -1072,7 +1042,7 @@ func miqt_exec_callback_QTextEdit_MouseMoveEvent(self *C.QTextEdit, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QTextEdit{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -1098,7 +1068,7 @@ func miqt_exec_callback_QTextEdit_MouseReleaseEvent(self *C.QTextEdit, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QTextEdit{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -1124,7 +1094,7 @@ func miqt_exec_callback_QTextEdit_MouseDoubleClickEvent(self *C.QTextEdit, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QTextEdit{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -1178,7 +1148,7 @@ func miqt_exec_callback_QTextEdit_ContextMenuEvent(self *C.QTextEdit, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQContextMenuEvent(e, nil, nil)
+	slotval1 := newQContextMenuEvent(e)
 
 	gofunc((&QTextEdit{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -1204,7 +1174,7 @@ func miqt_exec_callback_QTextEdit_DragEnterEvent(self *C.QTextEdit, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragEnterEvent(e, nil, nil, nil)
+	slotval1 := newQDragEnterEvent(e)
 
 	gofunc((&QTextEdit{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -1230,7 +1200,7 @@ func miqt_exec_callback_QTextEdit_DragLeaveEvent(self *C.QTextEdit, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragLeaveEvent(e, nil)
+	slotval1 := newQDragLeaveEvent(e)
 
 	gofunc((&QTextEdit{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1256,7 +1226,7 @@ func miqt_exec_callback_QTextEdit_DragMoveEvent(self *C.QTextEdit, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragMoveEvent(e, nil, nil)
+	slotval1 := newQDragMoveEvent(e)
 
 	gofunc((&QTextEdit{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1282,7 +1252,7 @@ func miqt_exec_callback_QTextEdit_DropEvent(self *C.QTextEdit, cb C.intptr_t, e 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDropEvent(e, nil)
+	slotval1 := newQDropEvent(e)
 
 	gofunc((&QTextEdit{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1308,7 +1278,7 @@ func miqt_exec_callback_QTextEdit_FocusInEvent(self *C.QTextEdit, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(e, nil)
+	slotval1 := newQFocusEvent(e)
 
 	gofunc((&QTextEdit{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -1334,7 +1304,7 @@ func miqt_exec_callback_QTextEdit_FocusOutEvent(self *C.QTextEdit, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(e, nil)
+	slotval1 := newQFocusEvent(e)
 
 	gofunc((&QTextEdit{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -1360,7 +1330,7 @@ func miqt_exec_callback_QTextEdit_ShowEvent(self *C.QTextEdit, cb C.intptr_t, pa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQShowEvent(param1, nil)
+	slotval1 := newQShowEvent(param1)
 
 	gofunc((&QTextEdit{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1412,7 +1382,7 @@ func miqt_exec_callback_QTextEdit_WheelEvent(self *C.QTextEdit, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWheelEvent(e, nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(e)
 
 	gofunc((&QTextEdit{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -1420,7 +1390,7 @@ func miqt_exec_callback_QTextEdit_WheelEvent(self *C.QTextEdit, cb C.intptr_t, e
 
 func (this *QTextEdit) callVirtualBase_CreateMimeDataFromSelection() *QMimeData {
 
-	return newQMimeData(C.QTextEdit_virtualbase_CreateMimeDataFromSelection(unsafe.Pointer(this.h)), nil)
+	return newQMimeData(C.QTextEdit_virtualbase_CreateMimeDataFromSelection(unsafe.Pointer(this.h)))
 
 }
 func (this *QTextEdit) OnCreateMimeDataFromSelection(slot func(super func() *QMimeData) *QMimeData) {
@@ -1463,7 +1433,7 @@ func miqt_exec_callback_QTextEdit_CanInsertFromMimeData(self *C.QTextEdit, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(source, nil)
+	slotval1 := newQMimeData(source)
 
 	virtualReturn := gofunc((&QTextEdit{h: self}).callVirtualBase_CanInsertFromMimeData, slotval1)
 
@@ -1491,7 +1461,7 @@ func miqt_exec_callback_QTextEdit_InsertFromMimeData(self *C.QTextEdit, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(source, nil)
+	slotval1 := newQMimeData(source)
 
 	gofunc((&QTextEdit{h: self}).callVirtualBase_InsertFromMimeData, slotval1)
 
@@ -1517,7 +1487,7 @@ func miqt_exec_callback_QTextEdit_InputMethodEvent(self *C.QTextEdit, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQInputMethodEvent(param1, nil)
+	slotval1 := newQInputMethodEvent(param1)
 
 	gofunc((&QTextEdit{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -1651,7 +1621,7 @@ func miqt_exec_callback_QTextEdit_SetupViewport(self *C.QTextEdit, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(viewport, nil, nil)
+	slotval1 := newQWidget(viewport)
 
 	gofunc((&QTextEdit{h: self}).callVirtualBase_SetupViewport, slotval1)
 
@@ -1780,24 +1750,19 @@ func newQTextEdit__ExtraSelection(h *C.QTextEdit__ExtraSelection) *QTextEdit__Ex
 	if h == nil {
 		return nil
 	}
+
 	return &QTextEdit__ExtraSelection{h: h}
 }
 
 // UnsafeNewQTextEdit__ExtraSelection constructs the type using only unsafe pointers.
 func UnsafeNewQTextEdit__ExtraSelection(h unsafe.Pointer) *QTextEdit__ExtraSelection {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextEdit__ExtraSelection{h: (*C.QTextEdit__ExtraSelection)(h)}
+	return newQTextEdit__ExtraSelection((*C.QTextEdit__ExtraSelection)(h))
 }
 
 // NewQTextEdit__ExtraSelection constructs a new QTextEdit::ExtraSelection object.
 func NewQTextEdit__ExtraSelection(param1 *QTextEdit__ExtraSelection) *QTextEdit__ExtraSelection {
-	var outptr_QTextEdit__ExtraSelection *C.QTextEdit__ExtraSelection = nil
 
-	C.QTextEdit__ExtraSelection_new(param1.cPointer(), &outptr_QTextEdit__ExtraSelection)
-	ret := newQTextEdit__ExtraSelection(outptr_QTextEdit__ExtraSelection)
+	ret := newQTextEdit__ExtraSelection(C.QTextEdit__ExtraSelection_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

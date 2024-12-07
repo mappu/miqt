@@ -246,18 +246,17 @@ public:
 
 };
 
-void QCameraImageCapture_new(QMediaObject* mediaObject, QCameraImageCapture** outptr_QCameraImageCapture, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface) {
-	MiqtVirtualQCameraImageCapture* ret = new MiqtVirtualQCameraImageCapture(mediaObject);
-	*outptr_QCameraImageCapture = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QMediaBindableInterface = static_cast<QMediaBindableInterface*>(ret);
+QCameraImageCapture* QCameraImageCapture_new(QMediaObject* mediaObject) {
+	return new MiqtVirtualQCameraImageCapture(mediaObject);
 }
 
-void QCameraImageCapture_new2(QMediaObject* mediaObject, QObject* parent, QCameraImageCapture** outptr_QCameraImageCapture, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface) {
-	MiqtVirtualQCameraImageCapture* ret = new MiqtVirtualQCameraImageCapture(mediaObject, parent);
-	*outptr_QCameraImageCapture = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QMediaBindableInterface = static_cast<QMediaBindableInterface*>(ret);
+QCameraImageCapture* QCameraImageCapture_new2(QMediaObject* mediaObject, QObject* parent) {
+	return new MiqtVirtualQCameraImageCapture(mediaObject, parent);
+}
+
+void QCameraImageCapture_virtbase(QCameraImageCapture* src, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface) {
+	*outptr_QObject = static_cast<QObject*>(src);
+	*outptr_QMediaBindableInterface = static_cast<QMediaBindableInterface*>(src);
 }
 
 QMetaObject* QCameraImageCapture_MetaObject(const QCameraImageCapture* self) {

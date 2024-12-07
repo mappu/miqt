@@ -38,16 +38,13 @@ func newQAccessibleBridge(h *C.QAccessibleBridge) *QAccessibleBridge {
 	if h == nil {
 		return nil
 	}
+
 	return &QAccessibleBridge{h: h}
 }
 
 // UnsafeNewQAccessibleBridge constructs the type using only unsafe pointers.
 func UnsafeNewQAccessibleBridge(h unsafe.Pointer) *QAccessibleBridge {
-	if h == nil {
-		return nil
-	}
-
-	return &QAccessibleBridge{h: (*C.QAccessibleBridge)(h)}
+	return newQAccessibleBridge((*C.QAccessibleBridge)(h))
 }
 
 func (this *QAccessibleBridge) SetRootObject(rootObject *QAccessibleInterface) {
@@ -97,42 +94,34 @@ func (this *QAccessibleBridgePlugin) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAccessibleBridgePlugin constructs the type using only CGO pointers.
-func newQAccessibleBridgePlugin(h *C.QAccessibleBridgePlugin, h_QObject *C.QObject) *QAccessibleBridgePlugin {
+func newQAccessibleBridgePlugin(h *C.QAccessibleBridgePlugin) *QAccessibleBridgePlugin {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QAccessibleBridgePlugin_virtbase(h, &outptr_QObject)
+
 	return &QAccessibleBridgePlugin{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQAccessibleBridgePlugin constructs the type using only unsafe pointers.
-func UnsafeNewQAccessibleBridgePlugin(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAccessibleBridgePlugin {
-	if h == nil {
-		return nil
-	}
-
-	return &QAccessibleBridgePlugin{h: (*C.QAccessibleBridgePlugin)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQAccessibleBridgePlugin(h unsafe.Pointer) *QAccessibleBridgePlugin {
+	return newQAccessibleBridgePlugin((*C.QAccessibleBridgePlugin)(h))
 }
 
 // NewQAccessibleBridgePlugin constructs a new QAccessibleBridgePlugin object.
 func NewQAccessibleBridgePlugin() *QAccessibleBridgePlugin {
-	var outptr_QAccessibleBridgePlugin *C.QAccessibleBridgePlugin = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAccessibleBridgePlugin_new(&outptr_QAccessibleBridgePlugin, &outptr_QObject)
-	ret := newQAccessibleBridgePlugin(outptr_QAccessibleBridgePlugin, outptr_QObject)
+	ret := newQAccessibleBridgePlugin(C.QAccessibleBridgePlugin_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAccessibleBridgePlugin2 constructs a new QAccessibleBridgePlugin object.
 func NewQAccessibleBridgePlugin2(parent *QObject) *QAccessibleBridgePlugin {
-	var outptr_QAccessibleBridgePlugin *C.QAccessibleBridgePlugin = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAccessibleBridgePlugin_new2(parent.cPointer(), &outptr_QAccessibleBridgePlugin, &outptr_QObject)
-	ret := newQAccessibleBridgePlugin(outptr_QAccessibleBridgePlugin, outptr_QObject)
+	ret := newQAccessibleBridgePlugin(C.QAccessibleBridgePlugin_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -289,7 +278,7 @@ func miqt_exec_callback_QAccessibleBridgePlugin_TimerEvent(self *C.QAccessibleBr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QAccessibleBridgePlugin{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -315,7 +304,7 @@ func miqt_exec_callback_QAccessibleBridgePlugin_ChildEvent(self *C.QAccessibleBr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QAccessibleBridgePlugin{h: self}).callVirtualBase_ChildEvent, slotval1)
 

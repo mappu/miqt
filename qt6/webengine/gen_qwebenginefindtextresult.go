@@ -37,34 +37,27 @@ func newQWebEngineFindTextResult(h *C.QWebEngineFindTextResult) *QWebEngineFindT
 	if h == nil {
 		return nil
 	}
+
 	return &QWebEngineFindTextResult{h: h}
 }
 
 // UnsafeNewQWebEngineFindTextResult constructs the type using only unsafe pointers.
 func UnsafeNewQWebEngineFindTextResult(h unsafe.Pointer) *QWebEngineFindTextResult {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineFindTextResult{h: (*C.QWebEngineFindTextResult)(h)}
+	return newQWebEngineFindTextResult((*C.QWebEngineFindTextResult)(h))
 }
 
 // NewQWebEngineFindTextResult constructs a new QWebEngineFindTextResult object.
 func NewQWebEngineFindTextResult() *QWebEngineFindTextResult {
-	var outptr_QWebEngineFindTextResult *C.QWebEngineFindTextResult = nil
 
-	C.QWebEngineFindTextResult_new(&outptr_QWebEngineFindTextResult)
-	ret := newQWebEngineFindTextResult(outptr_QWebEngineFindTextResult)
+	ret := newQWebEngineFindTextResult(C.QWebEngineFindTextResult_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebEngineFindTextResult2 constructs a new QWebEngineFindTextResult object.
 func NewQWebEngineFindTextResult2(other *QWebEngineFindTextResult) *QWebEngineFindTextResult {
-	var outptr_QWebEngineFindTextResult *C.QWebEngineFindTextResult = nil
 
-	C.QWebEngineFindTextResult_new2(other.cPointer(), &outptr_QWebEngineFindTextResult)
-	ret := newQWebEngineFindTextResult(outptr_QWebEngineFindTextResult)
+	ret := newQWebEngineFindTextResult(C.QWebEngineFindTextResult_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

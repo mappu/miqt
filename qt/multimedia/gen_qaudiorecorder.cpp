@@ -67,20 +67,16 @@ public:
 
 };
 
-void QAudioRecorder_new(QAudioRecorder** outptr_QAudioRecorder, QMediaRecorder** outptr_QMediaRecorder, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface) {
-	MiqtVirtualQAudioRecorder* ret = new MiqtVirtualQAudioRecorder();
-	*outptr_QAudioRecorder = ret;
-	*outptr_QMediaRecorder = static_cast<QMediaRecorder*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QMediaBindableInterface = static_cast<QMediaBindableInterface*>(ret);
+QAudioRecorder* QAudioRecorder_new() {
+	return new MiqtVirtualQAudioRecorder();
 }
 
-void QAudioRecorder_new2(QObject* parent, QAudioRecorder** outptr_QAudioRecorder, QMediaRecorder** outptr_QMediaRecorder, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface) {
-	MiqtVirtualQAudioRecorder* ret = new MiqtVirtualQAudioRecorder(parent);
-	*outptr_QAudioRecorder = ret;
-	*outptr_QMediaRecorder = static_cast<QMediaRecorder*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QMediaBindableInterface = static_cast<QMediaBindableInterface*>(ret);
+QAudioRecorder* QAudioRecorder_new2(QObject* parent) {
+	return new MiqtVirtualQAudioRecorder(parent);
+}
+
+void QAudioRecorder_virtbase(QAudioRecorder* src, QMediaRecorder** outptr_QMediaRecorder) {
+	*outptr_QMediaRecorder = static_cast<QMediaRecorder*>(src);
 }
 
 QMetaObject* QAudioRecorder_MetaObject(const QAudioRecorder* self) {

@@ -3,14 +3,12 @@
 #include "gen_qhashfunctions.h"
 #include "_cgo_export.h"
 
-void QHashSeed_new(QHashSeed** outptr_QHashSeed) {
-	QHashSeed* ret = new QHashSeed();
-	*outptr_QHashSeed = ret;
+QHashSeed* QHashSeed_new() {
+	return new QHashSeed();
 }
 
-void QHashSeed_new2(size_t d, QHashSeed** outptr_QHashSeed) {
-	QHashSeed* ret = new QHashSeed(static_cast<size_t>(d));
-	*outptr_QHashSeed = ret;
+QHashSeed* QHashSeed_new2(size_t d) {
+	return new QHashSeed(static_cast<size_t>(d));
 }
 
 QHashSeed* QHashSeed_GlobalSeed() {

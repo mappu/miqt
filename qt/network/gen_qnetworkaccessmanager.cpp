@@ -237,16 +237,16 @@ public:
 
 };
 
-void QNetworkAccessManager_new(QNetworkAccessManager** outptr_QNetworkAccessManager, QObject** outptr_QObject) {
-	MiqtVirtualQNetworkAccessManager* ret = new MiqtVirtualQNetworkAccessManager();
-	*outptr_QNetworkAccessManager = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QNetworkAccessManager* QNetworkAccessManager_new() {
+	return new MiqtVirtualQNetworkAccessManager();
 }
 
-void QNetworkAccessManager_new2(QObject* parent, QNetworkAccessManager** outptr_QNetworkAccessManager, QObject** outptr_QObject) {
-	MiqtVirtualQNetworkAccessManager* ret = new MiqtVirtualQNetworkAccessManager(parent);
-	*outptr_QNetworkAccessManager = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QNetworkAccessManager* QNetworkAccessManager_new2(QObject* parent) {
+	return new MiqtVirtualQNetworkAccessManager(parent);
+}
+
+void QNetworkAccessManager_virtbase(QNetworkAccessManager* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QNetworkAccessManager_MetaObject(const QNetworkAccessManager* self) {

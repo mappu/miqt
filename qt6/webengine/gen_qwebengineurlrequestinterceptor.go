@@ -36,42 +36,34 @@ func (this *QWebEngineUrlRequestInterceptor) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebEngineUrlRequestInterceptor constructs the type using only CGO pointers.
-func newQWebEngineUrlRequestInterceptor(h *C.QWebEngineUrlRequestInterceptor, h_QObject *C.QObject) *QWebEngineUrlRequestInterceptor {
+func newQWebEngineUrlRequestInterceptor(h *C.QWebEngineUrlRequestInterceptor) *QWebEngineUrlRequestInterceptor {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebEngineUrlRequestInterceptor_virtbase(h, &outptr_QObject)
+
 	return &QWebEngineUrlRequestInterceptor{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebEngineUrlRequestInterceptor constructs the type using only unsafe pointers.
-func UnsafeNewQWebEngineUrlRequestInterceptor(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebEngineUrlRequestInterceptor {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineUrlRequestInterceptor{h: (*C.QWebEngineUrlRequestInterceptor)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebEngineUrlRequestInterceptor(h unsafe.Pointer) *QWebEngineUrlRequestInterceptor {
+	return newQWebEngineUrlRequestInterceptor((*C.QWebEngineUrlRequestInterceptor)(h))
 }
 
 // NewQWebEngineUrlRequestInterceptor constructs a new QWebEngineUrlRequestInterceptor object.
 func NewQWebEngineUrlRequestInterceptor() *QWebEngineUrlRequestInterceptor {
-	var outptr_QWebEngineUrlRequestInterceptor *C.QWebEngineUrlRequestInterceptor = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebEngineUrlRequestInterceptor_new(&outptr_QWebEngineUrlRequestInterceptor, &outptr_QObject)
-	ret := newQWebEngineUrlRequestInterceptor(outptr_QWebEngineUrlRequestInterceptor, outptr_QObject)
+	ret := newQWebEngineUrlRequestInterceptor(C.QWebEngineUrlRequestInterceptor_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebEngineUrlRequestInterceptor2 constructs a new QWebEngineUrlRequestInterceptor object.
 func NewQWebEngineUrlRequestInterceptor2(p *qt6.QObject) *QWebEngineUrlRequestInterceptor {
-	var outptr_QWebEngineUrlRequestInterceptor *C.QWebEngineUrlRequestInterceptor = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebEngineUrlRequestInterceptor_new2((*C.QObject)(p.UnsafePointer()), &outptr_QWebEngineUrlRequestInterceptor, &outptr_QObject)
-	ret := newQWebEngineUrlRequestInterceptor(outptr_QWebEngineUrlRequestInterceptor, outptr_QObject)
+	ret := newQWebEngineUrlRequestInterceptor(C.QWebEngineUrlRequestInterceptor_new2((*C.QObject)(p.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -219,7 +211,7 @@ func miqt_exec_callback_QWebEngineUrlRequestInterceptor_TimerEvent(self *C.QWebE
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebEngineUrlRequestInterceptor{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -245,7 +237,7 @@ func miqt_exec_callback_QWebEngineUrlRequestInterceptor_ChildEvent(self *C.QWebE
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebEngineUrlRequestInterceptor{h: self}).callVirtualBase_ChildEvent, slotval1)
 

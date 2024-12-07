@@ -371,36 +371,24 @@ public:
 
 };
 
-void QWaveDecoder_new(QIODevice* device, QWaveDecoder** outptr_QWaveDecoder, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase) {
-	MiqtVirtualQWaveDecoder* ret = new MiqtVirtualQWaveDecoder(device);
-	*outptr_QWaveDecoder = ret;
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(ret);
+QWaveDecoder* QWaveDecoder_new(QIODevice* device) {
+	return new MiqtVirtualQWaveDecoder(device);
 }
 
-void QWaveDecoder_new2(QIODevice* device, QAudioFormat* format, QWaveDecoder** outptr_QWaveDecoder, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase) {
-	MiqtVirtualQWaveDecoder* ret = new MiqtVirtualQWaveDecoder(device, *format);
-	*outptr_QWaveDecoder = ret;
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(ret);
+QWaveDecoder* QWaveDecoder_new2(QIODevice* device, QAudioFormat* format) {
+	return new MiqtVirtualQWaveDecoder(device, *format);
 }
 
-void QWaveDecoder_new3(QIODevice* device, QObject* parent, QWaveDecoder** outptr_QWaveDecoder, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase) {
-	MiqtVirtualQWaveDecoder* ret = new MiqtVirtualQWaveDecoder(device, parent);
-	*outptr_QWaveDecoder = ret;
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(ret);
+QWaveDecoder* QWaveDecoder_new3(QIODevice* device, QObject* parent) {
+	return new MiqtVirtualQWaveDecoder(device, parent);
 }
 
-void QWaveDecoder_new4(QIODevice* device, QAudioFormat* format, QObject* parent, QWaveDecoder** outptr_QWaveDecoder, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase) {
-	MiqtVirtualQWaveDecoder* ret = new MiqtVirtualQWaveDecoder(device, *format, parent);
-	*outptr_QWaveDecoder = ret;
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(ret);
+QWaveDecoder* QWaveDecoder_new4(QIODevice* device, QAudioFormat* format, QObject* parent) {
+	return new MiqtVirtualQWaveDecoder(device, *format, parent);
+}
+
+void QWaveDecoder_virtbase(QWaveDecoder* src, QIODevice** outptr_QIODevice) {
+	*outptr_QIODevice = static_cast<QIODevice*>(src);
 }
 
 QMetaObject* QWaveDecoder_MetaObject(const QWaveDecoder* self) {

@@ -76,31 +76,26 @@ func (this *QAudioRoom) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAudioRoom constructs the type using only CGO pointers.
-func newQAudioRoom(h *C.QAudioRoom, h_QObject *C.QObject) *QAudioRoom {
+func newQAudioRoom(h *C.QAudioRoom) *QAudioRoom {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QAudioRoom_virtbase(h, &outptr_QObject)
+
 	return &QAudioRoom{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQAudioRoom constructs the type using only unsafe pointers.
-func UnsafeNewQAudioRoom(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAudioRoom {
-	if h == nil {
-		return nil
-	}
-
-	return &QAudioRoom{h: (*C.QAudioRoom)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQAudioRoom(h unsafe.Pointer) *QAudioRoom {
+	return newQAudioRoom((*C.QAudioRoom)(h))
 }
 
 // NewQAudioRoom constructs a new QAudioRoom object.
 func NewQAudioRoom(engine *QAudioEngine) *QAudioRoom {
-	var outptr_QAudioRoom *C.QAudioRoom = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAudioRoom_new(engine.cPointer(), &outptr_QAudioRoom, &outptr_QObject)
-	ret := newQAudioRoom(outptr_QAudioRoom, outptr_QObject)
+	ret := newQAudioRoom(C.QAudioRoom_new(engine.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -430,7 +425,7 @@ func miqt_exec_callback_QAudioRoom_TimerEvent(self *C.QAudioRoom, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QAudioRoom{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -456,7 +451,7 @@ func miqt_exec_callback_QAudioRoom_ChildEvent(self *C.QAudioRoom, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QAudioRoom{h: self}).callVirtualBase_ChildEvent, slotval1)
 

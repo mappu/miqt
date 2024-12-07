@@ -1023,38 +1023,26 @@ public:
 
 };
 
-void QSvgWidget_new(QWidget* parent, QSvgWidget** outptr_QSvgWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQSvgWidget* ret = new MiqtVirtualQSvgWidget(parent);
-	*outptr_QSvgWidget = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QSvgWidget* QSvgWidget_new(QWidget* parent) {
+	return new MiqtVirtualQSvgWidget(parent);
 }
 
-void QSvgWidget_new2(QSvgWidget** outptr_QSvgWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQSvgWidget* ret = new MiqtVirtualQSvgWidget();
-	*outptr_QSvgWidget = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QSvgWidget* QSvgWidget_new2() {
+	return new MiqtVirtualQSvgWidget();
 }
 
-void QSvgWidget_new3(struct miqt_string file, QSvgWidget** outptr_QSvgWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QSvgWidget* QSvgWidget_new3(struct miqt_string file) {
 	QString file_QString = QString::fromUtf8(file.data, file.len);
-	MiqtVirtualQSvgWidget* ret = new MiqtVirtualQSvgWidget(file_QString);
-	*outptr_QSvgWidget = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQSvgWidget(file_QString);
 }
 
-void QSvgWidget_new4(struct miqt_string file, QWidget* parent, QSvgWidget** outptr_QSvgWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QSvgWidget* QSvgWidget_new4(struct miqt_string file, QWidget* parent) {
 	QString file_QString = QString::fromUtf8(file.data, file.len);
-	MiqtVirtualQSvgWidget* ret = new MiqtVirtualQSvgWidget(file_QString, parent);
-	*outptr_QSvgWidget = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQSvgWidget(file_QString, parent);
+}
+
+void QSvgWidget_virtbase(QSvgWidget* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QSvgWidget_MetaObject(const QSvgWidget* self) {

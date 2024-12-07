@@ -22,11 +22,11 @@ typedef struct QAnyStringView QAnyStringView;
 typedef struct QChar QChar;
 #endif
 
-void QAnyStringView_new(QAnyStringView** outptr_QAnyStringView);
-void QAnyStringView_new2(struct miqt_string str, QAnyStringView** outptr_QAnyStringView);
-void QAnyStringView_new3(struct miqt_string str, QAnyStringView** outptr_QAnyStringView);
-void QAnyStringView_new4(QChar* c, QAnyStringView** outptr_QAnyStringView);
-void QAnyStringView_new5(QAnyStringView* param1, QAnyStringView** outptr_QAnyStringView);
+QAnyStringView* QAnyStringView_new();
+QAnyStringView* QAnyStringView_new2(struct miqt_string str);
+QAnyStringView* QAnyStringView_new3(struct miqt_string str);
+QAnyStringView* QAnyStringView_new4(QChar* c);
+QAnyStringView* QAnyStringView_new5(QAnyStringView* param1);
 struct miqt_string QAnyStringView_ToString(const QAnyStringView* self);
 ptrdiff_t QAnyStringView_Size(const QAnyStringView* self);
 const void* QAnyStringView_Data(const QAnyStringView* self);

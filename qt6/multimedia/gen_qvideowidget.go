@@ -36,46 +36,34 @@ func (this *QVideoWidget) UnsafePointer() unsafe.Pointer {
 }
 
 // newQVideoWidget constructs the type using only CGO pointers.
-func newQVideoWidget(h *C.QVideoWidget, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QVideoWidget {
+func newQVideoWidget(h *C.QVideoWidget) *QVideoWidget {
 	if h == nil {
 		return nil
 	}
+	var outptr_QWidget *C.QWidget = nil
+	C.QVideoWidget_virtbase(h, &outptr_QWidget)
+
 	return &QVideoWidget{h: h,
-		QWidget: qt6.UnsafeNewQWidget(unsafe.Pointer(h_QWidget), unsafe.Pointer(h_QObject), unsafe.Pointer(h_QPaintDevice))}
+		QWidget: qt6.UnsafeNewQWidget(unsafe.Pointer(outptr_QWidget))}
 }
 
 // UnsafeNewQVideoWidget constructs the type using only unsafe pointers.
-func UnsafeNewQVideoWidget(h unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QVideoWidget {
-	if h == nil {
-		return nil
-	}
-
-	return &QVideoWidget{h: (*C.QVideoWidget)(h),
-		QWidget: qt6.UnsafeNewQWidget(h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQVideoWidget(h unsafe.Pointer) *QVideoWidget {
+	return newQVideoWidget((*C.QVideoWidget)(h))
 }
 
 // NewQVideoWidget constructs a new QVideoWidget object.
 func NewQVideoWidget(parent *qt6.QWidget) *QVideoWidget {
-	var outptr_QVideoWidget *C.QVideoWidget = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QVideoWidget_new((*C.QWidget)(parent.UnsafePointer()), &outptr_QVideoWidget, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQVideoWidget(outptr_QVideoWidget, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQVideoWidget(C.QVideoWidget_new((*C.QWidget)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVideoWidget2 constructs a new QVideoWidget object.
 func NewQVideoWidget2() *QVideoWidget {
-	var outptr_QVideoWidget *C.QVideoWidget = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QVideoWidget_new2(&outptr_QVideoWidget, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQVideoWidget(outptr_QVideoWidget, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQVideoWidget(C.QVideoWidget_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -100,7 +88,7 @@ func QVideoWidget_Tr(s string) string {
 }
 
 func (this *QVideoWidget) VideoSink() *QVideoSink {
-	return newQVideoSink(C.QVideoWidget_VideoSink(this.h), nil)
+	return newQVideoSink(C.QVideoWidget_VideoSink(this.h))
 }
 
 func (this *QVideoWidget) AspectRatioMode() qt6.AspectRatioMode {
@@ -258,7 +246,7 @@ func miqt_exec_callback_QVideoWidget_ShowEvent(self *C.QVideoWidget, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQShowEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQShowEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoWidget{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -284,7 +272,7 @@ func miqt_exec_callback_QVideoWidget_HideEvent(self *C.QVideoWidget, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQHideEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQHideEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoWidget{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -310,7 +298,7 @@ func miqt_exec_callback_QVideoWidget_ResizeEvent(self *C.QVideoWidget, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQResizeEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoWidget{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -336,7 +324,7 @@ func miqt_exec_callback_QVideoWidget_MoveEvent(self *C.QVideoWidget, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQMoveEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQMoveEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoWidget{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -518,7 +506,7 @@ func miqt_exec_callback_QVideoWidget_MousePressEvent(self *C.QVideoWidget, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := qt6.UnsafeNewQMouseEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoWidget{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -544,7 +532,7 @@ func miqt_exec_callback_QVideoWidget_MouseReleaseEvent(self *C.QVideoWidget, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := qt6.UnsafeNewQMouseEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoWidget{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -570,7 +558,7 @@ func miqt_exec_callback_QVideoWidget_MouseDoubleClickEvent(self *C.QVideoWidget,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := qt6.UnsafeNewQMouseEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoWidget{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -596,7 +584,7 @@ func miqt_exec_callback_QVideoWidget_MouseMoveEvent(self *C.QVideoWidget, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := qt6.UnsafeNewQMouseEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoWidget{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -622,7 +610,7 @@ func miqt_exec_callback_QVideoWidget_WheelEvent(self *C.QVideoWidget, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := qt6.UnsafeNewQWheelEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoWidget{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -648,7 +636,7 @@ func miqt_exec_callback_QVideoWidget_KeyPressEvent(self *C.QVideoWidget, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt6.UnsafeNewQKeyEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoWidget{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -674,7 +662,7 @@ func miqt_exec_callback_QVideoWidget_KeyReleaseEvent(self *C.QVideoWidget, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt6.UnsafeNewQKeyEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoWidget{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -700,7 +688,7 @@ func miqt_exec_callback_QVideoWidget_FocusInEvent(self *C.QVideoWidget, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQFocusEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoWidget{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -726,7 +714,7 @@ func miqt_exec_callback_QVideoWidget_FocusOutEvent(self *C.QVideoWidget, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQFocusEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoWidget{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -752,7 +740,7 @@ func miqt_exec_callback_QVideoWidget_EnterEvent(self *C.QVideoWidget, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQEnterEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := qt6.UnsafeNewQEnterEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoWidget{h: self}).callVirtualBase_EnterEvent, slotval1)
 
@@ -804,7 +792,7 @@ func miqt_exec_callback_QVideoWidget_PaintEvent(self *C.QVideoWidget, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQPaintEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQPaintEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoWidget{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -830,7 +818,7 @@ func miqt_exec_callback_QVideoWidget_CloseEvent(self *C.QVideoWidget, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQCloseEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQCloseEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoWidget{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -856,7 +844,7 @@ func miqt_exec_callback_QVideoWidget_ContextMenuEvent(self *C.QVideoWidget, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt6.UnsafeNewQContextMenuEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoWidget{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -882,7 +870,7 @@ func miqt_exec_callback_QVideoWidget_TabletEvent(self *C.QVideoWidget, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTabletEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := qt6.UnsafeNewQTabletEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoWidget{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -908,7 +896,7 @@ func miqt_exec_callback_QVideoWidget_ActionEvent(self *C.QVideoWidget, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQActionEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQActionEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoWidget{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -934,7 +922,7 @@ func miqt_exec_callback_QVideoWidget_DragEnterEvent(self *C.QVideoWidget, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQDragEnterEvent(unsafe.Pointer(event), nil, nil, nil)
+	slotval1 := qt6.UnsafeNewQDragEnterEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoWidget{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -960,7 +948,7 @@ func miqt_exec_callback_QVideoWidget_DragMoveEvent(self *C.QVideoWidget, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt6.UnsafeNewQDragMoveEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoWidget{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -986,7 +974,7 @@ func miqt_exec_callback_QVideoWidget_DragLeaveEvent(self *C.QVideoWidget, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQDragLeaveEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQDragLeaveEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoWidget{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1012,7 +1000,7 @@ func miqt_exec_callback_QVideoWidget_DropEvent(self *C.QVideoWidget, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQDropEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoWidget{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1208,7 +1196,7 @@ func miqt_exec_callback_QVideoWidget_InputMethodEvent(self *C.QVideoWidget, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQInputMethodEvent(unsafe.Pointer(param1), nil)
+	slotval1 := qt6.UnsafeNewQInputMethodEvent(unsafe.Pointer(param1))
 
 	gofunc((&QVideoWidget{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 

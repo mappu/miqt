@@ -20,8 +20,8 @@ class QTemporaryDir;
 typedef struct QTemporaryDir QTemporaryDir;
 #endif
 
-void QTemporaryDir_new(QTemporaryDir** outptr_QTemporaryDir);
-void QTemporaryDir_new2(struct miqt_string templateName, QTemporaryDir** outptr_QTemporaryDir);
+QTemporaryDir* QTemporaryDir_new();
+QTemporaryDir* QTemporaryDir_new2(struct miqt_string templateName);
 void QTemporaryDir_Swap(QTemporaryDir* self, QTemporaryDir* other);
 bool QTemporaryDir_IsValid(const QTemporaryDir* self);
 struct miqt_string QTemporaryDir_ErrorString(const QTemporaryDir* self);

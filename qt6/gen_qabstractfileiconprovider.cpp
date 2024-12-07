@@ -147,9 +147,8 @@ public:
 
 };
 
-void QAbstractFileIconProvider_new(QAbstractFileIconProvider** outptr_QAbstractFileIconProvider) {
-	MiqtVirtualQAbstractFileIconProvider* ret = new MiqtVirtualQAbstractFileIconProvider();
-	*outptr_QAbstractFileIconProvider = ret;
+QAbstractFileIconProvider* QAbstractFileIconProvider_new() {
+	return new MiqtVirtualQAbstractFileIconProvider();
 }
 
 QIcon* QAbstractFileIconProvider_Icon(const QAbstractFileIconProvider* self, int param1) {

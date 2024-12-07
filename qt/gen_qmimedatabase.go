@@ -45,24 +45,19 @@ func newQMimeDatabase(h *C.QMimeDatabase) *QMimeDatabase {
 	if h == nil {
 		return nil
 	}
+
 	return &QMimeDatabase{h: h}
 }
 
 // UnsafeNewQMimeDatabase constructs the type using only unsafe pointers.
 func UnsafeNewQMimeDatabase(h unsafe.Pointer) *QMimeDatabase {
-	if h == nil {
-		return nil
-	}
-
-	return &QMimeDatabase{h: (*C.QMimeDatabase)(h)}
+	return newQMimeDatabase((*C.QMimeDatabase)(h))
 }
 
 // NewQMimeDatabase constructs a new QMimeDatabase object.
 func NewQMimeDatabase() *QMimeDatabase {
-	var outptr_QMimeDatabase *C.QMimeDatabase = nil
 
-	C.QMimeDatabase_new(&outptr_QMimeDatabase)
-	ret := newQMimeDatabase(outptr_QMimeDatabase)
+	ret := newQMimeDatabase(C.QMimeDatabase_new())
 	ret.isSubclass = true
 	return ret
 }

@@ -9,26 +9,22 @@
 #include "gen_qregularexpression.h"
 #include "_cgo_export.h"
 
-void QRegularExpression_new(QRegularExpression** outptr_QRegularExpression) {
-	QRegularExpression* ret = new QRegularExpression();
-	*outptr_QRegularExpression = ret;
+QRegularExpression* QRegularExpression_new() {
+	return new QRegularExpression();
 }
 
-void QRegularExpression_new2(struct miqt_string pattern, QRegularExpression** outptr_QRegularExpression) {
+QRegularExpression* QRegularExpression_new2(struct miqt_string pattern) {
 	QString pattern_QString = QString::fromUtf8(pattern.data, pattern.len);
-	QRegularExpression* ret = new QRegularExpression(pattern_QString);
-	*outptr_QRegularExpression = ret;
+	return new QRegularExpression(pattern_QString);
 }
 
-void QRegularExpression_new3(QRegularExpression* re, QRegularExpression** outptr_QRegularExpression) {
-	QRegularExpression* ret = new QRegularExpression(*re);
-	*outptr_QRegularExpression = ret;
+QRegularExpression* QRegularExpression_new3(QRegularExpression* re) {
+	return new QRegularExpression(*re);
 }
 
-void QRegularExpression_new4(struct miqt_string pattern, int options, QRegularExpression** outptr_QRegularExpression) {
+QRegularExpression* QRegularExpression_new4(struct miqt_string pattern, int options) {
 	QString pattern_QString = QString::fromUtf8(pattern.data, pattern.len);
-	QRegularExpression* ret = new QRegularExpression(pattern_QString, static_cast<QRegularExpression::PatternOptions>(options));
-	*outptr_QRegularExpression = ret;
+	return new QRegularExpression(pattern_QString, static_cast<QRegularExpression::PatternOptions>(options));
 }
 
 int QRegularExpression_PatternOptions(const QRegularExpression* self) {
@@ -203,14 +199,12 @@ void QRegularExpression_Delete(QRegularExpression* self, bool isSubclass) {
 	}
 }
 
-void QRegularExpressionMatch_new(QRegularExpressionMatch** outptr_QRegularExpressionMatch) {
-	QRegularExpressionMatch* ret = new QRegularExpressionMatch();
-	*outptr_QRegularExpressionMatch = ret;
+QRegularExpressionMatch* QRegularExpressionMatch_new() {
+	return new QRegularExpressionMatch();
 }
 
-void QRegularExpressionMatch_new2(QRegularExpressionMatch* match, QRegularExpressionMatch** outptr_QRegularExpressionMatch) {
-	QRegularExpressionMatch* ret = new QRegularExpressionMatch(*match);
-	*outptr_QRegularExpressionMatch = ret;
+QRegularExpressionMatch* QRegularExpressionMatch_new2(QRegularExpressionMatch* match) {
+	return new QRegularExpressionMatch(*match);
 }
 
 void QRegularExpressionMatch_OperatorAssign(QRegularExpressionMatch* self, QRegularExpressionMatch* match) {
@@ -352,14 +346,12 @@ void QRegularExpressionMatch_Delete(QRegularExpressionMatch* self, bool isSubcla
 	}
 }
 
-void QRegularExpressionMatchIterator_new(QRegularExpressionMatchIterator** outptr_QRegularExpressionMatchIterator) {
-	QRegularExpressionMatchIterator* ret = new QRegularExpressionMatchIterator();
-	*outptr_QRegularExpressionMatchIterator = ret;
+QRegularExpressionMatchIterator* QRegularExpressionMatchIterator_new() {
+	return new QRegularExpressionMatchIterator();
 }
 
-void QRegularExpressionMatchIterator_new2(QRegularExpressionMatchIterator* iterator, QRegularExpressionMatchIterator** outptr_QRegularExpressionMatchIterator) {
-	QRegularExpressionMatchIterator* ret = new QRegularExpressionMatchIterator(*iterator);
-	*outptr_QRegularExpressionMatchIterator = ret;
+QRegularExpressionMatchIterator* QRegularExpressionMatchIterator_new2(QRegularExpressionMatchIterator* iterator) {
+	return new QRegularExpressionMatchIterator(*iterator);
 }
 
 void QRegularExpressionMatchIterator_OperatorAssign(QRegularExpressionMatchIterator* self, QRegularExpressionMatchIterator* iterator) {

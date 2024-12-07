@@ -50,42 +50,34 @@ func (this *QMovie) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMovie constructs the type using only CGO pointers.
-func newQMovie(h *C.QMovie, h_QObject *C.QObject) *QMovie {
+func newQMovie(h *C.QMovie) *QMovie {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QMovie_virtbase(h, &outptr_QObject)
+
 	return &QMovie{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQMovie constructs the type using only unsafe pointers.
-func UnsafeNewQMovie(h unsafe.Pointer, h_QObject unsafe.Pointer) *QMovie {
-	if h == nil {
-		return nil
-	}
-
-	return &QMovie{h: (*C.QMovie)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQMovie(h unsafe.Pointer) *QMovie {
+	return newQMovie((*C.QMovie)(h))
 }
 
 // NewQMovie constructs a new QMovie object.
 func NewQMovie() *QMovie {
-	var outptr_QMovie *C.QMovie = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMovie_new(&outptr_QMovie, &outptr_QObject)
-	ret := newQMovie(outptr_QMovie, outptr_QObject)
+	ret := newQMovie(C.QMovie_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMovie2 constructs a new QMovie object.
 func NewQMovie2(device *QIODevice) *QMovie {
-	var outptr_QMovie *C.QMovie = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMovie_new2(device.cPointer(), &outptr_QMovie, &outptr_QObject)
-	ret := newQMovie(outptr_QMovie, outptr_QObject)
+	ret := newQMovie(C.QMovie_new2(device.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -96,22 +88,16 @@ func NewQMovie3(fileName string) *QMovie {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QMovie *C.QMovie = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMovie_new3(fileName_ms, &outptr_QMovie, &outptr_QObject)
-	ret := newQMovie(outptr_QMovie, outptr_QObject)
+	ret := newQMovie(C.QMovie_new3(fileName_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMovie4 constructs a new QMovie object.
 func NewQMovie4(parent *QObject) *QMovie {
-	var outptr_QMovie *C.QMovie = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMovie_new4(parent.cPointer(), &outptr_QMovie, &outptr_QObject)
-	ret := newQMovie(outptr_QMovie, outptr_QObject)
+	ret := newQMovie(C.QMovie_new4(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -121,11 +107,8 @@ func NewQMovie5(device *QIODevice, format []byte) *QMovie {
 	format_alias := C.struct_miqt_string{}
 	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
 	format_alias.len = C.size_t(len(format))
-	var outptr_QMovie *C.QMovie = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMovie_new5(device.cPointer(), format_alias, &outptr_QMovie, &outptr_QObject)
-	ret := newQMovie(outptr_QMovie, outptr_QObject)
+	ret := newQMovie(C.QMovie_new5(device.cPointer(), format_alias))
 	ret.isSubclass = true
 	return ret
 }
@@ -135,11 +118,8 @@ func NewQMovie6(device *QIODevice, format []byte, parent *QObject) *QMovie {
 	format_alias := C.struct_miqt_string{}
 	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
 	format_alias.len = C.size_t(len(format))
-	var outptr_QMovie *C.QMovie = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMovie_new6(device.cPointer(), format_alias, parent.cPointer(), &outptr_QMovie, &outptr_QObject)
-	ret := newQMovie(outptr_QMovie, outptr_QObject)
+	ret := newQMovie(C.QMovie_new6(device.cPointer(), format_alias, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -153,11 +133,8 @@ func NewQMovie7(fileName string, format []byte) *QMovie {
 	format_alias := C.struct_miqt_string{}
 	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
 	format_alias.len = C.size_t(len(format))
-	var outptr_QMovie *C.QMovie = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMovie_new7(fileName_ms, format_alias, &outptr_QMovie, &outptr_QObject)
-	ret := newQMovie(outptr_QMovie, outptr_QObject)
+	ret := newQMovie(C.QMovie_new7(fileName_ms, format_alias))
 	ret.isSubclass = true
 	return ret
 }
@@ -171,11 +148,8 @@ func NewQMovie8(fileName string, format []byte, parent *QObject) *QMovie {
 	format_alias := C.struct_miqt_string{}
 	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
 	format_alias.len = C.size_t(len(format))
-	var outptr_QMovie *C.QMovie = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMovie_new8(fileName_ms, format_alias, parent.cPointer(), &outptr_QMovie, &outptr_QObject)
-	ret := newQMovie(outptr_QMovie, outptr_QObject)
+	ret := newQMovie(C.QMovie_new8(fileName_ms, format_alias, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -217,7 +191,7 @@ func (this *QMovie) SetDevice(device *QIODevice) {
 }
 
 func (this *QMovie) Device() *QIODevice {
-	return newQIODevice(C.QMovie_Device(this.h), nil, nil)
+	return newQIODevice(C.QMovie_Device(this.h))
 }
 
 func (this *QMovie) SetFileName(fileName string) {
@@ -270,13 +244,13 @@ func (this *QMovie) FrameRect() *QRect {
 }
 
 func (this *QMovie) CurrentImage() *QImage {
-	_goptr := newQImage(C.QMovie_CurrentImage(this.h), nil)
+	_goptr := newQImage(C.QMovie_CurrentImage(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMovie) CurrentPixmap() *QPixmap {
-	_goptr := newQPixmap(C.QMovie_CurrentPixmap(this.h), nil)
+	_goptr := newQPixmap(C.QMovie_CurrentPixmap(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -592,7 +566,7 @@ func miqt_exec_callback_QMovie_TimerEvent(self *C.QMovie, cb C.intptr_t, event *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QMovie{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -618,7 +592,7 @@ func miqt_exec_callback_QMovie_ChildEvent(self *C.QMovie, cb C.intptr_t, event *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QMovie{h: self}).callVirtualBase_ChildEvent, slotval1)
 

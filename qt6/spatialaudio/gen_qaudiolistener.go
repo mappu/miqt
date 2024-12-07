@@ -36,31 +36,26 @@ func (this *QAudioListener) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAudioListener constructs the type using only CGO pointers.
-func newQAudioListener(h *C.QAudioListener, h_QObject *C.QObject) *QAudioListener {
+func newQAudioListener(h *C.QAudioListener) *QAudioListener {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QAudioListener_virtbase(h, &outptr_QObject)
+
 	return &QAudioListener{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQAudioListener constructs the type using only unsafe pointers.
-func UnsafeNewQAudioListener(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAudioListener {
-	if h == nil {
-		return nil
-	}
-
-	return &QAudioListener{h: (*C.QAudioListener)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQAudioListener(h unsafe.Pointer) *QAudioListener {
+	return newQAudioListener((*C.QAudioListener)(h))
 }
 
 // NewQAudioListener constructs a new QAudioListener object.
 func NewQAudioListener(engine *QAudioEngine) *QAudioListener {
-	var outptr_QAudioListener *C.QAudioListener = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAudioListener_new(engine.cPointer(), &outptr_QAudioListener, &outptr_QObject)
-	ret := newQAudioListener(outptr_QAudioListener, outptr_QObject)
+	ret := newQAudioListener(C.QAudioListener_new(engine.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -86,7 +81,7 @@ func (this *QAudioListener) Rotation() *qt6.QQuaternion {
 }
 
 func (this *QAudioListener) Engine() *QAudioEngine {
-	return newQAudioEngine(C.QAudioListener_Engine(this.h), nil)
+	return newQAudioEngine(C.QAudioListener_Engine(this.h))
 }
 
 func (this *QAudioListener) callVirtualBase_Event(event *qt6.QEvent) bool {
@@ -167,7 +162,7 @@ func miqt_exec_callback_QAudioListener_TimerEvent(self *C.QAudioListener, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QAudioListener{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -193,7 +188,7 @@ func miqt_exec_callback_QAudioListener_ChildEvent(self *C.QAudioListener, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QAudioListener{h: self}).callVirtualBase_ChildEvent, slotval1)
 

@@ -37,24 +37,19 @@ func newQLinkedListData(h *C.QLinkedListData) *QLinkedListData {
 	if h == nil {
 		return nil
 	}
+
 	return &QLinkedListData{h: h}
 }
 
 // UnsafeNewQLinkedListData constructs the type using only unsafe pointers.
 func UnsafeNewQLinkedListData(h unsafe.Pointer) *QLinkedListData {
-	if h == nil {
-		return nil
-	}
-
-	return &QLinkedListData{h: (*C.QLinkedListData)(h)}
+	return newQLinkedListData((*C.QLinkedListData)(h))
 }
 
 // NewQLinkedListData constructs a new QLinkedListData object.
 func NewQLinkedListData() *QLinkedListData {
-	var outptr_QLinkedListData *C.QLinkedListData = nil
 
-	C.QLinkedListData_new(&outptr_QLinkedListData)
-	ret := newQLinkedListData(outptr_QLinkedListData)
+	ret := newQLinkedListData(C.QLinkedListData_new())
 	ret.isSubclass = true
 	return ret
 }

@@ -43,42 +43,34 @@ func (this *QSocketNotifier) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSocketNotifier constructs the type using only CGO pointers.
-func newQSocketNotifier(h *C.QSocketNotifier, h_QObject *C.QObject) *QSocketNotifier {
+func newQSocketNotifier(h *C.QSocketNotifier) *QSocketNotifier {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QSocketNotifier_virtbase(h, &outptr_QObject)
+
 	return &QSocketNotifier{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQSocketNotifier constructs the type using only unsafe pointers.
-func UnsafeNewQSocketNotifier(h unsafe.Pointer, h_QObject unsafe.Pointer) *QSocketNotifier {
-	if h == nil {
-		return nil
-	}
-
-	return &QSocketNotifier{h: (*C.QSocketNotifier)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQSocketNotifier(h unsafe.Pointer) *QSocketNotifier {
+	return newQSocketNotifier((*C.QSocketNotifier)(h))
 }
 
 // NewQSocketNotifier constructs a new QSocketNotifier object.
 func NewQSocketNotifier(socket uintptr, param2 QSocketNotifier__Type) *QSocketNotifier {
-	var outptr_QSocketNotifier *C.QSocketNotifier = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSocketNotifier_new((C.intptr_t)(socket), (C.int)(param2), &outptr_QSocketNotifier, &outptr_QObject)
-	ret := newQSocketNotifier(outptr_QSocketNotifier, outptr_QObject)
+	ret := newQSocketNotifier(C.QSocketNotifier_new((C.intptr_t)(socket), (C.int)(param2)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSocketNotifier2 constructs a new QSocketNotifier object.
 func NewQSocketNotifier2(socket uintptr, param2 QSocketNotifier__Type, parent *QObject) *QSocketNotifier {
-	var outptr_QSocketNotifier *C.QSocketNotifier = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSocketNotifier_new2((C.intptr_t)(socket), (C.int)(param2), parent.cPointer(), &outptr_QSocketNotifier, &outptr_QObject)
-	ret := newQSocketNotifier(outptr_QSocketNotifier, outptr_QObject)
+	ret := newQSocketNotifier(C.QSocketNotifier_new2((C.intptr_t)(socket), (C.int)(param2), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -249,7 +241,7 @@ func miqt_exec_callback_QSocketNotifier_TimerEvent(self *C.QSocketNotifier, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QSocketNotifier{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -275,7 +267,7 @@ func miqt_exec_callback_QSocketNotifier_ChildEvent(self *C.QSocketNotifier, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QSocketNotifier{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -397,34 +389,27 @@ func newQSocketDescriptor(h *C.QSocketDescriptor) *QSocketDescriptor {
 	if h == nil {
 		return nil
 	}
+
 	return &QSocketDescriptor{h: h}
 }
 
 // UnsafeNewQSocketDescriptor constructs the type using only unsafe pointers.
 func UnsafeNewQSocketDescriptor(h unsafe.Pointer) *QSocketDescriptor {
-	if h == nil {
-		return nil
-	}
-
-	return &QSocketDescriptor{h: (*C.QSocketDescriptor)(h)}
+	return newQSocketDescriptor((*C.QSocketDescriptor)(h))
 }
 
 // NewQSocketDescriptor constructs a new QSocketDescriptor object.
 func NewQSocketDescriptor() *QSocketDescriptor {
-	var outptr_QSocketDescriptor *C.QSocketDescriptor = nil
 
-	C.QSocketDescriptor_new(&outptr_QSocketDescriptor)
-	ret := newQSocketDescriptor(outptr_QSocketDescriptor)
+	ret := newQSocketDescriptor(C.QSocketDescriptor_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSocketDescriptor2 constructs a new QSocketDescriptor object.
 func NewQSocketDescriptor2(param1 *QSocketDescriptor) *QSocketDescriptor {
-	var outptr_QSocketDescriptor *C.QSocketDescriptor = nil
 
-	C.QSocketDescriptor_new2(param1.cPointer(), &outptr_QSocketDescriptor)
-	ret := newQSocketDescriptor(outptr_QSocketDescriptor)
+	ret := newQSocketDescriptor(C.QSocketDescriptor_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -435,10 +420,8 @@ func NewQSocketDescriptor3(descriptor int) *QSocketDescriptor {
 	if runtime.GOOS != "linux" {
 		panic("Unsupported OS")
 	}
-	var outptr_QSocketDescriptor *C.QSocketDescriptor = nil
 
-	C.QSocketDescriptor_new3((C.int)(descriptor), &outptr_QSocketDescriptor)
-	ret := newQSocketDescriptor(outptr_QSocketDescriptor)
+	ret := newQSocketDescriptor(C.QSocketDescriptor_new3((C.int)(descriptor)))
 	ret.isSubclass = true
 	return ret
 }

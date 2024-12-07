@@ -67,54 +67,43 @@ func newQUuid(h *C.QUuid) *QUuid {
 	if h == nil {
 		return nil
 	}
+
 	return &QUuid{h: h}
 }
 
 // UnsafeNewQUuid constructs the type using only unsafe pointers.
 func UnsafeNewQUuid(h unsafe.Pointer) *QUuid {
-	if h == nil {
-		return nil
-	}
-
-	return &QUuid{h: (*C.QUuid)(h)}
+	return newQUuid((*C.QUuid)(h))
 }
 
 // NewQUuid constructs a new QUuid object.
 func NewQUuid() *QUuid {
-	var outptr_QUuid *C.QUuid = nil
 
-	C.QUuid_new(&outptr_QUuid)
-	ret := newQUuid(outptr_QUuid)
+	ret := newQUuid(C.QUuid_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQUuid2 constructs a new QUuid object.
 func NewQUuid2(l uint, w1 uint16, w2 uint16, b1 byte, b2 byte, b3 byte, b4 byte, b5 byte, b6 byte, b7 byte, b8 byte) *QUuid {
-	var outptr_QUuid *C.QUuid = nil
 
-	C.QUuid_new2((C.uint)(l), (C.uint16_t)(w1), (C.uint16_t)(w2), (C.uchar)(b1), (C.uchar)(b2), (C.uchar)(b3), (C.uchar)(b4), (C.uchar)(b5), (C.uchar)(b6), (C.uchar)(b7), (C.uchar)(b8), &outptr_QUuid)
-	ret := newQUuid(outptr_QUuid)
+	ret := newQUuid(C.QUuid_new2((C.uint)(l), (C.uint16_t)(w1), (C.uint16_t)(w2), (C.uchar)(b1), (C.uchar)(b2), (C.uchar)(b3), (C.uchar)(b4), (C.uchar)(b5), (C.uchar)(b6), (C.uchar)(b7), (C.uchar)(b8)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQUuid3 constructs a new QUuid object.
 func NewQUuid3(stringVal QAnyStringView) *QUuid {
-	var outptr_QUuid *C.QUuid = nil
 
-	C.QUuid_new3(stringVal.cPointer(), &outptr_QUuid)
-	ret := newQUuid(outptr_QUuid)
+	ret := newQUuid(C.QUuid_new3(stringVal.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQUuid4 constructs a new QUuid object.
 func NewQUuid4(param1 *QUuid) *QUuid {
-	var outptr_QUuid *C.QUuid = nil
 
-	C.QUuid_new4(param1.cPointer(), &outptr_QUuid)
-	ret := newQUuid(outptr_QUuid)
+	ret := newQUuid(C.QUuid_new4(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

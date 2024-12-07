@@ -35,72 +35,50 @@ func (this *QKeySequenceEdit) UnsafePointer() unsafe.Pointer {
 }
 
 // newQKeySequenceEdit constructs the type using only CGO pointers.
-func newQKeySequenceEdit(h *C.QKeySequenceEdit, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QKeySequenceEdit {
+func newQKeySequenceEdit(h *C.QKeySequenceEdit) *QKeySequenceEdit {
 	if h == nil {
 		return nil
 	}
+	var outptr_QWidget *C.QWidget = nil
+	C.QKeySequenceEdit_virtbase(h, &outptr_QWidget)
+
 	return &QKeySequenceEdit{h: h,
-		QWidget: newQWidget(h_QWidget, h_QObject, h_QPaintDevice)}
+		QWidget: newQWidget(outptr_QWidget)}
 }
 
 // UnsafeNewQKeySequenceEdit constructs the type using only unsafe pointers.
-func UnsafeNewQKeySequenceEdit(h unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QKeySequenceEdit {
-	if h == nil {
-		return nil
-	}
-
-	return &QKeySequenceEdit{h: (*C.QKeySequenceEdit)(h),
-		QWidget: UnsafeNewQWidget(h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQKeySequenceEdit(h unsafe.Pointer) *QKeySequenceEdit {
+	return newQKeySequenceEdit((*C.QKeySequenceEdit)(h))
 }
 
 // NewQKeySequenceEdit constructs a new QKeySequenceEdit object.
 func NewQKeySequenceEdit(parent *QWidget) *QKeySequenceEdit {
-	var outptr_QKeySequenceEdit *C.QKeySequenceEdit = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QKeySequenceEdit_new(parent.cPointer(), &outptr_QKeySequenceEdit, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQKeySequenceEdit(outptr_QKeySequenceEdit, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQKeySequenceEdit(C.QKeySequenceEdit_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQKeySequenceEdit2 constructs a new QKeySequenceEdit object.
 func NewQKeySequenceEdit2() *QKeySequenceEdit {
-	var outptr_QKeySequenceEdit *C.QKeySequenceEdit = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QKeySequenceEdit_new2(&outptr_QKeySequenceEdit, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQKeySequenceEdit(outptr_QKeySequenceEdit, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQKeySequenceEdit(C.QKeySequenceEdit_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQKeySequenceEdit3 constructs a new QKeySequenceEdit object.
 func NewQKeySequenceEdit3(keySequence *QKeySequence) *QKeySequenceEdit {
-	var outptr_QKeySequenceEdit *C.QKeySequenceEdit = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QKeySequenceEdit_new3(keySequence.cPointer(), &outptr_QKeySequenceEdit, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQKeySequenceEdit(outptr_QKeySequenceEdit, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQKeySequenceEdit(C.QKeySequenceEdit_new3(keySequence.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQKeySequenceEdit4 constructs a new QKeySequenceEdit object.
 func NewQKeySequenceEdit4(keySequence *QKeySequence, parent *QWidget) *QKeySequenceEdit {
-	var outptr_QKeySequenceEdit *C.QKeySequenceEdit = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QKeySequenceEdit_new4(keySequence.cPointer(), parent.cPointer(), &outptr_QKeySequenceEdit, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQKeySequenceEdit(outptr_QKeySequenceEdit, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQKeySequenceEdit(C.QKeySequenceEdit_new4(keySequence.cPointer(), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -276,7 +254,7 @@ func miqt_exec_callback_QKeySequenceEdit_KeyPressEvent(self *C.QKeySequenceEdit,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(param1, nil, nil)
+	slotval1 := newQKeyEvent(param1)
 
 	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -302,7 +280,7 @@ func miqt_exec_callback_QKeySequenceEdit_KeyReleaseEvent(self *C.QKeySequenceEdi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(param1, nil, nil)
+	slotval1 := newQKeyEvent(param1)
 
 	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -328,7 +306,7 @@ func miqt_exec_callback_QKeySequenceEdit_TimerEvent(self *C.QKeySequenceEdit, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(param1, nil)
+	slotval1 := newQTimerEvent(param1)
 
 	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -537,7 +515,7 @@ func miqt_exec_callback_QKeySequenceEdit_MousePressEvent(self *C.QKeySequenceEdi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -563,7 +541,7 @@ func miqt_exec_callback_QKeySequenceEdit_MouseReleaseEvent(self *C.QKeySequenceE
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -589,7 +567,7 @@ func miqt_exec_callback_QKeySequenceEdit_MouseDoubleClickEvent(self *C.QKeySeque
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -615,7 +593,7 @@ func miqt_exec_callback_QKeySequenceEdit_MouseMoveEvent(self *C.QKeySequenceEdit
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -641,7 +619,7 @@ func miqt_exec_callback_QKeySequenceEdit_WheelEvent(self *C.QKeySequenceEdit, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWheelEvent(event, nil, nil)
+	slotval1 := newQWheelEvent(event)
 
 	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -667,7 +645,7 @@ func miqt_exec_callback_QKeySequenceEdit_FocusInEvent(self *C.QKeySequenceEdit, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -693,7 +671,7 @@ func miqt_exec_callback_QKeySequenceEdit_FocusOutEvent(self *C.QKeySequenceEdit,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -771,7 +749,7 @@ func miqt_exec_callback_QKeySequenceEdit_PaintEvent(self *C.QKeySequenceEdit, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(event, nil)
+	slotval1 := newQPaintEvent(event)
 
 	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -797,7 +775,7 @@ func miqt_exec_callback_QKeySequenceEdit_MoveEvent(self *C.QKeySequenceEdit, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMoveEvent(event, nil)
+	slotval1 := newQMoveEvent(event)
 
 	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -823,7 +801,7 @@ func miqt_exec_callback_QKeySequenceEdit_ResizeEvent(self *C.QKeySequenceEdit, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(event, nil)
+	slotval1 := newQResizeEvent(event)
 
 	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -849,7 +827,7 @@ func miqt_exec_callback_QKeySequenceEdit_CloseEvent(self *C.QKeySequenceEdit, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQCloseEvent(event, nil)
+	slotval1 := newQCloseEvent(event)
 
 	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -875,7 +853,7 @@ func miqt_exec_callback_QKeySequenceEdit_ContextMenuEvent(self *C.QKeySequenceEd
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQContextMenuEvent(event, nil, nil)
+	slotval1 := newQContextMenuEvent(event)
 
 	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -901,7 +879,7 @@ func miqt_exec_callback_QKeySequenceEdit_TabletEvent(self *C.QKeySequenceEdit, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTabletEvent(event, nil, nil)
+	slotval1 := newQTabletEvent(event)
 
 	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -927,7 +905,7 @@ func miqt_exec_callback_QKeySequenceEdit_ActionEvent(self *C.QKeySequenceEdit, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQActionEvent(event, nil)
+	slotval1 := newQActionEvent(event)
 
 	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -953,7 +931,7 @@ func miqt_exec_callback_QKeySequenceEdit_DragEnterEvent(self *C.QKeySequenceEdit
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragEnterEvent(event, nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event)
 
 	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -979,7 +957,7 @@ func miqt_exec_callback_QKeySequenceEdit_DragMoveEvent(self *C.QKeySequenceEdit,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragMoveEvent(event, nil, nil)
+	slotval1 := newQDragMoveEvent(event)
 
 	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1005,7 +983,7 @@ func miqt_exec_callback_QKeySequenceEdit_DragLeaveEvent(self *C.QKeySequenceEdit
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragLeaveEvent(event, nil)
+	slotval1 := newQDragLeaveEvent(event)
 
 	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1031,7 +1009,7 @@ func miqt_exec_callback_QKeySequenceEdit_DropEvent(self *C.QKeySequenceEdit, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDropEvent(event, nil)
+	slotval1 := newQDropEvent(event)
 
 	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1057,7 +1035,7 @@ func miqt_exec_callback_QKeySequenceEdit_ShowEvent(self *C.QKeySequenceEdit, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQShowEvent(event, nil)
+	slotval1 := newQShowEvent(event)
 
 	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1083,7 +1061,7 @@ func miqt_exec_callback_QKeySequenceEdit_HideEvent(self *C.QKeySequenceEdit, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQHideEvent(event, nil)
+	slotval1 := newQHideEvent(event)
 
 	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -1279,7 +1257,7 @@ func miqt_exec_callback_QKeySequenceEdit_InputMethodEvent(self *C.QKeySequenceEd
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQInputMethodEvent(param1, nil)
+	slotval1 := newQInputMethodEvent(param1)
 
 	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 

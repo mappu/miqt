@@ -1079,38 +1079,26 @@ public:
 
 };
 
-void QMenu_new(QWidget* parent, QMenu** outptr_QMenu, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQMenu* ret = new MiqtVirtualQMenu(parent);
-	*outptr_QMenu = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QMenu* QMenu_new(QWidget* parent) {
+	return new MiqtVirtualQMenu(parent);
 }
 
-void QMenu_new2(QMenu** outptr_QMenu, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQMenu* ret = new MiqtVirtualQMenu();
-	*outptr_QMenu = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QMenu* QMenu_new2() {
+	return new MiqtVirtualQMenu();
 }
 
-void QMenu_new3(struct miqt_string title, QMenu** outptr_QMenu, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QMenu* QMenu_new3(struct miqt_string title) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
-	MiqtVirtualQMenu* ret = new MiqtVirtualQMenu(title_QString);
-	*outptr_QMenu = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQMenu(title_QString);
 }
 
-void QMenu_new4(struct miqt_string title, QWidget* parent, QMenu** outptr_QMenu, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QMenu* QMenu_new4(struct miqt_string title, QWidget* parent) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
-	MiqtVirtualQMenu* ret = new MiqtVirtualQMenu(title_QString, parent);
-	*outptr_QMenu = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQMenu(title_QString, parent);
+}
+
+void QMenu_virtbase(QMenu* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QMenu_MetaObject(const QMenu* self) {

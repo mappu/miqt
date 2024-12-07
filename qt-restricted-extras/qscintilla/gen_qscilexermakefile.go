@@ -48,44 +48,34 @@ func (this *QsciLexerMakefile) UnsafePointer() unsafe.Pointer {
 }
 
 // newQsciLexerMakefile constructs the type using only CGO pointers.
-func newQsciLexerMakefile(h *C.QsciLexerMakefile, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerMakefile {
+func newQsciLexerMakefile(h *C.QsciLexerMakefile) *QsciLexerMakefile {
 	if h == nil {
 		return nil
 	}
+	var outptr_QsciLexer *C.QsciLexer = nil
+	C.QsciLexerMakefile_virtbase(h, &outptr_QsciLexer)
+
 	return &QsciLexerMakefile{h: h,
-		QsciLexer: newQsciLexer(h_QsciLexer, h_QObject)}
+		QsciLexer: newQsciLexer(outptr_QsciLexer)}
 }
 
 // UnsafeNewQsciLexerMakefile constructs the type using only unsafe pointers.
-func UnsafeNewQsciLexerMakefile(h unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerMakefile {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciLexerMakefile{h: (*C.QsciLexerMakefile)(h),
-		QsciLexer: UnsafeNewQsciLexer(h_QsciLexer, h_QObject)}
+func UnsafeNewQsciLexerMakefile(h unsafe.Pointer) *QsciLexerMakefile {
+	return newQsciLexerMakefile((*C.QsciLexerMakefile)(h))
 }
 
 // NewQsciLexerMakefile constructs a new QsciLexerMakefile object.
 func NewQsciLexerMakefile() *QsciLexerMakefile {
-	var outptr_QsciLexerMakefile *C.QsciLexerMakefile = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerMakefile_new(&outptr_QsciLexerMakefile, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerMakefile(outptr_QsciLexerMakefile, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerMakefile(C.QsciLexerMakefile_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQsciLexerMakefile2 constructs a new QsciLexerMakefile object.
 func NewQsciLexerMakefile2(parent *qt.QObject) *QsciLexerMakefile {
-	var outptr_QsciLexerMakefile *C.QsciLexerMakefile = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerMakefile_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QsciLexerMakefile, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerMakefile(outptr_QsciLexerMakefile, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerMakefile(C.QsciLexerMakefile_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -883,7 +873,7 @@ func miqt_exec_callback_QsciLexerMakefile_SetEditor(self *C.QsciLexerMakefile, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQsciScintilla(editor, nil, nil, nil, nil, nil, nil)
+	slotval1 := newQsciScintilla(editor)
 
 	gofunc((&QsciLexerMakefile{h: self}).callVirtualBase_SetEditor, slotval1)
 
@@ -1127,7 +1117,7 @@ func miqt_exec_callback_QsciLexerMakefile_ReadProperties(self *C.QsciLexerMakefi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQSettings(unsafe.Pointer(qs), nil)
+	slotval1 := qt.UnsafeNewQSettings(unsafe.Pointer(qs))
 
 	var prefix_ms C.struct_miqt_string = prefix
 	prefix_ret := C.GoStringN(prefix_ms.data, C.int(int64(prefix_ms.len)))
@@ -1164,7 +1154,7 @@ func miqt_exec_callback_QsciLexerMakefile_WriteProperties(self *C.QsciLexerMakef
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQSettings(unsafe.Pointer(qs), nil)
+	slotval1 := qt.UnsafeNewQSettings(unsafe.Pointer(qs))
 
 	var prefix_ms C.struct_miqt_string = prefix
 	prefix_ret := C.GoStringN(prefix_ms.data, C.int(int64(prefix_ms.len)))

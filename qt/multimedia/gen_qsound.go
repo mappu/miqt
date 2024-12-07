@@ -42,22 +42,20 @@ func (this *QSound) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSound constructs the type using only CGO pointers.
-func newQSound(h *C.QSound, h_QObject *C.QObject) *QSound {
+func newQSound(h *C.QSound) *QSound {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QSound_virtbase(h, &outptr_QObject)
+
 	return &QSound{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQSound constructs the type using only unsafe pointers.
-func UnsafeNewQSound(h unsafe.Pointer, h_QObject unsafe.Pointer) *QSound {
-	if h == nil {
-		return nil
-	}
-
-	return &QSound{h: (*C.QSound)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQSound(h unsafe.Pointer) *QSound {
+	return newQSound((*C.QSound)(h))
 }
 
 // NewQSound constructs a new QSound object.
@@ -66,11 +64,8 @@ func NewQSound(filename string) *QSound {
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
 	defer C.free(unsafe.Pointer(filename_ms.data))
-	var outptr_QSound *C.QSound = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSound_new(filename_ms, &outptr_QSound, &outptr_QObject)
-	ret := newQSound(outptr_QSound, outptr_QObject)
+	ret := newQSound(C.QSound_new(filename_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -81,11 +76,8 @@ func NewQSound2(filename string, parent *qt.QObject) *QSound {
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
 	defer C.free(unsafe.Pointer(filename_ms.data))
-	var outptr_QSound *C.QSound = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSound_new2(filename_ms, (*C.QObject)(parent.UnsafePointer()), &outptr_QSound, &outptr_QObject)
-	ret := newQSound(outptr_QSound, outptr_QObject)
+	ret := newQSound(C.QSound_new2(filename_ms, (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -279,7 +271,7 @@ func miqt_exec_callback_QSound_TimerEvent(self *C.QSound, cb C.intptr_t, event *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QSound{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -305,7 +297,7 @@ func miqt_exec_callback_QSound_ChildEvent(self *C.QSound, cb C.intptr_t, event *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QSound{h: self}).callVirtualBase_ChildEvent, slotval1)
 

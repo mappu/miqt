@@ -35,31 +35,26 @@ func (this *QMimeData) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMimeData constructs the type using only CGO pointers.
-func newQMimeData(h *C.QMimeData, h_QObject *C.QObject) *QMimeData {
+func newQMimeData(h *C.QMimeData) *QMimeData {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QMimeData_virtbase(h, &outptr_QObject)
+
 	return &QMimeData{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQMimeData constructs the type using only unsafe pointers.
-func UnsafeNewQMimeData(h unsafe.Pointer, h_QObject unsafe.Pointer) *QMimeData {
-	if h == nil {
-		return nil
-	}
-
-	return &QMimeData{h: (*C.QMimeData)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQMimeData(h unsafe.Pointer) *QMimeData {
+	return newQMimeData((*C.QMimeData)(h))
 }
 
 // NewQMimeData constructs a new QMimeData object.
 func NewQMimeData() *QMimeData {
-	var outptr_QMimeData *C.QMimeData = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMimeData_new(&outptr_QMimeData, &outptr_QObject)
-	ret := newQMimeData(outptr_QMimeData, outptr_QObject)
+	ret := newQMimeData(C.QMimeData_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -478,7 +473,7 @@ func miqt_exec_callback_QMimeData_TimerEvent(self *C.QMimeData, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QMimeData{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -504,7 +499,7 @@ func miqt_exec_callback_QMimeData_ChildEvent(self *C.QMimeData, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QMimeData{h: self}).callVirtualBase_ChildEvent, slotval1)
 

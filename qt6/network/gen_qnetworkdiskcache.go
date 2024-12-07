@@ -36,44 +36,34 @@ func (this *QNetworkDiskCache) UnsafePointer() unsafe.Pointer {
 }
 
 // newQNetworkDiskCache constructs the type using only CGO pointers.
-func newQNetworkDiskCache(h *C.QNetworkDiskCache, h_QAbstractNetworkCache *C.QAbstractNetworkCache, h_QObject *C.QObject) *QNetworkDiskCache {
+func newQNetworkDiskCache(h *C.QNetworkDiskCache) *QNetworkDiskCache {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractNetworkCache *C.QAbstractNetworkCache = nil
+	C.QNetworkDiskCache_virtbase(h, &outptr_QAbstractNetworkCache)
+
 	return &QNetworkDiskCache{h: h,
-		QAbstractNetworkCache: newQAbstractNetworkCache(h_QAbstractNetworkCache, h_QObject)}
+		QAbstractNetworkCache: newQAbstractNetworkCache(outptr_QAbstractNetworkCache)}
 }
 
 // UnsafeNewQNetworkDiskCache constructs the type using only unsafe pointers.
-func UnsafeNewQNetworkDiskCache(h unsafe.Pointer, h_QAbstractNetworkCache unsafe.Pointer, h_QObject unsafe.Pointer) *QNetworkDiskCache {
-	if h == nil {
-		return nil
-	}
-
-	return &QNetworkDiskCache{h: (*C.QNetworkDiskCache)(h),
-		QAbstractNetworkCache: UnsafeNewQAbstractNetworkCache(h_QAbstractNetworkCache, h_QObject)}
+func UnsafeNewQNetworkDiskCache(h unsafe.Pointer) *QNetworkDiskCache {
+	return newQNetworkDiskCache((*C.QNetworkDiskCache)(h))
 }
 
 // NewQNetworkDiskCache constructs a new QNetworkDiskCache object.
 func NewQNetworkDiskCache() *QNetworkDiskCache {
-	var outptr_QNetworkDiskCache *C.QNetworkDiskCache = nil
-	var outptr_QAbstractNetworkCache *C.QAbstractNetworkCache = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QNetworkDiskCache_new(&outptr_QNetworkDiskCache, &outptr_QAbstractNetworkCache, &outptr_QObject)
-	ret := newQNetworkDiskCache(outptr_QNetworkDiskCache, outptr_QAbstractNetworkCache, outptr_QObject)
+	ret := newQNetworkDiskCache(C.QNetworkDiskCache_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQNetworkDiskCache2 constructs a new QNetworkDiskCache object.
 func NewQNetworkDiskCache2(parent *qt6.QObject) *QNetworkDiskCache {
-	var outptr_QNetworkDiskCache *C.QNetworkDiskCache = nil
-	var outptr_QAbstractNetworkCache *C.QAbstractNetworkCache = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QNetworkDiskCache_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QNetworkDiskCache, &outptr_QAbstractNetworkCache, &outptr_QObject)
-	ret := newQNetworkDiskCache(outptr_QNetworkDiskCache, outptr_QAbstractNetworkCache, outptr_QObject)
+	ret := newQNetworkDiskCache(C.QNetworkDiskCache_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -135,7 +125,7 @@ func (this *QNetworkDiskCache) UpdateMetaData(metaData *QNetworkCacheMetaData) {
 }
 
 func (this *QNetworkDiskCache) Data(url *qt6.QUrl) *qt6.QIODevice {
-	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QNetworkDiskCache_Data(this.h, (*C.QUrl)(url.UnsafePointer()))), nil, nil)
+	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QNetworkDiskCache_Data(this.h, (*C.QUrl)(url.UnsafePointer()))))
 }
 
 func (this *QNetworkDiskCache) Remove(url *qt6.QUrl) bool {
@@ -143,7 +133,7 @@ func (this *QNetworkDiskCache) Remove(url *qt6.QUrl) bool {
 }
 
 func (this *QNetworkDiskCache) Prepare(metaData *QNetworkCacheMetaData) *qt6.QIODevice {
-	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QNetworkDiskCache_Prepare(this.h, metaData.cPointer())), nil, nil)
+	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QNetworkDiskCache_Prepare(this.h, metaData.cPointer())))
 }
 
 func (this *QNetworkDiskCache) Insert(device *qt6.QIODevice) {
@@ -269,7 +259,7 @@ func miqt_exec_callback_QNetworkDiskCache_UpdateMetaData(self *C.QNetworkDiskCac
 
 func (this *QNetworkDiskCache) callVirtualBase_Data(url *qt6.QUrl) *qt6.QIODevice {
 
-	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QNetworkDiskCache_virtualbase_Data(unsafe.Pointer(this.h), (*C.QUrl)(url.UnsafePointer()))), nil, nil)
+	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QNetworkDiskCache_virtualbase_Data(unsafe.Pointer(this.h), (*C.QUrl)(url.UnsafePointer()))))
 
 }
 func (this *QNetworkDiskCache) OnData(slot func(super func(url *qt6.QUrl) *qt6.QIODevice, url *qt6.QUrl) *qt6.QIODevice) {
@@ -325,7 +315,7 @@ func miqt_exec_callback_QNetworkDiskCache_Remove(self *C.QNetworkDiskCache, cb C
 
 func (this *QNetworkDiskCache) callVirtualBase_Prepare(metaData *QNetworkCacheMetaData) *qt6.QIODevice {
 
-	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QNetworkDiskCache_virtualbase_Prepare(unsafe.Pointer(this.h), metaData.cPointer())), nil, nil)
+	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QNetworkDiskCache_virtualbase_Prepare(unsafe.Pointer(this.h), metaData.cPointer())))
 
 }
 func (this *QNetworkDiskCache) OnPrepare(slot func(super func(metaData *QNetworkCacheMetaData) *qt6.QIODevice, metaData *QNetworkCacheMetaData) *qt6.QIODevice) {
@@ -371,7 +361,7 @@ func miqt_exec_callback_QNetworkDiskCache_Insert(self *C.QNetworkDiskCache, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQIODevice(unsafe.Pointer(device), nil, nil)
+	slotval1 := qt6.UnsafeNewQIODevice(unsafe.Pointer(device))
 
 	gofunc((&QNetworkDiskCache{h: self}).callVirtualBase_Insert, slotval1)
 

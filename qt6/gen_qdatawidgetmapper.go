@@ -42,42 +42,34 @@ func (this *QDataWidgetMapper) UnsafePointer() unsafe.Pointer {
 }
 
 // newQDataWidgetMapper constructs the type using only CGO pointers.
-func newQDataWidgetMapper(h *C.QDataWidgetMapper, h_QObject *C.QObject) *QDataWidgetMapper {
+func newQDataWidgetMapper(h *C.QDataWidgetMapper) *QDataWidgetMapper {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QDataWidgetMapper_virtbase(h, &outptr_QObject)
+
 	return &QDataWidgetMapper{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQDataWidgetMapper constructs the type using only unsafe pointers.
-func UnsafeNewQDataWidgetMapper(h unsafe.Pointer, h_QObject unsafe.Pointer) *QDataWidgetMapper {
-	if h == nil {
-		return nil
-	}
-
-	return &QDataWidgetMapper{h: (*C.QDataWidgetMapper)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQDataWidgetMapper(h unsafe.Pointer) *QDataWidgetMapper {
+	return newQDataWidgetMapper((*C.QDataWidgetMapper)(h))
 }
 
 // NewQDataWidgetMapper constructs a new QDataWidgetMapper object.
 func NewQDataWidgetMapper() *QDataWidgetMapper {
-	var outptr_QDataWidgetMapper *C.QDataWidgetMapper = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QDataWidgetMapper_new(&outptr_QDataWidgetMapper, &outptr_QObject)
-	ret := newQDataWidgetMapper(outptr_QDataWidgetMapper, outptr_QObject)
+	ret := newQDataWidgetMapper(C.QDataWidgetMapper_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDataWidgetMapper2 constructs a new QDataWidgetMapper object.
 func NewQDataWidgetMapper2(parent *QObject) *QDataWidgetMapper {
-	var outptr_QDataWidgetMapper *C.QDataWidgetMapper = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QDataWidgetMapper_new2(parent.cPointer(), &outptr_QDataWidgetMapper, &outptr_QObject)
-	ret := newQDataWidgetMapper(outptr_QDataWidgetMapper, outptr_QObject)
+	ret := newQDataWidgetMapper(C.QDataWidgetMapper_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -106,7 +98,7 @@ func (this *QDataWidgetMapper) SetModel(model *QAbstractItemModel) {
 }
 
 func (this *QDataWidgetMapper) Model() *QAbstractItemModel {
-	return newQAbstractItemModel(C.QDataWidgetMapper_Model(this.h), nil)
+	return newQAbstractItemModel(C.QDataWidgetMapper_Model(this.h))
 }
 
 func (this *QDataWidgetMapper) SetItemDelegate(delegate *QAbstractItemDelegate) {
@@ -114,7 +106,7 @@ func (this *QDataWidgetMapper) SetItemDelegate(delegate *QAbstractItemDelegate) 
 }
 
 func (this *QDataWidgetMapper) ItemDelegate() *QAbstractItemDelegate {
-	return newQAbstractItemDelegate(C.QDataWidgetMapper_ItemDelegate(this.h), nil)
+	return newQAbstractItemDelegate(C.QDataWidgetMapper_ItemDelegate(this.h))
 }
 
 func (this *QDataWidgetMapper) SetRootIndex(index *QModelIndex) {
@@ -170,7 +162,7 @@ func (this *QDataWidgetMapper) MappedPropertyName(widget *QWidget) []byte {
 }
 
 func (this *QDataWidgetMapper) MappedWidgetAt(section int) *QWidget {
-	return newQWidget(C.QDataWidgetMapper_MappedWidgetAt(this.h, (C.int)(section)), nil, nil)
+	return newQWidget(C.QDataWidgetMapper_MappedWidgetAt(this.h, (C.int)(section)))
 }
 
 func (this *QDataWidgetMapper) ClearMapping() {
@@ -359,7 +351,7 @@ func miqt_exec_callback_QDataWidgetMapper_TimerEvent(self *C.QDataWidgetMapper, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QDataWidgetMapper{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -385,7 +377,7 @@ func miqt_exec_callback_QDataWidgetMapper_ChildEvent(self *C.QDataWidgetMapper, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QDataWidgetMapper{h: self}).callVirtualBase_ChildEvent, slotval1)
 

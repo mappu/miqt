@@ -35,48 +35,34 @@ func (this *QErrorMessage) UnsafePointer() unsafe.Pointer {
 }
 
 // newQErrorMessage constructs the type using only CGO pointers.
-func newQErrorMessage(h *C.QErrorMessage, h_QDialog *C.QDialog, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QErrorMessage {
+func newQErrorMessage(h *C.QErrorMessage) *QErrorMessage {
 	if h == nil {
 		return nil
 	}
+	var outptr_QDialog *C.QDialog = nil
+	C.QErrorMessage_virtbase(h, &outptr_QDialog)
+
 	return &QErrorMessage{h: h,
-		QDialog: newQDialog(h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
+		QDialog: newQDialog(outptr_QDialog)}
 }
 
 // UnsafeNewQErrorMessage constructs the type using only unsafe pointers.
-func UnsafeNewQErrorMessage(h unsafe.Pointer, h_QDialog unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QErrorMessage {
-	if h == nil {
-		return nil
-	}
-
-	return &QErrorMessage{h: (*C.QErrorMessage)(h),
-		QDialog: UnsafeNewQDialog(h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQErrorMessage(h unsafe.Pointer) *QErrorMessage {
+	return newQErrorMessage((*C.QErrorMessage)(h))
 }
 
 // NewQErrorMessage constructs a new QErrorMessage object.
 func NewQErrorMessage(parent *QWidget) *QErrorMessage {
-	var outptr_QErrorMessage *C.QErrorMessage = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QErrorMessage_new(parent.cPointer(), &outptr_QErrorMessage, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQErrorMessage(outptr_QErrorMessage, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQErrorMessage(C.QErrorMessage_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQErrorMessage2 constructs a new QErrorMessage object.
 func NewQErrorMessage2() *QErrorMessage {
-	var outptr_QErrorMessage *C.QErrorMessage = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QErrorMessage_new2(&outptr_QErrorMessage, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQErrorMessage(outptr_QErrorMessage, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQErrorMessage(C.QErrorMessage_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -101,7 +87,7 @@ func QErrorMessage_Tr(s string) string {
 }
 
 func QErrorMessage_QtHandler() *QErrorMessage {
-	return newQErrorMessage(C.QErrorMessage_QtHandler(), nil, nil, nil, nil)
+	return newQErrorMessage(C.QErrorMessage_QtHandler())
 }
 
 func (this *QErrorMessage) ShowMessage(message string) {
@@ -392,7 +378,7 @@ func miqt_exec_callback_QErrorMessage_KeyPressEvent(self *C.QErrorMessage, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(param1, nil, nil)
+	slotval1 := newQKeyEvent(param1)
 
 	gofunc((&QErrorMessage{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -418,7 +404,7 @@ func miqt_exec_callback_QErrorMessage_CloseEvent(self *C.QErrorMessage, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQCloseEvent(param1, nil)
+	slotval1 := newQCloseEvent(param1)
 
 	gofunc((&QErrorMessage{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -444,7 +430,7 @@ func miqt_exec_callback_QErrorMessage_ShowEvent(self *C.QErrorMessage, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQShowEvent(param1, nil)
+	slotval1 := newQShowEvent(param1)
 
 	gofunc((&QErrorMessage{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -470,7 +456,7 @@ func miqt_exec_callback_QErrorMessage_ResizeEvent(self *C.QErrorMessage, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(param1, nil)
+	slotval1 := newQResizeEvent(param1)
 
 	gofunc((&QErrorMessage{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -496,7 +482,7 @@ func miqt_exec_callback_QErrorMessage_ContextMenuEvent(self *C.QErrorMessage, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQContextMenuEvent(param1, nil, nil)
+	slotval1 := newQContextMenuEvent(param1)
 
 	gofunc((&QErrorMessage{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 

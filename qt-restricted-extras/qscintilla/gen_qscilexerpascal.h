@@ -34,8 +34,9 @@ typedef struct QsciLexerPascal QsciLexerPascal;
 typedef struct QsciScintilla QsciScintilla;
 #endif
 
-void QsciLexerPascal_new(QsciLexerPascal** outptr_QsciLexerPascal, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerPascal_new2(QObject* parent, QsciLexerPascal** outptr_QsciLexerPascal, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerPascal* QsciLexerPascal_new();
+QsciLexerPascal* QsciLexerPascal_new2(QObject* parent);
+void QsciLexerPascal_virtbase(QsciLexerPascal* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerPascal_MetaObject(const QsciLexerPascal* self);
 void* QsciLexerPascal_Metacast(QsciLexerPascal* self, const char* param1);
 struct miqt_string QsciLexerPascal_Tr(const char* s);

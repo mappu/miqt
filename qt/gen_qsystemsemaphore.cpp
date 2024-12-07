@@ -6,22 +6,19 @@
 #include "gen_qsystemsemaphore.h"
 #include "_cgo_export.h"
 
-void QSystemSemaphore_new(struct miqt_string key, QSystemSemaphore** outptr_QSystemSemaphore) {
+QSystemSemaphore* QSystemSemaphore_new(struct miqt_string key) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
-	QSystemSemaphore* ret = new QSystemSemaphore(key_QString);
-	*outptr_QSystemSemaphore = ret;
+	return new QSystemSemaphore(key_QString);
 }
 
-void QSystemSemaphore_new2(struct miqt_string key, int initialValue, QSystemSemaphore** outptr_QSystemSemaphore) {
+QSystemSemaphore* QSystemSemaphore_new2(struct miqt_string key, int initialValue) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
-	QSystemSemaphore* ret = new QSystemSemaphore(key_QString, static_cast<int>(initialValue));
-	*outptr_QSystemSemaphore = ret;
+	return new QSystemSemaphore(key_QString, static_cast<int>(initialValue));
 }
 
-void QSystemSemaphore_new3(struct miqt_string key, int initialValue, int mode, QSystemSemaphore** outptr_QSystemSemaphore) {
+QSystemSemaphore* QSystemSemaphore_new3(struct miqt_string key, int initialValue, int mode) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
-	QSystemSemaphore* ret = new QSystemSemaphore(key_QString, static_cast<int>(initialValue), static_cast<QSystemSemaphore::AccessMode>(mode));
-	*outptr_QSystemSemaphore = ret;
+	return new QSystemSemaphore(key_QString, static_cast<int>(initialValue), static_cast<QSystemSemaphore::AccessMode>(mode));
 }
 
 void QSystemSemaphore_SetKey(QSystemSemaphore* self, struct miqt_string key) {

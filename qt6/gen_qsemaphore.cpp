@@ -4,14 +4,12 @@
 #include "gen_qsemaphore.h"
 #include "_cgo_export.h"
 
-void QSemaphore_new(QSemaphore** outptr_QSemaphore) {
-	QSemaphore* ret = new QSemaphore();
-	*outptr_QSemaphore = ret;
+QSemaphore* QSemaphore_new() {
+	return new QSemaphore();
 }
 
-void QSemaphore_new2(int n, QSemaphore** outptr_QSemaphore) {
-	QSemaphore* ret = new QSemaphore(static_cast<int>(n));
-	*outptr_QSemaphore = ret;
+QSemaphore* QSemaphore_new2(int n) {
+	return new QSemaphore(static_cast<int>(n));
 }
 
 void QSemaphore_Acquire(QSemaphore* self) {
@@ -58,29 +56,24 @@ void QSemaphore_Delete(QSemaphore* self, bool isSubclass) {
 	}
 }
 
-void QSemaphoreReleaser_new(QSemaphoreReleaser** outptr_QSemaphoreReleaser) {
-	QSemaphoreReleaser* ret = new QSemaphoreReleaser();
-	*outptr_QSemaphoreReleaser = ret;
+QSemaphoreReleaser* QSemaphoreReleaser_new() {
+	return new QSemaphoreReleaser();
 }
 
-void QSemaphoreReleaser_new2(QSemaphore* sem, QSemaphoreReleaser** outptr_QSemaphoreReleaser) {
-	QSemaphoreReleaser* ret = new QSemaphoreReleaser(*sem);
-	*outptr_QSemaphoreReleaser = ret;
+QSemaphoreReleaser* QSemaphoreReleaser_new2(QSemaphore* sem) {
+	return new QSemaphoreReleaser(*sem);
 }
 
-void QSemaphoreReleaser_new3(QSemaphore* sem, QSemaphoreReleaser** outptr_QSemaphoreReleaser) {
-	QSemaphoreReleaser* ret = new QSemaphoreReleaser(sem);
-	*outptr_QSemaphoreReleaser = ret;
+QSemaphoreReleaser* QSemaphoreReleaser_new3(QSemaphore* sem) {
+	return new QSemaphoreReleaser(sem);
 }
 
-void QSemaphoreReleaser_new4(QSemaphore* sem, int n, QSemaphoreReleaser** outptr_QSemaphoreReleaser) {
-	QSemaphoreReleaser* ret = new QSemaphoreReleaser(*sem, static_cast<int>(n));
-	*outptr_QSemaphoreReleaser = ret;
+QSemaphoreReleaser* QSemaphoreReleaser_new4(QSemaphore* sem, int n) {
+	return new QSemaphoreReleaser(*sem, static_cast<int>(n));
 }
 
-void QSemaphoreReleaser_new5(QSemaphore* sem, int n, QSemaphoreReleaser** outptr_QSemaphoreReleaser) {
-	QSemaphoreReleaser* ret = new QSemaphoreReleaser(sem, static_cast<int>(n));
-	*outptr_QSemaphoreReleaser = ret;
+QSemaphoreReleaser* QSemaphoreReleaser_new5(QSemaphore* sem, int n) {
+	return new QSemaphoreReleaser(sem, static_cast<int>(n));
 }
 
 void QSemaphoreReleaser_Swap(QSemaphoreReleaser* self, QSemaphoreReleaser* other) {

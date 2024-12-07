@@ -36,6 +36,7 @@ typedef struct QSocketNotifier QSocketNotifier;
 typedef struct QThread QThread;
 #endif
 
+void QAbstractEventDispatcher_virtbase(QAbstractEventDispatcher* src, QObject** outptr_QObject);
 QMetaObject* QAbstractEventDispatcher_MetaObject(const QAbstractEventDispatcher* self);
 void* QAbstractEventDispatcher_Metacast(QAbstractEventDispatcher* self, const char* param1);
 struct miqt_string QAbstractEventDispatcher_Tr(const char* s);
@@ -65,7 +66,7 @@ struct miqt_string QAbstractEventDispatcher_Tr3(const char* s, const char* c, in
 QAbstractEventDispatcher* QAbstractEventDispatcher_Instance1(QThread* thread);
 void QAbstractEventDispatcher_Delete(QAbstractEventDispatcher* self, bool isSubclass);
 
-void QAbstractEventDispatcher__TimerInfo_new(int id, int i, int t, QAbstractEventDispatcher__TimerInfo** outptr_QAbstractEventDispatcher__TimerInfo);
+QAbstractEventDispatcher__TimerInfo* QAbstractEventDispatcher__TimerInfo_new(int id, int i, int t);
 void QAbstractEventDispatcher__TimerInfo_Delete(QAbstractEventDispatcher__TimerInfo* self, bool isSubclass);
 
 #ifdef __cplusplus

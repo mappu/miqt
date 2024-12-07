@@ -188,64 +188,51 @@ func newQPageSize(h *C.QPageSize) *QPageSize {
 	if h == nil {
 		return nil
 	}
+
 	return &QPageSize{h: h}
 }
 
 // UnsafeNewQPageSize constructs the type using only unsafe pointers.
 func UnsafeNewQPageSize(h unsafe.Pointer) *QPageSize {
-	if h == nil {
-		return nil
-	}
-
-	return &QPageSize{h: (*C.QPageSize)(h)}
+	return newQPageSize((*C.QPageSize)(h))
 }
 
 // NewQPageSize constructs a new QPageSize object.
 func NewQPageSize() *QPageSize {
-	var outptr_QPageSize *C.QPageSize = nil
 
-	C.QPageSize_new(&outptr_QPageSize)
-	ret := newQPageSize(outptr_QPageSize)
+	ret := newQPageSize(C.QPageSize_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPageSize2 constructs a new QPageSize object.
 func NewQPageSize2(pageSizeId QPageSize__PageSizeId) *QPageSize {
-	var outptr_QPageSize *C.QPageSize = nil
 
-	C.QPageSize_new2((C.int)(pageSizeId), &outptr_QPageSize)
-	ret := newQPageSize(outptr_QPageSize)
+	ret := newQPageSize(C.QPageSize_new2((C.int)(pageSizeId)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPageSize3 constructs a new QPageSize object.
 func NewQPageSize3(pointSize *QSize) *QPageSize {
-	var outptr_QPageSize *C.QPageSize = nil
 
-	C.QPageSize_new3(pointSize.cPointer(), &outptr_QPageSize)
-	ret := newQPageSize(outptr_QPageSize)
+	ret := newQPageSize(C.QPageSize_new3(pointSize.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPageSize4 constructs a new QPageSize object.
 func NewQPageSize4(size *QSizeF, units QPageSize__Unit) *QPageSize {
-	var outptr_QPageSize *C.QPageSize = nil
 
-	C.QPageSize_new4(size.cPointer(), (C.int)(units), &outptr_QPageSize)
-	ret := newQPageSize(outptr_QPageSize)
+	ret := newQPageSize(C.QPageSize_new4(size.cPointer(), (C.int)(units)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPageSize5 constructs a new QPageSize object.
 func NewQPageSize5(other *QPageSize) *QPageSize {
-	var outptr_QPageSize *C.QPageSize = nil
 
-	C.QPageSize_new5(other.cPointer(), &outptr_QPageSize)
-	ret := newQPageSize(outptr_QPageSize)
+	ret := newQPageSize(C.QPageSize_new5(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -256,10 +243,8 @@ func NewQPageSize6(pointSize *QSize, name string) *QPageSize {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	var outptr_QPageSize *C.QPageSize = nil
 
-	C.QPageSize_new6(pointSize.cPointer(), name_ms, &outptr_QPageSize)
-	ret := newQPageSize(outptr_QPageSize)
+	ret := newQPageSize(C.QPageSize_new6(pointSize.cPointer(), name_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -270,10 +255,8 @@ func NewQPageSize7(pointSize *QSize, name string, matchPolicy QPageSize__SizeMat
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	var outptr_QPageSize *C.QPageSize = nil
 
-	C.QPageSize_new7(pointSize.cPointer(), name_ms, (C.int)(matchPolicy), &outptr_QPageSize)
-	ret := newQPageSize(outptr_QPageSize)
+	ret := newQPageSize(C.QPageSize_new7(pointSize.cPointer(), name_ms, (C.int)(matchPolicy)))
 	ret.isSubclass = true
 	return ret
 }
@@ -284,10 +267,8 @@ func NewQPageSize8(size *QSizeF, units QPageSize__Unit, name string) *QPageSize 
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	var outptr_QPageSize *C.QPageSize = nil
 
-	C.QPageSize_new8(size.cPointer(), (C.int)(units), name_ms, &outptr_QPageSize)
-	ret := newQPageSize(outptr_QPageSize)
+	ret := newQPageSize(C.QPageSize_new8(size.cPointer(), (C.int)(units), name_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -298,10 +279,8 @@ func NewQPageSize9(size *QSizeF, units QPageSize__Unit, name string, matchPolicy
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	var outptr_QPageSize *C.QPageSize = nil
 
-	C.QPageSize_new9(size.cPointer(), (C.int)(units), name_ms, (C.int)(matchPolicy), &outptr_QPageSize)
-	ret := newQPageSize(outptr_QPageSize)
+	ret := newQPageSize(C.QPageSize_new9(size.cPointer(), (C.int)(units), name_ms, (C.int)(matchPolicy)))
 	ret.isSubclass = true
 	return ret
 }

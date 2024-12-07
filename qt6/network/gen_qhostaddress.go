@@ -60,16 +60,13 @@ func newQIPv6Address(h *C.QIPv6Address) *QIPv6Address {
 	if h == nil {
 		return nil
 	}
+
 	return &QIPv6Address{h: h}
 }
 
 // UnsafeNewQIPv6Address constructs the type using only unsafe pointers.
 func UnsafeNewQIPv6Address(h unsafe.Pointer) *QIPv6Address {
-	if h == nil {
-		return nil
-	}
-
-	return &QIPv6Address{h: (*C.QIPv6Address)(h)}
+	return newQIPv6Address((*C.QIPv6Address)(h))
 }
 
 func (this *QIPv6Address) OperatorSubscript(index int) byte {
@@ -114,54 +111,43 @@ func newQHostAddress(h *C.QHostAddress) *QHostAddress {
 	if h == nil {
 		return nil
 	}
+
 	return &QHostAddress{h: h}
 }
 
 // UnsafeNewQHostAddress constructs the type using only unsafe pointers.
 func UnsafeNewQHostAddress(h unsafe.Pointer) *QHostAddress {
-	if h == nil {
-		return nil
-	}
-
-	return &QHostAddress{h: (*C.QHostAddress)(h)}
+	return newQHostAddress((*C.QHostAddress)(h))
 }
 
 // NewQHostAddress constructs a new QHostAddress object.
 func NewQHostAddress() *QHostAddress {
-	var outptr_QHostAddress *C.QHostAddress = nil
 
-	C.QHostAddress_new(&outptr_QHostAddress)
-	ret := newQHostAddress(outptr_QHostAddress)
+	ret := newQHostAddress(C.QHostAddress_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQHostAddress2 constructs a new QHostAddress object.
 func NewQHostAddress2(ip4Addr uint) *QHostAddress {
-	var outptr_QHostAddress *C.QHostAddress = nil
 
-	C.QHostAddress_new2((C.uint)(ip4Addr), &outptr_QHostAddress)
-	ret := newQHostAddress(outptr_QHostAddress)
+	ret := newQHostAddress(C.QHostAddress_new2((C.uint)(ip4Addr)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQHostAddress3 constructs a new QHostAddress object.
 func NewQHostAddress3(ip6Addr *byte) *QHostAddress {
-	var outptr_QHostAddress *C.QHostAddress = nil
 
-	C.QHostAddress_new3((*C.uchar)(unsafe.Pointer(ip6Addr)), &outptr_QHostAddress)
-	ret := newQHostAddress(outptr_QHostAddress)
+	ret := newQHostAddress(C.QHostAddress_new3((*C.uchar)(unsafe.Pointer(ip6Addr))))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQHostAddress4 constructs a new QHostAddress object.
 func NewQHostAddress4(ip6Addr *QIPv6Address) *QHostAddress {
-	var outptr_QHostAddress *C.QHostAddress = nil
 
-	C.QHostAddress_new4(ip6Addr.cPointer(), &outptr_QHostAddress)
-	ret := newQHostAddress(outptr_QHostAddress)
+	ret := newQHostAddress(C.QHostAddress_new4(ip6Addr.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -172,30 +158,24 @@ func NewQHostAddress5(address string) *QHostAddress {
 	address_ms.data = C.CString(address)
 	address_ms.len = C.size_t(len(address))
 	defer C.free(unsafe.Pointer(address_ms.data))
-	var outptr_QHostAddress *C.QHostAddress = nil
 
-	C.QHostAddress_new5(address_ms, &outptr_QHostAddress)
-	ret := newQHostAddress(outptr_QHostAddress)
+	ret := newQHostAddress(C.QHostAddress_new5(address_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQHostAddress6 constructs a new QHostAddress object.
 func NewQHostAddress6(copyVal *QHostAddress) *QHostAddress {
-	var outptr_QHostAddress *C.QHostAddress = nil
 
-	C.QHostAddress_new6(copyVal.cPointer(), &outptr_QHostAddress)
-	ret := newQHostAddress(outptr_QHostAddress)
+	ret := newQHostAddress(C.QHostAddress_new6(copyVal.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQHostAddress7 constructs a new QHostAddress object.
 func NewQHostAddress7(address QHostAddress__SpecialAddress) *QHostAddress {
-	var outptr_QHostAddress *C.QHostAddress = nil
 
-	C.QHostAddress_new7((C.int)(address), &outptr_QHostAddress)
-	ret := newQHostAddress(outptr_QHostAddress)
+	ret := newQHostAddress(C.QHostAddress_new7((C.int)(address)))
 	ret.isSubclass = true
 	return ret
 }

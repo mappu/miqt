@@ -58,8 +58,9 @@ typedef struct QWebPluginFactory__MimeType QWebPluginFactory__MimeType;
 typedef struct QWebPluginFactory__Plugin QWebPluginFactory__Plugin;
 #endif
 
-void QWebPluginFactory_new(QWebPluginFactory** outptr_QWebPluginFactory, QObject** outptr_QObject);
-void QWebPluginFactory_new2(QObject* parent, QWebPluginFactory** outptr_QWebPluginFactory, QObject** outptr_QObject);
+QWebPluginFactory* QWebPluginFactory_new();
+QWebPluginFactory* QWebPluginFactory_new2(QObject* parent);
+void QWebPluginFactory_virtbase(QWebPluginFactory* src, QObject** outptr_QObject);
 QMetaObject* QWebPluginFactory_MetaObject(const QWebPluginFactory* self);
 void* QWebPluginFactory_Metacast(QWebPluginFactory* self, const char* param1);
 struct miqt_string QWebPluginFactory_Tr(const char* s);
@@ -99,13 +100,13 @@ void QWebPluginFactory_override_virtual_DisconnectNotify(void* self, intptr_t sl
 void QWebPluginFactory_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QWebPluginFactory_Delete(QWebPluginFactory* self, bool isSubclass);
 
-void QWebPluginFactory__MimeType_new(QWebPluginFactory__MimeType* param1, QWebPluginFactory__MimeType** outptr_QWebPluginFactory__MimeType);
+QWebPluginFactory__MimeType* QWebPluginFactory__MimeType_new(QWebPluginFactory__MimeType* param1);
 bool QWebPluginFactory__MimeType_OperatorEqual(const QWebPluginFactory__MimeType* self, QWebPluginFactory__MimeType* other);
 bool QWebPluginFactory__MimeType_OperatorNotEqual(const QWebPluginFactory__MimeType* self, QWebPluginFactory__MimeType* other);
 void QWebPluginFactory__MimeType_OperatorAssign(QWebPluginFactory__MimeType* self, QWebPluginFactory__MimeType* param1);
 void QWebPluginFactory__MimeType_Delete(QWebPluginFactory__MimeType* self, bool isSubclass);
 
-void QWebPluginFactory__Plugin_new(QWebPluginFactory__Plugin* param1, QWebPluginFactory__Plugin** outptr_QWebPluginFactory__Plugin);
+QWebPluginFactory__Plugin* QWebPluginFactory__Plugin_new(QWebPluginFactory__Plugin* param1);
 void QWebPluginFactory__Plugin_OperatorAssign(QWebPluginFactory__Plugin* self, QWebPluginFactory__Plugin* param1);
 void QWebPluginFactory__Plugin_Delete(QWebPluginFactory__Plugin* self, bool isSubclass);
 

@@ -35,122 +35,66 @@ func (this *QUndoView) UnsafePointer() unsafe.Pointer {
 }
 
 // newQUndoView constructs the type using only CGO pointers.
-func newQUndoView(h *C.QUndoView, h_QListView *C.QListView, h_QAbstractItemView *C.QAbstractItemView, h_QAbstractScrollArea *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QUndoView {
+func newQUndoView(h *C.QUndoView) *QUndoView {
 	if h == nil {
 		return nil
 	}
+	var outptr_QListView *C.QListView = nil
+	C.QUndoView_virtbase(h, &outptr_QListView)
+
 	return &QUndoView{h: h,
-		QListView: newQListView(h_QListView, h_QAbstractItemView, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+		QListView: newQListView(outptr_QListView)}
 }
 
 // UnsafeNewQUndoView constructs the type using only unsafe pointers.
-func UnsafeNewQUndoView(h unsafe.Pointer, h_QListView unsafe.Pointer, h_QAbstractItemView unsafe.Pointer, h_QAbstractScrollArea unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QUndoView {
-	if h == nil {
-		return nil
-	}
-
-	return &QUndoView{h: (*C.QUndoView)(h),
-		QListView: UnsafeNewQListView(h_QListView, h_QAbstractItemView, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQUndoView(h unsafe.Pointer) *QUndoView {
+	return newQUndoView((*C.QUndoView)(h))
 }
 
 // NewQUndoView constructs a new QUndoView object.
 func NewQUndoView(parent *QWidget) *QUndoView {
-	var outptr_QUndoView *C.QUndoView = nil
-	var outptr_QListView *C.QListView = nil
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QUndoView_new(parent.cPointer(), &outptr_QUndoView, &outptr_QListView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQUndoView(outptr_QUndoView, outptr_QListView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQUndoView(C.QUndoView_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQUndoView2 constructs a new QUndoView object.
 func NewQUndoView2() *QUndoView {
-	var outptr_QUndoView *C.QUndoView = nil
-	var outptr_QListView *C.QListView = nil
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QUndoView_new2(&outptr_QUndoView, &outptr_QListView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQUndoView(outptr_QUndoView, outptr_QListView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQUndoView(C.QUndoView_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQUndoView3 constructs a new QUndoView object.
 func NewQUndoView3(stack *QUndoStack) *QUndoView {
-	var outptr_QUndoView *C.QUndoView = nil
-	var outptr_QListView *C.QListView = nil
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QUndoView_new3(stack.cPointer(), &outptr_QUndoView, &outptr_QListView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQUndoView(outptr_QUndoView, outptr_QListView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQUndoView(C.QUndoView_new3(stack.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQUndoView4 constructs a new QUndoView object.
 func NewQUndoView4(group *QUndoGroup) *QUndoView {
-	var outptr_QUndoView *C.QUndoView = nil
-	var outptr_QListView *C.QListView = nil
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QUndoView_new4(group.cPointer(), &outptr_QUndoView, &outptr_QListView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQUndoView(outptr_QUndoView, outptr_QListView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQUndoView(C.QUndoView_new4(group.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQUndoView5 constructs a new QUndoView object.
 func NewQUndoView5(stack *QUndoStack, parent *QWidget) *QUndoView {
-	var outptr_QUndoView *C.QUndoView = nil
-	var outptr_QListView *C.QListView = nil
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QUndoView_new5(stack.cPointer(), parent.cPointer(), &outptr_QUndoView, &outptr_QListView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQUndoView(outptr_QUndoView, outptr_QListView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQUndoView(C.QUndoView_new5(stack.cPointer(), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQUndoView6 constructs a new QUndoView object.
 func NewQUndoView6(group *QUndoGroup, parent *QWidget) *QUndoView {
-	var outptr_QUndoView *C.QUndoView = nil
-	var outptr_QListView *C.QListView = nil
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QUndoView_new6(group.cPointer(), parent.cPointer(), &outptr_QUndoView, &outptr_QListView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQUndoView(outptr_QUndoView, outptr_QListView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQUndoView(C.QUndoView_new6(group.cPointer(), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -175,11 +119,11 @@ func QUndoView_Tr(s string) string {
 }
 
 func (this *QUndoView) Stack() *QUndoStack {
-	return newQUndoStack(C.QUndoView_Stack(this.h), nil)
+	return newQUndoStack(C.QUndoView_Stack(this.h))
 }
 
 func (this *QUndoView) Group() *QUndoGroup {
-	return newQUndoGroup(C.QUndoView_Group(this.h), nil)
+	return newQUndoGroup(C.QUndoView_Group(this.h))
 }
 
 func (this *QUndoView) SetEmptyLabel(label string) {
@@ -575,7 +519,7 @@ func miqt_exec_callback_QUndoView_MouseMoveEvent(self *C.QUndoView, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QUndoView{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -601,7 +545,7 @@ func miqt_exec_callback_QUndoView_MouseReleaseEvent(self *C.QUndoView, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QUndoView{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -627,7 +571,7 @@ func miqt_exec_callback_QUndoView_WheelEvent(self *C.QUndoView, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWheelEvent(e, nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(e)
 
 	gofunc((&QUndoView{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -653,7 +597,7 @@ func miqt_exec_callback_QUndoView_TimerEvent(self *C.QUndoView, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(e, nil)
+	slotval1 := newQTimerEvent(e)
 
 	gofunc((&QUndoView{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -679,7 +623,7 @@ func miqt_exec_callback_QUndoView_ResizeEvent(self *C.QUndoView, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(e, nil)
+	slotval1 := newQResizeEvent(e)
 
 	gofunc((&QUndoView{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -705,7 +649,7 @@ func miqt_exec_callback_QUndoView_DragMoveEvent(self *C.QUndoView, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragMoveEvent(e, nil, nil)
+	slotval1 := newQDragMoveEvent(e)
 
 	gofunc((&QUndoView{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -731,7 +675,7 @@ func miqt_exec_callback_QUndoView_DragLeaveEvent(self *C.QUndoView, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragLeaveEvent(e, nil)
+	slotval1 := newQDragLeaveEvent(e)
 
 	gofunc((&QUndoView{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -757,7 +701,7 @@ func miqt_exec_callback_QUndoView_DropEvent(self *C.QUndoView, cb C.intptr_t, e 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDropEvent(e, nil)
+	slotval1 := newQDropEvent(e)
 
 	gofunc((&QUndoView{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -809,7 +753,7 @@ func miqt_exec_callback_QUndoView_InitViewItemOption(self *C.QUndoView, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQStyleOptionViewItem(option, nil)
+	slotval1 := newQStyleOptionViewItem(option)
 
 	gofunc((&QUndoView{h: self}).callVirtualBase_InitViewItemOption, slotval1)
 
@@ -835,7 +779,7 @@ func miqt_exec_callback_QUndoView_PaintEvent(self *C.QUndoView, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(e, nil)
+	slotval1 := newQPaintEvent(e)
 
 	gofunc((&QUndoView{h: self}).callVirtualBase_PaintEvent, slotval1)
 

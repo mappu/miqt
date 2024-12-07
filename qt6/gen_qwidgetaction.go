@@ -35,32 +35,26 @@ func (this *QWidgetAction) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWidgetAction constructs the type using only CGO pointers.
-func newQWidgetAction(h *C.QWidgetAction, h_QAction *C.QAction, h_QObject *C.QObject) *QWidgetAction {
+func newQWidgetAction(h *C.QWidgetAction) *QWidgetAction {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAction *C.QAction = nil
+	C.QWidgetAction_virtbase(h, &outptr_QAction)
+
 	return &QWidgetAction{h: h,
-		QAction: newQAction(h_QAction, h_QObject)}
+		QAction: newQAction(outptr_QAction)}
 }
 
 // UnsafeNewQWidgetAction constructs the type using only unsafe pointers.
-func UnsafeNewQWidgetAction(h unsafe.Pointer, h_QAction unsafe.Pointer, h_QObject unsafe.Pointer) *QWidgetAction {
-	if h == nil {
-		return nil
-	}
-
-	return &QWidgetAction{h: (*C.QWidgetAction)(h),
-		QAction: UnsafeNewQAction(h_QAction, h_QObject)}
+func UnsafeNewQWidgetAction(h unsafe.Pointer) *QWidgetAction {
+	return newQWidgetAction((*C.QWidgetAction)(h))
 }
 
 // NewQWidgetAction constructs a new QWidgetAction object.
 func NewQWidgetAction(parent *QObject) *QWidgetAction {
-	var outptr_QWidgetAction *C.QWidgetAction = nil
-	var outptr_QAction *C.QAction = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWidgetAction_new(parent.cPointer(), &outptr_QWidgetAction, &outptr_QAction, &outptr_QObject)
-	ret := newQWidgetAction(outptr_QWidgetAction, outptr_QAction, outptr_QObject)
+	ret := newQWidgetAction(C.QWidgetAction_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -89,11 +83,11 @@ func (this *QWidgetAction) SetDefaultWidget(w *QWidget) {
 }
 
 func (this *QWidgetAction) DefaultWidget() *QWidget {
-	return newQWidget(C.QWidgetAction_DefaultWidget(this.h), nil, nil)
+	return newQWidget(C.QWidgetAction_DefaultWidget(this.h))
 }
 
 func (this *QWidgetAction) RequestWidget(parent *QWidget) *QWidget {
-	return newQWidget(C.QWidgetAction_RequestWidget(this.h, parent.cPointer()), nil, nil)
+	return newQWidget(C.QWidgetAction_RequestWidget(this.h, parent.cPointer()))
 }
 
 func (this *QWidgetAction) ReleaseWidget(widget *QWidget) {
@@ -182,7 +176,7 @@ func miqt_exec_callback_QWidgetAction_EventFilter(self *C.QWidgetAction, cb C.in
 
 func (this *QWidgetAction) callVirtualBase_CreateWidget(parent *QWidget) *QWidget {
 
-	return newQWidget(C.QWidgetAction_virtualbase_CreateWidget(unsafe.Pointer(this.h), parent.cPointer()), nil, nil)
+	return newQWidget(C.QWidgetAction_virtualbase_CreateWidget(unsafe.Pointer(this.h), parent.cPointer()))
 
 }
 func (this *QWidgetAction) OnCreateWidget(slot func(super func(parent *QWidget) *QWidget, parent *QWidget) *QWidget) {
@@ -200,7 +194,7 @@ func miqt_exec_callback_QWidgetAction_CreateWidget(self *C.QWidgetAction, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(parent, nil, nil)
+	slotval1 := newQWidget(parent)
 
 	virtualReturn := gofunc((&QWidgetAction{h: self}).callVirtualBase_CreateWidget, slotval1)
 
@@ -228,7 +222,7 @@ func miqt_exec_callback_QWidgetAction_DeleteWidget(self *C.QWidgetAction, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(widget, nil, nil)
+	slotval1 := newQWidget(widget)
 
 	gofunc((&QWidgetAction{h: self}).callVirtualBase_DeleteWidget, slotval1)
 

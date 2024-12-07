@@ -118,10 +118,11 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QPlainTextEdit_new(QWidget* parent, QPlainTextEdit** outptr_QPlainTextEdit, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QPlainTextEdit_new2(QPlainTextEdit** outptr_QPlainTextEdit, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QPlainTextEdit_new3(struct miqt_string text, QPlainTextEdit** outptr_QPlainTextEdit, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QPlainTextEdit_new4(struct miqt_string text, QWidget* parent, QPlainTextEdit** outptr_QPlainTextEdit, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QPlainTextEdit* QPlainTextEdit_new(QWidget* parent);
+QPlainTextEdit* QPlainTextEdit_new2();
+QPlainTextEdit* QPlainTextEdit_new3(struct miqt_string text);
+QPlainTextEdit* QPlainTextEdit_new4(struct miqt_string text, QWidget* parent);
+void QPlainTextEdit_virtbase(QPlainTextEdit* src, QAbstractScrollArea** outptr_QAbstractScrollArea);
 QMetaObject* QPlainTextEdit_MetaObject(const QPlainTextEdit* self);
 void* QPlainTextEdit_Metacast(QPlainTextEdit* self, const char* param1);
 struct miqt_string QPlainTextEdit_Tr(const char* s);
@@ -317,7 +318,8 @@ void QPlainTextEdit_override_virtual_ViewportSizeHint(void* self, intptr_t slot)
 QSize* QPlainTextEdit_virtualbase_ViewportSizeHint(const void* self);
 void QPlainTextEdit_Delete(QPlainTextEdit* self, bool isSubclass);
 
-void QPlainTextDocumentLayout_new(QTextDocument* document, QPlainTextDocumentLayout** outptr_QPlainTextDocumentLayout, QAbstractTextDocumentLayout** outptr_QAbstractTextDocumentLayout, QObject** outptr_QObject);
+QPlainTextDocumentLayout* QPlainTextDocumentLayout_new(QTextDocument* document);
+void QPlainTextDocumentLayout_virtbase(QPlainTextDocumentLayout* src, QAbstractTextDocumentLayout** outptr_QAbstractTextDocumentLayout);
 QMetaObject* QPlainTextDocumentLayout_MetaObject(const QPlainTextDocumentLayout* self);
 void* QPlainTextDocumentLayout_Metacast(QPlainTextDocumentLayout* self, const char* param1);
 struct miqt_string QPlainTextDocumentLayout_Tr(const char* s);

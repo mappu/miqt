@@ -13,9 +13,8 @@
 #include "gen_qwebhistory.h"
 #include "_cgo_export.h"
 
-void QWebHistoryItem_new(QWebHistoryItem* other, QWebHistoryItem** outptr_QWebHistoryItem) {
-	QWebHistoryItem* ret = new QWebHistoryItem(*other);
-	*outptr_QWebHistoryItem = ret;
+QWebHistoryItem* QWebHistoryItem_new(QWebHistoryItem* other) {
+	return new QWebHistoryItem(*other);
 }
 
 void QWebHistoryItem_OperatorAssign(QWebHistoryItem* self, QWebHistoryItem* other) {

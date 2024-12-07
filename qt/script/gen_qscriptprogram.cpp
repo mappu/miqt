@@ -6,34 +6,29 @@
 #include "gen_qscriptprogram.h"
 #include "_cgo_export.h"
 
-void QScriptProgram_new(QScriptProgram** outptr_QScriptProgram) {
-	QScriptProgram* ret = new QScriptProgram();
-	*outptr_QScriptProgram = ret;
+QScriptProgram* QScriptProgram_new() {
+	return new QScriptProgram();
 }
 
-void QScriptProgram_new2(struct miqt_string sourceCode, QScriptProgram** outptr_QScriptProgram) {
+QScriptProgram* QScriptProgram_new2(struct miqt_string sourceCode) {
 	QString sourceCode_QString = QString::fromUtf8(sourceCode.data, sourceCode.len);
-	QScriptProgram* ret = new QScriptProgram(sourceCode_QString);
-	*outptr_QScriptProgram = ret;
+	return new QScriptProgram(sourceCode_QString);
 }
 
-void QScriptProgram_new3(QScriptProgram* other, QScriptProgram** outptr_QScriptProgram) {
-	QScriptProgram* ret = new QScriptProgram(*other);
-	*outptr_QScriptProgram = ret;
+QScriptProgram* QScriptProgram_new3(QScriptProgram* other) {
+	return new QScriptProgram(*other);
 }
 
-void QScriptProgram_new4(struct miqt_string sourceCode, struct miqt_string fileName, QScriptProgram** outptr_QScriptProgram) {
+QScriptProgram* QScriptProgram_new4(struct miqt_string sourceCode, struct miqt_string fileName) {
 	QString sourceCode_QString = QString::fromUtf8(sourceCode.data, sourceCode.len);
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	QScriptProgram* ret = new QScriptProgram(sourceCode_QString, fileName_QString);
-	*outptr_QScriptProgram = ret;
+	return new QScriptProgram(sourceCode_QString, fileName_QString);
 }
 
-void QScriptProgram_new5(struct miqt_string sourceCode, struct miqt_string fileName, int firstLineNumber, QScriptProgram** outptr_QScriptProgram) {
+QScriptProgram* QScriptProgram_new5(struct miqt_string sourceCode, struct miqt_string fileName, int firstLineNumber) {
 	QString sourceCode_QString = QString::fromUtf8(sourceCode.data, sourceCode.len);
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	QScriptProgram* ret = new QScriptProgram(sourceCode_QString, fileName_QString, static_cast<int>(firstLineNumber));
-	*outptr_QScriptProgram = ret;
+	return new QScriptProgram(sourceCode_QString, fileName_QString, static_cast<int>(firstLineNumber));
 }
 
 void QScriptProgram_OperatorAssign(QScriptProgram* self, QScriptProgram* other) {

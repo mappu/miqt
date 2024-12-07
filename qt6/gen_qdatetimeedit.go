@@ -51,132 +51,82 @@ func (this *QDateTimeEdit) UnsafePointer() unsafe.Pointer {
 }
 
 // newQDateTimeEdit constructs the type using only CGO pointers.
-func newQDateTimeEdit(h *C.QDateTimeEdit, h_QAbstractSpinBox *C.QAbstractSpinBox, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QDateTimeEdit {
+func newQDateTimeEdit(h *C.QDateTimeEdit) *QDateTimeEdit {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractSpinBox *C.QAbstractSpinBox = nil
+	C.QDateTimeEdit_virtbase(h, &outptr_QAbstractSpinBox)
+
 	return &QDateTimeEdit{h: h,
-		QAbstractSpinBox: newQAbstractSpinBox(h_QAbstractSpinBox, h_QWidget, h_QObject, h_QPaintDevice)}
+		QAbstractSpinBox: newQAbstractSpinBox(outptr_QAbstractSpinBox)}
 }
 
 // UnsafeNewQDateTimeEdit constructs the type using only unsafe pointers.
-func UnsafeNewQDateTimeEdit(h unsafe.Pointer, h_QAbstractSpinBox unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QDateTimeEdit {
-	if h == nil {
-		return nil
-	}
-
-	return &QDateTimeEdit{h: (*C.QDateTimeEdit)(h),
-		QAbstractSpinBox: UnsafeNewQAbstractSpinBox(h_QAbstractSpinBox, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQDateTimeEdit(h unsafe.Pointer) *QDateTimeEdit {
+	return newQDateTimeEdit((*C.QDateTimeEdit)(h))
 }
 
 // NewQDateTimeEdit constructs a new QDateTimeEdit object.
 func NewQDateTimeEdit(parent *QWidget) *QDateTimeEdit {
-	var outptr_QDateTimeEdit *C.QDateTimeEdit = nil
-	var outptr_QAbstractSpinBox *C.QAbstractSpinBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QDateTimeEdit_new(parent.cPointer(), &outptr_QDateTimeEdit, &outptr_QAbstractSpinBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQDateTimeEdit(outptr_QDateTimeEdit, outptr_QAbstractSpinBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQDateTimeEdit(C.QDateTimeEdit_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDateTimeEdit2 constructs a new QDateTimeEdit object.
 func NewQDateTimeEdit2() *QDateTimeEdit {
-	var outptr_QDateTimeEdit *C.QDateTimeEdit = nil
-	var outptr_QAbstractSpinBox *C.QAbstractSpinBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QDateTimeEdit_new2(&outptr_QDateTimeEdit, &outptr_QAbstractSpinBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQDateTimeEdit(outptr_QDateTimeEdit, outptr_QAbstractSpinBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQDateTimeEdit(C.QDateTimeEdit_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDateTimeEdit3 constructs a new QDateTimeEdit object.
 func NewQDateTimeEdit3(dt *QDateTime) *QDateTimeEdit {
-	var outptr_QDateTimeEdit *C.QDateTimeEdit = nil
-	var outptr_QAbstractSpinBox *C.QAbstractSpinBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QDateTimeEdit_new3(dt.cPointer(), &outptr_QDateTimeEdit, &outptr_QAbstractSpinBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQDateTimeEdit(outptr_QDateTimeEdit, outptr_QAbstractSpinBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQDateTimeEdit(C.QDateTimeEdit_new3(dt.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDateTimeEdit4 constructs a new QDateTimeEdit object.
 func NewQDateTimeEdit4(d QDate) *QDateTimeEdit {
-	var outptr_QDateTimeEdit *C.QDateTimeEdit = nil
-	var outptr_QAbstractSpinBox *C.QAbstractSpinBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QDateTimeEdit_new4(d.cPointer(), &outptr_QDateTimeEdit, &outptr_QAbstractSpinBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQDateTimeEdit(outptr_QDateTimeEdit, outptr_QAbstractSpinBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQDateTimeEdit(C.QDateTimeEdit_new4(d.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDateTimeEdit5 constructs a new QDateTimeEdit object.
 func NewQDateTimeEdit5(t QTime) *QDateTimeEdit {
-	var outptr_QDateTimeEdit *C.QDateTimeEdit = nil
-	var outptr_QAbstractSpinBox *C.QAbstractSpinBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QDateTimeEdit_new5(t.cPointer(), &outptr_QDateTimeEdit, &outptr_QAbstractSpinBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQDateTimeEdit(outptr_QDateTimeEdit, outptr_QAbstractSpinBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQDateTimeEdit(C.QDateTimeEdit_new5(t.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDateTimeEdit6 constructs a new QDateTimeEdit object.
 func NewQDateTimeEdit6(dt *QDateTime, parent *QWidget) *QDateTimeEdit {
-	var outptr_QDateTimeEdit *C.QDateTimeEdit = nil
-	var outptr_QAbstractSpinBox *C.QAbstractSpinBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QDateTimeEdit_new6(dt.cPointer(), parent.cPointer(), &outptr_QDateTimeEdit, &outptr_QAbstractSpinBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQDateTimeEdit(outptr_QDateTimeEdit, outptr_QAbstractSpinBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQDateTimeEdit(C.QDateTimeEdit_new6(dt.cPointer(), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDateTimeEdit7 constructs a new QDateTimeEdit object.
 func NewQDateTimeEdit7(d QDate, parent *QWidget) *QDateTimeEdit {
-	var outptr_QDateTimeEdit *C.QDateTimeEdit = nil
-	var outptr_QAbstractSpinBox *C.QAbstractSpinBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QDateTimeEdit_new7(d.cPointer(), parent.cPointer(), &outptr_QDateTimeEdit, &outptr_QAbstractSpinBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQDateTimeEdit(outptr_QDateTimeEdit, outptr_QAbstractSpinBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQDateTimeEdit(C.QDateTimeEdit_new7(d.cPointer(), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDateTimeEdit8 constructs a new QDateTimeEdit object.
 func NewQDateTimeEdit8(t QTime, parent *QWidget) *QDateTimeEdit {
-	var outptr_QDateTimeEdit *C.QDateTimeEdit = nil
-	var outptr_QAbstractSpinBox *C.QAbstractSpinBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QDateTimeEdit_new8(t.cPointer(), parent.cPointer(), &outptr_QDateTimeEdit, &outptr_QAbstractSpinBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQDateTimeEdit(outptr_QDateTimeEdit, outptr_QAbstractSpinBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQDateTimeEdit(C.QDateTimeEdit_new8(t.cPointer(), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -349,7 +299,7 @@ func (this *QDateTimeEdit) SetCurrentSectionIndex(index int) {
 }
 
 func (this *QDateTimeEdit) CalendarWidget() *QCalendarWidget {
-	return newQCalendarWidget(C.QDateTimeEdit_CalendarWidget(this.h), nil, nil, nil)
+	return newQCalendarWidget(C.QDateTimeEdit_CalendarWidget(this.h))
 }
 
 func (this *QDateTimeEdit) SetCalendarWidget(calendarWidget *QCalendarWidget) {
@@ -642,7 +592,7 @@ func miqt_exec_callback_QDateTimeEdit_KeyPressEvent(self *C.QDateTimeEdit, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(event, nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -668,7 +618,7 @@ func miqt_exec_callback_QDateTimeEdit_WheelEvent(self *C.QDateTimeEdit, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWheelEvent(event, nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(event)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -694,7 +644,7 @@ func miqt_exec_callback_QDateTimeEdit_FocusInEvent(self *C.QDateTimeEdit, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -913,7 +863,7 @@ func miqt_exec_callback_QDateTimeEdit_MousePressEvent(self *C.QDateTimeEdit, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -939,7 +889,7 @@ func miqt_exec_callback_QDateTimeEdit_PaintEvent(self *C.QDateTimeEdit, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(event, nil)
+	slotval1 := newQPaintEvent(event)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -965,7 +915,7 @@ func miqt_exec_callback_QDateTimeEdit_InitStyleOption(self *C.QDateTimeEdit, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQStyleOptionSpinBox(option, nil, nil)
+	slotval1 := newQStyleOptionSpinBox(option)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_InitStyleOption, slotval1)
 
@@ -1048,7 +998,7 @@ func miqt_exec_callback_QDateTimeEdit_ResizeEvent(self *C.QDateTimeEdit, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(event, nil)
+	slotval1 := newQResizeEvent(event)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -1074,7 +1024,7 @@ func miqt_exec_callback_QDateTimeEdit_KeyReleaseEvent(self *C.QDateTimeEdit, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(event, nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -1100,7 +1050,7 @@ func miqt_exec_callback_QDateTimeEdit_FocusOutEvent(self *C.QDateTimeEdit, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -1126,7 +1076,7 @@ func miqt_exec_callback_QDateTimeEdit_ContextMenuEvent(self *C.QDateTimeEdit, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQContextMenuEvent(event, nil, nil)
+	slotval1 := newQContextMenuEvent(event)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -1178,7 +1128,7 @@ func miqt_exec_callback_QDateTimeEdit_CloseEvent(self *C.QDateTimeEdit, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQCloseEvent(event, nil)
+	slotval1 := newQCloseEvent(event)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -1204,7 +1154,7 @@ func miqt_exec_callback_QDateTimeEdit_HideEvent(self *C.QDateTimeEdit, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQHideEvent(event, nil)
+	slotval1 := newQHideEvent(event)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -1230,7 +1180,7 @@ func miqt_exec_callback_QDateTimeEdit_MouseReleaseEvent(self *C.QDateTimeEdit, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -1256,7 +1206,7 @@ func miqt_exec_callback_QDateTimeEdit_MouseMoveEvent(self *C.QDateTimeEdit, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -1282,7 +1232,7 @@ func miqt_exec_callback_QDateTimeEdit_TimerEvent(self *C.QDateTimeEdit, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -1308,7 +1258,7 @@ func miqt_exec_callback_QDateTimeEdit_ShowEvent(self *C.QDateTimeEdit, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQShowEvent(event, nil)
+	slotval1 := newQShowEvent(event)
 
 	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1349,80 +1299,50 @@ func (this *QTimeEdit) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTimeEdit constructs the type using only CGO pointers.
-func newQTimeEdit(h *C.QTimeEdit, h_QDateTimeEdit *C.QDateTimeEdit, h_QAbstractSpinBox *C.QAbstractSpinBox, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QTimeEdit {
+func newQTimeEdit(h *C.QTimeEdit) *QTimeEdit {
 	if h == nil {
 		return nil
 	}
+	var outptr_QDateTimeEdit *C.QDateTimeEdit = nil
+	C.QTimeEdit_virtbase(h, &outptr_QDateTimeEdit)
+
 	return &QTimeEdit{h: h,
-		QDateTimeEdit: newQDateTimeEdit(h_QDateTimeEdit, h_QAbstractSpinBox, h_QWidget, h_QObject, h_QPaintDevice)}
+		QDateTimeEdit: newQDateTimeEdit(outptr_QDateTimeEdit)}
 }
 
 // UnsafeNewQTimeEdit constructs the type using only unsafe pointers.
-func UnsafeNewQTimeEdit(h unsafe.Pointer, h_QDateTimeEdit unsafe.Pointer, h_QAbstractSpinBox unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QTimeEdit {
-	if h == nil {
-		return nil
-	}
-
-	return &QTimeEdit{h: (*C.QTimeEdit)(h),
-		QDateTimeEdit: UnsafeNewQDateTimeEdit(h_QDateTimeEdit, h_QAbstractSpinBox, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQTimeEdit(h unsafe.Pointer) *QTimeEdit {
+	return newQTimeEdit((*C.QTimeEdit)(h))
 }
 
 // NewQTimeEdit constructs a new QTimeEdit object.
 func NewQTimeEdit(parent *QWidget) *QTimeEdit {
-	var outptr_QTimeEdit *C.QTimeEdit = nil
-	var outptr_QDateTimeEdit *C.QDateTimeEdit = nil
-	var outptr_QAbstractSpinBox *C.QAbstractSpinBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QTimeEdit_new(parent.cPointer(), &outptr_QTimeEdit, &outptr_QDateTimeEdit, &outptr_QAbstractSpinBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQTimeEdit(outptr_QTimeEdit, outptr_QDateTimeEdit, outptr_QAbstractSpinBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQTimeEdit(C.QTimeEdit_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTimeEdit2 constructs a new QTimeEdit object.
 func NewQTimeEdit2() *QTimeEdit {
-	var outptr_QTimeEdit *C.QTimeEdit = nil
-	var outptr_QDateTimeEdit *C.QDateTimeEdit = nil
-	var outptr_QAbstractSpinBox *C.QAbstractSpinBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QTimeEdit_new2(&outptr_QTimeEdit, &outptr_QDateTimeEdit, &outptr_QAbstractSpinBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQTimeEdit(outptr_QTimeEdit, outptr_QDateTimeEdit, outptr_QAbstractSpinBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQTimeEdit(C.QTimeEdit_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTimeEdit3 constructs a new QTimeEdit object.
 func NewQTimeEdit3(time QTime) *QTimeEdit {
-	var outptr_QTimeEdit *C.QTimeEdit = nil
-	var outptr_QDateTimeEdit *C.QDateTimeEdit = nil
-	var outptr_QAbstractSpinBox *C.QAbstractSpinBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QTimeEdit_new3(time.cPointer(), &outptr_QTimeEdit, &outptr_QDateTimeEdit, &outptr_QAbstractSpinBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQTimeEdit(outptr_QTimeEdit, outptr_QDateTimeEdit, outptr_QAbstractSpinBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQTimeEdit(C.QTimeEdit_new3(time.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTimeEdit4 constructs a new QTimeEdit object.
 func NewQTimeEdit4(time QTime, parent *QWidget) *QTimeEdit {
-	var outptr_QTimeEdit *C.QTimeEdit = nil
-	var outptr_QDateTimeEdit *C.QDateTimeEdit = nil
-	var outptr_QAbstractSpinBox *C.QAbstractSpinBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QTimeEdit_new4(time.cPointer(), parent.cPointer(), &outptr_QTimeEdit, &outptr_QDateTimeEdit, &outptr_QAbstractSpinBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQTimeEdit(outptr_QTimeEdit, outptr_QDateTimeEdit, outptr_QAbstractSpinBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQTimeEdit(C.QTimeEdit_new4(time.cPointer(), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -1614,7 +1534,7 @@ func miqt_exec_callback_QTimeEdit_KeyPressEvent(self *C.QTimeEdit, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(event, nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QTimeEdit{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -1640,7 +1560,7 @@ func miqt_exec_callback_QTimeEdit_WheelEvent(self *C.QTimeEdit, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWheelEvent(event, nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(event)
 
 	gofunc((&QTimeEdit{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -1666,7 +1586,7 @@ func miqt_exec_callback_QTimeEdit_FocusInEvent(self *C.QTimeEdit, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QTimeEdit{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -1885,7 +1805,7 @@ func miqt_exec_callback_QTimeEdit_MousePressEvent(self *C.QTimeEdit, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QTimeEdit{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -1911,7 +1831,7 @@ func miqt_exec_callback_QTimeEdit_PaintEvent(self *C.QTimeEdit, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(event, nil)
+	slotval1 := newQPaintEvent(event)
 
 	gofunc((&QTimeEdit{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -1937,7 +1857,7 @@ func miqt_exec_callback_QTimeEdit_InitStyleOption(self *C.QTimeEdit, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQStyleOptionSpinBox(option, nil, nil)
+	slotval1 := newQStyleOptionSpinBox(option)
 
 	gofunc((&QTimeEdit{h: self}).callVirtualBase_InitStyleOption, slotval1)
 
@@ -1978,80 +1898,50 @@ func (this *QDateEdit) UnsafePointer() unsafe.Pointer {
 }
 
 // newQDateEdit constructs the type using only CGO pointers.
-func newQDateEdit(h *C.QDateEdit, h_QDateTimeEdit *C.QDateTimeEdit, h_QAbstractSpinBox *C.QAbstractSpinBox, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QDateEdit {
+func newQDateEdit(h *C.QDateEdit) *QDateEdit {
 	if h == nil {
 		return nil
 	}
+	var outptr_QDateTimeEdit *C.QDateTimeEdit = nil
+	C.QDateEdit_virtbase(h, &outptr_QDateTimeEdit)
+
 	return &QDateEdit{h: h,
-		QDateTimeEdit: newQDateTimeEdit(h_QDateTimeEdit, h_QAbstractSpinBox, h_QWidget, h_QObject, h_QPaintDevice)}
+		QDateTimeEdit: newQDateTimeEdit(outptr_QDateTimeEdit)}
 }
 
 // UnsafeNewQDateEdit constructs the type using only unsafe pointers.
-func UnsafeNewQDateEdit(h unsafe.Pointer, h_QDateTimeEdit unsafe.Pointer, h_QAbstractSpinBox unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QDateEdit {
-	if h == nil {
-		return nil
-	}
-
-	return &QDateEdit{h: (*C.QDateEdit)(h),
-		QDateTimeEdit: UnsafeNewQDateTimeEdit(h_QDateTimeEdit, h_QAbstractSpinBox, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQDateEdit(h unsafe.Pointer) *QDateEdit {
+	return newQDateEdit((*C.QDateEdit)(h))
 }
 
 // NewQDateEdit constructs a new QDateEdit object.
 func NewQDateEdit(parent *QWidget) *QDateEdit {
-	var outptr_QDateEdit *C.QDateEdit = nil
-	var outptr_QDateTimeEdit *C.QDateTimeEdit = nil
-	var outptr_QAbstractSpinBox *C.QAbstractSpinBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QDateEdit_new(parent.cPointer(), &outptr_QDateEdit, &outptr_QDateTimeEdit, &outptr_QAbstractSpinBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQDateEdit(outptr_QDateEdit, outptr_QDateTimeEdit, outptr_QAbstractSpinBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQDateEdit(C.QDateEdit_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDateEdit2 constructs a new QDateEdit object.
 func NewQDateEdit2() *QDateEdit {
-	var outptr_QDateEdit *C.QDateEdit = nil
-	var outptr_QDateTimeEdit *C.QDateTimeEdit = nil
-	var outptr_QAbstractSpinBox *C.QAbstractSpinBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QDateEdit_new2(&outptr_QDateEdit, &outptr_QDateTimeEdit, &outptr_QAbstractSpinBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQDateEdit(outptr_QDateEdit, outptr_QDateTimeEdit, outptr_QAbstractSpinBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQDateEdit(C.QDateEdit_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDateEdit3 constructs a new QDateEdit object.
 func NewQDateEdit3(date QDate) *QDateEdit {
-	var outptr_QDateEdit *C.QDateEdit = nil
-	var outptr_QDateTimeEdit *C.QDateTimeEdit = nil
-	var outptr_QAbstractSpinBox *C.QAbstractSpinBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QDateEdit_new3(date.cPointer(), &outptr_QDateEdit, &outptr_QDateTimeEdit, &outptr_QAbstractSpinBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQDateEdit(outptr_QDateEdit, outptr_QDateTimeEdit, outptr_QAbstractSpinBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQDateEdit(C.QDateEdit_new3(date.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDateEdit4 constructs a new QDateEdit object.
 func NewQDateEdit4(date QDate, parent *QWidget) *QDateEdit {
-	var outptr_QDateEdit *C.QDateEdit = nil
-	var outptr_QDateTimeEdit *C.QDateTimeEdit = nil
-	var outptr_QAbstractSpinBox *C.QAbstractSpinBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QDateEdit_new4(date.cPointer(), parent.cPointer(), &outptr_QDateEdit, &outptr_QDateTimeEdit, &outptr_QAbstractSpinBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQDateEdit(outptr_QDateEdit, outptr_QDateTimeEdit, outptr_QAbstractSpinBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQDateEdit(C.QDateEdit_new4(date.cPointer(), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -2243,7 +2133,7 @@ func miqt_exec_callback_QDateEdit_KeyPressEvent(self *C.QDateEdit, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(event, nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QDateEdit{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -2269,7 +2159,7 @@ func miqt_exec_callback_QDateEdit_WheelEvent(self *C.QDateEdit, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWheelEvent(event, nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(event)
 
 	gofunc((&QDateEdit{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -2295,7 +2185,7 @@ func miqt_exec_callback_QDateEdit_FocusInEvent(self *C.QDateEdit, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QDateEdit{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -2514,7 +2404,7 @@ func miqt_exec_callback_QDateEdit_MousePressEvent(self *C.QDateEdit, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QDateEdit{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -2540,7 +2430,7 @@ func miqt_exec_callback_QDateEdit_PaintEvent(self *C.QDateEdit, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(event, nil)
+	slotval1 := newQPaintEvent(event)
 
 	gofunc((&QDateEdit{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -2566,7 +2456,7 @@ func miqt_exec_callback_QDateEdit_InitStyleOption(self *C.QDateEdit, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQStyleOptionSpinBox(option, nil, nil)
+	slotval1 := newQStyleOptionSpinBox(option)
 
 	gofunc((&QDateEdit{h: self}).callVirtualBase_InitStyleOption, slotval1)
 

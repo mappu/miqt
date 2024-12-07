@@ -7,9 +7,8 @@
 #include "gen_qwebengineloadinginfo.h"
 #include "_cgo_export.h"
 
-void QWebEngineLoadingInfo_new(QWebEngineLoadingInfo* other, QWebEngineLoadingInfo** outptr_QWebEngineLoadingInfo) {
-	QWebEngineLoadingInfo* ret = new QWebEngineLoadingInfo(*other);
-	*outptr_QWebEngineLoadingInfo = ret;
+QWebEngineLoadingInfo* QWebEngineLoadingInfo_new(QWebEngineLoadingInfo* other) {
+	return new QWebEngineLoadingInfo(*other);
 }
 
 void QWebEngineLoadingInfo_OperatorAssign(QWebEngineLoadingInfo* self, QWebEngineLoadingInfo* other) {

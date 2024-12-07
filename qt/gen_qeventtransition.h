@@ -30,10 +30,11 @@ typedef struct QObject QObject;
 typedef struct QState QState;
 #endif
 
-void QEventTransition_new(QEventTransition** outptr_QEventTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject);
-void QEventTransition_new2(QObject* object, int typeVal, QEventTransition** outptr_QEventTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject);
-void QEventTransition_new3(QState* sourceState, QEventTransition** outptr_QEventTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject);
-void QEventTransition_new4(QObject* object, int typeVal, QState* sourceState, QEventTransition** outptr_QEventTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject);
+QEventTransition* QEventTransition_new();
+QEventTransition* QEventTransition_new2(QObject* object, int typeVal);
+QEventTransition* QEventTransition_new3(QState* sourceState);
+QEventTransition* QEventTransition_new4(QObject* object, int typeVal, QState* sourceState);
+void QEventTransition_virtbase(QEventTransition* src, QAbstractTransition** outptr_QAbstractTransition);
 QMetaObject* QEventTransition_MetaObject(const QEventTransition* self);
 void* QEventTransition_Metacast(QEventTransition* self, const char* param1);
 struct miqt_string QEventTransition_Tr(const char* s);

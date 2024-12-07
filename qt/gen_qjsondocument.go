@@ -71,16 +71,13 @@ func newQJsonParseError(h *C.QJsonParseError) *QJsonParseError {
 	if h == nil {
 		return nil
 	}
+
 	return &QJsonParseError{h: h}
 }
 
 // UnsafeNewQJsonParseError constructs the type using only unsafe pointers.
 func UnsafeNewQJsonParseError(h unsafe.Pointer) *QJsonParseError {
-	if h == nil {
-		return nil
-	}
-
-	return &QJsonParseError{h: (*C.QJsonParseError)(h)}
+	return newQJsonParseError((*C.QJsonParseError)(h))
 }
 
 func (this *QJsonParseError) ErrorString() string {
@@ -128,54 +125,43 @@ func newQJsonDocument(h *C.QJsonDocument) *QJsonDocument {
 	if h == nil {
 		return nil
 	}
+
 	return &QJsonDocument{h: h}
 }
 
 // UnsafeNewQJsonDocument constructs the type using only unsafe pointers.
 func UnsafeNewQJsonDocument(h unsafe.Pointer) *QJsonDocument {
-	if h == nil {
-		return nil
-	}
-
-	return &QJsonDocument{h: (*C.QJsonDocument)(h)}
+	return newQJsonDocument((*C.QJsonDocument)(h))
 }
 
 // NewQJsonDocument constructs a new QJsonDocument object.
 func NewQJsonDocument() *QJsonDocument {
-	var outptr_QJsonDocument *C.QJsonDocument = nil
 
-	C.QJsonDocument_new(&outptr_QJsonDocument)
-	ret := newQJsonDocument(outptr_QJsonDocument)
+	ret := newQJsonDocument(C.QJsonDocument_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQJsonDocument2 constructs a new QJsonDocument object.
 func NewQJsonDocument2(object *QJsonObject) *QJsonDocument {
-	var outptr_QJsonDocument *C.QJsonDocument = nil
 
-	C.QJsonDocument_new2(object.cPointer(), &outptr_QJsonDocument)
-	ret := newQJsonDocument(outptr_QJsonDocument)
+	ret := newQJsonDocument(C.QJsonDocument_new2(object.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQJsonDocument3 constructs a new QJsonDocument object.
 func NewQJsonDocument3(array *QJsonArray) *QJsonDocument {
-	var outptr_QJsonDocument *C.QJsonDocument = nil
 
-	C.QJsonDocument_new3(array.cPointer(), &outptr_QJsonDocument)
-	ret := newQJsonDocument(outptr_QJsonDocument)
+	ret := newQJsonDocument(C.QJsonDocument_new3(array.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQJsonDocument4 constructs a new QJsonDocument object.
 func NewQJsonDocument4(other *QJsonDocument) *QJsonDocument {
-	var outptr_QJsonDocument *C.QJsonDocument = nil
 
-	C.QJsonDocument_new4(other.cPointer(), &outptr_QJsonDocument)
-	ret := newQJsonDocument(outptr_QJsonDocument)
+	ret := newQJsonDocument(C.QJsonDocument_new4(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

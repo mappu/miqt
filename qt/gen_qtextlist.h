@@ -34,7 +34,8 @@ typedef struct QTextListFormat QTextListFormat;
 typedef struct QTextObject QTextObject;
 #endif
 
-void QTextList_new(QTextDocument* doc, QTextList** outptr_QTextList, QTextBlockGroup** outptr_QTextBlockGroup, QTextObject** outptr_QTextObject, QObject** outptr_QObject);
+QTextList* QTextList_new(QTextDocument* doc);
+void QTextList_virtbase(QTextList* src, QTextBlockGroup** outptr_QTextBlockGroup);
 QMetaObject* QTextList_MetaObject(const QTextList* self);
 void* QTextList_Metacast(QTextList* self, const char* param1);
 struct miqt_string QTextList_Tr(const char* s);

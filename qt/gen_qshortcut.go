@@ -35,42 +35,34 @@ func (this *QShortcut) UnsafePointer() unsafe.Pointer {
 }
 
 // newQShortcut constructs the type using only CGO pointers.
-func newQShortcut(h *C.QShortcut, h_QObject *C.QObject) *QShortcut {
+func newQShortcut(h *C.QShortcut) *QShortcut {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QShortcut_virtbase(h, &outptr_QObject)
+
 	return &QShortcut{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQShortcut constructs the type using only unsafe pointers.
-func UnsafeNewQShortcut(h unsafe.Pointer, h_QObject unsafe.Pointer) *QShortcut {
-	if h == nil {
-		return nil
-	}
-
-	return &QShortcut{h: (*C.QShortcut)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQShortcut(h unsafe.Pointer) *QShortcut {
+	return newQShortcut((*C.QShortcut)(h))
 }
 
 // NewQShortcut constructs a new QShortcut object.
 func NewQShortcut(parent *QWidget) *QShortcut {
-	var outptr_QShortcut *C.QShortcut = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QShortcut_new(parent.cPointer(), &outptr_QShortcut, &outptr_QObject)
-	ret := newQShortcut(outptr_QShortcut, outptr_QObject)
+	ret := newQShortcut(C.QShortcut_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQShortcut2 constructs a new QShortcut object.
 func NewQShortcut2(key *QKeySequence, parent *QWidget) *QShortcut {
-	var outptr_QShortcut *C.QShortcut = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QShortcut_new2(key.cPointer(), parent.cPointer(), &outptr_QShortcut, &outptr_QObject)
-	ret := newQShortcut(outptr_QShortcut, outptr_QObject)
+	ret := newQShortcut(C.QShortcut_new2(key.cPointer(), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -79,11 +71,8 @@ func NewQShortcut2(key *QKeySequence, parent *QWidget) *QShortcut {
 func NewQShortcut3(key *QKeySequence, parent *QWidget, member string) *QShortcut {
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
-	var outptr_QShortcut *C.QShortcut = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QShortcut_new3(key.cPointer(), parent.cPointer(), member_Cstring, &outptr_QShortcut, &outptr_QObject)
-	ret := newQShortcut(outptr_QShortcut, outptr_QObject)
+	ret := newQShortcut(C.QShortcut_new3(key.cPointer(), parent.cPointer(), member_Cstring))
 	ret.isSubclass = true
 	return ret
 }
@@ -94,11 +83,8 @@ func NewQShortcut4(key *QKeySequence, parent *QWidget, member string, ambiguousM
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ambiguousMember_Cstring := C.CString(ambiguousMember)
 	defer C.free(unsafe.Pointer(ambiguousMember_Cstring))
-	var outptr_QShortcut *C.QShortcut = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QShortcut_new4(key.cPointer(), parent.cPointer(), member_Cstring, ambiguousMember_Cstring, &outptr_QShortcut, &outptr_QObject)
-	ret := newQShortcut(outptr_QShortcut, outptr_QObject)
+	ret := newQShortcut(C.QShortcut_new4(key.cPointer(), parent.cPointer(), member_Cstring, ambiguousMember_Cstring))
 	ret.isSubclass = true
 	return ret
 }
@@ -109,11 +95,8 @@ func NewQShortcut5(key *QKeySequence, parent *QWidget, member string, ambiguousM
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ambiguousMember_Cstring := C.CString(ambiguousMember)
 	defer C.free(unsafe.Pointer(ambiguousMember_Cstring))
-	var outptr_QShortcut *C.QShortcut = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QShortcut_new5(key.cPointer(), parent.cPointer(), member_Cstring, ambiguousMember_Cstring, (C.int)(shortcutContext), &outptr_QShortcut, &outptr_QObject)
-	ret := newQShortcut(outptr_QShortcut, outptr_QObject)
+	ret := newQShortcut(C.QShortcut_new5(key.cPointer(), parent.cPointer(), member_Cstring, ambiguousMember_Cstring, (C.int)(shortcutContext)))
 	ret.isSubclass = true
 	return ret
 }
@@ -200,7 +183,7 @@ func (this *QShortcut) Id() int {
 }
 
 func (this *QShortcut) ParentWidget() *QWidget {
-	return newQWidget(C.QShortcut_ParentWidget(this.h), nil, nil)
+	return newQWidget(C.QShortcut_ParentWidget(this.h))
 }
 
 func (this *QShortcut) Activated() {
@@ -359,7 +342,7 @@ func miqt_exec_callback_QShortcut_TimerEvent(self *C.QShortcut, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QShortcut{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -385,7 +368,7 @@ func miqt_exec_callback_QShortcut_ChildEvent(self *C.QShortcut, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QShortcut{h: self}).callVirtualBase_ChildEvent, slotval1)
 

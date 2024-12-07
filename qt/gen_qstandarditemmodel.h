@@ -44,11 +44,11 @@ typedef struct QStandardItemModel QStandardItemModel;
 typedef struct QVariant QVariant;
 #endif
 
-void QStandardItem_new(QStandardItem** outptr_QStandardItem);
-void QStandardItem_new2(struct miqt_string text, QStandardItem** outptr_QStandardItem);
-void QStandardItem_new3(QIcon* icon, struct miqt_string text, QStandardItem** outptr_QStandardItem);
-void QStandardItem_new4(int rows, QStandardItem** outptr_QStandardItem);
-void QStandardItem_new5(int rows, int columns, QStandardItem** outptr_QStandardItem);
+QStandardItem* QStandardItem_new();
+QStandardItem* QStandardItem_new2(struct miqt_string text);
+QStandardItem* QStandardItem_new3(QIcon* icon, struct miqt_string text);
+QStandardItem* QStandardItem_new4(int rows);
+QStandardItem* QStandardItem_new5(int rows, int columns);
 QVariant* QStandardItem_Data(const QStandardItem* self, int role);
 void QStandardItem_SetData(QStandardItem* self, QVariant* value, int role);
 void QStandardItem_ClearData(QStandardItem* self);
@@ -153,10 +153,11 @@ void QStandardItem_override_virtual_OperatorLesser(void* self, intptr_t slot);
 bool QStandardItem_virtualbase_OperatorLesser(const void* self, QStandardItem* other);
 void QStandardItem_Delete(QStandardItem* self, bool isSubclass);
 
-void QStandardItemModel_new(QStandardItemModel** outptr_QStandardItemModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject);
-void QStandardItemModel_new2(int rows, int columns, QStandardItemModel** outptr_QStandardItemModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject);
-void QStandardItemModel_new3(QObject* parent, QStandardItemModel** outptr_QStandardItemModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject);
-void QStandardItemModel_new4(int rows, int columns, QObject* parent, QStandardItemModel** outptr_QStandardItemModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject);
+QStandardItemModel* QStandardItemModel_new();
+QStandardItemModel* QStandardItemModel_new2(int rows, int columns);
+QStandardItemModel* QStandardItemModel_new3(QObject* parent);
+QStandardItemModel* QStandardItemModel_new4(int rows, int columns, QObject* parent);
+void QStandardItemModel_virtbase(QStandardItemModel* src, QAbstractItemModel** outptr_QAbstractItemModel);
 QMetaObject* QStandardItemModel_MetaObject(const QStandardItemModel* self);
 void* QStandardItemModel_Metacast(QStandardItemModel* self, const char* param1);
 struct miqt_string QStandardItemModel_Tr(const char* s);

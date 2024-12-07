@@ -35,76 +35,50 @@ func (this *QSplitter) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSplitter constructs the type using only CGO pointers.
-func newQSplitter(h *C.QSplitter, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QSplitter {
+func newQSplitter(h *C.QSplitter) *QSplitter {
 	if h == nil {
 		return nil
 	}
+	var outptr_QFrame *C.QFrame = nil
+	C.QSplitter_virtbase(h, &outptr_QFrame)
+
 	return &QSplitter{h: h,
-		QFrame: newQFrame(h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+		QFrame: newQFrame(outptr_QFrame)}
 }
 
 // UnsafeNewQSplitter constructs the type using only unsafe pointers.
-func UnsafeNewQSplitter(h unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QSplitter {
-	if h == nil {
-		return nil
-	}
-
-	return &QSplitter{h: (*C.QSplitter)(h),
-		QFrame: UnsafeNewQFrame(h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQSplitter(h unsafe.Pointer) *QSplitter {
+	return newQSplitter((*C.QSplitter)(h))
 }
 
 // NewQSplitter constructs a new QSplitter object.
 func NewQSplitter(parent *QWidget) *QSplitter {
-	var outptr_QSplitter *C.QSplitter = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QSplitter_new(parent.cPointer(), &outptr_QSplitter, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQSplitter(outptr_QSplitter, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQSplitter(C.QSplitter_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSplitter2 constructs a new QSplitter object.
 func NewQSplitter2() *QSplitter {
-	var outptr_QSplitter *C.QSplitter = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QSplitter_new2(&outptr_QSplitter, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQSplitter(outptr_QSplitter, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQSplitter(C.QSplitter_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSplitter3 constructs a new QSplitter object.
 func NewQSplitter3(param1 Orientation) *QSplitter {
-	var outptr_QSplitter *C.QSplitter = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QSplitter_new3((C.int)(param1), &outptr_QSplitter, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQSplitter(outptr_QSplitter, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQSplitter(C.QSplitter_new3((C.int)(param1)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSplitter4 constructs a new QSplitter object.
 func NewQSplitter4(param1 Orientation, parent *QWidget) *QSplitter {
-	var outptr_QSplitter *C.QSplitter = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QSplitter_new4((C.int)(param1), parent.cPointer(), &outptr_QSplitter, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQSplitter(outptr_QSplitter, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQSplitter(C.QSplitter_new4((C.int)(param1), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -146,7 +120,7 @@ func (this *QSplitter) InsertWidget(index int, widget *QWidget) {
 }
 
 func (this *QSplitter) ReplaceWidget(index int, widget *QWidget) *QWidget {
-	return newQWidget(C.QSplitter_ReplaceWidget(this.h, (C.int)(index), widget.cPointer()), nil, nil)
+	return newQWidget(C.QSplitter_ReplaceWidget(this.h, (C.int)(index), widget.cPointer()))
 }
 
 func (this *QSplitter) SetOrientation(orientation Orientation) {
@@ -244,7 +218,7 @@ func (this *QSplitter) IndexOf(w *QWidget) int {
 }
 
 func (this *QSplitter) Widget(index int) *QWidget {
-	return newQWidget(C.QSplitter_Widget(this.h, (C.int)(index)), nil, nil)
+	return newQWidget(C.QSplitter_Widget(this.h, (C.int)(index)))
 }
 
 func (this *QSplitter) Count() int {
@@ -256,7 +230,7 @@ func (this *QSplitter) GetRange(index int, param2 *int, param3 *int) {
 }
 
 func (this *QSplitter) Handle(index int) *QSplitterHandle {
-	return newQSplitterHandle(C.QSplitter_Handle(this.h, (C.int)(index)), nil, nil, nil)
+	return newQSplitterHandle(C.QSplitter_Handle(this.h, (C.int)(index)))
 }
 
 func (this *QSplitter) SetStretchFactor(index int, stretch int) {
@@ -389,7 +363,7 @@ func miqt_exec_callback_QSplitter_MinimumSizeHint(self *C.QSplitter, cb C.intptr
 
 func (this *QSplitter) callVirtualBase_CreateHandle() *QSplitterHandle {
 
-	return newQSplitterHandle(C.QSplitter_virtualbase_CreateHandle(unsafe.Pointer(this.h)), nil, nil, nil)
+	return newQSplitterHandle(C.QSplitter_virtualbase_CreateHandle(unsafe.Pointer(this.h)))
 
 }
 func (this *QSplitter) OnCreateHandle(slot func(super func() *QSplitterHandle) *QSplitterHandle) {
@@ -432,7 +406,7 @@ func miqt_exec_callback_QSplitter_ChildEvent(self *C.QSplitter, cb C.intptr_t, p
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(param1, nil)
+	slotval1 := newQChildEvent(param1)
 
 	gofunc((&QSplitter{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -486,7 +460,7 @@ func miqt_exec_callback_QSplitter_ResizeEvent(self *C.QSplitter, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(param1, nil)
+	slotval1 := newQResizeEvent(param1)
 
 	gofunc((&QSplitter{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -538,7 +512,7 @@ func miqt_exec_callback_QSplitter_PaintEvent(self *C.QSplitter, cb C.intptr_t, p
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(param1, nil)
+	slotval1 := newQPaintEvent(param1)
 
 	gofunc((&QSplitter{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -579,33 +553,26 @@ func (this *QSplitterHandle) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSplitterHandle constructs the type using only CGO pointers.
-func newQSplitterHandle(h *C.QSplitterHandle, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QSplitterHandle {
+func newQSplitterHandle(h *C.QSplitterHandle) *QSplitterHandle {
 	if h == nil {
 		return nil
 	}
+	var outptr_QWidget *C.QWidget = nil
+	C.QSplitterHandle_virtbase(h, &outptr_QWidget)
+
 	return &QSplitterHandle{h: h,
-		QWidget: newQWidget(h_QWidget, h_QObject, h_QPaintDevice)}
+		QWidget: newQWidget(outptr_QWidget)}
 }
 
 // UnsafeNewQSplitterHandle constructs the type using only unsafe pointers.
-func UnsafeNewQSplitterHandle(h unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QSplitterHandle {
-	if h == nil {
-		return nil
-	}
-
-	return &QSplitterHandle{h: (*C.QSplitterHandle)(h),
-		QWidget: UnsafeNewQWidget(h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQSplitterHandle(h unsafe.Pointer) *QSplitterHandle {
+	return newQSplitterHandle((*C.QSplitterHandle)(h))
 }
 
 // NewQSplitterHandle constructs a new QSplitterHandle object.
 func NewQSplitterHandle(o Orientation, parent *QSplitter) *QSplitterHandle {
-	var outptr_QSplitterHandle *C.QSplitterHandle = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QSplitterHandle_new((C.int)(o), parent.cPointer(), &outptr_QSplitterHandle, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQSplitterHandle(outptr_QSplitterHandle, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQSplitterHandle(C.QSplitterHandle_new((C.int)(o), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -651,7 +618,7 @@ func (this *QSplitterHandle) OpaqueResize() bool {
 }
 
 func (this *QSplitterHandle) Splitter() *QSplitter {
-	return newQSplitter(C.QSplitterHandle_Splitter(this.h), nil, nil, nil, nil)
+	return newQSplitter(C.QSplitterHandle_Splitter(this.h))
 }
 
 func (this *QSplitterHandle) SizeHint() *QSize {
@@ -751,7 +718,7 @@ func miqt_exec_callback_QSplitterHandle_PaintEvent(self *C.QSplitterHandle, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(param1, nil)
+	slotval1 := newQPaintEvent(param1)
 
 	gofunc((&QSplitterHandle{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -777,7 +744,7 @@ func miqt_exec_callback_QSplitterHandle_MouseMoveEvent(self *C.QSplitterHandle, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(param1, nil, nil)
+	slotval1 := newQMouseEvent(param1)
 
 	gofunc((&QSplitterHandle{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -803,7 +770,7 @@ func miqt_exec_callback_QSplitterHandle_MousePressEvent(self *C.QSplitterHandle,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(param1, nil, nil)
+	slotval1 := newQMouseEvent(param1)
 
 	gofunc((&QSplitterHandle{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -829,7 +796,7 @@ func miqt_exec_callback_QSplitterHandle_MouseReleaseEvent(self *C.QSplitterHandl
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(param1, nil, nil)
+	slotval1 := newQMouseEvent(param1)
 
 	gofunc((&QSplitterHandle{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -855,7 +822,7 @@ func miqt_exec_callback_QSplitterHandle_ResizeEvent(self *C.QSplitterHandle, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(param1, nil)
+	slotval1 := newQResizeEvent(param1)
 
 	gofunc((&QSplitterHandle{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -1065,7 +1032,7 @@ func miqt_exec_callback_QSplitterHandle_MouseDoubleClickEvent(self *C.QSplitterH
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QSplitterHandle{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -1091,7 +1058,7 @@ func miqt_exec_callback_QSplitterHandle_WheelEvent(self *C.QSplitterHandle, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWheelEvent(event, nil, nil)
+	slotval1 := newQWheelEvent(event)
 
 	gofunc((&QSplitterHandle{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -1117,7 +1084,7 @@ func miqt_exec_callback_QSplitterHandle_KeyPressEvent(self *C.QSplitterHandle, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(event, nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QSplitterHandle{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -1143,7 +1110,7 @@ func miqt_exec_callback_QSplitterHandle_KeyReleaseEvent(self *C.QSplitterHandle,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(event, nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QSplitterHandle{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -1169,7 +1136,7 @@ func miqt_exec_callback_QSplitterHandle_FocusInEvent(self *C.QSplitterHandle, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QSplitterHandle{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -1195,7 +1162,7 @@ func miqt_exec_callback_QSplitterHandle_FocusOutEvent(self *C.QSplitterHandle, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QSplitterHandle{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -1273,7 +1240,7 @@ func miqt_exec_callback_QSplitterHandle_MoveEvent(self *C.QSplitterHandle, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMoveEvent(event, nil)
+	slotval1 := newQMoveEvent(event)
 
 	gofunc((&QSplitterHandle{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -1299,7 +1266,7 @@ func miqt_exec_callback_QSplitterHandle_CloseEvent(self *C.QSplitterHandle, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQCloseEvent(event, nil)
+	slotval1 := newQCloseEvent(event)
 
 	gofunc((&QSplitterHandle{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -1325,7 +1292,7 @@ func miqt_exec_callback_QSplitterHandle_ContextMenuEvent(self *C.QSplitterHandle
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQContextMenuEvent(event, nil, nil)
+	slotval1 := newQContextMenuEvent(event)
 
 	gofunc((&QSplitterHandle{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -1351,7 +1318,7 @@ func miqt_exec_callback_QSplitterHandle_TabletEvent(self *C.QSplitterHandle, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTabletEvent(event, nil, nil)
+	slotval1 := newQTabletEvent(event)
 
 	gofunc((&QSplitterHandle{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -1377,7 +1344,7 @@ func miqt_exec_callback_QSplitterHandle_ActionEvent(self *C.QSplitterHandle, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQActionEvent(event, nil)
+	slotval1 := newQActionEvent(event)
 
 	gofunc((&QSplitterHandle{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -1403,7 +1370,7 @@ func miqt_exec_callback_QSplitterHandle_DragEnterEvent(self *C.QSplitterHandle, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragEnterEvent(event, nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event)
 
 	gofunc((&QSplitterHandle{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -1429,7 +1396,7 @@ func miqt_exec_callback_QSplitterHandle_DragMoveEvent(self *C.QSplitterHandle, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragMoveEvent(event, nil, nil)
+	slotval1 := newQDragMoveEvent(event)
 
 	gofunc((&QSplitterHandle{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1455,7 +1422,7 @@ func miqt_exec_callback_QSplitterHandle_DragLeaveEvent(self *C.QSplitterHandle, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragLeaveEvent(event, nil)
+	slotval1 := newQDragLeaveEvent(event)
 
 	gofunc((&QSplitterHandle{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1481,7 +1448,7 @@ func miqt_exec_callback_QSplitterHandle_DropEvent(self *C.QSplitterHandle, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDropEvent(event, nil)
+	slotval1 := newQDropEvent(event)
 
 	gofunc((&QSplitterHandle{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1507,7 +1474,7 @@ func miqt_exec_callback_QSplitterHandle_ShowEvent(self *C.QSplitterHandle, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQShowEvent(event, nil)
+	slotval1 := newQShowEvent(event)
 
 	gofunc((&QSplitterHandle{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1533,7 +1500,7 @@ func miqt_exec_callback_QSplitterHandle_HideEvent(self *C.QSplitterHandle, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQHideEvent(event, nil)
+	slotval1 := newQHideEvent(event)
 
 	gofunc((&QSplitterHandle{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -1729,7 +1696,7 @@ func miqt_exec_callback_QSplitterHandle_InputMethodEvent(self *C.QSplitterHandle
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQInputMethodEvent(param1, nil)
+	slotval1 := newQInputMethodEvent(param1)
 
 	gofunc((&QSplitterHandle{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 

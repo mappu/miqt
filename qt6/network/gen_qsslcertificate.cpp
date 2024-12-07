@@ -13,36 +13,30 @@
 #include "gen_qsslcertificate.h"
 #include "_cgo_export.h"
 
-void QSslCertificate_new(QIODevice* device, QSslCertificate** outptr_QSslCertificate) {
-	QSslCertificate* ret = new QSslCertificate(device);
-	*outptr_QSslCertificate = ret;
+QSslCertificate* QSslCertificate_new(QIODevice* device) {
+	return new QSslCertificate(device);
 }
 
-void QSslCertificate_new2(QSslCertificate** outptr_QSslCertificate) {
-	QSslCertificate* ret = new QSslCertificate();
-	*outptr_QSslCertificate = ret;
+QSslCertificate* QSslCertificate_new2() {
+	return new QSslCertificate();
 }
 
-void QSslCertificate_new3(QSslCertificate* other, QSslCertificate** outptr_QSslCertificate) {
-	QSslCertificate* ret = new QSslCertificate(*other);
-	*outptr_QSslCertificate = ret;
+QSslCertificate* QSslCertificate_new3(QSslCertificate* other) {
+	return new QSslCertificate(*other);
 }
 
-void QSslCertificate_new4(QIODevice* device, int format, QSslCertificate** outptr_QSslCertificate) {
-	QSslCertificate* ret = new QSslCertificate(device, static_cast<QSsl::EncodingFormat>(format));
-	*outptr_QSslCertificate = ret;
+QSslCertificate* QSslCertificate_new4(QIODevice* device, int format) {
+	return new QSslCertificate(device, static_cast<QSsl::EncodingFormat>(format));
 }
 
-void QSslCertificate_new5(struct miqt_string data, QSslCertificate** outptr_QSslCertificate) {
+QSslCertificate* QSslCertificate_new5(struct miqt_string data) {
 	QByteArray data_QByteArray(data.data, data.len);
-	QSslCertificate* ret = new QSslCertificate(data_QByteArray);
-	*outptr_QSslCertificate = ret;
+	return new QSslCertificate(data_QByteArray);
 }
 
-void QSslCertificate_new6(struct miqt_string data, int format, QSslCertificate** outptr_QSslCertificate) {
+QSslCertificate* QSslCertificate_new6(struct miqt_string data, int format) {
 	QByteArray data_QByteArray(data.data, data.len);
-	QSslCertificate* ret = new QSslCertificate(data_QByteArray, static_cast<QSsl::EncodingFormat>(format));
-	*outptr_QSslCertificate = ret;
+	return new QSslCertificate(data_QByteArray, static_cast<QSsl::EncodingFormat>(format));
 }
 
 void QSslCertificate_OperatorAssign(QSslCertificate* self, QSslCertificate* other) {

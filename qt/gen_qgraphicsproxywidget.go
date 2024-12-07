@@ -41,65 +41,42 @@ func (this *QGraphicsProxyWidget) UnsafePointer() unsafe.Pointer {
 }
 
 // newQGraphicsProxyWidget constructs the type using only CGO pointers.
-func newQGraphicsProxyWidget(h *C.QGraphicsProxyWidget, h_QGraphicsWidget *C.QGraphicsWidget, h_QGraphicsObject *C.QGraphicsObject, h_QObject *C.QObject, h_QGraphicsItem *C.QGraphicsItem, h_QGraphicsLayoutItem *C.QGraphicsLayoutItem) *QGraphicsProxyWidget {
+func newQGraphicsProxyWidget(h *C.QGraphicsProxyWidget) *QGraphicsProxyWidget {
 	if h == nil {
 		return nil
 	}
+	var outptr_QGraphicsWidget *C.QGraphicsWidget = nil
+	C.QGraphicsProxyWidget_virtbase(h, &outptr_QGraphicsWidget)
+
 	return &QGraphicsProxyWidget{h: h,
-		QGraphicsWidget: newQGraphicsWidget(h_QGraphicsWidget, h_QGraphicsObject, h_QObject, h_QGraphicsItem, h_QGraphicsLayoutItem)}
+		QGraphicsWidget: newQGraphicsWidget(outptr_QGraphicsWidget)}
 }
 
 // UnsafeNewQGraphicsProxyWidget constructs the type using only unsafe pointers.
-func UnsafeNewQGraphicsProxyWidget(h unsafe.Pointer, h_QGraphicsWidget unsafe.Pointer, h_QGraphicsObject unsafe.Pointer, h_QObject unsafe.Pointer, h_QGraphicsItem unsafe.Pointer, h_QGraphicsLayoutItem unsafe.Pointer) *QGraphicsProxyWidget {
-	if h == nil {
-		return nil
-	}
-
-	return &QGraphicsProxyWidget{h: (*C.QGraphicsProxyWidget)(h),
-		QGraphicsWidget: UnsafeNewQGraphicsWidget(h_QGraphicsWidget, h_QGraphicsObject, h_QObject, h_QGraphicsItem, h_QGraphicsLayoutItem)}
+func UnsafeNewQGraphicsProxyWidget(h unsafe.Pointer) *QGraphicsProxyWidget {
+	return newQGraphicsProxyWidget((*C.QGraphicsProxyWidget)(h))
 }
 
 // NewQGraphicsProxyWidget constructs a new QGraphicsProxyWidget object.
 func NewQGraphicsProxyWidget() *QGraphicsProxyWidget {
-	var outptr_QGraphicsProxyWidget *C.QGraphicsProxyWidget = nil
-	var outptr_QGraphicsWidget *C.QGraphicsWidget = nil
-	var outptr_QGraphicsObject *C.QGraphicsObject = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QGraphicsItem *C.QGraphicsItem = nil
-	var outptr_QGraphicsLayoutItem *C.QGraphicsLayoutItem = nil
 
-	C.QGraphicsProxyWidget_new(&outptr_QGraphicsProxyWidget, &outptr_QGraphicsWidget, &outptr_QGraphicsObject, &outptr_QObject, &outptr_QGraphicsItem, &outptr_QGraphicsLayoutItem)
-	ret := newQGraphicsProxyWidget(outptr_QGraphicsProxyWidget, outptr_QGraphicsWidget, outptr_QGraphicsObject, outptr_QObject, outptr_QGraphicsItem, outptr_QGraphicsLayoutItem)
+	ret := newQGraphicsProxyWidget(C.QGraphicsProxyWidget_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsProxyWidget2 constructs a new QGraphicsProxyWidget object.
 func NewQGraphicsProxyWidget2(parent *QGraphicsItem) *QGraphicsProxyWidget {
-	var outptr_QGraphicsProxyWidget *C.QGraphicsProxyWidget = nil
-	var outptr_QGraphicsWidget *C.QGraphicsWidget = nil
-	var outptr_QGraphicsObject *C.QGraphicsObject = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QGraphicsItem *C.QGraphicsItem = nil
-	var outptr_QGraphicsLayoutItem *C.QGraphicsLayoutItem = nil
 
-	C.QGraphicsProxyWidget_new2(parent.cPointer(), &outptr_QGraphicsProxyWidget, &outptr_QGraphicsWidget, &outptr_QGraphicsObject, &outptr_QObject, &outptr_QGraphicsItem, &outptr_QGraphicsLayoutItem)
-	ret := newQGraphicsProxyWidget(outptr_QGraphicsProxyWidget, outptr_QGraphicsWidget, outptr_QGraphicsObject, outptr_QObject, outptr_QGraphicsItem, outptr_QGraphicsLayoutItem)
+	ret := newQGraphicsProxyWidget(C.QGraphicsProxyWidget_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsProxyWidget3 constructs a new QGraphicsProxyWidget object.
 func NewQGraphicsProxyWidget3(parent *QGraphicsItem, wFlags WindowType) *QGraphicsProxyWidget {
-	var outptr_QGraphicsProxyWidget *C.QGraphicsProxyWidget = nil
-	var outptr_QGraphicsWidget *C.QGraphicsWidget = nil
-	var outptr_QGraphicsObject *C.QGraphicsObject = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QGraphicsItem *C.QGraphicsItem = nil
-	var outptr_QGraphicsLayoutItem *C.QGraphicsLayoutItem = nil
 
-	C.QGraphicsProxyWidget_new3(parent.cPointer(), (C.int)(wFlags), &outptr_QGraphicsProxyWidget, &outptr_QGraphicsWidget, &outptr_QGraphicsObject, &outptr_QObject, &outptr_QGraphicsItem, &outptr_QGraphicsLayoutItem)
-	ret := newQGraphicsProxyWidget(outptr_QGraphicsProxyWidget, outptr_QGraphicsWidget, outptr_QGraphicsObject, outptr_QObject, outptr_QGraphicsItem, outptr_QGraphicsLayoutItem)
+	ret := newQGraphicsProxyWidget(C.QGraphicsProxyWidget_new3(parent.cPointer(), (C.int)(wFlags)))
 	ret.isSubclass = true
 	return ret
 }
@@ -137,7 +114,7 @@ func (this *QGraphicsProxyWidget) SetWidget(widget *QWidget) {
 }
 
 func (this *QGraphicsProxyWidget) Widget() *QWidget {
-	return newQWidget(C.QGraphicsProxyWidget_Widget(this.h), nil, nil)
+	return newQWidget(C.QGraphicsProxyWidget_Widget(this.h))
 }
 
 func (this *QGraphicsProxyWidget) SubWidgetRect(widget *QWidget) *QRectF {
@@ -159,7 +136,7 @@ func (this *QGraphicsProxyWidget) Type() int {
 }
 
 func (this *QGraphicsProxyWidget) CreateProxyForChildWidget(child *QWidget) *QGraphicsProxyWidget {
-	return newQGraphicsProxyWidget(C.QGraphicsProxyWidget_CreateProxyForChildWidget(this.h, child.cPointer()), nil, nil, nil, nil, nil)
+	return newQGraphicsProxyWidget(C.QGraphicsProxyWidget_CreateProxyForChildWidget(this.h, child.cPointer()))
 }
 
 func QGraphicsProxyWidget_Tr2(s string, c string) string {
@@ -254,9 +231,9 @@ func miqt_exec_callback_QGraphicsProxyWidget_Paint(self *C.QGraphicsProxyWidget,
 	// Convert all CABI parameters to Go parameters
 	slotval1 := newQPainter(painter)
 
-	slotval2 := newQStyleOptionGraphicsItem(option, nil)
+	slotval2 := newQStyleOptionGraphicsItem(option)
 
-	slotval3 := newQWidget(widget, nil, nil)
+	slotval3 := newQWidget(widget)
 
 	gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_Paint, slotval1, slotval2, slotval3)
 
@@ -397,7 +374,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_ShowEvent(self *C.QGraphicsProxyWid
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQShowEvent(event, nil)
+	slotval1 := newQShowEvent(event)
 
 	gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -423,7 +400,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_HideEvent(self *C.QGraphicsProxyWid
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQHideEvent(event, nil)
+	slotval1 := newQHideEvent(event)
 
 	gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -449,7 +426,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_ContextMenuEvent(self *C.QGraphicsP
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQGraphicsSceneContextMenuEvent(event, nil, nil)
+	slotval1 := newQGraphicsSceneContextMenuEvent(event)
 
 	gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -475,7 +452,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_DragEnterEvent(self *C.QGraphicsPro
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event)
 
 	gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -501,7 +478,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_DragLeaveEvent(self *C.QGraphicsPro
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event)
 
 	gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -527,7 +504,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_DragMoveEvent(self *C.QGraphicsProx
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event)
 
 	gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -553,7 +530,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_DropEvent(self *C.QGraphicsProxyWid
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQGraphicsSceneDragDropEvent(event, nil, nil)
+	slotval1 := newQGraphicsSceneDragDropEvent(event)
 
 	gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -579,7 +556,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_HoverEnterEvent(self *C.QGraphicsPr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event)
 
 	gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_HoverEnterEvent, slotval1)
 
@@ -605,7 +582,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_HoverLeaveEvent(self *C.QGraphicsPr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event)
 
 	gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_HoverLeaveEvent, slotval1)
 
@@ -631,7 +608,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_HoverMoveEvent(self *C.QGraphicsPro
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQGraphicsSceneHoverEvent(event, nil, nil)
+	slotval1 := newQGraphicsSceneHoverEvent(event)
 
 	gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_HoverMoveEvent, slotval1)
 
@@ -709,7 +686,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_MouseMoveEvent(self *C.QGraphicsPro
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event)
 
 	gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -735,7 +712,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_MousePressEvent(self *C.QGraphicsPr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event)
 
 	gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -761,7 +738,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_MouseReleaseEvent(self *C.QGraphics
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event)
 
 	gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -787,7 +764,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_MouseDoubleClickEvent(self *C.QGrap
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQGraphicsSceneMouseEvent(event, nil, nil)
+	slotval1 := newQGraphicsSceneMouseEvent(event)
 
 	gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -813,7 +790,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_WheelEvent(self *C.QGraphicsProxyWi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQGraphicsSceneWheelEvent(event, nil, nil)
+	slotval1 := newQGraphicsSceneWheelEvent(event)
 
 	gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -839,7 +816,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_KeyPressEvent(self *C.QGraphicsProx
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(event, nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -865,7 +842,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_KeyReleaseEvent(self *C.QGraphicsPr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(event, nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -891,7 +868,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_FocusInEvent(self *C.QGraphicsProxy
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -917,7 +894,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_FocusOutEvent(self *C.QGraphicsProx
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -1001,7 +978,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_InputMethodEvent(self *C.QGraphicsP
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQInputMethodEvent(event, nil)
+	slotval1 := newQInputMethodEvent(event)
 
 	gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -1059,7 +1036,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_ResizeEvent(self *C.QGraphicsProxyW
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQGraphicsSceneResizeEvent(event, nil, nil)
+	slotval1 := newQGraphicsSceneResizeEvent(event)
 
 	gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -1119,9 +1096,9 @@ func miqt_exec_callback_QGraphicsProxyWidget_PaintWindowFrame(self *C.QGraphicsP
 	// Convert all CABI parameters to Go parameters
 	slotval1 := newQPainter(painter)
 
-	slotval2 := newQStyleOptionGraphicsItem(option, nil)
+	slotval2 := newQStyleOptionGraphicsItem(option)
 
-	slotval3 := newQWidget(widget, nil, nil)
+	slotval3 := newQWidget(widget)
 
 	gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_PaintWindowFrame, slotval1, slotval2, slotval3)
 
@@ -1398,7 +1375,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_CloseEvent(self *C.QGraphicsProxyWi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQCloseEvent(event, nil)
+	slotval1 := newQCloseEvent(event)
 
 	gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -1424,7 +1401,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_MoveEvent(self *C.QGraphicsProxyWid
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQGraphicsSceneMoveEvent(event, nil, nil)
+	slotval1 := newQGraphicsSceneMoveEvent(event)
 
 	gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_MoveEvent, slotval1)
 

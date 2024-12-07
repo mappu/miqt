@@ -35,42 +35,34 @@ func (this *QGenericPlugin) UnsafePointer() unsafe.Pointer {
 }
 
 // newQGenericPlugin constructs the type using only CGO pointers.
-func newQGenericPlugin(h *C.QGenericPlugin, h_QObject *C.QObject) *QGenericPlugin {
+func newQGenericPlugin(h *C.QGenericPlugin) *QGenericPlugin {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QGenericPlugin_virtbase(h, &outptr_QObject)
+
 	return &QGenericPlugin{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQGenericPlugin constructs the type using only unsafe pointers.
-func UnsafeNewQGenericPlugin(h unsafe.Pointer, h_QObject unsafe.Pointer) *QGenericPlugin {
-	if h == nil {
-		return nil
-	}
-
-	return &QGenericPlugin{h: (*C.QGenericPlugin)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQGenericPlugin(h unsafe.Pointer) *QGenericPlugin {
+	return newQGenericPlugin((*C.QGenericPlugin)(h))
 }
 
 // NewQGenericPlugin constructs a new QGenericPlugin object.
 func NewQGenericPlugin() *QGenericPlugin {
-	var outptr_QGenericPlugin *C.QGenericPlugin = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QGenericPlugin_new(&outptr_QGenericPlugin, &outptr_QObject)
-	ret := newQGenericPlugin(outptr_QGenericPlugin, outptr_QObject)
+	ret := newQGenericPlugin(C.QGenericPlugin_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGenericPlugin2 constructs a new QGenericPlugin object.
 func NewQGenericPlugin2(parent *QObject) *QGenericPlugin {
-	var outptr_QGenericPlugin *C.QGenericPlugin = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QGenericPlugin_new2(parent.cPointer(), &outptr_QGenericPlugin, &outptr_QObject)
-	ret := newQGenericPlugin(outptr_QGenericPlugin, outptr_QObject)
+	ret := newQGenericPlugin(C.QGenericPlugin_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -266,7 +258,7 @@ func miqt_exec_callback_QGenericPlugin_TimerEvent(self *C.QGenericPlugin, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QGenericPlugin{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -292,7 +284,7 @@ func miqt_exec_callback_QGenericPlugin_ChildEvent(self *C.QGenericPlugin, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QGenericPlugin{h: self}).callVirtualBase_ChildEvent, slotval1)
 

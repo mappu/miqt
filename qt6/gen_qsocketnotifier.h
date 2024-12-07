@@ -34,10 +34,11 @@ typedef struct QSocketNotifier QSocketNotifier;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QSocketNotifier_new(int param1, QSocketNotifier** outptr_QSocketNotifier, QObject** outptr_QObject);
-void QSocketNotifier_new2(intptr_t socket, int param2, QSocketNotifier** outptr_QSocketNotifier, QObject** outptr_QObject);
-void QSocketNotifier_new3(int param1, QObject* parent, QSocketNotifier** outptr_QSocketNotifier, QObject** outptr_QObject);
-void QSocketNotifier_new4(intptr_t socket, int param2, QObject* parent, QSocketNotifier** outptr_QSocketNotifier, QObject** outptr_QObject);
+QSocketNotifier* QSocketNotifier_new(int param1);
+QSocketNotifier* QSocketNotifier_new2(intptr_t socket, int param2);
+QSocketNotifier* QSocketNotifier_new3(int param1, QObject* parent);
+QSocketNotifier* QSocketNotifier_new4(intptr_t socket, int param2, QObject* parent);
+void QSocketNotifier_virtbase(QSocketNotifier* src, QObject** outptr_QObject);
 QMetaObject* QSocketNotifier_MetaObject(const QSocketNotifier* self);
 void* QSocketNotifier_Metacast(QSocketNotifier* self, const char* param1);
 struct miqt_string QSocketNotifier_Tr(const char* s);
@@ -66,9 +67,9 @@ void QSocketNotifier_override_virtual_DisconnectNotify(void* self, intptr_t slot
 void QSocketNotifier_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QSocketNotifier_Delete(QSocketNotifier* self, bool isSubclass);
 
-void QSocketDescriptor_new(QSocketDescriptor** outptr_QSocketDescriptor);
-void QSocketDescriptor_new2(QSocketDescriptor* param1, QSocketDescriptor** outptr_QSocketDescriptor);
-void QSocketDescriptor_new3(int descriptor, QSocketDescriptor** outptr_QSocketDescriptor);
+QSocketDescriptor* QSocketDescriptor_new();
+QSocketDescriptor* QSocketDescriptor_new2(QSocketDescriptor* param1);
+QSocketDescriptor* QSocketDescriptor_new3(int descriptor);
 bool QSocketDescriptor_IsValid(const QSocketDescriptor* self);
 void QSocketDescriptor_Delete(QSocketDescriptor* self, bool isSubclass);
 

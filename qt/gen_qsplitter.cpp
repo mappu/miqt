@@ -236,40 +236,24 @@ public:
 
 };
 
-void QSplitter_new(QWidget* parent, QSplitter** outptr_QSplitter, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQSplitter* ret = new MiqtVirtualQSplitter(parent);
-	*outptr_QSplitter = ret;
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QSplitter* QSplitter_new(QWidget* parent) {
+	return new MiqtVirtualQSplitter(parent);
 }
 
-void QSplitter_new2(QSplitter** outptr_QSplitter, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQSplitter* ret = new MiqtVirtualQSplitter();
-	*outptr_QSplitter = ret;
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QSplitter* QSplitter_new2() {
+	return new MiqtVirtualQSplitter();
 }
 
-void QSplitter_new3(int param1, QSplitter** outptr_QSplitter, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQSplitter* ret = new MiqtVirtualQSplitter(static_cast<Qt::Orientation>(param1));
-	*outptr_QSplitter = ret;
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QSplitter* QSplitter_new3(int param1) {
+	return new MiqtVirtualQSplitter(static_cast<Qt::Orientation>(param1));
 }
 
-void QSplitter_new4(int param1, QWidget* parent, QSplitter** outptr_QSplitter, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQSplitter* ret = new MiqtVirtualQSplitter(static_cast<Qt::Orientation>(param1), parent);
-	*outptr_QSplitter = ret;
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QSplitter* QSplitter_new4(int param1, QWidget* parent) {
+	return new MiqtVirtualQSplitter(static_cast<Qt::Orientation>(param1), parent);
+}
+
+void QSplitter_virtbase(QSplitter* src, QFrame** outptr_QFrame) {
+	*outptr_QFrame = static_cast<QFrame*>(src);
 }
 
 QMetaObject* QSplitter_MetaObject(const QSplitter* self) {
@@ -1544,12 +1528,12 @@ public:
 
 };
 
-void QSplitterHandle_new(int o, QSplitter* parent, QSplitterHandle** outptr_QSplitterHandle, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQSplitterHandle* ret = new MiqtVirtualQSplitterHandle(static_cast<Qt::Orientation>(o), parent);
-	*outptr_QSplitterHandle = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QSplitterHandle* QSplitterHandle_new(int o, QSplitter* parent) {
+	return new MiqtVirtualQSplitterHandle(static_cast<Qt::Orientation>(o), parent);
+}
+
+void QSplitterHandle_virtbase(QSplitterHandle* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QSplitterHandle_MetaObject(const QSplitterHandle* self) {

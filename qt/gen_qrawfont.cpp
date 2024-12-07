@@ -15,38 +15,32 @@
 #include "gen_qrawfont.h"
 #include "_cgo_export.h"
 
-void QRawFont_new(QRawFont** outptr_QRawFont) {
-	QRawFont* ret = new QRawFont();
-	*outptr_QRawFont = ret;
+QRawFont* QRawFont_new() {
+	return new QRawFont();
 }
 
-void QRawFont_new2(struct miqt_string fileName, double pixelSize, QRawFont** outptr_QRawFont) {
+QRawFont* QRawFont_new2(struct miqt_string fileName, double pixelSize) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	QRawFont* ret = new QRawFont(fileName_QString, static_cast<qreal>(pixelSize));
-	*outptr_QRawFont = ret;
+	return new QRawFont(fileName_QString, static_cast<qreal>(pixelSize));
 }
 
-void QRawFont_new3(struct miqt_string fontData, double pixelSize, QRawFont** outptr_QRawFont) {
+QRawFont* QRawFont_new3(struct miqt_string fontData, double pixelSize) {
 	QByteArray fontData_QByteArray(fontData.data, fontData.len);
-	QRawFont* ret = new QRawFont(fontData_QByteArray, static_cast<qreal>(pixelSize));
-	*outptr_QRawFont = ret;
+	return new QRawFont(fontData_QByteArray, static_cast<qreal>(pixelSize));
 }
 
-void QRawFont_new4(QRawFont* other, QRawFont** outptr_QRawFont) {
-	QRawFont* ret = new QRawFont(*other);
-	*outptr_QRawFont = ret;
+QRawFont* QRawFont_new4(QRawFont* other) {
+	return new QRawFont(*other);
 }
 
-void QRawFont_new5(struct miqt_string fileName, double pixelSize, int hintingPreference, QRawFont** outptr_QRawFont) {
+QRawFont* QRawFont_new5(struct miqt_string fileName, double pixelSize, int hintingPreference) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	QRawFont* ret = new QRawFont(fileName_QString, static_cast<qreal>(pixelSize), static_cast<QFont::HintingPreference>(hintingPreference));
-	*outptr_QRawFont = ret;
+	return new QRawFont(fileName_QString, static_cast<qreal>(pixelSize), static_cast<QFont::HintingPreference>(hintingPreference));
 }
 
-void QRawFont_new6(struct miqt_string fontData, double pixelSize, int hintingPreference, QRawFont** outptr_QRawFont) {
+QRawFont* QRawFont_new6(struct miqt_string fontData, double pixelSize, int hintingPreference) {
 	QByteArray fontData_QByteArray(fontData.data, fontData.len);
-	QRawFont* ret = new QRawFont(fontData_QByteArray, static_cast<qreal>(pixelSize), static_cast<QFont::HintingPreference>(hintingPreference));
-	*outptr_QRawFont = ret;
+	return new QRawFont(fontData_QByteArray, static_cast<qreal>(pixelSize), static_cast<QFont::HintingPreference>(hintingPreference));
 }
 
 void QRawFont_OperatorAssign(QRawFont* self, QRawFont* other) {

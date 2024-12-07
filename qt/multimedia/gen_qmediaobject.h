@@ -28,6 +28,7 @@ typedef struct QObject QObject;
 typedef struct QVariant QVariant;
 #endif
 
+void QMediaObject_virtbase(QMediaObject* src, QObject** outptr_QObject);
 QMetaObject* QMediaObject_MetaObject(const QMediaObject* self);
 void* QMediaObject_Metacast(QMediaObject* self, const char* param1);
 struct miqt_string QMediaObject_Tr(const char* s);

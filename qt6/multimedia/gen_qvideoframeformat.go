@@ -125,44 +125,35 @@ func newQVideoFrameFormat(h *C.QVideoFrameFormat) *QVideoFrameFormat {
 	if h == nil {
 		return nil
 	}
+
 	return &QVideoFrameFormat{h: h}
 }
 
 // UnsafeNewQVideoFrameFormat constructs the type using only unsafe pointers.
 func UnsafeNewQVideoFrameFormat(h unsafe.Pointer) *QVideoFrameFormat {
-	if h == nil {
-		return nil
-	}
-
-	return &QVideoFrameFormat{h: (*C.QVideoFrameFormat)(h)}
+	return newQVideoFrameFormat((*C.QVideoFrameFormat)(h))
 }
 
 // NewQVideoFrameFormat constructs a new QVideoFrameFormat object.
 func NewQVideoFrameFormat() *QVideoFrameFormat {
-	var outptr_QVideoFrameFormat *C.QVideoFrameFormat = nil
 
-	C.QVideoFrameFormat_new(&outptr_QVideoFrameFormat)
-	ret := newQVideoFrameFormat(outptr_QVideoFrameFormat)
+	ret := newQVideoFrameFormat(C.QVideoFrameFormat_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVideoFrameFormat2 constructs a new QVideoFrameFormat object.
 func NewQVideoFrameFormat2(size *qt6.QSize, pixelFormat QVideoFrameFormat__PixelFormat) *QVideoFrameFormat {
-	var outptr_QVideoFrameFormat *C.QVideoFrameFormat = nil
 
-	C.QVideoFrameFormat_new2((*C.QSize)(size.UnsafePointer()), (C.int)(pixelFormat), &outptr_QVideoFrameFormat)
-	ret := newQVideoFrameFormat(outptr_QVideoFrameFormat)
+	ret := newQVideoFrameFormat(C.QVideoFrameFormat_new2((*C.QSize)(size.UnsafePointer()), (C.int)(pixelFormat)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVideoFrameFormat3 constructs a new QVideoFrameFormat object.
 func NewQVideoFrameFormat3(format *QVideoFrameFormat) *QVideoFrameFormat {
-	var outptr_QVideoFrameFormat *C.QVideoFrameFormat = nil
 
-	C.QVideoFrameFormat_new3(format.cPointer(), &outptr_QVideoFrameFormat)
-	ret := newQVideoFrameFormat(outptr_QVideoFrameFormat)
+	ret := newQVideoFrameFormat(C.QVideoFrameFormat_new3(format.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

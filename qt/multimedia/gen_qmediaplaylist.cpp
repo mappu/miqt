@@ -245,18 +245,17 @@ public:
 
 };
 
-void QMediaPlaylist_new(QMediaPlaylist** outptr_QMediaPlaylist, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface) {
-	MiqtVirtualQMediaPlaylist* ret = new MiqtVirtualQMediaPlaylist();
-	*outptr_QMediaPlaylist = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QMediaBindableInterface = static_cast<QMediaBindableInterface*>(ret);
+QMediaPlaylist* QMediaPlaylist_new() {
+	return new MiqtVirtualQMediaPlaylist();
 }
 
-void QMediaPlaylist_new2(QObject* parent, QMediaPlaylist** outptr_QMediaPlaylist, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface) {
-	MiqtVirtualQMediaPlaylist* ret = new MiqtVirtualQMediaPlaylist(parent);
-	*outptr_QMediaPlaylist = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QMediaBindableInterface = static_cast<QMediaBindableInterface*>(ret);
+QMediaPlaylist* QMediaPlaylist_new2(QObject* parent) {
+	return new MiqtVirtualQMediaPlaylist(parent);
+}
+
+void QMediaPlaylist_virtbase(QMediaPlaylist* src, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface) {
+	*outptr_QObject = static_cast<QObject*>(src);
+	*outptr_QMediaBindableInterface = static_cast<QMediaBindableInterface*>(src);
 }
 
 QMetaObject* QMediaPlaylist_MetaObject(const QMediaPlaylist* self) {

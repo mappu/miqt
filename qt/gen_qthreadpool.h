@@ -36,8 +36,9 @@ typedef struct QThreadPool QThreadPool;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QThreadPool_new(QThreadPool** outptr_QThreadPool, QObject** outptr_QObject);
-void QThreadPool_new2(QObject* parent, QThreadPool** outptr_QThreadPool, QObject** outptr_QObject);
+QThreadPool* QThreadPool_new();
+QThreadPool* QThreadPool_new2(QObject* parent);
+void QThreadPool_virtbase(QThreadPool* src, QObject** outptr_QObject);
 QMetaObject* QThreadPool_MetaObject(const QThreadPool* self);
 void* QThreadPool_Metacast(QThreadPool* self, const char* param1);
 struct miqt_string QThreadPool_Tr(const char* s);

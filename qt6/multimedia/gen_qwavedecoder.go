@@ -36,72 +36,50 @@ func (this *QWaveDecoder) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWaveDecoder constructs the type using only CGO pointers.
-func newQWaveDecoder(h *C.QWaveDecoder, h_QIODevice *C.QIODevice, h_QObject *C.QObject, h_QIODeviceBase *C.QIODeviceBase) *QWaveDecoder {
+func newQWaveDecoder(h *C.QWaveDecoder) *QWaveDecoder {
 	if h == nil {
 		return nil
 	}
+	var outptr_QIODevice *C.QIODevice = nil
+	C.QWaveDecoder_virtbase(h, &outptr_QIODevice)
+
 	return &QWaveDecoder{h: h,
-		QIODevice: qt6.UnsafeNewQIODevice(unsafe.Pointer(h_QIODevice), unsafe.Pointer(h_QObject), unsafe.Pointer(h_QIODeviceBase))}
+		QIODevice: qt6.UnsafeNewQIODevice(unsafe.Pointer(outptr_QIODevice))}
 }
 
 // UnsafeNewQWaveDecoder constructs the type using only unsafe pointers.
-func UnsafeNewQWaveDecoder(h unsafe.Pointer, h_QIODevice unsafe.Pointer, h_QObject unsafe.Pointer, h_QIODeviceBase unsafe.Pointer) *QWaveDecoder {
-	if h == nil {
-		return nil
-	}
-
-	return &QWaveDecoder{h: (*C.QWaveDecoder)(h),
-		QIODevice: qt6.UnsafeNewQIODevice(h_QIODevice, h_QObject, h_QIODeviceBase)}
+func UnsafeNewQWaveDecoder(h unsafe.Pointer) *QWaveDecoder {
+	return newQWaveDecoder((*C.QWaveDecoder)(h))
 }
 
 // NewQWaveDecoder constructs a new QWaveDecoder object.
 func NewQWaveDecoder(device *qt6.QIODevice) *QWaveDecoder {
-	var outptr_QWaveDecoder *C.QWaveDecoder = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QIODeviceBase *C.QIODeviceBase = nil
 
-	C.QWaveDecoder_new((*C.QIODevice)(device.UnsafePointer()), &outptr_QWaveDecoder, &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
-	ret := newQWaveDecoder(outptr_QWaveDecoder, outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret := newQWaveDecoder(C.QWaveDecoder_new((*C.QIODevice)(device.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWaveDecoder2 constructs a new QWaveDecoder object.
 func NewQWaveDecoder2(device *qt6.QIODevice, format *QAudioFormat) *QWaveDecoder {
-	var outptr_QWaveDecoder *C.QWaveDecoder = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QIODeviceBase *C.QIODeviceBase = nil
 
-	C.QWaveDecoder_new2((*C.QIODevice)(device.UnsafePointer()), format.cPointer(), &outptr_QWaveDecoder, &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
-	ret := newQWaveDecoder(outptr_QWaveDecoder, outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret := newQWaveDecoder(C.QWaveDecoder_new2((*C.QIODevice)(device.UnsafePointer()), format.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWaveDecoder3 constructs a new QWaveDecoder object.
 func NewQWaveDecoder3(device *qt6.QIODevice, parent *qt6.QObject) *QWaveDecoder {
-	var outptr_QWaveDecoder *C.QWaveDecoder = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QIODeviceBase *C.QIODeviceBase = nil
 
-	C.QWaveDecoder_new3((*C.QIODevice)(device.UnsafePointer()), (*C.QObject)(parent.UnsafePointer()), &outptr_QWaveDecoder, &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
-	ret := newQWaveDecoder(outptr_QWaveDecoder, outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret := newQWaveDecoder(C.QWaveDecoder_new3((*C.QIODevice)(device.UnsafePointer()), (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWaveDecoder4 constructs a new QWaveDecoder object.
 func NewQWaveDecoder4(device *qt6.QIODevice, format *QAudioFormat, parent *qt6.QObject) *QWaveDecoder {
-	var outptr_QWaveDecoder *C.QWaveDecoder = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QIODeviceBase *C.QIODeviceBase = nil
 
-	C.QWaveDecoder_new4((*C.QIODevice)(device.UnsafePointer()), format.cPointer(), (*C.QObject)(parent.UnsafePointer()), &outptr_QWaveDecoder, &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
-	ret := newQWaveDecoder(outptr_QWaveDecoder, outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret := newQWaveDecoder(C.QWaveDecoder_new4((*C.QIODevice)(device.UnsafePointer()), format.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -132,7 +110,7 @@ func (this *QWaveDecoder) AudioFormat() *QAudioFormat {
 }
 
 func (this *QWaveDecoder) GetDevice() *qt6.QIODevice {
-	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QWaveDecoder_GetDevice(this.h)), nil, nil)
+	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QWaveDecoder_GetDevice(this.h)))
 }
 
 func (this *QWaveDecoder) Duration() int {

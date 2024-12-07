@@ -24,10 +24,10 @@ typedef struct QOperatingSystemVersionBase QOperatingSystemVersionBase;
 typedef struct QVersionNumber QVersionNumber;
 #endif
 
-void QOperatingSystemVersionBase_new(int osType, int vmajor, QOperatingSystemVersionBase** outptr_QOperatingSystemVersionBase);
-void QOperatingSystemVersionBase_new2(QOperatingSystemVersionBase* param1, QOperatingSystemVersionBase** outptr_QOperatingSystemVersionBase);
-void QOperatingSystemVersionBase_new3(int osType, int vmajor, int vminor, QOperatingSystemVersionBase** outptr_QOperatingSystemVersionBase);
-void QOperatingSystemVersionBase_new4(int osType, int vmajor, int vminor, int vmicro, QOperatingSystemVersionBase** outptr_QOperatingSystemVersionBase);
+QOperatingSystemVersionBase* QOperatingSystemVersionBase_new(int osType, int vmajor);
+QOperatingSystemVersionBase* QOperatingSystemVersionBase_new2(QOperatingSystemVersionBase* param1);
+QOperatingSystemVersionBase* QOperatingSystemVersionBase_new3(int osType, int vmajor, int vminor);
+QOperatingSystemVersionBase* QOperatingSystemVersionBase_new4(int osType, int vmajor, int vminor, int vmicro);
 QOperatingSystemVersionBase* QOperatingSystemVersionBase_Current();
 struct miqt_string QOperatingSystemVersionBase_Name(QOperatingSystemVersionBase* osversion);
 int QOperatingSystemVersionBase_CurrentType();
@@ -40,11 +40,12 @@ int QOperatingSystemVersionBase_Type(const QOperatingSystemVersionBase* self);
 struct miqt_string QOperatingSystemVersionBase_Name2(const QOperatingSystemVersionBase* self);
 void QOperatingSystemVersionBase_Delete(QOperatingSystemVersionBase* self, bool isSubclass);
 
-void QOperatingSystemVersion_new(QOperatingSystemVersionBase* osversion, QOperatingSystemVersion** outptr_QOperatingSystemVersion, QOperatingSystemVersionBase** outptr_QOperatingSystemVersionBase);
-void QOperatingSystemVersion_new2(int osType, int vmajor, QOperatingSystemVersion** outptr_QOperatingSystemVersion, QOperatingSystemVersionBase** outptr_QOperatingSystemVersionBase);
-void QOperatingSystemVersion_new3(QOperatingSystemVersion* param1, QOperatingSystemVersion** outptr_QOperatingSystemVersion, QOperatingSystemVersionBase** outptr_QOperatingSystemVersionBase);
-void QOperatingSystemVersion_new4(int osType, int vmajor, int vminor, QOperatingSystemVersion** outptr_QOperatingSystemVersion, QOperatingSystemVersionBase** outptr_QOperatingSystemVersionBase);
-void QOperatingSystemVersion_new5(int osType, int vmajor, int vminor, int vmicro, QOperatingSystemVersion** outptr_QOperatingSystemVersion, QOperatingSystemVersionBase** outptr_QOperatingSystemVersionBase);
+QOperatingSystemVersion* QOperatingSystemVersion_new(QOperatingSystemVersionBase* osversion);
+QOperatingSystemVersion* QOperatingSystemVersion_new2(int osType, int vmajor);
+QOperatingSystemVersion* QOperatingSystemVersion_new3(QOperatingSystemVersion* param1);
+QOperatingSystemVersion* QOperatingSystemVersion_new4(int osType, int vmajor, int vminor);
+QOperatingSystemVersion* QOperatingSystemVersion_new5(int osType, int vmajor, int vminor, int vmicro);
+void QOperatingSystemVersion_virtbase(QOperatingSystemVersion* src, QOperatingSystemVersionBase** outptr_QOperatingSystemVersionBase);
 QOperatingSystemVersion* QOperatingSystemVersion_Current();
 int QOperatingSystemVersion_CurrentType();
 QVersionNumber* QOperatingSystemVersion_Version(const QOperatingSystemVersion* self);

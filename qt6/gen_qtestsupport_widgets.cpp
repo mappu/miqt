@@ -63,10 +63,12 @@ public:
 
 };
 
-void QTest__QTouchEventWidgetSequence_new(QTest__QTouchEventWidgetSequence* param1, QTest__QTouchEventWidgetSequence** outptr_QTest__QTouchEventWidgetSequence, QTest__QTouchEventSequence** outptr_QTest__QTouchEventSequence) {
-	MiqtVirtualQTestQTouchEventWidgetSequence* ret = new MiqtVirtualQTestQTouchEventWidgetSequence(*param1);
-	*outptr_QTest__QTouchEventWidgetSequence = ret;
-	*outptr_QTest__QTouchEventSequence = static_cast<QTest::QTouchEventSequence*>(ret);
+QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_new(QTest__QTouchEventWidgetSequence* param1) {
+	return new MiqtVirtualQTestQTouchEventWidgetSequence(*param1);
+}
+
+void QTest__QTouchEventWidgetSequence_virtbase(QTest__QTouchEventWidgetSequence* src, QTest::QTouchEventSequence** outptr_QTest__QTouchEventSequence) {
+	*outptr_QTest__QTouchEventSequence = static_cast<QTest::QTouchEventSequence*>(src);
 }
 
 QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_Press(QTest__QTouchEventWidgetSequence* self, int touchId, QPoint* pt) {

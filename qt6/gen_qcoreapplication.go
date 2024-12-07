@@ -41,22 +41,20 @@ func (this *QCoreApplication) UnsafePointer() unsafe.Pointer {
 }
 
 // newQCoreApplication constructs the type using only CGO pointers.
-func newQCoreApplication(h *C.QCoreApplication, h_QObject *C.QObject) *QCoreApplication {
+func newQCoreApplication(h *C.QCoreApplication) *QCoreApplication {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QCoreApplication_virtbase(h, &outptr_QObject)
+
 	return &QCoreApplication{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQCoreApplication constructs the type using only unsafe pointers.
-func UnsafeNewQCoreApplication(h unsafe.Pointer, h_QObject unsafe.Pointer) *QCoreApplication {
-	if h == nil {
-		return nil
-	}
-
-	return &QCoreApplication{h: (*C.QCoreApplication)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQCoreApplication(h unsafe.Pointer) *QCoreApplication {
+	return newQCoreApplication((*C.QCoreApplication)(h))
 }
 
 // NewQCoreApplication constructs a new QCoreApplication object.
@@ -71,11 +69,7 @@ func NewQCoreApplication(args []string) *QCoreApplication {
 
 	runtime.LockOSThread() // Prevent Go from migrating the main Qt thread
 
-	var outptr_QCoreApplication *C.QCoreApplication = nil
-	var outptr_QObject *C.QObject = nil
-
-	C.QCoreApplication_new(argc, &argv[0], &outptr_QCoreApplication, &outptr_QObject)
-	ret := newQCoreApplication(outptr_QCoreApplication, outptr_QObject)
+	ret := newQCoreApplication(C.QCoreApplication_new(argc, &argv[0]))
 	ret.isSubclass = true
 	return ret
 }
@@ -92,11 +86,7 @@ func NewQCoreApplication2(args []string, param3 int) *QCoreApplication {
 
 	runtime.LockOSThread() // Prevent Go from migrating the main Qt thread
 
-	var outptr_QCoreApplication *C.QCoreApplication = nil
-	var outptr_QObject *C.QObject = nil
-
-	C.QCoreApplication_new2(argc, &argv[0], (C.int)(param3), &outptr_QCoreApplication, &outptr_QObject)
-	ret := newQCoreApplication(outptr_QCoreApplication, outptr_QObject)
+	ret := newQCoreApplication(C.QCoreApplication_new2(argc, &argv[0], (C.int)(param3)))
 	ret.isSubclass = true
 	return ret
 }
@@ -210,7 +200,7 @@ func QCoreApplication_IsSetuidAllowed() bool {
 }
 
 func QCoreApplication_Instance() *QCoreApplication {
-	return newQCoreApplication(C.QCoreApplication_Instance(), nil)
+	return newQCoreApplication(C.QCoreApplication_Instance())
 }
 
 func QCoreApplication_Exec() int {
@@ -242,7 +232,7 @@ func QCoreApplication_RemovePostedEvents(receiver *QObject) {
 }
 
 func QCoreApplication_EventDispatcher() *QAbstractEventDispatcher {
-	return newQAbstractEventDispatcher(C.QCoreApplication_EventDispatcher(), nil)
+	return newQAbstractEventDispatcher(C.QCoreApplication_EventDispatcher())
 }
 
 func QCoreApplication_SetEventDispatcher(eventDispatcher *QAbstractEventDispatcher) {
@@ -649,7 +639,7 @@ func miqt_exec_callback_QCoreApplication_TimerEvent(self *C.QCoreApplication, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QCoreApplication{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -675,7 +665,7 @@ func miqt_exec_callback_QCoreApplication_ChildEvent(self *C.QCoreApplication, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QCoreApplication{h: self}).callVirtualBase_ChildEvent, slotval1)
 

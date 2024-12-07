@@ -34,8 +34,9 @@ typedef struct QsciLexerVerilog QsciLexerVerilog;
 typedef struct QsciScintilla QsciScintilla;
 #endif
 
-void QsciLexerVerilog_new(QsciLexerVerilog** outptr_QsciLexerVerilog, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerVerilog_new2(QObject* parent, QsciLexerVerilog** outptr_QsciLexerVerilog, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerVerilog* QsciLexerVerilog_new();
+QsciLexerVerilog* QsciLexerVerilog_new2(QObject* parent);
+void QsciLexerVerilog_virtbase(QsciLexerVerilog* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerVerilog_MetaObject(const QsciLexerVerilog* self);
 void* QsciLexerVerilog_Metacast(QsciLexerVerilog* self, const char* param1);
 struct miqt_string QsciLexerVerilog_Tr(const char* s);

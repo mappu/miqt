@@ -44,8 +44,9 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QLayout_new(QWidget* parent, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem);
-void QLayout_new2(QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem);
+QLayout* QLayout_new(QWidget* parent);
+QLayout* QLayout_new2();
+void QLayout_virtbase(QLayout* src, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem);
 QMetaObject* QLayout_MetaObject(const QLayout* self);
 void* QLayout_Metacast(QLayout* self, const char* param1);
 struct miqt_string QLayout_Tr(const char* s);

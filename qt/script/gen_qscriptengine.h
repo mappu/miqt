@@ -52,7 +52,7 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 #endif
 
-void QScriptSyntaxCheckResult_new(QScriptSyntaxCheckResult* other, QScriptSyntaxCheckResult** outptr_QScriptSyntaxCheckResult);
+QScriptSyntaxCheckResult* QScriptSyntaxCheckResult_new(QScriptSyntaxCheckResult* other);
 int QScriptSyntaxCheckResult_State(const QScriptSyntaxCheckResult* self);
 int QScriptSyntaxCheckResult_ErrorLineNumber(const QScriptSyntaxCheckResult* self);
 int QScriptSyntaxCheckResult_ErrorColumnNumber(const QScriptSyntaxCheckResult* self);
@@ -60,8 +60,9 @@ struct miqt_string QScriptSyntaxCheckResult_ErrorMessage(const QScriptSyntaxChec
 void QScriptSyntaxCheckResult_OperatorAssign(QScriptSyntaxCheckResult* self, QScriptSyntaxCheckResult* other);
 void QScriptSyntaxCheckResult_Delete(QScriptSyntaxCheckResult* self, bool isSubclass);
 
-void QScriptEngine_new(QScriptEngine** outptr_QScriptEngine, QObject** outptr_QObject);
-void QScriptEngine_new2(QObject* parent, QScriptEngine** outptr_QScriptEngine, QObject** outptr_QObject);
+QScriptEngine* QScriptEngine_new();
+QScriptEngine* QScriptEngine_new2(QObject* parent);
+void QScriptEngine_virtbase(QScriptEngine* src, QObject** outptr_QObject);
 QMetaObject* QScriptEngine_MetaObject(const QScriptEngine* self);
 void* QScriptEngine_Metacast(QScriptEngine* self, const char* param1);
 struct miqt_string QScriptEngine_Tr(const char* s);

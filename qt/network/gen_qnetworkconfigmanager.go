@@ -48,42 +48,34 @@ func (this *QNetworkConfigurationManager) UnsafePointer() unsafe.Pointer {
 }
 
 // newQNetworkConfigurationManager constructs the type using only CGO pointers.
-func newQNetworkConfigurationManager(h *C.QNetworkConfigurationManager, h_QObject *C.QObject) *QNetworkConfigurationManager {
+func newQNetworkConfigurationManager(h *C.QNetworkConfigurationManager) *QNetworkConfigurationManager {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QNetworkConfigurationManager_virtbase(h, &outptr_QObject)
+
 	return &QNetworkConfigurationManager{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQNetworkConfigurationManager constructs the type using only unsafe pointers.
-func UnsafeNewQNetworkConfigurationManager(h unsafe.Pointer, h_QObject unsafe.Pointer) *QNetworkConfigurationManager {
-	if h == nil {
-		return nil
-	}
-
-	return &QNetworkConfigurationManager{h: (*C.QNetworkConfigurationManager)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQNetworkConfigurationManager(h unsafe.Pointer) *QNetworkConfigurationManager {
+	return newQNetworkConfigurationManager((*C.QNetworkConfigurationManager)(h))
 }
 
 // NewQNetworkConfigurationManager constructs a new QNetworkConfigurationManager object.
 func NewQNetworkConfigurationManager() *QNetworkConfigurationManager {
-	var outptr_QNetworkConfigurationManager *C.QNetworkConfigurationManager = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QNetworkConfigurationManager_new(&outptr_QNetworkConfigurationManager, &outptr_QObject)
-	ret := newQNetworkConfigurationManager(outptr_QNetworkConfigurationManager, outptr_QObject)
+	ret := newQNetworkConfigurationManager(C.QNetworkConfigurationManager_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQNetworkConfigurationManager2 constructs a new QNetworkConfigurationManager object.
 func NewQNetworkConfigurationManager2(parent *qt.QObject) *QNetworkConfigurationManager {
-	var outptr_QNetworkConfigurationManager *C.QNetworkConfigurationManager = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QNetworkConfigurationManager_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QNetworkConfigurationManager, &outptr_QObject)
-	ret := newQNetworkConfigurationManager(outptr_QNetworkConfigurationManager, outptr_QObject)
+	ret := newQNetworkConfigurationManager(C.QNetworkConfigurationManager_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -387,7 +379,7 @@ func miqt_exec_callback_QNetworkConfigurationManager_TimerEvent(self *C.QNetwork
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QNetworkConfigurationManager{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -413,7 +405,7 @@ func miqt_exec_callback_QNetworkConfigurationManager_ChildEvent(self *C.QNetwork
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QNetworkConfigurationManager{h: self}).callVirtualBase_ChildEvent, slotval1)
 

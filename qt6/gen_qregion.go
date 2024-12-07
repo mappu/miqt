@@ -44,84 +44,67 @@ func newQRegion(h *C.QRegion) *QRegion {
 	if h == nil {
 		return nil
 	}
+
 	return &QRegion{h: h}
 }
 
 // UnsafeNewQRegion constructs the type using only unsafe pointers.
 func UnsafeNewQRegion(h unsafe.Pointer) *QRegion {
-	if h == nil {
-		return nil
-	}
-
-	return &QRegion{h: (*C.QRegion)(h)}
+	return newQRegion((*C.QRegion)(h))
 }
 
 // NewQRegion constructs a new QRegion object.
 func NewQRegion() *QRegion {
-	var outptr_QRegion *C.QRegion = nil
 
-	C.QRegion_new(&outptr_QRegion)
-	ret := newQRegion(outptr_QRegion)
+	ret := newQRegion(C.QRegion_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQRegion2 constructs a new QRegion object.
 func NewQRegion2(x int, y int, w int, h int) *QRegion {
-	var outptr_QRegion *C.QRegion = nil
 
-	C.QRegion_new2((C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), &outptr_QRegion)
-	ret := newQRegion(outptr_QRegion)
+	ret := newQRegion(C.QRegion_new2((C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQRegion3 constructs a new QRegion object.
 func NewQRegion3(r *QRect) *QRegion {
-	var outptr_QRegion *C.QRegion = nil
 
-	C.QRegion_new3(r.cPointer(), &outptr_QRegion)
-	ret := newQRegion(outptr_QRegion)
+	ret := newQRegion(C.QRegion_new3(r.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQRegion4 constructs a new QRegion object.
 func NewQRegion4(region *QRegion) *QRegion {
-	var outptr_QRegion *C.QRegion = nil
 
-	C.QRegion_new4(region.cPointer(), &outptr_QRegion)
-	ret := newQRegion(outptr_QRegion)
+	ret := newQRegion(C.QRegion_new4(region.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQRegion5 constructs a new QRegion object.
 func NewQRegion5(bitmap *QBitmap) *QRegion {
-	var outptr_QRegion *C.QRegion = nil
 
-	C.QRegion_new5(bitmap.cPointer(), &outptr_QRegion)
-	ret := newQRegion(outptr_QRegion)
+	ret := newQRegion(C.QRegion_new5(bitmap.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQRegion6 constructs a new QRegion object.
 func NewQRegion6(x int, y int, w int, h int, t QRegion__RegionType) *QRegion {
-	var outptr_QRegion *C.QRegion = nil
 
-	C.QRegion_new6((C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(t), &outptr_QRegion)
-	ret := newQRegion(outptr_QRegion)
+	ret := newQRegion(C.QRegion_new6((C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(t)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQRegion7 constructs a new QRegion object.
 func NewQRegion7(r *QRect, t QRegion__RegionType) *QRegion {
-	var outptr_QRegion *C.QRegion = nil
 
-	C.QRegion_new7(r.cPointer(), (C.int)(t), &outptr_QRegion)
-	ret := newQRegion(outptr_QRegion)
+	ret := newQRegion(C.QRegion_new7(r.cPointer(), (C.int)(t)))
 	ret.isSubclass = true
 	return ret
 }

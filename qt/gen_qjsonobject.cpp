@@ -15,14 +15,12 @@
 #include "gen_qjsonobject.h"
 #include "_cgo_export.h"
 
-void QJsonObject_new(QJsonObject** outptr_QJsonObject) {
-	QJsonObject* ret = new QJsonObject();
-	*outptr_QJsonObject = ret;
+QJsonObject* QJsonObject_new() {
+	return new QJsonObject();
 }
 
-void QJsonObject_new2(QJsonObject* other, QJsonObject** outptr_QJsonObject) {
-	QJsonObject* ret = new QJsonObject(*other);
-	*outptr_QJsonObject = ret;
+QJsonObject* QJsonObject_new2(QJsonObject* other) {
+	return new QJsonObject(*other);
 }
 
 void QJsonObject_OperatorAssign(QJsonObject* self, QJsonObject* other) {
@@ -240,19 +238,16 @@ void QJsonObject_Delete(QJsonObject* self, bool isSubclass) {
 	}
 }
 
-void QJsonObject__iterator_new(QJsonObject__iterator** outptr_QJsonObject__iterator) {
-	QJsonObject::iterator* ret = new QJsonObject::iterator();
-	*outptr_QJsonObject__iterator = ret;
+QJsonObject__iterator* QJsonObject__iterator_new() {
+	return new QJsonObject::iterator();
 }
 
-void QJsonObject__iterator_new2(QJsonObject* obj, int index, QJsonObject__iterator** outptr_QJsonObject__iterator) {
-	QJsonObject::iterator* ret = new QJsonObject::iterator(obj, static_cast<int>(index));
-	*outptr_QJsonObject__iterator = ret;
+QJsonObject__iterator* QJsonObject__iterator_new2(QJsonObject* obj, int index) {
+	return new QJsonObject::iterator(obj, static_cast<int>(index));
 }
 
-void QJsonObject__iterator_new3(QJsonObject__iterator* param1, QJsonObject__iterator** outptr_QJsonObject__iterator) {
-	QJsonObject::iterator* ret = new QJsonObject::iterator(*param1);
-	*outptr_QJsonObject__iterator = ret;
+QJsonObject__iterator* QJsonObject__iterator_new3(QJsonObject__iterator* param1) {
+	return new QJsonObject::iterator(*param1);
 }
 
 struct miqt_string QJsonObject__iterator_Key(const QJsonObject__iterator* self) {
@@ -382,24 +377,20 @@ void QJsonObject__iterator_Delete(QJsonObject__iterator* self, bool isSubclass) 
 	}
 }
 
-void QJsonObject__const_iterator_new(QJsonObject__const_iterator** outptr_QJsonObject__const_iterator) {
-	QJsonObject::const_iterator* ret = new QJsonObject::const_iterator();
-	*outptr_QJsonObject__const_iterator = ret;
+QJsonObject__const_iterator* QJsonObject__const_iterator_new() {
+	return new QJsonObject::const_iterator();
 }
 
-void QJsonObject__const_iterator_new2(QJsonObject* obj, int index, QJsonObject__const_iterator** outptr_QJsonObject__const_iterator) {
-	QJsonObject::const_iterator* ret = new QJsonObject::const_iterator(obj, static_cast<int>(index));
-	*outptr_QJsonObject__const_iterator = ret;
+QJsonObject__const_iterator* QJsonObject__const_iterator_new2(QJsonObject* obj, int index) {
+	return new QJsonObject::const_iterator(obj, static_cast<int>(index));
 }
 
-void QJsonObject__const_iterator_new3(QJsonObject__iterator* other, QJsonObject__const_iterator** outptr_QJsonObject__const_iterator) {
-	QJsonObject::const_iterator* ret = new QJsonObject::const_iterator(*other);
-	*outptr_QJsonObject__const_iterator = ret;
+QJsonObject__const_iterator* QJsonObject__const_iterator_new3(QJsonObject__iterator* other) {
+	return new QJsonObject::const_iterator(*other);
 }
 
-void QJsonObject__const_iterator_new4(QJsonObject__const_iterator* param1, QJsonObject__const_iterator** outptr_QJsonObject__const_iterator) {
-	QJsonObject::const_iterator* ret = new QJsonObject::const_iterator(*param1);
-	*outptr_QJsonObject__const_iterator = ret;
+QJsonObject__const_iterator* QJsonObject__const_iterator_new4(QJsonObject__const_iterator* param1) {
+	return new QJsonObject::const_iterator(*param1);
 }
 
 struct miqt_string QJsonObject__const_iterator_Key(const QJsonObject__const_iterator* self) {

@@ -35,44 +35,34 @@ func (this *QBuffer) UnsafePointer() unsafe.Pointer {
 }
 
 // newQBuffer constructs the type using only CGO pointers.
-func newQBuffer(h *C.QBuffer, h_QIODevice *C.QIODevice, h_QObject *C.QObject) *QBuffer {
+func newQBuffer(h *C.QBuffer) *QBuffer {
 	if h == nil {
 		return nil
 	}
+	var outptr_QIODevice *C.QIODevice = nil
+	C.QBuffer_virtbase(h, &outptr_QIODevice)
+
 	return &QBuffer{h: h,
-		QIODevice: newQIODevice(h_QIODevice, h_QObject)}
+		QIODevice: newQIODevice(outptr_QIODevice)}
 }
 
 // UnsafeNewQBuffer constructs the type using only unsafe pointers.
-func UnsafeNewQBuffer(h unsafe.Pointer, h_QIODevice unsafe.Pointer, h_QObject unsafe.Pointer) *QBuffer {
-	if h == nil {
-		return nil
-	}
-
-	return &QBuffer{h: (*C.QBuffer)(h),
-		QIODevice: UnsafeNewQIODevice(h_QIODevice, h_QObject)}
+func UnsafeNewQBuffer(h unsafe.Pointer) *QBuffer {
+	return newQBuffer((*C.QBuffer)(h))
 }
 
 // NewQBuffer constructs a new QBuffer object.
 func NewQBuffer() *QBuffer {
-	var outptr_QBuffer *C.QBuffer = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QBuffer_new(&outptr_QBuffer, &outptr_QIODevice, &outptr_QObject)
-	ret := newQBuffer(outptr_QBuffer, outptr_QIODevice, outptr_QObject)
+	ret := newQBuffer(C.QBuffer_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQBuffer2 constructs a new QBuffer object.
 func NewQBuffer2(parent *QObject) *QBuffer {
-	var outptr_QBuffer *C.QBuffer = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QBuffer_new2(parent.cPointer(), &outptr_QBuffer, &outptr_QIODevice, &outptr_QObject)
-	ret := newQBuffer(outptr_QBuffer, outptr_QIODevice, outptr_QObject)
+	ret := newQBuffer(C.QBuffer_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

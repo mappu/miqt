@@ -38,44 +38,35 @@ func newQPrinterInfo(h *C.QPrinterInfo) *QPrinterInfo {
 	if h == nil {
 		return nil
 	}
+
 	return &QPrinterInfo{h: h}
 }
 
 // UnsafeNewQPrinterInfo constructs the type using only unsafe pointers.
 func UnsafeNewQPrinterInfo(h unsafe.Pointer) *QPrinterInfo {
-	if h == nil {
-		return nil
-	}
-
-	return &QPrinterInfo{h: (*C.QPrinterInfo)(h)}
+	return newQPrinterInfo((*C.QPrinterInfo)(h))
 }
 
 // NewQPrinterInfo constructs a new QPrinterInfo object.
 func NewQPrinterInfo() *QPrinterInfo {
-	var outptr_QPrinterInfo *C.QPrinterInfo = nil
 
-	C.QPrinterInfo_new(&outptr_QPrinterInfo)
-	ret := newQPrinterInfo(outptr_QPrinterInfo)
+	ret := newQPrinterInfo(C.QPrinterInfo_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPrinterInfo2 constructs a new QPrinterInfo object.
 func NewQPrinterInfo2(other *QPrinterInfo) *QPrinterInfo {
-	var outptr_QPrinterInfo *C.QPrinterInfo = nil
 
-	C.QPrinterInfo_new2(other.cPointer(), &outptr_QPrinterInfo)
-	ret := newQPrinterInfo(outptr_QPrinterInfo)
+	ret := newQPrinterInfo(C.QPrinterInfo_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPrinterInfo3 constructs a new QPrinterInfo object.
 func NewQPrinterInfo3(printer *QPrinter) *QPrinterInfo {
-	var outptr_QPrinterInfo *C.QPrinterInfo = nil
 
-	C.QPrinterInfo_new3(printer.cPointer(), &outptr_QPrinterInfo)
-	ret := newQPrinterInfo(outptr_QPrinterInfo)
+	ret := newQPrinterInfo(C.QPrinterInfo_new3(printer.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

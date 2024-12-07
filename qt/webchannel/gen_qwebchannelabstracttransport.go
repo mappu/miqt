@@ -36,42 +36,34 @@ func (this *QWebChannelAbstractTransport) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebChannelAbstractTransport constructs the type using only CGO pointers.
-func newQWebChannelAbstractTransport(h *C.QWebChannelAbstractTransport, h_QObject *C.QObject) *QWebChannelAbstractTransport {
+func newQWebChannelAbstractTransport(h *C.QWebChannelAbstractTransport) *QWebChannelAbstractTransport {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebChannelAbstractTransport_virtbase(h, &outptr_QObject)
+
 	return &QWebChannelAbstractTransport{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebChannelAbstractTransport constructs the type using only unsafe pointers.
-func UnsafeNewQWebChannelAbstractTransport(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebChannelAbstractTransport {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebChannelAbstractTransport{h: (*C.QWebChannelAbstractTransport)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebChannelAbstractTransport(h unsafe.Pointer) *QWebChannelAbstractTransport {
+	return newQWebChannelAbstractTransport((*C.QWebChannelAbstractTransport)(h))
 }
 
 // NewQWebChannelAbstractTransport constructs a new QWebChannelAbstractTransport object.
 func NewQWebChannelAbstractTransport() *QWebChannelAbstractTransport {
-	var outptr_QWebChannelAbstractTransport *C.QWebChannelAbstractTransport = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebChannelAbstractTransport_new(&outptr_QWebChannelAbstractTransport, &outptr_QObject)
-	ret := newQWebChannelAbstractTransport(outptr_QWebChannelAbstractTransport, outptr_QObject)
+	ret := newQWebChannelAbstractTransport(C.QWebChannelAbstractTransport_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebChannelAbstractTransport2 constructs a new QWebChannelAbstractTransport object.
 func NewQWebChannelAbstractTransport2(parent *qt.QObject) *QWebChannelAbstractTransport {
-	var outptr_QWebChannelAbstractTransport *C.QWebChannelAbstractTransport = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebChannelAbstractTransport_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QWebChannelAbstractTransport, &outptr_QObject)
-	ret := newQWebChannelAbstractTransport(outptr_QWebChannelAbstractTransport, outptr_QObject)
+	ret := newQWebChannelAbstractTransport(C.QWebChannelAbstractTransport_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -125,7 +117,7 @@ func miqt_exec_callback_QWebChannelAbstractTransport_MessageReceived(cb C.intptr
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQJsonObject(unsafe.Pointer(message))
 
-	slotval2 := newQWebChannelAbstractTransport(transport, nil)
+	slotval2 := newQWebChannelAbstractTransport(transport)
 
 	gofunc(slotval1, slotval2)
 }
@@ -272,7 +264,7 @@ func miqt_exec_callback_QWebChannelAbstractTransport_TimerEvent(self *C.QWebChan
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebChannelAbstractTransport{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -298,7 +290,7 @@ func miqt_exec_callback_QWebChannelAbstractTransport_ChildEvent(self *C.QWebChan
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebChannelAbstractTransport{h: self}).callVirtualBase_ChildEvent, slotval1)
 

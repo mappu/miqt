@@ -28,6 +28,7 @@ typedef struct QObject QObject;
 typedef struct QUrl QUrl;
 #endif
 
+void QMediaRecorderControl_virtbase(QMediaRecorderControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QMediaRecorderControl_MetaObject(const QMediaRecorderControl* self);
 void* QMediaRecorderControl_Metacast(QMediaRecorderControl* self, const char* param1);
 struct miqt_string QMediaRecorderControl_Tr(const char* s);

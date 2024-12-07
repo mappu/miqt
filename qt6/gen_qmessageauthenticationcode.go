@@ -37,24 +37,19 @@ func newQMessageAuthenticationCode(h *C.QMessageAuthenticationCode) *QMessageAut
 	if h == nil {
 		return nil
 	}
+
 	return &QMessageAuthenticationCode{h: h}
 }
 
 // UnsafeNewQMessageAuthenticationCode constructs the type using only unsafe pointers.
 func UnsafeNewQMessageAuthenticationCode(h unsafe.Pointer) *QMessageAuthenticationCode {
-	if h == nil {
-		return nil
-	}
-
-	return &QMessageAuthenticationCode{h: (*C.QMessageAuthenticationCode)(h)}
+	return newQMessageAuthenticationCode((*C.QMessageAuthenticationCode)(h))
 }
 
 // NewQMessageAuthenticationCode constructs a new QMessageAuthenticationCode object.
 func NewQMessageAuthenticationCode(method QCryptographicHash__Algorithm) *QMessageAuthenticationCode {
-	var outptr_QMessageAuthenticationCode *C.QMessageAuthenticationCode = nil
 
-	C.QMessageAuthenticationCode_new((C.int)(method), &outptr_QMessageAuthenticationCode)
-	ret := newQMessageAuthenticationCode(outptr_QMessageAuthenticationCode)
+	ret := newQMessageAuthenticationCode(C.QMessageAuthenticationCode_new((C.int)(method)))
 	ret.isSubclass = true
 	return ret
 }
@@ -64,10 +59,8 @@ func NewQMessageAuthenticationCode2(method QCryptographicHash__Algorithm, key []
 	key_alias := C.struct_miqt_string{}
 	key_alias.data = (*C.char)(unsafe.Pointer(&key[0]))
 	key_alias.len = C.size_t(len(key))
-	var outptr_QMessageAuthenticationCode *C.QMessageAuthenticationCode = nil
 
-	C.QMessageAuthenticationCode_new2((C.int)(method), key_alias, &outptr_QMessageAuthenticationCode)
-	ret := newQMessageAuthenticationCode(outptr_QMessageAuthenticationCode)
+	ret := newQMessageAuthenticationCode(C.QMessageAuthenticationCode_new2((C.int)(method), key_alias))
 	ret.isSubclass = true
 	return ret
 }

@@ -73,34 +73,27 @@ func newQTextStream(h *C.QTextStream) *QTextStream {
 	if h == nil {
 		return nil
 	}
+
 	return &QTextStream{h: h}
 }
 
 // UnsafeNewQTextStream constructs the type using only unsafe pointers.
 func UnsafeNewQTextStream(h unsafe.Pointer) *QTextStream {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextStream{h: (*C.QTextStream)(h)}
+	return newQTextStream((*C.QTextStream)(h))
 }
 
 // NewQTextStream constructs a new QTextStream object.
 func NewQTextStream() *QTextStream {
-	var outptr_QTextStream *C.QTextStream = nil
 
-	C.QTextStream_new(&outptr_QTextStream)
-	ret := newQTextStream(outptr_QTextStream)
+	ret := newQTextStream(C.QTextStream_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextStream2 constructs a new QTextStream object.
 func NewQTextStream2(device *QIODevice) *QTextStream {
-	var outptr_QTextStream *C.QTextStream = nil
 
-	C.QTextStream_new2(device.cPointer(), &outptr_QTextStream)
-	ret := newQTextStream(outptr_QTextStream)
+	ret := newQTextStream(C.QTextStream_new2(device.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -110,10 +103,8 @@ func NewQTextStream3(array []byte) *QTextStream {
 	array_alias := C.struct_miqt_string{}
 	array_alias.data = (*C.char)(unsafe.Pointer(&array[0]))
 	array_alias.len = C.size_t(len(array))
-	var outptr_QTextStream *C.QTextStream = nil
 
-	C.QTextStream_new3(array_alias, &outptr_QTextStream)
-	ret := newQTextStream(outptr_QTextStream)
+	ret := newQTextStream(C.QTextStream_new3(array_alias))
 	ret.isSubclass = true
 	return ret
 }
@@ -123,10 +114,8 @@ func NewQTextStream4(array []byte, openMode QIODevice__OpenModeFlag) *QTextStrea
 	array_alias := C.struct_miqt_string{}
 	array_alias.data = (*C.char)(unsafe.Pointer(&array[0]))
 	array_alias.len = C.size_t(len(array))
-	var outptr_QTextStream *C.QTextStream = nil
 
-	C.QTextStream_new4(array_alias, (C.int)(openMode), &outptr_QTextStream)
-	ret := newQTextStream(outptr_QTextStream)
+	ret := newQTextStream(C.QTextStream_new4(array_alias, (C.int)(openMode)))
 	ret.isSubclass = true
 	return ret
 }
@@ -176,7 +165,7 @@ func (this *QTextStream) SetDevice(device *QIODevice) {
 }
 
 func (this *QTextStream) Device() *QIODevice {
-	return newQIODevice(C.QTextStream_Device(this.h), nil)
+	return newQIODevice(C.QTextStream_Device(this.h))
 }
 
 func (this *QTextStream) String() string {

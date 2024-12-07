@@ -86,10 +86,11 @@ typedef struct QWebEngineSettings QWebEngineSettings;
 typedef struct QWebEngineUrlRequestInterceptor QWebEngineUrlRequestInterceptor;
 #endif
 
-void QWebEnginePage_new(QWebEnginePage** outptr_QWebEnginePage, QObject** outptr_QObject);
-void QWebEnginePage_new2(QWebEngineProfile* profile, QWebEnginePage** outptr_QWebEnginePage, QObject** outptr_QObject);
-void QWebEnginePage_new3(QObject* parent, QWebEnginePage** outptr_QWebEnginePage, QObject** outptr_QObject);
-void QWebEnginePage_new4(QWebEngineProfile* profile, QObject* parent, QWebEnginePage** outptr_QWebEnginePage, QObject** outptr_QObject);
+QWebEnginePage* QWebEnginePage_new();
+QWebEnginePage* QWebEnginePage_new2(QWebEngineProfile* profile);
+QWebEnginePage* QWebEnginePage_new3(QObject* parent);
+QWebEnginePage* QWebEnginePage_new4(QWebEngineProfile* profile, QObject* parent);
+void QWebEnginePage_virtbase(QWebEnginePage* src, QObject** outptr_QObject);
 QMetaObject* QWebEnginePage_MetaObject(const QWebEnginePage* self);
 void* QWebEnginePage_Metacast(QWebEnginePage* self, const char* param1);
 struct miqt_string QWebEnginePage_Tr(const char* s);

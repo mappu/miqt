@@ -92,8 +92,9 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QComboBox_new(QWidget* parent, QComboBox** outptr_QComboBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QComboBox_new2(QComboBox** outptr_QComboBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QComboBox* QComboBox_new(QWidget* parent);
+QComboBox* QComboBox_new2();
+void QComboBox_virtbase(QComboBox* src, QWidget** outptr_QWidget);
 QMetaObject* QComboBox_MetaObject(const QComboBox* self);
 void* QComboBox_Metacast(QComboBox* self, const char* param1);
 struct miqt_string QComboBox_Tr(const char* s);

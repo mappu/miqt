@@ -51,24 +51,19 @@ func newQCommandLineParser(h *C.QCommandLineParser) *QCommandLineParser {
 	if h == nil {
 		return nil
 	}
+
 	return &QCommandLineParser{h: h}
 }
 
 // UnsafeNewQCommandLineParser constructs the type using only unsafe pointers.
 func UnsafeNewQCommandLineParser(h unsafe.Pointer) *QCommandLineParser {
-	if h == nil {
-		return nil
-	}
-
-	return &QCommandLineParser{h: (*C.QCommandLineParser)(h)}
+	return newQCommandLineParser((*C.QCommandLineParser)(h))
 }
 
 // NewQCommandLineParser constructs a new QCommandLineParser object.
 func NewQCommandLineParser() *QCommandLineParser {
-	var outptr_QCommandLineParser *C.QCommandLineParser = nil
 
-	C.QCommandLineParser_new(&outptr_QCommandLineParser)
-	ret := newQCommandLineParser(outptr_QCommandLineParser)
+	ret := newQCommandLineParser(C.QCommandLineParser_new())
 	ret.isSubclass = true
 	return ret
 }

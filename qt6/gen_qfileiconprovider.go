@@ -35,31 +35,26 @@ func (this *QFileIconProvider) UnsafePointer() unsafe.Pointer {
 }
 
 // newQFileIconProvider constructs the type using only CGO pointers.
-func newQFileIconProvider(h *C.QFileIconProvider, h_QAbstractFileIconProvider *C.QAbstractFileIconProvider) *QFileIconProvider {
+func newQFileIconProvider(h *C.QFileIconProvider) *QFileIconProvider {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractFileIconProvider *C.QAbstractFileIconProvider = nil
+	C.QFileIconProvider_virtbase(h, &outptr_QAbstractFileIconProvider)
+
 	return &QFileIconProvider{h: h,
-		QAbstractFileIconProvider: newQAbstractFileIconProvider(h_QAbstractFileIconProvider)}
+		QAbstractFileIconProvider: newQAbstractFileIconProvider(outptr_QAbstractFileIconProvider)}
 }
 
 // UnsafeNewQFileIconProvider constructs the type using only unsafe pointers.
-func UnsafeNewQFileIconProvider(h unsafe.Pointer, h_QAbstractFileIconProvider unsafe.Pointer) *QFileIconProvider {
-	if h == nil {
-		return nil
-	}
-
-	return &QFileIconProvider{h: (*C.QFileIconProvider)(h),
-		QAbstractFileIconProvider: UnsafeNewQAbstractFileIconProvider(h_QAbstractFileIconProvider)}
+func UnsafeNewQFileIconProvider(h unsafe.Pointer) *QFileIconProvider {
+	return newQFileIconProvider((*C.QFileIconProvider)(h))
 }
 
 // NewQFileIconProvider constructs a new QFileIconProvider object.
 func NewQFileIconProvider() *QFileIconProvider {
-	var outptr_QFileIconProvider *C.QFileIconProvider = nil
-	var outptr_QAbstractFileIconProvider *C.QAbstractFileIconProvider = nil
 
-	C.QFileIconProvider_new(&outptr_QFileIconProvider, &outptr_QAbstractFileIconProvider)
-	ret := newQFileIconProvider(outptr_QFileIconProvider, outptr_QAbstractFileIconProvider)
+	ret := newQFileIconProvider(C.QFileIconProvider_new())
 	ret.isSubclass = true
 	return ret
 }

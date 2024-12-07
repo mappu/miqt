@@ -40,12 +40,13 @@ typedef struct QPointF QPointF;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QCamera_new(QCamera** outptr_QCamera, QObject** outptr_QObject);
-void QCamera_new2(QCameraDevice* cameraDevice, QCamera** outptr_QCamera, QObject** outptr_QObject);
-void QCamera_new3(int position, QCamera** outptr_QCamera, QObject** outptr_QObject);
-void QCamera_new4(QObject* parent, QCamera** outptr_QCamera, QObject** outptr_QObject);
-void QCamera_new5(QCameraDevice* cameraDevice, QObject* parent, QCamera** outptr_QCamera, QObject** outptr_QObject);
-void QCamera_new6(int position, QObject* parent, QCamera** outptr_QCamera, QObject** outptr_QObject);
+QCamera* QCamera_new();
+QCamera* QCamera_new2(QCameraDevice* cameraDevice);
+QCamera* QCamera_new3(int position);
+QCamera* QCamera_new4(QObject* parent);
+QCamera* QCamera_new5(QCameraDevice* cameraDevice, QObject* parent);
+QCamera* QCamera_new6(int position, QObject* parent);
+void QCamera_virtbase(QCamera* src, QObject** outptr_QObject);
 QMetaObject* QCamera_MetaObject(const QCamera* self);
 void* QCamera_Metacast(QCamera* self, const char* param1);
 struct miqt_string QCamera_Tr(const char* s);

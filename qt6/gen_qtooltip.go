@@ -37,16 +37,13 @@ func newQToolTip(h *C.QToolTip) *QToolTip {
 	if h == nil {
 		return nil
 	}
+
 	return &QToolTip{h: h}
 }
 
 // UnsafeNewQToolTip constructs the type using only unsafe pointers.
 func UnsafeNewQToolTip(h unsafe.Pointer) *QToolTip {
-	if h == nil {
-		return nil
-	}
-
-	return &QToolTip{h: (*C.QToolTip)(h)}
+	return newQToolTip((*C.QToolTip)(h))
 }
 
 func QToolTip_ShowText(pos *QPoint, text string) {

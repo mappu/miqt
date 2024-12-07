@@ -9,31 +9,26 @@
 #include "gen_qfileinfo.h"
 #include "_cgo_export.h"
 
-void QFileInfo_new(QFileInfo** outptr_QFileInfo) {
-	QFileInfo* ret = new QFileInfo();
-	*outptr_QFileInfo = ret;
+QFileInfo* QFileInfo_new() {
+	return new QFileInfo();
 }
 
-void QFileInfo_new2(struct miqt_string file, QFileInfo** outptr_QFileInfo) {
+QFileInfo* QFileInfo_new2(struct miqt_string file) {
 	QString file_QString = QString::fromUtf8(file.data, file.len);
-	QFileInfo* ret = new QFileInfo(file_QString);
-	*outptr_QFileInfo = ret;
+	return new QFileInfo(file_QString);
 }
 
-void QFileInfo_new3(QFileDevice* file, QFileInfo** outptr_QFileInfo) {
-	QFileInfo* ret = new QFileInfo(*file);
-	*outptr_QFileInfo = ret;
+QFileInfo* QFileInfo_new3(QFileDevice* file) {
+	return new QFileInfo(*file);
 }
 
-void QFileInfo_new4(QDir* dir, struct miqt_string file, QFileInfo** outptr_QFileInfo) {
+QFileInfo* QFileInfo_new4(QDir* dir, struct miqt_string file) {
 	QString file_QString = QString::fromUtf8(file.data, file.len);
-	QFileInfo* ret = new QFileInfo(*dir, file_QString);
-	*outptr_QFileInfo = ret;
+	return new QFileInfo(*dir, file_QString);
 }
 
-void QFileInfo_new5(QFileInfo* fileinfo, QFileInfo** outptr_QFileInfo) {
-	QFileInfo* ret = new QFileInfo(*fileinfo);
-	*outptr_QFileInfo = ret;
+QFileInfo* QFileInfo_new5(QFileInfo* fileinfo) {
+	return new QFileInfo(*fileinfo);
 }
 
 void QFileInfo_OperatorAssign(QFileInfo* self, QFileInfo* fileinfo) {

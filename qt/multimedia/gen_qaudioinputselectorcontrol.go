@@ -36,22 +36,20 @@ func (this *QAudioInputSelectorControl) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAudioInputSelectorControl constructs the type using only CGO pointers.
-func newQAudioInputSelectorControl(h *C.QAudioInputSelectorControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QAudioInputSelectorControl {
+func newQAudioInputSelectorControl(h *C.QAudioInputSelectorControl) *QAudioInputSelectorControl {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaControl *C.QMediaControl = nil
+	C.QAudioInputSelectorControl_virtbase(h, &outptr_QMediaControl)
+
 	return &QAudioInputSelectorControl{h: h,
-		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
+		QMediaControl: newQMediaControl(outptr_QMediaControl)}
 }
 
 // UnsafeNewQAudioInputSelectorControl constructs the type using only unsafe pointers.
-func UnsafeNewQAudioInputSelectorControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QAudioInputSelectorControl {
-	if h == nil {
-		return nil
-	}
-
-	return &QAudioInputSelectorControl{h: (*C.QAudioInputSelectorControl)(h),
-		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
+func UnsafeNewQAudioInputSelectorControl(h unsafe.Pointer) *QAudioInputSelectorControl {
+	return newQAudioInputSelectorControl((*C.QAudioInputSelectorControl)(h))
 }
 
 func (this *QAudioInputSelectorControl) MetaObject() *qt.QMetaObject {

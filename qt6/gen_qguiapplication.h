@@ -50,8 +50,9 @@ typedef struct QStyleHints QStyleHints;
 typedef struct QWindow QWindow;
 #endif
 
-void QGuiApplication_new(int* argc, char** argv, QGuiApplication** outptr_QGuiApplication, QCoreApplication** outptr_QCoreApplication, QObject** outptr_QObject);
-void QGuiApplication_new2(int* argc, char** argv, int param3, QGuiApplication** outptr_QGuiApplication, QCoreApplication** outptr_QCoreApplication, QObject** outptr_QObject);
+QGuiApplication* QGuiApplication_new(int* argc, char** argv);
+QGuiApplication* QGuiApplication_new2(int* argc, char** argv, int param3);
+void QGuiApplication_virtbase(QGuiApplication* src, QCoreApplication** outptr_QCoreApplication);
 QMetaObject* QGuiApplication_MetaObject(const QGuiApplication* self);
 void* QGuiApplication_Metacast(QGuiApplication* self, const char* param1);
 struct miqt_string QGuiApplication_Tr(const char* s);

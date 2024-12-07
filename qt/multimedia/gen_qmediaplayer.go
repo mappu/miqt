@@ -79,56 +79,42 @@ func (this *QMediaPlayer) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMediaPlayer constructs the type using only CGO pointers.
-func newQMediaPlayer(h *C.QMediaPlayer, h_QMediaObject *C.QMediaObject, h_QObject *C.QObject) *QMediaPlayer {
+func newQMediaPlayer(h *C.QMediaPlayer) *QMediaPlayer {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaObject *C.QMediaObject = nil
+	C.QMediaPlayer_virtbase(h, &outptr_QMediaObject)
+
 	return &QMediaPlayer{h: h,
-		QMediaObject: newQMediaObject(h_QMediaObject, h_QObject)}
+		QMediaObject: newQMediaObject(outptr_QMediaObject)}
 }
 
 // UnsafeNewQMediaPlayer constructs the type using only unsafe pointers.
-func UnsafeNewQMediaPlayer(h unsafe.Pointer, h_QMediaObject unsafe.Pointer, h_QObject unsafe.Pointer) *QMediaPlayer {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaPlayer{h: (*C.QMediaPlayer)(h),
-		QMediaObject: UnsafeNewQMediaObject(h_QMediaObject, h_QObject)}
+func UnsafeNewQMediaPlayer(h unsafe.Pointer) *QMediaPlayer {
+	return newQMediaPlayer((*C.QMediaPlayer)(h))
 }
 
 // NewQMediaPlayer constructs a new QMediaPlayer object.
 func NewQMediaPlayer() *QMediaPlayer {
-	var outptr_QMediaPlayer *C.QMediaPlayer = nil
-	var outptr_QMediaObject *C.QMediaObject = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMediaPlayer_new(&outptr_QMediaPlayer, &outptr_QMediaObject, &outptr_QObject)
-	ret := newQMediaPlayer(outptr_QMediaPlayer, outptr_QMediaObject, outptr_QObject)
+	ret := newQMediaPlayer(C.QMediaPlayer_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaPlayer2 constructs a new QMediaPlayer object.
 func NewQMediaPlayer2(parent *qt.QObject) *QMediaPlayer {
-	var outptr_QMediaPlayer *C.QMediaPlayer = nil
-	var outptr_QMediaObject *C.QMediaObject = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMediaPlayer_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QMediaPlayer, &outptr_QMediaObject, &outptr_QObject)
-	ret := newQMediaPlayer(outptr_QMediaPlayer, outptr_QMediaObject, outptr_QObject)
+	ret := newQMediaPlayer(C.QMediaPlayer_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaPlayer3 constructs a new QMediaPlayer object.
 func NewQMediaPlayer3(parent *qt.QObject, flags QMediaPlayer__Flag) *QMediaPlayer {
-	var outptr_QMediaPlayer *C.QMediaPlayer = nil
-	var outptr_QMediaObject *C.QMediaObject = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMediaPlayer_new3((*C.QObject)(parent.UnsafePointer()), (C.int)(flags), &outptr_QMediaPlayer, &outptr_QMediaObject, &outptr_QObject)
-	ret := newQMediaPlayer(outptr_QMediaPlayer, outptr_QMediaObject, outptr_QObject)
+	ret := newQMediaPlayer(C.QMediaPlayer_new3((*C.QObject)(parent.UnsafePointer()), (C.int)(flags)))
 	ret.isSubclass = true
 	return ret
 }
@@ -211,11 +197,11 @@ func (this *QMediaPlayer) Media() *QMediaContent {
 }
 
 func (this *QMediaPlayer) MediaStream() *qt.QIODevice {
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QMediaPlayer_MediaStream(this.h)), nil)
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QMediaPlayer_MediaStream(this.h)))
 }
 
 func (this *QMediaPlayer) Playlist() *QMediaPlaylist {
-	return newQMediaPlaylist(C.QMediaPlayer_Playlist(this.h), nil, nil)
+	return newQMediaPlaylist(C.QMediaPlayer_Playlist(this.h))
 }
 
 func (this *QMediaPlayer) CurrentMedia() *QMediaContent {
@@ -939,7 +925,7 @@ func miqt_exec_callback_QMediaPlayer_IsAvailable(self *C.QMediaPlayer, cb C.intp
 
 func (this *QMediaPlayer) callVirtualBase_Service() *QMediaService {
 
-	return newQMediaService(C.QMediaPlayer_virtualbase_Service(unsafe.Pointer(this.h)), nil)
+	return newQMediaService(C.QMediaPlayer_virtualbase_Service(unsafe.Pointer(this.h)))
 
 }
 func (this *QMediaPlayer) OnService(slot func(super func() *QMediaService) *QMediaService) {

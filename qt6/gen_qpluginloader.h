@@ -36,10 +36,11 @@ typedef struct QStaticPlugin QStaticPlugin;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QPluginLoader_new(QPluginLoader** outptr_QPluginLoader, QObject** outptr_QObject);
-void QPluginLoader_new2(struct miqt_string fileName, QPluginLoader** outptr_QPluginLoader, QObject** outptr_QObject);
-void QPluginLoader_new3(QObject* parent, QPluginLoader** outptr_QPluginLoader, QObject** outptr_QObject);
-void QPluginLoader_new4(struct miqt_string fileName, QObject* parent, QPluginLoader** outptr_QPluginLoader, QObject** outptr_QObject);
+QPluginLoader* QPluginLoader_new();
+QPluginLoader* QPluginLoader_new2(struct miqt_string fileName);
+QPluginLoader* QPluginLoader_new3(QObject* parent);
+QPluginLoader* QPluginLoader_new4(struct miqt_string fileName, QObject* parent);
+void QPluginLoader_virtbase(QPluginLoader* src, QObject** outptr_QObject);
 QMetaObject* QPluginLoader_MetaObject(const QPluginLoader* self);
 void* QPluginLoader_Metacast(QPluginLoader* self, const char* param1);
 struct miqt_string QPluginLoader_Tr(const char* s);

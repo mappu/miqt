@@ -1193,20 +1193,16 @@ public:
 
 };
 
-void QTabBar_new(QWidget* parent, QTabBar** outptr_QTabBar, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQTabBar* ret = new MiqtVirtualQTabBar(parent);
-	*outptr_QTabBar = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QTabBar* QTabBar_new(QWidget* parent) {
+	return new MiqtVirtualQTabBar(parent);
 }
 
-void QTabBar_new2(QTabBar** outptr_QTabBar, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQTabBar* ret = new MiqtVirtualQTabBar();
-	*outptr_QTabBar = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QTabBar* QTabBar_new2() {
+	return new MiqtVirtualQTabBar();
+}
+
+void QTabBar_virtbase(QTabBar* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QTabBar_MetaObject(const QTabBar* self) {

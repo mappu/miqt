@@ -88,10 +88,11 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QLineEdit_new(QWidget* parent, QLineEdit** outptr_QLineEdit, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QLineEdit_new2(QLineEdit** outptr_QLineEdit, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QLineEdit_new3(struct miqt_string param1, QLineEdit** outptr_QLineEdit, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QLineEdit_new4(struct miqt_string param1, QWidget* parent, QLineEdit** outptr_QLineEdit, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QLineEdit* QLineEdit_new(QWidget* parent);
+QLineEdit* QLineEdit_new2();
+QLineEdit* QLineEdit_new3(struct miqt_string param1);
+QLineEdit* QLineEdit_new4(struct miqt_string param1, QWidget* parent);
+void QLineEdit_virtbase(QLineEdit* src, QWidget** outptr_QWidget);
 QMetaObject* QLineEdit_MetaObject(const QLineEdit* self);
 void* QLineEdit_Metacast(QLineEdit* self, const char* param1);
 struct miqt_string QLineEdit_Tr(const char* s);

@@ -128,24 +128,19 @@ func newQKeySequence(h *C.QKeySequence) *QKeySequence {
 	if h == nil {
 		return nil
 	}
+
 	return &QKeySequence{h: h}
 }
 
 // UnsafeNewQKeySequence constructs the type using only unsafe pointers.
 func UnsafeNewQKeySequence(h unsafe.Pointer) *QKeySequence {
-	if h == nil {
-		return nil
-	}
-
-	return &QKeySequence{h: (*C.QKeySequence)(h)}
+	return newQKeySequence((*C.QKeySequence)(h))
 }
 
 // NewQKeySequence constructs a new QKeySequence object.
 func NewQKeySequence() *QKeySequence {
-	var outptr_QKeySequence *C.QKeySequence = nil
 
-	C.QKeySequence_new(&outptr_QKeySequence)
-	ret := newQKeySequence(outptr_QKeySequence)
+	ret := newQKeySequence(C.QKeySequence_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -156,50 +151,40 @@ func NewQKeySequence2(key string) *QKeySequence {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	var outptr_QKeySequence *C.QKeySequence = nil
 
-	C.QKeySequence_new2(key_ms, &outptr_QKeySequence)
-	ret := newQKeySequence(outptr_QKeySequence)
+	ret := newQKeySequence(C.QKeySequence_new2(key_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQKeySequence3 constructs a new QKeySequence object.
 func NewQKeySequence3(k1 int) *QKeySequence {
-	var outptr_QKeySequence *C.QKeySequence = nil
 
-	C.QKeySequence_new3((C.int)(k1), &outptr_QKeySequence)
-	ret := newQKeySequence(outptr_QKeySequence)
+	ret := newQKeySequence(C.QKeySequence_new3((C.int)(k1)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQKeySequence4 constructs a new QKeySequence object.
 func NewQKeySequence4(k1 QKeyCombination) *QKeySequence {
-	var outptr_QKeySequence *C.QKeySequence = nil
 
-	C.QKeySequence_new4(k1.cPointer(), &outptr_QKeySequence)
-	ret := newQKeySequence(outptr_QKeySequence)
+	ret := newQKeySequence(C.QKeySequence_new4(k1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQKeySequence5 constructs a new QKeySequence object.
 func NewQKeySequence5(ks *QKeySequence) *QKeySequence {
-	var outptr_QKeySequence *C.QKeySequence = nil
 
-	C.QKeySequence_new5(ks.cPointer(), &outptr_QKeySequence)
-	ret := newQKeySequence(outptr_QKeySequence)
+	ret := newQKeySequence(C.QKeySequence_new5(ks.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQKeySequence6 constructs a new QKeySequence object.
 func NewQKeySequence6(key QKeySequence__StandardKey) *QKeySequence {
-	var outptr_QKeySequence *C.QKeySequence = nil
 
-	C.QKeySequence_new6((C.int)(key), &outptr_QKeySequence)
-	ret := newQKeySequence(outptr_QKeySequence)
+	ret := newQKeySequence(C.QKeySequence_new6((C.int)(key)))
 	ret.isSubclass = true
 	return ret
 }
@@ -210,70 +195,56 @@ func NewQKeySequence7(key string, format QKeySequence__SequenceFormat) *QKeySequ
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	var outptr_QKeySequence *C.QKeySequence = nil
 
-	C.QKeySequence_new7(key_ms, (C.int)(format), &outptr_QKeySequence)
-	ret := newQKeySequence(outptr_QKeySequence)
+	ret := newQKeySequence(C.QKeySequence_new7(key_ms, (C.int)(format)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQKeySequence8 constructs a new QKeySequence object.
 func NewQKeySequence8(k1 int, k2 int) *QKeySequence {
-	var outptr_QKeySequence *C.QKeySequence = nil
 
-	C.QKeySequence_new8((C.int)(k1), (C.int)(k2), &outptr_QKeySequence)
-	ret := newQKeySequence(outptr_QKeySequence)
+	ret := newQKeySequence(C.QKeySequence_new8((C.int)(k1), (C.int)(k2)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQKeySequence9 constructs a new QKeySequence object.
 func NewQKeySequence9(k1 int, k2 int, k3 int) *QKeySequence {
-	var outptr_QKeySequence *C.QKeySequence = nil
 
-	C.QKeySequence_new9((C.int)(k1), (C.int)(k2), (C.int)(k3), &outptr_QKeySequence)
-	ret := newQKeySequence(outptr_QKeySequence)
+	ret := newQKeySequence(C.QKeySequence_new9((C.int)(k1), (C.int)(k2), (C.int)(k3)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQKeySequence10 constructs a new QKeySequence object.
 func NewQKeySequence10(k1 int, k2 int, k3 int, k4 int) *QKeySequence {
-	var outptr_QKeySequence *C.QKeySequence = nil
 
-	C.QKeySequence_new10((C.int)(k1), (C.int)(k2), (C.int)(k3), (C.int)(k4), &outptr_QKeySequence)
-	ret := newQKeySequence(outptr_QKeySequence)
+	ret := newQKeySequence(C.QKeySequence_new10((C.int)(k1), (C.int)(k2), (C.int)(k3), (C.int)(k4)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQKeySequence11 constructs a new QKeySequence object.
 func NewQKeySequence11(k1 QKeyCombination, k2 QKeyCombination) *QKeySequence {
-	var outptr_QKeySequence *C.QKeySequence = nil
 
-	C.QKeySequence_new11(k1.cPointer(), k2.cPointer(), &outptr_QKeySequence)
-	ret := newQKeySequence(outptr_QKeySequence)
+	ret := newQKeySequence(C.QKeySequence_new11(k1.cPointer(), k2.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQKeySequence12 constructs a new QKeySequence object.
 func NewQKeySequence12(k1 QKeyCombination, k2 QKeyCombination, k3 QKeyCombination) *QKeySequence {
-	var outptr_QKeySequence *C.QKeySequence = nil
 
-	C.QKeySequence_new12(k1.cPointer(), k2.cPointer(), k3.cPointer(), &outptr_QKeySequence)
-	ret := newQKeySequence(outptr_QKeySequence)
+	ret := newQKeySequence(C.QKeySequence_new12(k1.cPointer(), k2.cPointer(), k3.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQKeySequence13 constructs a new QKeySequence object.
 func NewQKeySequence13(k1 QKeyCombination, k2 QKeyCombination, k3 QKeyCombination, k4 QKeyCombination) *QKeySequence {
-	var outptr_QKeySequence *C.QKeySequence = nil
 
-	C.QKeySequence_new13(k1.cPointer(), k2.cPointer(), k3.cPointer(), k4.cPointer(), &outptr_QKeySequence)
-	ret := newQKeySequence(outptr_QKeySequence)
+	ret := newQKeySequence(C.QKeySequence_new13(k1.cPointer(), k2.cPointer(), k3.cPointer(), k4.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

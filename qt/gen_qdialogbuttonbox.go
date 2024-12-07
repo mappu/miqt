@@ -87,124 +87,82 @@ func (this *QDialogButtonBox) UnsafePointer() unsafe.Pointer {
 }
 
 // newQDialogButtonBox constructs the type using only CGO pointers.
-func newQDialogButtonBox(h *C.QDialogButtonBox, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QDialogButtonBox {
+func newQDialogButtonBox(h *C.QDialogButtonBox) *QDialogButtonBox {
 	if h == nil {
 		return nil
 	}
+	var outptr_QWidget *C.QWidget = nil
+	C.QDialogButtonBox_virtbase(h, &outptr_QWidget)
+
 	return &QDialogButtonBox{h: h,
-		QWidget: newQWidget(h_QWidget, h_QObject, h_QPaintDevice)}
+		QWidget: newQWidget(outptr_QWidget)}
 }
 
 // UnsafeNewQDialogButtonBox constructs the type using only unsafe pointers.
-func UnsafeNewQDialogButtonBox(h unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QDialogButtonBox {
-	if h == nil {
-		return nil
-	}
-
-	return &QDialogButtonBox{h: (*C.QDialogButtonBox)(h),
-		QWidget: UnsafeNewQWidget(h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQDialogButtonBox(h unsafe.Pointer) *QDialogButtonBox {
+	return newQDialogButtonBox((*C.QDialogButtonBox)(h))
 }
 
 // NewQDialogButtonBox constructs a new QDialogButtonBox object.
 func NewQDialogButtonBox(parent *QWidget) *QDialogButtonBox {
-	var outptr_QDialogButtonBox *C.QDialogButtonBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QDialogButtonBox_new(parent.cPointer(), &outptr_QDialogButtonBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQDialogButtonBox(outptr_QDialogButtonBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQDialogButtonBox(C.QDialogButtonBox_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDialogButtonBox2 constructs a new QDialogButtonBox object.
 func NewQDialogButtonBox2() *QDialogButtonBox {
-	var outptr_QDialogButtonBox *C.QDialogButtonBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QDialogButtonBox_new2(&outptr_QDialogButtonBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQDialogButtonBox(outptr_QDialogButtonBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQDialogButtonBox(C.QDialogButtonBox_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDialogButtonBox3 constructs a new QDialogButtonBox object.
 func NewQDialogButtonBox3(orientation Orientation) *QDialogButtonBox {
-	var outptr_QDialogButtonBox *C.QDialogButtonBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QDialogButtonBox_new3((C.int)(orientation), &outptr_QDialogButtonBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQDialogButtonBox(outptr_QDialogButtonBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQDialogButtonBox(C.QDialogButtonBox_new3((C.int)(orientation)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDialogButtonBox4 constructs a new QDialogButtonBox object.
 func NewQDialogButtonBox4(buttons QDialogButtonBox__StandardButton) *QDialogButtonBox {
-	var outptr_QDialogButtonBox *C.QDialogButtonBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QDialogButtonBox_new4((C.int)(buttons), &outptr_QDialogButtonBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQDialogButtonBox(outptr_QDialogButtonBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQDialogButtonBox(C.QDialogButtonBox_new4((C.int)(buttons)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDialogButtonBox5 constructs a new QDialogButtonBox object.
 func NewQDialogButtonBox5(buttons QDialogButtonBox__StandardButton, orientation Orientation) *QDialogButtonBox {
-	var outptr_QDialogButtonBox *C.QDialogButtonBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QDialogButtonBox_new5((C.int)(buttons), (C.int)(orientation), &outptr_QDialogButtonBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQDialogButtonBox(outptr_QDialogButtonBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQDialogButtonBox(C.QDialogButtonBox_new5((C.int)(buttons), (C.int)(orientation)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDialogButtonBox6 constructs a new QDialogButtonBox object.
 func NewQDialogButtonBox6(orientation Orientation, parent *QWidget) *QDialogButtonBox {
-	var outptr_QDialogButtonBox *C.QDialogButtonBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QDialogButtonBox_new6((C.int)(orientation), parent.cPointer(), &outptr_QDialogButtonBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQDialogButtonBox(outptr_QDialogButtonBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQDialogButtonBox(C.QDialogButtonBox_new6((C.int)(orientation), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDialogButtonBox7 constructs a new QDialogButtonBox object.
 func NewQDialogButtonBox7(buttons QDialogButtonBox__StandardButton, parent *QWidget) *QDialogButtonBox {
-	var outptr_QDialogButtonBox *C.QDialogButtonBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QDialogButtonBox_new7((C.int)(buttons), parent.cPointer(), &outptr_QDialogButtonBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQDialogButtonBox(outptr_QDialogButtonBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQDialogButtonBox(C.QDialogButtonBox_new7((C.int)(buttons), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDialogButtonBox8 constructs a new QDialogButtonBox object.
 func NewQDialogButtonBox8(buttons QDialogButtonBox__StandardButton, orientation Orientation, parent *QWidget) *QDialogButtonBox {
-	var outptr_QDialogButtonBox *C.QDialogButtonBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QDialogButtonBox_new8((C.int)(buttons), (C.int)(orientation), parent.cPointer(), &outptr_QDialogButtonBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQDialogButtonBox(outptr_QDialogButtonBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQDialogButtonBox(C.QDialogButtonBox_new8((C.int)(buttons), (C.int)(orientation), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -254,11 +212,11 @@ func (this *QDialogButtonBox) AddButton2(text string, role QDialogButtonBox__But
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return newQPushButton(C.QDialogButtonBox_AddButton2(this.h, text_ms, (C.int)(role)), nil, nil, nil, nil)
+	return newQPushButton(C.QDialogButtonBox_AddButton2(this.h, text_ms, (C.int)(role)))
 }
 
 func (this *QDialogButtonBox) AddButtonWithButton(button QDialogButtonBox__StandardButton) *QPushButton {
-	return newQPushButton(C.QDialogButtonBox_AddButtonWithButton(this.h, (C.int)(button)), nil, nil, nil, nil)
+	return newQPushButton(C.QDialogButtonBox_AddButtonWithButton(this.h, (C.int)(button)))
 }
 
 func (this *QDialogButtonBox) RemoveButton(button *QAbstractButton) {
@@ -274,7 +232,7 @@ func (this *QDialogButtonBox) Buttons() []*QAbstractButton {
 	_ret := make([]*QAbstractButton, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractButton)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAbstractButton(_outCast[i], nil, nil, nil)
+		_ret[i] = newQAbstractButton(_outCast[i])
 	}
 	return _ret
 }
@@ -296,7 +254,7 @@ func (this *QDialogButtonBox) StandardButton(button *QAbstractButton) QDialogBut
 }
 
 func (this *QDialogButtonBox) Button(which QDialogButtonBox__StandardButton) *QPushButton {
-	return newQPushButton(C.QDialogButtonBox_Button(this.h, (C.int)(which)), nil, nil, nil, nil)
+	return newQPushButton(C.QDialogButtonBox_Button(this.h, (C.int)(which)))
 }
 
 func (this *QDialogButtonBox) SetCenterButtons(center bool) {
@@ -322,7 +280,7 @@ func miqt_exec_callback_QDialogButtonBox_Clicked(cb C.intptr_t, button *C.QAbstr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQAbstractButton(button, nil, nil, nil)
+	slotval1 := newQAbstractButton(button)
 
 	gofunc(slotval1)
 }
@@ -679,7 +637,7 @@ func miqt_exec_callback_QDialogButtonBox_MousePressEvent(self *C.QDialogButtonBo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -705,7 +663,7 @@ func miqt_exec_callback_QDialogButtonBox_MouseReleaseEvent(self *C.QDialogButton
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -731,7 +689,7 @@ func miqt_exec_callback_QDialogButtonBox_MouseDoubleClickEvent(self *C.QDialogBu
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -757,7 +715,7 @@ func miqt_exec_callback_QDialogButtonBox_MouseMoveEvent(self *C.QDialogButtonBox
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -783,7 +741,7 @@ func miqt_exec_callback_QDialogButtonBox_WheelEvent(self *C.QDialogButtonBox, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWheelEvent(event, nil, nil)
+	slotval1 := newQWheelEvent(event)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -809,7 +767,7 @@ func miqt_exec_callback_QDialogButtonBox_KeyPressEvent(self *C.QDialogButtonBox,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(event, nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -835,7 +793,7 @@ func miqt_exec_callback_QDialogButtonBox_KeyReleaseEvent(self *C.QDialogButtonBo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(event, nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -861,7 +819,7 @@ func miqt_exec_callback_QDialogButtonBox_FocusInEvent(self *C.QDialogButtonBox, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -887,7 +845,7 @@ func miqt_exec_callback_QDialogButtonBox_FocusOutEvent(self *C.QDialogButtonBox,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -965,7 +923,7 @@ func miqt_exec_callback_QDialogButtonBox_PaintEvent(self *C.QDialogButtonBox, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(event, nil)
+	slotval1 := newQPaintEvent(event)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -991,7 +949,7 @@ func miqt_exec_callback_QDialogButtonBox_MoveEvent(self *C.QDialogButtonBox, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMoveEvent(event, nil)
+	slotval1 := newQMoveEvent(event)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -1017,7 +975,7 @@ func miqt_exec_callback_QDialogButtonBox_ResizeEvent(self *C.QDialogButtonBox, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(event, nil)
+	slotval1 := newQResizeEvent(event)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -1043,7 +1001,7 @@ func miqt_exec_callback_QDialogButtonBox_CloseEvent(self *C.QDialogButtonBox, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQCloseEvent(event, nil)
+	slotval1 := newQCloseEvent(event)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -1069,7 +1027,7 @@ func miqt_exec_callback_QDialogButtonBox_ContextMenuEvent(self *C.QDialogButtonB
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQContextMenuEvent(event, nil, nil)
+	slotval1 := newQContextMenuEvent(event)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -1095,7 +1053,7 @@ func miqt_exec_callback_QDialogButtonBox_TabletEvent(self *C.QDialogButtonBox, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTabletEvent(event, nil, nil)
+	slotval1 := newQTabletEvent(event)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -1121,7 +1079,7 @@ func miqt_exec_callback_QDialogButtonBox_ActionEvent(self *C.QDialogButtonBox, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQActionEvent(event, nil)
+	slotval1 := newQActionEvent(event)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -1147,7 +1105,7 @@ func miqt_exec_callback_QDialogButtonBox_DragEnterEvent(self *C.QDialogButtonBox
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragEnterEvent(event, nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -1173,7 +1131,7 @@ func miqt_exec_callback_QDialogButtonBox_DragMoveEvent(self *C.QDialogButtonBox,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragMoveEvent(event, nil, nil)
+	slotval1 := newQDragMoveEvent(event)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1199,7 +1157,7 @@ func miqt_exec_callback_QDialogButtonBox_DragLeaveEvent(self *C.QDialogButtonBox
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragLeaveEvent(event, nil)
+	slotval1 := newQDragLeaveEvent(event)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1225,7 +1183,7 @@ func miqt_exec_callback_QDialogButtonBox_DropEvent(self *C.QDialogButtonBox, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDropEvent(event, nil)
+	slotval1 := newQDropEvent(event)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1251,7 +1209,7 @@ func miqt_exec_callback_QDialogButtonBox_ShowEvent(self *C.QDialogButtonBox, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQShowEvent(event, nil)
+	slotval1 := newQShowEvent(event)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1277,7 +1235,7 @@ func miqt_exec_callback_QDialogButtonBox_HideEvent(self *C.QDialogButtonBox, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQHideEvent(event, nil)
+	slotval1 := newQHideEvent(event)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -1447,7 +1405,7 @@ func miqt_exec_callback_QDialogButtonBox_InputMethodEvent(self *C.QDialogButtonB
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQInputMethodEvent(param1, nil)
+	slotval1 := newQInputMethodEvent(param1)
 
 	gofunc((&QDialogButtonBox{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 

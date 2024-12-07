@@ -35,31 +35,26 @@ func (this *QFileSystemWatcher) UnsafePointer() unsafe.Pointer {
 }
 
 // newQFileSystemWatcher constructs the type using only CGO pointers.
-func newQFileSystemWatcher(h *C.QFileSystemWatcher, h_QObject *C.QObject) *QFileSystemWatcher {
+func newQFileSystemWatcher(h *C.QFileSystemWatcher) *QFileSystemWatcher {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QFileSystemWatcher_virtbase(h, &outptr_QObject)
+
 	return &QFileSystemWatcher{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQFileSystemWatcher constructs the type using only unsafe pointers.
-func UnsafeNewQFileSystemWatcher(h unsafe.Pointer, h_QObject unsafe.Pointer) *QFileSystemWatcher {
-	if h == nil {
-		return nil
-	}
-
-	return &QFileSystemWatcher{h: (*C.QFileSystemWatcher)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQFileSystemWatcher(h unsafe.Pointer) *QFileSystemWatcher {
+	return newQFileSystemWatcher((*C.QFileSystemWatcher)(h))
 }
 
 // NewQFileSystemWatcher constructs a new QFileSystemWatcher object.
 func NewQFileSystemWatcher() *QFileSystemWatcher {
-	var outptr_QFileSystemWatcher *C.QFileSystemWatcher = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QFileSystemWatcher_new(&outptr_QFileSystemWatcher, &outptr_QObject)
-	ret := newQFileSystemWatcher(outptr_QFileSystemWatcher, outptr_QObject)
+	ret := newQFileSystemWatcher(C.QFileSystemWatcher_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -76,22 +71,16 @@ func NewQFileSystemWatcher2(paths []string) *QFileSystemWatcher {
 		paths_CArray[i] = paths_i_ms
 	}
 	paths_ma := C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray)}
-	var outptr_QFileSystemWatcher *C.QFileSystemWatcher = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QFileSystemWatcher_new2(paths_ma, &outptr_QFileSystemWatcher, &outptr_QObject)
-	ret := newQFileSystemWatcher(outptr_QFileSystemWatcher, outptr_QObject)
+	ret := newQFileSystemWatcher(C.QFileSystemWatcher_new2(paths_ma))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFileSystemWatcher3 constructs a new QFileSystemWatcher object.
 func NewQFileSystemWatcher3(parent *QObject) *QFileSystemWatcher {
-	var outptr_QFileSystemWatcher *C.QFileSystemWatcher = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QFileSystemWatcher_new3(parent.cPointer(), &outptr_QFileSystemWatcher, &outptr_QObject)
-	ret := newQFileSystemWatcher(outptr_QFileSystemWatcher, outptr_QObject)
+	ret := newQFileSystemWatcher(C.QFileSystemWatcher_new3(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -108,11 +97,8 @@ func NewQFileSystemWatcher4(paths []string, parent *QObject) *QFileSystemWatcher
 		paths_CArray[i] = paths_i_ms
 	}
 	paths_ma := C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray)}
-	var outptr_QFileSystemWatcher *C.QFileSystemWatcher = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QFileSystemWatcher_new4(paths_ma, parent.cPointer(), &outptr_QFileSystemWatcher, &outptr_QObject)
-	ret := newQFileSystemWatcher(outptr_QFileSystemWatcher, outptr_QObject)
+	ret := newQFileSystemWatcher(C.QFileSystemWatcher_new4(paths_ma, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -355,7 +341,7 @@ func miqt_exec_callback_QFileSystemWatcher_TimerEvent(self *C.QFileSystemWatcher
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QFileSystemWatcher{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -381,7 +367,7 @@ func miqt_exec_callback_QFileSystemWatcher_ChildEvent(self *C.QFileSystemWatcher
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QFileSystemWatcher{h: self}).callVirtualBase_ChildEvent, slotval1)
 

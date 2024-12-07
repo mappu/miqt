@@ -46,42 +46,34 @@ func (this *QLocalServer) UnsafePointer() unsafe.Pointer {
 }
 
 // newQLocalServer constructs the type using only CGO pointers.
-func newQLocalServer(h *C.QLocalServer, h_QObject *C.QObject) *QLocalServer {
+func newQLocalServer(h *C.QLocalServer) *QLocalServer {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QLocalServer_virtbase(h, &outptr_QObject)
+
 	return &QLocalServer{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQLocalServer constructs the type using only unsafe pointers.
-func UnsafeNewQLocalServer(h unsafe.Pointer, h_QObject unsafe.Pointer) *QLocalServer {
-	if h == nil {
-		return nil
-	}
-
-	return &QLocalServer{h: (*C.QLocalServer)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQLocalServer(h unsafe.Pointer) *QLocalServer {
+	return newQLocalServer((*C.QLocalServer)(h))
 }
 
 // NewQLocalServer constructs a new QLocalServer object.
 func NewQLocalServer() *QLocalServer {
-	var outptr_QLocalServer *C.QLocalServer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QLocalServer_new(&outptr_QLocalServer, &outptr_QObject)
-	ret := newQLocalServer(outptr_QLocalServer, outptr_QObject)
+	ret := newQLocalServer(C.QLocalServer_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQLocalServer2 constructs a new QLocalServer object.
 func NewQLocalServer2(parent *qt.QObject) *QLocalServer {
-	var outptr_QLocalServer *C.QLocalServer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QLocalServer_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QLocalServer, &outptr_QObject)
-	ret := newQLocalServer(outptr_QLocalServer, outptr_QObject)
+	ret := newQLocalServer(C.QLocalServer_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -167,7 +159,7 @@ func (this *QLocalServer) MaxPendingConnections() int {
 }
 
 func (this *QLocalServer) NextPendingConnection() *QLocalSocket {
-	return newQLocalSocket(C.QLocalServer_NextPendingConnection(this.h), nil, nil)
+	return newQLocalSocket(C.QLocalServer_NextPendingConnection(this.h))
 }
 
 func (this *QLocalServer) ServerName() string {
@@ -295,7 +287,7 @@ func miqt_exec_callback_QLocalServer_HasPendingConnections(self *C.QLocalServer,
 
 func (this *QLocalServer) callVirtualBase_NextPendingConnection() *QLocalSocket {
 
-	return newQLocalSocket(C.QLocalServer_virtualbase_NextPendingConnection(unsafe.Pointer(this.h)), nil, nil)
+	return newQLocalSocket(C.QLocalServer_virtualbase_NextPendingConnection(unsafe.Pointer(this.h)))
 
 }
 func (this *QLocalServer) OnNextPendingConnection(slot func(super func() *QLocalSocket) *QLocalSocket) {
@@ -422,7 +414,7 @@ func miqt_exec_callback_QLocalServer_TimerEvent(self *C.QLocalServer, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QLocalServer{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -448,7 +440,7 @@ func miqt_exec_callback_QLocalServer_ChildEvent(self *C.QLocalServer, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QLocalServer{h: self}).callVirtualBase_ChildEvent, slotval1)
 

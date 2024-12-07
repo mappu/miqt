@@ -35,42 +35,34 @@ func (this *QTranslator) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTranslator constructs the type using only CGO pointers.
-func newQTranslator(h *C.QTranslator, h_QObject *C.QObject) *QTranslator {
+func newQTranslator(h *C.QTranslator) *QTranslator {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QTranslator_virtbase(h, &outptr_QObject)
+
 	return &QTranslator{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQTranslator constructs the type using only unsafe pointers.
-func UnsafeNewQTranslator(h unsafe.Pointer, h_QObject unsafe.Pointer) *QTranslator {
-	if h == nil {
-		return nil
-	}
-
-	return &QTranslator{h: (*C.QTranslator)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQTranslator(h unsafe.Pointer) *QTranslator {
+	return newQTranslator((*C.QTranslator)(h))
 }
 
 // NewQTranslator constructs a new QTranslator object.
 func NewQTranslator() *QTranslator {
-	var outptr_QTranslator *C.QTranslator = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTranslator_new(&outptr_QTranslator, &outptr_QObject)
-	ret := newQTranslator(outptr_QTranslator, outptr_QObject)
+	ret := newQTranslator(C.QTranslator_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTranslator2 constructs a new QTranslator object.
 func NewQTranslator2(parent *QObject) *QTranslator {
-	var outptr_QTranslator *C.QTranslator = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTranslator_new2(parent.cPointer(), &outptr_QTranslator, &outptr_QObject)
-	ret := newQTranslator(outptr_QTranslator, outptr_QObject)
+	ret := newQTranslator(C.QTranslator_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -423,7 +415,7 @@ func miqt_exec_callback_QTranslator_TimerEvent(self *C.QTranslator, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QTranslator{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -449,7 +441,7 @@ func miqt_exec_callback_QTranslator_ChildEvent(self *C.QTranslator, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QTranslator{h: self}).callVirtualBase_ChildEvent, slotval1)
 

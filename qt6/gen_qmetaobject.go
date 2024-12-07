@@ -62,34 +62,27 @@ func newQMetaMethod(h *C.QMetaMethod) *QMetaMethod {
 	if h == nil {
 		return nil
 	}
+
 	return &QMetaMethod{h: h}
 }
 
 // UnsafeNewQMetaMethod constructs the type using only unsafe pointers.
 func UnsafeNewQMetaMethod(h unsafe.Pointer) *QMetaMethod {
-	if h == nil {
-		return nil
-	}
-
-	return &QMetaMethod{h: (*C.QMetaMethod)(h)}
+	return newQMetaMethod((*C.QMetaMethod)(h))
 }
 
 // NewQMetaMethod constructs a new QMetaMethod object.
 func NewQMetaMethod() *QMetaMethod {
-	var outptr_QMetaMethod *C.QMetaMethod = nil
 
-	C.QMetaMethod_new(&outptr_QMetaMethod)
-	ret := newQMetaMethod(outptr_QMetaMethod)
+	ret := newQMetaMethod(C.QMetaMethod_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMetaMethod2 constructs a new QMetaMethod object.
 func NewQMetaMethod2(param1 *QMetaMethod) *QMetaMethod {
-	var outptr_QMetaMethod *C.QMetaMethod = nil
 
-	C.QMetaMethod_new2(param1.cPointer(), &outptr_QMetaMethod)
-	ret := newQMetaMethod(outptr_QMetaMethod)
+	ret := newQMetaMethod(C.QMetaMethod_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -517,34 +510,27 @@ func newQMetaEnum(h *C.QMetaEnum) *QMetaEnum {
 	if h == nil {
 		return nil
 	}
+
 	return &QMetaEnum{h: h}
 }
 
 // UnsafeNewQMetaEnum constructs the type using only unsafe pointers.
 func UnsafeNewQMetaEnum(h unsafe.Pointer) *QMetaEnum {
-	if h == nil {
-		return nil
-	}
-
-	return &QMetaEnum{h: (*C.QMetaEnum)(h)}
+	return newQMetaEnum((*C.QMetaEnum)(h))
 }
 
 // NewQMetaEnum constructs a new QMetaEnum object.
 func NewQMetaEnum() *QMetaEnum {
-	var outptr_QMetaEnum *C.QMetaEnum = nil
 
-	C.QMetaEnum_new(&outptr_QMetaEnum)
-	ret := newQMetaEnum(outptr_QMetaEnum)
+	ret := newQMetaEnum(C.QMetaEnum_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMetaEnum2 constructs a new QMetaEnum object.
 func NewQMetaEnum2(param1 *QMetaEnum) *QMetaEnum {
-	var outptr_QMetaEnum *C.QMetaEnum = nil
 
-	C.QMetaEnum_new2(param1.cPointer(), &outptr_QMetaEnum)
-	ret := newQMetaEnum(outptr_QMetaEnum)
+	ret := newQMetaEnum(C.QMetaEnum_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -667,24 +653,19 @@ func newQMetaProperty(h *C.QMetaProperty) *QMetaProperty {
 	if h == nil {
 		return nil
 	}
+
 	return &QMetaProperty{h: h}
 }
 
 // UnsafeNewQMetaProperty constructs the type using only unsafe pointers.
 func UnsafeNewQMetaProperty(h unsafe.Pointer) *QMetaProperty {
-	if h == nil {
-		return nil
-	}
-
-	return &QMetaProperty{h: (*C.QMetaProperty)(h)}
+	return newQMetaProperty((*C.QMetaProperty)(h))
 }
 
 // NewQMetaProperty constructs a new QMetaProperty object.
 func NewQMetaProperty() *QMetaProperty {
-	var outptr_QMetaProperty *C.QMetaProperty = nil
 
-	C.QMetaProperty_new(&outptr_QMetaProperty)
-	ret := newQMetaProperty(outptr_QMetaProperty)
+	ret := newQMetaProperty(C.QMetaProperty_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -889,24 +870,19 @@ func newQMetaClassInfo(h *C.QMetaClassInfo) *QMetaClassInfo {
 	if h == nil {
 		return nil
 	}
+
 	return &QMetaClassInfo{h: h}
 }
 
 // UnsafeNewQMetaClassInfo constructs the type using only unsafe pointers.
 func UnsafeNewQMetaClassInfo(h unsafe.Pointer) *QMetaClassInfo {
-	if h == nil {
-		return nil
-	}
-
-	return &QMetaClassInfo{h: (*C.QMetaClassInfo)(h)}
+	return newQMetaClassInfo((*C.QMetaClassInfo)(h))
 }
 
 // NewQMetaClassInfo constructs a new QMetaClassInfo object.
 func NewQMetaClassInfo() *QMetaClassInfo {
-	var outptr_QMetaClassInfo *C.QMetaClassInfo = nil
 
-	C.QMetaClassInfo_new(&outptr_QMetaClassInfo)
-	ret := newQMetaClassInfo(outptr_QMetaClassInfo)
+	ret := newQMetaClassInfo(C.QMetaClassInfo_new())
 	ret.isSubclass = true
 	return ret
 }

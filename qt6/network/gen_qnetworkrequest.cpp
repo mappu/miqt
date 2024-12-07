@@ -13,19 +13,16 @@
 #include "gen_qnetworkrequest.h"
 #include "_cgo_export.h"
 
-void QNetworkRequest_new(QNetworkRequest** outptr_QNetworkRequest) {
-	QNetworkRequest* ret = new QNetworkRequest();
-	*outptr_QNetworkRequest = ret;
+QNetworkRequest* QNetworkRequest_new() {
+	return new QNetworkRequest();
 }
 
-void QNetworkRequest_new2(QUrl* url, QNetworkRequest** outptr_QNetworkRequest) {
-	QNetworkRequest* ret = new QNetworkRequest(*url);
-	*outptr_QNetworkRequest = ret;
+QNetworkRequest* QNetworkRequest_new2(QUrl* url) {
+	return new QNetworkRequest(*url);
 }
 
-void QNetworkRequest_new3(QNetworkRequest* other, QNetworkRequest** outptr_QNetworkRequest) {
-	QNetworkRequest* ret = new QNetworkRequest(*other);
-	*outptr_QNetworkRequest = ret;
+QNetworkRequest* QNetworkRequest_new3(QNetworkRequest* other) {
+	return new QNetworkRequest(*other);
 }
 
 void QNetworkRequest_OperatorAssign(QNetworkRequest* self, QNetworkRequest* other) {

@@ -205,31 +205,26 @@ public:
 
 };
 
-void QStandardItem_new(QStandardItem** outptr_QStandardItem) {
-	MiqtVirtualQStandardItem* ret = new MiqtVirtualQStandardItem();
-	*outptr_QStandardItem = ret;
+QStandardItem* QStandardItem_new() {
+	return new MiqtVirtualQStandardItem();
 }
 
-void QStandardItem_new2(struct miqt_string text, QStandardItem** outptr_QStandardItem) {
+QStandardItem* QStandardItem_new2(struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQStandardItem* ret = new MiqtVirtualQStandardItem(text_QString);
-	*outptr_QStandardItem = ret;
+	return new MiqtVirtualQStandardItem(text_QString);
 }
 
-void QStandardItem_new3(QIcon* icon, struct miqt_string text, QStandardItem** outptr_QStandardItem) {
+QStandardItem* QStandardItem_new3(QIcon* icon, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQStandardItem* ret = new MiqtVirtualQStandardItem(*icon, text_QString);
-	*outptr_QStandardItem = ret;
+	return new MiqtVirtualQStandardItem(*icon, text_QString);
 }
 
-void QStandardItem_new4(int rows, QStandardItem** outptr_QStandardItem) {
-	MiqtVirtualQStandardItem* ret = new MiqtVirtualQStandardItem(static_cast<int>(rows));
-	*outptr_QStandardItem = ret;
+QStandardItem* QStandardItem_new4(int rows) {
+	return new MiqtVirtualQStandardItem(static_cast<int>(rows));
 }
 
-void QStandardItem_new5(int rows, int columns, QStandardItem** outptr_QStandardItem) {
-	MiqtVirtualQStandardItem* ret = new MiqtVirtualQStandardItem(static_cast<int>(rows), static_cast<int>(columns));
-	*outptr_QStandardItem = ret;
+QStandardItem* QStandardItem_new5(int rows, int columns) {
+	return new MiqtVirtualQStandardItem(static_cast<int>(rows), static_cast<int>(columns));
 }
 
 QVariant* QStandardItem_Data(const QStandardItem* self, int role) {
@@ -1773,32 +1768,24 @@ public:
 
 };
 
-void QStandardItemModel_new(QStandardItemModel** outptr_QStandardItemModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQStandardItemModel* ret = new MiqtVirtualQStandardItemModel();
-	*outptr_QStandardItemModel = ret;
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QStandardItemModel* QStandardItemModel_new() {
+	return new MiqtVirtualQStandardItemModel();
 }
 
-void QStandardItemModel_new2(int rows, int columns, QStandardItemModel** outptr_QStandardItemModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQStandardItemModel* ret = new MiqtVirtualQStandardItemModel(static_cast<int>(rows), static_cast<int>(columns));
-	*outptr_QStandardItemModel = ret;
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QStandardItemModel* QStandardItemModel_new2(int rows, int columns) {
+	return new MiqtVirtualQStandardItemModel(static_cast<int>(rows), static_cast<int>(columns));
 }
 
-void QStandardItemModel_new3(QObject* parent, QStandardItemModel** outptr_QStandardItemModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQStandardItemModel* ret = new MiqtVirtualQStandardItemModel(parent);
-	*outptr_QStandardItemModel = ret;
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QStandardItemModel* QStandardItemModel_new3(QObject* parent) {
+	return new MiqtVirtualQStandardItemModel(parent);
 }
 
-void QStandardItemModel_new4(int rows, int columns, QObject* parent, QStandardItemModel** outptr_QStandardItemModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQStandardItemModel* ret = new MiqtVirtualQStandardItemModel(static_cast<int>(rows), static_cast<int>(columns), parent);
-	*outptr_QStandardItemModel = ret;
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QStandardItemModel* QStandardItemModel_new4(int rows, int columns, QObject* parent) {
+	return new MiqtVirtualQStandardItemModel(static_cast<int>(rows), static_cast<int>(columns), parent);
+}
+
+void QStandardItemModel_virtbase(QStandardItemModel* src, QAbstractItemModel** outptr_QAbstractItemModel) {
+	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(src);
 }
 
 QMetaObject* QStandardItemModel_MetaObject(const QStandardItemModel* self) {

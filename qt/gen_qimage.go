@@ -78,97 +78,74 @@ func (this *QImage) UnsafePointer() unsafe.Pointer {
 }
 
 // newQImage constructs the type using only CGO pointers.
-func newQImage(h *C.QImage, h_QPaintDevice *C.QPaintDevice) *QImage {
+func newQImage(h *C.QImage) *QImage {
 	if h == nil {
 		return nil
 	}
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+	C.QImage_virtbase(h, &outptr_QPaintDevice)
+
 	return &QImage{h: h,
-		QPaintDevice: newQPaintDevice(h_QPaintDevice)}
+		QPaintDevice: newQPaintDevice(outptr_QPaintDevice)}
 }
 
 // UnsafeNewQImage constructs the type using only unsafe pointers.
-func UnsafeNewQImage(h unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QImage {
-	if h == nil {
-		return nil
-	}
-
-	return &QImage{h: (*C.QImage)(h),
-		QPaintDevice: UnsafeNewQPaintDevice(h_QPaintDevice)}
+func UnsafeNewQImage(h unsafe.Pointer) *QImage {
+	return newQImage((*C.QImage)(h))
 }
 
 // NewQImage constructs a new QImage object.
 func NewQImage() *QImage {
-	var outptr_QImage *C.QImage = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QImage_new(&outptr_QImage, &outptr_QPaintDevice)
-	ret := newQImage(outptr_QImage, outptr_QPaintDevice)
+	ret := newQImage(C.QImage_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQImage2 constructs a new QImage object.
 func NewQImage2(size *QSize, format QImage__Format) *QImage {
-	var outptr_QImage *C.QImage = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QImage_new2(size.cPointer(), (C.int)(format), &outptr_QImage, &outptr_QPaintDevice)
-	ret := newQImage(outptr_QImage, outptr_QPaintDevice)
+	ret := newQImage(C.QImage_new2(size.cPointer(), (C.int)(format)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQImage3 constructs a new QImage object.
 func NewQImage3(width int, height int, format QImage__Format) *QImage {
-	var outptr_QImage *C.QImage = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QImage_new3((C.int)(width), (C.int)(height), (C.int)(format), &outptr_QImage, &outptr_QPaintDevice)
-	ret := newQImage(outptr_QImage, outptr_QPaintDevice)
+	ret := newQImage(C.QImage_new3((C.int)(width), (C.int)(height), (C.int)(format)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQImage4 constructs a new QImage object.
 func NewQImage4(data *byte, width int, height int, format QImage__Format) *QImage {
-	var outptr_QImage *C.QImage = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QImage_new4((*C.uchar)(unsafe.Pointer(data)), (C.int)(width), (C.int)(height), (C.int)(format), &outptr_QImage, &outptr_QPaintDevice)
-	ret := newQImage(outptr_QImage, outptr_QPaintDevice)
+	ret := newQImage(C.QImage_new4((*C.uchar)(unsafe.Pointer(data)), (C.int)(width), (C.int)(height), (C.int)(format)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQImage5 constructs a new QImage object.
 func NewQImage5(data *byte, width int, height int, format QImage__Format) *QImage {
-	var outptr_QImage *C.QImage = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QImage_new5((*C.uchar)(unsafe.Pointer(data)), (C.int)(width), (C.int)(height), (C.int)(format), &outptr_QImage, &outptr_QPaintDevice)
-	ret := newQImage(outptr_QImage, outptr_QPaintDevice)
+	ret := newQImage(C.QImage_new5((*C.uchar)(unsafe.Pointer(data)), (C.int)(width), (C.int)(height), (C.int)(format)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQImage6 constructs a new QImage object.
 func NewQImage6(data *byte, width int, height int, bytesPerLine int, format QImage__Format) *QImage {
-	var outptr_QImage *C.QImage = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QImage_new6((*C.uchar)(unsafe.Pointer(data)), (C.int)(width), (C.int)(height), (C.int)(bytesPerLine), (C.int)(format), &outptr_QImage, &outptr_QPaintDevice)
-	ret := newQImage(outptr_QImage, outptr_QPaintDevice)
+	ret := newQImage(C.QImage_new6((*C.uchar)(unsafe.Pointer(data)), (C.int)(width), (C.int)(height), (C.int)(bytesPerLine), (C.int)(format)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQImage7 constructs a new QImage object.
 func NewQImage7(data *byte, width int, height int, bytesPerLine int, format QImage__Format) *QImage {
-	var outptr_QImage *C.QImage = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QImage_new7((*C.uchar)(unsafe.Pointer(data)), (C.int)(width), (C.int)(height), (C.int)(bytesPerLine), (C.int)(format), &outptr_QImage, &outptr_QPaintDevice)
-	ret := newQImage(outptr_QImage, outptr_QPaintDevice)
+	ret := newQImage(C.QImage_new7((*C.uchar)(unsafe.Pointer(data)), (C.int)(width), (C.int)(height), (C.int)(bytesPerLine), (C.int)(format)))
 	ret.isSubclass = true
 	return ret
 }
@@ -179,22 +156,16 @@ func NewQImage8(fileName string) *QImage {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QImage *C.QImage = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QImage_new8(fileName_ms, &outptr_QImage, &outptr_QPaintDevice)
-	ret := newQImage(outptr_QImage, outptr_QPaintDevice)
+	ret := newQImage(C.QImage_new8(fileName_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQImage9 constructs a new QImage object.
 func NewQImage9(param1 *QImage) *QImage {
-	var outptr_QImage *C.QImage = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QImage_new9(param1.cPointer(), &outptr_QImage, &outptr_QPaintDevice)
-	ret := newQImage(outptr_QImage, outptr_QPaintDevice)
+	ret := newQImage(C.QImage_new9(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -207,11 +178,8 @@ func NewQImage10(fileName string, format string) *QImage {
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	var outptr_QImage *C.QImage = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QImage_new10(fileName_ms, format_Cstring, &outptr_QImage, &outptr_QPaintDevice)
-	ret := newQImage(outptr_QImage, outptr_QPaintDevice)
+	ret := newQImage(C.QImage_new10(fileName_ms, format_Cstring))
 	ret.isSubclass = true
 	return ret
 }
@@ -249,13 +217,13 @@ func (this *QImage) IsDetached() bool {
 }
 
 func (this *QImage) Copy() *QImage {
-	_goptr := newQImage(C.QImage_Copy(this.h), nil)
+	_goptr := newQImage(C.QImage_Copy(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Copy2(x int, y int, w int, h int) *QImage {
-	_goptr := newQImage(C.QImage_Copy2(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h)), nil)
+	_goptr := newQImage(C.QImage_Copy2(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -265,7 +233,7 @@ func (this *QImage) Format() QImage__Format {
 }
 
 func (this *QImage) ConvertToFormat(f QImage__Format) *QImage {
-	_goptr := newQImage(C.QImage_ConvertToFormat(this.h, (C.int)(f)), nil)
+	_goptr := newQImage(C.QImage_ConvertToFormat(this.h, (C.int)(f)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -277,7 +245,7 @@ func (this *QImage) ConvertToFormat2(f QImage__Format, colorTable []uint) *QImag
 		colorTable_CArray[i] = (C.uint)(colorTable[i])
 	}
 	colorTable_ma := C.struct_miqt_array{len: C.size_t(len(colorTable)), data: unsafe.Pointer(colorTable_CArray)}
-	_goptr := newQImage(C.QImage_ConvertToFormat2(this.h, (C.int)(f), colorTable_ma), nil)
+	_goptr := newQImage(C.QImage_ConvertToFormat2(this.h, (C.int)(f), colorTable_ma))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -479,55 +447,55 @@ func (this *QImage) SetAlphaChannel(alphaChannel *QImage) {
 }
 
 func (this *QImage) AlphaChannel() *QImage {
-	_goptr := newQImage(C.QImage_AlphaChannel(this.h), nil)
+	_goptr := newQImage(C.QImage_AlphaChannel(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) CreateAlphaMask() *QImage {
-	_goptr := newQImage(C.QImage_CreateAlphaMask(this.h), nil)
+	_goptr := newQImage(C.QImage_CreateAlphaMask(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) CreateHeuristicMask() *QImage {
-	_goptr := newQImage(C.QImage_CreateHeuristicMask(this.h), nil)
+	_goptr := newQImage(C.QImage_CreateHeuristicMask(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) CreateMaskFromColor(color uint) *QImage {
-	_goptr := newQImage(C.QImage_CreateMaskFromColor(this.h, (C.uint)(color)), nil)
+	_goptr := newQImage(C.QImage_CreateMaskFromColor(this.h, (C.uint)(color)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Scaled(w int, h int) *QImage {
-	_goptr := newQImage(C.QImage_Scaled(this.h, (C.int)(w), (C.int)(h)), nil)
+	_goptr := newQImage(C.QImage_Scaled(this.h, (C.int)(w), (C.int)(h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) ScaledWithQSize(s *QSize) *QImage {
-	_goptr := newQImage(C.QImage_ScaledWithQSize(this.h, s.cPointer()), nil)
+	_goptr := newQImage(C.QImage_ScaledWithQSize(this.h, s.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) ScaledToWidth(w int) *QImage {
-	_goptr := newQImage(C.QImage_ScaledToWidth(this.h, (C.int)(w)), nil)
+	_goptr := newQImage(C.QImage_ScaledToWidth(this.h, (C.int)(w)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) ScaledToHeight(h int) *QImage {
-	_goptr := newQImage(C.QImage_ScaledToHeight(this.h, (C.int)(h)), nil)
+	_goptr := newQImage(C.QImage_ScaledToHeight(this.h, (C.int)(h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Transformed(matrix *QMatrix) *QImage {
-	_goptr := newQImage(C.QImage_Transformed(this.h, matrix.cPointer()), nil)
+	_goptr := newQImage(C.QImage_Transformed(this.h, matrix.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -539,7 +507,7 @@ func QImage_TrueMatrix(param1 *QMatrix, w int, h int) *QMatrix {
 }
 
 func (this *QImage) TransformedWithMatrix(matrix *QTransform) *QImage {
-	_goptr := newQImage(C.QImage_TransformedWithMatrix(this.h, matrix.cPointer()), nil)
+	_goptr := newQImage(C.QImage_TransformedWithMatrix(this.h, matrix.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -551,13 +519,13 @@ func QImage_TrueMatrix2(param1 *QTransform, w int, h int) *QTransform {
 }
 
 func (this *QImage) Mirrored() *QImage {
-	_goptr := newQImage(C.QImage_Mirrored(this.h), nil)
+	_goptr := newQImage(C.QImage_Mirrored(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) RgbSwapped() *QImage {
-	_goptr := newQImage(C.QImage_RgbSwapped(this.h), nil)
+	_goptr := newQImage(C.QImage_RgbSwapped(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -573,7 +541,7 @@ func (this *QImage) ColorSpace() *QColorSpace {
 }
 
 func (this *QImage) ConvertedToColorSpace(param1 *QColorSpace) *QImage {
-	_goptr := newQImage(C.QImage_ConvertedToColorSpace(this.h, param1.cPointer()), nil)
+	_goptr := newQImage(C.QImage_ConvertedToColorSpace(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -628,7 +596,7 @@ func (this *QImage) SaveWithDevice(device *QIODevice) bool {
 }
 
 func QImage_FromData(data *byte, size int) *QImage {
-	_goptr := newQImage(C.QImage_FromData((*C.uchar)(unsafe.Pointer(data)), (C.int)(size)), nil)
+	_goptr := newQImage(C.QImage_FromData((*C.uchar)(unsafe.Pointer(data)), (C.int)(size)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -637,7 +605,7 @@ func QImage_FromDataWithData(data []byte) *QImage {
 	data_alias := C.struct_miqt_string{}
 	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
 	data_alias.len = C.size_t(len(data))
-	_goptr := newQImage(C.QImage_FromDataWithData(data_alias), nil)
+	_goptr := newQImage(C.QImage_FromDataWithData(data_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -725,13 +693,13 @@ func QImage_ToImageFormat(format QPixelFormat) QImage__Format {
 }
 
 func (this *QImage) Copy1(rect *QRect) *QImage {
-	_goptr := newQImage(C.QImage_Copy1(this.h, rect.cPointer()), nil)
+	_goptr := newQImage(C.QImage_Copy1(this.h, rect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) ConvertToFormat22(f QImage__Format, flags ImageConversionFlag) *QImage {
-	_goptr := newQImage(C.QImage_ConvertToFormat22(this.h, (C.int)(f), (C.int)(flags)), nil)
+	_goptr := newQImage(C.QImage_ConvertToFormat22(this.h, (C.int)(f), (C.int)(flags)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -743,7 +711,7 @@ func (this *QImage) ConvertToFormat3(f QImage__Format, colorTable []uint, flags 
 		colorTable_CArray[i] = (C.uint)(colorTable[i])
 	}
 	colorTable_ma := C.struct_miqt_array{len: C.size_t(len(colorTable)), data: unsafe.Pointer(colorTable_CArray)}
-	_goptr := newQImage(C.QImage_ConvertToFormat3(this.h, (C.int)(f), colorTable_ma, (C.int)(flags)), nil)
+	_goptr := newQImage(C.QImage_ConvertToFormat3(this.h, (C.int)(f), colorTable_ma, (C.int)(flags)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -753,79 +721,79 @@ func (this *QImage) ConvertTo2(f QImage__Format, flags ImageConversionFlag) {
 }
 
 func (this *QImage) CreateAlphaMask1(flags ImageConversionFlag) *QImage {
-	_goptr := newQImage(C.QImage_CreateAlphaMask1(this.h, (C.int)(flags)), nil)
+	_goptr := newQImage(C.QImage_CreateAlphaMask1(this.h, (C.int)(flags)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) CreateHeuristicMask1(clipTight bool) *QImage {
-	_goptr := newQImage(C.QImage_CreateHeuristicMask1(this.h, (C.bool)(clipTight)), nil)
+	_goptr := newQImage(C.QImage_CreateHeuristicMask1(this.h, (C.bool)(clipTight)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) CreateMaskFromColor2(color uint, mode MaskMode) *QImage {
-	_goptr := newQImage(C.QImage_CreateMaskFromColor2(this.h, (C.uint)(color), (C.int)(mode)), nil)
+	_goptr := newQImage(C.QImage_CreateMaskFromColor2(this.h, (C.uint)(color), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Scaled3(w int, h int, aspectMode AspectRatioMode) *QImage {
-	_goptr := newQImage(C.QImage_Scaled3(this.h, (C.int)(w), (C.int)(h), (C.int)(aspectMode)), nil)
+	_goptr := newQImage(C.QImage_Scaled3(this.h, (C.int)(w), (C.int)(h), (C.int)(aspectMode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Scaled4(w int, h int, aspectMode AspectRatioMode, mode TransformationMode) *QImage {
-	_goptr := newQImage(C.QImage_Scaled4(this.h, (C.int)(w), (C.int)(h), (C.int)(aspectMode), (C.int)(mode)), nil)
+	_goptr := newQImage(C.QImage_Scaled4(this.h, (C.int)(w), (C.int)(h), (C.int)(aspectMode), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Scaled2(s *QSize, aspectMode AspectRatioMode) *QImage {
-	_goptr := newQImage(C.QImage_Scaled2(this.h, s.cPointer(), (C.int)(aspectMode)), nil)
+	_goptr := newQImage(C.QImage_Scaled2(this.h, s.cPointer(), (C.int)(aspectMode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Scaled32(s *QSize, aspectMode AspectRatioMode, mode TransformationMode) *QImage {
-	_goptr := newQImage(C.QImage_Scaled32(this.h, s.cPointer(), (C.int)(aspectMode), (C.int)(mode)), nil)
+	_goptr := newQImage(C.QImage_Scaled32(this.h, s.cPointer(), (C.int)(aspectMode), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) ScaledToWidth2(w int, mode TransformationMode) *QImage {
-	_goptr := newQImage(C.QImage_ScaledToWidth2(this.h, (C.int)(w), (C.int)(mode)), nil)
+	_goptr := newQImage(C.QImage_ScaledToWidth2(this.h, (C.int)(w), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) ScaledToHeight2(h int, mode TransformationMode) *QImage {
-	_goptr := newQImage(C.QImage_ScaledToHeight2(this.h, (C.int)(h), (C.int)(mode)), nil)
+	_goptr := newQImage(C.QImage_ScaledToHeight2(this.h, (C.int)(h), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Transformed2(matrix *QMatrix, mode TransformationMode) *QImage {
-	_goptr := newQImage(C.QImage_Transformed2(this.h, matrix.cPointer(), (C.int)(mode)), nil)
+	_goptr := newQImage(C.QImage_Transformed2(this.h, matrix.cPointer(), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Transformed22(matrix *QTransform, mode TransformationMode) *QImage {
-	_goptr := newQImage(C.QImage_Transformed22(this.h, matrix.cPointer(), (C.int)(mode)), nil)
+	_goptr := newQImage(C.QImage_Transformed22(this.h, matrix.cPointer(), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Mirrored1(horizontally bool) *QImage {
-	_goptr := newQImage(C.QImage_Mirrored1(this.h, (C.bool)(horizontally)), nil)
+	_goptr := newQImage(C.QImage_Mirrored1(this.h, (C.bool)(horizontally)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Mirrored2(horizontally bool, vertically bool) *QImage {
-	_goptr := newQImage(C.QImage_Mirrored2(this.h, (C.bool)(horizontally), (C.bool)(vertically)), nil)
+	_goptr := newQImage(C.QImage_Mirrored2(this.h, (C.bool)(horizontally), (C.bool)(vertically)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -894,7 +862,7 @@ func (this *QImage) Save32(device *QIODevice, format string, quality int) bool {
 func QImage_FromData3(data *byte, size int, format string) *QImage {
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	_goptr := newQImage(C.QImage_FromData3((*C.uchar)(unsafe.Pointer(data)), (C.int)(size), format_Cstring), nil)
+	_goptr := newQImage(C.QImage_FromData3((*C.uchar)(unsafe.Pointer(data)), (C.int)(size), format_Cstring))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -905,7 +873,7 @@ func QImage_FromData2(data []byte, format string) *QImage {
 	data_alias.len = C.size_t(len(data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	_goptr := newQImage(C.QImage_FromData2(data_alias, format_Cstring), nil)
+	_goptr := newQImage(C.QImage_FromData2(data_alias, format_Cstring))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

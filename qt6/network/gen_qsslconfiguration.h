@@ -32,8 +32,8 @@ typedef struct QSslKey QSslKey;
 typedef struct QVariant QVariant;
 #endif
 
-void QSslConfiguration_new(QSslConfiguration** outptr_QSslConfiguration);
-void QSslConfiguration_new2(QSslConfiguration* other, QSslConfiguration** outptr_QSslConfiguration);
+QSslConfiguration* QSslConfiguration_new();
+QSslConfiguration* QSslConfiguration_new2(QSslConfiguration* other);
 void QSslConfiguration_OperatorAssign(QSslConfiguration* self, QSslConfiguration* other);
 void QSslConfiguration_Swap(QSslConfiguration* self, QSslConfiguration* other);
 bool QSslConfiguration_OperatorEqual(const QSslConfiguration* self, QSslConfiguration* other);

@@ -35,42 +35,34 @@ func (this *QGraphicsItemAnimation) UnsafePointer() unsafe.Pointer {
 }
 
 // newQGraphicsItemAnimation constructs the type using only CGO pointers.
-func newQGraphicsItemAnimation(h *C.QGraphicsItemAnimation, h_QObject *C.QObject) *QGraphicsItemAnimation {
+func newQGraphicsItemAnimation(h *C.QGraphicsItemAnimation) *QGraphicsItemAnimation {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QGraphicsItemAnimation_virtbase(h, &outptr_QObject)
+
 	return &QGraphicsItemAnimation{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQGraphicsItemAnimation constructs the type using only unsafe pointers.
-func UnsafeNewQGraphicsItemAnimation(h unsafe.Pointer, h_QObject unsafe.Pointer) *QGraphicsItemAnimation {
-	if h == nil {
-		return nil
-	}
-
-	return &QGraphicsItemAnimation{h: (*C.QGraphicsItemAnimation)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQGraphicsItemAnimation(h unsafe.Pointer) *QGraphicsItemAnimation {
+	return newQGraphicsItemAnimation((*C.QGraphicsItemAnimation)(h))
 }
 
 // NewQGraphicsItemAnimation constructs a new QGraphicsItemAnimation object.
 func NewQGraphicsItemAnimation() *QGraphicsItemAnimation {
-	var outptr_QGraphicsItemAnimation *C.QGraphicsItemAnimation = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QGraphicsItemAnimation_new(&outptr_QGraphicsItemAnimation, &outptr_QObject)
-	ret := newQGraphicsItemAnimation(outptr_QGraphicsItemAnimation, outptr_QObject)
+	ret := newQGraphicsItemAnimation(C.QGraphicsItemAnimation_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsItemAnimation2 constructs a new QGraphicsItemAnimation object.
 func NewQGraphicsItemAnimation2(parent *QObject) *QGraphicsItemAnimation {
-	var outptr_QGraphicsItemAnimation *C.QGraphicsItemAnimation = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QGraphicsItemAnimation_new2(parent.cPointer(), &outptr_QGraphicsItemAnimation, &outptr_QObject)
-	ret := newQGraphicsItemAnimation(outptr_QGraphicsItemAnimation, outptr_QObject)
+	ret := newQGraphicsItemAnimation(C.QGraphicsItemAnimation_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -112,7 +104,7 @@ func (this *QGraphicsItemAnimation) SetItem(item *QGraphicsItem) {
 }
 
 func (this *QGraphicsItemAnimation) TimeLine() *QTimeLine {
-	return newQTimeLine(C.QGraphicsItemAnimation_TimeLine(this.h), nil)
+	return newQTimeLine(C.QGraphicsItemAnimation_TimeLine(this.h))
 }
 
 func (this *QGraphicsItemAnimation) SetTimeLine(timeLine *QTimeLine) {
@@ -509,7 +501,7 @@ func miqt_exec_callback_QGraphicsItemAnimation_TimerEvent(self *C.QGraphicsItemA
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QGraphicsItemAnimation{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -535,7 +527,7 @@ func miqt_exec_callback_QGraphicsItemAnimation_ChildEvent(self *C.QGraphicsItemA
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QGraphicsItemAnimation{h: self}).callVirtualBase_ChildEvent, slotval1)
 

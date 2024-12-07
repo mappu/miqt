@@ -37,16 +37,13 @@ func newQGenericPluginFactory(h *C.QGenericPluginFactory) *QGenericPluginFactory
 	if h == nil {
 		return nil
 	}
+
 	return &QGenericPluginFactory{h: h}
 }
 
 // UnsafeNewQGenericPluginFactory constructs the type using only unsafe pointers.
 func UnsafeNewQGenericPluginFactory(h unsafe.Pointer) *QGenericPluginFactory {
-	if h == nil {
-		return nil
-	}
-
-	return &QGenericPluginFactory{h: (*C.QGenericPluginFactory)(h)}
+	return newQGenericPluginFactory((*C.QGenericPluginFactory)(h))
 }
 
 func QGenericPluginFactory_Keys() []string {

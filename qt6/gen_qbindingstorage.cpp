@@ -13,9 +13,8 @@ void QBindingStatus_Delete(QBindingStatus* self, bool isSubclass) {
 	}
 }
 
-void QBindingStorage_new(QBindingStorage** outptr_QBindingStorage) {
-	QBindingStorage* ret = new QBindingStorage();
-	*outptr_QBindingStorage = ret;
+QBindingStorage* QBindingStorage_new() {
+	return new QBindingStorage();
 }
 
 bool QBindingStorage_IsEmpty(QBindingStorage* self) {

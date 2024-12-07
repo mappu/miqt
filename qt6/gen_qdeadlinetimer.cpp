@@ -3,39 +3,32 @@
 #include "gen_qdeadlinetimer.h"
 #include "_cgo_export.h"
 
-void QDeadlineTimer_new(QDeadlineTimer** outptr_QDeadlineTimer) {
-	QDeadlineTimer* ret = new QDeadlineTimer();
-	*outptr_QDeadlineTimer = ret;
+QDeadlineTimer* QDeadlineTimer_new() {
+	return new QDeadlineTimer();
 }
 
-void QDeadlineTimer_new2(int param1, QDeadlineTimer** outptr_QDeadlineTimer) {
-	QDeadlineTimer* ret = new QDeadlineTimer(static_cast<QDeadlineTimer::ForeverConstant>(param1));
-	*outptr_QDeadlineTimer = ret;
+QDeadlineTimer* QDeadlineTimer_new2(int param1) {
+	return new QDeadlineTimer(static_cast<QDeadlineTimer::ForeverConstant>(param1));
 }
 
-void QDeadlineTimer_new3(long long msecs, QDeadlineTimer** outptr_QDeadlineTimer) {
-	QDeadlineTimer* ret = new QDeadlineTimer(static_cast<qint64>(msecs));
-	*outptr_QDeadlineTimer = ret;
+QDeadlineTimer* QDeadlineTimer_new3(long long msecs) {
+	return new QDeadlineTimer(static_cast<qint64>(msecs));
 }
 
-void QDeadlineTimer_new4(QDeadlineTimer* param1, QDeadlineTimer** outptr_QDeadlineTimer) {
-	QDeadlineTimer* ret = new QDeadlineTimer(*param1);
-	*outptr_QDeadlineTimer = ret;
+QDeadlineTimer* QDeadlineTimer_new4(QDeadlineTimer* param1) {
+	return new QDeadlineTimer(*param1);
 }
 
-void QDeadlineTimer_new5(int type_, QDeadlineTimer** outptr_QDeadlineTimer) {
-	QDeadlineTimer* ret = new QDeadlineTimer(static_cast<Qt::TimerType>(type_));
-	*outptr_QDeadlineTimer = ret;
+QDeadlineTimer* QDeadlineTimer_new5(int type_) {
+	return new QDeadlineTimer(static_cast<Qt::TimerType>(type_));
 }
 
-void QDeadlineTimer_new6(int param1, int type_, QDeadlineTimer** outptr_QDeadlineTimer) {
-	QDeadlineTimer* ret = new QDeadlineTimer(static_cast<QDeadlineTimer::ForeverConstant>(param1), static_cast<Qt::TimerType>(type_));
-	*outptr_QDeadlineTimer = ret;
+QDeadlineTimer* QDeadlineTimer_new6(int param1, int type_) {
+	return new QDeadlineTimer(static_cast<QDeadlineTimer::ForeverConstant>(param1), static_cast<Qt::TimerType>(type_));
 }
 
-void QDeadlineTimer_new7(long long msecs, int typeVal, QDeadlineTimer** outptr_QDeadlineTimer) {
-	QDeadlineTimer* ret = new QDeadlineTimer(static_cast<qint64>(msecs), static_cast<Qt::TimerType>(typeVal));
-	*outptr_QDeadlineTimer = ret;
+QDeadlineTimer* QDeadlineTimer_new7(long long msecs, int typeVal) {
+	return new QDeadlineTimer(static_cast<qint64>(msecs), static_cast<Qt::TimerType>(typeVal));
 }
 
 void QDeadlineTimer_Swap(QDeadlineTimer* self, QDeadlineTimer* other) {

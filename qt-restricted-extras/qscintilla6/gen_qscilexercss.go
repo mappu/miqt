@@ -65,44 +65,34 @@ func (this *QsciLexerCSS) UnsafePointer() unsafe.Pointer {
 }
 
 // newQsciLexerCSS constructs the type using only CGO pointers.
-func newQsciLexerCSS(h *C.QsciLexerCSS, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerCSS {
+func newQsciLexerCSS(h *C.QsciLexerCSS) *QsciLexerCSS {
 	if h == nil {
 		return nil
 	}
+	var outptr_QsciLexer *C.QsciLexer = nil
+	C.QsciLexerCSS_virtbase(h, &outptr_QsciLexer)
+
 	return &QsciLexerCSS{h: h,
-		QsciLexer: newQsciLexer(h_QsciLexer, h_QObject)}
+		QsciLexer: newQsciLexer(outptr_QsciLexer)}
 }
 
 // UnsafeNewQsciLexerCSS constructs the type using only unsafe pointers.
-func UnsafeNewQsciLexerCSS(h unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerCSS {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciLexerCSS{h: (*C.QsciLexerCSS)(h),
-		QsciLexer: UnsafeNewQsciLexer(h_QsciLexer, h_QObject)}
+func UnsafeNewQsciLexerCSS(h unsafe.Pointer) *QsciLexerCSS {
+	return newQsciLexerCSS((*C.QsciLexerCSS)(h))
 }
 
 // NewQsciLexerCSS constructs a new QsciLexerCSS object.
 func NewQsciLexerCSS() *QsciLexerCSS {
-	var outptr_QsciLexerCSS *C.QsciLexerCSS = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerCSS_new(&outptr_QsciLexerCSS, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerCSS(outptr_QsciLexerCSS, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerCSS(C.QsciLexerCSS_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQsciLexerCSS2 constructs a new QsciLexerCSS object.
 func NewQsciLexerCSS2(parent *qt6.QObject) *QsciLexerCSS {
-	var outptr_QsciLexerCSS *C.QsciLexerCSS = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerCSS_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QsciLexerCSS, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerCSS(outptr_QsciLexerCSS, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerCSS(C.QsciLexerCSS_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -980,7 +970,7 @@ func miqt_exec_callback_QsciLexerCSS_SetEditor(self *C.QsciLexerCSS, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQsciScintilla(editor, nil, nil, nil, nil, nil, nil)
+	slotval1 := newQsciScintilla(editor)
 
 	gofunc((&QsciLexerCSS{h: self}).callVirtualBase_SetEditor, slotval1)
 
@@ -1224,7 +1214,7 @@ func miqt_exec_callback_QsciLexerCSS_ReadProperties(self *C.QsciLexerCSS, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQSettings(unsafe.Pointer(qs), nil)
+	slotval1 := qt6.UnsafeNewQSettings(unsafe.Pointer(qs))
 
 	var prefix_ms C.struct_miqt_string = prefix
 	prefix_ret := C.GoStringN(prefix_ms.data, C.int(int64(prefix_ms.len)))
@@ -1261,7 +1251,7 @@ func miqt_exec_callback_QsciLexerCSS_WriteProperties(self *C.QsciLexerCSS, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQSettings(unsafe.Pointer(qs), nil)
+	slotval1 := qt6.UnsafeNewQSettings(unsafe.Pointer(qs))
 
 	var prefix_ms C.struct_miqt_string = prefix
 	prefix_ret := C.GoStringN(prefix_ms.data, C.int(int64(prefix_ms.len)))

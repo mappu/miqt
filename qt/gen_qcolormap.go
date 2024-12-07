@@ -45,24 +45,19 @@ func newQColormap(h *C.QColormap) *QColormap {
 	if h == nil {
 		return nil
 	}
+
 	return &QColormap{h: h}
 }
 
 // UnsafeNewQColormap constructs the type using only unsafe pointers.
 func UnsafeNewQColormap(h unsafe.Pointer) *QColormap {
-	if h == nil {
-		return nil
-	}
-
-	return &QColormap{h: (*C.QColormap)(h)}
+	return newQColormap((*C.QColormap)(h))
 }
 
 // NewQColormap constructs a new QColormap object.
 func NewQColormap(colormap *QColormap) *QColormap {
-	var outptr_QColormap *C.QColormap = nil
 
-	C.QColormap_new(colormap.cPointer(), &outptr_QColormap)
-	ret := newQColormap(outptr_QColormap)
+	ret := newQColormap(C.QColormap_new(colormap.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

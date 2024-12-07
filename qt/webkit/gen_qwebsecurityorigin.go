@@ -45,34 +45,27 @@ func newQWebSecurityOrigin(h *C.QWebSecurityOrigin) *QWebSecurityOrigin {
 	if h == nil {
 		return nil
 	}
+
 	return &QWebSecurityOrigin{h: h}
 }
 
 // UnsafeNewQWebSecurityOrigin constructs the type using only unsafe pointers.
 func UnsafeNewQWebSecurityOrigin(h unsafe.Pointer) *QWebSecurityOrigin {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebSecurityOrigin{h: (*C.QWebSecurityOrigin)(h)}
+	return newQWebSecurityOrigin((*C.QWebSecurityOrigin)(h))
 }
 
 // NewQWebSecurityOrigin constructs a new QWebSecurityOrigin object.
 func NewQWebSecurityOrigin(url *qt.QUrl) *QWebSecurityOrigin {
-	var outptr_QWebSecurityOrigin *C.QWebSecurityOrigin = nil
 
-	C.QWebSecurityOrigin_new((*C.QUrl)(url.UnsafePointer()), &outptr_QWebSecurityOrigin)
-	ret := newQWebSecurityOrigin(outptr_QWebSecurityOrigin)
+	ret := newQWebSecurityOrigin(C.QWebSecurityOrigin_new((*C.QUrl)(url.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebSecurityOrigin2 constructs a new QWebSecurityOrigin object.
 func NewQWebSecurityOrigin2(other *QWebSecurityOrigin) *QWebSecurityOrigin {
-	var outptr_QWebSecurityOrigin *C.QWebSecurityOrigin = nil
 
-	C.QWebSecurityOrigin_new2(other.cPointer(), &outptr_QWebSecurityOrigin)
-	ret := newQWebSecurityOrigin(outptr_QWebSecurityOrigin)
+	ret := newQWebSecurityOrigin(C.QWebSecurityOrigin_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

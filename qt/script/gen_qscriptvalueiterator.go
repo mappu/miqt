@@ -37,24 +37,19 @@ func newQScriptValueIterator(h *C.QScriptValueIterator) *QScriptValueIterator {
 	if h == nil {
 		return nil
 	}
+
 	return &QScriptValueIterator{h: h}
 }
 
 // UnsafeNewQScriptValueIterator constructs the type using only unsafe pointers.
 func UnsafeNewQScriptValueIterator(h unsafe.Pointer) *QScriptValueIterator {
-	if h == nil {
-		return nil
-	}
-
-	return &QScriptValueIterator{h: (*C.QScriptValueIterator)(h)}
+	return newQScriptValueIterator((*C.QScriptValueIterator)(h))
 }
 
 // NewQScriptValueIterator constructs a new QScriptValueIterator object.
 func NewQScriptValueIterator(value *QScriptValue) *QScriptValueIterator {
-	var outptr_QScriptValueIterator *C.QScriptValueIterator = nil
 
-	C.QScriptValueIterator_new(value.cPointer(), &outptr_QScriptValueIterator)
-	ret := newQScriptValueIterator(outptr_QScriptValueIterator)
+	ret := newQScriptValueIterator(C.QScriptValueIterator_new(value.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

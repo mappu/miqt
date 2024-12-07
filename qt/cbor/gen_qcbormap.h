@@ -40,8 +40,8 @@ typedef struct QJsonObject QJsonObject;
 typedef struct QVariant QVariant;
 #endif
 
-void QCborMap_new(QCborMap** outptr_QCborMap);
-void QCborMap_new2(QCborMap* other, QCborMap** outptr_QCborMap);
+QCborMap* QCborMap_new();
+QCborMap* QCborMap_new2(QCborMap* other);
 void QCborMap_OperatorAssign(QCborMap* self, QCborMap* other);
 void QCborMap_Swap(QCborMap* self, QCborMap* other);
 QCborValue* QCborMap_ToCborValue(const QCborMap* self);
@@ -105,8 +105,8 @@ struct miqt_map /* of struct miqt_string to QVariant* */  QCborMap_ToVariantHash
 QJsonObject* QCborMap_ToJsonObject(const QCborMap* self);
 void QCborMap_Delete(QCborMap* self, bool isSubclass);
 
-void QCborMap__Iterator_new(QCborMap__Iterator** outptr_QCborMap__Iterator);
-void QCborMap__Iterator_new2(QCborMap__Iterator* param1, QCborMap__Iterator** outptr_QCborMap__Iterator);
+QCborMap__Iterator* QCborMap__Iterator_new();
+QCborMap__Iterator* QCborMap__Iterator_new2(QCborMap__Iterator* param1);
 void QCborMap__Iterator_OperatorAssign(QCborMap__Iterator* self, QCborMap__Iterator* other);
 struct miqt_map /* tuple of QCborValueRef* and QCborValueRef* */  QCborMap__Iterator_OperatorMultiply(const QCborMap__Iterator* self);
 QCborValueRef* QCborMap__Iterator_OperatorMinusGreater(const QCborMap__Iterator* self);
@@ -135,8 +135,8 @@ QCborMap__Iterator* QCborMap__Iterator_OperatorMinus(const QCborMap__Iterator* s
 ptrdiff_t QCborMap__Iterator_OperatorMinusWithQCborMapIterator(const QCborMap__Iterator* self, QCborMap__Iterator* j);
 void QCborMap__Iterator_Delete(QCborMap__Iterator* self, bool isSubclass);
 
-void QCborMap__ConstIterator_new(QCborMap__ConstIterator** outptr_QCborMap__ConstIterator);
-void QCborMap__ConstIterator_new2(QCborMap__ConstIterator* param1, QCborMap__ConstIterator** outptr_QCborMap__ConstIterator);
+QCborMap__ConstIterator* QCborMap__ConstIterator_new();
+QCborMap__ConstIterator* QCborMap__ConstIterator_new2(QCborMap__ConstIterator* param1);
 void QCborMap__ConstIterator_OperatorAssign(QCborMap__ConstIterator* self, QCborMap__ConstIterator* other);
 struct miqt_map /* tuple of QCborValueRef* and QCborValueRef* */  QCborMap__ConstIterator_OperatorMultiply(const QCborMap__ConstIterator* self);
 QCborValueRef* QCborMap__ConstIterator_OperatorMinusGreater(const QCborMap__ConstIterator* self);

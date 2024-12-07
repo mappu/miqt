@@ -37,34 +37,27 @@ func newQScriptString(h *C.QScriptString) *QScriptString {
 	if h == nil {
 		return nil
 	}
+
 	return &QScriptString{h: h}
 }
 
 // UnsafeNewQScriptString constructs the type using only unsafe pointers.
 func UnsafeNewQScriptString(h unsafe.Pointer) *QScriptString {
-	if h == nil {
-		return nil
-	}
-
-	return &QScriptString{h: (*C.QScriptString)(h)}
+	return newQScriptString((*C.QScriptString)(h))
 }
 
 // NewQScriptString constructs a new QScriptString object.
 func NewQScriptString() *QScriptString {
-	var outptr_QScriptString *C.QScriptString = nil
 
-	C.QScriptString_new(&outptr_QScriptString)
-	ret := newQScriptString(outptr_QScriptString)
+	ret := newQScriptString(C.QScriptString_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptString2 constructs a new QScriptString object.
 func NewQScriptString2(other *QScriptString) *QScriptString {
-	var outptr_QScriptString *C.QScriptString = nil
 
-	C.QScriptString_new2(other.cPointer(), &outptr_QScriptString)
-	ret := newQScriptString(outptr_QScriptString)
+	ret := newQScriptString(C.QScriptString_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

@@ -1023,20 +1023,16 @@ public:
 
 };
 
-void QVideoWidget_new(QWidget* parent, QVideoWidget** outptr_QVideoWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQVideoWidget* ret = new MiqtVirtualQVideoWidget(parent);
-	*outptr_QVideoWidget = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QVideoWidget* QVideoWidget_new(QWidget* parent) {
+	return new MiqtVirtualQVideoWidget(parent);
 }
 
-void QVideoWidget_new2(QVideoWidget** outptr_QVideoWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQVideoWidget* ret = new MiqtVirtualQVideoWidget();
-	*outptr_QVideoWidget = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QVideoWidget* QVideoWidget_new2() {
+	return new MiqtVirtualQVideoWidget();
+}
+
+void QVideoWidget_virtbase(QVideoWidget* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QVideoWidget_MetaObject(const QVideoWidget* self) {

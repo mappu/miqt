@@ -83,64 +83,51 @@ func newQTextCursor(h *C.QTextCursor) *QTextCursor {
 	if h == nil {
 		return nil
 	}
+
 	return &QTextCursor{h: h}
 }
 
 // UnsafeNewQTextCursor constructs the type using only unsafe pointers.
 func UnsafeNewQTextCursor(h unsafe.Pointer) *QTextCursor {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextCursor{h: (*C.QTextCursor)(h)}
+	return newQTextCursor((*C.QTextCursor)(h))
 }
 
 // NewQTextCursor constructs a new QTextCursor object.
 func NewQTextCursor() *QTextCursor {
-	var outptr_QTextCursor *C.QTextCursor = nil
 
-	C.QTextCursor_new(&outptr_QTextCursor)
-	ret := newQTextCursor(outptr_QTextCursor)
+	ret := newQTextCursor(C.QTextCursor_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextCursor2 constructs a new QTextCursor object.
 func NewQTextCursor2(document *QTextDocument) *QTextCursor {
-	var outptr_QTextCursor *C.QTextCursor = nil
 
-	C.QTextCursor_new2(document.cPointer(), &outptr_QTextCursor)
-	ret := newQTextCursor(outptr_QTextCursor)
+	ret := newQTextCursor(C.QTextCursor_new2(document.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextCursor3 constructs a new QTextCursor object.
 func NewQTextCursor3(frame *QTextFrame) *QTextCursor {
-	var outptr_QTextCursor *C.QTextCursor = nil
 
-	C.QTextCursor_new3(frame.cPointer(), &outptr_QTextCursor)
-	ret := newQTextCursor(outptr_QTextCursor)
+	ret := newQTextCursor(C.QTextCursor_new3(frame.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextCursor4 constructs a new QTextCursor object.
 func NewQTextCursor4(block *QTextBlock) *QTextCursor {
-	var outptr_QTextCursor *C.QTextCursor = nil
 
-	C.QTextCursor_new4(block.cPointer(), &outptr_QTextCursor)
-	ret := newQTextCursor(outptr_QTextCursor)
+	ret := newQTextCursor(C.QTextCursor_new4(block.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextCursor5 constructs a new QTextCursor object.
 func NewQTextCursor5(cursor *QTextCursor) *QTextCursor {
-	var outptr_QTextCursor *C.QTextCursor = nil
 
-	C.QTextCursor_new5(cursor.cPointer(), &outptr_QTextCursor)
-	ret := newQTextCursor(outptr_QTextCursor)
+	ret := newQTextCursor(C.QTextCursor_new5(cursor.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -277,7 +264,7 @@ func (this *QTextCursor) Block() *QTextBlock {
 }
 
 func (this *QTextCursor) CharFormat() *QTextCharFormat {
-	_goptr := newQTextCharFormat(C.QTextCursor_CharFormat(this.h), nil)
+	_goptr := newQTextCharFormat(C.QTextCursor_CharFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -291,7 +278,7 @@ func (this *QTextCursor) MergeCharFormat(modifier *QTextCharFormat) {
 }
 
 func (this *QTextCursor) BlockFormat() *QTextBlockFormat {
-	_goptr := newQTextBlockFormat(C.QTextCursor_BlockFormat(this.h), nil)
+	_goptr := newQTextBlockFormat(C.QTextCursor_BlockFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -305,7 +292,7 @@ func (this *QTextCursor) MergeBlockFormat(modifier *QTextBlockFormat) {
 }
 
 func (this *QTextCursor) BlockCharFormat() *QTextCharFormat {
-	_goptr := newQTextCharFormat(C.QTextCursor_BlockCharFormat(this.h), nil)
+	_goptr := newQTextCharFormat(C.QTextCursor_BlockCharFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -347,43 +334,43 @@ func (this *QTextCursor) InsertBlock2(format *QTextBlockFormat, charFormat *QTex
 }
 
 func (this *QTextCursor) InsertList(format *QTextListFormat) *QTextList {
-	return newQTextList(C.QTextCursor_InsertList(this.h, format.cPointer()), nil, nil, nil)
+	return newQTextList(C.QTextCursor_InsertList(this.h, format.cPointer()))
 }
 
 func (this *QTextCursor) InsertListWithStyle(style QTextListFormat__Style) *QTextList {
-	return newQTextList(C.QTextCursor_InsertListWithStyle(this.h, (C.int)(style)), nil, nil, nil)
+	return newQTextList(C.QTextCursor_InsertListWithStyle(this.h, (C.int)(style)))
 }
 
 func (this *QTextCursor) CreateList(format *QTextListFormat) *QTextList {
-	return newQTextList(C.QTextCursor_CreateList(this.h, format.cPointer()), nil, nil, nil)
+	return newQTextList(C.QTextCursor_CreateList(this.h, format.cPointer()))
 }
 
 func (this *QTextCursor) CreateListWithStyle(style QTextListFormat__Style) *QTextList {
-	return newQTextList(C.QTextCursor_CreateListWithStyle(this.h, (C.int)(style)), nil, nil, nil)
+	return newQTextList(C.QTextCursor_CreateListWithStyle(this.h, (C.int)(style)))
 }
 
 func (this *QTextCursor) CurrentList() *QTextList {
-	return newQTextList(C.QTextCursor_CurrentList(this.h), nil, nil, nil)
+	return newQTextList(C.QTextCursor_CurrentList(this.h))
 }
 
 func (this *QTextCursor) InsertTable(rows int, cols int, format *QTextTableFormat) *QTextTable {
-	return newQTextTable(C.QTextCursor_InsertTable(this.h, (C.int)(rows), (C.int)(cols), format.cPointer()), nil, nil, nil)
+	return newQTextTable(C.QTextCursor_InsertTable(this.h, (C.int)(rows), (C.int)(cols), format.cPointer()))
 }
 
 func (this *QTextCursor) InsertTable2(rows int, cols int) *QTextTable {
-	return newQTextTable(C.QTextCursor_InsertTable2(this.h, (C.int)(rows), (C.int)(cols)), nil, nil, nil)
+	return newQTextTable(C.QTextCursor_InsertTable2(this.h, (C.int)(rows), (C.int)(cols)))
 }
 
 func (this *QTextCursor) CurrentTable() *QTextTable {
-	return newQTextTable(C.QTextCursor_CurrentTable(this.h), nil, nil, nil)
+	return newQTextTable(C.QTextCursor_CurrentTable(this.h))
 }
 
 func (this *QTextCursor) InsertFrame(format *QTextFrameFormat) *QTextFrame {
-	return newQTextFrame(C.QTextCursor_InsertFrame(this.h, format.cPointer()), nil, nil)
+	return newQTextFrame(C.QTextCursor_InsertFrame(this.h, format.cPointer()))
 }
 
 func (this *QTextCursor) CurrentFrame() *QTextFrame {
-	return newQTextFrame(C.QTextCursor_CurrentFrame(this.h), nil, nil)
+	return newQTextFrame(C.QTextCursor_CurrentFrame(this.h))
 }
 
 func (this *QTextCursor) InsertFragment(fragment *QTextDocumentFragment) {
@@ -475,7 +462,7 @@ func (this *QTextCursor) ColumnNumber() int {
 }
 
 func (this *QTextCursor) Document() *QTextDocument {
-	return newQTextDocument(C.QTextCursor_Document(this.h), nil)
+	return newQTextDocument(C.QTextCursor_Document(this.h))
 }
 
 func (this *QTextCursor) SetPosition2(pos int, mode QTextCursor__MoveMode) {

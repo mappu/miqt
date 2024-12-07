@@ -35,31 +35,26 @@ func (this *QDrag) UnsafePointer() unsafe.Pointer {
 }
 
 // newQDrag constructs the type using only CGO pointers.
-func newQDrag(h *C.QDrag, h_QObject *C.QObject) *QDrag {
+func newQDrag(h *C.QDrag) *QDrag {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QDrag_virtbase(h, &outptr_QObject)
+
 	return &QDrag{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQDrag constructs the type using only unsafe pointers.
-func UnsafeNewQDrag(h unsafe.Pointer, h_QObject unsafe.Pointer) *QDrag {
-	if h == nil {
-		return nil
-	}
-
-	return &QDrag{h: (*C.QDrag)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQDrag(h unsafe.Pointer) *QDrag {
+	return newQDrag((*C.QDrag)(h))
 }
 
 // NewQDrag constructs a new QDrag object.
 func NewQDrag(dragSource *QObject) *QDrag {
-	var outptr_QDrag *C.QDrag = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QDrag_new(dragSource.cPointer(), &outptr_QDrag, &outptr_QObject)
-	ret := newQDrag(outptr_QDrag, outptr_QObject)
+	ret := newQDrag(C.QDrag_new(dragSource.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -88,7 +83,7 @@ func (this *QDrag) SetMimeData(data *QMimeData) {
 }
 
 func (this *QDrag) MimeData() *QMimeData {
-	return newQMimeData(C.QDrag_MimeData(this.h), nil)
+	return newQMimeData(C.QDrag_MimeData(this.h))
 }
 
 func (this *QDrag) SetPixmap(pixmap *QPixmap) {
@@ -96,7 +91,7 @@ func (this *QDrag) SetPixmap(pixmap *QPixmap) {
 }
 
 func (this *QDrag) Pixmap() *QPixmap {
-	_goptr := newQPixmap(C.QDrag_Pixmap(this.h), nil)
+	_goptr := newQPixmap(C.QDrag_Pixmap(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -132,7 +127,7 @@ func (this *QDrag) SetDragCursor(cursor *QPixmap, action DropAction) {
 }
 
 func (this *QDrag) DragCursor(action DropAction) *QPixmap {
-	_goptr := newQPixmap(C.QDrag_DragCursor(this.h, (C.int)(action)), nil)
+	_goptr := newQPixmap(C.QDrag_DragCursor(this.h, (C.int)(action)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -293,7 +288,7 @@ func miqt_exec_callback_QDrag_TimerEvent(self *C.QDrag, cb C.intptr_t, event *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QDrag{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -319,7 +314,7 @@ func miqt_exec_callback_QDrag_ChildEvent(self *C.QDrag, cb C.intptr_t, event *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QDrag{h: self}).callVirtualBase_ChildEvent, slotval1)
 

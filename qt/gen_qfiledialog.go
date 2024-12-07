@@ -82,62 +82,42 @@ func (this *QFileDialog) UnsafePointer() unsafe.Pointer {
 }
 
 // newQFileDialog constructs the type using only CGO pointers.
-func newQFileDialog(h *C.QFileDialog, h_QDialog *C.QDialog, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QFileDialog {
+func newQFileDialog(h *C.QFileDialog) *QFileDialog {
 	if h == nil {
 		return nil
 	}
+	var outptr_QDialog *C.QDialog = nil
+	C.QFileDialog_virtbase(h, &outptr_QDialog)
+
 	return &QFileDialog{h: h,
-		QDialog: newQDialog(h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
+		QDialog: newQDialog(outptr_QDialog)}
 }
 
 // UnsafeNewQFileDialog constructs the type using only unsafe pointers.
-func UnsafeNewQFileDialog(h unsafe.Pointer, h_QDialog unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QFileDialog {
-	if h == nil {
-		return nil
-	}
-
-	return &QFileDialog{h: (*C.QFileDialog)(h),
-		QDialog: UnsafeNewQDialog(h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQFileDialog(h unsafe.Pointer) *QFileDialog {
+	return newQFileDialog((*C.QFileDialog)(h))
 }
 
 // NewQFileDialog constructs a new QFileDialog object.
 func NewQFileDialog(parent *QWidget) *QFileDialog {
-	var outptr_QFileDialog *C.QFileDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QFileDialog_new(parent.cPointer(), &outptr_QFileDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQFileDialog(outptr_QFileDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQFileDialog(C.QFileDialog_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFileDialog2 constructs a new QFileDialog object.
 func NewQFileDialog2(parent *QWidget, f WindowType) *QFileDialog {
-	var outptr_QFileDialog *C.QFileDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QFileDialog_new2(parent.cPointer(), (C.int)(f), &outptr_QFileDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQFileDialog(outptr_QFileDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQFileDialog(C.QFileDialog_new2(parent.cPointer(), (C.int)(f)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFileDialog3 constructs a new QFileDialog object.
 func NewQFileDialog3() *QFileDialog {
-	var outptr_QFileDialog *C.QFileDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QFileDialog_new3(&outptr_QFileDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQFileDialog(outptr_QFileDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQFileDialog(C.QFileDialog_new3())
 	ret.isSubclass = true
 	return ret
 }
@@ -148,14 +128,8 @@ func NewQFileDialog4(parent *QWidget, caption string) *QFileDialog {
 	caption_ms.data = C.CString(caption)
 	caption_ms.len = C.size_t(len(caption))
 	defer C.free(unsafe.Pointer(caption_ms.data))
-	var outptr_QFileDialog *C.QFileDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QFileDialog_new4(parent.cPointer(), caption_ms, &outptr_QFileDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQFileDialog(outptr_QFileDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQFileDialog(C.QFileDialog_new4(parent.cPointer(), caption_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -170,14 +144,8 @@ func NewQFileDialog5(parent *QWidget, caption string, directory string) *QFileDi
 	directory_ms.data = C.CString(directory)
 	directory_ms.len = C.size_t(len(directory))
 	defer C.free(unsafe.Pointer(directory_ms.data))
-	var outptr_QFileDialog *C.QFileDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QFileDialog_new5(parent.cPointer(), caption_ms, directory_ms, &outptr_QFileDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQFileDialog(outptr_QFileDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQFileDialog(C.QFileDialog_new5(parent.cPointer(), caption_ms, directory_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -196,14 +164,8 @@ func NewQFileDialog6(parent *QWidget, caption string, directory string, filter s
 	filter_ms.data = C.CString(filter)
 	filter_ms.len = C.size_t(len(filter))
 	defer C.free(unsafe.Pointer(filter_ms.data))
-	var outptr_QFileDialog *C.QFileDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QFileDialog_new6(parent.cPointer(), caption_ms, directory_ms, filter_ms, &outptr_QFileDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQFileDialog(outptr_QFileDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQFileDialog(C.QFileDialog_new6(parent.cPointer(), caption_ms, directory_ms, filter_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -540,7 +502,7 @@ func (this *QFileDialog) SetItemDelegate(delegate *QAbstractItemDelegate) {
 }
 
 func (this *QFileDialog) ItemDelegate() *QAbstractItemDelegate {
-	return newQAbstractItemDelegate(C.QFileDialog_ItemDelegate(this.h), nil)
+	return newQAbstractItemDelegate(C.QFileDialog_ItemDelegate(this.h))
 }
 
 func (this *QFileDialog) SetIconProvider(provider *QFileIconProvider) {
@@ -598,7 +560,7 @@ func (this *QFileDialog) SetProxyModel(model *QAbstractProxyModel) {
 }
 
 func (this *QFileDialog) ProxyModel() *QAbstractProxyModel {
-	return newQAbstractProxyModel(C.QFileDialog_ProxyModel(this.h), nil, nil)
+	return newQAbstractProxyModel(C.QFileDialog_ProxyModel(this.h))
 }
 
 func (this *QFileDialog) SetOption(option QFileDialog__Option) {
@@ -1659,7 +1621,7 @@ func miqt_exec_callback_QFileDialog_KeyPressEvent(self *C.QFileDialog, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(param1, nil, nil)
+	slotval1 := newQKeyEvent(param1)
 
 	gofunc((&QFileDialog{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -1685,7 +1647,7 @@ func miqt_exec_callback_QFileDialog_CloseEvent(self *C.QFileDialog, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQCloseEvent(param1, nil)
+	slotval1 := newQCloseEvent(param1)
 
 	gofunc((&QFileDialog{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -1711,7 +1673,7 @@ func miqt_exec_callback_QFileDialog_ShowEvent(self *C.QFileDialog, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQShowEvent(param1, nil)
+	slotval1 := newQShowEvent(param1)
 
 	gofunc((&QFileDialog{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1737,7 +1699,7 @@ func miqt_exec_callback_QFileDialog_ResizeEvent(self *C.QFileDialog, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(param1, nil)
+	slotval1 := newQResizeEvent(param1)
 
 	gofunc((&QFileDialog{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -1763,7 +1725,7 @@ func miqt_exec_callback_QFileDialog_ContextMenuEvent(self *C.QFileDialog, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQContextMenuEvent(param1, nil, nil)
+	slotval1 := newQContextMenuEvent(param1)
 
 	gofunc((&QFileDialog{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 

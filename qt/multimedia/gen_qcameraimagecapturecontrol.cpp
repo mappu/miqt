@@ -12,6 +12,10 @@
 #include "gen_qcameraimagecapturecontrol.h"
 #include "_cgo_export.h"
 
+void QCameraImageCaptureControl_virtbase(QCameraImageCaptureControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
+
 QMetaObject* QCameraImageCaptureControl_MetaObject(const QCameraImageCaptureControl* self) {
 	return (QMetaObject*) self->metaObject();
 }

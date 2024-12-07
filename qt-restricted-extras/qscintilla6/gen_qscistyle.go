@@ -46,24 +46,19 @@ func newQsciStyle(h *C.QsciStyle) *QsciStyle {
 	if h == nil {
 		return nil
 	}
+
 	return &QsciStyle{h: h}
 }
 
 // UnsafeNewQsciStyle constructs the type using only unsafe pointers.
 func UnsafeNewQsciStyle(h unsafe.Pointer) *QsciStyle {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciStyle{h: (*C.QsciStyle)(h)}
+	return newQsciStyle((*C.QsciStyle)(h))
 }
 
 // NewQsciStyle constructs a new QsciStyle object.
 func NewQsciStyle() *QsciStyle {
-	var outptr_QsciStyle *C.QsciStyle = nil
 
-	C.QsciStyle_new(&outptr_QsciStyle)
-	ret := newQsciStyle(outptr_QsciStyle)
+	ret := newQsciStyle(C.QsciStyle_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -74,30 +69,24 @@ func NewQsciStyle2(style int, description string, color *qt6.QColor, paper *qt6.
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
 	defer C.free(unsafe.Pointer(description_ms.data))
-	var outptr_QsciStyle *C.QsciStyle = nil
 
-	C.QsciStyle_new2((C.int)(style), description_ms, (*C.QColor)(color.UnsafePointer()), (*C.QColor)(paper.UnsafePointer()), (*C.QFont)(font.UnsafePointer()), &outptr_QsciStyle)
-	ret := newQsciStyle(outptr_QsciStyle)
+	ret := newQsciStyle(C.QsciStyle_new2((C.int)(style), description_ms, (*C.QColor)(color.UnsafePointer()), (*C.QColor)(paper.UnsafePointer()), (*C.QFont)(font.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQsciStyle3 constructs a new QsciStyle object.
 func NewQsciStyle3(param1 *QsciStyle) *QsciStyle {
-	var outptr_QsciStyle *C.QsciStyle = nil
 
-	C.QsciStyle_new3(param1.cPointer(), &outptr_QsciStyle)
-	ret := newQsciStyle(outptr_QsciStyle)
+	ret := newQsciStyle(C.QsciStyle_new3(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQsciStyle4 constructs a new QsciStyle object.
 func NewQsciStyle4(style int) *QsciStyle {
-	var outptr_QsciStyle *C.QsciStyle = nil
 
-	C.QsciStyle_new4((C.int)(style), &outptr_QsciStyle)
-	ret := newQsciStyle(outptr_QsciStyle)
+	ret := newQsciStyle(C.QsciStyle_new4((C.int)(style)))
 	ret.isSubclass = true
 	return ret
 }
@@ -108,10 +97,8 @@ func NewQsciStyle5(style int, description string, color *qt6.QColor, paper *qt6.
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
 	defer C.free(unsafe.Pointer(description_ms.data))
-	var outptr_QsciStyle *C.QsciStyle = nil
 
-	C.QsciStyle_new5((C.int)(style), description_ms, (*C.QColor)(color.UnsafePointer()), (*C.QColor)(paper.UnsafePointer()), (*C.QFont)(font.UnsafePointer()), (C.bool)(eolFill), &outptr_QsciStyle)
-	ret := newQsciStyle(outptr_QsciStyle)
+	ret := newQsciStyle(C.QsciStyle_new5((C.int)(style), description_ms, (*C.QColor)(color.UnsafePointer()), (*C.QColor)(paper.UnsafePointer()), (*C.QFont)(font.UnsafePointer()), (C.bool)(eolFill)))
 	ret.isSubclass = true
 	return ret
 }

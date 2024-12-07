@@ -24,10 +24,10 @@ typedef struct QNetworkCookie QNetworkCookie;
 typedef struct QUrl QUrl;
 #endif
 
-void QNetworkCookie_new(QNetworkCookie** outptr_QNetworkCookie);
-void QNetworkCookie_new2(QNetworkCookie* other, QNetworkCookie** outptr_QNetworkCookie);
-void QNetworkCookie_new3(struct miqt_string name, QNetworkCookie** outptr_QNetworkCookie);
-void QNetworkCookie_new4(struct miqt_string name, struct miqt_string value, QNetworkCookie** outptr_QNetworkCookie);
+QNetworkCookie* QNetworkCookie_new();
+QNetworkCookie* QNetworkCookie_new2(QNetworkCookie* other);
+QNetworkCookie* QNetworkCookie_new3(struct miqt_string name);
+QNetworkCookie* QNetworkCookie_new4(struct miqt_string name, struct miqt_string value);
 void QNetworkCookie_OperatorAssign(QNetworkCookie* self, QNetworkCookie* other);
 void QNetworkCookie_Swap(QNetworkCookie* self, QNetworkCookie* other);
 bool QNetworkCookie_OperatorEqual(const QNetworkCookie* self, QNetworkCookie* other);

@@ -9,6 +9,10 @@
 #include "gen_qcamerafeedbackcontrol.h"
 #include "_cgo_export.h"
 
+void QCameraFeedbackControl_virtbase(QCameraFeedbackControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
+
 QMetaObject* QCameraFeedbackControl_MetaObject(const QCameraFeedbackControl* self) {
 	return (QMetaObject*) self->metaObject();
 }

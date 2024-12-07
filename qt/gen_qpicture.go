@@ -35,53 +35,42 @@ func (this *QPicture) UnsafePointer() unsafe.Pointer {
 }
 
 // newQPicture constructs the type using only CGO pointers.
-func newQPicture(h *C.QPicture, h_QPaintDevice *C.QPaintDevice) *QPicture {
+func newQPicture(h *C.QPicture) *QPicture {
 	if h == nil {
 		return nil
 	}
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+	C.QPicture_virtbase(h, &outptr_QPaintDevice)
+
 	return &QPicture{h: h,
-		QPaintDevice: newQPaintDevice(h_QPaintDevice)}
+		QPaintDevice: newQPaintDevice(outptr_QPaintDevice)}
 }
 
 // UnsafeNewQPicture constructs the type using only unsafe pointers.
-func UnsafeNewQPicture(h unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QPicture {
-	if h == nil {
-		return nil
-	}
-
-	return &QPicture{h: (*C.QPicture)(h),
-		QPaintDevice: UnsafeNewQPaintDevice(h_QPaintDevice)}
+func UnsafeNewQPicture(h unsafe.Pointer) *QPicture {
+	return newQPicture((*C.QPicture)(h))
 }
 
 // NewQPicture constructs a new QPicture object.
 func NewQPicture() *QPicture {
-	var outptr_QPicture *C.QPicture = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPicture_new(&outptr_QPicture, &outptr_QPaintDevice)
-	ret := newQPicture(outptr_QPicture, outptr_QPaintDevice)
+	ret := newQPicture(C.QPicture_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPicture2 constructs a new QPicture object.
 func NewQPicture2(param1 *QPicture) *QPicture {
-	var outptr_QPicture *C.QPicture = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPicture_new2(param1.cPointer(), &outptr_QPicture, &outptr_QPaintDevice)
-	ret := newQPicture(outptr_QPicture, outptr_QPaintDevice)
+	ret := newQPicture(C.QPicture_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPicture3 constructs a new QPicture object.
 func NewQPicture3(formatVersion int) *QPicture {
-	var outptr_QPicture *C.QPicture = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPicture_new3((C.int)(formatVersion), &outptr_QPicture, &outptr_QPaintDevice)
-	ret := newQPicture(outptr_QPicture, outptr_QPaintDevice)
+	ret := newQPicture(C.QPicture_new3((C.int)(formatVersion)))
 	ret.isSubclass = true
 	return ret
 }
@@ -486,24 +475,19 @@ func newQPictureIO(h *C.QPictureIO) *QPictureIO {
 	if h == nil {
 		return nil
 	}
+
 	return &QPictureIO{h: h}
 }
 
 // UnsafeNewQPictureIO constructs the type using only unsafe pointers.
 func UnsafeNewQPictureIO(h unsafe.Pointer) *QPictureIO {
-	if h == nil {
-		return nil
-	}
-
-	return &QPictureIO{h: (*C.QPictureIO)(h)}
+	return newQPictureIO((*C.QPictureIO)(h))
 }
 
 // NewQPictureIO constructs a new QPictureIO object.
 func NewQPictureIO() *QPictureIO {
-	var outptr_QPictureIO *C.QPictureIO = nil
 
-	C.QPictureIO_new(&outptr_QPictureIO)
-	ret := newQPictureIO(outptr_QPictureIO)
+	ret := newQPictureIO(C.QPictureIO_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -512,10 +496,8 @@ func NewQPictureIO() *QPictureIO {
 func NewQPictureIO2(ioDevice *QIODevice, format string) *QPictureIO {
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	var outptr_QPictureIO *C.QPictureIO = nil
 
-	C.QPictureIO_new2(ioDevice.cPointer(), format_Cstring, &outptr_QPictureIO)
-	ret := newQPictureIO(outptr_QPictureIO)
+	ret := newQPictureIO(C.QPictureIO_new2(ioDevice.cPointer(), format_Cstring))
 	ret.isSubclass = true
 	return ret
 }
@@ -528,16 +510,14 @@ func NewQPictureIO3(fileName string, format string) *QPictureIO {
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	var outptr_QPictureIO *C.QPictureIO = nil
 
-	C.QPictureIO_new3(fileName_ms, format_Cstring, &outptr_QPictureIO)
-	ret := newQPictureIO(outptr_QPictureIO)
+	ret := newQPictureIO(C.QPictureIO_new3(fileName_ms, format_Cstring))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QPictureIO) Picture() *QPicture {
-	return newQPicture(C.QPictureIO_Picture(this.h), nil)
+	return newQPicture(C.QPictureIO_Picture(this.h))
 }
 
 func (this *QPictureIO) Status() int {
@@ -550,7 +530,7 @@ func (this *QPictureIO) Format() string {
 }
 
 func (this *QPictureIO) IoDevice() *QIODevice {
-	return newQIODevice(C.QPictureIO_IoDevice(this.h), nil)
+	return newQIODevice(C.QPictureIO_IoDevice(this.h))
 }
 
 func (this *QPictureIO) FileName() string {

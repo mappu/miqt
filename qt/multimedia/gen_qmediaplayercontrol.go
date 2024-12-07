@@ -36,22 +36,20 @@ func (this *QMediaPlayerControl) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMediaPlayerControl constructs the type using only CGO pointers.
-func newQMediaPlayerControl(h *C.QMediaPlayerControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QMediaPlayerControl {
+func newQMediaPlayerControl(h *C.QMediaPlayerControl) *QMediaPlayerControl {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaControl *C.QMediaControl = nil
+	C.QMediaPlayerControl_virtbase(h, &outptr_QMediaControl)
+
 	return &QMediaPlayerControl{h: h,
-		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
+		QMediaControl: newQMediaControl(outptr_QMediaControl)}
 }
 
 // UnsafeNewQMediaPlayerControl constructs the type using only unsafe pointers.
-func UnsafeNewQMediaPlayerControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QMediaPlayerControl {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaPlayerControl{h: (*C.QMediaPlayerControl)(h),
-		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
+func UnsafeNewQMediaPlayerControl(h unsafe.Pointer) *QMediaPlayerControl {
+	return newQMediaPlayerControl((*C.QMediaPlayerControl)(h))
 }
 
 func (this *QMediaPlayerControl) MetaObject() *qt.QMetaObject {
@@ -155,7 +153,7 @@ func (this *QMediaPlayerControl) Media() *QMediaContent {
 }
 
 func (this *QMediaPlayerControl) MediaStream() *qt.QIODevice {
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QMediaPlayerControl_MediaStream(this.h)), nil)
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QMediaPlayerControl_MediaStream(this.h)))
 }
 
 func (this *QMediaPlayerControl) SetMedia(media *QMediaContent, stream *qt.QIODevice) {

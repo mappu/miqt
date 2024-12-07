@@ -38,24 +38,19 @@ func newQUndoCommand(h *C.QUndoCommand) *QUndoCommand {
 	if h == nil {
 		return nil
 	}
+
 	return &QUndoCommand{h: h}
 }
 
 // UnsafeNewQUndoCommand constructs the type using only unsafe pointers.
 func UnsafeNewQUndoCommand(h unsafe.Pointer) *QUndoCommand {
-	if h == nil {
-		return nil
-	}
-
-	return &QUndoCommand{h: (*C.QUndoCommand)(h)}
+	return newQUndoCommand((*C.QUndoCommand)(h))
 }
 
 // NewQUndoCommand constructs a new QUndoCommand object.
 func NewQUndoCommand() *QUndoCommand {
-	var outptr_QUndoCommand *C.QUndoCommand = nil
 
-	C.QUndoCommand_new(&outptr_QUndoCommand)
-	ret := newQUndoCommand(outptr_QUndoCommand)
+	ret := newQUndoCommand(C.QUndoCommand_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -66,20 +61,16 @@ func NewQUndoCommand2(text string) *QUndoCommand {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QUndoCommand *C.QUndoCommand = nil
 
-	C.QUndoCommand_new2(text_ms, &outptr_QUndoCommand)
-	ret := newQUndoCommand(outptr_QUndoCommand)
+	ret := newQUndoCommand(C.QUndoCommand_new2(text_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQUndoCommand3 constructs a new QUndoCommand object.
 func NewQUndoCommand3(parent *QUndoCommand) *QUndoCommand {
-	var outptr_QUndoCommand *C.QUndoCommand = nil
 
-	C.QUndoCommand_new3(parent.cPointer(), &outptr_QUndoCommand)
-	ret := newQUndoCommand(outptr_QUndoCommand)
+	ret := newQUndoCommand(C.QUndoCommand_new3(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -90,10 +81,8 @@ func NewQUndoCommand4(text string, parent *QUndoCommand) *QUndoCommand {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QUndoCommand *C.QUndoCommand = nil
 
-	C.QUndoCommand_new4(text_ms, parent.cPointer(), &outptr_QUndoCommand)
-	ret := newQUndoCommand(outptr_QUndoCommand)
+	ret := newQUndoCommand(C.QUndoCommand_new4(text_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -286,42 +275,34 @@ func (this *QUndoStack) UnsafePointer() unsafe.Pointer {
 }
 
 // newQUndoStack constructs the type using only CGO pointers.
-func newQUndoStack(h *C.QUndoStack, h_QObject *C.QObject) *QUndoStack {
+func newQUndoStack(h *C.QUndoStack) *QUndoStack {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QUndoStack_virtbase(h, &outptr_QObject)
+
 	return &QUndoStack{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQUndoStack constructs the type using only unsafe pointers.
-func UnsafeNewQUndoStack(h unsafe.Pointer, h_QObject unsafe.Pointer) *QUndoStack {
-	if h == nil {
-		return nil
-	}
-
-	return &QUndoStack{h: (*C.QUndoStack)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQUndoStack(h unsafe.Pointer) *QUndoStack {
+	return newQUndoStack((*C.QUndoStack)(h))
 }
 
 // NewQUndoStack constructs a new QUndoStack object.
 func NewQUndoStack() *QUndoStack {
-	var outptr_QUndoStack *C.QUndoStack = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QUndoStack_new(&outptr_QUndoStack, &outptr_QObject)
-	ret := newQUndoStack(outptr_QUndoStack, outptr_QObject)
+	ret := newQUndoStack(C.QUndoStack_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQUndoStack2 constructs a new QUndoStack object.
 func NewQUndoStack2(parent *QObject) *QUndoStack {
-	var outptr_QUndoStack *C.QUndoStack = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QUndoStack_new2(parent.cPointer(), &outptr_QUndoStack, &outptr_QObject)
-	ret := newQUndoStack(outptr_QUndoStack, outptr_QObject)
+	ret := newQUndoStack(C.QUndoStack_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -391,11 +372,11 @@ func (this *QUndoStack) Text(idx int) string {
 }
 
 func (this *QUndoStack) CreateUndoAction(parent *QObject) *QAction {
-	return newQAction(C.QUndoStack_CreateUndoAction(this.h, parent.cPointer()), nil)
+	return newQAction(C.QUndoStack_CreateUndoAction(this.h, parent.cPointer()))
 }
 
 func (this *QUndoStack) CreateRedoAction(parent *QObject) *QAction {
-	return newQAction(C.QUndoStack_CreateRedoAction(this.h, parent.cPointer()), nil)
+	return newQAction(C.QUndoStack_CreateRedoAction(this.h, parent.cPointer()))
 }
 
 func (this *QUndoStack) IsActive() bool {
@@ -619,7 +600,7 @@ func (this *QUndoStack) CreateUndoAction2(parent *QObject, prefix string) *QActi
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
 	defer C.free(unsafe.Pointer(prefix_ms.data))
-	return newQAction(C.QUndoStack_CreateUndoAction2(this.h, parent.cPointer(), prefix_ms), nil)
+	return newQAction(C.QUndoStack_CreateUndoAction2(this.h, parent.cPointer(), prefix_ms))
 }
 
 func (this *QUndoStack) CreateRedoAction2(parent *QObject, prefix string) *QAction {
@@ -627,7 +608,7 @@ func (this *QUndoStack) CreateRedoAction2(parent *QObject, prefix string) *QActi
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
 	defer C.free(unsafe.Pointer(prefix_ms.data))
-	return newQAction(C.QUndoStack_CreateRedoAction2(this.h, parent.cPointer(), prefix_ms), nil)
+	return newQAction(C.QUndoStack_CreateRedoAction2(this.h, parent.cPointer(), prefix_ms))
 }
 
 func (this *QUndoStack) SetActive1(active bool) {
@@ -712,7 +693,7 @@ func miqt_exec_callback_QUndoStack_TimerEvent(self *C.QUndoStack, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QUndoStack{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -738,7 +719,7 @@ func miqt_exec_callback_QUndoStack_ChildEvent(self *C.QUndoStack, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QUndoStack{h: self}).callVirtualBase_ChildEvent, slotval1)
 

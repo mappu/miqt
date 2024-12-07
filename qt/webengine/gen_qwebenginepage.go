@@ -171,64 +171,50 @@ func (this *QWebEnginePage) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebEnginePage constructs the type using only CGO pointers.
-func newQWebEnginePage(h *C.QWebEnginePage, h_QObject *C.QObject) *QWebEnginePage {
+func newQWebEnginePage(h *C.QWebEnginePage) *QWebEnginePage {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebEnginePage_virtbase(h, &outptr_QObject)
+
 	return &QWebEnginePage{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebEnginePage constructs the type using only unsafe pointers.
-func UnsafeNewQWebEnginePage(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebEnginePage {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEnginePage{h: (*C.QWebEnginePage)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebEnginePage(h unsafe.Pointer) *QWebEnginePage {
+	return newQWebEnginePage((*C.QWebEnginePage)(h))
 }
 
 // NewQWebEnginePage constructs a new QWebEnginePage object.
 func NewQWebEnginePage() *QWebEnginePage {
-	var outptr_QWebEnginePage *C.QWebEnginePage = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebEnginePage_new(&outptr_QWebEnginePage, &outptr_QObject)
-	ret := newQWebEnginePage(outptr_QWebEnginePage, outptr_QObject)
+	ret := newQWebEnginePage(C.QWebEnginePage_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebEnginePage2 constructs a new QWebEnginePage object.
 func NewQWebEnginePage2(profile *QWebEngineProfile) *QWebEnginePage {
-	var outptr_QWebEnginePage *C.QWebEnginePage = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebEnginePage_new2(profile.cPointer(), &outptr_QWebEnginePage, &outptr_QObject)
-	ret := newQWebEnginePage(outptr_QWebEnginePage, outptr_QObject)
+	ret := newQWebEnginePage(C.QWebEnginePage_new2(profile.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebEnginePage3 constructs a new QWebEnginePage object.
 func NewQWebEnginePage3(parent *qt.QObject) *QWebEnginePage {
-	var outptr_QWebEnginePage *C.QWebEnginePage = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebEnginePage_new3((*C.QObject)(parent.UnsafePointer()), &outptr_QWebEnginePage, &outptr_QObject)
-	ret := newQWebEnginePage(outptr_QWebEnginePage, outptr_QObject)
+	ret := newQWebEnginePage(C.QWebEnginePage_new3((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebEnginePage4 constructs a new QWebEnginePage object.
 func NewQWebEnginePage4(profile *QWebEngineProfile, parent *qt.QObject) *QWebEnginePage {
-	var outptr_QWebEnginePage *C.QWebEnginePage = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebEnginePage_new4(profile.cPointer(), (*C.QObject)(parent.UnsafePointer()), &outptr_QWebEnginePage, &outptr_QObject)
-	ret := newQWebEnginePage(outptr_QWebEnginePage, outptr_QObject)
+	ret := newQWebEnginePage(C.QWebEnginePage_new4(profile.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -270,7 +256,7 @@ func (this *QWebEnginePage) SetView(view *qt.QWidget) {
 }
 
 func (this *QWebEnginePage) View() *qt.QWidget {
-	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QWebEnginePage_View(this.h)), nil, nil)
+	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QWebEnginePage_View(this.h)))
 }
 
 func (this *QWebEnginePage) HasSelection() bool {
@@ -285,11 +271,11 @@ func (this *QWebEnginePage) SelectedText() string {
 }
 
 func (this *QWebEnginePage) Profile() *QWebEngineProfile {
-	return newQWebEngineProfile(C.QWebEnginePage_Profile(this.h), nil)
+	return newQWebEngineProfile(C.QWebEnginePage_Profile(this.h))
 }
 
 func (this *QWebEnginePage) Action(action QWebEnginePage__WebAction) *qt.QAction {
-	return qt.UnsafeNewQAction(unsafe.Pointer(C.QWebEnginePage_Action(this.h, (C.int)(action))), nil)
+	return qt.UnsafeNewQAction(unsafe.Pointer(C.QWebEnginePage_Action(this.h, (C.int)(action))))
 }
 
 func (this *QWebEnginePage) TriggerAction(action QWebEnginePage__WebAction, checked bool) {
@@ -317,7 +303,7 @@ func (this *QWebEnginePage) FindText(subString string) {
 }
 
 func (this *QWebEnginePage) CreateStandardContextMenu() *qt.QMenu {
-	return qt.UnsafeNewQMenu(unsafe.Pointer(C.QWebEnginePage_CreateStandardContextMenu(this.h)), nil, nil, nil)
+	return qt.UnsafeNewQMenu(unsafe.Pointer(C.QWebEnginePage_CreateStandardContextMenu(this.h)))
 }
 
 func (this *QWebEnginePage) SetFeaturePermission(securityOrigin *qt.QUrl, feature QWebEnginePage__Feature, policy QWebEnginePage__PermissionPolicy) {
@@ -431,7 +417,7 @@ func (this *QWebEnginePage) Settings() *QWebEngineSettings {
 }
 
 func (this *QWebEnginePage) WebChannel() *webchannel.QWebChannel {
-	return webchannel.UnsafeNewQWebChannel(unsafe.Pointer(C.QWebEnginePage_WebChannel(this.h)), nil)
+	return webchannel.UnsafeNewQWebChannel(unsafe.Pointer(C.QWebEnginePage_WebChannel(this.h)))
 }
 
 func (this *QWebEnginePage) SetWebChannel(webChannel *webchannel.QWebChannel) {
@@ -489,7 +475,7 @@ func (this *QWebEnginePage) SetInspectedPage(page *QWebEnginePage) {
 }
 
 func (this *QWebEnginePage) InspectedPage() *QWebEnginePage {
-	return newQWebEnginePage(C.QWebEnginePage_InspectedPage(this.h), nil)
+	return newQWebEnginePage(C.QWebEnginePage_InspectedPage(this.h))
 }
 
 func (this *QWebEnginePage) SetDevToolsPage(page *QWebEnginePage) {
@@ -497,7 +483,7 @@ func (this *QWebEnginePage) SetDevToolsPage(page *QWebEnginePage) {
 }
 
 func (this *QWebEnginePage) DevToolsPage() *QWebEnginePage {
-	return newQWebEnginePage(C.QWebEnginePage_DevToolsPage(this.h), nil)
+	return newQWebEnginePage(C.QWebEnginePage_DevToolsPage(this.h))
 }
 
 func (this *QWebEnginePage) SetUrlRequestInterceptor(interceptor *QWebEngineUrlRequestInterceptor) {
@@ -1349,7 +1335,7 @@ func miqt_exec_callback_QWebEnginePage_Event(self *C.QWebEnginePage, cb C.intptr
 
 func (this *QWebEnginePage) callVirtualBase_CreateWindow(typeVal QWebEnginePage__WebWindowType) *QWebEnginePage {
 
-	return newQWebEnginePage(C.QWebEnginePage_virtualbase_CreateWindow(unsafe.Pointer(this.h), (C.int)(typeVal)), nil)
+	return newQWebEnginePage(C.QWebEnginePage_virtualbase_CreateWindow(unsafe.Pointer(this.h), (C.int)(typeVal)))
 
 }
 func (this *QWebEnginePage) OnCreateWindow(slot func(super func(typeVal QWebEnginePage__WebWindowType) *QWebEnginePage, typeVal QWebEnginePage__WebWindowType) *QWebEnginePage) {
@@ -1691,7 +1677,7 @@ func miqt_exec_callback_QWebEnginePage_TimerEvent(self *C.QWebEnginePage, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebEnginePage{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -1717,7 +1703,7 @@ func miqt_exec_callback_QWebEnginePage_ChildEvent(self *C.QWebEnginePage, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebEnginePage{h: self}).callVirtualBase_ChildEvent, slotval1)
 

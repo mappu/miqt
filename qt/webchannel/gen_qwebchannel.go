@@ -36,42 +36,34 @@ func (this *QWebChannel) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebChannel constructs the type using only CGO pointers.
-func newQWebChannel(h *C.QWebChannel, h_QObject *C.QObject) *QWebChannel {
+func newQWebChannel(h *C.QWebChannel) *QWebChannel {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebChannel_virtbase(h, &outptr_QObject)
+
 	return &QWebChannel{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebChannel constructs the type using only unsafe pointers.
-func UnsafeNewQWebChannel(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebChannel {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebChannel{h: (*C.QWebChannel)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebChannel(h unsafe.Pointer) *QWebChannel {
+	return newQWebChannel((*C.QWebChannel)(h))
 }
 
 // NewQWebChannel constructs a new QWebChannel object.
 func NewQWebChannel() *QWebChannel {
-	var outptr_QWebChannel *C.QWebChannel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebChannel_new(&outptr_QWebChannel, &outptr_QObject)
-	ret := newQWebChannel(outptr_QWebChannel, outptr_QObject)
+	ret := newQWebChannel(C.QWebChannel_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebChannel2 constructs a new QWebChannel object.
 func NewQWebChannel2(parent *qt.QObject) *QWebChannel {
-	var outptr_QWebChannel *C.QWebChannel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebChannel_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QWebChannel, &outptr_QObject)
-	ret := newQWebChannel(outptr_QWebChannel, outptr_QObject)
+	ret := newQWebChannel(C.QWebChannel_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -314,7 +306,7 @@ func miqt_exec_callback_QWebChannel_TimerEvent(self *C.QWebChannel, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebChannel{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -340,7 +332,7 @@ func miqt_exec_callback_QWebChannel_ChildEvent(self *C.QWebChannel, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebChannel{h: self}).callVirtualBase_ChildEvent, slotval1)
 

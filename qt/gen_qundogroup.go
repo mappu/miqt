@@ -35,42 +35,34 @@ func (this *QUndoGroup) UnsafePointer() unsafe.Pointer {
 }
 
 // newQUndoGroup constructs the type using only CGO pointers.
-func newQUndoGroup(h *C.QUndoGroup, h_QObject *C.QObject) *QUndoGroup {
+func newQUndoGroup(h *C.QUndoGroup) *QUndoGroup {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QUndoGroup_virtbase(h, &outptr_QObject)
+
 	return &QUndoGroup{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQUndoGroup constructs the type using only unsafe pointers.
-func UnsafeNewQUndoGroup(h unsafe.Pointer, h_QObject unsafe.Pointer) *QUndoGroup {
-	if h == nil {
-		return nil
-	}
-
-	return &QUndoGroup{h: (*C.QUndoGroup)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQUndoGroup(h unsafe.Pointer) *QUndoGroup {
+	return newQUndoGroup((*C.QUndoGroup)(h))
 }
 
 // NewQUndoGroup constructs a new QUndoGroup object.
 func NewQUndoGroup() *QUndoGroup {
-	var outptr_QUndoGroup *C.QUndoGroup = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QUndoGroup_new(&outptr_QUndoGroup, &outptr_QObject)
-	ret := newQUndoGroup(outptr_QUndoGroup, outptr_QObject)
+	ret := newQUndoGroup(C.QUndoGroup_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQUndoGroup2 constructs a new QUndoGroup object.
 func NewQUndoGroup2(parent *QObject) *QUndoGroup {
-	var outptr_QUndoGroup *C.QUndoGroup = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QUndoGroup_new2(parent.cPointer(), &outptr_QUndoGroup, &outptr_QObject)
-	ret := newQUndoGroup(outptr_QUndoGroup, outptr_QObject)
+	ret := newQUndoGroup(C.QUndoGroup_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -116,21 +108,21 @@ func (this *QUndoGroup) Stacks() []*QUndoStack {
 	_ret := make([]*QUndoStack, int(_ma.len))
 	_outCast := (*[0xffff]*C.QUndoStack)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQUndoStack(_outCast[i], nil)
+		_ret[i] = newQUndoStack(_outCast[i])
 	}
 	return _ret
 }
 
 func (this *QUndoGroup) ActiveStack() *QUndoStack {
-	return newQUndoStack(C.QUndoGroup_ActiveStack(this.h), nil)
+	return newQUndoStack(C.QUndoGroup_ActiveStack(this.h))
 }
 
 func (this *QUndoGroup) CreateUndoAction(parent *QObject) *QAction {
-	return newQAction(C.QUndoGroup_CreateUndoAction(this.h, parent.cPointer()), nil)
+	return newQAction(C.QUndoGroup_CreateUndoAction(this.h, parent.cPointer()))
 }
 
 func (this *QUndoGroup) CreateRedoAction(parent *QObject) *QAction {
-	return newQAction(C.QUndoGroup_CreateRedoAction(this.h, parent.cPointer()), nil)
+	return newQAction(C.QUndoGroup_CreateRedoAction(this.h, parent.cPointer()))
 }
 
 func (this *QUndoGroup) CanUndo() bool {
@@ -186,7 +178,7 @@ func miqt_exec_callback_QUndoGroup_ActiveStackChanged(cb C.intptr_t, stack *C.QU
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQUndoStack(stack, nil)
+	slotval1 := newQUndoStack(stack)
 
 	gofunc(slotval1)
 }
@@ -374,7 +366,7 @@ func (this *QUndoGroup) CreateUndoAction2(parent *QObject, prefix string) *QActi
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
 	defer C.free(unsafe.Pointer(prefix_ms.data))
-	return newQAction(C.QUndoGroup_CreateUndoAction2(this.h, parent.cPointer(), prefix_ms), nil)
+	return newQAction(C.QUndoGroup_CreateUndoAction2(this.h, parent.cPointer(), prefix_ms))
 }
 
 func (this *QUndoGroup) CreateRedoAction2(parent *QObject, prefix string) *QAction {
@@ -382,7 +374,7 @@ func (this *QUndoGroup) CreateRedoAction2(parent *QObject, prefix string) *QActi
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
 	defer C.free(unsafe.Pointer(prefix_ms.data))
-	return newQAction(C.QUndoGroup_CreateRedoAction2(this.h, parent.cPointer(), prefix_ms), nil)
+	return newQAction(C.QUndoGroup_CreateRedoAction2(this.h, parent.cPointer(), prefix_ms))
 }
 
 func (this *QUndoGroup) callVirtualBase_Event(event *QEvent) bool {
@@ -463,7 +455,7 @@ func miqt_exec_callback_QUndoGroup_TimerEvent(self *C.QUndoGroup, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QUndoGroup{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -489,7 +481,7 @@ func miqt_exec_callback_QUndoGroup_ChildEvent(self *C.QUndoGroup, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QUndoGroup{h: self}).callVirtualBase_ChildEvent, slotval1)
 

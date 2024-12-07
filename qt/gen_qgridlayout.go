@@ -35,46 +35,34 @@ func (this *QGridLayout) UnsafePointer() unsafe.Pointer {
 }
 
 // newQGridLayout constructs the type using only CGO pointers.
-func newQGridLayout(h *C.QGridLayout, h_QLayout *C.QLayout, h_QObject *C.QObject, h_QLayoutItem *C.QLayoutItem) *QGridLayout {
+func newQGridLayout(h *C.QGridLayout) *QGridLayout {
 	if h == nil {
 		return nil
 	}
+	var outptr_QLayout *C.QLayout = nil
+	C.QGridLayout_virtbase(h, &outptr_QLayout)
+
 	return &QGridLayout{h: h,
-		QLayout: newQLayout(h_QLayout, h_QObject, h_QLayoutItem)}
+		QLayout: newQLayout(outptr_QLayout)}
 }
 
 // UnsafeNewQGridLayout constructs the type using only unsafe pointers.
-func UnsafeNewQGridLayout(h unsafe.Pointer, h_QLayout unsafe.Pointer, h_QObject unsafe.Pointer, h_QLayoutItem unsafe.Pointer) *QGridLayout {
-	if h == nil {
-		return nil
-	}
-
-	return &QGridLayout{h: (*C.QGridLayout)(h),
-		QLayout: UnsafeNewQLayout(h_QLayout, h_QObject, h_QLayoutItem)}
+func UnsafeNewQGridLayout(h unsafe.Pointer) *QGridLayout {
+	return newQGridLayout((*C.QGridLayout)(h))
 }
 
 // NewQGridLayout constructs a new QGridLayout object.
 func NewQGridLayout(parent *QWidget) *QGridLayout {
-	var outptr_QGridLayout *C.QGridLayout = nil
-	var outptr_QLayout *C.QLayout = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QLayoutItem *C.QLayoutItem = nil
 
-	C.QGridLayout_new(parent.cPointer(), &outptr_QGridLayout, &outptr_QLayout, &outptr_QObject, &outptr_QLayoutItem)
-	ret := newQGridLayout(outptr_QGridLayout, outptr_QLayout, outptr_QObject, outptr_QLayoutItem)
+	ret := newQGridLayout(C.QGridLayout_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGridLayout2 constructs a new QGridLayout object.
 func NewQGridLayout2() *QGridLayout {
-	var outptr_QGridLayout *C.QGridLayout = nil
-	var outptr_QLayout *C.QLayout = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QLayoutItem *C.QLayoutItem = nil
 
-	C.QGridLayout_new2(&outptr_QGridLayout, &outptr_QLayout, &outptr_QObject, &outptr_QLayoutItem)
-	ret := newQGridLayout(outptr_QGridLayout, outptr_QLayout, outptr_QObject, outptr_QLayoutItem)
+	ret := newQGridLayout(C.QGridLayout_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -737,7 +725,7 @@ func miqt_exec_callback_QGridLayout_IndexOf(self *C.QGridLayout, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(param1, nil, nil)
+	slotval1 := newQWidget(param1)
 
 	virtualReturn := gofunc((&QGridLayout{h: self}).callVirtualBase_IndexOf, slotval1)
 
@@ -797,7 +785,7 @@ func miqt_exec_callback_QGridLayout_ControlTypes(self *C.QGridLayout, cb C.intpt
 
 func (this *QGridLayout) callVirtualBase_Layout() *QLayout {
 
-	return newQLayout(C.QGridLayout_virtualbase_Layout(unsafe.Pointer(this.h)), nil, nil)
+	return newQLayout(C.QGridLayout_virtualbase_Layout(unsafe.Pointer(this.h)))
 
 }
 func (this *QGridLayout) OnLayout(slot func(super func() *QLayout) *QLayout) {
@@ -840,7 +828,7 @@ func miqt_exec_callback_QGridLayout_ChildEvent(self *C.QGridLayout, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(e, nil)
+	slotval1 := newQChildEvent(e)
 
 	gofunc((&QGridLayout{h: self}).callVirtualBase_ChildEvent, slotval1)
 

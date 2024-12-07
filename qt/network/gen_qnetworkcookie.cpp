@@ -10,27 +10,23 @@
 #include "gen_qnetworkcookie.h"
 #include "_cgo_export.h"
 
-void QNetworkCookie_new(QNetworkCookie** outptr_QNetworkCookie) {
-	QNetworkCookie* ret = new QNetworkCookie();
-	*outptr_QNetworkCookie = ret;
+QNetworkCookie* QNetworkCookie_new() {
+	return new QNetworkCookie();
 }
 
-void QNetworkCookie_new2(QNetworkCookie* other, QNetworkCookie** outptr_QNetworkCookie) {
-	QNetworkCookie* ret = new QNetworkCookie(*other);
-	*outptr_QNetworkCookie = ret;
+QNetworkCookie* QNetworkCookie_new2(QNetworkCookie* other) {
+	return new QNetworkCookie(*other);
 }
 
-void QNetworkCookie_new3(struct miqt_string name, QNetworkCookie** outptr_QNetworkCookie) {
+QNetworkCookie* QNetworkCookie_new3(struct miqt_string name) {
 	QByteArray name_QByteArray(name.data, name.len);
-	QNetworkCookie* ret = new QNetworkCookie(name_QByteArray);
-	*outptr_QNetworkCookie = ret;
+	return new QNetworkCookie(name_QByteArray);
 }
 
-void QNetworkCookie_new4(struct miqt_string name, struct miqt_string value, QNetworkCookie** outptr_QNetworkCookie) {
+QNetworkCookie* QNetworkCookie_new4(struct miqt_string name, struct miqt_string value) {
 	QByteArray name_QByteArray(name.data, name.len);
 	QByteArray value_QByteArray(value.data, value.len);
-	QNetworkCookie* ret = new QNetworkCookie(name_QByteArray, value_QByteArray);
-	*outptr_QNetworkCookie = ret;
+	return new QNetworkCookie(name_QByteArray, value_QByteArray);
 }
 
 void QNetworkCookie_OperatorAssign(QNetworkCookie* self, QNetworkCookie* other) {

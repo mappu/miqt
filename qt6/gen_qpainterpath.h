@@ -38,9 +38,9 @@ typedef struct QRectF QRectF;
 typedef struct QRegion QRegion;
 #endif
 
-void QPainterPath_new(QPainterPath** outptr_QPainterPath);
-void QPainterPath_new2(QPointF* startPoint, QPainterPath** outptr_QPainterPath);
-void QPainterPath_new3(QPainterPath* other, QPainterPath** outptr_QPainterPath);
+QPainterPath* QPainterPath_new();
+QPainterPath* QPainterPath_new2(QPointF* startPoint);
+QPainterPath* QPainterPath_new3(QPainterPath* other);
 void QPainterPath_OperatorAssign(QPainterPath* self, QPainterPath* other);
 void QPainterPath_Swap(QPainterPath* self, QPainterPath* other);
 void QPainterPath_Clear(QPainterPath* self);
@@ -113,8 +113,8 @@ void QPainterPath_AddRoundedRect4(QPainterPath* self, QRectF* rect, double xRadi
 void QPainterPath_AddRoundedRect7(QPainterPath* self, double x, double y, double w, double h, double xRadius, double yRadius, int mode);
 void QPainterPath_Delete(QPainterPath* self, bool isSubclass);
 
-void QPainterPathStroker_new(QPainterPathStroker** outptr_QPainterPathStroker);
-void QPainterPathStroker_new2(QPen* pen, QPainterPathStroker** outptr_QPainterPathStroker);
+QPainterPathStroker* QPainterPathStroker_new();
+QPainterPathStroker* QPainterPathStroker_new2(QPen* pen);
 void QPainterPathStroker_SetWidth(QPainterPathStroker* self, double width);
 double QPainterPathStroker_Width(const QPainterPathStroker* self);
 void QPainterPathStroker_SetCapStyle(QPainterPathStroker* self, int style);

@@ -56,24 +56,19 @@ func newQTouchDevice(h *C.QTouchDevice) *QTouchDevice {
 	if h == nil {
 		return nil
 	}
+
 	return &QTouchDevice{h: h}
 }
 
 // UnsafeNewQTouchDevice constructs the type using only unsafe pointers.
 func UnsafeNewQTouchDevice(h unsafe.Pointer) *QTouchDevice {
-	if h == nil {
-		return nil
-	}
-
-	return &QTouchDevice{h: (*C.QTouchDevice)(h)}
+	return newQTouchDevice((*C.QTouchDevice)(h))
 }
 
 // NewQTouchDevice constructs a new QTouchDevice object.
 func NewQTouchDevice() *QTouchDevice {
-	var outptr_QTouchDevice *C.QTouchDevice = nil
 
-	C.QTouchDevice_new(&outptr_QTouchDevice)
-	ret := newQTouchDevice(outptr_QTouchDevice)
+	ret := newQTouchDevice(C.QTouchDevice_new())
 	ret.isSubclass = true
 	return ret
 }

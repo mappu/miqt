@@ -56,8 +56,9 @@ typedef struct QToolButton QToolButton;
 typedef struct QWidget QWidget;
 #endif
 
-void QToolButton_new(QWidget* parent, QToolButton** outptr_QToolButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QToolButton_new2(QToolButton** outptr_QToolButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QToolButton* QToolButton_new(QWidget* parent);
+QToolButton* QToolButton_new2();
+void QToolButton_virtbase(QToolButton* src, QAbstractButton** outptr_QAbstractButton);
 QMetaObject* QToolButton_MetaObject(const QToolButton* self);
 void* QToolButton_Metacast(QToolButton* self, const char* param1);
 struct miqt_string QToolButton_Tr(const char* s);

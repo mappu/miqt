@@ -47,24 +47,19 @@ func newQWebEngineHistoryItem(h *C.QWebEngineHistoryItem) *QWebEngineHistoryItem
 	if h == nil {
 		return nil
 	}
+
 	return &QWebEngineHistoryItem{h: h}
 }
 
 // UnsafeNewQWebEngineHistoryItem constructs the type using only unsafe pointers.
 func UnsafeNewQWebEngineHistoryItem(h unsafe.Pointer) *QWebEngineHistoryItem {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineHistoryItem{h: (*C.QWebEngineHistoryItem)(h)}
+	return newQWebEngineHistoryItem((*C.QWebEngineHistoryItem)(h))
 }
 
 // NewQWebEngineHistoryItem constructs a new QWebEngineHistoryItem object.
 func NewQWebEngineHistoryItem(other *QWebEngineHistoryItem) *QWebEngineHistoryItem {
-	var outptr_QWebEngineHistoryItem *C.QWebEngineHistoryItem = nil
 
-	C.QWebEngineHistoryItem_new(other.cPointer(), &outptr_QWebEngineHistoryItem)
-	ret := newQWebEngineHistoryItem(outptr_QWebEngineHistoryItem)
+	ret := newQWebEngineHistoryItem(C.QWebEngineHistoryItem_new(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -147,22 +142,20 @@ func (this *QWebEngineHistoryModel) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebEngineHistoryModel constructs the type using only CGO pointers.
-func newQWebEngineHistoryModel(h *C.QWebEngineHistoryModel, h_QAbstractListModel *C.QAbstractListModel, h_QAbstractItemModel *C.QAbstractItemModel, h_QObject *C.QObject) *QWebEngineHistoryModel {
+func newQWebEngineHistoryModel(h *C.QWebEngineHistoryModel) *QWebEngineHistoryModel {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractListModel *C.QAbstractListModel = nil
+	C.QWebEngineHistoryModel_virtbase(h, &outptr_QAbstractListModel)
+
 	return &QWebEngineHistoryModel{h: h,
-		QAbstractListModel: qt6.UnsafeNewQAbstractListModel(unsafe.Pointer(h_QAbstractListModel), unsafe.Pointer(h_QAbstractItemModel), unsafe.Pointer(h_QObject))}
+		QAbstractListModel: qt6.UnsafeNewQAbstractListModel(unsafe.Pointer(outptr_QAbstractListModel))}
 }
 
 // UnsafeNewQWebEngineHistoryModel constructs the type using only unsafe pointers.
-func UnsafeNewQWebEngineHistoryModel(h unsafe.Pointer, h_QAbstractListModel unsafe.Pointer, h_QAbstractItemModel unsafe.Pointer, h_QObject unsafe.Pointer) *QWebEngineHistoryModel {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineHistoryModel{h: (*C.QWebEngineHistoryModel)(h),
-		QAbstractListModel: qt6.UnsafeNewQAbstractListModel(h_QAbstractListModel, h_QAbstractItemModel, h_QObject)}
+func UnsafeNewQWebEngineHistoryModel(h unsafe.Pointer) *QWebEngineHistoryModel {
+	return newQWebEngineHistoryModel((*C.QWebEngineHistoryModel)(h))
 }
 
 func (this *QWebEngineHistoryModel) MetaObject() *qt6.QMetaObject {
@@ -258,22 +251,20 @@ func (this *QWebEngineHistory) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebEngineHistory constructs the type using only CGO pointers.
-func newQWebEngineHistory(h *C.QWebEngineHistory, h_QObject *C.QObject) *QWebEngineHistory {
+func newQWebEngineHistory(h *C.QWebEngineHistory) *QWebEngineHistory {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebEngineHistory_virtbase(h, &outptr_QObject)
+
 	return &QWebEngineHistory{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebEngineHistory constructs the type using only unsafe pointers.
-func UnsafeNewQWebEngineHistory(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebEngineHistory {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineHistory{h: (*C.QWebEngineHistory)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebEngineHistory(h unsafe.Pointer) *QWebEngineHistory {
+	return newQWebEngineHistory((*C.QWebEngineHistory)(h))
 }
 
 func (this *QWebEngineHistory) MetaObject() *qt6.QMetaObject {
@@ -388,15 +379,15 @@ func (this *QWebEngineHistory) Count() int {
 }
 
 func (this *QWebEngineHistory) ItemsModel() *QWebEngineHistoryModel {
-	return newQWebEngineHistoryModel(C.QWebEngineHistory_ItemsModel(this.h), nil, nil, nil)
+	return newQWebEngineHistoryModel(C.QWebEngineHistory_ItemsModel(this.h))
 }
 
 func (this *QWebEngineHistory) BackItemsModel() *QWebEngineHistoryModel {
-	return newQWebEngineHistoryModel(C.QWebEngineHistory_BackItemsModel(this.h), nil, nil, nil)
+	return newQWebEngineHistoryModel(C.QWebEngineHistory_BackItemsModel(this.h))
 }
 
 func (this *QWebEngineHistory) ForwardItemsModel() *QWebEngineHistoryModel {
-	return newQWebEngineHistoryModel(C.QWebEngineHistory_ForwardItemsModel(this.h), nil, nil, nil)
+	return newQWebEngineHistoryModel(C.QWebEngineHistory_ForwardItemsModel(this.h))
 }
 
 func QWebEngineHistory_Tr2(s string, c string) string {

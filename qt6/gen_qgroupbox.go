@@ -35,46 +35,34 @@ func (this *QGroupBox) UnsafePointer() unsafe.Pointer {
 }
 
 // newQGroupBox constructs the type using only CGO pointers.
-func newQGroupBox(h *C.QGroupBox, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QGroupBox {
+func newQGroupBox(h *C.QGroupBox) *QGroupBox {
 	if h == nil {
 		return nil
 	}
+	var outptr_QWidget *C.QWidget = nil
+	C.QGroupBox_virtbase(h, &outptr_QWidget)
+
 	return &QGroupBox{h: h,
-		QWidget: newQWidget(h_QWidget, h_QObject, h_QPaintDevice)}
+		QWidget: newQWidget(outptr_QWidget)}
 }
 
 // UnsafeNewQGroupBox constructs the type using only unsafe pointers.
-func UnsafeNewQGroupBox(h unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QGroupBox {
-	if h == nil {
-		return nil
-	}
-
-	return &QGroupBox{h: (*C.QGroupBox)(h),
-		QWidget: UnsafeNewQWidget(h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQGroupBox(h unsafe.Pointer) *QGroupBox {
+	return newQGroupBox((*C.QGroupBox)(h))
 }
 
 // NewQGroupBox constructs a new QGroupBox object.
 func NewQGroupBox(parent *QWidget) *QGroupBox {
-	var outptr_QGroupBox *C.QGroupBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QGroupBox_new(parent.cPointer(), &outptr_QGroupBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQGroupBox(outptr_QGroupBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQGroupBox(C.QGroupBox_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGroupBox2 constructs a new QGroupBox object.
 func NewQGroupBox2() *QGroupBox {
-	var outptr_QGroupBox *C.QGroupBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QGroupBox_new2(&outptr_QGroupBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQGroupBox(outptr_QGroupBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQGroupBox(C.QGroupBox_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -85,13 +73,8 @@ func NewQGroupBox3(title string) *QGroupBox {
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
 	defer C.free(unsafe.Pointer(title_ms.data))
-	var outptr_QGroupBox *C.QGroupBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QGroupBox_new3(title_ms, &outptr_QGroupBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQGroupBox(outptr_QGroupBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQGroupBox(C.QGroupBox_new3(title_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -102,13 +85,8 @@ func NewQGroupBox4(title string, parent *QWidget) *QGroupBox {
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
 	defer C.free(unsafe.Pointer(title_ms.data))
-	var outptr_QGroupBox *C.QGroupBox = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QGroupBox_new4(title_ms, parent.cPointer(), &outptr_QGroupBox, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQGroupBox(outptr_QGroupBox, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQGroupBox(C.QGroupBox_new4(title_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -339,7 +317,7 @@ func miqt_exec_callback_QGroupBox_ChildEvent(self *C.QGroupBox, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -365,7 +343,7 @@ func miqt_exec_callback_QGroupBox_ResizeEvent(self *C.QGroupBox, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(event, nil)
+	slotval1 := newQResizeEvent(event)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -391,7 +369,7 @@ func miqt_exec_callback_QGroupBox_PaintEvent(self *C.QGroupBox, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(event, nil)
+	slotval1 := newQPaintEvent(event)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -417,7 +395,7 @@ func miqt_exec_callback_QGroupBox_FocusInEvent(self *C.QGroupBox, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -469,7 +447,7 @@ func miqt_exec_callback_QGroupBox_MousePressEvent(self *C.QGroupBox, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -495,7 +473,7 @@ func miqt_exec_callback_QGroupBox_MouseMoveEvent(self *C.QGroupBox, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -521,7 +499,7 @@ func miqt_exec_callback_QGroupBox_MouseReleaseEvent(self *C.QGroupBox, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -547,7 +525,7 @@ func miqt_exec_callback_QGroupBox_InitStyleOption(self *C.QGroupBox, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQStyleOptionGroupBox(option, nil, nil)
+	slotval1 := newQStyleOptionGroupBox(option)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_InitStyleOption, slotval1)
 
@@ -729,7 +707,7 @@ func miqt_exec_callback_QGroupBox_MouseDoubleClickEvent(self *C.QGroupBox, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -755,7 +733,7 @@ func miqt_exec_callback_QGroupBox_WheelEvent(self *C.QGroupBox, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWheelEvent(event, nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(event)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -781,7 +759,7 @@ func miqt_exec_callback_QGroupBox_KeyPressEvent(self *C.QGroupBox, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(event, nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -807,7 +785,7 @@ func miqt_exec_callback_QGroupBox_KeyReleaseEvent(self *C.QGroupBox, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(event, nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -833,7 +811,7 @@ func miqt_exec_callback_QGroupBox_FocusOutEvent(self *C.QGroupBox, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -859,7 +837,7 @@ func miqt_exec_callback_QGroupBox_EnterEvent(self *C.QGroupBox, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQEnterEvent(event, nil, nil, nil, nil)
+	slotval1 := newQEnterEvent(event)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_EnterEvent, slotval1)
 
@@ -911,7 +889,7 @@ func miqt_exec_callback_QGroupBox_MoveEvent(self *C.QGroupBox, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMoveEvent(event, nil)
+	slotval1 := newQMoveEvent(event)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -937,7 +915,7 @@ func miqt_exec_callback_QGroupBox_CloseEvent(self *C.QGroupBox, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQCloseEvent(event, nil)
+	slotval1 := newQCloseEvent(event)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -963,7 +941,7 @@ func miqt_exec_callback_QGroupBox_ContextMenuEvent(self *C.QGroupBox, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQContextMenuEvent(event, nil, nil)
+	slotval1 := newQContextMenuEvent(event)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -989,7 +967,7 @@ func miqt_exec_callback_QGroupBox_TabletEvent(self *C.QGroupBox, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTabletEvent(event, nil, nil, nil, nil)
+	slotval1 := newQTabletEvent(event)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -1015,7 +993,7 @@ func miqt_exec_callback_QGroupBox_ActionEvent(self *C.QGroupBox, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQActionEvent(event, nil)
+	slotval1 := newQActionEvent(event)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -1041,7 +1019,7 @@ func miqt_exec_callback_QGroupBox_DragEnterEvent(self *C.QGroupBox, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragEnterEvent(event, nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -1067,7 +1045,7 @@ func miqt_exec_callback_QGroupBox_DragMoveEvent(self *C.QGroupBox, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragMoveEvent(event, nil, nil)
+	slotval1 := newQDragMoveEvent(event)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1093,7 +1071,7 @@ func miqt_exec_callback_QGroupBox_DragLeaveEvent(self *C.QGroupBox, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragLeaveEvent(event, nil)
+	slotval1 := newQDragLeaveEvent(event)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1119,7 +1097,7 @@ func miqt_exec_callback_QGroupBox_DropEvent(self *C.QGroupBox, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDropEvent(event, nil)
+	slotval1 := newQDropEvent(event)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1145,7 +1123,7 @@ func miqt_exec_callback_QGroupBox_ShowEvent(self *C.QGroupBox, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQShowEvent(event, nil)
+	slotval1 := newQShowEvent(event)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1171,7 +1149,7 @@ func miqt_exec_callback_QGroupBox_HideEvent(self *C.QGroupBox, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQHideEvent(event, nil)
+	slotval1 := newQHideEvent(event)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -1341,7 +1319,7 @@ func miqt_exec_callback_QGroupBox_InputMethodEvent(self *C.QGroupBox, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQInputMethodEvent(param1, nil)
+	slotval1 := newQInputMethodEvent(param1)
 
 	gofunc((&QGroupBox{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 

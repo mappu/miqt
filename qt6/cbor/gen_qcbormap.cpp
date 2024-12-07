@@ -16,14 +16,12 @@
 #include "gen_qcbormap.h"
 #include "_cgo_export.h"
 
-void QCborMap_new(QCborMap** outptr_QCborMap) {
-	QCborMap* ret = new QCborMap();
-	*outptr_QCborMap = ret;
+QCborMap* QCborMap_new() {
+	return new QCborMap();
 }
 
-void QCborMap_new2(QCborMap* other, QCborMap** outptr_QCborMap) {
-	QCborMap* ret = new QCborMap(*other);
-	*outptr_QCborMap = ret;
+QCborMap* QCborMap_new2(QCborMap* other) {
+	return new QCborMap(*other);
 }
 
 void QCborMap_OperatorAssign(QCborMap* self, QCborMap* other) {
@@ -360,14 +358,12 @@ void QCborMap_Delete(QCborMap* self, bool isSubclass) {
 	}
 }
 
-void QCborMap__Iterator_new(QCborMap__Iterator** outptr_QCborMap__Iterator) {
-	QCborMap::Iterator* ret = new QCborMap::Iterator();
-	*outptr_QCborMap__Iterator = ret;
+QCborMap__Iterator* QCborMap__Iterator_new() {
+	return new QCborMap::Iterator();
 }
 
-void QCborMap__Iterator_new2(QCborMap__Iterator* param1, QCborMap__Iterator** outptr_QCborMap__Iterator) {
-	QCborMap::Iterator* ret = new QCborMap::Iterator(*param1);
-	*outptr_QCborMap__Iterator = ret;
+QCborMap__Iterator* QCborMap__Iterator_new2(QCborMap__Iterator* param1) {
+	return new QCborMap::Iterator(*param1);
 }
 
 void QCborMap__Iterator_OperatorAssign(QCborMap__Iterator* self, QCborMap__Iterator* other) {
@@ -519,14 +515,12 @@ void QCborMap__Iterator_Delete(QCborMap__Iterator* self, bool isSubclass) {
 	}
 }
 
-void QCborMap__ConstIterator_new(QCborMap__ConstIterator** outptr_QCborMap__ConstIterator) {
-	QCborMap::ConstIterator* ret = new QCborMap::ConstIterator();
-	*outptr_QCborMap__ConstIterator = ret;
+QCborMap__ConstIterator* QCborMap__ConstIterator_new() {
+	return new QCborMap::ConstIterator();
 }
 
-void QCborMap__ConstIterator_new2(QCborMap__ConstIterator* param1, QCborMap__ConstIterator** outptr_QCborMap__ConstIterator) {
-	QCborMap::ConstIterator* ret = new QCborMap::ConstIterator(*param1);
-	*outptr_QCborMap__ConstIterator = ret;
+QCborMap__ConstIterator* QCborMap__ConstIterator_new2(QCborMap__ConstIterator* param1) {
+	return new QCborMap::ConstIterator(*param1);
 }
 
 void QCborMap__ConstIterator_OperatorAssign(QCborMap__ConstIterator* self, QCborMap__ConstIterator* other) {

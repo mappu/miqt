@@ -45,34 +45,27 @@ func newQNetworkCookie(h *C.QNetworkCookie) *QNetworkCookie {
 	if h == nil {
 		return nil
 	}
+
 	return &QNetworkCookie{h: h}
 }
 
 // UnsafeNewQNetworkCookie constructs the type using only unsafe pointers.
 func UnsafeNewQNetworkCookie(h unsafe.Pointer) *QNetworkCookie {
-	if h == nil {
-		return nil
-	}
-
-	return &QNetworkCookie{h: (*C.QNetworkCookie)(h)}
+	return newQNetworkCookie((*C.QNetworkCookie)(h))
 }
 
 // NewQNetworkCookie constructs a new QNetworkCookie object.
 func NewQNetworkCookie() *QNetworkCookie {
-	var outptr_QNetworkCookie *C.QNetworkCookie = nil
 
-	C.QNetworkCookie_new(&outptr_QNetworkCookie)
-	ret := newQNetworkCookie(outptr_QNetworkCookie)
+	ret := newQNetworkCookie(C.QNetworkCookie_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQNetworkCookie2 constructs a new QNetworkCookie object.
 func NewQNetworkCookie2(other *QNetworkCookie) *QNetworkCookie {
-	var outptr_QNetworkCookie *C.QNetworkCookie = nil
 
-	C.QNetworkCookie_new2(other.cPointer(), &outptr_QNetworkCookie)
-	ret := newQNetworkCookie(outptr_QNetworkCookie)
+	ret := newQNetworkCookie(C.QNetworkCookie_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -82,10 +75,8 @@ func NewQNetworkCookie3(name []byte) *QNetworkCookie {
 	name_alias := C.struct_miqt_string{}
 	name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
 	name_alias.len = C.size_t(len(name))
-	var outptr_QNetworkCookie *C.QNetworkCookie = nil
 
-	C.QNetworkCookie_new3(name_alias, &outptr_QNetworkCookie)
-	ret := newQNetworkCookie(outptr_QNetworkCookie)
+	ret := newQNetworkCookie(C.QNetworkCookie_new3(name_alias))
 	ret.isSubclass = true
 	return ret
 }
@@ -98,10 +89,8 @@ func NewQNetworkCookie4(name []byte, value []byte) *QNetworkCookie {
 	value_alias := C.struct_miqt_string{}
 	value_alias.data = (*C.char)(unsafe.Pointer(&value[0]))
 	value_alias.len = C.size_t(len(value))
-	var outptr_QNetworkCookie *C.QNetworkCookie = nil
 
-	C.QNetworkCookie_new4(name_alias, value_alias, &outptr_QNetworkCookie)
-	ret := newQNetworkCookie(outptr_QNetworkCookie)
+	ret := newQNetworkCookie(C.QNetworkCookie_new4(name_alias, value_alias))
 	ret.isSubclass = true
 	return ret
 }

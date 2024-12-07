@@ -46,16 +46,13 @@ func newQTextCodec(h *C.QTextCodec) *QTextCodec {
 	if h == nil {
 		return nil
 	}
+
 	return &QTextCodec{h: h}
 }
 
 // UnsafeNewQTextCodec constructs the type using only unsafe pointers.
 func UnsafeNewQTextCodec(h unsafe.Pointer) *QTextCodec {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextCodec{h: (*C.QTextCodec)(h)}
+	return newQTextCodec((*C.QTextCodec)(h))
 }
 
 func QTextCodec_CodecForName(name []byte) *QTextCodec {
@@ -272,34 +269,27 @@ func newQTextEncoder(h *C.QTextEncoder) *QTextEncoder {
 	if h == nil {
 		return nil
 	}
+
 	return &QTextEncoder{h: h}
 }
 
 // UnsafeNewQTextEncoder constructs the type using only unsafe pointers.
 func UnsafeNewQTextEncoder(h unsafe.Pointer) *QTextEncoder {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextEncoder{h: (*C.QTextEncoder)(h)}
+	return newQTextEncoder((*C.QTextEncoder)(h))
 }
 
 // NewQTextEncoder constructs a new QTextEncoder object.
 func NewQTextEncoder(codec *QTextCodec) *QTextEncoder {
-	var outptr_QTextEncoder *C.QTextEncoder = nil
 
-	C.QTextEncoder_new(codec.cPointer(), &outptr_QTextEncoder)
-	ret := newQTextEncoder(outptr_QTextEncoder)
+	ret := newQTextEncoder(C.QTextEncoder_new(codec.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextEncoder2 constructs a new QTextEncoder object.
 func NewQTextEncoder2(codec *QTextCodec, flags QTextCodec__ConversionFlag) *QTextEncoder {
-	var outptr_QTextEncoder *C.QTextEncoder = nil
 
-	C.QTextEncoder_new2(codec.cPointer(), (C.int)(flags), &outptr_QTextEncoder)
-	ret := newQTextEncoder(outptr_QTextEncoder)
+	ret := newQTextEncoder(C.QTextEncoder_new2(codec.cPointer(), (C.int)(flags)))
 	ret.isSubclass = true
 	return ret
 }
@@ -364,34 +354,27 @@ func newQTextDecoder(h *C.QTextDecoder) *QTextDecoder {
 	if h == nil {
 		return nil
 	}
+
 	return &QTextDecoder{h: h}
 }
 
 // UnsafeNewQTextDecoder constructs the type using only unsafe pointers.
 func UnsafeNewQTextDecoder(h unsafe.Pointer) *QTextDecoder {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextDecoder{h: (*C.QTextDecoder)(h)}
+	return newQTextDecoder((*C.QTextDecoder)(h))
 }
 
 // NewQTextDecoder constructs a new QTextDecoder object.
 func NewQTextDecoder(codec *QTextCodec) *QTextDecoder {
-	var outptr_QTextDecoder *C.QTextDecoder = nil
 
-	C.QTextDecoder_new(codec.cPointer(), &outptr_QTextDecoder)
-	ret := newQTextDecoder(outptr_QTextDecoder)
+	ret := newQTextDecoder(C.QTextDecoder_new(codec.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextDecoder2 constructs a new QTextDecoder object.
 func NewQTextDecoder2(codec *QTextCodec, flags QTextCodec__ConversionFlag) *QTextDecoder {
-	var outptr_QTextDecoder *C.QTextDecoder = nil
 
-	C.QTextDecoder_new2(codec.cPointer(), (C.int)(flags), &outptr_QTextDecoder)
-	ret := newQTextDecoder(outptr_QTextDecoder)
+	ret := newQTextDecoder(C.QTextDecoder_new2(codec.cPointer(), (C.int)(flags)))
 	ret.isSubclass = true
 	return ret
 }
@@ -461,34 +444,27 @@ func newQTextCodec__ConverterState(h *C.QTextCodec__ConverterState) *QTextCodec_
 	if h == nil {
 		return nil
 	}
+
 	return &QTextCodec__ConverterState{h: h}
 }
 
 // UnsafeNewQTextCodec__ConverterState constructs the type using only unsafe pointers.
 func UnsafeNewQTextCodec__ConverterState(h unsafe.Pointer) *QTextCodec__ConverterState {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextCodec__ConverterState{h: (*C.QTextCodec__ConverterState)(h)}
+	return newQTextCodec__ConverterState((*C.QTextCodec__ConverterState)(h))
 }
 
 // NewQTextCodec__ConverterState constructs a new QTextCodec::ConverterState object.
 func NewQTextCodec__ConverterState() *QTextCodec__ConverterState {
-	var outptr_QTextCodec__ConverterState *C.QTextCodec__ConverterState = nil
 
-	C.QTextCodec__ConverterState_new(&outptr_QTextCodec__ConverterState)
-	ret := newQTextCodec__ConverterState(outptr_QTextCodec__ConverterState)
+	ret := newQTextCodec__ConverterState(C.QTextCodec__ConverterState_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextCodec__ConverterState2 constructs a new QTextCodec::ConverterState object.
 func NewQTextCodec__ConverterState2(f QTextCodec__ConversionFlag) *QTextCodec__ConverterState {
-	var outptr_QTextCodec__ConverterState *C.QTextCodec__ConverterState = nil
 
-	C.QTextCodec__ConverterState_new2((C.int)(f), &outptr_QTextCodec__ConverterState)
-	ret := newQTextCodec__ConverterState(outptr_QTextCodec__ConverterState)
+	ret := newQTextCodec__ConverterState(C.QTextCodec__ConverterState_new2((C.int)(f)))
 	ret.isSubclass = true
 	return ret
 }

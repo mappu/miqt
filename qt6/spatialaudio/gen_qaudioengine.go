@@ -45,64 +45,50 @@ func (this *QAudioEngine) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAudioEngine constructs the type using only CGO pointers.
-func newQAudioEngine(h *C.QAudioEngine, h_QObject *C.QObject) *QAudioEngine {
+func newQAudioEngine(h *C.QAudioEngine) *QAudioEngine {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QAudioEngine_virtbase(h, &outptr_QObject)
+
 	return &QAudioEngine{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQAudioEngine constructs the type using only unsafe pointers.
-func UnsafeNewQAudioEngine(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAudioEngine {
-	if h == nil {
-		return nil
-	}
-
-	return &QAudioEngine{h: (*C.QAudioEngine)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQAudioEngine(h unsafe.Pointer) *QAudioEngine {
+	return newQAudioEngine((*C.QAudioEngine)(h))
 }
 
 // NewQAudioEngine constructs a new QAudioEngine object.
 func NewQAudioEngine() *QAudioEngine {
-	var outptr_QAudioEngine *C.QAudioEngine = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAudioEngine_new(&outptr_QAudioEngine, &outptr_QObject)
-	ret := newQAudioEngine(outptr_QAudioEngine, outptr_QObject)
+	ret := newQAudioEngine(C.QAudioEngine_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAudioEngine2 constructs a new QAudioEngine object.
 func NewQAudioEngine2(parent *qt6.QObject) *QAudioEngine {
-	var outptr_QAudioEngine *C.QAudioEngine = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAudioEngine_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QAudioEngine, &outptr_QObject)
-	ret := newQAudioEngine(outptr_QAudioEngine, outptr_QObject)
+	ret := newQAudioEngine(C.QAudioEngine_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAudioEngine3 constructs a new QAudioEngine object.
 func NewQAudioEngine3(sampleRate int) *QAudioEngine {
-	var outptr_QAudioEngine *C.QAudioEngine = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAudioEngine_new3((C.int)(sampleRate), &outptr_QAudioEngine, &outptr_QObject)
-	ret := newQAudioEngine(outptr_QAudioEngine, outptr_QObject)
+	ret := newQAudioEngine(C.QAudioEngine_new3((C.int)(sampleRate)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAudioEngine4 constructs a new QAudioEngine object.
 func NewQAudioEngine4(sampleRate int, parent *qt6.QObject) *QAudioEngine {
-	var outptr_QAudioEngine *C.QAudioEngine = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAudioEngine_new4((C.int)(sampleRate), (*C.QObject)(parent.UnsafePointer()), &outptr_QAudioEngine, &outptr_QObject)
-	ret := newQAudioEngine(outptr_QAudioEngine, outptr_QObject)
+	ret := newQAudioEngine(C.QAudioEngine_new4((C.int)(sampleRate), (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -381,7 +367,7 @@ func miqt_exec_callback_QAudioEngine_TimerEvent(self *C.QAudioEngine, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QAudioEngine{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -407,7 +393,7 @@ func miqt_exec_callback_QAudioEngine_ChildEvent(self *C.QAudioEngine, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QAudioEngine{h: self}).callVirtualBase_ChildEvent, slotval1)
 

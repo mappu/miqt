@@ -200,40 +200,32 @@ public:
 
 };
 
-void QAudioInput_new(QAudioInput** outptr_QAudioInput, QObject** outptr_QObject) {
-	MiqtVirtualQAudioInput* ret = new MiqtVirtualQAudioInput();
-	*outptr_QAudioInput = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAudioInput* QAudioInput_new() {
+	return new MiqtVirtualQAudioInput();
 }
 
-void QAudioInput_new2(QAudioDeviceInfo* audioDeviceInfo, QAudioInput** outptr_QAudioInput, QObject** outptr_QObject) {
-	MiqtVirtualQAudioInput* ret = new MiqtVirtualQAudioInput(*audioDeviceInfo);
-	*outptr_QAudioInput = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAudioInput* QAudioInput_new2(QAudioDeviceInfo* audioDeviceInfo) {
+	return new MiqtVirtualQAudioInput(*audioDeviceInfo);
 }
 
-void QAudioInput_new3(QAudioFormat* format, QAudioInput** outptr_QAudioInput, QObject** outptr_QObject) {
-	MiqtVirtualQAudioInput* ret = new MiqtVirtualQAudioInput(*format);
-	*outptr_QAudioInput = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAudioInput* QAudioInput_new3(QAudioFormat* format) {
+	return new MiqtVirtualQAudioInput(*format);
 }
 
-void QAudioInput_new4(QAudioFormat* format, QObject* parent, QAudioInput** outptr_QAudioInput, QObject** outptr_QObject) {
-	MiqtVirtualQAudioInput* ret = new MiqtVirtualQAudioInput(*format, parent);
-	*outptr_QAudioInput = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAudioInput* QAudioInput_new4(QAudioFormat* format, QObject* parent) {
+	return new MiqtVirtualQAudioInput(*format, parent);
 }
 
-void QAudioInput_new5(QAudioDeviceInfo* audioDeviceInfo, QAudioFormat* format, QAudioInput** outptr_QAudioInput, QObject** outptr_QObject) {
-	MiqtVirtualQAudioInput* ret = new MiqtVirtualQAudioInput(*audioDeviceInfo, *format);
-	*outptr_QAudioInput = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAudioInput* QAudioInput_new5(QAudioDeviceInfo* audioDeviceInfo, QAudioFormat* format) {
+	return new MiqtVirtualQAudioInput(*audioDeviceInfo, *format);
 }
 
-void QAudioInput_new6(QAudioDeviceInfo* audioDeviceInfo, QAudioFormat* format, QObject* parent, QAudioInput** outptr_QAudioInput, QObject** outptr_QObject) {
-	MiqtVirtualQAudioInput* ret = new MiqtVirtualQAudioInput(*audioDeviceInfo, *format, parent);
-	*outptr_QAudioInput = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAudioInput* QAudioInput_new6(QAudioDeviceInfo* audioDeviceInfo, QAudioFormat* format, QObject* parent) {
+	return new MiqtVirtualQAudioInput(*audioDeviceInfo, *format, parent);
+}
+
+void QAudioInput_virtbase(QAudioInput* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QAudioInput_MetaObject(const QAudioInput* self) {

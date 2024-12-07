@@ -50,12 +50,13 @@ typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-void QProgressDialog_new(QWidget* parent, QProgressDialog** outptr_QProgressDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QProgressDialog_new2(QProgressDialog** outptr_QProgressDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QProgressDialog_new3(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum, QProgressDialog** outptr_QProgressDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QProgressDialog_new4(QWidget* parent, int flags, QProgressDialog** outptr_QProgressDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QProgressDialog_new5(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum, QWidget* parent, QProgressDialog** outptr_QProgressDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QProgressDialog_new6(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum, QWidget* parent, int flags, QProgressDialog** outptr_QProgressDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QProgressDialog* QProgressDialog_new(QWidget* parent);
+QProgressDialog* QProgressDialog_new2();
+QProgressDialog* QProgressDialog_new3(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum);
+QProgressDialog* QProgressDialog_new4(QWidget* parent, int flags);
+QProgressDialog* QProgressDialog_new5(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum, QWidget* parent);
+QProgressDialog* QProgressDialog_new6(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum, QWidget* parent, int flags);
+void QProgressDialog_virtbase(QProgressDialog* src, QDialog** outptr_QDialog);
 QMetaObject* QProgressDialog_MetaObject(const QProgressDialog* self);
 void* QProgressDialog_Metacast(QProgressDialog* self, const char* param1);
 struct miqt_string QProgressDialog_Tr(const char* s);

@@ -35,33 +35,26 @@ func (this *QStringListModel) UnsafePointer() unsafe.Pointer {
 }
 
 // newQStringListModel constructs the type using only CGO pointers.
-func newQStringListModel(h *C.QStringListModel, h_QAbstractListModel *C.QAbstractListModel, h_QAbstractItemModel *C.QAbstractItemModel, h_QObject *C.QObject) *QStringListModel {
+func newQStringListModel(h *C.QStringListModel) *QStringListModel {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractListModel *C.QAbstractListModel = nil
+	C.QStringListModel_virtbase(h, &outptr_QAbstractListModel)
+
 	return &QStringListModel{h: h,
-		QAbstractListModel: newQAbstractListModel(h_QAbstractListModel, h_QAbstractItemModel, h_QObject)}
+		QAbstractListModel: newQAbstractListModel(outptr_QAbstractListModel)}
 }
 
 // UnsafeNewQStringListModel constructs the type using only unsafe pointers.
-func UnsafeNewQStringListModel(h unsafe.Pointer, h_QAbstractListModel unsafe.Pointer, h_QAbstractItemModel unsafe.Pointer, h_QObject unsafe.Pointer) *QStringListModel {
-	if h == nil {
-		return nil
-	}
-
-	return &QStringListModel{h: (*C.QStringListModel)(h),
-		QAbstractListModel: UnsafeNewQAbstractListModel(h_QAbstractListModel, h_QAbstractItemModel, h_QObject)}
+func UnsafeNewQStringListModel(h unsafe.Pointer) *QStringListModel {
+	return newQStringListModel((*C.QStringListModel)(h))
 }
 
 // NewQStringListModel constructs a new QStringListModel object.
 func NewQStringListModel() *QStringListModel {
-	var outptr_QStringListModel *C.QStringListModel = nil
-	var outptr_QAbstractListModel *C.QAbstractListModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QStringListModel_new(&outptr_QStringListModel, &outptr_QAbstractListModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQStringListModel(outptr_QStringListModel, outptr_QAbstractListModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQStringListModel(C.QStringListModel_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -78,26 +71,16 @@ func NewQStringListModel2(strings []string) *QStringListModel {
 		strings_CArray[i] = strings_i_ms
 	}
 	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
-	var outptr_QStringListModel *C.QStringListModel = nil
-	var outptr_QAbstractListModel *C.QAbstractListModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QStringListModel_new2(strings_ma, &outptr_QStringListModel, &outptr_QAbstractListModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQStringListModel(outptr_QStringListModel, outptr_QAbstractListModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQStringListModel(C.QStringListModel_new2(strings_ma))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQStringListModel3 constructs a new QStringListModel object.
 func NewQStringListModel3(parent *QObject) *QStringListModel {
-	var outptr_QStringListModel *C.QStringListModel = nil
-	var outptr_QAbstractListModel *C.QAbstractListModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QStringListModel_new3(parent.cPointer(), &outptr_QStringListModel, &outptr_QAbstractListModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQStringListModel(outptr_QStringListModel, outptr_QAbstractListModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQStringListModel(C.QStringListModel_new3(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -114,13 +97,8 @@ func NewQStringListModel4(strings []string, parent *QObject) *QStringListModel {
 		strings_CArray[i] = strings_i_ms
 	}
 	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
-	var outptr_QStringListModel *C.QStringListModel = nil
-	var outptr_QAbstractListModel *C.QAbstractListModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QStringListModel_new4(strings_ma, parent.cPointer(), &outptr_QStringListModel, &outptr_QAbstractListModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQStringListModel(outptr_QStringListModel, outptr_QAbstractListModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQStringListModel(C.QStringListModel_new4(strings_ma, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -779,7 +757,7 @@ func miqt_exec_callback_QStringListModel_DropMimeData(self *C.QStringListModel, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMimeData(data, nil)
+	slotval1 := newQMimeData(data)
 
 	slotval2 := (DropAction)(action)
 

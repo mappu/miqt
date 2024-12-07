@@ -55,44 +55,34 @@ func (this *QsciLexerJSON) UnsafePointer() unsafe.Pointer {
 }
 
 // newQsciLexerJSON constructs the type using only CGO pointers.
-func newQsciLexerJSON(h *C.QsciLexerJSON, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerJSON {
+func newQsciLexerJSON(h *C.QsciLexerJSON) *QsciLexerJSON {
 	if h == nil {
 		return nil
 	}
+	var outptr_QsciLexer *C.QsciLexer = nil
+	C.QsciLexerJSON_virtbase(h, &outptr_QsciLexer)
+
 	return &QsciLexerJSON{h: h,
-		QsciLexer: newQsciLexer(h_QsciLexer, h_QObject)}
+		QsciLexer: newQsciLexer(outptr_QsciLexer)}
 }
 
 // UnsafeNewQsciLexerJSON constructs the type using only unsafe pointers.
-func UnsafeNewQsciLexerJSON(h unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerJSON {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciLexerJSON{h: (*C.QsciLexerJSON)(h),
-		QsciLexer: UnsafeNewQsciLexer(h_QsciLexer, h_QObject)}
+func UnsafeNewQsciLexerJSON(h unsafe.Pointer) *QsciLexerJSON {
+	return newQsciLexerJSON((*C.QsciLexerJSON)(h))
 }
 
 // NewQsciLexerJSON constructs a new QsciLexerJSON object.
 func NewQsciLexerJSON() *QsciLexerJSON {
-	var outptr_QsciLexerJSON *C.QsciLexerJSON = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerJSON_new(&outptr_QsciLexerJSON, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerJSON(outptr_QsciLexerJSON, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerJSON(C.QsciLexerJSON_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQsciLexerJSON2 constructs a new QsciLexerJSON object.
 func NewQsciLexerJSON2(parent *qt6.QObject) *QsciLexerJSON {
-	var outptr_QsciLexerJSON *C.QsciLexerJSON = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerJSON_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QsciLexerJSON, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerJSON(outptr_QsciLexerJSON, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerJSON(C.QsciLexerJSON_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -887,7 +877,7 @@ func miqt_exec_callback_QsciLexerJSON_SetEditor(self *C.QsciLexerJSON, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQsciScintilla(editor, nil, nil, nil, nil, nil, nil)
+	slotval1 := newQsciScintilla(editor)
 
 	gofunc((&QsciLexerJSON{h: self}).callVirtualBase_SetEditor, slotval1)
 
@@ -1131,7 +1121,7 @@ func miqt_exec_callback_QsciLexerJSON_ReadProperties(self *C.QsciLexerJSON, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQSettings(unsafe.Pointer(qs), nil)
+	slotval1 := qt6.UnsafeNewQSettings(unsafe.Pointer(qs))
 
 	var prefix_ms C.struct_miqt_string = prefix
 	prefix_ret := C.GoStringN(prefix_ms.data, C.int(int64(prefix_ms.len)))
@@ -1168,7 +1158,7 @@ func miqt_exec_callback_QsciLexerJSON_WriteProperties(self *C.QsciLexerJSON, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQSettings(unsafe.Pointer(qs), nil)
+	slotval1 := qt6.UnsafeNewQSettings(unsafe.Pointer(qs))
 
 	var prefix_ms C.struct_miqt_string = prefix
 	prefix_ret := C.GoStringN(prefix_ms.data, C.int(int64(prefix_ms.len)))

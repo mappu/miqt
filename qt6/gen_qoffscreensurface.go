@@ -36,58 +36,44 @@ func (this *QOffscreenSurface) UnsafePointer() unsafe.Pointer {
 }
 
 // newQOffscreenSurface constructs the type using only CGO pointers.
-func newQOffscreenSurface(h *C.QOffscreenSurface, h_QObject *C.QObject, h_QSurface *C.QSurface) *QOffscreenSurface {
+func newQOffscreenSurface(h *C.QOffscreenSurface) *QOffscreenSurface {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	var outptr_QSurface *C.QSurface = nil
+	C.QOffscreenSurface_virtbase(h, &outptr_QObject, &outptr_QSurface)
+
 	return &QOffscreenSurface{h: h,
-		QObject:  newQObject(h_QObject),
-		QSurface: newQSurface(h_QSurface)}
+		QObject:  newQObject(outptr_QObject),
+		QSurface: newQSurface(outptr_QSurface)}
 }
 
 // UnsafeNewQOffscreenSurface constructs the type using only unsafe pointers.
-func UnsafeNewQOffscreenSurface(h unsafe.Pointer, h_QObject unsafe.Pointer, h_QSurface unsafe.Pointer) *QOffscreenSurface {
-	if h == nil {
-		return nil
-	}
-
-	return &QOffscreenSurface{h: (*C.QOffscreenSurface)(h),
-		QObject:  UnsafeNewQObject(h_QObject),
-		QSurface: UnsafeNewQSurface(h_QSurface)}
+func UnsafeNewQOffscreenSurface(h unsafe.Pointer) *QOffscreenSurface {
+	return newQOffscreenSurface((*C.QOffscreenSurface)(h))
 }
 
 // NewQOffscreenSurface constructs a new QOffscreenSurface object.
 func NewQOffscreenSurface() *QOffscreenSurface {
-	var outptr_QOffscreenSurface *C.QOffscreenSurface = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QSurface *C.QSurface = nil
 
-	C.QOffscreenSurface_new(&outptr_QOffscreenSurface, &outptr_QObject, &outptr_QSurface)
-	ret := newQOffscreenSurface(outptr_QOffscreenSurface, outptr_QObject, outptr_QSurface)
+	ret := newQOffscreenSurface(C.QOffscreenSurface_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQOffscreenSurface2 constructs a new QOffscreenSurface object.
 func NewQOffscreenSurface2(screen *QScreen) *QOffscreenSurface {
-	var outptr_QOffscreenSurface *C.QOffscreenSurface = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QSurface *C.QSurface = nil
 
-	C.QOffscreenSurface_new2(screen.cPointer(), &outptr_QOffscreenSurface, &outptr_QObject, &outptr_QSurface)
-	ret := newQOffscreenSurface(outptr_QOffscreenSurface, outptr_QObject, outptr_QSurface)
+	ret := newQOffscreenSurface(C.QOffscreenSurface_new2(screen.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQOffscreenSurface3 constructs a new QOffscreenSurface object.
 func NewQOffscreenSurface3(screen *QScreen, parent *QObject) *QOffscreenSurface {
-	var outptr_QOffscreenSurface *C.QOffscreenSurface = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QSurface *C.QSurface = nil
 
-	C.QOffscreenSurface_new3(screen.cPointer(), parent.cPointer(), &outptr_QOffscreenSurface, &outptr_QObject, &outptr_QSurface)
-	ret := newQOffscreenSurface(outptr_QOffscreenSurface, outptr_QObject, outptr_QSurface)
+	ret := newQOffscreenSurface(C.QOffscreenSurface_new3(screen.cPointer(), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -150,7 +136,7 @@ func (this *QOffscreenSurface) Size() *QSize {
 }
 
 func (this *QOffscreenSurface) Screen() *QScreen {
-	return newQScreen(C.QOffscreenSurface_Screen(this.h), nil)
+	return newQScreen(C.QOffscreenSurface_Screen(this.h))
 }
 
 func (this *QOffscreenSurface) SetScreen(screen *QScreen) {
@@ -172,7 +158,7 @@ func miqt_exec_callback_QOffscreenSurface_ScreenChanged(cb C.intptr_t, screen *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQScreen(screen, nil)
+	slotval1 := newQScreen(screen)
 
 	gofunc(slotval1)
 }
@@ -356,7 +342,7 @@ func miqt_exec_callback_QOffscreenSurface_TimerEvent(self *C.QOffscreenSurface, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QOffscreenSurface{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -382,7 +368,7 @@ func miqt_exec_callback_QOffscreenSurface_ChildEvent(self *C.QOffscreenSurface, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QOffscreenSurface{h: self}).callVirtualBase_ChildEvent, slotval1)
 

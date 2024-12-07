@@ -56,16 +56,13 @@ func newQSystemSemaphore(h *C.QSystemSemaphore) *QSystemSemaphore {
 	if h == nil {
 		return nil
 	}
+
 	return &QSystemSemaphore{h: h}
 }
 
 // UnsafeNewQSystemSemaphore constructs the type using only unsafe pointers.
 func UnsafeNewQSystemSemaphore(h unsafe.Pointer) *QSystemSemaphore {
-	if h == nil {
-		return nil
-	}
-
-	return &QSystemSemaphore{h: (*C.QSystemSemaphore)(h)}
+	return newQSystemSemaphore((*C.QSystemSemaphore)(h))
 }
 
 // NewQSystemSemaphore constructs a new QSystemSemaphore object.
@@ -74,10 +71,8 @@ func NewQSystemSemaphore(key string) *QSystemSemaphore {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	var outptr_QSystemSemaphore *C.QSystemSemaphore = nil
 
-	C.QSystemSemaphore_new(key_ms, &outptr_QSystemSemaphore)
-	ret := newQSystemSemaphore(outptr_QSystemSemaphore)
+	ret := newQSystemSemaphore(C.QSystemSemaphore_new(key_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -88,10 +83,8 @@ func NewQSystemSemaphore2(key string, initialValue int) *QSystemSemaphore {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	var outptr_QSystemSemaphore *C.QSystemSemaphore = nil
 
-	C.QSystemSemaphore_new2(key_ms, (C.int)(initialValue), &outptr_QSystemSemaphore)
-	ret := newQSystemSemaphore(outptr_QSystemSemaphore)
+	ret := newQSystemSemaphore(C.QSystemSemaphore_new2(key_ms, (C.int)(initialValue)))
 	ret.isSubclass = true
 	return ret
 }
@@ -102,10 +95,8 @@ func NewQSystemSemaphore3(key string, initialValue int, mode QSystemSemaphore__A
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	var outptr_QSystemSemaphore *C.QSystemSemaphore = nil
 
-	C.QSystemSemaphore_new3(key_ms, (C.int)(initialValue), (C.int)(mode), &outptr_QSystemSemaphore)
-	ret := newQSystemSemaphore(outptr_QSystemSemaphore)
+	ret := newQSystemSemaphore(C.QSystemSemaphore_new3(key_ms, (C.int)(initialValue), (C.int)(mode)))
 	ret.isSubclass = true
 	return ret
 }

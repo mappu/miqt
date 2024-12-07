@@ -9,6 +9,10 @@
 #include "gen_qwebenginenavigationrequest.h"
 #include "_cgo_export.h"
 
+void QWebEngineNavigationRequest_virtbase(QWebEngineNavigationRequest* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
+
 QMetaObject* QWebEngineNavigationRequest_MetaObject(const QWebEngineNavigationRequest* self) {
 	return (QMetaObject*) self->metaObject();
 }

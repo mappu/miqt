@@ -67,84 +67,67 @@ func newQScriptValue(h *C.QScriptValue) *QScriptValue {
 	if h == nil {
 		return nil
 	}
+
 	return &QScriptValue{h: h}
 }
 
 // UnsafeNewQScriptValue constructs the type using only unsafe pointers.
 func UnsafeNewQScriptValue(h unsafe.Pointer) *QScriptValue {
-	if h == nil {
-		return nil
-	}
-
-	return &QScriptValue{h: (*C.QScriptValue)(h)}
+	return newQScriptValue((*C.QScriptValue)(h))
 }
 
 // NewQScriptValue constructs a new QScriptValue object.
 func NewQScriptValue() *QScriptValue {
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new(&outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptValue2 constructs a new QScriptValue object.
 func NewQScriptValue2(other *QScriptValue) *QScriptValue {
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new2(other.cPointer(), &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptValue3 constructs a new QScriptValue object.
 func NewQScriptValue3(engine *QScriptEngine, val QScriptValue__SpecialValue) *QScriptValue {
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new3(engine.cPointer(), (C.int)(val), &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new3(engine.cPointer(), (C.int)(val)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptValue4 constructs a new QScriptValue object.
 func NewQScriptValue4(engine *QScriptEngine, val bool) *QScriptValue {
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new4(engine.cPointer(), (C.bool)(val), &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new4(engine.cPointer(), (C.bool)(val)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptValue5 constructs a new QScriptValue object.
 func NewQScriptValue5(engine *QScriptEngine, val int) *QScriptValue {
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new5(engine.cPointer(), (C.int)(val), &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new5(engine.cPointer(), (C.int)(val)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptValue6 constructs a new QScriptValue object.
 func NewQScriptValue6(engine *QScriptEngine, val uint) *QScriptValue {
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new6(engine.cPointer(), (C.uint)(val), &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new6(engine.cPointer(), (C.uint)(val)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptValue7 constructs a new QScriptValue object.
 func NewQScriptValue7(engine *QScriptEngine, val float64) *QScriptValue {
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new7(engine.cPointer(), (C.double)(val), &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new7(engine.cPointer(), (C.double)(val)))
 	ret.isSubclass = true
 	return ret
 }
@@ -155,10 +138,8 @@ func NewQScriptValue8(engine *QScriptEngine, val string) *QScriptValue {
 	val_ms.data = C.CString(val)
 	val_ms.len = C.size_t(len(val))
 	defer C.free(unsafe.Pointer(val_ms.data))
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new8(engine.cPointer(), val_ms, &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new8(engine.cPointer(), val_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -167,60 +148,48 @@ func NewQScriptValue8(engine *QScriptEngine, val string) *QScriptValue {
 func NewQScriptValue9(engine *QScriptEngine, val string) *QScriptValue {
 	val_Cstring := C.CString(val)
 	defer C.free(unsafe.Pointer(val_Cstring))
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new9(engine.cPointer(), val_Cstring, &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new9(engine.cPointer(), val_Cstring))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptValue10 constructs a new QScriptValue object.
 func NewQScriptValue10(value QScriptValue__SpecialValue) *QScriptValue {
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new10((C.int)(value), &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new10((C.int)(value)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptValue11 constructs a new QScriptValue object.
 func NewQScriptValue11(value bool) *QScriptValue {
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new11((C.bool)(value), &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new11((C.bool)(value)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptValue12 constructs a new QScriptValue object.
 func NewQScriptValue12(value int) *QScriptValue {
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new12((C.int)(value), &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new12((C.int)(value)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptValue13 constructs a new QScriptValue object.
 func NewQScriptValue13(value uint) *QScriptValue {
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new13((C.uint)(value), &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new13((C.uint)(value)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptValue14 constructs a new QScriptValue object.
 func NewQScriptValue14(value float64) *QScriptValue {
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new14((C.double)(value), &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new14((C.double)(value)))
 	ret.isSubclass = true
 	return ret
 }
@@ -231,10 +200,8 @@ func NewQScriptValue15(value string) *QScriptValue {
 	value_ms.data = C.CString(value)
 	value_ms.len = C.size_t(len(value))
 	defer C.free(unsafe.Pointer(value_ms.data))
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new15(value_ms, &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new15(value_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -243,10 +210,8 @@ func NewQScriptValue15(value string) *QScriptValue {
 func NewQScriptValue16(value string) *QScriptValue {
 	value_Cstring := C.CString(value)
 	defer C.free(unsafe.Pointer(value_Cstring))
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new16(value_Cstring, &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new16(value_Cstring))
 	ret.isSubclass = true
 	return ret
 }
@@ -256,7 +221,7 @@ func (this *QScriptValue) OperatorAssign(other *QScriptValue) {
 }
 
 func (this *QScriptValue) Engine() *QScriptEngine {
-	return newQScriptEngine(C.QScriptValue_Engine(this.h), nil)
+	return newQScriptEngine(C.QScriptValue_Engine(this.h))
 }
 
 func (this *QScriptValue) IsValid() bool {

@@ -71,52 +71,34 @@ func (this *QListView) UnsafePointer() unsafe.Pointer {
 }
 
 // newQListView constructs the type using only CGO pointers.
-func newQListView(h *C.QListView, h_QAbstractItemView *C.QAbstractItemView, h_QAbstractScrollArea *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QListView {
+func newQListView(h *C.QListView) *QListView {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractItemView *C.QAbstractItemView = nil
+	C.QListView_virtbase(h, &outptr_QAbstractItemView)
+
 	return &QListView{h: h,
-		QAbstractItemView: newQAbstractItemView(h_QAbstractItemView, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+		QAbstractItemView: newQAbstractItemView(outptr_QAbstractItemView)}
 }
 
 // UnsafeNewQListView constructs the type using only unsafe pointers.
-func UnsafeNewQListView(h unsafe.Pointer, h_QAbstractItemView unsafe.Pointer, h_QAbstractScrollArea unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QListView {
-	if h == nil {
-		return nil
-	}
-
-	return &QListView{h: (*C.QListView)(h),
-		QAbstractItemView: UnsafeNewQAbstractItemView(h_QAbstractItemView, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQListView(h unsafe.Pointer) *QListView {
+	return newQListView((*C.QListView)(h))
 }
 
 // NewQListView constructs a new QListView object.
 func NewQListView(parent *QWidget) *QListView {
-	var outptr_QListView *C.QListView = nil
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QListView_new(parent.cPointer(), &outptr_QListView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQListView(outptr_QListView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQListView(C.QListView_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQListView2 constructs a new QListView object.
 func NewQListView2() *QListView {
-	var outptr_QListView *C.QListView = nil
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QListView_new2(&outptr_QListView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQListView(outptr_QListView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQListView(C.QListView_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -719,7 +701,7 @@ func miqt_exec_callback_QListView_MouseMoveEvent(self *C.QListView, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QListView{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -745,7 +727,7 @@ func miqt_exec_callback_QListView_MouseReleaseEvent(self *C.QListView, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(e, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QListView{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -771,7 +753,7 @@ func miqt_exec_callback_QListView_WheelEvent(self *C.QListView, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWheelEvent(e, nil, nil)
+	slotval1 := newQWheelEvent(e)
 
 	gofunc((&QListView{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -797,7 +779,7 @@ func miqt_exec_callback_QListView_TimerEvent(self *C.QListView, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(e, nil)
+	slotval1 := newQTimerEvent(e)
 
 	gofunc((&QListView{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -823,7 +805,7 @@ func miqt_exec_callback_QListView_ResizeEvent(self *C.QListView, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(e, nil)
+	slotval1 := newQResizeEvent(e)
 
 	gofunc((&QListView{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -849,7 +831,7 @@ func miqt_exec_callback_QListView_DragMoveEvent(self *C.QListView, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragMoveEvent(e, nil, nil)
+	slotval1 := newQDragMoveEvent(e)
 
 	gofunc((&QListView{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -875,7 +857,7 @@ func miqt_exec_callback_QListView_DragLeaveEvent(self *C.QListView, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragLeaveEvent(e, nil)
+	slotval1 := newQDragLeaveEvent(e)
 
 	gofunc((&QListView{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -901,7 +883,7 @@ func miqt_exec_callback_QListView_DropEvent(self *C.QListView, cb C.intptr_t, e 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDropEvent(e, nil)
+	slotval1 := newQDropEvent(e)
 
 	gofunc((&QListView{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -935,7 +917,7 @@ func miqt_exec_callback_QListView_StartDrag(self *C.QListView, cb C.intptr_t, su
 
 func (this *QListView) callVirtualBase_ViewOptions() *QStyleOptionViewItem {
 
-	_goptr := newQStyleOptionViewItem(C.QListView_virtualbase_ViewOptions(unsafe.Pointer(this.h)), nil)
+	_goptr := newQStyleOptionViewItem(C.QListView_virtualbase_ViewOptions(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -980,7 +962,7 @@ func miqt_exec_callback_QListView_PaintEvent(self *C.QListView, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(e, nil)
+	slotval1 := newQPaintEvent(e)
 
 	gofunc((&QListView{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -1319,7 +1301,7 @@ func miqt_exec_callback_QListView_SetModel(self *C.QListView, cb C.intptr_t, mod
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQAbstractItemModel(model, nil)
+	slotval1 := newQAbstractItemModel(model)
 
 	gofunc((&QListView{h: self}).callVirtualBase_SetModel, slotval1)
 
@@ -1345,7 +1327,7 @@ func miqt_exec_callback_QListView_SetSelectionModel(self *C.QListView, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQItemSelectionModel(selectionModel, nil)
+	slotval1 := newQItemSelectionModel(selectionModel)
 
 	gofunc((&QListView{h: self}).callVirtualBase_SetSelectionModel, slotval1)
 
@@ -1663,7 +1645,7 @@ func miqt_exec_callback_QListView_CloseEditor(self *C.QListView, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(editor, nil, nil)
+	slotval1 := newQWidget(editor)
 
 	slotval2 := (QAbstractItemDelegate__EndEditHint)(hint)
 
@@ -1691,7 +1673,7 @@ func miqt_exec_callback_QListView_CommitData(self *C.QListView, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget(editor, nil, nil)
+	slotval1 := newQWidget(editor)
 
 	gofunc((&QListView{h: self}).callVirtualBase_CommitData, slotval1)
 
@@ -1861,7 +1843,7 @@ func miqt_exec_callback_QListView_MousePressEvent(self *C.QListView, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QListView{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -1887,7 +1869,7 @@ func miqt_exec_callback_QListView_MouseDoubleClickEvent(self *C.QListView, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(event, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QListView{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -1913,7 +1895,7 @@ func miqt_exec_callback_QListView_DragEnterEvent(self *C.QListView, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDragEnterEvent(event, nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event)
 
 	gofunc((&QListView{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -1939,7 +1921,7 @@ func miqt_exec_callback_QListView_FocusInEvent(self *C.QListView, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QListView{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -1965,7 +1947,7 @@ func miqt_exec_callback_QListView_FocusOutEvent(self *C.QListView, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFocusEvent(event, nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QListView{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -1991,7 +1973,7 @@ func miqt_exec_callback_QListView_KeyPressEvent(self *C.QListView, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(event, nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QListView{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -2017,7 +1999,7 @@ func miqt_exec_callback_QListView_InputMethodEvent(self *C.QListView, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQInputMethodEvent(event, nil)
+	slotval1 := newQInputMethodEvent(event)
 
 	gofunc((&QListView{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 

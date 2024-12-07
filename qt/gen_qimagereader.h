@@ -30,11 +30,11 @@ typedef struct QRect QRect;
 typedef struct QSize QSize;
 #endif
 
-void QImageReader_new(QImageReader** outptr_QImageReader);
-void QImageReader_new2(QIODevice* device, QImageReader** outptr_QImageReader);
-void QImageReader_new3(struct miqt_string fileName, QImageReader** outptr_QImageReader);
-void QImageReader_new4(QIODevice* device, struct miqt_string format, QImageReader** outptr_QImageReader);
-void QImageReader_new5(struct miqt_string fileName, struct miqt_string format, QImageReader** outptr_QImageReader);
+QImageReader* QImageReader_new();
+QImageReader* QImageReader_new2(QIODevice* device);
+QImageReader* QImageReader_new3(struct miqt_string fileName);
+QImageReader* QImageReader_new4(QIODevice* device, struct miqt_string format);
+QImageReader* QImageReader_new5(struct miqt_string fileName, struct miqt_string format);
 struct miqt_string QImageReader_Tr(const char* sourceText);
 struct miqt_string QImageReader_TrUtf8(const char* sourceText);
 void QImageReader_SetFormat(QImageReader* self, struct miqt_string format);

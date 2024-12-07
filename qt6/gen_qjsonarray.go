@@ -37,34 +37,27 @@ func newQJsonArray(h *C.QJsonArray) *QJsonArray {
 	if h == nil {
 		return nil
 	}
+
 	return &QJsonArray{h: h}
 }
 
 // UnsafeNewQJsonArray constructs the type using only unsafe pointers.
 func UnsafeNewQJsonArray(h unsafe.Pointer) *QJsonArray {
-	if h == nil {
-		return nil
-	}
-
-	return &QJsonArray{h: (*C.QJsonArray)(h)}
+	return newQJsonArray((*C.QJsonArray)(h))
 }
 
 // NewQJsonArray constructs a new QJsonArray object.
 func NewQJsonArray() *QJsonArray {
-	var outptr_QJsonArray *C.QJsonArray = nil
 
-	C.QJsonArray_new(&outptr_QJsonArray)
-	ret := newQJsonArray(outptr_QJsonArray)
+	ret := newQJsonArray(C.QJsonArray_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQJsonArray2 constructs a new QJsonArray object.
 func NewQJsonArray2(other *QJsonArray) *QJsonArray {
-	var outptr_QJsonArray *C.QJsonArray = nil
 
-	C.QJsonArray_new2(other.cPointer(), &outptr_QJsonArray)
-	ret := newQJsonArray(outptr_QJsonArray)
+	ret := newQJsonArray(C.QJsonArray_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -158,7 +151,7 @@ func (this *QJsonArray) Contains(element *QJsonValue) bool {
 }
 
 func (this *QJsonArray) OperatorSubscript(i int64) *QJsonValueRef {
-	_goptr := newQJsonValueRef(C.QJsonArray_OperatorSubscript(this.h, (C.ptrdiff_t)(i)), nil)
+	_goptr := newQJsonValueRef(C.QJsonArray_OperatorSubscript(this.h, (C.ptrdiff_t)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -313,44 +306,35 @@ func newQJsonArray__iterator(h *C.QJsonArray__iterator) *QJsonArray__iterator {
 	if h == nil {
 		return nil
 	}
+
 	return &QJsonArray__iterator{h: h}
 }
 
 // UnsafeNewQJsonArray__iterator constructs the type using only unsafe pointers.
 func UnsafeNewQJsonArray__iterator(h unsafe.Pointer) *QJsonArray__iterator {
-	if h == nil {
-		return nil
-	}
-
-	return &QJsonArray__iterator{h: (*C.QJsonArray__iterator)(h)}
+	return newQJsonArray__iterator((*C.QJsonArray__iterator)(h))
 }
 
 // NewQJsonArray__iterator constructs a new QJsonArray::iterator object.
 func NewQJsonArray__iterator() *QJsonArray__iterator {
-	var outptr_QJsonArray__iterator *C.QJsonArray__iterator = nil
 
-	C.QJsonArray__iterator_new(&outptr_QJsonArray__iterator)
-	ret := newQJsonArray__iterator(outptr_QJsonArray__iterator)
+	ret := newQJsonArray__iterator(C.QJsonArray__iterator_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQJsonArray__iterator2 constructs a new QJsonArray::iterator object.
 func NewQJsonArray__iterator2(array *QJsonArray, index int64) *QJsonArray__iterator {
-	var outptr_QJsonArray__iterator *C.QJsonArray__iterator = nil
 
-	C.QJsonArray__iterator_new2(array.cPointer(), (C.ptrdiff_t)(index), &outptr_QJsonArray__iterator)
-	ret := newQJsonArray__iterator(outptr_QJsonArray__iterator)
+	ret := newQJsonArray__iterator(C.QJsonArray__iterator_new2(array.cPointer(), (C.ptrdiff_t)(index)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQJsonArray__iterator3 constructs a new QJsonArray::iterator object.
 func NewQJsonArray__iterator3(other *QJsonArray__iterator) *QJsonArray__iterator {
-	var outptr_QJsonArray__iterator *C.QJsonArray__iterator = nil
 
-	C.QJsonArray__iterator_new3(other.cPointer(), &outptr_QJsonArray__iterator)
-	ret := newQJsonArray__iterator(outptr_QJsonArray__iterator)
+	ret := newQJsonArray__iterator(C.QJsonArray__iterator_new3(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -360,7 +344,7 @@ func (this *QJsonArray__iterator) OperatorAssign(other *QJsonArray__iterator) {
 }
 
 func (this *QJsonArray__iterator) OperatorMultiply() *QJsonValueRef {
-	_goptr := newQJsonValueRef(C.QJsonArray__iterator_OperatorMultiply(this.h), nil)
+	_goptr := newQJsonValueRef(C.QJsonArray__iterator_OperatorMultiply(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -370,11 +354,11 @@ func (this *QJsonArray__iterator) OperatorMinusGreater() *QJsonValueConstRef {
 }
 
 func (this *QJsonArray__iterator) OperatorMinusGreater2() *QJsonValueRef {
-	return newQJsonValueRef(C.QJsonArray__iterator_OperatorMinusGreater2(this.h), nil)
+	return newQJsonValueRef(C.QJsonArray__iterator_OperatorMinusGreater2(this.h))
 }
 
 func (this *QJsonArray__iterator) OperatorSubscript(j int64) *QJsonValueRef {
-	_goptr := newQJsonValueRef(C.QJsonArray__iterator_OperatorSubscript(this.h, (C.ptrdiff_t)(j)), nil)
+	_goptr := newQJsonValueRef(C.QJsonArray__iterator_OperatorSubscript(this.h, (C.ptrdiff_t)(j)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -509,54 +493,43 @@ func newQJsonArray__const_iterator(h *C.QJsonArray__const_iterator) *QJsonArray_
 	if h == nil {
 		return nil
 	}
+
 	return &QJsonArray__const_iterator{h: h}
 }
 
 // UnsafeNewQJsonArray__const_iterator constructs the type using only unsafe pointers.
 func UnsafeNewQJsonArray__const_iterator(h unsafe.Pointer) *QJsonArray__const_iterator {
-	if h == nil {
-		return nil
-	}
-
-	return &QJsonArray__const_iterator{h: (*C.QJsonArray__const_iterator)(h)}
+	return newQJsonArray__const_iterator((*C.QJsonArray__const_iterator)(h))
 }
 
 // NewQJsonArray__const_iterator constructs a new QJsonArray::const_iterator object.
 func NewQJsonArray__const_iterator() *QJsonArray__const_iterator {
-	var outptr_QJsonArray__const_iterator *C.QJsonArray__const_iterator = nil
 
-	C.QJsonArray__const_iterator_new(&outptr_QJsonArray__const_iterator)
-	ret := newQJsonArray__const_iterator(outptr_QJsonArray__const_iterator)
+	ret := newQJsonArray__const_iterator(C.QJsonArray__const_iterator_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQJsonArray__const_iterator2 constructs a new QJsonArray::const_iterator object.
 func NewQJsonArray__const_iterator2(array *QJsonArray, index int64) *QJsonArray__const_iterator {
-	var outptr_QJsonArray__const_iterator *C.QJsonArray__const_iterator = nil
 
-	C.QJsonArray__const_iterator_new2(array.cPointer(), (C.ptrdiff_t)(index), &outptr_QJsonArray__const_iterator)
-	ret := newQJsonArray__const_iterator(outptr_QJsonArray__const_iterator)
+	ret := newQJsonArray__const_iterator(C.QJsonArray__const_iterator_new2(array.cPointer(), (C.ptrdiff_t)(index)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQJsonArray__const_iterator3 constructs a new QJsonArray::const_iterator object.
 func NewQJsonArray__const_iterator3(o *QJsonArray__iterator) *QJsonArray__const_iterator {
-	var outptr_QJsonArray__const_iterator *C.QJsonArray__const_iterator = nil
 
-	C.QJsonArray__const_iterator_new3(o.cPointer(), &outptr_QJsonArray__const_iterator)
-	ret := newQJsonArray__const_iterator(outptr_QJsonArray__const_iterator)
+	ret := newQJsonArray__const_iterator(C.QJsonArray__const_iterator_new3(o.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQJsonArray__const_iterator4 constructs a new QJsonArray::const_iterator object.
 func NewQJsonArray__const_iterator4(other *QJsonArray__const_iterator) *QJsonArray__const_iterator {
-	var outptr_QJsonArray__const_iterator *C.QJsonArray__const_iterator = nil
 
-	C.QJsonArray__const_iterator_new4(other.cPointer(), &outptr_QJsonArray__const_iterator)
-	ret := newQJsonArray__const_iterator(outptr_QJsonArray__const_iterator)
+	ret := newQJsonArray__const_iterator(C.QJsonArray__const_iterator_new4(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

@@ -37,16 +37,13 @@ func newQsciCommandSet(h *C.QsciCommandSet) *QsciCommandSet {
 	if h == nil {
 		return nil
 	}
+
 	return &QsciCommandSet{h: h}
 }
 
 // UnsafeNewQsciCommandSet constructs the type using only unsafe pointers.
 func UnsafeNewQsciCommandSet(h unsafe.Pointer) *QsciCommandSet {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciCommandSet{h: (*C.QsciCommandSet)(h)}
+	return newQsciCommandSet((*C.QsciCommandSet)(h))
 }
 
 func (this *QsciCommandSet) ReadSettings(qs *qt6.QSettings) bool {

@@ -35,48 +35,34 @@ func (this *QDial) UnsafePointer() unsafe.Pointer {
 }
 
 // newQDial constructs the type using only CGO pointers.
-func newQDial(h *C.QDial, h_QAbstractSlider *C.QAbstractSlider, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QDial {
+func newQDial(h *C.QDial) *QDial {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractSlider *C.QAbstractSlider = nil
+	C.QDial_virtbase(h, &outptr_QAbstractSlider)
+
 	return &QDial{h: h,
-		QAbstractSlider: newQAbstractSlider(h_QAbstractSlider, h_QWidget, h_QObject, h_QPaintDevice)}
+		QAbstractSlider: newQAbstractSlider(outptr_QAbstractSlider)}
 }
 
 // UnsafeNewQDial constructs the type using only unsafe pointers.
-func UnsafeNewQDial(h unsafe.Pointer, h_QAbstractSlider unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QDial {
-	if h == nil {
-		return nil
-	}
-
-	return &QDial{h: (*C.QDial)(h),
-		QAbstractSlider: UnsafeNewQAbstractSlider(h_QAbstractSlider, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQDial(h unsafe.Pointer) *QDial {
+	return newQDial((*C.QDial)(h))
 }
 
 // NewQDial constructs a new QDial object.
 func NewQDial(parent *QWidget) *QDial {
-	var outptr_QDial *C.QDial = nil
-	var outptr_QAbstractSlider *C.QAbstractSlider = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QDial_new(parent.cPointer(), &outptr_QDial, &outptr_QAbstractSlider, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQDial(outptr_QDial, outptr_QAbstractSlider, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQDial(C.QDial_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDial2 constructs a new QDial object.
 func NewQDial2() *QDial {
-	var outptr_QDial *C.QDial = nil
-	var outptr_QAbstractSlider *C.QAbstractSlider = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QDial_new2(&outptr_QDial, &outptr_QAbstractSlider, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQDial(outptr_QDial, outptr_QAbstractSlider, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQDial(C.QDial_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -295,7 +281,7 @@ func miqt_exec_callback_QDial_ResizeEvent(self *C.QDial, cb C.intptr_t, re *C.QR
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQResizeEvent(re, nil)
+	slotval1 := newQResizeEvent(re)
 
 	gofunc((&QDial{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -321,7 +307,7 @@ func miqt_exec_callback_QDial_PaintEvent(self *C.QDial, cb C.intptr_t, pe *C.QPa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPaintEvent(pe, nil)
+	slotval1 := newQPaintEvent(pe)
 
 	gofunc((&QDial{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -347,7 +333,7 @@ func miqt_exec_callback_QDial_MousePressEvent(self *C.QDial, cb C.intptr_t, me *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(me, nil, nil)
+	slotval1 := newQMouseEvent(me)
 
 	gofunc((&QDial{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -373,7 +359,7 @@ func miqt_exec_callback_QDial_MouseReleaseEvent(self *C.QDial, cb C.intptr_t, me
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(me, nil, nil)
+	slotval1 := newQMouseEvent(me)
 
 	gofunc((&QDial{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -399,7 +385,7 @@ func miqt_exec_callback_QDial_MouseMoveEvent(self *C.QDial, cb C.intptr_t, me *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMouseEvent(me, nil, nil)
+	slotval1 := newQMouseEvent(me)
 
 	gofunc((&QDial{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -451,7 +437,7 @@ func miqt_exec_callback_QDial_KeyPressEvent(self *C.QDial, cb C.intptr_t, ev *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeyEvent(ev, nil, nil)
+	slotval1 := newQKeyEvent(ev)
 
 	gofunc((&QDial{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -477,7 +463,7 @@ func miqt_exec_callback_QDial_TimerEvent(self *C.QDial, cb C.intptr_t, param1 *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(param1, nil)
+	slotval1 := newQTimerEvent(param1)
 
 	gofunc((&QDial{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -503,7 +489,7 @@ func miqt_exec_callback_QDial_WheelEvent(self *C.QDial, cb C.intptr_t, e *C.QWhe
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWheelEvent(e, nil, nil)
+	slotval1 := newQWheelEvent(e)
 
 	gofunc((&QDial{h: self}).callVirtualBase_WheelEvent, slotval1)
 

@@ -76,16 +76,13 @@ func newQWebEngineUrlRequestInfo(h *C.QWebEngineUrlRequestInfo) *QWebEngineUrlRe
 	if h == nil {
 		return nil
 	}
+
 	return &QWebEngineUrlRequestInfo{h: h}
 }
 
 // UnsafeNewQWebEngineUrlRequestInfo constructs the type using only unsafe pointers.
 func UnsafeNewQWebEngineUrlRequestInfo(h unsafe.Pointer) *QWebEngineUrlRequestInfo {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineUrlRequestInfo{h: (*C.QWebEngineUrlRequestInfo)(h)}
+	return newQWebEngineUrlRequestInfo((*C.QWebEngineUrlRequestInfo)(h))
 }
 
 func (this *QWebEngineUrlRequestInfo) ResourceType() QWebEngineUrlRequestInfo__ResourceType {

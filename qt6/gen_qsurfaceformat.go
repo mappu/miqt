@@ -80,44 +80,35 @@ func newQSurfaceFormat(h *C.QSurfaceFormat) *QSurfaceFormat {
 	if h == nil {
 		return nil
 	}
+
 	return &QSurfaceFormat{h: h}
 }
 
 // UnsafeNewQSurfaceFormat constructs the type using only unsafe pointers.
 func UnsafeNewQSurfaceFormat(h unsafe.Pointer) *QSurfaceFormat {
-	if h == nil {
-		return nil
-	}
-
-	return &QSurfaceFormat{h: (*C.QSurfaceFormat)(h)}
+	return newQSurfaceFormat((*C.QSurfaceFormat)(h))
 }
 
 // NewQSurfaceFormat constructs a new QSurfaceFormat object.
 func NewQSurfaceFormat() *QSurfaceFormat {
-	var outptr_QSurfaceFormat *C.QSurfaceFormat = nil
 
-	C.QSurfaceFormat_new(&outptr_QSurfaceFormat)
-	ret := newQSurfaceFormat(outptr_QSurfaceFormat)
+	ret := newQSurfaceFormat(C.QSurfaceFormat_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSurfaceFormat2 constructs a new QSurfaceFormat object.
 func NewQSurfaceFormat2(options QSurfaceFormat__FormatOption) *QSurfaceFormat {
-	var outptr_QSurfaceFormat *C.QSurfaceFormat = nil
 
-	C.QSurfaceFormat_new2((C.int)(options), &outptr_QSurfaceFormat)
-	ret := newQSurfaceFormat(outptr_QSurfaceFormat)
+	ret := newQSurfaceFormat(C.QSurfaceFormat_new2((C.int)(options)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSurfaceFormat3 constructs a new QSurfaceFormat object.
 func NewQSurfaceFormat3(other *QSurfaceFormat) *QSurfaceFormat {
-	var outptr_QSurfaceFormat *C.QSurfaceFormat = nil
 
-	C.QSurfaceFormat_new3(other.cPointer(), &outptr_QSurfaceFormat)
-	ret := newQSurfaceFormat(outptr_QSurfaceFormat)
+	ret := newQSurfaceFormat(C.QSurfaceFormat_new3(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

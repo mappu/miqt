@@ -86,8 +86,9 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QAbstractButton_new(QWidget* parent, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QAbstractButton_new2(QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QAbstractButton* QAbstractButton_new(QWidget* parent);
+QAbstractButton* QAbstractButton_new2();
+void QAbstractButton_virtbase(QAbstractButton* src, QWidget** outptr_QWidget);
 QMetaObject* QAbstractButton_MetaObject(const QAbstractButton* self);
 void* QAbstractButton_Metacast(QAbstractButton* self, const char* param1);
 struct miqt_string QAbstractButton_Tr(const char* s);

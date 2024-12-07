@@ -40,10 +40,11 @@ typedef struct QSize QSize;
 typedef struct QVariant QVariant;
 #endif
 
-void QDirModel_new(struct miqt_array /* of struct miqt_string */  nameFilters, int filters, int sort, QDirModel** outptr_QDirModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject);
-void QDirModel_new2(QDirModel** outptr_QDirModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject);
-void QDirModel_new3(struct miqt_array /* of struct miqt_string */  nameFilters, int filters, int sort, QObject* parent, QDirModel** outptr_QDirModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject);
-void QDirModel_new4(QObject* parent, QDirModel** outptr_QDirModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject);
+QDirModel* QDirModel_new(struct miqt_array /* of struct miqt_string */  nameFilters, int filters, int sort);
+QDirModel* QDirModel_new2();
+QDirModel* QDirModel_new3(struct miqt_array /* of struct miqt_string */  nameFilters, int filters, int sort, QObject* parent);
+QDirModel* QDirModel_new4(QObject* parent);
+void QDirModel_virtbase(QDirModel* src, QAbstractItemModel** outptr_QAbstractItemModel);
 QMetaObject* QDirModel_MetaObject(const QDirModel* self);
 void* QDirModel_Metacast(QDirModel* self, const char* param1);
 struct miqt_string QDirModel_Tr(const char* s);

@@ -37,24 +37,19 @@ func newQStringMatcher(h *C.QStringMatcher) *QStringMatcher {
 	if h == nil {
 		return nil
 	}
+
 	return &QStringMatcher{h: h}
 }
 
 // UnsafeNewQStringMatcher constructs the type using only unsafe pointers.
 func UnsafeNewQStringMatcher(h unsafe.Pointer) *QStringMatcher {
-	if h == nil {
-		return nil
-	}
-
-	return &QStringMatcher{h: (*C.QStringMatcher)(h)}
+	return newQStringMatcher((*C.QStringMatcher)(h))
 }
 
 // NewQStringMatcher constructs a new QStringMatcher object.
 func NewQStringMatcher() *QStringMatcher {
-	var outptr_QStringMatcher *C.QStringMatcher = nil
 
-	C.QStringMatcher_new(&outptr_QStringMatcher)
-	ret := newQStringMatcher(outptr_QStringMatcher)
+	ret := newQStringMatcher(C.QStringMatcher_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -65,30 +60,24 @@ func NewQStringMatcher2(pattern string) *QStringMatcher {
 	pattern_ms.data = C.CString(pattern)
 	pattern_ms.len = C.size_t(len(pattern))
 	defer C.free(unsafe.Pointer(pattern_ms.data))
-	var outptr_QStringMatcher *C.QStringMatcher = nil
 
-	C.QStringMatcher_new2(pattern_ms, &outptr_QStringMatcher)
-	ret := newQStringMatcher(outptr_QStringMatcher)
+	ret := newQStringMatcher(C.QStringMatcher_new2(pattern_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQStringMatcher3 constructs a new QStringMatcher object.
 func NewQStringMatcher3(uc *QChar, lenVal int) *QStringMatcher {
-	var outptr_QStringMatcher *C.QStringMatcher = nil
 
-	C.QStringMatcher_new3(uc.cPointer(), (C.int)(lenVal), &outptr_QStringMatcher)
-	ret := newQStringMatcher(outptr_QStringMatcher)
+	ret := newQStringMatcher(C.QStringMatcher_new3(uc.cPointer(), (C.int)(lenVal)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQStringMatcher4 constructs a new QStringMatcher object.
 func NewQStringMatcher4(other *QStringMatcher) *QStringMatcher {
-	var outptr_QStringMatcher *C.QStringMatcher = nil
 
-	C.QStringMatcher_new4(other.cPointer(), &outptr_QStringMatcher)
-	ret := newQStringMatcher(outptr_QStringMatcher)
+	ret := newQStringMatcher(C.QStringMatcher_new4(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -99,20 +88,16 @@ func NewQStringMatcher5(pattern string, cs CaseSensitivity) *QStringMatcher {
 	pattern_ms.data = C.CString(pattern)
 	pattern_ms.len = C.size_t(len(pattern))
 	defer C.free(unsafe.Pointer(pattern_ms.data))
-	var outptr_QStringMatcher *C.QStringMatcher = nil
 
-	C.QStringMatcher_new5(pattern_ms, (C.int)(cs), &outptr_QStringMatcher)
-	ret := newQStringMatcher(outptr_QStringMatcher)
+	ret := newQStringMatcher(C.QStringMatcher_new5(pattern_ms, (C.int)(cs)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQStringMatcher6 constructs a new QStringMatcher object.
 func NewQStringMatcher6(uc *QChar, lenVal int, cs CaseSensitivity) *QStringMatcher {
-	var outptr_QStringMatcher *C.QStringMatcher = nil
 
-	C.QStringMatcher_new6(uc.cPointer(), (C.int)(lenVal), (C.int)(cs), &outptr_QStringMatcher)
-	ret := newQStringMatcher(outptr_QStringMatcher)
+	ret := newQStringMatcher(C.QStringMatcher_new6(uc.cPointer(), (C.int)(lenVal), (C.int)(cs)))
 	ret.isSubclass = true
 	return ret
 }

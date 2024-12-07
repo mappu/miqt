@@ -4,9 +4,8 @@
 #include "gen_qwebenginefullscreenrequest.h"
 #include "_cgo_export.h"
 
-void QWebEngineFullScreenRequest_new(QWebEngineFullScreenRequest* other, QWebEngineFullScreenRequest** outptr_QWebEngineFullScreenRequest) {
-	QWebEngineFullScreenRequest* ret = new QWebEngineFullScreenRequest(*other);
-	*outptr_QWebEngineFullScreenRequest = ret;
+QWebEngineFullScreenRequest* QWebEngineFullScreenRequest_new(QWebEngineFullScreenRequest* other) {
+	return new QWebEngineFullScreenRequest(*other);
 }
 
 void QWebEngineFullScreenRequest_OperatorAssign(QWebEngineFullScreenRequest* self, QWebEngineFullScreenRequest* other) {

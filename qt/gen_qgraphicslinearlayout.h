@@ -30,10 +30,11 @@ typedef struct QRectF QRectF;
 typedef struct QSizeF QSizeF;
 #endif
 
-void QGraphicsLinearLayout_new(QGraphicsLinearLayout** outptr_QGraphicsLinearLayout, QGraphicsLayout** outptr_QGraphicsLayout, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
-void QGraphicsLinearLayout_new2(int orientation, QGraphicsLinearLayout** outptr_QGraphicsLinearLayout, QGraphicsLayout** outptr_QGraphicsLayout, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
-void QGraphicsLinearLayout_new3(QGraphicsLayoutItem* parent, QGraphicsLinearLayout** outptr_QGraphicsLinearLayout, QGraphicsLayout** outptr_QGraphicsLayout, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
-void QGraphicsLinearLayout_new4(int orientation, QGraphicsLayoutItem* parent, QGraphicsLinearLayout** outptr_QGraphicsLinearLayout, QGraphicsLayout** outptr_QGraphicsLayout, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
+QGraphicsLinearLayout* QGraphicsLinearLayout_new();
+QGraphicsLinearLayout* QGraphicsLinearLayout_new2(int orientation);
+QGraphicsLinearLayout* QGraphicsLinearLayout_new3(QGraphicsLayoutItem* parent);
+QGraphicsLinearLayout* QGraphicsLinearLayout_new4(int orientation, QGraphicsLayoutItem* parent);
+void QGraphicsLinearLayout_virtbase(QGraphicsLinearLayout* src, QGraphicsLayout** outptr_QGraphicsLayout);
 void QGraphicsLinearLayout_SetOrientation(QGraphicsLinearLayout* self, int orientation);
 int QGraphicsLinearLayout_Orientation(const QGraphicsLinearLayout* self);
 void QGraphicsLinearLayout_AddItem(QGraphicsLinearLayout* self, QGraphicsLayoutItem* item);

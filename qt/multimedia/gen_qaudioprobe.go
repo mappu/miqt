@@ -36,42 +36,34 @@ func (this *QAudioProbe) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAudioProbe constructs the type using only CGO pointers.
-func newQAudioProbe(h *C.QAudioProbe, h_QObject *C.QObject) *QAudioProbe {
+func newQAudioProbe(h *C.QAudioProbe) *QAudioProbe {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QAudioProbe_virtbase(h, &outptr_QObject)
+
 	return &QAudioProbe{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQAudioProbe constructs the type using only unsafe pointers.
-func UnsafeNewQAudioProbe(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAudioProbe {
-	if h == nil {
-		return nil
-	}
-
-	return &QAudioProbe{h: (*C.QAudioProbe)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQAudioProbe(h unsafe.Pointer) *QAudioProbe {
+	return newQAudioProbe((*C.QAudioProbe)(h))
 }
 
 // NewQAudioProbe constructs a new QAudioProbe object.
 func NewQAudioProbe() *QAudioProbe {
-	var outptr_QAudioProbe *C.QAudioProbe = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAudioProbe_new(&outptr_QAudioProbe, &outptr_QObject)
-	ret := newQAudioProbe(outptr_QAudioProbe, outptr_QObject)
+	ret := newQAudioProbe(C.QAudioProbe_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAudioProbe2 constructs a new QAudioProbe object.
 func NewQAudioProbe2(parent *qt.QObject) *QAudioProbe {
-	var outptr_QAudioProbe *C.QAudioProbe = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAudioProbe_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QAudioProbe, &outptr_QObject)
-	ret := newQAudioProbe(outptr_QAudioProbe, outptr_QObject)
+	ret := newQAudioProbe(C.QAudioProbe_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -275,7 +267,7 @@ func miqt_exec_callback_QAudioProbe_TimerEvent(self *C.QAudioProbe, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QAudioProbe{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -301,7 +293,7 @@ func miqt_exec_callback_QAudioProbe_ChildEvent(self *C.QAudioProbe, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QAudioProbe{h: self}).callVirtualBase_ChildEvent, slotval1)
 

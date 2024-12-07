@@ -35,22 +35,20 @@ func (this *QStyleHints) UnsafePointer() unsafe.Pointer {
 }
 
 // newQStyleHints constructs the type using only CGO pointers.
-func newQStyleHints(h *C.QStyleHints, h_QObject *C.QObject) *QStyleHints {
+func newQStyleHints(h *C.QStyleHints) *QStyleHints {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QStyleHints_virtbase(h, &outptr_QObject)
+
 	return &QStyleHints{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQStyleHints constructs the type using only unsafe pointers.
-func UnsafeNewQStyleHints(h unsafe.Pointer, h_QObject unsafe.Pointer) *QStyleHints {
-	if h == nil {
-		return nil
-	}
-
-	return &QStyleHints{h: (*C.QStyleHints)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQStyleHints(h unsafe.Pointer) *QStyleHints {
+	return newQStyleHints((*C.QStyleHints)(h))
 }
 
 func (this *QStyleHints) MetaObject() *QMetaObject {

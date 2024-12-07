@@ -54,64 +54,50 @@ func (this *QSystemTrayIcon) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSystemTrayIcon constructs the type using only CGO pointers.
-func newQSystemTrayIcon(h *C.QSystemTrayIcon, h_QObject *C.QObject) *QSystemTrayIcon {
+func newQSystemTrayIcon(h *C.QSystemTrayIcon) *QSystemTrayIcon {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QSystemTrayIcon_virtbase(h, &outptr_QObject)
+
 	return &QSystemTrayIcon{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQSystemTrayIcon constructs the type using only unsafe pointers.
-func UnsafeNewQSystemTrayIcon(h unsafe.Pointer, h_QObject unsafe.Pointer) *QSystemTrayIcon {
-	if h == nil {
-		return nil
-	}
-
-	return &QSystemTrayIcon{h: (*C.QSystemTrayIcon)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQSystemTrayIcon(h unsafe.Pointer) *QSystemTrayIcon {
+	return newQSystemTrayIcon((*C.QSystemTrayIcon)(h))
 }
 
 // NewQSystemTrayIcon constructs a new QSystemTrayIcon object.
 func NewQSystemTrayIcon() *QSystemTrayIcon {
-	var outptr_QSystemTrayIcon *C.QSystemTrayIcon = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSystemTrayIcon_new(&outptr_QSystemTrayIcon, &outptr_QObject)
-	ret := newQSystemTrayIcon(outptr_QSystemTrayIcon, outptr_QObject)
+	ret := newQSystemTrayIcon(C.QSystemTrayIcon_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSystemTrayIcon2 constructs a new QSystemTrayIcon object.
 func NewQSystemTrayIcon2(icon *QIcon) *QSystemTrayIcon {
-	var outptr_QSystemTrayIcon *C.QSystemTrayIcon = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSystemTrayIcon_new2(icon.cPointer(), &outptr_QSystemTrayIcon, &outptr_QObject)
-	ret := newQSystemTrayIcon(outptr_QSystemTrayIcon, outptr_QObject)
+	ret := newQSystemTrayIcon(C.QSystemTrayIcon_new2(icon.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSystemTrayIcon3 constructs a new QSystemTrayIcon object.
 func NewQSystemTrayIcon3(parent *QObject) *QSystemTrayIcon {
-	var outptr_QSystemTrayIcon *C.QSystemTrayIcon = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSystemTrayIcon_new3(parent.cPointer(), &outptr_QSystemTrayIcon, &outptr_QObject)
-	ret := newQSystemTrayIcon(outptr_QSystemTrayIcon, outptr_QObject)
+	ret := newQSystemTrayIcon(C.QSystemTrayIcon_new3(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSystemTrayIcon4 constructs a new QSystemTrayIcon object.
 func NewQSystemTrayIcon4(icon *QIcon, parent *QObject) *QSystemTrayIcon {
-	var outptr_QSystemTrayIcon *C.QSystemTrayIcon = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSystemTrayIcon_new4(icon.cPointer(), parent.cPointer(), &outptr_QSystemTrayIcon, &outptr_QObject)
-	ret := newQSystemTrayIcon(outptr_QSystemTrayIcon, outptr_QObject)
+	ret := newQSystemTrayIcon(C.QSystemTrayIcon_new4(icon.cPointer(), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -149,7 +135,7 @@ func (this *QSystemTrayIcon) SetContextMenu(menu *QMenu) {
 }
 
 func (this *QSystemTrayIcon) ContextMenu() *QMenu {
-	return newQMenu(C.QSystemTrayIcon_ContextMenu(this.h), nil, nil, nil)
+	return newQMenu(C.QSystemTrayIcon_ContextMenu(this.h))
 }
 
 func (this *QSystemTrayIcon) Icon() *QIcon {
@@ -426,7 +412,7 @@ func miqt_exec_callback_QSystemTrayIcon_TimerEvent(self *C.QSystemTrayIcon, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTimerEvent(event, nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QSystemTrayIcon{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -452,7 +438,7 @@ func miqt_exec_callback_QSystemTrayIcon_ChildEvent(self *C.QSystemTrayIcon, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQChildEvent(event, nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QSystemTrayIcon{h: self}).callVirtualBase_ChildEvent, slotval1)
 

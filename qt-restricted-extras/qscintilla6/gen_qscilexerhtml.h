@@ -34,8 +34,9 @@ typedef struct QsciLexerHTML QsciLexerHTML;
 typedef struct QsciScintilla QsciScintilla;
 #endif
 
-void QsciLexerHTML_new(QsciLexerHTML** outptr_QsciLexerHTML, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerHTML_new2(QObject* parent, QsciLexerHTML** outptr_QsciLexerHTML, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerHTML* QsciLexerHTML_new();
+QsciLexerHTML* QsciLexerHTML_new2(QObject* parent);
+void QsciLexerHTML_virtbase(QsciLexerHTML* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerHTML_MetaObject(const QsciLexerHTML* self);
 void* QsciLexerHTML_Metacast(QsciLexerHTML* self, const char* param1);
 struct miqt_string QsciLexerHTML_Tr(const char* s);

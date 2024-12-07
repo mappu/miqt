@@ -48,8 +48,9 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 #endif
 
-void QFileSystemModel_new(QFileSystemModel** outptr_QFileSystemModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject);
-void QFileSystemModel_new2(QObject* parent, QFileSystemModel** outptr_QFileSystemModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject);
+QFileSystemModel* QFileSystemModel_new();
+QFileSystemModel* QFileSystemModel_new2(QObject* parent);
+void QFileSystemModel_virtbase(QFileSystemModel* src, QAbstractItemModel** outptr_QAbstractItemModel);
 QMetaObject* QFileSystemModel_MetaObject(const QFileSystemModel* self);
 void* QFileSystemModel_Metacast(QFileSystemModel* self, const char* param1);
 struct miqt_string QFileSystemModel_Tr(const char* s);

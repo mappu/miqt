@@ -144,40 +144,24 @@ public:
 
 };
 
-void QLCDNumber_new(QWidget* parent, QLCDNumber** outptr_QLCDNumber, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQLCDNumber* ret = new MiqtVirtualQLCDNumber(parent);
-	*outptr_QLCDNumber = ret;
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QLCDNumber* QLCDNumber_new(QWidget* parent) {
+	return new MiqtVirtualQLCDNumber(parent);
 }
 
-void QLCDNumber_new2(QLCDNumber** outptr_QLCDNumber, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQLCDNumber* ret = new MiqtVirtualQLCDNumber();
-	*outptr_QLCDNumber = ret;
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QLCDNumber* QLCDNumber_new2() {
+	return new MiqtVirtualQLCDNumber();
 }
 
-void QLCDNumber_new3(unsigned int numDigits, QLCDNumber** outptr_QLCDNumber, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQLCDNumber* ret = new MiqtVirtualQLCDNumber(static_cast<uint>(numDigits));
-	*outptr_QLCDNumber = ret;
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QLCDNumber* QLCDNumber_new3(unsigned int numDigits) {
+	return new MiqtVirtualQLCDNumber(static_cast<uint>(numDigits));
 }
 
-void QLCDNumber_new4(unsigned int numDigits, QWidget* parent, QLCDNumber** outptr_QLCDNumber, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQLCDNumber* ret = new MiqtVirtualQLCDNumber(static_cast<uint>(numDigits), parent);
-	*outptr_QLCDNumber = ret;
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QLCDNumber* QLCDNumber_new4(unsigned int numDigits, QWidget* parent) {
+	return new MiqtVirtualQLCDNumber(static_cast<uint>(numDigits), parent);
+}
+
+void QLCDNumber_virtbase(QLCDNumber* src, QFrame** outptr_QFrame) {
+	*outptr_QFrame = static_cast<QFrame*>(src);
 }
 
 QMetaObject* QLCDNumber_MetaObject(const QLCDNumber* self) {

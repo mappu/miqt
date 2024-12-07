@@ -37,114 +37,91 @@ func newQVector4D(h *C.QVector4D) *QVector4D {
 	if h == nil {
 		return nil
 	}
+
 	return &QVector4D{h: h}
 }
 
 // UnsafeNewQVector4D constructs the type using only unsafe pointers.
 func UnsafeNewQVector4D(h unsafe.Pointer) *QVector4D {
-	if h == nil {
-		return nil
-	}
-
-	return &QVector4D{h: (*C.QVector4D)(h)}
+	return newQVector4D((*C.QVector4D)(h))
 }
 
 // NewQVector4D constructs a new QVector4D object.
 func NewQVector4D() *QVector4D {
-	var outptr_QVector4D *C.QVector4D = nil
 
-	C.QVector4D_new(&outptr_QVector4D)
-	ret := newQVector4D(outptr_QVector4D)
+	ret := newQVector4D(C.QVector4D_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVector4D2 constructs a new QVector4D object.
 func NewQVector4D2(param1 Initialization) *QVector4D {
-	var outptr_QVector4D *C.QVector4D = nil
 
-	C.QVector4D_new2((C.int)(param1), &outptr_QVector4D)
-	ret := newQVector4D(outptr_QVector4D)
+	ret := newQVector4D(C.QVector4D_new2((C.int)(param1)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVector4D3 constructs a new QVector4D object.
 func NewQVector4D3(xpos float32, ypos float32, zpos float32, wpos float32) *QVector4D {
-	var outptr_QVector4D *C.QVector4D = nil
 
-	C.QVector4D_new3((C.float)(xpos), (C.float)(ypos), (C.float)(zpos), (C.float)(wpos), &outptr_QVector4D)
-	ret := newQVector4D(outptr_QVector4D)
+	ret := newQVector4D(C.QVector4D_new3((C.float)(xpos), (C.float)(ypos), (C.float)(zpos), (C.float)(wpos)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVector4D4 constructs a new QVector4D object.
 func NewQVector4D4(point *QPoint) *QVector4D {
-	var outptr_QVector4D *C.QVector4D = nil
 
-	C.QVector4D_new4(point.cPointer(), &outptr_QVector4D)
-	ret := newQVector4D(outptr_QVector4D)
+	ret := newQVector4D(C.QVector4D_new4(point.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVector4D5 constructs a new QVector4D object.
 func NewQVector4D5(point *QPointF) *QVector4D {
-	var outptr_QVector4D *C.QVector4D = nil
 
-	C.QVector4D_new5(point.cPointer(), &outptr_QVector4D)
-	ret := newQVector4D(outptr_QVector4D)
+	ret := newQVector4D(C.QVector4D_new5(point.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVector4D6 constructs a new QVector4D object.
 func NewQVector4D6(vector *QVector2D) *QVector4D {
-	var outptr_QVector4D *C.QVector4D = nil
 
-	C.QVector4D_new6(vector.cPointer(), &outptr_QVector4D)
-	ret := newQVector4D(outptr_QVector4D)
+	ret := newQVector4D(C.QVector4D_new6(vector.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVector4D7 constructs a new QVector4D object.
 func NewQVector4D7(vector *QVector2D, zpos float32, wpos float32) *QVector4D {
-	var outptr_QVector4D *C.QVector4D = nil
 
-	C.QVector4D_new7(vector.cPointer(), (C.float)(zpos), (C.float)(wpos), &outptr_QVector4D)
-	ret := newQVector4D(outptr_QVector4D)
+	ret := newQVector4D(C.QVector4D_new7(vector.cPointer(), (C.float)(zpos), (C.float)(wpos)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVector4D8 constructs a new QVector4D object.
 func NewQVector4D8(vector *QVector3D) *QVector4D {
-	var outptr_QVector4D *C.QVector4D = nil
 
-	C.QVector4D_new8(vector.cPointer(), &outptr_QVector4D)
-	ret := newQVector4D(outptr_QVector4D)
+	ret := newQVector4D(C.QVector4D_new8(vector.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVector4D9 constructs a new QVector4D object.
 func NewQVector4D9(vector *QVector3D, wpos float32) *QVector4D {
-	var outptr_QVector4D *C.QVector4D = nil
 
-	C.QVector4D_new9(vector.cPointer(), (C.float)(wpos), &outptr_QVector4D)
-	ret := newQVector4D(outptr_QVector4D)
+	ret := newQVector4D(C.QVector4D_new9(vector.cPointer(), (C.float)(wpos)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVector4D10 constructs a new QVector4D object.
 func NewQVector4D10(param1 *QVector4D) *QVector4D {
-	var outptr_QVector4D *C.QVector4D = nil
 
-	C.QVector4D_new10(param1.cPointer(), &outptr_QVector4D)
-	ret := newQVector4D(outptr_QVector4D)
+	ret := newQVector4D(C.QVector4D_new10(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
