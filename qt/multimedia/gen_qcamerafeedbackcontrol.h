@@ -26,6 +26,7 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif
 
+void QCameraFeedbackControl_virtbase(QCameraFeedbackControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QCameraFeedbackControl_MetaObject(const QCameraFeedbackControl* self);
 void* QCameraFeedbackControl_Metacast(QCameraFeedbackControl* self, const char* param1);
 struct miqt_string QCameraFeedbackControl_Tr(const char* s);

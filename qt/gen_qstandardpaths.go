@@ -68,16 +68,13 @@ func newQStandardPaths(h *C.QStandardPaths) *QStandardPaths {
 	if h == nil {
 		return nil
 	}
+
 	return &QStandardPaths{h: h}
 }
 
 // UnsafeNewQStandardPaths constructs the type using only unsafe pointers.
 func UnsafeNewQStandardPaths(h unsafe.Pointer) *QStandardPaths {
-	if h == nil {
-		return nil
-	}
-
-	return &QStandardPaths{h: (*C.QStandardPaths)(h)}
+	return newQStandardPaths((*C.QStandardPaths)(h))
 }
 
 func QStandardPaths_WritableLocation(typeVal QStandardPaths__StandardLocation) string {

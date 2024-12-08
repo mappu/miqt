@@ -34,8 +34,9 @@ typedef struct QObject QObject;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QNetworkConfigurationManager_new(QNetworkConfigurationManager** outptr_QNetworkConfigurationManager, QObject** outptr_QObject);
-void QNetworkConfigurationManager_new2(QObject* parent, QNetworkConfigurationManager** outptr_QNetworkConfigurationManager, QObject** outptr_QObject);
+QNetworkConfigurationManager* QNetworkConfigurationManager_new();
+QNetworkConfigurationManager* QNetworkConfigurationManager_new2(QObject* parent);
+void QNetworkConfigurationManager_virtbase(QNetworkConfigurationManager* src, QObject** outptr_QObject);
 QMetaObject* QNetworkConfigurationManager_MetaObject(const QNetworkConfigurationManager* self);
 void* QNetworkConfigurationManager_Metacast(QNetworkConfigurationManager* self, const char* param1);
 struct miqt_string QNetworkConfigurationManager_Tr(const char* s);

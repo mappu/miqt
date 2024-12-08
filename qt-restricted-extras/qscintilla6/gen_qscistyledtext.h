@@ -24,9 +24,9 @@ typedef struct QsciStyle QsciStyle;
 typedef struct QsciStyledText QsciStyledText;
 #endif
 
-void QsciStyledText_new(struct miqt_string text, int style, QsciStyledText** outptr_QsciStyledText);
-void QsciStyledText_new2(struct miqt_string text, QsciStyle* style, QsciStyledText** outptr_QsciStyledText);
-void QsciStyledText_new3(QsciStyledText* param1, QsciStyledText** outptr_QsciStyledText);
+QsciStyledText* QsciStyledText_new(struct miqt_string text, int style);
+QsciStyledText* QsciStyledText_new2(struct miqt_string text, QsciStyle* style);
+QsciStyledText* QsciStyledText_new3(QsciStyledText* param1);
 void QsciStyledText_Apply(const QsciStyledText* self, QsciScintillaBase* sci);
 struct miqt_string QsciStyledText_Text(const QsciStyledText* self);
 int QsciStyledText_Style(const QsciStyledText* self);

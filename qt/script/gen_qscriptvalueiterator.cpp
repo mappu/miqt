@@ -8,9 +8,8 @@
 #include "gen_qscriptvalueiterator.h"
 #include "_cgo_export.h"
 
-void QScriptValueIterator_new(QScriptValue* value, QScriptValueIterator** outptr_QScriptValueIterator) {
-	QScriptValueIterator* ret = new QScriptValueIterator(*value);
-	*outptr_QScriptValueIterator = ret;
+QScriptValueIterator* QScriptValueIterator_new(QScriptValue* value) {
+	return new QScriptValueIterator(*value);
 }
 
 bool QScriptValueIterator_HasNext(const QScriptValueIterator* self) {

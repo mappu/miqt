@@ -959,18 +959,16 @@ public:
 
 };
 
-void QsciLexerVHDL_new(QsciLexerVHDL** outptr_QsciLexerVHDL, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerVHDL* ret = new MiqtVirtualQsciLexerVHDL();
-	*outptr_QsciLexerVHDL = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerVHDL* QsciLexerVHDL_new() {
+	return new MiqtVirtualQsciLexerVHDL();
 }
 
-void QsciLexerVHDL_new2(QObject* parent, QsciLexerVHDL** outptr_QsciLexerVHDL, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerVHDL* ret = new MiqtVirtualQsciLexerVHDL(parent);
-	*outptr_QsciLexerVHDL = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerVHDL* QsciLexerVHDL_new2(QObject* parent) {
+	return new MiqtVirtualQsciLexerVHDL(parent);
+}
+
+void QsciLexerVHDL_virtbase(QsciLexerVHDL* src, QsciLexer** outptr_QsciLexer) {
+	*outptr_QsciLexer = static_cast<QsciLexer*>(src);
 }
 
 QMetaObject* QsciLexerVHDL_MetaObject(const QsciLexerVHDL* self) {

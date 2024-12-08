@@ -261,17 +261,17 @@ public:
 
 };
 
-void QsciMacro_new(QsciScintilla* parent, QsciMacro** outptr_QsciMacro, QObject** outptr_QObject) {
-	MiqtVirtualQsciMacro* ret = new MiqtVirtualQsciMacro(parent);
-	*outptr_QsciMacro = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciMacro* QsciMacro_new(QsciScintilla* parent) {
+	return new MiqtVirtualQsciMacro(parent);
 }
 
-void QsciMacro_new2(struct miqt_string asc, QsciScintilla* parent, QsciMacro** outptr_QsciMacro, QObject** outptr_QObject) {
+QsciMacro* QsciMacro_new2(struct miqt_string asc, QsciScintilla* parent) {
 	QString asc_QString = QString::fromUtf8(asc.data, asc.len);
-	MiqtVirtualQsciMacro* ret = new MiqtVirtualQsciMacro(asc_QString, parent);
-	*outptr_QsciMacro = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQsciMacro(asc_QString, parent);
+}
+
+void QsciMacro_virtbase(QsciMacro* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QsciMacro_MetaObject(const QsciMacro* self) {

@@ -35,58 +35,40 @@ func (this *QColumnView) UnsafePointer() unsafe.Pointer {
 }
 
 // newQColumnView constructs the type using only CGO pointers.
-func newQColumnView(h *C.QColumnView, h_QAbstractItemView *C.QAbstractItemView, h_QAbstractScrollArea *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QColumnView {
+func newQColumnView(h *C.QColumnView) *QColumnView {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractItemView *C.QAbstractItemView = nil
+	C.QColumnView_virtbase(h, &outptr_QAbstractItemView)
+
 	return &QColumnView{h: h,
-		QAbstractItemView: newQAbstractItemView(h_QAbstractItemView, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+		QAbstractItemView: newQAbstractItemView(outptr_QAbstractItemView)}
 }
 
 // UnsafeNewQColumnView constructs the type using only unsafe pointers.
-func UnsafeNewQColumnView(h unsafe.Pointer, h_QAbstractItemView unsafe.Pointer, h_QAbstractScrollArea unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QColumnView {
-	if h == nil {
-		return nil
-	}
-
-	return &QColumnView{h: (*C.QColumnView)(h),
-		QAbstractItemView: UnsafeNewQAbstractItemView(h_QAbstractItemView, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQColumnView(h unsafe.Pointer) *QColumnView {
+	return newQColumnView((*C.QColumnView)(h))
 }
 
 // NewQColumnView constructs a new QColumnView object.
 func NewQColumnView(parent *QWidget) *QColumnView {
-	var outptr_QColumnView *C.QColumnView = nil
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QColumnView_new(parent.cPointer(), &outptr_QColumnView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQColumnView(outptr_QColumnView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQColumnView(C.QColumnView_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQColumnView2 constructs a new QColumnView object.
 func NewQColumnView2() *QColumnView {
-	var outptr_QColumnView *C.QColumnView = nil
-	var outptr_QAbstractItemView *C.QAbstractItemView = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QColumnView_new2(&outptr_QColumnView, &outptr_QAbstractItemView, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQColumnView(outptr_QColumnView, outptr_QAbstractItemView, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQColumnView(C.QColumnView_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QColumnView) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QColumnView_MetaObject(this.h)))
+	return newQMetaObject(C.QColumnView_MetaObject(this.h))
 }
 
 func (this *QColumnView) Metacast(param1 string) unsafe.Pointer {
@@ -119,14 +101,13 @@ func miqt_exec_callback_QColumnView_UpdatePreviewWidget(cb C.intptr_t, index *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	gofunc(slotval1)
 }
 
 func (this *QColumnView) IndexAt(point *QPoint) *QModelIndex {
-	_ret := C.QColumnView_IndexAt(this.h, point.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QColumnView_IndexAt(this.h, point.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -136,15 +117,13 @@ func (this *QColumnView) ScrollTo(index *QModelIndex, hint QAbstractItemView__Sc
 }
 
 func (this *QColumnView) SizeHint() *QSize {
-	_ret := C.QColumnView_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QColumnView_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColumnView) VisualRect(index *QModelIndex) *QRect {
-	_ret := C.QColumnView_VisualRect(this.h, index.cPointer())
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QColumnView_VisualRect(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -174,7 +153,7 @@ func (this *QColumnView) ResizeGripsVisible() bool {
 }
 
 func (this *QColumnView) PreviewWidget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QColumnView_PreviewWidget(this.h)), nil, nil)
+	return newQWidget(C.QColumnView_PreviewWidget(this.h))
 }
 
 func (this *QColumnView) SetPreviewWidget(widget *QWidget) {
@@ -225,13 +204,15 @@ func QColumnView_Tr3(s string, c string, n int) string {
 
 func (this *QColumnView) callVirtualBase_IndexAt(point *QPoint) *QModelIndex {
 
-	_ret := C.QColumnView_virtualbase_IndexAt(unsafe.Pointer(this.h), point.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QColumnView_virtualbase_IndexAt(unsafe.Pointer(this.h), point.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QColumnView) OnIndexAt(slot func(super func(point *QPoint) *QModelIndex, point *QPoint) *QModelIndex) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_IndexAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -243,7 +224,7 @@ func miqt_exec_callback_QColumnView_IndexAt(self *C.QColumnView, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(point))
+	slotval1 := newQPoint(point)
 
 	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_IndexAt, slotval1)
 
@@ -257,6 +238,9 @@ func (this *QColumnView) callVirtualBase_ScrollTo(index *QModelIndex, hint QAbst
 
 }
 func (this *QColumnView) OnScrollTo(slot func(super func(index *QModelIndex, hint QAbstractItemView__ScrollHint), index *QModelIndex, hint QAbstractItemView__ScrollHint)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_ScrollTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -268,7 +252,8 @@ func miqt_exec_callback_QColumnView_ScrollTo(self *C.QColumnView, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
+
 	slotval2 := (QAbstractItemView__ScrollHint)(hint)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_ScrollTo, slotval1, slotval2)
@@ -277,13 +262,15 @@ func miqt_exec_callback_QColumnView_ScrollTo(self *C.QColumnView, cb C.intptr_t,
 
 func (this *QColumnView) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QColumnView_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QColumnView_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QColumnView) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -302,13 +289,15 @@ func miqt_exec_callback_QColumnView_SizeHint(self *C.QColumnView, cb C.intptr_t)
 
 func (this *QColumnView) callVirtualBase_VisualRect(index *QModelIndex) *QRect {
 
-	_ret := C.QColumnView_virtualbase_VisualRect(unsafe.Pointer(this.h), index.cPointer())
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QColumnView_virtualbase_VisualRect(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QColumnView) OnVisualRect(slot func(super func(index *QModelIndex) *QRect, index *QModelIndex) *QRect) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_VisualRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -320,7 +309,7 @@ func miqt_exec_callback_QColumnView_VisualRect(self *C.QColumnView, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_VisualRect, slotval1)
 
@@ -334,6 +323,9 @@ func (this *QColumnView) callVirtualBase_SetModel(model *QAbstractItemModel) {
 
 }
 func (this *QColumnView) OnSetModel(slot func(super func(model *QAbstractItemModel), model *QAbstractItemModel)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_SetModel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -345,7 +337,7 @@ func miqt_exec_callback_QColumnView_SetModel(self *C.QColumnView, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAbstractItemModel(unsafe.Pointer(model), nil)
+	slotval1 := newQAbstractItemModel(model)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_SetModel, slotval1)
 
@@ -357,6 +349,9 @@ func (this *QColumnView) callVirtualBase_SetSelectionModel(selectionModel *QItem
 
 }
 func (this *QColumnView) OnSetSelectionModel(slot func(super func(selectionModel *QItemSelectionModel), selectionModel *QItemSelectionModel)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_SetSelectionModel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -368,7 +363,7 @@ func miqt_exec_callback_QColumnView_SetSelectionModel(self *C.QColumnView, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQItemSelectionModel(unsafe.Pointer(selectionModel), nil)
+	slotval1 := newQItemSelectionModel(selectionModel)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_SetSelectionModel, slotval1)
 
@@ -380,6 +375,9 @@ func (this *QColumnView) callVirtualBase_SetRootIndex(index *QModelIndex) {
 
 }
 func (this *QColumnView) OnSetRootIndex(slot func(super func(index *QModelIndex), index *QModelIndex)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_SetRootIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -391,7 +389,7 @@ func miqt_exec_callback_QColumnView_SetRootIndex(self *C.QColumnView, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_SetRootIndex, slotval1)
 
@@ -403,6 +401,9 @@ func (this *QColumnView) callVirtualBase_SelectAll() {
 
 }
 func (this *QColumnView) OnSelectAll(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_SelectAll(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -423,6 +424,9 @@ func (this *QColumnView) callVirtualBase_IsIndexHidden(index *QModelIndex) bool 
 
 }
 func (this *QColumnView) OnIsIndexHidden(slot func(super func(index *QModelIndex) bool, index *QModelIndex) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_IsIndexHidden(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -434,7 +438,7 @@ func miqt_exec_callback_QColumnView_IsIndexHidden(self *C.QColumnView, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_IsIndexHidden, slotval1)
 
@@ -444,13 +448,15 @@ func miqt_exec_callback_QColumnView_IsIndexHidden(self *C.QColumnView, cb C.intp
 
 func (this *QColumnView) callVirtualBase_MoveCursor(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex {
 
-	_ret := C.QColumnView_virtualbase_MoveCursor(unsafe.Pointer(this.h), (C.int)(cursorAction), (C.int)(modifiers))
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QColumnView_virtualbase_MoveCursor(unsafe.Pointer(this.h), (C.int)(cursorAction), (C.int)(modifiers)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QColumnView) OnMoveCursor(slot func(super func(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex, cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_MoveCursor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -478,6 +484,9 @@ func (this *QColumnView) callVirtualBase_ResizeEvent(event *QResizeEvent) {
 
 }
 func (this *QColumnView) OnResizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -489,7 +498,7 @@ func miqt_exec_callback_QColumnView_ResizeEvent(self *C.QColumnView, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQResizeEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -501,6 +510,9 @@ func (this *QColumnView) callVirtualBase_SetSelection(rect *QRect, command QItem
 
 }
 func (this *QColumnView) OnSetSelection(slot func(super func(rect *QRect, command QItemSelectionModel__SelectionFlag), rect *QRect, command QItemSelectionModel__SelectionFlag)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_SetSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -512,7 +524,8 @@ func miqt_exec_callback_QColumnView_SetSelection(self *C.QColumnView, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRect(unsafe.Pointer(rect))
+	slotval1 := newQRect(rect)
+
 	slotval2 := (QItemSelectionModel__SelectionFlag)(command)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_SetSelection, slotval1, slotval2)
@@ -521,13 +534,15 @@ func miqt_exec_callback_QColumnView_SetSelection(self *C.QColumnView, cb C.intpt
 
 func (this *QColumnView) callVirtualBase_VisualRegionForSelection(selection *QItemSelection) *QRegion {
 
-	_ret := C.QColumnView_virtualbase_VisualRegionForSelection(unsafe.Pointer(this.h), selection.cPointer())
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QColumnView_virtualbase_VisualRegionForSelection(unsafe.Pointer(this.h), selection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QColumnView) OnVisualRegionForSelection(slot func(super func(selection *QItemSelection) *QRegion, selection *QItemSelection) *QRegion) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_VisualRegionForSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -539,7 +554,7 @@ func miqt_exec_callback_QColumnView_VisualRegionForSelection(self *C.QColumnView
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selection))
+	slotval1 := newQItemSelection(selection)
 
 	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_VisualRegionForSelection, slotval1)
 
@@ -553,6 +568,9 @@ func (this *QColumnView) callVirtualBase_HorizontalOffset() int {
 
 }
 func (this *QColumnView) OnHorizontalOffset(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_HorizontalOffset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -575,6 +593,9 @@ func (this *QColumnView) callVirtualBase_VerticalOffset() int {
 
 }
 func (this *QColumnView) OnVerticalOffset(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_VerticalOffset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -597,6 +618,9 @@ func (this *QColumnView) callVirtualBase_RowsInserted(parent *QModelIndex, start
 
 }
 func (this *QColumnView) OnRowsInserted(slot func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_RowsInserted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -608,7 +632,8 @@ func miqt_exec_callback_QColumnView_RowsInserted(self *C.QColumnView, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
+
 	slotval2 := (int)(start)
 
 	slotval3 := (int)(end)
@@ -623,6 +648,9 @@ func (this *QColumnView) callVirtualBase_CurrentChanged(current *QModelIndex, pr
 
 }
 func (this *QColumnView) OnCurrentChanged(slot func(super func(current *QModelIndex, previous *QModelIndex), current *QModelIndex, previous *QModelIndex)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_CurrentChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -634,8 +662,9 @@ func miqt_exec_callback_QColumnView_CurrentChanged(self *C.QColumnView, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(current))
-	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(previous))
+	slotval1 := newQModelIndex(current)
+
+	slotval2 := newQModelIndex(previous)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_CurrentChanged, slotval1, slotval2)
 
@@ -647,6 +676,9 @@ func (this *QColumnView) callVirtualBase_ScrollContentsBy(dx int, dy int) {
 
 }
 func (this *QColumnView) OnScrollContentsBy(slot func(super func(dx int, dy int), dx int, dy int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_ScrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -668,9 +700,13 @@ func miqt_exec_callback_QColumnView_ScrollContentsBy(self *C.QColumnView, cb C.i
 
 func (this *QColumnView) callVirtualBase_CreateColumn(rootIndex *QModelIndex) *QAbstractItemView {
 
-	return UnsafeNewQAbstractItemView(unsafe.Pointer(C.QColumnView_virtualbase_CreateColumn(unsafe.Pointer(this.h), rootIndex.cPointer())), nil, nil, nil, nil, nil)
+	return newQAbstractItemView(C.QColumnView_virtualbase_CreateColumn(unsafe.Pointer(this.h), rootIndex.cPointer()))
+
 }
 func (this *QColumnView) OnCreateColumn(slot func(super func(rootIndex *QModelIndex) *QAbstractItemView, rootIndex *QModelIndex) *QAbstractItemView) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_CreateColumn(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -682,7 +718,7 @@ func miqt_exec_callback_QColumnView_CreateColumn(self *C.QColumnView, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(rootIndex))
+	slotval1 := newQModelIndex(rootIndex)
 
 	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_CreateColumn, slotval1)
 
@@ -700,6 +736,9 @@ func (this *QColumnView) callVirtualBase_KeyboardSearch(search string) {
 
 }
 func (this *QColumnView) OnKeyboardSearch(slot func(super func(search string), search string)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_KeyboardSearch(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -726,6 +765,9 @@ func (this *QColumnView) callVirtualBase_SizeHintForRow(row int) int {
 
 }
 func (this *QColumnView) OnSizeHintForRow(slot func(super func(row int) int, row int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_SizeHintForRow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -751,6 +793,9 @@ func (this *QColumnView) callVirtualBase_SizeHintForColumn(column int) int {
 
 }
 func (this *QColumnView) OnSizeHintForColumn(slot func(super func(column int) int, column int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_SizeHintForColumn(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -772,9 +817,13 @@ func miqt_exec_callback_QColumnView_SizeHintForColumn(self *C.QColumnView, cb C.
 
 func (this *QColumnView) callVirtualBase_ItemDelegateForIndex(index *QModelIndex) *QAbstractItemDelegate {
 
-	return UnsafeNewQAbstractItemDelegate(unsafe.Pointer(C.QColumnView_virtualbase_ItemDelegateForIndex(unsafe.Pointer(this.h), index.cPointer())), nil)
+	return newQAbstractItemDelegate(C.QColumnView_virtualbase_ItemDelegateForIndex(unsafe.Pointer(this.h), index.cPointer()))
+
 }
 func (this *QColumnView) OnItemDelegateForIndex(slot func(super func(index *QModelIndex) *QAbstractItemDelegate, index *QModelIndex) *QAbstractItemDelegate) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_ItemDelegateForIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -786,7 +835,7 @@ func miqt_exec_callback_QColumnView_ItemDelegateForIndex(self *C.QColumnView, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_ItemDelegateForIndex, slotval1)
 
@@ -796,13 +845,15 @@ func miqt_exec_callback_QColumnView_ItemDelegateForIndex(self *C.QColumnView, cb
 
 func (this *QColumnView) callVirtualBase_InputMethodQuery(query InputMethodQuery) *QVariant {
 
-	_ret := C.QColumnView_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QColumnView_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QColumnView) OnInputMethodQuery(slot func(super func(query InputMethodQuery) *QVariant, query InputMethodQuery) *QVariant) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -828,6 +879,9 @@ func (this *QColumnView) callVirtualBase_Reset() {
 
 }
 func (this *QColumnView) OnReset(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_Reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -848,6 +902,9 @@ func (this *QColumnView) callVirtualBase_DoItemsLayout() {
 
 }
 func (this *QColumnView) OnDoItemsLayout(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_DoItemsLayout(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -874,6 +931,9 @@ func (this *QColumnView) callVirtualBase_DataChanged(topLeft *QModelIndex, botto
 
 }
 func (this *QColumnView) OnDataChanged(slot func(super func(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int), topLeft *QModelIndex, bottomRight *QModelIndex, roles []int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_DataChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -885,8 +945,10 @@ func miqt_exec_callback_QColumnView_DataChanged(self *C.QColumnView, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(topLeft))
-	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(bottomRight))
+	slotval1 := newQModelIndex(topLeft)
+
+	slotval2 := newQModelIndex(bottomRight)
+
 	var roles_ma C.struct_miqt_array = roles
 	roles_ret := make([]int, int(roles_ma.len))
 	roles_outCast := (*[0xffff]C.int)(unsafe.Pointer(roles_ma.data)) // hey ya
@@ -905,6 +967,9 @@ func (this *QColumnView) callVirtualBase_RowsAboutToBeRemoved(parent *QModelInde
 
 }
 func (this *QColumnView) OnRowsAboutToBeRemoved(slot func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_RowsAboutToBeRemoved(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -916,7 +981,8 @@ func miqt_exec_callback_QColumnView_RowsAboutToBeRemoved(self *C.QColumnView, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
+
 	slotval2 := (int)(start)
 
 	slotval3 := (int)(end)
@@ -931,6 +997,9 @@ func (this *QColumnView) callVirtualBase_SelectionChanged(selected *QItemSelecti
 
 }
 func (this *QColumnView) OnSelectionChanged(slot func(super func(selected *QItemSelection, deselected *QItemSelection), selected *QItemSelection, deselected *QItemSelection)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_SelectionChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -942,8 +1011,9 @@ func miqt_exec_callback_QColumnView_SelectionChanged(self *C.QColumnView, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selected))
-	slotval2 := UnsafeNewQItemSelection(unsafe.Pointer(deselected))
+	slotval1 := newQItemSelection(selected)
+
+	slotval2 := newQItemSelection(deselected)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_SelectionChanged, slotval1, slotval2)
 
@@ -955,6 +1025,9 @@ func (this *QColumnView) callVirtualBase_UpdateEditorData() {
 
 }
 func (this *QColumnView) OnUpdateEditorData(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_UpdateEditorData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -975,6 +1048,9 @@ func (this *QColumnView) callVirtualBase_UpdateEditorGeometries() {
 
 }
 func (this *QColumnView) OnUpdateEditorGeometries(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_UpdateEditorGeometries(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -995,6 +1071,9 @@ func (this *QColumnView) callVirtualBase_UpdateGeometries() {
 
 }
 func (this *QColumnView) OnUpdateGeometries(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_UpdateGeometries(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1015,6 +1094,9 @@ func (this *QColumnView) callVirtualBase_VerticalScrollbarAction(action int) {
 
 }
 func (this *QColumnView) OnVerticalScrollbarAction(slot func(super func(action int), action int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_VerticalScrollbarAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1038,6 +1120,9 @@ func (this *QColumnView) callVirtualBase_HorizontalScrollbarAction(action int) {
 
 }
 func (this *QColumnView) OnHorizontalScrollbarAction(slot func(super func(action int), action int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_HorizontalScrollbarAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1061,6 +1146,9 @@ func (this *QColumnView) callVirtualBase_VerticalScrollbarValueChanged(value int
 
 }
 func (this *QColumnView) OnVerticalScrollbarValueChanged(slot func(super func(value int), value int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_VerticalScrollbarValueChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1084,6 +1172,9 @@ func (this *QColumnView) callVirtualBase_HorizontalScrollbarValueChanged(value i
 
 }
 func (this *QColumnView) OnHorizontalScrollbarValueChanged(slot func(super func(value int), value int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_HorizontalScrollbarValueChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1107,6 +1198,9 @@ func (this *QColumnView) callVirtualBase_CloseEditor(editor *QWidget, hint QAbst
 
 }
 func (this *QColumnView) OnCloseEditor(slot func(super func(editor *QWidget, hint QAbstractItemDelegate__EndEditHint), editor *QWidget, hint QAbstractItemDelegate__EndEditHint)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_CloseEditor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1118,7 +1212,8 @@ func miqt_exec_callback_QColumnView_CloseEditor(self *C.QColumnView, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(editor), nil, nil)
+	slotval1 := newQWidget(editor)
+
 	slotval2 := (QAbstractItemDelegate__EndEditHint)(hint)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_CloseEditor, slotval1, slotval2)
@@ -1131,6 +1226,9 @@ func (this *QColumnView) callVirtualBase_CommitData(editor *QWidget) {
 
 }
 func (this *QColumnView) OnCommitData(slot func(super func(editor *QWidget), editor *QWidget)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_CommitData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1142,7 +1240,7 @@ func miqt_exec_callback_QColumnView_CommitData(self *C.QColumnView, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(editor), nil, nil)
+	slotval1 := newQWidget(editor)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_CommitData, slotval1)
 
@@ -1154,6 +1252,9 @@ func (this *QColumnView) callVirtualBase_EditorDestroyed(editor *QObject) {
 
 }
 func (this *QColumnView) OnEditorDestroyed(slot func(super func(editor *QObject), editor *QObject)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_EditorDestroyed(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1165,7 +1266,7 @@ func miqt_exec_callback_QColumnView_EditorDestroyed(self *C.QColumnView, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(editor))
+	slotval1 := newQObject(editor)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_EditorDestroyed, slotval1)
 
@@ -1177,8 +1278,7 @@ func (this *QColumnView) callVirtualBase_SelectedIndexes() []QModelIndex {
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -1186,6 +1286,9 @@ func (this *QColumnView) callVirtualBase_SelectedIndexes() []QModelIndex {
 
 }
 func (this *QColumnView) OnSelectedIndexes(slot func(super func() []QModelIndex) []QModelIndex) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_SelectedIndexes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1214,6 +1317,9 @@ func (this *QColumnView) callVirtualBase_Edit2(index *QModelIndex, trigger QAbst
 
 }
 func (this *QColumnView) OnEdit2(slot func(super func(index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool, index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_Edit2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1225,10 +1331,11 @@ func miqt_exec_callback_QColumnView_Edit2(self *C.QColumnView, cb C.intptr_t, in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
+
 	slotval2 := (QAbstractItemView__EditTrigger)(trigger)
 
-	slotval3 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval3 := newQEvent(event)
 
 	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_Edit2, slotval1, slotval2, slotval3)
 
@@ -1242,6 +1349,9 @@ func (this *QColumnView) callVirtualBase_SelectionCommand(index *QModelIndex, ev
 
 }
 func (this *QColumnView) OnSelectionCommand(slot func(super func(index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag, index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_SelectionCommand(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1253,8 +1363,9 @@ func miqt_exec_callback_QColumnView_SelectionCommand(self *C.QColumnView, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQModelIndex(index)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_SelectionCommand, slotval1, slotval2)
 
@@ -1268,6 +1379,9 @@ func (this *QColumnView) callVirtualBase_StartDrag(supportedActions DropAction) 
 
 }
 func (this *QColumnView) OnStartDrag(slot func(super func(supportedActions DropAction), supportedActions DropAction)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_StartDrag(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1291,6 +1405,9 @@ func (this *QColumnView) callVirtualBase_InitViewItemOption(option *QStyleOption
 
 }
 func (this *QColumnView) OnInitViewItemOption(slot func(super func(option *QStyleOptionViewItem), option *QStyleOptionViewItem)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_InitViewItemOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1302,7 +1419,7 @@ func miqt_exec_callback_QColumnView_InitViewItemOption(self *C.QColumnView, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStyleOptionViewItem(unsafe.Pointer(option), nil)
+	slotval1 := newQStyleOptionViewItem(option)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_InitViewItemOption, slotval1)
 
@@ -1314,6 +1431,9 @@ func (this *QColumnView) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
 }
 func (this *QColumnView) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1339,6 +1459,9 @@ func (this *QColumnView) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QColumnView) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1350,7 +1473,7 @@ func miqt_exec_callback_QColumnView_Event(self *C.QColumnView, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_Event, slotval1)
 
@@ -1364,6 +1487,9 @@ func (this *QColumnView) callVirtualBase_ViewportEvent(event *QEvent) bool {
 
 }
 func (this *QColumnView) OnViewportEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_ViewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1375,7 +1501,7 @@ func miqt_exec_callback_QColumnView_ViewportEvent(self *C.QColumnView, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_ViewportEvent, slotval1)
 
@@ -1389,6 +1515,9 @@ func (this *QColumnView) callVirtualBase_MousePressEvent(event *QMouseEvent) {
 
 }
 func (this *QColumnView) OnMousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1400,7 +1529,7 @@ func miqt_exec_callback_QColumnView_MousePressEvent(self *C.QColumnView, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -1412,6 +1541,9 @@ func (this *QColumnView) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
 
 }
 func (this *QColumnView) OnMouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1423,7 +1555,7 @@ func miqt_exec_callback_QColumnView_MouseMoveEvent(self *C.QColumnView, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -1435,6 +1567,9 @@ func (this *QColumnView) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
 
 }
 func (this *QColumnView) OnMouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1446,7 +1581,7 @@ func miqt_exec_callback_QColumnView_MouseReleaseEvent(self *C.QColumnView, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -1458,6 +1593,9 @@ func (this *QColumnView) callVirtualBase_MouseDoubleClickEvent(event *QMouseEven
 
 }
 func (this *QColumnView) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1469,7 +1607,7 @@ func miqt_exec_callback_QColumnView_MouseDoubleClickEvent(self *C.QColumnView, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -1481,6 +1619,9 @@ func (this *QColumnView) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) 
 
 }
 func (this *QColumnView) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1492,7 +1633,7 @@ func miqt_exec_callback_QColumnView_DragEnterEvent(self *C.QColumnView, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragEnterEvent(unsafe.Pointer(event), nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -1504,6 +1645,9 @@ func (this *QColumnView) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
 
 }
 func (this *QColumnView) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1515,7 +1659,7 @@ func miqt_exec_callback_QColumnView_DragMoveEvent(self *C.QColumnView, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQDragMoveEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1527,6 +1671,9 @@ func (this *QColumnView) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) 
 
 }
 func (this *QColumnView) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1538,7 +1685,7 @@ func miqt_exec_callback_QColumnView_DragLeaveEvent(self *C.QColumnView, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragLeaveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDragLeaveEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1550,6 +1697,9 @@ func (this *QColumnView) callVirtualBase_DropEvent(event *QDropEvent) {
 
 }
 func (this *QColumnView) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1561,7 +1711,7 @@ func miqt_exec_callback_QColumnView_DropEvent(self *C.QColumnView, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDropEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1573,6 +1723,9 @@ func (this *QColumnView) callVirtualBase_FocusInEvent(event *QFocusEvent) {
 
 }
 func (this *QColumnView) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1584,7 +1737,7 @@ func miqt_exec_callback_QColumnView_FocusInEvent(self *C.QColumnView, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -1596,6 +1749,9 @@ func (this *QColumnView) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
 
 }
 func (this *QColumnView) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1607,7 +1763,7 @@ func miqt_exec_callback_QColumnView_FocusOutEvent(self *C.QColumnView, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -1619,6 +1775,9 @@ func (this *QColumnView) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
 
 }
 func (this *QColumnView) OnKeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1630,7 +1789,7 @@ func miqt_exec_callback_QColumnView_KeyPressEvent(self *C.QColumnView, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -1642,6 +1801,9 @@ func (this *QColumnView) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QColumnView) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1653,7 +1815,7 @@ func miqt_exec_callback_QColumnView_TimerEvent(self *C.QColumnView, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -1665,6 +1827,9 @@ func (this *QColumnView) callVirtualBase_InputMethodEvent(event *QInputMethodEve
 
 }
 func (this *QColumnView) OnInputMethodEvent(slot func(super func(event *QInputMethodEvent), event *QInputMethodEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1676,7 +1841,7 @@ func miqt_exec_callback_QColumnView_InputMethodEvent(self *C.QColumnView, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQInputMethodEvent(event)
 
 	gofunc((&QColumnView{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -1688,6 +1853,9 @@ func (this *QColumnView) callVirtualBase_EventFilter(object *QObject, event *QEv
 
 }
 func (this *QColumnView) OnEventFilter(slot func(super func(object *QObject, event *QEvent) bool, object *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1699,8 +1867,9 @@ func miqt_exec_callback_QColumnView_EventFilter(self *C.QColumnView, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(object))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(object)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -1710,13 +1879,15 @@ func miqt_exec_callback_QColumnView_EventFilter(self *C.QColumnView, cb C.intptr
 
 func (this *QColumnView) callVirtualBase_ViewportSizeHint() *QSize {
 
-	_ret := C.QColumnView_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QColumnView_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QColumnView) OnViewportSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QColumnView_override_virtual_ViewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

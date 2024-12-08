@@ -382,40 +382,24 @@ public:
 
 };
 
-void QFontDialog_new(QWidget* parent, QFontDialog** outptr_QFontDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQFontDialog* ret = new MiqtVirtualQFontDialog(parent);
-	*outptr_QFontDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QFontDialog* QFontDialog_new(QWidget* parent) {
+	return new MiqtVirtualQFontDialog(parent);
 }
 
-void QFontDialog_new2(QFontDialog** outptr_QFontDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQFontDialog* ret = new MiqtVirtualQFontDialog();
-	*outptr_QFontDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QFontDialog* QFontDialog_new2() {
+	return new MiqtVirtualQFontDialog();
 }
 
-void QFontDialog_new3(QFont* initial, QFontDialog** outptr_QFontDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQFontDialog* ret = new MiqtVirtualQFontDialog(*initial);
-	*outptr_QFontDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QFontDialog* QFontDialog_new3(QFont* initial) {
+	return new MiqtVirtualQFontDialog(*initial);
 }
 
-void QFontDialog_new4(QFont* initial, QWidget* parent, QFontDialog** outptr_QFontDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQFontDialog* ret = new MiqtVirtualQFontDialog(*initial, parent);
-	*outptr_QFontDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QFontDialog* QFontDialog_new4(QFont* initial, QWidget* parent) {
+	return new MiqtVirtualQFontDialog(*initial, parent);
+}
+
+void QFontDialog_virtbase(QFontDialog* src, QDialog** outptr_QDialog) {
+	*outptr_QDialog = static_cast<QDialog*>(src);
 }
 
 QMetaObject* QFontDialog_MetaObject(const QFontDialog* self) {

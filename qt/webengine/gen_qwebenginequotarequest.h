@@ -22,8 +22,8 @@ typedef struct QUrl QUrl;
 typedef struct QWebEngineQuotaRequest QWebEngineQuotaRequest;
 #endif
 
-void QWebEngineQuotaRequest_new(QWebEngineQuotaRequest** outptr_QWebEngineQuotaRequest);
-void QWebEngineQuotaRequest_new2(QWebEngineQuotaRequest* param1, QWebEngineQuotaRequest** outptr_QWebEngineQuotaRequest);
+QWebEngineQuotaRequest* QWebEngineQuotaRequest_new();
+QWebEngineQuotaRequest* QWebEngineQuotaRequest_new2(QWebEngineQuotaRequest* param1);
 void QWebEngineQuotaRequest_Accept(QWebEngineQuotaRequest* self);
 void QWebEngineQuotaRequest_Reject(QWebEngineQuotaRequest* self);
 QUrl* QWebEngineQuotaRequest_Origin(const QWebEngineQuotaRequest* self);

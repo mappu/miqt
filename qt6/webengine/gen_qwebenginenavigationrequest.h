@@ -26,6 +26,7 @@ typedef struct QUrl QUrl;
 typedef struct QWebEngineNavigationRequest QWebEngineNavigationRequest;
 #endif
 
+void QWebEngineNavigationRequest_virtbase(QWebEngineNavigationRequest* src, QObject** outptr_QObject);
 QMetaObject* QWebEngineNavigationRequest_MetaObject(const QWebEngineNavigationRequest* self);
 void* QWebEngineNavigationRequest_Metacast(QWebEngineNavigationRequest* self, const char* param1);
 struct miqt_string QWebEngineNavigationRequest_Tr(const char* s);

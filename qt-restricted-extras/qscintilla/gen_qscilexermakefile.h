@@ -34,8 +34,9 @@ typedef struct QsciLexerMakefile QsciLexerMakefile;
 typedef struct QsciScintilla QsciScintilla;
 #endif
 
-void QsciLexerMakefile_new(QsciLexerMakefile** outptr_QsciLexerMakefile, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerMakefile_new2(QObject* parent, QsciLexerMakefile** outptr_QsciLexerMakefile, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerMakefile* QsciLexerMakefile_new();
+QsciLexerMakefile* QsciLexerMakefile_new2(QObject* parent);
+void QsciLexerMakefile_virtbase(QsciLexerMakefile* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerMakefile_MetaObject(const QsciLexerMakefile* self);
 void* QsciLexerMakefile_Metacast(QsciLexerMakefile* self, const char* param1);
 struct miqt_string QsciLexerMakefile_Tr(const char* s);

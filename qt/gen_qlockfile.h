@@ -20,7 +20,7 @@ class QLockFile;
 typedef struct QLockFile QLockFile;
 #endif
 
-void QLockFile_new(struct miqt_string fileName, QLockFile** outptr_QLockFile);
+QLockFile* QLockFile_new(struct miqt_string fileName);
 bool QLockFile_Lock(QLockFile* self);
 bool QLockFile_TryLock(QLockFile* self);
 void QLockFile_Unlock(QLockFile* self);

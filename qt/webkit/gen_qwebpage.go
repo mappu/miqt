@@ -228,42 +228,34 @@ func (this *QWebPage) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebPage constructs the type using only CGO pointers.
-func newQWebPage(h *C.QWebPage, h_QObject *C.QObject) *QWebPage {
+func newQWebPage(h *C.QWebPage) *QWebPage {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebPage_virtbase(h, &outptr_QObject)
+
 	return &QWebPage{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebPage constructs the type using only unsafe pointers.
-func UnsafeNewQWebPage(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebPage {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebPage{h: (*C.QWebPage)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebPage(h unsafe.Pointer) *QWebPage {
+	return newQWebPage((*C.QWebPage)(h))
 }
 
 // NewQWebPage constructs a new QWebPage object.
 func NewQWebPage() *QWebPage {
-	var outptr_QWebPage *C.QWebPage = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebPage_new(&outptr_QWebPage, &outptr_QObject)
-	ret := newQWebPage(outptr_QWebPage, outptr_QObject)
+	ret := newQWebPage(C.QWebPage_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebPage2 constructs a new QWebPage object.
 func NewQWebPage2(parent *qt.QObject) *QWebPage {
-	var outptr_QWebPage *C.QWebPage = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebPage_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QWebPage, &outptr_QObject)
-	ret := newQWebPage(outptr_QWebPage, outptr_QObject)
+	ret := newQWebPage(C.QWebPage_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -297,23 +289,23 @@ func QWebPage_TrUtf8(s string) string {
 }
 
 func (this *QWebPage) MainFrame() *QWebFrame {
-	return UnsafeNewQWebFrame(unsafe.Pointer(C.QWebPage_MainFrame(this.h)), nil)
+	return newQWebFrame(C.QWebPage_MainFrame(this.h))
 }
 
 func (this *QWebPage) CurrentFrame() *QWebFrame {
-	return UnsafeNewQWebFrame(unsafe.Pointer(C.QWebPage_CurrentFrame(this.h)), nil)
+	return newQWebFrame(C.QWebPage_CurrentFrame(this.h))
 }
 
 func (this *QWebPage) FrameAt(pos *qt.QPoint) *QWebFrame {
-	return UnsafeNewQWebFrame(unsafe.Pointer(C.QWebPage_FrameAt(this.h, (*C.QPoint)(pos.UnsafePointer()))), nil)
+	return newQWebFrame(C.QWebPage_FrameAt(this.h, (*C.QPoint)(pos.UnsafePointer())))
 }
 
 func (this *QWebPage) History() *QWebHistory {
-	return UnsafeNewQWebHistory(unsafe.Pointer(C.QWebPage_History(this.h)))
+	return newQWebHistory(C.QWebPage_History(this.h))
 }
 
 func (this *QWebPage) Settings() *QWebSettings {
-	return UnsafeNewQWebSettings(unsafe.Pointer(C.QWebPage_Settings(this.h)))
+	return newQWebSettings(C.QWebPage_Settings(this.h))
 }
 
 func (this *QWebPage) SetView(view *qt.QWidget) {
@@ -321,7 +313,7 @@ func (this *QWebPage) SetView(view *qt.QWidget) {
 }
 
 func (this *QWebPage) View() *qt.QWidget {
-	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QWebPage_View(this.h)), nil, nil)
+	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QWebPage_View(this.h)))
 }
 
 func (this *QWebPage) IsModified() bool {
@@ -329,7 +321,7 @@ func (this *QWebPage) IsModified() bool {
 }
 
 func (this *QWebPage) UndoStack() *qt.QUndoStack {
-	return qt.UnsafeNewQUndoStack(unsafe.Pointer(C.QWebPage_UndoStack(this.h)), nil)
+	return qt.UnsafeNewQUndoStack(unsafe.Pointer(C.QWebPage_UndoStack(this.h)))
 }
 
 func (this *QWebPage) SetNetworkAccessManager(manager *network.QNetworkAccessManager) {
@@ -337,7 +329,7 @@ func (this *QWebPage) SetNetworkAccessManager(manager *network.QNetworkAccessMan
 }
 
 func (this *QWebPage) NetworkAccessManager() *network.QNetworkAccessManager {
-	return network.UnsafeNewQNetworkAccessManager(unsafe.Pointer(C.QWebPage_NetworkAccessManager(this.h)), nil)
+	return network.UnsafeNewQNetworkAccessManager(unsafe.Pointer(C.QWebPage_NetworkAccessManager(this.h)))
 }
 
 func (this *QWebPage) SetPluginFactory(factory *QWebPluginFactory) {
@@ -345,7 +337,7 @@ func (this *QWebPage) SetPluginFactory(factory *QWebPluginFactory) {
 }
 
 func (this *QWebPage) PluginFactory() *QWebPluginFactory {
-	return UnsafeNewQWebPluginFactory(unsafe.Pointer(C.QWebPage_PluginFactory(this.h)), nil)
+	return newQWebPluginFactory(C.QWebPage_PluginFactory(this.h))
 }
 
 func (this *QWebPage) TotalBytes() uint64 {
@@ -387,11 +379,11 @@ func (this *QWebPage) SelectedHtml() string {
 }
 
 func (this *QWebPage) Action(action QWebPage__WebAction) *qt.QAction {
-	return qt.UnsafeNewQAction(unsafe.Pointer(C.QWebPage_Action(this.h, (C.int)(action))), nil)
+	return qt.UnsafeNewQAction(unsafe.Pointer(C.QWebPage_Action(this.h, (C.int)(action))))
 }
 
 func (this *QWebPage) CustomAction(action int) *qt.QAction {
-	return qt.UnsafeNewQAction(unsafe.Pointer(C.QWebPage_CustomAction(this.h, (C.int)(action))), nil)
+	return qt.UnsafeNewQAction(unsafe.Pointer(C.QWebPage_CustomAction(this.h, (C.int)(action))))
 }
 
 func (this *QWebPage) TriggerAction(action QWebPage__WebAction, checked bool) {
@@ -411,8 +403,7 @@ func (this *QWebPage) ResetDevicePixelRatio() {
 }
 
 func (this *QWebPage) ViewportSize() *qt.QSize {
-	_ret := C.QWebPage_ViewportSize(this.h)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebPage_ViewportSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -422,15 +413,13 @@ func (this *QWebPage) SetViewportSize(size *qt.QSize) {
 }
 
 func (this *QWebPage) ViewportAttributesForSize(availableSize *qt.QSize) *QWebPage__ViewportAttributes {
-	_ret := C.QWebPage_ViewportAttributesForSize(this.h, (*C.QSize)(availableSize.UnsafePointer()))
-	_goptr := newQWebPage__ViewportAttributes(_ret)
+	_goptr := newQWebPage__ViewportAttributes(C.QWebPage_ViewportAttributesForSize(this.h, (*C.QSize)(availableSize.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebPage) PreferredContentsSize() *qt.QSize {
-	_ret := C.QWebPage_PreferredContentsSize(this.h)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebPage_PreferredContentsSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -452,8 +441,7 @@ func (this *QWebPage) FocusNextPrevChild(next bool) bool {
 }
 
 func (this *QWebPage) InputMethodQuery(property qt.InputMethodQuery) *qt.QVariant {
-	_ret := C.QWebPage_InputMethodQuery(this.h, (C.int)(property))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QWebPage_InputMethodQuery(this.h, (C.int)(property))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -487,8 +475,7 @@ func (this *QWebPage) SetPalette(palette *qt.QPalette) {
 }
 
 func (this *QWebPage) Palette() *qt.QPalette {
-	_ret := C.QWebPage_Palette(this.h)
-	_goptr := qt.UnsafeNewQPalette(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQPalette(unsafe.Pointer(C.QWebPage_Palette(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -510,7 +497,7 @@ func (this *QWebPage) UpdatePositionDependentActions(pos *qt.QPoint) {
 }
 
 func (this *QWebPage) CreateStandardContextMenu() *qt.QMenu {
-	return qt.UnsafeNewQMenu(unsafe.Pointer(C.QWebPage_CreateStandardContextMenu(this.h)), nil, nil, nil)
+	return qt.UnsafeNewQMenu(unsafe.Pointer(C.QWebPage_CreateStandardContextMenu(this.h)))
 }
 
 func (this *QWebPage) SetFeaturePermission(frame *QWebFrame, feature QWebPage__Feature, policy QWebPage__PermissionPolicy) {
@@ -709,7 +696,7 @@ func miqt_exec_callback_QWebPage_FrameCreated(cb C.intptr_t, frame *C.QWebFrame)
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebFrame(unsafe.Pointer(frame), nil)
+	slotval1 := newQWebFrame(frame)
 
 	gofunc(slotval1)
 }
@@ -810,7 +797,7 @@ func miqt_exec_callback_QWebPage_PrintRequested(cb C.intptr_t, frame *C.QWebFram
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebFrame(unsafe.Pointer(frame), nil)
+	slotval1 := newQWebFrame(frame)
 
 	gofunc(slotval1)
 }
@@ -910,7 +897,7 @@ func miqt_exec_callback_QWebPage_UnsupportedContent(cb C.intptr_t, reply *C.QNet
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := network.UnsafeNewQNetworkReply(unsafe.Pointer(reply), nil, nil)
+	slotval1 := network.UnsafeNewQNetworkReply(unsafe.Pointer(reply))
 
 	gofunc(slotval1)
 }
@@ -950,7 +937,7 @@ func miqt_exec_callback_QWebPage_FocusedElementChanged(cb C.intptr_t, element *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebElement(unsafe.Pointer(element))
+	slotval1 := newQWebElement(element)
 
 	gofunc(slotval1)
 }
@@ -1008,7 +995,8 @@ func miqt_exec_callback_QWebPage_DatabaseQuotaExceeded(cb C.intptr_t, frame *C.Q
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebFrame(unsafe.Pointer(frame), nil)
+	slotval1 := newQWebFrame(frame)
+
 	var databaseName_ms C.struct_miqt_string = databaseName
 	databaseName_ret := C.GoStringN(databaseName_ms.data, C.int(int64(databaseName_ms.len)))
 	C.free(unsafe.Pointer(databaseName_ms.data))
@@ -1032,7 +1020,8 @@ func miqt_exec_callback_QWebPage_ApplicationCacheQuotaExceeded(cb C.intptr_t, or
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebSecurityOrigin(unsafe.Pointer(origin))
+	slotval1 := newQWebSecurityOrigin(origin)
+
 	slotval2 := (uint64)(defaultOriginQuota)
 
 	slotval3 := (uint64)(totalSpaceNeeded)
@@ -1055,8 +1044,9 @@ func miqt_exec_callback_QWebPage_SaveFrameStateRequested(cb C.intptr_t, frame *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebFrame(unsafe.Pointer(frame), nil)
-	slotval2 := UnsafeNewQWebHistoryItem(unsafe.Pointer(item))
+	slotval1 := newQWebFrame(frame)
+
+	slotval2 := newQWebHistoryItem(item)
 
 	gofunc(slotval1, slotval2)
 }
@@ -1076,7 +1066,7 @@ func miqt_exec_callback_QWebPage_RestoreFrameStateRequested(cb C.intptr_t, frame
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebFrame(unsafe.Pointer(frame), nil)
+	slotval1 := newQWebFrame(frame)
 
 	gofunc(slotval1)
 }
@@ -1113,7 +1103,8 @@ func miqt_exec_callback_QWebPage_FeaturePermissionRequested(cb C.intptr_t, frame
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebFrame(unsafe.Pointer(frame), nil)
+	slotval1 := newQWebFrame(frame)
+
 	slotval2 := (QWebPage__Feature)(feature)
 
 	gofunc(slotval1, slotval2)
@@ -1134,7 +1125,8 @@ func miqt_exec_callback_QWebPage_FeaturePermissionRequestCanceled(cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebFrame(unsafe.Pointer(frame), nil)
+	slotval1 := newQWebFrame(frame)
+
 	slotval2 := (QWebPage__Feature)(feature)
 
 	gofunc(slotval1, slotval2)
@@ -1155,8 +1147,7 @@ func miqt_exec_callback_QWebPage_FullScreenRequested(cb C.intptr_t, fullScreenRe
 	}
 
 	// Convert all CABI parameters to Go parameters
-	fullScreenRequest_ret := fullScreenRequest
-	fullScreenRequest_goptr := newQWebFullScreenRequest(fullScreenRequest_ret)
+	fullScreenRequest_goptr := newQWebFullScreenRequest(fullScreenRequest)
 	fullScreenRequest_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *fullScreenRequest_goptr
 
@@ -1282,6 +1273,9 @@ func (this *QWebPage) callVirtualBase_TriggerAction(action QWebPage__WebAction, 
 
 }
 func (this *QWebPage) OnTriggerAction(slot func(super func(action QWebPage__WebAction, checked bool), action QWebPage__WebAction, checked bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPage_override_virtual_TriggerAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1307,6 +1301,9 @@ func (this *QWebPage) callVirtualBase_Event(param1 *qt.QEvent) bool {
 
 }
 func (this *QWebPage) OnEvent(slot func(super func(param1 *qt.QEvent) bool, param1 *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPage_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1332,6 +1329,9 @@ func (this *QWebPage) callVirtualBase_Extension(extension QWebPage__Extension, o
 
 }
 func (this *QWebPage) OnExtension(slot func(super func(extension QWebPage__Extension, option *QWebPage__ExtensionOption, output *QWebPage__ExtensionReturn) bool, extension QWebPage__Extension, option *QWebPage__ExtensionOption, output *QWebPage__ExtensionReturn) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPage_override_virtual_Extension(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1345,8 +1345,9 @@ func miqt_exec_callback_QWebPage_Extension(self *C.QWebPage, cb C.intptr_t, exte
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QWebPage__Extension)(extension)
 
-	slotval2 := UnsafeNewQWebPage__ExtensionOption(unsafe.Pointer(option))
-	slotval3 := UnsafeNewQWebPage__ExtensionReturn(unsafe.Pointer(output))
+	slotval2 := newQWebPage__ExtensionOption(option)
+
+	slotval3 := newQWebPage__ExtensionReturn(output)
 
 	virtualReturn := gofunc((&QWebPage{h: self}).callVirtualBase_Extension, slotval1, slotval2, slotval3)
 
@@ -1360,6 +1361,9 @@ func (this *QWebPage) callVirtualBase_SupportsExtension(extension QWebPage__Exte
 
 }
 func (this *QWebPage) OnSupportsExtension(slot func(super func(extension QWebPage__Extension) bool, extension QWebPage__Extension) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPage_override_virtual_SupportsExtension(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1385,6 +1389,9 @@ func (this *QWebPage) callVirtualBase_ShouldInterruptJavaScript() bool {
 
 }
 func (this *QWebPage) OnShouldInterruptJavaScript(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPage_override_virtual_ShouldInterruptJavaScript(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1403,9 +1410,13 @@ func miqt_exec_callback_QWebPage_ShouldInterruptJavaScript(self *C.QWebPage, cb 
 
 func (this *QWebPage) callVirtualBase_CreateWindow(typeVal QWebPage__WebWindowType) *QWebPage {
 
-	return UnsafeNewQWebPage(unsafe.Pointer(C.QWebPage_virtualbase_CreateWindow(unsafe.Pointer(this.h), (C.int)(typeVal))), nil)
+	return newQWebPage(C.QWebPage_virtualbase_CreateWindow(unsafe.Pointer(this.h), (C.int)(typeVal)))
+
 }
 func (this *QWebPage) OnCreateWindow(slot func(super func(typeVal QWebPage__WebWindowType) *QWebPage, typeVal QWebPage__WebWindowType) *QWebPage) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPage_override_virtual_CreateWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1452,8 +1463,12 @@ func (this *QWebPage) callVirtualBase_CreatePlugin(classid string, url *qt.QUrl,
 	paramValues_ma := C.struct_miqt_array{len: C.size_t(len(paramValues)), data: unsafe.Pointer(paramValues_CArray)}
 
 	return qt.UnsafeNewQObject(unsafe.Pointer(C.QWebPage_virtualbase_CreatePlugin(unsafe.Pointer(this.h), classid_ms, (*C.QUrl)(url.UnsafePointer()), paramNames_ma, paramValues_ma)))
+
 }
 func (this *QWebPage) OnCreatePlugin(slot func(super func(classid string, url *qt.QUrl, paramNames []string, paramValues []string) *qt.QObject, classid string, url *qt.QUrl, paramNames []string, paramValues []string) *qt.QObject) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPage_override_virtual_CreatePlugin(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1470,6 +1485,7 @@ func miqt_exec_callback_QWebPage_CreatePlugin(self *C.QWebPage, cb C.intptr_t, c
 	C.free(unsafe.Pointer(classid_ms.data))
 	slotval1 := classid_ret
 	slotval2 := qt.UnsafeNewQUrl(unsafe.Pointer(url))
+
 	var paramNames_ma C.struct_miqt_array = paramNames
 	paramNames_ret := make([]string, int(paramNames_ma.len))
 	paramNames_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(paramNames_ma.data)) // hey ya
@@ -1504,6 +1520,9 @@ func (this *QWebPage) callVirtualBase_AcceptNavigationRequest(frame *QWebFrame, 
 
 }
 func (this *QWebPage) OnAcceptNavigationRequest(slot func(super func(frame *QWebFrame, request *network.QNetworkRequest, typeVal QWebPage__NavigationType) bool, frame *QWebFrame, request *network.QNetworkRequest, typeVal QWebPage__NavigationType) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPage_override_virtual_AcceptNavigationRequest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1515,8 +1534,10 @@ func miqt_exec_callback_QWebPage_AcceptNavigationRequest(self *C.QWebPage, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebFrame(unsafe.Pointer(frame), nil)
+	slotval1 := newQWebFrame(frame)
+
 	slotval2 := network.UnsafeNewQNetworkRequest(unsafe.Pointer(request))
+
 	slotval3 := (QWebPage__NavigationType)(typeVal)
 
 	virtualReturn := gofunc((&QWebPage{h: self}).callVirtualBase_AcceptNavigationRequest, slotval1, slotval2, slotval3)
@@ -1537,6 +1558,9 @@ func (this *QWebPage) callVirtualBase_ChooseFile(originatingFrame *QWebFrame, ol
 	return _ret
 }
 func (this *QWebPage) OnChooseFile(slot func(super func(originatingFrame *QWebFrame, oldFile string) string, originatingFrame *QWebFrame, oldFile string) string) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPage_override_virtual_ChooseFile(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1548,7 +1572,8 @@ func miqt_exec_callback_QWebPage_ChooseFile(self *C.QWebPage, cb C.intptr_t, ori
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebFrame(unsafe.Pointer(originatingFrame), nil)
+	slotval1 := newQWebFrame(originatingFrame)
+
 	var oldFile_ms C.struct_miqt_string = oldFile
 	oldFile_ret := C.GoStringN(oldFile_ms.data, C.int(int64(oldFile_ms.len)))
 	C.free(unsafe.Pointer(oldFile_ms.data))
@@ -1574,6 +1599,9 @@ func (this *QWebPage) callVirtualBase_JavaScriptAlert(originatingFrame *QWebFram
 
 }
 func (this *QWebPage) OnJavaScriptAlert(slot func(super func(originatingFrame *QWebFrame, msg string), originatingFrame *QWebFrame, msg string)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPage_override_virtual_JavaScriptAlert(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1585,7 +1613,8 @@ func miqt_exec_callback_QWebPage_JavaScriptAlert(self *C.QWebPage, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebFrame(unsafe.Pointer(originatingFrame), nil)
+	slotval1 := newQWebFrame(originatingFrame)
+
 	var msg_ms C.struct_miqt_string = msg
 	msg_ret := C.GoStringN(msg_ms.data, C.int(int64(msg_ms.len)))
 	C.free(unsafe.Pointer(msg_ms.data))
@@ -1605,6 +1634,9 @@ func (this *QWebPage) callVirtualBase_JavaScriptConfirm(originatingFrame *QWebFr
 
 }
 func (this *QWebPage) OnJavaScriptConfirm(slot func(super func(originatingFrame *QWebFrame, msg string) bool, originatingFrame *QWebFrame, msg string) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPage_override_virtual_JavaScriptConfirm(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1616,7 +1648,8 @@ func miqt_exec_callback_QWebPage_JavaScriptConfirm(self *C.QWebPage, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebFrame(unsafe.Pointer(originatingFrame), nil)
+	slotval1 := newQWebFrame(originatingFrame)
+
 	var msg_ms C.struct_miqt_string = msg
 	msg_ret := C.GoStringN(msg_ms.data, C.int(int64(msg_ms.len)))
 	C.free(unsafe.Pointer(msg_ms.data))
@@ -1642,6 +1675,9 @@ func (this *QWebPage) callVirtualBase_JavaScriptConsoleMessage(message string, l
 
 }
 func (this *QWebPage) OnJavaScriptConsoleMessage(slot func(super func(message string, lineNumber int, sourceID string), message string, lineNumber int, sourceID string)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPage_override_virtual_JavaScriptConsoleMessage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1676,6 +1712,9 @@ func (this *QWebPage) callVirtualBase_UserAgentForUrl(url *qt.QUrl) string {
 	return _ret
 }
 func (this *QWebPage) OnUserAgentForUrl(slot func(super func(url *qt.QUrl) string, url *qt.QUrl) string) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPage_override_virtual_UserAgentForUrl(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1705,6 +1744,9 @@ func (this *QWebPage) callVirtualBase_EventFilter(watched *qt.QObject, event *qt
 
 }
 func (this *QWebPage) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPage_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1717,6 +1759,7 @@ func miqt_exec_callback_QWebPage_EventFilter(self *C.QWebPage, cb C.intptr_t, wa
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QWebPage{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
@@ -1731,6 +1774,9 @@ func (this *QWebPage) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
 }
 func (this *QWebPage) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPage_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1742,7 +1788,7 @@ func miqt_exec_callback_QWebPage_TimerEvent(self *C.QWebPage, cb C.intptr_t, eve
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebPage{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -1754,6 +1800,9 @@ func (this *QWebPage) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
 }
 func (this *QWebPage) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPage_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1765,7 +1814,7 @@ func miqt_exec_callback_QWebPage_ChildEvent(self *C.QWebPage, cb C.intptr_t, eve
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebPage{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -1777,6 +1826,9 @@ func (this *QWebPage) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
 }
 func (this *QWebPage) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPage_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1800,6 +1852,9 @@ func (this *QWebPage) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
 }
 func (this *QWebPage) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPage_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1823,6 +1878,9 @@ func (this *QWebPage) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
 
 }
 func (this *QWebPage) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebPage_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1878,34 +1936,27 @@ func newQWebPage__ViewportAttributes(h *C.QWebPage__ViewportAttributes) *QWebPag
 	if h == nil {
 		return nil
 	}
+
 	return &QWebPage__ViewportAttributes{h: h}
 }
 
 // UnsafeNewQWebPage__ViewportAttributes constructs the type using only unsafe pointers.
 func UnsafeNewQWebPage__ViewportAttributes(h unsafe.Pointer) *QWebPage__ViewportAttributes {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebPage__ViewportAttributes{h: (*C.QWebPage__ViewportAttributes)(h)}
+	return newQWebPage__ViewportAttributes((*C.QWebPage__ViewportAttributes)(h))
 }
 
 // NewQWebPage__ViewportAttributes constructs a new QWebPage::ViewportAttributes object.
 func NewQWebPage__ViewportAttributes() *QWebPage__ViewportAttributes {
-	var outptr_QWebPage__ViewportAttributes *C.QWebPage__ViewportAttributes = nil
 
-	C.QWebPage__ViewportAttributes_new(&outptr_QWebPage__ViewportAttributes)
-	ret := newQWebPage__ViewportAttributes(outptr_QWebPage__ViewportAttributes)
+	ret := newQWebPage__ViewportAttributes(C.QWebPage__ViewportAttributes_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebPage__ViewportAttributes2 constructs a new QWebPage::ViewportAttributes object.
 func NewQWebPage__ViewportAttributes2(other *QWebPage__ViewportAttributes) *QWebPage__ViewportAttributes {
-	var outptr_QWebPage__ViewportAttributes *C.QWebPage__ViewportAttributes = nil
 
-	C.QWebPage__ViewportAttributes_new2(other.cPointer(), &outptr_QWebPage__ViewportAttributes)
-	ret := newQWebPage__ViewportAttributes(outptr_QWebPage__ViewportAttributes)
+	ret := newQWebPage__ViewportAttributes(C.QWebPage__ViewportAttributes_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -1939,8 +1990,7 @@ func (this *QWebPage__ViewportAttributes) IsValid() bool {
 }
 
 func (this *QWebPage__ViewportAttributes) Size() *qt.QSizeF {
-	_ret := C.QWebPage__ViewportAttributes_Size(this.h)
-	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QWebPage__ViewportAttributes_Size(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1983,24 +2033,19 @@ func newQWebPage__ExtensionOption(h *C.QWebPage__ExtensionOption) *QWebPage__Ext
 	if h == nil {
 		return nil
 	}
+
 	return &QWebPage__ExtensionOption{h: h}
 }
 
 // UnsafeNewQWebPage__ExtensionOption constructs the type using only unsafe pointers.
 func UnsafeNewQWebPage__ExtensionOption(h unsafe.Pointer) *QWebPage__ExtensionOption {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebPage__ExtensionOption{h: (*C.QWebPage__ExtensionOption)(h)}
+	return newQWebPage__ExtensionOption((*C.QWebPage__ExtensionOption)(h))
 }
 
 // NewQWebPage__ExtensionOption constructs a new QWebPage::ExtensionOption object.
 func NewQWebPage__ExtensionOption(param1 *QWebPage__ExtensionOption) *QWebPage__ExtensionOption {
-	var outptr_QWebPage__ExtensionOption *C.QWebPage__ExtensionOption = nil
 
-	C.QWebPage__ExtensionOption_new(param1.cPointer(), &outptr_QWebPage__ExtensionOption)
-	ret := newQWebPage__ExtensionOption(outptr_QWebPage__ExtensionOption)
+	ret := newQWebPage__ExtensionOption(C.QWebPage__ExtensionOption_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -2043,34 +2088,27 @@ func newQWebPage__ExtensionReturn(h *C.QWebPage__ExtensionReturn) *QWebPage__Ext
 	if h == nil {
 		return nil
 	}
+
 	return &QWebPage__ExtensionReturn{h: h}
 }
 
 // UnsafeNewQWebPage__ExtensionReturn constructs the type using only unsafe pointers.
 func UnsafeNewQWebPage__ExtensionReturn(h unsafe.Pointer) *QWebPage__ExtensionReturn {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebPage__ExtensionReturn{h: (*C.QWebPage__ExtensionReturn)(h)}
+	return newQWebPage__ExtensionReturn((*C.QWebPage__ExtensionReturn)(h))
 }
 
 // NewQWebPage__ExtensionReturn constructs a new QWebPage::ExtensionReturn object.
 func NewQWebPage__ExtensionReturn(param1 *QWebPage__ExtensionReturn) *QWebPage__ExtensionReturn {
-	var outptr_QWebPage__ExtensionReturn *C.QWebPage__ExtensionReturn = nil
 
-	C.QWebPage__ExtensionReturn_new(param1.cPointer(), &outptr_QWebPage__ExtensionReturn)
-	ret := newQWebPage__ExtensionReturn(outptr_QWebPage__ExtensionReturn)
+	ret := newQWebPage__ExtensionReturn(C.QWebPage__ExtensionReturn_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebPage__ExtensionReturn2 constructs a new QWebPage::ExtensionReturn object.
 func NewQWebPage__ExtensionReturn2() *QWebPage__ExtensionReturn {
-	var outptr_QWebPage__ExtensionReturn *C.QWebPage__ExtensionReturn = nil
 
-	C.QWebPage__ExtensionReturn_new2(&outptr_QWebPage__ExtensionReturn)
-	ret := newQWebPage__ExtensionReturn(outptr_QWebPage__ExtensionReturn)
+	ret := newQWebPage__ExtensionReturn(C.QWebPage__ExtensionReturn_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -2110,22 +2148,20 @@ func (this *QWebPage__ChooseMultipleFilesExtensionOption) UnsafePointer() unsafe
 }
 
 // newQWebPage__ChooseMultipleFilesExtensionOption constructs the type using only CGO pointers.
-func newQWebPage__ChooseMultipleFilesExtensionOption(h *C.QWebPage__ChooseMultipleFilesExtensionOption, h_QWebPage__ExtensionOption *C.QWebPage__ExtensionOption) *QWebPage__ChooseMultipleFilesExtensionOption {
+func newQWebPage__ChooseMultipleFilesExtensionOption(h *C.QWebPage__ChooseMultipleFilesExtensionOption) *QWebPage__ChooseMultipleFilesExtensionOption {
 	if h == nil {
 		return nil
 	}
+	var outptr_QWebPage__ExtensionOption *C.QWebPage__ExtensionOption = nil
+	C.QWebPage__ChooseMultipleFilesExtensionOption_virtbase(h, &outptr_QWebPage__ExtensionOption)
+
 	return &QWebPage__ChooseMultipleFilesExtensionOption{h: h,
-		QWebPage__ExtensionOption: newQWebPage__ExtensionOption(h_QWebPage__ExtensionOption)}
+		QWebPage__ExtensionOption: newQWebPage__ExtensionOption(outptr_QWebPage__ExtensionOption)}
 }
 
 // UnsafeNewQWebPage__ChooseMultipleFilesExtensionOption constructs the type using only unsafe pointers.
-func UnsafeNewQWebPage__ChooseMultipleFilesExtensionOption(h unsafe.Pointer, h_QWebPage__ExtensionOption unsafe.Pointer) *QWebPage__ChooseMultipleFilesExtensionOption {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebPage__ChooseMultipleFilesExtensionOption{h: (*C.QWebPage__ChooseMultipleFilesExtensionOption)(h),
-		QWebPage__ExtensionOption: UnsafeNewQWebPage__ExtensionOption(h_QWebPage__ExtensionOption)}
+func UnsafeNewQWebPage__ChooseMultipleFilesExtensionOption(h unsafe.Pointer) *QWebPage__ChooseMultipleFilesExtensionOption {
+	return newQWebPage__ChooseMultipleFilesExtensionOption((*C.QWebPage__ChooseMultipleFilesExtensionOption)(h))
 }
 
 // Delete this object from C++ memory.
@@ -2163,22 +2199,20 @@ func (this *QWebPage__ChooseMultipleFilesExtensionReturn) UnsafePointer() unsafe
 }
 
 // newQWebPage__ChooseMultipleFilesExtensionReturn constructs the type using only CGO pointers.
-func newQWebPage__ChooseMultipleFilesExtensionReturn(h *C.QWebPage__ChooseMultipleFilesExtensionReturn, h_QWebPage__ExtensionReturn *C.QWebPage__ExtensionReturn) *QWebPage__ChooseMultipleFilesExtensionReturn {
+func newQWebPage__ChooseMultipleFilesExtensionReturn(h *C.QWebPage__ChooseMultipleFilesExtensionReturn) *QWebPage__ChooseMultipleFilesExtensionReturn {
 	if h == nil {
 		return nil
 	}
+	var outptr_QWebPage__ExtensionReturn *C.QWebPage__ExtensionReturn = nil
+	C.QWebPage__ChooseMultipleFilesExtensionReturn_virtbase(h, &outptr_QWebPage__ExtensionReturn)
+
 	return &QWebPage__ChooseMultipleFilesExtensionReturn{h: h,
-		QWebPage__ExtensionReturn: newQWebPage__ExtensionReturn(h_QWebPage__ExtensionReturn)}
+		QWebPage__ExtensionReturn: newQWebPage__ExtensionReturn(outptr_QWebPage__ExtensionReturn)}
 }
 
 // UnsafeNewQWebPage__ChooseMultipleFilesExtensionReturn constructs the type using only unsafe pointers.
-func UnsafeNewQWebPage__ChooseMultipleFilesExtensionReturn(h unsafe.Pointer, h_QWebPage__ExtensionReturn unsafe.Pointer) *QWebPage__ChooseMultipleFilesExtensionReturn {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebPage__ChooseMultipleFilesExtensionReturn{h: (*C.QWebPage__ChooseMultipleFilesExtensionReturn)(h),
-		QWebPage__ExtensionReturn: UnsafeNewQWebPage__ExtensionReturn(h_QWebPage__ExtensionReturn)}
+func UnsafeNewQWebPage__ChooseMultipleFilesExtensionReturn(h unsafe.Pointer) *QWebPage__ChooseMultipleFilesExtensionReturn {
+	return newQWebPage__ChooseMultipleFilesExtensionReturn((*C.QWebPage__ChooseMultipleFilesExtensionReturn)(h))
 }
 
 // Delete this object from C++ memory.
@@ -2216,31 +2250,26 @@ func (this *QWebPage__ErrorPageExtensionOption) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebPage__ErrorPageExtensionOption constructs the type using only CGO pointers.
-func newQWebPage__ErrorPageExtensionOption(h *C.QWebPage__ErrorPageExtensionOption, h_QWebPage__ExtensionOption *C.QWebPage__ExtensionOption) *QWebPage__ErrorPageExtensionOption {
+func newQWebPage__ErrorPageExtensionOption(h *C.QWebPage__ErrorPageExtensionOption) *QWebPage__ErrorPageExtensionOption {
 	if h == nil {
 		return nil
 	}
+	var outptr_QWebPage__ExtensionOption *C.QWebPage__ExtensionOption = nil
+	C.QWebPage__ErrorPageExtensionOption_virtbase(h, &outptr_QWebPage__ExtensionOption)
+
 	return &QWebPage__ErrorPageExtensionOption{h: h,
-		QWebPage__ExtensionOption: newQWebPage__ExtensionOption(h_QWebPage__ExtensionOption)}
+		QWebPage__ExtensionOption: newQWebPage__ExtensionOption(outptr_QWebPage__ExtensionOption)}
 }
 
 // UnsafeNewQWebPage__ErrorPageExtensionOption constructs the type using only unsafe pointers.
-func UnsafeNewQWebPage__ErrorPageExtensionOption(h unsafe.Pointer, h_QWebPage__ExtensionOption unsafe.Pointer) *QWebPage__ErrorPageExtensionOption {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebPage__ErrorPageExtensionOption{h: (*C.QWebPage__ErrorPageExtensionOption)(h),
-		QWebPage__ExtensionOption: UnsafeNewQWebPage__ExtensionOption(h_QWebPage__ExtensionOption)}
+func UnsafeNewQWebPage__ErrorPageExtensionOption(h unsafe.Pointer) *QWebPage__ErrorPageExtensionOption {
+	return newQWebPage__ErrorPageExtensionOption((*C.QWebPage__ErrorPageExtensionOption)(h))
 }
 
 // NewQWebPage__ErrorPageExtensionOption constructs a new QWebPage::ErrorPageExtensionOption object.
 func NewQWebPage__ErrorPageExtensionOption(param1 *QWebPage__ErrorPageExtensionOption) *QWebPage__ErrorPageExtensionOption {
-	var outptr_QWebPage__ErrorPageExtensionOption *C.QWebPage__ErrorPageExtensionOption = nil
-	var outptr_QWebPage__ExtensionOption *C.QWebPage__ExtensionOption = nil
 
-	C.QWebPage__ErrorPageExtensionOption_new(param1.cPointer(), &outptr_QWebPage__ErrorPageExtensionOption, &outptr_QWebPage__ExtensionOption)
-	ret := newQWebPage__ErrorPageExtensionOption(outptr_QWebPage__ErrorPageExtensionOption, outptr_QWebPage__ExtensionOption)
+	ret := newQWebPage__ErrorPageExtensionOption(C.QWebPage__ErrorPageExtensionOption_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -2284,42 +2313,34 @@ func (this *QWebPage__ErrorPageExtensionReturn) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebPage__ErrorPageExtensionReturn constructs the type using only CGO pointers.
-func newQWebPage__ErrorPageExtensionReturn(h *C.QWebPage__ErrorPageExtensionReturn, h_QWebPage__ExtensionReturn *C.QWebPage__ExtensionReturn) *QWebPage__ErrorPageExtensionReturn {
+func newQWebPage__ErrorPageExtensionReturn(h *C.QWebPage__ErrorPageExtensionReturn) *QWebPage__ErrorPageExtensionReturn {
 	if h == nil {
 		return nil
 	}
+	var outptr_QWebPage__ExtensionReturn *C.QWebPage__ExtensionReturn = nil
+	C.QWebPage__ErrorPageExtensionReturn_virtbase(h, &outptr_QWebPage__ExtensionReturn)
+
 	return &QWebPage__ErrorPageExtensionReturn{h: h,
-		QWebPage__ExtensionReturn: newQWebPage__ExtensionReturn(h_QWebPage__ExtensionReturn)}
+		QWebPage__ExtensionReturn: newQWebPage__ExtensionReturn(outptr_QWebPage__ExtensionReturn)}
 }
 
 // UnsafeNewQWebPage__ErrorPageExtensionReturn constructs the type using only unsafe pointers.
-func UnsafeNewQWebPage__ErrorPageExtensionReturn(h unsafe.Pointer, h_QWebPage__ExtensionReturn unsafe.Pointer) *QWebPage__ErrorPageExtensionReturn {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebPage__ErrorPageExtensionReturn{h: (*C.QWebPage__ErrorPageExtensionReturn)(h),
-		QWebPage__ExtensionReturn: UnsafeNewQWebPage__ExtensionReturn(h_QWebPage__ExtensionReturn)}
+func UnsafeNewQWebPage__ErrorPageExtensionReturn(h unsafe.Pointer) *QWebPage__ErrorPageExtensionReturn {
+	return newQWebPage__ErrorPageExtensionReturn((*C.QWebPage__ErrorPageExtensionReturn)(h))
 }
 
 // NewQWebPage__ErrorPageExtensionReturn constructs a new QWebPage::ErrorPageExtensionReturn object.
 func NewQWebPage__ErrorPageExtensionReturn() *QWebPage__ErrorPageExtensionReturn {
-	var outptr_QWebPage__ErrorPageExtensionReturn *C.QWebPage__ErrorPageExtensionReturn = nil
-	var outptr_QWebPage__ExtensionReturn *C.QWebPage__ExtensionReturn = nil
 
-	C.QWebPage__ErrorPageExtensionReturn_new(&outptr_QWebPage__ErrorPageExtensionReturn, &outptr_QWebPage__ExtensionReturn)
-	ret := newQWebPage__ErrorPageExtensionReturn(outptr_QWebPage__ErrorPageExtensionReturn, outptr_QWebPage__ExtensionReturn)
+	ret := newQWebPage__ErrorPageExtensionReturn(C.QWebPage__ErrorPageExtensionReturn_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebPage__ErrorPageExtensionReturn2 constructs a new QWebPage::ErrorPageExtensionReturn object.
 func NewQWebPage__ErrorPageExtensionReturn2(param1 *QWebPage__ErrorPageExtensionReturn) *QWebPage__ErrorPageExtensionReturn {
-	var outptr_QWebPage__ErrorPageExtensionReturn *C.QWebPage__ErrorPageExtensionReturn = nil
-	var outptr_QWebPage__ExtensionReturn *C.QWebPage__ExtensionReturn = nil
 
-	C.QWebPage__ErrorPageExtensionReturn_new2(param1.cPointer(), &outptr_QWebPage__ErrorPageExtensionReturn, &outptr_QWebPage__ExtensionReturn)
-	ret := newQWebPage__ErrorPageExtensionReturn(outptr_QWebPage__ErrorPageExtensionReturn, outptr_QWebPage__ExtensionReturn)
+	ret := newQWebPage__ErrorPageExtensionReturn(C.QWebPage__ErrorPageExtensionReturn_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

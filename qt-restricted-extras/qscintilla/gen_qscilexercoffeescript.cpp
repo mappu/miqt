@@ -839,18 +839,16 @@ public:
 
 };
 
-void QsciLexerCoffeeScript_new(QsciLexerCoffeeScript** outptr_QsciLexerCoffeeScript, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerCoffeeScript* ret = new MiqtVirtualQsciLexerCoffeeScript();
-	*outptr_QsciLexerCoffeeScript = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerCoffeeScript* QsciLexerCoffeeScript_new() {
+	return new MiqtVirtualQsciLexerCoffeeScript();
 }
 
-void QsciLexerCoffeeScript_new2(QObject* parent, QsciLexerCoffeeScript** outptr_QsciLexerCoffeeScript, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerCoffeeScript* ret = new MiqtVirtualQsciLexerCoffeeScript(parent);
-	*outptr_QsciLexerCoffeeScript = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerCoffeeScript* QsciLexerCoffeeScript_new2(QObject* parent) {
+	return new MiqtVirtualQsciLexerCoffeeScript(parent);
+}
+
+void QsciLexerCoffeeScript_virtbase(QsciLexerCoffeeScript* src, QsciLexer** outptr_QsciLexer) {
+	*outptr_QsciLexer = static_cast<QsciLexer*>(src);
 }
 
 QMetaObject* QsciLexerCoffeeScript_MetaObject(const QsciLexerCoffeeScript* self) {

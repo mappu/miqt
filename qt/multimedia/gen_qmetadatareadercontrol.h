@@ -28,6 +28,7 @@ typedef struct QObject QObject;
 typedef struct QVariant QVariant;
 #endif
 
+void QMetaDataReaderControl_virtbase(QMetaDataReaderControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QMetaDataReaderControl_MetaObject(const QMetaDataReaderControl* self);
 void* QMetaDataReaderControl_Metacast(QMetaDataReaderControl* self, const char* param1);
 struct miqt_string QMetaDataReaderControl_Tr(const char* s);

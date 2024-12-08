@@ -314,40 +314,24 @@ public:
 
 };
 
-void QSlider_new(QWidget* parent, QSlider** outptr_QSlider, QAbstractSlider** outptr_QAbstractSlider, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQSlider* ret = new MiqtVirtualQSlider(parent);
-	*outptr_QSlider = ret;
-	*outptr_QAbstractSlider = static_cast<QAbstractSlider*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QSlider* QSlider_new(QWidget* parent) {
+	return new MiqtVirtualQSlider(parent);
 }
 
-void QSlider_new2(QSlider** outptr_QSlider, QAbstractSlider** outptr_QAbstractSlider, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQSlider* ret = new MiqtVirtualQSlider();
-	*outptr_QSlider = ret;
-	*outptr_QAbstractSlider = static_cast<QAbstractSlider*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QSlider* QSlider_new2() {
+	return new MiqtVirtualQSlider();
 }
 
-void QSlider_new3(int orientation, QSlider** outptr_QSlider, QAbstractSlider** outptr_QAbstractSlider, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQSlider* ret = new MiqtVirtualQSlider(static_cast<Qt::Orientation>(orientation));
-	*outptr_QSlider = ret;
-	*outptr_QAbstractSlider = static_cast<QAbstractSlider*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QSlider* QSlider_new3(int orientation) {
+	return new MiqtVirtualQSlider(static_cast<Qt::Orientation>(orientation));
 }
 
-void QSlider_new4(int orientation, QWidget* parent, QSlider** outptr_QSlider, QAbstractSlider** outptr_QAbstractSlider, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQSlider* ret = new MiqtVirtualQSlider(static_cast<Qt::Orientation>(orientation), parent);
-	*outptr_QSlider = ret;
-	*outptr_QAbstractSlider = static_cast<QAbstractSlider*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QSlider* QSlider_new4(int orientation, QWidget* parent) {
+	return new MiqtVirtualQSlider(static_cast<Qt::Orientation>(orientation), parent);
+}
+
+void QSlider_virtbase(QSlider* src, QAbstractSlider** outptr_QAbstractSlider) {
+	*outptr_QAbstractSlider = static_cast<QAbstractSlider*>(src);
 }
 
 QMetaObject* QSlider_MetaObject(const QSlider* self) {

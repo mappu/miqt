@@ -46,10 +46,11 @@ typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-void QFontDialog_new(QWidget* parent, QFontDialog** outptr_QFontDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QFontDialog_new2(QFontDialog** outptr_QFontDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QFontDialog_new3(QFont* initial, QFontDialog** outptr_QFontDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QFontDialog_new4(QFont* initial, QWidget* parent, QFontDialog** outptr_QFontDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QFontDialog* QFontDialog_new(QWidget* parent);
+QFontDialog* QFontDialog_new2();
+QFontDialog* QFontDialog_new3(QFont* initial);
+QFontDialog* QFontDialog_new4(QFont* initial, QWidget* parent);
+void QFontDialog_virtbase(QFontDialog* src, QDialog** outptr_QDialog);
 QMetaObject* QFontDialog_MetaObject(const QFontDialog* self);
 void* QFontDialog_Metacast(QFontDialog* self, const char* param1);
 struct miqt_string QFontDialog_Tr(const char* s);

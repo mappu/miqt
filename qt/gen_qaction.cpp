@@ -206,44 +206,36 @@ public:
 
 };
 
-void QAction_new(QAction** outptr_QAction, QObject** outptr_QObject) {
-	MiqtVirtualQAction* ret = new MiqtVirtualQAction();
-	*outptr_QAction = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAction* QAction_new() {
+	return new MiqtVirtualQAction();
 }
 
-void QAction_new2(struct miqt_string text, QAction** outptr_QAction, QObject** outptr_QObject) {
+QAction* QAction_new2(struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQAction* ret = new MiqtVirtualQAction(text_QString);
-	*outptr_QAction = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQAction(text_QString);
 }
 
-void QAction_new3(QIcon* icon, struct miqt_string text, QAction** outptr_QAction, QObject** outptr_QObject) {
+QAction* QAction_new3(QIcon* icon, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQAction* ret = new MiqtVirtualQAction(*icon, text_QString);
-	*outptr_QAction = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQAction(*icon, text_QString);
 }
 
-void QAction_new4(QObject* parent, QAction** outptr_QAction, QObject** outptr_QObject) {
-	MiqtVirtualQAction* ret = new MiqtVirtualQAction(parent);
-	*outptr_QAction = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAction* QAction_new4(QObject* parent) {
+	return new MiqtVirtualQAction(parent);
 }
 
-void QAction_new5(struct miqt_string text, QObject* parent, QAction** outptr_QAction, QObject** outptr_QObject) {
+QAction* QAction_new5(struct miqt_string text, QObject* parent) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQAction* ret = new MiqtVirtualQAction(text_QString, parent);
-	*outptr_QAction = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQAction(text_QString, parent);
 }
 
-void QAction_new6(QIcon* icon, struct miqt_string text, QObject* parent, QAction** outptr_QAction, QObject** outptr_QObject) {
+QAction* QAction_new6(QIcon* icon, struct miqt_string text, QObject* parent) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQAction* ret = new MiqtVirtualQAction(*icon, text_QString, parent);
-	*outptr_QAction = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQAction(*icon, text_QString, parent);
+}
+
+void QAction_virtbase(QAction* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QAction_MetaObject(const QAction* self) {

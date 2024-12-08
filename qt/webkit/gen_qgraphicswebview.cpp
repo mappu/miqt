@@ -1176,24 +1176,16 @@ public:
 
 };
 
-void QGraphicsWebView_new(QGraphicsWebView** outptr_QGraphicsWebView, QGraphicsWidget** outptr_QGraphicsWidget, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
-	MiqtVirtualQGraphicsWebView* ret = new MiqtVirtualQGraphicsWebView();
-	*outptr_QGraphicsWebView = ret;
-	*outptr_QGraphicsWidget = static_cast<QGraphicsWidget*>(ret);
-	*outptr_QGraphicsObject = static_cast<QGraphicsObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
-	*outptr_QGraphicsLayoutItem = static_cast<QGraphicsLayoutItem*>(ret);
+QGraphicsWebView* QGraphicsWebView_new() {
+	return new MiqtVirtualQGraphicsWebView();
 }
 
-void QGraphicsWebView_new2(QGraphicsItem* parent, QGraphicsWebView** outptr_QGraphicsWebView, QGraphicsWidget** outptr_QGraphicsWidget, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
-	MiqtVirtualQGraphicsWebView* ret = new MiqtVirtualQGraphicsWebView(parent);
-	*outptr_QGraphicsWebView = ret;
-	*outptr_QGraphicsWidget = static_cast<QGraphicsWidget*>(ret);
-	*outptr_QGraphicsObject = static_cast<QGraphicsObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
-	*outptr_QGraphicsLayoutItem = static_cast<QGraphicsLayoutItem*>(ret);
+QGraphicsWebView* QGraphicsWebView_new2(QGraphicsItem* parent) {
+	return new MiqtVirtualQGraphicsWebView(parent);
+}
+
+void QGraphicsWebView_virtbase(QGraphicsWebView* src, QGraphicsWidget** outptr_QGraphicsWidget) {
+	*outptr_QGraphicsWidget = static_cast<QGraphicsWidget*>(src);
 }
 
 QMetaObject* QGraphicsWebView_MetaObject(const QGraphicsWebView* self) {

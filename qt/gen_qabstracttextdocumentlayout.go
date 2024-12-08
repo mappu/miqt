@@ -35,37 +35,32 @@ func (this *QAbstractTextDocumentLayout) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAbstractTextDocumentLayout constructs the type using only CGO pointers.
-func newQAbstractTextDocumentLayout(h *C.QAbstractTextDocumentLayout, h_QObject *C.QObject) *QAbstractTextDocumentLayout {
+func newQAbstractTextDocumentLayout(h *C.QAbstractTextDocumentLayout) *QAbstractTextDocumentLayout {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QAbstractTextDocumentLayout_virtbase(h, &outptr_QObject)
+
 	return &QAbstractTextDocumentLayout{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQAbstractTextDocumentLayout constructs the type using only unsafe pointers.
-func UnsafeNewQAbstractTextDocumentLayout(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractTextDocumentLayout {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractTextDocumentLayout{h: (*C.QAbstractTextDocumentLayout)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQAbstractTextDocumentLayout(h unsafe.Pointer) *QAbstractTextDocumentLayout {
+	return newQAbstractTextDocumentLayout((*C.QAbstractTextDocumentLayout)(h))
 }
 
 // NewQAbstractTextDocumentLayout constructs a new QAbstractTextDocumentLayout object.
 func NewQAbstractTextDocumentLayout(doc *QTextDocument) *QAbstractTextDocumentLayout {
-	var outptr_QAbstractTextDocumentLayout *C.QAbstractTextDocumentLayout = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAbstractTextDocumentLayout_new(doc.cPointer(), &outptr_QAbstractTextDocumentLayout, &outptr_QObject)
-	ret := newQAbstractTextDocumentLayout(outptr_QAbstractTextDocumentLayout, outptr_QObject)
+	ret := newQAbstractTextDocumentLayout(C.QAbstractTextDocumentLayout_new(doc.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QAbstractTextDocumentLayout) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractTextDocumentLayout_MetaObject(this.h)))
+	return newQMetaObject(C.QAbstractTextDocumentLayout_MetaObject(this.h))
 }
 
 func (this *QAbstractTextDocumentLayout) Metacast(param1 string) unsafe.Pointer {
@@ -115,15 +110,13 @@ func (this *QAbstractTextDocumentLayout) ImageAt(pos *QPointF) string {
 }
 
 func (this *QAbstractTextDocumentLayout) FormatAt(pos *QPointF) *QTextFormat {
-	_ret := C.QAbstractTextDocumentLayout_FormatAt(this.h, pos.cPointer())
-	_goptr := newQTextFormat(_ret)
+	_goptr := newQTextFormat(C.QAbstractTextDocumentLayout_FormatAt(this.h, pos.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractTextDocumentLayout) BlockWithMarkerAt(pos *QPointF) *QTextBlock {
-	_ret := C.QAbstractTextDocumentLayout_BlockWithMarkerAt(this.h, pos.cPointer())
-	_goptr := newQTextBlock(_ret)
+	_goptr := newQTextBlock(C.QAbstractTextDocumentLayout_BlockWithMarkerAt(this.h, pos.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -133,22 +126,19 @@ func (this *QAbstractTextDocumentLayout) PageCount() int {
 }
 
 func (this *QAbstractTextDocumentLayout) DocumentSize() *QSizeF {
-	_ret := C.QAbstractTextDocumentLayout_DocumentSize(this.h)
-	_goptr := newQSizeF(_ret)
+	_goptr := newQSizeF(C.QAbstractTextDocumentLayout_DocumentSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractTextDocumentLayout) FrameBoundingRect(frame *QTextFrame) *QRectF {
-	_ret := C.QAbstractTextDocumentLayout_FrameBoundingRect(this.h, frame.cPointer())
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QAbstractTextDocumentLayout_FrameBoundingRect(this.h, frame.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractTextDocumentLayout) BlockBoundingRect(block *QTextBlock) *QRectF {
-	_ret := C.QAbstractTextDocumentLayout_BlockBoundingRect(this.h, block.cPointer())
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QAbstractTextDocumentLayout_BlockBoundingRect(this.h, block.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -158,11 +148,11 @@ func (this *QAbstractTextDocumentLayout) SetPaintDevice(device *QPaintDevice) {
 }
 
 func (this *QAbstractTextDocumentLayout) PaintDevice() *QPaintDevice {
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QAbstractTextDocumentLayout_PaintDevice(this.h)))
+	return newQPaintDevice(C.QAbstractTextDocumentLayout_PaintDevice(this.h))
 }
 
 func (this *QAbstractTextDocumentLayout) Document() *QTextDocument {
-	return UnsafeNewQTextDocument(unsafe.Pointer(C.QAbstractTextDocumentLayout_Document(this.h)), nil)
+	return newQTextDocument(C.QAbstractTextDocumentLayout_Document(this.h))
 }
 
 func (this *QAbstractTextDocumentLayout) RegisterHandler(objectType int, component *QObject) {
@@ -174,7 +164,7 @@ func (this *QAbstractTextDocumentLayout) UnregisterHandler(objectType int) {
 }
 
 func (this *QAbstractTextDocumentLayout) HandlerForObject(objectType int) *QTextObjectInterface {
-	return UnsafeNewQTextObjectInterface(unsafe.Pointer(C.QAbstractTextDocumentLayout_HandlerForObject(this.h, (C.int)(objectType))))
+	return newQTextObjectInterface(C.QAbstractTextDocumentLayout_HandlerForObject(this.h, (C.int)(objectType)))
 }
 
 func (this *QAbstractTextDocumentLayout) Update() {
@@ -209,7 +199,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_UpdateBlock(cb C.intptr_t, b
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTextBlock(unsafe.Pointer(block))
+	slotval1 := newQTextBlock(block)
 
 	gofunc(slotval1)
 }
@@ -229,7 +219,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_DocumentSizeChanged(cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQSizeF(unsafe.Pointer(newSize))
+	slotval1 := newQSizeF(newSize)
 
 	gofunc(slotval1)
 }
@@ -317,12 +307,15 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_Update1(cb C.intptr_t, param
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRectF(unsafe.Pointer(param1))
+	slotval1 := newQRectF(param1)
 
 	gofunc(slotval1)
 }
 
 func (this *QAbstractTextDocumentLayout) OnDraw(slot func(painter *QPainter, context *QAbstractTextDocumentLayout__PaintContext)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractTextDocumentLayout_override_virtual_Draw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -334,13 +327,17 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_Draw(self *C.QAbstractTextDo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQAbstractTextDocumentLayout__PaintContext(unsafe.Pointer(context))
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQAbstractTextDocumentLayout__PaintContext(context)
 
 	gofunc(slotval1, slotval2)
 
 }
 func (this *QAbstractTextDocumentLayout) OnHitTest(slot func(point *QPointF, accuracy HitTestAccuracy) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractTextDocumentLayout_override_virtual_HitTest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -352,7 +349,8 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_HitTest(self *C.QAbstractTex
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := newQPointF(point)
+
 	slotval2 := (HitTestAccuracy)(accuracy)
 
 	virtualReturn := gofunc(slotval1, slotval2)
@@ -361,6 +359,9 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_HitTest(self *C.QAbstractTex
 
 }
 func (this *QAbstractTextDocumentLayout) OnPageCount(slot func() int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractTextDocumentLayout_override_virtual_PageCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -377,6 +378,9 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_PageCount(self *C.QAbstractT
 
 }
 func (this *QAbstractTextDocumentLayout) OnDocumentSize(slot func() *QSizeF) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractTextDocumentLayout_override_virtual_DocumentSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -393,6 +397,9 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_DocumentSize(self *C.QAbstra
 
 }
 func (this *QAbstractTextDocumentLayout) OnFrameBoundingRect(slot func(frame *QTextFrame) *QRectF) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractTextDocumentLayout_override_virtual_FrameBoundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -404,7 +411,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_FrameBoundingRect(self *C.QA
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTextFrame(unsafe.Pointer(frame), nil, nil)
+	slotval1 := newQTextFrame(frame)
 
 	virtualReturn := gofunc(slotval1)
 
@@ -412,6 +419,9 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_FrameBoundingRect(self *C.QA
 
 }
 func (this *QAbstractTextDocumentLayout) OnBlockBoundingRect(slot func(block *QTextBlock) *QRectF) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractTextDocumentLayout_override_virtual_BlockBoundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -423,7 +433,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_BlockBoundingRect(self *C.QA
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTextBlock(unsafe.Pointer(block))
+	slotval1 := newQTextBlock(block)
 
 	virtualReturn := gofunc(slotval1)
 
@@ -431,6 +441,9 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_BlockBoundingRect(self *C.QA
 
 }
 func (this *QAbstractTextDocumentLayout) OnDocumentChanged(slot func(from int, charsRemoved int, charsAdded int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractTextDocumentLayout_override_virtual_DocumentChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -458,6 +471,9 @@ func (this *QAbstractTextDocumentLayout) callVirtualBase_ResizeInlineObject(item
 
 }
 func (this *QAbstractTextDocumentLayout) OnResizeInlineObject(slot func(super func(item QTextInlineObject, posInDocument int, format *QTextFormat), item QTextInlineObject, posInDocument int, format *QTextFormat)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractTextDocumentLayout_override_virtual_ResizeInlineObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -469,14 +485,13 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_ResizeInlineObject(self *C.Q
 	}
 
 	// Convert all CABI parameters to Go parameters
-	item_ret := item
-	item_goptr := newQTextInlineObject(item_ret)
+	item_goptr := newQTextInlineObject(item)
 	item_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *item_goptr
 
 	slotval2 := (int)(posInDocument)
 
-	slotval3 := UnsafeNewQTextFormat(unsafe.Pointer(format))
+	slotval3 := newQTextFormat(format)
 
 	gofunc((&QAbstractTextDocumentLayout{h: self}).callVirtualBase_ResizeInlineObject, slotval1, slotval2, slotval3)
 
@@ -488,6 +503,9 @@ func (this *QAbstractTextDocumentLayout) callVirtualBase_PositionInlineObject(it
 
 }
 func (this *QAbstractTextDocumentLayout) OnPositionInlineObject(slot func(super func(item QTextInlineObject, posInDocument int, format *QTextFormat), item QTextInlineObject, posInDocument int, format *QTextFormat)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractTextDocumentLayout_override_virtual_PositionInlineObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -499,14 +517,13 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_PositionInlineObject(self *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	item_ret := item
-	item_goptr := newQTextInlineObject(item_ret)
+	item_goptr := newQTextInlineObject(item)
 	item_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *item_goptr
 
 	slotval2 := (int)(posInDocument)
 
-	slotval3 := UnsafeNewQTextFormat(unsafe.Pointer(format))
+	slotval3 := newQTextFormat(format)
 
 	gofunc((&QAbstractTextDocumentLayout{h: self}).callVirtualBase_PositionInlineObject, slotval1, slotval2, slotval3)
 
@@ -518,6 +535,9 @@ func (this *QAbstractTextDocumentLayout) callVirtualBase_DrawInlineObject(painte
 
 }
 func (this *QAbstractTextDocumentLayout) OnDrawInlineObject(slot func(super func(painter *QPainter, rect *QRectF, object QTextInlineObject, posInDocument int, format *QTextFormat), painter *QPainter, rect *QRectF, object QTextInlineObject, posInDocument int, format *QTextFormat)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractTextDocumentLayout_override_virtual_DrawInlineObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -529,16 +549,17 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_DrawInlineObject(self *C.QAb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQRectF(unsafe.Pointer(rect))
-	object_ret := object
-	object_goptr := newQTextInlineObject(object_ret)
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQRectF(rect)
+
+	object_goptr := newQTextInlineObject(object)
 	object_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval3 := *object_goptr
 
 	slotval4 := (int)(posInDocument)
 
-	slotval5 := UnsafeNewQTextFormat(unsafe.Pointer(format))
+	slotval5 := newQTextFormat(format)
 
 	gofunc((&QAbstractTextDocumentLayout{h: self}).callVirtualBase_DrawInlineObject, slotval1, slotval2, slotval3, slotval4, slotval5)
 
@@ -550,6 +571,9 @@ func (this *QAbstractTextDocumentLayout) callVirtualBase_Event(event *QEvent) bo
 
 }
 func (this *QAbstractTextDocumentLayout) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractTextDocumentLayout_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -561,7 +585,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_Event(self *C.QAbstractTextD
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QAbstractTextDocumentLayout{h: self}).callVirtualBase_Event, slotval1)
 
@@ -575,6 +599,9 @@ func (this *QAbstractTextDocumentLayout) callVirtualBase_EventFilter(watched *QO
 
 }
 func (this *QAbstractTextDocumentLayout) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractTextDocumentLayout_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -586,8 +613,9 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_EventFilter(self *C.QAbstrac
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QAbstractTextDocumentLayout{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -601,6 +629,9 @@ func (this *QAbstractTextDocumentLayout) callVirtualBase_TimerEvent(event *QTime
 
 }
 func (this *QAbstractTextDocumentLayout) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractTextDocumentLayout_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -612,7 +643,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_TimerEvent(self *C.QAbstract
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QAbstractTextDocumentLayout{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -624,6 +655,9 @@ func (this *QAbstractTextDocumentLayout) callVirtualBase_ChildEvent(event *QChil
 
 }
 func (this *QAbstractTextDocumentLayout) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractTextDocumentLayout_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -635,7 +669,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_ChildEvent(self *C.QAbstract
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QAbstractTextDocumentLayout{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -647,6 +681,9 @@ func (this *QAbstractTextDocumentLayout) callVirtualBase_CustomEvent(event *QEve
 
 }
 func (this *QAbstractTextDocumentLayout) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractTextDocumentLayout_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -658,7 +695,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_CustomEvent(self *C.QAbstrac
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QAbstractTextDocumentLayout{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -670,6 +707,9 @@ func (this *QAbstractTextDocumentLayout) callVirtualBase_ConnectNotify(signal *Q
 
 }
 func (this *QAbstractTextDocumentLayout) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractTextDocumentLayout_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -681,7 +721,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_ConnectNotify(self *C.QAbstr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QAbstractTextDocumentLayout{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -693,6 +733,9 @@ func (this *QAbstractTextDocumentLayout) callVirtualBase_DisconnectNotify(signal
 
 }
 func (this *QAbstractTextDocumentLayout) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractTextDocumentLayout_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -704,7 +747,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_DisconnectNotify(self *C.QAb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QAbstractTextDocumentLayout{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
@@ -748,21 +791,17 @@ func newQTextObjectInterface(h *C.QTextObjectInterface) *QTextObjectInterface {
 	if h == nil {
 		return nil
 	}
+
 	return &QTextObjectInterface{h: h}
 }
 
 // UnsafeNewQTextObjectInterface constructs the type using only unsafe pointers.
 func UnsafeNewQTextObjectInterface(h unsafe.Pointer) *QTextObjectInterface {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextObjectInterface{h: (*C.QTextObjectInterface)(h)}
+	return newQTextObjectInterface((*C.QTextObjectInterface)(h))
 }
 
 func (this *QTextObjectInterface) IntrinsicSize(doc *QTextDocument, posInDocument int, format *QTextFormat) *QSizeF {
-	_ret := C.QTextObjectInterface_IntrinsicSize(this.h, doc.cPointer(), (C.int)(posInDocument), format.cPointer())
-	_goptr := newQSizeF(_ret)
+	_goptr := newQSizeF(C.QTextObjectInterface_IntrinsicSize(this.h, doc.cPointer(), (C.int)(posInDocument), format.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -813,24 +852,19 @@ func newQAbstractTextDocumentLayout__Selection(h *C.QAbstractTextDocumentLayout_
 	if h == nil {
 		return nil
 	}
+
 	return &QAbstractTextDocumentLayout__Selection{h: h}
 }
 
 // UnsafeNewQAbstractTextDocumentLayout__Selection constructs the type using only unsafe pointers.
 func UnsafeNewQAbstractTextDocumentLayout__Selection(h unsafe.Pointer) *QAbstractTextDocumentLayout__Selection {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractTextDocumentLayout__Selection{h: (*C.QAbstractTextDocumentLayout__Selection)(h)}
+	return newQAbstractTextDocumentLayout__Selection((*C.QAbstractTextDocumentLayout__Selection)(h))
 }
 
 // NewQAbstractTextDocumentLayout__Selection constructs a new QAbstractTextDocumentLayout::Selection object.
 func NewQAbstractTextDocumentLayout__Selection(param1 *QAbstractTextDocumentLayout__Selection) *QAbstractTextDocumentLayout__Selection {
-	var outptr_QAbstractTextDocumentLayout__Selection *C.QAbstractTextDocumentLayout__Selection = nil
 
-	C.QAbstractTextDocumentLayout__Selection_new(param1.cPointer(), &outptr_QAbstractTextDocumentLayout__Selection)
-	ret := newQAbstractTextDocumentLayout__Selection(outptr_QAbstractTextDocumentLayout__Selection)
+	ret := newQAbstractTextDocumentLayout__Selection(C.QAbstractTextDocumentLayout__Selection_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -877,34 +911,27 @@ func newQAbstractTextDocumentLayout__PaintContext(h *C.QAbstractTextDocumentLayo
 	if h == nil {
 		return nil
 	}
+
 	return &QAbstractTextDocumentLayout__PaintContext{h: h}
 }
 
 // UnsafeNewQAbstractTextDocumentLayout__PaintContext constructs the type using only unsafe pointers.
 func UnsafeNewQAbstractTextDocumentLayout__PaintContext(h unsafe.Pointer) *QAbstractTextDocumentLayout__PaintContext {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractTextDocumentLayout__PaintContext{h: (*C.QAbstractTextDocumentLayout__PaintContext)(h)}
+	return newQAbstractTextDocumentLayout__PaintContext((*C.QAbstractTextDocumentLayout__PaintContext)(h))
 }
 
 // NewQAbstractTextDocumentLayout__PaintContext constructs a new QAbstractTextDocumentLayout::PaintContext object.
 func NewQAbstractTextDocumentLayout__PaintContext() *QAbstractTextDocumentLayout__PaintContext {
-	var outptr_QAbstractTextDocumentLayout__PaintContext *C.QAbstractTextDocumentLayout__PaintContext = nil
 
-	C.QAbstractTextDocumentLayout__PaintContext_new(&outptr_QAbstractTextDocumentLayout__PaintContext)
-	ret := newQAbstractTextDocumentLayout__PaintContext(outptr_QAbstractTextDocumentLayout__PaintContext)
+	ret := newQAbstractTextDocumentLayout__PaintContext(C.QAbstractTextDocumentLayout__PaintContext_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAbstractTextDocumentLayout__PaintContext2 constructs a new QAbstractTextDocumentLayout::PaintContext object.
 func NewQAbstractTextDocumentLayout__PaintContext2(param1 *QAbstractTextDocumentLayout__PaintContext) *QAbstractTextDocumentLayout__PaintContext {
-	var outptr_QAbstractTextDocumentLayout__PaintContext *C.QAbstractTextDocumentLayout__PaintContext = nil
 
-	C.QAbstractTextDocumentLayout__PaintContext_new2(param1.cPointer(), &outptr_QAbstractTextDocumentLayout__PaintContext)
-	ret := newQAbstractTextDocumentLayout__PaintContext(outptr_QAbstractTextDocumentLayout__PaintContext)
+	ret := newQAbstractTextDocumentLayout__PaintContext(C.QAbstractTextDocumentLayout__PaintContext_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

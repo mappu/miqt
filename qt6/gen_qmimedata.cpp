@@ -305,10 +305,12 @@ public:
 
 };
 
-void QMimeData_new(QMimeData** outptr_QMimeData, QObject** outptr_QObject) {
-	MiqtVirtualQMimeData* ret = new MiqtVirtualQMimeData();
-	*outptr_QMimeData = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QMimeData* QMimeData_new() {
+	return new MiqtVirtualQMimeData();
+}
+
+void QMimeData_virtbase(QMimeData* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QMimeData_MetaObject(const QMimeData* self) {

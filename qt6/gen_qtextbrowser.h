@@ -72,8 +72,9 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QTextBrowser_new(QWidget* parent, QTextBrowser** outptr_QTextBrowser, QTextEdit** outptr_QTextEdit, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QTextBrowser_new2(QTextBrowser** outptr_QTextBrowser, QTextEdit** outptr_QTextEdit, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QTextBrowser* QTextBrowser_new(QWidget* parent);
+QTextBrowser* QTextBrowser_new2();
+void QTextBrowser_virtbase(QTextBrowser* src, QTextEdit** outptr_QTextEdit);
 QMetaObject* QTextBrowser_MetaObject(const QTextBrowser* self);
 void* QTextBrowser_Metacast(QTextBrowser* self, const char* param1);
 struct miqt_string QTextBrowser_Tr(const char* s);

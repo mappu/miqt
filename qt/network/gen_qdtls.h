@@ -52,8 +52,9 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QUdpSocket QUdpSocket;
 #endif
 
-void QDtlsClientVerifier_new(QDtlsClientVerifier** outptr_QDtlsClientVerifier, QObject** outptr_QObject);
-void QDtlsClientVerifier_new2(QObject* parent, QDtlsClientVerifier** outptr_QDtlsClientVerifier, QObject** outptr_QObject);
+QDtlsClientVerifier* QDtlsClientVerifier_new();
+QDtlsClientVerifier* QDtlsClientVerifier_new2(QObject* parent);
+void QDtlsClientVerifier_virtbase(QDtlsClientVerifier* src, QObject** outptr_QObject);
 QMetaObject* QDtlsClientVerifier_MetaObject(const QDtlsClientVerifier* self);
 void* QDtlsClientVerifier_Metacast(QDtlsClientVerifier* self, const char* param1);
 struct miqt_string QDtlsClientVerifier_Tr(const char* s);
@@ -84,8 +85,9 @@ void QDtlsClientVerifier_override_virtual_DisconnectNotify(void* self, intptr_t 
 void QDtlsClientVerifier_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QDtlsClientVerifier_Delete(QDtlsClientVerifier* self, bool isSubclass);
 
-void QDtls_new(int mode, QDtls** outptr_QDtls, QObject** outptr_QObject);
-void QDtls_new2(int mode, QObject* parent, QDtls** outptr_QDtls, QObject** outptr_QObject);
+QDtls* QDtls_new(int mode);
+QDtls* QDtls_new2(int mode, QObject* parent);
+void QDtls_virtbase(QDtls* src, QObject** outptr_QObject);
 QMetaObject* QDtls_MetaObject(const QDtls* self);
 void* QDtls_Metacast(QDtls* self, const char* param1);
 struct miqt_string QDtls_Tr(const char* s);
@@ -143,9 +145,9 @@ void QDtls_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QDtls_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QDtls_Delete(QDtls* self, bool isSubclass);
 
-void QDtlsClientVerifier__GeneratorParameters_new(QDtlsClientVerifier__GeneratorParameters** outptr_QDtlsClientVerifier__GeneratorParameters);
-void QDtlsClientVerifier__GeneratorParameters_new2(int a, struct miqt_string s, QDtlsClientVerifier__GeneratorParameters** outptr_QDtlsClientVerifier__GeneratorParameters);
-void QDtlsClientVerifier__GeneratorParameters_new3(QDtlsClientVerifier__GeneratorParameters* param1, QDtlsClientVerifier__GeneratorParameters** outptr_QDtlsClientVerifier__GeneratorParameters);
+QDtlsClientVerifier__GeneratorParameters* QDtlsClientVerifier__GeneratorParameters_new();
+QDtlsClientVerifier__GeneratorParameters* QDtlsClientVerifier__GeneratorParameters_new2(int a, struct miqt_string s);
+QDtlsClientVerifier__GeneratorParameters* QDtlsClientVerifier__GeneratorParameters_new3(QDtlsClientVerifier__GeneratorParameters* param1);
 void QDtlsClientVerifier__GeneratorParameters_OperatorAssign(QDtlsClientVerifier__GeneratorParameters* self, QDtlsClientVerifier__GeneratorParameters* param1);
 void QDtlsClientVerifier__GeneratorParameters_Delete(QDtlsClientVerifier__GeneratorParameters* self, bool isSubclass);
 

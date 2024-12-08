@@ -20,8 +20,8 @@ class QWebEngineFindTextResult;
 typedef struct QWebEngineFindTextResult QWebEngineFindTextResult;
 #endif
 
-void QWebEngineFindTextResult_new(QWebEngineFindTextResult** outptr_QWebEngineFindTextResult);
-void QWebEngineFindTextResult_new2(QWebEngineFindTextResult* other, QWebEngineFindTextResult** outptr_QWebEngineFindTextResult);
+QWebEngineFindTextResult* QWebEngineFindTextResult_new();
+QWebEngineFindTextResult* QWebEngineFindTextResult_new2(QWebEngineFindTextResult* other);
 int QWebEngineFindTextResult_NumberOfMatches(const QWebEngineFindTextResult* self);
 int QWebEngineFindTextResult_ActiveMatch(const QWebEngineFindTextResult* self);
 void QWebEngineFindTextResult_OperatorAssign(QWebEngineFindTextResult* self, QWebEngineFindTextResult* other);

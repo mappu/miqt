@@ -26,6 +26,7 @@ typedef struct QObject QObject;
 typedef struct QPointF QPointF;
 #endif
 
+void QCameraExposure_virtbase(QCameraExposure* src, QObject** outptr_QObject);
 QMetaObject* QCameraExposure_MetaObject(const QCameraExposure* self);
 void* QCameraExposure_Metacast(QCameraExposure* self, const char* param1);
 struct miqt_string QCameraExposure_Tr(const char* s);

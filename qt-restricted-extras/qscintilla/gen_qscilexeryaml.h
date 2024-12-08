@@ -34,8 +34,9 @@ typedef struct QsciLexerYAML QsciLexerYAML;
 typedef struct QsciScintilla QsciScintilla;
 #endif
 
-void QsciLexerYAML_new(QsciLexerYAML** outptr_QsciLexerYAML, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerYAML_new2(QObject* parent, QsciLexerYAML** outptr_QsciLexerYAML, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerYAML* QsciLexerYAML_new();
+QsciLexerYAML* QsciLexerYAML_new2(QObject* parent);
+void QsciLexerYAML_virtbase(QsciLexerYAML* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerYAML_MetaObject(const QsciLexerYAML* self);
 void* QsciLexerYAML_Metacast(QsciLexerYAML* self, const char* param1);
 struct miqt_string QsciLexerYAML_Tr(const char* s);

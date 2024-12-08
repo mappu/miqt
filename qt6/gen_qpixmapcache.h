@@ -40,8 +40,8 @@ void QPixmapCache_RemoveWithKey(QPixmapCache__Key* key);
 void QPixmapCache_Clear();
 void QPixmapCache_Delete(QPixmapCache* self, bool isSubclass);
 
-void QPixmapCache__Key_new(QPixmapCache__Key** outptr_QPixmapCache__Key);
-void QPixmapCache__Key_new2(QPixmapCache__Key* other, QPixmapCache__Key** outptr_QPixmapCache__Key);
+QPixmapCache__Key* QPixmapCache__Key_new();
+QPixmapCache__Key* QPixmapCache__Key_new2(QPixmapCache__Key* other);
 bool QPixmapCache__Key_OperatorEqual(const QPixmapCache__Key* self, QPixmapCache__Key* key);
 bool QPixmapCache__Key_OperatorNotEqual(const QPixmapCache__Key* self, QPixmapCache__Key* key);
 void QPixmapCache__Key_OperatorAssign(QPixmapCache__Key* self, QPixmapCache__Key* other);

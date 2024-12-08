@@ -1185,20 +1185,16 @@ public:
 
 };
 
-void QIdentityProxyModel_new(QIdentityProxyModel** outptr_QIdentityProxyModel, QAbstractProxyModel** outptr_QAbstractProxyModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQIdentityProxyModel* ret = new MiqtVirtualQIdentityProxyModel();
-	*outptr_QIdentityProxyModel = ret;
-	*outptr_QAbstractProxyModel = static_cast<QAbstractProxyModel*>(ret);
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QIdentityProxyModel* QIdentityProxyModel_new() {
+	return new MiqtVirtualQIdentityProxyModel();
 }
 
-void QIdentityProxyModel_new2(QObject* parent, QIdentityProxyModel** outptr_QIdentityProxyModel, QAbstractProxyModel** outptr_QAbstractProxyModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQIdentityProxyModel* ret = new MiqtVirtualQIdentityProxyModel(parent);
-	*outptr_QIdentityProxyModel = ret;
-	*outptr_QAbstractProxyModel = static_cast<QAbstractProxyModel*>(ret);
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QIdentityProxyModel* QIdentityProxyModel_new2(QObject* parent) {
+	return new MiqtVirtualQIdentityProxyModel(parent);
+}
+
+void QIdentityProxyModel_virtbase(QIdentityProxyModel* src, QAbstractProxyModel** outptr_QAbstractProxyModel) {
+	*outptr_QAbstractProxyModel = static_cast<QAbstractProxyModel*>(src);
 }
 
 QMetaObject* QIdentityProxyModel_MetaObject(const QIdentityProxyModel* self) {

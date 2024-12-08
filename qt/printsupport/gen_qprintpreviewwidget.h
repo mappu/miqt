@@ -78,12 +78,13 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QPrintPreviewWidget_new(QWidget* parent, QPrintPreviewWidget** outptr_QPrintPreviewWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QPrintPreviewWidget_new2(QPrinter* printer, QPrintPreviewWidget** outptr_QPrintPreviewWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QPrintPreviewWidget_new3(QPrintPreviewWidget** outptr_QPrintPreviewWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QPrintPreviewWidget_new4(QPrinter* printer, QWidget* parent, QPrintPreviewWidget** outptr_QPrintPreviewWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QPrintPreviewWidget_new5(QPrinter* printer, QWidget* parent, int flags, QPrintPreviewWidget** outptr_QPrintPreviewWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QPrintPreviewWidget_new6(QWidget* parent, int flags, QPrintPreviewWidget** outptr_QPrintPreviewWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QPrintPreviewWidget* QPrintPreviewWidget_new(QWidget* parent);
+QPrintPreviewWidget* QPrintPreviewWidget_new2(QPrinter* printer);
+QPrintPreviewWidget* QPrintPreviewWidget_new3();
+QPrintPreviewWidget* QPrintPreviewWidget_new4(QPrinter* printer, QWidget* parent);
+QPrintPreviewWidget* QPrintPreviewWidget_new5(QPrinter* printer, QWidget* parent, int flags);
+QPrintPreviewWidget* QPrintPreviewWidget_new6(QWidget* parent, int flags);
+void QPrintPreviewWidget_virtbase(QPrintPreviewWidget* src, QWidget** outptr_QWidget);
 QMetaObject* QPrintPreviewWidget_MetaObject(const QPrintPreviewWidget* self);
 void* QPrintPreviewWidget_Metacast(QPrintPreviewWidget* self, const char* param1);
 struct miqt_string QPrintPreviewWidget_Tr(const char* s);

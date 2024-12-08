@@ -60,24 +60,19 @@ func newQWebEngineLoadingInfo(h *C.QWebEngineLoadingInfo) *QWebEngineLoadingInfo
 	if h == nil {
 		return nil
 	}
+
 	return &QWebEngineLoadingInfo{h: h}
 }
 
 // UnsafeNewQWebEngineLoadingInfo constructs the type using only unsafe pointers.
 func UnsafeNewQWebEngineLoadingInfo(h unsafe.Pointer) *QWebEngineLoadingInfo {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineLoadingInfo{h: (*C.QWebEngineLoadingInfo)(h)}
+	return newQWebEngineLoadingInfo((*C.QWebEngineLoadingInfo)(h))
 }
 
 // NewQWebEngineLoadingInfo constructs a new QWebEngineLoadingInfo object.
 func NewQWebEngineLoadingInfo(other *QWebEngineLoadingInfo) *QWebEngineLoadingInfo {
-	var outptr_QWebEngineLoadingInfo *C.QWebEngineLoadingInfo = nil
 
-	C.QWebEngineLoadingInfo_new(other.cPointer(), &outptr_QWebEngineLoadingInfo)
-	ret := newQWebEngineLoadingInfo(outptr_QWebEngineLoadingInfo)
+	ret := newQWebEngineLoadingInfo(C.QWebEngineLoadingInfo_new(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -87,8 +82,7 @@ func (this *QWebEngineLoadingInfo) OperatorAssign(other *QWebEngineLoadingInfo) 
 }
 
 func (this *QWebEngineLoadingInfo) Url() *qt6.QUrl {
-	_ret := C.QWebEngineLoadingInfo_Url(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineLoadingInfo_Url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

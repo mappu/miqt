@@ -199,16 +199,16 @@ public:
 
 };
 
-void QImageCapture_new(QImageCapture** outptr_QImageCapture, QObject** outptr_QObject) {
-	MiqtVirtualQImageCapture* ret = new MiqtVirtualQImageCapture();
-	*outptr_QImageCapture = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QImageCapture* QImageCapture_new() {
+	return new MiqtVirtualQImageCapture();
 }
 
-void QImageCapture_new2(QObject* parent, QImageCapture** outptr_QImageCapture, QObject** outptr_QObject) {
-	MiqtVirtualQImageCapture* ret = new MiqtVirtualQImageCapture(parent);
-	*outptr_QImageCapture = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QImageCapture* QImageCapture_new2(QObject* parent) {
+	return new MiqtVirtualQImageCapture(parent);
+}
+
+void QImageCapture_virtbase(QImageCapture* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QImageCapture_MetaObject(const QImageCapture* self) {

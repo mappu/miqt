@@ -54,54 +54,43 @@ func newQItemSelectionRange(h *C.QItemSelectionRange) *QItemSelectionRange {
 	if h == nil {
 		return nil
 	}
+
 	return &QItemSelectionRange{h: h}
 }
 
 // UnsafeNewQItemSelectionRange constructs the type using only unsafe pointers.
 func UnsafeNewQItemSelectionRange(h unsafe.Pointer) *QItemSelectionRange {
-	if h == nil {
-		return nil
-	}
-
-	return &QItemSelectionRange{h: (*C.QItemSelectionRange)(h)}
+	return newQItemSelectionRange((*C.QItemSelectionRange)(h))
 }
 
 // NewQItemSelectionRange constructs a new QItemSelectionRange object.
 func NewQItemSelectionRange() *QItemSelectionRange {
-	var outptr_QItemSelectionRange *C.QItemSelectionRange = nil
 
-	C.QItemSelectionRange_new(&outptr_QItemSelectionRange)
-	ret := newQItemSelectionRange(outptr_QItemSelectionRange)
+	ret := newQItemSelectionRange(C.QItemSelectionRange_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQItemSelectionRange2 constructs a new QItemSelectionRange object.
 func NewQItemSelectionRange2(other *QItemSelectionRange) *QItemSelectionRange {
-	var outptr_QItemSelectionRange *C.QItemSelectionRange = nil
 
-	C.QItemSelectionRange_new2(other.cPointer(), &outptr_QItemSelectionRange)
-	ret := newQItemSelectionRange(outptr_QItemSelectionRange)
+	ret := newQItemSelectionRange(C.QItemSelectionRange_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQItemSelectionRange3 constructs a new QItemSelectionRange object.
 func NewQItemSelectionRange3(topL *QModelIndex, bottomR *QModelIndex) *QItemSelectionRange {
-	var outptr_QItemSelectionRange *C.QItemSelectionRange = nil
 
-	C.QItemSelectionRange_new3(topL.cPointer(), bottomR.cPointer(), &outptr_QItemSelectionRange)
-	ret := newQItemSelectionRange(outptr_QItemSelectionRange)
+	ret := newQItemSelectionRange(C.QItemSelectionRange_new3(topL.cPointer(), bottomR.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQItemSelectionRange4 constructs a new QItemSelectionRange object.
 func NewQItemSelectionRange4(index *QModelIndex) *QItemSelectionRange {
-	var outptr_QItemSelectionRange *C.QItemSelectionRange = nil
 
-	C.QItemSelectionRange_new4(index.cPointer(), &outptr_QItemSelectionRange)
-	ret := newQItemSelectionRange(outptr_QItemSelectionRange)
+	ret := newQItemSelectionRange(C.QItemSelectionRange_new4(index.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -139,22 +128,21 @@ func (this *QItemSelectionRange) Height() int {
 }
 
 func (this *QItemSelectionRange) TopLeft() *QPersistentModelIndex {
-	return UnsafeNewQPersistentModelIndex(unsafe.Pointer(C.QItemSelectionRange_TopLeft(this.h)))
+	return newQPersistentModelIndex(C.QItemSelectionRange_TopLeft(this.h))
 }
 
 func (this *QItemSelectionRange) BottomRight() *QPersistentModelIndex {
-	return UnsafeNewQPersistentModelIndex(unsafe.Pointer(C.QItemSelectionRange_BottomRight(this.h)))
+	return newQPersistentModelIndex(C.QItemSelectionRange_BottomRight(this.h))
 }
 
 func (this *QItemSelectionRange) Parent() *QModelIndex {
-	_ret := C.QItemSelectionRange_Parent(this.h)
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QItemSelectionRange_Parent(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QItemSelectionRange) Model() *QAbstractItemModel {
-	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QItemSelectionRange_Model(this.h)), nil)
+	return newQAbstractItemModel(C.QItemSelectionRange_Model(this.h))
 }
 
 func (this *QItemSelectionRange) Contains(index *QModelIndex) bool {
@@ -170,8 +158,7 @@ func (this *QItemSelectionRange) Intersects(other *QItemSelectionRange) bool {
 }
 
 func (this *QItemSelectionRange) Intersected(other *QItemSelectionRange) *QItemSelectionRange {
-	_ret := C.QItemSelectionRange_Intersected(this.h, other.cPointer())
-	_goptr := newQItemSelectionRange(_ret)
+	_goptr := newQItemSelectionRange(C.QItemSelectionRange_Intersected(this.h, other.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -201,8 +188,7 @@ func (this *QItemSelectionRange) Indexes() []QModelIndex {
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -244,59 +230,48 @@ func (this *QItemSelectionModel) UnsafePointer() unsafe.Pointer {
 }
 
 // newQItemSelectionModel constructs the type using only CGO pointers.
-func newQItemSelectionModel(h *C.QItemSelectionModel, h_QObject *C.QObject) *QItemSelectionModel {
+func newQItemSelectionModel(h *C.QItemSelectionModel) *QItemSelectionModel {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QItemSelectionModel_virtbase(h, &outptr_QObject)
+
 	return &QItemSelectionModel{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQItemSelectionModel constructs the type using only unsafe pointers.
-func UnsafeNewQItemSelectionModel(h unsafe.Pointer, h_QObject unsafe.Pointer) *QItemSelectionModel {
-	if h == nil {
-		return nil
-	}
-
-	return &QItemSelectionModel{h: (*C.QItemSelectionModel)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQItemSelectionModel(h unsafe.Pointer) *QItemSelectionModel {
+	return newQItemSelectionModel((*C.QItemSelectionModel)(h))
 }
 
 // NewQItemSelectionModel constructs a new QItemSelectionModel object.
 func NewQItemSelectionModel() *QItemSelectionModel {
-	var outptr_QItemSelectionModel *C.QItemSelectionModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QItemSelectionModel_new(&outptr_QItemSelectionModel, &outptr_QObject)
-	ret := newQItemSelectionModel(outptr_QItemSelectionModel, outptr_QObject)
+	ret := newQItemSelectionModel(C.QItemSelectionModel_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQItemSelectionModel2 constructs a new QItemSelectionModel object.
 func NewQItemSelectionModel2(model *QAbstractItemModel, parent *QObject) *QItemSelectionModel {
-	var outptr_QItemSelectionModel *C.QItemSelectionModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QItemSelectionModel_new2(model.cPointer(), parent.cPointer(), &outptr_QItemSelectionModel, &outptr_QObject)
-	ret := newQItemSelectionModel(outptr_QItemSelectionModel, outptr_QObject)
+	ret := newQItemSelectionModel(C.QItemSelectionModel_new2(model.cPointer(), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQItemSelectionModel3 constructs a new QItemSelectionModel object.
 func NewQItemSelectionModel3(model *QAbstractItemModel) *QItemSelectionModel {
-	var outptr_QItemSelectionModel *C.QItemSelectionModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QItemSelectionModel_new3(model.cPointer(), &outptr_QItemSelectionModel, &outptr_QObject)
-	ret := newQItemSelectionModel(outptr_QItemSelectionModel, outptr_QObject)
+	ret := newQItemSelectionModel(C.QItemSelectionModel_new3(model.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QItemSelectionModel) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QItemSelectionModel_MetaObject(this.h)))
+	return newQMetaObject(C.QItemSelectionModel_MetaObject(this.h))
 }
 
 func (this *QItemSelectionModel) Metacast(param1 string) unsafe.Pointer {
@@ -324,8 +299,7 @@ func QItemSelectionModel_TrUtf8(s string) string {
 }
 
 func (this *QItemSelectionModel) CurrentIndex() *QModelIndex {
-	_ret := C.QItemSelectionModel_CurrentIndex(this.h)
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QItemSelectionModel_CurrentIndex(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -359,8 +333,7 @@ func (this *QItemSelectionModel) SelectedIndexes() []QModelIndex {
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -372,8 +345,7 @@ func (this *QItemSelectionModel) SelectedRows() []QModelIndex {
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -385,8 +357,7 @@ func (this *QItemSelectionModel) SelectedColumns() []QModelIndex {
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -394,18 +365,17 @@ func (this *QItemSelectionModel) SelectedColumns() []QModelIndex {
 }
 
 func (this *QItemSelectionModel) Selection() *QItemSelection {
-	_ret := C.QItemSelectionModel_Selection(this.h)
-	_goptr := newQItemSelection(_ret)
+	_goptr := newQItemSelection(C.QItemSelectionModel_Selection(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QItemSelectionModel) Model() *QAbstractItemModel {
-	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QItemSelectionModel_Model(this.h)), nil)
+	return newQAbstractItemModel(C.QItemSelectionModel_Model(this.h))
 }
 
 func (this *QItemSelectionModel) Model2() *QAbstractItemModel {
-	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QItemSelectionModel_Model2(this.h)), nil)
+	return newQAbstractItemModel(C.QItemSelectionModel_Model2(this.h))
 }
 
 func (this *QItemSelectionModel) SetModel(model *QAbstractItemModel) {
@@ -455,8 +425,9 @@ func miqt_exec_callback_QItemSelectionModel_SelectionChanged(cb C.intptr_t, sele
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selected))
-	slotval2 := UnsafeNewQItemSelection(unsafe.Pointer(deselected))
+	slotval1 := newQItemSelection(selected)
+
+	slotval2 := newQItemSelection(deselected)
 
 	gofunc(slotval1, slotval2)
 }
@@ -476,8 +447,9 @@ func miqt_exec_callback_QItemSelectionModel_CurrentChanged(cb C.intptr_t, curren
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(current))
-	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(previous))
+	slotval1 := newQModelIndex(current)
+
+	slotval2 := newQModelIndex(previous)
 
 	gofunc(slotval1, slotval2)
 }
@@ -497,8 +469,9 @@ func miqt_exec_callback_QItemSelectionModel_CurrentRowChanged(cb C.intptr_t, cur
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(current))
-	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(previous))
+	slotval1 := newQModelIndex(current)
+
+	slotval2 := newQModelIndex(previous)
 
 	gofunc(slotval1, slotval2)
 }
@@ -518,8 +491,9 @@ func miqt_exec_callback_QItemSelectionModel_CurrentColumnChanged(cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(current))
-	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(previous))
+	slotval1 := newQModelIndex(current)
+
+	slotval2 := newQModelIndex(previous)
 
 	gofunc(slotval1, slotval2)
 }
@@ -539,7 +513,7 @@ func miqt_exec_callback_QItemSelectionModel_ModelChanged(cb C.intptr_t, model *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAbstractItemModel(unsafe.Pointer(model), nil)
+	slotval1 := newQAbstractItemModel(model)
 
 	gofunc(slotval1)
 }
@@ -609,8 +583,7 @@ func (this *QItemSelectionModel) SelectedRows1(column int) []QModelIndex {
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -622,8 +595,7 @@ func (this *QItemSelectionModel) SelectedColumns1(row int) []QModelIndex {
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -636,6 +608,9 @@ func (this *QItemSelectionModel) callVirtualBase_SetCurrentIndex(index *QModelIn
 
 }
 func (this *QItemSelectionModel) OnSetCurrentIndex(slot func(super func(index *QModelIndex, command QItemSelectionModel__SelectionFlag), index *QModelIndex, command QItemSelectionModel__SelectionFlag)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemSelectionModel_override_virtual_SetCurrentIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -647,7 +622,8 @@ func miqt_exec_callback_QItemSelectionModel_SetCurrentIndex(self *C.QItemSelecti
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
+
 	slotval2 := (QItemSelectionModel__SelectionFlag)(command)
 
 	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_SetCurrentIndex, slotval1, slotval2)
@@ -660,6 +636,9 @@ func (this *QItemSelectionModel) callVirtualBase_Select(index *QModelIndex, comm
 
 }
 func (this *QItemSelectionModel) OnSelect(slot func(super func(index *QModelIndex, command QItemSelectionModel__SelectionFlag), index *QModelIndex, command QItemSelectionModel__SelectionFlag)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemSelectionModel_override_virtual_Select(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -671,7 +650,8 @@ func miqt_exec_callback_QItemSelectionModel_Select(self *C.QItemSelectionModel, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
+
 	slotval2 := (QItemSelectionModel__SelectionFlag)(command)
 
 	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_Select, slotval1, slotval2)
@@ -684,6 +664,9 @@ func (this *QItemSelectionModel) callVirtualBase_Select2(selection *QItemSelecti
 
 }
 func (this *QItemSelectionModel) OnSelect2(slot func(super func(selection *QItemSelection, command QItemSelectionModel__SelectionFlag), selection *QItemSelection, command QItemSelectionModel__SelectionFlag)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemSelectionModel_override_virtual_Select2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -695,7 +678,8 @@ func miqt_exec_callback_QItemSelectionModel_Select2(self *C.QItemSelectionModel,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQItemSelection(unsafe.Pointer(selection))
+	slotval1 := newQItemSelection(selection)
+
 	slotval2 := (QItemSelectionModel__SelectionFlag)(command)
 
 	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_Select2, slotval1, slotval2)
@@ -708,6 +692,9 @@ func (this *QItemSelectionModel) callVirtualBase_Clear() {
 
 }
 func (this *QItemSelectionModel) OnClear(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemSelectionModel_override_virtual_Clear(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -728,6 +715,9 @@ func (this *QItemSelectionModel) callVirtualBase_Reset() {
 
 }
 func (this *QItemSelectionModel) OnReset(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemSelectionModel_override_virtual_Reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -748,6 +738,9 @@ func (this *QItemSelectionModel) callVirtualBase_ClearCurrentIndex() {
 
 }
 func (this *QItemSelectionModel) OnClearCurrentIndex(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemSelectionModel_override_virtual_ClearCurrentIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -768,6 +761,9 @@ func (this *QItemSelectionModel) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QItemSelectionModel) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemSelectionModel_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -779,7 +775,7 @@ func miqt_exec_callback_QItemSelectionModel_Event(self *C.QItemSelectionModel, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QItemSelectionModel{h: self}).callVirtualBase_Event, slotval1)
 
@@ -793,6 +789,9 @@ func (this *QItemSelectionModel) callVirtualBase_EventFilter(watched *QObject, e
 
 }
 func (this *QItemSelectionModel) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemSelectionModel_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -804,8 +803,9 @@ func miqt_exec_callback_QItemSelectionModel_EventFilter(self *C.QItemSelectionMo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QItemSelectionModel{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -819,6 +819,9 @@ func (this *QItemSelectionModel) callVirtualBase_TimerEvent(event *QTimerEvent) 
 
 }
 func (this *QItemSelectionModel) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemSelectionModel_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -830,7 +833,7 @@ func miqt_exec_callback_QItemSelectionModel_TimerEvent(self *C.QItemSelectionMod
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -842,6 +845,9 @@ func (this *QItemSelectionModel) callVirtualBase_ChildEvent(event *QChildEvent) 
 
 }
 func (this *QItemSelectionModel) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemSelectionModel_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -853,7 +859,7 @@ func miqt_exec_callback_QItemSelectionModel_ChildEvent(self *C.QItemSelectionMod
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -865,6 +871,9 @@ func (this *QItemSelectionModel) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QItemSelectionModel) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemSelectionModel_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -876,7 +885,7 @@ func miqt_exec_callback_QItemSelectionModel_CustomEvent(self *C.QItemSelectionMo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -888,6 +897,9 @@ func (this *QItemSelectionModel) callVirtualBase_ConnectNotify(signal *QMetaMeth
 
 }
 func (this *QItemSelectionModel) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemSelectionModel_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -899,7 +911,7 @@ func miqt_exec_callback_QItemSelectionModel_ConnectNotify(self *C.QItemSelection
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -911,6 +923,9 @@ func (this *QItemSelectionModel) callVirtualBase_DisconnectNotify(signal *QMetaM
 
 }
 func (this *QItemSelectionModel) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemSelectionModel_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -922,7 +937,7 @@ func miqt_exec_callback_QItemSelectionModel_DisconnectNotify(self *C.QItemSelect
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QItemSelectionModel{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
@@ -968,34 +983,27 @@ func newQItemSelection(h *C.QItemSelection) *QItemSelection {
 	if h == nil {
 		return nil
 	}
+
 	return &QItemSelection{h: h}
 }
 
 // UnsafeNewQItemSelection constructs the type using only unsafe pointers.
 func UnsafeNewQItemSelection(h unsafe.Pointer) *QItemSelection {
-	if h == nil {
-		return nil
-	}
-
-	return &QItemSelection{h: (*C.QItemSelection)(h)}
+	return newQItemSelection((*C.QItemSelection)(h))
 }
 
 // NewQItemSelection constructs a new QItemSelection object.
 func NewQItemSelection() *QItemSelection {
-	var outptr_QItemSelection *C.QItemSelection = nil
 
-	C.QItemSelection_new(&outptr_QItemSelection)
-	ret := newQItemSelection(outptr_QItemSelection)
+	ret := newQItemSelection(C.QItemSelection_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQItemSelection2 constructs a new QItemSelection object.
 func NewQItemSelection2(topLeft *QModelIndex, bottomRight *QModelIndex) *QItemSelection {
-	var outptr_QItemSelection *C.QItemSelection = nil
 
-	C.QItemSelection_new2(topLeft.cPointer(), bottomRight.cPointer(), &outptr_QItemSelection)
-	ret := newQItemSelection(outptr_QItemSelection)
+	ret := newQItemSelection(C.QItemSelection_new2(topLeft.cPointer(), bottomRight.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -1013,8 +1021,7 @@ func (this *QItemSelection) Indexes() []QModelIndex {
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}

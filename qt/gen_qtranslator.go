@@ -35,48 +35,40 @@ func (this *QTranslator) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTranslator constructs the type using only CGO pointers.
-func newQTranslator(h *C.QTranslator, h_QObject *C.QObject) *QTranslator {
+func newQTranslator(h *C.QTranslator) *QTranslator {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QTranslator_virtbase(h, &outptr_QObject)
+
 	return &QTranslator{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQTranslator constructs the type using only unsafe pointers.
-func UnsafeNewQTranslator(h unsafe.Pointer, h_QObject unsafe.Pointer) *QTranslator {
-	if h == nil {
-		return nil
-	}
-
-	return &QTranslator{h: (*C.QTranslator)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQTranslator(h unsafe.Pointer) *QTranslator {
+	return newQTranslator((*C.QTranslator)(h))
 }
 
 // NewQTranslator constructs a new QTranslator object.
 func NewQTranslator() *QTranslator {
-	var outptr_QTranslator *C.QTranslator = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTranslator_new(&outptr_QTranslator, &outptr_QObject)
-	ret := newQTranslator(outptr_QTranslator, outptr_QObject)
+	ret := newQTranslator(C.QTranslator_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTranslator2 constructs a new QTranslator object.
 func NewQTranslator2(parent *QObject) *QTranslator {
-	var outptr_QTranslator *C.QTranslator = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTranslator_new2(parent.cPointer(), &outptr_QTranslator, &outptr_QObject)
-	ret := newQTranslator(outptr_QTranslator, outptr_QObject)
+	ret := newQTranslator(C.QTranslator_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QTranslator) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTranslator_MetaObject(this.h)))
+	return newQMetaObject(C.QTranslator_MetaObject(this.h))
 }
 
 func (this *QTranslator) Metacast(param1 string) unsafe.Pointer {
@@ -316,6 +308,9 @@ func (this *QTranslator) callVirtualBase_Translate(context string, sourceText st
 	return _ret
 }
 func (this *QTranslator) OnTranslate(slot func(super func(context string, sourceText string, disambiguation string, n int) string, context string, sourceText string, disambiguation string, n int) string) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTranslator_override_virtual_Translate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -354,6 +349,9 @@ func (this *QTranslator) callVirtualBase_IsEmpty() bool {
 
 }
 func (this *QTranslator) OnIsEmpty(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTranslator_override_virtual_IsEmpty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -376,6 +374,9 @@ func (this *QTranslator) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QTranslator) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTranslator_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -387,7 +388,7 @@ func miqt_exec_callback_QTranslator_Event(self *C.QTranslator, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QTranslator{h: self}).callVirtualBase_Event, slotval1)
 
@@ -401,6 +402,9 @@ func (this *QTranslator) callVirtualBase_EventFilter(watched *QObject, event *QE
 
 }
 func (this *QTranslator) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTranslator_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -412,8 +416,9 @@ func miqt_exec_callback_QTranslator_EventFilter(self *C.QTranslator, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QTranslator{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -427,6 +432,9 @@ func (this *QTranslator) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QTranslator) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTranslator_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -438,7 +446,7 @@ func miqt_exec_callback_QTranslator_TimerEvent(self *C.QTranslator, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QTranslator{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -450,6 +458,9 @@ func (this *QTranslator) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QTranslator) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTranslator_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -461,7 +472,7 @@ func miqt_exec_callback_QTranslator_ChildEvent(self *C.QTranslator, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QTranslator{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -473,6 +484,9 @@ func (this *QTranslator) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QTranslator) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTranslator_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -484,7 +498,7 @@ func miqt_exec_callback_QTranslator_CustomEvent(self *C.QTranslator, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QTranslator{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -496,6 +510,9 @@ func (this *QTranslator) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QTranslator) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTranslator_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -507,7 +524,7 @@ func miqt_exec_callback_QTranslator_ConnectNotify(self *C.QTranslator, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QTranslator{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -519,6 +536,9 @@ func (this *QTranslator) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QTranslator) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTranslator_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -530,7 +550,7 @@ func miqt_exec_callback_QTranslator_DisconnectNotify(self *C.QTranslator, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QTranslator{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

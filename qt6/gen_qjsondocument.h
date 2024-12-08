@@ -33,10 +33,10 @@ typedef struct QVariant QVariant;
 struct miqt_string QJsonParseError_ErrorString(const QJsonParseError* self);
 void QJsonParseError_Delete(QJsonParseError* self, bool isSubclass);
 
-void QJsonDocument_new(QJsonDocument** outptr_QJsonDocument);
-void QJsonDocument_new2(QJsonObject* object, QJsonDocument** outptr_QJsonDocument);
-void QJsonDocument_new3(QJsonArray* array, QJsonDocument** outptr_QJsonDocument);
-void QJsonDocument_new4(QJsonDocument* other, QJsonDocument** outptr_QJsonDocument);
+QJsonDocument* QJsonDocument_new();
+QJsonDocument* QJsonDocument_new2(QJsonObject* object);
+QJsonDocument* QJsonDocument_new3(QJsonArray* array);
+QJsonDocument* QJsonDocument_new4(QJsonDocument* other);
 void QJsonDocument_OperatorAssign(QJsonDocument* self, QJsonDocument* other);
 void QJsonDocument_Swap(QJsonDocument* self, QJsonDocument* other);
 QJsonDocument* QJsonDocument_FromVariant(QVariant* variant);

@@ -10,6 +10,10 @@
 #include "gen_qmediarecordercontrol.h"
 #include "_cgo_export.h"
 
+void QMediaRecorderControl_virtbase(QMediaRecorderControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
+
 QMetaObject* QMediaRecorderControl_MetaObject(const QMediaRecorderControl* self) {
 	return (QMetaObject*) self->metaObject();
 }

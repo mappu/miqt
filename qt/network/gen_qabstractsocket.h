@@ -34,7 +34,8 @@ typedef struct QObject QObject;
 typedef struct QVariant QVariant;
 #endif
 
-void QAbstractSocket_new(int socketType, QObject* parent, QAbstractSocket** outptr_QAbstractSocket, QIODevice** outptr_QIODevice, QObject** outptr_QObject);
+QAbstractSocket* QAbstractSocket_new(int socketType, QObject* parent);
+void QAbstractSocket_virtbase(QAbstractSocket* src, QIODevice** outptr_QIODevice);
 QMetaObject* QAbstractSocket_MetaObject(const QAbstractSocket* self);
 void* QAbstractSocket_Metacast(QAbstractSocket* self, const char* param1);
 struct miqt_string QAbstractSocket_Tr(const char* s);

@@ -34,8 +34,9 @@ typedef struct QsciLexerSQL QsciLexerSQL;
 typedef struct QsciScintilla QsciScintilla;
 #endif
 
-void QsciLexerSQL_new(QsciLexerSQL** outptr_QsciLexerSQL, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerSQL_new2(QObject* parent, QsciLexerSQL** outptr_QsciLexerSQL, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerSQL* QsciLexerSQL_new();
+QsciLexerSQL* QsciLexerSQL_new2(QObject* parent);
+void QsciLexerSQL_virtbase(QsciLexerSQL* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerSQL_MetaObject(const QsciLexerSQL* self);
 void* QsciLexerSQL_Metacast(QsciLexerSQL* self, const char* param1);
 struct miqt_string QsciLexerSQL_Tr(const char* s);

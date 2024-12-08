@@ -30,6 +30,7 @@ typedef struct QSize QSize;
 typedef struct QVideoWindowControl QVideoWindowControl;
 #endif
 
+void QVideoWindowControl_virtbase(QVideoWindowControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QVideoWindowControl_MetaObject(const QVideoWindowControl* self);
 void* QVideoWindowControl_Metacast(QVideoWindowControl* self, const char* param1);
 struct miqt_string QVideoWindowControl_Tr(const char* s);

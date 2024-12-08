@@ -35,26 +35,24 @@ func (this *QStyleHints) UnsafePointer() unsafe.Pointer {
 }
 
 // newQStyleHints constructs the type using only CGO pointers.
-func newQStyleHints(h *C.QStyleHints, h_QObject *C.QObject) *QStyleHints {
+func newQStyleHints(h *C.QStyleHints) *QStyleHints {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QStyleHints_virtbase(h, &outptr_QObject)
+
 	return &QStyleHints{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQStyleHints constructs the type using only unsafe pointers.
-func UnsafeNewQStyleHints(h unsafe.Pointer, h_QObject unsafe.Pointer) *QStyleHints {
-	if h == nil {
-		return nil
-	}
-
-	return &QStyleHints{h: (*C.QStyleHints)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQStyleHints(h unsafe.Pointer) *QStyleHints {
+	return newQStyleHints((*C.QStyleHints)(h))
 }
 
 func (this *QStyleHints) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QStyleHints_MetaObject(this.h)))
+	return newQMetaObject(C.QStyleHints_MetaObject(this.h))
 }
 
 func (this *QStyleHints) Metacast(param1 string) unsafe.Pointer {
@@ -166,8 +164,7 @@ func (this *QStyleHints) PasswordMaskDelay() int {
 }
 
 func (this *QStyleHints) PasswordMaskCharacter() *QChar {
-	_ret := C.QStyleHints_PasswordMaskCharacter(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QStyleHints_PasswordMaskCharacter(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

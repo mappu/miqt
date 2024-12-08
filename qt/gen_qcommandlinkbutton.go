@@ -35,50 +35,34 @@ func (this *QCommandLinkButton) UnsafePointer() unsafe.Pointer {
 }
 
 // newQCommandLinkButton constructs the type using only CGO pointers.
-func newQCommandLinkButton(h *C.QCommandLinkButton, h_QPushButton *C.QPushButton, h_QAbstractButton *C.QAbstractButton, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QCommandLinkButton {
+func newQCommandLinkButton(h *C.QCommandLinkButton) *QCommandLinkButton {
 	if h == nil {
 		return nil
 	}
+	var outptr_QPushButton *C.QPushButton = nil
+	C.QCommandLinkButton_virtbase(h, &outptr_QPushButton)
+
 	return &QCommandLinkButton{h: h,
-		QPushButton: newQPushButton(h_QPushButton, h_QAbstractButton, h_QWidget, h_QObject, h_QPaintDevice)}
+		QPushButton: newQPushButton(outptr_QPushButton)}
 }
 
 // UnsafeNewQCommandLinkButton constructs the type using only unsafe pointers.
-func UnsafeNewQCommandLinkButton(h unsafe.Pointer, h_QPushButton unsafe.Pointer, h_QAbstractButton unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QCommandLinkButton {
-	if h == nil {
-		return nil
-	}
-
-	return &QCommandLinkButton{h: (*C.QCommandLinkButton)(h),
-		QPushButton: UnsafeNewQPushButton(h_QPushButton, h_QAbstractButton, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQCommandLinkButton(h unsafe.Pointer) *QCommandLinkButton {
+	return newQCommandLinkButton((*C.QCommandLinkButton)(h))
 }
 
 // NewQCommandLinkButton constructs a new QCommandLinkButton object.
 func NewQCommandLinkButton(parent *QWidget) *QCommandLinkButton {
-	var outptr_QCommandLinkButton *C.QCommandLinkButton = nil
-	var outptr_QPushButton *C.QPushButton = nil
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QCommandLinkButton_new(parent.cPointer(), &outptr_QCommandLinkButton, &outptr_QPushButton, &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQCommandLinkButton(outptr_QCommandLinkButton, outptr_QPushButton, outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQCommandLinkButton(C.QCommandLinkButton_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCommandLinkButton2 constructs a new QCommandLinkButton object.
 func NewQCommandLinkButton2() *QCommandLinkButton {
-	var outptr_QCommandLinkButton *C.QCommandLinkButton = nil
-	var outptr_QPushButton *C.QPushButton = nil
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QCommandLinkButton_new2(&outptr_QCommandLinkButton, &outptr_QPushButton, &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQCommandLinkButton(outptr_QCommandLinkButton, outptr_QPushButton, outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQCommandLinkButton(C.QCommandLinkButton_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -89,15 +73,8 @@ func NewQCommandLinkButton3(text string) *QCommandLinkButton {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QCommandLinkButton *C.QCommandLinkButton = nil
-	var outptr_QPushButton *C.QPushButton = nil
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QCommandLinkButton_new3(text_ms, &outptr_QCommandLinkButton, &outptr_QPushButton, &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQCommandLinkButton(outptr_QCommandLinkButton, outptr_QPushButton, outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQCommandLinkButton(C.QCommandLinkButton_new3(text_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -112,15 +89,8 @@ func NewQCommandLinkButton4(text string, description string) *QCommandLinkButton
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
 	defer C.free(unsafe.Pointer(description_ms.data))
-	var outptr_QCommandLinkButton *C.QCommandLinkButton = nil
-	var outptr_QPushButton *C.QPushButton = nil
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QCommandLinkButton_new4(text_ms, description_ms, &outptr_QCommandLinkButton, &outptr_QPushButton, &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQCommandLinkButton(outptr_QCommandLinkButton, outptr_QPushButton, outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQCommandLinkButton(C.QCommandLinkButton_new4(text_ms, description_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -131,15 +101,8 @@ func NewQCommandLinkButton5(text string, parent *QWidget) *QCommandLinkButton {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QCommandLinkButton *C.QCommandLinkButton = nil
-	var outptr_QPushButton *C.QPushButton = nil
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QCommandLinkButton_new5(text_ms, parent.cPointer(), &outptr_QCommandLinkButton, &outptr_QPushButton, &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQCommandLinkButton(outptr_QCommandLinkButton, outptr_QPushButton, outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQCommandLinkButton(C.QCommandLinkButton_new5(text_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -154,21 +117,14 @@ func NewQCommandLinkButton6(text string, description string, parent *QWidget) *Q
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
 	defer C.free(unsafe.Pointer(description_ms.data))
-	var outptr_QCommandLinkButton *C.QCommandLinkButton = nil
-	var outptr_QPushButton *C.QPushButton = nil
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QCommandLinkButton_new6(text_ms, description_ms, parent.cPointer(), &outptr_QCommandLinkButton, &outptr_QPushButton, &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQCommandLinkButton(outptr_QCommandLinkButton, outptr_QPushButton, outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQCommandLinkButton(C.QCommandLinkButton_new6(text_ms, description_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QCommandLinkButton) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QCommandLinkButton_MetaObject(this.h)))
+	return newQMetaObject(C.QCommandLinkButton_MetaObject(this.h))
 }
 
 func (this *QCommandLinkButton) Metacast(param1 string) unsafe.Pointer {
@@ -256,13 +212,15 @@ func QCommandLinkButton_TrUtf83(s string, c string, n int) string {
 
 func (this *QCommandLinkButton) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QCommandLinkButton_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QCommandLinkButton_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QCommandLinkButton) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCommandLinkButton_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -285,6 +243,9 @@ func (this *QCommandLinkButton) callVirtualBase_HeightForWidth(param1 int) int {
 
 }
 func (this *QCommandLinkButton) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCommandLinkButton_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -306,13 +267,15 @@ func miqt_exec_callback_QCommandLinkButton_HeightForWidth(self *C.QCommandLinkBu
 
 func (this *QCommandLinkButton) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QCommandLinkButton_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QCommandLinkButton_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QCommandLinkButton) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCommandLinkButton_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -335,6 +298,9 @@ func (this *QCommandLinkButton) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QCommandLinkButton) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCommandLinkButton_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -346,7 +312,7 @@ func miqt_exec_callback_QCommandLinkButton_Event(self *C.QCommandLinkButton, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QCommandLinkButton{h: self}).callVirtualBase_Event, slotval1)
 
@@ -360,6 +326,9 @@ func (this *QCommandLinkButton) callVirtualBase_PaintEvent(param1 *QPaintEvent) 
 
 }
 func (this *QCommandLinkButton) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCommandLinkButton_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -371,7 +340,7 @@ func miqt_exec_callback_QCommandLinkButton_PaintEvent(self *C.QCommandLinkButton
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQPaintEvent(param1)
 
 	gofunc((&QCommandLinkButton{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -383,6 +352,9 @@ func (this *QCommandLinkButton) callVirtualBase_KeyPressEvent(param1 *QKeyEvent)
 
 }
 func (this *QCommandLinkButton) OnKeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCommandLinkButton_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -394,7 +366,7 @@ func miqt_exec_callback_QCommandLinkButton_KeyPressEvent(self *C.QCommandLinkBut
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQKeyEvent(param1)
 
 	gofunc((&QCommandLinkButton{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -406,6 +378,9 @@ func (this *QCommandLinkButton) callVirtualBase_FocusInEvent(param1 *QFocusEvent
 
 }
 func (this *QCommandLinkButton) OnFocusInEvent(slot func(super func(param1 *QFocusEvent), param1 *QFocusEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCommandLinkButton_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -417,7 +392,7 @@ func miqt_exec_callback_QCommandLinkButton_FocusInEvent(self *C.QCommandLinkButt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQFocusEvent(param1)
 
 	gofunc((&QCommandLinkButton{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -429,6 +404,9 @@ func (this *QCommandLinkButton) callVirtualBase_FocusOutEvent(param1 *QFocusEven
 
 }
 func (this *QCommandLinkButton) OnFocusOutEvent(slot func(super func(param1 *QFocusEvent), param1 *QFocusEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCommandLinkButton_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -440,7 +418,7 @@ func miqt_exec_callback_QCommandLinkButton_FocusOutEvent(self *C.QCommandLinkBut
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQFocusEvent(param1)
 
 	gofunc((&QCommandLinkButton{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -452,6 +430,9 @@ func (this *QCommandLinkButton) callVirtualBase_HitButton(pos *QPoint) bool {
 
 }
 func (this *QCommandLinkButton) OnHitButton(slot func(super func(pos *QPoint) bool, pos *QPoint) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCommandLinkButton_override_virtual_HitButton(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -463,7 +444,7 @@ func miqt_exec_callback_QCommandLinkButton_HitButton(self *C.QCommandLinkButton,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(pos))
+	slotval1 := newQPoint(pos)
 
 	virtualReturn := gofunc((&QCommandLinkButton{h: self}).callVirtualBase_HitButton, slotval1)
 

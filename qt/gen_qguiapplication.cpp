@@ -79,18 +79,16 @@ public:
 
 };
 
-void QGuiApplication_new(int* argc, char** argv, QGuiApplication** outptr_QGuiApplication, QCoreApplication** outptr_QCoreApplication, QObject** outptr_QObject) {
-	MiqtVirtualQGuiApplication* ret = new MiqtVirtualQGuiApplication(static_cast<int&>(*argc), argv);
-	*outptr_QGuiApplication = ret;
-	*outptr_QCoreApplication = static_cast<QCoreApplication*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGuiApplication* QGuiApplication_new(int* argc, char** argv) {
+	return new MiqtVirtualQGuiApplication(static_cast<int&>(*argc), argv);
 }
 
-void QGuiApplication_new2(int* argc, char** argv, int param3, QGuiApplication** outptr_QGuiApplication, QCoreApplication** outptr_QCoreApplication, QObject** outptr_QObject) {
-	MiqtVirtualQGuiApplication* ret = new MiqtVirtualQGuiApplication(static_cast<int&>(*argc), argv, static_cast<int>(param3));
-	*outptr_QGuiApplication = ret;
-	*outptr_QCoreApplication = static_cast<QCoreApplication*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGuiApplication* QGuiApplication_new2(int* argc, char** argv, int param3) {
+	return new MiqtVirtualQGuiApplication(static_cast<int&>(*argc), argv, static_cast<int>(param3));
+}
+
+void QGuiApplication_virtbase(QGuiApplication* src, QCoreApplication** outptr_QCoreApplication) {
+	*outptr_QCoreApplication = static_cast<QCoreApplication*>(src);
 }
 
 QMetaObject* QGuiApplication_MetaObject(const QGuiApplication* self) {

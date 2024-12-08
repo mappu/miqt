@@ -22,12 +22,12 @@ typedef struct QAudioBuffer QAudioBuffer;
 typedef struct QAudioFormat QAudioFormat;
 #endif
 
-void QAudioBuffer_new(QAudioBuffer** outptr_QAudioBuffer);
-void QAudioBuffer_new2(QAudioBuffer* other, QAudioBuffer** outptr_QAudioBuffer);
-void QAudioBuffer_new3(struct miqt_string data, QAudioFormat* format, QAudioBuffer** outptr_QAudioBuffer);
-void QAudioBuffer_new4(int numFrames, QAudioFormat* format, QAudioBuffer** outptr_QAudioBuffer);
-void QAudioBuffer_new5(struct miqt_string data, QAudioFormat* format, long long startTime, QAudioBuffer** outptr_QAudioBuffer);
-void QAudioBuffer_new6(int numFrames, QAudioFormat* format, long long startTime, QAudioBuffer** outptr_QAudioBuffer);
+QAudioBuffer* QAudioBuffer_new();
+QAudioBuffer* QAudioBuffer_new2(QAudioBuffer* other);
+QAudioBuffer* QAudioBuffer_new3(struct miqt_string data, QAudioFormat* format);
+QAudioBuffer* QAudioBuffer_new4(int numFrames, QAudioFormat* format);
+QAudioBuffer* QAudioBuffer_new5(struct miqt_string data, QAudioFormat* format, long long startTime);
+QAudioBuffer* QAudioBuffer_new6(int numFrames, QAudioFormat* format, long long startTime);
 void QAudioBuffer_OperatorAssign(QAudioBuffer* self, QAudioBuffer* other);
 void QAudioBuffer_Swap(QAudioBuffer* self, QAudioBuffer* other);
 bool QAudioBuffer_IsValid(const QAudioBuffer* self);

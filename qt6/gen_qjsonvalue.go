@@ -49,64 +49,51 @@ func newQJsonValue(h *C.QJsonValue) *QJsonValue {
 	if h == nil {
 		return nil
 	}
+
 	return &QJsonValue{h: h}
 }
 
 // UnsafeNewQJsonValue constructs the type using only unsafe pointers.
 func UnsafeNewQJsonValue(h unsafe.Pointer) *QJsonValue {
-	if h == nil {
-		return nil
-	}
-
-	return &QJsonValue{h: (*C.QJsonValue)(h)}
+	return newQJsonValue((*C.QJsonValue)(h))
 }
 
 // NewQJsonValue constructs a new QJsonValue object.
 func NewQJsonValue() *QJsonValue {
-	var outptr_QJsonValue *C.QJsonValue = nil
 
-	C.QJsonValue_new(&outptr_QJsonValue)
-	ret := newQJsonValue(outptr_QJsonValue)
+	ret := newQJsonValue(C.QJsonValue_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQJsonValue2 constructs a new QJsonValue object.
 func NewQJsonValue2(b bool) *QJsonValue {
-	var outptr_QJsonValue *C.QJsonValue = nil
 
-	C.QJsonValue_new2((C.bool)(b), &outptr_QJsonValue)
-	ret := newQJsonValue(outptr_QJsonValue)
+	ret := newQJsonValue(C.QJsonValue_new2((C.bool)(b)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQJsonValue3 constructs a new QJsonValue object.
 func NewQJsonValue3(n float64) *QJsonValue {
-	var outptr_QJsonValue *C.QJsonValue = nil
 
-	C.QJsonValue_new3((C.double)(n), &outptr_QJsonValue)
-	ret := newQJsonValue(outptr_QJsonValue)
+	ret := newQJsonValue(C.QJsonValue_new3((C.double)(n)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQJsonValue4 constructs a new QJsonValue object.
 func NewQJsonValue4(n int) *QJsonValue {
-	var outptr_QJsonValue *C.QJsonValue = nil
 
-	C.QJsonValue_new4((C.int)(n), &outptr_QJsonValue)
-	ret := newQJsonValue(outptr_QJsonValue)
+	ret := newQJsonValue(C.QJsonValue_new4((C.int)(n)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQJsonValue5 constructs a new QJsonValue object.
 func NewQJsonValue5(v int64) *QJsonValue {
-	var outptr_QJsonValue *C.QJsonValue = nil
 
-	C.QJsonValue_new5((C.longlong)(v), &outptr_QJsonValue)
-	ret := newQJsonValue(outptr_QJsonValue)
+	ret := newQJsonValue(C.QJsonValue_new5((C.longlong)(v)))
 	ret.isSubclass = true
 	return ret
 }
@@ -117,10 +104,8 @@ func NewQJsonValue6(s string) *QJsonValue {
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
 	defer C.free(unsafe.Pointer(s_ms.data))
-	var outptr_QJsonValue *C.QJsonValue = nil
 
-	C.QJsonValue_new6(s_ms, &outptr_QJsonValue)
-	ret := newQJsonValue(outptr_QJsonValue)
+	ret := newQJsonValue(C.QJsonValue_new6(s_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -129,50 +114,40 @@ func NewQJsonValue6(s string) *QJsonValue {
 func NewQJsonValue7(s string) *QJsonValue {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var outptr_QJsonValue *C.QJsonValue = nil
 
-	C.QJsonValue_new7(s_Cstring, &outptr_QJsonValue)
-	ret := newQJsonValue(outptr_QJsonValue)
+	ret := newQJsonValue(C.QJsonValue_new7(s_Cstring))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQJsonValue8 constructs a new QJsonValue object.
 func NewQJsonValue8(a *QJsonArray) *QJsonValue {
-	var outptr_QJsonValue *C.QJsonValue = nil
 
-	C.QJsonValue_new8(a.cPointer(), &outptr_QJsonValue)
-	ret := newQJsonValue(outptr_QJsonValue)
+	ret := newQJsonValue(C.QJsonValue_new8(a.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQJsonValue9 constructs a new QJsonValue object.
 func NewQJsonValue9(o *QJsonObject) *QJsonValue {
-	var outptr_QJsonValue *C.QJsonValue = nil
 
-	C.QJsonValue_new9(o.cPointer(), &outptr_QJsonValue)
-	ret := newQJsonValue(outptr_QJsonValue)
+	ret := newQJsonValue(C.QJsonValue_new9(o.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQJsonValue10 constructs a new QJsonValue object.
 func NewQJsonValue10(other *QJsonValue) *QJsonValue {
-	var outptr_QJsonValue *C.QJsonValue = nil
 
-	C.QJsonValue_new10(other.cPointer(), &outptr_QJsonValue)
-	ret := newQJsonValue(outptr_QJsonValue)
+	ret := newQJsonValue(C.QJsonValue_new10(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQJsonValue11 constructs a new QJsonValue object.
 func NewQJsonValue11(param1 QJsonValue__Type) *QJsonValue {
-	var outptr_QJsonValue *C.QJsonValue = nil
 
-	C.QJsonValue_new11((C.int)(param1), &outptr_QJsonValue)
-	ret := newQJsonValue(outptr_QJsonValue)
+	ret := newQJsonValue(C.QJsonValue_new11((C.int)(param1)))
 	ret.isSubclass = true
 	return ret
 }
@@ -186,15 +161,13 @@ func (this *QJsonValue) Swap(other *QJsonValue) {
 }
 
 func QJsonValue_FromVariant(variant *QVariant) *QJsonValue {
-	_ret := C.QJsonValue_FromVariant(variant.cPointer())
-	_goptr := newQJsonValue(_ret)
+	_goptr := newQJsonValue(C.QJsonValue_FromVariant(variant.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValue) ToVariant() *QVariant {
-	_ret := C.QJsonValue_ToVariant(this.h)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QJsonValue_ToVariant(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -266,29 +239,25 @@ func (this *QJsonValue) ToStringWithDefaultValue(defaultValue string) string {
 }
 
 func (this *QJsonValue) ToArray() *QJsonArray {
-	_ret := C.QJsonValue_ToArray(this.h)
-	_goptr := newQJsonArray(_ret)
+	_goptr := newQJsonArray(C.QJsonValue_ToArray(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValue) ToArrayWithDefaultValue(defaultValue *QJsonArray) *QJsonArray {
-	_ret := C.QJsonValue_ToArrayWithDefaultValue(this.h, defaultValue.cPointer())
-	_goptr := newQJsonArray(_ret)
+	_goptr := newQJsonArray(C.QJsonValue_ToArrayWithDefaultValue(this.h, defaultValue.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValue) ToObject() *QJsonObject {
-	_ret := C.QJsonValue_ToObject(this.h)
-	_goptr := newQJsonObject(_ret)
+	_goptr := newQJsonObject(C.QJsonValue_ToObject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValue) ToObjectWithDefaultValue(defaultValue *QJsonObject) *QJsonObject {
-	_ret := C.QJsonValue_ToObjectWithDefaultValue(this.h, defaultValue.cPointer())
-	_goptr := newQJsonObject(_ret)
+	_goptr := newQJsonObject(C.QJsonValue_ToObjectWithDefaultValue(this.h, defaultValue.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -298,15 +267,13 @@ func (this *QJsonValue) OperatorSubscript(key string) *QJsonValue {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	_ret := C.QJsonValue_OperatorSubscript(this.h, key_ms)
-	_goptr := newQJsonValue(_ret)
+	_goptr := newQJsonValue(C.QJsonValue_OperatorSubscript(this.h, key_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValue) OperatorSubscriptWithQsizetype(i int64) *QJsonValue {
-	_ret := C.QJsonValue_OperatorSubscriptWithQsizetype(this.h, (C.ptrdiff_t)(i))
-	_goptr := newQJsonValue(_ret)
+	_goptr := newQJsonValue(C.QJsonValue_OperatorSubscriptWithQsizetype(this.h, (C.ptrdiff_t)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -373,31 +340,25 @@ func newQJsonValueConstRef(h *C.QJsonValueConstRef) *QJsonValueConstRef {
 	if h == nil {
 		return nil
 	}
+
 	return &QJsonValueConstRef{h: h}
 }
 
 // UnsafeNewQJsonValueConstRef constructs the type using only unsafe pointers.
 func UnsafeNewQJsonValueConstRef(h unsafe.Pointer) *QJsonValueConstRef {
-	if h == nil {
-		return nil
-	}
-
-	return &QJsonValueConstRef{h: (*C.QJsonValueConstRef)(h)}
+	return newQJsonValueConstRef((*C.QJsonValueConstRef)(h))
 }
 
 // NewQJsonValueConstRef constructs a new QJsonValueConstRef object.
 func NewQJsonValueConstRef(param1 *QJsonValueConstRef) *QJsonValueConstRef {
-	var outptr_QJsonValueConstRef *C.QJsonValueConstRef = nil
 
-	C.QJsonValueConstRef_new(param1.cPointer(), &outptr_QJsonValueConstRef)
-	ret := newQJsonValueConstRef(outptr_QJsonValueConstRef)
+	ret := newQJsonValueConstRef(C.QJsonValueConstRef_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QJsonValueConstRef) ToVariant() *QVariant {
-	_ret := C.QJsonValueConstRef_ToVariant(this.h)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QJsonValueConstRef_ToVariant(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -458,22 +419,19 @@ func (this *QJsonValueConstRef) ToString() string {
 }
 
 func (this *QJsonValueConstRef) ToArray() *QJsonArray {
-	_ret := C.QJsonValueConstRef_ToArray(this.h)
-	_goptr := newQJsonArray(_ret)
+	_goptr := newQJsonArray(C.QJsonValueConstRef_ToArray(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValueConstRef) ToObject() *QJsonObject {
-	_ret := C.QJsonValueConstRef_ToObject(this.h)
-	_goptr := newQJsonObject(_ret)
+	_goptr := newQJsonObject(C.QJsonValueConstRef_ToObject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValueConstRef) OperatorSubscriptWithQsizetype(i int64) *QJsonValue {
-	_ret := C.QJsonValueConstRef_OperatorSubscriptWithQsizetype(this.h, (C.ptrdiff_t)(i))
-	_goptr := newQJsonValue(_ret)
+	_goptr := newQJsonValue(C.QJsonValueConstRef_OperatorSubscriptWithQsizetype(this.h, (C.ptrdiff_t)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -548,53 +506,42 @@ func (this *QJsonValueRef) UnsafePointer() unsafe.Pointer {
 }
 
 // newQJsonValueRef constructs the type using only CGO pointers.
-func newQJsonValueRef(h *C.QJsonValueRef, h_QJsonValueConstRef *C.QJsonValueConstRef) *QJsonValueRef {
+func newQJsonValueRef(h *C.QJsonValueRef) *QJsonValueRef {
 	if h == nil {
 		return nil
 	}
+	var outptr_QJsonValueConstRef *C.QJsonValueConstRef = nil
+	C.QJsonValueRef_virtbase(h, &outptr_QJsonValueConstRef)
+
 	return &QJsonValueRef{h: h,
-		QJsonValueConstRef: newQJsonValueConstRef(h_QJsonValueConstRef)}
+		QJsonValueConstRef: newQJsonValueConstRef(outptr_QJsonValueConstRef)}
 }
 
 // UnsafeNewQJsonValueRef constructs the type using only unsafe pointers.
-func UnsafeNewQJsonValueRef(h unsafe.Pointer, h_QJsonValueConstRef unsafe.Pointer) *QJsonValueRef {
-	if h == nil {
-		return nil
-	}
-
-	return &QJsonValueRef{h: (*C.QJsonValueRef)(h),
-		QJsonValueConstRef: UnsafeNewQJsonValueConstRef(h_QJsonValueConstRef)}
+func UnsafeNewQJsonValueRef(h unsafe.Pointer) *QJsonValueRef {
+	return newQJsonValueRef((*C.QJsonValueRef)(h))
 }
 
 // NewQJsonValueRef constructs a new QJsonValueRef object.
 func NewQJsonValueRef(param1 *QJsonValueRef) *QJsonValueRef {
-	var outptr_QJsonValueRef *C.QJsonValueRef = nil
-	var outptr_QJsonValueConstRef *C.QJsonValueConstRef = nil
 
-	C.QJsonValueRef_new(param1.cPointer(), &outptr_QJsonValueRef, &outptr_QJsonValueConstRef)
-	ret := newQJsonValueRef(outptr_QJsonValueRef, outptr_QJsonValueConstRef)
+	ret := newQJsonValueRef(C.QJsonValueRef_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQJsonValueRef2 constructs a new QJsonValueRef object.
 func NewQJsonValueRef2(array *QJsonArray, idx int64) *QJsonValueRef {
-	var outptr_QJsonValueRef *C.QJsonValueRef = nil
-	var outptr_QJsonValueConstRef *C.QJsonValueConstRef = nil
 
-	C.QJsonValueRef_new2(array.cPointer(), (C.ptrdiff_t)(idx), &outptr_QJsonValueRef, &outptr_QJsonValueConstRef)
-	ret := newQJsonValueRef(outptr_QJsonValueRef, outptr_QJsonValueConstRef)
+	ret := newQJsonValueRef(C.QJsonValueRef_new2(array.cPointer(), (C.ptrdiff_t)(idx)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQJsonValueRef3 constructs a new QJsonValueRef object.
 func NewQJsonValueRef3(object *QJsonObject, idx int64) *QJsonValueRef {
-	var outptr_QJsonValueRef *C.QJsonValueRef = nil
-	var outptr_QJsonValueConstRef *C.QJsonValueConstRef = nil
 
-	C.QJsonValueRef_new3(object.cPointer(), (C.ptrdiff_t)(idx), &outptr_QJsonValueRef, &outptr_QJsonValueConstRef)
-	ret := newQJsonValueRef(outptr_QJsonValueRef, outptr_QJsonValueConstRef)
+	ret := newQJsonValueRef(C.QJsonValueRef_new3(object.cPointer(), (C.ptrdiff_t)(idx)))
 	ret.isSubclass = true
 	return ret
 }
@@ -608,8 +555,7 @@ func (this *QJsonValueRef) OperatorAssignWithVal(val *QJsonValueRef) {
 }
 
 func (this *QJsonValueRef) ToVariant() *QVariant {
-	_ret := C.QJsonValueRef_ToVariant(this.h)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QJsonValueRef_ToVariant(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -670,22 +616,19 @@ func (this *QJsonValueRef) ToString() string {
 }
 
 func (this *QJsonValueRef) ToArray() *QJsonArray {
-	_ret := C.QJsonValueRef_ToArray(this.h)
-	_goptr := newQJsonArray(_ret)
+	_goptr := newQJsonArray(C.QJsonValueRef_ToArray(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValueRef) ToObject() *QJsonObject {
-	_ret := C.QJsonValueRef_ToObject(this.h)
-	_goptr := newQJsonObject(_ret)
+	_goptr := newQJsonObject(C.QJsonValueRef_ToObject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonValueRef) OperatorSubscriptWithQsizetype(i int64) *QJsonValue {
-	_ret := C.QJsonValueRef_OperatorSubscriptWithQsizetype(this.h, (C.ptrdiff_t)(i))
-	_goptr := newQJsonValue(_ret)
+	_goptr := newQJsonValue(C.QJsonValueRef_OperatorSubscriptWithQsizetype(this.h, (C.ptrdiff_t)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

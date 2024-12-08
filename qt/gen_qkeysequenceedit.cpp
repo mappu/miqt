@@ -1048,36 +1048,24 @@ public:
 
 };
 
-void QKeySequenceEdit_new(QWidget* parent, QKeySequenceEdit** outptr_QKeySequenceEdit, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQKeySequenceEdit* ret = new MiqtVirtualQKeySequenceEdit(parent);
-	*outptr_QKeySequenceEdit = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QKeySequenceEdit* QKeySequenceEdit_new(QWidget* parent) {
+	return new MiqtVirtualQKeySequenceEdit(parent);
 }
 
-void QKeySequenceEdit_new2(QKeySequenceEdit** outptr_QKeySequenceEdit, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQKeySequenceEdit* ret = new MiqtVirtualQKeySequenceEdit();
-	*outptr_QKeySequenceEdit = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QKeySequenceEdit* QKeySequenceEdit_new2() {
+	return new MiqtVirtualQKeySequenceEdit();
 }
 
-void QKeySequenceEdit_new3(QKeySequence* keySequence, QKeySequenceEdit** outptr_QKeySequenceEdit, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQKeySequenceEdit* ret = new MiqtVirtualQKeySequenceEdit(*keySequence);
-	*outptr_QKeySequenceEdit = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QKeySequenceEdit* QKeySequenceEdit_new3(QKeySequence* keySequence) {
+	return new MiqtVirtualQKeySequenceEdit(*keySequence);
 }
 
-void QKeySequenceEdit_new4(QKeySequence* keySequence, QWidget* parent, QKeySequenceEdit** outptr_QKeySequenceEdit, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQKeySequenceEdit* ret = new MiqtVirtualQKeySequenceEdit(*keySequence, parent);
-	*outptr_QKeySequenceEdit = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QKeySequenceEdit* QKeySequenceEdit_new4(QKeySequence* keySequence, QWidget* parent) {
+	return new MiqtVirtualQKeySequenceEdit(*keySequence, parent);
+}
+
+void QKeySequenceEdit_virtbase(QKeySequenceEdit* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QKeySequenceEdit_MetaObject(const QKeySequenceEdit* self) {

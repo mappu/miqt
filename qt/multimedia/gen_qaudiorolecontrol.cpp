@@ -10,6 +10,10 @@
 #include "gen_qaudiorolecontrol.h"
 #include "_cgo_export.h"
 
+void QAudioRoleControl_virtbase(QAudioRoleControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
+
 QMetaObject* QAudioRoleControl_MetaObject(const QAudioRoleControl* self) {
 	return (QMetaObject*) self->metaObject();
 }

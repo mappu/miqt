@@ -20,8 +20,8 @@ class QSslPreSharedKeyAuthenticator;
 typedef struct QSslPreSharedKeyAuthenticator QSslPreSharedKeyAuthenticator;
 #endif
 
-void QSslPreSharedKeyAuthenticator_new(QSslPreSharedKeyAuthenticator** outptr_QSslPreSharedKeyAuthenticator);
-void QSslPreSharedKeyAuthenticator_new2(QSslPreSharedKeyAuthenticator* authenticator, QSslPreSharedKeyAuthenticator** outptr_QSslPreSharedKeyAuthenticator);
+QSslPreSharedKeyAuthenticator* QSslPreSharedKeyAuthenticator_new();
+QSslPreSharedKeyAuthenticator* QSslPreSharedKeyAuthenticator_new2(QSslPreSharedKeyAuthenticator* authenticator);
 void QSslPreSharedKeyAuthenticator_OperatorAssign(QSslPreSharedKeyAuthenticator* self, QSslPreSharedKeyAuthenticator* authenticator);
 void QSslPreSharedKeyAuthenticator_Swap(QSslPreSharedKeyAuthenticator* self, QSslPreSharedKeyAuthenticator* other);
 struct miqt_string QSslPreSharedKeyAuthenticator_IdentityHint(const QSslPreSharedKeyAuthenticator* self);

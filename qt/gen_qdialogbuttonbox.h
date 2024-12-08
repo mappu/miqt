@@ -80,14 +80,15 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QDialogButtonBox_new(QWidget* parent, QDialogButtonBox** outptr_QDialogButtonBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QDialogButtonBox_new2(QDialogButtonBox** outptr_QDialogButtonBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QDialogButtonBox_new3(int orientation, QDialogButtonBox** outptr_QDialogButtonBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QDialogButtonBox_new4(int buttons, QDialogButtonBox** outptr_QDialogButtonBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QDialogButtonBox_new5(int buttons, int orientation, QDialogButtonBox** outptr_QDialogButtonBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QDialogButtonBox_new6(int orientation, QWidget* parent, QDialogButtonBox** outptr_QDialogButtonBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QDialogButtonBox_new7(int buttons, QWidget* parent, QDialogButtonBox** outptr_QDialogButtonBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QDialogButtonBox_new8(int buttons, int orientation, QWidget* parent, QDialogButtonBox** outptr_QDialogButtonBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QDialogButtonBox* QDialogButtonBox_new(QWidget* parent);
+QDialogButtonBox* QDialogButtonBox_new2();
+QDialogButtonBox* QDialogButtonBox_new3(int orientation);
+QDialogButtonBox* QDialogButtonBox_new4(int buttons);
+QDialogButtonBox* QDialogButtonBox_new5(int buttons, int orientation);
+QDialogButtonBox* QDialogButtonBox_new6(int orientation, QWidget* parent);
+QDialogButtonBox* QDialogButtonBox_new7(int buttons, QWidget* parent);
+QDialogButtonBox* QDialogButtonBox_new8(int buttons, int orientation, QWidget* parent);
+void QDialogButtonBox_virtbase(QDialogButtonBox* src, QWidget** outptr_QWidget);
 QMetaObject* QDialogButtonBox_MetaObject(const QDialogButtonBox* self);
 void* QDialogButtonBox_Metacast(QDialogButtonBox* self, const char* param1);
 struct miqt_string QDialogButtonBox_Tr(const char* s);

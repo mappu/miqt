@@ -35,78 +35,56 @@ func (this *QKeyEventTransition) UnsafePointer() unsafe.Pointer {
 }
 
 // newQKeyEventTransition constructs the type using only CGO pointers.
-func newQKeyEventTransition(h *C.QKeyEventTransition, h_QEventTransition *C.QEventTransition, h_QAbstractTransition *C.QAbstractTransition, h_QObject *C.QObject) *QKeyEventTransition {
+func newQKeyEventTransition(h *C.QKeyEventTransition) *QKeyEventTransition {
 	if h == nil {
 		return nil
 	}
+	var outptr_QEventTransition *C.QEventTransition = nil
+	C.QKeyEventTransition_virtbase(h, &outptr_QEventTransition)
+
 	return &QKeyEventTransition{h: h,
-		QEventTransition: newQEventTransition(h_QEventTransition, h_QAbstractTransition, h_QObject)}
+		QEventTransition: newQEventTransition(outptr_QEventTransition)}
 }
 
 // UnsafeNewQKeyEventTransition constructs the type using only unsafe pointers.
-func UnsafeNewQKeyEventTransition(h unsafe.Pointer, h_QEventTransition unsafe.Pointer, h_QAbstractTransition unsafe.Pointer, h_QObject unsafe.Pointer) *QKeyEventTransition {
-	if h == nil {
-		return nil
-	}
-
-	return &QKeyEventTransition{h: (*C.QKeyEventTransition)(h),
-		QEventTransition: UnsafeNewQEventTransition(h_QEventTransition, h_QAbstractTransition, h_QObject)}
+func UnsafeNewQKeyEventTransition(h unsafe.Pointer) *QKeyEventTransition {
+	return newQKeyEventTransition((*C.QKeyEventTransition)(h))
 }
 
 // NewQKeyEventTransition constructs a new QKeyEventTransition object.
 func NewQKeyEventTransition() *QKeyEventTransition {
-	var outptr_QKeyEventTransition *C.QKeyEventTransition = nil
-	var outptr_QEventTransition *C.QEventTransition = nil
-	var outptr_QAbstractTransition *C.QAbstractTransition = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QKeyEventTransition_new(&outptr_QKeyEventTransition, &outptr_QEventTransition, &outptr_QAbstractTransition, &outptr_QObject)
-	ret := newQKeyEventTransition(outptr_QKeyEventTransition, outptr_QEventTransition, outptr_QAbstractTransition, outptr_QObject)
+	ret := newQKeyEventTransition(C.QKeyEventTransition_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQKeyEventTransition2 constructs a new QKeyEventTransition object.
 func NewQKeyEventTransition2(object *QObject, typeVal QEvent__Type, key int) *QKeyEventTransition {
-	var outptr_QKeyEventTransition *C.QKeyEventTransition = nil
-	var outptr_QEventTransition *C.QEventTransition = nil
-	var outptr_QAbstractTransition *C.QAbstractTransition = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QKeyEventTransition_new2(object.cPointer(), (C.int)(typeVal), (C.int)(key), &outptr_QKeyEventTransition, &outptr_QEventTransition, &outptr_QAbstractTransition, &outptr_QObject)
-	ret := newQKeyEventTransition(outptr_QKeyEventTransition, outptr_QEventTransition, outptr_QAbstractTransition, outptr_QObject)
+	ret := newQKeyEventTransition(C.QKeyEventTransition_new2(object.cPointer(), (C.int)(typeVal), (C.int)(key)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQKeyEventTransition3 constructs a new QKeyEventTransition object.
 func NewQKeyEventTransition3(sourceState *QState) *QKeyEventTransition {
-	var outptr_QKeyEventTransition *C.QKeyEventTransition = nil
-	var outptr_QEventTransition *C.QEventTransition = nil
-	var outptr_QAbstractTransition *C.QAbstractTransition = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QKeyEventTransition_new3(sourceState.cPointer(), &outptr_QKeyEventTransition, &outptr_QEventTransition, &outptr_QAbstractTransition, &outptr_QObject)
-	ret := newQKeyEventTransition(outptr_QKeyEventTransition, outptr_QEventTransition, outptr_QAbstractTransition, outptr_QObject)
+	ret := newQKeyEventTransition(C.QKeyEventTransition_new3(sourceState.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQKeyEventTransition4 constructs a new QKeyEventTransition object.
 func NewQKeyEventTransition4(object *QObject, typeVal QEvent__Type, key int, sourceState *QState) *QKeyEventTransition {
-	var outptr_QKeyEventTransition *C.QKeyEventTransition = nil
-	var outptr_QEventTransition *C.QEventTransition = nil
-	var outptr_QAbstractTransition *C.QAbstractTransition = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QKeyEventTransition_new4(object.cPointer(), (C.int)(typeVal), (C.int)(key), sourceState.cPointer(), &outptr_QKeyEventTransition, &outptr_QEventTransition, &outptr_QAbstractTransition, &outptr_QObject)
-	ret := newQKeyEventTransition(outptr_QKeyEventTransition, outptr_QEventTransition, outptr_QAbstractTransition, outptr_QObject)
+	ret := newQKeyEventTransition(C.QKeyEventTransition_new4(object.cPointer(), (C.int)(typeVal), (C.int)(key), sourceState.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QKeyEventTransition) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QKeyEventTransition_MetaObject(this.h)))
+	return newQMetaObject(C.QKeyEventTransition_MetaObject(this.h))
 }
 
 func (this *QKeyEventTransition) Metacast(param1 string) unsafe.Pointer {
@@ -199,6 +177,9 @@ func (this *QKeyEventTransition) callVirtualBase_OnTransition(event *QEvent) {
 
 }
 func (this *QKeyEventTransition) OnOnTransition(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QKeyEventTransition_override_virtual_OnTransition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -210,7 +191,7 @@ func miqt_exec_callback_QKeyEventTransition_OnTransition(self *C.QKeyEventTransi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QKeyEventTransition{h: self}).callVirtualBase_OnTransition, slotval1)
 
@@ -222,6 +203,9 @@ func (this *QKeyEventTransition) callVirtualBase_EventTest(event *QEvent) bool {
 
 }
 func (this *QKeyEventTransition) OnEventTest(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QKeyEventTransition_override_virtual_EventTest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -233,7 +217,7 @@ func miqt_exec_callback_QKeyEventTransition_EventTest(self *C.QKeyEventTransitio
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QKeyEventTransition{h: self}).callVirtualBase_EventTest, slotval1)
 
@@ -247,6 +231,9 @@ func (this *QKeyEventTransition) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QKeyEventTransition) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QKeyEventTransition_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -258,7 +245,7 @@ func miqt_exec_callback_QKeyEventTransition_Event(self *C.QKeyEventTransition, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QKeyEventTransition{h: self}).callVirtualBase_Event, slotval1)
 

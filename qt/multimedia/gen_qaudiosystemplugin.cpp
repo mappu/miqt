@@ -333,18 +333,17 @@ public:
 
 };
 
-void QAudioSystemPlugin_new(QAudioSystemPlugin** outptr_QAudioSystemPlugin, QObject** outptr_QObject, QAudioSystemFactoryInterface** outptr_QAudioSystemFactoryInterface) {
-	MiqtVirtualQAudioSystemPlugin* ret = new MiqtVirtualQAudioSystemPlugin();
-	*outptr_QAudioSystemPlugin = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QAudioSystemFactoryInterface = static_cast<QAudioSystemFactoryInterface*>(ret);
+QAudioSystemPlugin* QAudioSystemPlugin_new() {
+	return new MiqtVirtualQAudioSystemPlugin();
 }
 
-void QAudioSystemPlugin_new2(QObject* parent, QAudioSystemPlugin** outptr_QAudioSystemPlugin, QObject** outptr_QObject, QAudioSystemFactoryInterface** outptr_QAudioSystemFactoryInterface) {
-	MiqtVirtualQAudioSystemPlugin* ret = new MiqtVirtualQAudioSystemPlugin(parent);
-	*outptr_QAudioSystemPlugin = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QAudioSystemFactoryInterface = static_cast<QAudioSystemFactoryInterface*>(ret);
+QAudioSystemPlugin* QAudioSystemPlugin_new2(QObject* parent) {
+	return new MiqtVirtualQAudioSystemPlugin(parent);
+}
+
+void QAudioSystemPlugin_virtbase(QAudioSystemPlugin* src, QObject** outptr_QObject, QAudioSystemFactoryInterface** outptr_QAudioSystemFactoryInterface) {
+	*outptr_QObject = static_cast<QObject*>(src);
+	*outptr_QAudioSystemFactoryInterface = static_cast<QAudioSystemFactoryInterface*>(src);
 }
 
 QMetaObject* QAudioSystemPlugin_MetaObject(const QAudioSystemPlugin* self) {

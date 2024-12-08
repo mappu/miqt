@@ -213,14 +213,12 @@ QTextEncoder* QTextCodec_MakeEncoder1(const QTextCodec* self, int flags) {
 	return self->makeEncoder(static_cast<QTextCodec::ConversionFlags>(flags));
 }
 
-void QTextEncoder_new(QTextCodec* codec, QTextEncoder** outptr_QTextEncoder) {
-	QTextEncoder* ret = new QTextEncoder(codec);
-	*outptr_QTextEncoder = ret;
+QTextEncoder* QTextEncoder_new(QTextCodec* codec) {
+	return new QTextEncoder(codec);
 }
 
-void QTextEncoder_new2(QTextCodec* codec, int flags, QTextEncoder** outptr_QTextEncoder) {
-	QTextEncoder* ret = new QTextEncoder(codec, static_cast<QTextCodec::ConversionFlags>(flags));
-	*outptr_QTextEncoder = ret;
+QTextEncoder* QTextEncoder_new2(QTextCodec* codec, int flags) {
+	return new QTextEncoder(codec, static_cast<QTextCodec::ConversionFlags>(flags));
 }
 
 struct miqt_string QTextEncoder_FromUnicode(QTextEncoder* self, struct miqt_string str) {
@@ -254,14 +252,12 @@ void QTextEncoder_Delete(QTextEncoder* self, bool isSubclass) {
 	}
 }
 
-void QTextDecoder_new(QTextCodec* codec, QTextDecoder** outptr_QTextDecoder) {
-	QTextDecoder* ret = new QTextDecoder(codec);
-	*outptr_QTextDecoder = ret;
+QTextDecoder* QTextDecoder_new(QTextCodec* codec) {
+	return new QTextDecoder(codec);
 }
 
-void QTextDecoder_new2(QTextCodec* codec, int flags, QTextDecoder** outptr_QTextDecoder) {
-	QTextDecoder* ret = new QTextDecoder(codec, static_cast<QTextCodec::ConversionFlags>(flags));
-	*outptr_QTextDecoder = ret;
+QTextDecoder* QTextDecoder_new2(QTextCodec* codec, int flags) {
+	return new QTextDecoder(codec, static_cast<QTextCodec::ConversionFlags>(flags));
 }
 
 struct miqt_string QTextDecoder_ToUnicode(QTextDecoder* self, const char* chars, int lenVal) {
@@ -303,14 +299,12 @@ void QTextDecoder_Delete(QTextDecoder* self, bool isSubclass) {
 	}
 }
 
-void QTextCodec__ConverterState_new(QTextCodec__ConverterState** outptr_QTextCodec__ConverterState) {
-	QTextCodec::ConverterState* ret = new QTextCodec::ConverterState();
-	*outptr_QTextCodec__ConverterState = ret;
+QTextCodec__ConverterState* QTextCodec__ConverterState_new() {
+	return new QTextCodec::ConverterState();
 }
 
-void QTextCodec__ConverterState_new2(int f, QTextCodec__ConverterState** outptr_QTextCodec__ConverterState) {
-	QTextCodec::ConverterState* ret = new QTextCodec::ConverterState(static_cast<QTextCodec::ConversionFlags>(f));
-	*outptr_QTextCodec__ConverterState = ret;
+QTextCodec__ConverterState* QTextCodec__ConverterState_new2(int f) {
+	return new QTextCodec::ConverterState(static_cast<QTextCodec::ConversionFlags>(f));
 }
 
 void QTextCodec__ConverterState_Delete(QTextCodec__ConverterState* self, bool isSubclass) {

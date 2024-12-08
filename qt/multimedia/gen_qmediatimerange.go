@@ -37,44 +37,35 @@ func newQMediaTimeInterval(h *C.QMediaTimeInterval) *QMediaTimeInterval {
 	if h == nil {
 		return nil
 	}
+
 	return &QMediaTimeInterval{h: h}
 }
 
 // UnsafeNewQMediaTimeInterval constructs the type using only unsafe pointers.
 func UnsafeNewQMediaTimeInterval(h unsafe.Pointer) *QMediaTimeInterval {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaTimeInterval{h: (*C.QMediaTimeInterval)(h)}
+	return newQMediaTimeInterval((*C.QMediaTimeInterval)(h))
 }
 
 // NewQMediaTimeInterval constructs a new QMediaTimeInterval object.
 func NewQMediaTimeInterval() *QMediaTimeInterval {
-	var outptr_QMediaTimeInterval *C.QMediaTimeInterval = nil
 
-	C.QMediaTimeInterval_new(&outptr_QMediaTimeInterval)
-	ret := newQMediaTimeInterval(outptr_QMediaTimeInterval)
+	ret := newQMediaTimeInterval(C.QMediaTimeInterval_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaTimeInterval2 constructs a new QMediaTimeInterval object.
 func NewQMediaTimeInterval2(start int64, end int64) *QMediaTimeInterval {
-	var outptr_QMediaTimeInterval *C.QMediaTimeInterval = nil
 
-	C.QMediaTimeInterval_new2((C.longlong)(start), (C.longlong)(end), &outptr_QMediaTimeInterval)
-	ret := newQMediaTimeInterval(outptr_QMediaTimeInterval)
+	ret := newQMediaTimeInterval(C.QMediaTimeInterval_new2((C.longlong)(start), (C.longlong)(end)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaTimeInterval3 constructs a new QMediaTimeInterval object.
 func NewQMediaTimeInterval3(param1 *QMediaTimeInterval) *QMediaTimeInterval {
-	var outptr_QMediaTimeInterval *C.QMediaTimeInterval = nil
 
-	C.QMediaTimeInterval_new3(param1.cPointer(), &outptr_QMediaTimeInterval)
-	ret := newQMediaTimeInterval(outptr_QMediaTimeInterval)
+	ret := newQMediaTimeInterval(C.QMediaTimeInterval_new3(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -100,15 +91,13 @@ func (this *QMediaTimeInterval) IsNormal() bool {
 }
 
 func (this *QMediaTimeInterval) Normalized() *QMediaTimeInterval {
-	_ret := C.QMediaTimeInterval_Normalized(this.h)
-	_goptr := newQMediaTimeInterval(_ret)
+	_goptr := newQMediaTimeInterval(C.QMediaTimeInterval_Normalized(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaTimeInterval) Translated(offset int64) *QMediaTimeInterval {
-	_ret := C.QMediaTimeInterval_Translated(this.h, (C.longlong)(offset))
-	_goptr := newQMediaTimeInterval(_ret)
+	_goptr := newQMediaTimeInterval(C.QMediaTimeInterval_Translated(this.h, (C.longlong)(offset)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -151,54 +140,43 @@ func newQMediaTimeRange(h *C.QMediaTimeRange) *QMediaTimeRange {
 	if h == nil {
 		return nil
 	}
+
 	return &QMediaTimeRange{h: h}
 }
 
 // UnsafeNewQMediaTimeRange constructs the type using only unsafe pointers.
 func UnsafeNewQMediaTimeRange(h unsafe.Pointer) *QMediaTimeRange {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaTimeRange{h: (*C.QMediaTimeRange)(h)}
+	return newQMediaTimeRange((*C.QMediaTimeRange)(h))
 }
 
 // NewQMediaTimeRange constructs a new QMediaTimeRange object.
 func NewQMediaTimeRange() *QMediaTimeRange {
-	var outptr_QMediaTimeRange *C.QMediaTimeRange = nil
 
-	C.QMediaTimeRange_new(&outptr_QMediaTimeRange)
-	ret := newQMediaTimeRange(outptr_QMediaTimeRange)
+	ret := newQMediaTimeRange(C.QMediaTimeRange_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaTimeRange2 constructs a new QMediaTimeRange object.
 func NewQMediaTimeRange2(start int64, end int64) *QMediaTimeRange {
-	var outptr_QMediaTimeRange *C.QMediaTimeRange = nil
 
-	C.QMediaTimeRange_new2((C.longlong)(start), (C.longlong)(end), &outptr_QMediaTimeRange)
-	ret := newQMediaTimeRange(outptr_QMediaTimeRange)
+	ret := newQMediaTimeRange(C.QMediaTimeRange_new2((C.longlong)(start), (C.longlong)(end)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaTimeRange3 constructs a new QMediaTimeRange object.
 func NewQMediaTimeRange3(param1 *QMediaTimeInterval) *QMediaTimeRange {
-	var outptr_QMediaTimeRange *C.QMediaTimeRange = nil
 
-	C.QMediaTimeRange_new3(param1.cPointer(), &outptr_QMediaTimeRange)
-	ret := newQMediaTimeRange(outptr_QMediaTimeRange)
+	ret := newQMediaTimeRange(C.QMediaTimeRange_new3(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaTimeRange4 constructs a new QMediaTimeRange object.
 func NewQMediaTimeRange4(rangeVal *QMediaTimeRange) *QMediaTimeRange {
-	var outptr_QMediaTimeRange *C.QMediaTimeRange = nil
 
-	C.QMediaTimeRange_new4(rangeVal.cPointer(), &outptr_QMediaTimeRange)
-	ret := newQMediaTimeRange(outptr_QMediaTimeRange)
+	ret := newQMediaTimeRange(C.QMediaTimeRange_new4(rangeVal.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -224,8 +202,7 @@ func (this *QMediaTimeRange) Intervals() []QMediaTimeInterval {
 	_ret := make([]QMediaTimeInterval, int(_ma.len))
 	_outCast := (*[0xffff]*C.QMediaTimeInterval)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQMediaTimeInterval(_lv_ret)
+		_lv_goptr := newQMediaTimeInterval(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -269,19 +246,19 @@ func (this *QMediaTimeRange) RemoveTimeRange(param1 *QMediaTimeRange) {
 }
 
 func (this *QMediaTimeRange) OperatorPlusAssign(param1 *QMediaTimeRange) *QMediaTimeRange {
-	return UnsafeNewQMediaTimeRange(unsafe.Pointer(C.QMediaTimeRange_OperatorPlusAssign(this.h, param1.cPointer())))
+	return newQMediaTimeRange(C.QMediaTimeRange_OperatorPlusAssign(this.h, param1.cPointer()))
 }
 
 func (this *QMediaTimeRange) OperatorPlusAssignWithQMediaTimeInterval(param1 *QMediaTimeInterval) *QMediaTimeRange {
-	return UnsafeNewQMediaTimeRange(unsafe.Pointer(C.QMediaTimeRange_OperatorPlusAssignWithQMediaTimeInterval(this.h, param1.cPointer())))
+	return newQMediaTimeRange(C.QMediaTimeRange_OperatorPlusAssignWithQMediaTimeInterval(this.h, param1.cPointer()))
 }
 
 func (this *QMediaTimeRange) OperatorMinusAssign(param1 *QMediaTimeRange) *QMediaTimeRange {
-	return UnsafeNewQMediaTimeRange(unsafe.Pointer(C.QMediaTimeRange_OperatorMinusAssign(this.h, param1.cPointer())))
+	return newQMediaTimeRange(C.QMediaTimeRange_OperatorMinusAssign(this.h, param1.cPointer()))
 }
 
 func (this *QMediaTimeRange) OperatorMinusAssignWithQMediaTimeInterval(param1 *QMediaTimeInterval) *QMediaTimeRange {
-	return UnsafeNewQMediaTimeRange(unsafe.Pointer(C.QMediaTimeRange_OperatorMinusAssignWithQMediaTimeInterval(this.h, param1.cPointer())))
+	return newQMediaTimeRange(C.QMediaTimeRange_OperatorMinusAssignWithQMediaTimeInterval(this.h, param1.cPointer()))
 }
 
 func (this *QMediaTimeRange) Clear() {

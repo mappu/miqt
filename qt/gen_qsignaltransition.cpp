@@ -94,32 +94,24 @@ public:
 
 };
 
-void QSignalTransition_new(QSignalTransition** outptr_QSignalTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject) {
-	MiqtVirtualQSignalTransition* ret = new MiqtVirtualQSignalTransition();
-	*outptr_QSignalTransition = ret;
-	*outptr_QAbstractTransition = static_cast<QAbstractTransition*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSignalTransition* QSignalTransition_new() {
+	return new MiqtVirtualQSignalTransition();
 }
 
-void QSignalTransition_new2(QObject* sender, const char* signal, QSignalTransition** outptr_QSignalTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject) {
-	MiqtVirtualQSignalTransition* ret = new MiqtVirtualQSignalTransition(sender, signal);
-	*outptr_QSignalTransition = ret;
-	*outptr_QAbstractTransition = static_cast<QAbstractTransition*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSignalTransition* QSignalTransition_new2(QObject* sender, const char* signal) {
+	return new MiqtVirtualQSignalTransition(sender, signal);
 }
 
-void QSignalTransition_new3(QState* sourceState, QSignalTransition** outptr_QSignalTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject) {
-	MiqtVirtualQSignalTransition* ret = new MiqtVirtualQSignalTransition(sourceState);
-	*outptr_QSignalTransition = ret;
-	*outptr_QAbstractTransition = static_cast<QAbstractTransition*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSignalTransition* QSignalTransition_new3(QState* sourceState) {
+	return new MiqtVirtualQSignalTransition(sourceState);
 }
 
-void QSignalTransition_new4(QObject* sender, const char* signal, QState* sourceState, QSignalTransition** outptr_QSignalTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject) {
-	MiqtVirtualQSignalTransition* ret = new MiqtVirtualQSignalTransition(sender, signal, sourceState);
-	*outptr_QSignalTransition = ret;
-	*outptr_QAbstractTransition = static_cast<QAbstractTransition*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSignalTransition* QSignalTransition_new4(QObject* sender, const char* signal, QState* sourceState) {
+	return new MiqtVirtualQSignalTransition(sender, signal, sourceState);
+}
+
+void QSignalTransition_virtbase(QSignalTransition* src, QAbstractTransition** outptr_QAbstractTransition) {
+	*outptr_QAbstractTransition = static_cast<QAbstractTransition*>(src);
 }
 
 QMetaObject* QSignalTransition_MetaObject(const QSignalTransition* self) {

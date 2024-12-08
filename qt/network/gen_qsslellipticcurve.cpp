@@ -6,14 +6,12 @@
 #include "gen_qsslellipticcurve.h"
 #include "_cgo_export.h"
 
-void QSslEllipticCurve_new(QSslEllipticCurve** outptr_QSslEllipticCurve) {
-	QSslEllipticCurve* ret = new QSslEllipticCurve();
-	*outptr_QSslEllipticCurve = ret;
+QSslEllipticCurve* QSslEllipticCurve_new() {
+	return new QSslEllipticCurve();
 }
 
-void QSslEllipticCurve_new2(QSslEllipticCurve* param1, QSslEllipticCurve** outptr_QSslEllipticCurve) {
-	QSslEllipticCurve* ret = new QSslEllipticCurve(*param1);
-	*outptr_QSslEllipticCurve = ret;
+QSslEllipticCurve* QSslEllipticCurve_new2(QSslEllipticCurve* param1) {
+	return new QSslEllipticCurve(*param1);
 }
 
 QSslEllipticCurve* QSslEllipticCurve_FromShortName(struct miqt_string name) {

@@ -28,6 +28,7 @@ typedef struct QNetworkConfiguration QNetworkConfiguration;
 typedef struct QObject QObject;
 #endif
 
+void QMediaNetworkAccessControl_virtbase(QMediaNetworkAccessControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QMediaNetworkAccessControl_MetaObject(const QMediaNetworkAccessControl* self);
 void* QMediaNetworkAccessControl_Metacast(QMediaNetworkAccessControl* self, const char* param1);
 struct miqt_string QMediaNetworkAccessControl_Tr(const char* s);

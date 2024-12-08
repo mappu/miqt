@@ -38,10 +38,11 @@ typedef struct QSystemTrayIcon QSystemTrayIcon;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QSystemTrayIcon_new(QSystemTrayIcon** outptr_QSystemTrayIcon, QObject** outptr_QObject);
-void QSystemTrayIcon_new2(QIcon* icon, QSystemTrayIcon** outptr_QSystemTrayIcon, QObject** outptr_QObject);
-void QSystemTrayIcon_new3(QObject* parent, QSystemTrayIcon** outptr_QSystemTrayIcon, QObject** outptr_QObject);
-void QSystemTrayIcon_new4(QIcon* icon, QObject* parent, QSystemTrayIcon** outptr_QSystemTrayIcon, QObject** outptr_QObject);
+QSystemTrayIcon* QSystemTrayIcon_new();
+QSystemTrayIcon* QSystemTrayIcon_new2(QIcon* icon);
+QSystemTrayIcon* QSystemTrayIcon_new3(QObject* parent);
+QSystemTrayIcon* QSystemTrayIcon_new4(QIcon* icon, QObject* parent);
+void QSystemTrayIcon_virtbase(QSystemTrayIcon* src, QObject** outptr_QObject);
 QMetaObject* QSystemTrayIcon_MetaObject(const QSystemTrayIcon* self);
 void* QSystemTrayIcon_Metacast(QSystemTrayIcon* self, const char* param1);
 struct miqt_string QSystemTrayIcon_Tr(const char* s);

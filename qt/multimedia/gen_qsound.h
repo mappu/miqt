@@ -32,8 +32,9 @@ typedef struct QSound QSound;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QSound_new(struct miqt_string filename, QSound** outptr_QSound, QObject** outptr_QObject);
-void QSound_new2(struct miqt_string filename, QObject* parent, QSound** outptr_QSound, QObject** outptr_QObject);
+QSound* QSound_new(struct miqt_string filename);
+QSound* QSound_new2(struct miqt_string filename, QObject* parent);
+void QSound_virtbase(QSound* src, QObject** outptr_QObject);
 QMetaObject* QSound_MetaObject(const QSound* self);
 void* QSound_Metacast(QSound* self, const char* param1);
 struct miqt_string QSound_Tr(const char* s);

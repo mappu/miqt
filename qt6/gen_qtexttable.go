@@ -37,34 +37,27 @@ func newQTextTableCell(h *C.QTextTableCell) *QTextTableCell {
 	if h == nil {
 		return nil
 	}
+
 	return &QTextTableCell{h: h}
 }
 
 // UnsafeNewQTextTableCell constructs the type using only unsafe pointers.
 func UnsafeNewQTextTableCell(h unsafe.Pointer) *QTextTableCell {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextTableCell{h: (*C.QTextTableCell)(h)}
+	return newQTextTableCell((*C.QTextTableCell)(h))
 }
 
 // NewQTextTableCell constructs a new QTextTableCell object.
 func NewQTextTableCell() *QTextTableCell {
-	var outptr_QTextTableCell *C.QTextTableCell = nil
 
-	C.QTextTableCell_new(&outptr_QTextTableCell)
-	ret := newQTextTableCell(outptr_QTextTableCell)
+	ret := newQTextTableCell(C.QTextTableCell_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextTableCell2 constructs a new QTextTableCell object.
 func NewQTextTableCell2(o *QTextTableCell) *QTextTableCell {
-	var outptr_QTextTableCell *C.QTextTableCell = nil
 
-	C.QTextTableCell_new2(o.cPointer(), &outptr_QTextTableCell)
-	ret := newQTextTableCell(outptr_QTextTableCell)
+	ret := newQTextTableCell(C.QTextTableCell_new2(o.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -78,8 +71,7 @@ func (this *QTextTableCell) SetFormat(format *QTextCharFormat) {
 }
 
 func (this *QTextTableCell) Format() *QTextCharFormat {
-	_ret := C.QTextTableCell_Format(this.h)
-	_goptr := newQTextCharFormat(_ret, nil)
+	_goptr := newQTextCharFormat(C.QTextTableCell_Format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -105,15 +97,13 @@ func (this *QTextTableCell) IsValid() bool {
 }
 
 func (this *QTextTableCell) FirstCursorPosition() *QTextCursor {
-	_ret := C.QTextTableCell_FirstCursorPosition(this.h)
-	_goptr := newQTextCursor(_ret)
+	_goptr := newQTextCursor(C.QTextTableCell_FirstCursorPosition(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextTableCell) LastCursorPosition() *QTextCursor {
-	_ret := C.QTextTableCell_LastCursorPosition(this.h)
-	_goptr := newQTextCursor(_ret)
+	_goptr := newQTextCursor(C.QTextTableCell_LastCursorPosition(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -135,15 +125,13 @@ func (this *QTextTableCell) OperatorNotEqual(other *QTextTableCell) bool {
 }
 
 func (this *QTextTableCell) Begin() *QTextFrame__iterator {
-	_ret := C.QTextTableCell_Begin(this.h)
-	_goptr := newQTextFrame__iterator(_ret)
+	_goptr := newQTextFrame__iterator(C.QTextTableCell_Begin(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextTableCell) End() *QTextFrame__iterator {
-	_ret := C.QTextTableCell_End(this.h)
-	_goptr := newQTextFrame__iterator(_ret)
+	_goptr := newQTextFrame__iterator(C.QTextTableCell_End(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -187,39 +175,32 @@ func (this *QTextTable) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTextTable constructs the type using only CGO pointers.
-func newQTextTable(h *C.QTextTable, h_QTextFrame *C.QTextFrame, h_QTextObject *C.QTextObject, h_QObject *C.QObject) *QTextTable {
+func newQTextTable(h *C.QTextTable) *QTextTable {
 	if h == nil {
 		return nil
 	}
+	var outptr_QTextFrame *C.QTextFrame = nil
+	C.QTextTable_virtbase(h, &outptr_QTextFrame)
+
 	return &QTextTable{h: h,
-		QTextFrame: newQTextFrame(h_QTextFrame, h_QTextObject, h_QObject)}
+		QTextFrame: newQTextFrame(outptr_QTextFrame)}
 }
 
 // UnsafeNewQTextTable constructs the type using only unsafe pointers.
-func UnsafeNewQTextTable(h unsafe.Pointer, h_QTextFrame unsafe.Pointer, h_QTextObject unsafe.Pointer, h_QObject unsafe.Pointer) *QTextTable {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextTable{h: (*C.QTextTable)(h),
-		QTextFrame: UnsafeNewQTextFrame(h_QTextFrame, h_QTextObject, h_QObject)}
+func UnsafeNewQTextTable(h unsafe.Pointer) *QTextTable {
+	return newQTextTable((*C.QTextTable)(h))
 }
 
 // NewQTextTable constructs a new QTextTable object.
 func NewQTextTable(doc *QTextDocument) *QTextTable {
-	var outptr_QTextTable *C.QTextTable = nil
-	var outptr_QTextFrame *C.QTextFrame = nil
-	var outptr_QTextObject *C.QTextObject = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTextTable_new(doc.cPointer(), &outptr_QTextTable, &outptr_QTextFrame, &outptr_QTextObject, &outptr_QObject)
-	ret := newQTextTable(outptr_QTextTable, outptr_QTextFrame, outptr_QTextObject, outptr_QObject)
+	ret := newQTextTable(C.QTextTable_new(doc.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QTextTable) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTextTable_MetaObject(this.h)))
+	return newQMetaObject(C.QTextTable_MetaObject(this.h))
 }
 
 func (this *QTextTable) Metacast(param1 string) unsafe.Pointer {
@@ -286,36 +267,31 @@ func (this *QTextTable) Columns() int {
 }
 
 func (this *QTextTable) CellAt(row int, col int) *QTextTableCell {
-	_ret := C.QTextTable_CellAt(this.h, (C.int)(row), (C.int)(col))
-	_goptr := newQTextTableCell(_ret)
+	_goptr := newQTextTableCell(C.QTextTable_CellAt(this.h, (C.int)(row), (C.int)(col)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextTable) CellAtWithPosition(position int) *QTextTableCell {
-	_ret := C.QTextTable_CellAtWithPosition(this.h, (C.int)(position))
-	_goptr := newQTextTableCell(_ret)
+	_goptr := newQTextTableCell(C.QTextTable_CellAtWithPosition(this.h, (C.int)(position)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextTable) CellAtWithQTextCursor(c *QTextCursor) *QTextTableCell {
-	_ret := C.QTextTable_CellAtWithQTextCursor(this.h, c.cPointer())
-	_goptr := newQTextTableCell(_ret)
+	_goptr := newQTextTableCell(C.QTextTable_CellAtWithQTextCursor(this.h, c.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextTable) RowStart(c *QTextCursor) *QTextCursor {
-	_ret := C.QTextTable_RowStart(this.h, c.cPointer())
-	_goptr := newQTextCursor(_ret)
+	_goptr := newQTextCursor(C.QTextTable_RowStart(this.h, c.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextTable) RowEnd(c *QTextCursor) *QTextCursor {
-	_ret := C.QTextTable_RowEnd(this.h, c.cPointer())
-	_goptr := newQTextCursor(_ret)
+	_goptr := newQTextCursor(C.QTextTable_RowEnd(this.h, c.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -325,8 +301,7 @@ func (this *QTextTable) SetFormat(format *QTextTableFormat) {
 }
 
 func (this *QTextTable) Format() *QTextTableFormat {
-	_ret := C.QTextTable_Format(this.h)
-	_goptr := newQTextTableFormat(_ret, nil, nil)
+	_goptr := newQTextTableFormat(C.QTextTable_Format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

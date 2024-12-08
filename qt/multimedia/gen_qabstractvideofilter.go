@@ -45,21 +45,17 @@ func newQVideoFilterRunnable(h *C.QVideoFilterRunnable) *QVideoFilterRunnable {
 	if h == nil {
 		return nil
 	}
+
 	return &QVideoFilterRunnable{h: h}
 }
 
 // UnsafeNewQVideoFilterRunnable constructs the type using only unsafe pointers.
 func UnsafeNewQVideoFilterRunnable(h unsafe.Pointer) *QVideoFilterRunnable {
-	if h == nil {
-		return nil
-	}
-
-	return &QVideoFilterRunnable{h: (*C.QVideoFilterRunnable)(h)}
+	return newQVideoFilterRunnable((*C.QVideoFilterRunnable)(h))
 }
 
 func (this *QVideoFilterRunnable) Run(input *QVideoFrame, surfaceFormat *QVideoSurfaceFormat, flags QVideoFilterRunnable__RunFlag) *QVideoFrame {
-	_ret := C.QVideoFilterRunnable_Run(this.h, input.cPointer(), surfaceFormat.cPointer(), (C.int)(flags))
-	_goptr := newQVideoFrame(_ret)
+	_goptr := newQVideoFrame(C.QVideoFilterRunnable_Run(this.h, input.cPointer(), surfaceFormat.cPointer(), (C.int)(flags)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -103,42 +99,34 @@ func (this *QAbstractVideoFilter) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAbstractVideoFilter constructs the type using only CGO pointers.
-func newQAbstractVideoFilter(h *C.QAbstractVideoFilter, h_QObject *C.QObject) *QAbstractVideoFilter {
+func newQAbstractVideoFilter(h *C.QAbstractVideoFilter) *QAbstractVideoFilter {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QAbstractVideoFilter_virtbase(h, &outptr_QObject)
+
 	return &QAbstractVideoFilter{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQAbstractVideoFilter constructs the type using only unsafe pointers.
-func UnsafeNewQAbstractVideoFilter(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractVideoFilter {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractVideoFilter{h: (*C.QAbstractVideoFilter)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQAbstractVideoFilter(h unsafe.Pointer) *QAbstractVideoFilter {
+	return newQAbstractVideoFilter((*C.QAbstractVideoFilter)(h))
 }
 
 // NewQAbstractVideoFilter constructs a new QAbstractVideoFilter object.
 func NewQAbstractVideoFilter() *QAbstractVideoFilter {
-	var outptr_QAbstractVideoFilter *C.QAbstractVideoFilter = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAbstractVideoFilter_new(&outptr_QAbstractVideoFilter, &outptr_QObject)
-	ret := newQAbstractVideoFilter(outptr_QAbstractVideoFilter, outptr_QObject)
+	ret := newQAbstractVideoFilter(C.QAbstractVideoFilter_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAbstractVideoFilter2 constructs a new QAbstractVideoFilter object.
 func NewQAbstractVideoFilter2(parent *qt.QObject) *QAbstractVideoFilter {
-	var outptr_QAbstractVideoFilter *C.QAbstractVideoFilter = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAbstractVideoFilter_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QAbstractVideoFilter, &outptr_QObject)
-	ret := newQAbstractVideoFilter(outptr_QAbstractVideoFilter, outptr_QObject)
+	ret := newQAbstractVideoFilter(C.QAbstractVideoFilter_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -180,7 +168,7 @@ func (this *QAbstractVideoFilter) SetActive(v bool) {
 }
 
 func (this *QAbstractVideoFilter) CreateFilterRunnable() *QVideoFilterRunnable {
-	return UnsafeNewQVideoFilterRunnable(unsafe.Pointer(C.QAbstractVideoFilter_CreateFilterRunnable(this.h)))
+	return newQVideoFilterRunnable(C.QAbstractVideoFilter_CreateFilterRunnable(this.h))
 }
 
 func (this *QAbstractVideoFilter) ActiveChanged() {
@@ -244,6 +232,9 @@ func QAbstractVideoFilter_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 func (this *QAbstractVideoFilter) OnCreateFilterRunnable(slot func() *QVideoFilterRunnable) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractVideoFilter_override_virtual_CreateFilterRunnable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -266,6 +257,9 @@ func (this *QAbstractVideoFilter) callVirtualBase_Event(event *qt.QEvent) bool {
 
 }
 func (this *QAbstractVideoFilter) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractVideoFilter_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -291,6 +285,9 @@ func (this *QAbstractVideoFilter) callVirtualBase_EventFilter(watched *qt.QObjec
 
 }
 func (this *QAbstractVideoFilter) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractVideoFilter_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -303,6 +300,7 @@ func miqt_exec_callback_QAbstractVideoFilter_EventFilter(self *C.QAbstractVideoF
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QAbstractVideoFilter{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
@@ -317,6 +315,9 @@ func (this *QAbstractVideoFilter) callVirtualBase_TimerEvent(event *qt.QTimerEve
 
 }
 func (this *QAbstractVideoFilter) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractVideoFilter_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -328,7 +329,7 @@ func miqt_exec_callback_QAbstractVideoFilter_TimerEvent(self *C.QAbstractVideoFi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QAbstractVideoFilter{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -340,6 +341,9 @@ func (this *QAbstractVideoFilter) callVirtualBase_ChildEvent(event *qt.QChildEve
 
 }
 func (this *QAbstractVideoFilter) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractVideoFilter_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -351,7 +355,7 @@ func miqt_exec_callback_QAbstractVideoFilter_ChildEvent(self *C.QAbstractVideoFi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QAbstractVideoFilter{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -363,6 +367,9 @@ func (this *QAbstractVideoFilter) callVirtualBase_CustomEvent(event *qt.QEvent) 
 
 }
 func (this *QAbstractVideoFilter) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractVideoFilter_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -386,6 +393,9 @@ func (this *QAbstractVideoFilter) callVirtualBase_ConnectNotify(signal *qt.QMeta
 
 }
 func (this *QAbstractVideoFilter) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractVideoFilter_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -409,6 +419,9 @@ func (this *QAbstractVideoFilter) callVirtualBase_DisconnectNotify(signal *qt.QM
 
 }
 func (this *QAbstractVideoFilter) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractVideoFilter_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

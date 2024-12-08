@@ -35,39 +35,32 @@ func (this *QDesktopWidget) UnsafePointer() unsafe.Pointer {
 }
 
 // newQDesktopWidget constructs the type using only CGO pointers.
-func newQDesktopWidget(h *C.QDesktopWidget, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QDesktopWidget {
+func newQDesktopWidget(h *C.QDesktopWidget) *QDesktopWidget {
 	if h == nil {
 		return nil
 	}
+	var outptr_QWidget *C.QWidget = nil
+	C.QDesktopWidget_virtbase(h, &outptr_QWidget)
+
 	return &QDesktopWidget{h: h,
-		QWidget: newQWidget(h_QWidget, h_QObject, h_QPaintDevice)}
+		QWidget: newQWidget(outptr_QWidget)}
 }
 
 // UnsafeNewQDesktopWidget constructs the type using only unsafe pointers.
-func UnsafeNewQDesktopWidget(h unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QDesktopWidget {
-	if h == nil {
-		return nil
-	}
-
-	return &QDesktopWidget{h: (*C.QDesktopWidget)(h),
-		QWidget: UnsafeNewQWidget(h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQDesktopWidget(h unsafe.Pointer) *QDesktopWidget {
+	return newQDesktopWidget((*C.QDesktopWidget)(h))
 }
 
 // NewQDesktopWidget constructs a new QDesktopWidget object.
 func NewQDesktopWidget() *QDesktopWidget {
-	var outptr_QDesktopWidget *C.QDesktopWidget = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QDesktopWidget_new(&outptr_QDesktopWidget, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQDesktopWidget(outptr_QDesktopWidget, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQDesktopWidget(C.QDesktopWidget_new())
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QDesktopWidget) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QDesktopWidget_MetaObject(this.h)))
+	return newQMetaObject(C.QDesktopWidget_MetaObject(this.h))
 }
 
 func (this *QDesktopWidget) Metacast(param1 string) unsafe.Pointer {
@@ -99,15 +92,13 @@ func (this *QDesktopWidget) ScreenNumber() int {
 }
 
 func (this *QDesktopWidget) ScreenGeometry(widget *QWidget) *QRect {
-	_ret := C.QDesktopWidget_ScreenGeometry(this.h, widget.cPointer())
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QDesktopWidget_ScreenGeometry(this.h, widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDesktopWidget) AvailableGeometry(widget *QWidget) *QRect {
-	_ret := C.QDesktopWidget_AvailableGeometry(this.h, widget.cPointer())
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QDesktopWidget_AvailableGeometry(this.h, widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -133,33 +124,29 @@ func (this *QDesktopWidget) ScreenNumberWithQPoint(param1 *QPoint) int {
 }
 
 func (this *QDesktopWidget) Screen() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QDesktopWidget_Screen(this.h)), nil, nil)
+	return newQWidget(C.QDesktopWidget_Screen(this.h))
 }
 
 func (this *QDesktopWidget) ScreenGeometry2() *QRect {
-	_ret := C.QDesktopWidget_ScreenGeometry2(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QDesktopWidget_ScreenGeometry2(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDesktopWidget) ScreenGeometryWithPoint(point *QPoint) *QRect {
-	_ret := C.QDesktopWidget_ScreenGeometryWithPoint(this.h, point.cPointer())
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QDesktopWidget_ScreenGeometryWithPoint(this.h, point.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDesktopWidget) AvailableGeometry2() *QRect {
-	_ret := C.QDesktopWidget_AvailableGeometry2(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QDesktopWidget_AvailableGeometry2(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDesktopWidget) AvailableGeometryWithPoint(point *QPoint) *QRect {
-	_ret := C.QDesktopWidget_AvailableGeometryWithPoint(this.h, point.cPointer())
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QDesktopWidget_AvailableGeometryWithPoint(this.h, point.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -290,19 +277,17 @@ func (this *QDesktopWidget) ScreenNumber1(widget *QWidget) int {
 }
 
 func (this *QDesktopWidget) Screen1(screen int) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QDesktopWidget_Screen1(this.h, (C.int)(screen))), nil, nil)
+	return newQWidget(C.QDesktopWidget_Screen1(this.h, (C.int)(screen)))
 }
 
 func (this *QDesktopWidget) ScreenGeometry1(screen int) *QRect {
-	_ret := C.QDesktopWidget_ScreenGeometry1(this.h, (C.int)(screen))
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QDesktopWidget_ScreenGeometry1(this.h, (C.int)(screen)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDesktopWidget) AvailableGeometry1(screen int) *QRect {
-	_ret := C.QDesktopWidget_AvailableGeometry1(this.h, (C.int)(screen))
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QDesktopWidget_AvailableGeometry1(this.h, (C.int)(screen)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -313,6 +298,9 @@ func (this *QDesktopWidget) callVirtualBase_ResizeEvent(e *QResizeEvent) {
 
 }
 func (this *QDesktopWidget) OnResizeEvent(slot func(super func(e *QResizeEvent), e *QResizeEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -324,7 +312,7 @@ func miqt_exec_callback_QDesktopWidget_ResizeEvent(self *C.QDesktopWidget, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQResizeEvent(e)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -336,6 +324,9 @@ func (this *QDesktopWidget) callVirtualBase_DevType() int {
 
 }
 func (this *QDesktopWidget) OnDevType(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -358,6 +349,9 @@ func (this *QDesktopWidget) callVirtualBase_SetVisible(visible bool) {
 
 }
 func (this *QDesktopWidget) OnSetVisible(slot func(super func(visible bool), visible bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -377,13 +371,15 @@ func miqt_exec_callback_QDesktopWidget_SetVisible(self *C.QDesktopWidget, cb C.i
 
 func (this *QDesktopWidget) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QDesktopWidget_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QDesktopWidget_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QDesktopWidget) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -402,13 +398,15 @@ func miqt_exec_callback_QDesktopWidget_SizeHint(self *C.QDesktopWidget, cb C.int
 
 func (this *QDesktopWidget) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QDesktopWidget_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QDesktopWidget_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QDesktopWidget) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -431,6 +429,9 @@ func (this *QDesktopWidget) callVirtualBase_HeightForWidth(param1 int) int {
 
 }
 func (this *QDesktopWidget) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -456,6 +457,9 @@ func (this *QDesktopWidget) callVirtualBase_HasHeightForWidth() bool {
 
 }
 func (this *QDesktopWidget) OnHasHeightForWidth(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -474,9 +478,13 @@ func miqt_exec_callback_QDesktopWidget_HasHeightForWidth(self *C.QDesktopWidget,
 
 func (this *QDesktopWidget) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QDesktopWidget_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return newQPaintEngine(C.QDesktopWidget_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+
 }
 func (this *QDesktopWidget) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -499,6 +507,9 @@ func (this *QDesktopWidget) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QDesktopWidget) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -510,7 +521,7 @@ func miqt_exec_callback_QDesktopWidget_Event(self *C.QDesktopWidget, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QDesktopWidget{h: self}).callVirtualBase_Event, slotval1)
 
@@ -524,6 +535,9 @@ func (this *QDesktopWidget) callVirtualBase_MousePressEvent(event *QMouseEvent) 
 
 }
 func (this *QDesktopWidget) OnMousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -535,7 +549,7 @@ func miqt_exec_callback_QDesktopWidget_MousePressEvent(self *C.QDesktopWidget, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -547,6 +561,9 @@ func (this *QDesktopWidget) callVirtualBase_MouseReleaseEvent(event *QMouseEvent
 
 }
 func (this *QDesktopWidget) OnMouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -558,7 +575,7 @@ func miqt_exec_callback_QDesktopWidget_MouseReleaseEvent(self *C.QDesktopWidget,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -570,6 +587,9 @@ func (this *QDesktopWidget) callVirtualBase_MouseDoubleClickEvent(event *QMouseE
 
 }
 func (this *QDesktopWidget) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -581,7 +601,7 @@ func miqt_exec_callback_QDesktopWidget_MouseDoubleClickEvent(self *C.QDesktopWid
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -593,6 +613,9 @@ func (this *QDesktopWidget) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
 
 }
 func (this *QDesktopWidget) OnMouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -604,7 +627,7 @@ func miqt_exec_callback_QDesktopWidget_MouseMoveEvent(self *C.QDesktopWidget, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -616,6 +639,9 @@ func (this *QDesktopWidget) callVirtualBase_WheelEvent(event *QWheelEvent) {
 
 }
 func (this *QDesktopWidget) OnWheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -627,7 +653,7 @@ func miqt_exec_callback_QDesktopWidget_WheelEvent(self *C.QDesktopWidget, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQWheelEvent(event)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -639,6 +665,9 @@ func (this *QDesktopWidget) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
 
 }
 func (this *QDesktopWidget) OnKeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -650,7 +679,7 @@ func miqt_exec_callback_QDesktopWidget_KeyPressEvent(self *C.QDesktopWidget, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -662,6 +691,9 @@ func (this *QDesktopWidget) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
 
 }
 func (this *QDesktopWidget) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -673,7 +705,7 @@ func miqt_exec_callback_QDesktopWidget_KeyReleaseEvent(self *C.QDesktopWidget, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -685,6 +717,9 @@ func (this *QDesktopWidget) callVirtualBase_FocusInEvent(event *QFocusEvent) {
 
 }
 func (this *QDesktopWidget) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -696,7 +731,7 @@ func miqt_exec_callback_QDesktopWidget_FocusInEvent(self *C.QDesktopWidget, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -708,6 +743,9 @@ func (this *QDesktopWidget) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
 
 }
 func (this *QDesktopWidget) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -719,7 +757,7 @@ func miqt_exec_callback_QDesktopWidget_FocusOutEvent(self *C.QDesktopWidget, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -731,6 +769,9 @@ func (this *QDesktopWidget) callVirtualBase_EnterEvent(event *QEvent) {
 
 }
 func (this *QDesktopWidget) OnEnterEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -742,7 +783,7 @@ func miqt_exec_callback_QDesktopWidget_EnterEvent(self *C.QDesktopWidget, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_EnterEvent, slotval1)
 
@@ -754,6 +795,9 @@ func (this *QDesktopWidget) callVirtualBase_LeaveEvent(event *QEvent) {
 
 }
 func (this *QDesktopWidget) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -765,7 +809,7 @@ func miqt_exec_callback_QDesktopWidget_LeaveEvent(self *C.QDesktopWidget, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_LeaveEvent, slotval1)
 
@@ -777,6 +821,9 @@ func (this *QDesktopWidget) callVirtualBase_PaintEvent(event *QPaintEvent) {
 
 }
 func (this *QDesktopWidget) OnPaintEvent(slot func(super func(event *QPaintEvent), event *QPaintEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -788,7 +835,7 @@ func miqt_exec_callback_QDesktopWidget_PaintEvent(self *C.QDesktopWidget, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQPaintEvent(event)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -800,6 +847,9 @@ func (this *QDesktopWidget) callVirtualBase_MoveEvent(event *QMoveEvent) {
 
 }
 func (this *QDesktopWidget) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -811,7 +861,7 @@ func miqt_exec_callback_QDesktopWidget_MoveEvent(self *C.QDesktopWidget, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMoveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQMoveEvent(event)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -823,6 +873,9 @@ func (this *QDesktopWidget) callVirtualBase_CloseEvent(event *QCloseEvent) {
 
 }
 func (this *QDesktopWidget) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -834,7 +887,7 @@ func miqt_exec_callback_QDesktopWidget_CloseEvent(self *C.QDesktopWidget, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQCloseEvent(event)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -846,6 +899,9 @@ func (this *QDesktopWidget) callVirtualBase_ContextMenuEvent(event *QContextMenu
 
 }
 func (this *QDesktopWidget) OnContextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -857,7 +913,7 @@ func miqt_exec_callback_QDesktopWidget_ContextMenuEvent(self *C.QDesktopWidget, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQContextMenuEvent(event)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -869,6 +925,9 @@ func (this *QDesktopWidget) callVirtualBase_TabletEvent(event *QTabletEvent) {
 
 }
 func (this *QDesktopWidget) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -880,7 +939,7 @@ func miqt_exec_callback_QDesktopWidget_TabletEvent(self *C.QDesktopWidget, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTabletEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQTabletEvent(event)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -892,6 +951,9 @@ func (this *QDesktopWidget) callVirtualBase_ActionEvent(event *QActionEvent) {
 
 }
 func (this *QDesktopWidget) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -903,7 +965,7 @@ func miqt_exec_callback_QDesktopWidget_ActionEvent(self *C.QDesktopWidget, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQActionEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQActionEvent(event)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -915,6 +977,9 @@ func (this *QDesktopWidget) callVirtualBase_DragEnterEvent(event *QDragEnterEven
 
 }
 func (this *QDesktopWidget) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -926,7 +991,7 @@ func miqt_exec_callback_QDesktopWidget_DragEnterEvent(self *C.QDesktopWidget, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragEnterEvent(unsafe.Pointer(event), nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -938,6 +1003,9 @@ func (this *QDesktopWidget) callVirtualBase_DragMoveEvent(event *QDragMoveEvent)
 
 }
 func (this *QDesktopWidget) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -949,7 +1017,7 @@ func miqt_exec_callback_QDesktopWidget_DragMoveEvent(self *C.QDesktopWidget, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQDragMoveEvent(event)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -961,6 +1029,9 @@ func (this *QDesktopWidget) callVirtualBase_DragLeaveEvent(event *QDragLeaveEven
 
 }
 func (this *QDesktopWidget) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -972,7 +1043,7 @@ func miqt_exec_callback_QDesktopWidget_DragLeaveEvent(self *C.QDesktopWidget, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragLeaveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDragLeaveEvent(event)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -984,6 +1055,9 @@ func (this *QDesktopWidget) callVirtualBase_DropEvent(event *QDropEvent) {
 
 }
 func (this *QDesktopWidget) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -995,7 +1069,7 @@ func miqt_exec_callback_QDesktopWidget_DropEvent(self *C.QDesktopWidget, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDropEvent(event)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1007,6 +1081,9 @@ func (this *QDesktopWidget) callVirtualBase_ShowEvent(event *QShowEvent) {
 
 }
 func (this *QDesktopWidget) OnShowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1018,7 +1095,7 @@ func miqt_exec_callback_QDesktopWidget_ShowEvent(self *C.QDesktopWidget, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQShowEvent(event)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1030,6 +1107,9 @@ func (this *QDesktopWidget) callVirtualBase_HideEvent(event *QHideEvent) {
 
 }
 func (this *QDesktopWidget) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1041,7 +1121,7 @@ func miqt_exec_callback_QDesktopWidget_HideEvent(self *C.QDesktopWidget, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHideEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQHideEvent(event)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -1056,6 +1136,9 @@ func (this *QDesktopWidget) callVirtualBase_NativeEvent(eventType []byte, messag
 
 }
 func (this *QDesktopWidget) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1087,6 +1170,9 @@ func (this *QDesktopWidget) callVirtualBase_ChangeEvent(param1 *QEvent) {
 
 }
 func (this *QDesktopWidget) OnChangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1098,7 +1184,7 @@ func miqt_exec_callback_QDesktopWidget_ChangeEvent(self *C.QDesktopWidget, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -1110,6 +1196,9 @@ func (this *QDesktopWidget) callVirtualBase_Metric(param1 QPaintDevice__PaintDev
 
 }
 func (this *QDesktopWidget) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1135,6 +1224,9 @@ func (this *QDesktopWidget) callVirtualBase_InitPainter(painter *QPainter) {
 
 }
 func (this *QDesktopWidget) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1146,7 +1238,7 @@ func miqt_exec_callback_QDesktopWidget_InitPainter(self *C.QDesktopWidget, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval1 := newQPainter(painter)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_InitPainter, slotval1)
 
@@ -1154,9 +1246,13 @@ func miqt_exec_callback_QDesktopWidget_InitPainter(self *C.QDesktopWidget, cb C.
 
 func (this *QDesktopWidget) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QDesktopWidget_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer())))
+	return newQPaintDevice(C.QDesktopWidget_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+
 }
 func (this *QDesktopWidget) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1168,7 +1264,7 @@ func miqt_exec_callback_QDesktopWidget_Redirected(self *C.QDesktopWidget, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(offset))
+	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QDesktopWidget{h: self}).callVirtualBase_Redirected, slotval1)
 
@@ -1178,9 +1274,13 @@ func miqt_exec_callback_QDesktopWidget_Redirected(self *C.QDesktopWidget, cb C.i
 
 func (this *QDesktopWidget) callVirtualBase_SharedPainter() *QPainter {
 
-	return UnsafeNewQPainter(unsafe.Pointer(C.QDesktopWidget_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+	return newQPainter(C.QDesktopWidget_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+
 }
 func (this *QDesktopWidget) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1203,6 +1303,9 @@ func (this *QDesktopWidget) callVirtualBase_InputMethodEvent(param1 *QInputMetho
 
 }
 func (this *QDesktopWidget) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1214,7 +1317,7 @@ func miqt_exec_callback_QDesktopWidget_InputMethodEvent(self *C.QDesktopWidget, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQInputMethodEvent(param1)
 
 	gofunc((&QDesktopWidget{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -1222,13 +1325,15 @@ func miqt_exec_callback_QDesktopWidget_InputMethodEvent(self *C.QDesktopWidget, 
 
 func (this *QDesktopWidget) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_ret := C.QDesktopWidget_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QDesktopWidget_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QDesktopWidget) OnInputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1254,6 +1359,9 @@ func (this *QDesktopWidget) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
 }
 func (this *QDesktopWidget) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDesktopWidget_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

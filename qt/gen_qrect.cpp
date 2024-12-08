@@ -10,29 +10,24 @@
 #include "gen_qrect.h"
 #include "_cgo_export.h"
 
-void QRect_new(QRect** outptr_QRect) {
-	QRect* ret = new QRect();
-	*outptr_QRect = ret;
+QRect* QRect_new() {
+	return new QRect();
 }
 
-void QRect_new2(QPoint* topleft, QPoint* bottomright, QRect** outptr_QRect) {
-	QRect* ret = new QRect(*topleft, *bottomright);
-	*outptr_QRect = ret;
+QRect* QRect_new2(QPoint* topleft, QPoint* bottomright) {
+	return new QRect(*topleft, *bottomright);
 }
 
-void QRect_new3(QPoint* topleft, QSize* size, QRect** outptr_QRect) {
-	QRect* ret = new QRect(*topleft, *size);
-	*outptr_QRect = ret;
+QRect* QRect_new3(QPoint* topleft, QSize* size) {
+	return new QRect(*topleft, *size);
 }
 
-void QRect_new4(int left, int top, int width, int height, QRect** outptr_QRect) {
-	QRect* ret = new QRect(static_cast<int>(left), static_cast<int>(top), static_cast<int>(width), static_cast<int>(height));
-	*outptr_QRect = ret;
+QRect* QRect_new4(int left, int top, int width, int height) {
+	return new QRect(static_cast<int>(left), static_cast<int>(top), static_cast<int>(width), static_cast<int>(height));
 }
 
-void QRect_new5(QRect* param1, QRect** outptr_QRect) {
-	QRect* ret = new QRect(*param1);
-	*outptr_QRect = ret;
+QRect* QRect_new5(QRect* param1) {
+	return new QRect(*param1);
 }
 
 bool QRect_IsNull(const QRect* self) {
@@ -327,34 +322,28 @@ void QRect_Delete(QRect* self, bool isSubclass) {
 	}
 }
 
-void QRectF_new(QRectF** outptr_QRectF) {
-	QRectF* ret = new QRectF();
-	*outptr_QRectF = ret;
+QRectF* QRectF_new() {
+	return new QRectF();
 }
 
-void QRectF_new2(QPointF* topleft, QSizeF* size, QRectF** outptr_QRectF) {
-	QRectF* ret = new QRectF(*topleft, *size);
-	*outptr_QRectF = ret;
+QRectF* QRectF_new2(QPointF* topleft, QSizeF* size) {
+	return new QRectF(*topleft, *size);
 }
 
-void QRectF_new3(QPointF* topleft, QPointF* bottomRight, QRectF** outptr_QRectF) {
-	QRectF* ret = new QRectF(*topleft, *bottomRight);
-	*outptr_QRectF = ret;
+QRectF* QRectF_new3(QPointF* topleft, QPointF* bottomRight) {
+	return new QRectF(*topleft, *bottomRight);
 }
 
-void QRectF_new4(double left, double top, double width, double height, QRectF** outptr_QRectF) {
-	QRectF* ret = new QRectF(static_cast<qreal>(left), static_cast<qreal>(top), static_cast<qreal>(width), static_cast<qreal>(height));
-	*outptr_QRectF = ret;
+QRectF* QRectF_new4(double left, double top, double width, double height) {
+	return new QRectF(static_cast<qreal>(left), static_cast<qreal>(top), static_cast<qreal>(width), static_cast<qreal>(height));
 }
 
-void QRectF_new5(QRect* rect, QRectF** outptr_QRectF) {
-	QRectF* ret = new QRectF(*rect);
-	*outptr_QRectF = ret;
+QRectF* QRectF_new5(QRect* rect) {
+	return new QRectF(*rect);
 }
 
-void QRectF_new6(QRectF* param1, QRectF** outptr_QRectF) {
-	QRectF* ret = new QRectF(*param1);
-	*outptr_QRectF = ret;
+QRectF* QRectF_new6(QRectF* param1) {
+	return new QRectF(*param1);
 }
 
 bool QRectF_IsNull(const QRectF* self) {

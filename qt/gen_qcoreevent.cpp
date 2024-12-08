@@ -8,14 +8,12 @@
 #include "gen_qcoreevent.h"
 #include "_cgo_export.h"
 
-void QEvent_new(int typeVal, QEvent** outptr_QEvent) {
-	QEvent* ret = new QEvent(static_cast<QEvent::Type>(typeVal));
-	*outptr_QEvent = ret;
+QEvent* QEvent_new(int typeVal) {
+	return new QEvent(static_cast<QEvent::Type>(typeVal));
 }
 
-void QEvent_new2(QEvent* other, QEvent** outptr_QEvent) {
-	QEvent* ret = new QEvent(*other);
-	*outptr_QEvent = ret;
+QEvent* QEvent_new2(QEvent* other) {
+	return new QEvent(*other);
 }
 
 void QEvent_OperatorAssign(QEvent* self, QEvent* other) {
@@ -63,16 +61,16 @@ void QEvent_Delete(QEvent* self, bool isSubclass) {
 	}
 }
 
-void QTimerEvent_new(int timerId, QTimerEvent** outptr_QTimerEvent, QEvent** outptr_QEvent) {
-	QTimerEvent* ret = new QTimerEvent(static_cast<int>(timerId));
-	*outptr_QTimerEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QTimerEvent* QTimerEvent_new(int timerId) {
+	return new QTimerEvent(static_cast<int>(timerId));
 }
 
-void QTimerEvent_new2(QTimerEvent* param1, QTimerEvent** outptr_QTimerEvent, QEvent** outptr_QEvent) {
-	QTimerEvent* ret = new QTimerEvent(*param1);
-	*outptr_QTimerEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QTimerEvent* QTimerEvent_new2(QTimerEvent* param1) {
+	return new QTimerEvent(*param1);
+}
+
+void QTimerEvent_virtbase(QTimerEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 int QTimerEvent_TimerId(const QTimerEvent* self) {
@@ -87,16 +85,16 @@ void QTimerEvent_Delete(QTimerEvent* self, bool isSubclass) {
 	}
 }
 
-void QChildEvent_new(int typeVal, QObject* child, QChildEvent** outptr_QChildEvent, QEvent** outptr_QEvent) {
-	QChildEvent* ret = new QChildEvent(static_cast<QEvent::Type>(typeVal), child);
-	*outptr_QChildEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QChildEvent* QChildEvent_new(int typeVal, QObject* child) {
+	return new QChildEvent(static_cast<QEvent::Type>(typeVal), child);
 }
 
-void QChildEvent_new2(QChildEvent* param1, QChildEvent** outptr_QChildEvent, QEvent** outptr_QEvent) {
-	QChildEvent* ret = new QChildEvent(*param1);
-	*outptr_QChildEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QChildEvent* QChildEvent_new2(QChildEvent* param1) {
+	return new QChildEvent(*param1);
+}
+
+void QChildEvent_virtbase(QChildEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 QObject* QChildEvent_Child(const QChildEvent* self) {
@@ -123,17 +121,17 @@ void QChildEvent_Delete(QChildEvent* self, bool isSubclass) {
 	}
 }
 
-void QDynamicPropertyChangeEvent_new(struct miqt_string name, QDynamicPropertyChangeEvent** outptr_QDynamicPropertyChangeEvent, QEvent** outptr_QEvent) {
+QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new(struct miqt_string name) {
 	QByteArray name_QByteArray(name.data, name.len);
-	QDynamicPropertyChangeEvent* ret = new QDynamicPropertyChangeEvent(name_QByteArray);
-	*outptr_QDynamicPropertyChangeEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+	return new QDynamicPropertyChangeEvent(name_QByteArray);
 }
 
-void QDynamicPropertyChangeEvent_new2(QDynamicPropertyChangeEvent* param1, QDynamicPropertyChangeEvent** outptr_QDynamicPropertyChangeEvent, QEvent** outptr_QEvent) {
-	QDynamicPropertyChangeEvent* ret = new QDynamicPropertyChangeEvent(*param1);
-	*outptr_QDynamicPropertyChangeEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new2(QDynamicPropertyChangeEvent* param1) {
+	return new QDynamicPropertyChangeEvent(*param1);
+}
+
+void QDynamicPropertyChangeEvent_virtbase(QDynamicPropertyChangeEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 struct miqt_string QDynamicPropertyChangeEvent_PropertyName(const QDynamicPropertyChangeEvent* self) {

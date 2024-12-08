@@ -11,6 +11,10 @@
 #include "gen_qmetadatareadercontrol.h"
 #include "_cgo_export.h"
 
+void QMetaDataReaderControl_virtbase(QMetaDataReaderControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
+
 QMetaObject* QMetaDataReaderControl_MetaObject(const QMetaDataReaderControl* self) {
 	return (QMetaObject*) self->metaObject();
 }

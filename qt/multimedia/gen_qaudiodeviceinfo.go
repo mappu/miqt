@@ -37,34 +37,27 @@ func newQAudioDeviceInfo(h *C.QAudioDeviceInfo) *QAudioDeviceInfo {
 	if h == nil {
 		return nil
 	}
+
 	return &QAudioDeviceInfo{h: h}
 }
 
 // UnsafeNewQAudioDeviceInfo constructs the type using only unsafe pointers.
 func UnsafeNewQAudioDeviceInfo(h unsafe.Pointer) *QAudioDeviceInfo {
-	if h == nil {
-		return nil
-	}
-
-	return &QAudioDeviceInfo{h: (*C.QAudioDeviceInfo)(h)}
+	return newQAudioDeviceInfo((*C.QAudioDeviceInfo)(h))
 }
 
 // NewQAudioDeviceInfo constructs a new QAudioDeviceInfo object.
 func NewQAudioDeviceInfo() *QAudioDeviceInfo {
-	var outptr_QAudioDeviceInfo *C.QAudioDeviceInfo = nil
 
-	C.QAudioDeviceInfo_new(&outptr_QAudioDeviceInfo)
-	ret := newQAudioDeviceInfo(outptr_QAudioDeviceInfo)
+	ret := newQAudioDeviceInfo(C.QAudioDeviceInfo_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAudioDeviceInfo2 constructs a new QAudioDeviceInfo object.
 func NewQAudioDeviceInfo2(other *QAudioDeviceInfo) *QAudioDeviceInfo {
-	var outptr_QAudioDeviceInfo *C.QAudioDeviceInfo = nil
 
-	C.QAudioDeviceInfo_new2(other.cPointer(), &outptr_QAudioDeviceInfo)
-	ret := newQAudioDeviceInfo(outptr_QAudioDeviceInfo)
+	ret := newQAudioDeviceInfo(C.QAudioDeviceInfo_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -97,15 +90,13 @@ func (this *QAudioDeviceInfo) IsFormatSupported(format *QAudioFormat) bool {
 }
 
 func (this *QAudioDeviceInfo) PreferredFormat() *QAudioFormat {
-	_ret := C.QAudioDeviceInfo_PreferredFormat(this.h)
-	_goptr := newQAudioFormat(_ret)
+	_goptr := newQAudioFormat(C.QAudioDeviceInfo_PreferredFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAudioDeviceInfo) NearestFormat(format *QAudioFormat) *QAudioFormat {
-	_ret := C.QAudioDeviceInfo_NearestFormat(this.h, format.cPointer())
-	_goptr := newQAudioFormat(_ret)
+	_goptr := newQAudioFormat(C.QAudioDeviceInfo_NearestFormat(this.h, format.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -181,15 +172,13 @@ func (this *QAudioDeviceInfo) Realm() string {
 }
 
 func QAudioDeviceInfo_DefaultInputDevice() *QAudioDeviceInfo {
-	_ret := C.QAudioDeviceInfo_DefaultInputDevice()
-	_goptr := newQAudioDeviceInfo(_ret)
+	_goptr := newQAudioDeviceInfo(C.QAudioDeviceInfo_DefaultInputDevice())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QAudioDeviceInfo_DefaultOutputDevice() *QAudioDeviceInfo {
-	_ret := C.QAudioDeviceInfo_DefaultOutputDevice()
-	_goptr := newQAudioDeviceInfo(_ret)
+	_goptr := newQAudioDeviceInfo(C.QAudioDeviceInfo_DefaultOutputDevice())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -199,8 +188,7 @@ func QAudioDeviceInfo_AvailableDevices(mode QAudio__Mode) []QAudioDeviceInfo {
 	_ret := make([]QAudioDeviceInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAudioDeviceInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQAudioDeviceInfo(_lv_ret)
+		_lv_goptr := newQAudioDeviceInfo(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}

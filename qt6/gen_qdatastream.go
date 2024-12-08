@@ -100,42 +100,34 @@ func (this *QDataStream) UnsafePointer() unsafe.Pointer {
 }
 
 // newQDataStream constructs the type using only CGO pointers.
-func newQDataStream(h *C.QDataStream, h_QIODeviceBase *C.QIODeviceBase) *QDataStream {
+func newQDataStream(h *C.QDataStream) *QDataStream {
 	if h == nil {
 		return nil
 	}
+	var outptr_QIODeviceBase *C.QIODeviceBase = nil
+	C.QDataStream_virtbase(h, &outptr_QIODeviceBase)
+
 	return &QDataStream{h: h,
-		QIODeviceBase: newQIODeviceBase(h_QIODeviceBase)}
+		QIODeviceBase: newQIODeviceBase(outptr_QIODeviceBase)}
 }
 
 // UnsafeNewQDataStream constructs the type using only unsafe pointers.
-func UnsafeNewQDataStream(h unsafe.Pointer, h_QIODeviceBase unsafe.Pointer) *QDataStream {
-	if h == nil {
-		return nil
-	}
-
-	return &QDataStream{h: (*C.QDataStream)(h),
-		QIODeviceBase: UnsafeNewQIODeviceBase(h_QIODeviceBase)}
+func UnsafeNewQDataStream(h unsafe.Pointer) *QDataStream {
+	return newQDataStream((*C.QDataStream)(h))
 }
 
 // NewQDataStream constructs a new QDataStream object.
 func NewQDataStream() *QDataStream {
-	var outptr_QDataStream *C.QDataStream = nil
-	var outptr_QIODeviceBase *C.QIODeviceBase = nil
 
-	C.QDataStream_new(&outptr_QDataStream, &outptr_QIODeviceBase)
-	ret := newQDataStream(outptr_QDataStream, outptr_QIODeviceBase)
+	ret := newQDataStream(C.QDataStream_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDataStream2 constructs a new QDataStream object.
 func NewQDataStream2(param1 *QIODevice) *QDataStream {
-	var outptr_QDataStream *C.QDataStream = nil
-	var outptr_QIODeviceBase *C.QIODeviceBase = nil
 
-	C.QDataStream_new2(param1.cPointer(), &outptr_QDataStream, &outptr_QIODeviceBase)
-	ret := newQDataStream(outptr_QDataStream, outptr_QIODeviceBase)
+	ret := newQDataStream(C.QDataStream_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -145,17 +137,14 @@ func NewQDataStream3(param1 []byte) *QDataStream {
 	param1_alias := C.struct_miqt_string{}
 	param1_alias.data = (*C.char)(unsafe.Pointer(&param1[0]))
 	param1_alias.len = C.size_t(len(param1))
-	var outptr_QDataStream *C.QDataStream = nil
-	var outptr_QIODeviceBase *C.QIODeviceBase = nil
 
-	C.QDataStream_new3(param1_alias, &outptr_QDataStream, &outptr_QIODeviceBase)
-	ret := newQDataStream(outptr_QDataStream, outptr_QIODeviceBase)
+	ret := newQDataStream(C.QDataStream_new3(param1_alias))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QDataStream) Device() *QIODevice {
-	return UnsafeNewQIODevice(unsafe.Pointer(C.QDataStream_Device(this.h)), nil, nil)
+	return newQIODevice(C.QDataStream_Device(this.h))
 }
 
 func (this *QDataStream) SetDevice(device *QIODevice) {
@@ -313,7 +302,7 @@ func (this *QDataStream) OperatorShiftLeftWithStr(str string) {
 func (this *QDataStream) ReadBytes(param1 string, lenVal *uint) *QDataStream {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return UnsafeNewQDataStream(unsafe.Pointer(C.QDataStream_ReadBytes(this.h, param1_Cstring, (*C.uint)(unsafe.Pointer(lenVal)))), nil)
+	return newQDataStream(C.QDataStream_ReadBytes(this.h, param1_Cstring, (*C.uint)(unsafe.Pointer(lenVal))))
 }
 
 func (this *QDataStream) ReadRawData(param1 string, lenVal int) int {

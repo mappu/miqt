@@ -84,10 +84,11 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QGraphicsView_new(QWidget* parent, QGraphicsView** outptr_QGraphicsView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QGraphicsView_new2(QGraphicsView** outptr_QGraphicsView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QGraphicsView_new3(QGraphicsScene* scene, QGraphicsView** outptr_QGraphicsView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QGraphicsView_new4(QGraphicsScene* scene, QWidget* parent, QGraphicsView** outptr_QGraphicsView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QGraphicsView* QGraphicsView_new(QWidget* parent);
+QGraphicsView* QGraphicsView_new2();
+QGraphicsView* QGraphicsView_new3(QGraphicsScene* scene);
+QGraphicsView* QGraphicsView_new4(QGraphicsScene* scene, QWidget* parent);
+void QGraphicsView_virtbase(QGraphicsView* src, QAbstractScrollArea** outptr_QAbstractScrollArea);
 QMetaObject* QGraphicsView_MetaObject(const QGraphicsView* self);
 void* QGraphicsView_Metacast(QGraphicsView* self, const char* param1);
 struct miqt_string QGraphicsView_Tr(const char* s);

@@ -38,8 +38,9 @@ typedef struct QTransposeProxyModel QTransposeProxyModel;
 typedef struct QVariant QVariant;
 #endif
 
-void QTransposeProxyModel_new(QTransposeProxyModel** outptr_QTransposeProxyModel, QAbstractProxyModel** outptr_QAbstractProxyModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject);
-void QTransposeProxyModel_new2(QObject* parent, QTransposeProxyModel** outptr_QTransposeProxyModel, QAbstractProxyModel** outptr_QAbstractProxyModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject);
+QTransposeProxyModel* QTransposeProxyModel_new();
+QTransposeProxyModel* QTransposeProxyModel_new2(QObject* parent);
+void QTransposeProxyModel_virtbase(QTransposeProxyModel* src, QAbstractProxyModel** outptr_QAbstractProxyModel);
 QMetaObject* QTransposeProxyModel_MetaObject(const QTransposeProxyModel* self);
 void* QTransposeProxyModel_Metacast(QTransposeProxyModel* self, const char* param1);
 struct miqt_string QTransposeProxyModel_Tr(const char* s);

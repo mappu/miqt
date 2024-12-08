@@ -29,8 +29,8 @@ struct miqt_string QItemEditorCreatorBase_ValuePropertyName(const QItemEditorCre
 void QItemEditorCreatorBase_OperatorAssign(QItemEditorCreatorBase* self, QItemEditorCreatorBase* param1);
 void QItemEditorCreatorBase_Delete(QItemEditorCreatorBase* self, bool isSubclass);
 
-void QItemEditorFactory_new(QItemEditorFactory** outptr_QItemEditorFactory);
-void QItemEditorFactory_new2(QItemEditorFactory* param1, QItemEditorFactory** outptr_QItemEditorFactory);
+QItemEditorFactory* QItemEditorFactory_new();
+QItemEditorFactory* QItemEditorFactory_new2(QItemEditorFactory* param1);
 QWidget* QItemEditorFactory_CreateEditor(const QItemEditorFactory* self, int userType, QWidget* parent);
 struct miqt_string QItemEditorFactory_ValuePropertyName(const QItemEditorFactory* self, int userType);
 void QItemEditorFactory_RegisterEditor(QItemEditorFactory* self, int userType, QItemEditorCreatorBase* creator);

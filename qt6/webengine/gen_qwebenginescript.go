@@ -54,34 +54,27 @@ func newQWebEngineScript(h *C.QWebEngineScript) *QWebEngineScript {
 	if h == nil {
 		return nil
 	}
+
 	return &QWebEngineScript{h: h}
 }
 
 // UnsafeNewQWebEngineScript constructs the type using only unsafe pointers.
 func UnsafeNewQWebEngineScript(h unsafe.Pointer) *QWebEngineScript {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineScript{h: (*C.QWebEngineScript)(h)}
+	return newQWebEngineScript((*C.QWebEngineScript)(h))
 }
 
 // NewQWebEngineScript constructs a new QWebEngineScript object.
 func NewQWebEngineScript() *QWebEngineScript {
-	var outptr_QWebEngineScript *C.QWebEngineScript = nil
 
-	C.QWebEngineScript_new(&outptr_QWebEngineScript)
-	ret := newQWebEngineScript(outptr_QWebEngineScript)
+	ret := newQWebEngineScript(C.QWebEngineScript_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebEngineScript2 constructs a new QWebEngineScript object.
 func NewQWebEngineScript2(other *QWebEngineScript) *QWebEngineScript {
-	var outptr_QWebEngineScript *C.QWebEngineScript = nil
 
-	C.QWebEngineScript_new2(other.cPointer(), &outptr_QWebEngineScript)
-	ret := newQWebEngineScript(outptr_QWebEngineScript)
+	ret := newQWebEngineScript(C.QWebEngineScript_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -106,8 +99,7 @@ func (this *QWebEngineScript) SetName(name string) {
 }
 
 func (this *QWebEngineScript) SourceUrl() *qt6.QUrl {
-	_ret := C.QWebEngineScript_SourceUrl(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineScript_SourceUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

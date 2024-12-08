@@ -1027,52 +1027,32 @@ public:
 
 };
 
-void QPrintPreviewWidget_new(QWidget* parent, QPrintPreviewWidget** outptr_QPrintPreviewWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPrintPreviewWidget* ret = new MiqtVirtualQPrintPreviewWidget(parent);
-	*outptr_QPrintPreviewWidget = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPrintPreviewWidget* QPrintPreviewWidget_new(QWidget* parent) {
+	return new MiqtVirtualQPrintPreviewWidget(parent);
 }
 
-void QPrintPreviewWidget_new2(QPrinter* printer, QPrintPreviewWidget** outptr_QPrintPreviewWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPrintPreviewWidget* ret = new MiqtVirtualQPrintPreviewWidget(printer);
-	*outptr_QPrintPreviewWidget = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPrintPreviewWidget* QPrintPreviewWidget_new2(QPrinter* printer) {
+	return new MiqtVirtualQPrintPreviewWidget(printer);
 }
 
-void QPrintPreviewWidget_new3(QPrintPreviewWidget** outptr_QPrintPreviewWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPrintPreviewWidget* ret = new MiqtVirtualQPrintPreviewWidget();
-	*outptr_QPrintPreviewWidget = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPrintPreviewWidget* QPrintPreviewWidget_new3() {
+	return new MiqtVirtualQPrintPreviewWidget();
 }
 
-void QPrintPreviewWidget_new4(QPrinter* printer, QWidget* parent, QPrintPreviewWidget** outptr_QPrintPreviewWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPrintPreviewWidget* ret = new MiqtVirtualQPrintPreviewWidget(printer, parent);
-	*outptr_QPrintPreviewWidget = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPrintPreviewWidget* QPrintPreviewWidget_new4(QPrinter* printer, QWidget* parent) {
+	return new MiqtVirtualQPrintPreviewWidget(printer, parent);
 }
 
-void QPrintPreviewWidget_new5(QPrinter* printer, QWidget* parent, int flags, QPrintPreviewWidget** outptr_QPrintPreviewWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPrintPreviewWidget* ret = new MiqtVirtualQPrintPreviewWidget(printer, parent, static_cast<Qt::WindowFlags>(flags));
-	*outptr_QPrintPreviewWidget = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPrintPreviewWidget* QPrintPreviewWidget_new5(QPrinter* printer, QWidget* parent, int flags) {
+	return new MiqtVirtualQPrintPreviewWidget(printer, parent, static_cast<Qt::WindowFlags>(flags));
 }
 
-void QPrintPreviewWidget_new6(QWidget* parent, int flags, QPrintPreviewWidget** outptr_QPrintPreviewWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPrintPreviewWidget* ret = new MiqtVirtualQPrintPreviewWidget(parent, static_cast<Qt::WindowFlags>(flags));
-	*outptr_QPrintPreviewWidget = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPrintPreviewWidget* QPrintPreviewWidget_new6(QWidget* parent, int flags) {
+	return new MiqtVirtualQPrintPreviewWidget(parent, static_cast<Qt::WindowFlags>(flags));
+}
+
+void QPrintPreviewWidget_virtbase(QPrintPreviewWidget* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QPrintPreviewWidget_MetaObject(const QPrintPreviewWidget* self) {

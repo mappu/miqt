@@ -6,19 +6,16 @@
 #include "gen_qsize.h"
 #include "_cgo_export.h"
 
-void QSize_new(QSize** outptr_QSize) {
-	QSize* ret = new QSize();
-	*outptr_QSize = ret;
+QSize* QSize_new() {
+	return new QSize();
 }
 
-void QSize_new2(int w, int h, QSize** outptr_QSize) {
-	QSize* ret = new QSize(static_cast<int>(w), static_cast<int>(h));
-	*outptr_QSize = ret;
+QSize* QSize_new2(int w, int h) {
+	return new QSize(static_cast<int>(w), static_cast<int>(h));
 }
 
-void QSize_new3(QSize* param1, QSize** outptr_QSize) {
-	QSize* ret = new QSize(*param1);
-	*outptr_QSize = ret;
+QSize* QSize_new3(QSize* param1) {
+	return new QSize(*param1);
 }
 
 bool QSize_IsNull(const QSize* self) {
@@ -121,24 +118,20 @@ void QSize_Delete(QSize* self, bool isSubclass) {
 	}
 }
 
-void QSizeF_new(QSizeF** outptr_QSizeF) {
-	QSizeF* ret = new QSizeF();
-	*outptr_QSizeF = ret;
+QSizeF* QSizeF_new() {
+	return new QSizeF();
 }
 
-void QSizeF_new2(QSize* sz, QSizeF** outptr_QSizeF) {
-	QSizeF* ret = new QSizeF(*sz);
-	*outptr_QSizeF = ret;
+QSizeF* QSizeF_new2(QSize* sz) {
+	return new QSizeF(*sz);
 }
 
-void QSizeF_new3(double w, double h, QSizeF** outptr_QSizeF) {
-	QSizeF* ret = new QSizeF(static_cast<qreal>(w), static_cast<qreal>(h));
-	*outptr_QSizeF = ret;
+QSizeF* QSizeF_new3(double w, double h) {
+	return new QSizeF(static_cast<qreal>(w), static_cast<qreal>(h));
 }
 
-void QSizeF_new4(QSizeF* param1, QSizeF** outptr_QSizeF) {
-	QSizeF* ret = new QSizeF(*param1);
-	*outptr_QSizeF = ret;
+QSizeF* QSizeF_new4(QSizeF* param1) {
+	return new QSizeF(*param1);
 }
 
 bool QSizeF_IsNull(const QSizeF* self) {

@@ -218,16 +218,16 @@ public:
 
 };
 
-void QSyntaxHighlighter_new(QObject* parent, QSyntaxHighlighter** outptr_QSyntaxHighlighter, QObject** outptr_QObject) {
-	MiqtVirtualQSyntaxHighlighter* ret = new MiqtVirtualQSyntaxHighlighter(parent);
-	*outptr_QSyntaxHighlighter = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSyntaxHighlighter* QSyntaxHighlighter_new(QObject* parent) {
+	return new MiqtVirtualQSyntaxHighlighter(parent);
 }
 
-void QSyntaxHighlighter_new2(QTextDocument* parent, QSyntaxHighlighter** outptr_QSyntaxHighlighter, QObject** outptr_QObject) {
-	MiqtVirtualQSyntaxHighlighter* ret = new MiqtVirtualQSyntaxHighlighter(parent);
-	*outptr_QSyntaxHighlighter = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSyntaxHighlighter* QSyntaxHighlighter_new2(QTextDocument* parent) {
+	return new MiqtVirtualQSyntaxHighlighter(parent);
+}
+
+void QSyntaxHighlighter_virtbase(QSyntaxHighlighter* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QSyntaxHighlighter_MetaObject(const QSyntaxHighlighter* self) {

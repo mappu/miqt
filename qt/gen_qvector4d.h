@@ -28,16 +28,16 @@ typedef struct QVector3D QVector3D;
 typedef struct QVector4D QVector4D;
 #endif
 
-void QVector4D_new(QVector4D** outptr_QVector4D);
-void QVector4D_new2(int param1, QVector4D** outptr_QVector4D);
-void QVector4D_new3(float xpos, float ypos, float zpos, float wpos, QVector4D** outptr_QVector4D);
-void QVector4D_new4(QPoint* point, QVector4D** outptr_QVector4D);
-void QVector4D_new5(QPointF* point, QVector4D** outptr_QVector4D);
-void QVector4D_new6(QVector2D* vector, QVector4D** outptr_QVector4D);
-void QVector4D_new7(QVector2D* vector, float zpos, float wpos, QVector4D** outptr_QVector4D);
-void QVector4D_new8(QVector3D* vector, QVector4D** outptr_QVector4D);
-void QVector4D_new9(QVector3D* vector, float wpos, QVector4D** outptr_QVector4D);
-void QVector4D_new10(QVector4D* param1, QVector4D** outptr_QVector4D);
+QVector4D* QVector4D_new();
+QVector4D* QVector4D_new2(int param1);
+QVector4D* QVector4D_new3(float xpos, float ypos, float zpos, float wpos);
+QVector4D* QVector4D_new4(QPoint* point);
+QVector4D* QVector4D_new5(QPointF* point);
+QVector4D* QVector4D_new6(QVector2D* vector);
+QVector4D* QVector4D_new7(QVector2D* vector, float zpos, float wpos);
+QVector4D* QVector4D_new8(QVector3D* vector);
+QVector4D* QVector4D_new9(QVector3D* vector, float wpos);
+QVector4D* QVector4D_new10(QVector4D* param1);
 bool QVector4D_IsNull(const QVector4D* self);
 float QVector4D_X(const QVector4D* self);
 float QVector4D_Y(const QVector4D* self);

@@ -74,12 +74,13 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QUndoView_new(QWidget* parent, QUndoView** outptr_QUndoView, QListView** outptr_QListView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QUndoView_new2(QUndoView** outptr_QUndoView, QListView** outptr_QListView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QUndoView_new3(QUndoStack* stack, QUndoView** outptr_QUndoView, QListView** outptr_QListView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QUndoView_new4(QUndoGroup* group, QUndoView** outptr_QUndoView, QListView** outptr_QListView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QUndoView_new5(QUndoStack* stack, QWidget* parent, QUndoView** outptr_QUndoView, QListView** outptr_QListView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QUndoView_new6(QUndoGroup* group, QWidget* parent, QUndoView** outptr_QUndoView, QListView** outptr_QListView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QUndoView* QUndoView_new(QWidget* parent);
+QUndoView* QUndoView_new2();
+QUndoView* QUndoView_new3(QUndoStack* stack);
+QUndoView* QUndoView_new4(QUndoGroup* group);
+QUndoView* QUndoView_new5(QUndoStack* stack, QWidget* parent);
+QUndoView* QUndoView_new6(QUndoGroup* group, QWidget* parent);
+void QUndoView_virtbase(QUndoView* src, QListView** outptr_QListView);
 QMetaObject* QUndoView_MetaObject(const QUndoView* self);
 void* QUndoView_Metacast(QUndoView* self, const char* param1);
 struct miqt_string QUndoView_Tr(const char* s);

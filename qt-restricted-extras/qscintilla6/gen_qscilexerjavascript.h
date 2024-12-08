@@ -32,8 +32,9 @@ typedef struct QsciLexerCPP QsciLexerCPP;
 typedef struct QsciLexerJavaScript QsciLexerJavaScript;
 #endif
 
-void QsciLexerJavaScript_new(QsciLexerJavaScript** outptr_QsciLexerJavaScript, QsciLexerCPP** outptr_QsciLexerCPP, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerJavaScript_new2(QObject* parent, QsciLexerJavaScript** outptr_QsciLexerJavaScript, QsciLexerCPP** outptr_QsciLexerCPP, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerJavaScript* QsciLexerJavaScript_new();
+QsciLexerJavaScript* QsciLexerJavaScript_new2(QObject* parent);
+void QsciLexerJavaScript_virtbase(QsciLexerJavaScript* src, QsciLexerCPP** outptr_QsciLexerCPP);
 QMetaObject* QsciLexerJavaScript_MetaObject(const QsciLexerJavaScript* self);
 void* QsciLexerJavaScript_Metacast(QsciLexerJavaScript* self, const char* param1);
 struct miqt_string QsciLexerJavaScript_Tr(const char* s);

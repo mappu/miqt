@@ -694,40 +694,32 @@ public:
 
 };
 
-void QGraphicsScene_new(QGraphicsScene** outptr_QGraphicsScene, QObject** outptr_QObject) {
-	MiqtVirtualQGraphicsScene* ret = new MiqtVirtualQGraphicsScene();
-	*outptr_QGraphicsScene = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGraphicsScene* QGraphicsScene_new() {
+	return new MiqtVirtualQGraphicsScene();
 }
 
-void QGraphicsScene_new2(QRectF* sceneRect, QGraphicsScene** outptr_QGraphicsScene, QObject** outptr_QObject) {
-	MiqtVirtualQGraphicsScene* ret = new MiqtVirtualQGraphicsScene(*sceneRect);
-	*outptr_QGraphicsScene = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGraphicsScene* QGraphicsScene_new2(QRectF* sceneRect) {
+	return new MiqtVirtualQGraphicsScene(*sceneRect);
 }
 
-void QGraphicsScene_new3(double x, double y, double width, double height, QGraphicsScene** outptr_QGraphicsScene, QObject** outptr_QObject) {
-	MiqtVirtualQGraphicsScene* ret = new MiqtVirtualQGraphicsScene(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(width), static_cast<qreal>(height));
-	*outptr_QGraphicsScene = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGraphicsScene* QGraphicsScene_new3(double x, double y, double width, double height) {
+	return new MiqtVirtualQGraphicsScene(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(width), static_cast<qreal>(height));
 }
 
-void QGraphicsScene_new4(QObject* parent, QGraphicsScene** outptr_QGraphicsScene, QObject** outptr_QObject) {
-	MiqtVirtualQGraphicsScene* ret = new MiqtVirtualQGraphicsScene(parent);
-	*outptr_QGraphicsScene = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGraphicsScene* QGraphicsScene_new4(QObject* parent) {
+	return new MiqtVirtualQGraphicsScene(parent);
 }
 
-void QGraphicsScene_new5(QRectF* sceneRect, QObject* parent, QGraphicsScene** outptr_QGraphicsScene, QObject** outptr_QObject) {
-	MiqtVirtualQGraphicsScene* ret = new MiqtVirtualQGraphicsScene(*sceneRect, parent);
-	*outptr_QGraphicsScene = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGraphicsScene* QGraphicsScene_new5(QRectF* sceneRect, QObject* parent) {
+	return new MiqtVirtualQGraphicsScene(*sceneRect, parent);
 }
 
-void QGraphicsScene_new6(double x, double y, double width, double height, QObject* parent, QGraphicsScene** outptr_QGraphicsScene, QObject** outptr_QObject) {
-	MiqtVirtualQGraphicsScene* ret = new MiqtVirtualQGraphicsScene(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(width), static_cast<qreal>(height), parent);
-	*outptr_QGraphicsScene = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGraphicsScene* QGraphicsScene_new6(double x, double y, double width, double height, QObject* parent) {
+	return new MiqtVirtualQGraphicsScene(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(width), static_cast<qreal>(height), parent);
+}
+
+void QGraphicsScene_virtbase(QGraphicsScene* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QGraphicsScene_MetaObject(const QGraphicsScene* self) {

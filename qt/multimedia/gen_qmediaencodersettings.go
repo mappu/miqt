@@ -38,34 +38,27 @@ func newQAudioEncoderSettings(h *C.QAudioEncoderSettings) *QAudioEncoderSettings
 	if h == nil {
 		return nil
 	}
+
 	return &QAudioEncoderSettings{h: h}
 }
 
 // UnsafeNewQAudioEncoderSettings constructs the type using only unsafe pointers.
 func UnsafeNewQAudioEncoderSettings(h unsafe.Pointer) *QAudioEncoderSettings {
-	if h == nil {
-		return nil
-	}
-
-	return &QAudioEncoderSettings{h: (*C.QAudioEncoderSettings)(h)}
+	return newQAudioEncoderSettings((*C.QAudioEncoderSettings)(h))
 }
 
 // NewQAudioEncoderSettings constructs a new QAudioEncoderSettings object.
 func NewQAudioEncoderSettings() *QAudioEncoderSettings {
-	var outptr_QAudioEncoderSettings *C.QAudioEncoderSettings = nil
 
-	C.QAudioEncoderSettings_new(&outptr_QAudioEncoderSettings)
-	ret := newQAudioEncoderSettings(outptr_QAudioEncoderSettings)
+	ret := newQAudioEncoderSettings(C.QAudioEncoderSettings_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAudioEncoderSettings2 constructs a new QAudioEncoderSettings object.
 func NewQAudioEncoderSettings2(other *QAudioEncoderSettings) *QAudioEncoderSettings {
-	var outptr_QAudioEncoderSettings *C.QAudioEncoderSettings = nil
 
-	C.QAudioEncoderSettings_new2(other.cPointer(), &outptr_QAudioEncoderSettings)
-	ret := newQAudioEncoderSettings(outptr_QAudioEncoderSettings)
+	ret := newQAudioEncoderSettings(C.QAudioEncoderSettings_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -146,8 +139,7 @@ func (this *QAudioEncoderSettings) EncodingOption(option string) *qt.QVariant {
 	option_ms.data = C.CString(option)
 	option_ms.len = C.size_t(len(option))
 	defer C.free(unsafe.Pointer(option_ms.data))
-	_ret := C.QAudioEncoderSettings_EncodingOption(this.h, option_ms)
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QAudioEncoderSettings_EncodingOption(this.h, option_ms)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -162,8 +154,7 @@ func (this *QAudioEncoderSettings) EncodingOptions() map[string]qt.QVariant {
 		_mapkey_ret := C.GoStringN(_mapkey_ms.data, C.int(int64(_mapkey_ms.len)))
 		C.free(unsafe.Pointer(_mapkey_ms.data))
 		_entry_Key := _mapkey_ret
-		_mapval_ret := _Values[i]
-		_mapval_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_mapval_ret))
+		_mapval_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_Values[i]))
 		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_entry_Value := *_mapval_goptr
 
@@ -241,34 +232,27 @@ func newQVideoEncoderSettings(h *C.QVideoEncoderSettings) *QVideoEncoderSettings
 	if h == nil {
 		return nil
 	}
+
 	return &QVideoEncoderSettings{h: h}
 }
 
 // UnsafeNewQVideoEncoderSettings constructs the type using only unsafe pointers.
 func UnsafeNewQVideoEncoderSettings(h unsafe.Pointer) *QVideoEncoderSettings {
-	if h == nil {
-		return nil
-	}
-
-	return &QVideoEncoderSettings{h: (*C.QVideoEncoderSettings)(h)}
+	return newQVideoEncoderSettings((*C.QVideoEncoderSettings)(h))
 }
 
 // NewQVideoEncoderSettings constructs a new QVideoEncoderSettings object.
 func NewQVideoEncoderSettings() *QVideoEncoderSettings {
-	var outptr_QVideoEncoderSettings *C.QVideoEncoderSettings = nil
 
-	C.QVideoEncoderSettings_new(&outptr_QVideoEncoderSettings)
-	ret := newQVideoEncoderSettings(outptr_QVideoEncoderSettings)
+	ret := newQVideoEncoderSettings(C.QVideoEncoderSettings_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVideoEncoderSettings2 constructs a new QVideoEncoderSettings object.
 func NewQVideoEncoderSettings2(other *QVideoEncoderSettings) *QVideoEncoderSettings {
-	var outptr_QVideoEncoderSettings *C.QVideoEncoderSettings = nil
 
-	C.QVideoEncoderSettings_new2(other.cPointer(), &outptr_QVideoEncoderSettings)
-	ret := newQVideoEncoderSettings(outptr_QVideoEncoderSettings)
+	ret := newQVideoEncoderSettings(C.QVideoEncoderSettings_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -313,8 +297,7 @@ func (this *QVideoEncoderSettings) SetCodec(codec string) {
 }
 
 func (this *QVideoEncoderSettings) Resolution() *qt.QSize {
-	_ret := C.QVideoEncoderSettings_Resolution(this.h)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoEncoderSettings_Resolution(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -356,8 +339,7 @@ func (this *QVideoEncoderSettings) EncodingOption(option string) *qt.QVariant {
 	option_ms.data = C.CString(option)
 	option_ms.len = C.size_t(len(option))
 	defer C.free(unsafe.Pointer(option_ms.data))
-	_ret := C.QVideoEncoderSettings_EncodingOption(this.h, option_ms)
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QVideoEncoderSettings_EncodingOption(this.h, option_ms)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -372,8 +354,7 @@ func (this *QVideoEncoderSettings) EncodingOptions() map[string]qt.QVariant {
 		_mapkey_ret := C.GoStringN(_mapkey_ms.data, C.int(int64(_mapkey_ms.len)))
 		C.free(unsafe.Pointer(_mapkey_ms.data))
 		_entry_Key := _mapkey_ret
-		_mapval_ret := _Values[i]
-		_mapval_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_mapval_ret))
+		_mapval_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_Values[i]))
 		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_entry_Value := *_mapval_goptr
 
@@ -451,34 +432,27 @@ func newQImageEncoderSettings(h *C.QImageEncoderSettings) *QImageEncoderSettings
 	if h == nil {
 		return nil
 	}
+
 	return &QImageEncoderSettings{h: h}
 }
 
 // UnsafeNewQImageEncoderSettings constructs the type using only unsafe pointers.
 func UnsafeNewQImageEncoderSettings(h unsafe.Pointer) *QImageEncoderSettings {
-	if h == nil {
-		return nil
-	}
-
-	return &QImageEncoderSettings{h: (*C.QImageEncoderSettings)(h)}
+	return newQImageEncoderSettings((*C.QImageEncoderSettings)(h))
 }
 
 // NewQImageEncoderSettings constructs a new QImageEncoderSettings object.
 func NewQImageEncoderSettings() *QImageEncoderSettings {
-	var outptr_QImageEncoderSettings *C.QImageEncoderSettings = nil
 
-	C.QImageEncoderSettings_new(&outptr_QImageEncoderSettings)
-	ret := newQImageEncoderSettings(outptr_QImageEncoderSettings)
+	ret := newQImageEncoderSettings(C.QImageEncoderSettings_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQImageEncoderSettings2 constructs a new QImageEncoderSettings object.
 func NewQImageEncoderSettings2(other *QImageEncoderSettings) *QImageEncoderSettings {
-	var outptr_QImageEncoderSettings *C.QImageEncoderSettings = nil
 
-	C.QImageEncoderSettings_new2(other.cPointer(), &outptr_QImageEncoderSettings)
-	ret := newQImageEncoderSettings(outptr_QImageEncoderSettings)
+	ret := newQImageEncoderSettings(C.QImageEncoderSettings_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -515,8 +489,7 @@ func (this *QImageEncoderSettings) SetCodec(codec string) {
 }
 
 func (this *QImageEncoderSettings) Resolution() *qt.QSize {
-	_ret := C.QImageEncoderSettings_Resolution(this.h)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QImageEncoderSettings_Resolution(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -542,8 +515,7 @@ func (this *QImageEncoderSettings) EncodingOption(option string) *qt.QVariant {
 	option_ms.data = C.CString(option)
 	option_ms.len = C.size_t(len(option))
 	defer C.free(unsafe.Pointer(option_ms.data))
-	_ret := C.QImageEncoderSettings_EncodingOption(this.h, option_ms)
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QImageEncoderSettings_EncodingOption(this.h, option_ms)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -558,8 +530,7 @@ func (this *QImageEncoderSettings) EncodingOptions() map[string]qt.QVariant {
 		_mapkey_ret := C.GoStringN(_mapkey_ms.data, C.int(int64(_mapkey_ms.len)))
 		C.free(unsafe.Pointer(_mapkey_ms.data))
 		_entry_Key := _mapkey_ret
-		_mapval_ret := _Values[i]
-		_mapval_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_mapval_ret))
+		_mapval_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_Values[i]))
 		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_entry_Value := *_mapval_goptr
 

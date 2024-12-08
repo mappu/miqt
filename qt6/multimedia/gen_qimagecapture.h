@@ -42,8 +42,9 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QVideoFrame QVideoFrame;
 #endif
 
-void QImageCapture_new(QImageCapture** outptr_QImageCapture, QObject** outptr_QObject);
-void QImageCapture_new2(QObject* parent, QImageCapture** outptr_QImageCapture, QObject** outptr_QObject);
+QImageCapture* QImageCapture_new();
+QImageCapture* QImageCapture_new2(QObject* parent);
+void QImageCapture_virtbase(QImageCapture* src, QObject** outptr_QObject);
 QMetaObject* QImageCapture_MetaObject(const QImageCapture* self);
 void* QImageCapture_Metacast(QImageCapture* self, const char* param1);
 struct miqt_string QImageCapture_Tr(const char* s);

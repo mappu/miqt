@@ -22,7 +22,7 @@ typedef struct QWebDatabase QWebDatabase;
 typedef struct QWebSecurityOrigin QWebSecurityOrigin;
 #endif
 
-void QWebDatabase_new(QWebDatabase* other, QWebDatabase** outptr_QWebDatabase);
+QWebDatabase* QWebDatabase_new(QWebDatabase* other);
 void QWebDatabase_OperatorAssign(QWebDatabase* self, QWebDatabase* other);
 struct miqt_string QWebDatabase_Name(const QWebDatabase* self);
 struct miqt_string QWebDatabase_DisplayName(const QWebDatabase* self);

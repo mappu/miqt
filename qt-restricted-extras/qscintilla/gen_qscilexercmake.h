@@ -34,8 +34,9 @@ typedef struct QsciLexerCMake QsciLexerCMake;
 typedef struct QsciScintilla QsciScintilla;
 #endif
 
-void QsciLexerCMake_new(QsciLexerCMake** outptr_QsciLexerCMake, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerCMake_new2(QObject* parent, QsciLexerCMake** outptr_QsciLexerCMake, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerCMake* QsciLexerCMake_new();
+QsciLexerCMake* QsciLexerCMake_new2(QObject* parent);
+void QsciLexerCMake_virtbase(QsciLexerCMake* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerCMake_MetaObject(const QsciLexerCMake* self);
 void* QsciLexerCMake_Metacast(QsciLexerCMake* self, const char* param1);
 struct miqt_string QsciLexerCMake_Tr(const char* s);

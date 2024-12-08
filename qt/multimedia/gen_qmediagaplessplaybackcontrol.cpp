@@ -10,6 +10,10 @@
 #include "gen_qmediagaplessplaybackcontrol.h"
 #include "_cgo_export.h"
 
+void QMediaGaplessPlaybackControl_virtbase(QMediaGaplessPlaybackControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
+
 QMetaObject* QMediaGaplessPlaybackControl_MetaObject(const QMediaGaplessPlaybackControl* self) {
 	return (QMetaObject*) self->metaObject();
 }

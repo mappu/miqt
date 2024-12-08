@@ -54,16 +54,13 @@ func newQPaintDevice(h *C.QPaintDevice) *QPaintDevice {
 	if h == nil {
 		return nil
 	}
+
 	return &QPaintDevice{h: h}
 }
 
 // UnsafeNewQPaintDevice constructs the type using only unsafe pointers.
 func UnsafeNewQPaintDevice(h unsafe.Pointer) *QPaintDevice {
-	if h == nil {
-		return nil
-	}
-
-	return &QPaintDevice{h: (*C.QPaintDevice)(h)}
+	return newQPaintDevice((*C.QPaintDevice)(h))
 }
 
 func (this *QPaintDevice) DevType() int {
@@ -75,7 +72,7 @@ func (this *QPaintDevice) PaintingActive() bool {
 }
 
 func (this *QPaintDevice) PaintEngine() *QPaintEngine {
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QPaintDevice_PaintEngine(this.h)))
+	return newQPaintEngine(C.QPaintDevice_PaintEngine(this.h))
 }
 
 func (this *QPaintDevice) Width() int {

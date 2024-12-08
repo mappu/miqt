@@ -9,6 +9,10 @@
 #include "gen_qcamerainfocontrol.h"
 #include "_cgo_export.h"
 
+void QCameraInfoControl_virtbase(QCameraInfoControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
+
 QMetaObject* QCameraInfoControl_MetaObject(const QCameraInfoControl* self) {
 	return (QMetaObject*) self->metaObject();
 }

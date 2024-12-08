@@ -46,10 +46,11 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QRadioButton_new(QWidget* parent, QRadioButton** outptr_QRadioButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QRadioButton_new2(QRadioButton** outptr_QRadioButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QRadioButton_new3(struct miqt_string text, QRadioButton** outptr_QRadioButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QRadioButton_new4(struct miqt_string text, QWidget* parent, QRadioButton** outptr_QRadioButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QRadioButton* QRadioButton_new(QWidget* parent);
+QRadioButton* QRadioButton_new2();
+QRadioButton* QRadioButton_new3(struct miqt_string text);
+QRadioButton* QRadioButton_new4(struct miqt_string text, QWidget* parent);
+void QRadioButton_virtbase(QRadioButton* src, QAbstractButton** outptr_QAbstractButton);
 QMetaObject* QRadioButton_MetaObject(const QRadioButton* self);
 void* QRadioButton_Metacast(QRadioButton* self, const char* param1);
 struct miqt_string QRadioButton_Tr(const char* s);

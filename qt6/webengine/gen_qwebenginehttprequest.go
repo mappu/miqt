@@ -45,54 +45,43 @@ func newQWebEngineHttpRequest(h *C.QWebEngineHttpRequest) *QWebEngineHttpRequest
 	if h == nil {
 		return nil
 	}
+
 	return &QWebEngineHttpRequest{h: h}
 }
 
 // UnsafeNewQWebEngineHttpRequest constructs the type using only unsafe pointers.
 func UnsafeNewQWebEngineHttpRequest(h unsafe.Pointer) *QWebEngineHttpRequest {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineHttpRequest{h: (*C.QWebEngineHttpRequest)(h)}
+	return newQWebEngineHttpRequest((*C.QWebEngineHttpRequest)(h))
 }
 
 // NewQWebEngineHttpRequest constructs a new QWebEngineHttpRequest object.
 func NewQWebEngineHttpRequest() *QWebEngineHttpRequest {
-	var outptr_QWebEngineHttpRequest *C.QWebEngineHttpRequest = nil
 
-	C.QWebEngineHttpRequest_new(&outptr_QWebEngineHttpRequest)
-	ret := newQWebEngineHttpRequest(outptr_QWebEngineHttpRequest)
+	ret := newQWebEngineHttpRequest(C.QWebEngineHttpRequest_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebEngineHttpRequest2 constructs a new QWebEngineHttpRequest object.
 func NewQWebEngineHttpRequest2(other *QWebEngineHttpRequest) *QWebEngineHttpRequest {
-	var outptr_QWebEngineHttpRequest *C.QWebEngineHttpRequest = nil
 
-	C.QWebEngineHttpRequest_new2(other.cPointer(), &outptr_QWebEngineHttpRequest)
-	ret := newQWebEngineHttpRequest(outptr_QWebEngineHttpRequest)
+	ret := newQWebEngineHttpRequest(C.QWebEngineHttpRequest_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebEngineHttpRequest3 constructs a new QWebEngineHttpRequest object.
 func NewQWebEngineHttpRequest3(url *qt6.QUrl) *QWebEngineHttpRequest {
-	var outptr_QWebEngineHttpRequest *C.QWebEngineHttpRequest = nil
 
-	C.QWebEngineHttpRequest_new3((*C.QUrl)(url.UnsafePointer()), &outptr_QWebEngineHttpRequest)
-	ret := newQWebEngineHttpRequest(outptr_QWebEngineHttpRequest)
+	ret := newQWebEngineHttpRequest(C.QWebEngineHttpRequest_new3((*C.QUrl)(url.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebEngineHttpRequest4 constructs a new QWebEngineHttpRequest object.
 func NewQWebEngineHttpRequest4(url *qt6.QUrl, method *QWebEngineHttpRequest__Method) *QWebEngineHttpRequest {
-	var outptr_QWebEngineHttpRequest *C.QWebEngineHttpRequest = nil
 
-	C.QWebEngineHttpRequest_new4((*C.QUrl)(url.UnsafePointer()), (*C.int)(unsafe.Pointer(method)), &outptr_QWebEngineHttpRequest)
-	ret := newQWebEngineHttpRequest(outptr_QWebEngineHttpRequest)
+	ret := newQWebEngineHttpRequest(C.QWebEngineHttpRequest_new4((*C.QUrl)(url.UnsafePointer()), (*C.int)(unsafe.Pointer(method))))
 	ret.isSubclass = true
 	return ret
 }
@@ -125,8 +114,7 @@ func QWebEngineHttpRequest_PostRequest(url *qt6.QUrl, postData map[string]string
 		keys:   unsafe.Pointer(postData_Keys_CArray),
 		values: unsafe.Pointer(postData_Values_CArray),
 	}
-	_ret := C.QWebEngineHttpRequest_PostRequest((*C.QUrl)(url.UnsafePointer()), postData_mm)
-	_goptr := newQWebEngineHttpRequest(_ret)
+	_goptr := newQWebEngineHttpRequest(C.QWebEngineHttpRequest_PostRequest((*C.QUrl)(url.UnsafePointer()), postData_mm))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -152,8 +140,7 @@ func (this *QWebEngineHttpRequest) SetMethod(method QWebEngineHttpRequest__Metho
 }
 
 func (this *QWebEngineHttpRequest) Url() *qt6.QUrl {
-	_ret := C.QWebEngineHttpRequest_Url(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineHttpRequest_Url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

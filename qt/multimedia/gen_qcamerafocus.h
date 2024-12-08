@@ -30,10 +30,10 @@ typedef struct QPointF QPointF;
 typedef struct QRectF QRectF;
 #endif
 
-void QCameraFocusZone_new(QCameraFocusZone** outptr_QCameraFocusZone);
-void QCameraFocusZone_new2(QRectF* area, QCameraFocusZone** outptr_QCameraFocusZone);
-void QCameraFocusZone_new3(QCameraFocusZone* other, QCameraFocusZone** outptr_QCameraFocusZone);
-void QCameraFocusZone_new4(QRectF* area, int status, QCameraFocusZone** outptr_QCameraFocusZone);
+QCameraFocusZone* QCameraFocusZone_new();
+QCameraFocusZone* QCameraFocusZone_new2(QRectF* area);
+QCameraFocusZone* QCameraFocusZone_new3(QCameraFocusZone* other);
+QCameraFocusZone* QCameraFocusZone_new4(QRectF* area, int status);
 void QCameraFocusZone_OperatorAssign(QCameraFocusZone* self, QCameraFocusZone* other);
 bool QCameraFocusZone_OperatorEqual(const QCameraFocusZone* self, QCameraFocusZone* other);
 bool QCameraFocusZone_OperatorNotEqual(const QCameraFocusZone* self, QCameraFocusZone* other);
@@ -43,6 +43,7 @@ int QCameraFocusZone_Status(const QCameraFocusZone* self);
 void QCameraFocusZone_SetStatus(QCameraFocusZone* self, int status);
 void QCameraFocusZone_Delete(QCameraFocusZone* self, bool isSubclass);
 
+void QCameraFocus_virtbase(QCameraFocus* src, QObject** outptr_QObject);
 QMetaObject* QCameraFocus_MetaObject(const QCameraFocus* self);
 void* QCameraFocus_Metacast(QCameraFocus* self, const char* param1);
 struct miqt_string QCameraFocus_Tr(const char* s);

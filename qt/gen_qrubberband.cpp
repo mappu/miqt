@@ -1021,20 +1021,16 @@ public:
 
 };
 
-void QRubberBand_new(int param1, QRubberBand** outptr_QRubberBand, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQRubberBand* ret = new MiqtVirtualQRubberBand(static_cast<QRubberBand::Shape>(param1));
-	*outptr_QRubberBand = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QRubberBand* QRubberBand_new(int param1) {
+	return new MiqtVirtualQRubberBand(static_cast<QRubberBand::Shape>(param1));
 }
 
-void QRubberBand_new2(int param1, QWidget* param2, QRubberBand** outptr_QRubberBand, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQRubberBand* ret = new MiqtVirtualQRubberBand(static_cast<QRubberBand::Shape>(param1), param2);
-	*outptr_QRubberBand = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QRubberBand* QRubberBand_new2(int param1, QWidget* param2) {
+	return new MiqtVirtualQRubberBand(static_cast<QRubberBand::Shape>(param1), param2);
+}
+
+void QRubberBand_virtbase(QRubberBand* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QRubberBand_MetaObject(const QRubberBand* self) {

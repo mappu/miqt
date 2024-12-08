@@ -38,8 +38,9 @@ typedef struct QVideoFrame QVideoFrame;
 typedef struct QVideoProbe QVideoProbe;
 #endif
 
-void QVideoProbe_new(QVideoProbe** outptr_QVideoProbe, QObject** outptr_QObject);
-void QVideoProbe_new2(QObject* parent, QVideoProbe** outptr_QVideoProbe, QObject** outptr_QObject);
+QVideoProbe* QVideoProbe_new();
+QVideoProbe* QVideoProbe_new2(QObject* parent);
+void QVideoProbe_virtbase(QVideoProbe* src, QObject** outptr_QObject);
 QMetaObject* QVideoProbe_MetaObject(const QVideoProbe* self);
 void* QVideoProbe_Metacast(QVideoProbe* self, const char* param1);
 struct miqt_string QVideoProbe_Tr(const char* s);

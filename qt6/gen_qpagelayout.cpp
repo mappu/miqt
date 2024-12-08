@@ -8,29 +8,24 @@
 #include "gen_qpagelayout.h"
 #include "_cgo_export.h"
 
-void QPageLayout_new(QPageLayout** outptr_QPageLayout) {
-	QPageLayout* ret = new QPageLayout();
-	*outptr_QPageLayout = ret;
+QPageLayout* QPageLayout_new() {
+	return new QPageLayout();
 }
 
-void QPageLayout_new2(QPageSize* pageSize, int orientation, QMarginsF* margins, QPageLayout** outptr_QPageLayout) {
-	QPageLayout* ret = new QPageLayout(*pageSize, static_cast<QPageLayout::Orientation>(orientation), *margins);
-	*outptr_QPageLayout = ret;
+QPageLayout* QPageLayout_new2(QPageSize* pageSize, int orientation, QMarginsF* margins) {
+	return new QPageLayout(*pageSize, static_cast<QPageLayout::Orientation>(orientation), *margins);
 }
 
-void QPageLayout_new3(QPageLayout* other, QPageLayout** outptr_QPageLayout) {
-	QPageLayout* ret = new QPageLayout(*other);
-	*outptr_QPageLayout = ret;
+QPageLayout* QPageLayout_new3(QPageLayout* other) {
+	return new QPageLayout(*other);
 }
 
-void QPageLayout_new4(QPageSize* pageSize, int orientation, QMarginsF* margins, int units, QPageLayout** outptr_QPageLayout) {
-	QPageLayout* ret = new QPageLayout(*pageSize, static_cast<QPageLayout::Orientation>(orientation), *margins, static_cast<QPageLayout::Unit>(units));
-	*outptr_QPageLayout = ret;
+QPageLayout* QPageLayout_new4(QPageSize* pageSize, int orientation, QMarginsF* margins, int units) {
+	return new QPageLayout(*pageSize, static_cast<QPageLayout::Orientation>(orientation), *margins, static_cast<QPageLayout::Unit>(units));
 }
 
-void QPageLayout_new5(QPageSize* pageSize, int orientation, QMarginsF* margins, int units, QMarginsF* minMargins, QPageLayout** outptr_QPageLayout) {
-	QPageLayout* ret = new QPageLayout(*pageSize, static_cast<QPageLayout::Orientation>(orientation), *margins, static_cast<QPageLayout::Unit>(units), *minMargins);
-	*outptr_QPageLayout = ret;
+QPageLayout* QPageLayout_new5(QPageSize* pageSize, int orientation, QMarginsF* margins, int units, QMarginsF* minMargins) {
+	return new QPageLayout(*pageSize, static_cast<QPageLayout::Orientation>(orientation), *margins, static_cast<QPageLayout::Unit>(units), *minMargins);
 }
 
 void QPageLayout_OperatorAssign(QPageLayout* self, QPageLayout* other) {

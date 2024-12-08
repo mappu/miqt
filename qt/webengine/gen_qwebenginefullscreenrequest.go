@@ -38,24 +38,19 @@ func newQWebEngineFullScreenRequest(h *C.QWebEngineFullScreenRequest) *QWebEngin
 	if h == nil {
 		return nil
 	}
+
 	return &QWebEngineFullScreenRequest{h: h}
 }
 
 // UnsafeNewQWebEngineFullScreenRequest constructs the type using only unsafe pointers.
 func UnsafeNewQWebEngineFullScreenRequest(h unsafe.Pointer) *QWebEngineFullScreenRequest {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineFullScreenRequest{h: (*C.QWebEngineFullScreenRequest)(h)}
+	return newQWebEngineFullScreenRequest((*C.QWebEngineFullScreenRequest)(h))
 }
 
 // NewQWebEngineFullScreenRequest constructs a new QWebEngineFullScreenRequest object.
 func NewQWebEngineFullScreenRequest(param1 *QWebEngineFullScreenRequest) *QWebEngineFullScreenRequest {
-	var outptr_QWebEngineFullScreenRequest *C.QWebEngineFullScreenRequest = nil
 
-	C.QWebEngineFullScreenRequest_new(param1.cPointer(), &outptr_QWebEngineFullScreenRequest)
-	ret := newQWebEngineFullScreenRequest(outptr_QWebEngineFullScreenRequest)
+	ret := newQWebEngineFullScreenRequest(C.QWebEngineFullScreenRequest_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

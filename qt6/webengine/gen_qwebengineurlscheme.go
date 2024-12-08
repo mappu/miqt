@@ -65,24 +65,19 @@ func newQWebEngineUrlScheme(h *C.QWebEngineUrlScheme) *QWebEngineUrlScheme {
 	if h == nil {
 		return nil
 	}
+
 	return &QWebEngineUrlScheme{h: h}
 }
 
 // UnsafeNewQWebEngineUrlScheme constructs the type using only unsafe pointers.
 func UnsafeNewQWebEngineUrlScheme(h unsafe.Pointer) *QWebEngineUrlScheme {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineUrlScheme{h: (*C.QWebEngineUrlScheme)(h)}
+	return newQWebEngineUrlScheme((*C.QWebEngineUrlScheme)(h))
 }
 
 // NewQWebEngineUrlScheme constructs a new QWebEngineUrlScheme object.
 func NewQWebEngineUrlScheme() *QWebEngineUrlScheme {
-	var outptr_QWebEngineUrlScheme *C.QWebEngineUrlScheme = nil
 
-	C.QWebEngineUrlScheme_new(&outptr_QWebEngineUrlScheme)
-	ret := newQWebEngineUrlScheme(outptr_QWebEngineUrlScheme)
+	ret := newQWebEngineUrlScheme(C.QWebEngineUrlScheme_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -92,20 +87,16 @@ func NewQWebEngineUrlScheme2(name []byte) *QWebEngineUrlScheme {
 	name_alias := C.struct_miqt_string{}
 	name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
 	name_alias.len = C.size_t(len(name))
-	var outptr_QWebEngineUrlScheme *C.QWebEngineUrlScheme = nil
 
-	C.QWebEngineUrlScheme_new2(name_alias, &outptr_QWebEngineUrlScheme)
-	ret := newQWebEngineUrlScheme(outptr_QWebEngineUrlScheme)
+	ret := newQWebEngineUrlScheme(C.QWebEngineUrlScheme_new2(name_alias))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebEngineUrlScheme3 constructs a new QWebEngineUrlScheme object.
 func NewQWebEngineUrlScheme3(that *QWebEngineUrlScheme) *QWebEngineUrlScheme {
-	var outptr_QWebEngineUrlScheme *C.QWebEngineUrlScheme = nil
 
-	C.QWebEngineUrlScheme_new3(that.cPointer(), &outptr_QWebEngineUrlScheme)
-	ret := newQWebEngineUrlScheme(outptr_QWebEngineUrlScheme)
+	ret := newQWebEngineUrlScheme(C.QWebEngineUrlScheme_new3(that.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -168,8 +159,7 @@ func QWebEngineUrlScheme_SchemeByName(name []byte) *QWebEngineUrlScheme {
 	name_alias := C.struct_miqt_string{}
 	name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
 	name_alias.len = C.size_t(len(name))
-	_ret := C.QWebEngineUrlScheme_SchemeByName(name_alias)
-	_goptr := newQWebEngineUrlScheme(_ret)
+	_goptr := newQWebEngineUrlScheme(C.QWebEngineUrlScheme_SchemeByName(name_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

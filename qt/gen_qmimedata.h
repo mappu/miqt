@@ -36,7 +36,8 @@ typedef struct QUrl QUrl;
 typedef struct QVariant QVariant;
 #endif
 
-void QMimeData_new(QMimeData** outptr_QMimeData, QObject** outptr_QObject);
+QMimeData* QMimeData_new();
+void QMimeData_virtbase(QMimeData* src, QObject** outptr_QObject);
 QMetaObject* QMimeData_MetaObject(const QMimeData* self);
 void* QMimeData_Metacast(QMimeData* self, const char* param1);
 struct miqt_string QMimeData_Tr(const char* s);

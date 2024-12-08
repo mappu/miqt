@@ -126,16 +126,13 @@ func newQTextItem(h *C.QTextItem) *QTextItem {
 	if h == nil {
 		return nil
 	}
+
 	return &QTextItem{h: h}
 }
 
 // UnsafeNewQTextItem constructs the type using only unsafe pointers.
 func UnsafeNewQTextItem(h unsafe.Pointer) *QTextItem {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextItem{h: (*C.QTextItem)(h)}
+	return newQTextItem((*C.QTextItem)(h))
 }
 
 func (this *QTextItem) Descent() float64 {
@@ -162,8 +159,7 @@ func (this *QTextItem) Text() string {
 }
 
 func (this *QTextItem) Font() *QFont {
-	_ret := C.QTextItem_Font(this.h)
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QTextItem_Font(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -206,34 +202,27 @@ func newQPaintEngine(h *C.QPaintEngine) *QPaintEngine {
 	if h == nil {
 		return nil
 	}
+
 	return &QPaintEngine{h: h}
 }
 
 // UnsafeNewQPaintEngine constructs the type using only unsafe pointers.
 func UnsafeNewQPaintEngine(h unsafe.Pointer) *QPaintEngine {
-	if h == nil {
-		return nil
-	}
-
-	return &QPaintEngine{h: (*C.QPaintEngine)(h)}
+	return newQPaintEngine((*C.QPaintEngine)(h))
 }
 
 // NewQPaintEngine constructs a new QPaintEngine object.
 func NewQPaintEngine() *QPaintEngine {
-	var outptr_QPaintEngine *C.QPaintEngine = nil
 
-	C.QPaintEngine_new(&outptr_QPaintEngine)
-	ret := newQPaintEngine(outptr_QPaintEngine)
+	ret := newQPaintEngine(C.QPaintEngine_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPaintEngine2 constructs a new QPaintEngine object.
 func NewQPaintEngine2(features QPaintEngine__PaintEngineFeature) *QPaintEngine {
-	var outptr_QPaintEngine *C.QPaintEngine = nil
 
-	C.QPaintEngine_new2((C.int)(features), &outptr_QPaintEngine)
-	ret := newQPaintEngine(outptr_QPaintEngine)
+	ret := newQPaintEngine(C.QPaintEngine_new2((C.int)(features)))
 	ret.isSubclass = true
 	return ret
 }
@@ -323,7 +312,7 @@ func (this *QPaintEngine) SetPaintDevice(device *QPaintDevice) {
 }
 
 func (this *QPaintEngine) PaintDevice() *QPaintDevice {
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QPaintEngine_PaintDevice(this.h)))
+	return newQPaintDevice(C.QPaintEngine_PaintDevice(this.h))
 }
 
 func (this *QPaintEngine) SetSystemClip(baseClip *QRegion) {
@@ -331,8 +320,7 @@ func (this *QPaintEngine) SetSystemClip(baseClip *QRegion) {
 }
 
 func (this *QPaintEngine) SystemClip() *QRegion {
-	_ret := C.QPaintEngine_SystemClip(this.h)
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QPaintEngine_SystemClip(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -342,15 +330,13 @@ func (this *QPaintEngine) SetSystemRect(rect *QRect) {
 }
 
 func (this *QPaintEngine) SystemRect() *QRect {
-	_ret := C.QPaintEngine_SystemRect(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QPaintEngine_SystemRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPaintEngine) CoordinateOffset() *QPoint {
-	_ret := C.QPaintEngine_CoordinateOffset(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QPaintEngine_CoordinateOffset(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -380,7 +366,7 @@ func (this *QPaintEngine) HasFeature(feature QPaintEngine__PaintEngineFeature) b
 }
 
 func (this *QPaintEngine) Painter() *QPainter {
-	return UnsafeNewQPainter(unsafe.Pointer(C.QPaintEngine_Painter(this.h)))
+	return newQPainter(C.QPaintEngine_Painter(this.h))
 }
 
 func (this *QPaintEngine) SyncState() {
@@ -391,6 +377,9 @@ func (this *QPaintEngine) IsExtended() bool {
 	return (bool)(C.QPaintEngine_IsExtended(this.h))
 }
 func (this *QPaintEngine) OnBegin(slot func(pdev *QPaintDevice) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPaintEngine_override_virtual_Begin(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -402,7 +391,7 @@ func miqt_exec_callback_QPaintEngine_Begin(self *C.QPaintEngine, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintDevice(unsafe.Pointer(pdev))
+	slotval1 := newQPaintDevice(pdev)
 
 	virtualReturn := gofunc(slotval1)
 
@@ -410,6 +399,9 @@ func miqt_exec_callback_QPaintEngine_Begin(self *C.QPaintEngine, cb C.intptr_t, 
 
 }
 func (this *QPaintEngine) OnEnd(slot func() bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPaintEngine_override_virtual_End(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -426,6 +418,9 @@ func miqt_exec_callback_QPaintEngine_End(self *C.QPaintEngine, cb C.intptr_t) C.
 
 }
 func (this *QPaintEngine) OnUpdateState(slot func(state *QPaintEngineState)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPaintEngine_override_virtual_UpdateState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -437,7 +432,7 @@ func miqt_exec_callback_QPaintEngine_UpdateState(self *C.QPaintEngine, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEngineState(unsafe.Pointer(state))
+	slotval1 := newQPaintEngineState(state)
 
 	gofunc(slotval1)
 
@@ -449,6 +444,9 @@ func (this *QPaintEngine) callVirtualBase_DrawRects(rects *QRect, rectCount int)
 
 }
 func (this *QPaintEngine) OnDrawRects(slot func(super func(rects *QRect, rectCount int), rects *QRect, rectCount int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPaintEngine_override_virtual_DrawRects(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -460,7 +458,8 @@ func miqt_exec_callback_QPaintEngine_DrawRects(self *C.QPaintEngine, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRect(unsafe.Pointer(rects))
+	slotval1 := newQRect(rects)
+
 	slotval2 := (int)(rectCount)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawRects, slotval1, slotval2)
@@ -473,6 +472,9 @@ func (this *QPaintEngine) callVirtualBase_DrawRects2(rects *QRectF, rectCount in
 
 }
 func (this *QPaintEngine) OnDrawRects2(slot func(super func(rects *QRectF, rectCount int), rects *QRectF, rectCount int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPaintEngine_override_virtual_DrawRects2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -484,7 +486,8 @@ func miqt_exec_callback_QPaintEngine_DrawRects2(self *C.QPaintEngine, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRectF(unsafe.Pointer(rects))
+	slotval1 := newQRectF(rects)
+
 	slotval2 := (int)(rectCount)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawRects2, slotval1, slotval2)
@@ -497,6 +500,9 @@ func (this *QPaintEngine) callVirtualBase_DrawLines(lines *QLine, lineCount int)
 
 }
 func (this *QPaintEngine) OnDrawLines(slot func(super func(lines *QLine, lineCount int), lines *QLine, lineCount int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPaintEngine_override_virtual_DrawLines(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -508,7 +514,8 @@ func miqt_exec_callback_QPaintEngine_DrawLines(self *C.QPaintEngine, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQLine(unsafe.Pointer(lines))
+	slotval1 := newQLine(lines)
+
 	slotval2 := (int)(lineCount)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawLines, slotval1, slotval2)
@@ -521,6 +528,9 @@ func (this *QPaintEngine) callVirtualBase_DrawLines2(lines *QLineF, lineCount in
 
 }
 func (this *QPaintEngine) OnDrawLines2(slot func(super func(lines *QLineF, lineCount int), lines *QLineF, lineCount int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPaintEngine_override_virtual_DrawLines2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -532,7 +542,8 @@ func miqt_exec_callback_QPaintEngine_DrawLines2(self *C.QPaintEngine, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQLineF(unsafe.Pointer(lines))
+	slotval1 := newQLineF(lines)
+
 	slotval2 := (int)(lineCount)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawLines2, slotval1, slotval2)
@@ -545,6 +556,9 @@ func (this *QPaintEngine) callVirtualBase_DrawEllipse(r *QRectF) {
 
 }
 func (this *QPaintEngine) OnDrawEllipse(slot func(super func(r *QRectF), r *QRectF)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPaintEngine_override_virtual_DrawEllipse(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -556,7 +570,7 @@ func miqt_exec_callback_QPaintEngine_DrawEllipse(self *C.QPaintEngine, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRectF(unsafe.Pointer(r))
+	slotval1 := newQRectF(r)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawEllipse, slotval1)
 
@@ -568,6 +582,9 @@ func (this *QPaintEngine) callVirtualBase_DrawEllipseWithQRect(r *QRect) {
 
 }
 func (this *QPaintEngine) OnDrawEllipseWithQRect(slot func(super func(r *QRect), r *QRect)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPaintEngine_override_virtual_DrawEllipseWithQRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -579,7 +596,7 @@ func miqt_exec_callback_QPaintEngine_DrawEllipseWithQRect(self *C.QPaintEngine, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRect(unsafe.Pointer(r))
+	slotval1 := newQRect(r)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawEllipseWithQRect, slotval1)
 
@@ -591,6 +608,9 @@ func (this *QPaintEngine) callVirtualBase_DrawPath(path *QPainterPath) {
 
 }
 func (this *QPaintEngine) OnDrawPath(slot func(super func(path *QPainterPath), path *QPainterPath)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPaintEngine_override_virtual_DrawPath(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -602,7 +622,7 @@ func miqt_exec_callback_QPaintEngine_DrawPath(self *C.QPaintEngine, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainterPath(unsafe.Pointer(path))
+	slotval1 := newQPainterPath(path)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawPath, slotval1)
 
@@ -614,6 +634,9 @@ func (this *QPaintEngine) callVirtualBase_DrawPoints(points *QPointF, pointCount
 
 }
 func (this *QPaintEngine) OnDrawPoints(slot func(super func(points *QPointF, pointCount int), points *QPointF, pointCount int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPaintEngine_override_virtual_DrawPoints(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -625,7 +648,8 @@ func miqt_exec_callback_QPaintEngine_DrawPoints(self *C.QPaintEngine, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPointF(unsafe.Pointer(points))
+	slotval1 := newQPointF(points)
+
 	slotval2 := (int)(pointCount)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawPoints, slotval1, slotval2)
@@ -638,6 +662,9 @@ func (this *QPaintEngine) callVirtualBase_DrawPoints2(points *QPoint, pointCount
 
 }
 func (this *QPaintEngine) OnDrawPoints2(slot func(super func(points *QPoint, pointCount int), points *QPoint, pointCount int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPaintEngine_override_virtual_DrawPoints2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -649,7 +676,8 @@ func miqt_exec_callback_QPaintEngine_DrawPoints2(self *C.QPaintEngine, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(points))
+	slotval1 := newQPoint(points)
+
 	slotval2 := (int)(pointCount)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawPoints2, slotval1, slotval2)
@@ -662,6 +690,9 @@ func (this *QPaintEngine) callVirtualBase_DrawPolygon(points *QPointF, pointCoun
 
 }
 func (this *QPaintEngine) OnDrawPolygon(slot func(super func(points *QPointF, pointCount int, mode QPaintEngine__PolygonDrawMode), points *QPointF, pointCount int, mode QPaintEngine__PolygonDrawMode)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPaintEngine_override_virtual_DrawPolygon(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -673,7 +704,8 @@ func miqt_exec_callback_QPaintEngine_DrawPolygon(self *C.QPaintEngine, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPointF(unsafe.Pointer(points))
+	slotval1 := newQPointF(points)
+
 	slotval2 := (int)(pointCount)
 
 	slotval3 := (QPaintEngine__PolygonDrawMode)(mode)
@@ -688,6 +720,9 @@ func (this *QPaintEngine) callVirtualBase_DrawPolygon2(points *QPoint, pointCoun
 
 }
 func (this *QPaintEngine) OnDrawPolygon2(slot func(super func(points *QPoint, pointCount int, mode QPaintEngine__PolygonDrawMode), points *QPoint, pointCount int, mode QPaintEngine__PolygonDrawMode)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPaintEngine_override_virtual_DrawPolygon2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -699,7 +734,8 @@ func miqt_exec_callback_QPaintEngine_DrawPolygon2(self *C.QPaintEngine, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(points))
+	slotval1 := newQPoint(points)
+
 	slotval2 := (int)(pointCount)
 
 	slotval3 := (QPaintEngine__PolygonDrawMode)(mode)
@@ -708,6 +744,9 @@ func miqt_exec_callback_QPaintEngine_DrawPolygon2(self *C.QPaintEngine, cb C.int
 
 }
 func (this *QPaintEngine) OnDrawPixmap(slot func(r *QRectF, pm *QPixmap, sr *QRectF)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPaintEngine_override_virtual_DrawPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -719,9 +758,11 @@ func miqt_exec_callback_QPaintEngine_DrawPixmap(self *C.QPaintEngine, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRectF(unsafe.Pointer(r))
-	slotval2 := UnsafeNewQPixmap(unsafe.Pointer(pm), nil)
-	slotval3 := UnsafeNewQRectF(unsafe.Pointer(sr))
+	slotval1 := newQRectF(r)
+
+	slotval2 := newQPixmap(pm)
+
+	slotval3 := newQRectF(sr)
 
 	gofunc(slotval1, slotval2, slotval3)
 
@@ -733,6 +774,9 @@ func (this *QPaintEngine) callVirtualBase_DrawTextItem(p *QPointF, textItem *QTe
 
 }
 func (this *QPaintEngine) OnDrawTextItem(slot func(super func(p *QPointF, textItem *QTextItem), p *QPointF, textItem *QTextItem)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPaintEngine_override_virtual_DrawTextItem(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -744,8 +788,9 @@ func miqt_exec_callback_QPaintEngine_DrawTextItem(self *C.QPaintEngine, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPointF(unsafe.Pointer(p))
-	slotval2 := UnsafeNewQTextItem(unsafe.Pointer(textItem))
+	slotval1 := newQPointF(p)
+
+	slotval2 := newQTextItem(textItem)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawTextItem, slotval1, slotval2)
 
@@ -757,6 +802,9 @@ func (this *QPaintEngine) callVirtualBase_DrawTiledPixmap(r *QRectF, pixmap *QPi
 
 }
 func (this *QPaintEngine) OnDrawTiledPixmap(slot func(super func(r *QRectF, pixmap *QPixmap, s *QPointF), r *QRectF, pixmap *QPixmap, s *QPointF)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPaintEngine_override_virtual_DrawTiledPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -768,9 +816,11 @@ func miqt_exec_callback_QPaintEngine_DrawTiledPixmap(self *C.QPaintEngine, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRectF(unsafe.Pointer(r))
-	slotval2 := UnsafeNewQPixmap(unsafe.Pointer(pixmap), nil)
-	slotval3 := UnsafeNewQPointF(unsafe.Pointer(s))
+	slotval1 := newQRectF(r)
+
+	slotval2 := newQPixmap(pixmap)
+
+	slotval3 := newQPointF(s)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawTiledPixmap, slotval1, slotval2, slotval3)
 
@@ -782,6 +832,9 @@ func (this *QPaintEngine) callVirtualBase_DrawImage(r *QRectF, pm *QImage, sr *Q
 
 }
 func (this *QPaintEngine) OnDrawImage(slot func(super func(r *QRectF, pm *QImage, sr *QRectF, flags ImageConversionFlag), r *QRectF, pm *QImage, sr *QRectF, flags ImageConversionFlag)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPaintEngine_override_virtual_DrawImage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -793,9 +846,12 @@ func miqt_exec_callback_QPaintEngine_DrawImage(self *C.QPaintEngine, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRectF(unsafe.Pointer(r))
-	slotval2 := UnsafeNewQImage(unsafe.Pointer(pm), nil)
-	slotval3 := UnsafeNewQRectF(unsafe.Pointer(sr))
+	slotval1 := newQRectF(r)
+
+	slotval2 := newQImage(pm)
+
+	slotval3 := newQRectF(sr)
+
 	slotval4 := (ImageConversionFlag)(flags)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawImage, slotval1, slotval2, slotval3, slotval4)
@@ -804,13 +860,15 @@ func miqt_exec_callback_QPaintEngine_DrawImage(self *C.QPaintEngine, cb C.intptr
 
 func (this *QPaintEngine) callVirtualBase_CoordinateOffset() *QPoint {
 
-	_ret := C.QPaintEngine_virtualbase_CoordinateOffset(unsafe.Pointer(this.h))
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QPaintEngine_virtualbase_CoordinateOffset(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QPaintEngine) OnCoordinateOffset(slot func(super func() *QPoint) *QPoint) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPaintEngine_override_virtual_CoordinateOffset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -827,6 +885,9 @@ func miqt_exec_callback_QPaintEngine_CoordinateOffset(self *C.QPaintEngine, cb C
 
 }
 func (this *QPaintEngine) OnType(slot func() QPaintEngine__Type) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPaintEngine_override_virtual_Type(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -881,16 +942,13 @@ func newQPaintEngineState(h *C.QPaintEngineState) *QPaintEngineState {
 	if h == nil {
 		return nil
 	}
+
 	return &QPaintEngineState{h: h}
 }
 
 // UnsafeNewQPaintEngineState constructs the type using only unsafe pointers.
 func UnsafeNewQPaintEngineState(h unsafe.Pointer) *QPaintEngineState {
-	if h == nil {
-		return nil
-	}
-
-	return &QPaintEngineState{h: (*C.QPaintEngineState)(h)}
+	return newQPaintEngineState((*C.QPaintEngineState)(h))
 }
 
 func (this *QPaintEngineState) State() QPaintEngine__DirtyFlag {
@@ -898,29 +956,25 @@ func (this *QPaintEngineState) State() QPaintEngine__DirtyFlag {
 }
 
 func (this *QPaintEngineState) Pen() *QPen {
-	_ret := C.QPaintEngineState_Pen(this.h)
-	_goptr := newQPen(_ret)
+	_goptr := newQPen(C.QPaintEngineState_Pen(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPaintEngineState) Brush() *QBrush {
-	_ret := C.QPaintEngineState_Brush(this.h)
-	_goptr := newQBrush(_ret)
+	_goptr := newQBrush(C.QPaintEngineState_Brush(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPaintEngineState) BrushOrigin() *QPointF {
-	_ret := C.QPaintEngineState_BrushOrigin(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QPaintEngineState_BrushOrigin(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPaintEngineState) BackgroundBrush() *QBrush {
-	_ret := C.QPaintEngineState_BackgroundBrush(this.h)
-	_goptr := newQBrush(_ret)
+	_goptr := newQBrush(C.QPaintEngineState_BackgroundBrush(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -930,22 +984,19 @@ func (this *QPaintEngineState) BackgroundMode() BGMode {
 }
 
 func (this *QPaintEngineState) Font() *QFont {
-	_ret := C.QPaintEngineState_Font(this.h)
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QPaintEngineState_Font(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPaintEngineState) Matrix() *QMatrix {
-	_ret := C.QPaintEngineState_Matrix(this.h)
-	_goptr := newQMatrix(_ret)
+	_goptr := newQMatrix(C.QPaintEngineState_Matrix(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPaintEngineState) Transform() *QTransform {
-	_ret := C.QPaintEngineState_Transform(this.h)
-	_goptr := newQTransform(_ret)
+	_goptr := newQTransform(C.QPaintEngineState_Transform(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -955,15 +1006,13 @@ func (this *QPaintEngineState) ClipOperation() ClipOperation {
 }
 
 func (this *QPaintEngineState) ClipRegion() *QRegion {
-	_ret := C.QPaintEngineState_ClipRegion(this.h)
-	_goptr := newQRegion(_ret)
+	_goptr := newQRegion(C.QPaintEngineState_ClipRegion(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPaintEngineState) ClipPath() *QPainterPath {
-	_ret := C.QPaintEngineState_ClipPath(this.h)
-	_goptr := newQPainterPath(_ret)
+	_goptr := newQPainterPath(C.QPaintEngineState_ClipPath(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -985,7 +1034,7 @@ func (this *QPaintEngineState) Opacity() float64 {
 }
 
 func (this *QPaintEngineState) Painter() *QPainter {
-	return UnsafeNewQPainter(unsafe.Pointer(C.QPaintEngineState_Painter(this.h)))
+	return newQPainter(C.QPaintEngineState_Painter(this.h))
 }
 
 func (this *QPaintEngineState) BrushNeedsResolving() bool {

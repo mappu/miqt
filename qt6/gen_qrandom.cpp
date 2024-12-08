@@ -4,29 +4,24 @@
 #include "gen_qrandom.h"
 #include "_cgo_export.h"
 
-void QRandomGenerator_new(QRandomGenerator** outptr_QRandomGenerator) {
-	QRandomGenerator* ret = new QRandomGenerator();
-	*outptr_QRandomGenerator = ret;
+QRandomGenerator* QRandomGenerator_new() {
+	return new QRandomGenerator();
 }
 
-void QRandomGenerator_new2(const unsigned int* seedBuffer, ptrdiff_t lenVal, QRandomGenerator** outptr_QRandomGenerator) {
-	QRandomGenerator* ret = new QRandomGenerator(static_cast<const quint32*>(seedBuffer), (qsizetype)(lenVal));
-	*outptr_QRandomGenerator = ret;
+QRandomGenerator* QRandomGenerator_new2(const unsigned int* seedBuffer, ptrdiff_t lenVal) {
+	return new QRandomGenerator(static_cast<const quint32*>(seedBuffer), (qsizetype)(lenVal));
 }
 
-void QRandomGenerator_new3(const unsigned int* begin, const unsigned int* end, QRandomGenerator** outptr_QRandomGenerator) {
-	QRandomGenerator* ret = new QRandomGenerator(static_cast<const quint32*>(begin), static_cast<const quint32*>(end));
-	*outptr_QRandomGenerator = ret;
+QRandomGenerator* QRandomGenerator_new3(const unsigned int* begin, const unsigned int* end) {
+	return new QRandomGenerator(static_cast<const quint32*>(begin), static_cast<const quint32*>(end));
 }
 
-void QRandomGenerator_new4(QRandomGenerator* other, QRandomGenerator** outptr_QRandomGenerator) {
-	QRandomGenerator* ret = new QRandomGenerator(*other);
-	*outptr_QRandomGenerator = ret;
+QRandomGenerator* QRandomGenerator_new4(QRandomGenerator* other) {
+	return new QRandomGenerator(*other);
 }
 
-void QRandomGenerator_new5(unsigned int seedValue, QRandomGenerator** outptr_QRandomGenerator) {
-	QRandomGenerator* ret = new QRandomGenerator(static_cast<quint32>(seedValue));
-	*outptr_QRandomGenerator = ret;
+QRandomGenerator* QRandomGenerator_new5(unsigned int seedValue) {
+	return new QRandomGenerator(static_cast<quint32>(seedValue));
 }
 
 void QRandomGenerator_OperatorAssign(QRandomGenerator* self, QRandomGenerator* other) {
@@ -160,40 +155,32 @@ void QRandomGenerator_Delete(QRandomGenerator* self, bool isSubclass) {
 	}
 }
 
-void QRandomGenerator64_new(QRandomGenerator64** outptr_QRandomGenerator64, QRandomGenerator** outptr_QRandomGenerator) {
-	QRandomGenerator64* ret = new QRandomGenerator64();
-	*outptr_QRandomGenerator64 = ret;
-	*outptr_QRandomGenerator = static_cast<QRandomGenerator*>(ret);
+QRandomGenerator64* QRandomGenerator64_new() {
+	return new QRandomGenerator64();
 }
 
-void QRandomGenerator64_new2(const unsigned int* seedBuffer, ptrdiff_t lenVal, QRandomGenerator64** outptr_QRandomGenerator64, QRandomGenerator** outptr_QRandomGenerator) {
-	QRandomGenerator64* ret = new QRandomGenerator64(static_cast<const quint32*>(seedBuffer), (qsizetype)(lenVal));
-	*outptr_QRandomGenerator64 = ret;
-	*outptr_QRandomGenerator = static_cast<QRandomGenerator*>(ret);
+QRandomGenerator64* QRandomGenerator64_new2(const unsigned int* seedBuffer, ptrdiff_t lenVal) {
+	return new QRandomGenerator64(static_cast<const quint32*>(seedBuffer), (qsizetype)(lenVal));
 }
 
-void QRandomGenerator64_new3(const unsigned int* begin, const unsigned int* end, QRandomGenerator64** outptr_QRandomGenerator64, QRandomGenerator** outptr_QRandomGenerator) {
-	QRandomGenerator64* ret = new QRandomGenerator64(static_cast<const quint32*>(begin), static_cast<const quint32*>(end));
-	*outptr_QRandomGenerator64 = ret;
-	*outptr_QRandomGenerator = static_cast<QRandomGenerator*>(ret);
+QRandomGenerator64* QRandomGenerator64_new3(const unsigned int* begin, const unsigned int* end) {
+	return new QRandomGenerator64(static_cast<const quint32*>(begin), static_cast<const quint32*>(end));
 }
 
-void QRandomGenerator64_new4(QRandomGenerator* other, QRandomGenerator64** outptr_QRandomGenerator64, QRandomGenerator** outptr_QRandomGenerator) {
-	QRandomGenerator64* ret = new QRandomGenerator64(*other);
-	*outptr_QRandomGenerator64 = ret;
-	*outptr_QRandomGenerator = static_cast<QRandomGenerator*>(ret);
+QRandomGenerator64* QRandomGenerator64_new4(QRandomGenerator* other) {
+	return new QRandomGenerator64(*other);
 }
 
-void QRandomGenerator64_new5(QRandomGenerator64* param1, QRandomGenerator64** outptr_QRandomGenerator64, QRandomGenerator** outptr_QRandomGenerator) {
-	QRandomGenerator64* ret = new QRandomGenerator64(*param1);
-	*outptr_QRandomGenerator64 = ret;
-	*outptr_QRandomGenerator = static_cast<QRandomGenerator*>(ret);
+QRandomGenerator64* QRandomGenerator64_new5(QRandomGenerator64* param1) {
+	return new QRandomGenerator64(*param1);
 }
 
-void QRandomGenerator64_new6(unsigned int seedValue, QRandomGenerator64** outptr_QRandomGenerator64, QRandomGenerator** outptr_QRandomGenerator) {
-	QRandomGenerator64* ret = new QRandomGenerator64(static_cast<quint32>(seedValue));
-	*outptr_QRandomGenerator64 = ret;
-	*outptr_QRandomGenerator = static_cast<QRandomGenerator*>(ret);
+QRandomGenerator64* QRandomGenerator64_new6(unsigned int seedValue) {
+	return new QRandomGenerator64(static_cast<quint32>(seedValue));
+}
+
+void QRandomGenerator64_virtbase(QRandomGenerator64* src, QRandomGenerator** outptr_QRandomGenerator) {
+	*outptr_QRandomGenerator = static_cast<QRandomGenerator*>(src);
 }
 
 unsigned long long QRandomGenerator64_Generate(QRandomGenerator64* self) {

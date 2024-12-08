@@ -35,44 +35,34 @@ func (this *QQmlWebChannel) UnsafePointer() unsafe.Pointer {
 }
 
 // newQQmlWebChannel constructs the type using only CGO pointers.
-func newQQmlWebChannel(h *C.QQmlWebChannel, h_QWebChannel *C.QWebChannel, h_QObject *C.QObject) *QQmlWebChannel {
+func newQQmlWebChannel(h *C.QQmlWebChannel) *QQmlWebChannel {
 	if h == nil {
 		return nil
 	}
+	var outptr_QWebChannel *C.QWebChannel = nil
+	C.QQmlWebChannel_virtbase(h, &outptr_QWebChannel)
+
 	return &QQmlWebChannel{h: h,
-		QWebChannel: newQWebChannel(h_QWebChannel, h_QObject)}
+		QWebChannel: newQWebChannel(outptr_QWebChannel)}
 }
 
 // UnsafeNewQQmlWebChannel constructs the type using only unsafe pointers.
-func UnsafeNewQQmlWebChannel(h unsafe.Pointer, h_QWebChannel unsafe.Pointer, h_QObject unsafe.Pointer) *QQmlWebChannel {
-	if h == nil {
-		return nil
-	}
-
-	return &QQmlWebChannel{h: (*C.QQmlWebChannel)(h),
-		QWebChannel: UnsafeNewQWebChannel(h_QWebChannel, h_QObject)}
+func UnsafeNewQQmlWebChannel(h unsafe.Pointer) *QQmlWebChannel {
+	return newQQmlWebChannel((*C.QQmlWebChannel)(h))
 }
 
 // NewQQmlWebChannel constructs a new QQmlWebChannel object.
 func NewQQmlWebChannel() *QQmlWebChannel {
-	var outptr_QQmlWebChannel *C.QQmlWebChannel = nil
-	var outptr_QWebChannel *C.QWebChannel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QQmlWebChannel_new(&outptr_QQmlWebChannel, &outptr_QWebChannel, &outptr_QObject)
-	ret := newQQmlWebChannel(outptr_QQmlWebChannel, outptr_QWebChannel, outptr_QObject)
+	ret := newQQmlWebChannel(C.QQmlWebChannel_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQQmlWebChannel2 constructs a new QQmlWebChannel object.
 func NewQQmlWebChannel2(parent *qt.QObject) *QQmlWebChannel {
-	var outptr_QQmlWebChannel *C.QQmlWebChannel = nil
-	var outptr_QWebChannel *C.QWebChannel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QQmlWebChannel_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QQmlWebChannel, &outptr_QWebChannel, &outptr_QObject)
-	ret := newQQmlWebChannel(outptr_QQmlWebChannel, outptr_QWebChannel, outptr_QObject)
+	ret := newQQmlWebChannel(C.QQmlWebChannel_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }

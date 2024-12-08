@@ -28,6 +28,7 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif
 
+void QMediaAudioProbeControl_virtbase(QMediaAudioProbeControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QMediaAudioProbeControl_MetaObject(const QMediaAudioProbeControl* self);
 void* QMediaAudioProbeControl_Metacast(QMediaAudioProbeControl* self, const char* param1);
 struct miqt_string QMediaAudioProbeControl_Tr(const char* s);

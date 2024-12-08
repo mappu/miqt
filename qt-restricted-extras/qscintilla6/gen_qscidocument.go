@@ -37,34 +37,27 @@ func newQsciDocument(h *C.QsciDocument) *QsciDocument {
 	if h == nil {
 		return nil
 	}
+
 	return &QsciDocument{h: h}
 }
 
 // UnsafeNewQsciDocument constructs the type using only unsafe pointers.
 func UnsafeNewQsciDocument(h unsafe.Pointer) *QsciDocument {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciDocument{h: (*C.QsciDocument)(h)}
+	return newQsciDocument((*C.QsciDocument)(h))
 }
 
 // NewQsciDocument constructs a new QsciDocument object.
 func NewQsciDocument() *QsciDocument {
-	var outptr_QsciDocument *C.QsciDocument = nil
 
-	C.QsciDocument_new(&outptr_QsciDocument)
-	ret := newQsciDocument(outptr_QsciDocument)
+	ret := newQsciDocument(C.QsciDocument_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQsciDocument2 constructs a new QsciDocument object.
 func NewQsciDocument2(param1 *QsciDocument) *QsciDocument {
-	var outptr_QsciDocument *C.QsciDocument = nil
 
-	C.QsciDocument_new2(param1.cPointer(), &outptr_QsciDocument)
-	ret := newQsciDocument(outptr_QsciDocument)
+	ret := newQsciDocument(C.QsciDocument_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

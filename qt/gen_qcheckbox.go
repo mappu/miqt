@@ -35,48 +35,34 @@ func (this *QCheckBox) UnsafePointer() unsafe.Pointer {
 }
 
 // newQCheckBox constructs the type using only CGO pointers.
-func newQCheckBox(h *C.QCheckBox, h_QAbstractButton *C.QAbstractButton, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QCheckBox {
+func newQCheckBox(h *C.QCheckBox) *QCheckBox {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractButton *C.QAbstractButton = nil
+	C.QCheckBox_virtbase(h, &outptr_QAbstractButton)
+
 	return &QCheckBox{h: h,
-		QAbstractButton: newQAbstractButton(h_QAbstractButton, h_QWidget, h_QObject, h_QPaintDevice)}
+		QAbstractButton: newQAbstractButton(outptr_QAbstractButton)}
 }
 
 // UnsafeNewQCheckBox constructs the type using only unsafe pointers.
-func UnsafeNewQCheckBox(h unsafe.Pointer, h_QAbstractButton unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QCheckBox {
-	if h == nil {
-		return nil
-	}
-
-	return &QCheckBox{h: (*C.QCheckBox)(h),
-		QAbstractButton: UnsafeNewQAbstractButton(h_QAbstractButton, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQCheckBox(h unsafe.Pointer) *QCheckBox {
+	return newQCheckBox((*C.QCheckBox)(h))
 }
 
 // NewQCheckBox constructs a new QCheckBox object.
 func NewQCheckBox(parent *QWidget) *QCheckBox {
-	var outptr_QCheckBox *C.QCheckBox = nil
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QCheckBox_new(parent.cPointer(), &outptr_QCheckBox, &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQCheckBox(outptr_QCheckBox, outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQCheckBox(C.QCheckBox_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCheckBox2 constructs a new QCheckBox object.
 func NewQCheckBox2() *QCheckBox {
-	var outptr_QCheckBox *C.QCheckBox = nil
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QCheckBox_new2(&outptr_QCheckBox, &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQCheckBox(outptr_QCheckBox, outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQCheckBox(C.QCheckBox_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -87,14 +73,8 @@ func NewQCheckBox3(text string) *QCheckBox {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QCheckBox *C.QCheckBox = nil
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QCheckBox_new3(text_ms, &outptr_QCheckBox, &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQCheckBox(outptr_QCheckBox, outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQCheckBox(C.QCheckBox_new3(text_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -105,20 +85,14 @@ func NewQCheckBox4(text string, parent *QWidget) *QCheckBox {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QCheckBox *C.QCheckBox = nil
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QCheckBox_new4(text_ms, parent.cPointer(), &outptr_QCheckBox, &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQCheckBox(outptr_QCheckBox, outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQCheckBox(C.QCheckBox_new4(text_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QCheckBox) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QCheckBox_MetaObject(this.h)))
+	return newQMetaObject(C.QCheckBox_MetaObject(this.h))
 }
 
 func (this *QCheckBox) Metacast(param1 string) unsafe.Pointer {
@@ -146,15 +120,13 @@ func QCheckBox_TrUtf8(s string) string {
 }
 
 func (this *QCheckBox) SizeHint() *QSize {
-	_ret := C.QCheckBox_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QCheckBox_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCheckBox) MinimumSizeHint() *QSize {
-	_ret := C.QCheckBox_MinimumSizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QCheckBox_MinimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -245,13 +217,15 @@ func (this *QCheckBox) SetTristate1(y bool) {
 
 func (this *QCheckBox) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QCheckBox_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QCheckBox_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QCheckBox) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCheckBox_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -270,13 +244,15 @@ func miqt_exec_callback_QCheckBox_SizeHint(self *C.QCheckBox, cb C.intptr_t) *C.
 
 func (this *QCheckBox) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QCheckBox_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QCheckBox_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QCheckBox) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCheckBox_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -299,6 +275,9 @@ func (this *QCheckBox) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QCheckBox) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCheckBox_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -310,7 +289,7 @@ func miqt_exec_callback_QCheckBox_Event(self *C.QCheckBox, cb C.intptr_t, e *C.Q
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QCheckBox{h: self}).callVirtualBase_Event, slotval1)
 
@@ -324,6 +303,9 @@ func (this *QCheckBox) callVirtualBase_HitButton(pos *QPoint) bool {
 
 }
 func (this *QCheckBox) OnHitButton(slot func(super func(pos *QPoint) bool, pos *QPoint) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCheckBox_override_virtual_HitButton(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -335,7 +317,7 @@ func miqt_exec_callback_QCheckBox_HitButton(self *C.QCheckBox, cb C.intptr_t, po
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(pos))
+	slotval1 := newQPoint(pos)
 
 	virtualReturn := gofunc((&QCheckBox{h: self}).callVirtualBase_HitButton, slotval1)
 
@@ -349,6 +331,9 @@ func (this *QCheckBox) callVirtualBase_CheckStateSet() {
 
 }
 func (this *QCheckBox) OnCheckStateSet(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCheckBox_override_virtual_CheckStateSet(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -369,6 +354,9 @@ func (this *QCheckBox) callVirtualBase_NextCheckState() {
 
 }
 func (this *QCheckBox) OnNextCheckState(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCheckBox_override_virtual_NextCheckState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -389,6 +377,9 @@ func (this *QCheckBox) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
 
 }
 func (this *QCheckBox) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCheckBox_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -400,7 +391,7 @@ func miqt_exec_callback_QCheckBox_PaintEvent(self *C.QCheckBox, cb C.intptr_t, p
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQPaintEvent(param1)
 
 	gofunc((&QCheckBox{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -412,6 +403,9 @@ func (this *QCheckBox) callVirtualBase_MouseMoveEvent(param1 *QMouseEvent) {
 
 }
 func (this *QCheckBox) OnMouseMoveEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCheckBox_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -423,7 +417,7 @@ func miqt_exec_callback_QCheckBox_MouseMoveEvent(self *C.QCheckBox, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQMouseEvent(param1)
 
 	gofunc((&QCheckBox{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -435,6 +429,9 @@ func (this *QCheckBox) callVirtualBase_KeyPressEvent(e *QKeyEvent) {
 
 }
 func (this *QCheckBox) OnKeyPressEvent(slot func(super func(e *QKeyEvent), e *QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCheckBox_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -446,7 +443,7 @@ func miqt_exec_callback_QCheckBox_KeyPressEvent(self *C.QCheckBox, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQKeyEvent(e)
 
 	gofunc((&QCheckBox{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -458,6 +455,9 @@ func (this *QCheckBox) callVirtualBase_KeyReleaseEvent(e *QKeyEvent) {
 
 }
 func (this *QCheckBox) OnKeyReleaseEvent(slot func(super func(e *QKeyEvent), e *QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCheckBox_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -469,7 +469,7 @@ func miqt_exec_callback_QCheckBox_KeyReleaseEvent(self *C.QCheckBox, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQKeyEvent(e)
 
 	gofunc((&QCheckBox{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -481,6 +481,9 @@ func (this *QCheckBox) callVirtualBase_MousePressEvent(e *QMouseEvent) {
 
 }
 func (this *QCheckBox) OnMousePressEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCheckBox_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -492,7 +495,7 @@ func miqt_exec_callback_QCheckBox_MousePressEvent(self *C.QCheckBox, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QCheckBox{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -504,6 +507,9 @@ func (this *QCheckBox) callVirtualBase_MouseReleaseEvent(e *QMouseEvent) {
 
 }
 func (this *QCheckBox) OnMouseReleaseEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCheckBox_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -515,7 +521,7 @@ func miqt_exec_callback_QCheckBox_MouseReleaseEvent(self *C.QCheckBox, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QCheckBox{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -527,6 +533,9 @@ func (this *QCheckBox) callVirtualBase_FocusInEvent(e *QFocusEvent) {
 
 }
 func (this *QCheckBox) OnFocusInEvent(slot func(super func(e *QFocusEvent), e *QFocusEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCheckBox_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -538,7 +547,7 @@ func miqt_exec_callback_QCheckBox_FocusInEvent(self *C.QCheckBox, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQFocusEvent(e)
 
 	gofunc((&QCheckBox{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -550,6 +559,9 @@ func (this *QCheckBox) callVirtualBase_FocusOutEvent(e *QFocusEvent) {
 
 }
 func (this *QCheckBox) OnFocusOutEvent(slot func(super func(e *QFocusEvent), e *QFocusEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCheckBox_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -561,7 +573,7 @@ func miqt_exec_callback_QCheckBox_FocusOutEvent(self *C.QCheckBox, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQFocusEvent(e)
 
 	gofunc((&QCheckBox{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -573,6 +585,9 @@ func (this *QCheckBox) callVirtualBase_ChangeEvent(e *QEvent) {
 
 }
 func (this *QCheckBox) OnChangeEvent(slot func(super func(e *QEvent), e *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCheckBox_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -584,7 +599,7 @@ func miqt_exec_callback_QCheckBox_ChangeEvent(self *C.QCheckBox, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	gofunc((&QCheckBox{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -596,6 +611,9 @@ func (this *QCheckBox) callVirtualBase_TimerEvent(e *QTimerEvent) {
 
 }
 func (this *QCheckBox) OnTimerEvent(slot func(super func(e *QTimerEvent), e *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCheckBox_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -607,7 +625,7 @@ func miqt_exec_callback_QCheckBox_TimerEvent(self *C.QCheckBox, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQTimerEvent(e)
 
 	gofunc((&QCheckBox{h: self}).callVirtualBase_TimerEvent, slotval1)
 

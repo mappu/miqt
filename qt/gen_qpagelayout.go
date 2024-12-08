@@ -62,64 +62,51 @@ func newQPageLayout(h *C.QPageLayout) *QPageLayout {
 	if h == nil {
 		return nil
 	}
+
 	return &QPageLayout{h: h}
 }
 
 // UnsafeNewQPageLayout constructs the type using only unsafe pointers.
 func UnsafeNewQPageLayout(h unsafe.Pointer) *QPageLayout {
-	if h == nil {
-		return nil
-	}
-
-	return &QPageLayout{h: (*C.QPageLayout)(h)}
+	return newQPageLayout((*C.QPageLayout)(h))
 }
 
 // NewQPageLayout constructs a new QPageLayout object.
 func NewQPageLayout() *QPageLayout {
-	var outptr_QPageLayout *C.QPageLayout = nil
 
-	C.QPageLayout_new(&outptr_QPageLayout)
-	ret := newQPageLayout(outptr_QPageLayout)
+	ret := newQPageLayout(C.QPageLayout_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPageLayout2 constructs a new QPageLayout object.
 func NewQPageLayout2(pageSize *QPageSize, orientation QPageLayout__Orientation, margins *QMarginsF) *QPageLayout {
-	var outptr_QPageLayout *C.QPageLayout = nil
 
-	C.QPageLayout_new2(pageSize.cPointer(), (C.int)(orientation), margins.cPointer(), &outptr_QPageLayout)
-	ret := newQPageLayout(outptr_QPageLayout)
+	ret := newQPageLayout(C.QPageLayout_new2(pageSize.cPointer(), (C.int)(orientation), margins.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPageLayout3 constructs a new QPageLayout object.
 func NewQPageLayout3(other *QPageLayout) *QPageLayout {
-	var outptr_QPageLayout *C.QPageLayout = nil
 
-	C.QPageLayout_new3(other.cPointer(), &outptr_QPageLayout)
-	ret := newQPageLayout(outptr_QPageLayout)
+	ret := newQPageLayout(C.QPageLayout_new3(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPageLayout4 constructs a new QPageLayout object.
 func NewQPageLayout4(pageSize *QPageSize, orientation QPageLayout__Orientation, margins *QMarginsF, units QPageLayout__Unit) *QPageLayout {
-	var outptr_QPageLayout *C.QPageLayout = nil
 
-	C.QPageLayout_new4(pageSize.cPointer(), (C.int)(orientation), margins.cPointer(), (C.int)(units), &outptr_QPageLayout)
-	ret := newQPageLayout(outptr_QPageLayout)
+	ret := newQPageLayout(C.QPageLayout_new4(pageSize.cPointer(), (C.int)(orientation), margins.cPointer(), (C.int)(units)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPageLayout5 constructs a new QPageLayout object.
 func NewQPageLayout5(pageSize *QPageSize, orientation QPageLayout__Orientation, margins *QMarginsF, units QPageLayout__Unit, minMargins *QMarginsF) *QPageLayout {
-	var outptr_QPageLayout *C.QPageLayout = nil
 
-	C.QPageLayout_new5(pageSize.cPointer(), (C.int)(orientation), margins.cPointer(), (C.int)(units), minMargins.cPointer(), &outptr_QPageLayout)
-	ret := newQPageLayout(outptr_QPageLayout)
+	ret := newQPageLayout(C.QPageLayout_new5(pageSize.cPointer(), (C.int)(orientation), margins.cPointer(), (C.int)(units), minMargins.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -153,8 +140,7 @@ func (this *QPageLayout) SetPageSize(pageSize *QPageSize) {
 }
 
 func (this *QPageLayout) PageSize() *QPageSize {
-	_ret := C.QPageLayout_PageSize(this.h)
-	_goptr := newQPageSize(_ret)
+	_goptr := newQPageSize(C.QPageLayout_PageSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -196,29 +182,25 @@ func (this *QPageLayout) SetBottomMargin(bottomMargin float64) bool {
 }
 
 func (this *QPageLayout) Margins() *QMarginsF {
-	_ret := C.QPageLayout_Margins(this.h)
-	_goptr := newQMarginsF(_ret)
+	_goptr := newQMarginsF(C.QPageLayout_Margins(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPageLayout) MarginsWithUnits(units QPageLayout__Unit) *QMarginsF {
-	_ret := C.QPageLayout_MarginsWithUnits(this.h, (C.int)(units))
-	_goptr := newQMarginsF(_ret)
+	_goptr := newQMarginsF(C.QPageLayout_MarginsWithUnits(this.h, (C.int)(units)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPageLayout) MarginsPoints() *QMargins {
-	_ret := C.QPageLayout_MarginsPoints(this.h)
-	_goptr := newQMargins(_ret)
+	_goptr := newQMargins(C.QPageLayout_MarginsPoints(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPageLayout) MarginsPixels(resolution int) *QMargins {
-	_ret := C.QPageLayout_MarginsPixels(this.h, (C.int)(resolution))
-	_goptr := newQMargins(_ret)
+	_goptr := newQMargins(C.QPageLayout_MarginsPixels(this.h, (C.int)(resolution)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -228,71 +210,61 @@ func (this *QPageLayout) SetMinimumMargins(minMargins *QMarginsF) {
 }
 
 func (this *QPageLayout) MinimumMargins() *QMarginsF {
-	_ret := C.QPageLayout_MinimumMargins(this.h)
-	_goptr := newQMarginsF(_ret)
+	_goptr := newQMarginsF(C.QPageLayout_MinimumMargins(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPageLayout) MaximumMargins() *QMarginsF {
-	_ret := C.QPageLayout_MaximumMargins(this.h)
-	_goptr := newQMarginsF(_ret)
+	_goptr := newQMarginsF(C.QPageLayout_MaximumMargins(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPageLayout) FullRect() *QRectF {
-	_ret := C.QPageLayout_FullRect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QPageLayout_FullRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPageLayout) FullRectWithUnits(units QPageLayout__Unit) *QRectF {
-	_ret := C.QPageLayout_FullRectWithUnits(this.h, (C.int)(units))
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QPageLayout_FullRectWithUnits(this.h, (C.int)(units)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPageLayout) FullRectPoints() *QRect {
-	_ret := C.QPageLayout_FullRectPoints(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QPageLayout_FullRectPoints(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPageLayout) FullRectPixels(resolution int) *QRect {
-	_ret := C.QPageLayout_FullRectPixels(this.h, (C.int)(resolution))
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QPageLayout_FullRectPixels(this.h, (C.int)(resolution)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPageLayout) PaintRect() *QRectF {
-	_ret := C.QPageLayout_PaintRect(this.h)
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QPageLayout_PaintRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPageLayout) PaintRectWithUnits(units QPageLayout__Unit) *QRectF {
-	_ret := C.QPageLayout_PaintRectWithUnits(this.h, (C.int)(units))
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QPageLayout_PaintRectWithUnits(this.h, (C.int)(units)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPageLayout) PaintRectPoints() *QRect {
-	_ret := C.QPageLayout_PaintRectPoints(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QPageLayout_PaintRectPoints(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPageLayout) PaintRectPixels(resolution int) *QRect {
-	_ret := C.QPageLayout_PaintRectPixels(this.h, (C.int)(resolution))
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QPageLayout_PaintRectPixels(this.h, (C.int)(resolution)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

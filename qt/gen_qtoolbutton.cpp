@@ -482,22 +482,16 @@ public:
 
 };
 
-void QToolButton_new(QWidget* parent, QToolButton** outptr_QToolButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQToolButton* ret = new MiqtVirtualQToolButton(parent);
-	*outptr_QToolButton = ret;
-	*outptr_QAbstractButton = static_cast<QAbstractButton*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QToolButton* QToolButton_new(QWidget* parent) {
+	return new MiqtVirtualQToolButton(parent);
 }
 
-void QToolButton_new2(QToolButton** outptr_QToolButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQToolButton* ret = new MiqtVirtualQToolButton();
-	*outptr_QToolButton = ret;
-	*outptr_QAbstractButton = static_cast<QAbstractButton*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QToolButton* QToolButton_new2() {
+	return new MiqtVirtualQToolButton();
+}
+
+void QToolButton_virtbase(QToolButton* src, QAbstractButton** outptr_QAbstractButton) {
+	*outptr_QAbstractButton = static_cast<QAbstractButton*>(src);
 }
 
 QMetaObject* QToolButton_MetaObject(const QToolButton* self) {

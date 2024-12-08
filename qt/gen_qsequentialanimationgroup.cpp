@@ -143,20 +143,16 @@ public:
 
 };
 
-void QSequentialAnimationGroup_new(QSequentialAnimationGroup** outptr_QSequentialAnimationGroup, QAnimationGroup** outptr_QAnimationGroup, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject) {
-	MiqtVirtualQSequentialAnimationGroup* ret = new MiqtVirtualQSequentialAnimationGroup();
-	*outptr_QSequentialAnimationGroup = ret;
-	*outptr_QAnimationGroup = static_cast<QAnimationGroup*>(ret);
-	*outptr_QAbstractAnimation = static_cast<QAbstractAnimation*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSequentialAnimationGroup* QSequentialAnimationGroup_new() {
+	return new MiqtVirtualQSequentialAnimationGroup();
 }
 
-void QSequentialAnimationGroup_new2(QObject* parent, QSequentialAnimationGroup** outptr_QSequentialAnimationGroup, QAnimationGroup** outptr_QAnimationGroup, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject) {
-	MiqtVirtualQSequentialAnimationGroup* ret = new MiqtVirtualQSequentialAnimationGroup(parent);
-	*outptr_QSequentialAnimationGroup = ret;
-	*outptr_QAnimationGroup = static_cast<QAnimationGroup*>(ret);
-	*outptr_QAbstractAnimation = static_cast<QAbstractAnimation*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSequentialAnimationGroup* QSequentialAnimationGroup_new2(QObject* parent) {
+	return new MiqtVirtualQSequentialAnimationGroup(parent);
+}
+
+void QSequentialAnimationGroup_virtbase(QSequentialAnimationGroup* src, QAnimationGroup** outptr_QAnimationGroup) {
+	*outptr_QAnimationGroup = static_cast<QAnimationGroup*>(src);
 }
 
 QMetaObject* QSequentialAnimationGroup_MetaObject(const QSequentialAnimationGroup* self) {

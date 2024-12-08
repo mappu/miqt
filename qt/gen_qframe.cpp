@@ -1022,28 +1022,20 @@ public:
 
 };
 
-void QFrame_new(QWidget* parent, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQFrame* ret = new MiqtVirtualQFrame(parent);
-	*outptr_QFrame = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QFrame* QFrame_new(QWidget* parent) {
+	return new MiqtVirtualQFrame(parent);
 }
 
-void QFrame_new2(QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQFrame* ret = new MiqtVirtualQFrame();
-	*outptr_QFrame = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QFrame* QFrame_new2() {
+	return new MiqtVirtualQFrame();
 }
 
-void QFrame_new3(QWidget* parent, int f, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQFrame* ret = new MiqtVirtualQFrame(parent, static_cast<Qt::WindowFlags>(f));
-	*outptr_QFrame = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QFrame* QFrame_new3(QWidget* parent, int f) {
+	return new MiqtVirtualQFrame(parent, static_cast<Qt::WindowFlags>(f));
+}
+
+void QFrame_virtbase(QFrame* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QFrame_MetaObject(const QFrame* self) {

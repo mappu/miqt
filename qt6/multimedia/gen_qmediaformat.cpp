@@ -8,19 +8,16 @@
 #include "gen_qmediaformat.h"
 #include "_cgo_export.h"
 
-void QMediaFormat_new(QMediaFormat** outptr_QMediaFormat) {
-	QMediaFormat* ret = new QMediaFormat();
-	*outptr_QMediaFormat = ret;
+QMediaFormat* QMediaFormat_new() {
+	return new QMediaFormat();
 }
 
-void QMediaFormat_new2(QMediaFormat* other, QMediaFormat** outptr_QMediaFormat) {
-	QMediaFormat* ret = new QMediaFormat(*other);
-	*outptr_QMediaFormat = ret;
+QMediaFormat* QMediaFormat_new2(QMediaFormat* other) {
+	return new QMediaFormat(*other);
 }
 
-void QMediaFormat_new3(int format, QMediaFormat** outptr_QMediaFormat) {
-	QMediaFormat* ret = new QMediaFormat(static_cast<QMediaFormat::FileFormat>(format));
-	*outptr_QMediaFormat = ret;
+QMediaFormat* QMediaFormat_new3(int format) {
+	return new QMediaFormat(static_cast<QMediaFormat::FileFormat>(format));
 }
 
 void QMediaFormat_OperatorAssign(QMediaFormat* self, QMediaFormat* other) {

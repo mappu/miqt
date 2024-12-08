@@ -20,15 +20,15 @@ class QKeySequence;
 typedef struct QKeySequence QKeySequence;
 #endif
 
-void QKeySequence_new(QKeySequence** outptr_QKeySequence);
-void QKeySequence_new2(struct miqt_string key, QKeySequence** outptr_QKeySequence);
-void QKeySequence_new3(int k1, QKeySequence** outptr_QKeySequence);
-void QKeySequence_new4(QKeySequence* ks, QKeySequence** outptr_QKeySequence);
-void QKeySequence_new5(int key, QKeySequence** outptr_QKeySequence);
-void QKeySequence_new6(struct miqt_string key, int format, QKeySequence** outptr_QKeySequence);
-void QKeySequence_new7(int k1, int k2, QKeySequence** outptr_QKeySequence);
-void QKeySequence_new8(int k1, int k2, int k3, QKeySequence** outptr_QKeySequence);
-void QKeySequence_new9(int k1, int k2, int k3, int k4, QKeySequence** outptr_QKeySequence);
+QKeySequence* QKeySequence_new();
+QKeySequence* QKeySequence_new2(struct miqt_string key);
+QKeySequence* QKeySequence_new3(int k1);
+QKeySequence* QKeySequence_new4(QKeySequence* ks);
+QKeySequence* QKeySequence_new5(int key);
+QKeySequence* QKeySequence_new6(struct miqt_string key, int format);
+QKeySequence* QKeySequence_new7(int k1, int k2);
+QKeySequence* QKeySequence_new8(int k1, int k2, int k3);
+QKeySequence* QKeySequence_new9(int k1, int k2, int k3, int k4);
 int QKeySequence_Count(const QKeySequence* self);
 bool QKeySequence_IsEmpty(const QKeySequence* self);
 struct miqt_string QKeySequence_ToString(const QKeySequence* self);

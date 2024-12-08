@@ -37,34 +37,27 @@ func newQColorTransform(h *C.QColorTransform) *QColorTransform {
 	if h == nil {
 		return nil
 	}
+
 	return &QColorTransform{h: h}
 }
 
 // UnsafeNewQColorTransform constructs the type using only unsafe pointers.
 func UnsafeNewQColorTransform(h unsafe.Pointer) *QColorTransform {
-	if h == nil {
-		return nil
-	}
-
-	return &QColorTransform{h: (*C.QColorTransform)(h)}
+	return newQColorTransform((*C.QColorTransform)(h))
 }
 
 // NewQColorTransform constructs a new QColorTransform object.
 func NewQColorTransform() *QColorTransform {
-	var outptr_QColorTransform *C.QColorTransform = nil
 
-	C.QColorTransform_new(&outptr_QColorTransform)
-	ret := newQColorTransform(outptr_QColorTransform)
+	ret := newQColorTransform(C.QColorTransform_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQColorTransform2 constructs a new QColorTransform object.
 func NewQColorTransform2(colorTransform *QColorTransform) *QColorTransform {
-	var outptr_QColorTransform *C.QColorTransform = nil
 
-	C.QColorTransform_new2(colorTransform.cPointer(), &outptr_QColorTransform)
-	ret := newQColorTransform(outptr_QColorTransform)
+	ret := newQColorTransform(C.QColorTransform_new2(colorTransform.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -86,15 +79,13 @@ func (this *QColorTransform) Map(argb uint) uint {
 }
 
 func (this *QColorTransform) MapWithRgba64(rgba64 QRgba64) *QRgba64 {
-	_ret := C.QColorTransform_MapWithRgba64(this.h, rgba64.cPointer())
-	_goptr := newQRgba64(_ret)
+	_goptr := newQRgba64(C.QColorTransform_MapWithRgba64(this.h, rgba64.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColorTransform) MapWithColor(color *QColor) *QColor {
-	_ret := C.QColorTransform_MapWithColor(this.h, color.cPointer())
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColorTransform_MapWithColor(this.h, color.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

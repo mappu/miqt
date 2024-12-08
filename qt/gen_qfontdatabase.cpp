@@ -10,9 +10,8 @@
 #include "gen_qfontdatabase.h"
 #include "_cgo_export.h"
 
-void QFontDatabase_new(QFontDatabase** outptr_QFontDatabase) {
-	QFontDatabase* ret = new QFontDatabase();
-	*outptr_QFontDatabase = ret;
+QFontDatabase* QFontDatabase_new() {
+	return new QFontDatabase();
 }
 
 struct miqt_array /* of int */  QFontDatabase_StandardSizes() {

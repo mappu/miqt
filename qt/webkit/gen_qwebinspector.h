@@ -78,8 +78,9 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QWebInspector_new(QWidget* parent, QWebInspector** outptr_QWebInspector, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QWebInspector_new2(QWebInspector** outptr_QWebInspector, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QWebInspector* QWebInspector_new(QWidget* parent);
+QWebInspector* QWebInspector_new2();
+void QWebInspector_virtbase(QWebInspector* src, QWidget** outptr_QWidget);
 QMetaObject* QWebInspector_MetaObject(const QWebInspector* self);
 void* QWebInspector_Metacast(QWebInspector* self, const char* param1);
 struct miqt_string QWebInspector_Tr(const char* s);

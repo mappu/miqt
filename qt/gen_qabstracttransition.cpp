@@ -230,16 +230,16 @@ public:
 
 };
 
-void QAbstractTransition_new(QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject) {
-	MiqtVirtualQAbstractTransition* ret = new MiqtVirtualQAbstractTransition();
-	*outptr_QAbstractTransition = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAbstractTransition* QAbstractTransition_new() {
+	return new MiqtVirtualQAbstractTransition();
 }
 
-void QAbstractTransition_new2(QState* sourceState, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject) {
-	MiqtVirtualQAbstractTransition* ret = new MiqtVirtualQAbstractTransition(sourceState);
-	*outptr_QAbstractTransition = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAbstractTransition* QAbstractTransition_new2(QState* sourceState) {
+	return new MiqtVirtualQAbstractTransition(sourceState);
+}
+
+void QAbstractTransition_virtbase(QAbstractTransition* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QAbstractTransition_MetaObject(const QAbstractTransition* self) {

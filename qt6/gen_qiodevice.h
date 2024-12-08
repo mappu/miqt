@@ -34,8 +34,9 @@ typedef struct QObject QObject;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QIODevice_new(QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
-void QIODevice_new2(QObject* parent, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
+QIODevice* QIODevice_new();
+QIODevice* QIODevice_new2(QObject* parent);
+void QIODevice_virtbase(QIODevice* src, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
 QMetaObject* QIODevice_MetaObject(const QIODevice* self);
 void* QIODevice_Metacast(QIODevice* self, const char* param1);
 struct miqt_string QIODevice_Tr(const char* s);

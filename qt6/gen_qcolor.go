@@ -55,64 +55,51 @@ func newQColor(h *C.QColor) *QColor {
 	if h == nil {
 		return nil
 	}
+
 	return &QColor{h: h}
 }
 
 // UnsafeNewQColor constructs the type using only unsafe pointers.
 func UnsafeNewQColor(h unsafe.Pointer) *QColor {
-	if h == nil {
-		return nil
-	}
-
-	return &QColor{h: (*C.QColor)(h)}
+	return newQColor((*C.QColor)(h))
 }
 
 // NewQColor constructs a new QColor object.
 func NewQColor() *QColor {
-	var outptr_QColor *C.QColor = nil
 
-	C.QColor_new(&outptr_QColor)
-	ret := newQColor(outptr_QColor)
+	ret := newQColor(C.QColor_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQColor2 constructs a new QColor object.
 func NewQColor2(color GlobalColor) *QColor {
-	var outptr_QColor *C.QColor = nil
 
-	C.QColor_new2((C.int)(color), &outptr_QColor)
-	ret := newQColor(outptr_QColor)
+	ret := newQColor(C.QColor_new2((C.int)(color)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQColor3 constructs a new QColor object.
 func NewQColor3(r int, g int, b int) *QColor {
-	var outptr_QColor *C.QColor = nil
 
-	C.QColor_new3((C.int)(r), (C.int)(g), (C.int)(b), &outptr_QColor)
-	ret := newQColor(outptr_QColor)
+	ret := newQColor(C.QColor_new3((C.int)(r), (C.int)(g), (C.int)(b)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQColor4 constructs a new QColor object.
 func NewQColor4(rgb uint) *QColor {
-	var outptr_QColor *C.QColor = nil
 
-	C.QColor_new4((C.uint)(rgb), &outptr_QColor)
-	ret := newQColor(outptr_QColor)
+	ret := newQColor(C.QColor_new4((C.uint)(rgb)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQColor5 constructs a new QColor object.
 func NewQColor5(rgba64 QRgba64) *QColor {
-	var outptr_QColor *C.QColor = nil
 
-	C.QColor_new5(rgba64.cPointer(), &outptr_QColor)
-	ret := newQColor(outptr_QColor)
+	ret := newQColor(C.QColor_new5(rgba64.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -123,10 +110,8 @@ func NewQColor6(name string) *QColor {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	var outptr_QColor *C.QColor = nil
 
-	C.QColor_new6(name_ms, &outptr_QColor)
-	ret := newQColor(outptr_QColor)
+	ret := newQColor(C.QColor_new6(name_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -135,67 +120,54 @@ func NewQColor6(name string) *QColor {
 func NewQColor7(aname string) *QColor {
 	aname_Cstring := C.CString(aname)
 	defer C.free(unsafe.Pointer(aname_Cstring))
-	var outptr_QColor *C.QColor = nil
 
-	C.QColor_new7(aname_Cstring, &outptr_QColor)
-	ret := newQColor(outptr_QColor)
+	ret := newQColor(C.QColor_new7(aname_Cstring))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQColor8 constructs a new QColor object.
 func NewQColor8(spec QColor__Spec) *QColor {
-	var outptr_QColor *C.QColor = nil
 
-	C.QColor_new8((C.int)(spec), &outptr_QColor)
-	ret := newQColor(outptr_QColor)
+	ret := newQColor(C.QColor_new8((C.int)(spec)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQColor9 constructs a new QColor object.
 func NewQColor9(spec QColor__Spec, a1 uint16, a2 uint16, a3 uint16, a4 uint16) *QColor {
-	var outptr_QColor *C.QColor = nil
 
-	C.QColor_new9((C.int)(spec), (C.uint16_t)(a1), (C.uint16_t)(a2), (C.uint16_t)(a3), (C.uint16_t)(a4), &outptr_QColor)
-	ret := newQColor(outptr_QColor)
+	ret := newQColor(C.QColor_new9((C.int)(spec), (C.uint16_t)(a1), (C.uint16_t)(a2), (C.uint16_t)(a3), (C.uint16_t)(a4)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQColor10 constructs a new QColor object.
 func NewQColor10(param1 *QColor) *QColor {
-	var outptr_QColor *C.QColor = nil
 
-	C.QColor_new10(param1.cPointer(), &outptr_QColor)
-	ret := newQColor(outptr_QColor)
+	ret := newQColor(C.QColor_new10(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQColor11 constructs a new QColor object.
 func NewQColor11(r int, g int, b int, a int) *QColor {
-	var outptr_QColor *C.QColor = nil
 
-	C.QColor_new11((C.int)(r), (C.int)(g), (C.int)(b), (C.int)(a), &outptr_QColor)
-	ret := newQColor(outptr_QColor)
+	ret := newQColor(C.QColor_new11((C.int)(r), (C.int)(g), (C.int)(b), (C.int)(a)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQColor12 constructs a new QColor object.
 func NewQColor12(spec QColor__Spec, a1 uint16, a2 uint16, a3 uint16, a4 uint16, a5 uint16) *QColor {
-	var outptr_QColor *C.QColor = nil
 
-	C.QColor_new12((C.int)(spec), (C.uint16_t)(a1), (C.uint16_t)(a2), (C.uint16_t)(a3), (C.uint16_t)(a4), (C.uint16_t)(a5), &outptr_QColor)
-	ret := newQColor(outptr_QColor)
+	ret := newQColor(C.QColor_new12((C.int)(spec), (C.uint16_t)(a1), (C.uint16_t)(a2), (C.uint16_t)(a3), (C.uint16_t)(a4), (C.uint16_t)(a5)))
 	ret.isSubclass = true
 	return ret
 }
 
 func QColor_FromString(name QAnyStringView) *QColor {
-	_ret := C.QColor_FromString(name.cPointer())
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_FromString(name.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -321,8 +293,7 @@ func (this *QColor) SetRgbF(r float32, g float32, b float32) {
 }
 
 func (this *QColor) Rgba64() *QRgba64 {
-	_ret := C.QColor_Rgba64(this.h)
-	_goptr := newQRgba64(_ret)
+	_goptr := newQRgba64(C.QColor_Rgba64(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -492,141 +463,121 @@ func (this *QColor) SetHslF(h float32, s float32, l float32) {
 }
 
 func (this *QColor) ToRgb() *QColor {
-	_ret := C.QColor_ToRgb(this.h)
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_ToRgb(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColor) ToHsv() *QColor {
-	_ret := C.QColor_ToHsv(this.h)
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_ToHsv(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColor) ToCmyk() *QColor {
-	_ret := C.QColor_ToCmyk(this.h)
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_ToCmyk(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColor) ToHsl() *QColor {
-	_ret := C.QColor_ToHsl(this.h)
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_ToHsl(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColor) ToExtendedRgb() *QColor {
-	_ret := C.QColor_ToExtendedRgb(this.h)
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_ToExtendedRgb(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColor) ConvertTo(colorSpec QColor__Spec) *QColor {
-	_ret := C.QColor_ConvertTo(this.h, (C.int)(colorSpec))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_ConvertTo(this.h, (C.int)(colorSpec)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QColor_FromRgb(rgb uint) *QColor {
-	_ret := C.QColor_FromRgb((C.uint)(rgb))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_FromRgb((C.uint)(rgb)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QColor_FromRgba(rgba uint) *QColor {
-	_ret := C.QColor_FromRgba((C.uint)(rgba))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_FromRgba((C.uint)(rgba)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QColor_FromRgb2(r int, g int, b int) *QColor {
-	_ret := C.QColor_FromRgb2((C.int)(r), (C.int)(g), (C.int)(b))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_FromRgb2((C.int)(r), (C.int)(g), (C.int)(b)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QColor_FromRgbF(r float32, g float32, b float32) *QColor {
-	_ret := C.QColor_FromRgbF((C.float)(r), (C.float)(g), (C.float)(b))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_FromRgbF((C.float)(r), (C.float)(g), (C.float)(b)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QColor_FromRgba64(r uint16, g uint16, b uint16) *QColor {
-	_ret := C.QColor_FromRgba64((C.uint16_t)(r), (C.uint16_t)(g), (C.uint16_t)(b))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_FromRgba64((C.uint16_t)(r), (C.uint16_t)(g), (C.uint16_t)(b)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QColor_FromRgba64WithRgba(rgba QRgba64) *QColor {
-	_ret := C.QColor_FromRgba64WithRgba(rgba.cPointer())
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_FromRgba64WithRgba(rgba.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QColor_FromHsv(h int, s int, v int) *QColor {
-	_ret := C.QColor_FromHsv((C.int)(h), (C.int)(s), (C.int)(v))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_FromHsv((C.int)(h), (C.int)(s), (C.int)(v)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QColor_FromHsvF(h float32, s float32, v float32) *QColor {
-	_ret := C.QColor_FromHsvF((C.float)(h), (C.float)(s), (C.float)(v))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_FromHsvF((C.float)(h), (C.float)(s), (C.float)(v)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QColor_FromCmyk(c int, m int, y int, k int) *QColor {
-	_ret := C.QColor_FromCmyk((C.int)(c), (C.int)(m), (C.int)(y), (C.int)(k))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_FromCmyk((C.int)(c), (C.int)(m), (C.int)(y), (C.int)(k)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QColor_FromCmykF(c float32, m float32, y float32, k float32) *QColor {
-	_ret := C.QColor_FromCmykF((C.float)(c), (C.float)(m), (C.float)(y), (C.float)(k))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_FromCmykF((C.float)(c), (C.float)(m), (C.float)(y), (C.float)(k)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QColor_FromHsl(h int, s int, l int) *QColor {
-	_ret := C.QColor_FromHsl((C.int)(h), (C.int)(s), (C.int)(l))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_FromHsl((C.int)(h), (C.int)(s), (C.int)(l)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QColor_FromHslF(h float32, s float32, l float32) *QColor {
-	_ret := C.QColor_FromHslF((C.float)(h), (C.float)(s), (C.float)(l))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_FromHslF((C.float)(h), (C.float)(s), (C.float)(l)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColor) Lighter() *QColor {
-	_ret := C.QColor_Lighter(this.h)
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_Lighter(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColor) Darker() *QColor {
-	_ret := C.QColor_Darker(this.h)
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_Darker(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -723,78 +674,67 @@ func (this *QColor) SetHslF4(h float32, s float32, l float32, a float32) {
 }
 
 func QColor_FromRgb4(r int, g int, b int, a int) *QColor {
-	_ret := C.QColor_FromRgb4((C.int)(r), (C.int)(g), (C.int)(b), (C.int)(a))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_FromRgb4((C.int)(r), (C.int)(g), (C.int)(b), (C.int)(a)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QColor_FromRgbF4(r float32, g float32, b float32, a float32) *QColor {
-	_ret := C.QColor_FromRgbF4((C.float)(r), (C.float)(g), (C.float)(b), (C.float)(a))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_FromRgbF4((C.float)(r), (C.float)(g), (C.float)(b), (C.float)(a)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QColor_FromRgba644(r uint16, g uint16, b uint16, a uint16) *QColor {
-	_ret := C.QColor_FromRgba644((C.uint16_t)(r), (C.uint16_t)(g), (C.uint16_t)(b), (C.uint16_t)(a))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_FromRgba644((C.uint16_t)(r), (C.uint16_t)(g), (C.uint16_t)(b), (C.uint16_t)(a)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QColor_FromHsv4(h int, s int, v int, a int) *QColor {
-	_ret := C.QColor_FromHsv4((C.int)(h), (C.int)(s), (C.int)(v), (C.int)(a))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_FromHsv4((C.int)(h), (C.int)(s), (C.int)(v), (C.int)(a)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QColor_FromHsvF4(h float32, s float32, v float32, a float32) *QColor {
-	_ret := C.QColor_FromHsvF4((C.float)(h), (C.float)(s), (C.float)(v), (C.float)(a))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_FromHsvF4((C.float)(h), (C.float)(s), (C.float)(v), (C.float)(a)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QColor_FromCmyk5(c int, m int, y int, k int, a int) *QColor {
-	_ret := C.QColor_FromCmyk5((C.int)(c), (C.int)(m), (C.int)(y), (C.int)(k), (C.int)(a))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_FromCmyk5((C.int)(c), (C.int)(m), (C.int)(y), (C.int)(k), (C.int)(a)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QColor_FromCmykF5(c float32, m float32, y float32, k float32, a float32) *QColor {
-	_ret := C.QColor_FromCmykF5((C.float)(c), (C.float)(m), (C.float)(y), (C.float)(k), (C.float)(a))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_FromCmykF5((C.float)(c), (C.float)(m), (C.float)(y), (C.float)(k), (C.float)(a)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QColor_FromHsl4(h int, s int, l int, a int) *QColor {
-	_ret := C.QColor_FromHsl4((C.int)(h), (C.int)(s), (C.int)(l), (C.int)(a))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_FromHsl4((C.int)(h), (C.int)(s), (C.int)(l), (C.int)(a)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QColor_FromHslF4(h float32, s float32, l float32, a float32) *QColor {
-	_ret := C.QColor_FromHslF4((C.float)(h), (C.float)(s), (C.float)(l), (C.float)(a))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_FromHslF4((C.float)(h), (C.float)(s), (C.float)(l), (C.float)(a)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColor) Lighter1(f int) *QColor {
-	_ret := C.QColor_Lighter1(this.h, (C.int)(f))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_Lighter1(this.h, (C.int)(f)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColor) Darker1(f int) *QColor {
-	_ret := C.QColor_Darker1(this.h, (C.int)(f))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColor_Darker1(this.h, (C.int)(f)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -42,52 +42,40 @@ func (this *QRubberBand) UnsafePointer() unsafe.Pointer {
 }
 
 // newQRubberBand constructs the type using only CGO pointers.
-func newQRubberBand(h *C.QRubberBand, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QRubberBand {
+func newQRubberBand(h *C.QRubberBand) *QRubberBand {
 	if h == nil {
 		return nil
 	}
+	var outptr_QWidget *C.QWidget = nil
+	C.QRubberBand_virtbase(h, &outptr_QWidget)
+
 	return &QRubberBand{h: h,
-		QWidget: newQWidget(h_QWidget, h_QObject, h_QPaintDevice)}
+		QWidget: newQWidget(outptr_QWidget)}
 }
 
 // UnsafeNewQRubberBand constructs the type using only unsafe pointers.
-func UnsafeNewQRubberBand(h unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QRubberBand {
-	if h == nil {
-		return nil
-	}
-
-	return &QRubberBand{h: (*C.QRubberBand)(h),
-		QWidget: UnsafeNewQWidget(h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQRubberBand(h unsafe.Pointer) *QRubberBand {
+	return newQRubberBand((*C.QRubberBand)(h))
 }
 
 // NewQRubberBand constructs a new QRubberBand object.
 func NewQRubberBand(param1 QRubberBand__Shape) *QRubberBand {
-	var outptr_QRubberBand *C.QRubberBand = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QRubberBand_new((C.int)(param1), &outptr_QRubberBand, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQRubberBand(outptr_QRubberBand, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQRubberBand(C.QRubberBand_new((C.int)(param1)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQRubberBand2 constructs a new QRubberBand object.
 func NewQRubberBand2(param1 QRubberBand__Shape, param2 *QWidget) *QRubberBand {
-	var outptr_QRubberBand *C.QRubberBand = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QRubberBand_new2((C.int)(param1), param2.cPointer(), &outptr_QRubberBand, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQRubberBand(outptr_QRubberBand, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQRubberBand(C.QRubberBand_new2((C.int)(param1), param2.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QRubberBand) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QRubberBand_MetaObject(this.h)))
+	return newQMetaObject(C.QRubberBand_MetaObject(this.h))
 }
 
 func (this *QRubberBand) Metacast(param1 string) unsafe.Pointer {
@@ -161,6 +149,9 @@ func (this *QRubberBand) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QRubberBand) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -172,7 +163,7 @@ func miqt_exec_callback_QRubberBand_Event(self *C.QRubberBand, cb C.intptr_t, e 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QRubberBand{h: self}).callVirtualBase_Event, slotval1)
 
@@ -186,6 +177,9 @@ func (this *QRubberBand) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
 
 }
 func (this *QRubberBand) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -197,7 +191,7 @@ func miqt_exec_callback_QRubberBand_PaintEvent(self *C.QRubberBand, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQPaintEvent(param1)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -209,6 +203,9 @@ func (this *QRubberBand) callVirtualBase_ChangeEvent(param1 *QEvent) {
 
 }
 func (this *QRubberBand) OnChangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -220,7 +217,7 @@ func miqt_exec_callback_QRubberBand_ChangeEvent(self *C.QRubberBand, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -232,6 +229,9 @@ func (this *QRubberBand) callVirtualBase_ShowEvent(param1 *QShowEvent) {
 
 }
 func (this *QRubberBand) OnShowEvent(slot func(super func(param1 *QShowEvent), param1 *QShowEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -243,7 +243,7 @@ func miqt_exec_callback_QRubberBand_ShowEvent(self *C.QRubberBand, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQShowEvent(param1)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -255,6 +255,9 @@ func (this *QRubberBand) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
 
 }
 func (this *QRubberBand) OnResizeEvent(slot func(super func(param1 *QResizeEvent), param1 *QResizeEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -266,7 +269,7 @@ func miqt_exec_callback_QRubberBand_ResizeEvent(self *C.QRubberBand, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQResizeEvent(param1)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -278,6 +281,9 @@ func (this *QRubberBand) callVirtualBase_MoveEvent(param1 *QMoveEvent) {
 
 }
 func (this *QRubberBand) OnMoveEvent(slot func(super func(param1 *QMoveEvent), param1 *QMoveEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -289,7 +295,7 @@ func miqt_exec_callback_QRubberBand_MoveEvent(self *C.QRubberBand, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMoveEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQMoveEvent(param1)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -301,6 +307,9 @@ func (this *QRubberBand) callVirtualBase_InitStyleOption(option *QStyleOptionRub
 
 }
 func (this *QRubberBand) OnInitStyleOption(slot func(super func(option *QStyleOptionRubberBand), option *QStyleOptionRubberBand)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_InitStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -312,7 +321,7 @@ func miqt_exec_callback_QRubberBand_InitStyleOption(self *C.QRubberBand, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStyleOptionRubberBand(unsafe.Pointer(option), nil)
+	slotval1 := newQStyleOptionRubberBand(option)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_InitStyleOption, slotval1)
 
@@ -324,6 +333,9 @@ func (this *QRubberBand) callVirtualBase_DevType() int {
 
 }
 func (this *QRubberBand) OnDevType(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -346,6 +358,9 @@ func (this *QRubberBand) callVirtualBase_SetVisible(visible bool) {
 
 }
 func (this *QRubberBand) OnSetVisible(slot func(super func(visible bool), visible bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -365,13 +380,15 @@ func miqt_exec_callback_QRubberBand_SetVisible(self *C.QRubberBand, cb C.intptr_
 
 func (this *QRubberBand) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QRubberBand_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QRubberBand_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QRubberBand) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -390,13 +407,15 @@ func miqt_exec_callback_QRubberBand_SizeHint(self *C.QRubberBand, cb C.intptr_t)
 
 func (this *QRubberBand) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QRubberBand_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QRubberBand_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QRubberBand) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -419,6 +438,9 @@ func (this *QRubberBand) callVirtualBase_HeightForWidth(param1 int) int {
 
 }
 func (this *QRubberBand) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -444,6 +466,9 @@ func (this *QRubberBand) callVirtualBase_HasHeightForWidth() bool {
 
 }
 func (this *QRubberBand) OnHasHeightForWidth(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -462,9 +487,13 @@ func miqt_exec_callback_QRubberBand_HasHeightForWidth(self *C.QRubberBand, cb C.
 
 func (this *QRubberBand) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QRubberBand_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return newQPaintEngine(C.QRubberBand_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+
 }
 func (this *QRubberBand) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -487,6 +516,9 @@ func (this *QRubberBand) callVirtualBase_MousePressEvent(event *QMouseEvent) {
 
 }
 func (this *QRubberBand) OnMousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -498,7 +530,7 @@ func miqt_exec_callback_QRubberBand_MousePressEvent(self *C.QRubberBand, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -510,6 +542,9 @@ func (this *QRubberBand) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
 
 }
 func (this *QRubberBand) OnMouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -521,7 +556,7 @@ func miqt_exec_callback_QRubberBand_MouseReleaseEvent(self *C.QRubberBand, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -533,6 +568,9 @@ func (this *QRubberBand) callVirtualBase_MouseDoubleClickEvent(event *QMouseEven
 
 }
 func (this *QRubberBand) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -544,7 +582,7 @@ func miqt_exec_callback_QRubberBand_MouseDoubleClickEvent(self *C.QRubberBand, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -556,6 +594,9 @@ func (this *QRubberBand) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
 
 }
 func (this *QRubberBand) OnMouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -567,7 +608,7 @@ func miqt_exec_callback_QRubberBand_MouseMoveEvent(self *C.QRubberBand, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(event)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -579,6 +620,9 @@ func (this *QRubberBand) callVirtualBase_WheelEvent(event *QWheelEvent) {
 
 }
 func (this *QRubberBand) OnWheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -590,7 +634,7 @@ func miqt_exec_callback_QRubberBand_WheelEvent(self *C.QRubberBand, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(event)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -602,6 +646,9 @@ func (this *QRubberBand) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
 
 }
 func (this *QRubberBand) OnKeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -613,7 +660,7 @@ func miqt_exec_callback_QRubberBand_KeyPressEvent(self *C.QRubberBand, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -625,6 +672,9 @@ func (this *QRubberBand) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
 
 }
 func (this *QRubberBand) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -636,7 +686,7 @@ func miqt_exec_callback_QRubberBand_KeyReleaseEvent(self *C.QRubberBand, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -648,6 +698,9 @@ func (this *QRubberBand) callVirtualBase_FocusInEvent(event *QFocusEvent) {
 
 }
 func (this *QRubberBand) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -659,7 +712,7 @@ func miqt_exec_callback_QRubberBand_FocusInEvent(self *C.QRubberBand, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -671,6 +724,9 @@ func (this *QRubberBand) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
 
 }
 func (this *QRubberBand) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -682,7 +738,7 @@ func miqt_exec_callback_QRubberBand_FocusOutEvent(self *C.QRubberBand, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -694,6 +750,9 @@ func (this *QRubberBand) callVirtualBase_EnterEvent(event *QEnterEvent) {
 
 }
 func (this *QRubberBand) OnEnterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -705,7 +764,7 @@ func miqt_exec_callback_QRubberBand_EnterEvent(self *C.QRubberBand, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEnterEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQEnterEvent(event)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_EnterEvent, slotval1)
 
@@ -717,6 +776,9 @@ func (this *QRubberBand) callVirtualBase_LeaveEvent(event *QEvent) {
 
 }
 func (this *QRubberBand) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -728,7 +790,7 @@ func miqt_exec_callback_QRubberBand_LeaveEvent(self *C.QRubberBand, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_LeaveEvent, slotval1)
 
@@ -740,6 +802,9 @@ func (this *QRubberBand) callVirtualBase_CloseEvent(event *QCloseEvent) {
 
 }
 func (this *QRubberBand) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -751,7 +816,7 @@ func miqt_exec_callback_QRubberBand_CloseEvent(self *C.QRubberBand, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQCloseEvent(event)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -763,6 +828,9 @@ func (this *QRubberBand) callVirtualBase_ContextMenuEvent(event *QContextMenuEve
 
 }
 func (this *QRubberBand) OnContextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -774,7 +842,7 @@ func miqt_exec_callback_QRubberBand_ContextMenuEvent(self *C.QRubberBand, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQContextMenuEvent(event)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -786,6 +854,9 @@ func (this *QRubberBand) callVirtualBase_TabletEvent(event *QTabletEvent) {
 
 }
 func (this *QRubberBand) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -797,7 +868,7 @@ func miqt_exec_callback_QRubberBand_TabletEvent(self *C.QRubberBand, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTabletEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQTabletEvent(event)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -809,6 +880,9 @@ func (this *QRubberBand) callVirtualBase_ActionEvent(event *QActionEvent) {
 
 }
 func (this *QRubberBand) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -820,7 +894,7 @@ func miqt_exec_callback_QRubberBand_ActionEvent(self *C.QRubberBand, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQActionEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQActionEvent(event)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -832,6 +906,9 @@ func (this *QRubberBand) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) 
 
 }
 func (this *QRubberBand) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -843,7 +920,7 @@ func miqt_exec_callback_QRubberBand_DragEnterEvent(self *C.QRubberBand, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragEnterEvent(unsafe.Pointer(event), nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -855,6 +932,9 @@ func (this *QRubberBand) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
 
 }
 func (this *QRubberBand) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -866,7 +946,7 @@ func miqt_exec_callback_QRubberBand_DragMoveEvent(self *C.QRubberBand, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQDragMoveEvent(event)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -878,6 +958,9 @@ func (this *QRubberBand) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) 
 
 }
 func (this *QRubberBand) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -889,7 +972,7 @@ func miqt_exec_callback_QRubberBand_DragLeaveEvent(self *C.QRubberBand, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragLeaveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDragLeaveEvent(event)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -901,6 +984,9 @@ func (this *QRubberBand) callVirtualBase_DropEvent(event *QDropEvent) {
 
 }
 func (this *QRubberBand) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -912,7 +998,7 @@ func miqt_exec_callback_QRubberBand_DropEvent(self *C.QRubberBand, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDropEvent(event)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -924,6 +1010,9 @@ func (this *QRubberBand) callVirtualBase_HideEvent(event *QHideEvent) {
 
 }
 func (this *QRubberBand) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -935,7 +1024,7 @@ func miqt_exec_callback_QRubberBand_HideEvent(self *C.QRubberBand, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHideEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQHideEvent(event)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -950,6 +1039,9 @@ func (this *QRubberBand) callVirtualBase_NativeEvent(eventType []byte, message u
 
 }
 func (this *QRubberBand) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -981,6 +1073,9 @@ func (this *QRubberBand) callVirtualBase_Metric(param1 QPaintDevice__PaintDevice
 
 }
 func (this *QRubberBand) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1006,6 +1101,9 @@ func (this *QRubberBand) callVirtualBase_InitPainter(painter *QPainter) {
 
 }
 func (this *QRubberBand) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1017,7 +1115,7 @@ func miqt_exec_callback_QRubberBand_InitPainter(self *C.QRubberBand, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval1 := newQPainter(painter)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_InitPainter, slotval1)
 
@@ -1025,9 +1123,13 @@ func miqt_exec_callback_QRubberBand_InitPainter(self *C.QRubberBand, cb C.intptr
 
 func (this *QRubberBand) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QRubberBand_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer())))
+	return newQPaintDevice(C.QRubberBand_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+
 }
 func (this *QRubberBand) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1039,7 +1141,7 @@ func miqt_exec_callback_QRubberBand_Redirected(self *C.QRubberBand, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(offset))
+	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QRubberBand{h: self}).callVirtualBase_Redirected, slotval1)
 
@@ -1049,9 +1151,13 @@ func miqt_exec_callback_QRubberBand_Redirected(self *C.QRubberBand, cb C.intptr_
 
 func (this *QRubberBand) callVirtualBase_SharedPainter() *QPainter {
 
-	return UnsafeNewQPainter(unsafe.Pointer(C.QRubberBand_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+	return newQPainter(C.QRubberBand_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+
 }
 func (this *QRubberBand) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1074,6 +1180,9 @@ func (this *QRubberBand) callVirtualBase_InputMethodEvent(param1 *QInputMethodEv
 
 }
 func (this *QRubberBand) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1085,7 +1194,7 @@ func miqt_exec_callback_QRubberBand_InputMethodEvent(self *C.QRubberBand, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQInputMethodEvent(param1)
 
 	gofunc((&QRubberBand{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -1093,13 +1202,15 @@ func miqt_exec_callback_QRubberBand_InputMethodEvent(self *C.QRubberBand, cb C.i
 
 func (this *QRubberBand) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_ret := C.QRubberBand_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QRubberBand_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QRubberBand) OnInputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1125,6 +1236,9 @@ func (this *QRubberBand) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
 }
 func (this *QRubberBand) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRubberBand_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

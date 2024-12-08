@@ -34,10 +34,11 @@ typedef struct QPrinter QPrinter;
 typedef struct QWidget QWidget;
 #endif
 
-void QPrintDialog_new(QWidget* parent, QPrintDialog** outptr_QPrintDialog, QAbstractPrintDialog** outptr_QAbstractPrintDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QPrintDialog_new2(QPrinter* printer, QPrintDialog** outptr_QPrintDialog, QAbstractPrintDialog** outptr_QAbstractPrintDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QPrintDialog_new3(QPrintDialog** outptr_QPrintDialog, QAbstractPrintDialog** outptr_QAbstractPrintDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QPrintDialog_new4(QPrinter* printer, QWidget* parent, QPrintDialog** outptr_QPrintDialog, QAbstractPrintDialog** outptr_QAbstractPrintDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QPrintDialog* QPrintDialog_new(QWidget* parent);
+QPrintDialog* QPrintDialog_new2(QPrinter* printer);
+QPrintDialog* QPrintDialog_new3();
+QPrintDialog* QPrintDialog_new4(QPrinter* printer, QWidget* parent);
+void QPrintDialog_virtbase(QPrintDialog* src, QAbstractPrintDialog** outptr_QAbstractPrintDialog);
 QMetaObject* QPrintDialog_MetaObject(const QPrintDialog* self);
 void* QPrintDialog_Metacast(QPrintDialog* self, const char* param1);
 struct miqt_string QPrintDialog_Tr(const char* s);

@@ -34,11 +34,11 @@ typedef struct QSize QSize;
 typedef struct QSizeF QSizeF;
 #endif
 
-void QRect_new(QRect** outptr_QRect);
-void QRect_new2(QPoint* topleft, QPoint* bottomright, QRect** outptr_QRect);
-void QRect_new3(QPoint* topleft, QSize* size, QRect** outptr_QRect);
-void QRect_new4(int left, int top, int width, int height, QRect** outptr_QRect);
-void QRect_new5(QRect* param1, QRect** outptr_QRect);
+QRect* QRect_new();
+QRect* QRect_new2(QPoint* topleft, QPoint* bottomright);
+QRect* QRect_new3(QPoint* topleft, QSize* size);
+QRect* QRect_new4(int left, int top, int width, int height);
+QRect* QRect_new5(QRect* param1);
 bool QRect_IsNull(const QRect* self);
 bool QRect_IsEmpty(const QRect* self);
 bool QRect_IsValid(const QRect* self);
@@ -111,12 +111,12 @@ bool QRect_Contains22(const QRect* self, QRect* r, bool proper);
 bool QRect_Contains23(const QRect* self, QPoint* p, bool proper);
 void QRect_Delete(QRect* self, bool isSubclass);
 
-void QRectF_new(QRectF** outptr_QRectF);
-void QRectF_new2(QPointF* topleft, QSizeF* size, QRectF** outptr_QRectF);
-void QRectF_new3(QPointF* topleft, QPointF* bottomRight, QRectF** outptr_QRectF);
-void QRectF_new4(double left, double top, double width, double height, QRectF** outptr_QRectF);
-void QRectF_new5(QRect* rect, QRectF** outptr_QRectF);
-void QRectF_new6(QRectF* param1, QRectF** outptr_QRectF);
+QRectF* QRectF_new();
+QRectF* QRectF_new2(QPointF* topleft, QSizeF* size);
+QRectF* QRectF_new3(QPointF* topleft, QPointF* bottomRight);
+QRectF* QRectF_new4(double left, double top, double width, double height);
+QRectF* QRectF_new5(QRect* rect);
+QRectF* QRectF_new6(QRectF* param1);
 bool QRectF_IsNull(const QRectF* self);
 bool QRectF_IsEmpty(const QRectF* self);
 bool QRectF_IsValid(const QRectF* self);

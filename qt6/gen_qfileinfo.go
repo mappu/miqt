@@ -37,24 +37,19 @@ func newQFileInfo(h *C.QFileInfo) *QFileInfo {
 	if h == nil {
 		return nil
 	}
+
 	return &QFileInfo{h: h}
 }
 
 // UnsafeNewQFileInfo constructs the type using only unsafe pointers.
 func UnsafeNewQFileInfo(h unsafe.Pointer) *QFileInfo {
-	if h == nil {
-		return nil
-	}
-
-	return &QFileInfo{h: (*C.QFileInfo)(h)}
+	return newQFileInfo((*C.QFileInfo)(h))
 }
 
 // NewQFileInfo constructs a new QFileInfo object.
 func NewQFileInfo() *QFileInfo {
-	var outptr_QFileInfo *C.QFileInfo = nil
 
-	C.QFileInfo_new(&outptr_QFileInfo)
-	ret := newQFileInfo(outptr_QFileInfo)
+	ret := newQFileInfo(C.QFileInfo_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -65,20 +60,16 @@ func NewQFileInfo2(file string) *QFileInfo {
 	file_ms.data = C.CString(file)
 	file_ms.len = C.size_t(len(file))
 	defer C.free(unsafe.Pointer(file_ms.data))
-	var outptr_QFileInfo *C.QFileInfo = nil
 
-	C.QFileInfo_new2(file_ms, &outptr_QFileInfo)
-	ret := newQFileInfo(outptr_QFileInfo)
+	ret := newQFileInfo(C.QFileInfo_new2(file_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFileInfo3 constructs a new QFileInfo object.
 func NewQFileInfo3(file *QFileDevice) *QFileInfo {
-	var outptr_QFileInfo *C.QFileInfo = nil
 
-	C.QFileInfo_new3(file.cPointer(), &outptr_QFileInfo)
-	ret := newQFileInfo(outptr_QFileInfo)
+	ret := newQFileInfo(C.QFileInfo_new3(file.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -89,20 +80,16 @@ func NewQFileInfo4(dir *QDir, file string) *QFileInfo {
 	file_ms.data = C.CString(file)
 	file_ms.len = C.size_t(len(file))
 	defer C.free(unsafe.Pointer(file_ms.data))
-	var outptr_QFileInfo *C.QFileInfo = nil
 
-	C.QFileInfo_new4(dir.cPointer(), file_ms, &outptr_QFileInfo)
-	ret := newQFileInfo(outptr_QFileInfo)
+	ret := newQFileInfo(C.QFileInfo_new4(dir.cPointer(), file_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFileInfo5 constructs a new QFileInfo object.
 func NewQFileInfo5(fileinfo *QFileInfo) *QFileInfo {
-	var outptr_QFileInfo *C.QFileInfo = nil
 
-	C.QFileInfo_new5(fileinfo.cPointer(), &outptr_QFileInfo)
-	ret := newQFileInfo(outptr_QFileInfo)
+	ret := newQFileInfo(C.QFileInfo_new5(fileinfo.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -244,15 +231,13 @@ func (this *QFileInfo) CanonicalPath() string {
 }
 
 func (this *QFileInfo) Dir() *QDir {
-	_ret := C.QFileInfo_Dir(this.h)
-	_goptr := newQDir(_ret)
+	_goptr := newQDir(C.QFileInfo_Dir(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileInfo) AbsoluteDir() *QDir {
-	_ret := C.QFileInfo_AbsoluteDir(this.h)
-	_goptr := newQDir(_ret)
+	_goptr := newQDir(C.QFileInfo_AbsoluteDir(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -374,36 +359,31 @@ func (this *QFileInfo) Size() int64 {
 }
 
 func (this *QFileInfo) BirthTime() *QDateTime {
-	_ret := C.QFileInfo_BirthTime(this.h)
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QFileInfo_BirthTime(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileInfo) MetadataChangeTime() *QDateTime {
-	_ret := C.QFileInfo_MetadataChangeTime(this.h)
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QFileInfo_MetadataChangeTime(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileInfo) LastModified() *QDateTime {
-	_ret := C.QFileInfo_LastModified(this.h)
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QFileInfo_LastModified(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileInfo) LastRead() *QDateTime {
-	_ret := C.QFileInfo_LastRead(this.h)
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QFileInfo_LastRead(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileInfo) FileTime(time QFileDevice__FileTime) *QDateTime {
-	_ret := C.QFileInfo_FileTime(this.h, (C.int)(time))
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QFileInfo_FileTime(this.h, (C.int)(time)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

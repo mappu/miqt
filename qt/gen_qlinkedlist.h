@@ -20,7 +20,7 @@ class QLinkedListData;
 typedef struct QLinkedListData QLinkedListData;
 #endif
 
-void QLinkedListData_new(QLinkedListData** outptr_QLinkedListData);
+QLinkedListData* QLinkedListData_new();
 void QLinkedListData_Delete(QLinkedListData* self, bool isSubclass);
 
 #ifdef __cplusplus

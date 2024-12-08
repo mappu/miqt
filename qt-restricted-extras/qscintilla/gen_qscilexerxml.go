@@ -36,46 +36,34 @@ func (this *QsciLexerXML) UnsafePointer() unsafe.Pointer {
 }
 
 // newQsciLexerXML constructs the type using only CGO pointers.
-func newQsciLexerXML(h *C.QsciLexerXML, h_QsciLexerHTML *C.QsciLexerHTML, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerXML {
+func newQsciLexerXML(h *C.QsciLexerXML) *QsciLexerXML {
 	if h == nil {
 		return nil
 	}
+	var outptr_QsciLexerHTML *C.QsciLexerHTML = nil
+	C.QsciLexerXML_virtbase(h, &outptr_QsciLexerHTML)
+
 	return &QsciLexerXML{h: h,
-		QsciLexerHTML: newQsciLexerHTML(h_QsciLexerHTML, h_QsciLexer, h_QObject)}
+		QsciLexerHTML: newQsciLexerHTML(outptr_QsciLexerHTML)}
 }
 
 // UnsafeNewQsciLexerXML constructs the type using only unsafe pointers.
-func UnsafeNewQsciLexerXML(h unsafe.Pointer, h_QsciLexerHTML unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerXML {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciLexerXML{h: (*C.QsciLexerXML)(h),
-		QsciLexerHTML: UnsafeNewQsciLexerHTML(h_QsciLexerHTML, h_QsciLexer, h_QObject)}
+func UnsafeNewQsciLexerXML(h unsafe.Pointer) *QsciLexerXML {
+	return newQsciLexerXML((*C.QsciLexerXML)(h))
 }
 
 // NewQsciLexerXML constructs a new QsciLexerXML object.
 func NewQsciLexerXML() *QsciLexerXML {
-	var outptr_QsciLexerXML *C.QsciLexerXML = nil
-	var outptr_QsciLexerHTML *C.QsciLexerHTML = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerXML_new(&outptr_QsciLexerXML, &outptr_QsciLexerHTML, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerXML(outptr_QsciLexerXML, outptr_QsciLexerHTML, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerXML(C.QsciLexerXML_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQsciLexerXML2 constructs a new QsciLexerXML object.
 func NewQsciLexerXML2(parent *qt.QObject) *QsciLexerXML {
-	var outptr_QsciLexerXML *C.QsciLexerXML = nil
-	var outptr_QsciLexerHTML *C.QsciLexerHTML = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerXML_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QsciLexerXML, &outptr_QsciLexerHTML, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerXML(outptr_QsciLexerXML, outptr_QsciLexerHTML, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerXML(C.QsciLexerXML_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -119,8 +107,7 @@ func (this *QsciLexerXML) Lexer() string {
 }
 
 func (this *QsciLexerXML) DefaultColor(style int) *qt.QColor {
-	_ret := C.QsciLexerXML_DefaultColor(this.h, (C.int)(style))
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerXML_DefaultColor(this.h, (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -130,15 +117,13 @@ func (this *QsciLexerXML) DefaultEolFill(style int) bool {
 }
 
 func (this *QsciLexerXML) DefaultFont(style int) *qt.QFont {
-	_ret := C.QsciLexerXML_DefaultFont(this.h, (C.int)(style))
-	_goptr := qt.UnsafeNewQFont(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerXML_DefaultFont(this.h, (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciLexerXML) DefaultPaper(style int) *qt.QColor {
-	_ret := C.QsciLexerXML_DefaultPaper(this.h, (C.int)(style))
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerXML_DefaultPaper(this.h, (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -210,6 +195,9 @@ func (this *QsciLexerXML) callVirtualBase_SetFoldCompact(fold bool) {
 
 }
 func (this *QsciLexerXML) OnSetFoldCompact(slot func(super func(fold bool), fold bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerXML_override_virtual_SetFoldCompact(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -233,6 +221,9 @@ func (this *QsciLexerXML) callVirtualBase_SetFoldPreprocessor(fold bool) {
 
 }
 func (this *QsciLexerXML) OnSetFoldPreprocessor(slot func(super func(fold bool), fold bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerXML_override_virtual_SetFoldPreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -256,6 +247,9 @@ func (this *QsciLexerXML) callVirtualBase_SetCaseSensitiveTags(sens bool) {
 
 }
 func (this *QsciLexerXML) OnSetCaseSensitiveTags(slot func(super func(sens bool), sens bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerXML_override_virtual_SetCaseSensitiveTags(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

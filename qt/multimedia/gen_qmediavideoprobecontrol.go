@@ -36,22 +36,20 @@ func (this *QMediaVideoProbeControl) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMediaVideoProbeControl constructs the type using only CGO pointers.
-func newQMediaVideoProbeControl(h *C.QMediaVideoProbeControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QMediaVideoProbeControl {
+func newQMediaVideoProbeControl(h *C.QMediaVideoProbeControl) *QMediaVideoProbeControl {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaControl *C.QMediaControl = nil
+	C.QMediaVideoProbeControl_virtbase(h, &outptr_QMediaControl)
+
 	return &QMediaVideoProbeControl{h: h,
-		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
+		QMediaControl: newQMediaControl(outptr_QMediaControl)}
 }
 
 // UnsafeNewQMediaVideoProbeControl constructs the type using only unsafe pointers.
-func UnsafeNewQMediaVideoProbeControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QMediaVideoProbeControl {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaVideoProbeControl{h: (*C.QMediaVideoProbeControl)(h),
-		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
+func UnsafeNewQMediaVideoProbeControl(h unsafe.Pointer) *QMediaVideoProbeControl {
+	return newQMediaVideoProbeControl((*C.QMediaVideoProbeControl)(h))
 }
 
 func (this *QMediaVideoProbeControl) MetaObject() *qt.QMetaObject {
@@ -97,7 +95,7 @@ func miqt_exec_callback_QMediaVideoProbeControl_VideoFrameProbed(cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVideoFrame(unsafe.Pointer(frame))
+	slotval1 := newQVideoFrame(frame)
 
 	gofunc(slotval1)
 }

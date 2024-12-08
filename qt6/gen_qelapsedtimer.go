@@ -46,24 +46,19 @@ func newQElapsedTimer(h *C.QElapsedTimer) *QElapsedTimer {
 	if h == nil {
 		return nil
 	}
+
 	return &QElapsedTimer{h: h}
 }
 
 // UnsafeNewQElapsedTimer constructs the type using only unsafe pointers.
 func UnsafeNewQElapsedTimer(h unsafe.Pointer) *QElapsedTimer {
-	if h == nil {
-		return nil
-	}
-
-	return &QElapsedTimer{h: (*C.QElapsedTimer)(h)}
+	return newQElapsedTimer((*C.QElapsedTimer)(h))
 }
 
 // NewQElapsedTimer constructs a new QElapsedTimer object.
 func NewQElapsedTimer() *QElapsedTimer {
-	var outptr_QElapsedTimer *C.QElapsedTimer = nil
 
-	C.QElapsedTimer_new(&outptr_QElapsedTimer)
-	ret := newQElapsedTimer(outptr_QElapsedTimer)
+	ret := newQElapsedTimer(C.QElapsedTimer_new())
 	ret.isSubclass = true
 	return ret
 }

@@ -68,54 +68,43 @@ func newQCameraFocusZone(h *C.QCameraFocusZone) *QCameraFocusZone {
 	if h == nil {
 		return nil
 	}
+
 	return &QCameraFocusZone{h: h}
 }
 
 // UnsafeNewQCameraFocusZone constructs the type using only unsafe pointers.
 func UnsafeNewQCameraFocusZone(h unsafe.Pointer) *QCameraFocusZone {
-	if h == nil {
-		return nil
-	}
-
-	return &QCameraFocusZone{h: (*C.QCameraFocusZone)(h)}
+	return newQCameraFocusZone((*C.QCameraFocusZone)(h))
 }
 
 // NewQCameraFocusZone constructs a new QCameraFocusZone object.
 func NewQCameraFocusZone() *QCameraFocusZone {
-	var outptr_QCameraFocusZone *C.QCameraFocusZone = nil
 
-	C.QCameraFocusZone_new(&outptr_QCameraFocusZone)
-	ret := newQCameraFocusZone(outptr_QCameraFocusZone)
+	ret := newQCameraFocusZone(C.QCameraFocusZone_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCameraFocusZone2 constructs a new QCameraFocusZone object.
 func NewQCameraFocusZone2(area *qt.QRectF) *QCameraFocusZone {
-	var outptr_QCameraFocusZone *C.QCameraFocusZone = nil
 
-	C.QCameraFocusZone_new2((*C.QRectF)(area.UnsafePointer()), &outptr_QCameraFocusZone)
-	ret := newQCameraFocusZone(outptr_QCameraFocusZone)
+	ret := newQCameraFocusZone(C.QCameraFocusZone_new2((*C.QRectF)(area.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCameraFocusZone3 constructs a new QCameraFocusZone object.
 func NewQCameraFocusZone3(other *QCameraFocusZone) *QCameraFocusZone {
-	var outptr_QCameraFocusZone *C.QCameraFocusZone = nil
 
-	C.QCameraFocusZone_new3(other.cPointer(), &outptr_QCameraFocusZone)
-	ret := newQCameraFocusZone(outptr_QCameraFocusZone)
+	ret := newQCameraFocusZone(C.QCameraFocusZone_new3(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCameraFocusZone4 constructs a new QCameraFocusZone object.
 func NewQCameraFocusZone4(area *qt.QRectF, status QCameraFocusZone__FocusZoneStatus) *QCameraFocusZone {
-	var outptr_QCameraFocusZone *C.QCameraFocusZone = nil
 
-	C.QCameraFocusZone_new4((*C.QRectF)(area.UnsafePointer()), (C.int)(status), &outptr_QCameraFocusZone)
-	ret := newQCameraFocusZone(outptr_QCameraFocusZone)
+	ret := newQCameraFocusZone(C.QCameraFocusZone_new4((*C.QRectF)(area.UnsafePointer()), (C.int)(status)))
 	ret.isSubclass = true
 	return ret
 }
@@ -137,8 +126,7 @@ func (this *QCameraFocusZone) IsValid() bool {
 }
 
 func (this *QCameraFocusZone) Area() *qt.QRectF {
-	_ret := C.QCameraFocusZone_Area(this.h)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QCameraFocusZone_Area(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -186,22 +174,20 @@ func (this *QCameraFocus) UnsafePointer() unsafe.Pointer {
 }
 
 // newQCameraFocus constructs the type using only CGO pointers.
-func newQCameraFocus(h *C.QCameraFocus, h_QObject *C.QObject) *QCameraFocus {
+func newQCameraFocus(h *C.QCameraFocus) *QCameraFocus {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QCameraFocus_virtbase(h, &outptr_QObject)
+
 	return &QCameraFocus{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQCameraFocus constructs the type using only unsafe pointers.
-func UnsafeNewQCameraFocus(h unsafe.Pointer, h_QObject unsafe.Pointer) *QCameraFocus {
-	if h == nil {
-		return nil
-	}
-
-	return &QCameraFocus{h: (*C.QCameraFocus)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQCameraFocus(h unsafe.Pointer) *QCameraFocus {
+	return newQCameraFocus((*C.QCameraFocus)(h))
 }
 
 func (this *QCameraFocus) MetaObject() *qt.QMetaObject {
@@ -261,8 +247,7 @@ func (this *QCameraFocus) IsFocusPointModeSupported(param1 QCameraFocus__FocusPo
 }
 
 func (this *QCameraFocus) CustomFocusPoint() *qt.QPointF {
-	_ret := C.QCameraFocus_CustomFocusPoint(this.h)
-	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QCameraFocus_CustomFocusPoint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -276,8 +261,7 @@ func (this *QCameraFocus) FocusZones() []QCameraFocusZone {
 	_ret := make([]QCameraFocusZone, int(_ma.len))
 	_outCast := (*[0xffff]*C.QCameraFocusZone)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQCameraFocusZone(_lv_ret)
+		_lv_goptr := newQCameraFocusZone(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}

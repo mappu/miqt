@@ -4,14 +4,12 @@
 #include "gen_qbasictimer.h"
 #include "_cgo_export.h"
 
-void QBasicTimer_new(QBasicTimer* param1, QBasicTimer** outptr_QBasicTimer) {
-	QBasicTimer* ret = new QBasicTimer(*param1);
-	*outptr_QBasicTimer = ret;
+QBasicTimer* QBasicTimer_new(QBasicTimer* param1) {
+	return new QBasicTimer(*param1);
 }
 
-void QBasicTimer_new2(QBasicTimer** outptr_QBasicTimer) {
-	QBasicTimer* ret = new QBasicTimer();
-	*outptr_QBasicTimer = ret;
+QBasicTimer* QBasicTimer_new2() {
+	return new QBasicTimer();
 }
 
 void QBasicTimer_OperatorAssign(QBasicTimer* self, QBasicTimer* param1) {

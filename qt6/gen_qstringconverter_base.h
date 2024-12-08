@@ -28,17 +28,18 @@ typedef struct QStringConverterBase QStringConverterBase;
 typedef struct QStringConverterBase__State QStringConverterBase__State;
 #endif
 
-void QStringConverterBase_new(QStringConverterBase* param1, QStringConverterBase** outptr_QStringConverterBase);
-void QStringConverterBase_new2(QStringConverterBase** outptr_QStringConverterBase);
+QStringConverterBase* QStringConverterBase_new(QStringConverterBase* param1);
+QStringConverterBase* QStringConverterBase_new2();
 
+void QStringConverter_virtbase(QStringConverter* src, QStringConverterBase** outptr_QStringConverterBase);
 bool QStringConverter_IsValid(const QStringConverter* self);
 void QStringConverter_ResetState(QStringConverter* self);
 bool QStringConverter_HasError(const QStringConverter* self);
 const char* QStringConverter_Name(const QStringConverter* self);
 const char* QStringConverter_NameForEncoding(int e);
 
-void QStringConverterBase__State_new(QStringConverterBase__State** outptr_QStringConverterBase__State);
-void QStringConverterBase__State_new2(int f, QStringConverterBase__State** outptr_QStringConverterBase__State);
+QStringConverterBase__State* QStringConverterBase__State_new();
+QStringConverterBase__State* QStringConverterBase__State_new2(int f);
 void QStringConverterBase__State_Clear(QStringConverterBase__State* self);
 void QStringConverterBase__State_Reset(QStringConverterBase__State* self);
 void QStringConverterBase__State_Delete(QStringConverterBase__State* self, bool isSubclass);

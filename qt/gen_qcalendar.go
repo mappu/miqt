@@ -55,34 +55,27 @@ func newQCalendar(h *C.QCalendar) *QCalendar {
 	if h == nil {
 		return nil
 	}
+
 	return &QCalendar{h: h}
 }
 
 // UnsafeNewQCalendar constructs the type using only unsafe pointers.
 func UnsafeNewQCalendar(h unsafe.Pointer) *QCalendar {
-	if h == nil {
-		return nil
-	}
-
-	return &QCalendar{h: (*C.QCalendar)(h)}
+	return newQCalendar((*C.QCalendar)(h))
 }
 
 // NewQCalendar constructs a new QCalendar object.
 func NewQCalendar() *QCalendar {
-	var outptr_QCalendar *C.QCalendar = nil
 
-	C.QCalendar_new(&outptr_QCalendar)
-	ret := newQCalendar(outptr_QCalendar)
+	ret := newQCalendar(C.QCalendar_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCalendar2 constructs a new QCalendar object.
 func NewQCalendar2(system QCalendar__System) *QCalendar {
-	var outptr_QCalendar *C.QCalendar = nil
 
-	C.QCalendar_new2((C.int)(system), &outptr_QCalendar)
-	ret := newQCalendar(outptr_QCalendar)
+	ret := newQCalendar(C.QCalendar_new2((C.int)(system)))
 	ret.isSubclass = true
 	return ret
 }
@@ -155,22 +148,19 @@ func (this *QCalendar) Name() string {
 }
 
 func (this *QCalendar) DateFromParts(year int, month int, day int) *QDate {
-	_ret := C.QCalendar_DateFromParts(this.h, (C.int)(year), (C.int)(month), (C.int)(day))
-	_goptr := newQDate(_ret)
+	_goptr := newQDate(C.QCalendar_DateFromParts(this.h, (C.int)(year), (C.int)(month), (C.int)(day)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCalendar) DateFromPartsWithParts(parts *QCalendar__YearMonthDay) *QDate {
-	_ret := C.QCalendar_DateFromPartsWithParts(this.h, parts.cPointer())
-	_goptr := newQDate(_ret)
+	_goptr := newQDate(C.QCalendar_DateFromPartsWithParts(this.h, parts.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCalendar) PartsFromDate(date QDate) *QCalendar__YearMonthDay {
-	_ret := C.QCalendar_PartsFromDate(this.h, date.cPointer())
-	_goptr := newQCalendar__YearMonthDay(_ret)
+	_goptr := newQCalendar__YearMonthDay(C.QCalendar_PartsFromDate(this.h, date.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -304,54 +294,43 @@ func newQCalendar__YearMonthDay(h *C.QCalendar__YearMonthDay) *QCalendar__YearMo
 	if h == nil {
 		return nil
 	}
+
 	return &QCalendar__YearMonthDay{h: h}
 }
 
 // UnsafeNewQCalendar__YearMonthDay constructs the type using only unsafe pointers.
 func UnsafeNewQCalendar__YearMonthDay(h unsafe.Pointer) *QCalendar__YearMonthDay {
-	if h == nil {
-		return nil
-	}
-
-	return &QCalendar__YearMonthDay{h: (*C.QCalendar__YearMonthDay)(h)}
+	return newQCalendar__YearMonthDay((*C.QCalendar__YearMonthDay)(h))
 }
 
 // NewQCalendar__YearMonthDay constructs a new QCalendar::YearMonthDay object.
 func NewQCalendar__YearMonthDay() *QCalendar__YearMonthDay {
-	var outptr_QCalendar__YearMonthDay *C.QCalendar__YearMonthDay = nil
 
-	C.QCalendar__YearMonthDay_new(&outptr_QCalendar__YearMonthDay)
-	ret := newQCalendar__YearMonthDay(outptr_QCalendar__YearMonthDay)
+	ret := newQCalendar__YearMonthDay(C.QCalendar__YearMonthDay_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCalendar__YearMonthDay2 constructs a new QCalendar::YearMonthDay object.
 func NewQCalendar__YearMonthDay2(y int) *QCalendar__YearMonthDay {
-	var outptr_QCalendar__YearMonthDay *C.QCalendar__YearMonthDay = nil
 
-	C.QCalendar__YearMonthDay_new2((C.int)(y), &outptr_QCalendar__YearMonthDay)
-	ret := newQCalendar__YearMonthDay(outptr_QCalendar__YearMonthDay)
+	ret := newQCalendar__YearMonthDay(C.QCalendar__YearMonthDay_new2((C.int)(y)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCalendar__YearMonthDay3 constructs a new QCalendar::YearMonthDay object.
 func NewQCalendar__YearMonthDay3(y int, m int) *QCalendar__YearMonthDay {
-	var outptr_QCalendar__YearMonthDay *C.QCalendar__YearMonthDay = nil
 
-	C.QCalendar__YearMonthDay_new3((C.int)(y), (C.int)(m), &outptr_QCalendar__YearMonthDay)
-	ret := newQCalendar__YearMonthDay(outptr_QCalendar__YearMonthDay)
+	ret := newQCalendar__YearMonthDay(C.QCalendar__YearMonthDay_new3((C.int)(y), (C.int)(m)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCalendar__YearMonthDay4 constructs a new QCalendar::YearMonthDay object.
 func NewQCalendar__YearMonthDay4(y int, m int, d int) *QCalendar__YearMonthDay {
-	var outptr_QCalendar__YearMonthDay *C.QCalendar__YearMonthDay = nil
 
-	C.QCalendar__YearMonthDay_new4((C.int)(y), (C.int)(m), (C.int)(d), &outptr_QCalendar__YearMonthDay)
-	ret := newQCalendar__YearMonthDay(outptr_QCalendar__YearMonthDay)
+	ret := newQCalendar__YearMonthDay(C.QCalendar__YearMonthDay_new4((C.int)(y), (C.int)(m), (C.int)(d)))
 	ret.isSubclass = true
 	return ret
 }

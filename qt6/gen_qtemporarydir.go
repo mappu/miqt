@@ -37,24 +37,19 @@ func newQTemporaryDir(h *C.QTemporaryDir) *QTemporaryDir {
 	if h == nil {
 		return nil
 	}
+
 	return &QTemporaryDir{h: h}
 }
 
 // UnsafeNewQTemporaryDir constructs the type using only unsafe pointers.
 func UnsafeNewQTemporaryDir(h unsafe.Pointer) *QTemporaryDir {
-	if h == nil {
-		return nil
-	}
-
-	return &QTemporaryDir{h: (*C.QTemporaryDir)(h)}
+	return newQTemporaryDir((*C.QTemporaryDir)(h))
 }
 
 // NewQTemporaryDir constructs a new QTemporaryDir object.
 func NewQTemporaryDir() *QTemporaryDir {
-	var outptr_QTemporaryDir *C.QTemporaryDir = nil
 
-	C.QTemporaryDir_new(&outptr_QTemporaryDir)
-	ret := newQTemporaryDir(outptr_QTemporaryDir)
+	ret := newQTemporaryDir(C.QTemporaryDir_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -65,10 +60,8 @@ func NewQTemporaryDir2(templateName string) *QTemporaryDir {
 	templateName_ms.data = C.CString(templateName)
 	templateName_ms.len = C.size_t(len(templateName))
 	defer C.free(unsafe.Pointer(templateName_ms.data))
-	var outptr_QTemporaryDir *C.QTemporaryDir = nil
 
-	C.QTemporaryDir_new2(templateName_ms, &outptr_QTemporaryDir)
-	ret := newQTemporaryDir(outptr_QTemporaryDir)
+	ret := newQTemporaryDir(C.QTemporaryDir_new2(templateName_ms))
 	ret.isSubclass = true
 	return ret
 }

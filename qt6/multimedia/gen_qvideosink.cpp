@@ -195,16 +195,16 @@ public:
 
 };
 
-void QVideoSink_new(QVideoSink** outptr_QVideoSink, QObject** outptr_QObject) {
-	MiqtVirtualQVideoSink* ret = new MiqtVirtualQVideoSink();
-	*outptr_QVideoSink = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QVideoSink* QVideoSink_new() {
+	return new MiqtVirtualQVideoSink();
 }
 
-void QVideoSink_new2(QObject* parent, QVideoSink** outptr_QVideoSink, QObject** outptr_QObject) {
-	MiqtVirtualQVideoSink* ret = new MiqtVirtualQVideoSink(parent);
-	*outptr_QVideoSink = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QVideoSink* QVideoSink_new2(QObject* parent) {
+	return new MiqtVirtualQVideoSink(parent);
+}
+
+void QVideoSink_virtbase(QVideoSink* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QVideoSink_MetaObject(const QVideoSink* self) {

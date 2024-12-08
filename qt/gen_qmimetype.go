@@ -37,34 +37,27 @@ func newQMimeType(h *C.QMimeType) *QMimeType {
 	if h == nil {
 		return nil
 	}
+
 	return &QMimeType{h: h}
 }
 
 // UnsafeNewQMimeType constructs the type using only unsafe pointers.
 func UnsafeNewQMimeType(h unsafe.Pointer) *QMimeType {
-	if h == nil {
-		return nil
-	}
-
-	return &QMimeType{h: (*C.QMimeType)(h)}
+	return newQMimeType((*C.QMimeType)(h))
 }
 
 // NewQMimeType constructs a new QMimeType object.
 func NewQMimeType() *QMimeType {
-	var outptr_QMimeType *C.QMimeType = nil
 
-	C.QMimeType_new(&outptr_QMimeType)
-	ret := newQMimeType(outptr_QMimeType)
+	ret := newQMimeType(C.QMimeType_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMimeType2 constructs a new QMimeType object.
 func NewQMimeType2(other *QMimeType) *QMimeType {
-	var outptr_QMimeType *C.QMimeType = nil
 
-	C.QMimeType_new2(other.cPointer(), &outptr_QMimeType)
-	ret := newQMimeType(outptr_QMimeType)
+	ret := newQMimeType(C.QMimeType_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

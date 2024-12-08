@@ -94,18 +94,16 @@ public:
 
 };
 
-void QSslServer_new(QSslServer** outptr_QSslServer, QTcpServer** outptr_QTcpServer, QObject** outptr_QObject) {
-	MiqtVirtualQSslServer* ret = new MiqtVirtualQSslServer();
-	*outptr_QSslServer = ret;
-	*outptr_QTcpServer = static_cast<QTcpServer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSslServer* QSslServer_new() {
+	return new MiqtVirtualQSslServer();
 }
 
-void QSslServer_new2(QObject* parent, QSslServer** outptr_QSslServer, QTcpServer** outptr_QTcpServer, QObject** outptr_QObject) {
-	MiqtVirtualQSslServer* ret = new MiqtVirtualQSslServer(parent);
-	*outptr_QSslServer = ret;
-	*outptr_QTcpServer = static_cast<QTcpServer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSslServer* QSslServer_new2(QObject* parent) {
+	return new MiqtVirtualQSslServer(parent);
+}
+
+void QSslServer_virtbase(QSslServer* src, QTcpServer** outptr_QTcpServer) {
+	*outptr_QTcpServer = static_cast<QTcpServer*>(src);
 }
 
 QMetaObject* QSslServer_MetaObject(const QSslServer* self) {

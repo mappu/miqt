@@ -94,14 +94,12 @@ public:
 
 };
 
-void QItemEditorFactory_new(QItemEditorFactory** outptr_QItemEditorFactory) {
-	MiqtVirtualQItemEditorFactory* ret = new MiqtVirtualQItemEditorFactory();
-	*outptr_QItemEditorFactory = ret;
+QItemEditorFactory* QItemEditorFactory_new() {
+	return new MiqtVirtualQItemEditorFactory();
 }
 
-void QItemEditorFactory_new2(QItemEditorFactory* param1, QItemEditorFactory** outptr_QItemEditorFactory) {
-	MiqtVirtualQItemEditorFactory* ret = new MiqtVirtualQItemEditorFactory(*param1);
-	*outptr_QItemEditorFactory = ret;
+QItemEditorFactory* QItemEditorFactory_new2(QItemEditorFactory* param1) {
+	return new MiqtVirtualQItemEditorFactory(*param1);
 }
 
 QWidget* QItemEditorFactory_CreateEditor(const QItemEditorFactory* self, int userType, QWidget* parent) {

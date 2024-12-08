@@ -20,10 +20,10 @@ class QSslCipher;
 typedef struct QSslCipher QSslCipher;
 #endif
 
-void QSslCipher_new(QSslCipher** outptr_QSslCipher);
-void QSslCipher_new2(struct miqt_string name, QSslCipher** outptr_QSslCipher);
-void QSslCipher_new3(struct miqt_string name, int protocol, QSslCipher** outptr_QSslCipher);
-void QSslCipher_new4(QSslCipher* other, QSslCipher** outptr_QSslCipher);
+QSslCipher* QSslCipher_new();
+QSslCipher* QSslCipher_new2(struct miqt_string name);
+QSslCipher* QSslCipher_new3(struct miqt_string name, int protocol);
+QSslCipher* QSslCipher_new4(QSslCipher* other);
 void QSslCipher_OperatorAssign(QSslCipher* self, QSslCipher* other);
 void QSslCipher_Swap(QSslCipher* self, QSslCipher* other);
 bool QSslCipher_OperatorEqual(const QSslCipher* self, QSslCipher* other);

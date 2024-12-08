@@ -278,16 +278,16 @@ public:
 
 };
 
-void QAbstractAnimation_new(QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject) {
-	MiqtVirtualQAbstractAnimation* ret = new MiqtVirtualQAbstractAnimation();
-	*outptr_QAbstractAnimation = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAbstractAnimation* QAbstractAnimation_new() {
+	return new MiqtVirtualQAbstractAnimation();
 }
 
-void QAbstractAnimation_new2(QObject* parent, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject) {
-	MiqtVirtualQAbstractAnimation* ret = new MiqtVirtualQAbstractAnimation(parent);
-	*outptr_QAbstractAnimation = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAbstractAnimation* QAbstractAnimation_new2(QObject* parent) {
+	return new MiqtVirtualQAbstractAnimation(parent);
+}
+
+void QAbstractAnimation_virtbase(QAbstractAnimation* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QAbstractAnimation_MetaObject(const QAbstractAnimation* self) {
@@ -846,16 +846,16 @@ public:
 
 };
 
-void QAnimationDriver_new(QAnimationDriver** outptr_QAnimationDriver, QObject** outptr_QObject) {
-	MiqtVirtualQAnimationDriver* ret = new MiqtVirtualQAnimationDriver();
-	*outptr_QAnimationDriver = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAnimationDriver* QAnimationDriver_new() {
+	return new MiqtVirtualQAnimationDriver();
 }
 
-void QAnimationDriver_new2(QObject* parent, QAnimationDriver** outptr_QAnimationDriver, QObject** outptr_QObject) {
-	MiqtVirtualQAnimationDriver* ret = new MiqtVirtualQAnimationDriver(parent);
-	*outptr_QAnimationDriver = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAnimationDriver* QAnimationDriver_new2(QObject* parent) {
+	return new MiqtVirtualQAnimationDriver(parent);
+}
+
+void QAnimationDriver_virtbase(QAnimationDriver* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QAnimationDriver_MetaObject(const QAnimationDriver* self) {

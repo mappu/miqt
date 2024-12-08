@@ -768,24 +768,16 @@ public:
 
 };
 
-void QsciScintillaBase_new(QWidget* parent, QsciScintillaBase** outptr_QsciScintillaBase, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQsciScintillaBase* ret = new MiqtVirtualQsciScintillaBase(parent);
-	*outptr_QsciScintillaBase = ret;
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QsciScintillaBase* QsciScintillaBase_new(QWidget* parent) {
+	return new MiqtVirtualQsciScintillaBase(parent);
 }
 
-void QsciScintillaBase_new2(QsciScintillaBase** outptr_QsciScintillaBase, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQsciScintillaBase* ret = new MiqtVirtualQsciScintillaBase();
-	*outptr_QsciScintillaBase = ret;
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QsciScintillaBase* QsciScintillaBase_new2() {
+	return new MiqtVirtualQsciScintillaBase();
+}
+
+void QsciScintillaBase_virtbase(QsciScintillaBase* src, QAbstractScrollArea** outptr_QAbstractScrollArea) {
+	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(src);
 }
 
 QMetaObject* QsciScintillaBase_MetaObject(const QsciScintillaBase* self) {

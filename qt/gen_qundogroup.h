@@ -36,8 +36,9 @@ typedef struct QUndoGroup QUndoGroup;
 typedef struct QUndoStack QUndoStack;
 #endif
 
-void QUndoGroup_new(QUndoGroup** outptr_QUndoGroup, QObject** outptr_QObject);
-void QUndoGroup_new2(QObject* parent, QUndoGroup** outptr_QUndoGroup, QObject** outptr_QObject);
+QUndoGroup* QUndoGroup_new();
+QUndoGroup* QUndoGroup_new2(QObject* parent);
+void QUndoGroup_virtbase(QUndoGroup* src, QObject** outptr_QObject);
 QMetaObject* QUndoGroup_MetaObject(const QUndoGroup* self);
 void* QUndoGroup_Metacast(QUndoGroup* self, const char* param1);
 struct miqt_string QUndoGroup_Tr(const char* s);

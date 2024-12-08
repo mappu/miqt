@@ -42,7 +42,7 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 #endif
 
-void QImageIOHandler_new(QImageIOHandler** outptr_QImageIOHandler);
+QImageIOHandler* QImageIOHandler_new();
 void QImageIOHandler_SetDevice(QImageIOHandler* self, QIODevice* device);
 QIODevice* QImageIOHandler_Device(const QImageIOHandler* self);
 void QImageIOHandler_SetFormat(QImageIOHandler* self, struct miqt_string format);
@@ -92,8 +92,9 @@ void QImageIOHandler_override_virtual_CurrentImageRect(void* self, intptr_t slot
 QRect* QImageIOHandler_virtualbase_CurrentImageRect(const void* self);
 void QImageIOHandler_Delete(QImageIOHandler* self, bool isSubclass);
 
-void QImageIOPlugin_new(QImageIOPlugin** outptr_QImageIOPlugin, QObject** outptr_QObject);
-void QImageIOPlugin_new2(QObject* parent, QImageIOPlugin** outptr_QImageIOPlugin, QObject** outptr_QObject);
+QImageIOPlugin* QImageIOPlugin_new();
+QImageIOPlugin* QImageIOPlugin_new2(QObject* parent);
+void QImageIOPlugin_virtbase(QImageIOPlugin* src, QObject** outptr_QObject);
 QMetaObject* QImageIOPlugin_MetaObject(const QImageIOPlugin* self);
 void* QImageIOPlugin_Metacast(QImageIOPlugin* self, const char* param1);
 struct miqt_string QImageIOPlugin_Tr(const char* s);

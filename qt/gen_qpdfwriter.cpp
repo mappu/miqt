@@ -345,21 +345,18 @@ public:
 
 };
 
-void QPdfWriter_new(struct miqt_string filename, QPdfWriter** outptr_QPdfWriter, QObject** outptr_QObject, QPagedPaintDevice** outptr_QPagedPaintDevice, QPaintDevice** outptr_QPaintDevice) {
+QPdfWriter* QPdfWriter_new(struct miqt_string filename) {
 	QString filename_QString = QString::fromUtf8(filename.data, filename.len);
-	MiqtVirtualQPdfWriter* ret = new MiqtVirtualQPdfWriter(filename_QString);
-	*outptr_QPdfWriter = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPagedPaintDevice = static_cast<QPagedPaintDevice*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQPdfWriter(filename_QString);
 }
 
-void QPdfWriter_new2(QIODevice* device, QPdfWriter** outptr_QPdfWriter, QObject** outptr_QObject, QPagedPaintDevice** outptr_QPagedPaintDevice, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPdfWriter* ret = new MiqtVirtualQPdfWriter(device);
-	*outptr_QPdfWriter = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPagedPaintDevice = static_cast<QPagedPaintDevice*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPdfWriter* QPdfWriter_new2(QIODevice* device) {
+	return new MiqtVirtualQPdfWriter(device);
+}
+
+void QPdfWriter_virtbase(QPdfWriter* src, QObject** outptr_QObject, QPagedPaintDevice** outptr_QPagedPaintDevice) {
+	*outptr_QObject = static_cast<QObject*>(src);
+	*outptr_QPagedPaintDevice = static_cast<QPagedPaintDevice*>(src);
 }
 
 QMetaObject* QPdfWriter_MetaObject(const QPdfWriter* self) {

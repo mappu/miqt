@@ -30,10 +30,11 @@ typedef struct QObject QObject;
 typedef struct QWaveDecoder QWaveDecoder;
 #endif
 
-void QWaveDecoder_new(QIODevice* device, QWaveDecoder** outptr_QWaveDecoder, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
-void QWaveDecoder_new2(QIODevice* device, QAudioFormat* format, QWaveDecoder** outptr_QWaveDecoder, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
-void QWaveDecoder_new3(QIODevice* device, QObject* parent, QWaveDecoder** outptr_QWaveDecoder, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
-void QWaveDecoder_new4(QIODevice* device, QAudioFormat* format, QObject* parent, QWaveDecoder** outptr_QWaveDecoder, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
+QWaveDecoder* QWaveDecoder_new(QIODevice* device);
+QWaveDecoder* QWaveDecoder_new2(QIODevice* device, QAudioFormat* format);
+QWaveDecoder* QWaveDecoder_new3(QIODevice* device, QObject* parent);
+QWaveDecoder* QWaveDecoder_new4(QIODevice* device, QAudioFormat* format, QObject* parent);
+void QWaveDecoder_virtbase(QWaveDecoder* src, QIODevice** outptr_QIODevice);
 QMetaObject* QWaveDecoder_MetaObject(const QWaveDecoder* self);
 void* QWaveDecoder_Metacast(QWaveDecoder* self, const char* param1);
 struct miqt_string QWaveDecoder_Tr(const char* s);

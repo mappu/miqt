@@ -32,6 +32,7 @@ typedef struct QVariant QVariant;
 typedef struct QVideoFrame QVideoFrame;
 #endif
 
+void QCameraImageCaptureControl_virtbase(QCameraImageCaptureControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QCameraImageCaptureControl_MetaObject(const QCameraImageCaptureControl* self);
 void* QCameraImageCaptureControl_Metacast(QCameraImageCaptureControl* self, const char* param1);
 struct miqt_string QCameraImageCaptureControl_Tr(const char* s);

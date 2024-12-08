@@ -30,8 +30,9 @@ typedef struct QRectF QRectF;
 typedef struct QSizeF QSizeF;
 #endif
 
-void QGraphicsGridLayout_new(QGraphicsGridLayout** outptr_QGraphicsGridLayout, QGraphicsLayout** outptr_QGraphicsLayout, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
-void QGraphicsGridLayout_new2(QGraphicsLayoutItem* parent, QGraphicsGridLayout** outptr_QGraphicsGridLayout, QGraphicsLayout** outptr_QGraphicsLayout, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
+QGraphicsGridLayout* QGraphicsGridLayout_new();
+QGraphicsGridLayout* QGraphicsGridLayout_new2(QGraphicsLayoutItem* parent);
+void QGraphicsGridLayout_virtbase(QGraphicsGridLayout* src, QGraphicsLayout** outptr_QGraphicsLayout);
 void QGraphicsGridLayout_AddItem(QGraphicsGridLayout* self, QGraphicsLayoutItem* item, int row, int column, int rowSpan, int columnSpan);
 void QGraphicsGridLayout_AddItem2(QGraphicsGridLayout* self, QGraphicsLayoutItem* item, int row, int column);
 void QGraphicsGridLayout_SetHorizontalSpacing(QGraphicsGridLayout* self, double spacing);

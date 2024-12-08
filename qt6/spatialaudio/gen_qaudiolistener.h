@@ -36,7 +36,8 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QVector3D QVector3D;
 #endif
 
-void QAudioListener_new(QAudioEngine* engine, QAudioListener** outptr_QAudioListener, QObject** outptr_QObject);
+QAudioListener* QAudioListener_new(QAudioEngine* engine);
+void QAudioListener_virtbase(QAudioListener* src, QObject** outptr_QObject);
 void QAudioListener_SetPosition(QAudioListener* self, QVector3D* pos);
 QVector3D* QAudioListener_Position(const QAudioListener* self);
 void QAudioListener_SetRotation(QAudioListener* self, QQuaternion* q);

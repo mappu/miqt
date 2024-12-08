@@ -28,8 +28,9 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif
 
-void QLocalSocket_new(QLocalSocket** outptr_QLocalSocket, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
-void QLocalSocket_new2(QObject* parent, QLocalSocket** outptr_QLocalSocket, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
+QLocalSocket* QLocalSocket_new();
+QLocalSocket* QLocalSocket_new2(QObject* parent);
+void QLocalSocket_virtbase(QLocalSocket* src, QIODevice** outptr_QIODevice);
 QMetaObject* QLocalSocket_MetaObject(const QLocalSocket* self);
 void* QLocalSocket_Metacast(QLocalSocket* self, const char* param1);
 struct miqt_string QLocalSocket_Tr(const char* s);

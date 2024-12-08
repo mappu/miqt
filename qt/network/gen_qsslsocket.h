@@ -46,8 +46,9 @@ typedef struct QTcpSocket QTcpSocket;
 typedef struct QVariant QVariant;
 #endif
 
-void QSslSocket_new(QSslSocket** outptr_QSslSocket, QTcpSocket** outptr_QTcpSocket, QAbstractSocket** outptr_QAbstractSocket, QIODevice** outptr_QIODevice, QObject** outptr_QObject);
-void QSslSocket_new2(QObject* parent, QSslSocket** outptr_QSslSocket, QTcpSocket** outptr_QTcpSocket, QAbstractSocket** outptr_QAbstractSocket, QIODevice** outptr_QIODevice, QObject** outptr_QObject);
+QSslSocket* QSslSocket_new();
+QSslSocket* QSslSocket_new2(QObject* parent);
+void QSslSocket_virtbase(QSslSocket* src, QTcpSocket** outptr_QTcpSocket);
 QMetaObject* QSslSocket_MetaObject(const QSslSocket* self);
 void* QSslSocket_Metacast(QSslSocket* self, const char* param1);
 struct miqt_string QSslSocket_Tr(const char* s);

@@ -8,31 +8,26 @@
 #include "gen_qanystringview.h"
 #include "_cgo_export.h"
 
-void QAnyStringView_new(QAnyStringView** outptr_QAnyStringView) {
-	QAnyStringView* ret = new QAnyStringView();
-	*outptr_QAnyStringView = ret;
+QAnyStringView* QAnyStringView_new() {
+	return new QAnyStringView();
 }
 
-void QAnyStringView_new2(struct miqt_string str, QAnyStringView** outptr_QAnyStringView) {
+QAnyStringView* QAnyStringView_new2(struct miqt_string str) {
 	QByteArray str_QByteArray(str.data, str.len);
-	QAnyStringView* ret = new QAnyStringView(str_QByteArray);
-	*outptr_QAnyStringView = ret;
+	return new QAnyStringView(str_QByteArray);
 }
 
-void QAnyStringView_new3(struct miqt_string str, QAnyStringView** outptr_QAnyStringView) {
+QAnyStringView* QAnyStringView_new3(struct miqt_string str) {
 	QString str_QString = QString::fromUtf8(str.data, str.len);
-	QAnyStringView* ret = new QAnyStringView(str_QString);
-	*outptr_QAnyStringView = ret;
+	return new QAnyStringView(str_QString);
 }
 
-void QAnyStringView_new4(QChar* c, QAnyStringView** outptr_QAnyStringView) {
-	QAnyStringView* ret = new QAnyStringView(*c);
-	*outptr_QAnyStringView = ret;
+QAnyStringView* QAnyStringView_new4(QChar* c) {
+	return new QAnyStringView(*c);
 }
 
-void QAnyStringView_new5(QAnyStringView* param1, QAnyStringView** outptr_QAnyStringView) {
-	QAnyStringView* ret = new QAnyStringView(*param1);
-	*outptr_QAnyStringView = ret;
+QAnyStringView* QAnyStringView_new5(QAnyStringView* param1) {
+	return new QAnyStringView(*param1);
 }
 
 struct miqt_string QAnyStringView_ToString(const QAnyStringView* self) {

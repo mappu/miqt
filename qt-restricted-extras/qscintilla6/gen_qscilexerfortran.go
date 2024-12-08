@@ -36,46 +36,34 @@ func (this *QsciLexerFortran) UnsafePointer() unsafe.Pointer {
 }
 
 // newQsciLexerFortran constructs the type using only CGO pointers.
-func newQsciLexerFortran(h *C.QsciLexerFortran, h_QsciLexerFortran77 *C.QsciLexerFortran77, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerFortran {
+func newQsciLexerFortran(h *C.QsciLexerFortran) *QsciLexerFortran {
 	if h == nil {
 		return nil
 	}
+	var outptr_QsciLexerFortran77 *C.QsciLexerFortran77 = nil
+	C.QsciLexerFortran_virtbase(h, &outptr_QsciLexerFortran77)
+
 	return &QsciLexerFortran{h: h,
-		QsciLexerFortran77: newQsciLexerFortran77(h_QsciLexerFortran77, h_QsciLexer, h_QObject)}
+		QsciLexerFortran77: newQsciLexerFortran77(outptr_QsciLexerFortran77)}
 }
 
 // UnsafeNewQsciLexerFortran constructs the type using only unsafe pointers.
-func UnsafeNewQsciLexerFortran(h unsafe.Pointer, h_QsciLexerFortran77 unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerFortran {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciLexerFortran{h: (*C.QsciLexerFortran)(h),
-		QsciLexerFortran77: UnsafeNewQsciLexerFortran77(h_QsciLexerFortran77, h_QsciLexer, h_QObject)}
+func UnsafeNewQsciLexerFortran(h unsafe.Pointer) *QsciLexerFortran {
+	return newQsciLexerFortran((*C.QsciLexerFortran)(h))
 }
 
 // NewQsciLexerFortran constructs a new QsciLexerFortran object.
 func NewQsciLexerFortran() *QsciLexerFortran {
-	var outptr_QsciLexerFortran *C.QsciLexerFortran = nil
-	var outptr_QsciLexerFortran77 *C.QsciLexerFortran77 = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerFortran_new(&outptr_QsciLexerFortran, &outptr_QsciLexerFortran77, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerFortran(outptr_QsciLexerFortran, outptr_QsciLexerFortran77, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerFortran(C.QsciLexerFortran_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQsciLexerFortran2 constructs a new QsciLexerFortran object.
 func NewQsciLexerFortran2(parent *qt6.QObject) *QsciLexerFortran {
-	var outptr_QsciLexerFortran *C.QsciLexerFortran = nil
-	var outptr_QsciLexerFortran77 *C.QsciLexerFortran77 = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerFortran_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QsciLexerFortran, &outptr_QsciLexerFortran77, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerFortran(outptr_QsciLexerFortran, outptr_QsciLexerFortran77, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerFortran(C.QsciLexerFortran_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -142,6 +130,9 @@ func (this *QsciLexerFortran) callVirtualBase_SetFoldCompact(fold bool) {
 
 }
 func (this *QsciLexerFortran) OnSetFoldCompact(slot func(super func(fold bool), fold bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerFortran_override_virtual_SetFoldCompact(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

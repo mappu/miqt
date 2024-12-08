@@ -83,24 +83,19 @@ func newQImageIOHandler(h *C.QImageIOHandler) *QImageIOHandler {
 	if h == nil {
 		return nil
 	}
+
 	return &QImageIOHandler{h: h}
 }
 
 // UnsafeNewQImageIOHandler constructs the type using only unsafe pointers.
 func UnsafeNewQImageIOHandler(h unsafe.Pointer) *QImageIOHandler {
-	if h == nil {
-		return nil
-	}
-
-	return &QImageIOHandler{h: (*C.QImageIOHandler)(h)}
+	return newQImageIOHandler((*C.QImageIOHandler)(h))
 }
 
 // NewQImageIOHandler constructs a new QImageIOHandler object.
 func NewQImageIOHandler() *QImageIOHandler {
-	var outptr_QImageIOHandler *C.QImageIOHandler = nil
 
-	C.QImageIOHandler_new(&outptr_QImageIOHandler)
-	ret := newQImageIOHandler(outptr_QImageIOHandler)
+	ret := newQImageIOHandler(C.QImageIOHandler_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -110,7 +105,7 @@ func (this *QImageIOHandler) SetDevice(device *QIODevice) {
 }
 
 func (this *QImageIOHandler) Device() *QIODevice {
-	return UnsafeNewQIODevice(unsafe.Pointer(C.QImageIOHandler_Device(this.h)), nil, nil)
+	return newQIODevice(C.QImageIOHandler_Device(this.h))
 }
 
 func (this *QImageIOHandler) SetFormat(format []byte) {
@@ -147,8 +142,7 @@ func (this *QImageIOHandler) Write(image *QImage) bool {
 }
 
 func (this *QImageIOHandler) Option(option QImageIOHandler__ImageOption) *QVariant {
-	_ret := C.QImageIOHandler_Option(this.h, (C.int)(option))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QImageIOHandler_Option(this.h, (C.int)(option)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -186,8 +180,7 @@ func (this *QImageIOHandler) CurrentImageNumber() int {
 }
 
 func (this *QImageIOHandler) CurrentImageRect() *QRect {
-	_ret := C.QImageIOHandler_CurrentImageRect(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QImageIOHandler_CurrentImageRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -196,6 +189,9 @@ func QImageIOHandler_AllocateImage(size QSize, format QImage__Format, image *QIm
 	return (bool)(C.QImageIOHandler_AllocateImage(size.cPointer(), (C.int)(format), image.cPointer()))
 }
 func (this *QImageIOHandler) OnCanRead(slot func() bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QImageIOHandler_override_virtual_CanRead(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -212,6 +208,9 @@ func miqt_exec_callback_QImageIOHandler_CanRead(self *C.QImageIOHandler, cb C.in
 
 }
 func (this *QImageIOHandler) OnRead(slot func(image *QImage) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QImageIOHandler_override_virtual_Read(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -223,7 +222,7 @@ func miqt_exec_callback_QImageIOHandler_Read(self *C.QImageIOHandler, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQImage(unsafe.Pointer(image), nil)
+	slotval1 := newQImage(image)
 
 	virtualReturn := gofunc(slotval1)
 
@@ -237,6 +236,9 @@ func (this *QImageIOHandler) callVirtualBase_Write(image *QImage) bool {
 
 }
 func (this *QImageIOHandler) OnWrite(slot func(super func(image *QImage) bool, image *QImage) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QImageIOHandler_override_virtual_Write(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -248,7 +250,7 @@ func miqt_exec_callback_QImageIOHandler_Write(self *C.QImageIOHandler, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQImage(unsafe.Pointer(image), nil)
+	slotval1 := newQImage(image)
 
 	virtualReturn := gofunc((&QImageIOHandler{h: self}).callVirtualBase_Write, slotval1)
 
@@ -258,13 +260,15 @@ func miqt_exec_callback_QImageIOHandler_Write(self *C.QImageIOHandler, cb C.intp
 
 func (this *QImageIOHandler) callVirtualBase_Option(option QImageIOHandler__ImageOption) *QVariant {
 
-	_ret := C.QImageIOHandler_virtualbase_Option(unsafe.Pointer(this.h), (C.int)(option))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QImageIOHandler_virtualbase_Option(unsafe.Pointer(this.h), (C.int)(option)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QImageIOHandler) OnOption(slot func(super func(option QImageIOHandler__ImageOption) *QVariant, option QImageIOHandler__ImageOption) *QVariant) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QImageIOHandler_override_virtual_Option(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -290,6 +294,9 @@ func (this *QImageIOHandler) callVirtualBase_SetOption(option QImageIOHandler__I
 
 }
 func (this *QImageIOHandler) OnSetOption(slot func(super func(option QImageIOHandler__ImageOption, value *QVariant), option QImageIOHandler__ImageOption, value *QVariant)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QImageIOHandler_override_virtual_SetOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -303,7 +310,7 @@ func miqt_exec_callback_QImageIOHandler_SetOption(self *C.QImageIOHandler, cb C.
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QImageIOHandler__ImageOption)(option)
 
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval2 := newQVariant(value)
 
 	gofunc((&QImageIOHandler{h: self}).callVirtualBase_SetOption, slotval1, slotval2)
 
@@ -315,6 +322,9 @@ func (this *QImageIOHandler) callVirtualBase_SupportsOption(option QImageIOHandl
 
 }
 func (this *QImageIOHandler) OnSupportsOption(slot func(super func(option QImageIOHandler__ImageOption) bool, option QImageIOHandler__ImageOption) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QImageIOHandler_override_virtual_SupportsOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -340,6 +350,9 @@ func (this *QImageIOHandler) callVirtualBase_JumpToNextImage() bool {
 
 }
 func (this *QImageIOHandler) OnJumpToNextImage(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QImageIOHandler_override_virtual_JumpToNextImage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -362,6 +375,9 @@ func (this *QImageIOHandler) callVirtualBase_JumpToImage(imageNumber int) bool {
 
 }
 func (this *QImageIOHandler) OnJumpToImage(slot func(super func(imageNumber int) bool, imageNumber int) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QImageIOHandler_override_virtual_JumpToImage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -387,6 +403,9 @@ func (this *QImageIOHandler) callVirtualBase_LoopCount() int {
 
 }
 func (this *QImageIOHandler) OnLoopCount(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QImageIOHandler_override_virtual_LoopCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -409,6 +428,9 @@ func (this *QImageIOHandler) callVirtualBase_ImageCount() int {
 
 }
 func (this *QImageIOHandler) OnImageCount(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QImageIOHandler_override_virtual_ImageCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -431,6 +453,9 @@ func (this *QImageIOHandler) callVirtualBase_NextImageDelay() int {
 
 }
 func (this *QImageIOHandler) OnNextImageDelay(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QImageIOHandler_override_virtual_NextImageDelay(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -453,6 +478,9 @@ func (this *QImageIOHandler) callVirtualBase_CurrentImageNumber() int {
 
 }
 func (this *QImageIOHandler) OnCurrentImageNumber(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QImageIOHandler_override_virtual_CurrentImageNumber(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -471,13 +499,15 @@ func miqt_exec_callback_QImageIOHandler_CurrentImageNumber(self *C.QImageIOHandl
 
 func (this *QImageIOHandler) callVirtualBase_CurrentImageRect() *QRect {
 
-	_ret := C.QImageIOHandler_virtualbase_CurrentImageRect(unsafe.Pointer(this.h))
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QImageIOHandler_virtualbase_CurrentImageRect(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QImageIOHandler) OnCurrentImageRect(slot func(super func() *QRect) *QRect) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QImageIOHandler_override_virtual_CurrentImageRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -529,48 +559,40 @@ func (this *QImageIOPlugin) UnsafePointer() unsafe.Pointer {
 }
 
 // newQImageIOPlugin constructs the type using only CGO pointers.
-func newQImageIOPlugin(h *C.QImageIOPlugin, h_QObject *C.QObject) *QImageIOPlugin {
+func newQImageIOPlugin(h *C.QImageIOPlugin) *QImageIOPlugin {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QImageIOPlugin_virtbase(h, &outptr_QObject)
+
 	return &QImageIOPlugin{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQImageIOPlugin constructs the type using only unsafe pointers.
-func UnsafeNewQImageIOPlugin(h unsafe.Pointer, h_QObject unsafe.Pointer) *QImageIOPlugin {
-	if h == nil {
-		return nil
-	}
-
-	return &QImageIOPlugin{h: (*C.QImageIOPlugin)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQImageIOPlugin(h unsafe.Pointer) *QImageIOPlugin {
+	return newQImageIOPlugin((*C.QImageIOPlugin)(h))
 }
 
 // NewQImageIOPlugin constructs a new QImageIOPlugin object.
 func NewQImageIOPlugin() *QImageIOPlugin {
-	var outptr_QImageIOPlugin *C.QImageIOPlugin = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QImageIOPlugin_new(&outptr_QImageIOPlugin, &outptr_QObject)
-	ret := newQImageIOPlugin(outptr_QImageIOPlugin, outptr_QObject)
+	ret := newQImageIOPlugin(C.QImageIOPlugin_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQImageIOPlugin2 constructs a new QImageIOPlugin object.
 func NewQImageIOPlugin2(parent *QObject) *QImageIOPlugin {
-	var outptr_QImageIOPlugin *C.QImageIOPlugin = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QImageIOPlugin_new2(parent.cPointer(), &outptr_QImageIOPlugin, &outptr_QObject)
-	ret := newQImageIOPlugin(outptr_QImageIOPlugin, outptr_QObject)
+	ret := newQImageIOPlugin(C.QImageIOPlugin_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QImageIOPlugin) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QImageIOPlugin_MetaObject(this.h)))
+	return newQMetaObject(C.QImageIOPlugin_MetaObject(this.h))
 }
 
 func (this *QImageIOPlugin) Metacast(param1 string) unsafe.Pointer {
@@ -599,7 +621,7 @@ func (this *QImageIOPlugin) Create(device *QIODevice, format []byte) *QImageIOHa
 	format_alias := C.struct_miqt_string{}
 	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
 	format_alias.len = C.size_t(len(format))
-	return UnsafeNewQImageIOHandler(unsafe.Pointer(C.QImageIOPlugin_Create(this.h, device.cPointer(), format_alias)))
+	return newQImageIOHandler(C.QImageIOPlugin_Create(this.h, device.cPointer(), format_alias))
 }
 
 func QImageIOPlugin_Tr2(s string, c string) string {
@@ -624,6 +646,9 @@ func QImageIOPlugin_Tr3(s string, c string, n int) string {
 	return _ret
 }
 func (this *QImageIOPlugin) OnCapabilities(slot func(device *QIODevice, format []byte) QImageIOPlugin__Capability) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QImageIOPlugin_override_virtual_Capabilities(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -635,7 +660,8 @@ func miqt_exec_callback_QImageIOPlugin_Capabilities(self *C.QImageIOPlugin, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQIODevice(unsafe.Pointer(device), nil, nil)
+	slotval1 := newQIODevice(device)
+
 	var format_bytearray C.struct_miqt_string = format
 	format_ret := C.GoBytes(unsafe.Pointer(format_bytearray.data), C.int(int64(format_bytearray.len)))
 	C.free(unsafe.Pointer(format_bytearray.data))
@@ -647,6 +673,9 @@ func miqt_exec_callback_QImageIOPlugin_Capabilities(self *C.QImageIOPlugin, cb C
 
 }
 func (this *QImageIOPlugin) OnCreate(slot func(device *QIODevice, format []byte) *QImageIOHandler) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QImageIOPlugin_override_virtual_Create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -658,7 +687,8 @@ func miqt_exec_callback_QImageIOPlugin_Create(self *C.QImageIOPlugin, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQIODevice(unsafe.Pointer(device), nil, nil)
+	slotval1 := newQIODevice(device)
+
 	var format_bytearray C.struct_miqt_string = format
 	format_ret := C.GoBytes(unsafe.Pointer(format_bytearray.data), C.int(int64(format_bytearray.len)))
 	C.free(unsafe.Pointer(format_bytearray.data))
@@ -676,6 +706,9 @@ func (this *QImageIOPlugin) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QImageIOPlugin) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QImageIOPlugin_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -687,7 +720,7 @@ func miqt_exec_callback_QImageIOPlugin_Event(self *C.QImageIOPlugin, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QImageIOPlugin{h: self}).callVirtualBase_Event, slotval1)
 
@@ -701,6 +734,9 @@ func (this *QImageIOPlugin) callVirtualBase_EventFilter(watched *QObject, event 
 
 }
 func (this *QImageIOPlugin) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QImageIOPlugin_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -712,8 +748,9 @@ func miqt_exec_callback_QImageIOPlugin_EventFilter(self *C.QImageIOPlugin, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QImageIOPlugin{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -727,6 +764,9 @@ func (this *QImageIOPlugin) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QImageIOPlugin) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QImageIOPlugin_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -738,7 +778,7 @@ func miqt_exec_callback_QImageIOPlugin_TimerEvent(self *C.QImageIOPlugin, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QImageIOPlugin{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -750,6 +790,9 @@ func (this *QImageIOPlugin) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QImageIOPlugin) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QImageIOPlugin_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -761,7 +804,7 @@ func miqt_exec_callback_QImageIOPlugin_ChildEvent(self *C.QImageIOPlugin, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QImageIOPlugin{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -773,6 +816,9 @@ func (this *QImageIOPlugin) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QImageIOPlugin) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QImageIOPlugin_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -784,7 +830,7 @@ func miqt_exec_callback_QImageIOPlugin_CustomEvent(self *C.QImageIOPlugin, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QImageIOPlugin{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -796,6 +842,9 @@ func (this *QImageIOPlugin) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QImageIOPlugin) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QImageIOPlugin_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -807,7 +856,7 @@ func miqt_exec_callback_QImageIOPlugin_ConnectNotify(self *C.QImageIOPlugin, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QImageIOPlugin{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -819,6 +868,9 @@ func (this *QImageIOPlugin) callVirtualBase_DisconnectNotify(signal *QMetaMethod
 
 }
 func (this *QImageIOPlugin) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QImageIOPlugin_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -830,7 +882,7 @@ func miqt_exec_callback_QImageIOPlugin_DisconnectNotify(self *C.QImageIOPlugin, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QImageIOPlugin{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

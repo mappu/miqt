@@ -30,9 +30,9 @@ typedef struct QMetaType QMetaType;
 typedef struct QPartialOrdering QPartialOrdering;
 #endif
 
-void QMetaType_new(int typeVal, QMetaType** outptr_QMetaType);
-void QMetaType_new2(QMetaType** outptr_QMetaType);
-void QMetaType_new3(QMetaType* param1, QMetaType** outptr_QMetaType);
+QMetaType* QMetaType_new(int typeVal);
+QMetaType* QMetaType_new2();
+QMetaType* QMetaType_new3(QMetaType* param1);
 void QMetaType_RegisterNormalizedTypedef(struct miqt_string normalizedTypeName, QMetaType* typeVal);
 int QMetaType_Type(const char* typeName);
 int QMetaType_TypeWithTypeName(struct miqt_string typeName);

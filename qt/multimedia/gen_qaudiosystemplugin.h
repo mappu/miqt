@@ -47,8 +47,9 @@ QAbstractAudioDeviceInfo* QAudioSystemFactoryInterface_CreateDeviceInfo(QAudioSy
 void QAudioSystemFactoryInterface_OperatorAssign(QAudioSystemFactoryInterface* self, QAudioSystemFactoryInterface* param1);
 void QAudioSystemFactoryInterface_Delete(QAudioSystemFactoryInterface* self, bool isSubclass);
 
-void QAudioSystemPlugin_new(QAudioSystemPlugin** outptr_QAudioSystemPlugin, QObject** outptr_QObject, QAudioSystemFactoryInterface** outptr_QAudioSystemFactoryInterface);
-void QAudioSystemPlugin_new2(QObject* parent, QAudioSystemPlugin** outptr_QAudioSystemPlugin, QObject** outptr_QObject, QAudioSystemFactoryInterface** outptr_QAudioSystemFactoryInterface);
+QAudioSystemPlugin* QAudioSystemPlugin_new();
+QAudioSystemPlugin* QAudioSystemPlugin_new2(QObject* parent);
+void QAudioSystemPlugin_virtbase(QAudioSystemPlugin* src, QObject** outptr_QObject, QAudioSystemFactoryInterface** outptr_QAudioSystemFactoryInterface);
 QMetaObject* QAudioSystemPlugin_MetaObject(const QAudioSystemPlugin* self);
 void* QAudioSystemPlugin_Metacast(QAudioSystemPlugin* self, const char* param1);
 struct miqt_string QAudioSystemPlugin_Tr(const char* s);

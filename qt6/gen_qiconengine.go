@@ -45,24 +45,19 @@ func newQIconEngine(h *C.QIconEngine) *QIconEngine {
 	if h == nil {
 		return nil
 	}
+
 	return &QIconEngine{h: h}
 }
 
 // UnsafeNewQIconEngine constructs the type using only unsafe pointers.
 func UnsafeNewQIconEngine(h unsafe.Pointer) *QIconEngine {
-	if h == nil {
-		return nil
-	}
-
-	return &QIconEngine{h: (*C.QIconEngine)(h)}
+	return newQIconEngine((*C.QIconEngine)(h))
 }
 
 // NewQIconEngine constructs a new QIconEngine object.
 func NewQIconEngine() *QIconEngine {
-	var outptr_QIconEngine *C.QIconEngine = nil
 
-	C.QIconEngine_new(&outptr_QIconEngine)
-	ret := newQIconEngine(outptr_QIconEngine)
+	ret := newQIconEngine(C.QIconEngine_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -72,15 +67,13 @@ func (this *QIconEngine) Paint(painter *QPainter, rect *QRect, mode QIcon__Mode,
 }
 
 func (this *QIconEngine) ActualSize(size *QSize, mode QIcon__Mode, state QIcon__State) *QSize {
-	_ret := C.QIconEngine_ActualSize(this.h, size.cPointer(), (C.int)(mode), (C.int)(state))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QIconEngine_ActualSize(this.h, size.cPointer(), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIconEngine) Pixmap(size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
-	_ret := C.QIconEngine_Pixmap(this.h, size.cPointer(), (C.int)(mode), (C.int)(state))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QIconEngine_Pixmap(this.h, size.cPointer(), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -105,7 +98,7 @@ func (this *QIconEngine) Key() string {
 }
 
 func (this *QIconEngine) Clone() *QIconEngine {
-	return UnsafeNewQIconEngine(unsafe.Pointer(C.QIconEngine_Clone(this.h)))
+	return newQIconEngine(C.QIconEngine_Clone(this.h))
 }
 
 func (this *QIconEngine) Read(in *QDataStream) bool {
@@ -121,8 +114,7 @@ func (this *QIconEngine) AvailableSizes(mode QIcon__Mode, state QIcon__State) []
 	_ret := make([]QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQSize(_lv_ret)
+		_lv_goptr := newQSize(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -141,8 +133,7 @@ func (this *QIconEngine) IsNull() bool {
 }
 
 func (this *QIconEngine) ScaledPixmap(size *QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap {
-	_ret := C.QIconEngine_ScaledPixmap(this.h, size.cPointer(), (C.int)(mode), (C.int)(state), (C.double)(scale))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QIconEngine_ScaledPixmap(this.h, size.cPointer(), (C.int)(mode), (C.int)(state), (C.double)(scale)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -151,6 +142,9 @@ func (this *QIconEngine) VirtualHook(id int, data unsafe.Pointer) {
 	C.QIconEngine_VirtualHook(this.h, (C.int)(id), data)
 }
 func (this *QIconEngine) OnPaint(slot func(painter *QPainter, rect *QRect, mode QIcon__Mode, state QIcon__State)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIconEngine_override_virtual_Paint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -162,8 +156,10 @@ func miqt_exec_callback_QIconEngine_Paint(self *C.QIconEngine, cb C.intptr_t, pa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQRect(unsafe.Pointer(rect))
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQRect(rect)
+
 	slotval3 := (QIcon__Mode)(mode)
 
 	slotval4 := (QIcon__State)(state)
@@ -174,13 +170,15 @@ func miqt_exec_callback_QIconEngine_Paint(self *C.QIconEngine, cb C.intptr_t, pa
 
 func (this *QIconEngine) callVirtualBase_ActualSize(size *QSize, mode QIcon__Mode, state QIcon__State) *QSize {
 
-	_ret := C.QIconEngine_virtualbase_ActualSize(unsafe.Pointer(this.h), size.cPointer(), (C.int)(mode), (C.int)(state))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QIconEngine_virtualbase_ActualSize(unsafe.Pointer(this.h), size.cPointer(), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QIconEngine) OnActualSize(slot func(super func(size *QSize, mode QIcon__Mode, state QIcon__State) *QSize, size *QSize, mode QIcon__Mode, state QIcon__State) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIconEngine_override_virtual_ActualSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -192,7 +190,8 @@ func miqt_exec_callback_QIconEngine_ActualSize(self *C.QIconEngine, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQSize(unsafe.Pointer(size))
+	slotval1 := newQSize(size)
+
 	slotval2 := (QIcon__Mode)(mode)
 
 	slotval3 := (QIcon__State)(state)
@@ -205,13 +204,15 @@ func miqt_exec_callback_QIconEngine_ActualSize(self *C.QIconEngine, cb C.intptr_
 
 func (this *QIconEngine) callVirtualBase_Pixmap(size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
 
-	_ret := C.QIconEngine_virtualbase_Pixmap(unsafe.Pointer(this.h), size.cPointer(), (C.int)(mode), (C.int)(state))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QIconEngine_virtualbase_Pixmap(unsafe.Pointer(this.h), size.cPointer(), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QIconEngine) OnPixmap(slot func(super func(size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap, size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIconEngine_override_virtual_Pixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -223,7 +224,8 @@ func miqt_exec_callback_QIconEngine_Pixmap(self *C.QIconEngine, cb C.intptr_t, s
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQSize(unsafe.Pointer(size))
+	slotval1 := newQSize(size)
+
 	slotval2 := (QIcon__Mode)(mode)
 
 	slotval3 := (QIcon__State)(state)
@@ -240,6 +242,9 @@ func (this *QIconEngine) callVirtualBase_AddPixmap(pixmap *QPixmap, mode QIcon__
 
 }
 func (this *QIconEngine) OnAddPixmap(slot func(super func(pixmap *QPixmap, mode QIcon__Mode, state QIcon__State), pixmap *QPixmap, mode QIcon__Mode, state QIcon__State)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIconEngine_override_virtual_AddPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -251,7 +256,8 @@ func miqt_exec_callback_QIconEngine_AddPixmap(self *C.QIconEngine, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPixmap(unsafe.Pointer(pixmap), nil)
+	slotval1 := newQPixmap(pixmap)
+
 	slotval2 := (QIcon__Mode)(mode)
 
 	slotval3 := (QIcon__State)(state)
@@ -270,6 +276,9 @@ func (this *QIconEngine) callVirtualBase_AddFile(fileName string, size *QSize, m
 
 }
 func (this *QIconEngine) OnAddFile(slot func(super func(fileName string, size *QSize, mode QIcon__Mode, state QIcon__State), fileName string, size *QSize, mode QIcon__Mode, state QIcon__State)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIconEngine_override_virtual_AddFile(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -285,7 +294,8 @@ func miqt_exec_callback_QIconEngine_AddFile(self *C.QIconEngine, cb C.intptr_t, 
 	fileName_ret := C.GoStringN(fileName_ms.data, C.int(int64(fileName_ms.len)))
 	C.free(unsafe.Pointer(fileName_ms.data))
 	slotval1 := fileName_ret
-	slotval2 := UnsafeNewQSize(unsafe.Pointer(size))
+	slotval2 := newQSize(size)
+
 	slotval3 := (QIcon__Mode)(mode)
 
 	slotval4 := (QIcon__State)(state)
@@ -302,6 +312,9 @@ func (this *QIconEngine) callVirtualBase_Key() string {
 	return _ret
 }
 func (this *QIconEngine) OnKey(slot func(super func() string) string) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIconEngine_override_virtual_Key(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -322,6 +335,9 @@ func miqt_exec_callback_QIconEngine_Key(self *C.QIconEngine, cb C.intptr_t) C.st
 
 }
 func (this *QIconEngine) OnClone(slot func() *QIconEngine) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIconEngine_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -344,6 +360,9 @@ func (this *QIconEngine) callVirtualBase_Read(in *QDataStream) bool {
 
 }
 func (this *QIconEngine) OnRead(slot func(super func(in *QDataStream) bool, in *QDataStream) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIconEngine_override_virtual_Read(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -355,7 +374,7 @@ func miqt_exec_callback_QIconEngine_Read(self *C.QIconEngine, cb C.intptr_t, in 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDataStream(unsafe.Pointer(in), nil)
+	slotval1 := newQDataStream(in)
 
 	virtualReturn := gofunc((&QIconEngine{h: self}).callVirtualBase_Read, slotval1)
 
@@ -369,6 +388,9 @@ func (this *QIconEngine) callVirtualBase_Write(out *QDataStream) bool {
 
 }
 func (this *QIconEngine) OnWrite(slot func(super func(out *QDataStream) bool, out *QDataStream) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIconEngine_override_virtual_Write(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -380,7 +402,7 @@ func miqt_exec_callback_QIconEngine_Write(self *C.QIconEngine, cb C.intptr_t, ou
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDataStream(unsafe.Pointer(out), nil)
+	slotval1 := newQDataStream(out)
 
 	virtualReturn := gofunc((&QIconEngine{h: self}).callVirtualBase_Write, slotval1)
 
@@ -394,8 +416,7 @@ func (this *QIconEngine) callVirtualBase_AvailableSizes(mode QIcon__Mode, state 
 	_ret := make([]QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQSize(_lv_ret)
+		_lv_goptr := newQSize(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -403,6 +424,9 @@ func (this *QIconEngine) callVirtualBase_AvailableSizes(mode QIcon__Mode, state 
 
 }
 func (this *QIconEngine) OnAvailableSizes(slot func(super func(mode QIcon__Mode, state QIcon__State) []QSize, mode QIcon__Mode, state QIcon__State) []QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIconEngine_override_virtual_AvailableSizes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -438,6 +462,9 @@ func (this *QIconEngine) callVirtualBase_IconName() string {
 	return _ret
 }
 func (this *QIconEngine) OnIconName(slot func(super func() string) string) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIconEngine_override_virtual_IconName(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -464,6 +491,9 @@ func (this *QIconEngine) callVirtualBase_IsNull() bool {
 
 }
 func (this *QIconEngine) OnIsNull(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIconEngine_override_virtual_IsNull(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -482,13 +512,15 @@ func miqt_exec_callback_QIconEngine_IsNull(self *C.QIconEngine, cb C.intptr_t) C
 
 func (this *QIconEngine) callVirtualBase_ScaledPixmap(size *QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap {
 
-	_ret := C.QIconEngine_virtualbase_ScaledPixmap(unsafe.Pointer(this.h), size.cPointer(), (C.int)(mode), (C.int)(state), (C.double)(scale))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QIconEngine_virtualbase_ScaledPixmap(unsafe.Pointer(this.h), size.cPointer(), (C.int)(mode), (C.int)(state), (C.double)(scale)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QIconEngine) OnScaledPixmap(slot func(super func(size *QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap, size *QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIconEngine_override_virtual_ScaledPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -500,7 +532,8 @@ func miqt_exec_callback_QIconEngine_ScaledPixmap(self *C.QIconEngine, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQSize(unsafe.Pointer(size))
+	slotval1 := newQSize(size)
+
 	slotval2 := (QIcon__Mode)(mode)
 
 	slotval3 := (QIcon__State)(state)
@@ -519,6 +552,9 @@ func (this *QIconEngine) callVirtualBase_VirtualHook(id int, data unsafe.Pointer
 
 }
 func (this *QIconEngine) OnVirtualHook(slot func(super func(id int, data unsafe.Pointer), id int, data unsafe.Pointer)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QIconEngine_override_virtual_VirtualHook(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -576,24 +612,19 @@ func newQIconEngine__ScaledPixmapArgument(h *C.QIconEngine__ScaledPixmapArgument
 	if h == nil {
 		return nil
 	}
+
 	return &QIconEngine__ScaledPixmapArgument{h: h}
 }
 
 // UnsafeNewQIconEngine__ScaledPixmapArgument constructs the type using only unsafe pointers.
 func UnsafeNewQIconEngine__ScaledPixmapArgument(h unsafe.Pointer) *QIconEngine__ScaledPixmapArgument {
-	if h == nil {
-		return nil
-	}
-
-	return &QIconEngine__ScaledPixmapArgument{h: (*C.QIconEngine__ScaledPixmapArgument)(h)}
+	return newQIconEngine__ScaledPixmapArgument((*C.QIconEngine__ScaledPixmapArgument)(h))
 }
 
 // NewQIconEngine__ScaledPixmapArgument constructs a new QIconEngine::ScaledPixmapArgument object.
 func NewQIconEngine__ScaledPixmapArgument(param1 *QIconEngine__ScaledPixmapArgument) *QIconEngine__ScaledPixmapArgument {
-	var outptr_QIconEngine__ScaledPixmapArgument *C.QIconEngine__ScaledPixmapArgument = nil
 
-	C.QIconEngine__ScaledPixmapArgument_new(param1.cPointer(), &outptr_QIconEngine__ScaledPixmapArgument)
-	ret := newQIconEngine__ScaledPixmapArgument(outptr_QIconEngine__ScaledPixmapArgument)
+	ret := newQIconEngine__ScaledPixmapArgument(C.QIconEngine__ScaledPixmapArgument_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

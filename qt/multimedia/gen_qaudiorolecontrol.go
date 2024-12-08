@@ -36,22 +36,20 @@ func (this *QAudioRoleControl) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAudioRoleControl constructs the type using only CGO pointers.
-func newQAudioRoleControl(h *C.QAudioRoleControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QAudioRoleControl {
+func newQAudioRoleControl(h *C.QAudioRoleControl) *QAudioRoleControl {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaControl *C.QMediaControl = nil
+	C.QAudioRoleControl_virtbase(h, &outptr_QMediaControl)
+
 	return &QAudioRoleControl{h: h,
-		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
+		QMediaControl: newQMediaControl(outptr_QMediaControl)}
 }
 
 // UnsafeNewQAudioRoleControl constructs the type using only unsafe pointers.
-func UnsafeNewQAudioRoleControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QAudioRoleControl {
-	if h == nil {
-		return nil
-	}
-
-	return &QAudioRoleControl{h: (*C.QAudioRoleControl)(h),
-		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
+func UnsafeNewQAudioRoleControl(h unsafe.Pointer) *QAudioRoleControl {
+	return newQAudioRoleControl((*C.QAudioRoleControl)(h))
 }
 
 func (this *QAudioRoleControl) MetaObject() *qt.QMetaObject {

@@ -53,34 +53,27 @@ func newQAudioFormat(h *C.QAudioFormat) *QAudioFormat {
 	if h == nil {
 		return nil
 	}
+
 	return &QAudioFormat{h: h}
 }
 
 // UnsafeNewQAudioFormat constructs the type using only unsafe pointers.
 func UnsafeNewQAudioFormat(h unsafe.Pointer) *QAudioFormat {
-	if h == nil {
-		return nil
-	}
-
-	return &QAudioFormat{h: (*C.QAudioFormat)(h)}
+	return newQAudioFormat((*C.QAudioFormat)(h))
 }
 
 // NewQAudioFormat constructs a new QAudioFormat object.
 func NewQAudioFormat() *QAudioFormat {
-	var outptr_QAudioFormat *C.QAudioFormat = nil
 
-	C.QAudioFormat_new(&outptr_QAudioFormat)
-	ret := newQAudioFormat(outptr_QAudioFormat)
+	ret := newQAudioFormat(C.QAudioFormat_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAudioFormat2 constructs a new QAudioFormat object.
 func NewQAudioFormat2(other *QAudioFormat) *QAudioFormat {
-	var outptr_QAudioFormat *C.QAudioFormat = nil
 
-	C.QAudioFormat_new2(other.cPointer(), &outptr_QAudioFormat)
-	ret := newQAudioFormat(outptr_QAudioFormat)
+	ret := newQAudioFormat(C.QAudioFormat_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

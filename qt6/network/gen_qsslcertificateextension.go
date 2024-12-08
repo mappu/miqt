@@ -38,34 +38,27 @@ func newQSslCertificateExtension(h *C.QSslCertificateExtension) *QSslCertificate
 	if h == nil {
 		return nil
 	}
+
 	return &QSslCertificateExtension{h: h}
 }
 
 // UnsafeNewQSslCertificateExtension constructs the type using only unsafe pointers.
 func UnsafeNewQSslCertificateExtension(h unsafe.Pointer) *QSslCertificateExtension {
-	if h == nil {
-		return nil
-	}
-
-	return &QSslCertificateExtension{h: (*C.QSslCertificateExtension)(h)}
+	return newQSslCertificateExtension((*C.QSslCertificateExtension)(h))
 }
 
 // NewQSslCertificateExtension constructs a new QSslCertificateExtension object.
 func NewQSslCertificateExtension() *QSslCertificateExtension {
-	var outptr_QSslCertificateExtension *C.QSslCertificateExtension = nil
 
-	C.QSslCertificateExtension_new(&outptr_QSslCertificateExtension)
-	ret := newQSslCertificateExtension(outptr_QSslCertificateExtension)
+	ret := newQSslCertificateExtension(C.QSslCertificateExtension_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSslCertificateExtension2 constructs a new QSslCertificateExtension object.
 func NewQSslCertificateExtension2(other *QSslCertificateExtension) *QSslCertificateExtension {
-	var outptr_QSslCertificateExtension *C.QSslCertificateExtension = nil
 
-	C.QSslCertificateExtension_new2(other.cPointer(), &outptr_QSslCertificateExtension)
-	ret := newQSslCertificateExtension(outptr_QSslCertificateExtension)
+	ret := newQSslCertificateExtension(C.QSslCertificateExtension_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -93,8 +86,7 @@ func (this *QSslCertificateExtension) Name() string {
 }
 
 func (this *QSslCertificateExtension) Value() *qt6.QVariant {
-	_ret := C.QSslCertificateExtension_Value(this.h)
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QSslCertificateExtension_Value(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

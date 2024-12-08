@@ -37,24 +37,19 @@ func newQAnyStringView(h *C.QAnyStringView) *QAnyStringView {
 	if h == nil {
 		return nil
 	}
+
 	return &QAnyStringView{h: h}
 }
 
 // UnsafeNewQAnyStringView constructs the type using only unsafe pointers.
 func UnsafeNewQAnyStringView(h unsafe.Pointer) *QAnyStringView {
-	if h == nil {
-		return nil
-	}
-
-	return &QAnyStringView{h: (*C.QAnyStringView)(h)}
+	return newQAnyStringView((*C.QAnyStringView)(h))
 }
 
 // NewQAnyStringView constructs a new QAnyStringView object.
 func NewQAnyStringView() *QAnyStringView {
-	var outptr_QAnyStringView *C.QAnyStringView = nil
 
-	C.QAnyStringView_new(&outptr_QAnyStringView)
-	ret := newQAnyStringView(outptr_QAnyStringView)
+	ret := newQAnyStringView(C.QAnyStringView_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -64,10 +59,8 @@ func NewQAnyStringView2(str []byte) *QAnyStringView {
 	str_alias := C.struct_miqt_string{}
 	str_alias.data = (*C.char)(unsafe.Pointer(&str[0]))
 	str_alias.len = C.size_t(len(str))
-	var outptr_QAnyStringView *C.QAnyStringView = nil
 
-	C.QAnyStringView_new2(str_alias, &outptr_QAnyStringView)
-	ret := newQAnyStringView(outptr_QAnyStringView)
+	ret := newQAnyStringView(C.QAnyStringView_new2(str_alias))
 	ret.isSubclass = true
 	return ret
 }
@@ -78,30 +71,24 @@ func NewQAnyStringView3(str string) *QAnyStringView {
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
 	defer C.free(unsafe.Pointer(str_ms.data))
-	var outptr_QAnyStringView *C.QAnyStringView = nil
 
-	C.QAnyStringView_new3(str_ms, &outptr_QAnyStringView)
-	ret := newQAnyStringView(outptr_QAnyStringView)
+	ret := newQAnyStringView(C.QAnyStringView_new3(str_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAnyStringView4 constructs a new QAnyStringView object.
 func NewQAnyStringView4(c *QChar) *QAnyStringView {
-	var outptr_QAnyStringView *C.QAnyStringView = nil
 
-	C.QAnyStringView_new4(c.cPointer(), &outptr_QAnyStringView)
-	ret := newQAnyStringView(outptr_QAnyStringView)
+	ret := newQAnyStringView(C.QAnyStringView_new4(c.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAnyStringView5 constructs a new QAnyStringView object.
 func NewQAnyStringView5(param1 *QAnyStringView) *QAnyStringView {
-	var outptr_QAnyStringView *C.QAnyStringView = nil
 
-	C.QAnyStringView_new5(param1.cPointer(), &outptr_QAnyStringView)
-	ret := newQAnyStringView(outptr_QAnyStringView)
+	ret := newQAnyStringView(C.QAnyStringView_new5(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -130,15 +117,13 @@ func QAnyStringView_Equal(lhs QAnyStringView, rhs QAnyStringView) bool {
 }
 
 func (this *QAnyStringView) Front() *QChar {
-	_ret := C.QAnyStringView_Front(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QAnyStringView_Front(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAnyStringView) Back() *QChar {
-	_ret := C.QAnyStringView_Back(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QAnyStringView_Back(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

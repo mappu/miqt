@@ -10,6 +10,10 @@
 #include "gen_qwebenginenotification.h"
 #include "_cgo_export.h"
 
+void QWebEngineNotification_virtbase(QWebEngineNotification* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
+
 QMetaObject* QWebEngineNotification_MetaObject(const QWebEngineNotification* self) {
 	return (QMetaObject*) self->metaObject();
 }

@@ -26,11 +26,11 @@ typedef struct QFile QFile;
 typedef struct QFileInfo QFileInfo;
 #endif
 
-void QFileInfo_new(QFileInfo** outptr_QFileInfo);
-void QFileInfo_new2(struct miqt_string file, QFileInfo** outptr_QFileInfo);
-void QFileInfo_new3(QFile* file, QFileInfo** outptr_QFileInfo);
-void QFileInfo_new4(QDir* dir, struct miqt_string file, QFileInfo** outptr_QFileInfo);
-void QFileInfo_new5(QFileInfo* fileinfo, QFileInfo** outptr_QFileInfo);
+QFileInfo* QFileInfo_new();
+QFileInfo* QFileInfo_new2(struct miqt_string file);
+QFileInfo* QFileInfo_new3(QFile* file);
+QFileInfo* QFileInfo_new4(QDir* dir, struct miqt_string file);
+QFileInfo* QFileInfo_new5(QFileInfo* fileinfo);
 void QFileInfo_OperatorAssign(QFileInfo* self, QFileInfo* fileinfo);
 void QFileInfo_Swap(QFileInfo* self, QFileInfo* other);
 bool QFileInfo_OperatorEqual(const QFileInfo* self, QFileInfo* fileinfo);

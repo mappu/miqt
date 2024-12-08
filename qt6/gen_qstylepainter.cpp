@@ -15,22 +15,20 @@
 #include "gen_qstylepainter.h"
 #include "_cgo_export.h"
 
-void QStylePainter_new(QWidget* w, QStylePainter** outptr_QStylePainter, QPainter** outptr_QPainter) {
-	QStylePainter* ret = new QStylePainter(w);
-	*outptr_QStylePainter = ret;
-	*outptr_QPainter = static_cast<QPainter*>(ret);
+QStylePainter* QStylePainter_new(QWidget* w) {
+	return new QStylePainter(w);
 }
 
-void QStylePainter_new2(QStylePainter** outptr_QStylePainter, QPainter** outptr_QPainter) {
-	QStylePainter* ret = new QStylePainter();
-	*outptr_QStylePainter = ret;
-	*outptr_QPainter = static_cast<QPainter*>(ret);
+QStylePainter* QStylePainter_new2() {
+	return new QStylePainter();
 }
 
-void QStylePainter_new3(QPaintDevice* pd, QWidget* w, QStylePainter** outptr_QStylePainter, QPainter** outptr_QPainter) {
-	QStylePainter* ret = new QStylePainter(pd, w);
-	*outptr_QStylePainter = ret;
-	*outptr_QPainter = static_cast<QPainter*>(ret);
+QStylePainter* QStylePainter_new3(QPaintDevice* pd, QWidget* w) {
+	return new QStylePainter(pd, w);
+}
+
+void QStylePainter_virtbase(QStylePainter* src, QPainter** outptr_QPainter) {
+	*outptr_QPainter = static_cast<QPainter*>(src);
 }
 
 bool QStylePainter_Begin(QStylePainter* self, QWidget* w) {

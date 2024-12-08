@@ -37,34 +37,27 @@ func newQFontInfo(h *C.QFontInfo) *QFontInfo {
 	if h == nil {
 		return nil
 	}
+
 	return &QFontInfo{h: h}
 }
 
 // UnsafeNewQFontInfo constructs the type using only unsafe pointers.
 func UnsafeNewQFontInfo(h unsafe.Pointer) *QFontInfo {
-	if h == nil {
-		return nil
-	}
-
-	return &QFontInfo{h: (*C.QFontInfo)(h)}
+	return newQFontInfo((*C.QFontInfo)(h))
 }
 
 // NewQFontInfo constructs a new QFontInfo object.
 func NewQFontInfo(param1 *QFont) *QFontInfo {
-	var outptr_QFontInfo *C.QFontInfo = nil
 
-	C.QFontInfo_new(param1.cPointer(), &outptr_QFontInfo)
-	ret := newQFontInfo(outptr_QFontInfo)
+	ret := newQFontInfo(C.QFontInfo_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFontInfo2 constructs a new QFontInfo object.
 func NewQFontInfo2(param1 *QFontInfo) *QFontInfo {
-	var outptr_QFontInfo *C.QFontInfo = nil
 
-	C.QFontInfo_new2(param1.cPointer(), &outptr_QFontInfo)
-	ret := newQFontInfo(outptr_QFontInfo)
+	ret := newQFontInfo(C.QFontInfo_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

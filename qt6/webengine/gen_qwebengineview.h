@@ -104,12 +104,13 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QWebEngineView_new(QWidget* parent, QWebEngineView** outptr_QWebEngineView, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QWebEngineView_new2(QWebEngineView** outptr_QWebEngineView, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QWebEngineView_new3(QWebEngineProfile* profile, QWebEngineView** outptr_QWebEngineView, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QWebEngineView_new4(QWebEnginePage* page, QWebEngineView** outptr_QWebEngineView, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QWebEngineView_new5(QWebEngineProfile* profile, QWidget* parent, QWebEngineView** outptr_QWebEngineView, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QWebEngineView_new6(QWebEnginePage* page, QWidget* parent, QWebEngineView** outptr_QWebEngineView, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QWebEngineView* QWebEngineView_new(QWidget* parent);
+QWebEngineView* QWebEngineView_new2();
+QWebEngineView* QWebEngineView_new3(QWebEngineProfile* profile);
+QWebEngineView* QWebEngineView_new4(QWebEnginePage* page);
+QWebEngineView* QWebEngineView_new5(QWebEngineProfile* profile, QWidget* parent);
+QWebEngineView* QWebEngineView_new6(QWebEnginePage* page, QWidget* parent);
+void QWebEngineView_virtbase(QWebEngineView* src, QWidget** outptr_QWidget);
 QMetaObject* QWebEngineView_MetaObject(const QWebEngineView* self);
 void* QWebEngineView_Metacast(QWebEngineView* self, const char* param1);
 struct miqt_string QWebEngineView_Tr(const char* s);

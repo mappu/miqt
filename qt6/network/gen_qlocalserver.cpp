@@ -263,16 +263,16 @@ public:
 
 };
 
-void QLocalServer_new(QLocalServer** outptr_QLocalServer, QObject** outptr_QObject) {
-	MiqtVirtualQLocalServer* ret = new MiqtVirtualQLocalServer();
-	*outptr_QLocalServer = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QLocalServer* QLocalServer_new() {
+	return new MiqtVirtualQLocalServer();
 }
 
-void QLocalServer_new2(QObject* parent, QLocalServer** outptr_QLocalServer, QObject** outptr_QObject) {
-	MiqtVirtualQLocalServer* ret = new MiqtVirtualQLocalServer(parent);
-	*outptr_QLocalServer = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QLocalServer* QLocalServer_new2(QObject* parent) {
+	return new MiqtVirtualQLocalServer(parent);
+}
+
+void QLocalServer_virtbase(QLocalServer* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QLocalServer_MetaObject(const QLocalServer* self) {

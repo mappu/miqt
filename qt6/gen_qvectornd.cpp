@@ -9,44 +9,36 @@
 #include "gen_qvectornd.h"
 #include "_cgo_export.h"
 
-void QVector2D_new(QVector2D** outptr_QVector2D) {
-	QVector2D* ret = new QVector2D();
-	*outptr_QVector2D = ret;
+QVector2D* QVector2D_new() {
+	return new QVector2D();
 }
 
-void QVector2D_new2(int param1, QVector2D** outptr_QVector2D) {
-	QVector2D* ret = new QVector2D(static_cast<Qt::Initialization>(param1));
-	*outptr_QVector2D = ret;
+QVector2D* QVector2D_new2(int param1) {
+	return new QVector2D(static_cast<Qt::Initialization>(param1));
 }
 
-void QVector2D_new3(float xpos, float ypos, QVector2D** outptr_QVector2D) {
-	QVector2D* ret = new QVector2D(static_cast<float>(xpos), static_cast<float>(ypos));
-	*outptr_QVector2D = ret;
+QVector2D* QVector2D_new3(float xpos, float ypos) {
+	return new QVector2D(static_cast<float>(xpos), static_cast<float>(ypos));
 }
 
-void QVector2D_new4(QPoint* point, QVector2D** outptr_QVector2D) {
-	QVector2D* ret = new QVector2D(*point);
-	*outptr_QVector2D = ret;
+QVector2D* QVector2D_new4(QPoint* point) {
+	return new QVector2D(*point);
 }
 
-void QVector2D_new5(QPointF* point, QVector2D** outptr_QVector2D) {
-	QVector2D* ret = new QVector2D(*point);
-	*outptr_QVector2D = ret;
+QVector2D* QVector2D_new5(QPointF* point) {
+	return new QVector2D(*point);
 }
 
-void QVector2D_new6(QVector3D* vector, QVector2D** outptr_QVector2D) {
-	QVector2D* ret = new QVector2D(*vector);
-	*outptr_QVector2D = ret;
+QVector2D* QVector2D_new6(QVector3D* vector) {
+	return new QVector2D(*vector);
 }
 
-void QVector2D_new7(QVector4D* vector, QVector2D** outptr_QVector2D) {
-	QVector2D* ret = new QVector2D(*vector);
-	*outptr_QVector2D = ret;
+QVector2D* QVector2D_new7(QVector4D* vector) {
+	return new QVector2D(*vector);
 }
 
-void QVector2D_new8(QVector2D* param1, QVector2D** outptr_QVector2D) {
-	QVector2D* ret = new QVector2D(*param1);
-	*outptr_QVector2D = ret;
+QVector2D* QVector2D_new8(QVector2D* param1) {
+	return new QVector2D(*param1);
 }
 
 bool QVector2D_IsNull(const QVector2D* self) {
@@ -161,49 +153,40 @@ void QVector2D_Delete(QVector2D* self, bool isSubclass) {
 	}
 }
 
-void QVector3D_new(QVector3D** outptr_QVector3D) {
-	QVector3D* ret = new QVector3D();
-	*outptr_QVector3D = ret;
+QVector3D* QVector3D_new() {
+	return new QVector3D();
 }
 
-void QVector3D_new2(int param1, QVector3D** outptr_QVector3D) {
-	QVector3D* ret = new QVector3D(static_cast<Qt::Initialization>(param1));
-	*outptr_QVector3D = ret;
+QVector3D* QVector3D_new2(int param1) {
+	return new QVector3D(static_cast<Qt::Initialization>(param1));
 }
 
-void QVector3D_new3(float xpos, float ypos, float zpos, QVector3D** outptr_QVector3D) {
-	QVector3D* ret = new QVector3D(static_cast<float>(xpos), static_cast<float>(ypos), static_cast<float>(zpos));
-	*outptr_QVector3D = ret;
+QVector3D* QVector3D_new3(float xpos, float ypos, float zpos) {
+	return new QVector3D(static_cast<float>(xpos), static_cast<float>(ypos), static_cast<float>(zpos));
 }
 
-void QVector3D_new4(QPoint* point, QVector3D** outptr_QVector3D) {
-	QVector3D* ret = new QVector3D(*point);
-	*outptr_QVector3D = ret;
+QVector3D* QVector3D_new4(QPoint* point) {
+	return new QVector3D(*point);
 }
 
-void QVector3D_new5(QPointF* point, QVector3D** outptr_QVector3D) {
-	QVector3D* ret = new QVector3D(*point);
-	*outptr_QVector3D = ret;
+QVector3D* QVector3D_new5(QPointF* point) {
+	return new QVector3D(*point);
 }
 
-void QVector3D_new6(QVector2D* vector, QVector3D** outptr_QVector3D) {
-	QVector3D* ret = new QVector3D(*vector);
-	*outptr_QVector3D = ret;
+QVector3D* QVector3D_new6(QVector2D* vector) {
+	return new QVector3D(*vector);
 }
 
-void QVector3D_new7(QVector2D* vector, float zpos, QVector3D** outptr_QVector3D) {
-	QVector3D* ret = new QVector3D(*vector, static_cast<float>(zpos));
-	*outptr_QVector3D = ret;
+QVector3D* QVector3D_new7(QVector2D* vector, float zpos) {
+	return new QVector3D(*vector, static_cast<float>(zpos));
 }
 
-void QVector3D_new8(QVector4D* vector, QVector3D** outptr_QVector3D) {
-	QVector3D* ret = new QVector3D(*vector);
-	*outptr_QVector3D = ret;
+QVector3D* QVector3D_new8(QVector4D* vector) {
+	return new QVector3D(*vector);
 }
 
-void QVector3D_new9(QVector3D* param1, QVector3D** outptr_QVector3D) {
-	QVector3D* ret = new QVector3D(*param1);
-	*outptr_QVector3D = ret;
+QVector3D* QVector3D_new9(QVector3D* param1) {
+	return new QVector3D(*param1);
 }
 
 bool QVector3D_IsNull(const QVector3D* self) {
@@ -354,54 +337,44 @@ void QVector3D_Delete(QVector3D* self, bool isSubclass) {
 	}
 }
 
-void QVector4D_new(QVector4D** outptr_QVector4D) {
-	QVector4D* ret = new QVector4D();
-	*outptr_QVector4D = ret;
+QVector4D* QVector4D_new() {
+	return new QVector4D();
 }
 
-void QVector4D_new2(int param1, QVector4D** outptr_QVector4D) {
-	QVector4D* ret = new QVector4D(static_cast<Qt::Initialization>(param1));
-	*outptr_QVector4D = ret;
+QVector4D* QVector4D_new2(int param1) {
+	return new QVector4D(static_cast<Qt::Initialization>(param1));
 }
 
-void QVector4D_new3(float xpos, float ypos, float zpos, float wpos, QVector4D** outptr_QVector4D) {
-	QVector4D* ret = new QVector4D(static_cast<float>(xpos), static_cast<float>(ypos), static_cast<float>(zpos), static_cast<float>(wpos));
-	*outptr_QVector4D = ret;
+QVector4D* QVector4D_new3(float xpos, float ypos, float zpos, float wpos) {
+	return new QVector4D(static_cast<float>(xpos), static_cast<float>(ypos), static_cast<float>(zpos), static_cast<float>(wpos));
 }
 
-void QVector4D_new4(QPoint* point, QVector4D** outptr_QVector4D) {
-	QVector4D* ret = new QVector4D(*point);
-	*outptr_QVector4D = ret;
+QVector4D* QVector4D_new4(QPoint* point) {
+	return new QVector4D(*point);
 }
 
-void QVector4D_new5(QPointF* point, QVector4D** outptr_QVector4D) {
-	QVector4D* ret = new QVector4D(*point);
-	*outptr_QVector4D = ret;
+QVector4D* QVector4D_new5(QPointF* point) {
+	return new QVector4D(*point);
 }
 
-void QVector4D_new6(QVector2D* vector, QVector4D** outptr_QVector4D) {
-	QVector4D* ret = new QVector4D(*vector);
-	*outptr_QVector4D = ret;
+QVector4D* QVector4D_new6(QVector2D* vector) {
+	return new QVector4D(*vector);
 }
 
-void QVector4D_new7(QVector2D* vector, float zpos, float wpos, QVector4D** outptr_QVector4D) {
-	QVector4D* ret = new QVector4D(*vector, static_cast<float>(zpos), static_cast<float>(wpos));
-	*outptr_QVector4D = ret;
+QVector4D* QVector4D_new7(QVector2D* vector, float zpos, float wpos) {
+	return new QVector4D(*vector, static_cast<float>(zpos), static_cast<float>(wpos));
 }
 
-void QVector4D_new8(QVector3D* vector, QVector4D** outptr_QVector4D) {
-	QVector4D* ret = new QVector4D(*vector);
-	*outptr_QVector4D = ret;
+QVector4D* QVector4D_new8(QVector3D* vector) {
+	return new QVector4D(*vector);
 }
 
-void QVector4D_new9(QVector3D* vector, float wpos, QVector4D** outptr_QVector4D) {
-	QVector4D* ret = new QVector4D(*vector, static_cast<float>(wpos));
-	*outptr_QVector4D = ret;
+QVector4D* QVector4D_new9(QVector3D* vector, float wpos) {
+	return new QVector4D(*vector, static_cast<float>(wpos));
 }
 
-void QVector4D_new10(QVector4D* param1, QVector4D** outptr_QVector4D) {
-	QVector4D* ret = new QVector4D(*param1);
-	*outptr_QVector4D = ret;
+QVector4D* QVector4D_new10(QVector4D* param1) {
+	return new QVector4D(*param1);
 }
 
 bool QVector4D_IsNull(const QVector4D* self) {

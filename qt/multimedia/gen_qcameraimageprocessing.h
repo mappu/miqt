@@ -24,6 +24,7 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif
 
+void QCameraImageProcessing_virtbase(QCameraImageProcessing* src, QObject** outptr_QObject);
 QMetaObject* QCameraImageProcessing_MetaObject(const QCameraImageProcessing* self);
 void* QCameraImageProcessing_Metacast(QCameraImageProcessing* self, const char* param1);
 struct miqt_string QCameraImageProcessing_Tr(const char* s);

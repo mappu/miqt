@@ -38,24 +38,19 @@ func newQWebEngineFullScreenRequest(h *C.QWebEngineFullScreenRequest) *QWebEngin
 	if h == nil {
 		return nil
 	}
+
 	return &QWebEngineFullScreenRequest{h: h}
 }
 
 // UnsafeNewQWebEngineFullScreenRequest constructs the type using only unsafe pointers.
 func UnsafeNewQWebEngineFullScreenRequest(h unsafe.Pointer) *QWebEngineFullScreenRequest {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineFullScreenRequest{h: (*C.QWebEngineFullScreenRequest)(h)}
+	return newQWebEngineFullScreenRequest((*C.QWebEngineFullScreenRequest)(h))
 }
 
 // NewQWebEngineFullScreenRequest constructs a new QWebEngineFullScreenRequest object.
 func NewQWebEngineFullScreenRequest(other *QWebEngineFullScreenRequest) *QWebEngineFullScreenRequest {
-	var outptr_QWebEngineFullScreenRequest *C.QWebEngineFullScreenRequest = nil
 
-	C.QWebEngineFullScreenRequest_new(other.cPointer(), &outptr_QWebEngineFullScreenRequest)
-	ret := newQWebEngineFullScreenRequest(outptr_QWebEngineFullScreenRequest)
+	ret := newQWebEngineFullScreenRequest(C.QWebEngineFullScreenRequest_new(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -77,8 +72,7 @@ func (this *QWebEngineFullScreenRequest) ToggleOn() bool {
 }
 
 func (this *QWebEngineFullScreenRequest) Origin() *qt6.QUrl {
-	_ret := C.QWebEngineFullScreenRequest_Origin(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineFullScreenRequest_Origin(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

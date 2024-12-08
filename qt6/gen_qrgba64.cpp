@@ -3,14 +3,12 @@
 #include "gen_qrgba64.h"
 #include "_cgo_export.h"
 
-void QRgba64_new(QRgba64** outptr_QRgba64) {
-	QRgba64* ret = new QRgba64();
-	*outptr_QRgba64 = ret;
+QRgba64* QRgba64_new() {
+	return new QRgba64();
 }
 
-void QRgba64_new2(QRgba64* param1, QRgba64** outptr_QRgba64) {
-	QRgba64* ret = new QRgba64(*param1);
-	*outptr_QRgba64 = ret;
+QRgba64* QRgba64_new2(QRgba64* param1) {
+	return new QRgba64(*param1);
 }
 
 QRgba64* QRgba64_FromRgba64(unsigned long long c) {

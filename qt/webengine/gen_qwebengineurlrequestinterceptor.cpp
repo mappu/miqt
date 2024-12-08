@@ -212,16 +212,16 @@ public:
 
 };
 
-void QWebEngineUrlRequestInterceptor_new(QWebEngineUrlRequestInterceptor** outptr_QWebEngineUrlRequestInterceptor, QObject** outptr_QObject) {
-	MiqtVirtualQWebEngineUrlRequestInterceptor* ret = new MiqtVirtualQWebEngineUrlRequestInterceptor();
-	*outptr_QWebEngineUrlRequestInterceptor = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QWebEngineUrlRequestInterceptor* QWebEngineUrlRequestInterceptor_new() {
+	return new MiqtVirtualQWebEngineUrlRequestInterceptor();
 }
 
-void QWebEngineUrlRequestInterceptor_new2(QObject* p, QWebEngineUrlRequestInterceptor** outptr_QWebEngineUrlRequestInterceptor, QObject** outptr_QObject) {
-	MiqtVirtualQWebEngineUrlRequestInterceptor* ret = new MiqtVirtualQWebEngineUrlRequestInterceptor(p);
-	*outptr_QWebEngineUrlRequestInterceptor = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QWebEngineUrlRequestInterceptor* QWebEngineUrlRequestInterceptor_new2(QObject* p) {
+	return new MiqtVirtualQWebEngineUrlRequestInterceptor(p);
+}
+
+void QWebEngineUrlRequestInterceptor_virtbase(QWebEngineUrlRequestInterceptor* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QWebEngineUrlRequestInterceptor_MetaObject(const QWebEngineUrlRequestInterceptor* self) {

@@ -46,34 +46,27 @@ func newQSslConfiguration(h *C.QSslConfiguration) *QSslConfiguration {
 	if h == nil {
 		return nil
 	}
+
 	return &QSslConfiguration{h: h}
 }
 
 // UnsafeNewQSslConfiguration constructs the type using only unsafe pointers.
 func UnsafeNewQSslConfiguration(h unsafe.Pointer) *QSslConfiguration {
-	if h == nil {
-		return nil
-	}
-
-	return &QSslConfiguration{h: (*C.QSslConfiguration)(h)}
+	return newQSslConfiguration((*C.QSslConfiguration)(h))
 }
 
 // NewQSslConfiguration constructs a new QSslConfiguration object.
 func NewQSslConfiguration() *QSslConfiguration {
-	var outptr_QSslConfiguration *C.QSslConfiguration = nil
 
-	C.QSslConfiguration_new(&outptr_QSslConfiguration)
-	ret := newQSslConfiguration(outptr_QSslConfiguration)
+	ret := newQSslConfiguration(C.QSslConfiguration_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSslConfiguration2 constructs a new QSslConfiguration object.
 func NewQSslConfiguration2(other *QSslConfiguration) *QSslConfiguration {
-	var outptr_QSslConfiguration *C.QSslConfiguration = nil
 
-	C.QSslConfiguration_new2(other.cPointer(), &outptr_QSslConfiguration)
-	ret := newQSslConfiguration(outptr_QSslConfiguration)
+	ret := newQSslConfiguration(C.QSslConfiguration_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -127,8 +120,7 @@ func (this *QSslConfiguration) LocalCertificateChain() []QSslCertificate {
 	_ret := make([]QSslCertificate, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSslCertificate)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQSslCertificate(_lv_ret)
+		_lv_goptr := newQSslCertificate(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -146,8 +138,7 @@ func (this *QSslConfiguration) SetLocalCertificateChain(localChain []QSslCertifi
 }
 
 func (this *QSslConfiguration) LocalCertificate() *QSslCertificate {
-	_ret := C.QSslConfiguration_LocalCertificate(this.h)
-	_goptr := newQSslCertificate(_ret)
+	_goptr := newQSslCertificate(C.QSslConfiguration_LocalCertificate(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -157,8 +148,7 @@ func (this *QSslConfiguration) SetLocalCertificate(certificate *QSslCertificate)
 }
 
 func (this *QSslConfiguration) PeerCertificate() *QSslCertificate {
-	_ret := C.QSslConfiguration_PeerCertificate(this.h)
-	_goptr := newQSslCertificate(_ret)
+	_goptr := newQSslCertificate(C.QSslConfiguration_PeerCertificate(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -168,8 +158,7 @@ func (this *QSslConfiguration) PeerCertificateChain() []QSslCertificate {
 	_ret := make([]QSslCertificate, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSslCertificate)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQSslCertificate(_lv_ret)
+		_lv_goptr := newQSslCertificate(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -177,8 +166,7 @@ func (this *QSslConfiguration) PeerCertificateChain() []QSslCertificate {
 }
 
 func (this *QSslConfiguration) SessionCipher() *QSslCipher {
-	_ret := C.QSslConfiguration_SessionCipher(this.h)
-	_goptr := newQSslCipher(_ret)
+	_goptr := newQSslCipher(C.QSslConfiguration_SessionCipher(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -188,8 +176,7 @@ func (this *QSslConfiguration) SessionProtocol() QSsl__SslProtocol {
 }
 
 func (this *QSslConfiguration) PrivateKey() *QSslKey {
-	_ret := C.QSslConfiguration_PrivateKey(this.h)
-	_goptr := newQSslKey(_ret)
+	_goptr := newQSslKey(C.QSslConfiguration_PrivateKey(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -203,8 +190,7 @@ func (this *QSslConfiguration) Ciphers() []QSslCipher {
 	_ret := make([]QSslCipher, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSslCipher)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQSslCipher(_lv_ret)
+		_lv_goptr := newQSslCipher(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -234,8 +220,7 @@ func QSslConfiguration_SupportedCiphers() []QSslCipher {
 	_ret := make([]QSslCipher, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSslCipher)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQSslCipher(_lv_ret)
+		_lv_goptr := newQSslCipher(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -247,8 +232,7 @@ func (this *QSslConfiguration) CaCertificates() []QSslCertificate {
 	_ret := make([]QSslCertificate, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSslCertificate)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQSslCertificate(_lv_ret)
+		_lv_goptr := newQSslCertificate(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -292,8 +276,7 @@ func QSslConfiguration_SystemCaCertificates() []QSslCertificate {
 	_ret := make([]QSslCertificate, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSslCertificate)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQSslCertificate(_lv_ret)
+		_lv_goptr := newQSslCertificate(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -327,8 +310,7 @@ func (this *QSslConfiguration) SessionTicketLifeTimeHint() int {
 }
 
 func (this *QSslConfiguration) EphemeralServerKey() *QSslKey {
-	_ret := C.QSslConfiguration_EphemeralServerKey(this.h)
-	_goptr := newQSslKey(_ret)
+	_goptr := newQSslKey(C.QSslConfiguration_EphemeralServerKey(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -338,8 +320,7 @@ func (this *QSslConfiguration) EllipticCurves() []QSslEllipticCurve {
 	_ret := make([]QSslEllipticCurve, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSslEllipticCurve)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQSslEllipticCurve(_lv_ret)
+		_lv_goptr := newQSslEllipticCurve(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -361,8 +342,7 @@ func QSslConfiguration_SupportedEllipticCurves() []QSslEllipticCurve {
 	_ret := make([]QSslEllipticCurve, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSslEllipticCurve)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQSslEllipticCurve(_lv_ret)
+		_lv_goptr := newQSslEllipticCurve(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -384,8 +364,7 @@ func (this *QSslConfiguration) SetPreSharedKeyIdentityHint(hint []byte) {
 }
 
 func (this *QSslConfiguration) DiffieHellmanParameters() *QSslDiffieHellmanParameters {
-	_ret := C.QSslConfiguration_DiffieHellmanParameters(this.h)
-	_goptr := newQSslDiffieHellmanParameters(_ret)
+	_goptr := newQSslDiffieHellmanParameters(C.QSslConfiguration_DiffieHellmanParameters(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -406,8 +385,7 @@ func (this *QSslConfiguration) SetBackendConfiguration() {
 }
 
 func QSslConfiguration_DefaultConfiguration() *QSslConfiguration {
-	_ret := C.QSslConfiguration_DefaultConfiguration()
-	_goptr := newQSslConfiguration(_ret)
+	_goptr := newQSslConfiguration(C.QSslConfiguration_DefaultConfiguration())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -425,8 +403,7 @@ func (this *QSslConfiguration) SetDtlsCookieVerificationEnabled(enable bool) {
 }
 
 func QSslConfiguration_DefaultDtlsConfiguration() *QSslConfiguration {
-	_ret := C.QSslConfiguration_DefaultDtlsConfiguration()
-	_goptr := newQSslConfiguration(_ret)
+	_goptr := newQSslConfiguration(C.QSslConfiguration_DefaultDtlsConfiguration())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

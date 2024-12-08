@@ -508,20 +508,16 @@ public:
 
 };
 
-void QFormLayout_new(QWidget* parent, QFormLayout** outptr_QFormLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem) {
-	MiqtVirtualQFormLayout* ret = new MiqtVirtualQFormLayout(parent);
-	*outptr_QFormLayout = ret;
-	*outptr_QLayout = static_cast<QLayout*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QLayoutItem = static_cast<QLayoutItem*>(ret);
+QFormLayout* QFormLayout_new(QWidget* parent) {
+	return new MiqtVirtualQFormLayout(parent);
 }
 
-void QFormLayout_new2(QFormLayout** outptr_QFormLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem) {
-	MiqtVirtualQFormLayout* ret = new MiqtVirtualQFormLayout();
-	*outptr_QFormLayout = ret;
-	*outptr_QLayout = static_cast<QLayout*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QLayoutItem = static_cast<QLayoutItem*>(ret);
+QFormLayout* QFormLayout_new2() {
+	return new MiqtVirtualQFormLayout();
+}
+
+void QFormLayout_virtbase(QFormLayout* src, QLayout** outptr_QLayout) {
+	*outptr_QLayout = static_cast<QLayout*>(src);
 }
 
 QMetaObject* QFormLayout_MetaObject(const QFormLayout* self) {

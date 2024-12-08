@@ -196,16 +196,16 @@ public:
 
 };
 
-void QVideoProbe_new(QVideoProbe** outptr_QVideoProbe, QObject** outptr_QObject) {
-	MiqtVirtualQVideoProbe* ret = new MiqtVirtualQVideoProbe();
-	*outptr_QVideoProbe = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QVideoProbe* QVideoProbe_new() {
+	return new MiqtVirtualQVideoProbe();
 }
 
-void QVideoProbe_new2(QObject* parent, QVideoProbe** outptr_QVideoProbe, QObject** outptr_QObject) {
-	MiqtVirtualQVideoProbe* ret = new MiqtVirtualQVideoProbe(parent);
-	*outptr_QVideoProbe = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QVideoProbe* QVideoProbe_new2(QObject* parent) {
+	return new MiqtVirtualQVideoProbe(parent);
+}
+
+void QVideoProbe_virtbase(QVideoProbe* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QVideoProbe_MetaObject(const QVideoProbe* self) {

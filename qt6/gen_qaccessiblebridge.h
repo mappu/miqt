@@ -43,8 +43,9 @@ void QAccessibleBridge_NotifyAccessibilityUpdate(QAccessibleBridge* self, QAcces
 void QAccessibleBridge_OperatorAssign(QAccessibleBridge* self, QAccessibleBridge* param1);
 void QAccessibleBridge_Delete(QAccessibleBridge* self, bool isSubclass);
 
-void QAccessibleBridgePlugin_new(QAccessibleBridgePlugin** outptr_QAccessibleBridgePlugin, QObject** outptr_QObject);
-void QAccessibleBridgePlugin_new2(QObject* parent, QAccessibleBridgePlugin** outptr_QAccessibleBridgePlugin, QObject** outptr_QObject);
+QAccessibleBridgePlugin* QAccessibleBridgePlugin_new();
+QAccessibleBridgePlugin* QAccessibleBridgePlugin_new2(QObject* parent);
+void QAccessibleBridgePlugin_virtbase(QAccessibleBridgePlugin* src, QObject** outptr_QObject);
 QMetaObject* QAccessibleBridgePlugin_MetaObject(const QAccessibleBridgePlugin* self);
 void* QAccessibleBridgePlugin_Metacast(QAccessibleBridgePlugin* self, const char* param1);
 struct miqt_string QAccessibleBridgePlugin_Tr(const char* s);

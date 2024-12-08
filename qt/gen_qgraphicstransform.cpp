@@ -213,16 +213,16 @@ public:
 
 };
 
-void QGraphicsTransform_new(QGraphicsTransform** outptr_QGraphicsTransform, QObject** outptr_QObject) {
-	MiqtVirtualQGraphicsTransform* ret = new MiqtVirtualQGraphicsTransform();
-	*outptr_QGraphicsTransform = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGraphicsTransform* QGraphicsTransform_new() {
+	return new MiqtVirtualQGraphicsTransform();
 }
 
-void QGraphicsTransform_new2(QObject* parent, QGraphicsTransform** outptr_QGraphicsTransform, QObject** outptr_QObject) {
-	MiqtVirtualQGraphicsTransform* ret = new MiqtVirtualQGraphicsTransform(parent);
-	*outptr_QGraphicsTransform = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGraphicsTransform* QGraphicsTransform_new2(QObject* parent) {
+	return new MiqtVirtualQGraphicsTransform(parent);
+}
+
+void QGraphicsTransform_virtbase(QGraphicsTransform* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QGraphicsTransform_MetaObject(const QGraphicsTransform* self) {
@@ -405,18 +405,16 @@ public:
 
 };
 
-void QGraphicsScale_new(QGraphicsScale** outptr_QGraphicsScale, QGraphicsTransform** outptr_QGraphicsTransform, QObject** outptr_QObject) {
-	MiqtVirtualQGraphicsScale* ret = new MiqtVirtualQGraphicsScale();
-	*outptr_QGraphicsScale = ret;
-	*outptr_QGraphicsTransform = static_cast<QGraphicsTransform*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGraphicsScale* QGraphicsScale_new() {
+	return new MiqtVirtualQGraphicsScale();
 }
 
-void QGraphicsScale_new2(QObject* parent, QGraphicsScale** outptr_QGraphicsScale, QGraphicsTransform** outptr_QGraphicsTransform, QObject** outptr_QObject) {
-	MiqtVirtualQGraphicsScale* ret = new MiqtVirtualQGraphicsScale(parent);
-	*outptr_QGraphicsScale = ret;
-	*outptr_QGraphicsTransform = static_cast<QGraphicsTransform*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGraphicsScale* QGraphicsScale_new2(QObject* parent) {
+	return new MiqtVirtualQGraphicsScale(parent);
+}
+
+void QGraphicsScale_virtbase(QGraphicsScale* src, QGraphicsTransform** outptr_QGraphicsTransform) {
+	*outptr_QGraphicsTransform = static_cast<QGraphicsTransform*>(src);
 }
 
 QMetaObject* QGraphicsScale_MetaObject(const QGraphicsScale* self) {
@@ -632,18 +630,16 @@ public:
 
 };
 
-void QGraphicsRotation_new(QGraphicsRotation** outptr_QGraphicsRotation, QGraphicsTransform** outptr_QGraphicsTransform, QObject** outptr_QObject) {
-	MiqtVirtualQGraphicsRotation* ret = new MiqtVirtualQGraphicsRotation();
-	*outptr_QGraphicsRotation = ret;
-	*outptr_QGraphicsTransform = static_cast<QGraphicsTransform*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGraphicsRotation* QGraphicsRotation_new() {
+	return new MiqtVirtualQGraphicsRotation();
 }
 
-void QGraphicsRotation_new2(QObject* parent, QGraphicsRotation** outptr_QGraphicsRotation, QGraphicsTransform** outptr_QGraphicsTransform, QObject** outptr_QObject) {
-	MiqtVirtualQGraphicsRotation* ret = new MiqtVirtualQGraphicsRotation(parent);
-	*outptr_QGraphicsRotation = ret;
-	*outptr_QGraphicsTransform = static_cast<QGraphicsTransform*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGraphicsRotation* QGraphicsRotation_new2(QObject* parent) {
+	return new MiqtVirtualQGraphicsRotation(parent);
+}
+
+void QGraphicsRotation_virtbase(QGraphicsRotation* src, QGraphicsTransform** outptr_QGraphicsTransform) {
+	*outptr_QGraphicsTransform = static_cast<QGraphicsTransform*>(src);
 }
 
 QMetaObject* QGraphicsRotation_MetaObject(const QGraphicsRotation* self) {

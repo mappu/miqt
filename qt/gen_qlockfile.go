@@ -46,16 +46,13 @@ func newQLockFile(h *C.QLockFile) *QLockFile {
 	if h == nil {
 		return nil
 	}
+
 	return &QLockFile{h: h}
 }
 
 // UnsafeNewQLockFile constructs the type using only unsafe pointers.
 func UnsafeNewQLockFile(h unsafe.Pointer) *QLockFile {
-	if h == nil {
-		return nil
-	}
-
-	return &QLockFile{h: (*C.QLockFile)(h)}
+	return newQLockFile((*C.QLockFile)(h))
 }
 
 // NewQLockFile constructs a new QLockFile object.
@@ -64,10 +61,8 @@ func NewQLockFile(fileName string) *QLockFile {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QLockFile *C.QLockFile = nil
 
-	C.QLockFile_new(fileName_ms, &outptr_QLockFile)
-	ret := newQLockFile(outptr_QLockFile)
+	ret := newQLockFile(C.QLockFile_new(fileName_ms))
 	ret.isSubclass = true
 	return ret
 }

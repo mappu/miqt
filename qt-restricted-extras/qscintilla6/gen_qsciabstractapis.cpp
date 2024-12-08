@@ -325,10 +325,12 @@ public:
 
 };
 
-void QsciAbstractAPIs_new(QsciLexer* lexer, QsciAbstractAPIs** outptr_QsciAbstractAPIs, QObject** outptr_QObject) {
-	MiqtVirtualQsciAbstractAPIs* ret = new MiqtVirtualQsciAbstractAPIs(lexer);
-	*outptr_QsciAbstractAPIs = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciAbstractAPIs* QsciAbstractAPIs_new(QsciLexer* lexer) {
+	return new MiqtVirtualQsciAbstractAPIs(lexer);
+}
+
+void QsciAbstractAPIs_virtbase(QsciAbstractAPIs* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QsciAbstractAPIs_MetaObject(const QsciAbstractAPIs* self) {

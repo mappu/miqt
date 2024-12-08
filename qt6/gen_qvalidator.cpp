@@ -254,16 +254,16 @@ public:
 
 };
 
-void QValidator_new(QValidator** outptr_QValidator, QObject** outptr_QObject) {
-	MiqtVirtualQValidator* ret = new MiqtVirtualQValidator();
-	*outptr_QValidator = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QValidator* QValidator_new() {
+	return new MiqtVirtualQValidator();
 }
 
-void QValidator_new2(QObject* parent, QValidator** outptr_QValidator, QObject** outptr_QObject) {
-	MiqtVirtualQValidator* ret = new MiqtVirtualQValidator(parent);
-	*outptr_QValidator = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QValidator* QValidator_new2(QObject* parent) {
+	return new MiqtVirtualQValidator(parent);
+}
+
+void QValidator_virtbase(QValidator* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QValidator_MetaObject(const QValidator* self) {
@@ -489,32 +489,24 @@ public:
 
 };
 
-void QIntValidator_new(QIntValidator** outptr_QIntValidator, QValidator** outptr_QValidator, QObject** outptr_QObject) {
-	MiqtVirtualQIntValidator* ret = new MiqtVirtualQIntValidator();
-	*outptr_QIntValidator = ret;
-	*outptr_QValidator = static_cast<QValidator*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QIntValidator* QIntValidator_new() {
+	return new MiqtVirtualQIntValidator();
 }
 
-void QIntValidator_new2(int bottom, int top, QIntValidator** outptr_QIntValidator, QValidator** outptr_QValidator, QObject** outptr_QObject) {
-	MiqtVirtualQIntValidator* ret = new MiqtVirtualQIntValidator(static_cast<int>(bottom), static_cast<int>(top));
-	*outptr_QIntValidator = ret;
-	*outptr_QValidator = static_cast<QValidator*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QIntValidator* QIntValidator_new2(int bottom, int top) {
+	return new MiqtVirtualQIntValidator(static_cast<int>(bottom), static_cast<int>(top));
 }
 
-void QIntValidator_new3(QObject* parent, QIntValidator** outptr_QIntValidator, QValidator** outptr_QValidator, QObject** outptr_QObject) {
-	MiqtVirtualQIntValidator* ret = new MiqtVirtualQIntValidator(parent);
-	*outptr_QIntValidator = ret;
-	*outptr_QValidator = static_cast<QValidator*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QIntValidator* QIntValidator_new3(QObject* parent) {
+	return new MiqtVirtualQIntValidator(parent);
 }
 
-void QIntValidator_new4(int bottom, int top, QObject* parent, QIntValidator** outptr_QIntValidator, QValidator** outptr_QValidator, QObject** outptr_QObject) {
-	MiqtVirtualQIntValidator* ret = new MiqtVirtualQIntValidator(static_cast<int>(bottom), static_cast<int>(top), parent);
-	*outptr_QIntValidator = ret;
-	*outptr_QValidator = static_cast<QValidator*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QIntValidator* QIntValidator_new4(int bottom, int top, QObject* parent) {
+	return new MiqtVirtualQIntValidator(static_cast<int>(bottom), static_cast<int>(top), parent);
+}
+
+void QIntValidator_virtbase(QIntValidator* src, QValidator** outptr_QValidator) {
+	*outptr_QValidator = static_cast<QValidator*>(src);
 }
 
 QMetaObject* QIntValidator_MetaObject(const QIntValidator* self) {
@@ -712,32 +704,24 @@ public:
 
 };
 
-void QDoubleValidator_new(QDoubleValidator** outptr_QDoubleValidator, QValidator** outptr_QValidator, QObject** outptr_QObject) {
-	MiqtVirtualQDoubleValidator* ret = new MiqtVirtualQDoubleValidator();
-	*outptr_QDoubleValidator = ret;
-	*outptr_QValidator = static_cast<QValidator*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QDoubleValidator* QDoubleValidator_new() {
+	return new MiqtVirtualQDoubleValidator();
 }
 
-void QDoubleValidator_new2(double bottom, double top, int decimals, QDoubleValidator** outptr_QDoubleValidator, QValidator** outptr_QValidator, QObject** outptr_QObject) {
-	MiqtVirtualQDoubleValidator* ret = new MiqtVirtualQDoubleValidator(static_cast<double>(bottom), static_cast<double>(top), static_cast<int>(decimals));
-	*outptr_QDoubleValidator = ret;
-	*outptr_QValidator = static_cast<QValidator*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QDoubleValidator* QDoubleValidator_new2(double bottom, double top, int decimals) {
+	return new MiqtVirtualQDoubleValidator(static_cast<double>(bottom), static_cast<double>(top), static_cast<int>(decimals));
 }
 
-void QDoubleValidator_new3(QObject* parent, QDoubleValidator** outptr_QDoubleValidator, QValidator** outptr_QValidator, QObject** outptr_QObject) {
-	MiqtVirtualQDoubleValidator* ret = new MiqtVirtualQDoubleValidator(parent);
-	*outptr_QDoubleValidator = ret;
-	*outptr_QValidator = static_cast<QValidator*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QDoubleValidator* QDoubleValidator_new3(QObject* parent) {
+	return new MiqtVirtualQDoubleValidator(parent);
 }
 
-void QDoubleValidator_new4(double bottom, double top, int decimals, QObject* parent, QDoubleValidator** outptr_QDoubleValidator, QValidator** outptr_QValidator, QObject** outptr_QObject) {
-	MiqtVirtualQDoubleValidator* ret = new MiqtVirtualQDoubleValidator(static_cast<double>(bottom), static_cast<double>(top), static_cast<int>(decimals), parent);
-	*outptr_QDoubleValidator = ret;
-	*outptr_QValidator = static_cast<QValidator*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QDoubleValidator* QDoubleValidator_new4(double bottom, double top, int decimals, QObject* parent) {
+	return new MiqtVirtualQDoubleValidator(static_cast<double>(bottom), static_cast<double>(top), static_cast<int>(decimals), parent);
+}
+
+void QDoubleValidator_virtbase(QDoubleValidator* src, QValidator** outptr_QValidator) {
+	*outptr_QValidator = static_cast<QValidator*>(src);
 }
 
 QMetaObject* QDoubleValidator_MetaObject(const QDoubleValidator* self) {
@@ -979,32 +963,24 @@ public:
 
 };
 
-void QRegularExpressionValidator_new(QRegularExpressionValidator** outptr_QRegularExpressionValidator, QValidator** outptr_QValidator, QObject** outptr_QObject) {
-	MiqtVirtualQRegularExpressionValidator* ret = new MiqtVirtualQRegularExpressionValidator();
-	*outptr_QRegularExpressionValidator = ret;
-	*outptr_QValidator = static_cast<QValidator*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QRegularExpressionValidator* QRegularExpressionValidator_new() {
+	return new MiqtVirtualQRegularExpressionValidator();
 }
 
-void QRegularExpressionValidator_new2(QRegularExpression* re, QRegularExpressionValidator** outptr_QRegularExpressionValidator, QValidator** outptr_QValidator, QObject** outptr_QObject) {
-	MiqtVirtualQRegularExpressionValidator* ret = new MiqtVirtualQRegularExpressionValidator(*re);
-	*outptr_QRegularExpressionValidator = ret;
-	*outptr_QValidator = static_cast<QValidator*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QRegularExpressionValidator* QRegularExpressionValidator_new2(QRegularExpression* re) {
+	return new MiqtVirtualQRegularExpressionValidator(*re);
 }
 
-void QRegularExpressionValidator_new3(QObject* parent, QRegularExpressionValidator** outptr_QRegularExpressionValidator, QValidator** outptr_QValidator, QObject** outptr_QObject) {
-	MiqtVirtualQRegularExpressionValidator* ret = new MiqtVirtualQRegularExpressionValidator(parent);
-	*outptr_QRegularExpressionValidator = ret;
-	*outptr_QValidator = static_cast<QValidator*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QRegularExpressionValidator* QRegularExpressionValidator_new3(QObject* parent) {
+	return new MiqtVirtualQRegularExpressionValidator(parent);
 }
 
-void QRegularExpressionValidator_new4(QRegularExpression* re, QObject* parent, QRegularExpressionValidator** outptr_QRegularExpressionValidator, QValidator** outptr_QValidator, QObject** outptr_QObject) {
-	MiqtVirtualQRegularExpressionValidator* ret = new MiqtVirtualQRegularExpressionValidator(*re, parent);
-	*outptr_QRegularExpressionValidator = ret;
-	*outptr_QValidator = static_cast<QValidator*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QRegularExpressionValidator* QRegularExpressionValidator_new4(QRegularExpression* re, QObject* parent) {
+	return new MiqtVirtualQRegularExpressionValidator(*re, parent);
+}
+
+void QRegularExpressionValidator_virtbase(QRegularExpressionValidator* src, QValidator** outptr_QValidator) {
+	*outptr_QValidator = static_cast<QValidator*>(src);
 }
 
 QMetaObject* QRegularExpressionValidator_MetaObject(const QRegularExpressionValidator* self) {

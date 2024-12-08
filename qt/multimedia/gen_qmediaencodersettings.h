@@ -28,8 +28,8 @@ typedef struct QVariant QVariant;
 typedef struct QVideoEncoderSettings QVideoEncoderSettings;
 #endif
 
-void QAudioEncoderSettings_new(QAudioEncoderSettings** outptr_QAudioEncoderSettings);
-void QAudioEncoderSettings_new2(QAudioEncoderSettings* other, QAudioEncoderSettings** outptr_QAudioEncoderSettings);
+QAudioEncoderSettings* QAudioEncoderSettings_new();
+QAudioEncoderSettings* QAudioEncoderSettings_new2(QAudioEncoderSettings* other);
 void QAudioEncoderSettings_OperatorAssign(QAudioEncoderSettings* self, QAudioEncoderSettings* other);
 bool QAudioEncoderSettings_OperatorEqual(const QAudioEncoderSettings* self, QAudioEncoderSettings* other);
 bool QAudioEncoderSettings_OperatorNotEqual(const QAudioEncoderSettings* self, QAudioEncoderSettings* other);
@@ -52,8 +52,8 @@ void QAudioEncoderSettings_SetEncodingOption(QAudioEncoderSettings* self, struct
 void QAudioEncoderSettings_SetEncodingOptions(QAudioEncoderSettings* self, struct miqt_map /* of struct miqt_string to QVariant* */  options);
 void QAudioEncoderSettings_Delete(QAudioEncoderSettings* self, bool isSubclass);
 
-void QVideoEncoderSettings_new(QVideoEncoderSettings** outptr_QVideoEncoderSettings);
-void QVideoEncoderSettings_new2(QVideoEncoderSettings* other, QVideoEncoderSettings** outptr_QVideoEncoderSettings);
+QVideoEncoderSettings* QVideoEncoderSettings_new();
+QVideoEncoderSettings* QVideoEncoderSettings_new2(QVideoEncoderSettings* other);
 void QVideoEncoderSettings_OperatorAssign(QVideoEncoderSettings* self, QVideoEncoderSettings* other);
 bool QVideoEncoderSettings_OperatorEqual(const QVideoEncoderSettings* self, QVideoEncoderSettings* other);
 bool QVideoEncoderSettings_OperatorNotEqual(const QVideoEncoderSettings* self, QVideoEncoderSettings* other);
@@ -77,8 +77,8 @@ void QVideoEncoderSettings_SetEncodingOption(QVideoEncoderSettings* self, struct
 void QVideoEncoderSettings_SetEncodingOptions(QVideoEncoderSettings* self, struct miqt_map /* of struct miqt_string to QVariant* */  options);
 void QVideoEncoderSettings_Delete(QVideoEncoderSettings* self, bool isSubclass);
 
-void QImageEncoderSettings_new(QImageEncoderSettings** outptr_QImageEncoderSettings);
-void QImageEncoderSettings_new2(QImageEncoderSettings* other, QImageEncoderSettings** outptr_QImageEncoderSettings);
+QImageEncoderSettings* QImageEncoderSettings_new();
+QImageEncoderSettings* QImageEncoderSettings_new2(QImageEncoderSettings* other);
 void QImageEncoderSettings_OperatorAssign(QImageEncoderSettings* self, QImageEncoderSettings* other);
 bool QImageEncoderSettings_OperatorEqual(const QImageEncoderSettings* self, QImageEncoderSettings* other);
 bool QImageEncoderSettings_OperatorNotEqual(const QImageEncoderSettings* self, QImageEncoderSettings* other);

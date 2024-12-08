@@ -1063,52 +1063,32 @@ public:
 
 };
 
-void QWebEngineView_new(QWidget* parent, QWebEngineView** outptr_QWebEngineView, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQWebEngineView* ret = new MiqtVirtualQWebEngineView(parent);
-	*outptr_QWebEngineView = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QWebEngineView* QWebEngineView_new(QWidget* parent) {
+	return new MiqtVirtualQWebEngineView(parent);
 }
 
-void QWebEngineView_new2(QWebEngineView** outptr_QWebEngineView, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQWebEngineView* ret = new MiqtVirtualQWebEngineView();
-	*outptr_QWebEngineView = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QWebEngineView* QWebEngineView_new2() {
+	return new MiqtVirtualQWebEngineView();
 }
 
-void QWebEngineView_new3(QWebEngineProfile* profile, QWebEngineView** outptr_QWebEngineView, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQWebEngineView* ret = new MiqtVirtualQWebEngineView(profile);
-	*outptr_QWebEngineView = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QWebEngineView* QWebEngineView_new3(QWebEngineProfile* profile) {
+	return new MiqtVirtualQWebEngineView(profile);
 }
 
-void QWebEngineView_new4(QWebEnginePage* page, QWebEngineView** outptr_QWebEngineView, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQWebEngineView* ret = new MiqtVirtualQWebEngineView(page);
-	*outptr_QWebEngineView = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QWebEngineView* QWebEngineView_new4(QWebEnginePage* page) {
+	return new MiqtVirtualQWebEngineView(page);
 }
 
-void QWebEngineView_new5(QWebEngineProfile* profile, QWidget* parent, QWebEngineView** outptr_QWebEngineView, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQWebEngineView* ret = new MiqtVirtualQWebEngineView(profile, parent);
-	*outptr_QWebEngineView = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QWebEngineView* QWebEngineView_new5(QWebEngineProfile* profile, QWidget* parent) {
+	return new MiqtVirtualQWebEngineView(profile, parent);
 }
 
-void QWebEngineView_new6(QWebEnginePage* page, QWidget* parent, QWebEngineView** outptr_QWebEngineView, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQWebEngineView* ret = new MiqtVirtualQWebEngineView(page, parent);
-	*outptr_QWebEngineView = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QWebEngineView* QWebEngineView_new6(QWebEnginePage* page, QWidget* parent) {
+	return new MiqtVirtualQWebEngineView(page, parent);
+}
+
+void QWebEngineView_virtbase(QWebEngineView* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QWebEngineView_MetaObject(const QWebEngineView* self) {

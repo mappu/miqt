@@ -38,24 +38,19 @@ func newQCborStreamWriter(h *C.QCborStreamWriter) *QCborStreamWriter {
 	if h == nil {
 		return nil
 	}
+
 	return &QCborStreamWriter{h: h}
 }
 
 // UnsafeNewQCborStreamWriter constructs the type using only unsafe pointers.
 func UnsafeNewQCborStreamWriter(h unsafe.Pointer) *QCborStreamWriter {
-	if h == nil {
-		return nil
-	}
-
-	return &QCborStreamWriter{h: (*C.QCborStreamWriter)(h)}
+	return newQCborStreamWriter((*C.QCborStreamWriter)(h))
 }
 
 // NewQCborStreamWriter constructs a new QCborStreamWriter object.
 func NewQCborStreamWriter(device *qt6.QIODevice) *QCborStreamWriter {
-	var outptr_QCborStreamWriter *C.QCborStreamWriter = nil
 
-	C.QCborStreamWriter_new((*C.QIODevice)(device.UnsafePointer()), &outptr_QCborStreamWriter)
-	ret := newQCborStreamWriter(outptr_QCborStreamWriter)
+	ret := newQCborStreamWriter(C.QCborStreamWriter_new((*C.QIODevice)(device.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -65,7 +60,7 @@ func (this *QCborStreamWriter) SetDevice(device *qt6.QIODevice) {
 }
 
 func (this *QCborStreamWriter) Device() *qt6.QIODevice {
-	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QCborStreamWriter_Device(this.h)), nil, nil)
+	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QCborStreamWriter_Device(this.h)))
 }
 
 func (this *QCborStreamWriter) Append(u uint64) {

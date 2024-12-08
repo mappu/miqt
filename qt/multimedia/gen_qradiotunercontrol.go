@@ -36,22 +36,20 @@ func (this *QRadioTunerControl) UnsafePointer() unsafe.Pointer {
 }
 
 // newQRadioTunerControl constructs the type using only CGO pointers.
-func newQRadioTunerControl(h *C.QRadioTunerControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QRadioTunerControl {
+func newQRadioTunerControl(h *C.QRadioTunerControl) *QRadioTunerControl {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaControl *C.QMediaControl = nil
+	C.QRadioTunerControl_virtbase(h, &outptr_QMediaControl)
+
 	return &QRadioTunerControl{h: h,
-		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
+		QMediaControl: newQMediaControl(outptr_QMediaControl)}
 }
 
 // UnsafeNewQRadioTunerControl constructs the type using only unsafe pointers.
-func UnsafeNewQRadioTunerControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QRadioTunerControl {
-	if h == nil {
-		return nil
-	}
-
-	return &QRadioTunerControl{h: (*C.QRadioTunerControl)(h),
-		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
+func UnsafeNewQRadioTunerControl(h unsafe.Pointer) *QRadioTunerControl {
+	return newQRadioTunerControl((*C.QRadioTunerControl)(h))
 }
 
 func (this *QRadioTunerControl) MetaObject() *qt.QMetaObject {

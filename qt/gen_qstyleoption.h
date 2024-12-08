@@ -78,129 +78,155 @@ typedef struct QTransform QTransform;
 typedef struct QWidget QWidget;
 #endif
 
-void QStyleOption_new(QStyleOption** outptr_QStyleOption);
-void QStyleOption_new2(QStyleOption* other, QStyleOption** outptr_QStyleOption);
-void QStyleOption_new3(int version, QStyleOption** outptr_QStyleOption);
-void QStyleOption_new4(int version, int typeVal, QStyleOption** outptr_QStyleOption);
+QStyleOption* QStyleOption_new();
+QStyleOption* QStyleOption_new2(QStyleOption* other);
+QStyleOption* QStyleOption_new3(int version);
+QStyleOption* QStyleOption_new4(int version, int typeVal);
 void QStyleOption_Init(QStyleOption* self, QWidget* w);
 void QStyleOption_InitFrom(QStyleOption* self, QWidget* w);
 void QStyleOption_OperatorAssign(QStyleOption* self, QStyleOption* other);
 void QStyleOption_Delete(QStyleOption* self, bool isSubclass);
 
-void QStyleOptionFocusRect_new(QStyleOptionFocusRect** outptr_QStyleOptionFocusRect, QStyleOption** outptr_QStyleOption);
-void QStyleOptionFocusRect_new2(QStyleOptionFocusRect* other, QStyleOptionFocusRect** outptr_QStyleOptionFocusRect, QStyleOption** outptr_QStyleOption);
+QStyleOptionFocusRect* QStyleOptionFocusRect_new();
+QStyleOptionFocusRect* QStyleOptionFocusRect_new2(QStyleOptionFocusRect* other);
+void QStyleOptionFocusRect_virtbase(QStyleOptionFocusRect* src, QStyleOption** outptr_QStyleOption);
 void QStyleOptionFocusRect_Delete(QStyleOptionFocusRect* self, bool isSubclass);
 
-void QStyleOptionFrame_new(QStyleOptionFrame** outptr_QStyleOptionFrame, QStyleOption** outptr_QStyleOption);
-void QStyleOptionFrame_new2(QStyleOptionFrame* other, QStyleOptionFrame** outptr_QStyleOptionFrame, QStyleOption** outptr_QStyleOption);
+QStyleOptionFrame* QStyleOptionFrame_new();
+QStyleOptionFrame* QStyleOptionFrame_new2(QStyleOptionFrame* other);
+void QStyleOptionFrame_virtbase(QStyleOptionFrame* src, QStyleOption** outptr_QStyleOption);
 void QStyleOptionFrame_Delete(QStyleOptionFrame* self, bool isSubclass);
 
-void QStyleOptionTabWidgetFrame_new(QStyleOptionTabWidgetFrame** outptr_QStyleOptionTabWidgetFrame, QStyleOption** outptr_QStyleOption);
-void QStyleOptionTabWidgetFrame_new2(QStyleOptionTabWidgetFrame* other, QStyleOptionTabWidgetFrame** outptr_QStyleOptionTabWidgetFrame, QStyleOption** outptr_QStyleOption);
+QStyleOptionTabWidgetFrame* QStyleOptionTabWidgetFrame_new();
+QStyleOptionTabWidgetFrame* QStyleOptionTabWidgetFrame_new2(QStyleOptionTabWidgetFrame* other);
+void QStyleOptionTabWidgetFrame_virtbase(QStyleOptionTabWidgetFrame* src, QStyleOption** outptr_QStyleOption);
 void QStyleOptionTabWidgetFrame_Delete(QStyleOptionTabWidgetFrame* self, bool isSubclass);
 
-void QStyleOptionTabBarBase_new(QStyleOptionTabBarBase** outptr_QStyleOptionTabBarBase, QStyleOption** outptr_QStyleOption);
-void QStyleOptionTabBarBase_new2(QStyleOptionTabBarBase* other, QStyleOptionTabBarBase** outptr_QStyleOptionTabBarBase, QStyleOption** outptr_QStyleOption);
+QStyleOptionTabBarBase* QStyleOptionTabBarBase_new();
+QStyleOptionTabBarBase* QStyleOptionTabBarBase_new2(QStyleOptionTabBarBase* other);
+void QStyleOptionTabBarBase_virtbase(QStyleOptionTabBarBase* src, QStyleOption** outptr_QStyleOption);
 void QStyleOptionTabBarBase_Delete(QStyleOptionTabBarBase* self, bool isSubclass);
 
-void QStyleOptionHeader_new(QStyleOptionHeader** outptr_QStyleOptionHeader, QStyleOption** outptr_QStyleOption);
-void QStyleOptionHeader_new2(QStyleOptionHeader* other, QStyleOptionHeader** outptr_QStyleOptionHeader, QStyleOption** outptr_QStyleOption);
+QStyleOptionHeader* QStyleOptionHeader_new();
+QStyleOptionHeader* QStyleOptionHeader_new2(QStyleOptionHeader* other);
+void QStyleOptionHeader_virtbase(QStyleOptionHeader* src, QStyleOption** outptr_QStyleOption);
 void QStyleOptionHeader_Delete(QStyleOptionHeader* self, bool isSubclass);
 
-void QStyleOptionButton_new(QStyleOptionButton** outptr_QStyleOptionButton, QStyleOption** outptr_QStyleOption);
-void QStyleOptionButton_new2(QStyleOptionButton* other, QStyleOptionButton** outptr_QStyleOptionButton, QStyleOption** outptr_QStyleOption);
+QStyleOptionButton* QStyleOptionButton_new();
+QStyleOptionButton* QStyleOptionButton_new2(QStyleOptionButton* other);
+void QStyleOptionButton_virtbase(QStyleOptionButton* src, QStyleOption** outptr_QStyleOption);
 void QStyleOptionButton_Delete(QStyleOptionButton* self, bool isSubclass);
 
-void QStyleOptionTab_new(QStyleOptionTab** outptr_QStyleOptionTab, QStyleOption** outptr_QStyleOption);
-void QStyleOptionTab_new2(QStyleOptionTab* other, QStyleOptionTab** outptr_QStyleOptionTab, QStyleOption** outptr_QStyleOption);
+QStyleOptionTab* QStyleOptionTab_new();
+QStyleOptionTab* QStyleOptionTab_new2(QStyleOptionTab* other);
+void QStyleOptionTab_virtbase(QStyleOptionTab* src, QStyleOption** outptr_QStyleOption);
 void QStyleOptionTab_Delete(QStyleOptionTab* self, bool isSubclass);
 
-void QStyleOptionTabV4_new(QStyleOptionTabV4** outptr_QStyleOptionTabV4, QStyleOptionTab** outptr_QStyleOptionTab, QStyleOption** outptr_QStyleOption);
-void QStyleOptionTabV4_new2(QStyleOptionTabV4* param1, QStyleOptionTabV4** outptr_QStyleOptionTabV4, QStyleOptionTab** outptr_QStyleOptionTab, QStyleOption** outptr_QStyleOption);
+QStyleOptionTabV4* QStyleOptionTabV4_new();
+QStyleOptionTabV4* QStyleOptionTabV4_new2(QStyleOptionTabV4* param1);
+void QStyleOptionTabV4_virtbase(QStyleOptionTabV4* src, QStyleOptionTab** outptr_QStyleOptionTab);
 void QStyleOptionTabV4_OperatorAssign(QStyleOptionTabV4* self, QStyleOptionTabV4* param1);
 void QStyleOptionTabV4_Delete(QStyleOptionTabV4* self, bool isSubclass);
 
-void QStyleOptionToolBar_new(QStyleOptionToolBar** outptr_QStyleOptionToolBar, QStyleOption** outptr_QStyleOption);
-void QStyleOptionToolBar_new2(QStyleOptionToolBar* other, QStyleOptionToolBar** outptr_QStyleOptionToolBar, QStyleOption** outptr_QStyleOption);
+QStyleOptionToolBar* QStyleOptionToolBar_new();
+QStyleOptionToolBar* QStyleOptionToolBar_new2(QStyleOptionToolBar* other);
+void QStyleOptionToolBar_virtbase(QStyleOptionToolBar* src, QStyleOption** outptr_QStyleOption);
 void QStyleOptionToolBar_Delete(QStyleOptionToolBar* self, bool isSubclass);
 
-void QStyleOptionProgressBar_new(QStyleOptionProgressBar** outptr_QStyleOptionProgressBar, QStyleOption** outptr_QStyleOption);
-void QStyleOptionProgressBar_new2(QStyleOptionProgressBar* other, QStyleOptionProgressBar** outptr_QStyleOptionProgressBar, QStyleOption** outptr_QStyleOption);
+QStyleOptionProgressBar* QStyleOptionProgressBar_new();
+QStyleOptionProgressBar* QStyleOptionProgressBar_new2(QStyleOptionProgressBar* other);
+void QStyleOptionProgressBar_virtbase(QStyleOptionProgressBar* src, QStyleOption** outptr_QStyleOption);
 void QStyleOptionProgressBar_Delete(QStyleOptionProgressBar* self, bool isSubclass);
 
-void QStyleOptionMenuItem_new(QStyleOptionMenuItem** outptr_QStyleOptionMenuItem, QStyleOption** outptr_QStyleOption);
-void QStyleOptionMenuItem_new2(QStyleOptionMenuItem* other, QStyleOptionMenuItem** outptr_QStyleOptionMenuItem, QStyleOption** outptr_QStyleOption);
+QStyleOptionMenuItem* QStyleOptionMenuItem_new();
+QStyleOptionMenuItem* QStyleOptionMenuItem_new2(QStyleOptionMenuItem* other);
+void QStyleOptionMenuItem_virtbase(QStyleOptionMenuItem* src, QStyleOption** outptr_QStyleOption);
 void QStyleOptionMenuItem_Delete(QStyleOptionMenuItem* self, bool isSubclass);
 
-void QStyleOptionDockWidget_new(QStyleOptionDockWidget** outptr_QStyleOptionDockWidget, QStyleOption** outptr_QStyleOption);
-void QStyleOptionDockWidget_new2(QStyleOptionDockWidget* other, QStyleOptionDockWidget** outptr_QStyleOptionDockWidget, QStyleOption** outptr_QStyleOption);
+QStyleOptionDockWidget* QStyleOptionDockWidget_new();
+QStyleOptionDockWidget* QStyleOptionDockWidget_new2(QStyleOptionDockWidget* other);
+void QStyleOptionDockWidget_virtbase(QStyleOptionDockWidget* src, QStyleOption** outptr_QStyleOption);
 void QStyleOptionDockWidget_Delete(QStyleOptionDockWidget* self, bool isSubclass);
 
-void QStyleOptionViewItem_new(QStyleOptionViewItem** outptr_QStyleOptionViewItem, QStyleOption** outptr_QStyleOption);
-void QStyleOptionViewItem_new2(QStyleOptionViewItem* other, QStyleOptionViewItem** outptr_QStyleOptionViewItem, QStyleOption** outptr_QStyleOption);
+QStyleOptionViewItem* QStyleOptionViewItem_new();
+QStyleOptionViewItem* QStyleOptionViewItem_new2(QStyleOptionViewItem* other);
+void QStyleOptionViewItem_virtbase(QStyleOptionViewItem* src, QStyleOption** outptr_QStyleOption);
 void QStyleOptionViewItem_Delete(QStyleOptionViewItem* self, bool isSubclass);
 
-void QStyleOptionToolBox_new(QStyleOptionToolBox** outptr_QStyleOptionToolBox, QStyleOption** outptr_QStyleOption);
-void QStyleOptionToolBox_new2(QStyleOptionToolBox* other, QStyleOptionToolBox** outptr_QStyleOptionToolBox, QStyleOption** outptr_QStyleOption);
+QStyleOptionToolBox* QStyleOptionToolBox_new();
+QStyleOptionToolBox* QStyleOptionToolBox_new2(QStyleOptionToolBox* other);
+void QStyleOptionToolBox_virtbase(QStyleOptionToolBox* src, QStyleOption** outptr_QStyleOption);
 void QStyleOptionToolBox_Delete(QStyleOptionToolBox* self, bool isSubclass);
 
-void QStyleOptionRubberBand_new(QStyleOptionRubberBand** outptr_QStyleOptionRubberBand, QStyleOption** outptr_QStyleOption);
-void QStyleOptionRubberBand_new2(QStyleOptionRubberBand* other, QStyleOptionRubberBand** outptr_QStyleOptionRubberBand, QStyleOption** outptr_QStyleOption);
+QStyleOptionRubberBand* QStyleOptionRubberBand_new();
+QStyleOptionRubberBand* QStyleOptionRubberBand_new2(QStyleOptionRubberBand* other);
+void QStyleOptionRubberBand_virtbase(QStyleOptionRubberBand* src, QStyleOption** outptr_QStyleOption);
 void QStyleOptionRubberBand_Delete(QStyleOptionRubberBand* self, bool isSubclass);
 
-void QStyleOptionComplex_new(QStyleOptionComplex** outptr_QStyleOptionComplex, QStyleOption** outptr_QStyleOption);
-void QStyleOptionComplex_new2(QStyleOptionComplex* other, QStyleOptionComplex** outptr_QStyleOptionComplex, QStyleOption** outptr_QStyleOption);
-void QStyleOptionComplex_new3(int version, QStyleOptionComplex** outptr_QStyleOptionComplex, QStyleOption** outptr_QStyleOption);
-void QStyleOptionComplex_new4(int version, int typeVal, QStyleOptionComplex** outptr_QStyleOptionComplex, QStyleOption** outptr_QStyleOption);
+QStyleOptionComplex* QStyleOptionComplex_new();
+QStyleOptionComplex* QStyleOptionComplex_new2(QStyleOptionComplex* other);
+QStyleOptionComplex* QStyleOptionComplex_new3(int version);
+QStyleOptionComplex* QStyleOptionComplex_new4(int version, int typeVal);
+void QStyleOptionComplex_virtbase(QStyleOptionComplex* src, QStyleOption** outptr_QStyleOption);
 void QStyleOptionComplex_Delete(QStyleOptionComplex* self, bool isSubclass);
 
-void QStyleOptionSlider_new(QStyleOptionSlider** outptr_QStyleOptionSlider, QStyleOptionComplex** outptr_QStyleOptionComplex, QStyleOption** outptr_QStyleOption);
-void QStyleOptionSlider_new2(QStyleOptionSlider* other, QStyleOptionSlider** outptr_QStyleOptionSlider, QStyleOptionComplex** outptr_QStyleOptionComplex, QStyleOption** outptr_QStyleOption);
+QStyleOptionSlider* QStyleOptionSlider_new();
+QStyleOptionSlider* QStyleOptionSlider_new2(QStyleOptionSlider* other);
+void QStyleOptionSlider_virtbase(QStyleOptionSlider* src, QStyleOptionComplex** outptr_QStyleOptionComplex);
 void QStyleOptionSlider_Delete(QStyleOptionSlider* self, bool isSubclass);
 
-void QStyleOptionSpinBox_new(QStyleOptionSpinBox** outptr_QStyleOptionSpinBox, QStyleOptionComplex** outptr_QStyleOptionComplex, QStyleOption** outptr_QStyleOption);
-void QStyleOptionSpinBox_new2(QStyleOptionSpinBox* other, QStyleOptionSpinBox** outptr_QStyleOptionSpinBox, QStyleOptionComplex** outptr_QStyleOptionComplex, QStyleOption** outptr_QStyleOption);
+QStyleOptionSpinBox* QStyleOptionSpinBox_new();
+QStyleOptionSpinBox* QStyleOptionSpinBox_new2(QStyleOptionSpinBox* other);
+void QStyleOptionSpinBox_virtbase(QStyleOptionSpinBox* src, QStyleOptionComplex** outptr_QStyleOptionComplex);
 void QStyleOptionSpinBox_Delete(QStyleOptionSpinBox* self, bool isSubclass);
 
-void QStyleOptionToolButton_new(QStyleOptionToolButton** outptr_QStyleOptionToolButton, QStyleOptionComplex** outptr_QStyleOptionComplex, QStyleOption** outptr_QStyleOption);
-void QStyleOptionToolButton_new2(QStyleOptionToolButton* other, QStyleOptionToolButton** outptr_QStyleOptionToolButton, QStyleOptionComplex** outptr_QStyleOptionComplex, QStyleOption** outptr_QStyleOption);
+QStyleOptionToolButton* QStyleOptionToolButton_new();
+QStyleOptionToolButton* QStyleOptionToolButton_new2(QStyleOptionToolButton* other);
+void QStyleOptionToolButton_virtbase(QStyleOptionToolButton* src, QStyleOptionComplex** outptr_QStyleOptionComplex);
 void QStyleOptionToolButton_Delete(QStyleOptionToolButton* self, bool isSubclass);
 
-void QStyleOptionComboBox_new(QStyleOptionComboBox** outptr_QStyleOptionComboBox, QStyleOptionComplex** outptr_QStyleOptionComplex, QStyleOption** outptr_QStyleOption);
-void QStyleOptionComboBox_new2(QStyleOptionComboBox* other, QStyleOptionComboBox** outptr_QStyleOptionComboBox, QStyleOptionComplex** outptr_QStyleOptionComplex, QStyleOption** outptr_QStyleOption);
+QStyleOptionComboBox* QStyleOptionComboBox_new();
+QStyleOptionComboBox* QStyleOptionComboBox_new2(QStyleOptionComboBox* other);
+void QStyleOptionComboBox_virtbase(QStyleOptionComboBox* src, QStyleOptionComplex** outptr_QStyleOptionComplex);
 void QStyleOptionComboBox_Delete(QStyleOptionComboBox* self, bool isSubclass);
 
-void QStyleOptionTitleBar_new(QStyleOptionTitleBar** outptr_QStyleOptionTitleBar, QStyleOptionComplex** outptr_QStyleOptionComplex, QStyleOption** outptr_QStyleOption);
-void QStyleOptionTitleBar_new2(QStyleOptionTitleBar* other, QStyleOptionTitleBar** outptr_QStyleOptionTitleBar, QStyleOptionComplex** outptr_QStyleOptionComplex, QStyleOption** outptr_QStyleOption);
+QStyleOptionTitleBar* QStyleOptionTitleBar_new();
+QStyleOptionTitleBar* QStyleOptionTitleBar_new2(QStyleOptionTitleBar* other);
+void QStyleOptionTitleBar_virtbase(QStyleOptionTitleBar* src, QStyleOptionComplex** outptr_QStyleOptionComplex);
 void QStyleOptionTitleBar_Delete(QStyleOptionTitleBar* self, bool isSubclass);
 
-void QStyleOptionGroupBox_new(QStyleOptionGroupBox** outptr_QStyleOptionGroupBox, QStyleOptionComplex** outptr_QStyleOptionComplex, QStyleOption** outptr_QStyleOption);
-void QStyleOptionGroupBox_new2(QStyleOptionGroupBox* other, QStyleOptionGroupBox** outptr_QStyleOptionGroupBox, QStyleOptionComplex** outptr_QStyleOptionComplex, QStyleOption** outptr_QStyleOption);
+QStyleOptionGroupBox* QStyleOptionGroupBox_new();
+QStyleOptionGroupBox* QStyleOptionGroupBox_new2(QStyleOptionGroupBox* other);
+void QStyleOptionGroupBox_virtbase(QStyleOptionGroupBox* src, QStyleOptionComplex** outptr_QStyleOptionComplex);
 void QStyleOptionGroupBox_Delete(QStyleOptionGroupBox* self, bool isSubclass);
 
-void QStyleOptionSizeGrip_new(QStyleOptionSizeGrip** outptr_QStyleOptionSizeGrip, QStyleOptionComplex** outptr_QStyleOptionComplex, QStyleOption** outptr_QStyleOption);
-void QStyleOptionSizeGrip_new2(QStyleOptionSizeGrip* other, QStyleOptionSizeGrip** outptr_QStyleOptionSizeGrip, QStyleOptionComplex** outptr_QStyleOptionComplex, QStyleOption** outptr_QStyleOption);
+QStyleOptionSizeGrip* QStyleOptionSizeGrip_new();
+QStyleOptionSizeGrip* QStyleOptionSizeGrip_new2(QStyleOptionSizeGrip* other);
+void QStyleOptionSizeGrip_virtbase(QStyleOptionSizeGrip* src, QStyleOptionComplex** outptr_QStyleOptionComplex);
 void QStyleOptionSizeGrip_Delete(QStyleOptionSizeGrip* self, bool isSubclass);
 
-void QStyleOptionGraphicsItem_new(QStyleOptionGraphicsItem** outptr_QStyleOptionGraphicsItem, QStyleOption** outptr_QStyleOption);
-void QStyleOptionGraphicsItem_new2(QStyleOptionGraphicsItem* other, QStyleOptionGraphicsItem** outptr_QStyleOptionGraphicsItem, QStyleOption** outptr_QStyleOption);
+QStyleOptionGraphicsItem* QStyleOptionGraphicsItem_new();
+QStyleOptionGraphicsItem* QStyleOptionGraphicsItem_new2(QStyleOptionGraphicsItem* other);
+void QStyleOptionGraphicsItem_virtbase(QStyleOptionGraphicsItem* src, QStyleOption** outptr_QStyleOption);
 double QStyleOptionGraphicsItem_LevelOfDetailFromTransform(QTransform* worldTransform);
 void QStyleOptionGraphicsItem_Delete(QStyleOptionGraphicsItem* self, bool isSubclass);
 
-void QStyleHintReturn_new(QStyleHintReturn** outptr_QStyleHintReturn);
-void QStyleHintReturn_new2(QStyleHintReturn* param1, QStyleHintReturn** outptr_QStyleHintReturn);
-void QStyleHintReturn_new3(int version, QStyleHintReturn** outptr_QStyleHintReturn);
-void QStyleHintReturn_new4(int version, int typeVal, QStyleHintReturn** outptr_QStyleHintReturn);
+QStyleHintReturn* QStyleHintReturn_new();
+QStyleHintReturn* QStyleHintReturn_new2(QStyleHintReturn* param1);
+QStyleHintReturn* QStyleHintReturn_new3(int version);
+QStyleHintReturn* QStyleHintReturn_new4(int version, int typeVal);
 void QStyleHintReturn_OperatorAssign(QStyleHintReturn* self, QStyleHintReturn* param1);
 void QStyleHintReturn_Delete(QStyleHintReturn* self, bool isSubclass);
 
-void QStyleHintReturnMask_new(QStyleHintReturnMask** outptr_QStyleHintReturnMask, QStyleHintReturn** outptr_QStyleHintReturn);
-void QStyleHintReturnMask_new2(QStyleHintReturnMask* param1, QStyleHintReturnMask** outptr_QStyleHintReturnMask, QStyleHintReturn** outptr_QStyleHintReturn);
+QStyleHintReturnMask* QStyleHintReturnMask_new();
+QStyleHintReturnMask* QStyleHintReturnMask_new2(QStyleHintReturnMask* param1);
+void QStyleHintReturnMask_virtbase(QStyleHintReturnMask* src, QStyleHintReturn** outptr_QStyleHintReturn);
 void QStyleHintReturnMask_OperatorAssign(QStyleHintReturnMask* self, QStyleHintReturnMask* param1);
 void QStyleHintReturnMask_Delete(QStyleHintReturnMask* self, bool isSubclass);
 
-void QStyleHintReturnVariant_new(QStyleHintReturnVariant** outptr_QStyleHintReturnVariant, QStyleHintReturn** outptr_QStyleHintReturn);
-void QStyleHintReturnVariant_new2(QStyleHintReturnVariant* param1, QStyleHintReturnVariant** outptr_QStyleHintReturnVariant, QStyleHintReturn** outptr_QStyleHintReturn);
+QStyleHintReturnVariant* QStyleHintReturnVariant_new();
+QStyleHintReturnVariant* QStyleHintReturnVariant_new2(QStyleHintReturnVariant* param1);
+void QStyleHintReturnVariant_virtbase(QStyleHintReturnVariant* src, QStyleHintReturn** outptr_QStyleHintReturn);
 void QStyleHintReturnVariant_OperatorAssign(QStyleHintReturnVariant* self, QStyleHintReturnVariant* param1);
 void QStyleHintReturnVariant_Delete(QStyleHintReturnVariant* self, bool isSubclass);
 

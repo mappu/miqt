@@ -265,25 +265,21 @@ public:
 
 };
 
-void QOffscreenSurface_new(QScreen* screen, QObject* parent, QOffscreenSurface** outptr_QOffscreenSurface, QObject** outptr_QObject, QSurface** outptr_QSurface) {
-	MiqtVirtualQOffscreenSurface* ret = new MiqtVirtualQOffscreenSurface(screen, parent);
-	*outptr_QOffscreenSurface = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QSurface = static_cast<QSurface*>(ret);
+QOffscreenSurface* QOffscreenSurface_new(QScreen* screen, QObject* parent) {
+	return new MiqtVirtualQOffscreenSurface(screen, parent);
 }
 
-void QOffscreenSurface_new2(QOffscreenSurface** outptr_QOffscreenSurface, QObject** outptr_QObject, QSurface** outptr_QSurface) {
-	MiqtVirtualQOffscreenSurface* ret = new MiqtVirtualQOffscreenSurface();
-	*outptr_QOffscreenSurface = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QSurface = static_cast<QSurface*>(ret);
+QOffscreenSurface* QOffscreenSurface_new2() {
+	return new MiqtVirtualQOffscreenSurface();
 }
 
-void QOffscreenSurface_new3(QScreen* screen, QOffscreenSurface** outptr_QOffscreenSurface, QObject** outptr_QObject, QSurface** outptr_QSurface) {
-	MiqtVirtualQOffscreenSurface* ret = new MiqtVirtualQOffscreenSurface(screen);
-	*outptr_QOffscreenSurface = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QSurface = static_cast<QSurface*>(ret);
+QOffscreenSurface* QOffscreenSurface_new3(QScreen* screen) {
+	return new MiqtVirtualQOffscreenSurface(screen);
+}
+
+void QOffscreenSurface_virtbase(QOffscreenSurface* src, QObject** outptr_QObject, QSurface** outptr_QSurface) {
+	*outptr_QObject = static_cast<QObject*>(src);
+	*outptr_QSurface = static_cast<QSurface*>(src);
 }
 
 QMetaObject* QOffscreenSurface_MetaObject(const QOffscreenSurface* self) {

@@ -20,7 +20,7 @@ class QLoggingCategory;
 typedef struct QLoggingCategory QLoggingCategory;
 #endif
 
-void QLoggingCategory_new(const char* category, QLoggingCategory** outptr_QLoggingCategory);
+QLoggingCategory* QLoggingCategory_new(const char* category);
 bool QLoggingCategory_IsDebugEnabled(const QLoggingCategory* self);
 bool QLoggingCategory_IsInfoEnabled(const QLoggingCategory* self);
 bool QLoggingCategory_IsWarningEnabled(const QLoggingCategory* self);

@@ -34,8 +34,9 @@ typedef struct QsciLexerPostScript QsciLexerPostScript;
 typedef struct QsciScintilla QsciScintilla;
 #endif
 
-void QsciLexerPostScript_new(QsciLexerPostScript** outptr_QsciLexerPostScript, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerPostScript_new2(QObject* parent, QsciLexerPostScript** outptr_QsciLexerPostScript, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerPostScript* QsciLexerPostScript_new();
+QsciLexerPostScript* QsciLexerPostScript_new2(QObject* parent);
+void QsciLexerPostScript_virtbase(QsciLexerPostScript* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerPostScript_MetaObject(const QsciLexerPostScript* self);
 void* QsciLexerPostScript_Metacast(QsciLexerPostScript* self, const char* param1);
 struct miqt_string QsciLexerPostScript_Tr(const char* s);

@@ -28,15 +28,15 @@ typedef struct QNetworkRequest QNetworkRequest;
 typedef struct QUrl QUrl;
 #endif
 
-void QMediaContent_new(QMediaContent** outptr_QMediaContent);
-void QMediaContent_new2(QUrl* contentUrl, QMediaContent** outptr_QMediaContent);
-void QMediaContent_new3(QNetworkRequest* contentRequest, QMediaContent** outptr_QMediaContent);
-void QMediaContent_new4(QMediaResource* contentResource, QMediaContent** outptr_QMediaContent);
-void QMediaContent_new5(struct miqt_array /* of QMediaResource* */  resources, QMediaContent** outptr_QMediaContent);
-void QMediaContent_new6(QMediaContent* other, QMediaContent** outptr_QMediaContent);
-void QMediaContent_new7(QMediaPlaylist* playlist, QMediaContent** outptr_QMediaContent);
-void QMediaContent_new8(QMediaPlaylist* playlist, QUrl* contentUrl, QMediaContent** outptr_QMediaContent);
-void QMediaContent_new9(QMediaPlaylist* playlist, QUrl* contentUrl, bool takeOwnership, QMediaContent** outptr_QMediaContent);
+QMediaContent* QMediaContent_new();
+QMediaContent* QMediaContent_new2(QUrl* contentUrl);
+QMediaContent* QMediaContent_new3(QNetworkRequest* contentRequest);
+QMediaContent* QMediaContent_new4(QMediaResource* contentResource);
+QMediaContent* QMediaContent_new5(struct miqt_array /* of QMediaResource* */  resources);
+QMediaContent* QMediaContent_new6(QMediaContent* other);
+QMediaContent* QMediaContent_new7(QMediaPlaylist* playlist);
+QMediaContent* QMediaContent_new8(QMediaPlaylist* playlist, QUrl* contentUrl);
+QMediaContent* QMediaContent_new9(QMediaPlaylist* playlist, QUrl* contentUrl, bool takeOwnership);
 void QMediaContent_OperatorAssign(QMediaContent* self, QMediaContent* other);
 bool QMediaContent_OperatorEqual(const QMediaContent* self, QMediaContent* other);
 bool QMediaContent_OperatorNotEqual(const QMediaContent* self, QMediaContent* other);

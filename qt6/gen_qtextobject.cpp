@@ -27,6 +27,10 @@
 #include "gen_qtextobject.h"
 #include "_cgo_export.h"
 
+void QTextObject_virtbase(QTextObject* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
+
 QMetaObject* QTextObject_MetaObject(const QTextObject* self) {
 	return (QMetaObject*) self->metaObject();
 }
@@ -84,6 +88,10 @@ struct miqt_string QTextObject_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
+void QTextBlockGroup_virtbase(QTextBlockGroup* src, QTextObject** outptr_QTextObject) {
+	*outptr_QTextObject = static_cast<QTextObject*>(src);
+}
+
 QMetaObject* QTextBlockGroup_MetaObject(const QTextBlockGroup* self) {
 	return (QMetaObject*) self->metaObject();
 }
@@ -137,11 +145,12 @@ void QTextFrameLayoutData_Delete(QTextFrameLayoutData* self, bool isSubclass) {
 	}
 }
 
-void QTextFrame_new(QTextDocument* doc, QTextFrame** outptr_QTextFrame, QTextObject** outptr_QTextObject, QObject** outptr_QObject) {
-	QTextFrame* ret = new QTextFrame(doc);
-	*outptr_QTextFrame = ret;
-	*outptr_QTextObject = static_cast<QTextObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QTextFrame* QTextFrame_new(QTextDocument* doc) {
+	return new QTextFrame(doc);
+}
+
+void QTextFrame_virtbase(QTextFrame* src, QTextObject** outptr_QTextObject) {
+	*outptr_QTextObject = static_cast<QTextObject*>(src);
 }
 
 QMetaObject* QTextFrame_MetaObject(const QTextFrame* self) {
@@ -262,14 +271,12 @@ void QTextBlockUserData_Delete(QTextBlockUserData* self, bool isSubclass) {
 	}
 }
 
-void QTextBlock_new(QTextBlock** outptr_QTextBlock) {
-	QTextBlock* ret = new QTextBlock();
-	*outptr_QTextBlock = ret;
+QTextBlock* QTextBlock_new() {
+	return new QTextBlock();
 }
 
-void QTextBlock_new2(QTextBlock* o, QTextBlock** outptr_QTextBlock) {
-	QTextBlock* ret = new QTextBlock(*o);
-	*outptr_QTextBlock = ret;
+QTextBlock* QTextBlock_new2(QTextBlock* o) {
+	return new QTextBlock(*o);
 }
 
 void QTextBlock_OperatorAssign(QTextBlock* self, QTextBlock* o) {
@@ -441,14 +448,12 @@ void QTextBlock_Delete(QTextBlock* self, bool isSubclass) {
 	}
 }
 
-void QTextFragment_new(QTextFragment** outptr_QTextFragment) {
-	QTextFragment* ret = new QTextFragment();
-	*outptr_QTextFragment = ret;
+QTextFragment* QTextFragment_new() {
+	return new QTextFragment();
 }
 
-void QTextFragment_new2(QTextFragment* o, QTextFragment** outptr_QTextFragment) {
-	QTextFragment* ret = new QTextFragment(*o);
-	*outptr_QTextFragment = ret;
+QTextFragment* QTextFragment_new2(QTextFragment* o) {
+	return new QTextFragment(*o);
 }
 
 void QTextFragment_OperatorAssign(QTextFragment* self, QTextFragment* o) {
@@ -549,14 +554,12 @@ void QTextFragment_Delete(QTextFragment* self, bool isSubclass) {
 	}
 }
 
-void QTextFrame__iterator_new(QTextFrame__iterator** outptr_QTextFrame__iterator) {
-	QTextFrame::iterator* ret = new QTextFrame::iterator();
-	*outptr_QTextFrame__iterator = ret;
+QTextFrame__iterator* QTextFrame__iterator_new() {
+	return new QTextFrame::iterator();
 }
 
-void QTextFrame__iterator_new2(QTextFrame__iterator* param1, QTextFrame__iterator** outptr_QTextFrame__iterator) {
-	QTextFrame::iterator* ret = new QTextFrame::iterator(*param1);
-	*outptr_QTextFrame__iterator = ret;
+QTextFrame__iterator* QTextFrame__iterator_new2(QTextFrame__iterator* param1) {
+	return new QTextFrame::iterator(*param1);
 }
 
 QTextFrame* QTextFrame__iterator_ParentFrame(const QTextFrame__iterator* self) {
@@ -611,14 +614,12 @@ void QTextFrame__iterator_Delete(QTextFrame__iterator* self, bool isSubclass) {
 	}
 }
 
-void QTextBlock__iterator_new(QTextBlock__iterator** outptr_QTextBlock__iterator) {
-	QTextBlock::iterator* ret = new QTextBlock::iterator();
-	*outptr_QTextBlock__iterator = ret;
+QTextBlock__iterator* QTextBlock__iterator_new() {
+	return new QTextBlock::iterator();
 }
 
-void QTextBlock__iterator_new2(QTextBlock__iterator* param1, QTextBlock__iterator** outptr_QTextBlock__iterator) {
-	QTextBlock::iterator* ret = new QTextBlock::iterator(*param1);
-	*outptr_QTextBlock__iterator = ret;
+QTextBlock__iterator* QTextBlock__iterator_new2(QTextBlock__iterator* param1) {
+	return new QTextBlock::iterator(*param1);
 }
 
 QTextFragment* QTextBlock__iterator_Fragment(const QTextBlock__iterator* self) {

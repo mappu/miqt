@@ -32,9 +32,10 @@ typedef struct QPoint QPoint;
 typedef struct QRect QRect;
 #endif
 
-void QPicture_new(QPicture** outptr_QPicture, QPaintDevice** outptr_QPaintDevice);
-void QPicture_new2(QPicture* param1, QPicture** outptr_QPicture, QPaintDevice** outptr_QPaintDevice);
-void QPicture_new3(int formatVersion, QPicture** outptr_QPicture, QPaintDevice** outptr_QPaintDevice);
+QPicture* QPicture_new();
+QPicture* QPicture_new2(QPicture* param1);
+QPicture* QPicture_new3(int formatVersion);
+void QPicture_virtbase(QPicture* src, QPaintDevice** outptr_QPaintDevice);
 bool QPicture_IsNull(const QPicture* self);
 int QPicture_DevType(const QPicture* self);
 unsigned int QPicture_Size(const QPicture* self);

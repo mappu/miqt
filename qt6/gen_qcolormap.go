@@ -45,24 +45,19 @@ func newQColormap(h *C.QColormap) *QColormap {
 	if h == nil {
 		return nil
 	}
+
 	return &QColormap{h: h}
 }
 
 // UnsafeNewQColormap constructs the type using only unsafe pointers.
 func UnsafeNewQColormap(h unsafe.Pointer) *QColormap {
-	if h == nil {
-		return nil
-	}
-
-	return &QColormap{h: (*C.QColormap)(h)}
+	return newQColormap((*C.QColormap)(h))
 }
 
 // NewQColormap constructs a new QColormap object.
 func NewQColormap(colormap *QColormap) *QColormap {
-	var outptr_QColormap *C.QColormap = nil
 
-	C.QColormap_new(colormap.cPointer(), &outptr_QColormap)
-	ret := newQColormap(outptr_QColormap)
+	ret := newQColormap(C.QColormap_new(colormap.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -76,8 +71,7 @@ func QColormap_Cleanup() {
 }
 
 func QColormap_Instance() *QColormap {
-	_ret := C.QColormap_Instance()
-	_goptr := newQColormap(_ret)
+	_goptr := newQColormap(C.QColormap_Instance())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -103,8 +97,7 @@ func (this *QColormap) Pixel(color *QColor) uint {
 }
 
 func (this *QColormap) ColorAt(pixel uint) *QColor {
-	_ret := C.QColormap_ColorAt(this.h, (C.uint)(pixel))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QColormap_ColorAt(this.h, (C.uint)(pixel)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -114,8 +107,7 @@ func (this *QColormap) Colormap() []QColor {
 	_ret := make([]QColor, int(_ma.len))
 	_outCast := (*[0xffff]*C.QColor)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQColor(_lv_ret)
+		_lv_goptr := newQColor(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -123,8 +115,7 @@ func (this *QColormap) Colormap() []QColor {
 }
 
 func QColormap_Instance1(screen int) *QColormap {
-	_ret := C.QColormap_Instance1((C.int)(screen))
-	_goptr := newQColormap(_ret)
+	_goptr := newQColormap(C.QColormap_Instance1((C.int)(screen)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

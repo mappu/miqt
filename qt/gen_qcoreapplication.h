@@ -38,8 +38,9 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QTranslator QTranslator;
 #endif
 
-void QCoreApplication_new(int* argc, char** argv, QCoreApplication** outptr_QCoreApplication, QObject** outptr_QObject);
-void QCoreApplication_new2(int* argc, char** argv, int param3, QCoreApplication** outptr_QCoreApplication, QObject** outptr_QObject);
+QCoreApplication* QCoreApplication_new(int* argc, char** argv);
+QCoreApplication* QCoreApplication_new2(int* argc, char** argv, int param3);
+void QCoreApplication_virtbase(QCoreApplication* src, QObject** outptr_QObject);
 QMetaObject* QCoreApplication_MetaObject(const QCoreApplication* self);
 void* QCoreApplication_Metacast(QCoreApplication* self, const char* param1);
 struct miqt_string QCoreApplication_Tr(const char* s);

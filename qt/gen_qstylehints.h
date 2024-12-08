@@ -26,6 +26,7 @@ typedef struct QObject QObject;
 typedef struct QStyleHints QStyleHints;
 #endif
 
+void QStyleHints_virtbase(QStyleHints* src, QObject** outptr_QObject);
 QMetaObject* QStyleHints_MetaObject(const QStyleHints* self);
 void* QStyleHints_Metacast(QStyleHints* self, const char* param1);
 struct miqt_string QStyleHints_Tr(const char* s);

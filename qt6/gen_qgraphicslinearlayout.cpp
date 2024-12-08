@@ -243,32 +243,24 @@ public:
 
 };
 
-void QGraphicsLinearLayout_new(QGraphicsLinearLayout** outptr_QGraphicsLinearLayout, QGraphicsLayout** outptr_QGraphicsLayout, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
-	MiqtVirtualQGraphicsLinearLayout* ret = new MiqtVirtualQGraphicsLinearLayout();
-	*outptr_QGraphicsLinearLayout = ret;
-	*outptr_QGraphicsLayout = static_cast<QGraphicsLayout*>(ret);
-	*outptr_QGraphicsLayoutItem = static_cast<QGraphicsLayoutItem*>(ret);
+QGraphicsLinearLayout* QGraphicsLinearLayout_new() {
+	return new MiqtVirtualQGraphicsLinearLayout();
 }
 
-void QGraphicsLinearLayout_new2(int orientation, QGraphicsLinearLayout** outptr_QGraphicsLinearLayout, QGraphicsLayout** outptr_QGraphicsLayout, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
-	MiqtVirtualQGraphicsLinearLayout* ret = new MiqtVirtualQGraphicsLinearLayout(static_cast<Qt::Orientation>(orientation));
-	*outptr_QGraphicsLinearLayout = ret;
-	*outptr_QGraphicsLayout = static_cast<QGraphicsLayout*>(ret);
-	*outptr_QGraphicsLayoutItem = static_cast<QGraphicsLayoutItem*>(ret);
+QGraphicsLinearLayout* QGraphicsLinearLayout_new2(int orientation) {
+	return new MiqtVirtualQGraphicsLinearLayout(static_cast<Qt::Orientation>(orientation));
 }
 
-void QGraphicsLinearLayout_new3(QGraphicsLayoutItem* parent, QGraphicsLinearLayout** outptr_QGraphicsLinearLayout, QGraphicsLayout** outptr_QGraphicsLayout, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
-	MiqtVirtualQGraphicsLinearLayout* ret = new MiqtVirtualQGraphicsLinearLayout(parent);
-	*outptr_QGraphicsLinearLayout = ret;
-	*outptr_QGraphicsLayout = static_cast<QGraphicsLayout*>(ret);
-	*outptr_QGraphicsLayoutItem = static_cast<QGraphicsLayoutItem*>(ret);
+QGraphicsLinearLayout* QGraphicsLinearLayout_new3(QGraphicsLayoutItem* parent) {
+	return new MiqtVirtualQGraphicsLinearLayout(parent);
 }
 
-void QGraphicsLinearLayout_new4(int orientation, QGraphicsLayoutItem* parent, QGraphicsLinearLayout** outptr_QGraphicsLinearLayout, QGraphicsLayout** outptr_QGraphicsLayout, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
-	MiqtVirtualQGraphicsLinearLayout* ret = new MiqtVirtualQGraphicsLinearLayout(static_cast<Qt::Orientation>(orientation), parent);
-	*outptr_QGraphicsLinearLayout = ret;
-	*outptr_QGraphicsLayout = static_cast<QGraphicsLayout*>(ret);
-	*outptr_QGraphicsLayoutItem = static_cast<QGraphicsLayoutItem*>(ret);
+QGraphicsLinearLayout* QGraphicsLinearLayout_new4(int orientation, QGraphicsLayoutItem* parent) {
+	return new MiqtVirtualQGraphicsLinearLayout(static_cast<Qt::Orientation>(orientation), parent);
+}
+
+void QGraphicsLinearLayout_virtbase(QGraphicsLinearLayout* src, QGraphicsLayout** outptr_QGraphicsLayout) {
+	*outptr_QGraphicsLayout = static_cast<QGraphicsLayout*>(src);
 }
 
 void QGraphicsLinearLayout_SetOrientation(QGraphicsLinearLayout* self, int orientation) {

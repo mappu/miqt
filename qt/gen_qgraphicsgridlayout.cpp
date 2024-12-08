@@ -241,18 +241,16 @@ public:
 
 };
 
-void QGraphicsGridLayout_new(QGraphicsGridLayout** outptr_QGraphicsGridLayout, QGraphicsLayout** outptr_QGraphicsLayout, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
-	MiqtVirtualQGraphicsGridLayout* ret = new MiqtVirtualQGraphicsGridLayout();
-	*outptr_QGraphicsGridLayout = ret;
-	*outptr_QGraphicsLayout = static_cast<QGraphicsLayout*>(ret);
-	*outptr_QGraphicsLayoutItem = static_cast<QGraphicsLayoutItem*>(ret);
+QGraphicsGridLayout* QGraphicsGridLayout_new() {
+	return new MiqtVirtualQGraphicsGridLayout();
 }
 
-void QGraphicsGridLayout_new2(QGraphicsLayoutItem* parent, QGraphicsGridLayout** outptr_QGraphicsGridLayout, QGraphicsLayout** outptr_QGraphicsLayout, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
-	MiqtVirtualQGraphicsGridLayout* ret = new MiqtVirtualQGraphicsGridLayout(parent);
-	*outptr_QGraphicsGridLayout = ret;
-	*outptr_QGraphicsLayout = static_cast<QGraphicsLayout*>(ret);
-	*outptr_QGraphicsLayoutItem = static_cast<QGraphicsLayoutItem*>(ret);
+QGraphicsGridLayout* QGraphicsGridLayout_new2(QGraphicsLayoutItem* parent) {
+	return new MiqtVirtualQGraphicsGridLayout(parent);
+}
+
+void QGraphicsGridLayout_virtbase(QGraphicsGridLayout* src, QGraphicsLayout** outptr_QGraphicsLayout) {
+	*outptr_QGraphicsLayout = static_cast<QGraphicsLayout*>(src);
 }
 
 void QGraphicsGridLayout_AddItem(QGraphicsGridLayout* self, QGraphicsLayoutItem* item, int row, int column, int rowSpan, int columnSpan) {

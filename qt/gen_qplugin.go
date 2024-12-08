@@ -37,21 +37,17 @@ func newQStaticPlugin(h *C.QStaticPlugin) *QStaticPlugin {
 	if h == nil {
 		return nil
 	}
+
 	return &QStaticPlugin{h: h}
 }
 
 // UnsafeNewQStaticPlugin constructs the type using only unsafe pointers.
 func UnsafeNewQStaticPlugin(h unsafe.Pointer) *QStaticPlugin {
-	if h == nil {
-		return nil
-	}
-
-	return &QStaticPlugin{h: (*C.QStaticPlugin)(h)}
+	return newQStaticPlugin((*C.QStaticPlugin)(h))
 }
 
 func (this *QStaticPlugin) MetaData() *QJsonObject {
-	_ret := C.QStaticPlugin_MetaData(this.h)
-	_goptr := newQJsonObject(_ret)
+	_goptr := newQJsonObject(C.QStaticPlugin_MetaData(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

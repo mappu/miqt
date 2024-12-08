@@ -579,18 +579,17 @@ public:
 
 };
 
-void QIODevice_new(QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase) {
-	MiqtVirtualQIODevice* ret = new MiqtVirtualQIODevice();
-	*outptr_QIODevice = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(ret);
+QIODevice* QIODevice_new() {
+	return new MiqtVirtualQIODevice();
 }
 
-void QIODevice_new2(QObject* parent, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase) {
-	MiqtVirtualQIODevice* ret = new MiqtVirtualQIODevice(parent);
-	*outptr_QIODevice = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(ret);
+QIODevice* QIODevice_new2(QObject* parent) {
+	return new MiqtVirtualQIODevice(parent);
+}
+
+void QIODevice_virtbase(QIODevice* src, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase) {
+	*outptr_QObject = static_cast<QObject*>(src);
+	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(src);
 }
 
 QMetaObject* QIODevice_MetaObject(const QIODevice* self) {

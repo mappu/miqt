@@ -46,41 +46,33 @@ func newQSslDiffieHellmanParameters(h *C.QSslDiffieHellmanParameters) *QSslDiffi
 	if h == nil {
 		return nil
 	}
+
 	return &QSslDiffieHellmanParameters{h: h}
 }
 
 // UnsafeNewQSslDiffieHellmanParameters constructs the type using only unsafe pointers.
 func UnsafeNewQSslDiffieHellmanParameters(h unsafe.Pointer) *QSslDiffieHellmanParameters {
-	if h == nil {
-		return nil
-	}
-
-	return &QSslDiffieHellmanParameters{h: (*C.QSslDiffieHellmanParameters)(h)}
+	return newQSslDiffieHellmanParameters((*C.QSslDiffieHellmanParameters)(h))
 }
 
 // NewQSslDiffieHellmanParameters constructs a new QSslDiffieHellmanParameters object.
 func NewQSslDiffieHellmanParameters() *QSslDiffieHellmanParameters {
-	var outptr_QSslDiffieHellmanParameters *C.QSslDiffieHellmanParameters = nil
 
-	C.QSslDiffieHellmanParameters_new(&outptr_QSslDiffieHellmanParameters)
-	ret := newQSslDiffieHellmanParameters(outptr_QSslDiffieHellmanParameters)
+	ret := newQSslDiffieHellmanParameters(C.QSslDiffieHellmanParameters_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSslDiffieHellmanParameters2 constructs a new QSslDiffieHellmanParameters object.
 func NewQSslDiffieHellmanParameters2(other *QSslDiffieHellmanParameters) *QSslDiffieHellmanParameters {
-	var outptr_QSslDiffieHellmanParameters *C.QSslDiffieHellmanParameters = nil
 
-	C.QSslDiffieHellmanParameters_new2(other.cPointer(), &outptr_QSslDiffieHellmanParameters)
-	ret := newQSslDiffieHellmanParameters(outptr_QSslDiffieHellmanParameters)
+	ret := newQSslDiffieHellmanParameters(C.QSslDiffieHellmanParameters_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func QSslDiffieHellmanParameters_DefaultParameters() *QSslDiffieHellmanParameters {
-	_ret := C.QSslDiffieHellmanParameters_DefaultParameters()
-	_goptr := newQSslDiffieHellmanParameters(_ret)
+	_goptr := newQSslDiffieHellmanParameters(C.QSslDiffieHellmanParameters_DefaultParameters())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -97,15 +89,13 @@ func QSslDiffieHellmanParameters_FromEncoded(encoded []byte) *QSslDiffieHellmanP
 	encoded_alias := C.struct_miqt_string{}
 	encoded_alias.data = (*C.char)(unsafe.Pointer(&encoded[0]))
 	encoded_alias.len = C.size_t(len(encoded))
-	_ret := C.QSslDiffieHellmanParameters_FromEncoded(encoded_alias)
-	_goptr := newQSslDiffieHellmanParameters(_ret)
+	_goptr := newQSslDiffieHellmanParameters(C.QSslDiffieHellmanParameters_FromEncoded(encoded_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QSslDiffieHellmanParameters_FromEncodedWithDevice(device *qt6.QIODevice) *QSslDiffieHellmanParameters {
-	_ret := C.QSslDiffieHellmanParameters_FromEncodedWithDevice((*C.QIODevice)(device.UnsafePointer()))
-	_goptr := newQSslDiffieHellmanParameters(_ret)
+	_goptr := newQSslDiffieHellmanParameters(C.QSslDiffieHellmanParameters_FromEncodedWithDevice((*C.QIODevice)(device.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -133,15 +123,13 @@ func QSslDiffieHellmanParameters_FromEncoded2(encoded []byte, format QSsl__Encod
 	encoded_alias := C.struct_miqt_string{}
 	encoded_alias.data = (*C.char)(unsafe.Pointer(&encoded[0]))
 	encoded_alias.len = C.size_t(len(encoded))
-	_ret := C.QSslDiffieHellmanParameters_FromEncoded2(encoded_alias, (C.int)(format))
-	_goptr := newQSslDiffieHellmanParameters(_ret)
+	_goptr := newQSslDiffieHellmanParameters(C.QSslDiffieHellmanParameters_FromEncoded2(encoded_alias, (C.int)(format)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QSslDiffieHellmanParameters_FromEncoded22(device *qt6.QIODevice, format QSsl__EncodingFormat) *QSslDiffieHellmanParameters {
-	_ret := C.QSslDiffieHellmanParameters_FromEncoded22((*C.QIODevice)(device.UnsafePointer()), (C.int)(format))
-	_goptr := newQSslDiffieHellmanParameters(_ret)
+	_goptr := newQSslDiffieHellmanParameters(C.QSslDiffieHellmanParameters_FromEncoded22((*C.QIODevice)(device.UnsafePointer()), (C.int)(format)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

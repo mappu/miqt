@@ -36,8 +36,9 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QUrl QUrl;
 #endif
 
-void QNetworkCookieJar_new(QNetworkCookieJar** outptr_QNetworkCookieJar, QObject** outptr_QObject);
-void QNetworkCookieJar_new2(QObject* parent, QNetworkCookieJar** outptr_QNetworkCookieJar, QObject** outptr_QObject);
+QNetworkCookieJar* QNetworkCookieJar_new();
+QNetworkCookieJar* QNetworkCookieJar_new2(QObject* parent);
+void QNetworkCookieJar_virtbase(QNetworkCookieJar* src, QObject** outptr_QObject);
 QMetaObject* QNetworkCookieJar_MetaObject(const QNetworkCookieJar* self);
 void* QNetworkCookieJar_Metacast(QNetworkCookieJar* self, const char* param1);
 struct miqt_string QNetworkCookieJar_Tr(const char* s);

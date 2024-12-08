@@ -196,16 +196,16 @@ public:
 
 };
 
-void QUndoGroup_new(QUndoGroup** outptr_QUndoGroup, QObject** outptr_QObject) {
-	MiqtVirtualQUndoGroup* ret = new MiqtVirtualQUndoGroup();
-	*outptr_QUndoGroup = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QUndoGroup* QUndoGroup_new() {
+	return new MiqtVirtualQUndoGroup();
 }
 
-void QUndoGroup_new2(QObject* parent, QUndoGroup** outptr_QUndoGroup, QObject** outptr_QObject) {
-	MiqtVirtualQUndoGroup* ret = new MiqtVirtualQUndoGroup(parent);
-	*outptr_QUndoGroup = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QUndoGroup* QUndoGroup_new2(QObject* parent) {
+	return new MiqtVirtualQUndoGroup(parent);
+}
+
+void QUndoGroup_virtbase(QUndoGroup* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QUndoGroup_MetaObject(const QUndoGroup* self) {

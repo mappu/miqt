@@ -1070,20 +1070,16 @@ public:
 
 };
 
-void QAbstractSlider_new(QWidget* parent, QAbstractSlider** outptr_QAbstractSlider, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQAbstractSlider* ret = new MiqtVirtualQAbstractSlider(parent);
-	*outptr_QAbstractSlider = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QAbstractSlider* QAbstractSlider_new(QWidget* parent) {
+	return new MiqtVirtualQAbstractSlider(parent);
 }
 
-void QAbstractSlider_new2(QAbstractSlider** outptr_QAbstractSlider, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQAbstractSlider* ret = new MiqtVirtualQAbstractSlider();
-	*outptr_QAbstractSlider = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QAbstractSlider* QAbstractSlider_new2() {
+	return new MiqtVirtualQAbstractSlider();
+}
+
+void QAbstractSlider_virtbase(QAbstractSlider* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QAbstractSlider_MetaObject(const QAbstractSlider* self) {

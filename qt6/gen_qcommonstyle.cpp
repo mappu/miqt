@@ -677,11 +677,12 @@ public:
 
 };
 
-void QCommonStyle_new(QCommonStyle** outptr_QCommonStyle, QStyle** outptr_QStyle, QObject** outptr_QObject) {
-	MiqtVirtualQCommonStyle* ret = new MiqtVirtualQCommonStyle();
-	*outptr_QCommonStyle = ret;
-	*outptr_QStyle = static_cast<QStyle*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QCommonStyle* QCommonStyle_new() {
+	return new MiqtVirtualQCommonStyle();
+}
+
+void QCommonStyle_virtbase(QCommonStyle* src, QStyle** outptr_QStyle) {
+	*outptr_QStyle = static_cast<QStyle*>(src);
 }
 
 QMetaObject* QCommonStyle_MetaObject(const QCommonStyle* self) {

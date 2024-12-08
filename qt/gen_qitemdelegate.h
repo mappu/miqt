@@ -50,8 +50,9 @@ typedef struct QStyleOptionViewItem QStyleOptionViewItem;
 typedef struct QWidget QWidget;
 #endif
 
-void QItemDelegate_new(QItemDelegate** outptr_QItemDelegate, QAbstractItemDelegate** outptr_QAbstractItemDelegate, QObject** outptr_QObject);
-void QItemDelegate_new2(QObject* parent, QItemDelegate** outptr_QItemDelegate, QAbstractItemDelegate** outptr_QAbstractItemDelegate, QObject** outptr_QObject);
+QItemDelegate* QItemDelegate_new();
+QItemDelegate* QItemDelegate_new2(QObject* parent);
+void QItemDelegate_virtbase(QItemDelegate* src, QAbstractItemDelegate** outptr_QAbstractItemDelegate);
 QMetaObject* QItemDelegate_MetaObject(const QItemDelegate* self);
 void* QItemDelegate_Metacast(QItemDelegate* self, const char* param1);
 struct miqt_string QItemDelegate_Tr(const char* s);

@@ -4,14 +4,12 @@
 #include "gen_qsslpresharedkeyauthenticator.h"
 #include "_cgo_export.h"
 
-void QSslPreSharedKeyAuthenticator_new(QSslPreSharedKeyAuthenticator** outptr_QSslPreSharedKeyAuthenticator) {
-	QSslPreSharedKeyAuthenticator* ret = new QSslPreSharedKeyAuthenticator();
-	*outptr_QSslPreSharedKeyAuthenticator = ret;
+QSslPreSharedKeyAuthenticator* QSslPreSharedKeyAuthenticator_new() {
+	return new QSslPreSharedKeyAuthenticator();
 }
 
-void QSslPreSharedKeyAuthenticator_new2(QSslPreSharedKeyAuthenticator* authenticator, QSslPreSharedKeyAuthenticator** outptr_QSslPreSharedKeyAuthenticator) {
-	QSslPreSharedKeyAuthenticator* ret = new QSslPreSharedKeyAuthenticator(*authenticator);
-	*outptr_QSslPreSharedKeyAuthenticator = ret;
+QSslPreSharedKeyAuthenticator* QSslPreSharedKeyAuthenticator_new2(QSslPreSharedKeyAuthenticator* authenticator) {
+	return new QSslPreSharedKeyAuthenticator(*authenticator);
 }
 
 void QSslPreSharedKeyAuthenticator_OperatorAssign(QSslPreSharedKeyAuthenticator* self, QSslPreSharedKeyAuthenticator* authenticator) {

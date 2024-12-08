@@ -192,31 +192,20 @@ public:
 
 };
 
-void QToolBox_new(QWidget* parent, QToolBox** outptr_QToolBox, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQToolBox* ret = new MiqtVirtualQToolBox(parent);
-	*outptr_QToolBox = ret;
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QToolBox* QToolBox_new(QWidget* parent) {
+	return new MiqtVirtualQToolBox(parent);
 }
 
-void QToolBox_new2(QToolBox** outptr_QToolBox, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQToolBox* ret = new MiqtVirtualQToolBox();
-	*outptr_QToolBox = ret;
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QToolBox* QToolBox_new2() {
+	return new MiqtVirtualQToolBox();
 }
 
-void QToolBox_new3(QWidget* parent, int f, QToolBox** outptr_QToolBox, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQToolBox* ret = new MiqtVirtualQToolBox(parent, static_cast<Qt::WindowFlags>(f));
-	*outptr_QToolBox = ret;
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QToolBox* QToolBox_new3(QWidget* parent, int f) {
+	return new MiqtVirtualQToolBox(parent, static_cast<Qt::WindowFlags>(f));
+}
+
+void QToolBox_virtbase(QToolBox* src, QFrame** outptr_QFrame) {
+	*outptr_QFrame = static_cast<QFrame*>(src);
 }
 
 QMetaObject* QToolBox_MetaObject(const QToolBox* self) {

@@ -67,84 +67,67 @@ func newQScriptValue(h *C.QScriptValue) *QScriptValue {
 	if h == nil {
 		return nil
 	}
+
 	return &QScriptValue{h: h}
 }
 
 // UnsafeNewQScriptValue constructs the type using only unsafe pointers.
 func UnsafeNewQScriptValue(h unsafe.Pointer) *QScriptValue {
-	if h == nil {
-		return nil
-	}
-
-	return &QScriptValue{h: (*C.QScriptValue)(h)}
+	return newQScriptValue((*C.QScriptValue)(h))
 }
 
 // NewQScriptValue constructs a new QScriptValue object.
 func NewQScriptValue() *QScriptValue {
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new(&outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptValue2 constructs a new QScriptValue object.
 func NewQScriptValue2(other *QScriptValue) *QScriptValue {
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new2(other.cPointer(), &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptValue3 constructs a new QScriptValue object.
 func NewQScriptValue3(engine *QScriptEngine, val QScriptValue__SpecialValue) *QScriptValue {
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new3(engine.cPointer(), (C.int)(val), &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new3(engine.cPointer(), (C.int)(val)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptValue4 constructs a new QScriptValue object.
 func NewQScriptValue4(engine *QScriptEngine, val bool) *QScriptValue {
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new4(engine.cPointer(), (C.bool)(val), &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new4(engine.cPointer(), (C.bool)(val)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptValue5 constructs a new QScriptValue object.
 func NewQScriptValue5(engine *QScriptEngine, val int) *QScriptValue {
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new5(engine.cPointer(), (C.int)(val), &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new5(engine.cPointer(), (C.int)(val)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptValue6 constructs a new QScriptValue object.
 func NewQScriptValue6(engine *QScriptEngine, val uint) *QScriptValue {
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new6(engine.cPointer(), (C.uint)(val), &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new6(engine.cPointer(), (C.uint)(val)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptValue7 constructs a new QScriptValue object.
 func NewQScriptValue7(engine *QScriptEngine, val float64) *QScriptValue {
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new7(engine.cPointer(), (C.double)(val), &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new7(engine.cPointer(), (C.double)(val)))
 	ret.isSubclass = true
 	return ret
 }
@@ -155,10 +138,8 @@ func NewQScriptValue8(engine *QScriptEngine, val string) *QScriptValue {
 	val_ms.data = C.CString(val)
 	val_ms.len = C.size_t(len(val))
 	defer C.free(unsafe.Pointer(val_ms.data))
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new8(engine.cPointer(), val_ms, &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new8(engine.cPointer(), val_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -167,60 +148,48 @@ func NewQScriptValue8(engine *QScriptEngine, val string) *QScriptValue {
 func NewQScriptValue9(engine *QScriptEngine, val string) *QScriptValue {
 	val_Cstring := C.CString(val)
 	defer C.free(unsafe.Pointer(val_Cstring))
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new9(engine.cPointer(), val_Cstring, &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new9(engine.cPointer(), val_Cstring))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptValue10 constructs a new QScriptValue object.
 func NewQScriptValue10(value QScriptValue__SpecialValue) *QScriptValue {
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new10((C.int)(value), &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new10((C.int)(value)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptValue11 constructs a new QScriptValue object.
 func NewQScriptValue11(value bool) *QScriptValue {
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new11((C.bool)(value), &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new11((C.bool)(value)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptValue12 constructs a new QScriptValue object.
 func NewQScriptValue12(value int) *QScriptValue {
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new12((C.int)(value), &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new12((C.int)(value)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptValue13 constructs a new QScriptValue object.
 func NewQScriptValue13(value uint) *QScriptValue {
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new13((C.uint)(value), &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new13((C.uint)(value)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptValue14 constructs a new QScriptValue object.
 func NewQScriptValue14(value float64) *QScriptValue {
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new14((C.double)(value), &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new14((C.double)(value)))
 	ret.isSubclass = true
 	return ret
 }
@@ -231,10 +200,8 @@ func NewQScriptValue15(value string) *QScriptValue {
 	value_ms.data = C.CString(value)
 	value_ms.len = C.size_t(len(value))
 	defer C.free(unsafe.Pointer(value_ms.data))
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new15(value_ms, &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new15(value_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -243,10 +210,8 @@ func NewQScriptValue15(value string) *QScriptValue {
 func NewQScriptValue16(value string) *QScriptValue {
 	value_Cstring := C.CString(value)
 	defer C.free(unsafe.Pointer(value_Cstring))
-	var outptr_QScriptValue *C.QScriptValue = nil
 
-	C.QScriptValue_new16(value_Cstring, &outptr_QScriptValue)
-	ret := newQScriptValue(outptr_QScriptValue)
+	ret := newQScriptValue(C.QScriptValue_new16(value_Cstring))
 	ret.isSubclass = true
 	return ret
 }
@@ -256,7 +221,7 @@ func (this *QScriptValue) OperatorAssign(other *QScriptValue) {
 }
 
 func (this *QScriptValue) Engine() *QScriptEngine {
-	return UnsafeNewQScriptEngine(unsafe.Pointer(C.QScriptValue_Engine(this.h)), nil)
+	return newQScriptEngine(C.QScriptValue_Engine(this.h))
 }
 
 func (this *QScriptValue) IsValid() bool {
@@ -359,8 +324,7 @@ func (this *QScriptValue) ToUInt16() uint16 {
 }
 
 func (this *QScriptValue) ToVariant() *qt.QVariant {
-	_ret := C.QScriptValue_ToVariant(this.h)
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QScriptValue_ToVariant(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -374,22 +338,19 @@ func (this *QScriptValue) ToQMetaObject() *qt.QMetaObject {
 }
 
 func (this *QScriptValue) ToObject() *QScriptValue {
-	_ret := C.QScriptValue_ToObject(this.h)
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptValue_ToObject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptValue) ToDateTime() *qt.QDateTime {
-	_ret := C.QScriptValue_ToDateTime(this.h)
-	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(C.QScriptValue_ToDateTime(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptValue) ToRegExp() *qt.QRegExp {
-	_ret := C.QScriptValue_ToRegExp(this.h)
-	_goptr := qt.UnsafeNewQRegExp(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQRegExp(unsafe.Pointer(C.QScriptValue_ToRegExp(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -411,8 +372,7 @@ func (this *QScriptValue) StrictlyEquals(other *QScriptValue) bool {
 }
 
 func (this *QScriptValue) Prototype() *QScriptValue {
-	_ret := C.QScriptValue_Prototype(this.h)
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptValue_Prototype(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -422,8 +382,7 @@ func (this *QScriptValue) SetPrototype(prototype *QScriptValue) {
 }
 
 func (this *QScriptValue) Scope() *QScriptValue {
-	_ret := C.QScriptValue_Scope(this.h)
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptValue_Scope(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -437,8 +396,7 @@ func (this *QScriptValue) Property(name string) *QScriptValue {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	_ret := C.QScriptValue_Property(this.h, name_ms)
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptValue_Property(this.h, name_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -452,8 +410,7 @@ func (this *QScriptValue) SetProperty(name string, value *QScriptValue) {
 }
 
 func (this *QScriptValue) PropertyWithArrayIndex(arrayIndex uint) *QScriptValue {
-	_ret := C.QScriptValue_PropertyWithArrayIndex(this.h, (C.uint)(arrayIndex))
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptValue_PropertyWithArrayIndex(this.h, (C.uint)(arrayIndex)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -463,8 +420,7 @@ func (this *QScriptValue) SetProperty2(arrayIndex uint, value *QScriptValue) {
 }
 
 func (this *QScriptValue) PropertyWithName(name *QScriptString) *QScriptValue {
-	_ret := C.QScriptValue_PropertyWithName(this.h, name.cPointer())
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptValue_PropertyWithName(this.h, name.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -486,36 +442,31 @@ func (this *QScriptValue) PropertyFlagsWithName(name *QScriptString) QScriptValu
 }
 
 func (this *QScriptValue) Call() *QScriptValue {
-	_ret := C.QScriptValue_Call(this.h)
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptValue_Call(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptValue) Call2(thisObject *QScriptValue, arguments *QScriptValue) *QScriptValue {
-	_ret := C.QScriptValue_Call2(this.h, thisObject.cPointer(), arguments.cPointer())
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptValue_Call2(this.h, thisObject.cPointer(), arguments.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptValue) Construct() *QScriptValue {
-	_ret := C.QScriptValue_Construct(this.h)
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptValue_Construct(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptValue) ConstructWithArguments(arguments *QScriptValue) *QScriptValue {
-	_ret := C.QScriptValue_ConstructWithArguments(this.h, arguments.cPointer())
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptValue_ConstructWithArguments(this.h, arguments.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptValue) Data() *QScriptValue {
-	_ret := C.QScriptValue_Data(this.h)
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptValue_Data(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -525,7 +476,7 @@ func (this *QScriptValue) SetData(data *QScriptValue) {
 }
 
 func (this *QScriptValue) ScriptClass() *QScriptClass {
-	return UnsafeNewQScriptClass(unsafe.Pointer(C.QScriptValue_ScriptClass(this.h)))
+	return newQScriptClass(C.QScriptValue_ScriptClass(this.h))
 }
 
 func (this *QScriptValue) SetScriptClass(scriptClass *QScriptClass) {
@@ -541,8 +492,7 @@ func (this *QScriptValue) Property2(name string, mode *QScriptValue__ResolveFlag
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	_ret := C.QScriptValue_Property2(this.h, name_ms, (*C.int)(unsafe.Pointer(mode)))
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptValue_Property2(this.h, name_ms, (*C.int)(unsafe.Pointer(mode))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -556,8 +506,7 @@ func (this *QScriptValue) SetProperty32(name string, value *QScriptValue, flags 
 }
 
 func (this *QScriptValue) Property22(arrayIndex uint, mode *QScriptValue__ResolveFlag) *QScriptValue {
-	_ret := C.QScriptValue_Property22(this.h, (C.uint)(arrayIndex), (*C.int)(unsafe.Pointer(mode)))
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptValue_Property22(this.h, (C.uint)(arrayIndex), (*C.int)(unsafe.Pointer(mode))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -567,8 +516,7 @@ func (this *QScriptValue) SetProperty33(arrayIndex uint, value *QScriptValue, fl
 }
 
 func (this *QScriptValue) Property23(name *QScriptString, mode *QScriptValue__ResolveFlag) *QScriptValue {
-	_ret := C.QScriptValue_Property23(this.h, name.cPointer(), (*C.int)(unsafe.Pointer(mode)))
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptValue_Property23(this.h, name.cPointer(), (*C.int)(unsafe.Pointer(mode))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -590,8 +538,7 @@ func (this *QScriptValue) PropertyFlags22(name *QScriptString, mode *QScriptValu
 }
 
 func (this *QScriptValue) Call1(thisObject *QScriptValue) *QScriptValue {
-	_ret := C.QScriptValue_Call1(this.h, thisObject.cPointer())
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptValue_Call1(this.h, thisObject.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -603,8 +550,7 @@ func (this *QScriptValue) Call22(thisObject *QScriptValue, args []QScriptValue) 
 		args_CArray[i] = args[i].cPointer()
 	}
 	args_ma := C.struct_miqt_array{len: C.size_t(len(args)), data: unsafe.Pointer(args_CArray)}
-	_ret := C.QScriptValue_Call22(this.h, thisObject.cPointer(), args_ma)
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptValue_Call22(this.h, thisObject.cPointer(), args_ma))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -616,8 +562,7 @@ func (this *QScriptValue) Construct1(args []QScriptValue) *QScriptValue {
 		args_CArray[i] = args[i].cPointer()
 	}
 	args_ma := C.struct_miqt_array{len: C.size_t(len(args)), data: unsafe.Pointer(args_CArray)}
-	_ret := C.QScriptValue_Construct1(this.h, args_ma)
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptValue_Construct1(this.h, args_ma))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

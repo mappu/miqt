@@ -193,16 +193,16 @@ public:
 
 };
 
-void QSignalMapper_new(QSignalMapper** outptr_QSignalMapper, QObject** outptr_QObject) {
-	MiqtVirtualQSignalMapper* ret = new MiqtVirtualQSignalMapper();
-	*outptr_QSignalMapper = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSignalMapper* QSignalMapper_new() {
+	return new MiqtVirtualQSignalMapper();
 }
 
-void QSignalMapper_new2(QObject* parent, QSignalMapper** outptr_QSignalMapper, QObject** outptr_QObject) {
-	MiqtVirtualQSignalMapper* ret = new MiqtVirtualQSignalMapper(parent);
-	*outptr_QSignalMapper = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSignalMapper* QSignalMapper_new2(QObject* parent) {
+	return new MiqtVirtualQSignalMapper(parent);
+}
+
+void QSignalMapper_virtbase(QSignalMapper* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QSignalMapper_MetaObject(const QSignalMapper* self) {

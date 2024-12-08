@@ -207,56 +207,44 @@ public:
 
 };
 
-void QSvgRenderer_new(QSvgRenderer** outptr_QSvgRenderer, QObject** outptr_QObject) {
-	MiqtVirtualQSvgRenderer* ret = new MiqtVirtualQSvgRenderer();
-	*outptr_QSvgRenderer = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSvgRenderer* QSvgRenderer_new() {
+	return new MiqtVirtualQSvgRenderer();
 }
 
-void QSvgRenderer_new2(struct miqt_string filename, QSvgRenderer** outptr_QSvgRenderer, QObject** outptr_QObject) {
+QSvgRenderer* QSvgRenderer_new2(struct miqt_string filename) {
 	QString filename_QString = QString::fromUtf8(filename.data, filename.len);
-	MiqtVirtualQSvgRenderer* ret = new MiqtVirtualQSvgRenderer(filename_QString);
-	*outptr_QSvgRenderer = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQSvgRenderer(filename_QString);
 }
 
-void QSvgRenderer_new3(struct miqt_string contents, QSvgRenderer** outptr_QSvgRenderer, QObject** outptr_QObject) {
+QSvgRenderer* QSvgRenderer_new3(struct miqt_string contents) {
 	QByteArray contents_QByteArray(contents.data, contents.len);
-	MiqtVirtualQSvgRenderer* ret = new MiqtVirtualQSvgRenderer(contents_QByteArray);
-	*outptr_QSvgRenderer = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQSvgRenderer(contents_QByteArray);
 }
 
-void QSvgRenderer_new4(QXmlStreamReader* contents, QSvgRenderer** outptr_QSvgRenderer, QObject** outptr_QObject) {
-	MiqtVirtualQSvgRenderer* ret = new MiqtVirtualQSvgRenderer(contents);
-	*outptr_QSvgRenderer = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSvgRenderer* QSvgRenderer_new4(QXmlStreamReader* contents) {
+	return new MiqtVirtualQSvgRenderer(contents);
 }
 
-void QSvgRenderer_new5(QObject* parent, QSvgRenderer** outptr_QSvgRenderer, QObject** outptr_QObject) {
-	MiqtVirtualQSvgRenderer* ret = new MiqtVirtualQSvgRenderer(parent);
-	*outptr_QSvgRenderer = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSvgRenderer* QSvgRenderer_new5(QObject* parent) {
+	return new MiqtVirtualQSvgRenderer(parent);
 }
 
-void QSvgRenderer_new6(struct miqt_string filename, QObject* parent, QSvgRenderer** outptr_QSvgRenderer, QObject** outptr_QObject) {
+QSvgRenderer* QSvgRenderer_new6(struct miqt_string filename, QObject* parent) {
 	QString filename_QString = QString::fromUtf8(filename.data, filename.len);
-	MiqtVirtualQSvgRenderer* ret = new MiqtVirtualQSvgRenderer(filename_QString, parent);
-	*outptr_QSvgRenderer = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQSvgRenderer(filename_QString, parent);
 }
 
-void QSvgRenderer_new7(struct miqt_string contents, QObject* parent, QSvgRenderer** outptr_QSvgRenderer, QObject** outptr_QObject) {
+QSvgRenderer* QSvgRenderer_new7(struct miqt_string contents, QObject* parent) {
 	QByteArray contents_QByteArray(contents.data, contents.len);
-	MiqtVirtualQSvgRenderer* ret = new MiqtVirtualQSvgRenderer(contents_QByteArray, parent);
-	*outptr_QSvgRenderer = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQSvgRenderer(contents_QByteArray, parent);
 }
 
-void QSvgRenderer_new8(QXmlStreamReader* contents, QObject* parent, QSvgRenderer** outptr_QSvgRenderer, QObject** outptr_QObject) {
-	MiqtVirtualQSvgRenderer* ret = new MiqtVirtualQSvgRenderer(contents, parent);
-	*outptr_QSvgRenderer = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSvgRenderer* QSvgRenderer_new8(QXmlStreamReader* contents, QObject* parent) {
+	return new MiqtVirtualQSvgRenderer(contents, parent);
+}
+
+void QSvgRenderer_virtbase(QSvgRenderer* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QSvgRenderer_MetaObject(const QSvgRenderer* self) {

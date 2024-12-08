@@ -209,111 +209,85 @@ public:
 
 };
 
-void QSettings_new(struct miqt_string organization, QSettings** outptr_QSettings, QObject** outptr_QObject) {
+QSettings* QSettings_new(struct miqt_string organization) {
 	QString organization_QString = QString::fromUtf8(organization.data, organization.len);
-	MiqtVirtualQSettings* ret = new MiqtVirtualQSettings(organization_QString);
-	*outptr_QSettings = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQSettings(organization_QString);
 }
 
-void QSettings_new2(int scope, struct miqt_string organization, QSettings** outptr_QSettings, QObject** outptr_QObject) {
+QSettings* QSettings_new2(int scope, struct miqt_string organization) {
 	QString organization_QString = QString::fromUtf8(organization.data, organization.len);
-	MiqtVirtualQSettings* ret = new MiqtVirtualQSettings(static_cast<QSettings::Scope>(scope), organization_QString);
-	*outptr_QSettings = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQSettings(static_cast<QSettings::Scope>(scope), organization_QString);
 }
 
-void QSettings_new3(int format, int scope, struct miqt_string organization, QSettings** outptr_QSettings, QObject** outptr_QObject) {
+QSettings* QSettings_new3(int format, int scope, struct miqt_string organization) {
 	QString organization_QString = QString::fromUtf8(organization.data, organization.len);
-	MiqtVirtualQSettings* ret = new MiqtVirtualQSettings(static_cast<QSettings::Format>(format), static_cast<QSettings::Scope>(scope), organization_QString);
-	*outptr_QSettings = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQSettings(static_cast<QSettings::Format>(format), static_cast<QSettings::Scope>(scope), organization_QString);
 }
 
-void QSettings_new4(struct miqt_string fileName, int format, QSettings** outptr_QSettings, QObject** outptr_QObject) {
+QSettings* QSettings_new4(struct miqt_string fileName, int format) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	MiqtVirtualQSettings* ret = new MiqtVirtualQSettings(fileName_QString, static_cast<QSettings::Format>(format));
-	*outptr_QSettings = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQSettings(fileName_QString, static_cast<QSettings::Format>(format));
 }
 
-void QSettings_new5(QSettings** outptr_QSettings, QObject** outptr_QObject) {
-	MiqtVirtualQSettings* ret = new MiqtVirtualQSettings();
-	*outptr_QSettings = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSettings* QSettings_new5() {
+	return new MiqtVirtualQSettings();
 }
 
-void QSettings_new6(int scope, QSettings** outptr_QSettings, QObject** outptr_QObject) {
-	MiqtVirtualQSettings* ret = new MiqtVirtualQSettings(static_cast<QSettings::Scope>(scope));
-	*outptr_QSettings = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSettings* QSettings_new6(int scope) {
+	return new MiqtVirtualQSettings(static_cast<QSettings::Scope>(scope));
 }
 
-void QSettings_new7(struct miqt_string organization, struct miqt_string application, QSettings** outptr_QSettings, QObject** outptr_QObject) {
+QSettings* QSettings_new7(struct miqt_string organization, struct miqt_string application) {
 	QString organization_QString = QString::fromUtf8(organization.data, organization.len);
 	QString application_QString = QString::fromUtf8(application.data, application.len);
-	MiqtVirtualQSettings* ret = new MiqtVirtualQSettings(organization_QString, application_QString);
-	*outptr_QSettings = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQSettings(organization_QString, application_QString);
 }
 
-void QSettings_new8(struct miqt_string organization, struct miqt_string application, QObject* parent, QSettings** outptr_QSettings, QObject** outptr_QObject) {
+QSettings* QSettings_new8(struct miqt_string organization, struct miqt_string application, QObject* parent) {
 	QString organization_QString = QString::fromUtf8(organization.data, organization.len);
 	QString application_QString = QString::fromUtf8(application.data, application.len);
-	MiqtVirtualQSettings* ret = new MiqtVirtualQSettings(organization_QString, application_QString, parent);
-	*outptr_QSettings = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQSettings(organization_QString, application_QString, parent);
 }
 
-void QSettings_new9(int scope, struct miqt_string organization, struct miqt_string application, QSettings** outptr_QSettings, QObject** outptr_QObject) {
+QSettings* QSettings_new9(int scope, struct miqt_string organization, struct miqt_string application) {
 	QString organization_QString = QString::fromUtf8(organization.data, organization.len);
 	QString application_QString = QString::fromUtf8(application.data, application.len);
-	MiqtVirtualQSettings* ret = new MiqtVirtualQSettings(static_cast<QSettings::Scope>(scope), organization_QString, application_QString);
-	*outptr_QSettings = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQSettings(static_cast<QSettings::Scope>(scope), organization_QString, application_QString);
 }
 
-void QSettings_new10(int scope, struct miqt_string organization, struct miqt_string application, QObject* parent, QSettings** outptr_QSettings, QObject** outptr_QObject) {
+QSettings* QSettings_new10(int scope, struct miqt_string organization, struct miqt_string application, QObject* parent) {
 	QString organization_QString = QString::fromUtf8(organization.data, organization.len);
 	QString application_QString = QString::fromUtf8(application.data, application.len);
-	MiqtVirtualQSettings* ret = new MiqtVirtualQSettings(static_cast<QSettings::Scope>(scope), organization_QString, application_QString, parent);
-	*outptr_QSettings = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQSettings(static_cast<QSettings::Scope>(scope), organization_QString, application_QString, parent);
 }
 
-void QSettings_new11(int format, int scope, struct miqt_string organization, struct miqt_string application, QSettings** outptr_QSettings, QObject** outptr_QObject) {
+QSettings* QSettings_new11(int format, int scope, struct miqt_string organization, struct miqt_string application) {
 	QString organization_QString = QString::fromUtf8(organization.data, organization.len);
 	QString application_QString = QString::fromUtf8(application.data, application.len);
-	MiqtVirtualQSettings* ret = new MiqtVirtualQSettings(static_cast<QSettings::Format>(format), static_cast<QSettings::Scope>(scope), organization_QString, application_QString);
-	*outptr_QSettings = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQSettings(static_cast<QSettings::Format>(format), static_cast<QSettings::Scope>(scope), organization_QString, application_QString);
 }
 
-void QSettings_new12(int format, int scope, struct miqt_string organization, struct miqt_string application, QObject* parent, QSettings** outptr_QSettings, QObject** outptr_QObject) {
+QSettings* QSettings_new12(int format, int scope, struct miqt_string organization, struct miqt_string application, QObject* parent) {
 	QString organization_QString = QString::fromUtf8(organization.data, organization.len);
 	QString application_QString = QString::fromUtf8(application.data, application.len);
-	MiqtVirtualQSettings* ret = new MiqtVirtualQSettings(static_cast<QSettings::Format>(format), static_cast<QSettings::Scope>(scope), organization_QString, application_QString, parent);
-	*outptr_QSettings = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQSettings(static_cast<QSettings::Format>(format), static_cast<QSettings::Scope>(scope), organization_QString, application_QString, parent);
 }
 
-void QSettings_new13(struct miqt_string fileName, int format, QObject* parent, QSettings** outptr_QSettings, QObject** outptr_QObject) {
+QSettings* QSettings_new13(struct miqt_string fileName, int format, QObject* parent) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	MiqtVirtualQSettings* ret = new MiqtVirtualQSettings(fileName_QString, static_cast<QSettings::Format>(format), parent);
-	*outptr_QSettings = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQSettings(fileName_QString, static_cast<QSettings::Format>(format), parent);
 }
 
-void QSettings_new14(QObject* parent, QSettings** outptr_QSettings, QObject** outptr_QObject) {
-	MiqtVirtualQSettings* ret = new MiqtVirtualQSettings(parent);
-	*outptr_QSettings = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSettings* QSettings_new14(QObject* parent) {
+	return new MiqtVirtualQSettings(parent);
 }
 
-void QSettings_new15(int scope, QObject* parent, QSettings** outptr_QSettings, QObject** outptr_QObject) {
-	MiqtVirtualQSettings* ret = new MiqtVirtualQSettings(static_cast<QSettings::Scope>(scope), parent);
-	*outptr_QSettings = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSettings* QSettings_new15(int scope, QObject* parent) {
+	return new MiqtVirtualQSettings(static_cast<QSettings::Scope>(scope), parent);
+}
+
+void QSettings_virtbase(QSettings* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QSettings_MetaObject(const QSettings* self) {

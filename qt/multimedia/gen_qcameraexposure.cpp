@@ -10,6 +10,10 @@
 #include "gen_qcameraexposure.h"
 #include "_cgo_export.h"
 
+void QCameraExposure_virtbase(QCameraExposure* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
+
 QMetaObject* QCameraExposure_MetaObject(const QCameraExposure* self) {
 	return (QMetaObject*) self->metaObject();
 }

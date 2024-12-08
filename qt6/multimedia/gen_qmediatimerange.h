@@ -26,10 +26,10 @@ typedef struct QMediaTimeRange QMediaTimeRange;
 typedef struct QMediaTimeRange__Interval QMediaTimeRange__Interval;
 #endif
 
-void QMediaTimeRange_new(QMediaTimeRange** outptr_QMediaTimeRange);
-void QMediaTimeRange_new2(long long start, long long end, QMediaTimeRange** outptr_QMediaTimeRange);
-void QMediaTimeRange_new3(QMediaTimeRange__Interval* param1, QMediaTimeRange** outptr_QMediaTimeRange);
-void QMediaTimeRange_new4(QMediaTimeRange* rangeVal, QMediaTimeRange** outptr_QMediaTimeRange);
+QMediaTimeRange* QMediaTimeRange_new();
+QMediaTimeRange* QMediaTimeRange_new2(long long start, long long end);
+QMediaTimeRange* QMediaTimeRange_new3(QMediaTimeRange__Interval* param1);
+QMediaTimeRange* QMediaTimeRange_new4(QMediaTimeRange* rangeVal);
 void QMediaTimeRange_OperatorAssign(QMediaTimeRange* self, QMediaTimeRange* param1);
 void QMediaTimeRange_Swap(QMediaTimeRange* self, QMediaTimeRange* other);
 void QMediaTimeRange_Detach(QMediaTimeRange* self);
@@ -53,9 +53,9 @@ QMediaTimeRange* QMediaTimeRange_OperatorMinusAssignWithQMediaTimeRangeInterval(
 void QMediaTimeRange_Clear(QMediaTimeRange* self);
 void QMediaTimeRange_Delete(QMediaTimeRange* self, bool isSubclass);
 
-void QMediaTimeRange__Interval_new(QMediaTimeRange__Interval** outptr_QMediaTimeRange__Interval);
-void QMediaTimeRange__Interval_new2(long long start, long long end, QMediaTimeRange__Interval** outptr_QMediaTimeRange__Interval);
-void QMediaTimeRange__Interval_new3(QMediaTimeRange__Interval* param1, QMediaTimeRange__Interval** outptr_QMediaTimeRange__Interval);
+QMediaTimeRange__Interval* QMediaTimeRange__Interval_new();
+QMediaTimeRange__Interval* QMediaTimeRange__Interval_new2(long long start, long long end);
+QMediaTimeRange__Interval* QMediaTimeRange__Interval_new3(QMediaTimeRange__Interval* param1);
 long long QMediaTimeRange__Interval_Start(const QMediaTimeRange__Interval* self);
 long long QMediaTimeRange__Interval_End(const QMediaTimeRange__Interval* self);
 bool QMediaTimeRange__Interval_Contains(const QMediaTimeRange__Interval* self, long long time);

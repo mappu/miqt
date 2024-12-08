@@ -6,9 +6,8 @@
 #include "gen_qwaitcondition.h"
 #include "_cgo_export.h"
 
-void QWaitCondition_new(QWaitCondition** outptr_QWaitCondition) {
-	QWaitCondition* ret = new QWaitCondition();
-	*outptr_QWaitCondition = ret;
+QWaitCondition* QWaitCondition_new() {
+	return new QWaitCondition();
 }
 
 bool QWaitCondition_Wait(QWaitCondition* self, QMutex* lockedMutex) {

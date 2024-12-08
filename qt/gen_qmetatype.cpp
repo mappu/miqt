@@ -7,14 +7,12 @@
 #include "gen_qmetatype.h"
 #include "_cgo_export.h"
 
-void QMetaType_new(QMetaType** outptr_QMetaType) {
-	QMetaType* ret = new QMetaType();
-	*outptr_QMetaType = ret;
+QMetaType* QMetaType_new() {
+	return new QMetaType();
 }
 
-void QMetaType_new2(const int typeVal, QMetaType** outptr_QMetaType) {
-	QMetaType* ret = new QMetaType(static_cast<const int>(typeVal));
-	*outptr_QMetaType = ret;
+QMetaType* QMetaType_new2(const int typeVal) {
+	return new QMetaType(static_cast<const int>(typeVal));
 }
 
 bool QMetaType_UnregisterType(int typeVal) {

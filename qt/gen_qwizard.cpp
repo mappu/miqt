@@ -517,31 +517,20 @@ public:
 
 };
 
-void QWizard_new(QWidget* parent, QWizard** outptr_QWizard, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQWizard* ret = new MiqtVirtualQWizard(parent);
-	*outptr_QWizard = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QWizard* QWizard_new(QWidget* parent) {
+	return new MiqtVirtualQWizard(parent);
 }
 
-void QWizard_new2(QWizard** outptr_QWizard, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQWizard* ret = new MiqtVirtualQWizard();
-	*outptr_QWizard = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QWizard* QWizard_new2() {
+	return new MiqtVirtualQWizard();
 }
 
-void QWizard_new3(QWidget* parent, int flags, QWizard** outptr_QWizard, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQWizard* ret = new MiqtVirtualQWizard(parent, static_cast<Qt::WindowFlags>(flags));
-	*outptr_QWizard = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QWizard* QWizard_new3(QWidget* parent, int flags) {
+	return new MiqtVirtualQWizard(parent, static_cast<Qt::WindowFlags>(flags));
+}
+
+void QWizard_virtbase(QWizard* src, QDialog** outptr_QDialog) {
+	*outptr_QDialog = static_cast<QDialog*>(src);
 }
 
 QMetaObject* QWizard_MetaObject(const QWizard* self) {
@@ -2152,20 +2141,16 @@ public:
 
 };
 
-void QWizardPage_new(QWidget* parent, QWizardPage** outptr_QWizardPage, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQWizardPage* ret = new MiqtVirtualQWizardPage(parent);
-	*outptr_QWizardPage = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QWizardPage* QWizardPage_new(QWidget* parent) {
+	return new MiqtVirtualQWizardPage(parent);
 }
 
-void QWizardPage_new2(QWizardPage** outptr_QWizardPage, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQWizardPage* ret = new MiqtVirtualQWizardPage();
-	*outptr_QWizardPage = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QWizardPage* QWizardPage_new2() {
+	return new MiqtVirtualQWizardPage();
+}
+
+void QWizardPage_virtbase(QWizardPage* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QWizardPage_MetaObject(const QWizardPage* self) {

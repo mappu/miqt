@@ -37,24 +37,19 @@ func newQStorageInfo(h *C.QStorageInfo) *QStorageInfo {
 	if h == nil {
 		return nil
 	}
+
 	return &QStorageInfo{h: h}
 }
 
 // UnsafeNewQStorageInfo constructs the type using only unsafe pointers.
 func UnsafeNewQStorageInfo(h unsafe.Pointer) *QStorageInfo {
-	if h == nil {
-		return nil
-	}
-
-	return &QStorageInfo{h: (*C.QStorageInfo)(h)}
+	return newQStorageInfo((*C.QStorageInfo)(h))
 }
 
 // NewQStorageInfo constructs a new QStorageInfo object.
 func NewQStorageInfo() *QStorageInfo {
-	var outptr_QStorageInfo *C.QStorageInfo = nil
 
-	C.QStorageInfo_new(&outptr_QStorageInfo)
-	ret := newQStorageInfo(outptr_QStorageInfo)
+	ret := newQStorageInfo(C.QStorageInfo_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -65,30 +60,24 @@ func NewQStorageInfo2(path string) *QStorageInfo {
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	var outptr_QStorageInfo *C.QStorageInfo = nil
 
-	C.QStorageInfo_new2(path_ms, &outptr_QStorageInfo)
-	ret := newQStorageInfo(outptr_QStorageInfo)
+	ret := newQStorageInfo(C.QStorageInfo_new2(path_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQStorageInfo3 constructs a new QStorageInfo object.
 func NewQStorageInfo3(dir *QDir) *QStorageInfo {
-	var outptr_QStorageInfo *C.QStorageInfo = nil
 
-	C.QStorageInfo_new3(dir.cPointer(), &outptr_QStorageInfo)
-	ret := newQStorageInfo(outptr_QStorageInfo)
+	ret := newQStorageInfo(C.QStorageInfo_new3(dir.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQStorageInfo4 constructs a new QStorageInfo object.
 func NewQStorageInfo4(other *QStorageInfo) *QStorageInfo {
-	var outptr_QStorageInfo *C.QStorageInfo = nil
 
-	C.QStorageInfo_new4(other.cPointer(), &outptr_QStorageInfo)
-	ret := newQStorageInfo(outptr_QStorageInfo)
+	ret := newQStorageInfo(C.QStorageInfo_new4(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -192,8 +181,7 @@ func QStorageInfo_MountedVolumes() []QStorageInfo {
 	_ret := make([]QStorageInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QStorageInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQStorageInfo(_lv_ret)
+		_lv_goptr := newQStorageInfo(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -201,8 +189,7 @@ func QStorageInfo_MountedVolumes() []QStorageInfo {
 }
 
 func QStorageInfo_Root() *QStorageInfo {
-	_ret := C.QStorageInfo_Root()
-	_goptr := newQStorageInfo(_ret)
+	_goptr := newQStorageInfo(C.QStorageInfo_Root())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

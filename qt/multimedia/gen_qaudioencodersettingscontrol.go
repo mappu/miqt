@@ -35,22 +35,20 @@ func (this *QAudioEncoderSettingsControl) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAudioEncoderSettingsControl constructs the type using only CGO pointers.
-func newQAudioEncoderSettingsControl(h *C.QAudioEncoderSettingsControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QAudioEncoderSettingsControl {
+func newQAudioEncoderSettingsControl(h *C.QAudioEncoderSettingsControl) *QAudioEncoderSettingsControl {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaControl *C.QMediaControl = nil
+	C.QAudioEncoderSettingsControl_virtbase(h, &outptr_QMediaControl)
+
 	return &QAudioEncoderSettingsControl{h: h,
-		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
+		QMediaControl: newQMediaControl(outptr_QMediaControl)}
 }
 
 // UnsafeNewQAudioEncoderSettingsControl constructs the type using only unsafe pointers.
-func UnsafeNewQAudioEncoderSettingsControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QAudioEncoderSettingsControl {
-	if h == nil {
-		return nil
-	}
-
-	return &QAudioEncoderSettingsControl{h: (*C.QAudioEncoderSettingsControl)(h),
-		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
+func UnsafeNewQAudioEncoderSettingsControl(h unsafe.Pointer) *QAudioEncoderSettingsControl {
+	return newQAudioEncoderSettingsControl((*C.QAudioEncoderSettingsControl)(h))
 }
 
 func (this *QAudioEncoderSettingsControl) MetaObject() *qt.QMetaObject {
@@ -116,8 +114,7 @@ func (this *QAudioEncoderSettingsControl) SupportedSampleRates(settings *QAudioE
 }
 
 func (this *QAudioEncoderSettingsControl) AudioSettings() *QAudioEncoderSettings {
-	_ret := C.QAudioEncoderSettingsControl_AudioSettings(this.h)
-	_goptr := newQAudioEncoderSettings(_ret)
+	_goptr := newQAudioEncoderSettings(C.QAudioEncoderSettingsControl_AudioSettings(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

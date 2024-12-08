@@ -27,9 +27,8 @@ public:
 
 };
 
-void QRunnable_new(QRunnable** outptr_QRunnable) {
-	MiqtVirtualQRunnable* ret = new MiqtVirtualQRunnable();
-	*outptr_QRunnable = ret;
+QRunnable* QRunnable_new() {
+	return new MiqtVirtualQRunnable();
 }
 
 void QRunnable_Run(QRunnable* self) {

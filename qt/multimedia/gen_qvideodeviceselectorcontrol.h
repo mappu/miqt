@@ -26,6 +26,7 @@ typedef struct QObject QObject;
 typedef struct QVideoDeviceSelectorControl QVideoDeviceSelectorControl;
 #endif
 
+void QVideoDeviceSelectorControl_virtbase(QVideoDeviceSelectorControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QVideoDeviceSelectorControl_MetaObject(const QVideoDeviceSelectorControl* self);
 void* QVideoDeviceSelectorControl_Metacast(QVideoDeviceSelectorControl* self, const char* param1);
 struct miqt_string QVideoDeviceSelectorControl_Tr(const char* s);

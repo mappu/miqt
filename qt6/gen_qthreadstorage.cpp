@@ -3,9 +3,8 @@
 #include "gen_qthreadstorage.h"
 #include "_cgo_export.h"
 
-void QThreadStorageData_new(QThreadStorageData* param1, QThreadStorageData** outptr_QThreadStorageData) {
-	QThreadStorageData* ret = new QThreadStorageData(*param1);
-	*outptr_QThreadStorageData = ret;
+QThreadStorageData* QThreadStorageData_new(QThreadStorageData* param1) {
+	return new QThreadStorageData(*param1);
 }
 
 void QThreadStorageData_Delete(QThreadStorageData* self, bool isSubclass) {

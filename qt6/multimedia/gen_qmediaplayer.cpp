@@ -200,16 +200,16 @@ public:
 
 };
 
-void QMediaPlayer_new(QMediaPlayer** outptr_QMediaPlayer, QObject** outptr_QObject) {
-	MiqtVirtualQMediaPlayer* ret = new MiqtVirtualQMediaPlayer();
-	*outptr_QMediaPlayer = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QMediaPlayer* QMediaPlayer_new() {
+	return new MiqtVirtualQMediaPlayer();
 }
 
-void QMediaPlayer_new2(QObject* parent, QMediaPlayer** outptr_QMediaPlayer, QObject** outptr_QObject) {
-	MiqtVirtualQMediaPlayer* ret = new MiqtVirtualQMediaPlayer(parent);
-	*outptr_QMediaPlayer = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QMediaPlayer* QMediaPlayer_new2(QObject* parent) {
+	return new MiqtVirtualQMediaPlayer(parent);
+}
+
+void QMediaPlayer_virtbase(QMediaPlayer* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QMediaPlayer_MetaObject(const QMediaPlayer* self) {

@@ -5,9 +5,8 @@
 #include "gen_qcolormap.h"
 #include "_cgo_export.h"
 
-void QColormap_new(QColormap* colormap, QColormap** outptr_QColormap) {
-	QColormap* ret = new QColormap(*colormap);
-	*outptr_QColormap = ret;
+QColormap* QColormap_new(QColormap* colormap) {
+	return new QColormap(*colormap);
 }
 
 void QColormap_Initialize() {

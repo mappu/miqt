@@ -55,54 +55,43 @@ func newQTileRules(h *C.QTileRules) *QTileRules {
 	if h == nil {
 		return nil
 	}
+
 	return &QTileRules{h: h}
 }
 
 // UnsafeNewQTileRules constructs the type using only unsafe pointers.
 func UnsafeNewQTileRules(h unsafe.Pointer) *QTileRules {
-	if h == nil {
-		return nil
-	}
-
-	return &QTileRules{h: (*C.QTileRules)(h)}
+	return newQTileRules((*C.QTileRules)(h))
 }
 
 // NewQTileRules constructs a new QTileRules object.
 func NewQTileRules(horizontalRule TileRule, verticalRule TileRule) *QTileRules {
-	var outptr_QTileRules *C.QTileRules = nil
 
-	C.QTileRules_new((C.int)(horizontalRule), (C.int)(verticalRule), &outptr_QTileRules)
-	ret := newQTileRules(outptr_QTileRules)
+	ret := newQTileRules(C.QTileRules_new((C.int)(horizontalRule), (C.int)(verticalRule)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTileRules2 constructs a new QTileRules object.
 func NewQTileRules2() *QTileRules {
-	var outptr_QTileRules *C.QTileRules = nil
 
-	C.QTileRules_new2(&outptr_QTileRules)
-	ret := newQTileRules(outptr_QTileRules)
+	ret := newQTileRules(C.QTileRules_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTileRules3 constructs a new QTileRules object.
 func NewQTileRules3(param1 *QTileRules) *QTileRules {
-	var outptr_QTileRules *C.QTileRules = nil
 
-	C.QTileRules_new3(param1.cPointer(), &outptr_QTileRules)
-	ret := newQTileRules(outptr_QTileRules)
+	ret := newQTileRules(C.QTileRules_new3(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTileRules4 constructs a new QTileRules object.
 func NewQTileRules4(rule TileRule) *QTileRules {
-	var outptr_QTileRules *C.QTileRules = nil
 
-	C.QTileRules_new4((C.int)(rule), &outptr_QTileRules)
-	ret := newQTileRules(outptr_QTileRules)
+	ret := newQTileRules(C.QTileRules_new4((C.int)(rule)))
 	ret.isSubclass = true
 	return ret
 }

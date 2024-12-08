@@ -46,82 +46,56 @@ func (this *QSlider) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSlider constructs the type using only CGO pointers.
-func newQSlider(h *C.QSlider, h_QAbstractSlider *C.QAbstractSlider, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QSlider {
+func newQSlider(h *C.QSlider) *QSlider {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractSlider *C.QAbstractSlider = nil
+	C.QSlider_virtbase(h, &outptr_QAbstractSlider)
+
 	return &QSlider{h: h,
-		QAbstractSlider: newQAbstractSlider(h_QAbstractSlider, h_QWidget, h_QObject, h_QPaintDevice)}
+		QAbstractSlider: newQAbstractSlider(outptr_QAbstractSlider)}
 }
 
 // UnsafeNewQSlider constructs the type using only unsafe pointers.
-func UnsafeNewQSlider(h unsafe.Pointer, h_QAbstractSlider unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QSlider {
-	if h == nil {
-		return nil
-	}
-
-	return &QSlider{h: (*C.QSlider)(h),
-		QAbstractSlider: UnsafeNewQAbstractSlider(h_QAbstractSlider, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQSlider(h unsafe.Pointer) *QSlider {
+	return newQSlider((*C.QSlider)(h))
 }
 
 // NewQSlider constructs a new QSlider object.
 func NewQSlider(parent *QWidget) *QSlider {
-	var outptr_QSlider *C.QSlider = nil
-	var outptr_QAbstractSlider *C.QAbstractSlider = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QSlider_new(parent.cPointer(), &outptr_QSlider, &outptr_QAbstractSlider, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQSlider(outptr_QSlider, outptr_QAbstractSlider, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQSlider(C.QSlider_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSlider2 constructs a new QSlider object.
 func NewQSlider2() *QSlider {
-	var outptr_QSlider *C.QSlider = nil
-	var outptr_QAbstractSlider *C.QAbstractSlider = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QSlider_new2(&outptr_QSlider, &outptr_QAbstractSlider, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQSlider(outptr_QSlider, outptr_QAbstractSlider, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQSlider(C.QSlider_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSlider3 constructs a new QSlider object.
 func NewQSlider3(orientation Orientation) *QSlider {
-	var outptr_QSlider *C.QSlider = nil
-	var outptr_QAbstractSlider *C.QAbstractSlider = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QSlider_new3((C.int)(orientation), &outptr_QSlider, &outptr_QAbstractSlider, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQSlider(outptr_QSlider, outptr_QAbstractSlider, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQSlider(C.QSlider_new3((C.int)(orientation)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSlider4 constructs a new QSlider object.
 func NewQSlider4(orientation Orientation, parent *QWidget) *QSlider {
-	var outptr_QSlider *C.QSlider = nil
-	var outptr_QAbstractSlider *C.QAbstractSlider = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QSlider_new4((C.int)(orientation), parent.cPointer(), &outptr_QSlider, &outptr_QAbstractSlider, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQSlider(outptr_QSlider, outptr_QAbstractSlider, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQSlider(C.QSlider_new4((C.int)(orientation), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QSlider) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSlider_MetaObject(this.h)))
+	return newQMetaObject(C.QSlider_MetaObject(this.h))
 }
 
 func (this *QSlider) Metacast(param1 string) unsafe.Pointer {
@@ -149,15 +123,13 @@ func QSlider_TrUtf8(s string) string {
 }
 
 func (this *QSlider) SizeHint() *QSize {
-	_ret := C.QSlider_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSlider_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSlider) MinimumSizeHint() *QSize {
-	_ret := C.QSlider_MinimumSizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSlider_MinimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -228,13 +200,15 @@ func QSlider_TrUtf83(s string, c string, n int) string {
 
 func (this *QSlider) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QSlider_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSlider_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QSlider) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSlider_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -253,13 +227,15 @@ func miqt_exec_callback_QSlider_SizeHint(self *C.QSlider, cb C.intptr_t) *C.QSiz
 
 func (this *QSlider) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QSlider_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QSlider_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QSlider) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSlider_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -282,6 +258,9 @@ func (this *QSlider) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QSlider) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSlider_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -293,7 +272,7 @@ func miqt_exec_callback_QSlider_Event(self *C.QSlider, cb C.intptr_t, event *C.Q
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QSlider{h: self}).callVirtualBase_Event, slotval1)
 
@@ -307,6 +286,9 @@ func (this *QSlider) callVirtualBase_PaintEvent(ev *QPaintEvent) {
 
 }
 func (this *QSlider) OnPaintEvent(slot func(super func(ev *QPaintEvent), ev *QPaintEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSlider_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -318,7 +300,7 @@ func miqt_exec_callback_QSlider_PaintEvent(self *C.QSlider, cb C.intptr_t, ev *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(ev), nil)
+	slotval1 := newQPaintEvent(ev)
 
 	gofunc((&QSlider{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -330,6 +312,9 @@ func (this *QSlider) callVirtualBase_MousePressEvent(ev *QMouseEvent) {
 
 }
 func (this *QSlider) OnMousePressEvent(slot func(super func(ev *QMouseEvent), ev *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSlider_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -341,7 +326,7 @@ func miqt_exec_callback_QSlider_MousePressEvent(self *C.QSlider, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(ev), nil, nil)
+	slotval1 := newQMouseEvent(ev)
 
 	gofunc((&QSlider{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -353,6 +338,9 @@ func (this *QSlider) callVirtualBase_MouseReleaseEvent(ev *QMouseEvent) {
 
 }
 func (this *QSlider) OnMouseReleaseEvent(slot func(super func(ev *QMouseEvent), ev *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSlider_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -364,7 +352,7 @@ func miqt_exec_callback_QSlider_MouseReleaseEvent(self *C.QSlider, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(ev), nil, nil)
+	slotval1 := newQMouseEvent(ev)
 
 	gofunc((&QSlider{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -376,6 +364,9 @@ func (this *QSlider) callVirtualBase_MouseMoveEvent(ev *QMouseEvent) {
 
 }
 func (this *QSlider) OnMouseMoveEvent(slot func(super func(ev *QMouseEvent), ev *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSlider_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -387,7 +378,7 @@ func miqt_exec_callback_QSlider_MouseMoveEvent(self *C.QSlider, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(ev), nil, nil)
+	slotval1 := newQMouseEvent(ev)
 
 	gofunc((&QSlider{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -399,6 +390,9 @@ func (this *QSlider) callVirtualBase_SliderChange(change QAbstractSlider__Slider
 
 }
 func (this *QSlider) OnSliderChange(slot func(super func(change QAbstractSlider__SliderChange), change QAbstractSlider__SliderChange)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSlider_override_virtual_SliderChange(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -422,6 +416,9 @@ func (this *QSlider) callVirtualBase_KeyPressEvent(ev *QKeyEvent) {
 
 }
 func (this *QSlider) OnKeyPressEvent(slot func(super func(ev *QKeyEvent), ev *QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSlider_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -433,7 +430,7 @@ func miqt_exec_callback_QSlider_KeyPressEvent(self *C.QSlider, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(ev), nil, nil)
+	slotval1 := newQKeyEvent(ev)
 
 	gofunc((&QSlider{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -445,6 +442,9 @@ func (this *QSlider) callVirtualBase_TimerEvent(param1 *QTimerEvent) {
 
 }
 func (this *QSlider) OnTimerEvent(slot func(super func(param1 *QTimerEvent), param1 *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSlider_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -456,7 +456,7 @@ func miqt_exec_callback_QSlider_TimerEvent(self *C.QSlider, cb C.intptr_t, param
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQTimerEvent(param1)
 
 	gofunc((&QSlider{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -468,6 +468,9 @@ func (this *QSlider) callVirtualBase_WheelEvent(e *QWheelEvent) {
 
 }
 func (this *QSlider) OnWheelEvent(slot func(super func(e *QWheelEvent), e *QWheelEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSlider_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -479,7 +482,7 @@ func miqt_exec_callback_QSlider_WheelEvent(self *C.QSlider, cb C.intptr_t, e *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQWheelEvent(e)
 
 	gofunc((&QSlider{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -491,6 +494,9 @@ func (this *QSlider) callVirtualBase_ChangeEvent(e *QEvent) {
 
 }
 func (this *QSlider) OnChangeEvent(slot func(super func(e *QEvent), e *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSlider_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -502,7 +508,7 @@ func miqt_exec_callback_QSlider_ChangeEvent(self *C.QSlider, cb C.intptr_t, e *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	gofunc((&QSlider{h: self}).callVirtualBase_ChangeEvent, slotval1)
 

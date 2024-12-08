@@ -80,9 +80,8 @@ public:
 
 };
 
-void QGestureRecognizer_new(QGestureRecognizer** outptr_QGestureRecognizer) {
-	MiqtVirtualQGestureRecognizer* ret = new MiqtVirtualQGestureRecognizer();
-	*outptr_QGestureRecognizer = ret;
+QGestureRecognizer* QGestureRecognizer_new() {
+	return new MiqtVirtualQGestureRecognizer();
 }
 
 QGesture* QGestureRecognizer_Create(QGestureRecognizer* self, QObject* target) {

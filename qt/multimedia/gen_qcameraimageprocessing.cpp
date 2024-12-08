@@ -8,6 +8,10 @@
 #include "gen_qcameraimageprocessing.h"
 #include "_cgo_export.h"
 
+void QCameraImageProcessing_virtbase(QCameraImageProcessing* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
+
 QMetaObject* QCameraImageProcessing_MetaObject(const QCameraImageProcessing* self) {
 	return (QMetaObject*) self->metaObject();
 }

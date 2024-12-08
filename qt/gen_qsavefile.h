@@ -28,10 +28,11 @@ typedef struct QObject QObject;
 typedef struct QSaveFile QSaveFile;
 #endif
 
-void QSaveFile_new(struct miqt_string name, QSaveFile** outptr_QSaveFile, QFileDevice** outptr_QFileDevice, QIODevice** outptr_QIODevice, QObject** outptr_QObject);
-void QSaveFile_new2(QSaveFile** outptr_QSaveFile, QFileDevice** outptr_QFileDevice, QIODevice** outptr_QIODevice, QObject** outptr_QObject);
-void QSaveFile_new3(struct miqt_string name, QObject* parent, QSaveFile** outptr_QSaveFile, QFileDevice** outptr_QFileDevice, QIODevice** outptr_QIODevice, QObject** outptr_QObject);
-void QSaveFile_new4(QObject* parent, QSaveFile** outptr_QSaveFile, QFileDevice** outptr_QFileDevice, QIODevice** outptr_QIODevice, QObject** outptr_QObject);
+QSaveFile* QSaveFile_new(struct miqt_string name);
+QSaveFile* QSaveFile_new2();
+QSaveFile* QSaveFile_new3(struct miqt_string name, QObject* parent);
+QSaveFile* QSaveFile_new4(QObject* parent);
+void QSaveFile_virtbase(QSaveFile* src, QFileDevice** outptr_QFileDevice);
 QMetaObject* QSaveFile_MetaObject(const QSaveFile* self);
 void* QSaveFile_Metacast(QSaveFile* self, const char* param1);
 struct miqt_string QSaveFile_Tr(const char* s);

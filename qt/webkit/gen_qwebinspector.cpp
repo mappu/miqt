@@ -1021,20 +1021,16 @@ public:
 
 };
 
-void QWebInspector_new(QWidget* parent, QWebInspector** outptr_QWebInspector, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQWebInspector* ret = new MiqtVirtualQWebInspector(parent);
-	*outptr_QWebInspector = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QWebInspector* QWebInspector_new(QWidget* parent) {
+	return new MiqtVirtualQWebInspector(parent);
 }
 
-void QWebInspector_new2(QWebInspector** outptr_QWebInspector, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQWebInspector* ret = new MiqtVirtualQWebInspector();
-	*outptr_QWebInspector = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QWebInspector* QWebInspector_new2() {
+	return new MiqtVirtualQWebInspector();
+}
+
+void QWebInspector_virtbase(QWebInspector* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QWebInspector_MetaObject(const QWebInspector* self) {

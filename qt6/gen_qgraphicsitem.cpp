@@ -895,14 +895,12 @@ public:
 
 };
 
-void QGraphicsItem_new(QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsItem* ret = new MiqtVirtualQGraphicsItem();
-	*outptr_QGraphicsItem = ret;
+QGraphicsItem* QGraphicsItem_new() {
+	return new MiqtVirtualQGraphicsItem();
 }
 
-void QGraphicsItem_new2(QGraphicsItem* parent, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsItem* ret = new MiqtVirtualQGraphicsItem(parent);
-	*outptr_QGraphicsItem = ret;
+QGraphicsItem* QGraphicsItem_new2(QGraphicsItem* parent) {
+	return new MiqtVirtualQGraphicsItem(parent);
 }
 
 QGraphicsScene* QGraphicsItem_Scene(const QGraphicsItem* self) {
@@ -2959,18 +2957,17 @@ public:
 
 };
 
-void QGraphicsObject_new(QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsObject* ret = new MiqtVirtualQGraphicsObject();
-	*outptr_QGraphicsObject = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsObject* QGraphicsObject_new() {
+	return new MiqtVirtualQGraphicsObject();
 }
 
-void QGraphicsObject_new2(QGraphicsItem* parent, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsObject* ret = new MiqtVirtualQGraphicsObject(parent);
-	*outptr_QGraphicsObject = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsObject* QGraphicsObject_new2(QGraphicsItem* parent) {
+	return new MiqtVirtualQGraphicsObject(parent);
+}
+
+void QGraphicsObject_virtbase(QGraphicsObject* src, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem) {
+	*outptr_QObject = static_cast<QObject*>(src);
+	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(src);
 }
 
 QMetaObject* QGraphicsObject_MetaObject(const QGraphicsObject* self) {
@@ -4322,16 +4319,16 @@ public:
 
 };
 
-void QAbstractGraphicsShapeItem_new(QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQAbstractGraphicsShapeItem* ret = new MiqtVirtualQAbstractGraphicsShapeItem();
-	*outptr_QAbstractGraphicsShapeItem = ret;
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QAbstractGraphicsShapeItem* QAbstractGraphicsShapeItem_new() {
+	return new MiqtVirtualQAbstractGraphicsShapeItem();
 }
 
-void QAbstractGraphicsShapeItem_new2(QGraphicsItem* parent, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQAbstractGraphicsShapeItem* ret = new MiqtVirtualQAbstractGraphicsShapeItem(parent);
-	*outptr_QAbstractGraphicsShapeItem = ret;
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QAbstractGraphicsShapeItem* QAbstractGraphicsShapeItem_new2(QGraphicsItem* parent) {
+	return new MiqtVirtualQAbstractGraphicsShapeItem(parent);
+}
+
+void QAbstractGraphicsShapeItem_virtbase(QAbstractGraphicsShapeItem* src, QGraphicsItem** outptr_QGraphicsItem) {
+	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(src);
 }
 
 QPen* QAbstractGraphicsShapeItem_Pen(const QAbstractGraphicsShapeItem* self) {
@@ -4889,32 +4886,24 @@ public:
 
 };
 
-void QGraphicsPathItem_new(QGraphicsPathItem** outptr_QGraphicsPathItem, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsPathItem* ret = new MiqtVirtualQGraphicsPathItem();
-	*outptr_QGraphicsPathItem = ret;
-	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsPathItem* QGraphicsPathItem_new() {
+	return new MiqtVirtualQGraphicsPathItem();
 }
 
-void QGraphicsPathItem_new2(QPainterPath* path, QGraphicsPathItem** outptr_QGraphicsPathItem, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsPathItem* ret = new MiqtVirtualQGraphicsPathItem(*path);
-	*outptr_QGraphicsPathItem = ret;
-	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsPathItem* QGraphicsPathItem_new2(QPainterPath* path) {
+	return new MiqtVirtualQGraphicsPathItem(*path);
 }
 
-void QGraphicsPathItem_new3(QGraphicsItem* parent, QGraphicsPathItem** outptr_QGraphicsPathItem, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsPathItem* ret = new MiqtVirtualQGraphicsPathItem(parent);
-	*outptr_QGraphicsPathItem = ret;
-	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsPathItem* QGraphicsPathItem_new3(QGraphicsItem* parent) {
+	return new MiqtVirtualQGraphicsPathItem(parent);
 }
 
-void QGraphicsPathItem_new4(QPainterPath* path, QGraphicsItem* parent, QGraphicsPathItem** outptr_QGraphicsPathItem, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsPathItem* ret = new MiqtVirtualQGraphicsPathItem(*path, parent);
-	*outptr_QGraphicsPathItem = ret;
-	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsPathItem* QGraphicsPathItem_new4(QPainterPath* path, QGraphicsItem* parent) {
+	return new MiqtVirtualQGraphicsPathItem(*path, parent);
+}
+
+void QGraphicsPathItem_virtbase(QGraphicsPathItem* src, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem) {
+	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(src);
 }
 
 QPainterPath* QGraphicsPathItem_Path(const QGraphicsPathItem* self) {
@@ -5294,46 +5283,32 @@ public:
 
 };
 
-void QGraphicsRectItem_new(QGraphicsRectItem** outptr_QGraphicsRectItem, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsRectItem* ret = new MiqtVirtualQGraphicsRectItem();
-	*outptr_QGraphicsRectItem = ret;
-	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsRectItem* QGraphicsRectItem_new() {
+	return new MiqtVirtualQGraphicsRectItem();
 }
 
-void QGraphicsRectItem_new2(QRectF* rect, QGraphicsRectItem** outptr_QGraphicsRectItem, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsRectItem* ret = new MiqtVirtualQGraphicsRectItem(*rect);
-	*outptr_QGraphicsRectItem = ret;
-	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsRectItem* QGraphicsRectItem_new2(QRectF* rect) {
+	return new MiqtVirtualQGraphicsRectItem(*rect);
 }
 
-void QGraphicsRectItem_new3(double x, double y, double w, double h, QGraphicsRectItem** outptr_QGraphicsRectItem, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsRectItem* ret = new MiqtVirtualQGraphicsRectItem(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
-	*outptr_QGraphicsRectItem = ret;
-	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsRectItem* QGraphicsRectItem_new3(double x, double y, double w, double h) {
+	return new MiqtVirtualQGraphicsRectItem(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
 }
 
-void QGraphicsRectItem_new4(QGraphicsItem* parent, QGraphicsRectItem** outptr_QGraphicsRectItem, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsRectItem* ret = new MiqtVirtualQGraphicsRectItem(parent);
-	*outptr_QGraphicsRectItem = ret;
-	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsRectItem* QGraphicsRectItem_new4(QGraphicsItem* parent) {
+	return new MiqtVirtualQGraphicsRectItem(parent);
 }
 
-void QGraphicsRectItem_new5(QRectF* rect, QGraphicsItem* parent, QGraphicsRectItem** outptr_QGraphicsRectItem, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsRectItem* ret = new MiqtVirtualQGraphicsRectItem(*rect, parent);
-	*outptr_QGraphicsRectItem = ret;
-	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsRectItem* QGraphicsRectItem_new5(QRectF* rect, QGraphicsItem* parent) {
+	return new MiqtVirtualQGraphicsRectItem(*rect, parent);
 }
 
-void QGraphicsRectItem_new6(double x, double y, double w, double h, QGraphicsItem* parent, QGraphicsRectItem** outptr_QGraphicsRectItem, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsRectItem* ret = new MiqtVirtualQGraphicsRectItem(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h), parent);
-	*outptr_QGraphicsRectItem = ret;
-	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsRectItem* QGraphicsRectItem_new6(double x, double y, double w, double h, QGraphicsItem* parent) {
+	return new MiqtVirtualQGraphicsRectItem(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h), parent);
+}
+
+void QGraphicsRectItem_virtbase(QGraphicsRectItem* src, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem) {
+	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(src);
 }
 
 QRectF* QGraphicsRectItem_Rect(const QGraphicsRectItem* self) {
@@ -5717,46 +5692,32 @@ public:
 
 };
 
-void QGraphicsEllipseItem_new(QGraphicsEllipseItem** outptr_QGraphicsEllipseItem, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsEllipseItem* ret = new MiqtVirtualQGraphicsEllipseItem();
-	*outptr_QGraphicsEllipseItem = ret;
-	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsEllipseItem* QGraphicsEllipseItem_new() {
+	return new MiqtVirtualQGraphicsEllipseItem();
 }
 
-void QGraphicsEllipseItem_new2(QRectF* rect, QGraphicsEllipseItem** outptr_QGraphicsEllipseItem, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsEllipseItem* ret = new MiqtVirtualQGraphicsEllipseItem(*rect);
-	*outptr_QGraphicsEllipseItem = ret;
-	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsEllipseItem* QGraphicsEllipseItem_new2(QRectF* rect) {
+	return new MiqtVirtualQGraphicsEllipseItem(*rect);
 }
 
-void QGraphicsEllipseItem_new3(double x, double y, double w, double h, QGraphicsEllipseItem** outptr_QGraphicsEllipseItem, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsEllipseItem* ret = new MiqtVirtualQGraphicsEllipseItem(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
-	*outptr_QGraphicsEllipseItem = ret;
-	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsEllipseItem* QGraphicsEllipseItem_new3(double x, double y, double w, double h) {
+	return new MiqtVirtualQGraphicsEllipseItem(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
 }
 
-void QGraphicsEllipseItem_new4(QGraphicsItem* parent, QGraphicsEllipseItem** outptr_QGraphicsEllipseItem, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsEllipseItem* ret = new MiqtVirtualQGraphicsEllipseItem(parent);
-	*outptr_QGraphicsEllipseItem = ret;
-	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsEllipseItem* QGraphicsEllipseItem_new4(QGraphicsItem* parent) {
+	return new MiqtVirtualQGraphicsEllipseItem(parent);
 }
 
-void QGraphicsEllipseItem_new5(QRectF* rect, QGraphicsItem* parent, QGraphicsEllipseItem** outptr_QGraphicsEllipseItem, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsEllipseItem* ret = new MiqtVirtualQGraphicsEllipseItem(*rect, parent);
-	*outptr_QGraphicsEllipseItem = ret;
-	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsEllipseItem* QGraphicsEllipseItem_new5(QRectF* rect, QGraphicsItem* parent) {
+	return new MiqtVirtualQGraphicsEllipseItem(*rect, parent);
 }
 
-void QGraphicsEllipseItem_new6(double x, double y, double w, double h, QGraphicsItem* parent, QGraphicsEllipseItem** outptr_QGraphicsEllipseItem, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsEllipseItem* ret = new MiqtVirtualQGraphicsEllipseItem(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h), parent);
-	*outptr_QGraphicsEllipseItem = ret;
-	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsEllipseItem* QGraphicsEllipseItem_new6(double x, double y, double w, double h, QGraphicsItem* parent) {
+	return new MiqtVirtualQGraphicsEllipseItem(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h), parent);
+}
+
+void QGraphicsEllipseItem_virtbase(QGraphicsEllipseItem* src, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem) {
+	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(src);
 }
 
 QRectF* QGraphicsEllipseItem_Rect(const QGraphicsEllipseItem* self) {
@@ -6152,18 +6113,16 @@ public:
 
 };
 
-void QGraphicsPolygonItem_new(QGraphicsPolygonItem** outptr_QGraphicsPolygonItem, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsPolygonItem* ret = new MiqtVirtualQGraphicsPolygonItem();
-	*outptr_QGraphicsPolygonItem = ret;
-	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsPolygonItem* QGraphicsPolygonItem_new() {
+	return new MiqtVirtualQGraphicsPolygonItem();
 }
 
-void QGraphicsPolygonItem_new2(QGraphicsItem* parent, QGraphicsPolygonItem** outptr_QGraphicsPolygonItem, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsPolygonItem* ret = new MiqtVirtualQGraphicsPolygonItem(parent);
-	*outptr_QGraphicsPolygonItem = ret;
-	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsPolygonItem* QGraphicsPolygonItem_new2(QGraphicsItem* parent) {
+	return new MiqtVirtualQGraphicsPolygonItem(parent);
+}
+
+void QGraphicsPolygonItem_virtbase(QGraphicsPolygonItem* src, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem) {
+	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(src);
 }
 
 int QGraphicsPolygonItem_FillRule(const QGraphicsPolygonItem* self) {
@@ -7150,40 +7109,32 @@ public:
 
 };
 
-void QGraphicsLineItem_new(QGraphicsLineItem** outptr_QGraphicsLineItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsLineItem* ret = new MiqtVirtualQGraphicsLineItem();
-	*outptr_QGraphicsLineItem = ret;
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsLineItem* QGraphicsLineItem_new() {
+	return new MiqtVirtualQGraphicsLineItem();
 }
 
-void QGraphicsLineItem_new2(QLineF* line, QGraphicsLineItem** outptr_QGraphicsLineItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsLineItem* ret = new MiqtVirtualQGraphicsLineItem(*line);
-	*outptr_QGraphicsLineItem = ret;
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsLineItem* QGraphicsLineItem_new2(QLineF* line) {
+	return new MiqtVirtualQGraphicsLineItem(*line);
 }
 
-void QGraphicsLineItem_new3(double x1, double y1, double x2, double y2, QGraphicsLineItem** outptr_QGraphicsLineItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsLineItem* ret = new MiqtVirtualQGraphicsLineItem(static_cast<qreal>(x1), static_cast<qreal>(y1), static_cast<qreal>(x2), static_cast<qreal>(y2));
-	*outptr_QGraphicsLineItem = ret;
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsLineItem* QGraphicsLineItem_new3(double x1, double y1, double x2, double y2) {
+	return new MiqtVirtualQGraphicsLineItem(static_cast<qreal>(x1), static_cast<qreal>(y1), static_cast<qreal>(x2), static_cast<qreal>(y2));
 }
 
-void QGraphicsLineItem_new4(QGraphicsItem* parent, QGraphicsLineItem** outptr_QGraphicsLineItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsLineItem* ret = new MiqtVirtualQGraphicsLineItem(parent);
-	*outptr_QGraphicsLineItem = ret;
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsLineItem* QGraphicsLineItem_new4(QGraphicsItem* parent) {
+	return new MiqtVirtualQGraphicsLineItem(parent);
 }
 
-void QGraphicsLineItem_new5(QLineF* line, QGraphicsItem* parent, QGraphicsLineItem** outptr_QGraphicsLineItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsLineItem* ret = new MiqtVirtualQGraphicsLineItem(*line, parent);
-	*outptr_QGraphicsLineItem = ret;
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsLineItem* QGraphicsLineItem_new5(QLineF* line, QGraphicsItem* parent) {
+	return new MiqtVirtualQGraphicsLineItem(*line, parent);
 }
 
-void QGraphicsLineItem_new6(double x1, double y1, double x2, double y2, QGraphicsItem* parent, QGraphicsLineItem** outptr_QGraphicsLineItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsLineItem* ret = new MiqtVirtualQGraphicsLineItem(static_cast<qreal>(x1), static_cast<qreal>(y1), static_cast<qreal>(x2), static_cast<qreal>(y2), parent);
-	*outptr_QGraphicsLineItem = ret;
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsLineItem* QGraphicsLineItem_new6(double x1, double y1, double x2, double y2, QGraphicsItem* parent) {
+	return new MiqtVirtualQGraphicsLineItem(static_cast<qreal>(x1), static_cast<qreal>(y1), static_cast<qreal>(x2), static_cast<qreal>(y2), parent);
+}
+
+void QGraphicsLineItem_virtbase(QGraphicsLineItem* src, QGraphicsItem** outptr_QGraphicsItem) {
+	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(src);
 }
 
 QPen* QGraphicsLineItem_Pen(const QGraphicsLineItem* self) {
@@ -8379,28 +8330,24 @@ public:
 
 };
 
-void QGraphicsPixmapItem_new(QGraphicsPixmapItem** outptr_QGraphicsPixmapItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsPixmapItem* ret = new MiqtVirtualQGraphicsPixmapItem();
-	*outptr_QGraphicsPixmapItem = ret;
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsPixmapItem* QGraphicsPixmapItem_new() {
+	return new MiqtVirtualQGraphicsPixmapItem();
 }
 
-void QGraphicsPixmapItem_new2(QPixmap* pixmap, QGraphicsPixmapItem** outptr_QGraphicsPixmapItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsPixmapItem* ret = new MiqtVirtualQGraphicsPixmapItem(*pixmap);
-	*outptr_QGraphicsPixmapItem = ret;
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsPixmapItem* QGraphicsPixmapItem_new2(QPixmap* pixmap) {
+	return new MiqtVirtualQGraphicsPixmapItem(*pixmap);
 }
 
-void QGraphicsPixmapItem_new3(QGraphicsItem* parent, QGraphicsPixmapItem** outptr_QGraphicsPixmapItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsPixmapItem* ret = new MiqtVirtualQGraphicsPixmapItem(parent);
-	*outptr_QGraphicsPixmapItem = ret;
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsPixmapItem* QGraphicsPixmapItem_new3(QGraphicsItem* parent) {
+	return new MiqtVirtualQGraphicsPixmapItem(parent);
 }
 
-void QGraphicsPixmapItem_new4(QPixmap* pixmap, QGraphicsItem* parent, QGraphicsPixmapItem** outptr_QGraphicsPixmapItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsPixmapItem* ret = new MiqtVirtualQGraphicsPixmapItem(*pixmap, parent);
-	*outptr_QGraphicsPixmapItem = ret;
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsPixmapItem* QGraphicsPixmapItem_new4(QPixmap* pixmap, QGraphicsItem* parent) {
+	return new MiqtVirtualQGraphicsPixmapItem(*pixmap, parent);
+}
+
+void QGraphicsPixmapItem_virtbase(QGraphicsPixmapItem* src, QGraphicsItem** outptr_QGraphicsItem) {
+	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(src);
 }
 
 QPixmap* QGraphicsPixmapItem_Pixmap(const QGraphicsPixmapItem* self) {
@@ -9486,38 +9433,26 @@ public:
 
 };
 
-void QGraphicsTextItem_new(QGraphicsTextItem** outptr_QGraphicsTextItem, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsTextItem* ret = new MiqtVirtualQGraphicsTextItem();
-	*outptr_QGraphicsTextItem = ret;
-	*outptr_QGraphicsObject = static_cast<QGraphicsObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsTextItem* QGraphicsTextItem_new() {
+	return new MiqtVirtualQGraphicsTextItem();
 }
 
-void QGraphicsTextItem_new2(struct miqt_string text, QGraphicsTextItem** outptr_QGraphicsTextItem, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem) {
+QGraphicsTextItem* QGraphicsTextItem_new2(struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQGraphicsTextItem* ret = new MiqtVirtualQGraphicsTextItem(text_QString);
-	*outptr_QGraphicsTextItem = ret;
-	*outptr_QGraphicsObject = static_cast<QGraphicsObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+	return new MiqtVirtualQGraphicsTextItem(text_QString);
 }
 
-void QGraphicsTextItem_new3(QGraphicsItem* parent, QGraphicsTextItem** outptr_QGraphicsTextItem, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsTextItem* ret = new MiqtVirtualQGraphicsTextItem(parent);
-	*outptr_QGraphicsTextItem = ret;
-	*outptr_QGraphicsObject = static_cast<QGraphicsObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsTextItem* QGraphicsTextItem_new3(QGraphicsItem* parent) {
+	return new MiqtVirtualQGraphicsTextItem(parent);
 }
 
-void QGraphicsTextItem_new4(struct miqt_string text, QGraphicsItem* parent, QGraphicsTextItem** outptr_QGraphicsTextItem, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem) {
+QGraphicsTextItem* QGraphicsTextItem_new4(struct miqt_string text, QGraphicsItem* parent) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQGraphicsTextItem* ret = new MiqtVirtualQGraphicsTextItem(text_QString, parent);
-	*outptr_QGraphicsTextItem = ret;
-	*outptr_QGraphicsObject = static_cast<QGraphicsObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+	return new MiqtVirtualQGraphicsTextItem(text_QString, parent);
+}
+
+void QGraphicsTextItem_virtbase(QGraphicsTextItem* src, QGraphicsObject** outptr_QGraphicsObject) {
+	*outptr_QGraphicsObject = static_cast<QGraphicsObject*>(src);
 }
 
 QMetaObject* QGraphicsTextItem_MetaObject(const QGraphicsTextItem* self) {
@@ -10228,34 +10163,26 @@ public:
 
 };
 
-void QGraphicsSimpleTextItem_new(QGraphicsSimpleTextItem** outptr_QGraphicsSimpleTextItem, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsSimpleTextItem* ret = new MiqtVirtualQGraphicsSimpleTextItem();
-	*outptr_QGraphicsSimpleTextItem = ret;
-	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsSimpleTextItem* QGraphicsSimpleTextItem_new() {
+	return new MiqtVirtualQGraphicsSimpleTextItem();
 }
 
-void QGraphicsSimpleTextItem_new2(struct miqt_string text, QGraphicsSimpleTextItem** outptr_QGraphicsSimpleTextItem, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem, QGraphicsItem** outptr_QGraphicsItem) {
+QGraphicsSimpleTextItem* QGraphicsSimpleTextItem_new2(struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQGraphicsSimpleTextItem* ret = new MiqtVirtualQGraphicsSimpleTextItem(text_QString);
-	*outptr_QGraphicsSimpleTextItem = ret;
-	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+	return new MiqtVirtualQGraphicsSimpleTextItem(text_QString);
 }
 
-void QGraphicsSimpleTextItem_new3(QGraphicsItem* parent, QGraphicsSimpleTextItem** outptr_QGraphicsSimpleTextItem, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsSimpleTextItem* ret = new MiqtVirtualQGraphicsSimpleTextItem(parent);
-	*outptr_QGraphicsSimpleTextItem = ret;
-	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsSimpleTextItem* QGraphicsSimpleTextItem_new3(QGraphicsItem* parent) {
+	return new MiqtVirtualQGraphicsSimpleTextItem(parent);
 }
 
-void QGraphicsSimpleTextItem_new4(struct miqt_string text, QGraphicsItem* parent, QGraphicsSimpleTextItem** outptr_QGraphicsSimpleTextItem, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem, QGraphicsItem** outptr_QGraphicsItem) {
+QGraphicsSimpleTextItem* QGraphicsSimpleTextItem_new4(struct miqt_string text, QGraphicsItem* parent) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQGraphicsSimpleTextItem* ret = new MiqtVirtualQGraphicsSimpleTextItem(text_QString, parent);
-	*outptr_QGraphicsSimpleTextItem = ret;
-	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+	return new MiqtVirtualQGraphicsSimpleTextItem(text_QString, parent);
+}
+
+void QGraphicsSimpleTextItem_virtbase(QGraphicsSimpleTextItem* src, QAbstractGraphicsShapeItem** outptr_QAbstractGraphicsShapeItem) {
+	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(src);
 }
 
 void QGraphicsSimpleTextItem_SetText(QGraphicsSimpleTextItem* self, struct miqt_string text) {
@@ -11253,16 +11180,16 @@ public:
 
 };
 
-void QGraphicsItemGroup_new(QGraphicsItemGroup** outptr_QGraphicsItemGroup, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsItemGroup* ret = new MiqtVirtualQGraphicsItemGroup();
-	*outptr_QGraphicsItemGroup = ret;
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsItemGroup* QGraphicsItemGroup_new() {
+	return new MiqtVirtualQGraphicsItemGroup();
 }
 
-void QGraphicsItemGroup_new2(QGraphicsItem* parent, QGraphicsItemGroup** outptr_QGraphicsItemGroup, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsItemGroup* ret = new MiqtVirtualQGraphicsItemGroup(parent);
-	*outptr_QGraphicsItemGroup = ret;
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsItemGroup* QGraphicsItemGroup_new2(QGraphicsItem* parent) {
+	return new MiqtVirtualQGraphicsItemGroup(parent);
+}
+
+void QGraphicsItemGroup_virtbase(QGraphicsItemGroup* src, QGraphicsItem** outptr_QGraphicsItem) {
+	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(src);
 }
 
 void QGraphicsItemGroup_AddToGroup(QGraphicsItemGroup* self, QGraphicsItem* item) {

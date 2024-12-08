@@ -63,52 +63,40 @@ func (this *QTabBar) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTabBar constructs the type using only CGO pointers.
-func newQTabBar(h *C.QTabBar, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QTabBar {
+func newQTabBar(h *C.QTabBar) *QTabBar {
 	if h == nil {
 		return nil
 	}
+	var outptr_QWidget *C.QWidget = nil
+	C.QTabBar_virtbase(h, &outptr_QWidget)
+
 	return &QTabBar{h: h,
-		QWidget: newQWidget(h_QWidget, h_QObject, h_QPaintDevice)}
+		QWidget: newQWidget(outptr_QWidget)}
 }
 
 // UnsafeNewQTabBar constructs the type using only unsafe pointers.
-func UnsafeNewQTabBar(h unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QTabBar {
-	if h == nil {
-		return nil
-	}
-
-	return &QTabBar{h: (*C.QTabBar)(h),
-		QWidget: UnsafeNewQWidget(h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQTabBar(h unsafe.Pointer) *QTabBar {
+	return newQTabBar((*C.QTabBar)(h))
 }
 
 // NewQTabBar constructs a new QTabBar object.
 func NewQTabBar(parent *QWidget) *QTabBar {
-	var outptr_QTabBar *C.QTabBar = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QTabBar_new(parent.cPointer(), &outptr_QTabBar, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQTabBar(outptr_QTabBar, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQTabBar(C.QTabBar_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTabBar2 constructs a new QTabBar object.
 func NewQTabBar2() *QTabBar {
-	var outptr_QTabBar *C.QTabBar = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QTabBar_new2(&outptr_QTabBar, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQTabBar(outptr_QTabBar, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQTabBar(C.QTabBar_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QTabBar) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTabBar_MetaObject(this.h)))
+	return newQMetaObject(C.QTabBar_MetaObject(this.h))
 }
 
 func (this *QTabBar) Metacast(param1 string) unsafe.Pointer {
@@ -206,8 +194,7 @@ func (this *QTabBar) SetTabText(index int, text string) {
 }
 
 func (this *QTabBar) TabTextColor(index int) *QColor {
-	_ret := C.QTabBar_TabTextColor(this.h, (C.int)(index))
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QTabBar_TabTextColor(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -217,8 +204,7 @@ func (this *QTabBar) SetTabTextColor(index int, color *QColor) {
 }
 
 func (this *QTabBar) TabIcon(index int) *QIcon {
-	_ret := C.QTabBar_TabIcon(this.h, (C.int)(index))
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QTabBar_TabIcon(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -270,15 +256,13 @@ func (this *QTabBar) SetTabData(index int, data *QVariant) {
 }
 
 func (this *QTabBar) TabData(index int) *QVariant {
-	_ret := C.QTabBar_TabData(this.h, (C.int)(index))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QTabBar_TabData(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTabBar) TabRect(index int) *QRect {
-	_ret := C.QTabBar_TabRect(this.h, (C.int)(index))
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QTabBar_TabRect(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -296,15 +280,13 @@ func (this *QTabBar) Count() int {
 }
 
 func (this *QTabBar) SizeHint() *QSize {
-	_ret := C.QTabBar_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QTabBar_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTabBar) MinimumSizeHint() *QSize {
-	_ret := C.QTabBar_MinimumSizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QTabBar_MinimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -318,8 +300,7 @@ func (this *QTabBar) DrawBase() bool {
 }
 
 func (this *QTabBar) IconSize() *QSize {
-	_ret := C.QTabBar_IconSize(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QTabBar_IconSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -349,7 +330,7 @@ func (this *QTabBar) SetTabButton(index int, position QTabBar__ButtonPosition, w
 }
 
 func (this *QTabBar) TabButton(index int, position QTabBar__ButtonPosition) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QTabBar_TabButton(this.h, (C.int)(index), (C.int)(position))), nil, nil)
+	return newQWidget(C.QTabBar_TabButton(this.h, (C.int)(index), (C.int)(position)))
 }
 
 func (this *QTabBar) SelectionBehaviorOnRemove() QTabBar__SelectionBehavior {
@@ -545,13 +526,15 @@ func QTabBar_Tr3(s string, c string, n int) string {
 
 func (this *QTabBar) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QTabBar_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QTabBar_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QTabBar) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -570,13 +553,15 @@ func miqt_exec_callback_QTabBar_SizeHint(self *C.QTabBar, cb C.intptr_t) *C.QSiz
 
 func (this *QTabBar) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QTabBar_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QTabBar_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QTabBar) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -595,13 +580,15 @@ func miqt_exec_callback_QTabBar_MinimumSizeHint(self *C.QTabBar, cb C.intptr_t) 
 
 func (this *QTabBar) callVirtualBase_TabSizeHint(index int) *QSize {
 
-	_ret := C.QTabBar_virtualbase_TabSizeHint(unsafe.Pointer(this.h), (C.int)(index))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QTabBar_virtualbase_TabSizeHint(unsafe.Pointer(this.h), (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QTabBar) OnTabSizeHint(slot func(super func(index int) *QSize, index int) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_TabSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -623,13 +610,15 @@ func miqt_exec_callback_QTabBar_TabSizeHint(self *C.QTabBar, cb C.intptr_t, inde
 
 func (this *QTabBar) callVirtualBase_MinimumTabSizeHint(index int) *QSize {
 
-	_ret := C.QTabBar_virtualbase_MinimumTabSizeHint(unsafe.Pointer(this.h), (C.int)(index))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QTabBar_virtualbase_MinimumTabSizeHint(unsafe.Pointer(this.h), (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QTabBar) OnMinimumTabSizeHint(slot func(super func(index int) *QSize, index int) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_MinimumTabSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -655,6 +644,9 @@ func (this *QTabBar) callVirtualBase_TabInserted(index int) {
 
 }
 func (this *QTabBar) OnTabInserted(slot func(super func(index int), index int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_TabInserted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -678,6 +670,9 @@ func (this *QTabBar) callVirtualBase_TabRemoved(index int) {
 
 }
 func (this *QTabBar) OnTabRemoved(slot func(super func(index int), index int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_TabRemoved(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -701,6 +696,9 @@ func (this *QTabBar) callVirtualBase_TabLayoutChange() {
 
 }
 func (this *QTabBar) OnTabLayoutChange(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_TabLayoutChange(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -721,6 +719,9 @@ func (this *QTabBar) callVirtualBase_Event(param1 *QEvent) bool {
 
 }
 func (this *QTabBar) OnEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -732,7 +733,7 @@ func miqt_exec_callback_QTabBar_Event(self *C.QTabBar, cb C.intptr_t, param1 *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	virtualReturn := gofunc((&QTabBar{h: self}).callVirtualBase_Event, slotval1)
 
@@ -746,6 +747,9 @@ func (this *QTabBar) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
 
 }
 func (this *QTabBar) OnResizeEvent(slot func(super func(param1 *QResizeEvent), param1 *QResizeEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -757,7 +761,7 @@ func miqt_exec_callback_QTabBar_ResizeEvent(self *C.QTabBar, cb C.intptr_t, para
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQResizeEvent(param1)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -769,6 +773,9 @@ func (this *QTabBar) callVirtualBase_ShowEvent(param1 *QShowEvent) {
 
 }
 func (this *QTabBar) OnShowEvent(slot func(super func(param1 *QShowEvent), param1 *QShowEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -780,7 +787,7 @@ func miqt_exec_callback_QTabBar_ShowEvent(self *C.QTabBar, cb C.intptr_t, param1
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQShowEvent(param1)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -792,6 +799,9 @@ func (this *QTabBar) callVirtualBase_HideEvent(param1 *QHideEvent) {
 
 }
 func (this *QTabBar) OnHideEvent(slot func(super func(param1 *QHideEvent), param1 *QHideEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -803,7 +813,7 @@ func miqt_exec_callback_QTabBar_HideEvent(self *C.QTabBar, cb C.intptr_t, param1
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHideEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQHideEvent(param1)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -815,6 +825,9 @@ func (this *QTabBar) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
 
 }
 func (this *QTabBar) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -826,7 +839,7 @@ func miqt_exec_callback_QTabBar_PaintEvent(self *C.QTabBar, cb C.intptr_t, param
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQPaintEvent(param1)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -838,6 +851,9 @@ func (this *QTabBar) callVirtualBase_MousePressEvent(param1 *QMouseEvent) {
 
 }
 func (this *QTabBar) OnMousePressEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -849,7 +865,7 @@ func miqt_exec_callback_QTabBar_MousePressEvent(self *C.QTabBar, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(param1)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -861,6 +877,9 @@ func (this *QTabBar) callVirtualBase_MouseMoveEvent(param1 *QMouseEvent) {
 
 }
 func (this *QTabBar) OnMouseMoveEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -872,7 +891,7 @@ func miqt_exec_callback_QTabBar_MouseMoveEvent(self *C.QTabBar, cb C.intptr_t, p
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(param1)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -884,6 +903,9 @@ func (this *QTabBar) callVirtualBase_MouseReleaseEvent(param1 *QMouseEvent) {
 
 }
 func (this *QTabBar) OnMouseReleaseEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -895,7 +917,7 @@ func miqt_exec_callback_QTabBar_MouseReleaseEvent(self *C.QTabBar, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(param1)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -907,6 +929,9 @@ func (this *QTabBar) callVirtualBase_MouseDoubleClickEvent(param1 *QMouseEvent) 
 
 }
 func (this *QTabBar) OnMouseDoubleClickEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -918,7 +943,7 @@ func miqt_exec_callback_QTabBar_MouseDoubleClickEvent(self *C.QTabBar, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(param1)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -930,6 +955,9 @@ func (this *QTabBar) callVirtualBase_WheelEvent(event *QWheelEvent) {
 
 }
 func (this *QTabBar) OnWheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -941,7 +969,7 @@ func miqt_exec_callback_QTabBar_WheelEvent(self *C.QTabBar, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(event)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -953,6 +981,9 @@ func (this *QTabBar) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
 
 }
 func (this *QTabBar) OnKeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -964,7 +995,7 @@ func miqt_exec_callback_QTabBar_KeyPressEvent(self *C.QTabBar, cb C.intptr_t, pa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQKeyEvent(param1)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -976,6 +1007,9 @@ func (this *QTabBar) callVirtualBase_ChangeEvent(param1 *QEvent) {
 
 }
 func (this *QTabBar) OnChangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -987,7 +1021,7 @@ func miqt_exec_callback_QTabBar_ChangeEvent(self *C.QTabBar, cb C.intptr_t, para
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -999,6 +1033,9 @@ func (this *QTabBar) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QTabBar) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1010,7 +1047,7 @@ func miqt_exec_callback_QTabBar_TimerEvent(self *C.QTabBar, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -1022,6 +1059,9 @@ func (this *QTabBar) callVirtualBase_InitStyleOption(option *QStyleOptionTab, ta
 
 }
 func (this *QTabBar) OnInitStyleOption(slot func(super func(option *QStyleOptionTab, tabIndex int), option *QStyleOptionTab, tabIndex int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_InitStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1033,7 +1073,8 @@ func miqt_exec_callback_QTabBar_InitStyleOption(self *C.QTabBar, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStyleOptionTab(unsafe.Pointer(option), nil)
+	slotval1 := newQStyleOptionTab(option)
+
 	slotval2 := (int)(tabIndex)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_InitStyleOption, slotval1, slotval2)
@@ -1046,6 +1087,9 @@ func (this *QTabBar) callVirtualBase_DevType() int {
 
 }
 func (this *QTabBar) OnDevType(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1068,6 +1112,9 @@ func (this *QTabBar) callVirtualBase_SetVisible(visible bool) {
 
 }
 func (this *QTabBar) OnSetVisible(slot func(super func(visible bool), visible bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1091,6 +1138,9 @@ func (this *QTabBar) callVirtualBase_HeightForWidth(param1 int) int {
 
 }
 func (this *QTabBar) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1116,6 +1166,9 @@ func (this *QTabBar) callVirtualBase_HasHeightForWidth() bool {
 
 }
 func (this *QTabBar) OnHasHeightForWidth(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1134,9 +1187,13 @@ func miqt_exec_callback_QTabBar_HasHeightForWidth(self *C.QTabBar, cb C.intptr_t
 
 func (this *QTabBar) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QTabBar_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return newQPaintEngine(C.QTabBar_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+
 }
 func (this *QTabBar) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1159,6 +1216,9 @@ func (this *QTabBar) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
 
 }
 func (this *QTabBar) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1170,7 +1230,7 @@ func miqt_exec_callback_QTabBar_KeyReleaseEvent(self *C.QTabBar, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQKeyEvent(event)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -1182,6 +1242,9 @@ func (this *QTabBar) callVirtualBase_FocusInEvent(event *QFocusEvent) {
 
 }
 func (this *QTabBar) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1193,7 +1256,7 @@ func miqt_exec_callback_QTabBar_FocusInEvent(self *C.QTabBar, cb C.intptr_t, eve
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -1205,6 +1268,9 @@ func (this *QTabBar) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
 
 }
 func (this *QTabBar) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1216,7 +1282,7 @@ func miqt_exec_callback_QTabBar_FocusOutEvent(self *C.QTabBar, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQFocusEvent(event)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -1228,6 +1294,9 @@ func (this *QTabBar) callVirtualBase_EnterEvent(event *QEnterEvent) {
 
 }
 func (this *QTabBar) OnEnterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1239,7 +1308,7 @@ func miqt_exec_callback_QTabBar_EnterEvent(self *C.QTabBar, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEnterEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQEnterEvent(event)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_EnterEvent, slotval1)
 
@@ -1251,6 +1320,9 @@ func (this *QTabBar) callVirtualBase_LeaveEvent(event *QEvent) {
 
 }
 func (this *QTabBar) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1262,7 +1334,7 @@ func miqt_exec_callback_QTabBar_LeaveEvent(self *C.QTabBar, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_LeaveEvent, slotval1)
 
@@ -1274,6 +1346,9 @@ func (this *QTabBar) callVirtualBase_MoveEvent(event *QMoveEvent) {
 
 }
 func (this *QTabBar) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1285,7 +1360,7 @@ func miqt_exec_callback_QTabBar_MoveEvent(self *C.QTabBar, cb C.intptr_t, event 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMoveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQMoveEvent(event)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -1297,6 +1372,9 @@ func (this *QTabBar) callVirtualBase_CloseEvent(event *QCloseEvent) {
 
 }
 func (this *QTabBar) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1308,7 +1386,7 @@ func miqt_exec_callback_QTabBar_CloseEvent(self *C.QTabBar, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQCloseEvent(event)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -1320,6 +1398,9 @@ func (this *QTabBar) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) 
 
 }
 func (this *QTabBar) OnContextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1331,7 +1412,7 @@ func miqt_exec_callback_QTabBar_ContextMenuEvent(self *C.QTabBar, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQContextMenuEvent(event)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -1343,6 +1424,9 @@ func (this *QTabBar) callVirtualBase_TabletEvent(event *QTabletEvent) {
 
 }
 func (this *QTabBar) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1354,7 +1438,7 @@ func miqt_exec_callback_QTabBar_TabletEvent(self *C.QTabBar, cb C.intptr_t, even
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTabletEvent(unsafe.Pointer(event), nil, nil, nil, nil)
+	slotval1 := newQTabletEvent(event)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -1366,6 +1450,9 @@ func (this *QTabBar) callVirtualBase_ActionEvent(event *QActionEvent) {
 
 }
 func (this *QTabBar) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1377,7 +1464,7 @@ func miqt_exec_callback_QTabBar_ActionEvent(self *C.QTabBar, cb C.intptr_t, even
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQActionEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQActionEvent(event)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -1389,6 +1476,9 @@ func (this *QTabBar) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
 
 }
 func (this *QTabBar) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1400,7 +1490,7 @@ func miqt_exec_callback_QTabBar_DragEnterEvent(self *C.QTabBar, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragEnterEvent(unsafe.Pointer(event), nil, nil, nil)
+	slotval1 := newQDragEnterEvent(event)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -1412,6 +1502,9 @@ func (this *QTabBar) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
 
 }
 func (this *QTabBar) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1423,7 +1516,7 @@ func miqt_exec_callback_QTabBar_DragMoveEvent(self *C.QTabBar, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := newQDragMoveEvent(event)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -1435,6 +1528,9 @@ func (this *QTabBar) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
 
 }
 func (this *QTabBar) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1446,7 +1542,7 @@ func miqt_exec_callback_QTabBar_DragLeaveEvent(self *C.QTabBar, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragLeaveEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDragLeaveEvent(event)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -1458,6 +1554,9 @@ func (this *QTabBar) callVirtualBase_DropEvent(event *QDropEvent) {
 
 }
 func (this *QTabBar) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1469,7 +1568,7 @@ func miqt_exec_callback_QTabBar_DropEvent(self *C.QTabBar, cb C.intptr_t, event 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQDropEvent(event)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1484,6 +1583,9 @@ func (this *QTabBar) callVirtualBase_NativeEvent(eventType []byte, message unsaf
 
 }
 func (this *QTabBar) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1515,6 +1617,9 @@ func (this *QTabBar) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetr
 
 }
 func (this *QTabBar) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1540,6 +1645,9 @@ func (this *QTabBar) callVirtualBase_InitPainter(painter *QPainter) {
 
 }
 func (this *QTabBar) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1551,7 +1659,7 @@ func miqt_exec_callback_QTabBar_InitPainter(self *C.QTabBar, cb C.intptr_t, pain
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval1 := newQPainter(painter)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_InitPainter, slotval1)
 
@@ -1559,9 +1667,13 @@ func miqt_exec_callback_QTabBar_InitPainter(self *C.QTabBar, cb C.intptr_t, pain
 
 func (this *QTabBar) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QTabBar_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer())))
+	return newQPaintDevice(C.QTabBar_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+
 }
 func (this *QTabBar) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1573,7 +1685,7 @@ func miqt_exec_callback_QTabBar_Redirected(self *C.QTabBar, cb C.intptr_t, offse
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(offset))
+	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QTabBar{h: self}).callVirtualBase_Redirected, slotval1)
 
@@ -1583,9 +1695,13 @@ func miqt_exec_callback_QTabBar_Redirected(self *C.QTabBar, cb C.intptr_t, offse
 
 func (this *QTabBar) callVirtualBase_SharedPainter() *QPainter {
 
-	return UnsafeNewQPainter(unsafe.Pointer(C.QTabBar_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+	return newQPainter(C.QTabBar_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+
 }
 func (this *QTabBar) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1608,6 +1724,9 @@ func (this *QTabBar) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent)
 
 }
 func (this *QTabBar) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1619,7 +1738,7 @@ func miqt_exec_callback_QTabBar_InputMethodEvent(self *C.QTabBar, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQInputMethodEvent(param1)
 
 	gofunc((&QTabBar{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -1627,13 +1746,15 @@ func miqt_exec_callback_QTabBar_InputMethodEvent(self *C.QTabBar, cb C.intptr_t,
 
 func (this *QTabBar) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_ret := C.QTabBar_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QTabBar_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QTabBar) OnInputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1659,6 +1780,9 @@ func (this *QTabBar) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
 }
 func (this *QTabBar) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTabBar_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

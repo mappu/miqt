@@ -10,6 +10,10 @@
 #include "gen_qvideorenderercontrol.h"
 #include "_cgo_export.h"
 
+void QVideoRendererControl_virtbase(QVideoRendererControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
+
 QMetaObject* QVideoRendererControl_MetaObject(const QVideoRendererControl* self) {
 	return (QMetaObject*) self->metaObject();
 }

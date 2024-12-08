@@ -174,20 +174,16 @@ public:
 
 };
 
-void QGraphicsVideoItem_new(QGraphicsVideoItem** outptr_QGraphicsVideoItem, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsVideoItem* ret = new MiqtVirtualQGraphicsVideoItem();
-	*outptr_QGraphicsVideoItem = ret;
-	*outptr_QGraphicsObject = static_cast<QGraphicsObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsVideoItem* QGraphicsVideoItem_new() {
+	return new MiqtVirtualQGraphicsVideoItem();
 }
 
-void QGraphicsVideoItem_new2(QGraphicsItem* parent, QGraphicsVideoItem** outptr_QGraphicsVideoItem, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsVideoItem* ret = new MiqtVirtualQGraphicsVideoItem(parent);
-	*outptr_QGraphicsVideoItem = ret;
-	*outptr_QGraphicsObject = static_cast<QGraphicsObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsVideoItem* QGraphicsVideoItem_new2(QGraphicsItem* parent) {
+	return new MiqtVirtualQGraphicsVideoItem(parent);
+}
+
+void QGraphicsVideoItem_virtbase(QGraphicsVideoItem* src, QGraphicsObject** outptr_QGraphicsObject) {
+	*outptr_QGraphicsObject = static_cast<QGraphicsObject*>(src);
 }
 
 QMetaObject* QGraphicsVideoItem_MetaObject(const QGraphicsVideoItem* self) {

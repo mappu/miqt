@@ -1725,16 +1725,13 @@ func newQInternal(h *C.QInternal) *QInternal {
 	if h == nil {
 		return nil
 	}
+
 	return &QInternal{h: h}
 }
 
 // UnsafeNewQInternal constructs the type using only unsafe pointers.
 func UnsafeNewQInternal(h unsafe.Pointer) *QInternal {
-	if h == nil {
-		return nil
-	}
-
-	return &QInternal{h: (*C.QInternal)(h)}
+	return newQInternal((*C.QInternal)(h))
 }
 
 // Delete this object from C++ memory.

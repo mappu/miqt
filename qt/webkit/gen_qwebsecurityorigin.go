@@ -45,34 +45,27 @@ func newQWebSecurityOrigin(h *C.QWebSecurityOrigin) *QWebSecurityOrigin {
 	if h == nil {
 		return nil
 	}
+
 	return &QWebSecurityOrigin{h: h}
 }
 
 // UnsafeNewQWebSecurityOrigin constructs the type using only unsafe pointers.
 func UnsafeNewQWebSecurityOrigin(h unsafe.Pointer) *QWebSecurityOrigin {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebSecurityOrigin{h: (*C.QWebSecurityOrigin)(h)}
+	return newQWebSecurityOrigin((*C.QWebSecurityOrigin)(h))
 }
 
 // NewQWebSecurityOrigin constructs a new QWebSecurityOrigin object.
 func NewQWebSecurityOrigin(url *qt.QUrl) *QWebSecurityOrigin {
-	var outptr_QWebSecurityOrigin *C.QWebSecurityOrigin = nil
 
-	C.QWebSecurityOrigin_new((*C.QUrl)(url.UnsafePointer()), &outptr_QWebSecurityOrigin)
-	ret := newQWebSecurityOrigin(outptr_QWebSecurityOrigin)
+	ret := newQWebSecurityOrigin(C.QWebSecurityOrigin_new((*C.QUrl)(url.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebSecurityOrigin2 constructs a new QWebSecurityOrigin object.
 func NewQWebSecurityOrigin2(other *QWebSecurityOrigin) *QWebSecurityOrigin {
-	var outptr_QWebSecurityOrigin *C.QWebSecurityOrigin = nil
 
-	C.QWebSecurityOrigin_new2(other.cPointer(), &outptr_QWebSecurityOrigin)
-	ret := newQWebSecurityOrigin(outptr_QWebSecurityOrigin)
+	ret := newQWebSecurityOrigin(C.QWebSecurityOrigin_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -82,8 +75,7 @@ func QWebSecurityOrigin_AllOrigins() []QWebSecurityOrigin {
 	_ret := make([]QWebSecurityOrigin, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWebSecurityOrigin)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQWebSecurityOrigin(_lv_ret)
+		_lv_goptr := newQWebSecurityOrigin(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -182,8 +174,7 @@ func (this *QWebSecurityOrigin) Databases() []QWebDatabase {
 	_ret := make([]QWebDatabase, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWebDatabase)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQWebDatabase(_lv_ret)
+		_lv_goptr := newQWebDatabase(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}

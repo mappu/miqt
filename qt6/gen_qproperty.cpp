@@ -13,14 +13,12 @@
 #include "gen_qproperty.h"
 #include "_cgo_export.h"
 
-void QPropertyBindingSourceLocation_new(QPropertyBindingSourceLocation** outptr_QPropertyBindingSourceLocation) {
-	QPropertyBindingSourceLocation* ret = new QPropertyBindingSourceLocation();
-	*outptr_QPropertyBindingSourceLocation = ret;
+QPropertyBindingSourceLocation* QPropertyBindingSourceLocation_new() {
+	return new QPropertyBindingSourceLocation();
 }
 
-void QPropertyBindingSourceLocation_new2(QPropertyBindingSourceLocation* param1, QPropertyBindingSourceLocation** outptr_QPropertyBindingSourceLocation) {
-	QPropertyBindingSourceLocation* ret = new QPropertyBindingSourceLocation(*param1);
-	*outptr_QPropertyBindingSourceLocation = ret;
+QPropertyBindingSourceLocation* QPropertyBindingSourceLocation_new2(QPropertyBindingSourceLocation* param1) {
+	return new QPropertyBindingSourceLocation(*param1);
 }
 
 void QPropertyBindingSourceLocation_Delete(QPropertyBindingSourceLocation* self, bool isSubclass) {
@@ -31,25 +29,21 @@ void QPropertyBindingSourceLocation_Delete(QPropertyBindingSourceLocation* self,
 	}
 }
 
-void QPropertyBindingError_new(QPropertyBindingError** outptr_QPropertyBindingError) {
-	QPropertyBindingError* ret = new QPropertyBindingError();
-	*outptr_QPropertyBindingError = ret;
+QPropertyBindingError* QPropertyBindingError_new() {
+	return new QPropertyBindingError();
 }
 
-void QPropertyBindingError_new2(int typeVal, QPropertyBindingError** outptr_QPropertyBindingError) {
-	QPropertyBindingError* ret = new QPropertyBindingError(static_cast<QPropertyBindingError::Type>(typeVal));
-	*outptr_QPropertyBindingError = ret;
+QPropertyBindingError* QPropertyBindingError_new2(int typeVal) {
+	return new QPropertyBindingError(static_cast<QPropertyBindingError::Type>(typeVal));
 }
 
-void QPropertyBindingError_new3(QPropertyBindingError* other, QPropertyBindingError** outptr_QPropertyBindingError) {
-	QPropertyBindingError* ret = new QPropertyBindingError(*other);
-	*outptr_QPropertyBindingError = ret;
+QPropertyBindingError* QPropertyBindingError_new3(QPropertyBindingError* other) {
+	return new QPropertyBindingError(*other);
 }
 
-void QPropertyBindingError_new4(int typeVal, struct miqt_string description, QPropertyBindingError** outptr_QPropertyBindingError) {
+QPropertyBindingError* QPropertyBindingError_new4(int typeVal, struct miqt_string description) {
 	QString description_QString = QString::fromUtf8(description.data, description.len);
-	QPropertyBindingError* ret = new QPropertyBindingError(static_cast<QPropertyBindingError::Type>(typeVal), description_QString);
-	*outptr_QPropertyBindingError = ret;
+	return new QPropertyBindingError(static_cast<QPropertyBindingError::Type>(typeVal), description_QString);
 }
 
 void QPropertyBindingError_OperatorAssign(QPropertyBindingError* self, QPropertyBindingError* other) {
@@ -84,14 +78,12 @@ void QPropertyBindingError_Delete(QPropertyBindingError* self, bool isSubclass) 
 	}
 }
 
-void QUntypedPropertyBinding_new(QUntypedPropertyBinding** outptr_QUntypedPropertyBinding) {
-	QUntypedPropertyBinding* ret = new QUntypedPropertyBinding();
-	*outptr_QUntypedPropertyBinding = ret;
+QUntypedPropertyBinding* QUntypedPropertyBinding_new() {
+	return new QUntypedPropertyBinding();
 }
 
-void QUntypedPropertyBinding_new2(QUntypedPropertyBinding* other, QUntypedPropertyBinding** outptr_QUntypedPropertyBinding) {
-	QUntypedPropertyBinding* ret = new QUntypedPropertyBinding(*other);
-	*outptr_QUntypedPropertyBinding = ret;
+QUntypedPropertyBinding* QUntypedPropertyBinding_new2(QUntypedPropertyBinding* other) {
+	return new QUntypedPropertyBinding(*other);
 }
 
 void QUntypedPropertyBinding_OperatorAssign(QUntypedPropertyBinding* self, QUntypedPropertyBinding* other) {
@@ -118,14 +110,12 @@ void QUntypedPropertyBinding_Delete(QUntypedPropertyBinding* self, bool isSubcla
 	}
 }
 
-void QPropertyObserverBase_new(QPropertyObserverBase** outptr_QPropertyObserverBase) {
-	QPropertyObserverBase* ret = new QPropertyObserverBase();
-	*outptr_QPropertyObserverBase = ret;
+QPropertyObserverBase* QPropertyObserverBase_new() {
+	return new QPropertyObserverBase();
 }
 
-void QPropertyObserverBase_new2(QPropertyObserverBase* param1, QPropertyObserverBase** outptr_QPropertyObserverBase) {
-	QPropertyObserverBase* ret = new QPropertyObserverBase(*param1);
-	*outptr_QPropertyObserverBase = ret;
+QPropertyObserverBase* QPropertyObserverBase_new2(QPropertyObserverBase* param1) {
+	return new QPropertyObserverBase(*param1);
 }
 
 void QPropertyObserverBase_Delete(QPropertyObserverBase* self, bool isSubclass) {
@@ -136,10 +126,12 @@ void QPropertyObserverBase_Delete(QPropertyObserverBase* self, bool isSubclass) 
 	}
 }
 
-void QPropertyObserver_new(QPropertyObserver** outptr_QPropertyObserver, QPropertyObserverBase** outptr_QPropertyObserverBase) {
-	QPropertyObserver* ret = new QPropertyObserver();
-	*outptr_QPropertyObserver = ret;
-	*outptr_QPropertyObserverBase = static_cast<QPropertyObserverBase*>(ret);
+QPropertyObserver* QPropertyObserver_new() {
+	return new QPropertyObserver();
+}
+
+void QPropertyObserver_virtbase(QPropertyObserver* src, QPropertyObserverBase** outptr_QPropertyObserverBase) {
+	*outptr_QPropertyObserverBase = static_cast<QPropertyObserverBase*>(src);
 }
 
 void QPropertyObserver_Delete(QPropertyObserver* self, bool isSubclass) {
@@ -150,11 +142,12 @@ void QPropertyObserver_Delete(QPropertyObserver* self, bool isSubclass) {
 	}
 }
 
-void QPropertyNotifier_new(QPropertyNotifier** outptr_QPropertyNotifier, QPropertyObserver** outptr_QPropertyObserver, QPropertyObserverBase** outptr_QPropertyObserverBase) {
-	QPropertyNotifier* ret = new QPropertyNotifier();
-	*outptr_QPropertyNotifier = ret;
-	*outptr_QPropertyObserver = static_cast<QPropertyObserver*>(ret);
-	*outptr_QPropertyObserverBase = static_cast<QPropertyObserverBase*>(ret);
+QPropertyNotifier* QPropertyNotifier_new() {
+	return new QPropertyNotifier();
+}
+
+void QPropertyNotifier_virtbase(QPropertyNotifier* src, QPropertyObserver** outptr_QPropertyObserver) {
+	*outptr_QPropertyObserver = static_cast<QPropertyObserver*>(src);
 }
 
 void QPropertyNotifier_Delete(QPropertyNotifier* self, bool isSubclass) {
@@ -165,14 +158,12 @@ void QPropertyNotifier_Delete(QPropertyNotifier* self, bool isSubclass) {
 	}
 }
 
-void QUntypedBindable_new(QUntypedBindable** outptr_QUntypedBindable) {
-	QUntypedBindable* ret = new QUntypedBindable();
-	*outptr_QUntypedBindable = ret;
+QUntypedBindable* QUntypedBindable_new() {
+	return new QUntypedBindable();
 }
 
-void QUntypedBindable_new2(QUntypedBindable* param1, QUntypedBindable** outptr_QUntypedBindable) {
-	QUntypedBindable* ret = new QUntypedBindable(*param1);
-	*outptr_QUntypedBindable = ret;
+QUntypedBindable* QUntypedBindable_new2(QUntypedBindable* param1) {
+	return new QUntypedBindable(*param1);
 }
 
 bool QUntypedBindable_IsValid(const QUntypedBindable* self) {

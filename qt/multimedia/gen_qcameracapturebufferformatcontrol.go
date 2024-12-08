@@ -36,22 +36,20 @@ func (this *QCameraCaptureBufferFormatControl) UnsafePointer() unsafe.Pointer {
 }
 
 // newQCameraCaptureBufferFormatControl constructs the type using only CGO pointers.
-func newQCameraCaptureBufferFormatControl(h *C.QCameraCaptureBufferFormatControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QCameraCaptureBufferFormatControl {
+func newQCameraCaptureBufferFormatControl(h *C.QCameraCaptureBufferFormatControl) *QCameraCaptureBufferFormatControl {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaControl *C.QMediaControl = nil
+	C.QCameraCaptureBufferFormatControl_virtbase(h, &outptr_QMediaControl)
+
 	return &QCameraCaptureBufferFormatControl{h: h,
-		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
+		QMediaControl: newQMediaControl(outptr_QMediaControl)}
 }
 
 // UnsafeNewQCameraCaptureBufferFormatControl constructs the type using only unsafe pointers.
-func UnsafeNewQCameraCaptureBufferFormatControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QCameraCaptureBufferFormatControl {
-	if h == nil {
-		return nil
-	}
-
-	return &QCameraCaptureBufferFormatControl{h: (*C.QCameraCaptureBufferFormatControl)(h),
-		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
+func UnsafeNewQCameraCaptureBufferFormatControl(h unsafe.Pointer) *QCameraCaptureBufferFormatControl {
+	return newQCameraCaptureBufferFormatControl((*C.QCameraCaptureBufferFormatControl)(h))
 }
 
 func (this *QCameraCaptureBufferFormatControl) MetaObject() *qt.QMetaObject {

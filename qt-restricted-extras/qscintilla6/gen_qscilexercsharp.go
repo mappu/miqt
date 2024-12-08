@@ -36,46 +36,34 @@ func (this *QsciLexerCSharp) UnsafePointer() unsafe.Pointer {
 }
 
 // newQsciLexerCSharp constructs the type using only CGO pointers.
-func newQsciLexerCSharp(h *C.QsciLexerCSharp, h_QsciLexerCPP *C.QsciLexerCPP, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerCSharp {
+func newQsciLexerCSharp(h *C.QsciLexerCSharp) *QsciLexerCSharp {
 	if h == nil {
 		return nil
 	}
+	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
+	C.QsciLexerCSharp_virtbase(h, &outptr_QsciLexerCPP)
+
 	return &QsciLexerCSharp{h: h,
-		QsciLexerCPP: newQsciLexerCPP(h_QsciLexerCPP, h_QsciLexer, h_QObject)}
+		QsciLexerCPP: newQsciLexerCPP(outptr_QsciLexerCPP)}
 }
 
 // UnsafeNewQsciLexerCSharp constructs the type using only unsafe pointers.
-func UnsafeNewQsciLexerCSharp(h unsafe.Pointer, h_QsciLexerCPP unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerCSharp {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciLexerCSharp{h: (*C.QsciLexerCSharp)(h),
-		QsciLexerCPP: UnsafeNewQsciLexerCPP(h_QsciLexerCPP, h_QsciLexer, h_QObject)}
+func UnsafeNewQsciLexerCSharp(h unsafe.Pointer) *QsciLexerCSharp {
+	return newQsciLexerCSharp((*C.QsciLexerCSharp)(h))
 }
 
 // NewQsciLexerCSharp constructs a new QsciLexerCSharp object.
 func NewQsciLexerCSharp() *QsciLexerCSharp {
-	var outptr_QsciLexerCSharp *C.QsciLexerCSharp = nil
-	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerCSharp_new(&outptr_QsciLexerCSharp, &outptr_QsciLexerCPP, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerCSharp(outptr_QsciLexerCSharp, outptr_QsciLexerCPP, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerCSharp(C.QsciLexerCSharp_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQsciLexerCSharp2 constructs a new QsciLexerCSharp object.
 func NewQsciLexerCSharp2(parent *qt6.QObject) *QsciLexerCSharp {
-	var outptr_QsciLexerCSharp *C.QsciLexerCSharp = nil
-	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerCSharp_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QsciLexerCSharp, &outptr_QsciLexerCPP, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerCSharp(outptr_QsciLexerCSharp, outptr_QsciLexerCPP, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerCSharp(C.QsciLexerCSharp_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -105,8 +93,7 @@ func (this *QsciLexerCSharp) Language() string {
 }
 
 func (this *QsciLexerCSharp) DefaultColor(style int) *qt6.QColor {
-	_ret := C.QsciLexerCSharp_DefaultColor(this.h, (C.int)(style))
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerCSharp_DefaultColor(this.h, (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -116,15 +103,13 @@ func (this *QsciLexerCSharp) DefaultEolFill(style int) bool {
 }
 
 func (this *QsciLexerCSharp) DefaultFont(style int) *qt6.QFont {
-	_ret := C.QsciLexerCSharp_DefaultFont(this.h, (C.int)(style))
-	_goptr := qt6.UnsafeNewQFont(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerCSharp_DefaultFont(this.h, (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciLexerCSharp) DefaultPaper(style int) *qt6.QColor {
-	_ret := C.QsciLexerCSharp_DefaultPaper(this.h, (C.int)(style))
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerCSharp_DefaultPaper(this.h, (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -169,6 +154,9 @@ func (this *QsciLexerCSharp) callVirtualBase_SetFoldAtElse(fold bool) {
 
 }
 func (this *QsciLexerCSharp) OnSetFoldAtElse(slot func(super func(fold bool), fold bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerCSharp_override_virtual_SetFoldAtElse(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -192,6 +180,9 @@ func (this *QsciLexerCSharp) callVirtualBase_SetFoldComments(fold bool) {
 
 }
 func (this *QsciLexerCSharp) OnSetFoldComments(slot func(super func(fold bool), fold bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerCSharp_override_virtual_SetFoldComments(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -215,6 +206,9 @@ func (this *QsciLexerCSharp) callVirtualBase_SetFoldCompact(fold bool) {
 
 }
 func (this *QsciLexerCSharp) OnSetFoldCompact(slot func(super func(fold bool), fold bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerCSharp_override_virtual_SetFoldCompact(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -238,6 +232,9 @@ func (this *QsciLexerCSharp) callVirtualBase_SetFoldPreprocessor(fold bool) {
 
 }
 func (this *QsciLexerCSharp) OnSetFoldPreprocessor(slot func(super func(fold bool), fold bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerCSharp_override_virtual_SetFoldPreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -261,6 +258,9 @@ func (this *QsciLexerCSharp) callVirtualBase_SetStylePreprocessor(style bool) {
 
 }
 func (this *QsciLexerCSharp) OnSetStylePreprocessor(slot func(super func(style bool), style bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerCSharp_override_virtual_SetStylePreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

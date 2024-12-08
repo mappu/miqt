@@ -35,50 +35,40 @@ func (this *QFinalState) UnsafePointer() unsafe.Pointer {
 }
 
 // newQFinalState constructs the type using only CGO pointers.
-func newQFinalState(h *C.QFinalState, h_QAbstractState *C.QAbstractState, h_QObject *C.QObject) *QFinalState {
+func newQFinalState(h *C.QFinalState) *QFinalState {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractState *C.QAbstractState = nil
+	C.QFinalState_virtbase(h, &outptr_QAbstractState)
+
 	return &QFinalState{h: h,
-		QAbstractState: newQAbstractState(h_QAbstractState, h_QObject)}
+		QAbstractState: newQAbstractState(outptr_QAbstractState)}
 }
 
 // UnsafeNewQFinalState constructs the type using only unsafe pointers.
-func UnsafeNewQFinalState(h unsafe.Pointer, h_QAbstractState unsafe.Pointer, h_QObject unsafe.Pointer) *QFinalState {
-	if h == nil {
-		return nil
-	}
-
-	return &QFinalState{h: (*C.QFinalState)(h),
-		QAbstractState: UnsafeNewQAbstractState(h_QAbstractState, h_QObject)}
+func UnsafeNewQFinalState(h unsafe.Pointer) *QFinalState {
+	return newQFinalState((*C.QFinalState)(h))
 }
 
 // NewQFinalState constructs a new QFinalState object.
 func NewQFinalState() *QFinalState {
-	var outptr_QFinalState *C.QFinalState = nil
-	var outptr_QAbstractState *C.QAbstractState = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QFinalState_new(&outptr_QFinalState, &outptr_QAbstractState, &outptr_QObject)
-	ret := newQFinalState(outptr_QFinalState, outptr_QAbstractState, outptr_QObject)
+	ret := newQFinalState(C.QFinalState_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFinalState2 constructs a new QFinalState object.
 func NewQFinalState2(parent *QState) *QFinalState {
-	var outptr_QFinalState *C.QFinalState = nil
-	var outptr_QAbstractState *C.QAbstractState = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QFinalState_new2(parent.cPointer(), &outptr_QFinalState, &outptr_QAbstractState, &outptr_QObject)
-	ret := newQFinalState(outptr_QFinalState, outptr_QAbstractState, outptr_QObject)
+	ret := newQFinalState(C.QFinalState_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QFinalState) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QFinalState_MetaObject(this.h)))
+	return newQMetaObject(C.QFinalState_MetaObject(this.h))
 }
 
 func (this *QFinalState) Metacast(param1 string) unsafe.Pointer {
@@ -155,6 +145,9 @@ func (this *QFinalState) callVirtualBase_OnEntry(event *QEvent) {
 
 }
 func (this *QFinalState) OnOnEntry(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFinalState_override_virtual_OnEntry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -166,7 +159,7 @@ func miqt_exec_callback_QFinalState_OnEntry(self *C.QFinalState, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QFinalState{h: self}).callVirtualBase_OnEntry, slotval1)
 
@@ -178,6 +171,9 @@ func (this *QFinalState) callVirtualBase_OnExit(event *QEvent) {
 
 }
 func (this *QFinalState) OnOnExit(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFinalState_override_virtual_OnExit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -189,7 +185,7 @@ func miqt_exec_callback_QFinalState_OnExit(self *C.QFinalState, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QFinalState{h: self}).callVirtualBase_OnExit, slotval1)
 
@@ -201,6 +197,9 @@ func (this *QFinalState) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QFinalState) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFinalState_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -212,7 +211,7 @@ func miqt_exec_callback_QFinalState_Event(self *C.QFinalState, cb C.intptr_t, e 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QFinalState{h: self}).callVirtualBase_Event, slotval1)
 

@@ -36,9 +36,9 @@ typedef struct QSize QSize;
 typedef struct QSizeF QSizeF;
 #endif
 
-void QFontMetrics_new(QFont* param1, QFontMetrics** outptr_QFontMetrics);
-void QFontMetrics_new2(QFont* font, QPaintDevice* pd, QFontMetrics** outptr_QFontMetrics);
-void QFontMetrics_new3(QFontMetrics* param1, QFontMetrics** outptr_QFontMetrics);
+QFontMetrics* QFontMetrics_new(QFont* param1);
+QFontMetrics* QFontMetrics_new2(QFont* font, QPaintDevice* pd);
+QFontMetrics* QFontMetrics_new3(QFontMetrics* param1);
 void QFontMetrics_OperatorAssign(QFontMetrics* self, QFontMetrics* param1);
 void QFontMetrics_Swap(QFontMetrics* self, QFontMetrics* other);
 int QFontMetrics_Ascent(const QFontMetrics* self);
@@ -87,10 +87,10 @@ QSize* QFontMetrics_Size4(const QFontMetrics* self, int flags, struct miqt_strin
 struct miqt_string QFontMetrics_ElidedText4(const QFontMetrics* self, struct miqt_string text, int mode, int width, int flags);
 void QFontMetrics_Delete(QFontMetrics* self, bool isSubclass);
 
-void QFontMetricsF_new(QFont* font, QFontMetricsF** outptr_QFontMetricsF);
-void QFontMetricsF_new2(QFont* font, QPaintDevice* pd, QFontMetricsF** outptr_QFontMetricsF);
-void QFontMetricsF_new3(QFontMetrics* param1, QFontMetricsF** outptr_QFontMetricsF);
-void QFontMetricsF_new4(QFontMetricsF* param1, QFontMetricsF** outptr_QFontMetricsF);
+QFontMetricsF* QFontMetricsF_new(QFont* font);
+QFontMetricsF* QFontMetricsF_new2(QFont* font, QPaintDevice* pd);
+QFontMetricsF* QFontMetricsF_new3(QFontMetrics* param1);
+QFontMetricsF* QFontMetricsF_new4(QFontMetricsF* param1);
 void QFontMetricsF_OperatorAssign(QFontMetricsF* self, QFontMetricsF* param1);
 void QFontMetricsF_OperatorAssignWithQFontMetrics(QFontMetricsF* self, QFontMetrics* param1);
 void QFontMetricsF_Swap(QFontMetricsF* self, QFontMetricsF* other);

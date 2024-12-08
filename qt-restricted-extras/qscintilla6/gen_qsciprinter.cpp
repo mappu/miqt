@@ -241,20 +241,16 @@ public:
 
 };
 
-void QsciPrinter_new(QsciPrinter** outptr_QsciPrinter, QPrinter** outptr_QPrinter, QPagedPaintDevice** outptr_QPagedPaintDevice, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQsciPrinter* ret = new MiqtVirtualQsciPrinter();
-	*outptr_QsciPrinter = ret;
-	*outptr_QPrinter = static_cast<QPrinter*>(ret);
-	*outptr_QPagedPaintDevice = static_cast<QPagedPaintDevice*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QsciPrinter* QsciPrinter_new() {
+	return new MiqtVirtualQsciPrinter();
 }
 
-void QsciPrinter_new2(int mode, QsciPrinter** outptr_QsciPrinter, QPrinter** outptr_QPrinter, QPagedPaintDevice** outptr_QPagedPaintDevice, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQsciPrinter* ret = new MiqtVirtualQsciPrinter(static_cast<QPrinter::PrinterMode>(mode));
-	*outptr_QsciPrinter = ret;
-	*outptr_QPrinter = static_cast<QPrinter*>(ret);
-	*outptr_QPagedPaintDevice = static_cast<QPagedPaintDevice*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QsciPrinter* QsciPrinter_new2(int mode) {
+	return new MiqtVirtualQsciPrinter(static_cast<QPrinter::PrinterMode>(mode));
+}
+
+void QsciPrinter_virtbase(QsciPrinter* src, QPrinter** outptr_QPrinter) {
+	*outptr_QPrinter = static_cast<QPrinter*>(src);
 }
 
 void QsciPrinter_FormatPage(QsciPrinter* self, QPainter* painter, bool drawing, QRect* area, int pagenr) {

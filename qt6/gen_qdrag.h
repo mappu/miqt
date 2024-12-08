@@ -38,7 +38,8 @@ typedef struct QPoint QPoint;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QDrag_new(QObject* dragSource, QDrag** outptr_QDrag, QObject** outptr_QObject);
+QDrag* QDrag_new(QObject* dragSource);
+void QDrag_virtbase(QDrag* src, QObject** outptr_QObject);
 QMetaObject* QDrag_MetaObject(const QDrag* self);
 void* QDrag_Metacast(QDrag* self, const char* param1);
 struct miqt_string QDrag_Tr(const char* s);

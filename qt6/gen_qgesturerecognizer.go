@@ -51,30 +51,25 @@ func newQGestureRecognizer(h *C.QGestureRecognizer) *QGestureRecognizer {
 	if h == nil {
 		return nil
 	}
+
 	return &QGestureRecognizer{h: h}
 }
 
 // UnsafeNewQGestureRecognizer constructs the type using only unsafe pointers.
 func UnsafeNewQGestureRecognizer(h unsafe.Pointer) *QGestureRecognizer {
-	if h == nil {
-		return nil
-	}
-
-	return &QGestureRecognizer{h: (*C.QGestureRecognizer)(h)}
+	return newQGestureRecognizer((*C.QGestureRecognizer)(h))
 }
 
 // NewQGestureRecognizer constructs a new QGestureRecognizer object.
 func NewQGestureRecognizer() *QGestureRecognizer {
-	var outptr_QGestureRecognizer *C.QGestureRecognizer = nil
 
-	C.QGestureRecognizer_new(&outptr_QGestureRecognizer)
-	ret := newQGestureRecognizer(outptr_QGestureRecognizer)
+	ret := newQGestureRecognizer(C.QGestureRecognizer_new())
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QGestureRecognizer) Create(target *QObject) *QGesture {
-	return UnsafeNewQGesture(unsafe.Pointer(C.QGestureRecognizer_Create(this.h, target.cPointer())), nil)
+	return newQGesture(C.QGestureRecognizer_Create(this.h, target.cPointer()))
 }
 
 func (this *QGestureRecognizer) Recognize(state *QGesture, watched *QObject, event *QEvent) QGestureRecognizer__ResultFlag {
@@ -99,9 +94,13 @@ func (this *QGestureRecognizer) OperatorAssign(param1 *QGestureRecognizer) {
 
 func (this *QGestureRecognizer) callVirtualBase_Create(target *QObject) *QGesture {
 
-	return UnsafeNewQGesture(unsafe.Pointer(C.QGestureRecognizer_virtualbase_Create(unsafe.Pointer(this.h), target.cPointer())), nil)
+	return newQGesture(C.QGestureRecognizer_virtualbase_Create(unsafe.Pointer(this.h), target.cPointer()))
+
 }
 func (this *QGestureRecognizer) OnCreate(slot func(super func(target *QObject) *QGesture, target *QObject) *QGesture) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGestureRecognizer_override_virtual_Create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -113,7 +112,7 @@ func miqt_exec_callback_QGestureRecognizer_Create(self *C.QGestureRecognizer, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(target))
+	slotval1 := newQObject(target)
 
 	virtualReturn := gofunc((&QGestureRecognizer{h: self}).callVirtualBase_Create, slotval1)
 
@@ -121,6 +120,9 @@ func miqt_exec_callback_QGestureRecognizer_Create(self *C.QGestureRecognizer, cb
 
 }
 func (this *QGestureRecognizer) OnRecognize(slot func(state *QGesture, watched *QObject, event *QEvent) QGestureRecognizer__ResultFlag) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGestureRecognizer_override_virtual_Recognize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -132,9 +134,11 @@ func miqt_exec_callback_QGestureRecognizer_Recognize(self *C.QGestureRecognizer,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGesture(unsafe.Pointer(state), nil)
-	slotval2 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval3 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQGesture(state)
+
+	slotval2 := newQObject(watched)
+
+	slotval3 := newQEvent(event)
 
 	virtualReturn := gofunc(slotval1, slotval2, slotval3)
 
@@ -148,6 +152,9 @@ func (this *QGestureRecognizer) callVirtualBase_Reset(state *QGesture) {
 
 }
 func (this *QGestureRecognizer) OnReset(slot func(super func(state *QGesture), state *QGesture)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGestureRecognizer_override_virtual_Reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -159,7 +166,7 @@ func miqt_exec_callback_QGestureRecognizer_Reset(self *C.QGestureRecognizer, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQGesture(unsafe.Pointer(state), nil)
+	slotval1 := newQGesture(state)
 
 	gofunc((&QGestureRecognizer{h: self}).callVirtualBase_Reset, slotval1)
 

@@ -3,14 +3,12 @@
 #include "gen_qhttp2configuration.h"
 #include "_cgo_export.h"
 
-void QHttp2Configuration_new(QHttp2Configuration** outptr_QHttp2Configuration) {
-	QHttp2Configuration* ret = new QHttp2Configuration();
-	*outptr_QHttp2Configuration = ret;
+QHttp2Configuration* QHttp2Configuration_new() {
+	return new QHttp2Configuration();
 }
 
-void QHttp2Configuration_new2(QHttp2Configuration* other, QHttp2Configuration** outptr_QHttp2Configuration) {
-	QHttp2Configuration* ret = new QHttp2Configuration(*other);
-	*outptr_QHttp2Configuration = ret;
+QHttp2Configuration* QHttp2Configuration_new2(QHttp2Configuration* other) {
+	return new QHttp2Configuration(*other);
 }
 
 void QHttp2Configuration_OperatorAssign(QHttp2Configuration* self, QHttp2Configuration* other) {

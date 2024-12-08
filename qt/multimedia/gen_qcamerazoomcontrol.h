@@ -26,6 +26,7 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif
 
+void QCameraZoomControl_virtbase(QCameraZoomControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QCameraZoomControl_MetaObject(const QCameraZoomControl* self);
 void* QCameraZoomControl_Metacast(QCameraZoomControl* self, const char* param1);
 struct miqt_string QCameraZoomControl_Tr(const char* s);

@@ -46,22 +46,20 @@ func (this *QMediaStreamsControl) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMediaStreamsControl constructs the type using only CGO pointers.
-func newQMediaStreamsControl(h *C.QMediaStreamsControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QMediaStreamsControl {
+func newQMediaStreamsControl(h *C.QMediaStreamsControl) *QMediaStreamsControl {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaControl *C.QMediaControl = nil
+	C.QMediaStreamsControl_virtbase(h, &outptr_QMediaControl)
+
 	return &QMediaStreamsControl{h: h,
-		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
+		QMediaControl: newQMediaControl(outptr_QMediaControl)}
 }
 
 // UnsafeNewQMediaStreamsControl constructs the type using only unsafe pointers.
-func UnsafeNewQMediaStreamsControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QMediaStreamsControl {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaStreamsControl{h: (*C.QMediaStreamsControl)(h),
-		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
+func UnsafeNewQMediaStreamsControl(h unsafe.Pointer) *QMediaStreamsControl {
+	return newQMediaStreamsControl((*C.QMediaStreamsControl)(h))
 }
 
 func (this *QMediaStreamsControl) MetaObject() *qt.QMetaObject {
@@ -105,8 +103,7 @@ func (this *QMediaStreamsControl) MetaData(streamNumber int, key string) *qt.QVa
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	_ret := C.QMediaStreamsControl_MetaData(this.h, (C.int)(streamNumber), key_ms)
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QMediaStreamsControl_MetaData(this.h, (C.int)(streamNumber), key_ms)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

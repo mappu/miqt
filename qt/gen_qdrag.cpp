@@ -195,10 +195,12 @@ public:
 
 };
 
-void QDrag_new(QObject* dragSource, QDrag** outptr_QDrag, QObject** outptr_QObject) {
-	MiqtVirtualQDrag* ret = new MiqtVirtualQDrag(dragSource);
-	*outptr_QDrag = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QDrag* QDrag_new(QObject* dragSource) {
+	return new MiqtVirtualQDrag(dragSource);
+}
+
+void QDrag_virtbase(QDrag* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QDrag_MetaObject(const QDrag* self) {

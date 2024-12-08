@@ -36,9 +36,9 @@ typedef struct QVideoFrame__PaintOptions QVideoFrame__PaintOptions;
 typedef struct QVideoFrameFormat QVideoFrameFormat;
 #endif
 
-void QVideoFrame_new(QVideoFrame** outptr_QVideoFrame);
-void QVideoFrame_new2(QVideoFrameFormat* format, QVideoFrame** outptr_QVideoFrame);
-void QVideoFrame_new3(QVideoFrame* other, QVideoFrame** outptr_QVideoFrame);
+QVideoFrame* QVideoFrame_new();
+QVideoFrame* QVideoFrame_new2(QVideoFrameFormat* format);
+QVideoFrame* QVideoFrame_new3(QVideoFrame* other);
 void QVideoFrame_Swap(QVideoFrame* self, QVideoFrame* other);
 void QVideoFrame_OperatorAssign(QVideoFrame* self, QVideoFrame* other);
 bool QVideoFrame_OperatorEqual(const QVideoFrame* self, QVideoFrame* other);

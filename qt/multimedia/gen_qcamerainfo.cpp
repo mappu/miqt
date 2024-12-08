@@ -9,25 +9,21 @@
 #include "gen_qcamerainfo.h"
 #include "_cgo_export.h"
 
-void QCameraInfo_new(QCameraInfo** outptr_QCameraInfo) {
-	QCameraInfo* ret = new QCameraInfo();
-	*outptr_QCameraInfo = ret;
+QCameraInfo* QCameraInfo_new() {
+	return new QCameraInfo();
 }
 
-void QCameraInfo_new2(QCamera* camera, QCameraInfo** outptr_QCameraInfo) {
-	QCameraInfo* ret = new QCameraInfo(*camera);
-	*outptr_QCameraInfo = ret;
+QCameraInfo* QCameraInfo_new2(QCamera* camera) {
+	return new QCameraInfo(*camera);
 }
 
-void QCameraInfo_new3(QCameraInfo* other, QCameraInfo** outptr_QCameraInfo) {
-	QCameraInfo* ret = new QCameraInfo(*other);
-	*outptr_QCameraInfo = ret;
+QCameraInfo* QCameraInfo_new3(QCameraInfo* other) {
+	return new QCameraInfo(*other);
 }
 
-void QCameraInfo_new4(struct miqt_string name, QCameraInfo** outptr_QCameraInfo) {
+QCameraInfo* QCameraInfo_new4(struct miqt_string name) {
 	QByteArray name_QByteArray(name.data, name.len);
-	QCameraInfo* ret = new QCameraInfo(name_QByteArray);
-	*outptr_QCameraInfo = ret;
+	return new QCameraInfo(name_QByteArray);
 }
 
 void QCameraInfo_OperatorAssign(QCameraInfo* self, QCameraInfo* other) {

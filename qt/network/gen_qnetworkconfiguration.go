@@ -82,34 +82,27 @@ func newQNetworkConfiguration(h *C.QNetworkConfiguration) *QNetworkConfiguration
 	if h == nil {
 		return nil
 	}
+
 	return &QNetworkConfiguration{h: h}
 }
 
 // UnsafeNewQNetworkConfiguration constructs the type using only unsafe pointers.
 func UnsafeNewQNetworkConfiguration(h unsafe.Pointer) *QNetworkConfiguration {
-	if h == nil {
-		return nil
-	}
-
-	return &QNetworkConfiguration{h: (*C.QNetworkConfiguration)(h)}
+	return newQNetworkConfiguration((*C.QNetworkConfiguration)(h))
 }
 
 // NewQNetworkConfiguration constructs a new QNetworkConfiguration object.
 func NewQNetworkConfiguration() *QNetworkConfiguration {
-	var outptr_QNetworkConfiguration *C.QNetworkConfiguration = nil
 
-	C.QNetworkConfiguration_new(&outptr_QNetworkConfiguration)
-	ret := newQNetworkConfiguration(outptr_QNetworkConfiguration)
+	ret := newQNetworkConfiguration(C.QNetworkConfiguration_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQNetworkConfiguration2 constructs a new QNetworkConfiguration object.
 func NewQNetworkConfiguration2(other *QNetworkConfiguration) *QNetworkConfiguration {
-	var outptr_QNetworkConfiguration *C.QNetworkConfiguration = nil
 
-	C.QNetworkConfiguration_new2(other.cPointer(), &outptr_QNetworkConfiguration)
-	ret := newQNetworkConfiguration(outptr_QNetworkConfiguration)
+	ret := newQNetworkConfiguration(C.QNetworkConfiguration_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -173,8 +166,7 @@ func (this *QNetworkConfiguration) Children() []QNetworkConfiguration {
 	_ret := make([]QNetworkConfiguration, int(_ma.len))
 	_outCast := (*[0xffff]*C.QNetworkConfiguration)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQNetworkConfiguration(_lv_ret)
+		_lv_goptr := newQNetworkConfiguration(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}

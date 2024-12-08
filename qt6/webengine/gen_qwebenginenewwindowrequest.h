@@ -30,6 +30,7 @@ typedef struct QWebEngineNewWindowRequest QWebEngineNewWindowRequest;
 typedef struct QWebEnginePage QWebEnginePage;
 #endif
 
+void QWebEngineNewWindowRequest_virtbase(QWebEngineNewWindowRequest* src, QObject** outptr_QObject);
 QMetaObject* QWebEngineNewWindowRequest_MetaObject(const QWebEngineNewWindowRequest* self);
 void* QWebEngineNewWindowRequest_Metacast(QWebEngineNewWindowRequest* self, const char* param1);
 struct miqt_string QWebEngineNewWindowRequest_Tr(const char* s);

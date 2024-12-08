@@ -44,34 +44,27 @@ func newQReadWriteLock(h *C.QReadWriteLock) *QReadWriteLock {
 	if h == nil {
 		return nil
 	}
+
 	return &QReadWriteLock{h: h}
 }
 
 // UnsafeNewQReadWriteLock constructs the type using only unsafe pointers.
 func UnsafeNewQReadWriteLock(h unsafe.Pointer) *QReadWriteLock {
-	if h == nil {
-		return nil
-	}
-
-	return &QReadWriteLock{h: (*C.QReadWriteLock)(h)}
+	return newQReadWriteLock((*C.QReadWriteLock)(h))
 }
 
 // NewQReadWriteLock constructs a new QReadWriteLock object.
 func NewQReadWriteLock() *QReadWriteLock {
-	var outptr_QReadWriteLock *C.QReadWriteLock = nil
 
-	C.QReadWriteLock_new(&outptr_QReadWriteLock)
-	ret := newQReadWriteLock(outptr_QReadWriteLock)
+	ret := newQReadWriteLock(C.QReadWriteLock_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQReadWriteLock2 constructs a new QReadWriteLock object.
 func NewQReadWriteLock2(recursionMode QReadWriteLock__RecursionMode) *QReadWriteLock {
-	var outptr_QReadWriteLock *C.QReadWriteLock = nil
 
-	C.QReadWriteLock_new2((C.int)(recursionMode), &outptr_QReadWriteLock)
-	ret := newQReadWriteLock(outptr_QReadWriteLock)
+	ret := newQReadWriteLock(C.QReadWriteLock_new2((C.int)(recursionMode)))
 	ret.isSubclass = true
 	return ret
 }
@@ -142,24 +135,19 @@ func newQReadLocker(h *C.QReadLocker) *QReadLocker {
 	if h == nil {
 		return nil
 	}
+
 	return &QReadLocker{h: h}
 }
 
 // UnsafeNewQReadLocker constructs the type using only unsafe pointers.
 func UnsafeNewQReadLocker(h unsafe.Pointer) *QReadLocker {
-	if h == nil {
-		return nil
-	}
-
-	return &QReadLocker{h: (*C.QReadLocker)(h)}
+	return newQReadLocker((*C.QReadLocker)(h))
 }
 
 // NewQReadLocker constructs a new QReadLocker object.
 func NewQReadLocker(readWriteLock *QReadWriteLock) *QReadLocker {
-	var outptr_QReadLocker *C.QReadLocker = nil
 
-	C.QReadLocker_new(readWriteLock.cPointer(), &outptr_QReadLocker)
-	ret := newQReadLocker(outptr_QReadLocker)
+	ret := newQReadLocker(C.QReadLocker_new(readWriteLock.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -173,7 +161,7 @@ func (this *QReadLocker) Relock() {
 }
 
 func (this *QReadLocker) ReadWriteLock() *QReadWriteLock {
-	return UnsafeNewQReadWriteLock(unsafe.Pointer(C.QReadLocker_ReadWriteLock(this.h)))
+	return newQReadWriteLock(C.QReadLocker_ReadWriteLock(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -214,24 +202,19 @@ func newQWriteLocker(h *C.QWriteLocker) *QWriteLocker {
 	if h == nil {
 		return nil
 	}
+
 	return &QWriteLocker{h: h}
 }
 
 // UnsafeNewQWriteLocker constructs the type using only unsafe pointers.
 func UnsafeNewQWriteLocker(h unsafe.Pointer) *QWriteLocker {
-	if h == nil {
-		return nil
-	}
-
-	return &QWriteLocker{h: (*C.QWriteLocker)(h)}
+	return newQWriteLocker((*C.QWriteLocker)(h))
 }
 
 // NewQWriteLocker constructs a new QWriteLocker object.
 func NewQWriteLocker(readWriteLock *QReadWriteLock) *QWriteLocker {
-	var outptr_QWriteLocker *C.QWriteLocker = nil
 
-	C.QWriteLocker_new(readWriteLock.cPointer(), &outptr_QWriteLocker)
-	ret := newQWriteLocker(outptr_QWriteLocker)
+	ret := newQWriteLocker(C.QWriteLocker_new(readWriteLock.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -245,7 +228,7 @@ func (this *QWriteLocker) Relock() {
 }
 
 func (this *QWriteLocker) ReadWriteLock() *QReadWriteLock {
-	return UnsafeNewQReadWriteLock(unsafe.Pointer(C.QWriteLocker_ReadWriteLock(this.h)))
+	return newQReadWriteLock(C.QWriteLocker_ReadWriteLock(this.h))
 }
 
 // Delete this object from C++ memory.

@@ -8,9 +8,8 @@
 #include "gen_qbackingstore.h"
 #include "_cgo_export.h"
 
-void QBackingStore_new(QWindow* window, QBackingStore** outptr_QBackingStore) {
-	QBackingStore* ret = new QBackingStore(window);
-	*outptr_QBackingStore = ret;
+QBackingStore* QBackingStore_new(QWindow* window) {
+	return new QBackingStore(window);
 }
 
 QWindow* QBackingStore_Window(const QBackingStore* self) {

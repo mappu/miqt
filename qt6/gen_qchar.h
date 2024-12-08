@@ -22,22 +22,22 @@ typedef struct QChar QChar;
 typedef struct QLatin1Char QLatin1Char;
 #endif
 
-void QLatin1Char_new(char c, QLatin1Char** outptr_QLatin1Char);
-void QLatin1Char_new2(QLatin1Char* param1, QLatin1Char** outptr_QLatin1Char);
+QLatin1Char* QLatin1Char_new(char c);
+QLatin1Char* QLatin1Char_new2(QLatin1Char* param1);
 char QLatin1Char_ToLatin1(const QLatin1Char* self);
 void QLatin1Char_Delete(QLatin1Char* self, bool isSubclass);
 
-void QChar_new(QChar** outptr_QChar);
-void QChar_new2(uint16_t rc, QChar** outptr_QChar);
-void QChar_new3(unsigned char c, unsigned char r, QChar** outptr_QChar);
-void QChar_new4(int16_t rc, QChar** outptr_QChar);
-void QChar_new5(unsigned int rc, QChar** outptr_QChar);
-void QChar_new6(int rc, QChar** outptr_QChar);
-void QChar_new7(int s, QChar** outptr_QChar);
-void QChar_new8(QLatin1Char* ch, QChar** outptr_QChar);
-void QChar_new9(char c, QChar** outptr_QChar);
-void QChar_new10(unsigned char c, QChar** outptr_QChar);
-void QChar_new11(QChar* param1, QChar** outptr_QChar);
+QChar* QChar_new();
+QChar* QChar_new2(uint16_t rc);
+QChar* QChar_new3(unsigned char c, unsigned char r);
+QChar* QChar_new4(int16_t rc);
+QChar* QChar_new5(unsigned int rc);
+QChar* QChar_new6(int rc);
+QChar* QChar_new7(int s);
+QChar* QChar_new8(QLatin1Char* ch);
+QChar* QChar_new9(char c);
+QChar* QChar_new10(unsigned char c);
+QChar* QChar_new11(QChar* param1);
 int QChar_Category(const QChar* self);
 int QChar_Direction(const QChar* self);
 int QChar_JoiningType(const QChar* self);

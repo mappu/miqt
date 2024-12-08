@@ -212,16 +212,16 @@ public:
 
 };
 
-void QWebChannelAbstractTransport_new(QWebChannelAbstractTransport** outptr_QWebChannelAbstractTransport, QObject** outptr_QObject) {
-	MiqtVirtualQWebChannelAbstractTransport* ret = new MiqtVirtualQWebChannelAbstractTransport();
-	*outptr_QWebChannelAbstractTransport = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QWebChannelAbstractTransport* QWebChannelAbstractTransport_new() {
+	return new MiqtVirtualQWebChannelAbstractTransport();
 }
 
-void QWebChannelAbstractTransport_new2(QObject* parent, QWebChannelAbstractTransport** outptr_QWebChannelAbstractTransport, QObject** outptr_QObject) {
-	MiqtVirtualQWebChannelAbstractTransport* ret = new MiqtVirtualQWebChannelAbstractTransport(parent);
-	*outptr_QWebChannelAbstractTransport = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QWebChannelAbstractTransport* QWebChannelAbstractTransport_new2(QObject* parent) {
+	return new MiqtVirtualQWebChannelAbstractTransport(parent);
+}
+
+void QWebChannelAbstractTransport_virtbase(QWebChannelAbstractTransport* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QWebChannelAbstractTransport_MetaObject(const QWebChannelAbstractTransport* self) {

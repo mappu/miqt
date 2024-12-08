@@ -42,12 +42,13 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QCompleter_new(QCompleter** outptr_QCompleter, QObject** outptr_QObject);
-void QCompleter_new2(QAbstractItemModel* model, QCompleter** outptr_QCompleter, QObject** outptr_QObject);
-void QCompleter_new3(struct miqt_array /* of struct miqt_string */  completions, QCompleter** outptr_QCompleter, QObject** outptr_QObject);
-void QCompleter_new4(QObject* parent, QCompleter** outptr_QCompleter, QObject** outptr_QObject);
-void QCompleter_new5(QAbstractItemModel* model, QObject* parent, QCompleter** outptr_QCompleter, QObject** outptr_QObject);
-void QCompleter_new6(struct miqt_array /* of struct miqt_string */  completions, QObject* parent, QCompleter** outptr_QCompleter, QObject** outptr_QObject);
+QCompleter* QCompleter_new();
+QCompleter* QCompleter_new2(QAbstractItemModel* model);
+QCompleter* QCompleter_new3(struct miqt_array /* of struct miqt_string */  completions);
+QCompleter* QCompleter_new4(QObject* parent);
+QCompleter* QCompleter_new5(QAbstractItemModel* model, QObject* parent);
+QCompleter* QCompleter_new6(struct miqt_array /* of struct miqt_string */  completions, QObject* parent);
+void QCompleter_virtbase(QCompleter* src, QObject** outptr_QObject);
 QMetaObject* QCompleter_MetaObject(const QCompleter* self);
 void* QCompleter_Metacast(QCompleter* self, const char* param1);
 struct miqt_string QCompleter_Tr(const char* s);

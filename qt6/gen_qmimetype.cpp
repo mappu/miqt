@@ -7,14 +7,12 @@
 #include "gen_qmimetype.h"
 #include "_cgo_export.h"
 
-void QMimeType_new(QMimeType** outptr_QMimeType) {
-	QMimeType* ret = new QMimeType();
-	*outptr_QMimeType = ret;
+QMimeType* QMimeType_new() {
+	return new QMimeType();
 }
 
-void QMimeType_new2(QMimeType* other, QMimeType** outptr_QMimeType) {
-	QMimeType* ret = new QMimeType(*other);
-	*outptr_QMimeType = ret;
+QMimeType* QMimeType_new2(QMimeType* other) {
+	return new QMimeType(*other);
 }
 
 void QMimeType_OperatorAssign(QMimeType* self, QMimeType* other) {

@@ -9,6 +9,10 @@
 #include "gen_qcameraflashcontrol.h"
 #include "_cgo_export.h"
 
+void QCameraFlashControl_virtbase(QCameraFlashControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
+
 QMetaObject* QCameraFlashControl_MetaObject(const QCameraFlashControl* self) {
 	return (QMetaObject*) self->metaObject();
 }

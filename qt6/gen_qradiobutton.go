@@ -35,48 +35,34 @@ func (this *QRadioButton) UnsafePointer() unsafe.Pointer {
 }
 
 // newQRadioButton constructs the type using only CGO pointers.
-func newQRadioButton(h *C.QRadioButton, h_QAbstractButton *C.QAbstractButton, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QRadioButton {
+func newQRadioButton(h *C.QRadioButton) *QRadioButton {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractButton *C.QAbstractButton = nil
+	C.QRadioButton_virtbase(h, &outptr_QAbstractButton)
+
 	return &QRadioButton{h: h,
-		QAbstractButton: newQAbstractButton(h_QAbstractButton, h_QWidget, h_QObject, h_QPaintDevice)}
+		QAbstractButton: newQAbstractButton(outptr_QAbstractButton)}
 }
 
 // UnsafeNewQRadioButton constructs the type using only unsafe pointers.
-func UnsafeNewQRadioButton(h unsafe.Pointer, h_QAbstractButton unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QRadioButton {
-	if h == nil {
-		return nil
-	}
-
-	return &QRadioButton{h: (*C.QRadioButton)(h),
-		QAbstractButton: UnsafeNewQAbstractButton(h_QAbstractButton, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQRadioButton(h unsafe.Pointer) *QRadioButton {
+	return newQRadioButton((*C.QRadioButton)(h))
 }
 
 // NewQRadioButton constructs a new QRadioButton object.
 func NewQRadioButton(parent *QWidget) *QRadioButton {
-	var outptr_QRadioButton *C.QRadioButton = nil
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QRadioButton_new(parent.cPointer(), &outptr_QRadioButton, &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQRadioButton(outptr_QRadioButton, outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQRadioButton(C.QRadioButton_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQRadioButton2 constructs a new QRadioButton object.
 func NewQRadioButton2() *QRadioButton {
-	var outptr_QRadioButton *C.QRadioButton = nil
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QRadioButton_new2(&outptr_QRadioButton, &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQRadioButton(outptr_QRadioButton, outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQRadioButton(C.QRadioButton_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -87,14 +73,8 @@ func NewQRadioButton3(text string) *QRadioButton {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QRadioButton *C.QRadioButton = nil
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QRadioButton_new3(text_ms, &outptr_QRadioButton, &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQRadioButton(outptr_QRadioButton, outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQRadioButton(C.QRadioButton_new3(text_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -105,20 +85,14 @@ func NewQRadioButton4(text string, parent *QWidget) *QRadioButton {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QRadioButton *C.QRadioButton = nil
-	var outptr_QAbstractButton *C.QAbstractButton = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QRadioButton_new4(text_ms, parent.cPointer(), &outptr_QRadioButton, &outptr_QAbstractButton, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQRadioButton(outptr_QRadioButton, outptr_QAbstractButton, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQRadioButton(C.QRadioButton_new4(text_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QRadioButton) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QRadioButton_MetaObject(this.h)))
+	return newQMetaObject(C.QRadioButton_MetaObject(this.h))
 }
 
 func (this *QRadioButton) Metacast(param1 string) unsafe.Pointer {
@@ -137,15 +111,13 @@ func QRadioButton_Tr(s string) string {
 }
 
 func (this *QRadioButton) SizeHint() *QSize {
-	_ret := C.QRadioButton_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QRadioButton_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRadioButton) MinimumSizeHint() *QSize {
-	_ret := C.QRadioButton_MinimumSizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QRadioButton_MinimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -174,13 +146,15 @@ func QRadioButton_Tr3(s string, c string, n int) string {
 
 func (this *QRadioButton) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QRadioButton_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QRadioButton_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QRadioButton) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRadioButton_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -199,13 +173,15 @@ func miqt_exec_callback_QRadioButton_SizeHint(self *C.QRadioButton, cb C.intptr_
 
 func (this *QRadioButton) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QRadioButton_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QRadioButton_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QRadioButton) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRadioButton_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -228,6 +204,9 @@ func (this *QRadioButton) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QRadioButton) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRadioButton_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -239,7 +218,7 @@ func miqt_exec_callback_QRadioButton_Event(self *C.QRadioButton, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QRadioButton{h: self}).callVirtualBase_Event, slotval1)
 
@@ -253,6 +232,9 @@ func (this *QRadioButton) callVirtualBase_HitButton(param1 *QPoint) bool {
 
 }
 func (this *QRadioButton) OnHitButton(slot func(super func(param1 *QPoint) bool, param1 *QPoint) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRadioButton_override_virtual_HitButton(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -264,7 +246,7 @@ func miqt_exec_callback_QRadioButton_HitButton(self *C.QRadioButton, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(param1))
+	slotval1 := newQPoint(param1)
 
 	virtualReturn := gofunc((&QRadioButton{h: self}).callVirtualBase_HitButton, slotval1)
 
@@ -278,6 +260,9 @@ func (this *QRadioButton) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
 
 }
 func (this *QRadioButton) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRadioButton_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -289,7 +274,7 @@ func miqt_exec_callback_QRadioButton_PaintEvent(self *C.QRadioButton, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQPaintEvent(param1)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -301,6 +286,9 @@ func (this *QRadioButton) callVirtualBase_MouseMoveEvent(param1 *QMouseEvent) {
 
 }
 func (this *QRadioButton) OnMouseMoveEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRadioButton_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -312,7 +300,7 @@ func miqt_exec_callback_QRadioButton_MouseMoveEvent(self *C.QRadioButton, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(param1)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -324,6 +312,9 @@ func (this *QRadioButton) callVirtualBase_InitStyleOption(button *QStyleOptionBu
 
 }
 func (this *QRadioButton) OnInitStyleOption(slot func(super func(button *QStyleOptionButton), button *QStyleOptionButton)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRadioButton_override_virtual_InitStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -335,7 +326,7 @@ func miqt_exec_callback_QRadioButton_InitStyleOption(self *C.QRadioButton, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStyleOptionButton(unsafe.Pointer(button), nil)
+	slotval1 := newQStyleOptionButton(button)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_InitStyleOption, slotval1)
 
@@ -347,6 +338,9 @@ func (this *QRadioButton) callVirtualBase_CheckStateSet() {
 
 }
 func (this *QRadioButton) OnCheckStateSet(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRadioButton_override_virtual_CheckStateSet(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -367,6 +361,9 @@ func (this *QRadioButton) callVirtualBase_NextCheckState() {
 
 }
 func (this *QRadioButton) OnNextCheckState(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRadioButton_override_virtual_NextCheckState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -387,6 +384,9 @@ func (this *QRadioButton) callVirtualBase_KeyPressEvent(e *QKeyEvent) {
 
 }
 func (this *QRadioButton) OnKeyPressEvent(slot func(super func(e *QKeyEvent), e *QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRadioButton_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -398,7 +398,7 @@ func miqt_exec_callback_QRadioButton_KeyPressEvent(self *C.QRadioButton, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQKeyEvent(e)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -410,6 +410,9 @@ func (this *QRadioButton) callVirtualBase_KeyReleaseEvent(e *QKeyEvent) {
 
 }
 func (this *QRadioButton) OnKeyReleaseEvent(slot func(super func(e *QKeyEvent), e *QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRadioButton_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -421,7 +424,7 @@ func miqt_exec_callback_QRadioButton_KeyReleaseEvent(self *C.QRadioButton, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQKeyEvent(e)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -433,6 +436,9 @@ func (this *QRadioButton) callVirtualBase_MousePressEvent(e *QMouseEvent) {
 
 }
 func (this *QRadioButton) OnMousePressEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRadioButton_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -444,7 +450,7 @@ func miqt_exec_callback_QRadioButton_MousePressEvent(self *C.QRadioButton, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -456,6 +462,9 @@ func (this *QRadioButton) callVirtualBase_MouseReleaseEvent(e *QMouseEvent) {
 
 }
 func (this *QRadioButton) OnMouseReleaseEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRadioButton_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -467,7 +476,7 @@ func miqt_exec_callback_QRadioButton_MouseReleaseEvent(self *C.QRadioButton, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -479,6 +488,9 @@ func (this *QRadioButton) callVirtualBase_FocusInEvent(e *QFocusEvent) {
 
 }
 func (this *QRadioButton) OnFocusInEvent(slot func(super func(e *QFocusEvent), e *QFocusEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRadioButton_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -490,7 +502,7 @@ func miqt_exec_callback_QRadioButton_FocusInEvent(self *C.QRadioButton, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQFocusEvent(e)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -502,6 +514,9 @@ func (this *QRadioButton) callVirtualBase_FocusOutEvent(e *QFocusEvent) {
 
 }
 func (this *QRadioButton) OnFocusOutEvent(slot func(super func(e *QFocusEvent), e *QFocusEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRadioButton_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -513,7 +528,7 @@ func miqt_exec_callback_QRadioButton_FocusOutEvent(self *C.QRadioButton, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQFocusEvent(e)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -525,6 +540,9 @@ func (this *QRadioButton) callVirtualBase_ChangeEvent(e *QEvent) {
 
 }
 func (this *QRadioButton) OnChangeEvent(slot func(super func(e *QEvent), e *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRadioButton_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -536,7 +554,7 @@ func miqt_exec_callback_QRadioButton_ChangeEvent(self *C.QRadioButton, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -548,6 +566,9 @@ func (this *QRadioButton) callVirtualBase_TimerEvent(e *QTimerEvent) {
 
 }
 func (this *QRadioButton) OnTimerEvent(slot func(super func(e *QTimerEvent), e *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRadioButton_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -559,7 +580,7 @@ func miqt_exec_callback_QRadioButton_TimerEvent(self *C.QRadioButton, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQTimerEvent(e)
 
 	gofunc((&QRadioButton{h: self}).callVirtualBase_TimerEvent, slotval1)
 

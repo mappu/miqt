@@ -58,8 +58,8 @@ typedef struct QWebPage QWebPage;
 typedef struct QWebSecurityOrigin QWebSecurityOrigin;
 #endif
 
-void QWebHitTestResult_new(QWebHitTestResult** outptr_QWebHitTestResult);
-void QWebHitTestResult_new2(QWebHitTestResult* other, QWebHitTestResult** outptr_QWebHitTestResult);
+QWebHitTestResult* QWebHitTestResult_new();
+QWebHitTestResult* QWebHitTestResult_new2(QWebHitTestResult* other);
 void QWebHitTestResult_OperatorAssign(QWebHitTestResult* self, QWebHitTestResult* other);
 bool QWebHitTestResult_IsNull(const QWebHitTestResult* self);
 QPoint* QWebHitTestResult_Pos(const QWebHitTestResult* self);
@@ -82,6 +82,7 @@ QWebElement* QWebHitTestResult_Element(const QWebHitTestResult* self);
 QWebFrame* QWebHitTestResult_Frame(const QWebHitTestResult* self);
 void QWebHitTestResult_Delete(QWebHitTestResult* self, bool isSubclass);
 
+void QWebFrame_virtbase(QWebFrame* src, QObject** outptr_QObject);
 QMetaObject* QWebFrame_MetaObject(const QWebFrame* self);
 void* QWebFrame_Metacast(QWebFrame* self, const char* param1);
 struct miqt_string QWebFrame_Tr(const char* s);

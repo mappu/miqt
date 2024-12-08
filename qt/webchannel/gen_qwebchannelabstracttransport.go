@@ -36,42 +36,34 @@ func (this *QWebChannelAbstractTransport) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebChannelAbstractTransport constructs the type using only CGO pointers.
-func newQWebChannelAbstractTransport(h *C.QWebChannelAbstractTransport, h_QObject *C.QObject) *QWebChannelAbstractTransport {
+func newQWebChannelAbstractTransport(h *C.QWebChannelAbstractTransport) *QWebChannelAbstractTransport {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebChannelAbstractTransport_virtbase(h, &outptr_QObject)
+
 	return &QWebChannelAbstractTransport{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebChannelAbstractTransport constructs the type using only unsafe pointers.
-func UnsafeNewQWebChannelAbstractTransport(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebChannelAbstractTransport {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebChannelAbstractTransport{h: (*C.QWebChannelAbstractTransport)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebChannelAbstractTransport(h unsafe.Pointer) *QWebChannelAbstractTransport {
+	return newQWebChannelAbstractTransport((*C.QWebChannelAbstractTransport)(h))
 }
 
 // NewQWebChannelAbstractTransport constructs a new QWebChannelAbstractTransport object.
 func NewQWebChannelAbstractTransport() *QWebChannelAbstractTransport {
-	var outptr_QWebChannelAbstractTransport *C.QWebChannelAbstractTransport = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebChannelAbstractTransport_new(&outptr_QWebChannelAbstractTransport, &outptr_QObject)
-	ret := newQWebChannelAbstractTransport(outptr_QWebChannelAbstractTransport, outptr_QObject)
+	ret := newQWebChannelAbstractTransport(C.QWebChannelAbstractTransport_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebChannelAbstractTransport2 constructs a new QWebChannelAbstractTransport object.
 func NewQWebChannelAbstractTransport2(parent *qt.QObject) *QWebChannelAbstractTransport {
-	var outptr_QWebChannelAbstractTransport *C.QWebChannelAbstractTransport = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebChannelAbstractTransport_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QWebChannelAbstractTransport, &outptr_QObject)
-	ret := newQWebChannelAbstractTransport(outptr_QWebChannelAbstractTransport, outptr_QObject)
+	ret := newQWebChannelAbstractTransport(C.QWebChannelAbstractTransport_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -124,7 +116,8 @@ func miqt_exec_callback_QWebChannelAbstractTransport_MessageReceived(cb C.intptr
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQJsonObject(unsafe.Pointer(message))
-	slotval2 := UnsafeNewQWebChannelAbstractTransport(unsafe.Pointer(transport), nil)
+
+	slotval2 := newQWebChannelAbstractTransport(transport)
 
 	gofunc(slotval1, slotval2)
 }
@@ -173,6 +166,9 @@ func QWebChannelAbstractTransport_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 func (this *QWebChannelAbstractTransport) OnSendMessage(slot func(message *qt.QJsonObject)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebChannelAbstractTransport_override_virtual_SendMessage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -196,6 +192,9 @@ func (this *QWebChannelAbstractTransport) callVirtualBase_Event(event *qt.QEvent
 
 }
 func (this *QWebChannelAbstractTransport) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebChannelAbstractTransport_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -221,6 +220,9 @@ func (this *QWebChannelAbstractTransport) callVirtualBase_EventFilter(watched *q
 
 }
 func (this *QWebChannelAbstractTransport) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebChannelAbstractTransport_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -233,6 +235,7 @@ func miqt_exec_callback_QWebChannelAbstractTransport_EventFilter(self *C.QWebCha
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QWebChannelAbstractTransport{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
@@ -247,6 +250,9 @@ func (this *QWebChannelAbstractTransport) callVirtualBase_TimerEvent(event *qt.Q
 
 }
 func (this *QWebChannelAbstractTransport) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebChannelAbstractTransport_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -258,7 +264,7 @@ func miqt_exec_callback_QWebChannelAbstractTransport_TimerEvent(self *C.QWebChan
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebChannelAbstractTransport{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -270,6 +276,9 @@ func (this *QWebChannelAbstractTransport) callVirtualBase_ChildEvent(event *qt.Q
 
 }
 func (this *QWebChannelAbstractTransport) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebChannelAbstractTransport_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -281,7 +290,7 @@ func miqt_exec_callback_QWebChannelAbstractTransport_ChildEvent(self *C.QWebChan
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebChannelAbstractTransport{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -293,6 +302,9 @@ func (this *QWebChannelAbstractTransport) callVirtualBase_CustomEvent(event *qt.
 
 }
 func (this *QWebChannelAbstractTransport) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebChannelAbstractTransport_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -316,6 +328,9 @@ func (this *QWebChannelAbstractTransport) callVirtualBase_ConnectNotify(signal *
 
 }
 func (this *QWebChannelAbstractTransport) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebChannelAbstractTransport_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -339,6 +354,9 @@ func (this *QWebChannelAbstractTransport) callVirtualBase_DisconnectNotify(signa
 
 }
 func (this *QWebChannelAbstractTransport) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebChannelAbstractTransport_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

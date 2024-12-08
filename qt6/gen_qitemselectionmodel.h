@@ -42,10 +42,10 @@ typedef struct QPersistentModelIndex QPersistentModelIndex;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QItemSelectionRange_new(QItemSelectionRange** outptr_QItemSelectionRange);
-void QItemSelectionRange_new2(QModelIndex* topL, QModelIndex* bottomR, QItemSelectionRange** outptr_QItemSelectionRange);
-void QItemSelectionRange_new3(QModelIndex* index, QItemSelectionRange** outptr_QItemSelectionRange);
-void QItemSelectionRange_new4(QItemSelectionRange* param1, QItemSelectionRange** outptr_QItemSelectionRange);
+QItemSelectionRange* QItemSelectionRange_new();
+QItemSelectionRange* QItemSelectionRange_new2(QModelIndex* topL, QModelIndex* bottomR);
+QItemSelectionRange* QItemSelectionRange_new3(QModelIndex* index);
+QItemSelectionRange* QItemSelectionRange_new4(QItemSelectionRange* param1);
 void QItemSelectionRange_Swap(QItemSelectionRange* self, QItemSelectionRange* other);
 int QItemSelectionRange_Top(const QItemSelectionRange* self);
 int QItemSelectionRange_Left(const QItemSelectionRange* self);
@@ -68,9 +68,10 @@ bool QItemSelectionRange_IsEmpty(const QItemSelectionRange* self);
 struct miqt_array /* of QModelIndex* */  QItemSelectionRange_Indexes(const QItemSelectionRange* self);
 void QItemSelectionRange_Delete(QItemSelectionRange* self, bool isSubclass);
 
-void QItemSelectionModel_new(QItemSelectionModel** outptr_QItemSelectionModel, QObject** outptr_QObject);
-void QItemSelectionModel_new2(QAbstractItemModel* model, QObject* parent, QItemSelectionModel** outptr_QItemSelectionModel, QObject** outptr_QObject);
-void QItemSelectionModel_new3(QAbstractItemModel* model, QItemSelectionModel** outptr_QItemSelectionModel, QObject** outptr_QObject);
+QItemSelectionModel* QItemSelectionModel_new();
+QItemSelectionModel* QItemSelectionModel_new2(QAbstractItemModel* model, QObject* parent);
+QItemSelectionModel* QItemSelectionModel_new3(QAbstractItemModel* model);
+void QItemSelectionModel_virtbase(QItemSelectionModel* src, QObject** outptr_QObject);
 QMetaObject* QItemSelectionModel_MetaObject(const QItemSelectionModel* self);
 void* QItemSelectionModel_Metacast(QItemSelectionModel* self, const char* param1);
 struct miqt_string QItemSelectionModel_Tr(const char* s);
@@ -141,9 +142,9 @@ void QItemSelectionModel_override_virtual_DisconnectNotify(void* self, intptr_t 
 void QItemSelectionModel_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QItemSelectionModel_Delete(QItemSelectionModel* self, bool isSubclass);
 
-void QItemSelection_new(QModelIndex* topLeft, QModelIndex* bottomRight, QItemSelection** outptr_QItemSelection);
-void QItemSelection_new2(QItemSelection** outptr_QItemSelection);
-void QItemSelection_new3(QItemSelection* param1, QItemSelection** outptr_QItemSelection);
+QItemSelection* QItemSelection_new(QModelIndex* topLeft, QModelIndex* bottomRight);
+QItemSelection* QItemSelection_new2();
+QItemSelection* QItemSelection_new3(QItemSelection* param1);
 void QItemSelection_Select(QItemSelection* self, QModelIndex* topLeft, QModelIndex* bottomRight);
 bool QItemSelection_Contains(const QItemSelection* self, QModelIndex* index);
 struct miqt_array /* of QModelIndex* */  QItemSelection_Indexes(const QItemSelection* self);

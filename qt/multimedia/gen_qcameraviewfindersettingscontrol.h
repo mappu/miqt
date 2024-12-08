@@ -32,6 +32,7 @@ typedef struct QObject QObject;
 typedef struct QVariant QVariant;
 #endif
 
+void QCameraViewfinderSettingsControl_virtbase(QCameraViewfinderSettingsControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QCameraViewfinderSettingsControl_MetaObject(const QCameraViewfinderSettingsControl* self);
 void* QCameraViewfinderSettingsControl_Metacast(QCameraViewfinderSettingsControl* self, const char* param1);
 struct miqt_string QCameraViewfinderSettingsControl_Tr(const char* s);
@@ -45,6 +46,7 @@ struct miqt_string QCameraViewfinderSettingsControl_TrUtf82(const char* s, const
 struct miqt_string QCameraViewfinderSettingsControl_TrUtf83(const char* s, const char* c, int n);
 void QCameraViewfinderSettingsControl_Delete(QCameraViewfinderSettingsControl* self, bool isSubclass);
 
+void QCameraViewfinderSettingsControl2_virtbase(QCameraViewfinderSettingsControl2* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QCameraViewfinderSettingsControl2_MetaObject(const QCameraViewfinderSettingsControl2* self);
 void* QCameraViewfinderSettingsControl2_Metacast(QCameraViewfinderSettingsControl2* self, const char* param1);
 struct miqt_string QCameraViewfinderSettingsControl2_Tr(const char* s);

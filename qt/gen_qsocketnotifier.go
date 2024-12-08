@@ -43,48 +43,40 @@ func (this *QSocketNotifier) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSocketNotifier constructs the type using only CGO pointers.
-func newQSocketNotifier(h *C.QSocketNotifier, h_QObject *C.QObject) *QSocketNotifier {
+func newQSocketNotifier(h *C.QSocketNotifier) *QSocketNotifier {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QSocketNotifier_virtbase(h, &outptr_QObject)
+
 	return &QSocketNotifier{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQSocketNotifier constructs the type using only unsafe pointers.
-func UnsafeNewQSocketNotifier(h unsafe.Pointer, h_QObject unsafe.Pointer) *QSocketNotifier {
-	if h == nil {
-		return nil
-	}
-
-	return &QSocketNotifier{h: (*C.QSocketNotifier)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQSocketNotifier(h unsafe.Pointer) *QSocketNotifier {
+	return newQSocketNotifier((*C.QSocketNotifier)(h))
 }
 
 // NewQSocketNotifier constructs a new QSocketNotifier object.
 func NewQSocketNotifier(socket uintptr, param2 QSocketNotifier__Type) *QSocketNotifier {
-	var outptr_QSocketNotifier *C.QSocketNotifier = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSocketNotifier_new((C.intptr_t)(socket), (C.int)(param2), &outptr_QSocketNotifier, &outptr_QObject)
-	ret := newQSocketNotifier(outptr_QSocketNotifier, outptr_QObject)
+	ret := newQSocketNotifier(C.QSocketNotifier_new((C.intptr_t)(socket), (C.int)(param2)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSocketNotifier2 constructs a new QSocketNotifier object.
 func NewQSocketNotifier2(socket uintptr, param2 QSocketNotifier__Type, parent *QObject) *QSocketNotifier {
-	var outptr_QSocketNotifier *C.QSocketNotifier = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSocketNotifier_new2((C.intptr_t)(socket), (C.int)(param2), parent.cPointer(), &outptr_QSocketNotifier, &outptr_QObject)
-	ret := newQSocketNotifier(outptr_QSocketNotifier, outptr_QObject)
+	ret := newQSocketNotifier(C.QSocketNotifier_new2((C.intptr_t)(socket), (C.int)(param2), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QSocketNotifier) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSocketNotifier_MetaObject(this.h)))
+	return newQMetaObject(C.QSocketNotifier_MetaObject(this.h))
 }
 
 func (this *QSocketNotifier) Metacast(param1 string) unsafe.Pointer {
@@ -177,6 +169,9 @@ func (this *QSocketNotifier) callVirtualBase_Event(param1 *QEvent) bool {
 
 }
 func (this *QSocketNotifier) OnEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSocketNotifier_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -188,7 +183,7 @@ func miqt_exec_callback_QSocketNotifier_Event(self *C.QSocketNotifier, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	virtualReturn := gofunc((&QSocketNotifier{h: self}).callVirtualBase_Event, slotval1)
 
@@ -202,6 +197,9 @@ func (this *QSocketNotifier) callVirtualBase_EventFilter(watched *QObject, event
 
 }
 func (this *QSocketNotifier) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSocketNotifier_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -213,8 +211,9 @@ func miqt_exec_callback_QSocketNotifier_EventFilter(self *C.QSocketNotifier, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QSocketNotifier{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -228,6 +227,9 @@ func (this *QSocketNotifier) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QSocketNotifier) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSocketNotifier_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -239,7 +241,7 @@ func miqt_exec_callback_QSocketNotifier_TimerEvent(self *C.QSocketNotifier, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QSocketNotifier{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -251,6 +253,9 @@ func (this *QSocketNotifier) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QSocketNotifier) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSocketNotifier_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -262,7 +267,7 @@ func miqt_exec_callback_QSocketNotifier_ChildEvent(self *C.QSocketNotifier, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QSocketNotifier{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -274,6 +279,9 @@ func (this *QSocketNotifier) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QSocketNotifier) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSocketNotifier_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -285,7 +293,7 @@ func miqt_exec_callback_QSocketNotifier_CustomEvent(self *C.QSocketNotifier, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QSocketNotifier{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -297,6 +305,9 @@ func (this *QSocketNotifier) callVirtualBase_ConnectNotify(signal *QMetaMethod) 
 
 }
 func (this *QSocketNotifier) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSocketNotifier_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -308,7 +319,7 @@ func miqt_exec_callback_QSocketNotifier_ConnectNotify(self *C.QSocketNotifier, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QSocketNotifier{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -320,6 +331,9 @@ func (this *QSocketNotifier) callVirtualBase_DisconnectNotify(signal *QMetaMetho
 
 }
 func (this *QSocketNotifier) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSocketNotifier_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -331,7 +345,7 @@ func miqt_exec_callback_QSocketNotifier_DisconnectNotify(self *C.QSocketNotifier
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QSocketNotifier{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
@@ -375,34 +389,27 @@ func newQSocketDescriptor(h *C.QSocketDescriptor) *QSocketDescriptor {
 	if h == nil {
 		return nil
 	}
+
 	return &QSocketDescriptor{h: h}
 }
 
 // UnsafeNewQSocketDescriptor constructs the type using only unsafe pointers.
 func UnsafeNewQSocketDescriptor(h unsafe.Pointer) *QSocketDescriptor {
-	if h == nil {
-		return nil
-	}
-
-	return &QSocketDescriptor{h: (*C.QSocketDescriptor)(h)}
+	return newQSocketDescriptor((*C.QSocketDescriptor)(h))
 }
 
 // NewQSocketDescriptor constructs a new QSocketDescriptor object.
 func NewQSocketDescriptor() *QSocketDescriptor {
-	var outptr_QSocketDescriptor *C.QSocketDescriptor = nil
 
-	C.QSocketDescriptor_new(&outptr_QSocketDescriptor)
-	ret := newQSocketDescriptor(outptr_QSocketDescriptor)
+	ret := newQSocketDescriptor(C.QSocketDescriptor_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSocketDescriptor2 constructs a new QSocketDescriptor object.
 func NewQSocketDescriptor2(param1 *QSocketDescriptor) *QSocketDescriptor {
-	var outptr_QSocketDescriptor *C.QSocketDescriptor = nil
 
-	C.QSocketDescriptor_new2(param1.cPointer(), &outptr_QSocketDescriptor)
-	ret := newQSocketDescriptor(outptr_QSocketDescriptor)
+	ret := newQSocketDescriptor(C.QSocketDescriptor_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -413,10 +420,8 @@ func NewQSocketDescriptor3(descriptor int) *QSocketDescriptor {
 	if runtime.GOOS != "linux" {
 		panic("Unsupported OS")
 	}
-	var outptr_QSocketDescriptor *C.QSocketDescriptor = nil
 
-	C.QSocketDescriptor_new3((C.int)(descriptor), &outptr_QSocketDescriptor)
-	ret := newQSocketDescriptor(outptr_QSocketDescriptor)
+	ret := newQSocketDescriptor(C.QSocketDescriptor_new3((C.int)(descriptor)))
 	ret.isSubclass = true
 	return ret
 }

@@ -37,16 +37,13 @@ func newQStringDataPtr(h *C.QStringDataPtr) *QStringDataPtr {
 	if h == nil {
 		return nil
 	}
+
 	return &QStringDataPtr{h: h}
 }
 
 // UnsafeNewQStringDataPtr constructs the type using only unsafe pointers.
 func UnsafeNewQStringDataPtr(h unsafe.Pointer) *QStringDataPtr {
-	if h == nil {
-		return nil
-	}
-
-	return &QStringDataPtr{h: (*C.QStringDataPtr)(h)}
+	return newQStringDataPtr((*C.QStringDataPtr)(h))
 }
 
 // Delete this object from C++ memory.

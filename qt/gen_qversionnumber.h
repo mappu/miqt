@@ -20,11 +20,11 @@ class QVersionNumber;
 typedef struct QVersionNumber QVersionNumber;
 #endif
 
-void QVersionNumber_new(QVersionNumber** outptr_QVersionNumber);
-void QVersionNumber_new2(struct miqt_array /* of int */  seg, QVersionNumber** outptr_QVersionNumber);
-void QVersionNumber_new3(int maj, QVersionNumber** outptr_QVersionNumber);
-void QVersionNumber_new4(int maj, int min, QVersionNumber** outptr_QVersionNumber);
-void QVersionNumber_new5(int maj, int min, int mic, QVersionNumber** outptr_QVersionNumber);
+QVersionNumber* QVersionNumber_new();
+QVersionNumber* QVersionNumber_new2(struct miqt_array /* of int */  seg);
+QVersionNumber* QVersionNumber_new3(int maj);
+QVersionNumber* QVersionNumber_new4(int maj, int min);
+QVersionNumber* QVersionNumber_new5(int maj, int min, int mic);
 bool QVersionNumber_IsNull(const QVersionNumber* self);
 bool QVersionNumber_IsNormalized(const QVersionNumber* self);
 int QVersionNumber_MajorVersion(const QVersionNumber* self);

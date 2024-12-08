@@ -36,8 +36,9 @@ typedef struct QStackedWidget QStackedWidget;
 typedef struct QWidget QWidget;
 #endif
 
-void QStackedWidget_new(QWidget* parent, QStackedWidget** outptr_QStackedWidget, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QStackedWidget_new2(QStackedWidget** outptr_QStackedWidget, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QStackedWidget* QStackedWidget_new(QWidget* parent);
+QStackedWidget* QStackedWidget_new2();
+void QStackedWidget_virtbase(QStackedWidget* src, QFrame** outptr_QFrame);
 QMetaObject* QStackedWidget_MetaObject(const QStackedWidget* self);
 void* QStackedWidget_Metacast(QStackedWidget* self, const char* param1);
 struct miqt_string QStackedWidget_Tr(const char* s);

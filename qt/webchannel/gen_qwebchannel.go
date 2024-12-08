@@ -36,42 +36,34 @@ func (this *QWebChannel) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebChannel constructs the type using only CGO pointers.
-func newQWebChannel(h *C.QWebChannel, h_QObject *C.QObject) *QWebChannel {
+func newQWebChannel(h *C.QWebChannel) *QWebChannel {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebChannel_virtbase(h, &outptr_QObject)
+
 	return &QWebChannel{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebChannel constructs the type using only unsafe pointers.
-func UnsafeNewQWebChannel(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebChannel {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebChannel{h: (*C.QWebChannel)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebChannel(h unsafe.Pointer) *QWebChannel {
+	return newQWebChannel((*C.QWebChannel)(h))
 }
 
 // NewQWebChannel constructs a new QWebChannel object.
 func NewQWebChannel() *QWebChannel {
-	var outptr_QWebChannel *C.QWebChannel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebChannel_new(&outptr_QWebChannel, &outptr_QObject)
-	ret := newQWebChannel(outptr_QWebChannel, outptr_QObject)
+	ret := newQWebChannel(C.QWebChannel_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebChannel2 constructs a new QWebChannel object.
 func NewQWebChannel2(parent *qt.QObject) *QWebChannel {
-	var outptr_QWebChannel *C.QWebChannel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebChannel_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QWebChannel, &outptr_QObject)
-	ret := newQWebChannel(outptr_QWebChannel, outptr_QObject)
+	ret := newQWebChannel(C.QWebChannel_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -138,6 +130,7 @@ func (this *QWebChannel) RegisteredObjects() map[string]*qt.QObject {
 		C.free(unsafe.Pointer(_hashkey_ms.data))
 		_entry_Key := _hashkey_ret
 		_entry_Value := qt.UnsafeNewQObject(unsafe.Pointer(_Values[i]))
+
 		_ret[_entry_Key] = _entry_Value
 	}
 	return _ret
@@ -241,6 +234,9 @@ func (this *QWebChannel) callVirtualBase_Event(event *qt.QEvent) bool {
 
 }
 func (this *QWebChannel) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebChannel_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -266,6 +262,9 @@ func (this *QWebChannel) callVirtualBase_EventFilter(watched *qt.QObject, event 
 
 }
 func (this *QWebChannel) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebChannel_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -278,6 +277,7 @@ func miqt_exec_callback_QWebChannel_EventFilter(self *C.QWebChannel, cb C.intptr
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QWebChannel{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
@@ -292,6 +292,9 @@ func (this *QWebChannel) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
 }
 func (this *QWebChannel) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebChannel_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -303,7 +306,7 @@ func miqt_exec_callback_QWebChannel_TimerEvent(self *C.QWebChannel, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebChannel{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -315,6 +318,9 @@ func (this *QWebChannel) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
 }
 func (this *QWebChannel) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebChannel_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -326,7 +332,7 @@ func miqt_exec_callback_QWebChannel_ChildEvent(self *C.QWebChannel, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebChannel{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -338,6 +344,9 @@ func (this *QWebChannel) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
 }
 func (this *QWebChannel) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebChannel_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -361,6 +370,9 @@ func (this *QWebChannel) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
 }
 func (this *QWebChannel) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebChannel_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -384,6 +396,9 @@ func (this *QWebChannel) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod
 
 }
 func (this *QWebChannel) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebChannel_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

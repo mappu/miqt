@@ -9,14 +9,12 @@
 #include "gen_qaudiodevice.h"
 #include "_cgo_export.h"
 
-void QAudioDevice_new(QAudioDevice** outptr_QAudioDevice) {
-	QAudioDevice* ret = new QAudioDevice();
-	*outptr_QAudioDevice = ret;
+QAudioDevice* QAudioDevice_new() {
+	return new QAudioDevice();
 }
 
-void QAudioDevice_new2(QAudioDevice* other, QAudioDevice** outptr_QAudioDevice) {
-	QAudioDevice* ret = new QAudioDevice(*other);
-	*outptr_QAudioDevice = ret;
+QAudioDevice* QAudioDevice_new2(QAudioDevice* other) {
+	return new QAudioDevice(*other);
 }
 
 void QAudioDevice_Swap(QAudioDevice* self, QAudioDevice* other) {

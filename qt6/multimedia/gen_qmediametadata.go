@@ -71,41 +71,33 @@ func newQMediaMetaData(h *C.QMediaMetaData) *QMediaMetaData {
 	if h == nil {
 		return nil
 	}
+
 	return &QMediaMetaData{h: h}
 }
 
 // UnsafeNewQMediaMetaData constructs the type using only unsafe pointers.
 func UnsafeNewQMediaMetaData(h unsafe.Pointer) *QMediaMetaData {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaMetaData{h: (*C.QMediaMetaData)(h)}
+	return newQMediaMetaData((*C.QMediaMetaData)(h))
 }
 
 // NewQMediaMetaData constructs a new QMediaMetaData object.
 func NewQMediaMetaData(param1 *QMediaMetaData) *QMediaMetaData {
-	var outptr_QMediaMetaData *C.QMediaMetaData = nil
 
-	C.QMediaMetaData_new(param1.cPointer(), &outptr_QMediaMetaData)
-	ret := newQMediaMetaData(outptr_QMediaMetaData)
+	ret := newQMediaMetaData(C.QMediaMetaData_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaMetaData2 constructs a new QMediaMetaData object.
 func NewQMediaMetaData2() *QMediaMetaData {
-	var outptr_QMediaMetaData *C.QMediaMetaData = nil
 
-	C.QMediaMetaData_new2(&outptr_QMediaMetaData)
-	ret := newQMediaMetaData(outptr_QMediaMetaData)
+	ret := newQMediaMetaData(C.QMediaMetaData_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QMediaMetaData) Value(k QMediaMetaData__Key) *qt6.QVariant {
-	_ret := C.QMediaMetaData_Value(this.h, (C.int)(k))
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QMediaMetaData_Value(this.h, (C.int)(k))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

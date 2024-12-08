@@ -108,44 +108,35 @@ func newQMediaFormat(h *C.QMediaFormat) *QMediaFormat {
 	if h == nil {
 		return nil
 	}
+
 	return &QMediaFormat{h: h}
 }
 
 // UnsafeNewQMediaFormat constructs the type using only unsafe pointers.
 func UnsafeNewQMediaFormat(h unsafe.Pointer) *QMediaFormat {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaFormat{h: (*C.QMediaFormat)(h)}
+	return newQMediaFormat((*C.QMediaFormat)(h))
 }
 
 // NewQMediaFormat constructs a new QMediaFormat object.
 func NewQMediaFormat() *QMediaFormat {
-	var outptr_QMediaFormat *C.QMediaFormat = nil
 
-	C.QMediaFormat_new(&outptr_QMediaFormat)
-	ret := newQMediaFormat(outptr_QMediaFormat)
+	ret := newQMediaFormat(C.QMediaFormat_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaFormat2 constructs a new QMediaFormat object.
 func NewQMediaFormat2(other *QMediaFormat) *QMediaFormat {
-	var outptr_QMediaFormat *C.QMediaFormat = nil
 
-	C.QMediaFormat_new2(other.cPointer(), &outptr_QMediaFormat)
-	ret := newQMediaFormat(outptr_QMediaFormat)
+	ret := newQMediaFormat(C.QMediaFormat_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaFormat3 constructs a new QMediaFormat object.
 func NewQMediaFormat3(format QMediaFormat__FileFormat) *QMediaFormat {
-	var outptr_QMediaFormat *C.QMediaFormat = nil
 
-	C.QMediaFormat_new3((C.int)(format), &outptr_QMediaFormat)
-	ret := newQMediaFormat(outptr_QMediaFormat)
+	ret := newQMediaFormat(C.QMediaFormat_new3((C.int)(format)))
 	ret.isSubclass = true
 	return ret
 }
@@ -187,8 +178,7 @@ func (this *QMediaFormat) IsSupported(mode QMediaFormat__ConversionMode) bool {
 }
 
 func (this *QMediaFormat) MimeType() *qt6.QMimeType {
-	_ret := C.QMediaFormat_MimeType(this.h)
-	_goptr := qt6.UnsafeNewQMimeType(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQMimeType(unsafe.Pointer(C.QMediaFormat_MimeType(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

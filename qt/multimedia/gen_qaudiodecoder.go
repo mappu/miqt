@@ -53,44 +53,34 @@ func (this *QAudioDecoder) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAudioDecoder constructs the type using only CGO pointers.
-func newQAudioDecoder(h *C.QAudioDecoder, h_QMediaObject *C.QMediaObject, h_QObject *C.QObject) *QAudioDecoder {
+func newQAudioDecoder(h *C.QAudioDecoder) *QAudioDecoder {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaObject *C.QMediaObject = nil
+	C.QAudioDecoder_virtbase(h, &outptr_QMediaObject)
+
 	return &QAudioDecoder{h: h,
-		QMediaObject: newQMediaObject(h_QMediaObject, h_QObject)}
+		QMediaObject: newQMediaObject(outptr_QMediaObject)}
 }
 
 // UnsafeNewQAudioDecoder constructs the type using only unsafe pointers.
-func UnsafeNewQAudioDecoder(h unsafe.Pointer, h_QMediaObject unsafe.Pointer, h_QObject unsafe.Pointer) *QAudioDecoder {
-	if h == nil {
-		return nil
-	}
-
-	return &QAudioDecoder{h: (*C.QAudioDecoder)(h),
-		QMediaObject: UnsafeNewQMediaObject(h_QMediaObject, h_QObject)}
+func UnsafeNewQAudioDecoder(h unsafe.Pointer) *QAudioDecoder {
+	return newQAudioDecoder((*C.QAudioDecoder)(h))
 }
 
 // NewQAudioDecoder constructs a new QAudioDecoder object.
 func NewQAudioDecoder() *QAudioDecoder {
-	var outptr_QAudioDecoder *C.QAudioDecoder = nil
-	var outptr_QMediaObject *C.QMediaObject = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAudioDecoder_new(&outptr_QAudioDecoder, &outptr_QMediaObject, &outptr_QObject)
-	ret := newQAudioDecoder(outptr_QAudioDecoder, outptr_QMediaObject, outptr_QObject)
+	ret := newQAudioDecoder(C.QAudioDecoder_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAudioDecoder2 constructs a new QAudioDecoder object.
 func NewQAudioDecoder2(parent *qt.QObject) *QAudioDecoder {
-	var outptr_QAudioDecoder *C.QAudioDecoder = nil
-	var outptr_QMediaObject *C.QMediaObject = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAudioDecoder_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QAudioDecoder, &outptr_QMediaObject, &outptr_QObject)
-	ret := newQAudioDecoder(outptr_QAudioDecoder, outptr_QMediaObject, outptr_QObject)
+	ret := newQAudioDecoder(C.QAudioDecoder_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -151,7 +141,7 @@ func (this *QAudioDecoder) SetSourceFilename(fileName string) {
 }
 
 func (this *QAudioDecoder) SourceDevice() *qt.QIODevice {
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAudioDecoder_SourceDevice(this.h)), nil)
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAudioDecoder_SourceDevice(this.h)))
 }
 
 func (this *QAudioDecoder) SetSourceDevice(device *qt.QIODevice) {
@@ -159,8 +149,7 @@ func (this *QAudioDecoder) SetSourceDevice(device *qt.QIODevice) {
 }
 
 func (this *QAudioDecoder) AudioFormat() *QAudioFormat {
-	_ret := C.QAudioDecoder_AudioFormat(this.h)
-	_goptr := newQAudioFormat(_ret)
+	_goptr := newQAudioFormat(C.QAudioDecoder_AudioFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -181,8 +170,7 @@ func (this *QAudioDecoder) ErrorString() string {
 }
 
 func (this *QAudioDecoder) Read() *QAudioBuffer {
-	_ret := C.QAudioDecoder_Read(this.h)
-	_goptr := newQAudioBuffer(_ret)
+	_goptr := newQAudioBuffer(C.QAudioDecoder_Read(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -296,7 +284,7 @@ func miqt_exec_callback_QAudioDecoder_FormatChanged(cb C.intptr_t, format *C.QAu
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAudioFormat(unsafe.Pointer(format))
+	slotval1 := newQAudioFormat(format)
 
 	gofunc(slotval1)
 }
@@ -454,6 +442,9 @@ func (this *QAudioDecoder) callVirtualBase_Bind(param1 *qt.QObject) bool {
 
 }
 func (this *QAudioDecoder) OnBind(slot func(super func(param1 *qt.QObject) bool, param1 *qt.QObject) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAudioDecoder_override_virtual_Bind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -479,6 +470,9 @@ func (this *QAudioDecoder) callVirtualBase_Unbind(param1 *qt.QObject) {
 
 }
 func (this *QAudioDecoder) OnUnbind(slot func(super func(param1 *qt.QObject), param1 *qt.QObject)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAudioDecoder_override_virtual_Unbind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -502,6 +496,9 @@ func (this *QAudioDecoder) callVirtualBase_IsAvailable() bool {
 
 }
 func (this *QAudioDecoder) OnIsAvailable(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAudioDecoder_override_virtual_IsAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -524,6 +521,9 @@ func (this *QAudioDecoder) callVirtualBase_Availability() QMultimedia__Availabil
 
 }
 func (this *QAudioDecoder) OnAvailability(slot func(super func() QMultimedia__AvailabilityStatus) QMultimedia__AvailabilityStatus) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAudioDecoder_override_virtual_Availability(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -542,9 +542,13 @@ func miqt_exec_callback_QAudioDecoder_Availability(self *C.QAudioDecoder, cb C.i
 
 func (this *QAudioDecoder) callVirtualBase_Service() *QMediaService {
 
-	return UnsafeNewQMediaService(unsafe.Pointer(C.QAudioDecoder_virtualbase_Service(unsafe.Pointer(this.h))), nil)
+	return newQMediaService(C.QAudioDecoder_virtualbase_Service(unsafe.Pointer(this.h)))
+
 }
 func (this *QAudioDecoder) OnService(slot func(super func() *QMediaService) *QMediaService) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAudioDecoder_override_virtual_Service(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

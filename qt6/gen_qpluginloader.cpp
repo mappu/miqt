@@ -198,30 +198,26 @@ public:
 
 };
 
-void QPluginLoader_new(QPluginLoader** outptr_QPluginLoader, QObject** outptr_QObject) {
-	MiqtVirtualQPluginLoader* ret = new MiqtVirtualQPluginLoader();
-	*outptr_QPluginLoader = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QPluginLoader* QPluginLoader_new() {
+	return new MiqtVirtualQPluginLoader();
 }
 
-void QPluginLoader_new2(struct miqt_string fileName, QPluginLoader** outptr_QPluginLoader, QObject** outptr_QObject) {
+QPluginLoader* QPluginLoader_new2(struct miqt_string fileName) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	MiqtVirtualQPluginLoader* ret = new MiqtVirtualQPluginLoader(fileName_QString);
-	*outptr_QPluginLoader = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQPluginLoader(fileName_QString);
 }
 
-void QPluginLoader_new3(QObject* parent, QPluginLoader** outptr_QPluginLoader, QObject** outptr_QObject) {
-	MiqtVirtualQPluginLoader* ret = new MiqtVirtualQPluginLoader(parent);
-	*outptr_QPluginLoader = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QPluginLoader* QPluginLoader_new3(QObject* parent) {
+	return new MiqtVirtualQPluginLoader(parent);
 }
 
-void QPluginLoader_new4(struct miqt_string fileName, QObject* parent, QPluginLoader** outptr_QPluginLoader, QObject** outptr_QObject) {
+QPluginLoader* QPluginLoader_new4(struct miqt_string fileName, QObject* parent) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	MiqtVirtualQPluginLoader* ret = new MiqtVirtualQPluginLoader(fileName_QString, parent);
-	*outptr_QPluginLoader = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQPluginLoader(fileName_QString, parent);
+}
+
+void QPluginLoader_virtbase(QPluginLoader* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QPluginLoader_MetaObject(const QPluginLoader* self) {

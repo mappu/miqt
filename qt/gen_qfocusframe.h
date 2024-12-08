@@ -76,8 +76,9 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QFocusFrame_new(QWidget* parent, QFocusFrame** outptr_QFocusFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QFocusFrame_new2(QFocusFrame** outptr_QFocusFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QFocusFrame* QFocusFrame_new(QWidget* parent);
+QFocusFrame* QFocusFrame_new2();
+void QFocusFrame_virtbase(QFocusFrame* src, QWidget** outptr_QWidget);
 QMetaObject* QFocusFrame_MetaObject(const QFocusFrame* self);
 void* QFocusFrame_Metacast(QFocusFrame* self, const char* param1);
 struct miqt_string QFocusFrame_Tr(const char* s);

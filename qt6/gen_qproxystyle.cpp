@@ -704,29 +704,21 @@ public:
 
 };
 
-void QProxyStyle_new(QProxyStyle** outptr_QProxyStyle, QCommonStyle** outptr_QCommonStyle, QStyle** outptr_QStyle, QObject** outptr_QObject) {
-	MiqtVirtualQProxyStyle* ret = new MiqtVirtualQProxyStyle();
-	*outptr_QProxyStyle = ret;
-	*outptr_QCommonStyle = static_cast<QCommonStyle*>(ret);
-	*outptr_QStyle = static_cast<QStyle*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QProxyStyle* QProxyStyle_new() {
+	return new MiqtVirtualQProxyStyle();
 }
 
-void QProxyStyle_new2(struct miqt_string key, QProxyStyle** outptr_QProxyStyle, QCommonStyle** outptr_QCommonStyle, QStyle** outptr_QStyle, QObject** outptr_QObject) {
+QProxyStyle* QProxyStyle_new2(struct miqt_string key) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
-	MiqtVirtualQProxyStyle* ret = new MiqtVirtualQProxyStyle(key_QString);
-	*outptr_QProxyStyle = ret;
-	*outptr_QCommonStyle = static_cast<QCommonStyle*>(ret);
-	*outptr_QStyle = static_cast<QStyle*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQProxyStyle(key_QString);
 }
 
-void QProxyStyle_new3(QStyle* style, QProxyStyle** outptr_QProxyStyle, QCommonStyle** outptr_QCommonStyle, QStyle** outptr_QStyle, QObject** outptr_QObject) {
-	MiqtVirtualQProxyStyle* ret = new MiqtVirtualQProxyStyle(style);
-	*outptr_QProxyStyle = ret;
-	*outptr_QCommonStyle = static_cast<QCommonStyle*>(ret);
-	*outptr_QStyle = static_cast<QStyle*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QProxyStyle* QProxyStyle_new3(QStyle* style) {
+	return new MiqtVirtualQProxyStyle(style);
+}
+
+void QProxyStyle_virtbase(QProxyStyle* src, QCommonStyle** outptr_QCommonStyle) {
+	*outptr_QCommonStyle = static_cast<QCommonStyle*>(src);
 }
 
 QMetaObject* QProxyStyle_MetaObject(const QProxyStyle* self) {

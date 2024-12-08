@@ -20,11 +20,11 @@ class QScriptProgram;
 typedef struct QScriptProgram QScriptProgram;
 #endif
 
-void QScriptProgram_new(QScriptProgram** outptr_QScriptProgram);
-void QScriptProgram_new2(struct miqt_string sourceCode, QScriptProgram** outptr_QScriptProgram);
-void QScriptProgram_new3(QScriptProgram* other, QScriptProgram** outptr_QScriptProgram);
-void QScriptProgram_new4(struct miqt_string sourceCode, struct miqt_string fileName, QScriptProgram** outptr_QScriptProgram);
-void QScriptProgram_new5(struct miqt_string sourceCode, struct miqt_string fileName, int firstLineNumber, QScriptProgram** outptr_QScriptProgram);
+QScriptProgram* QScriptProgram_new();
+QScriptProgram* QScriptProgram_new2(struct miqt_string sourceCode);
+QScriptProgram* QScriptProgram_new3(QScriptProgram* other);
+QScriptProgram* QScriptProgram_new4(struct miqt_string sourceCode, struct miqt_string fileName);
+QScriptProgram* QScriptProgram_new5(struct miqt_string sourceCode, struct miqt_string fileName, int firstLineNumber);
 void QScriptProgram_OperatorAssign(QScriptProgram* self, QScriptProgram* other);
 bool QScriptProgram_IsNull(const QScriptProgram* self);
 struct miqt_string QScriptProgram_SourceCode(const QScriptProgram* self);

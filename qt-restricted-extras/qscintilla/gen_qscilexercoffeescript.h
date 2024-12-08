@@ -34,8 +34,9 @@ typedef struct QsciLexerCoffeeScript QsciLexerCoffeeScript;
 typedef struct QsciScintilla QsciScintilla;
 #endif
 
-void QsciLexerCoffeeScript_new(QsciLexerCoffeeScript** outptr_QsciLexerCoffeeScript, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerCoffeeScript_new2(QObject* parent, QsciLexerCoffeeScript** outptr_QsciLexerCoffeeScript, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerCoffeeScript* QsciLexerCoffeeScript_new();
+QsciLexerCoffeeScript* QsciLexerCoffeeScript_new2(QObject* parent);
+void QsciLexerCoffeeScript_virtbase(QsciLexerCoffeeScript* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerCoffeeScript_MetaObject(const QsciLexerCoffeeScript* self);
 void* QsciLexerCoffeeScript_Metacast(QsciLexerCoffeeScript* self, const char* param1);
 struct miqt_string QsciLexerCoffeeScript_Tr(const char* s);

@@ -7,36 +7,30 @@
 #include "gen_qstringmatcher.h"
 #include "_cgo_export.h"
 
-void QStringMatcher_new(QStringMatcher** outptr_QStringMatcher) {
-	QStringMatcher* ret = new QStringMatcher();
-	*outptr_QStringMatcher = ret;
+QStringMatcher* QStringMatcher_new() {
+	return new QStringMatcher();
 }
 
-void QStringMatcher_new2(struct miqt_string pattern, QStringMatcher** outptr_QStringMatcher) {
+QStringMatcher* QStringMatcher_new2(struct miqt_string pattern) {
 	QString pattern_QString = QString::fromUtf8(pattern.data, pattern.len);
-	QStringMatcher* ret = new QStringMatcher(pattern_QString);
-	*outptr_QStringMatcher = ret;
+	return new QStringMatcher(pattern_QString);
 }
 
-void QStringMatcher_new3(QChar* uc, ptrdiff_t lenVal, QStringMatcher** outptr_QStringMatcher) {
-	QStringMatcher* ret = new QStringMatcher(uc, (qsizetype)(lenVal));
-	*outptr_QStringMatcher = ret;
+QStringMatcher* QStringMatcher_new3(QChar* uc, ptrdiff_t lenVal) {
+	return new QStringMatcher(uc, (qsizetype)(lenVal));
 }
 
-void QStringMatcher_new4(QStringMatcher* other, QStringMatcher** outptr_QStringMatcher) {
-	QStringMatcher* ret = new QStringMatcher(*other);
-	*outptr_QStringMatcher = ret;
+QStringMatcher* QStringMatcher_new4(QStringMatcher* other) {
+	return new QStringMatcher(*other);
 }
 
-void QStringMatcher_new5(struct miqt_string pattern, int cs, QStringMatcher** outptr_QStringMatcher) {
+QStringMatcher* QStringMatcher_new5(struct miqt_string pattern, int cs) {
 	QString pattern_QString = QString::fromUtf8(pattern.data, pattern.len);
-	QStringMatcher* ret = new QStringMatcher(pattern_QString, static_cast<Qt::CaseSensitivity>(cs));
-	*outptr_QStringMatcher = ret;
+	return new QStringMatcher(pattern_QString, static_cast<Qt::CaseSensitivity>(cs));
 }
 
-void QStringMatcher_new6(QChar* uc, ptrdiff_t lenVal, int cs, QStringMatcher** outptr_QStringMatcher) {
-	QStringMatcher* ret = new QStringMatcher(uc, (qsizetype)(lenVal), static_cast<Qt::CaseSensitivity>(cs));
-	*outptr_QStringMatcher = ret;
+QStringMatcher* QStringMatcher_new6(QChar* uc, ptrdiff_t lenVal, int cs) {
+	return new QStringMatcher(uc, (qsizetype)(lenVal), static_cast<Qt::CaseSensitivity>(cs));
 }
 
 void QStringMatcher_OperatorAssign(QStringMatcher* self, QStringMatcher* other) {

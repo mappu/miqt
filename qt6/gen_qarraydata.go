@@ -67,16 +67,13 @@ func newQArrayData(h *C.QArrayData) *QArrayData {
 	if h == nil {
 		return nil
 	}
+
 	return &QArrayData{h: h}
 }
 
 // UnsafeNewQArrayData constructs the type using only unsafe pointers.
 func UnsafeNewQArrayData(h unsafe.Pointer) *QArrayData {
-	if h == nil {
-		return nil
-	}
-
-	return &QArrayData{h: (*C.QArrayData)(h)}
+	return newQArrayData((*C.QArrayData)(h))
 }
 
 func (this *QArrayData) AllocatedCapacity() int64 {
@@ -114,7 +111,8 @@ func QArrayData_ReallocateUnaligned(data *QArrayData, dataPointer unsafe.Pointer
 	var _mm C.struct_miqt_map = C.QArrayData_ReallocateUnaligned(data.cPointer(), dataPointer, (C.ptrdiff_t)(objectSize), (C.ptrdiff_t)(newCapacity), (C.int)(option))
 	_First_CArray := (*[0xffff]*C.QArrayData)(unsafe.Pointer(_mm.keys))
 	_Second_CArray := (*[0xffff]unsafe.Pointer)(unsafe.Pointer(_mm.values))
-	_entry_First := UnsafeNewQArrayData(unsafe.Pointer(_First_CArray[0]))
+	_entry_First := newQArrayData(_First_CArray[0])
+
 	_entry_Second := (unsafe.Pointer)(_Second_CArray[0])
 
 	return struct {

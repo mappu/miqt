@@ -40,8 +40,9 @@ typedef struct QSurface QSurface;
 typedef struct QWindow QWindow;
 #endif
 
-void QRasterWindow_new(QRasterWindow** outptr_QRasterWindow, QPaintDeviceWindow** outptr_QPaintDeviceWindow, QWindow** outptr_QWindow, QObject** outptr_QObject, QSurface** outptr_QSurface, QPaintDevice** outptr_QPaintDevice);
-void QRasterWindow_new2(QWindow* parent, QRasterWindow** outptr_QRasterWindow, QPaintDeviceWindow** outptr_QPaintDeviceWindow, QWindow** outptr_QWindow, QObject** outptr_QObject, QSurface** outptr_QSurface, QPaintDevice** outptr_QPaintDevice);
+QRasterWindow* QRasterWindow_new();
+QRasterWindow* QRasterWindow_new2(QWindow* parent);
+void QRasterWindow_virtbase(QRasterWindow* src, QPaintDeviceWindow** outptr_QPaintDeviceWindow);
 QMetaObject* QRasterWindow_MetaObject(const QRasterWindow* self);
 void* QRasterWindow_Metacast(QRasterWindow* self, const char* param1);
 struct miqt_string QRasterWindow_Tr(const char* s);

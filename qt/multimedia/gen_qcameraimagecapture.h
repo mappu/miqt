@@ -46,8 +46,9 @@ typedef struct QVariant QVariant;
 typedef struct QVideoFrame QVideoFrame;
 #endif
 
-void QCameraImageCapture_new(QMediaObject* mediaObject, QCameraImageCapture** outptr_QCameraImageCapture, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface);
-void QCameraImageCapture_new2(QMediaObject* mediaObject, QObject* parent, QCameraImageCapture** outptr_QCameraImageCapture, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface);
+QCameraImageCapture* QCameraImageCapture_new(QMediaObject* mediaObject);
+QCameraImageCapture* QCameraImageCapture_new2(QMediaObject* mediaObject, QObject* parent);
+void QCameraImageCapture_virtbase(QCameraImageCapture* src, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface);
 QMetaObject* QCameraImageCapture_MetaObject(const QCameraImageCapture* self);
 void* QCameraImageCapture_Metacast(QCameraImageCapture* self, const char* param1);
 struct miqt_string QCameraImageCapture_Tr(const char* s);

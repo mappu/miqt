@@ -37,16 +37,13 @@ func newQWhatsThis(h *C.QWhatsThis) *QWhatsThis {
 	if h == nil {
 		return nil
 	}
+
 	return &QWhatsThis{h: h}
 }
 
 // UnsafeNewQWhatsThis constructs the type using only unsafe pointers.
 func UnsafeNewQWhatsThis(h unsafe.Pointer) *QWhatsThis {
-	if h == nil {
-		return nil
-	}
-
-	return &QWhatsThis{h: (*C.QWhatsThis)(h)}
+	return newQWhatsThis((*C.QWhatsThis)(h))
 }
 
 func QWhatsThis_EnterWhatsThisMode() {
@@ -74,7 +71,7 @@ func QWhatsThis_HideText() {
 }
 
 func QWhatsThis_CreateAction() *QAction {
-	return UnsafeNewQAction(unsafe.Pointer(C.QWhatsThis_CreateAction()), nil)
+	return newQAction(C.QWhatsThis_CreateAction())
 }
 
 func QWhatsThis_ShowText3(pos *QPoint, text string, w *QWidget) {
@@ -86,7 +83,7 @@ func QWhatsThis_ShowText3(pos *QPoint, text string, w *QWidget) {
 }
 
 func QWhatsThis_CreateAction1(parent *QObject) *QAction {
-	return UnsafeNewQAction(unsafe.Pointer(C.QWhatsThis_CreateAction1(parent.cPointer())), nil)
+	return newQAction(C.QWhatsThis_CreateAction1(parent.cPointer()))
 }
 
 // Delete this object from C++ memory.

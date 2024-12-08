@@ -20,8 +20,8 @@ class QAudioFormat;
 typedef struct QAudioFormat QAudioFormat;
 #endif
 
-void QAudioFormat_new(QAudioFormat** outptr_QAudioFormat);
-void QAudioFormat_new2(QAudioFormat* other, QAudioFormat** outptr_QAudioFormat);
+QAudioFormat* QAudioFormat_new();
+QAudioFormat* QAudioFormat_new2(QAudioFormat* other);
 void QAudioFormat_OperatorAssign(QAudioFormat* self, QAudioFormat* other);
 bool QAudioFormat_OperatorEqual(const QAudioFormat* self, QAudioFormat* other);
 bool QAudioFormat_OperatorNotEqual(const QAudioFormat* self, QAudioFormat* other);

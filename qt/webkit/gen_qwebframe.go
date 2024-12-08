@@ -58,34 +58,27 @@ func newQWebHitTestResult(h *C.QWebHitTestResult) *QWebHitTestResult {
 	if h == nil {
 		return nil
 	}
+
 	return &QWebHitTestResult{h: h}
 }
 
 // UnsafeNewQWebHitTestResult constructs the type using only unsafe pointers.
 func UnsafeNewQWebHitTestResult(h unsafe.Pointer) *QWebHitTestResult {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebHitTestResult{h: (*C.QWebHitTestResult)(h)}
+	return newQWebHitTestResult((*C.QWebHitTestResult)(h))
 }
 
 // NewQWebHitTestResult constructs a new QWebHitTestResult object.
 func NewQWebHitTestResult() *QWebHitTestResult {
-	var outptr_QWebHitTestResult *C.QWebHitTestResult = nil
 
-	C.QWebHitTestResult_new(&outptr_QWebHitTestResult)
-	ret := newQWebHitTestResult(outptr_QWebHitTestResult)
+	ret := newQWebHitTestResult(C.QWebHitTestResult_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebHitTestResult2 constructs a new QWebHitTestResult object.
 func NewQWebHitTestResult2(other *QWebHitTestResult) *QWebHitTestResult {
-	var outptr_QWebHitTestResult *C.QWebHitTestResult = nil
 
-	C.QWebHitTestResult_new2(other.cPointer(), &outptr_QWebHitTestResult)
-	ret := newQWebHitTestResult(outptr_QWebHitTestResult)
+	ret := newQWebHitTestResult(C.QWebHitTestResult_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -99,22 +92,19 @@ func (this *QWebHitTestResult) IsNull() bool {
 }
 
 func (this *QWebHitTestResult) Pos() *qt.QPoint {
-	_ret := C.QWebHitTestResult_Pos(this.h)
-	_goptr := qt.UnsafeNewQPoint(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQPoint(unsafe.Pointer(C.QWebHitTestResult_Pos(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHitTestResult) BoundingRect() *qt.QRect {
-	_ret := C.QWebHitTestResult_BoundingRect(this.h)
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QWebHitTestResult_BoundingRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHitTestResult) EnclosingBlockElement() *QWebElement {
-	_ret := C.QWebHitTestResult_EnclosingBlockElement(this.h)
-	_goptr := newQWebElement(_ret)
+	_goptr := newQWebElement(C.QWebHitTestResult_EnclosingBlockElement(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -134,15 +124,13 @@ func (this *QWebHitTestResult) LinkText() string {
 }
 
 func (this *QWebHitTestResult) LinkUrl() *qt.QUrl {
-	_ret := C.QWebHitTestResult_LinkUrl(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebHitTestResult_LinkUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHitTestResult) LinkTitle() *qt.QUrl {
-	_ret := C.QWebHitTestResult_LinkTitle(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebHitTestResult_LinkTitle(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -155,12 +143,11 @@ func (this *QWebHitTestResult) LinkTitleString() string {
 }
 
 func (this *QWebHitTestResult) LinkTargetFrame() *QWebFrame {
-	return UnsafeNewQWebFrame(unsafe.Pointer(C.QWebHitTestResult_LinkTargetFrame(this.h)), nil)
+	return newQWebFrame(C.QWebHitTestResult_LinkTargetFrame(this.h))
 }
 
 func (this *QWebHitTestResult) LinkElement() *QWebElement {
-	_ret := C.QWebHitTestResult_LinkElement(this.h)
-	_goptr := newQWebElement(_ret)
+	_goptr := newQWebElement(C.QWebHitTestResult_LinkElement(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -173,22 +160,19 @@ func (this *QWebHitTestResult) AlternateText() string {
 }
 
 func (this *QWebHitTestResult) ImageUrl() *qt.QUrl {
-	_ret := C.QWebHitTestResult_ImageUrl(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebHitTestResult_ImageUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHitTestResult) Pixmap() *qt.QPixmap {
-	_ret := C.QWebHitTestResult_Pixmap(this.h)
-	_goptr := qt.UnsafeNewQPixmap(unsafe.Pointer(_ret), nil)
+	_goptr := qt.UnsafeNewQPixmap(unsafe.Pointer(C.QWebHitTestResult_Pixmap(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHitTestResult) MediaUrl() *qt.QUrl {
-	_ret := C.QWebHitTestResult_MediaUrl(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebHitTestResult_MediaUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -202,14 +186,13 @@ func (this *QWebHitTestResult) IsContentSelected() bool {
 }
 
 func (this *QWebHitTestResult) Element() *QWebElement {
-	_ret := C.QWebHitTestResult_Element(this.h)
-	_goptr := newQWebElement(_ret)
+	_goptr := newQWebElement(C.QWebHitTestResult_Element(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHitTestResult) Frame() *QWebFrame {
-	return UnsafeNewQWebFrame(unsafe.Pointer(C.QWebHitTestResult_Frame(this.h)), nil)
+	return newQWebFrame(C.QWebHitTestResult_Frame(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -247,22 +230,20 @@ func (this *QWebFrame) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebFrame constructs the type using only CGO pointers.
-func newQWebFrame(h *C.QWebFrame, h_QObject *C.QObject) *QWebFrame {
+func newQWebFrame(h *C.QWebFrame) *QWebFrame {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebFrame_virtbase(h, &outptr_QObject)
+
 	return &QWebFrame{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebFrame constructs the type using only unsafe pointers.
-func UnsafeNewQWebFrame(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebFrame {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebFrame{h: (*C.QWebFrame)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebFrame(h unsafe.Pointer) *QWebFrame {
+	return newQWebFrame((*C.QWebFrame)(h))
 }
 
 func (this *QWebFrame) MetaObject() *qt.QMetaObject {
@@ -294,7 +275,7 @@ func QWebFrame_TrUtf8(s string) string {
 }
 
 func (this *QWebFrame) Page() *QWebPage {
-	return UnsafeNewQWebPage(unsafe.Pointer(C.QWebFrame_Page(this.h)), nil)
+	return newQWebPage(C.QWebFrame_Page(this.h))
 }
 
 func (this *QWebFrame) Load(url *qt.QUrl) {
@@ -354,29 +335,25 @@ func (this *QWebFrame) SetUrl(url *qt.QUrl) {
 }
 
 func (this *QWebFrame) Url() *qt.QUrl {
-	_ret := C.QWebFrame_Url(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebFrame_Url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebFrame) RequestedUrl() *qt.QUrl {
-	_ret := C.QWebFrame_RequestedUrl(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebFrame_RequestedUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebFrame) BaseUrl() *qt.QUrl {
-	_ret := C.QWebFrame_BaseUrl(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebFrame_BaseUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebFrame) Icon() *qt.QIcon {
-	_ret := C.QWebFrame_Icon(this.h)
-	_goptr := qt.UnsafeNewQIcon(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQIcon(unsafe.Pointer(C.QWebFrame_Icon(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -389,7 +366,7 @@ func (this *QWebFrame) FrameName() string {
 }
 
 func (this *QWebFrame) ParentFrame() *QWebFrame {
-	return UnsafeNewQWebFrame(unsafe.Pointer(C.QWebFrame_ParentFrame(this.h)), nil)
+	return newQWebFrame(C.QWebFrame_ParentFrame(this.h))
 }
 
 func (this *QWebFrame) ChildFrames() []*QWebFrame {
@@ -397,7 +374,7 @@ func (this *QWebFrame) ChildFrames() []*QWebFrame {
 	_ret := make([]*QWebFrame, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWebFrame)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQWebFrame(unsafe.Pointer(_outCast[i]), nil)
+		_ret[i] = newQWebFrame(_outCast[i])
 	}
 	return _ret
 }
@@ -427,8 +404,7 @@ func (this *QWebFrame) ScrollBarMaximum(orientation qt.Orientation) int {
 }
 
 func (this *QWebFrame) ScrollBarGeometry(orientation qt.Orientation) *qt.QRect {
-	_ret := C.QWebFrame_ScrollBarGeometry(this.h, (C.int)(orientation))
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QWebFrame_ScrollBarGeometry(this.h, (C.int)(orientation))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -438,8 +414,7 @@ func (this *QWebFrame) Scroll(param1 int, param2 int) {
 }
 
 func (this *QWebFrame) ScrollPosition() *qt.QPoint {
-	_ret := C.QWebFrame_ScrollPosition(this.h)
-	_goptr := qt.UnsafeNewQPoint(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQPoint(unsafe.Pointer(C.QWebFrame_ScrollPosition(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -489,36 +464,31 @@ func (this *QWebFrame) SetFocus() {
 }
 
 func (this *QWebFrame) Pos() *qt.QPoint {
-	_ret := C.QWebFrame_Pos(this.h)
-	_goptr := qt.UnsafeNewQPoint(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQPoint(unsafe.Pointer(C.QWebFrame_Pos(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebFrame) Geometry() *qt.QRect {
-	_ret := C.QWebFrame_Geometry(this.h)
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QWebFrame_Geometry(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebFrame) ContentsSize() *qt.QSize {
-	_ret := C.QWebFrame_ContentsSize(this.h)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebFrame_ContentsSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebFrame) DocumentElement() *QWebElement {
-	_ret := C.QWebFrame_DocumentElement(this.h)
-	_goptr := newQWebElement(_ret)
+	_goptr := newQWebElement(C.QWebFrame_DocumentElement(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebFrame) OwnerElement() *QWebElement {
-	_ret := C.QWebFrame_OwnerElement(this.h)
-	_goptr := newQWebElement(_ret)
+	_goptr := newQWebElement(C.QWebFrame_OwnerElement(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -528,8 +498,7 @@ func (this *QWebFrame) FindAllElements(selectorQuery string) *QWebElementCollect
 	selectorQuery_ms.data = C.CString(selectorQuery)
 	selectorQuery_ms.len = C.size_t(len(selectorQuery))
 	defer C.free(unsafe.Pointer(selectorQuery_ms.data))
-	_ret := C.QWebFrame_FindAllElements(this.h, selectorQuery_ms)
-	_goptr := newQWebElementCollection(_ret)
+	_goptr := newQWebElementCollection(C.QWebFrame_FindAllElements(this.h, selectorQuery_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -539,15 +508,13 @@ func (this *QWebFrame) FindFirstElement(selectorQuery string) *QWebElement {
 	selectorQuery_ms.data = C.CString(selectorQuery)
 	selectorQuery_ms.len = C.size_t(len(selectorQuery))
 	defer C.free(unsafe.Pointer(selectorQuery_ms.data))
-	_ret := C.QWebFrame_FindFirstElement(this.h, selectorQuery_ms)
-	_goptr := newQWebElement(_ret)
+	_goptr := newQWebElement(C.QWebFrame_FindFirstElement(this.h, selectorQuery_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebFrame) HitTestContent(pos *qt.QPoint) *QWebHitTestResult {
-	_ret := C.QWebFrame_HitTestContent(this.h, (*C.QPoint)(pos.UnsafePointer()))
-	_goptr := newQWebHitTestResult(_ret)
+	_goptr := newQWebHitTestResult(C.QWebFrame_HitTestContent(this.h, (*C.QPoint)(pos.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -557,8 +524,7 @@ func (this *QWebFrame) Event(param1 *qt.QEvent) bool {
 }
 
 func (this *QWebFrame) SecurityOrigin() *QWebSecurityOrigin {
-	_ret := C.QWebFrame_SecurityOrigin(this.h)
-	_goptr := newQWebSecurityOrigin(_ret)
+	_goptr := newQWebSecurityOrigin(C.QWebFrame_SecurityOrigin(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -568,8 +534,7 @@ func (this *QWebFrame) EvaluateJavaScript(scriptSource string) *qt.QVariant {
 	scriptSource_ms.data = C.CString(scriptSource)
 	scriptSource_ms.len = C.size_t(len(scriptSource))
 	defer C.free(unsafe.Pointer(scriptSource_ms.data))
-	_ret := C.QWebFrame_EvaluateJavaScript(this.h, scriptSource_ms)
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QWebFrame_EvaluateJavaScript(this.h, scriptSource_ms)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

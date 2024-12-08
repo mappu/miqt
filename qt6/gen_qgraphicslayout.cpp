@@ -233,16 +233,16 @@ public:
 
 };
 
-void QGraphicsLayout_new(QGraphicsLayout** outptr_QGraphicsLayout, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
-	MiqtVirtualQGraphicsLayout* ret = new MiqtVirtualQGraphicsLayout();
-	*outptr_QGraphicsLayout = ret;
-	*outptr_QGraphicsLayoutItem = static_cast<QGraphicsLayoutItem*>(ret);
+QGraphicsLayout* QGraphicsLayout_new() {
+	return new MiqtVirtualQGraphicsLayout();
 }
 
-void QGraphicsLayout_new2(QGraphicsLayoutItem* parent, QGraphicsLayout** outptr_QGraphicsLayout, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
-	MiqtVirtualQGraphicsLayout* ret = new MiqtVirtualQGraphicsLayout(parent);
-	*outptr_QGraphicsLayout = ret;
-	*outptr_QGraphicsLayoutItem = static_cast<QGraphicsLayoutItem*>(ret);
+QGraphicsLayout* QGraphicsLayout_new2(QGraphicsLayoutItem* parent) {
+	return new MiqtVirtualQGraphicsLayout(parent);
+}
+
+void QGraphicsLayout_virtbase(QGraphicsLayout* src, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
+	*outptr_QGraphicsLayoutItem = static_cast<QGraphicsLayoutItem*>(src);
 }
 
 void QGraphicsLayout_SetContentsMargins(QGraphicsLayout* self, double left, double top, double right, double bottom) {

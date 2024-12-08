@@ -82,15 +82,16 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QSplashScreen_new(QWidget* parent, QSplashScreen** outptr_QSplashScreen, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QSplashScreen_new2(QSplashScreen** outptr_QSplashScreen, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QSplashScreen_new3(QScreen* screen, QSplashScreen** outptr_QSplashScreen, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QSplashScreen_new4(QPixmap* pixmap, QSplashScreen** outptr_QSplashScreen, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QSplashScreen_new5(QPixmap* pixmap, int f, QSplashScreen** outptr_QSplashScreen, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QSplashScreen_new6(QScreen* screen, QPixmap* pixmap, QSplashScreen** outptr_QSplashScreen, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QSplashScreen_new7(QScreen* screen, QPixmap* pixmap, int f, QSplashScreen** outptr_QSplashScreen, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QSplashScreen_new8(QWidget* parent, QPixmap* pixmap, QSplashScreen** outptr_QSplashScreen, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QSplashScreen_new9(QWidget* parent, QPixmap* pixmap, int f, QSplashScreen** outptr_QSplashScreen, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QSplashScreen* QSplashScreen_new(QWidget* parent);
+QSplashScreen* QSplashScreen_new2();
+QSplashScreen* QSplashScreen_new3(QScreen* screen);
+QSplashScreen* QSplashScreen_new4(QPixmap* pixmap);
+QSplashScreen* QSplashScreen_new5(QPixmap* pixmap, int f);
+QSplashScreen* QSplashScreen_new6(QScreen* screen, QPixmap* pixmap);
+QSplashScreen* QSplashScreen_new7(QScreen* screen, QPixmap* pixmap, int f);
+QSplashScreen* QSplashScreen_new8(QWidget* parent, QPixmap* pixmap);
+QSplashScreen* QSplashScreen_new9(QWidget* parent, QPixmap* pixmap, int f);
+void QSplashScreen_virtbase(QSplashScreen* src, QWidget** outptr_QWidget);
 QMetaObject* QSplashScreen_MetaObject(const QSplashScreen* self);
 void* QSplashScreen_Metacast(QSplashScreen* self, const char* param1);
 struct miqt_string QSplashScreen_Tr(const char* s);

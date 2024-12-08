@@ -42,10 +42,11 @@ typedef struct QSvgRenderer QSvgRenderer;
 typedef struct QWidget QWidget;
 #endif
 
-void QGraphicsSvgItem_new(QGraphicsSvgItem** outptr_QGraphicsSvgItem, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem);
-void QGraphicsSvgItem_new2(struct miqt_string fileName, QGraphicsSvgItem** outptr_QGraphicsSvgItem, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem);
-void QGraphicsSvgItem_new3(QGraphicsItem* parentItem, QGraphicsSvgItem** outptr_QGraphicsSvgItem, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem);
-void QGraphicsSvgItem_new4(struct miqt_string fileName, QGraphicsItem* parentItem, QGraphicsSvgItem** outptr_QGraphicsSvgItem, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem);
+QGraphicsSvgItem* QGraphicsSvgItem_new();
+QGraphicsSvgItem* QGraphicsSvgItem_new2(struct miqt_string fileName);
+QGraphicsSvgItem* QGraphicsSvgItem_new3(QGraphicsItem* parentItem);
+QGraphicsSvgItem* QGraphicsSvgItem_new4(struct miqt_string fileName, QGraphicsItem* parentItem);
+void QGraphicsSvgItem_virtbase(QGraphicsSvgItem* src, QGraphicsObject** outptr_QGraphicsObject);
 QMetaObject* QGraphicsSvgItem_MetaObject(const QGraphicsSvgItem* self);
 void* QGraphicsSvgItem_Metacast(QGraphicsSvgItem* self, const char* param1);
 struct miqt_string QGraphicsSvgItem_Tr(const char* s);

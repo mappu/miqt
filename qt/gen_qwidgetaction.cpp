@@ -114,11 +114,12 @@ public:
 
 };
 
-void QWidgetAction_new(QObject* parent, QWidgetAction** outptr_QWidgetAction, QAction** outptr_QAction, QObject** outptr_QObject) {
-	MiqtVirtualQWidgetAction* ret = new MiqtVirtualQWidgetAction(parent);
-	*outptr_QWidgetAction = ret;
-	*outptr_QAction = static_cast<QAction*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QWidgetAction* QWidgetAction_new(QObject* parent) {
+	return new MiqtVirtualQWidgetAction(parent);
+}
+
+void QWidgetAction_virtbase(QWidgetAction* src, QAction** outptr_QAction) {
+	*outptr_QAction = static_cast<QAction*>(src);
 }
 
 QMetaObject* QWidgetAction_MetaObject(const QWidgetAction* self) {

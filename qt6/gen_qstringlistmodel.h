@@ -34,10 +34,11 @@ typedef struct QStringListModel QStringListModel;
 typedef struct QVariant QVariant;
 #endif
 
-void QStringListModel_new(QStringListModel** outptr_QStringListModel, QAbstractListModel** outptr_QAbstractListModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject);
-void QStringListModel_new2(struct miqt_array /* of struct miqt_string */  strings, QStringListModel** outptr_QStringListModel, QAbstractListModel** outptr_QAbstractListModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject);
-void QStringListModel_new3(QObject* parent, QStringListModel** outptr_QStringListModel, QAbstractListModel** outptr_QAbstractListModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject);
-void QStringListModel_new4(struct miqt_array /* of struct miqt_string */  strings, QObject* parent, QStringListModel** outptr_QStringListModel, QAbstractListModel** outptr_QAbstractListModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject);
+QStringListModel* QStringListModel_new();
+QStringListModel* QStringListModel_new2(struct miqt_array /* of struct miqt_string */  strings);
+QStringListModel* QStringListModel_new3(QObject* parent);
+QStringListModel* QStringListModel_new4(struct miqt_array /* of struct miqt_string */  strings, QObject* parent);
+void QStringListModel_virtbase(QStringListModel* src, QAbstractListModel** outptr_QAbstractListModel);
 QMetaObject* QStringListModel_MetaObject(const QStringListModel* self);
 void* QStringListModel_Metacast(QStringListModel* self, const char* param1);
 struct miqt_string QStringListModel_Tr(const char* s);

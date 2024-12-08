@@ -34,8 +34,9 @@ typedef struct QWebChannel QWebChannel;
 typedef struct QWebChannelAbstractTransport QWebChannelAbstractTransport;
 #endif
 
-void QWebChannel_new(QWebChannel** outptr_QWebChannel, QObject** outptr_QObject);
-void QWebChannel_new2(QObject* parent, QWebChannel** outptr_QWebChannel, QObject** outptr_QObject);
+QWebChannel* QWebChannel_new();
+QWebChannel* QWebChannel_new2(QObject* parent);
+void QWebChannel_virtbase(QWebChannel* src, QObject** outptr_QObject);
 QMetaObject* QWebChannel_MetaObject(const QWebChannel* self);
 void* QWebChannel_Metacast(QWebChannel* self, const char* param1);
 struct miqt_string QWebChannel_Tr(const char* s);

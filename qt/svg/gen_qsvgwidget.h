@@ -78,10 +78,11 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QSvgWidget_new(QWidget* parent, QSvgWidget** outptr_QSvgWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QSvgWidget_new2(QSvgWidget** outptr_QSvgWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QSvgWidget_new3(struct miqt_string file, QSvgWidget** outptr_QSvgWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QSvgWidget_new4(struct miqt_string file, QWidget* parent, QSvgWidget** outptr_QSvgWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QSvgWidget* QSvgWidget_new(QWidget* parent);
+QSvgWidget* QSvgWidget_new2();
+QSvgWidget* QSvgWidget_new3(struct miqt_string file);
+QSvgWidget* QSvgWidget_new4(struct miqt_string file, QWidget* parent);
+void QSvgWidget_virtbase(QSvgWidget* src, QWidget** outptr_QWidget);
 QMetaObject* QSvgWidget_MetaObject(const QSvgWidget* self);
 void* QSvgWidget_Metacast(QSvgWidget* self, const char* param1);
 struct miqt_string QSvgWidget_Tr(const char* s);

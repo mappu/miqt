@@ -5,9 +5,8 @@
 #include "gen_qcborstreamwriter.h"
 #include "_cgo_export.h"
 
-void QCborStreamWriter_new(QIODevice* device, QCborStreamWriter** outptr_QCborStreamWriter) {
-	QCborStreamWriter* ret = new QCborStreamWriter(device);
-	*outptr_QCborStreamWriter = ret;
+QCborStreamWriter* QCborStreamWriter_new(QIODevice* device) {
+	return new QCborStreamWriter(device);
 }
 
 void QCborStreamWriter_SetDevice(QCborStreamWriter* self, QIODevice* device) {

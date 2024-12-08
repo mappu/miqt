@@ -40,7 +40,8 @@ typedef struct QUrl QUrl;
 typedef struct QVector3D QVector3D;
 #endif
 
-void QSpatialSound_new(QAudioEngine* engine, QSpatialSound** outptr_QSpatialSound, QObject** outptr_QObject);
+QSpatialSound* QSpatialSound_new(QAudioEngine* engine);
+void QSpatialSound_virtbase(QSpatialSound* src, QObject** outptr_QObject);
 QMetaObject* QSpatialSound_MetaObject(const QSpatialSound* self);
 void* QSpatialSound_Metacast(QSpatialSound* self, const char* param1);
 struct miqt_string QSpatialSound_Tr(const char* s);

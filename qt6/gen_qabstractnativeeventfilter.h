@@ -20,7 +20,7 @@ class QAbstractNativeEventFilter;
 typedef struct QAbstractNativeEventFilter QAbstractNativeEventFilter;
 #endif
 
-void QAbstractNativeEventFilter_new(QAbstractNativeEventFilter** outptr_QAbstractNativeEventFilter);
+QAbstractNativeEventFilter* QAbstractNativeEventFilter_new();
 bool QAbstractNativeEventFilter_NativeEventFilter(QAbstractNativeEventFilter* self, struct miqt_string eventType, void* message, intptr_t* result);
 void QAbstractNativeEventFilter_override_virtual_NativeEventFilter(void* self, intptr_t slot);
 bool QAbstractNativeEventFilter_virtualbase_NativeEventFilter(void* self, struct miqt_string eventType, void* message, intptr_t* result);

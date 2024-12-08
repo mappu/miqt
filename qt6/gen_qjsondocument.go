@@ -64,16 +64,13 @@ func newQJsonParseError(h *C.QJsonParseError) *QJsonParseError {
 	if h == nil {
 		return nil
 	}
+
 	return &QJsonParseError{h: h}
 }
 
 // UnsafeNewQJsonParseError constructs the type using only unsafe pointers.
 func UnsafeNewQJsonParseError(h unsafe.Pointer) *QJsonParseError {
-	if h == nil {
-		return nil
-	}
-
-	return &QJsonParseError{h: (*C.QJsonParseError)(h)}
+	return newQJsonParseError((*C.QJsonParseError)(h))
 }
 
 func (this *QJsonParseError) ErrorString() string {
@@ -121,54 +118,43 @@ func newQJsonDocument(h *C.QJsonDocument) *QJsonDocument {
 	if h == nil {
 		return nil
 	}
+
 	return &QJsonDocument{h: h}
 }
 
 // UnsafeNewQJsonDocument constructs the type using only unsafe pointers.
 func UnsafeNewQJsonDocument(h unsafe.Pointer) *QJsonDocument {
-	if h == nil {
-		return nil
-	}
-
-	return &QJsonDocument{h: (*C.QJsonDocument)(h)}
+	return newQJsonDocument((*C.QJsonDocument)(h))
 }
 
 // NewQJsonDocument constructs a new QJsonDocument object.
 func NewQJsonDocument() *QJsonDocument {
-	var outptr_QJsonDocument *C.QJsonDocument = nil
 
-	C.QJsonDocument_new(&outptr_QJsonDocument)
-	ret := newQJsonDocument(outptr_QJsonDocument)
+	ret := newQJsonDocument(C.QJsonDocument_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQJsonDocument2 constructs a new QJsonDocument object.
 func NewQJsonDocument2(object *QJsonObject) *QJsonDocument {
-	var outptr_QJsonDocument *C.QJsonDocument = nil
 
-	C.QJsonDocument_new2(object.cPointer(), &outptr_QJsonDocument)
-	ret := newQJsonDocument(outptr_QJsonDocument)
+	ret := newQJsonDocument(C.QJsonDocument_new2(object.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQJsonDocument3 constructs a new QJsonDocument object.
 func NewQJsonDocument3(array *QJsonArray) *QJsonDocument {
-	var outptr_QJsonDocument *C.QJsonDocument = nil
 
-	C.QJsonDocument_new3(array.cPointer(), &outptr_QJsonDocument)
-	ret := newQJsonDocument(outptr_QJsonDocument)
+	ret := newQJsonDocument(C.QJsonDocument_new3(array.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQJsonDocument4 constructs a new QJsonDocument object.
 func NewQJsonDocument4(other *QJsonDocument) *QJsonDocument {
-	var outptr_QJsonDocument *C.QJsonDocument = nil
 
-	C.QJsonDocument_new4(other.cPointer(), &outptr_QJsonDocument)
-	ret := newQJsonDocument(outptr_QJsonDocument)
+	ret := newQJsonDocument(C.QJsonDocument_new4(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -182,15 +168,13 @@ func (this *QJsonDocument) Swap(other *QJsonDocument) {
 }
 
 func QJsonDocument_FromVariant(variant *QVariant) *QJsonDocument {
-	_ret := C.QJsonDocument_FromVariant(variant.cPointer())
-	_goptr := newQJsonDocument(_ret)
+	_goptr := newQJsonDocument(C.QJsonDocument_FromVariant(variant.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonDocument) ToVariant() *QVariant {
-	_ret := C.QJsonDocument_ToVariant(this.h)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QJsonDocument_ToVariant(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -199,8 +183,7 @@ func QJsonDocument_FromJson(json []byte) *QJsonDocument {
 	json_alias := C.struct_miqt_string{}
 	json_alias.data = (*C.char)(unsafe.Pointer(&json[0]))
 	json_alias.len = C.size_t(len(json))
-	_ret := C.QJsonDocument_FromJson(json_alias)
-	_goptr := newQJsonDocument(_ret)
+	_goptr := newQJsonDocument(C.QJsonDocument_FromJson(json_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -225,15 +208,13 @@ func (this *QJsonDocument) IsObject() bool {
 }
 
 func (this *QJsonDocument) Object() *QJsonObject {
-	_ret := C.QJsonDocument_Object(this.h)
-	_goptr := newQJsonObject(_ret)
+	_goptr := newQJsonObject(C.QJsonDocument_Object(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonDocument) Array() *QJsonArray {
-	_ret := C.QJsonDocument_Array(this.h)
-	_goptr := newQJsonArray(_ret)
+	_goptr := newQJsonArray(C.QJsonDocument_Array(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -251,15 +232,13 @@ func (this *QJsonDocument) OperatorSubscript(key string) *QJsonValue {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	_ret := C.QJsonDocument_OperatorSubscript(this.h, key_ms)
-	_goptr := newQJsonValue(_ret)
+	_goptr := newQJsonValue(C.QJsonDocument_OperatorSubscript(this.h, key_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonDocument) OperatorSubscriptWithQsizetype(i int64) *QJsonValue {
-	_ret := C.QJsonDocument_OperatorSubscriptWithQsizetype(this.h, (C.ptrdiff_t)(i))
-	_goptr := newQJsonValue(_ret)
+	_goptr := newQJsonValue(C.QJsonDocument_OperatorSubscriptWithQsizetype(this.h, (C.ptrdiff_t)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -280,8 +259,7 @@ func QJsonDocument_FromJson2(json []byte, error *QJsonParseError) *QJsonDocument
 	json_alias := C.struct_miqt_string{}
 	json_alias.data = (*C.char)(unsafe.Pointer(&json[0]))
 	json_alias.len = C.size_t(len(json))
-	_ret := C.QJsonDocument_FromJson2(json_alias, error.cPointer())
-	_goptr := newQJsonDocument(_ret)
+	_goptr := newQJsonDocument(C.QJsonDocument_FromJson2(json_alias, error.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

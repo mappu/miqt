@@ -11,28 +11,24 @@
 #include "gen_qtextdocumentwriter.h"
 #include "_cgo_export.h"
 
-void QTextDocumentWriter_new(QTextDocumentWriter** outptr_QTextDocumentWriter) {
-	QTextDocumentWriter* ret = new QTextDocumentWriter();
-	*outptr_QTextDocumentWriter = ret;
+QTextDocumentWriter* QTextDocumentWriter_new() {
+	return new QTextDocumentWriter();
 }
 
-void QTextDocumentWriter_new2(QIODevice* device, struct miqt_string format, QTextDocumentWriter** outptr_QTextDocumentWriter) {
+QTextDocumentWriter* QTextDocumentWriter_new2(QIODevice* device, struct miqt_string format) {
 	QByteArray format_QByteArray(format.data, format.len);
-	QTextDocumentWriter* ret = new QTextDocumentWriter(device, format_QByteArray);
-	*outptr_QTextDocumentWriter = ret;
+	return new QTextDocumentWriter(device, format_QByteArray);
 }
 
-void QTextDocumentWriter_new3(struct miqt_string fileName, QTextDocumentWriter** outptr_QTextDocumentWriter) {
+QTextDocumentWriter* QTextDocumentWriter_new3(struct miqt_string fileName) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	QTextDocumentWriter* ret = new QTextDocumentWriter(fileName_QString);
-	*outptr_QTextDocumentWriter = ret;
+	return new QTextDocumentWriter(fileName_QString);
 }
 
-void QTextDocumentWriter_new4(struct miqt_string fileName, struct miqt_string format, QTextDocumentWriter** outptr_QTextDocumentWriter) {
+QTextDocumentWriter* QTextDocumentWriter_new4(struct miqt_string fileName, struct miqt_string format) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QByteArray format_QByteArray(format.data, format.len);
-	QTextDocumentWriter* ret = new QTextDocumentWriter(fileName_QString, format_QByteArray);
-	*outptr_QTextDocumentWriter = ret;
+	return new QTextDocumentWriter(fileName_QString, format_QByteArray);
 }
 
 void QTextDocumentWriter_SetFormat(QTextDocumentWriter* self, struct miqt_string format) {

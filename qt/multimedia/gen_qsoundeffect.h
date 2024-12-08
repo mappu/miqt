@@ -36,10 +36,11 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QUrl QUrl;
 #endif
 
-void QSoundEffect_new(QSoundEffect** outptr_QSoundEffect, QObject** outptr_QObject);
-void QSoundEffect_new2(QAudioDeviceInfo* audioDevice, QSoundEffect** outptr_QSoundEffect, QObject** outptr_QObject);
-void QSoundEffect_new3(QObject* parent, QSoundEffect** outptr_QSoundEffect, QObject** outptr_QObject);
-void QSoundEffect_new4(QAudioDeviceInfo* audioDevice, QObject* parent, QSoundEffect** outptr_QSoundEffect, QObject** outptr_QObject);
+QSoundEffect* QSoundEffect_new();
+QSoundEffect* QSoundEffect_new2(QAudioDeviceInfo* audioDevice);
+QSoundEffect* QSoundEffect_new3(QObject* parent);
+QSoundEffect* QSoundEffect_new4(QAudioDeviceInfo* audioDevice, QObject* parent);
+void QSoundEffect_virtbase(QSoundEffect* src, QObject** outptr_QObject);
 QMetaObject* QSoundEffect_MetaObject(const QSoundEffect* self);
 void* QSoundEffect_Metacast(QSoundEffect* self, const char* param1);
 struct miqt_string QSoundEffect_Tr(const char* s);

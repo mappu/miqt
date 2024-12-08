@@ -35,54 +35,40 @@ func (this *QDial) UnsafePointer() unsafe.Pointer {
 }
 
 // newQDial constructs the type using only CGO pointers.
-func newQDial(h *C.QDial, h_QAbstractSlider *C.QAbstractSlider, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QDial {
+func newQDial(h *C.QDial) *QDial {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractSlider *C.QAbstractSlider = nil
+	C.QDial_virtbase(h, &outptr_QAbstractSlider)
+
 	return &QDial{h: h,
-		QAbstractSlider: newQAbstractSlider(h_QAbstractSlider, h_QWidget, h_QObject, h_QPaintDevice)}
+		QAbstractSlider: newQAbstractSlider(outptr_QAbstractSlider)}
 }
 
 // UnsafeNewQDial constructs the type using only unsafe pointers.
-func UnsafeNewQDial(h unsafe.Pointer, h_QAbstractSlider unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QDial {
-	if h == nil {
-		return nil
-	}
-
-	return &QDial{h: (*C.QDial)(h),
-		QAbstractSlider: UnsafeNewQAbstractSlider(h_QAbstractSlider, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQDial(h unsafe.Pointer) *QDial {
+	return newQDial((*C.QDial)(h))
 }
 
 // NewQDial constructs a new QDial object.
 func NewQDial(parent *QWidget) *QDial {
-	var outptr_QDial *C.QDial = nil
-	var outptr_QAbstractSlider *C.QAbstractSlider = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QDial_new(parent.cPointer(), &outptr_QDial, &outptr_QAbstractSlider, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQDial(outptr_QDial, outptr_QAbstractSlider, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQDial(C.QDial_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDial2 constructs a new QDial object.
 func NewQDial2() *QDial {
-	var outptr_QDial *C.QDial = nil
-	var outptr_QAbstractSlider *C.QAbstractSlider = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QDial_new2(&outptr_QDial, &outptr_QAbstractSlider, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQDial(outptr_QDial, outptr_QAbstractSlider, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQDial(C.QDial_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QDial) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QDial_MetaObject(this.h)))
+	return newQMetaObject(C.QDial_MetaObject(this.h))
 }
 
 func (this *QDial) Metacast(param1 string) unsafe.Pointer {
@@ -121,15 +107,13 @@ func (this *QDial) NotchesVisible() bool {
 }
 
 func (this *QDial) SizeHint() *QSize {
-	_ret := C.QDial_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QDial_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDial) MinimumSizeHint() *QSize {
-	_ret := C.QDial_MinimumSizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QDial_MinimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -166,13 +150,15 @@ func QDial_Tr3(s string, c string, n int) string {
 
 func (this *QDial) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QDial_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QDial_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QDial) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDial_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -191,13 +177,15 @@ func miqt_exec_callback_QDial_SizeHint(self *C.QDial, cb C.intptr_t) *C.QSize {
 
 func (this *QDial) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QDial_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QDial_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QDial) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDial_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -220,6 +208,9 @@ func (this *QDial) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QDial) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDial_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -231,7 +222,7 @@ func miqt_exec_callback_QDial_Event(self *C.QDial, cb C.intptr_t, e *C.QEvent) C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QDial{h: self}).callVirtualBase_Event, slotval1)
 
@@ -245,6 +236,9 @@ func (this *QDial) callVirtualBase_ResizeEvent(re *QResizeEvent) {
 
 }
 func (this *QDial) OnResizeEvent(slot func(super func(re *QResizeEvent), re *QResizeEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDial_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -256,7 +250,7 @@ func miqt_exec_callback_QDial_ResizeEvent(self *C.QDial, cb C.intptr_t, re *C.QR
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(re), nil)
+	slotval1 := newQResizeEvent(re)
 
 	gofunc((&QDial{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -268,6 +262,9 @@ func (this *QDial) callVirtualBase_PaintEvent(pe *QPaintEvent) {
 
 }
 func (this *QDial) OnPaintEvent(slot func(super func(pe *QPaintEvent), pe *QPaintEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDial_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -279,7 +276,7 @@ func miqt_exec_callback_QDial_PaintEvent(self *C.QDial, cb C.intptr_t, pe *C.QPa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(pe), nil)
+	slotval1 := newQPaintEvent(pe)
 
 	gofunc((&QDial{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -291,6 +288,9 @@ func (this *QDial) callVirtualBase_MousePressEvent(me *QMouseEvent) {
 
 }
 func (this *QDial) OnMousePressEvent(slot func(super func(me *QMouseEvent), me *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDial_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -302,7 +302,7 @@ func miqt_exec_callback_QDial_MousePressEvent(self *C.QDial, cb C.intptr_t, me *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(me), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(me)
 
 	gofunc((&QDial{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -314,6 +314,9 @@ func (this *QDial) callVirtualBase_MouseReleaseEvent(me *QMouseEvent) {
 
 }
 func (this *QDial) OnMouseReleaseEvent(slot func(super func(me *QMouseEvent), me *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDial_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -325,7 +328,7 @@ func miqt_exec_callback_QDial_MouseReleaseEvent(self *C.QDial, cb C.intptr_t, me
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(me), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(me)
 
 	gofunc((&QDial{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -337,6 +340,9 @@ func (this *QDial) callVirtualBase_MouseMoveEvent(me *QMouseEvent) {
 
 }
 func (this *QDial) OnMouseMoveEvent(slot func(super func(me *QMouseEvent), me *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDial_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -348,7 +354,7 @@ func miqt_exec_callback_QDial_MouseMoveEvent(self *C.QDial, cb C.intptr_t, me *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(me), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(me)
 
 	gofunc((&QDial{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -360,6 +366,9 @@ func (this *QDial) callVirtualBase_SliderChange(change QAbstractSlider__SliderCh
 
 }
 func (this *QDial) OnSliderChange(slot func(super func(change QAbstractSlider__SliderChange), change QAbstractSlider__SliderChange)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDial_override_virtual_SliderChange(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -383,6 +392,9 @@ func (this *QDial) callVirtualBase_InitStyleOption(option *QStyleOptionSlider) {
 
 }
 func (this *QDial) OnInitStyleOption(slot func(super func(option *QStyleOptionSlider), option *QStyleOptionSlider)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDial_override_virtual_InitStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -394,7 +406,7 @@ func miqt_exec_callback_QDial_InitStyleOption(self *C.QDial, cb C.intptr_t, opti
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStyleOptionSlider(unsafe.Pointer(option), nil, nil)
+	slotval1 := newQStyleOptionSlider(option)
 
 	gofunc((&QDial{h: self}).callVirtualBase_InitStyleOption, slotval1)
 
@@ -406,6 +418,9 @@ func (this *QDial) callVirtualBase_KeyPressEvent(ev *QKeyEvent) {
 
 }
 func (this *QDial) OnKeyPressEvent(slot func(super func(ev *QKeyEvent), ev *QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDial_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -417,7 +432,7 @@ func miqt_exec_callback_QDial_KeyPressEvent(self *C.QDial, cb C.intptr_t, ev *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(ev), nil, nil)
+	slotval1 := newQKeyEvent(ev)
 
 	gofunc((&QDial{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -429,6 +444,9 @@ func (this *QDial) callVirtualBase_TimerEvent(param1 *QTimerEvent) {
 
 }
 func (this *QDial) OnTimerEvent(slot func(super func(param1 *QTimerEvent), param1 *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDial_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -440,7 +458,7 @@ func miqt_exec_callback_QDial_TimerEvent(self *C.QDial, cb C.intptr_t, param1 *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQTimerEvent(param1)
 
 	gofunc((&QDial{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -452,6 +470,9 @@ func (this *QDial) callVirtualBase_WheelEvent(e *QWheelEvent) {
 
 }
 func (this *QDial) OnWheelEvent(slot func(super func(e *QWheelEvent), e *QWheelEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDial_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -463,7 +484,7 @@ func miqt_exec_callback_QDial_WheelEvent(self *C.QDial, cb C.intptr_t, e *C.QWhe
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(e), nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(e)
 
 	gofunc((&QDial{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -475,6 +496,9 @@ func (this *QDial) callVirtualBase_ChangeEvent(e *QEvent) {
 
 }
 func (this *QDial) OnChangeEvent(slot func(super func(e *QEvent), e *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDial_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -486,7 +510,7 @@ func miqt_exec_callback_QDial_ChangeEvent(self *C.QDial, cb C.intptr_t, e *C.QEv
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	gofunc((&QDial{h: self}).callVirtualBase_ChangeEvent, slotval1)
 

@@ -66,6 +66,7 @@ QColor* QWebSelectData_ItemForegroundColor(const QWebSelectData* self, int index
 void QWebSelectData_OperatorAssign(QWebSelectData* self, QWebSelectData* param1);
 void QWebSelectData_Delete(QWebSelectData* self, bool isSubclass);
 
+void QWebSelectMethod_virtbase(QWebSelectMethod* src, QObject** outptr_QObject);
 QMetaObject* QWebSelectMethod_MetaObject(const QWebSelectMethod* self);
 void* QWebSelectMethod_Metacast(QWebSelectMethod* self, const char* param1);
 struct miqt_string QWebSelectMethod_Tr(const char* s);
@@ -91,6 +92,7 @@ QUrl* QWebNotificationData_OpenerPageUrl(const QWebNotificationData* self);
 void QWebNotificationData_OperatorAssign(QWebNotificationData* self, QWebNotificationData* param1);
 void QWebNotificationData_Delete(QWebNotificationData* self, bool isSubclass);
 
+void QWebNotificationPresenter_virtbase(QWebNotificationPresenter* src, QObject** outptr_QObject);
 QMetaObject* QWebNotificationPresenter_MetaObject(const QWebNotificationPresenter* self);
 void* QWebNotificationPresenter_Metacast(QWebNotificationPresenter* self, const char* param1);
 struct miqt_string QWebNotificationPresenter_Tr(const char* s);
@@ -106,6 +108,7 @@ struct miqt_string QWebNotificationPresenter_TrUtf82(const char* s, const char* 
 struct miqt_string QWebNotificationPresenter_TrUtf83(const char* s, const char* c, int n);
 void QWebNotificationPresenter_Delete(QWebNotificationPresenter* self, bool isSubclass);
 
+void QWebHapticFeedbackPlayer_virtbase(QWebHapticFeedbackPlayer* src, QObject** outptr_QObject);
 QMetaObject* QWebHapticFeedbackPlayer_MetaObject(const QWebHapticFeedbackPlayer* self);
 void* QWebHapticFeedbackPlayer_Metacast(QWebHapticFeedbackPlayer* self, const char* param1);
 struct miqt_string QWebHapticFeedbackPlayer_Tr(const char* s);
@@ -117,6 +120,7 @@ struct miqt_string QWebHapticFeedbackPlayer_TrUtf82(const char* s, const char* c
 struct miqt_string QWebHapticFeedbackPlayer_TrUtf83(const char* s, const char* c, int n);
 void QWebHapticFeedbackPlayer_Delete(QWebHapticFeedbackPlayer* self, bool isSubclass);
 
+void QWebTouchModifier_virtbase(QWebTouchModifier* src, QObject** outptr_QObject);
 QMetaObject* QWebTouchModifier_MetaObject(const QWebTouchModifier* self);
 void* QWebTouchModifier_Metacast(QWebTouchModifier* self, const char* param1);
 struct miqt_string QWebTouchModifier_Tr(const char* s);
@@ -128,6 +132,7 @@ struct miqt_string QWebTouchModifier_TrUtf82(const char* s, const char* c);
 struct miqt_string QWebTouchModifier_TrUtf83(const char* s, const char* c, int n);
 void QWebTouchModifier_Delete(QWebTouchModifier* self, bool isSubclass);
 
+void QWebSpellChecker_virtbase(QWebSpellChecker* src, QObject** outptr_QObject);
 QMetaObject* QWebSpellChecker_MetaObject(const QWebSpellChecker* self);
 void* QWebSpellChecker_Metacast(QWebSpellChecker* self, const char* param1);
 struct miqt_string QWebSpellChecker_Tr(const char* s);
@@ -153,7 +158,7 @@ QObject* QWebKitPlatformPlugin_CreateExtension(const QWebKitPlatformPlugin* self
 void QWebKitPlatformPlugin_OperatorAssign(QWebKitPlatformPlugin* self, QWebKitPlatformPlugin* param1);
 void QWebKitPlatformPlugin_Delete(QWebKitPlatformPlugin* self, bool isSubclass);
 
-void QWebSpellChecker__GrammarDetail_new(QWebSpellChecker__GrammarDetail* param1, QWebSpellChecker__GrammarDetail** outptr_QWebSpellChecker__GrammarDetail);
+QWebSpellChecker__GrammarDetail* QWebSpellChecker__GrammarDetail_new(QWebSpellChecker__GrammarDetail* param1);
 void QWebSpellChecker__GrammarDetail_OperatorAssign(QWebSpellChecker__GrammarDetail* self, QWebSpellChecker__GrammarDetail* param1);
 void QWebSpellChecker__GrammarDetail_Delete(QWebSpellChecker__GrammarDetail* self, bool isSubclass);
 

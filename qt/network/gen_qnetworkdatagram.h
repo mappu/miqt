@@ -22,11 +22,11 @@ typedef struct QHostAddress QHostAddress;
 typedef struct QNetworkDatagram QNetworkDatagram;
 #endif
 
-void QNetworkDatagram_new(QNetworkDatagram** outptr_QNetworkDatagram);
-void QNetworkDatagram_new2(struct miqt_string data, QNetworkDatagram** outptr_QNetworkDatagram);
-void QNetworkDatagram_new3(QNetworkDatagram* other, QNetworkDatagram** outptr_QNetworkDatagram);
-void QNetworkDatagram_new4(struct miqt_string data, QHostAddress* destinationAddress, QNetworkDatagram** outptr_QNetworkDatagram);
-void QNetworkDatagram_new5(struct miqt_string data, QHostAddress* destinationAddress, uint16_t port, QNetworkDatagram** outptr_QNetworkDatagram);
+QNetworkDatagram* QNetworkDatagram_new();
+QNetworkDatagram* QNetworkDatagram_new2(struct miqt_string data);
+QNetworkDatagram* QNetworkDatagram_new3(QNetworkDatagram* other);
+QNetworkDatagram* QNetworkDatagram_new4(struct miqt_string data, QHostAddress* destinationAddress);
+QNetworkDatagram* QNetworkDatagram_new5(struct miqt_string data, QHostAddress* destinationAddress, uint16_t port);
 void QNetworkDatagram_OperatorAssign(QNetworkDatagram* self, QNetworkDatagram* other);
 void QNetworkDatagram_Swap(QNetworkDatagram* self, QNetworkDatagram* other);
 void QNetworkDatagram_Clear(QNetworkDatagram* self);

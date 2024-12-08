@@ -38,9 +38,10 @@ typedef struct QStylePainter QStylePainter;
 typedef struct QWidget QWidget;
 #endif
 
-void QStylePainter_new(QWidget* w, QStylePainter** outptr_QStylePainter, QPainter** outptr_QPainter);
-void QStylePainter_new2(QStylePainter** outptr_QStylePainter, QPainter** outptr_QPainter);
-void QStylePainter_new3(QPaintDevice* pd, QWidget* w, QStylePainter** outptr_QStylePainter, QPainter** outptr_QPainter);
+QStylePainter* QStylePainter_new(QWidget* w);
+QStylePainter* QStylePainter_new2();
+QStylePainter* QStylePainter_new3(QPaintDevice* pd, QWidget* w);
+void QStylePainter_virtbase(QStylePainter* src, QPainter** outptr_QPainter);
 bool QStylePainter_Begin(QStylePainter* self, QWidget* w);
 bool QStylePainter_Begin2(QStylePainter* self, QPaintDevice* pd, QWidget* w);
 void QStylePainter_DrawPrimitive(QStylePainter* self, int pe, QStyleOption* opt);

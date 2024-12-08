@@ -12,6 +12,10 @@
 #include "gen_qimageencodercontrol.h"
 #include "_cgo_export.h"
 
+void QImageEncoderControl_virtbase(QImageEncoderControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
+
 QMetaObject* QImageEncoderControl_MetaObject(const QImageEncoderControl* self) {
 	return (QMetaObject*) self->metaObject();
 }

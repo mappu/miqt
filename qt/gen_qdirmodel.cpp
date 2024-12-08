@@ -1039,7 +1039,7 @@ public:
 
 };
 
-void QDirModel_new(struct miqt_array /* of struct miqt_string */  nameFilters, int filters, int sort, QDirModel** outptr_QDirModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
+QDirModel* QDirModel_new(struct miqt_array /* of struct miqt_string */  nameFilters, int filters, int sort) {
 	QStringList nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters.len);
 	struct miqt_string* nameFilters_arr = static_cast<struct miqt_string*>(nameFilters.data);
@@ -1047,20 +1047,14 @@ void QDirModel_new(struct miqt_array /* of struct miqt_string */  nameFilters, i
 		QString nameFilters_arr_i_QString = QString::fromUtf8(nameFilters_arr[i].data, nameFilters_arr[i].len);
 		nameFilters_QList.push_back(nameFilters_arr_i_QString);
 	}
-	MiqtVirtualQDirModel* ret = new MiqtVirtualQDirModel(nameFilters_QList, static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort));
-	*outptr_QDirModel = ret;
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQDirModel(nameFilters_QList, static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort));
 }
 
-void QDirModel_new2(QDirModel** outptr_QDirModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQDirModel* ret = new MiqtVirtualQDirModel();
-	*outptr_QDirModel = ret;
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QDirModel* QDirModel_new2() {
+	return new MiqtVirtualQDirModel();
 }
 
-void QDirModel_new3(struct miqt_array /* of struct miqt_string */  nameFilters, int filters, int sort, QObject* parent, QDirModel** outptr_QDirModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
+QDirModel* QDirModel_new3(struct miqt_array /* of struct miqt_string */  nameFilters, int filters, int sort, QObject* parent) {
 	QStringList nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters.len);
 	struct miqt_string* nameFilters_arr = static_cast<struct miqt_string*>(nameFilters.data);
@@ -1068,17 +1062,15 @@ void QDirModel_new3(struct miqt_array /* of struct miqt_string */  nameFilters, 
 		QString nameFilters_arr_i_QString = QString::fromUtf8(nameFilters_arr[i].data, nameFilters_arr[i].len);
 		nameFilters_QList.push_back(nameFilters_arr_i_QString);
 	}
-	MiqtVirtualQDirModel* ret = new MiqtVirtualQDirModel(nameFilters_QList, static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort), parent);
-	*outptr_QDirModel = ret;
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQDirModel(nameFilters_QList, static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort), parent);
 }
 
-void QDirModel_new4(QObject* parent, QDirModel** outptr_QDirModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQDirModel* ret = new MiqtVirtualQDirModel(parent);
-	*outptr_QDirModel = ret;
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QDirModel* QDirModel_new4(QObject* parent) {
+	return new MiqtVirtualQDirModel(parent);
+}
+
+void QDirModel_virtbase(QDirModel* src, QAbstractItemModel** outptr_QAbstractItemModel) {
+	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(src);
 }
 
 QMetaObject* QDirModel_MetaObject(const QDirModel* self) {

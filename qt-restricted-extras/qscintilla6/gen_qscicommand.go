@@ -141,16 +141,13 @@ func newQsciCommand(h *C.QsciCommand) *QsciCommand {
 	if h == nil {
 		return nil
 	}
+
 	return &QsciCommand{h: h}
 }
 
 // UnsafeNewQsciCommand constructs the type using only unsafe pointers.
 func UnsafeNewQsciCommand(h unsafe.Pointer) *QsciCommand {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciCommand{h: (*C.QsciCommand)(h)}
+	return newQsciCommand((*C.QsciCommand)(h))
 }
 
 func (this *QsciCommand) Command() QsciCommand__Command {

@@ -32,14 +32,15 @@ typedef struct QObject QObject;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QLibrary_new(QLibrary** outptr_QLibrary, QObject** outptr_QObject);
-void QLibrary_new2(struct miqt_string fileName, QLibrary** outptr_QLibrary, QObject** outptr_QObject);
-void QLibrary_new3(struct miqt_string fileName, int verNum, QLibrary** outptr_QLibrary, QObject** outptr_QObject);
-void QLibrary_new4(struct miqt_string fileName, struct miqt_string version, QLibrary** outptr_QLibrary, QObject** outptr_QObject);
-void QLibrary_new5(QObject* parent, QLibrary** outptr_QLibrary, QObject** outptr_QObject);
-void QLibrary_new6(struct miqt_string fileName, QObject* parent, QLibrary** outptr_QLibrary, QObject** outptr_QObject);
-void QLibrary_new7(struct miqt_string fileName, int verNum, QObject* parent, QLibrary** outptr_QLibrary, QObject** outptr_QObject);
-void QLibrary_new8(struct miqt_string fileName, struct miqt_string version, QObject* parent, QLibrary** outptr_QLibrary, QObject** outptr_QObject);
+QLibrary* QLibrary_new();
+QLibrary* QLibrary_new2(struct miqt_string fileName);
+QLibrary* QLibrary_new3(struct miqt_string fileName, int verNum);
+QLibrary* QLibrary_new4(struct miqt_string fileName, struct miqt_string version);
+QLibrary* QLibrary_new5(QObject* parent);
+QLibrary* QLibrary_new6(struct miqt_string fileName, QObject* parent);
+QLibrary* QLibrary_new7(struct miqt_string fileName, int verNum, QObject* parent);
+QLibrary* QLibrary_new8(struct miqt_string fileName, struct miqt_string version, QObject* parent);
+void QLibrary_virtbase(QLibrary* src, QObject** outptr_QObject);
 QMetaObject* QLibrary_MetaObject(const QLibrary* self);
 void* QLibrary_Metacast(QLibrary* self, const char* param1);
 struct miqt_string QLibrary_Tr(const char* s);

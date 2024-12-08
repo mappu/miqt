@@ -36,22 +36,20 @@ func (this *QMediaPlayerControl) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMediaPlayerControl constructs the type using only CGO pointers.
-func newQMediaPlayerControl(h *C.QMediaPlayerControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QMediaPlayerControl {
+func newQMediaPlayerControl(h *C.QMediaPlayerControl) *QMediaPlayerControl {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaControl *C.QMediaControl = nil
+	C.QMediaPlayerControl_virtbase(h, &outptr_QMediaControl)
+
 	return &QMediaPlayerControl{h: h,
-		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
+		QMediaControl: newQMediaControl(outptr_QMediaControl)}
 }
 
 // UnsafeNewQMediaPlayerControl constructs the type using only unsafe pointers.
-func UnsafeNewQMediaPlayerControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QMediaPlayerControl {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaPlayerControl{h: (*C.QMediaPlayerControl)(h),
-		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
+func UnsafeNewQMediaPlayerControl(h unsafe.Pointer) *QMediaPlayerControl {
+	return newQMediaPlayerControl((*C.QMediaPlayerControl)(h))
 }
 
 func (this *QMediaPlayerControl) MetaObject() *qt.QMetaObject {
@@ -135,8 +133,7 @@ func (this *QMediaPlayerControl) IsSeekable() bool {
 }
 
 func (this *QMediaPlayerControl) AvailablePlaybackRanges() *QMediaTimeRange {
-	_ret := C.QMediaPlayerControl_AvailablePlaybackRanges(this.h)
-	_goptr := newQMediaTimeRange(_ret)
+	_goptr := newQMediaTimeRange(C.QMediaPlayerControl_AvailablePlaybackRanges(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -150,14 +147,13 @@ func (this *QMediaPlayerControl) SetPlaybackRate(rate float64) {
 }
 
 func (this *QMediaPlayerControl) Media() *QMediaContent {
-	_ret := C.QMediaPlayerControl_Media(this.h)
-	_goptr := newQMediaContent(_ret)
+	_goptr := newQMediaContent(C.QMediaPlayerControl_Media(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaPlayerControl) MediaStream() *qt.QIODevice {
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QMediaPlayerControl_MediaStream(this.h)), nil)
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QMediaPlayerControl_MediaStream(this.h)))
 }
 
 func (this *QMediaPlayerControl) SetMedia(media *QMediaContent, stream *qt.QIODevice) {
@@ -191,7 +187,7 @@ func miqt_exec_callback_QMediaPlayerControl_MediaChanged(cb C.intptr_t, content 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMediaContent(unsafe.Pointer(content))
+	slotval1 := newQMediaContent(content)
 
 	gofunc(slotval1)
 }
@@ -411,7 +407,7 @@ func miqt_exec_callback_QMediaPlayerControl_AvailablePlaybackRangesChanged(cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMediaTimeRange(unsafe.Pointer(ranges))
+	slotval1 := newQMediaTimeRange(ranges)
 
 	gofunc(slotval1)
 }

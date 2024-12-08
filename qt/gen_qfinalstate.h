@@ -30,8 +30,9 @@ typedef struct QObject QObject;
 typedef struct QState QState;
 #endif
 
-void QFinalState_new(QFinalState** outptr_QFinalState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject);
-void QFinalState_new2(QState* parent, QFinalState** outptr_QFinalState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject);
+QFinalState* QFinalState_new();
+QFinalState* QFinalState_new2(QState* parent);
+void QFinalState_virtbase(QFinalState* src, QAbstractState** outptr_QAbstractState);
 QMetaObject* QFinalState_MetaObject(const QFinalState* self);
 void* QFinalState_Metacast(QFinalState* self, const char* param1);
 struct miqt_string QFinalState_Tr(const char* s);

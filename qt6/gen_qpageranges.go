@@ -37,34 +37,27 @@ func newQPageRanges(h *C.QPageRanges) *QPageRanges {
 	if h == nil {
 		return nil
 	}
+
 	return &QPageRanges{h: h}
 }
 
 // UnsafeNewQPageRanges constructs the type using only unsafe pointers.
 func UnsafeNewQPageRanges(h unsafe.Pointer) *QPageRanges {
-	if h == nil {
-		return nil
-	}
-
-	return &QPageRanges{h: (*C.QPageRanges)(h)}
+	return newQPageRanges((*C.QPageRanges)(h))
 }
 
 // NewQPageRanges constructs a new QPageRanges object.
 func NewQPageRanges() *QPageRanges {
-	var outptr_QPageRanges *C.QPageRanges = nil
 
-	C.QPageRanges_new(&outptr_QPageRanges)
-	ret := newQPageRanges(outptr_QPageRanges)
+	ret := newQPageRanges(C.QPageRanges_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPageRanges2 constructs a new QPageRanges object.
 func NewQPageRanges2(other *QPageRanges) *QPageRanges {
-	var outptr_QPageRanges *C.QPageRanges = nil
 
-	C.QPageRanges_new2(other.cPointer(), &outptr_QPageRanges)
-	ret := newQPageRanges(outptr_QPageRanges)
+	ret := newQPageRanges(C.QPageRanges_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -90,8 +83,7 @@ func (this *QPageRanges) ToRangeList() []QPageRanges__Range {
 	_ret := make([]QPageRanges__Range, int(_ma.len))
 	_outCast := (*[0xffff]*C.QPageRanges__Range)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQPageRanges__Range(_lv_ret)
+		_lv_goptr := newQPageRanges__Range(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -114,8 +106,7 @@ func QPageRanges_FromString(ranges string) *QPageRanges {
 	ranges_ms.data = C.CString(ranges)
 	ranges_ms.len = C.size_t(len(ranges))
 	defer C.free(unsafe.Pointer(ranges_ms.data))
-	_ret := C.QPageRanges_FromString(ranges_ms)
-	_goptr := newQPageRanges(_ret)
+	_goptr := newQPageRanges(C.QPageRanges_FromString(ranges_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -178,34 +169,27 @@ func newQPageRanges__Range(h *C.QPageRanges__Range) *QPageRanges__Range {
 	if h == nil {
 		return nil
 	}
+
 	return &QPageRanges__Range{h: h}
 }
 
 // UnsafeNewQPageRanges__Range constructs the type using only unsafe pointers.
 func UnsafeNewQPageRanges__Range(h unsafe.Pointer) *QPageRanges__Range {
-	if h == nil {
-		return nil
-	}
-
-	return &QPageRanges__Range{h: (*C.QPageRanges__Range)(h)}
+	return newQPageRanges__Range((*C.QPageRanges__Range)(h))
 }
 
 // NewQPageRanges__Range constructs a new QPageRanges::Range object.
 func NewQPageRanges__Range() *QPageRanges__Range {
-	var outptr_QPageRanges__Range *C.QPageRanges__Range = nil
 
-	C.QPageRanges__Range_new(&outptr_QPageRanges__Range)
-	ret := newQPageRanges__Range(outptr_QPageRanges__Range)
+	ret := newQPageRanges__Range(C.QPageRanges__Range_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPageRanges__Range2 constructs a new QPageRanges::Range object.
 func NewQPageRanges__Range2(param1 *QPageRanges__Range) *QPageRanges__Range {
-	var outptr_QPageRanges__Range *C.QPageRanges__Range = nil
 
-	C.QPageRanges__Range_new2(param1.cPointer(), &outptr_QPageRanges__Range)
-	ret := newQPageRanges__Range(outptr_QPageRanges__Range)
+	ret := newQPageRanges__Range(C.QPageRanges__Range_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

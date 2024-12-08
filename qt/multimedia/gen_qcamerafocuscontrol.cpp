@@ -12,6 +12,10 @@
 #include "gen_qcamerafocuscontrol.h"
 #include "_cgo_export.h"
 
+void QCameraFocusControl_virtbase(QCameraFocusControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
+
 QMetaObject* QCameraFocusControl_MetaObject(const QCameraFocusControl* self) {
 	return (QMetaObject*) self->metaObject();
 }

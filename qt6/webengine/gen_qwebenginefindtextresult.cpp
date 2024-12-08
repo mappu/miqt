@@ -3,14 +3,12 @@
 #include "gen_qwebenginefindtextresult.h"
 #include "_cgo_export.h"
 
-void QWebEngineFindTextResult_new(QWebEngineFindTextResult** outptr_QWebEngineFindTextResult) {
-	QWebEngineFindTextResult* ret = new QWebEngineFindTextResult();
-	*outptr_QWebEngineFindTextResult = ret;
+QWebEngineFindTextResult* QWebEngineFindTextResult_new() {
+	return new QWebEngineFindTextResult();
 }
 
-void QWebEngineFindTextResult_new2(QWebEngineFindTextResult* other, QWebEngineFindTextResult** outptr_QWebEngineFindTextResult) {
-	QWebEngineFindTextResult* ret = new QWebEngineFindTextResult(*other);
-	*outptr_QWebEngineFindTextResult = ret;
+QWebEngineFindTextResult* QWebEngineFindTextResult_new2(QWebEngineFindTextResult* other) {
+	return new QWebEngineFindTextResult(*other);
 }
 
 int QWebEngineFindTextResult_NumberOfMatches(const QWebEngineFindTextResult* self) {

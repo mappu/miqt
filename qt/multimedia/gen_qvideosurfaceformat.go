@@ -57,54 +57,43 @@ func newQVideoSurfaceFormat(h *C.QVideoSurfaceFormat) *QVideoSurfaceFormat {
 	if h == nil {
 		return nil
 	}
+
 	return &QVideoSurfaceFormat{h: h}
 }
 
 // UnsafeNewQVideoSurfaceFormat constructs the type using only unsafe pointers.
 func UnsafeNewQVideoSurfaceFormat(h unsafe.Pointer) *QVideoSurfaceFormat {
-	if h == nil {
-		return nil
-	}
-
-	return &QVideoSurfaceFormat{h: (*C.QVideoSurfaceFormat)(h)}
+	return newQVideoSurfaceFormat((*C.QVideoSurfaceFormat)(h))
 }
 
 // NewQVideoSurfaceFormat constructs a new QVideoSurfaceFormat object.
 func NewQVideoSurfaceFormat() *QVideoSurfaceFormat {
-	var outptr_QVideoSurfaceFormat *C.QVideoSurfaceFormat = nil
 
-	C.QVideoSurfaceFormat_new(&outptr_QVideoSurfaceFormat)
-	ret := newQVideoSurfaceFormat(outptr_QVideoSurfaceFormat)
+	ret := newQVideoSurfaceFormat(C.QVideoSurfaceFormat_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVideoSurfaceFormat2 constructs a new QVideoSurfaceFormat object.
 func NewQVideoSurfaceFormat2(size *qt.QSize, pixelFormat QVideoFrame__PixelFormat) *QVideoSurfaceFormat {
-	var outptr_QVideoSurfaceFormat *C.QVideoSurfaceFormat = nil
 
-	C.QVideoSurfaceFormat_new2((*C.QSize)(size.UnsafePointer()), (C.int)(pixelFormat), &outptr_QVideoSurfaceFormat)
-	ret := newQVideoSurfaceFormat(outptr_QVideoSurfaceFormat)
+	ret := newQVideoSurfaceFormat(C.QVideoSurfaceFormat_new2((*C.QSize)(size.UnsafePointer()), (C.int)(pixelFormat)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVideoSurfaceFormat3 constructs a new QVideoSurfaceFormat object.
 func NewQVideoSurfaceFormat3(format *QVideoSurfaceFormat) *QVideoSurfaceFormat {
-	var outptr_QVideoSurfaceFormat *C.QVideoSurfaceFormat = nil
 
-	C.QVideoSurfaceFormat_new3(format.cPointer(), &outptr_QVideoSurfaceFormat)
-	ret := newQVideoSurfaceFormat(outptr_QVideoSurfaceFormat)
+	ret := newQVideoSurfaceFormat(C.QVideoSurfaceFormat_new3(format.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVideoSurfaceFormat4 constructs a new QVideoSurfaceFormat object.
 func NewQVideoSurfaceFormat4(size *qt.QSize, pixelFormat QVideoFrame__PixelFormat, handleType QAbstractVideoBuffer__HandleType) *QVideoSurfaceFormat {
-	var outptr_QVideoSurfaceFormat *C.QVideoSurfaceFormat = nil
 
-	C.QVideoSurfaceFormat_new4((*C.QSize)(size.UnsafePointer()), (C.int)(pixelFormat), (C.int)(handleType), &outptr_QVideoSurfaceFormat)
-	ret := newQVideoSurfaceFormat(outptr_QVideoSurfaceFormat)
+	ret := newQVideoSurfaceFormat(C.QVideoSurfaceFormat_new4((*C.QSize)(size.UnsafePointer()), (C.int)(pixelFormat), (C.int)(handleType)))
 	ret.isSubclass = true
 	return ret
 }
@@ -134,8 +123,7 @@ func (this *QVideoSurfaceFormat) HandleType() QAbstractVideoBuffer__HandleType {
 }
 
 func (this *QVideoSurfaceFormat) FrameSize() *qt.QSize {
-	_ret := C.QVideoSurfaceFormat_FrameSize(this.h)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoSurfaceFormat_FrameSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -157,8 +145,7 @@ func (this *QVideoSurfaceFormat) FrameHeight() int {
 }
 
 func (this *QVideoSurfaceFormat) Viewport() *qt.QRect {
-	_ret := C.QVideoSurfaceFormat_Viewport(this.h)
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QVideoSurfaceFormat_Viewport(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -184,8 +171,7 @@ func (this *QVideoSurfaceFormat) SetFrameRate(rate float64) {
 }
 
 func (this *QVideoSurfaceFormat) PixelAspectRatio() *qt.QSize {
-	_ret := C.QVideoSurfaceFormat_PixelAspectRatio(this.h)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoSurfaceFormat_PixelAspectRatio(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -215,8 +201,7 @@ func (this *QVideoSurfaceFormat) SetMirrored(mirrored bool) {
 }
 
 func (this *QVideoSurfaceFormat) SizeHint() *qt.QSize {
-	_ret := C.QVideoSurfaceFormat_SizeHint(this.h)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoSurfaceFormat_SizeHint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -237,8 +222,7 @@ func (this *QVideoSurfaceFormat) PropertyNames() [][]byte {
 func (this *QVideoSurfaceFormat) Property(name string) *qt.QVariant {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	_ret := C.QVideoSurfaceFormat_Property(this.h, name_Cstring)
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QVideoSurfaceFormat_Property(this.h, name_Cstring)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

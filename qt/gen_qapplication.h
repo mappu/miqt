@@ -48,8 +48,9 @@ typedef struct QStyle QStyle;
 typedef struct QWidget QWidget;
 #endif
 
-void QApplication_new(int* argc, char** argv, QApplication** outptr_QApplication, QGuiApplication** outptr_QGuiApplication, QCoreApplication** outptr_QCoreApplication, QObject** outptr_QObject);
-void QApplication_new2(int* argc, char** argv, int param3, QApplication** outptr_QApplication, QGuiApplication** outptr_QGuiApplication, QCoreApplication** outptr_QCoreApplication, QObject** outptr_QObject);
+QApplication* QApplication_new(int* argc, char** argv);
+QApplication* QApplication_new2(int* argc, char** argv, int param3);
+void QApplication_virtbase(QApplication* src, QGuiApplication** outptr_QGuiApplication);
 QMetaObject* QApplication_MetaObject(const QApplication* self);
 void* QApplication_Metacast(QApplication* self, const char* param1);
 struct miqt_string QApplication_Tr(const char* s);

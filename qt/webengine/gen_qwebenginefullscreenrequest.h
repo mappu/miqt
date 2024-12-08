@@ -22,7 +22,7 @@ typedef struct QUrl QUrl;
 typedef struct QWebEngineFullScreenRequest QWebEngineFullScreenRequest;
 #endif
 
-void QWebEngineFullScreenRequest_new(QWebEngineFullScreenRequest* param1, QWebEngineFullScreenRequest** outptr_QWebEngineFullScreenRequest);
+QWebEngineFullScreenRequest* QWebEngineFullScreenRequest_new(QWebEngineFullScreenRequest* param1);
 void QWebEngineFullScreenRequest_Reject(QWebEngineFullScreenRequest* self);
 void QWebEngineFullScreenRequest_Accept(QWebEngineFullScreenRequest* self);
 bool QWebEngineFullScreenRequest_ToggleOn(const QWebEngineFullScreenRequest* self);

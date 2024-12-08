@@ -84,8 +84,9 @@ typedef struct QVariant QVariant;
 typedef struct QWidget QWidget;
 #endif
 
-void QHeaderView_new(int orientation, QHeaderView** outptr_QHeaderView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QHeaderView_new2(int orientation, QWidget* parent, QHeaderView** outptr_QHeaderView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QHeaderView* QHeaderView_new(int orientation);
+QHeaderView* QHeaderView_new2(int orientation, QWidget* parent);
+void QHeaderView_virtbase(QHeaderView* src, QAbstractItemView** outptr_QAbstractItemView);
 QMetaObject* QHeaderView_MetaObject(const QHeaderView* self);
 void* QHeaderView_Metacast(QHeaderView* self, const char* param1);
 struct miqt_string QHeaderView_Tr(const char* s);

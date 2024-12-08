@@ -51,24 +51,19 @@ func newQCommandLineParser(h *C.QCommandLineParser) *QCommandLineParser {
 	if h == nil {
 		return nil
 	}
+
 	return &QCommandLineParser{h: h}
 }
 
 // UnsafeNewQCommandLineParser constructs the type using only unsafe pointers.
 func UnsafeNewQCommandLineParser(h unsafe.Pointer) *QCommandLineParser {
-	if h == nil {
-		return nil
-	}
-
-	return &QCommandLineParser{h: (*C.QCommandLineParser)(h)}
+	return newQCommandLineParser((*C.QCommandLineParser)(h))
 }
 
 // NewQCommandLineParser constructs a new QCommandLineParser object.
 func NewQCommandLineParser() *QCommandLineParser {
-	var outptr_QCommandLineParser *C.QCommandLineParser = nil
 
-	C.QCommandLineParser_new(&outptr_QCommandLineParser)
-	ret := newQCommandLineParser(outptr_QCommandLineParser)
+	ret := newQCommandLineParser(C.QCommandLineParser_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -114,15 +109,13 @@ func (this *QCommandLineParser) AddOptions(options []QCommandLineOption) bool {
 }
 
 func (this *QCommandLineParser) AddVersionOption() *QCommandLineOption {
-	_ret := C.QCommandLineParser_AddVersionOption(this.h)
-	_goptr := newQCommandLineOption(_ret)
+	_goptr := newQCommandLineOption(C.QCommandLineParser_AddVersionOption(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCommandLineParser) AddHelpOption() *QCommandLineOption {
-	_ret := C.QCommandLineParser_AddHelpOption(this.h)
-	_goptr := newQCommandLineOption(_ret)
+	_goptr := newQCommandLineOption(C.QCommandLineParser_AddHelpOption(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -35,53 +35,42 @@ func (this *QPicture) UnsafePointer() unsafe.Pointer {
 }
 
 // newQPicture constructs the type using only CGO pointers.
-func newQPicture(h *C.QPicture, h_QPaintDevice *C.QPaintDevice) *QPicture {
+func newQPicture(h *C.QPicture) *QPicture {
 	if h == nil {
 		return nil
 	}
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+	C.QPicture_virtbase(h, &outptr_QPaintDevice)
+
 	return &QPicture{h: h,
-		QPaintDevice: newQPaintDevice(h_QPaintDevice)}
+		QPaintDevice: newQPaintDevice(outptr_QPaintDevice)}
 }
 
 // UnsafeNewQPicture constructs the type using only unsafe pointers.
-func UnsafeNewQPicture(h unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QPicture {
-	if h == nil {
-		return nil
-	}
-
-	return &QPicture{h: (*C.QPicture)(h),
-		QPaintDevice: UnsafeNewQPaintDevice(h_QPaintDevice)}
+func UnsafeNewQPicture(h unsafe.Pointer) *QPicture {
+	return newQPicture((*C.QPicture)(h))
 }
 
 // NewQPicture constructs a new QPicture object.
 func NewQPicture() *QPicture {
-	var outptr_QPicture *C.QPicture = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPicture_new(&outptr_QPicture, &outptr_QPaintDevice)
-	ret := newQPicture(outptr_QPicture, outptr_QPaintDevice)
+	ret := newQPicture(C.QPicture_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPicture2 constructs a new QPicture object.
 func NewQPicture2(param1 *QPicture) *QPicture {
-	var outptr_QPicture *C.QPicture = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPicture_new2(param1.cPointer(), &outptr_QPicture, &outptr_QPaintDevice)
-	ret := newQPicture(outptr_QPicture, outptr_QPaintDevice)
+	ret := newQPicture(C.QPicture_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPicture3 constructs a new QPicture object.
 func NewQPicture3(formatVersion int) *QPicture {
-	var outptr_QPicture *C.QPicture = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPicture_new3((C.int)(formatVersion), &outptr_QPicture, &outptr_QPaintDevice)
-	ret := newQPicture(outptr_QPicture, outptr_QPaintDevice)
+	ret := newQPicture(C.QPicture_new3((C.int)(formatVersion)))
 	ret.isSubclass = true
 	return ret
 }
@@ -138,8 +127,7 @@ func (this *QPicture) SaveWithFileName(fileName string) bool {
 }
 
 func (this *QPicture) BoundingRect() *QRect {
-	_ret := C.QPicture_BoundingRect(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QPicture_BoundingRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -226,7 +214,7 @@ func QPicture_OutputFormatList() []string {
 }
 
 func (this *QPicture) PaintEngine() *QPaintEngine {
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QPicture_PaintEngine(this.h)))
+	return newQPaintEngine(C.QPicture_PaintEngine(this.h))
 }
 
 func (this *QPicture) Load2(dev *QIODevice, format string) bool {
@@ -267,6 +255,9 @@ func (this *QPicture) callVirtualBase_DevType() int {
 
 }
 func (this *QPicture) OnDevType(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPicture_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -291,6 +282,9 @@ func (this *QPicture) callVirtualBase_SetData(data string, size uint) {
 
 }
 func (this *QPicture) OnSetData(slot func(super func(data string, size uint), data string, size uint)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPicture_override_virtual_SetData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -313,9 +307,13 @@ func miqt_exec_callback_QPicture_SetData(self *C.QPicture, cb C.intptr_t, data *
 
 func (this *QPicture) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QPicture_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return newQPaintEngine(C.QPicture_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+
 }
 func (this *QPicture) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPicture_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -338,6 +336,9 @@ func (this *QPicture) callVirtualBase_Metric(m QPaintDevice__PaintDeviceMetric) 
 
 }
 func (this *QPicture) OnMetric(slot func(super func(m QPaintDevice__PaintDeviceMetric) int, m QPaintDevice__PaintDeviceMetric) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPicture_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -363,6 +364,9 @@ func (this *QPicture) callVirtualBase_InitPainter(painter *QPainter) {
 
 }
 func (this *QPicture) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPicture_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -374,7 +378,7 @@ func miqt_exec_callback_QPicture_InitPainter(self *C.QPicture, cb C.intptr_t, pa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval1 := newQPainter(painter)
 
 	gofunc((&QPicture{h: self}).callVirtualBase_InitPainter, slotval1)
 
@@ -382,9 +386,13 @@ func miqt_exec_callback_QPicture_InitPainter(self *C.QPicture, cb C.intptr_t, pa
 
 func (this *QPicture) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QPicture_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer())))
+	return newQPaintDevice(C.QPicture_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+
 }
 func (this *QPicture) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPicture_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -396,7 +404,7 @@ func miqt_exec_callback_QPicture_Redirected(self *C.QPicture, cb C.intptr_t, off
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(offset))
+	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QPicture{h: self}).callVirtualBase_Redirected, slotval1)
 
@@ -406,9 +414,13 @@ func miqt_exec_callback_QPicture_Redirected(self *C.QPicture, cb C.intptr_t, off
 
 func (this *QPicture) callVirtualBase_SharedPainter() *QPainter {
 
-	return UnsafeNewQPainter(unsafe.Pointer(C.QPicture_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+	return newQPainter(C.QPicture_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+
 }
 func (this *QPicture) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPicture_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -463,24 +475,19 @@ func newQPictureIO(h *C.QPictureIO) *QPictureIO {
 	if h == nil {
 		return nil
 	}
+
 	return &QPictureIO{h: h}
 }
 
 // UnsafeNewQPictureIO constructs the type using only unsafe pointers.
 func UnsafeNewQPictureIO(h unsafe.Pointer) *QPictureIO {
-	if h == nil {
-		return nil
-	}
-
-	return &QPictureIO{h: (*C.QPictureIO)(h)}
+	return newQPictureIO((*C.QPictureIO)(h))
 }
 
 // NewQPictureIO constructs a new QPictureIO object.
 func NewQPictureIO() *QPictureIO {
-	var outptr_QPictureIO *C.QPictureIO = nil
 
-	C.QPictureIO_new(&outptr_QPictureIO)
-	ret := newQPictureIO(outptr_QPictureIO)
+	ret := newQPictureIO(C.QPictureIO_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -489,10 +496,8 @@ func NewQPictureIO() *QPictureIO {
 func NewQPictureIO2(ioDevice *QIODevice, format string) *QPictureIO {
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	var outptr_QPictureIO *C.QPictureIO = nil
 
-	C.QPictureIO_new2(ioDevice.cPointer(), format_Cstring, &outptr_QPictureIO)
-	ret := newQPictureIO(outptr_QPictureIO)
+	ret := newQPictureIO(C.QPictureIO_new2(ioDevice.cPointer(), format_Cstring))
 	ret.isSubclass = true
 	return ret
 }
@@ -505,16 +510,14 @@ func NewQPictureIO3(fileName string, format string) *QPictureIO {
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	var outptr_QPictureIO *C.QPictureIO = nil
 
-	C.QPictureIO_new3(fileName_ms, format_Cstring, &outptr_QPictureIO)
-	ret := newQPictureIO(outptr_QPictureIO)
+	ret := newQPictureIO(C.QPictureIO_new3(fileName_ms, format_Cstring))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QPictureIO) Picture() *QPicture {
-	return UnsafeNewQPicture(unsafe.Pointer(C.QPictureIO_Picture(this.h)), nil)
+	return newQPicture(C.QPictureIO_Picture(this.h))
 }
 
 func (this *QPictureIO) Status() int {
@@ -527,7 +530,7 @@ func (this *QPictureIO) Format() string {
 }
 
 func (this *QPictureIO) IoDevice() *QIODevice {
-	return UnsafeNewQIODevice(unsafe.Pointer(C.QPictureIO_IoDevice(this.h)), nil)
+	return newQIODevice(C.QPictureIO_IoDevice(this.h))
 }
 
 func (this *QPictureIO) FileName() string {

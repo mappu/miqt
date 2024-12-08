@@ -4,9 +4,8 @@
 #include "gen_qwebenginefilesystemaccessrequest.h"
 #include "_cgo_export.h"
 
-void QWebEngineFileSystemAccessRequest_new(QWebEngineFileSystemAccessRequest* other, QWebEngineFileSystemAccessRequest** outptr_QWebEngineFileSystemAccessRequest) {
-	QWebEngineFileSystemAccessRequest* ret = new QWebEngineFileSystemAccessRequest(*other);
-	*outptr_QWebEngineFileSystemAccessRequest = ret;
+QWebEngineFileSystemAccessRequest* QWebEngineFileSystemAccessRequest_new(QWebEngineFileSystemAccessRequest* other) {
+	return new QWebEngineFileSystemAccessRequest(*other);
 }
 
 void QWebEngineFileSystemAccessRequest_OperatorAssign(QWebEngineFileSystemAccessRequest* self, QWebEngineFileSystemAccessRequest* other) {

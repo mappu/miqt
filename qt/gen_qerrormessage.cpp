@@ -379,22 +379,16 @@ public:
 
 };
 
-void QErrorMessage_new(QWidget* parent, QErrorMessage** outptr_QErrorMessage, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQErrorMessage* ret = new MiqtVirtualQErrorMessage(parent);
-	*outptr_QErrorMessage = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QErrorMessage* QErrorMessage_new(QWidget* parent) {
+	return new MiqtVirtualQErrorMessage(parent);
 }
 
-void QErrorMessage_new2(QErrorMessage** outptr_QErrorMessage, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQErrorMessage* ret = new MiqtVirtualQErrorMessage();
-	*outptr_QErrorMessage = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QErrorMessage* QErrorMessage_new2() {
+	return new MiqtVirtualQErrorMessage();
+}
+
+void QErrorMessage_virtbase(QErrorMessage* src, QDialog** outptr_QDialog) {
+	*outptr_QDialog = static_cast<QDialog*>(src);
 }
 
 QMetaObject* QErrorMessage_MetaObject(const QErrorMessage* self) {

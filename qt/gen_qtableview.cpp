@@ -1555,26 +1555,16 @@ public:
 
 };
 
-void QTableView_new(QWidget* parent, QTableView** outptr_QTableView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQTableView* ret = new MiqtVirtualQTableView(parent);
-	*outptr_QTableView = ret;
-	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(ret);
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QTableView* QTableView_new(QWidget* parent) {
+	return new MiqtVirtualQTableView(parent);
 }
 
-void QTableView_new2(QTableView** outptr_QTableView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQTableView* ret = new MiqtVirtualQTableView();
-	*outptr_QTableView = ret;
-	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(ret);
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QTableView* QTableView_new2() {
+	return new MiqtVirtualQTableView();
+}
+
+void QTableView_virtbase(QTableView* src, QAbstractItemView** outptr_QAbstractItemView) {
+	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(src);
 }
 
 QMetaObject* QTableView_MetaObject(const QTableView* self) {

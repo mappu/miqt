@@ -108,9 +108,8 @@ public:
 
 };
 
-void QAbstractVideoBuffer_new(int typeVal, QAbstractVideoBuffer** outptr_QAbstractVideoBuffer) {
-	MiqtVirtualQAbstractVideoBuffer* ret = new MiqtVirtualQAbstractVideoBuffer(static_cast<QAbstractVideoBuffer::HandleType>(typeVal));
-	*outptr_QAbstractVideoBuffer = ret;
+QAbstractVideoBuffer* QAbstractVideoBuffer_new(int typeVal) {
+	return new MiqtVirtualQAbstractVideoBuffer(static_cast<QAbstractVideoBuffer::HandleType>(typeVal));
 }
 
 void QAbstractVideoBuffer_Release(QAbstractVideoBuffer* self) {
@@ -287,10 +286,12 @@ public:
 
 };
 
-void QAbstractPlanarVideoBuffer_new(int typeVal, QAbstractPlanarVideoBuffer** outptr_QAbstractPlanarVideoBuffer, QAbstractVideoBuffer** outptr_QAbstractVideoBuffer) {
-	MiqtVirtualQAbstractPlanarVideoBuffer* ret = new MiqtVirtualQAbstractPlanarVideoBuffer(static_cast<QAbstractVideoBuffer::HandleType>(typeVal));
-	*outptr_QAbstractPlanarVideoBuffer = ret;
-	*outptr_QAbstractVideoBuffer = static_cast<QAbstractVideoBuffer*>(ret);
+QAbstractPlanarVideoBuffer* QAbstractPlanarVideoBuffer_new(int typeVal) {
+	return new MiqtVirtualQAbstractPlanarVideoBuffer(static_cast<QAbstractVideoBuffer::HandleType>(typeVal));
+}
+
+void QAbstractPlanarVideoBuffer_virtbase(QAbstractPlanarVideoBuffer* src, QAbstractVideoBuffer** outptr_QAbstractVideoBuffer) {
+	*outptr_QAbstractVideoBuffer = static_cast<QAbstractVideoBuffer*>(src);
 }
 
 unsigned char* QAbstractPlanarVideoBuffer_Map(QAbstractPlanarVideoBuffer* self, int mode, int* numBytes, int* bytesPerLine) {

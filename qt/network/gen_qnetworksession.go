@@ -65,42 +65,34 @@ func (this *QNetworkSession) UnsafePointer() unsafe.Pointer {
 }
 
 // newQNetworkSession constructs the type using only CGO pointers.
-func newQNetworkSession(h *C.QNetworkSession, h_QObject *C.QObject) *QNetworkSession {
+func newQNetworkSession(h *C.QNetworkSession) *QNetworkSession {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QNetworkSession_virtbase(h, &outptr_QObject)
+
 	return &QNetworkSession{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQNetworkSession constructs the type using only unsafe pointers.
-func UnsafeNewQNetworkSession(h unsafe.Pointer, h_QObject unsafe.Pointer) *QNetworkSession {
-	if h == nil {
-		return nil
-	}
-
-	return &QNetworkSession{h: (*C.QNetworkSession)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQNetworkSession(h unsafe.Pointer) *QNetworkSession {
+	return newQNetworkSession((*C.QNetworkSession)(h))
 }
 
 // NewQNetworkSession constructs a new QNetworkSession object.
 func NewQNetworkSession(connConfig *QNetworkConfiguration) *QNetworkSession {
-	var outptr_QNetworkSession *C.QNetworkSession = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QNetworkSession_new(connConfig.cPointer(), &outptr_QNetworkSession, &outptr_QObject)
-	ret := newQNetworkSession(outptr_QNetworkSession, outptr_QObject)
+	ret := newQNetworkSession(C.QNetworkSession_new(connConfig.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQNetworkSession2 constructs a new QNetworkSession object.
 func NewQNetworkSession2(connConfig *QNetworkConfiguration, parent *qt.QObject) *QNetworkSession {
-	var outptr_QNetworkSession *C.QNetworkSession = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QNetworkSession_new2(connConfig.cPointer(), (*C.QObject)(parent.UnsafePointer()), &outptr_QNetworkSession, &outptr_QObject)
-	ret := newQNetworkSession(outptr_QNetworkSession, outptr_QObject)
+	ret := newQNetworkSession(C.QNetworkSession_new2(connConfig.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -138,15 +130,13 @@ func (this *QNetworkSession) IsOpen() bool {
 }
 
 func (this *QNetworkSession) Configuration() *QNetworkConfiguration {
-	_ret := C.QNetworkSession_Configuration(this.h)
-	_goptr := newQNetworkConfiguration(_ret)
+	_goptr := newQNetworkConfiguration(C.QNetworkSession_Configuration(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkSession) Interface() *QNetworkInterface {
-	_ret := C.QNetworkSession_Interface(this.h)
-	_goptr := newQNetworkInterface(_ret)
+	_goptr := newQNetworkInterface(C.QNetworkSession_Interface(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -171,8 +161,7 @@ func (this *QNetworkSession) SessionProperty(key string) *qt.QVariant {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	_ret := C.QNetworkSession_SessionProperty(this.h, key_ms)
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QNetworkSession_SessionProperty(this.h, key_ms)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -322,7 +311,8 @@ func miqt_exec_callback_QNetworkSession_PreferredConfigurationChanged(cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQNetworkConfiguration(unsafe.Pointer(config))
+	slotval1 := newQNetworkConfiguration(config)
+
 	slotval2 := (bool)(isSeamless)
 
 	gofunc(slotval1, slotval2)
@@ -419,6 +409,9 @@ func (this *QNetworkSession) callVirtualBase_ConnectNotify(signal *qt.QMetaMetho
 
 }
 func (this *QNetworkSession) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QNetworkSession_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -442,6 +435,9 @@ func (this *QNetworkSession) callVirtualBase_DisconnectNotify(signal *qt.QMetaMe
 
 }
 func (this *QNetworkSession) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QNetworkSession_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -465,6 +461,9 @@ func (this *QNetworkSession) callVirtualBase_Event(event *qt.QEvent) bool {
 
 }
 func (this *QNetworkSession) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QNetworkSession_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -490,6 +489,9 @@ func (this *QNetworkSession) callVirtualBase_EventFilter(watched *qt.QObject, ev
 
 }
 func (this *QNetworkSession) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QNetworkSession_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -502,6 +504,7 @@ func miqt_exec_callback_QNetworkSession_EventFilter(self *C.QNetworkSession, cb 
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QNetworkSession{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
@@ -516,6 +519,9 @@ func (this *QNetworkSession) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
 }
 func (this *QNetworkSession) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QNetworkSession_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -527,7 +533,7 @@ func miqt_exec_callback_QNetworkSession_TimerEvent(self *C.QNetworkSession, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QNetworkSession{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -539,6 +545,9 @@ func (this *QNetworkSession) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
 }
 func (this *QNetworkSession) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QNetworkSession_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -550,7 +559,7 @@ func miqt_exec_callback_QNetworkSession_ChildEvent(self *C.QNetworkSession, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QNetworkSession{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -562,6 +571,9 @@ func (this *QNetworkSession) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
 }
 func (this *QNetworkSession) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QNetworkSession_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

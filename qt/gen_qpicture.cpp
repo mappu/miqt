@@ -189,22 +189,20 @@ public:
 
 };
 
-void QPicture_new(QPicture** outptr_QPicture, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPicture* ret = new MiqtVirtualQPicture();
-	*outptr_QPicture = ret;
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPicture* QPicture_new() {
+	return new MiqtVirtualQPicture();
 }
 
-void QPicture_new2(QPicture* param1, QPicture** outptr_QPicture, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPicture* ret = new MiqtVirtualQPicture(*param1);
-	*outptr_QPicture = ret;
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPicture* QPicture_new2(QPicture* param1) {
+	return new MiqtVirtualQPicture(*param1);
 }
 
-void QPicture_new3(int formatVersion, QPicture** outptr_QPicture, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPicture* ret = new MiqtVirtualQPicture(static_cast<int>(formatVersion));
-	*outptr_QPicture = ret;
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPicture* QPicture_new3(int formatVersion) {
+	return new MiqtVirtualQPicture(static_cast<int>(formatVersion));
+}
+
+void QPicture_virtbase(QPicture* src, QPaintDevice** outptr_QPaintDevice) {
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(src);
 }
 
 bool QPicture_IsNull(const QPicture* self) {
@@ -441,20 +439,17 @@ void QPicture_Delete(QPicture* self, bool isSubclass) {
 	}
 }
 
-void QPictureIO_new(QPictureIO** outptr_QPictureIO) {
-	QPictureIO* ret = new QPictureIO();
-	*outptr_QPictureIO = ret;
+QPictureIO* QPictureIO_new() {
+	return new QPictureIO();
 }
 
-void QPictureIO_new2(QIODevice* ioDevice, const char* format, QPictureIO** outptr_QPictureIO) {
-	QPictureIO* ret = new QPictureIO(ioDevice, format);
-	*outptr_QPictureIO = ret;
+QPictureIO* QPictureIO_new2(QIODevice* ioDevice, const char* format) {
+	return new QPictureIO(ioDevice, format);
 }
 
-void QPictureIO_new3(struct miqt_string fileName, const char* format, QPictureIO** outptr_QPictureIO) {
+QPictureIO* QPictureIO_new3(struct miqt_string fileName, const char* format) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	QPictureIO* ret = new QPictureIO(fileName_QString, format);
-	*outptr_QPictureIO = ret;
+	return new QPictureIO(fileName_QString, format);
 }
 
 QPicture* QPictureIO_Picture(const QPictureIO* self) {

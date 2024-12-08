@@ -58,8 +58,9 @@ typedef struct QSslPreSharedKeyAuthenticator QSslPreSharedKeyAuthenticator;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QNetworkAccessManager_new(QNetworkAccessManager** outptr_QNetworkAccessManager, QObject** outptr_QObject);
-void QNetworkAccessManager_new2(QObject* parent, QNetworkAccessManager** outptr_QNetworkAccessManager, QObject** outptr_QObject);
+QNetworkAccessManager* QNetworkAccessManager_new();
+QNetworkAccessManager* QNetworkAccessManager_new2(QObject* parent);
+void QNetworkAccessManager_virtbase(QNetworkAccessManager* src, QObject** outptr_QObject);
 QMetaObject* QNetworkAccessManager_MetaObject(const QNetworkAccessManager* self);
 void* QNetworkAccessManager_Metacast(QNetworkAccessManager* self, const char* param1);
 struct miqt_string QNetworkAccessManager_Tr(const char* s);

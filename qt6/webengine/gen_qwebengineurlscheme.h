@@ -20,9 +20,9 @@ class QWebEngineUrlScheme;
 typedef struct QWebEngineUrlScheme QWebEngineUrlScheme;
 #endif
 
-void QWebEngineUrlScheme_new(QWebEngineUrlScheme** outptr_QWebEngineUrlScheme);
-void QWebEngineUrlScheme_new2(struct miqt_string name, QWebEngineUrlScheme** outptr_QWebEngineUrlScheme);
-void QWebEngineUrlScheme_new3(QWebEngineUrlScheme* that, QWebEngineUrlScheme** outptr_QWebEngineUrlScheme);
+QWebEngineUrlScheme* QWebEngineUrlScheme_new();
+QWebEngineUrlScheme* QWebEngineUrlScheme_new2(struct miqt_string name);
+QWebEngineUrlScheme* QWebEngineUrlScheme_new3(QWebEngineUrlScheme* that);
 void QWebEngineUrlScheme_OperatorAssign(QWebEngineUrlScheme* self, QWebEngineUrlScheme* that);
 bool QWebEngineUrlScheme_OperatorEqual(const QWebEngineUrlScheme* self, QWebEngineUrlScheme* that);
 bool QWebEngineUrlScheme_OperatorNotEqual(const QWebEngineUrlScheme* self, QWebEngineUrlScheme* that);

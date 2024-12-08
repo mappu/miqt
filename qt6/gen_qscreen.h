@@ -36,6 +36,7 @@ typedef struct QSizeF QSizeF;
 typedef struct QTransform QTransform;
 #endif
 
+void QScreen_virtbase(QScreen* src, QObject** outptr_QObject);
 QMetaObject* QScreen_MetaObject(const QScreen* self);
 void* QScreen_Metacast(QScreen* self, const char* param1);
 struct miqt_string QScreen_Tr(const char* s);

@@ -16,29 +16,22 @@
 #include "gen_qaccessiblewidget.h"
 #include "_cgo_export.h"
 
-void QAccessibleWidget_new(QWidget* o, QAccessibleWidget** outptr_QAccessibleWidget, QAccessibleObject** outptr_QAccessibleObject, QAccessibleInterface** outptr_QAccessibleInterface, QAccessibleActionInterface** outptr_QAccessibleActionInterface) {
-	QAccessibleWidget* ret = new QAccessibleWidget(o);
-	*outptr_QAccessibleWidget = ret;
-	*outptr_QAccessibleObject = static_cast<QAccessibleObject*>(ret);
-	*outptr_QAccessibleInterface = static_cast<QAccessibleInterface*>(ret);
-	*outptr_QAccessibleActionInterface = static_cast<QAccessibleActionInterface*>(ret);
+QAccessibleWidget* QAccessibleWidget_new(QWidget* o) {
+	return new QAccessibleWidget(o);
 }
 
-void QAccessibleWidget_new2(QWidget* o, int r, QAccessibleWidget** outptr_QAccessibleWidget, QAccessibleObject** outptr_QAccessibleObject, QAccessibleInterface** outptr_QAccessibleInterface, QAccessibleActionInterface** outptr_QAccessibleActionInterface) {
-	QAccessibleWidget* ret = new QAccessibleWidget(o, static_cast<QAccessible::Role>(r));
-	*outptr_QAccessibleWidget = ret;
-	*outptr_QAccessibleObject = static_cast<QAccessibleObject*>(ret);
-	*outptr_QAccessibleInterface = static_cast<QAccessibleInterface*>(ret);
-	*outptr_QAccessibleActionInterface = static_cast<QAccessibleActionInterface*>(ret);
+QAccessibleWidget* QAccessibleWidget_new2(QWidget* o, int r) {
+	return new QAccessibleWidget(o, static_cast<QAccessible::Role>(r));
 }
 
-void QAccessibleWidget_new3(QWidget* o, int r, struct miqt_string name, QAccessibleWidget** outptr_QAccessibleWidget, QAccessibleObject** outptr_QAccessibleObject, QAccessibleInterface** outptr_QAccessibleInterface, QAccessibleActionInterface** outptr_QAccessibleActionInterface) {
+QAccessibleWidget* QAccessibleWidget_new3(QWidget* o, int r, struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	QAccessibleWidget* ret = new QAccessibleWidget(o, static_cast<QAccessible::Role>(r), name_QString);
-	*outptr_QAccessibleWidget = ret;
-	*outptr_QAccessibleObject = static_cast<QAccessibleObject*>(ret);
-	*outptr_QAccessibleInterface = static_cast<QAccessibleInterface*>(ret);
-	*outptr_QAccessibleActionInterface = static_cast<QAccessibleActionInterface*>(ret);
+	return new QAccessibleWidget(o, static_cast<QAccessible::Role>(r), name_QString);
+}
+
+void QAccessibleWidget_virtbase(QAccessibleWidget* src, QAccessibleObject** outptr_QAccessibleObject, QAccessibleActionInterface** outptr_QAccessibleActionInterface) {
+	*outptr_QAccessibleObject = static_cast<QAccessibleObject*>(src);
+	*outptr_QAccessibleActionInterface = static_cast<QAccessibleActionInterface*>(src);
 }
 
 bool QAccessibleWidget_IsValid(const QAccessibleWidget* self) {

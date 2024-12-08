@@ -26,7 +26,7 @@ typedef struct QMutexLocker QMutexLocker;
 typedef struct QRecursiveMutex QRecursiveMutex;
 #endif
 
-void QBasicMutex_new(QBasicMutex** outptr_QBasicMutex);
+QBasicMutex* QBasicMutex_new();
 void QBasicMutex_Lock(QBasicMutex* self);
 void QBasicMutex_Unlock(QBasicMutex* self);
 bool QBasicMutex_TryLock(QBasicMutex* self);
@@ -35,8 +35,9 @@ bool QBasicMutex_IsRecursive(QBasicMutex* self);
 bool QBasicMutex_IsRecursive2(const QBasicMutex* self);
 void QBasicMutex_Delete(QBasicMutex* self, bool isSubclass);
 
-void QMutex_new(QMutex** outptr_QMutex, QBasicMutex** outptr_QBasicMutex);
-void QMutex_new2(int mode, QMutex** outptr_QMutex, QBasicMutex** outptr_QBasicMutex);
+QMutex* QMutex_new();
+QMutex* QMutex_new2(int mode);
+void QMutex_virtbase(QMutex* src, QBasicMutex** outptr_QBasicMutex);
 void QMutex_Lock(QMutex* self);
 bool QMutex_TryLock(QMutex* self);
 void QMutex_Unlock(QMutex* self);
@@ -45,11 +46,11 @@ bool QMutex_IsRecursive(const QMutex* self);
 bool QMutex_TryLock1(QMutex* self, int timeout);
 void QMutex_Delete(QMutex* self, bool isSubclass);
 
-void QRecursiveMutex_new(QRecursiveMutex** outptr_QRecursiveMutex);
+QRecursiveMutex* QRecursiveMutex_new();
 void QRecursiveMutex_Delete(QRecursiveMutex* self, bool isSubclass);
 
-void QMutexLocker_new(QBasicMutex* m, QMutexLocker** outptr_QMutexLocker);
-void QMutexLocker_new2(QRecursiveMutex* m, QMutexLocker** outptr_QMutexLocker);
+QMutexLocker* QMutexLocker_new(QBasicMutex* m);
+QMutexLocker* QMutexLocker_new2(QRecursiveMutex* m);
 void QMutexLocker_Unlock(QMutexLocker* self);
 void QMutexLocker_Relock(QMutexLocker* self);
 QMutex* QMutexLocker_Mutex(const QMutexLocker* self);

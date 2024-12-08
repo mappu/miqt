@@ -80,8 +80,9 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QProgressBar_new(QWidget* parent, QProgressBar** outptr_QProgressBar, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QProgressBar_new2(QProgressBar** outptr_QProgressBar, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QProgressBar* QProgressBar_new(QWidget* parent);
+QProgressBar* QProgressBar_new2();
+void QProgressBar_virtbase(QProgressBar* src, QWidget** outptr_QWidget);
 QMetaObject* QProgressBar_MetaObject(const QProgressBar* self);
 void* QProgressBar_Metacast(QProgressBar* self, const char* param1);
 struct miqt_string QProgressBar_Tr(const char* s);

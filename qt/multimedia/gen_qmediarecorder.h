@@ -46,8 +46,9 @@ typedef struct QVariant QVariant;
 typedef struct QVideoEncoderSettings QVideoEncoderSettings;
 #endif
 
-void QMediaRecorder_new(QMediaObject* mediaObject, QMediaRecorder** outptr_QMediaRecorder, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface);
-void QMediaRecorder_new2(QMediaObject* mediaObject, QObject* parent, QMediaRecorder** outptr_QMediaRecorder, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface);
+QMediaRecorder* QMediaRecorder_new(QMediaObject* mediaObject);
+QMediaRecorder* QMediaRecorder_new2(QMediaObject* mediaObject, QObject* parent);
+void QMediaRecorder_virtbase(QMediaRecorder* src, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface);
 QMetaObject* QMediaRecorder_MetaObject(const QMediaRecorder* self);
 void* QMediaRecorder_Metacast(QMediaRecorder* self, const char* param1);
 struct miqt_string QMediaRecorder_Tr(const char* s);

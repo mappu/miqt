@@ -52,7 +52,8 @@ typedef struct QStyleOptionComplex QStyleOptionComplex;
 typedef struct QWidget QWidget;
 #endif
 
-void QCommonStyle_new(QCommonStyle** outptr_QCommonStyle, QStyle** outptr_QStyle, QObject** outptr_QObject);
+QCommonStyle* QCommonStyle_new();
+void QCommonStyle_virtbase(QCommonStyle* src, QStyle** outptr_QStyle);
 QMetaObject* QCommonStyle_MetaObject(const QCommonStyle* self);
 void* QCommonStyle_Metacast(QCommonStyle* self, const char* param1);
 struct miqt_string QCommonStyle_Tr(const char* s);

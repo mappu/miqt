@@ -35,48 +35,40 @@ func (this *QTimer) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTimer constructs the type using only CGO pointers.
-func newQTimer(h *C.QTimer, h_QObject *C.QObject) *QTimer {
+func newQTimer(h *C.QTimer) *QTimer {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QTimer_virtbase(h, &outptr_QObject)
+
 	return &QTimer{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQTimer constructs the type using only unsafe pointers.
-func UnsafeNewQTimer(h unsafe.Pointer, h_QObject unsafe.Pointer) *QTimer {
-	if h == nil {
-		return nil
-	}
-
-	return &QTimer{h: (*C.QTimer)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQTimer(h unsafe.Pointer) *QTimer {
+	return newQTimer((*C.QTimer)(h))
 }
 
 // NewQTimer constructs a new QTimer object.
 func NewQTimer() *QTimer {
-	var outptr_QTimer *C.QTimer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTimer_new(&outptr_QTimer, &outptr_QObject)
-	ret := newQTimer(outptr_QTimer, outptr_QObject)
+	ret := newQTimer(C.QTimer_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTimer2 constructs a new QTimer object.
 func NewQTimer2(parent *QObject) *QTimer {
-	var outptr_QTimer *C.QTimer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTimer_new2(parent.cPointer(), &outptr_QTimer, &outptr_QObject)
-	ret := newQTimer(outptr_QTimer, outptr_QObject)
+	ret := newQTimer(C.QTimer_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QTimer) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTimer_MetaObject(this.h)))
+	return newQMetaObject(C.QTimer_MetaObject(this.h))
 }
 
 func (this *QTimer) Metacast(param1 string) unsafe.Pointer {
@@ -201,6 +193,9 @@ func (this *QTimer) callVirtualBase_TimerEvent(param1 *QTimerEvent) {
 
 }
 func (this *QTimer) OnTimerEvent(slot func(super func(param1 *QTimerEvent), param1 *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTimer_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -212,7 +207,7 @@ func miqt_exec_callback_QTimer_TimerEvent(self *C.QTimer, cb C.intptr_t, param1 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQTimerEvent(param1)
 
 	gofunc((&QTimer{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -224,6 +219,9 @@ func (this *QTimer) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QTimer) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTimer_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -235,7 +233,7 @@ func miqt_exec_callback_QTimer_Event(self *C.QTimer, cb C.intptr_t, event *C.QEv
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QTimer{h: self}).callVirtualBase_Event, slotval1)
 
@@ -249,6 +247,9 @@ func (this *QTimer) callVirtualBase_EventFilter(watched *QObject, event *QEvent)
 
 }
 func (this *QTimer) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTimer_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -260,8 +261,9 @@ func miqt_exec_callback_QTimer_EventFilter(self *C.QTimer, cb C.intptr_t, watche
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QTimer{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -275,6 +277,9 @@ func (this *QTimer) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QTimer) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTimer_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -286,7 +291,7 @@ func miqt_exec_callback_QTimer_ChildEvent(self *C.QTimer, cb C.intptr_t, event *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QTimer{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -298,6 +303,9 @@ func (this *QTimer) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QTimer) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTimer_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -309,7 +317,7 @@ func miqt_exec_callback_QTimer_CustomEvent(self *C.QTimer, cb C.intptr_t, event 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QTimer{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -321,6 +329,9 @@ func (this *QTimer) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QTimer) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTimer_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -332,7 +343,7 @@ func miqt_exec_callback_QTimer_ConnectNotify(self *C.QTimer, cb C.intptr_t, sign
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QTimer{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -344,6 +355,9 @@ func (this *QTimer) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QTimer) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTimer_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -355,7 +369,7 @@ func miqt_exec_callback_QTimer_DisconnectNotify(self *C.QTimer, cb C.intptr_t, s
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QTimer{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

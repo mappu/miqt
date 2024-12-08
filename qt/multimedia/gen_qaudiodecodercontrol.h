@@ -32,6 +32,7 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif
 
+void QAudioDecoderControl_virtbase(QAudioDecoderControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QAudioDecoderControl_MetaObject(const QAudioDecoderControl* self);
 void* QAudioDecoderControl_Metacast(QAudioDecoderControl* self, const char* param1);
 struct miqt_string QAudioDecoderControl_Tr(const char* s);

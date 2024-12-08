@@ -1204,20 +1204,16 @@ public:
 
 };
 
-void QSortFilterProxyModel_new(QSortFilterProxyModel** outptr_QSortFilterProxyModel, QAbstractProxyModel** outptr_QAbstractProxyModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQSortFilterProxyModel* ret = new MiqtVirtualQSortFilterProxyModel();
-	*outptr_QSortFilterProxyModel = ret;
-	*outptr_QAbstractProxyModel = static_cast<QAbstractProxyModel*>(ret);
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSortFilterProxyModel* QSortFilterProxyModel_new() {
+	return new MiqtVirtualQSortFilterProxyModel();
 }
 
-void QSortFilterProxyModel_new2(QObject* parent, QSortFilterProxyModel** outptr_QSortFilterProxyModel, QAbstractProxyModel** outptr_QAbstractProxyModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQSortFilterProxyModel* ret = new MiqtVirtualQSortFilterProxyModel(parent);
-	*outptr_QSortFilterProxyModel = ret;
-	*outptr_QAbstractProxyModel = static_cast<QAbstractProxyModel*>(ret);
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSortFilterProxyModel* QSortFilterProxyModel_new2(QObject* parent) {
+	return new MiqtVirtualQSortFilterProxyModel(parent);
+}
+
+void QSortFilterProxyModel_virtbase(QSortFilterProxyModel* src, QAbstractProxyModel** outptr_QAbstractProxyModel) {
+	*outptr_QAbstractProxyModel = static_cast<QAbstractProxyModel*>(src);
 }
 
 QMetaObject* QSortFilterProxyModel_MetaObject(const QSortFilterProxyModel* self) {

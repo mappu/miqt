@@ -11,6 +11,10 @@
 #include "gen_qwebenginenewwindowrequest.h"
 #include "_cgo_export.h"
 
+void QWebEngineNewWindowRequest_virtbase(QWebEngineNewWindowRequest* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
+
 QMetaObject* QWebEngineNewWindowRequest_MetaObject(const QWebEngineNewWindowRequest* self) {
 	return (QMetaObject*) self->metaObject();
 }

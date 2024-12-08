@@ -26,11 +26,11 @@ typedef struct QsciScintillaBase QsciScintillaBase;
 typedef struct QsciStyle QsciStyle;
 #endif
 
-void QsciStyle_new(QsciStyle** outptr_QsciStyle);
-void QsciStyle_new2(int style, struct miqt_string description, QColor* color, QColor* paper, QFont* font, QsciStyle** outptr_QsciStyle);
-void QsciStyle_new3(QsciStyle* param1, QsciStyle** outptr_QsciStyle);
-void QsciStyle_new4(int style, QsciStyle** outptr_QsciStyle);
-void QsciStyle_new5(int style, struct miqt_string description, QColor* color, QColor* paper, QFont* font, bool eolFill, QsciStyle** outptr_QsciStyle);
+QsciStyle* QsciStyle_new();
+QsciStyle* QsciStyle_new2(int style, struct miqt_string description, QColor* color, QColor* paper, QFont* font);
+QsciStyle* QsciStyle_new3(QsciStyle* param1);
+QsciStyle* QsciStyle_new4(int style);
+QsciStyle* QsciStyle_new5(int style, struct miqt_string description, QColor* color, QColor* paper, QFont* font, bool eolFill);
 void QsciStyle_Apply(const QsciStyle* self, QsciScintillaBase* sci);
 void QsciStyle_SetStyle(QsciStyle* self, int style);
 int QsciStyle_Style(const QsciStyle* self);

@@ -1034,18 +1034,16 @@ public:
 
 };
 
-void QConcatenateTablesProxyModel_new(QConcatenateTablesProxyModel** outptr_QConcatenateTablesProxyModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQConcatenateTablesProxyModel* ret = new MiqtVirtualQConcatenateTablesProxyModel();
-	*outptr_QConcatenateTablesProxyModel = ret;
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QConcatenateTablesProxyModel* QConcatenateTablesProxyModel_new() {
+	return new MiqtVirtualQConcatenateTablesProxyModel();
 }
 
-void QConcatenateTablesProxyModel_new2(QObject* parent, QConcatenateTablesProxyModel** outptr_QConcatenateTablesProxyModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQConcatenateTablesProxyModel* ret = new MiqtVirtualQConcatenateTablesProxyModel(parent);
-	*outptr_QConcatenateTablesProxyModel = ret;
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QConcatenateTablesProxyModel* QConcatenateTablesProxyModel_new2(QObject* parent) {
+	return new MiqtVirtualQConcatenateTablesProxyModel(parent);
+}
+
+void QConcatenateTablesProxyModel_virtbase(QConcatenateTablesProxyModel* src, QAbstractItemModel** outptr_QAbstractItemModel) {
+	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(src);
 }
 
 QMetaObject* QConcatenateTablesProxyModel_MetaObject(const QConcatenateTablesProxyModel* self) {

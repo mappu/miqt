@@ -756,10 +756,12 @@ public:
 
 };
 
-void QStyle_new(QStyle** outptr_QStyle, QObject** outptr_QObject) {
-	MiqtVirtualQStyle* ret = new MiqtVirtualQStyle();
-	*outptr_QStyle = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QStyle* QStyle_new() {
+	return new MiqtVirtualQStyle();
+}
+
+void QStyle_virtbase(QStyle* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QStyle_MetaObject(const QStyle* self) {

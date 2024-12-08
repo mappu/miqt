@@ -565,14 +565,12 @@ public:
 
 };
 
-void QPaintEngine_new(QPaintEngine** outptr_QPaintEngine) {
-	MiqtVirtualQPaintEngine* ret = new MiqtVirtualQPaintEngine();
-	*outptr_QPaintEngine = ret;
+QPaintEngine* QPaintEngine_new() {
+	return new MiqtVirtualQPaintEngine();
 }
 
-void QPaintEngine_new2(int features, QPaintEngine** outptr_QPaintEngine) {
-	MiqtVirtualQPaintEngine* ret = new MiqtVirtualQPaintEngine(static_cast<QPaintEngine::PaintEngineFeatures>(features));
-	*outptr_QPaintEngine = ret;
+QPaintEngine* QPaintEngine_new2(int features) {
+	return new MiqtVirtualQPaintEngine(static_cast<QPaintEngine::PaintEngineFeatures>(features));
 }
 
 bool QPaintEngine_IsActive(const QPaintEngine* self) {

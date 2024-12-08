@@ -36,8 +36,9 @@ typedef struct QRadioData QRadioData;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QRadioData_new(QMediaObject* mediaObject, QRadioData** outptr_QRadioData, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface);
-void QRadioData_new2(QMediaObject* mediaObject, QObject* parent, QRadioData** outptr_QRadioData, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface);
+QRadioData* QRadioData_new(QMediaObject* mediaObject);
+QRadioData* QRadioData_new2(QMediaObject* mediaObject, QObject* parent);
+void QRadioData_virtbase(QRadioData* src, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface);
 QMetaObject* QRadioData_MetaObject(const QRadioData* self);
 void* QRadioData_Metacast(QRadioData* self, const char* param1);
 struct miqt_string QRadioData_Tr(const char* s);

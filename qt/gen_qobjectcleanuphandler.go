@@ -35,37 +35,32 @@ func (this *QObjectCleanupHandler) UnsafePointer() unsafe.Pointer {
 }
 
 // newQObjectCleanupHandler constructs the type using only CGO pointers.
-func newQObjectCleanupHandler(h *C.QObjectCleanupHandler, h_QObject *C.QObject) *QObjectCleanupHandler {
+func newQObjectCleanupHandler(h *C.QObjectCleanupHandler) *QObjectCleanupHandler {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QObjectCleanupHandler_virtbase(h, &outptr_QObject)
+
 	return &QObjectCleanupHandler{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQObjectCleanupHandler constructs the type using only unsafe pointers.
-func UnsafeNewQObjectCleanupHandler(h unsafe.Pointer, h_QObject unsafe.Pointer) *QObjectCleanupHandler {
-	if h == nil {
-		return nil
-	}
-
-	return &QObjectCleanupHandler{h: (*C.QObjectCleanupHandler)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQObjectCleanupHandler(h unsafe.Pointer) *QObjectCleanupHandler {
+	return newQObjectCleanupHandler((*C.QObjectCleanupHandler)(h))
 }
 
 // NewQObjectCleanupHandler constructs a new QObjectCleanupHandler object.
 func NewQObjectCleanupHandler() *QObjectCleanupHandler {
-	var outptr_QObjectCleanupHandler *C.QObjectCleanupHandler = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QObjectCleanupHandler_new(&outptr_QObjectCleanupHandler, &outptr_QObject)
-	ret := newQObjectCleanupHandler(outptr_QObjectCleanupHandler, outptr_QObject)
+	ret := newQObjectCleanupHandler(C.QObjectCleanupHandler_new())
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QObjectCleanupHandler) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QObjectCleanupHandler_MetaObject(this.h)))
+	return newQMetaObject(C.QObjectCleanupHandler_MetaObject(this.h))
 }
 
 func (this *QObjectCleanupHandler) Metacast(param1 string) unsafe.Pointer {
@@ -93,7 +88,7 @@ func QObjectCleanupHandler_TrUtf8(s string) string {
 }
 
 func (this *QObjectCleanupHandler) Add(object *QObject) *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QObjectCleanupHandler_Add(this.h, object.cPointer())))
+	return newQObject(C.QObjectCleanupHandler_Add(this.h, object.cPointer()))
 }
 
 func (this *QObjectCleanupHandler) Remove(object *QObject) {
@@ -158,6 +153,9 @@ func (this *QObjectCleanupHandler) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QObjectCleanupHandler) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QObjectCleanupHandler_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -169,7 +167,7 @@ func miqt_exec_callback_QObjectCleanupHandler_Event(self *C.QObjectCleanupHandle
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QObjectCleanupHandler{h: self}).callVirtualBase_Event, slotval1)
 
@@ -183,6 +181,9 @@ func (this *QObjectCleanupHandler) callVirtualBase_EventFilter(watched *QObject,
 
 }
 func (this *QObjectCleanupHandler) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QObjectCleanupHandler_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -194,8 +195,9 @@ func miqt_exec_callback_QObjectCleanupHandler_EventFilter(self *C.QObjectCleanup
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QObjectCleanupHandler{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -209,6 +211,9 @@ func (this *QObjectCleanupHandler) callVirtualBase_TimerEvent(event *QTimerEvent
 
 }
 func (this *QObjectCleanupHandler) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QObjectCleanupHandler_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -220,7 +225,7 @@ func miqt_exec_callback_QObjectCleanupHandler_TimerEvent(self *C.QObjectCleanupH
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QObjectCleanupHandler{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -232,6 +237,9 @@ func (this *QObjectCleanupHandler) callVirtualBase_ChildEvent(event *QChildEvent
 
 }
 func (this *QObjectCleanupHandler) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QObjectCleanupHandler_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -243,7 +251,7 @@ func miqt_exec_callback_QObjectCleanupHandler_ChildEvent(self *C.QObjectCleanupH
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QObjectCleanupHandler{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -255,6 +263,9 @@ func (this *QObjectCleanupHandler) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QObjectCleanupHandler) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QObjectCleanupHandler_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -266,7 +277,7 @@ func miqt_exec_callback_QObjectCleanupHandler_CustomEvent(self *C.QObjectCleanup
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QObjectCleanupHandler{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -278,6 +289,9 @@ func (this *QObjectCleanupHandler) callVirtualBase_ConnectNotify(signal *QMetaMe
 
 }
 func (this *QObjectCleanupHandler) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QObjectCleanupHandler_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -289,7 +303,7 @@ func miqt_exec_callback_QObjectCleanupHandler_ConnectNotify(self *C.QObjectClean
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QObjectCleanupHandler{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -301,6 +315,9 @@ func (this *QObjectCleanupHandler) callVirtualBase_DisconnectNotify(signal *QMet
 
 }
 func (this *QObjectCleanupHandler) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QObjectCleanupHandler_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -312,7 +329,7 @@ func miqt_exec_callback_QObjectCleanupHandler_DisconnectNotify(self *C.QObjectCl
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QObjectCleanupHandler{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

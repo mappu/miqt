@@ -45,24 +45,19 @@ func newQResource(h *C.QResource) *QResource {
 	if h == nil {
 		return nil
 	}
+
 	return &QResource{h: h}
 }
 
 // UnsafeNewQResource constructs the type using only unsafe pointers.
 func UnsafeNewQResource(h unsafe.Pointer) *QResource {
-	if h == nil {
-		return nil
-	}
-
-	return &QResource{h: (*C.QResource)(h)}
+	return newQResource((*C.QResource)(h))
 }
 
 // NewQResource constructs a new QResource object.
 func NewQResource() *QResource {
-	var outptr_QResource *C.QResource = nil
 
-	C.QResource_new(&outptr_QResource)
-	ret := newQResource(outptr_QResource)
+	ret := newQResource(C.QResource_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -73,10 +68,8 @@ func NewQResource2(file string) *QResource {
 	file_ms.data = C.CString(file)
 	file_ms.len = C.size_t(len(file))
 	defer C.free(unsafe.Pointer(file_ms.data))
-	var outptr_QResource *C.QResource = nil
 
-	C.QResource_new2(file_ms, &outptr_QResource)
-	ret := newQResource(outptr_QResource)
+	ret := newQResource(C.QResource_new2(file_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -87,10 +80,8 @@ func NewQResource3(file string, locale *QLocale) *QResource {
 	file_ms.data = C.CString(file)
 	file_ms.len = C.size_t(len(file))
 	defer C.free(unsafe.Pointer(file_ms.data))
-	var outptr_QResource *C.QResource = nil
 
-	C.QResource_new3(file_ms, locale.cPointer(), &outptr_QResource)
-	ret := newQResource(outptr_QResource)
+	ret := newQResource(C.QResource_new3(file_ms, locale.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -122,8 +113,7 @@ func (this *QResource) SetLocale(locale *QLocale) {
 }
 
 func (this *QResource) Locale() *QLocale {
-	_ret := C.QResource_Locale(this.h)
-	_goptr := newQLocale(_ret)
+	_goptr := newQLocale(C.QResource_Locale(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -156,8 +146,7 @@ func (this *QResource) UncompressedData() []byte {
 }
 
 func (this *QResource) LastModified() *QDateTime {
-	_ret := C.QResource_LastModified(this.h)
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QResource_LastModified(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

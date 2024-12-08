@@ -26,7 +26,7 @@ typedef struct QScriptValue QScriptValue;
 typedef struct QVariant QVariant;
 #endif
 
-void QScriptEngineAgent_new(QScriptEngine* engine, QScriptEngineAgent** outptr_QScriptEngineAgent);
+QScriptEngineAgent* QScriptEngineAgent_new(QScriptEngine* engine);
 void QScriptEngineAgent_ScriptLoad(QScriptEngineAgent* self, long long id, struct miqt_string program, struct miqt_string fileName, int baseLineNumber);
 void QScriptEngineAgent_ScriptUnload(QScriptEngineAgent* self, long long id);
 void QScriptEngineAgent_ContextPush(QScriptEngineAgent* self);

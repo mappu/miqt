@@ -484,16 +484,16 @@ public:
 
 };
 
-void QAbstractItemDelegate_new(QAbstractItemDelegate** outptr_QAbstractItemDelegate, QObject** outptr_QObject) {
-	MiqtVirtualQAbstractItemDelegate* ret = new MiqtVirtualQAbstractItemDelegate();
-	*outptr_QAbstractItemDelegate = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAbstractItemDelegate* QAbstractItemDelegate_new() {
+	return new MiqtVirtualQAbstractItemDelegate();
 }
 
-void QAbstractItemDelegate_new2(QObject* parent, QAbstractItemDelegate** outptr_QAbstractItemDelegate, QObject** outptr_QObject) {
-	MiqtVirtualQAbstractItemDelegate* ret = new MiqtVirtualQAbstractItemDelegate(parent);
-	*outptr_QAbstractItemDelegate = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAbstractItemDelegate* QAbstractItemDelegate_new2(QObject* parent) {
+	return new MiqtVirtualQAbstractItemDelegate(parent);
+}
+
+void QAbstractItemDelegate_virtbase(QAbstractItemDelegate* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QAbstractItemDelegate_MetaObject(const QAbstractItemDelegate* self) {

@@ -38,24 +38,19 @@ func newQAbstractNativeEventFilter(h *C.QAbstractNativeEventFilter) *QAbstractNa
 	if h == nil {
 		return nil
 	}
+
 	return &QAbstractNativeEventFilter{h: h}
 }
 
 // UnsafeNewQAbstractNativeEventFilter constructs the type using only unsafe pointers.
 func UnsafeNewQAbstractNativeEventFilter(h unsafe.Pointer) *QAbstractNativeEventFilter {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractNativeEventFilter{h: (*C.QAbstractNativeEventFilter)(h)}
+	return newQAbstractNativeEventFilter((*C.QAbstractNativeEventFilter)(h))
 }
 
 // NewQAbstractNativeEventFilter constructs a new QAbstractNativeEventFilter object.
 func NewQAbstractNativeEventFilter() *QAbstractNativeEventFilter {
-	var outptr_QAbstractNativeEventFilter *C.QAbstractNativeEventFilter = nil
 
-	C.QAbstractNativeEventFilter_new(&outptr_QAbstractNativeEventFilter)
-	ret := newQAbstractNativeEventFilter(outptr_QAbstractNativeEventFilter)
+	ret := newQAbstractNativeEventFilter(C.QAbstractNativeEventFilter_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -67,6 +62,9 @@ func (this *QAbstractNativeEventFilter) NativeEventFilter(eventType []byte, mess
 	return (bool)(C.QAbstractNativeEventFilter_NativeEventFilter(this.h, eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
 }
 func (this *QAbstractNativeEventFilter) OnNativeEventFilter(slot func(eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractNativeEventFilter_override_virtual_NativeEventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

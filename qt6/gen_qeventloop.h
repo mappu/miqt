@@ -36,8 +36,9 @@ typedef struct QThread QThread;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QEventLoop_new(QEventLoop** outptr_QEventLoop, QObject** outptr_QObject);
-void QEventLoop_new2(QObject* parent, QEventLoop** outptr_QEventLoop, QObject** outptr_QObject);
+QEventLoop* QEventLoop_new();
+QEventLoop* QEventLoop_new2(QObject* parent);
+void QEventLoop_virtbase(QEventLoop* src, QObject** outptr_QObject);
 QMetaObject* QEventLoop_MetaObject(const QEventLoop* self);
 void* QEventLoop_Metacast(QEventLoop* self, const char* param1);
 struct miqt_string QEventLoop_Tr(const char* s);
@@ -70,9 +71,9 @@ void QEventLoop_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QEventLoop_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QEventLoop_Delete(QEventLoop* self, bool isSubclass);
 
-void QEventLoopLocker_new(QEventLoopLocker** outptr_QEventLoopLocker);
-void QEventLoopLocker_new2(QEventLoop* loop, QEventLoopLocker** outptr_QEventLoopLocker);
-void QEventLoopLocker_new3(QThread* thread, QEventLoopLocker** outptr_QEventLoopLocker);
+QEventLoopLocker* QEventLoopLocker_new();
+QEventLoopLocker* QEventLoopLocker_new2(QEventLoop* loop);
+QEventLoopLocker* QEventLoopLocker_new3(QThread* thread);
 void QEventLoopLocker_Delete(QEventLoopLocker* self, bool isSubclass);
 
 #ifdef __cplusplus

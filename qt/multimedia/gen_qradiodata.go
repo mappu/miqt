@@ -99,46 +99,36 @@ func (this *QRadioData) UnsafePointer() unsafe.Pointer {
 }
 
 // newQRadioData constructs the type using only CGO pointers.
-func newQRadioData(h *C.QRadioData, h_QObject *C.QObject, h_QMediaBindableInterface *C.QMediaBindableInterface) *QRadioData {
+func newQRadioData(h *C.QRadioData) *QRadioData {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	var outptr_QMediaBindableInterface *C.QMediaBindableInterface = nil
+	C.QRadioData_virtbase(h, &outptr_QObject, &outptr_QMediaBindableInterface)
+
 	return &QRadioData{h: h,
-		QObject:                 qt.UnsafeNewQObject(unsafe.Pointer(h_QObject)),
-		QMediaBindableInterface: newQMediaBindableInterface(h_QMediaBindableInterface)}
+		QObject:                 qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject)),
+		QMediaBindableInterface: newQMediaBindableInterface(outptr_QMediaBindableInterface)}
 }
 
 // UnsafeNewQRadioData constructs the type using only unsafe pointers.
-func UnsafeNewQRadioData(h unsafe.Pointer, h_QObject unsafe.Pointer, h_QMediaBindableInterface unsafe.Pointer) *QRadioData {
-	if h == nil {
-		return nil
-	}
-
-	return &QRadioData{h: (*C.QRadioData)(h),
-		QObject:                 qt.UnsafeNewQObject(h_QObject),
-		QMediaBindableInterface: UnsafeNewQMediaBindableInterface(h_QMediaBindableInterface)}
+func UnsafeNewQRadioData(h unsafe.Pointer) *QRadioData {
+	return newQRadioData((*C.QRadioData)(h))
 }
 
 // NewQRadioData constructs a new QRadioData object.
 func NewQRadioData(mediaObject *QMediaObject) *QRadioData {
-	var outptr_QRadioData *C.QRadioData = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QMediaBindableInterface *C.QMediaBindableInterface = nil
 
-	C.QRadioData_new(mediaObject.cPointer(), &outptr_QRadioData, &outptr_QObject, &outptr_QMediaBindableInterface)
-	ret := newQRadioData(outptr_QRadioData, outptr_QObject, outptr_QMediaBindableInterface)
+	ret := newQRadioData(C.QRadioData_new(mediaObject.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQRadioData2 constructs a new QRadioData object.
 func NewQRadioData2(mediaObject *QMediaObject, parent *qt.QObject) *QRadioData {
-	var outptr_QRadioData *C.QRadioData = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QMediaBindableInterface *C.QMediaBindableInterface = nil
 
-	C.QRadioData_new2(mediaObject.cPointer(), (*C.QObject)(parent.UnsafePointer()), &outptr_QRadioData, &outptr_QObject, &outptr_QMediaBindableInterface)
-	ret := newQRadioData(outptr_QRadioData, outptr_QObject, outptr_QMediaBindableInterface)
+	ret := newQRadioData(C.QRadioData_new2(mediaObject.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -176,7 +166,7 @@ func (this *QRadioData) Availability() QMultimedia__AvailabilityStatus {
 }
 
 func (this *QRadioData) MediaObject() *QMediaObject {
-	return UnsafeNewQMediaObject(unsafe.Pointer(C.QRadioData_MediaObject(this.h)), nil)
+	return newQMediaObject(C.QRadioData_MediaObject(this.h))
 }
 
 func (this *QRadioData) StationId() string {
@@ -444,9 +434,13 @@ func QRadioData_TrUtf83(s string, c string, n int) string {
 
 func (this *QRadioData) callVirtualBase_MediaObject() *QMediaObject {
 
-	return UnsafeNewQMediaObject(unsafe.Pointer(C.QRadioData_virtualbase_MediaObject(unsafe.Pointer(this.h))), nil)
+	return newQMediaObject(C.QRadioData_virtualbase_MediaObject(unsafe.Pointer(this.h)))
+
 }
 func (this *QRadioData) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRadioData_override_virtual_MediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -469,6 +463,9 @@ func (this *QRadioData) callVirtualBase_SetMediaObject(mediaObject *QMediaObject
 
 }
 func (this *QRadioData) OnSetMediaObject(slot func(super func(mediaObject *QMediaObject) bool, mediaObject *QMediaObject) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRadioData_override_virtual_SetMediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -480,7 +477,7 @@ func miqt_exec_callback_QRadioData_SetMediaObject(self *C.QRadioData, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMediaObject(unsafe.Pointer(mediaObject), nil)
+	slotval1 := newQMediaObject(mediaObject)
 
 	virtualReturn := gofunc((&QRadioData{h: self}).callVirtualBase_SetMediaObject, slotval1)
 
@@ -494,6 +491,9 @@ func (this *QRadioData) callVirtualBase_Event(event *qt.QEvent) bool {
 
 }
 func (this *QRadioData) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRadioData_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -519,6 +519,9 @@ func (this *QRadioData) callVirtualBase_EventFilter(watched *qt.QObject, event *
 
 }
 func (this *QRadioData) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRadioData_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -531,6 +534,7 @@ func miqt_exec_callback_QRadioData_EventFilter(self *C.QRadioData, cb C.intptr_t
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QRadioData{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
@@ -545,6 +549,9 @@ func (this *QRadioData) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
 }
 func (this *QRadioData) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRadioData_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -556,7 +563,7 @@ func miqt_exec_callback_QRadioData_TimerEvent(self *C.QRadioData, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QRadioData{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -568,6 +575,9 @@ func (this *QRadioData) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
 }
 func (this *QRadioData) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRadioData_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -579,7 +589,7 @@ func miqt_exec_callback_QRadioData_ChildEvent(self *C.QRadioData, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QRadioData{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -591,6 +601,9 @@ func (this *QRadioData) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
 }
 func (this *QRadioData) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRadioData_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -614,6 +627,9 @@ func (this *QRadioData) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
 }
 func (this *QRadioData) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRadioData_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -637,6 +653,9 @@ func (this *QRadioData) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod)
 
 }
 func (this *QRadioData) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRadioData_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

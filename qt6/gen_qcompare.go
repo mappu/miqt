@@ -52,24 +52,19 @@ func newQPartialOrdering(h *C.QPartialOrdering) *QPartialOrdering {
 	if h == nil {
 		return nil
 	}
+
 	return &QPartialOrdering{h: h}
 }
 
 // UnsafeNewQPartialOrdering constructs the type using only unsafe pointers.
 func UnsafeNewQPartialOrdering(h unsafe.Pointer) *QPartialOrdering {
-	if h == nil {
-		return nil
-	}
-
-	return &QPartialOrdering{h: (*C.QPartialOrdering)(h)}
+	return newQPartialOrdering((*C.QPartialOrdering)(h))
 }
 
 // NewQPartialOrdering constructs a new QPartialOrdering object.
 func NewQPartialOrdering(param1 *QPartialOrdering) *QPartialOrdering {
-	var outptr_QPartialOrdering *C.QPartialOrdering = nil
 
-	C.QPartialOrdering_new(param1.cPointer(), &outptr_QPartialOrdering)
-	ret := newQPartialOrdering(outptr_QPartialOrdering)
+	ret := newQPartialOrdering(C.QPartialOrdering_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

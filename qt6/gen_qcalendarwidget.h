@@ -86,8 +86,9 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QCalendarWidget_new(QWidget* parent, QCalendarWidget** outptr_QCalendarWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QCalendarWidget_new2(QCalendarWidget** outptr_QCalendarWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QCalendarWidget* QCalendarWidget_new(QWidget* parent);
+QCalendarWidget* QCalendarWidget_new2();
+void QCalendarWidget_virtbase(QCalendarWidget* src, QWidget** outptr_QWidget);
 QMetaObject* QCalendarWidget_MetaObject(const QCalendarWidget* self);
 void* QCalendarWidget_Metacast(QCalendarWidget* self, const char* param1);
 struct miqt_string QCalendarWidget_Tr(const char* s);

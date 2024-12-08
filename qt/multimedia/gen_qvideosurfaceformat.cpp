@@ -8,24 +8,20 @@
 #include "gen_qvideosurfaceformat.h"
 #include "_cgo_export.h"
 
-void QVideoSurfaceFormat_new(QVideoSurfaceFormat** outptr_QVideoSurfaceFormat) {
-	QVideoSurfaceFormat* ret = new QVideoSurfaceFormat();
-	*outptr_QVideoSurfaceFormat = ret;
+QVideoSurfaceFormat* QVideoSurfaceFormat_new() {
+	return new QVideoSurfaceFormat();
 }
 
-void QVideoSurfaceFormat_new2(QSize* size, int pixelFormat, QVideoSurfaceFormat** outptr_QVideoSurfaceFormat) {
-	QVideoSurfaceFormat* ret = new QVideoSurfaceFormat(*size, static_cast<QVideoFrame::PixelFormat>(pixelFormat));
-	*outptr_QVideoSurfaceFormat = ret;
+QVideoSurfaceFormat* QVideoSurfaceFormat_new2(QSize* size, int pixelFormat) {
+	return new QVideoSurfaceFormat(*size, static_cast<QVideoFrame::PixelFormat>(pixelFormat));
 }
 
-void QVideoSurfaceFormat_new3(QVideoSurfaceFormat* format, QVideoSurfaceFormat** outptr_QVideoSurfaceFormat) {
-	QVideoSurfaceFormat* ret = new QVideoSurfaceFormat(*format);
-	*outptr_QVideoSurfaceFormat = ret;
+QVideoSurfaceFormat* QVideoSurfaceFormat_new3(QVideoSurfaceFormat* format) {
+	return new QVideoSurfaceFormat(*format);
 }
 
-void QVideoSurfaceFormat_new4(QSize* size, int pixelFormat, int handleType, QVideoSurfaceFormat** outptr_QVideoSurfaceFormat) {
-	QVideoSurfaceFormat* ret = new QVideoSurfaceFormat(*size, static_cast<QVideoFrame::PixelFormat>(pixelFormat), static_cast<QAbstractVideoBuffer::HandleType>(handleType));
-	*outptr_QVideoSurfaceFormat = ret;
+QVideoSurfaceFormat* QVideoSurfaceFormat_new4(QSize* size, int pixelFormat, int handleType) {
+	return new QVideoSurfaceFormat(*size, static_cast<QVideoFrame::PixelFormat>(pixelFormat), static_cast<QAbstractVideoBuffer::HandleType>(handleType));
 }
 
 void QVideoSurfaceFormat_OperatorAssign(QVideoSurfaceFormat* self, QVideoSurfaceFormat* format) {

@@ -723,7 +723,17 @@ extern "C" {
 		methodPrefixName := cabiClassName(c.ClassName)
 
 		for i, ctor := range c.Ctors {
-			ret.WriteString(fmt.Sprintf("void %s_new%s(%s);\n", methodPrefixName, maybeSuffix(i), emitParametersCabiConstructor(&c, &ctor)))
+			ret.WriteString(fmt.Sprintf("%s* %s_new%s(%s);\n", methodPrefixName, methodPrefixName, maybeSuffix(i), emitParametersCabiConstructor(&c, &ctor)))
+		}
+
+		if len(c.DirectInheritClassInfo()) > 0 {
+			ret.WriteString(
+				"void " + methodPrefixName + "_virtbase(" + methodPrefixName + "* src",
+			)
+			for _, baseClass := range c.DirectInheritClassInfo() {
+				ret.WriteString(", " + cabiClassName(baseClass.Class.ClassName) + "** outptr_" + cabiClassName(baseClass.Class.ClassName))
+			}
+			ret.WriteString(");\n")
 		}
 
 		for _, m := range c.Methods {
@@ -765,25 +775,8 @@ func fullyQualifiedConstructor(className string) string {
 
 func emitParametersCabiConstructor(c *CppClass, ctor *CppMethod) string {
 
-	plist := slice_copy(ctor.Parameters) // semi-shallow copy
-
-	plist = append(plist, CppParameter{
-		ParameterName: cabiClassName("outptr_" + cabiClassName(c.ClassName)),
-		ParameterType: c.ClassName,
-		Pointer:       true,
-		PointerCount:  2,
-	})
-	for _, baseClass := range c.AllInherits() {
-		plist = append(plist, CppParameter{
-			ParameterName: cabiClassName("outptr_" + cabiClassName(baseClass)),
-			ParameterType: baseClass,
-			Pointer:       true,
-			PointerCount:  2,
-		})
-	}
-
-	slist := make([]string, 0, len(plist))
-	for _, p := range plist {
+	slist := make([]string, 0, len(ctor.Parameters))
+	for _, p := range ctor.Parameters {
 		slist = append(slist, p.RenderTypeCabi()+" "+p.ParameterName)
 	}
 
@@ -969,34 +962,24 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 
 		for i, ctor := range c.Ctors {
 
-			// The returned ctor needs to return a C++ pointer for not just the
-			// class itself, but also all of the inherited base classes
-			// That's because C++ virtual inheritance shifts the pointer; we
-			// need all the base pointers to call base methods from CGO
-			// Supply them all as out-parameters so we only need one roundtrip
-
 			preamble, forwarding := emitParametersCABI2CppForwarding(ctor.Parameters, "\t")
 
 			ret.WriteString(
-				"void " + methodPrefixName + "_new" + maybeSuffix(i) + "(" + emitParametersCabiConstructor(&c, &ctor) + ") {\n",
+				cabiClassName(c.ClassName) + "* " + methodPrefixName + "_new" + maybeSuffix(i) + "(" + emitParametersCabiConstructor(&c, &ctor) + ") {\n",
 			)
 
 			if ctor.LinuxOnly {
 				ret.WriteString(
 					"#ifndef Q_OS_LINUX\n" +
-						"\treturn;\n" +
+						"\treturn nullptr;\n" +
 						"#else\n",
 				)
 			}
 
 			ret.WriteString(
 				preamble +
-					"\t" + cppClassName + "* ret = new " + cppClassName + "(" + forwarding + ");\n" + // Subclass class name
-					"\t*outptr_" + cabiClassName(c.ClassName) + " = ret;\n", // Original class name
+					"\treturn new " + cppClassName + "(" + forwarding + ");\n",
 			)
-			for _, baseClass := range c.AllInherits() {
-				ret.WriteString("\t*outptr_" + cabiClassName(baseClass) + " = static_cast<" + baseClass + "*>(ret);\n")
-			}
 
 			if ctor.LinuxOnly {
 				ret.WriteString(
@@ -1004,6 +987,27 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 				)
 			}
 
+			ret.WriteString(
+				"}\n" +
+					"\n",
+			)
+
+		}
+
+		// Add a helper method to retrieve base class pointers
+		// That's because C++ virtual inheritance shifts the pointer; we
+		// need the base pointers to call base methods from CGO
+		if len(c.DirectInheritClassInfo()) > 0 {
+			ret.WriteString(
+				"void " + methodPrefixName + "_virtbase(" + methodPrefixName + "* src",
+			)
+			for _, baseClass := range c.DirectInheritClassInfo() {
+				ret.WriteString(", " + baseClass.Class.ClassName + "** outptr_" + cabiClassName(baseClass.Class.ClassName))
+			}
+			ret.WriteString(") {\n")
+			for _, baseClass := range c.DirectInheritClassInfo() {
+				ret.WriteString("\t*outptr_" + cabiClassName(baseClass.Class.ClassName) + " = static_cast<" + baseClass.Class.ClassName + "*>(src);\n")
+			}
 			ret.WriteString(
 				"}\n" +
 					"\n",

@@ -42,8 +42,9 @@ QVideoFrame* QVideoFilterRunnable_Run(QVideoFilterRunnable* self, QVideoFrame* i
 void QVideoFilterRunnable_OperatorAssign(QVideoFilterRunnable* self, QVideoFilterRunnable* param1);
 void QVideoFilterRunnable_Delete(QVideoFilterRunnable* self, bool isSubclass);
 
-void QAbstractVideoFilter_new(QAbstractVideoFilter** outptr_QAbstractVideoFilter, QObject** outptr_QObject);
-void QAbstractVideoFilter_new2(QObject* parent, QAbstractVideoFilter** outptr_QAbstractVideoFilter, QObject** outptr_QObject);
+QAbstractVideoFilter* QAbstractVideoFilter_new();
+QAbstractVideoFilter* QAbstractVideoFilter_new2(QObject* parent);
+void QAbstractVideoFilter_virtbase(QAbstractVideoFilter* src, QObject** outptr_QObject);
 QMetaObject* QAbstractVideoFilter_MetaObject(const QAbstractVideoFilter* self);
 void* QAbstractVideoFilter_Metacast(QAbstractVideoFilter* self, const char* param1);
 struct miqt_string QAbstractVideoFilter_Tr(const char* s);

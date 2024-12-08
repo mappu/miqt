@@ -76,9 +76,10 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWindow QWindow;
 #endif
 
-void QWindow_new(QWindow** outptr_QWindow, QObject** outptr_QObject, QSurface** outptr_QSurface);
-void QWindow_new2(QWindow* parent, QWindow** outptr_QWindow, QObject** outptr_QObject, QSurface** outptr_QSurface);
-void QWindow_new3(QScreen* screen, QWindow** outptr_QWindow, QObject** outptr_QObject, QSurface** outptr_QSurface);
+QWindow* QWindow_new();
+QWindow* QWindow_new2(QWindow* parent);
+QWindow* QWindow_new3(QScreen* screen);
+void QWindow_virtbase(QWindow* src, QObject** outptr_QObject, QSurface** outptr_QSurface);
 QMetaObject* QWindow_MetaObject(const QWindow* self);
 void* QWindow_Metacast(QWindow* self, const char* param1);
 struct miqt_string QWindow_Tr(const char* s);

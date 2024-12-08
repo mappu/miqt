@@ -24,6 +24,7 @@ typedef struct QObject QObject;
 typedef struct QSessionManager QSessionManager;
 #endif
 
+void QSessionManager_virtbase(QSessionManager* src, QObject** outptr_QObject);
 QMetaObject* QSessionManager_MetaObject(const QSessionManager* self);
 void* QSessionManager_Metacast(QSessionManager* self, const char* param1);
 struct miqt_string QSessionManager_Tr(const char* s);

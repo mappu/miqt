@@ -51,14 +51,11 @@ func newQIODeviceBase(h *C.QIODeviceBase) *QIODeviceBase {
 	if h == nil {
 		return nil
 	}
+
 	return &QIODeviceBase{h: h}
 }
 
 // UnsafeNewQIODeviceBase constructs the type using only unsafe pointers.
 func UnsafeNewQIODeviceBase(h unsafe.Pointer) *QIODeviceBase {
-	if h == nil {
-		return nil
-	}
-
-	return &QIODeviceBase{h: (*C.QIODeviceBase)(h)}
+	return newQIODeviceBase((*C.QIODeviceBase)(h))
 }

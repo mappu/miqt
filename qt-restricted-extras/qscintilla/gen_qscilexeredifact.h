@@ -34,8 +34,9 @@ typedef struct QsciLexerEDIFACT QsciLexerEDIFACT;
 typedef struct QsciScintilla QsciScintilla;
 #endif
 
-void QsciLexerEDIFACT_new(QsciLexerEDIFACT** outptr_QsciLexerEDIFACT, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerEDIFACT_new2(QObject* parent, QsciLexerEDIFACT** outptr_QsciLexerEDIFACT, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerEDIFACT* QsciLexerEDIFACT_new();
+QsciLexerEDIFACT* QsciLexerEDIFACT_new2(QObject* parent);
+void QsciLexerEDIFACT_virtbase(QsciLexerEDIFACT* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerEDIFACT_MetaObject(const QsciLexerEDIFACT* self);
 void* QsciLexerEDIFACT_Metacast(QsciLexerEDIFACT* self, const char* param1);
 struct miqt_string QsciLexerEDIFACT_Tr(const char* s);

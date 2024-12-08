@@ -42,8 +42,9 @@ typedef struct QVBoxLayout QVBoxLayout;
 typedef struct QWidget QWidget;
 #endif
 
-void QBoxLayout_new(int param1, QBoxLayout** outptr_QBoxLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem);
-void QBoxLayout_new2(int param1, QWidget* parent, QBoxLayout** outptr_QBoxLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem);
+QBoxLayout* QBoxLayout_new(int param1);
+QBoxLayout* QBoxLayout_new2(int param1, QWidget* parent);
+void QBoxLayout_virtbase(QBoxLayout* src, QLayout** outptr_QLayout);
 QMetaObject* QBoxLayout_MetaObject(const QBoxLayout* self);
 void* QBoxLayout_Metacast(QBoxLayout* self, const char* param1);
 struct miqt_string QBoxLayout_Tr(const char* s);
@@ -133,8 +134,9 @@ void QBoxLayout_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QBoxLayout_virtualbase_ChildEvent(void* self, QChildEvent* e);
 void QBoxLayout_Delete(QBoxLayout* self, bool isSubclass);
 
-void QHBoxLayout_new(QWidget* parent, QHBoxLayout** outptr_QHBoxLayout, QBoxLayout** outptr_QBoxLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem);
-void QHBoxLayout_new2(QHBoxLayout** outptr_QHBoxLayout, QBoxLayout** outptr_QBoxLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem);
+QHBoxLayout* QHBoxLayout_new(QWidget* parent);
+QHBoxLayout* QHBoxLayout_new2();
+void QHBoxLayout_virtbase(QHBoxLayout* src, QBoxLayout** outptr_QBoxLayout);
 QMetaObject* QHBoxLayout_MetaObject(const QHBoxLayout* self);
 void* QHBoxLayout_Metacast(QHBoxLayout* self, const char* param1);
 struct miqt_string QHBoxLayout_Tr(const char* s);
@@ -171,8 +173,9 @@ void QHBoxLayout_override_virtual_SetGeometry(void* self, intptr_t slot);
 void QHBoxLayout_virtualbase_SetGeometry(void* self, QRect* geometry);
 void QHBoxLayout_Delete(QHBoxLayout* self, bool isSubclass);
 
-void QVBoxLayout_new(QWidget* parent, QVBoxLayout** outptr_QVBoxLayout, QBoxLayout** outptr_QBoxLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem);
-void QVBoxLayout_new2(QVBoxLayout** outptr_QVBoxLayout, QBoxLayout** outptr_QBoxLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem);
+QVBoxLayout* QVBoxLayout_new(QWidget* parent);
+QVBoxLayout* QVBoxLayout_new2();
+void QVBoxLayout_virtbase(QVBoxLayout* src, QBoxLayout** outptr_QBoxLayout);
 QMetaObject* QVBoxLayout_MetaObject(const QVBoxLayout* self);
 void* QVBoxLayout_Metacast(QVBoxLayout* self, const char* param1);
 struct miqt_string QVBoxLayout_Tr(const char* s);

@@ -56,9 +56,10 @@ typedef struct QStyleOptionComplex QStyleOptionComplex;
 typedef struct QWidget QWidget;
 #endif
 
-void QProxyStyle_new(QProxyStyle** outptr_QProxyStyle, QCommonStyle** outptr_QCommonStyle, QStyle** outptr_QStyle, QObject** outptr_QObject);
-void QProxyStyle_new2(struct miqt_string key, QProxyStyle** outptr_QProxyStyle, QCommonStyle** outptr_QCommonStyle, QStyle** outptr_QStyle, QObject** outptr_QObject);
-void QProxyStyle_new3(QStyle* style, QProxyStyle** outptr_QProxyStyle, QCommonStyle** outptr_QCommonStyle, QStyle** outptr_QStyle, QObject** outptr_QObject);
+QProxyStyle* QProxyStyle_new();
+QProxyStyle* QProxyStyle_new2(struct miqt_string key);
+QProxyStyle* QProxyStyle_new3(QStyle* style);
+void QProxyStyle_virtbase(QProxyStyle* src, QCommonStyle** outptr_QCommonStyle);
 QMetaObject* QProxyStyle_MetaObject(const QProxyStyle* self);
 void* QProxyStyle_Metacast(QProxyStyle* self, const char* param1);
 struct miqt_string QProxyStyle_Tr(const char* s);

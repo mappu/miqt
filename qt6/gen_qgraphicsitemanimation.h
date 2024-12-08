@@ -40,8 +40,9 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QTransform QTransform;
 #endif
 
-void QGraphicsItemAnimation_new(QGraphicsItemAnimation** outptr_QGraphicsItemAnimation, QObject** outptr_QObject);
-void QGraphicsItemAnimation_new2(QObject* parent, QGraphicsItemAnimation** outptr_QGraphicsItemAnimation, QObject** outptr_QObject);
+QGraphicsItemAnimation* QGraphicsItemAnimation_new();
+QGraphicsItemAnimation* QGraphicsItemAnimation_new2(QObject* parent);
+void QGraphicsItemAnimation_virtbase(QGraphicsItemAnimation* src, QObject** outptr_QObject);
 QMetaObject* QGraphicsItemAnimation_MetaObject(const QGraphicsItemAnimation* self);
 void* QGraphicsItemAnimation_Metacast(QGraphicsItemAnimation* self, const char* param1);
 struct miqt_string QGraphicsItemAnimation_Tr(const char* s);

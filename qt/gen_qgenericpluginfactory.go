@@ -37,16 +37,13 @@ func newQGenericPluginFactory(h *C.QGenericPluginFactory) *QGenericPluginFactory
 	if h == nil {
 		return nil
 	}
+
 	return &QGenericPluginFactory{h: h}
 }
 
 // UnsafeNewQGenericPluginFactory constructs the type using only unsafe pointers.
 func UnsafeNewQGenericPluginFactory(h unsafe.Pointer) *QGenericPluginFactory {
-	if h == nil {
-		return nil
-	}
-
-	return &QGenericPluginFactory{h: (*C.QGenericPluginFactory)(h)}
+	return newQGenericPluginFactory((*C.QGenericPluginFactory)(h))
 }
 
 func QGenericPluginFactory_Keys() []string {
@@ -71,7 +68,7 @@ func QGenericPluginFactory_Create(param1 string, param2 string) *QObject {
 	param2_ms.data = C.CString(param2)
 	param2_ms.len = C.size_t(len(param2))
 	defer C.free(unsafe.Pointer(param2_ms.data))
-	return UnsafeNewQObject(unsafe.Pointer(C.QGenericPluginFactory_Create(param1_ms, param2_ms)))
+	return newQObject(C.QGenericPluginFactory_Create(param1_ms, param2_ms))
 }
 
 // Delete this object from C++ memory.

@@ -34,8 +34,9 @@ typedef struct QsciLexerCSS QsciLexerCSS;
 typedef struct QsciScintilla QsciScintilla;
 #endif
 
-void QsciLexerCSS_new(QsciLexerCSS** outptr_QsciLexerCSS, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerCSS_new2(QObject* parent, QsciLexerCSS** outptr_QsciLexerCSS, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerCSS* QsciLexerCSS_new();
+QsciLexerCSS* QsciLexerCSS_new2(QObject* parent);
+void QsciLexerCSS_virtbase(QsciLexerCSS* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerCSS_MetaObject(const QsciLexerCSS* self);
 void* QsciLexerCSS_Metacast(QsciLexerCSS* self, const char* param1);
 struct miqt_string QsciLexerCSS_Tr(const char* s);

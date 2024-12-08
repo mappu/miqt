@@ -12,39 +12,32 @@
 #include "gen_qtransform.h"
 #include "_cgo_export.h"
 
-void QTransform_new(int param1, QTransform** outptr_QTransform) {
-	QTransform* ret = new QTransform(static_cast<Qt::Initialization>(param1));
-	*outptr_QTransform = ret;
+QTransform* QTransform_new(int param1) {
+	return new QTransform(static_cast<Qt::Initialization>(param1));
 }
 
-void QTransform_new2(QTransform** outptr_QTransform) {
-	QTransform* ret = new QTransform();
-	*outptr_QTransform = ret;
+QTransform* QTransform_new2() {
+	return new QTransform();
 }
 
-void QTransform_new3(double h11, double h12, double h13, double h21, double h22, double h23, double h31, double h32, QTransform** outptr_QTransform) {
-	QTransform* ret = new QTransform(static_cast<qreal>(h11), static_cast<qreal>(h12), static_cast<qreal>(h13), static_cast<qreal>(h21), static_cast<qreal>(h22), static_cast<qreal>(h23), static_cast<qreal>(h31), static_cast<qreal>(h32));
-	*outptr_QTransform = ret;
+QTransform* QTransform_new3(double h11, double h12, double h13, double h21, double h22, double h23, double h31, double h32) {
+	return new QTransform(static_cast<qreal>(h11), static_cast<qreal>(h12), static_cast<qreal>(h13), static_cast<qreal>(h21), static_cast<qreal>(h22), static_cast<qreal>(h23), static_cast<qreal>(h31), static_cast<qreal>(h32));
 }
 
-void QTransform_new4(double h11, double h12, double h21, double h22, double dx, double dy, QTransform** outptr_QTransform) {
-	QTransform* ret = new QTransform(static_cast<qreal>(h11), static_cast<qreal>(h12), static_cast<qreal>(h21), static_cast<qreal>(h22), static_cast<qreal>(dx), static_cast<qreal>(dy));
-	*outptr_QTransform = ret;
+QTransform* QTransform_new4(double h11, double h12, double h21, double h22, double dx, double dy) {
+	return new QTransform(static_cast<qreal>(h11), static_cast<qreal>(h12), static_cast<qreal>(h21), static_cast<qreal>(h22), static_cast<qreal>(dx), static_cast<qreal>(dy));
 }
 
-void QTransform_new5(QMatrix* mtx, QTransform** outptr_QTransform) {
-	QTransform* ret = new QTransform(*mtx);
-	*outptr_QTransform = ret;
+QTransform* QTransform_new5(QMatrix* mtx) {
+	return new QTransform(*mtx);
 }
 
-void QTransform_new6(QTransform* other, QTransform** outptr_QTransform) {
-	QTransform* ret = new QTransform(*other);
-	*outptr_QTransform = ret;
+QTransform* QTransform_new6(QTransform* other) {
+	return new QTransform(*other);
 }
 
-void QTransform_new7(double h11, double h12, double h13, double h21, double h22, double h23, double h31, double h32, double h33, QTransform** outptr_QTransform) {
-	QTransform* ret = new QTransform(static_cast<qreal>(h11), static_cast<qreal>(h12), static_cast<qreal>(h13), static_cast<qreal>(h21), static_cast<qreal>(h22), static_cast<qreal>(h23), static_cast<qreal>(h31), static_cast<qreal>(h32), static_cast<qreal>(h33));
-	*outptr_QTransform = ret;
+QTransform* QTransform_new7(double h11, double h12, double h13, double h21, double h22, double h23, double h31, double h32, double h33) {
+	return new QTransform(static_cast<qreal>(h11), static_cast<qreal>(h12), static_cast<qreal>(h13), static_cast<qreal>(h21), static_cast<qreal>(h22), static_cast<qreal>(h23), static_cast<qreal>(h31), static_cast<qreal>(h32), static_cast<qreal>(h33));
 }
 
 void QTransform_OperatorAssign(QTransform* self, QTransform* param1) {

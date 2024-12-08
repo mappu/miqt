@@ -35,26 +35,24 @@ func (this *QFutureWatcherBase) UnsafePointer() unsafe.Pointer {
 }
 
 // newQFutureWatcherBase constructs the type using only CGO pointers.
-func newQFutureWatcherBase(h *C.QFutureWatcherBase, h_QObject *C.QObject) *QFutureWatcherBase {
+func newQFutureWatcherBase(h *C.QFutureWatcherBase) *QFutureWatcherBase {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QFutureWatcherBase_virtbase(h, &outptr_QObject)
+
 	return &QFutureWatcherBase{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQFutureWatcherBase constructs the type using only unsafe pointers.
-func UnsafeNewQFutureWatcherBase(h unsafe.Pointer, h_QObject unsafe.Pointer) *QFutureWatcherBase {
-	if h == nil {
-		return nil
-	}
-
-	return &QFutureWatcherBase{h: (*C.QFutureWatcherBase)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQFutureWatcherBase(h unsafe.Pointer) *QFutureWatcherBase {
+	return newQFutureWatcherBase((*C.QFutureWatcherBase)(h))
 }
 
 func (this *QFutureWatcherBase) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QFutureWatcherBase_MetaObject(this.h)))
+	return newQMetaObject(C.QFutureWatcherBase_MetaObject(this.h))
 }
 
 func (this *QFutureWatcherBase) Metacast(param1 string) unsafe.Pointer {

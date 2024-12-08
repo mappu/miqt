@@ -22,7 +22,7 @@ typedef struct QUrl QUrl;
 typedef struct QWebEngineLoadingInfo QWebEngineLoadingInfo;
 #endif
 
-void QWebEngineLoadingInfo_new(QWebEngineLoadingInfo* other, QWebEngineLoadingInfo** outptr_QWebEngineLoadingInfo);
+QWebEngineLoadingInfo* QWebEngineLoadingInfo_new(QWebEngineLoadingInfo* other);
 void QWebEngineLoadingInfo_OperatorAssign(QWebEngineLoadingInfo* self, QWebEngineLoadingInfo* other);
 QUrl* QWebEngineLoadingInfo_Url(const QWebEngineLoadingInfo* self);
 bool QWebEngineLoadingInfo_IsErrorPage(const QWebEngineLoadingInfo* self);

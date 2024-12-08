@@ -12,14 +12,12 @@
 #include "gen_qprocess.h"
 #include "_cgo_export.h"
 
-void QProcessEnvironment_new(QProcessEnvironment** outptr_QProcessEnvironment) {
-	QProcessEnvironment* ret = new QProcessEnvironment();
-	*outptr_QProcessEnvironment = ret;
+QProcessEnvironment* QProcessEnvironment_new() {
+	return new QProcessEnvironment();
 }
 
-void QProcessEnvironment_new2(QProcessEnvironment* other, QProcessEnvironment** outptr_QProcessEnvironment) {
-	QProcessEnvironment* ret = new QProcessEnvironment(*other);
-	*outptr_QProcessEnvironment = ret;
+QProcessEnvironment* QProcessEnvironment_new2(QProcessEnvironment* other) {
+	return new QProcessEnvironment(*other);
 }
 
 void QProcessEnvironment_OperatorAssign(QProcessEnvironment* self, QProcessEnvironment* other) {
@@ -551,18 +549,16 @@ public:
 
 };
 
-void QProcess_new(QProcess** outptr_QProcess, QIODevice** outptr_QIODevice, QObject** outptr_QObject) {
-	MiqtVirtualQProcess* ret = new MiqtVirtualQProcess();
-	*outptr_QProcess = ret;
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QProcess* QProcess_new() {
+	return new MiqtVirtualQProcess();
 }
 
-void QProcess_new2(QObject* parent, QProcess** outptr_QProcess, QIODevice** outptr_QIODevice, QObject** outptr_QObject) {
-	MiqtVirtualQProcess* ret = new MiqtVirtualQProcess(parent);
-	*outptr_QProcess = ret;
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QProcess* QProcess_new2(QObject* parent) {
+	return new MiqtVirtualQProcess(parent);
+}
+
+void QProcess_virtbase(QProcess* src, QIODevice** outptr_QIODevice) {
+	*outptr_QIODevice = static_cast<QIODevice*>(src);
 }
 
 QMetaObject* QProcess_MetaObject(const QProcess* self) {

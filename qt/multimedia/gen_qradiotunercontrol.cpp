@@ -10,6 +10,10 @@
 #include "gen_qradiotunercontrol.h"
 #include "_cgo_export.h"
 
+void QRadioTunerControl_virtbase(QRadioTunerControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
+
 QMetaObject* QRadioTunerControl_MetaObject(const QRadioTunerControl* self) {
 	return (QMetaObject*) self->metaObject();
 }

@@ -28,9 +28,9 @@ typedef struct QSizeF QSizeF;
 typedef struct QSizePolicy QSizePolicy;
 #endif
 
-void QGraphicsLayoutItem_new(QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
-void QGraphicsLayoutItem_new2(QGraphicsLayoutItem* parent, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
-void QGraphicsLayoutItem_new3(QGraphicsLayoutItem* parent, bool isLayout, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
+QGraphicsLayoutItem* QGraphicsLayoutItem_new();
+QGraphicsLayoutItem* QGraphicsLayoutItem_new2(QGraphicsLayoutItem* parent);
+QGraphicsLayoutItem* QGraphicsLayoutItem_new3(QGraphicsLayoutItem* parent, bool isLayout);
 void QGraphicsLayoutItem_SetSizePolicy(QGraphicsLayoutItem* self, QSizePolicy* policy);
 void QGraphicsLayoutItem_SetSizePolicy2(QGraphicsLayoutItem* self, int hPolicy, int vPolicy);
 QSizePolicy* QGraphicsLayoutItem_SizePolicy(const QGraphicsLayoutItem* self);

@@ -46,10 +46,11 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QCheckBox_new(QWidget* parent, QCheckBox** outptr_QCheckBox, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QCheckBox_new2(QCheckBox** outptr_QCheckBox, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QCheckBox_new3(struct miqt_string text, QCheckBox** outptr_QCheckBox, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QCheckBox_new4(struct miqt_string text, QWidget* parent, QCheckBox** outptr_QCheckBox, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QCheckBox* QCheckBox_new(QWidget* parent);
+QCheckBox* QCheckBox_new2();
+QCheckBox* QCheckBox_new3(struct miqt_string text);
+QCheckBox* QCheckBox_new4(struct miqt_string text, QWidget* parent);
+void QCheckBox_virtbase(QCheckBox* src, QAbstractButton** outptr_QAbstractButton);
 QMetaObject* QCheckBox_MetaObject(const QCheckBox* self);
 void* QCheckBox_Metacast(QCheckBox* self, const char* param1);
 struct miqt_string QCheckBox_Tr(const char* s);

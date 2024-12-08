@@ -37,16 +37,13 @@ func newQFactoryInterface(h *C.QFactoryInterface) *QFactoryInterface {
 	if h == nil {
 		return nil
 	}
+
 	return &QFactoryInterface{h: h}
 }
 
 // UnsafeNewQFactoryInterface constructs the type using only unsafe pointers.
 func UnsafeNewQFactoryInterface(h unsafe.Pointer) *QFactoryInterface {
-	if h == nil {
-		return nil
-	}
-
-	return &QFactoryInterface{h: (*C.QFactoryInterface)(h)}
+	return newQFactoryInterface((*C.QFactoryInterface)(h))
 }
 
 func (this *QFactoryInterface) Keys() []string {

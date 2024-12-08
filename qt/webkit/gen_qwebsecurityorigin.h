@@ -24,8 +24,8 @@ typedef struct QWebDatabase QWebDatabase;
 typedef struct QWebSecurityOrigin QWebSecurityOrigin;
 #endif
 
-void QWebSecurityOrigin_new(QUrl* url, QWebSecurityOrigin** outptr_QWebSecurityOrigin);
-void QWebSecurityOrigin_new2(QWebSecurityOrigin* other, QWebSecurityOrigin** outptr_QWebSecurityOrigin);
+QWebSecurityOrigin* QWebSecurityOrigin_new(QUrl* url);
+QWebSecurityOrigin* QWebSecurityOrigin_new2(QWebSecurityOrigin* other);
 struct miqt_array /* of QWebSecurityOrigin* */  QWebSecurityOrigin_AllOrigins();
 void QWebSecurityOrigin_AddLocalScheme(struct miqt_string scheme);
 void QWebSecurityOrigin_RemoveLocalScheme(struct miqt_string scheme);

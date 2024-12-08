@@ -857,26 +857,16 @@ public:
 
 };
 
-void QTextBrowser_new(QWidget* parent, QTextBrowser** outptr_QTextBrowser, QTextEdit** outptr_QTextEdit, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQTextBrowser* ret = new MiqtVirtualQTextBrowser(parent);
-	*outptr_QTextBrowser = ret;
-	*outptr_QTextEdit = static_cast<QTextEdit*>(ret);
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QTextBrowser* QTextBrowser_new(QWidget* parent) {
+	return new MiqtVirtualQTextBrowser(parent);
 }
 
-void QTextBrowser_new2(QTextBrowser** outptr_QTextBrowser, QTextEdit** outptr_QTextEdit, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQTextBrowser* ret = new MiqtVirtualQTextBrowser();
-	*outptr_QTextBrowser = ret;
-	*outptr_QTextEdit = static_cast<QTextEdit*>(ret);
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QTextBrowser* QTextBrowser_new2() {
+	return new MiqtVirtualQTextBrowser();
+}
+
+void QTextBrowser_virtbase(QTextBrowser* src, QTextEdit** outptr_QTextEdit) {
+	*outptr_QTextEdit = static_cast<QTextEdit*>(src);
 }
 
 QMetaObject* QTextBrowser_MetaObject(const QTextBrowser* self) {

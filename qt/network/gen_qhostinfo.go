@@ -45,44 +45,35 @@ func newQHostInfo(h *C.QHostInfo) *QHostInfo {
 	if h == nil {
 		return nil
 	}
+
 	return &QHostInfo{h: h}
 }
 
 // UnsafeNewQHostInfo constructs the type using only unsafe pointers.
 func UnsafeNewQHostInfo(h unsafe.Pointer) *QHostInfo {
-	if h == nil {
-		return nil
-	}
-
-	return &QHostInfo{h: (*C.QHostInfo)(h)}
+	return newQHostInfo((*C.QHostInfo)(h))
 }
 
 // NewQHostInfo constructs a new QHostInfo object.
 func NewQHostInfo() *QHostInfo {
-	var outptr_QHostInfo *C.QHostInfo = nil
 
-	C.QHostInfo_new(&outptr_QHostInfo)
-	ret := newQHostInfo(outptr_QHostInfo)
+	ret := newQHostInfo(C.QHostInfo_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQHostInfo2 constructs a new QHostInfo object.
 func NewQHostInfo2(d *QHostInfo) *QHostInfo {
-	var outptr_QHostInfo *C.QHostInfo = nil
 
-	C.QHostInfo_new2(d.cPointer(), &outptr_QHostInfo)
-	ret := newQHostInfo(outptr_QHostInfo)
+	ret := newQHostInfo(C.QHostInfo_new2(d.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQHostInfo3 constructs a new QHostInfo object.
 func NewQHostInfo3(lookupId int) *QHostInfo {
-	var outptr_QHostInfo *C.QHostInfo = nil
 
-	C.QHostInfo_new3((C.int)(lookupId), &outptr_QHostInfo)
-	ret := newQHostInfo(outptr_QHostInfo)
+	ret := newQHostInfo(C.QHostInfo_new3((C.int)(lookupId)))
 	ret.isSubclass = true
 	return ret
 }
@@ -115,8 +106,7 @@ func (this *QHostInfo) Addresses() []QHostAddress {
 	_ret := make([]QHostAddress, int(_ma.len))
 	_outCast := (*[0xffff]*C.QHostAddress)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQHostAddress(_lv_ret)
+		_lv_goptr := newQHostAddress(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -173,8 +163,7 @@ func QHostInfo_FromName(name string) *QHostInfo {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	_ret := C.QHostInfo_FromName(name_ms)
-	_goptr := newQHostInfo(_ret)
+	_goptr := newQHostInfo(C.QHostInfo_FromName(name_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

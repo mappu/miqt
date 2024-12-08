@@ -94,26 +94,24 @@ func (this *QFileDevice) UnsafePointer() unsafe.Pointer {
 }
 
 // newQFileDevice constructs the type using only CGO pointers.
-func newQFileDevice(h *C.QFileDevice, h_QIODevice *C.QIODevice, h_QObject *C.QObject, h_QIODeviceBase *C.QIODeviceBase) *QFileDevice {
+func newQFileDevice(h *C.QFileDevice) *QFileDevice {
 	if h == nil {
 		return nil
 	}
+	var outptr_QIODevice *C.QIODevice = nil
+	C.QFileDevice_virtbase(h, &outptr_QIODevice)
+
 	return &QFileDevice{h: h,
-		QIODevice: newQIODevice(h_QIODevice, h_QObject, h_QIODeviceBase)}
+		QIODevice: newQIODevice(outptr_QIODevice)}
 }
 
 // UnsafeNewQFileDevice constructs the type using only unsafe pointers.
-func UnsafeNewQFileDevice(h unsafe.Pointer, h_QIODevice unsafe.Pointer, h_QObject unsafe.Pointer, h_QIODeviceBase unsafe.Pointer) *QFileDevice {
-	if h == nil {
-		return nil
-	}
-
-	return &QFileDevice{h: (*C.QFileDevice)(h),
-		QIODevice: UnsafeNewQIODevice(h_QIODevice, h_QObject, h_QIODeviceBase)}
+func UnsafeNewQFileDevice(h unsafe.Pointer) *QFileDevice {
+	return newQFileDevice((*C.QFileDevice)(h))
 }
 
 func (this *QFileDevice) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QFileDevice_MetaObject(this.h)))
+	return newQMetaObject(C.QFileDevice_MetaObject(this.h))
 }
 
 func (this *QFileDevice) Metacast(param1 string) unsafe.Pointer {
@@ -199,8 +197,7 @@ func (this *QFileDevice) Unmap(address *byte) bool {
 }
 
 func (this *QFileDevice) FileTime(time QFileDevice__FileTime) *QDateTime {
-	_ret := C.QFileDevice_FileTime(this.h, (C.int)(time))
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QFileDevice_FileTime(this.h, (C.int)(time)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

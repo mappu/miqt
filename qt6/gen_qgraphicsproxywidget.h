@@ -78,9 +78,10 @@ typedef struct QVariant QVariant;
 typedef struct QWidget QWidget;
 #endif
 
-void QGraphicsProxyWidget_new(QGraphicsProxyWidget** outptr_QGraphicsProxyWidget, QGraphicsWidget** outptr_QGraphicsWidget, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
-void QGraphicsProxyWidget_new2(QGraphicsItem* parent, QGraphicsProxyWidget** outptr_QGraphicsProxyWidget, QGraphicsWidget** outptr_QGraphicsWidget, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
-void QGraphicsProxyWidget_new3(QGraphicsItem* parent, int wFlags, QGraphicsProxyWidget** outptr_QGraphicsProxyWidget, QGraphicsWidget** outptr_QGraphicsWidget, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
+QGraphicsProxyWidget* QGraphicsProxyWidget_new();
+QGraphicsProxyWidget* QGraphicsProxyWidget_new2(QGraphicsItem* parent);
+QGraphicsProxyWidget* QGraphicsProxyWidget_new3(QGraphicsItem* parent, int wFlags);
+void QGraphicsProxyWidget_virtbase(QGraphicsProxyWidget* src, QGraphicsWidget** outptr_QGraphicsWidget);
 QMetaObject* QGraphicsProxyWidget_MetaObject(const QGraphicsProxyWidget* self);
 void* QGraphicsProxyWidget_Metacast(QGraphicsProxyWidget* self, const char* param1);
 struct miqt_string QGraphicsProxyWidget_Tr(const char* s);

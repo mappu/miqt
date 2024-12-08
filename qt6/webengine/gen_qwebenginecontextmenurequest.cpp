@@ -11,6 +11,10 @@
 #include "gen_qwebenginecontextmenurequest.h"
 #include "_cgo_export.h"
 
+void QWebEngineContextMenuRequest_virtbase(QWebEngineContextMenuRequest* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
+
 QMetaObject* QWebEngineContextMenuRequest_MetaObject(const QWebEngineContextMenuRequest* self) {
 	return (QMetaObject*) self->metaObject();
 }

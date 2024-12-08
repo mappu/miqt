@@ -46,22 +46,20 @@ func (this *QWebEngineUrlRequestJob) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebEngineUrlRequestJob constructs the type using only CGO pointers.
-func newQWebEngineUrlRequestJob(h *C.QWebEngineUrlRequestJob, h_QObject *C.QObject) *QWebEngineUrlRequestJob {
+func newQWebEngineUrlRequestJob(h *C.QWebEngineUrlRequestJob) *QWebEngineUrlRequestJob {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebEngineUrlRequestJob_virtbase(h, &outptr_QObject)
+
 	return &QWebEngineUrlRequestJob{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebEngineUrlRequestJob constructs the type using only unsafe pointers.
-func UnsafeNewQWebEngineUrlRequestJob(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebEngineUrlRequestJob {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineUrlRequestJob{h: (*C.QWebEngineUrlRequestJob)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebEngineUrlRequestJob(h unsafe.Pointer) *QWebEngineUrlRequestJob {
+	return newQWebEngineUrlRequestJob((*C.QWebEngineUrlRequestJob)(h))
 }
 
 func (this *QWebEngineUrlRequestJob) MetaObject() *qt.QMetaObject {
@@ -93,8 +91,7 @@ func QWebEngineUrlRequestJob_TrUtf8(s string) string {
 }
 
 func (this *QWebEngineUrlRequestJob) RequestUrl() *qt.QUrl {
-	_ret := C.QWebEngineUrlRequestJob_RequestUrl(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineUrlRequestJob_RequestUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -107,8 +104,7 @@ func (this *QWebEngineUrlRequestJob) RequestMethod() []byte {
 }
 
 func (this *QWebEngineUrlRequestJob) Initiator() *qt.QUrl {
-	_ret := C.QWebEngineUrlRequestJob_Initiator(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineUrlRequestJob_Initiator(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -35,32 +35,26 @@ func (this *QSignalTransition) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSignalTransition constructs the type using only CGO pointers.
-func newQSignalTransition(h *C.QSignalTransition, h_QAbstractTransition *C.QAbstractTransition, h_QObject *C.QObject) *QSignalTransition {
+func newQSignalTransition(h *C.QSignalTransition) *QSignalTransition {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractTransition *C.QAbstractTransition = nil
+	C.QSignalTransition_virtbase(h, &outptr_QAbstractTransition)
+
 	return &QSignalTransition{h: h,
-		QAbstractTransition: newQAbstractTransition(h_QAbstractTransition, h_QObject)}
+		QAbstractTransition: newQAbstractTransition(outptr_QAbstractTransition)}
 }
 
 // UnsafeNewQSignalTransition constructs the type using only unsafe pointers.
-func UnsafeNewQSignalTransition(h unsafe.Pointer, h_QAbstractTransition unsafe.Pointer, h_QObject unsafe.Pointer) *QSignalTransition {
-	if h == nil {
-		return nil
-	}
-
-	return &QSignalTransition{h: (*C.QSignalTransition)(h),
-		QAbstractTransition: UnsafeNewQAbstractTransition(h_QAbstractTransition, h_QObject)}
+func UnsafeNewQSignalTransition(h unsafe.Pointer) *QSignalTransition {
+	return newQSignalTransition((*C.QSignalTransition)(h))
 }
 
 // NewQSignalTransition constructs a new QSignalTransition object.
 func NewQSignalTransition() *QSignalTransition {
-	var outptr_QSignalTransition *C.QSignalTransition = nil
-	var outptr_QAbstractTransition *C.QAbstractTransition = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSignalTransition_new(&outptr_QSignalTransition, &outptr_QAbstractTransition, &outptr_QObject)
-	ret := newQSignalTransition(outptr_QSignalTransition, outptr_QAbstractTransition, outptr_QObject)
+	ret := newQSignalTransition(C.QSignalTransition_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -69,24 +63,16 @@ func NewQSignalTransition() *QSignalTransition {
 func NewQSignalTransition2(sender *QObject, signal string) *QSignalTransition {
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
-	var outptr_QSignalTransition *C.QSignalTransition = nil
-	var outptr_QAbstractTransition *C.QAbstractTransition = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSignalTransition_new2(sender.cPointer(), signal_Cstring, &outptr_QSignalTransition, &outptr_QAbstractTransition, &outptr_QObject)
-	ret := newQSignalTransition(outptr_QSignalTransition, outptr_QAbstractTransition, outptr_QObject)
+	ret := newQSignalTransition(C.QSignalTransition_new2(sender.cPointer(), signal_Cstring))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSignalTransition3 constructs a new QSignalTransition object.
 func NewQSignalTransition3(sourceState *QState) *QSignalTransition {
-	var outptr_QSignalTransition *C.QSignalTransition = nil
-	var outptr_QAbstractTransition *C.QAbstractTransition = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSignalTransition_new3(sourceState.cPointer(), &outptr_QSignalTransition, &outptr_QAbstractTransition, &outptr_QObject)
-	ret := newQSignalTransition(outptr_QSignalTransition, outptr_QAbstractTransition, outptr_QObject)
+	ret := newQSignalTransition(C.QSignalTransition_new3(sourceState.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -95,18 +81,14 @@ func NewQSignalTransition3(sourceState *QState) *QSignalTransition {
 func NewQSignalTransition4(sender *QObject, signal string, sourceState *QState) *QSignalTransition {
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
-	var outptr_QSignalTransition *C.QSignalTransition = nil
-	var outptr_QAbstractTransition *C.QAbstractTransition = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSignalTransition_new4(sender.cPointer(), signal_Cstring, sourceState.cPointer(), &outptr_QSignalTransition, &outptr_QAbstractTransition, &outptr_QObject)
-	ret := newQSignalTransition(outptr_QSignalTransition, outptr_QAbstractTransition, outptr_QObject)
+	ret := newQSignalTransition(C.QSignalTransition_new4(sender.cPointer(), signal_Cstring, sourceState.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QSignalTransition) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSignalTransition_MetaObject(this.h)))
+	return newQMetaObject(C.QSignalTransition_MetaObject(this.h))
 }
 
 func (this *QSignalTransition) Metacast(param1 string) unsafe.Pointer {
@@ -134,7 +116,7 @@ func QSignalTransition_TrUtf8(s string) string {
 }
 
 func (this *QSignalTransition) SenderObject() *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QSignalTransition_SenderObject(this.h)))
+	return newQObject(C.QSignalTransition_SenderObject(this.h))
 }
 
 func (this *QSignalTransition) SetSenderObject(sender *QObject) {
@@ -205,6 +187,9 @@ func (this *QSignalTransition) callVirtualBase_EventTest(event *QEvent) bool {
 
 }
 func (this *QSignalTransition) OnEventTest(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSignalTransition_override_virtual_EventTest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -216,7 +201,7 @@ func miqt_exec_callback_QSignalTransition_EventTest(self *C.QSignalTransition, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QSignalTransition{h: self}).callVirtualBase_EventTest, slotval1)
 
@@ -230,6 +215,9 @@ func (this *QSignalTransition) callVirtualBase_OnTransition(event *QEvent) {
 
 }
 func (this *QSignalTransition) OnOnTransition(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSignalTransition_override_virtual_OnTransition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -241,7 +229,7 @@ func miqt_exec_callback_QSignalTransition_OnTransition(self *C.QSignalTransition
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QSignalTransition{h: self}).callVirtualBase_OnTransition, slotval1)
 
@@ -253,6 +241,9 @@ func (this *QSignalTransition) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QSignalTransition) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSignalTransition_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -264,7 +255,7 @@ func miqt_exec_callback_QSignalTransition_Event(self *C.QSignalTransition, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QSignalTransition{h: self}).callVirtualBase_Event, slotval1)
 

@@ -74,22 +74,20 @@ func (this *QSettings) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSettings constructs the type using only CGO pointers.
-func newQSettings(h *C.QSettings, h_QObject *C.QObject) *QSettings {
+func newQSettings(h *C.QSettings) *QSettings {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QSettings_virtbase(h, &outptr_QObject)
+
 	return &QSettings{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQSettings constructs the type using only unsafe pointers.
-func UnsafeNewQSettings(h unsafe.Pointer, h_QObject unsafe.Pointer) *QSettings {
-	if h == nil {
-		return nil
-	}
-
-	return &QSettings{h: (*C.QSettings)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQSettings(h unsafe.Pointer) *QSettings {
+	return newQSettings((*C.QSettings)(h))
 }
 
 // NewQSettings constructs a new QSettings object.
@@ -98,11 +96,8 @@ func NewQSettings(organization string) *QSettings {
 	organization_ms.data = C.CString(organization)
 	organization_ms.len = C.size_t(len(organization))
 	defer C.free(unsafe.Pointer(organization_ms.data))
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new(organization_ms, &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new(organization_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -113,11 +108,8 @@ func NewQSettings2(scope QSettings__Scope, organization string) *QSettings {
 	organization_ms.data = C.CString(organization)
 	organization_ms.len = C.size_t(len(organization))
 	defer C.free(unsafe.Pointer(organization_ms.data))
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new2((C.int)(scope), organization_ms, &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new2((C.int)(scope), organization_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -128,11 +120,8 @@ func NewQSettings3(format QSettings__Format, scope QSettings__Scope, organizatio
 	organization_ms.data = C.CString(organization)
 	organization_ms.len = C.size_t(len(organization))
 	defer C.free(unsafe.Pointer(organization_ms.data))
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new3((C.int)(format), (C.int)(scope), organization_ms, &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new3((C.int)(format), (C.int)(scope), organization_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -143,33 +132,24 @@ func NewQSettings4(fileName string, format QSettings__Format) *QSettings {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new4(fileName_ms, (C.int)(format), &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new4(fileName_ms, (C.int)(format)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSettings5 constructs a new QSettings object.
 func NewQSettings5() *QSettings {
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new5(&outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new5())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSettings6 constructs a new QSettings object.
 func NewQSettings6(scope QSettings__Scope) *QSettings {
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new6((C.int)(scope), &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new6((C.int)(scope)))
 	ret.isSubclass = true
 	return ret
 }
@@ -184,11 +164,8 @@ func NewQSettings7(organization string, application string) *QSettings {
 	application_ms.data = C.CString(application)
 	application_ms.len = C.size_t(len(application))
 	defer C.free(unsafe.Pointer(application_ms.data))
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new7(organization_ms, application_ms, &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new7(organization_ms, application_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -203,11 +180,8 @@ func NewQSettings8(organization string, application string, parent *QObject) *QS
 	application_ms.data = C.CString(application)
 	application_ms.len = C.size_t(len(application))
 	defer C.free(unsafe.Pointer(application_ms.data))
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new8(organization_ms, application_ms, parent.cPointer(), &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new8(organization_ms, application_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -222,11 +196,8 @@ func NewQSettings9(scope QSettings__Scope, organization string, application stri
 	application_ms.data = C.CString(application)
 	application_ms.len = C.size_t(len(application))
 	defer C.free(unsafe.Pointer(application_ms.data))
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new9((C.int)(scope), organization_ms, application_ms, &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new9((C.int)(scope), organization_ms, application_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -241,11 +212,8 @@ func NewQSettings10(scope QSettings__Scope, organization string, application str
 	application_ms.data = C.CString(application)
 	application_ms.len = C.size_t(len(application))
 	defer C.free(unsafe.Pointer(application_ms.data))
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new10((C.int)(scope), organization_ms, application_ms, parent.cPointer(), &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new10((C.int)(scope), organization_ms, application_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -260,11 +228,8 @@ func NewQSettings11(format QSettings__Format, scope QSettings__Scope, organizati
 	application_ms.data = C.CString(application)
 	application_ms.len = C.size_t(len(application))
 	defer C.free(unsafe.Pointer(application_ms.data))
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new11((C.int)(format), (C.int)(scope), organization_ms, application_ms, &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new11((C.int)(format), (C.int)(scope), organization_ms, application_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -279,11 +244,8 @@ func NewQSettings12(format QSettings__Format, scope QSettings__Scope, organizati
 	application_ms.data = C.CString(application)
 	application_ms.len = C.size_t(len(application))
 	defer C.free(unsafe.Pointer(application_ms.data))
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new12((C.int)(format), (C.int)(scope), organization_ms, application_ms, parent.cPointer(), &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new12((C.int)(format), (C.int)(scope), organization_ms, application_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -294,39 +256,30 @@ func NewQSettings13(fileName string, format QSettings__Format, parent *QObject) 
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new13(fileName_ms, (C.int)(format), parent.cPointer(), &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new13(fileName_ms, (C.int)(format), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSettings14 constructs a new QSettings object.
 func NewQSettings14(parent *QObject) *QSettings {
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new14(parent.cPointer(), &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new14(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSettings15 constructs a new QSettings object.
 func NewQSettings15(scope QSettings__Scope, parent *QObject) *QSettings {
-	var outptr_QSettings *C.QSettings = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSettings_new15((C.int)(scope), parent.cPointer(), &outptr_QSettings, &outptr_QObject)
-	ret := newQSettings(outptr_QSettings, outptr_QObject)
+	ret := newQSettings(C.QSettings_new15((C.int)(scope), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QSettings) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSettings_MetaObject(this.h)))
+	return newQMetaObject(C.QSettings_MetaObject(this.h))
 }
 
 func (this *QSettings) Metacast(param1 string) unsafe.Pointer {
@@ -472,8 +425,7 @@ func (this *QSettings) Value(key string) *QVariant {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	_ret := C.QSettings_Value(this.h, key_ms)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QSettings_Value(this.h, key_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -542,7 +494,7 @@ func (this *QSettings) SetIniCodecWithCodecName(codecName string) {
 }
 
 func (this *QSettings) IniCodec() *QTextCodec {
-	return UnsafeNewQTextCodec(unsafe.Pointer(C.QSettings_IniCodec(this.h)))
+	return newQTextCodec(C.QSettings_IniCodec(this.h))
 }
 
 func QSettings_SetDefaultFormat(format QSettings__Format) {
@@ -634,8 +586,7 @@ func (this *QSettings) Value2(key string, defaultValue *QVariant) *QVariant {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	_ret := C.QSettings_Value2(this.h, key_ms, defaultValue.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QSettings_Value2(this.h, key_ms, defaultValue.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -646,6 +597,9 @@ func (this *QSettings) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QSettings) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSettings_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -657,7 +611,7 @@ func miqt_exec_callback_QSettings_Event(self *C.QSettings, cb C.intptr_t, event 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QSettings{h: self}).callVirtualBase_Event, slotval1)
 
@@ -671,6 +625,9 @@ func (this *QSettings) callVirtualBase_EventFilter(watched *QObject, event *QEve
 
 }
 func (this *QSettings) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSettings_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -682,8 +639,9 @@ func miqt_exec_callback_QSettings_EventFilter(self *C.QSettings, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QSettings{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -697,6 +655,9 @@ func (this *QSettings) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QSettings) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSettings_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -708,7 +669,7 @@ func miqt_exec_callback_QSettings_TimerEvent(self *C.QSettings, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QSettings{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -720,6 +681,9 @@ func (this *QSettings) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QSettings) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSettings_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -731,7 +695,7 @@ func miqt_exec_callback_QSettings_ChildEvent(self *C.QSettings, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QSettings{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -743,6 +707,9 @@ func (this *QSettings) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QSettings) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSettings_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -754,7 +721,7 @@ func miqt_exec_callback_QSettings_CustomEvent(self *C.QSettings, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QSettings{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -766,6 +733,9 @@ func (this *QSettings) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QSettings) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSettings_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -777,7 +747,7 @@ func miqt_exec_callback_QSettings_ConnectNotify(self *C.QSettings, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QSettings{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -789,6 +759,9 @@ func (this *QSettings) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QSettings) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSettings_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -800,7 +773,7 @@ func miqt_exec_callback_QSettings_DisconnectNotify(self *C.QSettings, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QSettings{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

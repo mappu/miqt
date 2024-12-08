@@ -897,46 +897,26 @@ public:
 
 };
 
-void QPlainTextEdit_new(QWidget* parent, QPlainTextEdit** outptr_QPlainTextEdit, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPlainTextEdit* ret = new MiqtVirtualQPlainTextEdit(parent);
-	*outptr_QPlainTextEdit = ret;
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPlainTextEdit* QPlainTextEdit_new(QWidget* parent) {
+	return new MiqtVirtualQPlainTextEdit(parent);
 }
 
-void QPlainTextEdit_new2(QPlainTextEdit** outptr_QPlainTextEdit, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPlainTextEdit* ret = new MiqtVirtualQPlainTextEdit();
-	*outptr_QPlainTextEdit = ret;
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPlainTextEdit* QPlainTextEdit_new2() {
+	return new MiqtVirtualQPlainTextEdit();
 }
 
-void QPlainTextEdit_new3(struct miqt_string text, QPlainTextEdit** outptr_QPlainTextEdit, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QPlainTextEdit* QPlainTextEdit_new3(struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQPlainTextEdit* ret = new MiqtVirtualQPlainTextEdit(text_QString);
-	*outptr_QPlainTextEdit = ret;
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQPlainTextEdit(text_QString);
 }
 
-void QPlainTextEdit_new4(struct miqt_string text, QWidget* parent, QPlainTextEdit** outptr_QPlainTextEdit, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QPlainTextEdit* QPlainTextEdit_new4(struct miqt_string text, QWidget* parent) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQPlainTextEdit* ret = new MiqtVirtualQPlainTextEdit(text_QString, parent);
-	*outptr_QPlainTextEdit = ret;
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQPlainTextEdit(text_QString, parent);
+}
+
+void QPlainTextEdit_virtbase(QPlainTextEdit* src, QAbstractScrollArea** outptr_QAbstractScrollArea) {
+	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(src);
 }
 
 QMetaObject* QPlainTextEdit_MetaObject(const QPlainTextEdit* self) {
@@ -1983,11 +1963,12 @@ public:
 
 };
 
-void QPlainTextDocumentLayout_new(QTextDocument* document, QPlainTextDocumentLayout** outptr_QPlainTextDocumentLayout, QAbstractTextDocumentLayout** outptr_QAbstractTextDocumentLayout, QObject** outptr_QObject) {
-	MiqtVirtualQPlainTextDocumentLayout* ret = new MiqtVirtualQPlainTextDocumentLayout(document);
-	*outptr_QPlainTextDocumentLayout = ret;
-	*outptr_QAbstractTextDocumentLayout = static_cast<QAbstractTextDocumentLayout*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QPlainTextDocumentLayout* QPlainTextDocumentLayout_new(QTextDocument* document) {
+	return new MiqtVirtualQPlainTextDocumentLayout(document);
+}
+
+void QPlainTextDocumentLayout_virtbase(QPlainTextDocumentLayout* src, QAbstractTextDocumentLayout** outptr_QAbstractTextDocumentLayout) {
+	*outptr_QAbstractTextDocumentLayout = static_cast<QAbstractTextDocumentLayout*>(src);
 }
 
 QMetaObject* QPlainTextDocumentLayout_MetaObject(const QPlainTextDocumentLayout* self) {

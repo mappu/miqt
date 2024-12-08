@@ -34,8 +34,9 @@ typedef struct QSctpSocket QSctpSocket;
 typedef struct QTcpSocket QTcpSocket;
 #endif
 
-void QSctpSocket_new(QSctpSocket** outptr_QSctpSocket, QTcpSocket** outptr_QTcpSocket, QAbstractSocket** outptr_QAbstractSocket, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
-void QSctpSocket_new2(QObject* parent, QSctpSocket** outptr_QSctpSocket, QTcpSocket** outptr_QTcpSocket, QAbstractSocket** outptr_QAbstractSocket, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
+QSctpSocket* QSctpSocket_new();
+QSctpSocket* QSctpSocket_new2(QObject* parent);
+void QSctpSocket_virtbase(QSctpSocket* src, QTcpSocket** outptr_QTcpSocket);
 QMetaObject* QSctpSocket_MetaObject(const QSctpSocket* self);
 void* QSctpSocket_Metacast(QSctpSocket* self, const char* param1);
 struct miqt_string QSctpSocket_Tr(const char* s);

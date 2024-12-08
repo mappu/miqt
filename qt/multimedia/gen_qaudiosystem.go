@@ -36,22 +36,20 @@ func (this *QAbstractAudioDeviceInfo) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAbstractAudioDeviceInfo constructs the type using only CGO pointers.
-func newQAbstractAudioDeviceInfo(h *C.QAbstractAudioDeviceInfo, h_QObject *C.QObject) *QAbstractAudioDeviceInfo {
+func newQAbstractAudioDeviceInfo(h *C.QAbstractAudioDeviceInfo) *QAbstractAudioDeviceInfo {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QAbstractAudioDeviceInfo_virtbase(h, &outptr_QObject)
+
 	return &QAbstractAudioDeviceInfo{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQAbstractAudioDeviceInfo constructs the type using only unsafe pointers.
-func UnsafeNewQAbstractAudioDeviceInfo(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractAudioDeviceInfo {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractAudioDeviceInfo{h: (*C.QAbstractAudioDeviceInfo)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQAbstractAudioDeviceInfo(h unsafe.Pointer) *QAbstractAudioDeviceInfo {
+	return newQAbstractAudioDeviceInfo((*C.QAbstractAudioDeviceInfo)(h))
 }
 
 func (this *QAbstractAudioDeviceInfo) MetaObject() *qt.QMetaObject {
@@ -83,8 +81,7 @@ func QAbstractAudioDeviceInfo_TrUtf8(s string) string {
 }
 
 func (this *QAbstractAudioDeviceInfo) PreferredFormat() *QAudioFormat {
-	_ret := C.QAbstractAudioDeviceInfo_PreferredFormat(this.h)
-	_goptr := newQAudioFormat(_ret)
+	_goptr := newQAudioFormat(C.QAbstractAudioDeviceInfo_PreferredFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -242,22 +239,20 @@ func (this *QAbstractAudioOutput) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAbstractAudioOutput constructs the type using only CGO pointers.
-func newQAbstractAudioOutput(h *C.QAbstractAudioOutput, h_QObject *C.QObject) *QAbstractAudioOutput {
+func newQAbstractAudioOutput(h *C.QAbstractAudioOutput) *QAbstractAudioOutput {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QAbstractAudioOutput_virtbase(h, &outptr_QObject)
+
 	return &QAbstractAudioOutput{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQAbstractAudioOutput constructs the type using only unsafe pointers.
-func UnsafeNewQAbstractAudioOutput(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractAudioOutput {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractAudioOutput{h: (*C.QAbstractAudioOutput)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQAbstractAudioOutput(h unsafe.Pointer) *QAbstractAudioOutput {
+	return newQAbstractAudioOutput((*C.QAbstractAudioOutput)(h))
 }
 
 func (this *QAbstractAudioOutput) MetaObject() *qt.QMetaObject {
@@ -293,7 +288,7 @@ func (this *QAbstractAudioOutput) Start(device *qt.QIODevice) {
 }
 
 func (this *QAbstractAudioOutput) Start2() *qt.QIODevice {
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractAudioOutput_Start2(this.h)), nil)
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractAudioOutput_Start2(this.h)))
 }
 
 func (this *QAbstractAudioOutput) Stop() {
@@ -357,8 +352,7 @@ func (this *QAbstractAudioOutput) SetFormat(fmt *QAudioFormat) {
 }
 
 func (this *QAbstractAudioOutput) Format() *QAudioFormat {
-	_ret := C.QAbstractAudioOutput_Format(this.h)
-	_goptr := newQAudioFormat(_ret)
+	_goptr := newQAudioFormat(C.QAbstractAudioOutput_Format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -522,22 +516,20 @@ func (this *QAbstractAudioInput) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAbstractAudioInput constructs the type using only CGO pointers.
-func newQAbstractAudioInput(h *C.QAbstractAudioInput, h_QObject *C.QObject) *QAbstractAudioInput {
+func newQAbstractAudioInput(h *C.QAbstractAudioInput) *QAbstractAudioInput {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QAbstractAudioInput_virtbase(h, &outptr_QObject)
+
 	return &QAbstractAudioInput{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQAbstractAudioInput constructs the type using only unsafe pointers.
-func UnsafeNewQAbstractAudioInput(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractAudioInput {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractAudioInput{h: (*C.QAbstractAudioInput)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQAbstractAudioInput(h unsafe.Pointer) *QAbstractAudioInput {
+	return newQAbstractAudioInput((*C.QAbstractAudioInput)(h))
 }
 
 func (this *QAbstractAudioInput) MetaObject() *qt.QMetaObject {
@@ -573,7 +565,7 @@ func (this *QAbstractAudioInput) Start(device *qt.QIODevice) {
 }
 
 func (this *QAbstractAudioInput) Start2() *qt.QIODevice {
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractAudioInput_Start2(this.h)), nil)
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractAudioInput_Start2(this.h)))
 }
 
 func (this *QAbstractAudioInput) Stop() {
@@ -637,8 +629,7 @@ func (this *QAbstractAudioInput) SetFormat(fmt *QAudioFormat) {
 }
 
 func (this *QAbstractAudioInput) Format() *QAudioFormat {
-	_ret := C.QAbstractAudioInput_Format(this.h)
-	_goptr := newQAudioFormat(_ret)
+	_goptr := newQAudioFormat(C.QAbstractAudioInput_Format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

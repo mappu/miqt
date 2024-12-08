@@ -9,6 +9,10 @@
 #include "gen_qradiodatacontrol.h"
 #include "_cgo_export.h"
 
+void QRadioDataControl_virtbase(QRadioDataControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
+
 QMetaObject* QRadioDataControl_MetaObject(const QRadioDataControl* self) {
 	return (QMetaObject*) self->metaObject();
 }

@@ -80,16 +80,13 @@ func newQAbstractUndoItem(h *C.QAbstractUndoItem) *QAbstractUndoItem {
 	if h == nil {
 		return nil
 	}
+
 	return &QAbstractUndoItem{h: h}
 }
 
 // UnsafeNewQAbstractUndoItem constructs the type using only unsafe pointers.
 func UnsafeNewQAbstractUndoItem(h unsafe.Pointer) *QAbstractUndoItem {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractUndoItem{h: (*C.QAbstractUndoItem)(h)}
+	return newQAbstractUndoItem((*C.QAbstractUndoItem)(h))
 }
 
 func (this *QAbstractUndoItem) Undo() {
@@ -139,31 +136,26 @@ func (this *QTextDocument) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTextDocument constructs the type using only CGO pointers.
-func newQTextDocument(h *C.QTextDocument, h_QObject *C.QObject) *QTextDocument {
+func newQTextDocument(h *C.QTextDocument) *QTextDocument {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QTextDocument_virtbase(h, &outptr_QObject)
+
 	return &QTextDocument{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQTextDocument constructs the type using only unsafe pointers.
-func UnsafeNewQTextDocument(h unsafe.Pointer, h_QObject unsafe.Pointer) *QTextDocument {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextDocument{h: (*C.QTextDocument)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQTextDocument(h unsafe.Pointer) *QTextDocument {
+	return newQTextDocument((*C.QTextDocument)(h))
 }
 
 // NewQTextDocument constructs a new QTextDocument object.
 func NewQTextDocument() *QTextDocument {
-	var outptr_QTextDocument *C.QTextDocument = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTextDocument_new(&outptr_QTextDocument, &outptr_QObject)
-	ret := newQTextDocument(outptr_QTextDocument, outptr_QObject)
+	ret := newQTextDocument(C.QTextDocument_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -174,22 +166,16 @@ func NewQTextDocument2(text string) *QTextDocument {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QTextDocument *C.QTextDocument = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTextDocument_new2(text_ms, &outptr_QTextDocument, &outptr_QObject)
-	ret := newQTextDocument(outptr_QTextDocument, outptr_QObject)
+	ret := newQTextDocument(C.QTextDocument_new2(text_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextDocument3 constructs a new QTextDocument object.
 func NewQTextDocument3(parent *QObject) *QTextDocument {
-	var outptr_QTextDocument *C.QTextDocument = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTextDocument_new3(parent.cPointer(), &outptr_QTextDocument, &outptr_QObject)
-	ret := newQTextDocument(outptr_QTextDocument, outptr_QObject)
+	ret := newQTextDocument(C.QTextDocument_new3(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -200,17 +186,14 @@ func NewQTextDocument4(text string, parent *QObject) *QTextDocument {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QTextDocument *C.QTextDocument = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTextDocument_new4(text_ms, parent.cPointer(), &outptr_QTextDocument, &outptr_QObject)
-	ret := newQTextDocument(outptr_QTextDocument, outptr_QObject)
+	ret := newQTextDocument(C.QTextDocument_new4(text_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QTextDocument) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTextDocument_MetaObject(this.h)))
+	return newQMetaObject(C.QTextDocument_MetaObject(this.h))
 }
 
 func (this *QTextDocument) Metacast(param1 string) unsafe.Pointer {
@@ -238,7 +221,7 @@ func QTextDocument_TrUtf8(s string) string {
 }
 
 func (this *QTextDocument) Clone() *QTextDocument {
-	return UnsafeNewQTextDocument(unsafe.Pointer(C.QTextDocument_Clone(this.h)), nil)
+	return newQTextDocument(C.QTextDocument_Clone(this.h))
 }
 
 func (this *QTextDocument) IsEmpty() bool {
@@ -282,7 +265,7 @@ func (this *QTextDocument) SetDocumentLayout(layout *QAbstractTextDocumentLayout
 }
 
 func (this *QTextDocument) DocumentLayout() *QAbstractTextDocumentLayout {
-	return UnsafeNewQAbstractTextDocumentLayout(unsafe.Pointer(C.QTextDocument_DocumentLayout(this.h)), nil)
+	return newQAbstractTextDocumentLayout(C.QTextDocument_DocumentLayout(this.h))
 }
 
 func (this *QTextDocument) SetMetaInformation(info QTextDocument__MetaInformation, param2 string) {
@@ -353,8 +336,7 @@ func (this *QTextDocument) SetPlainText(text string) {
 }
 
 func (this *QTextDocument) CharacterAt(pos int) *QChar {
-	_ret := C.QTextDocument_CharacterAt(this.h, (C.int)(pos))
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QTextDocument_CharacterAt(this.h, (C.int)(pos)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -364,8 +346,7 @@ func (this *QTextDocument) Find(subString string) *QTextCursor {
 	subString_ms.data = C.CString(subString)
 	subString_ms.len = C.size_t(len(subString))
 	defer C.free(unsafe.Pointer(subString_ms.data))
-	_ret := C.QTextDocument_Find(this.h, subString_ms)
-	_goptr := newQTextCursor(_ret)
+	_goptr := newQTextCursor(C.QTextDocument_Find(this.h, subString_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -375,101 +356,89 @@ func (this *QTextDocument) Find2(subString string, cursor *QTextCursor) *QTextCu
 	subString_ms.data = C.CString(subString)
 	subString_ms.len = C.size_t(len(subString))
 	defer C.free(unsafe.Pointer(subString_ms.data))
-	_ret := C.QTextDocument_Find2(this.h, subString_ms, cursor.cPointer())
-	_goptr := newQTextCursor(_ret)
+	_goptr := newQTextCursor(C.QTextDocument_Find2(this.h, subString_ms, cursor.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) FindWithExpr(expr *QRegExp) *QTextCursor {
-	_ret := C.QTextDocument_FindWithExpr(this.h, expr.cPointer())
-	_goptr := newQTextCursor(_ret)
+	_goptr := newQTextCursor(C.QTextDocument_FindWithExpr(this.h, expr.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) Find3(expr *QRegExp, cursor *QTextCursor) *QTextCursor {
-	_ret := C.QTextDocument_Find3(this.h, expr.cPointer(), cursor.cPointer())
-	_goptr := newQTextCursor(_ret)
+	_goptr := newQTextCursor(C.QTextDocument_Find3(this.h, expr.cPointer(), cursor.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) Find4(expr *QRegularExpression) *QTextCursor {
-	_ret := C.QTextDocument_Find4(this.h, expr.cPointer())
-	_goptr := newQTextCursor(_ret)
+	_goptr := newQTextCursor(C.QTextDocument_Find4(this.h, expr.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) Find5(expr *QRegularExpression, cursor *QTextCursor) *QTextCursor {
-	_ret := C.QTextDocument_Find5(this.h, expr.cPointer(), cursor.cPointer())
-	_goptr := newQTextCursor(_ret)
+	_goptr := newQTextCursor(C.QTextDocument_Find5(this.h, expr.cPointer(), cursor.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) FrameAt(pos int) *QTextFrame {
-	return UnsafeNewQTextFrame(unsafe.Pointer(C.QTextDocument_FrameAt(this.h, (C.int)(pos))), nil, nil)
+	return newQTextFrame(C.QTextDocument_FrameAt(this.h, (C.int)(pos)))
 }
 
 func (this *QTextDocument) RootFrame() *QTextFrame {
-	return UnsafeNewQTextFrame(unsafe.Pointer(C.QTextDocument_RootFrame(this.h)), nil, nil)
+	return newQTextFrame(C.QTextDocument_RootFrame(this.h))
 }
 
 func (this *QTextDocument) Object(objectIndex int) *QTextObject {
-	return UnsafeNewQTextObject(unsafe.Pointer(C.QTextDocument_Object(this.h, (C.int)(objectIndex))), nil)
+	return newQTextObject(C.QTextDocument_Object(this.h, (C.int)(objectIndex)))
 }
 
 func (this *QTextDocument) ObjectForFormat(param1 *QTextFormat) *QTextObject {
-	return UnsafeNewQTextObject(unsafe.Pointer(C.QTextDocument_ObjectForFormat(this.h, param1.cPointer())), nil)
+	return newQTextObject(C.QTextDocument_ObjectForFormat(this.h, param1.cPointer()))
 }
 
 func (this *QTextDocument) FindBlock(pos int) *QTextBlock {
-	_ret := C.QTextDocument_FindBlock(this.h, (C.int)(pos))
-	_goptr := newQTextBlock(_ret)
+	_goptr := newQTextBlock(C.QTextDocument_FindBlock(this.h, (C.int)(pos)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) FindBlockByNumber(blockNumber int) *QTextBlock {
-	_ret := C.QTextDocument_FindBlockByNumber(this.h, (C.int)(blockNumber))
-	_goptr := newQTextBlock(_ret)
+	_goptr := newQTextBlock(C.QTextDocument_FindBlockByNumber(this.h, (C.int)(blockNumber)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) FindBlockByLineNumber(blockNumber int) *QTextBlock {
-	_ret := C.QTextDocument_FindBlockByLineNumber(this.h, (C.int)(blockNumber))
-	_goptr := newQTextBlock(_ret)
+	_goptr := newQTextBlock(C.QTextDocument_FindBlockByLineNumber(this.h, (C.int)(blockNumber)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) Begin() *QTextBlock {
-	_ret := C.QTextDocument_Begin(this.h)
-	_goptr := newQTextBlock(_ret)
+	_goptr := newQTextBlock(C.QTextDocument_Begin(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) End() *QTextBlock {
-	_ret := C.QTextDocument_End(this.h)
-	_goptr := newQTextBlock(_ret)
+	_goptr := newQTextBlock(C.QTextDocument_End(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) FirstBlock() *QTextBlock {
-	_ret := C.QTextDocument_FirstBlock(this.h)
-	_goptr := newQTextBlock(_ret)
+	_goptr := newQTextBlock(C.QTextDocument_FirstBlock(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) LastBlock() *QTextBlock {
-	_ret := C.QTextDocument_LastBlock(this.h)
-	_goptr := newQTextBlock(_ret)
+	_goptr := newQTextBlock(C.QTextDocument_LastBlock(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -479,8 +448,7 @@ func (this *QTextDocument) SetPageSize(size *QSizeF) {
 }
 
 func (this *QTextDocument) PageSize() *QSizeF {
-	_ret := C.QTextDocument_PageSize(this.h)
-	_goptr := newQSizeF(_ret)
+	_goptr := newQSizeF(C.QTextDocument_PageSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -490,8 +458,7 @@ func (this *QTextDocument) SetDefaultFont(font *QFont) {
 }
 
 func (this *QTextDocument) DefaultFont() *QFont {
-	_ret := C.QTextDocument_DefaultFont(this.h)
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QTextDocument_DefaultFont(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -509,8 +476,7 @@ func (this *QTextDocument) Print(printer *QPagedPaintDevice) {
 }
 
 func (this *QTextDocument) Resource(typeVal int, name *QUrl) *QVariant {
-	_ret := C.QTextDocument_Resource(this.h, (C.int)(typeVal), name.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QTextDocument_Resource(this.h, (C.int)(typeVal), name.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -524,8 +490,7 @@ func (this *QTextDocument) AllFormats() []QTextFormat {
 	_ret := make([]QTextFormat, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTextFormat)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_vv_ret := _outCast[i]
-		_vv_goptr := newQTextFormat(_vv_ret)
+		_vv_goptr := newQTextFormat(_outCast[i])
 		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_vv_goptr
 	}
@@ -581,8 +546,7 @@ func (this *QTextDocument) AdjustSize() {
 }
 
 func (this *QTextDocument) Size() *QSizeF {
-	_ret := C.QTextDocument_Size(this.h)
-	_goptr := newQSizeF(_ret)
+	_goptr := newQSizeF(C.QTextDocument_Size(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -635,8 +599,7 @@ func (this *QTextDocument) SetMaximumBlockCount(maximum int) {
 }
 
 func (this *QTextDocument) DefaultTextOption() *QTextOption {
-	_ret := C.QTextDocument_DefaultTextOption(this.h)
-	_goptr := newQTextOption(_ret)
+	_goptr := newQTextOption(C.QTextDocument_DefaultTextOption(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -646,8 +609,7 @@ func (this *QTextDocument) SetDefaultTextOption(option *QTextOption) {
 }
 
 func (this *QTextDocument) BaseUrl() *QUrl {
-	_ret := C.QTextDocument_BaseUrl(this.h)
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QTextDocument_BaseUrl(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -797,7 +759,7 @@ func miqt_exec_callback_QTextDocument_CursorPositionChanged(cb C.intptr_t, curso
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTextCursor(unsafe.Pointer(cursor))
+	slotval1 := newQTextCursor(cursor)
 
 	gofunc(slotval1)
 }
@@ -837,7 +799,7 @@ func miqt_exec_callback_QTextDocument_BaseUrlChanged(cb C.intptr_t, url *C.QUrl)
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQUrl(unsafe.Pointer(url))
+	slotval1 := newQUrl(url)
 
 	gofunc(slotval1)
 }
@@ -920,7 +882,7 @@ func QTextDocument_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QTextDocument) Clone1(parent *QObject) *QTextDocument {
-	return UnsafeNewQTextDocument(unsafe.Pointer(C.QTextDocument_Clone1(this.h, parent.cPointer())), nil)
+	return newQTextDocument(C.QTextDocument_Clone1(this.h, parent.cPointer()))
 }
 
 func (this *QTextDocument) ToHtml1(encoding []byte) string {
@@ -953,8 +915,7 @@ func (this *QTextDocument) Find22(subString string, from int) *QTextCursor {
 	subString_ms.data = C.CString(subString)
 	subString_ms.len = C.size_t(len(subString))
 	defer C.free(unsafe.Pointer(subString_ms.data))
-	_ret := C.QTextDocument_Find22(this.h, subString_ms, (C.int)(from))
-	_goptr := newQTextCursor(_ret)
+	_goptr := newQTextCursor(C.QTextDocument_Find22(this.h, subString_ms, (C.int)(from)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -964,8 +925,7 @@ func (this *QTextDocument) Find32(subString string, from int, options QTextDocum
 	subString_ms.data = C.CString(subString)
 	subString_ms.len = C.size_t(len(subString))
 	defer C.free(unsafe.Pointer(subString_ms.data))
-	_ret := C.QTextDocument_Find32(this.h, subString_ms, (C.int)(from), (C.int)(options))
-	_goptr := newQTextCursor(_ret)
+	_goptr := newQTextCursor(C.QTextDocument_Find32(this.h, subString_ms, (C.int)(from), (C.int)(options)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -975,50 +935,43 @@ func (this *QTextDocument) Find33(subString string, cursor *QTextCursor, options
 	subString_ms.data = C.CString(subString)
 	subString_ms.len = C.size_t(len(subString))
 	defer C.free(unsafe.Pointer(subString_ms.data))
-	_ret := C.QTextDocument_Find33(this.h, subString_ms, cursor.cPointer(), (C.int)(options))
-	_goptr := newQTextCursor(_ret)
+	_goptr := newQTextCursor(C.QTextDocument_Find33(this.h, subString_ms, cursor.cPointer(), (C.int)(options)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) Find23(expr *QRegExp, from int) *QTextCursor {
-	_ret := C.QTextDocument_Find23(this.h, expr.cPointer(), (C.int)(from))
-	_goptr := newQTextCursor(_ret)
+	_goptr := newQTextCursor(C.QTextDocument_Find23(this.h, expr.cPointer(), (C.int)(from)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) Find34(expr *QRegExp, from int, options QTextDocument__FindFlag) *QTextCursor {
-	_ret := C.QTextDocument_Find34(this.h, expr.cPointer(), (C.int)(from), (C.int)(options))
-	_goptr := newQTextCursor(_ret)
+	_goptr := newQTextCursor(C.QTextDocument_Find34(this.h, expr.cPointer(), (C.int)(from), (C.int)(options)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) Find35(expr *QRegExp, cursor *QTextCursor, options QTextDocument__FindFlag) *QTextCursor {
-	_ret := C.QTextDocument_Find35(this.h, expr.cPointer(), cursor.cPointer(), (C.int)(options))
-	_goptr := newQTextCursor(_ret)
+	_goptr := newQTextCursor(C.QTextDocument_Find35(this.h, expr.cPointer(), cursor.cPointer(), (C.int)(options)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) Find24(expr *QRegularExpression, from int) *QTextCursor {
-	_ret := C.QTextDocument_Find24(this.h, expr.cPointer(), (C.int)(from))
-	_goptr := newQTextCursor(_ret)
+	_goptr := newQTextCursor(C.QTextDocument_Find24(this.h, expr.cPointer(), (C.int)(from)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) Find36(expr *QRegularExpression, from int, options QTextDocument__FindFlag) *QTextCursor {
-	_ret := C.QTextDocument_Find36(this.h, expr.cPointer(), (C.int)(from), (C.int)(options))
-	_goptr := newQTextCursor(_ret)
+	_goptr := newQTextCursor(C.QTextDocument_Find36(this.h, expr.cPointer(), (C.int)(from), (C.int)(options)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) Find37(expr *QRegularExpression, cursor *QTextCursor, options QTextDocument__FindFlag) *QTextCursor {
-	_ret := C.QTextDocument_Find37(this.h, expr.cPointer(), cursor.cPointer(), (C.int)(options))
-	_goptr := newQTextCursor(_ret)
+	_goptr := newQTextCursor(C.QTextDocument_Find37(this.h, expr.cPointer(), cursor.cPointer(), (C.int)(options)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1041,6 +994,9 @@ func (this *QTextDocument) callVirtualBase_Clear() {
 
 }
 func (this *QTextDocument) OnClear(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextDocument_override_virtual_Clear(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1057,9 +1013,13 @@ func miqt_exec_callback_QTextDocument_Clear(self *C.QTextDocument, cb C.intptr_t
 
 func (this *QTextDocument) callVirtualBase_CreateObject(f *QTextFormat) *QTextObject {
 
-	return UnsafeNewQTextObject(unsafe.Pointer(C.QTextDocument_virtualbase_CreateObject(unsafe.Pointer(this.h), f.cPointer())), nil)
+	return newQTextObject(C.QTextDocument_virtualbase_CreateObject(unsafe.Pointer(this.h), f.cPointer()))
+
 }
 func (this *QTextDocument) OnCreateObject(slot func(super func(f *QTextFormat) *QTextObject, f *QTextFormat) *QTextObject) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextDocument_override_virtual_CreateObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1071,7 +1031,7 @@ func miqt_exec_callback_QTextDocument_CreateObject(self *C.QTextDocument, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTextFormat(unsafe.Pointer(f))
+	slotval1 := newQTextFormat(f)
 
 	virtualReturn := gofunc((&QTextDocument{h: self}).callVirtualBase_CreateObject, slotval1)
 
@@ -1081,13 +1041,15 @@ func miqt_exec_callback_QTextDocument_CreateObject(self *C.QTextDocument, cb C.i
 
 func (this *QTextDocument) callVirtualBase_LoadResource(typeVal int, name *QUrl) *QVariant {
 
-	_ret := C.QTextDocument_virtualbase_LoadResource(unsafe.Pointer(this.h), (C.int)(typeVal), name.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QTextDocument_virtualbase_LoadResource(unsafe.Pointer(this.h), (C.int)(typeVal), name.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QTextDocument) OnLoadResource(slot func(super func(typeVal int, name *QUrl) *QVariant, typeVal int, name *QUrl) *QVariant) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextDocument_override_virtual_LoadResource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1101,7 +1063,7 @@ func miqt_exec_callback_QTextDocument_LoadResource(self *C.QTextDocument, cb C.i
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (int)(typeVal)
 
-	slotval2 := UnsafeNewQUrl(unsafe.Pointer(name))
+	slotval2 := newQUrl(name)
 
 	virtualReturn := gofunc((&QTextDocument{h: self}).callVirtualBase_LoadResource, slotval1, slotval2)
 
@@ -1115,6 +1077,9 @@ func (this *QTextDocument) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QTextDocument) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextDocument_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1126,7 +1091,7 @@ func miqt_exec_callback_QTextDocument_Event(self *C.QTextDocument, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QTextDocument{h: self}).callVirtualBase_Event, slotval1)
 
@@ -1140,6 +1105,9 @@ func (this *QTextDocument) callVirtualBase_EventFilter(watched *QObject, event *
 
 }
 func (this *QTextDocument) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextDocument_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1151,8 +1119,9 @@ func miqt_exec_callback_QTextDocument_EventFilter(self *C.QTextDocument, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QTextDocument{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -1166,6 +1135,9 @@ func (this *QTextDocument) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QTextDocument) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextDocument_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1177,7 +1149,7 @@ func miqt_exec_callback_QTextDocument_TimerEvent(self *C.QTextDocument, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QTextDocument{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -1189,6 +1161,9 @@ func (this *QTextDocument) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QTextDocument) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextDocument_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1200,7 +1175,7 @@ func miqt_exec_callback_QTextDocument_ChildEvent(self *C.QTextDocument, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QTextDocument{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -1212,6 +1187,9 @@ func (this *QTextDocument) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QTextDocument) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextDocument_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1223,7 +1201,7 @@ func miqt_exec_callback_QTextDocument_CustomEvent(self *C.QTextDocument, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QTextDocument{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -1235,6 +1213,9 @@ func (this *QTextDocument) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QTextDocument) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextDocument_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1246,7 +1227,7 @@ func miqt_exec_callback_QTextDocument_ConnectNotify(self *C.QTextDocument, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QTextDocument{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -1258,6 +1239,9 @@ func (this *QTextDocument) callVirtualBase_DisconnectNotify(signal *QMetaMethod)
 
 }
 func (this *QTextDocument) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextDocument_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1269,7 +1253,7 @@ func miqt_exec_callback_QTextDocument_DisconnectNotify(self *C.QTextDocument, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QTextDocument{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

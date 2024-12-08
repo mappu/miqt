@@ -542,20 +542,16 @@ public:
 
 };
 
-void QUdpSocket_new(QUdpSocket** outptr_QUdpSocket, QAbstractSocket** outptr_QAbstractSocket, QIODevice** outptr_QIODevice, QObject** outptr_QObject) {
-	MiqtVirtualQUdpSocket* ret = new MiqtVirtualQUdpSocket();
-	*outptr_QUdpSocket = ret;
-	*outptr_QAbstractSocket = static_cast<QAbstractSocket*>(ret);
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QUdpSocket* QUdpSocket_new() {
+	return new MiqtVirtualQUdpSocket();
 }
 
-void QUdpSocket_new2(QObject* parent, QUdpSocket** outptr_QUdpSocket, QAbstractSocket** outptr_QAbstractSocket, QIODevice** outptr_QIODevice, QObject** outptr_QObject) {
-	MiqtVirtualQUdpSocket* ret = new MiqtVirtualQUdpSocket(parent);
-	*outptr_QUdpSocket = ret;
-	*outptr_QAbstractSocket = static_cast<QAbstractSocket*>(ret);
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QUdpSocket* QUdpSocket_new2(QObject* parent) {
+	return new MiqtVirtualQUdpSocket(parent);
+}
+
+void QUdpSocket_virtbase(QUdpSocket* src, QAbstractSocket** outptr_QAbstractSocket) {
+	*outptr_QAbstractSocket = static_cast<QAbstractSocket*>(src);
 }
 
 QMetaObject* QUdpSocket_MetaObject(const QUdpSocket* self) {

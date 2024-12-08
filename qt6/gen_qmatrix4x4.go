@@ -49,91 +49,73 @@ func newQMatrix4x4(h *C.QMatrix4x4) *QMatrix4x4 {
 	if h == nil {
 		return nil
 	}
+
 	return &QMatrix4x4{h: h}
 }
 
 // UnsafeNewQMatrix4x4 constructs the type using only unsafe pointers.
 func UnsafeNewQMatrix4x4(h unsafe.Pointer) *QMatrix4x4 {
-	if h == nil {
-		return nil
-	}
-
-	return &QMatrix4x4{h: (*C.QMatrix4x4)(h)}
+	return newQMatrix4x4((*C.QMatrix4x4)(h))
 }
 
 // NewQMatrix4x4 constructs a new QMatrix4x4 object.
 func NewQMatrix4x4() *QMatrix4x4 {
-	var outptr_QMatrix4x4 *C.QMatrix4x4 = nil
 
-	C.QMatrix4x4_new(&outptr_QMatrix4x4)
-	ret := newQMatrix4x4(outptr_QMatrix4x4)
+	ret := newQMatrix4x4(C.QMatrix4x4_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMatrix4x42 constructs a new QMatrix4x4 object.
 func NewQMatrix4x42(param1 Initialization) *QMatrix4x4 {
-	var outptr_QMatrix4x4 *C.QMatrix4x4 = nil
 
-	C.QMatrix4x4_new2((C.int)(param1), &outptr_QMatrix4x4)
-	ret := newQMatrix4x4(outptr_QMatrix4x4)
+	ret := newQMatrix4x4(C.QMatrix4x4_new2((C.int)(param1)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMatrix4x43 constructs a new QMatrix4x4 object.
 func NewQMatrix4x43(values *float32) *QMatrix4x4 {
-	var outptr_QMatrix4x4 *C.QMatrix4x4 = nil
 
-	C.QMatrix4x4_new3((*C.float)(unsafe.Pointer(values)), &outptr_QMatrix4x4)
-	ret := newQMatrix4x4(outptr_QMatrix4x4)
+	ret := newQMatrix4x4(C.QMatrix4x4_new3((*C.float)(unsafe.Pointer(values))))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMatrix4x44 constructs a new QMatrix4x4 object.
 func NewQMatrix4x44(m11 float32, m12 float32, m13 float32, m14 float32, m21 float32, m22 float32, m23 float32, m24 float32, m31 float32, m32 float32, m33 float32, m34 float32, m41 float32, m42 float32, m43 float32, m44 float32) *QMatrix4x4 {
-	var outptr_QMatrix4x4 *C.QMatrix4x4 = nil
 
-	C.QMatrix4x4_new4((C.float)(m11), (C.float)(m12), (C.float)(m13), (C.float)(m14), (C.float)(m21), (C.float)(m22), (C.float)(m23), (C.float)(m24), (C.float)(m31), (C.float)(m32), (C.float)(m33), (C.float)(m34), (C.float)(m41), (C.float)(m42), (C.float)(m43), (C.float)(m44), &outptr_QMatrix4x4)
-	ret := newQMatrix4x4(outptr_QMatrix4x4)
+	ret := newQMatrix4x4(C.QMatrix4x4_new4((C.float)(m11), (C.float)(m12), (C.float)(m13), (C.float)(m14), (C.float)(m21), (C.float)(m22), (C.float)(m23), (C.float)(m24), (C.float)(m31), (C.float)(m32), (C.float)(m33), (C.float)(m34), (C.float)(m41), (C.float)(m42), (C.float)(m43), (C.float)(m44)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMatrix4x45 constructs a new QMatrix4x4 object.
 func NewQMatrix4x45(values *float32, cols int, rows int) *QMatrix4x4 {
-	var outptr_QMatrix4x4 *C.QMatrix4x4 = nil
 
-	C.QMatrix4x4_new5((*C.float)(unsafe.Pointer(values)), (C.int)(cols), (C.int)(rows), &outptr_QMatrix4x4)
-	ret := newQMatrix4x4(outptr_QMatrix4x4)
+	ret := newQMatrix4x4(C.QMatrix4x4_new5((*C.float)(unsafe.Pointer(values)), (C.int)(cols), (C.int)(rows)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMatrix4x46 constructs a new QMatrix4x4 object.
 func NewQMatrix4x46(transform *QTransform) *QMatrix4x4 {
-	var outptr_QMatrix4x4 *C.QMatrix4x4 = nil
 
-	C.QMatrix4x4_new6(transform.cPointer(), &outptr_QMatrix4x4)
-	ret := newQMatrix4x4(outptr_QMatrix4x4)
+	ret := newQMatrix4x4(C.QMatrix4x4_new6(transform.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMatrix4x47 constructs a new QMatrix4x4 object.
 func NewQMatrix4x47(param1 *QMatrix4x4) *QMatrix4x4 {
-	var outptr_QMatrix4x4 *C.QMatrix4x4 = nil
 
-	C.QMatrix4x4_new7(param1.cPointer(), &outptr_QMatrix4x4)
-	ret := newQMatrix4x4(outptr_QMatrix4x4)
+	ret := newQMatrix4x4(C.QMatrix4x4_new7(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QMatrix4x4) Column(index int) *QVector4D {
-	_ret := C.QMatrix4x4_Column(this.h, (C.int)(index))
-	_goptr := newQVector4D(_ret)
+	_goptr := newQVector4D(C.QMatrix4x4_Column(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -143,8 +125,7 @@ func (this *QMatrix4x4) SetColumn(index int, value *QVector4D) {
 }
 
 func (this *QMatrix4x4) Row(index int) *QVector4D {
-	_ret := C.QMatrix4x4_Row(this.h, (C.int)(index))
-	_goptr := newQVector4D(_ret)
+	_goptr := newQVector4D(C.QMatrix4x4_Row(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -174,37 +155,35 @@ func (this *QMatrix4x4) Determinant() float64 {
 }
 
 func (this *QMatrix4x4) Inverted() *QMatrix4x4 {
-	_ret := C.QMatrix4x4_Inverted(this.h)
-	_goptr := newQMatrix4x4(_ret)
+	_goptr := newQMatrix4x4(C.QMatrix4x4_Inverted(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix4x4) Transposed() *QMatrix4x4 {
-	_ret := C.QMatrix4x4_Transposed(this.h)
-	_goptr := newQMatrix4x4(_ret)
+	_goptr := newQMatrix4x4(C.QMatrix4x4_Transposed(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix4x4) OperatorPlusAssign(other *QMatrix4x4) *QMatrix4x4 {
-	return UnsafeNewQMatrix4x4(unsafe.Pointer(C.QMatrix4x4_OperatorPlusAssign(this.h, other.cPointer())))
+	return newQMatrix4x4(C.QMatrix4x4_OperatorPlusAssign(this.h, other.cPointer()))
 }
 
 func (this *QMatrix4x4) OperatorMinusAssign(other *QMatrix4x4) *QMatrix4x4 {
-	return UnsafeNewQMatrix4x4(unsafe.Pointer(C.QMatrix4x4_OperatorMinusAssign(this.h, other.cPointer())))
+	return newQMatrix4x4(C.QMatrix4x4_OperatorMinusAssign(this.h, other.cPointer()))
 }
 
 func (this *QMatrix4x4) OperatorMultiplyAssign(other *QMatrix4x4) *QMatrix4x4 {
-	return UnsafeNewQMatrix4x4(unsafe.Pointer(C.QMatrix4x4_OperatorMultiplyAssign(this.h, other.cPointer())))
+	return newQMatrix4x4(C.QMatrix4x4_OperatorMultiplyAssign(this.h, other.cPointer()))
 }
 
 func (this *QMatrix4x4) OperatorMultiplyAssignWithFactor(factor float32) *QMatrix4x4 {
-	return UnsafeNewQMatrix4x4(unsafe.Pointer(C.QMatrix4x4_OperatorMultiplyAssignWithFactor(this.h, (C.float)(factor))))
+	return newQMatrix4x4(C.QMatrix4x4_OperatorMultiplyAssignWithFactor(this.h, (C.float)(factor)))
 }
 
 func (this *QMatrix4x4) OperatorDivideAssign(divisor float32) *QMatrix4x4 {
-	return UnsafeNewQMatrix4x4(unsafe.Pointer(C.QMatrix4x4_OperatorDivideAssign(this.h, (C.float)(divisor))))
+	return newQMatrix4x4(C.QMatrix4x4_OperatorDivideAssign(this.h, (C.float)(divisor)))
 }
 
 func (this *QMatrix4x4) OperatorEqual(other *QMatrix4x4) bool {
@@ -296,64 +275,55 @@ func (this *QMatrix4x4) CopyDataTo(values *float32) {
 }
 
 func (this *QMatrix4x4) ToTransform() *QTransform {
-	_ret := C.QMatrix4x4_ToTransform(this.h)
-	_goptr := newQTransform(_ret)
+	_goptr := newQTransform(C.QMatrix4x4_ToTransform(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix4x4) ToTransformWithDistanceToPlane(distanceToPlane float32) *QTransform {
-	_ret := C.QMatrix4x4_ToTransformWithDistanceToPlane(this.h, (C.float)(distanceToPlane))
-	_goptr := newQTransform(_ret)
+	_goptr := newQTransform(C.QMatrix4x4_ToTransformWithDistanceToPlane(this.h, (C.float)(distanceToPlane)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix4x4) Map(point *QPoint) *QPoint {
-	_ret := C.QMatrix4x4_Map(this.h, point.cPointer())
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QMatrix4x4_Map(this.h, point.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix4x4) MapWithPoint(point *QPointF) *QPointF {
-	_ret := C.QMatrix4x4_MapWithPoint(this.h, point.cPointer())
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QMatrix4x4_MapWithPoint(this.h, point.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix4x4) Map2(point *QVector3D) *QVector3D {
-	_ret := C.QMatrix4x4_Map2(this.h, point.cPointer())
-	_goptr := newQVector3D(_ret)
+	_goptr := newQVector3D(C.QMatrix4x4_Map2(this.h, point.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix4x4) MapVector(vector *QVector3D) *QVector3D {
-	_ret := C.QMatrix4x4_MapVector(this.h, vector.cPointer())
-	_goptr := newQVector3D(_ret)
+	_goptr := newQVector3D(C.QMatrix4x4_MapVector(this.h, vector.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix4x4) Map3(point *QVector4D) *QVector4D {
-	_ret := C.QMatrix4x4_Map3(this.h, point.cPointer())
-	_goptr := newQVector4D(_ret)
+	_goptr := newQVector4D(C.QMatrix4x4_Map3(this.h, point.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix4x4) MapRect(rect *QRect) *QRect {
-	_ret := C.QMatrix4x4_MapRect(this.h, rect.cPointer())
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QMatrix4x4_MapRect(this.h, rect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix4x4) MapRectWithRect(rect *QRectF) *QRectF {
-	_ret := C.QMatrix4x4_MapRectWithRect(this.h, rect.cPointer())
-	_goptr := newQRectF(_ret)
+	_goptr := newQRectF(C.QMatrix4x4_MapRectWithRect(this.h, rect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -383,8 +353,7 @@ func (this *QMatrix4x4) Flags() QMatrix4x4__Flag {
 }
 
 func (this *QMatrix4x4) Inverted1(invertible *bool) *QMatrix4x4 {
-	_ret := C.QMatrix4x4_Inverted1(this.h, (*C.bool)(unsafe.Pointer(invertible)))
-	_goptr := newQMatrix4x4(_ret)
+	_goptr := newQMatrix4x4(C.QMatrix4x4_Inverted1(this.h, (*C.bool)(unsafe.Pointer(invertible))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -36,7 +36,8 @@ typedef struct QSize QSize;
 typedef struct QSvgGenerator QSvgGenerator;
 #endif
 
-void QSvgGenerator_new(QSvgGenerator** outptr_QSvgGenerator, QPaintDevice** outptr_QPaintDevice);
+QSvgGenerator* QSvgGenerator_new();
+void QSvgGenerator_virtbase(QSvgGenerator* src, QPaintDevice** outptr_QPaintDevice);
 struct miqt_string QSvgGenerator_Title(const QSvgGenerator* self);
 void QSvgGenerator_SetTitle(QSvgGenerator* self, struct miqt_string title);
 struct miqt_string QSvgGenerator_Description(const QSvgGenerator* self);

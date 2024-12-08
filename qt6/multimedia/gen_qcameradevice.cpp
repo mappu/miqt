@@ -10,14 +10,12 @@
 #include "gen_qcameradevice.h"
 #include "_cgo_export.h"
 
-void QCameraFormat_new(QCameraFormat** outptr_QCameraFormat) {
-	QCameraFormat* ret = new QCameraFormat();
-	*outptr_QCameraFormat = ret;
+QCameraFormat* QCameraFormat_new() {
+	return new QCameraFormat();
 }
 
-void QCameraFormat_new2(QCameraFormat* other, QCameraFormat** outptr_QCameraFormat) {
-	QCameraFormat* ret = new QCameraFormat(*other);
-	*outptr_QCameraFormat = ret;
+QCameraFormat* QCameraFormat_new2(QCameraFormat* other) {
+	return new QCameraFormat(*other);
 }
 
 void QCameraFormat_OperatorAssign(QCameraFormat* self, QCameraFormat* other) {
@@ -61,14 +59,12 @@ void QCameraFormat_Delete(QCameraFormat* self, bool isSubclass) {
 	}
 }
 
-void QCameraDevice_new(QCameraDevice** outptr_QCameraDevice) {
-	QCameraDevice* ret = new QCameraDevice();
-	*outptr_QCameraDevice = ret;
+QCameraDevice* QCameraDevice_new() {
+	return new QCameraDevice();
 }
 
-void QCameraDevice_new2(QCameraDevice* other, QCameraDevice** outptr_QCameraDevice) {
-	QCameraDevice* ret = new QCameraDevice(*other);
-	*outptr_QCameraDevice = ret;
+QCameraDevice* QCameraDevice_new2(QCameraDevice* other) {
+	return new QCameraDevice(*other);
 }
 
 void QCameraDevice_OperatorAssign(QCameraDevice* self, QCameraDevice* other) {

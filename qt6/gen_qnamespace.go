@@ -1697,34 +1697,27 @@ func newDisambiguated_t(h *C.Disambiguated_t) *Disambiguated_t {
 	if h == nil {
 		return nil
 	}
+
 	return &Disambiguated_t{h: h}
 }
 
 // UnsafeNewDisambiguated_t constructs the type using only unsafe pointers.
 func UnsafeNewDisambiguated_t(h unsafe.Pointer) *Disambiguated_t {
-	if h == nil {
-		return nil
-	}
-
-	return &Disambiguated_t{h: (*C.Disambiguated_t)(h)}
+	return newDisambiguated_t((*C.Disambiguated_t)(h))
 }
 
 // NewDisambiguated_t constructs a new Qt::Disambiguated_t object.
 func NewDisambiguated_t() *Disambiguated_t {
-	var outptr_Disambiguated_t *C.Disambiguated_t = nil
 
-	C.Disambiguated_t_new(&outptr_Disambiguated_t)
-	ret := newDisambiguated_t(outptr_Disambiguated_t)
+	ret := newDisambiguated_t(C.Disambiguated_t_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewDisambiguated_t2 constructs a new Qt::Disambiguated_t object.
 func NewDisambiguated_t2(param1 *Disambiguated_t) *Disambiguated_t {
-	var outptr_Disambiguated_t *C.Disambiguated_t = nil
 
-	C.Disambiguated_t_new2(param1.cPointer(), &outptr_Disambiguated_t)
-	ret := newDisambiguated_t(outptr_Disambiguated_t)
+	ret := newDisambiguated_t(C.Disambiguated_t_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -1767,16 +1760,13 @@ func newQInternal(h *C.QInternal) *QInternal {
 	if h == nil {
 		return nil
 	}
+
 	return &QInternal{h: h}
 }
 
 // UnsafeNewQInternal constructs the type using only unsafe pointers.
 func UnsafeNewQInternal(h unsafe.Pointer) *QInternal {
-	if h == nil {
-		return nil
-	}
-
-	return &QInternal{h: (*C.QInternal)(h)}
+	return newQInternal((*C.QInternal)(h))
 }
 
 // Delete this object from C++ memory.
@@ -1817,84 +1807,67 @@ func newQKeyCombination(h *C.QKeyCombination) *QKeyCombination {
 	if h == nil {
 		return nil
 	}
+
 	return &QKeyCombination{h: h}
 }
 
 // UnsafeNewQKeyCombination constructs the type using only unsafe pointers.
 func UnsafeNewQKeyCombination(h unsafe.Pointer) *QKeyCombination {
-	if h == nil {
-		return nil
-	}
-
-	return &QKeyCombination{h: (*C.QKeyCombination)(h)}
+	return newQKeyCombination((*C.QKeyCombination)(h))
 }
 
 // NewQKeyCombination constructs a new QKeyCombination object.
 func NewQKeyCombination() *QKeyCombination {
-	var outptr_QKeyCombination *C.QKeyCombination = nil
 
-	C.QKeyCombination_new(&outptr_QKeyCombination)
-	ret := newQKeyCombination(outptr_QKeyCombination)
+	ret := newQKeyCombination(C.QKeyCombination_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQKeyCombination2 constructs a new QKeyCombination object.
 func NewQKeyCombination2(modifiers Modifier) *QKeyCombination {
-	var outptr_QKeyCombination *C.QKeyCombination = nil
 
-	C.QKeyCombination_new2((C.int)(modifiers), &outptr_QKeyCombination)
-	ret := newQKeyCombination(outptr_QKeyCombination)
+	ret := newQKeyCombination(C.QKeyCombination_new2((C.int)(modifiers)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQKeyCombination3 constructs a new QKeyCombination object.
 func NewQKeyCombination3(modifiers KeyboardModifier) *QKeyCombination {
-	var outptr_QKeyCombination *C.QKeyCombination = nil
 
-	C.QKeyCombination_new3((C.int)(modifiers), &outptr_QKeyCombination)
-	ret := newQKeyCombination(outptr_QKeyCombination)
+	ret := newQKeyCombination(C.QKeyCombination_new3((C.int)(modifiers)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQKeyCombination4 constructs a new QKeyCombination object.
 func NewQKeyCombination4(param1 *QKeyCombination) *QKeyCombination {
-	var outptr_QKeyCombination *C.QKeyCombination = nil
 
-	C.QKeyCombination_new4(param1.cPointer(), &outptr_QKeyCombination)
-	ret := newQKeyCombination(outptr_QKeyCombination)
+	ret := newQKeyCombination(C.QKeyCombination_new4(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQKeyCombination5 constructs a new QKeyCombination object.
 func NewQKeyCombination5(key Key) *QKeyCombination {
-	var outptr_QKeyCombination *C.QKeyCombination = nil
 
-	C.QKeyCombination_new5((C.int)(key), &outptr_QKeyCombination)
-	ret := newQKeyCombination(outptr_QKeyCombination)
+	ret := newQKeyCombination(C.QKeyCombination_new5((C.int)(key)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQKeyCombination6 constructs a new QKeyCombination object.
 func NewQKeyCombination6(modifiers Modifier, key Key) *QKeyCombination {
-	var outptr_QKeyCombination *C.QKeyCombination = nil
 
-	C.QKeyCombination_new6((C.int)(modifiers), (C.int)(key), &outptr_QKeyCombination)
-	ret := newQKeyCombination(outptr_QKeyCombination)
+	ret := newQKeyCombination(C.QKeyCombination_new6((C.int)(modifiers), (C.int)(key)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQKeyCombination7 constructs a new QKeyCombination object.
 func NewQKeyCombination7(modifiers KeyboardModifier, key Key) *QKeyCombination {
-	var outptr_QKeyCombination *C.QKeyCombination = nil
 
-	C.QKeyCombination_new7((C.int)(modifiers), (C.int)(key), &outptr_QKeyCombination)
-	ret := newQKeyCombination(outptr_QKeyCombination)
+	ret := newQKeyCombination(C.QKeyCombination_new7((C.int)(modifiers), (C.int)(key)))
 	ret.isSubclass = true
 	return ret
 }
@@ -1908,8 +1881,7 @@ func (this *QKeyCombination) Key() Key {
 }
 
 func QKeyCombination_FromCombined(combined int) *QKeyCombination {
-	_ret := C.QKeyCombination_FromCombined((C.int)(combined))
-	_goptr := newQKeyCombination(_ret)
+	_goptr := newQKeyCombination(C.QKeyCombination_FromCombined((C.int)(combined)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

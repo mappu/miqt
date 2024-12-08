@@ -6,9 +6,8 @@
 #include "gen_qscriptable.h"
 #include "_cgo_export.h"
 
-void QScriptable_new(QScriptable** outptr_QScriptable) {
-	QScriptable* ret = new QScriptable();
-	*outptr_QScriptable = ret;
+QScriptable* QScriptable_new() {
+	return new QScriptable();
 }
 
 QScriptEngine* QScriptable_Engine(const QScriptable* self) {

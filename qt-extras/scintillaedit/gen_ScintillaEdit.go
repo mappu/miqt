@@ -1730,61 +1730,49 @@ func newScintilla__Internal__Point(h *C.Scintilla__Internal__Point) *Scintilla__
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__Internal__Point{h: h}
 }
 
 // UnsafeNewScintilla__Internal__Point constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__Point(h unsafe.Pointer) *Scintilla__Internal__Point {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__Internal__Point{h: (*C.Scintilla__Internal__Point)(h)}
+	return newScintilla__Internal__Point((*C.Scintilla__Internal__Point)(h))
 }
 
 // NewScintilla__Internal__Point constructs a new Scintilla::Internal::Point object.
 func NewScintilla__Internal__Point() *Scintilla__Internal__Point {
-	var outptr_Scintilla__Internal__Point *C.Scintilla__Internal__Point = nil
 
-	C.Scintilla__Internal__Point_new(&outptr_Scintilla__Internal__Point)
-	ret := newScintilla__Internal__Point(outptr_Scintilla__Internal__Point)
+	ret := newScintilla__Internal__Point(C.Scintilla__Internal__Point_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewScintilla__Internal__Point2 constructs a new Scintilla::Internal::Point object.
 func NewScintilla__Internal__Point2(param1 *Scintilla__Internal__Point) *Scintilla__Internal__Point {
-	var outptr_Scintilla__Internal__Point *C.Scintilla__Internal__Point = nil
 
-	C.Scintilla__Internal__Point_new2(param1.cPointer(), &outptr_Scintilla__Internal__Point)
-	ret := newScintilla__Internal__Point(outptr_Scintilla__Internal__Point)
+	ret := newScintilla__Internal__Point(C.Scintilla__Internal__Point_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewScintilla__Internal__Point3 constructs a new Scintilla::Internal::Point object.
 func NewScintilla__Internal__Point3(x_ float64) *Scintilla__Internal__Point {
-	var outptr_Scintilla__Internal__Point *C.Scintilla__Internal__Point = nil
 
-	C.Scintilla__Internal__Point_new3((C.double)(x_), &outptr_Scintilla__Internal__Point)
-	ret := newScintilla__Internal__Point(outptr_Scintilla__Internal__Point)
+	ret := newScintilla__Internal__Point(C.Scintilla__Internal__Point_new3((C.double)(x_)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewScintilla__Internal__Point4 constructs a new Scintilla::Internal::Point object.
 func NewScintilla__Internal__Point4(x_ float64, y_ float64) *Scintilla__Internal__Point {
-	var outptr_Scintilla__Internal__Point *C.Scintilla__Internal__Point = nil
 
-	C.Scintilla__Internal__Point_new4((C.double)(x_), (C.double)(y_), &outptr_Scintilla__Internal__Point)
-	ret := newScintilla__Internal__Point(outptr_Scintilla__Internal__Point)
+	ret := newScintilla__Internal__Point(C.Scintilla__Internal__Point_new4((C.double)(x_), (C.double)(y_)))
 	ret.isSubclass = true
 	return ret
 }
 
 func Scintilla__Internal__Point_FromInts(x_ int, y_ int) *Scintilla__Internal__Point {
-	_ret := C.Scintilla__Internal__Point_FromInts((C.int)(x_), (C.int)(y_))
-	_goptr := newScintilla__Internal__Point(_ret)
+	_goptr := newScintilla__Internal__Point(C.Scintilla__Internal__Point_FromInts((C.int)(x_), (C.int)(y_)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1798,15 +1786,13 @@ func (this *Scintilla__Internal__Point) OperatorNotEqual(other Scintilla__Intern
 }
 
 func (this *Scintilla__Internal__Point) OperatorPlus(other Scintilla__Internal__Point) *Scintilla__Internal__Point {
-	_ret := C.Scintilla__Internal__Point_OperatorPlus(this.h, other.cPointer())
-	_goptr := newScintilla__Internal__Point(_ret)
+	_goptr := newScintilla__Internal__Point(C.Scintilla__Internal__Point_OperatorPlus(this.h, other.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *Scintilla__Internal__Point) OperatorMinus(other Scintilla__Internal__Point) *Scintilla__Internal__Point {
-	_ret := C.Scintilla__Internal__Point_OperatorMinus(this.h, other.cPointer())
-	_goptr := newScintilla__Internal__Point(_ret)
+	_goptr := newScintilla__Internal__Point(C.Scintilla__Internal__Point_OperatorMinus(this.h, other.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1849,16 +1835,13 @@ func newScintilla__Internal__Interval(h *C.Scintilla__Internal__Interval) *Scint
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__Internal__Interval{h: h}
 }
 
 // UnsafeNewScintilla__Internal__Interval constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__Interval(h unsafe.Pointer) *Scintilla__Internal__Interval {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__Internal__Interval{h: (*C.Scintilla__Internal__Interval)(h)}
+	return newScintilla__Internal__Interval((*C.Scintilla__Internal__Interval)(h))
 }
 
 func (this *Scintilla__Internal__Interval) OperatorEqual(other *Scintilla__Internal__Interval) bool {
@@ -1878,8 +1861,7 @@ func (this *Scintilla__Internal__Interval) Intersects(other Scintilla__Internal_
 }
 
 func (this *Scintilla__Internal__Interval) Offset(offset float64) *Scintilla__Internal__Interval {
-	_ret := C.Scintilla__Internal__Interval_Offset(this.h, (C.double)(offset))
-	_goptr := newScintilla__Internal__Interval(_ret)
+	_goptr := newScintilla__Internal__Interval(C.Scintilla__Internal__Interval_Offset(this.h, (C.double)(offset)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1922,81 +1904,65 @@ func newScintilla__Internal__PRectangle(h *C.Scintilla__Internal__PRectangle) *S
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__Internal__PRectangle{h: h}
 }
 
 // UnsafeNewScintilla__Internal__PRectangle constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__PRectangle(h unsafe.Pointer) *Scintilla__Internal__PRectangle {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__Internal__PRectangle{h: (*C.Scintilla__Internal__PRectangle)(h)}
+	return newScintilla__Internal__PRectangle((*C.Scintilla__Internal__PRectangle)(h))
 }
 
 // NewScintilla__Internal__PRectangle constructs a new Scintilla::Internal::PRectangle object.
 func NewScintilla__Internal__PRectangle() *Scintilla__Internal__PRectangle {
-	var outptr_Scintilla__Internal__PRectangle *C.Scintilla__Internal__PRectangle = nil
 
-	C.Scintilla__Internal__PRectangle_new(&outptr_Scintilla__Internal__PRectangle)
-	ret := newScintilla__Internal__PRectangle(outptr_Scintilla__Internal__PRectangle)
+	ret := newScintilla__Internal__PRectangle(C.Scintilla__Internal__PRectangle_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewScintilla__Internal__PRectangle2 constructs a new Scintilla::Internal::PRectangle object.
 func NewScintilla__Internal__PRectangle2(param1 *Scintilla__Internal__PRectangle) *Scintilla__Internal__PRectangle {
-	var outptr_Scintilla__Internal__PRectangle *C.Scintilla__Internal__PRectangle = nil
 
-	C.Scintilla__Internal__PRectangle_new2(param1.cPointer(), &outptr_Scintilla__Internal__PRectangle)
-	ret := newScintilla__Internal__PRectangle(outptr_Scintilla__Internal__PRectangle)
+	ret := newScintilla__Internal__PRectangle(C.Scintilla__Internal__PRectangle_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewScintilla__Internal__PRectangle3 constructs a new Scintilla::Internal::PRectangle object.
 func NewScintilla__Internal__PRectangle3(left_ float64) *Scintilla__Internal__PRectangle {
-	var outptr_Scintilla__Internal__PRectangle *C.Scintilla__Internal__PRectangle = nil
 
-	C.Scintilla__Internal__PRectangle_new3((C.double)(left_), &outptr_Scintilla__Internal__PRectangle)
-	ret := newScintilla__Internal__PRectangle(outptr_Scintilla__Internal__PRectangle)
+	ret := newScintilla__Internal__PRectangle(C.Scintilla__Internal__PRectangle_new3((C.double)(left_)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewScintilla__Internal__PRectangle4 constructs a new Scintilla::Internal::PRectangle object.
 func NewScintilla__Internal__PRectangle4(left_ float64, top_ float64) *Scintilla__Internal__PRectangle {
-	var outptr_Scintilla__Internal__PRectangle *C.Scintilla__Internal__PRectangle = nil
 
-	C.Scintilla__Internal__PRectangle_new4((C.double)(left_), (C.double)(top_), &outptr_Scintilla__Internal__PRectangle)
-	ret := newScintilla__Internal__PRectangle(outptr_Scintilla__Internal__PRectangle)
+	ret := newScintilla__Internal__PRectangle(C.Scintilla__Internal__PRectangle_new4((C.double)(left_), (C.double)(top_)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewScintilla__Internal__PRectangle5 constructs a new Scintilla::Internal::PRectangle object.
 func NewScintilla__Internal__PRectangle5(left_ float64, top_ float64, right_ float64) *Scintilla__Internal__PRectangle {
-	var outptr_Scintilla__Internal__PRectangle *C.Scintilla__Internal__PRectangle = nil
 
-	C.Scintilla__Internal__PRectangle_new5((C.double)(left_), (C.double)(top_), (C.double)(right_), &outptr_Scintilla__Internal__PRectangle)
-	ret := newScintilla__Internal__PRectangle(outptr_Scintilla__Internal__PRectangle)
+	ret := newScintilla__Internal__PRectangle(C.Scintilla__Internal__PRectangle_new5((C.double)(left_), (C.double)(top_), (C.double)(right_)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewScintilla__Internal__PRectangle6 constructs a new Scintilla::Internal::PRectangle object.
 func NewScintilla__Internal__PRectangle6(left_ float64, top_ float64, right_ float64, bottom_ float64) *Scintilla__Internal__PRectangle {
-	var outptr_Scintilla__Internal__PRectangle *C.Scintilla__Internal__PRectangle = nil
 
-	C.Scintilla__Internal__PRectangle_new6((C.double)(left_), (C.double)(top_), (C.double)(right_), (C.double)(bottom_), &outptr_Scintilla__Internal__PRectangle)
-	ret := newScintilla__Internal__PRectangle(outptr_Scintilla__Internal__PRectangle)
+	ret := newScintilla__Internal__PRectangle(C.Scintilla__Internal__PRectangle_new6((C.double)(left_), (C.double)(top_), (C.double)(right_), (C.double)(bottom_)))
 	ret.isSubclass = true
 	return ret
 }
 
 func Scintilla__Internal__PRectangle_FromInts(left_ int, top_ int, right_ int, bottom_ int) *Scintilla__Internal__PRectangle {
-	_ret := C.Scintilla__Internal__PRectangle_FromInts((C.int)(left_), (C.int)(top_), (C.int)(right_), (C.int)(bottom_))
-	_goptr := newScintilla__Internal__PRectangle(_ret)
+	_goptr := newScintilla__Internal__PRectangle(C.Scintilla__Internal__PRectangle_FromInts((C.int)(left_), (C.int)(top_), (C.int)(right_), (C.int)(bottom_)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -2030,29 +1996,25 @@ func (this *Scintilla__Internal__PRectangle) Move(xDelta float64, yDelta float64
 }
 
 func (this *Scintilla__Internal__PRectangle) WithHorizontalBounds(horizontal Scintilla__Internal__Interval) *Scintilla__Internal__PRectangle {
-	_ret := C.Scintilla__Internal__PRectangle_WithHorizontalBounds(this.h, horizontal.cPointer())
-	_goptr := newScintilla__Internal__PRectangle(_ret)
+	_goptr := newScintilla__Internal__PRectangle(C.Scintilla__Internal__PRectangle_WithHorizontalBounds(this.h, horizontal.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *Scintilla__Internal__PRectangle) Inset(delta float64) *Scintilla__Internal__PRectangle {
-	_ret := C.Scintilla__Internal__PRectangle_Inset(this.h, (C.double)(delta))
-	_goptr := newScintilla__Internal__PRectangle(_ret)
+	_goptr := newScintilla__Internal__PRectangle(C.Scintilla__Internal__PRectangle_Inset(this.h, (C.double)(delta)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *Scintilla__Internal__PRectangle) InsetWithDelta(delta Scintilla__Internal__Point) *Scintilla__Internal__PRectangle {
-	_ret := C.Scintilla__Internal__PRectangle_InsetWithDelta(this.h, delta.cPointer())
-	_goptr := newScintilla__Internal__PRectangle(_ret)
+	_goptr := newScintilla__Internal__PRectangle(C.Scintilla__Internal__PRectangle_InsetWithDelta(this.h, delta.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *Scintilla__Internal__PRectangle) Centre() *Scintilla__Internal__Point {
-	_ret := C.Scintilla__Internal__PRectangle_Centre(this.h)
-	_goptr := newScintilla__Internal__Point(_ret)
+	_goptr := newScintilla__Internal__Point(C.Scintilla__Internal__PRectangle_Centre(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -2107,109 +2069,89 @@ func newScintilla__Internal__ColourRGBA(h *C.Scintilla__Internal__ColourRGBA) *S
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__Internal__ColourRGBA{h: h}
 }
 
 // UnsafeNewScintilla__Internal__ColourRGBA constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__ColourRGBA(h unsafe.Pointer) *Scintilla__Internal__ColourRGBA {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__Internal__ColourRGBA{h: (*C.Scintilla__Internal__ColourRGBA)(h)}
+	return newScintilla__Internal__ColourRGBA((*C.Scintilla__Internal__ColourRGBA)(h))
 }
 
 // NewScintilla__Internal__ColourRGBA constructs a new Scintilla::Internal::ColourRGBA object.
 func NewScintilla__Internal__ColourRGBA() *Scintilla__Internal__ColourRGBA {
-	var outptr_Scintilla__Internal__ColourRGBA *C.Scintilla__Internal__ColourRGBA = nil
 
-	C.Scintilla__Internal__ColourRGBA_new(&outptr_Scintilla__Internal__ColourRGBA)
-	ret := newScintilla__Internal__ColourRGBA(outptr_Scintilla__Internal__ColourRGBA)
+	ret := newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewScintilla__Internal__ColourRGBA2 constructs a new Scintilla::Internal::ColourRGBA object.
 func NewScintilla__Internal__ColourRGBA2(red uint, green uint, blue uint) *Scintilla__Internal__ColourRGBA {
-	var outptr_Scintilla__Internal__ColourRGBA *C.Scintilla__Internal__ColourRGBA = nil
 
-	C.Scintilla__Internal__ColourRGBA_new2((C.uint)(red), (C.uint)(green), (C.uint)(blue), &outptr_Scintilla__Internal__ColourRGBA)
-	ret := newScintilla__Internal__ColourRGBA(outptr_Scintilla__Internal__ColourRGBA)
+	ret := newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_new2((C.uint)(red), (C.uint)(green), (C.uint)(blue)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewScintilla__Internal__ColourRGBA3 constructs a new Scintilla::Internal::ColourRGBA object.
 func NewScintilla__Internal__ColourRGBA3(cd Scintilla__Internal__ColourRGBA, alpha uint) *Scintilla__Internal__ColourRGBA {
-	var outptr_Scintilla__Internal__ColourRGBA *C.Scintilla__Internal__ColourRGBA = nil
 
-	C.Scintilla__Internal__ColourRGBA_new3(cd.cPointer(), (C.uint)(alpha), &outptr_Scintilla__Internal__ColourRGBA)
-	ret := newScintilla__Internal__ColourRGBA(outptr_Scintilla__Internal__ColourRGBA)
+	ret := newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_new3(cd.cPointer(), (C.uint)(alpha)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewScintilla__Internal__ColourRGBA4 constructs a new Scintilla::Internal::ColourRGBA object.
 func NewScintilla__Internal__ColourRGBA4(param1 *Scintilla__Internal__ColourRGBA) *Scintilla__Internal__ColourRGBA {
-	var outptr_Scintilla__Internal__ColourRGBA *C.Scintilla__Internal__ColourRGBA = nil
 
-	C.Scintilla__Internal__ColourRGBA_new4(param1.cPointer(), &outptr_Scintilla__Internal__ColourRGBA)
-	ret := newScintilla__Internal__ColourRGBA(outptr_Scintilla__Internal__ColourRGBA)
+	ret := newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_new4(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewScintilla__Internal__ColourRGBA5 constructs a new Scintilla::Internal::ColourRGBA object.
 func NewScintilla__Internal__ColourRGBA5(co_ int) *Scintilla__Internal__ColourRGBA {
-	var outptr_Scintilla__Internal__ColourRGBA *C.Scintilla__Internal__ColourRGBA = nil
 
-	C.Scintilla__Internal__ColourRGBA_new5((C.int)(co_), &outptr_Scintilla__Internal__ColourRGBA)
-	ret := newScintilla__Internal__ColourRGBA(outptr_Scintilla__Internal__ColourRGBA)
+	ret := newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_new5((C.int)(co_)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewScintilla__Internal__ColourRGBA6 constructs a new Scintilla::Internal::ColourRGBA object.
 func NewScintilla__Internal__ColourRGBA6(red uint, green uint, blue uint, alpha uint) *Scintilla__Internal__ColourRGBA {
-	var outptr_Scintilla__Internal__ColourRGBA *C.Scintilla__Internal__ColourRGBA = nil
 
-	C.Scintilla__Internal__ColourRGBA_new6((C.uint)(red), (C.uint)(green), (C.uint)(blue), (C.uint)(alpha), &outptr_Scintilla__Internal__ColourRGBA)
-	ret := newScintilla__Internal__ColourRGBA(outptr_Scintilla__Internal__ColourRGBA)
+	ret := newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_new6((C.uint)(red), (C.uint)(green), (C.uint)(blue), (C.uint)(alpha)))
 	ret.isSubclass = true
 	return ret
 }
 
 func Scintilla__Internal__ColourRGBA_FromRGB(co_ int) *Scintilla__Internal__ColourRGBA {
-	_ret := C.Scintilla__Internal__ColourRGBA_FromRGB((C.int)(co_))
-	_goptr := newScintilla__Internal__ColourRGBA(_ret)
+	_goptr := newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_FromRGB((C.int)(co_)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func Scintilla__Internal__ColourRGBA_Grey(grey uint) *Scintilla__Internal__ColourRGBA {
-	_ret := C.Scintilla__Internal__ColourRGBA_Grey((C.uint)(grey))
-	_goptr := newScintilla__Internal__ColourRGBA(_ret)
+	_goptr := newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_Grey((C.uint)(grey)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func Scintilla__Internal__ColourRGBA_FromIpRGB(co_ uintptr) *Scintilla__Internal__ColourRGBA {
-	_ret := C.Scintilla__Internal__ColourRGBA_FromIpRGB((C.intptr_t)(co_))
-	_goptr := newScintilla__Internal__ColourRGBA(_ret)
+	_goptr := newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_FromIpRGB((C.intptr_t)(co_)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *Scintilla__Internal__ColourRGBA) WithoutAlpha() *Scintilla__Internal__ColourRGBA {
-	_ret := C.Scintilla__Internal__ColourRGBA_WithoutAlpha(this.h)
-	_goptr := newScintilla__Internal__ColourRGBA(_ret)
+	_goptr := newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_WithoutAlpha(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *Scintilla__Internal__ColourRGBA) Opaque() *Scintilla__Internal__ColourRGBA {
-	_ret := C.Scintilla__Internal__ColourRGBA_Opaque(this.h)
-	_goptr := newScintilla__Internal__ColourRGBA(_ret)
+	_goptr := newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_Opaque(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -2263,15 +2205,13 @@ func (this *Scintilla__Internal__ColourRGBA) IsOpaque() bool {
 }
 
 func (this *Scintilla__Internal__ColourRGBA) MixedWith(other Scintilla__Internal__ColourRGBA) *Scintilla__Internal__ColourRGBA {
-	_ret := C.Scintilla__Internal__ColourRGBA_MixedWith(this.h, other.cPointer())
-	_goptr := newScintilla__Internal__ColourRGBA(_ret)
+	_goptr := newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_MixedWith(this.h, other.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *Scintilla__Internal__ColourRGBA) MixedWith2(other Scintilla__Internal__ColourRGBA, proportion float64) *Scintilla__Internal__ColourRGBA {
-	_ret := C.Scintilla__Internal__ColourRGBA_MixedWith2(this.h, other.cPointer(), (C.double)(proportion))
-	_goptr := newScintilla__Internal__ColourRGBA(_ret)
+	_goptr := newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_MixedWith2(this.h, other.cPointer(), (C.double)(proportion)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -2281,8 +2221,7 @@ func (this *Scintilla__Internal__ColourRGBA) OperatorAssign(param1 *Scintilla__I
 }
 
 func Scintilla__Internal__ColourRGBA_Grey2(grey uint, alpha uint) *Scintilla__Internal__ColourRGBA {
-	_ret := C.Scintilla__Internal__ColourRGBA_Grey2((C.uint)(grey), (C.uint)(alpha))
-	_goptr := newScintilla__Internal__ColourRGBA(_ret)
+	_goptr := newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_Grey2((C.uint)(grey), (C.uint)(alpha)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -2325,44 +2264,35 @@ func newScintilla__Internal__Stroke(h *C.Scintilla__Internal__Stroke) *Scintilla
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__Internal__Stroke{h: h}
 }
 
 // UnsafeNewScintilla__Internal__Stroke constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__Stroke(h unsafe.Pointer) *Scintilla__Internal__Stroke {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__Internal__Stroke{h: (*C.Scintilla__Internal__Stroke)(h)}
+	return newScintilla__Internal__Stroke((*C.Scintilla__Internal__Stroke)(h))
 }
 
 // NewScintilla__Internal__Stroke constructs a new Scintilla::Internal::Stroke object.
 func NewScintilla__Internal__Stroke(colour_ Scintilla__Internal__ColourRGBA) *Scintilla__Internal__Stroke {
-	var outptr_Scintilla__Internal__Stroke *C.Scintilla__Internal__Stroke = nil
 
-	C.Scintilla__Internal__Stroke_new(colour_.cPointer(), &outptr_Scintilla__Internal__Stroke)
-	ret := newScintilla__Internal__Stroke(outptr_Scintilla__Internal__Stroke)
+	ret := newScintilla__Internal__Stroke(C.Scintilla__Internal__Stroke_new(colour_.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewScintilla__Internal__Stroke2 constructs a new Scintilla::Internal::Stroke object.
 func NewScintilla__Internal__Stroke2(param1 *Scintilla__Internal__Stroke) *Scintilla__Internal__Stroke {
-	var outptr_Scintilla__Internal__Stroke *C.Scintilla__Internal__Stroke = nil
 
-	C.Scintilla__Internal__Stroke_new2(param1.cPointer(), &outptr_Scintilla__Internal__Stroke)
-	ret := newScintilla__Internal__Stroke(outptr_Scintilla__Internal__Stroke)
+	ret := newScintilla__Internal__Stroke(C.Scintilla__Internal__Stroke_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewScintilla__Internal__Stroke3 constructs a new Scintilla::Internal::Stroke object.
 func NewScintilla__Internal__Stroke3(colour_ Scintilla__Internal__ColourRGBA, width_ float64) *Scintilla__Internal__Stroke {
-	var outptr_Scintilla__Internal__Stroke *C.Scintilla__Internal__Stroke = nil
 
-	C.Scintilla__Internal__Stroke_new3(colour_.cPointer(), (C.double)(width_), &outptr_Scintilla__Internal__Stroke)
-	ret := newScintilla__Internal__Stroke(outptr_Scintilla__Internal__Stroke)
+	ret := newScintilla__Internal__Stroke(C.Scintilla__Internal__Stroke_new3(colour_.cPointer(), (C.double)(width_)))
 	ret.isSubclass = true
 	return ret
 }
@@ -2409,34 +2339,27 @@ func newScintilla__Internal__Fill(h *C.Scintilla__Internal__Fill) *Scintilla__In
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__Internal__Fill{h: h}
 }
 
 // UnsafeNewScintilla__Internal__Fill constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__Fill(h unsafe.Pointer) *Scintilla__Internal__Fill {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__Internal__Fill{h: (*C.Scintilla__Internal__Fill)(h)}
+	return newScintilla__Internal__Fill((*C.Scintilla__Internal__Fill)(h))
 }
 
 // NewScintilla__Internal__Fill constructs a new Scintilla::Internal::Fill object.
 func NewScintilla__Internal__Fill(colour_ Scintilla__Internal__ColourRGBA) *Scintilla__Internal__Fill {
-	var outptr_Scintilla__Internal__Fill *C.Scintilla__Internal__Fill = nil
 
-	C.Scintilla__Internal__Fill_new(colour_.cPointer(), &outptr_Scintilla__Internal__Fill)
-	ret := newScintilla__Internal__Fill(outptr_Scintilla__Internal__Fill)
+	ret := newScintilla__Internal__Fill(C.Scintilla__Internal__Fill_new(colour_.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewScintilla__Internal__Fill2 constructs a new Scintilla::Internal::Fill object.
 func NewScintilla__Internal__Fill2(param1 *Scintilla__Internal__Fill) *Scintilla__Internal__Fill {
-	var outptr_Scintilla__Internal__Fill *C.Scintilla__Internal__Fill = nil
 
-	C.Scintilla__Internal__Fill_new2(param1.cPointer(), &outptr_Scintilla__Internal__Fill)
-	ret := newScintilla__Internal__Fill(outptr_Scintilla__Internal__Fill)
+	ret := newScintilla__Internal__Fill(C.Scintilla__Internal__Fill_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -2479,54 +2402,43 @@ func newScintilla__Internal__FillStroke(h *C.Scintilla__Internal__FillStroke) *S
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__Internal__FillStroke{h: h}
 }
 
 // UnsafeNewScintilla__Internal__FillStroke constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__FillStroke(h unsafe.Pointer) *Scintilla__Internal__FillStroke {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__Internal__FillStroke{h: (*C.Scintilla__Internal__FillStroke)(h)}
+	return newScintilla__Internal__FillStroke((*C.Scintilla__Internal__FillStroke)(h))
 }
 
 // NewScintilla__Internal__FillStroke constructs a new Scintilla::Internal::FillStroke object.
 func NewScintilla__Internal__FillStroke(colourFill_ Scintilla__Internal__ColourRGBA, colourStroke_ Scintilla__Internal__ColourRGBA) *Scintilla__Internal__FillStroke {
-	var outptr_Scintilla__Internal__FillStroke *C.Scintilla__Internal__FillStroke = nil
 
-	C.Scintilla__Internal__FillStroke_new(colourFill_.cPointer(), colourStroke_.cPointer(), &outptr_Scintilla__Internal__FillStroke)
-	ret := newScintilla__Internal__FillStroke(outptr_Scintilla__Internal__FillStroke)
+	ret := newScintilla__Internal__FillStroke(C.Scintilla__Internal__FillStroke_new(colourFill_.cPointer(), colourStroke_.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewScintilla__Internal__FillStroke2 constructs a new Scintilla::Internal::FillStroke object.
 func NewScintilla__Internal__FillStroke2(colourBoth Scintilla__Internal__ColourRGBA) *Scintilla__Internal__FillStroke {
-	var outptr_Scintilla__Internal__FillStroke *C.Scintilla__Internal__FillStroke = nil
 
-	C.Scintilla__Internal__FillStroke_new2(colourBoth.cPointer(), &outptr_Scintilla__Internal__FillStroke)
-	ret := newScintilla__Internal__FillStroke(outptr_Scintilla__Internal__FillStroke)
+	ret := newScintilla__Internal__FillStroke(C.Scintilla__Internal__FillStroke_new2(colourBoth.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewScintilla__Internal__FillStroke3 constructs a new Scintilla::Internal::FillStroke object.
 func NewScintilla__Internal__FillStroke3(colourFill_ Scintilla__Internal__ColourRGBA, colourStroke_ Scintilla__Internal__ColourRGBA, widthStroke_ float64) *Scintilla__Internal__FillStroke {
-	var outptr_Scintilla__Internal__FillStroke *C.Scintilla__Internal__FillStroke = nil
 
-	C.Scintilla__Internal__FillStroke_new3(colourFill_.cPointer(), colourStroke_.cPointer(), (C.double)(widthStroke_), &outptr_Scintilla__Internal__FillStroke)
-	ret := newScintilla__Internal__FillStroke(outptr_Scintilla__Internal__FillStroke)
+	ret := newScintilla__Internal__FillStroke(C.Scintilla__Internal__FillStroke_new3(colourFill_.cPointer(), colourStroke_.cPointer(), (C.double)(widthStroke_)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewScintilla__Internal__FillStroke4 constructs a new Scintilla::Internal::FillStroke object.
 func NewScintilla__Internal__FillStroke4(colourBoth Scintilla__Internal__ColourRGBA, widthStroke_ float64) *Scintilla__Internal__FillStroke {
-	var outptr_Scintilla__Internal__FillStroke *C.Scintilla__Internal__FillStroke = nil
 
-	C.Scintilla__Internal__FillStroke_new4(colourBoth.cPointer(), (C.double)(widthStroke_), &outptr_Scintilla__Internal__FillStroke)
-	ret := newScintilla__Internal__FillStroke(outptr_Scintilla__Internal__FillStroke)
+	ret := newScintilla__Internal__FillStroke(C.Scintilla__Internal__FillStroke_new4(colourBoth.cPointer(), (C.double)(widthStroke_)))
 	ret.isSubclass = true
 	return ret
 }
@@ -2569,24 +2481,19 @@ func newScintilla__Internal__ColourStop(h *C.Scintilla__Internal__ColourStop) *S
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__Internal__ColourStop{h: h}
 }
 
 // UnsafeNewScintilla__Internal__ColourStop constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__ColourStop(h unsafe.Pointer) *Scintilla__Internal__ColourStop {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__Internal__ColourStop{h: (*C.Scintilla__Internal__ColourStop)(h)}
+	return newScintilla__Internal__ColourStop((*C.Scintilla__Internal__ColourStop)(h))
 }
 
 // NewScintilla__Internal__ColourStop constructs a new Scintilla::Internal::ColourStop object.
 func NewScintilla__Internal__ColourStop(position_ float64, colour_ Scintilla__Internal__ColourRGBA) *Scintilla__Internal__ColourStop {
-	var outptr_Scintilla__Internal__ColourStop *C.Scintilla__Internal__ColourStop = nil
 
-	C.Scintilla__Internal__ColourStop_new((C.double)(position_), colour_.cPointer(), &outptr_Scintilla__Internal__ColourStop)
-	ret := newScintilla__Internal__ColourStop(outptr_Scintilla__Internal__ColourStop)
+	ret := newScintilla__Internal__ColourStop(C.Scintilla__Internal__ColourStop_new((C.double)(position_), colour_.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -2629,16 +2536,13 @@ func newScintilla__CharacterRange(h *C.Scintilla__CharacterRange) *Scintilla__Ch
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__CharacterRange{h: h}
 }
 
 // UnsafeNewScintilla__CharacterRange constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__CharacterRange(h unsafe.Pointer) *Scintilla__CharacterRange {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__CharacterRange{h: (*C.Scintilla__CharacterRange)(h)}
+	return newScintilla__CharacterRange((*C.Scintilla__CharacterRange)(h))
 }
 
 // Delete this object from C++ memory.
@@ -2679,16 +2583,13 @@ func newScintilla__CharacterRangeFull(h *C.Scintilla__CharacterRangeFull) *Scint
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__CharacterRangeFull{h: h}
 }
 
 // UnsafeNewScintilla__CharacterRangeFull constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__CharacterRangeFull(h unsafe.Pointer) *Scintilla__CharacterRangeFull {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__CharacterRangeFull{h: (*C.Scintilla__CharacterRangeFull)(h)}
+	return newScintilla__CharacterRangeFull((*C.Scintilla__CharacterRangeFull)(h))
 }
 
 // Delete this object from C++ memory.
@@ -2729,16 +2630,13 @@ func newScintilla__TextRange(h *C.Scintilla__TextRange) *Scintilla__TextRange {
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__TextRange{h: h}
 }
 
 // UnsafeNewScintilla__TextRange constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__TextRange(h unsafe.Pointer) *Scintilla__TextRange {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__TextRange{h: (*C.Scintilla__TextRange)(h)}
+	return newScintilla__TextRange((*C.Scintilla__TextRange)(h))
 }
 
 // Delete this object from C++ memory.
@@ -2779,16 +2677,13 @@ func newScintilla__TextRangeFull(h *C.Scintilla__TextRangeFull) *Scintilla__Text
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__TextRangeFull{h: h}
 }
 
 // UnsafeNewScintilla__TextRangeFull constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__TextRangeFull(h unsafe.Pointer) *Scintilla__TextRangeFull {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__TextRangeFull{h: (*C.Scintilla__TextRangeFull)(h)}
+	return newScintilla__TextRangeFull((*C.Scintilla__TextRangeFull)(h))
 }
 
 // Delete this object from C++ memory.
@@ -2829,16 +2724,13 @@ func newScintilla__TextToFind(h *C.Scintilla__TextToFind) *Scintilla__TextToFind
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__TextToFind{h: h}
 }
 
 // UnsafeNewScintilla__TextToFind constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__TextToFind(h unsafe.Pointer) *Scintilla__TextToFind {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__TextToFind{h: (*C.Scintilla__TextToFind)(h)}
+	return newScintilla__TextToFind((*C.Scintilla__TextToFind)(h))
 }
 
 // Delete this object from C++ memory.
@@ -2879,16 +2771,13 @@ func newScintilla__TextToFindFull(h *C.Scintilla__TextToFindFull) *Scintilla__Te
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__TextToFindFull{h: h}
 }
 
 // UnsafeNewScintilla__TextToFindFull constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__TextToFindFull(h unsafe.Pointer) *Scintilla__TextToFindFull {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__TextToFindFull{h: (*C.Scintilla__TextToFindFull)(h)}
+	return newScintilla__TextToFindFull((*C.Scintilla__TextToFindFull)(h))
 }
 
 // Delete this object from C++ memory.
@@ -2929,16 +2818,13 @@ func newScintilla__Rectangle(h *C.Scintilla__Rectangle) *Scintilla__Rectangle {
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__Rectangle{h: h}
 }
 
 // UnsafeNewScintilla__Rectangle constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Rectangle(h unsafe.Pointer) *Scintilla__Rectangle {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__Rectangle{h: (*C.Scintilla__Rectangle)(h)}
+	return newScintilla__Rectangle((*C.Scintilla__Rectangle)(h))
 }
 
 // Delete this object from C++ memory.
@@ -2979,16 +2865,13 @@ func newScintilla__RangeToFormat(h *C.Scintilla__RangeToFormat) *Scintilla__Rang
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__RangeToFormat{h: h}
 }
 
 // UnsafeNewScintilla__RangeToFormat constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__RangeToFormat(h unsafe.Pointer) *Scintilla__RangeToFormat {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__RangeToFormat{h: (*C.Scintilla__RangeToFormat)(h)}
+	return newScintilla__RangeToFormat((*C.Scintilla__RangeToFormat)(h))
 }
 
 // Delete this object from C++ memory.
@@ -3029,16 +2912,13 @@ func newScintilla__RangeToFormatFull(h *C.Scintilla__RangeToFormatFull) *Scintil
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__RangeToFormatFull{h: h}
 }
 
 // UnsafeNewScintilla__RangeToFormatFull constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__RangeToFormatFull(h unsafe.Pointer) *Scintilla__RangeToFormatFull {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__RangeToFormatFull{h: (*C.Scintilla__RangeToFormatFull)(h)}
+	return newScintilla__RangeToFormatFull((*C.Scintilla__RangeToFormatFull)(h))
 }
 
 // Delete this object from C++ memory.
@@ -3079,16 +2959,13 @@ func newScintilla__NotifyHeader(h *C.Scintilla__NotifyHeader) *Scintilla__Notify
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__NotifyHeader{h: h}
 }
 
 // UnsafeNewScintilla__NotifyHeader constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__NotifyHeader(h unsafe.Pointer) *Scintilla__NotifyHeader {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__NotifyHeader{h: (*C.Scintilla__NotifyHeader)(h)}
+	return newScintilla__NotifyHeader((*C.Scintilla__NotifyHeader)(h))
 }
 
 // Delete this object from C++ memory.
@@ -3129,16 +3006,13 @@ func newScintilla__NotificationData(h *C.Scintilla__NotificationData) *Scintilla
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__NotificationData{h: h}
 }
 
 // UnsafeNewScintilla__NotificationData constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__NotificationData(h unsafe.Pointer) *Scintilla__NotificationData {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__NotificationData{h: (*C.Scintilla__NotificationData)(h)}
+	return newScintilla__NotificationData((*C.Scintilla__NotificationData)(h))
 }
 
 // Delete this object from C++ memory.
@@ -3179,26 +3053,21 @@ func newScintilla__Internal__FontParameters(h *C.Scintilla__Internal__FontParame
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__Internal__FontParameters{h: h}
 }
 
 // UnsafeNewScintilla__Internal__FontParameters constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__FontParameters(h unsafe.Pointer) *Scintilla__Internal__FontParameters {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__Internal__FontParameters{h: (*C.Scintilla__Internal__FontParameters)(h)}
+	return newScintilla__Internal__FontParameters((*C.Scintilla__Internal__FontParameters)(h))
 }
 
 // NewScintilla__Internal__FontParameters constructs a new Scintilla::Internal::FontParameters object.
 func NewScintilla__Internal__FontParameters(faceName_ string) *Scintilla__Internal__FontParameters {
 	faceName__Cstring := C.CString(faceName_)
 	defer C.free(unsafe.Pointer(faceName__Cstring))
-	var outptr_Scintilla__Internal__FontParameters *C.Scintilla__Internal__FontParameters = nil
 
-	C.Scintilla__Internal__FontParameters_new(faceName__Cstring, &outptr_Scintilla__Internal__FontParameters)
-	ret := newScintilla__Internal__FontParameters(outptr_Scintilla__Internal__FontParameters)
+	ret := newScintilla__Internal__FontParameters(C.Scintilla__Internal__FontParameters_new(faceName__Cstring))
 	ret.isSubclass = true
 	return ret
 }
@@ -3207,10 +3076,8 @@ func NewScintilla__Internal__FontParameters(faceName_ string) *Scintilla__Intern
 func NewScintilla__Internal__FontParameters2(faceName_ string, size_ float64) *Scintilla__Internal__FontParameters {
 	faceName__Cstring := C.CString(faceName_)
 	defer C.free(unsafe.Pointer(faceName__Cstring))
-	var outptr_Scintilla__Internal__FontParameters *C.Scintilla__Internal__FontParameters = nil
 
-	C.Scintilla__Internal__FontParameters_new2(faceName__Cstring, (C.double)(size_), &outptr_Scintilla__Internal__FontParameters)
-	ret := newScintilla__Internal__FontParameters(outptr_Scintilla__Internal__FontParameters)
+	ret := newScintilla__Internal__FontParameters(C.Scintilla__Internal__FontParameters_new2(faceName__Cstring, (C.double)(size_)))
 	ret.isSubclass = true
 	return ret
 }
@@ -3219,10 +3086,8 @@ func NewScintilla__Internal__FontParameters2(faceName_ string, size_ float64) *S
 func NewScintilla__Internal__FontParameters3(faceName_ string, size_ float64, weight_ Scintilla__FontWeight) *Scintilla__Internal__FontParameters {
 	faceName__Cstring := C.CString(faceName_)
 	defer C.free(unsafe.Pointer(faceName__Cstring))
-	var outptr_Scintilla__Internal__FontParameters *C.Scintilla__Internal__FontParameters = nil
 
-	C.Scintilla__Internal__FontParameters_new3(faceName__Cstring, (C.double)(size_), (C.int)(weight_), &outptr_Scintilla__Internal__FontParameters)
-	ret := newScintilla__Internal__FontParameters(outptr_Scintilla__Internal__FontParameters)
+	ret := newScintilla__Internal__FontParameters(C.Scintilla__Internal__FontParameters_new3(faceName__Cstring, (C.double)(size_), (C.int)(weight_)))
 	ret.isSubclass = true
 	return ret
 }
@@ -3231,10 +3096,8 @@ func NewScintilla__Internal__FontParameters3(faceName_ string, size_ float64, we
 func NewScintilla__Internal__FontParameters4(faceName_ string, size_ float64, weight_ Scintilla__FontWeight, italic_ bool) *Scintilla__Internal__FontParameters {
 	faceName__Cstring := C.CString(faceName_)
 	defer C.free(unsafe.Pointer(faceName__Cstring))
-	var outptr_Scintilla__Internal__FontParameters *C.Scintilla__Internal__FontParameters = nil
 
-	C.Scintilla__Internal__FontParameters_new4(faceName__Cstring, (C.double)(size_), (C.int)(weight_), (C.bool)(italic_), &outptr_Scintilla__Internal__FontParameters)
-	ret := newScintilla__Internal__FontParameters(outptr_Scintilla__Internal__FontParameters)
+	ret := newScintilla__Internal__FontParameters(C.Scintilla__Internal__FontParameters_new4(faceName__Cstring, (C.double)(size_), (C.int)(weight_), (C.bool)(italic_)))
 	ret.isSubclass = true
 	return ret
 }
@@ -3243,10 +3106,8 @@ func NewScintilla__Internal__FontParameters4(faceName_ string, size_ float64, we
 func NewScintilla__Internal__FontParameters5(faceName_ string, size_ float64, weight_ Scintilla__FontWeight, italic_ bool, extraFontFlag_ Scintilla__FontQuality) *Scintilla__Internal__FontParameters {
 	faceName__Cstring := C.CString(faceName_)
 	defer C.free(unsafe.Pointer(faceName__Cstring))
-	var outptr_Scintilla__Internal__FontParameters *C.Scintilla__Internal__FontParameters = nil
 
-	C.Scintilla__Internal__FontParameters_new5(faceName__Cstring, (C.double)(size_), (C.int)(weight_), (C.bool)(italic_), (C.int)(extraFontFlag_), &outptr_Scintilla__Internal__FontParameters)
-	ret := newScintilla__Internal__FontParameters(outptr_Scintilla__Internal__FontParameters)
+	ret := newScintilla__Internal__FontParameters(C.Scintilla__Internal__FontParameters_new5(faceName__Cstring, (C.double)(size_), (C.int)(weight_), (C.bool)(italic_), (C.int)(extraFontFlag_)))
 	ret.isSubclass = true
 	return ret
 }
@@ -3255,10 +3116,8 @@ func NewScintilla__Internal__FontParameters5(faceName_ string, size_ float64, we
 func NewScintilla__Internal__FontParameters6(faceName_ string, size_ float64, weight_ Scintilla__FontWeight, italic_ bool, extraFontFlag_ Scintilla__FontQuality, technology_ Scintilla__Technology) *Scintilla__Internal__FontParameters {
 	faceName__Cstring := C.CString(faceName_)
 	defer C.free(unsafe.Pointer(faceName__Cstring))
-	var outptr_Scintilla__Internal__FontParameters *C.Scintilla__Internal__FontParameters = nil
 
-	C.Scintilla__Internal__FontParameters_new6(faceName__Cstring, (C.double)(size_), (C.int)(weight_), (C.bool)(italic_), (C.int)(extraFontFlag_), (C.int)(technology_), &outptr_Scintilla__Internal__FontParameters)
-	ret := newScintilla__Internal__FontParameters(outptr_Scintilla__Internal__FontParameters)
+	ret := newScintilla__Internal__FontParameters(C.Scintilla__Internal__FontParameters_new6(faceName__Cstring, (C.double)(size_), (C.int)(weight_), (C.bool)(italic_), (C.int)(extraFontFlag_), (C.int)(technology_)))
 	ret.isSubclass = true
 	return ret
 }
@@ -3267,10 +3126,8 @@ func NewScintilla__Internal__FontParameters6(faceName_ string, size_ float64, we
 func NewScintilla__Internal__FontParameters7(faceName_ string, size_ float64, weight_ Scintilla__FontWeight, italic_ bool, extraFontFlag_ Scintilla__FontQuality, technology_ Scintilla__Technology, characterSet_ Scintilla__CharacterSet) *Scintilla__Internal__FontParameters {
 	faceName__Cstring := C.CString(faceName_)
 	defer C.free(unsafe.Pointer(faceName__Cstring))
-	var outptr_Scintilla__Internal__FontParameters *C.Scintilla__Internal__FontParameters = nil
 
-	C.Scintilla__Internal__FontParameters_new7(faceName__Cstring, (C.double)(size_), (C.int)(weight_), (C.bool)(italic_), (C.int)(extraFontFlag_), (C.int)(technology_), (C.int)(characterSet_), &outptr_Scintilla__Internal__FontParameters)
-	ret := newScintilla__Internal__FontParameters(outptr_Scintilla__Internal__FontParameters)
+	ret := newScintilla__Internal__FontParameters(C.Scintilla__Internal__FontParameters_new7(faceName__Cstring, (C.double)(size_), (C.int)(weight_), (C.bool)(italic_), (C.int)(extraFontFlag_), (C.int)(technology_), (C.int)(characterSet_)))
 	ret.isSubclass = true
 	return ret
 }
@@ -3281,10 +3138,8 @@ func NewScintilla__Internal__FontParameters8(faceName_ string, size_ float64, we
 	defer C.free(unsafe.Pointer(faceName__Cstring))
 	localeName__Cstring := C.CString(localeName_)
 	defer C.free(unsafe.Pointer(localeName__Cstring))
-	var outptr_Scintilla__Internal__FontParameters *C.Scintilla__Internal__FontParameters = nil
 
-	C.Scintilla__Internal__FontParameters_new8(faceName__Cstring, (C.double)(size_), (C.int)(weight_), (C.bool)(italic_), (C.int)(extraFontFlag_), (C.int)(technology_), (C.int)(characterSet_), localeName__Cstring, &outptr_Scintilla__Internal__FontParameters)
-	ret := newScintilla__Internal__FontParameters(outptr_Scintilla__Internal__FontParameters)
+	ret := newScintilla__Internal__FontParameters(C.Scintilla__Internal__FontParameters_new8(faceName__Cstring, (C.double)(size_), (C.int)(weight_), (C.bool)(italic_), (C.int)(extraFontFlag_), (C.int)(technology_), (C.int)(characterSet_), localeName__Cstring))
 	ret.isSubclass = true
 	return ret
 }
@@ -3295,10 +3150,8 @@ func NewScintilla__Internal__FontParameters9(faceName_ string, size_ float64, we
 	defer C.free(unsafe.Pointer(faceName__Cstring))
 	localeName__Cstring := C.CString(localeName_)
 	defer C.free(unsafe.Pointer(localeName__Cstring))
-	var outptr_Scintilla__Internal__FontParameters *C.Scintilla__Internal__FontParameters = nil
 
-	C.Scintilla__Internal__FontParameters_new9(faceName__Cstring, (C.double)(size_), (C.int)(weight_), (C.bool)(italic_), (C.int)(extraFontFlag_), (C.int)(technology_), (C.int)(characterSet_), localeName__Cstring, (C.int)(stretch_), &outptr_Scintilla__Internal__FontParameters)
-	ret := newScintilla__Internal__FontParameters(outptr_Scintilla__Internal__FontParameters)
+	ret := newScintilla__Internal__FontParameters(C.Scintilla__Internal__FontParameters_new9(faceName__Cstring, (C.double)(size_), (C.int)(weight_), (C.bool)(italic_), (C.int)(extraFontFlag_), (C.int)(technology_), (C.int)(characterSet_), localeName__Cstring, (C.int)(stretch_)))
 	ret.isSubclass = true
 	return ret
 }
@@ -3341,24 +3194,19 @@ func newScintilla__Internal__Font(h *C.Scintilla__Internal__Font) *Scintilla__In
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__Internal__Font{h: h}
 }
 
 // UnsafeNewScintilla__Internal__Font constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__Font(h unsafe.Pointer) *Scintilla__Internal__Font {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__Internal__Font{h: (*C.Scintilla__Internal__Font)(h)}
+	return newScintilla__Internal__Font((*C.Scintilla__Internal__Font)(h))
 }
 
 // NewScintilla__Internal__Font constructs a new Scintilla::Internal::Font object.
 func NewScintilla__Internal__Font() *Scintilla__Internal__Font {
-	var outptr_Scintilla__Internal__Font *C.Scintilla__Internal__Font = nil
 
-	C.Scintilla__Internal__Font_new(&outptr_Scintilla__Internal__Font)
-	ret := newScintilla__Internal__Font(outptr_Scintilla__Internal__Font)
+	ret := newScintilla__Internal__Font(C.Scintilla__Internal__Font_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -3401,16 +3249,13 @@ func newScintilla__Internal__IScreenLine(h *C.Scintilla__Internal__IScreenLine) 
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__Internal__IScreenLine{h: h}
 }
 
 // UnsafeNewScintilla__Internal__IScreenLine constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__IScreenLine(h unsafe.Pointer) *Scintilla__Internal__IScreenLine {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__Internal__IScreenLine{h: (*C.Scintilla__Internal__IScreenLine)(h)}
+	return newScintilla__Internal__IScreenLine((*C.Scintilla__Internal__IScreenLine)(h))
 }
 
 func (this *Scintilla__Internal__IScreenLine) Length() uint64 {
@@ -3438,7 +3283,7 @@ func (this *Scintilla__Internal__IScreenLine) TabWidthMinimumPixels() float64 {
 }
 
 func (this *Scintilla__Internal__IScreenLine) FontOfPosition(position uint64) *Scintilla__Internal__Font {
-	return UnsafeNewScintilla__Internal__Font(unsafe.Pointer(C.Scintilla__Internal__IScreenLine_FontOfPosition(this.h, (C.size_t)(position))))
+	return newScintilla__Internal__Font(C.Scintilla__Internal__IScreenLine_FontOfPosition(this.h, (C.size_t)(position)))
 }
 
 func (this *Scintilla__Internal__IScreenLine) RepresentationWidth(position uint64) float64 {
@@ -3491,16 +3336,13 @@ func newScintilla__Internal__IScreenLineLayout(h *C.Scintilla__Internal__IScreen
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__Internal__IScreenLineLayout{h: h}
 }
 
 // UnsafeNewScintilla__Internal__IScreenLineLayout constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__IScreenLineLayout(h unsafe.Pointer) *Scintilla__Internal__IScreenLineLayout {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__Internal__IScreenLineLayout{h: (*C.Scintilla__Internal__IScreenLineLayout)(h)}
+	return newScintilla__Internal__IScreenLineLayout((*C.Scintilla__Internal__IScreenLineLayout)(h))
 }
 
 func (this *Scintilla__Internal__IScreenLineLayout) PositionFromX(xDistance float64, charPosition bool) uint64 {
@@ -3553,34 +3395,27 @@ func newScintilla__Internal__SurfaceMode(h *C.Scintilla__Internal__SurfaceMode) 
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__Internal__SurfaceMode{h: h}
 }
 
 // UnsafeNewScintilla__Internal__SurfaceMode constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__SurfaceMode(h unsafe.Pointer) *Scintilla__Internal__SurfaceMode {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__Internal__SurfaceMode{h: (*C.Scintilla__Internal__SurfaceMode)(h)}
+	return newScintilla__Internal__SurfaceMode((*C.Scintilla__Internal__SurfaceMode)(h))
 }
 
 // NewScintilla__Internal__SurfaceMode constructs a new Scintilla::Internal::SurfaceMode object.
 func NewScintilla__Internal__SurfaceMode() *Scintilla__Internal__SurfaceMode {
-	var outptr_Scintilla__Internal__SurfaceMode *C.Scintilla__Internal__SurfaceMode = nil
 
-	C.Scintilla__Internal__SurfaceMode_new(&outptr_Scintilla__Internal__SurfaceMode)
-	ret := newScintilla__Internal__SurfaceMode(outptr_Scintilla__Internal__SurfaceMode)
+	ret := newScintilla__Internal__SurfaceMode(C.Scintilla__Internal__SurfaceMode_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewScintilla__Internal__SurfaceMode2 constructs a new Scintilla::Internal::SurfaceMode object.
 func NewScintilla__Internal__SurfaceMode2(codePage_ int, bidiR2L_ bool) *Scintilla__Internal__SurfaceMode {
-	var outptr_Scintilla__Internal__SurfaceMode *C.Scintilla__Internal__SurfaceMode = nil
 
-	C.Scintilla__Internal__SurfaceMode_new2((C.int)(codePage_), (C.bool)(bidiR2L_), &outptr_Scintilla__Internal__SurfaceMode)
-	ret := newScintilla__Internal__SurfaceMode(outptr_Scintilla__Internal__SurfaceMode)
+	ret := newScintilla__Internal__SurfaceMode(C.Scintilla__Internal__SurfaceMode_new2((C.int)(codePage_), (C.bool)(bidiR2L_)))
 	ret.isSubclass = true
 	return ret
 }
@@ -3623,24 +3458,19 @@ func newScintilla__Internal__Surface(h *C.Scintilla__Internal__Surface) *Scintil
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__Internal__Surface{h: h}
 }
 
 // UnsafeNewScintilla__Internal__Surface constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__Surface(h unsafe.Pointer) *Scintilla__Internal__Surface {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__Internal__Surface{h: (*C.Scintilla__Internal__Surface)(h)}
+	return newScintilla__Internal__Surface((*C.Scintilla__Internal__Surface)(h))
 }
 
 // NewScintilla__Internal__Surface constructs a new Scintilla::Internal::Surface object.
 func NewScintilla__Internal__Surface() *Scintilla__Internal__Surface {
-	var outptr_Scintilla__Internal__Surface *C.Scintilla__Internal__Surface = nil
 
-	C.Scintilla__Internal__Surface_new(&outptr_Scintilla__Internal__Surface)
-	ret := newScintilla__Internal__Surface(outptr_Scintilla__Internal__Surface)
+	ret := newScintilla__Internal__Surface(C.Scintilla__Internal__Surface_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -3773,6 +3603,9 @@ func (this *Scintilla__Internal__Surface) FlushDrawing() {
 	C.Scintilla__Internal__Surface_FlushDrawing(this.h)
 }
 func (this *Scintilla__Internal__Surface) OnInit(slot func(wid unsafe.Pointer)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_Init(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3790,6 +3623,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_Init(self *C.Scintilla__Int
 
 }
 func (this *Scintilla__Internal__Surface) OnInit2(slot func(sid unsafe.Pointer, wid unsafe.Pointer)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_Init2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3809,6 +3645,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_Init2(self *C.Scintilla__In
 
 }
 func (this *Scintilla__Internal__Surface) OnSetMode(slot func(mode Scintilla__Internal__SurfaceMode)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_SetMode(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3820,8 +3659,7 @@ func miqt_exec_callback_Scintilla__Internal__Surface_SetMode(self *C.Scintilla__
 	}
 
 	// Convert all CABI parameters to Go parameters
-	mode_ret := mode
-	mode_goptr := newScintilla__Internal__SurfaceMode(mode_ret)
+	mode_goptr := newScintilla__Internal__SurfaceMode(mode)
 	mode_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *mode_goptr
 
@@ -3829,6 +3667,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_SetMode(self *C.Scintilla__
 
 }
 func (this *Scintilla__Internal__Surface) OnRelease(slot func()) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_Release(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3843,6 +3684,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_Release(self *C.Scintilla__
 
 }
 func (this *Scintilla__Internal__Surface) OnSupportsFeature(slot func(feature Scintilla__Supports) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_SupportsFeature(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3862,6 +3706,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_SupportsFeature(self *C.Sci
 
 }
 func (this *Scintilla__Internal__Surface) OnInitialised(slot func() bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_Initialised(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3878,6 +3725,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_Initialised(self *C.Scintil
 
 }
 func (this *Scintilla__Internal__Surface) OnLogPixelsY(slot func() int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_LogPixelsY(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3894,6 +3744,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_LogPixelsY(self *C.Scintill
 
 }
 func (this *Scintilla__Internal__Surface) OnPixelDivisions(slot func() int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_PixelDivisions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3910,6 +3763,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_PixelDivisions(self *C.Scin
 
 }
 func (this *Scintilla__Internal__Surface) OnDeviceHeightFont(slot func(points int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_DeviceHeightFont(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3929,6 +3785,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_DeviceHeightFont(self *C.Sc
 
 }
 func (this *Scintilla__Internal__Surface) OnLineDraw(slot func(start Scintilla__Internal__Point, end Scintilla__Internal__Point, stroke Scintilla__Internal__Stroke)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_LineDraw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3940,18 +3799,15 @@ func miqt_exec_callback_Scintilla__Internal__Surface_LineDraw(self *C.Scintilla_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	start_ret := start
-	start_goptr := newScintilla__Internal__Point(start_ret)
+	start_goptr := newScintilla__Internal__Point(start)
 	start_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *start_goptr
 
-	end_ret := end
-	end_goptr := newScintilla__Internal__Point(end_ret)
+	end_goptr := newScintilla__Internal__Point(end)
 	end_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval2 := *end_goptr
 
-	stroke_ret := stroke
-	stroke_goptr := newScintilla__Internal__Stroke(stroke_ret)
+	stroke_goptr := newScintilla__Internal__Stroke(stroke)
 	stroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval3 := *stroke_goptr
 
@@ -3959,6 +3815,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_LineDraw(self *C.Scintilla_
 
 }
 func (this *Scintilla__Internal__Surface) OnPolyLine(slot func(pts *Scintilla__Internal__Point, npts uint64, stroke Scintilla__Internal__Stroke)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_PolyLine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3970,11 +3829,11 @@ func miqt_exec_callback_Scintilla__Internal__Surface_PolyLine(self *C.Scintilla_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewScintilla__Internal__Point(unsafe.Pointer(pts))
+	slotval1 := newScintilla__Internal__Point(pts)
+
 	slotval2 := (uint64)(npts)
 
-	stroke_ret := stroke
-	stroke_goptr := newScintilla__Internal__Stroke(stroke_ret)
+	stroke_goptr := newScintilla__Internal__Stroke(stroke)
 	stroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval3 := *stroke_goptr
 
@@ -3982,6 +3841,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_PolyLine(self *C.Scintilla_
 
 }
 func (this *Scintilla__Internal__Surface) OnPolygon(slot func(pts *Scintilla__Internal__Point, npts uint64, fillStroke Scintilla__Internal__FillStroke)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_Polygon(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -3993,11 +3855,11 @@ func miqt_exec_callback_Scintilla__Internal__Surface_Polygon(self *C.Scintilla__
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewScintilla__Internal__Point(unsafe.Pointer(pts))
+	slotval1 := newScintilla__Internal__Point(pts)
+
 	slotval2 := (uint64)(npts)
 
-	fillStroke_ret := fillStroke
-	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke_ret)
+	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke)
 	fillStroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval3 := *fillStroke_goptr
 
@@ -4005,6 +3867,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_Polygon(self *C.Scintilla__
 
 }
 func (this *Scintilla__Internal__Surface) OnRectangleDraw(slot func(rc Scintilla__Internal__PRectangle, fillStroke Scintilla__Internal__FillStroke)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_RectangleDraw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4016,13 +3881,11 @@ func miqt_exec_callback_Scintilla__Internal__Surface_RectangleDraw(self *C.Scint
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rc_ret := rc
-	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr := newScintilla__Internal__PRectangle(rc)
 	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *rc_goptr
 
-	fillStroke_ret := fillStroke
-	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke_ret)
+	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke)
 	fillStroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval2 := *fillStroke_goptr
 
@@ -4030,6 +3893,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_RectangleDraw(self *C.Scint
 
 }
 func (this *Scintilla__Internal__Surface) OnRectangleFrame(slot func(rc Scintilla__Internal__PRectangle, stroke Scintilla__Internal__Stroke)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_RectangleFrame(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4041,13 +3907,11 @@ func miqt_exec_callback_Scintilla__Internal__Surface_RectangleFrame(self *C.Scin
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rc_ret := rc
-	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr := newScintilla__Internal__PRectangle(rc)
 	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *rc_goptr
 
-	stroke_ret := stroke
-	stroke_goptr := newScintilla__Internal__Stroke(stroke_ret)
+	stroke_goptr := newScintilla__Internal__Stroke(stroke)
 	stroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval2 := *stroke_goptr
 
@@ -4055,6 +3919,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_RectangleFrame(self *C.Scin
 
 }
 func (this *Scintilla__Internal__Surface) OnFillRectangle(slot func(rc Scintilla__Internal__PRectangle, fill Scintilla__Internal__Fill)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_FillRectangle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4066,13 +3933,11 @@ func miqt_exec_callback_Scintilla__Internal__Surface_FillRectangle(self *C.Scint
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rc_ret := rc
-	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr := newScintilla__Internal__PRectangle(rc)
 	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *rc_goptr
 
-	fill_ret := fill
-	fill_goptr := newScintilla__Internal__Fill(fill_ret)
+	fill_goptr := newScintilla__Internal__Fill(fill)
 	fill_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval2 := *fill_goptr
 
@@ -4080,6 +3945,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_FillRectangle(self *C.Scint
 
 }
 func (this *Scintilla__Internal__Surface) OnFillRectangleAligned(slot func(rc Scintilla__Internal__PRectangle, fill Scintilla__Internal__Fill)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_FillRectangleAligned(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4091,13 +3959,11 @@ func miqt_exec_callback_Scintilla__Internal__Surface_FillRectangleAligned(self *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rc_ret := rc
-	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr := newScintilla__Internal__PRectangle(rc)
 	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *rc_goptr
 
-	fill_ret := fill
-	fill_goptr := newScintilla__Internal__Fill(fill_ret)
+	fill_goptr := newScintilla__Internal__Fill(fill)
 	fill_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval2 := *fill_goptr
 
@@ -4105,6 +3971,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_FillRectangleAligned(self *
 
 }
 func (this *Scintilla__Internal__Surface) OnFillRectangle2(slot func(rc Scintilla__Internal__PRectangle, surfacePattern *Scintilla__Internal__Surface)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_FillRectangle2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4116,17 +3985,19 @@ func miqt_exec_callback_Scintilla__Internal__Surface_FillRectangle2(self *C.Scin
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rc_ret := rc
-	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr := newScintilla__Internal__PRectangle(rc)
 	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *rc_goptr
 
-	slotval2 := UnsafeNewScintilla__Internal__Surface(unsafe.Pointer(surfacePattern))
+	slotval2 := newScintilla__Internal__Surface(surfacePattern)
 
 	gofunc(slotval1, slotval2)
 
 }
 func (this *Scintilla__Internal__Surface) OnRoundedRectangle(slot func(rc Scintilla__Internal__PRectangle, fillStroke Scintilla__Internal__FillStroke)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_RoundedRectangle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4138,13 +4009,11 @@ func miqt_exec_callback_Scintilla__Internal__Surface_RoundedRectangle(self *C.Sc
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rc_ret := rc
-	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr := newScintilla__Internal__PRectangle(rc)
 	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *rc_goptr
 
-	fillStroke_ret := fillStroke
-	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke_ret)
+	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke)
 	fillStroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval2 := *fillStroke_goptr
 
@@ -4152,6 +4021,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_RoundedRectangle(self *C.Sc
 
 }
 func (this *Scintilla__Internal__Surface) OnAlphaRectangle(slot func(rc Scintilla__Internal__PRectangle, cornerSize float64, fillStroke Scintilla__Internal__FillStroke)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_AlphaRectangle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4163,15 +4035,13 @@ func miqt_exec_callback_Scintilla__Internal__Surface_AlphaRectangle(self *C.Scin
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rc_ret := rc
-	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr := newScintilla__Internal__PRectangle(rc)
 	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *rc_goptr
 
 	slotval2 := (float64)(cornerSize)
 
-	fillStroke_ret := fillStroke
-	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke_ret)
+	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke)
 	fillStroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval3 := *fillStroke_goptr
 
@@ -4179,6 +4049,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_AlphaRectangle(self *C.Scin
 
 }
 func (this *Scintilla__Internal__Surface) OnDrawRGBAImage(slot func(rc Scintilla__Internal__PRectangle, width int, height int, pixelsImage *byte)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_DrawRGBAImage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4190,8 +4063,7 @@ func miqt_exec_callback_Scintilla__Internal__Surface_DrawRGBAImage(self *C.Scint
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rc_ret := rc
-	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr := newScintilla__Internal__PRectangle(rc)
 	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *rc_goptr
 
@@ -4205,6 +4077,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_DrawRGBAImage(self *C.Scint
 
 }
 func (this *Scintilla__Internal__Surface) OnEllipse(slot func(rc Scintilla__Internal__PRectangle, fillStroke Scintilla__Internal__FillStroke)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_Ellipse(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4216,13 +4091,11 @@ func miqt_exec_callback_Scintilla__Internal__Surface_Ellipse(self *C.Scintilla__
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rc_ret := rc
-	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr := newScintilla__Internal__PRectangle(rc)
 	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *rc_goptr
 
-	fillStroke_ret := fillStroke
-	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke_ret)
+	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke)
 	fillStroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval2 := *fillStroke_goptr
 
@@ -4230,6 +4103,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_Ellipse(self *C.Scintilla__
 
 }
 func (this *Scintilla__Internal__Surface) OnStadium(slot func(rc Scintilla__Internal__PRectangle, fillStroke Scintilla__Internal__FillStroke, ends Scintilla__Internal__Surface__Ends)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_Stadium(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4241,13 +4117,11 @@ func miqt_exec_callback_Scintilla__Internal__Surface_Stadium(self *C.Scintilla__
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rc_ret := rc
-	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr := newScintilla__Internal__PRectangle(rc)
 	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *rc_goptr
 
-	fillStroke_ret := fillStroke
-	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke_ret)
+	fillStroke_goptr := newScintilla__Internal__FillStroke(fillStroke)
 	fillStroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval2 := *fillStroke_goptr
 
@@ -4257,6 +4131,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_Stadium(self *C.Scintilla__
 
 }
 func (this *Scintilla__Internal__Surface) OnCopy(slot func(rc Scintilla__Internal__PRectangle, from Scintilla__Internal__Point, surfaceSource *Scintilla__Internal__Surface)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_Copy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4268,22 +4145,23 @@ func miqt_exec_callback_Scintilla__Internal__Surface_Copy(self *C.Scintilla__Int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rc_ret := rc
-	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr := newScintilla__Internal__PRectangle(rc)
 	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *rc_goptr
 
-	from_ret := from
-	from_goptr := newScintilla__Internal__Point(from_ret)
+	from_goptr := newScintilla__Internal__Point(from)
 	from_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval2 := *from_goptr
 
-	slotval3 := UnsafeNewScintilla__Internal__Surface(unsafe.Pointer(surfaceSource))
+	slotval3 := newScintilla__Internal__Surface(surfaceSource)
 
 	gofunc(slotval1, slotval2, slotval3)
 
 }
 func (this *Scintilla__Internal__Surface) OnAscent(slot func(font_ *Scintilla__Internal__Font) float64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_Ascent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4295,7 +4173,7 @@ func miqt_exec_callback_Scintilla__Internal__Surface_Ascent(self *C.Scintilla__I
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewScintilla__Internal__Font(unsafe.Pointer(font_))
+	slotval1 := newScintilla__Internal__Font(font_)
 
 	virtualReturn := gofunc(slotval1)
 
@@ -4303,6 +4181,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_Ascent(self *C.Scintilla__I
 
 }
 func (this *Scintilla__Internal__Surface) OnDescent(slot func(font_ *Scintilla__Internal__Font) float64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_Descent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4314,7 +4195,7 @@ func miqt_exec_callback_Scintilla__Internal__Surface_Descent(self *C.Scintilla__
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewScintilla__Internal__Font(unsafe.Pointer(font_))
+	slotval1 := newScintilla__Internal__Font(font_)
 
 	virtualReturn := gofunc(slotval1)
 
@@ -4322,6 +4203,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_Descent(self *C.Scintilla__
 
 }
 func (this *Scintilla__Internal__Surface) OnInternalLeading(slot func(font_ *Scintilla__Internal__Font) float64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_InternalLeading(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4333,7 +4217,7 @@ func miqt_exec_callback_Scintilla__Internal__Surface_InternalLeading(self *C.Sci
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewScintilla__Internal__Font(unsafe.Pointer(font_))
+	slotval1 := newScintilla__Internal__Font(font_)
 
 	virtualReturn := gofunc(slotval1)
 
@@ -4341,6 +4225,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_InternalLeading(self *C.Sci
 
 }
 func (this *Scintilla__Internal__Surface) OnHeight(slot func(font_ *Scintilla__Internal__Font) float64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_Height(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4352,7 +4239,7 @@ func miqt_exec_callback_Scintilla__Internal__Surface_Height(self *C.Scintilla__I
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewScintilla__Internal__Font(unsafe.Pointer(font_))
+	slotval1 := newScintilla__Internal__Font(font_)
 
 	virtualReturn := gofunc(slotval1)
 
@@ -4360,6 +4247,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_Height(self *C.Scintilla__I
 
 }
 func (this *Scintilla__Internal__Surface) OnAverageCharWidth(slot func(font_ *Scintilla__Internal__Font) float64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_AverageCharWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4371,7 +4261,7 @@ func miqt_exec_callback_Scintilla__Internal__Surface_AverageCharWidth(self *C.Sc
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewScintilla__Internal__Font(unsafe.Pointer(font_))
+	slotval1 := newScintilla__Internal__Font(font_)
 
 	virtualReturn := gofunc(slotval1)
 
@@ -4379,6 +4269,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_AverageCharWidth(self *C.Sc
 
 }
 func (this *Scintilla__Internal__Surface) OnSetClip(slot func(rc Scintilla__Internal__PRectangle)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_SetClip(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4390,8 +4283,7 @@ func miqt_exec_callback_Scintilla__Internal__Surface_SetClip(self *C.Scintilla__
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rc_ret := rc
-	rc_goptr := newScintilla__Internal__PRectangle(rc_ret)
+	rc_goptr := newScintilla__Internal__PRectangle(rc)
 	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *rc_goptr
 
@@ -4399,6 +4291,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_SetClip(self *C.Scintilla__
 
 }
 func (this *Scintilla__Internal__Surface) OnPopClip(slot func()) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_PopClip(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4413,6 +4308,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_PopClip(self *C.Scintilla__
 
 }
 func (this *Scintilla__Internal__Surface) OnFlushCachedState(slot func()) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_FlushCachedState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4427,6 +4325,9 @@ func miqt_exec_callback_Scintilla__Internal__Surface_FlushCachedState(self *C.Sc
 
 }
 func (this *Scintilla__Internal__Surface) OnFlushDrawing(slot func()) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__Surface_override_virtual_FlushDrawing(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4479,24 +4380,19 @@ func newScintilla__Internal__Window(h *C.Scintilla__Internal__Window) *Scintilla
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__Internal__Window{h: h}
 }
 
 // UnsafeNewScintilla__Internal__Window constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__Window(h unsafe.Pointer) *Scintilla__Internal__Window {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__Internal__Window{h: (*C.Scintilla__Internal__Window)(h)}
+	return newScintilla__Internal__Window((*C.Scintilla__Internal__Window)(h))
 }
 
 // NewScintilla__Internal__Window constructs a new Scintilla::Internal::Window object.
 func NewScintilla__Internal__Window() *Scintilla__Internal__Window {
-	var outptr_Scintilla__Internal__Window *C.Scintilla__Internal__Window = nil
 
-	C.Scintilla__Internal__Window_new(&outptr_Scintilla__Internal__Window)
-	ret := newScintilla__Internal__Window(outptr_Scintilla__Internal__Window)
+	ret := newScintilla__Internal__Window(C.Scintilla__Internal__Window_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -4518,8 +4414,7 @@ func (this *Scintilla__Internal__Window) Destroy() {
 }
 
 func (this *Scintilla__Internal__Window) GetPosition() *Scintilla__Internal__PRectangle {
-	_ret := C.Scintilla__Internal__Window_GetPosition(this.h)
-	_goptr := newScintilla__Internal__PRectangle(_ret)
+	_goptr := newScintilla__Internal__PRectangle(C.Scintilla__Internal__Window_GetPosition(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -4533,8 +4428,7 @@ func (this *Scintilla__Internal__Window) SetPositionRelative(rc Scintilla__Inter
 }
 
 func (this *Scintilla__Internal__Window) GetClientPosition() *Scintilla__Internal__PRectangle {
-	_ret := C.Scintilla__Internal__Window_GetClientPosition(this.h)
-	_goptr := newScintilla__Internal__PRectangle(_ret)
+	_goptr := newScintilla__Internal__PRectangle(C.Scintilla__Internal__Window_GetClientPosition(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -4556,8 +4450,7 @@ func (this *Scintilla__Internal__Window) SetCursor(curs Scintilla__Internal__Win
 }
 
 func (this *Scintilla__Internal__Window) GetMonitorRect(pt Scintilla__Internal__Point) *Scintilla__Internal__PRectangle {
-	_ret := C.Scintilla__Internal__Window_GetMonitorRect(this.h, pt.cPointer())
-	_goptr := newScintilla__Internal__PRectangle(_ret)
+	_goptr := newScintilla__Internal__PRectangle(C.Scintilla__Internal__Window_GetMonitorRect(this.h, pt.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -4604,24 +4497,19 @@ func newScintilla__Internal__ListBoxEvent(h *C.Scintilla__Internal__ListBoxEvent
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__Internal__ListBoxEvent{h: h}
 }
 
 // UnsafeNewScintilla__Internal__ListBoxEvent constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__ListBoxEvent(h unsafe.Pointer) *Scintilla__Internal__ListBoxEvent {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__Internal__ListBoxEvent{h: (*C.Scintilla__Internal__ListBoxEvent)(h)}
+	return newScintilla__Internal__ListBoxEvent((*C.Scintilla__Internal__ListBoxEvent)(h))
 }
 
 // NewScintilla__Internal__ListBoxEvent constructs a new Scintilla::Internal::ListBoxEvent object.
 func NewScintilla__Internal__ListBoxEvent(event_ Scintilla__Internal__ListBoxEvent__EventType) *Scintilla__Internal__ListBoxEvent {
-	var outptr_Scintilla__Internal__ListBoxEvent *C.Scintilla__Internal__ListBoxEvent = nil
 
-	C.Scintilla__Internal__ListBoxEvent_new((C.int)(event_), &outptr_Scintilla__Internal__ListBoxEvent)
-	ret := newScintilla__Internal__ListBoxEvent(outptr_Scintilla__Internal__ListBoxEvent)
+	ret := newScintilla__Internal__ListBoxEvent(C.Scintilla__Internal__ListBoxEvent_new((C.int)(event_)))
 	ret.isSubclass = true
 	return ret
 }
@@ -4664,16 +4552,13 @@ func newScintilla__Internal__IListBoxDelegate(h *C.Scintilla__Internal__IListBox
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__Internal__IListBoxDelegate{h: h}
 }
 
 // UnsafeNewScintilla__Internal__IListBoxDelegate constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__IListBoxDelegate(h unsafe.Pointer) *Scintilla__Internal__IListBoxDelegate {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__Internal__IListBoxDelegate{h: (*C.Scintilla__Internal__IListBoxDelegate)(h)}
+	return newScintilla__Internal__IListBoxDelegate((*C.Scintilla__Internal__IListBoxDelegate)(h))
 }
 
 func (this *Scintilla__Internal__IListBoxDelegate) ListNotify(plbe *Scintilla__Internal__ListBoxEvent) {
@@ -4722,16 +4607,13 @@ func newScintilla__Internal__ListOptions(h *C.Scintilla__Internal__ListOptions) 
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__Internal__ListOptions{h: h}
 }
 
 // UnsafeNewScintilla__Internal__ListOptions constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__ListOptions(h unsafe.Pointer) *Scintilla__Internal__ListOptions {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__Internal__ListOptions{h: (*C.Scintilla__Internal__ListOptions)(h)}
+	return newScintilla__Internal__ListOptions((*C.Scintilla__Internal__ListOptions)(h))
 }
 
 // Delete this object from C++ memory.
@@ -4769,31 +4651,26 @@ func (this *Scintilla__Internal__ListBox) UnsafePointer() unsafe.Pointer {
 }
 
 // newScintilla__Internal__ListBox constructs the type using only CGO pointers.
-func newScintilla__Internal__ListBox(h *C.Scintilla__Internal__ListBox, h_Scintilla__Internal__Window *C.Scintilla__Internal__Window) *Scintilla__Internal__ListBox {
+func newScintilla__Internal__ListBox(h *C.Scintilla__Internal__ListBox) *Scintilla__Internal__ListBox {
 	if h == nil {
 		return nil
 	}
+	var outptr_Scintilla__Internal__Window *C.Scintilla__Internal__Window = nil
+	C.Scintilla__Internal__ListBox_virtbase(h, &outptr_Scintilla__Internal__Window)
+
 	return &Scintilla__Internal__ListBox{h: h,
-		Scintilla__Internal__Window: newScintilla__Internal__Window(h_Scintilla__Internal__Window)}
+		Scintilla__Internal__Window: newScintilla__Internal__Window(outptr_Scintilla__Internal__Window)}
 }
 
 // UnsafeNewScintilla__Internal__ListBox constructs the type using only unsafe pointers.
-func UnsafeNewScintilla__Internal__ListBox(h unsafe.Pointer, h_Scintilla__Internal__Window unsafe.Pointer) *Scintilla__Internal__ListBox {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__Internal__ListBox{h: (*C.Scintilla__Internal__ListBox)(h),
-		Scintilla__Internal__Window: UnsafeNewScintilla__Internal__Window(h_Scintilla__Internal__Window)}
+func UnsafeNewScintilla__Internal__ListBox(h unsafe.Pointer) *Scintilla__Internal__ListBox {
+	return newScintilla__Internal__ListBox((*C.Scintilla__Internal__ListBox)(h))
 }
 
 // NewScintilla__Internal__ListBox constructs a new Scintilla::Internal::ListBox object.
 func NewScintilla__Internal__ListBox() *Scintilla__Internal__ListBox {
-	var outptr_Scintilla__Internal__ListBox *C.Scintilla__Internal__ListBox = nil
-	var outptr_Scintilla__Internal__Window *C.Scintilla__Internal__Window = nil
 
-	C.Scintilla__Internal__ListBox_new(&outptr_Scintilla__Internal__ListBox, &outptr_Scintilla__Internal__Window)
-	ret := newScintilla__Internal__ListBox(outptr_Scintilla__Internal__ListBox, outptr_Scintilla__Internal__Window)
+	ret := newScintilla__Internal__ListBox(C.Scintilla__Internal__ListBox_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -4819,8 +4696,7 @@ func (this *Scintilla__Internal__ListBox) GetVisibleRows() int {
 }
 
 func (this *Scintilla__Internal__ListBox) GetDesiredRect() *Scintilla__Internal__PRectangle {
-	_ret := C.Scintilla__Internal__ListBox_GetDesiredRect(this.h)
-	_goptr := newScintilla__Internal__PRectangle(_ret)
+	_goptr := newScintilla__Internal__PRectangle(C.Scintilla__Internal__ListBox_GetDesiredRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -4885,6 +4761,9 @@ func (this *Scintilla__Internal__ListBox) SetOptions(options_ Scintilla__Interna
 	C.Scintilla__Internal__ListBox_SetOptions(this.h, options_.cPointer())
 }
 func (this *Scintilla__Internal__ListBox) OnSetFont(slot func(font *Scintilla__Internal__Font)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__ListBox_override_virtual_SetFont(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4896,12 +4775,15 @@ func miqt_exec_callback_Scintilla__Internal__ListBox_SetFont(self *C.Scintilla__
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewScintilla__Internal__Font(unsafe.Pointer(font))
+	slotval1 := newScintilla__Internal__Font(font)
 
 	gofunc(slotval1)
 
 }
 func (this *Scintilla__Internal__ListBox) OnCreate(slot func(parent *Scintilla__Internal__Window, ctrlID int, location Scintilla__Internal__Point, lineHeight_ int, unicodeMode_ bool, technology_ Scintilla__Technology)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__ListBox_override_virtual_Create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4913,11 +4795,11 @@ func miqt_exec_callback_Scintilla__Internal__ListBox_Create(self *C.Scintilla__I
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewScintilla__Internal__Window(unsafe.Pointer(parent))
+	slotval1 := newScintilla__Internal__Window(parent)
+
 	slotval2 := (int)(ctrlID)
 
-	location_ret := location
-	location_goptr := newScintilla__Internal__Point(location_ret)
+	location_goptr := newScintilla__Internal__Point(location)
 	location_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval3 := *location_goptr
 
@@ -4931,6 +4813,9 @@ func miqt_exec_callback_Scintilla__Internal__ListBox_Create(self *C.Scintilla__I
 
 }
 func (this *Scintilla__Internal__ListBox) OnSetAverageCharWidth(slot func(width int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__ListBox_override_virtual_SetAverageCharWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4948,6 +4833,9 @@ func miqt_exec_callback_Scintilla__Internal__ListBox_SetAverageCharWidth(self *C
 
 }
 func (this *Scintilla__Internal__ListBox) OnSetVisibleRows(slot func(rows int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__ListBox_override_virtual_SetVisibleRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4965,6 +4853,9 @@ func miqt_exec_callback_Scintilla__Internal__ListBox_SetVisibleRows(self *C.Scin
 
 }
 func (this *Scintilla__Internal__ListBox) OnGetVisibleRows(slot func() int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__ListBox_override_virtual_GetVisibleRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4981,6 +4872,9 @@ func miqt_exec_callback_Scintilla__Internal__ListBox_GetVisibleRows(self *C.Scin
 
 }
 func (this *Scintilla__Internal__ListBox) OnGetDesiredRect(slot func() *Scintilla__Internal__PRectangle) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__ListBox_override_virtual_GetDesiredRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -4997,6 +4891,9 @@ func miqt_exec_callback_Scintilla__Internal__ListBox_GetDesiredRect(self *C.Scin
 
 }
 func (this *Scintilla__Internal__ListBox) OnCaretFromEdge(slot func() int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__ListBox_override_virtual_CaretFromEdge(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5013,6 +4910,9 @@ func miqt_exec_callback_Scintilla__Internal__ListBox_CaretFromEdge(self *C.Scint
 
 }
 func (this *Scintilla__Internal__ListBox) OnClear(slot func()) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__ListBox_override_virtual_Clear(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5027,6 +4927,9 @@ func miqt_exec_callback_Scintilla__Internal__ListBox_Clear(self *C.Scintilla__In
 
 }
 func (this *Scintilla__Internal__ListBox) OnAppend(slot func(s string, typeVal int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__ListBox_override_virtual_Append(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5047,6 +4950,9 @@ func miqt_exec_callback_Scintilla__Internal__ListBox_Append(self *C.Scintilla__I
 
 }
 func (this *Scintilla__Internal__ListBox) OnLength(slot func() int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__ListBox_override_virtual_Length(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5063,6 +4969,9 @@ func miqt_exec_callback_Scintilla__Internal__ListBox_Length(self *C.Scintilla__I
 
 }
 func (this *Scintilla__Internal__ListBox) OnSelect(slot func(n int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__ListBox_override_virtual_Select(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5080,6 +4989,9 @@ func miqt_exec_callback_Scintilla__Internal__ListBox_Select(self *C.Scintilla__I
 
 }
 func (this *Scintilla__Internal__ListBox) OnGetSelection(slot func() int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__ListBox_override_virtual_GetSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5096,6 +5008,9 @@ func miqt_exec_callback_Scintilla__Internal__ListBox_GetSelection(self *C.Scinti
 
 }
 func (this *Scintilla__Internal__ListBox) OnFind(slot func(prefix string) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__ListBox_override_virtual_Find(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5116,6 +5031,9 @@ func miqt_exec_callback_Scintilla__Internal__ListBox_Find(self *C.Scintilla__Int
 
 }
 func (this *Scintilla__Internal__ListBox) OnRegisterImage(slot func(typeVal int, xpm_data string)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__ListBox_override_virtual_RegisterImage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5136,6 +5054,9 @@ func miqt_exec_callback_Scintilla__Internal__ListBox_RegisterImage(self *C.Scint
 
 }
 func (this *Scintilla__Internal__ListBox) OnRegisterRGBAImage(slot func(typeVal int, width int, height int, pixelsImage *byte)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__ListBox_override_virtual_RegisterRGBAImage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5159,6 +5080,9 @@ func miqt_exec_callback_Scintilla__Internal__ListBox_RegisterRGBAImage(self *C.S
 
 }
 func (this *Scintilla__Internal__ListBox) OnClearRegisteredImages(slot func()) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__ListBox_override_virtual_ClearRegisteredImages(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5173,6 +5097,9 @@ func miqt_exec_callback_Scintilla__Internal__ListBox_ClearRegisteredImages(self 
 
 }
 func (this *Scintilla__Internal__ListBox) OnSetDelegate(slot func(lbDelegate *Scintilla__Internal__IListBoxDelegate)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__ListBox_override_virtual_SetDelegate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5184,12 +5111,15 @@ func miqt_exec_callback_Scintilla__Internal__ListBox_SetDelegate(self *C.Scintil
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewScintilla__Internal__IListBoxDelegate(unsafe.Pointer(lbDelegate))
+	slotval1 := newScintilla__Internal__IListBoxDelegate(lbDelegate)
 
 	gofunc(slotval1)
 
 }
 func (this *Scintilla__Internal__ListBox) OnSetList(slot func(list string, separator int8, typesep int8)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__ListBox_override_virtual_SetList(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5212,6 +5142,9 @@ func miqt_exec_callback_Scintilla__Internal__ListBox_SetList(self *C.Scintilla__
 
 }
 func (this *Scintilla__Internal__ListBox) OnSetOptions(slot func(options_ Scintilla__Internal__ListOptions)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.Scintilla__Internal__ListBox_override_virtual_SetOptions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -5223,8 +5156,7 @@ func miqt_exec_callback_Scintilla__Internal__ListBox_SetOptions(self *C.Scintill
 	}
 
 	// Convert all CABI parameters to Go parameters
-	options__ret := options_
-	options__goptr := newScintilla__Internal__ListOptions(options__ret)
+	options__goptr := newScintilla__Internal__ListOptions(options_)
 	options__goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval1 := *options__goptr
 
@@ -5270,24 +5202,19 @@ func newScintilla__Internal__Menu(h *C.Scintilla__Internal__Menu) *Scintilla__In
 	if h == nil {
 		return nil
 	}
+
 	return &Scintilla__Internal__Menu{h: h}
 }
 
 // UnsafeNewScintilla__Internal__Menu constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__Menu(h unsafe.Pointer) *Scintilla__Internal__Menu {
-	if h == nil {
-		return nil
-	}
-
-	return &Scintilla__Internal__Menu{h: (*C.Scintilla__Internal__Menu)(h)}
+	return newScintilla__Internal__Menu((*C.Scintilla__Internal__Menu)(h))
 }
 
 // NewScintilla__Internal__Menu constructs a new Scintilla::Internal::Menu object.
 func NewScintilla__Internal__Menu() *Scintilla__Internal__Menu {
-	var outptr_Scintilla__Internal__Menu *C.Scintilla__Internal__Menu = nil
 
-	C.Scintilla__Internal__Menu_new(&outptr_Scintilla__Internal__Menu)
-	ret := newScintilla__Internal__Menu(outptr_Scintilla__Internal__Menu)
+	ret := newScintilla__Internal__Menu(C.Scintilla__Internal__Menu_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -5346,16 +5273,13 @@ func newSci_CharacterRange(h *C.Sci_CharacterRange) *Sci_CharacterRange {
 	if h == nil {
 		return nil
 	}
+
 	return &Sci_CharacterRange{h: h}
 }
 
 // UnsafeNewSci_CharacterRange constructs the type using only unsafe pointers.
 func UnsafeNewSci_CharacterRange(h unsafe.Pointer) *Sci_CharacterRange {
-	if h == nil {
-		return nil
-	}
-
-	return &Sci_CharacterRange{h: (*C.Sci_CharacterRange)(h)}
+	return newSci_CharacterRange((*C.Sci_CharacterRange)(h))
 }
 
 // Delete this object from C++ memory.
@@ -5396,16 +5320,13 @@ func newSci_CharacterRangeFull(h *C.Sci_CharacterRangeFull) *Sci_CharacterRangeF
 	if h == nil {
 		return nil
 	}
+
 	return &Sci_CharacterRangeFull{h: h}
 }
 
 // UnsafeNewSci_CharacterRangeFull constructs the type using only unsafe pointers.
 func UnsafeNewSci_CharacterRangeFull(h unsafe.Pointer) *Sci_CharacterRangeFull {
-	if h == nil {
-		return nil
-	}
-
-	return &Sci_CharacterRangeFull{h: (*C.Sci_CharacterRangeFull)(h)}
+	return newSci_CharacterRangeFull((*C.Sci_CharacterRangeFull)(h))
 }
 
 // Delete this object from C++ memory.
@@ -5446,16 +5367,13 @@ func newSci_TextRange(h *C.Sci_TextRange) *Sci_TextRange {
 	if h == nil {
 		return nil
 	}
+
 	return &Sci_TextRange{h: h}
 }
 
 // UnsafeNewSci_TextRange constructs the type using only unsafe pointers.
 func UnsafeNewSci_TextRange(h unsafe.Pointer) *Sci_TextRange {
-	if h == nil {
-		return nil
-	}
-
-	return &Sci_TextRange{h: (*C.Sci_TextRange)(h)}
+	return newSci_TextRange((*C.Sci_TextRange)(h))
 }
 
 // Delete this object from C++ memory.
@@ -5496,16 +5414,13 @@ func newSci_TextRangeFull(h *C.Sci_TextRangeFull) *Sci_TextRangeFull {
 	if h == nil {
 		return nil
 	}
+
 	return &Sci_TextRangeFull{h: h}
 }
 
 // UnsafeNewSci_TextRangeFull constructs the type using only unsafe pointers.
 func UnsafeNewSci_TextRangeFull(h unsafe.Pointer) *Sci_TextRangeFull {
-	if h == nil {
-		return nil
-	}
-
-	return &Sci_TextRangeFull{h: (*C.Sci_TextRangeFull)(h)}
+	return newSci_TextRangeFull((*C.Sci_TextRangeFull)(h))
 }
 
 // Delete this object from C++ memory.
@@ -5546,16 +5461,13 @@ func newSci_TextToFind(h *C.Sci_TextToFind) *Sci_TextToFind {
 	if h == nil {
 		return nil
 	}
+
 	return &Sci_TextToFind{h: h}
 }
 
 // UnsafeNewSci_TextToFind constructs the type using only unsafe pointers.
 func UnsafeNewSci_TextToFind(h unsafe.Pointer) *Sci_TextToFind {
-	if h == nil {
-		return nil
-	}
-
-	return &Sci_TextToFind{h: (*C.Sci_TextToFind)(h)}
+	return newSci_TextToFind((*C.Sci_TextToFind)(h))
 }
 
 // Delete this object from C++ memory.
@@ -5596,16 +5508,13 @@ func newSci_TextToFindFull(h *C.Sci_TextToFindFull) *Sci_TextToFindFull {
 	if h == nil {
 		return nil
 	}
+
 	return &Sci_TextToFindFull{h: h}
 }
 
 // UnsafeNewSci_TextToFindFull constructs the type using only unsafe pointers.
 func UnsafeNewSci_TextToFindFull(h unsafe.Pointer) *Sci_TextToFindFull {
-	if h == nil {
-		return nil
-	}
-
-	return &Sci_TextToFindFull{h: (*C.Sci_TextToFindFull)(h)}
+	return newSci_TextToFindFull((*C.Sci_TextToFindFull)(h))
 }
 
 // Delete this object from C++ memory.
@@ -5646,16 +5555,13 @@ func newSci_Rectangle(h *C.Sci_Rectangle) *Sci_Rectangle {
 	if h == nil {
 		return nil
 	}
+
 	return &Sci_Rectangle{h: h}
 }
 
 // UnsafeNewSci_Rectangle constructs the type using only unsafe pointers.
 func UnsafeNewSci_Rectangle(h unsafe.Pointer) *Sci_Rectangle {
-	if h == nil {
-		return nil
-	}
-
-	return &Sci_Rectangle{h: (*C.Sci_Rectangle)(h)}
+	return newSci_Rectangle((*C.Sci_Rectangle)(h))
 }
 
 // Delete this object from C++ memory.
@@ -5696,16 +5602,13 @@ func newSci_RangeToFormat(h *C.Sci_RangeToFormat) *Sci_RangeToFormat {
 	if h == nil {
 		return nil
 	}
+
 	return &Sci_RangeToFormat{h: h}
 }
 
 // UnsafeNewSci_RangeToFormat constructs the type using only unsafe pointers.
 func UnsafeNewSci_RangeToFormat(h unsafe.Pointer) *Sci_RangeToFormat {
-	if h == nil {
-		return nil
-	}
-
-	return &Sci_RangeToFormat{h: (*C.Sci_RangeToFormat)(h)}
+	return newSci_RangeToFormat((*C.Sci_RangeToFormat)(h))
 }
 
 // Delete this object from C++ memory.
@@ -5746,16 +5649,13 @@ func newSci_RangeToFormatFull(h *C.Sci_RangeToFormatFull) *Sci_RangeToFormatFull
 	if h == nil {
 		return nil
 	}
+
 	return &Sci_RangeToFormatFull{h: h}
 }
 
 // UnsafeNewSci_RangeToFormatFull constructs the type using only unsafe pointers.
 func UnsafeNewSci_RangeToFormatFull(h unsafe.Pointer) *Sci_RangeToFormatFull {
-	if h == nil {
-		return nil
-	}
-
-	return &Sci_RangeToFormatFull{h: (*C.Sci_RangeToFormatFull)(h)}
+	return newSci_RangeToFormatFull((*C.Sci_RangeToFormatFull)(h))
 }
 
 // Delete this object from C++ memory.
@@ -5796,16 +5696,13 @@ func newSci_NotifyHeader(h *C.Sci_NotifyHeader) *Sci_NotifyHeader {
 	if h == nil {
 		return nil
 	}
+
 	return &Sci_NotifyHeader{h: h}
 }
 
 // UnsafeNewSci_NotifyHeader constructs the type using only unsafe pointers.
 func UnsafeNewSci_NotifyHeader(h unsafe.Pointer) *Sci_NotifyHeader {
-	if h == nil {
-		return nil
-	}
-
-	return &Sci_NotifyHeader{h: (*C.Sci_NotifyHeader)(h)}
+	return newSci_NotifyHeader((*C.Sci_NotifyHeader)(h))
 }
 
 // Delete this object from C++ memory.
@@ -5846,16 +5743,13 @@ func newSCNotification(h *C.SCNotification) *SCNotification {
 	if h == nil {
 		return nil
 	}
+
 	return &SCNotification{h: h}
 }
 
 // UnsafeNewSCNotification constructs the type using only unsafe pointers.
 func UnsafeNewSCNotification(h unsafe.Pointer) *SCNotification {
-	if h == nil {
-		return nil
-	}
-
-	return &SCNotification{h: (*C.SCNotification)(h)}
+	return newSCNotification((*C.SCNotification)(h))
 }
 
 // Delete this object from C++ memory.
@@ -5893,50 +5787,34 @@ func (this *ScintillaEditBase) UnsafePointer() unsafe.Pointer {
 }
 
 // newScintillaEditBase constructs the type using only CGO pointers.
-func newScintillaEditBase(h *C.ScintillaEditBase, h_QAbstractScrollArea *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *ScintillaEditBase {
+func newScintillaEditBase(h *C.ScintillaEditBase) *ScintillaEditBase {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
+	C.ScintillaEditBase_virtbase(h, &outptr_QAbstractScrollArea)
+
 	return &ScintillaEditBase{h: h,
-		QAbstractScrollArea: qt.UnsafeNewQAbstractScrollArea(unsafe.Pointer(h_QAbstractScrollArea), unsafe.Pointer(h_QFrame), unsafe.Pointer(h_QWidget), unsafe.Pointer(h_QObject), unsafe.Pointer(h_QPaintDevice))}
+		QAbstractScrollArea: qt.UnsafeNewQAbstractScrollArea(unsafe.Pointer(outptr_QAbstractScrollArea))}
 }
 
 // UnsafeNewScintillaEditBase constructs the type using only unsafe pointers.
-func UnsafeNewScintillaEditBase(h unsafe.Pointer, h_QAbstractScrollArea unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *ScintillaEditBase {
-	if h == nil {
-		return nil
-	}
-
-	return &ScintillaEditBase{h: (*C.ScintillaEditBase)(h),
-		QAbstractScrollArea: qt.UnsafeNewQAbstractScrollArea(h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewScintillaEditBase(h unsafe.Pointer) *ScintillaEditBase {
+	return newScintillaEditBase((*C.ScintillaEditBase)(h))
 }
 
 // NewScintillaEditBase constructs a new ScintillaEditBase object.
 func NewScintillaEditBase(parent *qt.QWidget) *ScintillaEditBase {
-	var outptr_ScintillaEditBase *C.ScintillaEditBase = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.ScintillaEditBase_new((*C.QWidget)(parent.UnsafePointer()), &outptr_ScintillaEditBase, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newScintillaEditBase(outptr_ScintillaEditBase, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newScintillaEditBase(C.ScintillaEditBase_new((*C.QWidget)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewScintillaEditBase2 constructs a new ScintillaEditBase object.
 func NewScintillaEditBase2() *ScintillaEditBase {
-	var outptr_ScintillaEditBase *C.ScintillaEditBase = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.ScintillaEditBase_new2(&outptr_ScintillaEditBase, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newScintillaEditBase(outptr_ScintillaEditBase, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newScintillaEditBase(C.ScintillaEditBase_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -6131,7 +6009,7 @@ func miqt_exec_callback_ScintillaEditBase_AboutToCopy(cb C.intptr_t, data *C.QMi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMimeData(unsafe.Pointer(data), nil)
+	slotval1 := qt.UnsafeNewQMimeData(unsafe.Pointer(data))
 
 	gofunc(slotval1)
 }
@@ -6673,7 +6551,7 @@ func miqt_exec_callback_ScintillaEditBase_Notify(cb C.intptr_t, pscn *C.Scintill
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewScintilla__NotificationData(unsafe.Pointer(pscn))
+	slotval1 := newScintilla__NotificationData(pscn)
 
 	gofunc(slotval1)
 }
@@ -6715,7 +6593,7 @@ func miqt_exec_callback_ScintillaEditBase_ButtonPressed(cb C.intptr_t, event *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event))
 
 	gofunc(slotval1)
 }
@@ -6735,7 +6613,7 @@ func miqt_exec_callback_ScintillaEditBase_ButtonReleased(cb C.intptr_t, event *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event))
 
 	gofunc(slotval1)
 }
@@ -6755,7 +6633,7 @@ func miqt_exec_callback_ScintillaEditBase_KeyPressed(cb C.intptr_t, event *C.QKe
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(event))
 
 	gofunc(slotval1)
 }
@@ -6827,6 +6705,9 @@ func (this *ScintillaEditBase) callVirtualBase_Send(iMessage uint, wParam uintpt
 
 }
 func (this *ScintillaEditBase) OnSend(slot func(super func(iMessage uint, wParam uintptr, lParam uintptr) uintptr, iMessage uint, wParam uintptr, lParam uintptr) uintptr) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_Send(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -6858,6 +6739,9 @@ func (this *ScintillaEditBase) callVirtualBase_Sends(iMessage uint, wParam uintp
 
 }
 func (this *ScintillaEditBase) OnSends(slot func(super func(iMessage uint, wParam uintptr, s string) uintptr, iMessage uint, wParam uintptr, s string) uintptr) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_Sends(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -6888,6 +6772,9 @@ func (this *ScintillaEditBase) callVirtualBase_Event(event *qt.QEvent) bool {
 
 }
 func (this *ScintillaEditBase) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -6913,6 +6800,9 @@ func (this *ScintillaEditBase) callVirtualBase_PaintEvent(event *qt.QPaintEvent)
 
 }
 func (this *ScintillaEditBase) OnPaintEvent(slot func(super func(event *qt.QPaintEvent), event *qt.QPaintEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -6924,7 +6814,7 @@ func miqt_exec_callback_ScintillaEditBase_PaintEvent(self *C.ScintillaEditBase, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPaintEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQPaintEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -6936,6 +6826,9 @@ func (this *ScintillaEditBase) callVirtualBase_WheelEvent(event *qt.QWheelEvent)
 
 }
 func (this *ScintillaEditBase) OnWheelEvent(slot func(super func(event *qt.QWheelEvent), event *qt.QWheelEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -6947,7 +6840,7 @@ func miqt_exec_callback_ScintillaEditBase_WheelEvent(self *C.ScintillaEditBase, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQWheelEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -6959,6 +6852,9 @@ func (this *ScintillaEditBase) callVirtualBase_FocusInEvent(event *qt.QFocusEven
 
 }
 func (this *ScintillaEditBase) OnFocusInEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -6970,7 +6866,7 @@ func miqt_exec_callback_ScintillaEditBase_FocusInEvent(self *C.ScintillaEditBase
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -6982,6 +6878,9 @@ func (this *ScintillaEditBase) callVirtualBase_FocusOutEvent(event *qt.QFocusEve
 
 }
 func (this *ScintillaEditBase) OnFocusOutEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -6993,7 +6892,7 @@ func miqt_exec_callback_ScintillaEditBase_FocusOutEvent(self *C.ScintillaEditBas
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -7005,6 +6904,9 @@ func (this *ScintillaEditBase) callVirtualBase_ResizeEvent(event *qt.QResizeEven
 
 }
 func (this *ScintillaEditBase) OnResizeEvent(slot func(super func(event *qt.QResizeEvent), event *qt.QResizeEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -7016,7 +6918,7 @@ func miqt_exec_callback_ScintillaEditBase_ResizeEvent(self *C.ScintillaEditBase,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQResizeEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -7028,6 +6930,9 @@ func (this *ScintillaEditBase) callVirtualBase_KeyPressEvent(event *qt.QKeyEvent
 
 }
 func (this *ScintillaEditBase) OnKeyPressEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -7039,7 +6944,7 @@ func miqt_exec_callback_ScintillaEditBase_KeyPressEvent(self *C.ScintillaEditBas
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -7051,6 +6956,9 @@ func (this *ScintillaEditBase) callVirtualBase_MousePressEvent(event *qt.QMouseE
 
 }
 func (this *ScintillaEditBase) OnMousePressEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -7062,7 +6970,7 @@ func miqt_exec_callback_ScintillaEditBase_MousePressEvent(self *C.ScintillaEditB
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -7074,6 +6982,9 @@ func (this *ScintillaEditBase) callVirtualBase_MouseReleaseEvent(event *qt.QMous
 
 }
 func (this *ScintillaEditBase) OnMouseReleaseEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -7085,7 +6996,7 @@ func miqt_exec_callback_ScintillaEditBase_MouseReleaseEvent(self *C.ScintillaEdi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -7097,6 +7008,9 @@ func (this *ScintillaEditBase) callVirtualBase_MouseDoubleClickEvent(event *qt.Q
 
 }
 func (this *ScintillaEditBase) OnMouseDoubleClickEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -7108,7 +7022,7 @@ func miqt_exec_callback_ScintillaEditBase_MouseDoubleClickEvent(self *C.Scintill
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -7120,6 +7034,9 @@ func (this *ScintillaEditBase) callVirtualBase_MouseMoveEvent(event *qt.QMouseEv
 
 }
 func (this *ScintillaEditBase) OnMouseMoveEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -7131,7 +7048,7 @@ func miqt_exec_callback_ScintillaEditBase_MouseMoveEvent(self *C.ScintillaEditBa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -7143,6 +7060,9 @@ func (this *ScintillaEditBase) callVirtualBase_ContextMenuEvent(event *qt.QConte
 
 }
 func (this *ScintillaEditBase) OnContextMenuEvent(slot func(super func(event *qt.QContextMenuEvent), event *qt.QContextMenuEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -7154,7 +7074,7 @@ func miqt_exec_callback_ScintillaEditBase_ContextMenuEvent(self *C.ScintillaEdit
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQContextMenuEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -7166,6 +7086,9 @@ func (this *ScintillaEditBase) callVirtualBase_DragEnterEvent(event *qt.QDragEnt
 
 }
 func (this *ScintillaEditBase) OnDragEnterEvent(slot func(super func(event *qt.QDragEnterEvent), event *qt.QDragEnterEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -7177,7 +7100,7 @@ func miqt_exec_callback_ScintillaEditBase_DragEnterEvent(self *C.ScintillaEditBa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQDragEnterEvent(unsafe.Pointer(event), nil, nil, nil)
+	slotval1 := qt.UnsafeNewQDragEnterEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -7189,6 +7112,9 @@ func (this *ScintillaEditBase) callVirtualBase_DragLeaveEvent(event *qt.QDragLea
 
 }
 func (this *ScintillaEditBase) OnDragLeaveEvent(slot func(super func(event *qt.QDragLeaveEvent), event *qt.QDragLeaveEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -7200,7 +7126,7 @@ func miqt_exec_callback_ScintillaEditBase_DragLeaveEvent(self *C.ScintillaEditBa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQDragLeaveEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQDragLeaveEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -7212,6 +7138,9 @@ func (this *ScintillaEditBase) callVirtualBase_DragMoveEvent(event *qt.QDragMove
 
 }
 func (this *ScintillaEditBase) OnDragMoveEvent(slot func(super func(event *qt.QDragMoveEvent), event *qt.QDragMoveEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -7223,7 +7152,7 @@ func miqt_exec_callback_ScintillaEditBase_DragMoveEvent(self *C.ScintillaEditBas
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQDragMoveEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -7235,6 +7164,9 @@ func (this *ScintillaEditBase) callVirtualBase_DropEvent(event *qt.QDropEvent) {
 
 }
 func (this *ScintillaEditBase) OnDropEvent(slot func(super func(event *qt.QDropEvent), event *qt.QDropEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -7246,7 +7178,7 @@ func miqt_exec_callback_ScintillaEditBase_DropEvent(self *C.ScintillaEditBase, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQDropEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -7258,6 +7190,9 @@ func (this *ScintillaEditBase) callVirtualBase_InputMethodEvent(event *qt.QInput
 
 }
 func (this *ScintillaEditBase) OnInputMethodEvent(slot func(super func(event *qt.QInputMethodEvent), event *qt.QInputMethodEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -7269,7 +7204,7 @@ func miqt_exec_callback_ScintillaEditBase_InputMethodEvent(self *C.ScintillaEdit
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQInputMethodEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQInputMethodEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -7277,13 +7212,15 @@ func miqt_exec_callback_ScintillaEditBase_InputMethodEvent(self *C.ScintillaEdit
 
 func (this *ScintillaEditBase) callVirtualBase_InputMethodQuery(query qt.InputMethodQuery) *qt.QVariant {
 
-	_ret := C.ScintillaEditBase_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.ScintillaEditBase_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *ScintillaEditBase) OnInputMethodQuery(slot func(super func(query qt.InputMethodQuery) *qt.QVariant, query qt.InputMethodQuery) *qt.QVariant) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -7309,6 +7246,9 @@ func (this *ScintillaEditBase) callVirtualBase_ScrollContentsBy(param1 int, para
 
 }
 func (this *ScintillaEditBase) OnScrollContentsBy(slot func(super func(param1 int, param2 int), param1 int, param2 int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_ScrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -7330,13 +7270,15 @@ func miqt_exec_callback_ScintillaEditBase_ScrollContentsBy(self *C.ScintillaEdit
 
 func (this *ScintillaEditBase) callVirtualBase_MinimumSizeHint() *qt.QSize {
 
-	_ret := C.ScintillaEditBase_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEditBase_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *ScintillaEditBase) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -7355,13 +7297,15 @@ func miqt_exec_callback_ScintillaEditBase_MinimumSizeHint(self *C.ScintillaEditB
 
 func (this *ScintillaEditBase) callVirtualBase_SizeHint() *qt.QSize {
 
-	_ret := C.ScintillaEditBase_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEditBase_virtualbase_SizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *ScintillaEditBase) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -7384,6 +7328,9 @@ func (this *ScintillaEditBase) callVirtualBase_SetupViewport(viewport *qt.QWidge
 
 }
 func (this *ScintillaEditBase) OnSetupViewport(slot func(super func(viewport *qt.QWidget), viewport *qt.QWidget)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_SetupViewport(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -7395,7 +7342,7 @@ func miqt_exec_callback_ScintillaEditBase_SetupViewport(self *C.ScintillaEditBas
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQWidget(unsafe.Pointer(viewport), nil, nil)
+	slotval1 := qt.UnsafeNewQWidget(unsafe.Pointer(viewport))
 
 	gofunc((&ScintillaEditBase{h: self}).callVirtualBase_SetupViewport, slotval1)
 
@@ -7407,6 +7354,9 @@ func (this *ScintillaEditBase) callVirtualBase_EventFilter(param1 *qt.QObject, p
 
 }
 func (this *ScintillaEditBase) OnEventFilter(slot func(super func(param1 *qt.QObject, param2 *qt.QEvent) bool, param1 *qt.QObject, param2 *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -7419,6 +7369,7 @@ func miqt_exec_callback_ScintillaEditBase_EventFilter(self *C.ScintillaEditBase,
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(param1))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(param2))
 
 	virtualReturn := gofunc((&ScintillaEditBase{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
@@ -7433,6 +7384,9 @@ func (this *ScintillaEditBase) callVirtualBase_ViewportEvent(param1 *qt.QEvent) 
 
 }
 func (this *ScintillaEditBase) OnViewportEvent(slot func(super func(param1 *qt.QEvent) bool, param1 *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_ViewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -7454,13 +7408,15 @@ func miqt_exec_callback_ScintillaEditBase_ViewportEvent(self *C.ScintillaEditBas
 
 func (this *ScintillaEditBase) callVirtualBase_ViewportSizeHint() *qt.QSize {
 
-	_ret := C.ScintillaEditBase_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEditBase_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *ScintillaEditBase) OnViewportSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEditBase_override_virtual_ViewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -7512,53 +7468,42 @@ func (this *ScintillaDocument) UnsafePointer() unsafe.Pointer {
 }
 
 // newScintillaDocument constructs the type using only CGO pointers.
-func newScintillaDocument(h *C.ScintillaDocument, h_QObject *C.QObject) *ScintillaDocument {
+func newScintillaDocument(h *C.ScintillaDocument) *ScintillaDocument {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.ScintillaDocument_virtbase(h, &outptr_QObject)
+
 	return &ScintillaDocument{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewScintillaDocument constructs the type using only unsafe pointers.
-func UnsafeNewScintillaDocument(h unsafe.Pointer, h_QObject unsafe.Pointer) *ScintillaDocument {
-	if h == nil {
-		return nil
-	}
-
-	return &ScintillaDocument{h: (*C.ScintillaDocument)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewScintillaDocument(h unsafe.Pointer) *ScintillaDocument {
+	return newScintillaDocument((*C.ScintillaDocument)(h))
 }
 
 // NewScintillaDocument constructs a new ScintillaDocument object.
 func NewScintillaDocument() *ScintillaDocument {
-	var outptr_ScintillaDocument *C.ScintillaDocument = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.ScintillaDocument_new(&outptr_ScintillaDocument, &outptr_QObject)
-	ret := newScintillaDocument(outptr_ScintillaDocument, outptr_QObject)
+	ret := newScintillaDocument(C.ScintillaDocument_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewScintillaDocument2 constructs a new ScintillaDocument object.
 func NewScintillaDocument2(parent *qt.QObject) *ScintillaDocument {
-	var outptr_ScintillaDocument *C.ScintillaDocument = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.ScintillaDocument_new2((*C.QObject)(parent.UnsafePointer()), &outptr_ScintillaDocument, &outptr_QObject)
-	ret := newScintillaDocument(outptr_ScintillaDocument, outptr_QObject)
+	ret := newScintillaDocument(C.ScintillaDocument_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewScintillaDocument3 constructs a new ScintillaDocument object.
 func NewScintillaDocument3(parent *qt.QObject, pdoc_ unsafe.Pointer) *ScintillaDocument {
-	var outptr_ScintillaDocument *C.ScintillaDocument = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.ScintillaDocument_new3((*C.QObject)(parent.UnsafePointer()), pdoc_, &outptr_ScintillaDocument, &outptr_QObject)
-	ret := newScintillaDocument(outptr_ScintillaDocument, outptr_QObject)
+	ret := newScintillaDocument(C.ScintillaDocument_new3((*C.QObject)(parent.UnsafePointer()), pdoc_))
 	ret.isSubclass = true
 	return ret
 }
@@ -7927,6 +7872,9 @@ func (this *ScintillaDocument) callVirtualBase_Event(event *qt.QEvent) bool {
 
 }
 func (this *ScintillaDocument) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaDocument_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -7952,6 +7900,9 @@ func (this *ScintillaDocument) callVirtualBase_EventFilter(watched *qt.QObject, 
 
 }
 func (this *ScintillaDocument) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaDocument_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -7964,6 +7915,7 @@ func miqt_exec_callback_ScintillaDocument_EventFilter(self *C.ScintillaDocument,
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&ScintillaDocument{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
@@ -7978,6 +7930,9 @@ func (this *ScintillaDocument) callVirtualBase_TimerEvent(event *qt.QTimerEvent)
 
 }
 func (this *ScintillaDocument) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaDocument_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -7989,7 +7944,7 @@ func miqt_exec_callback_ScintillaDocument_TimerEvent(self *C.ScintillaDocument, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaDocument{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -8001,6 +7956,9 @@ func (this *ScintillaDocument) callVirtualBase_ChildEvent(event *qt.QChildEvent)
 
 }
 func (this *ScintillaDocument) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaDocument_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -8012,7 +7970,7 @@ func miqt_exec_callback_ScintillaDocument_ChildEvent(self *C.ScintillaDocument, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaDocument{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -8024,6 +7982,9 @@ func (this *ScintillaDocument) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
 }
 func (this *ScintillaDocument) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaDocument_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -8047,6 +8008,9 @@ func (this *ScintillaDocument) callVirtualBase_ConnectNotify(signal *qt.QMetaMet
 
 }
 func (this *ScintillaDocument) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaDocument_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -8070,6 +8034,9 @@ func (this *ScintillaDocument) callVirtualBase_DisconnectNotify(signal *qt.QMeta
 
 }
 func (this *ScintillaDocument) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaDocument_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -8122,52 +8089,34 @@ func (this *ScintillaEdit) UnsafePointer() unsafe.Pointer {
 }
 
 // newScintillaEdit constructs the type using only CGO pointers.
-func newScintillaEdit(h *C.ScintillaEdit, h_ScintillaEditBase *C.ScintillaEditBase, h_QAbstractScrollArea *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *ScintillaEdit {
+func newScintillaEdit(h *C.ScintillaEdit) *ScintillaEdit {
 	if h == nil {
 		return nil
 	}
+	var outptr_ScintillaEditBase *C.ScintillaEditBase = nil
+	C.ScintillaEdit_virtbase(h, &outptr_ScintillaEditBase)
+
 	return &ScintillaEdit{h: h,
-		ScintillaEditBase: newScintillaEditBase(h_ScintillaEditBase, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+		ScintillaEditBase: newScintillaEditBase(outptr_ScintillaEditBase)}
 }
 
 // UnsafeNewScintillaEdit constructs the type using only unsafe pointers.
-func UnsafeNewScintillaEdit(h unsafe.Pointer, h_ScintillaEditBase unsafe.Pointer, h_QAbstractScrollArea unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *ScintillaEdit {
-	if h == nil {
-		return nil
-	}
-
-	return &ScintillaEdit{h: (*C.ScintillaEdit)(h),
-		ScintillaEditBase: UnsafeNewScintillaEditBase(h_ScintillaEditBase, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewScintillaEdit(h unsafe.Pointer) *ScintillaEdit {
+	return newScintillaEdit((*C.ScintillaEdit)(h))
 }
 
 // NewScintillaEdit constructs a new ScintillaEdit object.
 func NewScintillaEdit(parent *qt.QWidget) *ScintillaEdit {
-	var outptr_ScintillaEdit *C.ScintillaEdit = nil
-	var outptr_ScintillaEditBase *C.ScintillaEditBase = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.ScintillaEdit_new((*C.QWidget)(parent.UnsafePointer()), &outptr_ScintillaEdit, &outptr_ScintillaEditBase, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newScintillaEdit(outptr_ScintillaEdit, outptr_ScintillaEditBase, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newScintillaEdit(C.ScintillaEdit_new((*C.QWidget)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewScintillaEdit2 constructs a new ScintillaEdit object.
 func NewScintillaEdit2() *ScintillaEdit {
-	var outptr_ScintillaEdit *C.ScintillaEdit = nil
-	var outptr_ScintillaEditBase *C.ScintillaEditBase = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.ScintillaEdit_new2(&outptr_ScintillaEdit, &outptr_ScintillaEditBase, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newScintillaEdit(outptr_ScintillaEdit, outptr_ScintillaEditBase, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newScintillaEdit(C.ScintillaEdit_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -8234,7 +8183,7 @@ func (this *ScintillaEdit) GetTextRange(start int, end int) []byte {
 }
 
 func (this *ScintillaEdit) GetDoc() *ScintillaDocument {
-	return UnsafeNewScintillaDocument(unsafe.Pointer(C.ScintillaEdit_GetDoc(this.h)), nil)
+	return newScintillaDocument(C.ScintillaEdit_GetDoc(this.h))
 }
 
 func (this *ScintillaEdit) SetDoc(pdoc_ *ScintillaDocument) {
@@ -11747,6 +11696,9 @@ func (this *ScintillaEdit) callVirtualBase_Send(iMessage uint, wParam uintptr, l
 
 }
 func (this *ScintillaEdit) OnSend(slot func(super func(iMessage uint, wParam uintptr, lParam uintptr) uintptr, iMessage uint, wParam uintptr, lParam uintptr) uintptr) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEdit_override_virtual_Send(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -11778,6 +11730,9 @@ func (this *ScintillaEdit) callVirtualBase_Sends(iMessage uint, wParam uintptr, 
 
 }
 func (this *ScintillaEdit) OnSends(slot func(super func(iMessage uint, wParam uintptr, s string) uintptr, iMessage uint, wParam uintptr, s string) uintptr) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEdit_override_virtual_Sends(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -11808,6 +11763,9 @@ func (this *ScintillaEdit) callVirtualBase_Event(event *qt.QEvent) bool {
 
 }
 func (this *ScintillaEdit) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEdit_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -11833,6 +11791,9 @@ func (this *ScintillaEdit) callVirtualBase_PaintEvent(event *qt.QPaintEvent) {
 
 }
 func (this *ScintillaEdit) OnPaintEvent(slot func(super func(event *qt.QPaintEvent), event *qt.QPaintEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEdit_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -11844,7 +11805,7 @@ func miqt_exec_callback_ScintillaEdit_PaintEvent(self *C.ScintillaEdit, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPaintEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQPaintEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEdit{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -11856,6 +11817,9 @@ func (this *ScintillaEdit) callVirtualBase_WheelEvent(event *qt.QWheelEvent) {
 
 }
 func (this *ScintillaEdit) OnWheelEvent(slot func(super func(event *qt.QWheelEvent), event *qt.QWheelEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEdit_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -11867,7 +11831,7 @@ func miqt_exec_callback_ScintillaEdit_WheelEvent(self *C.ScintillaEdit, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQWheelEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQWheelEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEdit{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -11879,6 +11843,9 @@ func (this *ScintillaEdit) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
 
 }
 func (this *ScintillaEdit) OnFocusInEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEdit_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -11890,7 +11857,7 @@ func miqt_exec_callback_ScintillaEdit_FocusInEvent(self *C.ScintillaEdit, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEdit{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -11902,6 +11869,9 @@ func (this *ScintillaEdit) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) 
 
 }
 func (this *ScintillaEdit) OnFocusOutEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEdit_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -11913,7 +11883,7 @@ func miqt_exec_callback_ScintillaEdit_FocusOutEvent(self *C.ScintillaEdit, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEdit{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -11925,6 +11895,9 @@ func (this *ScintillaEdit) callVirtualBase_ResizeEvent(event *qt.QResizeEvent) {
 
 }
 func (this *ScintillaEdit) OnResizeEvent(slot func(super func(event *qt.QResizeEvent), event *qt.QResizeEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEdit_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -11936,7 +11909,7 @@ func miqt_exec_callback_ScintillaEdit_ResizeEvent(self *C.ScintillaEdit, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQResizeEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQResizeEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEdit{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -11948,6 +11921,9 @@ func (this *ScintillaEdit) callVirtualBase_KeyPressEvent(event *qt.QKeyEvent) {
 
 }
 func (this *ScintillaEdit) OnKeyPressEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEdit_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -11959,7 +11935,7 @@ func miqt_exec_callback_ScintillaEdit_KeyPressEvent(self *C.ScintillaEdit, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEdit{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -11971,6 +11947,9 @@ func (this *ScintillaEdit) callVirtualBase_MousePressEvent(event *qt.QMouseEvent
 
 }
 func (this *ScintillaEdit) OnMousePressEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEdit_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -11982,7 +11961,7 @@ func miqt_exec_callback_ScintillaEdit_MousePressEvent(self *C.ScintillaEdit, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEdit{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -11994,6 +11973,9 @@ func (this *ScintillaEdit) callVirtualBase_MouseReleaseEvent(event *qt.QMouseEve
 
 }
 func (this *ScintillaEdit) OnMouseReleaseEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEdit_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -12005,7 +11987,7 @@ func miqt_exec_callback_ScintillaEdit_MouseReleaseEvent(self *C.ScintillaEdit, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEdit{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -12017,6 +11999,9 @@ func (this *ScintillaEdit) callVirtualBase_MouseDoubleClickEvent(event *qt.QMous
 
 }
 func (this *ScintillaEdit) OnMouseDoubleClickEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEdit_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -12028,7 +12013,7 @@ func miqt_exec_callback_ScintillaEdit_MouseDoubleClickEvent(self *C.ScintillaEdi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEdit{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -12040,6 +12025,9 @@ func (this *ScintillaEdit) callVirtualBase_MouseMoveEvent(event *qt.QMouseEvent)
 
 }
 func (this *ScintillaEdit) OnMouseMoveEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEdit_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -12051,7 +12039,7 @@ func miqt_exec_callback_ScintillaEdit_MouseMoveEvent(self *C.ScintillaEdit, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEdit{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -12063,6 +12051,9 @@ func (this *ScintillaEdit) callVirtualBase_ContextMenuEvent(event *qt.QContextMe
 
 }
 func (this *ScintillaEdit) OnContextMenuEvent(slot func(super func(event *qt.QContextMenuEvent), event *qt.QContextMenuEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEdit_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -12074,7 +12065,7 @@ func miqt_exec_callback_ScintillaEdit_ContextMenuEvent(self *C.ScintillaEdit, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQContextMenuEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQContextMenuEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEdit{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -12086,6 +12077,9 @@ func (this *ScintillaEdit) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEv
 
 }
 func (this *ScintillaEdit) OnDragEnterEvent(slot func(super func(event *qt.QDragEnterEvent), event *qt.QDragEnterEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEdit_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -12097,7 +12091,7 @@ func miqt_exec_callback_ScintillaEdit_DragEnterEvent(self *C.ScintillaEdit, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQDragEnterEvent(unsafe.Pointer(event), nil, nil, nil)
+	slotval1 := qt.UnsafeNewQDragEnterEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEdit{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -12109,6 +12103,9 @@ func (this *ScintillaEdit) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEv
 
 }
 func (this *ScintillaEdit) OnDragLeaveEvent(slot func(super func(event *qt.QDragLeaveEvent), event *qt.QDragLeaveEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEdit_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -12120,7 +12117,7 @@ func miqt_exec_callback_ScintillaEdit_DragLeaveEvent(self *C.ScintillaEdit, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQDragLeaveEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQDragLeaveEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEdit{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -12132,6 +12129,9 @@ func (this *ScintillaEdit) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEven
 
 }
 func (this *ScintillaEdit) OnDragMoveEvent(slot func(super func(event *qt.QDragMoveEvent), event *qt.QDragMoveEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEdit_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -12143,7 +12143,7 @@ func miqt_exec_callback_ScintillaEdit_DragMoveEvent(self *C.ScintillaEdit, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQDragMoveEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQDragMoveEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEdit{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -12155,6 +12155,9 @@ func (this *ScintillaEdit) callVirtualBase_DropEvent(event *qt.QDropEvent) {
 
 }
 func (this *ScintillaEdit) OnDropEvent(slot func(super func(event *qt.QDropEvent), event *qt.QDropEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEdit_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -12166,7 +12169,7 @@ func miqt_exec_callback_ScintillaEdit_DropEvent(self *C.ScintillaEdit, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQDropEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQDropEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEdit{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -12178,6 +12181,9 @@ func (this *ScintillaEdit) callVirtualBase_InputMethodEvent(event *qt.QInputMeth
 
 }
 func (this *ScintillaEdit) OnInputMethodEvent(slot func(super func(event *qt.QInputMethodEvent), event *qt.QInputMethodEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEdit_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -12189,7 +12195,7 @@ func miqt_exec_callback_ScintillaEdit_InputMethodEvent(self *C.ScintillaEdit, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQInputMethodEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQInputMethodEvent(unsafe.Pointer(event))
 
 	gofunc((&ScintillaEdit{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -12197,13 +12203,15 @@ func miqt_exec_callback_ScintillaEdit_InputMethodEvent(self *C.ScintillaEdit, cb
 
 func (this *ScintillaEdit) callVirtualBase_InputMethodQuery(query qt.InputMethodQuery) *qt.QVariant {
 
-	_ret := C.ScintillaEdit_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.ScintillaEdit_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *ScintillaEdit) OnInputMethodQuery(slot func(super func(query qt.InputMethodQuery) *qt.QVariant, query qt.InputMethodQuery) *qt.QVariant) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEdit_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -12229,6 +12237,9 @@ func (this *ScintillaEdit) callVirtualBase_ScrollContentsBy(param1 int, param2 i
 
 }
 func (this *ScintillaEdit) OnScrollContentsBy(slot func(super func(param1 int, param2 int), param1 int, param2 int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.ScintillaEdit_override_virtual_ScrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

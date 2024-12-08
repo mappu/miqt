@@ -44,9 +44,10 @@ typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-void QInputDialog_new(QWidget* parent, QInputDialog** outptr_QInputDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QInputDialog_new2(QInputDialog** outptr_QInputDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QInputDialog_new3(QWidget* parent, int flags, QInputDialog** outptr_QInputDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QInputDialog* QInputDialog_new(QWidget* parent);
+QInputDialog* QInputDialog_new2();
+QInputDialog* QInputDialog_new3(QWidget* parent, int flags);
+void QInputDialog_virtbase(QInputDialog* src, QDialog** outptr_QDialog);
 QMetaObject* QInputDialog_MetaObject(const QInputDialog* self);
 void* QInputDialog_Metacast(QInputDialog* self, const char* param1);
 struct miqt_string QInputDialog_Tr(const char* s);

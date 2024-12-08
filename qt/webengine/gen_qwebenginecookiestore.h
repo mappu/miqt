@@ -34,6 +34,7 @@ typedef struct QWebEngineCookieStore QWebEngineCookieStore;
 typedef struct QWebEngineCookieStore__FilterRequest QWebEngineCookieStore__FilterRequest;
 #endif
 
+void QWebEngineCookieStore_virtbase(QWebEngineCookieStore* src, QObject** outptr_QObject);
 QMetaObject* QWebEngineCookieStore_MetaObject(const QWebEngineCookieStore* self);
 void* QWebEngineCookieStore_Metacast(QWebEngineCookieStore* self, const char* param1);
 struct miqt_string QWebEngineCookieStore_Tr(const char* s);
@@ -55,7 +56,7 @@ void QWebEngineCookieStore_SetCookie2(QWebEngineCookieStore* self, QNetworkCooki
 void QWebEngineCookieStore_DeleteCookie2(QWebEngineCookieStore* self, QNetworkCookie* cookie, QUrl* origin);
 void QWebEngineCookieStore_Delete(QWebEngineCookieStore* self, bool isSubclass);
 
-void QWebEngineCookieStore__FilterRequest_new(QWebEngineCookieStore__FilterRequest* param1, QWebEngineCookieStore__FilterRequest** outptr_QWebEngineCookieStore__FilterRequest);
+QWebEngineCookieStore__FilterRequest* QWebEngineCookieStore__FilterRequest_new(QWebEngineCookieStore__FilterRequest* param1);
 void QWebEngineCookieStore__FilterRequest_OperatorAssign(QWebEngineCookieStore__FilterRequest* self, QWebEngineCookieStore__FilterRequest* param1);
 void QWebEngineCookieStore__FilterRequest_Delete(QWebEngineCookieStore__FilterRequest* self, bool isSubclass);
 

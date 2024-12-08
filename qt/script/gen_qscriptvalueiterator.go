@@ -37,24 +37,19 @@ func newQScriptValueIterator(h *C.QScriptValueIterator) *QScriptValueIterator {
 	if h == nil {
 		return nil
 	}
+
 	return &QScriptValueIterator{h: h}
 }
 
 // UnsafeNewQScriptValueIterator constructs the type using only unsafe pointers.
 func UnsafeNewQScriptValueIterator(h unsafe.Pointer) *QScriptValueIterator {
-	if h == nil {
-		return nil
-	}
-
-	return &QScriptValueIterator{h: (*C.QScriptValueIterator)(h)}
+	return newQScriptValueIterator((*C.QScriptValueIterator)(h))
 }
 
 // NewQScriptValueIterator constructs a new QScriptValueIterator object.
 func NewQScriptValueIterator(value *QScriptValue) *QScriptValueIterator {
-	var outptr_QScriptValueIterator *C.QScriptValueIterator = nil
 
-	C.QScriptValueIterator_new(value.cPointer(), &outptr_QScriptValueIterator)
-	ret := newQScriptValueIterator(outptr_QScriptValueIterator)
+	ret := newQScriptValueIterator(C.QScriptValueIterator_new(value.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -83,15 +78,13 @@ func (this *QScriptValueIterator) Name() string {
 }
 
 func (this *QScriptValueIterator) ScriptName() *QScriptString {
-	_ret := C.QScriptValueIterator_ScriptName(this.h)
-	_goptr := newQScriptString(_ret)
+	_goptr := newQScriptString(C.QScriptValueIterator_ScriptName(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptValueIterator) Value() *QScriptValue {
-	_ret := C.QScriptValueIterator_Value(this.h)
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptValueIterator_Value(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -10,6 +10,10 @@
 #include "gen_qcameraexposurecontrol.h"
 #include "_cgo_export.h"
 
+void QCameraExposureControl_virtbase(QCameraExposureControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
+
 QMetaObject* QCameraExposureControl_MetaObject(const QCameraExposureControl* self) {
 	return (QMetaObject*) self->metaObject();
 }

@@ -78,8 +78,9 @@ typedef struct QWidget QWidget;
 typedef struct QsciScintillaBase QsciScintillaBase;
 #endif
 
-void QsciScintillaBase_new(QWidget* parent, QsciScintillaBase** outptr_QsciScintillaBase, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QsciScintillaBase_new2(QsciScintillaBase** outptr_QsciScintillaBase, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QsciScintillaBase* QsciScintillaBase_new(QWidget* parent);
+QsciScintillaBase* QsciScintillaBase_new2();
+void QsciScintillaBase_virtbase(QsciScintillaBase* src, QAbstractScrollArea** outptr_QAbstractScrollArea);
 QMetaObject* QsciScintillaBase_MetaObject(const QsciScintillaBase* self);
 void* QsciScintillaBase_Metacast(QsciScintillaBase* self, const char* param1);
 struct miqt_string QsciScintillaBase_Tr(const char* s);

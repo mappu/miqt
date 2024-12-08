@@ -26,6 +26,7 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif
 
+void QAudioRoleControl_virtbase(QAudioRoleControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QAudioRoleControl_MetaObject(const QAudioRoleControl* self);
 void* QAudioRoleControl_Metacast(QAudioRoleControl* self, const char* param1);
 struct miqt_string QAudioRoleControl_Tr(const char* s);
