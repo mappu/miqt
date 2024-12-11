@@ -6,6 +6,10 @@
 #include <cstring>
 #include <qhostinfo.h>
 #include "gen_qhostinfo.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QHostInfo* QHostInfo_new() {

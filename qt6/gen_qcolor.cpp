@@ -7,6 +7,10 @@
 #include <cstring>
 #include <qcolor.h>
 #include "gen_qcolor.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QColor* QColor_new() {

@@ -10,6 +10,10 @@
 #include <QVideoEncoderSettingsControl>
 #include <qvideoencodersettingscontrol.h>
 #include "gen_qvideoencodersettingscontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QVideoEncoderSettingsControl_virtbase(QVideoEncoderSettingsControl* src, QMediaControl** outptr_QMediaControl) {

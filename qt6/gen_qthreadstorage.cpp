@@ -1,6 +1,10 @@
 #include <QThreadStorageData>
 #include <qthreadstorage.h>
 #include "gen_qthreadstorage.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QThreadStorageData* QThreadStorageData_new(QThreadStorageData* param1) {

@@ -8,6 +8,10 @@
 #include <QWidget>
 #include <qvideowidgetcontrol.h>
 #include "gen_qvideowidgetcontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QVideoWidgetControl_virtbase(QVideoWidgetControl* src, QMediaControl** outptr_QMediaControl) {

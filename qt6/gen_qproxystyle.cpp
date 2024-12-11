@@ -22,6 +22,10 @@
 #include <QWidget>
 #include <qproxystyle.h>
 #include "gen_qproxystyle.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQProxyStyle : public virtual QProxyStyle {

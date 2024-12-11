@@ -14,6 +14,10 @@
 #include <QTransform>
 #include <qbrush.h>
 #include "gen_qbrush.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QBrush* QBrush_new() {

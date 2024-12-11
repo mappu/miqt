@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexermatlab.h>
 #include "gen_qscilexermatlab.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerMatlab : public virtual QsciLexerMatlab {

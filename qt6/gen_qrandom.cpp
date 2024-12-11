@@ -2,6 +2,10 @@
 #include <QRandomGenerator64>
 #include <qrandom.h>
 #include "gen_qrandom.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QRandomGenerator* QRandomGenerator_new() {

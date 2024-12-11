@@ -9,6 +9,10 @@
 #include <QTcpSocket>
 #include <qsctpserver.h>
 #include "gen_qsctpserver.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSctpServer : public virtual QSctpServer {

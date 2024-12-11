@@ -7,6 +7,10 @@
 #include <QUrlQuery>
 #include <qurl.h>
 #include "gen_qurl.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QUrl* QUrl_new() {

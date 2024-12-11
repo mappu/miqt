@@ -33,6 +33,10 @@
 #include <QWidget>
 #include <qfocusframe.h>
 #include "gen_qfocusframe.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQFocusFrame : public virtual QFocusFrame {

@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexerjson.h>
 #include "gen_qscilexerjson.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerJSON : public virtual QsciLexerJSON {

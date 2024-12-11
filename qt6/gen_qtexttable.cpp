@@ -14,6 +14,10 @@
 #include <QTextTableFormat>
 #include <qtexttable.h>
 #include "gen_qtexttable.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QTextTableCell* QTextTableCell_new() {

@@ -20,6 +20,10 @@
 #include <QVariant>
 #include <qsslsocket.h>
 #include "gen_qsslsocket.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSslSocket : public virtual QSslSocket {

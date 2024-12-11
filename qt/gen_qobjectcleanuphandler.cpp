@@ -10,6 +10,10 @@
 #include <QTimerEvent>
 #include <qobjectcleanuphandler.h>
 #include "gen_qobjectcleanuphandler.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQObjectCleanupHandler : public virtual QObjectCleanupHandler {

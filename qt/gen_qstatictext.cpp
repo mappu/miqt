@@ -8,6 +8,10 @@
 #include <QTransform>
 #include <qstatictext.h>
 #include "gen_qstatictext.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QStaticText* QStaticText_new() {

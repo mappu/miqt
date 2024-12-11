@@ -6,6 +6,10 @@
 #include <QStyleFactory>
 #include <qstylefactory.h>
 #include "gen_qstylefactory.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 struct miqt_array /* of struct miqt_string */  QStyleFactory_Keys() {

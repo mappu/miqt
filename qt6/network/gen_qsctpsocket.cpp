@@ -11,6 +11,10 @@
 #include <QTcpSocket>
 #include <qsctpsocket.h>
 #include "gen_qsctpsocket.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSctpSocket : public virtual QSctpSocket {

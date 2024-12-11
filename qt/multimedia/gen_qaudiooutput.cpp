@@ -13,6 +13,10 @@
 #include <QTimerEvent>
 #include <qaudiooutput.h>
 #include "gen_qaudiooutput.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAudioOutput : public virtual QAudioOutput {

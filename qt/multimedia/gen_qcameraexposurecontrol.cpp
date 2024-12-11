@@ -8,6 +8,10 @@
 #include <QVariant>
 #include <qcameraexposurecontrol.h>
 #include "gen_qcameraexposurecontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QCameraExposureControl_virtbase(QCameraExposureControl* src, QMediaControl** outptr_QMediaControl) {

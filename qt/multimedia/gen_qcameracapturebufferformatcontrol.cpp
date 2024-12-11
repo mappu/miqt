@@ -8,6 +8,10 @@
 #include <cstring>
 #include <qcameracapturebufferformatcontrol.h>
 #include "gen_qcameracapturebufferformatcontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QCameraCaptureBufferFormatControl_virtbase(QCameraCaptureBufferFormatControl* src, QMediaControl** outptr_QMediaControl) {

@@ -8,6 +8,10 @@
 #include <cstring>
 #include <qnetworkinterface.h>
 #include "gen_qnetworkinterface.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QNetworkAddressEntry* QNetworkAddressEntry_new() {

@@ -10,6 +10,10 @@
 #include <QTimerEvent>
 #include <qtimer.h>
 #include "gen_qtimer.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQTimer : public virtual QTimer {

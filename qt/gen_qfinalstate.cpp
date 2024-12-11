@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qfinalstate.h>
 #include "gen_qfinalstate.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQFinalState : public virtual QFinalState {

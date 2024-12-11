@@ -7,6 +7,10 @@
 #include <QStyleHints>
 #include <qstylehints.h>
 #include "gen_qstylehints.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QStyleHints_virtbase(QStyleHints* src, QObject** outptr_QObject) {

@@ -5,6 +5,10 @@
 #include <cstring>
 #include <qfontinfo.h>
 #include "gen_qfontinfo.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QFontInfo* QFontInfo_new(QFont* param1) {

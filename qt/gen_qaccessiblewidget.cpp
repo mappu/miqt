@@ -14,6 +14,10 @@
 #include <QWindow>
 #include <qaccessiblewidget.h>
 #include "gen_qaccessiblewidget.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QAccessibleWidget* QAccessibleWidget_new(QWidget* o) {

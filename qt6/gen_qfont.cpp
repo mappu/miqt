@@ -6,6 +6,10 @@
 #include <cstring>
 #include <qfont.h>
 #include "gen_qfont.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QFont* QFont_new() {

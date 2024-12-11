@@ -12,6 +12,10 @@
 #include <QVariant>
 #include <qjsonobject.h>
 #include "gen_qjsonobject.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QJsonObject* QJsonObject_new() {

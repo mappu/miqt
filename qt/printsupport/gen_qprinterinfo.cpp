@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qprinterinfo.h>
 #include "gen_qprinterinfo.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QPrinterInfo* QPrinterInfo_new() {

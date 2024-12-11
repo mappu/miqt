@@ -12,6 +12,10 @@
 #include <QWidget>
 #include <qstackedlayout.h>
 #include "gen_qstackedlayout.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQStackedLayout : public virtual QStackedLayout {

@@ -2,6 +2,10 @@
 #include <QByteArray>
 #include <qabstractnativeeventfilter.h>
 #include "gen_qabstractnativeeventfilter.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAbstractNativeEventFilter : public virtual QAbstractNativeEventFilter {

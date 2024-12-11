@@ -34,6 +34,10 @@
 #include <QWidget>
 #include <qcolumnview.h>
 #include "gen_qcolumnview.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQColumnView : public virtual QColumnView {

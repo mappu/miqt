@@ -3,6 +3,10 @@
 #include <cstring>
 #include <qscicommand.h>
 #include "gen_qscicommand.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 int QsciCommand_Command(const QsciCommand* self) {

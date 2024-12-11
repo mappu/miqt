@@ -7,6 +7,10 @@
 #include <cstring>
 #include <qscilexercsharp.h>
 #include "gen_qscilexercsharp.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerCSharp : public virtual QsciLexerCSharp {

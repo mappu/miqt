@@ -7,6 +7,10 @@
 #include <cstring>
 #include <qsciapis.h>
 #include "gen_qsciapis.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciAPIs : public virtual QsciAPIs {

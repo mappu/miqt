@@ -5,6 +5,10 @@
 #include <cstring>
 #include <qscilexeroctave.h>
 #include "gen_qscilexeroctave.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QsciLexerOctave* QsciLexerOctave_new() {

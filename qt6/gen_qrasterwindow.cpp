@@ -14,6 +14,10 @@
 #include <QWindow>
 #include <qrasterwindow.h>
 #include "gen_qrasterwindow.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQRasterWindow : public virtual QRasterWindow {

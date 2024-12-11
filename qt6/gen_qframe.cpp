@@ -36,6 +36,10 @@
 #include <QWidget>
 #include <qframe.h>
 #include "gen_qframe.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQFrame : public virtual QFrame {

@@ -31,6 +31,10 @@
 #include <QWindow>
 #include <qaccessible.h>
 #include "gen_qaccessible.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 bool QAccessibleInterface_IsValid(const QAccessibleInterface* self) {

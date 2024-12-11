@@ -37,6 +37,10 @@
 #include <QWidget>
 #include <qtabwidget.h>
 #include "gen_qtabwidget.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQTabWidget : public virtual QTabWidget {

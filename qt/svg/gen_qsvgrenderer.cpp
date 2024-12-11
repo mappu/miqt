@@ -18,6 +18,10 @@
 #include <QXmlStreamReader>
 #include <qsvgrenderer.h>
 #include "gen_qsvgrenderer.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSvgRenderer : public virtual QSvgRenderer {

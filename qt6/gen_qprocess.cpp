@@ -11,6 +11,10 @@
 #include <cstring>
 #include <qprocess.h>
 #include "gen_qprocess.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QProcessEnvironment* QProcessEnvironment_new() {

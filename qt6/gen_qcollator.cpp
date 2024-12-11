@@ -7,6 +7,10 @@
 #include <cstring>
 #include <qcollator.h>
 #include "gen_qcollator.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QCollatorSortKey* QCollatorSortKey_new(QCollatorSortKey* other) {

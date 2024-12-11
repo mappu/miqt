@@ -16,6 +16,10 @@
 #include <QVideoWidget>
 #include <qmediaplayer.h>
 #include "gen_qmediaplayer.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQMediaPlayer : public virtual QMediaPlayer {

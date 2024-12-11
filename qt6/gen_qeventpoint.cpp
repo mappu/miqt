@@ -6,6 +6,10 @@
 #include <QVector2D>
 #include <qeventpoint.h>
 #include "gen_qeventpoint.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QEventPoint* QEventPoint_new() {

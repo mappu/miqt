@@ -12,6 +12,10 @@
 #include <QVariant>
 #include <qstate.h>
 #include "gen_qstate.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQState : public virtual QState {

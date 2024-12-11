@@ -40,6 +40,10 @@
 #include <QWidget>
 #include <qmenubar.h>
 #include "gen_qmenubar.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQMenuBar : public virtual QMenuBar {

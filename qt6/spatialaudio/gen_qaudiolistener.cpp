@@ -9,6 +9,10 @@
 #include <QVector3D>
 #include <qaudiolistener.h>
 #include "gen_qaudiolistener.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAudioListener : public virtual QAudioListener {

@@ -21,6 +21,10 @@
 #include <QVariant>
 #include <qfilesystemmodel.h>
 #include "gen_qfilesystemmodel.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQFileSystemModel : public virtual QFileSystemModel {

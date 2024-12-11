@@ -11,6 +11,10 @@
 #include <QWebEngineUrlRequestInterceptor>
 #include <qwebengineurlrequestinterceptor.h>
 #include "gen_qwebengineurlrequestinterceptor.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQWebEngineUrlRequestInterceptor : public virtual QWebEngineUrlRequestInterceptor {

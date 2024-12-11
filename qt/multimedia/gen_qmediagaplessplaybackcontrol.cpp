@@ -8,6 +8,10 @@
 #include <cstring>
 #include <qmediagaplessplaybackcontrol.h>
 #include "gen_qmediagaplessplaybackcontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QMediaGaplessPlaybackControl_virtbase(QMediaGaplessPlaybackControl* src, QMediaControl** outptr_QMediaControl) {

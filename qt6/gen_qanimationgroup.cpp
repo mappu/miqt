@@ -8,6 +8,10 @@
 #include <cstring>
 #include <qanimationgroup.h>
 #include "gen_qanimationgroup.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAnimationGroup : public virtual QAnimationGroup {

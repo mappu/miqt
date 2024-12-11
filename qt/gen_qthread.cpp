@@ -12,6 +12,10 @@
 #include <QTimerEvent>
 #include <qthread.h>
 #include "gen_qthread.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQThread : public virtual QThread {

@@ -37,6 +37,10 @@
 #include <QWidget>
 #include <qlistwidget.h>
 #include "gen_qlistwidget.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQListWidgetItem : public virtual QListWidgetItem {

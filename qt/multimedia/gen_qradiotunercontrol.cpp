@@ -8,6 +8,10 @@
 #include <cstring>
 #include <qradiotunercontrol.h>
 #include "gen_qradiotunercontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QRadioTunerControl_virtbase(QRadioTunerControl* src, QMediaControl** outptr_QMediaControl) {

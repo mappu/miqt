@@ -12,6 +12,10 @@
 #include <cstring>
 #include <qaudiodecoder.h>
 #include "gen_qaudiodecoder.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAudioDecoder : public virtual QAudioDecoder {

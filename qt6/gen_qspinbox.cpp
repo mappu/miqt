@@ -25,6 +25,10 @@
 #include <QWidget>
 #include <qspinbox.h>
 #include "gen_qspinbox.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSpinBox : public virtual QSpinBox {

@@ -6,6 +6,10 @@
 #include <cstring>
 #include <qhostaddress.h>
 #include "gen_qhostaddress.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 unsigned char QIPv6Address_OperatorSubscript(const QIPv6Address* self, int index) {

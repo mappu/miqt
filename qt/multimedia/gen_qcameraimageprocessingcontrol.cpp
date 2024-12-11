@@ -8,6 +8,10 @@
 #include <QVariant>
 #include <qcameraimageprocessingcontrol.h>
 #include "gen_qcameraimageprocessingcontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QCameraImageProcessingControl_virtbase(QCameraImageProcessingControl* src, QMediaControl** outptr_QMediaControl) {

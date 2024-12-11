@@ -17,6 +17,10 @@
 #include <QWidget>
 #include <qprintpreviewdialog.h>
 #include "gen_qprintpreviewdialog.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQPrintPreviewDialog : public virtual QPrintPreviewDialog {

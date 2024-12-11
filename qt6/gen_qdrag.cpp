@@ -13,6 +13,10 @@
 #include <QTimerEvent>
 #include <qdrag.h>
 #include "gen_qdrag.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQDrag : public virtual QDrag {

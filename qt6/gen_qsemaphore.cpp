@@ -2,6 +2,10 @@
 #include <QSemaphoreReleaser>
 #include <qsemaphore.h>
 #include "gen_qsemaphore.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QSemaphore* QSemaphore_new() {

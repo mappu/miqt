@@ -6,6 +6,10 @@
 #include <cstring>
 #include <qmediacontrol.h>
 #include "gen_qmediacontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QMediaControl_virtbase(QMediaControl* src, QObject** outptr_QObject) {

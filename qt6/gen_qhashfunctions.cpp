@@ -1,6 +1,10 @@
 #include <QHashSeed>
 #include <qhashfunctions.h>
 #include "gen_qhashfunctions.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QHashSeed* QHashSeed_new() {

@@ -20,6 +20,10 @@
 #include <QWidget>
 #include <qlabel.h>
 #include "gen_qlabel.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQLabel : public virtual QLabel {

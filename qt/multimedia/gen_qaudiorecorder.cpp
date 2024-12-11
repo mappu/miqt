@@ -10,6 +10,10 @@
 #include <cstring>
 #include <qaudiorecorder.h>
 #include "gen_qaudiorecorder.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAudioRecorder : public virtual QAudioRecorder {

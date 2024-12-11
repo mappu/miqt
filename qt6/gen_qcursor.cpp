@@ -5,6 +5,10 @@
 #include <QScreen>
 #include <qcursor.h>
 #include "gen_qcursor.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QCursor* QCursor_new() {

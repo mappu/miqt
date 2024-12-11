@@ -35,6 +35,10 @@
 #include <QWidget>
 #include <qtableview.h>
 #include "gen_qtableview.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQTableView : public virtual QTableView {

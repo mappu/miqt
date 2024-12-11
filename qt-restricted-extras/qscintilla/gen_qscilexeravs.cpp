@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexeravs.h>
 #include "gen_qscilexeravs.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerAVS : public virtual QsciLexerAVS {

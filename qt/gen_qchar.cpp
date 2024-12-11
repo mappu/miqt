@@ -5,6 +5,10 @@
 #include <cstring>
 #include <qchar.h>
 #include "gen_qchar.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QLatin1Char* QLatin1Char_new(char c) {

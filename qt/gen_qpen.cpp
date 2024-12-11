@@ -4,6 +4,10 @@
 #include <QPen>
 #include <qpen.h>
 #include "gen_qpen.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QPen* QPen_new() {

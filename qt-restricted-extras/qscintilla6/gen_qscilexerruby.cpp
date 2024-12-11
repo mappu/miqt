@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexerruby.h>
 #include "gen_qscilexerruby.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerRuby : public virtual QsciLexerRuby {

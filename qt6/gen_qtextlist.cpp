@@ -11,6 +11,10 @@
 #include <QTextObject>
 #include <qtextlist.h>
 #include "gen_qtextlist.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQTextList : public virtual QTextList {

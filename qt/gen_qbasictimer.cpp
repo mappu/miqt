@@ -2,6 +2,10 @@
 #include <QObject>
 #include <qbasictimer.h>
 #include "gen_qbasictimer.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QBasicTimer* QBasicTimer_new(QBasicTimer* param1) {

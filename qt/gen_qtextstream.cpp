@@ -9,6 +9,10 @@
 #include <QTextStream>
 #include <qtextstream.h>
 #include "gen_qtextstream.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QTextStream* QTextStream_new() {

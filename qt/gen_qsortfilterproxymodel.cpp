@@ -17,6 +17,10 @@
 #include <QVariant>
 #include <qsortfilterproxymodel.h>
 #include "gen_qsortfilterproxymodel.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSortFilterProxyModel : public virtual QSortFilterProxyModel {

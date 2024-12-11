@@ -7,6 +7,10 @@
 #include <QWebSecurityOrigin>
 #include <qwebsecurityorigin.h>
 #include "gen_qwebsecurityorigin.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QWebSecurityOrigin* QWebSecurityOrigin_new(QUrl* url) {

@@ -14,6 +14,10 @@
 #include <QVector3D>
 #include <qspatialsound.h>
 #include "gen_qspatialsound.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSpatialSound : public virtual QSpatialSound {

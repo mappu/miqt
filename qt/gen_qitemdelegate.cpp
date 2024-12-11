@@ -20,6 +20,10 @@
 #include <QWidget>
 #include <qitemdelegate.h>
 #include "gen_qitemdelegate.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQItemDelegate : public virtual QItemDelegate {

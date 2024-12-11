@@ -7,6 +7,10 @@
 #include <cstring>
 #include <qdir.h>
 #include "gen_qdir.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QDir* QDir_new(QDir* param1) {

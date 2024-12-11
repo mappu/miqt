@@ -5,6 +5,10 @@
 #include <QTouchDevice>
 #include <qtouchdevice.h>
 #include "gen_qtouchdevice.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QTouchDevice* QTouchDevice_new() {

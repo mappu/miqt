@@ -14,6 +14,10 @@
 #include <cstring>
 #include <qstatemachine.h>
 #include "gen_qstatemachine.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQStateMachine : public virtual QStateMachine {

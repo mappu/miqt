@@ -4,6 +4,10 @@
 #include <cstring>
 #include <qsslellipticcurve.h>
 #include "gen_qsslellipticcurve.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QSslEllipticCurve* QSslEllipticCurve_new() {

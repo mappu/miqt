@@ -18,6 +18,10 @@
 #include <QWidget>
 #include <qabstractprintdialog.h>
 #include "gen_qabstractprintdialog.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAbstractPrintDialog : public virtual QAbstractPrintDialog {

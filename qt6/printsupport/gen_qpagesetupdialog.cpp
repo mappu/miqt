@@ -17,6 +17,10 @@
 #include <QWidget>
 #include <qpagesetupdialog.h>
 #include "gen_qpagesetupdialog.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQPageSetupDialog : public virtual QPageSetupDialog {

@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexerpostscript.h>
 #include "gen_qscilexerpostscript.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerPostScript : public virtual QsciLexerPostScript {

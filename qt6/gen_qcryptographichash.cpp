@@ -4,6 +4,10 @@
 #include <QIODevice>
 #include <qcryptographichash.h>
 #include "gen_qcryptographichash.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QCryptographicHash* QCryptographicHash_new(int method) {

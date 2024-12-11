@@ -12,6 +12,10 @@
 #include <QTimerEvent>
 #include <qbuttongroup.h>
 #include "gen_qbuttongroup.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQButtonGroup : public virtual QButtonGroup {

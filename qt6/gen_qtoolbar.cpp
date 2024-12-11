@@ -37,6 +37,10 @@
 #include <QWidget>
 #include <qtoolbar.h>
 #include "gen_qtoolbar.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQToolBar : public virtual QToolBar {

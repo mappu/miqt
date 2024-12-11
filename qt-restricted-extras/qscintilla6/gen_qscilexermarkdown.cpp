@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexermarkdown.h>
 #include "gen_qscilexermarkdown.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerMarkdown : public virtual QsciLexerMarkdown {

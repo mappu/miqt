@@ -8,6 +8,10 @@
 #include <cstring>
 #include <qimagewriter.h>
 #include "gen_qimagewriter.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QImageWriter* QImageWriter_new() {

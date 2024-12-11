@@ -7,6 +7,10 @@
 #include <cstring>
 #include <qscilexerjavascript.h>
 #include "gen_qscilexerjavascript.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerJavaScript : public virtual QsciLexerJavaScript {

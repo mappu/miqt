@@ -1,5 +1,9 @@
 #include <qscidocument.h>
 #include "gen_qscidocument.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QsciDocument* QsciDocument_new() {

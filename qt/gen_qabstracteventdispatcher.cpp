@@ -12,6 +12,10 @@
 #include <QThread>
 #include <qabstracteventdispatcher.h>
 #include "gen_qabstracteventdispatcher.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QAbstractEventDispatcher_virtbase(QAbstractEventDispatcher* src, QObject** outptr_QObject) {

@@ -6,6 +6,10 @@
 #include <QPaintDevice>
 #include <qpagedpaintdevice.h>
 #include "gen_qpagedpaintdevice.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QPagedPaintDevice_virtbase(QPagedPaintDevice* src, QPaintDevice** outptr_QPaintDevice) {

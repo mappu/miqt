@@ -10,6 +10,10 @@
 #include <cstring>
 #include <qcalendar.h>
 #include "gen_qcalendar.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QCalendar* QCalendar_new() {

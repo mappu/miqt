@@ -10,6 +10,10 @@
 #include <cstring>
 #include <qcborarray.h>
 #include "gen_qcborarray.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QCborArray* QCborArray_new() {

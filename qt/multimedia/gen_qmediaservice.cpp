@@ -7,6 +7,10 @@
 #include <cstring>
 #include <qmediaservice.h>
 #include "gen_qmediaservice.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QMediaService_virtbase(QMediaService* src, QObject** outptr_QObject) {

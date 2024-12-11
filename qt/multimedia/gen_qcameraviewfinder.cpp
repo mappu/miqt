@@ -18,6 +18,10 @@
 #include <QWidget>
 #include <qcameraviewfinder.h>
 #include "gen_qcameraviewfinder.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQCameraViewfinder : public virtual QCameraViewfinder {

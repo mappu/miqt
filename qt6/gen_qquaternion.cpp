@@ -3,6 +3,10 @@
 #include <QVector4D>
 #include <qquaternion.h>
 #include "gen_qquaternion.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QQuaternion* QQuaternion_new() {

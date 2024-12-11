@@ -6,6 +6,10 @@
 #include <cstring>
 #include <qmediaformat.h>
 #include "gen_qmediaformat.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QMediaFormat* QMediaFormat_new() {

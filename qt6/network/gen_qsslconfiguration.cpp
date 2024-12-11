@@ -12,6 +12,10 @@
 #include <QVariant>
 #include <qsslconfiguration.h>
 #include "gen_qsslconfiguration.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QSslConfiguration* QSslConfiguration_new() {

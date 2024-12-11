@@ -7,6 +7,10 @@
 #include <QWebEngineCertificateError>
 #include <qwebenginecertificateerror.h>
 #include "gen_qwebenginecertificateerror.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QWebEngineCertificateError* QWebEngineCertificateError_new(int error, QUrl* url, bool overridable, struct miqt_string errorDescription) {

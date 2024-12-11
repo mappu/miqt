@@ -38,6 +38,10 @@
 #include <QWidget>
 #include <qheaderview.h>
 #include "gen_qheaderview.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQHeaderView : public virtual QHeaderView {

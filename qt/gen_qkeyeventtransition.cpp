@@ -10,6 +10,10 @@
 #include <cstring>
 #include <qkeyeventtransition.h>
 #include "gen_qkeyeventtransition.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQKeyEventTransition : public virtual QKeyEventTransition {

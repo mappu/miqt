@@ -15,6 +15,10 @@
 #include <QVariant>
 #include <qtransposeproxymodel.h>
 #include "gen_qtransposeproxymodel.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQTransposeProxyModel : public virtual QTransposeProxyModel {

@@ -18,6 +18,10 @@
 #include <QWidget>
 #include <qgraphicsvideoitem.h>
 #include "gen_qgraphicsvideoitem.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGraphicsVideoItem : public virtual QGraphicsVideoItem {

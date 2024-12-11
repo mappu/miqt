@@ -3,6 +3,10 @@
 #include <QWriteLocker>
 #include <qreadwritelock.h>
 #include "gen_qreadwritelock.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QReadWriteLock* QReadWriteLock_new() {

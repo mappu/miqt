@@ -21,6 +21,10 @@
 #include <QVariant>
 #include <qscriptengine.h>
 #include "gen_qscriptengine.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QScriptSyntaxCheckResult* QScriptSyntaxCheckResult_new(QScriptSyntaxCheckResult* other) {

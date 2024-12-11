@@ -4,6 +4,10 @@
 #include <QPointF>
 #include <qline.h>
 #include "gen_qline.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QLine* QLine_new() {

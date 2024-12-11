@@ -13,6 +13,10 @@
 #include <QVideoProbe>
 #include <qvideoprobe.h>
 #include "gen_qvideoprobe.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQVideoProbe : public virtual QVideoProbe {

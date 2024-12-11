@@ -3,6 +3,10 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QStringConverterBase__State
 #include <qstringconverter_base.h>
 #include "gen_qstringconverter_base.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QStringConverterBase* QStringConverterBase_new(QStringConverterBase* param1) {

@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qeventtransition.h>
 #include "gen_qeventtransition.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQEventTransition : public virtual QEventTransition {

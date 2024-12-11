@@ -5,6 +5,10 @@
 #include <QWebEngineRegisterProtocolHandlerRequest>
 #include <qwebengineregisterprotocolhandlerrequest.h>
 #include "gen_qwebengineregisterprotocolhandlerrequest.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QWebEngineRegisterProtocolHandlerRequest* QWebEngineRegisterProtocolHandlerRequest_new() {

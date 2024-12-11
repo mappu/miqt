@@ -35,6 +35,10 @@
 #include <QWidget>
 #include <qsvgwidget.h>
 #include "gen_qsvgwidget.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSvgWidget : public virtual QSvgWidget {

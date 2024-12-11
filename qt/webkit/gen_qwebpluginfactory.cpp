@@ -16,6 +16,10 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QWebPluginFactory__Plugin
 #include <qwebpluginfactory.h>
 #include "gen_qwebpluginfactory.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQWebPluginFactory : public virtual QWebPluginFactory {

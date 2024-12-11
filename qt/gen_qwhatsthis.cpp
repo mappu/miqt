@@ -8,6 +8,10 @@
 #include <QWidget>
 #include <qwhatsthis.h>
 #include "gen_qwhatsthis.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QWhatsThis_EnterWhatsThisMode() {

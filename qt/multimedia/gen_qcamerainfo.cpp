@@ -7,6 +7,10 @@
 #include <cstring>
 #include <qcamerainfo.h>
 #include "gen_qcamerainfo.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QCameraInfo* QCameraInfo_new() {

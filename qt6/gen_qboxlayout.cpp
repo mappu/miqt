@@ -15,6 +15,10 @@
 #include <QWidget>
 #include <qboxlayout.h>
 #include "gen_qboxlayout.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQBoxLayout : public virtual QBoxLayout {

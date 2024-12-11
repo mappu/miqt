@@ -14,6 +14,10 @@
 #include <QVector3D>
 #include <qgraphicstransform.h>
 #include "gen_qgraphicstransform.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGraphicsTransform : public virtual QGraphicsTransform {

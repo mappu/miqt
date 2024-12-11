@@ -13,6 +13,10 @@
 #include <QWidget>
 #include <qstylepainter.h>
 #include "gen_qstylepainter.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QStylePainter* QStylePainter_new(QWidget* w) {

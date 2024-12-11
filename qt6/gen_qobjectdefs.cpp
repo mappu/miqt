@@ -17,6 +17,10 @@
 #include <cstring>
 #include <qobjectdefs.h>
 #include "gen_qobjectdefs.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QMethodRawArguments_Delete(QMethodRawArguments* self, bool isSubclass) {

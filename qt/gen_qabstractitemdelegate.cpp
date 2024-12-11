@@ -20,6 +20,10 @@
 #include <QWidget>
 #include <qabstractitemdelegate.h>
 #include "gen_qabstractitemdelegate.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAbstractItemDelegate : public virtual QAbstractItemDelegate {
