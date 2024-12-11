@@ -160,7 +160,7 @@ $env:CGO_ENABLED = 1
 $env:CC = 'C:\dev\rootfs\bin\clang.exe'
 $env:CXX = 'C:\dev\rootfs\bin\clang++.exe'
 $env:PKG_CONFIG = 'C:\dev\rootfs\bin\pkg-config.exe'
-$env:CGO_CXXFLAGS = '-Wno-ignored-attributes -D_Bool=bool' # Clang 18 recommendation
+$env:CGO_CXXFLAGS = '-Wno-ignored-attributes' # Clang 18 recommendation
 ```
 
 4. Run `go build -ldflags "-s -w -H windowsgui"`
