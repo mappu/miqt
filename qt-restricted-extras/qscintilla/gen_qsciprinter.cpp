@@ -8,6 +8,10 @@
 #include <QSizeF>
 #include <qsciprinter.h>
 #include "gen_qsciprinter.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciPrinter : public virtual QsciPrinter {

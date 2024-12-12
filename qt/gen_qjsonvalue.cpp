@@ -10,6 +10,10 @@
 #include <QVariant>
 #include <qjsonvalue.h>
 #include "gen_qjsonvalue.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QJsonValue* QJsonValue_new() {

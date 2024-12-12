@@ -19,6 +19,10 @@
 #include <QVariant>
 #include <qstandarditemmodel.h>
 #include "gen_qstandarditemmodel.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQStandardItem : public virtual QStandardItem {

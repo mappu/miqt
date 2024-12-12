@@ -11,6 +11,10 @@
 #include <QTimerEvent>
 #include <qstyleplugin.h>
 #include "gen_qstyleplugin.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQStylePlugin : public virtual QStylePlugin {

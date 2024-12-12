@@ -4,6 +4,10 @@
 #include <QWebEngineScript>
 #include <qwebenginescript.h>
 #include "gen_qwebenginescript.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QWebEngineScript* QWebEngineScript_new() {

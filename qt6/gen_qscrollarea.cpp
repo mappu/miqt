@@ -22,6 +22,10 @@
 #include <QWidget>
 #include <qscrollarea.h>
 #include "gen_qscrollarea.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQScrollArea : public virtual QScrollArea {

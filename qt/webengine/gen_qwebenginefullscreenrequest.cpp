@@ -2,6 +2,10 @@
 #include <QWebEngineFullScreenRequest>
 #include <qwebenginefullscreenrequest.h>
 #include "gen_qwebenginefullscreenrequest.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QWebEngineFullScreenRequest* QWebEngineFullScreenRequest_new(QWebEngineFullScreenRequest* param1) {

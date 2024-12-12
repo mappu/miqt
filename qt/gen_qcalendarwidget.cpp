@@ -38,6 +38,10 @@
 #include <QWidget>
 #include <qcalendarwidget.h>
 #include "gen_qcalendarwidget.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQCalendarWidget : public virtual QCalendarWidget {

@@ -19,6 +19,10 @@
 #include <QWidget>
 #include <qgesture.h>
 #include "gen_qgesture.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGesture : public virtual QGesture {

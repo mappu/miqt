@@ -6,6 +6,10 @@
 #include <cstring>
 #include <qscilexeridl.h>
 #include "gen_qscilexeridl.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerIDL : public virtual QsciLexerIDL {

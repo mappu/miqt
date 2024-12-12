@@ -18,6 +18,10 @@
 #include <QVariant>
 #include <qnetworkreply.h>
 #include "gen_qnetworkreply.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QNetworkReply_virtbase(QNetworkReply* src, QIODevice** outptr_QIODevice) {

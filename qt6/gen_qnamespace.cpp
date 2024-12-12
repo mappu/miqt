@@ -3,6 +3,10 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_Disambiguated_t
 #include <qnamespace.h>
 #include "gen_qnamespace.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 Disambiguated_t* Disambiguated_t_new() {

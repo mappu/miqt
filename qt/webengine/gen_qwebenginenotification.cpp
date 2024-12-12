@@ -8,6 +8,10 @@
 #include <QWebEngineNotification>
 #include <qwebenginenotification.h>
 #include "gen_qwebenginenotification.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QWebEngineNotification_virtbase(QWebEngineNotification* src, QObject** outptr_QObject) {

@@ -13,6 +13,10 @@
 #include <QVideoSurfaceFormat>
 #include <qabstractvideofilter.h>
 #include "gen_qabstractvideofilter.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QVideoFrame* QVideoFilterRunnable_Run(QVideoFilterRunnable* self, QVideoFrame* input, QVideoSurfaceFormat* surfaceFormat, int flags) {

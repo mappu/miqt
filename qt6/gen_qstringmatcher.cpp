@@ -5,6 +5,10 @@
 #include <QStringMatcher>
 #include <qstringmatcher.h>
 #include "gen_qstringmatcher.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QStringMatcher* QStringMatcher_new() {

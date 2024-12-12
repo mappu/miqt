@@ -3,6 +3,10 @@
 #include <QPalette>
 #include <qpalette.h>
 #include "gen_qpalette.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QPalette* QPalette_new() {

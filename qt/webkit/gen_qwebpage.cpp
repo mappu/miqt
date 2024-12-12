@@ -41,6 +41,10 @@
 #include <QWidget>
 #include <qwebpage.h>
 #include "gen_qwebpage.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQWebPage : public virtual QWebPage {

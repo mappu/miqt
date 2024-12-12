@@ -2,6 +2,10 @@
 #include <QSslPreSharedKeyAuthenticator>
 #include <qsslpresharedkeyauthenticator.h>
 #include "gen_qsslpresharedkeyauthenticator.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QSslPreSharedKeyAuthenticator* QSslPreSharedKeyAuthenticator_new() {

@@ -16,6 +16,10 @@
 #include <QWidget>
 #include <qerrormessage.h>
 #include "gen_qerrormessage.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQErrorMessage : public virtual QErrorMessage {

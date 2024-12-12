@@ -11,6 +11,10 @@
 #include <QTimerEvent>
 #include <qfilesystemwatcher.h>
 #include "gen_qfilesystemwatcher.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQFileSystemWatcher : public virtual QFileSystemWatcher {

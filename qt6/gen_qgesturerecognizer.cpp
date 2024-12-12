@@ -4,6 +4,10 @@
 #include <QObject>
 #include <qgesturerecognizer.h>
 #include "gen_qgesturerecognizer.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGestureRecognizer : public virtual QGestureRecognizer {

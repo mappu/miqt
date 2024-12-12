@@ -15,6 +15,10 @@
 #include <QVariant>
 #include <qidentityproxymodel.h>
 #include "gen_qidentityproxymodel.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQIdentityProxyModel : public virtual QIdentityProxyModel {

@@ -7,6 +7,10 @@
 #include <QVector4D>
 #include <qvector3d.h>
 #include "gen_qvector3d.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QVector3D* QVector3D_new() {

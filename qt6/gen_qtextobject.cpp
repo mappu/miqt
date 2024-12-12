@@ -25,6 +25,10 @@
 #include <QTextObject>
 #include <qtextobject.h>
 #include "gen_qtextobject.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QTextObject_virtbase(QTextObject* src, QObject** outptr_QObject) {

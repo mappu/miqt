@@ -17,6 +17,10 @@
 #include <QWidget>
 #include <qslider.h>
 #include "gen_qslider.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSlider : public virtual QSlider {

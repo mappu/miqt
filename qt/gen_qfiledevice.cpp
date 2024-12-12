@@ -8,6 +8,10 @@
 #include <cstring>
 #include <qfiledevice.h>
 #include "gen_qfiledevice.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QFileDevice_virtbase(QFileDevice* src, QIODevice** outptr_QIODevice) {

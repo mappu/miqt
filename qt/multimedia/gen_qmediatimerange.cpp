@@ -3,6 +3,10 @@
 #include <QMediaTimeRange>
 #include <qmediatimerange.h>
 #include "gen_qmediatimerange.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QMediaTimeInterval* QMediaTimeInterval_new() {

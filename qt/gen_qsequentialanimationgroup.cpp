@@ -10,6 +10,10 @@
 #include <cstring>
 #include <qsequentialanimationgroup.h>
 #include "gen_qsequentialanimationgroup.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSequentialAnimationGroup : public virtual QSequentialAnimationGroup {

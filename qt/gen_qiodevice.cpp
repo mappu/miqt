@@ -11,6 +11,10 @@
 #include <QTimerEvent>
 #include <qiodevice.h>
 #include "gen_qiodevice.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQIODevice : public virtual QIODevice {

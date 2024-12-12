@@ -9,6 +9,10 @@
 #include <QVideoEncoderSettings>
 #include <qmediaencodersettings.h>
 #include "gen_qmediaencodersettings.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QAudioEncoderSettings* QAudioEncoderSettings_new() {

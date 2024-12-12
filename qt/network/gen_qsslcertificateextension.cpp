@@ -5,6 +5,10 @@
 #include <QVariant>
 #include <qsslcertificateextension.h>
 #include "gen_qsslcertificateextension.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QSslCertificateExtension* QSslCertificateExtension_new() {

@@ -10,6 +10,10 @@
 #include <cstring>
 #include <qaudiodecodercontrol.h>
 #include "gen_qaudiodecodercontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QAudioDecoderControl_virtbase(QAudioDecoderControl* src, QMediaControl** outptr_QMediaControl) {

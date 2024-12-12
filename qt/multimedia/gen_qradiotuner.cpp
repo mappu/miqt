@@ -10,6 +10,10 @@
 #include <cstring>
 #include <qradiotuner.h>
 #include "gen_qradiotuner.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQRadioTuner : public virtual QRadioTuner {

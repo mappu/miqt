@@ -7,6 +7,10 @@
 #include <QThreadPool>
 #include <qfutureinterface.h>
 #include "gen_qfutureinterface.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QFutureInterfaceBase* QFutureInterfaceBase_new() {

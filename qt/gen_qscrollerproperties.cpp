@@ -2,6 +2,10 @@
 #include <QVariant>
 #include <qscrollerproperties.h>
 #include "gen_qscrollerproperties.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QScrollerProperties* QScrollerProperties_new() {

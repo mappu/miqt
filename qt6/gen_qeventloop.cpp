@@ -12,6 +12,10 @@
 #include <QTimerEvent>
 #include <qeventloop.h>
 #include "gen_qeventloop.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQEventLoop : public virtual QEventLoop {

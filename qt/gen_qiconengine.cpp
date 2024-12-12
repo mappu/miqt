@@ -12,6 +12,10 @@
 #include <cstring>
 #include <qiconengine.h>
 #include "gen_qiconengine.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQIconEngine : public virtual QIconEngine {

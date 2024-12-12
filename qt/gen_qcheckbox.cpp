@@ -17,6 +17,10 @@
 #include <QWidget>
 #include <qcheckbox.h>
 #include "gen_qcheckbox.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQCheckBox : public virtual QCheckBox {

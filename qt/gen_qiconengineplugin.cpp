@@ -11,6 +11,10 @@
 #include <QTimerEvent>
 #include <qiconengineplugin.h>
 #include "gen_qiconengineplugin.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQIconEnginePlugin : public virtual QIconEnginePlugin {

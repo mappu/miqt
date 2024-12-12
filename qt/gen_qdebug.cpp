@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qdebug.h>
 #include "gen_qdebug.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QDebug* QDebug_new(QIODevice* device) {

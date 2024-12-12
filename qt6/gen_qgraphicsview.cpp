@@ -37,6 +37,10 @@
 #include <QWidget>
 #include <qgraphicsview.h>
 #include "gen_qgraphicsview.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGraphicsView : public virtual QGraphicsView {

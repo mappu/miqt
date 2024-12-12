@@ -2,6 +2,10 @@
 #include <QMarginsF>
 #include <qmargins.h>
 #include "gen_qmargins.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QMargins* QMargins_new() {

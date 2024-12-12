@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexerfortran77.h>
 #include "gen_qscilexerfortran77.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerFortran77 : public virtual QsciLexerFortran77 {

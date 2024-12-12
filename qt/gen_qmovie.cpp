@@ -18,6 +18,10 @@
 #include <QTimerEvent>
 #include <qmovie.h>
 #include "gen_qmovie.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQMovie : public virtual QMovie {

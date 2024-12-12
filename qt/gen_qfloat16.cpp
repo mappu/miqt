@@ -1,5 +1,9 @@
 #include <qfloat16.h>
 #include "gen_qfloat16.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 qfloat16* qfloat16_new() {

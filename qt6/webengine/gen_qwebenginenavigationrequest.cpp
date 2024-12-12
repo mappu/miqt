@@ -7,6 +7,10 @@
 #include <QWebEngineNavigationRequest>
 #include <qwebenginenavigationrequest.h>
 #include "gen_qwebenginenavigationrequest.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QWebEngineNavigationRequest_virtbase(QWebEngineNavigationRequest* src, QObject** outptr_QObject) {

@@ -16,6 +16,10 @@
 #include <cstring>
 #include <qmediaserviceproviderplugin.h>
 #include "gen_qmediaserviceproviderplugin.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QMediaServiceProviderHint* QMediaServiceProviderHint_new() {

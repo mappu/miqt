@@ -13,6 +13,10 @@
 #include <QVector3D>
 #include <qaudioroom.h>
 #include "gen_qaudioroom.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAudioRoom : public virtual QAudioRoom {

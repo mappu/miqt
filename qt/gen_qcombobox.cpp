@@ -42,6 +42,10 @@
 #include <QWidget>
 #include <qcombobox.h>
 #include "gen_qcombobox.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQComboBox : public virtual QComboBox {

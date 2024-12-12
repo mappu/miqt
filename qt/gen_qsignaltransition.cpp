@@ -10,6 +10,10 @@
 #include <cstring>
 #include <qsignaltransition.h>
 #include "gen_qsignaltransition.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSignalTransition : public virtual QSignalTransition {

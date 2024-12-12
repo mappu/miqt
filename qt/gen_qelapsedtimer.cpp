@@ -1,6 +1,10 @@
 #include <QElapsedTimer>
 #include <qelapsedtimer.h>
 #include "gen_qelapsedtimer.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QElapsedTimer* QElapsedTimer_new() {

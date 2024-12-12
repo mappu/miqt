@@ -5,6 +5,10 @@
 #include <QWebEngineLoadingInfo>
 #include <qwebengineloadinginfo.h>
 #include "gen_qwebengineloadinginfo.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QWebEngineLoadingInfo* QWebEngineLoadingInfo_new(QWebEngineLoadingInfo* other) {

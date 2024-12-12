@@ -3,6 +3,10 @@
 #include <QByteArray>
 #include <qaudiobuffer.h>
 #include "gen_qaudiobuffer.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QAudioBuffer* QAudioBuffer_new() {

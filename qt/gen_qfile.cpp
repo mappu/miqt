@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qfile.h>
 #include "gen_qfile.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQFile : public virtual QFile {

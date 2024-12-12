@@ -3,6 +3,10 @@
 #include <QRgba64>
 #include <qcolortransform.h>
 #include "gen_qcolortransform.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QColorTransform* QColorTransform_new() {

@@ -4,6 +4,10 @@
 #include <QSystemSemaphore>
 #include <qsystemsemaphore.h>
 #include "gen_qsystemsemaphore.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QSystemSemaphore* QSystemSemaphore_new(struct miqt_string key) {

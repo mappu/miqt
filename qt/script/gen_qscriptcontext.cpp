@@ -7,6 +7,10 @@
 #include <cstring>
 #include <qscriptcontext.h>
 #include "gen_qscriptcontext.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QScriptContext* QScriptContext_ParentContext(const QScriptContext* self) {

@@ -6,6 +6,10 @@
 #include <QVideoSurfaceFormat>
 #include <qvideosurfaceformat.h>
 #include "gen_qvideosurfaceformat.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QVideoSurfaceFormat* QVideoSurfaceFormat_new() {

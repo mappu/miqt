@@ -1,6 +1,10 @@
 #include <QPixelFormat>
 #include <qpixelformat.h>
 #include "gen_qpixelformat.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QPixelFormat* QPixelFormat_new() {

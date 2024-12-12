@@ -14,6 +14,10 @@
 #include <QVariant>
 #include <qhttpmultipart.h>
 #include "gen_qhttpmultipart.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QHttpPart* QHttpPart_new() {

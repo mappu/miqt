@@ -11,6 +11,10 @@
 #include <QTimerEvent>
 #include <qtimeline.h>
 #include "gen_qtimeline.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQTimeLine : public virtual QTimeLine {

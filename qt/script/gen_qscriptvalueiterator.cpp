@@ -6,6 +6,10 @@
 #include <cstring>
 #include <qscriptvalueiterator.h>
 #include "gen_qscriptvalueiterator.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QScriptValueIterator* QScriptValueIterator_new(QScriptValue* value) {

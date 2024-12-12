@@ -3,6 +3,10 @@
 #include <cstring>
 #include <qscistyledtext.h>
 #include "gen_qscistyledtext.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QsciStyledText* QsciStyledText_new(struct miqt_string text, int style) {

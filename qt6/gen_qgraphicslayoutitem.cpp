@@ -5,6 +5,10 @@
 #include <QSizePolicy>
 #include <qgraphicslayoutitem.h>
 #include "gen_qgraphicslayoutitem.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGraphicsLayoutItem : public virtual QGraphicsLayoutItem {

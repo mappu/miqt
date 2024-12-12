@@ -11,6 +11,10 @@
 #include <QVariant>
 #include <qabstractsocket.h>
 #include "gen_qabstractsocket.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAbstractSocket : public virtual QAbstractSocket {

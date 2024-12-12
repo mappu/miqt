@@ -4,6 +4,10 @@
 #include <QWebEngineSettings>
 #include <qwebenginesettings.h>
 #include "gen_qwebenginesettings.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QWebEngineSettings* QWebEngineSettings_GlobalSettings() {

@@ -4,6 +4,10 @@
 #include <cstring>
 #include <qcborcommon.h>
 #include "gen_qcborcommon.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 struct miqt_string QCborError_ToString(const QCborError* self) {

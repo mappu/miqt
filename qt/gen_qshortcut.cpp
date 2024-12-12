@@ -12,6 +12,10 @@
 #include <QWidget>
 #include <qshortcut.h>
 #include "gen_qshortcut.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQShortcut : public virtual QShortcut {

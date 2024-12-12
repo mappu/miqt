@@ -30,6 +30,10 @@
 #include <QTransform>
 #include <qpainter.h>
 #include "gen_qpainter.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QPainter* QPainter_new() {

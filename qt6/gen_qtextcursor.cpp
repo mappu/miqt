@@ -17,6 +17,10 @@
 #include <QTextTableFormat>
 #include <qtextcursor.h>
 #include "gen_qtextcursor.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QTextCursor* QTextCursor_new() {

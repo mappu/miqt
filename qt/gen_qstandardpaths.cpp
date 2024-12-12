@@ -5,6 +5,10 @@
 #include <cstring>
 #include <qstandardpaths.h>
 #include "gen_qstandardpaths.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 struct miqt_string QStandardPaths_WritableLocation(int typeVal) {

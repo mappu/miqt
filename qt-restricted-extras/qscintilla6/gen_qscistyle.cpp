@@ -5,6 +5,10 @@
 #include <cstring>
 #include <qscistyle.h>
 #include "gen_qscistyle.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QsciStyle* QsciStyle_new() {

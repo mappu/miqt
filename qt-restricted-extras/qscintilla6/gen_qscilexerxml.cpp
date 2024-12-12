@@ -7,6 +7,10 @@
 #include <cstring>
 #include <qscilexerxml.h>
 #include "gen_qscilexerxml.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerXML : public virtual QsciLexerXML {

@@ -10,6 +10,10 @@
 #include <QTimerEvent>
 #include <qsciabstractapis.h>
 #include "gen_qsciabstractapis.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciAbstractAPIs : public virtual QsciAbstractAPIs {

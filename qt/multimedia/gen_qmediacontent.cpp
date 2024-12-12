@@ -6,6 +6,10 @@
 #include <QUrl>
 #include <qmediacontent.h>
 #include "gen_qmediacontent.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QMediaContent* QMediaContent_new() {

@@ -3,6 +3,10 @@
 #include <QRecursiveMutex>
 #include <qmutex.h>
 #include "gen_qmutex.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QBasicMutex* QBasicMutex_new() {

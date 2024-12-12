@@ -6,6 +6,10 @@
 #include <cstring>
 #include <qkeysequence.h>
 #include "gen_qkeysequence.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QKeySequence* QKeySequence_new() {

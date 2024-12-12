@@ -13,6 +13,10 @@
 #include <QTimerEvent>
 #include <qpluginloader.h>
 #include "gen_qpluginloader.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQPluginLoader : public virtual QPluginLoader {

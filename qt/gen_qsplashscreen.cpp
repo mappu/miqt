@@ -36,6 +36,10 @@
 #include <QWidget>
 #include <qsplashscreen.h>
 #include "gen_qsplashscreen.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSplashScreen : public virtual QSplashScreen {

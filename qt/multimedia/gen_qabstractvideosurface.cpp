@@ -14,6 +14,10 @@
 #include <QVideoSurfaceFormat>
 #include <qabstractvideosurface.h>
 #include "gen_qabstractvideosurface.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAbstractVideoSurface : public virtual QAbstractVideoSurface {

@@ -10,6 +10,10 @@
 #include <QVariant>
 #include <qjsondocument.h>
 #include "gen_qjsondocument.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 struct miqt_string QJsonParseError_ErrorString(const QJsonParseError* self) {

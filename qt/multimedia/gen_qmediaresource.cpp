@@ -7,6 +7,10 @@
 #include <QUrl>
 #include <qmediaresource.h>
 #include "gen_qmediaresource.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QMediaResource* QMediaResource_new() {

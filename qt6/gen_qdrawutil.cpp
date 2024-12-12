@@ -1,6 +1,10 @@
 #include <QTileRules>
 #include <qdrawutil.h>
 #include "gen_qdrawutil.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QTileRules* QTileRules_new(int horizontalRule, int verticalRule) {

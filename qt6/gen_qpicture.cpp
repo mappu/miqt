@@ -10,6 +10,10 @@
 #include <cstring>
 #include <qpicture.h>
 #include "gen_qpicture.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQPicture : public virtual QPicture {

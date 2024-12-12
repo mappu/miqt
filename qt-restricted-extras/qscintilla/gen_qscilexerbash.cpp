@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexerbash.h>
 #include "gen_qscilexerbash.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerBash : public virtual QsciLexerBash {

@@ -33,6 +33,10 @@
 #include <QWidget>
 #include <qtablewidget.h>
 #include "gen_qtablewidget.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QTableWidgetSelectionRange* QTableWidgetSelectionRange_new() {

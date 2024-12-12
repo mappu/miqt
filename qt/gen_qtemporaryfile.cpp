@@ -9,6 +9,10 @@
 #include <QTemporaryFile>
 #include <qtemporaryfile.h>
 #include "gen_qtemporaryfile.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQTemporaryFile : public virtual QTemporaryFile {

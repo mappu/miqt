@@ -26,6 +26,10 @@
 #include <QTimerEvent>
 #include <qnetworkaccessmanager.h>
 #include "gen_qnetworkaccessmanager.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQNetworkAccessManager : public virtual QNetworkAccessManager {

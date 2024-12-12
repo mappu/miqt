@@ -14,6 +14,10 @@
 #include <QVariant>
 #include <qconcatenatetablesproxymodel.h>
 #include "gen_qconcatenatetablesproxymodel.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQConcatenateTablesProxyModel : public virtual QConcatenateTablesProxyModel {

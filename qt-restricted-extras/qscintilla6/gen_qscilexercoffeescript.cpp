@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexercoffeescript.h>
 #include "gen_qscilexercoffeescript.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerCoffeeScript : public virtual QsciLexerCoffeeScript {

@@ -17,6 +17,10 @@
 #include <QVariant>
 #include <qimageiohandler.h>
 #include "gen_qimageiohandler.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQImageIOHandler : public virtual QImageIOHandler {

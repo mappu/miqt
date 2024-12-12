@@ -23,6 +23,10 @@
 #include <QWidget>
 #include <qfiledialog.h>
 #include "gen_qfiledialog.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQFileDialog : public virtual QFileDialog {

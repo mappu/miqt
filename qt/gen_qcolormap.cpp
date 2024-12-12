@@ -3,6 +3,10 @@
 #include <QList>
 #include <qcolormap.h>
 #include "gen_qcolormap.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QColormap* QColormap_new(QColormap* colormap) {

@@ -20,6 +20,10 @@
 #include <QVariant>
 #include <qabstractitemmodel.h>
 #include "gen_qabstractitemmodel.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QModelIndex* QModelIndex_new() {

@@ -8,6 +8,10 @@
 #include <QSizeF>
 #include <qrect.h>
 #include "gen_qrect.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QRect* QRect_new() {

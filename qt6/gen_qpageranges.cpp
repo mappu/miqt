@@ -6,6 +6,10 @@
 #include <cstring>
 #include <qpageranges.h>
 #include "gen_qpageranges.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QPageRanges* QPageRanges_new() {

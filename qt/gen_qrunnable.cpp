@@ -1,6 +1,10 @@
 #include <QRunnable>
 #include <qrunnable.h>
 #include "gen_qrunnable.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQRunnable : public virtual QRunnable {

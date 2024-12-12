@@ -12,6 +12,10 @@
 #include <QSvgGenerator>
 #include <qsvggenerator.h>
 #include "gen_qsvggenerator.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSvgGenerator : public virtual QSvgGenerator {

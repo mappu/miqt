@@ -7,6 +7,10 @@
 #include <QUuid>
 #include <quuid.h>
 #include "gen_quuid.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QUuid* QUuid_new() {

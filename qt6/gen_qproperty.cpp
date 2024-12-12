@@ -11,6 +11,10 @@
 #include <QUntypedPropertyBinding>
 #include <qproperty.h>
 #include "gen_qproperty.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QPropertyBindingSourceLocation* QPropertyBindingSourceLocation_new() {

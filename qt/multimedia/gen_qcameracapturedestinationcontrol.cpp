@@ -7,6 +7,10 @@
 #include <cstring>
 #include <qcameracapturedestinationcontrol.h>
 #include "gen_qcameracapturedestinationcontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QCameraCaptureDestinationControl_virtbase(QCameraCaptureDestinationControl* src, QMediaControl** outptr_QMediaControl) {

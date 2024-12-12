@@ -4,6 +4,10 @@
 #include <QTemporaryDir>
 #include <qtemporarydir.h>
 #include "gen_qtemporarydir.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QTemporaryDir* QTemporaryDir_new() {

@@ -10,6 +10,10 @@
 #include <QTransform>
 #include <qbitmap.h>
 #include "gen_qbitmap.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQBitmap : public virtual QBitmap {

@@ -13,6 +13,10 @@
 #include <QVariant>
 #include <qnetworksession.h>
 #include "gen_qnetworksession.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQNetworkSession : public virtual QNetworkSession {

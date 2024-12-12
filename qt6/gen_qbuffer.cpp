@@ -10,6 +10,10 @@
 #include <cstring>
 #include <qbuffer.h>
 #include "gen_qbuffer.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQBuffer : public virtual QBuffer {

@@ -19,6 +19,10 @@
 #include <QWidget>
 #include <qaction.h>
 #include "gen_qaction.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAction : public virtual QAction {

@@ -17,6 +17,10 @@
 #include <QWidget>
 #include <qradiobutton.h>
 #include "gen_qradiobutton.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQRadioButton : public virtual QRadioButton {

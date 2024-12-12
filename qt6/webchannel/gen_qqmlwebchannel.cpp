@@ -9,6 +9,10 @@
 #include <QWebChannel>
 #include <qqmlwebchannel.h>
 #include "gen_qqmlwebchannel.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QQmlWebChannel* QQmlWebChannel_new() {

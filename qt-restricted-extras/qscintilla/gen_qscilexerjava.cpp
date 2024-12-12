@@ -5,6 +5,10 @@
 #include <cstring>
 #include <qscilexerjava.h>
 #include "gen_qscilexerjava.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerJava : public virtual QsciLexerJava {

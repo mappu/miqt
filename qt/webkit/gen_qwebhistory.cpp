@@ -11,6 +11,10 @@
 #include <QWebHistoryItem>
 #include <qwebhistory.h>
 #include "gen_qwebhistory.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QWebHistoryItem* QWebHistoryItem_new(QWebHistoryItem* other) {

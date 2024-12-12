@@ -10,6 +10,10 @@
 #include <QVariant>
 #include <qinputmethod.h>
 #include "gen_qinputmethod.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QInputMethod_virtbase(QInputMethod* src, QObject** outptr_QObject) {

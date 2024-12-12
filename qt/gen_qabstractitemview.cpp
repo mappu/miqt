@@ -36,6 +36,10 @@
 #include <QWidget>
 #include <qabstractitemview.h>
 #include "gen_qabstractitemview.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAbstractItemView : public virtual QAbstractItemView {

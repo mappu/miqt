@@ -3,6 +3,10 @@
 #include <QSurfaceFormat>
 #include <qsurface.h>
 #include "gen_qsurface.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 int QSurface_SurfaceClass(const QSurface* self) {

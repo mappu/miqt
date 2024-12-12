@@ -36,6 +36,10 @@
 #include <QWidget>
 #include <qkeysequenceedit.h>
 #include "gen_qkeysequenceedit.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQKeySequenceEdit : public virtual QKeySequenceEdit {

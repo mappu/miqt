@@ -18,6 +18,10 @@
 #include <QWidget>
 #include <qscrollbar.h>
 #include "gen_qscrollbar.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQScrollBar : public virtual QScrollBar {

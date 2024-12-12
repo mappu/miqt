@@ -13,6 +13,10 @@
 #include <QTimerEvent>
 #include <qaudiosink.h>
 #include "gen_qaudiosink.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAudioSink : public virtual QAudioSink {

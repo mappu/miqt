@@ -10,6 +10,10 @@
 #include <cstring>
 #include <qcamerafocuscontrol.h>
 #include "gen_qcamerafocuscontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QCameraFocusControl_virtbase(QCameraFocusControl* src, QMediaControl** outptr_QMediaControl) {

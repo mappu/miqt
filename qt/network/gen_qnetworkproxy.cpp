@@ -11,6 +11,10 @@
 #include <QVariant>
 #include <qnetworkproxy.h>
 #include "gen_qnetworkproxy.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QNetworkProxyQuery* QNetworkProxyQuery_new() {

@@ -33,6 +33,10 @@
 #include <QWidget>
 #include <qgraphicsproxywidget.h>
 #include "gen_qgraphicsproxywidget.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGraphicsProxyWidget : public virtual QGraphicsProxyWidget {

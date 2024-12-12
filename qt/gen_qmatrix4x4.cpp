@@ -10,6 +10,10 @@
 #include <QVector4D>
 #include <qmatrix4x4.h>
 #include "gen_qmatrix4x4.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QMatrix4x4* QMatrix4x4_new() {

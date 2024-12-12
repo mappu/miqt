@@ -18,6 +18,10 @@
 #include <QTimerEvent>
 #include <qdnslookup.h>
 #include "gen_qdnslookup.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QDnsDomainNameRecord* QDnsDomainNameRecord_new() {

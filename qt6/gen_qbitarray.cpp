@@ -2,6 +2,10 @@
 #include <QBitRef>
 #include <qbitarray.h>
 #include "gen_qbitarray.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QBitArray* QBitArray_new() {

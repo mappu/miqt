@@ -20,6 +20,10 @@
 #include <QUdpSocket>
 #include <qdtls.h>
 #include "gen_qdtls.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQDtlsClientVerifier : public virtual QDtlsClientVerifier {

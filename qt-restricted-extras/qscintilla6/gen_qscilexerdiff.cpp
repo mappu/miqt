@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexerdiff.h>
 #include "gen_qscilexerdiff.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerDiff : public virtual QsciLexerDiff {

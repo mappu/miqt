@@ -8,6 +8,10 @@
 #include <QWebSettings>
 #include <qwebsettings.h>
 #include "gen_qwebsettings.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QWebSettings* QWebSettings_GlobalSettings() {

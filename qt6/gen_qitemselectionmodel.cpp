@@ -16,6 +16,10 @@
 #include <QTimerEvent>
 #include <qitemselectionmodel.h>
 #include "gen_qitemselectionmodel.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QItemSelectionRange* QItemSelectionRange_new() {

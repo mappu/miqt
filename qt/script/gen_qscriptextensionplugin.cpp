@@ -15,6 +15,10 @@
 #include <QTimerEvent>
 #include <qscriptextensionplugin.h>
 #include "gen_qscriptextensionplugin.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQScriptExtensionPlugin : public virtual QScriptExtensionPlugin {

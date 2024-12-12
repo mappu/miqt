@@ -5,6 +5,10 @@
 #include <QMetaType>
 #include <qmetatype.h>
 #include "gen_qmetatype.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QMetaType* QMetaType_new() {

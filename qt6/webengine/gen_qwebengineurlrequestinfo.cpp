@@ -3,6 +3,10 @@
 #include <QWebEngineUrlRequestInfo>
 #include <qwebengineurlrequestinfo.h>
 #include "gen_qwebengineurlrequestinfo.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 int QWebEngineUrlRequestInfo_ResourceType(const QWebEngineUrlRequestInfo* self) {

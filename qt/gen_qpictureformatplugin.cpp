@@ -11,6 +11,10 @@
 #include <QTimerEvent>
 #include <qpictureformatplugin.h>
 #include "gen_qpictureformatplugin.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQPictureFormatPlugin : public virtual QPictureFormatPlugin {

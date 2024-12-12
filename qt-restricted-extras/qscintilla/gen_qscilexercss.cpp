@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexercss.h>
 #include "gen_qscilexercss.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerCSS : public virtual QsciLexerCSS {

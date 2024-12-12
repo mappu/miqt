@@ -9,6 +9,10 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QWebEngineCookieStore__FilterRequest
 #include <qwebenginecookiestore.h>
 #include "gen_qwebenginecookiestore.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QWebEngineCookieStore_virtbase(QWebEngineCookieStore* src, QObject** outptr_QObject) {

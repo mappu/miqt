@@ -33,6 +33,10 @@
 #include <QWidget>
 #include <qsizegrip.h>
 #include "gen_qsizegrip.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSizeGrip : public virtual QSizeGrip {

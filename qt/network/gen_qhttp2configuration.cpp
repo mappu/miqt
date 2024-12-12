@@ -1,6 +1,10 @@
 #include <QHttp2Configuration>
 #include <qhttp2configuration.h>
 #include "gen_qhttp2configuration.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QHttp2Configuration* QHttp2Configuration_new() {

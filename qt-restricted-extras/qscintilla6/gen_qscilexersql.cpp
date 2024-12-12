@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexersql.h>
 #include "gen_qscilexersql.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerSQL : public virtual QsciLexerSQL {

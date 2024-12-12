@@ -16,6 +16,10 @@
 #include <QTimerEvent>
 #include <qaudiosystemplugin.h>
 #include "gen_qaudiosystemplugin.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 struct miqt_array /* of struct miqt_string */  QAudioSystemFactoryInterface_AvailableDevices(const QAudioSystemFactoryInterface* self, int param1) {

@@ -16,6 +16,10 @@
 #include <QTransform>
 #include <qgraphicsitemanimation.h>
 #include "gen_qgraphicsitemanimation.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGraphicsItemAnimation : public virtual QGraphicsItemAnimation {

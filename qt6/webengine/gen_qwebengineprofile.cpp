@@ -20,6 +20,10 @@
 #include <QWebEngineUrlSchemeHandler>
 #include <qwebengineprofile.h>
 #include "gen_qwebengineprofile.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQWebEngineProfile : public virtual QWebEngineProfile {

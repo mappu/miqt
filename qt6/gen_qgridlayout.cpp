@@ -12,6 +12,10 @@
 #include <QWidget>
 #include <qgridlayout.h>
 #include "gen_qgridlayout.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGridLayout : public virtual QGridLayout {

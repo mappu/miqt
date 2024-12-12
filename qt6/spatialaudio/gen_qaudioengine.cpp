@@ -11,6 +11,10 @@
 #include <QTimerEvent>
 #include <qaudioengine.h>
 #include "gen_qaudioengine.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAudioEngine : public virtual QAudioEngine {

@@ -17,6 +17,10 @@
 #include <QWidget>
 #include <qdial.h>
 #include "gen_qdial.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQDial : public virtual QDial {

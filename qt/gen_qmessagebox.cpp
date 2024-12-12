@@ -21,6 +21,10 @@
 #include <QWidget>
 #include <qmessagebox.h>
 #include "gen_qmessagebox.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQMessageBox : public virtual QMessageBox {

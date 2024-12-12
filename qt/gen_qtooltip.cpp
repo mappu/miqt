@@ -9,6 +9,10 @@
 #include <QWidget>
 #include <qtooltip.h>
 #include "gen_qtooltip.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QToolTip_ShowText(QPoint* pos, struct miqt_string text) {

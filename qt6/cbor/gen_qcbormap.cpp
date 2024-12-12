@@ -14,6 +14,10 @@
 #include <QVariant>
 #include <qcbormap.h>
 #include "gen_qcbormap.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QCborMap* QCborMap_new() {

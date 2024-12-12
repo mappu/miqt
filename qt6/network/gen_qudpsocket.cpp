@@ -14,6 +14,10 @@
 #include <QVariant>
 #include <qudpsocket.h>
 #include "gen_qudpsocket.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQUdpSocket : public virtual QUdpSocket {

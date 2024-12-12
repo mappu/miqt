@@ -34,6 +34,10 @@
 #include <QWidget>
 #include <qwebinspector.h>
 #include "gen_qwebinspector.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQWebInspector : public virtual QWebInspector {

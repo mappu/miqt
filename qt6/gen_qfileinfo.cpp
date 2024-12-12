@@ -7,6 +7,10 @@
 #include <cstring>
 #include <qfileinfo.h>
 #include "gen_qfileinfo.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QFileInfo* QFileInfo_new() {

@@ -12,6 +12,10 @@
 #include <QTimerEvent>
 #include <qnetworkconfigmanager.h>
 #include "gen_qnetworkconfigmanager.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQNetworkConfigurationManager : public virtual QNetworkConfigurationManager {

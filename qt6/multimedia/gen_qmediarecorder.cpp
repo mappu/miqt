@@ -15,6 +15,10 @@
 #include <QUrl>
 #include <qmediarecorder.h>
 #include "gen_qmediarecorder.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQMediaRecorder : public virtual QMediaRecorder {

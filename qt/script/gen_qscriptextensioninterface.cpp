@@ -7,6 +7,10 @@
 #include <cstring>
 #include <qscriptextensioninterface.h>
 #include "gen_qscriptextensioninterface.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQScriptExtensionInterface : public virtual QScriptExtensionInterface {

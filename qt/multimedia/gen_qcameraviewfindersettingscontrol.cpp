@@ -11,6 +11,10 @@
 #include <QVariant>
 #include <qcameraviewfindersettingscontrol.h>
 #include "gen_qcameraviewfindersettingscontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QCameraViewfinderSettingsControl_virtbase(QCameraViewfinderSettingsControl* src, QMediaControl** outptr_QMediaControl) {

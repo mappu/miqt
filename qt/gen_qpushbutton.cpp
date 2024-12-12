@@ -19,6 +19,10 @@
 #include <QWidget>
 #include <qpushbutton.h>
 #include "gen_qpushbutton.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQPushButton : public virtual QPushButton {

@@ -17,6 +17,10 @@
 #include <QWidget>
 #include <qfontdialog.h>
 #include "gen_qfontdialog.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQFontDialog : public virtual QFontDialog {

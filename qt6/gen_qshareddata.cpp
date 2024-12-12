@@ -1,6 +1,10 @@
 #include <QSharedData>
 #include <qshareddata.h>
 #include "gen_qshareddata.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QSharedData* QSharedData_new() {

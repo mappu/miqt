@@ -35,6 +35,10 @@
 #include <QWidget>
 #include <qprintpreviewwidget.h>
 #include "gen_qprintpreviewwidget.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQPrintPreviewWidget : public virtual QPrintPreviewWidget {

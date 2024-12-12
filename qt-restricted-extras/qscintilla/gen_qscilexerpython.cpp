@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexerpython.h>
 #include "gen_qscilexerpython.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerPython : public virtual QsciLexerPython {

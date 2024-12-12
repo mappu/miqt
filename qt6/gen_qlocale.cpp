@@ -9,6 +9,10 @@
 #include <QTime>
 #include <qlocale.h>
 #include "gen_qlocale.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QLocale* QLocale_new() {

@@ -6,6 +6,10 @@
 #include <cstring>
 #include <qscriptcontextinfo.h>
 #include "gen_qscriptcontextinfo.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QScriptContextInfo* QScriptContextInfo_new(QScriptContext* context) {

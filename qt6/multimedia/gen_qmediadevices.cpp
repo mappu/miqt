@@ -13,6 +13,10 @@
 #include <QTimerEvent>
 #include <qmediadevices.h>
 #include "gen_qmediadevices.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQMediaDevices : public virtual QMediaDevices {

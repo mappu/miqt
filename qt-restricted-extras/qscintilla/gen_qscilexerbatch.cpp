@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexerbatch.h>
 #include "gen_qscilexerbatch.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerBatch : public virtual QsciLexerBatch {

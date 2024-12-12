@@ -62,6 +62,10 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_Scintilla__TextToFindFull
 #include <ScintillaEdit.h>
 #include "gen_ScintillaEdit.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 Scintilla__Internal__Point* Scintilla__Internal__Point_new() {

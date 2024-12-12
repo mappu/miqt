@@ -2,6 +2,10 @@
 #include <QWebEngineFileSystemAccessRequest>
 #include <qwebenginefilesystemaccessrequest.h>
 #include "gen_qwebenginefilesystemaccessrequest.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QWebEngineFileSystemAccessRequest* QWebEngineFileSystemAccessRequest_new(QWebEngineFileSystemAccessRequest* other) {

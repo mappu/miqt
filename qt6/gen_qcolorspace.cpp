@@ -8,6 +8,10 @@
 #include <cstring>
 #include <qcolorspace.h>
 #include "gen_qcolorspace.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QColorSpace* QColorSpace_new() {

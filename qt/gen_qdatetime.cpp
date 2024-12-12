@@ -8,6 +8,10 @@
 #include <QTimeZone>
 #include <qdatetime.h>
 #include "gen_qdatetime.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QDate* QDate_new() {

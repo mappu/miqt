@@ -7,6 +7,10 @@
 #include <cstring>
 #include <qlocalsocket.h>
 #include "gen_qlocalsocket.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQLocalSocket : public virtual QLocalSocket {

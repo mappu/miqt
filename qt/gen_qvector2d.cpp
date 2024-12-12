@@ -5,6 +5,10 @@
 #include <QVector4D>
 #include <qvector2d.h>
 #include "gen_qvector2d.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QVector2D* QVector2D_new() {

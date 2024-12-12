@@ -12,6 +12,10 @@
 #include <cstring>
 #include <qfontmetrics.h>
 #include "gen_qfontmetrics.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QFontMetrics* QFontMetrics_new(QFont* param1) {

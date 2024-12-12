@@ -6,6 +6,10 @@
 #include <cstring>
 #include <qssldiffiehellmanparameters.h>
 #include "gen_qssldiffiehellmanparameters.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QSslDiffieHellmanParameters* QSslDiffieHellmanParameters_new() {

@@ -20,6 +20,10 @@
 #include <QWindow>
 #include <qguiapplication.h>
 #include "gen_qguiapplication.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGuiApplication : public virtual QGuiApplication {

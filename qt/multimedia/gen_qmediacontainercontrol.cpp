@@ -8,6 +8,10 @@
 #include <cstring>
 #include <qmediacontainercontrol.h>
 #include "gen_qmediacontainercontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QMediaContainerControl_virtbase(QMediaContainerControl* src, QMediaControl** outptr_QMediaControl) {

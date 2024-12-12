@@ -34,6 +34,10 @@
 #include <QWidget>
 #include <qdesktopwidget.h>
 #include "gen_qdesktopwidget.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQDesktopWidget : public virtual QDesktopWidget {

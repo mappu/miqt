@@ -6,6 +6,10 @@
 #include <cstring>
 #include <qcameraimageprocessing.h>
 #include "gen_qcameraimageprocessing.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QCameraImageProcessing_virtbase(QCameraImageProcessing* src, QObject** outptr_QObject) {

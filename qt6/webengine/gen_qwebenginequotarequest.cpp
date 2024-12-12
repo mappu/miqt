@@ -2,6 +2,10 @@
 #include <QWebEngineQuotaRequest>
 #include <qwebenginequotarequest.h>
 #include "gen_qwebenginequotarequest.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QWebEngineQuotaRequest* QWebEngineQuotaRequest_new() {

@@ -1,6 +1,10 @@
 #include <QArrayData>
 #include <qarraydata.h>
 #include "gen_qarraydata.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void* QArrayData_Data(QArrayData* self) {

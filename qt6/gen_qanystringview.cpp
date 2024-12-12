@@ -6,6 +6,10 @@
 #include <cstring>
 #include <qanystringview.h>
 #include "gen_qanystringview.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QAnyStringView* QAnyStringView_new() {

@@ -15,6 +15,10 @@
 #include <QXmlStreamWriter>
 #include <qxmlstream.h>
 #include "gen_qxmlstream.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QXmlStreamStringRef* QXmlStreamStringRef_new() {

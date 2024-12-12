@@ -15,6 +15,10 @@
 #include <QWidget>
 #include <qdatawidgetmapper.h>
 #include "gen_qdatawidgetmapper.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQDataWidgetMapper : public virtual QDataWidgetMapper {

@@ -5,6 +5,10 @@
 #include <cstring>
 #include <qsslerror.h>
 #include "gen_qsslerror.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QSslError* QSslError_new() {

@@ -13,6 +13,10 @@
 #include <QWidget>
 #include <qstackedwidget.h>
 #include "gen_qstackedwidget.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQStackedWidget : public virtual QStackedWidget {

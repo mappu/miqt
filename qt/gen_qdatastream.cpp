@@ -3,6 +3,10 @@
 #include <QIODevice>
 #include <qdatastream.h>
 #include "gen_qdatastream.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QDataStream* QDataStream_new() {

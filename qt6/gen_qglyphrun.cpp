@@ -5,6 +5,10 @@
 #include <QRectF>
 #include <qglyphrun.h>
 #include "gen_qglyphrun.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QGlyphRun* QGlyphRun_new() {

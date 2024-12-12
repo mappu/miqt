@@ -5,6 +5,10 @@
 #include <cstring>
 #include <qmimetype.h>
 #include "gen_qmimetype.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QMimeType* QMimeType_new() {

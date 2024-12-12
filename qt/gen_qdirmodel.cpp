@@ -17,6 +17,10 @@
 #include <QVariant>
 #include <qdirmodel.h>
 #include "gen_qdirmodel.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQDirModel : public virtual QDirModel {

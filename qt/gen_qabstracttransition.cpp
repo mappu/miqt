@@ -15,6 +15,10 @@
 #include <QTimerEvent>
 #include <qabstracttransition.h>
 #include "gen_qabstracttransition.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAbstractTransition : public virtual QAbstractTransition {

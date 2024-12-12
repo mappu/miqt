@@ -12,6 +12,10 @@
 #include <QWidget>
 #include <qlcdnumber.h>
 #include "gen_qlcdnumber.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQLCDNumber : public virtual QLCDNumber {

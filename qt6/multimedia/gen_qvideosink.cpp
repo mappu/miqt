@@ -12,6 +12,10 @@
 #include <QVideoSink>
 #include <qvideosink.h>
 #include "gen_qvideosink.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQVideoSink : public virtual QVideoSink {

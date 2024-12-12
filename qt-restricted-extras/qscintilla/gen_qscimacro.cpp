@@ -9,6 +9,10 @@
 #include <QTimerEvent>
 #include <qscimacro.h>
 #include "gen_qscimacro.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciMacro : public virtual QsciMacro {

@@ -6,6 +6,10 @@
 #include <QWebEngineScriptCollection>
 #include <qwebenginescriptcollection.h>
 #include "gen_qwebenginescriptcollection.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 bool QWebEngineScriptCollection_IsEmpty(const QWebEngineScriptCollection* self) {

@@ -7,6 +7,10 @@
 #include <cstring>
 #include <qcommandlineparser.h>
 #include "gen_qcommandlineparser.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QCommandLineParser* QCommandLineParser_new() {

@@ -12,6 +12,10 @@
 #include <QWebFrame>
 #include <qwebelement.h>
 #include "gen_qwebelement.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QWebElement* QWebElement_new() {

@@ -7,6 +7,10 @@
 #include <QVersionNumber>
 #include <qversionnumber.h>
 #include "gen_qversionnumber.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QVersionNumber* QVersionNumber_new() {

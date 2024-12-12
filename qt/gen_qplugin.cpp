@@ -2,6 +2,10 @@
 #include <QStaticPlugin>
 #include <qplugin.h>
 #include "gen_qplugin.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QJsonObject* QStaticPlugin_MetaData(const QStaticPlugin* self) {

@@ -7,6 +7,10 @@
 #include <cstring>
 #include <qmediaavailabilitycontrol.h>
 #include "gen_qmediaavailabilitycontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QMediaAvailabilityControl_virtbase(QMediaAvailabilityControl* src, QMediaControl** outptr_QMediaControl) {

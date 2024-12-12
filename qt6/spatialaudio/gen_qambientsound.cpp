@@ -12,6 +12,10 @@
 #include <QUrl>
 #include <qambientsound.h>
 #include "gen_qambientsound.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAmbientSound : public virtual QAmbientSound {

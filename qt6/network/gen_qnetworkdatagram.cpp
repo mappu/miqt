@@ -3,6 +3,10 @@
 #include <QNetworkDatagram>
 #include <qnetworkdatagram.h>
 #include "gen_qnetworkdatagram.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QNetworkDatagram* QNetworkDatagram_new() {

@@ -3,6 +3,10 @@
 #include <QWindow>
 #include <qtestsupport_gui.h>
 #include "gen_qtestsupport_gui.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QTest__QTouchEventSequence* QTest__QTouchEventSequence_Press(QTest__QTouchEventSequence* self, int touchId, QPoint* pt) {

@@ -64,6 +64,10 @@
 #include <QWindowStateChangeEvent>
 #include <qevent.h>
 #include "gen_qevent.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQInputEvent : public virtual QInputEvent {

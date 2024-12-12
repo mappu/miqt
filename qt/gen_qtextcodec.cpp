@@ -10,6 +10,10 @@
 #include <QTextEncoder>
 #include <qtextcodec.h>
 #include "gen_qtextcodec.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QTextCodec* QTextCodec_CodecForName(struct miqt_string name) {

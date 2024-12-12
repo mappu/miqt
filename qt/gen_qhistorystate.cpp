@@ -10,6 +10,10 @@
 #include <cstring>
 #include <qhistorystate.h>
 #include "gen_qhistorystate.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQHistoryState : public virtual QHistoryState {

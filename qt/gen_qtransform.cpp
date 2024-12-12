@@ -10,6 +10,10 @@
 #include <QTransform>
 #include <qtransform.h>
 #include "gen_qtransform.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QTransform* QTransform_new(int param1) {

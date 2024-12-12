@@ -13,6 +13,10 @@
 #include <QVariant>
 #include <qsettings.h>
 #include "gen_qsettings.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSettings : public virtual QSettings {

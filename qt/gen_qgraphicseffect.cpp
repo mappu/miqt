@@ -19,6 +19,10 @@
 #include <QTimerEvent>
 #include <qgraphicseffect.h>
 #include "gen_qgraphicseffect.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGraphicsEffect : public virtual QGraphicsEffect {

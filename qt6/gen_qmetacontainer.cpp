@@ -4,6 +4,10 @@
 #include <QMetaType>
 #include <qmetacontainer.h>
 #include "gen_qmetacontainer.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QMetaContainer* QMetaContainer_new() {

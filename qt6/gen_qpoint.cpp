@@ -2,6 +2,10 @@
 #include <QPointF>
 #include <qpoint.h>
 #include "gen_qpoint.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QPoint* QPoint_new() {

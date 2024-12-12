@@ -12,6 +12,10 @@
 #include <QTimerEvent>
 #include <qsyntaxhighlighter.h>
 #include "gen_qsyntaxhighlighter.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSyntaxHighlighter : public virtual QSyntaxHighlighter {

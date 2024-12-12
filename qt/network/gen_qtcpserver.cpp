@@ -13,6 +13,10 @@
 #include <QTimerEvent>
 #include <qtcpserver.h>
 #include "gen_qtcpserver.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQTcpServer : public virtual QTcpServer {

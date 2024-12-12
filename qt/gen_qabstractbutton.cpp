@@ -37,6 +37,10 @@
 #include <QWidget>
 #include <qabstractbutton.h>
 #include "gen_qabstractbutton.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAbstractButton : public virtual QAbstractButton {

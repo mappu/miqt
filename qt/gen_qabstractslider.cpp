@@ -34,6 +34,10 @@
 #include <QWidget>
 #include <qabstractslider.h>
 #include "gen_qabstractslider.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAbstractSlider : public virtual QAbstractSlider {

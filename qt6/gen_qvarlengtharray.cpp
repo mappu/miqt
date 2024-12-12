@@ -1,5 +1,9 @@
 #include <qvarlengtharray.h>
 #include "gen_qvarlengtharray.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 ptrdiff_t QVLABaseBase_Capacity(const QVLABaseBase* self) {

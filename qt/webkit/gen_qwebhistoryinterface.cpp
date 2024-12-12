@@ -10,6 +10,10 @@
 #include <QWebHistoryInterface>
 #include <qwebhistoryinterface.h>
 #include "gen_qwebhistoryinterface.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQWebHistoryInterface : public virtual QWebHistoryInterface {

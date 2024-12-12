@@ -30,6 +30,10 @@
 #include <QWidget>
 #include <qstyleoption.h>
 #include "gen_qstyleoption.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QStyleOption* QStyleOption_new() {

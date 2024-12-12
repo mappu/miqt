@@ -23,6 +23,10 @@
 #include <QTimerEvent>
 #include <qabstracttextdocumentlayout.h>
 #include "gen_qabstracttextdocumentlayout.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAbstractTextDocumentLayout : public virtual QAbstractTextDocumentLayout {

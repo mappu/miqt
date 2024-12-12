@@ -36,6 +36,10 @@
 #include <QWidget>
 #include <qtreeview.h>
 #include "gen_qtreeview.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQTreeView : public virtual QTreeView {

@@ -6,6 +6,10 @@
 #include <QUrl>
 #include <qdesktopservices.h>
 #include "gen_qdesktopservices.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 bool QDesktopServices_OpenUrl(QUrl* url) {

@@ -38,6 +38,10 @@
 #include <QWizardPage>
 #include <qwizard.h>
 #include "gen_qwizard.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQWizard : public virtual QWizard {

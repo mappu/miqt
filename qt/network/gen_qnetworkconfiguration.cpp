@@ -5,6 +5,10 @@
 #include <cstring>
 #include <qnetworkconfiguration.h>
 #include "gen_qnetworkconfiguration.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QNetworkConfiguration* QNetworkConfiguration_new() {

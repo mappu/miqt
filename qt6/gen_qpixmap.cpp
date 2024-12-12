@@ -19,6 +19,10 @@
 #include <QTransform>
 #include <qpixmap.h>
 #include "gen_qpixmap.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQPixmap : public virtual QPixmap {

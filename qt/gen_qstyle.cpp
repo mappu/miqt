@@ -23,6 +23,10 @@
 #include <QWidget>
 #include <qstyle.h>
 #include "gen_qstyle.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQStyle : public virtual QStyle {

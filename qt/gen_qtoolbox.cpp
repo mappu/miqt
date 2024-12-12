@@ -14,6 +14,10 @@
 #include <QWidget>
 #include <qtoolbox.h>
 #include "gen_qtoolbox.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQToolBox : public virtual QToolBox {

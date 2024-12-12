@@ -15,6 +15,10 @@
 #include <QValidator>
 #include <qvalidator.h>
 #include "gen_qvalidator.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQValidator : public virtual QValidator {

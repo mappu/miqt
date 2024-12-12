@@ -8,6 +8,10 @@
 #include <cstring>
 #include <qfuturewatcher.h>
 #include "gen_qfuturewatcher.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QFutureWatcherBase_virtbase(QFutureWatcherBase* src, QObject** outptr_QObject) {

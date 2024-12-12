@@ -11,6 +11,10 @@
 #include <cstring>
 #include <qaudiosystem.h>
 #include "gen_qaudiosystem.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QAbstractAudioDeviceInfo_virtbase(QAbstractAudioDeviceInfo* src, QObject** outptr_QObject) {

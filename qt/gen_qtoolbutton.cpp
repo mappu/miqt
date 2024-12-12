@@ -20,6 +20,10 @@
 #include <QWidget>
 #include <qtoolbutton.h>
 #include "gen_qtoolbutton.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQToolButton : public virtual QToolButton {

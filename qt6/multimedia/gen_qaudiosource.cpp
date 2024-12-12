@@ -13,6 +13,10 @@
 #include <QTimerEvent>
 #include <qaudiosource.h>
 #include "gen_qaudiosource.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAudioSource : public virtual QAudioSource {

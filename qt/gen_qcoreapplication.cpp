@@ -14,6 +14,10 @@
 #include <QTranslator>
 #include <qcoreapplication.h>
 #include "gen_qcoreapplication.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQCoreApplication : public virtual QCoreApplication {

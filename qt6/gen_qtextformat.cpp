@@ -20,6 +20,10 @@
 #include <QVariant>
 #include <qtextformat.h>
 #include "gen_qtextformat.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QTextLength* QTextLength_new() {

@@ -4,6 +4,10 @@
 #include <QWaitCondition>
 #include <qwaitcondition.h>
 #include "gen_qwaitcondition.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QWaitCondition* QWaitCondition_new() {

@@ -3,6 +3,10 @@
 #include <QMessageAuthenticationCode>
 #include <qmessageauthenticationcode.h>
 #include "gen_qmessageauthenticationcode.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QMessageAuthenticationCode* QMessageAuthenticationCode_new(int method) {

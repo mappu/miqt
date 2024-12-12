@@ -6,6 +6,10 @@
 #include <QVariant>
 #include <qauthenticator.h>
 #include "gen_qauthenticator.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QAuthenticator* QAuthenticator_new() {

@@ -7,6 +7,10 @@
 #include <cstring>
 #include <qcamerafeedbackcontrol.h>
 #include "gen_qcamerafeedbackcontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QCameraFeedbackControl_virtbase(QCameraFeedbackControl* src, QMediaControl** outptr_QMediaControl) {

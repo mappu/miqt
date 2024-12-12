@@ -11,6 +11,10 @@
 #include <QTimerEvent>
 #include <qsocketnotifier.h>
 #include "gen_qsocketnotifier.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSocketNotifier : public virtual QSocketNotifier {

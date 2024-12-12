@@ -10,6 +10,10 @@
 #include <QVideoFrameFormat>
 #include <qvideoframe.h>
 #include "gen_qvideoframe.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QVideoFrame* QVideoFrame_new() {

@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexerproperties.h>
 #include "gen_qscilexerproperties.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerProperties : public virtual QsciLexerProperties {

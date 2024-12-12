@@ -7,6 +7,10 @@
 #include <QVariant>
 #include <qscriptengineagent.h>
 #include "gen_qscriptengineagent.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQScriptEngineAgent : public virtual QScriptEngineAgent {

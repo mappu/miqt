@@ -4,6 +4,10 @@
 #include <QStaticByteArrayMatcherBase>
 #include <qbytearraymatcher.h>
 #include "gen_qbytearraymatcher.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QByteArrayMatcher* QByteArrayMatcher_new() {

@@ -34,6 +34,10 @@
 #include <QWidget>
 #include <qgroupbox.h>
 #include "gen_qgroupbox.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGroupBox : public virtual QGroupBox {

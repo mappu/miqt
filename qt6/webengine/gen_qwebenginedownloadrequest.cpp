@@ -8,6 +8,10 @@
 #include <QWebEnginePage>
 #include <qwebenginedownloadrequest.h>
 #include "gen_qwebenginedownloadrequest.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QWebEngineDownloadRequest_virtbase(QWebEngineDownloadRequest* src, QObject** outptr_QObject) {

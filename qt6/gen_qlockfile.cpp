@@ -4,6 +4,10 @@
 #include <cstring>
 #include <qlockfile.h>
 #include "gen_qlockfile.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QLockFile* QLockFile_new(struct miqt_string fileName) {

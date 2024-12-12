@@ -33,6 +33,10 @@
 #include <QWidget>
 #include <qstatusbar.h>
 #include "gen_qstatusbar.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQStatusBar : public virtual QStatusBar {

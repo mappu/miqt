@@ -8,6 +8,10 @@
 #include <QVariant>
 #include <qmediastreamscontrol.h>
 #include "gen_qmediastreamscontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QMediaStreamsControl_virtbase(QMediaStreamsControl* src, QMediaControl** outptr_QMediaControl) {

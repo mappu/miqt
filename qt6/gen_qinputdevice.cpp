@@ -12,6 +12,10 @@
 #include <QTimerEvent>
 #include <qinputdevice.h>
 #include "gen_qinputdevice.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQInputDevice : public virtual QInputDevice {

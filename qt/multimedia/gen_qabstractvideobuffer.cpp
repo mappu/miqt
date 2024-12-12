@@ -3,6 +3,10 @@
 #include <QVariant>
 #include <qabstractvideobuffer.h>
 #include "gen_qabstractvideobuffer.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAbstractVideoBuffer : public virtual QAbstractVideoBuffer {

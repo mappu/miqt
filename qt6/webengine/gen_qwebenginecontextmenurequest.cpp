@@ -9,6 +9,10 @@
 #include <QWebEngineContextMenuRequest>
 #include <qwebenginecontextmenurequest.h>
 #include "gen_qwebenginecontextmenurequest.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QWebEngineContextMenuRequest_virtbase(QWebEngineContextMenuRequest* src, QObject** outptr_QObject) {

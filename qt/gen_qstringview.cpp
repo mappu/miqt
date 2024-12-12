@@ -7,6 +7,10 @@
 #include <QStringView>
 #include <qstringview.h>
 #include "gen_qstringview.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QStringView* QStringView_new() {

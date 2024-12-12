@@ -9,6 +9,10 @@
 #include <QRegion>
 #include <qmatrix.h>
 #include "gen_qmatrix.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QMatrix* QMatrix_new(int param1) {

@@ -1,6 +1,10 @@
 #include <QSizePolicy>
 #include <qsizepolicy.h>
 #include "gen_qsizepolicy.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QSizePolicy* QSizePolicy_new() {

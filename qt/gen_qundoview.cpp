@@ -32,6 +32,10 @@
 #include <QWidget>
 #include <qundoview.h>
 #include "gen_qundoview.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQUndoView : public virtual QUndoView {

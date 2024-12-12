@@ -23,6 +23,10 @@
 #include <QWidget>
 #include <qabstractscrollarea.h>
 #include "gen_qabstractscrollarea.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAbstractScrollArea : public virtual QAbstractScrollArea {

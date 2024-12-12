@@ -4,6 +4,10 @@
 #include <cstring>
 #include <qoperatingsystemversion.h>
 #include "gen_qoperatingsystemversion.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QOperatingSystemVersion* QOperatingSystemVersion_new(int osType, int vmajor) {

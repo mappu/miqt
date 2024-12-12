@@ -25,6 +25,10 @@
 #include <QWebSecurityOrigin>
 #include <qwebframe.h>
 #include "gen_qwebframe.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QWebHitTestResult* QWebHitTestResult_new() {

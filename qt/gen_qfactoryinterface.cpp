@@ -5,6 +5,10 @@
 #include <cstring>
 #include <qfactoryinterface.h>
 #include "gen_qfactoryinterface.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 struct miqt_array /* of struct miqt_string */  QFactoryInterface_Keys(const QFactoryInterface* self) {

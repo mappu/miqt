@@ -9,6 +9,10 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QTimeZone__OffsetData
 #include <qtimezone.h>
 #include "gen_qtimezone.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QTimeZone* QTimeZone_new() {

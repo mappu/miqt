@@ -5,6 +5,10 @@
 #include <cstring>
 #include <qregexp.h>
 #include "gen_qregexp.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QRegExp* QRegExp_new() {

@@ -7,6 +7,10 @@
 #include <QVersionNumber>
 #include <qlibraryinfo.h>
 #include "gen_qlibraryinfo.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 struct miqt_string QLibraryInfo_Licensee() {

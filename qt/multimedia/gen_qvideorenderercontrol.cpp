@@ -8,6 +8,10 @@
 #include <QVideoRendererControl>
 #include <qvideorenderercontrol.h>
 #include "gen_qvideorenderercontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QVideoRendererControl_virtbase(QVideoRendererControl* src, QMediaControl** outptr_QMediaControl) {
