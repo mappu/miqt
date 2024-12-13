@@ -10,6 +10,10 @@
 #include <cstring>
 #include <qpointingdevice.h>
 #include "gen_qpointingdevice.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QPointingDeviceUniqueId* QPointingDeviceUniqueId_new() {

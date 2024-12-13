@@ -6,6 +6,10 @@
 #include <QSizeF>
 #include <qgraphicslinearlayout.h>
 #include "gen_qgraphicslinearlayout.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGraphicsLinearLayout : public virtual QGraphicsLinearLayout {

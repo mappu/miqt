@@ -35,6 +35,10 @@
 #include <QWidget>
 #include <qvideowidget.h>
 #include "gen_qvideowidget.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQVideoWidget : public virtual QVideoWidget {

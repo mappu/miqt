@@ -4,6 +4,10 @@
 #include <QScriptable>
 #include <qscriptable.h>
 #include "gen_qscriptable.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QScriptable* QScriptable_new() {

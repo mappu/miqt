@@ -38,6 +38,10 @@
 #include <QWidget>
 #include <qmdisubwindow.h>
 #include "gen_qmdisubwindow.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQMdiSubWindow : public virtual QMdiSubWindow {

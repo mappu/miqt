@@ -7,6 +7,10 @@
 #include <QVideoDeviceSelectorControl>
 #include <qvideodeviceselectorcontrol.h>
 #include "gen_qvideodeviceselectorcontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QVideoDeviceSelectorControl_virtbase(QVideoDeviceSelectorControl* src, QMediaControl** outptr_QMediaControl) {

@@ -16,6 +16,10 @@
 #include <QWidget>
 #include <qlayout.h>
 #include "gen_qlayout.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQLayout : public virtual QLayout {

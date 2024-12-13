@@ -7,6 +7,10 @@
 #include <cstring>
 #include <qaudiodevice.h>
 #include "gen_qaudiodevice.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QAudioDevice* QAudioDevice_new() {

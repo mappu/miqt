@@ -36,6 +36,10 @@
 #include <QWidget>
 #include <qrubberband.h>
 #include "gen_qrubberband.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQRubberBand : public virtual QRubberBand {

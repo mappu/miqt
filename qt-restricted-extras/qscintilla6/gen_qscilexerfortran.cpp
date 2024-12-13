@@ -5,6 +5,10 @@
 #include <cstring>
 #include <qscilexerfortran.h>
 #include "gen_qscilexerfortran.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerFortran : public virtual QsciLexerFortran {

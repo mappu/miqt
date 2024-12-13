@@ -36,6 +36,10 @@
 #include <QWidget>
 #include <qdialogbuttonbox.h>
 #include "gen_qdialogbuttonbox.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQDialogButtonBox : public virtual QDialogButtonBox {

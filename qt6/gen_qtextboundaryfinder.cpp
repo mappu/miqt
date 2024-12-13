@@ -5,6 +5,10 @@
 #include <QTextBoundaryFinder>
 #include <qtextboundaryfinder.h>
 #include "gen_qtextboundaryfinder.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QTextBoundaryFinder* QTextBoundaryFinder_new() {

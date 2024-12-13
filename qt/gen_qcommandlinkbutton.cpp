@@ -16,6 +16,10 @@
 #include <QWidget>
 #include <qcommandlinkbutton.h>
 #include "gen_qcommandlinkbutton.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQCommandLinkButton : public virtual QCommandLinkButton {

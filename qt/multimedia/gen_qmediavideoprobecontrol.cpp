@@ -8,6 +8,10 @@
 #include <QVideoFrame>
 #include <qmediavideoprobecontrol.h>
 #include "gen_qmediavideoprobecontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QMediaVideoProbeControl_virtbase(QMediaVideoProbeControl* src, QMediaControl** outptr_QMediaControl) {

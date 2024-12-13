@@ -10,6 +10,10 @@
 #include <cstring>
 #include <qjsonarray.h>
 #include "gen_qjsonarray.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QJsonArray* QJsonArray_new() {

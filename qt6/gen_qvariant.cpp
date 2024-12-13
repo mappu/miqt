@@ -35,6 +35,10 @@
 #include <QVariantConstPointer>
 #include <qvariant.h>
 #include "gen_qvariant.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QVariant* QVariant_new() {

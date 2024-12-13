@@ -34,6 +34,10 @@
 #include <QWidget>
 #include <qdialog.h>
 #include "gen_qdialog.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQDialog : public virtual QDialog {

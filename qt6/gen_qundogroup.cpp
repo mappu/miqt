@@ -13,6 +13,10 @@
 #include <QUndoStack>
 #include <qundogroup.h>
 #include "gen_qundogroup.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQUndoGroup : public virtual QUndoGroup {

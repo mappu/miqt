@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexertex.h>
 #include "gen_qscilexertex.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerTeX : public virtual QsciLexerTeX {

@@ -15,6 +15,10 @@
 #include <QWidget>
 #include <qgraphicssceneevent.h>
 #include "gen_qgraphicssceneevent.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGraphicsSceneEvent : public virtual QGraphicsSceneEvent {

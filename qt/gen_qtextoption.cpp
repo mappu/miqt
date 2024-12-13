@@ -4,6 +4,10 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QTextOption__Tab
 #include <qtextoption.h>
 #include "gen_qtextoption.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QTextOption* QTextOption_new() {

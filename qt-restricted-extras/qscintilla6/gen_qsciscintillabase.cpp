@@ -33,6 +33,10 @@
 #include <QWidget>
 #include <qsciscintillabase.h>
 #include "gen_qsciscintillabase.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciScintillaBase : public virtual QsciScintillaBase {

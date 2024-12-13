@@ -54,6 +54,10 @@
 #include <QWidget>
 #include <qgraphicsitem.h>
 #include "gen_qgraphicsitem.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGraphicsItem : public virtual QGraphicsItem {

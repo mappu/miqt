@@ -2,6 +2,10 @@
 #include <QByteArrayView>
 #include <qbytearrayview.h>
 #include "gen_qbytearrayview.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QByteArrayView* QByteArrayView_new() {

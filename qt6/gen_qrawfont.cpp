@@ -13,6 +13,10 @@
 #include <QTransform>
 #include <qrawfont.h>
 #include "gen_qrawfont.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QRawFont* QRawFont_new() {

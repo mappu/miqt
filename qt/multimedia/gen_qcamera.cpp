@@ -20,6 +20,10 @@
 #include <QVideoWidget>
 #include <qcamera.h>
 #include "gen_qcamera.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQCamera : public virtual QCamera {

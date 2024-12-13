@@ -18,6 +18,10 @@
 #include <QVariant>
 #include <qobject.h>
 #include "gen_qobject.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QMetaObject* QObjectData_DynamicMetaObject(const QObjectData* self) {

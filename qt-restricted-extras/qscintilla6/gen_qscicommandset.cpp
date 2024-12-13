@@ -2,6 +2,10 @@
 #include <QSettings>
 #include <qscicommandset.h>
 #include "gen_qscicommandset.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 bool QsciCommandSet_ReadSettings(QsciCommandSet* self, QSettings* qs) {

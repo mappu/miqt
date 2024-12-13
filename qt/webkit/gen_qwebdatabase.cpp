@@ -5,6 +5,10 @@
 #include <QWebSecurityOrigin>
 #include <qwebdatabase.h>
 #include "gen_qwebdatabase.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QWebDatabase* QWebDatabase_new(QWebDatabase* other) {

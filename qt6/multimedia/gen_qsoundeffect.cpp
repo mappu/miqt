@@ -13,6 +13,10 @@
 #include <QUrl>
 #include <qsoundeffect.h>
 #include "gen_qsoundeffect.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSoundEffect : public virtual QSoundEffect {

@@ -5,6 +5,10 @@
 #include <cstring>
 #include <qcommandlineoption.h>
 #include "gen_qcommandlineoption.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QCommandLineOption* QCommandLineOption_new(struct miqt_string name) {

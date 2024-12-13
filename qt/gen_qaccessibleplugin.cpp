@@ -11,6 +11,10 @@
 #include <QTimerEvent>
 #include <qaccessibleplugin.h>
 #include "gen_qaccessibleplugin.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAccessiblePlugin : public virtual QAccessiblePlugin {

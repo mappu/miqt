@@ -11,6 +11,10 @@
 #include <QWebEngineUrlSchemeHandler>
 #include <qwebengineurlschemehandler.h>
 #include "gen_qwebengineurlschemehandler.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQWebEngineUrlSchemeHandler : public virtual QWebEngineUrlSchemeHandler {

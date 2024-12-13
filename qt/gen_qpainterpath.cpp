@@ -12,6 +12,10 @@
 #include <cstring>
 #include <qpainterpath.h>
 #include "gen_qpainterpath.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QPainterPath* QPainterPath_new() {

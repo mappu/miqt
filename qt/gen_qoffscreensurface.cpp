@@ -14,6 +14,10 @@
 #include <QTimerEvent>
 #include <qoffscreensurface.h>
 #include "gen_qoffscreensurface.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQOffscreenSurface : public virtual QOffscreenSurface {

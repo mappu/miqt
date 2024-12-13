@@ -11,6 +11,10 @@
 #include <QVariant>
 #include <qnetworkrequest.h>
 #include "gen_qnetworkrequest.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QNetworkRequest* QNetworkRequest_new() {

@@ -19,6 +19,10 @@
 #include <QWebTouchModifier>
 #include <qwebkitplatformplugin.h>
 #include "gen_qwebkitplatformplugin.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 int QWebSelectData_ItemType(const QWebSelectData* self, int param1) {

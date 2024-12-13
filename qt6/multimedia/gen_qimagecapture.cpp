@@ -16,6 +16,10 @@
 #include <QVideoFrame>
 #include <qimagecapture.h>
 #include "gen_qimagecapture.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQImageCapture : public virtual QImageCapture {

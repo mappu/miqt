@@ -11,6 +11,10 @@
 #include <QWebChannelAbstractTransport>
 #include <qwebchannelabstracttransport.h>
 #include "gen_qwebchannelabstracttransport.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQWebChannelAbstractTransport : public virtual QWebChannelAbstractTransport {

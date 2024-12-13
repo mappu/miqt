@@ -6,6 +6,10 @@
 #include <QVariant>
 #include <qmediametadata.h>
 #include "gen_qmediametadata.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QMediaMetaData* QMediaMetaData_new(QMediaMetaData* param1) {

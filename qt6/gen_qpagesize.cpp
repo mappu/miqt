@@ -8,6 +8,10 @@
 #include <cstring>
 #include <qpagesize.h>
 #include "gen_qpagesize.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QPageSize* QPageSize_new() {

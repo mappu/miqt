@@ -8,6 +8,10 @@
 #include <cstring>
 #include <qcameraexposure.h>
 #include "gen_qcameraexposure.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QCameraExposure_virtbase(QCameraExposure* src, QObject** outptr_QObject) {

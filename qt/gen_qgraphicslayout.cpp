@@ -5,6 +5,10 @@
 #include <QSizeF>
 #include <qgraphicslayout.h>
 #include "gen_qgraphicslayout.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGraphicsLayout : public virtual QGraphicsLayout {

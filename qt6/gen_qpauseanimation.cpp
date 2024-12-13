@@ -8,6 +8,10 @@
 #include <cstring>
 #include <qpauseanimation.h>
 #include "gen_qpauseanimation.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQPauseAnimation : public virtual QPauseAnimation {

@@ -45,6 +45,10 @@
 #include <QWidget>
 #include <qgraphicsscene.h>
 #include "gen_qgraphicsscene.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGraphicsScene : public virtual QGraphicsScene {

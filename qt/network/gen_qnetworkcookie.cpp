@@ -8,6 +8,10 @@
 #include <QUrl>
 #include <qnetworkcookie.h>
 #include "gen_qnetworkcookie.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QNetworkCookie* QNetworkCookie_new() {

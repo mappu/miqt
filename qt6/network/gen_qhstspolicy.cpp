@@ -5,6 +5,10 @@
 #include <cstring>
 #include <qhstspolicy.h>
 #include "gen_qhstspolicy.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QHstsPolicy* QHstsPolicy_new() {

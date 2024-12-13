@@ -6,6 +6,10 @@
 #include <cstring>
 #include <qpixmapcache.h>
 #include "gen_qpixmapcache.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 int QPixmapCache_CacheLimit() {

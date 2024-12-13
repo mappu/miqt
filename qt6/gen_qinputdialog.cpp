@@ -17,6 +17,10 @@
 #include <QWidget>
 #include <qinputdialog.h>
 #include "gen_qinputdialog.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQInputDialog : public virtual QInputDialog {

@@ -11,6 +11,10 @@
 #include <cstring>
 #include <qsslcertificate.h>
 #include "gen_qsslcertificate.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QSslCertificate* QSslCertificate_new(QIODevice* device) {

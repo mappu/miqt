@@ -42,6 +42,10 @@
 #include <QWidget>
 #include <qtextedit.h>
 #include "gen_qtextedit.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQTextEdit : public virtual QTextEdit {

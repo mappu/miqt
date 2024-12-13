@@ -6,6 +6,10 @@
 #include <cstring>
 #include <qfileiconprovider.h>
 #include "gen_qfileiconprovider.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQFileIconProvider : public virtual QFileIconProvider {

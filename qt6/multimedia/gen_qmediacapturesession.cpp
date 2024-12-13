@@ -16,6 +16,10 @@
 #include <QVideoSink>
 #include <qmediacapturesession.h>
 #include "gen_qmediacapturesession.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQMediaCaptureSession : public virtual QMediaCaptureSession {

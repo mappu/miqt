@@ -47,6 +47,10 @@
 #include <QWidget>
 #include <qwebengineview.h>
 #include "gen_qwebengineview.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQWebEngineView : public virtual QWebEngineView {

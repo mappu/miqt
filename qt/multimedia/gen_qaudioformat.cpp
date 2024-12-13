@@ -4,6 +4,10 @@
 #include <cstring>
 #include <qaudioformat.h>
 #include "gen_qaudioformat.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QAudioFormat* QAudioFormat_new() {

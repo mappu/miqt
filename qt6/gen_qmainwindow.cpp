@@ -40,6 +40,10 @@
 #include <QWidget>
 #include <qmainwindow.h>
 #include "gen_qmainwindow.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQMainWindow : public virtual QMainWindow {

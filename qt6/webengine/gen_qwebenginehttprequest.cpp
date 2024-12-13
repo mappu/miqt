@@ -8,6 +8,10 @@
 #include <QWebEngineHttpRequest>
 #include <qwebenginehttprequest.h>
 #include "gen_qwebenginehttprequest.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QWebEngineHttpRequest* QWebEngineHttpRequest_new() {

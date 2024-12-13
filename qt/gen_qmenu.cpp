@@ -38,6 +38,10 @@
 #include <QWidget>
 #include <qmenu.h>
 #include "gen_qmenu.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQMenu : public virtual QMenu {

@@ -11,6 +11,10 @@
 #include <cstring>
 #include <qmouseeventtransition.h>
 #include "gen_qmouseeventtransition.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQMouseEventTransition : public virtual QMouseEventTransition {

@@ -4,6 +4,10 @@
 #include <cstring>
 #include <qsslcipher.h>
 #include "gen_qsslcipher.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QSslCipher* QSslCipher_new() {

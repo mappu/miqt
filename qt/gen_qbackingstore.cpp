@@ -6,6 +6,10 @@
 #include <QWindow>
 #include <qbackingstore.h>
 #include "gen_qbackingstore.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QBackingStore* QBackingStore_new(QWindow* window) {

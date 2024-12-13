@@ -10,6 +10,10 @@
 #include <QTimerEvent>
 #include <qsound.h>
 #include "gen_qsound.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSound : public virtual QSound {

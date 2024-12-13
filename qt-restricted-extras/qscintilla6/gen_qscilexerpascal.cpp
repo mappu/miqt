@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexerpascal.h>
 #include "gen_qscilexerpascal.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerPascal : public virtual QsciLexerPascal {

@@ -4,6 +4,10 @@
 #include <cstring>
 #include <qscriptstring.h>
 #include "gen_qscriptstring.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QScriptString* QScriptString_new() {

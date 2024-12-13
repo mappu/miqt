@@ -8,6 +8,10 @@
 #include <QWebEngineHistoryItem>
 #include <qwebenginehistory.h>
 #include "gen_qwebenginehistory.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QWebEngineHistoryItem* QWebEngineHistoryItem_new(QWebEngineHistoryItem* other) {

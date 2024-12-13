@@ -19,6 +19,10 @@
 #include <QTransform>
 #include <qimage.h>
 #include "gen_qimage.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQImage : public virtual QImage {

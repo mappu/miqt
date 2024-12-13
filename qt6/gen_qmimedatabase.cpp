@@ -10,6 +10,10 @@
 #include <QUrl>
 #include <qmimedatabase.h>
 #include "gen_qmimedatabase.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QMimeDatabase* QMimeDatabase_new() {

@@ -6,6 +6,10 @@
 #include <QTextDocumentFragment>
 #include <qtextdocumentfragment.h>
 #include "gen_qtextdocumentfragment.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QTextDocumentFragment* QTextDocumentFragment_new() {

@@ -10,6 +10,10 @@
 #include <QWindow>
 #include <qaccessibleobject.h>
 #include "gen_qaccessibleobject.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QAccessibleObject_virtbase(QAccessibleObject* src, QAccessibleInterface** outptr_QAccessibleInterface) {

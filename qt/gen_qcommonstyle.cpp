@@ -20,6 +20,10 @@
 #include <QWidget>
 #include <qcommonstyle.h>
 #include "gen_qcommonstyle.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQCommonStyle : public virtual QCommonStyle {

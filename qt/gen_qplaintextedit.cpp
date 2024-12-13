@@ -51,6 +51,10 @@
 #include <QWidget>
 #include <qplaintextedit.h>
 #include "gen_qplaintextedit.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQPlainTextEdit : public virtual QPlainTextEdit {

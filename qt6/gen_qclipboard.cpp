@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qclipboard.h>
 #include "gen_qclipboard.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QClipboard_virtbase(QClipboard* src, QObject** outptr_QObject) {

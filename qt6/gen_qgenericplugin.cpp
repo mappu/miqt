@@ -10,6 +10,10 @@
 #include <QTimerEvent>
 #include <qgenericplugin.h>
 #include "gen_qgenericplugin.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGenericPlugin : public virtual QGenericPlugin {

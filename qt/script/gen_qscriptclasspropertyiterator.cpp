@@ -3,6 +3,10 @@
 #include <QScriptValue>
 #include <qscriptclasspropertyiterator.h>
 #include "gen_qscriptclasspropertyiterator.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QScriptValue* QScriptClassPropertyIterator_Object(const QScriptClassPropertyIterator* self) {

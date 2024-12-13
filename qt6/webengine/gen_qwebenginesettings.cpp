@@ -4,6 +4,10 @@
 #include <QWebEngineSettings>
 #include <qwebenginesettings.h>
 #include "gen_qwebenginesettings.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QWebEngineSettings_SetFontFamily(QWebEngineSettings* self, int which, struct miqt_string family) {

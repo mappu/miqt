@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexeryaml.h>
 #include "gen_qscilexeryaml.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerYAML : public virtual QsciLexerYAML {

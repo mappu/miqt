@@ -36,6 +36,10 @@
 #include <QWidget>
 #include <qabstractspinbox.h>
 #include "gen_qabstractspinbox.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAbstractSpinBox : public virtual QAbstractSpinBox {

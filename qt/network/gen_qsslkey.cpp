@@ -3,6 +3,10 @@
 #include <QSslKey>
 #include <qsslkey.h>
 #include "gen_qsslkey.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QSslKey* QSslKey_new() {

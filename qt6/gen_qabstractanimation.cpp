@@ -12,6 +12,10 @@
 #include <QTimerEvent>
 #include <qabstractanimation.h>
 #include "gen_qabstractanimation.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAbstractAnimation : public virtual QAbstractAnimation {

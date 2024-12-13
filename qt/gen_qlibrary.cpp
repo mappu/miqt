@@ -10,6 +10,10 @@
 #include <QTimerEvent>
 #include <qlibrary.h>
 #include "gen_qlibrary.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQLibrary : public virtual QLibrary {

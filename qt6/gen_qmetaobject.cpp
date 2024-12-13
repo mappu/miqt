@@ -13,6 +13,10 @@
 #include <QVariant>
 #include <qmetaobject.h>
 #include "gen_qmetaobject.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QMetaMethod* QMetaMethod_new() {

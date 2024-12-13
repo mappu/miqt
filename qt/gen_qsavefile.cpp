@@ -8,6 +8,10 @@
 #include <cstring>
 #include <qsavefile.h>
 #include "gen_qsavefile.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSaveFile : public virtual QSaveFile {

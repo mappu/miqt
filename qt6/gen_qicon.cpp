@@ -11,6 +11,10 @@
 #include <QWindow>
 #include <qicon.h>
 #include "gen_qicon.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QIcon* QIcon_new() {

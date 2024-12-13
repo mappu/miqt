@@ -4,6 +4,10 @@
 #include <QWidget>
 #include <qtestsupport_widgets.h>
 #include "gen_qtestsupport_widgets.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQTestQTouchEventWidgetSequence : public virtual QTest::QTouchEventWidgetSequence {

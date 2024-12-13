@@ -20,6 +20,10 @@
 #include <QWidget>
 #include <qstyleditemdelegate.h>
 #include "gen_qstyleditemdelegate.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQStyledItemDelegate : public virtual QStyledItemDelegate {

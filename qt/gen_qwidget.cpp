@@ -59,6 +59,10 @@
 #include <QWindow>
 #include <qwidget.h>
 #include "gen_qwidget.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QWidgetData* QWidgetData_new(QWidgetData* param1) {

@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qaudioencodersettingscontrol.h>
 #include "gen_qaudioencodersettingscontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QAudioEncoderSettingsControl_virtbase(QAudioEncoderSettingsControl* src, QMediaControl** outptr_QMediaControl) {

@@ -2,6 +2,10 @@
 #include <QWebEngineUrlScheme>
 #include <qwebengineurlscheme.h>
 #include "gen_qwebengineurlscheme.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QWebEngineUrlScheme* QWebEngineUrlScheme_new() {

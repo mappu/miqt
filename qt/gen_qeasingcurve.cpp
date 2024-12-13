@@ -3,6 +3,10 @@
 #include <QPointF>
 #include <qeasingcurve.h>
 #include "gen_qeasingcurve.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QEasingCurve* QEasingCurve_new() {

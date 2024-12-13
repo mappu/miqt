@@ -12,6 +12,10 @@
 #include <QWebChannelAbstractTransport>
 #include <qwebchannel.h>
 #include "gen_qwebchannel.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQWebChannel : public virtual QWebChannel {

@@ -13,6 +13,10 @@
 #include <QTimerEvent>
 #include <qaudioprobe.h>
 #include "gen_qaudioprobe.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAudioProbe : public virtual QAudioProbe {

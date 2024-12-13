@@ -8,6 +8,10 @@
 #include <cstring>
 #include <qcameradevice.h>
 #include "gen_qcameradevice.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QCameraFormat* QCameraFormat_new() {

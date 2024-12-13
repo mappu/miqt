@@ -4,6 +4,10 @@
 #include <QWebEngineClientCertificateSelection>
 #include <qwebengineclientcertificateselection.h>
 #include "gen_qwebengineclientcertificateselection.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QWebEngineClientCertificateSelection* QWebEngineClientCertificateSelection_new(QWebEngineClientCertificateSelection* param1) {

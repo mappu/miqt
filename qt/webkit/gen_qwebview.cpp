@@ -41,6 +41,10 @@
 #include <QWidget>
 #include <qwebview.h>
 #include "gen_qwebview.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQWebView : public virtual QWebView {

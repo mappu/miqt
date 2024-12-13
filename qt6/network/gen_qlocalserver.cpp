@@ -11,6 +11,10 @@
 #include <QTimerEvent>
 #include <qlocalserver.h>
 #include "gen_qlocalserver.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQLocalServer : public virtual QLocalServer {

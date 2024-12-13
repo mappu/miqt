@@ -7,6 +7,10 @@
 #include <cstring>
 #include <qstorageinfo.h>
 #include "gen_qstorageinfo.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QStorageInfo* QStorageInfo_new() {

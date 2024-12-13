@@ -15,6 +15,10 @@
 #include <QVariant>
 #include <qabstractproxymodel.h>
 #include "gen_qabstractproxymodel.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAbstractProxyModel : public virtual QAbstractProxyModel {

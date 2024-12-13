@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexerhtml.h>
 #include "gen_qscilexerhtml.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerHTML : public virtual QsciLexerHTML {

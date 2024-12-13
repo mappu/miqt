@@ -15,6 +15,10 @@
 #include <QWidget>
 #include <qgraphicssvgitem.h>
 #include "gen_qgraphicssvgitem.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGraphicsSvgItem : public virtual QGraphicsSvgItem {

@@ -7,6 +7,10 @@
 #include <cstring>
 #include <qcameralockscontrol.h>
 #include "gen_qcameralockscontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QCameraLocksControl_virtbase(QCameraLocksControl* src, QMediaControl** outptr_QMediaControl) {

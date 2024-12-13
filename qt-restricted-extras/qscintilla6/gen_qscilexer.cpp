@@ -13,6 +13,10 @@
 #include <QTimerEvent>
 #include <qscilexer.h>
 #include "gen_qscilexer.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexer : public virtual QsciLexer {

@@ -30,6 +30,10 @@
 #include <QWidget>
 #include <qdatetimeedit.h>
 #include "gen_qdatetimeedit.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQDateTimeEdit : public virtual QDateTimeEdit {

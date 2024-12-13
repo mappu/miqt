@@ -23,6 +23,10 @@
 #include <QTransform>
 #include <qpaintengine.h>
 #include "gen_qpaintengine.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 double QTextItem_Descent(const QTextItem* self) {

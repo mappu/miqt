@@ -12,6 +12,10 @@
 #include <cstring>
 #include <qgraphicsanchorlayout.h>
 #include "gen_qgraphicsanchorlayout.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QGraphicsAnchor_virtbase(QGraphicsAnchor* src, QObject** outptr_QObject) {

@@ -17,6 +17,10 @@
 #include <QUrl>
 #include <qmediaplaylist.h>
 #include "gen_qmediaplaylist.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQMediaPlaylist : public virtual QMediaPlaylist {

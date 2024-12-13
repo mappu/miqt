@@ -809,7 +809,25 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 
 	ret.WriteString(`#include <` + filename + ">\n")
 	ret.WriteString(`#include "gen_` + filename + "\"\n")
-	ret.WriteString("#include \"_cgo_export.h\"\n\n")
+
+	// We need to import the cgo header so that we can call functions exported
+	// from Go code
+	// This header is written in C99 and uses C99 features (_Bool). We are C++
+	// and _Bool is not defined anywhere
+	// There is stdbool.h (<cstdbool>) but that does the opposite (defines 'bool'
+	// in terms of C99's native _Bool type)
+	// This is not required in GCC nor Clang 12, but is required in Clang 16 and
+	// later. In the working compilers, it's likely that the _Bool definition is
+	// automatically applied in some non-strict mode by default.
+	// We have been recommending CGO_CXXFLAGS=-D_Bool=bool . Now that the problem
+	// is more well understood, do the equivalent thing automatically
+	ret.WriteString(`
+#ifndef _Bool
+#define _Bool bool
+#endif
+#include "_cgo_export.h"
+
+`)
 
 	for _, c := range src.Classes {
 

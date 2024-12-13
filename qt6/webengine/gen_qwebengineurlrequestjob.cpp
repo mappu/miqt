@@ -9,6 +9,10 @@
 #include <QWebEngineUrlRequestJob>
 #include <qwebengineurlrequestjob.h>
 #include "gen_qwebengineurlrequestjob.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QWebEngineUrlRequestJob_virtbase(QWebEngineUrlRequestJob* src, QObject** outptr_QObject) {

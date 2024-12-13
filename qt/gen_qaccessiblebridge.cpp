@@ -13,6 +13,10 @@
 #include <QTimerEvent>
 #include <qaccessiblebridge.h>
 #include "gen_qaccessiblebridge.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QAccessibleBridge_SetRootObject(QAccessibleBridge* self, QAccessibleInterface* rootObject) {

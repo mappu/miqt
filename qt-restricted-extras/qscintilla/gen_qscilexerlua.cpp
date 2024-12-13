@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexerlua.h>
 #include "gen_qscilexerlua.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerLua : public virtual QsciLexerLua {

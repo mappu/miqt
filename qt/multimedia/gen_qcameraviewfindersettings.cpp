@@ -2,6 +2,10 @@
 #include <QSize>
 #include <qcameraviewfindersettings.h>
 #include "gen_qcameraviewfindersettings.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QCameraViewfinderSettings* QCameraViewfinderSettings_new() {

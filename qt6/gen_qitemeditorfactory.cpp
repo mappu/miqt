@@ -4,6 +4,10 @@
 #include <QWidget>
 #include <qitemeditorfactory.h>
 #include "gen_qitemeditorfactory.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QWidget* QItemEditorCreatorBase_CreateWidget(const QItemEditorCreatorBase* self, QWidget* parent) {

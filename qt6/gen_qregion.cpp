@@ -4,6 +4,10 @@
 #include <QRegion>
 #include <qregion.h>
 #include "gen_qregion.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QRegion* QRegion_new() {

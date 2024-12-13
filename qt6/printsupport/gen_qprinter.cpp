@@ -15,6 +15,10 @@
 #include <cstring>
 #include <qprinter.h>
 #include "gen_qprinter.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQPrinter : public virtual QPrinter {

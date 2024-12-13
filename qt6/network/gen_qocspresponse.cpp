@@ -2,6 +2,10 @@
 #include <QSslCertificate>
 #include <qocspresponse.h>
 #include "gen_qocspresponse.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QOcspResponse* QOcspResponse_new() {

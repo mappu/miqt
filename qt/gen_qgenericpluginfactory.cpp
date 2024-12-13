@@ -6,6 +6,10 @@
 #include <cstring>
 #include <qgenericpluginfactory.h>
 #include "gen_qgenericpluginfactory.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 struct miqt_array /* of struct miqt_string */  QGenericPluginFactory_Keys() {

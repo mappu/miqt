@@ -35,6 +35,10 @@
 #include <QWidget>
 #include <qprogressbar.h>
 #include "gen_qprogressbar.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQProgressBar : public virtual QProgressBar {

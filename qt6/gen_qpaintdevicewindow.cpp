@@ -14,6 +14,10 @@
 #include <QWindow>
 #include <qpaintdevicewindow.h>
 #include "gen_qpaintdevicewindow.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QPaintDeviceWindow_virtbase(QPaintDeviceWindow* src, QWindow** outptr_QWindow, QPaintDevice** outptr_QPaintDevice) {

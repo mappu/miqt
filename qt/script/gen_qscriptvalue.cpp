@@ -13,6 +13,10 @@
 #include <QVariant>
 #include <qscriptvalue.h>
 #include "gen_qscriptvalue.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QScriptValue* QScriptValue_new() {
