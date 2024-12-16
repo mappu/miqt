@@ -19,7 +19,7 @@
 - Add `QPair<>` bindings (#81)
 - Add automatic goroutine thread affinity with `runtime.LockOSThread` (#72, #83)
 - Optimize C ABI allocations for `miqt_array` / `QList<>` (#56)
-- Fix lint warnings (#77 vy @rcalixte)
+- Fix lint warnings (#77 by @rcalixte)
 - Fix an issue with virtual parent pointers (#80, #78)
 - Fix an issue with typedefs in `QMap<>` (#81)
 - Examples: Add `trivialwizard6` and `mdoutliner6` (#66 by @rcalixte, #67 by @rcalixte)
