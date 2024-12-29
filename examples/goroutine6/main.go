@@ -3,16 +3,19 @@ package main
 import (
 	"fmt"
 	"os"
+	"runtime"
 	"time"
 
 	qt "github.com/mappu/miqt/qt6"
 )
 
 func main() {
+	threadcount := runtime.GOMAXPROCS(0)
+
 	qt.NewQApplication(os.Args)
 
 	window := qt.NewQMainWindow2()
-	window.QWidget.SetFixedSize2(250, 200)
+	window.QWidget.SetFixedSize2(250, 50*(threadcount+1))
 	window.QWidget.SetWindowTitle("goroutine Example")
 
 	widget := qt.NewQWidget(window.QWidget)
@@ -20,7 +23,7 @@ func main() {
 	widget.SetLayout(layout.QBoxLayout.QLayout)
 	window.SetCentralWidget(widget)
 
-	labels := make([]*qt.QLabel, 3)
+	labels := make([]*qt.QLabel, threadcount)
 	for i := range labels {
 		label := qt.NewQLabel(window.QWidget)
 		label.SetAlignment(qt.AlignCenter)
