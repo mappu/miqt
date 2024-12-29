@@ -22,6 +22,7 @@ These bindings were newly started in August 2024. The bindings are complete for 
 |Linux|ARM64|Static or Dynamic (.so)|✅ Works
 |Windows|x86_64|Static or Dynamic (.dll)|✅ Works
 |Android|ARM64|Dynamic (bundled in .apk package)|✅ Works
+|FreeBSD|x86_64|Static or Dynamic (.so)|✅ Works
 |macOS|x86_64|Static or Dynamic (.dylib)|✅ Works
 |macOS|ARM64|Static or Dynamic (.dylib)|Should work, not tested
 
@@ -214,6 +215,19 @@ For dynamic linking:
 See FAQ Q3 for advice about docker performance.
 
 To add an icon and other properties to the .exe, you can use [the go-winres tool](https://github.com/tc-hib/go-winres). See the `examples/windowsmanifest` for details.
+
+### FreeBSD (native)
+
+*Tested with FreeBSD 14.2 / Go 1.21 / Qt 6.7 / Clang*
+
+```bash
+pkg install git
+pkg install devel/pkgconf
+pkg install go
+pkg install devel/qt6 # This includes many Qt libraries, a subset could be used instead
+
+go build -ldflags '-s -w'
+```
 
 ### macOS (Homebrew)
 
