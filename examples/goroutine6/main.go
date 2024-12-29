@@ -7,6 +7,7 @@ import (
 	"time"
 
 	qt "github.com/mappu/miqt/qt6"
+	"github.com/mappu/miqt/qt6/mainthread"
 )
 
 func main() {
@@ -39,8 +40,11 @@ func main() {
 				var tick int
 				for range time.NewTicker(time.Duration((index+1)*25) * time.Millisecond).C {
 					tick++
-					time.Sleep(50 * time.Millisecond)
-					qlabel.SetText(fmt.Sprintf("%v %v", tick, time.Now().UTC().Format("15:04:05.0000")))
+					// time.Sleep(50 * time.Millisecond)
+
+					mainthread.Wait(func() {
+						qlabel.SetText(fmt.Sprintf("%v %v", tick, time.Now().UTC().Format("15:04:05.0000")))
+					})
 				}
 			}(i, label)
 		}
