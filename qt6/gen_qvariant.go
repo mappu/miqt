@@ -504,6 +504,14 @@ func NewQVariant42(typeVal QMetaType, copyVal unsafe.Pointer) *QVariant {
 	return ret
 }
 
+// NewQVariant4099 constructs a new QVariant object.
+func NewQVariant4099(color *QColor) *QVariant {
+
+	ret := newQVariant(C.QVariant_new4099(color.cPointer()))
+	ret.isSubclass = true
+	return ret
+}
+
 func (this *QVariant) OperatorAssign(other *QVariant) {
 	C.QVariant_OperatorAssign(this.h, other.cPointer())
 }

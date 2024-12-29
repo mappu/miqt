@@ -44,6 +44,7 @@ class QUrl;
 class QUuid;
 class QVariant;
 class QVariantConstPointer;
+class QColor;
 #else
 typedef struct QBitArray QBitArray;
 typedef struct QChar QChar;
@@ -74,6 +75,7 @@ typedef struct QUrl QUrl;
 typedef struct QUuid QUuid;
 typedef struct QVariant QVariant;
 typedef struct QVariantConstPointer QVariantConstPointer;
+typedef struct QColor QColor;
 #endif
 
 QVariant* QVariant_new();
@@ -118,6 +120,7 @@ QVariant* QVariant_new39(QModelIndex* modelIndex);
 QVariant* QVariant_new40(QPersistentModelIndex* modelIndex);
 QVariant* QVariant_new41(int typeVal);
 QVariant* QVariant_new42(QMetaType* typeVal, const void* copyVal);
+QVariant* QVariant_new4099(QColor* color);
 void QVariant_OperatorAssign(QVariant* self, QVariant* other);
 void QVariant_Swap(QVariant* self, QVariant* other);
 int QVariant_UserType(const QVariant* self);

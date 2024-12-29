@@ -33,6 +33,7 @@
 #include <QUuid>
 #include <QVariant>
 #include <QVariantConstPointer>
+#include <QColor>
 #include <qvariant.h>
 #include "gen_qvariant.h"
 
@@ -231,6 +232,10 @@ QVariant* QVariant_new41(int typeVal) {
 
 QVariant* QVariant_new42(QMetaType* typeVal, const void* copyVal) {
 	return new QVariant(*typeVal, copyVal);
+}
+
+QVariant* QVariant_new4099(QColor* color) {
+	return new QVariant(*color);
 }
 
 void QVariant_OperatorAssign(QVariant* self, QVariant* other) {
